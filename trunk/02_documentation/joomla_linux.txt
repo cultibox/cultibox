@@ -3,18 +3,25 @@ I) Installation de Joomla sous XAMPP
 
 
 * Récupération de Joomla:
-	sudo mkdir /opt/lampp/htdocs/joomla && sudo wget --directory-prefix="/opt/lampp/htdocs" /opt/lampp/htdocs/joomla http://joomlacode.org/gf/download/frsrelease/16804/73116/Joomla_2.5.3-Stable-Full_Package.zip
+	sudo mkdir /opt/lampp/htdocs/joomla && sudo wget --directory-prefix="/opt/lampp/htdocs/joomla" /opt/lampp/htdocs/joomla http://joomlacode.org/gf/download/frsrelease/16804/73116/Joomla_2.5.3-Stable-Full_Package.zip
 
 
 * Installation de Joomla:
-	sudo mkdir /opt/lampp/htdocs/joomla && cd /opt/lampp/htdocs && sudo tar -zxvf Joomla_2.5.3-Stable-Full_Package.zip
+	cd /opt/lampp/htdocs/joomla && sudo unzip Joomla_2.5.3-Stable-Full_Package.zip && sudo rm Joomla_2.5.3-Stable-Full_Package.zip && sudo touch /opt/lampp/htdocs/joomla/configuration.php && sudo chmod 777 /opt/lampp/htdocs/joomla/configuration.php
 	
 
 * Accèder à l'interface d'installation: puis répondre aux questions:
 	http://localhost/joomla/
 
+
+* Correction des droits sur le fichier configuration.php:
+	sudo chmod 644 /opt/lampp/htdocs/joomla/configuration.php
+	
+
+
 Note: Attention aux droits d'accès du répertoire que vous venez de créer /opt/lampp/htdocs/joomla. Il est possible qu'à la fin de l'installation, l'interface n'arrive pas à supprumer le répertoire d'installation. Dans ce cas, le supprimer à la main:
 	sudo rm -Rf /opt/lampp/htdocs/joomla/installation
+
 
 
 
@@ -24,9 +31,19 @@ II) Installation de Jumi sous Joomla
 * Jumi est une extension permettant d'intégrer facilement des contenus dans un article (et même des pages PHP). Récupérer Jumi:
 	http://edo.webmaster.am/jumi
 
+
+* Fixer les droits d'accès pour l'installation de Jumi:
+	cd /opt/lampp/htdocs/joomla && sudo chmod 777 tmp modules templates components administrator/components administrator/language plugins/system administrator/language/en-GB
+
+
 * Installer Jumi sous Joomla en vous rendant sur l'interface administrative dans la partie Extension Manager:
 	http://localhost/joomla/administrator/index.php?option=com_installer
 
+
 * Selectionner le package précédement télécharger et l'installer
 
-Note: Comme précédement, attention aux droits d'écriture sur les répertoire pour installer les extensions et notamenet le répertoire /opt/lampp/htdocs/joomla/tmp
+
+* Remettre les droits d'accès:
+	cd /opt/lampp/htdocs/joomla && sudo chmod 755 tmp modules templates components administrator/components administrator/language plugins/system administrator/language/en-GB
+
+

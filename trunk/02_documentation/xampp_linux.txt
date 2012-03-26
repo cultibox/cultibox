@@ -22,11 +22,15 @@ I) Installation de XAMPP sous linux
 II) Configuration de XAMPP pour fonctionner sur un autre port que le 80:
 ------------------------------------------------------------------------
 
-* Editer le fichier httpd.conf /opt/lampp/etc/httpd.conf et modifier le la partie Listen 80 en Listen XXX ou XXX est le nouveau  port à utiliser
+* Editer le fichier httpd.conf (/opt/lampp/etc/httpd.conf) et modifier le la partie Listen 80 en Listen XXX ou XXX est le nouveau  port à utiliser
 
 
 * Vous  pouvez aussi exécuter la commande suivante à la place d'éditer manuellement le fichier en  remplaçant XXX par votre port:
 	sudo sed -i "s/Listen 80/Listen XXX/" /opt/lampp/etc/httpd.conf
+
+
+* Relancer le serveur:
+	sudo /opt/lampp/lampp restart
 
 
 III) Problèmes de sécurité sous XAMPP

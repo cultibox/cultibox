@@ -1,0 +1,18 @@
+JUMI:
+
+
+* Trouver l'utilisateur qui copie les fichier des extensions pour fixer durablement les droits de joomla
+* Corriger les erreurs de Jumi avec Joomla 2.5 :
+
+	Strict Standards: Non-static method TOOLBAR_Jumi::_DEFAULT() should not be called statically in /opt/lampp/htdocs/joomla/administrator/components/com_jumi/toolbar.jumi.php on line 28
+
+	Strict Standards: Only variables should be assigned by reference in /opt/lampp/htdocs/joomla/administrator/components/com_jumi/admin.jumi.php on line 27
+
+	Strict Standards: Only variables should be assigned by reference in /opt/lampp/htdocs/joomla/administrator/components/com_jumi/admin.jumi.php on line 30
+
+	Strict Standards: Non-static method JumiView::showApplications() should not be called statically, assuming $this from incompatible context in /opt/lampp/htdocs/joomla/administrator/components/com_jumi/admin.jumi.php on line 84
+Filter: 	
+
+	Strict Standards: Non-static method JTable::isCheckedOut() should not be called statically in /opt/lampp/htdocs/joomla/libraries/joomla/html/html/grid.php on line 198
+
+	Strict Standards: Non-static method JTable::isCheckedOut() should not be called statically in /opt/lampp/htdocs/joomla/libraries/joomla/html/html/grid.php on line 198
