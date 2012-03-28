@@ -1,0 +1,111 @@
+<div id="main">
+<p id="title_conf">
+	User Configuration:
+</p>
+<form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post" name="configform">
+<table class="tablemain">
+<tr>
+	<td>
+	Color humidity graphics:
+	</td>
+<td>
+		<select name="color_humidity">
+		<?php
+		foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+			if("${value}" == "${color_humidity}") {
+				echo "<option value=\"${value}\" selected>${value}</option>";
+			} else {
+				echo "<option value=\"${value}\">${value}</option>";	
+			}
+		}
+		?>
+                </select>
+</td>
+</tr>
+<tr>
+	<td>
+	Color temperature graphics:
+	</td>
+<td>
+	<select name="color_temperature">
+	<?php
+		foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+			if(!strcmp ("$value","$color_temperature")) {
+				echo "<option value=\"${value}\" selected>${value}</option>";
+			} else {
+				echo "<option value=\"${value}\">${value}</option>";
+			}
+		}
+	?>
+	</select>
+</td>
+</tr>
+</table>
+<br />
+<p id="title_conf">
+	System Configuration:
+</p>
+<table class="tablemain">
+<tr>
+<td>
+	Configure record frequency:
+</td>
+<td>
+	<select name="record_frequency">
+		<?php
+		foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
+			if(!strcmp ("$value","$record_frequency")) {
+				echo "<option value=\"${value}\" selected>${value}</option>";
+			} else {
+				echo "<option value=\"${value}\">${value}</option>";
+			}
+		}
+		?>
+	</select>
+</td>
+</tr>
+<tr>
+<td>
+	Configure number of plugs to be used:
+</td>
+<td>
+	<select name="nb_plugs">
+		<?php
+		foreach($GLOBALS['LIST_NB_PLUGS'] as $value) {
+			if(!strcmp ("$value","$nb_plugs")) {
+				echo "<option value=\"${value}\" selected>${value}</option>";
+			} else {
+				echo "<option value=\"${value}\">${value}</option>";
+			}
+		}
+		?>
+</select>
+</td>
+</tr>
+<tr>
+<td>
+	Configure update plugs frequency:
+</td>
+<td>
+	<select name="update_frequency">
+		<?php
+		foreach($GLOBALS['LIST_UPDATE_FREQUENCY'] as $value) {
+			if(!strcmp ("$value","$update_frequency")) {
+				echo "<option value=\"${value}\" selected>${value}</option>";
+			} else {
+				echo "<option value=\"${value}\">${value}</option>";
+			}
+		}
+		?>
+		</select>
+</td>
+</tr>
+
+</table>
+
+<p id="validation">
+	<INPUT type="submit" value="Update configuration">
+</p>
+	<INPUT type="hidden" name="menu" value="configuration">
+</form>
+</div>

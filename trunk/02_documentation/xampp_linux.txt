@@ -15,7 +15,15 @@ I) Installation de XAMPP sous linux
 
 * Lancement de XAMPP:
 	sudo /opt/lampp/lampp start
-	
+
+
+* Il ne reste plus qu'à modififier l'utilisateur qui executera XAMPP, par défaut il s'agi de l'utilisateur nobody:nogroup. Pour changer cet utilisateur, editez le fichier httpd.conf (/opt/lampp/etc/httpd.conf) et modifiez la partie:
+	User <votre_user>
+	Group <votre_group>
+
+
+* On fixe les droits du repertoire htdocs en conséquence:
+	sudo chown -R <votre_user>:<votre_group> /opt/lampp/htdocs
 
 
 
@@ -34,6 +42,7 @@ II) Configuration de XAMPP pour fonctionner sur un autre port que le 80:
 
 
 III) Problèmes de sécurité sous XAMPP
+-------------------------------------
 
 * Tiré de la documentation XAMPP (http://www.apachefriends.org/en/xampp-windows.html#1221)
 	As mentioned at another place, XAMPP is not meant for production use but only for developers in a development environment. 
@@ -53,3 +62,18 @@ III) Problèmes de sécurité sous XAMPP
 	sudo /opt/lampp/lampp security
 
 Note: Si vous mettez un mot de passe pour accéder aux pages des sites de XAMPP, l'utilisateur à utiliser est "lampp"
+
+
+
+
+IV) Suppréssion des erreurs "Strict" pour Joomla
+------------------------------------------------
+
+* Afin de ne pas afficher les erreurs liées au mode Strict de php, il faut modifier le fichier /opt/lampp/etc/php.ini et remplacer la ligne:
+	error_reporting = E_ALL | E_STRICT
+par:
+	error_reporting = E_ALL & ~E_NOTICE | ~E_STRICT
+
+* Puis relancer XAMPP:
+	sudo /opt/lampp/lampp restart
+
