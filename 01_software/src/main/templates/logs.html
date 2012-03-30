@@ -1,0 +1,48 @@
+<div id="main">
+<table class="tablemain">
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post">
+Select a day to display:
+<INPUT type="hidden" name="menu" value="logs"><INPUT type="hidden" name="type" value="days">
+<input id="startdate" name="startdate" type="text" class="whitefield" size="5" value="<?php echo $startdate; ?>" onClick='scwShow(document.getElementById("startdate"),this);'>
+<INPUT type="submit" value="Display a day">
+</form>
+</td>
+</tr>
+<tr>
+<td>
+<form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post">
+Select a month to display:
+ <INPUT type="hidden" name="menu" value="logs"><INPUT type="hidden" name="type" value="month">
+<select name="startdate">
+                <option <?php if("$bmonth" == "1") { echo 'selected';} ?> value="01">January</option>
+                <option <?php if("$bmonth" == "2") { echo 'selected';} ?> value="02">February</option>
+                <option <?php if("$bmonth" == "3") { echo 'selected';} ?> value="03">March</option>
+                <option <?php if("$bmonth" == "4") { echo 'selected';} ?> value="04">April</option>
+                <option <?php if("$bmonth" == "5") { echo 'selected';} ?> value="05">May</option>
+                <option <?php if("$bmonth" == "6") { echo 'selected';} ?> value="06">June</option>
+                <option <?php if("$bmonth" == "7") { echo 'selected';} ?> value="07">July</option>
+                <option <?php if("$bmonth" == "8") { echo 'selected';} ?> value="08">August</option>
+                <option <?php if("$bmonth" == "9") { echo 'selected';} ?> value="09">September</option>
+                <option <?php if("$bmonth" == "10") { echo 'selected';} ?> value="10">October</option>
+                <option <?php if("$bmonth" == "11") { echo 'selected';} ?> value="11">November</option>
+                <option <?php if("$bmonth" == "12") { echo 'selected';} ?> value="12">December</option>
+</select>
+<INPUT type="submit" value="Display a month">
+</form>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+
+<script src="main/libs/js/highcharts.js"></script>
+<script src="main/libs/js/exporting.js"></script>
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>

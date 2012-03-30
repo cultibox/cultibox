@@ -2,6 +2,10 @@
 
 //        This configuration file is dedicated to some GLOBALS variables to define some possible customizations        //
 
+
+// Relative path to logs and programs data:
+$GLOBALS['DATE_DIR_PATH'] = 'main/data';
+
 // List of available colors for graphics:
 $GLOBALS['LIST_GRAPHIC_COLOR'] = array('blue','red', 'green', 'black');
 
