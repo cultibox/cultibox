@@ -51,8 +51,9 @@ EOF;
 			$index = $index +1;
 		}
 	}
-        $res = $db->query($sql);
-
+	$db->setQuery($sql);
+	$db->query();
+	db_priv_end($db);
 }
 // }}}
 
@@ -64,7 +65,6 @@ function get_graph_array(&$res,$key,$startdate,$out) {
 SELECT ${key} FROM `logs` WHERE date_catch LIKE "{$startdate}"
 EOF;
         $res = $db->getCol($sql);
-
 }
 // }}}
 
@@ -75,8 +75,10 @@ function get_max_value($key,$startdate,&$return) {
 	$sql = <<<EOF
 SELECT max(${key}/100) FROM `logs` WHERE date_catch LIKE "{$startdate}" 
 EOF;
-        $res = $db->getOne($sql);
 
+	$db->setQuery($sql);
+	$res = $db->loadResult();
+	db_priv_end($db);
 	return $res;
 }
 // }}}
@@ -90,6 +92,7 @@ SELECT {$key} FROM `configuration` WHERE id = 1
 EOF;
 	$db->setQuery($sql);
         $res = $db->loadResult();
+	db_priv_end($db);
         return $res;
 }
 // }}}
@@ -103,6 +106,7 @@ UPDATE `configuration` SET  {$key} = "{$value}" WHERE id = 1
 EOF;
 	$db->setQuery($sql);
 	$db->query();
+	db_priv_end($db);
 }
 // }}}
 
