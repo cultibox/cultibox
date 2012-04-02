@@ -6,33 +6,33 @@
 <tr>
 <td>
 <form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post">
-Select a day to display:
+<?php echo __(SELECT_DISPLAYED_DAY); ?>
 <INPUT type="hidden" name="menu" value="logs"><INPUT type="hidden" name="type" value="days">
 <input id="startdate" name="startdate" type="text" class="whitefield" size="5" value="<?php echo $startdate; ?>" onClick='scwShow(document.getElementById("startdate"),this);'>
-<INPUT type="submit" value="Display a day">
+<INPUT type="submit" value=<?php echo __(VIEW); ?>>
 </form>
 </td>
 </tr>
 <tr>
 <td>
 <form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post">
-Select a month to display:
+<?php echo __(SELECT_DISPLAYED_MONTH); ?>
  <INPUT type="hidden" name="menu" value="logs"><INPUT type="hidden" name="type" value="month">
 <select name="startdate">
-                <option <?php if("$bmonth" == "1") { echo 'selected';} ?> value="01">January</option>
-                <option <?php if("$bmonth" == "2") { echo 'selected';} ?> value="02">February</option>
-                <option <?php if("$bmonth" == "3") { echo 'selected';} ?> value="03">March</option>
-                <option <?php if("$bmonth" == "4") { echo 'selected';} ?> value="04">April</option>
-                <option <?php if("$bmonth" == "5") { echo 'selected';} ?> value="05">May</option>
-                <option <?php if("$bmonth" == "6") { echo 'selected';} ?> value="06">June</option>
-                <option <?php if("$bmonth" == "7") { echo 'selected';} ?> value="07">July</option>
-                <option <?php if("$bmonth" == "8") { echo 'selected';} ?> value="08">August</option>
-                <option <?php if("$bmonth" == "9") { echo 'selected';} ?> value="09">September</option>
-                <option <?php if("$bmonth" == "10") { echo 'selected';} ?> value="10">October</option>
-                <option <?php if("$bmonth" == "11") { echo 'selected';} ?> value="11">November</option>
-                <option <?php if("$bmonth" == "12") { echo 'selected';} ?> value="12">December</option>
+                <option <?php if("$bmonth" == "1") { echo 'selected';} ?> value="01"><?php echo __(MONTH01); ?></option>
+                <option <?php if("$bmonth" == "2") { echo 'selected';} ?> value="02"><?php echo __(MONTH02); ?></option>
+                <option <?php if("$bmonth" == "3") { echo 'selected';} ?> value="03"><?php echo __(MONTH03); ?></option>
+                <option <?php if("$bmonth" == "4") { echo 'selected';} ?> value="04"><?php echo __(MONTH04); ?></option>
+                <option <?php if("$bmonth" == "5") { echo 'selected';} ?> value="05"><?php echo __(MONTH05); ?></option>
+                <option <?php if("$bmonth" == "6") { echo 'selected';} ?> value="06"><?php echo __(MONTH06); ?></option>
+                <option <?php if("$bmonth" == "7") { echo 'selected';} ?> value="07"><?php echo __(MONTH07); ?></option>
+                <option <?php if("$bmonth" == "8") { echo 'selected';} ?> value="08"><?php echo __(MONTH08); ?></option>
+                <option <?php if("$bmonth" == "9") { echo 'selected';} ?> value="09"><?php echo __(MONTH09); ?></option>
+                <option <?php if("$bmonth" == "10") { echo 'selected';} ?> value="10"><?php echo __(MONTH10); ?></option>
+                <option <?php if("$bmonth" == "11") { echo 'selected';} ?> value="11"><?php echo __(MONTH11); ?></option>
+                <option <?php if("$bmonth" == "12") { echo 'selected';} ?> value="12"><?php echo __(MONTH12); ?></option>
 </select>
-<INPUT type="submit" value="Display a month">
+<INPUT type="submit" value=<?php echo __(VIEW); ?>>
 </form>
 </td>
 </tr>
@@ -42,7 +42,129 @@ Select a month to display:
 </table>
 </div>
 
-<script src="main/libs/js/highcharts.js"></script>
-<script src="main/libs/js/exporting.js"></script>
+<script type="text/javascript">
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                zoomType: 'x',
+                spacingRight: 20
+            },
+            title: {
+                text: <?php echo "'".__(HISTO_GRAPH)."'"; ?>,
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    <?php echo "'".__(DRAG_PLOT)."'"; ?>:
+		    <?php echo "'".__(DRAG_PLOT)."'"; ?>
+            },
+            xAxis: {
+                type: 'datetime',
+                maxZoom: 14 * 24 * 3600000, // fourteen days
+                title: {
+                    text: null
+                }
+            },
+            yAxis: [{
+                title: {
+                    text: <?php echo "'".__(YAXIS_LEGEND)."'"; ?>
+                },
+                min: 0.6,
+                startOnTick: false,
+                showFirstLabel: false
+            }, {
+		title: {
+                    text: <?php echo "'".__(Y2AXIS_LEGEND)."'"; ?>
+                },
+                min: 0,
+		max: 100,
+                startOnTick: false,
+                showFirstLabel: false,
+		opposite: true
+	    }],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                enabled: true
+            },
+	    credits: {
+			enabled: false
+		},
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1}, 
+			stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, 'rgba(2,0,0,0)']
+                        ]
 
-<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                    },
+                    lineWidth: 1,
+                    marker: {
+                        enabled: false,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                radius: 5
+                            }
+                        }
+                    },
+                    shadow: false,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    }
+                }
+            },
+    
+            series: [{
+                type: 'area',
+                name: <?php echo "'".__(LEGEND_TEMP)."'"; ?>,
+                pointInterval: 24 * 3600 * 1000,
+                pointStart: Date.UTC(2006, 0, 01),
+		color: <?php echo "'".$color_temperature."'"; ?>,
+                data: [
+                    0.8446, 0.8445, 0.8444, 0.8451,    0.8418, 0.8264,    0.8258, 0.8232,    0.8233, 0.8258,
+                    0.8283, 0.8278, 0.8256, 0.8292,    0.8239, 0.8239,    0.8245, 0.8265,    0.8261, 0.8269,
+                    0.8273, 0.8244, 0.8244, 0.8172,    0.8139, 0.8146,    0.8164, 0.82,    0.8269, 0.8269,
+                    0.8269, 0.8258, 0.8247, 0.8286,    0.8289, 0.8316,    0.832, 0.8333,    0.8352, 0.8357,
+                    0.8355, 0.8354, 0.8403, 0.8403,    0.8406, 0.8403,    0.8396, 0.8418,    0.8409, 0.8384,
+                    0.8386, 0.8372, 0.839, 0.84, 0.8389, 0.84, 0.8423, 0.8423, 0.8435, 0.8422,
+                    0.838, 0.8373, 0.8316, 0.8303,    0.8303, 0.8302,    0.8369, 0.84, 0.8385, 0.84,
+                    0.8401, 0.8402, 0.8381, 0.8351,    0.8314, 0.8273,    0.8213, 0.8207,    0.8207, 0.8215,
+                    0.8242, 0.8273, 0.8301, 0.8346,    0.8312, 0.8312,    0.8312, 0.8306,    0.8327, 0.8282,
+                    0.824, 0.8255, null, null, null, 0.8151, 0.8149, 0.8213, 0.8273, 0.8273,
+                    0.8261, 0.8252, 0.824, 0.8262, 0.8258, 0.8261, 0.826, 0.8199, 0.8153, 0.8097,
+                    0.8101, 0.8119, 0.8107, 0.8105,    0.8084, 0.8069,    0.8047, 0.8023,    0.7965, 0.7919]
+		}, {
+		type: 'area',
+                name: <?php echo "'".__(LEGEND_HUMI)."'"; ?>,
+                pointInterval: 24 * 3600 * 1000,
+                pointStart: Date.UTC(2006, 0, 01),
+		color: <?php echo "'".$color_humidity."'"; ?>,
+		yAxis: 1,	
+		    data: [100.8446, 84, 84, 41,    18, 0.8264,    0.8258, 0.8232,    0.8233, 0.8258,
+                    0.8283, 1.8278, 0.8256, 0.8292,    0.8239, 0.8239,    0.8245, 0.8265,    0.8261, 0.8269,
+                    0.8273, 0.8244, 0.8244, 0.8172,    0.8139, 0.8146,    0.8164, 0.82,    0.8269, 0.8269,
+                    0.8269, 1.8258, 0.8247, 0.8286,    0.8289, 0.8316,    0.832, 0.8333,    0.8352, 0.8357,
+                    0.8355, 0.8354, 0.8403, 0.8403,    0.8406, 0.8403,    0.8396, 0.8418,    0.8409, 0.8384,
+                    0.8386, 1.8372, 0.839, 0.84, 0.8389, 0.84, 0.8423, 0.8423, 0.8435, 0.8422,
+                    0.838, 0.8373, 0.8316, 0.8303,    0.8303, 0.8302,    0.8369, 0.84, 0.8385, 0.84,
+                    0.8401, 0.8402, 0.8381, 0.8351,    0.8314, 0.8273,    0.8213, 0.8207,    0.8207, 0.8215,
+                    0.8242, 0.8273, 0.8301, 0.8346,    0.8312, 0.8312,    0.8312, 0.8306,    0.8327, 0.8282,
+                    0.824, 0.8255, 0.8256, 0.8273, 0.8209, 0.8151, 0.8149, 0.8213, 0.8273, 0.8273,
+                    0.8261, 0.8252, 0.824, 0.8262, 0.8258, 0.8261, 0.826, 0.8199, 0.8153, 0.8097,
+                    0.8101, 0.8119, 0.8107, 0.8105,    0.8084, 0.8069,    0.8047, 0.8023,    0.7965, 0.7919]
+		}]
+        });
+    });
+    
+});
+</script>
+
+<div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>

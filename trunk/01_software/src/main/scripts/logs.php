@@ -4,6 +4,13 @@ require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
 
+$lang=get_configuration("LANG",$return);
+set_lang($lang);
+$_SESSION['LANG'] = get_current_lang();
+__('LANG');
+
+$return="";
+
 $startdate = getvar('startdate');
 $type = getvar('type');
 if((!isset($startdate))||(empty($startdate))) {
@@ -35,7 +42,6 @@ for ($month = 1; $month <= 12; $month++) {
     }
       // Search if file exists
       if(file_exists($GLOBALS['DATE_DIR_PATH']."/logs/$mmonth/$dday")) {
-	echo $GLOBALS['DATE_DIR_PATH']."/logs/$mmonth/$dday";
        // get log value
        get_log_value($GLOBALS['DATE_DIR_PATH']."/logs/$mmonth/$dday",$log);
        if(!empty($log)) {
@@ -46,7 +52,6 @@ for ($month = 1; $month <= 12; $month++) {
       }
   }
 }
-
 
 $temperature= array();
 $humidity = array();
@@ -65,61 +70,16 @@ if("$type" != "month") {
   get_format_month($axis,5,$bmonth,date('Y'));
 }
 
-if((!empty($humidity))||(!empty($temperature))) {
-  $max_humi=get_max_value("humidity",$startdate,$return);
-  $max_temp=get_max_value("temperature",$startdate,$return);
-
-  $largeur = 640;
-  $hauteur = 600;
-
-  $graph = new Graph($largeur, $hauteur);
-  $graph->SetMargin(50,50,40,60);
-  $graph->SetMarginColor('white');
-  $graph->img->SetAntiAliasing(false);
-  $graph->SetBox(false);
-  $graph->SetScale("textlin",0,$max_temp+20);
-  $graph->img->SetAntiAliasing();
-  $histo_temp = new LinePlot($temperature);
-  $histo_temp->SetLegend(__('LEGEND_TEMP'));
-  $histo_temp->SetColor($_SESSION['COLOR_TEMPERATURE_GRAPH']);
-  $histo_humi = new LinePlot($humidity);
-  $histo_humi->SetLegend(__('LEGEND_HUMI'));
-  $histo_humi->SetColor($_SESSION['COLOR_HUMIDITY_GRAPH']);
-  $graph->add($histo_temp);
-  $graph->addY2($histo_humi);
-  $graph->legend->Pos(0.5,0.95,"center");
-  $graph->legend->SetLayout(LEGEND_HOR); 
-  $graph->SetY2Scale("lin",0,$max_humi); 
-  $graph->title->set(__('HISTO_GRAPH')." (".$legend_date.")");
-  $graph->title->SetFont(FF_FONT1,FS_BOLD);
-  $graph->ygrid->SetColor('blue');
-  $graph->xgrid->SetColor('red');
-  $graph->xaxis->title->Set(__($xlegend));
-  $graph->yaxis->title->Set(__('YAXIS_LEGEND'));
-  $graph->y2axis->title->Set(__('Y2AXIS_LEGEND'));
-  $graph->yaxis->title->SetFont(FF_FONT1,FS_BOLD);
-  $graph->y2axis->title->SetFont(FF_FONT1,FS_BOLD);
-  $graph->xaxis->title->SetFont(FF_FONT1,FS_BOLD);
-
-  if("$type" == "month") {
-    $graph->xaxis->SetTextTickInterval(288);  
-  } else {
-    $graph->xaxis->SetTextTickInterval(20);
-  }
-  $graph->xaxis->SetTickLabels($axis);
-  $gdImgHandler = $graph->Stroke(_IMG_HANDLER);
-  $fileName = "../tmp/graph.png";
-  $graph->img->Stream("../tmp/graph.png");
-
-}
-
 if("$type" == "month") {
          $startdate=date('Y')."-".date('m')."-".date('d');
-} 
+}
 
 if((!isset($bmonth))||(empty($bmonth))) {
   $bmonth=date('m');
 }
+
+$color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$return);
+$color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$return);
 
 include('main/templates/logs.html');
 

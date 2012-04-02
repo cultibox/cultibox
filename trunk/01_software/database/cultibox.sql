@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `RECORD_FREQUENCY` int(11) NOT NULL DEFAULT '5',
   `NB_PLUGS` int(11) NOT NULL DEFAULT '4',
   `UPDATE_PLUGS_FREQUENCY` varchar(30) NOT NULL DEFAULT 'Always',
+  `LANG` varchar(5) NOT NULL DEFAULT 'en_GB',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -44,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 -- Contenu de la table `configuration`
 --
 
-INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`) VALUES
-(1, 'green', 'red', 5, 4, 'Always');
+INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`,`LANG`) VALUES
+(1, 'green', 'red', 5, 4, 'Always','en_GB');
 
 -- --------------------------------------------------------
 

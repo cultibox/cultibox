@@ -8,7 +8,7 @@ $(function () {
                 spacingRight: 20
             },
             title: {
-                text: '<?php echo $title; ?>'
+                text: <?php echo 'hahaha'; ?>
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?

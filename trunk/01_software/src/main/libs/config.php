@@ -3,6 +3,11 @@
 //        This configuration file is dedicated to some GLOBALS variables to define some possible customizations        //
 
 
+define('LANG_FALLBACK', 'en_GB');
+
+// List of available languages:
+$GLOBALS['LIST_LANG'] = array('en_GB','fr_FR');
+
 // Relative path to logs and programs data:
 $GLOBALS['DATE_DIR_PATH'] = 'main/data';
 
