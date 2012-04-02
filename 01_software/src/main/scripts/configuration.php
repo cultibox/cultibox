@@ -1,5 +1,8 @@
 <?php
 
+
+session_start();
+
 require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
@@ -9,9 +12,21 @@ $color_temperature = getvar('color_temperature');
 $record_frequency=getvar('record_frequency');
 $update_frequency=getvar('update_frequency');
 $nb_plugs=getvar('nb_plugs');
+$lang=getvar('lang');
 $update_conf="false";
 $return="";
 $var = array();
+
+if((isset($lang))&&(!empty($lang))) {
+	insert_configuration("LANG",$lang,$return);
+} else {
+	$lang=get_configuration("LANG",$return);
+}
+
+set_lang($lang);
+$_SESSION['LANG'] = get_current_lang();
+__('LANG');
+
 
 if((isset($color_humidity))&&(!empty($color_humidity))) {
 	insert_configuration("COLOR_HUMIDITY_GRAPH",$color_humidity,$return);
@@ -49,6 +64,7 @@ if(!empty($update_frequency)) {
 } else {
 	$update_frequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$return);
 }
+
 
 
 include('main/templates/configuration.html');

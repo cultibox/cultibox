@@ -64,7 +64,9 @@ function get_graph_array(&$res,$key,$startdate,$out) {
         $sql = <<<EOF
 SELECT ${key} FROM `logs` WHERE date_catch LIKE "{$startdate}"
 EOF;
-        $res = $db->getCol($sql);
+	$db->setQuery($sql);
+	$res = $db->loadResultArray();
+	db_priv_end($db);
 }
 // }}}
 

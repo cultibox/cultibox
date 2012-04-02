@@ -1,12 +1,33 @@
 <div id="main">
 <p id="title_conf">
-	User Configuration:
+	<?php echo __(USER_CONF); ?>:
 </p>
 <form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post" name="configform">
 <table class="tablemain">
 <tr>
+        <td>
+        <?php echo __(CONFIGURE_LANGUAGE); ?>
+        </td>
+<td>
+                <select name="lang">
+                <?php
+		print_r($GLOBALS['LIST_LANG']);
+		echo "test";
+		echo $_SESSION['LANG'];
+                foreach($GLOBALS['LIST_LANG'] as $value) {
+                        if("${value}" == $_SESSION['LANG']) {
+                                echo "<option value=\"${value}\" selected>${value}</option>";
+                        } else {
+                                echo "<option value=\"${value}\">${value}</option>";
+                        }
+                }
+                ?>
+                </select>
+</td>
+</tr>
+<tr>
 	<td>
-	Color humidity graphics:
+	<?php echo __(CONFIGURE_HUMIDITY); ?>
 	</td>
 <td>
 		<select name="color_humidity">
@@ -24,7 +45,7 @@
 </tr>
 <tr>
 	<td>
-	Color temperature graphics:
+	<?php echo __(CONFIGURE_TEMPERATURE); ?>
 	</td>
 <td>
 	<select name="color_temperature">
@@ -43,12 +64,12 @@
 </table>
 <br />
 <p id="title_conf">
-	System Configuration:
+	<?php echo __(SYSTEM_CONF); ?>:
 </p>
 <table class="tablemain">
 <tr>
 <td>
-	Configure record frequency:
+	<?php echo __(CONFIGURE_FREQUENCY); ?>
 </td>
 <td>
 	<select name="record_frequency">
@@ -66,7 +87,7 @@
 </tr>
 <tr>
 <td>
-	Configure number of plugs to be used:
+	<?php echo __(CONFIGURE_PLUG); ?>
 </td>
 <td>
 	<select name="nb_plugs">
@@ -84,7 +105,7 @@
 </tr>
 <tr>
 <td>
-	Configure update plugs frequency:
+	<?php echo __(CONFIGURE_PLUGS_FREQUENCY); ?>:
 </td>
 <td>
 	<select name="update_frequency">
@@ -104,7 +125,7 @@
 </table>
 
 <p id="validation">
-	<INPUT type="submit" value="Update configuration">
+	<INPUT type="submit" value=<?php echo __(VALIDATION_CONF); ?>>
 </p>
 	<INPUT type="hidden" name="menu" value="configuration">
 </form>

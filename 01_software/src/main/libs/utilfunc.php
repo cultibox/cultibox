@@ -1,5 +1,51 @@
 <?php
 
+// {{{ __($msgkey, ...)
+// ROLE get the translated message corresponding to $msgkey, the parameters may
+// be used in $msgkey by using the sprintf syntax (%s)
+// IN $msgkey
+// IN (optional)
+// RET string translated
+static $__translations;
+static $__translations_fallback;
+static $string_lang;
+require_once 'main/libs/l10n.php';
+
+function __() {
+        global $__translations;
+        global $__translations_fallback;
+        global $string_lang;
+
+        if (func_num_args() < 1) {
+                die("ERROR: __() called without arguments");
+                return "";
+        }
+        $args = func_get_args();
+
+        if (!isset($__translations)) {
+                $__translations = __translations_get($_SESSION['LANG']);
+                $__translations_fallback = __translations_get(LANG_FALLBACK);
+                if (empty($__translations_fallback)) {
+                        die("No translation file");
+                }
+                $string_lang = array($_SESSION['LANG'] => $__translations);
+        }
+
+        $msg = $args[0];
+        if (isset($__translations["$msg"])) {
+                $msg = $__translations["$msg"];
+        } elseif (isset($__translations_fallback["$msg"])) {
+                $msg = $__translations_fallback["$msg"];
+        } else {
+                die("WARNING:L10N: no translation for '$msg'");
+        }
+
+        $args[0] = $msg;
+        $ret = call_user_func_array('sprintf', $args);
+        return $ret;
+}
+
+
 // {{{ getvar()
 // ROLE Used to get access to GET or POST values for '$varname'
 // IN $varname as a string
@@ -80,7 +126,7 @@ function get_log_value($file,&$array_line) {
 }
 
 function clean_log_file($file) {
-	$filetpl = 'templates/data/empty_file.tpl';
+	$filetpl = 'main/templates/data/empty_file.tpl';
 	copy($filetpl, $file);
 }
 
@@ -101,6 +147,22 @@ function get_format_month(&$arr,$freq,$month,$year) {
 		$val=(int)(($i/(1440/$freq))+1);
 		$arr[] = "${val}";
 	}
+}
+
+
+
+function get_current_lang() {
+	$lang =& JFactory::getLanguage();
+	return str_replace("-","_",$lang->getTag());
+}
+
+
+function set_lang($lang) {
+	$lang=str_replace("_","-",$lang);
+	$language =& JFactory::getLanguage();
+	$language->setLanguage("${lang}");
+	$language->load();
+	return true;
 }
 
 
