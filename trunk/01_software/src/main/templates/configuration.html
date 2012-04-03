@@ -11,9 +11,6 @@
 <td>
                 <select name="lang">
                 <?php
-		print_r($GLOBALS['LIST_LANG']);
-		echo "test";
-		echo $_SESSION['LANG'];
                 foreach($GLOBALS['LIST_LANG'] as $value) {
                         if("${value}" == $_SESSION['LANG']) {
                                 echo "<option value=\"${value}\" selected>${value}</option>";

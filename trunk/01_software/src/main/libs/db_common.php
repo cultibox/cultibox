@@ -62,10 +62,10 @@ EOF;
 function get_graph_array(&$res,$key,$startdate,$out) {
 	$db = db_priv_start();
         $sql = <<<EOF
-SELECT ${key} FROM `logs` WHERE date_catch LIKE "{$startdate}"
+SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}"
 EOF;
 	$db->setQuery($sql);
-	$res = $db->loadResultArray();
+	$res = $db->loadAssocList();
 	db_priv_end($db);
 }
 // }}}
