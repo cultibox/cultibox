@@ -125,6 +125,8 @@ function get_log_value($file,&$array_line) {
 	}
 }
 
+
+
 function clean_log_file($file) {
 	$filetpl = 'main/templates/data/empty_file.tpl';
 	copy($filetpl, $file);
@@ -163,6 +165,65 @@ function set_lang($lang) {
 	$language->setLanguage("${lang}");
 	$language->load();
 	return true;
+}
+
+
+function get_format_graph($arr) {
+	$data="";
+	foreach($arr as $value) {
+		$hh=substr($value[time_catch], 0, 2);
+		$mm=substr($value[time_catch], 2, 2);
+
+		if(("$hh:$mm" != "00:00")&&(empty($data))&&(empty($last_value))) {
+			$data=fill_data("00","00","$hh","$mm","null","$data");
+		} else if((check_empty_record("$last_hh","$last_mm","$hh","$mm"))&&("$hh:$mm" != "00:00")) {
+			$data = fill_data("$last_hh","$last_mm","$hh","$mm","$last_value","$data");
+		} else {
+			if("$hh:$mm" != "00:00") {
+				$data = fill_data("$last_hh","$last_mm","$hh","$mm","null","$data");
+			}
+		}
+		$last_value="$value[record]";
+		$last_hh=$hh;
+		$last_mm=$mm;
+	}
+	return $data;
+}
+
+
+function fill_data($fhh,$fmm,$lhh,$lmm,$val,$data) {
+	while("$fhh:$fmm" != "$lhh:$lmm") {
+		if("$data" == "") {
+			$data="$val";
+		} else {
+			$data=$data.", $val";
+		}
+		$fmm=$fmm+1;
+		if($fmm<10) {
+			$fmm="0$fmm";
+		}
+		
+		if("$fmm"=="60") {
+			$fmm="00";
+			$fhh=$fhh+1;
+			if($fhh<10) {
+				$fhh="0$fhh";
+			}
+		}
+	}
+	return $data;
+}
+
+
+function check_empty_record($last_hh,$last_mm,$hh,$mm) {
+		$lhh= 60 * $last_hh + $last_mm;
+		$chh= 60 * $hh + $mm;
+
+		if($lhh-$chh<=30) {
+			return true;
+		} else {
+			return false;
+		}
 }
 
 

@@ -10,15 +10,19 @@ $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
 $return="";
+$type="";
 
 $startdate = getvar('startdate');
 $type = getvar('type');
 if((!isset($startdate))||(empty($startdate))) {
   $startdate=date('Y')."-".date('m')."-".date('d');
+  $bmonth=date('m');
 } else if("$type" == "month") { 
   $legend_date=date('Y')."-".$startdate;
   $bmonth=$startdate;
-  $startdate=date('Y')."-".$startdate."-%";
+  $startdate=date('Y')."-".date('m')."-".date('d');
+} else {
+	$bmonth=date('m');
 }
 
 if((!isset($legend_date))||(empty($legend_date))) {
@@ -55,27 +59,46 @@ for ($month = 1; $month <= 12; $month++) {
 
 $temperature= array();
 $humidity = array();
-$axis= array();
-
-get_graph_array($temperature,"temperature/100",$startdate,$return);
-get_graph_array($humidity,"humidity/100",$startdate,$return);
 
 if("$type" != "month") {
-  get_graph_array($axis,"time_catch",$startdate,$return);
-  get_format_hours($axis);
-  $xlegend="XAXIS_LEGEND_DAY";
+	$xlegend="XAXIS_LEGEND_DAY";
+        $styear=substr($startdate, 0, 4);
+        $stmonth=substr($startdate, 5, 2)-1;
+        $stday=substr($startdate, 8, 2);
+	get_graph_array($temperature,"temperature/100",$startdate,$return);
+	get_graph_array($humidity,"humidity/100",$startdate,$return);
+	$data_temp=get_format_graph($temperature);
+	$data_humi=get_format_graph($humidity);
 } else {
-  $xlegend="XAXIS_LEGEND_MONTH";
-  $axis = array();
-  get_format_month($axis,5,$bmonth,date('Y'));
-}
+	$nb = date('t',mktime(0, 0, 0, $bmonth, 1, date('Y'))); 
+	for($i=1;$i<=$nb;$i++) {
+		if($i<10) {
+			$i="0$i";
+		}
+		$ddate=date('Y')."-$bmonth-$i";
+		get_graph_array($temperature,"temperature/100","$ddate",$return);
+		get_graph_array($humidity,"humidity/100","$ddate",$return);
+		if("$data_temp" != "" ) {
+			$data_temp="$data_temp, ".get_format_graph($temperature);
+		} else {
+			$data_temp=get_format_graph($temperature);
+		}
 
-if("$type" == "month") {
-         $startdate=date('Y')."-".date('m')."-".date('d');
-}
-
-if((!isset($bmonth))||(empty($bmonth))) {
-  $bmonth=date('m');
+		if("$data_humi" != "" ) {
+                        $data_humi="$data_humi, ".get_format_graph($humidity);
+                } else {
+                        $data_humi=get_format_graph($humidity);
+                }
+		
+		$temperature = array();
+		$humidity=array();
+	}
+	$xlegend="XAXIS_LEGEND_MONTH";
+	$axis = array();
+	get_format_month($axis,5,$bmonth,date('Y'));
+	$styear=date('Y');
+	$stmonth=$bmonth-1;
+	$stday=1;
 }
 
 $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$return);

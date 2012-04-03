@@ -8,7 +8,7 @@
 <form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post">
 <?php echo __(SELECT_DISPLAYED_DAY); ?>
 <INPUT type="hidden" name="menu" value="logs"><INPUT type="hidden" name="type" value="days">
-<input id="startdate" name="startdate" type="text" class="whitefield" size="5" value="<?php echo $startdate; ?>" onClick='scwShow(document.getElementById("startdate"),this);'>
+<input id="startdate" name="startdate" type="text" class="whitefield" size="10" value="<?php echo $startdate; ?>" onClick='scwShow(document.getElementById("startdate"),this);'>
 <INPUT type="submit" value=<?php echo __(VIEW); ?>>
 </form>
 </td>
@@ -48,12 +48,13 @@ $(function () {
     $(document).ready(function() {
         chart = new Highcharts.Chart({
             chart: {
+		backgroundColor: '#EDF2F0',
                 renderTo: 'container',
                 zoomType: 'x',
                 spacingRight: 20
             },
             title: {
-                text: <?php echo "'".__(HISTO_GRAPH)."'"; ?>,
+                text: <?php echo "'".__(HISTO_GRAPH)." (".$legend_date.")'"; ?>,
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
@@ -62,21 +63,28 @@ $(function () {
             },
             xAxis: {
                 type: 'datetime',
-                maxZoom: 14 * 24 * 3600000, // fourteen days
                 title: {
-                    text: null
+                    text: <?php echo "'".__($xlegend)."'"; ?>
                 }
             },
             yAxis: [{
                 title: {
-                    text: <?php echo "'".__(YAXIS_LEGEND)."'"; ?>
+                    text: <?php echo "'".__(YAXIS_LEGEND)."'"; ?>,
+		    style: {
+					color: <?php echo "'".$color_temperature."'"; ?>
+				}
                 },
                 min: 0.6,
+		max: 100,
                 startOnTick: false,
-                showFirstLabel: false
+                showFirstLabel: false,
             }, {
+		linkedTo: 0,
 		title: {
-                    text: <?php echo "'".__(Y2AXIS_LEGEND)."'"; ?>
+                    text: <?php echo "'".__(Y2AXIS_LEGEND)."'"; ?>,
+		    style: {
+                                        color: <?php echo "'".$color_humidity."'"; ?>
+                                }
                 },
                 min: 0,
 		max: 100,
@@ -125,41 +133,22 @@ $(function () {
             series: [{
                 type: 'area',
                 name: <?php echo "'".__(LEGEND_TEMP)."'"; ?>,
-                pointInterval: 24 * 3600 * 1000,
-                pointStart: Date.UTC(2006, 0, 01),
+                pointInterval:  1 * 60 * 1000,
+                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
 		color: <?php echo "'".$color_temperature."'"; ?>,
                 data: [
-                    0.8446, 0.8445, 0.8444, 0.8451,    0.8418, 0.8264,    0.8258, 0.8232,    0.8233, 0.8258,
-                    0.8283, 0.8278, 0.8256, 0.8292,    0.8239, 0.8239,    0.8245, 0.8265,    0.8261, 0.8269,
-                    0.8273, 0.8244, 0.8244, 0.8172,    0.8139, 0.8146,    0.8164, 0.82,    0.8269, 0.8269,
-                    0.8269, 0.8258, 0.8247, 0.8286,    0.8289, 0.8316,    0.832, 0.8333,    0.8352, 0.8357,
-                    0.8355, 0.8354, 0.8403, 0.8403,    0.8406, 0.8403,    0.8396, 0.8418,    0.8409, 0.8384,
-                    0.8386, 0.8372, 0.839, 0.84, 0.8389, 0.84, 0.8423, 0.8423, 0.8435, 0.8422,
-                    0.838, 0.8373, 0.8316, 0.8303,    0.8303, 0.8302,    0.8369, 0.84, 0.8385, 0.84,
-                    0.8401, 0.8402, 0.8381, 0.8351,    0.8314, 0.8273,    0.8213, 0.8207,    0.8207, 0.8215,
-                    0.8242, 0.8273, 0.8301, 0.8346,    0.8312, 0.8312,    0.8312, 0.8306,    0.8327, 0.8282,
-                    0.824, 0.8255, null, null, null, 0.8151, 0.8149, 0.8213, 0.8273, 0.8273,
-                    0.8261, 0.8252, 0.824, 0.8262, 0.8258, 0.8261, 0.826, 0.8199, 0.8153, 0.8097,
-                    0.8101, 0.8119, 0.8107, 0.8105,    0.8084, 0.8069,    0.8047, 0.8023,    0.7965, 0.7919]
+		    <?php echo $data_temp; ?>
+		  ]
 		}, {
 		type: 'area',
                 name: <?php echo "'".__(LEGEND_HUMI)."'"; ?>,
-                pointInterval: 24 * 3600 * 1000,
-                pointStart: Date.UTC(2006, 0, 01),
+                pointInterval: 1 * 60 * 1000,
+                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
 		color: <?php echo "'".$color_humidity."'"; ?>,
 		yAxis: 1,	
-		    data: [100.8446, 84, 84, 41,    18, 0.8264,    0.8258, 0.8232,    0.8233, 0.8258,
-                    0.8283, 1.8278, 0.8256, 0.8292,    0.8239, 0.8239,    0.8245, 0.8265,    0.8261, 0.8269,
-                    0.8273, 0.8244, 0.8244, 0.8172,    0.8139, 0.8146,    0.8164, 0.82,    0.8269, 0.8269,
-                    0.8269, 1.8258, 0.8247, 0.8286,    0.8289, 0.8316,    0.832, 0.8333,    0.8352, 0.8357,
-                    0.8355, 0.8354, 0.8403, 0.8403,    0.8406, 0.8403,    0.8396, 0.8418,    0.8409, 0.8384,
-                    0.8386, 1.8372, 0.839, 0.84, 0.8389, 0.84, 0.8423, 0.8423, 0.8435, 0.8422,
-                    0.838, 0.8373, 0.8316, 0.8303,    0.8303, 0.8302,    0.8369, 0.84, 0.8385, 0.84,
-                    0.8401, 0.8402, 0.8381, 0.8351,    0.8314, 0.8273,    0.8213, 0.8207,    0.8207, 0.8215,
-                    0.8242, 0.8273, 0.8301, 0.8346,    0.8312, 0.8312,    0.8312, 0.8306,    0.8327, 0.8282,
-                    0.824, 0.8255, 0.8256, 0.8273, 0.8209, 0.8151, 0.8149, 0.8213, 0.8273, 0.8273,
-                    0.8261, 0.8252, 0.824, 0.8262, 0.8258, 0.8261, 0.826, 0.8199, 0.8153, 0.8097,
-                    0.8101, 0.8119, 0.8107, 0.8105,    0.8084, 0.8069,    0.8047, 0.8023,    0.7965, 0.7919]
+		    data: [
+		    <?php echo $data_humi; ?>
+		    ]
 		}]
         });
     });
