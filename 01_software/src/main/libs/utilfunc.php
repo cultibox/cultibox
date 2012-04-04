@@ -142,13 +142,28 @@ function get_format_hours(&$arr) {
 	}
 }
 
-function get_format_month(&$arr,$freq,$month,$year) {
-	$nb_day=date('t',mktime(0, 0, 0, $month, 1, $year)); 
-	$nb_ech=$nb_day*(1440/$freq);
-	for($i=1;$i<$nb_ech;$i++) {
-		$val=(int)(($i/(1440/$freq))+1);
-		$arr[] = "${val}";
+function get_format_month($data) {
+	$arr = explode(" ", $data);
+	$count=0;
+	$moy=0;
+	$data_month="";
+	foreach($arr as $value) {
+		if("$value"=="null") {
+			$value=0;
+		}
+		$moy=($moy + $value)/2;
+		$count=$count+1;
+		if($count==20) {
+			if("$data_month"=="") {
+				$data_month="$moy";
+			} else {
+				$data_month="$data_month, $moy";
+			}
+			$count=0;
+			$moy=0;
+		}
 	}
+	return $data_month;
 }
 
 
@@ -187,12 +202,15 @@ function get_format_graph($arr) {
 		$last_hh=$hh;
 		$last_mm=$mm;
 	}
+	if("$last_hh:$last_mm" != "23:59") {
+		$data=fill_data("$last_hh","$last_mm","24","00","$last_value","$data");
+	}
 	return $data;
 }
 
 
 function fill_data($fhh,$fmm,$lhh,$lmm,$val,$data) {
-	while("$fhh:$fmm" != "$lhh:$lmm") {
+	while(strcmp("$fhh:$fmm","$lhh:$lmm")<0) {
 		if("$data" == "") {
 			$data="$val";
 		} else {
@@ -203,7 +221,7 @@ function fill_data($fhh,$fmm,$lhh,$lmm,$val,$data) {
 			$fmm="0$fmm";
 		}
 		
-		if("$fmm"=="60") {
+		if("$fmm" == "60") {
 			$fmm="00";
 			$fhh=$fhh+1;
 			if($fhh<10) {
