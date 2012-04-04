@@ -133,7 +133,7 @@ $(function () {
             series: [{
                 type: 'area',
                 name: <?php echo "'".__(LEGEND_TEMP)."'"; ?>,
-                pointInterval:  1 * 60 * 1000,
+                pointInterval:  <?php echo $next; ?> * 60 * 1000,
                 pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
 		color: <?php echo "'".$color_temperature."'"; ?>,
                 data: [
@@ -142,7 +142,7 @@ $(function () {
 		}, {
 		type: 'area',
                 name: <?php echo "'".__(LEGEND_HUMI)."'"; ?>,
-                pointInterval: 1 * 60 * 1000,
+                pointInterval: <?php echo $next; ?> * 60 * 1000,
                 pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
 		color: <?php echo "'".$color_humidity."'"; ?>,
 		yAxis: 1,	

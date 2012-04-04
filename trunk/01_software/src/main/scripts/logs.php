@@ -69,6 +69,7 @@ if("$type" != "month") {
 	get_graph_array($humidity,"humidity/100",$startdate,$return);
 	$data_temp=get_format_graph($temperature);
 	$data_humi=get_format_graph($humidity);
+	$next=1;
 } else {
 	$nb = date('t',mktime(0, 0, 0, $bmonth, 1, date('Y'))); 
 	for($i=1;$i<=$nb;$i++) {
@@ -93,12 +94,13 @@ if("$type" != "month") {
 		$temperature = array();
 		$humidity=array();
 	}
+	$data_temp=get_format_month($data_temp);
+	$data_humi=get_format_month($data_humi);
 	$xlegend="XAXIS_LEGEND_MONTH";
-	$axis = array();
-	get_format_month($axis,5,$bmonth,date('Y'));
 	$styear=date('Y');
 	$stmonth=$bmonth-1;
 	$stday=1;
+	$next=20;
 }
 
 $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$return);
