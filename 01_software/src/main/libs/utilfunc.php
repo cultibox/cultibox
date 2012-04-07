@@ -44,6 +44,7 @@ function __() {
         $ret = call_user_func_array('sprintf', $args);
         return $ret;
 }
+//}}}
 
 
 // {{{ getvar()
@@ -80,8 +81,11 @@ function getvar($varname) {
 }
 // }}}
 
-
-function check_empty_string($value) {
+// {{{ check_empty_string($value)
+// ROLE check is a string is empty or only composed with CR
+// IN $value	string to check
+// RET false if the string is empty, true else
+function check_empty_string($value="") {
 	$value=str_replace(' ','',$value);
 	$value=str_replace(CHR(13).CHR(10),'',$value); 
 	
@@ -90,10 +94,15 @@ function check_empty_string($value) {
 	} else {
 		return 1;
 	}
-
-
 }
+//}}}
 
+
+// {{{ get_log_value($file,&$array_line)
+// ROLE get log's values from files and clean it
+// IN $file		file to explode
+//    $array_line	array to store log's values
+// RET none
 function get_log_value($file,&$array_line) {
 	$handle = fopen("$file", 'r');
 	$index=0;
@@ -124,24 +133,24 @@ function get_log_value($file,&$array_line) {
 		}
 	}
 }
+//}}}
 
 
-
+// {{{ clean_log_file($file)
+// ROLE copy an empty file to clean a log file
+// IN $file             file to clean
+// RET none
 function clean_log_file($file) {
 	$filetpl = 'main/templates/data/empty_file.tpl';
 	copy($filetpl, $file);
 }
+//}}}
 
-function get_format_hours(&$arr) {
-	$nb_element=count($arr);
-	for($nb=0; $nb <= $nb_element ; $nb++)
-	{
-		$hours=substr($arr[$nb], 0, 2);
-		$minutes=substr($arr[$nb], 2, 2);
-		$arr[$nb]="${hours}:${minutes}";
-	}
-}
 
+// {{{ get_format_month($data)
+// ROLE using a graphics data string containing value to make an average for month graphics
+// IN $data	datas from a graphics containing values for a month
+// RET return datas string value containing an average of the input fiel data
 function get_format_month($data) {
 	$arr = explode(" ", $data);
 	$count=0;
@@ -151,7 +160,7 @@ function get_format_month($data) {
 		if("$value"=="null") {
 			$value=0;
 		}
-		$moy=($moy + $value)/2;
+		$moy=round(($moy + $value)/2,2);
 		$count=$count+1;
 		if($count==20) {
 			if("$data_month"=="") {
@@ -165,24 +174,39 @@ function get_format_month($data) {
 	}
 	return $data_month;
 }
+//}}}
 
 
-
+// {{{ get_current_lang()
+// ROLE get the current language selected for the interface
+// IN none
+// RET current lang using the l10n format, ex: en-GB with joomla format is replaced by en_GB
 function get_current_lang() {
 	$lang =& JFactory::getLanguage();
 	return str_replace("-","_",$lang->getTag());
 }
+//}}}
 
 
+// {{{ set_current_lang()
+// ROLE set the Joomla language for the interface
+// IN $lang	lang to set using the l10n format (ex: en_GB)
+// RET true
 function set_lang($lang) {
 	$lang=str_replace("_","-",$lang);
 	$language =& JFactory::getLanguage();
 	$language->setLanguage("${lang}");
 	$language->load();
+
+	//FIXME check error
 	return true;
 }
 
 
+// {{{ get_format_graph($arr)
+// ROLE get datas for the highcharts graphics
+// IN $arr	array containing datas
+// RET $data	data at the highcharts format (a string)
 function get_format_graph($arr) {
 	$data="";
 	foreach($arr as $value) {
@@ -192,10 +216,10 @@ function get_format_graph($arr) {
 		if(("$hh:$mm" != "00:00")&&(empty($data))&&(empty($last_value))) {
 			$data=fill_data("00","00","$hh","$mm","null","$data");
 		} else if((check_empty_record("$last_hh","$last_mm","$hh","$mm"))&&("$hh:$mm" != "00:00")) {
-			$data = fill_data("$last_hh","$last_mm","$hh","$mm","$last_value","$data");
+			$data=fill_data("$last_hh","$last_mm","$hh","$mm","$last_value","$data");
 		} else {
 			if("$hh:$mm" != "00:00") {
-				$data = fill_data("$last_hh","$last_mm","$hh","$mm","null","$data");
+				$data=fill_data("$last_hh","$last_mm","$hh","$mm","null","$data");
 			}
 		}
 		$last_value="$value[record]";
@@ -207,8 +231,18 @@ function get_format_graph($arr) {
 	}
 	return $data;
 }
+//}}}
 
 
+// {{{ fill_data($fhh,$fmm,$lhh,$lmm,$val,$data)
+// ROLE fill highcharts data,between two time spaces, using a specific value
+// IN $fhh	start hours
+//    $fmm	start minutes
+//    $lhh	end hours
+//    $lmm	end minutes
+//    $val	value used to fill time spaces
+//    $data	data at the highcharts format (a string)
+// RET none
 function fill_data($fhh,$fmm,$lhh,$lmm,$val,$data) {
 	while(strcmp("$fhh:$fmm","$lhh:$lmm")<0) {
 		if("$data" == "") {
@@ -231,8 +265,18 @@ function fill_data($fhh,$fmm,$lhh,$lmm,$val,$data) {
 	}
 	return $data;
 }
+//}}}
 
 
+
+// {{{ check_empty_record($last_hh,$last_mm,$hh,$mm)
+// ROLE check if there is an empty record. An empty reccord is defined is the time spaces
+// between two values is greatan than 30minutes
+// IN $last_hh	last record hours
+//    $last_mm	last record minutes
+//    $hh	first record hours
+//    $mm	first record minutes
+// RET true is there isn't an empty record, false else.
 function check_empty_record($last_hh,$last_mm,$hh,$mm) {
 		$lhh= 60 * $last_hh + $last_mm;
 		$chh= 60 * $hh + $mm;
@@ -243,6 +287,42 @@ function check_empty_record($last_hh,$last_mm,$hh,$mm) {
 			return false;
 		}
 }
+//}}}
 
 
+// {{{ check_format_date($date,$type)
+// ROLE check date format (month with the format MM ou complete date: YYYY-MM-DD)
+// IN $date	date to check
+//    $type	the type: month or days
+// RET true is the format match the type, false else
+function check_format_date($date="",$type,&$return="") {
+	if("$type"=="days") {
+		if(strlen("$date")!=10) {
+			return 0;
+		}
+
+	//	if(!preg_match('#^([0-9]{4})-\([0-9{2})-\([0-9]{2})$`$', $date)) {
+         //               return 0;
+          //      }
+
+		return 1;
+	}
+
+	if("$type" == "month") {
+		if(strlen("$date")!=2) {
+			return 0;
+		}
+
+	//	if(!preg_match('#^([0-9]{2})', $date)) {
+	//		return 0;
+	//	}
+
+		if(($date < 1)||($date > 12)) {
+			return 0;
+		}
+		return 1;
+	}
+	return 0;
+}
+//}}}
 ?>

@@ -2,7 +2,7 @@
 <p id="title_conf">
 	<?php echo __(USER_CONF); ?>:
 </p>
-<form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post" name="configform">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
 <table class="tablemain">
 <tr>
         <td>
@@ -30,10 +30,35 @@
 		<select name="color_humidity">
 		<?php
 		foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
-			if("${value}" == "${color_humidity}") {
-				echo "<option value=\"${value}\" selected>${value}</option>";
-			} else {
-				echo "<option value=\"${value}\">${value}</option>";	
+			switch ($value) {
+				case 'blue':
+					if("${value}" == "${color_humidity}") {
+						echo "<option value=\"${value}\" selected>".__(COLOR_BLUE)."</option>";
+					} else {
+						echo "<option value=\"${value}\">".__(COLOR_BLUE)."</option>";    
+                        		}
+					break;
+				case 'red':
+					if("${value}" == "${color_humidity}") {
+						echo "<option value=\"${value}\" selected>".__(COLOR_RED)."</option>";
+					} else {
+						echo "<option value=\"${value}\">".__(COLOR_RED)."</option>";    
+					}
+					break;
+    				case 'green':
+					if("${value}" == "${color_humidity}") {
+						echo "<option value=\"${value}\" selected>".__(COLOR_GREEN)."</option>";
+					} else {
+						echo "<option value=\"${value}\">".__(COLOR_GREEN)."</option>";    
+					}
+					break;
+				case 'black':
+					if("${value}" == "${color_humidity}") {
+						echo "<option value=\"${value}\" selected>".__(COLOR_BLACK)."</option>";
+					} else {
+						echo "<option value=\"${value}\">".__(COLOR_BLACK)."</option>";    
+					}
+					break;
 			}
 		}
 		?>
@@ -48,12 +73,37 @@
 	<select name="color_temperature">
 	<?php
 		foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
-			if(!strcmp ("$value","$color_temperature")) {
-				echo "<option value=\"${value}\" selected>${value}</option>";
-			} else {
-				echo "<option value=\"${value}\">${value}</option>";
-			}
-		}
+			switch ($value) {
+                                case 'blue':
+                                        if("${value}" == "${color_temperature}") {
+                                                echo "<option value=\"${value}\" selected>".__(COLOR_BLUE)."</option>";
+                                        } else {
+                                                echo "<option value=\"${value}\">".__(COLOR_BLUE)."</option>";    
+                                        }
+                                        break;
+                                case 'red':
+                                        if("${value}" == "${color_temperature}") {
+                                                echo "<option value=\"${value}\" selected>".__(COLOR_RED)."</option>";
+                                        } else {
+                                                echo "<option value=\"${value}\">".__(COLOR_RED)."</option>";    
+                                        }
+                                        break;
+                                case 'green':
+                                        if("${value}" == "${color_temperature}") {
+                                                echo "<option value=\"${value}\" selected>".__(COLOR_GREEN)."</option>";
+                                        } else {
+                                                echo "<option value=\"${value}\">".__(COLOR_GREEN)."</option>";    
+                                        }
+                                        break;
+                                case 'black':
+                                        if("${value}" == "${color_temperature}") {
+                                                echo "<option value=\"${value}\" selected>".__(COLOR_BLACK)."</option>";
+                                        } else {
+                                                echo "<option value=\"${value}\">".__(COLOR_BLACK)."</option>";    
+                                        }
+                                        break;
+                        }
+                }
 	?>
 	</select>
 </td>
@@ -84,7 +134,7 @@
 </tr>
 <tr>
 <td>
-	<?php echo __(CONFIGURE_PLUG); ?>
+	<?php echo __(CONFIGURE_NB_PLUGS); ?>
 </td>
 <td>
 	<select name="nb_plugs">
@@ -108,10 +158,15 @@
 	<select name="update_frequency">
 		<?php
 		foreach($GLOBALS['LIST_UPDATE_FREQUENCY'] as $value) {
-			if(!strcmp ("$value","$update_frequency")) {
-				echo "<option value=\"${value}\" selected>${value}</option>";
+			if(strcmp ("$value","-1")==0) { 
+				$val=__('ALWAYS_RECORD');
 			} else {
-				echo "<option value=\"${value}\">${value}</option>";
+				$val=$value;	
+			}
+			if(!strcmp ("$value","$update_frequency")) {
+				echo "<option value=\"${value}\" selected>${val}</option>";
+			} else {
+				echo "<option value=\"${value}\">${val}</option>";
 			}
 		}
 		?>
@@ -126,4 +181,8 @@
 </p>
 	<INPUT type="hidden" name="menu" value="configuration">
 </form>
+</div>
+
+<div id="error">
+	<?php echo $return; ?>
 </div>

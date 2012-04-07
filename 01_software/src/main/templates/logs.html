@@ -2,41 +2,39 @@
 <table class="tablemain">
 <tr>
 <td>
-<table>
-<tr>
-<td>
-<form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post">
-<?php echo __(SELECT_DISPLAYED_DAY); ?>
-<INPUT type="hidden" name="menu" value="logs"><INPUT type="hidden" name="type" value="days">
-<input id="startdate" name="startdate" type="text" class="whitefield" size="10" value="<?php echo $startdate; ?>" onClick='scwShow(document.getElementById("startdate"),this);'>
-<INPUT type="submit" value=<?php echo __(VIEW); ?>>
-</form>
-</td>
-</tr>
-<tr>
-<td>
-<form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post">
-<?php echo __(SELECT_DISPLAYED_MONTH); ?>
- <INPUT type="hidden" name="menu" value="logs"><INPUT type="hidden" name="type" value="month">
-<select name="startdate">
-                <option <?php if("$bmonth" == "1") { echo 'selected';} ?> value="01"><?php echo __(MONTH01); ?></option>
-                <option <?php if("$bmonth" == "2") { echo 'selected';} ?> value="02"><?php echo __(MONTH02); ?></option>
-                <option <?php if("$bmonth" == "3") { echo 'selected';} ?> value="03"><?php echo __(MONTH03); ?></option>
-                <option <?php if("$bmonth" == "4") { echo 'selected';} ?> value="04"><?php echo __(MONTH04); ?></option>
-                <option <?php if("$bmonth" == "5") { echo 'selected';} ?> value="05"><?php echo __(MONTH05); ?></option>
-                <option <?php if("$bmonth" == "6") { echo 'selected';} ?> value="06"><?php echo __(MONTH06); ?></option>
-                <option <?php if("$bmonth" == "7") { echo 'selected';} ?> value="07"><?php echo __(MONTH07); ?></option>
-                <option <?php if("$bmonth" == "8") { echo 'selected';} ?> value="08"><?php echo __(MONTH08); ?></option>
-                <option <?php if("$bmonth" == "9") { echo 'selected';} ?> value="09"><?php echo __(MONTH09); ?></option>
-                <option <?php if("$bmonth" == "10") { echo 'selected';} ?> value="10"><?php echo __(MONTH10); ?></option>
-                <option <?php if("$bmonth" == "11") { echo 'selected';} ?> value="11"><?php echo __(MONTH11); ?></option>
-                <option <?php if("$bmonth" == "12") { echo 'selected';} ?> value="12"><?php echo __(MONTH12); ?></option>
-</select>
-<INPUT type="submit" value=<?php echo __(VIEW); ?>>
-</form>
-</td>
-</tr>
-</table>
+	<table>
+	<tr>
+	<td>
+		<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+			<?php echo __(SELECT_DISPLAYED_DAY); ?>
+			<input id="startday" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>" onClick='scwShow(document.getElementById("startday"),this);'>
+			<INPUT type="submit" value=<?php echo __(VIEW); ?>>
+		</form>
+	</td>
+	</tr>
+	<tr>
+	<td>
+		<form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post">
+			<?php echo __(SELECT_DISPLAYED_MONTH); ?>
+			<select name="startmonth">
+                		<option <?php if("$startmonth" == "1") { echo 'selected';} ?> value="01"><?php echo __(MONTH01); ?></option>
+                		<option <?php if("$startmonth" == "2") { echo 'selected';} ?> value="02"><?php echo __(MONTH02); ?></option>
+                		<option <?php if("$startmonth" == "3") { echo 'selected';} ?> value="03"><?php echo __(MONTH03); ?></option>
+                		<option <?php if("$startmonth" == "4") { echo 'selected';} ?> value="04"><?php echo __(MONTH04); ?></option>
+                		<option <?php if("$startmonth" == "5") { echo 'selected';} ?> value="05"><?php echo __(MONTH05); ?></option>
+                		<option <?php if("$startmonth" == "6") { echo 'selected';} ?> value="06"><?php echo __(MONTH06); ?></option>
+                		<option <?php if("$startmonth" == "7") { echo 'selected';} ?> value="07"><?php echo __(MONTH07); ?></option>
+                		<option <?php if("$startmonth" == "8") { echo 'selected';} ?> value="08"><?php echo __(MONTH08); ?></option>
+                		<option <?php if("$startmonth" == "9") { echo 'selected';} ?> value="09"><?php echo __(MONTH09); ?></option>
+                		<option <?php if("$startmonth" == "10") { echo 'selected';} ?> value="10"><?php echo __(MONTH10); ?></option>
+                		<option <?php if("$startmonth" == "11") { echo 'selected';} ?> value="11"><?php echo __(MONTH11); ?></option>
+                		<option <?php if("$startmonth" == "12") { echo 'selected';} ?> value="12"><?php echo __(MONTH12); ?></option>
+			</select>
+			<INPUT type="submit" value=<?php echo __(VIEW); ?>>
+		</form>
+	</td>
+	</tr>
+	</table>
 </td>
 </tr>
 </table>
@@ -157,3 +155,8 @@ $(function () {
 </script>
 
 <div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+
+<div id="error">
+        <?php echo $return; ?>
+</div>
+
