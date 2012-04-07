@@ -6,7 +6,7 @@
 // Default language
 define('LANG_FALLBACK', 'en_GB');
 
-// List of available languages
+// List of available languages (l10N format)
 $GLOBALS['LIST_LANG'] = array('en_GB','fr_FR');
 
 // Relative path to logs and programs data

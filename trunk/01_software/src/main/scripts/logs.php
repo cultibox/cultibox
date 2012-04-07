@@ -27,6 +27,8 @@ if((!isset($startday))||(empty($startday))) {
 } else {
 	$type = "days";
 }
+$startday=str_replace(' ','',"$startday");
+
 
 if((!isset($startmonth))||(empty($startmonth))) {
         $startmonth=date('m');
@@ -41,8 +43,10 @@ if((!isset($type))||(empty($type))){
 
 if("$type"=="days") {
 	$legend_date=$startday;
+	$check_format=check_format_date($startday,$type,$return);
 } else {
 	$legend_date=date('Y')."-".$startmonth;	
+	$check_format=check_format_date($startmonth,$type,$return);
 }
 
 
@@ -72,8 +76,9 @@ for ($month = 1; $month <= 12; $month++) {
   }
 }
 
+
 if("$type" == "days") {
-	if(check_format_date($startday,$type,$return)) {
+	if($check_format) {
 		$xlegend="XAXIS_LEGEND_DAY";
         	$styear=substr($startday, 0, 4);
         	$stmonth=substr($startday, 5, 2);
@@ -94,9 +99,9 @@ if("$type" == "days") {
 			$return=$return.__('EMPTY_HUMIDITY_DATA');
 		}
 		$next=1;
-	}
+	} 
 } else {
-	if(check_format_date($startmonth,$type,$return)) {
+	if($check_format) {
 		$nb = date('t',mktime(0, 0, 0, $startmonth, 1, date('Y'))); 
 		for($i=1;$i<=$nb;$i++) {
 			if($i<10) {

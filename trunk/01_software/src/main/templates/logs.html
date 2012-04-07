@@ -40,6 +40,7 @@
 </table>
 </div>
 
+<?php if($check_format) { ?>
 <script type="text/javascript">
 $(function () {
     var chart;
@@ -155,6 +156,8 @@ $(function () {
 </script>
 
 <div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+
+<?php } ?>
 
 <div id="error">
         <?php echo $return; ?>
