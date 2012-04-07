@@ -1,5 +1,10 @@
 <?php
 
+if (!isset($_SESSION)) {
+	session_start();
+}
+
+
 require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
@@ -11,27 +16,37 @@ __('LANG');
 
 $return="";
 $type="";
+$temperature= array();
+$humidity = array();
 
-$startdate = getvar('startdate');
-$type = getvar('type');
-if((!isset($startdate))||(empty($startdate))) {
-  $startdate=date('Y')."-".date('m')."-".date('d');
-  $bmonth=date('m');
-} else if("$type" == "month") { 
-  $legend_date=date('Y')."-".$startdate;
-  $bmonth=$startdate;
-  $startdate=date('Y')."-".date('m')."-".date('d');
+$startday = getvar('startday');
+$startmonth=getvar('startmonth');
+
+if((!isset($startday))||(empty($startday))) {
+	$startday=date('Y')."-".date('m')."-".date('d');
 } else {
-	$bmonth=date('m');
+	$type = "days";
 }
 
-if((!isset($legend_date))||(empty($legend_date))) {
-  $legend_date=$startdate;
+if((!isset($startmonth))||(empty($startmonth))) {
+        $startmonth=date('m');
+} else {
+        $type = "month";
 }
 
-// load logs
+if((!isset($type))||(empty($type))){
+	$type="days";
+}
+
+
+if("$type"=="days") {
+	$legend_date=$startday;
+} else {
+	$legend_date=date('Y')."-".$startmonth;	
+}
+
+
 $log = array();
-$return = "";
 for ($month = 1; $month <= 12; $month++) {
   for ($day = 1; $day <= 31; $day++) {
     if($day<10) {
@@ -57,55 +72,67 @@ for ($month = 1; $month <= 12; $month++) {
   }
 }
 
-$temperature= array();
-$humidity = array();
+if("$type" == "days") {
+	if(check_format_date($startday,$type,$return)) {
+		$xlegend="XAXIS_LEGEND_DAY";
+        	$styear=substr($startday, 0, 4);
+        	$stmonth=substr($startday, 5, 2);
+        	$stday=substr($startday, 8, 2);
 
-if("$type" != "month") {
-	$xlegend="XAXIS_LEGEND_DAY";
-        $styear=substr($startdate, 0, 4);
-        $stmonth=substr($startdate, 5, 2)-1;
-        $stday=substr($startdate, 8, 2);
-	get_graph_array($temperature,"temperature/100",$startdate,$return);
-	get_graph_array($humidity,"humidity/100",$startdate,$return);
-	$data_temp=get_format_graph($temperature);
-	$data_humi=get_format_graph($humidity);
-	$next=1;
-} else {
-	$nb = date('t',mktime(0, 0, 0, $bmonth, 1, date('Y'))); 
-	for($i=1;$i<=$nb;$i++) {
-		if($i<10) {
-			$i="0$i";
-		}
-		$ddate=date('Y')."-$bmonth-$i";
-		get_graph_array($temperature,"temperature/100","$ddate",$return);
-		get_graph_array($humidity,"humidity/100","$ddate",$return);
-		if("$data_temp" != "" ) {
-			$data_temp="$data_temp, ".get_format_graph($temperature);
-		} else {
+		get_graph_array($temperature,"temperature/100",$startday,$return);
+		get_graph_array($humidity,"humidity/100",$startday,$return);
+
+		if(!empty($temperature)) {
 			$data_temp=get_format_graph($temperature);
+		} else {
+			$return=$return.__('EMPTY_TEMPERATURE_DATA');
 		}
 
-		if("$data_humi" != "" ) {
-                        $data_humi="$data_humi, ".get_format_graph($humidity);
-                } else {
-                        $data_humi=get_format_graph($humidity);
-                }
-		
-		$temperature = array();
-		$humidity=array();
+		if(!empty($humidity)) {
+			$data_humi=get_format_graph($humidity);
+		} else {
+			$return=$return.__('EMPTY_HUMIDITY_DATA');
+		}
+		$next=1;
 	}
-	$data_temp=get_format_month($data_temp);
-	$data_humi=get_format_month($data_humi);
-	$xlegend="XAXIS_LEGEND_MONTH";
-	$styear=date('Y');
-	$stmonth=$bmonth-1;
-	$stday=1;
-	$next=20;
+} else {
+	if(check_format_date($startmonth,$type,$return)) {
+		$nb = date('t',mktime(0, 0, 0, $startmonth, 1, date('Y'))); 
+		for($i=1;$i<=$nb;$i++) {
+			if($i<10) {
+				$i="0$i";
+			}
+			$ddate=date('Y')."-$startmonth-$i";
+			get_graph_array($temperature,"temperature/100","$ddate",$return);
+			get_graph_array($humidity,"humidity/100","$ddate",$return);
+			if("$data_temp" != "" ) {
+				$data_temp="$data_temp, ".get_format_graph($temperature);
+			} else {
+				$data_temp=get_format_graph($temperature);
+			}
+
+			if("$data_humi" != "" ) {
+                        	$data_humi="$data_humi, ".get_format_graph($humidity);
+                	} else {
+                        	$data_humi=get_format_graph($humidity);
+                	}
+			$temperature = array();
+			$humidity=array();
+		}
+		$data_temp=get_format_month($data_temp);
+		$data_humi=get_format_month($data_humi);
+		$xlegend="XAXIS_LEGEND_MONTH";
+		$styear=date('Y');
+		$stmonth=$startmonth-1;
+		$stday=1;
+		$next=20;
+	} 
 }
 
 $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$return);
 $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$return);
 
 include('main/templates/logs.html');
+
 
 ?>

@@ -1,7 +1,8 @@
 <?php
 
-
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
 
 require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
@@ -15,7 +16,6 @@ $nb_plugs=getvar('nb_plugs');
 $lang=getvar('lang');
 $update_conf="false";
 $return="";
-$var = array();
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$return);
@@ -64,8 +64,6 @@ if(!empty($update_frequency)) {
 } else {
 	$update_frequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$return);
 }
-
-
 
 include('main/templates/configuration.html');
 
