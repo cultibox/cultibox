@@ -12,11 +12,22 @@
                 <select name="lang">
                 <?php
                 foreach($GLOBALS['LIST_LANG'] as $value) {
-                        if("${value}" == $_SESSION['LANG']) {
-                                echo "<option value=\"${value}\" selected>${value}</option>";
-                        } else {
-                                echo "<option value=\"${value}\">${value}</option>";
-                        }
+			switch ($value) {
+				case 'fr_FR':
+                        		if("${value}" == $_SESSION['LANG']) {
+                                		echo "<option value=\"${value}\" selected>".__(LANG_FR)."</option>";
+                        		} else {
+                                		echo "<option value=\"${value}\">".__(LANG_FR)."</option>";
+                        		}
+					break;
+				case 'en_GB':
+					if("${value}" == $_SESSION['LANG']) {
+                                                echo "<option value=\"${value}\" selected>".__(LANG_EN)."</option>";
+                                        } else {
+                                                echo "<option value=\"${value}\">".__(LANG_EN)."</option>";
+                                        }
+                                        break;
+			}
                 }
                 ?>
                 </select>

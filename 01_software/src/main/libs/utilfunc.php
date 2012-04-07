@@ -296,28 +296,33 @@ function check_empty_record($last_hh,$last_mm,$hh,$mm) {
 //    $type	the type: month or days
 // RET true is the format match the type, false else
 function check_format_date($date="",$type,&$return="") {
+	$date=str_replace(' ','',"$date");
 	if("$type"=="days") {
 		if(strlen("$date")!=10) {
+			$return=$return.__('ERROR_FORMAT_DATE_DAY');
 			return 0;
 		}
 
-	//	if(!preg_match('#^([0-9]{4})-\([0-9{2})-\([0-9]{2})$`$', $date)) {
-         //               return 0;
-          //      }
-
+		if(!preg_match('#^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$#', $date)) {
+			$return=$return.__('ERROR_FORMAT_DATE_DAY');
+                        return 0;
+                }
 		return 1;
 	}
 
 	if("$type" == "month") {
 		if(strlen("$date")!=2) {
+			$return=$return.__('ERROR_FORMAT_DATE_MONTH');
 			return 0;
 		}
 
-	//	if(!preg_match('#^([0-9]{2})', $date)) {
-	//		return 0;
-	//	}
+		if(!preg_match('#^[0-9][0-9]$#', $date)) {
+			$return=$return.__('ERROR_FORMAT_DATE_MONTH');
+			return 0;
+		}
 
 		if(($date < 1)||($date > 12)) {
+			$return=$return.__('ERROR_FORMAT_DATE_MONTH');
 			return 0;
 		}
 		return 1;
