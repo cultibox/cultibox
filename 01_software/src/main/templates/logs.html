@@ -70,7 +70,7 @@ $(function () {
                 title: {
                     text: <?php echo "'".__(YAXIS_LEGEND)."'"; ?>,
 		    style: {
-					color: <?php echo "'".$color_temperature."'"; ?>
+					color: <?php echo "'".$color_humidity."'"; ?>
 				}
                 },
                 min: 0.6,
@@ -82,7 +82,7 @@ $(function () {
 		title: {
                     text: <?php echo "'".__(Y2AXIS_LEGEND)."'"; ?>,
 		    style: {
-                                        color: <?php echo "'".$color_humidity."'"; ?>
+                                        color: <?php echo "'".$color_temperature."'"; ?>
                                 }
                 },
                 min: 0,
@@ -131,22 +131,22 @@ $(function () {
     
             series: [{
                 type: 'area',
-                name: <?php echo "'".__(LEGEND_TEMP)."'"; ?>,
+                name: <?php echo "'".__(LEGEND_HUMI)."'"; ?>,
                 pointInterval:  <?php echo $next; ?> * 60 * 1000,
                 pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-		color: <?php echo "'".$color_temperature."'"; ?>,
+		color: <?php echo "'".$color_humidity."'"; ?>,
                 data: [
-		    <?php echo $data_temp; ?>
+		    <?php echo $data_humi; ?>
 		  ]
 		}, {
 		type: 'area',
-                name: <?php echo "'".__(LEGEND_HUMI)."'"; ?>,
+                name: <?php echo "'".__(LEGEND_TEMP)."'"; ?>,
                 pointInterval: <?php echo $next; ?> * 60 * 1000,
                 pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-		color: <?php echo "'".$color_humidity."'"; ?>,
+		color: <?php echo "'".$color_temperature."'"; ?>,
 		yAxis: 1,	
 		    data: [
-		    <?php echo $data_humi; ?>
+		    <?php echo $data_temp; ?>
 		    ]
 		}]
         });

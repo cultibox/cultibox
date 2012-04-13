@@ -19,6 +19,7 @@
 		<option value="lampe"></option>
 		<option value="ventilateur"></option>
 		<option value="chauffage"></option>
+		<option value="humidite"></option>
 	</select>
 </td>
 </tr>
@@ -27,7 +28,7 @@
 	<?php echo __('NAME_PLUG').":"; ?>
 </td>
 <td>
-<input type="text" name="plug_name<?php echo $i; ?>" value="<?php echo $plug_name{$i}; ?>">
+<input type="text" size="20" maxlength="20" name="plug_name<?php echo $i; ?>" value="<?php echo $plug_name{$i}; ?>">
 </td>
 
 </tr>
@@ -36,7 +37,7 @@
         <?php echo __('TOLERANCE_PLUG').":"; ?>
 </td>
 <td>
-<input type="text" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>">
+<input type="text" size="4" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>">
 </td>
 
 </tr>
