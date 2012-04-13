@@ -330,4 +330,21 @@ function check_format_date($date="",$type,&$return="") {
 	return 0;
 }
 //}}}
+
+
+// {{{ check_numeric_value($value)
+// ROLE check if a value is numeric or not
+// IN $value	value to check
+// RET true is $value is numeric, false else
+function check_numeric_value($value="") {
+	if((empty($value))||(!isset($value))) {
+		return false;
+	}
+
+	if(!is_numeric($value)) {
+		return false;
+	}
+	return true;
+}
+//}}}
 ?>

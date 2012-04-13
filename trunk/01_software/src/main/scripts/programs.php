@@ -25,6 +25,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 	if((!empty($name))&&(isset($name))) {
 		insert_plug_conf("PLUG_NAME",$nb,$name,$return);
 	}
+	
 
 	if((!empty($type))&&(isset($type))) {
 		insert_plug_conf("PLUG_TYPE",$nb,$type,$return);
@@ -37,15 +38,8 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 	$plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$return);
 	$plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$return);
 	$plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$return);
-
-
 }
 
-
-
 include('main/templates/programs.html');
-
-
-
 
 ?>

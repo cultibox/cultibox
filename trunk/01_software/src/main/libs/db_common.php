@@ -194,7 +194,6 @@ UPDATE `plugs` SET  {$key} = "{$value}" WHERE id = {$id}
 EOF;
         $db->setQuery($sql);
         $db->query();
-	$res = $db->loadResult();
 	$ret=$db->getErrorMsg();
 	if((isset($ret))&&(!empty($ret))) {
 		$out=$out.__('ERROR_UPDATE_SQL').$ret;
