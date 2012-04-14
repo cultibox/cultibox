@@ -9,9 +9,6 @@ define('LANG_FALLBACK', 'en_GB');
 // List of available languages (l10N format)
 $GLOBALS['LIST_LANG'] = array('en_GB','fr_FR');
 
-// Relative path to logs and programs data
-$GLOBALS['DATE_DIR_PATH'] = 'main/data';
-
 // List of available colors for graphics
 $GLOBALS['LIST_GRAPHIC_COLOR'] = array('blue','red', 'green', 'black');
 

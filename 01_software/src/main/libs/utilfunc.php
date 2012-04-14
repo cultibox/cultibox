@@ -347,4 +347,63 @@ function check_numeric_value($value="") {
 	return true;
 }
 //}}}
+
+
+// {{{ get_sd_card()
+// ROLE get the sd card place to record configuration
+// IN	none 
+// RET false if nothing is found, the sd card place else
+function get_sd_card() {
+	//For Linux
+	$dir="/media";
+	if(is_dir($dir)) {
+		$rep = opendir($dir); 
+		while ($f = readdir($rep)) {
+   			if(is_dir("$dir/$f")) {
+				if(check_cultibox_card("$dir/$f")) {
+					return "$dir/$f";
+				}
+   			}
+		}
+	} else {
+		//For Mac
+		$dir="/Volumes";
+		if(is_dir($dir)) {
+			$rep = opendir($dir);
+			while ($f = readdir($rep)) {
+                        	if(is_dir("$dir/$f")) {
+                                	if(check_cultibox_card("$dir/$f")) {
+                                        	return "$dir/$f";
+                                	}
+                        	}
+                	}
+		} else {
+			//For windows
+			$dir=array("a:","b:","c:","d:","e:","f:","g:","h:","i:","j:","k:","l:","m:","n:","o:","p:","q:","r:","s:","t:","u:","v:","w:","x:","y:","z");
+			foreach($dir as $disque) {
+				if(is_dir("$disque")) {
+					if(check_cultibox_card("$disque")) {
+                                                return "$disque";
+					}
+                        	}
+			}
+		}
+	}
+	return false;
+}
+// }}}
+
+
+// {{{ check_cultibox_card()
+// ROLE check if the directory is a cultibox directory to write configuration
+// IN	directory to check
+// RET true if it's a cultibox directory, false else
+function check_cultibox_card($dir="") {
+	if((is_dir("$dir/logs"))&&(is_file("$dir/plugv"))&&(is_file("$dir/pluga"))) {
+		return true;
+	} else {
+		return false;
+	}
+}
+// }}}
 ?>

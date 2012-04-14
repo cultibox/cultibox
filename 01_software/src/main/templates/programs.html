@@ -1,3 +1,11 @@
+<div id="info">
+        <?php echo $info; ?>
+</div>
+
+<div id="error">
+        <?php echo $return; ?>
+</div>
+
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
 <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
 <table>
