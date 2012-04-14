@@ -15,12 +15,24 @@ $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
 $return="";
+$info="";
 $type="";
 $temperature= array();
 $humidity = array();
 
+if((!isset($sd_card))||(empty($sd_card))) {
+        $sd_card=get_sd_card();
+}
+if((!isset($sd_card))||(empty($sd_card))) {
+        $return=$return.__('ERROR_SD_CARD_LOGS');
+} else {
+        $info=$info.__('INFO_SD_CARD').": $sd_card";
+}
+
+
 $startday = getvar('startday');
 $startmonth=getvar('startmonth');
+$load_log=false;
 
 if((!isset($startday))||(empty($startday))) {
 	$startday=date('Y')."-".date('m')."-".date('d');
@@ -41,39 +53,45 @@ if((!isset($type))||(empty($type))){
 }
 
 
-if("$type"=="days") {
-	$legend_date=$startday;
-	$check_format=check_format_date($startday,$type,$return);
-} else {
-	$legend_date=date('Y')."-".$startmonth;	
-	$check_format=check_format_date($startmonth,$type,$return);
+$log = array();
+if((isset($sd_card))||(!empty($sd_card))) {
+	for ($month = 1; $month <= 12; $month++) {
+  		for ($day = 1; $day <= 31; $day++) {
+    			if($day<10) {
+      				$dday="0".$day;
+    			} else {
+      				$dday=$day;
+    			}
+    			if($month<10) {
+         			$mmonth="0".$month;
+      			} else {
+      				$mmonth=$month;
+    			}
+      			// Search if file exists
+      			if(file_exists("$sd_card/logs/$mmonth/$dday")) {
+       				// get log value
+       				get_log_value("$sd_card/logs/$mmonth/$dday",$log);
+       				if(!empty($log)) {
+            				db_update_logs($log,$return);
+            				unset($log) ;
+            				$log = array();
+	    				$load_log=true;
+         			}
+      			}
+  		}
+	}
 }
 
+if(($load_log)&&(empty($return))) {
+	$info=$info.__('VALID_LOAD_LOG');
+} 
 
-$log = array();
-for ($month = 1; $month <= 12; $month++) {
-  for ($day = 1; $day <= 31; $day++) {
-    if($day<10) {
-      $dday="0".$day;
-    } else {
-      $dday=$day;
-    }
-    if($month<10) {
-         $mmonth="0".$month;
-      } else {
-      $mmonth=$month;
-    }
-      // Search if file exists
-      if(file_exists($GLOBALS['DATE_DIR_PATH']."/logs/$mmonth/$dday")) {
-       // get log value
-       get_log_value($GLOBALS['DATE_DIR_PATH']."/logs/$mmonth/$dday",$log);
-       if(!empty($log)) {
-            db_update_logs($log,$return);
-            unset($log) ;
-            $log = array();
-         }
-      }
-  }
+if("$type"=="days") {
+        $legend_date=$startday;
+        $check_format=check_format_date($startday,$type,$return);
+} else {
+        $legend_date=date('Y')."-".$startmonth;
+        $check_format=check_format_date($startmonth,$type,$return);
 }
 
 
