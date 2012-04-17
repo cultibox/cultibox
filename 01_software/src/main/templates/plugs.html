@@ -1,0 +1,57 @@
+<div id="info">
+        <?php echo $info; ?>
+</div>
+
+<div id="error">
+        <?php echo $return; ?>
+</div>
+
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+<table>
+<tr>
+<td>
+	<?php echo __('PLUG')." $i:"; ?>	
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td>
+	<?php echo __('TYPE_PLUG').":"; ?>
+</td>
+<td>
+	<select name="plug_type<?php echo $i; ?>">
+              <option value="unknown"></option>
+		<option value="lampe"></option>
+		<option value="ventilateur"></option>
+		<option value="chauffage"></option>
+		<option value="humidite"></option>
+	</select>
+</td>
+</tr>
+<tr>
+<td>
+	<?php echo __('NAME_PLUG').":"; ?>
+</td>
+<td>
+<input type="text" size="20" maxlength="20" name="plug_name<?php echo $i; ?>" value="<?php echo $plug_name{$i}; ?>">
+</td>
+
+</tr>
+<tr>
+<td>
+        <?php echo __('TOLERANCE_PLUG').":"; ?>
+</td>
+<td>
+<input type="text" size="4" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>">
+</td>
+
+</tr>
+</table>
+<br /><br />
+
+<?php } ?>
+<INPUT type="submit" value=<?php echo __(VALIDATION_CONF); ?>>
+

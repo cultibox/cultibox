@@ -17,7 +17,13 @@ __('LANG');
 $return="";
 $info="";
 $nb_plugs=get_configuration("NB_PLUGS",$return);
-$update_program=false;
+$selected_plug=getvar('plug_id');
+$plugs_infos=get_plugs_names($nb_plugs,$return);
+$start_time=getvar('start_time');
+$end_time=getvar('end_time');
+$value_program=getvar('value_program');
+
+
 
 if((!isset($sd_card))||(empty($sd_card))) {
 	$sd_card=get_sd_card();
@@ -28,35 +34,17 @@ if((!isset($sd_card))||(empty($sd_card))) {
 	$info=$info.__('INFO_SD_CARD').": $sd_card";
 }
 
-for($nb=1;$nb<=$nb_plugs;$nb++) {
-	$name=getvar("plug_name${nb}");
-	$type=getvar("plug_type${nb}");
-	$tolerance=getvar("plug_tolerance{$nb}");
-
-	if((!empty($name))&&(isset($name))) {
-		insert_plug_conf("PLUG_NAME",$nb,$name,$return);
-		$update_program=true;
+if(!empty($selected_plug)&&(isset($selected_plug))) { 
+        if(("$start_time"!="")||("$end_time"!="")) {
+		if(check_times($start_time,$end_time,$return)) {
+			if((!empty($value_program))&&(isset($value_program))) {
+				insert_program($selected_plug,$start_time,$end_time,$value_program,$return);
+			}
+		}
 	}
-	
-
-	if((!empty($type))&&(isset($type))) {
-		insert_plug_conf("PLUG_TYPE",$nb,$type,$return);
-		$update_program=true;
-        }
-
-	if((!empty($tolerance))&&(isset($tolerance))) {
-		insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$return);
-		$update_program=true;
-        }
-
-	$plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$return);
-	$plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$return);
-	$plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$return);
-
-}
-
-if(($update_program)&&(empty($return))) {
-        $info=$info.__('VALID_UPDATE_PROGRAM');
+        $data_plug=get_data_plug($selected_plug,$return);
+	$data=format_program_highchart_data($data_plug);
+	echo $data;
 }
 
 
