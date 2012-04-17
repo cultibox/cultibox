@@ -205,4 +205,91 @@ EOF;
 }
 // }}}
 
+
+// {{{ get_plugs_names($nb,$out)
+// ROLE get plugs informations (name and id)
+// IN $id      id of the plug
+//    $out      errors or warnings messages
+// RET return an array containing plugid and its name
+function get_plugs_names($nb=0,$out="") {
+        $db = db_priv_start();
+        $sql = <<<EOF
+SELECT `id` , `PLUG_NAME`
+FROM `plugs`
+WHERE id <= {$nb}
+ORDER by id ASC
+EOF;
+        $db->setQuery($sql);
+        $db->query();
+	$res = $db->loadAssocList();
+        $ret=$db->getErrorMsg();
+        if((isset($ret))&&(!empty($ret))) {
+                $out=$out.__('ERROR_SELECT_SQL').$ret;
+        }
+
+        if(!db_priv_end($db)) {
+                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+        }
+        return $res;
+}
+// }}}
+
+
+// {{{ get_data_plug($id,$out)
+// ROLE get a specific plug program
+// IN $selected_plug	plug id to select
+//    $out      errors or warnings messages
+// RET plug data formated for highchart
+function get_data_plug($selected_plug="",$out="") {
+	if((isset($selected_plug))&&(!empty($selected_plug))) {
+		$db = db_priv_start();
+		$sql = <<<EOF
+SELECT  `time_start`,`time_stop`,`value` FROM `programs` WHERE plug_id = {$selected_plug} ORDER by time_start ASC
+EOF;
+        	$db->setQuery($sql);
+        	$db->query();
+        	$res=$db->loadAssocList();
+		$ret=$db->getErrorMsg();
+        	if((isset($ret))&&(!empty($ret))) {
+                	$out=$out.__('ERROR_SELECT_SQL').$ret;
+			return 0;
+        	}
+
+        	if(!db_priv_end($db)) {
+                	$out=$out.__('PROBLEM_CLOSING_CONNECTION');
+			return 0;	
+        	}
+	}
+	return $res;
+}
+// }}}
+
+
+// ROLE insert a program into the database
+// IN $plug_id		id of the plug
+//    $start_time	start time for the program
+//    $end_time		end time for the program
+//    $value		value of the program
+//    $out		error or warning message
+// RET none
+function insert_program($plug_id,$start_time,$end_time,$value,$out) {
+	$start_time=str_replace(':','',"$start_time");
+	$end_time=str_replace(':','',"$end_time");
+	$db = db_priv_start();
+	$sql = <<<EOF
+INSERT INTO `programs`(`plug_id`,`time_start`,`time_stop`, `value`) VALUES('{$plug_id}',"{$start_time}","{$end_time}",'{$value}')
+EOF;
+        $db->setQuery($sql);
+        $db->query();
+        $ret=$db->getErrorMsg();
+        if((isset($ret))&&(!empty($ret))) {
+                $out=$out.__('ERROR_UPDATE_SQL').$ret;
+        }
+        if(!db_priv_end($db)) {
+                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+        }
+}
+// }}}
+
+
 ?>

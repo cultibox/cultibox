@@ -9,7 +9,12 @@
 static $__translations;
 static $__translations_fallback;
 static $string_lang;
-require_once 'main/libs/l10n.php';
+
+if(is_file("main/libs/l10n.php")) {
+	require_once 'main/libs/l10n.php';
+} else {
+	require_once '../libs/l10n.php';
+}
 
 function __() {
         global $__translations;
@@ -203,6 +208,9 @@ function set_lang($lang) {
 }
 
 
+// }}}
+
+
 // {{{ get_format_graph($arr)
 // ROLE get datas for the highcharts graphics
 // IN $arr	array containing datas
@@ -295,16 +303,16 @@ function check_empty_record($last_hh,$last_mm,$hh,$mm) {
 // IN $date	date to check
 //    $type	the type: month or days
 // RET true is the format match the type, false else
-function check_format_date($date="",$type,&$return="") {
+function check_format_date($date="",$type,&$out="") {
 	$date=str_replace(' ','',"$date");
 	if("$type"=="days") {
 		if(strlen("$date")!=10) {
-			$return=$return.__('ERROR_FORMAT_DATE_DAY');
+			$out=$out.__('ERROR_FORMAT_DATE_DAY');
 			return 0;
 		}
 
 		if(!preg_match('#^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$#', $date)) {
-			$return=$return.__('ERROR_FORMAT_DATE_DAY');
+			$out=$out.__('ERROR_FORMAT_DATE_DAY');
                         return 0;
                 }
 		return 1;
@@ -312,17 +320,17 @@ function check_format_date($date="",$type,&$return="") {
 
 	if("$type" == "month") {
 		if(strlen("$date")!=2) {
-			$return=$return.__('ERROR_FORMAT_DATE_MONTH');
+			$out=$out.__('ERROR_FORMAT_DATE_MONTH');
 			return 0;
 		}
 
 		if(!preg_match('#^[0-9][0-9]$#', $date)) {
-			$return=$return.__('ERROR_FORMAT_DATE_MONTH');
+			$out=$out.__('ERROR_FORMAT_DATE_MONTH');
 			return 0;
 		}
 
 		if(($date < 1)||($date > 12)) {
-			$return=$return.__('ERROR_FORMAT_DATE_MONTH');
+			$out=$out.__('ERROR_FORMAT_DATE_MONTH');
 			return 0;
 		}
 		return 1;
@@ -379,7 +387,7 @@ function get_sd_card() {
                 	}
 		} else {
 			//For windows
-			$dir=array("a:","b:","c:","d:","e:","f:","g:","h:","i:","j:","k:","l:","m:","n:","o:","p:","q:","r:","s:","t:","u:","v:","w:","x:","y:","z");
+			$dir=array("c:","d:","e:","f:","g:","h:","i:","j:","k:","l:","m:","n:","o:","p:","q:","r:","s:","t:","u:","v:","w:","x:","y:","z");
 			foreach($dir as $disque) {
 				if(is_dir("$disque")) {
 					if(check_cultibox_card("$disque")) {
@@ -406,4 +414,101 @@ function check_cultibox_card($dir="") {
 	}
 }
 // }}}
+
+
+// {{{ check_cultibox_card()
+// ROLE check times send by user to reccord a plug behaviour
+// IN	$start_time	time starting the event
+//	$end_time	time ending the event
+//	$out		string for error or warning messages
+// RET true if ok, false else
+function check_times($start_time="",$end_time="",&$out="") {
+	if((!empty($start_time))&&(isset($start_time))&&(!empty($end_time))&&(isset($end_time))) {
+		$start_time=str_replace(' ','',"$start_time");
+		if(strlen("$start_time")!=8) {
+			$out=$out.__('ERROR_FORMAT_TIME');
+			return 0;
+		}
+
+		if(!preg_match('#^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$#', $start_time)) {
+			$out=$out.__('ERROR_FORMAT_TIME');
+			echo 2;
+			return 0;
+		}
+
+		$end_time=str_replace(' ','',"$end_time");
+		if(strlen("$end_time")!=8) {
+			$out=$out.__('ERROR_FORMAT_TIME');
+			echo 3;
+			return 0;
+		}
+
+		if(!preg_match('#^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$#', $end_time)) {
+			$out=$out.__('ERROR_FORMAT_TIME');
+			return 0;
+		}
+
+		$sth=substr($start_time, 0, 2);
+		$stm=substr($start_time, 3, 2);
+		$sts=substr($start_time, 6, 2);
+
+		$enh=substr($end_time, 0, 2);
+		$enm=substr($end_time, 3, 2);
+		$ens=substr($end_time, 6, 2);
+	
+		$start_time= mktime($sth, $stm, $sts);
+		$end_time= mktime($enh, $enm, $ens);
+
+		if($start_time >= $end_time) {
+			$out=$out.__('ERROR_WRONG_TIME_VALUE');
+                        return 0;
+		}	
+
+		return 1;			
+	}
+	$out=$out.__('ERROR_MISSING_VALUE_TIME');
+	return 0;
+}
+// }}}
+
+
+
+// {{{ format_program_highchart_data()
+// ROLE format data to be used by highchart for the programs part
+// IN   $arr	an array containing datas
+// RET data for highchart and cultibox programs
+function format_program_highchart_data($arr) {
+	$data="";
+	date_default_timezone_set('UTC');
+	if(count($arr)>0) {
+		foreach($arr as $value) {
+			if((empty($data))) {
+				$first=mktime(0,0,0,1,1,1970)*1000;
+				$data="[".$first.",0]";
+			}
+			if(!empty($data)) {
+					$shh=substr($value[time_start],0,2);
+					$smm=substr($value[time_start],2,2);
+					$sss=substr($value[time_start],4,2);
+					$val_start=mktime($shh,$smm,$sss,1,1,1970)*1000;
+					$ehh=substr($value[time_stop],0,2);
+                                        $emm=substr($value[time_stop],2,2);
+                                        $ess=substr($value[time_stop],4,2);
+                                        $val_end=mktime($ehh,$emm,$ess,1,1,1970)*1000;
+					$data=$data.",[".$val_start.",1],[".$val_end.",1]";
+
+			}
+			$last_val=$value;
+/bin/bash: q : commande introuvable
+	} else {
+		$first=mktime(0,0,0,1,1,1970)*1000;
+		$last=mktime(0,0,0,1,2,1970)*1000;
+		$data="[".$first.",0],[".$last.",0]";
+	}
+	echo $data;
+	return $data;
+}
+// }}}
+
+
 ?>

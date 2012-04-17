@@ -117,6 +117,7 @@ if("$type" == "days") {
 			$return=$return.__('EMPTY_HUMIDITY_DATA');
 		}
 		$next=1;
+		echo "$data_humi";
 	} 
 } else {
 	if($check_format) {
