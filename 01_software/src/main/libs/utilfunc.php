@@ -499,7 +499,6 @@ function format_program_highchart_data($arr) {
 
 			}
 			$last_val=$value;
-/bin/bash: q : commande introuvable
 	} else {
 		$first=mktime(0,0,0,1,1,1970)*1000;
 		$last=mktime(0,0,0,1,2,1970)*1000;
