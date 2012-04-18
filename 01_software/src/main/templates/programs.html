@@ -61,7 +61,8 @@ $(document).ready(function() {
 	chart = new Highcharts.Chart({
 		chart: {
 			renderTo: 'container',
-			type: 'spline'
+			type: 'spline',
+	                zoomType: 'x'
 		},
 		title: {
 			text: <?php echo "'".__(CURRENT_PLUG_PROGRAM)."'"; ?>
@@ -78,17 +79,31 @@ $(document).ready(function() {
 		},
 		yAxis: {
 			min: -1,
-			max: 2
+			max: 2,
+        		labels: {
+            			formatter: function() {
+					if(this.value==0) return '<?php echo __(VALUE_OFF); ?>';
+					if(this.value==1) return '<?php echo __(VALUE_ON); ?>';
+            			}
+        		},
+			title: false
 		},
+            	credits: {
+                        enabled: false
+                },
 		tooltip: {
 			formatter: function() {
-					return '<b>'+ this.series.name +'</b><br/>'+
-					Highcharts.dateFormat('%H:%M:%S', this.x) +': '+ this.y +' m';
+					if(this.y == 1) {
+						return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __(VALUE_ON); ?></b></p>';
+					} else {
+						return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __(VALUE_OFF); ?></b></p>';
+
+					}
 			}
 		},
 		
 		series: [{
-			name: 'Winter 2007-2008',
+			name: <?php echo "'".__(BEHAVIOUR_PLUG_PROGRAM_TITLE)."',"; ?>
 			// Define the data points. All series have a dummy year
 			// of 1970/71 in order to be compared on the same x axis. Note
 			// that in JavaScript, months start at 0 for January, 1 for February etc.

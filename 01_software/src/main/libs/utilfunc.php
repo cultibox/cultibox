@@ -432,14 +432,12 @@ function check_times($start_time="",$end_time="",&$out="") {
 
 		if(!preg_match('#^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$#', $start_time)) {
 			$out=$out.__('ERROR_FORMAT_TIME');
-			echo 2;
 			return 0;
 		}
 
 		$end_time=str_replace(' ','',"$end_time");
 		if(strlen("$end_time")!=8) {
 			$out=$out.__('ERROR_FORMAT_TIME');
-			echo 3;
 			return 0;
 		}
 
@@ -482,11 +480,12 @@ function format_program_highchart_data($arr) {
 	date_default_timezone_set('UTC');
 	if(count($arr)>0) {
 		foreach($arr as $value) {
-			if((empty($data))) {
+			if((empty($data))&&(strcmp($value[time_start],"000000")!=0)) {
 				$first=mktime(0,0,0,1,1,1970)*1000;
 				$data="[".$first.",0]";
 			}
-			if(!empty($data)) {
+
+			if((!empty($data))&&($value[value]!=0)) {
 					$shh=substr($value[time_start],0,2);
 					$smm=substr($value[time_start],2,2);
 					$sss=substr($value[time_start],4,2);
@@ -495,16 +494,20 @@ function format_program_highchart_data($arr) {
                                         $emm=substr($value[time_stop],2,2);
                                         $ess=substr($value[time_stop],4,2);
                                         $val_end=mktime($ehh,$emm,$ess,1,1,1970)*1000;
-					$data=$data.",[".$val_start.",1],[".$val_end.",1]";
-
+					$data=$data.",[".$val_start.",0],[".$val_start.",1],[".$val_end.",1],[".$val_end.",0]";
 			}
 			$last_val=$value;
+		}
+			if((!empty($data))&&(strcmp($last_value[time_stop],"240000")!=0)&&(strcmp($last_value[time_stop],"235959")!=0)) {
+					$last=mktime(0,0,0,1,2,1970)*1000;
+					$data=$data.",[".$last.",0]";
+			}
 	} else {
 		$first=mktime(0,0,0,1,1,1970)*1000;
 		$last=mktime(0,0,0,1,2,1970)*1000;
 		$data="[".$first.",0],[".$last.",0]";
 	}
-	echo $data;
+	
 	return $data;
 }
 // }}}

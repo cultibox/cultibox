@@ -265,16 +265,125 @@ EOF;
 // }}}
 
 
-// ROLE insert a program into the database
+// ROLE check and create new plug program
 // IN $plug_id		id of the plug
 //    $start_time	start time for the program
 //    $end_time		end time for the program
 //    $value		value of the program
 //    $out		error or warning message
 // RET none
-function insert_program($plug_id,$start_time,$end_time,$value,$out) {
+function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
+	$data_plug=get_data_plug($plug_id);
+	asort($data_plug);
 	$start_time=str_replace(':','',"$start_time");
 	$end_time=str_replace(':','',"$end_time");
+	$tmp=array();
+	$current= array(
+		"time_start" => "$start_time",
+                "time_stop" => "$end_time",
+                "value" => "$value"
+	);
+	$first= array(
+		"time_start" => "000000",
+		"time_stop" => "000000",
+		"value" => "0"
+	);
+
+	$data_plug[] = array(
+		"time_start" => "240000",
+                "time_stop" => "240000",
+                "value" => "0"
+	);
+	$continue=true;
+
+	clean_program($plug_id,$out);
+	if(count($data_plug)>1) {
+		foreach($data_plug as $data) {	
+			if((empty($last))||(!isset($last))) {
+				$last = $data;
+			} 
+			
+			if($continue) {
+				$continue=compare_data_program($first,$last,$current,$tmp);
+			} else {
+				$continue=true;
+			}
+			$first=$last;
+			unset($last);
+		}
+
+
+		//$tmp=purge_program($tmp);
+		foreach($tmp as $new_val) {
+			insert_program_value($plug_id,$new_val[time_start],$new_val[time_stop],$new_val[value],$out);	
+		}
+	} else {
+		if($value!=0) {
+			insert_program_value($plug_id,$start_time,$end_time,$value,$out);
+		}
+	}
+}
+// }}}
+
+function compare_data_program($first,$last,$current,&$tmp) {
+	if(($current[time_start]>=$first[time_start])&&($current[time_stop]<=$last[time_stop])) {
+		// Si l'éxchantillon est dans l'interval à modifier
+		if(($current[time_start]>$first[time_stop])&&($current[time_stop]<$last[time_stop])) {
+				//s'il n'y a rien à modifier on ajoute la valeur	
+				$tmp[]=$first;
+				$tmp[]=$current;
+				echo 1;
+				return true;
+		} else if($current[time_stop]<=$first[time_stop]) {
+			//si l'echantillon est dans le premier interval
+				if($current[value]==0) {
+					if(($current[time_start]!=$first[time_start])&&($current[time_stop]!=$first[time_stop])) {
+						//s'il est vraiment dans l'interval et qu'il n'englobe pas tout l'interval
+						$save_stop=$first[time_stop];
+						$first[time_stop]=$current[time_start];
+						$new= array(
+							    "time_start" => "$current[time_stop]",
+					                    "time_stop" => "$save_stop",
+                   					    "value" => "1"
+						);
+						$tmp[]=$first;
+						$tmp[]=$new;
+						echo 2;
+						return true;
+					} else if(($current[time_start]==$first[time_start])&&($current[time_stop]==$first[time_stop])) {
+						//S'il englobe tout l'interval
+						echo 3;
+						return true;
+					}
+				}
+		} else if(($current[time_start]==$first[time_stop])&&($current[time_stop]==$last[time_start])) {
+			//si l'echantillon est pile entre les deux interval
+			if($current[value]==1) {
+				echo pourrrruuyo;
+				$first[time_stop]=$last[time_stop];
+				$tmp[]=$first;
+				return false;
+			}
+		}
+	} else {
+		if($first[value]!=0) {
+			$tmp[]=$first;
+		}
+		return true;
+		echo 4;
+	}
+}
+
+
+// {{{
+// ROLE insert a program into the database
+// IN $plug_id          id of the plug
+//    $start_time       start time for the program
+//    $end_time         end time for the program
+//    $value            value of the program
+//    $out              error or warning message
+// RET none
+function insert_program_value($plug_id,$start_time,$end_time,$value,&$out) {
 	$db = db_priv_start();
 	$sql = <<<EOF
 INSERT INTO `programs`(`plug_id`,`time_start`,`time_stop`, `value`) VALUES('{$plug_id}',"{$start_time}","{$end_time}",'{$value}')
@@ -291,5 +400,64 @@ EOF;
 }
 // }}}
 
+
+// {{{
+// ROLE clean ap rogram int othe database
+// IN $plug_id          id of the plug
+//    $out		error or warning message
+// RET none
+
+function clean_program($plug_id,&$out) {
+	$db = db_priv_start();
+        $sql = <<<EOF
+DELETE FROM `programs` WHERE plug_id = {$plug_id}
+EOF;
+	$db->setQuery($sql);
+        $db->query();
+        $ret=$db->getErrorMsg();
+        if((isset($ret))&&(!empty($ret))) {
+                $out=$out.__('ERROR_UPDATE_SQL').$ret;
+        }
+        if(!db_priv_end($db)) {
+                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+        }
+}
+// }}}}
+
+
+// {{{
+function purge_program($arr) {
+	$tmp=array();
+	asort($arr);
+	if(count($arr)>1) {
+		foreach($arr as $val) {
+			if(($val[value]!=0)&&($val[time_start]!=$val[time_stop])) {
+			if((empty($first))||(!isset($first))) {
+				$first = $val;
+			} else {
+			//	echo "time: $first[time_stop]==$val[time_start])&&($first[value]==$val[value]";
+				if(($first[time_stop]==$val[time_start])&&($first[value]==$val[value])) {
+					$tmp_arr = array(
+						"time_start" => $first[time_start],
+						"time_stop" => $val[time_stop],
+					 	"value" => $val[value]
+					);
+					$tmp[]=$tmp_arr;
+					$first=$tmp_arr;
+					echo orut12;
+				} else {
+					$tmp[]=$first;
+					$first=$val;
+				}
+			}
+		}
+	    }
+	} else {
+		$tmp=$arr;
+	}
+	$tmp[] = $first;
+	return $tmp;
+}
+// }}}}
 
 ?>

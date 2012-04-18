@@ -38,13 +38,14 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
         if(("$start_time"!="")||("$end_time"!="")) {
 		if(check_times($start_time,$end_time,$return)) {
 			if((!empty($value_program))&&(isset($value_program))) {
+				if("$value_program"=="on") $value_program="1";
+				if("$value_program"=="off") $value_program="0";
 				insert_program($selected_plug,$start_time,$end_time,$value_program,$return);
 			}
 		}
 	}
         $data_plug=get_data_plug($selected_plug,$return);
 	$data=format_program_highchart_data($data_plug);
-	echo $data;
 }
 
 
