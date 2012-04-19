@@ -265,6 +265,7 @@ EOF;
 // }}}
 
 
+// {{{ insert_program($plug_id,$start_time,$end_time,$value,&$out)
 // ROLE check and create new plug program
 // IN $plug_id		id of the plug
 //    $start_time	start time for the program
@@ -313,9 +314,11 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 		}
 
 
-		//$tmp=purge_program($tmp);
-		foreach($tmp as $new_val) {
-			insert_program_value($plug_id,$new_val[time_start],$new_val[time_stop],$new_val[value],$out);	
+		$tmp=purge_program($tmp);
+		if(count($tmp)>0) {
+			foreach($tmp as $new_val) {
+				insert_program_value($plug_id,$new_val[time_start],$new_val[time_stop],$new_val[value],$out);	
+			}
 		}
 	} else {
 		if($value!=0) {
@@ -325,14 +328,25 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 }
 // }}}
 
+
+// {{{ compare_data_program($first,$last,$current,&$tmp)
+// ROLE compare and format 3 values of the pgroram graph
+// IN $first		first value to compare
+//    $last		last value to compare
+//    $current		current value submitted by user to be added
+//    $tmp		array to save datas
+// RET false if the function has treated the $last value and we have to skip it in the next call of the function, true else.
 function compare_data_program($first,$last,$current,&$tmp) {
 	if(($current[time_start]>=$first[time_start])&&($current[time_stop]<=$last[time_stop])) {
 		// Si l'éxchantillon est dans l'interval à modifier
 		if(($current[time_start]>$first[time_stop])&&($current[time_stop]<$last[time_stop])) {
 				//s'il n'y a rien à modifier on ajoute la valeur	
-				$tmp[]=$first;
-				$tmp[]=$current;
-				echo 1;
+				if($first[value]!=0) {
+					$tmp[]=$first;
+				}
+				if($current[value]!=0) {
+					$tmp[]=$current;
+				}
 				return true;
 		} else if($current[time_stop]<=$first[time_stop]) {
 			//si l'echantillon est dans le premier interval
@@ -348,34 +362,92 @@ function compare_data_program($first,$last,$current,&$tmp) {
 						);
 						$tmp[]=$first;
 						$tmp[]=$new;
-						echo 2;
 						return true;
 					} else if(($current[time_start]==$first[time_start])&&($current[time_stop]==$first[time_stop])) {
 						//S'il englobe tout l'interval
-						echo 3;
 						return true;
-					}
+					} 
 				}
 		} else if(($current[time_start]==$first[time_stop])&&($current[time_stop]==$last[time_start])) {
 			//si l'echantillon est pile entre les deux interval
 			if($current[value]==1) {
-				echo pourrrruuyo;
 				$first[time_stop]=$last[time_stop];
 				$tmp[]=$first;
 				return false;
 			}
+			return true;
+		} else if(($current[time_stop]<$last[time_start])&&($current[time_start]>=$first[time_start])&&($current[time_start]<$first[time_stop])) {
+			//si l'echantillon est dans le premier interval et qu'il en sort mais s'arrete avant le second
+			if($current[value]==0) {
+				$first[time_stop]=$current[time_start];
+				$tmp[]=$first;
+				return true;
+			} else {
+				$first[time_stop]=$current[time_stop];
+				$tmp[]=$first;
+				return true;
+			}
+                } else if($current[time_stop]>$last[time_start]) {
+			//si l'echantillon déborde sur le dernier interval
+			if($current[time_stop]<=$last[time_stop]) {
+				//mais qu'il ne touche pas d'autre interval
+				if($current[value]==0) {
+					//s'il est dans le premier, entre les deux et sur le deuxieme interval:
+					if(($current[time_start]==$first[time_start])&&($current[time_stop]==$last[time_stop])) {
+						return false;
+					} else if(($current[time_start]>$first[time_start])&&($current[time_start]<=$first[time_stop])) {
+						//suppression du deuxieme interval
+						if($current[time_stop]==$last[time_stop]) {
+							$first[time_stop] = $current[time_start];
+							$tmp[] = $first;
+							return false;
+						} else {
+							$first[time_stop] = $current[time_start];
+							$last[time_start] = $current[time_stop];
+							$tmp[]=$first;
+							$tmp[]=$last;
+							return false;
+						}
+					} else if($current[time_start]>$first[time_stop]) {
+						if($current[time_stop]==$last[time_stop]) {
+							$tmp[]=$first;
+							return false;	
+						} else {
+							$last[time_start]=$current[time_start];
+							$tmp[]=$first;
+							$tmp[]=$last;
+							return false;	
+						}
+					
+					}
+					//return true;
+				} else {
+					if(($current[time_start]>=$first[time_start])&&($current[time_start]<=$first[time_stop])) {	
+						$first[time_stop]=$last[time_stop];
+						$tmp[]=$first;
+						return false;
+					} else if(($current[time_start]>$first[time_stop])) {
+						$tmp[]=$first;
+						$last[time_start]=$current[time_start];
+						$tmp[]=$last;		
+						return false;
+					}	
+
+				}
+			} 
 		}
+		return true;
 	} else {
 		if($first[value]!=0) {
 			$tmp[]=$first;
 		}
 		return true;
-		echo 4;
 	}
 }
+//}}}
 
 
-// {{{
+// {{{ insert_program_value($plug_id,$start_time,$end_time,$value,&$out)
 // ROLE insert a program into the database
 // IN $plug_id          id of the plug
 //    $start_time       start time for the program
@@ -401,12 +473,11 @@ EOF;
 // }}}
 
 
-// {{{
-// ROLE clean ap rogram int othe database
+// {{{ clean_program($plug_id,&$out)
+// ROLE clean program table
 // IN $plug_id          id of the plug
 //    $out		error or warning message
 // RET none
-
 function clean_program($plug_id,&$out) {
 	$db = db_priv_start();
         $sql = <<<EOF
@@ -425,38 +496,26 @@ EOF;
 // }}}}
 
 
-// {{{
+// {{{ purge_program($arr)
+// ROLE purge and check program 
+// IN $arr	array containing value of the program
+// RET the array purged
 function purge_program($arr) {
 	$tmp=array();
 	asort($arr);
-	if(count($arr)>1) {
+	if(count($arr)>0) {
 		foreach($arr as $val) {
 			if(($val[value]!=0)&&($val[time_start]!=$val[time_stop])) {
-			if((empty($first))||(!isset($first))) {
-				$first = $val;
-			} else {
-			//	echo "time: $first[time_stop]==$val[time_start])&&($first[value]==$val[value]";
-				if(($first[time_stop]==$val[time_start])&&($first[value]==$val[value])) {
 					$tmp_arr = array(
-						"time_start" => $first[time_start],
+						"time_start" => $val[time_start],
 						"time_stop" => $val[time_stop],
 					 	"value" => $val[value]
 					);
 					$tmp[]=$tmp_arr;
-					$first=$tmp_arr;
-					echo orut12;
-				} else {
-					$tmp[]=$first;
-					$first=$val;
-				}
-			}
-		}
-	    }
-	} else {
-		$tmp=$arr;
-	}
-	$tmp[] = $first;
+	    		}
+		} 
 	return $tmp;
+	}
 }
 // }}}}
 
