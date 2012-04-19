@@ -350,21 +350,20 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 //    $tmp		array to save datas
 // RET false if the function has treated the $last value and we have to skip it in the next call of the function, true else.
 function compare_data_program($first,$last,&$current,&$tmp) {
-	if(($current[time_start]>=$first[time_start])&&($current[time_stop]>$last[time_stop])&&($current[time_start]<=$last[time_stop])) {
-		echo eeeeeeeeeeeeest;
+	if(($current[time_start]>=$first[time_start])&&($current[time_stop]>$last[time_stop])&&($current[time_start]<=$last[time_stop])&&($current[time_start]<=$last[time_start])) {
 		//si l'echantillon est dans l'interval mais qu'il deborde
 		$new_current= array (
 			"time_start" => "$current[time_start]",
 			"time_stop" => "$last[time_stop]",
 			"value" => "$current|value]"
-		);	
+		);
 		$ret = compare_data_program($first,$last,$new_current,$tmp);
 		$current[time_start] = $last[time_stop];
-		return $ret;	
+		return true;
 	} else if(($current[time_start]>=$first[time_start])&&($current[time_stop]<=$last[time_stop])) {
 		// Si l'éxchantillon est dans l'interval à modifier
 		if(($current[time_start]>$first[time_stop])&&($current[time_stop]<$last[time_stop])) {
-				//s'il n'y a rien à modifier on ajoute la valeur	
+				//s'il n'y a rien à modifier on ajoute la valeur
 				if($first[value]!=0) {
 					$tmp[]=$first;
 				}
