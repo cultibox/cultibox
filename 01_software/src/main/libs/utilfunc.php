@@ -489,7 +489,11 @@ function format_program_highchart_data($arr) {
                                 $emm=substr($value[time_stop],2,2);
                                 $ess=substr($value[time_stop],4,2);
                                 $val_end=mktime($ehh,$emm,$ess,1,1,1970)*1000;
-                                $data="[".$val_start.",1],[".$val_end.",1],[".$val_end.",0]";
+				if(strcmp("$value[time_stop]","235959")==0) {
+                                	$data="[".$val_start.",1],[".$val_end.",1]";
+				} else {
+					$data="[".$val_start.",1],[".$val_end.",1],[".$val_end.",0]";
+				}
 			}
 
 			if((!empty($data))&&($value[value]!=0)&&(strcmp($value[time_start],"000000")!=0)) {
