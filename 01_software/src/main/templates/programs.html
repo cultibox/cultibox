@@ -1,6 +1,16 @@
+<div id="info">
+        <?php echo $info; ?>
+</div>
+
+<div id="error">
+        <?php echo $return; ?>
+</div>
+
+<?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+
 <script type="text/javascript">
 $(document).ready(function(){
-$('#start_time').timepicker({
+$('#start_time<?php echo $i; ?>').timepicker({
 timeOnlyTitle: '<?php echo __(TIMEPICKER_SELECT_TIME); ?>',
 showSecond: true,
 timeFormat: 'hh:mm:ss',
@@ -10,7 +20,7 @@ minuteText: '<?php echo __(TIMEPICKER_MINUTE); ?>',
 secondText: '<?php echo __(TIMEPICKER_SECOND); ?>',
 currentText: '<?php echo __(TIMEPICKER_NOW); ?>'
 });
-$('#end_time').timepicker({
+$('#end_time<?php echo $i; ?>').timepicker({
 timeOnlyTitle: '<?php echo __(TIMEPICKER_SELECT_TIME); ?>',
 showSecond: true,
 timeFormat: 'hh:mm:ss',
@@ -24,48 +34,17 @@ currentText: '<?php echo __(TIMEPICKER_NOW); ?>'
 </script>
 
 
-<div id="info">
-        <?php echo $info; ?>
-</div>
-
-<div id="error">
-        <?php echo $return; ?>
-</div>
-
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
-<table>
-<tr>
-<td>
-	<?php echo __('SELECT_PLUG_PROGRAM'); ?>
-</td>
-<td>
-	 <select name="plug_id">
-		<?php foreach($plugs_infos as $plug) { ?>
-              		<option value="<?php echo $plug[id]; ?>" <?php if("$selected_plug"=="$plug[id]") echo "selected";?>><?php echo $plug[PLUG_NAME]; ?></option>
-		<?php } ?>
-        </select>
-</td>
-<td>
-<INPUT type="submit" value=<?php echo __(PROGRAM_CONF); ?>>
-</td>
-</tr>
-</table>
-</form>
-
-
-<?php if(!empty($selected_plug)&&(isset($selected_plug))) { ?>
-
 <script type="text/javascript">
 var chart;
 $(document).ready(function() {
 	chart = new Highcharts.Chart({
 		chart: {
-			renderTo: 'container',
+			renderTo: 'container<?php echo $i;?>',
 			type: 'spline',
 	                zoomType: 'x'
 		},
 		title: {
-			text: <?php echo "'".__(CURRENT_PLUG_PROGRAM)."'"; ?>
+			text: <?php echo "'".__(CURRENT_PLUG_PROGRAM)." ".$i."'"; ?>
 		},
 		xAxis: {
 			type: 'datetime',
@@ -104,11 +83,9 @@ $(document).ready(function() {
 		
 		series: [{
 			name: <?php echo "'".__(BEHAVIOUR_PLUG_PROGRAM_TITLE)."',"; ?>
-			// Define the data points. All series have a dummy year
-			// of 1970/71 in order to be compared on the same x axis. Note
-			// that in JavaScript, months start at 0 for January, 1 for February etc.
+			color: <?php echo "'".$GLOBALS['LIST_GRAPHIC_COLOR'][$i-1]."'"; ?>,
 			data: [
-				<?php echo $data; ?>
+				<?php echo $data{$i}; ?>
 			]
 		}]
 	});
@@ -116,7 +93,7 @@ $(document).ready(function() {
 
 </script>
 <br />
-<div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+<div id="container<?php echo $i; ?>" style="width: 800px; height: 400px; margin: 0 auto"></div>
 
 
 <br /><br />
@@ -126,23 +103,22 @@ $(document).ready(function() {
 <table>
 <tr>
 <td><?php echo __(START_TIME_PROGRAM); ?></td>
-<td> <input type="text" name="start_time" id="start_time" value="" /></td>
+<td> <input type="text" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" value="" /></td>
 </tr>
 <tr>
 <td><?php echo __(END_TIME_PROGRAM); ?></td>
-<td><input type="text" name="end_time" id="end_time" value="" /></td>
+<td><input type="text" name="end_time<?php echo $i; ?>" id="end_time<?php echo $i; ?>" value="" /></td>
 </tr>
 <tr>
 <td><?php echo __(VALUE_ON_OFF); ?></td>
 <td>
-<select name="value_program">
+<select name="value_program<?php echo $i; ?>">
 	<option value="off" selected><?php echo __(VALUE_OFF); ?></option>
 	<option value="on" selected><?php echo __(VALUE_ON); ?></option>
         </select>
 </tr>
 </table>
-<input type="submit" value=<?php echo __(APPLY_PROGRAM); ?>>
-<input type="hidden" name="plug_id" value="<?php echo $selected_plug; ?>">
-
+<input type="hidden" name="selected_plug" value="<?php echo $i; ?>">
+<input type="submit" name="apply" value="<?php echo __(APPLY_PROGRAM); ?>">
 </form>
 <?php } ?>
