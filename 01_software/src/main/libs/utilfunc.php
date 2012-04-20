@@ -527,4 +527,40 @@ function format_program_highchart_data($arr) {
 // }}}
 
 
+// {{{ save_program_on_sd($sd_card,&$out,&$info)
+// ROLE format data to be used by highchart for the programs part
+// IN   $arr    an array containing datas
+// RET data for highchart and cultibox programs
+function save_program_on_sd($sd_card,$program,&$out,&$info) {
+	if(is_file("${sd_card}/plugv")) {
+			$file="${sd_card}/plugv";
+			if(count($program)>0) {
+				write_program($program,$sd_card,$out);
+			}
+	} else {
+		return false;
+	}
+}
+// }}}
+
+
+// {{{ write_program($data,$out)
+// ROLE write programs into the sd card
+// IN   $data		array containing datas to write
+//	$sd_card	the sd card to be written
+//	$out		error or warning messages
+// RET false is an error occured, true else
+function write_program($data,$sd_card,&$out="") {
+	$file="$sd_card/plugv";
+	if($f=fopen("$file","w+")) {
+		for($i=0; $i<count($data); $i++) {
+			fputs($f,"$data[$i]"."\r\n");
+		}
+		fclose($f);
+	} else {
+		$out=$out.__('ERROR_WRITE_SD');
+	}
+}
+// }}}
+
 ?>
