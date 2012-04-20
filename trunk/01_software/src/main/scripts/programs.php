@@ -28,11 +28,6 @@ $value_program=getvar('value_program');
 if((!isset($sd_card))||(empty($sd_card))) {
 	$sd_card=get_sd_card();
 }
-if((!isset($sd_card))||(empty($sd_card))) {
-	$return=$return.__('ERROR_SD_CARD_PROGRAMS');
-} else {
-	$info=$info.__('INFO_SD_CARD').": $sd_card";
-}
 
 if(!empty($selected_plug)&&(isset($selected_plug))) { 
         if(("$start_time"!="")||("$end_time"!="")) {
@@ -47,6 +42,15 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
         $data_plug=get_data_plug($selected_plug,$return);
 	$data=format_program_highchart_data($data_plug);
 }
+
+if((!isset($sd_card))||(empty($sd_card))) {
+        $return=$return.__('ERROR_SD_CARD_PROGRAMS');
+} else {
+        $info=$info.__('INFO_SD_CARD').": $sd_card";
+        $program=create_program_from_database();
+        save_program_on_sd($sd_card,$program,$return,$info);
+}
+
 
 
 include('main/templates/programs.html');

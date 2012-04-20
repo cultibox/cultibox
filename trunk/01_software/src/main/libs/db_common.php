@@ -542,4 +542,125 @@ function purge_program($arr) {
 }
 // }}}}
 
+
+/// {{{ create program_from_database()
+// ROLE read programs from the database and format its to be write into a sd card
+// IN none
+// RET an array containing datas
+function create_program_from_database() {
+	$db = db_priv_start();
+        $sql = <<<EOF
+SELECT * FROM `programs` WHERE time_start != "000000" AND time_stop != "235959" ORDER by `time_start`
+EOF;
+        $db->setQuery($sql);
+        $res = $db->loadAssocList();
+        $ret=$db->getErrorMsg();
+        if((isset($ret))&&(!empty($ret))) {
+                $out=$out.__('ERROR_SELECT_SQL').$ret;
+        }
+
+	$sql = <<<EOF
+SELECT * FROM `programs` WHERE time_start = "000000" ORDER by `time_start`
+EOF;
+        $db->setQuery($sql);
+        $first = $db->loadAssocList();
+        $ret=$db->getErrorMsg();
+        if((isset($ret))&&(!empty($ret))) {
+                $out=$out.__('ERROR_SELECT_SQL').$ret;
+        }
+
+	$sql = <<<EOF
+SELECT * FROM `programs` WHERE time_stop = "235959" ORDER by `time_start`
+EOF;
+        $db->setQuery($sql);
+        $last = $db->loadAssocList();
+        $ret=$db->getErrorMsg();
+        if((isset($ret))&&(!empty($ret))) {
+                $out=$out.__('ERROR_SELECT_SQL').$ret;
+        }
+
+        if(!db_priv_end($db)) {
+                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+        }
+
+	$j=1;
+	if(count($first)>0) {
+		while( $j <= 16 ) {
+			$result=find_value_for_plug($first,"000000",$j);
+			$data[0]=$data[0]."$result";
+			$j=$j+1;
+		}
+		$data[0]="00000".$data[0];
+	} else {
+		$data[0]="00000000000000000000000000000000000000000000000000000";
+	}
+
+	foreach($res as $result) {
+		$event[]=$result[time_start];
+		$event[]=$result[time_stop];
+	}
+	$event = array_unique ($event);
+	
+	if(count($event)>0) {
+		for($i=0;$i<count($event);$i++) {
+			$j=1;
+			while($j<=16) {
+				$result=find_value_for_plug($res,$event[$i],$j);
+				$data[$i+1]=$data[$i+1]."$result";
+				$j=$j+1;
+			}
+			
+			$ehh=substr($event[$i],0,2);
+                        $emm=substr($event[$i],2,2);
+                        $ess=substr($event[$i],4,2);
+			$time_event=mktime($ehh,$emm,$ess,1,1,1970);
+			while(strlen($time_event)!=5) {
+				$time_event="0$time_event";
+			}
+			$data[$i+1]=$time_event.$data[$i+1];
+		}
+	}
+
+	$count=count($data);
+	$j=1;
+	if(count($last)>0) {
+                while($j<=16) {
+                        $result=find_value_for_plug($last,"235959",$j);
+                        $data[$count]=$data[$count]."$result";
+                        $j=$j+1;
+                }
+                $data[$count]="86399".$data[$count];
+        } else {
+                $data[$count]="86399000000000000000000000000000000000000000000000000";
+        }
+        return $data;
+}
+// }}}
+
+
+// {{{ find_value_for_plug($data,$time,$plug)
+//ROLE find if a plug is concerned by a time spaces and return its value
+// IN	$data	array to look for time space
+//	$time	the time to find
+//	$plug	the specific plug concerned
+// RET	000 if the plug is not concerned or if its value is 0, 0001 else
+function find_value_for_plug($data,$time,$plug) {
+	for($i=0;$i<count($data);$i++) {
+		if(($data[$i][time_start]<=$time)&&($data[$i][time_stop]>=$time)&&($data[$i][plug_id]==$plug)) {
+			if($data[$i][time_stop]==$time) {
+				if($data[$i][time_stop]=="235959") {
+					return "001";
+				} else {
+					return "000";
+				}
+			}
+
+			if($data[$i][value] == "1") {
+				return "001";
+			}
+		}
+	}
+	return "000";
+}
+
 ?>
