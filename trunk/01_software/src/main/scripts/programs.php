@@ -17,11 +17,8 @@ __('LANG');
 $return="";
 $info="";
 $nb_plugs=get_configuration("NB_PLUGS",$return);
-$selected_plug=getvar('plug_id');
+$selected_plug=getvar('selected_plug');
 $plugs_infos=get_plugs_names($nb_plugs,$return);
-$start_time=getvar('start_time');
-$end_time=getvar('end_time');
-$value_program=getvar('value_program');
 
 
 
@@ -30,6 +27,13 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 if(!empty($selected_plug)&&(isset($selected_plug))) { 
+	$start="start_time{$selected_plug}";
+	$end="end_time{$selected_plug}";
+	$value="value_program{$selected_plug}";
+	$start_time=getvar($start);
+	$end_time=getvar($end);
+	$value_program=getvar($value);
+
         if(("$start_time"!="")||("$end_time"!="")) {
 		if(check_times($start_time,$end_time,$return)) {
 			if((!empty($value_program))&&(isset($value_program))) {
@@ -39,8 +43,11 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 			}
 		}
 	}
-        $data_plug=get_data_plug($selected_plug,$return);
-	$data=format_program_highchart_data($data_plug);
+}
+
+for($i=1;$i<=$nb_plugs;$i++) {
+	$data_plug=get_data_plug($i,$return);
+        $data{$i}=format_program_highchart_data($data_plug);
 }
 
 if((!isset($sd_card))||(empty($sd_card))) {
