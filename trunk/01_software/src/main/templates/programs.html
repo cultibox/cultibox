@@ -39,7 +39,7 @@ var chart;
 $(document).ready(function() {
 	chart = new Highcharts.Chart({
 		chart: {
-			renderTo: 'container<?php echo $i;?>',
+			renderTo: 'plug<?php echo $i;?>',
 			type: 'spline',
 	                zoomType: 'x'
 		},
@@ -93,32 +93,46 @@ $(document).ready(function() {
 
 </script>
 <br />
-<div id="container<?php echo $i; ?>" style="width: 800px; height: 400px; margin: 0 auto"></div>
 
-
-<br /><br />
-<?php echo __(CONFIGURE_PROGRAM); ?>:
-
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
-<table>
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>#plug<?php echo $i; ?>" method="post">
+<table width="100%">
+<tr>
+<td width="30%">
+	<table>
+<tr>
+<td><?php echo __(CONFIGURE_PROGRAM); ?>:</td><td></td>
+</tr>
 <tr>
 <td><?php echo __(START_TIME_PROGRAM); ?></td>
-<td> <input type="text" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" value="" /></td>
+<td> <input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" value="" /></td>
 </tr>
 <tr>
 <td><?php echo __(END_TIME_PROGRAM); ?></td>
-<td><input type="text" name="end_time<?php echo $i; ?>" id="end_time<?php echo $i; ?>" value="" /></td>
+<td><input type="text" size="10" name="end_time<?php echo $i; ?>" id="end_time<?php echo $i; ?>" value="" /></td>
 </tr>
 <tr>
 <td><?php echo __(VALUE_ON_OFF); ?></td>
 <td>
 <select name="value_program<?php echo $i; ?>">
-	<option value="off" selected><?php echo __(VALUE_OFF); ?></option>
-	<option value="on" selected><?php echo __(VALUE_ON); ?></option>
+        <option value="off" selected><?php echo __(VALUE_OFF); ?></option>
+        <option value="on" selected><?php echo __(VALUE_ON); ?></option>
         </select>
+</td>
+</tr>
+<tr>
+<td align="right"><input type="hidden" name="selected_plug" value="<?php echo $i; ?>">
+<input type="submit" name="apply" value="<?php echo __(APPLY_PROGRAM); ?>">
+</td><td>
+</td>
+</tr>
+	</table>
+</td>
+<td width="100%">
+	<div id="plug<?php echo $i; ?>" style="width: 90%; height: 40%; margin: 0 auto"></div>
+</td>
 </tr>
 </table>
-<input type="hidden" name="selected_plug" value="<?php echo $i; ?>">
-<input type="submit" name="apply" value="<?php echo __(APPLY_PROGRAM); ?>">
 </form>
+<br /><br /><br />
+
 <?php } ?>
