@@ -554,7 +554,7 @@ function write_program($data,$sd_card,&$out="") {
 	$file="$sd_card/plugv";
 	if($f=fopen("$file","w+")) {
 		for($i=0; $i<count($data); $i++) {
-			fputs($f,"$data[$i]"."\r\n");
+			fputs($f,"$data[$i]"."\n");
 		}
 		fclose($f);
 	} else {
@@ -562,5 +562,24 @@ function write_program($data,$sd_card,&$out="") {
 	}
 }
 // }}}
+
+
+// {{{ write_sd_conf_file()
+// ROLE	save configuration into the SD card
+function write_sd_conf_file($sd_card,$record_frequency=1,$nb_plugs=4,$update_frequency=1,&$out="") {
+	$record="00$record_frequency";
+	$plugs="00$nb_plugs";
+	$update="00$update_frequency";
+	$file="$sd_card/plugconf";
+        if($f=fopen("$file","w+")) {
+		fputs($f,"PLG\t$plugs\n");
+		fputs($f,"RCD\t$record\n");
+		fputs($f,"UPD\t$update\n");
+                fclose($f);
+        } else {
+                $out=$out.__('ERROR_WRITE_SD');
+        }	
+}
+
 
 ?>

@@ -32,6 +32,13 @@ if((!isset($sd_card))||(empty($sd_card))) {
         $sd_card=get_sd_card();
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+        $return=$return.__('ERROR_SD_CARD_CONF');
+} else {
+        $info=$info.__('INFO_SD_CARD').": $sd_card</li>";
+}
+
+
 
 if((isset($color_humidity))&&(!empty($color_humidity))) {
 	insert_configuration("COLOR_HUMIDITY_GRAPH",$color_humidity,$return);
@@ -75,6 +82,15 @@ if((empty($return))||(!isset($return))) {
 		$info=$info.__('VALID_UPDATE_CONF');
 	}
 }
+
+if((isset($sd_card))&&(!empty($sd_card))) {
+	if("$update_frequency"=="-1") {
+		write_sd_conf_file($sd_card,$record_frequency,$nb_plugs,"0",$return);
+	} else {
+		write_sd_conf_file($sd_card,$record_frequency,$nb_plugs,$update_frequency,$return);	
+	}	
+}
+
 
 include('main/templates/configuration.html');
 

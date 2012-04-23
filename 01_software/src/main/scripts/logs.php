@@ -26,12 +26,13 @@ if((!isset($sd_card))||(empty($sd_card))) {
 if((!isset($sd_card))||(empty($sd_card))) {
         $return=$return.__('ERROR_SD_CARD_LOGS');
 } else {
-        $info=$info.__('INFO_SD_CARD').": $sd_card";
+        $info=$info.__('INFO_SD_CARD').": $sd_card</li>";
 }
 
 
 $startday = getvar('startday');
 $startmonth=getvar('startmonth');
+$startyear=getvar('startyear');
 $load_log=false;
 
 if((!isset($startday))||(empty($startday))) {
@@ -44,6 +45,7 @@ $startday=str_replace(' ','',"$startday");
 
 if((!isset($startmonth))||(empty($startmonth))) {
         $startmonth=date('m');
+	$startyear=date('Y');
 } else {
         $type = "month";
 }
@@ -117,16 +119,15 @@ if("$type" == "days") {
 			$return=$return.__('EMPTY_HUMIDITY_DATA');
 		}
 		$next=1;
-		echo "$data_humi";
 	} 
 } else {
 	if($check_format) {
-		$nb = date('t',mktime(0, 0, 0, $startmonth, 1, date('Y'))); 
+		$nb = date('t',mktime(0, 0, 0, $startmonth, 1, $startyear)); 
 		for($i=1;$i<=$nb;$i++) {
 			if($i<10) {
 				$i="0$i";
 			}
-			$ddate=date('Y')."-$startmonth-$i";
+			$ddate="$startyear-$startmonth-$i";
 			get_graph_array($temperature,"temperature/100","$ddate",$return);
 			get_graph_array($humidity,"humidity/100","$ddate",$return);
 			if("$data_temp" != "" ) {
@@ -143,10 +144,16 @@ if("$type" == "days") {
 			$temperature = array();
 			$humidity=array();
 		}
+		if("$data_humi" == "" ) {
+			$return=$return.__('EMPTY_HUMIDITY_DATA');
+		}
+		if("$data_temp" == "" ) {
+			$return=$return.__('EMPTY_TEMPERATURE_DATA');
+                }
 		$data_temp=get_format_month($data_temp);
 		$data_humi=get_format_month($data_humi);
 		$xlegend="XAXIS_LEGEND_MONTH";
-		$styear=date('Y');
+		$styear=$startyear;
 		$stmonth=$startmonth-1;
 		$stday=1;
 		$next=20;

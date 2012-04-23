@@ -1,56 +1,51 @@
 <div id="info">
+<ul>
         <?php echo $info; ?>
+</ul>
 </div>
 
 <div id="error">
+<ul>
         <?php echo $return; ?>
+</ul>
 </div>
 
 <br /><br />
 
 <div id="main">
-<p id="title_conf">
+<p class="title_conf">
 	<?php echo __(USER_CONF); ?>:
 </p>
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
-<table class="tablemain">
-<tr>
-        <td>
-        <?php echo __(CONFIGURE_LANGUAGE); ?>
-        </td>
-<td>
-                <select name="lang">
-                <?php
-                foreach($GLOBALS['LIST_LANG'] as $value) {
-			switch ($value) {
-				case 'fr_FR':
-                        		if("${value}" == $_SESSION['LANG']) {
-                                		echo "<option value=\"${value}\" selected>".__(LANG_FR)."</option>";
-                        		} else {
-                                		echo "<option value=\"${value}\">".__(LANG_FR)."</option>";
-                        		}
-					break;
-				case 'en_GB':
-					if("${value}" == $_SESSION['LANG']) {
-                                                echo "<option value=\"${value}\" selected>".__(LANG_EN)."</option>";
-                                        } else {
-                                                echo "<option value=\"${value}\">".__(LANG_EN)."</option>";
-                                        }
-                                        break;
-			}
-                }
-                ?>
-                </select>
-</td>
-</tr>
-<tr>
-	<td>
-	<?php echo __(CONFIGURE_HUMIDITY); ?>
-	</td>
-<td>
-		<select name="color_humidity">
-		<?php
-		foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+<table width="60%" align="center">
+	<tr>
+        	<td width="50%"><?php echo __(CONFIGURE_LANGUAGE); ?></td>
+		<td><select name="lang">
+                	<?php foreach($GLOBALS['LIST_LANG'] as $value) {
+				switch ($value) {
+					case 'fr_FR':
+                        			if("${value}" == $_SESSION['LANG']) {
+                                			echo "<option value=\"${value}\" selected>".__(LANG_FR)."</option>";
+                        			} else {
+                                			echo "<option value=\"${value}\">".__(LANG_FR)."</option>";
+                        			}
+						break;
+					case 'en_GB':
+						if("${value}" == $_SESSION['LANG']) {
+                                                	echo "<option value=\"${value}\" selected>".__(LANG_EN)."</option>";
+                                        	} else {
+                                                	echo "<option value=\"${value}\">".__(LANG_EN)."</option>";
+                                        	}
+                                        	break;
+				}
+                	}
+                	?>
+                </select></td>
+	</tr>
+	<tr>
+		<td width="50%"><?php echo __(CONFIGURE_HUMIDITY); ?></td>
+		<td><select name="color_humidity">
+		<?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
 			switch ($value) {
 				case 'blue':
 					if("${value}" == "${color_humidity}") {
@@ -81,19 +76,12 @@
 					}
 					break;
 			}
-		}
-		?>
-                </select>
-</td>
-</tr>
-<tr>
-	<td>
-	<?php echo __(CONFIGURE_TEMPERATURE); ?>
-	</td>
-<td>
-	<select name="color_temperature">
-	<?php
-		foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+		} ?></select></td>
+	</tr>
+	<tr>
+		<td><?php echo __(CONFIGURE_TEMPERATURE); ?></td>
+		<td><select name="color_temperature">
+		<?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
 			switch ($value) {
                                 case 'blue':
                                         if("${value}" == "${color_temperature}") {
@@ -125,18 +113,16 @@
                                         break;
                         }
                 }
-	?>
-	</select>
-</td>
-</tr>
+		?></select></td>
+	</tr>
 </table>
 <br />
-<p id="title_conf">
+<p class="title_conf">
 	<?php echo __(SYSTEM_CONF); ?>:
 </p>
-<table class="tablemain">
+<table width="60%" align="center">
 <tr>
-<td>
+<td width="50%">
 	<?php echo __(CONFIGURE_FREQUENCY); ?>
 </td>
 <td>
@@ -173,7 +159,7 @@
 </tr>
 <tr>
 <td>
-	<?php echo __(CONFIGURE_PLUGS_FREQUENCY); ?>:
+	<?php echo __(CONFIGURE_PLUGS_FREQUENCY); ?>
 </td>
 <td>
 	<select name="update_frequency">
@@ -197,8 +183,8 @@
 
 </table>
 
-<p id="validation">
-	<INPUT type="submit" value=<?php echo __(VALIDATION_CONF); ?>>
+<br /><p align="center">
+	<INPUT type="submit" value="<?php echo __(VALIDATION_CONF); ?>">
 </p>
 	<INPUT type="hidden" name="menu" value="configuration">
 </form>
