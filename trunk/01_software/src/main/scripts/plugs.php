@@ -24,7 +24,8 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 if((!empty($sd_card))&&(isset($sd_card))) {
-	save_program_on_sd($sd_card,$return,$info);	
+	$program=create_program_from_database();
+	save_program_on_sd($sd_card,$program,$return,$info);
 }
 
 for($nb=1;$nb<=$nb_plugs;$nb++) {
