@@ -4,7 +4,6 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-
 require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
@@ -44,18 +43,23 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 		$update_program=true;
         }
 
-	if((!empty($tolerance))&&(isset($tolerance))) {
-		insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$return);
-		$update_program=true;
-        }
+	if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)) {
+		if((!empty($tolerance))&&(isset($tolerance))) {
+			if(check_tolerance_value($type,$tolerance,$return)) {
+				insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$return);
+				$update_program=true;
+			}
+		}
+	} else {
+		insert_plug_conf("PLUG_TOLERANCE",$nb,0,$return);
+	} 
 
 	$plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$return);
 	$plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$return);
 	$plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$return);
 }
-
 if(($update_program)&&(empty($return))) {
-        $info=$info.__('VALID_UPDATE_PROGRAM');
+        $info=$info.__('VALID_UPDATE_CONF');
 }
 
 include('main/templates/plugs.html');
