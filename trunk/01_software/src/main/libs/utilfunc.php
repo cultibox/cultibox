@@ -566,6 +566,7 @@ function write_program($data,$sd_card,&$out="") {
 
 // {{{ write_sd_conf_file()
 // ROLE	save configuration into the SD card
+
 function write_sd_conf_file($sd_card,$record_frequency=1,$nb_plugs=4,$update_frequency=1,&$out="") {
 	$record="00$record_frequency";
 	$plugs="00$nb_plugs";
@@ -580,6 +581,34 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$nb_plugs=4,$update_fre
                 $out=$out.__('ERROR_WRITE_SD');
         }	
 }
+//}}}
+
+
+// {{{ write_sd_conf_file()
+// ROLE check the tolerance value
+// IN	$type		the type of the plug 
+//	$tolerancesave	the value to check
+//	$out		error or warning message
+// RET false is there is a wrong value, true else
+function check_tolerance_value($type,$tolerance=0,&$out="") {
+	if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
+			if(($tolerance > 0)&&($tolerance < 10)) {
+				return true;
+			} else {
+				$out=$out.__('ERROR_TOLERANCE_VALUE_DEGREE');
+				return false;
+			}
+	} else if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
+			if(($tolerance > 0)&&($tolerance < 20)) {
+                                return true;
+                        } else {
+				$out=$out.__('ERROR_TOLERANCE_VALUE_POURCENT');
+                                return false;
+                        }	
+	}
+	return true;
+}
+// }}}
 
 
 ?>
