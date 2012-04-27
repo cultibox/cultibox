@@ -77,7 +77,6 @@ for($i=0;$i<$nb_plugs;$i++) {
                 case 'dehumidifier': $plugs_infos[$i][translate]=__(PLUG_DESHUMIDIFIER);
                         break;	
 	}
-
 }
 
 if((isset($sd_card))&&(!empty($sd_card))) {
