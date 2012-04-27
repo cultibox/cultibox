@@ -134,7 +134,7 @@ $(document).ready(function() {
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
 <table width="100%" id="conf<?php echo $i; ?>" >
 	<tr>
-		<td width="35%"><p class="title_conf"><?php echo __(CONFIGURE_PROGRAM); ?>:</p></td>
+		<td width="40%"><p class="title_conf"><?php echo __(CONFIGURE_PROGRAM); ?>:</p></td>
 		<td></td>
 	</tr>
 	<tr>
@@ -142,7 +142,7 @@ $(document).ready(function() {
 			<table>
 				<tr>
 					<td width="30%"></td>
-					<td><?php echo __(START_TIME_PROGRAM); ?></td>
+					<td width="35%"><?php echo __(START_TIME_PROGRAM); ?></td>
 					<td><input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?>value="<?php echo $start_time;?>" <?php } ?> /></td>
 				</tr>
 				<tr>
