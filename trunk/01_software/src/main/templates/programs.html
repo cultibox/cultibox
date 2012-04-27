@@ -13,7 +13,7 @@ $(document).ready(function(){
 $('#start_time<?php echo $i; ?>').timepicker({
 timeOnlyTitle: '<?php echo __(TIMEPICKER_SELECT_TIME); ?>',
 showSecond: true,
-showOn: 'button',
+showOn: 'both',
 timeFormat: 'hh:mm:ss',
 timeText: '<?php echo __(TIMEPICKER_TIME); ?>',
 hourText: '<?php echo __(TIMEPICKER_HOUR); ?>',
@@ -23,7 +23,7 @@ currentText: '<?php echo __(TIMEPICKER_NOW); ?>'
 });
 $('#end_time<?php echo $i; ?>').timepicker({
 timeOnlyTitle: '<?php echo __(TIMEPICKER_SELECT_TIME); ?>',
-showOn: 'button',
+showOn: 'both',
 showSecond: true,
 timeFormat: 'hh:mm:ss',
 timeText: '<?php echo __(TIMEPICKER_TIME); ?>',
