@@ -206,15 +206,15 @@ EOF;
 // }}}
 
 
-// {{{ get_plugs_names($nb,$out)
-// ROLE get plugs informations (name and id)
+// {{{ get_plugs_infos($nb,$out)
+// ROLE get plugs informations (name,id,type)
 // IN $id      id of the plug
 //    $out      errors or warnings messages
 // RET return an array containing plugid and its name
-function get_plugs_names($nb=0,$out="") {
+function get_plugs_infos($nb=0,$out="") {
         $db = db_priv_start();
         $sql = <<<EOF
-SELECT `id` , `PLUG_NAME`
+SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`
 FROM `plugs`
 WHERE id <= {$nb}
 ORDER by id ASC
@@ -272,7 +272,7 @@ EOF;
 //    $end_time		end time for the program
 //    $value		value of the program
 //    $out		error or warning message
-// RET none
+// RET true
 function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 	$data_plug=get_data_plug($plug_id);
 	asort($data_plug);
@@ -338,6 +338,7 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 			insert_program_value($plug_id,$start_time,$end_time,$value,$out);
 		}
 	}
+	return true;
 }
 // }}}
 
@@ -381,7 +382,7 @@ function compare_data_program($first,$last,&$current,&$tmp) {
 						$new= array(
 							    "time_start" => "$current[time_stop]",
 					                    "time_stop" => "$save_stop",
-                   					    "value" => "1"
+                   					    "value" => "$current[value]"
 						);
 						$tmp[]=$first;
 						$tmp[]=$new;
@@ -399,6 +400,25 @@ function compare_data_program($first,$last,&$current,&$tmp) {
 				return false;
 			}
 			return true;
+		} elseif(($current[time_start]==$first[time_stop])&&($current[time_stop]<$last[time_start])) {
+			if($current[value]!=0) {
+					if($current[value]==$first[value]) {
+						$tmp[]=array(
+                                                            "time_start" => "$first[time_start]",
+                                                            "time_stop" => "$current[time_stop]",
+                                                            "value" => "$current[value]"
+                                                );
+					} else {
+						if($first[value]!=0) {
+							$tmp[]=$first;
+						}
+						$tmp[]=array(
+                                                            "time_start" => "$current[time_start]",
+                                                            "time_stop" => "$current[time_stop]",
+                                                            "value" => "$current[value]"
+                                                );
+					}
+			} 
 		} else if(($current[time_stop]<$last[time_start])&&($current[time_start]>=$first[time_start])&&($current[time_start]<$first[time_stop])) {
 			//si l'echantillon est dans le premier interval et qu'il en sort mais s'arrete avant le second
 			if($current[value]==0) {
@@ -599,7 +619,9 @@ EOF;
 		$event[]=$result[time_start];
 		$event[]=$result[time_stop];
 	}
-	$event = array_unique ($event);
+	if(count($event)>0) {
+		$event = array_unique ($event);
+	}
 	$evt=array();
 	$i=0;
 	$count=0;
@@ -673,5 +695,17 @@ function find_value_for_plug($data,$time,$plug) {
 	}
 	return "000";
 }
+// }}}
+
+
+// {{{ export_program($id)
+//ROLE export a program to a csv file
+// IN   $id	id of the plug to export
+// RET  none
+function export_program($id) {
+	return 1;
+}
+// }}}
+
 
 ?>

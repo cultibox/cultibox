@@ -35,7 +35,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
 if((!isset($sd_card))||(empty($sd_card))) {
         $return=$return.__('ERROR_SD_CARD_CONF');
 } else {
-        $info=$info.__('INFO_SD_CARD').": $sd_card</li>";
+        $info=$info.__('INFO_SD_CARD').": $sd_card";
 }
 
 

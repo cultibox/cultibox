@@ -483,6 +483,8 @@ function format_program_highchart_data($arr) {
 			if((empty($data))&&(strcmp($value[time_start],"000000")!=0)) {
 				$first=mktime(0,0,0,1,1,1970)*1000;
 				$data="[".$first.",0]";
+				$last_time="0";
+				$last_value="0";
 			} else if((empty($data))&&(strcmp($value[time_start],"000000")==0)) {
                                 $val_start=mktime(0,0,0,1,1,1970)*1000;
                                 $ehh=substr($value[time_stop],0,2);
@@ -490,9 +492,11 @@ function format_program_highchart_data($arr) {
                                 $ess=substr($value[time_stop],4,2);
                                 $val_end=mktime($ehh,$emm,$ess,1,1,1970)*1000;
 				if(strcmp("$value[time_stop]","235959")==0) {
-                                	$data="[".$val_start.",1],[".$val_end.",1]";
+                                	$data="[".$val_start.",".$value[value]."],[".$val_end.",".$value[value]."]";
 				} else {
-					$data="[".$val_start.",1],[".$val_end.",1],[".$val_end.",0]";
+					$data="[".$val_start.",".$value[value]."],[".$val_end.",".$value[value]."]";
+					$last_time=$val_end;
+					$last_value=$value[value];
 				}
 			}
 
@@ -506,16 +510,22 @@ function format_program_highchart_data($arr) {
                                         $ess=substr($value[time_stop],4,2);
                                         $val_end=mktime($ehh,$emm,$ess,1,1,1970)*1000;
 					if(strcmp("$value[time_stop]","235959")!=0) {
-						$data=$data.",[".$val_start.",0],[".$val_start.",1],[".$val_end.",1],[".$val_end.",0]";
+						if("$last_time"!="$val_start") {
+							$data=$data.",[".$last_time.",0],[".$val_start.",0],[".$val_start.",".$value[value]."],[".$val_end.",".$value[value]."]";
+						} else {
+							$data=$data.",[".$val_start.",".$value[value]."],[".$val_end.",".$value[value]."]";
+						}
+						$last_time=$val_end;
+						$last_value=$value[value];
 					} else {
-                                        	$data=$data.",[".$val_start.",0],[".$val_start.",1],[".$val_end.",1]";
+                                        	$data=$data.",[".$last_time.",0],[".$val_start.",0],[".$val_start.",".$value[value]."],[".$val_end.",".$value[value]."]";
 					}
 			}
 			$last_val=$value;
 		}
 		if((!empty($data))&&(strcmp("$last_val[time_stop]","235959")!=0)) {
 				$last=mktime(0,0,0,1,2,1970)*1000;
-				$data=$data.",[".$last.",0]";
+				$data=$data.",[".$last_time=$val_end.",0],[".$last.",0]";
 		} 
 	} else {
 		$first=mktime(0,0,0,1,1,1970)*1000;
