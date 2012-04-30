@@ -621,4 +621,28 @@ function check_tolerance_value($type,$tolerance=0,&$out="") {
 // }}}
 
 
+// {{{ check_format_values_program($value)
+// ROLE check AND format value of a program 
+// IN   $value	value to check and format
+// RET false is there is a wrong value, true else
+function check_format_values_program(&$value="") {
+	$value=str_replace(',','.',$value);
+	$value=str_replace(' ','',$value);
+	if((!isset($value))||(empty($value))) {
+		$value=0;
+		return false;
+	}
+	if(($value>100)||($value<0)) {
+		$value=0;
+		return false;
+	}
+	if(!is_numeric($value)) {
+		$value=0;
+		return false;
+	}
+	return true;
+}
+// }}}
+
+
 ?>

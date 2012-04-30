@@ -49,10 +49,22 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 
         if(("$start_time"!="")&&("$end_time"!="")) {
 		if(check_times($start_time,$end_time,$ret_plug[$selected_plug])) {
-				if("$value_program"=="on") $value_program="1";
-				if("$value_program"=="off") $value_program="0";
-				if(insert_program($selected_plug,$start_time,$end_time,$value_program,$ret_plug[$selected_plug])) {
+				if("$value_program"=="on") {
+					$value_program="1";
+					$check=true;
+				} else if("$value_program"=="off") {
+					$value_program="0";
+					$check=true;
+				} else {
+					$check=check_format_values_program($value_program);
+				}
+			
+				if($check) {
+					if(insert_program($selected_plug,$start_time,$end_time,$value_program,$ret_plug[$selected_plug])) {
 						$info_plug[$selected_plug]=$info_plug[$selected_plug].__(INFO_VALID_UPDATE_PROGRAM);
+					}
+				} else {
+					$ret_plug[$selected_plug]=$$ret_plug[$selected_plug].__(ERROR_VALUE_PROGRAM);
 				}
 		}
 	} else {
