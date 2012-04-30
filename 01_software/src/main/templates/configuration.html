@@ -12,14 +12,13 @@
 
 <br /><br />
 
-<div id="main">
 <p class="title_conf">
 	<?php echo __(USER_CONF); ?>:
 </p>
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
 <table width="60%" align="center">
 	<tr>
-        	<td width="50%"><?php echo __(CONFIGURE_LANGUAGE); ?></td>
+        	<td width="80%"><?php echo __(CONFIGURE_LANGUAGE); ?></td>
 		<td><select name="lang">
                 	<?php foreach($GLOBALS['LIST_LANG'] as $value) {
 				switch ($value) {
@@ -43,7 +42,7 @@
                 </select></td>
 	</tr>
 	<tr>
-		<td width="50%"><?php echo __(CONFIGURE_HUMIDITY); ?></td>
+		<td><?php echo __(CONFIGURE_HUMIDITY); ?></td>
 		<td><select name="color_humidity">
 		<?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
 			switch ($value) {
@@ -122,7 +121,7 @@
 </p>
 <table width="60%" align="center">
 <tr>
-<td width="50%">
+<td width="80%">
 	<?php echo __(CONFIGURE_FREQUENCY); ?>
 </td>
 <td>
@@ -188,4 +187,3 @@
 </p>
 	<INPUT type="hidden" name="menu" value="configuration">
 </form>
-</div>

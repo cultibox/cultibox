@@ -1,21 +1,24 @@
 <div id="info">
+<ul>
         <?php echo $info; ?>
+</ul>
 </div>
 
 <div id="error">
+<ul>
         <?php echo $return; ?>
+</ul>
 </div>
 
 <br /><br />
 
-<div id="main">
-<table width="50%">
+<table width="100%">
 <tr>
-<td width="47%" align="right">
+<td width="50%" align="right">
 	<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
 	<?php echo __(SELECT_DISPLAYED_DAY); ?>
 </td>
-<td width="40%">
+<td width="50%">
 			<input id="startday" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>" onClick='scwShow(document.getElementById("startday"),this);'>
 <INPUT type="submit" value=<?php echo __(VIEW); ?>>
 
@@ -61,15 +64,11 @@
                                 <option <?php if("$startyear" == "2021") { echo 'selected';} ?> value="2021">2021</option>
                                 <option <?php if("$startyear" == "2022") { echo 'selected';} ?> value="2022">2022</option>
                                 <option <?php if("$startyear" == "2023") { echo 'selected';} ?> value="2023">2023</option>
-                        </select>
-</td>
-<td>
-			<INPUT type="submit" value=<?php echo __(VIEW); ?>>
+                        </select> <INPUT type="submit" value=<?php echo __(VIEW); ?>>
 		</form>
 	</td>
 	</tr>
 	</table>
-</div>
 
 <?php if($check_format) { ?>
 <script type="text/javascript">
