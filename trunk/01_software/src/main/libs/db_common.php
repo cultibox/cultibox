@@ -306,30 +306,51 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
                 "time_stop" => "240000",
                 "value" => "0"
 	);
-	$continue=true;
 
+	$continue=1;
 	clean_program($plug_id,$out);
+
 	if(count($data_plug)>1) {
 		foreach($data_plug as $data) {	
+		   if("$continue"!="3") {
 			if((empty($last))||(!isset($last))) {
 				$last = $data;
-				
 			} 
 
-			
-			if($continue) {
+			if("$continue"=="1") {
+				echo "<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+				echo "<br />";
 				$continue=compare_data_program($first,$last,$current,$tmp);
+				echo "<br />";
+				print_r($first);
+				echo "<br />";
+				print_r($last);
+				echo "<br />";
+				print_r($current);
+				echo "<br />-------------------<br />";
 			} else {
-				$continue=true;
+				$continue="1";
 			}
-			$first=$last;
-			unset($last);
+
+			if("$continue"!="2") {	
+				$first=$last;
+				unset($last);
+			}
+		   } else {
+			$continue="1";
+		   }
 		}
 
 
 		$tmp=purge_program($tmp);
 		if(count($tmp)>0) {
 			foreach($tmp as $new_val) {
+				print_r($new_val);
 				insert_program_value($plug_id,$new_val[time_start],$new_val[time_stop],$new_val[value],$out);	
 			}
 		}
@@ -350,142 +371,349 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 //    $current		current value submitted by user to be added
 //    $tmp		array to save datas
 // RET false if the function has treated the $last value and we have to skip it in the next call of the function, true else.
-function compare_data_program($first,$last,&$current,&$tmp) {
-	if(($current[time_start]>=$first[time_start])&&($current[time_stop]>$last[time_stop])&&($current[time_start]<=$last[time_stop])&&($current[time_start]<=$last[time_start])) {
-		//si l'echantillon est dans l'interval mais qu'il deborde
-		$new_current= array (
-			"time_start" => "$current[time_start]",
-			"time_stop" => "$last[time_stop]",
-			"value" => "$current|value]"
-		);
-		$ret = compare_data_program($first,$last,$new_current,$tmp);
-		$current[time_start] = $last[time_stop];
-		return true;
-	} else if(($current[time_start]>=$first[time_start])&&($current[time_stop]<=$last[time_stop])) {
-		// Si l'éxchantillon est dans l'interval à modifier
-		if(($current[time_start]>$first[time_stop])&&($current[time_stop]<$last[time_stop])) {
-				//s'il n'y a rien à modifier on ajoute la valeur
-				if($first[value]!=0) {
-					$tmp[]=$first;
-				}
-				if($current[value]!=0) {
-					$tmp[]=$current;
-				}
-				return true;
-		} else if($current[time_stop]<=$first[time_stop]) {
-			//si l'echantillon est dans le premier interval
+function compare_data_program(&$first,&$last,&$current,&$tmp) {
+   if(($current[time_start]>=$first[time_start])&&($current[time_stop]<=$last[time_stop])) {
+	if(($current[time_start]>=$first[time_start])&&($current[time_stop]<=$first[time_stop])&&($current[time_start]<$last[time_stop])) {
+	        //case 1: current value is in the first value
+		echo "case 1;";
+		if($current[value]==$first[value]) {
+				//first=current: nothing to do
+			$tmp[]=$first;
+			$tmp[]=$last;
+			return "0";		
+		} else  if(($current[time_start]==$first[time_start])&&($current[time_stop]==$first[time_stop])) {
+				//first==current: replacement of the value
 				if($current[value]==0) {
-					if(($current[time_start]!=$first[time_start])&&($current[time_stop]!=$first[time_stop])) {
-						//s'il est vraiment dans l'interval et qu'il n'englobe pas tout l'interval
-						$save_stop=$first[time_stop];
-						$first[time_stop]=$current[time_start];
-						$new= array(
-							    "time_start" => "$current[time_stop]",
-					                    "time_stop" => "$save_stop",
-                   					    "value" => "$current[value]"
-						);
-						$tmp[]=$first;
-						$tmp[]=$new;
-						return true;
-					} else if(($current[time_start]==$first[time_start])&&($current[time_stop]==$first[time_stop])) {
-						//S'il englobe tout l'interval
-						return true;
-					} 
+					$tmp[]=$last;
+					return "0";
+				} else if($current[value]!=$first[value]) {
+					$tmp[]=$current;
+					$tmp[]=$last;
+                                        return "0";
 				}
+		} else if($current[time_start]==$first[time_start]) {
+				//current begin with the first value but doesn't ended with the first
+				if($current[value]==0) {
+					$first[time_start]=$current[time_stop];
+					$tmp[]=$first;
+					$tmp[]=$last;
+					return "0";	
+				} else if($current[value]!=$first[value]) {
+					$new_value = array(
+						"time_start" => $first[time_start],
+                                                "time_stop" => $current[time_stop],
+                                                "value" => $current[time_value]					
+					);
+					$first[time_start]=$current[time_stop];
+                                        $tmp[]=$new_value;
+                                        $tmp[]=$first;
+					$tmp[]=$last;
+                                        return "0";
+                                } 
+		} else if($current[time_stop]==$first[time_stop]) {
+				//current doesn't start with the start value of first but ended with the stop value of first
+				if($current[value]==0) {
+					$first[time_stop]=$current[time_start];
+					$tmp[]=$first;
+					$tmp[]=$last;
+					return "0";	
+				} else if($current[value]!=$first[value]) {
+                                        $first[time_stop]=$current[time_stop];
+                                        $tmp[]=$first;
+					$tmp[]=$current;
+                                        $tmp[]=$last;
+                                        return "0";
+                                }
+		} else {
+				//current is in the first value: cut in three
+				if($current[value]==0) {
+					$save_time=$first[time_stop];
+					$first[time_stop]=$current[time_start];
+					$new_value= array(
+						"time_start" => $current[time_stop],
+						"time_stop" => $save_time,
+						"value" => $first[value]
+					);
+					$tmp[]=$first;
+					$tmp[]=$new_value;	
+					$tmp[]=$last;
+					return "0";
+				} else {
+					$save_time=$first[time_stop];
+                                        $first[time_stop]=$current[time_start];
+					$new_value=array(
+						"time_start" => $current[time_stop],
+                                                "time_stop" => $save_time,
+                                                "value" => $first[value]
+					);
+					$tmp[]=$first;
+					$tmp[]=$current;	
+					$tmp[]=$new_value;
+					$tmp[]=$last;
+					return "0";
+                                }
+		}
+	} else if(($current[time_start]>=$first[time_stop])&&($current[time_stop]<=$last[time_start])) {
+		echo "case 2;";
+		//case 2: current value is between first and last value
+		if($current[value]==0) {
+			//nothing to do
+			$tmp[]=$first;
+			$tmp[]=$last;
+			return "0";
 		} else if(($current[time_start]==$first[time_stop])&&($current[time_stop]==$last[time_start])) {
-			//si l'echantillon est pile entre les deux interval
-			if($current[value]==1) {
-				$first[time_stop]=$last[time_stop];
+                                //first->current->last: replacement of the value
+                                if(($current[value]==$first[value])&&($current[value]==$last[value])) {
+					$first[time_stop]=$last[time_stop];
+                                        $tmp[]=$first;
+                                        return "0";
+                                } else if($current[value]==$first[value]) {
+					$first[time_stop]=$current[time_stop];
+					$tmp[]=$first;
+					$tmp[]=$last;
+					return "0";
+				} else if($current[value]==$last[value])  {
+					$tmp[]=$first;
+					$last[time_start]=$current[time_start];
+					$tmp[]=$last;
+					return "0";	
+				} else {
+					$tmp[]=$first;
+					$tmp[]=$current;
+					$tmp[]=$last;
+					return "0";
+				}
+		} else if($current[time_start]==$first[time_stop]) {
+				if(($current[value]==$first[value])) {
+                                        $first[time_stop]=$current[time_stop];
+                                        $tmp[]=$first;
+					$tmp[]=$last;
+                                        return "0";
+                                } else {
+                                        $tmp[]=$first;
+                                        $tmp[]=$current;
+                                        $tmp[]=$last;
+                                        return "0";
+                                }
+		} else if($current[time_stop]==$last[time_start]) {
+				if(($current[value]==$last[value])) {
+                                        $last[time_start]=$current[time_start];
+                                        $tmp[]=$first;
+                                        $tmp[]=$last;
+                                        return "0";
+                                } else {
+                                        $tmp[]=$first;
+                                        $tmp[]=$current;
+                                        $tmp[]=$last;
+                                        return "0";
+                                }
+                } else {
 				$tmp[]=$first;
-				return false;
-			}
-			return true;
-		} elseif(($current[time_start]==$first[time_stop])&&($current[time_stop]<$last[time_start])) {
-			if($current[value]!=0) {
-					if($current[value]==$first[value]) {
-						$tmp[]=array(
-                                                            "time_start" => "$first[time_start]",
-                                                            "time_stop" => "$current[time_stop]",
-                                                            "value" => "$current[value]"
-                                                );
-					} else {
-						if($first[value]!=0) {
-							$tmp[]=$first;
-						}
-						$tmp[]=array(
-                                                            "time_start" => "$current[time_start]",
-                                                            "time_stop" => "$current[time_stop]",
-                                                            "value" => "$current[value]"
-                                                );
-					}
-			} 
-		} else if(($current[time_stop]<$last[time_start])&&($current[time_start]>=$first[time_start])&&($current[time_start]<$first[time_stop])) {
-			//si l'echantillon est dans le premier interval et qu'il en sort mais s'arrete avant le second
+				$tmp[]=$current;
+				$tmp[]=$last;
+				return "0";
+		}
+	} else if(($current[time_start]>=$last[time_start])&&($current[time_stop]<=$last[time_stop])) {
+		// case 3: current value is in the last value
+		echo "case 3;";
+		$tmp[]=$first;
+		return "1";	
+	} else if(($current[time_start]>=$first[time_start])&&($current[time_start]<=$first[time_stop])&&($current[time_stop]<$last[time_start])&&($current[time_stop]>$first[time_stop])) {
+                echo "case 4;";
+		//case 4: current value is in the first value and stop between the first and before the last value
+		if($current[value]==$first[value]) {
+			$first[time_stop]=$current[time_stop];
+			$tmp[]=$first;
+			$tmp[]=$last;	
+		} else if($current[time_start]==$first[time_start]) {
+				if($current[value]==0) {
+					$tmp[]=$last;
+					return "0";
+				} else {
+					$tmp[]=$current;
+					$tmp[]=$last;
+					return "0";
+				}
+		} else {
+				if($current[value]==0) {
+					$first[time_stop]=$current[time_start];
+                                        $tmp[]=$first;
+					$tmp=$last;
+                                        return "0";
+                                } else {
+					$first[time_stop]=$current[time_start];
+					$tmp[]=$first;
+					$tmp[]=$current;
+					$tmp[]=$last;
+					return "0";
+				}
+		}
+	} else if(($current[time_start]>=$first[time_stop])&&($current[time_start]<$last[time_start])&&($current[time_stop]>$last[time_start])) {
+		echo "case 5;";
+		//case 5: current value is betwwen the first and last value and stop in the last value
+		if(($current[time_start]==$first[time_stop])&&($current[time_stop]==$last[time_stop])) {
+			  if($current[value]==0) {
+                                $tmp[]=$first;
+                                return "0";
+                        } else if(($current[value]==$last[value])&&($current[value]==$first[value])) {
+                                $first[time_stop]=$last[time_stop];
+                                $tmp[]=$first;
+				return "0";
+                        } else if($current[value]==$first[value]) {
+                                $first[time_stop]=$current[time_stop];
+				$last[time_start]=$current[time_stop];
+                                $tmp[]=$first;
+				$tmp[]=$last;
+                                return "0";
+			} else {
+				$tmp[]=$first;
+				$tmp[]=$current;
+				return "0";
+                        } 
+		} else if(($current[time_start]>$first[time_stop])&&($current[time_stop]==$last[time_stop])) {
+			$tmp[]=$first;
 			if($current[value]==0) {
+                                return "0";
+                        } else {
+                                $tmp[]=$current;
+                                return "0";
+                        } 
+		} else if(($current[time_start]==$first[time_stop])&&($current[time_stop]<$last[time_stop])) {
+			if($current[value]==0) {
+				$last[time_start]=$current[time_stop];
+                                $tmp[]=$first;
+				$tmp[]=$last;
+                                return "0";
+                        } else if(($current[value]==$last[value])&&($current[value]==$first[value])) {
+                                $first[time_stop]=$last[time_stop];
+                                $tmp[]=$first;
+                                return "0";
+                        } else if($current[value]==$first[value]) {
+                                $first[time_stop]=$current[time_stop];
+                                $last[time_start]=$current[time_stop];
+                                $tmp[]=$first;
+                                $tmp[]=$last;
+                                return "0";
+                        } else if($current[value]==$last[value]) {
+				$last[time_start]=$current[time_start];
+                                $tmp[]=$first;
+                                $tmp[]=$last;
+                                return "0";
+                        } else {
+				$last[time_start]=$current[time_stop];
+				$tmp[]=$first;
+				$tmp[]=$current;
+				$tmp[]=$last;
+				return "0";
+			}
+		} else {
+			if($current[value]==0) {
+                                $last[time_start]=$current[time_stop];
+                                $tmp[]=$first;
+                                $tmp[]=$last;
+                                return "0";
+                        } else if($current[value]==$last[value]) {
+                                $last[time_start]=$current[time_start];
+                                $tmp[]=$first;
+                                $tmp[]=$last;
+                                return "0";
+                        } else {
+                                $last[time_start]=$current[time_stop];
+                                $tmp[]=$first;
+                                $tmp[]=$current;
+                                $tmp[]=$last;
+                                return "0";
+                        }
+		}
+
+	} else {
+	       echo "case 6;";
+               //case 6: current value is in the first, between first and last and stop in the last value
+		if(($current[time_start]==$first[time_start])&&($current[time_stop]==$last[time_stop])) {
+			if($current[value]==0) {
+				return "0";
+			} else {
+				$tmp[]=$current;
+				return "0";
+			}
+		} else if($current[time_start]==$first[time_start]) {
+			if($current[value]==0) {
+				$last[time_start]=$current[time_stop];
+				$tmp[]=$last;
+				return "0";
+			} else if($current[value]==$last[value]) {
+				$current[time_stop]=$last[time_stop];
+				$tmp[]=$current;
+				return "0";
+			} else {
+				$last[time_start]=$current[time_stop];
+				$tmp[]=$current;
+				$tmp[]=$last;
+				return "0";
+			}
+		} else if ($current[time_start]==$last[time_stop]) {
+			if($current[value]==0) {
+                                $first[time_stop]=$current[time_start];
+                                $tmp[]=$first;
+                                return "0";
+                        } else if($current[value]==$last[value]) {
+				$first[time_stop]=$current[time_start];
+                                $tmp[]=$first;
+				$tmp[]=$current;
+                                return "0";
+                        } else if($current[value]==$first[value]) {
+                                $first[time_stop]=$current[time_stop];
+                                $tmp[]=$first;
+                                return "0";
+			} else {
 				$first[time_stop]=$current[time_start];
 				$tmp[]=$first;
-				return true;
-			} else {
-				$first[time_stop]=$current[time_stop];
-				$tmp[]=$first;
-				return true;
+				$tmp[]=$current;
+				return "0";	
 			}
-                } else if($current[time_stop]>$last[time_start]) {
-			//si l'echantillon déborde sur le dernier interval
-			if($current[time_stop]<=$last[time_stop]) {
-				//mais qu'il ne touche pas d'autre interval
-				if($current[value]==0) {
-					//s'il est dans le premier, entre les deux et sur le deuxieme interval:
-					if(($current[time_start]==$first[time_start])&&($current[time_stop]==$last[time_stop])) {
-						return false;
-					} else if(($current[time_start]>$first[time_start])&&($current[time_start]<=$first[time_stop])) {
-						//suppression du deuxieme interval
-						if($current[time_stop]==$last[time_stop]) {
-							$first[time_stop] = $current[time_start];
-							$tmp[] = $first;
-							return false;
-						} else {
-							$first[time_stop] = $current[time_start];
-							$last[time_start] = $current[time_stop];
-							$tmp[]=$first;
-							$tmp[]=$last;
-							return false;
-						}
-					} else if($current[time_start]>$first[time_stop]) {
-						if($current[time_stop]==$last[time_stop]) {
-							$tmp[]=$first;
-							return false;	
-						} else {
-							$last[time_start]=$current[time_start];
-							$tmp[]=$first;
-							$tmp[]=$last;
-							return false;	
-						}
-					
-					}
-					//return true;
-				} else {
-					if(($current[time_start]>=$first[time_start])&&($current[time_start]<=$first[time_stop])) {	
-						$first[time_stop]=$last[time_stop];
-						$tmp[]=$first;
-						return false;
-					} else if(($current[time_start]>$first[time_stop])) {
-						$tmp[]=$first;
-						$last[time_start]=$current[time_start];
-						$tmp[]=$last;		
-						return false;
-					}	
-
-				}
-			} 
+		} else {
+			if($current[value]==0) {
+                                $first[time_stop]=$current[time_start];
+				$last[time_start]=$current[time_stop];
+                                $tmp[]=$first;
+				$tmp[]=$last;
+                                return "0";
+                        } else if($current[value]==$last[value]) {
+                                $first[time_stop]=$current[time_start];
+                                $tmp[]=$first;
+                                $tmp[]=$current;
+                                return "0";
+                        } else if($current[value]==$first[value]) {
+                                $first[time_stop]=$current[time_stop];
+				$last[time_start]=$current[time_stop];
+                                $tmp[]=$first;
+				$tmp[]=$last;
+                                return "0";
+                        } else {
+                                $first[time_stop]=$current[time_start]; 
+				$last[time_start]=$current[time_stop];
+                                $tmp[]=$first;
+                                $tmp[]=$current;
+				$tmp[]=$last;
+                                return "0";
+                        }
 		}
-		return true;
-	} else {
-		if($first[value]!=0) {
-			$tmp[]=$first;
+	}	
+   } else if(($current[time_start]>=$first[time_start])&&($current[time_stop]>$last[time_stop])&&($current[time_start]<$last[time_stop])&&($current[time_start]<$last[time_start])) {
+		echo "case: special";
+		$tmp_current=$current;
+		$tmp_current[time_stop]=$last[time_stop];
+		$continue=compare_data_program($first,$last,$tmp_current,$tmp);
+		if(!$continue) {
+			$current[time_start]=$last[time_stop];
+			return 2;		
 		}
+		return $continue;
+  } else {
+		echo "nothing";
+		$tmp[]=$first;
 		return true;
-	}
+  }
 }
 //}}}
 
