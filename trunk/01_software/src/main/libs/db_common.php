@@ -287,14 +287,14 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 	if(count($data_plug)>0) {
 		if($data_plug[0][time_start]=="000000") {
 			$first= array(
-         		       "time_start" => "$data_plug[0][time_start]",
-                		"time_stop" => "$data_plug[0][time_stop]",
-                		"value" => "$data_plug[0][value]"
+         		       "time_start" => $data_plug[0][time_start],
+                		"time_stop" => $data_plug[0][time_stop],
+                		"value" => $data_plug[0][value]
         		);	
 		}
 	}
 	if((empty($first))||(!isset($first))) {
-		$first= array(
+		$first=array(
 			"time_start" => "000000",
 			"time_stop" => "000000",
 			"value" => "0"
@@ -307,7 +307,20 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
                 "value" => "0"
 	);
 
-	$continue=1;
+	$data_plug[] = array(
+                "time_start" => "end",
+                "time_stop" => "end",
+                "value" => "end"
+        );
+
+	$data_plug[] = array(
+                "time_start" => "end",
+                "time_stop" => "end",
+                "value" => "end"
+        );
+
+
+	$continue="1";
 	clean_program($plug_id,$out);
 
 	if(count($data_plug)>1) {
@@ -317,7 +330,7 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 				$last = $data;
 			} 
 
-			if("$continue"=="1") {
+			if(("$continue"=="1")) {
 				echo "<br />";
                                 print_r($first);
                                 echo "<br />";
@@ -332,6 +345,8 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 				print_r($last);
 				echo "<br />";
 				print_r($current);
+				echo "<br />";
+				print_r($tmp);
 				echo "<br />-------------------<br />";
 			} else {
 				$continue="1";
@@ -348,6 +363,7 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 
 
 		$tmp=purge_program($tmp);
+		$tmp=optimize_program($tmp);
 		if(count($tmp)>0) {
 			foreach($tmp as $new_val) {
 				print_r($new_val);
@@ -552,7 +568,8 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 		echo "case 5;";
 		//case 5: current value is betwwen the first and last value and stop in the last value
 		if(($current[time_start]==$first[time_stop])&&($current[time_stop]==$last[time_stop])) {
-			  if($current[value]==0) {
+			echo "-1";
+			if($current[value]==0) {
                                 $tmp[]=$first;
                                 return "0";
                         } else if(($current[value]==$last[value])&&($current[value]==$first[value])) {
@@ -571,6 +588,7 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 				return "0";
                         } 
 		} else if(($current[time_start]>$first[time_stop])&&($current[time_stop]==$last[time_stop])) {
+			echo "-2";
 			$tmp[]=$first;
 			if($current[value]==0) {
                                 return "0";
@@ -579,6 +597,7 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                                 return "0";
                         } 
 		} else if(($current[time_start]==$first[time_stop])&&($current[time_stop]<$last[time_stop])) {
+			echo "-3";
 			if($current[value]==0) {
 				$last[time_start]=$current[time_stop];
                                 $tmp[]=$first;
@@ -607,6 +626,7 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 				return "0";
 			}
 		} else {
+			echo "-4";
 			if($current[value]==0) {
                                 $last[time_start]=$current[time_stop];
                                 $tmp[]=$first;
@@ -625,7 +645,6 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                                 return "0";
                         }
 		}
-
 	} else {
 	       echo "case 6;";
                //case 6: current value is in the first, between first and last and stop in the last value
@@ -705,14 +724,14 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 		$tmp_current[time_stop]=$last[time_stop];
 		$continue=compare_data_program($first,$last,$tmp_current,$tmp);
 		if(!$continue) {
-			$current[time_start]=$last[time_stop];
-			return 2;		
+			$current[time_start]=$last[time_start];
+			return "2";		
 		}
 		return $continue;
   } else {
 		echo "nothing";
 		$tmp[]=$first;
-		return true;
+		return "1";
   }
 }
 //}}}
@@ -788,7 +807,44 @@ function purge_program($arr) {
 	return $tmp;
 	}
 }
-// }}}}
+// }}}
+
+
+// {{{ optimize_program($arr)
+// ROLE optimize a program by deleting uselles value
+// IN $arr      array containing value of the program
+// RET the array opzimized 
+function optimize_program($arr) {
+        $tmp=array();
+        asort($arr);
+        if(count($arr)>1) {
+		$jump=false;
+		while(!$jump) {
+			$jump=true;
+			$i=0;
+			while(array_key_exists($i+1,$arr)) {
+				if(($arr[$i+1][time_start]<=$arr[$i][time_stop])&&($arr[$i+1][value]==$arr[$i][value])) {
+					$val=$arr[$i];
+					$val[time_stop]=$arr[$i+1][time_stop];
+					$tmp[]=$val;
+					$jump=false;
+					$i=$i+2;	
+				} else {
+					$tmp[]=$arr[$i];
+					$i=$i+1;
+				}
+			}
+			$tmp[]=$arr[$i];
+			if(!$jump) {
+				$arr=$tmp;
+				unset($tmp);
+			}
+		}
+		return $tmp;
+	}
+        return $arr;
+}
+// }}}
 
 
 /// {{{ create program_from_database()
