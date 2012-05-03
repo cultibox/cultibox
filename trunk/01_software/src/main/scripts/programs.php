@@ -92,7 +92,6 @@ for($i=0;$i<$nb_plugs;$i++) {
 }
 
 if((isset($sd_card))&&(!empty($sd_card))) {
-        $info=$info.__(INFO_SD_CARD).": $sd_card";
         $program=create_program_from_database();
         save_program_on_sd($sd_card,$program,$return,$info);
 }

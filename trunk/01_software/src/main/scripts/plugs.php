@@ -25,6 +25,8 @@ if((!isset($sd_card))||(empty($sd_card))) {
 if((!empty($sd_card))&&(isset($sd_card))) {
 	$program=create_program_from_database();
 	save_program_on_sd($sd_card,$program,$return,$info);
+} else {
+        $return=$return.__('ERROR_SD_CARD_CONF');
 }
 
 for($nb=1;$nb<=$nb_plugs;$nb++) {
@@ -61,6 +63,16 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 if(($update_program)&&(empty($return))) {
         $info=$info.__('VALID_UPDATE_CONF');
 }
+
+
+if((isset($sd_card))&&(!empty($sd_card))) {
+        $info=$info.__(INFO_SD_CARD).": $sd_card";
+       	$plugconf=create_plugconf_from_database($nb_plugs);
+	if(count($plugconf)>0) {
+		write_plugconf($plugconf,$sd_card,$out);
+	}
+}
+
 
 include('main/templates/plugs.html');
 
