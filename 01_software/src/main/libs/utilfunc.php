@@ -554,7 +554,7 @@ function save_program_on_sd($sd_card,$program,&$out,&$info) {
 // }}}
 
 
-// {{{ write_program($data,$out)
+// {{{ write_program($data,$sd_card,$out)
 // ROLE write programs into the sd card
 // IN   $data		array containing datas to write
 //	$sd_card	the sd card to be written
@@ -564,7 +564,7 @@ function write_program($data,$sd_card,&$out="") {
 	$file="$sd_card/plugv";
 	if($f=fopen("$file","w+")) {
 		for($i=0; $i<count($data); $i++) {
-			fputs($f,"$data[$i]"."\n");
+			fputs($f,"$data[$i]"."\n\r");
 		}
 		fclose($f);
 	} else {
@@ -572,6 +572,32 @@ function write_program($data,$sd_card,&$out="") {
 	}
 }
 // }}}
+
+
+// {{{ write_plugconf($data,ŝd_card,$out)
+// ROLE write plug_configuration into the sd card
+// IN   $data           array containing datas to write
+//      $sd_card        the sd card to be written
+//      $out            error or warning messages
+// RET false is an error occured, true else
+function write_plugconf($data,$sd_card,&$out="") {
+	for($i=0;$i<count($data);$i++) {
+		$nb=$i+1;
+		if($nb<10) {
+        		$file="$sd_card/plug0$nb";
+		} else {
+			$file="$sd_card/plug$nb";
+		}
+			
+        	if($f=fopen("$file","w+")) {
+                       	fputs($f,"$data[$i]"."\n\r");
+               	}
+               	fclose($f);
+	}
+}
+// }}}
+
+
 
 
 // {{{ write_sd_conf_file()

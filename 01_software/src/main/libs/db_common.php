@@ -372,7 +372,6 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 		$tmp=optimize_program($tmp);
 		if(count($tmp)>0) {
 			foreach($tmp as $new_val) {
-				print_r($new_val);
 				insert_program_value($plug_id,$new_val[time_start],$new_val[time_stop],$new_val[value],$out);	
 			}
 		}
@@ -865,7 +864,65 @@ function optimize_program($arr) {
 // }}}
 
 
-/// {{{ create program_from_database()
+/// {{{ create_plugconf_from_database($nb)
+// ROLE read plugs configuration from the database and format its to be write into a sd card
+// IN $nb	the number of plug to read
+// RET an array containing datas
+function create_plugconf_from_database($nb=0) {
+	if($nb>0) {
+        	$db = db_priv_start();
+        	$sql = <<<EOF
+SELECT * FROM `plugs` WHERE id <= {$nb}
+EOF;
+        	$db->setQuery($sql);
+        	$res = $db->loadAssocList();
+        	$ret=$db->getErrorMsg();
+        	if((isset($ret))&&(!empty($ret))) {
+                	$out=$out.__('ERROR_SELECT_SQL').$ret;
+        	}
+
+        	if(!db_priv_end($db)) {
+                	$out=$out.__('PROBLEM_CLOSING_CONNECTION');
+        	}
+
+		if(count($res)>0) {
+			$arr=array();
+			foreach($res as $data) {
+				if($date[PLUG_TOLERANCE]) {
+                                        $tol=$ddata[PLUG_TOLERANCE]*100;
+				} else {
+					$tol="000";
+				}
+
+				if($data[PLUG_TYPE]=="ventilator") {
+					$reg="REG:T+${tol}";
+					$sec="SEC:T+1000";
+
+				} else if($data[PLUG_TYPE]=="heating") {
+	                                $reg="REG:T-${tol}";
+					$sec="SEC:T-1000";
+				} else if($data[PLUG_TYPE]=="humidifier") {
+                                        $reg="REG:H-${tol}";
+					$sec="SEC:H-1000";
+				} else if($data[PLUG_TYPE]=="dehumidifier") {
+					$reg="REG:H+${tol}";
+					$sec="SEC:H+1000";
+				} else {
+					$reg="REG:N+000";
+					$sec="SEC:N+0000";
+				}
+				
+				$arr[]="$reg"."\n\r"."$sec";
+			}
+			return $arr;
+		}
+	} 
+}
+
+// }}}
+
+
+/// {{{ create_program_from_database()
 // ROLE read programs from the database and format its to be write into a sd card
 // IN none
 // RET an array containing datas
