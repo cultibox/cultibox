@@ -331,23 +331,29 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 			} 
 
 			if(("$continue"=="1")) {
-				echo "<br />";
-                                print_r($first);
-                                echo "<br />";
-                                print_r($last);
-                                echo "<br />";
-                                print_r($current);
-				echo "<br />";
+				if($GLOBALS['DEBUG_TRACE']) {
+					echo "<br />";
+                                	print_r($first);
+                                	echo "<br />";
+                                	print_r($last);
+                                	echo "<br />";
+                                	print_r($current);
+					echo "<br />";
+				}
+
 				$continue=compare_data_program($first,$last,$current,$tmp);
-				echo "<br />";
-				print_r($first);
-				echo "<br />";
-				print_r($last);
-				echo "<br />";
-				print_r($current);
-				echo "<br />";
-				print_r($tmp);
-				echo "<br />-------------------<br />";
+
+				if($GLOBALS['DEBUG_TRACE']) {
+					echo "<br />";
+					print_r($first);
+					echo "<br />";
+					print_r($last);
+					echo "<br />";
+					print_r($current);
+					echo "<br />";
+					print_r($tmp);
+					echo "<br />-------------------<br />";
+				 }
 			} else {
 				$continue="1";
 			}
@@ -391,7 +397,9 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
    if(($current[time_start]>=$first[time_start])&&($current[time_stop]<=$last[time_stop])) {
 	if(($current[time_start]>=$first[time_start])&&($current[time_stop]<=$first[time_stop])&&($current[time_start]<$last[time_stop])) {
 	        //case 1: current value is in the first value
-		echo "case 1;";
+		if($GLOBALS['DEBUG_TRACE']) {
+			echo "case 1-";
+		}
 		if($current[value]==$first[value]) {
 				//first=current: nothing to do
 			$tmp[]=$first;
@@ -470,7 +478,9 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                                 }
 		}
 	} else if(($current[time_start]>=$first[time_stop])&&($current[time_stop]<=$last[time_start])) {
-		echo "case 2;";
+		if($GLOBALS['DEBUG_TRACE']) {
+			echo "case 2-";
+		}
 		//case 2: current value is between first and last value
 		if($current[value]==0) {
 			//nothing to do
@@ -531,11 +541,15 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 		}
 	} else if(($current[time_start]>=$last[time_start])&&($current[time_stop]<=$last[time_stop])) {
 		// case 3: current value is in the last value
-		echo "case 3;";
+		if($GLOBALS['DEBUG_TRACE']) {
+                        echo "case 3-";
+                }
 		$tmp[]=$first;
 		return "1";	
 	} else if(($current[time_start]>=$first[time_start])&&($current[time_start]<=$first[time_stop])&&($current[time_stop]<$last[time_start])&&($current[time_stop]>$first[time_stop])) {
-                echo "case 4;";
+		if($GLOBALS['DEBUG_TRACE']) {
+                        echo "case 4-";
+                }
 		//case 4: current value is in the first value and stop between the first and before the last value
 		if($current[value]==$first[value]) {
 			$first[time_stop]=$current[time_stop];
@@ -565,10 +579,11 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 				}
 		}
 	} else if(($current[time_start]>=$first[time_stop])&&($current[time_start]<$last[time_start])&&($current[time_stop]>$last[time_start])) {
-		echo "case 5;";
+		if($GLOBALS['DEBUD_TRACE']) {
+                        echo "case 5-";
+                }
 		//case 5: current value is betwwen the first and last value and stop in the last value
 		if(($current[time_start]==$first[time_stop])&&($current[time_stop]==$last[time_stop])) {
-			echo "-1";
 			if($current[value]==0) {
                                 $tmp[]=$first;
                                 return "0";
@@ -588,7 +603,6 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 				return "0";
                         } 
 		} else if(($current[time_start]>$first[time_stop])&&($current[time_stop]==$last[time_stop])) {
-			echo "-2";
 			$tmp[]=$first;
 			if($current[value]==0) {
                                 return "0";
@@ -597,7 +611,6 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                                 return "0";
                         } 
 		} else if(($current[time_start]==$first[time_stop])&&($current[time_stop]<$last[time_stop])) {
-			echo "-3";
 			if($current[value]==0) {
 				$last[time_start]=$current[time_stop];
                                 $tmp[]=$first;
@@ -626,7 +639,6 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 				return "0";
 			}
 		} else {
-			echo "-4";
 			if($current[value]==0) {
                                 $last[time_start]=$current[time_stop];
                                 $tmp[]=$first;
@@ -646,7 +658,9 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                         }
 		}
 	} else {
-	       echo "case 6;";
+		if($GLOBALS['DEBUD_TRACE']) {
+                        echo "case 6-";
+                }
                //case 6: current value is in the first, between first and last and stop in the last value
 		if(($current[time_start]==$first[time_start])&&($current[time_stop]==$last[time_stop])) {
 			if($current[value]==0) {
@@ -719,7 +733,9 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 		}
 	}	
    } else if(($current[time_start]>=$first[time_start])&&($current[time_stop]>$last[time_stop])&&($current[time_start]<$last[time_stop])&&($current[time_start]<$last[time_start])) {
-		echo "case: special";
+		if($GLOBALS['DEBUD_TRACE']) {
+                        echo "special case: ";
+                }
 		$tmp_current=$current;
 		$tmp_current[time_stop]=$last[time_stop];
 		$continue=compare_data_program($first,$last,$tmp_current,$tmp);
@@ -729,7 +745,9 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 		}
 		return $continue;
   } else {
-		echo "nothing";
+		if($GLOBALS['DEBUD_TRACE']) {
+                        echo "nothing;";
+                }
 		$tmp[]=$first;
 		return "1";
   }
