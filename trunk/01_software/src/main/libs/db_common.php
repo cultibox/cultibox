@@ -888,8 +888,11 @@ EOF;
 		if(count($res)>0) {
 			$arr=array();
 			foreach($res as $data) {
-				if($date[PLUG_TOLERANCE]) {
-                                        $tol=$ddata[PLUG_TOLERANCE]*100;
+				if($data[PLUG_TOLERANCE]) {
+                                        $tol=$data[PLUG_TOLERANCE]*10;
+					while(strlen($tol)<3) {
+						$tol="0$tol";
+					}
 				} else {
 					$tol="000";
 				}
