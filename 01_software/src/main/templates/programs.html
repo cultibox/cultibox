@@ -53,6 +53,14 @@ $(document).ready(function() {
 		title: {
 			text: <?php echo "'".__(CURRENT_PLUG_PROGRAM)." ".$plugs_infos[$i-1][PLUG_NAME]."'"; ?>
 		},
+		lang: {
+			printButtonTitle: <?php echo "'".__(PRINT_HIGHCHART)."',"; ?>
+			exportButtonTitle: <?php echo "'".__(EXPORT_HIGHCHART)."',"; ?>
+			downloadPNG : <?php echo "'".__(EXPORT_PNG)."',"; ?>
+			downloadJPEG : <?php echo "'".__(EXPORT_JPEG)."',"; ?>
+			downloadPDF : <?php echo "'".__(EXPORT_PDF)."',"; ?>
+			downloadSVG : <?php echo "'".__(EXPORT_SVG)."'"; ?>
+		},
 		xAxis: {
 			type: 'datetime',
 			dateTimeLabelFormats: { // don't display the dummy year
@@ -147,7 +155,8 @@ $(document).ready(function() {
 				<tr>
 					<td width="15%"></td>
 					<td width="40%"><?php echo __(START_TIME_PROGRAM); ?></td>
-					<td width="45%"><input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?>value="<?php echo $start_time;?>" <?php } ?> /></td>
+					<td width="45%"><input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?>value="<?php echo $start_time;?>" <?php } ?> />
+</td>
 				</tr>
 				<tr>
 					<td></td>

@@ -85,9 +85,9 @@ if((empty($return))||(!isset($return))) {
 
 if((isset($sd_card))&&(!empty($sd_card))) {
 	if("$update_frequency"=="-1") {
-		write_sd_conf_file($sd_card,$record_frequency,$nb_plugs,"0",$return);
+		write_sd_conf_file($sd_card,$record_frequency,"0",$return);
 	} else {
-		write_sd_conf_file($sd_card,$record_frequency,$nb_plugs,$update_frequency,$return);	
+		write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$return);	
 	}	
 }
 

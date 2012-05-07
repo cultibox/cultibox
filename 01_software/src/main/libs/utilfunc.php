@@ -545,7 +545,7 @@ function save_program_on_sd($sd_card,$program,&$out,&$info) {
 	if(is_file("${sd_card}/plugv")) {
 			$file="${sd_card}/plugv";
 			if(count($program)>0) {
-				write_program($program,$sd_card,$out);
+				write_program($program,"$sd_card/plugv",$out);
 			}
 	} else {
 		return false;
@@ -557,11 +557,10 @@ function save_program_on_sd($sd_card,$program,&$out,&$info) {
 // {{{ write_program($data,$sd_card,$out)
 // ROLE write programs into the sd card
 // IN   $data		array containing datas to write
-//	$sd_card	the sd card to be written
+//	$file		file path to save data
 //	$out		error or warning messages
 // RET false is an error occured, true else
-function write_program($data,$sd_card,&$out="") {
-	$file="$sd_card/plugv";
+function write_program($data,$file,&$out="") {
 	if($f=fopen("$file","w+")) {
 		for($i=0; $i<count($data); $i++) {
 			fputs($f,"$data[$i]"."\n\r");
@@ -603,15 +602,16 @@ function write_plugconf($data,$sd_card,&$out="") {
 // {{{ write_sd_conf_file()
 // ROLE	save configuration into the SD card
 
-function write_sd_conf_file($sd_card,$record_frequency=1,$nb_plugs=4,$update_frequency=1,&$out="") {
-	$record="00$record_frequency";
-	$plugs="00$nb_plugs";
-	$update="00$update_frequency";
-	$file="$sd_card/plugconf";
+function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,&$out="") {
+	$record=$record_frequency*60;
+	while(strlen($record)<4) {
+		$record="0$record";
+	}
+	$update="000$update_frequency";
+	$file="$sd_card/conf";
         if($f=fopen("$file","w+")) {
-		fputs($f,"PLG\t$plugs\n");
-		fputs($f,"RCD\t$record\n");
-		fputs($f,"UPD\t$update\n");
+		fputs($f,"PLUG_UPDATE:$record\n\r");
+		fputs($f,"LOGS_UPDATE:$update\n\r");
                 fclose($f);
         } else {
                 $out=$out.__('ERROR_WRITE_SD');
@@ -628,14 +628,14 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$nb_plugs=4,$update_fre
 // RET false is there is a wrong value, true else
 function check_tolerance_value($type,$tolerance=0,&$out="") {
 	if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
-			if(($tolerance > 0)&&($tolerance < 10)) {
+			if(($tolerance >= 0)&&($tolerance <= 25.5)) {
 				return true;
 			} else {
 				$out=$out.__('ERROR_TOLERANCE_VALUE_DEGREE');
 				return false;
 			}
 	} else if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
-			if(($tolerance > 0)&&($tolerance < 20)) {
+			if(($tolerance >= 0)&&($tolerance <= 25.5)) {
                                 return true;
                         } else {
 				$out=$out.__('ERROR_TOLERANCE_VALUE_POURCENT');
