@@ -17,13 +17,24 @@
 		}
 	}
 </script>
-<div id="info">
-        <?php echo $info; ?>
-</div>
 
-<div id="error">
-        <?php echo $return; ?>
+<?php if((isset($info))&&(!empty($info))) { ?>
+<div id="info">
+<ul>
+        <?php echo $info; ?>
+</ul>
 </div>
+<br />
+<?php } ?>
+
+<?php if((isset($error))&&(!empty($error))) { ?>
+<div id="error">
+<ul>
+        <?php echo $error; ?>
+</ul>
+</div>
+<br />
+<?php } ?>
 
 <br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm">
