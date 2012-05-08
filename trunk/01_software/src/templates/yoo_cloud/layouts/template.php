@@ -18,6 +18,7 @@ include($this['path']->path('layouts:template.config.php'));
          <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css" />
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" />
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/scw.css" />
+
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                 <script type="text/javascript" src="main/libs/js/jquery-1.7.2.min.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-1.8.19.custom.min.js"></script>
@@ -37,8 +38,7 @@ include($this['path']->path('layouts:template.config.php'));
                         .ui-timepicker-div td { font-size: 90%; }
                         .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
-                </style
-
+                </style>
 </head>
 
 <body id="page" class="page <?php echo $this['config']->get('body_classes'); ?>" data-config='<?php echo $this['config']->get('body_config','{}'); ?>'>
