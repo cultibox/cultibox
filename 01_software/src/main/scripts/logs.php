@@ -9,12 +9,12 @@ require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
 
-$lang=get_configuration("LANG",$return);
+$lang=get_configuration("LANG",$error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
-$return="";
+$error="";
 $info="";
 $type="";
 $temperature= array();
@@ -24,7 +24,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
         $sd_card=get_sd_card();
 }
 if((!isset($sd_card))||(empty($sd_card))) {
-        $return=$return.__('ERROR_SD_CARD_LOGS');
+        $error=$error.__('ERROR_SD_CARD_LOGS');
 } else {
         $info=$info.__('INFO_SD_CARD').": $sd_card</li>";
 }
@@ -74,7 +74,7 @@ if((isset($sd_card))||(!empty($sd_card))) {
        				// get log value
        				get_log_value("$sd_card/logs/$mmonth/$dday",$log);
        				if(!empty($log)) {
-            				db_update_logs($log,$return);
+            				db_update_logs($log,$error);
             				unset($log) ;
             				$log = array();
 	    				$load_log=true;
@@ -84,16 +84,16 @@ if((isset($sd_card))||(!empty($sd_card))) {
 	}
 }
 
-if(($load_log)&&(empty($return))) {
+if(($load_log)&&(empty($error))) {
 	$info=$info.__('VALID_LOAD_LOG');
 } 
 
 if("$type"=="days") {
         $legend_date=$startday;
-        $check_format=check_format_date($startday,$type,$return);
+        $check_format=check_format_date($startday,$type,$error);
 } else {
         $legend_date=date('Y')."-".$startmonth;
-        $check_format=check_format_date($startmonth,$type,$return);
+        $check_format=check_format_date($startmonth,$type,$error);
 }
 
 
@@ -104,19 +104,19 @@ if("$type" == "days") {
         	$stmonth=substr($startday, 5, 2);
         	$stday=substr($startday, 8, 2);
 
-		get_graph_array($temperature,"temperature/100",$startday,$return);
-		get_graph_array($humidity,"humidity/100",$startday,$return);
+		get_graph_array($temperature,"temperature/100",$startday,$error);
+		get_graph_array($humidity,"humidity/100",$startday,$error);
 
 		if(!empty($temperature)) {
 			$data_temp=get_format_graph($temperature);
 		} else {
-			$return=$return.__('EMPTY_TEMPERATURE_DATA');
+			$error=$error.__('EMPTY_TEMPERATURE_DATA');
 		}
 
 		if(!empty($humidity)) {
 			$data_humi=get_format_graph($humidity);
 		} else {
-			$return=$return.__('EMPTY_HUMIDITY_DATA');
+			$error=$error.__('EMPTY_HUMIDITY_DATA');
 		}
 		$next=1;
 	} 
@@ -128,8 +128,8 @@ if("$type" == "days") {
 				$i="0$i";
 			}
 			$ddate="$startyear-$startmonth-$i";
-			get_graph_array($temperature,"temperature/100","$ddate",$return);
-			get_graph_array($humidity,"humidity/100","$ddate",$return);
+			get_graph_array($temperature,"temperature/100","$ddate",$error);
+			get_graph_array($humidity,"humidity/100","$ddate",$error);
 			if("$data_temp" != "" ) {
 				$data_temp="$data_temp, ".get_format_graph($temperature);
 			} else {
@@ -145,10 +145,10 @@ if("$type" == "days") {
 			$humidity=array();
 		}
 		if("$data_humi" == "" ) {
-			$return=$return.__('EMPTY_HUMIDITY_DATA');
+			$error=$error.__('EMPTY_HUMIDITY_DATA');
 		}
 		if("$data_temp" == "" ) {
-			$return=$return.__('EMPTY_TEMPERATURE_DATA');
+			$error=$error.__('EMPTY_TEMPERATURE_DATA');
                 }
 		$data_temp=get_format_month($data_temp);
 		$data_humi=get_format_month($data_humi);
@@ -160,8 +160,8 @@ if("$type" == "days") {
 	} 
 }
 
-$color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$return);
-$color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$return);
+$color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$error);
+$color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$error);
 
 include('main/templates/logs.html');
 

@@ -1,14 +1,20 @@
+<?php if((isset($info))&&(!empty($info))) { ?>
 <div id="info">
 <ul>
         <?php echo $info; ?>
 </ul>
 </div>
+<br />
+<?php } ?>
 
+<?php if((isset($error))&&(!empty($error))) { ?>
 <div id="error">
 <ul>
-        <?php echo $return; ?>
+        <?php echo $error; ?>
 </ul>
 </div>
+<br />
+<?php } ?>
 
 <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
 
@@ -146,7 +152,7 @@ $(document).ready(function() {
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
 <table width="100%" id="conf<?php echo $i; ?>" >
 	<tr>
-		<td width="35%"><p class="title_conf"><?php echo __(CONFIGURE_PROGRAM); ?>:</p></td>
+		<td width="40%"><p class="title_conf"><?php echo __(CONFIGURE_PROGRAM); ?></p></td>
 		<td></td>
 	</tr>
 	<tr>
@@ -191,16 +197,22 @@ $(document).ready(function() {
 	</tr>
 </table>
 </form>
-<div id="error">
-<ul>
-<?php if((isset($ret_plug[$i]))&&(!empty($ret_plug[$i]))) echo $ret_plug[$i]; ?>
-</ul>
-</div>
+
+<?php if((isset($ret_plug[$i]))&&(!empty($ret_plug[$i]))) { ?>
 <div id="info">
 <ul>
-<?php if((isset($info_plug[$i]))&&(!empty($info_plug[$i]))) echo $info_plug[$i]; ?>
+<?php echo $ret_plug[$i]; ?>
 </ul>
 </div>
-<br /><br /><br />
+<?php } ?>
+
+
+<?php if((isset($ret_plug[$i]))&&(!empty($ret_plug[$i]))) { ?>
+<div id="error">
+<ul>
+<?php echo $ret_plug[$i]; ?>
+</ul>
+</div>
+<?php } ?>
 
 <?php } ?>

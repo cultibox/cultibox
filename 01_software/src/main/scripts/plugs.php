@@ -8,14 +8,14 @@ require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
 
-$lang=get_configuration("LANG",$return);
+$lang=get_configuration("LANG",$error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
-$return="";
+$error="";
 $info="";
-$nb_plugs=get_configuration("NB_PLUGS",$return);
+$nb_plugs=get_configuration("NB_PLUGS",$error);
 $update_program=false;
 
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -24,9 +24,9 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 if((!empty($sd_card))&&(isset($sd_card))) {
 	$program=create_program_from_database();
-	save_program_on_sd($sd_card,$program,$return,$info);
+	save_program_on_sd($sd_card,$program,$error,$info);
 } else {
-        $return=$return.__('ERROR_SD_CARD_CONF');
+        $error=$error.__('ERROR_SD_CARD_CONF');
 }
 
 for($nb=1;$nb<=$nb_plugs;$nb++) {
@@ -35,32 +35,32 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 	$tolerance=getvar("plug_tolerance{$nb}");
 
 	if((!empty($name))&&(isset($name))) {
-		insert_plug_conf("PLUG_NAME",$nb,$name,$return);
+		insert_plug_conf("PLUG_NAME",$nb,$name,$error);
 		$update_program=true;
 	}
 	
 
 	if((!empty($type))&&(isset($type))) {
-		insert_plug_conf("PLUG_TYPE",$nb,$type,$return);
+		insert_plug_conf("PLUG_TYPE",$nb,$type,$error);
 		$update_program=true;
         }
 
 	if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)) {
 		if((!empty($tolerance))&&(isset($tolerance))) {
-			if(check_tolerance_value($type,$tolerance,$return)) {
-				insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$return);
+			if(check_tolerance_value($type,$tolerance,$error)) {
+				insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$error);
 				$update_program=true;
 			}
 		}
 	} else {
-		insert_plug_conf("PLUG_TOLERANCE",$nb,0,$return);
+		insert_plug_conf("PLUG_TOLERANCE",$nb,0,$error);
 	} 
 
-	$plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$return);
-	$plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$return);
-	$plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$return);
+	$plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$error);
+	$plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$error);
+	$plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$error);
 }
-if(($update_program)&&(empty($return))) {
+if(($update_program)&&(empty($error))) {
         $info=$info.__('VALID_UPDATE_CONF');
 }
 

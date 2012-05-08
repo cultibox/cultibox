@@ -1,16 +1,21 @@
+<?php if((isset($info))&&(!empty($info))) { ?>
 <div id="info">
 <ul>
         <?php echo $info; ?>
 </ul>
 </div>
+<br />
+<?php } ?>
 
+<?php if((isset($error))&&(!empty($error))) { ?>
 <div id="error">
 <ul>
-        <?php echo $return; ?>
+        <?php echo $error; ?>
 </ul>
 </div>
+<br />
+<?php } ?>
 
-<br /><br />
 
 <p class="title_conf">
 	<?php echo __(USER_CONF); ?>:
