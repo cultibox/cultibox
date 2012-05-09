@@ -92,7 +92,7 @@ for($i=0;$i<$nb_plugs;$i++) {
 }
 
 if((isset($sd_card))&&(!empty($sd_card))) {
-        $program=create_program_from_database();
+        $program=create_program_from_database($error);
         save_program_on_sd($sd_card,$program,$error,$info);
 }
 

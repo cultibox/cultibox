@@ -867,8 +867,9 @@ function optimize_program($arr) {
 /// {{{ create_plugconf_from_database($nb)
 // ROLE read plugs configuration from the database and format its to be write into a sd card
 // IN $nb	the number of plug to read
+//    $out	error or warning message
 // RET an array containing datas
-function create_plugconf_from_database($nb=0) {
+function create_plugconf_from_database($nb=0,&$out="") {
 	if($nb>0) {
         	$db = db_priv_start();
         	$sql = <<<EOF
@@ -927,9 +928,9 @@ EOF;
 
 /// {{{ create_program_from_database()
 // ROLE read programs from the database and format its to be write into a sd card
-// IN none
+// IN $out	error or warning message
 // RET an array containing datas
-function create_program_from_database() {
+function create_program_from_database(&$out="") {
 	$db = db_priv_start();
         $sql = <<<EOF
 SELECT * FROM `programs` WHERE time_start != "000000" AND time_stop != "235959" ORDER by `time_start`
@@ -1029,6 +1030,68 @@ EOF;
                 $data[$count]="86399000000000000000000000000000000000000000000000000";
         }
         return $data;
+}
+// }}}
+
+
+// {{{ create_calendar_from_database()
+// ROLE read calendar from the database and format its to be write into a sd card
+// IN	$out	error or warning message
+// RET an array containing datas
+function create_calendar_from_database(&$out="") {
+	$year=date(Y);
+        $db = db_priv_start();
+        $sql = <<<EOF
+SELECT `Subject`,`StartTime` FROM `jqcalendar` WHERE `StartTime` LIKE "{$year}-%"
+EOF;
+        $db->setQuery($sql);
+        $res = $db->loadAssocList();
+        $ret=$db->getErrorMsg();
+        if((isset($ret))&&(!empty($ret))) {
+                $out=$out.__('ERROR_SELECT_SQL').$ret;
+        } else {
+		$data=array();	
+		foreach($res as $val) {
+			$s=array();
+			$line="";
+			$month=substr($val[StartTime],5,2);
+			$day=substr($val[StartTime],8,2);
+			$count=0;
+			$number=0;
+			for($i=0;$i<strlen($val[Subject]);$i++) {
+					$count=$count+1;
+					$line=$line.$val[Subject][$i];
+					if($count==13) {
+						$s[]=$line;
+						$line="";
+						$count=0;
+						$number=$number+1;
+					}
+
+					if("$number"=="255") {
+						break;
+					}
+			}
+
+			if(("$count"!="13")&&("$number"!="255")) {
+				$s[]=$line;
+				$number=$number+1;
+			}
+
+			while(strlen($number)<3) {
+				$number="0$number";
+			}
+
+			$data[]=array(
+					"month" => $month,
+					"day" => $day,
+					"number" => $number,
+					"subject" => $s
+			);
+			unset($s);
+		}
+		return $data;
+	}
 }
 // }}}
 

@@ -161,13 +161,12 @@ $(document).ready(function() {
 				<tr>
 					<td width="15%"></td>
 					<td width="40%"><?php echo __(START_TIME_PROGRAM); ?></td>
-					<td width="45%"><input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?>value="<?php echo $start_time;?>" <?php } ?> />
-</td>
+					<td width="45%"><input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> /></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td><?php echo __(END_TIME_PROGRAM); ?></td>
-					<td><input type="text" size="10" name="end_time<?php echo $i; ?>" id="end_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($end_time))) { ?>value="<?php echo $end_time;?>" <?php } ?> /></td>
+					<td><input type="text" size="10" name="end_time<?php echo $i; ?>" id="end_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($end_time))) { ?>value="<?php echo $end_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> /></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -178,7 +177,7 @@ $(document).ready(function() {
         						<option value="on" <?php if(($i==$selected_plug)&&($value_program==1)) { ?>selected<?php } ?>><?php echo __(VALUE_ON); ?></option>
         					</select>
 					<?php } else { ?>
-        					<input type="text" name="value_program<?php echo $i; ?>" size="4" maxlength="4" <?php if(($i==$selected_plug)&&(!empty($value_program))) { ?>value="<?php echo $value_program;?>" <?php } ?> />
+        					<input type="text" name="value_program<?php echo $i; ?>" size="4" maxlength="4" <?php if(($i==$selected_plug)&&(!empty($value_program))) { ?>value="<?php echo $value_program;?>" <?php } else { ?>value="0" <?php } ?> />
                                                 <?php if((strcmp($plugs_infos[$i-1][PLUG_TYPE],"heating")==0)||(strcmp($plugs_infos[$i-1][PLUG_TYPE],"ventilator")==0)) echo "°C"; ?>
 						<?php if((strcmp($plugs_infos[$i-1][PLUG_TYPE],"humidifier")==0)||(strcmp($plugs_infos[$i-1][PLUG_TYPE],"dehumidifier")==0)) echo "%"; ?>
 					<?php } ?>
