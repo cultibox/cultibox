@@ -23,7 +23,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 if((!empty($sd_card))&&(isset($sd_card))) {
-	$program=create_program_from_database();
+	$program=create_program_from_database($error);
 	save_program_on_sd($sd_card,$program,$error,$info);
 } else {
         $error=$error.__('ERROR_SD_CARD_CONF');
@@ -67,7 +67,7 @@ if(($update_program)&&(empty($error))) {
 
 if((isset($sd_card))&&(!empty($sd_card))) {
         $info=$info.__(INFO_SD_CARD).": $sd_card";
-       	$plugconf=create_plugconf_from_database($nb_plugs);
+       	$plugconf=create_plugconf_from_database($nb_plugs,$error);
 	if(count($plugconf)>0) {
 		write_plugconf($plugconf,$sd_card,$out);
 	}

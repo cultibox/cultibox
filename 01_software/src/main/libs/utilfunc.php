@@ -597,11 +597,13 @@ function write_plugconf($data,$sd_card,&$out="") {
 // }}}
 
 
-
-
 // {{{ write_sd_conf_file()
 // ROLE	save configuration into the SD card
-
+// IN	$sd_card		location of the sd card to save data
+//	$record_frequency	record frequency value
+//	$update_frequency	update frequency value
+//	$out			error or warning message
+// RET none	
 function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,&$out="") {
 	$record=$record_frequency*60;
 	while(strlen($record)<4) {
@@ -620,7 +622,30 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,&$o
 //}}}
 
 
-// {{{ write_sd_conf_file()
+// {{{ write_calendar()
+// ROLE save calendar informations into the SD card
+// IN	$sd_card	sd card location
+//	$data		data to write into the sd card
+//	$out		error or warning messages
+// RET none
+function write_calendar($sd_card,$data,&$out="") {
+	if(count($data)>0) {
+		foreach($data as $val) {
+			$file="$sd_card/logs/$val[month]/cal_$val[day]";
+        		if($f=fopen("$file","w+")) {
+				fputs($f,"$val[number]");
+				foreach($val[subject] as $sub) {
+                        		fputs($f,"\n\r"."$sub");
+				}
+                		fclose($f);
+			}
+		}
+	}
+}
+//}}}
+
+
+// {{{ check_tolerance_value()
 // ROLE check the tolerance value
 // IN	$type		the type of the plug 
 //	$tolerancesave	the value to check
