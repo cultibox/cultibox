@@ -17,6 +17,7 @@ $lang=getvar('lang');
 $update_conf=false;
 $error="";
 $info="";
+$show_wizard=getvar('show_wizard');
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$error);
@@ -54,6 +55,26 @@ if((isset($color_temperature))&&(!empty($color_temperature))) {
 } else {
 	$color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$error);
 }
+
+
+if((isset($show_wizard))&&(!empty($show_wizard))) {
+	if("$show_wizard"=="True") {
+        	insert_configuration("SHOW_WIZARD",1,$error);
+		$wizard="True";
+	} else {
+		insert_configuration("SHOW_WIZARD",0,$error);
+		$wizard="False";
+	}
+        $update_conf=true;
+} else {
+        $wizard = get_configuration("SHOW_WIZARD",$error);
+	if("$wizard"=="1") {
+		$wizard="True";
+	} else {
+		$wizard="False";
+	}
+}
+
 
 if((isset($record_frequency))&&(!empty($record_frequency))) {
 	insert_configuration("RECORD_FREQUENCY",$record_frequency,$error);
