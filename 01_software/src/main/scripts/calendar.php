@@ -26,7 +26,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 
-if((isset($sd_card))||(!empty($sd_card))) {
+if((isset($sd_card))&&(!empty($sd_card))) {
         $data=create_calendar_from_database($error);
 	if(count($data)>0) {
 		write_calendar($sd_card,$data,$error);

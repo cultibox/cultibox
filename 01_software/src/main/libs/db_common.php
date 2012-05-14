@@ -1123,6 +1123,31 @@ function find_value_for_plug($data,$time,$plug) {
 // }}}
 
 
+// {{{ check_empty_programs($nb_plugs)
+//ROLE check if no programs have been defined yet
+// IN  $nb_plugs	number of plugs used
+// RET true if there is a program defined, false else
+function check_programs($nb_plugs=0) {
+	if($nb_plugs>0) {
+		$db = db_priv_start();
+        	$sql = <<<EOF
+SELECT * FROM `programs`
+EOF;
+        	$db->setQuery($sql);
+        	$res = $db->loadAssocList();
+        	$ret=$db->getErrorMsg();
+		if(!isset($res)||(empty($res))) {
+			return false;
+		} else {
+			return true;
+		}
+	} else {
+		return false;
+	}
+}
+// }}}
+
+
 // {{{ export_program($id)
 //ROLE export a program to a csv file
 // IN   $id	id of the plug to export
@@ -1131,6 +1156,8 @@ function export_program($id) {
 	return 1;
 }
 // }}}
+
+
 
 
 ?>
