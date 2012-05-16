@@ -23,8 +23,21 @@ $plugs_infos=get_plugs_infos($nb_plugs,$error);
 $exportid=getvar('exportid');
 $finish=getvar('finish');
 $wizard=get_configuration("SHOW_WIZARD",$error);
+$wzd=getvar('wzd');
+$step=getvar('step');
 
-if(((!check_programs($nb_plugs))||(!isset($finish)))&&("$wizard"=="1")) {
+
+if((isset($finish))&&($step==5)) {
+	unset($wzd);
+}
+
+
+if(((!check_programs($nb_plugs))||((!isset($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"!="False")) {
+
+	if("$wizard"=="1") {
+		$info=$info.__(WIZARD_DISABLE_FUNCTION);
+	}
+
 	$step=getvar('step');
 	$nb_plugs=get_configuration("NB_PLUGS",$error);
 	$selected_plug=getvar('plug_number');
@@ -114,6 +127,15 @@ if(((!check_programs($nb_plugs))||(!isset($finish)))&&("$wizard"=="1")) {
 	include('main/templates/wizard.html');
 
 } else {
+
+	unset($finish);
+	unset($wzd);
+	unset($step);
+
+	if("$wizard"=="1") {
+		$info=$info.__(WIZARD_ENABLE_FUNCTION);
+	}
+
 	if((isset($exportid))&&(!empty($exportid))) {
 		export_program($exportid);
 	}

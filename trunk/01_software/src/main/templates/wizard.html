@@ -4,7 +4,6 @@
         <?php echo $info; ?>
 </ul>
 </div>
-<br />
 <?php } ?>
 
 <?php if((isset($error))&&(!empty($error))) { ?>
@@ -146,13 +145,9 @@ $(document).ready(function() {
 </script>
 
 
-
-
-
-
 <p><?php echo __(WIZARD_INTRO); ?></p>
 <br /><br />
-<form action="<?php echo($_SERVER['PHP_SELF']);?>" method="post">
+<form action="<?php echo($_SERVER['PHP_SELF']);?>?wzd=True" method="post">
 <table width="100%">
 <tr>
 <td><p class="step"><?php echo __(WIZARD_STEP); echo " $step";?>/5 - 
