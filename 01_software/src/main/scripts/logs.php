@@ -19,6 +19,10 @@ $info="";
 $type="";
 $temperature= array();
 $humidity = array();
+$nb_plugs=get_configuration("NB_PLUGS",$error);
+$plugs_infos=get_plugs_infos($nb_plugs,$error);
+$select_plug=getvar('select_plug');
+
 
 if((!isset($sd_card))||(empty($sd_card))) {
         $sd_card=get_sd_card();
@@ -99,6 +103,10 @@ if("$type"=="days") {
 
 if("$type" == "days") {
 	if($check_format) {
+		if((isset($select_plug))&&(!empty($select_plug))) {
+			$data_plug=get_data_plug($select_plug,$error);
+ 	        	$data=format_program_highchart_data($data_plug,$startday);
+		}
 		$xlegend="XAXIS_LEGEND_DAY";
         	$styear=substr($startday, 0, 4);
         	$stmonth=substr($startday, 5, 2);

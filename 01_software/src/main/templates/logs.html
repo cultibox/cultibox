@@ -23,15 +23,27 @@
 </td>
 <td width="50%">
 			<input id="startday" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>" onClick='scwShow(document.getElementById("startday"),this);'>
-<INPUT type="submit" value=<?php echo __(VIEW); ?>>
-
-                </form>
 </td>
 <td>
 </td>
 </tr>
 <tr>
-			<td align="right"><b><?php echo __('OR'); ?></b><br /></td><td></td><td></td>
+<td align="right"><?php echo __(SELECT_PROGRAM_PLUG); ?></td>
+<td >
+		 	<select name="select_plug">
+                                <option value="">---</option>
+				<?php for($i=0;$i<$nb_plugs;$i++) { ?>
+					<option value="<?php echo $plugs_infos[$i][id]; ?>" <?php if(strcmp($select_plug,$plugs_infos[$i][id])==0) echo selected; ?>><?php echo $plugs_infos[$i][PLUG_NAME]; ?></option>
+				<?php } ?>
+                        </select>
+</td>
+<td></td>
+</tr>
+<tr>
+<td></td><td>                        <INPUT type="submit" value=<?php echo __(VIEW); ?>></form></td><td></td>
+</tr>
+<tr>
+			<td align="right"><br /><b><?php echo __('OR'); ?></b><br /><br /></td><td></td><td><br /></td>
 </tr>
 <tr>
 <td align="right">
@@ -114,7 +126,7 @@ $(function () {
 					color: <?php echo "'".$color_humidity."'"; ?>
 				}
                 },
-                min: 0.6,
+                min: -0.5,
 		max: 100,
                 startOnTick: false,
                 showFirstLabel: false,
@@ -189,6 +201,14 @@ $(function () {
 		    data: [
 		    <?php echo $data_temp; ?>
 		    ]
+		<?php if((isset($data))&&(!empty($data))) { ?>
+		}, {
+                name: <?php echo "'".$plugs_infos[$select_plug-1][PLUG_NAME]."'"; ?>,
+                color: <?php echo "'".$GLOBALS[LIST_GRAPHIC_COLOR_PROGRAM][$select_plug-1]."'"; ?>,
+                data: [
+                    <?php echo $data; ?>
+                    ]
+		<?php } ?>
 		}]
         });
     });

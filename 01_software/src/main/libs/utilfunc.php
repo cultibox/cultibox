@@ -475,22 +475,31 @@ function check_times($start_time="",$end_time="",&$out="") {
 // ROLE format data to be used by highchart for the programs part
 // IN   $arr	an array containing datas
 // RET data for highchart and cultibox programs
-function format_program_highchart_data($arr) {
+function format_program_highchart_data($arr,$date_start="") {
 	$data="";
+	if(empty($date_start)) {
+		$ref_day=1;
+		$ref_month=1;
+		$ref_year=1970;
+	} else {
+	 	$ref_year=substr($date_start, 0, 4);
+                $ref_month=substr($date_start, 5, 2)+1;
+                $ref_day=substr($date_start, 8, 2);
+	}
 	date_default_timezone_set('UTC');
 	if(count($arr)>0) {
 		foreach($arr as $value) {
 			if((empty($data))&&(strcmp($value[time_start],"000000")!=0)) {
-				$first=mktime(0,0,0,1,1,1970)*1000;
+				$first=mktime(0,0,0,$ref_month,$ref_day,$ref_year)*1000;
 				$data="[".$first.",0]";
-				$last_time="0";
+				$last_time=$first;
 				$last_value="0";
 			} else if((empty($data))&&(strcmp($value[time_start],"000000")==0)) {
-                                $val_start=mktime(0,0,0,1,1,1970)*1000;
+                                $val_start=mktime(0,0,0,$ref_month,$ref_day,$ref_year)*1000;
                                 $ehh=substr($value[time_stop],0,2);
                                 $emm=substr($value[time_stop],2,2);
                                 $ess=substr($value[time_stop],4,2);
-                                $val_end=mktime($ehh,$emm,$ess,1,1,1970)*1000;
+                                $val_end=mktime($ehh,$emm,$ess,$ref_month,$ref_day,$ref_year)*1000;
 				if(strcmp("$value[time_stop]","235959")==0) {
                                 	$data="[".$val_start.",".$value[value]."],[".$val_end.",".$value[value]."]";
 				} else {
@@ -504,11 +513,11 @@ function format_program_highchart_data($arr) {
 					$shh=substr($value[time_start],0,2);
 					$smm=substr($value[time_start],2,2);
 					$sss=substr($value[time_start],4,2);
-					$val_start=mktime($shh,$smm,$sss,1,1,1970)*1000;
+					$val_start=mktime($shh,$smm,$sss,$ref_month,$ref_day,$ref_year)*1000;
 					$ehh=substr($value[time_stop],0,2);
                                         $emm=substr($value[time_stop],2,2);
                                         $ess=substr($value[time_stop],4,2);
-                                        $val_end=mktime($ehh,$emm,$ess,1,1,1970)*1000;
+                                        $val_end=mktime($ehh,$emm,$ess,$ref_month,$ref_day,$ref_year)*1000;
 					if(strcmp("$value[time_stop]","235959")!=0) {
 						if("$last_time"!="$val_start") {
 							$data=$data.",[".$last_time.",0],[".$val_start.",0],[".$val_start.",".$value[value]."],[".$val_end.",".$value[value]."]";
@@ -524,12 +533,12 @@ function format_program_highchart_data($arr) {
 			$last_val=$value;
 		}
 		if((!empty($data))&&(strcmp("$last_val[time_stop]","235959")!=0)) {
-				$last=mktime(0,0,0,1,2,1970)*1000;
+				$last=mktime(0,0,0,$ref_month,$ref_day+1,$ref_year)*1000;
 				$data=$data.",[".$last_time=$val_end.",0],[".$last.",0]";
 		} 
 	} else {
-		$first=mktime(0,0,0,1,1,1970)*1000;
-		$last=mktime(0,0,0,1,2,1970)*1000;
+		$first=mktime(0,0,0,$ref_month,$ref_day,$ref_year)*1000;
+		$last=mktime(0,0,0,$ref_month,$ref_day+1,$ref_year)*1000;
 		$data="[".$first.",0],[".$last.",0]";
 	}
 	return $data;
