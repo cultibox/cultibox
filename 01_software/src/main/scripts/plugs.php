@@ -17,6 +17,8 @@ $error="";
 $info="";
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $update_program=false;
+$wizard=get_configuration("SHOW_WIZARD",$error);
+
 
 if((!isset($sd_card))||(empty($sd_card))) {
 	$sd_card=get_sd_card();
@@ -27,6 +29,10 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 	save_program_on_sd($sd_card,$program,$error,$info);
 } else {
         $error=$error.__('ERROR_SD_CARD_CONF');
+}
+
+if("$wizard"=="1") {
+                $info=$info.__(WIZARD_ENABLE_FUNCTION);
 }
 
 for($nb=1;$nb<=$nb_plugs;$nb++) {
