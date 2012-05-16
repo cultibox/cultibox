@@ -111,7 +111,9 @@ $(function () {
                         downloadPNG : <?php echo "'".__(EXPORT_PNG)."',"; ?>
                         downloadJPEG : <?php echo "'".__(EXPORT_JPEG)."',"; ?>
                         downloadPDF : <?php echo "'".__(EXPORT_PDF)."',"; ?>
-                        downloadSVG : <?php echo "'".__(EXPORT_SVG)."'"; ?>
+                        downloadSVG : <?php echo "'".__(EXPORT_SVG)."',"; ?>
+			resetZoom : <?php echo "'".__(RESET_ZOOM)."',"; ?>
+			resetZoomTitle : <?php echo "'".__(RESET_ZOOM_TITLE)."'"; ?>
             },
             xAxis: {
                 type: 'datetime',
@@ -144,9 +146,9 @@ $(function () {
                 showFirstLabel: false,
 		opposite: true
 	    }],
-            tooltip: {
-                shared: true
-            },
+	tooltip: {
+			shared: true
+                },
             legend: {
                 enabled: true
             },

@@ -31,8 +31,7 @@ if((isset($finish))&&($step==5)) {
 	unset($wzd);
 }
 
-
-if(((!check_programs($nb_plugs))||((!isset($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"!="False")) {
+if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"!="False")) {
 
 	if("$wizard"=="1") {
 		$info=$info.__(WIZARD_DISABLE_FUNCTION);

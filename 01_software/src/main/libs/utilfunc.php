@@ -483,7 +483,7 @@ function format_program_highchart_data($arr,$date_start="") {
 		$ref_year=1970;
 	} else {
 	 	$ref_year=substr($date_start, 0, 4);
-                $ref_month=substr($date_start, 5, 2)+1;
+                $ref_month=substr($date_start, 5, 2);
                 $ref_day=substr($date_start, 8, 2);
 	}
 	date_default_timezone_set('UTC');
@@ -533,8 +533,13 @@ function format_program_highchart_data($arr,$date_start="") {
 			$last_val=$value;
 		}
 		if((!empty($data))&&(strcmp("$last_val[time_stop]","235959")!=0)) {
-				$last=mktime(0,0,0,$ref_month,$ref_day+1,$ref_year)*1000;
-				$data=$data.",[".$last_time=$val_end.",0],[".$last.",0]";
+			if("$ref_year"=="1970") {
+					$last=mktime(0,0,0,$ref_month,$ref_day+1,$ref_year)*1000;
+			} else {
+					$last=mktime(23,59,59,$ref_month,$ref_day,$ref_year)*1000;
+					
+			}
+			$data=$data.",[".$last_time=$val_end.",0],[".$last.",0]";
 		} 
 	} else {
 		$first=mktime(0,0,0,$ref_month,$ref_day,$ref_year)*1000;

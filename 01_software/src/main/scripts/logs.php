@@ -109,7 +109,7 @@ if("$type" == "days") {
 		}
 		$xlegend="XAXIS_LEGEND_DAY";
         	$styear=substr($startday, 0, 4);
-        	$stmonth=substr($startday, 5, 2);
+        	$stmonth=substr($startday, 5, 2)-1;
         	$stday=substr($startday, 8, 2);
 
 		get_graph_array($temperature,"temperature/100",$startday,$error);

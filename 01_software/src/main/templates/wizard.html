@@ -144,13 +144,18 @@ $(document).ready(function() {
 
 </script>
 
-
-<p><?php echo __(WIZARD_INTRO); ?></p>
+<br />
+<p class="wizard_title"><?php echo __(WIZARD_INTRO); ?></p>
 <br /><br />
 <form action="<?php echo($_SERVER['PHP_SELF']);?>?wzd=True" method="post">
 <table width="100%">
 <tr>
-<td><p class="step"><?php echo __(WIZARD_STEP); echo " $step";?>/5 - 
+<td width="10%"><p class="step"><?php echo __(WIZARD_STEP); echo " $step";?>/5:</p></td>
+</tr>
+<tr>
+<td></td>
+<td>
+<p class="step_info">
 <?php if($step==1) { ?>
 	<?php echo __(WIZARD_PLUG_NUMBER); ?>
 <?php } else if($step==2) { ?>
@@ -165,8 +170,11 @@ $(document).ready(function() {
 <?php } ?>
 </p>
 </td>
+<td width="10%"></td>
 </tr>
 </table>
+<br />
+<hr /></p>
 
 <br /><br />
 
@@ -208,8 +216,8 @@ $(document).ready(function() {
 		 			<?php echo __(START_TIME_PROGRAM); ?></td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __(END_TIME_PROGRAM); ?></td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
                                         <tr><td><?php echo __(VALUE_ON_OFF); ?></td><td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { ?>
                                                 <select name="value_program">
-                                                        <option value="off"><?php echo __(VALUE_OFF); ?></option>
-                                                        <option value="on" ><?php echo __(VALUE_ON); ?></option>
+                                                        <option value="off" <?php if("$value_program"=="0") echo selected; ?>><?php echo __(VALUE_OFF); ?></option>
+                                                        <option value="on" <?php if("$value_program"=="1") echo selected; ?>><?php echo __(VALUE_ON); ?></option>
                                                 </select>
                                         <?php } else { ?>
                                                 <input type="text" name="value_program" size="4" maxlength="4" value="<?php echo $value_program ?>"/>
