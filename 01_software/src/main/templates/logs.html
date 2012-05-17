@@ -137,9 +137,15 @@ $(function () {
 				}
                 },
                 min: -0.5,
-		max: 100,
+		max: 110,
                 startOnTick: false,
                 showFirstLabel: false,
+		labels: {
+                                formatter: function() {
+                                        if(this.value<=100) return this.value;
+                                }
+			}
+
             }, {
 		linkedTo: 0,
 		title: {
@@ -149,10 +155,15 @@ $(function () {
                                 }
                 },
                 min: 0,
-		max: 100,
+		max: 110,
                 startOnTick: false,
                 showFirstLabel: false,
-		opposite: true
+		opposite: true,
+		labels: {
+                                formatter: function() {
+                                        if(this.value<=100) return this.value;
+                                }
+                        }
 	    }],
 	tooltip: {
 			shared: true

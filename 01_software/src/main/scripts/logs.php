@@ -105,7 +105,7 @@ if("$type" == "days") {
 	if($check_format) {
 		if((isset($select_plug))&&(!empty($select_plug))) {
 			$data_plug=get_data_plug($select_plug,$error);
- 	        	$data=format_program_highchart_data($data_plug,$startday);
+ 	        	$data=format_program_highchart_data($data_plug,$startday,"log-lamp");
 		}
 		$xlegend="XAXIS_LEGEND_DAY";
         	$styear=substr($startday, 0, 4);
