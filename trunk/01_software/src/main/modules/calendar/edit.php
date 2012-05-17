@@ -184,7 +184,7 @@ if($_GET["id"]){
         height:16px;     
         border:none;        
         cursor:pointer;        
-        background:url("sample-css/cal.gif") no-repeat center 2px;        
+        background:url("css/images/cal.gif") no-repeat center 2px;        
         margin-left:-22px;    
     }      
     </style>

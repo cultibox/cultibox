@@ -1042,7 +1042,7 @@ function create_calendar_from_database(&$out="") {
 	$year=date(Y);
         $db = db_priv_start();
         $sql = <<<EOF
-SELECT `Subject`,`StartTime` FROM `jqcalendar` WHERE `StartTime` LIKE "{$year}-%"
+SELECT `Subject`,`StartTime`,`EndTime` FROM `jqcalendar` WHERE `StartTime` LIKE "{$year}-%"
 EOF;
         $db->setQuery($sql);
         $res = $db->loadAssocList();
@@ -1052,10 +1052,17 @@ EOF;
         } else {
 		$data=array();	
 		foreach($res as $val) {
+		  
 			$s=array();
 			$line="";
 			$month=substr($val[StartTime],5,2);
 			$day=substr($val[StartTime],8,2);
+			$year=substr($val[StartTime],0,4);
+
+			$end_month=substr($val[EndTime],5,2);
+			$end_day=substr($val[EndTime],8,2);
+			$end_year=substr($val[EndTime],0,4);
+		
 			$count=0;
 			$number=0;
 			for($i=0;$i<strlen($val[Subject]);$i++) {
