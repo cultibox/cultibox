@@ -15,6 +15,18 @@
 <br />
 <?php } ?>
 
+
+<script type="text/javascript">
+function actdesact()
+{
+    if (document.getElementById("force_on" ).checked)
+        document.getElementById("value_program" ).disabled=true;
+    else
+        document.getElementById("value_program" ).disabled=false;
+}
+</script>
+
+
 <script type="text/javascript">
 $(document).ready(function(){
 $('#start_time').timepicker({
@@ -174,7 +186,7 @@ $(document).ready(function() {
 </tr>
 </table>
 <br />
-<hr /></p>
+<hr />
 
 <br /><br />
 
@@ -215,18 +227,22 @@ $(document).ready(function() {
 				<td>
 		 			<?php echo __(START_TIME_PROGRAM); ?></td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __(END_TIME_PROGRAM); ?></td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
                                         <tr><td><?php echo __(VALUE_ON_OFF); ?></td><td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { ?>
-                                                <select name="value_program">
+                                                <select name="value_program" id="value_program">
                                                         <option value="off" <?php if("$value_program"=="0") echo selected; ?>><?php echo __(VALUE_OFF); ?></option>
                                                         <option value="on" <?php if("$value_program"=="1") echo selected; ?>><?php echo __(VALUE_ON); ?></option>
                                                 </select>
                                         <?php } else { ?>
-                                                <input type="text" name="value_program" size="4" maxlength="4" value="<?php echo $value_program ?>"/>
+                                                <input type="text" id="value_program" name="value_program" size="4" maxlength="4" value="<?php echo $value_program ?>"/>
                                                 <?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) echo "°C"; ?>
                                                 <?php if((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) echo "%"; ?>
                                         <?php } ?>
 		</td>
 		</tr>
-		<tr><td></td><td><input type="submit" name="apply" value="<?php echo __(APPLY_PROGRAM); ?>"></td></tr>
+		 <tr>
+                               <td><?php echo __(FORCE_ON_VALUE); ?></td>
+                               <td><input type="checkbox" id="force_on" name="force_on" value="force_on" onclick="actdesact()" /></td>
+                           </tr>
+		<tr><td></td><td><br /><input type="submit" name="apply" value="<?php echo __(APPLY_PROGRAM); ?>"></td></tr>
 		</table>
 		</td>
 		<td width="80%"><div id="plug" style="width: 80%; height: 300px; margin: 0 auto"></div></td>

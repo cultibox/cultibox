@@ -473,9 +473,11 @@ function check_times($start_time="",$end_time="",&$out="") {
 
 // {{{ format_program_highchart_data()
 // ROLE format data to be used by highchart for the programs part
-// IN   $arr	an array containing datas
+// IN   $arr		an array containing datas
+//      $date_start 	 
+//	$type		the type of the plug
 // RET data for highchart and cultibox programs
-function format_program_highchart_data($arr,$date_start="") {
+function format_program_highchart_data($arr,$date_start="",$type="") {
 	$data="";
 	if(empty($date_start)) {
 		$ref_day=1;
@@ -489,6 +491,11 @@ function format_program_highchart_data($arr,$date_start="") {
 	date_default_timezone_set('UTC');
 	if(count($arr)>0) {
 		foreach($arr as $value) {
+			if(("$type"=="lamp")&&("$value[value]"=="99.9")) {
+				$value[value]=1;	
+			} else if(("$type"=="log-lamp")&&("$value[value]"=="1")) {
+                                $value[value]=99.9;
+                        }
 			if((empty($data))&&(strcmp($value[time_start],"000000")!=0)) {
 				$first=mktime(0,0,0,$ref_month,$ref_day,$ref_year)*1000;
 				$data="[".$first.",0]";

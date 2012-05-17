@@ -14,6 +14,7 @@ set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
+
 $error="";
 $ret_plug=array();
 $info="";
@@ -46,6 +47,7 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	$plug_type=getvar('plug_type');
 	$plug_tolerance=getvar('plug_tolerance');
 	$program=getvar('apply');
+	$force_on=getvar('force_on');
 
 
 	switch($plug_type) {
@@ -93,7 +95,11 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	if((isset($program))&&(!empty($program))) {
 	    	$start_time=getvar('start_time');
         	$end_time=getvar('end_time');
-        	$value_program=getvar('value_program');
+		if((isset($force_on))&&(!empty($force_on))) {
+			$value_program=99.9;
+		} else {
+        		$value_program=getvar('value_program');
+		}
 
 		if(check_times($start_time,$end_time,$error)) {
                                 if("$value_program"=="on") {
@@ -119,7 +125,7 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	}
 
 	$data_plug=get_data_plug($selected_plug,$error);
-        $data=format_program_highchart_data($data_plug);
+        $data=format_program_highchart_data($data_plug,"",$plug_type);
 
 
 
@@ -156,7 +162,14 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	$value="value_program{$selected_plug}";
 	$start_time=getvar($start);
 	$end_time=getvar($end);
-	$value_program=getvar($value);
+	$force="force_on{$selected_plug}";
+	$force_on=getvar($force);
+
+	if((isset($force_on))&&(!empty($force_on))) {
+        	$value_program=99.9;
+        } else {
+	        $value_program=getvar($value);
+        }
 
         if(("$start_time"!="")&&("$end_time"!="")) {
 		if(check_times($start_time,$end_time,$ret_plug[$selected_plug])) {
@@ -185,7 +198,7 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	
 	for($i=0;$i<$nb_plugs;$i++) {
 		$data_plug=get_data_plug($i+1,$error);
-        	$plugs_infos[$i][data]=format_program_highchart_data($data_plug);
+        	$plugs_infos[$i][data]=format_program_highchart_data($data_plug,"",$plugs_infos[$i][PLUG_TYPE]);
 		switch($plugs_infos[$i][PLUG_TYPE]) {
 			case 'unknown': $plugs_infos[$i][translate]=__(PLUG_UNKNOWN);
 				break;
@@ -205,6 +218,10 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	if((isset($sd_card))&&(!empty($sd_card))) {
         	$program=create_program_from_database($error);
         	save_program_on_sd($sd_card,$program,$error,$info);
+	}
+
+	if((isset($force_on))&&(!empty($force_on))) {
+                $value_program="";
 	}
 
 	include('main/templates/programs.html');
