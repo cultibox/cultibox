@@ -22,7 +22,6 @@ include($this['path']->path('layouts:template.config.php'));
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                 <script type="text/javascript" src="main/libs/js/jquery-1.7.2.min.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-1.8.19.custom.min.js"></script>
-                <script type='text/JavaScript' src="main/libs/js/scw.js"></script>
                 <script type="text/javascript" src="main/libs/js/highcharts.js"></script>
                 <script type="text/javascript" src="main/libs/js/exporting.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-timepicker-addon.js"></script>

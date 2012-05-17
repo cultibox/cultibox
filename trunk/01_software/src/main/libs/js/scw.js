@@ -262,7 +262,6 @@
     // I have included all the translations that have been sent to me in
     // such a function on the demonstration page.
 
-    var scwLanguage;
 
     function scwSetDefaultLanguage()
         {try
