@@ -27,7 +27,7 @@ document.write('<script type="text\/javascript" src="main\/libs\/js\/scw.js"><\/
 <tr>
 <td width="50%" align="right">
 	<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
-	<?php echo __(SELECT_DISPLAYED_DAY); ?>
+	<?php echo __('SELECT_DISPLAYED_DAY'); ?>
 </td>
 <td width="50%">
 			<input id="startday" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>" onClick='scwShow(document.getElementById("startday"),this);'>
@@ -36,19 +36,19 @@ document.write('<script type="text\/javascript" src="main\/libs\/js\/scw.js"><\/
 </td>
 </tr>
 <tr>
-<td align="right"><?php echo __(SELECT_PROGRAM_PLUG); ?></td>
+<td align="right"><?php echo __('SELECT_PROGRAM_PLUG'); ?></td>
 <td >
 		 	<select name="select_plug">
                                 <option value="">---</option>
 				<?php for($i=0;$i<$nb_plugs;$i++) { ?>
-					<option value="<?php echo $plugs_infos[$i][id]; ?>" <?php if(strcmp($select_plug,$plugs_infos[$i][id])==0) echo selected; ?>><?php echo $plugs_infos[$i][PLUG_NAME]; ?></option>
+					<option value="<?php echo $plugs_infos[$i]["id"]; ?>" <?php if(strcmp($select_plug,$plugs_infos[$i]["id"])==0) echo "selected"; ?>><?php echo $plugs_infos[$i]["PLUG_NAME"]; ?></option>
 				<?php } ?>
                         </select>
 </td>
 <td></td>
 </tr>
 <tr>
-<td></td><td>                        <INPUT type="submit" value=<?php echo __(VIEW); ?>></form></td><td></td>
+<td></td><td>                        <INPUT type="submit" value=<?php echo __('VIEW'); ?>></form></td><td></td>
 </tr>
 <tr>
 			<td align="right"><br /><b><?php echo __('OR'); ?></b><br /><br /></td><td></td><td><br /></td>
@@ -56,22 +56,22 @@ document.write('<script type="text\/javascript" src="main\/libs\/js\/scw.js"><\/
 <tr>
 <td align="right">
 	<form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post">
-		<?php echo __(SELECT_DISPLAYED_MONTH); ?>
+		<?php echo __('SELECT_DISPLAYED_MONTH'); ?>
 </td>
 <td>
 			<select name="startmonth">
-                		<option <?php if("$startmonth" == "1") { echo 'selected';} ?> value="01"><?php echo __(MONTH01); ?></option>
-                		<option <?php if("$startmonth" == "2") { echo 'selected';} ?> value="02"><?php echo __(MONTH02); ?></option>
-                		<option <?php if("$startmonth" == "3") { echo 'selected';} ?> value="03"><?php echo __(MONTH03); ?></option>
-                		<option <?php if("$startmonth" == "4") { echo 'selected';} ?> value="04"><?php echo __(MONTH04); ?></option>
-                		<option <?php if("$startmonth" == "5") { echo 'selected';} ?> value="05"><?php echo __(MONTH05); ?></option>
-                		<option <?php if("$startmonth" == "6") { echo 'selected';} ?> value="06"><?php echo __(MONTH06); ?></option>
-                		<option <?php if("$startmonth" == "7") { echo 'selected';} ?> value="07"><?php echo __(MONTH07); ?></option>
-                		<option <?php if("$startmonth" == "8") { echo 'selected';} ?> value="08"><?php echo __(MONTH08); ?></option>
-                		<option <?php if("$startmonth" == "9") { echo 'selected';} ?> value="09"><?php echo __(MONTH09); ?></option>
-                		<option <?php if("$startmonth" == "10") { echo 'selected';} ?> value="10"><?php echo __(MONTH10); ?></option>
-                		<option <?php if("$startmonth" == "11") { echo 'selected';} ?> value="11"><?php echo __(MONTH11); ?></option>
-                		<option <?php if("$startmonth" == "12") { echo 'selected';} ?> value="12"><?php echo __(MONTH12); ?></option>
+                		<option <?php if("$startmonth" == "1") { echo 'selected';} ?> value="01"><?php echo __('MONTH01'); ?></option>
+                		<option <?php if("$startmonth" == "2") { echo 'selected';} ?> value="02"><?php echo __('MONTH02'); ?></option>
+                		<option <?php if("$startmonth" == "3") { echo 'selected';} ?> value="03"><?php echo __('MONTH03'); ?></option>
+                		<option <?php if("$startmonth" == "4") { echo 'selected';} ?> value="04"><?php echo __('MONTH04'); ?></option>
+                		<option <?php if("$startmonth" == "5") { echo 'selected';} ?> value="05"><?php echo __('MONTH05'); ?></option>
+                		<option <?php if("$startmonth" == "6") { echo 'selected';} ?> value="06"><?php echo __('MONTH06'); ?></option>
+                		<option <?php if("$startmonth" == "7") { echo 'selected';} ?> value="07"><?php echo __('MONTH07'); ?></option>
+                		<option <?php if("$startmonth" == "8") { echo 'selected';} ?> value="08"><?php echo __('MONTH08'); ?></option>
+                		<option <?php if("$startmonth" == "9") { echo 'selected';} ?> value="09"><?php echo __('MONTH09'); ?></option>
+                		<option <?php if("$startmonth" == "10") { echo 'selected';} ?> value="10"><?php echo __('MONTH10'); ?></option>
+                		<option <?php if("$startmonth" == "11") { echo 'selected';} ?> value="11"><?php echo __('MONTH11'); ?></option>
+                		<option <?php if("$startmonth" == "12") { echo 'selected';} ?> value="12"><?php echo __('MONTH12'); ?></option>
 			</select>
 			
 			<select name="startyear">
@@ -87,7 +87,7 @@ document.write('<script type="text\/javascript" src="main\/libs\/js\/scw.js"><\/
                                 <option <?php if("$startyear" == "2021") { echo 'selected';} ?> value="2021">2021</option>
                                 <option <?php if("$startyear" == "2022") { echo 'selected';} ?> value="2022">2022</option>
                                 <option <?php if("$startyear" == "2023") { echo 'selected';} ?> value="2023">2023</option>
-                        </select> <INPUT type="submit" value=<?php echo __(VIEW); ?>>
+                        </select> <INPUT type="submit" value=<?php echo __('VIEW'); ?>>
 		</form>
 	</td>
 	</tr>
@@ -106,32 +106,32 @@ $(function () {
                 spacingRight: 20
             },
             title: {
-                text: <?php echo "'".__(HISTO_GRAPH)." (".$legend_date.")'"; ?>,
+                text: <?php echo "'".__('HISTO_GRAPH')." (".$legend_date.")'"; ?>,
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
-                    <?php echo "'".__(DRAG_PLOT)."'"; ?>:
-		    <?php echo "'".__(DRAG_PLOT)."'"; ?>
+                    <?php echo "'".__('DRAG_PLOT')."'"; ?>:
+		    <?php echo "'".__('DRAG_PLOT')."'"; ?>
             },
 	    lang: {
-                        printButtonTitle: <?php echo "'".__(PRINT_HIGHCHART)."',"; ?>
-                        exportButtonTitle: <?php echo "'".__(EXPORT_HIGHCHART)."',"; ?>
-                        downloadPNG : <?php echo "'".__(EXPORT_PNG)."',"; ?>
-                        downloadJPEG : <?php echo "'".__(EXPORT_JPEG)."',"; ?>
-                        downloadPDF : <?php echo "'".__(EXPORT_PDF)."',"; ?>
-                        downloadSVG : <?php echo "'".__(EXPORT_SVG)."',"; ?>
-			resetZoom : <?php echo "'".__(RESET_ZOOM)."',"; ?>
-			resetZoomTitle : <?php echo "'".__(RESET_ZOOM_TITLE)."'"; ?>
+                        printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
+                        exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART')."',"; ?>
+                        downloadPNG : <?php echo "'".__('EXPORT_PNG')."',"; ?>
+                        downloadJPEG : <?php echo "'".__('EXPORT_JPEG')."',"; ?>
+                        downloadPDF : <?php echo "'".__('EXPORT_PDF')."',"; ?>
+                        downloadSVG : <?php echo "'".__('EXPORT_SVG')."',"; ?>
+			resetZoom : <?php echo "'".__('RESET_ZOOM')."',"; ?>
+			resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>
             },
             xAxis: {
                 type: 'datetime',
                 title: {
-                    text: <?php echo "'".__($xlegend)."'"; ?>
+                    text: <?php echo "'".__("$xlegend")."'"; ?>
                 }
             },
             yAxis: [{
                 title: {
-                    text: <?php echo "'".__(YAXIS_LEGEND)."'"; ?>,
+                    text: <?php echo "'".__('YAXIS_LEGEND')."'"; ?>,
 		    style: {
 					color: <?php echo "'".$color_humidity."'"; ?>
 				}
@@ -149,7 +149,7 @@ $(function () {
             }, {
 		linkedTo: 0,
 		title: {
-                    text: <?php echo "'".__(Y2AXIS_LEGEND)."'"; ?>,
+                    text: <?php echo "'".__('Y2AXIS_LEGEND')."'"; ?>,
 		    style: {
                                         color: <?php echo "'".$color_temperature."'"; ?>
                                 }
@@ -205,29 +205,30 @@ $(function () {
     
             series: [{
                 type: 'area',
-                name: <?php echo "'".__(LEGEND_HUMI)."'"; ?>,
-                pointInterval:  <?php echo $next; ?> * 60 * 1000,
+                name: <?php echo "'".__('LEGEND_HUMI')."'"; ?>,
+                pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
                 pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
 		color: <?php echo "'".$color_humidity."'"; ?>,
                 data: [
-		    <?php echo $data_humi; ?>
+		    <?php if((isset($data_humi))&&(!empty($data_humi))) echo "$data_humi"; ?>
 		  ]
 		}, {
 		type: 'area',
-                name: <?php echo "'".__(LEGEND_TEMP)."'"; ?>,
-                pointInterval: <?php echo $next; ?> * 60 * 1000,
+                name: <?php echo "'".__('LEGEND_TEMP')."'"; ?>,
+                pointInterval: <?php echo "$next"; ?> * 60 * 1000,
                 pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
 		color: <?php echo "'".$color_temperature."'"; ?>,
 		yAxis: 1,	
 		    data: [
-		    <?php echo $data_temp; ?>
+
+		    <?php if((isset($data_temp))&&(!empty($data_temp))) echo "$data_temp"; ?>
 		    ]
 		<?php if((isset($data))&&(!empty($data))) { ?>
 		}, {
-                name: <?php echo "'".$plugs_infos[$select_plug-1][PLUG_NAME]."'"; ?>,
-                color: <?php echo "'".$GLOBALS[LIST_GRAPHIC_COLOR_PROGRAM][$select_plug-1]."'"; ?>,
+                name: <?php echo "'".$plugs_infos[$select_plug-1]["PLUG_NAME"]."'"; ?>,
+                color: <?php echo "'".$GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$select_plug-1]."'"; ?>,
                 data: [
-                    <?php echo $data; ?>
+                    <?php if((isset($data))&&(!empty($data))) echo "$data"; ?>
                     ]
 		<?php } ?>
 		}]

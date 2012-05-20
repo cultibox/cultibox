@@ -32,7 +32,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 }
 
 if("$wizard"=="1") {
-                $info=$info.__(WIZARD_ENABLE_FUNCTION);
+                $info=$info.__('WIZARD_ENABLE_FUNCTION');
 }
 
 for($nb=1;$nb<=$nb_plugs;$nb++) {
@@ -72,7 +72,7 @@ if(($update_program)&&(empty($error))) {
 
 
 if((isset($sd_card))&&(!empty($sd_card))) {
-        $info=$info.__(INFO_SD_CARD).": $sd_card";
+        $info=$info.__('INFO_SD_CARD').": $sd_card";
        	$plugconf=create_plugconf_from_database($nb_plugs,$error);
 	if(count($plugconf)>0) {
 		write_plugconf($plugconf,$sd_card,$out);

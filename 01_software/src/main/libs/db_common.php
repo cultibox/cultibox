@@ -241,6 +241,7 @@ EOF;
 //    $out      errors or warnings messages
 // RET plug data formated for highchart
 function get_data_plug($selected_plug="",$out="") {
+	$res="";
 	if((isset($selected_plug))&&(!empty($selected_plug))) {
 		$db = db_priv_start();
 		$sql = <<<EOF
@@ -285,11 +286,11 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
                 "value" => "$value"
 	);
 	if(count($data_plug)>0) {
-		if($data_plug[0][time_start]=="000000") {
+		if($data_plug[0]['time_start']=="000000") {
 			$first= array(
-         		       "time_start" => $data_plug[0][time_start],
-                		"time_stop" => $data_plug[0][time_stop],
-                		"value" => $data_plug[0][value]
+         		       "time_start" => $data_plug[0]['time_start'],
+                		"time_stop" => $data_plug[0]['time_stop'],
+                		"value" => $data_plug[0]['value']
         		);	
 		}
 	}
@@ -372,7 +373,7 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 		$tmp=optimize_program($tmp);
 		if(count($tmp)>0) {
 			foreach($tmp as $new_val) {
-				insert_program_value($plug_id,$new_val[time_start],$new_val[time_stop],$new_val[value],$out);	
+				insert_program_value($plug_id,$new_val['time_start'],$new_val['time_stop'],$new_val['value'],$out);	
 			}
 		}
 	} else {
@@ -393,55 +394,55 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 //    $tmp		array to save datas
 // RET false if the function has treated the $last value and we have to skip it in the next call of the function, true else.
 function compare_data_program(&$first,&$last,&$current,&$tmp) {
-   if(($current[time_start]>=$first[time_start])&&($current[time_stop]<=$last[time_stop])) {
-	if(($current[time_start]>=$first[time_start])&&($current[time_stop]<=$first[time_stop])&&($current[time_start]<$last[time_stop])) {
+   if(($current['time_start']>=$first['time_start'])&&($current['time_stop']<=$last['time_stop'])) {
+	if(($current['time_start']>=$first['time_start'])&&($current['time_stop']<=$first['time_stop'])&&($current['time_start']<$last['time_stop'])) {
 	        //case 1: current value is in the first value
 		if($GLOBALS['DEBUG_TRACE']) {
 			echo "case 1-";
 		}
-		if($current[value]==$first[value]) {
+		if($current['value']==$first['value']) {
 				//first=current: nothing to do
 			$tmp[]=$first;
 			$tmp[]=$last;
 			return "0";		
-		} else  if(($current[time_start]==$first[time_start])&&($current[time_stop]==$first[time_stop])) {
+		} else  if(($current['time_start']==$first['time_start'])&&($current['time_stop']==$first['time_stop'])) {
 				//first==current: replacement of the value
-				if($current[value]==0) {
+				if($current['value']==0) {
 					$tmp[]=$last;
 					return "0";
-				} else if($current[value]!=$first[value]) {
+				} else if($current['value']!=$first['value']) {
 					$tmp[]=$current;
 					$tmp[]=$last;
                                         return "0";
 				}
-		} else if($current[time_start]==$first[time_start]) {
+		} else if($current['time_start']==$first['time_start']) {
 				//current begin with the first value but doesn't ended with the first
-				if($current[value]==0) {
-					$first[time_start]=$current[time_stop];
+				if($current['value']==0) {
+					$first['time_start']=$current['time_stop'];
 					$tmp[]=$first;
 					$tmp[]=$last;
 					return "0";	
-				} else if($current[value]!=$first[value]) {
+				} else if($current['value']!=$first['value']) {
 					$new_value = array(
-						"time_start" => $first[time_start],
-                                                "time_stop" => $current[time_stop],
+						"time_start" => $first['time_start'],
+                                                "time_stop" => $current['time_stop'],
                                                 "value" => $current[time_value]					
 					);
-					$first[time_start]=$current[time_stop];
+					$first['time_start']=$current['time_stop'];
                                         $tmp[]=$new_value;
                                         $tmp[]=$first;
 					$tmp[]=$last;
                                         return "0";
                                 } 
-		} else if($current[time_stop]==$first[time_stop]) {
+		} else if($current['time_stop']==$first['time_stop']) {
 				//current doesn't start with the start value of first but ended with the stop value of first
-				if($current[value]==0) {
-					$first[time_stop]=$current[time_start];
+				if($current['value']==0) {
+					$first['time_stop']=$current['time_start'];
 					$tmp[]=$first;
 					$tmp[]=$last;
 					return "0";	
-				} else if($current[value]!=$first[value]) {
-                                        $first[time_stop]=$current[time_stop];
+				} else if($current['value']!=$first['value']) {
+                                        $first['time_stop']=$current['time_stop'];
                                         $tmp[]=$first;
 					$tmp[]=$current;
                                         $tmp[]=$last;
@@ -449,25 +450,25 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                                 }
 		} else {
 				//current is in the first value: cut in three
-				if($current[value]==0) {
-					$save_time=$first[time_stop];
-					$first[time_stop]=$current[time_start];
+				if($current['value']==0) {
+					$save_time=$first['time_stop'];
+					$first['time_stop']=$current['time_start'];
 					$new_value= array(
-						"time_start" => $current[time_stop],
+						"time_start" => $current['time_stop'],
 						"time_stop" => $save_time,
-						"value" => $first[value]
+						"value" => $first['value']
 					);
 					$tmp[]=$first;
 					$tmp[]=$new_value;	
 					$tmp[]=$last;
 					return "0";
 				} else {
-					$save_time=$first[time_stop];
-                                        $first[time_stop]=$current[time_start];
+					$save_time=$first['time_stop'];
+                                        $first['time_stop']=$current['time_start'];
 					$new_value=array(
-						"time_start" => $current[time_stop],
+						"time_start" => $current['time_stop'],
                                                 "time_stop" => $save_time,
-                                                "value" => $first[value]
+                                                "value" => $first['value']
 					);
 					$tmp[]=$first;
 					$tmp[]=$current;	
@@ -476,30 +477,30 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 					return "0";
                                 }
 		}
-	} else if(($current[time_start]>=$first[time_stop])&&($current[time_stop]<=$last[time_start])) {
+	} else if(($current['time_start']>=$first['time_stop'])&&($current['time_stop']<=$last['time_start'])) {
 		if($GLOBALS['DEBUG_TRACE']) {
 			echo "case 2-";
 		}
 		//case 2: current value is between first and last value
-		if($current[value]==0) {
+		if($current['value']==0) {
 			//nothing to do
 			$tmp[]=$first;
 			$tmp[]=$last;
 			return "0";
-		} else if(($current[time_start]==$first[time_stop])&&($current[time_stop]==$last[time_start])) {
+		} else if(($current['time_start']==$first['time_stop'])&&($current['time_stop']==$last['time_start'])) {
                                 //first->current->last: replacement of the value
-                                if(($current[value]==$first[value])&&($current[value]==$last[value])) {
-					$first[time_stop]=$last[time_stop];
+                                if(($current['value']==$first['value'])&&($current['value']==$last['value'])) {
+					$first['time_stop']=$last['time_stop'];
                                         $tmp[]=$first;
                                         return "0";
-                                } else if($current[value]==$first[value]) {
-					$first[time_stop]=$current[time_stop];
+                                } else if($current['value']==$first['value']) {
+					$first['time_stop']=$current['time_stop'];
 					$tmp[]=$first;
 					$tmp[]=$last;
 					return "0";
-				} else if($current[value]==$last[value])  {
+				} else if($current['value']==$last['value'])  {
 					$tmp[]=$first;
-					$last[time_start]=$current[time_start];
+					$last['time_start']=$current['time_start'];
 					$tmp[]=$last;
 					return "0";	
 				} else {
@@ -508,9 +509,9 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 					$tmp[]=$last;
 					return "0";
 				}
-		} else if($current[time_start]==$first[time_stop]) {
-				if(($current[value]==$first[value])) {
-                                        $first[time_stop]=$current[time_stop];
+		} else if($current['time_start']==$first['time_stop']) {
+				if(($current['value']==$first['value'])) {
+                                        $first['time_stop']=$current['time_stop'];
                                         $tmp[]=$first;
 					$tmp[]=$last;
                                         return "0";
@@ -520,9 +521,9 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                                         $tmp[]=$last;
                                         return "0";
                                 }
-		} else if($current[time_stop]==$last[time_start]) {
-				if(($current[value]==$last[value])) {
-                                        $last[time_start]=$current[time_start];
+		} else if($current['time_stop']==$last['time_start']) {
+				if(($current['value']==$last['value'])) {
+                                        $last['time_start']=$current['time_start'];
                                         $tmp[]=$first;
                                         $tmp[]=$last;
                                         return "0";
@@ -538,24 +539,24 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 				$tmp[]=$last;
 				return "0";
 		}
-	} else if(($current[time_start]>=$last[time_start])&&($current[time_stop]<=$last[time_stop])) {
+	} else if(($current['time_start']>=$last['time_start'])&&($current['time_stop']<=$last['time_stop'])) {
 		// case 3: current value is in the last value
 		if($GLOBALS['DEBUG_TRACE']) {
                         echo "case 3-";
                 }
 		$tmp[]=$first;
 		return "1";	
-	} else if(($current[time_start]>=$first[time_start])&&($current[time_start]<=$first[time_stop])&&($current[time_stop]<$last[time_start])&&($current[time_stop]>$first[time_stop])) {
+	} else if(($current['time_start']>=$first['time_start'])&&($current['time_start']<=$first['time_stop'])&&($current['time_stop']<$last['time_start'])&&($current['time_stop']>$first['time_stop'])) {
 		if($GLOBALS['DEBUG_TRACE']) {
                         echo "case 4-";
                 }
 		//case 4: current value is in the first value and stop between the first and before the last value
-		if($current[value]==$first[value]) {
-			$first[time_stop]=$current[time_stop];
+		if($current['value']==$first['value']) {
+			$first['time_stop']=$current['time_stop'];
 			$tmp[]=$first;
 			$tmp[]=$last;	
-		} else if($current[time_start]==$first[time_start]) {
-				if($current[value]==0) {
+		} else if($current['time_start']==$first['time_start']) {
+				if($current['value']==0) {
 					$tmp[]=$last;
 					return "0";
 				} else {
@@ -564,35 +565,35 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 					return "0";
 				}
 		} else {
-				if($current[value]==0) {
-					$first[time_stop]=$current[time_start];
+				if($current['value']==0) {
+					$first['time_stop']=$current['time_start'];
                                         $tmp[]=$first;
 					$tmp=$last;
                                         return "0";
                                 } else {
-					$first[time_stop]=$current[time_start];
+					$first['time_stop']=$current['time_start'];
 					$tmp[]=$first;
 					$tmp[]=$current;
 					$tmp[]=$last;
 					return "0";
 				}
 		}
-	} else if(($current[time_start]>=$first[time_stop])&&($current[time_start]<$last[time_start])&&($current[time_stop]>$last[time_start])) {
-		if($GLOBALS['DEBUD_TRACE']) {
+	} else if(($current['time_start']>=$first['time_stop'])&&($current['time_start']<$last['time_start'])&&($current['time_stop']>$last['time_start'])) {
+		if($GLOBALS['DEBUG_TRACE']) {
                         echo "case 5-";
                 }
 		//case 5: current value is betwwen the first and last value and stop in the last value
-		if(($current[time_start]==$first[time_stop])&&($current[time_stop]==$last[time_stop])) {
-			if($current[value]==0) {
+		if(($current['time_start']==$first['time_stop'])&&($current['time_stop']==$last['time_stop'])) {
+			if($current['value']==0) {
                                 $tmp[]=$first;
                                 return "0";
-                        } else if(($current[value]==$last[value])&&($current[value]==$first[value])) {
-                                $first[time_stop]=$last[time_stop];
+                        } else if(($current['value']==$last['value'])&&($current['value']==$first['value'])) {
+                                $first['time_stop']=$last['time_stop'];
                                 $tmp[]=$first;
 				return "0";
-                        } else if($current[value]==$first[value]) {
-                                $first[time_stop]=$current[time_stop];
-				$last[time_start]=$current[time_stop];
+                        } else if($current['value']==$first['value']) {
+                                $first['time_stop']=$current['time_stop'];
+				$last['time_start']=$current['time_stop'];
                                 $tmp[]=$first;
 				$tmp[]=$last;
                                 return "0";
@@ -601,55 +602,55 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 				$tmp[]=$current;
 				return "0";
                         } 
-		} else if(($current[time_start]>$first[time_stop])&&($current[time_stop]==$last[time_stop])) {
+		} else if(($current['time_start']>$first['time_stop'])&&($current['time_stop']==$last['time_stop'])) {
 			$tmp[]=$first;
-			if($current[value]==0) {
+			if($current['value']==0) {
                                 return "0";
                         } else {
                                 $tmp[]=$current;
                                 return "0";
                         } 
-		} else if(($current[time_start]==$first[time_stop])&&($current[time_stop]<$last[time_stop])) {
-			if($current[value]==0) {
-				$last[time_start]=$current[time_stop];
+		} else if(($current['time_start']==$first['time_stop'])&&($current['time_stop']<$last['time_stop'])) {
+			if($current['value']==0) {
+				$last['time_start']=$current['time_stop'];
                                 $tmp[]=$first;
 				$tmp[]=$last;
                                 return "0";
-                        } else if(($current[value]==$last[value])&&($current[value]==$first[value])) {
-                                $first[time_stop]=$last[time_stop];
+                        } else if(($current['value']==$last['value'])&&($current['value']==$first['value'])) {
+                                $first['time_stop']=$last['time_stop'];
                                 $tmp[]=$first;
                                 return "0";
-                        } else if($current[value]==$first[value]) {
-                                $first[time_stop]=$current[time_stop];
-                                $last[time_start]=$current[time_stop];
+                        } else if($current['value']==$first['value']) {
+                                $first['time_stop']=$current['time_stop'];
+                                $last['time_start']=$current['time_stop'];
                                 $tmp[]=$first;
                                 $tmp[]=$last;
                                 return "0";
-                        } else if($current[value]==$last[value]) {
-				$last[time_start]=$current[time_start];
+                        } else if($current['value']==$last['value']) {
+				$last['time_start']=$current['time_start'];
                                 $tmp[]=$first;
                                 $tmp[]=$last;
                                 return "0";
                         } else {
-				$last[time_start]=$current[time_stop];
+				$last['time_start']=$current['time_stop'];
 				$tmp[]=$first;
 				$tmp[]=$current;
 				$tmp[]=$last;
 				return "0";
 			}
 		} else {
-			if($current[value]==0) {
-                                $last[time_start]=$current[time_stop];
+			if($current['value']==0) {
+                                $last['time_start']=$current['time_stop'];
                                 $tmp[]=$first;
                                 $tmp[]=$last;
                                 return "0";
-                        } else if($current[value]==$last[value]) {
-                                $last[time_start]=$current[time_start];
+                        } else if($current['value']==$last['value']) {
+                                $last['time_start']=$current['time_start'];
                                 $tmp[]=$first;
                                 $tmp[]=$last;
                                 return "0";
                         } else {
-                                $last[time_start]=$current[time_stop];
+                                $last['time_start']=$current['time_stop'];
                                 $tmp[]=$first;
                                 $tmp[]=$current;
                                 $tmp[]=$last;
@@ -657,73 +658,73 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                         }
 		}
 	} else {
-		if($GLOBALS['DEBUD_TRACE']) {
+		if($GLOBALS['DEBUG_TRACE']) {
                         echo "case 6-";
                 }
                //case 6: current value is in the first, between first and last and stop in the last value
-		if(($current[time_start]==$first[time_start])&&($current[time_stop]==$last[time_stop])) {
-			if($current[value]==0) {
+		if(($current['time_start']==$first['time_start'])&&($current['time_stop']==$last['time_stop'])) {
+			if($current['value']==0) {
 				return "0";
 			} else {
 				$tmp[]=$current;
 				return "0";
 			}
-		} else if($current[time_start]==$first[time_start]) {
-			if($current[value]==0) {
-				$last[time_start]=$current[time_stop];
+		} else if($current['time_start']==$first['time_start']) {
+			if($current['value']==0) {
+				$last['time_start']=$current['time_stop'];
 				$tmp[]=$last;
 				return "0";
-			} else if($current[value]==$last[value]) {
-				$current[time_stop]=$last[time_stop];
+			} else if($current['value']==$last['value']) {
+				$current['time_stop']=$last['time_stop'];
 				$tmp[]=$current;
 				return "0";
 			} else {
-				$last[time_start]=$current[time_stop];
+				$last['time_start']=$current['time_stop'];
 				$tmp[]=$current;
 				$tmp[]=$last;
 				return "0";
 			}
-		} else if ($current[time_start]==$last[time_stop]) {
-			if($current[value]==0) {
-                                $first[time_stop]=$current[time_start];
+		} else if ($current['time_start']==$last['time_stop']) {
+			if($current['value']==0) {
+                                $first['time_stop']=$current['time_start'];
                                 $tmp[]=$first;
                                 return "0";
-                        } else if($current[value]==$last[value]) {
-				$first[time_stop]=$current[time_start];
+                        } else if($current['value']==$last['value']) {
+				$first['time_stop']=$current['time_start'];
                                 $tmp[]=$first;
 				$tmp[]=$current;
                                 return "0";
-                        } else if($current[value]==$first[value]) {
-                                $first[time_stop]=$current[time_stop];
+                        } else if($current['value']==$first['value']) {
+                                $first['time_stop']=$current['time_stop'];
                                 $tmp[]=$first;
                                 return "0";
 			} else {
-				$first[time_stop]=$current[time_start];
+				$first['time_stop']=$current['time_start'];
 				$tmp[]=$first;
 				$tmp[]=$current;
 				return "0";	
 			}
 		} else {
-			if($current[value]==0) {
-                                $first[time_stop]=$current[time_start];
-				$last[time_start]=$current[time_stop];
+			if($current['value']==0) {
+                                $first['time_stop']=$current['time_start'];
+				$last['time_start']=$current['time_stop'];
                                 $tmp[]=$first;
 				$tmp[]=$last;
                                 return "0";
-                        } else if($current[value]==$last[value]) {
-                                $first[time_stop]=$current[time_start];
+                        } else if($current['value']==$last['value']) {
+                                $first['time_stop']=$current['time_start'];
                                 $tmp[]=$first;
                                 $tmp[]=$current;
                                 return "0";
-                        } else if($current[value]==$first[value]) {
-                                $first[time_stop]=$current[time_stop];
-				$last[time_start]=$current[time_stop];
+                        } else if($current['value']==$first['value']) {
+                                $first['time_stop']=$current['time_stop'];
+				$last['time_start']=$current['time_stop'];
                                 $tmp[]=$first;
 				$tmp[]=$last;
                                 return "0";
                         } else {
-                                $first[time_stop]=$current[time_start]; 
-				$last[time_start]=$current[time_stop];
+                                $first['time_stop']=$current['time_start']; 
+				$last['time_start']=$current['time_stop'];
                                 $tmp[]=$first;
                                 $tmp[]=$current;
 				$tmp[]=$last;
@@ -731,20 +732,20 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                         }
 		}
 	}	
-   } else if(($current[time_start]>=$first[time_start])&&($current[time_stop]>$last[time_stop])&&($current[time_start]<$last[time_stop])&&($current[time_start]<$last[time_start])) {
-		if($GLOBALS['DEBUD_TRACE']) {
+   } else if(($current['time_start']>=$first['time_start'])&&($current['time_stop']>$last['time_stop'])&&($current['time_start']<$last['time_stop'])&&($current['time_start']<$last['time_start'])) {
+		if($GLOBALS['DEBUG_TRACE']) {
                         echo "special case: ";
                 }
 		$tmp_current=$current;
-		$tmp_current[time_stop]=$last[time_stop];
+		$tmp_current['time_stop']=$last['time_stop'];
 		$continue=compare_data_program($first,$last,$tmp_current,$tmp);
 		if(!$continue) {
-			$current[time_start]=$last[time_start];
+			$current['time_start']=$last['time_start'];
 			return "2";		
 		}
 		return $continue;
   } else {
-		if($GLOBALS['DEBUD_TRACE']) {
+		if($GLOBALS['DEBUG_TRACE']) {
                         echo "nothing;";
                 }
 		$tmp[]=$first;
@@ -812,11 +813,11 @@ function purge_program($arr) {
 	asort($arr);
 	if(count($arr)>0) {
 		foreach($arr as $val) {
-			if(($val[value]!=0)&&($val[time_start]!=$val[time_stop])) {
+			if(($val['value']!=0)&&($val['time_start']!=$val['time_stop'])) {
 					$tmp_arr = array(
-						"time_start" => $val[time_start],
-						"time_stop" => $val[time_stop],
-					 	"value" => $val[value]
+						"time_start" => $val['time_start'],
+						"time_stop" => $val['time_stop'],
+					 	"value" => $val['value']
 					);
 					$tmp[]=$tmp_arr;
 	    		}
@@ -840,9 +841,9 @@ function optimize_program($arr) {
 			$jump=true;
 			$i=0;
 			while(array_key_exists($i+1,$arr)) {
-				if(($arr[$i+1][time_start]<=$arr[$i][time_stop])&&($arr[$i+1][value]==$arr[$i][value])) {
+				if(($arr[$i+1]['time_start']<=$arr[$i]['time_stop'])&&($arr[$i+1]['value']==$arr[$i]['value'])) {
 					$val=$arr[$i];
-					$val[time_stop]=$arr[$i+1][time_stop];
+					$val['time_stop']=$arr[$i+1]['time_stop'];
 					$tmp[]=$val;
 					$jump=false;
 					$i=$i+2;	
@@ -979,8 +980,8 @@ EOF;
 	}
 
 	foreach($res as $result) {
-		$event[]=$result[time_start];
-		$event[]=$result[time_stop];
+		$event[]=$result['time_start'];
+		$event[]=$result['time_stop'];
 	}
 	if(count($event)>0) {
 		$event = array_unique ($event);
@@ -1111,16 +1112,16 @@ EOF;
 // RET	000 if the plug is not concerned or if its value is 0, 0001 else
 function find_value_for_plug($data,$time,$plug) {
 	for($i=0;$i<count($data);$i++) {
-		if(($data[$i][time_start]<=$time)&&($data[$i][time_stop]>=$time)&&($data[$i][plug_id]==$plug)) {
-			if($data[$i][time_stop]==$time) {
-				if($data[$i][time_stop]=="235959") {
+		if(($data[$i]['time_start']<=$time)&&($data[$i]['time_stop']>=$time)&&($data[$i][plug_id]==$plug)) {
+			if($data[$i]['time_stop']==$time) {
+				if($data[$i]['time_stop']=="235959") {
 					return "001";
 				} else {
 					return "000";
 				}
 			}
 
-			if($data[$i][value] == "1") {
+			if($data[$i]['value'] == "1") {
 				return "001";
 			}
 		}
