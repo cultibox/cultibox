@@ -18,6 +18,7 @@ __('LANG');
 $error="";
 $ret_plug=array();
 $info="";
+$wzd="";
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $selected_plug=getvar('selected_plug');
 $plugs_infos=get_plugs_infos($nb_plugs,$error);
@@ -26,16 +27,26 @@ $finish=getvar('finish');
 $wizard=get_configuration("SHOW_WIZARD",$error);
 $wzd=getvar('wzd');
 $step=getvar('step');
+$info_plug=array();
+
+for($i=0;$i<=$nb_plugs;$i++) {
+	$info_plug[]="";
+	$ret_plug[]="";
+}
 
 
 if((isset($finish))&&($step==5)) {
 	unset($wzd);
 }
 
+if((!isset($wzd))||(empty($wzd))) {
+		$wzd="False";
+}
+
 if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"!="False")) {
 
 	if("$wizard"=="1") {
-		$info=$info.__(WIZARD_DISABLE_FUNCTION);
+		$info=$info.__('WIZARD_DISABLE_FUNCTION');
 	}
 
 	$step=getvar('step');
@@ -48,20 +59,23 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	$plug_tolerance=getvar('plug_tolerance');
 	$program=getvar('apply');
 	$force_on=getvar('force_on');
+	$start_time="00:00:00";
+	$end_time="00:00:00";
+	$value_program="";
 
 
 	switch($plug_type) {
-                        case 'unknown': $plug_translate=__(PLUG_UNKNOWN);
+                        case 'unknown': $plug_translate=__('PLUG_UNKNOWN');
                                 break;
-                        case 'ventilator': $plug_translate=__(PLUG_VENTILATOR);
+                        case 'ventilator': $plug_translate=__('PLUG_VENTILATOR');
                                 break;
-                        case 'heating': $plug_translate=__(PLUG_HEATING);
+                        case 'heating': $plug_translate=__('PLUG_HEATING');
                                 break;
-                        case 'lamp': $plug_translate=__(PLUG_LAMP);
+                        case 'lamp': $plug_translate=__('PLUG_LAMP');
                                 break;
-                        case 'humidifier': $plug_translate=__(PLUG_HUMIDIFIER);
+                        case 'humidifier': $plug_translate=__('PLUG_HUMIDIFIER');
                                 break;
-                        case 'dehumidifier': $plug_translate=__(PLUG_DESHUMIDIFIER);
+                        case 'dehumidifier': $plug_translate=__('PLUG_DESHUMIDIFIER');
                                 break;
         }
 
@@ -114,10 +128,10 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 
                                 if($check) {
                                         if(insert_program($selected_plug,$start_time,$end_time,$value_program,$error)) {
-                                                $info=$info.__(INFO_VALID_UPDATE_PROGRAM);
+                                                $info=$info.__('INFO_VALID_UPDATE_PROGRAM');
                                         }
                                 } else {
-                                        $error=$error.__(ERROR_VALUE_PROGRAM);
+                                        $error=$error.__('ERROR_VALUE_PROGRAM');
                                 }
                 } else {
                         $error=$error.__('ERROR_MISSING_VALUE_TIME');
@@ -138,7 +152,7 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	unset($step);
 
 	if("$wizard"=="1") {
-		$info=$info.__(WIZARD_ENABLE_FUNCTION);
+		$info=$info.__('WIZARD_ENABLE_FUNCTION');
 	}
 
 	if((isset($exportid))&&(!empty($exportid))) {
@@ -185,10 +199,10 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 			
 				if($check) {
 					if(insert_program($selected_plug,$start_time,$end_time,$value_program,$ret_plug[$selected_plug])) {
-						$info_plug[$selected_plug]=$info_plug[$selected_plug].__(INFO_VALID_UPDATE_PROGRAM);
+						$info_plug[$selected_plug]=$info_plug[$selected_plug].__('INFO_VALID_UPDATE_PROGRAM');
 					}
 				} else {
-					$ret_plug[$selected_plug]=$$ret_plug[$selected_plug].__(ERROR_VALUE_PROGRAM);
+					$ret_plug[$selected_plug]=$$ret_plug[$selected_plug].__('ERROR_VALUE_PROGRAM');
 				}
 			}
 		} else {
@@ -198,19 +212,19 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	
 	for($i=0;$i<$nb_plugs;$i++) {
 		$data_plug=get_data_plug($i+1,$error);
-        	$plugs_infos[$i][data]=format_program_highchart_data($data_plug,"",$plugs_infos[$i][PLUG_TYPE]);
-		switch($plugs_infos[$i][PLUG_TYPE]) {
-			case 'unknown': $plugs_infos[$i][translate]=__(PLUG_UNKNOWN);
+        	$plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"",$plugs_infos[$i]['PLUG_TYPE']);
+		switch($plugs_infos[$i]['PLUG_TYPE']) {
+			case 'unknown': $plugs_infos[$i]["translate"]=__('PLUG_UNKNOWN');
 				break;
-			case 'ventilator': $plugs_infos[$i][translate]=__(PLUG_VENTILATOR);
+			case 'ventilator': $plugs_infos[$i]["translate"]=__('PLUG_VENTILATOR');
                         	break;
-			case 'heating': $plugs_infos[$i][translate]=__(PLUG_HEATING);
+			case 'heating': $plugs_infos[$i]["translate"]=__('PLUG_HEATING');
                         	break;	
-			case 'lamp': $plugs_infos[$i][translate]=__(PLUG_LAMP);
+			case 'lamp': $plugs_infos[$i]["translate"]=__('PLUG_LAMP');
                         	break;
-			case 'humidifier': $plugs_infos[$i][translate]=__(PLUG_HUMIDIFIER);
+			case 'humidifier': $plugs_infos[$i]["translate"]=__('PLUG_HUMIDIFIER');
                         	break;
-                	case 'dehumidifier': $plugs_infos[$i][translate]=__(PLUG_DESHUMIDIFIER);
+                	case 'dehumidifier': $plugs_infos[$i]["translate"]=__('PLUG_DESHUMIDIFIER');
                         	break;	
 		}
 	}

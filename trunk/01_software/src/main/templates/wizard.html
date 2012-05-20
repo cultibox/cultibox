@@ -26,30 +26,29 @@ function actdesact()
 }
 </script>
 
-
 <script type="text/javascript">
 $(document).ready(function(){
 $('#start_time').timepicker({
-timeOnlyTitle: '<?php echo __(TIMEPICKER_SELECT_TIME); ?>',
+<?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
 showSecond: true,
 showOn: 'both',
 timeFormat: 'hh:mm:ss',
-timeText: '<?php echo __(TIMEPICKER_TIME); ?>',
-hourText: '<?php echo __(TIMEPICKER_HOUR); ?>',
-minuteText: '<?php echo __(TIMEPICKER_MINUTE); ?>',
-secondText: '<?php echo __(TIMEPICKER_SECOND); ?>',
-currentText: '<?php echo __(TIMEPICKER_NOW); ?>'
+<?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
+<?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
+<?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
+<?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
+<?php echo "currentText: '".__('TIMEPICKER_NOW')."',"; ?>
 });
 $('#end_time').timepicker({
-timeOnlyTitle: '<?php echo __(TIMEPICKER_SELECT_TIME); ?>',
+<?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
 showOn: 'both',
 showSecond: true,
 timeFormat: 'hh:mm:ss',
-timeText: '<?php echo __(TIMEPICKER_TIME); ?>',
-hourText: '<?php echo __(TIMEPICKER_HOUR); ?>',
-minuteText: '<?php echo __(TIMEPICKER_MINUTE); ?>',
-secondText: '<?php echo __(TIMEPICKER_SECOND); ?>',
-currentText: '<?php echo __(TIMEPICKER_NOW); ?>'
+<?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
+<?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
+<?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
+<?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
+<?php echo "currentText: '".__('TIMEPICKER_NOW')."',"; ?>
 });
 });
 </script>
@@ -65,15 +64,15 @@ $(document).ready(function() {
                         zoomType: 'x'
                 },
                 title: {
-                        text: <?php echo "'".__(CURRENT_PLUG_PROGRAM)." ".$plug_name."'"; ?>
+                        text: <?php echo "'".__('CURRENT_PLUG_PROGRAM')." ".$plug_name."'"; ?>
                 },
                 lang: {
-                        printButtonTitle: <?php echo "'".__(PRINT_HIGHCHART)."',"; ?>
-                        exportButtonTitle: <?php echo "'".__(EXPORT_HIGHCHART)."',"; ?>
-                        downloadPNG : <?php echo "'".__(EXPORT_PNG)."',"; ?>
-                        downloadJPEG : <?php echo "'".__(EXPORT_JPEG)."',"; ?>
-                        downloadPDF : <?php echo "'".__(EXPORT_PDF)."',"; ?>
-                        downloadSVG : <?php echo "'".__(EXPORT_SVG)."'"; ?>
+                        printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
+                        exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART')."',"; ?>
+                        downloadPNG : <?php echo "'".__('EXPORT_PNG')."',"; ?>
+                        downloadJPEG : <?php echo "'".__('EXPORT_JPEG')."',"; ?>
+                        downloadPDF : <?php echo "'".__('EXPORT_PDF')."',"; ?>
+                        downloadSVG : <?php echo "'".__('EXPORT_SVG')."'"; ?>
                 },
                 xAxis: {
                         type: 'datetime',
@@ -102,15 +101,15 @@ $(document).ready(function() {
                         labels: {
                                 formatter: function() {
                                         <?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { ?>
-                                        if(this.value==0) return '<?php echo __(VALUE_OFF); ?>';
-                                        if(this.value==1) return '<?php echo __(VALUE_ON); ?>';
+                                        if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                                        if(this.value==1) return '<?php echo __("VALUE_ON"); ?>';
 <?php } else if((strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"heating")==0)) { ?>
                                         if(this.value>0) return this.value+'°C';
-                                        if(this.value==0) return '<?php echo __(VALUE_OFF); ?>';
+                                        if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
 
 <?php } else if((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { ?>
                                         if(this.value>0) return this.value+'%';
-                                        if(this.value==0) return '<?php echo __(VALUE_OFF); ?>';
+                                        if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
 
 <?php } else { ?>
                                         return this.value;
@@ -128,9 +127,9 @@ $(document).ready(function() {
 
   <?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { ?>
                 if(this.y == 1) {
-                        return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __(VALUE_ON); ?></b></p>';
+                        return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_ON"); ?></b></p>';
                 } else {
-                        return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __(VALUE_OFF); ?></b></p>';
+                        return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_OFF"); ?></b></p>';
                 }
 <?php } else if((strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"heating")==0)) { ?>
                 return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'°C</b></p>';
@@ -145,7 +144,7 @@ $(document).ready(function() {
                 },
                 
                 series: [{
-                        name: <?php echo "'".__(BEHAVIOUR_PLUG_PROGRAM_TITLE)." (".$plug_translate.")',"; ?>
+                        name: <?php echo "'".__('BEHAVIOUR_PLUG_PROGRAM_TITLE')." (".$plug_translate.")',"; ?>
                         color: <?php echo "'".$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$selected_plug-1]."'"; ?>,
                         data: [
                                 <?php echo $data; ?>
@@ -157,27 +156,27 @@ $(document).ready(function() {
 </script>
 
 <br />
-<p class="wizard_title"><?php echo __(WIZARD_INTRO); ?></p>
+<p class="wizard_title"><?php echo __('WIZARD_INTRO'); ?></p>
 <br /><br />
 <form action="<?php echo($_SERVER['PHP_SELF']);?>?wzd=True" method="post">
 <table width="100%">
 <tr>
-<td width="10%"><p class="step"><?php echo __(WIZARD_STEP); echo " $step";?>/5:</p></td>
+<td width="10%"><p class="step"><?php echo __('WIZARD_STEP'); echo " $step";?>/5:</p></td>
 </tr>
 <tr>
 <td></td>
 <td>
 <p class="step_info">
 <?php if($step==1) { ?>
-	<?php echo __(WIZARD_PLUG_NUMBER); ?>
+	<?php echo __('WIZARD_PLUG_NUMBER'); ?>
 <?php } else if($step==2) { ?>
-	<?php echo __(WIZARD_PLUG_NAME); ?>
+	<?php echo __('WIZARD_PLUG_NAME'); ?>
 <?php } else if($step==3) { ?>
-	<?php echo __(WIZARD_PLUG_TYPE); ?>
+	<?php echo __('WIZARD_PLUG_TYPE'); ?>
 <?php } else if($step==4) { ?>
-        <?php echo __(WIZARD_PLUG_TOLERANCE); ?>
+        <?php echo __('WIZARD_PLUG_TOLERANCE'); ?>
 <?php } else if($step==5) { ?>
-	<?php echo __(WIZARD_PLUG_PROGRAM); ?>
+	<?php echo __('WIZARD_PLUG_PROGRAM'); ?>
 
 <?php } ?>
 </p>
@@ -194,7 +193,7 @@ $(document).ready(function() {
 	<tr>
 		<td width="10%"></td>
 		<?php if($step==1) { ?> 
-			<td width="25%"><?php echo __(WIZARD_CHOOSE_PLUG_NUMBER); ?></td>
+			<td width="25%"><?php echo __('WIZARD_CHOOSE_PLUG_NUMBER'); ?></td>
 			<td width="20%">
 			<select name="plug_number">
 				<?php for($i=1;$i<=$nb_plugs;$i++) { ?>
@@ -202,11 +201,11 @@ $(document).ready(function() {
 				<?php } ?>
 			</select>
 		</td><?php } else if($step==2) { ?>
-			<td width="25%"><?php echo __(WIZARD_CHOOSE_PLUG_NAME); ?></td>
+			<td width="25%"><?php echo __('WIZARD_CHOOSE_PLUG_NAME'); ?></td>
 			<td width="30%">
 			<input type=text name="plug_name" value="<?php echo $plug_name; ?>">
 		</td><?php } else if($step==3) { ?> 
-			<td width="25%"><?php echo __(WIZARD_CHOOSE_PLUG_TYPE); ?></td>
+			<td width="25%"><?php echo __('WIZARD_CHOOSE_PLUG_TYPE'); ?></td>
 			<td width="30%">
 			  <select name="plug_type">
                 		<option <?php if(strcmp($plug_type,"unknown")==0) { echo 'selected';} ?> value="unknown"><?php echo __('PLUG_UNKNOWN'); ?></option>
@@ -217,7 +216,7 @@ $(document).ready(function() {
                 		<option <?php if(strcmp($plug_type,"dehumidifier")==0) { echo 'selected';} ?> value="dehumidifier"><?php echo __('PLUG_DEHUMIDIFIER'); ?></option>
         		</select>
                 </td><?php } else if($step==4) {?>
-			<td width="25%"><?php if(strcmp($plug_type,"lamp")!=0) { echo __(WIZARD_CHOOSE_PLUG_TOLERANCE); } ?></td>
+			<td width="25%"><?php if(strcmp($plug_type,"lamp")!=0) { echo __('WIZARD_CHOOSE_PLUG_TOLERANCE'); } ?></td>
 			<td width="30%">
 			<?php if(strcmp($plug_type,"lamp")!=0) { ?>
                 		<input type=text name="plug_tolerance"  size="4" style="width: 10%;" maxlength="4" value="<?php echo $plug_tolerance; ?>">
@@ -225,11 +224,11 @@ $(document).ready(function() {
 				<table width="100%">
 				<tr>
 				<td>
-		 			<?php echo __(START_TIME_PROGRAM); ?></td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __(END_TIME_PROGRAM); ?></td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
-                                        <tr><td><?php echo __(VALUE_ON_OFF); ?></td><td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { ?>
+		 			<?php echo __('START_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __('END_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
+                                        <tr><td><?php echo __('VALUE_ON_OFF'); ?></td><td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { ?>
                                                 <select name="value_program" id="value_program">
-                                                        <option value="off" <?php if("$value_program"=="0") echo selected; ?>><?php echo __(VALUE_OFF); ?></option>
-                                                        <option value="on" <?php if("$value_program"=="1") echo selected; ?>><?php echo __(VALUE_ON); ?></option>
+                                                        <option value="off" <?php if("$value_program"=="0") echo selected; ?>><?php echo __('VALUE_OFF'); ?></option>
+                                                        <option value="on" <?php if("$value_program"=="1") echo selected; ?>><?php echo __('VALUE_ON'); ?></option>
                                                 </select>
                                         <?php } else { ?>
                                                 <input type="text" id="value_program" name="value_program" size="4" maxlength="4" value="<?php echo $value_program ?>"/>
@@ -239,10 +238,10 @@ $(document).ready(function() {
 		</td>
 		</tr>
 		 <tr>
-                               <td><?php echo __(FORCE_ON_VALUE); ?></td>
+                               <td><?php echo __('FORCE_ON_VALUE'); ?></td>
                                <td><input type="checkbox" id="force_on" name="force_on" value="force_on" onclick="actdesact()" /></td>
                            </tr>
-		<tr><td></td><td><br /><input type="submit" name="apply" value="<?php echo __(APPLY_PROGRAM); ?>"></td></tr>
+		<tr><td></td><td><br /><input type="submit" name="apply" value="<?php echo __('APPLY_PROGRAM'); ?>"></td></tr>
 		</table>
 		</td>
 		<td width="80%"><div id="plug" style="width: 80%; height: 300px; margin: 0 auto"></div></td>
@@ -276,8 +275,8 @@ $(document).ready(function() {
 <table width="100%">
 <tr>
 <td width="20%"></td>
-<td width="50%"><?php if($step>1) { ?><input type=submit name="previous" value="<?php echo __(WIZARD_PREVIOUS_STEP); ?>"><?php } ?></td>
-<td width="20%"><?php if($step<5) { ?><input type=submit name="next" value="<?php echo __(WIZARD_NEXT_STEP); ?>"> <?php } else { ?><input type=submit name="finish" value="<?php echo __(WIZARD_FINISH_STEP); ?>"> <?php } ?></td>
+<td width="50%"><?php if($step>1) { ?><input type=submit name="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>"><?php } ?></td>
+<td width="20%"><?php if($step<5) { ?><input type=submit name="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>"> <?php } else { ?><input type=submit name="finish" value="<?php echo __('WIZARD_FINISH_STEP'); ?>"> <?php } ?></td>
 <td></td>
 </tr>
 </table>
