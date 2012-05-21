@@ -917,7 +917,7 @@ EOF;
 					$sec="SEC:N+0000";
 				}
 				
-				$arr[]="$reg"."\n\r"."$sec";
+				$arr[]="$reg"."\r\n"."$sec";
 			}
 			return $arr;
 		}
