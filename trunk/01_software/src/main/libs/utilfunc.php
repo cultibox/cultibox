@@ -588,7 +588,7 @@ function save_program_on_sd($sd_card,$program,&$out,&$info) {
 function write_program($data,$file,&$out="") {
 	if($f=fopen("$file","w+")) {
 		for($i=0; $i<count($data); $i++) {
-			fputs($f,"$data[$i]"."\n\r");
+			fputs($f,"$data[$i]"."\r\n");
 		}
 		fclose($f);
 	} else {
@@ -613,10 +613,10 @@ function write_plugconf($data,$sd_card,&$out="") {
 			$file="$sd_card/plug$nb";
 		}
 			
-        	if($f=fopen("$file","w+")) {
-                       	fputs($f,"$data[$i]"."\n\r");
-               	}
-               	fclose($f);
+     	if($f=fopen("$file","w+")) {
+           	fputs($f,"$data[$i]"."\r\n");
+   	}
+      fclose($f);
 	}
 }
 // }}}
@@ -637,12 +637,12 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,&$o
 	$update="000$update_frequency";
 	$file="$sd_card/conf";
         if($f=fopen("$file","w+")) {
-		fputs($f,"PLUG_UPDATE:$record\n\r");
-		fputs($f,"LOGS_UPDATE:$update\n\r");
+		fputs($f,"PLUG_UPDATE:$record\r\n");
+		fputs($f,"LOGS_UPDATE:$update\r\n");
                 fclose($f);
         } else {
                 $out=$out.__('ERROR_WRITE_SD');
-        }	
+        }
 }
 //}}}
 
@@ -660,9 +660,9 @@ function write_calendar($sd_card,$data,&$out="") {
         		if($f=fopen("$file","w+")) {
 				fputs($f,"$val[number]");
 				foreach($val[subject] as $sub) {
-                        		fputs($f,"\n\r"."$sub");
+                        		fputs($f,"\r\n"."$sub");
 				}
-                		fclose($f);
+            fclose($f);
 			}
 		}
 	}

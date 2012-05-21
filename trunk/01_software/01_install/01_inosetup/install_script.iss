@@ -34,6 +34,7 @@ Source: "F:\Cultibox_web\01_software\01_install\02_src\01_xampp\*"; DestDir: "{a
 Source: "F:\Cultibox_web\01_software\01_install\02_src\02_joomla\*"; DestDir: "{app}\xampp\htdocs\cultibox"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\01_software\01_install\02_src\03_sql\*"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\01_software\01_install\02_src\04_doc\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Cultibox_web\01_software\01_install\02_src\05_sd\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
