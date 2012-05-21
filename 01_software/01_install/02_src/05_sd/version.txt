@@ -1,0 +1,67 @@
+                                                                         
+   _|_|_|            _|    _|      _|      _|_|_|                        
+ _|        _|    _|  _|  _|_|_|_|          _|    _|    _|_|    _|    _|  
+ _|        _|    _|  _|    _|      _|      _|_|_|    _|    _|    _|_|    
+ _|        _|    _|  _|    _|      _|      _|    _|  _|    _|  _|    _|  
+   _|_|_|    _|_|_|  _|      _|_|  _|      _|_|_|      _|_|    _|    _|  
+                                                                         
+                                                                                
++------------------------------------------------------------------------------+
++                                Version note                                  +
++ Bug can be view at adress : http://code.google.com/p/cultibox                +
++------------------------------------------------------------------------------+
+
++ Version 1.3
+   Comment:
+   Bug present :
+      022 : No graph programm
+      023 : No multi 3500W
+      033 : Functionnality cumsumtion not implemented
+      035 : No frequency gestion in emetor firmware
+      038 : Add a calendar to select log
+      039 : Add a calendar to select events
+      040 : Speed up reading events
+      041 : Add Alarm
+      043 : Min Max for today
+   Bug solved :
+
++ Version 1.2
+   Comment:
+   Bug present :
+      022 : No graph programm
+      023 : No multi 3500W
+      033 : Functionnality cumsumtion not implemented
+   Bug solved :
+      002 : No calendar
+      003 : No regulation 
+      004 : False temp and humi are show at start
+      005 : No splash screen display
+      021 : Cultibox must not log if there is no sensor
+      024 : No calendar events
+      025 : Cultibox must save 5 next actions in RAM
+      027 : No gestion of plug file
+      029 : No gestion of freq plug update
+      030 : No gestion of log freq update
+      031 : Emetor is reinitialized at start
+      036 : Delete SD eject icon
+
++ Version 1.1
+   Comment: Log display
+   Bug present :
+      002 : No calendar
+      003 : No regulation
+      004 : False temp and humi are show at start
+      005 : No splash screen display
+   Bug solved :
+      001 : No graph
+
++ Version 1.0
+   Comment: First version
+   Bug present :
+      001 : No graph
+      002 : No calendar
+      003 : No regulation
+      004 : False temp and humi are show at start
+      005 : No splash screen display
+   Bug solved :
+      NA
