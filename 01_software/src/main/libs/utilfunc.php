@@ -217,9 +217,11 @@ function set_lang($lang) {
 // RET $data	data at the highcharts format (a string)
 function get_format_graph($arr) {
 	$data="";
+	$last_mm="";
+	$last_hh="";
 	foreach($arr as $value) {
-		$hh=substr($value[time_catch], 0, 2);
-		$mm=substr($value[time_catch], 2, 2);
+		$hh=substr($value['time_catch'], 0, 2);
+		$mm=substr($value['time_catch'], 2, 2);
 
 		if(("$hh:$mm" != "00:00")&&(empty($data))&&(empty($last_value))) {
 			$data=fill_data("00","00","$hh","$mm","null","$data");

@@ -890,8 +890,8 @@ EOF;
 		if(count($res)>0) {
 			$arr=array();
 			foreach($res as $data) {
-				if($data[PLUG_TOLERANCE]) {
-                                        $tol=$data[PLUG_TOLERANCE]*10;
+				if($data['PLUG_TOLERANCE']) {
+                                        $tol=$data['PLUG_TOLERANCE']*10;
 					while(strlen($tol)<3) {
 						$tol="0$tol";
 					}
@@ -899,17 +899,17 @@ EOF;
 					$tol="000";
 				}
 
-				if($data[PLUG_TYPE]=="ventilator") {
+				if($data['PLUG_TYPE']=="ventilator") {
 					$reg="REG:T+${tol}";
 					$sec="SEC:T+1000";
 
-				} else if($data[PLUG_TYPE]=="heating") {
+				} else if($data['PLUG_TYPE']=="heating") {
 	                                $reg="REG:T-${tol}";
 					$sec="SEC:T-1000";
-				} else if($data[PLUG_TYPE]=="humidifier") {
+				} else if($data['PLUG_TYPE']=="humidifier") {
                                         $reg="REG:H-${tol}";
 					$sec="SEC:H-1000";
-				} else if($data[PLUG_TYPE]=="dehumidifier") {
+				} else if($data['PLUG_TYPE']=="dehumidifier") {
 					$reg="REG:H+${tol}";
 					$sec="SEC:H+1000";
 				} else {
@@ -979,6 +979,7 @@ EOF;
 		$data[0]="00000000000000000000000000000000000000000000000000000";
 	}
 
+	$event=array();
 	foreach($res as $result) {
 		$event[]=$result['time_start'];
 		$event[]=$result['time_stop'];
@@ -1040,7 +1041,7 @@ EOF;
 // IN	$out	error or warning message
 // RET an array containing datas
 function create_calendar_from_database(&$out="") {
-	$year=date(Y);
+	$year=date('Y');
         $db = db_priv_start();
         $sql = <<<EOF
 SELECT `Subject`,`StartTime`,`EndTime` FROM `jqcalendar` WHERE `StartTime` LIKE "{$year}-%"
