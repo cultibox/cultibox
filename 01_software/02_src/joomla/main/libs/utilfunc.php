@@ -232,7 +232,7 @@ function get_format_graph($arr) {
 				$data=fill_data("$last_hh","$last_mm","$hh","$mm","null","$data");
 			}
 		}
-		$last_value="$value['record']";
+		$last_value="$value[record]";
 		$last_hh=$hh;
 		$last_mm=$mm;
 	}
@@ -656,9 +656,9 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,&$o
 function write_calendar($sd_card,$data,&$out="") {
 	if(count($data)>0) {
 		foreach($data as $val) {
-			$file="$sd_card/logs/$val['month']/cal_$val['day']";
+			$file="$sd_card/logs/$val[month]/cal_$val[day]";
         		if($f=fopen("$file","w+")) {
-				fputs($f,"$val['number']");
+				fputs($f,"$val[number]");
 				foreach($val['subject'] as $sub) {
                         		fputs($f,"\r\n"."$sub");
 				}
