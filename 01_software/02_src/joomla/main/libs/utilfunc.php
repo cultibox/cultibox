@@ -487,7 +487,7 @@ function check_times($start_time="",$end_time="",&$out="") {
 //      $date_start     
 //   $type      the type of the plug
 // RET data for highchart and cultibox programs
-function format_program_highchart_data($arr,$date_start="",$type="") {
+function format_program_highchart_data($arr,$date_start="") {
    $data="";
    if(empty($date_start)) {
       $ref_day=1;
@@ -502,11 +502,6 @@ function format_program_highchart_data($arr,$date_start="",$type="") {
    if(count($arr)>0) {
       if(is_array($arr)) {
       foreach($arr as $value) {
-         if(("$type"=="lamp")&&($value['value']=="99.9")) {
-            $value['value']=1;   
-         } else if(("$type"=="log-lamp")&&($value['value']=="1")) {
-                                $value['value']=99.9;
-                        }
          if((empty($data))&&(strcmp($value['time_start'],"000000")!=0)) {
             $first=mktime(0,0,0,$ref_month,$ref_day,$ref_year)*1000;
             $data="[".$first.",0]";
