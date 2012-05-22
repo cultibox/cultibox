@@ -109,14 +109,14 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	    	$start_time=getvar('start_time');
         	$end_time=getvar('end_time');
 		if((isset($force_on))&&(!empty($force_on))) {
-			$value_program=99.9;
+			$value_program="99.9";
 		} else {
         		$value_program=getvar('value_program');
 		}
 
 		if(check_times($start_time,$end_time,$error)) {
                                 if("$value_program"=="on") {
-                                        $value_program="1";
+                                        $value_program="99.9";
                                         $check=true;
                                 } else if("$value_program"=="off") {
                                         $value_program="0";
@@ -138,7 +138,7 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	}
 
 	$data_plug=get_data_plug($selected_plug,$error);
-        $data=format_program_highchart_data($data_plug,"",$plug_type);
+        $data=format_program_highchart_data($data_plug,"");
 
 
 
@@ -187,7 +187,7 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
         if(("$start_time"!="")&&("$end_time"!="")) {
 		if(check_times($start_time,$end_time,$ret_plug[$selected_plug])) {
 				if("$value_program"=="on") {
-					$value_program="1";
+					$value_program="99.9";
 					$check=true;
 				} else if("$value_program"=="off") {
 					$value_program="0";
@@ -198,6 +198,7 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 			
 				if($check) {
 					if(insert_program($selected_plug,$start_time,$end_time,$value_program,$ret_plug[$selected_plug])) {
+						echo "$value_program";
 						$info_plug[$selected_plug]=$info_plug[$selected_plug].__('INFO_VALID_UPDATE_PROGRAM');
 					}
 				} else {
@@ -211,7 +212,7 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	
 	for($i=0;$i<$nb_plugs;$i++) {
 		$data_plug=get_data_plug($i+1,$error);
-        	$plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"",$plugs_infos[$i]['PLUG_TYPE']);
+        	$plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"");
 		switch($plugs_infos[$i]['PLUG_TYPE']) {
 			case 'unknown': $plugs_infos[$i]["translate"]=__('PLUG_UNKNOWN');
 				break;

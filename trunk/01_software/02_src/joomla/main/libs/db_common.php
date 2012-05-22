@@ -1136,17 +1136,19 @@ EOF;
 function find_value_for_plug($data,$time,$plug) {
    for($i=0;$i<count($data);$i++) {
       if(($data[$i]['time_start']<=$time)&&($data[$i]['time_stop']>=$time)&&($data[$i]['plug_id']==$plug)) {
-         if($data[$i]['time_stop']==$time) {
-            if($data[$i]['time_stop']=="235959") {
-               return "001";
-            } else {
-               return "000";
-            }
-         }
-
-         if($data[$i]['value'] == "1") {
-            return "001";
-         }
+		if($data[$i]['time_stop']==$time) {
+            		if($data[$i]['time_stop']=="235959") {
+               			$ret=$data[$i]['value']*10;
+            		} else {
+               			$ret="000";
+            		}
+         	} else {
+			$ret=$data[$i]['value']*10;
+		}
+		while(strlen($ret)<3) {
+			$ret="0$ret";
+		}
+		return "$ret";
       }
    }
    return "000";
