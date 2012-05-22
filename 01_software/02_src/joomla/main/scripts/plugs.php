@@ -78,7 +78,8 @@ if((isset($sd_card))&&(!empty($sd_card))) {
    if(count($plugconf)>0) {
       write_plugconf($plugconf,$sd_card,$out);
    }
-
+   //write pluga file
+   write_pluga($sd_card,$out);
 }
 
 
