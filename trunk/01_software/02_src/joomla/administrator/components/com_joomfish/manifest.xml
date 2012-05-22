@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="1.7.0" method="install">
+	<name>COM_JOOMFISH</name>
+	<license>Open Source License, GPL v2 based</license>
+	<author>Joom!Fish Project</author>
+	<authorEmail>support@joomfish.net</authorEmail>
+	<authorUrl>http://www.joomfish.net</authorUrl>
+	<creationDate>January 2012</creationDate>
+	<copyright>2003 - 2012, Think Network GmbH, Munich</copyright>
+	<version>2.5.0 alpha</version>
+	<description>COM_JOOMFISH_XML_DESCRIPTION</description>
+
+	<scriptfile>install.php</scriptfile>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install/install.mysql.utf8.sql</file>
+			<file driver="mysql">install/install.mysql.sql</file>
+		</sql>
+	</install>
+
+	<uninstall>
+	</uninstall>
+	
+	<upgrade version="2.0">
+		<sql>
+			<file driver="mysql" charset="utf8">install/upgrade.mysql.utf8.sql</file>
+		</sql>
+	</upgrade>
+
+    <files folder="site">
+		<folder>helpers</folder>
+		<folder>images</folder>
+		<filename>joomfish.php</filename>
+		<filename>index.html</filename>
+    </files>
+    
+    <!-- Joom!Fish Site language files -->
+	<languages folder="site/language/en-GB">
+		<language tag="en-GB">en-GB.com_joomfish.ini</language>
+   	</languages>
+
+	<media folder="media" destination="com_joomfish">
+		<folder>default</folder>
+	</media>
+
+	<administration>
+		<menu img="components/com_joomfish/assets/images/icon-16-joomfish.png">com_joomfish</menu>
+	    <submenu>
+	      <menu link="option=com_joomfish" img="components/com_joomfish/assets/images/icon-16-cpanel.png">com_joomfish_control_panel</menu>
+	      <menu link="option=com_joomfish&amp;task=translate.overview" img="components/com_joomfish/assets/images/icon-16-translation.png">com_joomfish_translation</menu>
+	      <menu link="option=com_joomfish&amp;task=translate.orphans" img="components/com_joomfish/assets/images/icon-16-orphan.png">com_joomfish_orphan_translations</menu>
+	      <menu link="option=com_joomfish&amp;task=manage.overview" img="components/com_joomfish/assets/images/icon-16-manage.png">com_joomfish_manage_translations</menu>
+	      <menu link="option=com_joomfish&amp;task=statistics.overview" img="components/com_joomfish/assets/images/icon-16-statistics.png">com_joomfish_statistics</menu>
+	      <menu link="option=com_joomfish&amp;task=languages.show" img="components/com_joomfish/assets/images/icon-16-language.png">com_joomfish_languages</menu>
+	      <menu link="option=com_joomfish&amp;task=elements.show" img="components/com_joomfish/assets/images/icon-16-extension.png">com_joomfish_content_elements</menu>
+	      <menu link="option=com_joomfish&amp;task=plugin.show" img="components/com_joomfish/assets/images/icon-16-plugin.png">com_joomfish_plugins</menu>
+	      <menu link="option=com_joomfish&amp;task=help.show" img="components/com_joomfish/assets/images/icon-16-help.png">com_joomfish_help</menu>
+	    </submenu>
+
+	    <files folder="admin">
+		    <folder>assets</folder>
+		    <folder>classes</folder>
+		    <folder>contentelements</folder>
+		    <folder>controllers</folder>
+		    <folder>documentation</folder>
+		    <folder>editors</folder>
+		    <folder>help</folder>
+		    <folder>helpers</folder>
+		    <folder>install</folder>
+		    <folder>models</folder>
+		    <folder>tables</folder>
+		    <folder>views</folder>
+						
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>joomfish.php</filename>
+			<filename>version.php</filename>
+	    </files>
+
+		<!-- Joom!Fish Admin Language Files -->
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB/en-GB.com_joomfish.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_joomfish.sys.ini</language>
+    	</languages>
+
+ 	</administration>
+
+	<params />
+	<modules>
+		<module folder="modules" module="mod_jflanguageselection" name="Language Selection" />
+	</modules>
+
+	<plugins>
+		<plugin folder="plugins/system" plugin="jfdatabase" name="System - JFDatabase" group="system" />
+		<plugin folder="plugins/system" plugin="jfrouter" name="System - JFRouter" group="system" />
+		<plugin folder="plugins/system" plugin="jfoverrides" name="System - JFOverrides" group="system" />
+	</plugins>
+	
+	<check>
+		<directory>/modules</directory>
+		<directory>/plugins/content</directory>
+		<!--<directory>/plugins/search</directory>-->
+		<directory>/plugins/system</directory>
+		<directory>/administrator/modules</directory>
+		<!--
+		<extension name="jfcategories" type="plugins" field="published" value="1">element='jfcategories'</extension>
+		<extension name="jfcontacts"  type="plugins" field="published" value="1">element='jfcontacts'</extension>
+		<extension name="jfcontent"  type="plugins" field="published" value="1">element='jfcontent'</extension>
+		<extension name="jfnewsfeeds"  type="plugins" field="published" value="1">element='jfnewsfeeds'</extension>
+		<extension name="jfsections"  type="plugins" field="published" value="1">element='jfsections'</extension>
+		<extension name="jfweblinks"  type="plugins" field="published" value="1">element='jfweblinks'</extension>
+		<extension name="jfalternative"  type="plugins" field="published" value="1">element='jfalternative'</extension>
+		<extension name="mod_translate"  type="modules" field="published" value="1">module='mod_translate'</extension>
+		//-->
+		<extension name="jfrouter"  type="plugins" field="published" value="1">element='jfrouter'</extension>
+		<extension name="jfrouter"  type="plugins" field="ordering" value="0">folder='system'</extension>
+		<extension name="jfdatabase"  type="plugins" field="published" value="1">element='jfdatabase'</extension>
+		<extension name="jfdatabase"  type="plugins" field="ordering" value="1">folder='system'</extension>
+		<extension name="mod_jflanguageselection"  type="modules" field="published" value="1">module='mod_jflanguageselection'</extension>
+	 	<performance name="mySQL Driver" type="database" check_function="mysqli_connect" check_true="mysqli" check_false="mysql" optimal_value="mysqli" link="index.php?option=com_config" />
+	 	<performance name="PHP Version" type="php" required="5.0.0" optimal_value="5.3.0" link="index.php?option=com_admin&amp;task=sysinfo" />
+	 	<performance name="Cache" type="config" value="transcaching" optimal_value="1" link="index.php?option=com_joomfish" />
+	</check>
+</extension>
