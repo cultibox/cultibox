@@ -597,6 +597,36 @@ function write_program($data,$file,&$out="") {
 }
 // }}}
 
+// {{{ write_pluga($sd_card,&$out="")
+// ROLE write plug_a into the sd card
+// IN   $sd_card        the sd card to be written
+//      $out            error or warning messages
+// RET false is an error occured, true else
+function write_pluga($sd_card,&$out="") {
+
+   $file="$sd_card/pluga";
+
+   if($f=fopen("$file","w+")) {
+      fputs($f,"16"."\r\n");
+      fputs($f,"251"."\r\n"); 
+      fputs($f,"253"."\r\n"); 
+      fputs($f,"247"."\r\n"); 
+      fputs($f,"239"."\r\n"); 
+      fputs($f,"222"."\r\n"); 
+      fputs($f,"221"."\r\n");
+      fputs($f,"219"."\r\n"); 
+      fputs($f,"215"."\r\n"); 
+      fputs($f,"207"."\r\n"); 
+      fputs($f,"190"."\r\n"); 
+      fputs($f,"189"."\r\n"); 
+      fputs($f,"187"."\r\n"); 
+      fputs($f,"183"."\r\n"); 
+      fputs($f,"175"."\r\n"); 
+      fputs($f,"126"."\r\n");
+   }
+   fclose($f);
+}
+// }}}
 
 // {{{ write_plugconf($data,ŝd_card,$out)
 // ROLE write plug_configuration into the sd card
@@ -657,10 +687,10 @@ function write_calendar($sd_card,$data,&$out="") {
    if(count($data)>0) {
       foreach($data as $val) {
          $file="$sd_card/logs/$val[month]/cal_$val[day]";
-              if($f=fopen("$file","w+")) {
+         if($f=fopen("$file","w+")) {
             fputs($f,"$val[number]");
             foreach($val['subject'] as $sub) {
-                              fputs($f,"\r\n"."$sub");
+               fputs($f,"\r\n"."$sub");
             }
             fclose($f);
          }
@@ -678,19 +708,19 @@ function write_calendar($sd_card,$data,&$out="") {
 // RET false is there is a wrong value, true else
 function check_tolerance_value($type,$tolerance=0,&$out="") {
    if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
-         if(($tolerance >= 0)&&($tolerance <= 25.5)) {
-            return true;
-         } else {
-            $out=$out.__('ERROR_TOLERANCE_VALUE_DEGREE');
-            return false;
-         }
+      if(($tolerance >= 0)&&($tolerance <= 25.5)) {
+         return true;
+      } else {
+         $out=$out.__('ERROR_TOLERANCE_VALUE_DEGREE');
+         return false;
+      }
    } else if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
-         if(($tolerance >= 0)&&($tolerance <= 25.5)) {
-                                return true;
-                        } else {
-            $out=$out.__('ERROR_TOLERANCE_VALUE_POURCENT');
-                                return false;
-                        }   
+      if(($tolerance >= 0)&&($tolerance <= 25.5)) {
+         return true;
+      } else {
+         $out=$out.__('ERROR_TOLERANCE_VALUE_POURCENT');
+         return false;
+      }   
    }
    return true;
 }

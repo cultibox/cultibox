@@ -212,30 +212,30 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	
 	for($i=0;$i<$nb_plugs;$i++) {
 		$data_plug=get_data_plug($i+1,$error);
-        	$plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"",$plugs_infos[$i]['PLUG_TYPE']);
+      $plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"",$plugs_infos[$i]['PLUG_TYPE']);
 		switch($plugs_infos[$i]['PLUG_TYPE']) {
 			case 'unknown': $plugs_infos[$i]["translate"]=__('PLUG_UNKNOWN');
-				break;
+			break;
 			case 'ventilator': $plugs_infos[$i]["translate"]=__('PLUG_VENTILATOR');
-                        	break;
+         break;
 			case 'heating': $plugs_infos[$i]["translate"]=__('PLUG_HEATING');
-                        	break;	
+         break;	
 			case 'lamp': $plugs_infos[$i]["translate"]=__('PLUG_LAMP');
-                        	break;
+         break;
 			case 'humidifier': $plugs_infos[$i]["translate"]=__('PLUG_HUMIDIFIER');
-                        	break;
-                	case 'dehumidifier': $plugs_infos[$i]["translate"]=__('PLUG_DESHUMIDIFIER');
-                        	break;	
+         break;
+         case 'dehumidifier': $plugs_infos[$i]["translate"]=__('PLUG_DESHUMIDIFIER');
+         break;	
 		}
 	}
 
 	if((isset($sd_card))&&(!empty($sd_card))) {
-        	$program=create_program_from_database($error);
-        	save_program_on_sd($sd_card,$program,$error,$info);
+      $program=create_program_from_database($error);
+      save_program_on_sd($sd_card,$program,$error,$info);
 	}
 
 	if((isset($force_on))&&(!empty($force_on))) {
-                $value_program="";
+      $value_program="";
 	}
 
 	include('main/templates/programs.html');
