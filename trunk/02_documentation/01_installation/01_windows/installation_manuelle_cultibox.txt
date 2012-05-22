@@ -1,4 +1,4 @@
-1) Installer XAMPP - tester avec xampp light (à priori une copie brute devrait fonctionner, reste à créer les services)
+1) Installer XAMPP 
 
 2) Modification du mot de passe root pour mysql:
 
