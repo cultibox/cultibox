@@ -347,10 +347,10 @@ msgid "ERROR_TOLERANCE_VALUE_DEGREE"
 msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur &agrave; 10&deg;C et sup&eacute;rieur &aacute; 0&deg;C</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur &agrave; 20&#37; et sup&eacute;rieur &aacute; 0&#37;;</li>"
+msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 25.5&#37; et sup&eacute;rieur &aacute; 0&#37;;</li>"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li> Erreur dans la valeur: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 100 et sup&eacute;rieur ou &eacute;gal &aacute; 0</li>"
+msgstr "<li> Erreur dans la valeur: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 90 et sup&eacute;rieur ou &eacute;gal &aacute; 0</li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"
