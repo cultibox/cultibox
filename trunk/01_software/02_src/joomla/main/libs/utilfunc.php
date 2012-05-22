@@ -17,37 +17,37 @@ if(is_file("main/libs/l10n.php")) {
 }
 
 function __() {
-        global $__translations;
-        global $__translations_fallback;
-        global $string_lang;
-
-        if (func_num_args() < 1) {
-                die("ERROR: __() called without arguments");
-                return "";
-        }
-        $args = func_get_args();
-
-        if (!isset($__translations)) {
-                $__translations = __translations_get($_SESSION['LANG']);
-                $__translations_fallback = __translations_get(LANG_FALLBACK);
-                if (empty($__translations_fallback)) {
-                        die("No translation file");
-                }
-                $string_lang = array($_SESSION['LANG'] => $__translations);
-        }
-
-        $msg = $args[0];
-        if (isset($__translations["$msg"])) {
-                $msg = $__translations["$msg"];
-        } elseif (isset($__translations_fallback["$msg"])) {
-                $msg = $__translations_fallback["$msg"];
-        } else {
-                die("WARNING:L10N: no translation for '$msg'");
-        }
-
-        $args[0] = $msg;
-        $ret = call_user_func_array('sprintf', $args);
-        return $ret;
+   global $__translations;
+   global $__translations_fallback;
+   global $string_lang;
+   
+   if (func_num_args() < 1) {
+      die("ERROR: __() called without arguments");
+      return "";
+   }
+   $args = func_get_args();
+   
+   if (!isset($__translations)) {
+      $__translations = __translations_get($_SESSION['LANG']);
+      $__translations_fallback = __translations_get(LANG_FALLBACK);
+      if (empty($__translations_fallback)) {
+         die("No translation file");
+      }
+      $string_lang = array($_SESSION['LANG'] => $__translations);
+   }
+   
+   $msg = $args[0];
+   if (isset($__translations["$msg"])) {
+      $msg = $__translations["$msg"];
+   } elseif (isset($__translations_fallback["$msg"])) {
+      $msg = $__translations_fallback["$msg"];
+   } else {
+      die("WARNING:L10N: no translation for '$msg'");
+   }
+   
+   $args[0] = $msg;
+   $ret = call_user_func_array('sprintf', $args);
+   return $ret;
 }
 //}}}
 
@@ -57,32 +57,32 @@ function __() {
 // IN $varname as a string
 // RET the string value as read in $_GET[] or $_POST[]
 function getvar($varname) {
-        $tmp = false;
-
-        // The mess with the *x appended is a workaround for some browser
-        // versions that append it when you want to get information for some
-        // image buttons
-
-        if (isset($_GET["$varname"])) {
-                $tmp = $_GET["$varname"];
-        } elseif (isset($_GET["$varname"."x"])) {
-                $tmp = true;
-        } elseif (isset($_GET["$varname"."_x"])) {
-                $tmp = true;
-        } elseif (isset($_POST["$varname"])) {
-                $tmp = $_POST["$varname"];
-        } elseif (isset($_POST["$varname"."x"])) {
-                $tmp = true;
-        } elseif (isset($_POST["$varname"."_x"])) {
-                $tmp = true;
-        }
-
-        // FIXME: simple html cleanup
-        if (is_array($tmp)) {
-                return $tmp;
-        } else {
-                return stripslashes(htmlentities($tmp));
-        }
+   $tmp = false;
+   
+   // The mess with the *x appended is a workaround for some browser
+   // versions that append it when you want to get information for some
+   // image buttons
+   
+   if (isset($_GET["$varname"])) {
+          $tmp = $_GET["$varname"];
+   } elseif (isset($_GET["$varname"."x"])) {
+          $tmp = true;
+   } elseif (isset($_GET["$varname"."_x"])) {
+          $tmp = true;
+   } elseif (isset($_POST["$varname"])) {
+          $tmp = $_POST["$varname"];
+   } elseif (isset($_POST["$varname"."x"])) {
+          $tmp = true;
+   } elseif (isset($_POST["$varname"."_x"])) {
+          $tmp = true;
+   }
+   
+   // FIXME: simple html cleanup
+   if (is_array($tmp)) {
+      return $tmp;
+   } else {
+      return stripslashes(htmlentities($tmp));
+   }
 }
 // }}}
 
@@ -505,11 +505,11 @@ function format_program_highchart_data($arr,$date_start="",$type="") {
             $last_time=$first;
             $last_value="0";
          } else if((empty($data))&&(strcmp($value['time_start'],"000000")==0)) {
-                                $val_start=mktime(0,0,0,$ref_month,$ref_day,$ref_year)*1000;
-                                $ehh=substr($value['time_stop'],0,2);
-                                $emm=substr($value['time_stop'],2,2);
-                                $ess=substr($value['time_stop'],4,2);
-                                $val_end=mktime($ehh,$emm,$ess,$ref_month,$ref_day,$ref_year)*1000;
+            $val_start=mktime(0,0,0,$ref_month,$ref_day,$ref_year)*1000;
+            $ehh=substr($value['time_stop'],0,2);
+            $emm=substr($value['time_stop'],2,2);
+            $ess=substr($value['time_stop'],4,2);
+            $val_end=mktime($ehh,$emm,$ess,$ref_month,$ref_day,$ref_year)*1000;
             if(strcmp($value['time_stop'],"235959")==0) {
                                    $data="[".$val_start.",".$value['value']."],[".$val_end.",".$value['value']."]";
             } else {
@@ -520,14 +520,14 @@ function format_program_highchart_data($arr,$date_start="",$type="") {
          }
 
          if((!empty($data))&&($value['value']!=0)&&(strcmp($value['time_start'],"000000")!=0)) {
-               $shh=substr($value['time_start'],0,2);
-               $smm=substr($value['time_start'],2,2);
-               $sss=substr($value['time_start'],4,2);
-               $val_start=mktime($shh,$smm,$sss,$ref_month,$ref_day,$ref_year)*1000;
-               $ehh=substr($value['time_stop'],0,2);
-                                        $emm=substr($value['time_stop'],2,2);
-                                        $ess=substr($value['time_stop'],4,2);
-                                        $val_end=mktime($ehh,$emm,$ess,$ref_month,$ref_day,$ref_year)*1000;
+            $shh=substr($value['time_start'],0,2);
+            $smm=substr($value['time_start'],2,2);
+            $sss=substr($value['time_start'],4,2);
+            $val_start=mktime($shh,$smm,$sss,$ref_month,$ref_day,$ref_year)*1000;
+            $ehh=substr($value['time_stop'],0,2);
+            $emm=substr($value['time_stop'],2,2);
+            $ess=substr($value['time_stop'],4,2);
+            $val_end=mktime($ehh,$emm,$ess,$ref_month,$ref_day,$ref_year)*1000;
                if(strcmp($value['time_stop'],"235959")!=0) {
                   if("$last_time"!="$val_start") {
                      $data=$data.",[".$last_time.",0],[".$val_start.",0],[".$val_start.",".$value['value']."],[".$val_end.",".$value['value']."]";
@@ -537,7 +537,7 @@ function format_program_highchart_data($arr,$date_start="",$type="") {
                   $last_time=$val_end;
                   $last_value=$value['value'];
                } else {
-                                           $data=$data.",[".$last_time.",0],[".$val_start.",0],[".$val_start.",".$value['value']."],[".$val_end.",".$value['value']."]";
+                  $data=$data.",[".$last_time.",0],[".$val_start.",0],[".$val_start.",".$value['value']."],[".$val_end.",".$value['value']."]";
                }
          }
          $last_val=$value;
@@ -545,10 +545,9 @@ function format_program_highchart_data($arr,$date_start="",$type="") {
          }
       if((!empty($data))&&(strcmp($last_val['time_stop'],"235959")!=0)) {
          if("$ref_year"=="1970") {
-               $last=mktime(0,0,0,$ref_month,$ref_day+1,$ref_year)*1000;
+            $last=mktime(0,0,0,$ref_month,$ref_day+1,$ref_year)*1000;
          } else {
-               $last=mktime(23,59,59,$ref_month,$ref_day,$ref_year)*1000;
-               
+            $last=mktime(23,59,59,$ref_month,$ref_day,$ref_year)*1000; 
          }
          $data=$data.",[".$last_time=$val_end.",0],[".$last.",0]";
       } 
@@ -568,10 +567,10 @@ function format_program_highchart_data($arr,$date_start="",$type="") {
 // RET data for highchart and cultibox programs
 function save_program_on_sd($sd_card,$program,&$out,&$info) {
    if(is_file("${sd_card}/plugv")) {
-         $file="${sd_card}/plugv";
-         if(count($program)>0) {
-            write_program($program,"$sd_card/plugv",$out);
-         }
+      $file="${sd_card}/plugv";
+      if(count($program)>0) {
+         write_program($program,"$sd_card/plugv",$out);
+      }
    } else {
       return false;
    }
@@ -587,6 +586,11 @@ function save_program_on_sd($sd_card,$program,&$out,&$info) {
 // RET false is an error occured, true else
 function write_program($data,$file,&$out="") {
    if($f=fopen("$file","w+")) {
+      $nbPlug = count($data);
+      while(strlen($nbPlug)<3) {
+         $nbPlug="0$nbPlug";
+      }
+      fputs($f,$nbPlug."\r\n");
       for($i=0; $i<count($data); $i++) {
          fputs($f,"$data[$i]"."\r\n");
       }
