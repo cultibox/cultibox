@@ -741,7 +741,7 @@ function check_tolerance_value($type,$tolerance=0,&$out="") {
 function check_format_values_program($value="0") {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
-   if(($value>100)||($value<0)) return false; 
+   if(($value>90)||($value<0)) return false; 
    if(!is_numeric($value)) return false; 
    return true;
 }
