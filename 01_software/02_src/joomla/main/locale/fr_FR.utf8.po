@@ -1,0 +1,376 @@
+﻿# This file must be encoded in UTF-8.
+# The msgstr are given to a sprintf function so sprintf escaping rules applies
+
+
+# For the menu:
+msgid "LANG"
+msgstr "fr_FR"
+
+msgid "CONFIGURATION"
+msgstr "Configuration"
+
+msgid "LOGS"
+msgstr "Logs"
+
+msgid "PROGRAMS"
+msgstr "Programmes"
+
+# For the configuration part:
+msgid "USER_CONF"
+msgstr "Configuration utilisateur"
+
+msgid "SYSTEM_CONF"
+msgstr "Configuration du syst&egrave;me"
+
+msgid "ALWAYS_RECORD"
+msgstr "Toujours"
+
+msgid "CONFIGURE_HUMIDITY"
+msgstr "Couleur des courbes d'hygrom&eacute;trie"
+
+msgid "CONFIGURE_TEMPERATURE"
+msgstr "Couleur des courbes des temp&eacute;ratures"
+
+msgid "CONFIGURE_LANGUAGE"
+msgstr "Choisir votre langue"
+
+msgid "CONFIGURE_WIZARD"
+msgstr "Activer l'assistant de configuration des prises"
+
+msgid "WIZARD_TRUE"
+msgstr "Oui"
+
+msgid "WIZARD_FALSE"
+msgstr "Non"
+
+
+msgid "CONFIGURE_FREQUENCY"
+msgstr "Fr&eacute;quence d'enregistrement (en minute)"
+
+msgid "CONFIGURE_NB_PLUGS"
+msgstr "Nombre de prises &agrave; utiliser"
+
+msgid "CONFIGURE_PLUGS_FREQUENCY"
+msgstr "Fr&eacute;quence de mise &agrave; jour de l'&eacute;tat de vos prises"
+
+msgid "VALIDATION_CONF"
+msgstr "Enregistrer la configuration"
+
+msgid "LANG_FR"
+msgstr "Fran&ccedil;ais"
+
+msgid "LANG_EN"
+msgstr "Anglais"
+
+msgid "COLOR_BLUE"
+msgstr "Bleu"
+
+msgid "COLOR_RED"
+msgstr "Rouge"
+
+msgid "COLOR_GREEN"
+msgstr "Vert"
+
+msgid "COLOR_BLACK"
+msgstr "Noir"
+
+# For the logs part:
+
+msgid "OR"
+msgstr "OU"
+
+msgid "HISTO_GRAPH"
+msgstr "Graphiques temperatures et hygrometrie"
+
+msgid "SELECT_DISPLAYED_DAY"
+msgstr "S&eacute;lectionner un jour &agrave; afficher"
+
+msgid "SELECT_DISPLAYED_MONTH"
+msgstr "S&eacute;lectionner un mois et une ann&eacute;e"
+
+msgid "VIEW"
+msgstr "Afficher"
+
+msgid "DRAG_PLOT"
+msgstr "Selectionner une zone afin de zoomer"
+
+msgid "LEGEND_TEMP"
+msgstr "Temperature"
+
+msgid "LEGEND_HUMI"
+msgstr "Hygrometrie"
+
+msgid "XAXIS_LEGEND_DAY"
+msgstr "Heures"
+
+msgid "XAXIS_LEGEND_MONTH"
+msgstr "Jours du mois"
+
+msgid "YAXIS_LEGEND"
+msgstr "Pourcentage d\'humidite"
+
+msgid "Y2AXIS_LEGEND"
+msgstr "Temperature en degres"
+
+msgid "MONTH01"
+msgstr "Janvier"
+
+msgid "MONTH02"
+msgstr "F&eacute;vrier"
+
+msgid "MONTH03"
+msgstr "Mars"
+
+msgid "MONTH04"
+msgstr "Avril"
+
+msgid "MONTH05"
+msgstr "Mai"
+
+msgid "MONTH06"
+msgstr "Juin"
+
+msgid "MONTH07"
+msgstr "Juillet"
+
+msgid "MONTH08"
+msgstr "Ao&ucirc;t"
+
+msgid "MONTH09"
+msgstr "Septembre"
+
+msgid "MONTH10"
+msgstr "Octobre"
+
+msgid "MONTH11"
+msgstr "Novembre"
+
+msgid "MONTH12"
+msgstr "D&eacute;cembre"
+
+msgid "SELECT_PROGRAM_PLUG"
+msgstr "et un programme &agrave; comparer"
+
+# For the plugs part:
+msgid "PLUG"
+msgstr "Prise num&eacute;ro"
+
+msgid "TYPE_PLUG"
+msgstr "Type de la prise"
+
+msgid "TOLERANCE_PLUG"
+msgstr "Tol&eacute;rance de la prise"
+
+msgid "NAME_PLUG"
+msgstr "Nom de la prise"
+
+msgid "PLUG_UNKNOWN"
+msgstr "Inconnu"
+
+msgid "PLUG_LAMP"
+msgstr "Lampe"
+
+msgid "PLUG_VENTILATOR"
+msgstr "Ventilateur"
+
+msgid "PLUG_HUMIDIFIER"
+msgstr "Humidificateur"
+
+msgid "PLUG_DEHUMIDIFIER"
+msgstr "Deshumidificateur"
+
+msgid "PLUG_HEATING"
+msgstr "Chauffage"
+
+# For the programs part:
+
+msgid "CONFIGURE_PROGRAM"
+msgstr "Configurer le comportement de votre prise"
+
+msgid "START_TIME_PROGRAM"
+msgstr "Heure de d&eacute;part"
+
+msgid "END_TIME_PROGRAM"
+msgstr "Heure de fin"
+
+msgid "APPLY_PROGRAM"
+msgstr "Valider"
+
+msgid "VALUE_ON_OFF"
+msgstr "Valeur"
+
+msgid "VALUE_ON"
+msgstr "Marche"
+
+msgid "VALUE_OFF"
+msgstr "Arret"
+
+msgid "CURRENT_PLUG_PROGRAM"
+msgstr "Programme pour la prise "
+
+msgid "TIMEPICKER_SELECT_TIME"
+msgstr "Choisissez une heure"
+
+msgid "TIMEPICKER_TIME"
+msgstr "Temps"
+
+msgid "TIMEPICKER_HOUR"
+msgstr "Heure"
+
+msgid "TIMEPICKER_MINUTE"
+msgstr "Minute"
+
+msgid "TIMEPICKER_SECOND"
+msgstr "Seconde"
+
+msgid "TIMEPICKER_NOW"
+msgstr "Heure actuelle"
+
+msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
+msgstr "Comportement de votre prise"
+
+msgid "FORCE_ON_VALUE"
+msgstr "Marche forc&eacute;e"
+
+# For the export module highchart part:
+msgid "PRINT_HIGHCHART"
+msgstr "Imprimer le graphique"
+
+msgid "EXPORT_HIGHCHART"
+msgstr "Exporter le graphique dans un document ou une image"
+
+msgid "EXPORT_PNG"
+msgstr "Exporter au format PNG"
+
+msgid "EXPORT_JPEG"
+msgstr "Exporter au format JPEG"
+
+msgid "EXPORT_PDF"
+msgstr "Exporter au format PDF"
+
+msgid "EXPORT_SVG"
+msgstr "Exporter au format SVG"
+
+msgid "RESET_ZOOM"
+msgstr "Annuler le zoom"
+
+msgid "RESET_ZOOM_TITLE"
+msgstr "Annuler le zoom"
+
+# For the wizard part:
+msgid "WIZARD_INTRO"
+msgstr "Wizard de configuration - assistant de configuration de vos prises et programmes"
+
+msgid "WIZARD_NEXT_STEP"
+msgstr "Etape suivante"
+
+msgid "WIZARD_PREVIOUS_STEP"
+msgstr "Etape pr&eacute;c&eacute;dente"
+
+msgid "WIZARD_FINISH_STEP"
+msgstr "Finir et fermer l'assistant"
+
+msgid "WIZARD_PLUG_NUMBER"
+msgstr "Vous devez choisir le num&eacute;ro de la prise &agrave; configurer. Chaque prise est identifi&eacute;e par un num&eacute;ro unique afin d'en retrouver les informations."
+
+msgid "WIZARD_CHOOSE_PLUG_NUMBER"
+msgstr "Choississez le num&eacute;ro de la prise &agrave; configurer"
+
+msgid "WIZARD_PLUG_NAME"
+msgstr "Ceci est une option, vous pouvez choisir un nom pour votre prise"
+
+msgid "WIZARD_CHOOSE_PLUG_NAME"
+msgstr "Choisissez le nom de votre prise"
+
+msgid "WIZARD_PLUG_TYPE"
+msgstr "Choisissez le type de prise &agrave; utiliser: <ul><li>un chauffage pour augmenter la temp&eacute;rature</li><li>un ventilateur pour abaisser la temp&eacute;rature</li><li>un humidifieur pour baisser le pourcentage d'humidit&eacute;</li><li>un d&eacute;shumidifieur pour diminuer l'himidit&eacute;</li><li>une lampe</li><li>le type inconnu servant pour tout les autres &eacute;quipements"
+
+msgid "WIZARD_CHOOSE_PLUG_TYPE"
+msgstr "Choississez le type de prise"
+
+msgid "WIZARD_PLUG_TOLERANCE"
+msgstr "Vous devez maintenant choisir la tol&eacute;rance de votre prise. Lors de la prochaine &eacute;tape vous choisirez le comportement de votre prise en lui assigant des valeurs. Vous devez donc choisir une tol&eacute;rance pour cette &eacute;tape. Par exemple, si vous choisissez de configurer un chauffage avec la valeur de 20&deg;C et une tol&eacute;rance de 2&deg;C le chauffage se mettra en route ou se coupera entre 18 et 22&deg;C . La valeur maximale est de 25.5 et la valeur manimale est de 0. De plus on ne peut configurer la tol&eacute;rance d'une lampe."
+
+msgid "WIZARD_CHOOSE_PLUG_TOLERANCE"
+msgstr "Choisissez la tol&eacute;rance de votre prise"
+
+msgid "WIZARD_PLUG_PROGRAM"
+msgstr "La configuration de votre prise est maintenant sauvegard&eacute;e dans la base du logiciel. Vous pouvez configurer le comportement de votre prise."
+
+msgid "WIZARD_STEP"
+msgstr "Etape"
+
+# For the errors or warnings part:
+msgid "PROBLEM_CLOSING_CONNECTION"
+msgstr "<li> Probl&eacute; pendant la fermeture de la connection</li>"
+
+msgid "ERROR_UPDATE_SQL"
+msgstr "<li> Erreur dans la requ&ecirc;te SQL UPDATE:</li>"
+
+msgid "ERROR_SELECT_SQL"
+msgstr "<li> Erreur dans la requ&ecirc;te SQL SELECT:</li>"
+
+msgid "EMPTY_TEMPERATURE_DATA"
+msgstr "<li> Donn&eacute;es des temp&eacute;ratures manquantes pour la date s&eacute;lectionn&eacute;e</li>"
+
+msgid "EMPTY_HUMIDITY_DATA"
+msgstr "<li> Donn&eacute;es hygrom&eacute;triques manquantes pour la date s&eacute;lectionn&eacute;e</li>"
+
+msgid "ERROR_FORMAT_DATE_DAY"
+msgstr "<li> Erreur dans le format de la date: AAAA-MM-JJ</li>"
+
+msgid "ERROR_FORMAT_DATE_MONTH"
+msgstr "<li> Erreur dans le format de la date: MM</li>"
+
+msgid "ERROR_SD_CARD_PROGRAMMS"
+msgstr "<li> Impossible de trouver une carte SD pour sauvegarder votre configuration. V&eacute;rifier que votre carte est branch&eacute;e</li>"
+
+msgid "ERROR_SD_CARD_LOGS"
+msgstr "<li> Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, v&eacute;rifier que votre carte est correctement branch&eacute;e</li>"
+
+msgid "ERROR_SD_CARD_CONF"
+msgstr "<li>  Impossible de trouver une carte SD valide, pour sauver votre configuration, v&eacute;rifier que votre carte est correctement branch&eacute;e</li>"
+
+msgid "ERROR_MISSING_VALUE_TIME"
+msgstr "<li> Valeur manquante pour la date de d&eacute;but/fin du programme</li>"
+
+msgid "ERROR_FORMAT_TIME"
+msgstr "<li> Erreur dans le format de l'heure: HH:MM:SS</li>"
+
+msgid "ERROR_WRONG_TIME_VALUE"
+msgstr "<li> Erreur dans les valeurs de temps: la valeur de fin doit &ecirc;tre inf&eacute;rieure &agrave; la valeur de d&eacute;part</li>"
+
+msgid "ERROR_WRITE_SD"
+msgstr "<li> Erreur durant l'&eacute;criture sur la carte SD</li>"
+
+msgid "ERROR_TOLERANCE_VALUE_DEGREE"
+msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur &agrave; 10&deg;C et sup&eacute;rieur &aacute; 0&deg;C</li>"
+
+msgid "ERROR_TOLERANCE_VALUE_POURCENT"
+msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur &agrave; 20&#37; et sup&eacute;rieur &aacute; 0&#37;;</li>"
+
+msgid "ERROR_VALUE_PROGRAM"
+msgstr "<li> Erreur dans la valeur: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 100 et sup&eacute;rieur ou &eacute;gal &aacute; 0</li>"
+
+# For the informations part:
+msgid "INFO_SD_CARD"
+msgstr "<li> Une carte SD compatible cultibox est branch&eacute;e"
+
+msgid "VALID_UPDATE_CONF"
+msgstr "<li>Configuration mise &agrave; jour avec succ&eacute;e</li>"
+
+msgid "VALID_UPDATE_PROGRAM"
+msgstr "<li> Programmes mis &agrave; jour avec succ&eacute;e</li>"
+
+msgid "VALID_LOAD_LOG"
+msgstr "<li> Fichiers de logs enregistr&eacute;es avec succ&eacute;e</li>"
+
+msgid "INFO_VALID_UPDATE_PROGRAM"
+msgstr "<li>Programme mis &agrave; jour avec succ&eacute;e</li>"
+
+msgid "WIZARD_ENABLE_FUNCTION"
+msgstr "<li>Vous pouvez utiliser le wizard de configuration pour vous aider en cliquant <a href='programs?wzd=True'>ici</a></li>"
+
+msgid "WIZARD_DISABLE_FUNCTION"
+msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant <a href='programs?wzd=False'>ci</a></li>"
+

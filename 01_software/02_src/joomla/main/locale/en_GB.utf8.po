@@ -1,0 +1,378 @@
+﻿# This file must be encoded in UTF-8.
+# The msgstr are given to a sprintf function so sprintf escaping rules applies
+
+
+# For the menu part:
+msgid "LANG"
+msgstr "en_GB"
+
+msgid "CONFIGURATION"
+msgstr "Configuration"
+
+msgid "LOGS"
+msgstr "Logs"
+
+msgid "PROGRAMS"
+msgstr "Programs"
+
+# For the configuration part:
+msgid "USER_CONF"
+msgstr "User configuration"
+
+msgid "SYSTEM_CONF"
+msgstr "System configuration"
+
+msgid "ALWAYS_RECORD"
+msgstr "Always"
+
+msgid "CONFIGURE_HUMIDITY"
+msgstr "Select the humidity graphic color"
+
+msgid "CONFIGURE_TEMPERATURE"
+msgstr "Select the temperature graphic color"
+
+msgid "CONFIGURE_LANGUAGE"
+msgstr "Select your language"
+
+msgid "CONFIGURE_WIZARD"
+msgstr "Enable wizard configuration assistant"
+
+msgid "WIZARD_TRUE"
+msgstr "True"
+
+msgid "WIZARD_FALSE"
+msgstr "False"
+
+msgid "CONFIGURE_FREQUENCY"
+msgstr "Select the record frequency (minutes)"
+
+msgid "CONFIGURE_NB_PLUGS"
+msgstr "Select the number of plugs used"
+
+msgid "CONFIGURE_PLUGS_FREQUENCY"
+msgstr "Select the update plugs state frequency"
+
+msgid "VALIDATION_CONF"
+msgstr "Update configuration"
+
+msgid "COLOR_BLUE"
+msgstr "Blue"
+
+msgid "COLOR_RED"
+msgstr "Red"
+
+msgid "COLOR_GREEN"
+msgstr "Green"
+
+msgid "COLOR_BLACK"
+msgstr "Black"
+
+msgid "LANG_FR"
+msgstr "French"
+
+msgid "LANG_EN"
+msgstr "English"
+
+# For the logs part:
+
+msgid "OR"
+msgstr "OR"
+
+msgid "HISTO_GRAPH"
+msgstr "Temperature & Humidity graphics"
+
+msgid "SELECT_DISPLAYED_DAY"
+msgstr "Select a day to display"
+
+msgid "SELECT_DISPLAYED_MONTH"
+msgstr "Select a month and a year to display"
+
+msgid "VIEW"
+msgstr "View"
+
+msgid "DRAG_PLOT"
+msgstr "Click and drag in the plot area to zoom in"
+
+msgid "LEGEND_TEMP"
+msgstr "Temperature"
+
+msgid "LEGEND_HUMI"
+msgstr "Humidity"
+
+msgid "XAXIS_LEGEND_DAY"
+msgstr "Hours"
+
+msgid "XAXIS_LEGEND_MONTH"
+msgstr "Days of the Month"
+
+msgid "YAXIS_LEGEND"
+msgstr "Percentage of humidity"
+
+msgid "Y2AXIS_LEGEND"
+msgstr "Temperature in celsius degrees" 
+
+msgid "MONTH01"
+msgstr "January"
+
+msgid "MONTH02"
+msgstr "February"
+
+msgid "MONTH03"
+msgstr "March"
+
+msgid "MONTH04"
+msgstr "April"
+
+msgid "MONTH05"
+msgstr "May"
+
+msgid "MONTH06"
+msgstr "June"
+
+msgid "MONTH07"
+msgstr "July"
+
+msgid "MONTH08"
+msgstr "August"
+
+msgid "MONTH09"
+msgstr "September"
+
+msgid "MONTH10"
+msgstr "October"
+
+msgid "MONTH11"
+msgstr "November"
+
+msgid "MONTH12"
+msgstr "December"
+
+msgid "SELECT_PROGRAM_PLUG"
+msgstr "and a program to compare"
+
+# For the plugs part:
+msgid "PLUG"
+msgstr "Plug number"
+
+msgid "TYPE_PLUG"
+msgstr "Type of the plug"
+
+msgid "TOLERANCE_PLUG"
+msgstr "Plug tolerance"
+
+msgid "NAME_PLUG"
+msgstr "Plug name"
+
+msgid "PLUG_UNKNOWN"
+msgstr "Unknown"
+
+msgid "PLUG_LAMP"
+msgstr "Lamp"
+
+msgid "PLUG_VENTILATOR"
+msgstr "Ventilator"
+
+msgid "PLUG_HUMIDIFIER"
+msgstr "Humidifier"
+
+msgid "PLUG_DEHUMIDIFIER"
+msgstr "Dehumidifier"
+
+msgid "PLUG_HEATING"
+msgstr "Heating"
+
+# For the programs part:
+
+msgid "CURRENT_PLUG_PROGRAM"
+msgstr "Current program for"
+
+msgid "CONFIGURE_PROGRAM"
+msgstr "Configure your plug behaviour"
+
+msgid "START_TIME_PROGRAM"
+msgstr "Start time"
+
+msgid "END_TIME_PROGRAM"
+msgstr "End time"
+
+msgid "APPLY_PROGRAM"
+msgstr "Apply"
+
+msgid "VALUE_ON_OFF"
+msgstr "Value"
+
+msgid "VALUE_ON"
+msgstr "On"
+
+msgid "VALUE_OFF"
+msgstr "Off"
+
+msgid "TIMEPICKER_SELECT_TIME"
+msgstr "Choose time"
+
+msgid "TIMEPICKER_TIME"
+msgstr "Time"
+
+msgid "TIMEPICKER_HOUR"
+msgstr "Hour"
+
+msgid "TIMEPICKER_MINUTE"
+msgstr "Minute"
+
+msgid "TIMEPICKER_SECOND"
+msgstr "Second"
+
+msgid "TIMEPICKER_NOW"
+msgstr "Current Time"
+
+msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
+msgstr "Behaviour of your plug"
+
+msgid "EXPORT_PROGRAM"
+msgstr "Export your program"
+
+msgid "FORCE_ON_VALUE"
+msgstr "Forced to ON" 
+
+# For the export module highchart part:
+msgid "PRINT_HIGHCHART"
+msgstr "Print the chart"
+
+msgid "EXPORT_HIGHCHART"
+msgstr "Export to raster or vector image"
+
+msgid "EXPORT_PNG"
+msgstr "Download PNG image"
+
+msgid "EXPORT_JPEG"
+msgstr "Download JPEG image"
+
+msgid "EXPORT_PDF"
+msgstr "Download PDF document"
+
+msgid "EXPORT_SVG"
+msgstr "Download SVG vector image"
+
+msgid "RESET_ZOOM"
+msgstr "Reset zoom"
+
+msgid "RESET_ZOOM_TITLE"
+msgstr "Reset zoom"
+
+# For the wizard part:
+msgid "WIZARD_INTRO"
+msgstr "Wizard interface - assistant to configure plugs and programs for the cultibox"
+
+msgid "WIZARD_NEXT_STEP"
+msgstr "Next Step"
+
+msgid "WIZARD_PREVIOUS_STEP"
+msgstr "Previous Step"
+
+msgid "WIZARD_FINISH_STEP"
+msgstr "Finish and close"
+
+msgid "WIZARD_PLUG_NUMBER"
+msgstr "You have to choose the number of the plug you want to configure. Each plug is defined by a uniq number to retrieve plug's informations."
+
+msgid "WIZARD_CHOOSE_PLUG_NUMBER"
+msgstr "Choose the number of the plug to configure"
+
+msgid "WIZARD_PLUG_NAME"
+msgstr "This is an option. You can choose the name of your plug"
+
+msgid "WIZARD_CHOOSE_PLUG_NAME"
+msgstr "Choose the name of your plug"
+
+msgid "WIZARD_PLUG_TYPE"
+msgstr "Choose the type of your plug: <ul><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an unknown type for all the other equipements" 
+
+msgid "WIZARD_CHOOSE_PLUG_TYPE"
+msgstr "Choose the type of the plug"
+
+msgid "WIZARD_PLUG_TOLERANCE"
+msgstr "You now have to choose the tolerance of your plug. In the next step you will choose value for your plug and you have now to define the tolerance of this value. For example if you choose to configure a heating and to configure it to work with a temperature of 20&deg;C, the tolerance will determine which temperature will be sued to stop the heating. With a tolerance of 2&deg;C, the heating will be stoppet at 20&deg;C plus or minus two degrees. The maximal value is 25.5 and the minimum value is 0. A lamp doesn't need a tolerance, you can skip this step if you have chosen to configure a lamp."
+
+msgid "WIZARD_CHOOSE_PLUG_TOLERANCE"
+msgstr "Choose the tolerance of the plug"
+
+msgid "WIZARD_PLUG_PROGRAM"
+msgstr "Your plug's configuration is now save into the database of this software. You have now to configure your program."
+
+msgid "WIZARD_STEP"
+msgstr "Step"
+
+# For the errors or warnings part:
+msgid "PROBLEM_CLOSING_CONNECTION"
+msgstr "<li> Problem during the connection close procedure</li>"
+
+msgid "ERROR_UPDATE_SQL"
+msgstr "<li> Error during the update sql request:</li>"
+
+msgid "ERROR_SELECT_SQL"
+msgstr "<li> Error during the select sql request:</li>"
+
+msgid "EMPTY_TEMPERATURE_DATA"
+msgstr "<li> Empty temperature data for the selected date</li>"
+
+msgid "EMPTY_HUMIDITY_DATA"
+msgstr "<li> Empty humidity data for the selected date</li>"
+
+msgid "ERROR_FORMAT_DATE_DAY"
+msgstr "<li> Error in the date format: YYY-MM-DD</li>"
+
+msgid "ERROR_FORMAT_DATE_MONTH"
+msgstr "<li> Error in the date format: MM</li>"
+
+msgid "ERROR_SD_CARD_PROGRAMS"
+msgstr "<li> Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged</li>"
+
+msgid "ERROR_SD_CARD_LOGS"
+msgstr "<li> Can't find your SD card, if you want to load your logs record, please check that your card is correctly pluged</li>"
+
+msgid "ERROR_SD_CARD_CONF"
+msgstr "<li> Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged</li>"
+
+msgid "ERROR_MISSING_VALUE_TIME"
+msgstr "<li> Missing value for Start/End time</li>"
+
+msgid "ERROR_FORMAT_TIME"
+msgstr "<li> Error in time format: HH:MM:SS</li>"
+
+msgid "ERROR_WRONG_TIME_VALUE"
+msgstr "<li> Error in time value: end time must be before start time</li>"
+
+msgid "ERROR_WRITE_SD"
+msgstr "<li> Error, can't write programs into the sd card</li>"
+
+msgid "ERROR_TOLERANCE_VALUE_DEGREE"
+msgstr "<li> Error in the tolerance value. It must be less than 10&deg;C and greater than 0&deg;C</li>"
+
+msgid "ERROR_TOLERANCE_VALUE_POURCENT"
+msgstr "<li> Error in the tolerance value. It must be less than 20&#37; and greater than 0&#37;</li>"
+
+msgid "ERROR_VALUE_PROGRAM"
+msgstr "<li> Error in the value. It must be less or equal to 100 and greater or equal to 0</li>"
+
+# For the informations part:
+msgid "INFO_SD_CARD"
+msgstr "<li> A valid SD card was found"
+
+msgid "VALID_UPDATE_CONF"
+msgstr "<li> Configuration successfully updated</li>"
+
+msgid "VALID_UPDATE_PROGRAM"
+msgstr "<li> Programs successfully updated</li>"
+
+msgid "VALID_LOAD_LOG"
+msgstr "<li> Logs successfully loaded</li>"
+
+msgid "INFO_VALID_UPDATE_PROGRAM"
+msgstr "<li>Program successfully updated</li>"
+
+msgid "WIZARD_ENABLE_FUNCTION"
+msgstr "<li>You can also use the wizard assistant, just click <a href='programs?wzd=True'>here</a></li>"
+
+msgid "WIZARD_DISABLE_FUNCTION"
+msgstr "<li>You can use the standard interface to configure your programs instead. Just click <a href='programs?wzd=False'>here</a></li>"
+
