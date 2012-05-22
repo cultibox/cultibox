@@ -364,42 +364,50 @@ function check_numeric_value($value="") {
 // IN   none 
 // RET false if nothing is found, the sd card place else
 function get_sd_card() {
-   //For Linux
-   $dir="/media";
-   if(is_dir($dir)) {
-      $rep = opendir($dir); 
-      while ($f = readdir($rep)) {
-            if(is_dir("$dir/$f")) {
-            if(check_cultibox_card("$dir/$f")) {
-               return "$dir/$f";
-            }
-            }
-      }
-   } else {
-      //For Mac
-      $dir="/Volumes";
-      if(is_dir($dir)) {
-         $rep = opendir($dir);
-         while ($f = readdir($rep)) {
-                           if(is_dir("$dir/$f")) {
-                                   if(check_cultibox_card("$dir/$f")) {
-                                           return "$dir/$f";
-                                   }
-                           }
-                   }
-      } else {
-         //For windows
-         $dir=array("c:","d:","e:","f:","g:","h:","i:","j:","k:","l:","m:","n:","o:","p:","q:","r:","s:","t:","u:","v:","w:","x:","y:","z");
-         foreach($dir as $disque) {
-            if(is_dir("$disque")) {
-               if(check_cultibox_card("$disque")) {
+        //For Linux
+        $dir="/media";
+        $os=php_uname('s');
+        switch($os) {
+                case 'Linux':
+                        $dir="/media";
+                        if(is_dir($dir)) {
+                                $rep = opendir($dir);
+                                while ($f = readdir($rep)) {
+                                        if(is_dir("$dir/$f")) {
+                                                if(check_cultibox_card("$dir/$f")) {
+                                                        return "$dir/$f";
+                                                }
+                                        }
+                                }
+                        }
+                        break;
+
+                case 'Mac':
+                        $dir="/Volumes";
+                        if(is_dir($dir)) {
+                                $rep = opendir($dir);
+                                        while ($f = readdir($rep)) {
+                                        if(is_dir("$dir/$f")) {
+                                                if(check_cultibox_card("$dir/$f")) {
+                                                        return "$dir/$f";
+                                                }
+                                        }
+                                }
+                        }
+                        break;
+
+                case 'Windows NT':
+                        $dir=array("c:","d:","e:","f:","g:","h:","i:","j:","k:","l:","m:","n:","o:","p:","q:","r:","s:","t:","u:","v:","w:","x:","y:","z");
+                        foreach($dir as $disque) {
+                                if(is_dir("$disque")) {
+                                        if(check_cultibox_card("$disque")) {
                                                 return "$disque";
-               }
-                           }
-         }
-      }
-   }
-   return false;
+                                        }
+                                }
+                        }
+                        break;
+        }
+        return false;
 }
 // }}}
 
