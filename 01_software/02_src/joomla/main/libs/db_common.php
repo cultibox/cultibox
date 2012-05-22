@@ -833,9 +833,9 @@ function purge_program($arr) {
 // IN $arr      array containing value of the program
 // RET the array opzimized 
 function optimize_program($arr) {
-        $tmp=array();
-        asort($arr);
-        if(count($arr)>1) {
+   $tmp=array();
+   asort($arr);
+   if(count($arr)>1) {
       $jump=false;
       while(!$jump) {
          $jump=true;
@@ -900,11 +900,11 @@ EOF;
       $res = $db->loadAssocList();
       $ret=$db->getErrorMsg();
       if((isset($ret))&&(!empty($ret))) {
-             $out=$out.__('ERROR_SELECT_SQL').$ret;
+         $out=$out.__('ERROR_SELECT_SQL').$ret;
       }
       
       if(!db_priv_end($db)) {
-             $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+         $out=$out.__('PROBLEM_CLOSING_CONNECTION');
       }
 
       if(count($res)>0) {
