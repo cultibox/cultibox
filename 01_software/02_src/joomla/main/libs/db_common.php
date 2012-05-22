@@ -426,7 +426,7 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 					$new_value = array(
 						"time_start" => $first['time_start'],
                                                 "time_stop" => $current['time_stop'],
-                                                "value" => $current[time_value]					
+                                                "value" => $current['time_value']					
 					);
 					$first['time_start']=$current['time_stop'];
                                         $tmp[]=$new_value;
@@ -1057,19 +1057,19 @@ EOF;
 		  
 			$s=array();
 			$line="";
-			$month=substr($val[StartTime],5,2);
-			$day=substr($val[StartTime],8,2);
-			$year=substr($val[StartTime],0,4);
+			$month=substr($val['StartTime'],5,2);
+			$day=substr($val['StartTime'],8,2);
+			$year=substr($val['StartTime'],0,4);
 
-			$end_month=substr($val[EndTime],5,2);
-			$end_day=substr($val[EndTime],8,2);
-			$end_year=substr($val[EndTime],0,4);
+			$end_month=substr($val['EndTime'],5,2);
+			$end_day=substr($val['EndTime'],8,2);
+			$end_year=substr($val['EndTime'],0,4);
 		
 			$count=0;
 			$number=0;
-			for($i=0;$i<strlen($val[Subject]);$i++) {
+			for($i=0;$i<strlen($val['Subject']);$i++) {
 					$count=$count+1;
-					$line=$line.$val[Subject][$i];
+					$line=$line.$val['Subject'][$i];
 					if($count==13) {
 						$s[]=$line;
 						$line="";
@@ -1113,7 +1113,7 @@ EOF;
 // RET	000 if the plug is not concerned or if its value is 0, 0001 else
 function find_value_for_plug($data,$time,$plug) {
 	for($i=0;$i<count($data);$i++) {
-		if(($data[$i]['time_start']<=$time)&&($data[$i]['time_stop']>=$time)&&($data[$i][plug_id]==$plug)) {
+		if(($data[$i]['time_start']<=$time)&&($data[$i]['time_stop']>=$time)&&($data[$i]['plug_id']==$plug)) {
 			if($data[$i]['time_stop']==$time) {
 				if($data[$i]['time_stop']=="235959") {
 					return "001";
