@@ -144,15 +144,19 @@ $(document).ready(function() {
 <?php } else if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"ventilator")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"heating")==0)) { ?>
 		if(this.y == 99.9) {
 			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("CHART_FORCE_ON_VALUE"); ?></b></p>';
-	    } else { 
+	    } else if(this.y == 0) {
+			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_OFF"); ?></b></p>';
+            } else { 
 			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'°C</b></p>';
 		}	
 
 <?php } else if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"humidifier")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"dehumidifier")==0)) { ?>
-		if(this.y == 99.9) {
-			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("CHART_FORCE_ON_VALUE"); ?></b></p>';
+	    if(this.y == 99.9) {
+		return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("CHART_FORCE_ON_VALUE"); ?></b></p>';
+	    } else if(this.y == 0) {
+		return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_OFF"); ?></b></p>';
 	    } else { 
-			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'%</b></p>';
+		return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'%</b></p>';
 	    }
 <?php } else { ?>
 		return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'</b></p>';
