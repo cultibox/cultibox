@@ -24,6 +24,7 @@ $plugs_infos=get_plugs_infos($nb_plugs,$error);
 $select_plug=getvar('select_plug');
 $data_temp="";
 $data_humi="";
+$plug_type="";
 
 
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -109,6 +110,8 @@ if("$type" == "days") {
 		if((isset($select_plug))&&(!empty($select_plug))) {
 			$data_plug=get_data_plug($select_plug,$error);
  	        	$data=format_program_highchart_data($data_plug,$startday);
+			$plug_type=get_plug_conf("PLUG_TYPE",$select_plug,$error);
+			
 		}
 		$xlegend="XAXIS_LEGEND_DAY";
         	$styear=substr($startday, 0, 4);

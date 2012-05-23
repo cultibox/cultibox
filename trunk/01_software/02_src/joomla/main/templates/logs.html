@@ -174,7 +174,53 @@ $(function () {
                         }
 	    }],
 	tooltip: {
-			shared: true
+			shared: true,
+			formatter: function() {
+				var tab=new Array;
+				<?php if((isset($data_humi))&&(!empty($data_humi))) { ?>
+					j = tab.length;	
+					tab[j]="%";
+				<?php } ?>
+
+				<?php if((isset($data_temp))&&(!empty($data_temp))) { ?>
+					j = tab.length;	
+					tab[j]="°C";
+                                <?php } ?>
+
+				<?php if((isset($plug_type))&&(!empty($plug_type))) { ?>
+					<?php if((strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"heating")==0)) { ?>
+						j = tab.length; 
+                                 	        	tab[j]="°C";
+					<?php } else if((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { ?>
+						j = tab.length; 
+                                                tab[j]="°C";
+					<?php } else { ?>
+						j = tab.length; 
+                                                tab[j]="";
+					<?php } ?>
+				<?php } ?>
+
+				var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  "+Highcharts.dateFormat('%H:%M:%S', this.x)+"</b></p>";
+				for(var i= 0; i < this.points.length; i++) {
+					if(tab[i]!="") {
+						if(this.points[i].y==99.9) {
+							val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("FORCE_ON_CHART"); ?></p>';
+						} else if(this.points[i].y==0) {
+							val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_OFF"); ?></p>';
+						} else {
+							val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': '+this.points[i].y+tab[i]+'</p>';
+						}
+					} else {
+						if(this.points[i].y==99.9) {
+							val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_ON"); ?></p>';
+						} else {
+							val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_OFF"); ?></p>';
+
+						}
+					}
+				}
+                        	return val;
+                        }
                 },
             legend: {
                 enabled: true
