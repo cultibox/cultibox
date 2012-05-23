@@ -100,7 +100,7 @@ msgid "LEGEND_HUMI"
 msgstr "Hygrometrie"
 
 msgid "XAXIS_LEGEND_DAY"
-msgstr "Heures"
+msgstr "Heure"
 
 msgid "XAXIS_LEGEND_MONTH"
 msgstr "Jours du mois"
@@ -149,6 +149,9 @@ msgstr "D&eacute;cembre"
 
 msgid "SELECT_PROGRAM_PLUG"
 msgstr "et un programme &agrave; comparer"
+
+msgid "FORCE_ON_CHART"
+msgstr "Marche forcee"
 
 # For the plugs part:
 msgid "PLUG"
