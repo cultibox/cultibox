@@ -285,15 +285,15 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
                 "time_stop" => "$end_time",
                 "value" => "$value"
    );
-   if(count($data_plug)>0) {
-      if($data_plug[0]['time_start']=="000000") {
-         $first= array(
-                      "time_start" => $data_plug[0]['time_start'],
-                      "time_stop" => $data_plug[0]['time_stop'],
-                      "value" => $data_plug[0]['value']
-              );   
-      }
-   }
+   //if(count($data_plug)>0) {
+      //if($data_plug[0]['time_start']=="000000") {
+       //  $first= array(
+        //              "time_start" => $data_plug[0]['time_start'],
+         //             "time_stop" => $data_plug[0]['time_stop'],
+          //            "value" => $data_plug[0]['value']
+           //   );   
+      //}
+   //}
    if((empty($first))||(!isset($first))) {
       $first=array(
          "time_start" => "000000",
@@ -1012,10 +1012,11 @@ EOF;
    $i=0;
    $count=0;
    while($count<count($event)) {
-      if((isset($event[$i]))&&(!empty($event[$i]))) {
+      if((isset($event[$i]))) {
          $evt[]=$event[$i];   
          $count=$count+1;
       }
+      
       $i=$i+1;
    }
    $event=$evt;
