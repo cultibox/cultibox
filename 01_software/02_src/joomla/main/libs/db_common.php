@@ -953,7 +953,7 @@ EOF;
 function create_program_from_database(&$out="") {
    $db = db_priv_start();
    $sql = <<<EOF
-SELECT * FROM `programs` WHERE time_start != "000000" AND time_stop != "235959" ORDER by `time_start`
+SELECT * FROM `programs` ORDER by `time_start`
 EOF;
    $db->setQuery($sql);
    $res = $db->loadAssocList();
@@ -1002,11 +1002,16 @@ EOF;
 
    $event=array();
    foreach($res as $result) {
-      $event[]=$result['time_start'];
-      $event[]=$result['time_stop'];
+      if($result['time_start']!="000000") {
+         $event[]=$result['time_start'];
+      }
+      if($result['time_stop']!="235959") {
+         $event[]=$result['time_stop'];
+      }
    }
    if(count($event)>0) {
       $event = array_unique ($event);
+      sort($event);
    }
    $evt=array();
    $i=0;
