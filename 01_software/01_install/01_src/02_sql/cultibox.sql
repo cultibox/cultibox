@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Jeu 17 Mai 2012 à 23:30
+-- Généré le : Mer 23 Mai 2012 à 13:14
 -- Version du serveur: 5.5.16
 -- Version de PHP: 5.3.8
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `jqcalendar` (
   `Color` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
   `RecurringRule` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
 CREATE TABLE IF NOT EXISTS `plugs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `PLUG_NAME` varchar(30) DEFAULT NULL,
-  `PLUG_TYPE` varchar(20) DEFAULT 'unknown',
+  `PLUG_TYPE` varchar(20) NOT NULL DEFAULT 'unknown',
   `PLUG_TOLERANCE` decimal(3,1) DEFAULT '0.0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
@@ -100,22 +100,22 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 --
 
 INSERT INTO `plugs` (`id`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`) VALUES
-(1, 'plug1', NULL, NULL),
-(2, 'plug2', NULL, NULL),
-(3, 'plug3', NULL, NULL),
-(4, 'plug4', NULL, NULL),
-(5, 'plug5', NULL, NULL),
-(6, 'plug6', NULL, NULL),
-(7, 'plug7', NULL, NULL),
-(8, 'plug8', NULL, NULL),
-(9, 'plug9', NULL, NULL),
-(10, 'plug10', NULL, NULL),
-(11, 'plug11', NULL, NULL),
-(12, 'plug12', NULL, NULL),
-(13, 'plug13', NULL, NULL),
-(14, 'plug14', NULL, NULL),
-(15, 'plug15', NULL, NULL),
-(16, 'plug16', NULL, NULL);
+(1, 'plug1', 'unknown', 0.0),
+(2, 'plug2', 'unknown', 0.0),
+(3, 'plug3', 'unknown', 0.0),
+(4, 'plug4', 'unknown', 0.0),
+(5, 'plug5', 'unknown', 0.0),
+(6, 'plug6', 'unknown', 0.0),
+(7, 'plug7', 'unknown', 0.0),
+(8, 'plug8', 'unknown', 0.0),
+(9, 'plug9', 'unknown', 0.0),
+(10, 'plug10', 'unknown', 0.0),
+(11, 'plug11', 'unknown', 0.0),
+(12, 'plug12', 'unknown', 0.0),
+(13, 'plug13', 'unknown', 0.0),
+(14, 'plug14', 'unknown', 0.0),
+(15, 'plug15', 'unknown', 0.0),
+(16, 'plug16', 'unknown', 0.0);
 
 -- --------------------------------------------------------
 
