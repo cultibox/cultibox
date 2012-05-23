@@ -95,6 +95,14 @@ document.write('<script type="text\/javascript" src="main\/libs\/js\/scw.js"><\/
 
 <?php if($check_format) { ?>
 <script type="text/javascript">
+
+Highcharts.setOptions({
+lang: {
+<?php echo "resetZoom : '".__('RESET_ZOOM')."',"; ?>
+<?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE')."'"; ?>
+}
+});
+
 $(function () {
     var chart;
     $(document).ready(function() {

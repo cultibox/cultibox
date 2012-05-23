@@ -225,6 +225,9 @@ msgstr "Second"
 msgid "TIMEPICKER_NOW"
 msgstr "Current Time"
 
+msgid "TIMEPICKER_CLOSE"
+msgstr "Done"
+
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
 msgstr "Behaviour of your plug"
 
@@ -232,6 +235,9 @@ msgid "EXPORT_PROGRAM"
 msgstr "Export your program"
 
 msgid "FORCE_ON_VALUE"
+msgstr "Forced to ON" 
+
+msgid "CHART_FORCE_ON_VALUE"
 msgstr "Forced to ON" 
 
 # For the export module highchart part:

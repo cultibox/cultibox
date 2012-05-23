@@ -122,7 +122,11 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
                                         $value_program="0";
                                         $check=true;
                                 } else {
-                                        $check=check_format_values_program($value_program);
+										if((!isset($force_on))||(empty($force_on))) {
+											$check=check_format_values_program($value_program);
+										} else {
+											$check=true;
+										}
                                 }
 
                                 if($check) {
@@ -193,16 +197,19 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 					$value_program="0";
 					$check=true;
 				} else {
-					$check=check_format_values_program($value_program);
+					if((!isset($force_on))||(empty($force_on))) {
+						$check=check_format_values_program($value_program);
+					} else {
+						$check=true;
+					}
 				}
 			
 				if($check) {
 					if(insert_program($selected_plug,$start_time,$end_time,$value_program,$ret_plug[$selected_plug])) {
-						echo "$value_program";
 						$info_plug[$selected_plug]=$info_plug[$selected_plug].__('INFO_VALID_UPDATE_PROGRAM');
 					}
 				} else {
-					$ret_plug[$selected_plug]=$$ret_plug[$selected_plug].__('ERROR_VALUE_PROGRAM');
+					$ret_plug[$selected_plug]=$ret_plug[$selected_plug].__('ERROR_VALUE_PROGRAM');
 				}
 			}
 		} else {
@@ -214,18 +221,21 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 		$data_plug=get_data_plug($i+1,$error);
         	$plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"");
 		switch($plugs_infos[$i]['PLUG_TYPE']) {
-			case 'unknown': $plugs_infos[$i]["translate"]=__('PLUG_UNKNOWN');
-				break;
-			case 'ventilator': $plugs_infos[$i]["translate"]=__('PLUG_VENTILATOR');
+			case 'unknown': $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
+							break;
+			case 'ventilator': $plugs_infos[$i]['translate']=__('PLUG_VENTILATOR');
                         	break;
-			case 'heating': $plugs_infos[$i]["translate"]=__('PLUG_HEATING');
+			case 'heating': $plugs_infos[$i]['translate']=__('PLUG_HEATING');
                         	break;	
-			case 'lamp': $plugs_infos[$i]["translate"]=__('PLUG_LAMP');
+			case 'lamp': $plugs_infos[$i]['translate']=__('PLUG_LAMP');
                         	break;
-			case 'humidifier': $plugs_infos[$i]["translate"]=__('PLUG_HUMIDIFIER');
+			case 'humidifier': $plugs_infos[$i]['translate']=__('PLUG_HUMIDIFIER');
                         	break;
-                	case 'dehumidifier': $plugs_infos[$i]["translate"]=__('PLUG_DESHUMIDIFIER');
-                        	break;	
+            case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DESHUMIDIFIER');
+                        	break;
+			default: $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
+							break;
+					
 		}
 	}
 

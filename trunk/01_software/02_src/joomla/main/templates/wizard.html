@@ -54,6 +54,16 @@ timeFormat: 'hh:mm:ss',
 </script>
 
 <script type="text/javascript">
+
+
+Highcharts.setOptions({
+lang: {
+<?php echo "resetZoom : '".__('RESET_ZOOM')."',"; ?>
+<?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE')."'"; ?>
+}
+});
+
+
 var chart;
 $(document).ready(function() {
         chart = new Highcharts.Chart({
@@ -85,52 +95,69 @@ $(document).ready(function() {
                         max: 86399999
                 },
                 yAxis: {
-                                min: -0.5,
-                                max: 105,
-                        labels: {
-                                formatter: function() {
-                                        <?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { ?>
-                                        if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                                        if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
+				<?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { ?>
+				min: 0,
+				max: 110,
+				<?php } else { ?>
+				min: 0,
+				max: 100,
+				<?php }?>
+        		labels: {
+            			formatter: function() {
+				if((this.value>=0)&&(this.value<=100)) {		
+					<?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { ?>
+					if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+					if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
 <?php } else if((strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"heating")==0)) { ?>
-                                        if(this.value>0) return this.value+'°C';
-                                        if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+					if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+					if(this.value>0) return this.value+'°C';
+					if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
 
 <?php } else if((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { ?>
-                                        if(this.value>0) return this.value+'%';
-                                        if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+					if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+					if(this.value>0) return this.value+'%';
+					if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
 
 <?php } else { ?>
-                                        return this.value;
+					return this.value;
 
 <?php } ?>
-                                }
-                        },
-                        title: false
-                },
+				}
+            			}
+        		},
+			title: false
+		},
                 credits: {
                         enabled: false
                 },
                 tooltip: {
-                        formatter: function() {
+			formatter: function() {
 
   <?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { ?>
-                if(this.y == 99.9) {
-                        return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_ON"); ?></b></p>';
-                } else {
-                        return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_OFF"); ?></b></p>';
-                }
+		if(this.y == 99.9) {
+			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_ON"); ?></b></p>';
+		} else {
+			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_OFF"); ?></b></p>';
+		}
 <?php } else if((strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"heating")==0)) { ?>
-                return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'°C</b></p>';
+		if(this.y == 99.9) {
+			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("CHART_FORCE_ON_VALUE"); ?></b></p>';
+	    } else { 
+			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'°C</b></p>';
+		}	
 
 <?php } else if((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { ?>
-                return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'%</b></p>';
+		if(this.y == 99.9) {
+			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("CHART_FORCE_ON_VALUE"); ?></b></p>';
+	    } else { 
+			return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'%</b></p>';
+	    }
 <?php } else { ?>
-                return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'</b></p>';
+		return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'</b></p>';
 <?php } ?>
 
-                        }
-                },
+			}
+		},
                 
                 series: [{
                         name: <?php echo "'".__('BEHAVIOUR_PLUG_PROGRAM_TITLE')." (".$plug_translate.")',"; ?>
@@ -226,10 +253,12 @@ $(document).ready(function() {
                                         <?php } ?>
 		</td>
 		</tr>
+		<?php if((strcmp($plug_type,"lamp")!=0)&&(strcmp($plug_type,"unknown")!=0)) { ?>
 		 <tr>
                                <td><?php echo __('FORCE_ON_VALUE'); ?></td>
                                <td><input type="checkbox" id="force_on" name="force_on" value="force_on" onclick="actdesact()" /></td>
                            </tr>
+		<?php } ?>
 		<tr><td></td><td><br /><input type="submit" name="apply" value="<?php echo __('APPLY_PROGRAM'); ?>"></td></tr>
 		</table>
 		</td>
