@@ -219,6 +219,7 @@ function get_format_graph($arr) {
    $data="";
    $last_mm="";
    $last_hh="";
+   $last_value="";
    foreach($arr as $value) {
       $hh=substr($value['time_catch'], 0, 2);
       $mm=substr($value['time_catch'], 2, 2);
@@ -397,13 +398,24 @@ function get_sd_card() {
                         break;
 
                 case 'Windows NT':
-                        $dir=array("c:","d:","e:","f:","g:","h:","i:","j:","k:","l:","m:","n:","o:","p:","q:","r:","s:","t:","u:","v:","w:","x:","y:","z");
+						$vol=`MountVol`;
+						$vol=explode("\n",$vol);
+						$dir=Array();
+						foreach($vol as $value) {
+							// repérer les deux derniers segments du nom de l'hôte
+							preg_match('/[C-Z]:/', $value,$matches);
+							foreach($matches as $val) {
+								$dir[]=$val;
+							}
+						}
+						
                         foreach($dir as $disque) {
-                                if(is_dir("$disque")) {
-                                        if(check_cultibox_card("$disque")) {
-                                                return "$disque";
-                                        }
-                                }
+										$check=`dir $disque`;
+										if(strlen($check)>0) {
+											if(check_cultibox_card("$disque")) {
+											        return "$disque";
+											}
+										}
                         }
                         break;
         }
@@ -417,11 +429,10 @@ function get_sd_card() {
 // IN   directory to check
 // RET true if it's a cultibox directory, false else
 function check_cultibox_card($dir="") {
-   if((is_dir("$dir/logs"))&&(is_file("$dir/plugv"))&&(is_file("$dir/pluga"))) {
-      return true;
-   } else {
-      return false;
-   }
+	if((is_file("$dir/plugv"))&&(is_file("$dir/pluga"))&&(is_dir("$dir/logs"))) {
+			return true;
+	} 
+	return false;
 }
 // }}}
 

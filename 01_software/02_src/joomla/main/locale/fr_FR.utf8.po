@@ -43,7 +43,6 @@ msgstr "Oui"
 msgid "WIZARD_FALSE"
 msgstr "Non"
 
-
 msgid "CONFIGURE_FREQUENCY"
 msgstr "Fr&eacute;quence d'enregistrement (en minute)"
 
@@ -226,11 +225,17 @@ msgstr "Seconde"
 msgid "TIMEPICKER_NOW"
 msgstr "Heure actuelle"
 
+msgid "TIMEPICKER_CLOSE"
+msgstr "Fermer"
+
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
 msgstr "Comportement de votre prise"
 
 msgid "FORCE_ON_VALUE"
 msgstr "Marche forc&eacute;e"
+
+msgid "CHART_FORCE_ON_VALUE"
+msgstr "Marche forcee" 
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"

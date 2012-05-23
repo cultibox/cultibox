@@ -22,6 +22,8 @@ $humidity = array();
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $plugs_infos=get_plugs_infos($nb_plugs,$error);
 $select_plug=getvar('select_plug');
+$data_temp="";
+$data_humi="";
 
 
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -60,6 +62,7 @@ if((!isset($type))||(empty($type))){
 
 
 $log = array();
+$load_log=false;
 if((isset($sd_card))||(!empty($sd_card))) {
 	for ($month = 1; $month <= 12; $month++) {
   		for ($day = 1; $day <= 31; $day++) {
