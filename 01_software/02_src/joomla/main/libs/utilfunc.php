@@ -685,8 +685,8 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,&$o
    $update="000$update_frequency";
    $file="$sd_card/conf";
    if($f=fopen("$file","w+")) {
-      fputs($f,"PLUG_UPDATE:$record\r\n");
-      fputs($f,"LOGS_UPDATE:$update\r\n");
+      fputs($f,"PLUG_UPDATE:$update\r\n");
+      fputs($f,"LOGS_UPDATE:$record\r\n");
       fclose($f);
    } else {
       $out=$out.__('ERROR_WRITE_SD');
