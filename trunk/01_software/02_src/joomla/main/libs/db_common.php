@@ -83,7 +83,7 @@ EOF;
 // RET none
 function get_graph_array(&$res,$key,$startdate,&$out="") {
    $db = db_priv_start();
-        $sql = <<<EOF
+   $sql = <<<EOF
 SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}"
 EOF;
    $db->setQuery($sql);
@@ -113,7 +113,7 @@ function get_configuration($key,&$out="") {
 SELECT {$key} FROM `configuration` WHERE id = 1
 EOF;
    $db->setQuery($sql);
-        $res = $db->loadResult();
+   $res = $db->loadResult();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       $out=$out.__('ERROR_SELECT_SQL').$ret;
