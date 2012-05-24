@@ -989,6 +989,8 @@ EOF;
    $j=1;
    $data=array();
    $data[0] = "";
+   date_default_timezone_set('UTC');
+
    if(count($first)>0) {
       while( $j <= 16 ) {
          $result=find_value_for_plug($first,"000000",$j);
