@@ -139,6 +139,7 @@ function get_log_value($file,&$array_line) {
                );
                $index=$index+1;
             }
+         }
       }
       fclose($handle);
       if("$index" != "0") {
@@ -246,8 +247,8 @@ function get_format_graph($arr) {
       $last_mm=$mm;
    }
    if("$last_hh:$last_mm" != "23:59") {
-      $data=fill_data("$last_hh","$last_mm","24","00","$last_value","$data");
-   }
+      $data=fill_data("$last_hh","$last_mm","24","00","null","$data");
+   } 
    return $data;
 }
 //}}}
