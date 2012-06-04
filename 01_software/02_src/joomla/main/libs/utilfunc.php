@@ -224,6 +224,8 @@ function get_format_graph($arr) {
    $last_mm="";
    $last_hh="";
    $last_value="";
+
+   if(count($arr)>0) {
    foreach($arr as $value) {
       $hh=substr($value['time_catch'], 0, 2);
       $mm=substr($value['time_catch'], 2, 2);
@@ -244,6 +246,9 @@ function get_format_graph($arr) {
    if("$last_hh:$last_mm" != "23:59") {
       $data=fill_data("$last_hh","$last_mm","24","00","null","$data");
    } 
+   } else {
+          $data=fill_data("00","00","24","00","null","$data");
+   }
    return $data;
 }
 //}}}
