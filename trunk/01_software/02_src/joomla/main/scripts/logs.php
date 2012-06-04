@@ -163,6 +163,7 @@ if("$type" == "days") {
 		if("$data_temp" == "" ) {
 			$error=$error.__('EMPTY_TEMPERATURE_DATA');
                 }
+	
 		$data_temp=get_format_month($data_temp);
 		$data_humi=get_format_month($data_humi);
 		$xlegend="XAXIS_LEGEND_MONTH";

@@ -166,24 +166,19 @@ function clean_log_file($file) {
 // IN $data   datas from a graphics containing values for a month
 // RET return datas string value containing an average of the input fiel data
 function get_format_month($data) {
-   $arr = explode(" ", $data);
+   $arr = explode(",", $data);
    $count=0;
    $moy=0;
    $data_month="";
    foreach($arr as $value) {
-      if("$value"=="null") {
-         $value=0;
-      }
-      $moy=round(($moy + $value)/2,2);
       $count=$count+1;
       if($count==20) {
          if("$data_month"=="") {
-            $data_month="$moy";
+            $data_month="$value";
          } else {
-            $data_month="$data_month, $moy";
+            $data_month="$data_month, $value";
          }
          $count=0;
-         $moy=0;
       }
    }
    return $data_month;
