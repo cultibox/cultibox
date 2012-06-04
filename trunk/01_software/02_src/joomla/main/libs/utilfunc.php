@@ -142,9 +142,6 @@ function get_log_value($file,&$array_line) {
          }
       }
       fclose($handle);
-      if("$index" != "0") {
-         clean_log_file($file);
-      }
    }
 }
 //}}}

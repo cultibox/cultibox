@@ -48,6 +48,7 @@ function db_priv_end($dbconn) {
 function db_update_logs($arr,&$out="") {
    $db = db_priv_start();
    $index=0;
+   $return=1;
    $sql = <<<EOF
 INSERT INTO `logs`(`timestamp`,`temperature`, `humidity`,`date_catch`,`time_catch`) VALUES
 EOF;
@@ -66,10 +67,13 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       $out=$out.__('ERROR_UPDATE_SQL').$ret;
+      $return=0; 
    }
    if(!db_priv_end($db)) {
       $out=$out.__('PROBLEM_CLOSING_CONNECTION');   
    }
+
+   return $return;
 }
 // }}}
 
@@ -83,7 +87,7 @@ EOF;
 // RET none
 function get_graph_array(&$res,$key,$startdate,&$out="") {
    $db = db_priv_start();
-   $sql = <<<EOF
+        $sql = <<<EOF
 SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}"
 EOF;
    $db->setQuery($sql);
@@ -113,7 +117,7 @@ function get_configuration($key,&$out="") {
 SELECT {$key} FROM `configuration` WHERE id = 1
 EOF;
    $db->setQuery($sql);
-   $res = $db->loadResult();
+        $res = $db->loadResult();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       $out=$out.__('ERROR_SELECT_SQL').$ret;
