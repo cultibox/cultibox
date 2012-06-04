@@ -82,7 +82,9 @@ if((isset($sd_card))||(!empty($sd_card))) {
        				// get log value
        				get_log_value("$sd_card/logs/$mmonth/$dday",$log);
        				if(!empty($log)) {
-            				db_update_logs($log,$error);
+            				if(db_update_logs($log,$error)) {
+                                           clean_log_file("$sd_card/logs/$mmonth/$dday");
+                                        }
             				unset($log) ;
             				$log = array();
 	    				$load_log=true;
