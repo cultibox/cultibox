@@ -202,8 +202,8 @@ $(document).ready(function() {
 					<td><?php echo __('VALUE_ON_OFF'); ?></td>
 					<td><?php if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"unknown")==0)) { ?>
 						<select id="value_program<?php echo $i; ?>" name="value_program<?php echo $i; ?>">
+							<option value="on" <?php if(($i==$selected_plug)&&($value_program==1)) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
         						<option value="off" <?php if(($i==$selected_plug)&&($value_program==0)) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
-        						<option value="on" <?php if(($i==$selected_plug)&&($value_program==1)) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
         					</select>
 					<?php } else { ?>
         					<input type="text" id="value_program<?php echo $i; ?>" name="value_program<?php echo $i; ?>" size="4" maxlength="4" <?php if(($i==$selected_plug)&&(!empty($value_program))) { ?>value="<?php echo $value_program;?>" <?php } else { ?>value="0" <?php } ?> />

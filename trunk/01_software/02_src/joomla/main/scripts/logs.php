@@ -104,7 +104,6 @@ if("$type"=="days") {
         $check_format=check_format_date($startmonth,$type,$error);
 }
 
-
 if("$type" == "days") {
 	if($check_format) {
 		if((isset($select_plug))&&(!empty($select_plug))) {
