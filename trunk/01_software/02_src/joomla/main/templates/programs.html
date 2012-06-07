@@ -34,6 +34,8 @@ $('#start_time<?php echo "$i"; ?>').timepicker({
 <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
 showSecond: true,
 showOn: 'both',
+buttonImage: "../main/libs/img/datepicker.png",
+buttonImageOnly: 'true',
 timeFormat: 'hh:mm:ss',
 <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
 <?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
@@ -45,6 +47,8 @@ timeFormat: 'hh:mm:ss',
 $('#end_time<?php echo "$i"; ?>').timepicker({
 <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
 showOn: 'both',
+buttonImage: "../main/libs/img/datepicker.png",
+buttonImageOnly: 'true',
 showSecond: true,
 timeFormat: 'hh:mm:ss',
 <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
@@ -191,7 +195,7 @@ $(document).ready(function() {
 				<tr>
 					<td width="10%"></td>
 					<td width="40%"><?php echo __('START_TIME_PROGRAM'); ?></td>
-					<td width="50%"><input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> /></td>
+					<td width="50%"><input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> />
 				</tr>
 				<tr>
 					<td></td>
