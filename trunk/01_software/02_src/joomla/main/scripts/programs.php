@@ -55,69 +55,47 @@ for($i=0;$i<=$nb_plugs;$i++) {
 }
 
 
-if((isset($finish))&&($step==5)) {
-	unset($wzd);
+if((isset($finish))&&($step==3)) {
+        $program=getvar('program');
+
+	if((isset($program))&&(!empty($program))) {
+		$value_program="99.9";
+		$selected_plug=1;
+		$plug_type="lamp";
+                $start_time=getvar('start_time');
+                $end_time=getvar('end_time');
+
+                if(check_times($start_time,$end_time,$error)) {
+                                if(insert_program($selected_plug,$start_time,$end_time,$value_program,$error)) {
+				       clean_program($selected_plug,$error);
+				       insert_program($selected_plug,$start_time,$end_time,$value_program,$error);
+                                       $info=$info.__('INFO_VALID_UPDATE_PROGRAM');
+				        insert_plug_conf("PLUG_TYPE",$selected_plug,$plug_type,$error);
+					unset($wzd);
+					header('Location: programs');   
+                                } else {
+                                        $error=$error.__('ERROR_VALUE_PROGRAM');
+					unset($finish);
+                                }
+                } 
+        }
 }
 
 if((!isset($wzd))||(empty($wzd))) {
 		$wzd="False";
 }
 
-if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"!="False")) {
-
+if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"!="False")) {
 	if("$wizard"=="1") {
 		$info=$info.__('WIZARD_DISABLE_FUNCTION');
 	}
 
 	$step=getvar('step');
-	$nb_plugs=get_configuration("NB_PLUGS",$error);
-	$selected_plug=getvar('plug_number');
 	$next=getvar('next');
 	$previous=getvar('previous');
-	$plug_name=getvar('plug_name');
-	$plug_type=getvar('plug_type');
-	$plug_tolerance=getvar('plug_tolerance');
-	$program=getvar('apply');
-	$force_on=getvar('force_on');
 	$start_time="00:00:00";
 	$end_time="00:00:00";
-	$value_program="";
 
-
-	switch($plug_type) {
-                        case 'unknown': $plug_translate=__('PLUG_UNKNOWN');
-                                break;
-                        case 'ventilator': $plug_translate=__('PLUG_VENTILATOR');
-                                break;
-                        case 'heating': $plug_translate=__('PLUG_HEATING');
-                                break;
-                        case 'lamp': $plug_translate=__('PLUG_LAMP');
-                                break;
-                        case 'humidifier': $plug_translate=__('PLUG_HUMIDIFIER');
-                                break;
-                        case 'dehumidifier': $plug_translate=__('PLUG_DESHUMIDIFIER');
-                                break;
-        }
-
-	if((isset($selected_plug))&&(!empty($selected_plug))) {
-		if((!isset($plug_name))||(empty($plug_name))) {
-			$plug_name=get_plug_conf("PLUG_NAME",$selected_plug,$error);
-		} else {
-		        insert_plug_conf("PLUG_NAME",$selected_plug,$plug_name,$error);
-		}
-
-		if((!isset($plug_type))||(empty($plug_type))) {
-                        $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$error);
-		} else {
-			insert_plug_conf("PLUG_TYPE",$selected_plug,$plug_type,$error);
-		}
-
-		if((!isset($plug_tolerance))||(empty($plug_tolerance))) {
-                        $plug_tolerance=get_plug_conf("PLUG_TOLERANCE",$selected_plug,$error);
-                } else {
-			insert_plug_conf("PLUG_TOLERANCE",$selected_plug,$plug_tolerance,$error);
-		}
-	}
 	if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
 		$step=1;
 	} else if((isset($next))&&(!empty($next))) {
@@ -126,49 +104,7 @@ if((((empty($finish))&&($step==5))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 		$step=$step-1;
 	}
 
-	if((isset($program))&&(!empty($program))) {
-	    	$start_time=getvar('start_time');
-        	$end_time=getvar('end_time');
-		if((isset($force_on))&&(!empty($force_on))) {
-			$value_program="99.9";
-		} else {
-        		$value_program=getvar('value_program');
-		}
-
-		if(check_times($start_time,$end_time,$error)) {
-                                if("$value_program"=="on") {
-                                        $value_program="99.9";
-                                        $check=true;
-                                } else if("$value_program"=="off") {
-                                        $value_program="0";
-                                        $check=true;
-                                } else {
-										if((!isset($force_on))||(empty($force_on))) {
-											$check=check_format_values_program($value_program);
-										} else {
-											$check=true;
-										}
-                                }
-
-                                if($check) {
-                                        if(insert_program($selected_plug,$start_time,$end_time,$value_program,$error)) {
-                                                $info=$info.__('INFO_VALID_UPDATE_PROGRAM');
-                                        }
-                                } else {
-                                        $error=$error.__('ERROR_VALUE_PROGRAM');
-                                }
-                } else {
-                        $error=$error.__('ERROR_MISSING_VALUE_TIME');
-                }
-	}
-
-	$data_plug=get_data_plug($selected_plug,$error);
-        $data=format_program_highchart_data($data_plug,"");
-
-
-
 	include('main/templates/wizard.html');
-
 } else {
 
 	unset($finish);
