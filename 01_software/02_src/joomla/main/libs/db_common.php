@@ -1051,15 +1051,17 @@ EOF;
    $evt=array();
    $i=0;
    $count=0;
-   while($count<count($event)) {
-      if((isset($event[$i]))) {
-         $evt[]=$event[$i];   
-         $count=$count+1;
+
+   if(count($event)>0) {
+      while($count<count($event)) {
+         if((isset($event[$i]))) {
+            $evt[]=$event[$i];   
+            $count=$count+1;
+         }
+         $i=$i+1;
       }
-      
-      $i=$i+1;
+      $event=$evt;
    }
-   $event=$evt;
 
    if(count($event)>0) {
       for($i=0;$i<count($event);$i++) {
