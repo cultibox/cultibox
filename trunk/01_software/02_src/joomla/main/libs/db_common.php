@@ -789,7 +789,7 @@ EOF;
 // ROLE clean program table
 // IN $plug_id          id of the plug
 //    $out      error or warning message
-// RET none
+// RET false if an error occured, true else
 function clean_program($plug_id,&$out) {
    $db = db_priv_start();
         $sql = <<<EOF
@@ -800,10 +800,13 @@ EOF;
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
                 $out=$out.__('ERROR_UPDATE_SQL').$ret;
+		return false;
         }
         if(!db_priv_end($db)) {
                 $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+		return false;
         }
+        return true;
 }
 // }}}}
 
