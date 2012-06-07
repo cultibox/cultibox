@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `COLOR_HUMIDITY_GRAPH` varchar(30) NOT NULL DEFAULT 'green',
   `COLOR_TEMPERATURE_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
   `RECORD_FREQUENCY` int(11) NOT NULL DEFAULT '5',
-  `NB_PLUGS` int(11) NOT NULL DEFAULT '4',
+  `NB_PLUGS` int(11) NOT NULL DEFAULT '3',
   `UPDATE_PLUGS_FREQUENCY` int(20) NOT NULL DEFAULT '-1',
   `LANG` varchar(5) NOT NULL DEFAULT 'en_GB',
   `SHOW_WIZARD` tinyint(1) NOT NULL DEFAULT '1',
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 --
 
 INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `SHOW_WIZARD`) VALUES
-(1, 'red', 'black', 1, 4, -1, 'fr_FR', 1);
+(1, 'red', 'black', 1, 3, -1, 'fr_FR', 1);
 
 -- --------------------------------------------------------
 
