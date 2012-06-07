@@ -28,6 +28,27 @@ $wzd=getvar('wzd');
 $step=getvar('step');
 $info_plug=array();
 
+$export=getvar('export');
+$import=getvar('import');
+$reset=getvar('reset');
+$action_prog=getvar('action_prog');
+
+
+for($i=0;$i<=$nb_plugs;$i++) {
+		export_program($i,$error);
+}
+
+	
+
+if((isset($action_prog))&&(!empty($action_prog))) {
+	if((isset($import))&&(!empty($import))) {
+
+
+	} else if((isset($reset))&&(!empty($reset))) {
+		clean_program($action_prog,$error);	
+	}
+} 
+
 for($i=0;$i<=$nb_plugs;$i++) {
 	$info_plug[]="";
 	$ret_plug[]="";

@@ -808,6 +808,35 @@ EOF;
 // }}}}
 
 
+// {{{ export_program($id,&$out)
+// ROLE export a program into a text file
+// IN $id          id of the program
+//    $out      error or warning message
+// RET none
+function export_program($id,&$out) {
+       $db = db_priv_start();
+       $sql = <<<EOF
+SELECT * FROM `programs` WHERE id = `{$id}`
+EOF;
+       $db->setQuery($sql);
+       $res = $db->loadAssocList();
+       $ret=$db->getErrorMsg();
+
+       $file="tmp/program${id}.txt";
+
+       if($f=fopen("$file","w+")) {
+      		fputs($f,"#Program : plug_id,time_start,time_stop,value\r\n");
+		if(count($res)>0) {
+			foreach($res as $record) {
+         			fputs($f,$record['plug_id'].",".$record['time_start'].",".$record['time_stop'].",".$record['value']."\r\n");
+			}
+		}
+      }
+      fclose($f);
+}
+// }}}
+
+
 // {{{ purge_program($arr)
 // ROLE purge and check program 
 // IN $arr   array containing value of the program
@@ -1191,18 +1220,5 @@ EOF;
    }
 }
 // }}}
-
-
-// {{{ export_program($id)
-//ROLE export a program to a csv file
-// IN   $id   id of the plug to export
-// RET  none
-function export_program($id) {
-   return 1;
-}
-// }}}
-
-
-
 
 ?>

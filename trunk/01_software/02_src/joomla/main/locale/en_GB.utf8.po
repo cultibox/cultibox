@@ -234,14 +234,20 @@ msgstr "Done"
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
 msgstr "Behaviour of your plug"
 
-msgid "EXPORT_PROGRAM"
-msgstr "Export your program"
-
 msgid "FORCE_ON_VALUE"
 msgstr "Forced to ON" 
 
 msgid "CHART_FORCE_ON_VALUE"
 msgstr "Forced to ON" 
+
+msgid "EXPORT_PROGRAM"
+msgstr "Export"
+
+msgid "IMPORT_PROGRAM"
+msgstr "Import"
+
+msgid "RESET_PROGRAM"
+msgstr "Reset"
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"

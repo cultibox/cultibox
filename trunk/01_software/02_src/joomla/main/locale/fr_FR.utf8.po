@@ -153,6 +153,15 @@ msgstr "et un programme &agrave; comparer"
 msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
 
+msgid "EXPORT_PROGRAM"
+msgstr "Exporter"
+
+msgid "IMPORT_PROGRAM"
+msgstr "Importer"
+
+msgid "RESET_PROGRAM"
+msgstr "Reinitialiser"
+
 # For the plugs part:
 msgid "PLUG"
 msgstr "Prise num&eacute;ro"
