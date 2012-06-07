@@ -35,7 +35,7 @@ msgid "CONFIGURE_LANGUAGE"
 msgstr "Choisir votre langue"
 
 msgid "CONFIGURE_WIZARD"
-msgstr "Activer l'assistant de configuration des prises"
+msgstr "Activer l'assistant de configuration"
 
 msgid "WIZARD_TRUE"
 msgstr "Oui"
@@ -240,6 +240,9 @@ msgstr "Heure actuelle"
 msgid "TIMEPICKER_CLOSE"
 msgstr "Fermer"
 
+msgid "TIMEPICKER_BUTTON_TEXT"
+msgstr "Choisir l\'heure"
+
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
 msgstr "Comportement de votre prise"
 
@@ -276,7 +279,7 @@ msgstr "Annuler le zoom"
 
 # For the wizard part:
 msgid "WIZARD_INTRO"
-msgstr "Wizard de configuration - assistant de configuration de vos prises et programmes"
+msgstr "Assistant de configuration de la premi&egrave;re prise"
 
 msgid "WIZARD_NEXT_STEP"
 msgstr "Etape suivante"
@@ -288,31 +291,13 @@ msgid "WIZARD_FINISH_STEP"
 msgstr "Finir et fermer l'assistant"
 
 msgid "WIZARD_PLUG_NUMBER"
-msgstr "Vous devez choisir le num&eacute;ro de la prise &agrave; configurer. Chaque prise est identifi&eacute;e par un num&eacute;ro unique afin d'en retrouver les informations."
-
-msgid "WIZARD_CHOOSE_PLUG_NUMBER"
-msgstr "Choississez le num&eacute;ro de la prise &agrave; configurer"
-
-msgid "WIZARD_PLUG_NAME"
-msgstr "Ceci est une option, vous pouvez choisir un nom pour votre prise"
-
-msgid "WIZARD_CHOOSE_PLUG_NAME"
-msgstr "Choisissez le nom de votre prise"
+msgstr "Cette assistant vous permet de vous familliariser avec les configurations des prises et des programmes en configurant avec vous la premi&egrave;re prise."
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "Choisissez le type de prise &agrave; utiliser: <ul><li>un chauffage pour augmenter la temp&eacute;rature</li><li>un ventilateur pour abaisser la temp&eacute;rature</li><li>un humidifieur pour baisser le pourcentage d'humidit&eacute;</li><li>un d&eacute;shumidifieur pour diminuer l'himidit&eacute;</li><li>une lampe</li><li>le type inconnu servant pour tout les autres &eacute;quipements"
-
-msgid "WIZARD_CHOOSE_PLUG_TYPE"
-msgstr "Choississez le type de prise"
-
-msgid "WIZARD_PLUG_TOLERANCE"
-msgstr "Vous devez maintenant choisir la tol&eacute;rance de votre prise. Lors de la prochaine &eacute;tape vous choisirez le comportement de votre prise en lui assigant des valeurs. Vous devez donc choisir une tol&eacute;rance pour cette &eacute;tape. Par exemple, si vous choisissez de configurer un chauffage avec la valeur de 20&deg;C et une tol&eacute;rance de 2&deg;C le chauffage se mettra en route ou se coupera entre 18 et 22&deg;C . La valeur maximale est de 25.5 et la valeur manimale est de 0. De plus on ne peut configurer la tol&eacute;rance d'une lampe."
-
-msgid "WIZARD_CHOOSE_PLUG_TOLERANCE"
-msgstr "Choisissez la tol&eacute;rance de votre prise"
+msgstr "La prise num&eacute;ro une sera configur&eacute;e comme une lampe. En utilisant la configuration classique des prises vous aurez le choix parmis diff&eacute;rent type d'&eacute;quipement:<ul><li>un chauffage pour augmenter la temp&eacute;rature</li><li>un ventilateur pour abaisser la temp&eacute;rature</li><li>un humidifieur pour baisser le pourcentage d'humidit&eacute;</li><li>un d&eacute;shumidifieur pour diminuer l'himidit&eacute;</li><li>une lampe</li><li>le type inconnu servant pour tout les autres &eacute;quipements"
 
 msgid "WIZARD_PLUG_PROGRAM"
-msgstr "La configuration de votre prise est maintenant sauvegard&eacute;e dans la base du logiciel. Vous pouvez configurer le comportement de votre prise."
+msgstr "Il faut faut maintenant choisir quand &eacute;teindre et allum&eacute;r vos lampe. Pour cela choisissez une heure de d&eacute;part o&ugrave; la lampe se mettra en route et une heure de fin o&ugrave; la lampe  s'&eacute;teindra."
 
 msgid "WIZARD_STEP"
 msgstr "Etape"
@@ -374,19 +359,19 @@ msgid "INFO_SD_CARD"
 msgstr "<li> Une carte SD compatible cultibox est branch&eacute;e"
 
 msgid "VALID_UPDATE_CONF"
-msgstr "<li>Configuration mise &agrave; jour avec succ&eacute;e</li>"
+msgstr "<li>Configuration mise &agrave; jour avec succ&eacute;es</li>"
 
 msgid "VALID_UPDATE_PROGRAM"
-msgstr "<li> Programmes mis &agrave; jour avec succ&eacute;</li>"
+msgstr "<li> Programmes mis &agrave; jour avec succ&eacute;s</li>"
 
 msgid "VALID_LOAD_LOG"
-msgstr "<li> Fichiers de logs enregistr&eacute;es avec succ&eacute;e</li>"
+msgstr "<li> Fichiers de logs enregistr&eacute;es avec succ&eacute;s</li>"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "<li>Programme mis &agrave; jour avec succ&eacute;e</li>"
+msgstr "<li>Programme mis &agrave; jour avec succ&eacute;s</li>"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "<li>Vous pouvez utiliser le wizard de configuration pour vous aider en cliquant <a href='programs?wzd=True'>ici</a></li>"
+msgstr "<li>Vous pouvez utiliser l'assistant pour configurer la premi&egrave;re prise en cliquant <a href='programs?wzd=True'>ici</a></li>"
 
 msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant <a href='programs?wzd=False'>ci</a></li>"

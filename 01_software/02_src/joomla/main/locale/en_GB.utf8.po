@@ -231,6 +231,9 @@ msgstr "Current Time"
 msgid "TIMEPICKER_CLOSE"
 msgstr "Done"
 
+msgid "TIMEPICKER_BUTTON_TEXT"
+msgstr "Choose the time"
+
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
 msgstr "Behaviour of your plug"
 
@@ -276,7 +279,7 @@ msgstr "Reset zoom"
 
 # For the wizard part:
 msgid "WIZARD_INTRO"
-msgstr "Wizard interface - assistant to configure plugs and programs for the cultibox"
+msgstr "Wizard interface - assistant to configure your first plug"
 
 msgid "WIZARD_NEXT_STEP"
 msgstr "Next Step"
@@ -288,31 +291,13 @@ msgid "WIZARD_FINISH_STEP"
 msgstr "Finish and close"
 
 msgid "WIZARD_PLUG_NUMBER"
-msgstr "You have to choose the number of the plug you want to configure. Each plug is defined by a uniq number to retrieve plug's informations."
-
-msgid "WIZARD_CHOOSE_PLUG_NUMBER"
-msgstr "Choose the number of the plug to configure"
-
-msgid "WIZARD_PLUG_NAME"
-msgstr "This is an option. You can choose the name of your plug"
-
-msgid "WIZARD_CHOOSE_PLUG_NAME"
-msgstr "Choose the name of your plug"
+msgstr "This wizard will help you to configure your first plug."
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "Choose the type of your plug: <ul><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an unknown type for all the other equipements" 
-
-msgid "WIZARD_CHOOSE_PLUG_TYPE"
-msgstr "Choose the type of the plug"
-
-msgid "WIZARD_PLUG_TOLERANCE"
-msgstr "You now have to choose the tolerance of your plug. In the next step you will choose value for your plug and you have now to define the tolerance of this value. For example if you choose to configure a heating and to configure it to work with a temperature of 20&deg;C, the tolerance will determine which temperature will be sued to stop the heating. With a tolerance of 2&deg;C, the heating will be stoppet at 20&deg;C plus or minus two degrees. The maximal value is 25.5 and the minimum value is 0. A lamp doesn't need a tolerance, you can skip this step if you have chosen to configure a lamp."
-
-msgid "WIZARD_CHOOSE_PLUG_TOLERANCE"
-msgstr "Choose the tolerance of the plug"
+msgstr "Your first plug will be configured like a lamp. Using the standard interface to configure your plugs, you can choose several type of plug: <ul><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an unknown type for all the other equipements" 
 
 msgid "WIZARD_PLUG_PROGRAM"
-msgstr "Your plug's configuration is now save into the database of this software. You have now to configure your program."
+msgstr "You have now to configure your program by selecting a start time where your lamp will turn on and a end time where the lamp will turn off"
 
 msgid "WIZARD_STEP"
 msgstr "Step"
