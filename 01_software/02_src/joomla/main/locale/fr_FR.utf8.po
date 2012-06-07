@@ -377,7 +377,7 @@ msgid "VALID_UPDATE_CONF"
 msgstr "<li>Configuration mise &agrave; jour avec succ&eacute;e</li>"
 
 msgid "VALID_UPDATE_PROGRAM"
-msgstr "<li> Programmes mis &agrave; jour avec succ&eacute;e</li>"
+msgstr "<li> Programmes mis &agrave; jour avec succ&eacute;</li>"
 
 msgid "VALID_LOAD_LOG"
 msgstr "<li> Fichiers de logs enregistr&eacute;es avec succ&eacute;e</li>"
