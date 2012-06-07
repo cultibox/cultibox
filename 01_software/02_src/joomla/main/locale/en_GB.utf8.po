@@ -371,8 +371,10 @@ msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "<li>Program successfully updated</li>"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "<li>You can also use the wizard assistant, just click <a href='programs?wzd=True'>here</a></li>"
+msgstr "<li>You can also use the wizard assistant to configure the first plug, just click <a href='programs?wzd=True'>here</a></li>"
 
 msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "<li>You can use the standard interface to configure your programs instead. Just click <a href='programs?wzd=False'>here</a></li>"
 
+msgid "INFO_RESET_PROGRAM"
+msgstr "<li>Program sucessfully reseted</li>"

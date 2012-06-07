@@ -376,3 +376,7 @@ msgstr "<li>Vous pouvez utiliser l'assistant pour configurer la premi&egrave;re 
 msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant <a href='programs?wzd=False'>ci</a></li>"
 
+msgid "INFO_RESET_PROGRAM"
+msgstr "<li>Programme r&eacute;initialis&eacute; avec succ&eacute;s</li>"
+
+

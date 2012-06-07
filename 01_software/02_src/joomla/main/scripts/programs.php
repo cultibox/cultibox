@@ -38,6 +38,12 @@ for($i=0;$i<=$nb_plugs;$i++) {
 		export_program($i,$error);
 }
 
+
+for($i=0;$i<=$nb_plugs;$i++) {
+        $info_plug[]="";
+        $ret_plug[]="";
+}
+
 	
 
 if((isset($action_prog))&&(!empty($action_prog))) {
@@ -45,15 +51,11 @@ if((isset($action_prog))&&(!empty($action_prog))) {
 
 
 	} else if((isset($reset))&&(!empty($reset))) {
-		clean_program($action_prog,$error);	
-	}
+		if(clean_program($action_prog,$error)) {
+			$info_plug[$action_prog]=$info_plug[$action_prog].__('INFO_RESET_PROGRAM');
+                }
+	} 
 } 
-
-for($i=0;$i<=$nb_plugs;$i++) {
-	$info_plug[]="";
-	$ret_plug[]="";
-}
-
 
 if((isset($finish))&&($step==3)) {
         $program=getvar('program');
