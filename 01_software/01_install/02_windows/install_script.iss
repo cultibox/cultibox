@@ -30,18 +30,20 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 
 [Files]
-Source: "F:\Cultibox_web\01_software\01_install\02_src\01_xampp\*"; DestDir: "{app}\xampp"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "F:\Cultibox_web\01_software\01_install\02_src\02_joomla\*"; DestDir: "{app}\xampp\htdocs\cultibox"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "F:\Cultibox_web\01_software\01_install\02_src\03_sql\*"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "F:\Cultibox_web\01_software\01_install\02_src\04_doc\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "F:\Cultibox_web\01_software\01_install\02_src\05_sd\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Cultibox_web\01_software\01_install\01_src\01_xampp\*"; DestDir: "{app}\xampp"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Cultibox_web\01_software\01_install\01_src\02_sql\*"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Cultibox_web\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Cultibox_web\01_software\01_install\01_src\04_run\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Cultibox_web\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Cultibox_web\01_software\01_install\02_windows\cultibox.bat"; DestDir: "{app}\cultibox.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\{cm:ProgramOnTheWeb,{#MyAppName}}"; Filename: "{#MyAppURL}"; Comment: "Run cultibox"
+Name: "{app}\cultibox.bat"; Filename: "Cultibox"; Comment: "Run cultibox"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: {uninstallexe}; Comment: "Uninstall cultibox"
 
 [Run]
 Filename: "{app}\xampp\setup_xampp.bat";Description: "Change path"
-Filename: "{app}\xampp\xampp_start.exe";Description: "Run Xampp"; Flags: nowait
+Filename: "{app}\xampp\xampp_start.exe";Description: "Run Xampp";
 Filename: "{app}\xampp\sql_install\install_sql.bat";  WorkingDir: "{app}" ;Description: "Change root password"
+Filename: "{app}\xampp\xampp_stop.exe";Description: "Kill Xampp";
