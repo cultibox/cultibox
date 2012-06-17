@@ -39,7 +39,7 @@ Source: "F:\Cultibox_web\01_software\01_install\02_windows\cultibox.bat"; DestDi
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\Cultibox"; Filename: "{app}\cultibox.bat"; Comment: "Run cultibox"; IconFilename: "{app}\03_sd\cultibox.ico"; AppUserModelID: "Cultibox.Cultibox"
+Name: "{group}\Cultibox"; Filename: "{app}\cultibox.bat"; Comment: "Run cultibox"; IconFilename: "{app}\sd\cultibox.ico"; AppUserModelID: "Cultibox.Cultibox"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: {uninstallexe}; Comment: "Uninstall cultibox"
 
 [Run]
