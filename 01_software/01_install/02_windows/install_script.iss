@@ -18,7 +18,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={pf}\{#MyAppName}
+DefaultDirName={sd}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 OutputBaseFilename=setup
@@ -35,11 +35,11 @@ Source: "F:\Cultibox_web\01_software\01_install\01_src\02_sql\*"; DestDir: "{app
 Source: "F:\Cultibox_web\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\01_software\01_install\01_src\04_run\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "F:\Cultibox_web\01_software\01_install\02_windows\cultibox.bat"; DestDir: "{app}\cultibox.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Cultibox_web\01_software\01_install\02_windows\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{app}\cultibox.bat"; Filename: "Cultibox"; Comment: "Run cultibox"
+Name: "{group}\Cultibox"; Filename: "{app}\cultibox.bat"; Comment: "Run cultibox"; IconFilename: "{app}\03_sd\cultibox.ico"; AppUserModelID: "Cultibox.Cultibox"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: {uninstallexe}; Comment: "Uninstall cultibox"
 
 [Run]
