@@ -1,5 +1,4 @@
 @ECHO OFF
-cd ..
 ECHO Demarage de l'application, veuillez patienter quelques secondes...
 xampp\xampp_start.exe
 start http://localhost:6891/cultibox/
