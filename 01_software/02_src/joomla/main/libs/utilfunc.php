@@ -110,7 +110,6 @@ function check_empty_string($value="") {
 // RET none
 function get_log_value($file,&$array_line) {
    $handle = fopen("$file", 'r');
-   $index=0;
    if ($handle)
    {
       while (!feof($handle))
@@ -130,14 +129,15 @@ function get_log_value($file,&$array_line) {
             $time_catch=rtrim($time_catch);
            
             if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(!empty($temp[1]))&&(!empty($temp[2]))) {
-               $array_line[] = array(
-                  "timestamp" => $temp[0],
-                  "temperature" => $temp[1],
-                  "humidity" => $temp[2],
-                  "date_catch" => $date_catch,
-                  "time_catch" => $time_catch
-               );
-               $index=$index+1;
+		  if((strlen($temp[1])<=4)&&(strlen($temp[2])<=4)&&(strlen($temp[0])==14)) {
+               		$array_line[] = array(
+                  		"timestamp" => $temp[0],
+                  		"temperature" => $temp[1],
+                  		"humidity" => $temp[2],
+                  		"date_catch" => $date_catch,
+                  		"time_catch" => $time_catch
+               		);
+	       	  }
             }
          }
       }
@@ -760,6 +760,59 @@ function check_format_values_program($value="0") {
    return true;
 }
 // }}}
+
+
+// {{{ check_and_copy_firm($sd_card,&$out="")
+// ROLE check if the firm.hex has to be copied and do the copy into the sd card
+// IN   $sd_card	the sd card pathname 
+//	$out		error or warning message
+// RET none
+function check_and_copy_firm($sd_card,&$out="") {
+   $new_firm="";
+   $current_firm="";
+
+   $new_file="tmp/firm.hex";
+   $current_file="$sd_card/firm.hex";
+
+   if(is_file("$new_file")) {
+	$handle = fopen("$new_file", 'r');
+	if ($handle) {
+         	$new_firm = fgets($handle);
+        }
+        fclose($handle);
+   }
+
+
+   if(is_file("$current_file")) {
+        $handle = fopen("$current_file", 'r');
+        if ($handle) {
+                $current_firm = fgets($handle);
+        }
+        fclose($handle);
+   }
+
+
+   
+   if((isset($new_firm))&&(!empty($new_firm))) {
+		if((!isset($current_firm))||(empty($current_firm))) {
+                   copy($new_file, $current_file);
+		} else {
+			$current_firm=trim("$current_firm");
+			$new_firm=trim("$new_firm");
+		
+			if((strlen($current_firm)==15)&&(strlen($new_firm)==15)) {	
+				$new_firm=substr($new_firm,9,4); 
+				$current_firm=substr($current_firm,9,4);
+				if($new_firm > $current_firm) {
+					copy($new_file, $current_file);
+				}
+			}
+
+		}
+   }
+}
+// }}}
+
 
 
 ?>
