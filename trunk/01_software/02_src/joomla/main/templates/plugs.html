@@ -47,6 +47,15 @@
 <tr>
 <td></td>
 <td>
+        <?php echo __('ID_PLUG'); ?>
+</td>
+<td>
+<input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>">
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
         <?php echo __('NAME_PLUG'); ?>
 </td>
 <td>
@@ -100,7 +109,7 @@
 <table width="100%">
 <tr>
 <td width="20%"></td>
-<td><INPUT type="submit" value=<?php echo __('VALIDATION_CONF'); ?>></td>
+<td><INPUT type="submit" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>"></td><td><INPUT type="submit" name="reset" value="<?php echo __('RESET_PLUG_ID'); ?>"></td>
 </tr>
 </table>
 </form>

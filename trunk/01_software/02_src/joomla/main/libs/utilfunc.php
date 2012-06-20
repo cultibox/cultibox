@@ -631,22 +631,19 @@ function write_pluga($sd_card,&$out="") {
    $file="$sd_card/pluga";
 
    if($f=fopen("$file","w+")) {
-      fputs($f,"16"."\r\n");
-      fputs($f,"251"."\r\n"); 
-      fputs($f,"253"."\r\n"); 
-      fputs($f,"247"."\r\n"); 
-      fputs($f,"239"."\r\n"); 
-      fputs($f,"222"."\r\n"); 
-      fputs($f,"221"."\r\n");
-      fputs($f,"219"."\r\n"); 
-      fputs($f,"215"."\r\n"); 
-      fputs($f,"207"."\r\n"); 
-      fputs($f,"190"."\r\n"); 
-      fputs($f,"189"."\r\n"); 
-      fputs($f,"187"."\r\n"); 
-      fputs($f,"183"."\r\n"); 
-      fputs($f,"175"."\r\n"); 
-      fputs($f,"126"."\r\n");
+      $pluga=Array();
+      $pluga[]="16";
+      for($i=0;$i<16;$i++) {
+		$tmp_pluga=get_plug_conf("PLUG_ID",$i+1,$out);
+		if((empty($tmp_pluga))||(!isset($tmp_pluga))) {
+                      $tmp_pluga=$GLOBALS['PLUGA_DEFAULT'][$i];
+                }
+                $pluga[]="$tmp_pluga";
+      }
+
+      foreach($pluga as $val) {
+                fputs($f,"$val"."\r\n");
+      }
    }
    fclose($f);
 }
