@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 20, 2012 at 11:38 AM
+-- Generation Time: Jun 20, 2012 at 03:36 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -34,7 +34,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `NB_PLUGS` int(11) NOT NULL DEFAULT '3',
   `UPDATE_PLUGS_FREQUENCY` int(20) NOT NULL DEFAULT '-1',
   `LANG` varchar(5) NOT NULL DEFAULT 'en_GB',
-  `SHOW_WIZARD` tinyint(1) NOT NULL DEFAULT '1',
+  `LOG_TEMP_AXIS` int(2) NOT NULL DEFAULT '50',
+  `LOG_HYGRO_AXIS` int(2) NOT NULL DEFAULT '100',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -42,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 -- Dumping data for table `configuration`
 --
 
-INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `SHOW_WIZARD`) VALUES
-(1, 'red', 'black', 1, 3, -1, 'fr_FR', 1);
+INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`) VALUES
+(1, 'red', 'black', 1, 3, -1, 'fr_FR', 50, 100);
 
 -- --------------------------------------------------------
 
@@ -72,8 +73,8 @@ CREATE TABLE IF NOT EXISTS `jqcalendar` (
 
 CREATE TABLE IF NOT EXISTS `logs` (
   `timestamp` varchar(14) NOT NULL DEFAULT '',
-  `temperature` int(11) DEFAULT NULL,
-  `humidity` int(11) DEFAULT NULL,
+  `temperature` int(4) DEFAULT NULL,
+  `humidity` int(4) DEFAULT NULL,
   `date_catch` varchar(10) DEFAULT NULL,
   `time_catch` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`timestamp`)
@@ -90,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `plugs` (
   `PLUG_ID` varchar(3) DEFAULT NULL,
   `PLUG_NAME` varchar(30) DEFAULT NULL,
   `PLUG_TYPE` varchar(20) NOT NULL DEFAULT 'unknown',
-  `PLUG_TOLERANCE` decimal(3,1) DEFAULT '0.0',
+  `PLUG_TOLERANCE` decimal(3,1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
@@ -99,22 +100,22 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 --
 
 INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`) VALUES
-(1, '', 'plug1', 'unknown', 0.0),
-(2, '', 'plug2', 'unknown', 0.0),
-(3, '', 'plug3', 'unknown', 0.0),
-(4, '', 'plug4', 'unknown', 0.0),
-(5, '', 'plug5', 'unknown', 0.0),
-(6, '', 'plug6', 'unknown', 0.0),
-(7, '', 'plug7', 'unknown', 0.0),
-(8, '', 'plug8', 'unknown', 0.0),
-(9, '', 'plug9', 'unknown', 0.0),
-(10, '', 'plug10', 'unknown', 0.0),
-(11, '', 'plug11', 'unknown', 0.0),
-(12, '', 'plug12', 'unknown', 0.0),
-(13, '', 'plug13', 'unknown', 0.0),
-(14, '', 'plug14', 'unknown', 0.0),
-(15, '', 'plug15', 'unknown', 0.0),
-(16, '', 'plug16', 'unknown', 0.0);
+(1, '', 'plug1', 'unknown', NULL),
+(2, '', 'plug2', 'unknown', NULL),
+(3, '', 'plug3', 'unknown', NULL),
+(4, '', 'plug4', 'unknown', NULL),
+(5, '', 'plug5', 'unknown', NULL),
+(6, '', 'plug6', 'unknown', NULL),
+(7, '', 'plug7', 'unknown', NULL),
+(8, '', 'plug8', 'unknown', NULL),
+(9, '', 'plug9', 'unknown', NULL),
+(10, '', 'plug10', 'unknown', NULL),
+(11, '', 'plug11', 'unknown', NULL),
+(12, '', 'plug12', 'unknown', NULL),
+(13, '', 'plug13', 'unknown', NULL),
+(14, '', 'plug14', 'unknown', NULL),
+(15, '', 'plug15', 'unknown', NULL),
+(16, '', 'plug16', 'unknown', NULL);
 
 -- --------------------------------------------------------
 
