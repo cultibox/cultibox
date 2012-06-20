@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 20, 2012 at 03:36 PM
+-- Generation Time: Jun 20, 2012 at 05:10 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -19,6 +19,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `cultibox`
 --
+CREATE DATABASE `cultibox` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `cultibox`;
+
+
 
 -- --------------------------------------------------------
 
