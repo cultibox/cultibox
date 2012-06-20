@@ -19,6 +19,7 @@ $error="";
 $info="";
 $temp_axis=getvar('temp_axis');
 $hygro_axis=getvar('hygro_axis');
+$pop_up=getvar('pop_up');
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$error);
@@ -33,6 +34,15 @@ __('LANG');
 if((!isset($sd_card))||(empty($sd_card))) {
         $sd_card=get_sd_card();
 }
+
+
+if((isset($pop_up))&&(!empty($pop_up))) {
+	insert_configuration("SHOW_POPUP","$pop_up",$error);
+        $update_conf=true;
+} else {
+        $pop_up = get_configuration("SHOW_POPUP",$error);
+}
+
 
 if((isset($color_humidity))&&(!empty($color_humidity))) {
 	insert_configuration("COLOR_HUMIDITY_GRAPH",$color_humidity,$error);
