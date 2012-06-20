@@ -298,7 +298,7 @@ function check_empty_record($last_hh,$last_mm,$hh,$mm) {
       $lhh= 60 * $last_hh + $last_mm;
       $chh= 60 * $hh + $mm;
 
-      if($lhh-$chh<=30) {
+      if($chh-$lhh<=30) {
          return true;
       } else {
          return false;

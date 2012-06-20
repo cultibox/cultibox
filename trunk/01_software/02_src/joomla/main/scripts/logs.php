@@ -125,6 +125,7 @@ if("$type" == "days") {
 		get_graph_array($temperature,"temperature/100",$startday,$error);
 		get_graph_array($humidity,"humidity/100",$startday,$error);
 
+
 		if(!empty($temperature)) {
 			$data_temp=get_format_graph($temperature);
 		} else {
