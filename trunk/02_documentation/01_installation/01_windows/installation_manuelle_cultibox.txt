@@ -9,6 +9,7 @@ c:\xampp\mysql\bin\mysqladmin.exe -u root -h localhost password cultibox
 
 config.inc.php dans C:\xampp\phpMyAdmin
 php.ini dans C:\xampp\php
+httpd.conf dans C:\xampp\apache\conf\
 
 4) Créer les bases a partir des 3 scripts MySQL:
 

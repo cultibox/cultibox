@@ -21,6 +21,8 @@ I) Installation de XAMPP sous linux
 	User <votre_user>
 	Group <votre_group>
 
+* De la même façon il peut être nécéssaire de changer les droits dans mysql en éditant le fichier  /opt/lampp/etc/my.cnf et en changeant la directivr "User" par le nom de l'utilisateur qui doit executer XAMPP
+
 
 * On fixe les droits du repertoire htdocs en conséquence:
 	sudo chown -R <votre_user>:<votre_group> /opt/lampp/htdocs
