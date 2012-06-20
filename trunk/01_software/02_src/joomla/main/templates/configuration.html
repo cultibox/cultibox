@@ -140,6 +140,17 @@
                                 }
                 } ?></select></td>
         </tr>
+	<tr>
+                <td><?php echo __('CONFIGURE_POPUP'); ?></td>
+                <td><select name="pop_up">
+			<?php if(strcmp("$pop_up","True")==0) { ?>
+			<option value="True" selected><?php echo __('YES'); ?></option>
+                        <option value="False"><?php echo __('NO'); ?></option>
+			<?php } else { ?>
+				<option value="True"><?php echo __('YES'); ?></option>";
+                                <option value="False" selected><?php echo __('NO'); ?></option>";
+                	<?php } ?></select></td>
+        </tr>
 </table>
 <br />
 <p class="title_conf">

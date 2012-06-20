@@ -43,6 +43,9 @@ msgstr "Select the number of plugs used"
 msgid "CONFIGURE_PLUGS_FREQUENCY"
 msgstr "Select the update plugs state frequency"
 
+msgid "CONFIGURE_POPUP"
+msgstr "Enable popup messages"
+
 msgid "VALIDATION_CONF"
 msgstr "Update configuration"
 
@@ -69,6 +72,12 @@ msgstr "Configure maximal axis value for temperature graphics"
 
 msgid "CONFIGURE_HYGRO_AXIS"
 msgstr "Configure maximal axis value for hygrometry graphics"
+
+msgid "YES"
+msgstr "Yes"
+
+msgid "NO"
+msgstr "No"
 
 # For the logs part:
 

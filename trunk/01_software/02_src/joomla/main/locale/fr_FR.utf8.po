@@ -43,6 +43,9 @@ msgstr "Nombre de prises &agrave; utiliser"
 msgid "CONFIGURE_PLUGS_FREQUENCY"
 msgstr "Fr&eacute;quence de mise &agrave; jour de l'&eacute;tat de vos prises"
 
+msgid "CONFIGURE_POPUP"
+msgstr "Activer l'affichage des messages par popup"
+
 msgid "VALIDATION_CONF"
 msgstr "Enregistrer la configuration"
 
@@ -69,6 +72,12 @@ msgstr "Valeur maximale de l'axe des temp&eacute;rature pour les graphes"
 
 msgid "CONFIGURE_HYGRO_AXIS"
 msgstr "Valeur maximale de l'axe de l'hygrom&eacute;trie pour les graphes"
+
+msgid "YES"
+msgstr "Oui"
+
+msgid "NO"
+msgstr "Non"
 
 # For the logs part:
 
