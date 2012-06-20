@@ -25,6 +25,8 @@ $select_plug=getvar('select_plug');
 $data_temp="";
 $data_humi="";
 $plug_type="";
+$hygro_axis=get_configuration("LOG_HYGRO_AXIS",$error);
+$temp_axis=get_configuration("LOG_TEMP_AXIS",$error);
 
 
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -64,7 +66,7 @@ if((!isset($type))||(empty($type))){
 
 $log = array();
 $load_log=false;
-if((isset($sd_card))||(!empty($sd_card))) {
+if((isset($sd_card))&&(!empty($sd_card))) {
 	for ($month = 1; $month <= 12; $month++) {
   		for ($day = 1; $day <= 31; $day++) {
     			if($day<10) {
@@ -92,6 +94,7 @@ if((isset($sd_card))||(!empty($sd_card))) {
       			}
   		}
 	}
+	check_and_copy_firm($sd_card,$error);
 }
 
 if(($load_log)&&(empty($error))) {

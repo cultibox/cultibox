@@ -23,7 +23,6 @@ $selected_plug=getvar('selected_plug');
 $plugs_infos=get_plugs_infos($nb_plugs,$error);
 $exportid=getvar('exportid');
 $finish=getvar('finish');
-$wizard=get_configuration("SHOW_WIZARD",$error);
 $wzd=getvar('wzd');
 $step=getvar('step');
 $info_plug=array();
@@ -87,10 +86,8 @@ if((!isset($wzd))||(empty($wzd))) {
 		$wzd="False";
 }
 
-if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"!="False")) {
-	if("$wizard"=="1") {
-		$info=$info.__('WIZARD_DISABLE_FUNCTION');
-	}
+if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wzd"!="False")) {
+	$info=$info.__('WIZARD_DISABLE_FUNCTION');
 
 	$step=getvar('step');
 	$next=getvar('next');
@@ -113,9 +110,7 @@ if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	unset($wzd);
 	unset($step);
 
-	if("$wizard"=="1") {
-		$info=$info.__('WIZARD_ENABLE_FUNCTION');
-	}
+	$info=$info.__('WIZARD_ENABLE_FUNCTION');
 
 	if((isset($exportid))&&(!empty($exportid))) {
 		export_program($exportid);
@@ -201,6 +196,7 @@ if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wizard"=="1")&&("$wzd"
 	if((isset($sd_card))&&(!empty($sd_card))) {
         	$program=create_program_from_database($error);
         	save_program_on_sd($sd_card,$program,$error,$info);
+	        check_and_copy_firm($sd_card,$error);
 	}
 
 	if((isset($force_on))&&(!empty($force_on))) {

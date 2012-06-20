@@ -17,7 +17,8 @@ $lang=getvar('lang');
 $update_conf=false;
 $error="";
 $info="";
-$show_wizard=getvar('show_wizard');
+$temp_axis=getvar('temp_axis');
+$hygro_axis=getvar('hygro_axis');
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$error);
@@ -49,22 +50,19 @@ if((isset($color_temperature))&&(!empty($color_temperature))) {
 }
 
 
-if((isset($show_wizard))&&(!empty($show_wizard))) {
-	if("$show_wizard"=="True") {
-        	insert_configuration("SHOW_WIZARD",1,$error);
-		$wizard="True";
-	} else {
-		insert_configuration("SHOW_WIZARD",0,$error);
-		$wizard="False";
-	}
+if((isset($temp_axis))&&(!empty($temp_axis))) {
+        insert_configuration("LOG_TEMP_AXIS",$temp_axis,$error);
         $update_conf=true;
 } else {
-        $wizard = get_configuration("SHOW_WIZARD",$error);
-	if("$wizard"=="1") {
-		$wizard="True";
-	} else {
-		$wizard="False";
-	}
+        $temp_axis = get_configuration("LOG_TEMP_AXIS",$error);
+}
+
+
+if((isset($hygro_axis))&&(!empty($hygro_axis))) {
+        insert_configuration("LOG_HYGRO_AXIS",$hygro_axis,$error);
+        $update_conf=true;
+} else {
+        $hygro_axis = get_configuration("LOG_HYGRO_AXIS",$error);
 }
 
 
@@ -102,6 +100,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 	} else {
 		write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$error);	
 	}	
+	check_and_copy_firm($sd_card,$error);
 }
 
 if((!isset($sd_card))||(empty($sd_card))) {

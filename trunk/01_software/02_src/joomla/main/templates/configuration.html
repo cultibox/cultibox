@@ -119,16 +119,27 @@
 		?></select></td>
 	</tr>
 	<tr>
-		<td><?php echo __('CONFIGURE_WIZARD'); ?></td>
- 
-		<td>
-			<select name="show_wizard">
-					<option value="True" <?php if("$wizard"=="True")  echo "selected"; ?>><?php echo __('WIZARD_TRUE'); ?></option>
-					<option value="False" <?php if("$wizard"=="False") echo "selected"; ?>><?php echo __('WIZARD_FALSE'); ?></option>
-			</select>
-		</td>
-
-	</tr>
+                <td><?php echo __('CONFIGURE_TEMP_AXIS'); ?></td>
+			<td><select name="temp_axis">
+                <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $value) {
+				if("$value"=="$temp_axis") {
+					echo "<option value=\"${value}\" selected>${value}°C</option>";
+				} else {
+					echo "<option value=\"${value}\">${value}°C</option>";
+				}
+                } ?></select></td>
+        </tr>
+	<tr>
+                <td><?php echo __('CONFIGURE_HYGRO_AXIS'); ?></td>
+		<td><select name="hygro_axis">
+                <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $value) {
+                                if("$value"=="$hygro_axis") {
+                                        echo "<option value=\"${value}\" selected>${value}%</option>";
+                                } else {
+                                        echo "<option value=\"${value}\">${value}%</option>";
+                                }
+                } ?></select></td>
+        </tr>
 </table>
 <br />
 <p class="title_conf">

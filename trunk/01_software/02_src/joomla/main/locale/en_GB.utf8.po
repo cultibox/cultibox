@@ -34,15 +34,6 @@ msgstr "Select the temperature graphic color"
 msgid "CONFIGURE_LANGUAGE"
 msgstr "Select your language"
 
-msgid "CONFIGURE_WIZARD"
-msgstr "Enable wizard configuration assistant"
-
-msgid "WIZARD_TRUE"
-msgstr "True"
-
-msgid "WIZARD_FALSE"
-msgstr "False"
-
 msgid "CONFIGURE_FREQUENCY"
 msgstr "Select the record frequency (minutes)"
 
@@ -72,6 +63,12 @@ msgstr "French"
 
 msgid "LANG_EN"
 msgstr "English"
+
+msgid "CONFIGURE_TEMP_AXIS"
+msgstr "Configure maximal axis value for temperature graphics"
+
+msgid "CONFIGURE_HYGRO_AXIS"
+msgstr "Configure maximal axis value for hygrometry graphics"
 
 # For the logs part:
 

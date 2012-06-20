@@ -17,7 +17,6 @@ $error="";
 $info="";
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $update_program=false;
-$wizard=get_configuration("SHOW_WIZARD",$error);
 $reset=getvar('reset');
 
 
@@ -32,9 +31,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         $error=$error.__('ERROR_SD_CARD_CONF');
 }
 
-if("$wizard"=="1") {
-                $info=$info.__('WIZARD_ENABLE_FUNCTION');
-}
+$info=$info.__('WIZARD_ENABLE_FUNCTION');
 
 
 if((isset($reset))&&(!empty($reset))) {
@@ -94,6 +91,8 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 
    $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$error);
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$error);
+  
+
 }
 
 
@@ -113,6 +112,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
    }
    //write pluga file
    write_pluga($sd_card,$error);
+   check_and_copy_firm($sd_card,$error);
 }
 
 
