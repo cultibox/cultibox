@@ -2,10 +2,10 @@
 -- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le : Mer 23 Mai 2012 à 13:14
--- Version du serveur: 5.5.16
--- Version de PHP: 5.3.8
+-- Host: localhost
+-- Generation Time: Jun 20, 2012 at 11:38 AM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,15 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `cultibox`
+-- Database: `cultibox`
 --
-CREATE DATABASE `cultibox` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `cultibox`;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `configuration`
+-- Table structure for table `configuration`
 --
 
 CREATE TABLE IF NOT EXISTS `configuration` (
@@ -41,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `configuration`
+-- Dumping data for table `configuration`
 --
 
 INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `SHOW_WIZARD`) VALUES
@@ -50,7 +48,7 @@ INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GR
 -- --------------------------------------------------------
 
 --
--- Structure de la table `jqcalendar`
+-- Table structure for table `jqcalendar`
 --
 
 CREATE TABLE IF NOT EXISTS `jqcalendar` (
@@ -69,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `jqcalendar` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `logs`
+-- Table structure for table `logs`
 --
 
 CREATE TABLE IF NOT EXISTS `logs` (
@@ -84,11 +82,12 @@ CREATE TABLE IF NOT EXISTS `logs` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `plugs`
+-- Table structure for table `plugs`
 --
 
 CREATE TABLE IF NOT EXISTS `plugs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `PLUG_ID` varchar(3) DEFAULT NULL,
   `PLUG_NAME` varchar(30) DEFAULT NULL,
   `PLUG_TYPE` varchar(20) NOT NULL DEFAULT 'unknown',
   `PLUG_TOLERANCE` decimal(3,1) DEFAULT '0.0',
@@ -96,31 +95,31 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Contenu de la table `plugs`
+-- Dumping data for table `plugs`
 --
 
-INSERT INTO `plugs` (`id`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`) VALUES
-(1, 'plug1', 'unknown', 0.0),
-(2, 'plug2', 'unknown', 0.0),
-(3, 'plug3', 'unknown', 0.0),
-(4, 'plug4', 'unknown', 0.0),
-(5, 'plug5', 'unknown', 0.0),
-(6, 'plug6', 'unknown', 0.0),
-(7, 'plug7', 'unknown', 0.0),
-(8, 'plug8', 'unknown', 0.0),
-(9, 'plug9', 'unknown', 0.0),
-(10, 'plug10', 'unknown', 0.0),
-(11, 'plug11', 'unknown', 0.0),
-(12, 'plug12', 'unknown', 0.0),
-(13, 'plug13', 'unknown', 0.0),
-(14, 'plug14', 'unknown', 0.0),
-(15, 'plug15', 'unknown', 0.0),
-(16, 'plug16', 'unknown', 0.0);
+INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`) VALUES
+(1, '', 'plug1', 'unknown', 0.0),
+(2, '', 'plug2', 'unknown', 0.0),
+(3, '', 'plug3', 'unknown', 0.0),
+(4, '', 'plug4', 'unknown', 0.0),
+(5, '', 'plug5', 'unknown', 0.0),
+(6, '', 'plug6', 'unknown', 0.0),
+(7, '', 'plug7', 'unknown', 0.0),
+(8, '', 'plug8', 'unknown', 0.0),
+(9, '', 'plug9', 'unknown', 0.0),
+(10, '', 'plug10', 'unknown', 0.0),
+(11, '', 'plug11', 'unknown', 0.0),
+(12, '', 'plug12', 'unknown', 0.0),
+(13, '', 'plug13', 'unknown', 0.0),
+(14, '', 'plug14', 'unknown', 0.0),
+(15, '', 'plug15', 'unknown', 0.0),
+(16, '', 'plug16', 'unknown', 0.0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `programs`
+-- Table structure for table `programs`
 --
 
 CREATE TABLE IF NOT EXISTS `programs` (
