@@ -164,7 +164,10 @@ msgid "TOLERANCE_PLUG"
 msgstr "Plug tolerance"
 
 msgid "NAME_PLUG"
-msgstr "Plug name"
+msgstr "Plug's name"
+
+msgid "ID_PLUG"
+msgstr "Plug's identificator"
 
 msgid "PLUG_UNKNOWN"
 msgstr "Unknown"
@@ -183,6 +186,12 @@ msgstr "Dehumidifier"
 
 msgid "PLUG_HEATING"
 msgstr "Heating"
+
+msgid "VALIDATION_PLUG_CONF"
+msgstr "Update plug configuration"
+
+msgid "RESET_PLUG_ID"
+msgstr "Reset plugs ID"
 
 # For the programs part:
 

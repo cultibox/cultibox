@@ -1226,4 +1226,28 @@ EOF;
 }
 // }}}
 
+
+// {{{ reset_plug_identificator()
+//ROLE check if no programs have been defined yet
+// IN  $out	warnings or errors messages 
+// RET none
+function reset_plug_identificator(&$out="") {
+           $db = db_priv_start();
+           $sql = <<<EOF
+UPDATE `plugs` SET  `PLUG_ID` = ""
+EOF;
+           $db->setQuery($sql);
+           $db->query();
+           $ret=$db->getErrorMsg();
+   
+           if((isset($ret))&&(!empty($ret))) {
+               $out=$out.__('ERROR_UPDATE_SQL').$ret;
+           }
+   
+           if(!db_priv_end($db)) {
+                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+           }
+}
+// }}}
+
 ?>

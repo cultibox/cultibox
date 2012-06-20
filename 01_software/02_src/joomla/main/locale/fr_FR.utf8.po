@@ -175,6 +175,9 @@ msgstr "Tol&eacute;rance de la prise"
 msgid "NAME_PLUG"
 msgstr "Nom de la prise"
 
+msgid "ID_PLUG"
+msgstr "Identificateur de la prise"
+
 msgid "PLUG_UNKNOWN"
 msgstr "Inconnu"
 
@@ -192,6 +195,12 @@ msgstr "Deshumidificateur"
 
 msgid "PLUG_HEATING"
 msgstr "Chauffage"
+
+msgid "VALIDATION_PLUG_CONF"
+msgstr "Enregistrer la configuration"
+
+msgid "RESET_PLUG_ID"
+msgstr "R&eacute;initialiser l'identificateur des prises"
 
 # For the programs part:
 
@@ -359,16 +368,16 @@ msgid "INFO_SD_CARD"
 msgstr "<li> Une carte SD compatible cultibox est branch&eacute;e"
 
 msgid "VALID_UPDATE_CONF"
-msgstr "<li>Configuration mise &agrave; jour avec succ&eacute;es</li>"
+msgstr "<li>Configuration mise &agrave; jour avec succ&egrave;s</li>"
 
 msgid "VALID_UPDATE_PROGRAM"
-msgstr "<li> Programmes mis &agrave; jour avec succ&eacute;s</li>"
+msgstr "<li> Programmes mis &agrave; jour avec succ&egrave;s</li>"
 
 msgid "VALID_LOAD_LOG"
-msgstr "<li> Fichiers de logs enregistr&eacute;es avec succ&eacute;s</li>"
+msgstr "<li> Fichiers de logs enregistr&eacute;es avec succ&egrave;s</li>"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "<li>Programme mis &agrave; jour avec succ&eacute;s</li>"
+msgstr "<li>Programme mis &agrave; jour avec succ&egrave;s</li>"
 
 msgid "WIZARD_ENABLE_FUNCTION"
 msgstr "<li>Vous pouvez utiliser l'assistant pour configurer la premi&egrave;re prise en cliquant <a href='programs?wzd=True'>ici</a></li>"
@@ -377,6 +386,6 @@ msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant <a href='programs?wzd=False'>ci</a></li>"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "<li>Programme r&eacute;initialis&eacute; avec succ&eacute;s</li>"
+msgstr "<li>Programme r&eacute;initialis&eacute; avec succ&egrave;s</li>"
 
 
