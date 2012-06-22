@@ -690,6 +690,11 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,&$o
    if($f=fopen("$file","w+")) {
       fputs($f,"PLUG_UPDATE:$update\r\n");
       fputs($f,"LOGS_UPDATE:$record\r\n");
+      fputs($f,"POWR_UPDATE:0060\r\n");
+      fputs($f,"ALARM_ACTIV:0001\r\n");
+      fputs($f,"ALARM_VALUE:6000\r\n");
+      fputs($f,"ALARM_SENSO:000T\r\n");
+      fputs($f,"ALARM_SENSS:000+\r\n");
       fclose($f);
    } else {
       $out=$out.__('ERROR_WRITE_SD');
