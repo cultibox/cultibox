@@ -63,11 +63,11 @@ timeFormat: 'hh:mm:ss',
 <td>
 <p class="step_info">
 <?php if($step==1) { ?>
-	<?php echo __('WIZARD_PLUG_NUMBER'); ?>
+   <?php echo __('WIZARD_PLUG_NUMBER'); ?>
 <?php } else if($step==2) { ?>
-	<?php echo __('WIZARD_PLUG_TYPE'); ?>
+   <?php echo __('WIZARD_PLUG_TYPE'); ?>
 <?php } else if($step==3) { ?>
-	<?php echo __('WIZARD_PLUG_PROGRAM'); ?>
+   <?php echo __('WIZARD_PLUG_PROGRAM'); ?>
 <?php } ?>
 </p>
 </td>
@@ -79,18 +79,18 @@ timeFormat: 'hh:mm:ss',
 
 <?php if($step==3) {?>
 <table width="100%">
-	<tr>
-		<td width="10%"></td>
-		<td width="25%">
-			<table width="100%">
-			<tr>
-			<td>
-				<input type="hidden" name="program" value="program">
-		 		<?php echo __('START_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __('END_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
-		</table>
-		</td>
-		<td width="80%"><div id="plug" style="width: 80%; height: 300px; margin: 0 auto"></div></td>
-		
+   <tr>
+      <td width="10%"></td>
+      <td width="25%">
+         <table width="100%">
+         <tr>
+         <td>
+            <input type="hidden" name="program" value="program">
+             <?php echo __('START_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __('END_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
+      </table>
+      </td>
+      <td width="80%"><div id="plug" style="width: 80%; height: 300px; margin: 0 auto"></div></td>
+      
 </tr>
 <tr>
 <td>
@@ -103,7 +103,7 @@ timeFormat: 'hh:mm:ss',
 <br /><br />
 <input type=hidden name="step" value="<?php echo $step; ?>">
 <?php if((isset($selected_plug))&&(!empty($selected_plug))&&($step>1)) { ?>
-	<input type=hidden name="plug_number" value="<?php echo $selected_plug; ?>">
+   <input type=hidden name="plug_number" value="<?php echo $selected_plug; ?>">
 <?php } ?>
 
 <?php if((isset($plug_name))&&(!empty($plug_name))&&($step>2)) { ?>

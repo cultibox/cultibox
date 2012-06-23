@@ -7,20 +7,20 @@ document.write('<script type="text\/javascript" src="main\/libs\/js\/scw.js"><\/
 </script>
 
 <?php if((isset($info))&&(!empty($info))) { ?>
-<div id="info">
-<ul>
-        <?php echo $info; ?>
-</ul>
-</div>
+   <div id="info">
+      <ul>
+         <?php echo $info; ?>
+      </ul>
+   </div>
 <?php } ?>
 
 <?php if((isset($error))&&(!empty($error))) { ?>
-<div id="error">
-<ul>
-        <?php echo $error; ?>
-</ul>
-</div>
-<br />
+   <div id="error">
+      <ul>
+         <?php echo $error; ?>
+      </ul>
+   </div>
+   <br />
 <?php } ?>
 
 <table width="100%">
@@ -73,7 +73,7 @@ document.write('<script type="text\/javascript" src="main\/libs\/js\/scw.js"><\/
                <option <?php if("$startmonth" == "11") { echo 'selected';} ?> value="11"><?php echo __('MONTH11'); ?></option>
                <option <?php if("$startmonth" == "12") { echo 'selected';} ?> value="12"><?php echo __('MONTH12'); ?></option>
             </select>
-            
+
             <select name="startyear">
                <option <?php if("$startyear" == "2012") { echo 'selected';} ?> value="2012">2012</option>
                <option <?php if("$startyear" == "2013") { echo 'selected';} ?> value="2013">2013</option>
@@ -137,153 +137,155 @@ $(function () {
                text: <?php echo "'".__("$xlegend")."'"; ?>
             }
          },
-         yAxis: [{
-            title: {
-               text: <?php echo "'".__('YAXIS_LEGEND')."'"; ?>,
-               style: {
-                  color: <?php echo "'".$color_humidity."'"; ?>
+         yAxis: [
+            {
+               title: {
+                  text: <?php echo "'".__('YAXIS_LEGEND')."'"; ?>,
+                  style: {
+                     color: <?php echo "'".$color_humidity."'"; ?>
+                  }
+               },
+               min: -0.5,
+               max: <?php echo "$hygro_axis"; ?>,
+               startOnTick: false,
+               showFirstLabel: false,
+               labels: {
+                  formatter: function() {
+                     if(this.value<=100) return this.value;
+                  }
                }
-            },
-            min: -0.5,
-            max: <?php echo "$hygro_axis"; ?>,
-            startOnTick: false,
-            showFirstLabel: false,
-            labels: {
-               formatter: function() {
-                  if(this.value<=100) return this.value;
+            }, {
+               title: {
+                  text: <?php echo "'".__('Y2AXIS_LEGEND')."'"; ?>,
+                  style: {
+                     color: <?php echo "'".$color_temperature."'"; ?>
+                  }
+               },
+               min: 0,
+               max: <?php echo "$temp_axis"; ?>,
+               startOnTick: false,
+               showFirstLabel: false,
+               opposite: true,
+               labels: {
+                  formatter: function() {
+                     if(this.value<=100) return this.value;
+                  }
                }
             }
-         }, {
-         title: {
-            text: <?php echo "'".__('Y2AXIS_LEGEND')."'"; ?>,
-            style: {
-               color: <?php echo "'".$color_temperature."'"; ?>
+         ],
+         tooltip: {
+            shared: true,
+            formatter: function() {
+               var tab=new Array;
+               <?php if((isset($data_humi))&&(!empty($data_humi))) { ?>
+                  j = tab.length;   
+                  tab[j]="%";
+               <?php } ?>
+   
+               <?php if((isset($data_temp))&&(!empty($data_temp))) { ?>
+                  j = tab.length;   
+                  tab[j]="°C";
+                                   <?php } ?>
+   
+               <?php if((isset($plug_type))&&(!empty($plug_type))) { ?>
+                  <?php if((strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"heating")==0)) { ?>
+                     j = tab.length; 
+                     tab[j]="°C";
+                  <?php } else if((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { ?>
+                     j = tab.length; 
+                     tab[j]="°C";
+                  <?php } else { ?>
+                     j = tab.length; 
+                     tab[j]="";
+                  <?php } ?>
+               <?php } ?>
+   
+               var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  "+Highcharts.dateFormat('%H:%M:%S', this.x)+"</b></p>";
+               for(var i= 0; i < this.points.length; i++) {
+                  if(tab[i]!="") {
+                     if(this.points[i].y==99.9) {
+                        val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("FORCE_ON_CHART"); ?></p>';
+                     } else if(this.points[i].y==0) {
+                        val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_OFF"); ?></p>';
+                     } else {
+                        val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': '+this.points[i].y+tab[i]+'</p>';
+                     }
+                  } else {
+                     if(this.points[i].y==99.9) {
+                        val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_ON"); ?></p>';
+                     } else {
+                        val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_OFF"); ?></p>';
+                     }
+                  }
+               }
+               return val;
             }
          },
-         min: 0,
-         max: <?php echo "$temp_axis"; ?>,
-         startOnTick: false,
-         showFirstLabel: false,
-         opposite: true,
-         labels: {
-            formatter: function() {
-               if(this.value<=100) return this.value;
-            }
-         }
-         }],
-   tooltip: {
-         shared: true,
-         formatter: function() {
-            var tab=new Array;
-            <?php if((isset($data_humi))&&(!empty($data_humi))) { ?>
-               j = tab.length;   
-               tab[j]="%";
-            <?php } ?>
-
-            <?php if((isset($data_temp))&&(!empty($data_temp))) { ?>
-               j = tab.length;   
-               tab[j]="°C";
-                                <?php } ?>
-
-            <?php if((isset($plug_type))&&(!empty($plug_type))) { ?>
-               <?php if((strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"heating")==0)) { ?>
-                  j = tab.length; 
-                                               tab[j]="°C";
-               <?php } else if((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { ?>
-                  j = tab.length; 
-                                                tab[j]="°C";
-               <?php } else { ?>
-                  j = tab.length; 
-                                                tab[j]="";
-               <?php } ?>
-            <?php } ?>
-
-            var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  "+Highcharts.dateFormat('%H:%M:%S', this.x)+"</b></p>";
-            for(var i= 0; i < this.points.length; i++) {
-               if(tab[i]!="") {
-                  if(this.points[i].y==99.9) {
-                     val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("FORCE_ON_CHART"); ?></p>';
-                  } else if(this.points[i].y==0) {
-                     val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_OFF"); ?></p>';
-                  } else {
-                     val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': '+this.points[i].y+tab[i]+'</p>';
+         legend: {
+            enabled: true
+         },
+         credits: {
+            enabled: false
+         },
+         plotOptions: {
+            area: {
+               fillColor: {
+                  linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1}, 
+                  stops: [
+                      [0, Highcharts.getOptions().colors[0]],
+                      [1, 'rgba(2,0,0,0)']
+                  ]
+               
+               },
+               lineWidth: 1,
+               marker: {
+                  enabled: false,
+                  states: {
+                      hover: {
+                          enabled: true,
+                          radius: 5
+                      }
                   }
-               } else {
-                  if(this.points[i].y==99.9) {
-                     val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_ON"); ?></p>';
-                  } else {
-                     val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_OFF"); ?></p>';
-
+               },
+               shadow: false,
+               states: {
+                  hover: {
+                      lineWidth: 1
                   }
                }
             }
-                           return val;
-                        }
-                },
-            legend: {
-                enabled: true
-            },
-       credits: {
-         enabled: false
-      },
-            plotOptions: {
-                area: {
-                    fillColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1}, 
-                        stops: [
-                            [0, Highcharts.getOptions().colors[0]],
-                            [1, 'rgba(2,0,0,0)']
-                        ]
+         },
 
-                    },
-                    lineWidth: 1,
-                    marker: {
-                        enabled: false,
-                        states: {
-                            hover: {
-                                enabled: true,
-                                radius: 5
-                            }
-                        }
-                    },
-                    shadow: false,
-                    states: {
-                        hover: {
-                            lineWidth: 1
-                        }
-                    }
-                }
-            },
-    
-            series: [{
-                type: 'area',
-                name: <?php echo "'".__('LEGEND_HUMI')."'"; ?>,
-                pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
-                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-      color: <?php echo "'".$color_humidity."'"; ?>,
-                data: [
-          <?php if((isset($data_humi))&&(!empty($data_humi))) echo "$data_humi"; ?>
-        ]
-      }, {
-      type: 'area',
-                name: <?php echo "'".__('LEGEND_TEMP')."'"; ?>,
-                pointInterval: <?php echo "$next"; ?> * 60 * 1000,
-                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-      color: <?php echo "'".$color_temperature."'"; ?>,
-      yAxis: 1,   
-          data: [
-
-          <?php if((isset($data_temp))&&(!empty($data_temp))) echo "$data_temp"; ?>
-          ]
-      <?php if((isset($data))&&(!empty($data))) { ?>
-      }, {
-                name: <?php echo "'".$plugs_infos[$select_plug-1]["PLUG_NAME"]."'"; ?>,
-                color: <?php echo "'".$GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$select_plug-1]."'"; ?>,
-                data: [
+         series: [
+            {
+               type: 'area',
+               name: <?php echo "'".__('LEGEND_HUMI')."'"; ?>,
+               pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
+               pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
+               color: <?php echo "'".$color_humidity."'"; ?>,
+               data: [
+                  <?php if((isset($data_humi))&&(!empty($data_humi))) echo "$data_humi"; ?>
+               ]
+            }, {
+               type: 'area',
+               name: <?php echo "'".__('LEGEND_TEMP')."'"; ?>,
+               pointInterval: <?php echo "$next"; ?> * 60 * 1000,
+               pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
+               color: <?php echo "'".$color_temperature."'"; ?>,
+               yAxis: 1,
+               data: [
+                  <?php if((isset($data_temp))&&(!empty($data_temp))) echo "$data_temp"; ?>
+               ]
+               <?php if((isset($data))&&(!empty($data))) { ?>
+               }, {
+                  name: <?php echo "'".$plugs_infos[$select_plug-1]["PLUG_NAME"]."'"; ?>,
+                  color: <?php echo "'".$GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$select_plug-1]."'"; ?>,
+                  data: [
                     <?php if((isset($data))&&(!empty($data))) echo "$data"; ?>
-                    ]
-      <?php } ?>
-      }]
+                  ]
+               <?php } ?>
+            }
+         ]
         });
     });
     
