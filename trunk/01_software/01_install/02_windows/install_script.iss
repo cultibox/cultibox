@@ -2,9 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1.0"
 #define MyAppPublisher "Green Box SAS"
-#define MyAppURL "http://localhost:6891/cultibox/"
+#define MyAppURL "http://www.cultibox.fr/"
+
+; Exec(ExpandConstant('{win}\notepad.exe'), '', '', SW_SHOW,ewWaitUntilTerminated, ResultCode)
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -21,7 +23,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={sd}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-OutputBaseFilename=setup
+OutputBaseFilename=setup_cultibox_{#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
 
@@ -36,6 +38,8 @@ Source: "F:\Cultibox_web\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}
 Source: "F:\Cultibox_web\01_software\01_install\01_src\04_run\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\01_software\01_install\02_windows\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\Cultibox_web\01_software\01_install\02_windows\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion
+Source: "F:\Cultibox_web\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
