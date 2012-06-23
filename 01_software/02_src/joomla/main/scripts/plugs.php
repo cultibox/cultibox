@@ -49,7 +49,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
       if(check_numeric_value($id)) {
          while(strlen("$id")<3) {
             $id="0$id";
-         }		
+         }
          insert_plug_conf("PLUG_ID",$nb,"$id",$error);
          $update_program=true;
       } 
