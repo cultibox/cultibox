@@ -182,7 +182,7 @@ msgid "NAME_PLUG"
 msgstr "Nom de la prise"
 
 msgid "ID_PLUG"
-msgstr "Identificateur de la prise"
+msgstr "Code de la prise"
 
 msgid "PLUG_UNKNOWN"
 msgstr "Inconnu"
@@ -206,7 +206,7 @@ msgid "VALIDATION_PLUG_CONF"
 msgstr "Enregistrer la configuration"
 
 msgid "RESET_PLUG_ID"
-msgstr "R&eacute;initialiser l'identificateur des prises"
+msgstr "R&eacute;initialiser le code des prises"
 
 # For the programs part:
 

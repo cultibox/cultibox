@@ -140,8 +140,8 @@ EOF;
 //Note: if to select a value is limited to 1. Only one configuration is available,
 //there isn't a user configuration management yet.
 function insert_configuration($key,$value,&$out="") {
-        $db = db_priv_start();
-        $sql = <<<EOF
+   $db = db_priv_start();
+   $sql = <<<EOF
 UPDATE `configuration` SET  {$key} = "{$value}" WHERE id = 1
 EOF;
    $db->setQuery($sql);
@@ -165,18 +165,18 @@ EOF;
 //    $out      errors or warnings messages
 // RET $res   value result for the plug configuration entrie
 function get_plug_conf($key,$id,&$out="") {
-        $db = db_priv_start();
-        $sql = <<<EOF
+   $db = db_priv_start();
+   $sql = <<<EOF
 SELECT {$key} FROM `plugs` WHERE id = {$id}
 EOF;
-        $db->setQuery($sql);
-        $res = $db->loadResult();
+   $db->setQuery($sql);
+   $res = $db->loadResult();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       $out=$out.__('ERROR_SELECT_SQL').$ret;
    }
 
-        if(!db_priv_end($db)) {
+   if(!db_priv_end($db)) {
       $out=$out.__('PROBLEM_CLOSING_CONNECTION');
    }
    return $res;
@@ -192,12 +192,12 @@ EOF;
 //    $out      errors or warnings messages
 // RET none
 function insert_plug_conf($key,$id,$value,&$out="") {
-        $db = db_priv_start();
-        $sql = <<<EOF
+   $db = db_priv_start();
+   $sql = <<<EOF
 UPDATE `plugs` SET  {$key} = "{$value}" WHERE id = {$id}
 EOF;
-        $db->setQuery($sql);
-        $db->query();
+   $db->setQuery($sql);
+   $db->query();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       $out=$out.__('ERROR_UPDATE_SQL').$ret;

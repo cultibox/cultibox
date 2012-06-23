@@ -47,15 +47,6 @@
       <tr>
          <td></td>
          <td>
-            <?php echo __('ID_PLUG'); ?>
-         </td>
-         <td>
-            <input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>">
-         </td>
-      </tr>
-      <tr>
-         <td></td>
-         <td>
               <?php echo __('NAME_PLUG'); ?>
          </td>
          <td>
@@ -82,7 +73,7 @@
          <td></td>
          <td>
             <div id="tolerance_label<?php echo $i; ?>" style="display:none">
-                    <?php echo __('TOLERANCE_PLUG'); ?>
+               <?php echo __('TOLERANCE_PLUG'); ?>
             </div>
             <?php if((strcmp($plug_type{$i},"ventilator")==0)||(strcmp($plug_type{$i},"heating")==0)||(strcmp($plug_type{$i},"humidifier")==0)||(strcmp($plug_type{$i},"dehumidifier")==0)) { ?>
             <div id="first_tolerance_label<?php echo $i; ?>">
@@ -99,6 +90,15 @@
                <input type="text" size="4" style="width: 10%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>"><?php if((strcmp($plug_type{$i},"humidifier")==0)||(strcmp($plug_type{$i},"dehumidifier")==0)) { ?><label id="pourcent<?php echo $i; ?>"> %</label><?php } else { ?><label id="degree<?php echo $i; ?>"> °C</label><?php } ?>
             </div>
             <?php } ?>
+         </td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>
+            <?php echo __('ID_PLUG'); ?>
+         </td>
+         <td>
+            <input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>">
          </td>
       </tr>
    </table>
