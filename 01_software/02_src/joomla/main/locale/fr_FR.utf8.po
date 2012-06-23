@@ -1,4 +1,4 @@
-﻿# This file must be encoded in UTF-8.
+# This file must be encoded in UTF-8.
 # The msgstr are given to a sprintf function so sprintf escaping rules applies
 
 
@@ -35,10 +35,10 @@ msgid "CONFIGURE_LANGUAGE"
 msgstr "Choisir votre langue"
 
 msgid "CONFIGURE_FREQUENCY"
-msgstr "Fr&eacute;quence d'enregistrement (en minute)"
+msgstr "Fr&eacute;quence d'enregistrement des conditions climatique (en minute)"
 
 msgid "CONFIGURE_NB_PLUGS"
-msgstr "Nombre de prises &agrave; utiliser"
+msgstr "Nombre de prises de votre syst&egrave;me"
 
 msgid "CONFIGURE_PLUGS_FREQUENCY"
 msgstr "Fr&eacute;quence de mise &agrave; jour de l'&eacute;tat de vos prises"
