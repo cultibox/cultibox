@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `humidity` int(4) DEFAULT NULL,
   `date_catch` varchar(10) DEFAULT NULL,
   `time_catch` varchar(10) DEFAULT NULL,
+  `fake_log` varchar(5) NOT NULL DEFAULT 'False',
   PRIMARY KEY (`timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
