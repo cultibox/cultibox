@@ -698,7 +698,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       fputs($f,"PLUG_UPDATE:$update\r\n");
       fputs($f,"LOGS_UPDATE:$record\r\n");
       fputs($f,"POWR_UPDATE:$power\r\n"); 
-      fputs($f,"ALARM_ACTIV:0001\r\n");
+      fputs($f,"ALARM_ACTIV:0000\r\n");
       fputs($f,"ALARM_VALUE:6000\r\n");
       fputs($f,"ALARM_SENSO:000T\r\n");
       fputs($f,"ALARM_SENSS:000+\r\n");
