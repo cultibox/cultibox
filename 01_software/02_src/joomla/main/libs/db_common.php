@@ -1052,6 +1052,7 @@ EOF;
       $event = array_unique ($event);
       sort($event);
    }
+
    $evt=array();
    $i=0;
    $count=0;
@@ -1192,7 +1193,14 @@ function find_value_for_plug($data,$time,$plug) {
             		if($data[$i]['time_stop']=="235959") {
                			$ret=$data[$i]['value']*10;
             		} else {
-               			$ret="000";
+				for($j=0;$j<count($data);$j++) {
+                                        if(($data[$j]["time_start"]=="$time")&&($data[$j]['plug_id']==$plug)) {
+						$ret=$data[$j]['value']*10;
+					} 
+				}
+				if(empty($ret)) {
+					$ret="000";
+				}	
             		}
          	} else {
 			$ret=$data[$i]['value']*10;
