@@ -6,6 +6,9 @@
 // Default language
 define('LANG_FALLBACK', 'en_GB');
 
+// Default port use by the application:
+$GLOBALS['SOFT_PORT'] = '7891';
+
 // List of available languages (l10N format)
 $GLOBALS['LIST_LANG'] = array('en_GB','fr_FR');
 

@@ -78,17 +78,18 @@ EOF;
 // }}}
 
 
-// {{{ get_graph_array(&$res,$key,$startdate,$out)
+// {{{ get_graph_array(&$res,$key,$startdate,$fake,$out)
 // ROLE get array needed to build graphics
 // IN $res         the array containing datas needed for the graphics
 //    $key      the key selectable from the database (temperature,humidity...)
 //    $startdate   date (format YYYY-MM-DD) to check what datas to select
+//    $fake	to select fake or real logs
 //    $out      errors or warnings messages
 // RET none
-function get_graph_array(&$res,$key,$startdate,&$out="") {
+function get_graph_array(&$res,$key,$startdate,$fake="False",&$out="") {
    $db = db_priv_start();
         $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" ORDER BY time_catch ASC
+SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" ORDER BY time_catch ASC
 EOF;
    $db->setQuery($sql);
    $res = $db->loadAssocList();

@@ -27,6 +27,7 @@ $data_humi="";
 $plug_type="";
 $hygro_axis=get_configuration("LOG_HYGRO_AXIS",$error);
 $temp_axis=get_configuration("LOG_TEMP_AXIS",$error);
+$fake_log=false;
 
 
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -116,28 +117,40 @@ if("$type" == "days") {
  	        	$data=format_program_highchart_data($data_plug,$startday);
 			$plug_type=get_plug_conf("PLUG_TYPE",$select_plug,$error);
 			
-		}
-		$xlegend="XAXIS_LEGEND_DAY";
+                }
+                $xlegend="XAXIS_LEGEND_DAY";
         	$styear=substr($startday, 0, 4);
         	$stmonth=substr($startday, 5, 2)-1;
         	$stday=substr($startday, 8, 2);
 
-		get_graph_array($temperature,"temperature/100",$startday,$error);
-		get_graph_array($humidity,"humidity/100",$startday,$error);
+                get_graph_array($temperature,"temperature/100",$startday,"False",$error);
+                get_graph_array($humidity,"humidity/100",$startday,"False",$error);
 
 
-		if(!empty($temperature)) {
-			$data_temp=get_format_graph($temperature);
-		} else {
-			$error=$error.__('EMPTY_TEMPERATURE_DATA');
-		}
+                if(!empty($temperature)) {
+                   $data_temp=get_format_graph($temperature);
+                } else {
+                   get_graph_array($temperature,"temperature/100",$startday,"True",$error);
+                   $error=$error.__('EMPTY_TEMPERATURE_DATA');
 
-		if(!empty($humidity)) {
-			$data_humi=get_format_graph($humidity);
-		} else {
-			$error=$error.__('EMPTY_HUMIDITY_DATA');
-		}
-		$next=1;
+                   if(!empty($temperature)) {
+                      $data_temp=get_format_graph($temperature);
+                      $fake_log=true;
+                   }
+                }
+
+                if(!empty($humidity)) {
+                   $data_humi=get_format_graph($humidity);
+                } else {
+                   get_graph_array($humidity,"humidity/100",$startday,"True",$error);
+                   $error=$error.__('EMPTY_HUMIDITY_DATA');
+
+                   if(!empty($humidity)) {
+                      $fake_log=true;
+                      $data_humi=get_format_graph($humidity);
+                   } 
+                }
+                $next=1;
 	} 
 } else {
 	if($check_format) {
@@ -147,8 +160,8 @@ if("$type" == "days") {
 				$i="0$i";
 			}
 			$ddate="$startyear-$startmonth-$i";
-			get_graph_array($temperature,"temperature/100","$ddate",$error);
-			get_graph_array($humidity,"humidity/100","$ddate",$error);
+                        get_graph_array($temperature,"temperature/100","$ddate","False",$error);
+                        get_graph_array($humidity,"humidity/100","$ddate","False",$error);
 			if("$data_temp" != "" ) {
 				$data_temp="$data_temp, ".get_format_graph($temperature);
 			} else {
