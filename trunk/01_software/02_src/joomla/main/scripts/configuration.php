@@ -20,6 +20,7 @@ $info="";
 $temp_axis=getvar('temp_axis');
 $hygro_axis=getvar('hygro_axis');
 $pop_up=getvar('pop_up');
+$pop_up_message="";
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$error);
@@ -101,6 +102,7 @@ if(!empty($update_frequency)) {
 if((empty($error))||(!isset($error))) {
 	if($update_conf) {
 		$info=$info.__('VALID_UPDATE_CONF');
+		$pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
 	}
 }
 

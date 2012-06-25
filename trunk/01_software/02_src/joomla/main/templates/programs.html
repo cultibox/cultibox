@@ -27,6 +27,11 @@ function actdesact<?php echo $i; ?>()
 }
 </script>
 
+<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?> 
+   <SCRIPT LANGUAGE="JavaScript">
+      alert('<?php echo "$pop_up_message"; ?>');
+   </SCRIPT>
+<?php } ?>
 
 <script type="text/javascript">
 $(document).ready(function(){

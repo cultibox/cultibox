@@ -32,6 +32,10 @@ $import=getvar('import');
 $reset=getvar('reset');
 $action_prog=getvar('action_prog');
 
+if(!isset($pop_up)) {
+        $pop_up = get_configuration("SHOW_POPUP",$error);
+}
+
 
 for($i=0;$i<=$nb_plugs;$i++) {
 		export_program($i,$error);
@@ -71,9 +75,9 @@ if((isset($finish))&&($step==3)) {
 				       clean_program($selected_plug,$error);
 				       insert_program($selected_plug,$start_time,$end_time,$value_program,$error);
                                        $info=$info.__('INFO_VALID_UPDATE_PROGRAM');
-				        insert_plug_conf("PLUG_TYPE",$selected_plug,$plug_type,$error);
-					unset($wzd);
-					header('Location: programs');   
+				       insert_plug_conf("PLUG_TYPE",$selected_plug,$plug_type,$error);
+				       unset($wzd);
+				       header('Location: programs');   
                                 } else {
                                         $error=$error.__('ERROR_VALUE_PROGRAM');
 					unset($finish);
@@ -135,6 +139,8 @@ if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wzd"!="False")) {
 	$end_time=getvar($end);
 	$force="force_on{$selected_plug}";
 	$force_on=getvar($force);
+
+
 
 	if((isset($force_on))&&(!empty($force_on))) {
         	$value_program=99.9;

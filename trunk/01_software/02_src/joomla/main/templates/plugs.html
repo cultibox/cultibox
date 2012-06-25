@@ -18,6 +18,12 @@
    }
 </script>
 
+<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
+   <SCRIPT LANGUAGE="JavaScript">
+      alert('<?php echo "$pop_up_message"; ?>');
+   </SCRIPT>
+<?php } ?>
+
 <?php if((isset($info))&&(!empty($info))) { ?>
 <div id="info">
    <ul>

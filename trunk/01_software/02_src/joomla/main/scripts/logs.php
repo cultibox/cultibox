@@ -30,6 +30,10 @@ $temp_axis=get_configuration("LOG_TEMP_AXIS",$error);
 $fake_log=false;
 
 
+if(!isset($pop_up)) {
+        $pop_up = get_configuration("SHOW_POPUP",$error);
+}
+
 if((!isset($sd_card))||(empty($sd_card))) {
         $sd_card=get_sd_card();
 }
