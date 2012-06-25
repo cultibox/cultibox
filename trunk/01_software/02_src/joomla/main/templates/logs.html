@@ -114,7 +114,7 @@ $(function () {
              spacingRight: 20,
              events: {
                 load: function() {
-                   <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 80, 55, 143, 57)"; ?>
+                   <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/joomla/main/libs/img/fake_log_".__('LANG').".png', 80, 55, 143, 57)"; ?>
                    <?php if($fake_log)  echo ".add();"; ?>
                 }
              }
@@ -236,7 +236,7 @@ $(function () {
          plotOptions: {
             area: {
                fillColor: {
-                  linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1}, 
+                  linearGradient: { x1: 3, y1: 0, x2: 0, y2: 1}, 
                   stops: [
                       [0, Highcharts.getOptions().colors[0]],
                       [1, 'rgba(2,0,0,0)']
