@@ -104,7 +104,7 @@
             <?php echo __('ID_PLUG'); ?>
          </td>
          <td>
-            <input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>">
+            <input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>" <?php if($i<=3) echo "disabled"; ?>>
          </td>
       </tr>
    </table>
@@ -114,10 +114,10 @@
       <tr>
          <td width="20%"></td>
          <td>
-            <INPUT type="submit" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>">
+            <INPUT type="submit" name="reset" value="<?php echo __('RESET_PLUG_ID'); ?>">
          </td>
          <td>
-            <INPUT type="submit" name="reset" value="<?php echo __('RESET_PLUG_ID'); ?>">
+            <INPUT type="submit" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>">
          </td>
       </tr>
    </table>
