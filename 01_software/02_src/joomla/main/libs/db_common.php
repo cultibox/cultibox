@@ -1093,10 +1093,15 @@ EOF;
    if(count($last)>0) {
        while($j<=16) {
             $result=find_value_for_plug($last,"235959",$j);
-            $data[$count]=$data[$count]."$result";
+		if(isset($data[$count])) {
+            		$data[$count]=$data[$count]."$result";
+		} else {
+			$data[$count]="$result";
+		}
             $j=$j+1;
-       }
-       $data[$count]="86399".$data[$count];
+      }
+
+		$data[$count]="86399".$data[$count];
    } else {
       $data[$count]="86399000000000000000000000000000000000000000000000000";
    }
