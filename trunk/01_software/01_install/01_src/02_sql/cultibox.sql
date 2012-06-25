@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 25, 2012 at 02:18 PM
+-- Generation Time: Jun 25, 2012 at 03:00 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `COLOR_HUMIDITY_GRAPH` varchar(30) NOT NULL DEFAULT 'green',
   `COLOR_TEMPERATURE_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
   `RECORD_FREQUENCY` int(11) NOT NULL DEFAULT '5',
+  `POWER_FREQUENCY` int(11) NOT NULL DEFAULT '5',
   `NB_PLUGS` int(11) NOT NULL DEFAULT '3',
   `UPDATE_PLUGS_FREQUENCY` int(20) NOT NULL DEFAULT '-1',
   `LANG` varchar(5) NOT NULL DEFAULT 'en_GB',
@@ -46,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 -- Dumping data for table `configuration`
 --
 
-INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `SHOW_POPUP`) VALUES
-(1, 'red', 'green', 1, 3, -1, 'fr_FR', 50, 100, 'True');
+INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `SHOW_POPUP`) VALUES
+(1, 'red', 'green', 5, 5, 3, -1, 'fr_FR', 50, 100, 'True');
 
 -- --------------------------------------------------------
 
