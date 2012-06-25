@@ -31,6 +31,10 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         $error=$error.__('ERROR_SD_CARD_CONF');
 }
 
+if(!isset($pop_up)) {
+        $pop_up = get_configuration("SHOW_POPUP",$error);
+}
+
 $info=$info.__('WIZARD_ENABLE_FUNCTION');
 
 
@@ -99,6 +103,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 
 if(($update_program)&&(empty($error))) {
    $info=$info.__('VALID_UPDATE_CONF');
+   $pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
 }
 
 // Write file plug01 plug02...

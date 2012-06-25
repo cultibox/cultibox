@@ -819,5 +819,16 @@ function check_and_copy_firm($sd_card,&$out="") {
 // }}}
 
 
+// {{{ clean_popup_message(&$message="")
+// ROLE clean popup message by removing non-appropriate char for javascript
+// IN   $message	message to be cleaned
+// RET	new message cleaned 
+function clean_popup_message(&$message="") {
+        $old = array("<li>", "</li>", "&eacute;","&agrave;","&egrave;");
+        $new   = array("", "", "é","à","è");
+
+        return str_replace($old, $new, $message);
+}
+// }}}
 
 ?>

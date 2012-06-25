@@ -25,6 +25,10 @@ if((!isset($sd_card))||(empty($sd_card))) {
         $sd_card=get_sd_card();
 }
 
+if(!isset($pop_up)) {
+        $pop_up = get_configuration("SHOW_POPUP",$error);
+}
+
 
 if((isset($sd_card))&&(!empty($sd_card))) {
 	check_and_copy_firm($sd_card,$error);
