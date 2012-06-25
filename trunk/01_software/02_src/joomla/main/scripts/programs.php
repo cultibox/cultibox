@@ -31,6 +31,8 @@ $export=getvar('export');
 $import=getvar('import');
 $reset=getvar('reset');
 $action_prog=getvar('action_prog');
+$chinfo=true;
+$chtime="";
 
 if(!isset($pop_up)) {
         $pop_up = get_configuration("SHOW_POPUP",$error);
@@ -70,18 +72,56 @@ if((isset($finish))&&($step==3)) {
                 $start_time=getvar('start_time');
                 $end_time=getvar('end_time');
 
-                if(check_times($start_time,$end_time,$error)) {
-                                if(insert_program($selected_plug,$start_time,$end_time,$value_program,$error)) {
-				       clean_program($selected_plug,$error);
-				       insert_program($selected_plug,$start_time,$end_time,$value_program,$error);
-                                       $info=$info.__('INFO_VALID_UPDATE_PROGRAM');
-				       insert_plug_conf("PLUG_TYPE",$selected_plug,$plug_type,$error);
-				       unset($wzd);
-				       header('Location: programs');   
+              	$chtime=check_times($start_time,$end_time,$error); 
+		//$chval=check_format_values_program($value_program);
+		$chval=true;
+	
+                if(($chtime)&&($chval)) {
+                        if($chtime==2) {
+				$prog[]= array(
+      					"start_time" => "$start_time",
+                			"end_time" => "23:59:59",
+                			"value_program" => "$value_program",
+					"selected_plug" => "$selected_plug",
+					"plug_type" => "$plug_type"
+   				);
+
+				 $prog[]= array(
+                                        "start_time" => "00:00:00",
+                                        "end_time" => "$end_time",
+                                        "value_program" => "$value_program",
+                                        "selected_plug" => "$selected_plug",
+					"plug_type" => "$plug_type"
+                                ); 
+                        } else {
+				$prog[]= array(
+                                        "start_time" => "$start_time",
+                                        "end_time" => "$end_time",
+                                        "value_program" => "$value_program",
+                                        "selected_plug" => "$selected_plug",
+					"plug_type" => "$plug_type"
+                                );
+                        }
+
+
+			clean_program($selected_plug,$error);	
+                        foreach($prog as $val) {	
+                                if(insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$error)) {
+				       insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$error);
+                                       if($chinfo) {
+                                          $chinfo=true;
+                                       }
+				       insert_plug_conf("PLUG_TYPE",$val["selected_plug"],$val["plug_type"],$error);
                                 } else {
-                                        $error=$error.__('ERROR_VALUE_PROGRAM');
+					$chinfo=false;
 					unset($finish);
                                 }
+                       }
+
+		      if($chinfo) {
+				unset($wzd);
+                                header('Location: programs');	
+			}
                 } 
         }
 }
@@ -149,7 +189,8 @@ if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wzd"!="False")) {
         }
 
         if(("$start_time"!="")&&("$end_time"!="")) {
-		if(check_times($start_time,$end_time,$ret_plug[$selected_plug])) {
+		$chtime=check_times($start_time,$end_time,$ret_plug[$selected_plug]);
+		if($chtime) {
 				if("$value_program"=="on") {
 					$value_program="99.9";
 					$check=true;
@@ -165,8 +206,35 @@ if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wzd"!="False")) {
 				}
 			
 				if($check) {
-					if(insert_program($selected_plug,$start_time,$end_time,$value_program,$ret_plug[$selected_plug])) {
-						$info_plug[$selected_plug]=$info_plug[$selected_plug].__('INFO_VALID_UPDATE_PROGRAM');
+					if($chtime==2) {
+						$prog[]= array(
+                                        		"start_time" => "$start_time",
+                                        		"end_time" => "23:59:59",
+                                        		"value_program" => "$value_program",
+                                        		"selected_plug" => "$selected_plug"
+                                		);
+
+                                 		$prog[]= array(
+                                        		"start_time" => "00:00:00",
+                                        		"end_time" => "$end_time",
+                                        		"value_program" => "$value_program",
+                                        		"selected_plug" => "$selected_plug"
+                                		);
+                        		} else {
+                                		$prog[]= array(
+                                        		"start_time" => "$start_time",
+                                        		"end_time" => "$end_time",
+                                        		"value_program" => "$value_program",
+                                        		"selected_plug" => "$selected_plug"
+                                		);
+                        		}
+
+					foreach($prog as $val) {
+						if(insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$ret_plug[$selected_plug])) {
+							if(empty($info_plug[$selected_plug])) {
+								$info_plug[$selected_plug]=$info_plug[$selected_plug].__('INFO_VALID_UPDATE_PROGRAM');
+							}
+						}
 					}
 				} else {
 					$ret_plug[$selected_plug]=$ret_plug[$selected_plug].__('ERROR_VALUE_PROGRAM');

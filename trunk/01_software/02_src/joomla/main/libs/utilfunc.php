@@ -443,12 +443,12 @@ function check_cultibox_card($dir="") {
 // }}}
 
 
-// {{{ check_cultibox_card()
+// {{{ check_times($start_time="",$end_time="",&$out="")
 // ROLE check times send by user to reccord a plug behaviour
 // IN   $start_time   time starting the event
 //   $end_time   time ending the event
 //   $out      string for error or warning messages
-// RET true if ok, false else
+// RET 1 if ok, 0 if there is an error or 2 if start time > end time
 function check_times($start_time="",$end_time="",&$out="") {
    if((!empty($start_time))&&(isset($start_time))&&(!empty($end_time))&&(isset($end_time))) {
       $start_time=str_replace(' ','',"$start_time");
@@ -485,8 +485,7 @@ function check_times($start_time="",$end_time="",&$out="") {
       $end_time= mktime($enh, $enm, $ens);
 
       if($start_time >= $end_time) {
-         $out=$out.__('ERROR_WRONG_TIME_VALUE');
-                        return 0;
+              return 2;
       }   
 
       return 1;         
