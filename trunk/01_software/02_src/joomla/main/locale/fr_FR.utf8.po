@@ -41,7 +41,7 @@ msgid "CONFIGURE_NB_PLUGS"
 msgstr "Nombre de prises de votre syst&egrave;me"
 
 msgid "CONFIGURE_PLUGS_FREQUENCY"
-msgstr "Fr&eacute;quence de mise &agrave; jour de l'&eacute;tat de vos prises"
+msgstr "Fr&eacute;quence de mise &agrave; jour de l'&eacute;tat de vos prises (en seconde)"
 
 msgid "CONFIGURE_POPUP"
 msgstr "Activer l'affichage des messages par popup"
