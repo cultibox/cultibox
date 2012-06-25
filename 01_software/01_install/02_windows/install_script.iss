@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.1.140"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
