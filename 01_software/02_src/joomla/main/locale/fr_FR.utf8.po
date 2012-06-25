@@ -214,7 +214,7 @@ msgstr "R&eacute;initialiser le code des prises"
 # For the programs part:
 
 msgid "CONFIGURE_PROGRAM"
-msgstr "Configurer le comportement de votre prise"
+msgstr "Configurer le comportement de la prise"
 
 msgid "START_TIME_PROGRAM"
 msgstr "Heure de d&eacute;part"

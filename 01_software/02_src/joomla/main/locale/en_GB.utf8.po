@@ -208,7 +208,7 @@ msgid "CURRENT_PLUG_PROGRAM"
 msgstr "Current program for"
 
 msgid "CONFIGURE_PROGRAM"
-msgstr "Configure your plug behaviour"
+msgstr "Configure plug behaviour"
 
 msgid "START_TIME_PROGRAM"
 msgstr "Start time"
