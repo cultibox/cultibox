@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 20, 2012 at 05:10 PM
+-- Generation Time: Jun 25, 2012 at 02:18 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -22,8 +22,6 @@ SET time_zone = "+00:00";
 CREATE DATABASE `cultibox` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `cultibox`;
 
-
-
 -- --------------------------------------------------------
 
 --
@@ -40,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `LANG` varchar(5) NOT NULL DEFAULT 'en_GB',
   `LOG_TEMP_AXIS` int(2) NOT NULL DEFAULT '50',
   `LOG_HYGRO_AXIS` int(2) NOT NULL DEFAULT '100',
+  `SHOW_POPUP` varchar(5) NOT NULL DEFAULT 'True',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -47,8 +46,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 -- Dumping data for table `configuration`
 --
 
-INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`) VALUES
-(1, 'red', 'black', 1, 3, -1, 'fr_FR', 50, 100);
+INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `SHOW_POPUP`) VALUES
+(1, 'red', 'green', 1, 3, -1, 'fr_FR', 50, 100, 'True');
 
 -- --------------------------------------------------------
 
