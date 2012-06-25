@@ -6,8 +6,6 @@
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
-; Exec(ExpandConstant('{win}\notepad.exe'), '', '', SW_SHOW,ewWaitUntilTerminated, ResultCode)
-
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
