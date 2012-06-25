@@ -677,19 +677,27 @@ function write_plugconf($data,$sd_card,&$out="") {
 // IN   $sd_card      location of the sd card to save data
 //   $record_frequency   record frequency value
 //   $update_frequency   update frequency value
+//   $power_frequency	 record of the power frequency value
 //   $out         error or warning message
 // RET none   
-function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,&$out="") {
+function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,&$out="") {
    $record=$record_frequency*60;
+   $power=$power_frequency*60;
+
    while(strlen($record)<4) {
       $record="0$record";
    }
+
+   while(strlen($power)<4) {
+      $power="0$power";
+   }
+
    $update="000$update_frequency";
    $file="$sd_card/conf";
    if($f=fopen("$file","w+")) {
       fputs($f,"PLUG_UPDATE:$update\r\n");
       fputs($f,"LOGS_UPDATE:$record\r\n");
-      fputs($f,"POWR_UPDATE:0060\r\n");
+      fputs($f,"POWR_UPDATE:$power\r\n"); 
       fputs($f,"ALARM_ACTIV:0001\r\n");
       fputs($f,"ALARM_VALUE:6000\r\n");
       fputs($f,"ALARM_SENSO:000T\r\n");

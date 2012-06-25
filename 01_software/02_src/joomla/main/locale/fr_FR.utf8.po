@@ -37,6 +37,9 @@ msgstr "Choisir votre langue"
 msgid "CONFIGURE_FREQUENCY"
 msgstr "Fr&eacute;quence d'enregistrement des conditions climatique (en minute)"
 
+msgid "CONFIGURE_POWER_FREQUENCY"
+msgstr "Fr&eacute;quence d'enregistrement des mesures de puissance (en minute)"
+
 msgid "CONFIGURE_NB_PLUGS"
 msgstr "Nombre de prises de votre syst&egrave;me"
 

@@ -182,6 +182,24 @@
 </td>
 </tr>
 <tr>
+<td width="80%">
+   <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>
+</td>
+<td>
+   <select name="power_frequency">
+      <?php
+      foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
+         if(!strcmp ("$value","$power_frequency")) {
+            echo "<option value=\"${value}\" selected>${value}</option>";
+         } else {
+            echo "<option value=\"${value}\">${value}</option>";
+         }
+      }
+      ?>
+   </select>
+</td>
+</tr>
+<tr>
 <td>
    <?php echo __('CONFIGURE_NB_PLUGS'); ?>
 </td>

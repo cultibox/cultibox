@@ -37,6 +37,9 @@ msgstr "Select your language"
 msgid "CONFIGURE_FREQUENCY"
 msgstr "Select the record frequency (minutes)"
 
+msgid "CONFIGURE_POWER_FREQUENCY"
+msgstr "Select record frequency for power measures (minutes)"
+
 msgid "CONFIGURE_NB_PLUGS"
 msgstr "Select the number of plugs used"
 

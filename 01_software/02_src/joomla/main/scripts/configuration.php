@@ -11,6 +11,7 @@ require_once('main/libs/utilfunc.php');
 $color_humidity = getvar('color_humidity');
 $color_temperature = getvar('color_temperature');
 $record_frequency=getvar('record_frequency');
+$power_frequency=getvar('power_frequency');
 $update_frequency=getvar('update_frequency');
 $nb_plugs=getvar('nb_plugs');
 $lang=getvar('lang');
@@ -84,6 +85,13 @@ if((isset($record_frequency))&&(!empty($record_frequency))) {
 	$record_frequency = get_configuration("RECORD_FREQUENCY",$error);
 }
 
+if((isset($power_frequency))&&(!empty($power_frequency))) {
+        insert_configuration("POWER_FREQUENCY",$power_frequency,$error);
+        $update_conf=true;
+} else {
+        $power_frequency = get_configuration("POWER_FREQUENCY",$error);
+}
+
 
 if((isset($nb_plugs))&&(!empty($nb_plugs))) {
 	insert_configuration("NB_PLUGS",$nb_plugs,$error);
@@ -108,9 +116,9 @@ if((empty($error))||(!isset($error))) {
 
 if((isset($sd_card))&&(!empty($sd_card))) {
 	if("$update_frequency"=="-1") {
-		write_sd_conf_file($sd_card,$record_frequency,"0",$error);
+		write_sd_conf_file($sd_card,$record_frequency,"0",$power_frequency,$error);
 	} else {
-		write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$error);	
+		write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,$error);	
 	}	
 	check_and_copy_firm($sd_card,$error);
 }
