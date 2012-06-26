@@ -312,7 +312,7 @@ msgid "WIZARD_PLUG_NUMBER"
 msgstr "This wizard will help you to configure your first plug."
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "Your first plug will be configured like a lamp. Using the standard interface to configure your plugs, you can choose several type of plug: <ul><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an unknown type for all the other equipements" 
+msgstr "Your first plug will be configured like a lamp. This plug can be used with lamp using <b>a maximal power of 350 Watts</b>. Others plugs can be configured to be used by a lamp but the power can't exceed <b>200 Watts</b>." 
 
 msgid "WIZARD_PLUG_PROGRAM"
 msgstr "You have now to configure your program by selecting a start time where your lamp will turn on and a end time where the lamp will turn off"

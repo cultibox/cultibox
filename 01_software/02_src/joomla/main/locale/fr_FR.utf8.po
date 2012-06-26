@@ -312,7 +312,7 @@ msgid "WIZARD_PLUG_NUMBER"
 msgstr "Cette assistant vous permet de vous familliariser avec les configurations des prises et des programmes en configurant avec vous la premi&egrave;re prise."
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "La prise num&eacute;ro une sera configur&eacute;e comme une lampe. En utilisant la configuration classique des prises vous aurez le choix parmis diff&eacute;rent type d'&eacute;quipement:<ul><li>un chauffage pour augmenter la temp&eacute;rature</li><li>un ventilateur pour abaisser la temp&eacute;rature</li><li>un humidifieur pour baisser le pourcentage d'humidit&eacute;</li><li>un d&eacute;shumidifieur pour diminuer l'himidit&eacute;</li><li>une lampe</li><li>le type inconnu servant pour tout les autres &eacute;quipements"
+msgstr "La prise num&eacute;ro une sera configur&eacute;e comme une lampe. Cette prise pourra accueillir une lampe de <b>350 Watts</b> au <b>maximun</b>. Il est possible de configurer les autres prises comme des lampes mais elle ne pourront accueillir une lampe dont la puissance dépasse <b>200 Watts</b>. "
 
 msgid "WIZARD_PLUG_PROGRAM"
 msgstr "Il faut faut maintenant choisir quand &eacute;teindre et allum&eacute;r vos lampe. Pour cela choisissez une heure de d&eacute;part o&ugrave; la lampe se mettra en route et une heure de fin o&ugrave; la lampe  s'&eacute;teindra."
@@ -378,6 +378,9 @@ msgstr "<li>Configuration mise &agrave; jour avec succ&egrave;s</li>"
 
 msgid "VALID_UPDATE_PROGRAM"
 msgstr "<li> Programmes mis &agrave; jour avec succ&egrave;s</li>"
+
+msgid "VALID_UPDATE_PROGRAM_SD_INFO"
+msgstr "<li> Programmes mis &agrave; jour avec succ&egrave;s! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos param&egrave;trage</li>"
 
 msgid "VALID_LOAD_LOG"
 msgstr "<li> Fichiers de logs enregistr&eacute;es avec succ&egrave;s</li>"
