@@ -102,8 +102,8 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 
 
 if(($update_program)&&(empty($error))) {
-   $info=$info.__('VALID_UPDATE_CONF');
-   $pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
+          $info=$info.__('VALID_UPDATE_CONF');
+          $pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
 }
 
 // Write file plug01 plug02...

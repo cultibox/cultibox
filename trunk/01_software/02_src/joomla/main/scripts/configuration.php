@@ -109,8 +109,8 @@ if(!empty($update_frequency)) {
 
 if((empty($error))||(!isset($error))) {
 	if($update_conf) {
-		$info=$info.__('VALID_UPDATE_CONF');
-		$pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
+			$info=$info.__('VALID_UPDATE_CONF');
+			$pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
 	}
 }
 

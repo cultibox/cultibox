@@ -62,7 +62,7 @@ if((isset($action_prog))&&(!empty($action_prog))) {
 	} 
 } 
 
-if((isset($finish))&&($step==3)) {
+if((isset($finish))&&(!empty($finish))&&($step==3)) {
         $program=getvar('program');
 
 	if((isset($program))&&(!empty($program))) {
@@ -234,6 +234,13 @@ if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wzd"!="False")) {
 							if(empty($info_plug[$selected_plug])) {
 								$info_plug[$selected_plug]=$info_plug[$selected_plug].__('INFO_VALID_UPDATE_PROGRAM');
 							}
+						}
+					}
+					if((isset($pop_up_message))&&(!empty($pop_up_message))) {
+						unset($pop_up_message);
+					} else {
+						if(count($info_plug)>0) {
+                                                        $pop_up_message=clean_popup_message(__('INFO_VALID_UPDATE_PROGRAM'));
 						}
 					}
 				} else {
