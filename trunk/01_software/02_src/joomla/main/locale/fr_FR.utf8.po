@@ -82,6 +82,33 @@ msgstr "Oui"
 msgid "NO"
 msgstr "Non"
 
+msgid "CONFIGURE_ALARM"
+msgstr "Configuration de l'alarme"
+
+msgid "CONFIGURE_ALARM_ACTIV"
+msgstr "Activer le syst&egrave;me d'alarme"
+
+msgid "CONFIGURE_ALARM_VALUE"
+msgstr "Valeur du seuil de d&eacute;clenchement de l'alarme"
+
+msgid "CONFIGURE_ALARM_SENSO"
+msgstr "D&eacute;clenchement de l'alarme en fonction de"
+
+msgid "CONFIGURE_ALARM_SENSS"
+msgstr "D&eacute;clencher l'alarme si le capteur mesure une valeur en"
+
+msgid "ALARM_UNDER"
+msgstr "dessous du seuil"
+
+msgid "ALARM_ABOVE"
+msgstr "dessus du seuil"
+
+msgid "ALARM_TEMP"
+msgstr "Temp&eacute;rature"
+
+msgid "ALARM_HUMI"
+msgstr "Humidit&eacute;"
+
 # For the logs part:
 
 msgid "OR"
@@ -361,13 +388,16 @@ msgid "ERROR_WRITE_SD"
 msgstr "<li> Erreur durant l'&eacute;criture sur la carte SD</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur &agrave; 10&deg;C et sup&eacute;rieur &aacute; 0&deg;C</li>"
+msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur &agrave; 10&deg;C et sup&eacute;rieur &agrave; 0&deg;C</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 25.5&#37; et sup&eacute;rieur &aacute; 0&#37;;</li>"
+msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 25.5&#37; et sup&eacute;rieur &agrave; 0&#37;;</li>"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li> Erreur dans la valeur: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 90 et sup&eacute;rieur ou &eacute;gal &aacute; 0</li>"
+msgstr "<li> Erreur dans la valeur: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 90 et sup&eacute;rieur ou &eacute;gal &agrave; 0</li>"
+
+msgid "ERROR_ALARM_VALUE"
+msgstr "<li>La valeur de d&eacute;clenchement de l'alarme doit &ecirc;tre sup&eacute;rieure &agrave; 0 et inf&eacute;rieure &agrave; 100</li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"

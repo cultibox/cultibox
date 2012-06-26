@@ -82,6 +82,33 @@ msgstr "Yes"
 msgid "NO"
 msgstr "No"
 
+msgid "CONFIGURE_ALARM"
+msgstr "Alarm configuration"
+
+msgid "CONFIGURE_ALARM_ACTIV"
+msgstr "Enable alarm system"
+
+msgid "CONFIGURE_ALARM_VALUE"
+msgstr "Threshold value triggering the alarm"
+
+msgid "CONFIGURE_ALARM_SENSO"
+msgstr "Threshold the alarm with the "
+
+msgid "CONFIGURE_ALARM_SENSS"
+msgstr "Sound an alarm if the sensor measures a value"
+
+msgid "ALARM_UNDER"
+msgstr "under the threshold"
+
+msgid "ALARM_ABOVE"
+msgstr "above the threshold"
+
+msgid "ALARM_TEMP"
+msgstr "Temperature"
+
+msgid "ALARM_HUMI"
+msgstr "Humidity"
+
 # For the logs part:
 
 msgid "OR"
@@ -368,6 +395,9 @@ msgstr "<li> Error in the tolerance value. It must be less or equal to 25.5&#37;
 
 msgid "ERROR_VALUE_PROGRAM"
 msgstr "<li> Error in the value. It must be less or equal to 90 and greater or equal to 0</li>"
+
+msgid "ERROR_ALARM_VALUE"
+msgstr "<li>Value for the alarm must be more than 0 and less than 100</li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"

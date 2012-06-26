@@ -22,6 +22,11 @@ $temp_axis=getvar('temp_axis');
 $hygro_axis=getvar('hygro_axis');
 $pop_up=getvar('pop_up');
 $pop_up_message="";
+$pop_up_error_message="";
+$alarm_enable=getvar('alarm_enable');
+$alarm_value=getvar('alarm_value');
+$alarm_senso=getvar('alarm_senso');
+$alarm_senss=getvar('alarm_senss');
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$error);
@@ -107,18 +112,53 @@ if(!empty($update_frequency)) {
 	$update_frequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$error);
 }
 
+
+if(!empty($alarm_enable)) {
+        insert_configuration("ALARM_ACTIV","$alarm_enable",$error);
+        $update_conf=true;
+} else {
+        $alarm_enable = get_configuration("ALARM_ACTIV",$error);
+}
+
+if(!empty($alarm_value)) {
+	if((check_numeric_value("$alarm_value"))&&(check_alarm_value("$alarm_value"))) {
+           insert_configuration("ALARM_ACTIV","$alarm_value",$error);
+           $update_conf=true;
+        } else {
+           $alarm_value=get_configuration("ALARM_VALUE",$error);
+           $error=$error.__('ERROR_ALARM_VALUE');
+           $pop_up_error_message=$pop_up_error_message.clean_popup_message($error);
+        }
+} else {
+        $alarm_value = get_configuration("ALARM_VALUE",$error);
+}
+
+if(!empty($alarm_senso)) {
+        insert_configuration("ALARM_SENSO","$alarm_senso",$error);
+        $update_conf=true;
+} else {
+        $alarm_senso = get_configuration("ALARM_SENSO",$error);
+}
+
+if(!empty($alarm_senss)) {
+        insert_configuration("ALARM_SENSS","$alarm_senss",$error);
+        $update_conf=true;
+} else {
+        $alarm_senss = get_configuration("ALARM_SENSS",$error);
+}
+
 if((empty($error))||(!isset($error))) {
 	if($update_conf) {
 			$info=$info.__('VALID_UPDATE_CONF');
-			$pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
+			$pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_CONF'));
 	}
 }
 
 if((isset($sd_card))&&(!empty($sd_card))) {
 	if("$update_frequency"=="-1") {
-		write_sd_conf_file($sd_card,$record_frequency,"0",$power_frequency,$error);
+		write_sd_conf_file($sd_card,$record_frequency,"0",$power_frequency,"$alarm_enable","$alarm_value","$alarm_senso","$alarm_senss",$error);
 	} else {
-		write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,$error);	
+		write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,"$alarm_enable","$alarm_value","$alarm_senso","$alarm_senss",$error);	
 	}	
 	check_and_copy_firm($sd_card,$error);
 }
