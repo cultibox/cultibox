@@ -33,6 +33,8 @@ $reset=getvar('reset');
 $action_prog=getvar('action_prog');
 $chinfo=true;
 $chtime="";
+$pop_up_message="";
+$pop_up_error_message="";
 
 if(!isset($pop_up)) {
         $pop_up = get_configuration("SHOW_POPUP",$error);
@@ -73,6 +75,9 @@ if((isset($finish))&&(!empty($finish))&&($step==3)) {
                 $end_time=getvar('end_time');
 
               	$chtime=check_times($start_time,$end_time,$error); 
+		if((isset($error))&&(!empty($error))) {
+                           $pop_up_error_message=clean_popup_message($error);
+                }
 		//$chval=check_format_values_program($value_program);
 		$chval=true;
 	
@@ -190,6 +195,9 @@ if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wzd"!="False")) {
 
         if(("$start_time"!="")&&("$end_time"!="")) {
 		$chtime=check_times($start_time,$end_time,$ret_plug[$selected_plug]);
+		if((isset($ret_plug[$selected_plug]))&&(!empty($ret_plug[$selected_plug]))) {
+			   $pop_up_error_message=clean_popup_message($ret_plug[$selected_plug]);
+		}
 		if($chtime) {
 				if("$value_program"=="on") {
 					$value_program="99.9";
@@ -249,6 +257,7 @@ if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wzd"!="False")) {
 			}
 		} else {
 			$ret_plug[$selected_plug]=$ret_plug[$selected_plug].__('ERROR_MISSING_VALUE_TIME');
+			$pop_up_error_message=clean_popup_message(__('ERROR_MISSING_VALUE_TIME'));
 		}
 	}
 	

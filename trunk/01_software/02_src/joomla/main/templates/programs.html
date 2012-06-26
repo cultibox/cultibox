@@ -31,6 +31,10 @@ function actdesact<?php echo $i; ?>()
    <SCRIPT LANGUAGE="JavaScript">
       alert('<?php echo "$pop_up_message: ".$plugs_infos[$i-1]["PLUG_NAME"]; ?>');
    </SCRIPT>
+<?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))&&("$i"=="$selected_plug")) { ?>
+   <SCRIPT LANGUAGE="JavaScript">
+      alert('<?php echo "$pop_up_error_message"; ?>');
+   </SCRIPT>
 <?php } ?>
 
 <script type="text/javascript">

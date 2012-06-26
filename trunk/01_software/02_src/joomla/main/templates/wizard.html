@@ -50,6 +50,16 @@ timeFormat: 'hh:mm:ss',
 });
 </script>
 
+<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
+   <SCRIPT LANGUAGE="JavaScript">
+      alert('<?php echo "$pop_up_message"; ?>');
+   </SCRIPT>
+<?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
+   <SCRIPT LANGUAGE="JavaScript">
+      alert('<?php echo "$pop_up_error_message"; ?>');
+   </SCRIPT>
+<?php } ?>
+
 <br />
 <p class="wizard_title"><?php echo __('WIZARD_INTRO'); ?></p>
 <br /><br />
