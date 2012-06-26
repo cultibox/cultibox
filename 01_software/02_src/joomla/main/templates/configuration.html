@@ -20,7 +20,12 @@
    <SCRIPT LANGUAGE="JavaScript">
       alert('<?php echo "$pop_up_message"; ?>');
    </SCRIPT> 
+<?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
+   <SCRIPT LANGUAGE="JavaScript">
+      alert('<?php echo "$pop_up_error_message"; ?>');
+   </SCRIPT>
 <?php } ?>
+
 
 <p class="title_conf">
    <?php echo __('USER_CONF'); ?>:
@@ -240,7 +245,55 @@
       </select>
 </td>
 </tr>
-
+</table>
+<br />
+<p class="title_conf">
+   <?php echo __('CONFIGURE_ALARM'); ?>:
+</p>
+<table width="60%" align="center">
+   <tr>
+      <td width="80%"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?></td>
+      <td><select name="alarm_enable">
+           <?php if("$alarm_enable"=="0001") {
+                     echo "<option value='0001' selected>".__('YES')."</option>";
+                     echo "<option value='0000'>".__('NO')."</option>";
+                  } else {
+		     echo "<option value='0001'>".__('YES')."</option>";
+                     echo "<option value='0000' selected>".__('NO')."</option>";
+                  }
+           ?>
+      </select></td>
+   </tr>
+   <tr>
+      <td width="80%"><?php echo __('CONFIGURE_ALARM_VALUE'); ?></td>
+      <td><input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value"></td>
+   </tr>
+   <tr>
+      <td width="80%"><?php echo __('CONFIGURE_ALARM_SENSO'); ?></td>
+      <td><select name="alarm_senso">
+           <?php if("$alarm_senso"=="000T") {
+                     echo "<option value='000T' selected>".__('ALARM_TEMP')."</option>";
+                     echo "<option value='000H'>".__('ALARM_HUMI')."</option>";
+                  } else {
+                     echo "<option value='000T'>".__('ALARM_TEMP')."</option>";
+                     echo "<option value='000H' selected>".__('ALARM_HUMI')."</option>";
+                  }
+           ?>
+      </select></td>
+   </tr>
+   <tr>
+      <td width="80%"><?php echo __('CONFIGURE_ALARM_SENSS'); ?></td>
+      <td><select name="alarm_senss">
+           <?php if("$alarm_senss"=="000+") {
+                     echo "<option value='000+' selected>".__('ALARM_ABOVE')."</option>";
+                     echo "<option value='000-'>".__('ALARM_UNDER')."</option>";
+                  } else {
+                     echo "<option value='000+'>".__('ALARM_ABOVE')."</option>";
+                     echo "<option value='000-' selected>".__('ALARM_UNDER')."</option>";
+                  }
+           ?>
+      </select></td>
+   </tr>
 </table>
 
 <br /><p align="center">

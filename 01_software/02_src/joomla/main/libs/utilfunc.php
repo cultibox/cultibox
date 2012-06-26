@@ -678,11 +678,26 @@ function write_plugconf($data,$sd_card,&$out="") {
 //   $record_frequency   record frequency value
 //   $update_frequency   update frequency value
 //   $power_frequency	 record of the power frequency value
+//   $alarm_enable       enable or disable the alarm system
+//   $alarm_value        value to trigger the alarm
+//   $alarm_senso        humidity or temperature to use to trigger the alarm
+//   $alarm_senss        configure if the alarm have to be triggered above or under the value
 //   $out         error or warning message
 // RET none   
-function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,&$out="") {
+function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$alarm_senso="000T",$alarm_senss="000+",&$out="") {
    $record=$record_frequency*60;
    $power=$power_frequency*60;
+
+   
+   while(strlen($alarm_enable)<4) {
+      $alarm_enable="0$alarm_enable";
+   }
+
+   $alarm_value=$alarm_value*100;
+   while(strlen($alarm_value)<4) {
+      $alarm_value="0$alarm_value";
+   }
+
 
    while(strlen($record)<4) {
       $record="0$record";
@@ -698,10 +713,10 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       fputs($f,"PLUG_UPDATE:$update\r\n");
       fputs($f,"LOGS_UPDATE:$record\r\n");
       fputs($f,"POWR_UPDATE:$power\r\n"); 
-      fputs($f,"ALARM_ACTIV:0000\r\n");
-      fputs($f,"ALARM_VALUE:6000\r\n");
-      fputs($f,"ALARM_SENSO:000T\r\n");
-      fputs($f,"ALARM_SENSS:000+\r\n");
+      fputs($f,"ALARM_ACTIV:$alarm_enable\r\n");
+      fputs($f,"ALARM_VALUE:$alarm_value\r\n");
+      fputs($f,"ALARM_SENSO:$alarm_senso\r\n");
+      fputs($f,"ALARM_SENSS:$alarm_senss\r\n");
       fputs($f,"LOG_MIN_TMP:0000\r\n");
       fputs($f,"LOG_MAX_TMP:3000\r\n");
       fputs($f,"LOG_MIN_HMI:0000\r\n");
@@ -777,6 +792,19 @@ function check_format_values_program($value="0") {
 }
 // }}}
 
+// {{{ check_alarm_value($value="0")
+// ROLE check is a value for the alarm is correct
+// IN   $value   value to check
+// OUT  false is there is a wrong value, true else
+function check_alarm_value($value="0") {
+   $value=str_replace(',','.',$value);
+   $value=str_replace(' ','',$value);
+   if(($value>99.99)||($value<0)) return false;
+   if(!is_numeric($value)) return false;
+   return true;
+}
+// }}}
+
 
 // {{{ check_and_copy_firm($sd_card,&$out="")
 // ROLE check if the firm.hex has to be copied and do the copy into the sd card
@@ -835,8 +863,8 @@ function check_and_copy_firm($sd_card,&$out="") {
 // IN   $message	message to be cleaned
 // RET	new message cleaned 
 function clean_popup_message(&$message="") {
-        $old = array("'","<li>", "</li>", "&eacute;","&agrave;","&egrave;");
-        $new   = array("\'","", "", "é","à","è");
+        $old = array("'","<li>", "</li>", "&eacute;","&agrave;","&egrave;","&ecirc;");
+        $new   = array("\'","", "", "é","à","è","ê");
 
         return str_replace($old, $new, $message);
 }
