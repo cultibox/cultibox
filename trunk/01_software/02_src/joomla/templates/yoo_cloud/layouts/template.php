@@ -29,7 +29,7 @@ include($this['path']->path('layouts:template.config.php'));
                 <script type="text/javascript" src="main/libs/js/scwLanguages.js"></script>
                 <style type="text/css">
                         /* css for timepicker */
-                        #ui-datepicker-div, .ui-datepicker{ font-size: 90%; }
+                        #ui-datepicker-div, .ui-datepicker{ width: 15%; font-size: 90%; }
                         .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
                         .ui-timepicker-div dl { text-align: left; }
                         .ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
