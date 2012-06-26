@@ -835,8 +835,8 @@ function check_and_copy_firm($sd_card,&$out="") {
 // IN   $message	message to be cleaned
 // RET	new message cleaned 
 function clean_popup_message(&$message="") {
-        $old = array("<li>", "</li>", "&eacute;","&agrave;","&egrave;");
-        $new   = array("", "", "é","à","è");
+        $old = array("'","<li>", "</li>", "&eacute;","&agrave;","&egrave;");
+        $new   = array("\'","", "", "é","à","è");
 
         return str_replace($old, $new, $message);
 }

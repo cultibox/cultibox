@@ -312,7 +312,7 @@ msgid "WIZARD_PLUG_NUMBER"
 msgstr "Cette assistant vous permet de vous familliariser avec les configurations des prises et des programmes en configurant avec vous la premi&egrave;re prise."
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "La prise num&eacute;ro une sera configur&eacute;e comme une lampe. Cette prise pourra accueillir une lampe de <b>350 Watts</b> au <b>maximun</b>. Il est possible de configurer les autres prises comme des lampes mais elle ne pourront accueillir une lampe dont la puissance dépasse <b>200 Watts</b>. "
+msgstr "La prise num&eacute;ro une sera configur&eacute;e comme une lampe. Cette prise pourra accueillir une lampe de <b>350 Watts</b> au <b>maximun</b>. Il est possible de configurer les autres prises comme des lampes mais elle ne pourront accueillir une lampe dont la puissance d&eacute;passe <b>200 Watts</b>. "
 
 msgid "WIZARD_PLUG_PROGRAM"
 msgstr "Il faut faut maintenant choisir quand &eacute;teindre et allum&eacute;r vos lampe. Pour cela choisissez une heure de d&eacute;part o&ugrave; la lampe se mettra en route et une heure de fin o&ugrave; la lampe  s'&eacute;teindra."
@@ -396,5 +396,3 @@ msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliqu
 
 msgid "INFO_RESET_PROGRAM"
 msgstr "<li>Programme r&eacute;initialis&eacute; avec succ&egrave;s</li>"
-
-
