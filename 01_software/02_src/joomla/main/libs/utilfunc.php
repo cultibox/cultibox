@@ -760,14 +760,14 @@ function write_calendar($sd_card,$data,&$out="") {
 // RET false is there is a wrong value, true else
 function check_tolerance_value($type,$tolerance=0,&$out="") {
    if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
-      if(($tolerance >= 0)&&($tolerance <= 25.5)) {
+      if(($tolerance > 0)&&($tolerance <= 10)) {
          return true;
       } else {
          $out=$out.__('ERROR_TOLERANCE_VALUE_DEGREE');
          return false;
       }
    } else if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
-      if(($tolerance >= 0)&&($tolerance <= 25.5)) {
+      if(($tolerance > 0)&&($tolerance <= 25.5)) {
          return true;
       } else {
          $out=$out.__('ERROR_TOLERANCE_VALUE_POURCENT');
@@ -863,8 +863,8 @@ function check_and_copy_firm($sd_card,&$out="") {
 // IN   $message	message to be cleaned
 // RET	new message cleaned 
 function clean_popup_message(&$message="") {
-        $old = array("'","<li>", "</li>", "&eacute;","&agrave;","&egrave;","&ecirc;");
-        $new   = array("\'","", "", "é","à","è","ê");
+        $old = array("'","<li>", "</li>", "&eacute;","&agrave;","&egrave;","&ecirc;","&deg;");
+        $new   = array("\'","", "", "é","à","è","ê","°");
 
         return str_replace($old, $new, $message);
 }

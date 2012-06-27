@@ -14,10 +14,16 @@ $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
 $error="";
+$error_plug=Array();
+$info_plug=Array();
 $info="";
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $update_program=false;
 $reset=getvar('reset');
+$pop_up=getvar('pop_up');
+$pop_up_message="";
+$pop_up_error_message="";
+$count_err=false;
 
 
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -49,61 +55,79 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $type=getvar("plug_type${nb}");
    $tolerance=getvar("plug_tolerance{$nb}");
 
+   $error_plug[$nb]="";
+   $old_name=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
+   $old_type=get_plug_conf("PLUG_TYPE",$nb,$error_plug[$nb]);
+   $old_tolerance=get_plug_conf("PLUG_TOLERANCE",$nb,$error_plug[$nb]);
+   $old_id=get_plug_conf("PLUG_ID",$nb,$error_plug[$nb]);
+   
+
    if((!empty($id))&&(isset($id))&&(!$reset)) {
       if(check_numeric_value($id)) {
          while(strlen("$id")<3) {
             $id="0$id";
          }
-         insert_plug_conf("PLUG_ID",$nb,"$id",$error);
+         insert_plug_conf("PLUG_ID",$nb,"$id",$error_plug[$nb]);
          $update_program=true;
-      } 
-   } else {
-         insert_plug_conf("PLUG_ID",$nb,"",$error);
-   }
+      } else {
+                  $error_plug[$nb]=__('ERROR_PLUG_ID');
+      }
+   } 
 
    if((!empty($name))&&(isset($name))&&(!$reset)) {
-      insert_plug_conf("PLUG_NAME",$nb,$name,$error);
+      insert_plug_conf("PLUG_NAME",$nb,$name,$error_plug[$nb]);
       $update_program=true;
    }
    
 
    if((!empty($type))&&(isset($type))&&(!$reset)) {
-      insert_plug_conf("PLUG_TYPE",$nb,$type,$error);
+      insert_plug_conf("PLUG_TYPE",$nb,$type,$error_plug[$nb]);
       $update_program=true;
    }
 
    if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)) {
       if((!empty($tolerance))&&(isset($tolerance))&&(!$reset)) {
-         if(check_tolerance_value($type,$tolerance,$error)) {
-            insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$error);
+         if(check_tolerance_value($type,$tolerance,$error_plug[$nb])) {
+            insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$error_plug[$nb]);
             $update_program=true;
          }
       }
    } else {
-      insert_plug_conf("PLUG_TOLERANCE",$nb,0,$error);
+      insert_plug_conf("PLUG_TOLERANCE",$nb,0,$error_plug[$nb]);
    } 
 
-   $plug_id{$nb}=get_plug_conf("PLUG_ID",$nb,$error);
+   $plug_id{$nb}=get_plug_conf("PLUG_ID",$nb,$error_plug[$nb]);
    if((empty($plug_id{$nb}))||(!isset($plug_id{$nb}))) {
             $plug_id{$nb}=$GLOBALS['PLUGA_DEFAULT'][$nb-1];
    }
 
 
-   $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$error);
+   if(!empty($error_plug[$nb])) {
+	$pop_up_error_message=clean_popup_message($error_plug[$nb]);
+        insert_plug_conf("PLUG_TOLERANCE",$nb,"$old_tolerance",$error_plug[$nb]);
+        insert_plug_conf("PLUG_TYPE",$nb,"$old_type",$error_plug[$nb]); 
+        insert_plug_conf("PLUG_NAME",$nb,"$old_name",$error_plug[$nb]);
+        insert_plug_conf("PLUG_ID",$nb,"$old_id",$error_plug[$nb]);
+        $count_err=true;
+   } else if($update_program) {
+                if(("$old_name"!="$name")||("$old_type"!="$type")||("$old_tolerance"!="$tolerance")||("$id"!="$old_id")) {
+        		$info_plug[$nb]=__('VALID_UPDATE_CONF');
+                }
+   }
 
-   $test=get_plug_conf("PLUG_NAME",$nb,$error);
-
-   $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$error);
-   $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$error);
-  
+   $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
+   $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$error_plug[$nb]);
+   $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$error_plug[$nb]);
 
 }
 
 
 
-if(($update_program)&&(empty($error))) {
+if(($update_program)&&(empty($error))&&(!$count_err)) {
           $info=$info.__('VALID_UPDATE_CONF');
           $pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
+} else if(!empty($error)) {
+          $pop_up_error_message=clean_popup_message($error);
 }
 
 // Write file plug01 plug02...

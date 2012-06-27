@@ -399,6 +399,9 @@ msgstr "<li> Erreur dans la valeur: elle doit &ecirc;tre inferieur ou &eacute;ga
 msgid "ERROR_ALARM_VALUE"
 msgstr "<li>La valeur de d&eacute;clenchement de l'alarme doit &ecirc;tre sup&eacute;rieure &agrave; 0 et inf&eacute;rieure &agrave; 100</li>"
 
+msgid "ERROR_PLUG_ID"
+msgstr "Le code de la prise doit &ecirc;tre une valeur num&eacute;rique"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> Une carte SD compatible cultibox est branch&eacute;e"
