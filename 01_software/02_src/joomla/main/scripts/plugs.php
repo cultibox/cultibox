@@ -54,46 +54,51 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $name=getvar("plug_name${nb}");
    $type=getvar("plug_type${nb}");
    $tolerance=getvar("plug_tolerance{$nb}");
+   $plug_update=false;
 
    $error_plug[$nb]="";
    $old_name=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
    $old_type=get_plug_conf("PLUG_TYPE",$nb,$error_plug[$nb]);
    $old_tolerance=get_plug_conf("PLUG_TOLERANCE",$nb,$error_plug[$nb]);
    $old_id=get_plug_conf("PLUG_ID",$nb,$error_plug[$nb]);
+
    
 
    if((!empty($id))&&(isset($id))&&(!$reset)) {
-      if(check_numeric_value($id)) {
-         while(strlen("$id")<3) {
-            $id="0$id";
-         }
-         insert_plug_conf("PLUG_ID",$nb,"$id",$error_plug[$nb]);
-         $update_program=true;
-      } else {
+      if(strcmp("$old_id","$id")!=0) {
+         if(check_numeric_value($id)) {
+            while(strlen("$id")<3) {
+               $id="0$id";
+            }
+            insert_plug_conf("PLUG_ID",$nb,"$id",$error_plug[$nb]);
+            $update_program=true;
+            $plug_update=true;
+         } else {
                   $error_plug[$nb]=__('ERROR_PLUG_ID');
-      }
+         }
+       }
    } 
 
-   if((!empty($name))&&(isset($name))&&(!$reset)) {
+   if((!empty($name))&&(isset($name))&&(!$reset)&&(strcmp("$old_name","$name")!=0)) {
       insert_plug_conf("PLUG_NAME",$nb,$name,$error_plug[$nb]);
       $update_program=true;
+      $plug_update=true;
    }
    
 
-   if((!empty($type))&&(isset($type))&&(!$reset)) {
+   if((!empty($type))&&(isset($type))&&(!$reset)&&(strcmp("$old_type","$type")!=0)) {
       insert_plug_conf("PLUG_TYPE",$nb,$type,$error_plug[$nb]);
       $update_program=true;
+      $plug_update=true;
    }
 
-   if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)) {
-      if((!empty($tolerance))&&(isset($tolerance))&&(!$reset)) {
+   if(((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0))) {
          if(check_tolerance_value($type,$tolerance,$error_plug[$nb])) {
+	    $tolerance=str_replace(",",".",$tolerance);
             insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$error_plug[$nb]);
             $update_program=true;
-         }
-      }
-   } else {
-      insert_plug_conf("PLUG_TOLERANCE",$nb,0,$error_plug[$nb]);
+            $plug_update=true;
+         } 
    } 
 
    $plug_id{$nb}=get_plug_conf("PLUG_ID",$nb,$error_plug[$nb]);
@@ -104,12 +109,16 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 
    if(!empty($error_plug[$nb])) {
 	$pop_up_error_message=clean_popup_message($error_plug[$nb]);
-        insert_plug_conf("PLUG_TOLERANCE",$nb,"$old_tolerance",$error_plug[$nb]);
+        if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)) {
+            insert_plug_conf("PLUG_TOLERANCE",$nb,"$old_tolerance",$error_plug[$nb]);
+        } else {
+            insert_plug_conf("PLUG_TOLERANCE",0,"$old_tolerance",$error_plug[$nb]);
+        }
         insert_plug_conf("PLUG_TYPE",$nb,"$old_type",$error_plug[$nb]); 
         insert_plug_conf("PLUG_NAME",$nb,"$old_name",$error_plug[$nb]);
         insert_plug_conf("PLUG_ID",$nb,"$old_id",$error_plug[$nb]);
         $count_err=true;
-   } else if($update_program) {
+   } else if($plug_update) {
                 if(("$old_name"!="$name")||("$old_type"!="$type")||("$old_tolerance"!="$tolerance")||("$id"!="$old_id")) {
         		$info_plug[$nb]=__('VALID_UPDATE_CONF');
                 }
@@ -117,7 +126,11 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 
    $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
    $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$error_plug[$nb]);
+
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$error_plug[$nb]);
+   if($plug_tolerance{$nb}==0) {
+      $plug_tolerance{$nb}="1.0";
+   }
 
 }
 
