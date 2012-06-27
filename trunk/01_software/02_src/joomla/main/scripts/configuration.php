@@ -122,7 +122,7 @@ if(!empty($alarm_enable)) {
 
 if(!empty($alarm_value)) {
 	if((check_numeric_value("$alarm_value"))&&(check_alarm_value("$alarm_value"))) {
-           insert_configuration("ALARM_ACTIV","$alarm_value",$error);
+           insert_configuration("ALARM_VALUE","$alarm_value",$error);
            $update_conf=true;
         } else {
            $alarm_value=get_configuration("ALARM_VALUE",$error);
