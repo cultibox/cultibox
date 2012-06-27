@@ -399,6 +399,9 @@ msgstr "<li> Error in the value. It must be less or equal to 90 and greater or e
 msgid "ERROR_ALARM_VALUE"
 msgstr "<li>Value for the alarm must be more than 0 and less than 100</li>"
 
+msgid "ERROR_PLUG_ID"
+msgstr "Plug identifier must be a numeric value"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> A valid SD card was found"

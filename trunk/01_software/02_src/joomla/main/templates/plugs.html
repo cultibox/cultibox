@@ -22,6 +22,10 @@
    <SCRIPT LANGUAGE="JavaScript">
       alert('<?php echo "$pop_up_message"; ?>');
    </SCRIPT>
+<?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
+   <SCRIPT LANGUAGE="JavaScript">
+      alert('<?php echo "$pop_up_error_message"; ?>');
+   </SCRIPT>
 <?php } ?>
 
 <?php if((isset($info))&&(!empty($info))) { ?>
@@ -108,8 +112,25 @@
          </td>
       </tr>
    </table>
-   <br /><br />
+<?php if((isset($error_plug[$i]))&&(!empty($error_plug[$i]))) { ?>
+<div id="error">
+   <ul>
+      <?php echo $error_plug[$i]; ?>
+   </ul>
+</div>
+<?php } else if((isset($info_plug[$i]))&&(!empty($info_plug[$i]))) { ?>
+<div id="info">
+   <ul>
+      <?php echo $info_plug[$i]; ?>
+   </ul>
+</div>
+<?php } ?>
+
+
+<br />
+<hr />
    <?php } ?>
+<br /><br />
    <table width="100%">
       <tr>
          <td width="20%"></td>
