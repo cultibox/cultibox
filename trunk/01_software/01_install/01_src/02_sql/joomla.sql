@@ -2,10 +2,10 @@
 -- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le : Sam 19 Mai 2012 à 14:09
--- Version du serveur: 5.5.16
--- Version de PHP: 5.3.8
+-- Host: localhost
+-- Generation Time: Jun 28, 2012 at 12:06 AM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `cultibox_joomla`
+-- Database: `cultibox_joomla`
 --
 CREATE DATABASE `cultibox_joomla` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `cultibox_joomla`;
@@ -25,7 +25,7 @@ USE `cultibox_joomla`;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_assets`
+-- Table structure for table `dkg45_assets`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_assets` (
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_assets` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
--- Contenu de la table `dkg45_assets`
+-- Dumping data for table `dkg45_assets`
 --
 
 INSERT INTO `dkg45_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
@@ -87,7 +87,7 @@ INSERT INTO `dkg45_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `t
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_associations`
+-- Table structure for table `dkg45_associations`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_associations` (
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_associations` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_banner_clients`
+-- Table structure for table `dkg45_banner_clients`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_banner_clients` (
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_banner_clients` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_banner_tracks`
+-- Table structure for table `dkg45_banner_tracks`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_banner_tracks` (
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_banner_tracks` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_banners`
+-- Table structure for table `dkg45_banners`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_banners` (
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_banners` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_categories`
+-- Table structure for table `dkg45_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_categories` (
@@ -229,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
--- Contenu de la table `dkg45_categories`
+-- Dumping data for table `dkg45_categories`
 --
 
 INSERT INTO `dkg45_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `extension`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `modified_user_id`, `modified_time`, `hits`, `language`) VALUES
@@ -244,7 +244,7 @@ INSERT INTO `dkg45_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `le
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_contact_details`
+-- Table structure for table `dkg45_contact_details`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_contact_details` (
@@ -304,7 +304,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_contact_details` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_content`
+-- Table structure for table `dkg45_content`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_content` (
@@ -356,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_content` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_content_frontpage`
+-- Table structure for table `dkg45_content_frontpage`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_content_frontpage` (
@@ -368,7 +368,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_content_frontpage` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_content_rating`
+-- Table structure for table `dkg45_content_rating`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_content_rating` (
@@ -382,7 +382,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_content_rating` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_core_log_searches`
+-- Table structure for table `dkg45_core_log_searches`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_core_log_searches` (
@@ -393,7 +393,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_core_log_searches` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_dbcache`
+-- Table structure for table `dkg45_dbcache`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_dbcache` (
@@ -408,7 +408,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_dbcache` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_extensions`
+-- Table structure for table `dkg45_extensions`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_extensions` (
@@ -436,7 +436,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_extensions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10015 ;
 
 --
--- Contenu de la table `dkg45_extensions`
+-- Dumping data for table `dkg45_extensions`
 --
 
 INSERT INTO `dkg45_extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
@@ -579,7 +579,7 @@ INSERT INTO `dkg45_extensions` (`extension_id`, `name`, `type`, `element`, `fold
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_filters`
+-- Table structure for table `dkg45_finder_filters`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_filters` (
@@ -603,7 +603,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_filters` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links`
+-- Table structure for table `dkg45_finder_links`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links` (
@@ -638,7 +638,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_terms0`
+-- Table structure for table `dkg45_finder_links_terms0`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms0` (
@@ -653,7 +653,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms0` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_terms1`
+-- Table structure for table `dkg45_finder_links_terms1`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms1` (
@@ -668,7 +668,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms1` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_terms2`
+-- Table structure for table `dkg45_finder_links_terms2`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms2` (
@@ -683,7 +683,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms2` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_terms3`
+-- Table structure for table `dkg45_finder_links_terms3`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms3` (
@@ -698,7 +698,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms3` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_terms4`
+-- Table structure for table `dkg45_finder_links_terms4`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms4` (
@@ -713,7 +713,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms4` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_terms5`
+-- Table structure for table `dkg45_finder_links_terms5`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms5` (
@@ -728,7 +728,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms5` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_terms6`
+-- Table structure for table `dkg45_finder_links_terms6`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms6` (
@@ -743,7 +743,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms6` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_terms7`
+-- Table structure for table `dkg45_finder_links_terms7`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms7` (
@@ -758,7 +758,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms7` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_terms8`
+-- Table structure for table `dkg45_finder_links_terms8`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms8` (
@@ -773,7 +773,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms8` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_terms9`
+-- Table structure for table `dkg45_finder_links_terms9`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms9` (
@@ -788,7 +788,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_terms9` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_termsa`
+-- Table structure for table `dkg45_finder_links_termsa`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termsa` (
@@ -803,7 +803,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termsa` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_termsb`
+-- Table structure for table `dkg45_finder_links_termsb`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termsb` (
@@ -818,7 +818,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termsb` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_termsc`
+-- Table structure for table `dkg45_finder_links_termsc`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termsc` (
@@ -833,7 +833,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termsc` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_termsd`
+-- Table structure for table `dkg45_finder_links_termsd`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termsd` (
@@ -848,7 +848,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termsd` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_termse`
+-- Table structure for table `dkg45_finder_links_termse`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termse` (
@@ -863,7 +863,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termse` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_links_termsf`
+-- Table structure for table `dkg45_finder_links_termsf`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termsf` (
@@ -878,7 +878,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_links_termsf` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_taxonomy`
+-- Table structure for table `dkg45_finder_taxonomy`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_taxonomy` (
@@ -897,7 +897,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_taxonomy` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `dkg45_finder_taxonomy`
+-- Dumping data for table `dkg45_finder_taxonomy`
 --
 
 INSERT INTO `dkg45_finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `access`, `ordering`) VALUES
@@ -906,7 +906,7 @@ INSERT INTO `dkg45_finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `acces
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_taxonomy_map`
+-- Table structure for table `dkg45_finder_taxonomy_map`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_taxonomy_map` (
@@ -920,7 +920,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_taxonomy_map` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_terms`
+-- Table structure for table `dkg45_finder_terms`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_terms` (
@@ -942,7 +942,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_terms` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_terms_common`
+-- Table structure for table `dkg45_finder_terms_common`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_terms_common` (
@@ -953,7 +953,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_terms_common` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `dkg45_finder_terms_common`
+-- Dumping data for table `dkg45_finder_terms_common`
 --
 
 INSERT INTO `dkg45_finder_terms_common` (`term`, `language`) VALUES
@@ -1076,7 +1076,7 @@ INSERT INTO `dkg45_finder_terms_common` (`term`, `language`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_tokens`
+-- Table structure for table `dkg45_finder_tokens`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_tokens` (
@@ -1093,7 +1093,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_tokens` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_tokens_aggregate`
+-- Table structure for table `dkg45_finder_tokens_aggregate`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_tokens_aggregate` (
@@ -1114,7 +1114,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_tokens_aggregate` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_finder_types`
+-- Table structure for table `dkg45_finder_types`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_finder_types` (
@@ -1128,7 +1128,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_finder_types` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_jf_content`
+-- Table structure for table `dkg45_jf_content`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_jf_content` (
@@ -1152,7 +1152,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_jf_content` (
 -- --------------------------------------------------------
 
 --
--- Doublure de structure pour la vue `dkg45_jf_languages`
+-- Stand-in structure for view `dkg45_jf_languages`
 --
 CREATE TABLE IF NOT EXISTS `dkg45_jf_languages` (
 `lang_id` int(11) unsigned
@@ -1171,7 +1171,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_jf_languages` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_jf_languages_ext`
+-- Table structure for table `dkg45_jf_languages_ext`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_jf_languages_ext` (
@@ -1184,7 +1184,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_jf_languages_ext` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `dkg45_jf_languages_ext`
+-- Dumping data for table `dkg45_jf_languages_ext`
 --
 
 INSERT INTO `dkg45_jf_languages_ext` (`lang_id`, `image_ext`, `fallback_code`, `params`, `ordering`) VALUES
@@ -1193,7 +1193,7 @@ INSERT INTO `dkg45_jf_languages_ext` (`lang_id`, `image_ext`, `fallback_code`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_jf_tableinfo`
+-- Table structure for table `dkg45_jf_tableinfo`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_jf_tableinfo` (
@@ -1204,7 +1204,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_jf_tableinfo` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=221 ;
 
 --
--- Contenu de la table `dkg45_jf_tableinfo`
+-- Dumping data for table `dkg45_jf_tableinfo`
 --
 
 INSERT INTO `dkg45_jf_tableinfo` (`id`, `joomlatablename`, `tablepkID`) VALUES
@@ -1223,7 +1223,7 @@ INSERT INTO `dkg45_jf_tableinfo` (`id`, `joomlatablename`, `tablepkID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_jf_translationmap`
+-- Table structure for table `dkg45_jf_translationmap`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_jf_translationmap` (
@@ -1236,7 +1236,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_jf_translationmap` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `dkg45_jf_translationmap`
+-- Dumping data for table `dkg45_jf_translationmap`
 --
 
 INSERT INTO `dkg45_jf_translationmap` (`language`, `reference_id`, `translation_id`, `reference_table`) VALUES
@@ -1249,7 +1249,7 @@ INSERT INTO `dkg45_jf_translationmap` (`language`, `reference_id`, `translation_
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_jumi`
+-- Table structure for table `dkg45_jumi`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_jumi` (
@@ -1263,10 +1263,10 @@ CREATE TABLE IF NOT EXISTS `dkg45_jumi` (
   `published` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Contenu de la table `dkg45_jumi`
+-- Dumping data for table `dkg45_jumi`
 --
 
 INSERT INTO `dkg45_jumi` (`id`, `title`, `alias`, `path`, `custom_script`, `access`, `checked_out`, `published`) VALUES
@@ -1276,12 +1276,13 @@ INSERT INTO `dkg45_jumi` (`id`, `title`, `alias`, `path`, `custom_script`, `acce
 (4, 'View Logs', '', 'main/scripts/logs.php', '', 0, 0, 1),
 (5, 'Programs', '', 'main/scripts/programs.php', '', 0, 0, 1),
 (6, 'Plugs', '', 'main/scripts/plugs.php', '', 0, 0, 1),
-(7, 'Calendar', '', 'main/scripts/calendar.php', '', 0, 0, 1);
+(7, 'Calendar', '', 'main/scripts/calendar.php', '', 0, 0, 1),
+(8, 'Wizard', '', 'main/scripts/wizard.php', '', 0, 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_languages`
+-- Table structure for table `dkg45_languages`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_languages` (
@@ -1305,7 +1306,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_languages` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `dkg45_languages`
+-- Dumping data for table `dkg45_languages`
 --
 
 INSERT INTO `dkg45_languages` (`lang_id`, `lang_code`, `title`, `title_native`, `sef`, `image`, `description`, `metakey`, `metadesc`, `sitename`, `published`, `ordering`) VALUES
@@ -1315,7 +1316,7 @@ INSERT INTO `dkg45_languages` (`lang_id`, `lang_code`, `title`, `title_native`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_menu`
+-- Table structure for table `dkg45_menu`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_menu` (
@@ -1352,14 +1353,14 @@ CREATE TABLE IF NOT EXISTS `dkg45_menu` (
   KEY `idx_alias` (`alias`),
   KEY `idx_path` (`path`(255)),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=133 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=134 ;
 
 --
--- Contenu de la table `dkg45_menu`
+-- Dumping data for table `dkg45_menu`
 --
 
 INSERT INTO `dkg45_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `ordering`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 105, 0, '*', 0),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 107, 0, '*', 0),
 (2, 'menu', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 0, 1, 1, 4, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 1, 10, 0, '*', 1),
 (3, 'menu', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners', 'component', 0, 2, 2, 4, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 2, 3, 0, '*', 1),
 (4, 'menu', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&extension=com_banners', 'component', 0, 2, 2, 6, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-cat', 0, '', 4, 5, 0, '*', 1),
@@ -1411,12 +1412,13 @@ INSERT INTO `dkg45_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 (129, 'mainmenu', '', 'afficher-logs', '', 'afficher-logs', 'index.php?option=com_jumi&view=application&fileid=4', 'component', -2, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":"1","page_title":"","show_page_heading":"0","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":"0"}', 53, 54, 0, 'fr-FR', 0),
 (130, 'mainmenu', 'Plugs', 'plugs', '', 'plugs', 'index.php?option=com_jumi&view=application&fileid=6', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 8, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 55, 56, 0, 'en-GB', 0),
 (131, 'mainmenu', 'Prises', 'prises', '', 'prises', 'index.php?option=com_jumi&view=application&fileid=6', 'component', -2, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 101, 102, 0, 'fr-FR', 0),
-(132, 'mainmenu', 'Calendar', 'calendar', '', 'calendar', 'index.php?option=com_jumi&view=application&fileid=7', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 103, 104, 0, '*', 0);
+(132, 'mainmenu', 'Calendar', 'calendar', '', 'calendar', 'index.php?option=com_jumi&view=application&fileid=7', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 103, 104, 0, '*', 0),
+(133, 'mainmenu', 'Wizard', 'wizard', '', 'wizard', 'index.php?option=com_jumi&view=application&fileid=8', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 105, 106, 0, '*', 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_menu_types`
+-- Table structure for table `dkg45_menu_types`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_menu_types` (
@@ -1429,7 +1431,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_menu_types` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `dkg45_menu_types`
+-- Dumping data for table `dkg45_menu_types`
 --
 
 INSERT INTO `dkg45_menu_types` (`id`, `menutype`, `title`, `description`) VALUES
@@ -1438,7 +1440,7 @@ INSERT INTO `dkg45_menu_types` (`id`, `menutype`, `title`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_messages`
+-- Table structure for table `dkg45_messages`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_messages` (
@@ -1458,7 +1460,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_messages` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_messages_cfg`
+-- Table structure for table `dkg45_messages_cfg`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_messages_cfg` (
@@ -1471,7 +1473,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_messages_cfg` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_modules`
+-- Table structure for table `dkg45_modules`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_modules` (
@@ -1499,7 +1501,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_modules` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=89 ;
 
 --
--- Contenu de la table `dkg45_modules`
+-- Dumping data for table `dkg45_modules`
 --
 
 INSERT INTO `dkg45_modules` (`id`, `title`, `note`, `content`, `ordering`, `position`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `published`, `module`, `access`, `showtitle`, `params`, `client_id`, `language`) VALUES
@@ -1524,7 +1526,7 @@ INSERT INTO `dkg45_modules` (`id`, `title`, `note`, `content`, `ordering`, `posi
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_modules_menu`
+-- Table structure for table `dkg45_modules_menu`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_modules_menu` (
@@ -1534,7 +1536,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_modules_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `dkg45_modules_menu`
+-- Dumping data for table `dkg45_modules_menu`
 --
 
 INSERT INTO `dkg45_modules_menu` (`moduleid`, `menuid`) VALUES
@@ -1561,7 +1563,7 @@ INSERT INTO `dkg45_modules_menu` (`moduleid`, `menuid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_newsfeeds`
+-- Table structure for table `dkg45_newsfeeds`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_newsfeeds` (
@@ -1605,7 +1607,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_newsfeeds` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_overrider`
+-- Table structure for table `dkg45_overrider`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_overrider` (
@@ -1619,7 +1621,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_overrider` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_redirect_links`
+-- Table structure for table `dkg45_redirect_links`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_redirect_links` (
@@ -1634,10 +1636,10 @@ CREATE TABLE IF NOT EXISTS `dkg45_redirect_links` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_link_old` (`old_url`),
   KEY `idx_link_modifed` (`modified_date`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
--- Contenu de la table `dkg45_redirect_links`
+-- Dumping data for table `dkg45_redirect_links`
 --
 
 INSERT INTO `dkg45_redirect_links` (`id`, `old_url`, `new_url`, `referer`, `comment`, `published`, `created_date`, `modified_date`) VALUES
@@ -1669,12 +1671,16 @@ INSERT INTO `dkg45_redirect_links` (`id`, `old_url`, `new_url`, `referer`, `comm
 (26, 'http://localhost:1234/joomla/index.php/php/datafeed.php?method=add', '', 'http://localhost:1234/joomla/index.php/calendar', '', 0, '2012-05-08 19:54:27', '0000-00-00 00:00:00'),
 (27, 'http://localhost:1234/joomla/index.php/edit.php?_=1336506882941', '', 'http://localhost:1234/joomla/index.php/calendar', '', 0, '2012-05-08 19:54:43', '0000-00-00 00:00:00'),
 (28, 'http://localhost:1234/joomla/index.php/calendar', '', 'http://localhost:1234/joomla/index.php/calendar', '', 0, '2012-05-08 19:58:38', '0000-00-00 00:00:00'),
-(29, 'http://localhost:1234/joomla/index.php/main/libs/scw.js', '', 'http://localhost:1234/joomla/index.php/view-logs', '', 0, '2012-05-17 11:32:06', '0000-00-00 00:00:00');
+(29, 'http://localhost:1234/joomla/index.php/main/libs/scw.js', '', 'http://localhost:1234/joomla/index.php/view-logs', '', 0, '2012-05-17 11:32:06', '0000-00-00 00:00:00'),
+(30, 'http://localhost:1234/joomla/index.php/main/libs/img/fake_log_fr_FR.png', '', 'http://localhost:1234/joomla/index.php/view-logs', '', 0, '2012-06-25 07:47:07', '0000-00-00 00:00:00'),
+(31, 'http://localhost:1234/joomla/index.php/libs/img/fake_log_fr_FR.png', '', 'http://localhost:1234/joomla/index.php/view-logs', '', 0, '2012-06-25 07:49:52', '0000-00-00 00:00:00'),
+(32, 'http://localhost:1234/joomla/index.php/wizard-wzd-true', '', 'http://localhost:1234/joomla/index.php/wizard-wzd-true', '', 0, '2012-06-27 21:58:58', '0000-00-00 00:00:00'),
+(33, 'http://localhost:1234/joomla/index.php/programs><img src="/joomla/main/libs/img/wizard.png" alt="classic" name="Classic" /></a></li></ul></div><script type="text/javascript">$(document).ready(function(){$(', '', 'http://localhost:1234/joomla/index.php/wizard', '', 0, '2012-06-27 22:03:33', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_schemas`
+-- Table structure for table `dkg45_schemas`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_schemas` (
@@ -1684,7 +1690,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_schemas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `dkg45_schemas`
+-- Dumping data for table `dkg45_schemas`
 --
 
 INSERT INTO `dkg45_schemas` (`extension_id`, `version_id`) VALUES
@@ -1693,7 +1699,7 @@ INSERT INTO `dkg45_schemas` (`extension_id`, `version_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_session`
+-- Table structure for table `dkg45_session`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_session` (
@@ -1712,16 +1718,17 @@ CREATE TABLE IF NOT EXISTS `dkg45_session` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `dkg45_session`
+-- Dumping data for table `dkg45_session`
 --
 
 INSERT INTO `dkg45_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`, `usertype`) VALUES
-('9d7eb8990dc2f7e44e8689b616eacb48', 0, 1, '1337290081', '__default|a:7:{s:22:"session.client.browser";s:76:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0";s:15:"session.counter";i:18;s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";N;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:8:"usertype";N;s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:0:{}s:5:"guest";i:1;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";N;s:14:"\0*\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}s:19:"session.timer.start";i:1337289664;s:18:"session.timer.last";i:1337290046;s:17:"session.timer.now";i:1337290081;}LANG|s:5:"fr_FR";', 0, '', '');
+('29hbu568nbkl583rgdgjua9mb6', 1, 0, '1340834335', '__default|a:8:{s:15:"session.counter";i:16;s:19:"session.timer.start";i:1340834268;s:18:"session.timer.last";i:1340834335;s:17:"session.timer.now";i:1340834335;s:22:"session.client.browser";s:76:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.0) Gecko/20100101 Firefox/13.0";s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":2:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:0:"";}s:9:"com_menus";O:8:"stdClass":2:{s:4:"edit";O:8:"stdClass":1:{s:4:"item";O:8:"stdClass":4:{s:2:"id";a:0:{}s:4:"data";N;s:4:"type";N;s:4:"link";N;}}s:5:"items";O:8:"stdClass":2:{s:6:"filter";O:8:"stdClass":1:{s:8:"menutype";s:8:"mainmenu";}s:10:"limitstart";i:0;}}}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";b:1;s:2:"id";s:2:"42";s:4:"name";s:10:"Super User";s:8:"username";s:5:"admin";s:5:"email";s:12:"root@root.fr";s:8:"password";s:65:"851730d9e5d66633aac361c61dd7dc40:iGeo8EKfuh9HDXfISxghtP6aIZ2DBjw6";s:14:"password_clear";s:0:"";s:8:"usertype";s:10:"deprecated";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2012-03-28 07:13:27";s:13:"lastvisitDate";s:19:"2012-06-27 15:44:42";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\0*\0_authLevels";a:4:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}s:13:"session.token";s:32:"1c8f13883ca15e41ee14654fadb35df1";}', 42, 'admin', ''),
+('3ce3bec90032c0073aacadb32f1cba6b', 0, 1, '1340834637', '__default|a:7:{s:22:"session.client.browser";s:76:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.0) Gecko/20100101 Firefox/13.0";s:15:"session.counter";i:20;s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";N;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:8:"usertype";N;s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:0:{}s:5:"guest";i:1;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";N;s:14:"\0*\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}s:19:"session.timer.start";i:1340834252;s:18:"session.timer.last";i:1340834613;s:17:"session.timer.now";i:1340834637;}LANG|s:5:"fr_FR";', 0, '', '');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_template_styles`
+-- Table structure for table `dkg45_template_styles`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_template_styles` (
@@ -1737,7 +1744,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_template_styles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Contenu de la table `dkg45_template_styles`
+-- Dumping data for table `dkg45_template_styles`
 --
 
 INSERT INTO `dkg45_template_styles` (`id`, `template`, `client_id`, `home`, `title`, `params`) VALUES
@@ -1748,7 +1755,7 @@ INSERT INTO `dkg45_template_styles` (`id`, `template`, `client_id`, `home`, `tit
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_update_categories`
+-- Table structure for table `dkg45_update_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_update_categories` (
@@ -1763,7 +1770,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_update_categories` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_update_sites`
+-- Table structure for table `dkg45_update_sites`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_update_sites` (
@@ -1777,7 +1784,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_update_sites` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Update Sites' AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `dkg45_update_sites`
+-- Dumping data for table `dkg45_update_sites`
 --
 
 INSERT INTO `dkg45_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`) VALUES
@@ -1787,7 +1794,7 @@ INSERT INTO `dkg45_update_sites` (`update_site_id`, `name`, `type`, `location`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_update_sites_extensions`
+-- Table structure for table `dkg45_update_sites_extensions`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_update_sites_extensions` (
@@ -1797,7 +1804,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_update_sites_extensions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Links extensions to update sites';
 
 --
--- Contenu de la table `dkg45_update_sites_extensions`
+-- Dumping data for table `dkg45_update_sites_extensions`
 --
 
 INSERT INTO `dkg45_update_sites_extensions` (`update_site_id`, `extension_id`) VALUES
@@ -1807,7 +1814,7 @@ INSERT INTO `dkg45_update_sites_extensions` (`update_site_id`, `extension_id`) V
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_updates`
+-- Table structure for table `dkg45_updates`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_updates` (
@@ -1829,7 +1836,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_updates` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Available Updates' AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `dkg45_updates`
+-- Dumping data for table `dkg45_updates`
 --
 
 INSERT INTO `dkg45_updates` (`update_id`, `update_site_id`, `extension_id`, `categoryid`, `name`, `description`, `element`, `type`, `folder`, `client_id`, `version`, `data`, `detailsurl`, `infourl`) VALUES
@@ -1838,7 +1845,7 @@ INSERT INTO `dkg45_updates` (`update_id`, `update_site_id`, `extension_id`, `cat
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_user_notes`
+-- Table structure for table `dkg45_user_notes`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_user_notes` (
@@ -1865,7 +1872,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_user_notes` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_user_profiles`
+-- Table structure for table `dkg45_user_profiles`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_user_profiles` (
@@ -1879,7 +1886,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_user_profiles` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_user_usergroup_map`
+-- Table structure for table `dkg45_user_usergroup_map`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_user_usergroup_map` (
@@ -1889,7 +1896,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_user_usergroup_map` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `dkg45_user_usergroup_map`
+-- Dumping data for table `dkg45_user_usergroup_map`
 --
 
 INSERT INTO `dkg45_user_usergroup_map` (`user_id`, `group_id`) VALUES
@@ -1898,7 +1905,7 @@ INSERT INTO `dkg45_user_usergroup_map` (`user_id`, `group_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_usergroups`
+-- Table structure for table `dkg45_usergroups`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_usergroups` (
@@ -1915,7 +1922,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_usergroups` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Contenu de la table `dkg45_usergroups`
+-- Dumping data for table `dkg45_usergroups`
 --
 
 INSERT INTO `dkg45_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
@@ -1931,7 +1938,7 @@ INSERT INTO `dkg45_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_users`
+-- Table structure for table `dkg45_users`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_users` (
@@ -1956,16 +1963,16 @@ CREATE TABLE IF NOT EXISTS `dkg45_users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
 
 --
--- Contenu de la table `dkg45_users`
+-- Dumping data for table `dkg45_users`
 --
 
 INSERT INTO `dkg45_users` (`id`, `name`, `username`, `email`, `password`, `usertype`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`) VALUES
-(42, 'Super User', 'admin', 'root@root.fr', '851730d9e5d66633aac361c61dd7dc40:iGeo8EKfuh9HDXfISxghtP6aIZ2DBjw6', 'deprecated', 0, 1, '2012-03-28 07:13:27', '2012-05-17 13:06:37', '0', '');
+(42, 'Super User', 'admin', 'root@root.fr', '851730d9e5d66633aac361c61dd7dc40:iGeo8EKfuh9HDXfISxghtP6aIZ2DBjw6', 'deprecated', 0, 1, '2012-03-28 07:13:27', '2012-06-27 21:57:55', '0', '');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_viewlevels`
+-- Table structure for table `dkg45_viewlevels`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_viewlevels` (
@@ -1978,7 +1985,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_viewlevels` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `dkg45_viewlevels`
+-- Dumping data for table `dkg45_viewlevels`
 --
 
 INSERT INTO `dkg45_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
@@ -1989,7 +1996,7 @@ INSERT INTO `dkg45_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dkg45_weblinks`
+-- Table structure for table `dkg45_weblinks`
 --
 
 CREATE TABLE IF NOT EXISTS `dkg45_weblinks` (
@@ -2037,7 +2044,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_weblinks` (
 -- --------------------------------------------------------
 
 --
--- Structure de la vue `dkg45_jf_languages`
+-- Structure for view `dkg45_jf_languages`
 --
 DROP TABLE IF EXISTS `dkg45_jf_languages`;
 
