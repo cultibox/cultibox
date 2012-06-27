@@ -36,6 +36,10 @@ $chtime="";
 $pop_up_message="";
 $pop_up_error_message="";
 
+if(preg_match('/wizard-wzd-true/',$_SERVER["REQUEST_URI"])) {
+        $wzd="True";
+}
+
 if(!isset($pop_up)) {
         $pop_up = get_configuration("SHOW_POPUP",$error);
 }
