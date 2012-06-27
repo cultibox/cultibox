@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.1.140"
+#define MyAppVersion "1.1.153"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
@@ -49,3 +49,6 @@ Filename: "{app}\xampp\setup_xampp.bat";Description: "Change path"
 Filename: "{app}\xampp\xampp_start.exe";Description: "Run Xampp";
 Filename: "{app}\xampp\sql_install\install_sql.bat";  WorkingDir: "{app}" ;Description: "Change root password"
 Filename: "{app}\xampp\xampp_stop.exe";Description: "Kill Xampp";
+
+[UninstallDelete]
+Type: filesandordirs; Name: "{app}\xampp"
