@@ -6,6 +6,12 @@
       var firstTolerance = document.getElementById('first_tolerance'+j);
       var pDegree = document.getElementById('degree'+j);
       var pPourcent = document.getElementById('pourcent'+j);
+
+
+      //FIXME: change dynamically plug_tolerance value
+      oFormObject = document.forms['plugForm'];
+      oFormElement = oFormObject.elements['plug_tolerance'+j];
+     
       switch(i) {
          case 0 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; break;
          case 1 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; break;
@@ -46,7 +52,7 @@
 <?php } ?>
 
 <br />
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm" id="plugForm">
    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
    <table width="100%">
       <tr>
@@ -93,7 +99,7 @@
          </td>
          <td>
             <div id="tolerance<?php echo $i; ?>" style="display:none">
-               <input type="text" size="4" style="width: 10%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>"><label id="pourcent<?php echo $i; ?>" style="display:none"> %</label><label id="degree<?php echo $i; ?>" style="display:none"> °C</label>
+               <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 10%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" /><label id="pourcent<?php echo $i; ?>" style="display:none"> %</label><label id="degree<?php echo $i; ?>" style="display:none"> °C</label>
             </div>
             <?php if((strcmp($plug_type{$i},"ventilator")==0)||(strcmp($plug_type{$i},"heating")==0)||(strcmp($plug_type{$i},"humidifier")==0)||(strcmp($plug_type{$i},"dehumidifier")==0)) { ?>
             <div id="first_tolerance<?php echo $i; ?>">
