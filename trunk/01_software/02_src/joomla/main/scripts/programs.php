@@ -17,16 +17,11 @@ __('LANG');
 $error="";
 $ret_plug=array();
 $info="";
-$wzd="";
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $selected_plug=getvar('selected_plug');
 $plugs_infos=get_plugs_infos($nb_plugs,$error);
 $exportid=getvar('exportid');
-$finish=getvar('finish');
-$wzd=getvar('wzd');
-$step=getvar('step');
 $info_plug=array();
-
 $export=getvar('export');
 $import=getvar('import');
 $reset=getvar('reset');
@@ -36,9 +31,6 @@ $chtime="";
 $pop_up_message="";
 $pop_up_error_message="";
 
-if(preg_match('/wizard-wzd-true/',$_SERVER["REQUEST_URI"])) {
-        $wzd="True";
-}
 
 if(!isset($pop_up)) {
         $pop_up = get_configuration("SHOW_POPUP",$error);
@@ -68,119 +60,25 @@ if((isset($action_prog))&&(!empty($action_prog))) {
 	} 
 } 
 
-if((isset($finish))&&(!empty($finish))&&($step==3)) {
-        $program=getvar('program');
 
-	if((isset($program))&&(!empty($program))) {
-		$value_program="99.9";
-		$selected_plug=1;
-		$plug_type="lamp";
-                $start_time=getvar('start_time');
-                $end_time=getvar('end_time');
+$info=$info.__('WIZARD_ENABLE_FUNCTION');
 
-              	$chtime=check_times($start_time,$end_time,$error); 
-		if((isset($error))&&(!empty($error))) {
-                           $pop_up_error_message=clean_popup_message($error);
-                }
-		//$chval=check_format_values_program($value_program);
-		$chval=true;
-	
-                if(($chtime)&&($chval)) {
-                        if($chtime==2) {
-				$prog[]= array(
-      					"start_time" => "$start_time",
-                			"end_time" => "23:59:59",
-                			"value_program" => "$value_program",
-					"selected_plug" => "$selected_plug",
-					"plug_type" => "$plug_type"
-   				);
-
-				 $prog[]= array(
-                                        "start_time" => "00:00:00",
-                                        "end_time" => "$end_time",
-                                        "value_program" => "$value_program",
-                                        "selected_plug" => "$selected_plug",
-					"plug_type" => "$plug_type"
-                                ); 
-                        } else {
-				$prog[]= array(
-                                        "start_time" => "$start_time",
-                                        "end_time" => "$end_time",
-                                        "value_program" => "$value_program",
-                                        "selected_plug" => "$selected_plug",
-					"plug_type" => "$plug_type"
-                                );
-                        }
-
-
-			clean_program($selected_plug,$error);	
-                        foreach($prog as $val) {	
-                                if(insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$error)) {
-				       insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$error);
-                                       if($chinfo) {
-                                          $chinfo=true;
-                                       }
-				       insert_plug_conf("PLUG_TYPE",$val["selected_plug"],$val["plug_type"],$error);
-                                } else {
-					$chinfo=false;
-					unset($finish);
-                                }
-                       }
-
-		      if($chinfo) {
-				unset($wzd);
-                                header('Location: programs');	
-			}
-                } 
-        }
+if((isset($exportid))&&(!empty($exportid))) {
+	export_program($exportid);
 }
 
-if((!isset($wzd))||(empty($wzd))) {
-		$wzd="False";
+if((!isset($sd_card))||(empty($sd_card))) {
+	$sd_card=get_sd_card();
 }
 
-if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wzd"!="False")) {
-	$info=$info.__('WIZARD_DISABLE_FUNCTION');
-
-	$step=getvar('step');
-	$next=getvar('next');
-	$previous=getvar('previous');
-	$start_time="00:00:00";
-	$end_time="00:00:00";
-
-	if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
-		$step=1;
-	} else if((isset($next))&&(!empty($next))) {
-		$step=$step+1;	
-	} else if((isset($previous))&&(!empty($previous))) {
-		$step=$step-1;
-	}
-
-	include('main/templates/wizard.html');
+if((!isset($sd_card))||(empty($sd_card))) {
+       	$error=$error.__('ERROR_SD_CARD_CONF');
 } else {
-
-	unset($finish);
-	unset($wzd);
-	unset($step);
-
-	$info=$info.__('WIZARD_ENABLE_FUNCTION');
-
-	if((isset($exportid))&&(!empty($exportid))) {
-		export_program($exportid);
-	}
-
-	if((!isset($sd_card))||(empty($sd_card))) {
-		$sd_card=get_sd_card();
-	}
-
-	if((!isset($sd_card))||(empty($sd_card))) {
-        	$error=$error.__('ERROR_SD_CARD_CONF');
-	} else {
-        	$info=$info.__('INFO_SD_CARD').": $sd_card";
-	}
+       	$info=$info.__('INFO_SD_CARD').": $sd_card";
+}
 
 
-	if(!empty($selected_plug)&&(isset($selected_plug))) { 
+if(!empty($selected_plug)&&(isset($selected_plug))) { 
 	$start="start_time{$selected_plug}";
 	$end="end_time{$selected_plug}";
 	$value="value_program{$selected_plug}";
@@ -262,42 +160,41 @@ if((((empty($finish))&&($step==3))||("$wzd"=="True"))&&("$wzd"!="False")) {
 		} else {
 			$ret_plug[$selected_plug]=$ret_plug[$selected_plug].__('ERROR_MISSING_VALUE_TIME');
 			$pop_up_error_message=clean_popup_message(__('ERROR_MISSING_VALUE_TIME'));
-		}
 	}
-	
-	for($i=0;$i<$nb_plugs;$i++) {
-		$data_plug=get_data_plug($i+1,$error);
-        	$plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"");
-		switch($plugs_infos[$i]['PLUG_TYPE']) {
-			case 'unknown': $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
-							break;
-			case 'ventilator': $plugs_infos[$i]['translate']=__('PLUG_VENTILATOR');
-                        	break;
-			case 'heating': $plugs_infos[$i]['translate']=__('PLUG_HEATING');
-                        	break;	
-			case 'lamp': $plugs_infos[$i]['translate']=__('PLUG_LAMP');
-                        	break;
-			case 'humidifier': $plugs_infos[$i]['translate']=__('PLUG_HUMIDIFIER');
-                        	break;
-            case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DESHUMIDIFIER');
-                        	break;
-			default: $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
-							break;
-					
-		}
-	}
-
-	if((isset($sd_card))&&(!empty($sd_card))) {
-        	$program=create_program_from_database($error);
-        	save_program_on_sd($sd_card,$program,$error,$info);
-	        check_and_copy_firm($sd_card,$error);
-	}
-
-	if((isset($force_on))&&(!empty($force_on))) {
-                $value_program="";
-	}
-
-	include('main/templates/programs.html');
 }
+	
+for($i=0;$i<$nb_plugs;$i++) {
+	$data_plug=get_data_plug($i+1,$error);
+       	$plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"");
+	switch($plugs_infos[$i]['PLUG_TYPE']) {
+		case 'unknown': $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
+						break;
+		case 'ventilator': $plugs_infos[$i]['translate']=__('PLUG_VENTILATOR');
+                       	break;
+		case 'heating': $plugs_infos[$i]['translate']=__('PLUG_HEATING');
+                       	break;	
+		case 'lamp': $plugs_infos[$i]['translate']=__('PLUG_LAMP');
+                       	break;
+		case 'humidifier': $plugs_infos[$i]['translate']=__('PLUG_HUMIDIFIER');
+                       	break;
+                case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DESHUMIDIFIER');
+                       	break;
+		default: $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
+			break;
+					
+	}
+}
+
+if((isset($sd_card))&&(!empty($sd_card))) {
+       	$program=create_program_from_database($error);
+       	save_program_on_sd($sd_card,$program,$error,$info);
+        check_and_copy_firm($sd_card,$error);
+}
+
+if((isset($force_on))&&(!empty($force_on))) {
+        $value_program="";
+}
+
+include('main/templates/programs.html');
 
 ?>

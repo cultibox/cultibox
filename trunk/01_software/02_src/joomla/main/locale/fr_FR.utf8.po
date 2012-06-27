@@ -422,10 +422,10 @@ msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "<li>Programme mis &agrave; jour avec succ&egrave;s</li>"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "<li>Vous pouvez utiliser l'assistant pour configurer la premi&egrave;re prise en cliquant ici: <a href='programs?wzd=True'><img src="main/libs/img/wizard.png" alt="wizard" name="wizard" /></a></li>"
+msgstr "<li>Vous pouvez utiliser l'assistant pour configurer la premi&egrave;re prise en cliquant ici: <a href='wizard'><img src="main/libs/img/wizard.png" alt="wizard" name="wizard" /></a></li>"
 
 msgid "WIZARD_DISABLE_FUNCTION"
-msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs?wzd=False'><img src="main/libs/img/wizard.png" alt="classic" name="Classic" /></a></li>"
+msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs'><img src="main/libs/img/wizard.png" alt="classic" name="Classic" /></a></li>"
 
 msgid "INFO_RESET_PROGRAM"
 msgstr "<li>Programme r&eacute;initialis&eacute; avec succ&egrave;s</li>"
