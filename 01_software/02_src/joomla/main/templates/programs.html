@@ -258,12 +258,17 @@ $(document).ready(function() {
          <table width="100%">
             <tr>
                <td width="10%"></td>
-               <td width="15%"><a href="tmp/program<?php echo $î; ?>.txt" name="export" target="_blank"><?php echo __('EXPORT_PROGRAM'); ?></a></td>
+               <td width="15%">
+                  <!--
+                     <a href="tmp/program<?php echo $î; ?>.txt" name="export" target="_blank"><?php echo __('EXPORT_PROGRAM'); ?></a></td>
+                  -->
                <td width="30%">
+                  <!--
                   <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
                      <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>">
                      <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
                   </form>
+                  -->
                </td>
                <td>
                   <a href="<?php echo($_SERVER['PHP_SELF']); ?><?php echo '?action_prog='.$i.'&reset=reset'; ?>#conf<?php echo $i; ?>" name="reset"><?php echo __('RESET_PROGRAM'); ?>
