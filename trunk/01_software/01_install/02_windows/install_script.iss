@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.1.153"
+#define MyAppVersion "1.1.159"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
@@ -22,20 +22,44 @@ DefaultDirName={sd}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 OutputBaseFilename=setup_cultibox_{#MyAppVersion}
+VersionInfoVersion={#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
+ ; Pas de warning si le dossier existe déjà
+DirExistsWarning=no
+; Interdiction de changer le path
+DisableDirPage=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 
+[code]
+function InitializeSetup():boolean;
+var
+  ResultCode: integer;
+begin
+  if FileExists(ExpandConstant('{sd}\{#MyAppName}\unins000.exe')) then
+  begin
+    MsgBox('Vous devez d'abord desinstaller la version precedente', mbInformation, MB_OK);
+    Exec(ExpandConstant('{sd}\{#MyAppName}\unins000.exe'), '', '', SW_SHOW,
+       ewWaitUntilTerminated, ResultCode);
+  end;
+  Result := True;
+end;
+
+
 [Files]
-Source: "F:\Cultibox_web\01_software\01_install\01_src\01_xampp\*"; DestDir: "{app}\xampp"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Cultibox_web\01_software\01_install\01_src\01_xampp\*"; \
+  DestDir: "{app}\xampp"; \
+  Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\01_software\01_install\01_src\02_sql\*"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\01_software\01_install\01_src\04_run\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "F:\Cultibox_web\01_software\01_install\02_windows\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\Cultibox_web\01_software\01_install\02_windows\cultibox.bat"; \
+  DestDir: "{app}"; \
+  Flags: ignoreversion
 Source: "F:\Cultibox_web\01_software\01_install\02_windows\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion
 Source: "F:\Cultibox_web\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
@@ -47,7 +71,26 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: {uninstallexe}; Co
 [Run]
 Filename: "{app}\xampp\setup_xampp.bat";Description: "Change path"
 Filename: "{app}\xampp\xampp_start.exe";Description: "Run Xampp";
-Filename: "{app}\xampp\sql_install\install_sql.bat";  WorkingDir: "{app}" ;Description: "Change root password"
+Filename: "{app}\xampp\mysql\bin\mysqladmin.exe"; \
+  Parameters: " -u root -h localhost password cultibox"; \
+  WorkingDir: "{app}"; \
+  Description: "Change root password";
+Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
+  Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\user_cultibox.sql""" ; \
+  WorkingDir: "{app}"; \
+  Description: "Install user base";
+Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
+  Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\joomla.sql"""; \
+  WorkingDir: "{app}"; \
+  Description: "Install joomla base";
+Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
+  Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\cultibox.sql"""; \
+  WorkingDir: "{app}"; \
+  Description: "Install cultibox base";
+Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
+  Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\fake_log.sql"""; \
+  WorkingDir: "{app}"; \
+  Description: "Install log base";
 Filename: "{app}\xampp\xampp_stop.exe";Description: "Kill Xampp";
 
 [UninstallDelete]
