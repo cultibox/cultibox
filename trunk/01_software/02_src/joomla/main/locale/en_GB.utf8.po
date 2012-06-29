@@ -332,6 +332,9 @@ msgstr "Next Step"
 msgid "WIZARD_PREVIOUS_STEP"
 msgstr "Previous Step"
 
+msgid "WIZARD_NEXT_PLUG"
+msgstr "Finish and configure the next plug"
+
 msgid "WIZARD_FINISH_STEP"
 msgstr "Finish and close"
 
@@ -346,6 +349,15 @@ msgstr "You have now to configure your program by selecting a start time where y
 
 msgid "WIZARD_STEP"
 msgstr "Step"
+
+msgid "WIZARD_CONFIGURE_OTHER_PLUG"
+msgstr "Configuration of the plug"
+
+msgid "WIZARD_OTHER_PLUG_NUMBER"
+msgstr "You are now going to configure a new plug."
+
+msgid "WIZARD_OTHER_PLUG_TYPE"
+msgstr "Choose the type of your plug: <ul><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an unknown type for all the other equipements. <br /><br />If you choose to configure a new lamp, this equipement must use <b>less than 200 Watts</b>" 
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"

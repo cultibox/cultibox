@@ -335,6 +335,9 @@ msgstr "Etape pr&eacute;c&eacute;dente"
 msgid "WIZARD_FINISH_STEP"
 msgstr "Finir et fermer l'assistant"
 
+msgid "WIZARD_NEXT_PLUG"
+msgstr "Terminer et passer &agrave; la prise suivante"
+
 msgid "WIZARD_PLUG_NUMBER"
 msgstr "Cette assistant vous permet de vous familliariser avec les configurations des prises et des programmes en configurant avec vous la premi&egrave;re prise."
 
@@ -346,6 +349,15 @@ msgstr "Il faut faut maintenant choisir quand &eacute;teindre et allum&eacute;r 
 
 msgid "WIZARD_STEP"
 msgstr "Etape"
+
+msgid "WIZARD_CONFIGURE_OTHER_PLUG"
+msgstr "Configuration de la prise"
+
+msgid "WIZARD_OTHER_PLUG_NUMBER"
+msgstr "Vous allez maintenant configurer une nouvelle prise."
+
+msgid "WIZARD_OTHER_PLUG_TYPE"
+msgstr "Choisissez le type de prise &agrave; utiliser: <ul><li>un chauffage pour augmenter la temp&eacute;rature</li><li>un ventilateur pour abaisser la temp&eacute;rature</li><li>un humidifieur pour baisser le pourcentage d'humidit&eacute;</li><li>un d&eacute;shumidifieur pour diminuer l'himidit&eacute;</li><li>une lampe</li><li>le type inconnu servant pour tout les autres &eacute;quipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit etre <b>moins puissante que 200 Watts</b>"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
