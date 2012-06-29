@@ -18,9 +18,15 @@ $error="";
 $ret_plug=array();
 $info="";
 $finish=getvar('finish');
-$step=getvar('step');
 $info_plug=array();
 $nb_plugs=get_configuration("NB_PLUGS",$error);
+$selected_plug=getvar('selected_plug');
+$next_plug=getvar('next_plug');
+
+if((empty($selected_plug))||(!isset($selected_plug))) {
+     $selected_plug=1;
+}
+
 
 
 $chinfo=true;
@@ -38,17 +44,42 @@ for($i=0;$i<=$nb_plugs;$i++) {
         $ret_plug[]="";
 }
 
-	
+$step=getvar('step');
+$next=getvar('next');
+$previous=getvar('previous');
+$start_time="00:00:00";
+$end_time="00:00:00";
+$plug_type=getvar('plug_type');
+$value_program=getvar('value_program');
 
-if((isset($finish))&&(!empty($finish))&&($step==3)) {
+if((empty($plug_type))||(!isset($plug_type))) {
+	$plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$error); 
+}
+
+
+if((empty($value_program))||(!isset($value_program))) {
+       $value_program="0.0";
+}
+
+
+
+
+if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_plug)))) {
         $program=getvar('program');
 
 	if((isset($program))&&(!empty($program))) {
+           if("$selected_plug"=="1") {
 		$value_program="99.9";
-		$selected_plug=1;
 		$plug_type="lamp";
                 $start_time=getvar('start_time');
                 $end_time=getvar('end_time');
+           } else {
+                $value_program=getvar('value_program');
+                $plug_type=getvar('plug_type');
+                $start_time=getvar('start_time');
+                $end_time=getvar('end_time');
+           }
+
 
               	$chtime=check_times($start_time,$end_time,$error); 
 		if((isset($error))&&(!empty($error))) {
@@ -100,20 +131,20 @@ if((isset($finish))&&(!empty($finish))&&($step==3)) {
                        }
 
 		      if($chinfo) {
-				unset($wzd);
+                           if(($selected_plug==$nb_plugs)||((isset($finish))&&(!empty($finish)))) {
                                 header('Location: programs');	
+                           }
 			}
                 } 
         }
+        if((isset($next_plug))&&(!empty($next_plug))) {
+			$selected_plug=$selected_plug+1;
+			$step=1;
+        }
+        
 }
 
 $info=$info.__('WIZARD_DISABLE_FUNCTION');
-
-$step=getvar('step');
-$next=getvar('next');
-$previous=getvar('previous');
-$start_time="00:00:00";
-$end_time="00:00:00";
 
 if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
 	$step=1;
