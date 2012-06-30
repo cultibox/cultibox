@@ -45,3 +45,13 @@ hr {
     margin:auto;
 }
 
+span.info-bulle-contenu
+{
+display: none;
+position: absolute;
+background:red;
+padding: 6px;
+padding-left: 12px;
+padding-right: 12px;
+color: white;
+}

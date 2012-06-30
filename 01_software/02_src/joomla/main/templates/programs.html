@@ -205,8 +205,8 @@ $(document).ready(function() {
          <table>
             <tr>
                <td width="10%"></td>
-               <td width="45%"><?php echo __('START_TIME_PROGRAM'); ?></td>
-               <td width="50%">
+               <td width="53%"><?php echo __('START_TIME_PROGRAM'); ?></td>
+               <td width="37%">
                   <input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> />
             </tr>
             <tr>
@@ -219,10 +219,10 @@ $(document).ready(function() {
             <tr>
                <td></td>
                <td><?php if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"unknown")==0)) { echo __('VALUE_ON_OFF'); } 
-			 else if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"heating")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"ventilator")==0)) { echo __('TEMP_WISHED'); }
-			 else { echo __('HUMI_WISHED'); } 
+			 else if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"heating")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"ventilator")==0)) { echo __('TEMP_WISHED'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_VALUE'); ?>" /> <?php }
+			 else { echo __('HUMI_WISHED'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_VALUE'); ?>" /> <?php } ?>
 
-               ?></td>
+		</td>
                <td><?php if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"unknown")==0)) { ?>
                   <select id="value_program<?php echo $i; ?>" name="value_program<?php echo $i; ?>">
                      <option value="on" <?php if(($i==$selected_plug)&&($value_program==1)) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>

@@ -453,3 +453,9 @@ msgstr "<li>Programme r&eacute;initialis&eacute; avec succ&egrave;s</li>"
 
 msgid "WAITING_LOG"
 msgstr "Merci de patienter quelques instants durant le chargement des logs..."
+
+# For the tooltip part:
+
+msgid "TOOLTIP_VALUE"
+msgstr "La Cultibox va &eacute;teindre ou allumer la prise pour atteindre cette valeur."
+

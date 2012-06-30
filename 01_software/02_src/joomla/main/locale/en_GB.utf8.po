@@ -450,3 +450,8 @@ msgstr "<li>Program sucessfully reseted</li>"
 
 msgid "WAITING_LOG"
 msgstr "PLease just wait few seconds during logs loading..."
+
+# For the tooltip part:
+
+msgid "TOOLTIP_VALUE"
+msgstr "Cultibox will switch on or off the plug to get this value"
