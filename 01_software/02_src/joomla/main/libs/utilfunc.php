@@ -784,11 +784,7 @@ function check_tolerance_value($type,$tolerance=0,&$out="") {
 // IN   $value   value to check and format
 // IN	$out	 error or warning message
 // RET false is there is a wrong value, true else
-function check_format_values_program($value="",&$out="") {
-   if(empty($value)) {
-		 $out=$out.__('ERROR_VALUE_PROGRAM');
-                return false;
-   }
+function check_format_values_program($value="0",&$out="") {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
    if(($value>90)||($value<0)) {

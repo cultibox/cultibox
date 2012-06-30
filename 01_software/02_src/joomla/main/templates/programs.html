@@ -29,7 +29,7 @@ function actdesact<?php echo $i; ?>()
 
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))&&("$i"=="$selected_plug")) { ?> 
    <SCRIPT LANGUAGE="JavaScript">
-      alert('<?php echo "$pop_up_message: ".$plugs_infos[$i-1]["PLUG_NAME"]; ?>');
+      alert('<?php echo "$pop_up_message"; ?>');
    </SCRIPT>
 <?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))&&("$i"=="$selected_plug")) { ?>
    <SCRIPT LANGUAGE="JavaScript">
@@ -205,7 +205,7 @@ $(document).ready(function() {
          <table>
             <tr>
                <td width="10%"></td>
-               <td width="40%"><?php echo __('START_TIME_PROGRAM'); ?></td>
+               <td width="45%"><?php echo __('START_TIME_PROGRAM'); ?></td>
                <td width="50%">
                   <input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> />
             </tr>
@@ -218,7 +218,11 @@ $(document).ready(function() {
             </tr>
             <tr>
                <td></td>
-               <td><?php echo __('VALUE_ON_OFF'); ?></td>
+               <td><?php if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"unknown")==0)) { echo __('VALUE_ON_OFF'); } 
+			 else if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"heating")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"ventilator")==0)) { echo __('TEMP_WISHED'); }
+			 else { echo __('HUMI_WISHED'); } 
+
+               ?></td>
                <td><?php if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"unknown")==0)) { ?>
                   <select id="value_program<?php echo $i; ?>" name="value_program<?php echo $i; ?>">
                      <option value="on" <?php if(($i==$selected_plug)&&($value_program==1)) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>

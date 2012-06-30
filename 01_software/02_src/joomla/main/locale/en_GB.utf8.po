@@ -247,7 +247,13 @@ msgid "APPLY_PROGRAM"
 msgstr "Apply"
 
 msgid "VALUE_ON_OFF"
-msgstr "Value"
+msgstr "Behaviour"
+
+msgid "HUMI_WISHED"
+msgstr "Humidity wished"
+
+msgid "TEMP_WISHED"
+msgstr "Temperature wished"
 
 msgid "VALUE_ON"
 msgstr "On"
@@ -417,6 +423,9 @@ msgstr "<li>Plug identifier must be a numeric value</li>"
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> A valid SD card was found"
+
+msgid "INFO_PLUG_CULTIBOX_CARD"
+msgstr "<li>You can now plug your card into the Cultibox.</li>"
 
 msgid "VALID_UPDATE_CONF"
 msgstr "<li> Configuration successfully updated</li>"
