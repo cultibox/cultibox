@@ -238,6 +238,9 @@ msgstr "Enregistrer la configuration"
 msgid "RESET_PLUG_ID"
 msgstr "R&eacute;initialiser le code des prises"
 
+msgid "POWER_PLUG"
+msgstr "Puissance (en Watt)"
+
 # For the programs part:
 
 msgid "CONFIGURE_PROGRAM"
@@ -420,6 +423,9 @@ msgstr "<li>La valeur de d&eacute;clenchement de l'alarme doit &ecirc;tre sup&ea
 msgid "ERROR_PLUG_ID"
 msgstr "<li>Le code de la prise doit &ecirc;tre une valeur num&eacute;rique</li>"
 
+msgid "ERROR_POWER_VALUE"
+msgstr "<li>Erreur dans la valeur de puissance: elle doit &ecirc;tre sup&eacute;rieure ou &eacute;gale &agrave; 0 Watt</li>"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> Une carte SD compatible cultibox est branch&eacute;e"
@@ -458,4 +464,8 @@ msgstr "Merci de patienter quelques instants durant le chargement des logs..."
 
 msgid "TOOLTIP_VALUE"
 msgstr "La Cultibox va &eacute;teindre ou allumer la prise pour atteindre cette valeur."
+
+msgid "TOOLTIP_POWER"
+msgstr "La puissance de l'&eacute;quipement branch&eacute;. Renseigner ce champ vous permet de calculer la consomation de votre installation, son prix..."
+
 

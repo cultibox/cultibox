@@ -799,6 +799,24 @@ function check_format_values_program($value="0",&$out="") {
 }
 // }}}
 
+// {{{ check_power_value($value,$out)
+// ROLE check AND format power value of a plug
+// IN   $value   value to check and format
+// IN   $out     error or warning message
+// RET false is there is a wrong value, true else
+function check_power_value($value="0",&$out="") {
+   if($value<0) {
+                $out=$out.__('ERROR_POWER_VALUE');
+                return false;
+   }
+   if(!is_numeric($value)) {
+                $out.__('ERROR_POWER_VALUE');
+                return false;
+   }
+   return true;
+}
+// }}}
+
 // {{{ check_alarm_value($value="0")
 // ROLE check is a value for the alarm is correct
 // IN   $value   value to check

@@ -229,6 +229,9 @@ msgstr "Update plug configuration"
 msgid "RESET_PLUG_ID"
 msgstr "Reset plugs ID"
 
+msgid "POWER_PLUG"
+msgstr "Power (in Watt)"
+
 # For the programs part:
 
 msgid "CURRENT_PLUG_PROGRAM"
@@ -420,6 +423,9 @@ msgstr "<li>Value for the alarm must be more than 0 and less than 100</li>"
 msgid "ERROR_PLUG_ID"
 msgstr "<li>Plug identifier must be a numeric value</li>"
 
+msgid "ERROR_POWER_VALUE"
+msgstr "<li>Error in the power value: it must be more or equal to 0 Watt</li>"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> A valid SD card was found"
@@ -455,3 +461,7 @@ msgstr "PLease just wait few seconds during logs loading..."
 
 msgid "TOOLTIP_VALUE"
 msgstr "Cultibox will switch on or off the plug to get this value"
+
+msgid "TOOLTIP_POWER"
+msgstr "The power of the equipement pluged in Watts. This is usefull if you want to calculate power consumed, cost of your installation..."
+
