@@ -1,5 +1,6 @@
 <?php
 
+
 if (!isset($_SESSION)) {
 	session_start();
 }
@@ -13,6 +14,42 @@ $lang=get_configuration("LANG",$error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
+
+
+echo <<<EOF
+<!-- DEBUT DU SCRIPT -->
+<STYLE TYPE="text/css">
+<!--
+#cache {
+    position:absolute; top:200px; z-index:10; visibility:hidden;
+}
+-->
+</STYLE>
+<DIV ID="cache" align="center"><TABLE WIDTH="100%"  BGCOLOR=#000000 BORDER=0 CELLPADDING=2 CELLSPACING=0><TR><TD ALIGN="center" VALIGN=middle><TABLE WIDTH="100%" BGCOLOR=#FFFFFF BORDER=0 CELLPADDING=0 CELLSPACING=0><TR><TD ALIGN=center VALIGN=middle><FONT FACE="Verdana" SIZE=4 COLOR=#000000><BR>
+EOF;
+echo __('WAITING_LOG');
+
+echo <<<EOF
+<BR><BR></FONT></TD>  </TR></TABLE></TD>  </TR></TABLE></DIV>
+
+<SCRIPT LANGUAGE="JavaScript">
+var nava = (document.layers);
+var dom = (document.getElementById);
+var iex = (document.all);
+if (nava) { cach = document.cache }
+else if (dom) { cach = document.getElementById("cache").style }
+else if (iex) { cach = cache.style }
+largeur = screen.width;
+cach.left = Math.round((largeur/2)-200);
+cach.visibility = "visible";
+
+function cacheOff()
+        {
+        cach.visibility = "hidden";
+        }
+window.onload = cacheOff
+</SCRIPT>
+EOF;
 
 $error="";
 $info="";

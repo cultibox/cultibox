@@ -450,3 +450,6 @@ msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliqu
 
 msgid "INFO_RESET_PROGRAM"
 msgstr "<li>Programme r&eacute;initialis&eacute; avec succ&egrave;s</li>"
+
+msgid "WAITING_LOG"
+msgstr "Merci de patienter quelques instants durant le chargement des logs..."
