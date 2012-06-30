@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.1.159"
+#define MyAppVersion "1.1.169"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
@@ -41,7 +41,7 @@ var
 begin
   if FileExists(ExpandConstant('{sd}\{#MyAppName}\unins000.exe')) then
   begin
-    MsgBox('Vous devez d'abord desinstaller la version precedente', mbInformation, MB_OK);
+    MsgBox('Vous devez d''abord desinstaller la version precedente', mbInformation, MB_OK);
     Exec(ExpandConstant('{sd}\{#MyAppName}\unins000.exe'), '', '', SW_SHOW,
        ewWaitUntilTerminated, ResultCode);
   end;
