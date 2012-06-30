@@ -55,12 +55,14 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $type=getvar("plug_type${nb}");
    $tolerance=getvar("plug_tolerance{$nb}");
    $plug_update=false;
+   $power=getvar("plug_power${nb}");
 
    $error_plug[$nb]="";
    $old_name=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
    $old_type=get_plug_conf("PLUG_TYPE",$nb,$error_plug[$nb]);
    $old_tolerance=get_plug_conf("PLUG_TOLERANCE",$nb,$error_plug[$nb]);
    $old_id=get_plug_conf("PLUG_ID",$nb,$error_plug[$nb]);
+   $old_power=get_plug_conf("PLUG_POWER",$nb,$error_plug[$nb]);
 
    
 
@@ -107,6 +109,15 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    }
 
 
+   if((!empty($power))&&(isset($power))&&(!$reset)&&(strcmp("$old_power","$power")!=0)) {
+      if(check_power_value($power,$error_plug[$nb])) {
+      	insert_plug_conf("PLUG_POWER",$nb,$power,$error_plug[$nb]);
+      	$update_program=true;
+      	$plug_update=true;
+     }
+   }
+
+
    if(!empty($error_plug[$nb])) {
 	$pop_up_error_message=clean_popup_message($error_plug[$nb]);
         if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)) {
@@ -126,6 +137,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 
    $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
    $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$error_plug[$nb]);
+   $plug_power{$nb}=get_plug_conf("PLUG_POWER",$nb,$error_plug[$nb]);
 
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$error_plug[$nb]);
    if($plug_tolerance{$nb}==0) {
@@ -139,9 +151,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 if(($update_program)&&(empty($error))&&(!$count_err)) {
           $info=$info.__('VALID_UPDATE_CONF');
           $pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
-} else if(!empty($error)) {
-          $pop_up_error_message=clean_popup_message($error);
-}
+} 
 
 // Write file plug01 plug02...
 if((isset($sd_card))&&(!empty($sd_card))) {
