@@ -412,7 +412,7 @@ msgid "ERROR_ALARM_VALUE"
 msgstr "<li>Value for the alarm must be more than 0 and less than 100</li>"
 
 msgid "ERROR_PLUG_ID"
-msgstr "Plug identifier must be a numeric value"
+msgstr "<li>Plug identifier must be a numeric value</li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"

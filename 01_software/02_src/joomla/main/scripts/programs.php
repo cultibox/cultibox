@@ -109,7 +109,7 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 					$check=true;
 				} else {
 					if((!isset($force_on))||(empty($force_on))) {
-						$check=check_format_values_program($value_program);
+						$check=check_format_values_program($value_program,$error);
 					} else {
 						$check=true;
 					}
@@ -177,7 +177,7 @@ for($i=0;$i<$nb_plugs;$i++) {
                        	break;
 		case 'humidifier': $plugs_infos[$i]['translate']=__('PLUG_HUMIDIFIER');
                        	break;
-                case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DESHUMIDIFIER');
+                case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DEHUMIDIFIER');
                        	break;
 		default: $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
 			break;

@@ -779,15 +779,26 @@ function check_tolerance_value($type,$tolerance=0,&$out="") {
 // }}}
 
 
-// {{{ check_format_values_program($value)
+// {{{ check_format_values_program($value,$out)
 // ROLE check AND format value of a program 
 // IN   $value   value to check and format
+// IN	$out	 error or warning message
 // RET false is there is a wrong value, true else
-function check_format_values_program($value="0") {
+function check_format_values_program($value="",&$out="") {
+   if(empty($value)) {
+		 $out=$out.__('ERROR_VALUE_PROGRAM');
+                return false;
+   }
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
-   if(($value>90)||($value<0)) return false; 
-   if(!is_numeric($value)) return false; 
+   if(($value>90)||($value<0)) {
+		$out=$out.__('ERROR_VALUE_PROGRAM');
+		return false; 
+   }
+   if(!is_numeric($value)) {
+		$out.__('ERROR_VALUE_PROGRAM');
+		return false;
+   }
    return true;
 }
 // }}}
@@ -864,7 +875,7 @@ function check_and_copy_firm($sd_card,&$out="") {
 // RET	new message cleaned 
 function clean_popup_message(&$message="") {
         $old = array("'","<li>", "</li>", "&eacute;","&agrave;","&egrave;","&ecirc;","&deg;");
-        $new   = array("\'","", "", "é","à","è","ê","°");
+        $new   = array("\'","", "\\n", "é","à","è","ê","°");
 
         return str_replace($old, $new, $message);
 }
