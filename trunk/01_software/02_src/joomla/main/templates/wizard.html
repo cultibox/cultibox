@@ -122,12 +122,8 @@ timeFormat: 'hh:mm:ss',
          <td>
             	<input type="hidden" name="program" value="program">
              <?php echo __('START_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __('END_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
-
-	<?php if(strcmp($plug_type,"lamp")==0) { ?>
-                <input type="hidden" name="value_program" value"99.9">   
-            <?php } ?>    
          <?php if(strcmp($plug_type,"lamp")!=0) { ?>
-	<tr><td><?php echo __('VALUE_ON_OFF'); ?></td><td><input type="text" size="10" name="value_program" id="value_program" value="<?php echo $value_program ?>"/></td></tr>
+	<tr><td><?php echo __('VALUE_ON_OFF'); ?></td><td><input type="text" maxlength="4" size="4" name="value_program" id="value_program" value="<?php echo $value_program ?>"/><?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo " °C"; } else { echo " %"; } ?></td></tr>
         <?php } ?>
       </table>
       </td>
@@ -147,7 +143,13 @@ timeFormat: 'hh:mm:ss',
 
 <?php if((isset($plug_type))&&(!empty($plug_type))&&($step==3)) { ?>
       <input type="hidden" name="plug_type" value="<?php echo "$plug_type"; ?>">
+       <?php if(strcmp($plug_type,"lamp")==0) { ?>
+                <input type="hidden" name="value_program" value="99.9" />
+                <?php echo "poueeeeet"; ?>
+       <?php } ?>
 <?php } ?>
+
+
 
 <input type="hidden" name="selected_plug" value="<?php echo "$selected_plug"; ?>">
 

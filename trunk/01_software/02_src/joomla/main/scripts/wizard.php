@@ -81,13 +81,16 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
            }
 
 
+
               	$chtime=check_times($start_time,$end_time,$error); 
-		if((isset($error))&&(!empty($error))) {
-                           $pop_up_error_message=clean_popup_message($error);
+		if(strcmp($plug_type,"lamp")!=0) {
+		   $chval=check_format_values_program($value_program,$error);
+                   $plug_tolerance="1.0";
+ 		} else {
+                     $chval=true;
+			$plug_tolerance="0.0";
                 }
-		//$chval=check_format_values_program($value_program);
-		$chval=true;
-	
+
                 if(($chtime)&&($chval)) {
                         if($chtime==2) {
 				$prog[]= array(
@@ -117,6 +120,9 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
 
 
 			clean_program($selected_plug,$error);	
+			if(isset($plug_tolerance)) {
+                                   insert_plug_conf("PLUG_TOLERANCE",$selected_plug,$plug_tolerance,$error);
+			}
                         foreach($prog as $val) {	
                                 if(insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$error)) {
 				       insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$error);
@@ -135,9 +141,13 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
                                 header('Location: programs');	
                            }
 			}
-                } 
+                } else {
+			if((isset($error))&&(!empty($error))) {
+			   $pop_up_error_message=clean_popup_message($error);
+                        }
+               }
         }
-        if((isset($next_plug))&&(!empty($next_plug))) {
+        if((isset($next_plug))&&(!empty($next_plug))&&(empty($error))) {
 			$selected_plug=$selected_plug+1;
 			$step=1;
         }
