@@ -100,6 +100,7 @@ CREATE TABLE IF NOT EXISTS `plugs` (
   `PLUG_NAME` varchar(30) DEFAULT NULL,
   `PLUG_TYPE` varchar(20) NOT NULL DEFAULT 'unknown',
   `PLUG_TOLERANCE` decimal(3,1) DEFAULT NULL,
+  `PLUG_POWER` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
@@ -107,23 +108,23 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 -- Dumping data for table `plugs`
 --
 
-INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`) VALUES
-(1, '', 'plug1', 'unknown', NULL),
-(2, '', 'plug2', 'unknown', NULL),
-(3, '', 'plug3', 'unknown', NULL),
-(4, '', 'plug4', 'unknown', NULL),
-(5, '', 'plug5', 'unknown', NULL),
-(6, '', 'plug6', 'unknown', NULL),
-(7, '', 'plug7', 'unknown', NULL),
-(8, '', 'plug8', 'unknown', NULL),
-(9, '', 'plug9', 'unknown', NULL),
-(10, '', 'plug10', 'unknown', NULL),
-(11, '', 'plug11', 'unknown', NULL),
-(12, '', 'plug12', 'unknown', NULL),
-(13, '', 'plug13', 'unknown', NULL),
-(14, '', 'plug14', 'unknown', NULL),
-(15, '', 'plug15', 'unknown', NULL),
-(16, '', 'plug16', 'unknown', NULL);
+INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`) VALUES
+(1, '', 'plug1', 'unknown', NULL, 0),
+(2, '', 'plug2', 'unknown', NULL, 0),
+(3, '', 'plug3', 'unknown', NULL, 0),
+(4, '', 'plug4', 'unknown', NULL, 0),
+(5, '', 'plug5', 'unknown', NULL, 0),
+(6, '', 'plug6', 'unknown', NULL, 0),
+(7, '', 'plug7', 'unknown', NULL, 0),
+(8, '', 'plug8', 'unknown', NULL, 0),
+(9, '', 'plug9', 'unknown', NULL, 0),
+(10, '', 'plug10', 'unknown', NULL, 0),
+(11, '', 'plug11', 'unknown', NULL, 0),
+(12, '', 'plug12', 'unknown', NULL, 0),
+(13, '', 'plug13', 'unknown', NULL, 0),
+(14, '', 'plug14', 'unknown', NULL, 0),
+(15, '', 'plug15', 'unknown', NULL, 0),
+(16, '', 'plug16', 'unknown', NULL, 0);
 
 -- --------------------------------------------------------
 
