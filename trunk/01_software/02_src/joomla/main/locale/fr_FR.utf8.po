@@ -253,7 +253,13 @@ msgid "APPLY_PROGRAM"
 msgstr "Valider"
 
 msgid "VALUE_ON_OFF"
-msgstr "Valeur"
+msgstr "Fonctionnement"
+
+msgid "HUMI_WISHED"
+msgstr "Humidit&eacute; voulue"
+
+msgid "TEMP_WISHED"
+msgstr "Temp&eacute;rature voulue"
 
 msgid "VALUE_ON"
 msgstr "Marche"
@@ -417,6 +423,9 @@ msgstr "<li>Le code de la prise doit &ecirc;tre une valeur num&eacute;rique</li>
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> Une carte SD compatible cultibox est branch&eacute;e"
+
+msgid "INFO_PLUG_CULTIBOX_CARD"
+msgstr "<li>Vous pouvez maintenant connecter la carte SD dans la CultiBox.</li>"
 
 msgid "VALID_UPDATE_CONF"
 msgstr "<li>Configuration mise &agrave; jour avec succ&egrave;s</li>"

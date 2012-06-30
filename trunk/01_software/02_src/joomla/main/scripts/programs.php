@@ -143,6 +143,9 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 						if(insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$ret_plug[$selected_plug])) {
 							if(empty($info_plug[$selected_plug])) {
 								$info_plug[$selected_plug]=$info_plug[$selected_plug].__('INFO_VALID_UPDATE_PROGRAM');
+								if((isset($sd_card))&&(!empty($sd_card))) {
+									$info_plug[$selected_plug]=$info_plug[$selected_plug].__('INFO_PLUG_CULTIBOX_CARD');
+								}
 							}
 						}
 					}
@@ -151,6 +154,9 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 					} else {
 						if(count($info_plug)>0) {
                                                         $pop_up_message=clean_popup_message(__('INFO_VALID_UPDATE_PROGRAM'));
+							if((isset($sd_card))&&(!empty($sd_card))) {
+								$pop_up_message=$pop_up_message.clean_popup_message(__('INFO_PLUG_CULTIBOX_CARD'));
+							}
 						}
 					}
 				} else {
