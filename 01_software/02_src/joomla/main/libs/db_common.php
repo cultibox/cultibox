@@ -66,7 +66,11 @@ EOF;
    $db->query();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
-      $out=$out.__('ERROR_UPDATE_SQL').$ret;
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out=$out.__('ERROR_UPDATE_SQL').$ret;
+      } else {
+         $out=$out.__('ERROR_UPDATE_SQL');
+      }
       $return=0; 
    }
    if(!db_priv_end($db)) {
@@ -95,7 +99,11 @@ EOF;
    $res = $db->loadAssocList();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
-      $out=$out.__('ERROR_SELECT_SQL').$ret;
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out=$out.__('ERROR_SELECT_SQL').$ret;
+      } else {
+         $out=$out.__('ERROR_SELECT_SQL');
+      }
    }
 
    if(!db_priv_end($db)) {
@@ -121,7 +129,11 @@ EOF;
         $res = $db->loadResult();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
-      $out=$out.__('ERROR_SELECT_SQL').$ret;
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out=$out.__('ERROR_SELECT_SQL').$ret;
+      } else {
+         $out=$out.__('ERROR_SELECT_SQL');
+      }
    }
    
    if(!db_priv_end($db)) {
@@ -149,7 +161,12 @@ EOF;
    $db->query();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
-      $out=$out.__('ERROR_UPDATE_SQL').$ret;
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out=$out.__('ERROR_UPDATE_SQL').$ret;
+      } else {
+         $out=$out.__('ERROR_UPDATE_SQL');
+      }
+
    }
         
    if(!db_priv_end($db)) {
@@ -174,7 +191,12 @@ EOF;
    $res = $db->loadResult();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
-      $out=$out.__('ERROR_SELECT_SQL').$ret;
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out=$out.__('ERROR_SELECT_SQL').$ret;
+      } else {
+         $out=$out.__('ERROR_SELECT_SQL');
+      }
+
    }
 
    if(!db_priv_end($db)) {
@@ -201,7 +223,11 @@ EOF;
    $db->query();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
-      $out=$out.__('ERROR_UPDATE_SQL').$ret;
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out=$out.__('ERROR_UPDATE_SQL').$ret;
+      } else {
+         $out=$out.__('ERROR_UPDATE_SQL');
+      }
    }
 
    if(!db_priv_end($db)) {
@@ -211,12 +237,12 @@ EOF;
 // }}}
 
 
-// {{{ get_plugs_infos($nb,$out)
+// {{{ get_plugs_infos($nb,&$out)
 // ROLE get plugs informations (name,id,type)
 // IN $id      id of the plug
 //    $out      errors or warnings messages
 // RET return an array containing plugid and its name
-function get_plugs_infos($nb=0,$out="") {
+function get_plugs_infos($nb=0,&$out="") {
         $db = db_priv_start();
         $sql = <<<EOF
 SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`
@@ -229,7 +255,11 @@ EOF;
    $res = $db->loadAssocList();
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
-                $out=$out.__('ERROR_SELECT_SQL').$ret;
+            if($GLOBALS['DEBUG_TRACE']) {
+               $out=$out.__('ERROR_SELECT_SQL').$ret;
+            } else {
+               $out=$out.__('ERROR_SELECT_SQL');
+           }
         }
 
         if(!db_priv_end($db)) {
@@ -245,7 +275,7 @@ EOF;
 // IN $selected_plug   plug id to select
 //    $out      errors or warnings messages
 // RET plug data formated for highchart
-function get_data_plug($selected_plug="",$out="") {
+function get_data_plug($selected_plug="",&$out="") {
    $res="";
    if((isset($selected_plug))&&(!empty($selected_plug))) {
       $db = db_priv_start();
@@ -257,8 +287,12 @@ EOF;
            $res=$db->loadAssocList();
       $ret=$db->getErrorMsg();
            if((isset($ret))&&(!empty($ret))) {
-                   $out=$out.__('ERROR_SELECT_SQL').$ret;
-         return 0;
+   		if($GLOBALS['DEBUG_TRACE']) {
+                      $out=$out.__('ERROR_SELECT_SQL').$ret;
+                } else {
+                      $out=$out.__('ERROR_SELECT_SQL');
+                }
+                return 0;
            }
 
            if(!db_priv_end($db)) {
@@ -777,7 +811,11 @@ EOF;
         $db->query();
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
-                $out=$out.__('ERROR_UPDATE_SQL').$ret;
+            if($GLOBALS['DEBUG_TRACE']) {
+                  $out=$out.__('ERROR_UPDATE_SQL').$ret;
+            } else {
+                  $out=$out.__('ERROR_UPDATE_SQL');
+            }
         }
         if(!db_priv_end($db)) {
                 $out=$out.__('PROBLEM_CLOSING_CONNECTION');
@@ -800,7 +838,11 @@ EOF;
         $db->query();
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
-                $out=$out.__('ERROR_UPDATE_SQL').$ret;
+          if($GLOBALS['DEBUG_TRACE']) {
+                  $out=$out.__('ERROR_UPDATE_SQL').$ret;
+            } else {
+                  $out=$out.__('ERROR_UPDATE_SQL');
+            }
 		return false;
         }
         if(!db_priv_end($db)) {
@@ -937,7 +979,11 @@ EOF;
       $res = $db->loadAssocList();
       $ret=$db->getErrorMsg();
       if((isset($ret))&&(!empty($ret))) {
-         $out=$out.__('ERROR_SELECT_SQL').$ret;
+          if($GLOBALS['DEBUG_TRACE']) {
+                  $out=$out.__('ERROR_SELECT_SQL').$ret;
+            } else {
+                  $out=$out.__('ERROR_SELECT_SQL');
+            }
       }
       
       if(!db_priv_end($db)) {
@@ -996,7 +1042,11 @@ EOF;
    $res = $db->loadAssocList();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
-          $out=$out.__('ERROR_SELECT_SQL').$ret;
+          if($GLOBALS['DEBUG_TRACE']) {
+                  $out=$out.__('ERROR_SELECT_SQL').$ret;
+            } else {
+                  $out=$out.__('ERROR_SELECT_SQL');
+            }
    }
 
    $sql = <<<EOF
@@ -1006,7 +1056,11 @@ EOF;
    $first = $db->loadAssocList();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
-          $out=$out.__('ERROR_SELECT_SQL').$ret;
+      if($GLOBALS['DEBUG_TRACE']) {
+                  $out=$out.__('ERROR_SELECT_SQL').$ret;
+      } else {
+                  $out=$out.__('ERROR_SELECT_SQL');
+      }
    }
 
    $sql = <<<EOF
@@ -1016,7 +1070,11 @@ EOF;
    $last = $db->loadAssocList();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
-          $out=$out.__('ERROR_SELECT_SQL').$ret;
+            if($GLOBALS['DEBUG_TRACE']) {
+                  $out=$out.__('ERROR_SELECT_SQL').$ret;
+            } else {
+                  $out=$out.__('ERROR_SELECT_SQL');
+            }
    }
    
    if(!db_priv_end($db)) {
@@ -1125,7 +1183,11 @@ EOF;
         $res = $db->loadAssocList();
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
-                $out=$out.__('ERROR_SELECT_SQL').$ret;
+           if($GLOBALS['DEBUG_TRACE']) {
+                  $out=$out.__('ERROR_SELECT_SQL').$ret;
+            } else {
+                  $out=$out.__('ERROR_SELECT_SQL');
+            }
         } else {
       $data=array();   
       foreach($res as $val) {
@@ -1255,7 +1317,11 @@ EOF;
            $ret=$db->getErrorMsg();
    
            if((isset($ret))&&(!empty($ret))) {
-               $out=$out.__('ERROR_UPDATE_SQL').$ret;
+               if($GLOBALS['DEBUG_TRACE']) {
+                  $out=$out.__('ERROR_UPDATE_SQL').$ret;
+               } else {
+                  $out=$out.__('ERROR_UPDATE_SQL');
+               }
            }
    
            if(!db_priv_end($db)) {
