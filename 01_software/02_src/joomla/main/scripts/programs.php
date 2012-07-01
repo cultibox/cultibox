@@ -192,6 +192,8 @@ for($i=0;$i<$nb_plugs;$i++) {
 			break;
 					
 	}
+
+                 
 }
 
 if((isset($sd_card))&&(!empty($sd_card))) {
@@ -202,7 +204,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 
 if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
         $value_program="";
-}
+} 
 
 
 include('main/templates/programs.html');

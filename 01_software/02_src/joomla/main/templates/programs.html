@@ -238,7 +238,16 @@ $(document).ready(function() {
                             } elseif((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"deshumidifier")==0)) {
                                     echo __('HUMI_WISHED'); 
                             } ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_VALUE'); ?>" /></div></td><td><div id="regul_value<?php echo $i; ?>" style="<?php if(($i==$selected_plug)&&(strcmp("$regul_program","regul")!=0)) echo "display:none"; ?>">
-                       <input type="text" id="value_program<?php echo $i; ?>" name="value_program<?php echo $i; ?>" size="4" maxlength="4" <?php if(($i==$selected_plug)&&(!empty($value_program))) { ?>value="<?php echo $value_program;?>" <?php } else { ?>value="0" <?php } ?> />
+                       <input type="text" id="value_program<?php echo $i; ?>" name="value_program<?php echo $i; ?>" size="4" maxlength="4" 
+                       <?php if(($i==$selected_plug)&&(!empty($value_program))) { 
+                               ?>value="<?php echo $value_program;?>" <?php 
+                        } else { 
+                              if((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"ventilator")==0))  { 
+                                      echo 'value="22"'; 
+                               } elseif((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"dehumidifier")==0)) { 
+                                      echo 'value="50"'; 
+                              } 
+                        } ?> />
                                                 <?php if((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"ventilator")==0)) echo "°C"; ?>
                   <?php if((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"dehumidifier")==0)) echo "%"; ?>
                </div><?php } ?>
