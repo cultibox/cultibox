@@ -93,7 +93,7 @@ EOF;
 function get_graph_array(&$res,$key,$startdate,$fake="False",&$out="") {
    $db = db_priv_start();
         $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" ORDER BY time_catch ASC
+SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" GROUP BY time_catch ORDER BY time_catch ASC
 EOF;
    $db->setQuery($sql);
    $res = $db->loadAssocList();

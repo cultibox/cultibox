@@ -379,10 +379,10 @@ msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "<li> Probl&eacute; pendant la fermeture de la connection</li>"
 
 msgid "ERROR_UPDATE_SQL"
-msgstr "<li> Erreur dans la requ&ecirc;te SQL UPDATE:</li>"
+msgstr "<li> Erreur dans la requ&ecirc;te SQL UPDATE</li>"
 
 msgid "ERROR_SELECT_SQL"
-msgstr "<li> Erreur dans la requ&ecirc;te SQL SELECT:</li>"
+msgstr "<li> Erreur dans la requ&ecirc;te SQL SELECT</li>"
 
 msgid "EMPTY_TEMPERATURE_DATA"
 msgstr "<li> Donn&eacute;es des temp&eacute;ratures manquantes pour la date s&eacute;lectionn&eacute;e</li>"
