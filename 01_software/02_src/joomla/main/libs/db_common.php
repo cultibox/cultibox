@@ -908,7 +908,7 @@ function purge_program($arr) {
 
 
 // {{{ optimize_program($arr)
-// ROLE optimize a program by deleting uselles value
+// ROLE optimize a program by deleting useless value
 // IN $arr      array containing value of the program
 // RET the array opzimized 
 function optimize_program($arr) {

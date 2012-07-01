@@ -422,7 +422,13 @@ msgid "ERROR_TOLERANCE_VALUE_POURCENT"
 msgstr "<li> Error in the tolerance value. It must be less or equal to 25.5&#37; and greater than 0&#37;</li>"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li> Error in the value. It must be less or equal to 90 and greater to 0</li>"
+msgstr "<li> Error in the value.</li>"
+
+msgid "ERROR_VALUE_PROGRAM_TEMP"
+msgstr "<li> Error in the temperature value. It must be geater or equal to 5&deg;C and less or equal to 60&deg;C<</li>"
+
+msgid "ERROR_VALUE_PROGRAM_HUMI"
+msgstr "<li> Error in the humidity value. It must be greater or equal to 10&#37;  and less or equal to 95&#37;</li>"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "<li>Value for the alarm must be more than 0 and less than 100</li>"
