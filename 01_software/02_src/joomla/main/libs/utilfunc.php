@@ -241,7 +241,11 @@ function get_format_graph($arr) {
       $last_mm=$mm;
    }
    if("$last_hh:$last_mm" != "23:59") {
-      $data=fill_data("$last_hh","$last_mm","24","00","null","$data");
+		if((check_empty_record("$last_hh","$last_mm","24","00"))&&("$hh:$mm" != "00:00")) {
+      			$data=fill_data("$last_hh","$last_mm","24","00","$last_value","$data");
+		} else {
+			$data=fill_data("$last_hh","$last_mm","24","00","null","$data");
+		}
    } 
    } else {
           $data=fill_data("00","00","24","00","null","$data");
