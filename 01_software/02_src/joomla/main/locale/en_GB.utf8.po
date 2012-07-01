@@ -264,6 +264,9 @@ msgstr "On"
 msgid "VALUE_OFF"
 msgstr "Off"
 
+msgid "VALUE_REGUL"
+msgstr "Regulation"
+
 msgid "TIMEPICKER_SELECT_TIME"
 msgstr "Choose time"
 
@@ -290,9 +293,6 @@ msgstr "Choose the time"
 
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
 msgstr "Behaviour of your plug"
-
-msgid "FORCE_ON_VALUE"
-msgstr "Forced to ON" 
 
 msgid "CHART_FORCE_ON_VALUE"
 msgstr "Forced to ON" 
@@ -422,7 +422,7 @@ msgid "ERROR_TOLERANCE_VALUE_POURCENT"
 msgstr "<li> Error in the tolerance value. It must be less or equal to 25.5&#37; and greater than 0&#37;</li>"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li> Error in the value. It must be less or equal to 90 and greater or equal to 0</li>"
+msgstr "<li> Error in the value. It must be less or equal to 90 and greater to 0</li>"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "<li>Value for the alarm must be more than 0 and less than 100</li>"
