@@ -111,19 +111,20 @@
       <tr>
          <td></td>
          <td>
-            <?php echo __('ID_PLUG'); ?>
-         </td>
-         <td>
-            <input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>" <?php if($i<=3) echo "disabled"; ?>>
-         </td>
-      </tr>
-     <tr>
-         <td></td>
-         <td>
             <?php echo __('POWER_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER'); ?>" />
          </td>
          <td>
             <input type="text" size="3" maxlength="3" name="plug_power<?php echo $i; ?>" value="<?php echo $plug_power{$i}; ?>">
+         </td>
+      </tr>
+
+      <tr>
+         <td></td>
+         <td>
+            <?php echo __('ID_PLUG'); ?>
+         </td>
+         <td>
+            <input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>" <?php if($i<=3) echo "disabled"; ?>>
          </td>
       </tr>
    </table>
