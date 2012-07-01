@@ -8,6 +8,15 @@ require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
 
+
+
+$error="";
+$first_use=get_configuration("FIRST_USE",$error);
+if((isset($first_use))&&(!empty($first_use))&&(strcmp($first_use,"True")==0)&&($GLOBALS['FIRST_USE'])) {
+   header('Location: index.php/wizard');
+}
+
+
 $color_humidity = getvar('color_humidity');
 $color_temperature = getvar('color_temperature');
 $record_frequency=getvar('record_frequency');
@@ -16,7 +25,6 @@ $update_frequency=getvar('update_frequency');
 $nb_plugs=getvar('nb_plugs');
 $lang=getvar('lang');
 $update_conf=false;
-$error="";
 $info="";
 $temp_axis=getvar('temp_axis');
 $hygro_axis=getvar('hygro_axis');

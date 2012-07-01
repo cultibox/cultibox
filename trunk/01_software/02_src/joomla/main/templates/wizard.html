@@ -66,25 +66,28 @@ timeFormat: 'hh:mm:ss',
 <form action="<?php echo($_SERVER['PHP_SELF']);?>" method="post">
 <table width="100%">
 <tr>
-<td width="10%"><p class="step"><?php echo __('WIZARD_STEP'); echo " $step";?>/3:</p></td>
+<?php if($step>1) { ?><td width="10%"><p class="step"><?php echo __('WIZARD_STEP'); echo " ".$step-1;?>/3:</p></td><?php } ?>
 </tr>
 <tr>
 <td></td>
 <td>
 <p class="step_info">
-<?php if($step==1) { 
+<?php if($step==1) {
+	echo __('WIZARD_FIRST_USE');
+} ?>
+<?php if($step==2) { 
    if($selected_plug==1) {
       echo __('WIZARD_PLUG_NUMBER'); 
    } else { 
       echo __('WIZARD_CONFIGURE_OTHER_PLUG')." $selected_plug.".__('WIZARD_OTHER_PLUG_NUMBER');
    }
-} else if($step==2) { 
+} else if($step==3) { 
   if($selected_plug==1) {
       echo __('WIZARD_PLUG_TYPE'); 
   } else {
       echo __('WIZARD_OTHER_PLUG_TYPE');
   }
-} else if($step==3) { 
+} else if($step==4) { 
     echo __('WIZARD_PLUG_PROGRAM'); 
  } ?>
 </p>
@@ -95,7 +98,7 @@ timeFormat: 'hh:mm:ss',
 <br />
 <hr />
 <br />
-<?php if($step==2) { 
+<?php if($step==3) { 
         if($selected_plug!=1) { ?>
         <table width="100%"><tr><td width="25%"><?php echo __('TYPE_PLUG')." $selected_plug:"; ?></td>
         <td>
@@ -112,7 +115,7 @@ timeFormat: 'hh:mm:ss',
         <?php } ?>
 <?php } ?>
 
-<?php if($step==3) {?>
+<?php if($step==4) {?>
 <table width="100%">
    <tr>
       <td width="10%"></td>
@@ -145,7 +148,7 @@ timeFormat: 'hh:mm:ss',
 <br /><br />
 <input type=hidden name="step" value="<?php echo $step; ?>">
 
-<?php if((isset($plug_type))&&(!empty($plug_type))&&($step==3)) { ?>
+<?php if((isset($plug_type))&&(!empty($plug_type))&&($step==4)) { ?>
       <input type="hidden" name="plug_type" value="<?php echo "$plug_type"; ?>">
        <?php if(strcmp($plug_type,"lamp")==0) { ?>
                 <input type="hidden" name="value_program" value="99.9" />
@@ -159,9 +162,9 @@ timeFormat: 'hh:mm:ss',
 <table width="100%">
 <tr>
 <td width="20%"></td>
-<td width="50%"><?php if($step>1) { ?><input type=submit name="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>"><?php } ?></td>
-<td width="20%"><?php if($step<3) { ?><input type=submit name="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>"> <?php } else { ?>
-   <?php if($selected_plug<$nb_plugs) {?><input type=submit name="next_plug" value="<?php echo __('WIZARD_NEXT_PLUG'); ?>"></td><td><?php } ?><input type=submit name="finish" value="<?php echo __('WIZARD_FINISH_STEP'); ?>"> <?php } ?></td>
+<td width="50%"><?php if($step>2) { ?><input type=submit name="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>"><?php } ?><?php if($step==1) { ?><input type=submit name="close" value="<?php echo __('CLOSE_WIZARD'); ?>"<?php } ?></td>
+<td width="20%"><?php if($step<4) { ?><input type=submit name="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>"> <?php } else { ?>
+   <?php if(($selected_plug<$nb_plugs)&&($step>1)) {?><input type=submit name="next_plug" value="<?php echo __('WIZARD_NEXT_PLUG'); ?>"></td><td><?php } ?><?php if($step>1) { ?><input type=submit name="finish" value="<?php echo __('WIZARD_FINISH_STEP'); ?>"> <?php } } ?></td>
 <td></td>
 </tr>
 </table>

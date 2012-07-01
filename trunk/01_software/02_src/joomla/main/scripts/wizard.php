@@ -22,6 +22,15 @@ $info_plug=array();
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $selected_plug=getvar('selected_plug');
 $next_plug=getvar('next_plug');
+$first_use = get_configuration("FIRST_USE",$error);
+$close=getvar('close');
+
+
+
+if((isset($close))&&(!empty($close))) {
+	insert_configuration("FIRST_USE","False",$error);
+        header('Location: configuration');
+}
 
 if((empty($selected_plug))||(!isset($selected_plug))) {
      $selected_plug=1;
@@ -160,6 +169,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
 
 		      if($chinfo) {
                            if(($selected_plug==$nb_plugs)||((isset($finish))&&(!empty($finish)))) {
+				insert_configuration("FIRST_USE","False",$error);
                                 header('Location: programs');	
                            }
 			}
@@ -171,7 +181,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
         }
         if((isset($next_plug))&&(!empty($next_plug))&&(empty($error))) {
 			$selected_plug=$selected_plug+1;
-			$step=1;
+			$step=2;
         }
         
 }
@@ -179,12 +189,17 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
 $info=$info.__('WIZARD_DISABLE_FUNCTION');
 
 if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
-	$step=1;
+	if((isset($first_use))&&(!empty($first_use))&&(strcmp($first_use,"True")==0)&&($selected_plug==1)) {
+		$step=1;
+        } else {
+		$step=2;
+	}
 } else if((isset($next))&&(!empty($next))) {
 	$step=$step+1;	
 } else if((isset($previous))&&(!empty($previous))) {
 	$step=$step-1;
 }
+
 
 include('main/templates/wizard.html');
 

@@ -332,8 +332,15 @@ msgid "RESET_ZOOM_TITLE"
 msgstr "Reset zoom"
 
 # For the wizard part:
+
+msgid "WIZARD_FIRST_USE"
+msgstr "Welcome into the Cultibox Software! This is your first use of this sofwtware, to help you, a wizard will be launch."
+
 msgid "WIZARD_INTRO"
-msgstr "Wizard interface - assistant to configure your first plug"
+msgstr "Wizard interface - assistant to configure your plugs"
+
+msgid "CLOSE_WIZARD"
+msgstr "Close wizard"
 
 msgid "WIZARD_NEXT_STEP"
 msgstr "Next Step"
