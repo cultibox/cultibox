@@ -380,10 +380,10 @@ msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "<li> Problem during the connection close procedure</li>"
 
 msgid "ERROR_UPDATE_SQL"
-msgstr "<li> Error during the update sql request:</li>"
+msgstr "<li> Error during the update sql request</li>"
 
 msgid "ERROR_SELECT_SQL"
-msgstr "<li> Error during the select sql request:</li>"
+msgstr "<li> Error during the select sql request</li>"
 
 msgid "EMPTY_TEMPERATURE_DATA"
 msgstr "<li> Empty temperature data for the selected date</li>"
