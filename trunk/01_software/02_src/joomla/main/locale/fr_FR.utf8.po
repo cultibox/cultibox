@@ -270,6 +270,9 @@ msgstr "Marche"
 msgid "VALUE_OFF"
 msgstr "Arret"
 
+msgid "VALUE_REGUL"
+msgstr "R&eacute;gulation"
+
 msgid "CURRENT_PLUG_PROGRAM"
 msgstr "Programme pour la prise "
 
@@ -299,9 +302,6 @@ msgstr "Choisir l\'heure"
 
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
 msgstr "Comportement de votre prise"
-
-msgid "FORCE_ON_VALUE"
-msgstr "Marche forc&eacute;e"
 
 msgid "CHART_FORCE_ON_VALUE"
 msgstr "Marche forcee" 
@@ -421,7 +421,7 @@ msgid "ERROR_TOLERANCE_VALUE_POURCENT"
 msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 25.5&#37; et sup&eacute;rieur &agrave; 0&#37;;</li>"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li> Erreur dans la valeur: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 90 et sup&eacute;rieur ou &eacute;gal &agrave; 0</li>"
+msgstr "<li> Erreur dans la valeur: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 90 et sup&eacute;rieur &agrave; 0</li>"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "<li>La valeur de d&eacute;clenchement de l'alarme doit &ecirc;tre sup&eacute;rieure &agrave; 0 et inf&eacute;rieure &agrave; 100</li>"

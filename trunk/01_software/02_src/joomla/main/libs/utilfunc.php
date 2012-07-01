@@ -791,7 +791,7 @@ function check_tolerance_value($type,$tolerance=0,&$out="") {
 function check_format_values_program($value="0",&$out="") {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
-   if(($value>90)||($value<0)) {
+   if(($value>90)||($value<=0)) {
 		$out=$out.__('ERROR_VALUE_PROGRAM');
 		return false; 
    }

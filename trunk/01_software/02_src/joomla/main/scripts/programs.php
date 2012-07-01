@@ -30,6 +30,7 @@ $chinfo=true;
 $chtime="";
 $pop_up_message="";
 $pop_up_error_message="";
+$regul_program="";
 
 
 if(!isset($pop_up)) {
@@ -82,17 +83,19 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 	$start="start_time{$selected_plug}";
 	$end="end_time{$selected_plug}";
 	$value="value_program{$selected_plug}";
+	$regul="regul_program{$selected_plug}";
+
 	$start_time=getvar($start);
 	$end_time=getvar($end);
-	$force="force_on{$selected_plug}";
-	$force_on=getvar($force);
+        $regul_program=getvar($regul);
 
 
-
-	if((isset($force_on))&&(!empty($force_on))) {
-        	$value_program=99.9;
+	if(strcmp($regul_program,"on")==0) {
+        	$value_program="99.9";
+        } elseif(strcmp($regul_program,"off")==0) {
+                $value_program="0";
         } else {
-	        $value_program=getvar($value);
+                $value_program=getvar($value);
         }
 
         if(("$start_time"!="")&&("$end_time"!="")) {
@@ -108,7 +111,7 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 					$value_program="0";
 					$check=true;
 				} else {
-					if((!isset($force_on))||(empty($force_on))) {
+					if((strcmp($regul_program,"on")!=0)&&(strcmp($regul_program,"off")!=0)) {
 						$check=check_format_values_program($value_program,$error);
 					} else {
 						$check=true;
@@ -197,9 +200,10 @@ if((isset($sd_card))&&(!empty($sd_card))) {
         check_and_copy_firm($sd_card,$error);
 }
 
-if((isset($force_on))&&(!empty($force_on))) {
+if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
         $value_program="";
 }
+
 
 include('main/templates/programs.html');
 
