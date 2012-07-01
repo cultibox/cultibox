@@ -44,14 +44,15 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `ALARM_VALUE` varchar(5) NOT NULL DEFAULT '50.00',
   `ALARM_SENSO` varchar(4) NOT NULL DEFAULT '000T',
   `ALARM_SENSS` varchar(4) NOT NULL,
+  `FIRST_USE` varchar(5) NOT NULL DEFAULT 'True', 
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `configuration`
 --
 
-INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`) VALUES (1, 'red', 'green', 5, 5, 3, -1, 'fr_FR', 50, 100, 'True', '50.0', '50.0', '000T', '000+');
+INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`) VALUES (1, 'red', 'green', 5, 5, 3, -1, 'fr_FR', 50, 100, 'True', '50.0', '50.0', '000T', '000+','True');
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 --
 
 INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`) VALUES
-(1, '', 'plug1', 'unknown', NULL, 0),
+(1, '', 'HPS/MH', 'lamp', NULL, 0),
 (2, '', 'plug2', 'unknown', NULL, 0),
 (3, '', 'plug3', 'unknown', NULL, 0),
 (4, '', 'plug4', 'unknown', NULL, 0),
