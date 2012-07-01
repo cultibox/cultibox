@@ -126,12 +126,14 @@ timeFormat: 'hh:mm:ss',
             	<input type="hidden" name="program" value="program">
              <?php echo __('START_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __('END_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
          <?php if(strcmp($plug_type,"lamp")!=0) { ?>
-	<tr><td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) { echo __('VALUE_ON_OFF'); } 
-                         else if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo __('TEMP_WISHED'); }
-                         else { echo __('HUMI_WISHED'); } 
+	<tr><td><?php  if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo __('TEMP_WISHED'); }
+                         elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { echo __('HUMI_WISHED'); } 
 
-               ?></td><td><input type="text" maxlength="4" size="4" name="value_program" id="value_program" value="<?php echo $value_program ?>"/><?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo " °C"; } else { echo " %"; } ?></td></tr>
-        <?php } ?>
+               ?></td><td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) {?><input type="hidden" name="value_program" id="value_program" value="99.9"><?php } else { ?><input type="text" maxlength="4" size="4" name="value_program" id="value_program" <?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0))  { 
+                                      echo 'value="22"'; 
+                               } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { 
+                                      echo 'value="55"';  } ?>/><?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo " °C"; } else { echo " %"; } ?></td></tr>
+        <?php } } ?>
       </table>
       </td>
       <td width="80%"><div id="plug" style="width: 80%; height: 300px; margin: 0 auto"></div></td>

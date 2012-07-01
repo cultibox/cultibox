@@ -96,7 +96,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 
    if(((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0))) {
          if(check_tolerance_value($type,$tolerance,$error_plug[$nb])) {
-	    $tolerance=str_replace(",",".",$tolerance);
             insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$error_plug[$nb]);
             $update_program=true;
             $plug_update=true;

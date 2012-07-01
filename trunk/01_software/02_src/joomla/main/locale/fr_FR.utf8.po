@@ -421,7 +421,13 @@ msgid "ERROR_TOLERANCE_VALUE_POURCENT"
 msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 25.5&#37; et sup&eacute;rieur &agrave; 0&#37;;</li>"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li> Erreur dans la valeur: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 90 et sup&eacute;rieur &agrave; 0</li>"
+msgstr "<li> Erreur dans la valeur rentr&eacute;e</li>"
+
+msgid "ERROR_VALUE_PROGRAM_TEMP"
+msgstr "<li> Erreur dans la valeur de temp&eacute;rature. Elle doit &ecirc;tre sup&eacute;rieure ou &eacute;gal &agrave; 5&deg;C et inf&eacute;rieure ou &eacute;gal &agrave; 60&deg;C</li>"
+
+msgid "ERROR_VALUE_PROGRAM_HUMI"
+msgstr "<li> Erreur dans la valeur d'humidit&eacute;. Elle doit &ecirc;tre sup&eacute;rieure ou &eacute;gal &agrave; 10  et inf&eacute;rieure ou &eacute;gal &agrave; 95</li>"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "<li>La valeur de d&eacute;clenchement de l'alarme doit &ecirc;tre sup&eacute;rieure &agrave; 0 et inf&eacute;rieure &agrave; 100</li>"

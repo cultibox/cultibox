@@ -89,6 +89,9 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 	$end_time=getvar($end);
         $regul_program=getvar($regul);
 
+        $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$ret_plug[$selected_plug]);
+
+
 
 	if(strcmp($regul_program,"on")==0) {
         	$value_program="99.9";
@@ -112,7 +115,14 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 					$check=true;
 				} else {
 					if((strcmp($regul_program,"on")!=0)&&(strcmp($regul_program,"off")!=0)) {
-						$check=check_format_values_program($value_program,$error);
+                                                if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
+                                                   $check=check_format_values_program($value_program,$ret_plug[$selected_plug],"temp");
+                                                } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"deshumidifier")==0)) {
+                                                   $check=check_format_values_program($value_program,$ret_plug[$selected_plug],"humi");
+                                                } else {
+                                                   $check=check_format_values_program($value_program,$ret_plug[$selected_plug],"unknown");
+                                                }
+
 					} else {
 						$check=true;
 					}
@@ -164,7 +174,7 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 					}
 				} else {
 					$ret_plug[$selected_plug]=$ret_plug[$selected_plug].__('ERROR_VALUE_PROGRAM');
-				}
+                                }
 			}
 		} else {
 			$ret_plug[$selected_plug]=$ret_plug[$selected_plug].__('ERROR_MISSING_VALUE_TIME');

@@ -762,7 +762,8 @@ function write_calendar($sd_card,$data,&$out="") {
 //   $tolerancesave   the value to check
 //   $out      error or warning message
 // RET false is there is a wrong value, true else
-function check_tolerance_value($type,$tolerance=0,&$out="") {
+function check_tolerance_value($type,&$tolerance=0,&$out="") {
+   $tolerance=str_replace(",",".",$tolerance);
    if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
       if(($tolerance > 0)&&($tolerance <= 10)) {
          return true;
@@ -787,18 +788,34 @@ function check_tolerance_value($type,$tolerance=0,&$out="") {
 // ROLE check AND format value of a program 
 // IN   $value   value to check and format
 // IN	$out	 error or warning message
+// IN   $type	 temp or humi - type to check
 // RET false is there is a wrong value, true else
-function check_format_values_program($value="0",&$out="") {
+function check_format_values_program(&$value="0",&$out="",$type="temp") {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
-   if(($value>90)||($value<=0)) {
-		$out=$out.__('ERROR_VALUE_PROGRAM');
+
+    if(!is_numeric($value)) {
+                $out.__('ERROR_VALUE_PROGRAM');
+                return false;
+   }
+
+   if(strcmp($type,"temp")==0) {
+      if(($value>60)||($value<5)) {
+		$out=$out.__('ERROR_VALUE_PROGRAM_TEMP');
 		return false; 
+      }
+   } elseif(strcmp($type,"humi")==0) {
+      if(($value>95)||($value<10)) {
+                $out=$out.__('ERROR_VALUE_PROGRAM_HUMI');
+                return false; 
+      }
+   } else {
+	if(($value>99.9)||($value<0)) {
+                $out=$out.__('ERROR_VALUE_PROGRAM');
+                return false; 
+       }
    }
-   if(!is_numeric($value)) {
-		$out.__('ERROR_VALUE_PROGRAM');
-		return false;
-   }
+ 
    return true;
 }
 // }}}
