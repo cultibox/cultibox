@@ -332,8 +332,14 @@ msgid "RESET_ZOOM_TITLE"
 msgstr "Annuler le zoom"
 
 # For the wizard part:
+msgid "WIZARD_FIRST_USE"
+msgstr "Bienvenue dans l'interface de configuration et d'utilisation de votre Cultibox. Ceci est votre premi&egrave;re utilisation de l'interface, afin de vous aider un asistant va &ecirc;tre lanc&eacute;. Ce logiciel vous permettra de param&egrave;trer votre cultibox facilement, de pouvoir visualiser les enregistrements de temp&eacute;rature et d'humidit&eacute; et de configurer vos prises. Cliquez sur le bouton <b>suivant</b> pour lancer le wizard. Vous pouvez passer cette &eacute;tape et configurer manuellement vos prises en cliquant sur le bouton <b>Fermer l'assistant</b>"
+
+msgid "CLOSE_WIZARD"
+msgstr "Fermer l'assistant"
+
 msgid "WIZARD_INTRO"
-msgstr "Assistant de configuration de la premi&egrave;re prise"
+msgstr "Assistant de configuration des prises"
 
 msgid "WIZARD_NEXT_STEP"
 msgstr "Suivant &gt;"
