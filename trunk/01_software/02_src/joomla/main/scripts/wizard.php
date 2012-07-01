@@ -39,17 +39,18 @@ if(!isset($pop_up)) {
 }
 
 
-for($i=0;$i<=$nb_plugs;$i++) {
-        $info_plug[]="";
-        $ret_plug[]="";
-}
-
 $step=getvar('step');
 $next=getvar('next');
 $previous=getvar('previous');
-$start_time="00:00:00";
-$end_time="00:00:00";
-$plug_type=getvar('plug_type');
+$start_time="06:00:00";
+$end_time="18:00:00";
+
+if($selected_plug==1) {
+	$plug_type="lamp";
+} else {
+	$plug_type=getvar('plug_type');
+}
+
 $value_program=getvar('value_program');
 
 if((empty($plug_type))||(!isset($plug_type))) {
@@ -58,7 +59,28 @@ if((empty($plug_type))||(!isset($plug_type))) {
 
 
 if((empty($value_program))||(!isset($value_program))) {
-       $value_program="0.0";
+       if((!empty($plug_type))&&(isset($plug_type))) {
+	   switch ($plug_type) {
+    		case 'heating':
+			$value_program=22.0;
+        		break;
+    		case 'ventilator':
+			$value_program=22.0;
+        		break;
+    		case 'humidifier':
+			$value_program=55.0;
+        		break;
+		case 'dehumidifier':
+			$value_program=55.0;
+			break;
+        	case 'lamp':
+			$value_program=0.0;
+        		break;
+		case 'unknown' :
+			$value_program=0.0;
+			break;
+		}
+	}
 }
 
 
