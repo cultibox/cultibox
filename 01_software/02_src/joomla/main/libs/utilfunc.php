@@ -13,7 +13,7 @@ static $string_lang;
 if(is_file("main/libs/l10n.php")) {
 	require_once 'main/libs/l10n.php';
 } else {
-	require_once '../libs/l10n.php';
+	require_once '../../libs/l10n.php';
 }
 
 function __() {
