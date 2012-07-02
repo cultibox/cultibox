@@ -103,7 +103,7 @@ require_once('../../libs/utilfunc.php');
                     case 4:
                         $("#loadingpannel").html("Success!");
                         window.setTimeout(function(){ $("#loadingpannel").hide();},2000);
-                        location.assign(location.href);
+			window.top.location.reload();
                     break;
                 }              
                
