@@ -1,3 +1,14 @@
+<?php 
+
+require_once('../../libs/config.php');
+require_once('../../libs/db_common.php');
+require_once('../../libs/utilfunc.php');
+
+?>
+
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
@@ -92,6 +103,7 @@
                     case 4:
                         $("#loadingpannel").html("Success!");
                         window.setTimeout(function(){ $("#loadingpannel").hide();},2000);
+                        location.assign(location.href);
                     break;
                 }              
                
