@@ -31,12 +31,14 @@ if(!isset($pop_up)) {
 
 
 if((isset($sd_card))&&(!empty($sd_card))) {
-	check_and_copy_firm($sd_card,$error);
+        check_and_copy_firm($sd_card,$error);
         $data=create_calendar_from_database($error);
-	if(count($data)>0) {
-		write_calendar($sd_card,$data,$error);
-	}
-} 
+        if(count($data)>0) {
+                write_calendar($sd_card,$data,$error);
+        }
+}
+
+
 include('main/templates/calendar.html');
 
 ?>

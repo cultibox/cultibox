@@ -1177,7 +1177,7 @@ function create_calendar_from_database(&$out="") {
    $year=date('Y');
         $db = db_priv_start();
         $sql = <<<EOF
-SELECT `Subject`,`StartTime`,`EndTime` FROM `jqcalendar` WHERE `StartTime` LIKE "{$year}-%"
+SELECT `Subject`,`StartTime`,`EndTime`, `Description` FROM `jqcalendar` WHERE `StartTime` LIKE "{$year}-%"
 EOF;
         $db->setQuery($sql);
         $res = $db->loadAssocList();
@@ -1194,20 +1194,23 @@ EOF;
         
          $s=array();
          $line="";
-         $month=substr($val['StartTime'],5,2);
-         $day=substr($val['StartTime'],8,2);
-         $year=substr($val['StartTime'],0,4);
+         $start_month=substr($val['StartTime'],5,2);
+         $start_day=substr($val['StartTime'],8,2);
+         $start_year=substr($val['StartTime'],0,4);
 
          $end_month=substr($val['EndTime'],5,2);
          $end_day=substr($val['EndTime'],8,2);
          $end_year=substr($val['EndTime'],0,4);
+
+         $desc=$val['Description'];
       
          $count=0;
          $number=0;
+
          for($i=0;$i<strlen($val['Subject']);$i++) {
                $count=$count+1;
                $line=$line.$val['Subject'][$i];
-               if($count==13) {
+               if($count==14) {
                   $s[]=$line;
                   $line="";
                   $count=0;
@@ -1219,7 +1222,7 @@ EOF;
                }
          }
 
-         if(("$count"!="13")&&("$number"!="255")) {
+         if(("$count"!="14")&&("$number"!="255")) {
             $s[]=$line;
             $number=$number+1;
          }
@@ -1228,11 +1231,18 @@ EOF;
             $number="0$number";
          }
 
+         while(strlen($s[$number-1])<14) {
+		$s[$number-1]=$s[$number-1]." ";
+         }
+
          $data[]=array(
-               "month" => $month,
-               "day" => $day,
+               "start_month" => $start_month,
+               "start_day" => $start_day,
+               "end_month" => $end_month,
+               "end_day" => $end_day,
                "number" => $number,
-               "subject" => $s
+               "subject" => $s,
+               "description" => $desc
          );
          unset($s);
       }
