@@ -461,6 +461,11 @@ function check_times($start_time="",$end_time="",&$out="") {
          return 0;
       }
 
+      if(strcmp($start_time,$end_time)==0) {
+         $out=$out.__('ERROR_SAME_TIME');
+         return 0;
+      }
+
       if(!preg_match('#^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$#', $start_time)) {
          $out=$out.__('ERROR_FORMAT_TIME');
          return 0;
