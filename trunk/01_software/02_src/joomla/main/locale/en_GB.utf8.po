@@ -412,6 +412,9 @@ msgstr "<li> Missing value for Start/End time</li>"
 msgid "ERROR_FORMAT_TIME"
 msgstr "<li> Error in time format: HH:MM:SS</li>"
 
+msgid "ERROR_SAME_TIME"
+msgstr "<li>Error in the time values. Start time and end time must be different</li>"
+
 msgid "ERROR_WRITE_SD"
 msgstr "<li> Error, can't write programs into the sd card</li>"
 

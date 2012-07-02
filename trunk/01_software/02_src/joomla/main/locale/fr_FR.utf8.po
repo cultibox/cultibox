@@ -411,6 +411,9 @@ msgstr "<li> Valeur manquante pour la date de d&eacute;but/fin du programme</li>
 msgid "ERROR_FORMAT_TIME"
 msgstr "<li> Erreur dans le format de l'heure: HH:MM:SS</li>"
 
+msgid "ERROR_SAME_TIME"
+msgstr "<li>L'heure de d&eacute;part et l'heure de fin doivent &ecirc;tre diff&eacute;rentes.</li>"
+
 msgid "ERROR_WRITE_SD"
 msgstr "<li> Erreur durant l'&eacute;criture sur la carte SD</li>"
 
