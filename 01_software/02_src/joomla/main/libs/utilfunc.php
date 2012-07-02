@@ -742,16 +742,31 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
 function write_calendar($sd_card,$data,&$out="") {
    if(count($data)>0) {
       foreach($data as $val) {
-         $file="$sd_card/logs/$val[month]/cal_$val[day]";
-         if($f=fopen("$file","w+")) {
-            fputs($f,"$val[number]");
-            foreach($val['subject'] as $sub) {
-               fputs($f,"\r\n"."$sub");
-            }
-            fclose($f);
-         }
-      }
+         $month=$val['start_month'];
+         $day=$val['start_day'];
+         while($month<=$val['end_month']) {
+			while($day<=$val['end_day']) {	
+				$file="$sd_card/logs/$month/cal_$day";
+                                if($f=fopen("$file","w+")) {
+                                    fputs($f,"$val[number]");
+                                    foreach($val['subject'] as $sub) {
+                                       fputs($f,"\r\n"."$sub");
+                                    }
+                                    fclose($f);
+                                } 
+                                if($day==31) {
+                                    $day="01";
+                                } else {
+                                   $day=$day+1;
+                                   while(strlen($day)<2) {
+                                       $day="0$day";
+                                  }
+                                }
+                        }
+                        $month=$month+1;
+	 }	
    }
+  }
 }
 //}}}
 
@@ -915,5 +930,6 @@ function clean_popup_message(&$message="") {
         return str_replace($old, $new, $message);
 }
 // }}}
+
 
 ?>

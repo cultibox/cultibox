@@ -117,6 +117,7 @@ if($_GET["id"]){
                         function(data){
                               if (data.IsSuccess) {
                                     alert(data.Msg); 
+				    window.top.location.reload();
                                     CloseModelWindow(null,true);                            
                                 }
                                 else {
@@ -143,6 +144,7 @@ if($_GET["id"]){
                 success: function(data) {
                     alert(data.Msg);
                     if (data.IsSuccess) {
+                        window.top.location.reload();
                         CloseModelWindow(null,true);  
                     }
                 }
