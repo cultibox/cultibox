@@ -17,8 +17,7 @@ include($this['path']->path('layouts:template.config.php'));
 <?php echo $this['template']->render('head'); ?>
          <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css" />
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" />
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/scw.css" />
-
+		<link rel="stylesheet" media="all" type="text/css" href="main/libs/css/datepicker.css" />
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                 <script type="text/javascript" src="main/libs/js/jquery-1.7.2.min.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-1.8.19.custom.min.js"></script>
@@ -26,7 +25,8 @@ include($this['path']->path('layouts:template.config.php'));
                 <script type="text/javascript" src="main/libs/js/exporting.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-timepicker-addon.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-sliderAccess.js"></script>
-                <script type="text/javascript" src="main/libs/js/scwLanguages.js"></script>
+                <script type="text/javascript" src="main/libs/js/jquery.ui.core.js"></script>
+	        <script type="text/javascript" src="main/libs/js/jquery.ui.widet.js"></script>
 		<script type="text/javascript" src="main/libs/js/cultibox.js"></script>
                 <style type="text/css">
                         /* css for timepicker */

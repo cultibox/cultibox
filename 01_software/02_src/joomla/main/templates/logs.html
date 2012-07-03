@@ -23,6 +23,26 @@ document.write('<script type="text\/javascript" src="main\/libs\/js\/scw.js"><\/
    <br />
 <?php } ?>
 
+<?php switch($lang) {
+
+	case 'fr_FR': 
+                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-fr.js"></script>'; 
+		break;
+        }
+?>
+
+<script>
+$(function() {
+   $("#datepicker").datepicker({ 
+dateFormat: "yy-mm-dd",
+showButtonPanel: true,
+showOn: "both",
+buttonImage: "../main/libs/img/datepicker.png",
+buttonImageOnly: 'true'
+}).val()
+});
+</script>
+
 <table width="100%">
    <tr>
       <td width="50%" align="right">
@@ -30,7 +50,7 @@ document.write('<script type="text\/javascript" src="main\/libs\/js\/scw.js"><\/
          <?php echo __('SELECT_DISPLAYED_DAY'); ?>
       </td>
       <td width="50%">
-         <input id="startday" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>" onClick='scwShow(document.getElementById("startday"),this);'>
+         <input id="datepicker" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>">
          <?php echo __('SELECT_PROGRAM_PLUG'); ?>
          <select name="select_plug">
             <option value="">---</option>
