@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 -- Dumping data for table `configuration`
 --
 
-INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`) VALUES (1, 'red', 'green', 5, 5, 3, -1, 'fr_FR', 50, 100, 'True', '50.0', '50.0', '000T', '000+','True');
+INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`) VALUES (1, 'red', 'green', 5, 5, 3, -1, 'fr_FR', 50, 100, 'True', '0000', '50.0', '000T', '000+');
 
 -- --------------------------------------------------------
 
