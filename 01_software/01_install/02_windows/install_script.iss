@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.1.169"
+#define MyAppVersion "1.1.184"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
@@ -39,6 +39,21 @@ function InitializeSetup():boolean;
 var
   ResultCode: integer;
 begin
+  if FileExists(ExpandConstant('{sd}\{#MyAppName}\run\backup.sql')) then
+    MsgBox('Sauvegarde de vos logs et programme', mbInformation, MB_OK);
+    Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_start.exe'), '', '', SW_SHOW,
+       ewWaitUntilTerminated, ResultCode);
+
+    ExtractTemporaryFile ('backup.bat');
+
+    Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C copy backup.bat {sd}\{#MyAppName}\backup.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+
+    Exec (ExpandConstant ('{cmd}'), '/C backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+
+    Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_stop.exe'), '', '', SW_SHOW,
+       ewWaitUntilTerminated, ResultCode);
+  begin
+  end;
   if FileExists(ExpandConstant('{sd}\{#MyAppName}\unins000.exe')) then
   begin
     MsgBox('Vous devez d''abord desinstaller la version precedente', mbInformation, MB_OK);
@@ -48,8 +63,15 @@ begin
   Result := True;
 end;
 
-
 [Files]
+; Backup file. Used in pre install
+Source: "F:\Cultibox_web\01_software\01_install\02_windows\backup.bat"; \
+  DestDir: "{app}\run\backup.bat"; \
+  Flags: ignoreversion recursesubdirs createallsubdirs
+; load file. Used in post install
+Source: "F:\Cultibox_web\01_software\01_install\02_windows\load.bat"; \
+  DestDir: "{app}\run\load.bat"; \
+  Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\01_software\01_install\01_src\01_xampp\*"; \
   DestDir: "{app}\xampp"; \
   Flags: ignoreversion recursesubdirs createallsubdirs
@@ -91,6 +113,10 @@ Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
   Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\fake_log.sql"""; \
   WorkingDir: "{app}"; \
   Description: "Install log base";
+Filename: "{cmd}"; \
+  Parameters: "/C ""{app}\run\load.bat"""; \
+  WorkingDir: "{app}\run"; \
+  Description: "Install log user base";
 Filename: "{app}\xampp\xampp_stop.exe";Description: "Kill Xampp";
 
 [UninstallDelete]
