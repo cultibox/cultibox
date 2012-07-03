@@ -185,6 +185,7 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 for($i=0;$i<$nb_plugs;$i++) {
 	$data_plug=get_data_plug($i+1,$error);
        	$plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"");
+
 	switch($plugs_infos[$i]['PLUG_TYPE']) {
 		case 'unknown': $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
 						break;
