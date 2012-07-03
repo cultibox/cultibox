@@ -524,6 +524,9 @@ function format_program_highchart_data($arr,$date_start="") {
                 $ref_day=substr($date_start, 8, 2);
    }
    date_default_timezone_set('UTC');
+   if($GLOBALS['DEBUG_TRACE']) {
+         echo "<br />Debug Trace Highchart Data:<br />";
+   }
    if(count($arr)>0) {
       if(is_array($arr)) {
       foreach($arr as $value) {
@@ -547,7 +550,14 @@ function format_program_highchart_data($arr,$date_start="") {
             }
          }
 
+
          if((!empty($data))&&($value['value']!=0)&&(strcmp($value['time_start'],"000000")!=0)) {
+            if($GLOBALS['DEBUG_TRACE']) {
+                echo "<br />Case 1:  <br/>Current:";
+                print_r($value);
+                echo "<br />Last:".$last_time." - ".$last_value ;
+            }
+
             $shh=substr($value['time_start'],0,2);
             $smm=substr($value['time_start'],2,2);
             $sss=substr($value['time_start'],4,2);
@@ -558,6 +568,11 @@ function format_program_highchart_data($arr,$date_start="") {
             $val_end=mktime($ehh,$emm,$ess,$ref_month,$ref_day,$ref_year)*1000;
                if(strcmp($value['time_stop'],"235959")!=0) {
                   if("$last_time"!="$val_start") {
+                       if($GLOBALS['DEBUG_TRACE']) {
+                          echo "<br />Case 1-1:  <br/>Current:";
+                          print_r($value);
+                          echo "<br />Last:".$last_time." - ".$last_value ;
+                       }
                      $data=$data.",[".$last_time.",0],[".$val_start.",0],[".$val_start.",".$value['value']."],[".$val_end.",".$value['value']."]";
                   } else {
                      $data=$data.",[".$val_start.",".$value['value']."],[".$val_end.",".$value['value']."]";
@@ -565,12 +580,21 @@ function format_program_highchart_data($arr,$date_start="") {
                   $last_time=$val_end;
                   $last_value=$value['value'];
                } else {
-                  $data=$data.",[".$last_time.",0],[".$val_start.",0],[".$val_start.",".$value['value']."],[".$val_end.",".$value['value']."]";
+                   if("$last_time"!="$val_start") {
+                        $data=$data.",[".$last_time.",0],[".$val_start.",0],[".$val_start.",".$value['value']."],[".$val_end.",".$value['value']."]";
+                   } else {
+                        $data=$data.",[".$val_start.",".$value['value']."],[".$val_end.",".$value['value']."]";
+                   }
+                    if($GLOBALS['DEBUG_TRACE']) {
+                          echo "<br />Case 1-2:  <br/>Current:";
+                          print_r($value);
+                          echo "<br />Last:".$last_time." - ".$last_value ;
+                    }
                }
          }
          $last_val=$value;
       }
-         }
+  }
       if((!empty($data))&&(strcmp($last_val['time_stop'],"235959")!=0)) {
          if("$ref_year"=="1970") {
             $last=mktime(0,0,0,$ref_month,$ref_day+1,$ref_year)*1000;
