@@ -11,9 +11,9 @@ static $__translations_fallback;
 static $string_lang;
 
 if(is_file("main/libs/l10n.php")) {
-	require_once 'main/libs/l10n.php';
+   require_once 'main/libs/l10n.php';
 } else {
-	require_once '../../libs/l10n.php';
+   require_once '../../libs/l10n.php';
 }
 
 function __() {
@@ -88,7 +88,7 @@ function getvar($varname) {
 
 // {{{ check_empty_string($value)
 // ROLE check is a string is empty or only composed with CR
-// IN $value	string to check
+// IN $value   string to check
 // RET false if the string is empty, true else
 function check_empty_string($value="") {
    $value=str_replace(' ','',$value);
@@ -129,15 +129,15 @@ function get_log_value($file,&$array_line) {
             $time_catch=rtrim($time_catch);
            
             if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(!empty($temp[1]))&&(!empty($temp[2]))) {
-		  if((strlen($temp[1])<=4)&&(strlen($temp[2])<=4)&&(strlen($temp[0])==14)) {
-               		$array_line[] = array(
-                  		"timestamp" => $temp[0],
-                  		"temperature" => $temp[1],
-                  		"humidity" => $temp[2],
-                  		"date_catch" => $date_catch,
-                  		"time_catch" => $time_catch
-               		);
-	       	  }
+        if((strlen($temp[1])<=4)&&(strlen($temp[2])<=4)&&(strlen($temp[0])==14)) {
+                     $array_line[] = array(
+                        "timestamp" => $temp[0],
+                        "temperature" => $temp[1],
+                        "humidity" => $temp[2],
+                        "date_catch" => $date_catch,
+                        "time_catch" => $time_catch
+                     );
+               }
             }
          }
       }
@@ -241,11 +241,11 @@ function get_format_graph($arr) {
       $last_mm=$mm;
    }
    if("$last_hh:$last_mm" != "23:59") {
-		if((check_empty_record("$last_hh","$last_mm","24","00"))&&("$hh:$mm" != "00:00")) {
-      			$data=fill_data("$last_hh","$last_mm","24","00","$last_value","$data");
-		} else {
-			$data=fill_data("$last_hh","$last_mm","24","00","null","$data");
-		}
+      if((check_empty_record("$last_hh","$last_mm","24","00"))&&("$hh:$mm" != "00:00")) {
+               $data=fill_data("$last_hh","$last_mm","24","00","$last_value","$data");
+      } else {
+         $data=fill_data("$last_hh","$last_mm","24","00","null","$data");
+      }
    } 
    } else {
           $data=fill_data("00","00","24","00","null","$data");
@@ -408,24 +408,24 @@ function get_sd_card() {
                         break;
 
                 case 'Windows NT':
-						$vol=`MountVol`;
-						$vol=explode("\n",$vol);
-						$dir=Array();
-						foreach($vol as $value) {
-							// repérer les deux derniers segments du nom de l'hôte
-							preg_match('/[C-Z]:/', $value,$matches);
-							foreach($matches as $val) {
-								$dir[]=$val;
-							}
-						}
-						
+                  $vol=`MountVol`;
+                  $vol=explode("\n",$vol);
+                  $dir=Array();
+                  foreach($vol as $value) {
+                     // repérer les deux derniers segments du nom de l'hôte
+                     preg_match('/[C-Z]:/', $value,$matches);
+                     foreach($matches as $val) {
+                        $dir[]=$val;
+                     }
+                  }
+                  
                         foreach($dir as $disque) {
-										$check=`dir $disque`;
-										if(strlen($check)>0) {
-											if(check_cultibox_card("$disque")) {
-											        return "$disque";
-											}
-										}
+                              $check=`dir $disque`;
+                              if(strlen($check)>0) {
+                                 if(check_cultibox_card("$disque")) {
+                                         return "$disque";
+                                 }
+                              }
                         }
                         break;
         }
@@ -439,10 +439,10 @@ function get_sd_card() {
 // IN   directory to check
 // RET true if it's a cultibox directory, false else
 function check_cultibox_card($dir="") {
-	if((is_file("$dir/plugv"))&&(is_file("$dir/pluga"))&&(is_dir("$dir/logs"))) {
-			return true;
-	} 
-	return false;
+   if((is_file("$dir/plugv"))&&(is_file("$dir/pluga"))&&(is_dir("$dir/logs"))) {
+         return true;
+   } 
+   return false;
 }
 // }}}
 
@@ -666,8 +666,8 @@ function write_pluga($sd_card,&$out="") {
       $pluga=Array();
       $pluga[]="16";
       for($i=0;$i<16;$i++) {
-		$tmp_pluga=get_plug_conf("PLUG_ID",$i+1,$out);
-		if((empty($tmp_pluga))||(!isset($tmp_pluga))) {
+      $tmp_pluga=get_plug_conf("PLUG_ID",$i+1,$out);
+      if((empty($tmp_pluga))||(!isset($tmp_pluga))) {
                       $tmp_pluga=$GLOBALS['PLUGA_DEFAULT'][$i];
                 }
                 $pluga[]="$tmp_pluga";
@@ -710,7 +710,7 @@ function write_plugconf($data,$sd_card,&$out="") {
 // IN   $sd_card      location of the sd card to save data
 //   $record_frequency   record frequency value
 //   $update_frequency   update frequency value
-//   $power_frequency	 record of the power frequency value
+//   $power_frequency    record of the power frequency value
 //   $alarm_enable       enable or disable the alarm system
 //   $alarm_value        value to trigger the alarm
 //   $alarm_senso        humidity or temperature to use to trigger the alarm
@@ -774,28 +774,29 @@ function write_calendar($sd_card,$data,&$out="") {
          $month=$val['start_month'];
          $day=$val['start_day'];
          while($month<=$val['end_month']) {
-			while($day<=$val['end_day']) {	
-				$file="$sd_card/logs/$month/cal_$day";
-                                if($f=fopen("$file","w+")) {
-                                    fputs($f,"$val[number]");
-                                    foreach($val['subject'] as $sub) {
-                                       fputs($f,"\r\n"."$sub");
-                                    }
-                                    fclose($f);
-                                } 
-                                if($day==31) {
-                                    $day="01";
-                                } else {
-                                   $day=$day+1;
-                                   while(strlen($day)<2) {
-                                       $day="0$day";
-                                  }
-                                }
-                        }
-                        $month=$month+1;
-	 }	
+            while($day<=$val['end_day']) {   
+               $file="$sd_card/logs/$month/cal_$day";
+               if($f=fopen("$file","w+")) {
+                  fputs($f,"$val[number]");
+                  foreach($val['subject'] as $sub) {
+                     fputs($f,"\r\n"."$sub");
+                  }
+                  fputs($f,"\r\n");
+                  fclose($f)
+               } 
+               if($day==31) {
+                  $day="01";
+               } else {
+                  $day=$day+1;
+                  while(strlen($day)<2) {
+                     $day="0$day";
+                  }
+               }
+            }
+         $month=$month+1;
+         }
+      }
    }
-  }
 }
 //}}}
 
@@ -831,8 +832,8 @@ function check_tolerance_value($type,&$tolerance=0,&$out="") {
 // {{{ check_format_values_program($value,$out)
 // ROLE check AND format value of a program 
 // IN   $value   value to check and format
-// IN	$out	 error or warning message
-// IN   $type	 temp or humi - type to check
+// IN   $out    error or warning message
+// IN   $type    temp or humi - type to check
 // RET false is there is a wrong value, true else
 function check_format_values_program(&$value="0",&$out="",$type="temp") {
    $value=str_replace(',','.',$value);
@@ -845,8 +846,8 @@ function check_format_values_program(&$value="0",&$out="",$type="temp") {
 
    if(strcmp($type,"temp")==0) {
       if(($value>60)||($value<5)) {
-		$out=$out.__('ERROR_VALUE_PROGRAM_TEMP');
-		return false; 
+      $out=$out.__('ERROR_VALUE_PROGRAM_TEMP');
+      return false; 
       }
    } elseif(strcmp($type,"humi")==0) {
       if(($value>95)||($value<10)) {
@@ -854,7 +855,7 @@ function check_format_values_program(&$value="0",&$out="",$type="temp") {
                 return false; 
       }
    } else {
-	if(($value>99.9)||($value<0)) {
+   if(($value>99.9)||($value<0)) {
                 $out=$out.__('ERROR_VALUE_PROGRAM');
                 return false; 
        }
@@ -898,8 +899,8 @@ function check_alarm_value($value="0") {
 
 // {{{ check_and_copy_firm($sd_card,&$out="")
 // ROLE check if the firm.hex has to be copied and do the copy into the sd card
-// IN   $sd_card	the sd card pathname 
-//	$out		error or warning message
+// IN   $sd_card   the sd card pathname 
+//   $out      error or warning message
 // RET none
 function check_and_copy_firm($sd_card,&$out="") {
    $new_firm="";
@@ -909,9 +910,9 @@ function check_and_copy_firm($sd_card,&$out="") {
    $current_file="$sd_card/firm.hex";
 
    if(is_file("$new_file")) {
-	$handle = fopen("$new_file", 'r');
-	if ($handle) {
-         	$new_firm = fgets($handle);
+   $handle = fopen("$new_file", 'r');
+   if ($handle) {
+            $new_firm = fgets($handle);
         }
         fclose($handle);
    }
@@ -928,21 +929,21 @@ function check_and_copy_firm($sd_card,&$out="") {
 
    
    if((isset($new_firm))&&(!empty($new_firm))) {
-		if((!isset($current_firm))||(empty($current_firm))) {
+      if((!isset($current_firm))||(empty($current_firm))) {
                    copy($new_file, $current_file);
-		} else {
-			$current_firm=trim("$current_firm");
-			$new_firm=trim("$new_firm");
-		
-			if((strlen($current_firm)==15)&&(strlen($new_firm)==15)) {	
-				$new_firm=substr($new_firm,9,4); 
-				$current_firm=substr($current_firm,9,4);
-				if($new_firm > $current_firm) {
-					copy($new_file, $current_file);
-				}
-			}
+      } else {
+         $current_firm=trim("$current_firm");
+         $new_firm=trim("$new_firm");
+      
+         if((strlen($current_firm)==15)&&(strlen($new_firm)==15)) {   
+            $new_firm=substr($new_firm,9,4); 
+            $current_firm=substr($current_firm,9,4);
+            if($new_firm > $current_firm) {
+               copy($new_file, $current_file);
+            }
+         }
 
-		}
+      }
    }
 }
 // }}}
@@ -950,13 +951,13 @@ function check_and_copy_firm($sd_card,&$out="") {
 
 // {{{ clean_popup_message(&$message="")
 // ROLE clean popup message by removing non-appropriate char for javascript
-// IN   $message	message to be cleaned
-// RET	new message cleaned 
+// IN   $message   message to be cleaned
+// RET   new message cleaned 
 function clean_popup_message(&$message="") {
-        $old = array("'","<li>", "</li>", "&eacute;","&agrave;","&egrave;","&ecirc;","&deg;");
-        $new   = array("\'","", "\\n", "é","à","è","ê","°");
-
-        return str_replace($old, $new, $message);
+   $old = array("'","<li>", "</li>", "&eacute;","&agrave;","&egrave;","&ecirc;","&deg;");
+   $new   = array("\'","", "\\n", "é","à","è","ê","°");
+   
+   return str_replace($old, $new, $message);
 }
 // }}}
 
