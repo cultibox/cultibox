@@ -782,7 +782,7 @@ function write_calendar($sd_card,$data,&$out="") {
                      fputs($f,"\r\n"."$sub");
                   }
                   fputs($f,"\r\n");
-                  fclose($f)
+                  fclose($f);
                } 
                if($day==31) {
                   $day="01";
