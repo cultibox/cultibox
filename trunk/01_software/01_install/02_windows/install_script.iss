@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.1.185"
+#define MyAppVersion "1.1.190"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
@@ -39,8 +39,10 @@ function InitializeSetup():boolean;
 var
   ResultCode: integer;
 begin
-  if FileExists(ExpandConstant('{sd}\{#MyAppName}\run\backup.sql')) then
-    MsgBox('Sauvegarde de vos logs et programme', mbInformation, MB_OK);
+  if FileExists(ExpandConstant('{sd}\{#MyAppName}\unins000.exe')) then
+  begin
+
+    MsgBox('Sauvegarde de vos logs et programme puis désinstallation de votre ancien logiciel', mbInformation, MB_OK);
     Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_start.exe'), '', '', SW_SHOW,
        ewWaitUntilTerminated, ResultCode);
 
@@ -52,11 +54,7 @@ begin
 
     Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_stop.exe'), '', '', SW_SHOW,
        ewWaitUntilTerminated, ResultCode);
-  begin
-  end;
-  if FileExists(ExpandConstant('{sd}\{#MyAppName}\unins000.exe')) then
-  begin
-    MsgBox('Vous devez d''abord desinstaller la version precedente', mbInformation, MB_OK);
+
     Exec(ExpandConstant('{sd}\{#MyAppName}\unins000.exe'), '/SILENT /NOCANCEL', '', SW_SHOW,
        ewWaitUntilTerminated, ResultCode);
   end;
