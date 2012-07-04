@@ -87,7 +87,7 @@ EOF;
 // IN $res         the array containing datas needed for the graphics
 //    $key      the key selectable from the database (temperature,humidity...)
 //    $startdate   date (format YYYY-MM-DD) to check what datas to select
-//    $fake	to select fake or real logs
+//    $fake   to select fake or real logs
 //    $out      errors or warnings messages
 // RET none
 function get_graph_array(&$res,$key,$startdate,$fake="False",&$out="") {
@@ -287,7 +287,7 @@ EOF;
            $res=$db->loadAssocList();
       $ret=$db->getErrorMsg();
            if((isset($ret))&&(!empty($ret))) {
-   		if($GLOBALS['DEBUG_TRACE']) {
+         if($GLOBALS['DEBUG_TRACE']) {
                       $out=$out.__('ERROR_SELECT_SQL').$ret;
                 } else {
                       $out=$out.__('ERROR_SELECT_SQL');
@@ -843,11 +843,11 @@ EOF;
             } else {
                   $out=$out.__('ERROR_UPDATE_SQL');
             }
-		return false;
+      return false;
         }
         if(!db_priv_end($db)) {
                 $out=$out.__('PROBLEM_CLOSING_CONNECTION');
-		return false;
+      return false;
         }
         return true;
 }
@@ -871,12 +871,12 @@ EOF;
        $file="tmp/program${id}.txt";
 
        if($f=fopen("$file","w+")) {
-      		fputs($f,"#Program : plug_id,time_start,time_stop,value\r\n");
-		if(count($res)>0) {
-			foreach($res as $record) {
-         			fputs($f,$record['plug_id'].",".$record['time_start'].",".$record['time_stop'].",".$record['value']."\r\n");
-			}
-		}
+            fputs($f,"#Program : plug_id,time_start,time_stop,value\r\n");
+      if(count($res)>0) {
+         foreach($res as $record) {
+                  fputs($f,$record['plug_id'].",".$record['time_start'].",".$record['time_stop'].",".$record['value']."\r\n");
+         }
+      }
       }
       fclose($f);
 }
@@ -1152,15 +1152,15 @@ EOF;
    if(count($last)>0) {
        while($j<=16) {
             $result=find_value_for_plug($last,"235959",$j);
-		if(isset($data[$count])) {
-            		$data[$count]=$data[$count]."$result";
-		} else {
-			$data[$count]="$result";
-		}
+      if(isset($data[$count])) {
+                  $data[$count]=$data[$count]."$result";
+      } else {
+         $data[$count]="$result";
+      }
             $j=$j+1;
       }
 
-		$data[$count]="86399".$data[$count];
+      $data[$count]="86399".$data[$count];
    } else {
       $data[$count]="86399000000000000000000000000000000000000000000000000";
    }
@@ -1184,12 +1184,12 @@ EOF;
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
            if($GLOBALS['DEBUG_TRACE']) {
-                  $out=$out.__('ERROR_SELECT_SQL').$ret;
+               $out=$out.__('ERROR_SELECT_SQL').$ret;
             } else {
-                  $out=$out.__('ERROR_SELECT_SQL');
+               $out=$out.__('ERROR_SELECT_SQL');
             }
         } else {
-      $data=array();   
+      $data=array();
       foreach($res as $val) {
         
          $s=array();
@@ -1208,18 +1208,18 @@ EOF;
          $number=0;
 
          for($i=0;$i<strlen($val['Subject']);$i++) {
-               $count=$count+1;
-               $line=$line.$val['Subject'][$i];
-               if($count==14) {
-                  $s[]=$line;
-                  $line="";
-                  $count=0;
-                  $number=$number+1;
-               }
+            $count=$count+1;
+            $line=$line.$val['Subject'][$i];
+            if($count==14) {
+               $s[]=$line;
+               $line="";
+               $count=0;
+               $number=$number+1;
+            }
 
-               if("$number"=="255") {
-                  break;
-               }
+            if("$number"=="255") {
+               break;
+            }
          }
 
          if(("$count"!="14")&&("$number"!="255")) {
@@ -1232,17 +1232,17 @@ EOF;
          }
 
          while(strlen($s[$number-1])<14) {
-		$s[$number-1]=$s[$number-1]." ";
+            $s[$number-1]=$s[$number-1]." ";
          }
 
          $data[]=array(
-               "start_month" => $start_month,
-               "start_day" => $start_day,
-               "end_month" => $end_month,
-               "end_day" => $end_day,
-               "number" => $number,
-               "subject" => $s,
-               "description" => $desc
+            "start_month" => $start_month,
+            "start_day" => $start_day,
+            "end_month" => $end_month,
+            "end_day" => $end_day,
+            "number" => $number,
+            "subject" => $s,
+            "description" => $desc
          );
          unset($s);
       }
@@ -1261,26 +1261,26 @@ EOF;
 function find_value_for_plug($data,$time,$plug) {
    for($i=0;$i<count($data);$i++) {
       if(($data[$i]['time_start']<=$time)&&($data[$i]['time_stop']>=$time)&&($data[$i]['plug_id']==$plug)) {
-		if($data[$i]['time_stop']==$time) {
-            		if($data[$i]['time_stop']=="235959") {
-               			$ret=$data[$i]['value']*10;
-            		} else {
-				for($j=0;$j<count($data);$j++) {
+      if($data[$i]['time_stop']==$time) {
+                  if($data[$i]['time_stop']=="235959") {
+                        $ret=$data[$i]['value']*10;
+                  } else {
+            for($j=0;$j<count($data);$j++) {
                                         if(($data[$j]["time_start"]=="$time")&&($data[$j]['plug_id']==$plug)) {
-						$ret=$data[$j]['value']*10;
-					} 
-				}
-				if(empty($ret)) {
-					$ret="000";
-				}	
-            		}
-         	} else {
-			$ret=$data[$i]['value']*10;
-		}
-		while(strlen($ret)<3) {
-			$ret="0$ret";
-		}
-		return "$ret";
+                  $ret=$data[$j]['value']*10;
+               } 
+            }
+            if(empty($ret)) {
+               $ret="000";
+            }   
+                  }
+            } else {
+         $ret=$data[$i]['value']*10;
+      }
+      while(strlen($ret)<3) {
+         $ret="0$ret";
+      }
+      return "$ret";
       }
    }
    return "000";
@@ -1315,7 +1315,7 @@ EOF;
 
 // {{{ reset_plug_identificator()
 //ROLE check if no programs have been defined yet
-// IN  $out	warnings or errors messages 
+// IN  $out   warnings or errors messages 
 // RET none
 function reset_plug_identificator(&$out="") {
            $db = db_priv_start();
