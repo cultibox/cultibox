@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.1.184"
+#define MyAppVersion "1.1.185"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
@@ -57,7 +57,7 @@ begin
   if FileExists(ExpandConstant('{sd}\{#MyAppName}\unins000.exe')) then
   begin
     MsgBox('Vous devez d''abord desinstaller la version precedente', mbInformation, MB_OK);
-    Exec(ExpandConstant('{sd}\{#MyAppName}\unins000.exe'), '', '', SW_SHOW,
+    Exec(ExpandConstant('{sd}\{#MyAppName}\unins000.exe'), '/SILENT /NOCANCEL', '', SW_SHOW,
        ewWaitUntilTerminated, ResultCode);
   end;
   Result := True;
@@ -66,11 +66,12 @@ end;
 [Files]
 ; Backup file. Used in pre install
 Source: "F:\Cultibox_web\01_software\01_install\02_windows\backup.bat"; \
-  DestDir: "{app}\run\backup.bat"; \
+  DestDir: "{app}\run"; \
+  DestName: "backup.bat"; \
   Flags: ignoreversion recursesubdirs createallsubdirs
 ; load file. Used in post install
 Source: "F:\Cultibox_web\01_software\01_install\02_windows\load.bat"; \
-  DestDir: "{app}\run\load.bat"; \
+  DestDir: "{app}\run"; \
   Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Cultibox_web\01_software\01_install\01_src\01_xampp\*"; \
   DestDir: "{app}\xampp"; \
