@@ -1,5 +1,6 @@
 if exist ..\backup\logs (
 copy ..\backup\logs ..\xampp\mysql\data\logs
+..\xampp\mysql\bin\mysql.exe cultibox -u root -h localhost -pcultibox -e "DELETE FROM logs"
 ..\xampp\mysql\bin\mysql.exe cultibox -u root -h localhost -pcultibox -e "LOAD DATA INFILE './logs' REPLACE INTO TABLE logs FIELDS TERMINATED BY ';' IGNORE 1 LINES"
 del ..\backup\logs
 del  ..\xampp\mysql\data\logs
