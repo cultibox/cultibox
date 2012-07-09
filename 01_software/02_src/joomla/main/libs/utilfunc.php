@@ -152,7 +152,7 @@ function get_log_value($file,&$array_line) {
 // IN $file             file to clean
 // RET none
 function clean_log_file($file) {
-   $filetpl = 'main/templates/data/empty_file.tpl';
+   $filetpl = 'main/templates/data/empty_file_64.tpl';
    copy($filetpl, $file);
 }
 //}}}
