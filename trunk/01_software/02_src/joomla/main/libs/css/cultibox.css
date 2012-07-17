@@ -24,6 +24,13 @@
 
 }
 
+.wizard_subtitle {
+   font-size: 12px;
+   font-weight: bold;
+   color: #6E5419;
+   text-align: center;
+}
+
 .step {
 	font-weight: bold;
 	color: #6E5419;

@@ -341,6 +341,9 @@ msgstr "Fermer l'assistant"
 msgid "WIZARD_INTRO"
 msgstr "Assistant de configuration des prises"
 
+msgid "WIZARD_CONFIGURE_PLUG_NUMBER"
+msgstr "Prise num&eacute;ro"
+
 msgid "WIZARD_NEXT_STEP"
 msgstr "Suivant &gt;"
 

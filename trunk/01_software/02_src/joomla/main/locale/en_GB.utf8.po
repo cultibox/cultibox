@@ -339,6 +339,9 @@ msgstr "Welcome into the Cultibox Software! This is your first use of this sofwt
 msgid "WIZARD_INTRO"
 msgstr "Wizard interface - assistant to configure your plugs"
 
+msgid "WIZARD_CONFIGURE_PLUG_NUMBER"
+msgstr "Plug number"
+
 msgid "CLOSE_WIZARD"
 msgstr "Close wizard"
 
