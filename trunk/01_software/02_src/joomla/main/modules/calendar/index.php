@@ -1,8 +1,17 @@
 <?php 
 
+if (!isset($_SESSION)) {
+   session_start();
+}
+ 
+$_SESSION['LANG']=$_GET["lang"];
+
 require_once('../../libs/config.php');
 require_once('../../libs/db_common.php');
 require_once('../../libs/utilfunc.php');
+
+$lang=getvar('lang');
+__('LANG');
 
 ?>
 
@@ -12,7 +21,7 @@ require_once('../../libs/utilfunc.php');
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
-    <title>	My Calendar </title>
+    <title><?php echo __('TITLE_CALENDAR'); ?></title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link href="css/dailog.css" rel="stylesheet" type="text/css" />
     <link href="css/calendar.css" rel="stylesheet" type="text/css" /> 
@@ -24,12 +33,28 @@ require_once('../../libs/utilfunc.php');
     <script src="src/jquery.js" type="text/javascript"></script>  
     
     <script src="src/Plugins/Common.js" type="text/javascript"></script>    
-    <script src="src/Plugins/datepicker_lang_US.js" type="text/javascript"></script>     
+<?php switch($lang) {
+   case 'fr_FR':     
+      echo '<script type="text/javascript" src="src/Plugins/datepicker_lang_FR.js"></script>';        
+      break;
+   default: 
+      echo '<script type="text/javascript" src="src/Plugins/datepicker_lang_US.js"></script>';
+      break;
+}
+?>
     <script src="src/Plugins/jquery.datepicker.js" type="text/javascript"></script>
 
     <script src="src/Plugins/jquery.alert.js" type="text/javascript"></script>    
     <script src="src/Plugins/jquery.ifrmdailog.js" defer="defer" type="text/javascript"></script>
-    <script src="src/Plugins/wdCalendar_lang_US.js" type="text/javascript"></script>    
+<?php switch($lang) {
+   case 'fr_FR':
+      echo '<script type="text/javascript" src="src/Plugins/wdCalendar_lang_FR.js"></script>';
+      break;
+   default: 
+      echo '<script type="text/javascript" src="src/Plugins/wdCalendar_lang_US.js"></script>';
+      break;
+}
+?>
     <script src="src/Plugins/jquery.calendar.js" type="text/javascript"></script>   
     
     <script type="text/javascript">
@@ -76,16 +101,16 @@ require_once('../../libs/utilfunc.php');
             });
             function cal_beforerequest(type)
             {
-                var t="Loading data...";
+                var t="<?php echo __('LOADING_DATA'); ?>";
                 switch(type)
                 {
                     case 1:
-                        t="Loading data...";
+                        t="<?php echo __('LOADING_DATA'); ?>";
                         break;
                     case 2:                      
                     case 3:  
                     case 4:    
-                        t="The request is being processed ...";                                   
+                        t="<?php echo __('REQUEST_PROCESSED'); ?>";                                   
                         break;
                 }
                 $("#errorpannel").hide();
@@ -101,7 +126,7 @@ require_once('../../libs/utilfunc.php');
                     case 2:
                     case 3:
                     case 4:
-                        $("#loadingpannel").html("Success!");
+                        $("#loadingpannel").html("<?php echo __('SUCCESS'); ?>");
                         window.setTimeout(function(){ $("#loadingpannel").hide();},2000);
 			window.top.location.reload();
                     break;
@@ -114,11 +139,11 @@ require_once('../../libs/utilfunc.php');
             }
             function Edit(data)
             {
-               var eurl="edit.php?id={0}&start={2}&end={3}&isallday={4}&title={1}";   
+               var eurl="edit.php?lang=<?php echo $lang; ?>&id={0}&start={2}&end={3}&isallday={4}&title={1}";   
                 if(data)
                 {
                     var url = StrFormat(eurl,data);
-                    OpenModelWindow(url,{ width: 600, height: 400, caption:"Manage  The Calendar",onclose:function(){
+                    OpenModelWindow(url,{ width: 600, height: 400, caption:"<?php echo __('MANAGE_CALENDAR'); ?>",onclose:function(){
                        $("#gridcontainer").reload();
                     }});
                 }
@@ -227,8 +252,8 @@ require_once('../../libs/utilfunc.php');
     <div>
 
       <div id="calhead" style="padding-left:1px;padding-right:1px;">          
-            <div class="cHead"><div class="ftitle">My Calendar</div>
-            <div id="loadingpannel" class="ptogtitle loadicon" style="display: none;">Loading data...</div>
+            <div class="cHead"><div class="ftitle"><?php echo __('TITLE_CALENDAR'); ?></div>
+            <div id="loadingpannel" class="ptogtitle loadicon" style="display: none;"><?php echo __('LOADING_DATA'); ?></div>
              <div id="errorpannel" class="ptogtitle loaderror" style="display: none;">Sorry, could not load your data, please try again later</div>
             </div>          
             
@@ -236,14 +261,11 @@ require_once('../../libs/utilfunc.php');
             <div class="btnseparator"></div>
              <div id="showtodaybtn" class="fbutton">
                 <div><span title='Click to back to today ' class="showtoday">
-                Today</span></div>
+                <?php echo __('TODAY'); ?></span></div>
             </div>
               <div class="btnseparator"></div>
 
             <div class="btnseparator"></div>
-              <div  id="showreflashbtn" class="fbutton">
-                <div><span title='Refresh view' class="showdayflash">Refresh</span></div>
-                </div>
              <div class="btnseparator"></div>
             <div id="sfprevbtn" title="Prev"  class="fbutton">
               <span class="fprev"></span>
@@ -255,7 +277,7 @@ require_once('../../libs/utilfunc.php');
             <div class="fshowdatep fbutton">
                     <div>
                         <input type="hidden" name="txtshow" id="hdtxtshow" />
-                        <span id="txtdatetimeshow">Loading</span>
+                        <span id="txtdatetimeshow"><?php echo __('LOADING_DATA'); ?></span>
 
                     </div>
             </div>

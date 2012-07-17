@@ -26,7 +26,7 @@ function __() {
       return "";
    }
    $args = func_get_args();
-   
+  
    if (!isset($__translations)) {
       $__translations = __translations_get($_SESSION['LANG']);
       $__translations_fallback = __translations_get(LANG_FALLBACK);

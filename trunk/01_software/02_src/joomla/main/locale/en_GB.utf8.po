@@ -375,6 +375,34 @@ msgstr "You are now going to configure a new plug."
 msgid "WIZARD_OTHER_PLUG_TYPE"
 msgstr "Choose the type of your plug: <ul><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an unknown type for all the other equipements. <br /><br />If you choose to configure a new lamp, this equipement must use <b>less than 200 Watts</b>" 
 
+#For the calendar part:
+msgid "TITLE_CALENDAR"
+msgstr "Calendar for the cultibox"
+
+msgid "LOADING_DATA"
+msgstr "Loading..."
+
+msgid "REQUEST_PROCESSED"
+msgstr "Request proccessed..."
+
+msgid "SUCCESS"
+msgstr "Success!"
+
+msgid "MANAGE_CALENDAR"
+msgstr "Manage calendar"
+
+msgid "DELETE_EVENT"
+msgstr ""
+
+msgid "ERROR_LOADING_DATA"
+msgstr "Error during data loading..."
+
+msgid "TODAY"
+msgstr "Today"
+
+msgid "SUBJECT"
+msgstr "* Subject:"
+
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "<li> Problem during the connection close procedure</li>"

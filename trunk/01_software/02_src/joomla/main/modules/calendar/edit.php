@@ -16,6 +16,20 @@ function getCalendarByRange($id){
 if($_GET["id"]){
   $event = getCalendarByRange($_GET["id"]);
 }
+
+if (!isset($_SESSION)) {
+   session_start();
+}
+
+$_SESSION['LANG']=$_GET["lang"];
+
+require_once('../../libs/config.php');
+require_once('../../libs/db_common.php');
+require_once('../../libs/utilfunc.php');
+
+$lang=getvar('lang');
+__('LANG');
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -214,7 +228,7 @@ if($_GET["id"]){
       <div class="infocontainer">            
         <form action="php/datafeed.php?method=adddetails<?php echo isset($event)?"&id=".$event->Id:""; ?>" class="fform" id="fmEdit" method="post">                 
           <label>                    
-            <span>                        *Subject:              
+            <span><?php __('SUBJECT'); ?>              
             </span>                    
             <div id="calendarcolor">
             </div>
