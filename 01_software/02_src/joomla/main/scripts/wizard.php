@@ -66,7 +66,6 @@ if((empty($plug_type))||(!isset($plug_type))) {
 	$plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$error); 
 }
 
-
 if((empty($value_program))||(!isset($value_program))) {
        if((!empty($plug_type))&&(isset($plug_type))) {
 	   switch ($plug_type) {
@@ -191,6 +190,11 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
         }
         
 }
+
+if((!empty($selected_plug))&&(isset($selected_plug))) {
+   $plug_name=get_plug_conf("PLUG_NAME",$selected_plug,$error);
+}
+
 
 $info=$info.__('WIZARD_DISABLE_FUNCTION');
 
