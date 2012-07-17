@@ -21,6 +21,8 @@ set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
+
+
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }

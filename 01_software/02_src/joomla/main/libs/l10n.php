@@ -3,11 +3,15 @@ $toroot = isset($toroot) ? $toroot : '.';
 
 // Example: locale/en_US.utf8.po => templates_c/l10n.en_US.ser
 
+
+
 define ('APP', $toroot);
 define ('CACHE', $toroot);
 define ('__TRANSLATIONS_MAX_LINE_LENGTH', 8192);
 define ('__TRANSLATIONS_CACHE_FILEPATH', '%s/main/templates_c/l10n.%s.ser');
 define ('__TRANSLATIONS_PO_FILEPATH', '%s/main/locale/%s.utf8.po');
+define ('__TRANSLATIONS_CACHE_FILEPATH_MODULE', '../../templates_c/l10n.'.$_SESSION["LANG"].'.ser');
+define ('__TRANSLATIONS_PO_FILEPATH_MODULE', '../../locale/'.$_SESSION["LANG"].'.utf8.po');
 
 function __translations_check_lang($lang) {
 	if (empty($lang)) {
@@ -25,7 +29,10 @@ function __translations_parse_po_file($lang) {
 	__translations_check_lang($lang);
 	$locale_po_file = sprintf(__TRANSLATIONS_PO_FILEPATH, APP, $lang);
 	if (!file_exists($locale_po_file)) {
-		die("'$locale_po_file' does not exist");
+                $locale_po_file = sprintf(__TRANSLATIONS_PO_FILEPATH_MODULE, APP, $lang);
+                if (!file_exists($locale_po_file)) {
+			die("'$locale_po_file' does not exist");
+                }
 	}
 
 	$handle = fopen($locale_po_file, "r");
@@ -104,7 +111,10 @@ function __translations_read_from_cache($lang) {
 	$cache_file = sprintf(__TRANSLATIONS_CACHE_FILEPATH, CACHE, $lang);
 
 	if (!file_exists($cache_file)) {
-		return false;
+      $cache_file = sprintf(__TRANSLATIONS_CACHE_FILEPATH_MODULE, CACHE, $lang);
+      if (!file_exists($cache_file)) {
+		   return false;
+      }
 	}
 
 	$data = file_get_contents($cache_file);
@@ -126,8 +136,12 @@ function __translations_get($lang) {
 	$cache_file = sprintf(__TRANSLATIONS_CACHE_FILEPATH, CACHE, $lang);
 
 	if (!file_exists($po_file)) {
-		@unlink($cache_file);
-		die("'$po_file' does not exist");
+                $po_file = sprintf(__TRANSLATIONS_PO_FILEPATH_MODULE, APP, $lang);
+                $cache_file = sprintf(__TRANSLATIONS_CACHE_FILEPATH_MODULE, CACHE, $lang);
+	        if (!file_exists($po_file)) {
+			@unlink($cache_file);
+			die("'$po_file' does not exist");
+                }
 	}
 
 	$translations = null;
