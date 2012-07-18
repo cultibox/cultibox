@@ -254,7 +254,7 @@ __('LANG');
       <div id="calhead" style="padding-left:1px;padding-right:1px;">          
             <div class="cHead"><div class="ftitle"><?php echo __('TITLE_CALENDAR'); ?></div>
             <div id="loadingpannel" class="ptogtitle loadicon" style="display: none;"><?php echo __('LOADING_DATA'); ?></div>
-             <div id="errorpannel" class="ptogtitle loaderror" style="display: none;">Sorry, could not load your data, please try again later</div>
+             <div id="errorpannel" class="ptogtitle loaderror" style="display: none;"><?php echo __('ERROR_LOADING_DATA'); ?></div>
             </div>          
             
             <div id="caltoolbar" class="ctoolbar">

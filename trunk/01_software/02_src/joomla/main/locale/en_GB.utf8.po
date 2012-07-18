@@ -392,10 +392,10 @@ msgid "SUCCESS"
 msgstr "Success!"
 
 msgid "MANAGE_CALENDAR"
-msgstr "Manage calendar"
+msgstr "Manage the event"
 
 msgid "DELETE_EVENT"
-msgstr ""
+msgstr "Do you really want to delete this event?"
 
 msgid "ERROR_LOADING_DATA"
 msgstr "Error during data loading..."
@@ -403,8 +403,23 @@ msgstr "Error during data loading..."
 msgid "TODAY"
 msgstr "Today"
 
-msgid "SUBJECT"
+msgid "CALENDAR_SUBJECT"
 msgstr "* Subject:"
+
+msgid "CALENDAR_COLOR"
+msgstr "* Choose a color:"
+
+msgid "CALENDAR_REMARK"
+msgstr "* Remark :"
+
+msgid "CALENDAR_SAVE"
+msgstr "Save"
+
+msgid "CALENDAR_CLOSE"
+msgstr "Close"
+
+msgid "CALENDAR_DELETE"
+msgstr "Delete"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"

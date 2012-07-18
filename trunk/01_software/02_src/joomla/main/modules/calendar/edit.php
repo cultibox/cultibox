@@ -124,13 +124,13 @@ __('LANG');
             $("#Savebtn").click(function() { $("#fmEdit").submit(); });
             $("#Closebtn").click(function() { CloseModelWindow(); });
             $("#Deletebtn").click(function() {
-                 if (confirm("Are you sure to remove this event")) {  
+                 if (confirm("<?php echo __('DELETE_EVENT'); ?>")) {  
                     var param = [{ "name": "calendarId", value: 8}];                
                     $.post(DATA_FEED_URL + "?method=remove",
                         param,
                         function(data){
                               if (data.IsSuccess) {
-                                    alert(data.Msg); 
+                                    //alert(data.Msg); 
 				    window.top.location.reload();
                                     CloseModelWindow(null,true);                            
                                 }
@@ -156,7 +156,7 @@ __('LANG');
                 },
                 dataType: "json",
                 success: function(data) {
-                    alert(data.Msg);
+                    //alert(data.Msg);
                     if (data.IsSuccess) {
                         window.top.location.reload();
                         CloseModelWindow(null,true);  
@@ -209,32 +209,33 @@ __('LANG');
     <div>      
       <div class="toolBotton">           
         <a id="Savebtn" class="imgbtn" href="javascript:void(0);">                
-          <span class="Save"  title="Save the calendar">Save(<u>S</u>)
-          </span>          
+          <span class="Save"  title="Save the calendar"><?php echo __('CALENDAR_SAVE'); ?></span>
         </a>                           
         <?php if(isset($event)){ ?>
         <a id="Deletebtn" class="imgbtn" href="javascript:void(0);">                    
-          <span class="Delete" title="Cancel the calendar">Delete(<u>D</u>)
+          <span class="Delete" title="Cancel the calendar"><?php echo __('CALENDAR_DELETE'); ?>
           </span>                
         </a>             
         <?php } ?>            
         <a id="Closebtn" class="imgbtn" href="javascript:void(0);">                
-          <span class="Close" title="Close the window" >Close
-          </span></a>            
-        </a>        
+          <span class="Close" title="Close the window" ><?php echo __('CALENDAR_CLOSE'); ?>
+        </span></a>            
       </div>                  
       <div style="clear: both">         
       </div>        
       <div class="infocontainer">            
         <form action="php/datafeed.php?method=adddetails<?php echo isset($event)?"&id=".$event->Id:""; ?>" class="fform" id="fmEdit" method="post">                 
           <label>                    
-            <span><?php __('SUBJECT'); ?>              
-            </span>                    
+            <label><span><?php echo __('CALENDAR_COLOR'); ?></span>
             <div id="calendarcolor">
             </div>
-            <input MaxLength="200" class="required safe" id="Subject" name="Subject" style="width:85%;" type="text" value="<?php echo isset($event)?$event->Subject:"" ?>" />                     
+            </label>
+            <br /><br />
+            <label><span><?php echo __('CALENDAR_SUBJECT'); ?></span><input MaxLength="200" class="required safe" id="Subject" name="Subject" style="width:95%;" type="text" value="<?php echo isset($event)?$event->Subject:"" ?>" /></label>
             <input id="colorvalue" name="colorvalue" type="hidden" value="<?php echo isset($event)?$event->Color:"" ?>" />                
           </label>                 
+          <!-- <label class="checkp"> 
+
           <label>                    
             <span>*Time:
             </span>                    
@@ -247,18 +248,25 @@ __('LANG');
               <input MaxLength="5" class="required time" id="stparttime" name="stparttime" style="width:40px;" type="text" value="<?php echo isset($event)?$sarr[1]:""; ?>" />To                       
               <input MaxLength="10" class="required date" id="etpartdate" name="etpartdate" style="padding-left:2px;width:90px;" type="text" value="<?php echo isset($event)?$earr[0]:""; ?>" />                       
               <input MaxLength="50" class="required time" id="etparttime" name="etparttime" style="width:40px;" type="text" value="<?php echo isset($event)?$earr[1]:""; ?>" />                                            
+
               <label class="checkp"> 
                 <input id="IsAllDayEvent" name="IsAllDayEvent" type="checkbox" value="1" <?php if(isset($event)&&$event->IsAllDayEvent!=0) {echo "checked";} ?>/>          All Day Event                      
               </label>                    
-            </div>                
-          </label>                 
+              -->
+
+              <?php if(isset($event)){
+                  $sarr = explode(" ", php2JsTime(mySql2PhpTime($event->StartTime)));
+                  $earr = explode(" ", php2JsTime(mySql2PhpTime($event->EndTime)));
+              }?> 
+              <input id="IsAllDayEvent" name="IsAllDayEvent" type="hidden" value="1" />
+               <input id="stpartdate" name="stpartdate" type="hidden" value="<?php echo isset($event)?$sarr[0]:""; ?>" />        
+              <input id="stparttime" name="stparttime" type="hidden" value="<?php echo isset($event)?$sarr[1]:""; ?>" />                       
+              <input id="etpartdate" name="etpartdate" type="hidden" value="<?php echo isset($event)?$earr[0]:""; ?>" />         
+              <input id="etparttime" name="etparttime" type="hidden" value="<?php echo isset($event)?$earr[1]:""; ?>" />   
+
+            <input id="Location" name="Location" type="hidden" value="<?php echo isset($event)?$event->Location:""; ?>" />                 
           <label>                    
-            <span>                        Location:
-            </span>                    
-            <input MaxLength="200" id="Location" name="Location" style="width:95%;" type="text" value="<?php echo isset($event)?$event->Location:""; ?>" />                 
-          </label>                 
-          <label>                    
-            <span>                        Remark:
+            <span><?php echo __('CALENDAR_REMARK'); ?>
             </span>                    
 <textarea cols="20" id="Description" name="Description" rows="2" style="width:95%; height:70px">
 <?php echo isset($event)?$event->Description:""; ?>

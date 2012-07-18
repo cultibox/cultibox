@@ -36,7 +36,7 @@ var i18n = $.extend({}, i18n || {}, {
         "i_undefined": "Non définie",
         "allday_event": "All day event",
         "repeat_event": "Répéter l'évènement",
-        "time": "DAte",
+        "time": "Date",
         "event": "Evènement",
         "location": "Lieu",
         "participant": "Participant",
