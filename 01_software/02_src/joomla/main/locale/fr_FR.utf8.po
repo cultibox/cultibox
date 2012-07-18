@@ -420,6 +420,24 @@ msgstr "Fermer"
 msgid "CALENDAR_DELETE"
 msgstr "Supprimer"
 
+msgid "SUBJECT_START"
+msgstr "D&eacute;but de culture"
+
+msgid "SUBJECT_FERTILIZERS"
+msgstr "Engrais"
+
+msgid "SUBJECT_WATER"
+msgstr "Changement d'eau"
+
+msgid "SUBJECT_BLOOM"
+msgstr "Floraison"
+
+msgid "SUBJECT_HARVEST"
+msgstr "R&eacute;colte"
+
+msgid "SUBJECT_OTHER"
+msgstr "Autre"
+
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "<li> Probl&eacute; pendant la fermeture de la connection</li>"

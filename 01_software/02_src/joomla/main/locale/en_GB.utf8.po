@@ -421,6 +421,24 @@ msgstr "Close"
 msgid "CALENDAR_DELETE"
 msgstr "Delete"
 
+msgid "SUBJECT_START"
+msgstr "Beginning of Culture"
+
+msgid "SUBJECT_FERTILIZERS"
+msgstr "Fertilizers"
+
+msgid "SUBJECT_WATER"
+msgstr "Water change"
+
+msgid "SUBJECT_BLOOM"
+msgstr "Bloom"
+
+msgid "SUBJECT_HARVEST"
+msgstr "Harvest"
+
+msgid "SUBJECT_OTHER"
+msgstr "Other"
+
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "<li> Problem during the connection close procedure</li>"
