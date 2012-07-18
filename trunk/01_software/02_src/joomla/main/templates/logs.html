@@ -159,6 +159,7 @@ $(function () {
          },
          xAxis: {
             type: 'datetime',
+            <?php if("$type"=="month") { echo "tickInterval: 5 * 24 * 3600 * 1000,"; } ?>
             title: {
                text: <?php echo "'".__("$xlegend")."'"; ?>
             }
