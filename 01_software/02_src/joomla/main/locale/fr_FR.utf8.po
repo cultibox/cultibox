@@ -391,7 +391,7 @@ msgid "SUCCESS"
 msgstr "Operation reussie"
 
 msgid "MANAGE_CALENDAR"
-msgstr "Gerer le calendrier"
+msgstr "Gerer l'evenement"
 
 msgid "DELETE_EVENT"
 msgstr "Voulez-vous supprimer cet evenement?"
@@ -402,8 +402,23 @@ msgstr "Impossible de charger les donnees"
 msgid "TODAY"
 msgstr "Aujourd'hui"
 
-msgid "SUBJECT"
+msgid "CALENDAR_SUBJECT"
 msgstr "* Sujet:"
+
+msgid "CALENDAR_COLOR"
+msgstr "* Choisir une couleur:"
+
+msgid "CALENDAR_REMARK"
+msgstr "* Remarque :"
+
+msgid "CALENDAR_SAVE"
+msgstr "Sauvegarder"
+
+msgid "CALENDAR_CLOSE"
+msgstr "Fermer"
+
+msgid "CALENDAR_DELETE"
+msgstr "Supprimer"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
