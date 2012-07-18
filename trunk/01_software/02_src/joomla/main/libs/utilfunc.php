@@ -781,6 +781,10 @@ function write_calendar($sd_card,$data,&$out="") {
                   foreach($val['subject'] as $sub) {
                      fputs($f,"\r\n"."$sub");
                   }
+                  foreach($val['description'] as $desc) {
+                     fputs($f,"\r\n"."$desc");
+                  }
+
                   fputs($f,"\r\n");
                   fclose($f);
                } 
