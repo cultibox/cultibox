@@ -226,7 +226,11 @@ $(function () {
                   <?php } ?>
                <?php } ?>
    
-               var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  "+Highcharts.dateFormat('%H:%M:%S', this.x)+"</b></p>";
+               <?php if("$type"=="month") { ?>
+                  var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  "+Highcharts.dateFormat('%H:%M:%S %Y/%m/%d', this.x)+"</b></p>";
+               <?php } else { ?>
+                  var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  "+Highcharts.dateFormat('%H:%M:%S', this.x)+"</b></p>"; 
+               <?php } ?>
                for(var i= 0; i < this.points.length; i++) {
                   if(tab[i]!="") {
                      if(this.points[i].y==99.9) {
