@@ -231,7 +231,59 @@ __('LANG');
             </div>
             </label>
             <br /><br />
-            <label><span><?php echo __('CALENDAR_SUBJECT'); ?></span><input MaxLength="200" class="required safe" id="Subject" name="Subject" style="width:95%;" type="text" value="<?php echo isset($event)?$event->Subject:"" ?>" /></label>
+            <label><span><?php echo __('CALENDAR_SUBJECT'); ?></span>
+<select class="required safe" id="Subject" name="Subject" >
+      <?php foreach($GLOBALS['LIST_SUBJECT_CALENDAR'] as $value) {
+         $old=array('&eacute;', '&egrave;','&agrave;','&ecirc;');
+         $new=array('e', 'e','a','e');
+
+
+         switch ($value) {
+            case 'Beginning':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_START')))==0) {
+                     echo "<option value=\"".__('SUBJECT_START')."\" selected>".__('SUBJECT_START')."</option>";    
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_START')."\">".__('SUBJECT_START')."</option>";
+                  }
+               break;
+            case 'Fertilizers':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_FERTILIZERS')))==0) {
+                     echo "<option value=\"".__('SUBJECT_FERTILIZERS')."\" selected>".__('SUBJECT_FERTILIZERS')."</option>";
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_FERTILIZERS')."\">".__('SUBJECT_FERTILIZERS')."</option>";
+                  }
+               break;
+            case 'Water':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_WATER')))==0) {
+                     echo "<option value=\"".__('SUBJECT_WATER')."\" selected>".__('SUBJECT_WATER')."</option>";    
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_WATER')."\">".__('SUBJECT_WATER')."</option>";
+                  }
+               break;
+            case 'Bloom':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_BLOOM')))==0) {
+                     echo "<option value=\"".__('SUBJECT_BLOOM')."\" selected>".__('SUBJECT_BLOOM')."</option>";
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_BLOOM')."\">".__('SUBJECT_BLOOM')."</option>";
+                  }
+               break;
+            case 'Harvest':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_HARVEST')))==0) {
+                     echo "<option value=\"".__('SUBJECT_HARVEST')."\" selected>".__('SUBJECT_HARVEST')."</option>";
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_HARVEST')."\">".__('SUBJECT_HARVEST')."</option>";
+                  }
+               break;
+            case 'Other':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_OTHER')))==0) {
+                     echo "<option value=\"".__('SUBJECT_OTHER')."\" selected>".__('SUBJECT_OTHER')."</option>"; 
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_OTHER')."\">".__('SUBJECT_OTHER')."</option>";
+                  }
+               break;
+         }
+      } ?></select>
+
             <input id="colorvalue" name="colorvalue" type="hidden" value="<?php echo isset($event)?$event->Color:"" ?>" />                
           </label>                 
           <!-- <label class="checkp"> 
@@ -244,7 +296,8 @@ __('LANG');
                   $sarr = explode(" ", php2JsTime(mySql2PhpTime($event->StartTime)));
                   $earr = explode(" ", php2JsTime(mySql2PhpTime($event->EndTime)));
               }?>                    
-              <input MaxLength="10" class="required date" id="stpartdate" name="stpartdate" style="padding-left:2px;width:90px;" type="text" value="<?php echo isset($event)?$sarr[0]:""; ?>" />                       
+              <input MaxLength="10" class="required date" id="stpartdate" name="stpartdate" style="padding-left:2px;width:90px;" type="text" value="<?php echo isset($event)?$sarr[0]:""; ?>" />           
+               <input MaxLength="200" class="required safe" id="Subject" name="Subject" style="width:95%;" type="text" value="<?php echo isset($event)?$event->Subject:"" ?>" /></label>
               <input MaxLength="5" class="required time" id="stparttime" name="stparttime" style="width:40px;" type="text" value="<?php echo isset($event)?$sarr[1]:""; ?>" />To                       
               <input MaxLength="10" class="required date" id="etpartdate" name="etpartdate" style="padding-left:2px;width:90px;" type="text" value="<?php echo isset($event)?$earr[0]:""; ?>" />                       
               <input MaxLength="50" class="required time" id="etparttime" name="etparttime" style="width:40px;" type="text" value="<?php echo isset($event)?$earr[1]:""; ?>" />                                            

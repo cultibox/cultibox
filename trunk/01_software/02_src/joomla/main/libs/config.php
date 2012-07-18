@@ -27,6 +27,9 @@ $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');
 // Colors for plugs program:
 $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'] = array('blue','red', 'green', 'black','purple','pink','yellow','brown','grey','orange','violet','beige','turquoise','amber','cyan','indigo');
 
+//Subject for the calendar
+$GLOBALS['LIST_SUBJECT_CALENDAR'] = array('Beginning','Fertilizers', 'Water', 'Bloom','Harvest','Other');
+
 //To print debug trace:
 $GLOBALS['DEBUG_TRACE'] = false;
 
