@@ -1208,7 +1208,28 @@ EOF;
 
          for($i=0;$i<strlen($val['Subject']);$i++) {
             $count=$count+1;
-            $line=$line.$val['Subject'][$i];
+            if($count==1) {
+               if(strcmp($val['Subject'][$i]," ")==0) {
+                  $count=0;
+               } else {
+                     $line=$line.$val['Subject'][$i];
+               }
+            } else {
+                 $line=$line.$val['Subject'][$i];
+            }
+
+            if($count==13) {
+               if((strcmp($val['Subject'][$i]," ")!=0)&&(isset($val['Subject'][$i+1]))&&(strcmp($val['Subject'][$i+1]," ")!=0)) {
+                  if(isset($val['Subject'][$i+2])) {
+                     $line=$line."-";
+                     $count=$count+1;
+                  }
+               } elseif(strcmp($val['Subject'][$i]," ")==0) {
+                     $line=$line." ";
+                     $count=$count+1;
+              }
+            }
+
             if($count==14) {
                $s[]=$line;
                $line="";
@@ -1241,7 +1262,29 @@ EOF;
             $line="";
             for($i=0;$i<strlen($val['Description']);$i++) {
                $count=$count+1;
-               $line=$line.$val['Description'][$i];
+               if($count==1) {
+                  if(strcmp($val['Description'][$i]," ")==0) {
+                     $count=0;
+                  } else {
+                     $line=$line.$val['Description'][$i];
+                     }
+               } else {
+                  $line=$line.$val['Description'][$i];
+               }
+
+
+               if($count==13) {
+                  if((strcmp($val['Description'][$i]," ")!=0)&&(isset($val['Description'][$i+1]))&&(strcmp($val['Description'][$i+1]," ")!=0)) {
+                     if(isset($val['Description'][$i+2])) {
+                        $line=$line."-";
+                        $count=$count+1;
+                     }
+                  } elseif(strcmp($val['Description'][$i]," ")==0) {
+                        $line=$line." ";
+                        $count=$count+1;
+                  }
+               }
+
                if($count==14) {
                   $desc[]=$line;
                   $line="";

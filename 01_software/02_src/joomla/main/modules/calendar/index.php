@@ -128,7 +128,7 @@ __('LANG');
                     case 4:
                         $("#loadingpannel").html("<?php echo __('SUCCESS'); ?>");
                         window.setTimeout(function(){ $("#loadingpannel").hide();},2000);
-			window.top.location.reload();
+			               window.top.location.reload();
                     break;
                 }              
                
