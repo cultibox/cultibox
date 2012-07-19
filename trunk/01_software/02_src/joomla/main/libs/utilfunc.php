@@ -762,6 +762,44 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
 //}}}
 
 
+// {{{ concat_calendar_entries($data,$time)
+// ROLE concat calendar entries to use several comments for the same day
+// IN   $data   data to be proccessed
+// IN   $month   month to be checked
+// IN   $day     day to be checked
+// RET return an array containing all datas for the day checked
+function concat_calendar_entries($data,$month,$day) {
+         $new_data=array();
+         foreach($data as $val) {
+            if(($val['start_month']<=$month)&&($val['end_month']>=$month)&&($val['start_day']<=$day)&&($val['end_day']>=$day)) {
+                     if(empty($new_data)) {
+                        $new_data=$val;
+                     } else {
+                        if($new_data['number']==18) break;
+
+                        $new_data['description'][]="              ";
+                        $new_data['number']=$new_data['number']+1;
+                        if($new_data['number']==18) break;
+
+                        foreach($val['subject'] as $sub) {
+                              $new_data['description'][]=$sub;
+                              $new_data['number']=$new_data['number']+1;
+                              if($new_data['number']==18) break;
+                        }
+
+                        foreach($val['description'] as $desc) {
+                              $new_data['description'][]=$desc;
+                              $new_data['number']=$new_data['number']+1;
+                              if($new_data['number']==18) break;
+                        }
+                     }
+            }
+         }
+         return $new_data;
+}
+// }}}
+
+
 // {{{ write_calendar()
 // ROLE save calendar informations into the SD card
 // IN   $sd_card   sd card location
@@ -769,38 +807,42 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
 //   $out      error or warning messages
 // RET none
 function write_calendar($sd_card,$data,&$out="") {
-   if(count($data)>0) {
-      foreach($data as $val) {
-         $month=$val['start_month'];
-         $day=$val['start_day'];
-         while($month<=$val['end_month']) {
-            while($day<=$val['end_day']) {   
-               $file="$sd_card/logs/$month/cal_$day";
-               if($f=fopen("$file","w+")) {
-                  fputs($f,"$val[number]");
-                  foreach($val['subject'] as $sub) {
-                     fputs($f,"\r\n"."$sub");
-                  }
-                  foreach($val['description'] as $desc) {
-                     fputs($f,"\r\n"."$desc");
-                  }
-
-                  fputs($f,"\r\n");
-                  fclose($f);
-               } 
-               if($day==31) {
-                  $day="01";
-               } else {
-                  $day=$day+1;
+   if(isset($sd_card)&&(!empty($sd_card))) {
+      if(count($data)>0) {
+         for($month=1;$month<=12;$month++) {
+            for($day=1;$day<=31;$day++) {
+               $val=concat_calendar_entries($data,$month,$day);
+               if(!empty($val)) {
                   while(strlen($day)<2) {
                      $day="0$day";
                   }
+            
+                  while(strlen($month)<2) {
+                     $month="0$month";
+                  }
+                  $file="$sd_card/logs/$month/cal_$day";
+                  if($f=fopen("$file","w+")) {
+                     fputs($f,"$val[number]");
+                     foreach($val['subject'] as $sub) {
+                        fputs($f,"\r\n"."$sub");
+                     }
+                     foreach($val['description'] as $desc) {
+                        fputs($f,"\r\n"."$desc");
+                     }
+
+                     fputs($f,"\r\n");
+                     fclose($f);
+                  } 
+               
+                  if($day==31) {
+                     $day="01";
+                  } 
+                  unset($val);
                }
-            }
-         $month=$month+1;
-         }
-      }
-   }
+          }
+        }
+     }
+    }
 }
 //}}}
 

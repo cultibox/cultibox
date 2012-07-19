@@ -1231,7 +1231,7 @@ EOF;
             }
 
             if($count==14) {
-               $s[]=$line;
+               $s[]=strtoupper($line);
                $line="";
                $count=0;
                $number=$number+1;
@@ -1243,7 +1243,7 @@ EOF;
          }
 
          if(("$count"!="14")&&("$number"!="18")) {
-            $s[]=$line;
+            $s[]=strtoupper($line);
             $number=$number+1;
          }
 
