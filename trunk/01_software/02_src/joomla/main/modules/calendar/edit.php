@@ -131,7 +131,7 @@ __('LANG');
                         function(data){
                               if (data.IsSuccess) {
                                     //alert(data.Msg); 
-				    window.top.location.reload();
+				                        window.top.location.reload();
                                     CloseModelWindow(null,true);                            
                                 }
                                 else {
@@ -225,7 +225,6 @@ __('LANG');
       </div>        
       <div class="infocontainer">            
         <form action="php/datafeed.php?method=adddetails<?php echo isset($event)?"&id=".$event->Id:""; ?>" class="fform" id="fmEdit" method="post">                 
-          <label>                    
             <label><span><?php echo __('CALENDAR_COLOR'); ?></span>
             <div id="calendarcolor">
             </div>
