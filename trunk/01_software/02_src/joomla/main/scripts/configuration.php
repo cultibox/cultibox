@@ -11,11 +11,6 @@ require_once('main/libs/utilfunc.php');
 
 
 $error="";
-$first_use=get_configuration("FIRST_USE",$error);
-if((isset($first_use))&&(!empty($first_use))&&(strcmp($first_use,"True")==0)&&($GLOBALS['FIRST_USE'])) {
-   header('Location: index.php/wizard');
-}
-
 
 $color_humidity = getvar('color_humidity');
 $color_temperature = getvar('color_temperature');

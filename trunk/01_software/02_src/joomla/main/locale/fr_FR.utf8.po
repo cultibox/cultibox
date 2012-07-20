@@ -15,6 +15,22 @@ msgstr "Logs"
 msgid "PROGRAMS"
 msgstr "Programmes"
 
+#For the welcome part
+msgid "WELCOME_TITLE"
+msgstr "Bienvenu dans le logiciel d'utilisation de la cultibox"
+
+msgid "WELCOME_MESSAGE"
+msgstr "Ce logiciel va vous permettre de configurer et manipuler votre cultibox."
+
+msgid "WELCOME_TUTO"
+msgstr "<b>Note:</b> pour ceux qui poss&egrave;de l'ancienne version de la cultibox: la greenbox, il vous faudra: <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter les nouvelles de la cultibox</li><li>d&eacute;connecter votre GreenBox qui peut causer des interf&eacute;rences avec la cultibox</li></ul>"
+
+msgid "WELCOME_FOLLOW_LINK"
+msgstr "Cliquez sur le lien suivant pour lancer l'assistant de configuration et commencer &agrave; manipuler votre cultibox."
+
+msgid "WELCOME_WIZARD"
+msgstr "Assistant de configuration"
+
 # For the configuration part:
 msgid "USER_CONF"
 msgstr "Configuration utilisateur"

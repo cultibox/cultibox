@@ -15,6 +15,22 @@ msgstr "Logs"
 msgid "PROGRAMS"
 msgstr "Programs"
 
+#For the welcome part
+msgid "WELCOME_TITLE"
+msgstr "Welcome into the cultibox management software"
+
+msgid "WELCOME_MESSAGE"
+msgstr "This sofware will help you to configure and communicate with your cultibox"
+
+msgid "WELCOME_TUTO"
+msgstr "<b>Note:</b> if you have the previous version of the cultibox named the GreenBox: <ul><li>Remove your old plugs not compatible anymore</li><li>unplugged the Greenbox which can cause interferences with the cultibox</li></ul>"
+
+msgid "WELCOME_WIZARD"
+msgstr "Configuration Wizard"
+
+msgid "WELCOME_FOLLOW_LINK"
+msgstr "Just click on the following link to launch the wizard configuration and begin to manipulate your cultibox"
+
 # For the configuration part:
 msgid "USER_CONF"
 msgstr "User configuration"
