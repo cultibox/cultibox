@@ -1,0 +1,21 @@
+<div class="welcome" width="100%" height="100%"> 
+<p class="wizard_title"><?php echo __('WELCOME_TITLE'); ?></p>
+<br />
+
+<p><?php echo __('WELCOME_MESSAGE'); ?></p>
+<br />
+
+<p><?php echo __('WELCOME_TUTO'); ?></p>
+
+</div>
+
+
+<?php if((isset($first_use))&&(!empty($first_use))&&(strcmp($first_use,"True")==0)&&($GLOBALS['FIRST_USE'])) { ?>
+   <br />
+   <?php echo __('WELCOME_FOLLOW_LINK'); ?>
+   <br /><br />
+   <table width="100%"><tr><td align="center"><form action="<?php echo($_SERVER['PHP_SELF'])."/wizard"; ?>" method="post">
+   <input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>">
+</form></td></tr></table>
+<?php } ?>
+
