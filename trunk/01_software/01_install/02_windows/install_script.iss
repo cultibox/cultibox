@@ -82,6 +82,7 @@ Source: "F:\Cultibox_web\01_software\01_install\02_windows\cultibox.bat"; \
   DestDir: "{app}"; \
   Flags: ignoreversion
 Source: "F:\Cultibox_web\01_software\01_install\02_windows\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion
+Source: "F:\Cultibox_web\01_software\01_install\02_windows\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion
 Source: "F:\Cultibox_web\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
