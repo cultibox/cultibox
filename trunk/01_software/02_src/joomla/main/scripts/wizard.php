@@ -24,8 +24,33 @@ $selected_plug=getvar('selected_plug');
 $next_plug=getvar('next_plug');
 $first_use = get_configuration("FIRST_USE",$error);
 $close=getvar('close');
+$program="";
+$pop_up="";
+$pop_up_message="";
+$pop_up_error_message="";
+
+if((!isset($pop_up))||(empty($pop_up))) {
+        $pop_up = get_configuration("SHOW_POPUP",$error);
+}
+
+$info=$info.__('WIZARD_DISABLE_FUNCTION');
 
 
+if((!isset($sd_card))||(empty($sd_card))) {
+   $sd_card=get_sd_card();
+}
+
+if((!empty($sd_card))&&(isset($sd_card))) {
+   $program=create_program_from_database($error);
+   if(!compare_program($program,$sd_card)) {
+      $info=$info.__('UPDATED_PROGRAM');
+      $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
+      save_program_on_sd($sd_card,$program,$error,$info);
+   }
+   check_and_copy_firm($sd_card,$error);
+} else {
+        $error=$error.__('ERROR_SD_CARD_CONF');
+}
 
 if((isset($close))&&(!empty($close))) {
 	insert_configuration("FIRST_USE","False",$error);
@@ -40,13 +65,6 @@ if((empty($selected_plug))||(!isset($selected_plug))) {
 
 $chinfo=true;
 $chtime="";
-$pop_up_message="";
-$pop_up_error_message="";
-
-if(!isset($pop_up)) {
-        $pop_up = get_configuration("SHOW_POPUP",$error);
-}
-
 
 $step=getvar('step');
 $next=getvar('next');
@@ -196,8 +214,6 @@ if((!empty($selected_plug))&&(isset($selected_plug))) {
 }
 
 
-$info=$info.__('WIZARD_DISABLE_FUNCTION');
-
 if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
 	if((isset($first_use))&&(!empty($first_use))&&(strcmp($first_use,"True")==0)&&($selected_plug==1)) {
 		$step=1;
@@ -208,6 +224,10 @@ if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
 	$step=$step+1;	
 } else if((isset($previous))&&(!empty($previous))) {
 	$step=$step-1;
+}
+
+if((isset($sd_card))&&(!empty($sd_card))) {
+   $info=$info.__('INFO_SD_CARD').": $sd_card";
 }
 
 

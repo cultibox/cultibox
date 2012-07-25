@@ -257,6 +257,30 @@ msgstr "R&eacute;initialiser le code des prises"
 msgid "POWER_PLUG"
 msgstr "Puissance (en Watt)"
 
+msgid "ENABLE_REGUL_PLUG"
+msgstr "R&eacute;gulation de la prise"
+
+msgid "CONFIGURE_REGUL_SENSO"
+msgstr "D&eacute;clenchement en fonction de"
+
+msgid "CONFIGURE_REGUL_VALUE"
+msgstr "Seuil de d&eacute;clenchement"
+
+msgid "CONFIGURE_REGUL_SENSS"
+msgstr "D&eacute;clenchement si la mesure est en"
+
+msgid "REGUL_TEMP"
+msgstr "Temp&eacute;rature"
+
+msgid "REGUL_HUMI"
+msgstr "Humidit&eacute;"
+
+msgid "REGUL_UNDER"
+msgstr "dessous du seuil"
+
+msgid "REGUL_ABOVE"
+msgstr "dessus du seuil"
+
 # For the programs part:
 
 msgid "CONFIGURE_PROGRAM"
@@ -515,6 +539,9 @@ msgstr "<li> Erreur dans la valeur d'humidit&eacute;. Elle doit &ecirc;tre sup&e
 msgid "ERROR_ALARM_VALUE"
 msgstr "<li>La valeur de d&eacute;clenchement de l'alarme doit &ecirc;tre sup&eacute;rieure &agrave; 0 et inf&eacute;rieure &agrave; 100</li>"
 
+msgid "ERROR_REGUL_VALUE"
+msgstr "<li>La valeur de d&eacute;clenchement de la r&eacute;gulation doit &ecirc;tre sup&eacute;rieure &agrave; 0 et inf&eacute;rieure &agrave; 100</li>"
+
 msgid "ERROR_PLUG_ID"
 msgstr "<li>Le code de la prise doit &ecirc;tre une valeur num&eacute;rique</li>"
 
@@ -554,6 +581,9 @@ msgstr "<li>Programme r&eacute;initialis&eacute; avec succ&egrave;s</li>"
 
 msgid "WAITING_LOG"
 msgstr "Merci de patienter quelques instants durant le chargement des logs..."
+
+msgid "UPDATED_PROGRAM"
+msgstr "<li>Vos programmes n'&eacute;tait pas &agrave; jour sur votre carte, la mise &agrave; jour &agrave; &eacute;t&eacute; ex&eacute;cut&eacute;</li>"
 
 # For the tooltip part:
 

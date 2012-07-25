@@ -24,6 +24,9 @@ $pop_up=getvar('pop_up');
 $pop_up_message="";
 $pop_up_error_message="";
 $count_err=false;
+$program="";
+
+$info=$info.__('WIZARD_ENABLE_FUNCTION');
 
 
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -32,16 +35,20 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 if((!empty($sd_card))&&(isset($sd_card))) {
    $program=create_program_from_database($error);
-   save_program_on_sd($sd_card,$program,$error,$info);
+   if(!compare_program($program,$sd_card)) {
+      $info=$info.__('UPDATED_PROGRAM');
+      $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
+      save_program_on_sd($sd_card,$program,$error,$info);
+   }
+   check_and_copy_firm($sd_card,$error);
 } else {
         $error=$error.__('ERROR_SD_CARD_CONF');
 }
 
+
 if(!isset($pop_up)) {
         $pop_up = get_configuration("SHOW_POPUP",$error);
 }
-
-$info=$info.__('WIZARD_ENABLE_FUNCTION');
 
 
 if((isset($reset))&&(!empty($reset))) {
@@ -56,6 +63,10 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $tolerance=getvar("plug_tolerance{$nb}");
    $plug_update=false;
    $power=getvar("plug_power${nb}");
+   $regul=getvar("plug_regul${nb}");
+   $regul_senso=getvar("plug_senso${nb}");
+   $regul_senss=getvar("plug_senss${nb}");
+   $regul_value=getvar("plug_regul_value${nb}");
 
    $error_plug[$nb]="";
    $old_name=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
@@ -63,6 +74,10 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $old_tolerance=get_plug_conf("PLUG_TOLERANCE",$nb,$error_plug[$nb]);
    $old_id=get_plug_conf("PLUG_ID",$nb,$error_plug[$nb]);
    $old_power=get_plug_conf("PLUG_POWER",$nb,$error_plug[$nb]);
+   $old_regul=get_plug_conf("PLUG_REGUL",$nb,$error_plug[$nb]);
+   $old_senso=get_plug_conf("PLUG_SENSO",$nb,$error_plug[$nb]);
+   $old_senss=get_plug_conf("PLUG_SENSS",$nb,$error_plug[$nb]);
+   $old_regul_value=get_plug_conf("PLUG_REGUL_VALUE",$nb,$error_plug[$nb]);
 
    
 
@@ -116,6 +131,33 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
      }
    }
 
+   if((!empty($regul))&&(isset($regul))&&(!$reset)&&(strcmp("$old_regul","$regul")!=0)) {
+         insert_plug_conf("PLUG_REGUL",$nb,"$regul",$error_plug[$nb]);
+         $update_program=true;
+         $plug_update=true;
+   }
+
+   if((!empty($regul_senss))&&(isset($regul_senss))&&(!$reset)&&(strcmp("$old_senss","$regul_senss")!=0)) {
+         insert_plug_conf("PLUG_SENSS",$nb,"$regul_senss",$error_plug[$nb]);
+         $update_program=true;
+         $plug_update=true;
+   }
+
+   if((!empty($regul_senso))&&(isset($regul_senso))&&(!$reset)&&(strcmp("$old_senso","$regul_senso")!=0)) {
+         insert_plug_conf("PLUG_SENSO",$nb,"$regul_senso",$error_plug[$nb]);
+         $update_program=true;
+         $plug_update=true;
+   }
+
+   if((!empty($regul_value))&&(isset($regul_value))&&(!$reset)&&(strcmp("$old_regul_value","$regul_value")!=0)) {
+         if(check_regul_value("$regul_value")) { 
+            insert_plug_conf("PLUG_REGUL_VALUE",$nb,"$regul_value",$error_plug[$nb]);
+            $update_program=true;
+            $plug_update=true;
+         } else {
+            $error_plug[$nb]=$error_plug[$nb].__('ERROR_REGUL_VALUE');
+        }
+   }
 
    if(!empty($error_plug[$nb])) {
 	$pop_up_error_message=clean_popup_message($error_plug[$nb]);
@@ -137,6 +179,10 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
    $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$error_plug[$nb]);
    $plug_power{$nb}=get_plug_conf("PLUG_POWER",$nb,$error_plug[$nb]);
+   $plug_regul{$nb}=get_plug_conf("PLUG_REGUL",$nb,$error_plug[$nb]);
+   $plug_senso{$nb}=get_plug_conf("PLUG_SENSO",$nb,$error_plug[$nb]);
+   $plug_senss{$nb}=get_plug_conf("PLUG_SENSS",$nb,$error_plug[$nb]);
+   $plug_regul_value{$nb}=get_plug_conf("PLUG_REGUL_VALUE",$nb,$error_plug[$nb]);
 
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$error_plug[$nb]);
    if($plug_tolerance{$nb}==0) {
@@ -154,8 +200,6 @@ if(($update_program)&&(empty($error))&&(!$count_err)) {
 
 // Write file plug01 plug02...
 if((isset($sd_card))&&(!empty($sd_card))) {
-   // Display at screen that SD card is available
-   $info=$info.__('INFO_SD_CARD').": $sd_card";
    // build conf plug array
    $plugconf=create_plugconf_from_database(17,$error);
    if(count($plugconf)>0) {
@@ -163,7 +207,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
    }
    //write pluga file
    write_pluga($sd_card,$error);
-   check_and_copy_firm($sd_card,$error);
+   $info=$info.__('INFO_SD_CARD').": $sd_card";
 }
 
 
