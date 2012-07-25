@@ -202,6 +202,7 @@ EOF;
    if(!db_priv_end($db)) {
       $out=$out.__('PROBLEM_CLOSING_CONNECTION');
    }
+   
    return $res;
 }
 // }}}
@@ -1017,6 +1018,17 @@ EOF;
             } else {
                $reg="REG:N+000";
                $sec="SEC:N+0000";
+            }
+
+            if(strcmp($data['PLUG_REGUL'],"False")==0) {
+                  $sec="SEC:N+0000";
+            } else {
+                  $sec="SEC:".$data['PLUG_SENSS'].$data['PLUG_SENSO'];
+                  $val=$data['PLUG_REGUL_VALUE']*10;
+                  while(strlen($val)<3) {
+                     $val="0$val";
+                  }
+                  $sec=$sec."1$val";
             }
             
             $arr[]="$reg"."\r\n"."$sec";

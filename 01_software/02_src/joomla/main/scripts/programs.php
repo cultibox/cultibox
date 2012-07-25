@@ -39,11 +39,6 @@ if(!isset($pop_up)) {
 
 
 for($i=0;$i<=$nb_plugs;$i++) {
-		export_program($i,$error);
-}
-
-
-for($i=0;$i<=$nb_plugs;$i++) {
         $info_plug[]="";
         $ret_plug[]="";
 }
@@ -64,9 +59,6 @@ if((isset($action_prog))&&(!empty($action_prog))) {
 
 $info=$info.__('WIZARD_ENABLE_FUNCTION');
 
-if((isset($exportid))&&(!empty($exportid))) {
-	export_program($exportid);
-}
 
 if((!isset($sd_card))||(empty($sd_card))) {
 	$sd_card=get_sd_card();
@@ -208,9 +200,14 @@ for($i=0;$i<$nb_plugs;$i++) {
 }
 
 if((isset($sd_card))&&(!empty($sd_card))) {
-       	$program=create_program_from_database($error);
-       	save_program_on_sd($sd_card,$program,$error,$info);
-        check_and_copy_firm($sd_card,$error);
+      $program=create_program_from_database($error);
+      if(!compare_program($program,$sd_card)) {
+         if((empty($selected_plug))||(!isset($selected_plug))) {
+            $info=$info.__('UPDATED_PROGRAM');
+         }
+         save_program_on_sd($sd_card,$program,$error,$info);
+      }
+      check_and_copy_firm($sd_card,$error);
 }
 
 if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {

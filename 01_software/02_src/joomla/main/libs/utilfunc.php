@@ -653,6 +653,48 @@ function write_program($data,$file,&$out="") {
 }
 // }}}
 
+
+// {{{ compare_program($data,$sd_card)
+// ROLE write programs into the sd card
+// IN   $data      array containing datas to write
+//      $sd_card      sd card path to save data
+// RET false is there is nothing to write, true else
+function compare_program($data,$sd_card) {
+    if(is_file("${sd_card}/plugv")) {
+
+         $nb=0;
+         $nbdata=count($data);
+         $file="${sd_card}/plugv";
+
+         if(count($data)>0) {
+            $handle = fopen($file, 'r');
+            if ($handle) {
+               while (!feof($handle)) {
+                  $buffer = fgets($handle);
+                  $buffer=rtrim($buffer);
+                  
+                  if(!empty($buffer)) {
+                     if($nb==0) {
+                        if($nbdata!=$buffer) { 
+                         return false; 
+                        } 
+                     } else {
+                        if(strcmp($data[$nb-1],$buffer)!=0) { 
+                           return false;
+                        }  
+                     }
+                     $nb=$nb+1;
+                  }
+               }
+               fclose($handle);
+            }
+            return true;
+       } 
+   } 
+   return false;
+}
+// }}}
+
 // {{{ write_pluga($sd_card,&$out="")
 // ROLE write plug_a into the sd card
 // IN   $sd_card        the sd card to be written
@@ -934,6 +976,19 @@ function check_power_value($value="0",&$out="") {
 // IN   $value   value to check
 // OUT  false is there is a wrong value, true else
 function check_alarm_value($value="0") {
+   $value=str_replace(',','.',$value);
+   $value=str_replace(' ','',$value);
+   if(($value>99.99)||($value<0)) return false;
+   if(!is_numeric($value)) return false;
+   return true;
+}
+// }}}
+
+// {{{ check_regul_value($value="0")
+// ROLE check is a value for the regulation is correct
+// IN   $value   value to check
+// OUT  false is there is a wrong value, true else
+function check_regul_value($value="0") {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
    if(($value>99.99)||($value<0)) return false;

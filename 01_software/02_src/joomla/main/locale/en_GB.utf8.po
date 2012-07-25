@@ -248,6 +248,24 @@ msgstr "Reset plugs ID"
 msgid "POWER_PLUG"
 msgstr "Power (in Watt)"
 
+msgid "ENABLE_REGUL_PLUG"
+msgstr "Plug's regulation"
+
+msgid "CONFIGURE_REGUL_SENSO"
+msgstr "Threshold the regulation with the "
+
+msgid "REGUL_TEMP"
+msgstr "Temperature"
+
+msgid "REGUL_HUMI"
+msgstr "Humidity"
+
+msgid "REGUL_UNDER"
+msgstr "under the threshold"
+
+msgid "REGUL_ABOVE"
+msgstr "above the threshold"
+
 # For the programs part:
 
 msgid "CURRENT_PLUG_PROGRAM"
@@ -516,6 +534,9 @@ msgstr "<li> Error in the humidity value. It must be greater or equal to 10&#37;
 msgid "ERROR_ALARM_VALUE"
 msgstr "<li>Value for the alarm must be more than 0 and less than 100</li>"
 
+msgid "ERROR_REGUL_VALUE"
+msgstr "<li>Value for the regulation must be more than 0 and less than 100</li>"
+
 msgid "ERROR_PLUG_ID"
 msgstr "<li>Plug identifier must be a numeric value</li>"
 
@@ -552,6 +573,9 @@ msgstr "<li>Program sucessfully reseted</li>"
 
 msgid "WAITING_LOG"
 msgstr "PLease just wait few seconds during logs loading..."
+
+msgid "UPDATED_PROGRAM"
+msgstr "<li>Your programs wasn't up to date, the update process has been executed</li>"
 
 # For the tooltip part:
 

@@ -65,6 +65,9 @@ $plug_type="";
 $hygro_axis=get_configuration("LOG_HYGRO_AXIS",$error);
 $temp_axis=get_configuration("LOG_TEMP_AXIS",$error);
 $fake_log=false;
+$program="";
+$pop_up="";
+$pop_up_error_message="";
 
 
 if(!isset($pop_up)) {
@@ -72,14 +75,20 @@ if(!isset($pop_up)) {
 }
 
 if((!isset($sd_card))||(empty($sd_card))) {
-        $sd_card=get_sd_card();
-}
-if((!isset($sd_card))||(empty($sd_card))) {
-        $error=$error.__('ERROR_SD_CARD_LOGS');
-} else {
-        $info=$info.__('INFO_SD_CARD').": $sd_card</li>";
+   $sd_card=get_sd_card();
 }
 
+if((!empty($sd_card))&&(isset($sd_card))) {
+   $program=create_program_from_database($error);
+   if(!compare_program($program,$sd_card)) {
+      $info=$info.__('UPDATED_PROGRAM');
+      $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
+      save_program_on_sd($sd_card,$program,$error,$info);
+   }
+   check_and_copy_firm($sd_card,$error);
+} else {
+   $error=$error.__('ERROR_SD_CARD_CONF');
+}
 
 $startday = getvar('startday');
 $startmonth=getvar('startmonth');
@@ -136,7 +145,6 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 			}
   		}
 	}
-	check_and_copy_firm($sd_card,$error);
 }
 
 if(($load_log)&&(empty($error))) {
@@ -235,6 +243,11 @@ if("$type" == "days") {
 
 $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$error);
 $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$error);
+
+if((isset($sd_card))&&(!empty($sd_card))) {
+   $info=$info.__('INFO_SD_CARD').": $sd_card";
+}
+
 
 include('main/templates/logs.html');
 
