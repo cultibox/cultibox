@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 25, 2012 at 01:36 PM
+-- Generation Time: Jul 25, 2012 at 01:39 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 --
 
 INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `FIRST_USE`) VALUES
-(1, 'red', 'green', 5, 5, 16, -1, 'fr_FR', 50, 100, 'True', '0000', '50.0', '000H', '000+', 'True');
+(1, 'red', 'green', 5, 5, 3, -1, 'fr_FR', 50, 100, 'True', '0000', '50.0', '000H', '000+', 'True');
 
 -- --------------------------------------------------------
 
