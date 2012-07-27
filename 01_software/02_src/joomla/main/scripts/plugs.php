@@ -64,7 +64,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_update=false;
    $power=getvar("plug_power${nb}");
    $regul=getvar("plug_regul${nb}");
-   $regul_senso=getvar("plug_senso${nb}");
    $regul_senss=getvar("plug_senss${nb}");
    $regul_value=getvar("plug_regul_value${nb}");
 
@@ -143,6 +142,16 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
          $plug_update=true;
    }
 
+
+   if((strcmp($type,"unknwon")==0)||(strcmp($type,"lamp")==0)) {
+            $regul_senso=getvar("plug_senss${nb}");
+   } elseif((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
+            $regul_senso="H";
+   } elseif((strcmp($type,"humidifier")==0)||(strcmp($type,"deshumidifier")==0)) {
+            $regul_senso="T";
+   } else {
+            $regul_senso="";
+   }
    if((!empty($regul_senso))&&(isset($regul_senso))&&(!$reset)&&(strcmp("$old_senso","$regul_senso")!=0)) {
          insert_plug_conf("PLUG_SENSO",$nb,"$regul_senso",$error_plug[$nb]);
          $update_program=true;
