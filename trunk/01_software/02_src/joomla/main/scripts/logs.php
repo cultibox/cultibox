@@ -51,6 +51,12 @@ window.onload = cacheOff
 </SCRIPT>
 EOF;
 
+ob_flush();
+flush();
+ob_flush();
+flush(); 
+ob_implicit_flush();
+
 $error="";
 $info="";
 $type="";

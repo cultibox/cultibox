@@ -36,15 +36,18 @@
       var firstTolerance = document.getElementById('first_tolerance'+j);
       var pDegree = document.getElementById('degree'+j);
       var pPourcent = document.getElementById('pourcent'+j);
+      var divHumiRegul = document.getElementById('humi_regul_senso'+j);
+      var divTempRegul = document.getElementById('temp_regul_senso'+j);
+      var divUnknownRegul = document.getElementById('unknown_regul_senso'+j);
 
       switch(i) {
-         case 0 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; break;
-         case 1 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; break;
-         case 2 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; break;
-         case 3 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; break;
-         case 4 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; break;
-         case 5 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; break;         
-         default: divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; break;
+         case 0 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; break;
+         case 1 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; break;
+         case 2 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; divHumiRegul.style.display = ''; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; break;
+         case 3 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; divHumiRegul.style.display = ''; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; break;
+         case 4 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = ''; divUnknownRegul.style.display = 'none'; break;
+         case 5 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = ''; divUnknownRegul.style.display = 'none'; break;         
+         default: divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; firstdivToleranceLabel.style.display = 'none'; firstTolerance.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; break;
       }
    }
 </script>
@@ -175,8 +178,10 @@
    <tr>
       <td width="23%"></td>
       <td width="28%"i class="regul"><div id="label_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},'False')==0) { echo "display:none"; } ?>"><img src="main/libs/img/arrow.png" /><?php echo __('CONFIGURE_REGUL_SENSO'); ?></div></td>
-         <td><div id="div_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><select name="plug_senso<?php echo $i; ?>" onChange="getUnity(this.selectedIndex, <?php echo $i; ?>);" onLoad="getUnity(this.selectedIndex,<?php echo $i; ?>);">
-           <?php if(strcmp($plug_senso{$i},"H")==0) {
+         <td><div id="div_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><div id="unknown_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"unknown")!=0)&&(strcmp($plug_type{$i},"lamp")!=0)) { echo "display:none"; } ?>">
+<select name="plug_senso<?php echo $i; ?>" onChange="getUnity(this.selectedIndex, <?php echo $i; ?>);" onLoad="getUnity(this.selectedIndex,<?php echo $i; ?>);">
+           <?php 
+                if(strcmp($plug_senso{$i},"H")==0) {
                      echo "<option value='T'>".__('REGUL_TEMP')."</option>";
                      echo "<option value='H' selected>".__('REGUL_HUMI')."</option>";
                   } else {
@@ -184,7 +189,15 @@
                      echo "<option value='H'>".__('REGUL_HUMI')."</option>";
                   }
            ?>
-    </select></div></td>
+    </select></div></div>
+         <div id="humi_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"ventilator")!=0)&&(strcmp($plug_type{$i},"heating")!=0)) { echo "display:none"; } ?>">
+               <input type="text" size="10" value="<?php echo __('REGUL_HUMI'); ?>" name="regul_humi_fake<?php echo $i; ?>" disabled>
+         </div>
+
+          <div id="temp_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>">
+               <input type="text" size="10" value="<?php echo __('REGUL_TEMP'); ?>" name="regul_temp_fake<?php echo $i; ?>" disabled>
+         </div>
+   </td>
 </tr>
    <tr>
       <td></td>
@@ -198,7 +211,9 @@
                      echo "<option value='-'>".__('REGUL_UNDER')."</option>";
                   }
            ?>
-     </select></div></td>
+     </select></div>
+
+      </td>
    </tr>
    <tr>
       <td></td>
