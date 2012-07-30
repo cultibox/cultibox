@@ -122,6 +122,7 @@ if((!isset($type))||(empty($type))){
 
 
 $log = array();
+$power=array();
 $load_log=false;
 if((isset($sd_card))&&(!empty($sd_card))) {
 	for ($month = 1; $month <= 12; $month++) {
@@ -140,14 +141,28 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 			if(file_exists("$sd_card/logs/$mmonth/$dday")) {
  				// get log value
  				get_log_value("$sd_card/logs/$mmonth/$dday",$log);
+
+            if(!is_file("$sd_card/logs/$mmonth/pwr_$dday")) {
+               copy("main/templates/data/empty_file_big.tpl", "$sd_card/logs/$mmonth/pwr_$dday");
+            } else {
+               get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);
+            }
  				if(!empty($log)) {
    				if(db_update_logs($log,$error)) {
                   clean_log_file("$sd_card/logs/$mmonth/$dday");
                }
-   				unset($log) ;
+   			   unset($log) ;
    				$log = array();
  				   $load_log=true;
    			}
+            //if(!empty($power)) {
+            //   if(db_update_power($power,$error)) {
+           //       clean_power_file("$sd_card/logs/$mmonth/pwr_$dday");
+            //   }
+            //   unset($power) ;
+            //   $power = array();
+            //   $load_log=true;
+            //}
 			}
   		}
 	}
