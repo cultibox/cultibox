@@ -147,6 +147,50 @@ function get_log_value($file,&$array_line) {
 //}}}
 
 
+// {{{ get_power_value($file,&$array_line)
+// ROLE get powers values from files and clean it
+// IN $file      file to explode
+//    $array_line   array to store log's values
+// RET none
+function get_power_value($file,&$array_line) {
+   $handle = fopen("$file", 'r');
+   if ($handle)
+   {
+      while (!feof($handle))
+      {
+         $buffer = fgets($handle);
+         if(!check_empty_string($buffer)) {
+            break;
+         } else {
+            $temp = explode("\t", $buffer);
+            for($i=0;$i<count($temp);$i++) {
+               $temp[$i]=rtrim($temp[$i]);
+            }
+
+            $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
+            $date_catch=rtrim($date_catch);
+            $time_catch=substr($temp[0], 8,6);
+            $time_catch=rtrim($time_catch);
+
+            if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(!empty($temp[1]))&&(!empty($temp[2]))) {
+        if((strlen($temp[1])<=4)&&(strlen($temp[2])<=4)&&(strlen($temp[0])==14)) {
+                     $array_line[] = array(
+                        "timestamp" => $temp[0],
+                        "temperature" => $temp[1],
+                        "humidity" => $temp[2],
+                        "date_catch" => $date_catch,
+                        "time_catch" => $time_catch
+                     );
+               }
+            }
+         }
+      }
+      fclose($handle);
+   }
+}
+//}}}
+
+
 // {{{ clean_log_file($file)
 // ROLE copy an empty file to clean a log file
 // IN $file             file to clean
