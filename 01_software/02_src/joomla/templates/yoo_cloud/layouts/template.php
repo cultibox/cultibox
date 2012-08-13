@@ -181,14 +181,11 @@ include($this['path']->path('layouts:template.config.php'));
 				
 				<?php if ($this['modules']->count('footer + debug') || $this['config']->get('warp_branding')) : ?>
 				<footer id="footer" class="grid-block">
-		
-<!--		
+	               <br /></br />	
 					<?php
 						echo $this['modules']->render('footer');
-						$this->output('warp_branding');
 						echo $this['modules']->render('debug');
 					?>
--->
 				</footer>
 				<?php endif; ?>
 				

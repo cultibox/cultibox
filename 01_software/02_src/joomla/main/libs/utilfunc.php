@@ -163,6 +163,11 @@ function get_power_value($file,&$array_line) {
             break;
          } else {
             $temp = explode("\t", $buffer);
+
+            if(count($temp)!=17) {
+               return false;
+            }
+
             for($i=0;$i<count($temp);$i++) {
                $temp[$i]=rtrim($temp[$i]);
             }
@@ -172,16 +177,24 @@ function get_power_value($file,&$array_line) {
             $time_catch=substr($temp[0], 8,6);
             $time_catch=rtrim($time_catch);
 
-            if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(!empty($temp[1]))&&(!empty($temp[2]))) {
-        if((strlen($temp[1])<=4)&&(strlen($temp[2])<=4)&&(strlen($temp[0])==14)) {
-                     $array_line[] = array(
+            if((!empty($date_catch))&&(!empty($time_catch))) {
+                  for($i=1;$i<count($temp);$i++) {
+                     if(strlen($temp[$i])!=3) {
+                        return false;
+                     }
+                  }
+
+
+                  for($i=1;$i<count($temp);$i++) {
+
+                  $array_line[] = array(
                         "timestamp" => $temp[0],
-                        "temperature" => $temp[1],
-                        "humidity" => $temp[2],
+                        "power" => $temp[$i],
+                        "plug_number" => $i,
                         "date_catch" => $date_catch,
                         "time_catch" => $time_catch
                      );
-               }
+                  }
             }
          }
       }
@@ -190,13 +203,23 @@ function get_power_value($file,&$array_line) {
 }
 //}}}
 
-
 // {{{ clean_log_file($file)
 // ROLE copy an empty file to clean a log file
 // IN $file             file to clean
 // RET none
 function clean_log_file($file) {
    $filetpl = 'main/templates/data/empty_file_64.tpl';
+   copy($filetpl, $file);
+}
+//}}}
+
+
+// {{{ clean_power_file($file)
+// ROLE copy an empty file to clean a power file
+// IN $file             file to clean
+// RET none
+function clean_power_file($file) {
+   $filetpl = 'main/templates/data/empty_file_big.tpl';
    copy($filetpl, $file);
 }
 //}}}
