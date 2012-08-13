@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 30, 2012 at 08:38 AM
+-- Generation Time: Aug 13, 2012 at 04:01 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_REGUL`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`) VALUES
 (1, '', 'plug1', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
 (2, '', 'plug2', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(3, '', 'plug3', 'unknown', NULL, 0, 'False', '+', '+', 35.0),
+(3, '', 'plug3', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
 (4, '', 'plug4', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
 (5, '', 'plug5', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
 (6, '', 'plug6', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
