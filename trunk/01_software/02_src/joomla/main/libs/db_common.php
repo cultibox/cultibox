@@ -82,6 +82,49 @@ EOF;
 // }}}
 
 
+// {{{ db_update_power($arr,&$out)
+// ROLE update power table in the Database with the array $arr
+// IN $arr   array containing values to update database
+//    $out   error or warning message 
+// RET none
+function db_update_power($arr,&$out="") {
+   $db = db_priv_start();
+   $index=0;
+   $return=1;
+   $sql = <<<EOF
+INSERT INTO `power`(`timestamp`,`plug_number`,`power`, `date_catch`,`time_catch`) VALUES
+EOF;
+   foreach($arr as $value) {
+      if((array_key_exists("timestamp", $value))&&(array_key_exists("plug_number", $value))&&(array_key_exists("power", $value))&&(array_key_exists("date_catch", $value))&&(array_key_exists("time_catch", $value))) {
+         if("$index" == "0") {
+            $sql = $sql . "(${value['timestamp']}, ${value['plug_number']},${value['power']},\"${value['date_catch']}\",\"${value['time_catch']}\")";
+         } else {
+            $sql = $sql . ",(${value['timestamp']}, ${value['plug_number']},${value['power']},\"${value['date_catch']}\",\"${value['time_catch']}\")";
+         }
+         $index = $index +1;
+      }
+   }
+
+   $db->setQuery($sql);
+   $db->query();
+   $ret=$db->getErrorMsg();
+   if((isset($ret))&&(!empty($ret))) {
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out=$out.__('ERROR_UPDATE_SQL').$ret;
+      } else {
+         $out=$out.__('ERROR_UPDATE_SQL');
+      }
+      $return=0;
+   }
+   if(!db_priv_end($db)) {
+      $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+   }
+
+   return $return;
+}
+// }}}
+
+
 // {{{ get_graph_array(&$res,$key,$startdate,$fake,$out)
 // ROLE get array needed to build graphics
 // IN $res         the array containing datas needed for the graphics
