@@ -63,7 +63,7 @@ span.info-bulle-contenu
 {
    display: none;
    position: absolute;
-   background:red;
+   background:black;
    padding: 6px;
    padding-left: 12px;
    padding-right: 12px;

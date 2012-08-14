@@ -1,4 +1,11 @@
 <script type="text/javascript">
+function verifDigit(e) {
+   if((e.keyCode < 45 || e.keyCode > 57)&&(e.keyCode != 44 && e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
+   if((e.which < 45 || e.which > 57)&&(e.which != 44 && e.which != 08 && e.which != 10 && e.which != 13)) return false;
+}
+</script>
+
+<script type="text/javascript">
    function getAlarm(i) {
       var divAval = document.getElementById('div_alarm_value');
       var divAsenso = document.getElementById('div_alarm_senso');
@@ -37,6 +44,15 @@
 </div>
 <?php } ?>
 
+<?php if((isset($main_error))&&(!empty($main_error))) { ?>
+<div id="error">
+<ul>
+        <?php echo $main_error; ?>
+</ul>
+</div>
+<br />
+<?php } ?>
+
 <?php if((isset($error))&&(!empty($error))) { ?>
 <div id="error">
 <ul>
@@ -45,6 +61,7 @@
 </div>
 <br />
 <?php } ?>
+
 
 
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
@@ -57,14 +74,14 @@
    </SCRIPT>
 <?php } ?>
 
-
+<br />
 <p class="title_conf">
    <?php echo __('USER_CONF'); ?>:
 </p>
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
 <table width="60%" align="center">
    <tr>
-      <td width="80%"><?php echo __('CONFIGURE_LANGUAGE'); ?></td>
+      <td width="75%"><?php echo __('CONFIGURE_LANGUAGE'); ?></td>
       <td><select name="lang">
          <?php foreach($GLOBALS['LIST_LANG'] as $value) {
             switch ($value) {
@@ -183,15 +200,11 @@
       } ?></select></td>
    </tr>
    <tr>
-         <td><?php echo __('CONFIGURE_POPUP'); ?></td>
+         <td><?php echo __('CONFIGURE_POPUP'); ?> <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POPUP'); ?>" /></td>
          <td><select name="pop_up">
-         <?php if(strcmp("$pop_up","True")==0) { ?>
-            <option value="True" selected><?php echo __('YES'); ?></option>
-            <option value="False"><?php echo __('NO'); ?></option>
-         <?php } else { ?>
-            <option value="True"><?php echo __('YES'); ?></option>";
-            <option value="False" selected><?php echo __('NO'); ?></option>";
-         <?php } ?></select></td>
+            <option value="True" <?php if(strcmp("$pop_up","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
+            <option value="False" <?php if(strcmp("$pop_up","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
+         </select></td>
    </tr>
 </table>
 <br />
@@ -200,8 +213,8 @@
 </p>
 <table width="60%" align="center">
 <tr>
-<td width="80%">
-   <?php echo __('CONFIGURE_FREQUENCY'); ?>
+<td width="75%">
+   <?php echo __('CONFIGURE_FREQUENCY'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
 </td>
 <td>
    <select name="record_frequency">
@@ -218,8 +231,8 @@
 </td>
 </tr>
 <tr>
-<td width="80%">
-   <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>
+<td width="75%">
+   <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
 </td>
 <td>
    <select name="power_frequency">
@@ -255,7 +268,7 @@
 </tr>
 <tr>
 <td>
-   <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?>
+   <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
 </td>
 <td>
    <select name="update_frequency">
@@ -283,7 +296,7 @@
 </p>
 <table width="60%" align="center">
    <tr>
-      <td width="80%"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?></td>
+      <td width="75%"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_ALARM'); ?>" /></td>
       <td><select name="alarm_enable" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
            <?php if("$alarm_enable"=="0001") {
                      echo "<option value='0001' selected>".__('YES')."</option>";
@@ -296,7 +309,7 @@
       </select></td>
    </tr>
 <tr>
-      <td width="80%"><div id="label_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSO'); ?></div></td>
+      <td width="75%"><div id="label_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSO'); ?></div></td>
       <td><div id="div_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><select name="alarm_senso" onChange="getUnity(this.selectedIndex);" onLoad="getUnity(this.selectedIndex);">
            <?php if("$alarm_senso"=="000T") {
                      echo "<option value='000T' selected>".__('ALARM_TEMP')."</option>";
@@ -309,11 +322,11 @@
       </select></div></td>
    </tr>
    <tr>
-      <td width="80%"><div id="label_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_VALUE'); ?></div></td>
-      <td><div id="div_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value"><label id="label_degree" style="<?php if("$alarm_senso"=="000H") echo "display:none"; ?>">°C</label><label id="label_pourcent" style="<?php if("$alarm_senso"=="000T") echo "display:none"; ?>">%</label></div></td>
+      <td width="75%"><div id="label_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_VALUE'); ?></div></td>
+      <td><div id="div_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value" onKeypress="return verifDigit(event);"><label id="label_degree" style="<?php if("$alarm_senso"=="000H") echo "display:none"; ?>">°C</label><label id="label_pourcent" style="<?php if("$alarm_senso"=="000T") echo "display:none"; ?>">%</label></div></td>
    </tr>
    <tr>
-      <td width="80%"><div id="label_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSS'); ?></div></td>
+      <td width="75%"><div id="label_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSS'); ?></div></td>
       <td><div id="div_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><select name="alarm_senss">
            <?php if("$alarm_senss"=="000+") {
                      echo "<option value='000+' selected>".__('ALARM_ABOVE')."</option>";
