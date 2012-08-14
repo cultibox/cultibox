@@ -28,3 +28,5 @@ InstallationInfoBulle = function() {
 $(document).ready(function() {
    InstallationInfoBulle();
 });
+
+

@@ -17,26 +17,26 @@ msgstr "Programmes"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
-msgstr "Bienvenu dans le logiciel de la cultibox"
+msgstr "Bienvenu(e) dans le logiciel de configuration de la CultiBox"
 
 msgid "WELCOME_MESSAGE"
-msgstr "Ce logiciel va vous permettre de manipuler simplement votre cultibox afin de la configurer, de visualiser les donn&eacute;es enregistr&eacute;es ou encore acc&egrave;der &agrave; certaines fonctionnalit&eacute;s telles que le calcul du cout d'&eacute;lectricit&eacute; ou la cr&eacute;ation d'un calendrier de culture."
+msgstr "Ce logiciel va vous permettre de manipuler simplement votre CultiBox afin de la configurer, de visualiser les donn&eacute;es enregistr&eacute;es ou encore d'acc&egrave;der &agrave; certaines fonctionnalit&eacute;s telles que le calcul du co&ucirc;t d'&eacute;lectricit&eacute; ou la cr&eacute;ation d'un calendrier de culture."
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note:</b> pour ceux qui poss&egrave;de l'ancienne version de la cultibox (la <b>greenbox</b>), il vous faudra absolument <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la cultibox</li><li>d&eacute;connecter votre GreenBox qui peut causer des interf&eacute;rences avec la cultibox</li></ul>"
+msgstr "<b>Note:</b> pour ceux qui poss&egrave;de l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument: <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>d&eacute;connecter votre GreenBox qui peut causer des interf&eacute;rences avec la CultiBox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
-msgstr "Cliquez sur le lien suivant pour lancer l'assistant de configuration et commencer &agrave; manipuler votre cultibox."
+msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer &agrave; manipuler votre CultiBox:"
 
 msgid "WELCOME_WIZARD"
 msgstr "Assistant de configuration"
 
 # For the configuration part:
 msgid "USER_CONF"
-msgstr "Configuration utilisateur"
+msgstr "Configuration de l'interface"
 
 msgid "SYSTEM_CONF"
-msgstr "Configuration du syst&egrave;me"
+msgstr "Configuration de la cultibox"
 
 msgid "ALWAYS_RECORD"
 msgstr "Toujours"
@@ -51,10 +51,10 @@ msgid "CONFIGURE_LANGUAGE"
 msgstr "Choisir votre langue"
 
 msgid "CONFIGURE_FREQUENCY"
-msgstr "Fr&eacute;quence d'enregistrement des conditions climatique (en minute)"
+msgstr "Fr&eacute;quence d'enregistrement du climat (en minute)"
 
 msgid "CONFIGURE_POWER_FREQUENCY"
-msgstr "Fr&eacute;quence d'enregistrement des mesures de puissance (en minute)"
+msgstr "Fr&eacute;quence d'enregistrement de la puissance (en minute)"
 
 msgid "CONFIGURE_NB_PLUGS"
 msgstr "Nombre de prises de votre syst&egrave;me"
@@ -558,6 +558,9 @@ msgstr "<li>Vous pouvez maintenant connecter la carte SD dans la CultiBox.</li>"
 msgid "VALID_UPDATE_CONF"
 msgstr "<li>Configuration mise &agrave; jour avec succ&egrave;s</li>"
 
+msgid "VALID_UPDATE_CONF_WITHOUT_SD"
+msgstr "<li>Configuration mise &agrave; jour avec succ&egrave;s dans le logiciel de la Cultibox.</li>"
+
 msgid "VALID_UPDATE_PROGRAM"
 msgstr "<li> Programmes mis &agrave; jour avec succ&egrave;s</li>"
 
@@ -593,4 +596,21 @@ msgstr "La Cultibox va &eacute;teindre ou allumer la prise pour atteindre cette 
 msgid "TOOLTIP_POWER"
 msgstr "La puissance de l'&eacute;quipement branch&eacute;. Renseigner ce champ vous permet de calculer la consomation de votre installation, son prix..."
 
+msgid "TOOLTIP_POPUP"
+msgstr "Les messages affich&eacute;s par l'interface sont par d&eacute;faut affich&eacute;s dans une boite de dialogue. Cette option vous permet de d&eacute;sactiver/activer ces boites de dialogue."
+
+msgid "TOOLTIP_RECORD_FREQ"
+msgstr "Cette option permet de configurer la fr&eacute;quence &agrave; laquelle la CultiBox enregistre les donn&eacute;es de temp&eacute;rature et d'hygrom&eacute;trie."
+
+msgid "TOOLTIP_POWER_FREQ"
+msgstr "Cette option permet de configurer la fr&eacute;quence &agrave; laquelle la CultiBox enregistre les valeurs de consomation d'&eacute;nergie."
+
+msgid "TOOLTIP_PLUG_FREQ"
+msgstr "Cette option permet de configurer la fr&eacute;quence &agrave; laquelle sera mise &agrave; jour l'&eacute;tat (Marche/Arr&ecirc;t) de vos prises."
+
+msgid "TOOLTIP_ALARM"
+msgstr "L'alarme de la CultiBox est un moyen simple de v&eacute;rifier qu'une composante (temp&eacute;rature ou hygrom&eacute;trie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le syst&egrave;me d'alarme, il faut faudra choisir: si vous voulez v&eacute;rifier la temp&eacute;rature ou l'hygrom&eacute;trie, &agrave; partir de quel seuil l'alarme doit se d&eacute;clencher et si elle doit se d&eacute;clencher au dessus ou en dessous de ce seuil."
+
+msgid "TOOLTIP_WITHOUT_SD"
+msgstr "Sans carte SD branch&eacute;e votre configuration sera sauvegard&eacute;e dans le logiciel mais pas dans la CultiBox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la CultiBox."
 

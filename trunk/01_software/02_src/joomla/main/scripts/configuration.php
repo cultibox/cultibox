@@ -11,6 +11,7 @@ require_once('main/libs/utilfunc.php');
 
 
 $error="";
+$main_error="";
 
 $color_humidity = getvar('color_humidity');
 $color_temperature = getvar('color_temperature');
@@ -56,7 +57,12 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    }
    check_and_copy_firm($sd_card,$error);
 } else {
-        $error=$error.__('ERROR_SD_CARD_CONF');
+
+        $tmp="";
+        $tmp=__('ERROR_SD_CARD_CONF');
+        $tmp_title=__('TOOLTIP_WITHOUT_SD');
+        $tmp=str_replace("</li>"," <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\"$tmp_title\" /></li>",$tmp);
+        $main_error=$main_error.$tmp;
 }
 
 
@@ -166,8 +172,13 @@ if(!empty($alarm_senss)) {
 
 if((empty($error))||(!isset($error))) {
 	if($update_conf) {
-			$info=$info.__('VALID_UPDATE_CONF');
-			$pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_CONF'));
+        if((!empty($sd_card))&&(isset($sd_card))) {
+			   $info=$info.__('VALID_UPDATE_CONF');
+			   $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_CONF'));
+         } else {
+            $info=$info.__('VALID_UPDATE_CONF_WITHOUT_SD');
+            $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_CONF_WITHOUT_SD'));
+         }
 	}
 }
 
