@@ -127,17 +127,20 @@ msgstr "Humidit&eacute;"
 
 # For the logs part:
 
-msgid "OR"
-msgstr "OU"
-
 msgid "HISTO_GRAPH"
 msgstr "Graphiques temperatures et hygrometrie"
 
 msgid "SELECT_DISPLAYED_DAY"
-msgstr "S&eacute;lectionner un jour &agrave; afficher"
+msgstr "Afficher les informations pour un seul jour:"
+
+msgid "SELECT_DAY"
+msgstr "Jour &agrave; afficher (AAAA-MM-JJ):"
+
+msgid "SELECT_MONTH"
+msgstr "Selectionner le mois &agrave; afficher: "
 
 msgid "SELECT_DISPLAYED_MONTH"
-msgstr "S&eacute;lectionner un mois et une ann&eacute;e"
+msgstr "Afficher les informations pour un mois entier:"
 
 msgid "VIEW"
 msgstr "Afficher"
@@ -200,7 +203,10 @@ msgid "MONTH12"
 msgstr "D&eacute;cembre"
 
 msgid "SELECT_PROGRAM_PLUG"
-msgstr "et un programme &agrave; comparer"
+msgstr "Programme &agrave; comparer:"
+
+msgid "SELECT_POWER_PLUG"
+msgstr "Afficher la consommation electrique:"
 
 msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
@@ -339,6 +345,9 @@ msgstr "Fermer"
 
 msgid "TIMEPICKER_BUTTON_TEXT"
 msgstr "Choisir l\'heure"
+
+msgid "TIMEPICKER_BUTTON_TEXT_LOG"
+msgstr "Choisir la date"
 
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
 msgstr "Comportement de votre prise"
@@ -489,10 +498,10 @@ msgid "ERROR_SELECT_SQL"
 msgstr "<li> Erreur dans la requ&ecirc;te SQL SELECT</li>"
 
 msgid "EMPTY_TEMPERATURE_DATA"
-msgstr "<li> Donn&eacute;es des temp&eacute;ratures manquantes pour la date s&eacute;lectionn&eacute;e</li>"
+msgstr "<li> Aucun enregistrement concernant la temp&eacute;rature pour la date s&eacute;lectionn&eacute;e</li>"
 
 msgid "EMPTY_HUMIDITY_DATA"
-msgstr "<li> Donn&eacute;es hygrom&eacute;triques manquantes pour la date s&eacute;lectionn&eacute;e</li>"
+msgstr "<li> Aucun enregistrement concernant l'hygrom&eacute;triques pour la date s&eacute;lectionn&eacute;e</li>"
 
 msgid "ERROR_FORMAT_DATE_DAY"
 msgstr "<li> Erreur dans le format de la date: AAAA-MM-JJ</li>"
@@ -613,4 +622,7 @@ msgstr "L'alarme de la CultiBox est un moyen simple de v&eacute;rifier qu'une co
 
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Sans carte SD branch&eacute;e votre configuration sera sauvegard&eacute;e dans le logiciel mais pas dans la CultiBox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la CultiBox."
+
+msgid "TOOLTIP_WITHOUT_SD_LOG"
+msgstr "Sans carte SD branch&eacute;e les fichiers enregistr&eacute;s par votre CultiBox concernant la temp&eacute;rature et l'hygrom&eacute;trie ne pourront pas &ecirc;tre affich&eacute; et sauvegard&eacute;. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
 

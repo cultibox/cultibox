@@ -349,6 +349,42 @@ EOF;
 // }}}
 
 
+// {{{ get_data_power($date,$out)
+// ROLE get a data power from the database
+// IN $date   date to select reccords
+//    $out      errors or warnings messages
+// RET data power formated for highchart
+function get_data_power($date="",&$out="") {
+   $res="";
+   if((isset($date))&&(!empty($date))) {
+      $db = db_priv_start();
+      $sql = <<<EOF
+SELECT  * FROM `power` WHERE date_catch = "{$date}" ORDER by time_catch ASC
+EOF;
+
+           $db->setQuery($sql);
+           $db->query();
+           $res=$db->loadAssocList();
+      $ret=$db->getErrorMsg();
+           if((isset($ret))&&(!empty($ret))) {
+         if($GLOBALS['DEBUG_TRACE']) {
+                      $out=$out.__('ERROR_SELECT_SQL').$ret;
+                } else {
+                      $out=$out.__('ERROR_SELECT_SQL');
+                }
+                return 0;
+          }
+
+          if(!db_priv_end($db)) {
+                  $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+                  return 0;
+          }
+   }
+   return $res;
+}
+// }}}
+
+
 // {{{ insert_program($plug_id,$start_time,$end_time,$value,&$out)
 // ROLE check and create new plug program
 // IN $plug_id      id of the plug

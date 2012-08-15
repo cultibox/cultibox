@@ -383,34 +383,29 @@ function check_empty_record($last_hh,$last_mm,$hh,$mm) {
 // IN $date   date to check
 //    $type   the type: month or days
 // RET true is the format match the type, false else
-function check_format_date($date="",$type,&$out="") {
+function check_format_date($date="",$type) {
    $date=str_replace(' ','',"$date");
    if("$type"=="days") {
       if(strlen("$date")!=10) {
-         $out=$out.__('ERROR_FORMAT_DATE_DAY');
          return 0;
       }
 
       if(!preg_match('#^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$#', $date)) {
-         $out=$out.__('ERROR_FORMAT_DATE_DAY');
-                        return 0;
-                }
+         return 0;
+      }
       return 1;
    }
 
    if("$type" == "month") {
       if(strlen("$date")!=2) {
-         $out=$out.__('ERROR_FORMAT_DATE_MONTH');
          return 0;
       }
 
       if(!preg_match('#^[0-9][0-9]$#', $date)) {
-         $out=$out.__('ERROR_FORMAT_DATE_MONTH');
          return 0;
       }
 
       if(($date < 1)||($date > 12)) {
-         $out=$out.__('ERROR_FORMAT_DATE_MONTH');
          return 0;
       }
       return 1;
