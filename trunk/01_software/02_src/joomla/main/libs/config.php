@@ -42,4 +42,7 @@ $GLOBALS['LIST_MAX_AXIS'] = array('20', '40', '50', '80','100');
 // Variable to enable/disable "first use" page:
 $GLOBALS['FIRST_USE'] = true;
 
+// Variable to define the first year to be used for the log part:
+$GLOBALS['FIRST_LOG_YEAR'] = '2012';
+
 ?>

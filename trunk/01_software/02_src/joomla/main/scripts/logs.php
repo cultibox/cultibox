@@ -15,7 +15,7 @@ set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
-
+/*
 echo <<<EOF
 <!-- DEBUT DU SCRIPT -->
 <STYLE TYPE="text/css">
@@ -25,6 +25,7 @@ echo <<<EOF
 }
 -->
 </STYLE>
+
 <DIV ID="cache" align="center"><TABLE WIDTH="100%"  BGCOLOR=#000000 BORDER=0 CELLPADDING=2 CELLSPACING=0><TR><TD ALIGN="center" VALIGN=middle><TABLE WIDTH="100%" BGCOLOR=#FFFFFF BORDER=0 CELLPADDING=0 CELLSPACING=0><TR><TD ALIGN=center VALIGN=middle><FONT FACE="Verdana" SIZE=4 COLOR=#000000><BR>
 EOF;
 echo __('WAITING_LOG');
@@ -57,7 +58,10 @@ ob_flush();
 flush(); 
 ob_implicit_flush();
 
+*/
+
 $error="";
+$main_error="";
 $info="";
 $type="";
 $temperature= array();
@@ -72,8 +76,10 @@ $hygro_axis=get_configuration("LOG_HYGRO_AXIS",$error);
 $temp_axis=get_configuration("LOG_TEMP_AXIS",$error);
 $fake_log=false;
 $program="";
+$show_power=getvar('show_power');
 $pop_up="";
 $pop_up_error_message="";
+$last_year=date('Y');
 
 
 if(!isset($pop_up)) {
@@ -93,10 +99,14 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    }
    check_and_copy_firm($sd_card,$error);
 } else {
-   $error=$error.__('ERROR_SD_CARD_CONF');
+   $tmp="";
+   $tmp=__('ERROR_SD_CARD_LOGS');
+   $tmp_title=__('TOOLTIP_WITHOUT_SD_LOG');
+   $tmp=str_replace("</li>"," <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\"$tmp_title\" /></li>",$tmp);
+   $main_error=$main_error.$tmp;
 }
 
-$startday = getvar('startday');
+$startday=getvar('startday');
 $startmonth=getvar('startmonth');
 $startyear=getvar('startyear');
 $load_log=false;
@@ -175,10 +185,20 @@ if(($load_log)&&(empty($error))) {
 
 if("$type"=="days") {
    $legend_date=$startday;
-   $check_format=check_format_date($startday,$type,$error);
+   $check_format=check_format_date($startday,$type);
+   if(!$check_format) {
+      $error=$error.__('ERROR_FORMAT_DATE_DAY');
+      $pop_up_error_message=clean_popup_message($error);
+      $startday=date('Y')."-".date('m')."-".date('d');
+      $check_format=true;
+   }
 } else {
    $legend_date=date('Y')."-".$startmonth;
-   $check_format=check_format_date($startmonth,$type,$error);
+   $check_format=check_format_date($startmonth,$type);
+   if(!$check_format) {
+      $error=$error.__('ERROR_FORMAT_DATE_MONTH');
+      $pop_up_error_message=clean_popup_message($error);
+   }
 }
 
 if("$type" == "days") {
@@ -187,6 +207,12 @@ if("$type" == "days") {
 			$data_plug=get_data_plug($select_plug,$error);
  	      $data=format_program_highchart_data($data_plug,$startday);
 			$plug_type=get_plug_conf("PLUG_TYPE",$select_plug,$error);
+      }
+
+      if((isset($show_power))&&(!empty($show_power))&&(strcmp($show_power,"on")==0)) {
+         $data_power=get_data_power($startday,$error);
+         $datap=get_format_graph($data_power);
+         print_r($datap);
       }
       $xlegend="XAXIS_LEGEND_DAY";
      	$styear=substr($startday, 0, 4);
