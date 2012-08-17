@@ -20,6 +20,7 @@ $info="";
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $update_program=false;
 $reset=getvar('reset');
+$reccord=getvar('reccord');
 $pop_up=getvar('pop_up');
 $pop_up_message="";
 $pop_up_error_message="";
@@ -128,6 +129,12 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
       	$update_program=true;
       	$plug_update=true;
      }
+   } else {
+         if((empty($power))&&(!$reset)&&(!empty($reccord))&&(strcmp("$old_power","$power")!=0)) {
+            insert_plug_conf("PLUG_POWER",$nb,0,$error_plug[$nb]);
+            $update_program=true;
+            $plug_update=true;
+         }
    }
 
    if((!empty($regul))&&(isset($regul))&&(!$reset)&&(strcmp("$old_regul","$regul")!=0)) {

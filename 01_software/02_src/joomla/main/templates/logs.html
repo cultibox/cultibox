@@ -74,7 +74,7 @@ buttonImageOnly: 'true',
    </tr>
    <tr>
       <td></td>
-      <td><?php echo __('SELECT_PROGRAM_PLUG'); ?></td>
+      <td><?php echo __('SELECT_PROGRAM_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_LOG_PROGRAM'); ?>" /></td>
       <td> <select name="select_plug">
             <option value="">---</option>
             <?php for($i=0;$i<$nb_plugs;$i++) { ?>
@@ -85,7 +85,7 @@ buttonImageOnly: 'true',
    </tr>
    <tr>
       <td></td>
-      <td><?php echo __('SELECT_POWER_PLUG'); ?></td>
+      <td><?php echo __('SELECT_POWER_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER_LOG'); ?>" /></td>
       <td><input type="checkbox" name="show_power"></td>
    </tr>
    <tr>
@@ -118,7 +118,7 @@ buttonImageOnly: 'true',
                <option <?php if("$startmonth" == "12") { echo 'selected';} ?> value="12"><?php echo __('MONTH12'); ?></option>
             </select>
             <?php if($GLOBALS['FIRST_LOG_YEAR']==$last_year) {
-                  echo '<input type="text" name="startyear" value="'.$last_year.'" size="4" disabled="disabled"';
+                  echo '<input type="text" name="startyear" value="'.$last_year.'" size="4" readonly="readonly">';
             }
 
             if($GLOBALS['FIRST_LOG_YEAR']!=$last_year) {
@@ -158,15 +158,15 @@ $(function () {
       chart = new Highcharts.Chart({
          chart: {
             backgroundColor: '#F7F7F9',
-             renderTo: 'container',
-             zoomType: 'x',
-             spacingRight: 20,
-             events: {
-                load: function() {
-                   <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/joomla/main/libs/img/fake_log_".__('LANG').".png', 80, 55, 143, 57)"; ?>
-                   <?php if($fake_log)  echo ".add();"; ?>
-                }
-             }
+            renderTo: 'container',
+            zoomType: 'x',
+            spacingRight: 20,
+            events: {
+               load: function() {
+                  <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/joomla/main/libs/img/fake_log_".__('LANG').".png', 80, 55, 143, 57)"; ?>
+                  <?php if($fake_log)  echo ".add();"; ?>
+               }
+            }
          },
          title: {
              text: <?php echo "'".__('HISTO_GRAPH')." (".$legend_date.")'"; ?>,
@@ -228,58 +228,49 @@ $(function () {
                   }
                }
             }
+            <?php if((isset($datap))&&(!empty($datap))) { ?>
+            ,{
+               title: {
+                  text: <?php echo "'".__('Y3AXIS_LEGEND')."'"; ?>,
+                  style: {
+                     color: <?php echo "'".$color_power."'"; ?>
+                  }
+               },
+               min: 0,
+               max: <?php echo "$power_axis"; ?>,
+            }
+            <?php } ?>
+
          ],
          tooltip: {
-            shared: true,
             formatter: function() {
                var tab=new Array;
-               <?php if((isset($data_humi))&&(!empty($data_humi))) { ?>
-                  j = tab.length;   
-                  tab[j]="%";
-               <?php } ?>
-   
-               <?php if((isset($data_temp))&&(!empty($data_temp))) { ?>
-                  j = tab.length;   
-                  tab[j]="°C";
-                                   <?php } ?>
-   
-               <?php if((isset($plug_type))&&(!empty($plug_type))) { ?>
-                  <?php if((strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"heating")==0)) { ?>
-                     j = tab.length; 
-                     tab[j]="°C";
-                  <?php } else if((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { ?>
-                     j = tab.length; 
-                     tab[j]="°C";
-                  <?php } else { ?>
-                     j = tab.length; 
-                     tab[j]="";
-                  <?php } ?>
-               <?php } ?>
-   
                <?php if("$type"=="month") { ?>
-                  var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  "+Highcharts.dateFormat('%H:%M:%S %Y/%m/%d', this.x)+"</b></p>";
+                  var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S %Y/%m/%d', this.x)+"</p>";
                <?php } else { ?>
-                  var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  "+Highcharts.dateFormat('%H:%M:%S', this.x)+"</b></p>"; 
+                  var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x)+"</p>"; 
                <?php } ?>
-               for(var i= 0; i < this.points.length; i++) {
-                  if(tab[i]!="") {
-                     if(this.points[i].y==99.9) {
-                        val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("FORCE_ON_CHART"); ?></p>';
-                     } else if(this.points[i].y==0) {
-                        val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_OFF"); ?></p>';
-                     } else {
-                        val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': '+this.points[i].y+tab[i]+'</p>';
-                     }
-                  } else {
-                     if(this.points[i].y==99.9) {
-                        val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_ON"); ?></p>';
-                     } else {
-                        val=val+'<br /><p align="left" style="color:'+this.points[i].series.color+';">'+this.points[i].series.name+': <?php echo __("VALUE_OFF"); ?></p>';
-                     }
-                  }
+
+                  var unit = {
+               <?php echo "'".__('LEGEND_HUMI')."'"; ?>: '%',
+               <?php echo "'".__('LEGEND_TEMP')."'"; ?>: '°C', 
+               <?php echo "'".__('LEGEND_POWER')."'"; ?>: 'W'
+               <?php if((isset($select_plug))&&(!empty($select_plug))) {
+                     echo ",'".$plugs_infos[$select_plug-1]["PLUG_NAME"]."': ''"; 
+               }?>
+            }[this.series.name];
+
+            if(unit=='') { 
+               if(this.y==99.9) {
+                     behaviour='<?php echo __("VALUE_ON"); ?>';
+               } else {
+                     behaviour='<?php echo __("VALUE_OFF"); ?>';
                }
-               return val;
+               return val+ "<p align='left'><b>"+ this.series.name+":</b>"+behaviour+"</p>";
+            } else {
+               return val+ "<p align='left'><b>"+ this.series.name+":</b>"+this.y + unit+"</p>";
             }
+          }
          },
          legend: {
             enabled: true
@@ -313,7 +304,28 @@ $(function () {
                       lineWidth: 1
                   }
                }
-            }
+            },
+            spline: {
+            lineWidth: 2,
+            states: {
+               hover: {
+                  lineWidth: 5
+               }
+            },
+            marker: {
+               enabled: false,
+               states: {
+                  hover: {
+                     enabled: true,
+                     symbol: 'circle',
+                     radius: 5,
+                     lineWidth: 1
+                  }
+               }
+            },
+            pointInterval: 3600000, // one hour
+            pointStart: Date.UTC(2009, 9, 6, 0, 0, 0)
+         }
          },
 
          series: [
@@ -336,6 +348,19 @@ $(function () {
                data: [
                   <?php if((isset($data_temp))&&(!empty($data_temp))) echo "$data_temp"; ?>
                ]
+               <?php if((isset($datap))&&(!empty($datap))) { ?>
+               }, {
+                  type: 'spline',
+                  pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
+                  pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
+                  name: <?php echo "'".__('LEGEND_POWER')."'"; ?>,
+                  yAxis: 2,
+                  color: <?php echo "'".$color_power."'"; ?>,
+                  data: [
+                    <?php if((isset($datap))&&(!empty($datap))) echo "$datap"; ?>
+                  ]
+               <?php } ?>
+
                <?php if((isset($data))&&(!empty($data))) { ?>
                }, {
                   name: <?php echo "'".$plugs_infos[$select_plug-1]["PLUG_NAME"]."'"; ?>,
@@ -352,6 +377,7 @@ $(function () {
 });
 </script>
 <br /><br />
+
 <div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
 
 <?php } ?>

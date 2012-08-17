@@ -15,6 +15,8 @@ $main_error="";
 
 $color_humidity = getvar('color_humidity');
 $color_temperature = getvar('color_temperature');
+$color_program=getvar('color_program');
+$color_power=getvar('color_power');
 $record_frequency=getvar('record_frequency');
 $power_frequency=getvar('power_frequency');
 $update_frequency=getvar('update_frequency');
@@ -24,6 +26,7 @@ $update_conf=false;
 $info="";
 $temp_axis=getvar('temp_axis');
 $hygro_axis=getvar('hygro_axis');
+$power_axis=getvar('power_axis');
 $pop_up=getvar('pop_up');
 $pop_up_message="";
 $pop_up_error_message="";
@@ -89,6 +92,19 @@ if((isset($color_temperature))&&(!empty($color_temperature))) {
 	$color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$error);
 }
 
+if((isset($color_program))&&(!empty($color_program))) {
+   insert_configuration("COLOR_PROGRAM_GRAPH",$color_program,$error);
+   $update_conf=true;
+} else {
+   $color_program = get_configuration("COLOR_PROGRAM_GRAPH",$error);
+}
+
+if((isset($color_power))&&(!empty($color_power))) {
+   insert_configuration("COLOR_POWER_GRAPH",$color_power,$error);
+   $update_conf=true;
+} else {
+   $color_power = get_configuration("COLOR_POWER_GRAPH",$error);
+}
 
 if((isset($temp_axis))&&(!empty($temp_axis))) {
         insert_configuration("LOG_TEMP_AXIS",$temp_axis,$error);
@@ -103,6 +119,13 @@ if((isset($hygro_axis))&&(!empty($hygro_axis))) {
         $update_conf=true;
 } else {
         $hygro_axis = get_configuration("LOG_HYGRO_AXIS",$error);
+}
+
+if((isset($power_axis))&&(!empty($power_axis))) {
+        insert_configuration("LOG_POWER_AXIS",$power_axis,$error);
+        $update_conf=true;
+} else {
+        $power_axis = get_configuration("LOG_POWER_AXIS",$error);
 }
 
 
