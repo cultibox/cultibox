@@ -39,6 +39,9 @@ $GLOBALS['PLUGA_DEFAULT'] = array('004', '247', '222', '219', '215', '207', '190
 // List of value possible for temperature and hygrometry axis:
 $GLOBALS['LIST_MAX_AXIS'] = array('20', '40', '50', '80','100');
 
+// List of value possible for power graphic axis:
+$GLOBALS['LIST_MAX_POWER'] = array('100', '200', '500', '1000','2000');
+
 // Variable to enable/disable "first use" page:
 $GLOBALS['FIRST_USE'] = true;
 

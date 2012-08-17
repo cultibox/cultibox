@@ -359,9 +359,8 @@ function get_data_power($date="",&$out="") {
    if((isset($date))&&(!empty($date))) {
       $db = db_priv_start();
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch = "{$date}" ORDER by time_catch ASC
+SELECT  * FROM `power` WHERE date_catch = "{$date}" ORDER by time_catch ASC, plug_number ASC
 EOF;
-
            $db->setQuery($sql);
            $db->query();
            $res=$db->loadAssocList();
@@ -380,7 +379,64 @@ EOF;
                   return 0;
           }
    }
-   return $res;
+
+   if(count($res)>0) {
+      $sql = <<<EOF
+SELECT `PLUG_POWER` FROM `plugs` 
+EOF;
+     $db->setQuery($sql);
+     $db->query();
+     $res_power=$db->loadAssocList();
+     $ret=$db->getErrorMsg();
+     if((isset($ret))&&(!empty($ret))) {
+         if($GLOBALS['DEBUG_TRACE']) {
+            $out=$out.__('ERROR_SELECT_SQL').$ret;
+         } else {
+            $out=$out.__('ERROR_SELECT_SQL');
+         }
+         return 0;
+      }
+
+      if(!db_priv_end($db)) {
+         $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+         return 0;
+      }
+
+      if(count($res_power)==16) {
+            $timestamp=$res[0]['timestamp'];
+            $save=$res[0];
+            $val=0;
+            $tmp=array();
+            $count=0;
+            for($i=0;$i<count($res);$i++) {
+               if(strcmp($res[$i]['timestamp'],$timestamp)==0) {
+                  $val=$val+((int)$res[$i]['power'] * (int)$res_power[$count]['PLUG_POWER']);
+                  $count=$count+1;
+
+            
+
+               } else {
+                 $tmp[] = array (
+                     "timestamp" => "$timestamp",
+                     "record" => "$val",
+                     "plug_number" => $res[$i-1]["plug_number"],
+                     "date_catch" => $save["date_catch"],
+                     "time_catch" => $save["time_catch"]
+                 );
+
+                  $save=$res[$i];
+                  $count=0; 
+                  $val=(int)$res[$i]['power']*(int)$res_power[$count]['PLUG_POWER'];
+                  $count=$count+1;
+                  $timestamp=$res[$i]['timestamp'];
+               }
+            }
+    
+            return $tmp;      
+      }
+   } else {
+      return 0;
+   } 
 }
 // }}}
 

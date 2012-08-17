@@ -74,12 +74,14 @@ $data_humi="";
 $plug_type="";
 $hygro_axis=get_configuration("LOG_HYGRO_AXIS",$error);
 $temp_axis=get_configuration("LOG_TEMP_AXIS",$error);
+$power_axis=get_configuration("LOG_POWER_AXIS",$error);
 $fake_log=false;
 $program="";
 $show_power=getvar('show_power');
 $pop_up="";
 $pop_up_error_message="";
 $last_year=date('Y');
+$datap="";
 
 
 if(!isset($pop_up)) {
@@ -211,8 +213,9 @@ if("$type" == "days") {
 
       if((isset($show_power))&&(!empty($show_power))&&(strcmp($show_power,"on")==0)) {
          $data_power=get_data_power($startday,$error);
-         $datap=get_format_graph($data_power);
-         print_r($datap);
+         if(!empty($data_power)) {
+            $datap=get_format_graph($data_power);
+         }
       }
       $xlegend="XAXIS_LEGEND_DAY";
      	$styear=substr($startday, 0, 4);
@@ -291,6 +294,8 @@ if("$type" == "days") {
 
 $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$error);
 $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$error);
+$color_power=get_configuration("COLOR_POWER_GRAPH",$error);
+$color_program=get_configuration("COLOR_PROGRAM_GRAPH",$error);
 
 if((isset($sd_card))&&(!empty($sd_card))) {
    $info=$info.__('INFO_SD_CARD').": $sd_card";
