@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 13, 2012 at 04:01 PM
+-- Generation Time: Aug 18, 2012 at 10:34 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -32,6 +32,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `COLOR_HUMIDITY_GRAPH` varchar(30) NOT NULL DEFAULT 'green',
   `COLOR_TEMPERATURE_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
+  `COLOR_POWER_GRAPH` varchar(30) NOT NULL DEFAULT 'black',
+  `COLOR_PROGRAM_GRAPH` varchar(30) NOT NULL DEFAULT 'blue',
   `RECORD_FREQUENCY` int(11) NOT NULL DEFAULT '5',
   `POWER_FREQUENCY` int(11) NOT NULL DEFAULT '5',
   `NB_PLUGS` int(11) NOT NULL DEFAULT '3',
@@ -39,12 +41,12 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `LANG` varchar(5) NOT NULL DEFAULT 'en_GB',
   `LOG_TEMP_AXIS` int(2) NOT NULL DEFAULT '50',
   `LOG_HYGRO_AXIS` int(2) NOT NULL DEFAULT '100',
+  `LOG_POWER_AXIS` int(2) NOT NULL DEFAULT '1000',
   `SHOW_POPUP` varchar(5) NOT NULL DEFAULT 'True',
   `ALARM_ACTIV` varchar(4) NOT NULL DEFAULT '0000',
   `ALARM_VALUE` varchar(5) NOT NULL DEFAULT '50.00',
   `ALARM_SENSO` varchar(4) NOT NULL DEFAULT '000T',
   `ALARM_SENSS` varchar(4) NOT NULL DEFAULT '000+',
-  `FIRST_USE` varchar(5) NOT NULL DEFAULT 'True',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -52,8 +54,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 -- Dumping data for table `configuration`
 --
 
-INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `FIRST_USE`) VALUES
-(1, 'red', 'green', 5, 5, 3, -1, 'fr_FR', 50, 100, 'True', '0000', '50.0', '000H', '000+', 'False');
+INSERT INTO `configuration` (`id`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_PROGRAM_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `LOG_POWER_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`) VALUES
+(1, 'red', 'green', 'black', 'blue', 5, 1, 3, -1, 'fr_FR', 50, 100, 1000, 'True', '0000', '50.0', '000H', '000+');
 
 -- --------------------------------------------------------
 
@@ -140,7 +142,7 @@ INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`
 
 CREATE TABLE IF NOT EXISTS `power` (
   `timestamp` varchar(14) NOT NULL DEFAULT '',
-  `power` int(3) DEFAULT NULL,
+  `record` int(3) DEFAULT NULL,
   `plug_number` int(3) DEFAULT NULL,
   `date_catch` varchar(10) DEFAULT NULL,
   `time_catch` varchar(10) DEFAULT NULL,
