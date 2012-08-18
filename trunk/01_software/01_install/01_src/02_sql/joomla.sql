@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 13, 2012 at 03:57 PM
+-- Generation Time: Aug 18, 2012 at 10:30 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -1640,7 +1640,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_redirect_links` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_link_old` (`old_url`),
   KEY `idx_link_modifed` (`modified_date`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `dkg45_redirect_links`
@@ -1682,7 +1682,8 @@ INSERT INTO `dkg45_redirect_links` (`id`, `old_url`, `new_url`, `referer`, `comm
 (33, 'http://localhost:1234/joomla/index.php/programs><img src="/joomla/main/libs/img/wizard.png" alt="classic" name="Classic" /></a></li></ul></div><script type="text/javascript">$(document).ready(function(){$(', '', 'http://localhost:1234/joomla/index.php/wizard', '', 0, '2012-06-27 22:03:33', '0000-00-00 00:00:00'),
 (34, 'http://localhost:1234/joomla/index.php/main/libs/img/wizard.png', '', 'http://localhost:1234/joomla/index.php/wizard?wzd=True', '', 0, '2012-06-28 20:33:07', '0000-00-00 00:00:00'),
 (35, 'http://localhost:1234/joomla/index.php/main/libs/img/infos.png', '', 'http://localhost:1234/joomla/index.php/plugs', '', 0, '2012-07-23 14:14:58', '0000-00-00 00:00:00'),
-(36, 'http://localhost:1234/joomla/index.php/main/libs/img/arrow.png', '', 'http://localhost:1234/joomla/index.php/plugs', '', 0, '2012-07-24 08:10:42', '0000-00-00 00:00:00');
+(36, 'http://localhost:1234/joomla/index.php/main/libs/img/arrow.png', '', 'http://localhost:1234/joomla/index.php/plugs', '', 0, '2012-07-24 08:10:42', '0000-00-00 00:00:00'),
+(37, 'http://localhost:1234/joomla/index.php/main/libs/js/jquery.ui.datepicker-fr.js', '', 'http://localhost:1234/joomla/index.php/view-logs', '', 0, '2012-08-14 12:32:16', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1729,8 +1730,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_session` (
 --
 
 INSERT INTO `dkg45_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`, `usertype`) VALUES
-('4g5qfo1r057k18lushqhvvfih5', 0, 1, '1344865989', '__default|a:7:{s:15:"session.counter";i:95;s:19:"session.timer.start";i:1344862654;s:18:"session.timer.last";i:1344865980;s:17:"session.timer.now";i:1344865989;s:22:"session.client.browser";s:78:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:14.0) Gecko/20100101 Firefox/14.0.1";s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";N;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:8:"usertype";N;s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:0:{}s:5:"guest";i:1;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";N;s:14:"\0*\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}}LANG|s:5:"fr_FR";', 0, '', ''),
-('qj5bb2q10df3ipc50ibnd20ji1', 1, 0, '1344865273', '__default|a:8:{s:15:"session.counter";i:23;s:19:"session.timer.start";i:1344864889;s:18:"session.timer.last";i:1344865266;s:17:"session.timer.now";i:1344865273;s:22:"session.client.browser";s:78:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:14.0) Gecko/20100101 Firefox/14.0.1";s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":5:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:0:"";}s:9:"com_menus";O:8:"stdClass":2:{s:5:"items";O:8:"stdClass":2:{s:6:"filter";O:8:"stdClass":1:{s:8:"menutype";s:8:"mainmenu";}s:10:"limitstart";i:0;}s:4:"edit";O:8:"stdClass":1:{s:4:"item";O:8:"stdClass":4:{s:4:"data";N;s:4:"type";N;s:4:"link";N;s:2:"id";a:0:{}}}}s:4:"item";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:8:"menutype";s:8:"mainmenu";}}s:13:"com_installer";O:8:"stdClass":3:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";s:6:"manage";O:8:"stdClass":4:{s:4:"data";a:1:{s:7:"filters";a:5:{s:6:"search";s:6:"footer";s:9:"client_id";s:0:"";s:7:"enabled";s:0:"";s:4:"type";s:0:"";s:5:"group";s:0:"";}}s:10:"limitstart";s:1:"0";s:8:"ordercol";s:4:"name";s:9:"orderdirn";s:3:"asc";}}s:6:"global";O:8:"stdClass":1:{s:4:"list";O:8:"stdClass":1:{s:5:"limit";s:2:"20";}}}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";b:1;s:2:"id";s:2:"42";s:4:"name";s:10:"Super User";s:8:"username";s:5:"admin";s:5:"email";s:12:"root@root.fr";s:8:"password";s:65:"851730d9e5d66633aac361c61dd7dc40:iGeo8EKfuh9HDXfISxghtP6aIZ2DBjw6";s:14:"password_clear";s:0:"";s:8:"usertype";s:10:"deprecated";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2012-03-28 07:13:27";s:13:"lastvisitDate";s:19:"2012-07-20 09:55:36";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\0*\0_authLevels";a:4:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}s:13:"session.token";s:32:"a2a2fae428617c020a8d58419e02fe3f";}', 42, 'admin', '');
+('eec8a58f9adb598de590b6fb26826411', 0, 1, '1345277510', '__default|a:7:{s:22:"session.client.browser";s:78:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:14.0) Gecko/20100101 Firefox/14.0.1";s:15:"session.counter";i:19;s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";N;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:8:"usertype";N;s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:0:{}s:5:"guest";i:1;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";N;s:14:"\0*\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}s:19:"session.timer.start";i:1345276864;s:18:"session.timer.last";i:1345277462;s:17:"session.timer.now";i:1345277508;}LANG|s:5:"fr_FR";', 0, '', '');
 
 -- --------------------------------------------------------
 
