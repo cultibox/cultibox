@@ -12,12 +12,10 @@
 <p align="center"><img src="main/libs/img/takecontrol.png" alt="" /></p>
 
 
-<?php if((isset($first_use))&&(!empty($first_use))&&(strcmp($first_use,"True")==0)&&($GLOBALS['FIRST_USE'])) { ?>
-   <p align="center">
-   <?php echo __('WELCOME_FOLLOW_LINK'); ?>
-   </p>
-   <table width="100%"><tr><td align="center"><form action="<?php echo($_SERVER['PHP_SELF'])."/wizard"; ?>" method="post">
-   <input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>">
-</form></td></tr></table>
-<?php } ?>
+<p align="center"><?php echo __('WELCOME_FOLLOW_LINK'); ?></p>
+<table width="100%">
+   <tr>
+      <td align="center"><form action="<?php echo($_SERVER['PHP_SELF'])."/wizard"; ?>" method="post"><input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>"></form></td>
+   </tr>
+</table>
 

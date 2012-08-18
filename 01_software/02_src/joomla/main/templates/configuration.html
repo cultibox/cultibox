@@ -1,7 +1,7 @@
 <script type="text/javascript">
 function verifDigit(e) {
-   if((e.keyCode < 45 || e.keyCode > 57)&&(e.keyCode != 44 && e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
-   if((e.which < 45 || e.which > 57)&&(e.which != 44 && e.which != 08 && e.which != 10 && e.which != 13)) return false;
+   if((e.keyCode < 48 || e.keyCode > 57)&&(e.keyCode != 46 &&  e.keyCode != 44 && e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
+   if((e.which < 48 || e.which > 57)&&(e.which != 46 && e.which != 44 && e.which != 08 && e.which != 10 && e.which != 13)) return false;
 }
 </script>
 
@@ -75,7 +75,7 @@ function verifDigit(e) {
 
 <br />
 <p class="title_conf">
-   <?php echo __('USER_CONF'); ?>:
+<img src="main/libs/img/arrow.png" /><?php echo __('USER_CONF'); ?>:
 </p>
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
 <table width="60%" align="center">
@@ -294,7 +294,7 @@ function verifDigit(e) {
 </table>
 <br />
 <p class="title_conf">
-   <?php echo __('SYSTEM_CONF'); ?>:
+   <img src="main/libs/img/arrow.png" /><?php echo __('SYSTEM_CONF'); ?>:
 </p>
 <table width="60%" align="center">
 <tr>
@@ -377,7 +377,7 @@ function verifDigit(e) {
 </table>
 <br />
 <p class="title_conf">
-   <?php echo __('CONFIGURE_ALARM'); ?>:
+   <img src="main/libs/img/arrow.png" /><?php echo __('CONFIGURE_ALARM'); ?>:
 </p>
 <table width="60%" align="center">
    <tr>

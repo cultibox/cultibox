@@ -221,7 +221,10 @@ msgid "SELECT_PROGRAM_PLUG"
 msgstr "Programme &agrave; comparer:"
 
 msgid "SELECT_POWER_PLUG"
-msgstr "Afficher la consommation electrique:"
+msgstr "Afficher la puissance consomm&eacute;e:"
+
+msgid "SELECT_ALL_PLUGS"
+msgstr "Toutes les prises"
 
 msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
@@ -642,7 +645,7 @@ msgid "TOOLTIP_WITHOUT_SD_LOG"
 msgstr "Sans carte SD branch&eacute;e les fichiers enregistr&eacute;s par votre CultiBox concernant la temp&eacute;rature et l'hygrom&eacute;trie ne pourront pas &ecirc;tre affich&eacute; et sauvegard&eacute;. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
 
 msgid "TOOLTIP_POWER_LOG"
-msgstr "Cette option calcule et affiche la puissance consomm&eacute;e par l'ensemble de vos prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
+msgstr "Cette option calcule et affiche la puissance consomm&eacute;e pour une prise sp&eacute;cifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
 
 msgid "TOOLTIP_AXIS"
 msgstr "Cette option configure la valeur maximale de l'axe des ordonn&eacute;es du graphique correspondant. Cependant le logiciel, pour une meilleure visualisation des graphiques, recalcule cette valeur en fonction de celle des autres graphiques. Il est donc possible que la valeur maximale ne corresponde pas exactement &agrave; la valeur selectionn&eactue;e dans cette option."

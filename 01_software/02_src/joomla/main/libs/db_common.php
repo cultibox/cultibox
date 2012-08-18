@@ -92,7 +92,7 @@ function db_update_power($arr,&$out="") {
    $index=0;
    $return=1;
    $sql = <<<EOF
-INSERT INTO `power`(`timestamp`,`plug_number`,`power`, `date_catch`,`time_catch`) VALUES
+INSERT INTO `power`(`timestamp`,`plug_number`,`record`, `date_catch`,`time_catch`) VALUES
 EOF;
    foreach($arr as $value) {
       if((array_key_exists("timestamp", $value))&&(array_key_exists("plug_number", $value))&&(array_key_exists("power", $value))&&(array_key_exists("date_catch", $value))&&(array_key_exists("time_catch", $value))) {
@@ -352,15 +352,23 @@ EOF;
 // {{{ get_data_power($date,$out)
 // ROLE get a data power from the database
 // IN $date   date to select reccords
+//    $id     id of the plug to be used ('all' for all the plugs)
 //    $out      errors or warnings messages
 // RET data power formated for highchart
-function get_data_power($date="",&$out="") {
+function get_data_power($date="",$id=0,&$out="") {
    $res="";
    if((isset($date))&&(!empty($date))) {
       $db = db_priv_start();
+
+      if(strcmp("$id","all")==0) {
       $sql = <<<EOF
 SELECT  * FROM `power` WHERE date_catch = "{$date}" ORDER by time_catch ASC, plug_number ASC
 EOF;
+      } else {
+      $sql = <<<EOF
+SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` = "{$id}}" ORDER by time_catch ASC, plug_number ASC
+EOF;
+}
            $db->setQuery($sql);
            $db->query();
            $res=$db->loadAssocList();
@@ -380,6 +388,7 @@ EOF;
           }
    }
 
+   
    if(count($res)>0) {
       $sql = <<<EOF
 SELECT `PLUG_POWER` FROM `plugs` 
@@ -402,6 +411,22 @@ EOF;
          return 0;
       }
 
+        if(strcmp("$id","all")!=0) {
+         $tmp=array();
+   
+         foreach($res as $val) {
+               
+               $tmp[]=array(
+                     "timestamp" => $val["timestamp"],
+                     "record" => $val["record"]*$res_power[$id-1]['PLUG_POWER'],
+                     "plug_number" => $val["plug_number"],
+                     "date_catch" => $val["date_catch"],
+                     "time_catch" => $val["time_catch"]
+               );
+         }
+         return $tmp;
+       }
+
       if(count($res_power)==16) {
             $timestamp=$res[0]['timestamp'];
             $save=$res[0];
@@ -410,7 +435,7 @@ EOF;
             $count=0;
             for($i=0;$i<count($res);$i++) {
                if(strcmp($res[$i]['timestamp'],$timestamp)==0) {
-                  $val=$val+((int)$res[$i]['power'] * (int)$res_power[$count]['PLUG_POWER']);
+                  $val=$val+((int)$res[$i]['record'] * (int)$res_power[$count]['PLUG_POWER']);
                   $count=$count+1;
 
             
@@ -426,7 +451,7 @@ EOF;
 
                   $save=$res[$i];
                   $count=0; 
-                  $val=(int)$res[$i]['power']*(int)$res_power[$count]['PLUG_POWER'];
+                  $val=(int)$res[$i]['record']*(int)$res_power[$count]['PLUG_POWER'];
                   $count=$count+1;
                   $timestamp=$res[$i]['timestamp'];
                }
