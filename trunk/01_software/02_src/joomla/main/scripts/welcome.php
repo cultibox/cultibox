@@ -15,8 +15,6 @@ $info="";
 $program="";
 $sd_card="";
 
-$first_use=get_configuration("FIRST_USE",$error);
-
 $lang=get_configuration("LANG",$error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();

@@ -77,7 +77,7 @@ $temp_axis=get_configuration("LOG_TEMP_AXIS",$error);
 $power_axis=get_configuration("LOG_POWER_AXIS",$error);
 $fake_log=false;
 $program="";
-$show_power=getvar('show_power');
+$select_power=getvar('select_power');
 $pop_up="";
 $pop_up_error_message="";
 $last_year=date('Y');
@@ -211,8 +211,13 @@ if("$type" == "days") {
 			$plug_type=get_plug_conf("PLUG_TYPE",$select_plug,$error);
       }
 
-      if((isset($show_power))&&(!empty($show_power))&&(strcmp($show_power,"on")==0)) {
-         $data_power=get_data_power($startday,$error);
+      if((isset($select_power))&&(!empty($select_power))) {
+         if($select_power!=999) {
+            $data_power=get_data_power($startday,$select_power,$error);
+         } else {
+            $data_power=get_data_power($startday,"all",$error);
+         }
+
          if(!empty($data_power)) {
             $datap=get_format_graph($data_power);
          }
