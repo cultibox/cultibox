@@ -20,13 +20,13 @@ msgid "WELCOME_TITLE"
 msgstr "Bienvenu(e) dans le logiciel de configuration de la CultiBox"
 
 msgid "WELCOME_MESSAGE"
-msgstr "Ce logiciel va vous permettre de manipuler simplement votre CultiBox afin de la configurer, de visualiser les donn&eacute;es enregistr&eacute;es ou encore d'acc&egrave;der &agrave; certaines fonctionnalit&eacute;s telles que le calcul du co&ucirc;t d'&eacute;lectricit&eacute; ou la cr&eacute;ation d'un calendrier de culture."
+msgstr "Ce logiciel va vous permettre de manipuler simplement votre CultiBox afin de la configurer, de visualiser les données enregistrées ou encore d'accèder à certaines fonctionnalités telles que le calcul du coût d'électricité ou la création d'un calendrier de culture."
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note:</b> pour ceux qui poss&egrave;de l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument: <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>d&eacute;connecter votre GreenBox qui peut causer des interf&eacute;rences avec la CultiBox</li></ul>"
+msgstr "<b>Note:</b> pour ceux qui possède l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument: <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la CultiBox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
-msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer &agrave; manipuler votre CultiBox:"
+msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre CultiBox:"
 
 msgid "WELCOME_WIZARD"
 msgstr "Assistant de configuration"
@@ -42,10 +42,10 @@ msgid "ALWAYS_RECORD"
 msgstr "Toujours"
 
 msgid "CONFIGURE_HUMIDITY"
-msgstr "Couleur des courbes d'hygrom&eacute;trie"
+msgstr "Couleur des courbes d'hygrométrie"
 
 msgid "CONFIGURE_TEMPERATURE"
-msgstr "Couleur des courbes des temp&eacute;ratures"
+msgstr "Couleur des courbes des températures"
 
 msgid "CONFIGURE_COLOR_PROGRAM"
 msgstr "Couleur des courbes des programmes"
@@ -57,16 +57,16 @@ msgid "CONFIGURE_LANGUAGE"
 msgstr "Choisir votre langue"
 
 msgid "CONFIGURE_FREQUENCY"
-msgstr "Fr&eacute;quence d'enregistrement du climat (en minute)"
+msgstr "Fréquence d'enregistrement du climat (en minute)"
 
 msgid "CONFIGURE_POWER_FREQUENCY"
-msgstr "Fr&eacute;quence d'enregistrement de la puissance (en minute)"
+msgstr "Fréquence d'enregistrement de la puissance (en minute)"
 
 msgid "CONFIGURE_NB_PLUGS"
-msgstr "Nombre de prises de votre syst&egrave;me"
+msgstr "Nombre de prises de votre système"
 
 msgid "CONFIGURE_PLUGS_FREQUENCY"
-msgstr "Fr&eacute;quence de mise &agrave; jour de l'&eacute;tat de vos prises (en seconde)"
+msgstr "Fréquence de mise à jour de l'état de vos prises (en seconde)"
 
 msgid "CONFIGURE_POPUP"
 msgstr "Activer l'affichage des messages par popup"
@@ -75,7 +75,7 @@ msgid "VALIDATION_CONF"
 msgstr "Enregistrer la configuration"
 
 msgid "LANG_FR"
-msgstr "Fran&ccedil;ais"
+msgstr "Français"
 
 msgid "LANG_EN"
 msgstr "Anglais"
@@ -93,10 +93,10 @@ msgid "COLOR_BLACK"
 msgstr "Noir"
 
 msgid "CONFIGURE_TEMP_AXIS"
-msgstr "Valeur maximale de l'axe des temp&eacute;rature pour les graphes"
+msgstr "Valeur maximale de l'axe des température pour les graphes"
 
 msgid "CONFIGURE_HYGRO_AXIS"
-msgstr "Valeur maximale de l'axe de l'hygrom&eacute;trie pour les graphes"
+msgstr "Valeur maximale de l'axe de l'hygrométrie pour les graphes"
 
 msgid "CONFIGURE_POWER_AXIS"
 msgstr "Valeur maximale de l'axe de puissance pour les graphes"
@@ -111,16 +111,16 @@ msgid "CONFIGURE_ALARM"
 msgstr "Configuration de l'alarme"
 
 msgid "CONFIGURE_ALARM_ACTIV"
-msgstr "Activer le syst&egrave;me d'alarme"
+msgstr "Activer le système d'alarme"
 
 msgid "CONFIGURE_ALARM_VALUE"
-msgstr "Valeur du seuil de d&eacute;clenchement de l'alarme"
+msgstr "Valeur du seuil de déclenchement de l'alarme"
 
 msgid "CONFIGURE_ALARM_SENSO"
-msgstr "D&eacute;clenchement de l'alarme en fonction de"
+msgstr "Déclenchement de l'alarme en fonction de"
 
 msgid "CONFIGURE_ALARM_SENSS"
-msgstr "D&eacute;clencher l'alarme si le capteur mesure une valeur en"
+msgstr "Déclencher l'alarme si le capteur mesure une valeur en"
 
 msgid "ALARM_UNDER"
 msgstr "dessous du seuil"
@@ -129,10 +129,10 @@ msgid "ALARM_ABOVE"
 msgstr "dessus du seuil"
 
 msgid "ALARM_TEMP"
-msgstr "Temp&eacute;rature"
+msgstr "Température"
 
 msgid "ALARM_HUMI"
-msgstr "Humidit&eacute;"
+msgstr "Humidité"
 
 # For the logs part:
 
@@ -143,10 +143,10 @@ msgid "SELECT_DISPLAYED_DAY"
 msgstr "Afficher les informations pour un seul jour:"
 
 msgid "SELECT_DAY"
-msgstr "Jour &agrave; afficher (AAAA-MM-JJ):"
+msgstr "Jour à afficher (AAAA-MM-JJ):"
 
 msgid "SELECT_MONTH"
-msgstr "Selectionner le mois &agrave; afficher: "
+msgstr "Selectionner le mois à afficher: "
 
 msgid "SELECT_DISPLAYED_MONTH"
 msgstr "Afficher les informations pour un mois entier:"
@@ -185,7 +185,7 @@ msgid "MONTH01"
 msgstr "Janvier"
 
 msgid "MONTH02"
-msgstr "F&eacute;vrier"
+msgstr "Février"
 
 msgid "MONTH03"
 msgstr "Mars"
@@ -203,7 +203,7 @@ msgid "MONTH07"
 msgstr "Juillet"
 
 msgid "MONTH08"
-msgstr "Ao&ucirc;t"
+msgstr "Août"
 
 msgid "MONTH09"
 msgstr "Septembre"
@@ -215,13 +215,13 @@ msgid "MONTH11"
 msgstr "Novembre"
 
 msgid "MONTH12"
-msgstr "D&eacute;cembre"
+msgstr "Décembre"
 
 msgid "SELECT_PROGRAM_PLUG"
-msgstr "Programme &agrave; comparer:"
+msgstr "Programme à comparer:"
 
 msgid "SELECT_POWER_PLUG"
-msgstr "Afficher la puissance consomm&eacute;e:"
+msgstr "Afficher la puissance consommée:"
 
 msgid "SELECT_ALL_PLUGS"
 msgstr "Toutes les prises"
@@ -240,13 +240,13 @@ msgstr "Reinitialiser"
 
 # For the plugs part:
 msgid "PLUG"
-msgstr "Prise num&eacute;ro"
+msgstr "Prise numéro"
 
 msgid "TYPE_PLUG"
 msgstr "Type de la prise"
 
 msgid "TOLERANCE_PLUG"
-msgstr "Tol&eacute;rance de la prise"
+msgstr "Tolérance de la prise"
 
 msgid "NAME_PLUG"
 msgstr "Nom de la prise"
@@ -276,28 +276,28 @@ msgid "VALIDATION_PLUG_CONF"
 msgstr "Enregistrer la configuration"
 
 msgid "RESET_PLUG_ID"
-msgstr "R&eacute;initialiser le code des prises"
+msgstr "Réinitialiser le code des prises"
 
 msgid "POWER_PLUG"
 msgstr "Puissance (en Watt)"
 
 msgid "ENABLE_REGUL_PLUG"
-msgstr "R&eacute;gulation de la prise"
+msgstr "Régulation de la prise"
 
 msgid "CONFIGURE_REGUL_SENSO"
-msgstr "D&eacute;clenchement en fonction de"
+msgstr "Déclenchement en fonction de"
 
 msgid "CONFIGURE_REGUL_VALUE"
-msgstr "Seuil de d&eacute;clenchement"
+msgstr "Seuil de déclenchement"
 
 msgid "CONFIGURE_REGUL_SENSS"
-msgstr "D&eacute;clenchement si la mesure est en"
+msgstr "Déclenchement si la mesure est en"
 
 msgid "REGUL_TEMP"
-msgstr "Temp&eacute;rature"
+msgstr "Température"
 
 msgid "REGUL_HUMI"
-msgstr "Humidit&eacute;"
+msgstr "Humidité"
 
 msgid "REGUL_UNDER"
 msgstr "dessous du seuil"
@@ -311,7 +311,7 @@ msgid "CONFIGURE_PROGRAM"
 msgstr "Configurer le comportement de la prise"
 
 msgid "START_TIME_PROGRAM"
-msgstr "Heure de d&eacute;part"
+msgstr "Heure de départ"
 
 msgid "END_TIME_PROGRAM"
 msgstr "Heure de fin"
@@ -323,10 +323,10 @@ msgid "VALUE_ON_OFF"
 msgstr "Fonctionnement"
 
 msgid "HUMI_WISHED"
-msgstr "Humidit&eacute; voulue"
+msgstr "Humidité voulue"
 
 msgid "TEMP_WISHED"
-msgstr "Temp&eacute;rature voulue"
+msgstr "Température voulue"
 
 msgid "VALUE_ON"
 msgstr "Marche"
@@ -335,7 +335,7 @@ msgid "VALUE_OFF"
 msgstr "Arret"
 
 msgid "VALUE_REGUL"
-msgstr "R&eacute;gulation"
+msgstr "Régulation"
 
 msgid "CURRENT_PLUG_PROGRAM"
 msgstr "Programme pour la prise "
@@ -400,7 +400,7 @@ msgstr "Annuler le zoom"
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
-msgstr "Bienvenue dans l'interface de configuration et d'utilisation de votre Cultibox. Ceci est votre premi&egrave;re utilisation de l'interface, afin de vous aider un asistant va &ecirc;tre lanc&eacute;. Ce logiciel vous permettra de param&egrave;trer votre cultibox facilement, de pouvoir visualiser les enregistrements de temp&eacute;rature et d'humidit&eacute; et de configurer vos prises. Cliquez sur le bouton <b>suivant</b> pour lancer le wizard. Vous pouvez passer cette &eacute;tape et configurer manuellement vos prises en cliquant sur le bouton <b>Fermer l'assistant</b>"
+msgstr "Bienvenue dans l'interface de configuration et d'utilisation de votre Cultibox. L'assistant va vous permettre facilement de configurer les programmes associés à vos prises, de configurer le type de prise et leur comportement. Cliquez sur le bouton <b>suivant</b> pour lancer le wizard. Vous pouvez passer cette étape et configurer manuellement vos prises en cliquant sur le bouton <b>Fermer l'assistant</b>"
 
 msgid "CLOSE_WIZARD"
 msgstr "Fermer l'assistant"
@@ -409,28 +409,28 @@ msgid "WIZARD_INTRO"
 msgstr "Assistant de configuration des prises"
 
 msgid "WIZARD_CONFIGURE_PLUG_NUMBER"
-msgstr "Prise num&eacute;ro"
+msgstr "Prise numéro"
 
 msgid "WIZARD_NEXT_STEP"
-msgstr "Suivant &gt;"
+msgstr "Suivant >"
 
 msgid "WIZARD_PREVIOUS_STEP"
-msgstr "&lt; Pr&eacute;c&eacute;dent"
+msgstr "< Précédent"
 
 msgid "WIZARD_FINISH_STEP"
-msgstr "Finir et fermer l'assistant"
+msgstr "Enregistrer et fermer l'assistant"
 
 msgid "WIZARD_NEXT_PLUG"
-msgstr "Suivant &gt;"
+msgstr "Suivant >"
 
 msgid "WIZARD_PLUG_NUMBER"
-msgstr "Cette assistant vous permet de vous familliariser avec les configurations des prises et des programmes en configurant avec vous la premi&egrave;re prise."
+msgstr "Cet assistant vous permet de vous familliariser avec les configurations des prises et des programmes en configurant avec vous la première prise."
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "La prise num&eacute;ro 1 sera configur&eacute;e comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximun</b>. Il est possible de configurer les autres prises comme des lampes mais elle ne pourront accueillir une lampe dont la puissance d&eacute;passe <b>200 Watts</b>. "
+msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximun</b>. Il est possible de configurer les autres prises comme des lampes mais elle ne pourront accueillir une lampe dont la puissance dépasse <b>200 Watts</b>. "
 
 msgid "WIZARD_PLUG_PROGRAM"
-msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe. Pour cela choisissez une heure de d&eacute;part o&ugrave; la lampe se mettra en route et une heure de fin o&ugrave; la lampe  s'&eacute;teindra."
+msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe. Pour cela choisissez une heure de départ où la lampe se mettra en route et une heure de fin où la lampe  s'éteindra."
 
 msgid "WIZARD_STEP"
 msgstr "Etape"
@@ -442,7 +442,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "Vous allez maintenant configurer une nouvelle prise."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choisissez le type de prise &agrave; utiliser: <ul><li>un chauffage pour augmenter la temp&eacute;rature</li><li>un ventilateur pour abaisser la temp&eacute;rature</li><li>un humidifieur pour baisser le pourcentage d'humidit&eacute;</li><li>un d&eacute;shumidifieur pour diminuer l'himidit&eacute;</li><li>une lampe</li><li>le type inconnu servant pour tout les autres &eacute;quipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit etre <b>moins puissante que 200 Watts</b>"
+msgstr "Choisissez le type de prise à utiliser: <ul><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidifieur pour baisser le pourcentage d'humidité</li><li>un déshumidifieur pour diminuer l'himidité</li><li>une lampe</li><li>le type inconnu servant pour tout les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit etre <b>moins puissante que 200 Watts</b>"
 
 #For the calendar part:
 msgid "TITLE_CALENDAR"
@@ -488,7 +488,7 @@ msgid "CALENDAR_DELETE"
 msgstr "Supprimer"
 
 msgid "SUBJECT_START"
-msgstr "D&eacute;but de culture"
+msgstr "Début de culture"
 
 msgid "SUBJECT_FERTILIZERS"
 msgstr "Engrais"
@@ -500,26 +500,29 @@ msgid "SUBJECT_BLOOM"
 msgstr "Floraison"
 
 msgid "SUBJECT_HARVEST"
-msgstr "R&eacute;colte"
+msgstr "Récolte"
 
 msgid "SUBJECT_OTHER"
 msgstr "Autre"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
-msgstr "<li> Probl&eacute; pendant la fermeture de la connection</li>"
+msgstr "<li> Problé pendant la fermeture de la connection</li>"
 
 msgid "ERROR_UPDATE_SQL"
-msgstr "<li> Erreur dans la requ&ecirc;te SQL UPDATE</li>"
+msgstr "<li> Erreur dans la requête SQL UPDATE</li>"
 
 msgid "ERROR_SELECT_SQL"
-msgstr "<li> Erreur dans la requ&ecirc;te SQL SELECT</li>"
+msgstr "<li> Erreur dans la requête SQL SELECT</li>"
 
 msgid "EMPTY_TEMPERATURE_DATA"
-msgstr "<li> Aucun enregistrement concernant la temp&eacute;rature pour la date s&eacute;lectionn&eacute;e</li>"
+msgstr "<li> Aucun enregistrement concernant la température pour la date sélectionnée</li>"
 
 msgid "EMPTY_HUMIDITY_DATA"
-msgstr "<li> Aucun enregistrement concernant l'hygrom&eacute;triques pour la date s&eacute;lectionn&eacute;e</li>"
+msgstr "<li> Aucun enregistrement concernant l'hygrométriques pour la date sélectionnée</li>"
+
+msgid "EMPTY_POWER_DATA"
+msgstr "<li> Aucun enregistrement concernant la puissance consommée pour la date sélectionnée</li>"
 
 msgid "ERROR_FORMAT_DATE_DAY"
 msgstr "<li> Erreur dans le format de la date: AAAA-MM-JJ</li>"
@@ -528,128 +531,138 @@ msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "<li> Erreur dans le format de la date: MM</li>"
 
 msgid "ERROR_SD_CARD_PROGRAMMS"
-msgstr "<li> Impossible de trouver une carte SD pour sauvegarder votre configuration. V&eacute;rifier que votre carte est branch&eacute;e</li>"
+msgstr "<li> Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte est branchée</li>"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "<li> Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, v&eacute;rifier que votre carte est correctement branch&eacute;e</li>"
+msgstr "<li> Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, vérifier que votre carte est correctement branchée</li>"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "<li>  Impossible de trouver une carte SD valide, pour sauver votre configuration, v&eacute;rifier que votre carte est correctement branch&eacute;e</li>"
+msgstr "<li>  Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte est correctement branchée</li>"
 
 msgid "ERROR_MISSING_VALUE_TIME"
-msgstr "<li> Valeur manquante pour la date de d&eacute;but/fin du programme</li>"
+msgstr "<li> Valeur manquante pour la date de début/fin du programme</li>"
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "<li> Erreur dans le format de l'heure: HH:MM:SS</li>"
 
 msgid "ERROR_SAME_TIME"
-msgstr "<li>L'heure de d&eacute;part et l'heure de fin doivent &ecirc;tre diff&eacute;rentes.</li>"
+msgstr "<li>L'heure de départ et l'heure de fin doivent être différentes.</li>"
 
 msgid "ERROR_WRITE_SD"
-msgstr "<li> Erreur durant l'&eacute;criture sur la carte SD</li>"
+msgstr "<li> Erreur durant l'écriture sur la carte SD</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur &agrave; 10&deg;C et sup&eacute;rieur &agrave; 0&deg;C</li>"
+msgstr "<li> Erreur dans la valeur de tolérance: elle doit être inferieur à 10°C et supérieur à 0°C</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "<li> Erreur dans la valeur de tol&eacute;rance: elle doit &ecirc;tre inferieur ou &eacute;gal &agrave; 25.5&#37; et sup&eacute;rieur &agrave; 0&#37;;</li>"
+msgstr "<li> Erreur dans la valeur de tolérance: elle doit être inferieur ou égal à 25.5% et supérieur à 0%;</li>"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li> Erreur dans la valeur rentr&eacute;e</li>"
+msgstr "<li> Erreur dans la valeur rentrée</li>"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "<li> Erreur dans la valeur de temp&eacute;rature. Elle doit &ecirc;tre sup&eacute;rieure ou &eacute;gal &agrave; 5&deg;C et inf&eacute;rieure ou &eacute;gal &agrave; 60&deg;C</li>"
+msgstr "<li> Erreur dans la valeur de température. Elle doit être supérieure ou égal à 5°C et inférieure ou égal à 60°C</li>"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "<li> Erreur dans la valeur d'humidit&eacute;. Elle doit &ecirc;tre sup&eacute;rieure ou &eacute;gal &agrave; 10  et inf&eacute;rieure ou &eacute;gal &agrave; 95</li>"
+msgstr "<li> Erreur dans la valeur d'humidité. Elle doit être supérieure ou égal à 10  et inférieure ou égal à 95</li>"
 
 msgid "ERROR_ALARM_VALUE"
-msgstr "<li>La valeur de d&eacute;clenchement de l'alarme doit &ecirc;tre sup&eacute;rieure &agrave; 0 et inf&eacute;rieure &agrave; 100</li>"
+msgstr "<li>La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100</li>"
 
 msgid "ERROR_REGUL_VALUE"
-msgstr "<li>La valeur de d&eacute;clenchement de la r&eacute;gulation doit &ecirc;tre sup&eacute;rieure &agrave; 0 et inf&eacute;rieure &agrave; 100</li>"
+msgstr "<li>La valeur de déclenchement de la régulation doit être supérieure à 0 et inférieure à 100</li>"
 
 msgid "ERROR_PLUG_ID"
-msgstr "<li>Le code de la prise doit &ecirc;tre une valeur num&eacute;rique</li>"
+msgstr "<li>Le code de la prise doit être une valeur numérique</li>"
 
 msgid "ERROR_POWER_VALUE"
-msgstr "<li>Erreur dans la valeur de puissance: elle doit &ecirc;tre sup&eacute;rieure ou &eacute;gale &agrave; 0 Watt</li>"
+msgstr "<li>Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt</li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"
-msgstr "<li> Une carte SD compatible cultibox est branch&eacute;e"
+msgstr "<li> Une carte SD compatible cultibox est branchée"
 
 msgid "INFO_PLUG_CULTIBOX_CARD"
 msgstr "<li>Vous pouvez maintenant connecter la carte SD dans la CultiBox.</li>"
 
 msgid "VALID_UPDATE_CONF"
-msgstr "<li>Configuration mise &agrave; jour avec succ&egrave;s</li>"
+msgstr "<li>Configuration mise à jour avec succès</li>"
 
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
-msgstr "<li>Configuration mise &agrave; jour avec succ&egrave;s dans le logiciel de la Cultibox.</li>"
+msgstr "<li>Configuration mise à jour avec succès dans le logiciel de la Cultibox.</li>"
 
 msgid "VALID_UPDATE_PROGRAM"
-msgstr "<li> Programmes mis &agrave; jour avec succ&egrave;s</li>"
+msgstr "<li> Programmes mis à jour avec succès</li>"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "<li> Programmes mis &agrave; jour avec succ&egrave;s! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos param&egrave;trage</li>"
+msgstr "<li> Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage</li>"
 
 msgid "VALID_LOAD_LOG"
-msgstr "<li> Fichiers de logs enregistr&eacute;es avec succ&egrave;s</li>"
+msgstr "<li> Fichiers de logs enregistrées avec succès</li>"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "<li>Programme mis &agrave; jour avec succ&egrave;s</li>"
+msgstr "<li>Programme mis à jour avec succès</li>"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "<li>Vous pouvez utiliser l'assistant pour configurer la premi&egrave;re prise en cliquant ici: <a href='wizard'><img src="main/libs/img/wizard.png" alt="wizard" name="wizard" /></a></li>"
+msgstr "<li>Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici: <a href='wizard'><img src="main/libs/img/wizard.png" alt="wizard" name="wizard" /></a></li>"
 
 msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs'><img src="main/libs/img/wizard.png" alt="classic" name="Classic" /></a></li>"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "<li>Programme r&eacute;initialis&eacute; avec succ&egrave;s</li>"
+msgstr "<li>Programme réinitialisé avec succès</li>"
 
 msgid "WAITING_LOG"
 msgstr "Merci de patienter quelques instants durant le chargement des logs..."
 
 msgid "UPDATED_PROGRAM"
-msgstr "<li>Vos programmes n'&eacute;tait pas &agrave; jour sur votre carte, la mise &agrave; jour &agrave; &eacute;t&eacute; ex&eacute;cut&eacute;</li>"
+msgstr "<li>Vos programmes n'était pas à jour sur votre carte, la mise à jour à été exécuté</li>"
 
 # For the tooltip part:
 
 msgid "TOOLTIP_VALUE"
-msgstr "La Cultibox va &eacute;teindre ou allumer la prise pour atteindre cette valeur."
+msgstr "La Cultibox va éteindre ou allumer la prise pour atteindre cette valeur."
 
 msgid "TOOLTIP_POWER"
-msgstr "La puissance de l'&eacute;quipement branch&eacute;. Renseigner ce champ vous permet de calculer la consomation de votre installation, son prix..."
+msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consomation de votre installation, son prix..."
 
 msgid "TOOLTIP_POPUP"
-msgstr "Les messages affich&eacute;s par l'interface sont par d&eacute;faut affich&eacute;s dans une boite de dialogue. Cette option vous permet de d&eacute;sactiver/activer ces boites de dialogue."
+msgstr "Les messages affichés par l'interface sont par défaut affichés dans une boite de dialogue. Cette option vous permet de désactiver/activer ces boites de dialogue."
 
 msgid "TOOLTIP_RECORD_FREQ"
-msgstr "Cette option permet de configurer la fr&eacute;quence &agrave; laquelle la CultiBox enregistre les donn&eacute;es de temp&eacute;rature et d'hygrom&eacute;trie."
+msgstr "Cette option permet de configurer la fréquence à laquelle la CultiBox enregistre les données de température et d'hygrométrie."
 
 msgid "TOOLTIP_POWER_FREQ"
-msgstr "Cette option permet de configurer la fr&eacute;quence &agrave; laquelle la CultiBox enregistre les valeurs de consomation d'&eacute;nergie."
+msgstr "Cette option permet de configurer la fréquence à laquelle la CultiBox enregistre les valeurs de consomation d'énergie."
 
 msgid "TOOLTIP_PLUG_FREQ"
-msgstr "Cette option permet de configurer la fr&eacute;quence &agrave; laquelle sera mise &agrave; jour l'&eacute;tat (Marche/Arr&ecirc;t) de vos prises."
+msgstr "Cette option permet de configurer la fréquence à laquelle sera mise à jour l'état (Marche/Arrêt) de vos prises."
 
 msgid "TOOLTIP_ALARM"
-msgstr "L'alarme de la CultiBox est un moyen simple de v&eacute;rifier qu'une composante (temp&eacute;rature ou hygrom&eacute;trie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le syst&egrave;me d'alarme, il faut faudra choisir: si vous voulez v&eacute;rifier la temp&eacute;rature ou l'hygrom&eacute;trie, &agrave; partir de quel seuil l'alarme doit se d&eacute;clencher et si elle doit se d&eacute;clencher au dessus ou en dessous de ce seuil."
+msgstr "L'alarme de la CultiBox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil."
 
 msgid "TOOLTIP_WITHOUT_SD"
-msgstr "Sans carte SD branch&eacute;e votre configuration sera sauvegard&eacute;e dans le logiciel mais pas dans la CultiBox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la CultiBox."
+msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la CultiBox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la CultiBox."
 
 msgid "TOOLTIP_WITHOUT_SD_LOG"
-msgstr "Sans carte SD branch&eacute;e les fichiers enregistr&eacute;s par votre CultiBox concernant la temp&eacute;rature et l'hygrom&eacute;trie ne pourront pas &ecirc;tre affich&eacute; et sauvegard&eacute;. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
+msgstr "Sans carte SD branchée les fichiers enregistrés par votre CultiBox concernant la température et l'hygrométrie ne pourront pas être affiché et sauvegardé. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
 
 msgid "TOOLTIP_POWER_LOG"
-msgstr "Cette option calcule et affiche la puissance consomm&eacute;e pour une prise sp&eacute;cifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
+msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
 
 msgid "TOOLTIP_AXIS"
-msgstr "Cette option configure la valeur maximale de l'axe des ordonn&eacute;es du graphique correspondant. Cependant le logiciel, pour une meilleure visualisation des graphiques, recalcule cette valeur en fonction de celle des autres graphiques. Il est donc possible que la valeur maximale ne corresponde pas exactement &agrave; la valeur selectionn&eactue;e dans cette option."
+msgstr "Cette option configure la valeur maximale de l'axe des ordonnées du graphique correspondant. Cependant le logiciel, pour une meilleure visualisation des graphiques, recalcule cette valeur en fonction de celle des autres graphiques. Il est donc possible que la valeur maximale ne corresponde pas exactement à la valeur selectionnée dans cette option."
 
 msgid "TOOLTIP_LOG_PROGRAM"
-msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les donn&eacute;es enregistr&eacute;es par la CultiBox et le comportement th&eacute;orique de la prise."
+msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la CultiBox et le comportement théorique de la prise."
+
+msgid "TOOLTIP_PLUG_TOLERANCE"
+msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation."
+
+msgid "TOOLTIP_PLUG_REGUL"
+msgstr "La régulation permet de définir des valeurs à partir desquelles l'équipement branché se mettre en route et s'éteindra. Si vous activez la régulation il faut faudra choisir: si vous voulez que l'équipement soit régulé en fonction de la température ou de l'hygrométrie, à partir de quel seuil la prise doit s'éteindre ou s'allumer et si elle doit se déclencher au dessus ou en dessous de ce seuil."
+
+msgid "TOOLTIP_PLUG_ID"
+msgstr "L'identificateur d'un prise permet à la CultiBox d'identifier de façon unique une prise. Cette valeur ne doit être changé qu'avec précaution."
+
 

@@ -42,6 +42,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
       save_program_on_sd($sd_card,$program,$error,$info);
    }
    check_and_copy_firm($sd_card,$error);
+   $info=$info.__('INFO_SD_CARD').": $sd_card";
 } else {
         $error=$error.__('ERROR_SD_CARD_CONF');
 }
@@ -67,6 +68,9 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $regul=getvar("plug_regul${nb}");
    $regul_senss=getvar("plug_senss${nb}");
    $regul_value=getvar("plug_regul_value${nb}");
+   $regul_value=str_replace(',','.',$regul_value);
+   $regul_value=str_replace(' ','',$regul_value);
+
 
    $error_plug[$nb]="";
    $old_name=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
@@ -97,6 +101,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    } 
 
    if((!empty($name))&&(isset($name))&&(!$reset)&&(strcmp("$old_name","$name")!=0)) {
+      $name= mysql_escape_string($name);
       insert_plug_conf("PLUG_NAME",$nb,$name,$error_plug[$nb]);
       $update_program=true;
       $plug_update=true;
@@ -173,6 +178,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
          } else {
             $error_plug[$nb]=$error_plug[$nb].__('ERROR_REGUL_VALUE');
         }
+
    }
 
    if(!empty($error_plug[$nb])) {
@@ -223,7 +229,6 @@ if((isset($sd_card))&&(!empty($sd_card))) {
    }
    //write pluga file
    write_pluga($sd_card,$error);
-   $info=$info.__('INFO_SD_CARD').": $sd_card";
 }
 
 

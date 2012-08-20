@@ -100,6 +100,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
       save_program_on_sd($sd_card,$program,$error,$info);
    }
    check_and_copy_firm($sd_card,$error);
+   $info=$info.__('INFO_SD_CARD').": $sd_card";
 } else {
    $tmp="";
    $tmp=__('ERROR_SD_CARD_LOGS');
@@ -220,6 +221,8 @@ if("$type" == "days") {
 
          if(!empty($data_power)) {
             $datap=get_format_graph($data_power);
+         } else {
+            $error=$error.__('EMPTY_POWER_DATA');
          }
       }
       $xlegend="XAXIS_LEGEND_DAY";
@@ -301,11 +304,6 @@ $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$error);
 $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$error);
 $color_power=get_configuration("COLOR_POWER_GRAPH",$error);
 $color_program=get_configuration("COLOR_PROGRAM_GRAPH",$error);
-
-if((isset($sd_card))&&(!empty($sd_card))) {
-   $info=$info.__('INFO_SD_CARD').": $sd_card";
-}
-
 
 include('main/templates/logs.html');
 

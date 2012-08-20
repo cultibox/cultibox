@@ -99,7 +99,7 @@ function verifInt(e) {
    <table width="100%">
       <tr>
          <td width="20%">
-            <p class="title_conf"><?php echo __('PLUG')." $i:"; ?></p>
+            <p class="title_conf"><img src="main/libs/img/arrow.png" /><?php echo __('PLUG')." $i:"; ?></p>
          </td>
       </tr>
       <tr>
@@ -135,7 +135,7 @@ function verifInt(e) {
             </div>
             <?php if((strcmp($plug_type{$i},"ventilator")==0)||(strcmp($plug_type{$i},"heating")==0)||(strcmp($plug_type{$i},"humidifier")==0)||(strcmp($plug_type{$i},"dehumidifier")==0)) { ?>
             <div id="first_tolerance_label<?php echo $i; ?>">
-               <?php echo __('TOLERANCE_PLUG'); ?>
+               <?php echo __('TOLERANCE_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_TOLERANCE'); ?>" />
             </div>
             <?php } ?>
          </td>
@@ -153,7 +153,7 @@ function verifInt(e) {
    <tr>
          <td></td>
          <td>
-            <?php echo __('ID_PLUG'); ?>
+            <?php echo __('ID_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_ID'); ?>" />
          </td>
          <td>
             <input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>" <?php if($i<=3) echo "disabled"; ?> onKeypress="return verifInt(event);">
@@ -177,7 +177,7 @@ function verifInt(e) {
 <tr>
          <td width="20%"></td>
          <td width="25%">
-            <?php echo __('ENABLE_REGUL_PLUG'); ?>
+            <?php echo __('ENABLE_REGUL_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_REGUL'); ?>" />
          </td>
          <td>
             <select id="plug_regul<?php echo $i; ?>" name="plug_regul<?php echo $i; ?>" onChange="getRegul(this.selectedIndex,<?php echo $i; ?>);" onLoad="getRegul(this.selectedIndex,<?php echo $i; ?>);">
@@ -233,7 +233,7 @@ function verifInt(e) {
    <tr>
       <td></td>
       <td class="regul"><div id="label_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" /><?php echo __('CONFIGURE_REGUL_VALUE'); ?></div></td>
-      <td><div id="div_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_regul_value{$i}; ?>" name="plug_regul_value<?php echo $i; ?>"><label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
+      <td><div id="div_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_regul_value{$i}; ?>" name="plug_regul_value<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
    </tr>
    </table>
 
@@ -260,10 +260,10 @@ function verifInt(e) {
       <tr>
          <td width="20%"></td>
          <td>
-            <INPUT type="submit" name="reset" value="<?php echo __('RESET_PLUG_ID'); ?>">
+            <INPUT type="submit" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>">
          </td>
          <td>
-            <INPUT type="submit" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>">
+            <INPUT type="submit" name="reset" value="<?php echo __('RESET_PLUG_ID'); ?>">
          </td>
       </tr>
    </table>

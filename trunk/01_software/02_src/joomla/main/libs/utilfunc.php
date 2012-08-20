@@ -47,9 +47,38 @@ function __() {
    
    $args[0] = $msg;
    $ret = call_user_func_array('sprintf', $args);
-   return $ret;
+
+
+   return htmlentitiesOutsideHTMLTags($ret);
 }
 //}}}
+
+
+// {{{ htmlentitiesOutsideHTMLTags()
+// ROLE encode a string in HTML and preserve HTML tags
+// IN $htmltext   text to encode
+// RET text encoded in HTML
+function htmlentitiesOutsideHTMLTags($htmlText)
+{
+    $matches = Array();
+    $sep = '###HTMLTAG###';
+
+    preg_match_all(":</{0,1}[a-z]+[^>]*>:i", $htmlText, $matches);
+
+    $tmp = preg_replace(":</{0,1}[a-z]+[^>]*>:i", $sep, $htmlText);
+    $tmp = explode($sep, $tmp);
+
+    for ($i=0; $i<count($tmp); $i++)
+        $tmp[$i] = htmlentities($tmp[$i]);
+
+    $tmp = join($sep, $tmp);
+
+    for ($i=0; $i<count($matches[0]); $i++)
+        $tmp = preg_replace(":$sep:", $matches[0][$i], $tmp, 1);
+
+    return $tmp;
+}
+// }}}
 
 
 // {{{ getvar()
