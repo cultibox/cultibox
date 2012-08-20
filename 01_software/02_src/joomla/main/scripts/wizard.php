@@ -22,7 +22,6 @@ $info_plug=array();
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $selected_plug=getvar('selected_plug');
 $next_plug=getvar('next_plug');
-$first_use = get_configuration("FIRST_USE",$error);
 $close=getvar('close');
 $program="";
 $pop_up="";
@@ -215,7 +214,7 @@ if((!empty($selected_plug))&&(isset($selected_plug))) {
 
 
 if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
-	if((isset($first_use))&&(!empty($first_use))&&(strcmp($first_use,"True")==0)&&($selected_plug==1)) {
+	if(($selected_plug==1)) {
 		$step=1;
         } else {
 		$step=2;
