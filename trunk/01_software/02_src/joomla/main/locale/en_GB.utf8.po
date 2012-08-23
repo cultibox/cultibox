@@ -25,11 +25,11 @@ msgstr "This sofware will help you to configure and communicate with your cultib
 msgid "WELCOME_TUTO"
 msgstr "<b>Note:</b> if you have the previous version of the cultibox named the GreenBox: <ul><li>Remove your old plugs not compatible anymore</li><li>unplugged the Greenbox which can cause interferences with the cultibox</li></ul>"
 
-msgid "WELCOME_WIZARD"
-msgstr "Configuration Wizard"
-
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Just click on the following link to launch the wizard configuration and begin to manipulate your cultibox"
+
+msgid "WELCOME_WIZARD"
+msgstr "Configuration Wizard"
 
 # For the configuration part:
 msgid "USER_CONF"
@@ -37,6 +37,9 @@ msgstr "User configuration"
 
 msgid "SYSTEM_CONF"
 msgstr "System configuration"
+
+msgid "CONFIGURE_COST"
+msgstr "Cost onfiguration"
 
 msgid "ALWAYS_RECORD"
 msgstr "Always"
@@ -62,11 +65,23 @@ msgstr "Select the number of plugs used"
 msgid "CONFIGURE_PLUGS_FREQUENCY"
 msgstr "Select the update plugs state frequency"
 
+msgid "CONFIGURE_COLOR_PROGRAM"
+msgstr "Select color for program graphics"
+
+msgid "CONFIGURE_POWER"
+msgstr "Select color for power graphics"
+
 msgid "CONFIGURE_POPUP"
 msgstr "Enable popup messages"
 
 msgid "VALIDATION_CONF"
 msgstr "Update configuration"
+
+msgid "LANG_FR"
+msgstr "French"
+
+msgid "LANG_EN"
+msgstr "English"
 
 msgid "COLOR_BLUE"
 msgstr "Blue"
@@ -80,17 +95,14 @@ msgstr "Green"
 msgid "COLOR_BLACK"
 msgstr "Black"
 
-msgid "LANG_FR"
-msgstr "French"
-
-msgid "LANG_EN"
-msgstr "English"
-
 msgid "CONFIGURE_TEMP_AXIS"
 msgstr "Configure maximal axis value for temperature graphics"
 
 msgid "CONFIGURE_HYGRO_AXIS"
 msgstr "Configure maximal axis value for hygrometry graphics"
+
+msgid "CONFIGURE_POWER_AXIS"
+msgstr "Configure maximal axis value for power graphics"
 
 msgid "YES"
 msgstr "Yes"
@@ -125,10 +137,10 @@ msgstr "Temperature"
 msgid "ALARM_HUMI"
 msgstr "Humidity"
 
-# For the logs part:
+msgid "CONFIGURE_COST_PRICE"
+msgstr "Cost of the KW/H"
 
-msgid "OR"
-msgstr "OR"
+# For the logs part:
 
 msgid "HISTO_GRAPH"
 msgstr "Temperature & Humidity graphics"
@@ -136,8 +148,14 @@ msgstr "Temperature & Humidity graphics"
 msgid "SELECT_DISPLAYED_DAY"
 msgstr "Select a day to display"
 
+msgid "SELECT_DAY"
+msgstr "Day to displai (YYYY-MM-DD):"
+
+msgid "SELECT_MONTH"
+msgstr "Select month to display: "
+
 msgid "SELECT_DISPLAYED_MONTH"
-msgstr "Select a month and a year to display"
+msgstr "Display data for an entire month"
 
 msgid "VIEW"
 msgstr "View"
@@ -151,6 +169,9 @@ msgstr "Temperature"
 msgid "LEGEND_HUMI"
 msgstr "Humidity"
 
+msgid "LEGEND_POWER"
+msgstr "Power"
+
 msgid "XAXIS_LEGEND_DAY"
 msgstr "Time"
 
@@ -162,6 +183,9 @@ msgstr "Percentage of humidity"
 
 msgid "Y2AXIS_LEGEND"
 msgstr "Temperature in celsius degrees" 
+
+msgid "Y3AXIS_LEGEND"
+msgstr "Power in Watts"
 
 msgid "MONTH01"
 msgstr "January"
@@ -201,6 +225,12 @@ msgstr "December"
 
 msgid "SELECT_PROGRAM_PLUG"
 msgstr "and a program to compare"
+
+msgid "SELECT_POWER_PLUG"
+msgstr "Display power used:"
+
+msgid "SELECT_ALL_PLUGS"
+msgstr "ALl plugs"
 
 msgid "FORCE_ON_CHART"
 msgstr "Forced to ON"
@@ -254,6 +284,12 @@ msgstr "Plug's regulation"
 msgid "CONFIGURE_REGUL_SENSO"
 msgstr "Threshold the regulation with the "
 
+msgid "CONFIGURE_REGUL_VALUE"
+msgstr "Threshold"
+
+msgid "CONFIGURE_REGUL_SENSS"
+msgstr "Enable if the measure is "
+
 msgid "REGUL_TEMP"
 msgstr "Temperature"
 
@@ -267,10 +303,6 @@ msgid "REGUL_ABOVE"
 msgstr "above the threshold"
 
 # For the programs part:
-
-msgid "CURRENT_PLUG_PROGRAM"
-msgstr "Current program for"
-
 msgid "CONFIGURE_PROGRAM"
 msgstr "Configure plug behaviour"
 
@@ -301,6 +333,9 @@ msgstr "Off"
 msgid "VALUE_REGUL"
 msgstr "Regulation"
 
+msgid "CURRENT_PLUG_PROGRAM"
+msgstr "Current program for"
+
 msgid "TIMEPICKER_SELECT_TIME"
 msgstr "Choose time"
 
@@ -324,6 +359,9 @@ msgstr "Done"
 
 msgid "TIMEPICKER_BUTTON_TEXT"
 msgstr "Choose the time"
+
+msgid "TIMEPICKER_BUTTON_TEXT_LOG"
+msgstr "Choose the date"
 
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
 msgstr "Behaviour of your plug"
@@ -370,26 +408,26 @@ msgstr "Reset zoom"
 msgid "WIZARD_FIRST_USE"
 msgstr "Welcome into the Cultibox Software! This is your first use of this sofwtware, to help you, a wizard will be launch."
 
+msgid "CLOSE_WIZARD"
+msgstr "Close the wizard"
+
 msgid "WIZARD_INTRO"
 msgstr "Wizard interface - assistant to configure your plugs"
 
 msgid "WIZARD_CONFIGURE_PLUG_NUMBER"
 msgstr "Plug number"
 
-msgid "CLOSE_WIZARD"
-msgstr "Close wizard"
-
 msgid "WIZARD_NEXT_STEP"
-msgstr "Next Step"
+msgstr "Next Step >"
 
 msgid "WIZARD_PREVIOUS_STEP"
-msgstr "Previous Step"
-
-msgid "WIZARD_NEXT_PLUG"
-msgstr "Finish and configure the next plug"
+msgstr "< Previous Step"
 
 msgid "WIZARD_FINISH_STEP"
 msgstr "Finish and close"
+
+msgid "WIZARD_NEXT_PLUG"
+msgstr "Finish and configure the next plug"
 
 msgid "WIZARD_PLUG_NUMBER"
 msgstr "This wizard will help you to configure your first plug."
@@ -473,6 +511,43 @@ msgstr "Harvest"
 msgid "SUBJECT_OTHER"
 msgstr "Other"
 
+# For the cost part:
+msgid "SELECT_START_DAY"
+msgstr "Begining day:"
+
+msgid "SELECT_END_DAY"
+msgstr "Ending day:"
+
+msgid "COST_PRICE_COMPUTE"
+msgstr "Cost price computation"
+
+msgid "COST_PRICE_COMPUTE_GRAPH"
+msgstr "COst price of your installation"
+
+msgid "INSTALLATION_PRICE"
+msgstr "Price of the installation in Euros"
+
+msgid "SELECT_PRICE_PLUG"
+msgstr "Select a plug:"
+
+msgid "PRICE_FOR_DATE"
+msgstr "Price of the installation between the "
+
+msgid "PRICE_FOR_DAY"
+msgstr "Price for the:"
+
+msgid "PRICE_AND"
+msgstr "and the"
+
+msgid "PRICE_ALL_PLUG"
+msgstr "All plugs"
+
+msgid "PRICE_SELECT_PLUG"
+msgstr "Price for the plug"
+
+msgid "PRICE_SELECT_ALL_PLUG"
+msgstr "Price for all your plugs"
+
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "<li> Problem during the connection close procedure</li>"
@@ -488,6 +563,9 @@ msgstr "<li> Empty temperature data for the selected date</li>"
 
 msgid "EMPTY_HUMIDITY_DATA"
 msgstr "<li> Empty humidity data for the selected date</li>"
+
+msgid "EMPTY_POWER_DATA"
+msgstr "<li> Empty power data for the selected date</li>"
 
 msgid "ERROR_FORMAT_DATE_DAY"
 msgstr "<li> Error in the date format: YYY-MM-DD</li>"
@@ -553,8 +631,14 @@ msgstr "<li>You can now plug your card into the Cultibox.</li>"
 msgid "VALID_UPDATE_CONF"
 msgstr "<li> Configuration successfully updated</li>"
 
+msgid "VALID_UPDATE_CONF_WITHOUT_SD"
+msgstr "<li>Configuration updated successfully in the CultiBox software!</li>"
+
 msgid "VALID_UPDATE_PROGRAM"
 msgstr "<li> Programs successfully updated</li>"
+
+msgid "VALID_UPDATE_PROGRAM_SD_INFO"
+msgstr "<li> Program updated successfully! You can unplug your SD card and put in the CultiBox</li>"
 
 msgid "VALID_LOAD_LOG"
 msgstr "<li> Logs successfully loaded</li>"
@@ -587,4 +671,44 @@ msgstr "The power of the equipement pluged in Watts. This is usefull if you want
 
 msgid "TOOLTIP_POPUP"
 msgstr ""
+
+msgid "TOOLTIP_RECORD_FREQ"
+msgstr "Cette option permet de configurer la fréquence à laquelle la CultiBox enregistre les données de température et d'hygrométrie."
+
+msgid "TOOLTIP_POWER_FREQ"
+msgstr "Cette option permet de configurer la fréquence à laquelle la CultiBox enregistre les valeurs de consomation d'énergie."
+
+msgid "TOOLTIP_PLUG_FREQ"
+msgstr "Cette option permet de configurer la fréquence à laquelle sera mise à jour l'état (Marche/Arrêt) de vos prises."
+
+msgid "TOOLTIP_ALARM"
+msgstr "L'alarme de la CultiBox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil."
+
+msgid "TOOLTIP_WITHOUT_SD"
+msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la CultiBox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la CultiBox."
+
+msgid "TOOLTIP_WITHOUT_SD_LOG"
+msgstr "Sans carte SD branchée les fichiers enregistrés par votre CultiBox concernant la température et l'hygrométrie ne pourront pas être affiché et sauvegardé. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
+
+msgid "TOOLTIP_POWER_LOG"
+msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
+
+msgid "TOOLTIP_AXIS"
+msgstr "Cette option configure la valeur maximale de l'axe des ordonnées du graphique correspondant. Cependant le logiciel, pour une meilleure visualisation des graphiques, recalcule cette valeur en fonction de celle des autres graphiques. Il est donc possible que la valeur maximale ne corresponde pas exactement à la valeur selectionnée dans cette option."
+
+msgid "TOOLTIP_LOG_PROGRAM"
+msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la CultiBox et le comportement théorique de la prise."
+
+msgid "TOOLTIP_PLUG_TOLERANCE"
+msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation."
+
+msgid "TOOLTIP_PLUG_REGUL"
+msgstr "La régulation permet de définir des valeurs à partir desquelles l'équipement branché se mettre en route et s'éteindra. Si vous activez la régulation il faut faudra choisir: si vous voulez que l'équipement soit régulé en fonction de la température ou de l'hygrométrie, à partir de quel seuil la prise doit s'éteindre ou s'allumer et si elle doit se déclencher au dessus ou en dessous de ce seuil."
+
+msgid "TOOLTIP_PLUG_ID"
+msgstr "L'identificateur d'un prise permet à la CultiBox d'identifier de façon unique une prise. Cette valeur ne doit être changé qu'avec précaution."
+
+msgid "TOOLTIP_COST_PRICE"
+msgstr "Cost of the kilo Watt for a hour. Fill this is necessary to compute how much cost your installation in the 'Cost' part"
+
 

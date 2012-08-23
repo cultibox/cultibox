@@ -425,6 +425,17 @@ function verifDigit(e) {
    </tr>
 </table>
 
+<br />
+<p class="title_conf">
+   <img src="main/libs/img/arrow.png" /><?php echo __('CONFIGURE_COST'); ?>:
+</p>
+<table width="60%" align="center">
+   <tr>
+      <td width="75%"><?php echo __('CONFIGURE_COST_PRICE'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_PRICE'); ?>" /></td>
+      <td><input type="text" size="5" maxlength="5" name="cost_price" value="<?php echo "$cost_price"; ?>" onKeypress="return verifDigit(event);"></td>
+   </tr>
+</table>
+
 <br /><p align="center">
    <INPUT type="submit" value="<?php echo __('VALIDATION_CONF'); ?>">
 </p>

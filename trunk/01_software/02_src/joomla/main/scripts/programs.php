@@ -65,7 +65,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 if((!isset($sd_card))||(empty($sd_card))) {
-       	$error=$error.__('ERROR_SD_CARD_CONF');
+       	$error=$error.__('ERROR_SD_CARD_PROGRAMS');
 } else {
        	$info=$info.__('INFO_SD_CARD').": $sd_card";
 }

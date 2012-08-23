@@ -53,7 +53,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 
 if((isset($close))&&(!empty($close))) {
 	insert_configuration("FIRST_USE","False",$error);
-        header('Location: configuration');
+        header('Location: plugs');
 }
 
 if((empty($selected_plug))||(!isset($selected_plug))) {

@@ -1,0 +1,199 @@
+<script type="text/javascript">
+function verifDate(e) {
+   if((e.keyCode < 45 || e.keyCode > 57)&&(e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
+   if((e.which < 45 || e.which > 57)&&(e.which != 08 && e.which != 10 && e.which != 13)) return false;
+}
+</script>
+
+
+<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
+   <SCRIPT LANGUAGE="JavaScript">
+      alert('<?php echo "$pop_up_message"; ?>');
+   </SCRIPT>
+<?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
+   <SCRIPT LANGUAGE="JavaScript">
+      alert('<?php echo "$pop_up_error_message"; ?>');
+   </SCRIPT>
+<?php } ?>
+
+
+<?php if((isset($info))&&(!empty($info))) { ?>
+   <div id="info">
+      <ul>
+         <?php echo $info; ?>
+      </ul>
+   </div>
+<?php } ?>
+
+<?php if((isset($main_error))&&(!empty($main_error))) { ?>
+<div id="error">
+<ul>
+        <?php echo $main_error; ?>
+</ul>
+</div>
+<?php } ?>
+
+<?php if((isset($error))&&(!empty($error))) { ?>
+   <div id="error">
+      <ul>
+         <?php echo $error; ?>
+      </ul>
+   </div>
+   <br />
+<?php } ?>
+
+<?php switch($lang) {
+
+   case 'fr_FR': 
+                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-fr.js"></script>'; 
+      break;
+        }
+?>
+
+<script type="text/javascript">
+$(function() {
+   $("#datepicker_start").datepicker({ 
+dateFormat: "yy-mm-dd",
+showButtonPanel: true,
+showOn: "both",
+buttonImage: "../main/libs/img/datepicker.png",
+buttonImageOnly: 'true',
+<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
+}).val()
+});
+</script>
+
+<script type="text/javascript">
+$(function() {
+   $("#datepicker_end").datepicker({ 
+dateFormat: "yy-mm-dd",
+showButtonPanel: true,
+showOn: "both",
+buttonImage: "../main/libs/img/datepicker.png",
+buttonImageOnly: 'true',
+<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
+}).val()
+});
+</script>
+
+<script type="text/javascript">
+
+Highcharts.setOptions({
+lang: {
+<?php echo "resetZoom : '".__('RESET_ZOOM')."',"; ?>
+<?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE')."'"; ?>
+}
+});
+
+$(function () {
+   var chart;
+   $(document).ready(function() {
+chart = new Highcharts.Chart({
+      chart: {
+         backgroundColor: '#F7F7F9',
+         renderTo: 'container',
+         spacingRight: 20,
+         type: 'column'
+      },
+      title: {
+         text: '<?php echo __('COST_PRICE_COMPUTE_GRAPH'); ?>'
+      },
+      subtitle: {
+         text: ''
+      },
+      lang: {
+            printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
+            exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART')."',"; ?>
+            downloadPNG : <?php echo "'".__('EXPORT_PNG')."',"; ?>
+            downloadJPEG : <?php echo "'".__('EXPORT_JPEG')."',"; ?>
+            downloadPDF : <?php echo "'".__('EXPORT_PDF')."',"; ?>
+            downloadSVG : <?php echo "'".__('EXPORT_SVG')."',"; ?>
+            resetZoom : <?php echo "'".__('RESET_ZOOM')."',"; ?>
+            resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>
+      },
+      xAxis: {
+         categories: [
+            <?php if(strcmp("$select_plug","all")==0) { 
+                  echo "'".__('PRICE_SELECT_ALL_PLUG')."'";
+            } else {
+                  echo "'".__('PRICE_SELECT_PLUG').": ". $plugs_infos[$select_plug-1]['PLUG_NAME']."'";
+            } ?>
+         ]
+      },
+      yAxis: {
+         min: 0,
+         title: {
+            text: '<?php echo __('INSTALLATION_PRICE'); ?>'
+         }
+      },
+      credits: {
+            enabled: false
+      },
+      tooltip: {
+         formatter: function() {
+            return ''+ this.y +'€';
+         }
+      },
+      plotOptions: {
+         column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+         }
+      },
+         series: [{
+         name: <?php if(strcmp("$startday","$endday")!=0) { ?>
+               '<?php echo __('PRICE_FOR_DATE')." ".$startday." ".__('PRICE_AND')." ".$endday; ?>',
+            <?php } else { ?>
+               '<?php echo __('PRICE_FOR_DAY')." ".$startday; ?>',   
+            <?php } ?>
+         data: [49.9]
+
+      }]
+   });
+});
+});
+</script>
+
+<img src="main/libs/img/arrow.png" /><?php echo __('COST_PRICE_COMPUTE'); ?>
+<br /><br />
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+
+<table width="100%">
+   <tr>
+      <td width="20%"></td>
+      <td width="10%"><?php echo __('SELECT_START_DAY'); ?></td>
+      <td width="15%"><input id="datepicker_start" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
+      <td width="50%"></td>
+   </tr>
+   <tr>
+      <td></td>
+      <td width="20%"><?php echo __('SELECT_END_DAY'); ?></td>
+      <td><input id="datepicker_end" name="endday" type="text" class="whitefield" size="10" value="<?php echo $endday; ?>"></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td></td>
+      <td width="20%"><?php echo __('SELECT_PRICE_PLUG'); ?></td>
+      <td><select name="select_plug">
+            <option value="All"><?php echo __('PRICE_ALL_PLUG'); ?></option>
+            <?php for($i=0;$i<$nb_plugs;$i++) { ?>
+               <option value="<?php echo $plugs_infos[$i]["id"]; ?>" <?php if(strcmp($select_plug,$plugs_infos[$i]["id"])==0) echo "selected"; ?>><?php echo $plugs_infos[$i]["PLUG_NAME"]; ?></option>
+            <?php } ?>
+         </select></td>
+      <td></td>
+   </tr>
+</table>
+<br />
+<table width="80%">
+   <tr>
+   <td align="center">
+         <INPUT type="submit" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);">
+   </td>
+   <td></td>
+</tr>
+</table>
+</form>
+<br />
+<hr />
+
+<div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
