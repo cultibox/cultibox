@@ -38,6 +38,9 @@ msgstr "Configuration de l'interface"
 msgid "SYSTEM_CONF"
 msgstr "Configuration de la cultibox"
 
+msgid "CONFIGURE_COST"
+msgstr "Configuration du coût"
+
 msgid "ALWAYS_RECORD"
 msgstr "Toujours"
 
@@ -46,12 +49,6 @@ msgstr "Couleur des courbes d'hygrométrie"
 
 msgid "CONFIGURE_TEMPERATURE"
 msgstr "Couleur des courbes des températures"
-
-msgid "CONFIGURE_COLOR_PROGRAM"
-msgstr "Couleur des courbes des programmes"
-
-msgid "CONFIGURE_POWER"
-msgstr "Couleur des courbes de puissance"
 
 msgid "CONFIGURE_LANGUAGE"
 msgstr "Choisir votre langue"
@@ -66,7 +63,13 @@ msgid "CONFIGURE_NB_PLUGS"
 msgstr "Nombre de prises de votre système"
 
 msgid "CONFIGURE_PLUGS_FREQUENCY"
-msgstr "Fréquence de mise à jour de l'état de vos prises (en seconde)"
+msgstr "Fréquence de mise à jour de l'état des prises"
+
+msgid "CONFIGURE_COLOR_PROGRAM"
+msgstr "Couleur des courbes des programmes"
+
+msgid "CONFIGURE_POWER"
+msgstr "Couleur des courbes de puissance"
 
 msgid "CONFIGURE_POPUP"
 msgstr "Activer l'affichage des messages par popup"
@@ -133,6 +136,9 @@ msgstr "Température"
 
 msgid "ALARM_HUMI"
 msgstr "Humidité"
+
+msgid "CONFIGURE_COST_PRICE"
+msgstr "Prix du kilowatt-heure"
 
 # For the logs part:
 
@@ -228,15 +234,6 @@ msgstr "Toutes les prises"
 
 msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
-
-msgid "EXPORT_PROGRAM"
-msgstr "Exporter"
-
-msgid "IMPORT_PROGRAM"
-msgstr "Importer"
-
-msgid "RESET_PROGRAM"
-msgstr "Reinitialiser"
 
 # For the plugs part:
 msgid "PLUG"
@@ -373,6 +370,15 @@ msgstr "Comportement de votre prise"
 msgid "CHART_FORCE_ON_VALUE"
 msgstr "Marche forcee" 
 
+msgid "EXPORT_PROGRAM"
+msgstr "Exporter"
+
+msgid "IMPORT_PROGRAM"
+msgstr "Importer"
+
+msgid "RESET_PROGRAM"
+msgstr "Reinitialiser"
+
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"
 msgstr "Imprimer le graphique"
@@ -505,6 +511,43 @@ msgstr "Récolte"
 msgid "SUBJECT_OTHER"
 msgstr "Autre"
 
+# For the cost part:
+msgid "SELECT_START_DAY"
+msgstr "Jour de début:"
+
+msgid "SELECT_END_DAY"
+msgstr "Jour de fin:"
+
+msgid "COST_PRICE_COMPUTE"
+msgstr "Calcul du coût de votre installation:"
+
+msgid "COST_PRICE_COMPUTE_GRAPH"
+msgstr "Calcul de reviens de votre installation"
+
+msgid "INSTALLATION_PRICE"
+msgstr "Prix de l\'installation en Euros"
+
+msgid "SELECT_PRICE_PLUG"
+msgstr "Sélectionner une prise:"
+
+msgid "PRICE_FOR_DATE"
+msgstr "Prix de l\'installation entre le :"
+
+msgid "PRICE_FOR_DAY"
+msgstr "Prix pour le:"
+
+msgid "PRICE_AND"
+msgstr "et le"
+
+msgid "PRICE_ALL_PLUG"
+msgstr "Toutes les prises"
+
+msgid "PRICE_SELECT_PLUG"
+msgstr "Prix pour la prise"
+
+msgid "PRICE_SELECT_ALL_PLUG"
+msgstr "Prix pour toutes vos prises"
+
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "<li> Problé pendant la fermeture de la connection</li>"
@@ -530,7 +573,7 @@ msgstr "<li> Erreur dans le format de la date: AAAA-MM-JJ</li>"
 msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "<li> Erreur dans le format de la date: MM</li>"
 
-msgid "ERROR_SD_CARD_PROGRAMMS"
+msgid "ERROR_SD_CARD_PROGRAMS"
 msgstr "<li> Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte est branchée</li>"
 
 msgid "ERROR_SD_CARD_LOGS"
@@ -577,6 +620,9 @@ msgstr "<li>Le code de la prise doit être une valeur numérique</li>"
 
 msgid "ERROR_POWER_VALUE"
 msgstr "<li>Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt</li>"
+
+msgid "ERROR_PRICE_VALUE"
+msgstr "<li>Erreur dans la configuration du prix du coût du kilowatt-heure. La valeur doit être supèrieure ou égal à 0.</li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"
@@ -664,5 +710,8 @@ msgstr "La régulation permet de définir des valeurs à partir desquelles l'éq
 
 msgid "TOOLTIP_PLUG_ID"
 msgstr "L'identificateur d'un prise permet à la CultiBox d'identifier de façon unique une prise. Cette valeur ne doit être changé qu'avec précaution."
+
+msgid "TOOLTIP_COST_PRICE"
+msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le prix de  revient de votre installation dans le menu 'Coût'"
 
 

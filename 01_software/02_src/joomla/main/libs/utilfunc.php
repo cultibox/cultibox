@@ -449,6 +449,10 @@ function check_format_date($date="",$type) {
 // IN $value   value to check
 // RET true is $value is numeric, false else
 function check_numeric_value($value="") {
+   if("$value"=="0") {
+         return true;
+   }
+
    if((empty($value))||(!isset($value))) {
       return false;
    }

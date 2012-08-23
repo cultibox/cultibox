@@ -34,6 +34,7 @@ $alarm_enable=getvar('alarm_enable');
 $alarm_value=getvar('alarm_value');
 $alarm_senso=getvar('alarm_senso');
 $alarm_senss=getvar('alarm_senss');
+$cost_price=getvar('cost_price');
 $program="";
 
 if((isset($lang))&&(!empty($lang))) {
@@ -59,6 +60,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
       save_program_on_sd($sd_card,$program,$error,$info);
    }
    check_and_copy_firm($sd_card,$error);
+   $info=$info.__('INFO_SD_CARD').": $sd_card";
 } else {
 
         $tmp="";
@@ -193,6 +195,20 @@ if(!empty($alarm_senss)) {
         $alarm_senss = get_configuration("ALARM_SENSS",$error);
 }
 
+if(!empty($cost_price)||("$cost_price"=="0")) {
+         $cost_price=str_replace(",",".","$cost_price");
+         if(check_numeric_value("$cost_price")) {
+            insert_configuration("COST_PRICE","$cost_price",$error);
+            $update_conf=true;
+         } else {
+            $cost_price = get_configuration("COST_PRICE",$error);
+            $error=$error.__('ERROR_PRICE_VALUE');
+            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error);
+         }
+} else {
+        $cost_price = get_configuration("COST_PRICE",$error);
+}
+
 if((empty($error))||(!isset($error))) {
 	if($update_conf) {
         if((!empty($sd_card))&&(isset($sd_card))) {
@@ -211,7 +227,6 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 	} else {
 		write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,"$alarm_enable","$alarm_value","$alarm_senso","$alarm_senss",$error);	
 	}	
-   $info=$info.__('INFO_SD_CARD').": $sd_card";
 }
 
 
