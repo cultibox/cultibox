@@ -522,7 +522,7 @@ msgid "COST_PRICE_COMPUTE"
 msgstr "Cost price computation"
 
 msgid "COST_PRICE_COMPUTE_GRAPH"
-msgstr "COst price of your installation"
+msgstr "Cost price of your installation"
 
 msgid "INSTALLATION_PRICE"
 msgstr "Price of the installation in Euros"
@@ -547,6 +547,18 @@ msgstr "Price for the plug"
 
 msgid "PRICE_SELECT_ALL_PLUG"
 msgstr "Price for all your plugs"
+
+msgid "PRICE_SELECT_PLUG_GRAPH"
+msgstr "for the plug"
+
+msgid "PRICE_SELECT_ALL_PLUG_GRAPH"
+msgstr "for all your plugs"
+
+msgid "REAL_PRICE"
+msgstr "Real price"
+
+msgid "THEORICAL_PRICE"
+msgstr "Theorical price"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
@@ -620,6 +632,9 @@ msgstr "<li>Plug identifier must be a numeric value</li>"
 
 msgid "ERROR_POWER_VALUE"
 msgstr "<li>Error in the power value: it must be more or equal to 0 Watt</li>"
+
+msgid "ERROR_DATE_INTERVAL"
+msgstr "<li>Error in the date: the begining date must be less or equal to the ended date</li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"

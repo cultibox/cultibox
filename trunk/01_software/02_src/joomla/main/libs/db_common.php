@@ -352,22 +352,35 @@ EOF;
 // {{{ get_data_power($date,$out)
 // ROLE get a data power from the database
 // IN $date   date to select reccords
+//    $datend end of the interval of date
 //    $id     id of the plug to be used ('all' for all the plugs)
 //    $out      errors or warnings messages
 // RET data power formated for highchart
-function get_data_power($date="",$id=0,&$out="") {
+function get_data_power($date="",$dateend="",$id=0,&$out="") {
    $res="";
    if((isset($date))&&(!empty($date))) {
       $db = db_priv_start();
 
       if(strcmp("$id","all")==0) {
+         if((!isset($dateend))||(empty($dateend))) {
       $sql = <<<EOF
 SELECT  * FROM `power` WHERE date_catch = "{$date}" ORDER by time_catch ASC, plug_number ASC
 EOF;
+         } else {
+      $sql = <<<EOF
+SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}"
+EOF;
+}
       } else {
+         if((!isset($dateend))||(empty($dateend))) {
       $sql = <<<EOF
 SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` = "{$id}}" ORDER by time_catch ASC, plug_number ASC
 EOF;
+      } else {
+      $sql = <<<EOF
+SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}}"
+EOF;
+      }
 }
            $db->setQuery($sql);
            $db->query();

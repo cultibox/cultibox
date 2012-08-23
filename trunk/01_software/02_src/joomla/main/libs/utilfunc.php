@@ -984,6 +984,33 @@ function write_calendar($sd_card,$data,&$out="") {
 //}}}
 
 
+// {{{ check_date()
+// ROLE check the an interval of dates is correct
+// IN   $datestart    first date
+//      $dateend      second date
+// RET false if $datestart > $dateend, true else
+function check_date($datestart="",$dateend="") {
+         $year_start=substr($datestart,0,4); 
+         $month_start=substr($datestart,5,2);
+         $day_start=substr($datestart,8,2);
+
+         $year_end=substr($dateend,0,4);
+         $month_end=substr($dateend,5,2);
+         $day_end=substr($dateend,8,2);
+
+         if($year_start<=$year_end) {
+            if($month_start<=$month_end) {
+               if($day_start<=$day_end) {
+                  return true;
+               }
+            }
+         }
+         return false;
+
+}
+// }}}
+
+
 // {{{ check_tolerance_value()
 // ROLE check the tolerance value
 // IN   $type      the type of the plug 

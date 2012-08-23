@@ -214,9 +214,9 @@ if("$type" == "days") {
 
       if((isset($select_power))&&(!empty($select_power))) {
          if($select_power!=999) {
-            $data_power=get_data_power($startday,$select_power,$error);
+            $data_power=get_data_power($startday,"",$select_power,$error);
          } else {
-            $data_power=get_data_power($startday,"all",$error);
+            $data_power=get_data_power($startday,"","all",$error);
          }
 
          if(!empty($data_power)) {
