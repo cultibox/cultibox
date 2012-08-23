@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 18, 2012 at 10:30 AM
+-- Generation Time: Aug 23, 2012 at 02:26 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -1640,7 +1640,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_redirect_links` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_link_old` (`old_url`),
   KEY `idx_link_modifed` (`modified_date`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `dkg45_redirect_links`
@@ -1683,7 +1683,8 @@ INSERT INTO `dkg45_redirect_links` (`id`, `old_url`, `new_url`, `referer`, `comm
 (34, 'http://localhost:1234/joomla/index.php/main/libs/img/wizard.png', '', 'http://localhost:1234/joomla/index.php/wizard?wzd=True', '', 0, '2012-06-28 20:33:07', '0000-00-00 00:00:00'),
 (35, 'http://localhost:1234/joomla/index.php/main/libs/img/infos.png', '', 'http://localhost:1234/joomla/index.php/plugs', '', 0, '2012-07-23 14:14:58', '0000-00-00 00:00:00'),
 (36, 'http://localhost:1234/joomla/index.php/main/libs/img/arrow.png', '', 'http://localhost:1234/joomla/index.php/plugs', '', 0, '2012-07-24 08:10:42', '0000-00-00 00:00:00'),
-(37, 'http://localhost:1234/joomla/index.php/main/libs/js/jquery.ui.datepicker-fr.js', '', 'http://localhost:1234/joomla/index.php/view-logs', '', 0, '2012-08-14 12:32:16', '0000-00-00 00:00:00');
+(37, 'http://localhost:1234/joomla/index.php/main/libs/js/jquery.ui.datepicker-fr.js', '', 'http://localhost:1234/joomla/index.php/view-logs', '', 0, '2012-08-14 12:32:16', '0000-00-00 00:00:00'),
+(38, 'http://localhost:1234/joomla/index.php/en/', '', 'http://localhost:1234/joomla/index.php/plugs', '', 0, '2012-08-19 12:51:45', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1730,7 +1731,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_session` (
 --
 
 INSERT INTO `dkg45_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`, `usertype`) VALUES
-('eec8a58f9adb598de590b6fb26826411', 0, 1, '1345277510', '__default|a:7:{s:22:"session.client.browser";s:78:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:14.0) Gecko/20100101 Firefox/14.0.1";s:15:"session.counter";i:19;s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";N;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:8:"usertype";N;s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:0:{}s:5:"guest";i:1;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";N;s:14:"\0*\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}s:19:"session.timer.start";i:1345276864;s:18:"session.timer.last";i:1345277462;s:17:"session.timer.now";i:1345277508;}LANG|s:5:"fr_FR";', 0, '', '');
+('2f194faeea7cf65f25549b03ac71691a', 0, 1, '1345724478', '__default|a:7:{s:22:"session.client.browser";s:78:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:14.0) Gecko/20100101 Firefox/14.0.1";s:15:"session.counter";i:2;s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";N;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:8:"usertype";N;s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:0:{}s:5:"guest";i:1;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";N;s:14:"\0*\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}s:19:"session.timer.start";i:1345724478;s:18:"session.timer.last";i:1345724478;s:17:"session.timer.now";i:1345724478;}LANG|s:5:"fr_FR";', 0, '', '');
 
 -- --------------------------------------------------------
 
