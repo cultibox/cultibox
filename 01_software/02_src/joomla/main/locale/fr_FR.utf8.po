@@ -522,10 +522,10 @@ msgid "COST_PRICE_COMPUTE"
 msgstr "Calcul du coût de votre installation:"
 
 msgid "COST_PRICE_COMPUTE_GRAPH"
-msgstr "Calcul de reviens de votre installation"
+msgstr "Calcul de revient de votre installation"
 
 msgid "INSTALLATION_PRICE"
-msgstr "Prix de l\'installation en Euros"
+msgstr "Prix de l\'installation"
 
 msgid "SELECT_PRICE_PLUG"
 msgstr "Sélectionner une prise:"
@@ -547,6 +547,18 @@ msgstr "Prix pour la prise"
 
 msgid "PRICE_SELECT_ALL_PLUG"
 msgstr "Prix pour toutes vos prises"
+
+msgid "PRICE_SELECT_PLUG_GRAPH"
+msgstr "pour la prise"
+
+msgid "PRICE_SELECT_ALL_PLUG_GRAPH"
+msgstr "pour toutes vos prises"
+
+msgid "REAL_PRICE"
+msgstr "Prix reel"
+
+msgid "THEORICAL_PRICE"
+msgstr "Prix theorique"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
@@ -623,6 +635,9 @@ msgstr "<li>Erreur dans la valeur de puissance: elle doit être supérieure ou �
 
 msgid "ERROR_PRICE_VALUE"
 msgstr "<li>Erreur dans la configuration du prix du coût du kilowatt-heure. La valeur doit être supèrieure ou égal à 0.</li>"
+
+msgid "ERROR_DATE_INTERVAL"
+msgstr "<li>Erreur dans les dates choisis: la date de début doit être inférieure ou égale à la date de fin</li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"
