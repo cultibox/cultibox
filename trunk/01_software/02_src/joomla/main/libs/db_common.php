@@ -349,7 +349,7 @@ EOF;
 // }}}
 
 
-// {{{ get_data_power($date,$out)
+// {{{ get_data_power()
 // ROLE get a data power from the database
 // IN $date   date to select reccords
 //    $datend end of the interval of date
@@ -474,6 +474,99 @@ EOF;
    } else {
       return 0;
    } 
+}
+// }}}
+
+
+// {{{ get_theorical_power()
+// ROLE get a theorical data power from the database
+// IN $id     id of the plug to be used ('all' for all the plugs)
+//    $out      errors or warnings messages
+//    $price   price of the kilowatt.hour
+// RET data power formated for highchart
+function get_theorical_power($id=0,$price=0,&$out="") {
+   $res="";
+   $db = db_priv_start();
+   if(strcmp("$id","all")==0) {
+          $sql = <<<EOF
+SELECT * FROM `programs` 
+EOF;
+      } else {
+      $sql = <<<EOF
+SELECT * FROM `programs` WHERE `plug_id` = "{$id}" 
+EOF;
+   }
+   
+   $db->setQuery($sql);
+   $db->query();
+   $res=$db->loadAssocList();
+   $ret=$db->getErrorMsg();
+   if((isset($ret))&&(!empty($ret))) {
+         if($GLOBALS['DEBUG_TRACE']) {
+                      $out=$out.__('ERROR_SELECT_SQL').$ret;
+         } else {
+                      $out=$out.__('ERROR_SELECT_SQL');
+         }
+         return 0;
+   }
+
+   if(!db_priv_end($db)) {
+        $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+        return 0;
+   }
+
+   if(count($res)>0) {
+      $sql = <<<EOF
+SELECT `PLUG_POWER` FROM `plugs`
+EOF;
+     $db->setQuery($sql);
+     $db->query();
+     $res_power=$db->loadAssocList();
+     $ret=$db->getErrorMsg();
+     if((isset($ret))&&(!empty($ret))) {
+         if($GLOBALS['DEBUG_TRACE']) {
+            $out=$out.__('ERROR_SELECT_SQL').$ret;
+         } else {
+            $out=$out.__('ERROR_SELECT_SQL');
+         }
+         return 0;
+      }
+
+      if(!db_priv_end($db)) {
+         $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+         return 0;
+      }
+   } else {
+      return 0;
+   }
+
+   if(count($res_power)==16) {
+         date_default_timezone_set('UTC');
+         $price=($price/3600)/1000;
+         $theorical=0;
+         foreach($res as $val) {
+
+            $id=$val['plug_id']-1;
+            $shh=substr($val['time_start'],0,2);
+            $smm=substr($val['time_start'],2,2);
+            $sss=substr($val['time_start'],4,2);
+            $ehh=substr($val['time_stop'],0,2);
+            $emm=substr($val['time_stop'],2,2);
+            $ess=substr($val['time_stop'],4,2);
+            $value=round($val['value']/100);
+            $time_end=mktime($ehh,$emm,$ess,0,0,1971);
+            $time_start=mktime($shh,$smm,$sss,0,0,1971);
+            $time_final=$time_end-$time_start;
+
+            $theorical=$theorical+($time_final*$price*$value*$res_power[$id]['PLUG_POWER']);
+
+         }
+      return $theorical;
+   }
+
+   print_r($res);
+   print_r($res_power);
+   return 0;
 }
 // }}}
 

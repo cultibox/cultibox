@@ -145,12 +145,15 @@ chart = new Highcharts.Chart({
             } else {
                   echo " ".__('PRICE_SELECT_PLUG_GRAPH').": ". $plugs_infos[$select_plug-1]['PLUG_NAME']."',";
             } ?>
-
             <?php } else { ?>
-               '<?php echo __('PRICE_FOR_DAY')." ".$startday; ?>',   
+               '<?php echo __('PRICE_FOR_DAY')." ".$startday; ?>
+                <?php if(strcmp("$select_plug","all")==0) { 
+                  echo " ".__('PRICE_SELECT_ALL_PLUG_GRAPH')."',";
+            } else {
+                  echo " ".__('PRICE_SELECT_PLUG_GRAPH').": ". $plugs_infos[$select_plug-1]['PLUG_NAME']."',";
+            } ?>
             <?php } ?>
-         data: [<?php echo $compute; ?>, 1]
-
+         data: [<?php echo $compute; ?>, <?php echo $theorical_power; ?>]
       }]
    });
 });
