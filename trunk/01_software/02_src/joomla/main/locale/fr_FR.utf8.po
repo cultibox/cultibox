@@ -26,7 +26,7 @@ msgid "WELCOME_TUTO"
 msgstr "<b>Note:</b> pour ceux qui possède l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument: <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la CultiBox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
-msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre CultiBox:"
+msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre CultiBox."
 
 msgid "WELCOME_WIZARD"
 msgstr "Assistant de configuration"

@@ -20,6 +20,10 @@
    height:600px;
 } 
 
+.text_info {
+   text-indent:2em
+}
+
 .regul {
    font-size: 12px;
    font-style: italic;
@@ -46,6 +50,7 @@
 
 .step_info {
 	text-align:justify;
+   text-indent:2em;
 }
 
 .title_conf{
