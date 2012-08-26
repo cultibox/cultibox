@@ -489,7 +489,7 @@ function get_theorical_power($id=0,$price=0,&$out="") {
    $db = db_priv_start();
    if(strcmp("$id","all")==0) {
           $sql = <<<EOF
-SELECT * FROM `programs` 
+SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <=  16
 EOF;
       } else {
       $sql = <<<EOF
@@ -545,27 +545,22 @@ EOF;
          $price=($price/3600)/1000;
          $theorical=0;
          foreach($res as $val) {
+               $id=$val['plug_id']-1;
+               $shh=substr($val['time_start'],0,2);
+               $smm=substr($val['time_start'],2,2);
+               $sss=substr($val['time_start'],4,2);
+               $ehh=substr($val['time_stop'],0,2);
+               $emm=substr($val['time_stop'],2,2);
+               $ess=substr($val['time_stop'],4,2);
+               $value=round($val['value']/100);
+               $time_end=mktime($ehh,$emm,$ess,0,0,1971);
+               $time_start=mktime($shh,$smm,$sss,0,0,1971);
+               $time_final=$time_end-$time_start;
 
-            $id=$val['plug_id']-1;
-            $shh=substr($val['time_start'],0,2);
-            $smm=substr($val['time_start'],2,2);
-            $sss=substr($val['time_start'],4,2);
-            $ehh=substr($val['time_stop'],0,2);
-            $emm=substr($val['time_stop'],2,2);
-            $ess=substr($val['time_stop'],4,2);
-            $value=round($val['value']/100);
-            $time_end=mktime($ehh,$emm,$ess,0,0,1971);
-            $time_start=mktime($shh,$smm,$sss,0,0,1971);
-            $time_final=$time_end-$time_start;
-
-            $theorical=$theorical+($time_final*$price*$value*$res_power[$id]['PLUG_POWER']);
-
+               $theorical=$theorical+($time_final*$price*$value*$res_power[$id]['PLUG_POWER']);
          }
       return $theorical;
    }
-
-   print_r($res);
-   print_r($res_power);
    return 0;
 }
 // }}}
