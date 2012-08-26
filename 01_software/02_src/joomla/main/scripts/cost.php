@@ -24,6 +24,7 @@ $select_plug=getvar('select_plug');
 $compute=0;
 $pop_up_error_message="";
 $pop_up="";
+$color_cost = get_configuration("COLOR_COST_GRAPH",$error);
 
 if(!isset($pop_up)) {
         $pop_up = get_configuration("SHOW_POPUP",$error);

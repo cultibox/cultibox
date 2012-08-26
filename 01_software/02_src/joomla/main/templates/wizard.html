@@ -6,6 +6,14 @@
 </div>
 <?php } ?>
 
+<?php if((isset($main_error))&&(!empty($main_error))) { ?>
+<div id="error">
+<ul>
+        <?php echo $main_error; ?>
+</ul>
+</div>
+<?php } ?>
+
 <?php if((isset($error))&&(!empty($error))) { ?>
 <div id="error">
 <ul>
@@ -68,7 +76,7 @@ timeFormat: 'hh:mm:ss',
 <table width="100%">
 <tr>
 <?php if($step>1) { ?><td width="10%"><p class="step"><?php echo __('WIZARD_STEP');
-   echo "&nbsp;".$step."/3:";?></p></td><?php } ?>
+   echo "&nbsp;".$step."/4:";?></p></td><?php } ?>
 </tr>
 <tr>
 <td></td>
@@ -102,7 +110,10 @@ timeFormat: 'hh:mm:ss',
 <br />
 <?php if($step==3) { 
         if($selected_plug!=1) { ?>
-        <table width="100%"><tr><td width="25%"><?php echo __('TYPE_PLUG')." $selected_plug:"; ?></td>
+        <table width="100%">
+         <tr>
+            <td width="30%"></td>
+            <td width="20%"><?php echo __('TYPE_PLUG')." $selected_plug:"; ?></td>
         <td>
            <select name="plug_type">
                <option <?php if(strcmp($plug_type,"unknown")==0) { echo 'selected';} ?> value="unknown"><?php echo __('PLUG_UNKNOWN'); ?></option>
@@ -120,13 +131,13 @@ timeFormat: 'hh:mm:ss',
 <?php if($step==4) {?>
 <table width="100%">
    <tr>
-      <td width="10%"></td>
-      <td width="30%">
-         <table width="100%">
+      <td width="20%"></td>
+      <td width="40%">
+         <table width="50%">
          <tr>
          <td>
             	<input type="hidden" name="program" value="program">
-             <?php echo __('START_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __('END_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
+             <?php echo __('START_TIME_PROGRAM'); ?>:</td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __('END_TIME_PROGRAM'); ?>:</td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
          <?php if(strcmp($plug_type,"lamp")!=0) { ?>
 	<tr><td><?php  if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo __('TEMP_WISHED'); }
                          elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { echo __('HUMI_WISHED'); } 
@@ -138,7 +149,6 @@ timeFormat: 'hh:mm:ss',
         <?php } } ?>
       </table>
       </td>
-      <td width="80%"><div id="plug" style="width: 80%; height: 300px; margin: 0 auto"></div></td>
       
 </tr>
 <tr>
@@ -166,10 +176,11 @@ timeFormat: 'hh:mm:ss',
 <table width="100%">
 <tr>
 <td width="10%"></td>
-<td width="30%"><input type=submit name="close" value="<?php echo __('CLOSE_WIZARD'); ?>"</td>
+<td width="30%"><input type=submit name="close" value="<?php echo __('CLOSE_WIZARD'); ?>"></td>
 <td width="10%"><?php if($step>2) { ?><input type=submit name="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>"><?php } ?></td>
 <td width="10%"><?php if($step<4) { ?><input type=submit name="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>"> <?php } ?></td>
-<td width="30%"><?php if($step==4) { ?><input type=submit name="finish" value="<?php echo __('WIZARD_FINISH_STEP'); ?>"> <?php } ?></td>
+<td width="30%"><?php if($step==4) { ?><input type=submit name="finish" value="<?php echo __('WIZARD_FINISH_STEP'); ?>"><?php } ?></td>
+<?php if(($step==4)&&($selected_plug<$nb_plugs)) { ?><tr><td></td><td></td><td></td><td></td><td><input type=submit name="next_plug" value="<?php echo __('WIZARD_OTHER_STEP'); ?>"></td></tr><?php } ?>
 </tr>
 </table>
 </form>

@@ -1128,19 +1128,19 @@ EOF;
 function export_program($id,&$out) {
        $db = db_priv_start();
        $sql = <<<EOF
-SELECT * FROM `programs` WHERE id = `{$id}`
+SELECT * FROM `programs` WHERE plug_id = {$id}
 EOF;
        $db->setQuery($sql);
        $res = $db->loadAssocList();
        $ret=$db->getErrorMsg();
 
-       $file="tmp/program${id}.txt";
+       $file="tmp/program_plug${id}.prg";
 
        if($f=fopen("$file","w+")) {
-            fputs($f,"#Program : plug_id,time_start,time_stop,value\r\n");
+            fputs($f,"#Program : time_start time_stop value\r\n");
       if(count($res)>0) {
          foreach($res as $record) {
-                  fputs($f,$record['plug_id'].",".$record['time_start'].",".$record['time_stop'].",".$record['value']."\r\n");
+                  fputs($f,$record['time_start'].",".$record['time_stop'].",".$record['value']."\r\n");
          }
       }
       }
@@ -1694,4 +1694,33 @@ EOF;
 }
 // }}}
 
+
+// {{{ generate_program_from_file()
+//ROLE generate array containing data for a prgram from a file
+// IN  $file   file to be read
+//     $plug   plug id for the program
+//     $out    error or warning message
+// RET array containing program's data
+function generate_program_from_file($file="",$plug,&$out="") {
+         $res=array();
+         $handle=fopen("$file", 'r');
+            if($handle) {
+               while (!feof($handle)) {
+                  $buffer = fgets($handle);
+                  $temp = explode(",", $buffer);
+                  if(count($temp)==3) {
+                     if(is_numeric($plug)) {
+                        $res[]=array(
+                           "selected_plug" => $plug,
+                           "start_time" => $temp[0],
+                           "end_time" => $temp[1],
+                           "value_program" => $temp[2]
+                        );
+                     }
+                  }
+               }
+            }
+         return $res;
+}
+// }}}
 ?>

@@ -153,6 +153,7 @@ chart = new Highcharts.Chart({
                   echo " ".__('PRICE_SELECT_PLUG_GRAPH').": ". $plugs_infos[$select_plug-1]['PLUG_NAME']."',";
             } ?>
             <?php } ?>
+         color: <?php echo "'".$color_cost."'"; ?>,
          data: [<?php echo $compute; ?>, <?php echo $theorical_power; ?>]
       }]
    });

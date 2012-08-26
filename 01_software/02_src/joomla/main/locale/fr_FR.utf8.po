@@ -26,7 +26,7 @@ msgid "WELCOME_TUTO"
 msgstr "<b>Note:</b> pour ceux qui possède l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument: <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la CultiBox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
-msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre CultiBox."
+msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre CultiBox"
 
 msgid "WELCOME_WIZARD"
 msgstr "Assistant de configuration"
@@ -49,6 +49,9 @@ msgstr "Couleur des courbes d'hygrométrie"
 
 msgid "CONFIGURE_TEMPERATURE"
 msgstr "Couleur des courbes des températures"
+
+msgid "CONFIGURE_COST_COLOR"
+msgstr "Couleur du graphe de coût"
 
 msgid "CONFIGURE_LANGUAGE"
 msgstr "Choisir votre langue"
@@ -94,6 +97,18 @@ msgstr "Vert"
 
 msgid "COLOR_BLACK"
 msgstr "Noir"
+
+msgid "COLOR_PURPLE"
+msgstr "Violet"
+
+msgid "COLOR_PINK"
+msgstr "Rose"
+
+msgid "COLOR_TURQUOISE"
+msgstr "Turquoise"
+
+msgid "COLOR_CYAN"
+msgstr "Cyan"
 
 msgid "CONFIGURE_TEMP_AXIS"
 msgstr "Valeur maximale de l'axe des température pour les graphes"
@@ -146,16 +161,16 @@ msgid "HISTO_GRAPH"
 msgstr "Graphiques climatique"
 
 msgid "SELECT_DISPLAYED_DAY"
-msgstr "Afficher les informations pour un seul jour:"
+msgstr "Afficher les informations pour un seul jour"
 
 msgid "SELECT_DAY"
-msgstr "Jour à afficher (AAAA-MM-JJ):"
+msgstr "Jour à afficher (AAAA-MM-JJ)"
 
 msgid "SELECT_MONTH"
-msgstr "Selectionner le mois à afficher: "
+msgstr "Selectionner le mois à afficher "
 
 msgid "SELECT_DISPLAYED_MONTH"
-msgstr "Afficher les informations pour un mois entier:"
+msgstr "Afficher les informations pour un mois entier"
 
 msgid "VIEW"
 msgstr "Afficher"
@@ -224,10 +239,10 @@ msgid "MONTH12"
 msgstr "Décembre"
 
 msgid "SELECT_PROGRAM_PLUG"
-msgstr "Programme à comparer:"
+msgstr "Programme à comparer"
 
 msgid "SELECT_POWER_PLUG"
-msgstr "Afficher la puissance consommée:"
+msgstr "Afficher la puissance consommée"
 
 msgid "SELECT_ALL_PLUGS"
 msgstr "Toutes les prises"
@@ -426,6 +441,9 @@ msgstr "< Précédent"
 msgid "WIZARD_FINISH_STEP"
 msgstr "Enregistrer et fermer l'assistant"
 
+msgid "WIZARD_OTHER_STEP"
+msgstr "Enregistrer et configurer une autre prise"
+
 msgid "WIZARD_NEXT_PLUG"
 msgstr "Suivant >"
 
@@ -476,13 +494,13 @@ msgid "TODAY"
 msgstr "Aujourd'hui"
 
 msgid "CALENDAR_SUBJECT"
-msgstr "* Sujet:"
+msgstr "* Sujet"
 
 msgid "CALENDAR_COLOR"
-msgstr "* Choisir une couleur:"
+msgstr "* Choisir une couleur"
 
 msgid "CALENDAR_REMARK"
-msgstr "* Remarque :"
+msgstr "* Remarque"
 
 msgid "CALENDAR_SAVE"
 msgstr "Sauvegarder"
@@ -513,13 +531,13 @@ msgstr "Autre"
 
 # For the cost part:
 msgid "SELECT_START_DAY"
-msgstr "Jour de début:"
+msgstr "Jour de début"
 
 msgid "SELECT_END_DAY"
-msgstr "Jour de fin:"
+msgstr "Jour de fin"
 
 msgid "COST_PRICE_COMPUTE"
-msgstr "Calcul du coût de votre installation:"
+msgstr "Calcul du coût de votre installation"
 
 msgid "COST_PRICE_COMPUTE_GRAPH"
 msgstr "Calcul de revient de votre installation"
@@ -528,13 +546,13 @@ msgid "INSTALLATION_PRICE"
 msgstr "Prix de l\'installation"
 
 msgid "SELECT_PRICE_PLUG"
-msgstr "Sélectionner une prise:"
+msgstr "Sélectionner une prise"
 
 msgid "PRICE_FOR_DATE"
-msgstr "Prix de l\'installation entre le :"
+msgstr "Prix de l\'installation entre le"
 
 msgid "PRICE_FOR_DAY"
-msgstr "Prix pour le:"
+msgstr "Prix pour le"
 
 msgid "PRICE_AND"
 msgstr "et le"
@@ -639,6 +657,12 @@ msgstr "<li>Erreur dans la configuration du prix du coût du kilowatt-heure. La 
 msgid "ERROR_DATE_INTERVAL"
 msgstr "<li>Erreur dans les dates choisis: la date de début doit être inférieure ou égale à la date de fin</li>"
 
+msgid "ERROR_UPLOADED_FILE"
+msgstr "<li>Erreur lors du chargement de fichier des programmes</li>"
+
+msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
+msgstr "<li>Erreur lors du chargement des données du fichier des programmes, vérifiez que le fichier est au bon format</li>"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> Une carte SD compatible cultibox est branchée"
@@ -728,5 +752,8 @@ msgstr "L'identificateur d'un prise permet à la CultiBox d'identifier de façon
 
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le prix de  revient de votre installation dans le menu 'Coût'"
+
+msgid "TOOLTIP_FAKE_LOG_DATA"
+msgstr "Aucune données ne sont présentes dans la base pour le moment, les logs affichés le sont à titre d'exemple et ne correspondent pas à l'enregistrement des données de votre installation"
 
 

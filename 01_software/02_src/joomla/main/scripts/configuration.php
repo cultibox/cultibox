@@ -17,6 +17,7 @@ $color_humidity = getvar('color_humidity');
 $color_temperature = getvar('color_temperature');
 $color_program=getvar('color_program');
 $color_power=getvar('color_power');
+$color_cost=getvar('color_cost');
 $record_frequency=getvar('record_frequency');
 $power_frequency=getvar('power_frequency');
 $update_frequency=getvar('update_frequency');
@@ -106,6 +107,13 @@ if((isset($color_power))&&(!empty($color_power))) {
    $update_conf=true;
 } else {
    $color_power = get_configuration("COLOR_POWER_GRAPH",$error);
+}
+
+if((isset($color_cost))&&(!empty($color_cost))) {
+   insert_configuration("COLOR_COST_GRAPH",$color_cost,$error);
+   $update_conf=true;
+} else {
+   $color_cost = get_configuration("COLOR_COST_GRAPH",$error);
 }
 
 if((isset($temp_axis))&&(!empty($temp_axis))) {

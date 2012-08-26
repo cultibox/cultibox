@@ -136,6 +136,34 @@ function verifDigit(e) {
                   echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
                }
                break;
+            case 'purple':
+               if("${value}" == "${color_humidity}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_humidity}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+            case 'cyan':
+               if("${value}" == "${color_humidity}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_CYAN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_CYAN')."</option>";    
+               }
+               break;
+            case 'turquoise':
+               if("${value}" == "${color_humidity}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_TURQUOISE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_TURQUOISE')."</option>";    
+               }
+               break;
          }
       } ?></select></td>
    </tr>
@@ -172,6 +200,34 @@ function verifDigit(e) {
                   echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
                }
             break;
+            case 'purple':
+               if("${value}" == "${color_temperature}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_temperature}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+            case 'cyan':
+               if("${value}" == "${color_temperature}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_CYAN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_CYAN')."</option>";    
+               }
+               break;
+            case 'turquoise':
+               if("${value}" == "${color_temperature}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_TURQUOISE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_TURQUOISE')."</option>";    
+               }
+               break;
          }
       }
       ?></select></td>
@@ -209,6 +265,34 @@ function verifDigit(e) {
                   echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
                }
             break;
+            case 'purple':
+               if("${value}" == "${color_program}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_program}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+            case 'cyan':
+               if("${value}" == "${color_program}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_CYAN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_CYAN')."</option>";    
+               }
+               break;
+            case 'turquoise':
+               if("${value}" == "${color_program}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_TURQUOISE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_TURQUOISE')."</option>";    
+               }
+               break;
          }
       }
       ?></select></td>
@@ -247,6 +331,100 @@ function verifDigit(e) {
                   echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
                }
             break;
+            case 'purple':
+               if("${value}" == "${color_power}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_power}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+            case 'cyan':
+               if("${value}" == "${color_power}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_CYAN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_CYAN')."</option>";    
+               }
+               break;
+            case 'turquoise':
+               if("${value}" == "${color_power}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_TURQUOISE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_TURQUOISE')."</option>";    
+               }
+               break;
+         }
+      }
+      ?></select></td>
+   </tr>
+     <tr>
+      <td><?php echo __('CONFIGURE_COST_COLOR'); ?></td>
+      <td><select name="color_cost">
+      <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+         switch ($value) {
+            case 'red':
+               if("${value}" == "${color_cost}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_RED')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_RED')."</option>";    
+               }
+            break;
+            case 'blue':
+               if("${value}" == "${color_cost}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLUE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLUE')."</option>";    
+               }
+               break;
+
+            case 'green':
+               if("${value}" == "${color_cost}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_GREEN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_GREEN')."</option>";    
+               }
+            break;
+            case 'black':
+               if("${value}" == "${color_cost}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLACK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
+               }
+            break;
+            case 'purple':
+               if("${value}" == "${color_cost}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_cost}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+            case 'cyan':
+               if("${value}" == "${color_cost}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_CYAN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_CYAN')."</option>";    
+               }
+               break;
+            case 'turquoise':
+               if("${value}" == "${color_cost}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_TURQUOISE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_TURQUOISE')."</option>";    
+               }
+               break;
          }
       }
       ?></select></td>
