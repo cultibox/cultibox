@@ -72,8 +72,10 @@ if(!check_date("$startday,","$endday")) {
 
 $data_power=get_data_power($startday,$endday,$select_plug,$error);
 $theorical_power=get_theorical_power($select_plug,$price,$error);
+$nb=get_nb_days($startday,$endday)+1;
+$theorical_power=$theorical_power*$nb;
 
-//echo $theorical_power;
+
 
 if((empty($data_power))||(!isset($data_power))||(empty($price))||(!isset($price))) {
       $compute=0;

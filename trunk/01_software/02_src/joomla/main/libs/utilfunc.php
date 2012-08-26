@@ -1185,4 +1185,30 @@ function clean_popup_message(&$message="") {
 // }}}
 
 
+// {{{ get_nb_days()
+// ROLE get number of days beetwen two dates
+// IN   $start_date  first date
+//      $end_date    second date
+// RET   return number of days beetwen dates or -1
+function get_nb_days($start_date="",$end_date="") {
+         if((!isset($start_date))||(empty($start_date))||(!isset($end_date))||(empty($end_date))) { return -1; }
+
+          $year_start=substr($start_date,0,4); 
+          $month_start=substr($start_date,5,2);
+          $day_start=substr($start_date,8,2);
+          $year_end=substr($end_date,0,4);
+          $month_end=substr($end_date,5,2);
+          $day_end=substr($end_date,8,2);
+
+          $first=mktime(0,0,0,$month_start,$day_start,$year_start);
+          $second=mktime(0,0,0,$month_end,$day_end,$year_end);
+
+          if($first>$second) { return -1; }
+
+          return round(($second-$first)/86400);
+}
+// }}}
+
+
+
 ?>
