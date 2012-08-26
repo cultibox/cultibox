@@ -27,6 +27,7 @@ $program="";
 $pop_up="";
 $pop_up_message="";
 $pop_up_error_message="";
+$main_error="";
 
 if((!isset($pop_up))||(empty($pop_up))) {
         $pop_up = get_configuration("SHOW_POPUP",$error);
@@ -48,11 +49,14 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    }
    check_and_copy_firm($sd_card,$error);
 } else {
-        $error=$error.__('ERROR_SD_CARD_CONF');
+   $tmp="";
+   $tmp=__('ERROR_SD_CARD_CONF');
+   $tmp_title=__('TOOLTIP_WITHOUT_SD');
+   $tmp=str_replace("</li>"," <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\"$tmp_title\" /></li>",$tmp);
+   $main_error=$main_error.$tmp;
 }
 
 if((isset($close))&&(!empty($close))) {
-	insert_configuration("FIRST_USE","False",$error);
         header('Location: plugs');
 }
 
@@ -176,25 +180,29 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
 			if(isset($plug_tolerance)) {
                                    insert_plug_conf("PLUG_TOLERANCE",$selected_plug,$plug_tolerance,$error);
 			}
-                        foreach($prog as $val) {	
-                                if(insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$error)) {
+         foreach($prog as $val) {	
+            if(insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$error)) {
 				       insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$error);
-                                       if($chinfo) {
-                                          $chinfo=true;
-                                       }
+                   if((!empty($sd_card))&&(isset($sd_card))) {
+                        $program=create_program_from_database($error);
+                        $info=$info.__('VALID_UPDATE_PROGRAM');
+                        save_program_on_sd($sd_card,$program,$error,$info);
+                  } 
+                   if($chinfo) {
+                             $chinfo=true;
+                   }
 				       insert_plug_conf("PLUG_TYPE",$val["selected_plug"],$val["plug_type"],$error);
-                                } else {
+            } else {
 					$chinfo=false;
 					unset($finish);
                                 }
                        }
 
 		      if($chinfo) {
-                           if(($selected_plug==$nb_plugs)||((isset($finish))&&(!empty($finish)))) {
-				insert_configuration("FIRST_USE","False",$error);
-                                header('Location: programs');	
-                           }
-			}
+                if(($selected_plug==$nb_plugs)||((isset($finish))&&(!empty($finish)))) {
+                        header('Location: programs');	
+                }
+			   }
                 } else {
 			if((isset($error))&&(!empty($error))) {
 			   $pop_up_error_message=clean_popup_message($error);
@@ -202,8 +210,8 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
                }
         }
         if((isset($next_plug))&&(!empty($next_plug))&&(empty($error))) {
-			$selected_plug=$selected_plug+1;
-			$step=2;
+			      $selected_plug=$selected_plug+1;
+			      $step=2;
         }
         
 }

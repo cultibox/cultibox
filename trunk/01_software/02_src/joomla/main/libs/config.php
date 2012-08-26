@@ -13,7 +13,7 @@ $GLOBALS['SOFT_PORT'] = '6891';
 $GLOBALS['LIST_LANG'] = array('en_GB','fr_FR');
 
 // List of available colors for graphics:
-$GLOBALS['LIST_GRAPHIC_COLOR'] = array('blue','red', 'green', 'black');
+$GLOBALS['LIST_GRAPHIC_COLOR'] = array('blue','red', 'green', 'black','purple','pink','turquoise','cyan');
 
 // List of the recording frequency available: (in minute)
 $GLOBALS['LIST_RECORD_FREQUENCY'] = array('1','5','30');

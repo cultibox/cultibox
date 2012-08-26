@@ -194,6 +194,7 @@ $(document).ready(function() {
 });
 
 </script>
+
 <br />
 
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
@@ -267,33 +268,44 @@ $(document).ready(function() {
          </div>
       </td>
    </tr>
-   <tr>
-      <td></td>
+</table>
+</form>
+
+<table width="100%">
+  <tr>
+      <td width="45%"></td>
       <td>
          <table width="100%">
             <tr>
-               <td width="10%"></td>
-               <td width="15%">
-                  <!--
-                     <a href="tmp/program<?php echo $î; ?>.txt" name="export" target="_blank"><?php echo __('EXPORT_PROGRAM'); ?></a></td>
-                  -->
-               <td width="30%">
-                  <!--
-                  <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
-                     <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>">
-                     <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
+               <td width="40%">
+                  <br />
+                     <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
+                  <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
+                  <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset">
                   </form>
-                  -->
                </td>
-               <td>
-                  <a href="<?php echo($_SERVER['PHP_SELF']); ?><?php echo '?action_prog='.$i.'&reset=reset'; ?>#conf<?php echo $i; ?>" name="reset"><?php echo __('RESET_PROGRAM'); ?></a>
+               <td width="20%">
+                  <br />
+                   <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
+                        <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="reset">
+                        <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
+                        <input type="hidden" name="exportid" value="<?php echo $i; ?>">
+                     </form>
+               </td>
+               <td align="center">
+                  <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post" enctype="multipart/form-data">
+                     <input type="file" name="upload_file" size="5">
+                     <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
+                     <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                  <br />
+                     <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>">
+                  </form>
                </td>
             </tr>
          </table>
       </td>
    </tr>
 </table>
-</form>
 
 <?php if((isset($info_plug[$i]))&&(!empty($info_plug[$i]))) { ?>
 <div id="info">

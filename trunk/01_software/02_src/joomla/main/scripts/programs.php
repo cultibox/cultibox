@@ -21,6 +21,7 @@ $nb_plugs=get_configuration("NB_PLUGS",$error);
 $selected_plug=getvar('selected_plug');
 $plugs_infos=get_plugs_infos($nb_plugs,$error);
 $exportid=getvar('exportid');
+$import=getvar('import');
 $info_plug=array();
 $export=getvar('export');
 $import=getvar('import');
@@ -31,6 +32,7 @@ $chtime="";
 $pop_up_message="";
 $pop_up_error_message="";
 $regul_program="";
+
 
 
 if(!isset($pop_up)) {
@@ -46,14 +48,52 @@ for($i=0;$i<=$nb_plugs;$i++) {
 	
 
 if((isset($action_prog))&&(!empty($action_prog))) {
-	if((isset($import))&&(!empty($import))) {
-
-
-	} else if((isset($reset))&&(!empty($reset))) {
+	if((isset($exportid))&&(!empty($exportid))) {
+         export_program($exportid,$error);
+         $file="tmp/program_plug${exportid}.prg";
+         if (($file != "") && (file_exists("./$file"))) {
+            $size = filesize("./$file");
+            header("Content-Type: application/force-download; name=\"$file\"");
+            header("Content-Transfer-Encoding: binary");
+            header("Content-Length: $size");
+            header("Content-Disposition: attachment; filename=\"".basename($file)."\"");
+            header("Expires: 0");
+            header("Cache-Control: no-cache, must-revalidate");
+            header("Pragma: no-cache");
+            readfile("./$file");
+            exit();
+         }
+	} elseif((isset($reset))&&(!empty($reset))) {
 		if(clean_program($action_prog,$error)) {
 			$info_plug[$action_prog]=$info_plug[$action_prog].__('INFO_RESET_PROGRAM');
-                }
-	} 
+      }
+	} elseif((isset($import))&&(!empty($import))) {
+      $target_path = "tmp/".basename( $_FILES['upload_file']['name']); 
+      if(!move_uploaded_file($_FILES['upload_file']['tmp_name'], $target_path)) {
+         $error=$error.__('ERROR_UPLOADED_FILE');
+      } else {
+         $data_prog=array();
+         $data_prog=generate_program_from_file("$target_path",$action_prog,$error);
+         if(count($data_prog)==0) { $ret_plug[$action_prog]=$ret_plug[$action_prog].__('ERROR_GENERATE_PROGRAM_FROM_FILE'); } else {
+            clean_program($action_prog,$error);
+            export_program($action_prog,$error); 
+            foreach($data_prog as $val) {
+               insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$ret_plug[$action_prog]);
+            }
+            if(!empty($ret_plug[$action_prog])) {
+                  $ret_plug[$action_prog]=$ret_plug[$action_prog].__('ERROR_GENERATE_PROGRAM_FROM_FILE');
+                  $data_prog=generate_program_from_file("tmp/program_plug${action_prog}.prg",$action_prog,$error);
+                  if(count($data_prog)>0) {
+                     foreach($data_prog as $val) {
+                        insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$ret_plug[$action_prog]);
+                     }
+                  }
+            } else {
+                 $info_plug[$action_prog]=$info_plug[$action_prog].__('VALID_UPDATE_PROGRAM');
+            }
+         }
+      }
+   }  
 } 
 
 

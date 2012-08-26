@@ -50,6 +50,9 @@ msgstr "Select the humidity graphic color"
 msgid "CONFIGURE_TEMPERATURE"
 msgstr "Select the temperature graphic color"
 
+msgid "CONFIGURE_COLOR_COST"
+msgstr "Select the cost graphic color"
+
 msgid "CONFIGURE_LANGUAGE"
 msgstr "Select your language"
 
@@ -94,6 +97,18 @@ msgstr "Green"
 
 msgid "COLOR_BLACK"
 msgstr "Black"
+
+msgid "COLOR_PINK"
+msgstr "Pink"
+
+msgid "COLOR_TURQUOISE"
+msgstr "Turquoise"
+
+msgid "COLOR_PURPLE"
+msgstr "Purple"
+
+msgid "COLOR_CYAN"
+msgstr "Cyan"
 
 msgid "CONFIGURE_TEMP_AXIS"
 msgstr "Configure maximal axis value for temperature graphics"
@@ -426,6 +441,9 @@ msgstr "< Previous Step"
 msgid "WIZARD_FINISH_STEP"
 msgstr "Finish and close"
 
+msgid "WIZARD_OTHER_STEP"
+msgstr "Save and configure an other plug"
+
 msgid "WIZARD_NEXT_PLUG"
 msgstr "Finish and configure the next plug"
 
@@ -636,6 +654,12 @@ msgstr "<li>Error in the power value: it must be more or equal to 0 Watt</li>"
 msgid "ERROR_DATE_INTERVAL"
 msgstr "<li>Error in the date: the begining date must be less or equal to the ended date</li>"
 
+msgid "ERROR_UPLOADED_FILE"
+msgstr "<li>Error during uploading programs file</li>"
+
+msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
+msgstr "<li>Error during programs file proceeding. YOu have to check that the file uses the right format</li>"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> A valid SD card was found"
@@ -726,4 +750,5 @@ msgstr "L'identificateur d'un prise permet à la CultiBox d'identifier de façon
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Cost of the kilo Watt for a hour. Fill this is necessary to compute how much cost your installation in the 'Cost' part"
 
-
+msgid "TOOLTIP_FAKE_LOG_DATA"
+msgstr "You don't have reccord any data in the database, this graph is just an example of what you can watch with your data."
