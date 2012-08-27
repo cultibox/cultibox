@@ -15,6 +15,8 @@ set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
+
+
 /*
 echo <<<EOF
 <!-- DEBUT DU SCRIPT -->
