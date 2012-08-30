@@ -1,0 +1,10 @@
+Name=Cultibox
+Version=1.0
+Exec=/usr/bin/firefox http://localhost:6891/cultibox/
+Comment=
+Icon=/opt/lampp/takecontrol.png
+Type=Application
+Terminal=false
+StartupNotify=true
+Encoding=UTF-8
+Categories=Application;
