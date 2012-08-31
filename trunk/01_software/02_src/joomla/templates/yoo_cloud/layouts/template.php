@@ -181,6 +181,18 @@ include($this['path']->path('layouts:template.config.php'));
 				
 				<?php if ($this['modules']->count('footer + debug') || $this['config']->get('warp_branding')) : ?>
 				<footer id="footer" class="grid-block">
+                  <table width="100%">
+                  <tr>
+                     <td width="70%"></td>
+                     <td>
+                  <?php 
+                        $error="";
+                        echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".__('VERSION').": ".get_configuration("VERSION",$error); 
+                        echo "&nbsp;-&nbsp;".__('LICENSE').": LGPL<br />";
+                  ?>    
+                  </td>
+                  </tr>
+                  </table>
 	               <br /><br />	
 					<?php
 						echo $this['modules']->render('footer');

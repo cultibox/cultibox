@@ -86,6 +86,8 @@ $pop_up="";
 $pop_up_error_message="";
 $last_year=date('Y');
 $datap="";
+$update=get_configuration("CHECK_UPDATE",$error);
+$version=get_configuration("VERSION",$error);
 
 
 if(!isset($pop_up)) {
@@ -328,6 +330,21 @@ $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$error);
 $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$error);
 $color_power=get_configuration("COLOR_POWER_GRAPH",$error);
 $color_program=get_configuration("COLOR_PROGRAM_GRAPH",$error);
+
+if(strcmp("$update","True")==0) {
+      $ret=array();
+      check_update_available($ret,$error);
+      foreach($ret as $file) {
+         if(count($file)==4) {
+               if(strcmp("$version","$file[1]")==0) {
+                  $tmp="";
+                  $tmp=__('INFO_UPDATE_AVAILABLE');
+                  $tmp=str_replace("</li>","<a href=".$file[3]." target='_blank'>".$file[2]."</a></li>",$tmp);
+                  $info=$info.$tmp;
+               }
+            }
+      }
+}
 
 include('main/templates/logs.html');
 
