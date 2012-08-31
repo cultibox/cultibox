@@ -1,0 +1,8 @@
+1) Copier le contenu de XAMPP pour mac dans le repertoire courant
+2) Lancer le script pre-compil.sh
+
+./pre-compil.sh snow-leopard
+
+3) Récupérer l'archive créée dans ./snow-leopard et la décompresser sur un mac dans /Applications/
+4) Lancer le PackageMaker et utilisant les scripts de post et pre install se trouvant dans ./packagemaker ainsi que l'icone takecontrol.png
+5) Générer le fichier pkg et le récupérer
