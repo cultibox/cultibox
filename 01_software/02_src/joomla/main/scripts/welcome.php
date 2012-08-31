@@ -16,6 +16,8 @@ $program="";
 $sd_card="";
 
 $lang=get_configuration("LANG",$error);
+$update=get_configuration("CHECK_UPDATE",$error);
+$version=get_configuration("VERSION",$error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
@@ -30,6 +32,22 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    save_program_on_sd($sd_card,$program,$error,$info);
    check_and_copy_firm($sd_card,$error);
 } 
+
+
+if(strcmp("$update","True")==0) {
+      $ret=array();
+      check_update_available($ret,$error);
+      foreach($ret as $file) {
+         if(count($file)==4) {
+               if(strcmp("$version","$file[1]")==0) {
+                  $tmp="";
+                  $tmp=__('INFO_UPDATE_AVAILABLE');
+                  $tmp=str_replace("</li>","<a href=".$file[3]." target='_blank'>".$file[2]."</a></li>",$tmp);
+                  $info=$info.$tmp;
+               }
+            }
+      }
+}
 
 include('main/templates/welcome.html');
 

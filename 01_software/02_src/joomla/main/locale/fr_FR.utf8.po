@@ -51,7 +51,7 @@ msgid "CONFIGURE_TEMPERATURE"
 msgstr "Couleur des courbes des températures"
 
 msgid "CONFIGURE_COST_COLOR"
-msgstr "Couleur du graphe de coût"
+msgstr "Couleur du graphe de coût de l'installation"
 
 msgid "CONFIGURE_LANGUAGE"
 msgstr "Choisir votre langue"
@@ -154,6 +154,9 @@ msgstr "Humidité"
 
 msgid "CONFIGURE_COST_PRICE"
 msgstr "Prix du kilowatt-heure"
+
+msgid "CHECK_UPDATE"
+msgstr "Vérifier automatiquement la présence de mises à jour"
 
 # For the logs part:
 
@@ -578,6 +581,13 @@ msgstr "Prix reel"
 msgid "THEORICAL_PRICE"
 msgstr "Prix theorique"
 
+# For the footer:
+msgid "VERSION"
+msgstr "Version"
+
+msgid "LICENSE"
+msgstr "Licence"
+
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "<li> Problé pendant la fermeture de la connection</li>"
@@ -663,6 +673,9 @@ msgstr "<li>Erreur lors du chargement de fichier des programmes</li>"
 msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
 msgstr "<li>Erreur lors du chargement des données du fichier des programmes, vérifiez que le fichier est au bon format</li>"
 
+msgid "ERROR_REMOTE_UPDATE_FILE"
+msgstr "<li>Impossible d'accèder au fichier des mises à jours, vérifier votre configuration</li>"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> Une carte SD compatible cultibox est branchée"
@@ -702,6 +715,9 @@ msgstr "Merci de patienter quelques instants durant le chargement des logs..."
 
 msgid "UPDATED_PROGRAM"
 msgstr "<li>Vos programmes n'était pas à jour sur votre carte, la mise à jour à été exécuté</li>"
+
+msgid "INFO_UPDATE_AVAILABLE"
+msgstr "<li>Une mise à jour est disponible pour passer à la version: </li>"
 
 # For the tooltip part:
 
@@ -755,5 +771,8 @@ msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le pr
 
 msgid "TOOLTIP_FAKE_LOG_DATA"
 msgstr "Aucune données ne sont présentes dans la base pour le moment, les logs affichés le sont à titre d'exemple et ne correspondent pas à l'enregistrement des données de votre installation"
+
+msgid "TOOLTIP_CHECK_UPDATE"
+msgstr "Vérifie si des mises à jour sont disponibles et vous propose de les télécharger le cas échéant"
 
 

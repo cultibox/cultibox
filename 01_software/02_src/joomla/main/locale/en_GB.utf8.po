@@ -50,7 +50,7 @@ msgstr "Select the humidity graphic color"
 msgid "CONFIGURE_TEMPERATURE"
 msgstr "Select the temperature graphic color"
 
-msgid "CONFIGURE_COLOR_COST"
+msgid "CONFIGURE_COST_COLOR"
 msgstr "Select the cost graphic color"
 
 msgid "CONFIGURE_LANGUAGE"
@@ -153,7 +153,10 @@ msgid "ALARM_HUMI"
 msgstr "Humidity"
 
 msgid "CONFIGURE_COST_PRICE"
-msgstr "Cost of the KW/H"
+msgstr "Cost of the KW.H"
+
+msgid "CHECK_UPDATE"
+msgstr "Check automatically if updates are available"
 
 # For the logs part:
 
@@ -578,6 +581,13 @@ msgstr "Real price"
 msgid "THEORICAL_PRICE"
 msgstr "Theorical price"
 
+# For the footer:
+msgid "VERSION"
+msgstr "Version"
+
+msgid "LICENSE"
+msgstr "License"
+
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "<li> Problem during the connection close procedure</li>"
@@ -660,6 +670,9 @@ msgstr "<li>Error during uploading programs file</li>"
 msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
 msgstr "<li>Error during programs file proceeding. YOu have to check that the file uses the right format</li>"
 
+msgid "ERROR_REMOTE_UPDATE_FILE"
+msgstr "<li>Enable to access to the update files, please check your configuration</li>"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> A valid SD card was found"
@@ -699,6 +712,9 @@ msgstr "PLease just wait few seconds during logs loading..."
 
 msgid "UPDATED_PROGRAM"
 msgstr "<li>Your programs wasn't up to date, the update process has been executed</li>"
+
+msgid "INFO_UPDATE_AVAILABLE"
+msgstr "<li>New update availabe to upgrade to the software version: </li>"
 
 # For the tooltip part:
 
@@ -752,3 +768,6 @@ msgstr "Cost of the kilo Watt for a hour. Fill this is necessary to compute how 
 
 msgid "TOOLTIP_FAKE_LOG_DATA"
 msgstr "You don't have reccord any data in the database, this graph is just an example of what you can watch with your data."
+
+msgid "TOOLTIP_CHECK_UPDATE"
+msgstr "Check if there is remote updates available and and download its if it's needed"

@@ -36,7 +36,9 @@ $alarm_value=getvar('alarm_value');
 $alarm_senso=getvar('alarm_senso');
 $alarm_senss=getvar('alarm_senss');
 $cost_price=getvar('cost_price');
+$update=getvar('update');
 $program="";
+$version=get_configuration("VERSION",$error);
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$error);
@@ -79,6 +81,12 @@ if((isset($pop_up))&&(!empty($pop_up))) {
         $pop_up = get_configuration("SHOW_POPUP",$error);
 }
 
+if((isset($update))&&(!empty($update))) {
+   insert_configuration("CHECK_UPDATE",$update,$error);
+      $update_conf=true;
+} else {
+   $update = get_configuration("CHECK_UPDATE",$error);
+}
 
 if((isset($color_humidity))&&(!empty($color_humidity))) {
 	insert_configuration("COLOR_HUMIDITY_GRAPH",$color_humidity,$error);
@@ -237,6 +245,20 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 	}	
 }
 
+if(strcmp("$update","True")==0) {
+      $ret=array();
+      check_update_available($ret,$error);
+      foreach($ret as $file) {
+         if(count($file)==4) {
+               if(strcmp("$version","$file[1]")==0) {
+                  $tmp="";
+                  $tmp=__('INFO_UPDATE_AVAILABLE');
+                  $tmp=str_replace("</li>","<a href=".$file[3]." target='_blank'>".$file[2]."</a></li>",$tmp);
+                  $info=$info.$tmp;
+               }
+            }
+      }
+}
 
 include('main/templates/configuration.html');
 

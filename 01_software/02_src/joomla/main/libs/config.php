@@ -48,4 +48,7 @@ $GLOBALS['FIRST_USE'] = true;
 // Variable to define the first year to be used for the log part:
 $GLOBALS['FIRST_LOG_YEAR'] = '2012';
 
+// Remote file to check update for the interface
+$GLOBALS['UPDATE_FILE'] = 'http://cultibox.fr/update_list.txt';
+
 ?>

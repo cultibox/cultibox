@@ -469,6 +469,13 @@ function verifDigit(e) {
             <option value="False" <?php if(strcmp("$pop_up","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
          </select></td>
    </tr>
+    <tr>
+         <td><?php echo __('CHECK_UPDATE'); ?> <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_CHECK_UPDATE'); ?>" /></td>
+         <td><select name="update">
+            <option value="True" <?php if(strcmp("$update","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
+            <option value="False" <?php if(strcmp("$update","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
+         </select></td>
+   </tr>
 </table>
 <br />
 <p class="title_conf">

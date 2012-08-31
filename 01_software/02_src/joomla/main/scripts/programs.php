@@ -32,6 +32,8 @@ $chtime="";
 $pop_up_message="";
 $pop_up_error_message="";
 $regul_program="";
+$update=get_configuration("CHECK_UPDATE",$error);
+$version=get_configuration("VERSION",$error);
 
 
 
@@ -254,6 +256,21 @@ if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
         $value_program="";
 } 
 
+
+if(strcmp("$update","True")==0) {
+      $ret=array();
+      check_update_available($ret,$error);
+      foreach($ret as $file) {
+         if(count($file)==4) {
+               if(strcmp("$version","$file[1]")==0) {
+                  $tmp="";
+                  $tmp=__('INFO_UPDATE_AVAILABLE');
+                  $tmp=str_replace("</li>","<a href=".$file[3]." target='_blank'>".$file[2]."</a></li>",$tmp);
+                  $info=$info.$tmp;
+               }
+            }
+      }
+}
 
 include('main/templates/programs.html');
 
