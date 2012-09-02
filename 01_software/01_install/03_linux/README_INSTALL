@@ -1,18 +1,15 @@
-1) Récuprer xammp version 1.7.7:  http://sourceforge.net/projects/xampp/files
+1) Installer le logiciel debreate version 0.7.7: http://debreate.sourceforge.net/?page=download
 
-2) Récupérer les sources de la cultibox et décompresser xampp
+2) Installer une librairie manquante
+
+3) Récupérer les sources de la cultibox 
 mkdir -p ~/Desktop/Project/cultibox && cd ~/Desktop/Project/cultibox
 svn checkout
 cd ~/Desktop/Project/cultibox/01_software/01_install/03_linux/
-cp Downloads/xampp-linux-1.7.7.tar.gz .
 
-3) Lancer le script pre-compil.sh qui va configurer le logiciel:
+4) Récuprer xammp LITE version 1.7.7:  http://sourceforge.net/projects/xampp/files (ou la version light que l'on a créé sans perl,ftp etc...).
+
+5) Lancer le script pre-compil.sh qui va configurer le logiciel:
 ./pre-compil.sh ubuntu-precise64
 
-4) Installer le logiciel debreate version 0.7.7: http://debreate.sourceforge.net/?page=download
-
-5) Installer une librairie manquante:
-
-6) Lancer debreate et ouvrir le fichier ~/Desktop/Project/cultibox/01_software/01_install/03_linux/debreate-package/cultibox_amd64.dbp
-
-7) Lancer la création du package
+6) Lancer la création du package
