@@ -24,8 +24,8 @@ $cfg['Servers'][$i]['extension'] = 'mysql';
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 
 /* User for advanced features */
-$cfg['Servers'][$i]['controluser'] = 'pma';
-$cfg['Servers'][$i]['controlpass'] = 'cultibox';
+#$cfg['Servers'][$i]['controluser'] = 'pma';
+#$cfg['Servers'][$i]['controlpass'] = 'cultibox';
 
 /* Advanced phpMyAdmin features */
 $cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';

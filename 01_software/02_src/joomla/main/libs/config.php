@@ -49,6 +49,6 @@ $GLOBALS['FIRST_USE'] = true;
 $GLOBALS['FIRST_LOG_YEAR'] = '2012';
 
 // Remote file to check update for the interface
-$GLOBALS['UPDATE_FILE'] = 'http://cultibox.fr/update_list.txt';
+$GLOBALS['UPDATE_FILE'] = 'http://cultibox.fr/updates/update_list.txt';
 
 ?>
