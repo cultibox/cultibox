@@ -988,7 +988,7 @@ function write_calendar($sd_card,$data,&$out="") {
 // ROLE check the an interval of dates is correct
 // IN   $datestart    first date
 //      $dateend      second date
-// RET false if $datestart > $dateend, true else
+// RET false if $datestart => $dateend, true else
 function check_date($datestart="",$dateend="") {
          $year_start=substr($datestart,0,4); 
          $month_start=substr($datestart,5,2);
@@ -998,12 +998,19 @@ function check_date($datestart="",$dateend="") {
          $month_end=substr($dateend,5,2);
          $day_end=substr($dateend,8,2);
 
-         if($year_start<=$year_end) {
-            if($month_start<=$month_end) {
+
+         if($year_start<$year_end) {
+               return true;
+         }
+
+         if($year_start>$year_end) {
+               return false;
+         } 
+
+         if($month_start<=$month_end) {
                if($day_start<=$day_end) {
                   return true;
                }
-            }
          }
          return false;
 

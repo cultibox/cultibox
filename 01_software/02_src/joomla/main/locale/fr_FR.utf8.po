@@ -532,6 +532,9 @@ msgstr "Récolte"
 msgid "SUBJECT_OTHER"
 msgstr "Autre"
 
+msgid "CALENDAR_DATE"
+msgstr "* Choisir la date de l'évènement"
+
 # For the cost part:
 msgid "SELECT_START_DAY"
 msgstr "Jour de début"
@@ -579,7 +582,7 @@ msgid "REAL_PRICE"
 msgstr "Prix reel"
 
 msgid "THEORICAL_PRICE"
-msgstr "Prix theorique"
+msgstr "Prix theorique maximal (sans regulation)"
 
 # For the footer:
 msgid "VERSION"
@@ -675,6 +678,12 @@ msgstr "<li>Erreur lors du chargement des données du fichier des programmes, v�
 
 msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "<li>Impossible d'accèder au fichier des mises à jours, vérifier votre configuration</li>"
+
+msgid "ERROR_POWER_PRICE_NULL"
+msgstr "<li>La puissance de certaine de vos prises n'est pas configurée, vous pouvez la configurer: <a href='plugs'>ici</a></li>"
+
+msgid "ERROR_COST_PRICE_NULL"
+msgstr "<li>Le prix du coût du kilowatt-heure n'est pas configuré, vous pouvez le configurer: <a href='configuration'>ici</a></li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"

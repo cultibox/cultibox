@@ -485,6 +485,9 @@ EOF;
 //    $price   price of the kilowatt.hour
 // RET data power formated for highchart
 function get_theorical_power($id=0,$price=0,&$out="") {
+   if($price==0) {
+         $out=$out.__('ERROR_COST_PRICE_NULL');
+   }
    $res="";
    $db = db_priv_start();
    if(strcmp("$id","all")==0) {
@@ -496,7 +499,7 @@ EOF;
 SELECT * FROM `programs` WHERE `plug_id` = "{$id}" 
 EOF;
    }
-   
+  
    $db->setQuery($sql);
    $db->query();
    $res=$db->loadAssocList();
@@ -546,18 +549,23 @@ EOF;
          $theorical=0;
          foreach($res as $val) {
                $id=$val['plug_id']-1;
+               if($res_power[$id]['PLUG_POWER']==0) {
+                     $out=$out.__('ERROR_POWER_PRICE_NULL');
+               }
+
                $shh=substr($val['time_start'],0,2);
                $smm=substr($val['time_start'],2,2);
                $sss=substr($val['time_start'],4,2);
                $ehh=substr($val['time_stop'],0,2);
                $emm=substr($val['time_stop'],2,2);
                $ess=substr($val['time_stop'],4,2);
-               $value=round($val['value']/100);
+               //$value=round($val['value']/100);
                $time_end=mktime($ehh,$emm,$ess,0,0,1971);
                $time_start=mktime($shh,$smm,$sss,0,0,1971);
                $time_final=$time_end-$time_start;
 
-               $theorical=$theorical+($time_final*$price*$value*$res_power[$id]['PLUG_POWER']);
+               //$theorical=$theorical+($time_final*$price*$value*$res_power[$id]['PLUG_POWER']);
+               $theorical=$theorical+($time_final*$price*$res_power[$id]['PLUG_POWER']);
          }
       return $theorical;
    }
