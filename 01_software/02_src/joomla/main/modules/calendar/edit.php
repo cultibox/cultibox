@@ -171,7 +171,7 @@ __('LANG');
                 var day = arrs[i18n.datepicker.dateformat.day_index];
                 var standvalue = [year,month,day].join("-");
                 return this.optional(element) || /^(?:(?:1[6-9]|[2-9]\d)?\d{2}[\/\-\.](?:0?[1,3-9]|1[0-2])[\/\-\.](?:29|30))(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:1[6-9]|[2-9]\d)?\d{2}[\/\-\.](?:0?[1,3,5,7,8]|1[02])[\/\-\.]31)(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])[\/\-\.]0?2[\/\-\.]29)(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:16|[2468][048]|[3579][26])00[\/\-\.]0?2[\/\-\.]29)(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:1[6-9]|[2-9]\d)?\d{2}[\/\-\.](?:0?[1-9]|1[0-2])[\/\-\.](?:0?[1-9]|1\d|2[0-8]))(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?:\d{1,3})?)?$/.test(standvalue);
-            }, "Invalid date format");
+            }, "<?php echo __('CALENDAR_INVALID_DATE'); ?>");
             $.validator.addMethod("time", function(value, element) {
                 return this.optional(element) || /^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/.test(value);
             }, "Invalid time format");
@@ -298,11 +298,36 @@ __('LANG');
               <?php if(isset($event)){
                   $sarr = explode(" ", php2JsTime(mySql2PhpTime($event->StartTime)));
                   $earr = explode(" ", php2JsTime(mySql2PhpTime($event->EndTime)));
-              }?>                    
-              <input MaxLength="10" class="required date" id="stpartdate" name="stpartdate" style="padding-left:2px;width:90px;" type="text" value="<?php echo isset($event)?$sarr[0]:""; ?>" />                       
-              <input MaxLength="5" class="required time" id="stparttime" name="stparttime" style="width:40px;" type="text" value="<?php echo isset($event)?$sarr[1]:""; ?>" />To                       
-              <input MaxLength="10" class="required date" id="etpartdate" name="etpartdate" style="padding-left:2px;width:90px;" type="text" value="<?php echo isset($event)?$earr[0]:""; ?>" />                       
-              <input MaxLength="50" class="required time" id="etparttime" name="etparttime" style="width:40px;" type="text" value="<?php echo isset($event)?$earr[1]:""; ?>" />                                            
+
+                  if((isset($sarr[0]))&&(!empty($sarr[0]))) {
+                     $stpartdate=$sarr[0];
+                  }else {
+                      $tmp_start=explode(" ",$_GET["start"]);
+                      $stpartdate=$tmp_start[1];
+                  }
+
+
+                  if((isset($earr[0]))&&(!empty($earr[0]))) {
+                     $etpartdate=$earr[0];
+                  } else {
+                      $tmp_end=explode(" ",$_GET["end"]);
+                      $etpartdate=$tmp_end[1];
+                  }
+
+              } else {
+                      $tmp_start=explode(" ",$_GET["start"]);
+                      $tmp_end=explode(" ",$_GET["end"]);
+                      $stpartdate=$tmp_start[0];
+                      $etpartdate=$tmp_end[0];
+               }
+
+               $stparttime="00:00";
+               $etparttime="00:00";
+               ?>                    
+              <input MaxLength="10" class="required date" id="stpartdate" name="stpartdate" style="padding-left:2px;width:90px;" type="text" value="<?php echo "$stpartdate"; ?>" />                       
+              <input MaxLength="5" class="required time" id="stparttime" name="stparttime" style="width:40px;" type="text" value="<?php echo "$stparttime"; ?>" /><?php echo __('CALENDAR_TO'); ?>                      
+              <input MaxLength="10" class="required date" id="etpartdate" name="etpartdate" style="padding-left:2px;width:90px;" type="text" value="<?php echo "$etpartdate"; ?>" />                       
+              <input MaxLength="50" class="required time" id="etparttime" name="etparttime" style="width:40px;" type="text" value="<?php echo "$etparttime"; ?>" />                                            
               <label class="checkp"> 
                 <!-- <input id="IsAllDayEvent" name="IsAllDayEvent" type="checkbox" value="1" checked <?php if(isset($event)&&$event->IsAllDayEvent!=0) {echo "checked";} ?>/>          All Day Event                      -->
                      <input id="IsAllDayEvent" name="IsAllDayEvent" type="checkbox" value="1" checked style="display:none" />

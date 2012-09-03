@@ -535,6 +535,12 @@ msgstr "Other"
 msgid "CALENDAR_DATE"
 msgstr "* Select date for the event"
 
+msgid "CALENDAR_TO"
+msgstr "To"
+
+msgid "CALENDAR_INVALID_DATE"
+msgstr "Invalid date format (MM/DD/YYYY)"
+
 # For the cost part:
 msgid "SELECT_START_DAY"
 msgstr "Begining day:"
