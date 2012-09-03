@@ -532,6 +532,9 @@ msgstr "Harvest"
 msgid "SUBJECT_OTHER"
 msgstr "Other"
 
+msgid "CALENDAR_DATE"
+msgstr "* Select date for the event"
+
 # For the cost part:
 msgid "SELECT_START_DAY"
 msgstr "Begining day:"
@@ -579,7 +582,7 @@ msgid "REAL_PRICE"
 msgstr "Real price"
 
 msgid "THEORICAL_PRICE"
-msgstr "Theorical price"
+msgstr "Theorical maximal price (without regulation)"
 
 # For the footer:
 msgid "VERSION"
@@ -672,6 +675,12 @@ msgstr "<li>Error during programs file proceeding. YOu have to check that the fi
 
 msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "<li>Enable to access to the update files, please check your configuration</li>"
+
+msgid "ERROR_POWER_PRICE_NULL"
+msgstr "<li>Power of all your plugs doesn't seem to be configured, you can configure it: <a href='plugs'>here</a></li></li>"
+
+msgid "ERROR_COST_PRICE_NULL"
+msgstr "<li>Price of the kilowatt-hour isn't configured, you can configure it: <a href='configuration'>here</a></li></li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"

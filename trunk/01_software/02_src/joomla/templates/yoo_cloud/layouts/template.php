@@ -26,7 +26,7 @@ include($this['path']->path('layouts:template.config.php'));
                 <script type="text/javascript" src="main/libs/js/jquery-ui-timepicker-addon.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-sliderAccess.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery.ui.core.js"></script>
-	        <script type="text/javascript" src="main/libs/js/jquery.ui.widet.js"></script>
+	             <script type="text/javascript" src="main/libs/js/jquery.ui.widget.js"></script>
 		<script type="text/javascript" src="main/libs/js/cultibox.js"></script>
                 <style type="text/css">
                         /* css for timepicker */

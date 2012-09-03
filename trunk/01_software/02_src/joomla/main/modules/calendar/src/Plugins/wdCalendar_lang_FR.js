@@ -50,7 +50,7 @@ var i18n = $.extend({}, i18n || {}, {
         "example": "",
         "content": "Sujet",
         "create_event": "Créer un évènement",
-        "update_detail": "Editer les détails",
+        "update_detail": "Editer/Créer un évènement",
         "click_to_detail": "Afficher les détails",
         "i_delete": "Supprimer",
         "day_plural": "jours",
