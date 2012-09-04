@@ -63,7 +63,7 @@ buttonImageOnly: 'true',
 });
 </script>
 
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<form action="/cultibox/index.php/display-logs" method="post">
 <p class="title_conf"><img src="main/libs/img/arrow.png" /><?php echo __('SELECT_DISPLAYED_DAY'); ?></p>
 
 <table width="100%">
@@ -105,7 +105,7 @@ buttonImageOnly: 'true',
 </table>
 </form>
 <hr />
-<form action=<?php echo($_SERVER['PHP_SELF']); ?> method="post">
+<form action="/cultibox/index.php/display-logs" method="post">
 <table width="100%">
    <tr>
       <td width="40%"><p class="title_conf"><img src="main/libs/img/arrow.png" /><?php echo __('SELECT_DISPLAYED_MONTH'); ?></p></td>
@@ -170,7 +170,7 @@ $(function () {
             spacingRight: 20,
             events: {
                load: function() {
-                  <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/joomla/main/libs/img/fake_log_".__('LANG').".png', 80, 55, 143, 57)"; ?>
+                  <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 80, 55, 143, 57)"; ?>
                   <?php if($fake_log)  echo ".add();"; ?>
                }
             }

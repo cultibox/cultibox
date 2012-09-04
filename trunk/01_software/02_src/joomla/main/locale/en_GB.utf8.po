@@ -253,6 +253,9 @@ msgstr "ALl plugs"
 msgid "FORCE_ON_CHART"
 msgstr "Forced to ON"
 
+msgid "WAITING_LOGS"
+msgstr "Thank you to wait few seconds during data loading..."
+
 # For the plugs part:
 msgid "PLUG"
 msgstr "Plug number"

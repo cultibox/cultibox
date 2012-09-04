@@ -15,53 +15,6 @@ set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
-
-
-/*
-echo <<<EOF
-<!-- DEBUT DU SCRIPT -->
-<STYLE TYPE="text/css">
-<!--
-#cache {
-    position:absolute; top:200px; z-index:10; visibility:hidden;
-}
--->
-</STYLE>
-
-<DIV ID="cache" align="center"><TABLE WIDTH="100%"  BGCOLOR=#000000 BORDER=0 CELLPADDING=2 CELLSPACING=0><TR><TD ALIGN="center" VALIGN=middle><TABLE WIDTH="100%" BGCOLOR=#FFFFFF BORDER=0 CELLPADDING=0 CELLSPACING=0><TR><TD ALIGN=center VALIGN=middle><FONT FACE="Verdana" SIZE=4 COLOR=#000000><BR>
-EOF;
-echo __('WAITING_LOG');
-
-echo <<<EOF
-<BR><BR></FONT></TD>  </TR></TABLE></TD>  </TR></TABLE></DIV>
-
-<SCRIPT LANGUAGE="JavaScript">
-var nava = (document.layers);
-var dom = (document.getElementById);
-var iex = (document.all);
-if (nava) { cach = document.cache }
-else if (dom) { cach = document.getElementById("cache").style }
-else if (iex) { cach = cache.style }
-largeur = screen.width;
-cach.left = Math.round((largeur/2)-200);
-cach.visibility = "visible";
-
-function cacheOff()
-        {
-        cach.visibility = "hidden";
-        }
-window.onload = cacheOff
-</SCRIPT>
-EOF;
-
-ob_flush();
-flush();
-ob_flush();
-flush(); 
-ob_implicit_flush();
-
-*/
-
 $error="";
 $main_error="";
 $info="";
@@ -72,22 +25,34 @@ $check_tmp=array();
 $check_humi=array();
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $plugs_infos=get_plugs_infos($nb_plugs,$error);
-$select_plug=getvar('select_plug');
 $data_temp="";
 $data_humi="";
 $plug_type="";
+$select_plug="";
+$select_power="";
+$startday="";
+$startmonth="";
+$startyear="";
 $hygro_axis=get_configuration("LOG_HYGRO_AXIS",$error);
 $temp_axis=get_configuration("LOG_TEMP_AXIS",$error);
 $power_axis=get_configuration("LOG_POWER_AXIS",$error);
 $fake_log=false;
 $program="";
-$select_power=getvar('select_power');
 $pop_up="";
 $pop_up_error_message="";
 $last_year=date('Y');
 $datap="";
 $update=get_configuration("CHECK_UPDATE",$error);
 $version=get_configuration("VERSION",$error);
+
+if(isset($_SESSION['select_plug'])) {
+      $select_plug=$_SESSION['select_plug'];
+}
+
+
+if(isset($_SESSION['select_power'])) {
+      $select_power=$_SESSION['select_power'];
+}
 
 
 if(!isset($pop_up)) {
@@ -115,10 +80,27 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    $main_error=$main_error.$tmp;
 }
 
-$startday=getvar('startday');
-$startmonth=getvar('startmonth');
-$startyear=getvar('startyear');
+//$startday=getvar('startday');
+//$startmonth=getvar('startmonth');
+//$startyear=getvar('startyear');
+if(isset($_SESSION['startday'])) {
+      $startday=$_SESSION['startday'];
+}
+
+if(isset($_SESSION['startmonth'])) {
+      $startmonth=$_SESSION['startmonth'];
+}
+
+if(isset($_SESSION['startyear'])) {
+      $startyear=$_SESSION['startyear'];
+}
 $load_log=false;
+
+unset($_SESSION['startyear']);
+unset($_SESSION['startmonth']);
+unset($_SESSION['startday']);
+unset($_SESSION['startelect_power']);
+unset($_SESSION['select_plug']);
 
 if((!isset($startday))||(empty($startday))) {
 	$startday=date('Y')."-".date('m')."-".date('d');

@@ -20,6 +20,12 @@
    height:600px;
 } 
 
+#waiting_title {
+   font-size: 14px;
+   font-weight: bold;
+   text-align: center;
+}
+
 .text_info {
    text-indent:2em
 }

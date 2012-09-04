@@ -253,6 +253,9 @@ msgstr "Toutes les prises"
 msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
 
+msgid "WAITING_LOGS"
+msgstr "Merci de patientez quelques instants le temps que la page se charge et que les données soient traitées..."
+
 # For the plugs part:
 msgid "PLUG"
 msgstr "Prise numéro"
