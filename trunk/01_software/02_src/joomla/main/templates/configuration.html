@@ -78,9 +78,10 @@ function verifDigit(e) {
 <img src="main/libs/img/arrow.png" /><?php echo __('USER_CONF'); ?>:
 </p>
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
-<table width="60%" align="center">
+<table class="conf-table">
    <tr>
-      <td width="75%"><?php echo __('CONFIGURE_LANGUAGE'); ?></td>
+      <td class="conf-marge"></td>
+      <td class="conf-marge-td"><?php echo __('CONFIGURE_LANGUAGE'); ?></td>
       <td><select name="lang">
          <?php foreach($GLOBALS['LIST_LANG'] as $value) {
             switch ($value) {
@@ -104,6 +105,7 @@ function verifDigit(e) {
       </select></td>
    </tr>
    <tr>
+      <td class="conf-marge"></td>
       <td><?php echo __('CONFIGURE_HUMIDITY'); ?></td>
       <td><select name="color_humidity">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
@@ -168,6 +170,7 @@ function verifDigit(e) {
       } ?></select></td>
    </tr>
    <tr>
+      <td class="conf-marge"></td>
       <td><?php echo __('CONFIGURE_TEMPERATURE'); ?></td>
       <td><select name="color_temperature">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
@@ -233,6 +236,7 @@ function verifDigit(e) {
       ?></select></td>
    </tr>
    <tr>
+      <td class="conf-marge"></td>
       <td><?php echo __('CONFIGURE_COLOR_PROGRAM'); ?></td>
       <td><select name="color_program">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
@@ -298,6 +302,7 @@ function verifDigit(e) {
       ?></select></td>
    </tr>
    <tr>
+      <td class="conf-marge"></td>
       <td><?php echo __('CONFIGURE_POWER'); ?></td>
       <td><select name="color_power">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
@@ -364,6 +369,7 @@ function verifDigit(e) {
       ?></select></td>
    </tr>
      <tr>
+      <td class="conf-marge"></td>
       <td><?php echo __('CONFIGURE_COST_COLOR'); ?></td>
       <td><select name="color_cost">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
@@ -430,6 +436,7 @@ function verifDigit(e) {
       ?></select></td>
    </tr>
    <tr>
+      <td class="conf-marge"></td>
       <td><?php echo __('CONFIGURE_TEMP_AXIS'); ?> <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
          <td><select name="temp_axis">
                 <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $value) {
@@ -441,6 +448,7 @@ function verifDigit(e) {
                 } ?></select></td>
         </tr>
    <tr>
+      <td class="conf-marge"></td>
       <td><?php echo __('CONFIGURE_HYGRO_AXIS'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
       <td><select name="hygro_axis">
          <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $value) {
@@ -452,6 +460,7 @@ function verifDigit(e) {
       } ?></select></td>
    </tr>
    <tr>
+      <td class="conf-marge"></td>
       <td><?php echo __('CONFIGURE_POWER_AXIS'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
       <td><select name="power_axis">
          <?php foreach($GLOBALS['LIST_MAX_POWER'] as $value) {
@@ -463,6 +472,7 @@ function verifDigit(e) {
       } ?></select></td>
    </tr>
    <tr>
+         <td class="conf-marge"></td>
          <td><?php echo __('CONFIGURE_POPUP'); ?> <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POPUP'); ?>" /></td>
          <td><select name="pop_up">
             <option value="True" <?php if(strcmp("$pop_up","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
@@ -470,6 +480,7 @@ function verifDigit(e) {
          </select></td>
    </tr>
     <tr>
+         <td class="conf-marge"></td>
          <td><?php echo __('CHECK_UPDATE'); ?> <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_CHECK_UPDATE'); ?>" /></td>
          <td><select name="update">
             <option value="True" <?php if(strcmp("$update","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
@@ -481,9 +492,10 @@ function verifDigit(e) {
 <p class="title_conf">
    <img src="main/libs/img/arrow.png" /><?php echo __('SYSTEM_CONF'); ?>:
 </p>
-<table width="60%" align="center">
+<table class="conf-table">
 <tr>
-<td width="75%">
+<td class="conf-marge"></td>
+<td class="conf-marge-td">
    <?php echo __('CONFIGURE_FREQUENCY'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
 </td>
 <td>
@@ -501,7 +513,8 @@ function verifDigit(e) {
 </td>
 </tr>
 <tr>
-<td width="75%">
+<td class="conf-marge"></td>
+<td>
    <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
 </td>
 <td>
@@ -519,6 +532,7 @@ function verifDigit(e) {
 </td>
 </tr>
 <tr>
+<td class="conf-marge"></td>
 <td>
    <?php echo __('CONFIGURE_NB_PLUGS'); ?>
 </td>
@@ -537,6 +551,7 @@ function verifDigit(e) {
 </td>
 </tr>
 <tr>
+<td class="conf-marge"></td>
 <td>
    <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
 </td>
@@ -564,9 +579,10 @@ function verifDigit(e) {
 <p class="title_conf">
    <img src="main/libs/img/arrow.png" /><?php echo __('CONFIGURE_ALARM'); ?>:
 </p>
-<table width="60%" align="center">
-   <tr>
-      <td width="75%"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_ALARM'); ?>" /></td>
+<table class="conf-table">
+   <tr>  
+      <td class="conf-marge"></td>
+      <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_ALARM'); ?>" /></td>
       <td><select name="alarm_enable" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
            <?php if("$alarm_enable"=="0001") {
                      echo "<option value='0001' selected>".__('YES')."</option>";
@@ -579,7 +595,8 @@ function verifDigit(e) {
       </select></td>
    </tr>
 <tr>
-      <td width="75%"><div id="label_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSO'); ?></div></td>
+      <td class="conf-marge"></td>
+      <td><div id="label_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSO'); ?></div></td>
       <td><div id="div_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><select name="alarm_senso" onChange="getUnity(this.selectedIndex);" onLoad="getUnity(this.selectedIndex);">
            <?php if("$alarm_senso"=="000T") {
                      echo "<option value='000T' selected>".__('ALARM_TEMP')."</option>";
@@ -592,11 +609,13 @@ function verifDigit(e) {
       </select></div></td>
    </tr>
    <tr>
-      <td width="75%"><div id="label_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_VALUE'); ?></div></td>
+   <td class="conf-marge"></td>
+      <td><div id="label_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_VALUE'); ?></div></td>
       <td><div id="div_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value" onKeypress="return verifDigit(event);"><label id="label_degree" style="<?php if("$alarm_senso"=="000H") echo "display:none"; ?>">°C</label><label id="label_pourcent" style="<?php if("$alarm_senso"=="000T") echo "display:none"; ?>">%</label></div></td>
    </tr>
    <tr>
-      <td width="75%"><div id="label_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSS'); ?></div></td>
+<td class="conf-marge"></td>
+      <td ><div id="label_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSS'); ?></div></td>
       <td><div id="div_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><select name="alarm_senss">
            <?php if("$alarm_senss"=="000+") {
                      echo "<option value='000+' selected>".__('ALARM_ABOVE')."</option>";
@@ -614,15 +633,16 @@ function verifDigit(e) {
 <p class="title_conf">
    <img src="main/libs/img/arrow.png" /><?php echo __('CONFIGURE_COST'); ?>:
 </p>
-<table width="60%" align="center">
+<table class="conf-table">
    <tr>
-      <td width="75%"><?php echo __('CONFIGURE_COST_PRICE'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_PRICE'); ?>" /></td>
-      <td><input type="text" size="5" maxlength="5" name="cost_price" value="<?php echo "$cost_price"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&#128;"; } else { echo "&#163;"; } ?>
+      <td class="conf-marge"></td>
+      <td class="conf-marge-td"><?php echo __('CONFIGURE_COST_PRICE'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_PRICE'); ?>" /></td>
+      <td><input type="text" size="5" maxlength="5" name="cost_price" value="<?php echo "$cost_price"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?>
       </td>
    </tr>
 </table>
 
-<br /><p align="center">
+<br /><p class="p_center">
    <INPUT type="submit" value="<?php echo __('VALIDATION_CONF'); ?>">
 </p>
    <INPUT type="hidden" name="menu" value="configuration">

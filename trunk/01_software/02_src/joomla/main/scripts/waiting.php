@@ -35,6 +35,8 @@ if(isset($_POST['select_plug'])) {
       $_SESSION['select_plug']=$_POST['select_plug'];
 }
       
+header("Refresh: 1;url=./view-logs");
+
 include('main/templates/waiting.html');
 
 ?>

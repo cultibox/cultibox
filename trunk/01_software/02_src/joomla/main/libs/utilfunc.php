@@ -56,7 +56,7 @@ function __() {
 
 // {{{ htmlentitiesOutsideHTMLTags()
 // ROLE encode a string in HTML and preserve HTML tags
-// IN $htmltext   text to encode
+// IN $htmltext         text to encode
 // RET text encoded in HTML
 function htmlentitiesOutsideHTMLTags($htmlText)
 {
@@ -106,7 +106,6 @@ function getvar($varname) {
           $tmp = true;
    }
    
-   // FIXME: simple html cleanup
    if (is_array($tmp)) {
       return $tmp;
    } else {
@@ -115,9 +114,9 @@ function getvar($varname) {
 }
 // }}}
 
-// {{{ check_empty_string($value)
+// {{{ check_empty_string()
 // ROLE check is a string is empty or only composed with CR
-// IN $value   string to check
+// IN $value         string to check
 // RET false if the string is empty, true else
 function check_empty_string($value="") {
    $value=str_replace(' ','',$value);
@@ -132,10 +131,10 @@ function check_empty_string($value="") {
 //}}}
 
 
-// {{{ get_log_value($file,&$array_line)
+// {{{ get_log_value()
 // ROLE get log's values from files and clean it
-// IN $file      file to explode
-//    $array_line   array to store log's values
+// IN $file          file to explode
+//    $array_line    array to store log's values
 // RET none
 function get_log_value($file,&$array_line) {
    $handle = fopen("$file", 'r');
@@ -176,10 +175,10 @@ function get_log_value($file,&$array_line) {
 //}}}
 
 
-// {{{ get_power_value($file,&$array_line)
+// {{{ get_power_value()
 // ROLE get powers values from files and clean it
-// IN $file      file to explode
-//    $array_line   array to store log's values
+// IN $file             file to explode
+//    $array_line       array to store log's values
 // RET none
 function get_power_value($file,&$array_line) {
    $handle = fopen("$file", 'r');
@@ -232,7 +231,7 @@ function get_power_value($file,&$array_line) {
 }
 //}}}
 
-// {{{ clean_log_file($file)
+// {{{ clean_log_file()
 // ROLE copy an empty file to clean a log file
 // IN $file             file to clean
 // RET none
@@ -243,7 +242,7 @@ function clean_log_file($file) {
 //}}}
 
 
-// {{{ clean_power_file($file)
+// {{{ clean_power_file()
 // ROLE copy an empty file to clean a power file
 // IN $file             file to clean
 // RET none
@@ -292,7 +291,7 @@ function get_current_lang() {
 
 // {{{ set_current_lang()
 // ROLE set the Joomla language for the interface
-// IN $lang   lang to set using the l10n format (ex: en_GB)
+// IN $lang       lang to set using the l10n format (ex: en_GB)
 // RET true
 function set_lang($lang) {
    $lang=str_replace("_","-",$lang);
@@ -308,10 +307,10 @@ function set_lang($lang) {
 // }}}
 
 
-// {{{ get_format_graph($arr)
+// {{{ get_format_graph()
 // ROLE get datas for the highcharts graphics
-// IN $arr   array containing datas
-// RET $data   data at the highcharts format (a string)
+// IN $arr           array containing datas
+// RET $data         data at the highcharts format (a string)
 function get_format_graph($arr) {
    $data="";
    $last_mm="";
@@ -351,14 +350,14 @@ function get_format_graph($arr) {
 //}}}
 
 
-// {{{ fill_data($fhh,$fmm,$lhh,$lmm,$val,$data)
+// {{{ fill_data()
 // ROLE fill highcharts data,between two time spaces, using a specific value
-// IN $fhh   start hours
-//    $fmm   start minutes
-//    $lhh   end hours
-//    $lmm   end minutes
-//    $val   value used to fill time spaces
-//    $data   data at the highcharts format (a string)
+// IN $fhh        start hours
+//    $fmm        start minutes
+//    $lhh        end hours
+//    $lmm        end minutes
+//    $val        value used to fill time spaces
+//    $data       data at the highcharts format (a string)
 // RET none
 function fill_data($fhh,$fmm,$lhh,$lmm,$val,$data) {
    while(strcmp("$fhh:$fmm","$lhh:$lmm")<0) {
@@ -386,13 +385,13 @@ function fill_data($fhh,$fmm,$lhh,$lmm,$val,$data) {
 
 
 
-// {{{ check_empty_record($last_hh,$last_mm,$hh,$mm)
+// {{{ check_empty_record()
 // ROLE check if there is an empty record. An empty reccord is defined is the time spaces
 // between two values is greatan than 30minutes
-// IN $last_hh   last record hours
-//    $last_mm   last record minutes
-//    $hh   first record hours
-//    $mm   first record minutes
+// IN $last_hh       last record hours
+//    $last_mm       last record minutes
+//    $hh            first record hours
+//    $mm            first record minutes
 // RET true is there isn't an empty record, false else.
 function check_empty_record($last_hh,$last_mm,$hh,$mm) {
       $lhh= 60 * $last_hh + $last_mm;
@@ -407,10 +406,10 @@ function check_empty_record($last_hh,$last_mm,$hh,$mm) {
 //}}}
 
 
-// {{{ check_format_date($date,$type)
+// {{{ check_format_date()
 // ROLE check date format (month with the format MM ou complete date: YYYY-MM-DD)
-// IN $date   date to check
-//    $type   the type: month or days
+// IN $date       date to check
+//    $type       the type: month or days
 // RET true is the format match the type, false else
 function check_format_date($date="",$type) {
    $date=str_replace(' ','',"$date");
@@ -444,9 +443,9 @@ function check_format_date($date="",$type) {
 //}}}
 
 
-// {{{ check_numeric_value($value)
+// {{{ check_numeric_value()
 // ROLE check if a value is numeric or not
-// IN $value   value to check
+// IN $value         value to check
 // RET true is $value is numeric, false else
 function check_numeric_value($value="") {
    if("$value"=="0") {
@@ -531,7 +530,7 @@ function get_sd_card() {
 
 // {{{ check_cultibox_card()
 // ROLE check if the directory is a cultibox directory to write configuration
-// IN   directory to check
+// IN   $dir         directory to check
 // RET true if it's a cultibox directory, false else
 function check_cultibox_card($dir="") {
    if((is_file("$dir/plugv"))&&(is_file("$dir/pluga"))&&(is_dir("$dir/logs"))) {
@@ -542,11 +541,11 @@ function check_cultibox_card($dir="") {
 // }}}
 
 
-// {{{ check_times($start_time="",$end_time="",&$out="")
+// {{{ check_times()
 // ROLE check times send by user to reccord a plug behaviour
-// IN   $start_time   time starting the event
-//   $end_time   time ending the event
-//   $out      string for error or warning messages
+// IN   $start_time      time starting the event
+//      $end_time        time ending the event
+//      $out             string for error or warning messages
 // RET 1 if ok, 0 if there is an error or 2 if start time > end time
 function check_times($start_time="",$end_time="",&$out="") {
    if((!empty($start_time))&&(isset($start_time))&&(!empty($end_time))&&(isset($end_time))) {
@@ -603,9 +602,8 @@ function check_times($start_time="",$end_time="",&$out="") {
 
 // {{{ format_program_highchart_data()
 // ROLE format data to be used by highchart for the programs part
-// IN   $arr      an array containing datas
-//      $date_start     
-//   $type      the type of the plug
+// IN   $arr               an array containing datas
+//      $date_start          
 // RET data for highchart and cultibox programs
 function format_program_highchart_data($arr,$date_start="") {
    $data="";
@@ -708,11 +706,13 @@ function format_program_highchart_data($arr,$date_start="") {
 // }}}
 
 
-// {{{ save_program_on_sd($sd_card,&$out,&$info)
+// {{{ save_program_on_sd()
 // ROLE format data to be used by highchart for the programs part
-// IN   $arr    an array containing datas
+// IN   $sd_card        path to the sd card to save datas
+//      $program        the program to be save in the sd card 
+//      $out            error or warning messages
 // RET data for highchart and cultibox programs
-function save_program_on_sd($sd_card,$program,&$out,&$info) {
+function save_program_on_sd($sd_card,$program,&$out) {
    if(is_file("${sd_card}/plugv")) {
       $file="${sd_card}/plugv";
       if(count($program)>0) {
@@ -725,11 +725,11 @@ function save_program_on_sd($sd_card,$program,&$out,&$info) {
 // }}}
 
 
-// {{{ write_program($data,$sd_card,$out)
+// {{{ write_program()
 // ROLE write programs into the sd card
-// IN   $data      array containing datas to write
-//   $file      file path to save data
-//   $out      error or warning messages
+// IN   $data         array containing datas to write
+//      $file         file path to save data
+//      $out          error or warning messages
 // RET false is an error occured, true else
 function write_program($data,$file,&$out="") {
    if($f=fopen("$file","w+")) {
@@ -749,9 +749,9 @@ function write_program($data,$file,&$out="") {
 // }}}
 
 
-// {{{ compare_program($data,$sd_card)
+// {{{ compare_program()
 // ROLE write programs into the sd card
-// IN   $data      array containing datas to write
+// IN   $data         array containing datas to write
 //      $sd_card      sd card path to save data
 // RET false is there is nothing to write, true else
 function compare_program($data,$sd_card) {
@@ -790,7 +790,7 @@ function compare_program($data,$sd_card) {
 }
 // }}}
 
-// {{{ write_pluga($sd_card,&$out="")
+// {{{ write_pluga()
 // ROLE write plug_a into the sd card
 // IN   $sd_card        the sd card to be written
 //      $out            error or warning messages
@@ -818,7 +818,7 @@ function write_pluga($sd_card,&$out="") {
 }
 // }}}
 
-// {{{ write_plugconf($data,ŝd_card,$out)
+// {{{ write_plugconf()
 // ROLE write plug_configuration into the sd card
 // IN   $data           array containing datas to write
 //      $sd_card        the sd card to be written
@@ -899,11 +899,11 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
 //}}}
 
 
-// {{{ concat_calendar_entries($data,$time)
+// {{{ concat_calendar_entries()
 // ROLE concat calendar entries to use several comments for the same day
-// IN   $data   data to be proccessed
-// IN   $month   month to be checked
-// IN   $day     day to be checked
+// IN   $data        data to be proccessed
+// IN   $month       month to be checked
+// IN   $day         day to be checked
 // RET return an array containing all datas for the day checked
 function concat_calendar_entries($data,$month,$day) {
          $new_data=array();
@@ -939,9 +939,9 @@ function concat_calendar_entries($data,$month,$day) {
 
 // {{{ write_calendar()
 // ROLE save calendar informations into the SD card
-// IN   $sd_card   sd card location
-//   $data      data to write into the sd card
-//   $out      error or warning messages
+// IN $sd_card         sd card location
+//    $data            data to write into the sd card
+//    $out             error or warning messages
 // RET none
 function write_calendar($sd_card,$data,&$out="") {
    if(isset($sd_card)&&(!empty($sd_card))) {
@@ -986,8 +986,8 @@ function write_calendar($sd_card,$data,&$out="") {
 
 // {{{ check_date()
 // ROLE check the an interval of dates is correct
-// IN   $datestart    first date
-//      $dateend      second date
+// IN   $datestart      first date
+//      $dateend        second date
 // RET false if $datestart => $dateend, true else
 function check_date($datestart="",$dateend="") {
          $year_start=substr($datestart,0,4); 
@@ -1020,9 +1020,9 @@ function check_date($datestart="",$dateend="") {
 
 // {{{ check_tolerance_value()
 // ROLE check the tolerance value
-// IN   $type      the type of the plug 
-//   $tolerancesave   the value to check
-//   $out      error or warning message
+// IN $type               the type of the plug 
+//    $tolerance          the value to check
+//    $out                error or warning message
 // RET false is there is a wrong value, true else
 function check_tolerance_value($type,&$tolerance=0,&$out="") {
    $tolerance=str_replace(",",".",$tolerance);
@@ -1046,11 +1046,11 @@ function check_tolerance_value($type,&$tolerance=0,&$out="") {
 // }}}
 
 
-// {{{ check_format_values_program($value,$out)
+// {{{ check_format_values_program()
 // ROLE check AND format value of a program 
-// IN   $value   value to check and format
-// IN   $out    error or warning message
-// IN   $type    temp or humi - type to check
+// IN   $value       value to check and format
+// IN   $out         error or warning message
+// IN   $type        temp or humi - type to check
 // RET false is there is a wrong value, true else
 function check_format_values_program(&$value="0",&$out="",$type="temp") {
    $value=str_replace(',','.',$value);
@@ -1082,7 +1082,7 @@ function check_format_values_program(&$value="0",&$out="",$type="temp") {
 }
 // }}}
 
-// {{{ check_power_value($value,$out)
+// {{{ check_power_value()
 // ROLE check AND format power value of a plug
 // IN   $value   value to check and format
 // IN   $out     error or warning message
@@ -1100,9 +1100,9 @@ function check_power_value($value="0",&$out="") {
 }
 // }}}
 
-// {{{ check_alarm_value($value="0")
+// {{{ check_alarm_value()
 // ROLE check is a value for the alarm is correct
-// IN   $value   value to check
+// IN   $value       value to check
 // OUT  false is there is a wrong value, true else
 function check_alarm_value($value="0") {
    $value=str_replace(',','.',$value);
@@ -1113,9 +1113,9 @@ function check_alarm_value($value="0") {
 }
 // }}}
 
-// {{{ check_regul_value($value="0")
+// {{{ check_regul_value()
 // ROLE check is a value for the regulation is correct
-// IN   $value   value to check
+// IN   $value       value to check
 // OUT  false is there is a wrong value, true else
 function check_regul_value($value="0") {
    $value=str_replace(',','.',$value);
@@ -1127,10 +1127,10 @@ function check_regul_value($value="0") {
 // }}}
 
 
-// {{{ check_and_copy_firm($sd_card,&$out="")
+// {{{ check_and_copy_firm()
 // ROLE check if the firm.hex has to be copied and do the copy into the sd card
-// IN   $sd_card   the sd card pathname 
-//   $out      error or warning message
+// IN  $sd_card     the sd card pathname 
+//     $out         error or warning message
 // RET none
 function check_and_copy_firm($sd_card,&$out="") {
    $new_firm="";
@@ -1179,9 +1179,9 @@ function check_and_copy_firm($sd_card,&$out="") {
 // }}}
 
 
-// {{{ clean_popup_message(&$message="")
+// {{{ clean_popup_message()
 // ROLE clean popup message by removing non-appropriate char for javascript
-// IN   $message   message to be cleaned
+// IN  $message         message to be cleaned
 // RET   new message cleaned 
 function clean_popup_message(&$message="") {
    $old = array("'","<li>", "</li>", "&eacute;","&agrave;","&egrave;","&ecirc;","&deg;");
@@ -1194,8 +1194,8 @@ function clean_popup_message(&$message="") {
 
 // {{{ get_nb_days()
 // ROLE get number of days beetwen two dates
-// IN   $start_date  first date
-//      $end_date    second date
+// IN   $start_date       first date
+//      $end_date         second date
 // RET   return number of days beetwen dates or -1
 function get_nb_days($start_date="",$end_date="") {
          if((!isset($start_date))||(empty($start_date))||(!isset($end_date))||(empty($end_date))) { return -1; }

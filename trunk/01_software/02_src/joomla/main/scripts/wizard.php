@@ -47,7 +47,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    if(!compare_program($program,$sd_card)) {
       $info=$info.__('UPDATED_PROGRAM');
       $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
-      save_program_on_sd($sd_card,$program,$error,$info);
+      save_program_on_sd($sd_card,$program,$error);
    }
    check_and_copy_firm($sd_card,$error);
 } else {
@@ -188,7 +188,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
                    if((!empty($sd_card))&&(isset($sd_card))) {
                         $program=create_program_from_database($error);
                         $info=$info.__('VALID_UPDATE_PROGRAM');
-                        save_program_on_sd($sd_card,$program,$error,$info);
+                        save_program_on_sd($sd_card,$program,$error);
                   } 
                    if($chinfo) {
                              $chinfo=true;

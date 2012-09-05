@@ -720,10 +720,10 @@ msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "<li>Programme mis à jour avec succès</li>"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "<li>Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici: <a href='wizard'><img src="main/libs/img/wizard.png" alt="wizard" name="wizard" /></a></li>"
+msgstr "<li>Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici: <a href='wizard'><img src="main/libs/img/wizard.png" alt="wizard" id="wizard" /></a></li>"
 
 msgid "WIZARD_DISABLE_FUNCTION"
-msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs'><img src="main/libs/img/wizard.png" alt="classic" name="Classic" /></a></li>"
+msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs'><img src="main/libs/img/wizard.png" alt="classic" id="Classic" /></a></li>"
 
 msgid "INFO_RESET_PROGRAM"
 msgstr "<li>Programme réinitialisé avec succès</li>"
@@ -740,7 +740,7 @@ msgstr "<li>Une mise à jour est disponible pour passer à la version: </li>"
 # For the tooltip part:
 
 msgid "TOOLTIP_VALUE"
-msgstr "La Cultibox va éteindre ou allumer la prise pour atteindre cette valeur."
+msgstr "La Cultibox va éteindre <br />ou allumer la prise pour <br />atteindre cette valeur."
 
 msgid "TOOLTIP_POWER"
 msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consomation de votre installation, son prix..."

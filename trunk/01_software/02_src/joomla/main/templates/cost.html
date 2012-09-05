@@ -165,42 +165,32 @@ chart = new Highcharts.Chart({
 <br /><br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
 
-<table width="100%">
+<table>
    <tr>
-      <td width="20%"></td>
-      <td width="10%"><?php echo __('SELECT_START_DAY'); ?></td>
-      <td width="15%"><input id="datepicker_start" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
-      <td width="50%"></td>
+      <td class="cost-marge"></td>
+      <td class="cost-title"><?php echo __('SELECT_START_DAY'); ?></td>
+      <td class="cost-field"><input id="datepicker_start" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
    </tr>
    <tr>
       <td></td>
-      <td width="20%"><?php echo __('SELECT_END_DAY'); ?></td>
+      <td><?php echo __('SELECT_END_DAY'); ?></td>
       <td><input id="datepicker_end" name="endday" type="text" class="whitefield" size="10" value="<?php echo $endday; ?>"></td>
-      <td></td>
    </tr>
    <tr>
       <td></td>
-      <td width="20%"><?php echo __('SELECT_PRICE_PLUG'); ?></td>
+      <td><?php echo __('SELECT_PRICE_PLUG'); ?></td>
       <td><select name="select_plug">
             <option value="all"><?php echo __('PRICE_ALL_PLUG'); ?></option>
             <?php for($i=0;$i<$nb_plugs;$i++) { ?>
                <option value="<?php echo $plugs_infos[$i]["id"]; ?>" <?php if(strcmp($select_plug,$plugs_infos[$i]["id"])==0) echo "selected"; ?>><?php echo $plugs_infos[$i]["PLUG_NAME"]; ?></option>
             <?php } ?>
          </select></td>
-      <td></td>
    </tr>
 </table>
 <br />
-<table width="80%">
-   <tr>
-   <td align="center">
-         <INPUT type="submit" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);">
-   </td>
-   <td></td>
-</tr>
-</table>
+<p class="p_center"><INPUT type="submit" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);"></p>
 </form>
-<br />
 <hr />
+<br />
 
 <div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>

@@ -13,25 +13,14 @@
 </div>
 <br />
 <?php } ?>
-
-<div class="welcome" width="100%" height="100%"> 
+<div class="welcome"> 
 <p class="wizard_title"><?php echo __('WELCOME_TITLE'); ?></p>
 <br />
-
 <p class="text_info"><?php echo __('WELCOME_MESSAGE'); ?></p>
 <br />
-
-<p><?php echo __('WELCOME_TUTO'); ?></p>
-
+<?php echo __('WELCOME_TUTO'); ?>
 </div>
 
-<p align="center"><img src="main/libs/img/takecontrol.png" alt="" /></p>
-
-
-<p align="center"><?php echo __('WELCOME_FOLLOW_LINK'); ?>:</p>
-<table width="100%">
-   <tr>
-      <td align="center"><form action="<?php echo($_SERVER['PHP_SELF'])."/wizard"; ?>" method="post"><input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>"></form></td>
-   </tr>
-</table>
-
+<p class="p_center"><img src="main/libs/img/takecontrol.png" alt="" /></p>
+<p class="p_center"><?php echo __('WELCOME_FOLLOW_LINK'); ?>:</p>
+<form action="<?php echo($_SERVER['PHP_SELF'])."/wizard"; ?>" method="post"><p class="p_center"><input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>"></p></form>

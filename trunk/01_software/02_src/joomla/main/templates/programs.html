@@ -198,18 +198,18 @@ $(document).ready(function() {
 <br />
 
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
-<table width="100%" id="conf<?php echo $i; ?>" >
+<table class="table_width" id="conf<?php echo $i; ?>" >
    <tr>
-      <td width="40%"><p class="title_conf"><img src="main/libs/img/arrow.png" /><?php if(isset($plugs_infos[$i-1]['PLUG_NAME'])) echo __('CONFIGURE_PROGRAM').": ".$plugs_infos[$i-1]['PLUG_NAME']; else echo __('CONFIGURE_PROGRAM'); ?></p></td>
+      <td class="program-title"><p class="title_conf"><img src="main/libs/img/arrow.png" /><?php if(isset($plugs_infos[$i-1]['PLUG_NAME'])) echo __('CONFIGURE_PROGRAM').": ".$plugs_infos[$i-1]['PLUG_NAME']; else echo __('CONFIGURE_PROGRAM'); ?></p></td>
       <td></td>
    </tr>
    <tr>
       <td>
          <table>
             <tr>
-               <td width="10%"></td>
-               <td width="53%"><?php echo __('START_TIME_PROGRAM'); ?></td>
-               <td width="37%">
+               <td class="program-marge"></td>
+               <td class="program-td-title"><?php echo __('START_TIME_PROGRAM'); ?></td>
+               <td class="program-field">
                   <input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> />
             </tr>
             <tr>
@@ -236,7 +236,7 @@ $(document).ready(function() {
                        </select></td>
 			<tr><td></td><td><div id="regul_label<?php echo $i; ?>" style="<?php if(($i==$selected_plug)&&(strcmp("$regul_program","regul")!=0)) echo "display:none"; ?>"><?php if((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"ventilator")==0)) { 
                             echo __('TEMP_WISHED'); 
-                            } elseif((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"deshumidifier")==0)) {
+                            } elseif((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"dehumidifier")==0)) {
                                     echo __('HUMI_WISHED'); 
                             } ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_VALUE'); ?>" /></div></td><td><div id="regul_value<?php echo $i; ?>" style="<?php if(($i==$selected_plug)&&(strcmp("$regul_program","regul")!=0)) echo "display:none"; ?>">
                        <input type="text" id="value_program<?php echo $i; ?>" name="value_program<?php echo $i; ?>" size="4" maxlength="4" 
@@ -256,35 +256,35 @@ $(document).ready(function() {
             </tr>
             <tr>
                <td></td>
-               <td align="right"><br /><input type="hidden" name="selected_plug" value="<?php echo $i; ?>">
+               <td class="program-valid-right"><br /><input type="hidden" name="selected_plug" value="<?php echo $i; ?>">
                   <input type="submit" name="apply" value="<?php echo __('APPLY_PROGRAM'); ?>">
                </td>
                <td></td>
             </tr>
          </table>
       </td>
-      <td width="40%">
-         <div id="plug<?php echo $i; ?>" style="width: 100%; height: 300px; margin: 0 auto">
+      <td class="progra-graph">
+         <div id="plug<?php echo $i; ?>" style="width: 80%; height: 300px; margin: 0 auto">
          </div>
       </td>
    </tr>
 </table>
 </form>
 
-<table width="100%">
+<table class="table_width">
   <tr>
-      <td width="45%"></td>
+      <td class="program-td-marge"></td>
       <td>
-         <table width="100%">
+         <table class="table_width">
             <tr>
-               <td width="40%">
+               <td class="program-td-title">
                   <br />
                      <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
                   <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
                   <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset">
                   </form>
                </td>
-               <td width="20%">
+               <td class="program-action">
                   <br />
                    <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
                         <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="reset">
@@ -292,7 +292,7 @@ $(document).ready(function() {
                         <input type="hidden" name="exportid" value="<?php echo $i; ?>">
                      </form>
                </td>
-               <td align="center">
+               <td class="program-action-center">
                   <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post" enctype="multipart/form-data">
                      <input type="file" name="upload_file" size="5">
                      <input type="hidden" name="action_prog" value="<?php echo $i; ?>">

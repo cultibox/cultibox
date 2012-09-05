@@ -61,13 +61,150 @@
 
 .title_conf{
 	font-size: 13px;
-        font-weight: bolder;
+   font-weight: bolder;
 	font-style: italic;
 }
 
+table.conf-table { 
+   width:100%; 
+   text-align: left;
+}
+
+table.table_width{
+   width: 100%;
+}
+
+td.conf-marge {
+   width: 20%;
+}
+
+td.conf-marge-td {
+   width: 45%;
+}
+
+td.log-marge-day {
+   width: 35%;
+}
+
+td.log-marge-day-title {
+   width: 45%;
+}
+
+td.log-marge-day-field {
+   width: 20%;
+}
+
+td.log-marge-month {
+   width: 20%;
+}
+
+td.log-marge-month-title {
+   width: 60%;
+}
+
+td.log-marge-month-field {
+   width: 20%;
+}
+
+td.plug-marge-title {
+   width: 20%;
+}
+
+td.plug-regul {
+   width: 40%;
+}
+
+td.plug-marge-submit {
+   width: 25%;
+}
+
+td.cost-marge {
+   width: 35%;
+}
+
+td.cost-title {
+   width: 20%;
+}
+
+td.cost-field {
+   width: 35%;
+}
+
+td.wizard-marge-submit {
+   width: 20%;
+}
+
+td.wizard-marge {
+   width: 10%;
+}
+
+td.wizard-step {
+   width: 10%;
+}
+
+td.wizard-marge-td {
+   width: 20%;
+}
+
+td.wizard-marge-title {
+   width: 20%;
+}
+
+td.wizard-input-submit {
+   width: 30%;
+}
+
+td.wizard-input-previous{
+   width: 10%;
+}
+
+td.program-title{
+   width: 40%;
+}
+
+td.program-td-title{
+   width: 40%;
+}
+
+td.program-field{
+   width: 40%;
+}
+
+td.program-marge{
+   width: 10%;
+}
+
+td.program-td-marge{
+   width: 45%;
+}
+
+td.program-graph{
+   width: 40%;
+}
+
+td.program-action {
+   width: 20%;
+}
+
+td.program-valid-right{
+   text-align: right;
+}
+
+td.program-action-center{
+   text-align: center;
+}
+
+P.p_center{
+   text-align: center;
+}
+
+P.p_right{
+   text-align: right;
+}
+
 hr {
-    width:40%;
-    margin:auto;
+   width:40%;
+   margin:auto;
 }
 
 span.info-bulle-contenu
