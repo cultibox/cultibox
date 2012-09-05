@@ -737,7 +737,7 @@ msgstr "<li>New update availabe to upgrade to the software version: </li>"
 # For the tooltip part:
 
 msgid "TOOLTIP_VALUE"
-msgstr "Cultibox will switch on or off the plug to get this value"
+msgstr "Cultibox will switch on or off<br />the plug to get this value"
 
 msgid "TOOLTIP_POWER"
 msgstr "The power of the equipement pluged in Watts. This is usefull if you want to calculate power consumed, cost of your installation..."

@@ -19,6 +19,8 @@ include($this['path']->path('layouts:template.config.php'));
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" />
 		<link rel="stylesheet" media="all" type="text/css" href="main/libs/css/datepicker.css" />
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+                <!-- Javascript JQUERY libraries for cultibox components: calendar, datepicker, highcharts... -->
                 <script type="text/javascript" src="main/libs/js/jquery-1.7.2.min.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-1.8.19.custom.min.js"></script>
                 <script type="text/javascript" src="main/libs/js/highcharts.js"></script>
@@ -27,7 +29,7 @@ include($this['path']->path('layouts:template.config.php'));
                 <script type="text/javascript" src="main/libs/js/jquery-ui-sliderAccess.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery.ui.core.js"></script>
 	             <script type="text/javascript" src="main/libs/js/jquery.ui.widget.js"></script>
-		<script type="text/javascript" src="main/libs/js/cultibox.js"></script>
+		          <script type="text/javascript" src="main/libs/js/cultibox.js"></script>
                 <style type="text/css">
                         /* css for timepicker */
                         #ui-datepicker-div, .ui-datepicker{ width: 30%; font-size: 90%; }
@@ -37,16 +39,12 @@ include($this['path']->path('layouts:template.config.php'));
                         .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
                         .ui-timepicker-div td { font-size: 90%; }
                         .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-
                 </style>
 </head>
 
 <body id="page" class="page <?php echo $this['config']->get('body_classes'); ?>" data-config='<?php echo $this['config']->get('body_config','{}'); ?>'>
-
 	<div id="page-bg">
-	
 		<div id="page-bg2">
-
 			<?php if ($this['modules']->count('absolute')) : ?>
 			<div id="absolute">
 				<?php echo $this['modules']->render('absolute'); ?>
@@ -181,18 +179,14 @@ include($this['path']->path('layouts:template.config.php'));
 				
 				<?php if ($this['modules']->count('footer + debug') || $this['config']->get('warp_branding')) : ?>
 				<footer id="footer" class="grid-block">
-                  <table width="100%">
-                  <tr>
-                     <td width="70%"></td>
-                     <td>
+                  <p class="p_right">
+                     <!-- Displays version and license for the software at the footer -->
                   <?php 
                         $error="";
-                        echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".__('VERSION').": ".get_configuration("VERSION",$error); 
-                        echo "&nbsp;-&nbsp;".__('LICENSE').": LGPL<br />";
+                        echo __('VERSION').": ".get_configuration("VERSION",$error); 
+                        echo "&nbsp;-&nbsp;".__('LICENSE').": LGPL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />";
                   ?>    
-                  </td>
-                  </tr>
-                  </table>
+                  </p>
 	               <br /><br />	
 					<?php
 						echo $this['modules']->render('footer');

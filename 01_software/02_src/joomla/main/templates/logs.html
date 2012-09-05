@@ -66,11 +66,11 @@ buttonImageOnly: 'true',
 <form action="/cultibox/index.php/display-logs" method="post">
 <p class="title_conf"><img src="main/libs/img/arrow.png" /><?php echo __('SELECT_DISPLAYED_DAY'); ?></p>
 
-<table width="100%">
+<table>
    <tr>
-      <td width="20%"></td>
-      <td width="30%" align="left"><?php echo __('SELECT_DAY'); ?></td>
-      <td width="50%" align="left"><input id="datepicker" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
+      <td class="log-marge-day"></td>
+      <td class="log-marge-day-title"><?php echo __('SELECT_DAY'); ?>:</td>
+      <td class="log-marge-day-field"><input id="datepicker" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
    </tr>
    <tr>
       <td></td>
@@ -98,18 +98,19 @@ buttonImageOnly: 'true',
    <tr>
    <td></td>
    <td>
-         <p align="right"><INPUT type="submit" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);"></p>
+         <p class="p_right"><INPUT type="submit" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);"></p>
    </td>
    <td></td>
 </tr>
 </table>
 </form>
 <hr />
+<br />
 <form action="/cultibox/index.php/display-logs" method="post">
-<table width="100%">
+<table>
    <tr>
-      <td width="40%"><p class="title_conf"><img src="main/libs/img/arrow.png" /><?php echo __('SELECT_DISPLAYED_MONTH'); ?></p></td>
-      <td width="20%" align="left">
+      <td class="log-marge-month-title"><p class="title_conf"><img src="main/libs/img/arrow.png" /><?php echo __('SELECT_DISPLAYED_MONTH'); ?>:</p></td>
+      <td class="log-marge-month-field">
             <select name="startmonth">
                <option <?php if("$startmonth" == "1") { echo 'selected';} ?> value="01"><?php echo __('MONTH01'); ?></option>
                <option <?php if("$startmonth" == "2") { echo 'selected';} ?> value="02"><?php echo __('MONTH02'); ?></option>
@@ -137,11 +138,11 @@ buttonImageOnly: 'true',
                   echo "</select>";
             } ?>
       </td>
-      <td width="40%"></td>
+     <td class="log-marge-month"></td>
    </tr>
    <tr>
       <td></td>
-      <td><p align="center"><INPUT type="submit" value=<?php echo __('VIEW'); ?>></p></td>
+      <td><p class="p_center"><INPUT type="submit" value=<?php echo __('VIEW'); ?>></p></td>
       <td></td>
    </tr>
 </table>

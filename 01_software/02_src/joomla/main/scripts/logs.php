@@ -68,7 +68,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    if(!compare_program($program,$sd_card)) {
       $info=$info.__('UPDATED_PROGRAM');
       $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
-      save_program_on_sd($sd_card,$program,$error,$info);
+      save_program_on_sd($sd_card,$program,$error);
    }
    check_and_copy_firm($sd_card,$error);
    $info=$info.__('INFO_SD_CARD').": $sd_card";
@@ -80,9 +80,6 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    $main_error=$main_error.$tmp;
 }
 
-//$startday=getvar('startday');
-//$startmonth=getvar('startmonth');
-//$startyear=getvar('startyear');
 if(isset($_SESSION['startday'])) {
       $startday=$_SESSION['startday'];
 }

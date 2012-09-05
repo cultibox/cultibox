@@ -40,7 +40,7 @@ function db_priv_end($dbconn) {
 // }}}
 
 
-// {{{ db_update_logs($arr,&$out)
+// {{{ db_update_logs()
 // ROLE update logs table in the Database with the array $arr
 // IN $arr   array containing values to update database
 //    $out   error or warning message 
@@ -82,7 +82,7 @@ EOF;
 // }}}
 
 
-// {{{ db_update_power($arr,&$out)
+// {{{ db_update_power()
 // ROLE update power table in the Database with the array $arr
 // IN $arr   array containing values to update database
 //    $out   error or warning message 
@@ -125,7 +125,7 @@ EOF;
 // }}}
 
 
-// {{{ get_graph_array(&$res,$key,$startdate,$fake,$out)
+// {{{ get_graph_array()
 // ROLE get array needed to build graphics
 // IN $res         the array containing datas needed for the graphics
 //    $key      the key selectable from the database (temperature,humidity...)
@@ -156,7 +156,7 @@ EOF;
 // }}}
 
 
-// {{{ get_configuration($key,&$out)
+// {{{ get_configuration()
 // ROLE get configuration value for specific entries
 // IN $key   the key selectable from the database 
 //    $out   errors or warnings messages
@@ -187,7 +187,7 @@ EOF;
 // }}}
 
 
-// {{{ insert_configuration($key,$value,&$out)
+// {{{ insert_configuration()
 // ROLE set configuration value for specific entries
 // IN $key      the key selectable from the database 
 //    $value   value of the key to insert
@@ -219,7 +219,7 @@ EOF;
 // }}}
 
 
-// {{{ get_plug_conf($key,$id,&$out)
+// {{{ get_plug_conf()
 // ROLE get plug configuration value for specific entries
 // IN $key      the key selectable from the database 
 //    $id   id of the plug
@@ -251,7 +251,7 @@ EOF;
 // }}}
 
 
-// {{{ insert_plug_conf($key,$id,$value,&$out)
+// {{{ insert_plug_conf()
 // ROLE set plug configuration value for specific entries
 // IN $key      the key selectable from the database 
 //    $id       id of the plug
@@ -281,7 +281,7 @@ EOF;
 // }}}
 
 
-// {{{ get_plugs_infos($nb,&$out)
+// {{{ get_plugs_infos()
 // ROLE get plugs informations (name,id,type)
 // IN $id      id of the plug
 //    $out      errors or warnings messages
@@ -314,7 +314,7 @@ EOF;
 // }}}
 
 
-// {{{ get_data_plug($id,$out)
+// {{{ get_data_plug()
 // ROLE get a specific plug program
 // IN $selected_plug   plug id to select
 //    $out      errors or warnings messages
@@ -559,12 +559,10 @@ EOF;
                $ehh=substr($val['time_stop'],0,2);
                $emm=substr($val['time_stop'],2,2);
                $ess=substr($val['time_stop'],4,2);
-               //$value=round($val['value']/100);
                $time_end=mktime($ehh,$emm,$ess,0,0,1971);
                $time_start=mktime($shh,$smm,$sss,0,0,1971);
                $time_final=$time_end-$time_start;
 
-               //$theorical=$theorical+($time_final*$price*$value*$res_power[$id]['PLUG_POWER']);
                $theorical=$theorical+($time_final*$price*$res_power[$id]['PLUG_POWER']);
          }
       return $theorical;
@@ -574,7 +572,7 @@ EOF;
 // }}}
 
 
-// {{{ insert_program($plug_id,$start_time,$end_time,$value,&$out)
+// {{{ insert_program()
 // ROLE check and create new plug program
 // IN $plug_id      id of the plug
 //    $start_time   start time for the program
@@ -593,15 +591,7 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
                 "time_stop" => "$end_time",
                 "value" => "$value"
    );
-   //if(count($data_plug)>0) {
-      //if($data_plug[0]['time_start']=="000000") {
-       //  $first= array(
-        //              "time_start" => $data_plug[0]['time_start'],
-         //             "time_stop" => $data_plug[0]['time_stop'],
-          //            "value" => $data_plug[0]['value']
-           //   );   
-      //}
-   //}
+
    if((empty($first))||(!isset($first))) {
       $first=array(
          "time_start" => "000000",
@@ -694,7 +684,7 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 // }}}
 
 
-// {{{ compare_data_program($first,$last,$current,&$tmp)
+// {{{ compare_data_program()
 // ROLE compare and format 3 values of the pgroram graph
 // IN $first      first value to compare
 //    $last      last value to compare
@@ -1063,7 +1053,7 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 //}}}
 
 
-// {{{ insert_program_value($plug_id,$start_time,$end_time,$value,&$out)
+// {{{ insert_program_value()
 // ROLE insert a program into the database
 // IN $plug_id          id of the plug
 //    $start_time       start time for the program
@@ -1093,10 +1083,10 @@ EOF;
 // }}}
 
 
-// {{{ clean_program($plug_id,&$out)
+// {{{ clean_program()
 // ROLE clean program table
 // IN $plug_id          id of the plug
-//    $out      error or warning message
+//    $out              error or warning message
 // RET false if an error occured, true else
 function clean_program($plug_id,&$out) {
    $db = db_priv_start();
@@ -1123,10 +1113,10 @@ EOF;
 // }}}}
 
 
-// {{{ export_program($id,&$out)
+// {{{ export_program()
 // ROLE export a program into a text file
 // IN $id          id of the program
-//    $out      error or warning message
+//    $out         error or warning message
 // RET none
 function export_program($id,&$out) {
        $db = db_priv_start();
@@ -1139,22 +1129,22 @@ EOF;
 
        $file="tmp/program_plug${id}.prg";
 
-       if($f=fopen("$file","w+")) {
+      if($f=fopen("$file","w+")) {
             fputs($f,"#Program : time_start time_stop value\r\n");
-      if(count($res)>0) {
-         foreach($res as $record) {
+            if(count($res)>0) {
+               foreach($res as $record) {
                   fputs($f,$record['time_start'].",".$record['time_stop'].",".$record['value']."\r\n");
-         }
-      }
-      }
+               }
+            }
+      } 
       fclose($f);
 }
 // }}}
 
 
-// {{{ purge_program($arr)
+// {{{ purge_program()
 // ROLE purge and check program 
-// IN $arr   array containing value of the program
+// IN $arr        array containing value of the program
 // RET the array purged
 function purge_program($arr) {
    $tmp=array();
@@ -1176,7 +1166,7 @@ function purge_program($arr) {
 // }}}
 
 
-// {{{ optimize_program($arr)
+// {{{ optimize_program()
 // ROLE optimize a program by deleting useless value
 // IN $arr      array containing value of the program
 // RET the array opzimized 
@@ -1213,7 +1203,7 @@ function optimize_program($arr) {
 // }}}
 
 
-/// {{{ create_plugconf_from_database($nb)
+/// {{{ create_plugconf_from_database()
 // 
 // 1 fichier par prise : plugnn ou n est le numéro de la prise. Exemple plug01 ou encore plug14
 // 
@@ -1311,7 +1301,7 @@ EOF;
 
 /// {{{ create_program_from_database()
 // ROLE read programs from the database and format its to be write into a sd card
-// IN $out   error or warning message
+// IN $out        error or warning message
 // RET an array containing datas
 function create_program_from_database(&$out="") {
    $db = db_priv_start();
@@ -1451,7 +1441,7 @@ EOF;
 
 // {{{ create_calendar_from_database()
 // ROLE read calendar from the database and format its to be write into a sd card
-// IN   $out   error or warning message
+// IN   $out         error or warning message
 // RET an array containing datas
 function create_calendar_from_database(&$out="") {
    $year=date('Y');
@@ -1609,11 +1599,11 @@ EOF;
 // }}}
 
 
-// {{{ find_value_for_plug($data,$time,$plug)
+// {{{ find_value_for_plug()
 //ROLE find if a plug is concerned by a time spaces and return its value
-// IN   $data   array to look for time space
-//   $time   the time to find
-//   $plug   the specific plug concerned
+// IN $data       array to look for time space
+//    $time       the time to find
+//    $plug        the specific plug concerned
 // RET   000 if the plug is not concerned or if its value is 0, 0001 else
 function find_value_for_plug($data,$time,$plug) {
    for($i=0;$i<count($data);$i++) {
@@ -1645,9 +1635,9 @@ function find_value_for_plug($data,$time,$plug) {
 // }}}
 
 
-// {{{ check_empty_programs($nb_plugs)
+// {{{ check_empty_programs()
 //ROLE check if no programs have been defined yet
-// IN  $nb_plugs   number of plugs used
+// IN  $nb_plugs        number of plugs used
 // RET true if there is a program defined, false else
 function check_programs($nb_plugs=0) {
    if($nb_plugs>0) {
@@ -1672,7 +1662,7 @@ EOF;
 
 // {{{ reset_plug_identificator()
 //ROLE check if no programs have been defined yet
-// IN  $out   warnings or errors messages 
+// IN  $out       warnings or errors messages 
 // RET none
 function reset_plug_identificator(&$out="") {
            $db = db_priv_start();
@@ -1700,9 +1690,9 @@ EOF;
 
 // {{{ generate_program_from_file()
 //ROLE generate array containing data for a prgram from a file
-// IN  $file   file to be read
-//     $plug   plug id for the program
-//     $out    error or warning message
+// IN  $file         file to be read
+//     $plug         plug id for the program
+//     $out          error or warning message
 // RET array containing program's data
 function generate_program_from_file($file="",$plug,&$out="") {
          $res=array();
