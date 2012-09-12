@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.1.193"
+#define MyAppVersion "1.1.254"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
@@ -34,7 +34,7 @@ DisableDirPage=yes
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 
-[code]
+[code2]
 function InitializeSetup():boolean;
 var
   ResultCode: integer;
@@ -114,7 +114,7 @@ Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
   Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\fake_log.sql"""; \
   WorkingDir: "{app}"; \
   Description: "Install log base";
-Filename: "{cmd}"; \
+; Filename: "{cmd}"; \
   Parameters: "/C ""{app}\run\load.bat"""; \
   WorkingDir: "{app}\run"; \
   Description: "Install log user base";
