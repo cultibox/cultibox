@@ -86,6 +86,7 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/modules/mod_authn_default.so* -> mod_authn_default.so -> /opt/lampp/modules
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/modules/mod_autoindex.so* -> mod_autoindex.so -> /opt/lampp/modules
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/modules/mod_cgi.so* -> mod_cgi.so -> /opt/lampp/modules
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/var/proftpd/proftpd.delay -> proftpd.delay -> /opt/lampp/var/proftpd
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/var/mysql/phpmyadmin/pma_pdf_pages.MYI -> pma_pdf_pages.MYI -> /opt/lampp/var/mysql/phpmyadmin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/var/mysql/phpmyadmin/pma_table_coords.MYI -> pma_table_coords.MYI -> /opt/lampp/var/mysql/phpmyadmin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/var/mysql/phpmyadmin/pma_relation.MYD -> pma_relation.MYD -> /opt/lampp/var/mysql/phpmyadmin
@@ -211,6 +212,7 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/var/mysql/mysql/host.MYI -> host.MYI -> /opt/lampp/var/mysql/mysql
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/var/mysql/mysql/plugin.MYD -> plugin.MYD -> /opt/lampp/var/mysql/mysql
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/var/mysql/mysql_upgrade_info -> mysql_upgrade_info -> /opt/lampp/var/mysql
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/var/proftpd.delay -> proftpd.delay -> /opt/lampp/var
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/ldapsearch* -> ldapsearch -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/listswf_d* -> listswf_d -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/checkgid* -> checkgid -> /opt/lampp/bin
@@ -313,7 +315,6 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/dbiprof* -> dbiprof -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/freetype-config* -> freetype-config -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/listaction* -> listaction -> /opt/lampp/bin
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/mysqlhotcopy* -> mysqlhotcopy -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/sablot-config* -> sablot-config -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/png2dbl* -> png2dbl -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/apxs* -> apxs -> /opt/lampp/bin
@@ -360,7 +361,6 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/podselect* -> podselect -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/icu-config* -> icu-config -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/gencfu* -> gencfu -> /opt/lampp/bin
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/mysqldumpslow* -> mysqldumpslow -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/msgcomm* -> msgcomm -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/openssl_fips_fingerprint* -> openssl_fips_fingerprint -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/bsqldb* -> bsqldb -> /opt/lampp/bin
@@ -392,7 +392,6 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/gettextize* -> gettextize -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/crc32* -> crc32 -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/pl2pm* -> pl2pm -> /opt/lampp/bin
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/mysqlbinlog* -> mysqlbinlog -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/swftotcl* -> swftotcl -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/ldapurl* -> ldapurl -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/libpng-config* -> libpng-config -> /opt/lampp/bin
@@ -403,7 +402,6 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/ora_explain* -> ora_explain -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/mysql_zap* -> mysql_zap -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/xsubpp* -> xsubpp -> /opt/lampp/bin
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/mysqlbug* -> mysqlbug -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/pngtogd2* -> pngtogd2 -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/msggrep* -> msggrep -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/dbmmanage* -> dbmmanage -> /opt/lampp/bin
@@ -425,7 +423,6 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/mysqld_multi* -> mysqld_multi -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/ncurses5-config* -> ncurses5-config -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/php-config-5.3.8* -> php-config-5.3.8 -> /opt/lampp/bin
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/mysql_secure_installation* -> mysql_secure_installation -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/mysqladmin* -> mysqladmin -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/msgattrib* -> msgattrib -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/mysql* -> mysql -> /opt/lampp/bin
@@ -468,6 +465,7 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/etc/ssl.crt/server.crt -> server.crt -> /opt/lampp/etc/ssl.crt
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/etc/lampp/selinux -> selinux -> /opt/lampp/etc/lampp
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/etc/lampp/startssl -> startssl -> /opt/lampp/etc/lampp
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/etc/lampp/startftp -> startftp -> /opt/lampp/etc/lampp
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/etc/ssl.key/server.key -> server.key -> /opt/lampp/etc/ssl.key
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/etc/original/extra/httpd-dav.conf -> httpd-dav.conf -> /opt/lampp/etc/original/extra
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/etc/original/extra/httpd-languages.conf -> httpd-languages.conf -> /opt/lampp/etc/original/extra
@@ -2042,6 +2040,7 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/modules/calendar/css/images/icons/date_reflash.png -> date_reflash.png -> /opt/lampp/htdocs/cultibox/main/modules/calendar/css/images/icons
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/modules/calendar/css/images/icons/ico1.gif -> ico1.gif -> /opt/lampp/htdocs/cultibox/main/modules/calendar/css/images/icons
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/modules/calendar/css/images/cal.gif -> cal.gif -> /opt/lampp/htdocs/cultibox/main/modules/calendar/css/images
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/modules/calendar/css/images/edit_details.png -> edit_details.png -> /opt/lampp/htdocs/cultibox/main/modules/calendar/css/images
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/modules/calendar/css/colorselect.css -> colorselect.css -> /opt/lampp/htdocs/cultibox/main/modules/calendar/css
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/modules/calendar/css/dp.css -> dp.css -> /opt/lampp/htdocs/cultibox/main/modules/calendar/css
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/modules/calendar/css/calendar.css -> calendar.css -> /opt/lampp/htdocs/cultibox/main/modules/calendar/css
@@ -2057,6 +2056,7 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/templates/data/empty_file_big.tpl -> empty_file_big.tpl -> /opt/lampp/htdocs/cultibox/main/templates/data
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/templates/programs.html -> programs.html -> /opt/lampp/htdocs/cultibox/main/templates
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/templates/calendar.html -> calendar.html -> /opt/lampp/htdocs/cultibox/main/templates
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/templates/waiting.html -> waiting.html -> /opt/lampp/htdocs/cultibox/main/templates
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/templates/wizard.html -> wizard.html -> /opt/lampp/htdocs/cultibox/main/templates
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/templates/configuration.html -> configuration.html -> /opt/lampp/htdocs/cultibox/main/templates
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/templates/cost.html -> cost.html -> /opt/lampp/htdocs/cultibox/main/templates
@@ -2073,6 +2073,7 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/scripts/cost.php -> cost.php -> /opt/lampp/htdocs/cultibox/main/scripts
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/scripts/logs.php -> logs.php -> /opt/lampp/htdocs/cultibox/main/scripts
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/scripts/welcome.php -> welcome.php -> /opt/lampp/htdocs/cultibox/main/scripts
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/scripts/waiting.php -> waiting.php -> /opt/lampp/htdocs/cultibox/main/scripts
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/scripts/wizard.php -> wizard.php -> /opt/lampp/htdocs/cultibox/main/scripts
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/scripts/programs.php -> programs.php -> /opt/lampp/htdocs/cultibox/main/scripts
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/scripts/calendar.php -> calendar.php -> /opt/lampp/htdocs/cultibox/main/scripts
@@ -2101,6 +2102,7 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/images-jquery/ui-bg_diagonals-thick_18_b81900_40x40.png -> ui-bg_diagonals-thick_18_b81900_40x40.png -> /opt/lampp/htdocs/cultibox/main/libs/img/images-jquery
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/images-jquery/ui-icons_ffffff_256x240.png -> ui-icons_ffffff_256x240.png -> /opt/lampp/htdocs/cultibox/main/libs/img/images-jquery
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/images-jquery/ui-icons_222222_256x240.png -> ui-icons_222222_256x240.png -> /opt/lampp/htdocs/cultibox/main/libs/img/images-jquery
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/waiting.gif -> waiting.gif -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/arrow.png -> arrow.png -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/infos.png -> infos.png -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/fake_log_fr_FR.png -> fake_log_fr_FR.png -> /opt/lampp/htdocs/cultibox/main/libs/img
@@ -5346,7 +5348,6 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/gettext/ABOUT-NLS -> ABOUT-NLS -> /opt/lampp/share/gettext
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/gettext/msgunfmt.tcl -> msgunfmt.tcl -> /opt/lampp/share/gettext
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/gettext/gettext.h -> gettext.h -> /opt/lampp/share/gettext
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/german/errmsg.sys -> errmsg.sys -> /opt/lampp/share/german
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/spanish/errmsg.sys -> errmsg.sys -> /opt/lampp/share/spanish
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/locale/ro/LC_MESSAGES/libiconv.mo -> libiconv.mo -> /opt/lampp/share/locale/ro/LC_MESSAGES
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/locale/de/LC_MESSAGES/gettext.mo -> gettext.mo -> /opt/lampp/share/locale/de/LC_MESSAGES
@@ -5437,7 +5438,6 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/lampp/alladdons* -> alladdons -> /opt/lampp/share/lampp
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/lampp/backup* -> backup -> /opt/lampp/share/lampp
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/curl/curl-ca-bundle.crt -> curl-ca-bundle.crt -> /opt/lampp/share/curl
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/dutch/errmsg.sys -> errmsg.sys -> /opt/lampp/share/dutch
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/addons/test* -> test -> /opt/lampp/share/addons
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/mysql/charsets/danish.conf -> danish.conf -> /opt/lampp/share/mysql/charsets
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/share/mysql/charsets/koi8_ru.conf -> koi8_ru.conf -> /opt/lampp/share/mysql/charsets
@@ -6421,6 +6421,8 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/sqlite/COPYRIGHT -> COPYRIGHT -> /opt/lampp/licenses/sqlite
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/libpng/LICENSE -> LICENSE -> /opt/lampp/licenses/libpng
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/ming/LICENSE -> LICENSE -> /opt/lampp/licenses/ming
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/proftpd/COPYING -> COPYING -> /opt/lampp/licenses/proftpd
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/proftpd/license.txt -> license.txt -> /opt/lampp/licenses/proftpd
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/gettext/COPYING -> COPYING -> /opt/lampp/licenses/gettext
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/pdfclass/LICENCE -> LICENCE -> /opt/lampp/licenses/pdfclass
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/postgresql/COPYRIGHT -> COPYRIGHT -> /opt/lampp/licenses/postgresql
@@ -6447,10 +6449,14 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/mcrypt/COPYING.LIB -> COPYING.LIB -> /opt/lampp/licenses/mcrypt
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/mcrypt/AUTHORS -> AUTHORS -> /opt/lampp/licenses/mcrypt
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/gd/index.html* -> index.html -> /opt/lampp/licenses/gd
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/perl/Copying -> Copying -> /opt/lampp/licenses/perl
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/mod_perl/LICENSE -> LICENSE -> /opt/lampp/licenses/mod_perl
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/libxml/COPYING -> COPYING -> /opt/lampp/licenses/libxml
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/mysql/COPYING -> COPYING -> /opt/lampp/licenses/mysql
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/mysql/COPYING.LIB -> COPYING.LIB -> /opt/lampp/licenses/mysql
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/libapreq/LICENSE -> LICENSE -> /opt/lampp/licenses/libapreq
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/webalizer/COPYING -> COPYING -> /opt/lampp/licenses/webalizer
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/licenses/webalizer/Copyright -> Copyright -> /opt/lampp/licenses/webalizer
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/sbin/gensprep* -> gensprep -> /opt/lampp/sbin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/sbin/mysqld* -> mysqld -> /opt/lampp/sbin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/sbin/mysqlmanager* -> mysqlmanager -> /opt/lampp/sbin
@@ -6693,10 +6699,6 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/icons/sphere2.gif -> sphere2.gif -> /opt/lampp/icons
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/icons/pie2.png -> pie2.png -> /opt/lampp/icons
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/icons/link.gif -> link.gif -> /opt/lampp/icons
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/lib/icu/4.2.1/pkgdata.inc -> pkgdata.inc -> /opt/lampp/lib/icu/4.2.1
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/lib/icu/4.2.1/Makefile.inc -> Makefile.inc -> /opt/lampp/lib/icu/4.2.1
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/lib/icu/pkgdata.inc -> pkgdata.inc -> /opt/lampp/lib/icu
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/lib/icu/Makefile.inc -> Makefile.inc -> /opt/lampp/lib/icu
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/lib/pkgconfig/libcurl.pc -> libcurl.pc -> /opt/lampp/lib/pkgconfig
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/lib/pkgconfig/sqlite3.pc -> sqlite3.pc -> /opt/lampp/lib/pkgconfig
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/lib/pkgconfig/zzip-zlib-config.pc -> zzip-zlib-config.pc -> /opt/lampp/lib/pkgconfig
@@ -8137,6 +8139,7 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/error/HTTP_METHOD_NOT_ALLOWED.html.var -> HTTP_METHOD_NOT_ALLOWED.html.var -> /opt/lampp/error
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/error/HTTP_UNSUPPORTED_MEDIA_TYPE.html.var -> HTTP_UNSUPPORTED_MEDIA_TYPE.html.var -> /opt/lampp/error
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/error/HTTP_REQUEST_URI_TOO_LARGE.html.var -> HTTP_REQUEST_URI_TOO_LARGE.html.var -> /opt/lampp/error
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/RELEASENOTES -> RELEASENOTES -> /opt/lampp
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/lampp* -> lampp -> /opt/lampp
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/takecontrol.png -> takecontrol.png -> /opt/lampp
 <</FILES>>

@@ -6,9 +6,9 @@ case "$1" in
            dir=`dirname $0`
            cd $dir
            tar xzvf xampp-linux-lite-1.7.7.tar.gz -C ubuntu-precise64/
-           rm ubuntu-precise64/lampp/share/man
-           rm ubuntu-precise64/lampp/share/openssl/man
-           rm ubuntu-precise64/lampp/lib/terminfo
+           #rm ubuntu-precise64/lampp/share/man
+           #rm ubuntu-precise64/lampp/share/openssl/man
+           #rm ubuntu-precise64/lampp/lib/terminfo
            cp -R ../../02_src/joomla ubuntu-precise64/lampp/htdocs/cultibox
            cp conf-lampp/httpd.conf ubuntu-precise64/lampp/etc/
            cp conf-lampp/php.ini ubuntu-precise64/lampp/etc/
@@ -26,9 +26,9 @@ case "$1" in
            dir=`dirname $0`
            cd $dir
            tar xzvf xampp-linux-lite-1.7.7.tar.gz -C ubuntu-precise32/
-           rm ubuntu-precise32/lampp/share/man
-           rm ubuntu-precise32/lampp/share/openssl/man
-           rm ubuntu-precise32/lampp/lib/terminfo
+           #rm ubuntu-precise32/lampp/share/man
+           #rm ubuntu-precise32/lampp/share/openssl/man
+           #rm ubuntu-precise32/lampp/lib/terminfo
            cp -R ../../02_src/joomla ubuntu-precise32/lampp/htdocs/cultibox
            cp conf-lampp/httpd.conf ubuntu-precise32/lampp/etc/
            cp conf-lampp/php.ini ubuntu-precise32/lampp/etc/
