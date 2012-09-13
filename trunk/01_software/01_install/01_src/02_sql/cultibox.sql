@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 04, 2012 at 11:35 AM
+-- Generation Time: Sep 13, 2012 at 01:11 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -51,6 +51,9 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `ALARM_SENSO` varchar(4) NOT NULL DEFAULT '000T',
   `ALARM_SENSS` varchar(4) NOT NULL DEFAULT '000+',
   `COST_PRICE` decimal(6,4) NOT NULL DEFAULT '0.1249',
+  `COST_PRICE_HP` decimal(6,4) NOT NULL DEFAULT '0.1353',
+  `COST_PRICE_HC` decimal(6,4) NOT NULL DEFAULT '0.0926',
+  `COST_TYPE` varchar(20) NOT NULL DEFAULT 'standard',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -58,8 +61,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 -- Dumping data for table `configuration`
 --
 
-INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_PROGRAM_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `LOG_POWER_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `COST_PRICE`) VALUES
-(1, 'False', '1.0.0', 'red', 'green', 'black', 'blue', 'purple', 5, 1, 3, -1, 'fr_FR', 50, 100, 1000, 'True', '0000', '50.0', '000H', '000+', 0.1249);
+INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_PROGRAM_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `LOG_POWER_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `COST_TYPE`) VALUES
+(1, 'False', '1.0.0', 'red', 'green', 'black', 'blue', 'purple', 5, 1, 3, -1, 'fr_FR', 50, 100, 1000, 'True', '0000', '50.0', '000H', '000+', 0.1249, 0.1353, 0.0926, 'standard');
 
 -- --------------------------------------------------------
 
