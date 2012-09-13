@@ -155,6 +155,21 @@ msgstr "Humidité"
 msgid "CONFIGURE_COST_PRICE"
 msgstr "Prix du kilowatt-heure"
 
+msgid "CONFIGURE_COST_PRICE_HP"
+msgstr "Configurer le prix en heure pleine"
+
+msgid "CONFIGURE_COST_PRICE_HC"
+msgstr "Configurer le prix en heure creuse"
+
+msgid "COST_STANDARD"
+msgstr "Standard"
+
+msgid "COST_HPC"
+msgstr "Heure pleine/Heure creuse"
+
+msgid "CONFIGURE_COST_TYPE"
+msgstr "Configurer le type d'abonnement électrique utilisé"
+
 msgid "CHECK_UPDATE"
 msgstr "Vérifier automatiquement la présence de mises à jour"
 
@@ -792,5 +807,8 @@ msgstr "Aucune données ne sont présentes dans la base pour le moment, les logs
 
 msgid "TOOLTIP_CHECK_UPDATE"
 msgstr "Vérifie si des mises à jour sont disponibles et vous propose de les télécharger le cas échéant"
+
+msgid "TOOLTIP_COST_TYPE"
+msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommé."
 
 
