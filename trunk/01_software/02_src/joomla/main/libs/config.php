@@ -49,7 +49,7 @@ $GLOBALS['FIRST_USE'] = true;
 $GLOBALS['FIRST_LOG_YEAR'] = '2012';
 
 // Remote file to check update for the interface
-$GLOBALS['UPDATE_FILE'] = 'http://cultibox.fr/updates/update_list.txt';
+$GLOBALS['UPDATE_FILE'] = 'http://cultibox.fr/download/software/updates/update_list.txt';
 
 // Enable/Disable export and import module
 $GLOBALS['MODULE_IMPORT_EXPORT'] = false;
