@@ -36,6 +36,9 @@ $alarm_value=getvar('alarm_value');
 $alarm_senso=getvar('alarm_senso');
 $alarm_senss=getvar('alarm_senss');
 $cost_price=getvar('cost_price');
+$cost_price_hp=getvar('cost_price_hp');
+$cost_price_hc=getvar('cost_price_hc');
+$cost_type=getvar('cost_type');
 $update=getvar('update');
 $program="";
 $version=get_configuration("VERSION",$error);
@@ -211,6 +214,13 @@ if(!empty($alarm_senss)) {
         $alarm_senss = get_configuration("ALARM_SENSS",$error);
 }
 
+if(!empty($cost_type)) {
+        insert_configuration("COST_TYPE","$cost_type",$error);
+        $update_conf=true;
+} else {
+        $cost_type = get_configuration("COST_TYPE",$error);
+}
+
 if(!empty($cost_price)||("$cost_price"=="0")) {
          $cost_price=str_replace(",",".","$cost_price");
          if(check_numeric_value("$cost_price")) {
@@ -224,6 +234,36 @@ if(!empty($cost_price)||("$cost_price"=="0")) {
 } else {
         $cost_price = get_configuration("COST_PRICE",$error);
 }
+
+
+if(!empty($cost_price_hc)||("$cost_price_hc"=="0")) {
+         $cost_price_hc=str_replace(",",".","$cost_price_hc");
+         if(check_numeric_value("$cost_price_hc")) {
+            insert_configuration("COST_PRICE_HC","$cost_price_hc",$error);
+            $update_conf=true;
+         } else {
+            $cost_price_hc = get_configuration("COST_PRICE_HC",$error);
+            $error=$error.__('ERROR_PRICE_VALUE');
+            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error);
+         }
+} else {
+        $cost_price_hc = get_configuration("COST_PRICE_HC",$error);
+}
+
+if(!empty($cost_price_hp)||("$cost_price_hp"=="0")) {
+         $cost_price_hp=str_replace(",",".","$cost_price_hp");
+         if(check_numeric_value("$cost_price_hp")) {
+            insert_configuration("COST_PRICE_HP","$cost_price_hp",$error);
+            $update_conf=true;
+         } else {
+            $cost_price_hp = get_configuration("COST_PRICE_HP",$error);
+            $error=$error.__('ERROR_PRICE_VALUE');
+            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error);
+         }
+} else {
+        $cost_price_hp = get_configuration("COST_PRICE_HP",$error);
+}
+
 
 if((empty($error))||(!isset($error))) {
 	if($update_conf) {
