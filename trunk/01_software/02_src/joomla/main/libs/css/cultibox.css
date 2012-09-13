@@ -217,3 +217,11 @@ span.info-bulle-contenu
    padding-right: 12px;
    color: white;
 }
+
+label.input-file
+{
+    width: 71%;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+}

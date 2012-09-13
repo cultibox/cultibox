@@ -271,6 +271,7 @@ $(document).ready(function() {
 </table>
 </form>
 
+<?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>
 <table class="table_width">
   <tr>
       <td class="program-td-marge"></td>
@@ -294,10 +295,11 @@ $(document).ready(function() {
                </td>
                <td class="program-action-center">
                   <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post" enctype="multipart/form-data">
-                     <input type="file" name="upload_file" size="5">
+                     <label class="input-file"> 
+                     <input type="file" name="upload_file">
+                     </label>
                      <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
                      <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-                  <br />
                      <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>">
                   </form>
                </td>
@@ -306,6 +308,21 @@ $(document).ready(function() {
       </td>
    </tr>
 </table>
+<?php } else { ?>
+   <table class="table_width">
+  <tr>
+      <td class="program-td-marge"></td>
+      <td class="program-valid-right">
+      <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
+      <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
+      <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset">
+      </form>
+      </td>
+      <td class="program-marge"></td>
+   </tr>
+</table>
+
+<?php } ?>
 
 <?php if((isset($info_plug[$i]))&&(!empty($info_plug[$i]))) { ?>
 <div id="info">
