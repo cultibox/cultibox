@@ -46,17 +46,17 @@ $update=get_configuration("CHECK_UPDATE",$error);
 $version=get_configuration("VERSION",$error);
 
 if(isset($_SESSION['select_plug'])) {
-      $select_plug=$_SESSION['select_plug'];
+   $select_plug=$_SESSION['select_plug'];
 }
 
 
 if(isset($_SESSION['select_power'])) {
-      $select_power=$_SESSION['select_power'];
+   $select_power=$_SESSION['select_power'];
 }
 
 
 if(!isset($pop_up)) {
-        $pop_up = get_configuration("SHOW_POPUP",$error);
+   $pop_up = get_configuration("SHOW_POPUP",$error);
 }
 
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -81,15 +81,15 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 }
 
 if(isset($_SESSION['startday'])) {
-      $startday=$_SESSION['startday'];
+   $startday=$_SESSION['startday'];
 }
 
 if(isset($_SESSION['startmonth'])) {
-      $startmonth=$_SESSION['startmonth'];
+   $startmonth=$_SESSION['startmonth'];
 }
 
 if(isset($_SESSION['startyear'])) {
-      $startyear=$_SESSION['startyear'];
+   $startyear=$_SESSION['startyear'];
 }
 $load_log=false;
 
@@ -108,67 +108,84 @@ $startday=str_replace(' ','',"$startday");
 
 
 if((!isset($startmonth))||(empty($startmonth))) {
-        $startmonth=date('m');
+   $startmonth=date('m');
 	$startyear=date('Y');
 } else {
-        $type = "month";
+   $type = "month";
 }
 
 if((!isset($type))||(empty($type))){
 	$type="days";
 }
 
-
+// ************  Log and power file reading from SD card  ********************//
 $log = array();
 $power=array();
 $load_log=false;
 if((isset($sd_card))&&(!empty($sd_card))) {
-	for ($month = 1; $month <= 12; $month++) {
-  		for ($day = 1; $day <= 31; $day++) {
- 			if($day<10) {
-   			$dday="0".$day;
- 			} else {
-   			$dday=$day;
- 			}
- 			if($month<10) {
-      			$mmonth="0".$month;
-   		} else {
-   			$mmonth=$month;
- 			}
-			// Search if file exists
-			if(file_exists("$sd_card/logs/$mmonth/$dday")) {
- 				// get log value
- 				get_log_value("$sd_card/logs/$mmonth/$dday",$log);
-
-            if(!is_file("$sd_card/logs/$mmonth/pwr_$dday")) {
-               copy("main/templates/data/empty_file_big.tpl", "$sd_card/logs/$mmonth/pwr_$dday");
+   // Workaround to avoid timeout (60s)
+   // Search only on two previous months
+   $FirstMonthSearch = date('n') - 1;
+   if ($FirstMonthSearch == 0) {
+      $FirstMonthSearch = 12;
+   }
+   $ListMonthSearch = array($FirstMonthSearch, date('n'));
+   
+   // Foreach months present in the array search logs and power
+   foreach ($ListMonthSearch as $month) {
+        for ($day = 1; $day <= 31; $day++) {
+      
+         // Don't search for nexts days
+         if ($month != date('n') || $day <= date('j') ) {
+      
+            // Convert date to be equivalent of directory
+             if($day<10) {
+               $dday="0".$day;
+             } else {
+               $dday=$day;
+             }
+             if($month<10) {
+                  $mmonth="0".$month;
             } else {
-               get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);
-            }
- 				if(!empty($log)) {
-   				if(db_update_logs($log,$error)) {
-                  clean_log_file("$sd_card/logs/$mmonth/$dday");
-               }
-   			   unset($log) ;
-   				$log = array();
- 				   $load_log=true;
-   			}
+               $mmonth=$month;
+             }
 
-            if(!empty($power)) {
-               if(db_update_power($power,$error)) {
-                  clean_power_file("$sd_card/logs/$mmonth/pwr_$dday");
+            // Search if file exists
+            if(file_exists("$sd_card/logs/$mmonth/$dday")) {
+                // get log value
+               if(is_file("$sd_card/logs/$mmonth/$dday")) {
+                  get_log_value("$sd_card/logs/$mmonth/$dday",$log);
                }
-               unset($power) ;
-               $power = array();
-               $load_log=true;
+                if(!empty($log)) {
+                  if(db_update_logs($log,$error)) {
+                     clean_log_file("$sd_card/logs/$mmonth/$dday");
+                  }
+                  unset($log) ;
+                  $log = array();
+                   $load_log=true;
+               }
+
+               // get power values
+               if(is_file("$sd_card/logs/$mmonth/pwr_$dday")) {
+                  get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);
+               }
+
+               if(!empty($power)) {
+                  if(db_update_power($power,$error)) {
+                     clean_power_file("$sd_card/logs/$mmonth/pwr_$dday");
+                  }
+                  unset($power) ;
+                  $power = array();
+                  $load_log=true;
+               }
             }
-			}
-  		}
-	}
+         }
+        }
+   }
 }
 
 if(($load_log)&&(empty($error))) {
-	$info=$info.__('VALID_LOAD_LOG');
+   $info=$info.__('VALID_LOAD_LOG');
 } 
 
 if("$type"=="days") {
@@ -190,11 +207,11 @@ if("$type"=="days") {
 }
 
 if("$type" == "days") {
-	if($check_format) {
-		if((isset($select_plug))&&(!empty($select_plug))) {
-			$data_plug=get_data_plug($select_plug,$error);
- 	      $data=format_program_highchart_data($data_plug,$startday);
-			$plug_type=get_plug_conf("PLUG_TYPE",$select_plug,$error);
+   if($check_format) {
+      if((isset($select_plug))&&(!empty($select_plug))) {
+         $data_plug=get_data_plug($select_plug,$error);
+          $data=format_program_highchart_data($data_plug,$startday);
+         $plug_type=get_plug_conf("PLUG_TYPE",$select_plug,$error);
       }
 
       if((isset($select_power))&&(!empty($select_power))) {
@@ -211,9 +228,9 @@ if("$type" == "days") {
          }
       }
       $xlegend="XAXIS_LEGEND_DAY";
-     	$styear=substr($startday, 0, 4);
-     	$stmonth=substr($startday, 5, 2)-1;
-     	$stday=substr($startday, 8, 2);
+        $styear=substr($startday, 0, 4);
+        $stmonth=substr($startday, 5, 2)-1;
+        $stday=substr($startday, 8, 2);
      
 
       get_graph_array($check_tmp,"temperature/100","%%","False",$error);
@@ -263,46 +280,46 @@ if("$type" == "days") {
 
      }
      $next=1;
-	} 
+   } 
 } else {
-	if($check_format) {
-		$nb = date('t',mktime(0, 0, 0, $startmonth, 1, $startyear)); 
-		for($i=1;$i<=$nb;$i++) {
-			if($i<10) {
-				$i="0$i";
-			}
-			$ddate="$startyear-$startmonth-$i";
-                        get_graph_array($temperature,"temperature/100","$ddate","False",$error);
-                        get_graph_array($humidity,"humidity/100","$ddate","False",$error);
-			if("$data_temp" != "" ) {
-				$data_temp="$data_temp, ".get_format_graph($temperature);
-			} else {
-				$data_temp=get_format_graph($temperature);
-			}
+   if($check_format) {
+      $nb = date('t',mktime(0, 0, 0, $startmonth, 1, $startyear)); 
+      for($i=1;$i<=$nb;$i++) {
+         if($i<10) {
+            $i="0$i";
+         }
+         $ddate="$startyear-$startmonth-$i";
+         get_graph_array($temperature,"temperature/100","$ddate","False",$error);
+         get_graph_array($humidity,"humidity/100","$ddate","False",$error);
+         if("$data_temp" != "" ) {
+            $data_temp="$data_temp, ".get_format_graph($temperature);
+         } else {
+            $data_temp=get_format_graph($temperature);
+         }
 
-			if("$data_humi" != "" ) {
-                        	$data_humi="$data_humi, ".get_format_graph($humidity);
-                	} else {
-                        	$data_humi=get_format_graph($humidity);
-                	}
-			$temperature = array();
-			$humidity=array();
-		}
-		if("$data_humi" == "" ) {
-			$error=$error.__('EMPTY_HUMIDITY_DATA');
-		}
-		if("$data_temp" == "" ) {
-			$error=$error.__('EMPTY_TEMPERATURE_DATA');
-                }
-	
-		$data_temp=get_format_month($data_temp);
-		$data_humi=get_format_month($data_humi);
-		$xlegend="XAXIS_LEGEND_MONTH";
-		$styear=$startyear;
-		$stmonth=$startmonth-1;
-		$stday=1;
-		$next=20;
-	} 
+         if("$data_humi" != "" ) {
+            $data_humi="$data_humi, ".get_format_graph($humidity);
+          } else {
+            $data_humi=get_format_graph($humidity);
+          }
+         $temperature = array();
+         $humidity=array();
+      }
+      if("$data_humi" == "" ) {
+         $error=$error.__('EMPTY_HUMIDITY_DATA');
+      }
+      if("$data_temp" == "" ) {
+         $error=$error.__('EMPTY_TEMPERATURE_DATA');
+      }
+
+      $data_temp=get_format_month($data_temp);
+      $data_humi=get_format_month($data_humi);
+      $xlegend="XAXIS_LEGEND_MONTH";
+      $styear=$startyear;
+      $stmonth=$startmonth-1;
+      $stday=1;
+      $next=20;
+   } 
 }
 
 $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$error);
