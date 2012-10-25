@@ -891,6 +891,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       fputs($f,"LOG_MAX_TMP:3000\r\n");
       fputs($f,"LOG_MIN_HMI:0000\r\n");
       fputs($f,"LOG_MAX_HMI:9000\r\n");
+      fputs($f,"RTC_OFFSET_:0000\r\n");
       fclose($f);
    } else {
       $out=$out.__('ERROR_WRITE_SD');
