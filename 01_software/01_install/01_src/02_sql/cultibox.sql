@@ -31,7 +31,7 @@ USE `cultibox`;
 CREATE TABLE IF NOT EXISTS `configuration` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `CHECK_UPDATE` varchar(5) NOT NULL DEFAULT 'False',
-  `VERSION` varchar(30) NOT NULL DEFAULT '1.0.0',
+  `VERSION` varchar(30) NOT NULL DEFAULT '1.0.263',
   `COLOR_HUMIDITY_GRAPH` varchar(30) NOT NULL DEFAULT 'green',
   `COLOR_TEMPERATURE_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
   `COLOR_POWER_GRAPH` varchar(30) NOT NULL DEFAULT 'black',
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 --
 
 INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_PROGRAM_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `LOG_POWER_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `COST_TYPE`) VALUES
-(1, 'False', '1.0.0', 'red', 'green', 'black', 'blue', 'purple', 5, 1, 3, -1, 'fr_FR', 50, 100, 1000, 'True', '0000', '50.0', '000H', '000+', 0.1249, 0.1353, 0.0926, 'standard');
+(1, 'False', '1.0.263', 'red', 'green', 'black', 'blue', 'purple', 5, 1, 3, -1, 'fr_FR', 50, 100, 1000, 'True', '0000', '50.0', '000H', '000+', 0.1249, 0.1353, 0.0926, 'standard');
 
 -- --------------------------------------------------------
 

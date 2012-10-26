@@ -1,14 +1,19 @@
 #!/bin/bash
 
 set -e 
+VERSION=`cat ../../VERSION`
+
 case "$1" in
-      "ubuntu-precise64" )
+      "ubuntu64" )
            dir=`dirname $0`
            cd $dir
+    
+           #replacement of the old version number by the new one in VERSION file
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
+           sed -i "s/Version: .*-ubuntu/Version: `echo $VERSION`-ubuntu/" debreate-package/cultibox_amd64.dbp
+           sed -i "s/Version=.*/Version=`echo $VERSION`/" debreate-package/cultibox_amd64.dbp 
+
            tar xzvf xampp-linux-lite-1.7.7.tar.gz -C ubuntu-precise64/
-           #rm ubuntu-precise64/lampp/share/man
-           #rm ubuntu-precise64/lampp/share/openssl/man
-           #rm ubuntu-precise64/lampp/lib/terminfo
            cp -R ../../02_src/joomla ubuntu-precise64/lampp/htdocs/cultibox
            cp conf-lampp/httpd.conf ubuntu-precise64/lampp/etc/
            cp conf-lampp/php.ini ubuntu-precise64/lampp/etc/
@@ -22,13 +27,16 @@ case "$1" in
            find ./ubuntu-precise64/lampp -name ".svn"|xargs rm -Rf
            debreate debreate-package/cultibox_amd64.dbp
       ;; 
-      "ubuntu-precise32")
+      "ubuntu32")
            dir=`dirname $0`
            cd $dir
+
+           #replacement of the old version number by the new one in VERSION file
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
+           sed -i "s/Version: .*-ubuntu/Version: `echo $VERSION`-ubuntu/" debreate-package/cultibox_i386.dbp
+           sed -i "s/Version=.*/Version=`echo $VERSION`/" debreate-package/cultibox_i386.dbp 
+
            tar xzvf xampp-linux-lite-1.7.7.tar.gz -C ubuntu-precise32/
-           #rm ubuntu-precise32/lampp/share/man
-           #rm ubuntu-precise32/lampp/share/openssl/man
-           #rm ubuntu-precise32/lampp/lib/terminfo
            cp -R ../../02_src/joomla ubuntu-precise32/lampp/htdocs/cultibox
            cp conf-lampp/httpd.conf ubuntu-precise32/lampp/etc/
            cp conf-lampp/php.ini ubuntu-precise32/lampp/etc/
@@ -41,13 +49,11 @@ case "$1" in
            cp -R daemon ubuntu-precise32/lampp/
            find ./ubuntu-precise32/lampp -name ".svn"|xargs rm -Rf
            debreate debreate-package/cultibox_i386.dbp
-
-
       ;;
+      
       "clean")
             rm -Rf ubuntu-precise64/lampp
             rm -Rf ubuntu-precise32/lampp
-
       ;;
       *)
             echo "usage: $0"
