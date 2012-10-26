@@ -57,8 +57,8 @@ case "$1" in
       ;;
       *)
             echo "usage: $0"
-            echo "                      ubuntu-precise64"
-            echo "                      ubuntu-precise32"
+            echo "                      ubuntu64"
+            echo "                      ubuntu32"
             echo "                      clean"
       ;;
 esac
