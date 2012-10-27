@@ -17,7 +17,6 @@ include($this['path']->path('layouts:template.config.php'));
 <?php echo $this['template']->render('head'); ?>
          <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css" />
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" />
-		<link rel="stylesheet" media="all" type="text/css" href="main/libs/css/datepicker.css" />
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         
                 <!-- Javascript JQUERY libraries for cultibox components: calendar, datepicker, highcharts... -->
