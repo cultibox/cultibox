@@ -1,7 +1,7 @@
 [DEBREATE-0.7.7]
 <<CTRL>>
 Package: CultiBox
-Version: 1.0.263-ubuntu
+Version: 1.0.264-ubuntu
 Section: web
 Maintainer: Yann Genevois <yann.genevois@gmail.com>
 Homepage: http://cultibox.fr
@@ -8555,7 +8555,7 @@ Public License instead of this License.
 <<MENU>>
 1
 Name=Cultibox
-Version=1.0.263
+Version=1.0.264
 Exec=/usr/bin/firefox http://localhost:6891/cultibox/
 Comment=
 Icon=/opt/lampp/takecontrol.png

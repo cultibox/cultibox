@@ -13,6 +13,19 @@ case "$1" in
            sed -i "s/Version: .*-ubuntu/Version: `echo $VERSION`-ubuntu/" debreate-package/cultibox_amd64.dbp
            sed -i "s/Version=.*/Version=`echo $VERSION`/" debreate-package/cultibox_amd64.dbp 
 
+           begin=`grep -n "<<CHANGELOG>>" debreate-package/cultibox_amd64.dbp|awk -F ":" '{print $1}'`
+           sed -i "/<<CHANGELOG>>/,/<<\/CHANGELOG>>/d" debreate-package/cultibox_amd64.dbp
+           sed -i "`echo $begin`i\<<CHANGELOG>>"debreate-package/cultibox_amd64.dbp
+           begin=`expr $begin + 1`
+           sed -i "`echo $begin`i\<<DEST>>DEFAULT<</DEST>>" debreate-package/cultibox_amd64.dbp
+           begin=`expr $begin + 1`
+           while read line  
+           do
+                sed -i "`echo $begin`i\ `echo $line`" debreate-package/cultibox_amd64.dbp
+                begin=`expr $begin + 1`
+           done < ../../CHANGELOG
+           sed -i "`echo $begin`i\<</CHANGELOG>>" debreate-package/cultibox_amd64.dbp
+
            tar xzvf xampp-linux-lite-1.7.7.tar.gz -C ubuntu-precise64/
            cp -R ../../02_src/joomla ubuntu-precise64/lampp/htdocs/cultibox
            cp conf-lampp/httpd.conf ubuntu-precise64/lampp/etc/
@@ -35,6 +48,19 @@ case "$1" in
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
            sed -i "s/Version: .*-ubuntu/Version: `echo $VERSION`-ubuntu/" debreate-package/cultibox_i386.dbp
            sed -i "s/Version=.*/Version=`echo $VERSION`/" debreate-package/cultibox_i386.dbp 
+
+           begin=`grep -n "<<CHANGELOG>>" debreate-package/cultibox_i386.dbp|awk -F ":" '{print $1}'`
+           sed -i "/<<CHANGELOG>>/,/<<\/CHANGELOG>>/d" debreate-package/cultibox_i386.dbp 
+           sed -i "`echo $begin`i\<<CHANGELOG>>"debreate-package/cultibox_i386.dbp 
+           begin=`expr $begin + 1`
+           sed -i "`echo $begin`i\<<DEST>>DEFAULT<</DEST>>" debreate-package/cultibox_i386.dbp 
+           begin=`expr $begin + 1`
+           while read line  
+           do  
+                sed -i "`echo $begin`i\ `echo $line`" debreate-package/cultibox_i386.dbp 
+                begin=`expr $begin + 1`
+           done < ../../CHANGELOG 
+           sed -i "`echo $begin`i\<</CHANGELOG>>" debreate-package/cultibox_i386.dbp
 
            tar xzvf xampp-linux-lite-1.7.7.tar.gz -C ubuntu-precise32/
            cp -R ../../02_src/joomla ubuntu-precise32/lampp/htdocs/cultibox
