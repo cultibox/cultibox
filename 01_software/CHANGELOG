@@ -1,22 +1,29 @@
-1.0.263 -> 1.0.264
+CultiBox (1.0.264) precise; urgency=low
 
-* Sous Ubuntu Quantal les dossiers montés le sont dans /media/USER et non plus /media!
-   cp /opt/lampp/htdocs/cultibox/main/libs/utilfunc.php ./joomla/main/libs/utilfunc.php
+  + Sous Ubuntu Quantal les dossiers montés le sont dans /media/USER et non plus dans /media!
+        joomla/main/libs/utilfunc.php
 
-
-* Ajout d'un champ permettant de configurer le nombre de mois à rechercher dans les fichiers de logs: par défaut 2.
+  + Ajout d'un champ permettant de configurer le nombre de mois à rechercher dans les fichiers de logs: par défaut 2.
         
-    ALTER TABLE `configuration` ADD `LOG_SEARCH` INT NOT NULL DEFAULT '2'
+        ALTER TABLE `configuration` ADD `LOG_SEARCH` INT NOT NULL DEFAULT '2'
 
-    cp /opt/lampp/htdocs/cultibox/main/templates/configuration.html ./joomla/main/templates/configuration.html
-    cp /opt/lampp/htdocs/cultibox/main/scripts/logs.php ./joomla/main/scripts/logs.php
-    cp /opt/lampp/htdocs/cultibox/main/scripts/configuration.php ./joomla/main/scripts/configuration.php
-    cp /opt/lampp/htdocs/cultibox/main/locale/fr_FR.utf8.po ./joomla/main/locale/fr_FR.utf8.po
-    cp /opt/lampp/htdocs/cultibox/main/locale/en_GB.utf8.po ./joomla/main/locale/en_GB.utf8.po
-    cp /opt/lampp/htdocs/cultibox/main/libs/config.php ./joomla/main/libs/config.php
+        ./joomla/main/templates/configuration.html
+        ./joomla/main/scripts/logs.php
+        ./joomla/main/scripts/configuration.php
+        ./joomla/main/locale/fr_FR.utf8.po
+        ./joomla/main/locale/en_GB.utf8.po
+        ./joomla/main/libs/config.php
 
-* Les FAKE LOG sont maintenant affichés pour n'importe quel jour et non pas le jour d'installation et cela jusqu'à ce que l'utilisateur enregistre des logs:
-    cp /opt/lampp/htdocs/cultibox/main/scripts/logs.php ./joomla/main/scripts/logs.php 
+  + Les FAKE LOG sont maintenant affichés pour n'importe quel jour et non pas le jour d'installation et cela jusqu'à ce que l'utilisateur enregistre des logs:
+        ./joomla/main/scripts/logs.php 
 
-* Correction de l'inclusion d'un fichier css inexistant:
-    cp /opt/lampp/htdocs/cultibox/templates/yoo_cloud/layouts/template.php ./joomla/templates/yoo_cloud/layouts/template.php
+  + Correction de l'inclusion d'un fichier css inexistant:
+        ./joomla/templates/yoo_cloud/layouts/template.php
+
+ -- Yann Genevois <yann.genevois@gmail.com>  Sat Oct 27 12:59:17 CEST 2012
+
+CultiBox (1.0.0) precise; urgency=low
+
+  + Initial Release
+
+ -- Yann Genevois <yann.genevois@gmail.com>  Wed Aug 29 15:48:19 CEST 2012
