@@ -11,6 +11,6 @@ cd ~/Desktop/Project/cultibox/01_software/01_install/03_linux/
 4) Récuprer xammp LITE version 1.7.7:  http://sourceforge.net/projects/xampp/files (ou la version light que l'on a créé sans perl,ftp etc...).
 
 5) Lancer le script pre-compil.sh qui va configurer le logiciel:
-./pre-compil.sh ubuntu-precise64
+./pre-compil.sh ubuntu64
 
 6) Lancer la création du package

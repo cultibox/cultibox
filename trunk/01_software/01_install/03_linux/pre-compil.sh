@@ -15,7 +15,7 @@ case "$1" in
 
            begin=`grep -n "<<CHANGELOG>>" debreate-package/cultibox_amd64.dbp|awk -F ":" '{print $1}'`
            sed -i "/<<CHANGELOG>>/,/<<\/CHANGELOG>>/d" debreate-package/cultibox_amd64.dbp
-           sed -i "`echo $begin`i\<<CHANGELOG>>"debreate-package/cultibox_amd64.dbp
+           sed -i "`echo $begin`i\<<CHANGELOG>>" debreate-package/cultibox_amd64.dbp
            begin=`expr $begin + 1`
            sed -i "`echo $begin`i\<<DEST>>DEFAULT<</DEST>>" debreate-package/cultibox_amd64.dbp
            begin=`expr $begin + 1`
@@ -51,7 +51,7 @@ case "$1" in
 
            begin=`grep -n "<<CHANGELOG>>" debreate-package/cultibox_i386.dbp|awk -F ":" '{print $1}'`
            sed -i "/<<CHANGELOG>>/,/<<\/CHANGELOG>>/d" debreate-package/cultibox_i386.dbp 
-           sed -i "`echo $begin`i\<<CHANGELOG>>"debreate-package/cultibox_i386.dbp 
+           sed -i "`echo $begin`i\<<CHANGELOG>>" debreate-package/cultibox_i386.dbp 
            begin=`expr $begin + 1`
            sed -i "`echo $begin`i\<<DEST>>DEFAULT<</DEST>>" debreate-package/cultibox_i386.dbp 
            begin=`expr $begin + 1`
