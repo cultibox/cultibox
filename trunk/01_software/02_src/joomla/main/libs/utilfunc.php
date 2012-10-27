@@ -485,6 +485,22 @@ function get_sd_card() {
                                         }
                                 }
                         }
+
+                        //In Ubuntu Quantal mounted folders are now in /media/$USER directory
+                        $user=get_current_user();
+                        if((isset($user))&&(!empty($user))) {
+                            $dir="/media/".$user;
+                            if(is_dir($dir)) {
+                                $rep = opendir($dir);
+                                while ($f = readdir($rep)) {
+                                        if(is_dir("$dir/$f")) {
+                                                if(check_cultibox_card("$dir/$f")) {
+                                                        return "$dir/$f";
+                                                }
+                                        }
+                                }
+                            }
+                        }
                         break;
 
                 case 'Mac':
