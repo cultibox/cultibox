@@ -14,3 +14,6 @@
     cp /opt/lampp/htdocs/cultibox/main/locale/fr_FR.utf8.po ./joomla/main/locale/fr_FR.utf8.po
     cp /opt/lampp/htdocs/cultibox/main/locale/en_GB.utf8.po ./joomla/main/locale/en_GB.utf8.po
     cp /opt/lampp/htdocs/cultibox/main/libs/config.php ./joomla/main/libs/config.php
+
+* Les FAKE LOG sont maintenant affichés pour n'importe quel jour et non pas le jour d'installation et cela jusqu'à ce que l'utilisateur enregistre des logs:
+    cp /opt/lampp/htdocs/cultibox/main/scripts/logs.php ./joomla/main/scripts/logs.php 

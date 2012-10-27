@@ -264,24 +264,22 @@ if("$type" == "days") {
       get_graph_array($check_hum,"humidity/100","%%","False",$error);
 
       if((count($check_tmp)>0)||((count($check_hum)>0))||(!empty($datap))||(!empty($data))) {
+        get_graph_array($temperature,"temperature/100",$startday,"False",$error);
+        get_graph_array($humidity,"humidity/100",$startday,"False",$error);
 
-      get_graph_array($temperature,"temperature/100",$startday,"False",$error);
-      get_graph_array($humidity,"humidity/100",$startday,"False",$error);
+        if(!empty($temperature)) {
+            $data_temp=get_format_graph($temperature);
+        } else {
+            $error=$error.__('EMPTY_TEMPERATURE_DATA');
+        }
 
-
-      if(!empty($temperature)) {
-         $data_temp=get_format_graph($temperature);
+        if(!empty($humidity)) {
+            $data_humi=get_format_graph($humidity);
+        } else {
+            $error=$error.__('EMPTY_HUMIDITY_DATA');
+        }
       } else {
-         $error=$error.__('EMPTY_TEMPERATURE_DATA');
-      }
-
-      if(!empty($humidity)) {
-         $data_humi=get_format_graph($humidity);
-      } else {
-         $error=$error.__('EMPTY_HUMIDITY_DATA');
-      }
-      } else {
-        get_graph_array($temperature,"temperature/100",$startday,"True",$error);
+        get_graph_array($temperature,"temperature/100","%%","True",$error);
         $tmp="";
         $tmp=__('EMPTY_TEMPERATURE_DATA');
         $tmp_title=__('TOOLTIP_FAKE_LOG_DATA');
@@ -293,7 +291,7 @@ if("$type" == "days") {
           $fake_log=true;
         } 
 
-        get_graph_array($humidity,"humidity/100",$startday,"True",$error);
+        get_graph_array($humidity,"humidity/100","%%","True",$error);
         $tmp="";
         $tmp=__('EMPTY_HUMIDITY_DATA');
         $tmp_title=__('TOOLTIP_FAKE_LOG_DATA');
@@ -304,7 +302,6 @@ if("$type" == "days") {
             $fake_log=true;
             $data_humi=get_format_graph($humidity);
         }
-
      }
      $next=1;
    } 
