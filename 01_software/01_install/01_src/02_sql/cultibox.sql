@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 13, 2012 at 01:11 PM
+-- Generation Time: Oct 27, 2012 at 04:46 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -31,7 +31,7 @@ USE `cultibox`;
 CREATE TABLE IF NOT EXISTS `configuration` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `CHECK_UPDATE` varchar(5) NOT NULL DEFAULT 'False',
-  `VERSION` varchar(30) NOT NULL DEFAULT '1.0.264',
+  `VERSION` varchar(30) NOT NULL DEFAULT '1.0.263',
   `COLOR_HUMIDITY_GRAPH` varchar(30) NOT NULL DEFAULT 'blue',
   `COLOR_TEMPERATURE_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
   `COLOR_POWER_GRAPH` varchar(30) NOT NULL DEFAULT 'black',
@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `COST_PRICE_HP` decimal(6,4) NOT NULL DEFAULT '0.1353',
   `COST_PRICE_HC` decimal(6,4) NOT NULL DEFAULT '0.0926',
   `COST_TYPE` varchar(20) NOT NULL DEFAULT 'standard',
+  `LOG_SEARCH` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -61,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 -- Dumping data for table `configuration`
 --
 
-INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_PROGRAM_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `LOG_POWER_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `COST_TYPE`) VALUES
-(1, 'False', '1.0.264', 'red', 'green', 'black', 'blue', 'purple', 5, 1, 3, -1, 'fr_FR', 50, 100, 1000, 'True', '0000', '50.0', '000H', '000+', 0.1249, 0.1353, 0.0926, 'standard');
+INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_PROGRAM_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `LOG_POWER_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `COST_TYPE`, `LOG_SEARCH`) VALUES
+(1, 'False', '1.0.263', 'blue', 'red', 'black', 'green', 'purple', 5, 1, 3, -1, 'fr_FR', 50, 100, 1000, 'True', '0000', '50.0', '000H', '000+', 0.1249, 0.1353, 0.0926, 'standard', 2);
 
 -- --------------------------------------------------------
 
