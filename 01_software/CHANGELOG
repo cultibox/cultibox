@@ -17,3 +17,6 @@
 
 * Les FAKE LOG sont maintenant affichés pour n'importe quel jour et non pas le jour d'installation et cela jusqu'à ce que l'utilisateur enregistre des logs:
     cp /opt/lampp/htdocs/cultibox/main/scripts/logs.php ./joomla/main/scripts/logs.php 
+
+* Correction de l'inclusion d'un fichier css inexistant:
+    cp /opt/lampp/htdocs/cultibox/templates/yoo_cloud/layouts/template.php ./joomla/templates/yoo_cloud/layouts/template.php
