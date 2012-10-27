@@ -173,6 +173,9 @@ msgstr "Configurer le type d'abonnement électrique utilisé"
 msgid "CHECK_UPDATE"
 msgstr "Vérifier automatiquement la présence de mises à jour"
 
+msgid "CONFIG_LOG_SEARCH"
+msgstr "Nombre de mois sur lesquels rechercher des logs"
+
 # For the logs part:
 
 msgid "HISTO_GRAPH"

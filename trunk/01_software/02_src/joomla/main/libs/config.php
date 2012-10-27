@@ -54,4 +54,7 @@ $GLOBALS['UPDATE_FILE'] = 'http://cultibox.fr/download/software/updates/update_l
 // Enable/Disable export and import module
 $GLOBALS['MODULE_IMPORT_EXPORT'] = false;
 
+// List of value possible for log's research: 2, 3, 6 or 12 months
+$GLOBALS['LOG_SEARCH'] = array('2', '3', '6', '12');
+
 ?>

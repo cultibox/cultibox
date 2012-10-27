@@ -1,0 +1,16 @@
+1.0.263 -> 1.0.264
+
+* Sous Ubuntu Quantal les dossiers montés le sont dans /media/USER et non plus /media!
+   cp /opt/lampp/htdocs/cultibox/main/libs/utilfunc.php ./joomla/main/libs/utilfunc.php
+
+
+* Ajout d'un champ permettant de configurer le nombre de mois à rechercher dans les fichiers de logs: par défaut 2.
+        
+    ALTER TABLE `configuration` ADD `LOG_SEARCH` INT NOT NULL DEFAULT '2'
+
+    cp /opt/lampp/htdocs/cultibox/main/templates/configuration.html ./joomla/main/templates/configuration.html
+    cp /opt/lampp/htdocs/cultibox/main/scripts/logs.php ./joomla/main/scripts/logs.php
+    cp /opt/lampp/htdocs/cultibox/main/scripts/configuration.php ./joomla/main/scripts/configuration.php
+    cp /opt/lampp/htdocs/cultibox/main/locale/fr_FR.utf8.po ./joomla/main/locale/fr_FR.utf8.po
+    cp /opt/lampp/htdocs/cultibox/main/locale/en_GB.utf8.po ./joomla/main/locale/en_GB.utf8.po
+    cp /opt/lampp/htdocs/cultibox/main/libs/config.php ./joomla/main/libs/config.php
