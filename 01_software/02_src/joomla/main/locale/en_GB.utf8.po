@@ -158,6 +158,9 @@ msgstr "Cost of the KW.H"
 msgid "CHECK_UPDATE"
 msgstr "Check automatically if updates are available"
 
+msgid "CONFIG_LOG_SEARCH"
+msgstr "Number of month to search for logs"
+
 # For the logs part:
 
 msgid "HISTO_GRAPH"

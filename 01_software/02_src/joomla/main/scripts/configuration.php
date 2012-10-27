@@ -42,6 +42,7 @@ $cost_type=getvar('cost_type');
 $update=getvar('update');
 $program="";
 $version=get_configuration("VERSION",$error);
+$log_search=getvar("log_search",$error);
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$error);
@@ -264,6 +265,12 @@ if(!empty($cost_price_hp)||("$cost_price_hp"=="0")) {
         $cost_price_hp = get_configuration("COST_PRICE_HP",$error);
 }
 
+if(!empty($log_search)) {
+        insert_configuration("LOG_SEARCH","$log_search",$error);
+        $update_conf=true;
+} else {
+        $log_search = get_configuration("LOG_SEARCH",$error);
+}
 
 if((empty($error))||(!isset($error))) {
 	if($update_conf) {

@@ -44,6 +44,11 @@ $last_year=date('Y');
 $datap="";
 $update=get_configuration("CHECK_UPDATE",$error);
 $version=get_configuration("VERSION",$error);
+$log_search=get_configuration("LOG_SEARCH",$error);
+
+if((!isset($log_search))||(empty($log_search))) {
+    $log_search=2;
+}
 
 if(isset($_SESSION['select_plug'])) {
    $select_plug=$_SESSION['select_plug'];
@@ -125,12 +130,34 @@ $load_log=false;
 if((isset($sd_card))&&(!empty($sd_card))) {
    // Workaround to avoid timeout (60s)
    // Search only on two previous months
-   $FirstMonthSearch = date('n') - 1;
+   $FirstMonthSearch = date('n') - ($log_search - 1);
    if ($FirstMonthSearch == 0) {
       $FirstMonthSearch = 12;
    }
-   $ListMonthSearch = array($FirstMonthSearch, date('n'));
-   
+
+   if ($FirstMonthSearch < 0) {
+      $FirstMonthSearch = 12 + $FirstMonthSearch;
+   }
+
+   $ListMonthSearch=array();
+   $i=$FirstMonthSearch;
+   $max=date('n')+1;
+   if($max>12) {
+        $max=1;
+   }
+
+   if($i==$max) {
+        $max=$max-1;
+        $ListMonthSearch[]=date('n');
+   }
+   while($i!=$max) {
+        $ListMonthSearch[]=$i;  
+        if($i==12) {   
+            $i=0;
+        }
+        $i=$i+1;
+   }
+
    // Foreach months present in the array search logs and power
    foreach ($ListMonthSearch as $month) {
         for ($day = 1; $day <= 31; $day++) {
