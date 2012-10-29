@@ -29,6 +29,8 @@ SolidCompression=yes
 DirExistsWarning=no
 ; Interdiction de changer le path
 DisableDirPage=yes
+;Minimal disk space requiered: 400Mo
+ExtraDiskSpaceRequired=419430400
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
