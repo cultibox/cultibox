@@ -1,24 +1,28 @@
 CultiBox (1.0.264) precise; urgency=low
 
+  + Pour Windows, changement de fonctionnement du script de lancement cultibox.bat qui détermine si l'interface est déja lancée et qui la redémarre si c'est le cas.
+        01_install/02_windows/cultibox.bat
+        
+
   + Sous Ubuntu Quantal les dossiers montés le sont dans /media/USER et non plus dans /media!
-        joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/utilfunc.php
 
   + Ajout d'un champ permettant de configurer le nombre de mois à rechercher dans les fichiers de logs: par défaut 2.
         
         ALTER TABLE `configuration` ADD `LOG_SEARCH` INT NOT NULL DEFAULT '2'
 
-        ./joomla/main/templates/configuration.html
-        ./joomla/main/scripts/logs.php
-        ./joomla/main/scripts/configuration.php
-        ./joomla/main/locale/fr_FR.utf8.po
-        ./joomla/main/locale/en_GB.utf8.po
-        ./joomla/main/libs/config.php
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/libs/config.php
 
   + Les FAKE LOG sont maintenant affichés pour n'importe quel jour et non pas le jour d'installation et cela jusqu'à ce que l'utilisateur enregistre des logs:
-        ./joomla/main/scripts/logs.php 
+        02_src/joomla/main/scripts/logs.php 
 
   + Correction de l'inclusion d'un fichier css inexistant:
-        ./joomla/templates/yoo_cloud/layouts/template.php
+        02_src/joomla/templates/yoo_cloud/layouts/template.php
 
  -- Yann Genevois <yann.genevois@gmail.com>  Sat Oct 27 12:59:17 CEST 2012
 
