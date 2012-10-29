@@ -7238,8 +7238,7 @@ Description: Web interface for the CultiBox
 #!/bin/bash
 
 if [ -d /opt/lampp ]; then
-    echo "Directory /opt/lampp already exists, please check that you don't have a   running installation of Xampp or delete the /opt/lampp directory"
-   exit 1
+    /etc/init.d/cultibox stop
 fi
 <</PREINST>>
 <<POSTINST>>
