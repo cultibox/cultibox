@@ -1,5 +1,12 @@
 CultiBox (1.0.264) precise; urgency=low
 
+  + Plus de robustesse dans la lecture/écriture des logs, on test la présence du fichier avant chaque lecture et non plus une fois par mois:
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/logs.php
+
+
   + Pour Windows, changement de fonctionnement du script de lancement cultibox.bat qui détermine si l'interface est déja lancée et qui la redémarre si c'est le cas.
         01_install/02_windows/cultibox.bat
         
