@@ -257,7 +257,7 @@ msgid "FORCE_ON_CHART"
 msgstr "Forced to ON"
 
 msgid "WAITING_LOGS"
-msgstr "Thank you to wait few seconds during data loading..."
+msgstr "Thank you to wait few seconds and to not disconnect the CultiBox card during data loading..."
 
 # For the plugs part:
 msgid "PLUG"
@@ -714,7 +714,7 @@ msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "<li> Program updated successfully! You can unplug your SD card and put in the CultiBox</li>"
 
 msgid "VALID_LOAD_LOG"
-msgstr "<li> Logs successfully loaded</li>"
+msgstr "<li> Logs successfully loaded, you can disconnect your CultiBox card from your computer</li>"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "<li>Program successfully updated</li>"

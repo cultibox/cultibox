@@ -137,6 +137,7 @@ function check_empty_string($value="") {
 //    $array_line    array to store log's values
 // RET none
 function get_log_value($file,&$array_line) {
+   if(!file_exists("$file")) return false;
    $handle = fopen("$file", 'r');
    if ($handle)
    {
@@ -181,6 +182,7 @@ function get_log_value($file,&$array_line) {
 //    $array_line       array to store log's values
 // RET none
 function get_power_value($file,&$array_line) {
+   if(!file_exists("$file")) return false;
    $handle = fopen("$file", 'r');
    if ($handle)
    {

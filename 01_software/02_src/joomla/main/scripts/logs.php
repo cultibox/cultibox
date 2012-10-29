@@ -76,7 +76,6 @@ if((!empty($sd_card))&&(isset($sd_card))) {
       save_program_on_sd($sd_card,$program,$error);
    }
    check_and_copy_firm($sd_card,$error);
-   $info=$info.__('INFO_SD_CARD').": $sd_card";
 } else {
    $tmp="";
    $tmp=__('ERROR_SD_CARD_LOGS');
@@ -96,7 +95,6 @@ if(isset($_SESSION['startmonth'])) {
 if(isset($_SESSION['startyear'])) {
    $startyear=$_SESSION['startyear'];
 }
-$load_log=false;
 
 unset($_SESSION['startyear']);
 unset($_SESSION['startmonth']);
@@ -211,8 +209,9 @@ if((isset($sd_card))&&(!empty($sd_card))) {
    }
 }
 
-if(($load_log)&&(empty($error))) {
+if($load_log)) {
    $info=$info.__('VALID_LOAD_LOG');
+   $pop_up_message=clean_popup_message(__('VALID_LOAD_LOG'));
 } 
 
 if("$type"=="days") {
@@ -350,6 +349,12 @@ $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$error);
 $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$error);
 $color_power=get_configuration("COLOR_POWER_GRAPH",$error);
 $color_program=get_configuration("COLOR_PROGRAM_GRAPH",$error);
+
+$sd_card="";
+$sd_card=get_sd_card();
+if((!empty($sd_card))&&(isset($sd_card))) {
+   $info=$info.__('INFO_SD_CARD').": $sd_card";
+}
 
 if(strcmp("$update","True")==0) {
       $ret=array();
