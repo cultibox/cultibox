@@ -272,7 +272,7 @@ msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
 
 msgid "WAITING_LOGS"
-msgstr "Merci de patientez quelques instants le temps que la page se charge et que les données soient traitées..."
+msgstr "Merci de patientez quelques instants et de ne pas retirer la carte CultiBox le temps que la page se charge et que les données soient traitées..."
 
 # For the plugs part:
 msgid "PLUG"
@@ -732,7 +732,7 @@ msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "<li> Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage</li>"
 
 msgid "VALID_LOAD_LOG"
-msgstr "<li> Fichiers de logs enregistrées avec succès</li>"
+msgstr "<li> Fichiers de logs enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur.</li>"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "<li>Programme mis à jour avec succès</li>"
