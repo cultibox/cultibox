@@ -685,7 +685,7 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
 
 
 // {{{ compare_data_program()
-// ROLE compare and format 3 values of the pgroram graph
+// ROLE compare and format 3 values of the program graph
 // IN $first      first value to compare
 //    $last      last value to compare
 //    $current      current value submitted by user to be added

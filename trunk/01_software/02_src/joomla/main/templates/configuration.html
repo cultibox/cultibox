@@ -665,7 +665,6 @@ function verifDigit(e) {
    <img src="main/libs/img/arrow.png" /><?php echo __('CONFIGURE_COST'); ?>:
 </p>
 <table class="conf-table">
-   <?php if(strcmp($lang,"fr_FR")==0) { ?>
    <tr>
       <td class="conf-marge"></td>
       <td class="conf-marge-td"><?php echo __('CONFIGURE_COST_TYPE'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_TYPE'); ?>" /></td>
@@ -676,17 +675,16 @@ function verifDigit(e) {
             </select>
       </td>
    </tr>
-   <?php } ?>
    <tr>
       <td class="conf-marge"></td>
       <td class="conf-marge-td"><label id="cost_label_standard" style="<?php if(strcmp($cost_type,'standard')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_PRICE'); ?>" /></label><label id="cost_label_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HP'); ?></label></td> 
-      <td><label id="cost_input_standard"><input type="text" size="5" maxlength="5" name="cost_price" value="<?php echo "$cost_price"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?></label><label id="cost_input_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="5" maxlength="5" name="cost_price_hp" value="<?php echo "$cost_price_hp"; ?>" onKeypress="return verifDigit(event);">&euro;</label>
+      <td><label id="cost_input_standard"><input type="text" size="5" maxlength="5" name="cost_price" value="<?php echo "$cost_price"; ?>" style="<?php if(strcmp($cost_type,'standard')!=0) echo 'display:none'; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp($cost_type,'standard')==0) { if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; }} ?></label><label id="cost_input_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="5" maxlength="5" name="cost_price_hp" value="<?php echo "$cost_price_hp"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?></label>
       </td>
    </tr>
    <tr>
       <td class="conf-marge"></td>
       <td class="conf-marge-td"><label id="cost_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HC'); ?></label></td>
-      <td><label id="cost_input_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="5" maxlength="5" name="cost_price_hc" value="<?php echo "$cost_price_hc"; ?>" onKeypress="return verifDigit(event);">&euro;</label></td>
+      <td><label id="cost_input_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="5" maxlength="5" name="cost_price_hc" value="<?php echo "$cost_price_hc"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?></label></td>
    </tr> 
 </table>
 

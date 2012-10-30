@@ -31,6 +31,15 @@ msgstr "Just click on the following link to launch the wizard configuration and 
 msgid "WELCOME_WIZARD"
 msgstr "Configuration Wizard"
 
+msgid "WELCOME_LOGS"
+msgstr "Go to the view logs page"
+
+msgid "WELCOME_CALENDAR"
+msgstr "Go to the calendar page"
+
+msgid "WELCOME_PROGRAM"
+msgstr "Go to the plug's program page"
+
 # For the configuration part:
 msgid "USER_CONF"
 msgstr "User configuration"
@@ -154,6 +163,21 @@ msgstr "Humidity"
 
 msgid "CONFIGURE_COST_PRICE"
 msgstr "Cost of the KW.H"
+
+msgid "CONFIGURE_COST_PRICE_HP"
+msgstr "Configure price for full hours"
+
+msgid "CONFIGURE_COST_PRICE_HC"
+msgstr "Configure price for empty hours"
+
+msgid "COST_STANDARD"
+msgstr "Standard"
+
+msgid "COST_HPC"
+msgstr "Full Hours/Empty Hours"
+
+msgid "CONFIGURE_COST_TYPE"
+msgstr "Configure the type of your power fee"
 
 msgid "CHECK_UPDATE"
 msgstr "Check automatically if updates are available"
@@ -792,3 +816,7 @@ msgstr "You don't have reccord any data in the database, this graph is just an e
 
 msgid "TOOLTIP_CHECK_UPDATE"
 msgstr "Check if there is remote updates available and and download its if it's needed"
+
+msgid "TOOLTIP_COST_TYPE"
+msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommé."
+

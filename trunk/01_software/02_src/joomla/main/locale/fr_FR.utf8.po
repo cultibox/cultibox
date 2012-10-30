@@ -31,6 +31,15 @@ msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration e
 msgid "WELCOME_WIZARD"
 msgstr "Assistant de configuration"
 
+msgid "WELCOME_LOGS"
+msgstr "Aller à la page de visualisation des logs"
+
+msgid "WELCOME_CALENDAR"
+msgstr "Aller à la page de programmation du calendrier de culture"
+
+msgid "WELCOME_PROGRAM"
+msgstr "Aller à la page de création et visualisation des programmes des prises"
+
 # For the configuration part:
 msgid "USER_CONF"
 msgstr "Configuration de l'interface"

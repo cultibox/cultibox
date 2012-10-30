@@ -18,9 +18,17 @@ $sd_card="";
 $lang=get_configuration("LANG",$error);
 $update=get_configuration("CHECK_UPDATE",$error);
 $version=get_configuration("VERSION",$error);
+$wizard=true;
+$nb_plugs = get_configuration("NB_PLUGS",$error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
+
+if(isset($nb_plugs)&&(!empty($nb_plugs))) {
+    if(check_programs($nb_plugs)) {
+        $wizard=false;  
+    }
+}
 
 
 if((!isset($sd_card))||(empty($sd_card))) {

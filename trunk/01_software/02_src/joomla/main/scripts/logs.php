@@ -209,7 +209,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
    }
 }
 
-if($load_log)) {
+if($load_log) {
    $info=$info.__('VALID_LOAD_LOG');
    $pop_up_message=clean_popup_message(__('VALID_LOAD_LOG'));
 } 
