@@ -1,6 +1,20 @@
 CultiBox (1.0.264) precise; urgency=low
 
+  + Correction erreur syntaxe dans la page de logs et correction de la gestion HP/HC quand on passe en anglais
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/templates/configuration.html
+
   + La page d'accueil n'affiche le lien du wizard que si aucun programme n'est présent dans la base, sinon la page affiche trois images vers 3 liens du site: program, logs, calendar
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/libs/img/calendar.png
+        02_src/joomla/main/libs/img/logs.png
+        02_src/joomla/main/libs/img/program.png
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/templates/welcome.html
+
 
   + Plus de robustesse dans la lecture/écriture des logs, on test la présence du fichier avant chaque lecture et non plus une fois par mois:
         02_src/joomla/main/libs/utilfunc.php
