@@ -22,5 +22,17 @@
 </div>
 
 <p class="p_center"><img src="main/libs/img/takecontrol.png" alt="" /></p>
+<?php if($wizard) { ?>
 <p class="p_center"><?php echo __('WELCOME_FOLLOW_LINK'); ?>:</p>
 <form action="<?php echo($_SERVER['PHP_SELF'])."/wizard"; ?>" method="post"><p class="p_center"><input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>"></p></form>
+<?php } else { ?>
+<hr />
+<br />
+<table class="table_width">
+<tr>
+    <td class="welcome-link"><a href="./index.php/display-logs"><img src="main/libs/img/logs.png" title="<?php echo __('WELCOME_LOGS'); ?>"/></a></td>
+    <td class="welcome-link"><a href="./index.php/programs"><img src="main/libs/img/program.png" title="<?php echo __('WELCOME_PROGRAM'); ?>" /></a></td>
+    <td class="welcome-link"><a href="./index.php/calendar"><img src="main/libs/img/calendar.png" title="<?php echo __('WELCOME_CALENDAR'); ?>" /></a></td>
+</tr>
+</table>
+<?php } ?>

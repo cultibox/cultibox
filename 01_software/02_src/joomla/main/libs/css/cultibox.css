@@ -194,6 +194,12 @@ td.program-action-center{
    text-align: center;
 }
 
+td.welcome-link {
+   width: 33%;
+   text-align: center;
+}
+
+
 P.p_center{
    text-align: center;
 }

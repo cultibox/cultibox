@@ -1,5 +1,7 @@
 CultiBox (1.0.264) precise; urgency=low
 
+  + La page d'accueil n'affiche le lien du wizard que si aucun programme n'est présent dans la base, sinon la page affiche trois images vers 3 liens du site: program, logs, calendar
+
   + Plus de robustesse dans la lecture/écriture des logs, on test la présence du fichier avant chaque lecture et non plus une fois par mois:
         02_src/joomla/main/libs/utilfunc.php
         02_src/joomla/main/locale/en_GB.utf8.po
