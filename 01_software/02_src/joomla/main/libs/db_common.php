@@ -1482,13 +1482,13 @@ EOF;
                if(strcmp($val['Subject'][$i]," ")==0) {
                   $count=0;
                } else {
-                     $line=$line.$val['Subject'][$i];
+                  $line=$line.$val['Subject'][$i];
                }
             } else {
                  $line=$line.$val['Subject'][$i];
             }
 
-            if($count==13) {
+            if($count==12) {
                if((strcmp($val['Subject'][$i]," ")!=0)&&(isset($val['Subject'][$i+1]))&&(strcmp($val['Subject'][$i+1]," ")!=0)) {
                   if(isset($val['Subject'][$i+2])) {
                      $line=$line."-";
@@ -1500,7 +1500,7 @@ EOF;
               }
             }
 
-            if($count==14) {
+            if($count==13) {
                $s[]=strtoupper($line);
                $line="";
                $count=0;
@@ -1512,19 +1512,19 @@ EOF;
             }
          }
 
-         if(("$count"!="14")&&("$number"!="18")) {
+         if(("$count"!="13")&&("$number"!="18")) {
             $s[]=strtoupper($line);
             $number=$number+1;
          }
 
-         while(strlen($s[$number-1])<14) {
+         while(strlen($s[$number-1])<13) {
             $s[$number-1]=$s[$number-1]." ";
          }
 
          if((isset($val['Description']))&&(!empty($val['Description']))) {
 
             if($number<17) {
-               $s[]="              ";
+               $s[]="             ";
                $number=$number+1;
             }
 
@@ -1543,7 +1543,7 @@ EOF;
                }
 
 
-               if($count==13) {
+               if($count==12) {
                   if((strcmp($val['Description'][$i]," ")!=0)&&(isset($val['Description'][$i+1]))&&(strcmp($val['Description'][$i+1]," ")!=0)) {
                      if(isset($val['Description'][$i+2])) {
                         $line=$line."-";
@@ -1555,7 +1555,7 @@ EOF;
                   }
                }
 
-               if($count==14) {
+               if($count==13) {
                   $desc[]=$line;
                   $line="";
                   $count=0;
@@ -1567,14 +1567,14 @@ EOF;
                }
             }
 
-            if(("$count"!="14")&&("$number"!="18")) {
+            if(("$count"!="13")&&("$number"!="18")) {
                $desc[]=$line;
                $number=$number+1;
             }
 
 
             if(count($desc)>0) {
-               while(strlen($desc[count($desc)-1])<14) {
+               while(strlen($desc[count($desc)-1])<13) {
                   $desc[count($desc)-1]=$desc[count($desc)-1]." ";
                }
             }

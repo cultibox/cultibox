@@ -928,30 +928,30 @@ function concat_calendar_entries($data,$month,$day) {
          $new_data=array();
          foreach($data as $val) {
             if(($val['start_month']<=$month)&&($val['end_month']>=$month)&&($val['start_day']<=$day)&&($val['end_day']>=$day)) {
-                     if(empty($new_data)) {
-                        $new_data=$val;
-                     } else {
-                        if($new_data['number']==18) break;
+               if(empty($new_data)) {
+                  $new_data=$val;
+               } else {
+                  if($new_data['number']==18) break;
 
-                        $new_data['description'][]="              ";
-                        $new_data['number']=$new_data['number']+1;
-                        if($new_data['number']==18) break;
+                  $new_data['description'][]="             ";
+                  $new_data['number']=$new_data['number']+1;
+                  if($new_data['number']==18) break;
 
-                        foreach($val['subject'] as $sub) {
-                              $new_data['description'][]=$sub;
-                              $new_data['number']=$new_data['number']+1;
-                              if($new_data['number']==18) break;
-                        }
+                  foreach($val['subject'] as $sub) {
+                     $new_data['description'][]=$sub;
+                     $new_data['number']=$new_data['number']+1;
+                     if($new_data['number']==18) break;
+                  }
 
-                        foreach($val['description'] as $desc) {
-                              $new_data['description'][]=$desc;
-                              $new_data['number']=$new_data['number']+1;
-                              if($new_data['number']==18) break;
-                        }
-                     }
+                  foreach($val['description'] as $desc) {
+                     $new_data['description'][]=$desc;
+                     $new_data['number']=$new_data['number']+1;
+                     if($new_data['number']==18) break;
+                  }
+               }
             }
          }
-         return $new_data;
+   return $new_data;
 }
 // }}}
 
@@ -972,7 +972,7 @@ function write_calendar($sd_card,$data,&$out="") {
                   while(strlen($day)<2) {
                      $day="0$day";
                   }
-            
+
                   while(strlen($month)<2) {
                      $month="0$month";
                   }
@@ -989,7 +989,7 @@ function write_calendar($sd_card,$data,&$out="") {
                      fputs($f,"\r\n");
                      fclose($f);
                   } 
-               
+
                   if($day==31) {
                      $day="01";
                   } 
