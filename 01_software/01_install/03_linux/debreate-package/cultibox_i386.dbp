@@ -568,11 +568,14 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/images-jquery/ui-icons_222222_256x240.png -> ui-icons_222222_256x240.png -> /opt/lampp/htdocs/cultibox/main/libs/img/images-jquery
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/images-jquery/ui-bg_diagonals-thick_20_666666_40x40.png -> ui-bg_diagonals-thick_20_666666_40x40.png -> /opt/lampp/htdocs/cultibox/main/libs/img/images-jquery
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/takecontrol.png -> takecontrol.png -> /opt/lampp/htdocs/cultibox/main/libs/img
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/calendar.png -> calendar.png -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/fake_log_en_GB.png -> fake_log_en_GB.png -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/arrow.png -> arrow.png -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/fake_log_fr_FR.png -> fake_log_fr_FR.png -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/infos.png -> infos.png -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/datepicker.png -> datepicker.png -> /opt/lampp/htdocs/cultibox/main/libs/img
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/program.png -> program.png -> /opt/lampp/htdocs/cultibox/main/libs/img
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/logs.png -> logs.png -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/waiting.gif -> waiting.gif -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/img/wizard.png -> wizard.png -> /opt/lampp/htdocs/cultibox/main/libs/img
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/htdocs/cultibox/main/libs/css/jquery-ui-1.8.19.custom.css -> jquery-ui-1.8.19.custom.css -> /opt/lampp/htdocs/cultibox/main/libs/css
@@ -5242,6 +5245,7 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/webpng* -> webpng -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/iconv* -> iconv -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/php-config* -> php-config -> /opt/lampp/bin
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/mysqldump* -> mysqldump -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/freetype-config* -> freetype-config -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/zzdir* -> zzdir -> /opt/lampp/bin
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/bin/ming-config* -> ming-config -> /opt/lampp/bin
@@ -5487,7 +5491,7 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/modules/mod_actions.so* -> mod_actions.so -> /opt/lampp/modules
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/modules/mod_dav_fs.so* -> mod_dav_fs.so -> /opt/lampp/modules
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/modules/mod_status.so* -> mod_status.so -> /opt/lampp/modules
-/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/daemon/cultibox -> cultibox -> /opt/lampp/daemon
+/home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/daemon/cultibox* -> cultibox -> /opt/lampp/daemon
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/logs/ssl_request_log -> ssl_request_log -> /opt/lampp/logs
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/logs/access_log -> access_log -> /opt/lampp/logs
 /home/yann/Desktop/Project/cultibox/01_software/01_install/03_linux/ubuntu-precise32/lampp/logs/php_error_log -> php_error_log -> /opt/lampp/logs
@@ -7238,6 +7242,8 @@ Description: Web interface for the CultiBox
 #!/bin/bash
 
 if [ -d /opt/lampp/htdocs/cultibox ]; then
+    /etc/init.d/cultibox start
+    /opt/lampp/bin/mysqldump --no-create-db --no-create-info -u root -h localhost -pcultibox cultibox jqcalendar logs configuration plugs power programs > /tmp/backup.sql 
     /etc/init.d/cultibox stop
 fi
 <</PREINST>>
@@ -7295,6 +7301,22 @@ fi
 <<CHANGELOG>>
 <<DEST>>DEFAULT<</DEST>>
  CultiBox (1.0.264) precise; urgency=low
+ 
+ + Correction erreur syntaxe dans la page de logs et correction de la gestion HP/HC quand on passe en anglais
+ 02_src/joomla/main/scripts/logs.php
+ 02_src/joomla/main/templates/configuration.html
+ 
+ + La page d'accueil n'affiche le lien du wizard que si aucun programme n'est présent dans la base, sinon la page affiche trois images vers 3 liens du site: program, logs, calendar
+ 02_src/joomla/main/libs/css/cultibox.css
+ 02_src/joomla/main/libs/db_common.php
+ 02_src/joomla/main/libs/img/calendar.png
+ 02_src/joomla/main/libs/img/logs.png
+ 02_src/joomla/main/libs/img/program.png
+ 02_src/joomla/main/locale/en_GB.utf8.po
+ 02_src/joomla/main/locale/fr_FR.utf8.po
+ 02_src/joomla/main/scripts/welcome.php
+ 02_src/joomla/main/templates/welcome.html
+ 
  
  + Plus de robustesse dans la lecture/écriture des logs, on test la présence du fichier avant chaque lecture et non plus une fois par mois:
  02_src/joomla/main/libs/utilfunc.php

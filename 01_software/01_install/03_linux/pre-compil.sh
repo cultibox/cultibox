@@ -7,6 +7,9 @@ case "$1" in
       "ubuntu64-admin" )
            dir=`dirname $0`
            cd $dir
+
+           rm -Rf ubuntu-precise64/lampp
+           rm -Rf ubuntu-precise32/lampp
     
            #replacement of the old version number by the new one in VERSION file
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
@@ -42,6 +45,9 @@ case "$1" in
       "ubuntu64" )
            dir=`dirname $0`
            cd $dir
+    
+           rm -Rf ubuntu-precise64/lampp
+           rm -Rf ubuntu-precise32/lampp
 
            #replacement of the old version number by the new one in VERSION file
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
@@ -77,6 +83,9 @@ case "$1" in
            dir=`dirname $0`
            cd $dir
 
+           rm -Rf ubuntu-precise64/lampp
+           rm -Rf ubuntu-precise32/lampp
+
            #replacement of the old version number by the new one in VERSION file
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
            sed -i "s/Version: .*-ubuntu/Version: `echo $VERSION`-ubuntu/" debreate-package/cultibox_i386.dbp
@@ -111,6 +120,9 @@ case "$1" in
       "ubuntu32")
            dir=`dirname $0`
            cd $dir
+
+           rm -Rf ubuntu-precise64/lampp
+           rm -Rf ubuntu-precise32/lampp
 
            #replacement of the old version number by the new one in VERSION file
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
