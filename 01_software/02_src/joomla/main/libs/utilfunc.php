@@ -978,7 +978,13 @@ function write_calendar($sd_card,$data,&$out="") {
                   }
                   $file="$sd_card/logs/$month/cal_$day";
                   if($f=fopen("$file","w+")) {
-                     fputs($f,"$val[number]");
+                     // format number of line to show. Must be 3 caractere width
+                     $number_to_show  = "$val[number]";
+                     while(strlen($number_to_show)<3) {
+                        $number_to_show="0$number_to_show";
+                     }
+
+                     fputs($f,"$number_to_show");
                      foreach($val['subject'] as $sub) {
                         fputs($f,"\r\n"."$sub");
                      }
