@@ -1,3 +1,12 @@
+CultiBox (1.0.293) precise; urgency=low
+
+  + Changement de la taille des commentaires du calendrier
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/db_common.php
+
+ -- Alliaume Rico <alliaume.rico@gmail.com> Mon Nov 12 15:12:18 CET 2012
+
+
 CultiBox (1.0.264) precise; urgency=low
 
   + Correction erreur syntaxe dans la page de logs et correction de la gestion HP/HC quand on passe en anglais
