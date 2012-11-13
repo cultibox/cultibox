@@ -727,6 +727,9 @@ msgstr "<li>Power of all your plugs doesn't seem to be configured, you can confi
 msgid "ERROR_COST_PRICE_NULL"
 msgstr "<li>Price of the kilowatt-hour isn't configured, you can configure it: <a href='configuration'>here</a></li></li>"
 
+msgid "ERROR_COPY_TPL"
+msgstr "<li>Can't copy empty_file_64.tpl file into your CultiBox SD card</li>"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> A valid SD card was found"
