@@ -1204,6 +1204,24 @@ function check_and_copy_firm($sd_card,&$out="") {
 // }}}
 
 
+// {{{ check_and_copy_log()
+// ROLE check if the log.txt exists and if not, create it from empty_file64.tpl
+// IN  $sd_card     the sd card pathname 
+//     $out         error or warning message
+// RET none
+function check_and_copy_log($sd_card,&$out="") {
+    if(is_file("$sd_card/log.txt")) {
+    } else {
+        if(is_file("main/templates/data/empty_file_64.tpl")) {
+            copy("main/templates/data/empty_file_64.tpl", "$sd_card/log.txt");   
+        }else {
+            $out=$out.__('ERROR_COPY_TPL');
+        }
+    }
+}
+// }}}
+
+
 // {{{ clean_popup_message()
 // ROLE clean popup message by removing non-appropriate char for javascript
 // IN  $message         message to be cleaned

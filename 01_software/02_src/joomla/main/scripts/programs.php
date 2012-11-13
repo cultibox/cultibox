@@ -250,6 +250,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
          save_program_on_sd($sd_card,$program,$error);
       }
       check_and_copy_firm($sd_card,$error);
+      check_and_copy_log($sd_card,$error);
 }
 
 if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {

@@ -1,3 +1,21 @@
+CultiBox (1.0.296) precise; urgency=low
+
+  + Ajout d'une fonction permettant de copier ou créer le fichier log.txt sur la carte SD
+        02_src/joomla/main/scripts/plugs.php
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/scripts/wizard.php
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/scripts/calendar.php
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+
+ -- Yann Genevois <yann.genevois@gmail.com> Tue Nov 13 12:01:24 CET 2012
+
+
 CultiBox (1.0.295) precise; urgency=low
 
   + Ajout des nouvelles images pour le welcome et changement des textes

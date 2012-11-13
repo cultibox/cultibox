@@ -33,6 +33,21 @@ if(!isset($pop_up)) {
         $pop_up = get_configuration("SHOW_POPUP",$error);
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+   $sd_card=get_sd_card();
+}
+
+
+if((!empty($sd_card))&&(isset($sd_card))) {
+   $program=create_program_from_database($error);
+   if(!compare_program($program,$sd_card)) {
+      $info=$info.__('UPDATED_PROGRAM');
+      $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
+      save_program_on_sd($sd_card,$program,$error);
+   }
+   check_and_copy_firm($sd_card,$error);
+   check_and_copy_log($sd_card,$error);
+} 
 
 if((!isset($select_plug))||(empty($select_plug))) {
    $select_plug="all";

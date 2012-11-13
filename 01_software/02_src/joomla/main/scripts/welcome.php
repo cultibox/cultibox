@@ -39,6 +39,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    $program=create_program_from_database($error);
    save_program_on_sd($sd_card,$program,$error);
    check_and_copy_firm($sd_card,$error);
+   check_and_copy_log($sd_card,$error);
 } 
 
 

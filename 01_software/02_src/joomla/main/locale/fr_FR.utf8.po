@@ -730,6 +730,9 @@ msgstr "<li>La puissance de certaine de vos prises n'est pas configurée, vous p
 msgid "ERROR_COST_PRICE_NULL"
 msgstr "<li>Le prix du coût du kilowatt-heure n'est pas configuré, vous pouvez le configurer: <a href='configuration'>ici</a></li>"
 
+msgid "ERROR_COPY_TPL"
+msgstr "<li>Impossible de copier le fichier empty_file_64.tpl sur votre carte SD</li>"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "<li> Une carte SD compatible cultibox est branchée"
