@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cultibox"
-#define MyOldAppVersion "1.0.263"
-#define MyAppVersion "1.0.264"
+#define MyOldAppVersion "1.0.264"
+#define MyAppVersion "1.0.303"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
@@ -22,7 +22,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={sd}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-OutputBaseFilename=update_from_{#MyOldAppVersion}_to_{#MyAppVersion}
+OutputBaseFilename=update_CultiBox_from_{#MyOldAppVersion}_to_{#MyAppVersion}
 VersionInfoVersion={#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
@@ -100,30 +100,30 @@ end;
 [Files]
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\update_sql_windows_from_{#MyOldAppVersion}_to_{#MyAppVersion}.sql"; DestDir: "{app}\xampp\sql_install\"; Flags: ignoreversion
 ; Backup file. Used in pre install
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\backup.bat"; DestDir: "{app}\run"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\backup.bat"; DestDir: "{app}\run"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; load file. Used in post install
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\load.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\load.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\logs.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\templates\configuration.html"; DestDir: "{app}\xampp\htdocs\cultibox\main\templates\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\libs\css\cultibox.css"; DestDir: "{app}\xampp\htdocs\cultibox\main\libs\css\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\libs\db_common.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\libs\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\libs\img\calendar.png"; DestDir: "{app}\xampp\htdocs\cultibox\main\libs\img\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\libs\img\logs.png"; DestDir: "{app}\xampp\htdocs\cultibox\main\libs\img\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\libs\img\program.png"; DestDir: "{app}\xampp\htdocs\cultibox\main\libs\img\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\locale\en_GB.utf8.po"; DestDir: "{app}\xampp\htdocs\cultibox\main\locale\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\locale\fr_FR.utf8.po"; DestDir: "{app}\xampp\htdocs\cultibox\main\locale\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\welcome.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\templates\welcome.html"; DestDir: "{app}\xampp\htdocs\cultibox\main\templates\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\libs\img\wizard.png"; DestDir: "{app}\xampp\htdocs\cultibox\main\libs\img\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\libs\utilfunc.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\libs\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\locale\en_GB.utf8.po"; DestDir: "{app}\xampp\htdocs\cultibox\main\locale\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\locale\fr_FR.utf8.po"; DestDir: "{app}\xampp\htdocs\cultibox\main\locale\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\logs.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\libs\utilfunc.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\libs\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\calendar.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\configuration.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\libs\config.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\libs\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\templates\yoo_cloud\layouts\template.php"; DestDir: "{app}\xampp\htdocs\cultibox\templates\yoo_cloud\layouts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\VERSION_1.0.264.txt"; DestDir: "{app}\xampp"; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\cost.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\logs.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\plugs.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\programs.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\welcome.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\scripts\wizard.php"; DestDir: "{app}\xampp\htdocs\cultibox\main\scripts\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\templates\configuration.html"; DestDir: "{app}\xampp\htdocs\cultibox\main\templates\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\02_src\joomla\main\templates\welcome.html"; DestDir: "{app}\xampp\htdocs\cultibox\main\templates\"; CopyMode: alwaysoverwrite; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\VERSION_1.0.303.txt"; DestDir: "{app}\xampp"; Flags: ignoreversion
 [Run]
 Filename: "{app}\xampp\xampp_start.exe";Description: "Run Xampp";
 Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
