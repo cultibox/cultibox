@@ -8,7 +8,7 @@
 
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.0.264"
+#define MyAppVersion "1.0.303"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
@@ -27,7 +27,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={sd}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-OutputBaseFilename=setup_cultibox_admin_{#MyAppVersion}
+OutputBaseFilename=CultiBox_{#MyAppVersion}-windows7
 VersionInfoVersion={#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
@@ -186,12 +186,12 @@ end;
 
 [Files]
 ; Backup file. Used in pre install
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\backup.bat"; \
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\backup.bat"; \
   DestDir: "{app}\run"; \
   DestName: "backup.bat"; \
   Flags: ignoreversion recursesubdirs createallsubdirs
 ; load file. Used in post install
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\load.bat"; \
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\load.bat"; \
   DestDir: "{app}\run"; \
   Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\*"; \
@@ -201,12 +201,12 @@ Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\02
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
 ;Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\04_run\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\users\yann\Desktop\Project\cultibox\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\cultibox.bat"; \
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\cultibox.bat"; \
   DestDir: "{app}"; \
   Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

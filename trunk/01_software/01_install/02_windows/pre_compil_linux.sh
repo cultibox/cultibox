@@ -11,8 +11,9 @@ case "$1" in
             dir=`dirname $0`
             cd $dir
             sudo rm -Rf ../01_src/01_xampp/*
-            sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script.iss
-            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=setup_cultibox_{#MyAppVersion}/" ./install_script.iss
+            cp ./install_script.iss ./install_script_current.iss
+            sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
+            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=setup_cultibox_{#MyAppVersion}/" ./install_script_current.iss
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
             tar zxvf xamp-lite-windows-1.7.7.tar.gz -C ../01_src/01_xampp/
             cp -R ../../02_src/joomla ../01_src/01_xampp/htdocs/cultibox
@@ -20,22 +21,25 @@ case "$1" in
             echo "### Ne pas supprimer ce fichier ### " >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
             echo "" >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
             cat ../../CHANGELOG >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
-            wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "install_script.iss"
+            wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "install_script_current.iss"
+            rm ./install_script_current.iss
       ;;
       "windows7-admin" )
             dir=`dirname $0`
             cd $dir
             sudo rm -Rf ../01_src/01_xampp/*
-            sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script.iss
+            cp ./install_script.iss ./install_script_current.iss
+            sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
-            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=setup_cultibox_admin_{#MyAppVersion}/" ./install_script.iss 
+            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=setup_cultibox_admin_{#MyAppVersion}/" ./install_script_current.iss 
             tar zxvf xamp-lite-admin-windows-1.7.7.tar.gz -C ../01_src/01_xampp/
             cp -R ../../02_src/joomla ../01_src/01_xampp/htdocs/cultibox
             echo "### Don't delete this file ###" > ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
             echo "### Ne pas supprimer ce fichier ### " >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
             echo "" >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
             cat ../../CHANGELOG >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
-            wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "install_script.iss"
+            wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "install_script_current.iss"
+            rm ./install_script_current.iss
       ;;
       "update" )
             if [ "$2" == "" ] || [ "$3" == "" ]; then
