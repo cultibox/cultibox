@@ -1,4 +1,4 @@
-CultiBox (1.0.302) precise; urgency=low
+CultiBox (1.0.303) precise; urgency=low
 
   + Ajout des champs permettant de configurer le début et la fin de heures pleines/creuses + correction d'un bug d'affichage
         02_src/joomla/main/locale/en_GB.utf8.po
