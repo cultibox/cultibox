@@ -27,6 +27,8 @@ $pop_up="";
 $color_cost = get_configuration("COLOR_COST_GRAPH",$error);
 $update=get_configuration("CHECK_UPDATE",$error);
 $version=get_configuration("VERSION",$error);
+$start_hc=get_configuration("START_TIME_HC",$error);
+$stop_hc=get_configuration("STOP_TIME_HC",$error);
 $info="";
 
 if(!isset($pop_up)) {

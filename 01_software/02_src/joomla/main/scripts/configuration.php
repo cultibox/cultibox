@@ -43,6 +43,8 @@ $update=getvar('update');
 $program="";
 $version=get_configuration("VERSION",$error);
 $log_search=getvar("log_search",$error);
+$start_hc=getvar("start_hc",$error);
+$stop_hc=getvar("stop_hc",$error);
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$error);
@@ -265,6 +267,42 @@ if(!empty($cost_price_hp)||("$cost_price_hp"=="0")) {
 } else {
         $cost_price_hp = get_configuration("COST_PRICE_HP",$error);
 }
+
+if((isset($start_hc))&&(!empty($start_hc))) {
+        if(strlen($start_hc)==4) {
+                $start_hc="0$start_hc";
+        }
+
+        if((strlen($start_hc)==5)&&(preg_match('#^[0-9][0-9]:[0-9][0-9]$#', $start_hc))) {
+                insert_configuration("START_TIME_HC","$start_hc",$error);
+                $update_conf=true;        
+        } else {
+                $start_hc = get_configuration("START_TIME_HC",$error);
+                $error=$error.__('ERROR_TIME_VALUE');
+                $pop_up_error_message=$pop_up_error_message.clean_popup_message($error);
+        }
+} else {
+        $start_hc = get_configuration("START_TIME_HC",$error);
+}
+
+
+if((isset($stop_hc))&&(!empty($stop_hc))) {
+        if(strlen($stop_hc)==4) {
+                $stop_hc="0$stop_hc";
+        }
+
+        if((strlen($stop_hc)==5)&&(preg_match('#^[0-9][0-9]:[0-9][0-9]$#', $stop_hc))) {
+                insert_configuration("STOP_TIME_HC","$stop_hc",$error);
+                $update_conf=true;
+        } else {
+                $stop_hc = get_configuration("STOP_TIME_HC",$error);
+                $error=$error.__('ERROR_TIME_VALUE');
+                $pop_up_error_message=$pop_up_error_message.clean_popup_message($error);
+        } 
+} else {
+        $stop_hc = get_configuration("STOP_TIME_HC",$error);
+}
+
 
 if(!empty($log_search)) {
         insert_configuration("LOG_SEARCH","$log_search",$error);

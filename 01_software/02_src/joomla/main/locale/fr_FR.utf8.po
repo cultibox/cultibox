@@ -194,6 +194,12 @@ msgstr "Vérifier automatiquement la présence de mises à jour"
 msgid "CONFIG_LOG_SEARCH"
 msgstr "Nombre de mois sur lesquels rechercher des logs"
 
+msgid "CONFIGURE_START_HC"
+msgstr "Entrez l'heure de début de votre période creuse: (HH:MM)"
+
+msgid "CONFIGURE_STOP_HC"
+msgstr "Entrez l'heure de fin de votre période creuse: (HH:MM)"
+
 # For the logs part:
 
 msgid "HISTO_GRAPH"
@@ -675,6 +681,9 @@ msgstr "<li> Valeur manquante pour la date de début/fin du programme</li>"
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "<li> Erreur dans le format de l'heure: HH:MM:SS</li>"
+
+msgid "ERROR_TIME_VALUE"
+msgstr "<li> Erreur dans le format de l'heure: HH:MM</li>"
 
 msgid "ERROR_SAME_TIME"
 msgstr "<li>L'heure de départ et l'heure de fin doivent être différentes.</li>"
