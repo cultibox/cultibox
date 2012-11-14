@@ -44,15 +44,53 @@ function verifDigit(e) {
       var labelInputStandard = document.getElementById('cost_input_standard');
       var labelInputHP = document.getElementById('cost_input_hp');
       var labelInputHC = document.getElementById('cost_input_hc');
+      var labelStartHC = document.getElementById('start_label_hc');
+      var labelStopHC = document.getElementById('stop_label_hc');
+      var valueStartHC = document.getElementById('start_value_hc');
+      var valueStopHC = document.getElementById('stop_value_hc');
 
 
       switch(i) {
-         case 0 : labelStandard.style.display = ''; labelHP.style.display = 'none'; labelHC.style.display = 'none'; labelInputStandard.style.display = ''; labelInputHP.style.display = 'none'; labelInputHC.style.display = 'none'; break;
-         case 1 : labelStandard.style.display = 'none'; labelHP.style.display = ''; labelHC.style.display = ''; labelInputStandard.style.display = 'none'; labelInputHP.style.display = ''; labelInputHC.style.display = ''; break;
-         default: labelStandard.style.display = ''; labelHP.style.display = 'none'; labelHC.style.display = 'none'; labelInputStandard.style.display = ''; labelInputHP.style.display = 'none'; labelInputHC.style.display = 'none'; break;
+         case 0 : labelStandard.style.display = ''; labelHP.style.display = 'none'; labelHC.style.display = 'none'; labelInputStandard.style.display = ''; labelInputHP.style.display = 'none'; labelInputHC.style.display = 'none'; labelStartHC.style.display = 'none'; labelStopHC.style.display = 'none'; valueStartHC.style.display = 'none'; valueStopHC.style.display = 'none'; break;
+         case 1 : labelStandard.style.display = 'none'; labelHP.style.display = ''; labelHC.style.display = ''; labelInputStandard.style.display = 'none'; labelInputHP.style.display = ''; labelInputHC.style.display = ''; labelStartHC.style.display = ''; labelStopHC.style.display = ''; valueStartHC.style.display = ''; valueStopHC.style.display = ''; break;
+         default: labelStandard.style.display = ''; labelHP.style.display = 'none'; labelHC.style.display = 'none'; labelInputStandard.style.display = ''; labelInputHP.style.display = 'none'; labelInputHC.style.display = 'none'; labelStartHC.style.display = 'none'; labelStopHC.style.display = 'none'; valueStartHC.style.display = 'none'; valueStopHC.style.display = 'none'; break;
       }
    }
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('#start_hc').timepicker({
+<?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
+showSecond: false,
+showOn: 'both',
+buttonImage: "../main/libs/img/datepicker.png",
+buttonImageOnly: 'true',
+<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
+timeFormat: 'hh:mm',
+<?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
+<?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
+<?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
+<?php echo "currentText: '".__('TIMEPICKER_NOW')."',"; ?>
+<?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
+});
+$('#stop_hc').timepicker({
+<?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
+showOn: 'both',
+buttonImage: "../main/libs/img/datepicker.png",
+buttonImageOnly: 'true',
+<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
+showSecond: false,
+timeFormat: 'hh:mm',
+<?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
+<?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
+<?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
+<?php echo "currentText: '".__('TIMEPICKER_NOW')."',"; ?>
+<?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
+});
+});
+</script>
+
 
 <?php if((isset($info))&&(!empty($info))) { ?>
 <div id="info">
@@ -686,6 +724,20 @@ function verifDigit(e) {
       <td class="conf-marge-td"><label id="cost_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HC'); ?></label></td>
       <td><label id="cost_input_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="5" maxlength="5" name="cost_price_hc" value="<?php echo "$cost_price_hc"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?></label></td>
    </tr> 
+   <tr>
+       <td class="conf-marge"></td>
+      <td class="conf-marge-td"><label id="start_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_START_HC'); ?></label></td>
+      <td>
+            <label id="start_value_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" maxlength="5" size="5" name="start_hc" id="start_hc" <?php if((isset($start_hc))&&(!empty($start_hc))) { ?> value="<?php echo $start_hc; ?>" <?php } else { ?> value="00:00" <?php } ?> /></label>
+      </td>
+   </tr>
+     <tr>
+       <td class="conf-marge"></td>
+      <td class="conf-marge-td"><label id="stop_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_STOP_HC'); ?></label></td>
+      <td>
+            <label id="stop_value_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" maxlength="5" size="5" name="stop_hc" id="stop_hc" <?php if((isset($stop_hc))&&(!empty($stop_hc))) { ?> value="<?php echo $stop_hc; ?>" <?php } else { ?> value="00:00" <?php } ?> /></label>
+      </td>
+   </tr>
 </table>
 
 <br /><p class="p_center">
