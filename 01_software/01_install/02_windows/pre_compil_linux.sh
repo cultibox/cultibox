@@ -61,7 +61,7 @@ case "$1" in
                     exit 0
             fi
 
-            file_section=`expr $file_section + 7`
+            file_section=`expr $file_section + 8`
             run_section=`expr $run_section - 1`
 
 
