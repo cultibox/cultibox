@@ -17,3 +17,10 @@ SRC:main/scripts/welcome.php
 SRC:main/scripts/wizard.php
 SRC:main/templates/configuration.html
 SRC:main/templates/welcome.html
+SRC:main/libs/js/oXHR.js
+SRC:main/templates/programs.html
+SRC:main/templates/plugs.html
+SRC:main/templates/waiting.html
+SRC:main/templates/logs.html
+SRC:main/templates/cost.html
+SRC:templates/yoo_cloud/layouts/template.php

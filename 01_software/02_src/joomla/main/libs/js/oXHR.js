@@ -6,22 +6,24 @@
 function getXMLHttpRequest() {
 	var xhr = null;
 	
-	if (window.XMLHttpRequest || window.ActiveXObject) {
-		if (window.ActiveXObject) {
-			try {
-				xhr = new ActiveXObject("Msxml2.XMLHTTP");
-			} catch(e) {
-				xhr = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-		} else {
-			xhr = new XMLHttpRequest(); 
-		}
-	} else {
-		alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
-		return null;
-	}
-	
-	return xhr;
+	if (window.XMLHttpRequest)
+        return new XMLHttpRequest();
+ 
+    if (window.ActiveXObject)
+    {
+        var names = [
+            "Msxml2.XMLHTTP.6.0",
+            "Msxml2.XMLHTTP.3.0",
+            "Msxml2.XMLHTTP",
+            "Microsoft.XMLHTTP"
+        ];
+        for(var i in names)
+        {
+            try{ return new ActiveXObject(names[i]); }
+            catch(e){}
+        }
+    }
+	return null;
 }
 
 

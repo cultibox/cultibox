@@ -1,4 +1,4 @@
-CultiBox (1.0.306) precise; urgency=low
+CultiBox (1.0.307) precise; urgency=low
 
   + Ajout du module xHR + passage au valaditeur du w3c pour le html + correction affichage
         02_src/joomla/main/libs/css/cultibox.css
