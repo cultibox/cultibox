@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e 
-VERSION=`svn info | grep Revision | tr -d 'Revison: '`
+VERSION=1.0.`svn info | grep Revision | tr -d 'Revison: '`
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../../01_install/01_src/01_xampp
 
@@ -13,7 +13,7 @@ case "$1" in
             sudo rm -Rf ../01_src/01_xampp/*
             cp ./install_script.iss ./install_script_current.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
-            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=setup_cultibox_{#MyAppVersion}/" ./install_script_current.iss
+            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=CultiBox_{#MyAppVersion}-windows7/" ./install_script_current.iss
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
             tar zxvf xamp-lite-windows-1.7.7.tar.gz -C ../01_src/01_xampp/
             cp -R ../../02_src/joomla ../01_src/01_xampp/htdocs/cultibox
@@ -31,7 +31,7 @@ case "$1" in
             cp ./install_script.iss ./install_script_current.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
-            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=setup_cultibox_admin_{#MyAppVersion}/" ./install_script_current.iss 
+            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=CultiBox_admin_{#MyAppVersion}-windows7/" ./install_script_current.iss 
             tar zxvf xamp-lite-admin-windows-1.7.7.tar.gz -C ../01_src/01_xampp/
             cp -R ../../02_src/joomla ../01_src/01_xampp/htdocs/cultibox
             echo "### Don't delete this file ###" > ../01_src/01_xampp/VERSION_`echo $VERSION`.txt

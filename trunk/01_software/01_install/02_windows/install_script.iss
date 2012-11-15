@@ -8,7 +8,7 @@
 
 
 #define MyAppName "Cultibox"
-#define MyAppVersion "1.0.303"
+#define MyAppVersion "1.0.306"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
 
