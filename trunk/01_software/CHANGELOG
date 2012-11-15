@@ -1,4 +1,4 @@
-CultiBox (1.0.307) precise; urgency=low
+CultiBox (1.0.309) precise; urgency=low
 
   + Ajout du module xHR + passage au valaditeur du w3c pour le html + correction affichage
         02_src/joomla/main/libs/css/cultibox.css
@@ -18,6 +18,10 @@ CultiBox (1.0.307) precise; urgency=low
         VERSION
         01_install/02_windows/pre_compil_linux.sh
         01_install/03_linux/pre-compil.sh
+
+  + Correction de l'URL pour la vérification des mises à jour (le site web a bougé)
+        02_src/joomla/main/libs/config.php
+        02_src/joomla/main/libs/utilfunc.php
 
  -- Yann Genevois <yann.genevois@gmail.com> Thu Nov 15 12:23:46 CET 2012
 

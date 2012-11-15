@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e 
+svn up
 VERSION=1.0.`svn info | grep Revision | tr -d 'Revison: '`
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../../01_install/01_src/01_xampp
@@ -50,11 +51,12 @@ case "$1" in
             dir=`dirname $0`
             cd $dir
             sudo rm -Rf ../01_src/01_xampp/*
-            sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $3`\"/" ./update_script_linux.iss
-            sed -i "s/#define MyOldAppVersion .*/#define MyOldAppVersion \"`echo $2`\"/" ./update_script_linux.iss
+            cp ./update_script_linux.iss ./update_script_current_linux.iss
+            sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $3`\"/" ./update_script_current_linux.iss
+            sed -i "s/#define MyOldAppVersion .*/#define MyOldAppVersion \"`echo $2`\"/" ./update_script_current_linux.iss
 
-            file_section=`grep -n "\[Files\]" ./update_script_linux.iss |awk -F":" '{print $1}'`
-            run_section=`grep -n "\[Run\]" ./update_script_linux.iss |awk -F":" '{print $1}'`
+            file_section=`grep -n "\[Files\]" ./update_script_current_linux.iss |awk -F":" '{print $1}'`
+            run_section=`grep -n "\[Run\]" ./update_script_current_linux.iss |awk -F":" '{print $1}'`
             
             if [ "$file_section" == "" ] || [ "$run_section" == "" ]; then
                     echo "[ Error ] - Please check the update script (update_script_linux.iss): missing [Files] or [Run] section(s)"
@@ -66,7 +68,7 @@ case "$1" in
 
 
             if [ $run_section -gt $file_section ]; then
-                sed -i "${file_section},${run_section}d" ./update_script_linux.iss
+                sed -i "${file_section},${run_section}d" ./update_script_current_linux.iss
             fi
  
             mkdir -p $DEST_DIR/htdocs/cultibox
@@ -87,7 +89,7 @@ case "$1" in
                         line_toadd=`echo "$tmp_file" | sed "s#/#\\\\\\\\\\\\\#g"`
                         tmp_dir=`echo "$dir_file" | sed -e 's/.*/\/&/'`
                         dir_toadd=`echo "$tmp_dir" | sed "s#/#\\\\\\\\\\\\\#g"`
-                        sed -i "${file_section}i\Source: \"C:\\\users\\\yann\\\Desktop\\\Project\\\cultibox\\\01_software\\\02_src\\\joomla${line_toadd}\"; DestDir: \"{app}\\\xampp\\\htdocs\\\cultibox${dir_toadd}\\\\\"; CopyMode: alwaysoverwrite; Flags: ignoreversion" ./update_script_linux.iss
+                        sed -i "${file_section}i\Source: \"C:\\\users\\\yann\\\Desktop\\\Project\\\cultibox\\\01_software\\\02_src\\\joomla${line_toadd}\"; DestDir: \"{app}\\\xampp\\\htdocs\\\cultibox${dir_toadd}\\\\\"; CopyMode: alwaysoverwrite; Flags: ignoreversion" ./update_script_current_linux.iss
                         file_section=`expr $file_section + 1`
 
                         
@@ -108,9 +110,9 @@ case "$1" in
             echo "" >> ../01_src/01_xampp/VERSION_`echo $3`.txt
             cat ../../CHANGELOG >> ../01_src/01_xampp/VERSION_`echo $3`.txt
 
-            sed -i "${file_section}i\Source: \"C:\\\users\\\yann\\\Desktop\\\Project\\\cultibox\\\01_software\\\01_install\\\01_src\\\01_xampp\\\VERSION_${3}.txt\"; DestDir: \"{app}\\\xampp\"; Flags: ignoreversion" ./update_script_linux.iss
+            sed -i "${file_section}i\Source: \"C:\\\users\\\yann\\\Desktop\\\Project\\\cultibox\\\01_software\\\01_install\\\01_src\\\01_xampp\\\VERSION_${3}.txt\"; DestDir: \"{app}\\\xampp\"; Flags: ignoreversion" ./update_script_current_linux.iss
             echo "UPDATE \`configuration\` SET \`VERSION\` = '${3}' WHERE \`configuration\`.\`id\` =1;" >> ../01_src/01_xampp/update_sql_windows_from_$2_to_$3.sql
-            wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "update_script_linux.iss"
+            wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "update_script_current_linux.iss"
       ;;
       "clean")
             sudo rm -Rf ../01_src/01_xampp/*
