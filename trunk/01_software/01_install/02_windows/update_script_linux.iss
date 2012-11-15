@@ -98,6 +98,7 @@ end;
 
 
 [Files]
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion^M
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\update_sql_windows_from_{#MyOldAppVersion}_to_{#MyAppVersion}.sql"; DestDir: "{app}\xampp\sql_install\"; Flags: ignoreversion
 ; Backup file. Used in pre install
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\backup.bat"; DestDir: "{app}\run"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs

@@ -33,7 +33,7 @@ function sendXMLHttpRequest(xhr,infos) {
     var sLog = encodeURIComponent("pouet");
     var sIP = encodeURIComponent(infos);
 
-    xhr.timeout = 4000;
+    //xhr.timeout = 4000;
     xhr.open("GET", "http://www.cbx.greenbox-botanic.com/index.php?date=" + sDate + "&log=" + sLog + "&ip=" + sIP, true);
     xhr.send(null);
 }

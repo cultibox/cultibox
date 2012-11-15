@@ -5,7 +5,6 @@ if %ERRORLEVEL% EQU 0 (
     xampp\xampp_stop.exe
     xampp\xampp_start.exe > NUL
 ) else (
-    echo      -> Demarrage de XAMPP
     xampp\xampp_start.exe > NUL
 )
 
