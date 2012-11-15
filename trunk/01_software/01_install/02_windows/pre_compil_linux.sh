@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e 
-VERSION=`cat ../../VERSION`
+VERSION=`svn info | grep Revision | tr -d 'Revison: '`
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../../01_install/01_src/01_xampp
 

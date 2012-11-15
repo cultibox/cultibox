@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e 
-VERSION=`cat ../../VERSION`
+VERSION=`svn info | grep Revision | tr -d 'Revison: '`
 
 case "$1" in
       "ubuntu64-admin" )

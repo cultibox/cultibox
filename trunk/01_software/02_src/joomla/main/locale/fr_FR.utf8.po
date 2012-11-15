@@ -25,17 +25,8 @@ msgstr "Ce logiciel va vous permettre de manipuler simplement votre CultiBox afi
 msgid "WELCOME_TUTO"
 msgstr "<b>Note:</b> pour ceux qui possède l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument: <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la CultiBox</li></ul>"
 
-msgid "WELCOME_FOLLOW_LOGS"
-msgstr "La page de logs vous permet de visualiser les températures, l'hygrométrie et vos courbes de programmes afin de les comparer et de vérifier qu'aucune anomalie ne s'est produite dans votre culture."
-
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre CultiBox"
-
-msgid "WELCOME_FOLLOW_PROGRAM"
-msgstr "La page des programmes vous permet de configurer le comportement de vos prises."
-
-msgid "WELCOME_FOLLOW_CALENDAR"
-msgstr "La page du calendrier vous permet de remplir un agenda de culture en définissant les périodes de culture, croissance, récolte... pour ensuite les afficher sur la CultiBox et vous prévenir."
 
 msgid "WELCOME_WIZARD"
 msgstr "Assistant de configuration"

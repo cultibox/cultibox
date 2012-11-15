@@ -1,3 +1,27 @@
+CultiBox (1.0.306) precise; urgency=low
+
+  + Ajout du module xHR + passage au valaditeur du w3c pour le html + correction affichage
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/js/oXHR.js
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/templates/plugs.html
+        02_src/joomla/main/templates/welcome.html
+        02_src/joomla/main/templates/waiting.html
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/templates/cost.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/templates/yoo_cloud/layouts/template.php
+
+  + Suppression du fichier VERSION, utilisation de la revision par SVN
+        VERSION
+        01_install/02_windows/pre_compil_linux.sh
+        01_install/03_linux/pre-compil.sh
+
+ -- Yann Genevois <yann.genevois@gmail.com> Thu Nov 15 12:23:46 CET 2012
+
+
 CultiBox (1.0.303) precise; urgency=low
 
   + Ajout des champs permettant de configurer le début et la fin de heures pleines/creuses + correction d'un bug d'affichage
