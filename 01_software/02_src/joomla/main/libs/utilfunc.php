@@ -1267,16 +1267,14 @@ function get_nb_days($start_date="",$end_date="") {
 // RET   none  
 function check_update_available(&$ret,&$out="") {
          if(isset($GLOBALS['UPDATE_FILE'])&&(!empty($GLOBALS['UPDATE_FILE']))) {
-               $warning=error_reporting();
-               error_reporting(0);
                $buffer=array();
                $tmp=array();
                $file=$GLOBALS['UPDATE_FILE'];
-               if($handle=fopen("$file","r")) {
+               if($handle=fopen($file,"r")) {
                   while (!feof($handle)) {
                      $buffer[] = fgets($handle);
                   }
-                  fclose($f);
+                  fclose($handle);
                   $os=php_uname('s');
                   foreach($buffer as $val) {
                                     $tmp=explode("*", $val);
@@ -1287,7 +1285,6 @@ function check_update_available(&$ret,&$out="") {
                } else {
                   $out=$out.__('ERROR_REMOTE_UPDATE_FILE');
                }
-               error_reporting($warning);
          }
 }
 // }}}
