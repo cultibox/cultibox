@@ -28,15 +28,6 @@ msgstr "<b>Note:</b> if you have the previous version of the cultibox named the 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Just click on the following link to launch the wizard configuration and begin to manipulate your cultibox"
 
-msgid "WELCOME_FOLLOW_LOGS"
-msgstr "Logs  page allows you to view temperatures, humidity and programs charts to compare and check that no abnormality has occurred in your culture."
-
-msgid "WELCOME_FOLLOW_PROGRAM"
-msgstr "Programs page allows you to configure the behavior of your plugs."
-
-msgid "WELCOME_FOLLOW_CALENDAR"
-msgstr "Calendar page allows you to fill in a calendar defining periods of culture, growth, harvest... then display them on the CultiBox and warn you."
-
 msgid "WELCOME_WIZARD"
 msgstr "Configuration Wizard"
 

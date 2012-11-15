@@ -25,21 +25,19 @@ function verifDate(e) {
    </div>
 <?php } ?>
 
-<?php if((isset($main_error))&&(!empty($main_error))) { ?>
+<?php if((!empty($main_error))||(!empty($error))) { ?>
 <div id="error">
+<?php if(!empty($main_error)) { ?>
 <ul>
         <?php echo $main_error; ?>
 </ul>
-</div>
 <?php } ?>
-
-<?php if((isset($error))&&(!empty($error))) { ?>
-   <div id="error">
-      <ul>
-         <?php echo $error; ?>
-      </ul>
-   </div>
-   <br />
+<?php if(!empty($error)) { ?>
+<ul>
+        <?php echo $error; ?>
+</ul>
+<?php } ?>
+</div>
 <?php } ?>
 
 <?php switch($lang) {
@@ -64,7 +62,7 @@ buttonImageOnly: 'true',
 </script>
 
 <form action="/cultibox/index.php/display-logs" method="post">
-<p class="title_conf"><img src="main/libs/img/arrow.png" /><?php echo __('SELECT_DISPLAYED_DAY'); ?></p>
+<p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SELECT_DISPLAYED_DAY'); ?></p>
 
 <table>
    <tr>
@@ -109,7 +107,7 @@ buttonImageOnly: 'true',
 <form action="/cultibox/index.php/display-logs" method="post">
 <table>
    <tr>
-      <td class="log-marge-month-title"><p class="title_conf"><img src="main/libs/img/arrow.png" /><?php echo __('SELECT_DISPLAYED_MONTH'); ?>:</p></td>
+      <td class="log-marge-month-title"><p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SELECT_DISPLAYED_MONTH'); ?>:</p></td>
       <td class="log-marge-month-field">
             <select name="startmonth">
                <option <?php if("$startmonth" == "1") { echo 'selected';} ?> value="01"><?php echo __('MONTH01'); ?></option>

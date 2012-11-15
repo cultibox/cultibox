@@ -27,8 +27,10 @@ include($this['path']->path('layouts:template.config.php'));
                 <script type="text/javascript" src="main/libs/js/jquery-ui-timepicker-addon.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-sliderAccess.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery.ui.core.js"></script>
-	             <script type="text/javascript" src="main/libs/js/jquery.ui.widget.js"></script>
-		          <script type="text/javascript" src="main/libs/js/cultibox.js"></script>
+	            <script type="text/javascript" src="main/libs/js/jquery.ui.widget.js"></script>
+	            <script type="text/javascript" src="main/libs/js/cultibox.js"></script>
+                <script type="text/javascript" src="main/libs/js/oXHR.js"></script>
+
                 <style type="text/css">
                         /* css for timepicker */
                         #ui-datepicker-div, .ui-datepicker{ width: 30%; font-size: 90%; }
