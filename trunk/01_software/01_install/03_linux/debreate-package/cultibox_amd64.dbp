@@ -7232,7 +7232,8 @@ Description: Web interface for the CultiBox
 /home/yann/Desktop/Project/cultibox/01_software/01_install/01_src/01_xampp/lampp/sql_install/user_cultibox.sql -> user_cultibox.sql -> /opt/lampp/sql_install
 /home/yann/Desktop/Project/cultibox/01_software/01_install/01_src/01_xampp/lampp/sql_install/fake_log.sql -> fake_log.sql -> /opt/lampp/sql_install
 /home/yann/Desktop/Project/cultibox/01_software/01_install/01_src/01_xampp/lampp/sql_install/joomla.sql -> joomla.sql -> /opt/lampp/sql_install
-/home/yann/Desktop/Project/cultibox/01_software/01_install/01_src/01_xampp/lampp/sql_install/cultibox.sql -> cultibox.sql -> /opt/lampp/sql_install
+/home/yann/Desktop/Project/cultibox/01_software/01_install/01_src/01_xampp/lampp/sql_install/cultibox_en.sql -> cultibox_en.sql -> /opt/lampp/sql_install
+/home/yann/Desktop/Project/cultibox/01_software/01_install/01_src/01_xampp/lampp/sql_install/cultibox_fr.sql -> cultibox_fr.sql -> /opt/lampp/sql_install
 /home/yann/Desktop/Project/cultibox/01_software/01_install/01_src/01_xampp/lampp/takecontrol.png -> takecontrol.png -> /opt/lampp
 /home/yann/Desktop/Project/cultibox/01_software/01_install/01_src/01_xampp/lampp/lampp* -> lampp -> /opt/lampp
 /home/yann/Desktop/Project/cultibox/01_software/01_install/01_src/01_xampp/lampp/RELEASENOTES -> RELEASENOTES -> /opt/lampp
@@ -7264,7 +7265,7 @@ sed -i "s/user*.*= nobody/user    = $user_culti/" /opt/lampp/etc/my.cnf
 /opt/lampp/bin/mysqladmin -u root -h localhost password cultibox
 /opt/lampp/bin/mysql -u root -h localhost -pcultibox < /opt/lampp/sql_install/user_cultibox.sql
 /opt/lampp/bin/mysql -u root -h localhost -pcultibox < /opt/lampp/sql_install/joomla.sql
-/opt/lampp/bin/mysql -u root -h localhost -pcultibox < /opt/lampp/sql_install/cultibox.sql
+/opt/lampp/bin/mysql -u root -h localhost -pcultibox < /opt/lampp/sql_install/cultibox_en.sql
 /opt/lampp/bin/mysql -u root -h localhost -pcultibox < /opt/lampp/sql_install/fake_log.sql
 
 echo "Installing CultiBox as a service:"

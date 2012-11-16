@@ -31,7 +31,7 @@ USE `cultibox`;
 CREATE TABLE IF NOT EXISTS `configuration` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `CHECK_UPDATE` varchar(5) NOT NULL DEFAULT 'False',
-  `VERSION` varchar(30) NOT NULL DEFAULT '1.0.309',
+  `VERSION` varchar(30) NOT NULL DEFAULT '1.0.310',
   `COLOR_HUMIDITY_GRAPH` varchar(30) NOT NULL DEFAULT 'blue',
   `COLOR_TEMPERATURE_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
   `COLOR_POWER_GRAPH` varchar(30) NOT NULL DEFAULT 'black',
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 --
 
 INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_PROGRAM_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `LOG_POWER_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `LOG_SEARCH`) VALUES
-(1, 'False', '1.0.309', 'blue', 'red', 'black', 'green', 'purple', 5, 1, 3, -1, 'fr_FR', 50, 100, 1000, 'True', '0000', '50.0', '000H', '000+', 0.1249, 0.1353, 0.0926, '22:30', '06:30', 'standard', 2);
+(1, 'False', '1.0.310', 'blue', 'red', 'black', 'green', 'purple', 5, 1, 3, -1, 'fr_FR', 50, 100, 1000, 'True', '0000', '50.0', '000H', '000+', 0.1249, 0.1353, 0.0926, '22:30', '06:30', 'standard', 2);
 
 -- --------------------------------------------------------
 
@@ -127,22 +127,22 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 --
 
 INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_REGUL`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`) VALUES
-(1, '', 'plug1', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(2, '', 'plug2', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(3, '', 'plug3', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(4, '', 'plug4', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(5, '', 'plug5', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(6, '', 'plug6', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(7, '', 'plug7', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(8, '', 'plug8', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(9, '', 'plug9', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(10, '', 'plug10', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(11, '', 'plug11', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(12, '', 'plug12', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(13, '', 'plug13', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(14, '', 'plug14', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(15, '', 'plug15', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(16, '', 'plug16', 'unknown', NULL, 0, 'False', 'T', '+', 35.0);
+(1, '', 'prise1', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(2, '', 'prise2', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(3, '', 'prise3', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(4, '', 'prise4', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(5, '', 'prise5', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(6, '', 'prise6', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(7, '', 'prise7', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(8, '', 'prise8', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(9, '', 'prise9', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(10, '', 'prise10', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(11, '', 'prise11', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(12, '', 'prise12', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(13, '', 'prise13', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(14, '', 'prise14', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(15, '', 'prise15', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
+(16, '', 'prise16', 'unknown', NULL, 0, 'False', 'T', '+', 35.0);
 
 -- --------------------------------------------------------
 
