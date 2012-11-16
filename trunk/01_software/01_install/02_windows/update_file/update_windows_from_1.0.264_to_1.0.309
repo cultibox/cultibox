@@ -24,3 +24,5 @@ SRC:main/templates/waiting.html
 SRC:main/templates/logs.html
 SRC:main/templates/cost.html
 SRC:templates/yoo_cloud/layouts/template.php
+SRC:main/libs/config.php
+SRC:main/libs/utilfunc.php
