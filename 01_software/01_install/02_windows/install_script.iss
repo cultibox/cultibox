@@ -125,6 +125,16 @@ begin
   end;
 end;
 
+function getLanguage(s : string) : string;
+    var langage : string;
+begin
+    case ActiveLanguage() of
+        'english' : langage := 'cultibox_en.sql';
+        'french' : langage := 'cultibox_fr.sql';
+    end;
+    Result := langage;
+end;
+
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   ResultCode: integer;
@@ -231,7 +241,7 @@ Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
   WorkingDir: "{app}"; \
   Description: "Install joomla base";
 Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
-  Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\cultibox.sql"""; \
+  Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\{code:getLanguage}"""; \
   WorkingDir: "{app}"; \
   Description: "Install cultibox base";
 Filename: "{app}\xampp\mysql\bin\mysql.exe"; \

@@ -1,4 +1,5 @@
 CultiBox (1.0.310) precise; urgency=low
+  + Lors de l'installation sous windows le nom des prises sera en francais ou anglais en fonction de la langue choisie
 
   + Nouvelle version pour highchart 2.3.3
         02_src/joomla/main/libs/js/exporting.js
@@ -13,7 +14,7 @@ CultiBox (1.0.310) precise; urgency=low
         02_src/joomla/main/locale/en_GB.utf8.po
         02_src/joomla/main/locale/fr_FR.utf8.po
 
- -- Yann Genevois <yann.genevois@gmail.com> Fri Nov 16 09:42:10 CET 2012
+ -- Yann Genevois <yann.genevois@gmail.com> Fri Nov 16 11:42:10 CET 2012
 
 
 CultiBox (1.0.309) precise; urgency=low

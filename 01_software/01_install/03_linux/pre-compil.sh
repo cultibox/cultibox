@@ -14,7 +14,7 @@ case "$1" in
    
            cp debreate-package/cultibox_amd64-admin.dbp ./cultibox_amd64-admin_current.dbp 
            #replacement of the old version number by the new one in VERSION file
-           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_en.sql
            sed -i "s/Version: .*-ubuntu/Version: `echo $VERSION`-ubuntu/" ./cultibox_amd64-admin_current.dbp
 
            begin=`grep -n "<<CHANGELOG>>" ./cultibox_amd64-admin_current.dbp|awk -F ":" '{print $1}'`
@@ -56,7 +56,7 @@ case "$1" in
            cp debreate-package/cultibox_amd64.dbp ./cultibox_amd64_current.dbp
 
            #replacement of the old version number by the new one in VERSION file
-           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_en.sql
            sed -i "s/Version: .*-ubuntu/Version: `echo $VERSION`-ubuntu/" ./cultibox_amd64_current.dbp
 
            begin=`grep -n "<<CHANGELOG>>" ./cultibox_amd64_current.dbp|awk -F ":" '{print $1}'`
@@ -97,7 +97,7 @@ case "$1" in
            cp debreate-package/cultibox_i386.dbp ./cultibox_i386-admin_current.dbp
 
            #replacement of the old version number by the new one in VERSION file
-           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_en.sql
            sed -i "s/Version: .*-ubuntu/Version: `echo $VERSION`-ubuntu/" ./cultibox_i386-admin_current.dbp
 
            begin=`grep -n "<<CHANGELOG>>" ./cultibox_i386-admin_current.dbp|awk -F ":" '{print $1}'`
@@ -139,7 +139,7 @@ case "$1" in
            cp debreate-package/cultibox_i386.dbp ./cultibox_i386_current.dbp
 
            #replacement of the old version number by the new one in VERSION file
-           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox.sql
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_en.sql
            sed -i "s/^Version: .*-ubuntu/Version: `echo $VERSION`-ubuntu/" ./cultibox_i386_current.dbp
 
            begin=`grep -n "<<CHANGELOG>>" ./cultibox_i386_current.dbp|awk -F ":" '{print $1}'`
