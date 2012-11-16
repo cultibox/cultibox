@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e 
-svn up
+cd ../../../ && svn up
 VERSION=`svn info | grep Revision | tr -d 'Revison: '`
 
 case "$1" in

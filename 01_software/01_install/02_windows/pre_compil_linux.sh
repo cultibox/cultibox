@@ -1,7 +1,9 @@
 #!/bin/bash
 
 set -e 
-svn up
+dir=`dirname $0`
+cd $dir
+(cd ../../../ && svn up)
 VERSION=1.0.`svn info | grep Revision | tr -d 'Revison: '`
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../../01_install/01_src/01_xampp
@@ -9,8 +11,6 @@ DEST_DIR=../../01_install/01_src/01_xampp
 
 case "$1" in
       "windows7" )
-            dir=`dirname $0`
-            cd $dir
             sudo rm -Rf ../01_src/01_xampp/*
             cp ./install_script.iss ./install_script_current.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
@@ -26,8 +26,6 @@ case "$1" in
             rm ./install_script_current.iss
       ;;
       "windows7-admin" )
-            dir=`dirname $0`
-            cd $dir
             sudo rm -Rf ../01_src/01_xampp/*
             cp ./install_script.iss ./install_script_current.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
@@ -48,8 +46,6 @@ case "$1" in
                     exit 0
             fi
             
-            dir=`dirname $0`
-            cd $dir
             sudo rm -Rf ../01_src/01_xampp/*
             cp ./update_script_linux.iss ./update_script_current_linux.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $3`\"/" ./update_script_current_linux.iss

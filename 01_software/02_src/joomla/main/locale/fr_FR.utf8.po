@@ -17,13 +17,13 @@ msgstr "Programmes"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
-msgstr "Bienvenu(e) dans le logiciel de configuration de la CultiBox"
+msgstr "Bienvenue dans le logiciel de configuration de la CultiBox"
 
 msgid "WELCOME_MESSAGE"
-msgstr "Ce logiciel va vous permettre de manipuler simplement votre CultiBox afin de la configurer, de visualiser les données enregistrées ou encore d'accèder à certaines fonctionnalités telles que le calcul du coût d'électricité ou la création d'un calendrier de culture."
+msgstr "Ce logiciel va vous permettre de manipuler simplement votre CultiBox afin de la configurer, de visualiser les données enregistrées ou encore d'accéder à certaines fonctionnalités telles que le calcul du coût d'électricité ou la création d'un calendrier de culture."
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note:</b> pour ceux qui possède l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument: <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la CultiBox</li></ul>"
+msgstr "<b>Note :</b> pour ceux qui possède l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument: <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la CultiBox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre CultiBox"
@@ -120,7 +120,7 @@ msgid "COLOR_CYAN"
 msgstr "Cyan"
 
 msgid "CONFIGURE_TEMP_AXIS"
-msgstr "Valeur maximale de l'axe des température pour les graphes"
+msgstr "Valeur maximale de l'axe des températures pour les graphes"
 
 msgid "CONFIGURE_HYGRO_AXIS"
 msgstr "Valeur maximale de l'axe de l'hygrométrie pour les graphes"
@@ -186,10 +186,10 @@ msgid "CONFIG_LOG_SEARCH"
 msgstr "Nombre de mois sur lesquels rechercher des logs"
 
 msgid "CONFIGURE_START_HC"
-msgstr "Entrez l'heure de début de votre période creuse: (HH:MM)"
+msgstr "Entrez l'heure de début de votre période creuse : (HH:MM)"
 
 msgid "CONFIGURE_STOP_HC"
-msgstr "Entrez l'heure de fin de votre période creuse: (HH:MM)"
+msgstr "Entrez l'heure de fin de votre période creuse : (HH:MM)"
 
 # For the logs part:
 
@@ -212,13 +212,13 @@ msgid "VIEW"
 msgstr "Afficher"
 
 msgid "DRAG_PLOT"
-msgstr "Selectionner une zone afin de zoomer"
+msgstr "Selectionner une zone afin de l\'agrandir"
 
 msgid "LEGEND_TEMP"
 msgstr "Temperature"
 
 msgid "LEGEND_HUMI"
-msgstr "Hygrometrie"
+msgstr "Hygrométrie"
 
 msgid "LEGEND_POWER"
 msgstr "Puissance"
@@ -287,7 +287,10 @@ msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
 
 msgid "WAITING_LOGS"
-msgstr "Merci de patientez quelques instants et de ne pas retirer la carte CultiBox le temps que la page se charge et que les données soient traitées..."
+msgstr "Merci de patienter quelques instants le temps que la page se charge et que les données soient traitées..."
+
+msgid "WAITING_LOGS_WITH_SD"
+msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte CultiBox</i></b> le temps que la page se charge et que les données soient traitées..."
 
 # For the plugs part:
 msgid "PLUG"
@@ -460,7 +463,7 @@ msgstr "Annuler le zoom"
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
-msgstr "Bienvenue dans l'interface de configuration et d'utilisation de votre Cultibox. L'assistant va vous permettre facilement de configurer les programmes associés à vos prises, de configurer le type de prise et leur comportement. Cliquez sur le bouton <b>suivant</b> pour lancer le wizard. Vous pouvez passer cette étape et configurer manuellement vos prises en cliquant sur le bouton <b>Fermer l'assistant</b>"
+msgstr "Bienvenue dans l'interface de configuration et d'utilisation de votre Cultibox. L'assistant va vous permettre facilement de configurer les programmes associés à vos prises, de configurer le type de prise et leur comportement. Cliquez sur le bouton <b>suivant</b> pour lancer l'assistant. Vous pouvez passer cette étape et configurer manuellement vos prises en cliquant sur le bouton <b>Fermer l'assistant</b>"
 
 msgid "CLOSE_WIZARD"
 msgstr "Fermer l'assistant"
@@ -487,13 +490,13 @@ msgid "WIZARD_NEXT_PLUG"
 msgstr "Suivant >"
 
 msgid "WIZARD_PLUG_NUMBER"
-msgstr "Cet assistant vous permet de vous familliariser avec les configurations des prises et des programmes en configurant avec vous la première prise."
+msgstr "Cet assistant vous permet de vous familiariser avec les configurations des prises et des programmes en configurant avec vous la première prise."
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximun</b>. Il est possible de configurer les autres prises comme des lampes mais elle ne pourront accueillir une lampe dont la puissance dépasse <b>200 Watts</b>. "
+msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximum</b>. Il est possible de configurer les autres prises comme des lampes mais elles ne pourront accueillir une lampe dont la puissance dépasse <b>200 Watts</b>. "
 
 msgid "WIZARD_PLUG_PROGRAM"
-msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe. Pour cela choisissez une heure de départ où la lampe se mettra en route et une heure de fin où la lampe  s'éteindra."
+msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe. Pour cela choisissez une heure de départ où la lampe se mettra en route et une heure de fin où la lampe s'éteindra."
 
 msgid "WIZARD_STEP"
 msgstr "Etape"
@@ -505,7 +508,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "Vous allez maintenant configurer une nouvelle prise."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choisissez le type de prise à utiliser: <ul><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidifieur pour baisser le pourcentage d'humidité</li><li>un déshumidifieur pour diminuer l'himidité</li><li>une lampe</li><li>le type inconnu servant pour tout les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit etre <b>moins puissante que 200 Watts</b>"
+msgstr "Choisissez le type de prise à utiliser: <ul><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type inconnu servant pour tout les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
 
 #For the calendar part:
 msgid "TITLE_CALENDAR"
@@ -569,7 +572,7 @@ msgid "SUBJECT_OTHER"
 msgstr "Autre"
 
 msgid "CALENDAR_DATE"
-msgstr "* Choisir la date de l'évènement"
+msgstr "* Choisir la date de l'événement"
 
 msgid "CALENDAR_TO"
 msgstr "à"
@@ -635,7 +638,7 @@ msgstr "Licence"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
-msgstr "<li> Problé pendant la fermeture de la connection</li>"
+msgstr "<li> Problé pendant la fermeture de la connexion</li>"
 
 msgid "ERROR_UPDATE_SQL"
 msgstr "<li> Erreur dans la requête SQL UPDATE</li>"
@@ -647,7 +650,7 @@ msgid "EMPTY_TEMPERATURE_DATA"
 msgstr "<li> Aucun enregistrement concernant la température pour la date sélectionnée</li>"
 
 msgid "EMPTY_HUMIDITY_DATA"
-msgstr "<li> Aucun enregistrement concernant l'hygrométriques pour la date sélectionnée</li>"
+msgstr "<li> Aucun enregistrement concernant l'hygrométrie pour la date sélectionnée</li>"
 
 msgid "EMPTY_POWER_DATA"
 msgstr "<li> Aucun enregistrement concernant la puissance consommée pour la date sélectionnée</li>"
@@ -683,10 +686,10 @@ msgid "ERROR_WRITE_SD"
 msgstr "<li> Erreur durant l'écriture sur la carte SD</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "<li> Erreur dans la valeur de tolérance: elle doit être inferieur à 10°C et supérieur à 0°C</li>"
+msgstr "<li> Erreur dans la valeur de tolérance: elle doit être inférieur à 10°C et supérieur à 0°C</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "<li> Erreur dans la valeur de tolérance: elle doit être inferieur ou égal à 25.5% et supérieur à 0%;</li>"
+msgstr "<li> Erreur dans la valeur de tolérance: elle doit être inférieur ou égal à 25.5% et supérieur à 0%;</li>"
 
 msgid "ERROR_VALUE_PROGRAM"
 msgstr "<li> Erreur dans la valeur rentrée</li>"
@@ -710,10 +713,10 @@ msgid "ERROR_POWER_VALUE"
 msgstr "<li>Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt</li>"
 
 msgid "ERROR_PRICE_VALUE"
-msgstr "<li>Erreur dans la configuration du prix du coût du kilowatt-heure. La valeur doit être supèrieure ou égal à 0.</li>"
+msgstr "<li>Erreur dans la configuration du prix du coût du kilowatt-heure. La valeur doit être supérieure ou égal à 0.</li>"
 
 msgid "ERROR_DATE_INTERVAL"
-msgstr "<li>Erreur dans les dates choisis: la date de début doit être inférieure ou égale à la date de fin</li>"
+msgstr "<li>Erreur dans les dates choisies: la date de début doit être inférieure ou égale à la date de fin</li>"
 
 msgid "ERROR_UPLOADED_FILE"
 msgstr "<li>Erreur lors du chargement de fichier des programmes</li>"
@@ -722,7 +725,7 @@ msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
 msgstr "<li>Erreur lors du chargement des données du fichier des programmes, vérifiez que le fichier est au bon format</li>"
 
 msgid "ERROR_REMOTE_UPDATE_FILE"
-msgstr "<li>Impossible d'accèder au fichier des mises à jours, vérifier votre configuration</li>"
+msgstr "<li>Impossible d'accéder au fichier des mises à jours, vérifier votre configuration</li>"
 
 msgid "ERROR_POWER_PRICE_NULL"
 msgstr "<li>La puissance de certaine de vos prises n'est pas configurée, vous pouvez la configurer: <a href='plugs'>ici</a></li>"

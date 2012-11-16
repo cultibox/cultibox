@@ -1,3 +1,21 @@
+CultiBox (1.0.310) precise; urgency=low
+
+  + Nouvelle version pour highchart 2.3.3
+        02_src/joomla/main/libs/js/exporting.js
+        02_src/joomla/main/libs/js/highcharts.js
+
+  + Correction affichage pour le waiting
+        02_src/joomla/main/scripts/waiting.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/templates/waiting.html
+
+  + Correction de l'orthographe des locales FR et des locales manquantes pour EN
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+
+ -- Yann Genevois <yann.genevois@gmail.com> Fri Nov 16 09:42:10 CET 2012
+
+
 CultiBox (1.0.309) precise; urgency=low
 
   + Ajout du module xHR + passage au valaditeur du w3c pour le html + correction affichage

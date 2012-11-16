@@ -287,7 +287,11 @@ msgid "FORCE_ON_CHART"
 msgstr "Forced to ON"
 
 msgid "WAITING_LOGS"
-msgstr "Thank you to wait few seconds and to not disconnect the CultiBox card during data loading..."
+msgstr "Thank you to wait few seconds during data loading..."
+
+msgid "WAITING_LOGS_WITH_SD"
+msgstr "Thank you to wait few seconds and <b><i>to not disconnect</b></i> the CultiBox card during data loading..."
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -708,6 +712,9 @@ msgstr "<li>Plug identifier must be a numeric value</li>"
 
 msgid "ERROR_POWER_VALUE"
 msgstr "<li>Error in the power value: it must be more or equal to 0 Watt</li>"
+
+msgid "ERROR_PRICE_VALUE"
+msgstr "<li>Error in the configuration of the kilowatt-hour price. The price must be greater or equal to 0.</li>"
 
 msgid "ERROR_DATE_INTERVAL"
 msgstr "<li>Error in the date: the begining date must be less or equal to the ended date</li>"
