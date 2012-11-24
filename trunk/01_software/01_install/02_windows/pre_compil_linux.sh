@@ -11,13 +11,13 @@ DEST_DIR=../../01_install/01_src/01_xampp
 
 case "$1" in
       "windows7" )
-            sudo rm -Rf ../01_src/01_xampp/*
+            rm -Rf ../01_src/01_xampp/*
             cp ./install_script.iss ./install_script_current.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
             sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=CultiBox_{#MyAppVersion}-windows7/" ./install_script_current.iss
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_fr.sql
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_en.sql
-            tar zxvf xamp-lite-windows-1.7.7.tar.gz -C ../01_src/01_xampp/
+            tar zxvf xamp-lite-windows-1.8.1.tar.gz -C ../01_src/01_xampp/
             cp -R ../../02_src/joomla ../01_src/01_xampp/htdocs/cultibox
             echo "### Don't delete this file ###" > ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
             echo "### Ne pas supprimer ce fichier ### " >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
@@ -27,13 +27,13 @@ case "$1" in
             rm ./install_script_current.iss
       ;;
       "windows7-admin" )
-            sudo rm -Rf ../01_src/01_xampp/*
+            rm -Rf ../01_src/01_xampp/*
             cp ./install_script.iss ./install_script_current.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_fr.sql
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_en.sql
             sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=CultiBox_admin_{#MyAppVersion}-windows7/" ./install_script_current.iss 
-            tar zxvf xamp-lite-admin-windows-1.7.7.tar.gz -C ../01_src/01_xampp/
+            tar zxvf xamp-lite-admin-windows-1.8.1.tar.gz -C ../01_src/01_xampp/
             cp -R ../../02_src/joomla ../01_src/01_xampp/htdocs/cultibox
             echo "### Don't delete this file ###" > ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
             echo "### Ne pas supprimer ce fichier ### " >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
@@ -48,7 +48,7 @@ case "$1" in
                     exit 0
             fi
             
-            sudo rm -Rf ../01_src/01_xampp/*
+            rm -Rf ../01_src/01_xampp/*
             cp ./update_script_linux.iss ./update_script_current_linux.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $3`\"/" ./update_script_current_linux.iss
             sed -i "s/#define MyOldAppVersion .*/#define MyOldAppVersion \"`echo $2`\"/" ./update_script_current_linux.iss
@@ -113,7 +113,7 @@ case "$1" in
             wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "update_script_current_linux.iss"
       ;;
       "clean")
-            sudo rm -Rf ../01_src/01_xampp/*
+            rm -Rf ../01_src/01_xampp/*
       ;;
       *)
             echo "usage: $0"
