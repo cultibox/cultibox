@@ -31,12 +31,14 @@ OutputBaseFilename=CultiBox_{#MyAppVersion}-windows7
 VersionInfoVersion={#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
- ; Pas de warning si le dossier existe déjà
+;Pas de warning si le dossier existe déjà
 DirExistsWarning=no
 ; Interdiction de changer le path
 DisableDirPage=yes
 ;Minimal disk space requiered: 400Mo
 ExtraDiskSpaceRequired=419430400
+;Desactive le choix de creation dans le menu demarrer
+DisableProgramGroupPage=yes
 
 
 
@@ -61,6 +63,8 @@ english.ForceLoadDatas=Do you want to try to load your old datas in the new soft
 french.TryLoadDatas=Une ancienne sauvegarde des données (logs,programmes, configuration...) a été trouvé sur votre ordinateur. Vous pouvez essayer de les charger sur votre nouvelle installation mais cela pourrait l'endommager. Voulez-vous essayer de charger vos anciennes données dans le nouveau logiciel?
 english.TryLoadDatas=An old backup has been found in your computer. You can try to load your old data but this can destroy your current installation. Do you want to try to load your old datas in the new software?
 
+french.RestartServices=Redémarrer les services (Executer en tant qu'admin)
+english.RestartServices=Restart services (Run as admin)
 [code]
 var 
   reload: boolean;
@@ -94,19 +98,19 @@ begin
     end;
 
     if(reload) or (ForceInstall) then
-    begin
+    begin                                                         
        MsgBox(ExpandConstant('{cm:SaveDatas}'), mbInformation, MB_OK);
-       Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_start.exe'), '', '', SW_SHOW,
-          ewWaitUntilTerminated, ResultCode);
-
+       Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+       Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+       
        ExtractTemporaryFile ('backup.bat');
 
        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C copy backup.bat {sd}\{#MyAppName}\backup.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
        Exec (ExpandConstant ('{cmd}'), '/C backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
-       Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_stop.exe'), '', '', SW_SHOW,
-          ewWaitUntilTerminated, ResultCode);
+       Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+       Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
        Exec(ExpandConstant('{sd}\{#MyAppName}\unins000.exe'), '/SILENT /NOCANCEL', '', SW_SHOW,
           ewWaitUntilTerminated, ResultCode);
@@ -164,34 +168,45 @@ begin
            begin
               MsgBox(ExpandConstant('{cm:LoadDatas}'), mbInformation, MB_OK);
            end;
-           Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_start.exe'), '', '', SW_SHOW,
-              ewWaitUntilTerminated, ResultCode);
+           Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+           Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
            ExtractTemporaryFile ('load.bat');
            Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C copy load.bat {sd}\{#MyAppName}\load.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
            Exec (ExpandConstant ('{cmd}'), '/C load.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
-           Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_stop.exe'), '', '', SW_SHOW,
-            ewWaitUntilTerminated, ResultCode);
           end;
        end else
        begin
            // Ask the user a Yes/No question, defaulting to No
           if MsgBox(ExpandConstant('{cm:TryLoadDatas}'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES then                                                                                                                                 
           begin  
-              Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_start.exe'), '', '', SW_SHOW,
-                  ewWaitUntilTerminated, ResultCode);
+              Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+              Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
               ExtractTemporaryFile ('load.bat');
               Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C copy load.bat {sd}\{#MyAppName}\load.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
               Exec (ExpandConstant ('{cmd}'), '/C load.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
-              Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_stop.exe'), '', '', SW_SHOW,
-                ewWaitUntilTerminated, ResultCode);  
           end;
        end;  
     end;
   end;
+end;
+
+
+procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+var
+  ResultCode: Integer;
+begin
+   
+   if CurUninstallStep = usUninstall then
+   begin
+      Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+      Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_mysql', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+      Exec (ExpandConstant ('{cmd}'), '/C apache_uninstallservice.bat', ExpandConstant ('{sd}\{#MyAppName}\xampp\apache'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+      Exec (ExpandConstant ('{cmd}'), '/C mysql_uninstallservice.bat', ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+   end;
 end;
 
 [Files]
@@ -211,9 +226,8 @@ Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\02
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
 ;Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\04_run\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\users\yann\Desktop\Project\cultibox\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\cultibox.bat"; \
-  DestDir: "{app}"; \
-  Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\restart_services.bat"; DestDir: "{app}\"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion
@@ -222,33 +236,36 @@ Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03
 
 
 [Icons]
-Name: "{group}\Cultibox"; Filename: "{app}\cultibox.bat"; Comment: "Run cultibox"; IconFilename: "{app}\sd\cultibox.ico"; AppUserModelID: "Cultibox.Cultibox"
+Name: "{group}\Cultibox"; Filename: "http://localhost:6891/cultibox"; Comment: "Run cultibox"; IconFilename: "{app}\sd\cultibox.ico"; AppUserModelID: "Cultibox.Cultibox"
+Name: "{group}\{cm:RestartServices}"; Filename: {app}\restart_services.bat; Comment: "Restart Services (Admin)"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: {uninstallexe}; Comment: "Uninstall cultibox"
 
 [Run]
-Filename: "{app}\xampp\setup_xampp.bat";Description: "Change path"
-Filename: "{app}\xampp\xampp_start.exe";Description: "Run Xampp";
+Filename: "{app}\xampp\setup_xampp.bat";Description: "Change path";
+Filename: "{app}\xampp\apache\apache_uninstallservice.bat";Description: "Uninstall apache service"
+Filename: "{app}\xampp\apache\apache_installservice.bat";Description: "Install apache service"
+Filename: "{app}\xampp\mysql\mysql_uninstallservice.bat";Description: "Uninstall mysql service"
+Filename: "{app}\xampp\mysql\mysql_installservice.bat";Description: "Install mysql service"
 Filename: "{app}\xampp\mysql\bin\mysqladmin.exe"; \
-  Parameters: " -u root -h localhost password cultibox"; \
+  Parameters: " -u root -h localhost  --port=3891 password cultibox"; \
   WorkingDir: "{app}"; \
   Description: "Change root password";
 Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
-  Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\user_cultibox.sql""" ; \
+  Parameters: " -u root -h localhost --port=3891 -pcultibox -e ""source xampp\sql_install\user_cultibox.sql""" ; \
   WorkingDir: "{app}"; \
   Description: "Install user base";
 Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
-  Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\joomla.sql"""; \
+  Parameters: " -u root -h localhost --port=3891 -pcultibox -e ""source xampp\sql_install\joomla.sql"""; \
   WorkingDir: "{app}"; \
   Description: "Install joomla base";
 Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
-  Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\{code:getLanguage}"""; \
+  Parameters: " -u root -h localhost --port=3891 -pcultibox -e ""source xampp\sql_install\{code:getLanguage}"""; \
   WorkingDir: "{app}"; \
   Description: "Install cultibox base";
 Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
-  Parameters: " -u root -h localhost -pcultibox -e ""source xampp\sql_install\fake_log.sql"""; \
+  Parameters: " -u root -h localhost --port=3891 -pcultibox -e ""source xampp\sql_install\fake_log.sql"""; \
   WorkingDir: "{app}"; \
   Description: "Install log base";
-Filename: "{app}\xampp\xampp_stop.exe";Description: "Kill Xampp";
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\xampp"
