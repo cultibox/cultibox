@@ -1,4 +1,4 @@
-CultiBox (1.0.313) precise; urgency=low
+CultiBox (1.0.314) precise; urgency=low
   + Modification de la gestion sous windows (Ajout des services)
 
   + Lors de l'installation sous windows le nom des prises sera en francais ou anglais en fonction de la langue choisie
