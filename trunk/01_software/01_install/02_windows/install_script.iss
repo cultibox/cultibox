@@ -160,6 +160,7 @@ begin
           end else 
           begin
                 ForceLoad := False;
+                reload := False;
           end; 
    
           if(reload) or (ForceLoad) then
@@ -227,7 +228,6 @@ Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03
 ;Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\04_run\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\users\yann\Desktop\Project\cultibox\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\restart_services.bat"; DestDir: "{app}\"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion
@@ -237,7 +237,6 @@ Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03
 
 [Icons]
 Name: "{group}\Cultibox"; Filename: "http://localhost:6891/cultibox"; Comment: "Run cultibox"; IconFilename: "{app}\sd\cultibox.ico"; AppUserModelID: "Cultibox.Cultibox"
-Name: "{group}\{cm:RestartServices}"; Filename: {app}\restart_services.bat; Comment: "Restart Services (Admin)"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: {uninstallexe}; Comment: "Uninstall cultibox"
 
 [Run]
