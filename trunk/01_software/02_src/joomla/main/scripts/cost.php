@@ -94,7 +94,7 @@ $data_power=get_data_power($startday,$endday,$select_plug,$error);
 $theorical_power=get_theorical_power($select_plug,$price,$error);
 $nb=get_nb_days($startday,$endday)+1;
 $theorical_power=$theorical_power*$nb;
-
+$theorical_power=number_format($theorical_power,2);
 
 
 if((empty($data_power))||(!isset($data_power))||(empty($price))||(!isset($price))) {
@@ -105,6 +105,7 @@ if((empty($data_power))||(!isset($data_power))||(empty($price))||(!isset($price)
          $compute=$compute+($val['record']*$price);
       }
 }
+$compute=number_format($compute,2);
 
 if(strcmp("$update","True")==0) {
       $ret=array();
