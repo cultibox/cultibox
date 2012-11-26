@@ -218,7 +218,7 @@ msgid "LEGEND_TEMP"
 msgstr "Temperature"
 
 msgid "LEGEND_HUMI"
-msgstr "Hygrométrie"
+msgstr "Hygrometrie"
 
 msgid "LEGEND_POWER"
 msgstr "Puissance"
