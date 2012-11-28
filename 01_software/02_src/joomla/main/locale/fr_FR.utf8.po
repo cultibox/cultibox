@@ -197,16 +197,19 @@ msgid "HISTO_GRAPH"
 msgstr "Graphiques climatique"
 
 msgid "SELECT_DISPLAYED_DAY"
-msgstr "Afficher les informations pour un seul jour"
+msgstr "Afficher les informations pour"
+
+msgid "ONE_DAY"
+msgstr "un jour"
+
+msgid "ONE_MONTH"
+msgstr "un mois"
 
 msgid "SELECT_DAY"
 msgstr "Jour à afficher (AAAA-MM-JJ)"
 
 msgid "SELECT_MONTH"
 msgstr "Selectionner le mois à afficher "
-
-msgid "SELECT_DISPLAYED_MONTH"
-msgstr "Afficher les informations pour un mois entier"
 
 msgid "VIEW"
 msgstr "Afficher"

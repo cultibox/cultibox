@@ -59,7 +59,6 @@ if(isset($_SESSION['select_power'])) {
    $select_power=$_SESSION['select_power'];
 }
 
-
 if(!isset($pop_up)) {
    $pop_up = get_configuration("SHOW_POPUP",$error);
 }
