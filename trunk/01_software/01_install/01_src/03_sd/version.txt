@@ -11,23 +11,215 @@
 + Bug can be view at adress : http://code.google.com/p/cultibox                +
 +------------------------------------------------------------------------------+
 
++ Version 1.17
+   Comment:
+      - En cours 
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      195 : [RTC] L'horloge se décale
+      196 : [MENU] Laisser l'icone du dernier menu sélectionné selectionnée
+      201 : Reboot de la cultibox lors de l'entrée dans le menu Log ou Programme
+      231 : [MENU] Changer les informations visible sur le premier écran
+      232 :	Prise qui ne change pas d'état
+      233 : [SENSOR] Sauvegarde de tout les capteurs
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      248 : [CAL] vitesse d'affichage
+
+   Solved :
+      105 : Utiliser la pin Slave EN
+      120 : [BOOTLOADER] Accélerer le chargement des firmware
+      123 : [LOGS] Possibilité de choisir min / max pour les logs
+      218 : [LOGS] Accélerer la vitesse de déplacement du curseur lorsque l'utilisateur maintien le boutton appuyé
+      220 : [MENU] Si pas de capteur afficher message
+      221 : Fichier de trace : ajout de la version du firmware
+      222 : [LOGS] Séparer les courbes de temp et humi
+      223 : Ajout numéro ID
+      224 : Le fichier trace n'est pas justifié
+      227 : [TRACE] ajout de la version du firmware SHT et émetteur 
+      237 : [CAL] bug calandrier pour le retour au menu de la culti
+
++ Version 1.16
+   Comment: 
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      105 : Utiliser la pin Slave EN
+      120 : [BOOTLOADER] Accélerer le chargement des firmware
+      123 : [LOGS] Possibilité de choisir min / max pour les logs
+      158 : [PROGRAMM] Si le nombre d'entrée est supÃ©rieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      195 : [RTC] L'horloge se décale
+      196 : [MENU] Laisser l'icone du dernier menu sélectionné selectionnée
+      201 : Reboot de la cultibox lors de l'entrée dans le menu Log ou Programme
+      221 : Fichier de trace : ajout de la version du firmware
+   Solved :
+      108 : Bug in log file
+      114 : Allow user to select weather and power log frequency
+      117 : Change text (SD no log --> No SD card)
+      119 : Add point for log view
+      124 : Add vertical bar at actual hour
+      131 : When button stay pressed, increase bar position (logs)
+      135 : At log menu opening, go to first point available
+      139 : [LOGS] Remplacer croix par point
+      140 : [LOGS] pas de log après reboot
+      146 : Cancel après appuie bouton capteur
+      148 : Bouton: meme systeme que pour les logs mais pour les prgms
+      153 : [LOGS] bug d'affichage
+      156 : [PROGRAMM]
+      161 : [LOGS] sur les jours revolus, pas de log entre 0h00 et 21h
+      162 : [PROGRAMM] deux jours consecutif de "mauvais" pilotage des prises
+      163 : [boitier] [parametre] menu mal numeroté
+      171 : [PROGRAMM] Bug affichage changement > 24
+      190 : [LOGS] Pas d'affichage
+      191 : [PROGRAMM] Pas d'affichage
+      194 : [PROGRAMM] Un point en trop à  0h00
+      199 : [BOOT] Lors du démarrage de la CBx : ne pas démarrer sans carte SD
+      202 : [LOG] La taille du graph n'est pas adaptée
+      203 : Ajouter fichier de trace
+      212 : Fichier de trace : Ajout de l'ID GreenBox
+
++ Version 1.15
+   Comment: 
+      Version with LCD screen reversed
+   Issues :
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+
++ Version 1.14
+   Comment: 
+      Version with LCD screen reversed
+   Issues :
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+
++ Version 1.9
+   Comment: Try to remove philous bug
+   Issues :
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+
++ Version 1.8
+   Comment:
+   Issues :
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+      103 : test regulation
+      171 : Programm view bug
+
++ Version 1.7
+   Comment:
+   Issues :
+      103 : test regulation
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+      148 : Prgm Buton: same as log
+      163 : Menu param
+      156 : Bug on programm strating at 1h
+
++ Version 1.6
+   Comment:
+   Issues :
+      103 : test regulation
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+      135 : Go to first logs available
+      139 : Replace + by -
+      131 : Long click on button
+      146 : Cancel button
+
++ Version 1.5
+   Comment:
+   Issues :
+      103 : test regulation
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed    
+   Bug solved :
+      040 : Speed up reading events
+      079 : Ask to write time
+      124 : Add bar to indicate actual hour in programm
+
++ Version 1.4
+   Comment:
+   Issues :
+      040 : Speed up reading events
+      079 : Ask to write time
+      103 : test regulation
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed                                             
+   Bug solved :
+      022 : No graph programm
+      033 : Functionnality cumsumtion not implemented
+      038 : Add a calendar to select log
+      039 : Add a calendar to select events
+      041 : Add Alarm
+      089 : Rewrite No Log
+      090 : Error No Valid Card Detected
+      091 : Logs, prevents user for futur
+      092 : Allow to see futur events
+      093 : See T & RH automatically
+      094 : Update Tmin and Tmax
+      095 : Icone to remove Sensor
+      097 : Calendar not functionnal
+      098 : NA is display for Tmax  
+      106 : Create memory file
+      114 : Allow to select freq for logs
+      117 : No SD card -> No log
+      119 : Increase log accuracy
+
 + Version 1.3
    Comment:
-   Bug present :
+   Issues :
       022 : No graph programm
-      023 : No multi 3500W
       033 : Functionnality cumsumtion not implemented
-      035 : No frequency gestion in emetor firmware
       038 : Add a calendar to select log
       039 : Add a calendar to select events
       040 : Speed up reading events
       041 : Add Alarm
-      043 : Min Max for today
    Bug solved :
+      023 : No multi 3500W
+      035 : No frequency gestion in emetor firmware
+      043 : Min Max for today
+      069 : Programm pb screen
 
 + Version 1.2
    Comment:
-   Bug present :
+   Issues :
       022 : No graph programm
       023 : No multi 3500W
       033 : Functionnality cumsumtion not implemented
@@ -47,7 +239,7 @@
 
 + Version 1.1
    Comment: Log display
-   Bug present :
+   Issues :
       002 : No calendar
       003 : No regulation
       004 : False temp and humi are show at start
@@ -57,7 +249,7 @@
 
 + Version 1.0
    Comment: First version
-   Bug present :
+   Issues :
       001 : No graph
       002 : No calendar
       003 : No regulation
