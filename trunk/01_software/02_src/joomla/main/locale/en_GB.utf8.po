@@ -197,16 +197,19 @@ msgid "HISTO_GRAPH"
 msgstr "Temperature & Humidity graphics"
 
 msgid "SELECT_DISPLAYED_DAY"
-msgstr "Select a day to display"
+msgstr "Select logs to display for"
+
+msgid "ONE_DAY"
+msgstr "a day"
+
+msgid "ONE_MONTH"
+msgstr "a month"
 
 msgid "SELECT_DAY"
 msgstr "Day to displai (YYYY-MM-DD):"
 
 msgid "SELECT_MONTH"
 msgstr "Select month to display: "
-
-msgid "SELECT_DISPLAYED_MONTH"
-msgstr "Display data for an entire month"
 
 msgid "VIEW"
 msgstr "View"

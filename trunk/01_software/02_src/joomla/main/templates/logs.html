@@ -5,6 +5,19 @@ function verifDate(e) {
 }
 </script>
 
+<script type="text/javascript">
+   function getType(i) {
+      var divSelectDay = document.getElementById('label_select_day');
+      var divSelectMonth = document.getElementById('label_select_month');
+
+      switch(i) {
+         case 0 : divSelectDay.style.display = ''; divSelectMonth.style.display = 'none'; break;
+         case 1 : divSelectDay.style.display = 'none'; divSelectMonth.style.display = ''; break;
+         default: divSelectDay.style.display = ''; divSelectMonth.style.display = 'none'; break;
+      }
+   }
+</script>
+
 
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
    <SCRIPT LANGUAGE="JavaScript">
@@ -61,9 +74,15 @@ buttonImageOnly: 'true',
 });
 </script>
 
-<form action="/cultibox/index.php/display-logs" method="post">
-<p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SELECT_DISPLAYED_DAY'); ?></p>
 
+<form>
+<label class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SELECT_DISPLAYED_DAY'); ?>:</label>
+<INPUT type= "radio" id="select_day" name="type_select" value="day" <?php if(strcmp($type,"days")==0) echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?>
+<INPUT type= "radio" id="select_month" name="type_select" value="month" <?php if(strcmp($type,"month")==0) echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
+</form>
+<br />
+<div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
+<form action="/cultibox/index.php/display-logs" method="post">
 <table>
    <tr>
       <td class="log-marge-day"></td>
@@ -102,12 +121,12 @@ buttonImageOnly: 'true',
 </tr>
 </table>
 </form>
-<hr />
-<br />
+</div>
+<div id="label_select_month" style="<?php if(strcmp($type,"days")==0) echo "display:none"; ?>">
 <form action="/cultibox/index.php/display-logs" method="post">
 <table>
    <tr>
-      <td class="log-marge-month-title"><p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SELECT_DISPLAYED_MONTH'); ?>:</p></td>
+      <td class="log-marge-month-title"></td>
       <td class="log-marge-month-field">
             <select name="startmonth">
                <option <?php if("$startmonth" == "1") { echo 'selected';} ?> value="01"><?php echo __('MONTH01'); ?></option>
@@ -145,6 +164,7 @@ buttonImageOnly: 'true',
    </tr>
 </table>
 </form>
+</div>
 <hr />
 
 
