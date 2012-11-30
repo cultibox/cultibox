@@ -37,6 +37,24 @@ function verifDigit(e) {
 </script>
 
 <script type="text/javascript">
+   function expand(div) {
+      var divConfig = document.getElementById('div_user_interface');
+      var divSystem = document.getElementById('system_interface');
+      var divAlarm = document.getElementById('alarm_interface');
+      var divCost = document.getElementById('cost_interface');
+
+      switch(div) {
+         case 'user_interface' : if(divConfig.style.display == "none") { divConfig.style.display = ''; } else {  divConfig.style.display = 'none'; } break;
+         case 'system_interface' : if(divSystem.style.display == "none") { divSystem.style.display = ''; } else {  divSystem.style.display = 'none'; } break;
+         case 'alarm_interface' : if(divAlarm.style.display == "none") { divAlarm.style.display = ''; } else {  divAlarm.style.display = 'none'; } break;
+         case 'cost_interface' :  if(divCost.style.display == "none") { divCost.style.display = ''; } else {  divCost.style.display = 'none'; } break;
+         default: divConfig.style.display = 'none'; divSystem.style.display = 'none'; divAlarm.style.display = 'none'; divCost.style.display = 'none';break;
+      }
+   }
+</script>
+
+
+<script type="text/javascript">
    function getCostType(i) {
       var labelStandard = document.getElementById('cost_label_standard');
       var labelHP = document.getElementById('cost_label_hp');
@@ -131,9 +149,10 @@ timeFormat: 'hh:mm',
 
 <br />
 <p class="title_conf">
-<img src="main/libs/img/arrow.png" alt="" /><?php echo __('USER_CONF'); ?>:
+<label onclick="expand('user_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('USER_CONF'); ?></label>
 </p>
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
+<div id="div_user_interface" style="display:none">
 <table class="conf-table">
    <tr>
       <td class="conf-marge"></td>
@@ -557,10 +576,12 @@ timeFormat: 'hh:mm',
          </select></td>
    </tr>
 </table>
-<br />
+</div>
+
 <p class="title_conf">
-   <img src="main/libs/img/arrow.png" alt="" /><?php echo __('SYSTEM_CONF'); ?>:
+   <label onclick="expand('system_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SYSTEM_CONF'); ?></label>
 </p>
+<div id="system_interface" style="display:none">
 <table class="conf-table">
 <tr>
 <td class="conf-marge"></td>
@@ -644,10 +665,12 @@ timeFormat: 'hh:mm',
 </td>
 </tr>
 </table>
-<br />
+</div>
 <p class="title_conf">
-   <img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_ALARM'); ?>:
+   <label onclick="expand('alarm_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_ALARM'); ?></label>
 </p>
+
+<div id="alarm_interface" style="display:none">
 <table class="conf-table">
    <tr>  
       <td class="conf-marge"></td>
@@ -697,11 +720,13 @@ timeFormat: 'hh:mm',
       </select></div></td>
    </tr>
 </table>
+</div>
 
-<br />
 <p class="title_conf">
-   <img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_COST'); ?>:
+   <label onclick="expand('cost_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_COST'); ?></label>
 </p>
+
+<div id="cost_interface" style="display:none">
 <table class="conf-table">
    <tr>
       <td class="conf-marge"></td>
@@ -741,6 +766,7 @@ timeFormat: 'hh:mm',
       </td>
    </tr>
 </table>
+</div>
 
 <br /><p class="p_center">
    <INPUT type="submit" value="<?php echo __('VALIDATION_CONF'); ?>">
