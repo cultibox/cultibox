@@ -29,12 +29,32 @@ function getXMLHttpRequest() {
 
 
 function sendXMLHttpRequest(xhr,value_os,value_version) {
-    var sDate = encodeURIComponent(new Date());
+    var sDate = getTimestamp();
     var sLog = encodeURIComponent("pouet");
     var sIP = encodeURIComponent(value_os);
     var sVersion = encodeURIComponent(value_version);
 
-    //xhr.timeout = 4000;
+
     xhr.open("GET", "http://www.cbx.greenbox-botanic.com/index.php?date=" + sDate + "&log=" + sLog + "&ip=" + sIP + "&cbx_soft_version=" + sVersion, true);
     xhr.send(null);
+}
+
+
+function getTimestamp() {
+   var dt = new Date();
+
+    var year = dt.getFullYear();
+
+    var month = dt.getMonth() + 1 ;
+    if(month<10) month="0"+month;
+    
+    var day = dt.getDate();
+    if(day<10) day="0"+day;
+
+    var second = dt.getSeconds();
+    var minute = dt.getMinutes();
+    var hour = dt.getHours();
+
+    var tmpDate = year + "" + month + "" + day + "" + hour + "" + minute + "" + second ;
+    return tmpDate;
 }
