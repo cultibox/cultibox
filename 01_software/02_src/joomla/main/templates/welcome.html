@@ -39,5 +39,6 @@
 
 <SCRIPT type="text/javascript">    
     var xhr = getXMLHttpRequest();
-    sendXMLHttpRequest(xhr, "<?php echo php_uname('a'); ?>","<?php echo get_configuration('VERSION',''); ?>");
+
+    sendXMLHttpRequest(xhr, "<?php echo php_uname('a'); ?>","<?php echo get_configuration('VERSION'); ?>");
 </SCRIPT>
