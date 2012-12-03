@@ -1,4 +1,7 @@
-CultiBox (1.0.324) precise; urgency=low
+CultiBox (1.0.325) precise; urgency=low
+    + Correction d'un bug d'affichage dans l'onglet plugs
+        02_src/joomla/main/templates/plugs.html
+
     + Correction d'un bug sur les mois à charger dans les logs
         02_src/joomla/main/scripts/logs.php
 
