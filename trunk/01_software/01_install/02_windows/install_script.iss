@@ -51,8 +51,8 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 french.ContinueInstall=La version que vous tentez d'installer n'est pas la même que celle déja installée sur votre ordinateur. Si vous continuez, vos anciennes données (logs,programmes...) ne seront peut être pas disponible. Pour mettre à jour votre logiciel merci de visiter le site de la cultibox (http://cultibox.fr/) ou d'utiliser la fonction de mise à jour de votre logiciel. Voulez vous continuer tout de même?
 english.ContinueInstall=Version of the software is not the same that the current version your are trying to installed. If you continue, your datas (logs,plugs configuration, programs...) may not be available. If you want to upgrade your software please visit the website of the cultibox ou use the update function in the software. Do you want to continue?
 
-french.SaveDatas=Sauvegarde de vos logs et programme puis désinstallation de votre ancien logiciel
-english.SaveDatas=Save of your logs and programs then uninstall of your old software
+french.SaveDatas=Voulez-vous sauvegarder les logs et programmes de votre ancienne version?
+english.SaveDatas=Do you want to save logs and programms of your old CultiBox software?
 
 french.LoadDatas=Chargement de votre ancienne configuration dans la nouvelle installation
 english.LoadDatas=Loading your old datas in the new software installation
@@ -98,22 +98,25 @@ begin
     end;
 
     if(reload) or (ForceInstall) then
-    begin                                                         
-       MsgBox(ExpandConstant('{cm:SaveDatas}'), mbInformation, MB_OK);
-       Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
-       Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+    begin
+       if MsgBox(ExpandConstant('{cm:SaveDatas}'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES then                                                                                                                                 
+       begin                                                      
+        Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
        
-       ExtractTemporaryFile ('backup.bat');
+        ExtractTemporaryFile ('backup.bat');
 
-       Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C copy backup.bat {sd}\{#MyAppName}\backup.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C copy backup.bat {sd}\{#MyAppName}\backup.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
-       Exec (ExpandConstant ('{cmd}'), '/C backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), '/C backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
+       end;
        Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
        Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
        Exec(ExpandConstant('{sd}\{#MyAppName}\unins000.exe'), '/SILENT /NOCANCEL', '', SW_SHOW,
-          ewWaitUntilTerminated, ResultCode);
+         ewWaitUntilTerminated, ResultCode);
+      
     end;
 
     if(reload) or (ForceInstall) then
@@ -175,6 +178,8 @@ begin
            ExtractTemporaryFile ('load.bat');
            Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C copy load.bat {sd}\{#MyAppName}\load.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
            Exec (ExpandConstant ('{cmd}'), '/C load.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+           Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C xampp\mysql\bin\mysql.exe -u root -h localhost --port=3891 -pcultibox -e "UPDATE `cultibox`.`configuration` SET `VERSION` = ''{#MyAppVersion}'' WHERE `configuration`.`id` =1;"'), ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+
 
           end;
        end else
@@ -188,7 +193,7 @@ begin
               ExtractTemporaryFile ('load.bat');
               Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C copy load.bat {sd}\{#MyAppName}\load.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
               Exec (ExpandConstant ('{cmd}'), '/C load.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-
+              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C xampp\mysql\bin\mysql.exe -u root -h localhost --port=3891 -pcultibox -e "UPDATE `cultibox`.`configuration` SET `VERSION` = ''{#MyAppVersion}'' WHERE `configuration`.`id` =1;"'), ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
           end;
        end;  
     end;

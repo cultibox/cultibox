@@ -53,15 +53,18 @@ function verifInt(e) {
       var divUnknownRegul = document.getElementById('unknown_regul_senso'+j);
       var labelDeg = document.getElementById('label_degree'+j);
       var labelPct = document.getElementById('label_pourcent'+j);
+      var seconLabel = document.getElementById('second_regul_label'+j);
+      var secondVal = document.getElementById('second_regul'+j);
+      var secondParam = document.getElementById('second_regul_param'+j);
 
       switch(i) {
-         case 0 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; labelDeg.style.display = ''; labelPct.style.display = 'none'; break; 
-         case 1 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; labelDeg.style.display = ''; labelPct.style.display = 'none'; break;
-         case 2 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; divHumiRegul.style.display = ''; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = ''; break;
-         case 3 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; divHumiRegul.style.display = ''; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = '';break;
-         case 4 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; divHumiRegul.style.display = 'none'; divTempRegul.style.display = ''; divUnknownRegul.style.display = 'none'; labelDeg.style.display = ''; labelPct.style.display = 'none'; break;
-         case 5 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; divHumiRegul.style.display = 'none'; divTempRegul.style.display = ''; divUnknownRegul.style.display = 'none'; labelDeg.style.display = ''; labelPct.style.display = 'none'; break;         
-         default: divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; labelDeg.style.display = ''; labelPct.style.display = 'none'; break;
+         case 0 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break; 
+         case 1 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = 'none'; seconLabel.style.display = 'none'; secondVal.style.display = 'none'; secondParam.style.display = 'none'; break;
+         case 2 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; divHumiRegul.style.display = ''; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = ''; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;
+         case 3 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; divHumiRegul.style.display = ''; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = ''; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;
+         case 4 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; divHumiRegul.style.display = 'none'; divTempRegul.style.display = ''; divUnknownRegul.style.display = 'none'; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;
+         case 5 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; divHumiRegul.style.display = 'none'; divTempRegul.style.display = ''; divUnknownRegul.style.display = 'none'; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;         
+         default: divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = 'none'; secondVal.style.display = 'none'; secondParam.style.display = 'none'; break;
       }
    }
 </script>
@@ -163,17 +166,22 @@ function verifInt(e) {
 <tr>
          <td class="plug-marge-title"></td>
          <td>
-            <?php echo __('ENABLE_REGUL_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_REGUL'); ?>" />
+            <div id="second_regul_label<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>">
+<?php echo __('ENABLE_REGUL_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_REGUL'); ?>" />
+            </div>
          </td>
          <td>
+            <div id="second_regul<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>">
             <select id="plug_regul<?php echo $i; ?>" name="plug_regul<?php echo $i; ?>" onChange="getRegul(this.selectedIndex,<?php echo $i; ?>);" onLoad="getRegul(this.selectedIndex,<?php echo $i; ?>);">
                <option <?php if(strcmp($plug_regul{$i},"True")==0) { echo 'selected';} ?> value="True"><?php echo __('VALUE_ON'); ?></option>
                <option <?php if(strcmp($plug_regul{$i},"False")==0) { echo 'selected';} ?> value="False"><?php echo __('VALUE_OFF'); ?></option>
             </select>
+            </div>
          </td>
       </tr>
 </table>
 
+<div id="second_regul_param<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>">>
 <table>
    <tr>
       <td class="plug-regul"></td>
@@ -222,6 +230,7 @@ function verifInt(e) {
       <td><div id="div_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_regul_value{$i}; ?>" name="plug_regul_value<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
    </tr>
    </table>
+</div>
 
 <?php if((isset($error_plug[$i]))&&(!empty($error_plug[$i]))) { ?>
 <div id="error">

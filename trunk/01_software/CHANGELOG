@@ -1,3 +1,45 @@
+CultiBox (1.0.322) precise; urgency=low
+
+    + Debug de la mise à jour des firmware avec la nouvelle version des firmware
+
+    + Changement des recettes linux pour une plus grande rapidité de création des packages et passage à XAMPP 1.8.1
+  
+    + Ajout de champs nécéssaires à oXHR permettant de remonter des informations
+        02_src/joomla/main/libs/js/oXHR.js
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/templates/plugs.html
+        02_src/joomla/main/templates/welcome.html
+        02_src/joomla/main/scripts/plugs.php
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/scripts/wizard.php
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/scripts/calendar.php
+
+  + Modification du timestamp pour les données envoyées par XHR
+        02_src/joomla/main/libs/js/oXHR.js
+
+  + Ajout de la version du soft dans oXHR
+        02_src/joomla/main/templates/welcome.html
+        02_src/joomla/main/libs/js/oXHR.js
+
+  + Changement de l'affichage du menu configuration pour être qu'il tienne sur une page (menu déroulant)
+        02_src/joomla/main/templates/configuration.html
+
+  + Changement de l'affichage des formulaires des logs pour être plus concis
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/waiting.php
+        02_src/joomla/main/scripts/logs.php
+
+ -- Yann Genevois <yann.genevois@gmail.com> Wed Nov 28 10:34:04 CET 2012
+
+
 CultiBox (1.0.316) precise; urgency=low
   + Modification de la gestion sous windows (Ajout des services)
 
