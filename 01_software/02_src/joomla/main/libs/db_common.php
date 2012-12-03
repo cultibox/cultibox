@@ -186,6 +186,34 @@ EOF;
 }
 // }}}
 
+// {{{ get_informations()
+// ROLE get informations value for specific entries
+// IN $key   the key selectable from the database 
+//    $out   errors or warnings messages
+// RET $res   value of the key   
+function get_informations($key,&$out="") {
+    $db = db_priv_start();
+        $sql = <<<EOF
+SELECT {$key} FROM `informations` WHERE id = 1
+EOF;
+   $db->setQuery($sql);
+   $res = $db->loadResult();
+   $ret=$db->getErrorMsg();
+   if((isset($ret))&&(!empty($ret))) {
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out=$out.__('ERROR_SELECT_SQL').$ret;
+      } else {
+         $out=$out.__('ERROR_SELECT_SQL');
+      }
+   }
+
+   if(!db_priv_end($db)) {
+      $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+   }
+   return $res;
+}
+// }}}
+
 
 // {{{ insert_configuration()
 // ROLE set configuration value for specific entries
@@ -212,6 +240,38 @@ EOF;
 
    }
         
+   if(!db_priv_end($db)) {
+      $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+   }
+}
+// }}}
+
+
+// {{{ insert_informations()
+// ROLE set informations value for specific entries
+// IN $key      the key selectable from the database 
+//    $value   value of the key to insert
+//    $out      errors or warnings messages
+// RET none
+//Note: if to select a value is limited to 1. Only one configuration is available,
+//there isn't a user configuration management yet.
+function insert_informations($key,$value,&$out="") {
+   $db = db_priv_start();
+   $sql = <<<EOF
+UPDATE `informations` SET  {$key} = "{$value}" WHERE id = 1
+EOF;
+   $db->setQuery($sql);
+   $db->query();
+   $ret=$db->getErrorMsg();
+   if((isset($ret))&&(!empty($ret))) {
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out=$out.__('ERROR_UPDATE_SQL').$ret;
+      } else {
+         $out=$out.__('ERROR_UPDATE_SQL');
+      }
+
+   }
+
    if(!db_priv_end($db)) {
       $out=$out.__('PROBLEM_CLOSING_CONNECTION');
    }

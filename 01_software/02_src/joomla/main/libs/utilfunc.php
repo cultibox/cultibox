@@ -1181,19 +1181,18 @@ function check_and_copy_firm($sd_card,&$out="") {
         fclose($handle);
    }
 
-
-   
    if((isset($new_firm))&&(!empty($new_firm))) {
       if((!isset($current_firm))||(empty($current_firm))) {
                    copy($new_file, $current_file);
       } else {
          $current_firm=trim("$current_firm");
          $new_firm=trim("$new_firm");
-      
-         if((strlen($current_firm)==15)&&(strlen($new_firm)==15)) {   
+
+         if((strlen($current_firm)==43)&&(strlen($new_firm)==43)) {   
             $new_firm=substr($new_firm,9,4); 
             $current_firm=substr($current_firm,9,4);
-            if($new_firm > $current_firm) {
+
+            if(hexdec($new_firm) > hexdec($current_firm)) {
                copy($new_file, $current_file);
             }
          }
@@ -1286,6 +1285,63 @@ function check_update_available(&$ret,&$out="") {
                   $out=$out.__('ERROR_REMOTE_UPDATE_FILE');
                }
          }
+}
+// }}}
+
+
+// {{{ find_informations()
+// ROLE find some informations from the log.txt file
+// IN    $ret       array to return containing informations
+//       $log_file  path to the log file
+// RET   none
+function find_informations($log_file,&$ret) {
+if(!file_exists("$log_file")) return $ret;
+   $handle = fopen("$log_file", 'r');
+   $ret["nb_reboot"]=0;
+   $ret["last_reboot"]="";
+   $ret["cbx_id"]="";
+   $ret["firm_version"]="";
+   $ret["emeteur_version"]="";
+   $ret["sensor_version"]="";
+   $ret["log"]="";
+
+   if ($handle) {
+      while (!feof($handle)) {
+         $buffer=fgets($handle);
+         $buffer=trim($buffer);
+
+        if(strcmp($buffer,"")==0) break;
+
+        if(strcmp($ret["log"],"")==0) {
+            $ret["log"]=$buffer;
+         } else {
+            $ret["log"]=$ret["log"]."#".$buffer;
+         }
+
+        switch (substr($buffer,14,1)) {
+            case 'B':
+                $ret["nb_reboot"]=$ret["nb_reboot"]+1;
+                $ret["last_reboot"]=substr($buffer,0,14);
+                break;
+            case 'I':
+                $ret["cbx_id"]=substr($buffer,16,5);
+                break;
+            case 'V':
+                $ret["firm_version"]=substr($buffer,15,7); 
+                break;
+            case 'S':
+                $ret["emeteur_version"]=substr($buffer,15,7);
+                break;
+            case 'E':
+                $ret["sensor_version"]=substr($buffer,15,7);
+                break;
+        }
+
+      }
+      fclose($handle);
+   }
+
+   return $ret;
 }
 // }}}
 ?>

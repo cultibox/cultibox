@@ -42,6 +42,64 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    check_and_copy_log($sd_card,$error);
 } 
 
+$informations = Array();
+$informations["nb_reboot"]=0;
+$informations["last_reboot"]="";
+$informations["cbx_id"]="";
+$informations["firm_version"]="";
+$informations["emeteur_version"]="";
+$informations["sensor_version"]="";
+$informations["id_computer"]=php_uname("a");
+$informations["log"]="";
+
+
+
+if((!empty($sd_card))&&(isset($sd_card))) {
+    find_informations("$sd_card/log.txt",$informations);
+}
+
+if(strcmp($informations["nb_reboot"],"0")==0) {
+        $informations["nb_reboot"]=get_informations("nb_reboot");
+} else {
+        insert_informations("nb_reboot",$informations["nb_reboot"]);
+} 
+
+if(strcmp($informations["last_reboot"],"")==0) {
+        $informations["last_reboot"]=get_informations("last_reboot");
+} else {
+        insert_informations("last_reboot",$informations["last_reboot"]);
+}
+
+if(strcmp($informations["cbx_id"],"")==0) {
+        $informations["cbx_id"]=get_informations("cbx_id");
+} else {
+        insert_informations("cbx_id",$informations["cbx_id"]);
+}
+
+if(strcmp($informations["firm_version"],"")==0) {
+        $informations["firm_version"]=get_informations("firm_version");
+} else {
+        insert_informations("firm_version",$informations["firm_version"]);
+}
+
+if(strcmp($informations["emeteur_version"],"")==0) {
+        $informations["emeteur_version"]=get_informations("emeteur_version");
+} else {
+        insert_informations("emeteur_version",$informations["emeteur_version"]);
+}
+
+if(strcmp($informations["sensor_version"],"")==0) {
+        $informations["sensor_version"]=get_informations("sensor_version");
+} else {
+        insert_informations("sensor_version",$informations["sensor_version"]);
+}    
+
+if(strcmp($informations["log"],"")==0) {
+        $informations["log"]=get_informations("log");
+} else {
+        insert_informations("log",$informations["log"]);
+}
+
 
 if(strcmp("$update","True")==0) {
       $ret=array();
