@@ -128,31 +128,25 @@ $load_log=false;
 if((isset($sd_card))&&(!empty($sd_card))) {
    // Workaround to avoid timeout (60s)
    // Search only on two previous months
-   $FirstMonthSearch = date('n') - ($log_search - 1);
-   if ($FirstMonthSearch == 0) {
-      $FirstMonthSearch = 12;
+   $FirstMonthSearch = date('n') - $log_search +1;
+
+   if($FirstMonthSearch == 0) {
+      $FirstMonthSearch = 1;
    }
 
-   if ($FirstMonthSearch < 0) {
-      $FirstMonthSearch = 12 + $FirstMonthSearch;
+   if($FirstMonthSearch < 0) {
+      $FirstMonthSearch = 12 + $FirstMonthSearch + 1;
    }
 
    $ListMonthSearch=array();
-   $i=$FirstMonthSearch;
-   $max=date('n')+1;
-   if($max>12) {
-        $max=1;
-   }
+   $i=1;
 
-   if($i==$max) {
-        $max=$max-1;
-        $ListMonthSearch[]=date('n');
-   }
-   while($i!=$max) {
-        $ListMonthSearch[]=$i;  
-        if($i==12) {   
-            $i=0;
+   while($i<=$log_search) {
+        if($FirstMonthSearch>12) {
+            $FirstMonthSearch=1;
         }
+        $ListMonthSearch[]=$FirstMonthSearch;  
+        $FirstMonthSearch=$FirstMonthSearch+1;
         $i=$i+1;
    }
 
@@ -162,7 +156,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
       
          // Don't search for nexts days
          if ($month != date('n') || $day <= date('j') ) {
-      
+ 
             // Convert date to be equivalent of directory
              if($day<10) {
                $dday="0".$day;

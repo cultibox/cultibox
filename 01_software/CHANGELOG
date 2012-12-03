@@ -1,4 +1,7 @@
-CultiBox (1.0.323) precise; urgency=low
+CultiBox (1.0.324) precise; urgency=low
+    + Correction d'un bug sur les mois à charger dans les logs
+        02_src/joomla/main/scripts/logs.php
+
     + Remise à zero du fichier log.txt sur la carte sd
 
     + Ajout d'un champ browser dans l'envoie des requettes XHR
