@@ -26,7 +26,7 @@ function getXMLHttpRequest() {
 	return null;
 }
 
-function sendXMLHttpRequest(xhr,value_os,value_version,nb_reboot,last_reboot,cbx_id,firm_version,emeteur_version,sensor_version,log) {
+function sendXMLHttpRequest(xhr,value_os,value_version,nb_reboot,last_reboot,cbx_id,firm_version,emeteur_version,sensor_version,log,browser) {
     var sDate = getTimestamp();
     var sIP = encodeURIComponent(value_os);
     var sLog = encodeURIComponent(log);
@@ -37,8 +37,9 @@ function sendXMLHttpRequest(xhr,value_os,value_version,nb_reboot,last_reboot,cbx
     var sFirm = encodeURIComponent(firm_version);
     var sEmet = encodeURIComponent(emeteur_version);
     var sSen = encodeURIComponent(sensor_version);
+    var sBro = encodeURIComponent(browser);
 
-    xhr.open("GET", "http://www.cbx.greenbox-botanic.com/index.php?date=" + sDate + "&log=" + sLog + "&ip=" + sIP + "&cbx_soft_version=" + sVersion + "&cbx_id=" + sID  + "&cbx_firmware=" + sFirm + "&cbx_emetor_firmware=" + sEmet + "&cbx_sht_firmware=" + sSen + "&cbx_nbreboot=" + sNB + "&cbx_lastreboot=" + sLast, true);
+    xhr.open("GET", "http://www.cbx.greenbox-botanic.com/index.php?date=" + sDate + "&log=" + sLog + "&ip=" + sIP + "&cbx_soft_version=" + sVersion + "&cbx_id=" + sID  + "&cbx_firmware=" + sFirm + "&cbx_emetor_firmware=" + sEmet + "&cbx_sht_firmware=" + sSen + "&cbx_nbreboot=" + sNB + "&cbx_lastreboot=" + sLast + "&browser=" + sBro, true);
     xhr.send(null);
 }
 
