@@ -199,7 +199,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 
                if(!empty($power)) {
                   if(db_update_power($power,$error)) {
-                     clean_power_file("$sd_card/logs/$mmonth/pwr_$dday");
+                     clean_big_file("$sd_card/logs/$mmonth/pwr_$dday");
                   }
                   unset($power) ;
                   $power = array();
@@ -388,6 +388,7 @@ $informations["log"]="";
 
 if((!empty($sd_card))&&(isset($sd_card))) {
     find_informations("$sd_card/log.txt",$informations);
+    clean_big_file("$sd_card/log.txt");
 }
 
 if(strcmp($informations["nb_reboot"],"0")==0) {

@@ -244,11 +244,11 @@ function clean_log_file($file) {
 //}}}
 
 
-// {{{ clean_power_file()
+// {{{ clean_big_file()
 // ROLE copy an empty file to clean a power file
 // IN $file             file to clean
 // RET none
-function clean_power_file($file) {
+function clean_big_file($file) {
    $filetpl = 'main/templates/data/empty_file_big.tpl';
    copy($filetpl, $file);
 }

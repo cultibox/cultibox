@@ -56,6 +56,7 @@ $informations["log"]="";
 
 if((!empty($sd_card))&&(isset($sd_card))) {
     find_informations("$sd_card/log.txt",$informations);
+    clean_big_file("$sd_card/log.txt");
 }
 
 if(strcmp($informations["nb_reboot"],"0")==0) {
@@ -94,11 +95,11 @@ if(strcmp($informations["sensor_version"],"")==0) {
         insert_informations("sensor_version",$informations["sensor_version"]);
 }    
 
-if(strcmp($informations["log"],"")==0) {
-        $informations["log"]=get_informations("log");
-} else {
+if(strcmp($informations["log"],"")!=0) {
         insert_informations("log",$informations["log"]);
 }
+
+$user_agent = getenv("HTTP_USER_AGENT");
 
 
 if(strcmp("$update","True")==0) {

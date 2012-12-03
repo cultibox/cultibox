@@ -1,4 +1,18 @@
-CultiBox (1.0.322) precise; urgency=low
+CultiBox (1.0.323) precise; urgency=low
+    + Remise à zero du fichier log.txt sur la carte sd
+
+    + Ajout d'un champ browser dans l'envoie des requettes XHR
+        02_src/joomla/main/libs/js/oXHR.js
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/templates/welcome.html
+        02_src/joomla/main/scripts/plugs.php
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/scripts/wizard.php
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/scripts/calendar.php
 
     + Debug de la mise à jour des firmware avec la nouvelle version des firmware
 
