@@ -166,12 +166,12 @@ function verifInt(e) {
 <tr>
          <td class="plug-marge-title"></td>
          <td>
-            <div id="second_regul_label<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>">
+            <div id="second_regul_label<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
 <?php echo __('ENABLE_REGUL_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_REGUL'); ?>" />
             </div>
          </td>
          <td>
-            <div id="second_regul<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>">
+            <div id="second_regul<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
             <select id="plug_regul<?php echo $i; ?>" name="plug_regul<?php echo $i; ?>" onChange="getRegul(this.selectedIndex,<?php echo $i; ?>);" onLoad="getRegul(this.selectedIndex,<?php echo $i; ?>);">
                <option <?php if(strcmp($plug_regul{$i},"True")==0) { echo 'selected';} ?> value="True"><?php echo __('VALUE_ON'); ?></option>
                <option <?php if(strcmp($plug_regul{$i},"False")==0) { echo 'selected';} ?> value="False"><?php echo __('VALUE_OFF'); ?></option>
@@ -181,7 +181,7 @@ function verifInt(e) {
       </tr>
 </table>
 
-<div id="second_regul_param<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>">>
+<div id="second_regul_param<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
 <table>
    <tr>
       <td class="plug-regul"></td>
