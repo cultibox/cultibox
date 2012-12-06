@@ -198,6 +198,12 @@ begin
        end;  
     end;
   end;
+
+
+  case ActiveLanguage() of  { ActiveLanguage() retourne la langue chosie }
+        'french' :   Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C xampp\mysql\bin\mysql.exe -u root -h localhost --port=3891 -pcultibox -e "UPDATE `cultibox`.`configuration` SET `LANG` = ''fr_FR'' WHERE `configuration`.`id` =1;"'), ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        'english' :   Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C xampp\mysql\bin\mysql.exe -u root -h localhost --port=3891 -pcultibox -e "UPDATE `cultibox`.`configuration` SET `LANG` = ''en_GB'' WHERE `configuration`.`id` =1;"'), ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+  end;
 end;
 
 
