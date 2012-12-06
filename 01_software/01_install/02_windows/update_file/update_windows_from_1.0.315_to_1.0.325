@@ -20,3 +20,5 @@ SRC:/main/templates/logs.html
 SRC:/main/templates/plugs.html
 SRC:/main/templates/waiting.html
 SRC:/main/templates/welcome.html
+RUN:/backup.bat
+RUN:/load.bat

@@ -439,6 +439,21 @@ msgstr "Importer"
 msgid "RESET_PROGRAM"
 msgstr "Reinitialiser"
 
+msgid "SUMARY_TITLE"
+msgstr "Résumé des actions pour la prise"
+
+msgid "SUMARY_ON"
+msgstr "Mise en marche de la prise"
+
+msgid "SUMARY_OFF"
+msgstr "Mise hors tension de la prise"
+
+msgid "SUMARY_HOUR"
+msgstr "à"
+
+msgid "EMPTY_ACTION"
+msgstr "Aucune action programmée"
+
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"
 msgstr "Imprimer le graphique"

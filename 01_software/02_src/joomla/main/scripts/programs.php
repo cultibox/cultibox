@@ -34,6 +34,7 @@ $pop_up_error_message="";
 $regul_program="";
 $update=get_configuration("CHECK_UPDATE",$error);
 $version=get_configuration("VERSION",$error);
+$resume=array();
 
 
 
@@ -237,8 +238,9 @@ for($i=0;$i<$nb_plugs;$i++) {
 			break;
 					
 	}
+    $resume[$i+1]=format_data_sumary($plugs_infos[$i]["data"],$plugs_infos[$i]['PLUG_NAME'],$i+1);
 
-                 
+
 }
 
 if((isset($sd_card))&&(!empty($sd_card))) {

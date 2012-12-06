@@ -255,9 +255,11 @@ $(document).ready(function() {
                </td>
             </tr>
             <tr>
-               <td></td>
+                <td></td>
                <td class="program-valid-right"><br /><input type="hidden" name="selected_plug" value="<?php echo $i; ?>">
+                  <img src="main/libs/img/resume.png" alt="" class="info-bulle-css" title="<?php echo $resume[$i]; ?>" />
                   <input type="submit" name="apply" value="<?php echo __('APPLY_PROGRAM'); ?>">
+
                </td>
                <td></td>
             </tr>
@@ -291,7 +293,7 @@ $(document).ready(function() {
                         <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="reset">
                         <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
                         <input type="hidden" name="exportid" value="<?php echo $i; ?>">
-                     </form>
+                    </form>
                </td>
                <td class="program-action-center">
                   <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post" enctype="multipart/form-data">

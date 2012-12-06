@@ -439,6 +439,21 @@ msgstr "Import"
 msgid "RESET_PROGRAM"
 msgstr "Reset"
 
+msgid "SUMARY_TITLE"
+msgstr "Actions summary for the plug"
+
+msgid "SUMARY_ON"
+msgstr "Switch on the plug"
+
+msgid "SUMARY_OFF"
+msgstr "Switch off the plug"
+
+msgid "SUMARY_HOUR"
+msgstr "at"
+
+msgid "EMPTY_ACTION"
+msgstr "Aucune action programmée"
+
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"
 msgstr "Print the chart"
@@ -766,10 +781,10 @@ msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "<li>Program successfully updated</li>"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "<li>You can also use the wizard assistant to configure the first plug, just click here: <a href='wizard'><img src="main/libs/img/wizard.png" alt="wizard" name="wizard" /></a></li>"
+msgstr "<li>You can also use the wizard assistant to configure the first plug, just click here: <a href='wizard'><img src="main/libs/img/wizard.png" alt="wizard" id="wizard" /></a></li>"
 
 msgid "WIZARD_DISABLE_FUNCTION"
-msgstr "<li>You can use the standard interface to configure your programs instead. Just click here: <a href='programs'><img src="main/libs/img/standard.png" alt="classic" name="classic" /></a></li>"
+msgstr "<li>You can use the standard interface to configure your programs instead. Just click here: <a href='programs'><img src="main/libs/img/wizard.png" alt="classic" id="Classic" /></a></li>"
 
 msgid "INFO_RESET_PROGRAM"
 msgstr "<li>Program sucessfully reseted</li>"
