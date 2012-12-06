@@ -69,8 +69,6 @@ begin
      if MsgBox(ExpandConstant('{cm:ContinueUpdate}'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES then                                                                                                                                 
        begin
           MsgBox(ExpandConstant('{cm:SaveDatas}'), mbInformation, MB_OK);
-          Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_start.exe'), '', '', SW_SHOW,
-            ewWaitUntilTerminated, ResultCode);
 
           ExtractTemporaryFile ('backup.bat');
 
@@ -78,13 +76,9 @@ begin
 
           Exec (ExpandConstant ('{cmd}'), '/C backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
-          Exec(ExpandConstant('{sd}\{#MyAppName}\xampp\xampp_stop.exe'), '', '', SW_SHOW,
-            ewWaitUntilTerminated, ResultCode);
-
           Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C del {sd}\{#MyAppName}\xampp\VERSION_*'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
           Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C del {sd}\{#MyAppName}\xampp\htdocs\cultibox\main\templates_c\l10n*'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-          Result := True;
-          
+          Result := True;    
        end else 
        begin
            Result := False;
@@ -94,6 +88,20 @@ begin
     MsgBox(ExpandConstant('{cm:WrongVersion}'), mbInformation, MB_OK);
     Result := False;
   end;
+end;
+
+procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+var
+  ResultCode: Integer;
+begin
+   
+   if CurUninstallStep = usUninstall then
+   begin
+      Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+      Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_mysql', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+      Exec (ExpandConstant ('{cmd}'), '/C apache_uninstallservice.bat', ExpandConstant ('{sd}\{#MyAppName}\xampp\apache'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+      Exec (ExpandConstant ('{cmd}'), '/C mysql_uninstallservice.bat', ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+   end;
 end;
 
 
@@ -108,9 +116,7 @@ Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_window
 
 
 [Run]
-Filename: "{app}\xampp\xampp_start.exe";Description: "Run Xampp";
 Filename: "{app}\xampp\mysql\bin\mysql.exe"; \
-  Parameters: " -u root -h localhost -pcultibox cultibox -e ""source xampp\sql_install\update_sql_windows_from_{#MyOldAppVersion}_to_{#MyAppVersion}.sql"""; \
+  Parameters: " -u root -h localhost --port=3891 -pcultibox cultibox -e ""source xampp\sql_install\update_sql_windows_from_{#MyOldAppVersion}_to_{#MyAppVersion}.sql"""; \
   WorkingDir: "{app}"; \
   Description: "Update DataBase";
-Filename: "{app}\xampp\xampp_stop.exe";Description: "Kill Xampp";

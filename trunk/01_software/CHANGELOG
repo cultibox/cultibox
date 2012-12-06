@@ -1,3 +1,34 @@
+CultiBox (1.0.326) precise; urgency=low
+    + Ajout du resume des actions dans les programmes
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/img/resume.png
+        02_src/joomla/main/libs/img/resume.png
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+
+    + Correction d'une erreur d'affichage du wizard pour les pages anglaises
+        02_src/joomla/main/locale/en_GB.utf8.po
+
+
+    + Mise à jour des recettes de packages
+        01_install/02_windows/pre_compil_linux.sh
+        01_install/02_windows/update_file/update_windows_from_1.0.315_to_1.0.325
+        01_install/02_windows/update_script_linux.iss
+        01_install/02_windows/conf-script/load.bat
+        01_install/02_windows/conf-script/backup.bat
+        01_install/02_windows/conf-lampp/php.ini
+        01_install/03_linux/conf-lampp/php.ini
+        01_install/01_src/02_sql/sql_update/update_sql_windows_from_1.0.315_to_322.sql
+        01_install/01_src/02_sql/sql_update/update_sql_windows_from_1.0.315_to_1.0.325.sql
+        01_install/01_src/02_sql/cultibox_en.sql
+        01_install/01_src/02_sql/cultibox_fr.sql
+
+-- Yann Genevois <yann.genevois@gmail.com> Thu Dec  6 01:41:26 CET 2012
+
+
 CultiBox (1.0.325) precise; urgency=low
     + Correction d'un bug d'affichage dans l'onglet plugs
         02_src/joomla/main/templates/plugs.html

@@ -10,30 +10,20 @@ DEST_DIR=../../01_install/01_src/01_xampp
 
 
 case "$1" in
-      "windows7" )
-            rm -Rf ../01_src/01_xampp/*
-            cp ./install_script.iss ./install_script_current.iss
-            sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
-            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=CultiBox_{#MyAppVersion}-windows7/" ./install_script_current.iss
-            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_fr.sql
-            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_en.sql
-            tar zxvf xamp-lite-windows-1.8.1.tar.gz -C ../01_src/01_xampp/
-            cp -R ../../02_src/joomla ../01_src/01_xampp/htdocs/cultibox
-            echo "### Don't delete this file ###" > ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
-            echo "### Ne pas supprimer ce fichier ### " >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
-            echo "" >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
-            cat ../../CHANGELOG >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
-            wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "install_script_current.iss"
-            rm ./install_script_current.iss
-      ;;
-      "windows7-admin" )
+      "windows7"|"windows7-admin" )
             rm -Rf ../01_src/01_xampp/*
             cp ./install_script.iss ./install_script_current.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_fr.sql
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_en.sql
-            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=CultiBox_admin_{#MyAppVersion}-windows7/" ./install_script_current.iss 
-            tar zxvf xamp-lite-admin-windows-1.8.1.tar.gz -C ../01_src/01_xampp/
+
+            if [ "$1" == "windows7" ]; then
+                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=CultiBox_{#MyAppVersion}-windows7/" ./install_script_current.iss
+                tar zxvf xamp-lite-windows-1.8.1.tar.gz -C ../01_src/01_xampp/
+            else
+                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=CultiBox_admin_{#MyAppVersion}-windows7/" ./install_script_current.iss
+                tar zxvf xamp-lite-admin-windows-1.8.1.tar.gz -C ../01_src/01_xampp/
+            fi
             cp -R ../../02_src/joomla ../01_src/01_xampp/htdocs/cultibox
             echo "### Don't delete this file ###" > ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
             echo "### Ne pas supprimer ce fichier ### " >> ../01_src/01_xampp/VERSION_`echo $VERSION`.txt
@@ -89,10 +79,19 @@ case "$1" in
                         dir_toadd=`echo "$tmp_dir" | sed "s#/#\\\\\\\\\\\\\#g"`
                         sed -i "${file_section}i\Source: \"C:\\\users\\\yann\\\Desktop\\\Project\\\cultibox\\\01_software\\\02_src\\\joomla${line_toadd}\"; DestDir: \"{app}\\\xampp\\\htdocs\\\cultibox${dir_toadd}\\\\\"; CopyMode: alwaysoverwrite; Flags: ignoreversion" ./update_script_current_linux.iss
                         file_section=`expr $file_section + 1`
+                   fi
 
                         
 
-                    fi
+                   if [ "$copy" == "RUN" ]; then
+                        mkdir -p $DEST_DIR/run
+                        copy_nb=`expr $copy_nb + 1`
+
+                        line_toadd=`echo "$file" | sed "s#/#\\\\\\\\\\\\\#g"`
+                        
+                        sed -i "${file_section}i\Source: \"C:\\\users\\\yann\\\Desktop\\\Project\\\cultibox\\\01_software\\\01_install\\\02_windows\\\conf-script${line_toadd}\"; DestDir: \"{app}\\\run\\\\\"; CopyMode: alwaysoverwrite; Flags: ignoreversion" ./update_script_current_linux.iss
+                        file_section=`expr $file_section + 1` 
+                   fi 
             done < ./update_file/update_windows_from_$2_to_$3
 
             echo "SRC files: $copy_nb";
@@ -107,6 +106,8 @@ case "$1" in
             echo "### Ne pas supprimer ce fichier ### " >> ../01_src/01_xampp/VERSION_`echo $3`.txt
             echo "" >> ../01_src/01_xampp/VERSION_`echo $3`.txt
             cat ../../CHANGELOG >> ../01_src/01_xampp/VERSION_`echo $3`.txt
+
+            
 
             sed -i "${file_section}i\Source: \"C:\\\users\\\yann\\\Desktop\\\Project\\\cultibox\\\01_software\\\01_install\\\01_src\\\01_xampp\\\VERSION_${3}.txt\"; DestDir: \"{app}\\\xampp\"; Flags: ignoreversion" ./update_script_current_linux.iss
             echo "UPDATE \`configuration\` SET \`VERSION\` = '${3}' WHERE \`configuration\`.\`id\` =1;" >> ../01_src/01_xampp/update_sql_windows_from_$2_to_$3.sql

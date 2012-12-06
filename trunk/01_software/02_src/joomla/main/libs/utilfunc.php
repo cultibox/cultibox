@@ -1344,4 +1344,56 @@ if(!file_exists("$log_file")) return $ret;
    return $ret;
 }
 // }}}
+
+
+// {{{ format_data_sumary()
+// ROLE format actions of a plug to be displayed in a sumary
+// IN    $data       actions of the plug
+//       $name       name of the plug
+//       $number     plug's number
+// RET   sumary formated 
+function format_data_sumary($data="",$name="",$number="") {
+    $resume="";
+    if((empty($data))||(empty($name))||(empty($number))) {
+            $resume="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.":<br /> ".$name."</i></b></p><p align='center'>".__('EMPTY_ACTION')."</p>";
+    } else {
+                $actions=array();
+                $actions=explode('[',$data);
+                $prev_value="0";
+                $value=array();
+                foreach($actions as $action) {
+
+                    $action=str_replace('],','',$action);
+                    $action=str_replace(']','',$action);
+                                
+                    $action=explode(',',$action);
+
+                    if((isset($action[0]))&&(isset($action[1]))&&(strcmp($action[0],"")!=0)&&(strcmp($action[1],"")!=0)) {
+                          $heure=date ("H:i:s", $action[0]/1000);
+
+                          if(strcmp("$prev_value","$action[1]")!=0) {
+                            if(strcmp($action[1],"0")!=0) {
+                                    if(strcmp($resume,"")==0) {
+                                        $resume="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.":<br /> ".$name."</i></b></p><p align='left'>".__('SUMARY_ON')." ".__('SUMARY_HOUR')." ".$heure."<br />";
+                                    } else {
+                                        $resume=$resume.__('SUMARY_ON')." ".__('SUMARY_HOUR')." ".$heure."<br />";
+                                    }
+                                    $prev_value=$action[1];
+                            } else if(strcmp($prev_value,"0")!=0) {
+                                        $resume=$resume.__('SUMARY_OFF')." ".__('SUMARY_HOUR')." ".$heure."<br />";
+                                        $prev_value=0;
+                            } 
+                        }
+                    } 
+                }
+
+                if(strcmp($resume,"")==0) { 
+                        $resume="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.": <br />".$name."</i></b></p><p align='center'>".__('EMPTY_ACTION')."</p>";
+                } else {
+                        $resume=$resume."</p>";
+                }
+    }
+    return $resume;
+}
+// }}}
 ?>
