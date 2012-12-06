@@ -1,3 +1,4 @@
+@ECHO OFF
 If exist "./backup/backup.sql" (
     xampp\mysql\bin\mysql.exe -u root -h localhost --port=3891 -pcultibox cultibox -e "DELETE FROM jqcalendar"
     xampp\mysql\bin\mysql.exe -u root -h localhost --port=3891 -pcultibox cultibox -e "DELETE FROM logs"
