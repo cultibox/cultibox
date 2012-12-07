@@ -265,7 +265,9 @@ $informations["log"]="";
 
 if((!empty($sd_card))&&(isset($sd_card))) {
     find_informations("$sd_card/log.txt",$informations);
-    clean_big_file("$sd_card/log.txt");
+    if(strcmp($informations["log"],"")!=0) {
+        clean_big_file("$sd_card/log.txt");
+    }
 }
 
 if(strcmp($informations["nb_reboot"],"0")==0) {

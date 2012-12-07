@@ -1,4 +1,14 @@
-CultiBox (1.0.326) precise; urgency=low
+CultiBox (1.0.327) precise; urgency=low
+    + Vérification des données récupérées concernant les logs avant effacement du fichier log.txt
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/scripts/calendar.php
+        02_src/joomla/main/scripts/plugs.php
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/scripts/wizard.php
+
     + Ajout du resume des actions dans les programmes
         02_src/joomla/main/scripts/programs.php
         02_src/joomla/main/libs/css/cultibox.css
