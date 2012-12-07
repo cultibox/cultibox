@@ -38,7 +38,6 @@
       alert('<?php echo "$pop_up_error_message"; ?>');
    </SCRIPT>
 <?php } ?>
-
 <script type="text/javascript">
 $(document).ready(function(){
 $('#start_time<?php echo "$i"; ?>').timepicker({
@@ -200,7 +199,7 @@ $(document).ready(function() {
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
 <table class="table_width" id="conf<?php echo $i; ?>" >
    <tr>
-      <td class="program-title"><p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php if(isset($plugs_infos[$i-1]['PLUG_NAME'])) echo __('CONFIGURE_PROGRAM').": ".$plugs_infos[$i-1]['PLUG_NAME']; else echo __('CONFIGURE_PROGRAM'); ?></p></td>
+      <td class="program-title"><p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php if(isset($plugs_infos[$i-1]['PLUG_NAME'])) echo __('CONFIGURE_PROGRAM')." ".$i.": </p><p class='title_subconf'>(".$plugs_infos[$i-1]['PLUG_NAME'].")"; else echo __('CONFIGURE_PROGRAM')." ".$i; ?></p></td>
       <td></td>
    </tr>
    <tr>
@@ -313,7 +312,8 @@ $(document).ready(function() {
 <?php } else { ?>
    <table class="table_width">
   <tr>
-      <td class="program-td-marge"></td>
+      <td class="program-td-marge">
+      </td>
       <td class="program-valid-right">
       <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
       <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
@@ -344,8 +344,29 @@ $(document).ready(function() {
 <?php } ?>
 
 <br />
-<hr />
 
 
 <?php } ?>
+<hr /><br />
+<table class="table_width">
+<tr>
+    <td class="program-td-management"></td>
+    <td>
+        <?php if($nb_plugs<16) { ?>
+        <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
+          <input type="hidden" name="add_plug" value="add_plug">
+          <input type="submit" value="<?php echo __('ADD_PLUG'); ?>" name="add">
+        </form>
+        <?php } ?>
+    </td>
+    <td>
+        <?php if($nb_plugs>3) { ?>
+        <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i-2; ?>" method="post">
+          <input type="hidden" name="remove_plug" value="remove_plug">
+          <input type="submit" value="<?php echo __('REMOVE_PLUG'); ?>" name="remove">
+        </form>
+         <?php } ?> 
+    </td>
+</tr>
+</table>
 

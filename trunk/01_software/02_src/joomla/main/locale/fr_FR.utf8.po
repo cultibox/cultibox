@@ -454,6 +454,31 @@ msgstr "à"
 msgid "EMPTY_ACTION"
 msgstr "Aucune action programmée"
 
+msgid "SUMARY_REGUL_ON"
+msgstr "Régulation en marche"
+
+msgid "SUMARY_REGUL_OFF"
+msgstr "Régulation à l'arrêt"
+
+msgid "ADD_PLUG"
+msgstr "Ajouter une prise"
+
+msgid "REMOVE_PLUG"
+msgstr "Supprimer une prise"
+
+msgid "PLUG_ADDED"
+msgstr "<li>Prise correctement ajoutée</li>"
+
+msgid "PLUG_MAX_ADDED"
+msgstr "<li>Vous ne pouvez pas configurer plus de 16 prises</li>"
+
+msgid "PLUG_MIN_ADDED"
+msgstr "<li>Vous ne pouvez pas configurer moins de 3 prises</li>"
+
+msgid "PLUG_REMOVED"
+msgstr "<li>Prise correctement supprimée</li>"
+
+
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"
 msgstr "Imprimer le graphique"
@@ -612,7 +637,7 @@ msgid "COST_PRICE_COMPUTE_GRAPH"
 msgstr "Calcul de revient de votre installation"
 
 msgid "INSTALLATION_PRICE"
-msgstr "Prix de l\'installation"
+msgstr "Prix de l\'installation (en euros)"
 
 msgid "SELECT_PRICE_PLUG"
 msgstr "Sélectionner une prise"

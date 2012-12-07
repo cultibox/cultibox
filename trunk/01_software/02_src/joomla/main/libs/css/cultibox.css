@@ -64,6 +64,11 @@
    font-style: italic;
 }
 
+.title_subconf {
+  font-size: 12px;
+  text-align: center;
+}
+
 table.conf-table { 
    width:100%; 
    text-align: left;
@@ -163,6 +168,10 @@ td.program-title{
 
 td.program-td-title{
    width: 40%;
+}
+
+td.program-td-management{
+   width: 25%;
 }
 
 td.program-field{

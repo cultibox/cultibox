@@ -454,6 +454,31 @@ msgstr "at"
 msgid "EMPTY_ACTION"
 msgstr "Aucune action programmée"
 
+msgid "SUMARY_REGUL_ON"
+msgstr "Switch on regulation"
+
+msgid "SUMARY_REGUL_OFF"
+msgstr "Switch off regulation"
+
+msgid "ADD_PLUG"
+msgstr "Add a plug"
+
+msgid "REMOVE_PLUG"
+msgstr "Remove a plug"
+
+msgid "PLUG_ADDED"
+msgstr "<li>Plug successfully added</li>"
+
+msgid "PLUG_MAX_ADDED"
+msgstr "<li>You can't configure more than 16 plugs</li>"
+
+msgid "PLUG_MIN_ADDED"
+msgstr "<li>You can't configure less than 3 plugs</li>"
+
+msgid "PLUG_REMOVED"
+msgstr "<li>Plug successfully removed</li>"
+
+
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"
 msgstr "Print the chart"
@@ -613,7 +638,7 @@ msgid "COST_PRICE_COMPUTE_GRAPH"
 msgstr "Cost price of your installation"
 
 msgid "INSTALLATION_PRICE"
-msgstr "Price of the installation in Euros"
+msgstr "Price of the installation (in Pounds)"
 
 msgid "SELECT_PRICE_PLUG"
 msgstr "Select a plug:"

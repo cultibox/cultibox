@@ -19,7 +19,6 @@ $ret_plug=array();
 $info="";
 $nb_plugs=get_configuration("NB_PLUGS",$error);
 $selected_plug=getvar('selected_plug');
-$plugs_infos=get_plugs_infos($nb_plugs,$error);
 $exportid=getvar('exportid');
 $import=getvar('import');
 $info_plug=array();
@@ -35,6 +34,42 @@ $regul_program="";
 $update=get_configuration("CHECK_UPDATE",$error);
 $version=get_configuration("VERSION",$error);
 $resume=array();
+$add_plug=getvar('add_plug');
+$remove_plug=getvar('remove_plug');
+
+for($i=0;$i<=$nb_plugs;$i++) {
+        $info_plug[]="";
+        $ret_plug[]="";
+}
+
+if((isset($add_plug))&&(!empty($add_plug))) {
+    if((isset($nb_plugs))&&(!empty($nb_plugs))) {
+            if($nb_plugs<16) {
+                    insert_configuration("NB_PLUGS",$nb_plugs+1,$error);
+                    if((empty($error))||(!isset($error))) {
+                        $nb_plugs=$nb_plugs+1;
+                        $info_plug[$nb_plugs]=__('PLUG_ADDED');
+                    }
+            } else {
+                    $error=__('PLUG_MAX_ADDED');
+            }
+    }
+}
+
+if((isset($remove_plug))&&(!empty($remove_plug))) {
+    if((isset($nb_plugs))&&(!empty($nb_plugs))) {
+            if($nb_plugs>3) {
+                    insert_configuration("NB_PLUGS",$nb_plugs-1,$error);
+                    if((empty($error))||(!isset($error))) {
+                        $nb_plugs=$nb_plugs-1;
+                        $info_plug[$nb_plugs]=__('PLUG_REMOVED');
+                    }
+            } else {
+                    $error=__('PLUG_MIN_ADDED');
+            }
+    }
+}
+$plugs_infos=get_plugs_infos($nb_plugs,$error);
 
 
 
@@ -43,10 +78,7 @@ if(!isset($pop_up)) {
 }
 
 
-for($i=0;$i<=$nb_plugs;$i++) {
-        $info_plug[]="";
-        $ret_plug[]="";
-}
+
 
 	
 
@@ -238,8 +270,7 @@ for($i=0;$i<$nb_plugs;$i++) {
 			break;
 					
 	}
-    $resume[$i+1]=format_data_sumary($plugs_infos[$i]["data"],$plugs_infos[$i]['PLUG_NAME'],$i+1);
-
+    $resume[$i+1]=format_data_sumary($plugs_infos[$i]["data"],$plugs_infos[$i]['PLUG_NAME'],$i+1,$plugs_infos[$i]['PLUG_TYPE']);
 
 }
 
