@@ -1,4 +1,17 @@
-CultiBox (1.0.328) precise; urgency=low
+CultiBox (1.0.334) precise; urgency=low
+    + Ajout de la possibilité de supprimer/ajouter une prise dans les programmes et blocage des prises à 3 minimum
+        02_src/joomla/main/libs/config.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/templates/programs.htmlA
+
+    + Correction d'un bug sur les fichiers pwr_XX (passage sur 4 digits)
+
     + Affichage des titres dans les pages plus en accord avec la charte graphique:
         02_src/joomla/templates/yoo_cloud/css/base.css
         02_src/joomla/main/templates/configuration.html
