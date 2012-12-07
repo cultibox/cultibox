@@ -148,9 +148,7 @@ timeFormat: 'hh:mm',
 <?php } ?>
 
 <br />
-<p class="title_conf">
-<label onclick="expand('user_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('USER_CONF'); ?></label>
-</p>
+<h1><label onclick="expand('user_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('USER_CONF'); ?></label></h1>
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
 <div id="div_user_interface" style="display:none">
 <table class="conf-table">
@@ -577,10 +575,8 @@ timeFormat: 'hh:mm',
    </tr>
 </table>
 </div>
-
-<p class="title_conf">
-   <label onclick="expand('system_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SYSTEM_CONF'); ?></label>
-</p>
+<hr />
+ <h1><label onclick="expand('system_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SYSTEM_CONF'); ?></label></h1>
 <div id="system_interface" style="display:none">
 <table class="conf-table">
 <tr>
@@ -666,10 +662,9 @@ timeFormat: 'hh:mm',
 </tr>
 </table>
 </div>
-<p class="title_conf">
-   <label onclick="expand('alarm_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_ALARM'); ?></label>
-</p>
+<hr />
 
+<h1><label onclick="expand('alarm_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_ALARM'); ?></label></h1>
 <div id="alarm_interface" style="display:none">
 <table class="conf-table">
    <tr>  
@@ -721,10 +716,9 @@ timeFormat: 'hh:mm',
    </tr>
 </table>
 </div>
+<hr />
 
-<p class="title_conf">
-   <label onclick="expand('cost_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_COST'); ?></label>
-</p>
+<h1><label onclick="expand('cost_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_COST'); ?></label></h1>
 
 <div id="cost_interface" style="display:none">
 <table class="conf-table">
@@ -767,6 +761,7 @@ timeFormat: 'hh:mm',
    </tr>
 </table>
 </div>
+<hr />
 
 <br /><p class="p_center">
    <INPUT type="submit" value="<?php echo __('VALIDATION_CONF'); ?>">
