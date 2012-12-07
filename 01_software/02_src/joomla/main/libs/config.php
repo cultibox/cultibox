@@ -19,7 +19,7 @@ $GLOBALS['LIST_GRAPHIC_COLOR'] = array('blue','red', 'green', 'black','purple','
 $GLOBALS['LIST_RECORD_FREQUENCY'] = array('1','5','30');
 
 // List of plugs available:
-$GLOBALS['LIST_NB_PLUGS'] = array('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16');
+$GLOBALS['LIST_NB_PLUGS'] = array('3','4','5','6','7','8','9','10','11','12','13','14','15','16');
 
 // List of the updating plugs frequency: (-1 means every clock heartbeat)
 $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');

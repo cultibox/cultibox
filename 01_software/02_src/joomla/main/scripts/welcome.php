@@ -99,6 +99,8 @@ if(strcmp($informations["sensor_version"],"")==0) {
 
 if(strcmp($informations["log"],"")!=0) {
         insert_informations("log",$informations["log"]);
+} else {
+        $informations["log"]="NA";
 }
 
 $user_agent = getenv("HTTP_USER_AGENT");
