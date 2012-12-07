@@ -1,4 +1,9 @@
-CultiBox (1.0.327) precise; urgency=low
+CultiBox (1.0.328) precise; urgency=low
+    + Affichage des titres dans les pages plus en accord avec la charte graphique:
+        02_src/joomla/templates/yoo_cloud/css/base.css
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/libs/css/cultibox.css
+
     + Vérification des données récupérées concernant les logs avant effacement du fichier log.txt
         02_src/joomla/main/scripts/logs.php
         02_src/joomla/main/scripts/configuration.php
