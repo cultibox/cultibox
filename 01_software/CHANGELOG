@@ -1,3 +1,14 @@
+CultiBox (1.0.335) precise; urgency=low
+
+   + Ajout de l'information de régulation secondaire dans les programmes
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+
+-- Yann Genevois <yann.genevois@gmail.com>  Sat Dec  8 13:00:03 CET 2012
+
+
 CultiBox (1.0.334) precise; urgency=low
     + Ajout de la possibilité de supprimer/ajouter une prise dans les programmes et blocage des prises à 3 minimum
         02_src/joomla/main/libs/config.php

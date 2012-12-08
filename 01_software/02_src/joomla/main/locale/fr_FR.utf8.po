@@ -478,6 +478,15 @@ msgstr "<li>Vous ne pouvez pas configurer moins de 3 prises</li>"
 msgid "PLUG_REMOVED"
 msgstr "<li>Prise correctement supprimée</li>"
 
+msgid "VALUE_REGUL_SECOND"
+msgstr "Régulation secondaire"
+
+msgid "SECOND_REGUL_ON"
+msgstr "Activée"
+
+msgid "SECOND_REGUL_OFF"
+msgstr "Désactivée"
+
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"

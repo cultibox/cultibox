@@ -255,6 +255,11 @@ $(document).ready(function() {
             </tr>
             <tr>
                 <td></td>
+                <td><?php echo __('VALUE_REGUL_SECOND'); ?></td>
+                <td><input type="text" name="second_regul_plug" value="<?php if(strcmp($plugs_infos[$i-1]['PLUG_REGUL'],"False")==0) { echo __('SECOND_REGUL_OFF'); } else { echo __('SECOND_REGUL_ON'); } ?>" readonly size="10" /></td>
+            </tr>
+            <tr>
+                <td></td>
                <td class="program-valid-right"><br /><input type="hidden" name="selected_plug" value="<?php echo $i; ?>">
                   <img src="main/libs/img/resume.png" alt="" class="info-bulle-css" title="<?php echo $resume[$i]; ?>" />
                   <input type="submit" name="apply" value="<?php echo __('APPLY_PROGRAM'); ?>">

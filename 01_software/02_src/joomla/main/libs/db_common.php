@@ -349,7 +349,7 @@ EOF;
 function get_plugs_infos($nb=0,&$out="") {
         $db = db_priv_start();
         $sql = <<<EOF
-SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`
+SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`,`PLUG_REGUL`
 FROM `plugs`
 WHERE id <= {$nb}
 ORDER by id ASC
