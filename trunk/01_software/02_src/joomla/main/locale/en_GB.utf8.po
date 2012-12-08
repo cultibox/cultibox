@@ -478,6 +478,15 @@ msgstr "<li>You can't configure less than 3 plugs</li>"
 msgid "PLUG_REMOVED"
 msgstr "<li>Plug successfully removed</li>"
 
+msgid "VALUE_REGUL_SECOND"
+msgstr "Second regulation"
+
+msgid "SECOND_REGUL_ON"
+msgstr "Activated"
+
+msgid "SECOND_REGUL_OFF"
+msgstr "Deactivated"
+
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"
