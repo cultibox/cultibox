@@ -25,6 +25,26 @@
    text-align: center;
 }
 
+input.add_plug
+{
+    border: 1px solid #def;
+    background: #6BB953;
+    cursor: pointer;
+    padding: 3px 30px;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+input.remove_plug {
+    border: 1px solid #def;
+    background: #6BB953;
+    cursor: pointer;
+    padding: 3px 30px;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+
 .text_info {
    text-indent:2em
 }
