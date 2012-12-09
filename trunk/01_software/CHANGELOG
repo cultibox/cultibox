@@ -1,4 +1,4 @@
-CultiBox (1.0.335) precise; urgency=low
+CultiBox (1.0.337) precise; urgency=low
    + Possibilité de zoomer sur les deux axes dans les logs
         02_srcjoomla/main/templates/logs.html
 
