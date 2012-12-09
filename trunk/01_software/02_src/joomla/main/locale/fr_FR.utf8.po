@@ -75,7 +75,7 @@ msgid "CONFIGURE_NB_PLUGS"
 msgstr "Nombre de prises de votre système"
 
 msgid "CONFIGURE_PLUGS_FREQUENCY"
-msgstr "Fréquence de mise à jour de l'état des prises"
+msgstr "Fréquence de mise à jour de l'état des prises (en seconde)"
 
 msgid "CONFIGURE_COLOR_PROGRAM"
 msgstr "Couleur des courbes des programmes"
@@ -467,7 +467,7 @@ msgid "REMOVE_PLUG"
 msgstr "Supprimer une prise"
 
 msgid "PLUG_ADDED"
-msgstr "<li>Prise correctement ajoutée</li>"
+msgstr "<li>Prise ajoutée avec succée</li>"
 
 msgid "PLUG_MAX_ADDED"
 msgstr "<li>Vous ne pouvez pas configurer plus de 16 prises</li>"
@@ -476,7 +476,7 @@ msgid "PLUG_MIN_ADDED"
 msgstr "<li>Vous ne pouvez pas configurer moins de 3 prises</li>"
 
 msgid "PLUG_REMOVED"
-msgstr "<li>Prise correctement supprimée</li>"
+msgstr "<li>Prise supprimée avec succée</li>"
 
 msgid "VALUE_REGUL_SECOND"
 msgstr "Régulation secondaire"

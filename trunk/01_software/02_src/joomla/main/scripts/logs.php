@@ -194,7 +194,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
                if(!empty($power)) {
                   if(db_update_power($power,$error)) {
                      clean_big_file("$sd_card/logs/$mmonth/pwr_$dday");
-                  }
+                  } 
                   unset($power) ;
                   $power = array();
                   $load_log=true;

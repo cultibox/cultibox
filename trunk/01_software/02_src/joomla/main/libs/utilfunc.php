@@ -189,6 +189,7 @@ function get_power_value($file,&$array_line) {
       while (!feof($handle))
       {
          $buffer = fgets($handle);
+         $buffer=trim($buffer);
          if(!check_empty_string($buffer)) {
             break;
          } else {
@@ -216,14 +217,15 @@ function get_power_value($file,&$array_line) {
 
 
                   for($i=1;$i<count($temp);$i++) {
-
-                  $array_line[] = array(
-                        "timestamp" => $temp[0],
-                        "power" => $temp[$i],
-                        "plug_number" => $i,
-                        "date_catch" => $date_catch,
-                        "time_catch" => $time_catch
-                     );
+                        if(strcmp($temp[$i],"0000")!=0) {
+                            $array_line[] = array(
+                                "timestamp" => $temp[0],
+                                "power" => $temp[$i],
+                                "plug_number" => $i,
+                                "date_catch" => $date_catch,
+                                "time_catch" => $time_catch
+                            );    
+                        }
                   }
             }
          }

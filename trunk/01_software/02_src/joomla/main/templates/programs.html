@@ -360,7 +360,7 @@ $(document).ready(function() {
         <?php if($nb_plugs<16) { ?>
         <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
           <input type="hidden" name="add_plug" value="add_plug">
-          <input type="submit" value="<?php echo __('ADD_PLUG'); ?>" name="add">
+          <input type="submit" value="<?php echo __('ADD_PLUG'); ?>" name="add" class="add_plug">
         </form>
         <?php } ?>
     </td>
@@ -368,7 +368,7 @@ $(document).ready(function() {
         <?php if($nb_plugs>3) { ?>
         <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i-2; ?>" method="post">
           <input type="hidden" name="remove_plug" value="remove_plug">
-          <input type="submit" value="<?php echo __('REMOVE_PLUG'); ?>" name="remove">
+          <input type="submit" value="<?php echo __('REMOVE_PLUG'); ?>" name="remove" class="remove_plug">
         </form>
          <?php } ?> 
     </td>
