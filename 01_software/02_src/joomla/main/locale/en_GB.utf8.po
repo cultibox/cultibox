@@ -284,7 +284,7 @@ msgid "SELECT_POWER_PLUG"
 msgstr "Display power used:"
 
 msgid "SELECT_ALL_PLUGS"
-msgstr "ALl plugs"
+msgstr "All plugs"
 
 msgid "FORCE_ON_CHART"
 msgstr "Forced to ON"
@@ -635,10 +635,10 @@ msgstr "Invalid date format (MM/DD/YYYY)"
 
 # For the cost part:
 msgid "SELECT_START_DAY"
-msgstr "Begining day:"
+msgstr "Begining day"
 
 msgid "SELECT_END_DAY"
-msgstr "Ending day:"
+msgstr "Ending day"
 
 msgid "COST_PRICE_COMPUTE"
 msgstr "Cost price computation"
@@ -650,37 +650,35 @@ msgid "INSTALLATION_PRICE"
 msgstr "Price of the installation (in Pounds)"
 
 msgid "SELECT_PRICE_PLUG"
-msgstr "Select a plug:"
-
-msgid "PRICE_FOR_DATE"
-msgstr "Price of the installation between the "
-
-msgid "PRICE_FOR_DAY"
-msgstr "Price for the:"
-
-msgid "PRICE_AND"
-msgstr "and the"
+msgstr "Display price"
 
 msgid "PRICE_ALL_PLUG"
-msgstr "All plugs"
+msgstr "for all plugs together"
 
-msgid "PRICE_SELECT_PLUG"
-msgstr "Price for the plug"
+msgid "PRICE_DISTINCT_ALL_PLUG"
+msgstr "for each plug"
 
-msgid "PRICE_SELECT_ALL_PLUG"
-msgstr "Price for all your plugs"
-
-msgid "PRICE_SELECT_PLUG_GRAPH"
+msgid "PRICE_FOR_PLUG"
 msgstr "for the plug"
 
-msgid "PRICE_SELECT_ALL_PLUG_GRAPH"
-msgstr "for all your plugs"
+msgid "PRICE_SELECT_ALL_PLUG"
+msgstr "For all your plugs"
 
 msgid "REAL_PRICE"
 msgstr "Real price"
 
 msgid "THEORICAL_PRICE"
 msgstr "Theorical maximal price (without regulation)"
+
+msgid "COST_PRICE_FOR_DAY"
+msgstr "for the"
+
+msgid "COST_PRICE_TIME"
+msgstr "beetwen the"
+
+msgid "COST_PRICE_TO"
+msgstr "and the"
+
 
 # For the footer:
 msgid "VERSION"
