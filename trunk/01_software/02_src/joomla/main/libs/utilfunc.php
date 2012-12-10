@@ -1156,7 +1156,7 @@ function check_regul_value($value="0") {
 
 
 // {{{ check_and_copy_firm()
-// ROLE check if the firm.hex has to be copied and do the copy into the sd card
+// ROLE check if firmwares (firm.hex,emmeteur.hex) has to be copied and do the copy into the sd card
 // IN  $sd_card     the sd card pathname 
 //     $out         error or warning message
 // RET none
@@ -1164,44 +1164,49 @@ function check_and_copy_firm($sd_card,&$out="") {
    $new_firm="";
    $current_firm="";
 
-   $new_file="tmp/firm.hex";
-   $current_file="$sd_card/firm.hex";
-
-   if(is_file("$new_file")) {
-   $handle = fopen("$new_file", 'r');
-   if ($handle) {
-            $new_firm = fgets($handle);
-        }
-        fclose($handle);
-   }
+   $firm_to_test[]="firm.hex";
+   $firm_to_test[]="emmeteur.hex";
 
 
-   if(is_file("$current_file")) {
-        $handle = fopen("$current_file", 'r');
-        if ($handle) {
-                $current_firm = fgets($handle);
-        }
-        fclose($handle);
-   }
+   foreach($firm_to_test as $firm) { 
+        $new_file="tmp/$firm";
+        $current_file="$sd_card/$firm";
 
-   if((isset($new_firm))&&(!empty($new_firm))) {
-      if((!isset($current_firm))||(empty($current_firm))) {
-                   copy($new_file, $current_file);
-      } else {
-         $current_firm=trim("$current_firm");
-         $new_firm=trim("$new_firm");
-
-         if((strlen($current_firm)==43)&&(strlen($new_firm)==43)) {   
-            $new_firm=substr($new_firm,9,4); 
-            $current_firm=substr($current_firm,9,4);
-
-            if(hexdec($new_firm) > hexdec($current_firm)) {
-               copy($new_file, $current_file);
+        if(is_file("$new_file")) {
+            $handle = fopen("$new_file", 'r');
+            if ($handle) {
+                $new_firm = fgets($handle);
             }
-         }
+            fclose($handle);
+        }
 
-      }
-   }
+
+        if(is_file("$current_file")) {
+            $handle = fopen("$current_file", 'r');
+            if ($handle) {
+                $current_firm = fgets($handle);
+            }
+            fclose($handle);
+        }
+
+        if((isset($new_firm))&&(!empty($new_firm))) {
+            if((!isset($current_firm))||(empty($current_firm))) {
+                copy($new_file, $current_file);
+            } else {
+                $current_firm=trim("$current_firm");
+                $new_firm=trim("$new_firm");
+
+                if((strlen($current_firm)==43)&&(strlen($new_firm)==43)) {   
+                    $new_firm=substr($new_firm,9,4); 
+                    $current_firm=substr($current_firm,9,4);
+
+                    if(hexdec($new_firm) > hexdec($current_firm)) {
+                        copy($new_file, $current_file);
+                    }
+                }
+           }
+        }
+    }
 }
 // }}}
 

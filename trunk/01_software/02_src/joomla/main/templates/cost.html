@@ -96,7 +96,8 @@ chart = new Highcharts.Chart({
          type: 'column'
       },
       title: {
-         text: '<?php echo __('COST_PRICE_COMPUTE_GRAPH'); ?>'
+         text: <?php if(strcmp("$startday","$endday")!=0) { echo "'".__('COST_PRICE_COMPUTE_GRAPH')." ".__('COST_PRICE_TIME')." ".$startday." ".__('COST_PRICE_TO')." ".$endday."'"; } else {
+                    echo "'".__('COST_PRICE_COMPUTE_GRAPH')." ".__('COST_PRICE_FOR_DAY')." ".$startday."'"; } ?>
       },
       subtitle: {
          text: ''
@@ -137,25 +138,15 @@ chart = new Highcharts.Chart({
             borderWidth: 0
          }
       },
-         series: [{
-         name: <?php if(strcmp("$startday","$endday")!=0) { ?>
-               '<?php echo __('PRICE_FOR_DATE')." ".$startday." ".__('PRICE_AND')." ".$endday; ?>
-                <?php if(strcmp("$select_plug","all")==0) { 
-                  echo " ".__('PRICE_SELECT_ALL_PLUG_GRAPH')."',";
-            } else {
-                  echo " ".__('PRICE_SELECT_PLUG_GRAPH').": ". $plugs_infos[$select_plug-1]['PLUG_NAME']."',";
-            } ?>
-            <?php } else { ?>
-               '<?php echo __('PRICE_FOR_DAY')." ".$startday; ?>
-                <?php if(strcmp("$select_plug","all")==0) { 
-                  echo " ".__('PRICE_SELECT_ALL_PLUG_GRAPH')."',";
-            } else {
-                  echo " ".__('PRICE_SELECT_PLUG_GRAPH').": ". $plugs_infos[$select_plug-1]['PLUG_NAME']."',";
-            } ?>
-            <?php } ?>
-         color: <?php echo "'".$color_cost."'"; ?>,
-         data: [<?php echo $compute; ?>, <?php echo $theorical_power; ?>]
-      }]
+        series: [
+        <?php foreach($data_price as $data) { ?>
+         {
+                name: <?php echo "'".$data['title']."'," ?>
+                color: <?php echo "'".$data['color']."'"; ?>,
+                data: [<?php echo $data['real']; ?>,<?php echo $data['theorical']; ?>]
+                },
+         <?php } ?> 
+      ]
    });
 });
 });
@@ -165,7 +156,7 @@ chart = new Highcharts.Chart({
 <br /><br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
 
-<table>
+<table class="table_width">
    <tr>
       <td class="cost-marge"></td>
       <td class="cost-title"><?php echo __('SELECT_START_DAY'); ?></td>
@@ -181,8 +172,9 @@ chart = new Highcharts.Chart({
       <td><?php echo __('SELECT_PRICE_PLUG'); ?></td>
       <td><select name="select_plug">
             <option value="all"><?php echo __('PRICE_ALL_PLUG'); ?></option>
+            <option value="distinct_all" <?php if(strcmp($select_plug,"distinct_all")==0) { echo "selected"; } ?>><?php echo __('PRICE_DISTINCT_ALL_PLUG'); ?></option>
             <?php for($i=0;$i<$nb_plugs;$i++) { ?>
-               <option value="<?php echo $plugs_infos[$i]["id"]; ?>" <?php if(strcmp($select_plug,$plugs_infos[$i]["id"])==0) echo "selected"; ?>><?php echo $plugs_infos[$i]["PLUG_NAME"]; ?></option>
+               <option value="<?php echo $plugs_infos[$i]["id"]; ?>" <?php if(strcmp($select_plug,$plugs_infos[$i]["id"])==0) echo "selected"; ?>><?php echo __('PRICE_FOR_PLUG')." ".$plugs_infos[$i]["PLUG_NAME"]; ?></option>
             <?php } ?>
          </select></td>
    </tr>

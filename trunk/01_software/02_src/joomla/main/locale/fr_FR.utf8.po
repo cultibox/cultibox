@@ -643,37 +643,34 @@ msgid "COST_PRICE_COMPUTE"
 msgstr "Calcul du coût de votre installation"
 
 msgid "COST_PRICE_COMPUTE_GRAPH"
-msgstr "Calcul de revient de votre installation"
+msgstr "Cout de votre installation" 
+
+msgid "COST_PRICE_FOR_DAY"
+msgstr "pour le"
+
+msgid "COST_PRICE_TIME"
+msgstr "pour la periode du"
+
+msgid "COST_PRICE_TO"
+msgstr "au"
 
 msgid "INSTALLATION_PRICE"
 msgstr "Prix de l\'installation (en euros)"
 
 msgid "SELECT_PRICE_PLUG"
-msgstr "Sélectionner une prise"
-
-msgid "PRICE_FOR_DATE"
-msgstr "Prix de l\'installation entre le"
-
-msgid "PRICE_FOR_DAY"
-msgstr "Prix pour le"
-
-msgid "PRICE_AND"
-msgstr "et le"
+msgstr "Afficher le prix"
 
 msgid "PRICE_ALL_PLUG"
-msgstr "Toutes les prises"
+msgstr "pour toutes les prises"
 
-msgid "PRICE_SELECT_PLUG"
-msgstr "Prix pour la prise"
+msgid "PRICE_DISTINCT_ALL_PLUG"
+msgstr "par prise"
 
-msgid "PRICE_SELECT_ALL_PLUG"
-msgstr "Prix pour toutes vos prises"
-
-msgid "PRICE_SELECT_PLUG_GRAPH"
+msgid "PRICE_FOR_PLUG"
 msgstr "pour la prise"
 
-msgid "PRICE_SELECT_ALL_PLUG_GRAPH"
-msgstr "pour toutes vos prises"
+msgid "PRICE_SELECT_ALL_PLUG"
+msgstr "Pour toutes vos prises"
 
 msgid "REAL_PRICE"
 msgstr "Prix reel"

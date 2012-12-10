@@ -90,11 +90,51 @@ if(!check_date("$startday,","$endday")) {
       $pop_up_error_message=clean_popup_message($error);
 }
 
-$data_power=get_data_power($startday,$endday,$select_plug,$error);
-$theorical_power=get_theorical_power($select_plug,$price,$error);
-$nb=get_nb_days($startday,$endday)+1;
-$theorical_power=$theorical_power*$nb;
-$theorical_power=number_format($theorical_power,2);
+if(strcmp($select_plug,"distinct_all")!=0) {
+    $theorical_power=get_theorical_power($select_plug,$price,$error);
+    $nb=get_nb_days($startday,$endday)+1;
+    $theorical_power=$theorical_power*$nb;
+    $theorical_power=number_format($theorical_power,2);
+
+    $data_power=get_data_power($startday,$endday,$select_plug,$error);
+
+    if(strcmp($select_plug,"all")==0) {
+        $title=__('PRICE_SELECT_ALL_PLUG');
+        $color_cost = get_configuration("COLOR_COST_GRAPH",$error);
+    } else {
+        $title=$plugs_infos[$select_plug-1]['PLUG_NAME'];
+        $color_cost=$GLOBALS['LIST_GRAPHIC_COLOR'][$select_plug-1];
+    }
+
+    $data_power=get_data_power($startday,$endday,$select_plug,$error);
+
+    $data_price[]= array( 
+        "number" => "$select_plug",
+        "theorical" => "$theorical_power",
+        "real" => "$data_power", 
+        "title" => "$title",
+        "color" => "$color_cost"
+    );
+} else {
+    $nb_plugs = get_configuration("NB_PLUGS",$error);
+    $nb=get_nb_days($startday,$endday)+1;
+    for($i=1;$i<=$nb_plugs;$i++) {
+       $theorical_power=get_theorical_power($i,$price,$error);
+       $theorical_power=$theorical_power*$nb;
+       $theorical_power=number_format($theorical_power,2);
+
+       $data_power=get_data_power($startday,$endday,$i,$error);
+       $title=$plugs_infos[$i-1]['PLUG_NAME'];
+
+       $data_price[]= array(
+        "number" => "$i",
+        "real" => "$data_power",
+        "theorical" => "$theorical_power",
+        "title" => "$title",
+        "color" => $GLOBALS['LIST_GRAPHIC_COLOR'][$i-1]
+       ); 
+    }
+}
 
 
 if((empty($data_power))||(!isset($data_power))||(empty($price))||(!isset($price))) {

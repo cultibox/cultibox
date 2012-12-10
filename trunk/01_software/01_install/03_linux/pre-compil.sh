@@ -50,6 +50,7 @@ case "$1" in
            cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/lampp/sql_install
            cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/lampp/htdocs/cultibox/tmp/
+           cp ../../01_install/01_src/03_sd/emmeteur.hex ../01_src/01_xampp/lampp/htdocs/cultibox/tmp/
 
            cp -R daemon ../01_src/01_xampp/lampp/
 
@@ -99,6 +100,7 @@ case "$1" in
            cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/lampp/sql_install
            cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/lampp/htdocs/cultibox/tmp/
+           cp ../../01_install/01_src/03_sd/emmeteur.hex ../01_src/01_xampp/lampp/htdocs/cultibox/tmp/
            cp -R daemon ../01_src/01_xampp/lampp/
 
            if [ "$1" == "ubuntu64-admin" ]; then
