@@ -1,4 +1,10 @@
-CultiBox (1.0.340) precise; urgency=low
+CultiBox (1.0.341) precise; urgency=low
+   + Pas de waiting s'il n'y a pas de carte SD
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/waiting.php
+        02_src/joomla/main/templates/waiting.html
+
    + Utilisation de variables globales pour le min/max de prises utilisables
         02_src/joomla/main/scripts/programs.php
         02_src/joomla/main/libs/config.php

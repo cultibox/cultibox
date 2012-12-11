@@ -289,9 +289,6 @@ msgstr "Toutes les prises"
 msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
 
-msgid "WAITING_LOGS"
-msgstr "Merci de patienter quelques instants le temps que la page se charge et que les données soient traitées..."
-
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte CultiBox</i></b> le temps que la page se charge et que les données soient traitées..."
 

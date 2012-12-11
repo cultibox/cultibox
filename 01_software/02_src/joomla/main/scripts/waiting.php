@@ -38,8 +38,12 @@ if(isset($_POST['select_plug'])) {
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
-      
-header("Refresh: 1;url=./view-logs");
+
+if((!isset($sd_card))||(empty($sd_card))) {      
+    header( 'Location: ./view-logs' ) ;
+} else {
+    header("Refresh: 1;url=./view-logs");
+}
 
 include('main/templates/waiting.html');
 
