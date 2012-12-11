@@ -289,9 +289,6 @@ msgstr "All plugs"
 msgid "FORCE_ON_CHART"
 msgstr "Forced to ON"
 
-msgid "WAITING_LOGS"
-msgstr "Thank you to wait few seconds during data loading..."
-
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Thank you to wait few seconds and <b><i>to not disconnect</b></i> the CultiBox card during data loading..."
 
