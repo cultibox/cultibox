@@ -44,7 +44,7 @@ for($i=0;$i<=$nb_plugs;$i++) {
 
 if((isset($add_plug))&&(!empty($add_plug))) {
     if((isset($nb_plugs))&&(!empty($nb_plugs))) {
-            if($nb_plugs<16) {
+            if($nb_plugs<$GLOBALS['NB_MAX_PLUG']) {
                     insert_configuration("NB_PLUGS",$nb_plugs+1,$error);
                     if((empty($error))||(!isset($error))) {
                         $nb_plugs=$nb_plugs+1;

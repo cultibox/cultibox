@@ -542,17 +542,48 @@ EOF;
 // ROLE get a theorical data power from the database
 // IN $id     id of the plug to be used ('all' for all the plugs)
 //    $out      errors or warnings messages
-//    $price   price of the kilowatt.hour
+//    $type   type of the electric installation: hpc or standard
 // RET data power formated for highchart
-function get_theorical_power($id=0,$price=0,&$out="") {
-   if($price==0) {
-         $out=$out.__('ERROR_COST_PRICE_NULL');
+function get_theorical_power($id=0,$type="",&$out="") {
+   if(strcmp($type,"standard")==0) {
+        $price=get_configuration("COST_PRICE",$out);
+        if($price==0) {
+            $out=$out.__('ERROR_COST_PRICE_NULL');
+        }
+   } else {
+        $price_hp=get_configuration("COST_PRICE_HP",$out);
+        $price_hc=get_configuration("COST_PRICE_HC",$out);
+        $start_hc=get_configuration("START_TIME_HC",$out);
+        $stop_hc=get_configuration("STOP_TIME_HC",$out);
+        $starthc=0;
+        $stophc=0;
+
+        if(($price_hc==0)||($price_hp==0)) {
+            $out=$out.__('ERROR_COST_PRICE_NULL');
+        }
+
+        if((strcmp($start_hc,"")==0)||(strcmp($stop_hc,"")==0)) {
+            $out=$out.__('ERROR_HPC_TIME_NULL');
+        } else {
+            $stahch=substr($start_hc,0,2);
+            $stahcm=substr($start_hc,3,2);
+
+            $stohch=substr($stop_hc,0,2);
+            $stohcm=substr($stop_hc,3,2);
+
+            date_default_timezone_set('UTC');
+
+            $starthc=mktime($stahch,$stahcm,0,0,0,1971);
+            $stophc=mktime($stohch,$stohcm,0,0,0,1971);
+
+        }
    }
+
    $res="";
    $db = db_priv_start();
    if(strcmp("$id","all")==0) {
           $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <=  16
+SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <= ${GLOBALS['NB_MAX_PLUG']}
 EOF;
       } else {
       $sql = <<<EOF
@@ -605,7 +636,6 @@ EOF;
 
    if(count($res_power)==16) {
          date_default_timezone_set('UTC');
-         $price=($price/3600)/1000;
          $theorical=0;
          foreach($res as $val) {
                $id=$val['plug_id']-1;
@@ -623,7 +653,31 @@ EOF;
                $time_start=mktime($shh,$smm,$sss,0,0,1971);
                $time_final=$time_end-$time_start;
 
-               $theorical=$theorical+($time_final*$price*$res_power[$id]['PLUG_POWER']);
+               if(strcmp($type,"hpc")==0) {
+                    while($time_start<=$time_end) {
+                        if($starthc<=$stophc) {
+                            if(($time_start>=$starthc)&&($time_start<=$stophc)) {
+                                $price=($price_hc/3600)/1000; 
+
+                            } else {
+                                $price=($price_hp/3600)/1000;
+                            }
+                        } else {
+                            if(($time_start>=$starthc)||($time_start<=$stophc)) {
+                                $price=($price_hc/3600)/1000; 
+
+                            } else {
+                                $price=($price_hp/3600)/1000;
+                            }
+                        }
+                        $theorical=$theorical+($price*$res_power[$id]['PLUG_POWER']);
+                        $time_start=$time_start+1;
+                    }          
+                } else {
+                    $price=($price/3600)/1000;
+                    $theorical=$theorical+($time_final*$price*$res_power[$id]['PLUG_POWER']);
+                }
+
          }
       return $theorical;
    }
