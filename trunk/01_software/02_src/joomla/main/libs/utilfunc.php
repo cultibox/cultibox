@@ -822,8 +822,8 @@ function write_pluga($sd_card,&$out="") {
 
    if($f=fopen("$file","w+")) {
       $pluga=Array();
-      $pluga[]="16";
-      for($i=0;$i<16;$i++) {
+      $pluga[]=$GLOBALS['NB_MAX_PLUG'];
+      for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
       $tmp_pluga=get_plug_conf("PLUG_ID",$i+1,$out);
       if((empty($tmp_pluga))||(!isset($tmp_pluga))) {
                       $tmp_pluga=$GLOBALS['PLUGA_DEFAULT'][$i];

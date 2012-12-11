@@ -18,8 +18,11 @@ $GLOBALS['LIST_GRAPHIC_COLOR'] = array('blue','red', 'green', 'black','purple','
 // List of the recording frequency available: (in minute)
 $GLOBALS['LIST_RECORD_FREQUENCY'] = array('1','5','30');
 
-// List of plugs available:
-$GLOBALS['LIST_NB_PLUGS'] = array('3','4','5','6','7','8','9','10','11','12','13','14','15','16');
+// Number of max plugs managed by the cultibox
+$GLOBALS['NB_MAX_PLUG'] = '16';
+
+// Number of min plugs used by the cultibox
+$GLOBALS['NB_MIN_PLUG'] = '3';
 
 // List of the updating plugs frequency: (-1 means every clock heartbeat)
 $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');
@@ -56,5 +59,7 @@ $GLOBALS['MODULE_IMPORT_EXPORT'] = false;
 
 // List of value possible for log's research: 2, 3, 6 or 12 months
 $GLOBALS['LOG_SEARCH'] = array('2', '3', '6', '12');
+
+
 
 ?>

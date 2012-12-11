@@ -1,4 +1,17 @@
-CultiBox (1.0.338) precise; urgency=low
+CultiBox (1.0.340) precise; urgency=low
+   + Utilisation de variables globales pour le min/max de prises utilisables
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/libs/config.php
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+
+   + Utilisation des HP/HC pour le calcul des coûts de l'installation
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/libs/utilfunc.php
+
    + Possiilité d'afficher la calcul du coût pour toutes les prises séparément
         02_src/joomla/main/templates/cost.html
         02_src/joomla/main/locale/en_GB.utf8.po

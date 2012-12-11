@@ -470,10 +470,10 @@ msgid "PLUG_ADDED"
 msgstr "<li>Prise ajoutée avec succée</li>"
 
 msgid "PLUG_MAX_ADDED"
-msgstr "<li>Vous ne pouvez pas configurer plus de 16 prises</li>"
+msgstr "<li>Vous avez atteint le nombre maximal de prises confgurables</li>"
 
 msgid "PLUG_MIN_ADDED"
-msgstr "<li>Vous ne pouvez pas configurer moins de 3 prises</li>"
+msgstr "<li>Vous avez atteint le nombre minimal de proses configurables</li>"
 
 msgid "PLUG_REMOVED"
 msgstr "<li>Prise supprimée avec succée</li>"
@@ -781,6 +781,9 @@ msgstr "<li>La puissance de certaine de vos prises n'est pas configurée, vous p
 
 msgid "ERROR_COST_PRICE_NULL"
 msgstr "<li>Le prix du coût du kilowatt-heure n'est pas configuré, vous pouvez le configurer: <a href='configuration'>ici</a></li>"
+
+msgid "ERROR_HPC_TIME_NULL"
+msgstr "<li>L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configuré, vous pouvez le configurer <a href='configuration'>ici</a></li>"
 
 msgid "ERROR_COPY_TPL"
 msgstr "<li>Impossible de copier le fichier empty_file_64.tpl sur votre carte SD</li>"

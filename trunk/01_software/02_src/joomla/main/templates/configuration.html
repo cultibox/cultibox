@@ -625,11 +625,11 @@ timeFormat: 'hh:mm',
 <td>
    <select name="nb_plugs">
       <?php
-      foreach($GLOBALS['LIST_NB_PLUGS'] as $value) {
-         if(!strcmp ("$value","$nb_plugs")) {
-            echo "<option value=\"${value}\" selected>${value}</option>";
+      for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_MAX_PLUG'];$i++) {
+         if(!strcmp ("$i","$nb_plugs")) {
+            echo "<option value=\"${i}\" selected>${i}</option>";
          } else {
-            echo "<option value=\"${value}\">${value}</option>";
+            echo "<option value=\"${i}\">${i}</option>";
          }
       }
       ?>

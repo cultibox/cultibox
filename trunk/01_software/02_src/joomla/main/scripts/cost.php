@@ -24,11 +24,9 @@ $select_plug=getvar('select_plug');
 $compute=0;
 $pop_up_error_message="";
 $pop_up="";
-$color_cost = get_configuration("COLOR_COST_GRAPH",$error);
 $update=get_configuration("CHECK_UPDATE",$error);
 $version=get_configuration("VERSION",$error);
-$start_hc=get_configuration("START_TIME_HC",$error);
-$stop_hc=get_configuration("STOP_TIME_HC",$error);
+$cost_type=get_configuration("COST_TYPE",$error);
 $info="";
 
 if(!isset($pop_up)) {
@@ -91,7 +89,7 @@ if(!check_date("$startday,","$endday")) {
 }
 
 if(strcmp($select_plug,"distinct_all")!=0) {
-    $theorical_power=get_theorical_power($select_plug,$price,$error);
+    $theorical_power=get_theorical_power($select_plug,$cost_type,$error);
     $nb=get_nb_days($startday,$endday)+1;
     $theorical_power=$theorical_power*$nb;
     $theorical_power=number_format($theorical_power,2);
@@ -119,7 +117,7 @@ if(strcmp($select_plug,"distinct_all")!=0) {
     $nb_plugs = get_configuration("NB_PLUGS",$error);
     $nb=get_nb_days($startday,$endday)+1;
     for($i=1;$i<=$nb_plugs;$i++) {
-       $theorical_power=get_theorical_power($i,$price,$error);
+       $theorical_power=get_theorical_power($i,$cost_type,$error);
        $theorical_power=$theorical_power*$nb;
        $theorical_power=number_format($theorical_power,2);
 
