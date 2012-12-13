@@ -11,6 +11,34 @@
 + Bug can be view at adress : http://code.google.com/p/cultibox                +
 +------------------------------------------------------------------------------+
 
++ Version 1.19
+   Comment:
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      195 : [RTC] L'horloge se décale
+      201 : Reboot de la cultibox lors de l'entrée dans le menu Log ou Programme
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      248 : [CAL] vitesse d'affichage
+      269 : [PILE] Plus de batterie
+      270 : [PLUG] La lampe s'allume tous les matins à  8h
+      274 : [BOOT] Mise à jour du firmware
+      283 : [LOG] Affichage des autres capteur
+      296 : [PLUG] Les numéros des prises ne sont pas tous bon
+   To test : 
+      232 :	Prise qui ne change pas d'état
+      271 : [CULTI] prise qui change d'etat a minuit lors du reboot
+      288 : [BOOT] Si la carte n'est pas prete, il tente quand même de demarrer
+   Solved :
+      233 : [SENSOR] Sauvegarde de tout les capteurs
+      276 : [BOOT] Mise à jour du firmware emetor
+      278 : [BOOT] version firmware MAJ
+      284 : [PWR] Au redémarrage, les logs power ne partent pas du bon endroit
+      287 : [MENU] Lorsqu'on quitte log c'est programme qui s'affiche
+      294 : [MENU] Impossible de forcer les prises 11 --> 15
+
 + Version 1.18
    Comment: 
    Issues :
