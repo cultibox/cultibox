@@ -108,7 +108,7 @@ buttonImageOnly: 'true',
             <?php for($i=0;$i<$nb_plugs;$i++) { ?>
                <option value="<?php echo $plugs_infos[$i]["id"]; ?>" <?php if(strcmp($select_power,$plugs_infos[$i]["id"])==0) echo "selected"; ?>><?php echo $plugs_infos[$i]["PLUG_NAME"]; ?></option>
             <?php } ?>
-               <option value="999" <?php if(strcmp($select_power,999)==0) echo "selected"; ?>><?php echo __('SELECT_ALL_PLUGS'); ?></option>
+               <option value="9990" <?php if(strcmp($select_power,9990)==0) echo "selected"; ?>><?php echo __('SELECT_ALL_PLUGS'); ?></option>
          </select>
       </td>
    </tr>

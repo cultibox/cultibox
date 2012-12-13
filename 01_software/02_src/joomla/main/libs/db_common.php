@@ -488,11 +488,10 @@ EOF;
          $tmp=array();
    
          foreach($res as $val) {
-              
                $value=round($val["record"]/10);
                $tmp[]=array(
                      "timestamp" => $val["timestamp"],
-                     "record" => ($res_power[$id-1]['PLUG_POWER']*$value)/100,
+                     "record" => round(($res_power[$id-1]['PLUG_POWER']*$value)/999),
                      "plug_number" => $val["plug_number"],
                      "date_catch" => $val["date_catch"],
                      "time_catch" => $val["time_catch"]
@@ -510,7 +509,7 @@ EOF;
             for($i=0;$i<count($res);$i++) {
                if(strcmp($res[$i]['timestamp'],$timestamp)==0) {  
                   $pcent=round((int)$res[$i]['record']/10);
-                  $val=$val+($pcent * (int)$res_power[$count]['PLUG_POWER'])/100;
+                  $val=$val+($pcent * (int)$res_power[$count]['PLUG_POWER'])/999;
                   $count=$count+1;
                } else {
                  $tmp[] = array (
@@ -524,7 +523,7 @@ EOF;
                   $save=$res[$i];
                   $count=0; 
                   $pcent=round((int)$res[$i]['record']/10);
-                  $val=($pcent*(int)$res_power[$count]['PLUG_POWER'])/100;
+                  $val=($pcent*(int)$res_power[$count]['PLUG_POWER'])/999;
                   $count=$count+1;
                   $timestamp=$res[$i]['timestamp'];
                }

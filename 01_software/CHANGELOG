@@ -1,4 +1,8 @@
-CultiBox (1.0.341) precise; urgency=low
+CultiBox (1.0.342) precise; urgency=low
+   + Correction de l'afficahge des puissances consommée suite au changement sur 4 digit des fichiers pwr_XX
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/templates/logs.html
+
    + Pas de waiting s'il n'y a pas de carte SD
         02_src/joomla/main/locale/en_GB.utf8.po
         02_src/joomla/main/locale/fr_FR.utf8.po
