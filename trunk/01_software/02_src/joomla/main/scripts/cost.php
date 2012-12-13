@@ -92,7 +92,6 @@ if(strcmp($select_plug,"distinct_all")!=0) {
     $theorical_power=get_theorical_power($select_plug,$cost_type,$error);
     $nb=get_nb_days($startday,$endday)+1;
     $theorical_power=$theorical_power*$nb;
-    $theorical_power=number_format($theorical_power,2);
 
     $data_power=get_data_power($startday,$endday,$select_plug,$error);
 
@@ -105,11 +104,12 @@ if(strcmp($select_plug,"distinct_all")!=0) {
     }
 
     $data_power=get_data_power($startday,$endday,$select_plug,$error);
+    $real_power=get_real_power($data_power,$cost_type,$error);
 
     $data_price[]= array( 
         "number" => "$select_plug",
         "theorical" => "$theorical_power",
-        "real" => "$data_power", 
+        "real" => "$real_power", 
         "title" => "$title",
         "color" => "$color_cost"
     );
@@ -119,31 +119,20 @@ if(strcmp($select_plug,"distinct_all")!=0) {
     for($i=1;$i<=$nb_plugs;$i++) {
        $theorical_power=get_theorical_power($i,$cost_type,$error);
        $theorical_power=$theorical_power*$nb;
-       $theorical_power=number_format($theorical_power,2);
 
        $data_power=get_data_power($startday,$endday,$i,$error);
+       $real_power=get_real_power($data_power,$cost_type,$error);
        $title=$plugs_infos[$i-1]['PLUG_NAME'];
 
        $data_price[]= array(
         "number" => "$i",
-        "real" => "$data_power",
+        "real" => "$real_power",
         "theorical" => "$theorical_power",
         "title" => "$title",
         "color" => $GLOBALS['LIST_GRAPHIC_COLOR'][$i-1]
        ); 
     }
 }
-
-
-if((empty($data_power))||(!isset($data_power))||(empty($price))||(!isset($price))) {
-      $compute=0;
-} else {
-      $price=($price/60)/1000;
-      foreach($data_power as $val) {
-         $compute=$compute+($val['record']*$price);
-      }
-}
-$compute=number_format($compute,2);
 
 if(strcmp("$update","True")==0) {
       $ret=array();
