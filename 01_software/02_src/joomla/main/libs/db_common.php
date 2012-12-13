@@ -549,6 +549,7 @@ function get_theorical_power($id=0,$type="",&$out="") {
         if($price==0) {
             $out=$out.__('ERROR_COST_PRICE_NULL');
         }
+        $price=($price/3600)/1000;
    } else {
         $price_hp=get_configuration("COST_PRICE_HP",$out);
         $price_hc=get_configuration("COST_PRICE_HC",$out);
@@ -576,6 +577,9 @@ function get_theorical_power($id=0,$type="",&$out="") {
             $stophc=mktime($stohch,$stohcm,0,0,0,1971);
 
         }
+
+        $price_hc=($price_hc/3600)/1000;
+        $price_hp=($price_hp/3600)/1000;
    }
 
    $res="";
@@ -638,6 +642,7 @@ EOF;
          $theorical=0;
          foreach($res as $val) {
                $id=$val['plug_id']-1;
+
                if($res_power[$id]['PLUG_POWER']==0) {
                      $out=$out.__('ERROR_POWER_PRICE_NULL');
                }
@@ -648,6 +653,7 @@ EOF;
                $ehh=substr($val['time_stop'],0,2);
                $emm=substr($val['time_stop'],2,2);
                $ess=substr($val['time_stop'],4,2);
+
                $time_end=mktime($ehh,$emm,$ess,0,0,1971);
                $time_start=mktime($shh,$smm,$sss,0,0,1971);
                $time_final=$time_end-$time_start;
@@ -656,31 +662,127 @@ EOF;
                     while($time_start<=$time_end) {
                         if($starthc<=$stophc) {
                             if(($time_start>=$starthc)&&($time_start<=$stophc)) {
-                                $price=($price_hc/3600)/1000; 
+                                $price=$price_hc;
 
                             } else {
-                                $price=($price_hp/3600)/1000;
+                                $price=$price_hp;
                             }
                         } else {
                             if(($time_start>=$starthc)||($time_start<=$stophc)) {
-                                $price=($price_hc/3600)/1000; 
+                                $price=$price_hc; 
 
                             } else {
-                                $price=($price_hp/3600)/1000;
+                                $price=$price_hp;
                             }
                         }
                         $theorical=$theorical+($price*$res_power[$id]['PLUG_POWER']);
                         $time_start=$time_start+1;
                     }          
                 } else {
-                    $price=($price/3600)/1000;
                     $theorical=$theorical+($time_final*$price*$res_power[$id]['PLUG_POWER']);
                 }
 
          }
-      return $theorical;
+      return number_format($theorical,2);
    }
    return 0;
+}
+// }}}
+
+
+// {{{ get_real_power()
+// ROLE get a real price for power used
+// IN $data     array containing data to compute
+//    $out      errors or warnings messages
+//    $type     type of the electric installation: hpc or standard
+// RET data power formated for highchart
+function get_real_power($data="",$type="",&$out="")  {
+    if((empty($data))||(!isset($data))||(empty($type))||(!isset($type))) {
+        return 0;
+    }
+
+
+    if(strcmp($type,"standard")==0) {
+        $price=get_configuration("COST_PRICE",$out);
+        if($price==0) {
+            $out=$out.__('ERROR_COST_PRICE_NULL');
+            return 0;
+        }
+        $price=($price/60)/1000;
+   } else {
+        $price_hp=get_configuration("COST_PRICE_HP",$out);
+        $price_hc=get_configuration("COST_PRICE_HC",$out);
+        $start_hc=get_configuration("START_TIME_HC",$out);
+        $stop_hc=get_configuration("STOP_TIME_HC",$out);
+        $starthc=0;
+        $stophc=0;
+    
+        if(($price_hp==0)||($price_hc==0)) {
+            $out=$out.__('ERROR_COST_PRICE_NULL');
+            return 0;
+        }
+
+        if((strcmp($start_hc,"")==0)||(strcmp($stop_hc,"")==0)) {
+            $out=$out.__('ERROR_HPC_TIME_NULL');
+            return 0;
+        } else {
+            $stahch=substr($start_hc,0,2);
+            $stahcm=substr($start_hc,3,2);
+
+            $stohch=substr($stop_hc,0,2);
+            $stohcm=substr($stop_hc,3,2);
+
+            date_default_timezone_set('UTC');
+
+            $starthc=mktime($stahch,$stahcm,0,0,0,1971);
+            $stophc=mktime($stohch,$stohcm,0,0,0,1971);
+
+        }
+
+        $price_hc=($price_hc/60)/1000;
+        $price_hp($price_hp/60)/1000;
+  }
+
+  if(strcmp($type,"standard")==0) {
+      $compute=0;
+      foreach($data as $val) {
+         $compute=$compute+($val['record']*$price);
+      }
+  } else {
+
+    date_default_timezone_set('UTC');
+    $compute=0;
+
+
+    foreach($data as $val) {
+               $hh=substr($val['time_catch'],0,2);
+               $mm=substr($val['time_catch'],2,2);
+               $ss=substr($val['time_catch'],4,2);
+               $MM=substr($val['date_catch'],5,2);
+               $DD=substr($val['date_catch'],8,2);
+               $YYYY=substr($val['date_catch'],0,4);
+        
+               $time=mktime($hh,$mm,$ss,$DD,$MM,$YYYY);
+
+               if($starthc<=$stophc) {
+                   if(($time>=$starthc)&&($time<=$stophc)) {
+                          $price=$price_hc;
+                   } else {
+                          $price=$price_hp;
+                   }
+               } else {
+                   if(($time>=$starthc)||($time<=$stophc)) {
+                          $price=$price_hc;
+                    } else {
+                          $price=$price_hp;
+                    }
+               }
+               $compute=$compute+($price*$val['record']);
+    } 
+             
+  }
+  return number_format($compute,2);
+
 }
 // }}}
 

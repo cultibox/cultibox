@@ -1,4 +1,8 @@
-CultiBox (1.0.342) precise; urgency=low
+CultiBox (1.0.343) precise; urgency=low
+   + Utilisation du HP/HC dans le calcul reel de la consommation + correction du cout du prix theorique
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/libs/db_common.php
+
    + Correction de l'afficahge des puissances consommée suite au changement sur 4 digit des fichiers pwr_XX
         02_src/joomla/main/libs/db_common.php
         02_src/joomla/main/templates/logs.html
