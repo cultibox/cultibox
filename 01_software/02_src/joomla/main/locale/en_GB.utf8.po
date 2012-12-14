@@ -292,6 +292,24 @@ msgstr "Forced to ON"
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Thank you to wait few seconds and <b><i>to not disconnect</b></i> the CultiBox card during data loading..."
 
+msgid "PREVIOUS_BUTTON_DAY"
+msgstr "Display informations for the previous day"
+
+msgid "NEXT_BUTTON_DAY"
+msgstr "Display informations for the next day"
+
+msgid "PREVIOUS_BUTTON_MONTH"
+msgstr "Display informations for the next month"
+
+msgid "NEXT_BUTTON_MONTH"
+msgstr "Display information for the previous month"
+
+msgid "PRECISION_GRAPH_DAY"
+msgstr "Logs are displayed with a maximum precision of a point every minute"
+
+msgid "PRECISION_GRAPH_MONTH"
+msgstr "Logs are displayed with a maximum precision of a point every five minutes"
+
 
 # For the plugs part:
 msgid "PLUG"

@@ -40,16 +40,14 @@ function verifDate(e) {
 
 <?php if((!empty($main_error))||(!empty($error))) { ?>
 <div id="error">
-<?php if(!empty($main_error)) { ?>
 <ul>
+<?php if(!empty($main_error)) { ?>
         <?php echo $main_error; ?>
-</ul>
 <?php } ?>
 <?php if(!empty($error)) { ?>
-<ul>
         <?php echo $error; ?>
-</ul>
 <?php } ?>
+</ul>
 </div>
 <?php } ?>
 
@@ -195,7 +193,7 @@ $(function () {
             }
          },
          title: {
-             text: <?php echo "'".__('HISTO_GRAPH')." (".$legend_date.")'"; ?>,
+             text: <?php echo "'".__('HISTO_GRAPH')." (".$legend_date.")*'"; ?>,
          },
          subtitle: {
              text: document.ontouchstart === undefined ?
@@ -403,8 +401,66 @@ $(function () {
 });
 </script>
 <br /><br />
+<table class="table_width">
+<tr>
+    <td>
+        <?php if((strcmp("$type","month")!=0)||(($GLOBALS['FIRST_LOG_YEAR']!=$startyear)||($startmonth!=01))) { ?>
+        <form action="/cultibox/index.php/display-logs" method="post">
+            <input type="submit" value="<" name="previous" class="button_log" title="<?php if(strcmp($type,"days")==0) echo __('PREVIOUS_BUTTON_DAY'); else echo __('PREVIOUS_BUTTON_MONTH'); ?>">
+            <?php if(strcmp($type,"days")==0) { ?>
+                <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("-1 day", strtotime("$startday"))); ?>">
+            <?php } else { ?>
+                <?php 
+                    if(strcmp("$startmonth","01")==0) {
+                            $month="12"; 
+                     } else {
+                            $month=$startmonth-1;
+                            if(strlen($month)<2) {
+                                $month="0$month";
+                            }
+                    }
+                ?>
+                <input type="hidden" name="startmonth" value="<?php echo "$month"; ?>">
+                <input type="hidden" name="startyear" value="<?php if(strcmp("$startmonth","01")==0) echo $startyear-1; else echo $startyear; ?>" >
+            <?php } ?>
 
-<div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+            <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
+            <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
+        </form>
+        <?php } ?>
+    </td>
+    <td><div id="container" style="width: 750px; height: 400px; margin: 0 auto"></div></td>
+    <td>
+        <?php if((strcmp("$type","month")!=0)||(($startyear!=date('Y'))||($startmonth!=12))) { ?>
+        <form action="/cultibox/index.php/display-logs" method="post">
+            <input type="submit" value=">" name="next" class="button_log" title="<?php if(strcmp($type,"days")==0) echo __('NEXT_BUTTON_DAY'); else echo __('NEXT_BUTTON_MONTH'); ?>">
+            <?php if(strcmp($type,"days")==0) { ?>
+                <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("+1 day", strtotime("$startday"))); ?>">
+            <?php } else { ?>
+                <?php 
+                    if(strcmp("$startmonth","12")==0) {
+                            $month="01"; 
+                     } else {
+                            $month=$startmonth+1;
+                            if(strlen($month)<2) {
+                                $month="0$month";
+                            }
+                    }
+                ?>
+                <input type="hidden" name="startmonth" value="<?php echo "$month"; ?>">
+                <input type="hidden" name="startyear" value="<?php if(strcmp("$startmonth","12")==0) echo $startyear+1; else echo $startyear; ?>" >
+            <?php } ?>
+
+            <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
+            <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
+        </form>
+        <?php } ?>
+    </td>
+</tr>
+</table>
 
 <?php } ?>
+<p class="precision_infos">
+<?php if(strcmp($type,"days")==0)  echo "*"." ".__('PRECISION_GRAPH_DAY'); else echo "*"." ".__('PRECISION_GRAPH_MONTH'); ?>
+</p>
 <br />

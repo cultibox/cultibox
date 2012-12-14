@@ -28,7 +28,7 @@ $GLOBALS['NB_MIN_PLUG'] = '3';
 $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');
 
 // Colors for plugs program:
-$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'] = array('blue','red', 'green', 'black','purple','pink','yellow','brown','grey','orange','violet','beige','turquoise','amber','cyan','indigo');
+$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'] = array('#0033CC','#FF0000', '#336600', '#000000','#FF9900','#006666','#999966','#663300','#FF0066','#CC66FF','#660000','#3D96AE','#DB843D','#00FF00','#CCFF33','#B5CA92');
 
 //Subject for the calendar:
 $GLOBALS['LIST_SUBJECT_CALENDAR'] = array('Beginning','Fertilizers', 'Water', 'Bloom','Harvest','Other');

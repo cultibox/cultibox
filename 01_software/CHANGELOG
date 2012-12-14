@@ -1,4 +1,17 @@
-CultiBox (1.0.343) precise; urgency=low
+CultiBox (1.1.0) precise; urgency=low
+   + Modification des couleurs des graphes (passage en hexa)
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/libs/config.php
+   + Mise en place d'un bouton précédent/suivant dans les logs pour rapidement changer la date
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/templates/cost.html
+        02_src/joomla/main/templates/wizard.html
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+
    + Utilisation du HP/HC dans le calcul reel de la consommation + correction du cout du prix theorique
         02_src/joomla/main/scripts/cost.php
         02_src/joomla/main/libs/db_common.php
