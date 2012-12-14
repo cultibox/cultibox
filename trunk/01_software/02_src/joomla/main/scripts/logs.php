@@ -45,6 +45,8 @@ $datap="";
 $update=get_configuration("CHECK_UPDATE",$error);
 $version=get_configuration("VERSION",$error);
 $log_search=get_configuration("LOG_SEARCH",$error);
+$previous=getvar('previous');
+$next=getvar('next');
 
 if((!isset($log_search))||(empty($log_search))) {
     $log_search=2;
@@ -66,6 +68,7 @@ if(!isset($pop_up)) {
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
+
 
 if((!empty($sd_card))&&(isset($sd_card))) {
    $program=create_program_from_database($error);

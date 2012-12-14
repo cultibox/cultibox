@@ -292,6 +292,24 @@ msgstr "Marche forcee"
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte CultiBox</i></b> le temps que la page se charge et que les données soient traitées..."
 
+msgid "PREVIOUS_BUTTON_DAY"
+msgstr "Afficher les informations pour le jour précédent"
+
+msgid "NEXT_BUTTON_DAY"
+msgstr "Afficher les informations pour le jour suivant"
+
+msgid "PREVIOUS_BUTTON_MONTH"
+msgstr "Afficher les informations pour le mois précédent"
+
+msgid "NEXT_BUTTON_MONTH"
+msgstr "Afficher les informations pour le mois suivant"
+
+msgid "PRECISION_GRAPH_DAY"
+msgstr "Les logs sont affichés avec une précision maximale d'un point toute les minutes"
+
+msgid "PRECISION_GRAPH_MONTH"
+msgstr "Les logs sont affichés avec une précision maximale d'un point toute les cinq minutes"
+
 # For the plugs part:
 msgid "PLUG"
 msgstr "Prise numéro"
@@ -711,10 +729,10 @@ msgid "ERROR_SD_CARD_PROGRAMS"
 msgstr "<li> Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte est branchée</li>"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "<li> Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, vérifier que votre carte est correctement branchée</li>"
+msgstr "<li> Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, vérifier que votre carte branchée</li>"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "<li>  Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte est correctement branchée</li>"
+msgstr "<li>  Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte branchée</li>"
 
 msgid "ERROR_MISSING_VALUE_TIME"
 msgstr "<li> Valeur manquante pour la date de début/fin du programme</li>"

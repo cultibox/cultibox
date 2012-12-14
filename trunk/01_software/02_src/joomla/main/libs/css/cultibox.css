@@ -44,6 +44,16 @@ input.remove_plug {
     font-size: 18px;
 }
 
+input.button_log {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.precision_infos{
+    font-size: 12px;
+    color: #6A7F7C;
+}
+
 
 .text_info {
    text-indent:2em

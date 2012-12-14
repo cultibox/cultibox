@@ -25,22 +25,19 @@ function verifDate(e) {
    </div>
 <?php } ?>
 
-<?php if((isset($main_error))&&(!empty($main_error))) { ?>
+<?php if((!empty($main_error))||(!empty($error))) { ?>
 <div id="error">
 <ul>
+<?php if(!empty($main_error)) { ?>
         <?php echo $main_error; ?>
+<?php } ?>
+<?php if(!empty($error)) { ?>
+        <?php echo $error; ?>
+<?php } ?>
 </ul>
 </div>
 <?php } ?>
 
-<?php if((isset($error))&&(!empty($error))) { ?>
-   <div id="error">
-      <ul>
-         <?php echo $error; ?>
-      </ul>
-   </div>
-   <br />
-<?php } ?>
 
 <?php switch($lang) {
 
