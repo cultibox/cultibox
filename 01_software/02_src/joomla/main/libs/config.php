@@ -40,7 +40,7 @@ $GLOBALS['LIST_SUBJECT_CALENDAR'] = array('Beginning','Fertilizers', 'Water', 'B
 $GLOBALS['DEBUG_TRACE'] = false;
 
 // Definition of the plugs addresses default values:
-$GLOBALS['PLUGA_DEFAULT'] = array('004', '247', '222', '219', '215', '207', '190', '189', '187', '183', '175', '126', '123', '123', '123','123');
+$GLOBALS['PLUGA_DEFAULT'] = array('004', '247', '222', '219', '215', '207', '252', '250', '246', '238', '187', '183', '189', '125', '123','119');
 
 // List of value possible for temperature and hygrometry axis:
 $GLOBALS['LIST_MAX_AXIS'] = array('20', '40', '50', '80','100');
