@@ -24,6 +24,9 @@ $GLOBALS['NB_MAX_PLUG'] = '16';
 // Number of min plugs used by the cultibox
 $GLOBALS['NB_MIN_PLUG'] = '3';
 
+// Number of maximal sensor used
+$GLOBALS['NB_MAX_SENSOR'] = '4';
+
 // List of the updating plugs frequency: (-1 means every clock heartbeat)
 $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');
 
@@ -59,7 +62,5 @@ $GLOBALS['MODULE_IMPORT_EXPORT'] = false;
 
 // List of value possible for log's research: 2, 3, 6 or 12 months
 $GLOBALS['LOG_SEARCH'] = array('2', '3', '6', '12');
-
-
 
 ?>

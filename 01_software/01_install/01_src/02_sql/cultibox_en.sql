@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `date_catch` varchar(10) DEFAULT NULL,
   `time_catch` varchar(10) DEFAULT NULL,
   `fake_log` varchar(5) NOT NULL DEFAULT 'False',
+  `sensor_nb` int(4) NOT NULL DEFAULT '1',
   KEY `timestamp` (`timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
