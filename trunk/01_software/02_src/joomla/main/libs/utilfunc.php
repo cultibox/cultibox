@@ -883,6 +883,7 @@ function write_plugconf($data,$sd_card,&$out="") {
 //   $alarm_value        value to trigger the alarm
 //   $alarm_senso        humidity or temperature to use to trigger the alarm
 //   $alarm_senss        configure if the alarm have to be triggered above or under the value
+//   
 //   $out         error or warning message
 // RET none   
 function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$alarm_senso="000T",$alarm_senss="000+",&$out="") {
@@ -918,11 +919,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       fputs($f,"ALARM_VALUE:$alarm_value\r\n");
       fputs($f,"ALARM_SENSO:$alarm_senso\r\n");
       fputs($f,"ALARM_SENSS:$alarm_senss\r\n");
-      fputs($f,"LOG_MIN_TMP:0000\r\n");
-      fputs($f,"LOG_MAX_TMP:3000\r\n");
-      fputs($f,"LOG_MIN_HMI:0000\r\n");
-      fputs($f,"LOG_MAX_HMI:9000\r\n");
-      fputs($f,"RTC_OFFSET_:0000\r\n");
+      fputs($f,"RTC_OFFSET_:1127\r\n");
       fclose($f);
    } else {
       $out=$out.__('ERROR_WRITE_SD');
