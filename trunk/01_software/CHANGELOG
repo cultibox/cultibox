@@ -1,4 +1,13 @@
 CultiBox (1.1.0) precise; urgency=low
+   + Enregistrement des différents capteurs
+        ALTER TABLE `logs` ADD `sensor_nb` INT NOT NULL DEFAULT '1'
+
+        01_install/01_src/02_sql/cultibox_fr.sql
+        01_install/01_src/02_sql/cultibox_en.sql
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/libs/config.php
+
    + Modification des couleurs des graphes (passage en hexa)
         02_src/joomla/main/scripts/logs.php
         02_src/joomla/main/libs/config.php
