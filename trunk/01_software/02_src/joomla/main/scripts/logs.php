@@ -285,19 +285,48 @@ if("$type" == "days") {
       get_graph_array($check_hum,"humidity/100","%%","all","False",$error);
 
       if((count($check_tmp)>0)||((count($check_hum)>0))||(!empty($datap))||(!empty($data))) {
-        get_graph_array($temperature,"temperature/100",$startday,$select_sensor,"False",$error);
-        get_graph_array($humidity,"humidity/100",$startday,$select_sensor,"False",$error);
+        if(strcmp("$select_sensor","all")!=0) {
+            get_graph_array($temperature,"temperature/100",$startday,$select_sensor,"False",$error);
+            get_graph_array($humidity,"humidity/100",$startday,$select_sensor,"False",$error);
 
-        if(!empty($temperature)) {
-            $data_temp=get_format_graph($temperature);
-        } else {
-            $error=$error.__('EMPTY_TEMPERATURE_DATA');
-        }
+            if(!empty($temperature)) {
+                $data_temp=get_format_graph($temperature);
+            } else {
+                $error=$error.__('EMPTY_TEMPERATURE_DATA');
+            }
 
-        if(!empty($humidity)) {
-            $data_humi=get_format_graph($humidity);
+            if(!empty($humidity)) {
+                $data_humi=get_format_graph($humidity);
+            } else {
+                $error=$error.__('EMPTY_HUMIDITY_DATA');
+            }
         } else {
-            $error=$error.__('EMPTY_HUMIDITY_DATA');
+            $humi_err=false;
+            $temp_err=false;
+            for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
+                get_graph_array($temperature,"temperature/100",$startday,$i,"False",$error);
+                get_graph_array($humidity,"humidity/100",$startday,$i,"False",$error);
+
+                if(!empty($temperature)) {
+                    $data_temp[]=get_format_graph($temperature);
+                } else {
+                    $data_temp[]="";
+                    if(!$temp_err) { 
+                        $error=$error.__('EMPTY_TEMPERATURE_DATA_SENSOR');
+                        $temp_err=true;
+                    }
+                }
+
+                if(!empty($humidity)) {
+                    $data_humi[]=get_format_graph($humidity);
+                } else {
+                    $data_humi[]="";
+                    if(!$humi_err) {
+                            $error=$error.__('EMPTY_HUMIDITY_DATA_SENSOR');
+                            $humi_err=true;
+                    }
+                }
+            }
         }
       } else {
         get_graph_array($temperature,"temperature/100","%%","1","True",$error);

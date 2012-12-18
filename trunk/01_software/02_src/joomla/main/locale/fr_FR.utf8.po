@@ -731,70 +731,76 @@ msgstr "Licence"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
-msgstr "<li> Problé pendant la fermeture de la connexion</li>"
+msgstr "<li>Problé pendant la fermeture de la connexion</li>"
 
 msgid "ERROR_UPDATE_SQL"
-msgstr "<li> Erreur dans la requête SQL UPDATE</li>"
+msgstr "<li>Erreur dans la requête SQL UPDATE</li>"
 
 msgid "ERROR_DELETE_SQL"
-msgstr "<li> Erreur dans la requête SQL DELETE</li>"
+msgstr "<li>Erreur dans la requête SQL DELETE</li>"
 
 msgid "ERROR_SELECT_SQL"
-msgstr "<li> Erreur dans la requête SQL SELECT</li>"
+msgstr "<li>Erreur dans la requête SQL SELECT</li>"
 
 msgid "EMPTY_TEMPERATURE_DATA"
-msgstr "<li> Aucun enregistrement concernant la température pour la date sélectionnée</li>"
+msgstr "<li>Aucun enregistrement concernant la température pour la date sélectionnée</li>"
 
 msgid "EMPTY_HUMIDITY_DATA"
-msgstr "<li> Aucun enregistrement concernant l'hygrométrie pour la date sélectionnée</li>"
+msgstr "<li>Aucun enregistrement concernant l'hygrométrie pour la date sélectionnée</li>"
+
+msgid "EMPTY_TEMPERATURE_DATA_SENSOR"
+msgstr "<li>Enregistrements de température vides pour certains de vos capteurs à la date selectionnée</li>"
+
+msgid "EMPTY_HUMIDITY_DATA_SENSOR"
+msgstr "<li>Enregistrements d'hygrométrie vides pour certains de vos capteurs à la date selectionnée</li>"
 
 msgid "EMPTY_POWER_DATA"
-msgstr "<li> Aucun enregistrement concernant la puissance consommée pour la date sélectionnée</li>"
+msgstr "<li>Aucun enregistrement concernant la puissance consommée pour la date sélectionnée</li>"
 
 msgid "ERROR_FORMAT_DATE_DAY"
-msgstr "<li> Erreur dans le format de la date: AAAA-MM-JJ</li>"
+msgstr "<li>Erreur dans le format de la date: AAAA-MM-JJ</li>"
 
 msgid "ERROR_FORMAT_DATE_MONTH"
-msgstr "<li> Erreur dans le format de la date: MM</li>"
+msgstr "<li>Erreur dans le format de la date: MM</li>"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "<li> Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte soit branchée</li>"
+msgstr "<li>Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte soit branchée</li>"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "<li> Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, vérifier que votre carte soit branchée</li>"
+msgstr "<li>Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, vérifier que votre carte soit branchée</li>"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "<li>  Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte soit branchée</li>"
+msgstr "<li>Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte soit branchée</li>"
 
 msgid "ERROR_MISSING_VALUE_TIME"
-msgstr "<li> Valeur manquante pour la date de début/fin du programme</li>"
+msgstr "<li>Valeur manquante pour la date de début/fin du programme</li>"
 
 msgid "ERROR_FORMAT_TIME"
-msgstr "<li> Erreur dans le format de l'heure: HH:MM:SS</li>"
+msgstr "<li>Erreur dans le format de l'heure: HH:MM:SS</li>"
 
 msgid "ERROR_TIME_VALUE"
-msgstr "<li> Erreur dans le format de l'heure: HH:MM</li>"
+msgstr "<li>Erreur dans le format de l'heure: HH:MM</li>"
 
 msgid "ERROR_SAME_TIME"
 msgstr "<li>L'heure de départ et l'heure de fin doivent être différentes.</li>"
 
 msgid "ERROR_WRITE_SD"
-msgstr "<li> Erreur durant l'écriture sur la carte SD</li>"
+msgstr "<li>Erreur durant l'écriture sur la carte SD</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "<li> Erreur dans la valeur de tolérance: elle doit être inférieur à 10°C et supérieur à 0°C</li>"
+msgstr "<li>Erreur dans la valeur de tolérance: elle doit être inférieur à 10°C et supérieur à 0°C</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "<li> Erreur dans la valeur de tolérance: elle doit être inférieur ou égal à 25.5% et supérieur à 0%;</li>"
+msgstr "<li>Erreur dans la valeur de tolérance: elle doit être inférieur ou égal à 25.5% et supérieur à 0%;</li>"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li> Erreur dans la valeur rentrée</li>"
+msgstr "<li>Erreur dans la valeur rentrée</li>"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "<li> Erreur dans la valeur de température. Elle doit être supérieure ou égal à 5°C et inférieure ou égal à 60°C</li>"
+msgstr "<li>Erreur dans la valeur de température. Elle doit être supérieure ou égal à 5°C et inférieure ou égal à 60°C</li>"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "<li> Erreur dans la valeur d'humidité. Elle doit être supérieure ou égal à 10  et inférieure ou égal à 95</li>"
+msgstr "<li>Erreur dans la valeur d'humidité. Elle doit être supérieure ou égal à 10  et inférieure ou égal à 95</li>"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "<li>La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100</li>"
@@ -837,7 +843,7 @@ msgstr "<li>Impossible de copier le fichier empty_file_64.tpl sur votre carte SD
 
 # For the informations part:
 msgid "INFO_SD_CARD"
-msgstr "<li> Une carte SD compatible cultibox est branchée"
+msgstr "<li>Une carte SD compatible cultibox est branchée"
 
 msgid "INFO_PLUG_CULTIBOX_CARD"
 msgstr "<li>Vous pouvez maintenant connecter la carte SD dans la CultiBox.</li>"
