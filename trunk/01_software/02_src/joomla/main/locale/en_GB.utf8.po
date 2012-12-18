@@ -191,6 +191,16 @@ msgstr "Fill in the beginning of your empty hours: (HH:MM)"
 msgid "CONFIGURE_STOP_HC"
 msgstr "Fill in the end of your empty hours: (HH:MM)"
 
+msgid "MANAGE_LOG_INFOS"
+msgstr "Manage your log's database informations"
+
+msgid "MANAGE_RESET_TITLE"
+msgstr "Delete all of your previous logs"
+
+msgid "MANAGE_RESET"
+msgstr "Reset logs"
+
+
 # For the logs part:
 
 msgid "HISTO_GRAPH"
@@ -308,7 +318,25 @@ msgid "PRECISION_GRAPH_DAY"
 msgstr "Logs are displayed with a maximum precision of a point every minute"
 
 msgid "PRECISION_GRAPH_MONTH"
-msgstr "Logs are displayed with a maximum precision of a point every five minutes"
+msgstr "Logs are displayed with a maximum precision of a point every twenty minutes"
+
+msgid "SELECT_SENSOR_NB"
+msgstr "Display logs for"
+
+msgid "SENSOR"
+msgstr "Sensor"
+
+msgid "MONTH_DATE"
+msgstr "Month and year to display"
+
+msgid "ALL_SENSOR"
+msgstr "all sensors"
+
+msgid "SELECT_SENSOR"
+msgstr "sensor"
+
+msgid "RESET_CONFIRM"
+msgstr "Do you really want to delete preivous logs reccord?"
 
 
 # For the plugs part:
@@ -709,6 +737,9 @@ msgstr "<li> Problem during the connection close procedure</li>"
 msgid "ERROR_UPDATE_SQL"
 msgstr "<li> Error during the update sql request</li>"
 
+msgid "ERROR_DELETE_SQL"
+msgstr "<li> Error during the delete sql request</li>"
+
 msgid "ERROR_SELECT_SQL"
 msgstr "<li> Error during the select sql request</li>"
 
@@ -820,6 +851,9 @@ msgstr "<li>Configuration updated successfully in the CultiBox software!</li>"
 
 msgid "VALID_UPDATE_PROGRAM"
 msgstr "<li> Programs successfully updated</li>"
+
+msgid "VALID_DELETE_LOGS"
+msgstr "<li>Log's database successfully deleted</li>"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "<li> Program updated successfully! You can unplug your SD card and put in the CultiBox</li>"

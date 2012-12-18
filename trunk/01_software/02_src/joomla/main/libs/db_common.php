@@ -130,14 +130,22 @@ EOF;
 // IN $res         the array containing datas needed for the graphics
 //    $key      the key selectable from the database (temperature,humidity...)
 //    $startdate   date (format YYYY-MM-DD) to check what datas to select
+//    $sensor       the number of the sensor to be displayed
 //    $fake   to select fake or real logs
 //    $out      errors or warnings messages
 // RET none
-function get_graph_array(&$res,$key,$startdate,$fake="False",&$out="") {
+function get_graph_array(&$res,$key,$startdate,$sensor=1,$fake="False",&$out="") {
    $db = db_priv_start();
+    
+   if(strcmp("$sensor","all")==0) {
         $sql = <<<EOF
 SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" GROUP BY time_catch ORDER BY time_catch ASC
 EOF;
+} else {
+        $sql = <<<EOF
+SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" AND sensor_nb LIKE "{$sensor}" GROUP BY time_catch ORDER BY time_catch ASC
+EOF;
+}
    $db->setQuery($sql);
    $res = $db->loadAssocList();
    $ret=$db->getErrorMsg();
@@ -1931,4 +1939,36 @@ function generate_program_from_file($file="",$plug,&$out="") {
          return $res;
 }
 // }}}
+
+
+// {{{ reset_log()
+// IN $out  error or warning message
+// RET  0 is an error occured, 1 else
+function reset_log(&$out) {
+    $db = db_priv_start();
+    $error=1;
+    $sql = <<<EOF
+DELETE FROM `logs`
+EOF;
+           $db->setQuery($sql);
+           $db->query();
+           $ret=$db->getErrorMsg();
+
+           if((isset($ret))&&(!empty($ret))) {
+               if($GLOBALS['DEBUG_TRACE']) {
+                  $out=$out.__('ERROR_DELETE_SQL').$ret;
+                  $error=0;
+               } else {
+                  $out=$out.__('ERROR_DELETE_SQL');
+                  $error=0;
+               }
+           }
+
+           if(!db_priv_end($db)) {
+                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+                $error=0;
+           }
+           return $error;
+}
+
 ?>
