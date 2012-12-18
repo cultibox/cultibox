@@ -732,70 +732,76 @@ msgstr "License"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
-msgstr "<li> Problem during the connection close procedure</li>"
+msgstr "<li>Problem during the connection close procedure</li>"
 
 msgid "ERROR_UPDATE_SQL"
-msgstr "<li> Error during the update sql request</li>"
+msgstr "<li>Error during the update sql request</li>"
 
 msgid "ERROR_DELETE_SQL"
-msgstr "<li> Error during the delete sql request</li>"
+msgstr "<li>Error during the delete sql request</li>"
 
 msgid "ERROR_SELECT_SQL"
-msgstr "<li> Error during the select sql request</li>"
+msgstr "<li>Error during the select sql request</li>"
 
 msgid "EMPTY_TEMPERATURE_DATA"
-msgstr "<li> Empty temperature data for the selected date</li>"
+msgstr "<li>Empty temperature data for the selected date</li>"
 
 msgid "EMPTY_HUMIDITY_DATA"
-msgstr "<li> Empty humidity data for the selected date</li>"
+msgstr "<li>Empty humidity data for the selected date</li>"
+
+msgid "EMPTY_TEMPERATURE_DATA_SENSOR"
+msgstr "<li>Empty temperature date for the selected date and some of the sensors</li>"
+
+msgid "EMPTY_HUMIDITY_DATA_SENSOR"
+msgstr "<li>EMpty humidity data for the selected date and some of the sensors</li>"
 
 msgid "EMPTY_POWER_DATA"
-msgstr "<li> Empty power data for the selected date</li>"
+msgstr "<li>Empty power data for the selected date</li>"
 
 msgid "ERROR_FORMAT_DATE_DAY"
-msgstr "<li> Error in the date format: YYY-MM-DD</li>"
+msgstr "<li>Error in the date format: YYY-MM-DD</li>"
 
 msgid "ERROR_FORMAT_DATE_MONTH"
-msgstr "<li> Error in the date format: MM</li>"
+msgstr "<li>Error in the date format: MM</li>"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "<li> Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged</li>"
+msgstr "<li>Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged</li>"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "<li> Can't find your SD card, if you want to load your logs record, please check that your card is correctly pluged</li>"
+msgstr "<li>Can't find your SD card, if you want to load your logs record, please check that your card is correctly pluged</li>"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "<li> Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged</li>"
+msgstr "<li>Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged</li>"
 
 msgid "ERROR_MISSING_VALUE_TIME"
-msgstr "<li> Missing value for Start/End time</li>"
+msgstr "<li>Missing value for Start/End time</li>"
 
 msgid "ERROR_FORMAT_TIME"
-msgstr "<li> Error in time format: HH:MM:SS</li>"
+msgstr "<li>Error in time format: HH:MM:SS</li>"
 
 msgid "ERROR_TIME_VALUE"
-msgstr "<li> Error in time format: HH:MM</li>"
+msgstr "<li>Error in time format: HH:MM</li>"
 
 msgid "ERROR_SAME_TIME"
 msgstr "<li>Error in the time values. Start time and end time must be different</li>"
 
 msgid "ERROR_WRITE_SD"
-msgstr "<li> Error, can't write programs into the sd card</li>"
+msgstr "<li>Error, can't write programs into the sd card</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "<li> Error in the tolerance value. It must be less than 10&deg;C and greater than 0&deg;C</li>"
+msgstr "<li>Error in the tolerance value. It must be less than 10&deg;C and greater than 0&deg;C</li>"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "<li> Error in the tolerance value. It must be less or equal to 25.5&#37; and greater than 0&#37;</li>"
+msgstr "<li>Error in the tolerance value. It must be less or equal to 25.5&#37; and greater than 0&#37;</li>"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li> Error in the value.</li>"
+msgstr "<li>Error in the value.</li>"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "<li> Error in the temperature value. It must be geater or equal to 5&deg;C and less or equal to 60&deg;C<</li>"
+msgstr "<li>Error in the temperature value. It must be geater or equal to 5&deg;C and less or equal to 60&deg;C<</li>"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "<li> Error in the humidity value. It must be greater or equal to 10&#37;  and less or equal to 95&#37;</li>"
+msgstr "<li>Error in the humidity value. It must be greater or equal to 10&#37;  and less or equal to 95&#37;</li>"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "<li>Value for the alarm must be more than 0 and less than 100</li>"
@@ -838,28 +844,28 @@ msgstr "<li>Can't copy empty_file_64.tpl file into your CultiBox SD card</li>"
 
 # For the informations part:
 msgid "INFO_SD_CARD"
-msgstr "<li> A valid SD card was found"
+msgstr "<li>A valid SD card was found"
 
 msgid "INFO_PLUG_CULTIBOX_CARD"
 msgstr "<li>You can now plug your card into the Cultibox.</li>"
 
 msgid "VALID_UPDATE_CONF"
-msgstr "<li> Configuration successfully updated</li>"
+msgstr "<li>Configuration successfully updated</li>"
 
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
 msgstr "<li>Configuration updated successfully in the CultiBox software!</li>"
 
 msgid "VALID_UPDATE_PROGRAM"
-msgstr "<li> Programs successfully updated</li>"
+msgstr "<li>Programs successfully updated</li>"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "<li>Log's database successfully deleted</li>"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "<li> Program updated successfully! You can unplug your SD card and put in the CultiBox</li>"
+msgstr "<li>Program updated successfully! You can unplug your SD card and put in the CultiBox</li>"
 
 msgid "VALID_LOAD_LOG"
-msgstr "<li> Logs successfully loaded, you can disconnect your CultiBox card from your computer</li>"
+msgstr "<li>Logs successfully loaded, you can disconnect your CultiBox card from your computer</li>"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "<li>Program successfully updated</li>"

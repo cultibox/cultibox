@@ -1,5 +1,5 @@
 CultiBox (1.1.0) precise; urgency=low
-   + Correction et fonctionnalité sur l'affichage des logs: affichage de différent capteur (un à la fois pour le moment), correction de l'affichage des programmes si l'echelle change, correction des fakes_log avec la nouvelle base de log (champ sensor_nb en plus), ajout d'une fonctionnalité permettant de vider la base de logs... 
+   + Correction et fonctionnalité sur l'affichage des logs: affichage de différent capteur (un à la fois pour le moment), correction de l'affichage des programmes si l'echelle change, correction des fakes_log avec la nouvelle base de log (champ sensor_nb en plus), ajout d'une fonctionnalité permettant de vider la base de logs, affichage de tous les capteurs en même temps... 
 01_install/01_src/02_sql/fake_log.sql
         02_src/joomla/main/scripts/waiting.php
         02_src/joomla/main/scripts/logs.php

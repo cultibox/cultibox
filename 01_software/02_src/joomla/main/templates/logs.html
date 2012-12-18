@@ -127,7 +127,7 @@ buttonImageOnly: 'true',
             <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) { ?>
                <option value="<?php echo $i; ?>" <?php if(strcmp($select_sensor,$i)==0) echo "selected"; ?>><?php echo __('SELECT_SENSOR')." ".$i; ?></option>
             <?php } ?>
-             <!-- <option value="<?php echo 'all'; ?>" <?php if(strcmp($select_sensor,"all")==0) echo "selected"; ?>><?php echo __('ALL_SENSOR'); ?></option> -->
+             <option value="<?php echo 'all'; ?>" <?php if(strcmp($select_sensor,"all")==0) echo "selected"; ?>><?php echo __('ALL_SENSOR'); ?></option> 
          </select>
       </td>
    </tr>
@@ -182,9 +182,8 @@ buttonImageOnly: 'true',
       <td><?php echo __('SELECT_SENSOR_NB'); ?></td>
       <td> <select name="select_sensor">
             <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) { ?>
-               <option value="<?php echo $i; ?>" <?php if(strcmp($select_sensor,$i)==0) echo "selected"; ?>><?php echo $i; ?></option>
+               <option value="<?php echo $i; ?>" <?php if(strcmp($select_sensor,$i)==0) echo "selected"; ?>><?php echo __('SELECT_SENSOR')." ".$i; ?></option>
             <?php } ?>
-               <!-- <option value="<?php echo 'all'; ?>" <?php if(strcmp($select_sensor,"all")==0) echo "selected"; ?>><?php echo __('ALL_SENSOR'); ?></option> -->
          </select>
       </td>
    </tr>
@@ -215,6 +214,7 @@ $(function () {
       chart = new Highcharts.Chart({
          chart: {
             backgroundColor: '#F7F7F9',
+            borderWidth: 3,
             renderTo: 'container',
             zoomType: 'xy',
             spacingRight: 20,
@@ -309,16 +309,14 @@ $(function () {
                <?php } else { ?>
                   var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x)+"</p>"; 
                <?php } ?>
-
                   var unit = {
                <?php echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$select_sensor.")'"; ?>: '%',
                <?php echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$select_sensor.")'"; ?>: '°C', 
                <?php echo "'".__('LEGEND_POWER')."'"; ?>: 'W'
                <?php if((isset($select_plug))&&(!empty($select_plug))) {
                      echo ",'".$plugs_infos[$select_plug-1]["PLUG_NAME"]."': ''"; 
-               }?>
+               } ?>
             }[this.series.name];
-
             if(unit=='') { 
                if(this.y==<?php echo $hygro_axis; ?>) {
                      behaviour='<?php echo __("VALUE_ON"); ?>';
@@ -345,22 +343,40 @@ $(function () {
                             case 'deshumidifier': $unity="%";
                                 break;
                         } 
-                } ?>
-
+               } ?>
                var unit="<?php echo $unity; ?>";
-               return val+ "<p align='left'><b>"+ this.series.name+":</b>"+behaviour+ unit +"</p>";
+               return val+"<p align='left'><b>"+this.series.name+":</b>"+behaviour+unit+"</p>";
             } else {
-               return val+ "<p align='left'><b>"+ this.series.name+":</b>"+this.y + unit+"</p>";
+               return val+"<p align='left'><b>"+this.series.name+":</b>"+this.y+unit+"</p>";
             }
           }
          },
          legend: {
-            enabled: true
+            layout: 'horizontal',
+            verticalAlign: 'bottom',
+            navigation: {
+                activeColor: '#3E576F',
+                animation: true,
+                arrowSize: 12,
+                inactiveColor: '#CCC',
+                style: {
+                    fontWeight: 'bold',
+                    color: '#333',
+                    fontSize: '12px'    
+                }
+            }
          },
          credits: {
             enabled: false
          },
          plotOptions: {
+            series: {
+                events: {
+                    legendItemClick: function () {
+                        return false;
+                    }
+                }
+            },
             area: {
                fillColor: {
                   linearGradient: { x1: 3, y1: 0, x2: 0, y2: 1}, 
@@ -409,9 +425,111 @@ $(function () {
             pointStart: Date.UTC(2009, 9, 6, 0, 0, 0)
          }
          },
-
          series: [
-            {
+              <?php if((isset($select_sensor))&&(strcmp("$select_sensor","all")==0)) { $count=0; ?>
+              <?php for($i=0;$i<$GLOBALS['NB_MAX_SENSOR'];$i++) { $nb=$i+1;  ?>
+                <?php if($i>0) { echo ","; $count=$count+2; } ?>
+              {
+              type: 'area',
+               showCheckbox: true,
+               name: <?php echo "'".__('LEGEND_HUMI','highchart')." (".__('SENSOR')." ".$nb.")'"; ?>,
+               pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
+               pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
+               color: <?php echo "'".$color_humidity."'"; ?>,
+               selected: true,
+               data: [
+                  <?php if((isset($data_humi))&&(!empty($data_humi))) echo "$data_humi[$i]"; ?>
+               ],
+               events: {
+                    checkboxClick: function(event) {
+                        var series = chart.series[<?php echo $count; ?>];
+                        if (series.visible) {
+                            series.hide();
+                        } else {
+                            series.show();
+                        }
+                    }
+               }
+            }, {
+               type: 'area',
+               showCheckbox: true,
+               name: <?php echo "'".__('LEGEND_TEMP','highchart')." (".__('SENSOR')." ".$nb.")'"; ?>,
+               pointInterval: <?php echo "$next"; ?> * 60 * 1000,
+               pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
+               color: <?php echo "'".$color_temperature."'"; ?>,
+               yAxis: 1,
+               selected: true,
+               data: [
+                  <?php if((isset($data_temp))&&(!empty($data_temp))) echo "$data_temp[$i]"; ?>
+               ],
+               events: {
+                    checkboxClick: function(event) {
+                        var series = chart.series[<?php echo $count+1; ?>];
+                        if (series.visible) {
+                            series.hide();
+                        } else {
+                            series.show();
+                        }
+                    }
+               }
+              }
+               <?php } ?>
+
+                <?php if((isset($datap))&&(!empty($datap))) { ?>
+                 , {
+                  type: 'spline',
+                  showCheckbox: true,
+                  pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
+                  pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
+                  name: <?php echo "'".__('LEGEND_POWER')."'"; ?>,
+                  yAxis: 2,
+                  color: <?php echo "'".$color_power."'"; ?>,
+                  selected: true,
+                  data: [
+                    <?php if((isset($datap))&&(!empty($datap))) echo "$datap"; ?>
+                  ],
+                  events: {
+                    checkboxClick: function(event) {
+                        var series = chart.series[<?php echo $count+2; ?>];
+                        if (series.visible) {
+                            series.hide();
+                        } else {
+                            series.show();
+                        }
+                    }
+               }
+              }
+               <?php } ?>
+
+               <?php if((isset($data))&&(!empty($data))) { ?>
+               , {
+                  name: <?php echo "'".$plugs_infos[$select_plug-1]["PLUG_NAME"]."'"; ?>,
+                  showCheckbox: true,
+                  color: <?php echo "'".$GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$select_plug-1]."'"; ?>,
+                  selected: true,
+                  data: [
+                    <?php if((isset($data))&&(!empty($data))) echo "$data"; ?>
+                  ],
+                  events: {
+                    checkboxClick: function(event) {
+                        <?php if((isset($datap))&&(!empty($datap))) { ?>
+                        var series = chart.series[<?php echo $count+3; ?>];
+                        <?php } else { ?>
+                        var series = chart.series[<?php echo $count+2; ?>];
+                        <?php } ?>
+                        if (series.visible) {
+                            series.hide();
+                        } else {
+                            series.show();
+                        }
+                    }
+               }
+              }
+            <?php } ?>
+
+
+               <?php } else { ?>
+               {
                type: 'area',
                showCheckbox: true,
                name: <?php echo "'".__('LEGEND_HUMI','highchart')." (".__('SENSOR')." ".$select_sensor.")'"; ?>,
@@ -454,8 +572,9 @@ $(function () {
                         }
                     }
                }
-               <?php if((isset($datap))&&(!empty($datap))) { ?>
-               }, {
+              }
+              <?php if((isset($datap))&&(!empty($datap))) { ?>
+               , {
                   type: 'spline',
                   showCheckbox: true,
                   pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
@@ -477,10 +596,11 @@ $(function () {
                         }
                     }
                }
+              }
                <?php } ?>
 
                <?php if((isset($data))&&(!empty($data))) { ?>
-               }, {
+               , {
                   name: <?php echo "'".$plugs_infos[$select_plug-1]["PLUG_NAME"]."'"; ?>,
                   showCheckbox: true,
                   color: <?php echo "'".$GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$select_plug-1]."'"; ?>,
@@ -502,8 +622,9 @@ $(function () {
                         }
                     }
                }
+              }
                <?php } ?>
-            }
+            <?php } ?>
          ]
         });
     });
@@ -540,7 +661,7 @@ $(function () {
         </form>
         <?php } ?>
     </td>
-    <td><div id="container" style="width: 750px; height: 400px; margin: 0 auto"></div></td>
+    <td><div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div></td>
     <td>
         <?php if((strcmp("$type","month")!=0)||(($startyear!=date('Y'))||($startmonth!=12))) { ?>
         <form action="/cultibox/index.php/display-logs" method="post">
