@@ -133,10 +133,22 @@ td.log-marge-month {
 }
 
 td.log-marge-month-title {
-   width: 50%;
+   width: 28%;
 }
 
 td.log-marge-month-field {
+   width: 20%;
+}
+
+td.log-manage-marge {
+   width: 10%;
+}
+
+td.log-manage-field {
+   width: 50%;
+}
+
+td.log-manage-title {
    width: 20%;
 }
 

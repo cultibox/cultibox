@@ -30,6 +30,7 @@ $data_humi="";
 $plug_type="";
 $select_plug="";
 $select_power="";
+$select_sensor="1";
 $startday="";
 $startmonth="";
 $startyear="";
@@ -48,6 +49,7 @@ $log_search=get_configuration("LOG_SEARCH",$error);
 $previous=getvar('previous');
 $next=getvar('next');
 
+
 if((!isset($log_search))||(empty($log_search))) {
     $log_search=2;
 }
@@ -60,6 +62,23 @@ if(isset($_SESSION['select_plug'])) {
 if(isset($_SESSION['select_power'])) {
    $select_power=$_SESSION['select_power'];
 }
+
+if(isset($_SESSION['select_sensor'])) {
+   $select_sensor=$_SESSION['select_sensor'];
+}
+
+if(isset($_SESSION['reset_log'])) {
+   $reset_log=$_SESSION['reset_log'];
+}
+
+
+if(!empty($reset_log)) { 
+    if(reset_log($error)) {
+        $info=$info.__('VALID_DELETE_LOGS');
+        $pop_up_message=clean_popup_message(__('VALID_DELETE_LOGS'));
+    }
+}
+
 
 if(!isset($pop_up)) {
    $pop_up = get_configuration("SHOW_POPUP",$error);
@@ -102,8 +121,11 @@ if(isset($_SESSION['startyear'])) {
 unset($_SESSION['startyear']);
 unset($_SESSION['startmonth']);
 unset($_SESSION['startday']);
-unset($_SESSION['startelect_power']);
+unset($_SESSION['select_power']);
 unset($_SESSION['select_plug']);
+unset($_SESSION['select_sensor']);
+unset($_SESSION['reset_log']);
+unset($reset_log);
 
 if((!isset($startday))||(empty($startday))) {
 	$startday=date('Y')."-".date('m')."-".date('d');
@@ -235,6 +257,7 @@ if("$type" == "days") {
    if($check_format) {
       if((isset($select_plug))&&(!empty($select_plug))) {
          $data_plug=get_data_plug($select_plug,$error);
+         $data_plug=format_axis_data($data_plug,$hygro_axis,$error);
           $data=format_program_highchart_data($data_plug,$startday);
          $plug_type=get_plug_conf("PLUG_TYPE",$select_plug,$error);
       }
@@ -253,17 +276,17 @@ if("$type" == "days") {
          }
       }
       $xlegend="XAXIS_LEGEND_DAY";
-        $styear=substr($startday, 0, 4);
-        $stmonth=substr($startday, 5, 2)-1;
-        $stday=substr($startday, 8, 2);
+      $styear=substr($startday, 0, 4);
+      $stmonth=substr($startday, 5, 2)-1;
+      $stday=substr($startday, 8, 2);
      
 
-      get_graph_array($check_tmp,"temperature/100","%%","False",$error);
-      get_graph_array($check_hum,"humidity/100","%%","False",$error);
+      get_graph_array($check_tmp,"temperature/100","%%","all","False",$error);
+      get_graph_array($check_hum,"humidity/100","%%","all","False",$error);
 
       if((count($check_tmp)>0)||((count($check_hum)>0))||(!empty($datap))||(!empty($data))) {
-        get_graph_array($temperature,"temperature/100",$startday,"False",$error);
-        get_graph_array($humidity,"humidity/100",$startday,"False",$error);
+        get_graph_array($temperature,"temperature/100",$startday,$select_sensor,"False",$error);
+        get_graph_array($humidity,"humidity/100",$startday,$select_sensor,"False",$error);
 
         if(!empty($temperature)) {
             $data_temp=get_format_graph($temperature);
@@ -277,7 +300,7 @@ if("$type" == "days") {
             $error=$error.__('EMPTY_HUMIDITY_DATA');
         }
       } else {
-        get_graph_array($temperature,"temperature/100","%%","True",$error);
+        get_graph_array($temperature,"temperature/100","%%","1","True",$error);
         $tmp="";
         $tmp=__('EMPTY_TEMPERATURE_DATA');
         $tmp_title=__('TOOLTIP_FAKE_LOG_DATA');
@@ -289,7 +312,7 @@ if("$type" == "days") {
           $fake_log=true;
         } 
 
-        get_graph_array($humidity,"humidity/100","%%","True",$error);
+        get_graph_array($humidity,"humidity/100","%%","1","True",$error);
         $tmp="";
         $tmp=__('EMPTY_HUMIDITY_DATA');
         $tmp_title=__('TOOLTIP_FAKE_LOG_DATA');
@@ -311,8 +334,8 @@ if("$type" == "days") {
             $i="0$i";
          }
          $ddate="$startyear-$startmonth-$i";
-         get_graph_array($temperature,"temperature/100","$ddate","False",$error);
-         get_graph_array($humidity,"humidity/100","$ddate","False",$error);
+         get_graph_array($temperature,"temperature/100","$ddate",$select_sensor,"False",$error);
+         get_graph_array($humidity,"humidity/100","$ddate",$select_sensor,"False",$error);
          if("$data_temp" != "" ) {
             $data_temp="$data_temp, ".get_format_graph($temperature);
          } else {

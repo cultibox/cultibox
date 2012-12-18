@@ -35,6 +35,15 @@ if(isset($_POST['select_plug'])) {
       $_SESSION['select_plug']=$_POST['select_plug'];
 }
 
+if(isset($_POST['select_sensor'])) {
+      $_SESSION['select_sensor']=$_POST['select_sensor'];
+}
+
+if(isset($_POST['reset_log'])) {
+      $_SESSION['reset_log']=$_POST['reset_log'];
+}
+
+
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }

@@ -191,10 +191,11 @@ msgstr "Entrez l'heure de début de votre période creuse : (HH:MM)"
 msgid "CONFIGURE_STOP_HC"
 msgstr "Entrez l'heure de fin de votre période creuse : (HH:MM)"
 
+
 # For the logs part:
 
 msgid "HISTO_GRAPH"
-msgstr "Graphiques climatique"
+msgstr "Graphiques climatiques"
 
 msgid "SELECT_DISPLAYED_DAY"
 msgstr "Afficher les informations pour"
@@ -218,10 +219,10 @@ msgid "DRAG_PLOT"
 msgstr "Selectionner une zone afin de l\'agrandir"
 
 msgid "LEGEND_TEMP"
-msgstr "Temperature"
+msgstr "Température"
 
 msgid "LEGEND_HUMI"
-msgstr "Hygrometrie"
+msgstr "Hygrométrie"
 
 msgid "LEGEND_POWER"
 msgstr "Puissance"
@@ -233,10 +234,10 @@ msgid "XAXIS_LEGEND_MONTH"
 msgstr "Jours du mois"
 
 msgid "YAXIS_LEGEND"
-msgstr "Pourcentage d\'humidite"
+msgstr "Pourcentage d\'humidité"
 
 msgid "Y2AXIS_LEGEND"
-msgstr "Temperature en degres"
+msgstr "Température en degrés"
 
 msgid "Y3AXIS_LEGEND"
 msgstr "Puissance en watt"
@@ -308,7 +309,35 @@ msgid "PRECISION_GRAPH_DAY"
 msgstr "Les logs sont affichés avec une précision maximale d'un point toute les minutes"
 
 msgid "PRECISION_GRAPH_MONTH"
-msgstr "Les logs sont affichés avec une précision maximale d'un point toute les cinq minutes"
+msgstr "Les logs sont affichés avec une précision maximale d'un point toute les vingt minutes"
+
+msgid "SELECT_SENSOR_NB"
+msgstr "Afficher les valeurs pour"
+
+msgid "SENSOR"
+msgstr "Capteur"
+
+msgid "MONTH_DATE"
+msgstr "Mois et année à afficher"
+
+msgid "ALL_SENSOR"
+msgstr "tous les capteurs"
+
+msgid "SELECT_SENSOR"
+msgstr "le capteur"
+
+msgid "MANAGE_LOG_INFOS"
+msgstr "Gestion de votre base de logs"
+
+msgid "MANAGE_RESET_TITLE"
+msgstr "Supprimer tous vos anciens logs"
+
+msgid "MANAGE_RESET"
+msgstr "Supprimer les logs"
+
+msgid "RESET_CONFIRM"
+msgstr "Êtes vous sur de vouloir supprimer les données des logs déja enregistrées?"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -707,6 +736,9 @@ msgstr "<li> Problé pendant la fermeture de la connexion</li>"
 msgid "ERROR_UPDATE_SQL"
 msgstr "<li> Erreur dans la requête SQL UPDATE</li>"
 
+msgid "ERROR_DELETE_SQL"
+msgstr "<li> Erreur dans la requête SQL DELETE</li>"
+
 msgid "ERROR_SELECT_SQL"
 msgstr "<li> Erreur dans la requête SQL SELECT</li>"
 
@@ -726,13 +758,13 @@ msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "<li> Erreur dans le format de la date: MM</li>"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "<li> Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte est branchée</li>"
+msgstr "<li> Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte soit branchée</li>"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "<li> Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, vérifier que votre carte branchée</li>"
+msgstr "<li> Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, vérifier que votre carte soit branchée</li>"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "<li>  Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte branchée</li>"
+msgstr "<li>  Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte soit branchée</li>"
 
 msgid "ERROR_MISSING_VALUE_TIME"
 msgstr "<li> Valeur manquante pour la date de début/fin du programme</li>"
@@ -817,13 +849,16 @@ msgid "VALID_UPDATE_CONF_WITHOUT_SD"
 msgstr "<li>Configuration mise à jour avec succès dans le logiciel de la Cultibox.</li>"
 
 msgid "VALID_UPDATE_PROGRAM"
-msgstr "<li> Programmes mis à jour avec succès</li>"
+msgstr "<li>Programmes mis à jour avec succès</li>"
+
+msgid "VALID_DELETE_LOGS"
+msgstr "<li>Base des logs supprimée avec succès</li>"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "<li> Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage</li>"
+msgstr "<li>Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage</li>"
 
 msgid "VALID_LOAD_LOG"
-msgstr "<li> Fichiers de logs enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur.</li>"
+msgstr "<li>Fichiers de logs enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur.</li>"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "<li>Programme mis à jour avec succès</li>"

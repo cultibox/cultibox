@@ -49,7 +49,11 @@ function __() {
    $ret = call_user_func_array('sprintf', $args);
 
 
-   return htmlentitiesOutsideHTMLTags($ret);
+   if(isset($args[1])) {
+        return $ret;
+   } else {
+        return htmlentitiesOutsideHTMLTags($ret);
+   }
 }
 //}}}
 
@@ -1439,5 +1443,34 @@ function format_data_sumary($data="",$name="",$number="",$type="") {
     return $resume;
 }
 // }}}
+
+
+// {{{ format_axis_data();
+// ROLE format data from a program to be displayed with a diffrent axis on highchart graphics
+// IN    $data       program to be formatted
+//       $max        max of the axis
+//       $out        error or warning message
+// RET   data formated 
+function format_axis_data($data,$max=0,$out="") {
+           if($max==0) return $data;
+           if(count($data)<=0) return $data;
+
+           $prog_max=99.9;
+           $new_data=array();
+
+           foreach($data as $val) {
+                $val['value']=($val['value']/$prog_max)*$max;
+                $new_data[]=array(
+                                    "time_start" => $val['time_start'],
+                                    "time_stop" => $val['time_stop'],
+                                    "value" => $val['value']
+                                );
+           }
+           return $new_data;
+}
+
+
+// }}}
+
 
 ?>
