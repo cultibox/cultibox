@@ -1942,13 +1942,15 @@ function generate_program_from_file($file="",$plug,&$out="") {
 
 
 // {{{ reset_log()
-// IN $out  error or warning message
+// IN $out      error or warning message
+//    $table    tabke to be deleted: logs, power...
 // RET  0 is an error occured, 1 else
-function reset_log(&$out) {
+function reset_log($table="",&$out) {
+    if(strcmp("$table","")==0) return 0;
     $db = db_priv_start();
     $error=1;
     $sql = <<<EOF
-DELETE FROM `logs`
+DELETE FROM `{$table}`
 EOF;
            $db->setQuery($sql);
            $db->query();

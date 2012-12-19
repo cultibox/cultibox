@@ -33,6 +33,9 @@ $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');
 // Colors for plugs program:
 $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'] = array('#0033CC','#FF0000', '#336600', '#000000','#FF9900','#006666','#999966','#663300','#FF0066','#CC66FF','#660000','#3D96AE','#DB843D','#00FF00','#CCFF33','#B5CA92');
 
+// Colors for the different sensors:
+$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR'] = array ('#00003D','#7A0000','#0000CC','#FF0000','#001F5C','#CC0000','#66799D','#FF6666');
+
 //Subject for the calendar:
 $GLOBALS['LIST_SUBJECT_CALENDAR'] = array('Beginning','Fertilizers', 'Water', 'Bloom','Harvest','Other');
 
