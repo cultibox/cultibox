@@ -191,15 +191,6 @@ msgstr "Fill in the beginning of your empty hours: (HH:MM)"
 msgid "CONFIGURE_STOP_HC"
 msgstr "Fill in the end of your empty hours: (HH:MM)"
 
-msgid "MANAGE_LOG_INFOS"
-msgstr "Manage your log's database informations"
-
-msgid "MANAGE_RESET_TITLE"
-msgstr "Delete all of your previous logs"
-
-msgid "MANAGE_RESET"
-msgstr "Reset logs"
-
 
 # For the logs part:
 
@@ -335,8 +326,29 @@ msgstr "all sensors"
 msgid "SELECT_SENSOR"
 msgstr "sensor"
 
+msgid "MANAGE_LOG_INFOS"
+msgstr "Manage your log's database informations"
+
+msgid "MANAGE_RESET_TITLE"
+msgstr "Delete all of your previous humidity and temperature logs"
+
+msgid "MANAGE_RESET_TITLE_POWER"
+msgstr "Delete all of your previous power logs"
+
+msgid "MANAGE_RESET"
+msgstr "Reset logs"
+
 msgid "RESET_CONFIRM"
-msgstr "Do you really want to delete preivous logs reccord?"
+msgstr "Do you really want to delete previous logs file reccorded?"
+
+msgid "IMPORT_LOG_TITLE"
+msgstr "Import temperature and humidity logs file from the last"
+
+msgid "IMPORT_LAST_MONTH"
+msgstr "months"
+
+msgid "IMPORT_LOG"
+msgstr "Import logs"
 
 
 # For the plugs part:

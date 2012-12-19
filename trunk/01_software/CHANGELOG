@@ -1,4 +1,14 @@
 CultiBox (1.1.0) precise; urgency=low
+   + Accélération de l'affichage de la page des logs: on ne recharge pas tous les fichiers de logs quand la carte sd est branchée + possibilité de faire un reset des bases ou d'importer les logs à la demande:
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/scripts/waiting.php
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/config.php
+        02_src/joomla/main/libs/db_common.php
+
    + Correction et fonctionnalité sur l'affichage des logs: affichage de différent capteur (un à la fois pour le moment), correction de l'affichage des programmes si l'echelle change, correction des fakes_log avec la nouvelle base de log (champ sensor_nb en plus), ajout d'une fonctionnalité permettant de vider la base de logs, affichage de tous les capteurs en même temps... 
 01_install/01_src/02_sql/fake_log.sql
         02_src/joomla/main/scripts/waiting.php

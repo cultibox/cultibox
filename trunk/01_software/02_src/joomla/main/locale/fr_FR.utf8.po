@@ -291,7 +291,7 @@ msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte CultiBox</i></b> le temps que la page se charge et que les données soient traitées..."
+msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte CultiBox</i></b> le temps que la page se charge et que le logiciel traite vos données"
 
 msgid "PREVIOUS_BUTTON_DAY"
 msgstr "Afficher les informations pour le jour précédent"
@@ -327,16 +327,28 @@ msgid "SELECT_SENSOR"
 msgstr "le capteur"
 
 msgid "MANAGE_LOG_INFOS"
-msgstr "Gestion de votre base de logs"
+msgstr "Gestion de vos données climatiques"
 
 msgid "MANAGE_RESET_TITLE"
-msgstr "Supprimer tous vos anciens logs"
+msgstr "Supprimer vos anciens logs de température et d'hygrométrie"
+
+msgid "MANAGE_RESET_TITLE_POWER"
+msgstr "Supprimer vos anciens logs de mesure de puissance"
 
 msgid "MANAGE_RESET"
 msgstr "Supprimer les logs"
 
 msgid "RESET_CONFIRM"
 msgstr "Êtes vous sur de vouloir supprimer les données des logs déja enregistrées?"
+
+msgid "IMPORT_LOG_TITLE"
+msgstr "Importer les logs de: température, humidité, puissance des"
+
+msgid "IMPORT_LAST_MONTH"
+msgstr "derniers mois"
+
+msgid "IMPORT_LOG"
+msgstr "Importer les logs"
 
 
 # For the plugs part:
@@ -863,8 +875,11 @@ msgstr "<li>Base des logs supprimée avec succès</li>"
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "<li>Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage</li>"
 
+msgid "VALID_CURRENT_LOAD_LOG"
+msgstr "<li>Fichiers de logs du mois en cours enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur.</li>"
+
 msgid "VALID_LOAD_LOG"
-msgstr "<li>Fichiers de logs enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur.</li>"
+msgstr "<li>Fichiers de logs des derniers mois enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur.</li>"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "<li>Programme mis à jour avec succès</li>"

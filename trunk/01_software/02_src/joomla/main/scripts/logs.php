@@ -71,13 +71,33 @@ if(isset($_SESSION['reset_log'])) {
    $reset_log=$_SESSION['reset_log'];
 }
 
+if(isset($_SESSION['quick_load'])) {
+   $quick_load=$_SESSION['quick_load'];
+}
+
+if(isset($_SESSION['reset_log_power'])) {
+   $reset_log_power=$_SESSION['reset_log_power'];
+}
+
+if(isset($_SESSION['import_log'])) {
+   $import_log=$_SESSION['import_log'];
+}
+
 
 if(!empty($reset_log)) { 
-    if(reset_log($error)) {
+    if(reset_log("logs",$error)) {
         $info=$info.__('VALID_DELETE_LOGS');
         $pop_up_message=clean_popup_message(__('VALID_DELETE_LOGS'));
     }
 }
+
+if(!empty($reset_log_power)) {
+    if(reset_log("power",$error)) {
+        $info=$info.__('VALID_DELETE_LOGS');
+        $pop_up_message=clean_popup_message(__('VALID_DELETE_LOGS'));
+    }
+}
+
 
 
 if(!isset($pop_up)) {
@@ -125,7 +145,12 @@ unset($_SESSION['select_power']);
 unset($_SESSION['select_plug']);
 unset($_SESSION['select_sensor']);
 unset($_SESSION['reset_log']);
+unset($_SESSION['reset_log_power']);
+unset($_SESSION['quick_load']);
+unset($_SESSION['import_log']);
 unset($reset_log);
+unset($reset_log_power);
+
 
 if((!isset($startday))||(empty($startday))) {
 	$startday=date('Y')."-".date('m')."-".date('d');
@@ -150,29 +175,35 @@ if((!isset($type))||(empty($type))){
 $log = array();
 $power=array();
 $load_log=false;
-if((isset($sd_card))&&(!empty($sd_card))) {
+if((isset($sd_card))&&(!empty($sd_card))&&(!isset($quick_load))) {
    // Workaround to avoid timeout (60s)
    // Search only on two previous months
-   $FirstMonthSearch = date('n') - $log_search +1;
 
-   if($FirstMonthSearch == 0) {
-      $FirstMonthSearch = 1;
-   }
+   if((isset($import_log))&&(!empty($import_log))) {
+    $FirstMonthSearch = date('n') - $log_search +1;
 
-   if($FirstMonthSearch < 0) {
+    if($FirstMonthSearch == 0) {
+        $FirstMonthSearch = 1;
+    }
+
+    if($FirstMonthSearch < 0) {
       $FirstMonthSearch = 12 + $FirstMonthSearch + 1;
-   }
+    }
 
-   $ListMonthSearch=array();
-   $i=1;
+    $ListMonthSearch=array();
+    $i=1;
 
-   while($i<=$log_search) {
+    while($i<=$log_search) {
         if($FirstMonthSearch>12) {
             $FirstMonthSearch=1;
         }
         $ListMonthSearch[]=$FirstMonthSearch;  
         $FirstMonthSearch=$FirstMonthSearch+1;
         $i=$i+1;
+    }
+
+   } else {
+        $ListMonthSearch[]=date('m'); 
    }
 
    // Foreach months present in the array search logs and power
@@ -231,8 +262,13 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 }
 
 if($load_log) {
-   $info=$info.__('VALID_LOAD_LOG');
-   $pop_up_message=clean_popup_message(__('VALID_LOAD_LOG'));
+   if((isset($import_log))&&(!empty($import_log))) {
+        $info=$info.__('VALID_LOAD_LOG');
+        $pop_up_message=clean_popup_message(__('VALID_LOAD_LOG'));
+   } else {
+       $info=$info.__('VALID_CURRENT_LOAD_LOG');
+       $pop_up_message=clean_popup_message(__('VALID_CURRENT_LOAD_LOG'));
+   }
 } 
 
 if("$type"=="days") {
