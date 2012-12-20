@@ -451,7 +451,7 @@ msgid "VALUE_REGUL"
 msgstr "Régulation"
 
 msgid "CURRENT_PLUG_PROGRAM"
-msgstr "Programme pour la prise "
+msgstr "Programme pour la prise"
 
 msgid "TIMEPICKER_SELECT_TIME"
 msgstr "Choisissez une heure"
@@ -885,10 +885,10 @@ msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "<li>Programme mis à jour avec succès</li>"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "<li>Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici: <a href='wizard'><img src="main/libs/img/wizard.png" alt="wizard" id="wizard" /></a></li>"
+msgstr "<li>Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici: <a href='wizard'><img src="main/libs/img/wizard.png" alt="assistant" title="Cliquez sur l'icône pour lancer l'assistant de configuration" id="wizard" /></a></li>"
 
 msgid "WIZARD_DISABLE_FUNCTION"
-msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs'><img src="main/libs/img/wizard.png" alt="classic" id="Classic" /></a></li>"
+msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs'><img src="main/libs/img/wizard.png" alt="interface classique" title="Cliquez sur l'icône pour revenir au mode de configuration classique" id="Classic" /></a></li>"
 
 msgid "INFO_RESET_PROGRAM"
 msgstr "<li>Programme réinitialisé avec succès</li>"
@@ -960,5 +960,3 @@ msgstr "Vérifie si des mises à jour sont disponibles et vous propose de les t�
 
 msgid "TOOLTIP_COST_TYPE"
 msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommé."
-
-
