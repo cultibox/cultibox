@@ -204,6 +204,15 @@ td.wizard-input-previous{
    width: 10%;
 }
 
+td.program-marge-action {
+    width: 55%;
+}
+
+td.program-field-action {
+    width: 15%;
+    text-align: center;
+}
+
 td.program-title{
    width: 40%;
 }

@@ -88,12 +88,14 @@ $(document).ready(function() {
    chart = new Highcharts.Chart({
       chart: {
          backgroundColor: '#F7F7F9',
+         borderWidth: 1,
+         spacingRight: 35,
          renderTo: 'plug<?php echo "$i";?>',
          type: 'spline',
                    zoomType: 'x'
       },
       title: {
-         text: <?php echo "'".__('CURRENT_PLUG_PROGRAM')." ".str_replace("'","\'",$plugs_infos[$i-1]["PLUG_NAME"])."'"; ?>
+         text: <?php echo "'".__('CURRENT_PLUG_PROGRAM','highchart').": ".html_entity_decode(str_replace("'","\'",$plugs_infos[$i-1]["PLUG_NAME"]))."'"; ?>
       },
       lang: {
          printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
@@ -105,13 +107,24 @@ $(document).ready(function() {
       },
       xAxis: {
          type: 'datetime',
+         endOnTick: true,
+         showFirstLabel: false,
+         showLastLabel: true,
          dateTimeLabelFormats: { // don't display the dummy year
             hours: '%H',
             minutes: '%M',
             seconds: '%S'
          },
          min: 0,
-         max: 86399999
+         max: 86399999,
+         tickInterval: 6 * 3600 * 1000,
+         labels: {
+            formatter: function () {
+                var tmp=Highcharts.dateFormat('%H:%M', this.value);
+                if(tmp=="00:00") return "24:00";
+                return tmp;
+            }
+         }
       },
       yAxis: {
             <?php if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"unknown")==0)) { ?>
@@ -146,9 +159,18 @@ $(document).ready(function() {
               },
          title: false
       },
-               credits: {
-                        enabled: false
-                },
+      credits: {
+                   enabled: false
+      },
+      plotOptions: {
+            series: {
+                events: {
+                    legendItemClick: function () {
+                        return false;
+                    }
+                }
+            }
+      },
       tooltip: {
          formatter: function() {
 
@@ -270,66 +292,47 @@ $(document).ready(function() {
          </table>
       </td>
       <td class="progra-graph">
-         <div id="plug<?php echo $i; ?>" style="width: 80%; height: 300px; margin: 0 auto">
+         <div id="plug<?php echo $i; ?>" style="width: 87%; height: 300px; margin: 0 auto">
          </div>
       </td>
    </tr>
 </table>
 </form>
 
-<?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>
 <table class="table_width">
   <tr>
-      <td class="program-td-marge"></td>
-      <td>
-         <table class="table_width">
-            <tr>
-               <td class="program-td-title">
-                  <br />
-                     <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
-                  <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
-                  <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset">
-                  </form>
-               </td>
-               <td class="program-action">
-                  <br />
-                   <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
-                        <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="reset">
-                        <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
-                        <input type="hidden" name="exportid" value="<?php echo $i; ?>">
-                    </form>
-               </td>
-               <td class="program-action-center">
-                  <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post" enctype="multipart/form-data">
-                     <label class="input-file"> 
+      <td class="program-marge-action"></td>
+      <td class="program-field-action">
+                <?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>
+                 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post" enctype="multipart/form-data">
+                     <label class="input-file">
                      <input type="file" name="upload_file">
                      </label>
                      <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
                      <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
                      <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>">
                   </form>
+                <?php } ?>
+               </td>
+               <td class="program-field-action">
+                 <?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>
+                  <br />
+                   <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
+                        <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="reset">
+                        <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
+                        <input type="hidden" name="exportid" value="<?php echo $i; ?>">
+                    </form>
+                  <?php } ?>
+               </td>
+               <td class="program-field-action">
+                   <br />
+                  <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
+                  <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
+                  <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset">
+                  </form>
                </td>
             </tr>
-         </table>
-      </td>
-   </tr>
 </table>
-<?php } else { ?>
-   <table class="table_width">
-  <tr>
-      <td class="program-td-marge">
-      </td>
-      <td class="program-valid-right">
-      <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
-      <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
-      <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset">
-      </form>
-      </td>
-      <td class="program-marge"></td>
-   </tr>
-</table>
-
-<?php } ?>
 
 <?php if((isset($info_plug[$i]))&&(!empty($info_plug[$i]))) { ?>
 <div id="info">
