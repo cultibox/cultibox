@@ -277,8 +277,9 @@ for($i=0;$i<$nb_plugs;$i++) {
 if((isset($sd_card))&&(!empty($sd_card))) {
       $program=create_program_from_database($error);
       if(!compare_program($program,$sd_card)) {
-         if((empty($selected_plug))||(!isset($selected_plug))) {
+         if(((empty($selected_plug))||(!isset($selected_plug)))&&((!isset($reset))||(empty($reset)))) {
             $info=$info.__('UPDATED_PROGRAM');
+            $pop_up_message=$pop_up_message.clean_popup_message(__('UPDATED_PROGRAM'));
          }
          save_program_on_sd($sd_card,$program,$error);
       }

@@ -116,6 +116,20 @@ td.conf-marge-td {
    width: 45%;
 }
 
+td.right_log {
+    width: 5%;
+}
+
+td.center_log {
+    width: 90%;
+}
+
+td.left_log {
+    width: 5%;
+
+}
+
+
 td.log-marge-day {
    width: 45%;
 }

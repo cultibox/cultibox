@@ -552,6 +552,8 @@ EOF;
 //    $type   type of the electric installation: hpc or standard
 // RET data power formated for highchart
 function get_theorical_power($id=0,$type="",&$out="") {
+   $nb_plugs = get_configuration("NB_PLUGS",$out);
+
    if(strcmp($type,"standard")==0) {
         $price=get_configuration("COST_PRICE",$out);
         if($price==0) {
@@ -594,7 +596,7 @@ function get_theorical_power($id=0,$type="",&$out="") {
    $db = db_priv_start();
    if(strcmp("$id","all")==0) {
           $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <= ${GLOBALS['NB_MAX_PLUG']}
+SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <= ${nb_plugs}
 EOF;
       } else {
       $sql = <<<EOF
@@ -622,8 +624,9 @@ EOF;
 
    if(count($res)>0) {
       $sql = <<<EOF
-SELECT `PLUG_POWER` FROM `plugs`
+SELECT `PLUG_POWER` FROM `plugs` WHERE `id` <= ${nb_plugs}
 EOF;
+
      $db->setQuery($sql);
      $db->query();
      $res_power=$db->loadAssocList();
@@ -645,7 +648,7 @@ EOF;
       return 0;
    }
 
-   if(count($res_power)==16) {
+   if(count($res_power)==$nb_plugs) {
          date_default_timezone_set('UTC');
          $theorical=0;
          foreach($res as $val) {
