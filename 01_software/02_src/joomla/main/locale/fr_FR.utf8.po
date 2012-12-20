@@ -699,7 +699,7 @@ msgid "COST_PRICE_COMPUTE"
 msgstr "Calcul du coût de votre installation"
 
 msgid "COST_PRICE_COMPUTE_GRAPH"
-msgstr "Cout de votre installation" 
+msgstr "Coût de votre installation" 
 
 msgid "COST_PRICE_FOR_DAY"
 msgstr "pour le"

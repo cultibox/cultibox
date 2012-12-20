@@ -27,17 +27,18 @@
 <br />
 <?php } ?>
 
-<?php for($i=1;$i<=$nb_plugs;$i++) { ?>
-
-<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))&&("$i"=="$selected_plug")) { ?> 
+<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>  
    <SCRIPT LANGUAGE="JavaScript">
       alert('<?php echo "$pop_up_message"; ?>');
    </SCRIPT>
-<?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))&&("$i"=="$selected_plug")) { ?>
+<?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
    <SCRIPT LANGUAGE="JavaScript">
       alert('<?php echo "$pop_up_error_message"; ?>');
    </SCRIPT>
 <?php } ?>
+
+<?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+
 <script type="text/javascript">
 $(document).ready(function(){
 $('#start_time<?php echo "$i"; ?>').timepicker({
