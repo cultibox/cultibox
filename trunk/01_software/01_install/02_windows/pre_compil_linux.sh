@@ -4,13 +4,28 @@ set -e
 dir=`dirname $0`
 cd $dir
 (cd ../../../ && svn up)
-VERSION=1.0.`svn info | grep Revision | tr -d 'Revison: '`
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../../01_install/01_src/01_xampp
 
+function usage {
+            echo "usage: $0"
+            echo "                      windows7 <version>"
+            echo "                      windows7-admin <version>"
+            echo "                      update <old_version> <new_version>"
+            echo "                      clean"
+            exit 1
+}
+
+
+if [ "$2" == "" ] && [ "$1" != "clean" ]; then
+    usage
+fi
+
+VERSION=$2
 
 case "$1" in
       "windows7"|"windows7-admin" )
+            
             rm -Rf ../01_src/01_xampp/*
             cp ./install_script.iss ./install_script_current.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
@@ -114,13 +129,11 @@ case "$1" in
             wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "update_script_current_linux.iss"
       ;;
       "clean")
-            rm -Rf ../01_src/01_xampp/*
+            rm -Rf ../01_src/01_xampp/* 2>/dev/null
+            rm  install_script_current.iss 2>/dev/null
+            rm  update_script_current_linux.iss 2>/dev/null
       ;;
       *)
-            echo "usage: $0"
-            echo "                      windows7"
-            echo "                      windows7-admin"
-            echo "                      update <old_version> <new_version>"
-            echo "                      clean"
+            usage
       ;;
 esac

@@ -111,14 +111,14 @@ chart = new Highcharts.Chart({
       },
       xAxis: {
          categories: [
-            '<?php echo __('REAL_PRICE'); ?>',
-            '<?php echo __('THEORICAL_PRICE'); ?>'
+            '<?php echo __('REAL_PRICE','highchart'); ?>',
+            '<?php echo __('THEORICAL_PRICE','highchart'); ?>'
          ]
       },
       yAxis: {
          min: 0,
          title: {
-            text: '<?php echo __('INSTALLATION_PRICE'); ?>'
+            text: '<?php echo __('INSTALLATION_PRICE','highchart'); ?>'
          }
       },
       credits: {
