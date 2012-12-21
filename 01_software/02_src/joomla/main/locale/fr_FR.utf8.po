@@ -690,10 +690,10 @@ msgstr "Format de la date invalide (MM/JJ/AAAA)"
 
 # For the cost part:
 msgid "SELECT_START_DAY"
-msgstr "Jour de début"
+msgstr "Jour de début (AAAA-MM-JJ)"
 
 msgid "SELECT_END_DAY"
-msgstr "Jour de fin"
+msgstr "Jour de fin (AAAA-MM-JJ)"
 
 msgid "COST_PRICE_COMPUTE"
 msgstr "Calcul du coût de votre installation"
@@ -729,10 +729,10 @@ msgid "PRICE_SELECT_ALL_PLUG"
 msgstr "Pour toutes vos prises"
 
 msgid "REAL_PRICE"
-msgstr "Prix reel"
+msgstr "Prix réel"
 
 msgid "THEORICAL_PRICE"
-msgstr "Prix theorique maximal (sans regulation)"
+msgstr "Prix théorique maximal (sans régulation)"
 
 # For the footer:
 msgid "VERSION"

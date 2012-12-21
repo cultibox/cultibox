@@ -1,6 +1,5 @@
 <?php
 
-
 if (!isset($_SESSION)) {
    session_start();
 }
@@ -58,26 +57,24 @@ if(isset($_POST['reset_log_power'])) {
       }
 }
 
-if(isset($_POST['import_log'])) {
-      $_SESSION['import_log']=$_POST['import_log'];
-      $quick_load=false;
-}
-
 if(isset($_POST['startyear'])) {
       $_SESSION['startyear']=$_POST['startyear'];
       if(!empty($_SESSION['startyear'])) {
-        $quick_load=false;
+        $quick_load=true;
       }
 }
 
 if(isset($_POST['startmonth'])) {
       $_SESSION['startmonth']=$_POST['startmonth'];
       if(!empty($_SESSION['startmonth'])) {
-        $quick_load=false;
+        $quick_load=true;
       }
 }
 
-
+if(isset($_POST['import_log'])) {
+      $_SESSION['import_log']=$_POST['import_log'];
+      $quick_load=false;
+}
 
 
 if($quick_load) {

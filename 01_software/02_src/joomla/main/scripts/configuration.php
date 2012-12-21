@@ -45,6 +45,8 @@ $version=get_configuration("VERSION",$error);
 $log_search=getvar("log_search",$error);
 $start_hc=getvar("start_hc",$error);
 $stop_hc=getvar("stop_hc",$error);
+$menu="";
+
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$error);
@@ -408,6 +410,9 @@ if(strcmp($informations["log"],"")==0) {
         insert_informations("log",$informations["log"]);
 }
 
+if((empty($menu))||(!isset($menu))) {
+    $menu='user_interface';
+}
 
 include('main/templates/configuration.html');
 
