@@ -5,3 +5,4 @@
     * [ArticlesTips Tips and tricks]
   * [gui_soft Interface Graphique Logiciel]
   * [gui_box Interface Graphique Cultibox]
+  * [faq FAQ]
