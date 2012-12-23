@@ -1,5 +1,6 @@
-  * [Installation Installation]
-    * [ArticlesXSS Web security]
+  * [utilisation Utilisation]
+    * [installation installation]
+    * [pilotage Pilotage des prises]
     * [ArticlesDom DOM manipulation]
     * [ArticlesStyle CSS and style]
     * [ArticlesTips Tips and tricks]
