@@ -1,5 +1,5 @@
   * [utilisation Utilisation]
-    * [installation installation]
+    * [Installation Installation]
     * [pilotage Pilotage des prises]
     * [ArticlesDom DOM manipulation]
     * [ArticlesStyle CSS and style]
