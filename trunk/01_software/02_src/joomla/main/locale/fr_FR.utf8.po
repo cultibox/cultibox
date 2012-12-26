@@ -110,15 +110,6 @@ msgstr "Noir"
 msgid "COLOR_PURPLE"
 msgstr "Violet"
 
-msgid "COLOR_PINK"
-msgstr "Rose"
-
-msgid "COLOR_TURQUOISE"
-msgstr "Turquoise"
-
-msgid "COLOR_CYAN"
-msgstr "Cyan"
-
 msgid "CONFIGURE_TEMP_AXIS"
 msgstr "Valeur maximale de l'axe des températures pour les graphes"
 

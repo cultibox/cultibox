@@ -1,4 +1,19 @@
 CultiBox (1.1.0) precise; urgency=low
+   + Affichage des courbes des 4 capteurs en fonction des couleurs choisies
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/libs/config.php
+
+   + Les sous menu restent ouvert si on soumet le formulaire
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/scripts/configuration.php
+
+   + Correction des requesttes sql pour plus grande robustesse concernant l'ajout des logs
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/db_common.php
+
    + Accélération de l'affichage de la page des logs: on ne recharge pas tous les fichiers de logs quand la carte sd est branchée + possibilité de faire un reset des bases ou d'importer les logs à la demande:
         02_src/joomla/main/templates/logs.html
         02_src/joomla/main/locale/fr_FR.utf8.po

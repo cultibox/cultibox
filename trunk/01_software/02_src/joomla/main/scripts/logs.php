@@ -85,14 +85,14 @@ if(isset($_SESSION['import_log'])) {
 
 
 if(!empty($reset_log)) { 
-    if(reset_log("logs",$error)) {
+    if(reset_log("logs","1",$error)) {
         $info=$info.__('VALID_DELETE_LOGS');
         $pop_up_message=clean_popup_message(__('VALID_DELETE_LOGS'));
     }
 }
 
 if(!empty($reset_log_power)) {
-    if(reset_log("power",$error)) {
+    if(reset_log("power","0",$error)) {
         $info=$info.__('VALID_DELETE_LOGS');
         $pop_up_message=clean_popup_message(__('VALID_DELETE_LOGS'));
     }

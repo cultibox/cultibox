@@ -45,7 +45,67 @@ $version=get_configuration("VERSION",$error);
 $log_search=getvar("log_search",$error);
 $start_hc=getvar("start_hc",$error);
 $stop_hc=getvar("stop_hc",$error);
-$menu="";
+
+
+
+
+if(!isset($_SESSION['menu'])||(empty($_SESSION['menu']))) {
+        $_SESSION['menu'][] = array(
+                               "title" => "user_interface",
+                               "value" => "Show"
+                            );
+        $_SESSION['menu'][] = array(
+                               "title" => "system_interface",
+                               "value" => "Hidden"
+                            );
+        $_SESSION['menu'][] = array(
+                               "title" => "cost_interface",
+                               "value" => "Hidden"
+                            );
+        $_SESSION['menu'][] = array(
+                               "title" => "alarm_interface",
+                               "value" => "Hidden"
+                            );
+} else {
+    $menu_config=getvar("user_interface");
+    $menu_cost=getvar("cost_interface");
+    $menu_alarm=getvar("alarm_interface");
+    $menu_system=getvar("system_interface");
+
+    if((isset($menu_config))&&(!empty($menu_config))) {
+        if(strcmp("$menu_config","Show")==0) {
+            $_SESSION['menu'][0]['value']="Show";
+        } else {
+            $_SESSION['menu'][0]['value']="Hidden";
+        }
+    }
+
+    if((isset($menu_system))&&(!empty($menu_system))) {
+        if(strcmp("$menu_system","Show")==0) {
+            $_SESSION['menu'][0]['value']="Show";
+        } else {
+            $_SESSION['menu'][0]['value']="Hidden";
+        }
+    }
+
+    if((isset($menu_cost))&&(!empty($menu_cost))) {
+        if(strcmp("$menu_cost","Show")==0) {
+            $_SESSION['menu'][0]['value']="Show";
+        } else {
+            $_SESSION['menu'][0]['value']="Hidden";
+        }
+    }
+
+    if((isset($menu_alarm))&&(!empty($menu_alarm))) {
+        if(strcmp("$menu_alarm","Show")==0) {
+            $_SESSION['menu'][0]['value']="Show";
+        } else {
+            $_SESSION['menu'][0]['value']="Hidden";
+        }
+    }
+
+
+}
 
 
 if((isset($lang))&&(!empty($lang))) {
@@ -84,7 +144,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 
 
 if((isset($pop_up))&&(!empty($pop_up))) {
-	insert_configuration("SHOW_POPUP","$pop_up",$error);
+	    insert_configuration("SHOW_POPUP","$pop_up",$error);
         $update_conf=true;
 } else {
         $pop_up = get_configuration("SHOW_POPUP",$error);
@@ -408,10 +468,6 @@ if(strcmp($informations["log"],"")==0) {
         $informations["log"]=get_informations("log");
 } else {
         insert_informations("log",$informations["log"]);
-}
-
-if((empty($menu))||(!isset($menu))) {
-    $menu='user_interface';
 }
 
 include('main/templates/configuration.html');

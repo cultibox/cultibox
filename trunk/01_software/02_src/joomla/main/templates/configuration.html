@@ -1,11 +1,11 @@
-<script type="text/javascript">
+<script>
 function verifDigit(e) {
    if((e.keyCode < 48 || e.keyCode > 57)&&(e.keyCode != 46 &&  e.keyCode != 44 && e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
    if((e.which < 48 || e.which > 57)&&(e.which != 46 && e.which != 44 && e.which != 08 && e.which != 10 && e.which != 13)) return false;
 }
 </script>
 
-<script type="text/javascript">
+<script>
    function getAlarm(i) {
       var divAval = document.getElementById('div_alarm_value');
       var divAsenso = document.getElementById('div_alarm_senso');
@@ -22,8 +22,7 @@ function verifDigit(e) {
    }
 </script>
 
-
-<script type="text/javascript">
+<script>
    function getUnity(i) {
       var divDegree = document.getElementById('label_degree');
       var divPourcent = document.getElementById('label_pourcent');
@@ -36,25 +35,33 @@ function verifDigit(e) {
    }
 </script>
 
-<script type="text/javascript">
+<script>
    function expand(div) {
       var divConfig = document.getElementById('div_user_interface');
-      var divSystem = document.getElementById('system_interface');
-      var divAlarm = document.getElementById('alarm_interface');
-      var divCost = document.getElementById('cost_interface');
+      var divSystem = document.getElementById('div_system_interface');
+      var divAlarm = document.getElementById('div_alarm_interface');
+      var divCost = document.getElementById('div_cost_interface');
+      var Config = document.getElementById('user_interface');
+      var System = document.getElementById('system_interface');
+      var Alarm = document.getElementById('alarm_interface');
+      var Cost = document.getElementById('cost_interface');
 
       switch(div) {
-         case 'user_interface' : if(divConfig.style.display == "none") { divConfig.style.display = ''; } else {  divConfig.style.display = 'none'; } break;
-         case 'system_interface' : if(divSystem.style.display == "none") { divSystem.style.display = ''; } else {  divSystem.style.display = 'none'; } break;
-         case 'alarm_interface' : if(divAlarm.style.display == "none") { divAlarm.style.display = ''; } else {  divAlarm.style.display = 'none'; } break;
-         case 'cost_interface' :  if(divCost.style.display == "none") { divCost.style.display = ''; } else {  divCost.style.display = 'none'; } break;
-         default: divConfig.style.display = ''; divSystem.style.display = 'none'; divAlarm.style.display = 'none'; divCost.style.display = 'none';break;
+         case 'user_interface' : if(divConfig.style.display == "none") { divConfig.style.display = ''; Config.value='Show'; } else {  divConfig.style.display = 'none'; Config.value='Hidden'; } break;
+         case 'system_interface' : if(divSystem.style.display == "none") { divSystem.style.display = ''; System.value='Show'; } else {  divSystem.style.display = 'none'; System.value='Hidden'; } break;
+         case 'alarm_interface' : if(divAlarm.style.display == "none") { divAlarm.style.display = ''; Alarm.value='Show';  } else {  divAlarm.style.display = 'none'; Alarm.value='Hidden';  } break;
+         case 'cost_interface' :  if(divCost.style.display == "none") { divCost.style.display = ''; Cost.value='Show'; } else {  divCost.style.display = 'none'; Cost.value='Hidden'; } break;
+         default: divConfig.style.display = ''; divSystem.style.display = 'none'; divAlarm.style.display = 'none'; divCost.style.display = 'none'; break;
       }
    }
+
+    //document.getElementById('conf_menu').value=menu;
+    //var test=document.getElementById('conf_menu').value;
+
 </script>
 
 
-<script type="text/javascript">
+<script>
    function getCostType(i) {
       var labelStandard = document.getElementById('cost_label_standard');
       var labelHP = document.getElementById('cost_label_hp');
@@ -76,7 +83,7 @@ function verifDigit(e) {
    }
 </script>
 
-<script type="text/javascript">
+<script>
 $(document).ready(function(){
 $('#start_hc').timepicker({
 <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
@@ -213,27 +220,6 @@ timeFormat: 'hh:mm',
                   echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
                }
                break;
-            case 'pink':
-               if("${value}" == "${color_humidity}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
-               }
-               break;
-            case 'cyan':
-               if("${value}" == "${color_humidity}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_CYAN')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_CYAN')."</option>";    
-               }
-               break;
-            case 'turquoise':
-               if("${value}" == "${color_humidity}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_TURQUOISE')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_TURQUOISE')."</option>";    
-               }
-               break;
          }
       } ?></select></td>
    </tr>
@@ -276,27 +262,6 @@ timeFormat: 'hh:mm',
                   echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
                } else {
                   echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
-               }
-               break;
-            case 'pink':
-               if("${value}" == "${color_temperature}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
-               }
-               break;
-            case 'cyan':
-               if("${value}" == "${color_temperature}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_CYAN')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_CYAN')."</option>";    
-               }
-               break;
-            case 'turquoise':
-               if("${value}" == "${color_temperature}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_TURQUOISE')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_TURQUOISE')."</option>";    
                }
                break;
          }
@@ -342,27 +307,6 @@ timeFormat: 'hh:mm',
                   echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
                } else {
                   echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
-               }
-               break;
-            case 'pink':
-               if("${value}" == "${color_program}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
-               }
-               break;
-            case 'cyan':
-               if("${value}" == "${color_program}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_CYAN')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_CYAN')."</option>";    
-               }
-               break;
-            case 'turquoise':
-               if("${value}" == "${color_program}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_TURQUOISE')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_TURQUOISE')."</option>";    
                }
                break;
          }
@@ -411,27 +355,6 @@ timeFormat: 'hh:mm',
                   echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
                }
                break;
-            case 'pink':
-               if("${value}" == "${color_power}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
-               }
-               break;
-            case 'cyan':
-               if("${value}" == "${color_power}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_CYAN')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_CYAN')."</option>";    
-               }
-               break;
-            case 'turquoise':
-               if("${value}" == "${color_power}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_TURQUOISE')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_TURQUOISE')."</option>";    
-               }
-               break;
          }
       }
       ?></select></td>
@@ -476,27 +399,6 @@ timeFormat: 'hh:mm',
                   echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
                } else {
                   echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
-               }
-               break;
-            case 'pink':
-               if("${value}" == "${color_cost}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
-               }
-               break;
-            case 'cyan':
-               if("${value}" == "${color_cost}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_CYAN')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_CYAN')."</option>";    
-               }
-               break;
-            case 'turquoise':
-               if("${value}" == "${color_cost}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_TURQUOISE')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_TURQUOISE')."</option>";    
                }
                break;
          }
@@ -572,7 +474,7 @@ timeFormat: 'hh:mm',
 </div>
 <hr />
  <h1><label onclick="expand('system_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SYSTEM_CONF'); ?></label></h1>
-<div id="system_interface" style="display:none">
+<div id="div_system_interface" style="display:none">
 <table class="conf-table">
 <tr>
 <td class="conf-marge"></td>
@@ -659,8 +561,8 @@ timeFormat: 'hh:mm',
 </div>
 <hr />
 
-<h1><label onclick="expand('alarm_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_ALARM'); ?></label></h1>
-<div id="alarm_interface" style="display:none">
+<h1><label onclick="expand('alarm_interface')"><img src="main/libs/img/arrow.png" alt=""/><?php echo __('CONFIGURE_ALARM'); ?></label></h1>
+<div id="div_alarm_interface" style="display:none">
 <table class="conf-table">
    <tr>  
       <td class="conf-marge"></td>
@@ -715,7 +617,7 @@ timeFormat: 'hh:mm',
 
 <h1><label onclick="expand('cost_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_COST'); ?></label></h1>
 
-<div id="cost_interface" style="display:none">
+<div id="div_cost_interface" style="display:none">
 <table class="conf-table">
    <tr>
       <td class="conf-marge"></td>
@@ -761,5 +663,20 @@ timeFormat: 'hh:mm',
 <br /><p class="p_center">
    <INPUT type="submit" value="<?php echo __('VALIDATION_CONF'); ?>">
 </p>
-   <INPUT type="hidden" name="menu" value="configuration">
+    <?php 
+    foreach($_SESSION['menu'] as $submenu) {
+            echo "<input type='hidden' id='".$submenu['title']."' name='".$submenu['title']."' value='".$submenu['value']."' >";
+    } 
+   ?> 
 </form>
+
+
+
+
+<?php 
+        foreach($_SESSION['menu'] as $submenu) {
+                if(strcmp($submenu['value'],"Show")==0) {
+      echo "<script>expand('".$submenu['title']."');</script>";
+                } 
+        } 
+?>
