@@ -311,8 +311,10 @@ $(function () {
                   var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x)+"</p>"; 
                <?php } ?>
                   var unit = {
-               <?php echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$select_sensor.")'"; ?>: '%',
-               <?php echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$select_sensor.")'"; ?>: '°C', 
+                     <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) { 
+                     echo "'".__('LEGEND_HUMI','highchart')." (".__('SENSOR')." ".$i.")': '%',";
+                     echo "'".__('LEGEND_TEMP','highchart')." (".__('SENSOR')." ".$i.")': '°C',";
+               } ?>
                <?php echo "'".__('LEGEND_POWER')."'"; ?>: 'W'
                <?php if((isset($select_plug))&&(!empty($select_plug))) {
                      echo ",'".$plugs_infos[$select_plug-1]["PLUG_NAME"]."': ''"; 
@@ -436,7 +438,18 @@ $(function () {
                name: <?php echo "'".__('LEGEND_HUMI','highchart')." (".__('SENSOR')." ".$nb.")'"; ?>,
                pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-               color: <?php echo "'".$color_humidity."'"; ?>,
+               <?php switch($color_humidity) {
+                         case 'blue': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$i]."',"; 
+                            break;
+                         case 'black': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$i]."',"; 
+                            break;
+                        case 'green': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$i]."',"; 
+                            break;
+                        case 'red': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$i]."',"; 
+                            break;
+                        case 'purple': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$i]."',"; 
+                            break;
+                } ?>   
                selected: true,
                data: [
                   <?php if((isset($data_humi))&&(!empty($data_humi))) echo "$data_humi[$i]"; ?>
@@ -457,7 +470,18 @@ $(function () {
                name: <?php echo "'".__('LEGEND_TEMP','highchart')." (".__('SENSOR')." ".$nb.")'"; ?>,
                pointInterval: <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-               color: <?php echo "'".$color_temperature."'"; ?>,
+                   <?php switch($color_temperature) {
+                         case 'blue': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$i]."',"; 
+                            break;
+                         case 'black': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$i]."',"; 
+                            break;
+                        case 'green': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$i]."',"; 
+                            break;
+                        case 'red': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$i]."',"; 
+                            break;
+                        case 'purple': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$i]."',"; 
+                            break;
+                } ?>   
                yAxis: 1,
                selected: true,
                data: [

@@ -152,23 +152,24 @@ function get_log_value($file,&$array_line) {
             break;
          } else {
             $temp = explode("\t", $buffer);
-            for($i=0;$i<count($temp);$i++) {
-               $temp[$i]=rtrim($temp[$i]);
-               $temp[$i]=str_replace(" ","",$temp[$i]);
-            }
+            if(count($temp)==9) { 
+                for($i=0;$i<count($temp);$i++) {
+                    $temp[$i]=rtrim($temp[$i]);
+                    $temp[$i]=str_replace(" ","",$temp[$i]);
+                }
 
-            $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
-            $date_catch=rtrim($date_catch);
-            $time_catch=substr($temp[0], 8,6);
-            $time_catch=rtrim($time_catch);
+                $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
+                $date_catch=rtrim($date_catch);
+                $time_catch=substr($temp[0], 8,6);
+                $time_catch=rtrim($time_catch);
+
           
 
-                        
-            if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))) {
+                if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)) {
                     $col=1;
                     for($i=0;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
                         if((!empty($temp[$col]))&&(!empty($temp[$col+1]))) {
-                            if((strlen($temp[$col])<=4)&&(strlen($temp[$col+1])<=4)&&(strlen($temp[0])==14)) {
+                            if((strlen($temp[$col])==4)&&(strlen($temp[$col+1])==4)&&(strlen($temp[0])==14)) {
                                 $array_line[] = array(
                                     "timestamp" => $temp[0],
                                     "temperature" => $temp[1],
@@ -181,7 +182,8 @@ function get_log_value($file,&$array_line) {
                         }
                         $col=$col+2;
                     }
-              }
+                }
+            }
          }
       }
       fclose($handle);

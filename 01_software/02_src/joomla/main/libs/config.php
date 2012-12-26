@@ -13,7 +13,7 @@ $GLOBALS['SOFT_PORT'] = '6891';
 $GLOBALS['LIST_LANG'] = array('en_GB','fr_FR');
 
 // List of available colors for graphics:
-$GLOBALS['LIST_GRAPHIC_COLOR'] = array('blue','red', 'green', 'black','purple','pink','turquoise','cyan');
+$GLOBALS['LIST_GRAPHIC_COLOR'] = array('blue','red', 'green', 'black','purple');
 
 // List of the recording frequency available: (in minute)
 $GLOBALS['LIST_RECORD_FREQUENCY'] = array('1','5','30');
@@ -32,9 +32,6 @@ $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');
 
 // Colors for plugs program:
 $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'] = array('#0033CC','#FF0000', '#336600', '#000000','#FF9900','#006666','#999966','#663300','#FF0066','#CC66FF','#660000','#3D96AE','#DB843D','#00FF00','#CCFF33','#B5CA92');
-
-// Colors for the different sensors:
-$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR'] = array ('#00003D','#7A0000','#0000CC','#FF0000','#001F5C','#CC0000','#66799D','#FF6666');
 
 //Subject for the calendar:
 $GLOBALS['LIST_SUBJECT_CALENDAR'] = array('Beginning','Fertilizers', 'Water', 'Bloom','Harvest','Other');
@@ -65,5 +62,12 @@ $GLOBALS['MODULE_IMPORT_EXPORT'] = false;
 
 // List of value possible for log's research: 2, 3, 6 or 12 months
 $GLOBALS['LOG_SEARCH'] = array('2', '3', '6', '12');
+
+// Colors for the different sensors:
+$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'] = array ('#7A7AE5','#0000F0','#020289','#0D0D57');
+$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'] = array ('#FA4F4F','#E30000','#AB0000','#890000');
+$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'] = array ('#68F071','#00F010','#006A07','#416543');
+$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'] = array ('#000000','#494141','#B9A5A5','#FFFFFF');
+$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'] = array ('#F089B6','#F00068','#8D003D','#9F3F69');
 
 ?>

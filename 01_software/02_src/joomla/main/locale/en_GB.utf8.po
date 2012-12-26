@@ -107,17 +107,8 @@ msgstr "Green"
 msgid "COLOR_BLACK"
 msgstr "Black"
 
-msgid "COLOR_PINK"
-msgstr "Pink"
-
-msgid "COLOR_TURQUOISE"
-msgstr "Turquoise"
-
 msgid "COLOR_PURPLE"
 msgstr "Purple"
-
-msgid "COLOR_CYAN"
-msgstr "Cyan"
 
 msgid "CONFIGURE_TEMP_AXIS"
 msgstr "Configure maximal axis value for temperature graphics"
