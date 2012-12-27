@@ -52,19 +52,19 @@ $stop_hc=getvar("stop_hc",$error);
 if(!isset($_SESSION['menu'])||(empty($_SESSION['menu']))) {
         $_SESSION['menu'][] = array(
                                "title" => "user_interface",
-                               "value" => "Show"
+                               "value" => false 
                             );
         $_SESSION['menu'][] = array(
                                "title" => "system_interface",
-                               "value" => "Hidden"
+                               "value" => false
                             );
         $_SESSION['menu'][] = array(
                                "title" => "cost_interface",
-                               "value" => "Hidden"
+                               "value" => false
                             );
         $_SESSION['menu'][] = array(
                                "title" => "alarm_interface",
-                               "value" => "Hidden"
+                               "value" => false
                             );
 } else {
     $menu_config=getvar("user_interface");
@@ -72,39 +72,30 @@ if(!isset($_SESSION['menu'])||(empty($_SESSION['menu']))) {
     $menu_alarm=getvar("alarm_interface");
     $menu_system=getvar("system_interface");
 
+
     if((isset($menu_config))&&(!empty($menu_config))) {
-        if(strcmp("$menu_config","Show")==0) {
-            $_SESSION['menu'][0]['value']="Show";
-        } else {
-            $_SESSION['menu'][0]['value']="Hidden";
-        }
+            $_SESSION['menu'][0]['value']=true;
+    } else {
+            $_SESSION['menu'][0]['value']=false;
     }
 
     if((isset($menu_system))&&(!empty($menu_system))) {
-        if(strcmp("$menu_system","Show")==0) {
-            $_SESSION['menu'][0]['value']="Show";
-        } else {
-            $_SESSION['menu'][0]['value']="Hidden";
-        }
+            $_SESSION['menu'][1]['value']=true;
+    } else {
+            $_SESSION['menu'][1]['value']=false;
     }
 
     if((isset($menu_cost))&&(!empty($menu_cost))) {
-        if(strcmp("$menu_cost","Show")==0) {
-            $_SESSION['menu'][0]['value']="Show";
-        } else {
-            $_SESSION['menu'][0]['value']="Hidden";
-        }
+            $_SESSION['menu'][2]['value']=true;
+    } else {
+            $_SESSION['menu'][2]['value']=false;
     }
 
     if((isset($menu_alarm))&&(!empty($menu_alarm))) {
-        if(strcmp("$menu_alarm","Show")==0) {
-            $_SESSION['menu'][0]['value']="Show";
-        } else {
-            $_SESSION['menu'][0]['value']="Hidden";
-        }
+            $_SESSION['menu'][3]['value']=true;
+    } else {
+            $_SESSION['menu'][3]['value']=false;
     }
-
-
 }
 
 

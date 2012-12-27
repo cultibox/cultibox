@@ -751,7 +751,7 @@ function get_real_power($data="",$type="",&$out="")  {
         }
 
         $price_hc=($price_hc/60)/1000;
-        $price_hp($price_hp/60)/1000;
+        $price_hp=($price_hp/60)/1000;
   }
 
   if(strcmp($type,"standard")==0) {
