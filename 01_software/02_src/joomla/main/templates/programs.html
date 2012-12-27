@@ -1,15 +1,3 @@
-<script type="text/javascript">
-   function getRegul(i,j) {
-      var divValueRegul = document.getElementById('regul_value'+j);
-      var divLabelRegul = document.getElementById('regul_label'+j);
-
-      switch(i) {
-         case 0 : divLabelRegul.style.display = ''; divValueRegul.style.display = ''; break;
-         default: divLabelRegul.style.display = 'none'; divValueRegul.style.display = 'none'; break;
-      }
-   }
-</script>
-
 <?php if((isset($info))&&(!empty($info))) { ?>
 <div id="info">
 <ul>
@@ -28,13 +16,13 @@
 <?php } ?>
 
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>  
-   <SCRIPT LANGUAGE="JavaScript">
+   <script>
       alert('<?php echo "$pop_up_message"; ?>');
-   </SCRIPT>
+   </script>
 <?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
-   <SCRIPT LANGUAGE="JavaScript">
+   <script>
       alert('<?php echo "$pop_up_error_message"; ?>');
-   </SCRIPT>
+   </script>
 <?php } ?>
 
 <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
@@ -251,7 +239,7 @@ $(document).ready(function() {
                           <option value="off" <?php if(($i==$selected_plug)&&($value_program==0)) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
                        </select>
                <?php } else { ?>
-                       <select id="regul_program<?php echo $i; ?>" name="regul_program<?php echo $i; ?>" onChange="getRegul(this.selectedIndex,<?php echo $i; ?>);" onLoad="getRegul(this.selectedIndex,<?php echo $i; ?>);">
+                       <select id="regul_program<?php echo $i; ?>" name="regul_program<?php echo $i; ?>" onChange="getRegulation(this.selectedIndex,<?php echo $i; ?>);" onLoad="getRegulation(this.selectedIndex,<?php echo $i; ?>);">
                              <option value="regul" <?php if(($i==$selected_plug)&&(strcmp("$regul_program","regul")==0)) { ?>selected<?php } ?>><?php echo __('VALUE_REGUL'); ?></option>
 			     <option value="on" <?php if(($i==$selected_plug)&&(strcmp("$regul_program","on")==0)) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
                              <option value="off" <?php if(($i==$selected_plug)&&(strcmp("$regul_program","off")==0)) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>

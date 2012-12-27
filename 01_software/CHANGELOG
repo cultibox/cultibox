@@ -1,4 +1,20 @@
 CultiBox (1.1.0) precise; urgency=low
+   + Passage par une bibliothèque externe des fonctions javascript
+        02_src/joomla/templates/yoo_cloud/layouts/template.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/libs/js/cultibox-utils.js
+        02_src/joomla/main/libs/js/cultibox.js
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/templates/plugs.html
+        02_src/joomla/main/templates/wizard.html
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/templates/cost.html
+        02_src/joomla/main/templates/calendar.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+
    + Affichage des courbes des 4 capteurs en fonction des couleurs choisies
         02_src/joomla/main/templates/logs.html
         02_src/joomla/main/locale/en_GB.utf8.po

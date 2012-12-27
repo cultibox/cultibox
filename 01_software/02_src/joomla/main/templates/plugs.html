@@ -1,82 +1,11 @@
-<script type="text/javascript">
-function verifDigit(e) {
-   if((e.keyCode < 48 || e.keyCode > 57)&&(e.keyCode != 46 && e.keyCode != 44 && e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
-   if((e.which < 48 || e.which > 57)&&(e.which != 46 && e.which != 44 && e.which != 08 && e.which != 10 && e.which != 13)) return false;
-}
-</script>
-
-<script type="text/javascript">
-function verifInt(e) {
-   if((e.keyCode < 48 || e.keyCode > 57)&&(e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
-   if((e.which < 48 || e.which > 57)&&(e.which != 08 && e.which != 10 && e.which != 13)) return false;
-}
-</script>
-
-<script type="text/javascript">
-   function getRegul(i,j) {
-      var divRval = document.getElementById('div_regul_value'+j);
-      var divRsenso = document.getElementById('div_regul_senso'+j);
-      var divRsenss = document.getElementById('div_regul_senss'+j);
-      var labelRsenss = document.getElementById('label_regul_senss'+j);
-      var labelRsenso = document.getElementById('label_regul_senso'+j);
-      var labelRvalue = document.getElementById('label_regul_value'+j);
-
-      switch(i) {
-         case 0 : divRval.style.display = ''; divRsenso.style.display = ''; divRsenss.style.display = ''; labelRvalue.style.display = ''; labelRsenso.style.display = ''; labelRsenss.style.display = '';break;
-         case 1 : divRval.style.display = 'none'; divRsenso.style.display = 'none'; divRsenss.style.display = 'none'; labelRvalue.style.display = 'none'; labelRsenso.style.display = 'none'; labelRsenss.style.display = 'none'; break;
-         default: divRval.style.display = ''; divRsenso.style.display = ''; divRsenss.style.display = ''; labelRvalue.style.display = ''; labelRsenso.style.display = ''; labelRsenss.style.display = ''; break;
-      }
-   }
-</script>
-
-<script type="text/javascript">
-   function getUnity(i,j) {
-      var divDegree = document.getElementById('label_degree'+j);
-      var divPourcent = document.getElementById('label_pourcent'+j);
-
-      switch(i) {
-         case 0 : divDegree.style.display = ''; divPourcent.style.display = 'none'; break;
-         case 1 : divDegree.style.display = 'none'; divPourcent.style.display = ''; break;
-         default: divDegree.style.display = ''; divPourcent.style.display = ''; break;
-      }
-   }
-</script>
-
-<script type="text/javascript">
-   function getTolerance(i,j) {
-      var divTolerance = document.getElementById('tolerance'+j);
-      var divToleranceLabel = document.getElementById('tolerance_label'+j);
-      var pDegree = document.getElementById('degree'+j);
-      var pPourcent = document.getElementById('pourcent'+j);
-      var divHumiRegul = document.getElementById('humi_regul_senso'+j);
-      var divTempRegul = document.getElementById('temp_regul_senso'+j);
-      var divUnknownRegul = document.getElementById('unknown_regul_senso'+j);
-      var labelDeg = document.getElementById('label_degree'+j);
-      var labelPct = document.getElementById('label_pourcent'+j);
-      var seconLabel = document.getElementById('second_regul_label'+j);
-      var secondVal = document.getElementById('second_regul'+j);
-      var secondParam = document.getElementById('second_regul_param'+j);
-
-      switch(i) {
-         case 0 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break; 
-         case 1 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = 'none'; seconLabel.style.display = 'none'; secondVal.style.display = 'none'; secondParam.style.display = 'none'; break;
-         case 2 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; divHumiRegul.style.display = ''; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = ''; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;
-         case 3 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; divHumiRegul.style.display = ''; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = ''; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;
-         case 4 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; divHumiRegul.style.display = 'none'; divTempRegul.style.display = ''; divUnknownRegul.style.display = 'none'; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;
-         case 5 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; divHumiRegul.style.display = 'none'; divTempRegul.style.display = ''; divUnknownRegul.style.display = 'none'; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;         
-         default: divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = 'none'; secondVal.style.display = 'none'; secondParam.style.display = 'none'; break;
-      }
-   }
-</script>
-
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
-   <SCRIPT LANGUAGE="JavaScript">
+   <script>
       alert('<?php echo "$pop_up_message"; ?>');
-   </SCRIPT>
+   </script>
 <?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
-   <SCRIPT LANGUAGE="JavaScript">
+   <script>
       alert('<?php echo "$pop_up_error_message"; ?>');
-   </SCRIPT>
+   </script>
 <?php } ?>
 
 <?php if((isset($info))&&(!empty($info))) { ?>

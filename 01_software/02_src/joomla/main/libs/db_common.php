@@ -551,7 +551,7 @@ EOF;
 //    $out      errors or warnings messages
 //    $type   type of the electric installation: hpc or standard
 // RET data power formated for highchart
-function get_theorical_power($id=0,$type="",&$out="") {
+function get_theorical_power($id=0,$type="",&$out="",&$error=0) {
    $nb_plugs = get_configuration("NB_PLUGS",$out);
 
    if(strcmp($type,"standard")==0) {
@@ -655,7 +655,7 @@ EOF;
                $id=$val['plug_id']-1;
 
                if($res_power[$id]['PLUG_POWER']==0) {
-                     $out=$out.__('ERROR_POWER_PRICE_NULL');
+                     $error=1;
                }
 
                $shh=substr($val['time_start'],0,2);

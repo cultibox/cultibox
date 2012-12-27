@@ -1,42 +1,11 @@
-<script>
-function verifDate(e) {
-   if((e.keyCode < 45 || e.keyCode > 57)&&(e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
-   if((e.which < 45 || e.which > 57)&&(e.which != 08 && e.which != 10 && e.which != 13)) return false;
-}
-</script>
-
-<script>
-   function getType(i) {
-      var divSelectDay = document.getElementById('label_select_day');
-      var divSelectMonth = document.getElementById('label_select_month');
-
-      switch(i) {
-         case 0 : divSelectDay.style.display = ''; divSelectMonth.style.display = 'none'; break;
-         case 1 : divSelectDay.style.display = 'none'; divSelectMonth.style.display = ''; break;
-         default: divSelectDay.style.display = ''; divSelectMonth.style.display = 'none'; break;
-      }
-   }
-</script>
-
-<script>
-    function DeleteForm() {
-            var answer = confirm("<?php echo __('RESET_CONFIRM','javascript'); ?>");
-            if (answer) {
-                    return true;
-            }
-            return false;
-    }
-</script>
-
-
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
-   <SCRIPT>
+   <script>
       alert('<?php echo "$pop_up_message"; ?>');
-   </SCRIPT>
+   </script>
 <?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
-   <SCRIPT>
+   <script>
       alert('<?php echo "$pop_up_error_message"; ?>');
-   </SCRIPT>
+   </script>
 <?php } ?>
 
 

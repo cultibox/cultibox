@@ -1,19 +1,11 @@
-<script type="text/javascript">
-function verifDate(e) {
-   if((e.keyCode < 45 || e.keyCode > 57)&&(e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
-   if((e.which < 45 || e.which > 57)&&(e.which != 08 && e.which != 10 && e.which != 13)) return false;
-}
-</script>
-
-
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
-   <SCRIPT LANGUAGE="JavaScript">
+   <script>
       alert('<?php echo "$pop_up_message"; ?>');
-   </SCRIPT>
+   </script>
 <?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
-   <SCRIPT LANGUAGE="JavaScript">
+   <script>
       alert('<?php echo "$pop_up_error_message"; ?>');
-   </SCRIPT>
+   </script>
 <?php } ?>
 
 
