@@ -46,17 +46,42 @@ function verifDigit(e) {
       var Alarm = document.getElementById('alarm_interface');
       var Cost = document.getElementById('cost_interface');
 
+
       switch(div) {
-         case 'user_interface' : if(divConfig.style.display == "none") { divConfig.style.display = ''; Config.value='Show'; } else {  divConfig.style.display = 'none'; Config.value='Hidden'; } break;
-         case 'system_interface' : if(divSystem.style.display == "none") { divSystem.style.display = ''; System.value='Show'; } else {  divSystem.style.display = 'none'; System.value='Hidden'; } break;
-         case 'alarm_interface' : if(divAlarm.style.display == "none") { divAlarm.style.display = ''; Alarm.value='Show';  } else {  divAlarm.style.display = 'none'; Alarm.value='Hidden';  } break;
-         case 'cost_interface' :  if(divCost.style.display == "none") { divCost.style.display = ''; Cost.value='Show'; } else {  divCost.style.display = 'none'; Cost.value='Hidden'; } break;
-         default: divConfig.style.display = ''; divSystem.style.display = 'none'; divAlarm.style.display = 'none'; divCost.style.display = 'none'; break;
+         case 'user_interface' : if(divConfig.style.display == "none") { 
+                                    divConfig.style.display = ''; 
+                                    Config.value='1'; 
+                                 } else {  
+                                    divConfig.style.display = 'none'; 
+                                    Config.value=''; 
+                                 } 
+                                 break;
+         case 'system_interface' : if(divSystem.style.display == "none") { 
+                                        divSystem.style.display = ''; 
+                                        System.value='1'; 
+                                    } else {  
+                                        divSystem.style.display = 'none'; 
+                                        System.value=''; 
+                                    } 
+                                    break;
+         case 'alarm_interface' : if(divAlarm.style.display == "none") { 
+                                    divAlarm.style.display = ''; 
+                                    Alarm.value='1';  
+                                  } else {  
+                                    divAlarm.style.display = 'none'; 
+                                    Alarm.value='';  
+                                 } 
+                                 break;
+         case 'cost_interface' :  if(divCost.style.display == "none") { 
+                                    divCost.style.display = ''; 
+                                    Cost.value='1'; 
+                                  } else {  
+                                    divCost.style.display = 'none'; 
+                                    Cost.value=''; 
+                                  } 
+                                 break;
       }
    }
-
-    //document.getElementById('conf_menu').value=menu;
-    //var test=document.getElementById('conf_menu').value;
 
 </script>
 
@@ -675,7 +700,7 @@ timeFormat: 'hh:mm',
 
 <?php 
         foreach($_SESSION['menu'] as $submenu) {
-                if(strcmp($submenu['value'],"Show")==0) {
+                if($submenu['value']) {
       echo "<script>expand('".$submenu['title']."');</script>";
                 } 
         } 
