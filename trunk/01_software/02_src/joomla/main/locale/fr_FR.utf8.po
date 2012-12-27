@@ -836,10 +836,10 @@ msgid "ERROR_POWER_PRICE_NULL"
 msgstr "<li>La puissance de certaine de vos prises n'est pas configurée, vous pouvez la configurer: <a href='plugs'>ici</a></li>"
 
 msgid "ERROR_COST_PRICE_NULL"
-msgstr "<li>Le prix du coût du kilowatt-heure n'est pas configuré, vous pouvez le configurer: <a href='configuration'>ici</a></li>"
+msgstr "<li>Le prix du coût du kilowatt-heure n'est pas configuré, vous pouvez le configurer: <a href='configuration?cost_interface=1'>ici</a></li>"
 
 msgid "ERROR_HPC_TIME_NULL"
-msgstr "<li>L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configuré, vous pouvez le configurer <a href='configuration'>ici</a></li>"
+msgstr "<li>L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configuré, vous pouvez le configurer <a href='configuration?cost_interface=1'>ici</a></li>"
 
 msgid "ERROR_COPY_TPL"
 msgstr "<li>Impossible de copier le fichier empty_file_64.tpl sur votre carte SD</li>"

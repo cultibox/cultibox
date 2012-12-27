@@ -56,13 +56,13 @@ timeFormat: 'hh:mm:ss',
 
 
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
-   <SCRIPT LANGUAGE="JavaScript">
+   <script>
       alert('<?php echo "$pop_up_message"; ?>');
-   </SCRIPT>
+   </script>
 <?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
-   <SCRIPT LANGUAGE="JavaScript">
+   <script>
       alert('<?php echo "$pop_up_error_message"; ?>');
-   </SCRIPT>
+   </script>
 <?php } ?>
 
 <br />

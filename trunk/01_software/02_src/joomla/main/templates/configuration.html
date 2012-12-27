@@ -1,114 +1,4 @@
 <script>
-function verifDigit(e) {
-   if((e.keyCode < 48 || e.keyCode > 57)&&(e.keyCode != 46 &&  e.keyCode != 44 && e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
-   if((e.which < 48 || e.which > 57)&&(e.which != 46 && e.which != 44 && e.which != 08 && e.which != 10 && e.which != 13)) return false;
-}
-</script>
-
-<script>
-   function getAlarm(i) {
-      var divAval = document.getElementById('div_alarm_value');
-      var divAsenso = document.getElementById('div_alarm_senso');
-      var divAsenss = document.getElementById('div_alarm_senss');
-      var labelAsenss = document.getElementById('label_alarm_senss');
-      var labelAsenso = document.getElementById('label_alarm_senso');
-      var labelAvalue = document.getElementById('label_alarm_value');
-
-      switch(i) {
-         case 0 : divAval.style.display = ''; divAsenso.style.display = ''; divAsenss.style.display = ''; labelAvalue.style.display = ''; labelAsenso.style.display = ''; labelAsenss.style.display = '';break;
-         case 1 : divAval.style.display = 'none'; divAsenso.style.display = 'none'; divAsenss.style.display = 'none'; labelAvalue.style.display = 'none'; labelAsenso.style.display = 'none'; labelAsenss.style.display = 'none'; break;
-         default: divAval.style.display = ''; divAsenso.style.display = ''; divAsenss.style.display = ''; labelAvalue.style.display = ''; labelAsenso.style.display = ''; labelAsenss.style.display = ''; break;
-      }
-   }
-</script>
-
-<script>
-   function getUnity(i) {
-      var divDegree = document.getElementById('label_degree');
-      var divPourcent = document.getElementById('label_pourcent');
-
-      switch(i) {
-         case 0 : divDegree.style.display = ''; divPourcent.style.display = 'none'; break;
-         case 1 : divDegree.style.display = 'none'; divPourcent.style.display = ''; break;
-         default: divDegree.style.display = ''; divPourcent.style.display = ''; break;
-      }
-   }
-</script>
-
-<script>
-   function expand(div) {
-      var divConfig = document.getElementById('div_user_interface');
-      var divSystem = document.getElementById('div_system_interface');
-      var divAlarm = document.getElementById('div_alarm_interface');
-      var divCost = document.getElementById('div_cost_interface');
-      var Config = document.getElementById('user_interface');
-      var System = document.getElementById('system_interface');
-      var Alarm = document.getElementById('alarm_interface');
-      var Cost = document.getElementById('cost_interface');
-
-
-      switch(div) {
-         case 'user_interface' : if(divConfig.style.display == "none") { 
-                                    divConfig.style.display = ''; 
-                                    Config.value='1'; 
-                                 } else {  
-                                    divConfig.style.display = 'none'; 
-                                    Config.value=''; 
-                                 } 
-                                 break;
-         case 'system_interface' : if(divSystem.style.display == "none") { 
-                                        divSystem.style.display = ''; 
-                                        System.value='1'; 
-                                    } else {  
-                                        divSystem.style.display = 'none'; 
-                                        System.value=''; 
-                                    } 
-                                    break;
-         case 'alarm_interface' : if(divAlarm.style.display == "none") { 
-                                    divAlarm.style.display = ''; 
-                                    Alarm.value='1';  
-                                  } else {  
-                                    divAlarm.style.display = 'none'; 
-                                    Alarm.value='';  
-                                 } 
-                                 break;
-         case 'cost_interface' :  if(divCost.style.display == "none") { 
-                                    divCost.style.display = ''; 
-                                    Cost.value='1'; 
-                                  } else {  
-                                    divCost.style.display = 'none'; 
-                                    Cost.value=''; 
-                                  } 
-                                 break;
-      }
-   }
-
-</script>
-
-
-<script>
-   function getCostType(i) {
-      var labelStandard = document.getElementById('cost_label_standard');
-      var labelHP = document.getElementById('cost_label_hp');
-      var labelHC = document.getElementById('cost_label_hc');
-      var labelInputStandard = document.getElementById('cost_input_standard');
-      var labelInputHP = document.getElementById('cost_input_hp');
-      var labelInputHC = document.getElementById('cost_input_hc');
-      var labelStartHC = document.getElementById('start_label_hc');
-      var labelStopHC = document.getElementById('stop_label_hc');
-      var valueStartHC = document.getElementById('start_value_hc');
-      var valueStopHC = document.getElementById('stop_value_hc');
-
-
-      switch(i) {
-         case 0 : labelStandard.style.display = ''; labelHP.style.display = 'none'; labelHC.style.display = 'none'; labelInputStandard.style.display = ''; labelInputHP.style.display = 'none'; labelInputHC.style.display = 'none'; labelStartHC.style.display = 'none'; labelStopHC.style.display = 'none'; valueStartHC.style.display = 'none'; valueStopHC.style.display = 'none'; break;
-         case 1 : labelStandard.style.display = 'none'; labelHP.style.display = ''; labelHC.style.display = ''; labelInputStandard.style.display = 'none'; labelInputHP.style.display = ''; labelInputHC.style.display = ''; labelStartHC.style.display = ''; labelStopHC.style.display = ''; valueStartHC.style.display = ''; valueStopHC.style.display = ''; break;
-         default: labelStandard.style.display = ''; labelHP.style.display = 'none'; labelHC.style.display = 'none'; labelInputStandard.style.display = ''; labelInputHP.style.display = 'none'; labelInputHC.style.display = 'none'; labelStartHC.style.display = 'none'; labelStopHC.style.display = 'none'; valueStartHC.style.display = 'none'; valueStopHC.style.display = 'none'; break;
-      }
-   }
-</script>
-
-<script>
 $(document).ready(function(){
 $('#start_hc').timepicker({
 <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
@@ -606,7 +496,7 @@ timeFormat: 'hh:mm',
 <tr>
       <td class="conf-marge"></td>
       <td><div id="label_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSO'); ?></div></td>
-      <td><div id="div_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><select name="alarm_senso" onChange="getUnity(this.selectedIndex);" onLoad="getUnity(this.selectedIndex);">
+      <td><div id="div_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><select name="alarm_senso" onChange="getUnity(this.selectedIndex,'');" onLoad="getUnity(this.selectedIndex,'');">
            <?php if("$alarm_senso"=="000T") {
                      echo "<option value='000T' selected>".__('ALARM_TEMP')."</option>";
                      echo "<option value='000H'>".__('ALARM_HUMI')."</option>";
