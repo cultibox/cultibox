@@ -453,7 +453,7 @@ EOF;
            $db->setQuery($sql);
            $db->query();
            $res=$db->loadAssocList();
-      $ret=$db->getErrorMsg();
+           $ret=$db->getErrorMsg();
            if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
                       $out=$out.__('ERROR_SELECT_SQL').$ret;
@@ -493,6 +493,11 @@ EOF;
       }
 
         if(strcmp("$id","all")!=0) {
+         if(strcmp($res_power[$id-1]['PLUG_POWER'],"0")==0) {
+            $out=$out.__('ERROR_POWER_PRICE_NULL');
+         }
+
+   
          $tmp=array();
    
          foreach($res as $val) {
@@ -508,17 +513,23 @@ EOF;
          return $tmp;
        }
 
-      if(count($res_power)==16) {
+      if(count($res_power)==$GLOBALS['NB_MAX_PLUG']) {
+            $nb_plugs=get_configuration("NB_PLUGS",$error);
+            for($i=0;$i<$nb_plugs;$i++) {
+                if(strcmp($res_power[$i]['PLUG_POWER'],"0")==0) {
+                    $out=$out.__('ERROR_POWER_PRICE_NULL');
+                }
+            }
+
             $timestamp=$res[0]['timestamp'];
             $save=$res[0];
             $val=0;
             $tmp=array();
-            $count=0;
             for($i=0;$i<count($res);$i++) {
-               if(strcmp($res[$i]['timestamp'],$timestamp)==0) {  
+               if(strcmp($res[$i]['timestamp'],$timestamp)==0) { 
+                  $count=$res[$i]['plug_number']-1;
                   $pcent=round((int)$res[$i]['record']/10);
                   $val=$val+($pcent * (int)$res_power[$count]['PLUG_POWER'])/999;
-                  $count=$count+1;
                } else {
                  $tmp[] = array (
                      "timestamp" => "$timestamp",
@@ -529,11 +540,10 @@ EOF;
                  );
 
                   $save=$res[$i];
-                  $count=0; 
-                  $pcent=round((int)$res[$i]['record']/10);
-                  $val=($pcent*(int)$res_power[$count]['PLUG_POWER'])/999;
-                  $count=$count+1;
+                  $val=0;
+                  $pcent=0;
                   $timestamp=$res[$i]['timestamp'];
+                  $i=$i-1;
                }
             }
             return $tmp;      
