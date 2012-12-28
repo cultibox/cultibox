@@ -89,13 +89,9 @@ if(!check_date("$startday,","$endday")) {
 }
 
 if(strcmp($select_plug,"distinct_all")!=0) {
-    $check=0;
     $theorical_power=get_theorical_power($select_plug,$cost_type,$error,$check);
-    if($check) {  $error=$error.__('ERROR_POWER_PRICE_NULL'); }
     $nb=get_nb_days($startday,$endday)+1;
     $theorical_power=$theorical_power*$nb;
-
-    $data_power=get_data_power($startday,$endday,$select_plug,$error);
 
     if(strcmp($select_plug,"all")==0) {
         $title=__('PRICE_SELECT_ALL_PLUG');
@@ -118,7 +114,6 @@ if(strcmp($select_plug,"distinct_all")!=0) {
 } else {
     $nb_plugs = get_configuration("NB_PLUGS",$error);
     $nb=get_nb_days($startday,$endday)+1;
-    $check=0;
     for($i=1;$i<=$nb_plugs;$i++) {
        $theorical_power=get_theorical_power($i,$cost_type,$error,$check);
        $theorical_power=$theorical_power*$nb;
@@ -135,7 +130,6 @@ if(strcmp($select_plug,"distinct_all")!=0) {
         "color" => $GLOBALS['LIST_GRAPHIC_COLOR'][$i-1]
        ); 
     }
-    if($check) {  $error=$error.__('ERROR_POWER_PRICE_NULL'); }
 }
 
 if(strcmp("$update","True")==0) {
