@@ -371,6 +371,53 @@ function get_format_graph($arr) {
 //}}}
 
 
+// {{{ get_format_graph_power()
+// ROLE get datas for the highcharts graphics for the power graphic (special display)
+// IN $arr           array containing datas
+// RET $data         data at the highcharts format (a string)
+function get_format_graph_power($arr) {
+   $data="";
+   $last_mm="";
+   $last_hh="";
+   $last_value="";
+
+   if(count($arr)>0) {
+   foreach($arr as $value) {
+      $hh=substr($value['time_catch'], 0, 2);
+      $mm=substr($value['time_catch'], 2, 2);
+
+      if(("$hh:$mm" != "00:00")&&(empty($data))&&(empty($last_value))) {
+         if(("$hh"=="00")&&($mm<20)) {
+            $data=fill_data("00","00","$hh","$mm",$value['record'],"$data");
+         } else {
+            $data=fill_data("00","00","$hh","$mm","0","$data");
+         }
+      } else if((check_empty_record("$last_hh","$last_mm","$hh","$mm"))&&("$hh:$mm" != "00:00")) {
+         $data=fill_data("$last_hh","$last_mm","$hh","$mm","$last_value","$data");
+      } else {
+         if("$hh:$mm" != "00:00") {
+            $data=fill_data("$last_hh","$last_mm","$hh","$mm","0","$data");
+         }
+      }
+      $last_value="$value[record]";
+      $last_hh=$hh;
+      $last_mm=$mm;
+   }
+   if("$last_hh:$last_mm" != "23:59") {
+      if((check_empty_record("$last_hh","$last_mm","24","00"))&&("$hh:$mm" != "00:00")) {
+               $data=fill_data("$last_hh","$last_mm","24","00","$last_value","$data");
+      } else {
+         $data=fill_data("$last_hh","$last_mm","24","00","0","$data");
+      }
+   }
+   } else {
+          $data=fill_data("00","00","24","00","0","$data");
+   }
+   return $data;
+}
+//}}}
+
+
 // {{{ fill_data()
 // ROLE fill highcharts data,between two time spaces, using a specific value
 // IN $fhh        start hours

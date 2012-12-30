@@ -109,8 +109,6 @@ case "$1" in
                    fi 
             done < ./update_file/update_windows_from_$2_to_$3
 
-            echo "SRC files: $copy_nb";
-
             if [ ! -f ../01_src/02_sql/sql_update/update_sql_windows_from_$2_to_$3.sql ]; then
                 touch ../01_src/01_xampp/update_sql_windows_from_$2_to_$3.sql
             else

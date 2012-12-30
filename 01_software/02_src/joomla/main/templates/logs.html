@@ -115,8 +115,8 @@ buttonImageOnly: 'true',
 <table class="table_width">
    <tr>
       <td class="log-marge-month"></td>
-      <td class="log-marge-month-title"><?php echo __('MONTH_DATE'); ?></td>
-      <td class="log-marge-month-field">
+      <td ><?php echo __('MONTH_DATE'); ?></td>
+      <td >
             <select name="startmonth">
                <option <?php if("$startmonth" == "1") { echo 'selected';} ?> value="01"><?php echo __('MONTH01'); ?></option>
                <option <?php if("$startmonth" == "2") { echo 'selected';} ?> value="02"><?php echo __('MONTH02'); ?></option>
@@ -144,9 +144,9 @@ buttonImageOnly: 'true',
                   echo "</select>";
             } ?>
       </td>
-     <td class="log-marge-month"></td>
+	  <td class="log-marge-month"></td> 
    </tr>
-    <tr>
+   <tr>
       <td></td>
       <td><?php echo __('SELECT_SENSOR_NB'); ?></td>
       <td> <select name="select_sensor">
@@ -161,6 +161,7 @@ buttonImageOnly: 'true',
       <td></td>
       <td><p class="p_right"><INPUT type="submit" value=<?php echo __('VIEW'); ?>></p></td>
       <td></td>
+	  <td></td>
    </tr>
 </table>
 </form>
