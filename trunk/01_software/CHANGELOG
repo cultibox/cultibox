@@ -1,3 +1,13 @@
+CultiBox (1.1.1) precise; urgency=low
+   + Correction de l'afichage du formulaire des logs + correction de l'affichage des graphes de puissance + correction de la variable des graphes des couts 
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/libs/css/cultibox.css
+
+
 CultiBox (1.1.0) precise; urgency=low
    + Passage par une bibliothèque externe des fonctions javascript
         02_src/joomla/templates/yoo_cloud/layouts/template.php

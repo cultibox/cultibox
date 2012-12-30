@@ -98,7 +98,7 @@ if(strcmp($select_plug,"distinct_all")!=0) {
         $color_cost = get_configuration("COLOR_COST_GRAPH",$error);
     } else {
         $title=$plugs_infos[$select_plug-1]['PLUG_NAME'];
-        $color_cost=$GLOBALS['LIST_GRAPHIC_COLOR'][$select_plug-1];
+        $color_cost=$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$select_plug-1];
     }
 
     $data_power=get_data_power($startday,$endday,$select_plug,$error);
@@ -127,7 +127,7 @@ if(strcmp($select_plug,"distinct_all")!=0) {
         "real" => "$real_power",
         "theorical" => "$theorical_power",
         "title" => "$title",
-        "color" => $GLOBALS['LIST_GRAPHIC_COLOR'][$i-1]
+        "color" => $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$i-1]
        ); 
     }
 }

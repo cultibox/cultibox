@@ -533,7 +533,7 @@ EOF;
                } else {
                  $tmp[] = array (
                      "timestamp" => "$timestamp",
-                     "record" => "$val",
+                     "record" => round($val),
                      "plug_number" => $res[$i-1]["plug_number"],
                      "date_catch" => $save["date_catch"],
                      "time_catch" => $save["time_catch"]

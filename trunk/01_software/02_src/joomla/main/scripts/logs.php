@@ -306,7 +306,7 @@ if("$type" == "days") {
          }
 
          if(!empty($data_power)) {
-            $datap=get_format_graph($data_power);
+            $datap=get_format_graph_power($data_power);
          } else {
             $error=$error.__('EMPTY_POWER_DATA');
          }
