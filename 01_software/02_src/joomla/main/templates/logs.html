@@ -726,7 +726,7 @@ $(function () {
 <tr>
     <td class="log-manage-marge"></td>
     <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE'); ?></td>
-    <td class="log-manage-field"><INPUT type="submit" id="reset_log" name="reset_log" value="<?php echo __('MANAGE_RESET'); ?>" onclick="return DeleteForm()"></td>
+    <td class="log-manage-field"><INPUT type="submit" id="reset_log" name="reset_log" value="<?php echo __('MANAGE_RESET'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')"></td>
 </tr>
 </table>
 <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">

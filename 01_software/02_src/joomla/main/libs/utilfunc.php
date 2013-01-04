@@ -634,31 +634,15 @@ function check_cultibox_card($dir="") {
 function check_times($start_time="",$end_time="",&$out="") {
    if((!empty($start_time))&&(isset($start_time))&&(!empty($end_time))&&(isset($end_time))) {
       $start_time=str_replace(' ','',"$start_time");
-      if(strlen("$start_time")!=8) {
-         $out=$out.__('ERROR_FORMAT_TIME');
-         return 0;
-      }
+      if(!check_format_time($start_time,$out)) return 0;
 
       if(strcmp($start_time,$end_time)==0) {
          $out=$out.__('ERROR_SAME_TIME');
          return 0;
       }
 
-      if(!preg_match('#^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$#', $start_time)) {
-         $out=$out.__('ERROR_FORMAT_TIME');
-         return 0;
-      }
-
       $end_time=str_replace(' ','',"$end_time");
-      if(strlen("$end_time")!=8) {
-         $out=$out.__('ERROR_FORMAT_TIME');
-         return 0;
-      }
-
-      if(!preg_match('#^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$#', $end_time)) {
-         $out=$out.__('ERROR_FORMAT_TIME');
-         return 0;
-      }
+      if(!check_format_time($end_time,$out)) return 0;
 
       $sth=substr($start_time, 0, 2);
       $stm=substr($start_time, 3, 2);
@@ -1516,6 +1500,29 @@ function format_axis_data($data,$max=0,$out="") {
                                 );
            }
            return $new_data;
+}
+
+
+// }}}
+
+
+// {{{ check_format_time()
+// ROLE check time format: HH:MM:SS
+// IN   $time      time to be checked
+//      $out       string for error or warning messages
+// RET 1 if ok, 0 if there is an error 
+function check_format_time($time="",&$out) {
+    if(strlen("$time")!=8) {
+         $out=$out.__('ERROR_FORMAT_TIME');
+         return 0;
+    }
+
+    if(!preg_match('#^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$#', $time)) {
+         $out=$out.__('ERROR_FORMAT_TIME');
+         return 0;
+    }
+
+    return 1;
 }
 
 

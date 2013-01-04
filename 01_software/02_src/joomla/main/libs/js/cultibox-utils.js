@@ -164,23 +164,6 @@ function getType(i) {
 // }}}
 
 
-
-// {{{ DeleteForm()
-// ROLE function of confirmation to delete logs from a specific database (logs, power...)
-// IN  
-// HOW IT WORKS: just ask user to confirm his command
-// USED BY: templates/logs.html 
-function DeleteForm() {
-            var answer = confirm("<?php echo __('RESET_CONFIRM','javascript'); ?>");
-            if (answer) {
-                    return true;
-            }
-            return false;
-}
-// }}}
-
-
-
 // {{{ VerifInt()
 // ROLE function of verification of an input value
 // IN input value "e" to be checked
@@ -251,7 +234,6 @@ function getTolerance(i,j) {
 
 
 
-//============== For the programs part ===============\\
 // {{{ getRegul()
 // ROLE display the regulation informations or not
 // IN  input value: display or not the informations
@@ -267,4 +249,40 @@ function getRegulation(i,j) {
       }
 }
 // }}}
+
+
+// {{{ getProgramType()
+// ROLE chec or uncheck radio button depending of the type
+// IN  i the input type and j the index
+// USED BY: templates/programs.html 
+function getProgramType(i,j) {
+      var PonctualRadio = document.getElementById('ponctual'+j);
+      var CyclicRadio = document.getElementById('cyclic'+j);
+      var divTimeCyclicField = document.getElementById('time_cyclic_field'+j);
+      var divTimeCyclic = document.getElementById('time_cyclic'+j);
+
+      switch(i) {
+         case 'ponctual': PonctualRadio.checked=true; CyclicRadio.checked=false; divTimeCyclicField.style.display='none'; divTimeCyclic.style.display='none';  break;
+         case 'cyclic': PonctualRadio.checked=false; CyclicRadio.checked=true; divTimeCyclicField.style.display=''; divTimeCyclic.style.display=''; break;
+         default: PonctualRadio.checked=true; CyclicRadio.checked=false; divTimeCyclicField.style.display='none'; divTimeCyclic.style.display='none'; break;
+      }
+
+}
+// }}}
+
+
+// {{{ DeleteForm()
+// ROLE function of confirmation to delete logs from a specific database (logs, power...)
+// IN message to be displayed 
+// HOW IT WORKS: just ask user to confirm his command
+// USED BY: templates/logs.html 
+function DeleteForm(message) {
+            var answer = confirm(message);
+            if (answer) {
+                    return true;
+            }
+            return false;
+}
+// }}}
+
 

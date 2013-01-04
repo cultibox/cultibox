@@ -151,29 +151,44 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 	$end="end_time{$selected_plug}";
 	$value="value_program{$selected_plug}";
 	$regul="regul_program{$selected_plug}";
+    $reset_old="reset_old_program{$selected_plug}";
+    $cyclic_type="cyclic{$selected_plug}";
+    $ponctual_type="ponctual{$selected_plug}";
 
 	$start_time=getvar($start);
 	$end_time=getvar($end);
-        $regul_program=getvar($regul);
+    $reset_program=getvar($reset_old);
+    $regul_program=getvar($regul);
+    $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$ret_plug[$selected_plug]);
+    $cyclic=getvar($cyclic_type);
+    $ponctual=getvar($ponctual_type);
 
-        $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$ret_plug[$selected_plug]);
-
-
+    if(isset($cyclic)&&(!empty($cyclic))) {
+        $repeat="repeat_time{$selected_plug}"; 
+        $repeat_time=getvar($repeat);
+        
+        $cyclic_ch=check_format_time($repeat_time,$ret_plug[$selected_plug]);
+    }
 
 	if(strcmp($regul_program,"on")==0) {
-        	$value_program="99.9";
-        } elseif(strcmp($regul_program,"off")==0) {
-                $value_program="0";
-        } else {
-                $value_program=getvar($value);
-        }
+       	$value_program="99.9";
+    } elseif(strcmp($regul_program,"off")==0) {
+        $value_program="0";
+    } else {
+        $value_program=getvar($value);
+    }
 
         if(("$start_time"!="")&&("$end_time"!="")) {
-		$chtime=check_times($start_time,$end_time,$ret_plug[$selected_plug]);
-		if((isset($ret_plug[$selected_plug]))&&(!empty($ret_plug[$selected_plug]))) {
-			   $pop_up_error_message=clean_popup_message($ret_plug[$selected_plug]);
-		}
-		if($chtime) {
+            if((isset($ret_plug[$selected_plug]))&&(!empty($ret_plug[$selected_plug]))) {
+                $pop_up_error_message=clean_popup_message($ret_plug[$selected_plug]);
+                $chtime=check_times($start_time,$end_time,"");
+            } else {
+		        $chtime=check_times($start_time,$end_time,$ret_plug[$selected_plug]);
+		        if((isset($ret_plug[$selected_plug]))&&(!empty($ret_plug[$selected_plug]))) {
+			        $pop_up_error_message=clean_popup_message($ret_plug[$selected_plug]);
+                }
+		    }
+		if((empty($cyclic)&&($chtime))||((!empty($cyclic))&&($cyclic_ch))) {
 				if("$value_program"=="on") {
 					$value_program="99.9";
 					$check=true;
@@ -194,32 +209,73 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 						$check=true;
 					}
 				}
-			
-				if($check) {
-					if($chtime==2) {
-						$prog[]= array(
-                                        		"start_time" => "$start_time",
-                                        		"end_time" => "23:59:59",
-                                        		"value_program" => "$value_program",
-                                        		"selected_plug" => "$selected_plug"
-                                		);
+                
+                if($check) {
+                    if($chtime==2) {
+                        $prog[]= array(
+                            "start_time" => "$start_time",
+                            "end_time" => "23:59:59",
+                            "value_program" => "$value_program",
+                            "selected_plug" => "$selected_plug"
+                        );
 
-                                 		$prog[]= array(
-                                        		"start_time" => "00:00:00",
-                                        		"end_time" => "$end_time",
-                                        		"value_program" => "$value_program",
-                                        		"selected_plug" => "$selected_plug"
-                                		);
-                        		} else {
-                                		$prog[]= array(
-                                        		"start_time" => "$start_time",
-                                        		"end_time" => "$end_time",
-                                        		"value_program" => "$value_program",
-                                        		"selected_plug" => "$selected_plug"
-                                		);
-                        		}
+                        $prog[]= array(
+                            "start_time" => "00:00:00",
+                            "end_time" => "$end_time",
+                            "value_program" => "$value_program",
+                            "selected_plug" => "$selected_plug"
+                        );
+                   	} else {
+                        if(isset($cyclic)&&(!empty($cyclic))) {
+                            date_default_timezone_set('UTC');
+                            $count=0;
+                            while($count<7) {
+                                    $prog[]= array(
+                                        "start_time" => "$start_time",
+                                        "end_time" => "$end_time",
+                                        "value_program" => "$value_program",
+                                        "selected_plug" => "$selected_plug"
+                                    );
 
-					foreach($prog as $val) {
+                                    $hh=substr($start_time,0,2);
+                                    $mm=substr($start_time,3,2);
+                                    $ss=substr($start_time,6,2);
+
+                                    $rephh=substr($repeat_time,0,2);
+                                    $repmm=substr($repeat_time,3,2);
+                                    $repss=substr($repeat_time,6,2);
+
+                                    $shh=substr($end_time,0,2);
+                                    $smm=substr($end_time,3,2);
+                                    $sss=substr($end_time,6,2); 
+
+                                   
+                                    $step=$rephh*3600+$repmm*60+$repss;
+                                    $val_start=mktime($hh,$mm,$ss)+$step;
+                                    $val_stop=mktime($shh,$smm,$sss)+$step;
+
+                                    echo date('j', $val_start)."--".date('j', $val_stop);
+
+                                    $start_time=date('h:i:s', $val_start);
+                                    $end_time=date('h:i:s', $val_stop);
+                                    $count=$count+1;
+                            }
+                        } else {
+                                $prog[]= array(
+                                    "start_time" => "$start_time",
+                                    "end_time" => "$end_time",
+                                    "value_program" => "$value_program",
+                                    "selected_plug" => "$selected_plug"
+                                );
+                        }
+                    }
+
+                    if((isset($reset_program))&&(strcmp($reset_program,"Yes")==0)) {
+                        clean_program($selected_plug,$error);
+                    } 
+                                                                  
+
+                    foreach($prog as $val) {
 						if(insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$ret_plug[$selected_plug])) {
 							if(empty($info_plug[$selected_plug])) {
 								$info_plug[$selected_plug]=$info_plug[$selected_plug].__('INFO_VALID_UPDATE_PROGRAM');
@@ -231,14 +287,14 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
 					}
 					if((isset($pop_up_message))&&(!empty($pop_up_message))) {
 						unset($pop_up_message);
-					} else {
-						if(count($info_plug)>0) {
-                                                        $pop_up_message=clean_popup_message(__('INFO_VALID_UPDATE_PROGRAM'));
-							if((isset($sd_card))&&(!empty($sd_card))) {
-								$pop_up_message=$pop_up_message.clean_popup_message(__('INFO_PLUG_CULTIBOX_CARD'));
-							}
-						}
-					}
+                    } else {
+                        if(count($info_plug)>0) {
+                                $pop_up_message=clean_popup_message(__('INFO_VALID_UPDATE_PROGRAM'));
+                            if((isset($sd_card))&&(!empty($sd_card))) {
+                                $pop_up_message=$pop_up_message.clean_popup_message(__('INFO_PLUG_CULTIBOX_CARD'));
+                            }
+                        }
+                    }
 				} else {
 					$ret_plug[$selected_plug]=$ret_plug[$selected_plug].__('ERROR_VALUE_PROGRAM');
                                 }
@@ -269,7 +325,14 @@ for($i=0;$i<$nb_plugs;$i++) {
 		default: $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
 			break;
 					
-	}
+    }
+
+    if(isset($selected_plug)&&(!empty($selected_plug))&&($i==$selected_plug-1)&&(isset($reset_program))&&(strcmp($reset_program,"Yes")==0)) {
+        $plugs_infos[$i]["RESET"]='Yes';
+    } else {
+        unset($plugs_infos[$i]["RESET"]);
+    }
+
     $resume[$i+1]=format_data_sumary($plugs_infos[$i]["data"],$plugs_infos[$i]['PLUG_NAME'],$i+1,$plugs_infos[$i]['PLUG_TYPE']);
 
 }
@@ -367,6 +430,10 @@ if(strcmp($informations["log"],"")==0) {
         $informations["log"]=get_informations("log");
 } else {
         insert_informations("log",$informations["log"]);
+}
+
+if((!isset($cyclic))&&(!isset($ponctual))) { 
+        $ponctual="True";
 }
 
 
