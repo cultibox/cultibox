@@ -1,3 +1,17 @@
+CultiBox (1.1.2) precise; urgency=low
+    + Corection bug sur le chargement des logs
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/libs/js/cultibox-utils.js
+
+    + Ajout de la possibilité de supprimer l'ancien programme quand on ajoute une action dans les programmes + possibilité de définir une action cyclique (en cours) 
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/css/cultibox.css
+
 CultiBox (1.1.1) precise; urgency=low
    + Correction de l'afichage du formulaire des logs + correction de l'affichage des graphes de puissance + correction de la variable des graphes des couts 
         02_src/joomla/main/templates/logs.html

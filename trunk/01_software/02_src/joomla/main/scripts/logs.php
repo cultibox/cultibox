@@ -180,25 +180,17 @@ if((isset($sd_card))&&(!empty($sd_card))&&(!isset($quick_load))) {
    // Search only on two previous months
 
    if((isset($import_log))&&(!empty($import_log))) {
-    $FirstMonthSearch = date('n') - $log_search +1;
-
-    if($FirstMonthSearch == 0) {
-        $FirstMonthSearch = 1;
-    }
-
-    if($FirstMonthSearch < 0) {
-      $FirstMonthSearch = 12 + $FirstMonthSearch + 1;
-    }
-
     $ListMonthSearch=array();
-    $i=1;
+    $MonthSearch = date('n');
+    $ListMonthSearch[]=$MonthSearch;
 
-    while($i<=$log_search) {
-        if($FirstMonthSearch>12) {
-            $FirstMonthSearch=1;
+    $i=1;
+    while($i<$log_search) {
+        $MonthSearch=$MonthSearch-1;
+        if($MonthSearch<1) {
+            $MonthSearch=12;
         }
-        $ListMonthSearch[]=$FirstMonthSearch;  
-        $FirstMonthSearch=$FirstMonthSearch+1;
+        $ListMonthSearch[]=$MonthSearch;  
         $i=$i+1;
     }
 
@@ -212,14 +204,13 @@ if((isset($sd_card))&&(!empty($sd_card))&&(!isset($quick_load))) {
       
          // Don't search for nexts days
          if ($month != date('n') || $day <= date('j') ) {
- 
             // Convert date to be equivalent of directory
-             if($day<10) {
+             if(strlen($day)<2) {
                $dday="0".$day;
              } else {
                $dday=$day;
              }
-             if($month<10) {
+            if(strlen($month)<2) {
                   $mmonth="0".$month;
             } else {
                $mmonth=$month;
@@ -239,7 +230,7 @@ if((isset($sd_card))&&(!empty($sd_card))&&(!isset($quick_load))) {
                   }
                   unset($log) ;
                   $log = array();
-                   $load_log=true;
+                  $load_log=true;
                }
 
                // get power values

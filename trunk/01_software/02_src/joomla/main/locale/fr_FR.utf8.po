@@ -534,6 +534,21 @@ msgstr "Activée"
 msgid "SECOND_REGUL_OFF"
 msgstr "Désactivée"
 
+msgid "RESET_OLD_PROGRAM"
+msgstr "Effacer l'ancien programme"
+
+msgid "PROGRAM_NEW_ACTION"
+msgstr "Programmer une action"
+
+msgid "PROGRAM_PONCTUAL"
+msgstr "ponctuelle"
+
+msgid "PROGRAM_CYCLIC"
+msgstr "cyclique"
+
+msgid "REPEAT_EVERY"
+msgstr "Répéter toutes les"
+
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"
