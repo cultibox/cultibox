@@ -226,49 +226,69 @@ if(!empty($selected_plug)&&(isset($selected_plug))) {
                             "selected_plug" => "$selected_plug"
                         );
                    	} else {
-                        if(isset($cyclic)&&(!empty($cyclic))) {
-                            date_default_timezone_set('UTC');
-                            $count=0;
-                            while($count<7) {
-                                    $prog[]= array(
+                        $prog[]= array(
                                         "start_time" => "$start_time",
                                         "end_time" => "$end_time",
                                         "value_program" => "$value_program",
                                         "selected_plug" => "$selected_plug"
+                        );
+                    }
+
+
+                    if(isset($cyclic)&&(!empty($cyclic))) {
+                            date_default_timezone_set('UTC');
+                            $cyclic_start= $start_time;
+                            $cyclic_end=$end_time;
+                            $rephh=substr($repeat_time,0,2);
+                            $repmm=substr($repeat_time,3,2);
+                            $repss=substr($repeat_time,6,2);
+                            $step=$rephh*3600+$repmm*60+$repss;
+                            $chk_start=mktime(0,0,0);
+                            $chk_stop=mktime();
+                            $chk_first=false;
+
+                            while(($chk_stop-$chk_start)<86400) {
+                                    if($chk_first) {
+                                    $prog[]= array(
+                                        "start_time" => "$cyclic_start",
+                                        "end_time" => "$cyclic_end",
+                                        "value_program" => "$value_program",
+                                        "selected_plug" => "$selected_plug"
                                     );
+                                    }
 
-                                    $hh=substr($start_time,0,2);
-                                    $mm=substr($start_time,3,2);
-                                    $ss=substr($start_time,6,2);
+                                    $hh=substr($cyclic_start,0,2);
+                                    $mm=substr($cyclic_start,3,2);
+                                    $ss=substr($cyclic_start,6,2);
 
-                                    $rephh=substr($repeat_time,0,2);
-                                    $repmm=substr($repeat_time,3,2);
-                                    $repss=substr($repeat_time,6,2);
+                                    $shh=substr($cyclic_end,0,2);
+                                    $smm=substr($cyclic_end,3,2);
+                                    $sss=substr($cyclic_end,6,2); 
 
-                                    $shh=substr($end_time,0,2);
-                                    $smm=substr($end_time,3,2);
-                                    $sss=substr($end_time,6,2); 
-
-                                   
-                                    $step=$rephh*3600+$repmm*60+$repss;
                                     $val_start=mktime($hh,$mm,$ss)+$step;
                                     $val_stop=mktime($shh,$smm,$sss)+$step;
 
-                                    echo date('j', $val_start)."--".date('j', $val_stop);
+                                    $cyclic_start=date('H:i:s', $val_start);
+                                    $cyclic_end=date('H:i:s', $val_stop);
 
-                                    $start_time=date('h:i:s', $val_start);
-                                    $end_time=date('h:i:s', $val_stop);
-                                    $count=$count+1;
-                            }
-                        } else {
-                                $prog[]= array(
-                                    "start_time" => "$start_time",
-                                    "end_time" => "$end_time",
-                                    "value_program" => "$value_program",
-                                    "selected_plug" => "$selected_plug"
-                                );
+                                    $chk_stop=$val_stop;
+
+                                    if(($chtime==2)&&(!$chk_first)) {
+                                            if(((str_replace(":","",$cyclic_start)<=235959)&&((str_replace(":","",$cyclic_start))>=(str_replace(":","",$start_time))))||((str_replace(":","",$cyclic_start))<=(str_replace(":","",$end_time)))) {
+                                                unset($prog);
+                                                $prog[]= array(
+                                                        "start_time" => "00:00:00",
+                                                        "end_time" => "23:59:59",
+                                                        "value_program" => "$value_program",
+                                                        "selected_plug" => "$selected_plug"
+                                                );
+                                            }
+                                    }
+                                    $chk_first=true;
+ 
+
                         }
-                    }
+                    } 
 
                     if((isset($reset_program))&&(strcmp($reset_program,"Yes")==0)) {
                         clean_program($selected_plug,$error);

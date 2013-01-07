@@ -4,7 +4,7 @@ CultiBox (1.1.2) precise; urgency=low
         02_src/joomla/main/scripts/logs.php
         02_src/joomla/main/libs/js/cultibox-utils.js
 
-    + Ajout de la possibilité de supprimer l'ancien programme quand on ajoute une action dans les programmes + possibilité de définir une action cyclique (en cours) 
+    + Ajout de la possibilité de supprimer l'ancien programme quand on ajoute une action dans les programmes + possibilité de définir une action cyclique 
         02_src/joomla/main/templates/programs.html
         02_src/joomla/main/locale/en_GB.utf8.po
         02_src/joomla/main/locale/fr_FR.utf8.po
