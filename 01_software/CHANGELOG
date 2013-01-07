@@ -1,4 +1,12 @@
 CultiBox (1.1.2) precise; urgency=low
+    + Nouveau fonctionnement du menu configuration
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/libs/js/cultibox-utils.js
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/templates/yoo_cloud/css/base.css
+
     + Corection bug sur le chargement des logs
         02_src/joomla/main/templates/logs.html
         02_src/joomla/main/scripts/logs.php

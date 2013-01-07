@@ -45,59 +45,11 @@ $version=get_configuration("VERSION",$error);
 $log_search=getvar("log_search",$error);
 $start_hc=getvar("start_hc",$error);
 $stop_hc=getvar("stop_hc",$error);
+$menu=getvar("menu",$error);
 
-
-
-
-if(!isset($_SESSION['menu'])||(empty($_SESSION['menu']))) {
-        $_SESSION['menu'][] = array(
-                               "title" => "user_interface",
-                               "value" => false 
-                            );
-        $_SESSION['menu'][] = array(
-                               "title" => "system_interface",
-                               "value" => false
-                            );
-        $_SESSION['menu'][] = array(
-                               "title" => "cost_interface",
-                               "value" => false
-                            );
-        $_SESSION['menu'][] = array(
-                               "title" => "alarm_interface",
-                               "value" => false
-                            );
-} else {
-    $menu_config=getvar("user_interface");
-    $menu_cost=getvar("cost_interface");
-    $menu_alarm=getvar("alarm_interface");
-    $menu_system=getvar("system_interface");
-
-
-    if((isset($menu_config))&&(!empty($menu_config))) {
-            $_SESSION['menu'][0]['value']=true;
-    } else {
-            $_SESSION['menu'][0]['value']=false;
-    }
-
-    if((isset($menu_system))&&(!empty($menu_system))) {
-            $_SESSION['menu'][1]['value']=true;
-    } else {
-            $_SESSION['menu'][1]['value']=false;
-    }
-
-    if((isset($menu_cost))&&(!empty($menu_cost))) {
-            $_SESSION['menu'][2]['value']=true;
-    } else {
-            $_SESSION['menu'][2]['value']=false;
-    }
-
-    if((isset($menu_alarm))&&(!empty($menu_alarm))) {
-            $_SESSION['menu'][3]['value']=true;
-    } else {
-            $_SESSION['menu'][3]['value']=false;
-    }
-}
-
+if((!isset($menu))||(empty($menu))) {
+        $menu="user_interface";
+} 
 
 if((isset($lang))&&(!empty($lang))) {
 	insert_configuration("LANG",$lang,$error);

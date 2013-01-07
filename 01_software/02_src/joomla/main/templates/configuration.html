@@ -65,8 +65,19 @@ timeFormat: 'hh:mm',
 <?php } ?>
 
 <br />
-<h1><label onclick="expand('user_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('USER_CONF'); ?></label></h1>
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
+<table class="table_width">
+<tr>
+    <td><h1><div id="div_user_label"><label onclick="expand('user_interface')"><?php echo __('USER_CONF'); ?></label></h1></div></td>
+    <td><h1><div id="div_system_label"><label onclick="expand('system_interface')"><?php echo __('SYSTEM_CONF'); ?></label></div></h1></td>
+    <td><h1><div id="div_alarm_label"><label onclick="expand('alarm_interface')"><?php echo __('CONFIGURE_ALARM'); ?></label></div></h1></td>
+    <td><h1><div id="div_cost_label"><label onclick="expand('cost_interface')"><?php echo __('CONFIGURE_COST'); ?></label></div></h1></td>
+</tr>
+</table>    
+<hr />
+<br />
+    
+
 <div id="div_user_interface" style="display:none">
 <table class="conf-table">
    <tr>
@@ -387,8 +398,6 @@ timeFormat: 'hh:mm',
    </tr>
 </table>
 </div>
-<hr />
- <h1><label onclick="expand('system_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SYSTEM_CONF'); ?></label></h1>
 <div id="div_system_interface" style="display:none">
 <table class="conf-table">
 <tr>
@@ -474,9 +483,7 @@ timeFormat: 'hh:mm',
 </tr>
 </table>
 </div>
-<hr />
 
-<h1><label onclick="expand('alarm_interface')"><img src="main/libs/img/arrow.png" alt=""/><?php echo __('CONFIGURE_ALARM'); ?></label></h1>
 <div id="div_alarm_interface" style="display:none">
 <table class="conf-table">
    <tr>  
@@ -528,9 +535,6 @@ timeFormat: 'hh:mm',
    </tr>
 </table>
 </div>
-<hr />
-
-<h1><label onclick="expand('cost_interface')"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_COST'); ?></label></h1>
 
 <div id="div_cost_interface" style="display:none">
 <table class="conf-table">
@@ -573,25 +577,14 @@ timeFormat: 'hh:mm',
    </tr>
 </table>
 </div>
+
+<br />
 <hr />
-
+<input type="hidden" id="menu" name="menu" value="<?php echo $menu; ?>" />
 <br /><p class="p_center">
-   <INPUT type="submit" value="<?php echo __('VALIDATION_CONF'); ?>">
+   <input type="submit" value="<?php echo __('VALIDATION_CONF'); ?>">
 </p>
-    <?php 
-    foreach($_SESSION['menu'] as $submenu) {
-            echo "<input type='hidden' id='".$submenu['title']."' name='".$submenu['title']."' value='".$submenu['value']."' >";
-    } 
-   ?> 
 </form>
-
-
-
-
 <?php 
-        foreach($_SESSION['menu'] as $submenu) {
-                if($submenu['value']) {
-      echo "<script>expand('".$submenu['title']."');</script>";
-                } 
-        } 
+      echo "<script>expand('".$menu."');</script>";
 ?>

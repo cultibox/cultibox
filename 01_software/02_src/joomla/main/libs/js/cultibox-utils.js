@@ -9,44 +9,60 @@ function expand(div) {
       var divSystem = document.getElementById('div_system_interface');
       var divAlarm = document.getElementById('div_alarm_interface');
       var divCost = document.getElementById('div_cost_interface');
-      var Config = document.getElementById('user_interface');
-      var System = document.getElementById('system_interface');
-      var Alarm = document.getElementById('alarm_interface');
-      var Cost = document.getElementById('cost_interface');
 
+      var divLabelConfig = document.getElementById('div_user_label');
+      var divLabelSystem = document.getElementById('div_system_label');
+      var divLabelAlarm = document.getElementById('div_alarm_label');
+      var divLabelCost = document.getElementById('div_cost_label');
 
       switch(div) {
-         case 'user_interface' : if(divConfig.style.display == "none") {
-                                    divConfig.style.display = '';
-                                    Config.value='1';
-                                 } else {
-                                    divConfig.style.display = 'none';
-                                    Config.value='';
-                                 }
+         case 'user_interface' : divConfig.style.display = '';
+                                 divSystem.style.display = "none";
+                                 divAlarm.style.display = "none";
+                                 divCost.style.display = "none";
+                        
+                                 divLabelConfig.style.color = '#000000';
+                                 divLabelSystem.style.color = '';
+                                 divLabelAlarm.style.color = '';
+                                 divLabelCost.style.color = '';
+                                 document.configform.menu.value="user_interface";
+                                 
                                  break;
-         case 'system_interface' : if(divSystem.style.display == "none") {
-                                        divSystem.style.display = '';
-                                        System.value='1';
-                                    } else {
-                                        divSystem.style.display = 'none';
-                                        System.value='';
-                                    }
-                                    break;
-         case 'alarm_interface' : if(divAlarm.style.display == "none") {
-                                    divAlarm.style.display = '';
-                                    Alarm.value='1';
-                                  } else {
-                                    divAlarm.style.display = 'none';
-                                    Alarm.value='';
-                                 }
-                                 break;
-         case 'cost_interface' :  if(divCost.style.display == "none") {
-                                    divCost.style.display = '';
-                                    Cost.value='1';
-                                  } else {
-                                    divCost.style.display = 'none';
-                                    Cost.value='';
-                                  }
+         case 'system_interface' : divConfig.style.display = "none";
+                                   divSystem.style.display = '';
+                                   divAlarm.style.display = "none";
+                                   divCost.style.display = "none";
+
+                                   divLabelConfig.style.color = '';
+                                   divLabelSystem.style.color = '#000000';
+                                   divLabelAlarm.style.color = '';
+                                   divLabelCost.style.color = '';
+                                   document.configform.menu.value="system_interface";
+
+                                   break;
+         case 'alarm_interface' : divConfig.style.display = "none";
+                                  divSystem.style.display = "none";
+                                  divAlarm.style.display = '';
+                                  divCost.style.display = "none";
+
+                                  divLabelConfig.style.color = '';
+                                  divLabelSystem.style.color = '';
+                                  divLabelAlarm.style.color = '#000000';
+                                  divLabelCost.style.color = '';
+                                  document.configform.menu.value="alarm_interface";
+
+                                  break;
+         case 'cost_interface' : divConfig.style.display = "none";
+                                 divSystem.style.display = "none";
+                                 divAlarm.style.display = "none";
+                                 divCost.style.display = '';
+
+                                 divLabelConfig.style.color = '';
+                                 divLabelSystem.style.color = '';
+                                 divLabelAlarm.style.color = '';
+                                 divLabelCost.style.color = '#000000';
+                                 document.configform.menu.value="cost_interface";
+
                                  break;
       }
 }
