@@ -631,13 +631,13 @@ function check_cultibox_card($dir="") {
 //      $end_time        time ending the event
 //      $out             string for error or warning messages
 // RET 1 if ok, 0 if there is an error or 2 if start time > end time
-function check_times($start_time="",$end_time="",&$out="") {
+function check_times($start_time="",$end_time="",&$out) {
    if((!empty($start_time))&&(isset($start_time))&&(!empty($end_time))&&(isset($end_time))) {
       $start_time=str_replace(' ','',"$start_time");
       if(!check_format_time($start_time,$out)) return 0;
 
       if(strcmp($start_time,$end_time)==0) {
-         $out=$out.__('ERROR_SAME_TIME');
+         $out[]=__('ERROR_SAME_TIME');
          return 0;
       }
 
@@ -661,7 +661,7 @@ function check_times($start_time="",$end_time="",&$out="") {
 
       return 1;         
    }
-   $out=$out.__('ERROR_MISSING_VALUE_TIME');
+   $out[]=__('ERROR_MISSING_VALUE_TIME');
    return 0;
 }
 // }}}
@@ -799,7 +799,7 @@ function save_program_on_sd($sd_card,$program,&$out) {
 //      $file         file path to save data
 //      $out          error or warning messages
 // RET false is an error occured, true else
-function write_program($data,$file,&$out="") {
+function write_program($data,$file,&$out) {
    if($f=fopen("$file","w+")) {
       $nbPlug = count($data);
       while(strlen($nbPlug)<3) {
@@ -811,7 +811,7 @@ function write_program($data,$file,&$out="") {
       }
       fclose($f);
    } else {
-      $out=$out.__('ERROR_WRITE_SD');
+      $out[]=__('ERROR_WRITE_SD');
    }
 }
 // }}}
@@ -863,7 +863,7 @@ function compare_program($data,$sd_card) {
 // IN   $sd_card        the sd card to be written
 //      $out            error or warning messages
 // RET false is an error occured, true else
-function write_pluga($sd_card,&$out="") {
+function write_pluga($sd_card,&$out) {
 
    $file="$sd_card/pluga";
 
@@ -892,7 +892,7 @@ function write_pluga($sd_card,&$out="") {
 //      $sd_card        the sd card to be written
 //      $out            error or warning messages
 // RET false is an error occured, true else
-function write_plugconf($data,$sd_card,&$out="") {
+function write_plugconf($data,$sd_card,&$out) {
    for($i=0;$i<count($data);$i++) {
       $nb=$i+1;
       if($nb<10) {
@@ -923,7 +923,7 @@ function write_plugconf($data,$sd_card,&$out="") {
 //   
 //   $out         error or warning message
 // RET none   
-function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$alarm_senso="000T",$alarm_senss="000+",&$out="") {
+function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$alarm_senso="000T",$alarm_senss="000+",&$out) {
    $record=$record_frequency*60;
    $power=$power_frequency*60;
 
@@ -959,7 +959,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       fputs($f,"RTC_OFFSET_:1127\r\n");
       fclose($f);
    } else {
-      $out=$out.__('ERROR_WRITE_SD');
+      $out[]=__('ERROR_WRITE_SD');
    }
 }
 //}}}
@@ -1009,7 +1009,7 @@ function concat_calendar_entries($data,$month,$day) {
 //    $data            data to write into the sd card
 //    $out             error or warning messages
 // RET none
-function write_calendar($sd_card,$data,&$out="") {
+function write_calendar($sd_card,$data,&$out) {
    if(isset($sd_card)&&(!empty($sd_card))) {
       if(count($data)>0) {
          for($month=1;$month<=12;$month++) {
@@ -1096,20 +1096,20 @@ function check_date($datestart="",$dateend="") {
 //    $tolerance          the value to check
 //    $out                error or warning message
 // RET false is there is a wrong value, true else
-function check_tolerance_value($type,&$tolerance=0,&$out="") {
+function check_tolerance_value($type,&$tolerance=0,&$out) {
    $tolerance=str_replace(",",".",$tolerance);
    if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
       if(($tolerance > 0)&&($tolerance <= 10)) {
          return true;
       } else {
-         $out=$out.__('ERROR_TOLERANCE_VALUE_DEGREE');
+         $out[]=__('ERROR_TOLERANCE_VALUE_DEGREE');
          return false;
       }
    } else if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
       if(($tolerance > 0)&&($tolerance <= 25.5)) {
          return true;
       } else {
-         $out=$out.__('ERROR_TOLERANCE_VALUE_POURCENT');
+         $out[]=__('ERROR_TOLERANCE_VALUE_POURCENT');
          return false;
       }   
    }
@@ -1124,28 +1124,28 @@ function check_tolerance_value($type,&$tolerance=0,&$out="") {
 // IN   $out         error or warning message
 // IN   $type        temp or humi - type to check
 // RET false is there is a wrong value, true else
-function check_format_values_program(&$value="0",&$out="",$type="temp") {
+function check_format_values_program(&$value="0",&$out,$type="temp") {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
 
     if(!is_numeric($value)) {
-                $out.__('ERROR_VALUE_PROGRAM');
+                $out[]=__('ERROR_VALUE_PROGRAM');
                 return false;
    }
 
    if(strcmp($type,"temp")==0) {
       if(($value>60)||($value<5)) {
-      $out=$out.__('ERROR_VALUE_PROGRAM_TEMP');
+      $out[]=__('ERROR_VALUE_PROGRAM_TEMP');
       return false; 
       }
    } elseif(strcmp($type,"humi")==0) {
       if(($value>95)||($value<10)) {
-                $out=$out.__('ERROR_VALUE_PROGRAM_HUMI');
+                $out[]=__('ERROR_VALUE_PROGRAM_HUMI');
                 return false; 
       }
    } else {
    if(($value>99.9)||($value<0)) {
-                $out=$out.__('ERROR_VALUE_PROGRAM');
+                $out[]=__('ERROR_VALUE_PROGRAM');
                 return false; 
        }
    }
@@ -1159,13 +1159,13 @@ function check_format_values_program(&$value="0",&$out="",$type="temp") {
 // IN   $value   value to check and format
 // IN   $out     error or warning message
 // RET false is there is a wrong value, true else
-function check_power_value($value="0",&$out="") {
+function check_power_value($value="0",&$out) {
    if($value<0) {
-                $out=$out.__('ERROR_POWER_VALUE');
+                $out[]=__('ERROR_POWER_VALUE');
                 return false;
    }
    if(!is_numeric($value)) {
-                $out.__('ERROR_POWER_VALUE');
+                $out[]=__('ERROR_POWER_VALUE');
                 return false;
    }
    return true;
@@ -1202,9 +1202,8 @@ function check_regul_value($value="0") {
 // {{{ check_and_copy_firm()
 // ROLE check if firmwares (firm.hex,emmeteur.hex) has to be copied and do the copy into the sd card
 // IN  $sd_card     the sd card pathname 
-//     $out         error or warning message
 // RET none
-function check_and_copy_firm($sd_card,&$out="") {
+function check_and_copy_firm($sd_card) {
    $new_firm="";
    $current_firm="";
 
@@ -1260,13 +1259,13 @@ function check_and_copy_firm($sd_card,&$out="") {
 // IN  $sd_card     the sd card pathname 
 //     $out         error or warning message
 // RET none
-function check_and_copy_log($sd_card,&$out="") {
+function check_and_copy_log($sd_card,&$out) {
     if(is_file("$sd_card/log.txt")) {
     } else {
         if(is_file("main/templates/data/empty_file_64.tpl")) {
             copy("main/templates/data/empty_file_64.tpl", "$sd_card/log.txt");   
         }else {
-            $out=$out.__('ERROR_COPY_TPL');
+            $out[]=__('ERROR_COPY_TPL');
         }
     }
 }
@@ -1278,10 +1277,10 @@ function check_and_copy_log($sd_card,&$out="") {
 // IN  $message         message to be cleaned
 // RET   new message cleaned 
 function clean_popup_message(&$message="") {
-   $old = array("'","<li>", "</li>", "&eacute;","&agrave;","&egrave;","&ecirc;","&deg;");
-   $new   = array("\'","", "\\n", "é","à","è","ê","°");
+   $old = array("'","&eacute;","&agrave;","&egrave;","&ecirc;","&deg;","&ucirc;","&ocirc;");
+   $new   = array("\'","é","à","è","ê","°","û","ô");
    
-   return str_replace($old, $new, $message);
+   return str_replace($old, $new, $message)."\\n\\n";
 }
 // }}}
 
@@ -1316,7 +1315,7 @@ function get_nb_days($start_date="",$end_date="") {
 // IN    $ret     array to return containing updates informations
 //       $out     errors or warnings messages
 // RET   none  
-function check_update_available(&$ret,&$out="") {
+function check_update_available(&$ret,&$out) {
          if(isset($GLOBALS['UPDATE_FILE'])&&(!empty($GLOBALS['UPDATE_FILE']))) {
                $buffer=array();
                $tmp=array();
@@ -1334,7 +1333,7 @@ function check_update_available(&$ret,&$out="") {
                                     }
                  } 
                } else {
-                  $out=$out.__('ERROR_REMOTE_UPDATE_FILE');
+                  $out[]=__('ERROR_REMOTE_UPDATE_FILE');
                }
          }
 }
@@ -1484,7 +1483,7 @@ function format_data_sumary($data="",$name="",$number="",$type="") {
 //       $max        max of the axis
 //       $out        error or warning message
 // RET   data formated 
-function format_axis_data($data,$max=0,$out="") {
+function format_axis_data($data,$max=0,&$out) {
            if($max==0) return $data;
            if(count($data)<=0) return $data;
 
@@ -1513,12 +1512,12 @@ function format_axis_data($data,$max=0,$out="") {
 // RET 1 if ok, 0 if there is an error 
 function check_format_time($time="",&$out) {
     if(strlen("$time")!=8) {
-         $out=$out.__('ERROR_FORMAT_TIME');
+         $out[]=__('ERROR_FORMAT_TIME');
          return 0;
     }
 
     if(!preg_match('#^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$#', $time)) {
-         $out=$out.__('ERROR_FORMAT_TIME');
+         $out[]=__('ERROR_FORMAT_TIME');
          return 0;
     }
 

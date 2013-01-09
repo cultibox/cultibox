@@ -10,7 +10,7 @@
 
 
 <?php if((isset($info))&&(!empty($info))) { ?>
-   <div id="info">
+   <div class="info">
       <ul>
          <?php echo $info; ?>
       </ul>
@@ -18,7 +18,7 @@
 <?php } ?>
 
 <?php if((!empty($main_error))||(!empty($error))) { ?>
-<div id="error">
+<div class="error">
 <ul>
 <?php if(!empty($main_error)) { ?>
         <?php echo $main_error; ?>

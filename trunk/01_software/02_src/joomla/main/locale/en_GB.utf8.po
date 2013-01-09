@@ -182,6 +182,9 @@ msgstr "Fill in the beginning of your empty hours: (HH:MM)"
 msgid "CONFIGURE_STOP_HC"
 msgstr "Fill in the end of your empty hours: (HH:MM)"
 
+msgid "CHECK_STATISTICS"
+msgstr "Send informations to help the cultibox development"
+
 
 # For the logs part:
 
@@ -344,7 +347,10 @@ msgstr "Import logs"
 
 # For the plugs part:
 msgid "PLUG"
-msgstr "Plug number"
+msgstr "Configure plug number"
+
+msgid "PLUG_INFOS"
+msgstr "Informations of the plug"
 
 msgid "TYPE_PLUG"
 msgstr "Type of the plug"
@@ -408,6 +414,9 @@ msgstr "under the threshold"
 
 msgid "REGUL_ABOVE"
 msgstr "above the threshold"
+
+msgid "FOR_THE_PLUG"
+msgstr "pour la prise"
 
 # For the programs part:
 msgid "CONFIGURE_PROGRAM"
@@ -513,16 +522,16 @@ msgid "REMOVE_PLUG"
 msgstr "Remove a plug"
 
 msgid "PLUG_ADDED"
-msgstr "<li>Plug successfully added</li>"
+msgstr "Plug successfully added"
 
 msgid "PLUG_MAX_ADDED"
-msgstr "<li>You have reached the maximal number of plug managable</li>"
+msgstr "You have reached the maximal number of plug managable"
 
 msgid "PLUG_MIN_ADDED"
-msgstr "<li>YOu have reached the minimal number of plug managable</li>"
+msgstr "YOu have reached the minimal number of plug managable"
 
 msgid "PLUG_REMOVED"
-msgstr "<li>Plug successfully removed</li>"
+msgstr "Plug successfully removed"
 
 msgid "VALUE_REGUL_SECOND"
 msgstr "Second regulation"
@@ -751,161 +760,170 @@ msgstr "License"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
-msgstr "<li>Problem during the connection close procedure</li>"
+msgstr "Problem during the connection close procedure"
 
 msgid "ERROR_UPDATE_SQL"
-msgstr "<li>Error during the update sql request</li>"
+msgstr "Error during the update sql request"
 
 msgid "ERROR_DELETE_SQL"
-msgstr "<li>Error during the delete sql request</li>"
+msgstr "Error during the delete sql request"
 
 msgid "ERROR_SELECT_SQL"
-msgstr "<li>Error during the select sql request</li>"
+msgstr "Error during the select sql request"
 
 msgid "EMPTY_TEMPERATURE_DATA"
-msgstr "<li>Empty temperature data for the selected date</li>"
+msgstr "Empty temperature data for the selected date"
 
 msgid "EMPTY_HUMIDITY_DATA"
-msgstr "<li>Empty humidity data for the selected date</li>"
+msgstr "Empty humidity data for the selected date"
 
 msgid "EMPTY_TEMPERATURE_DATA_SENSOR"
-msgstr "<li>Empty temperature date for the selected date and some of the sensors</li>"
+msgstr "Empty temperature date for the selected date and some of the sensors"
 
 msgid "EMPTY_HUMIDITY_DATA_SENSOR"
-msgstr "<li>EMpty humidity data for the selected date and some of the sensors</li>"
+msgstr "EMpty humidity data for the selected date and some of the sensors"
 
 msgid "EMPTY_POWER_DATA"
-msgstr "<li>Empty power data for the selected date</li>"
+msgstr "Empty power data for the selected date"
 
-msgid "ERROR_FORMAT_DATE_DAY"
-msgstr "<li>Error in the date format: YYY-MM-DD</li>"
+msgid "ERROR_FORMAT_DATE_DAY_START"
+msgstr "Start day: error in the date format (YYY-MM-DD)"
+
+msgid "ERROR_FORMAT_DATE_DAY_END"
+msgstr "End day: error in the date format (YYY-MM-DD)"
 
 msgid "ERROR_FORMAT_DATE_MONTH"
-msgstr "<li>Error in the date format: MM</li>"
+msgstr "Error in the date format: MM"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "<li>Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged</li>"
+msgstr "Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "<li>Can't find your SD card, if you want to load your logs record, please check that your card is correctly pluged</li>"
+msgstr "Can't find your SD card, if you want to load your logs record, please check that your card is correctly pluged"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "<li>Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged</li>"
+msgstr "Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged"
 
 msgid "ERROR_MISSING_VALUE_TIME"
-msgstr "<li>Missing value for Start/End time</li>"
+msgstr "Missing value for Start/End time"
 
 msgid "ERROR_FORMAT_TIME"
-msgstr "<li>Error in time format: HH:MM:SS</li>"
+msgstr "Error in time format: HH:MM:SS"
 
 msgid "ERROR_TIME_VALUE"
-msgstr "<li>Error in time format: HH:MM</li>"
+msgstr "Error in time format: HH:MM"
 
 msgid "ERROR_SAME_TIME"
-msgstr "<li>Error in the time values. Start time and end time must be different</li>"
+msgstr "Error in the time values. Start time and end time must be different"
 
 msgid "ERROR_WRITE_SD"
-msgstr "<li>Error, can't write programs into the sd card</li>"
+msgstr "Error, can't write programs into the sd card"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "<li>Error in the tolerance value. It must be less than 10&deg;C and greater than 0&deg;C</li>"
+msgstr "Error in the tolerance value. It must be less than 10&deg;C and greater than 0&deg;C"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "<li>Error in the tolerance value. It must be less or equal to 25.5&#37; and greater than 0&#37;</li>"
+msgstr "Error in the tolerance value. It must be less or equal to 25.5&#37; and greater than 0&#37;"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li>Error in the value.</li>"
+msgstr "Error in the value."
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "<li>Error in the temperature value. It must be geater or equal to 5&deg;C and less or equal to 60&deg;C<</li>"
+msgstr "Error in the temperature value. It must be geater or equal to 5&deg;C and less or equal to 60&deg;C"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "<li>Error in the humidity value. It must be greater or equal to 10&#37;  and less or equal to 95&#37;</li>"
+msgstr "Error in the humidity value. It must be greater or equal to 10&#37;  and less or equal to 95&#37;"
 
 msgid "ERROR_ALARM_VALUE"
-msgstr "<li>Value for the alarm must be more than 0 and less than 100</li>"
+msgstr "Value for the alarm must be more than 0 and less than 100"
 
 msgid "ERROR_REGUL_VALUE"
-msgstr "<li>Value for the regulation must be more than 0 and less than 100</li>"
+msgstr "Value for the regulation must be more than 0 and less than 100"
 
 msgid "ERROR_PLUG_ID"
-msgstr "<li>Plug identifier must be a numeric value</li>"
+msgstr "Plug identifier must be a numeric value"
 
 msgid "ERROR_POWER_VALUE"
-msgstr "<li>Error in the power value: it must be more or equal to 0 Watt</li>"
+msgstr "Error in the power value: it must be more or equal to 0 Watt"
 
 msgid "ERROR_PRICE_VALUE"
-msgstr "<li>Error in the configuration of the kilowatt-hour price. The price must be greater or equal to 0.</li>"
+msgstr "Price of the kilowatt-hour price must be greater or equal to 0."
+
+msgid "ERROR_PRICE_VALUE_HP"
+msgstr "Full hour: price of the kilowatt-hour price must be greater or equal to 0."
+
+msgid "ERROR_POWER_VALUE_HC"
+msgstr "Empty hour: price of the kilowatt-hour price must be greater or equal to 0."
 
 msgid "ERROR_DATE_INTERVAL"
-msgstr "<li>Error in the date: the begining date must be less or equal to the ended date</li>"
+msgstr "Error in the date: the begining date must be less or equal to the ended date"
 
 msgid "ERROR_UPLOADED_FILE"
-msgstr "<li>Error during uploading programs file</li>"
+msgstr "Error during uploading programs file"
 
 msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
-msgstr "<li>Error during programs file proceeding. YOu have to check that the file uses the right format</li>"
+msgstr "Error during programs file proceeding. YOu have to check that the file uses the right format"
 
 msgid "ERROR_REMOTE_UPDATE_FILE"
-msgstr "<li>Enable to access to the update files, please check your configuration</li>"
+msgstr "Enable to access to the update files, please check your configuration"
 
 msgid "ERROR_POWER_PRICE_NULL"
-msgstr "<li>Power of all your plugs doesn't seem to be configured, you can configure it: <a href='plugs'>here</a></li></li>"
+msgstr "Power of all your plugs doesn't seem to be configured, you can configure it: <a href='plugs'>here</a>"
 
 msgid "ERROR_COST_PRICE_NULL"
-msgstr "<li>Price of the kilowatt-hour isn't configured, you can configure it: <a href='configuration?menu=cost_interface'>here</a></li></li>"
+msgstr "Price of the kilowatt-hour isn't configured, you can configure it: <a href='configuration?submenu=cost_interface'>here</a>"
 
 msgid "ERROR_HPC_TIME_NULL"
-msgstr "<li>Time start or stop of the full/empty hours is not configured properly. You can configure it <a href='configuration?menu=cost_interface'>here</a></li>"
+msgstr "Time start or stop of the full/empty hours is not configured properly. You can configure it <a href='configuration?submenu=cost_interface'>here</a>"
 
 msgid "ERROR_COPY_TPL"
-msgstr "<li>Can't copy empty_file_64.tpl file into your CultiBox SD card</li>"
+msgstr "Can't copy empty_file_64.tpl file into your CultiBox SD card"
 
 # For the informations part:
 msgid "INFO_SD_CARD"
-msgstr "<li>A valid SD card was found"
+msgstr "A valid SD card was found"
 
 msgid "INFO_PLUG_CULTIBOX_CARD"
-msgstr "<li>You can now plug your card into the Cultibox.</li>"
+msgstr "You can now plug your card into the Cultibox."
 
 msgid "VALID_UPDATE_CONF"
-msgstr "<li>Configuration successfully updated</li>"
+msgstr "Configuration successfully updated"
 
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
-msgstr "<li>Configuration updated successfully in the CultiBox software!</li>"
+msgstr "Configuration updated successfully in the CultiBox software!"
 
 msgid "VALID_UPDATE_PROGRAM"
-msgstr "<li>Programs successfully updated</li>"
+msgstr "Programs successfully updated"
 
 msgid "VALID_DELETE_LOGS"
-msgstr "<li>Log's database successfully deleted</li>"
+msgstr "Log's database successfully deleted"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "<li>Program updated successfully! You can unplug your SD card and put in the CultiBox</li>"
+msgstr "Program updated successfully! You can unplug your SD card and put in the CultiBox"
 
 msgid "VALID_LOAD_LOG"
-msgstr "<li>Logs successfully loaded, you can disconnect your CultiBox card from your computer</li>"
+msgstr "Logs successfully loaded, you can disconnect your CultiBox card from your computer"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "<li>Program successfully updated</li>"
+msgstr "Program successfully updated"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "<li>You can also use the wizard assistant to configure the first plug, just click here: <a href='wizard'><img src="main/libs/img/wizard.png" title="Just click to launch the wizzard" alt="wizard" id="wizard" /></a></li>"
+msgstr "You can also use the wizard assistant to configure the first plug, just click here: <a href='wizard'><img src="main/libs/img/wizard.png" title="Just click to launch the wizzard" alt="wizard" id="wizard" /></a>"
 
 msgid "WIZARD_DISABLE_FUNCTION"
-msgstr "<li>You can use the standard interface to configure your programs instead. Just click here: <a href='programs'><img src="main/libs/img/wizard.png" title="Just click to launch the classic configuration mode" alt="classic" id="Classic" /></a></li>"
+msgstr "You can use the standard interface to configure your programs instead. Just click here: <a href='programs'><img src="main/libs/img/wizard.png" title="Just click to launch the classic configuration mode" alt="classic" id="Classic" /></a>"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "<li>Program sucessfully reseted</li>"
+msgstr "Program sucessfully reseted"
 
 msgid "WAITING_LOG"
 msgstr "PLease just wait few seconds during logs loading..."
 
 msgid "UPDATED_PROGRAM"
-msgstr "<li>Your programs wasn't up to date, the update process has been executed</li>"
+msgstr "Your programs wasn't up to date, the update process has been executed"
 
 msgid "INFO_UPDATE_AVAILABLE"
-msgstr "<li>New update availabe to upgrade to the software version: </li>"
+msgstr "New update availabe to upgrade to the software version: "
 
 # For the tooltip part:
 

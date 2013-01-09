@@ -182,6 +182,9 @@ msgstr "Entrez l'heure de début de votre période creuse : (HH:MM)"
 msgid "CONFIGURE_STOP_HC"
 msgstr "Entrez l'heure de fin de votre période creuse : (HH:MM)"
 
+msgid "CHECK_STATISTICS"
+msgstr "Envoie d'informations pour aider le développement"
+
 
 # For the logs part:
 
@@ -344,7 +347,10 @@ msgstr "Importer les logs"
 
 # For the plugs part:
 msgid "PLUG"
-msgstr "Prise numéro"
+msgstr "Configurer la prise numéro"
+
+msgid "PLUG_INFOS"
+msgstr "Informations de la prise"
 
 msgid "TYPE_PLUG"
 msgstr "Type de la prise"
@@ -408,6 +414,9 @@ msgstr "dessous du seuil"
 
 msgid "REGUL_ABOVE"
 msgstr "dessus du seuil"
+
+msgid "FOR_THE_PLUG"
+msgstr "pour la prise"
 
 # For the programs part:
 
@@ -514,16 +523,16 @@ msgid "REMOVE_PLUG"
 msgstr "Supprimer une prise"
 
 msgid "PLUG_ADDED"
-msgstr "<li>Prise ajoutée avec succée</li>"
+msgstr "Prise ajoutée avec succée"
 
 msgid "PLUG_MAX_ADDED"
-msgstr "<li>Vous avez atteint le nombre maximal de prises confgurables</li>"
+msgstr "Vous avez atteint le nombre maximal de prises confgurables"
 
 msgid "PLUG_MIN_ADDED"
-msgstr "<li>Vous avez atteint le nombre minimal de proses configurables</li>"
+msgstr "Vous avez atteint le nombre minimal de proses configurables"
 
 msgid "PLUG_REMOVED"
-msgstr "<li>Prise supprimée avec succée</li>"
+msgstr "Prise supprimée avec succée"
 
 msgid "VALUE_REGUL_SECOND"
 msgstr "Régulation secondaire"
@@ -696,7 +705,7 @@ msgstr "Format de la date invalide (MM/JJ/AAAA)"
 
 # For the cost part:
 msgid "SELECT_START_DAY"
-msgstr "Jour de début (AAAA-MM-JJ)"
+msgstr "Jour de départ (AAAA-MM-JJ)"
 
 msgid "SELECT_END_DAY"
 msgstr "Jour de fin (AAAA-MM-JJ)"
@@ -749,164 +758,173 @@ msgstr "Licence"
 
 # For the errors or warnings part:
 msgid "PROBLEM_CLOSING_CONNECTION"
-msgstr "<li>Problé pendant la fermeture de la connexion</li>"
+msgstr "Problème pendant la fermeture de la connexion"
 
 msgid "ERROR_UPDATE_SQL"
-msgstr "<li>Erreur dans la requête SQL UPDATE</li>"
+msgstr "Erreur dans la requête SQL UPDATE"
 
 msgid "ERROR_DELETE_SQL"
-msgstr "<li>Erreur dans la requête SQL DELETE</li>"
+msgstr "Erreur dans la requête SQL DELETE"
 
 msgid "ERROR_SELECT_SQL"
-msgstr "<li>Erreur dans la requête SQL SELECT</li>"
+msgstr "Erreur dans la requête SQL SELECT"
 
 msgid "EMPTY_TEMPERATURE_DATA"
-msgstr "<li>Aucun enregistrement concernant la température pour la date sélectionnée</li>"
+msgstr "Aucun enregistrement concernant la température pour la date sélectionnée"
 
 msgid "EMPTY_HUMIDITY_DATA"
-msgstr "<li>Aucun enregistrement concernant l'hygrométrie pour la date sélectionnée</li>"
+msgstr "Aucun enregistrement concernant l'hygrométrie pour la date sélectionnée"
 
 msgid "EMPTY_TEMPERATURE_DATA_SENSOR"
-msgstr "<li>Enregistrements de température vides pour certains de vos capteurs à la date selectionnée</li>"
+msgstr "Enregistrements de température vides pour certains de vos capteurs à la date selectionnée"
 
 msgid "EMPTY_HUMIDITY_DATA_SENSOR"
-msgstr "<li>Enregistrements d'hygrométrie vides pour certains de vos capteurs à la date selectionnée</li>"
+msgstr "Enregistrements d'hygrométrie vides pour certains de vos capteurs à la date selectionnée"
 
 msgid "EMPTY_POWER_DATA"
-msgstr "<li>Aucun enregistrement concernant la puissance consommée pour la date sélectionnée</li>"
+msgstr "Aucun enregistrement concernant la puissance consommée pour la date sélectionnée"
 
-msgid "ERROR_FORMAT_DATE_DAY"
-msgstr "<li>Erreur dans le format de la date: AAAA-MM-JJ</li>"
+msgid "ERROR_FORMAT_DATE_DAY_START"
+msgstr "Jour de départ: erreur dans le format de la date (AAAA-MM-JJ)"
+
+msgid "ERROR_FORMAT_DATE_DAY_END"
+msgstr "Jour de fin: erreur dans le format de la date (AAAA-MM-JJ)"
 
 msgid "ERROR_FORMAT_DATE_MONTH"
-msgstr "<li>Erreur dans le format de la date: MM</li>"
+msgstr "Erreur dans le format de la date: MM"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "<li>Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte soit branchée</li>"
+msgstr "Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte soit branchée"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "<li>Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, vérifier que votre carte soit branchée</li>"
+msgstr "Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, vérifier que votre carte soit branchée"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "<li>Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte soit branchée</li>"
+msgstr "Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte soit branchée"
 
 msgid "ERROR_MISSING_VALUE_TIME"
-msgstr "<li>Valeur manquante pour la date de début/fin du programme</li>"
+msgstr "Valeur manquante pour la date de début/fin du programme"
 
 msgid "ERROR_FORMAT_TIME"
-msgstr "<li>Erreur dans le format de l'heure: HH:MM:SS</li>"
+msgstr "Erreur dans le format de l'heure: HH:MM:SS"
 
 msgid "ERROR_TIME_VALUE"
-msgstr "<li>Erreur dans le format de l'heure: HH:MM</li>"
+msgstr "Erreur dans le format de l'heure: HH:MM"
 
 msgid "ERROR_SAME_TIME"
-msgstr "<li>L'heure de départ et l'heure de fin doivent être différentes.</li>"
+msgstr "L'heure de départ et l'heure de fin doivent être différentes."
 
 msgid "ERROR_WRITE_SD"
-msgstr "<li>Erreur durant l'écriture sur la carte SD</li>"
+msgstr "Erreur durant l'écriture sur la carte SD"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "<li>Erreur dans la valeur de tolérance: elle doit être inférieur à 10°C et supérieur à 0°C</li>"
+msgstr "Erreur dans la valeur de tolérance: elle doit être inférieur à 10°C et supérieur à 0°C"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "<li>Erreur dans la valeur de tolérance: elle doit être inférieur ou égal à 25.5% et supérieur à 0%;</li>"
+msgstr "Erreur dans la valeur de tolérance: elle doit être inférieur ou égal à 25.5% et supérieur à 0%;"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "<li>Erreur dans la valeur rentrée</li>"
+msgstr "Erreur dans la valeur rentrée"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "<li>Erreur dans la valeur de température. Elle doit être supérieure ou égal à 5°C et inférieure ou égal à 60°C</li>"
+msgstr "Erreur dans la valeur de température. Elle doit être supérieure ou égal à 5°C et inférieure ou égal à 60°C"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "<li>Erreur dans la valeur d'humidité. Elle doit être supérieure ou égal à 10  et inférieure ou égal à 95</li>"
+msgstr "Erreur dans la valeur d'humidité. Elle doit être supérieure ou égal à 10  et inférieure ou égal à 95"
 
 msgid "ERROR_ALARM_VALUE"
-msgstr "<li>La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100</li>"
+msgstr "La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100"
 
 msgid "ERROR_REGUL_VALUE"
-msgstr "<li>La valeur de déclenchement de la régulation doit être supérieure à 0 et inférieure à 100</li>"
+msgstr "La valeur de déclenchement de la régulation doit être supérieure à 0 et inférieure à 100"
 
 msgid "ERROR_PLUG_ID"
-msgstr "<li>Le code de la prise doit être une valeur numérique</li>"
+msgstr "Le code de la prise doit être une valeur numérique"
 
 msgid "ERROR_POWER_VALUE"
-msgstr "<li>Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt</li>"
+msgstr "Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt"
 
 msgid "ERROR_PRICE_VALUE"
-msgstr "<li>Erreur dans la configuration du prix du coût du kilowatt-heure. La valeur doit être supérieure ou égal à 0.</li>"
+msgstr "Le prix du kilowatt-heure doit être supérieure ou égal à 0."
+
+msgid "ERROR_PRICE_VALUE_HP"
+msgstr "Heure pleine: le prix du kilowatt-heure doit être supérieure ou égal à 0."
+
+msgid "ERROR_PRICE_VALUE_HC"
+msgstr "Heure creuse: le prix du kilowatt-heure doit être supérieure ou égal à 0."
 
 msgid "ERROR_DATE_INTERVAL"
-msgstr "<li>Erreur dans les dates choisies: la date de début doit être inférieure ou égale à la date de fin</li>"
+msgstr "Erreur dans les dates choisies: la date de départ doit être inférieure ou égale à la date de fin"
 
 msgid "ERROR_UPLOADED_FILE"
-msgstr "<li>Erreur lors du chargement de fichier des programmes</li>"
+msgstr "Erreur lors du chargement de fichier des programmes"
 
 msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
-msgstr "<li>Erreur lors du chargement des données du fichier des programmes, vérifiez que le fichier est au bon format</li>"
+msgstr "Erreur lors du chargement des données du fichier des programmes, vérifiez que le fichier est au bon format"
 
 msgid "ERROR_REMOTE_UPDATE_FILE"
-msgstr "<li>Impossible d'accéder au fichier des mises à jours, vérifier votre configuration</li>"
+msgstr "Impossible d'accéder au fichier des mises à jours, vérifier votre configuration"
 
 msgid "ERROR_POWER_PRICE_NULL"
-msgstr "<li>La puissance de certaine de vos prises n'est pas configurée, vous pouvez la configurer: <a href='plugs'>ici</a></li>"
+msgstr "La puissance de certaine de vos prises n'est pas configurée, vous pouvez la configurer: <a href='plugs'>ici</a>"
 
 msgid "ERROR_COST_PRICE_NULL"
-msgstr "<li>Le prix du coût du kilowatt-heure n'est pas configuré, vous pouvez le configurer: <a href='configuration?menu=cost_interface'>ici</a></li>"
+msgstr "Le prix du kilowatt-heure n'est pas configuré, vous pouvez le configurer: <a href='configuration?submenu=cost_interface'>ici</a>"
 
 msgid "ERROR_HPC_TIME_NULL"
-msgstr "<li>L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configuré, vous pouvez le configurer <a href='configuration?menu=cost_interface'>ici</a></li>"
+msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configuré, vous pouvez le configurer <a href='configuration?submenu=cost_interface'>ici</a>"
 
 msgid "ERROR_COPY_TPL"
-msgstr "<li>Impossible de copier le fichier empty_file_64.tpl sur votre carte SD</li>"
+msgstr "Impossible de copier le fichier empty_file_64.tpl sur votre carte SD"
 
 # For the informations part:
 msgid "INFO_SD_CARD"
-msgstr "<li>Une carte SD compatible cultibox est branchée"
+msgstr "Une carte SD compatible cultibox est branchée"
 
 msgid "INFO_PLUG_CULTIBOX_CARD"
-msgstr "<li>Vous pouvez maintenant connecter la carte SD dans la CultiBox.</li>"
+msgstr "Vous pouvez maintenant connecter la carte SD dans la CultiBox."
 
 msgid "VALID_UPDATE_CONF"
-msgstr "<li>Configuration mise à jour avec succès</li>"
+msgstr "Configuration mise à jour avec succès"
 
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
-msgstr "<li>Configuration mise à jour avec succès dans le logiciel de la Cultibox.</li>"
+msgstr "Configuration mise à jour avec succès dans le logiciel de la Cultibox."
 
 msgid "VALID_UPDATE_PROGRAM"
-msgstr "<li>Programmes mis à jour avec succès</li>"
+msgstr "Programmes mis à jour avec succès"
 
 msgid "VALID_DELETE_LOGS"
-msgstr "<li>Base des logs supprimée avec succès</li>"
+msgstr "Base des logs supprimée avec succès>"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "<li>Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage</li>"
+msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage"
 
 msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "<li>Fichiers de logs du mois en cours enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur.</li>"
+msgstr "Fichiers de logs du mois en cours enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur."
 
 msgid "VALID_LOAD_LOG"
-msgstr "<li>Fichiers de logs des derniers mois enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur.</li>"
+msgstr "Fichiers de logs des derniers mois enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur."
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "<li>Programme mis à jour avec succès</li>"
+msgstr "Programme mis à jour avec succès"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "<li>Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici: <a href='wizard'><img src="main/libs/img/wizard.png" alt="assistant" title="Cliquez sur l'icône pour lancer l'assistant de configuration" id="wizard" /></a></li>"
+msgstr "Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici: <a href='wizard'><img src="main/libs/img/wizard.png" alt="assistant" title="Cliquez sur l'icône pour lancer l'assistant de configuration" id="wizard" /></a>"
 
 msgid "WIZARD_DISABLE_FUNCTION"
-msgstr "<li>Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs'><img src="main/libs/img/wizard.png" alt="interface classique" title="Cliquez sur l'icône pour revenir au mode de configuration classique" id="Classic" /></a></li>"
+msgstr "Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs'><img src="main/libs/img/wizard.png" alt="interface classique" title="Cliquez sur l'icône pour revenir au mode de configuration classique" id="Classic" /></a>"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "<li>Programme réinitialisé avec succès</li>"
+msgstr "Programme réinitialisé avec succès"
 
 msgid "WAITING_LOG"
 msgstr "Merci de patienter quelques instants durant le chargement des logs..."
 
 msgid "UPDATED_PROGRAM"
-msgstr "<li>Vos programmes n'était pas à jour sur votre carte, la mise à jour à été exécuté</li>"
+msgstr "Vos programmes n'était pas à jour sur votre carte, la mise à jour à été exécuté"
 
 msgid "INFO_UPDATE_AVAILABLE"
-msgstr "<li>Une mise à jour est disponible pour passer à la version: </li>"
+msgstr "Une mise à jour est disponible pour passer à la version: "
 
 # For the tooltip part:
 

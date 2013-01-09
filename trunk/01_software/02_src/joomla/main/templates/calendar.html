@@ -9,21 +9,24 @@
 <?php } ?>
 
 
-<?php if((isset($info))&&(!empty($info))) { ?>
-   <div id="info">
-      <ul>
-         <?php echo $info; ?>
-      </ul>
-   </div>
+<?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
+<div class="info">
+<ul>
+        <?php foreach($main_info as $inf) { 
+            echo "<li>".$inf."</li>";            
+        } ?>
+</ul>
+</div>
 <?php } ?>
-
-<?php if((isset($error))&&(!empty($error))) { ?>
-   <div id="error">
-      <ul>
-         <?php echo $error; ?>
-      </ul>
-   </div>
-   <br />
+<?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
+<div class="error">
+<ul>
+        <?php foreach($main_error as $err) { 
+            echo "<li>".$err."</li>";            
+        } ?>
+</ul>
+</div>
+<br />
 <?php } ?>
 
 <p class="p_center"><iframe src="main/modules/calendar/index.php?lang=<?php echo $lang; ?>" height="600" width="700"></iframe>

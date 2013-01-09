@@ -4,60 +4,76 @@ if (!isset($_SESSION)) {
    session_start();
 }
 
+
+/* Libraries requiered: 
+        db_common.php : manage database requests
+        utilfunc.php  : manage variables and files manipulations
+*/
 require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
 
+
+// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
 $lang=get_configuration("LANG",$error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
-$error="";
-$error_plug=Array();
-$info_plug=Array();
-$info="";
-$nb_plugs=get_configuration("NB_PLUGS",$error);
+
+// ================= VARIABLES ================= //
+$main_error=array();
+$main_info=array();
+$error=array();
+$info=array();
+$nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $update_program=false;
 $reset=getvar('reset');
 $reccord=getvar('reccord');
 $pop_up=getvar('pop_up');
+$selected_plug=getvar('selected_plug');
 $pop_up_message="";
 $pop_up_error_message="";
 $count_err=false;
 $program="";
-$update=get_configuration("CHECK_UPDATE",$error);
-$version=get_configuration("VERSION",$error);
+$update=get_configuration("CHECK_UPDATE",$main_error);
+$version=get_configuration("VERSION",$main_error);
+$main_info[]=__('WIZARD_ENABLE_FUNCTION');
+$pop_up=get_configuration("SHOW_POPUP",$main_error);
+$stats=get_configuration("STATISTICS",$main_error);
 
-$info=$info.__('WIZARD_ENABLE_FUNCTION');
 
-
+// Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+
+// Setting default value for selected_plug variable
+if((!isset($selected_plug))||(empty($selected_plug))) {
+   $selected_plug=1;
+}
+
+
+// If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
-   $program=create_program_from_database($error);
+   $program=create_program_from_database($main_error);
    if(!compare_program($program,$sd_card)) {
-      $info=$info.__('UPDATED_PROGRAM');
-      $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
-      save_program_on_sd($sd_card,$program,$error);
+      $main_info[]=__('UPDATED_PROGRAM');
+      $pop_up_message=$pop_up_message.clean_popup_message(__('UPDATED_PROGRAM'));
+      save_program_on_sd($sd_card,$program,$main_error);
    }
-   check_and_copy_firm($sd_card,$error);
-   check_and_copy_log($sd_card,$error);
-   $info=$info.__('INFO_SD_CARD').": $sd_card";
+   check_and_copy_firm($sd_card,$main_error);
+   check_and_copy_log($sd_card,$main_error);
+   $main_info[]=__('INFO_SD_CARD').": $sd_card";
 } else {
-        $error=$error.__('ERROR_SD_CARD_CONF');
+        $main_error[]=__('ERROR_SD_CARD_CONF');
 }
 
 
-if(!isset($pop_up)) {
-        $pop_up = get_configuration("SHOW_POPUP",$error);
-}
-
-
+//Reset a program if selected by the user (button reset)
 if((isset($reset))&&(!empty($reset))) {
-   reset_plug_identificator($error);
+   reset_plug_identificator($main_error);
    $reset=true;
 } 
 
@@ -87,7 +103,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $old_regul_value=get_plug_conf("PLUG_REGUL_VALUE",$nb,$error_plug[$nb]);
 
    
-
    if((!empty($id))&&(isset($id))&&(!$reset)) {
       if(strcmp("$old_id","$id")!=0) {
          if(check_numeric_value($id)) {
@@ -186,7 +201,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    }
 
    if(!empty($error_plug[$nb])) {
-	$pop_up_error_message=clean_popup_message($error_plug[$nb]);
+	    $pop_up_error_message=clean_popup_message($error_plug[$nb]);
         if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)) {
             insert_plug_conf("PLUG_TOLERANCE",$nb,"$old_tolerance",$error_plug[$nb]);
         } else {
@@ -196,11 +211,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
         insert_plug_conf("PLUG_NAME",$nb,"$old_name",$error_plug[$nb]);
         insert_plug_conf("PLUG_ID",$nb,"$old_id",$error_plug[$nb]);
         $count_err=true;
-   } else if($plug_update) {
-                if(("$old_name"!="$name")||("$old_type"!="$type")||("$old_tolerance"!="$tolerance")||("$id"!="$old_id")) {
-        		$info_plug[$nb]=__('VALID_UPDATE_CONF');
-                }
-   }
+   } 
 
    $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
    $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$error_plug[$nb]);
@@ -214,13 +225,10 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    if($plug_tolerance{$nb}==0) {
       $plug_tolerance{$nb}="1.0";
    }
-
 }
 
 
-
 if(($update_program)&&(empty($error))&&(!$count_err)) {
-          $info=$info.__('VALID_UPDATE_CONF');
           $pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
 } 
 
@@ -236,22 +244,22 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 }
 
 
+// Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {
       $ret=array();
       check_update_available($ret,$error);
       foreach($ret as $file) {
          if(count($file)==4) {
                if(strcmp("$version","$file[1]")==0) {
-                  $tmp="";
-                  $tmp=__('INFO_UPDATE_AVAILABLE');
-                  $tmp=str_replace("</li>","<a href=".$file[3]." target='_blank'>".$file[2]."</a></li>",$tmp);
-                  $info=$info.$tmp;
+                    $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[3]." target='_blank'>".$file[2]."</a>";
                }
             }
       }
 }
 
-$informations = Array();
+
+// The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True'
+$informations=array();
 $informations["nb_reboot"]=0;
 $informations["last_reboot"]="";
 $informations["cbx_id"]="";
@@ -262,7 +270,6 @@ $informations["id_computer"]=php_uname("a");
 $informations["log"]="";
 
 
-
 if((!empty($sd_card))&&(isset($sd_card))) {
     find_informations("$sd_card/log.txt",$informations);
     if(strcmp($informations["log"],"")!=0) {
@@ -270,50 +277,52 @@ if((!empty($sd_card))&&(isset($sd_card))) {
     }
 }
 
-if(strcmp($informations["nb_reboot"],"0")==0) {
+
+if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
+    if(strcmp($informations["nb_reboot"],"0")==0) {
         $informations["nb_reboot"]=get_informations("nb_reboot");
-} else {
+    } else {
         insert_informations("nb_reboot",$informations["nb_reboot"]);
-}
+    }
 
-if(strcmp($informations["last_reboot"],"")==0) {
+    if(strcmp($informations["last_reboot"],"")==0) {
         $informations["last_reboot"]=get_informations("last_reboot");
-} else {
+    } else {
         insert_informations("last_reboot",$informations["last_reboot"]);
-}
+    }
 
-if(strcmp($informations["cbx_id"],"")==0) {
+    if(strcmp($informations["cbx_id"],"")==0) {
         $informations["cbx_id"]=get_informations("cbx_id");
-} else {
+    } else {
         insert_informations("cbx_id",$informations["cbx_id"]);
-}
+    }
 
-if(strcmp($informations["firm_version"],"")==0) {
+    if(strcmp($informations["firm_version"],"")==0) {
         $informations["firm_version"]=get_informations("firm_version");
-} else {
+    } else {
         insert_informations("firm_version",$informations["firm_version"]);
-}
+    }
 
-if(strcmp($informations["emeteur_version"],"")==0) {
+    if(strcmp($informations["emeteur_version"],"")==0) {
         $informations["emeteur_version"]=get_informations("emeteur_version");
-} else {
+    } else {
         insert_informations("emeteur_version",$informations["emeteur_version"]);
-}
+    }
 
-if(strcmp($informations["sensor_version"],"")==0) {
+    if(strcmp($informations["sensor_version"],"")==0) {
         $informations["sensor_version"]=get_informations("sensor_version");
-} else {
+    } else {
         insert_informations("sensor_version",$informations["sensor_version"]);
-}
+    }
 
-if(strcmp($informations["log"],"")==0) {
+    if(strcmp($informations["log"],"")==0) {
         $informations["log"]=get_informations("log");
-} else {
+    } else {
         insert_informations("log",$informations["log"]);
+    }
 }
 
 
-
+//Display the plug template
 include('main/templates/plugs.html');
-
 ?>

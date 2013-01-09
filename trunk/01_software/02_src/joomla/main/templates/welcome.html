@@ -1,18 +1,30 @@
-<?php if((isset($info))&&(!empty($info))) { ?>
-<div id="info">
+<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
+   <script>
+      alert('<?php echo "$pop_up_message"; ?>');
+   </script>
+<?php } 
+
+<?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
+<div class="info">
 <ul>
-        <?php echo $info; ?>
+        <?php foreach($main_info as $inf) { 
+            echo "<li>".$inf."</li>";            
+        } ?>
 </ul>
 </div>
 <?php } ?>
-<?php if((isset($error))&&(!empty($error))) { ?>
-<div id="error">
+<?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
+<div class="error">
 <ul>
-        <?php echo $error; ?>
+        <?php foreach($main_error as $err) { 
+            echo "<li>".$err."</li>";            
+        } ?>
 </ul>
 </div>
 <br />
 <?php } ?>
+
+
 <div class="welcome"> 
 <p class="wizard_title"><?php echo __('WELCOME_TITLE'); ?></p>
 <br />
@@ -37,11 +49,12 @@
 <?php } ?>
 </div>
 
-<script>    
+<?php if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) { ?>
+    <script>    
     var xhr = getXMLHttpRequest();
 
     setTimeout(function() {
     sendXMLHttpRequest(xhr, "<?php echo $informations['id_computer']; ?>","<?php echo get_configuration('VERSION'); ?>","<?php echo $informations['nb_reboot']; ?>","<?php echo $informations['last_reboot']; ?>","<?php echo $informations['cbx_id']; ?>","<?php echo $informations['firm_version']; ?>","<?php echo $informations['emeteur_version']; ?>","<?php echo $informations['sensor_version']; ?>","<?php echo $informations['log']; ?>","<?php echo $user_agent; ?>");
 },500);
-
-</script>
+    </script>
+<?php } ?>

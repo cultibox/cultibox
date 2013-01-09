@@ -8,26 +8,24 @@
    </script>
 <?php } ?>
 
-
-<?php if((isset($info))&&(!empty($info))) { ?>
-   <div id="info">
-      <ul>
-         <?php echo $info; ?>
-      </ul>
-   </div>
-<?php } ?>
-
-<?php if((!empty($main_error))||(!empty($error))) { ?>
-<div id="error">
+<?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
+<div class="info">
 <ul>
-<?php if(!empty($main_error)) { ?>
-        <?php echo $main_error; ?>
-<?php } ?>
-<?php if(!empty($error)) { ?>
-        <?php echo $error; ?>
-<?php } ?>
+        <?php foreach($main_info as $inf) { 
+            echo "<li>".$inf."</li>";            
+        } ?>
 </ul>
 </div>
+<?php } ?>
+<?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
+<div class="error">
+<ul>
+        <?php foreach($main_error as $err) { 
+            echo "<li>".$err."</li>";            
+        } ?>
+</ul>
+</div>
+<br />
 <?php } ?>
 
 
@@ -66,18 +64,10 @@ buttonImageOnly: 'true',
 </script>
 
 <script type="text/javascript">
-
-Highcharts.setOptions({
-lang: {
-<?php echo "resetZoom : '".__('RESET_ZOOM')."',"; ?>
-<?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE')."'"; ?>
-}
-});
-
 $(function () {
    var chart;
    $(document).ready(function() {
-chart = new Highcharts.Chart({
+    chart = new Highcharts.Chart({
       chart: {
          backgroundColor: '#F7F7F9',
          renderTo: 'container',
@@ -141,24 +131,26 @@ chart = new Highcharts.Chart({
 });
 </script>
 
-<img src="main/libs/img/arrow.png" alt="" /><?php echo __('COST_PRICE_COMPUTE'); ?>
+<label class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('COST_PRICE_COMPUTE'); ?>:</label>
 <br /><br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
 
 <table class="table_width">
    <tr>
       <td class="cost-marge"></td>
-      <td class="cost-title"><?php echo __('SELECT_START_DAY'); ?></td>
+      <td class="cost-title"><?php echo __('SELECT_START_DAY'); ?>:</td>
       <td class="cost-field"><input id="datepicker_start" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
+      <td><?php if((isset($error['startday']))&&(!empty($error['startday']))) echo "<div class='error'>".$error['startday']."</div>"; ?><?php if((isset($error['interval']))&&(!empty($error['interval']))) echo "<div class='error'>".$error['interval']."</div>"; ?></td>
    </tr>
    <tr>
       <td></td>
-      <td><?php echo __('SELECT_END_DAY'); ?></td>
+      <td><?php echo __('SELECT_END_DAY'); ?>:</td>
       <td><input id="datepicker_end" name="endday" type="text" class="whitefield" size="10" value="<?php echo $endday; ?>"></td>
+      <td><?php if((isset($error['endday']))&&(!empty($error['endday']))) echo "<div class='error'>".$error['endday']."</div>"; ?></td>
    </tr>
    <tr>
       <td></td>
-      <td><?php echo __('SELECT_PRICE_PLUG'); ?></td>
+      <td><?php echo __('SELECT_PRICE_PLUG'); ?>:</td>
       <td><select name="select_plug">
             <option value="all"><?php echo __('PRICE_ALL_PLUG'); ?></option>
             <option value="distinct_all" <?php if(strcmp($select_plug,"distinct_all")==0) { echo "selected"; } ?>><?php echo __('PRICE_DISTINCT_ALL_PLUG'); ?></option>
@@ -166,6 +158,7 @@ chart = new Highcharts.Chart({
                <option value="<?php echo $plugs_infos[$i]["id"]; ?>" <?php if(strcmp($select_plug,$plugs_infos[$i]["id"])==0) echo "selected"; ?>><?php echo __('PRICE_FOR_PLUG').": ".$plugs_infos[$i]["PLUG_NAME"]; ?></option>
             <?php } ?>
          </select></td>
+     <td></td>
    </tr>
 </table>
 <br />
