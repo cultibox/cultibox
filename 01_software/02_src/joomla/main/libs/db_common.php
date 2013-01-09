@@ -45,7 +45,7 @@ function db_priv_end($dbconn) {
 // IN $arr   array containing values to update database
 //    $out   error or warning message 
 // RET none
-function db_update_logs($arr,&$out="") {
+function db_update_logs($arr,&$out) {
    $db = db_priv_start();
    $index=0;
    $return=1;
@@ -67,14 +67,14 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
-         $out=$out.__('ERROR_UPDATE_SQL').$ret;
+         $out[]=__('ERROR_UPDATE_SQL').$ret;
       } else {
-         $out=$out.__('ERROR_UPDATE_SQL');
+         $out[]=__('ERROR_UPDATE_SQL');
       }
       $return=0; 
    }
    if(!db_priv_end($db)) {
-      $out=$out.__('PROBLEM_CLOSING_CONNECTION');   
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');   
    }
 
    return $return;
@@ -87,7 +87,7 @@ EOF;
 // IN $arr   array containing values to update database
 //    $out   error or warning message 
 // RET none
-function db_update_power($arr,&$out="") {
+function db_update_power($arr,&$out) {
    $db = db_priv_start();
    $index=0;
    $return=1;
@@ -110,14 +110,14 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
-         $out=$out.__('ERROR_UPDATE_SQL').$ret;
+         $out[]=__('ERROR_UPDATE_SQL').$ret;
       } else {
-         $out=$out.__('ERROR_UPDATE_SQL');
+         $out[]=__('ERROR_UPDATE_SQL');
       }
       $return=0;
    }
    if(!db_priv_end($db)) {
-      $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
 
    return $return;
@@ -134,7 +134,7 @@ EOF;
 //    $fake   to select fake or real logs
 //    $out      errors or warnings messages
 // RET none
-function get_graph_array(&$res,$key,$startdate,$sensor=1,$fake="False",&$out="") {
+function get_graph_array(&$res,$key,$startdate,$sensor=1,$fake="False",&$out) {
    $db = db_priv_start();
     
    if(strcmp("$sensor","all")==0) {
@@ -151,14 +151,14 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
-         $out=$out.__('ERROR_SELECT_SQL').$ret;
+         $out[]=__('ERROR_SELECT_SQL').$ret;
       } else {
-         $out=$out.__('ERROR_SELECT_SQL');
+         $out[]=__('ERROR_SELECT_SQL');
       }
    }
 
    if(!db_priv_end($db)) {
-      $out=$out.__('PROBLEM_CLOSING_CONNECTION'); 
+      $out[]=__('PROBLEM_CLOSING_CONNECTION'); 
    }
 }
 // }}}
@@ -171,7 +171,7 @@ EOF;
 // RET $res   value of the key   
 //Note: if to select a value is limited to 1. Only one configuration is available,
 //there isn't a user configuration management yet.
-function get_configuration($key,&$out="") {
+function get_configuration($key,&$out) {
         $db = db_priv_start();
         $sql = <<<EOF
 SELECT {$key} FROM `configuration` WHERE id = 1
@@ -181,14 +181,14 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
-         $out=$out.__('ERROR_SELECT_SQL').$ret;
+         $out[]=__('ERROR_SELECT_SQL').$ret;
       } else {
-         $out=$out.__('ERROR_SELECT_SQL');
+         $out[]=__('ERROR_SELECT_SQL');
       }
    }
    
    if(!db_priv_end($db)) {
-      $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
    return $res;
 }
@@ -197,9 +197,8 @@ EOF;
 // {{{ get_informations()
 // ROLE get informations value for specific entries
 // IN $key   the key selectable from the database 
-//    $out   errors or warnings messages
 // RET $res   value of the key   
-function get_informations($key,&$out="") {
+function get_informations($key) {
     $db = db_priv_start();
         $sql = <<<EOF
 SELECT {$key} FROM `informations` WHERE id = 1
@@ -209,14 +208,14 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
-         $out=$out.__('ERROR_SELECT_SQL').$ret;
+         $out[]=__('ERROR_SELECT_SQL').$ret;
       } else {
-         $out=$out.__('ERROR_SELECT_SQL');
+         $out[]=__('ERROR_SELECT_SQL');
       }
    }
 
    if(!db_priv_end($db)) {
-      $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
    return $res;
 }
@@ -231,7 +230,7 @@ EOF;
 // RET none
 //Note: if to select a value is limited to 1. Only one configuration is available,
 //there isn't a user configuration management yet.
-function insert_configuration($key,$value,&$out="") {
+function insert_configuration($key,$value,&$out) {
    $db = db_priv_start();
    $sql = <<<EOF
 UPDATE `configuration` SET  {$key} = "{$value}" WHERE id = 1
@@ -239,18 +238,6 @@ EOF;
    $db->setQuery($sql);
    $db->query();
    $ret=$db->getErrorMsg();
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         $out=$out.__('ERROR_UPDATE_SQL').$ret;
-      } else {
-         $out=$out.__('ERROR_UPDATE_SQL');
-      }
-
-   }
-        
-   if(!db_priv_end($db)) {
-      $out=$out.__('PROBLEM_CLOSING_CONNECTION');
-   }
 }
 // }}}
 
@@ -259,11 +246,10 @@ EOF;
 // ROLE set informations value for specific entries
 // IN $key      the key selectable from the database 
 //    $value   value of the key to insert
-//    $out      errors or warnings messages
 // RET none
 //Note: if to select a value is limited to 1. Only one configuration is available,
 //there isn't a user configuration management yet.
-function insert_informations($key,$value,&$out="") {
+function insert_informations($key,$value) {
    $db = db_priv_start();
    $sql = <<<EOF
 UPDATE `informations` SET  {$key} = "{$value}" WHERE id = 1
@@ -271,18 +257,6 @@ EOF;
    $db->setQuery($sql);
    $db->query();
    $ret=$db->getErrorMsg();
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         $out=$out.__('ERROR_UPDATE_SQL').$ret;
-      } else {
-         $out=$out.__('ERROR_UPDATE_SQL');
-      }
-
-   }
-
-   if(!db_priv_end($db)) {
-      $out=$out.__('PROBLEM_CLOSING_CONNECTION');
-   }
 }
 // }}}
 
@@ -293,7 +267,7 @@ EOF;
 //    $id   id of the plug
 //    $out      errors or warnings messages
 // RET $res   value result for the plug configuration entrie
-function get_plug_conf($key,$id,&$out="") {
+function get_plug_conf($key,$id,&$out) {
    $db = db_priv_start();
    $sql = <<<EOF
 SELECT {$key} FROM `plugs` WHERE id = {$id}
@@ -303,15 +277,15 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
-         $out=$out.__('ERROR_SELECT_SQL').$ret;
+         $out[]=__('ERROR_SELECT_SQL').$ret;
       } else {
-         $out=$out.__('ERROR_SELECT_SQL');
+         $out[]=__('ERROR_SELECT_SQL');
       }
 
    }
 
    if(!db_priv_end($db)) {
-      $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
    
    return $res;
@@ -326,7 +300,7 @@ EOF;
 //    $value   value of the configuration field to update
 //    $out      errors or warnings messages
 // RET none
-function insert_plug_conf($key,$id,$value,&$out="") {
+function insert_plug_conf($key,$id,$value,&$out) {
    $db = db_priv_start();
    $sql = <<<EOF
 UPDATE `plugs` SET  {$key} = "{$value}" WHERE id = {$id}
@@ -336,14 +310,14 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
-         $out=$out.__('ERROR_UPDATE_SQL').$ret;
+         $out[]=__('ERROR_UPDATE_SQL').$ret;
       } else {
-         $out=$out.__('ERROR_UPDATE_SQL');
+         $out[]=__('ERROR_UPDATE_SQL');
       }
    }
 
    if(!db_priv_end($db)) {
-      $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
 }
 // }}}
@@ -354,7 +328,7 @@ EOF;
 // IN $id      id of the plug
 //    $out      errors or warnings messages
 // RET return an array containing plugid and its name
-function get_plugs_infos($nb=0,&$out="") {
+function get_plugs_infos($nb=0,&$out) {
         $db = db_priv_start();
         $sql = <<<EOF
 SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`,`PLUG_REGUL`
@@ -368,14 +342,14 @@ EOF;
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
             if($GLOBALS['DEBUG_TRACE']) {
-               $out=$out.__('ERROR_SELECT_SQL').$ret;
+               $out[]=__('ERROR_SELECT_SQL').$ret;
             } else {
-               $out=$out.__('ERROR_SELECT_SQL');
+               $out[]=__('ERROR_SELECT_SQL');
            }
         }
 
         if(!db_priv_end($db)) {
-                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+                $out[]=__('PROBLEM_CLOSING_CONNECTION');
         }
         return $res;
 }
@@ -387,7 +361,7 @@ EOF;
 // IN $selected_plug   plug id to select
 //    $out      errors or warnings messages
 // RET plug data formated for highchart
-function get_data_plug($selected_plug="",&$out="") {
+function get_data_plug($selected_plug="",&$out) {
    $res="";
    if((isset($selected_plug))&&(!empty($selected_plug))) {
       $db = db_priv_start();
@@ -400,15 +374,15 @@ EOF;
       $ret=$db->getErrorMsg();
            if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
-                      $out=$out.__('ERROR_SELECT_SQL').$ret;
+                      $out[]=__('ERROR_SELECT_SQL').$ret;
                 } else {
-                      $out=$out.__('ERROR_SELECT_SQL');
+                      $out[]=__('ERROR_SELECT_SQL');
                 }
                 return 0;
            }
 
            if(!db_priv_end($db)) {
-                   $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+                   $out[]=__('PROBLEM_CLOSING_CONNECTION');
          return 0;   
            }
    }
@@ -424,7 +398,7 @@ EOF;
 //    $id     id of the plug to be used ('all' for all the plugs)
 //    $out      errors or warnings messages
 // RET data power formated for highchart
-function get_data_power($date="",$dateend="",$id=0,&$out="") {
+function get_data_power($date="",$dateend="",$id=0,&$out) {
    $res="";
    if((isset($date))&&(!empty($date))) {
       $db = db_priv_start();
@@ -456,15 +430,15 @@ EOF;
            $ret=$db->getErrorMsg();
            if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
-                      $out=$out.__('ERROR_SELECT_SQL').$ret;
+                      $out[]=__('ERROR_SELECT_SQL').$ret;
                 } else {
-                      $out=$out.__('ERROR_SELECT_SQL');
+                      $out[]=__('ERROR_SELECT_SQL');
                 }
                 return 0;
           }
 
           if(!db_priv_end($db)) {
-                  $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+                  $out[]=__('PROBLEM_CLOSING_CONNECTION');
                   return 0;
           }
    }
@@ -480,21 +454,21 @@ EOF;
      $ret=$db->getErrorMsg();
      if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
-            $out=$out.__('ERROR_SELECT_SQL').$ret;
+            $out[]=__('ERROR_SELECT_SQL').$ret;
          } else {
-            $out=$out.__('ERROR_SELECT_SQL');
+            $out[]=__('ERROR_SELECT_SQL');
          }
          return 0;
       }
 
       if(!db_priv_end($db)) {
-         $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+         $out[]=__('PROBLEM_CLOSING_CONNECTION');
          return 0;
       }
 
         if(strcmp("$id","all")!=0) {
          if(strcmp($res_power[$id-1]['PLUG_POWER'],"0")==0) {
-            $out=$out.__('ERROR_POWER_PRICE_NULL');
+            $out[]=__('ERROR_POWER_PRICE_NULL');
          }
 
    
@@ -517,7 +491,7 @@ EOF;
             $nb_plugs=get_configuration("NB_PLUGS",$error);
             for($i=0;$i<$nb_plugs;$i++) {
                 if(strcmp($res_power[$i]['PLUG_POWER'],"0")==0) {
-                    $out=$out.__('ERROR_POWER_PRICE_NULL');
+                    $out[]=__('ERROR_POWER_PRICE_NULL');
                 }
             }
 
@@ -561,13 +535,13 @@ EOF;
 //    $out      errors or warnings messages
 //    $type   type of the electric installation: hpc or standard
 // RET data power formated for highchart
-function get_theorical_power($id=0,$type="",&$out="",&$error=0) {
+function get_theorical_power($id=0,$type="",&$out,&$error=0) {
    $nb_plugs = get_configuration("NB_PLUGS",$out);
 
    if(strcmp($type,"standard")==0) {
         $price=get_configuration("COST_PRICE",$out);
         if($price==0) {
-            $out=$out.__('ERROR_COST_PRICE_NULL');
+            $out[]=__('ERROR_COST_PRICE_NULL');
         }
         $price=($price/3600)/1000;
    } else {
@@ -579,11 +553,11 @@ function get_theorical_power($id=0,$type="",&$out="",&$error=0) {
         $stophc=0;
 
         if(($price_hc==0)||($price_hp==0)) {
-            $out=$out.__('ERROR_COST_PRICE_NULL');
+            $out[]=__('ERROR_COST_PRICE_NULL');
         }
 
         if((strcmp($start_hc,"")==0)||(strcmp($stop_hc,"")==0)) {
-            $out=$out.__('ERROR_HPC_TIME_NULL');
+            $out[]=__('ERROR_HPC_TIME_NULL');
         } else {
             $stahch=substr($start_hc,0,2);
             $stahcm=substr($start_hc,3,2);
@@ -620,15 +594,15 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
-                      $out=$out.__('ERROR_SELECT_SQL').$ret;
+                      $out[]=__('ERROR_SELECT_SQL').$ret;
          } else {
-                      $out=$out.__('ERROR_SELECT_SQL');
+                      $out[]=__('ERROR_SELECT_SQL');
          }
          return 0;
    }
 
    if(!db_priv_end($db)) {
-        $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+        $out[]=__('PROBLEM_CLOSING_CONNECTION');
         return 0;
    }
 
@@ -643,15 +617,15 @@ EOF;
      $ret=$db->getErrorMsg();
      if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
-            $out=$out.__('ERROR_SELECT_SQL').$ret;
+            $out[]=__('ERROR_SELECT_SQL').$ret;
          } else {
-            $out=$out.__('ERROR_SELECT_SQL');
+            $out[]=__('ERROR_SELECT_SQL');
          }
          return 0;
       }
 
       if(!db_priv_end($db)) {
-         $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+         $out[]=__('PROBLEM_CLOSING_CONNECTION');
          return 0;
       }
    } else {
@@ -717,7 +691,7 @@ EOF;
 //    $out      errors or warnings messages
 //    $type     type of the electric installation: hpc or standard
 // RET data power formated for highchart
-function get_real_power($data="",$type="",&$out="")  {
+function get_real_power($data="",$type="",&$out)  {
     if((empty($data))||(!isset($data))||(empty($type))||(!isset($type))) {
         return 0;
     }
@@ -726,7 +700,7 @@ function get_real_power($data="",$type="",&$out="")  {
     if(strcmp($type,"standard")==0) {
         $price=get_configuration("COST_PRICE",$out);
         if($price==0) {
-            $out=$out.__('ERROR_COST_PRICE_NULL');
+            $out[]=__('ERROR_COST_PRICE_NULL');
             return 0;
         }
         $price=($price/60)/1000;
@@ -739,12 +713,12 @@ function get_real_power($data="",$type="",&$out="")  {
         $stophc=0;
     
         if(($price_hp==0)||($price_hc==0)) {
-            $out=$out.__('ERROR_COST_PRICE_NULL');
+            $out[]=__('ERROR_COST_PRICE_NULL');
             return 0;
         }
 
         if((strcmp($start_hc,"")==0)||(strcmp($stop_hc,"")==0)) {
-            $out=$out.__('ERROR_HPC_TIME_NULL');
+            $out[]=__('ERROR_HPC_TIME_NULL');
             return 0;
         } else {
             $stahch=substr($start_hc,0,2);
@@ -1307,13 +1281,13 @@ EOF;
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
             if($GLOBALS['DEBUG_TRACE']) {
-                  $out=$out.__('ERROR_UPDATE_SQL').$ret;
+                  $out[]=__('ERROR_UPDATE_SQL').$ret;
             } else {
-                  $out=$out.__('ERROR_UPDATE_SQL');
+                  $out[]=__('ERROR_UPDATE_SQL');
             }
         }
         if(!db_priv_end($db)) {
-                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+                $out[]=__('PROBLEM_CLOSING_CONNECTION');
         }
 }
 // }}}
@@ -1334,14 +1308,14 @@ EOF;
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
           if($GLOBALS['DEBUG_TRACE']) {
-                  $out=$out.__('ERROR_UPDATE_SQL').$ret;
+                  $out[]=__('ERROR_UPDATE_SQL').$ret;
             } else {
-                  $out=$out.__('ERROR_UPDATE_SQL');
+                  $out[]=__('ERROR_UPDATE_SQL');
             }
       return false;
         }
         if(!db_priv_end($db)) {
-                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+                $out[]=__('PROBLEM_CLOSING_CONNECTION');
       return false;
         }
         return true;
@@ -1464,7 +1438,7 @@ function optimize_program($arr) {
 // IN $nb   the number of plug to read
 //    $out   error or warning message
 // RET an array containing datas
-function create_plugconf_from_database($nb=0,&$out="") {
+function create_plugconf_from_database($nb=0,&$out) {
    if($nb>0) {
       $db = db_priv_start();
       $sql = <<<EOF
@@ -1475,14 +1449,14 @@ EOF;
       $ret=$db->getErrorMsg();
       if((isset($ret))&&(!empty($ret))) {
           if($GLOBALS['DEBUG_TRACE']) {
-                  $out=$out.__('ERROR_SELECT_SQL').$ret;
+                  $out[]=__('ERROR_SELECT_SQL').$ret;
             } else {
-                  $out=$out.__('ERROR_SELECT_SQL');
+                  $out[]=__('ERROR_SELECT_SQL');
             }
       }
       
       if(!db_priv_end($db)) {
-         $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+         $out[]=__('PROBLEM_CLOSING_CONNECTION');
       }
 
       if(count($res)>0) {
@@ -1539,7 +1513,7 @@ EOF;
 // ROLE read programs from the database and format its to be write into a sd card
 // IN $out        error or warning message
 // RET an array containing datas
-function create_program_from_database(&$out="") {
+function create_program_from_database(&$out) {
    $db = db_priv_start();
    $sql = <<<EOF
 SELECT * FROM `programs` ORDER by `time_start`
@@ -1549,9 +1523,9 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
           if($GLOBALS['DEBUG_TRACE']) {
-                  $out=$out.__('ERROR_SELECT_SQL').$ret;
+                  $out[]=__('ERROR_SELECT_SQL').$ret;
             } else {
-                  $out=$out.__('ERROR_SELECT_SQL');
+                  $out[]=__('ERROR_SELECT_SQL');
             }
    }
 
@@ -1563,9 +1537,9 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
-                  $out=$out.__('ERROR_SELECT_SQL').$ret;
+                  $out[]=__('ERROR_SELECT_SQL').$ret;
       } else {
-                  $out=$out.__('ERROR_SELECT_SQL');
+                  $out[]=__('ERROR_SELECT_SQL');
       }
    }
 
@@ -1577,14 +1551,14 @@ EOF;
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
             if($GLOBALS['DEBUG_TRACE']) {
-                  $out=$out.__('ERROR_SELECT_SQL').$ret;
+                  $out[]=__('ERROR_SELECT_SQL').$ret;
             } else {
-                  $out=$out.__('ERROR_SELECT_SQL');
+                  $out[]=__('ERROR_SELECT_SQL');
             }
    }
    
    if(!db_priv_end($db)) {
-          $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+          $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
 
    $j=1;
@@ -1679,7 +1653,7 @@ EOF;
 // ROLE read calendar from the database and format its to be write into a sd card
 // IN   $out         error or warning message
 // RET an array containing datas
-function create_calendar_from_database(&$out="") {
+function create_calendar_from_database(&$out) {
    $year=date('Y');
         $db = db_priv_start();
         $sql = <<<EOF
@@ -1690,9 +1664,9 @@ EOF;
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
            if($GLOBALS['DEBUG_TRACE']) {
-               $out=$out.__('ERROR_SELECT_SQL').$ret;
+               $out[]=__('ERROR_SELECT_SQL').$ret;
             } else {
-               $out=$out.__('ERROR_SELECT_SQL');
+               $out[]=__('ERROR_SELECT_SQL');
             }
         } else {
       $data=array();
@@ -1900,7 +1874,7 @@ EOF;
 //ROLE check if no programs have been defined yet
 // IN  $out       warnings or errors messages 
 // RET none
-function reset_plug_identificator(&$out="") {
+function reset_plug_identificator(&$out) {
            $db = db_priv_start();
            $sql = <<<EOF
 UPDATE `plugs` SET  `PLUG_ID` = ""
@@ -1911,14 +1885,14 @@ EOF;
    
            if((isset($ret))&&(!empty($ret))) {
                if($GLOBALS['DEBUG_TRACE']) {
-                  $out=$out.__('ERROR_UPDATE_SQL').$ret;
+                  $out[]=__('ERROR_UPDATE_SQL').$ret;
                } else {
-                  $out=$out.__('ERROR_UPDATE_SQL');
+                  $out[]=__('ERROR_UPDATE_SQL');
                }
            }
    
            if(!db_priv_end($db)) {
-                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+                $out[]=__('PROBLEM_CLOSING_CONNECTION');
            }
 }
 // }}}
@@ -1930,7 +1904,7 @@ EOF;
 //     $plug         plug id for the program
 //     $out          error or warning message
 // RET array containing program's data
-function generate_program_from_file($file="",$plug,&$out="") {
+function generate_program_from_file($file="",$plug,&$out) {
          $res=array();
          $handle=fopen("$file", 'r');
             if($handle) {
@@ -1959,7 +1933,7 @@ function generate_program_from_file($file="",$plug,&$out="") {
 //    $table    table to be deleted: logs, power...
 //    $fake     1 to delete fake log, 0 else 
 // RET  0 is an error occured, 1 else
-function reset_log($table="",$fake=0,&$out="") {
+function reset_log($table="",$fake=0,&$out) {
     if(strcmp("$table","")==0) return 0;
     $db = db_priv_start();
     $error=1;
@@ -1979,16 +1953,16 @@ EOF;
 
            if((isset($ret))&&(!empty($ret))) {
                if($GLOBALS['DEBUG_TRACE']) {
-                  $out=$out.__('ERROR_DELETE_SQL').$ret;
+                  $out[]=__('ERROR_DELETE_SQL').$ret;
                   $error=0;
                } else {
-                  $out=$out.__('ERROR_DELETE_SQL');
+                  $out[]=__('ERROR_DELETE_SQL');
                   $error=0;
                }
            }
 
            if(!db_priv_end($db)) {
-                $out=$out.__('PROBLEM_CLOSING_CONNECTION');
+                $out[]=__('PROBLEM_CLOSING_CONNECTION');
                 $error=0;
            }
            return $error;

@@ -9,7 +9,7 @@
 <?php } ?>
 
 <?php if((isset($info))&&(!empty($info))) { ?>
-<div id="info">
+<div class="info">
    <ul>
       <?php echo $info; ?>
    </ul>
@@ -17,7 +17,7 @@
 <?php } ?>
 
 <?php if((isset($error))&&(!empty($error))) { ?>
-<div id="error">
+<div class="error">
    <ul>
       <?php echo $error; ?>
    </ul>
@@ -27,11 +27,22 @@
 
 <br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm" id="plugForm">
+<p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('PLUG'); ?> 
+    <select name="selected_plug" onChange="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);" onLoad="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);">
+    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+               <option <?php if($selected_plug==$i) { echo 'selected';} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
+    <?php } ?>
+               <option <?php if($selected_plug=="all") { echo 'selected';} ?> value="all"><?php echo __('SELECT_ALL_PLUGS'); ?></option>
+    </select>
+</p>
+<br />
+<div id="title_infos_plug" style="<?php if(strcmp($selected_plug,"all")==0) echo 'display:none'; ?>"><p class="title_plug"><?php echo __('PLUG_INFOS'); ?>:</p></div>
    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+    <div id="title_infos_all_plugs<?php echo $i; ?>" style="<?php if(strcmp($selected_plug,"all")!=0) echo 'display:none'; ?>"><p class="title_plug"><?php echo __('PLUG_INFOS')." ".$i; ?>:</p></div>
+   <div id="div_selected_plug<?php echo $i; ?>" style="<?php if(($selected_plug!=$i)&&(strcmp($selected_plug,"all")!=0)) echo 'display:none'; ?>">
    <table>
       <tr>
          <td class="plug-marge-title">
-            <p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('PLUG')." $i:"; ?></p>
          </td>
          <td></td>
          <td></td>
@@ -42,7 +53,7 @@
               <?php echo __('NAME_PLUG'); ?>
          </td>
          <td>
-            <input type="text" size="20" maxlength="20" name="plug_name<?php echo $i; ?>" value="<?php echo $plug_name{$i}; ?>">
+            <input type="text" size="15" maxlength="15" name="plug_name<?php echo $i; ?>" value="<?php echo $plug_name{$i}; ?>">
          </td>
       </tr>
       <tr>
@@ -70,7 +81,7 @@
          </td>
          <td>
             <div id="tolerance<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"unknown")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
-               <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 10%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label>
+               <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 20%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label>
             </div>
          </td>
       </tr>
@@ -160,6 +171,7 @@
    </tr>
    </table>
 </div>
+</div>
 
 <?php if((isset($error_plug[$i]))&&(!empty($error_plug[$i]))) { ?>
 <div id="error">
@@ -174,10 +186,7 @@
    </ul>
 </div>
 <?php } ?>
-
-
-<br />
-<hr />
+<div id="format_style<?php echo $i; ?>" style="display:none"><br /><hr /><br /></div>
    <?php } ?>
 <br /><br />
    <table>

@@ -1,4 +1,4 @@
-#info {
+.info {
 	font-size: 12px; 
 	font-weight: bolder; 
 	font-style: italic;
@@ -7,11 +7,11 @@
 }
 
 
-#error {
+.error {
 	font-size: 12px; 
 	font-weight: bolder; 
 	font-style: italic;
-   color: red;
+    color: red;
 	width: 100%;
 }
 
@@ -48,6 +48,14 @@ input.button_log {
     font-size: 18px;
     font-weight: bold;
 }
+
+.menu_h1 {
+    font-size: 14px;
+    font-weight:bold;
+    color: #7C502F;
+    font-style:italic;
+}
+
 
 .precision_infos{
     font-size: 12px;
@@ -99,6 +107,14 @@ input.button_log {
   text-align: center;
 }
 
+.title_plug {
+  font-size: 15px;
+  font-weight:bold;
+  color: #7C502F;
+  font-style:italic;
+  text-align: center;
+}
+
 table.conf-table { 
    width:100%; 
    text-align: left;
@@ -109,7 +125,7 @@ table.table_width{
 }
 
 td.conf-marge {
-   width: 20%;
+   width: 5%;
 }
 
 td.conf-marge-td {
@@ -171,15 +187,15 @@ td.plug-marge-submit {
 }
 
 td.cost-marge {
-   width: 30%;
+   width: 5%;
 }
 
 td.cost-title {
-   width: 20%;
+   width: 25%;
 }
 
 td.cost-field {
-   width: 40%;
+   width: 25%;
 }
 
 td.wizard-marge-submit {

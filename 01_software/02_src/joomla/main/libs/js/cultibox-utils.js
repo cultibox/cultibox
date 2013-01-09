@@ -25,7 +25,7 @@ function expand(div) {
                                  divLabelSystem.style.color = '';
                                  divLabelAlarm.style.color = '';
                                  divLabelCost.style.color = '';
-                                 document.configform.menu.value="user_interface";
+                                 document.configform.submenu.value="user_interface";
                                  
                                  break;
          case 'system_interface' : divConfig.style.display = "none";
@@ -37,7 +37,7 @@ function expand(div) {
                                    divLabelSystem.style.color = '#000000';
                                    divLabelAlarm.style.color = '';
                                    divLabelCost.style.color = '';
-                                   document.configform.menu.value="system_interface";
+                                   document.configform.submenu.value="system_interface";
 
                                    break;
          case 'alarm_interface' : divConfig.style.display = "none";
@@ -49,7 +49,7 @@ function expand(div) {
                                   divLabelSystem.style.color = '';
                                   divLabelAlarm.style.color = '#000000';
                                   divLabelCost.style.color = '';
-                                  document.configform.menu.value="alarm_interface";
+                                  document.configform.submenu.value="alarm_interface";
 
                                   break;
          case 'cost_interface' : divConfig.style.display = "none";
@@ -61,7 +61,7 @@ function expand(div) {
                                  divLabelSystem.style.color = '';
                                  divLabelAlarm.style.color = '';
                                  divLabelCost.style.color = '#000000';
-                                 document.configform.menu.value="cost_interface";
+                                 document.configform.submenu.value="cost_interface";
 
                                  break;
       }
@@ -217,7 +217,7 @@ function getRegul(i,j) {
 
 
 
-// {{{ getRegul()
+// {{{ getTolerance()
 // ROLE display the tolerance informations or not
 // IN  input value: display or not the informations
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
@@ -249,8 +249,39 @@ function getTolerance(i,j) {
 // }}}
 
 
+// {{{ getSelectedPlug()
+// ROLE display the selected plug
+// IN  input value: display or not the informations
+// HOW IT WORKS: get id from div to be displayed 
+// USED BY: templates/plugs.html 
+function getSelectedPlug(i,j) {
+      for(k = 1; k <= j; k++) {
+            var divSelected=document.getElementById('div_selected_plug'+k);
+            if(i==j) {
+                    divSelected.style.display="";
+                    document.getElementById('title_infos_plug').style.display="none";
+                    document.getElementById('title_infos_all_plugs'+k).style.display="";
+                    document.getElementById('format_style'+k).style.display="";
+            } else {
+                if(k==(i+1)) {
+                    divSelected.style.display="";
+                } else {
+                    divSelected.style.display="none";
+                }
+                document.getElementById('title_infos_plug').style.display="";
+                document.getElementById('title_infos_all_plugs'+k).style.display="none";
+                document.getElementById('format_style'+k).style.display="none";
+            }
+    } 
+}
+// }}}
 
-// {{{ getRegul()
+
+
+
+
+
+// {{{ getRegulation()
 // ROLE display the regulation informations or not
 // IN  input value: display or not the informations
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
