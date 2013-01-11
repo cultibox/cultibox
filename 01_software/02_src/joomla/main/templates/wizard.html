@@ -1,23 +1,23 @@
-<?php if((isset($info))&&(!empty($info))) { ?>
+<?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <div class="info">
 <ul>
-        <?php echo $info; ?>
+        <?php foreach($main_info as $inf) { 
+            echo "<li>".$inf."</li>";            
+        } ?>
 </ul>
 </div>
 <?php } ?>
-
-<?php if((!empty($main_error))||(!empty($error))) { ?>
+<?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
 <div class="error">
 <ul>
-<?php if(!empty($main_error)) { ?>
-        <?php echo $main_error; ?>
-<?php } ?>
-<?php if(!empty($error)) { ?>
-        <?php echo $error; ?>
-<?php } ?>
+        <?php foreach($main_error as $err) { 
+            echo "<li>".$err."</li>";            
+        } ?>
 </ul>
 </div>
+<br />
 <?php } ?>
+
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -70,8 +70,11 @@ timeFormat: 'hh:mm:ss',
 <p class="wizard_subtitle"><?php echo __('WIZARD_CONFIGURE_PLUG_NUMBER'); ?><?php echo " $selected_plug: $plug_name"; ?></p>
 <form action="<?php echo($_SERVER['PHP_SELF']);?>" method="post">
 
-
-<?php if($step>1) { ?><p class="step"><?php echo __('WIZARD_STEP')."&nbsp;".$step."/4:";?></p><?php } ?>
+<?php if($selected_plug==1) { ?>
+    <p class="step"><?php echo __('WIZARD_STEP')."&nbsp;".$step."/4:";?></p>
+<?php } else { $tmp=$step-1; ?>
+    <p class="step"><?php echo __('WIZARD_STEP')."&nbsp;".$tmp."/3:";?></p>
+<?php } ?>
 <table>
    <tr>
       <td></td>
@@ -127,25 +130,31 @@ timeFormat: 'hh:mm:ss',
 <table>
    <tr>
       <td class="wizard-marge-td"></td>
-      <td width="30%">
-         <table width="60%">
-         <tr>
-         <td>
-            	<input type="hidden" name="program" value="program">
-             <?php echo __('START_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td></tr><tr><td><?php echo __('END_TIME_PROGRAM'); ?></td><td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td></tr>
-         <?php if(strcmp($plug_type,"lamp")!=0) { ?>
-	<tr><td><?php  if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo __('TEMP_WISHED'); }
-                         elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { echo __('HUMI_WISHED'); } 
+      <td class="wizard-title"><input type="hidden" name="program" value="program"><?php echo __('START_TIME_PROGRAM'); ?>:</td>
+      <td class="wizard-field"><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td>
+      <td><?php if((isset($error['start_time']))&&(!empty($error['start_time']))) echo "<div class='error'>".$error['start_time']."</div>"; ?></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><?php echo __('END_TIME_PROGRAM'); ?>:</td>
+      <td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td>
+      <td><?php if((isset($error['end_time']))&&(!empty($error['end_time']))) echo "<div class='error'>".$error['end_time']."</div>"; ?></td>
+    </tr>
+      <?php if(strcmp($plug_type,"lamp")!=0) { ?>
+   <tr>
+     <td></td>
+     <td><?php  if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo __('TEMP_WISHED').":"; }
+                         elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { echo __('HUMI_WISHED').":"; } 
 
-               ?></td><td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) {?><input type="hidden" name="value_program" id="value_program" value="99.9"><?php } else { ?><input type="text" maxlength="4" size="4" name="value_program" id="value_program" <?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0))  { 
+               ?></td>
+     <td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) {?><input type="hidden" name="value_program" id="value_program" value="99.9"><?php } else { ?><input type="text" maxlength="4" size="4" name="value_program" id="value_program" <?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0))  { 
                                       echo 'value="22"'; 
                                } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { 
-                                      echo 'value="55"';  } ?>/><?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo " °C"; } else { echo " %"; } ?></td></tr>
-        <?php } } ?>
-      </table>
-      </td>
-      
-</tr>
+                                      echo 'value="55"';  } ?>/><?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo " °C"; } else { echo " %"; } ?>
+    </td>
+    <td><?php if((isset($error['value']))&&(!empty($error['value']))) echo "<div class='error'>".$error['value']."</div>"; ?></td>
+    </tr>
+<?php } } ?>
 </table>
 <?php } ?>
 

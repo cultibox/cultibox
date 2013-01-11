@@ -15,17 +15,17 @@ require_once('main/libs/utilfunc.php');
 
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
-$lang=get_configuration("LANG",$error);
+$main_error=array();
+$main_info=array();
+$error=array();
+$info=array();
+$lang=get_configuration("LANG",$main_error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
 
 // ================= VARIABLES ================= //
-$main_error=array();
-$main_info=array();
-$error=array();
-$info=array();
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $update_program=false;
 $reset=getvar('reset');
@@ -41,6 +41,7 @@ $version=get_configuration("VERSION",$main_error);
 $main_info[]=__('WIZARD_ENABLE_FUNCTION');
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
+$selected_error="";
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
@@ -91,16 +92,15 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $regul_value=str_replace(' ','',$regul_value);
 
 
-   $error_plug[$nb]="";
-   $old_name=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
-   $old_type=get_plug_conf("PLUG_TYPE",$nb,$error_plug[$nb]);
-   $old_tolerance=get_plug_conf("PLUG_TOLERANCE",$nb,$error_plug[$nb]);
-   $old_id=get_plug_conf("PLUG_ID",$nb,$error_plug[$nb]);
-   $old_power=get_plug_conf("PLUG_POWER",$nb,$error_plug[$nb]);
-   $old_regul=get_plug_conf("PLUG_REGUL",$nb,$error_plug[$nb]);
-   $old_senso=get_plug_conf("PLUG_SENSO",$nb,$error_plug[$nb]);
-   $old_senss=get_plug_conf("PLUG_SENSS",$nb,$error_plug[$nb]);
-   $old_regul_value=get_plug_conf("PLUG_REGUL_VALUE",$nb,$error_plug[$nb]);
+   $old_name=get_plug_conf("PLUG_NAME",$nb,$main_error);
+   $old_type=get_plug_conf("PLUG_TYPE",$nb,$main_error);
+   $old_tolerance=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
+   $old_id=get_plug_conf("PLUG_ID",$nb,$main_error);
+   $old_power=get_plug_conf("PLUG_POWER",$nb,$main_error);
+   $old_regul=get_plug_conf("PLUG_REGUL",$nb,$main_error);
+   $old_senso=get_plug_conf("PLUG_SENSO",$nb,$main_error);
+   $old_senss=get_plug_conf("PLUG_SENSS",$nb,$main_error);
+   $old_regul_value=get_plug_conf("PLUG_REGUL_VALUE",$nb,$main_error);
 
    
    if((!empty($id))&&(isset($id))&&(!$reset)) {
@@ -109,65 +109,69 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
             while(strlen("$id")<3) {
                $id="0$id";
             }
-            insert_plug_conf("PLUG_ID",$nb,"$id",$error_plug[$nb]);
+            insert_plug_conf("PLUG_ID",$nb,"$id",$main_error);
             $update_program=true;
             $plug_update=true;
          } else {
-                  $error_plug[$nb]=__('ERROR_PLUG_ID');
+                  $error[$nb]['plug_id']=__('ERROR_PLUG_ID');
          }
        }
    } 
 
    if((!empty($name))&&(isset($name))&&(!$reset)&&(strcmp("$old_name","$name")!=0)) {
-      $name= mysql_escape_string($name);
-      insert_plug_conf("PLUG_NAME",$nb,$name,$error_plug[$nb]);
+      $name=mysql_escape_string($name);
+      insert_plug_conf("PLUG_NAME",$nb,$name,$main_error);
       $update_program=true;
       $plug_update=true;
    }
    
 
    if((!empty($type))&&(isset($type))&&(!$reset)&&(strcmp("$old_type","$type")!=0)) {
-      insert_plug_conf("PLUG_TYPE",$nb,$type,$error_plug[$nb]);
+      insert_plug_conf("PLUG_TYPE",$nb,$type,$main_error);
       $update_program=true;
       $plug_update=true;
    }
 
    if(((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0))) {
-         if(check_tolerance_value($type,$tolerance,$error_plug[$nb])) {
-            insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$error_plug[$nb]);
+         if(check_tolerance_value($type,$tolerance)) {
+            insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$main_error);
             $update_program=true;
             $plug_update=true;
-         } 
+         } else {
+            $error[$nb]['tolerance']=__('ERROR_TOLERANCE_VALUE_DEGREE');
+        }
    } 
 
-   $plug_id{$nb}=get_plug_conf("PLUG_ID",$nb,$error_plug[$nb]);
+   $plug_id{$nb}=get_plug_conf("PLUG_ID",$nb,$main_error);
    if((empty($plug_id{$nb}))||(!isset($plug_id{$nb}))) {
             $plug_id{$nb}=$GLOBALS['PLUGA_DEFAULT'][$nb-1];
    }
 
 
    if((!empty($power))&&(isset($power))&&(!$reset)&&(strcmp("$old_power","$power")!=0)) {
-      if(check_power_value($power,$error_plug[$nb])) {
-      	insert_plug_conf("PLUG_POWER",$nb,$power,$error_plug[$nb]);
+      if(check_power_value($power)) {
+      	insert_plug_conf("PLUG_POWER",$nb,$power,$main_error);
       	$update_program=true;
       	$plug_update=true;
+     } else {
+        $error[$nb]['power']=__('ERROR_POWER_VALUE');
      }
    } else {
          if((empty($power))&&(!$reset)&&(!empty($reccord))&&(strcmp("$old_power","$power")!=0)) {
-            insert_plug_conf("PLUG_POWER",$nb,0,$error_plug[$nb]);
+            insert_plug_conf("PLUG_POWER",$nb,0,$main_error);
             $update_program=true;
             $plug_update=true;
          }
    }
 
    if((!empty($regul))&&(isset($regul))&&(!$reset)&&(strcmp("$old_regul","$regul")!=0)) {
-         insert_plug_conf("PLUG_REGUL",$nb,"$regul",$error_plug[$nb]);
+         insert_plug_conf("PLUG_REGUL",$nb,"$regul",$main_error);
          $update_program=true;
          $plug_update=true;
    }
 
    if((!empty($regul_senss))&&(isset($regul_senss))&&(!$reset)&&(strcmp("$old_senss","$regul_senss")!=0)) {
-         insert_plug_conf("PLUG_SENSS",$nb,"$regul_senss",$error_plug[$nb]);
+         insert_plug_conf("PLUG_SENSS",$nb,"$regul_senss",$main_error);
          $update_program=true;
          $plug_update=true;
    }
@@ -184,70 +188,80 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    }
 
    if((!empty($regul_senso))&&(isset($regul_senso))&&(!$reset)&&(strcmp("$old_senso","$regul_senso")!=0)) {
-         insert_plug_conf("PLUG_SENSO",$nb,"$regul_senso",$error_plug[$nb]);
+         insert_plug_conf("PLUG_SENSO",$nb,"$regul_senso",$main_error);
          $update_program=true;
          $plug_update=true;
    }
 
    if((!empty($regul_value))&&(isset($regul_value))&&(!$reset)&&(strcmp("$old_regul_value","$regul_value")!=0)) {
          if(check_regul_value("$regul_value")) { 
-            insert_plug_conf("PLUG_REGUL_VALUE",$nb,"$regul_value",$error_plug[$nb]);
+            insert_plug_conf("PLUG_REGUL_VALUE",$nb,"$regul_value",$main_error);
             $update_program=true;
             $plug_update=true;
          } else {
-            $error_plug[$nb]=$error_plug[$nb].__('ERROR_REGUL_VALUE');
+            $error[$nb]['regul_value']=__('ERROR_REGUL_VALUE');
         }
 
    }
 
-   if(!empty($error_plug[$nb])) {
-	    $pop_up_error_message=clean_popup_message($error_plug[$nb]);
-        if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)) {
-            insert_plug_conf("PLUG_TOLERANCE",$nb,"$old_tolerance",$error_plug[$nb]);
-        } else {
-            insert_plug_conf("PLUG_TOLERANCE",0,"$old_tolerance",$error_plug[$nb]);
+   if(!empty($error[$nb])) {
+        foreach($error[$nb] as $err) {
+	        $pop_up_error_message=$pop_up_error_message.clean_popup_message($err);
         }
-        insert_plug_conf("PLUG_TYPE",$nb,"$old_type",$error_plug[$nb]); 
-        insert_plug_conf("PLUG_NAME",$nb,"$old_name",$error_plug[$nb]);
-        insert_plug_conf("PLUG_ID",$nb,"$old_id",$error_plug[$nb]);
+
+        if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)) {
+            insert_plug_conf("PLUG_TOLERANCE",$nb,"$old_tolerance",$main_error);
+        } else {
+            insert_plug_conf("PLUG_TOLERANCE",0,"$old_tolerance",$main_error);
+        }
+        insert_plug_conf("PLUG_TYPE",$nb,"$old_type",$main_error); 
+        insert_plug_conf("PLUG_NAME",$nb,"$old_name",$main_error);
+        insert_plug_conf("PLUG_ID",$nb,"$old_id",$main_error);
         $count_err=true;
+        $selected_error=$nb;
+
    } 
 
-   $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$error_plug[$nb]);
-   $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$error_plug[$nb]);
-   $plug_power{$nb}=get_plug_conf("PLUG_POWER",$nb,$error_plug[$nb]);
-   $plug_regul{$nb}=get_plug_conf("PLUG_REGUL",$nb,$error_plug[$nb]);
-   $plug_senso{$nb}=get_plug_conf("PLUG_SENSO",$nb,$error_plug[$nb]);
-   $plug_senss{$nb}=get_plug_conf("PLUG_SENSS",$nb,$error_plug[$nb]);
-   $plug_regul_value{$nb}=get_plug_conf("PLUG_REGUL_VALUE",$nb,$error_plug[$nb]);
+   $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$main_error);
+   $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$main_error);
+   $plug_power{$nb}=get_plug_conf("PLUG_POWER",$nb,$main_error);
+   $plug_regul{$nb}=get_plug_conf("PLUG_REGUL",$nb,$main_error);
+   $plug_senso{$nb}=get_plug_conf("PLUG_SENSO",$nb,$main_error);
+   $plug_senss{$nb}=get_plug_conf("PLUG_SENSS",$nb,$main_error);
+   $plug_regul_value{$nb}=get_plug_conf("PLUG_REGUL_VALUE",$nb,$main_error);
 
-   $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$error_plug[$nb]);
+   $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
    if($plug_tolerance{$nb}==0) {
       $plug_tolerance{$nb}="1.0";
    }
 }
 
+if((!empty($selected_error))&&(strcmp("$selected_plug","all")!=0)) { 
+    $selected_plug=$selected_error;
+}
 
-if(($update_program)&&(empty($error))&&(!$count_err)) {
-          $pop_up_message=clean_popup_message(__('VALID_UPDATE_CONF'));
+
+if(($update_program)&&(count($main_error)==0)&&(!$count_err)) {
+          $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_CONF'));
+          $main_info[]=__('VALID_UPDATE_CONF');
 } 
 
 // Write file plug01 plug02...
 if((isset($sd_card))&&(!empty($sd_card))) {
    // build conf plug array
-   $plugconf=create_plugconf_from_database(17,$error);
+   $plugconf=create_plugconf_from_database(17,$main_error);
    if(count($plugconf)>0) {
-      write_plugconf($plugconf,$sd_card,$error);
+      write_plugconf($plugconf,$sd_card,$main_error);
    }
    //write pluga file
-   write_pluga($sd_card,$error);
+   write_pluga($sd_card,$main_error);
 }
 
 
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {
       $ret=array();
-      check_update_available($ret,$error);
+      check_update_available($ret,$main_error);
       foreach($ret as $file) {
          if(count($file)==4) {
                if(strcmp("$version","$file[1]")==0) {

@@ -1,4 +1,72 @@
 CultiBox (1.1.2) precise; urgency=low
+
+
+ALTER TABLE `cultibox`.`configuration` ADD `STATISTICS` VARCHAR( 5 ) NOT NULL DEFAULT 'True';
+
+
++Index: joomla/main/locale/fr_FR.utf8.po
++Index: joomla/main/locale/en_GB.utf8.po
++Index: joomla/main/scripts/plugs.php
++Index: joomla/main/scripts/welcome.php
++Index: joomla/main/scripts/waiting.php
++Index: joomla/main/scripts/configuration.php
++Index: joomla/main/scripts/cost.php
++Index: joomla/main/scripts/calendar.php
++Index: joomla/main/libs/css/cultibox.css
++Index: joomla/main/libs/js/cultibox-utils.js
++Index: joomla/main/libs/utilfunc.php
++Index: joomla/main/libs/db_common.php
++Index: joomla/main/templates/configuration.html
++Index: joomla/main/templates/cost.html
++Index: joomla/main/templates/calendar.html
++Index: joomla/main/templates/programs.html
++Index: joomla/main/templates/plugs.html
++Index: joomla/main/templates/welcome.html
++Index: joomla/main/templates/wizard.html
++Index: joomla/main/templates/logs.html
+Index: 02_src/joomla/main/libs/js/cultibox-utils.js
+Index: 02_src/joomla/main/libs/utilfunc.php
+Index: 02_src/joomla/main/libs/db_common.php
+Index: 02_src/joomla/main/libs/css/cultibox.css
+Index: 02_src/joomla/main/templates/programs.html
+Index: 02_src/joomla/main/templates/plugs.html
+Index: 02_src/joomla/main/templates/wizard.html
+Index: 02_src/joomla/main/templates/logs.html
+Index: 02_src/joomla/main/templates/configuration.html
+Index: 02_src/joomla/main/locale/en_GB.utf8.po
+Index: 02_src/joomla/main/locale/fr_FR.utf8.po
+Index: 02_src/joomla/main/scripts/plugs.php
+Index: 02_src/joomla/main/scripts/welcome.php
+Index: 02_src/joomla/main/scripts/wizard.php
+Index: 02_src/joomla/main/scripts/waiting.php
+Index: 02_src/joomla/main/scripts/logs.php
+Index: 02_src/joomla/main/scripts/configuration.php
+Index: 02_src/joomla/main/scripts/cost.php
+Index: 02_src/joomla/main/scripts/calendar.php
+
+
+Index: joomla/main/locale/fr_FR.utf8.po
+Index: joomla/main/locale/en_GB.utf8.po
+Index: joomla/main/scripts/plugs.php
+Index: joomla/main/scripts/welcome.php
+Index: joomla/main/scripts/waiting.php
+Index: joomla/main/scripts/configuration.php
+Index: joomla/main/scripts/cost.php
+Index: joomla/main/scripts/calendar.php
+Index: joomla/main/libs/css/cultibox.css
+Index: joomla/main/libs/js/cultibox-utils.js
+Index: joomla/main/libs/utilfunc.php
+Index: joomla/main/libs/db_common.php
+Index: joomla/main/templates/configuration.html
+Index: joomla/main/templates/cost.html
+Index: joomla/main/templates/calendar.html
+Index: joomla/main/templates/programs.html
+Index: joomla/main/templates/plugs.html
+Index: joomla/main/templates/welcome.html
+Index: joomla/main/templates/wizard.html
+Index: joomla/main/templates/logs.html
+
+
     + Nouveau fonctionnement du menu configuration
         02_src/joomla/main/scripts/configuration.php
         02_src/joomla/main/libs/js/cultibox-utils.js

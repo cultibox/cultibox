@@ -791,7 +791,7 @@ function get_real_power($data="",$type="",&$out)  {
 //    $out      error or warning message
 // RET true
 function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
-   $data_plug=get_data_plug($plug_id);
+   $data_plug=get_data_plug($plug_id,$out);
    asort($data_plug);
    $start_time=str_replace(':','',"$start_time");
    $end_time=str_replace(':','',"$end_time");

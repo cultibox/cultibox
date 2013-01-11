@@ -70,6 +70,7 @@ input.button_log {
 .regul {
    font-size: 12px;
    font-style: italic;
+   width: 30%;
 }
 
 .wizard_title {
@@ -145,13 +146,12 @@ td.left_log {
 
 }
 
-
 td.log-marge-day {
-   width: 45%;
+   width: 10%;
 }
 
 td.log-marge-day-title {
-   width: 35%;
+   width: 30%;
 }
 
 td.log-marge-day-field {
@@ -159,6 +159,14 @@ td.log-marge-day-field {
 }
 
 td.log-marge-month {
+   width: 10%;
+}
+
+td.log-marge-month-title {
+   width: 30%;
+}
+
+td.log-marge-month-field {
    width: 20%;
 }
 
@@ -174,12 +182,21 @@ td.log-manage-title {
    width: 55%;
 }
 
-td.plug-marge-title {
-   width: 20%;
+td.plug-marge-td {
+   width: 10%;
 }
 
+td.plug-marge-title {
+   width: 25%;
+}
+
+td.plug-marge-field {
+   width: 25%;
+}
+
+
 td.plug-regul {
-   width: 40%;
+   width: 20%;
 }
 
 td.plug-marge-submit {
@@ -211,12 +228,17 @@ td.wizard-step {
 }
 
 td.wizard-marge-td {
+   width: 10%;
+}
+
+td.wizard-title {
    width: 20%;
 }
 
-td.wizard-marge-title {
+td.wizard-field {
    width: 20%;
 }
+
 
 td.wizard-input-submit {
    width: 30%;

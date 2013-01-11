@@ -15,15 +15,15 @@ require_once('main/libs/utilfunc.php');
 
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
-$lang=get_configuration("LANG",$error);
+$main_error=array();
+$main_info=array();
+$lang=get_configuration("LANG",$main_error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
 
 // ================= VARIABLES ================= //
-$main_error=array();
-$main_info=array();
 $program="";
 $sd_card="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
@@ -59,8 +59,9 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    }
    check_and_copy_firm($sd_card,$main_error);
    check_and_copy_log($sd_card,$main_error);
+   $main_info[]=__('INFO_SD_CARD').": $sd_card";
 } else {
-        $main_error[]=__('ERROR_SD_CARD_CONF');
+        $main_error[]=__('ERROR_SD_CARD');
 }
 
 

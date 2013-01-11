@@ -344,6 +344,9 @@ msgstr "months"
 msgid "IMPORT_LOG"
 msgstr "Import logs"
 
+msgid "SET_XY_ZOOM"
+msgstr "Enable zoom on Y-axis"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -809,6 +812,12 @@ msgstr "Missing value for Start/End time"
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "Error in time format: HH:MM:SS"
+
+msgid "ERROR_FORMAT_TIME_START"
+msgstr "Start time: error in time format (HH:MM:SS)"
+
+msgid "ERROR_FORMAT_TIME_END"
+msgstr "End time: error in time format (HH:MM:SS)"
 
 msgid "ERROR_TIME_VALUE"
 msgstr "Error in time format: HH:MM"

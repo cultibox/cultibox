@@ -344,6 +344,9 @@ msgstr "derniers mois"
 msgid "IMPORT_LOG"
 msgstr "Importer les logs"
 
+msgid "SET_XY_ZOOM"
+msgstr "Activer le zoom sur l'axe Y"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -784,14 +787,18 @@ msgstr "Enregistrements d'hygrométrie vides pour certains de vos capteurs à la
 msgid "EMPTY_POWER_DATA"
 msgstr "Aucun enregistrement concernant la puissance consommée pour la date sélectionnée"
 
+
 msgid "ERROR_FORMAT_DATE_DAY_START"
 msgstr "Jour de départ: erreur dans le format de la date (AAAA-MM-JJ)"
 
 msgid "ERROR_FORMAT_DATE_DAY_END"
 msgstr "Jour de fin: erreur dans le format de la date (AAAA-MM-JJ)"
 
+msgid "ERROR_FORMAT_DATE_DAY"
+msgstr "Jour à afficher: erreur dans le format (AAAA-MM-JJ)"
+
 msgid "ERROR_FORMAT_DATE_MONTH"
-msgstr "Erreur dans le format de la date: MM"
+msgstr "Mois à afficher: erreur dans le format (MM)"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
 msgstr "Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte soit branchée"
@@ -802,11 +809,20 @@ msgstr "Impossible de trouver une carte SD valide, pour charger vos fichiers de 
 msgid "ERROR_SD_CARD_CONF"
 msgstr "Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte soit branchée"
 
+msgid "ERROR_SD_CARD"
+msgstr "Impossible de trouver une carte SD valide, vérifier que votre carte soit correctement branchée"
+
 msgid "ERROR_MISSING_VALUE_TIME"
 msgstr "Valeur manquante pour la date de début/fin du programme"
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "Erreur dans le format de l'heure: HH:MM:SS"
+
+msgid "ERROR_FORMAT_TIME_START"
+msgstr "Heure de départ: erreur dans le format (HH:MM:SS)"
+
+msgid "ERROR_FORMAT_TIME_END"
+msgstr "Heure de fin: erreur dans le format (HH:MM:SS)"
 
 msgid "ERROR_TIME_VALUE"
 msgstr "Erreur dans le format de l'heure: HH:MM"
@@ -818,19 +834,19 @@ msgid "ERROR_WRITE_SD"
 msgstr "Erreur durant l'écriture sur la carte SD"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "Erreur dans la valeur de tolérance: elle doit être inférieur à 10°C et supérieur à 0°C"
+msgstr "Valeur de tolérance: elle doit être comprise entre 0°C et 10°C"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "Erreur dans la valeur de tolérance: elle doit être inférieur ou égal à 25.5% et supérieur à 0%;"
+msgstr "Valeur de tolérance: elle doit être comprise entre 0% et 25.5%"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "Erreur dans la valeur rentrée"
+msgstr "Erreur: la valeur rentrée doit être un nombre"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "Erreur dans la valeur de température. Elle doit être supérieure ou égal à 5°C et inférieure ou égal à 60°C"
+msgstr "Valeur de température: elle doit être comprise entre 5°C et 60°C"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "Erreur dans la valeur d'humidité. Elle doit être supérieure ou égal à 10  et inférieure ou égal à 95"
+msgstr "Valeur d'humidité: elle doit être comprise entre 10% et 95%"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100"
@@ -894,7 +910,7 @@ msgid "VALID_UPDATE_PROGRAM"
 msgstr "Programmes mis à jour avec succès"
 
 msgid "VALID_DELETE_LOGS"
-msgstr "Base des logs supprimée avec succès>"
+msgstr "Base des logs supprimée avec succès"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage"

@@ -191,6 +191,7 @@ if(!empty($alarm_value)) {
            $alarm_value=get_configuration("ALARM_VALUE",$main_error);
            $error['alarm']=__('ERROR_ALARM_VALUE');
            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['alarm']);
+           $submenu="alarm_interface";
         }
 } else {
         $alarm_value = get_configuration("ALARM_VALUE",$main_error);
@@ -226,6 +227,7 @@ if(!empty($cost_price)||("$cost_price"=="0")) {
             $cost_price = get_configuration("COST_PRICE",$main_error);
             $error['cost']=__('ERROR_PRICE_VALUE');
             $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['cost']);
+            $submenu="cost_interface";
          }
 } else {
         $cost_price = get_configuration("COST_PRICE",$main_error);
@@ -241,6 +243,7 @@ if(!empty($cost_price_hc)||("$cost_price_hc"=="0")) {
             $cost_price_hc = get_configuration("COST_PRICE_HC",$main_error);
             $error['price_hc']=__('ERROR_PRICE_VALUE_HC');
             $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hc']);
+            $submenu="cost_interface";
          }
 } else {
         $cost_price_hc = get_configuration("COST_PRICE_HC",$main_error);
@@ -255,6 +258,7 @@ if(!empty($cost_price_hp)||("$cost_price_hp"=="0")) {
             $cost_price_hp = get_configuration("COST_PRICE_HP",$main_error);
             $error['price_hp']=__('ERROR_PRICE_VALUE_HP');
             $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hp']);
+            $submenu="cost_interface";
          }
 } else {
         $cost_price_hp = get_configuration("COST_PRICE_HP",$main_error);
@@ -272,6 +276,7 @@ if((isset($start_hc))&&(!empty($start_hc))) {
                 $start_hc = get_configuration("START_TIME_HC",$main_error);
                 $error['start_hc']=__('ERROR_TIME_VALUE');
                 $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['start_hc']);
+                $submenu="cost_interface";
         }
 } else {
         $start_hc = get_configuration("START_TIME_HC",$main_error);
@@ -290,6 +295,7 @@ if((isset($stop_hc))&&(!empty($stop_hc))) {
                 $stop_hc = get_configuration("STOP_TIME_HC",$main_error);
                 $error['stop_hc']=__('ERROR_TIME_VALUE');
                 $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['stop_hc']);
+                $submenu="cost_interface";
         } 
 } else {
         $stop_hc = get_configuration("STOP_TIME_HC",$main_error);

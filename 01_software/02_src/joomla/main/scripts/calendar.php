@@ -49,7 +49,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
    check_and_copy_firm($sd_card,$main_error);
    check_and_copy_log($sd_card,$main_error);
 } else {
-        $main_error[]=__('ERROR_SD_CARD_CONF');
+        $main_error[]=__('ERROR_SD_CARD');
 }
 
 
