@@ -331,5 +331,3 @@ function DeleteForm(message) {
             return false;
 }
 // }}}
-
-

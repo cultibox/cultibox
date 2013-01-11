@@ -152,7 +152,7 @@ function get_log_value($file,&$array_line) {
             break;
          } else {
             $temp = explode("\t", $buffer);
-            if(count($temp)==9) { 
+            if(count($temp)==($GLOBALS['NB_MAX_SENSOR']*2+1)) { 
                 for($i=0;$i<count($temp);$i++) {
                     $temp[$i]=rtrim($temp[$i]);
                     $temp[$i]=str_replace(" ","",$temp[$i]);
@@ -629,20 +629,16 @@ function check_cultibox_card($dir="") {
 // ROLE check times send by user to reccord a plug behaviour
 // IN   $start_time      time starting the event
 //      $end_time        time ending the event
-//      $out             string for error or warning messages
 // RET 1 if ok, 0 if there is an error or 2 if start time > end time
-function check_times($start_time="",$end_time="",&$out) {
+function check_times($start_time="",$end_time="") {
    if((!empty($start_time))&&(isset($start_time))&&(!empty($end_time))&&(isset($end_time))) {
       $start_time=str_replace(' ','',"$start_time");
-      if(!check_format_time($start_time,$out)) return 0;
 
       if(strcmp($start_time,$end_time)==0) {
-         $out[]=__('ERROR_SAME_TIME');
          return 0;
       }
 
       $end_time=str_replace(' ','',"$end_time");
-      if(!check_format_time($end_time,$out)) return 0;
 
       $sth=substr($start_time, 0, 2);
       $stm=substr($start_time, 3, 2);
@@ -661,7 +657,6 @@ function check_times($start_time="",$end_time="",&$out) {
 
       return 1;         
    }
-   $out[]=__('ERROR_MISSING_VALUE_TIME');
    return 0;
 }
 // }}}
@@ -1094,22 +1089,19 @@ function check_date($datestart="",$dateend="") {
 // ROLE check the tolerance value
 // IN $type               the type of the plug 
 //    $tolerance          the value to check
-//    $out                error or warning message
 // RET false is there is a wrong value, true else
-function check_tolerance_value($type,&$tolerance=0,&$out) {
+function check_tolerance_value($type,&$tolerance=0) {
    $tolerance=str_replace(",",".",$tolerance);
    if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
       if(($tolerance > 0)&&($tolerance <= 10)) {
          return true;
       } else {
-         $out[]=__('ERROR_TOLERANCE_VALUE_DEGREE');
          return false;
       }
    } else if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
       if(($tolerance > 0)&&($tolerance <= 25.5)) {
          return true;
       } else {
-         $out[]=__('ERROR_TOLERANCE_VALUE_POURCENT');
          return false;
       }   
    }
@@ -1121,51 +1113,42 @@ function check_tolerance_value($type,&$tolerance=0,&$out) {
 // {{{ check_format_values_program()
 // ROLE check AND format value of a program 
 // IN   $value       value to check and format
-// IN   $out         error or warning message
 // IN   $type        temp or humi - type to check
-// RET false is there is a wrong value, true else
-function check_format_values_program(&$value="0",&$out,$type="temp") {
+// RET error message if there is a wrong value, true else
+function check_format_values_program(&$value="0",$type="temp") {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
 
     if(!is_numeric($value)) {
-                $out[]=__('ERROR_VALUE_PROGRAM');
-                return false;
+                return __('ERROR_VALUE_PROGRAM');
    }
 
    if(strcmp($type,"temp")==0) {
       if(($value>60)||($value<5)) {
-      $out[]=__('ERROR_VALUE_PROGRAM_TEMP');
-      return false; 
+        return __('ERROR_VALUE_PROGRAM_TEMP');
       }
    } elseif(strcmp($type,"humi")==0) {
       if(($value>95)||($value<10)) {
-                $out[]=__('ERROR_VALUE_PROGRAM_HUMI');
-                return false; 
+                return __('ERROR_VALUE_PROGRAM_HUMI');
       }
    } else {
    if(($value>99.9)||($value<0)) {
-                $out[]=__('ERROR_VALUE_PROGRAM');
-                return false; 
+                return __('ERROR_VALUE_PROGRAM');
        }
    }
- 
-   return true;
+   return 1;
 }
 // }}}
 
 // {{{ check_power_value()
 // ROLE check AND format power value of a plug
 // IN   $value   value to check and format
-// IN   $out     error or warning message
 // RET false is there is a wrong value, true else
-function check_power_value($value="0",&$out) {
+function check_power_value($value="0") {
    if($value<0) {
-                $out[]=__('ERROR_POWER_VALUE');
                 return false;
    }
    if(!is_numeric($value)) {
-                $out[]=__('ERROR_POWER_VALUE');
                 return false;
    }
    return true;
@@ -1263,7 +1246,7 @@ function check_and_copy_log($sd_card,&$out) {
     if(is_file("$sd_card/log.txt")) {
     } else {
         if(is_file("main/templates/data/empty_file_64.tpl")) {
-            copy("main/templates/data/empty_file_64.tpl", "$sd_card/log.txt");   
+            copy("main/templates/data/empty_file_big.tpl", "$sd_card/log.txt");   
         }else {
             $out[]=__('ERROR_COPY_TPL');
         }
@@ -1508,16 +1491,13 @@ function format_axis_data($data,$max=0,&$out) {
 // {{{ check_format_time()
 // ROLE check time format: HH:MM:SS
 // IN   $time      time to be checked
-//      $out       string for error or warning messages
 // RET 1 if ok, 0 if there is an error 
-function check_format_time($time="",&$out) {
+function check_format_time($time="") {
     if(strlen("$time")!=8) {
-         $out[]=__('ERROR_FORMAT_TIME');
          return 0;
     }
 
     if(!preg_match('#^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$#', $time)) {
-         $out[]=__('ERROR_FORMAT_TIME');
          return 0;
     }
 

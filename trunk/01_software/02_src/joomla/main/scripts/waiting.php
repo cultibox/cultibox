@@ -5,17 +5,30 @@ if (!isset($_SESSION)) {
 }
 
 
+
+/* Libraries requiered: 
+        db_common.php : manage database requests
+        utilfunc.php  : manage variables and files manipulations
+*/
 require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
 
-$error=array();
-$lang=get_configuration("LANG",$error);
+
+// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
+$main_error=array();
+$lang=get_configuration("LANG",$main_error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
+
+
+// ================= VARIABLES ================= //
+$error=array();
 $quick_load=false;
 
+
+//Manage to use a quick load or not and get some variables to pass them to the real log page
 if(isset($_POST['startday'])) {
       $_SESSION['startday']=$_POST['startday'];
       if(!empty($_SESSION['startday'])) {
@@ -82,9 +95,12 @@ if($quick_load) {
     $_SESSION['quick_load']="True";
 }
 
+
+// Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
+
 
 if((!isset($sd_card))||(empty($sd_card))||($quick_load)) {      
     header( 'Location: ./view-logs' ) ;
@@ -92,6 +108,8 @@ if((!isset($sd_card))||(empty($sd_card))||($quick_load)) {
     header("Refresh: 2;url=./view-logs");
 }
 
+
+//Display the waiting template
 include('main/templates/waiting.html');
 
 ?>

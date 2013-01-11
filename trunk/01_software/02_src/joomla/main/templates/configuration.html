@@ -32,26 +32,25 @@ timeFormat: 'hh:mm',
 </script>
 
 
-<?php if((isset($main_info))&&(!empty($main_info))) { ?>
+<?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <div class="info">
 <ul>
-    <?php foreach($main_info as $inf) { 
+        <?php foreach($main_info as $inf) { 
             echo "<li>".$inf."</li>";            
-   } ?>
+        } ?>
 </ul>
 </div>
 <?php } ?>
-
-<?php if((isset($main_error))&&(!empty($main_error))) { ?>
+<?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
 <div class="error">
 <ul>
-    <?php foreach($main_error as $err) { 
+        <?php foreach($main_error as $err) { 
             echo "<li>".$err."</li>";            
-    } ?>
+        } ?>
 </ul>
 </div>
+<br />
 <?php } ?>
-
 
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
    <script>

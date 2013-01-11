@@ -8,19 +8,22 @@
    </script>
 <?php } ?>
 
-<?php if((isset($info))&&(!empty($info))) { ?>
+<?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <div class="info">
-   <ul>
-      <?php echo $info; ?>
-   </ul>
+<ul>
+        <?php foreach($main_info as $inf) { 
+            echo "<li>".$inf."</li>";            
+        } ?>
+</ul>
 </div>
 <?php } ?>
-
-<?php if((isset($error))&&(!empty($error))) { ?>
+<?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
 <div class="error">
-   <ul>
-      <?php echo $error; ?>
-   </ul>
+<ul>
+        <?php foreach($main_error as $err) { 
+            echo "<li>".$err."</li>";            
+        } ?>
+</ul>
 </div>
 <br />
 <?php } ?>
@@ -40,21 +43,17 @@
    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
     <div id="title_infos_all_plugs<?php echo $i; ?>" style="<?php if(strcmp($selected_plug,"all")!=0) echo 'display:none'; ?>"><p class="title_plug"><?php echo __('PLUG_INFOS')." ".$i; ?>:</p></div>
    <div id="div_selected_plug<?php echo $i; ?>" style="<?php if(($selected_plug!=$i)&&(strcmp($selected_plug,"all")!=0)) echo 'display:none'; ?>">
-   <table>
+<br />
+<table class="table_width">
       <tr>
+         <td class="plug-marge-td"></td>
          <td class="plug-marge-title">
-         </td>
-         <td></td>
-         <td></td>
-      </tr>
-      <tr>
-         <td></td>
-         <td>
               <?php echo __('NAME_PLUG'); ?>
          </td>
-         <td>
+         <td class="plug-marge-field">
             <input type="text" size="15" maxlength="15" name="plug_name<?php echo $i; ?>" value="<?php echo $plug_name{$i}; ?>">
          </td>
+         <td></td>
       </tr>
       <tr>
          <td></td>
@@ -71,6 +70,7 @@
                <option <?php if(strcmp($plug_type{$i},"dehumidifier")==0) { echo 'selected';} ?> value="dehumidifier"><?php echo __('PLUG_DEHUMIDIFIER'); ?></option>
             </select>
          </td>
+         <td></td>
       </tr>
       <tr>
          <td></td>
@@ -84,6 +84,7 @@
                <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 20%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label>
             </div>
          </td>
+         <td><?php if((isset($error[$i]['tolerance']))&&(!empty($error[$i]['tolerance']))) echo "<div class='error'>".$error[$i]['tolerance']."</div>"; ?></td>
       </tr>
    <tr>
          <td></td>
@@ -93,6 +94,7 @@
          <td>
             <input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>" <?php if($i<=3) echo "disabled"; ?> onKeypress="return verifInt(event);">
          </td>
+        <td><?php if((isset($error[$i]['plug_id']))&&(!empty($error[$i]['plug_id']))) echo "<div class='error'>".$error[$i]['plug_id']."</div>"; ?></td>
       </tr>
      <tr>
          <td></td>
@@ -102,9 +104,10 @@
          <td>
             <input type="text" size="4" maxlength="4" name="plug_power<?php echo $i; ?>" value="<?php echo $plug_power{$i}; ?>" onKeypress="return verifInt(event);">W
          </td>
+        <td><?php if((isset($error[$i]['power']))&&(!empty($error[$i]['power']))) echo "<div class='error'>".$error[$i]['power']."</div>"; ?></td>
       </tr>
 <tr>
-         <td class="plug-marge-title"></td>
+         <td></td>
          <td>
             <div id="second_regul_label<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
 <?php echo __('ENABLE_REGUL_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_REGUL'); ?>" />
@@ -118,11 +121,12 @@
             </select>
             </div>
          </td>
+        <td></td>
       </tr>
 </table>
 
 <div id="second_regul_param<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
-<table>
+<table class="table_width">
    <tr>
       <td class="plug-regul"></td>
       <td class="regul"><div id="label_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},'False')==0) { echo "display:none"; } ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_SENSO'); ?></div></td>
@@ -147,6 +151,7 @@
          </div>
          </div>
    </td>
+    <td></td>
 </tr>
    <tr>
       <td></td>
@@ -163,29 +168,18 @@
      </select></div>
 
       </td>
+      <td></td>
    </tr>
    <tr>
       <td></td>
       <td class="regul"><div id="label_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_VALUE'); ?></div></td>
       <td><div id="div_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_regul_value{$i}; ?>" name="plug_regul_value<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
+    <td><?php if((isset($error[$i]['regul_value']))&&(!empty($error[$i]['regul_value']))) echo "<div class='error'>".$error[$i]['regul_value']."</div>"; ?></td>
    </tr>
    </table>
 </div>
 </div>
 
-<?php if((isset($error_plug[$i]))&&(!empty($error_plug[$i]))) { ?>
-<div id="error">
-   <ul>
-      <?php echo $error_plug[$i]; ?>
-   </ul>
-</div>
-<?php } else if((isset($info_plug[$i]))&&(!empty($info_plug[$i]))) { ?>
-<div id="info">
-   <ul>
-      <?php echo $info_plug[$i]; ?>
-   </ul>
-</div>
-<?php } ?>
 <div id="format_style<?php echo $i; ?>" style="display:none"><br /><hr /><br /></div>
    <?php } ?>
 <br /><br />
