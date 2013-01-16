@@ -92,6 +92,11 @@ if(isset($_SESSION['reset_log_power'])) {
    $reset_log_power=$_SESSION['reset_log_power'];
 }
 
+if(isset($_SESSION['reset_sd_card'])) {
+   $reset_sd_card=$_SESSION['reset_sd_card'];
+}
+
+
 if(isset($_SESSION['import_log'])) {
    $import_log=$_SESSION['import_log'];
 }
@@ -114,6 +119,7 @@ if(!empty($reset_log)) {
     if(reset_log("logs","1",$main_error)) {
         $main_info[]=__('VALID_DELETE_LOGS');
         $pop_up_message=clean_popup_message(__('VALID_DELETE_LOGS'));
+        set_historic_value(__('VALID_DELETE_LOGS')." (".__('LOGS_PAGE').")","histo_info",$main_error);
     }
 }
 
@@ -121,7 +127,8 @@ if(!empty($reset_log)) {
 if(!empty($reset_log_power)) {
     if(reset_log("power","0",$main_error)) {
         $main_info[]=__('VALID_DELETE_LOGS');
-        $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_DELETE_LOGS'));
+        $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_DELETE_LOGS'));       
+        set_historic_value(__('VALID_DELETE_LOGS')." (".__('LOGS_PAGE').")","histo_info",$main_error);
     }
 }
 
@@ -129,6 +136,16 @@ if(!empty($reset_log_power)) {
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
+}
+
+
+//Reset power from the reset button
+if((!empty($reset_sd_card))&&(isset($sd_card))&&(!empty($sd_card))) {
+    if(format_sd_card($sd_card)) {
+        $main_info[]=__('VALID_RESET_SD');
+        $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_RESET_SD'));
+        set_historic_value(__('VALID_RESET_SD')." (".__('LOGS_PAGE').")","histo_info",$main_error);
+    }
 }
 
 
@@ -140,6 +157,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
       $main_info[]=__('UPDATED_PROGRAM');
       $pop_up_message=$pop_up_message.clean_popup_message(__('UPDATED_PROGRAM'));
       save_program_on_sd($sd_card,$program,$main_error);
+      set_historic_value(__('UPDATED_PROGRAM')." (".__('LOGS_PAGE').")","histo_info",$main_error);
    }
    check_and_copy_firm($sd_card,$main_error);
    check_and_copy_log($sd_card,$main_error);
@@ -157,6 +175,7 @@ unset($_SESSION['select_plug']);
 unset($_SESSION['select_sensor']);
 unset($_SESSION['reset_log']);
 unset($_SESSION['reset_log_power']);
+unset($_SESSION['reset_sd_card']);
 unset($_SESSION['quick_load']);
 unset($_SESSION['import_log']);
 unset($reset_log);
@@ -212,7 +231,7 @@ if((isset($sd_card))&&(!empty($sd_card))&&(!isset($quick_load))) {
    }
 
    // Foreach months present in the array search logs and power
-   foreach ($ListMonthSearch as $month) {
+   foreach ($ListMonthSearch as $month) {       
         for ($day = 1; $day <= 31; $day++) {
       
          // Don't search for nexts days
@@ -269,9 +288,11 @@ if($load_log) {
    if((isset($import_log))&&(!empty($import_log))) {
         $main_info[]=__('VALID_LOAD_LOG');
         $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_LOAD_LOG'));
+        set_historic_value(__('VALID_LOAD_LOG')." (".__('LOGS_PAGE').")","histo_info",$main_error);
    } else {
        $main_info[]=__('VALID_CURRENT_LOAD_LOG');
-       $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_CURRENT_LOAD_LOG'));
+       $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_CURRENT_LOAD_LOG'));       
+       set_historic_value(__('VALID_CURRENT_LOAD_LOG')." (".__('LOGS_PAGE').")","histo_info",$main_error);
    }
 } 
 

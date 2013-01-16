@@ -19,6 +19,7 @@ $main_error=array();
 $main_info=array();
 $error=array();
 $info=array();
+
 $lang=get_configuration("LANG",$main_error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
@@ -56,6 +57,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         $main_info[]=__('UPDATED_PROGRAM');
         $pop_up_message=$pop_up_message.clean_popup_message(__('UPDATED_PROGRAM'));
         save_program_on_sd($sd_card,$program,$main_error);
+        set_historic_value(__('UPDATED_PROGRAM')." (".__('WIZARD_PAGE').")","histo_info",$main_error);
     }
     check_and_copy_firm($sd_card,$main_error);
     check_and_copy_log($sd_card,$main_error);
@@ -142,7 +144,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
         }
 
         if(!check_format_time($start_time)) {
-            $error['start_time']=__('ERROR_FORMAT_TIME_START');
+            $error['start_time']=__('ERROR_FORMAT_TIME_START');         
         }
 
                 
@@ -154,7 +156,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
             $chtime=check_times($start_time,$end_time); 
             if(!$chtime) {
                 $error['start_time']=__('ERROR_SAME_TIME');
-                $error['end_time']=__('ERROR_SAME_TIME');
+                $error['end_time']=__('ERROR_SAME_TIME');           
             }
         } else {
             $chtime=false;
@@ -170,7 +172,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
             }
             $plug_tolerance="1.0";
             if(strcmp("$chval","1")!=0) {
-                $error['value']=$chval;
+                $error['value']=$chval; 
             }
         } else {
             $chval="1";
@@ -204,7 +206,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
                 );
             }
 
-			clean_program($selected_plug,$main_error);	
+			clean_program($selected_plug,$main_error);
 			if(isset($plug_tolerance)) {
                 insert_plug_conf("PLUG_TOLERANCE",$selected_plug,$plug_tolerance,$main_error);
             }
@@ -223,7 +225,8 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
             }
 
             if(count($error)==0) {
-                if(($selected_plug==$nb_plugs)||((isset($finish))&&(!empty($finish)))) {
+                if(($selected_plug==$nb_plugs)||((isset($finish))&&(!empty($finish)))) {            
+                    set_historic_value(__('VALID_UPDATE_PROGRAM')." (".__('WIZARD_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
                     header('Location: programs');
                 }
 			}
@@ -257,10 +260,6 @@ if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
     $step=$step+1;	
 } else if((isset($previous))&&(!empty($previous))) {
     $step=$step-1;
-}
-
-if((isset($sd_card))&&(!empty($sd_card))) {
-   $main_info[]=__('INFO_SD_CARD').": $sd_card";
 }
 
 

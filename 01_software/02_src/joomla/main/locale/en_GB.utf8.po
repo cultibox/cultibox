@@ -347,6 +347,18 @@ msgstr "Import logs"
 msgid "SET_XY_ZOOM"
 msgstr "Enable zoom on Y-axis"
 
+msgid "MANAGE_RESET_SD_CARD"
+msgstr "Format logs file from your SD card"
+
+msgid "MANAGE_RESET_CARD"
+msgstr "Format your SD card"
+
+msgid "RESET_CONFIRM_SD_CARD"
+msgstr "Are you sur to format your logs file from your SD card? All your logs informations will be destroyed"
+
+msgid "VALID_RESET_SD"
+msgstr "SD card formated successfully"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -560,6 +572,23 @@ msgstr "cyclic"
 msgid "REPEAT_EVERY"
 msgstr "Repeat every"
 
+msgid "MANAGE_PROGRAM_INFOS"
+msgstr "Manage your programs"
+
+msgid "TITLE_EXPORT_PROGRAM"
+msgstr "Export the program for your current plug"
+
+msgid "TITLE_IMPORT_PROGRAM"
+msgstr "Import a program for your current plug"
+
+msgid "TITLE_RESET_PROGRAM"
+msgstr "Reset the program of your current plug"
+
+msgid "TITLE_ADD_PLUG"
+msgstr "Add a plug to configure"
+
+msgid "TITLE_REMOVE_PLUG"
+msgstr "Remove the last plug"
 
 
 # For the export module highchart part:
@@ -753,6 +782,49 @@ msgstr "beetwen the"
 msgid "COST_PRICE_TO"
 msgstr "and the"
 
+# For the historic part:
+msgid "TITLE_HISTORIC"
+msgstr "Historique de vos actions"
+
+msgid "RESET_HISTORIC"
+msgstr "Reset the historic"
+
+msgid "RESET_CONFIRM_HISTORIC"
+msgstr "Are you sure to delete your recorded actions?"
+
+msgid "VALID_DELETE_HISTORIC"
+msgstr "Historic deleted successfully"
+
+msgid "NO_HISTORIC_VALUE"
+msgstr "No historic recorded"
+
+msgid "WIZARD_PAGE"
+msgstr "Wizard page"
+
+msgid "PROGRAM_PAGE"
+msgstr "Program page"
+
+msgid "PLUG_PAGE"
+msgstr "Plugs page"
+
+msgid "WELCOME_PAGE"
+msgstr "Main page"
+
+msgid "LOGS_PAGE"
+msgstr "Logs page"
+
+msgid "CALENDAR_PAGE"
+msgstr "Calendar page"
+
+msgid "COST_PAGE"
+msgstr "Cost page"
+
+msgid "CONFIGURATION_PAGE"
+msgstr "COnfiguration page"
+
+msgid "HISTORIC_EXPORT"
+msgstr "Export of a program"
+
 
 # For the footer:
 msgid "VERSION"
@@ -795,6 +867,9 @@ msgstr "Start day: error in the date format (YYY-MM-DD)"
 msgid "ERROR_FORMAT_DATE_DAY_END"
 msgstr "End day: error in the date format (YYY-MM-DD)"
 
+msgid "ERROR_FORMAT_DATE_DAY"
+msgstr "Day to display: error in the date format (AAAA-MM-JJ)"
+
 msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "Error in the date format: MM"
 
@@ -806,6 +881,9 @@ msgstr "Can't find your SD card, if you want to load your logs record, please ch
 
 msgid "ERROR_SD_CARD_CONF"
 msgstr "Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged"
+
+msgid "ERROR_SD_CARD"
+msgstr "Can't find your SD card, please check that your card is correctly pluged"
 
 msgid "ERROR_MISSING_VALUE_TIME"
 msgstr "Missing value for Start/End time"
@@ -859,10 +937,10 @@ msgid "ERROR_PRICE_VALUE"
 msgstr "Price of the kilowatt-hour price must be greater or equal to 0."
 
 msgid "ERROR_PRICE_VALUE_HP"
-msgstr "Full hour: price of the kilowatt-hour price must be greater or equal to 0."
+msgstr "Full hour: price of the kilowatt-hour price must be greater or equal to 0"
 
-msgid "ERROR_POWER_VALUE_HC"
-msgstr "Empty hour: price of the kilowatt-hour price must be greater or equal to 0."
+msgid "ERROR_PRICE_VALUE_HC"
+msgstr "EMpty hour: price of the kilowatt-hour price must be greater or equal to 0"
 
 msgid "ERROR_DATE_INTERVAL"
 msgstr "Error in the date: the begining date must be less or equal to the ended date"
@@ -907,8 +985,14 @@ msgstr "Programs successfully updated"
 msgid "VALID_DELETE_LOGS"
 msgstr "Log's database successfully deleted"
 
+msgid "VALID_RESET_CARD"
+msgstr "SD card formated successfully"
+
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "Program updated successfully! You can unplug your SD card and put in the CultiBox"
+
+msgid "VALID_CURRENT_LOAD_LOG"
+msgstr "Logs file from the current month recorded sucessfully, you can unpluged the SD card from your computer"
 
 msgid "VALID_LOAD_LOG"
 msgstr "Logs successfully loaded, you can disconnect your CultiBox card from your computer"

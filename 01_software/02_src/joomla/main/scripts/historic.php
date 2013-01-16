@@ -1,9 +1,9 @@
 <?php
 
-
 if (!isset($_SESSION)) {
-	session_start();
+   session_start();
 }
+
 
 /* Libraries requiered: 
         db_common.php : manage database requests
@@ -14,38 +14,29 @@ require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
 
 
-// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
+// ================= VARIABLES ================= //
 $main_error=array();
 $main_info=array();
+$informations = Array();
+$program="";
+$update=get_configuration("CHECK_UPDATE",$main_error);
+$version=get_configuration("VERSION",$main_error);
+$stats=get_configuration("STATISTICS",$main_error);
+$pop_up = get_configuration("SHOW_POPUP",$main_error);
+$reset_historic=getvar('reset_historic');
+$historic=array();
+
+
+// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
 $lang=get_configuration("LANG",$main_error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
 
-// ================= VARIABLES ================= //
-$program="";
-$sd_card="";
-$update=get_configuration("CHECK_UPDATE",$main_error);
-$version=get_configuration("VERSION",$main_error);
-$wizard=true;
-$nb_plugs = get_configuration("NB_PLUGS",$main_error);
-$stats=get_configuration("STATISTICS",$main_error);
-$pop_up_message="";
-$pop_up=get_configuration("SHOW_POPUP",$main_error);
-
-
-//If programs configured by user is empty, display the wizard interface link
-if(isset($nb_plugs)&&(!empty($nb_plugs))) {
-    if(check_programs($nb_plugs)) {
-        $wizard=false;  
-    }
-}
-
-
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
-        $sd_card=get_sd_card();
+   $sd_card=get_sd_card();
 }
 
 
@@ -56,7 +47,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
       $main_info[]=__('UPDATED_PROGRAM');
       $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
       save_program_on_sd($sd_card,$program,$main_error);
-      set_historic_value(__('UPDATED_PROGRAM')." (".__('WELCOME_PAGE').")","histo_info",$main_error);
+      set_historic_value(__('UPDATED_PROGRAM'),"histo_info",$main_error);
    }
    check_and_copy_firm($sd_card,$main_error);
    check_and_copy_log($sd_card,$main_error);
@@ -66,8 +57,20 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 }
 
 
+// Reset the historic:
+if((!empty($reset_historic))&&(isset($reset_historic))) {
+    if(reset_log("historic","0",$main_error)) {
+        $main_info[]=__('VALID_DELETE_HISTORIC');
+        $pop_up_message=clean_popup_message(__('VALID_DELETE_HISTORIC'));
+        set_historic_value(__('VALID_DELETE_HISTORIC'),"histo_info",$main_error);
+    }
+}
+
+
+// Get historic values from database:
+get_historic_value($historic,$main_error);
+
 // The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True'
-$informations = Array();
 $informations["nb_reboot"]=0;
 $informations["last_reboot"]="";
 $informations["cbx_id"]="";
@@ -77,7 +80,6 @@ $informations["sensor_version"]="";
 $informations["id_computer"]=php_uname("a");
 $informations["log"]="";
 
-
 if((!empty($sd_card))&&(isset($sd_card))) {
     find_informations("$sd_card/log.txt",$informations);
     if(strcmp($informations["log"],"")!=0) {
@@ -85,18 +87,21 @@ if((!empty($sd_card))&&(isset($sd_card))) {
     }
 }
 
+
 if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
     if(strcmp($informations["nb_reboot"],"0")==0) {
         $informations["nb_reboot"]=get_informations("nb_reboot");
     } else {
         insert_informations("nb_reboot",$informations["nb_reboot"]);
-    } 
+    }
+
 
     if(strcmp($informations["last_reboot"],"")==0) {
         $informations["last_reboot"]=get_informations("last_reboot");
     } else {
         insert_informations("last_reboot",$informations["last_reboot"]);
     }
+
 
     if(strcmp($informations["cbx_id"],"")==0) {
         $informations["cbx_id"]=get_informations("cbx_id");
@@ -120,15 +125,13 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
         $informations["sensor_version"]=get_informations("sensor_version");
     } else {
         insert_informations("sensor_version",$informations["sensor_version"]);
-    }    
-
-    if(strcmp($informations["log"],"")!=0) {
-        insert_informations("log",$informations["log"]);
-    } else {
-        $informations["log"]="NA";
     }
 
-    $user_agent = getenv("HTTP_USER_AGENT");
+    if(strcmp($informations["log"],"")==0) {
+        $informations["log"]=get_informations("log");
+    } else {
+        insert_informations("log",$informations["log"]);
+    }
 }
 
 
@@ -139,13 +142,13 @@ if(strcmp("$update","True")==0) {
       foreach($ret as $file) {
          if(count($file)==4) {
                if(strcmp("$version","$file[1]")==0) {
-                  $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[3]." target='_blank'>".$file[2]."</a>";
+                    $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[3]." target='_blank'>".$file[2]."</a>";
                }
             }
       }
 }
 
-//Display the welcome template
-include('main/templates/welcome.html');
+//Display the historic template
+include('main/templates/historic.html');
 
 ?>

@@ -76,6 +76,7 @@ buttonImageOnly: 'true',
             <?php } ?>
          </select>
       </td>
+      <td></td>
    </tr>
    <tr>
       <td></td>
@@ -88,6 +89,7 @@ buttonImageOnly: 'true',
                <option value="9990" <?php if(strcmp($select_power,9990)==0) echo "selected"; ?>><?php echo __('SELECT_ALL_PLUGS'); ?></option>
          </select>
       </td>
+     <td></td>
    </tr>
     <tr>
       <td></td>
@@ -99,12 +101,14 @@ buttonImageOnly: 'true',
              <option value="<?php echo 'all'; ?>" <?php if(strcmp($select_sensor,"all")==0) echo "selected"; ?>><?php echo __('ALL_SENSOR'); ?></option> 
          </select>
       </td>
+      <td></td>
    </tr>
    <tr>
    <td></td>
    <td>
          <p class="p_right"><INPUT type="submit" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);"></p>
    </td>
+   <td></td>
    <td></td>
    </tr>
 </table>
@@ -185,6 +189,7 @@ $(function () {
          chart: {
             backgroundColor: '#F7F7F9',
             borderWidth: 3,
+            alignTicks: false,
             renderTo: 'container',
             zoomType: 'x',
             spacingRight: 20,
@@ -234,6 +239,7 @@ $(function () {
                max: <?php echo "$hygro_axis"; ?>,
                startOnTick: false,
                showFirstLabel: false,
+               alternateGridColor: '#FDFFD5',
                labels: {
                   formatter: function() {
                      if(this.value<=100) return this.value;
@@ -693,7 +699,6 @@ $(function () {
     </td>
 </tr>
 </table>
-<form>
 <p class="precision_infos">
 <?php if(strcmp($type,"days")==0)  echo "*"." ".__('PRECISION_GRAPH_DAY'); else echo "*"." ".__('PRECISION_GRAPH_MONTH'); ?>
 </p>
@@ -709,7 +714,8 @@ $(function () {
 <tr>
     <td class="log-manage-marge"></td>
     <td class="log-manage-title"><?php echo __('IMPORT_LOG_TITLE')." ".$log_search." ".__('IMPORT_LAST_MONTH'); ?></td>
-    <td class="log-manage-field"><INPUT type="submit" id="import_log" name="import_log" value="<?php echo __('IMPORT_LOG'); ?>"></td>
+    <td class="log-manage-field"><input type="submit" id="import_log" name="import_log" value="<?php echo __('IMPORT_LOG'); ?>" <?php if((!isset($sd_card))||(empty($sd_card))) echo "disabled"; ?>
+></td>
     <td></td>
 </tr>
 </table>
@@ -751,7 +757,29 @@ $(function () {
 <tr>
     <td class="log-manage-marge"></td>
     <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE_POWER'); ?></td>
-    <td class="log-manage-field"><INPUT type="submit" id="reset_log_power" name="reset_log_power" value="<?php echo __('MANAGE_RESET'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')"></td>
+    <td class="log-manage-field"><input type="submit" id="reset_log_power" name="reset_log_power" value="<?php echo __('MANAGE_RESET'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')"></td>
+    <td></td>
+</tr>
+</table>
+<input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
+<input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
+<input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
+<?php if(strcmp("$type","month")==0) { ?>
+<input type="hidden" name="startmonth" value="<?php echo "$startmonth"; ?>">
+<input type="hidden" name="startyear" value="<?php echo "$startyear"; ?>" >
+<?php } else { ?>
+<input type="hidden" name="startday" value="<?php echo "$startday"; ?>">
+<?php } ?>
+</form>
+
+
+<form action="/cultibox/index.php/display-logs" method="post" >
+<table class="table_width">
+<tr>
+    <td class="log-manage-marge"></td>
+    <td class="log-manage-title"><?php echo __('MANAGE_RESET_SD_CARD'); ?></td>
+    <td class="log-manage-field"><input type="submit" id="reset_sd_card" name="reset_sd_card" value="<?php echo __('MANAGE_RESET_CARD'); ?>" <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+onclick="return DeleteForm('<?php echo __('RESET_CONFIRM_SD_CARD','javascript'); ?>')" <?php } else { ?> disabled <?php } ?>></td>
     <td></td>
 </tr>
 </table>

@@ -1508,4 +1508,40 @@ function check_format_time($time="") {
 // }}}
 
 
+// {{{ format_sd_card()
+// ROLE format log's file of a sd card by copying big_empty file
+// IN   $path       path to the sd card
+// RET true 
+function format_sd_card($path="") {
+    if((is_dir("$path/logs"))&&(strcmp("$path","")!=0)) {
+            $path="$path/logs";
+            for($i=1;$i<=12;$i++) {
+                for($j=1;$j<=31;$j++) {     
+                    if(strlen($i)<2) {
+                        $month="0".$i;
+                    } else {
+                        $month="$i";
+                    }
+
+                    if(strlen($j)<2) {
+                        $day="0".$j;
+                    } else {
+                        $day="$j";
+                    }
+                   
+                    if(!is_dir("$path/$month")) {
+                        mkdir("$path/$month");
+                    }
+                    clean_log_file("$path/$month/$day");
+                }
+            }
+    }   
+    return true;
+}
+
+
+// }}}
+
+
+
 ?>

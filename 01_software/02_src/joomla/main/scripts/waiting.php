@@ -71,6 +71,12 @@ if(isset($_POST['reset_log_power'])) {
       }
 }
 
+if(isset($_POST['reset_sd_card'])) {
+      $_SESSION['reset_sd_card']=$_POST['reset_sd_card'];
+      $quick_load=true;
+}
+
+
 if(isset($_POST['startyear'])) {
       $_SESSION['startyear']=$_POST['startyear'];
       if(!empty($_SESSION['startyear'])) {
@@ -103,9 +109,9 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 
 if((!isset($sd_card))||(empty($sd_card))||($quick_load)) {      
-    header( 'Location: ./view-logs' ) ;
+   header( 'Location: ./view-logs' ) ;
 } else {
-    header("Refresh: 2;url=./view-logs");
+   header("Refresh: 2;url=./view-logs");
 }
 
 

@@ -323,9 +323,11 @@ if(((empty($main_error))||(!isset($main_error)))&&(count($error)==0)) {
         $sd_card=get_sd_card();
         if((!empty($sd_card))&&(isset($sd_card))) {
 			   $main_info[]=__('VALID_UPDATE_CONF');
+               set_historic_value(__('VALID_UPDATE_CONF')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
 			   $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_CONF'));
          } else {
             $main_info[]=__('VALID_UPDATE_CONF_WITHOUT_SD');
+            set_historic_value(__('VALID_UPDATE_CONF_WITHOUT_SD')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
             $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_CONF_WITHOUT_SD'));
          }
 	}
@@ -343,6 +345,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
       $main_info[]=__('UPDATED_PROGRAM');
       $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
       save_program_on_sd($sd_card,$program,$main_error);
+      set_historic_value(__('UPDATED_PROGRAM')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
    }
    check_and_copy_firm($sd_card,$main_error);
    check_and_copy_log($sd_card,$main_error);

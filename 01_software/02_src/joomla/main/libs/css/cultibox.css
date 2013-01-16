@@ -8,11 +8,22 @@
 
 
 .error {
-	font-size: 12px; 
+	font-size: 13px; 
 	font-weight: bolder; 
 	font-style: italic;
     color: red;
 	width: 100%;
+}
+
+.histo_info {
+    font-size: 13px;
+    color: green;
+}
+
+
+.histo_error {
+    font-size: 12px;
+    color: red;
 }
 
 #welcome {
@@ -25,23 +36,15 @@
    text-align: center;
 }
 
-input.add_plug
+input.submit_plug
 {
+    /* background: url(../img/submit.png) 0px 0px no-repeat;
     border: 1px solid #def;
-    background: #6BB953;
     cursor: pointer;
     padding: 3px 30px;
     margin: 0 10px;
-    font-size: 18px;
-}
-
-input.remove_plug {
-    border: 1px solid #def;
-    background: #6BB953;
-    cursor: pointer;
-    padding: 3px 30px;
-    margin: 0 10px;
-    font-size: 18px;
+    font-size: 12px;
+    */
 }
 
 input.button_log {
@@ -49,11 +52,23 @@ input.button_log {
     font-weight: bold;
 }
 
+.div_code
+{
+    background-repeat: repeat-x;
+    background-color: white;
+    margin-left:20px;
+    width:580px;
+    padding:10px;
+    border:solid 1px gray;
+    border-top:solid 2px #008B8B;
+    line-height:15px;   
+    width: 90%;
+}
+
 .menu_h1 {
+    color: #6E5419;
     font-size: 14px;
     font-weight:bold;
-    color: #7C502F;
-    font-style:italic;
 }
 
 
@@ -114,6 +129,10 @@ input.button_log {
   color: #7C502F;
   font-style:italic;
   text-align: center;
+}
+
+.subtitle_right {
+  text-align: right;
 }
 
 table.conf-table { 
@@ -248,9 +267,34 @@ td.wizard-input-previous{
    width: 10%;
 }
 
+td.program-manage-marge {
+   width: 5%;
+}
+
+td.program-manage-field {
+   width: 35%;
+}
+
+td.program-manage-title {
+   width: 55%;
+}
+
+td.program-div-margin {
+    width: 5%;
+}
+
+td.program-div {
+    width: 90%;
+}
+
 td.program-marge-action {
     width: 55%;
 }
+
+td.program-marge-resume {
+    width: 17%;
+}
+
 
 td.program-field-action {
     width: 15%;
@@ -262,7 +306,7 @@ td.program-title{
 }
 
 td.program-td-title{
-   width: 40%;
+   width: 25%;
 }
 
 td.program-td-management{
@@ -270,7 +314,7 @@ td.program-td-management{
 }
 
 td.program-field{
-   width: 40%;
+   width: 20%;
 }
 
 td.program-marge{
