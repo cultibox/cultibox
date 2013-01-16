@@ -134,11 +134,9 @@ if(strcmp("$update","True")==0) {
       $ret=array();
       check_update_available($ret,$main_error);
       foreach($ret as $file) {
-         if(count($file)==4) {
-               if(strcmp("$version","$file[1]")==0) {
-                    $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[3]." target='_blank'>".$file[2]."</a>";
-               }
-            }
+         if(count($file)==3) {
+                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2]." target='_blank'>".$file[1]."</a>";
+         }
       }
 }
 
