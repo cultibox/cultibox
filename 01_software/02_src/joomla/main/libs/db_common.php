@@ -1981,7 +1981,7 @@ EOF;
 function get_historic_value(&$res,&$out) {
     $db = db_priv_start();
     $sql = <<<EOF
-SELECT * from `historic` ORDER by `timestamp` DESC
+SELECT * from `historic` ORDER by `timestamp` DESC LIMIT 0,100 
 EOF;
 
    $db->setQuery($sql);

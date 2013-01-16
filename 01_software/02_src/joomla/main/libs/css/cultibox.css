@@ -124,10 +124,9 @@ input.button_log {
 }
 
 .title_plug {
+  color: #6E5419;
   font-size: 15px;
   font-weight:bold;
-  color: #7C502F;
-  font-style:italic;
   text-align: center;
 }
 
