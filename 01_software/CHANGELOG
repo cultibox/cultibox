@@ -4,6 +4,9 @@ CultiBox (1.1.2) precise; urgency=low
 ALTER TABLE `cultibox`.`configuration` ADD `STATISTICS` VARCHAR( 5 ) NOT NULL DEFAULT 'True';
 
 
+Index: joomla/main/scripts/programs.php
+Index: joomla/main/templates/programs.html
+Index: joomla/main/locale/en_GB.utf8.po
 
 Index: 01_install/01_src/02_sql/sql_update/update_sql_windows_from_1.0.1_to_1.1.2.sql
 Index: 02_src/joomla/main/libs/css/cultibox.css
