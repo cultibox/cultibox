@@ -820,7 +820,7 @@ msgid "COST_PAGE"
 msgstr "Cost page"
 
 msgid "CONFIGURATION_PAGE"
-msgstr "COnfiguration page"
+msgstr "Configuration page"
 
 msgid "HISTORIC_EXPORT"
 msgstr "Export of a program"

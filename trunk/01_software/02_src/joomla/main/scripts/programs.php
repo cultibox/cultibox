@@ -67,22 +67,16 @@ if(isset($cyclic)&&(!empty($cyclic))) {
 }
 
 
-if((!isset($regul_program))||(empty($regul_program))) {
-    if(strcmp($plug_type,"lamp")==0) {
+if(empty($apply)||(!isset($apply))) {
+    $value_program="";
+    $regul_program="";
+    
+    if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) {
             $regul_program="on";
     } else {
             $regul_program="regul";
     }
 }
-
-if(strcmp($regul_program,"on")==0) {
-    $value_program="99.9";
-} elseif(strcmp($regul_program,"off")==0) {
-    $value_program="0";
-} else {
-    $value_program=getvar("value_program");
-}
-
 
 // Add a plug dinamically to configure a new program, maximal plug is configured in config.php file by the variable $GLOBALS['NB_MAX_PLUG']
 if((isset($add_plug))&&(!empty($add_plug))) {
@@ -234,10 +228,10 @@ if(!empty($apply)&&(isset($apply))) {
         $chtime=false;
     }
 
-    if("$value_program"=="on") {
+    if("$regul_program"=="on") {
             $value_program="99.9";
             $check=true;
-        } else if("$value_program"=="off") {
+        } else if("$regul_program"=="off") {
             $value_program="0";
             $check=true;
         } else {
