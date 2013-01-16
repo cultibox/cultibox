@@ -785,7 +785,7 @@ msgstr "Prix théorique maximal (sans régulation)"
 
 # For the historic part:
 msgid "TITLE_HISTORIC"
-msgstr "Historique de vos actions"
+msgstr "Historique de vos 100 dernières actions"
 
 msgid "RESET_HISTORIC"
 msgstr "Effacer l'historique"

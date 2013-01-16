@@ -784,7 +784,7 @@ msgstr "and the"
 
 # For the historic part:
 msgid "TITLE_HISTORIC"
-msgstr "Historique de vos actions"
+msgstr "Historic of your 100 lastest actions"
 
 msgid "RESET_HISTORIC"
 msgstr "Reset the historic"
