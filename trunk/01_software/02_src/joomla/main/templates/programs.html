@@ -30,12 +30,18 @@
 <?php } ?>
 
 
-
-<?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="get" name="actionprog" id="actionprog">
+<p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_PROGRAM'); ?>
+    <select name="selected_plug" onchange="this.form.submit()" id="selected_plug">
+    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+               <option <?php if($selected_plug==$i) { echo 'selected';} ?> value="<?php echo $i; ?>" ><?php echo $i; ?></option>
+    <?php } ?>
+    </select>
+</p>
 
 <script type="text/javascript">
 $(document).ready(function(){
-$('#start_time<?php echo "$i"; ?>').timepicker({
+$('#start_time').timepicker({
 <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
 showSecond: true,
 showOn: 'both',
@@ -50,7 +56,7 @@ timeFormat: 'hh:mm:ss',
 <?php echo "currentText: '".__('TIMEPICKER_NOW')."',"; ?>
 <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
 });
-$('#end_time<?php echo "$i"; ?>').timepicker({
+$('#end_time').timepicker({
 <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
 showOn: 'both',
 buttonImage: "../main/libs/img/datepicker.png",
@@ -65,7 +71,7 @@ timeFormat: 'hh:mm:ss',
 <?php echo "currentText: '".__('TIMEPICKER_NOW')."',"; ?>
 <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
 });
-$('#repeat_time<?php echo "$i"; ?>').timepicker({
+$('#repeat_time').timepicker({
 <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
 showOn: 'both',
 buttonImage: "../main/libs/img/datepicker.png",
@@ -83,7 +89,6 @@ timeFormat: 'hh:mm:ss',
 });
 </script>
 
-
 <script type="text/javascript">
 
 Highcharts.setOptions({
@@ -98,14 +103,19 @@ $(document).ready(function() {
    chart = new Highcharts.Chart({
       chart: {
          backgroundColor: '#F7F7F9',
-         borderWidth: 1,
+         borderWidth: 2,
          spacingRight: 35,
-         renderTo: 'plug<?php echo "$i";?>',
+         renderTo: 'plug',
          type: 'spline',
-                   zoomType: 'x'
+         zoomType: 'x'
       },
       title: {
-         text: <?php echo "'".__('CURRENT_PLUG_PROGRAM','highchart').": ".html_entity_decode(str_replace("'","\'",$plugs_infos[$i-1]["PLUG_NAME"]))."'"; ?>
+         text: <?php echo "'".__('CURRENT_PLUG_PROGRAM','highchart').": '"; ?>
+      },
+       subtitle: {
+             text: document.ontouchstart === undefined ?
+               <?php echo "'".__('DRAG_PLOT')."'"; ?>:
+               <?php echo "'".__('DRAG_PLOT')."'"; ?>
       },
       lang: {
          printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
@@ -113,8 +123,27 @@ $(document).ready(function() {
          downloadPNG : <?php echo "'".__('EXPORT_PNG')."',"; ?>
          downloadJPEG : <?php echo "'".__('EXPORT_JPEG')."',"; ?>
          downloadPDF : <?php echo "'".__('EXPORT_PDF')."',"; ?>
-         downloadSVG : <?php echo "'".__('EXPORT_SVG')."'"; ?>
+         downloadSVG : <?php echo "'".__('EXPORT_SVG')."',"; ?>
+         resetZoom : <?php echo "'".__('RESET_ZOOM')."',"; ?>
+         resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>
       },
+      legend: {
+            layout: 'vertical',
+            verticalAlign: 'bottom',
+            align: 'right',
+            y: -25,
+            navigation: {
+                activeColor: '#3E576F',
+                animation: true,
+                arrowSize: 12,
+                inactiveColor: '#CCC',
+                style: {
+                    fontWeight: 'bold',
+                    color: '#333',
+                    fontSize: '12px'    
+                }
+            }
+         },
       xAxis: {
          type: 'datetime',
          endOnTick: true,
@@ -137,25 +166,20 @@ $(document).ready(function() {
          }
       },
       yAxis: {
-            <?php if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"unknown")==0)) { ?>
-            min: 0,
-            max: 110,
-            <?php } else { ?>
             min: 0,
             max: 100,
-            <?php }?>
               labels: {
                      formatter: function() {
             if((this.value>=0)&&(this.value<=100)) {      
-               <?php if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"unknown")==0)) { ?>
+               <?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"unknown")==0)) { ?>
                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
                if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
-<?php } else if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"ventilator")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"heating")==0)) { ?>
+<?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"ventilator")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"heating")==0)) { ?>
                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
                if(this.value>0) return this.value+'°C';
                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
 
-<?php } else if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"humidifier")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"dehumidifier")==0)) { ?>
+<?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"dehumidifier")==0)) { ?>
                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
                if(this.value>0) return this.value+'%';
                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
@@ -184,13 +208,13 @@ $(document).ready(function() {
       tooltip: {
          formatter: function() {
 
-  <?php if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"unknown")==0)) { ?>
+  <?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"unknown")==0)) { ?>
       if(this.y == 99.9) {
          return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_ON"); ?></b></p>';
       } else {
          return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_OFF"); ?></b></p>';
       }
-<?php } else if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"ventilator")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"heating")==0)) { ?>
+<?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"ventilator")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"heating")==0)) { ?>
       if(this.y == 99.9) {
          return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("CHART_FORCE_ON_VALUE"); ?></b></p>';
        } else if(this.y == 0) {
@@ -199,7 +223,7 @@ $(document).ready(function() {
          return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'°C</b></p>';
       }   
 
-<?php } else if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"humidifier")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"dehumidifier")==0)) { ?>
+<?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"dehumidifier")==0)) { ?>
        if(this.y == 99.9) {
       return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("CHART_FORCE_ON_VALUE"); ?></b></p>';
        } else if(this.y == 0) {
@@ -214,201 +238,210 @@ $(document).ready(function() {
          }
       },
       
-      series: [{
-         name: <?php echo "'".__('BEHAVIOUR_PLUG_PROGRAM_TITLE')." (".$plugs_infos[$i-1]['translate'].")',"; ?>
-         color: <?php echo "'".$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$i-1]."'"; ?>,
+      series: [
+            <?php for($i=0;$i<$nb_plugs;$i++) { ?>
+
+        {
+         name: <?php echo "'".clean_popup_message($plugs_infos[$i]['PLUG_NAME'])." (".clean_popup_message($plugs_infos[$i]['translate']).")',"; ?>
+         color: <?php echo "'".$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$i]."'"; ?>,
+         <?php if($i!=$selected_plug-1) echo "showCheckbox: true, visible: false,"; ?>
          data: [
-            <?php echo $plugs_infos[$i-1]["data"]; ?>
+            <?php echo $plugs_infos[$i]["data"]; ?>
          ]
-      }]
+         <?php if($i!=$selected_plug-1) { ?>,events: {
+                    checkboxClick: function(event) {
+                        var series = chart.series[<?php echo $i; ?>];
+                        if (series.visible) {
+                            series.hide();
+                        } else {
+                            series.show();
+                        }
+                    }
+               }
+        <?php } ?>
+      }
+        <?php if($i!=$nb_plugs-1) echo ","; ?>
+     <?php } ?>
+] 
    });
 });
 
 </script>
 
-
-<br />
-
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
-<table class="table_width" id="conf<?php echo $i; ?>" >
-   <tr>
-      <td class="program-title"><p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php if(isset($plugs_infos[$i-1]['PLUG_NAME'])) echo __('CONFIGURE_PROGRAM')." ".$i.": </p><p class='title_subconf'>(".$plugs_infos[$i-1]['PLUG_NAME'].")"; else echo __('CONFIGURE_PROGRAM')." ".$i; ?></p></td>
-      <td></td>
-   </tr>
-   <tr>
-      <td>
-         <table>
-            <tr>
-               <td class="program-marge"></td>
-               <td class="program-td-title"><?php echo __('PROGRAM_NEW_ACTION'); ?></td>
-               <td class="program-field"><input type="radio" id="ponctual<?php echo $i; ?>" name="ponctual<?php echo $i; ?>" value="<?php echo __('PROGRAM_PONCTUAL'); ?>"  onclick="getProgramType('ponctual','<?php echo $i; ?>')" <?php if((($i==$selected_plug)&&(!empty($ponctual)))||((!isset($selected_plug))||(empty($selected_plug)))) echo "checked"; ?> ><?php echo __('PROGRAM_PONCTUAL'); ?>
-                                        <input type="radio" name="cyclic<?php echo $i; ?>" id="cyclic<?php echo $i; ?>" value="<?php echo __('PROGRAM_CYCLIC'); ?>" onclick="getProgramType('cyclic','<?php echo $i; ?>')" <?php if(($i==$selected_plug)&&(!empty($cyclic))) echo "checked"; ?>><?php echo __('PROGRAM_CYCLIC'); ?></td>
-            </tr>
-            <tr>
-               <td></td>
-               <td><?php echo __('START_TIME_PROGRAM'); ?></td>
-               <td>
-                  <input type="text" size="10" name="start_time<?php echo $i; ?>" id="start_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($start_time))) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> />
-                </td>
-            </tr>
-            <tr>
-               <td></td>
-               <td><?php echo __('END_TIME_PROGRAM'); ?></td>
-               <td>
-                  <input type="text" size="10" name="end_time<?php echo $i; ?>" id="end_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($end_time))) { ?>value="<?php echo $end_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> />
-               </td>
-            </tr>
-
-            <tr>
-               <td></td>
-               <td><div id="time_cyclic<?php echo $i; ?>" style="<?php if((isset($cyclic))&&(!empty($cyclic))&&($i==$selected_plug)) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('REPEAT_EVERY'); ?></div></td>
-
-               <td>
-                <div id="time_cyclic_field<?php echo $i; ?>" style="<?php if((isset($cyclic))&&(!empty($cyclic))&&($i==$selected_plug)) {  echo ''; } else { echo 'display:none'; } ?>">
-                  <input type="text" size="10" name="repeat_time<?php echo $i; ?>" id="repeat_time<?php echo $i; ?>" <?php if(($i==$selected_plug)&&(!empty($repeat_time))) { ?>value="<?php echo $repeat_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> /></div>
-               </td>
-            </tr>
- 
-            <tr>
-               <td></td>
-               <td><?php echo __('VALUE_ON_OFF'); ?></td>
-               <td>
-		<?php if((strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$i-1]["PLUG_TYPE"],"unknown")==0)) { ?>
-                  <select id="value_program<?php echo $i; ?>" name="value_program<?php echo $i; ?>">
-                     <option value="on" <?php if(($i==$selected_plug)&&($value_program==1)) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
-                          <option value="off" <?php if(($i==$selected_plug)&&($value_program==0)) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
-                       </select>
-               <?php } else { ?>
-                       <select id="regul_program<?php echo $i; ?>" name="regul_program<?php echo $i; ?>" onChange="getRegulation(this.selectedIndex,<?php echo $i; ?>);" onLoad="getRegulation(this.selectedIndex,<?php echo $i; ?>);">
-                             <option value="regul" <?php if(($i==$selected_plug)&&(strcmp("$regul_program","regul")==0)) { ?>selected<?php } ?>><?php echo __('VALUE_REGUL'); ?></option>
-			     <option value="on" <?php if(($i==$selected_plug)&&(strcmp("$regul_program","on")==0)) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
-                             <option value="off" <?php if(($i==$selected_plug)&&(strcmp("$regul_program","off")==0)) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
+<table class="table_width">
+<tr>
+   <td class="program-marge"></td>
+   <td class="program-td-title"><?php echo __('PROGRAM_NEW_ACTION'); ?>:</td>
+   <td class="program-field"><input type="radio" id="ponctual" name="ponctual" value="<?php echo __('PROGRAM_PONCTUAL'); ?>"  onclick="getProgramType('ponctual')" <?php if(empty($cyclic)) echo "checked"; ?> ><?php echo __('PROGRAM_PONCTUAL'); ?><input type="radio" name="cyclic" id="cyclic" value="<?php echo __('PROGRAM_CYCLIC'); ?>" onclick="getProgramType('cyclic')" <?php if(!empty($cyclic)) echo "checked"; ?>><?php echo __('PROGRAM_CYCLIC'); ?></td>
+    <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td><?php echo __('START_TIME_PROGRAM'); ?>:</td>
+   <td><input type="text" size="10" name="start_time" id="start_time" <?php if(!empty($start_time)) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> /></td>
+   <td><?php if((isset($error['start_time']))&&(!empty($error['start_time']))) echo "<div class='error'>".$error['start_time']."</div>"; ?></td>
+</tr>
+<tr>
+    <td></td>
+    <td><?php echo __('END_TIME_PROGRAM'); ?>:</td>
+    <td><input type="text" size="10" name="end_time" id="end_time" <?php if(!empty($end_time)) { ?>value="<?php echo $end_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> /></td>
+    <td><?php if((isset($error['end_time']))&&(!empty($error['end_time']))) echo "<div class='error'>".$error['end_time']."</div>"; ?></td>
+</tr>
+<tr>
+    <td></td>
+    <td><div id="time_cyclic" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('REPEAT_EVERY'); ?>:</div></td>
+    <td> <div id="time_cyclic_field" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><input type="text" size="10" name="repeat_time" id="repeat_time" <?php if(!empty($repeat_time)) { ?>value="<?php echo $repeat_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> /></div> </td>
+    <td><?php if((isset($error['repeat_time']))&&(!empty($error['repeat_time']))) echo "<div class='error'>".$error['repeat_time']."</div>"; ?></td>
+</tr>
+<tr>
+     <td></td>
+     <td><?php echo __('VALUE_ON_OFF'); ?>:</td>
+     <td><?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"unknown")==0)) { ?><select id="value_program" name="value_program"> <option value="on" <?php if($value_program==1) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option><option value="off" <?php if($value_program==0) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option></select><?php } else { ?>
+                       <select id="regul_program" name="regul_program" onChange="getRegulation(this.selectedIndex);" onLoad="getRegulation(this.selectedIndex);">
+                             <option value="regul" <?php if(strcmp("$regul_program","regul")==0) { ?>selected<?php } ?>><?php echo __('VALUE_REGUL'); ?></option>
+			     <option value="on" <?php if(strcmp("$regul_program","on")==0) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
+                             <option value="off" <?php if(strcmp("$regul_program","off")==0) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
                        </select></td>
-			<tr><td></td><td><div id="regul_label<?php echo $i; ?>" style="<?php if(($i==$selected_plug)&&(strcmp("$regul_program","regul")!=0)) echo "display:none"; ?>"><?php if((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"ventilator")==0)) { 
-                            echo __('TEMP_WISHED'); 
-                            } elseif((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"dehumidifier")==0)) {
-                                    echo __('HUMI_WISHED'); 
-                            } ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_VALUE'); ?>" /></div></td><td><div id="regul_value<?php echo $i; ?>" style="<?php if(($i==$selected_plug)&&(strcmp("$regul_program","regul")!=0)) echo "display:none"; ?>">
-                       <input type="text" id="value_program<?php echo $i; ?>" name="value_program<?php echo $i; ?>" size="4" maxlength="4" 
-                       <?php if(($i==$selected_plug)&&(!empty($value_program))) { 
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td><div id="regul_label" style="<?php if(strcmp("$regul_program","regul")!=0) echo "display:none"; ?>"><?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)) { 
+                            echo __('TEMP_WISHED').":"; 
+                            } elseif((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) {
+                                    echo __('HUMI_WISHED').":"; 
+                            } ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_VALUE'); ?>" /></div></td>
+    <td><div id="regul_value" style="<?php if(strcmp("$regul_program","regul")!=0) echo "display:none"; ?>">
+                       <input type="text" id="value_program" name="value_program" size="4" maxlength="4" 
+                       <?php if(!empty($value_program)) { 
                                ?>value="<?php echo $value_program;?>" <?php 
                         } else { 
-                              if((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"ventilator")==0))  { 
+                              if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0))  { 
                                       echo 'value="22"'; 
-                               } elseif((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"dehumidifier")==0)) { 
+                               } elseif((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) { 
                                       echo 'value="55"'; 
                               } 
                         } ?> />
-                                                <?php if((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"ventilator")==0)) echo "°C"; ?>
-                  <?php if((strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$i-1]['PLUG_TYPE'],"dehumidifier")==0)) echo "%"; ?>
+                                                <?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)) echo "°C"; ?>
+                  <?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) echo "%"; ?>
                </div><?php } ?>
-               </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><?php echo __('VALUE_REGUL_SECOND'); ?></td>
-                <td><input type="text" name="second_regul_plug" value="<?php if(strcmp($plugs_infos[$i-1]['PLUG_REGUL'],"False")==0) { echo __('SECOND_REGUL_OFF'); } else { echo __('SECOND_REGUL_ON'); } ?>" readonly size="10" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><?php echo __('RESET_OLD_PROGRAM'); ?></td>
-                <td><input type="checkbox" name="reset_old_program<?php echo $i; ?>" value="Yes" <?php if((isset($plugs_infos[$i-1]['RESET']))&&(!empty($plugs_infos[$i-1]['RESET']))) echo "checked"; ?> /></td>
-            </tr>
-            <tr>
-                <td></td>
-               <td class="program-valid-right"><br /><input type="hidden" name="selected_plug" value="<?php echo $i; ?>">
-                  <img src="main/libs/img/resume.png" alt="" class="info-bulle-css" title="<?php echo $resume[$i]; ?>" />
-                  <input type="submit" name="apply" value="<?php echo __('APPLY_PROGRAM'); ?>">
+    </td>
+    <td><?php if((isset($error['value']))&&(!empty($error['value']))) echo "<div class='error'>".$error['value']."</div>"; ?></td>
+</tr>
+<tr>
+    <td></td>
+    <td><?php echo __('VALUE_REGUL_SECOND'); ?>:</td>
+    <td><input type="text" name="second_regul_plug" value="<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_REGUL'],"False")==0) { echo __('SECOND_REGUL_OFF'); } else { echo __('SECOND_REGUL_ON'); } ?>" readonly size="10" /></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td><?php echo __('RESET_OLD_PROGRAM'); ?>:</td>
+    <td><input type="checkbox" name="reset_old_program" value="Yes" <?php if((isset($plugs_infos[$selected_plug-1]['RESET']))&&(!empty($plugs_infos[$selected_plug-1]['RESET']))) echo "checked"; ?> /></td>
+    <td></td>
+</tr>
+</table>
 
-               </td>
-               <td></td>
-            </tr>
-         </table>
-      </td>
-      <td class="progra-graph">
-         <div id="plug<?php echo $i; ?>" style="width: 87%; height: 300px; margin: 0 auto">
-         </div>
-      </td>
-   </tr>
+<table class="table_width">
+<tr>
+    <td></td>
+    <td class="program-valid-right"><br /><input type="submit" name="apply" value="<?php echo __('APPLY_PROGRAM'); ?>"></td>
+    <td></td>
+</tr>
 </table>
 </form>
 
-<table class="table_width">
-  <tr>
-      <td class="program-marge-action"></td>
-      <td class="program-field-action">
-                <?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>
-                 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post" enctype="multipart/form-data">
-                     <label class="input-file">
-                     <input type="file" name="upload_file">
-                     </label>
-                     <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
-                     <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-                     <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>">
-                  </form>
-                <?php } ?>
-               </td>
-               <td class="program-field-action">
-                 <?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>
-                  <br />
-                   <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
-                        <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="reset">
-                        <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
-                        <input type="hidden" name="exportid" value="<?php echo $i; ?>">
-                    </form>
-                  <?php } ?>
-               </td>
-               <td class="program-field-action">
-                   <br />
-                  <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
-                  <input type="hidden" name="action_prog" value="<?php echo $i; ?>">
-                  <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset">
-                  </form>
-               </td>
-            </tr>
-</table>
+<br /><hr /><br />
 
-<?php if((isset($info_plug[$i]))&&(!empty($info_plug[$i]))) { ?>
-<div id="info">
-   <ul>
-      <?php echo $info_plug[$i]; ?>
-   </ul>
-</div>
-<?php } ?>
-
-
-<?php if((isset($ret_plug[$i]))&&(!empty($ret_plug[$i]))) { ?>
-<div id="error">
-   <ul>
-      <?php echo $ret_plug[$i]; ?>
-   </ul>
-</div>
-<?php } ?>
-
-<br />
-
-
-<?php } ?>
-<hr /><br />
 <table class="table_width">
 <tr>
-    <td class="program-td-management"></td>
-    <td>
-        <?php if($nb_plugs<$GLOBALS['NB_MAX_PLUG']) { ?>
-        <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i; ?>" method="post">
-          <input type="hidden" name="add_plug" value="add_plug">
-          <input type="submit" value="<?php echo __('ADD_PLUG'); ?>" name="add" class="add_plug">
-        </form>
-        <?php } ?>
-    </td>
-    <td>
-        <?php if($nb_plugs>$GLOBALS['NB_MIN_PLUG']) { ?>
-        <form action="<?php echo($_SERVER['PHP_SELF']); ?>#conf<?php echo $i-2; ?>" method="post">
-          <input type="hidden" name="remove_plug" value="remove_plug">
-          <input type="submit" value="<?php echo __('REMOVE_PLUG'); ?>" name="remove" class="remove_plug">
-        </form>
-         <?php } ?> 
-    </td>
+    <td class="program-div-margin"></td><td class="program-div"></td><td><img src="main/libs/img/resume.png" alt="" class="info-bulle-css" title="<?php echo $resume; ?>" /></td>
+</tr>
+<tr>
+    <td></td><td><div id="plug" style="width: 100%; height: 350px; margin: 0 auto"></div></td><td></td>
 </tr>
 </table>
+<br /><hr /><br />
+
+
+<label class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('MANAGE_PROGRAM_INFOS'); ?>:</label>
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<table class="table_width">
+<tr>
+    <td class="program-manage-marge"></td>
+    <td class="program-manage-title"><?php echo __('TITLE_ADD_PLUG'); ?>:</td>
+    <td class="program-manage-field">
+          <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
+          <input type="hidden" name="add_plug" value="add_plug">
+          <input type="submit" value="<?php echo __('ADD_PLUG'); ?>" name="add" class="submit_plug" <?php if($nb_plugs>=$GLOBALS['NB_MAX_PLUG']) echo "disabled"; ?>>
+    </td>
+    <td></td>
+</tr>
+</table>
+</form>
+
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<table class="table_width">
+<tr>
+    <td class="program-manage-marge"></td>
+    <td class="program-manage-title"><?php echo __('TITLE_REMOVE_PLUG'); ?>:</td>
+    <td class="program-manage-field">
+          <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
+          <input type="hidden" name="remove_plug" value="remove_plug">
+          <input type="submit" value="<?php echo __('REMOVE_PLUG'); ?>" name="remove" class="submit_plug" <?php if($nb_plugs<=$GLOBALS['NB_MIN_PLUG']) echo "disabled"; ?>>
+    </td>
+    <td></td>
+</tr>
+</table>
+</form>
+
+
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<table class="table_width">
+<tr>
+    <td class="program-manage-marge"></td>
+    <td class="program-manage-title"><?php echo __('TITLE_RESET_PROGRAM'); ?>:</td>
+    <td class="program-manage-field">
+                  <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
+                  <input type="hidden" name="action_prog" value="action_prog">
+                  <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset" class="submit_plug">
+    </td>
+    <td></td>
+</tr>
+</table>
+</form>
+
+
+<?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<table class="table_width">
+<tr>
+    <td class="program-manage-marge"></td>
+    <td class="program-manage-title"><?php echo __('TITLE_EXPORT_PROGRAM'); ?>:</td>
+    <td class="program-manage-field">
+                        <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="reset" class="submit_plug">
+                        <input type="hidden" name="action_prog" value="action_prog">
+                        <input type="hidden" name="exportid" value="<?php echo $selected_plug; ?>">
+                        <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
+    </td>
+    <td></td>
+</tr>
+</table>
+</form>
+
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
+<table class="table_width">
+<tr>
+    <td class="program-manage-marge"></td>
+    <td class="program-manage-title"><?php echo __('TITLE_IMPORT_PROGRAM'); ?>:</td>
+    <td class="program-manage-field">
+                     <input type="file" name="upload_file">
+                     <input type="hidden" name="action_prog" value="action_prog">
+                     <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                     <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>" class="submit_plug">
+    </td>
+    <td></td>
+</table>
+</form>
+<?php } ?>
 

@@ -171,7 +171,7 @@ EOF;
 // RET $res   value of the key   
 //Note: if to select a value is limited to 1. Only one configuration is available,
 //there isn't a user configuration management yet.
-function get_configuration($key,&$out) {
+function get_configuration($key,&$out="") {
         $db = db_priv_start();
         $sql = <<<EOF
 SELECT {$key} FROM `configuration` WHERE id = 1
@@ -881,12 +881,12 @@ function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
       $tmp=optimize_program($tmp);
       if(count($tmp)>0) {
          foreach($tmp as $new_val) {
-            insert_program_value($plug_id,$new_val['time_start'],$new_val['time_stop'],$new_val['value'],$out);   
+            if(!insert_program_value($plug_id,$new_val['time_start'],$new_val['time_stop'],$new_val['value'],$out)) return false;   
          }
       }
    } else {
       if($value!=0) {
-         insert_program_value($plug_id,$start_time,$end_time,$value,$out);
+         if(!insert_program_value($plug_id,$start_time,$end_time,$value,$out)) return false;
       }
    }
    return true;
@@ -1270,7 +1270,7 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 //    $end_time         end time for the program
 //    $value            value of the program
 //    $out              error or warning message
-// RET none
+// RET false is there is an error, true else
 function insert_program_value($plug_id,$start_time,$end_time,$value,&$out) {
    $db = db_priv_start();
    $sql = <<<EOF
@@ -1282,13 +1282,17 @@ EOF;
         if((isset($ret))&&(!empty($ret))) {
             if($GLOBALS['DEBUG_TRACE']) {
                   $out[]=__('ERROR_UPDATE_SQL').$ret;
+                  return false;
             } else {
                   $out[]=__('ERROR_UPDATE_SQL');
+                  return false;
             }
         }
         if(!db_priv_end($db)) {
                 $out[]=__('PROBLEM_CLOSING_CONNECTION');
+                return false;
         }
+        return true;
 }
 // }}}
 
@@ -1853,7 +1857,7 @@ function check_programs($nb_plugs=0) {
    if($nb_plugs>0) {
       $db = db_priv_start();
            $sql = <<<EOF
-SELECT * FROM `programs`
+SELECT * FROM `programs` WHERE `plug_id` <= {$nb_plugs}
 EOF;
            $db->setQuery($sql);
            $res = $db->loadAssocList();
@@ -1967,5 +1971,72 @@ EOF;
            }
            return $error;
 }
+// }}}
+
+
+// {{{ get_historic_value()
+// IN $out      error or warning message
+//    $res      return array containing data
+// RET none 
+function get_historic_value(&$res,&$out) {
+    $db = db_priv_start();
+    $sql = <<<EOF
+SELECT * from `historic` ORDER by `timestamp` DESC
+EOF;
+
+   $db->setQuery($sql);
+   $res=$db->loadAssocList();
+   $ret=$db->getErrorMsg();
+
+
+   if((isset($ret))&&(!empty($ret))) {
+       if($GLOBALS['DEBUG_TRACE']) {
+          $out[]=__('ERROR_DELETE_SQL').$ret;
+       } else {
+          $out[]=__('ERROR_DELETE_SQL');
+       }
+   }
+
+   if(!db_priv_end($db)) {
+         $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
+}
+// }}}
+
+
+
+// {{{ set_historic_value()
+// IN $out      error or warning message
+//    $message  message to be written into the table
+//    $type     type of message: ERROR or INFO
+// RET none
+function set_historic_value($message="",$type="",&$out) {
+    if((strcmp("$message","")!=0)&&(strcmp("$type","")!=0)) {
+        $timestamp=date('Y-m-d H:i:s');
+
+        $db = db_priv_start();
+        $sql = <<<EOF
+INSERT INTO `historic`(`timestamp`,`action`, `type`) VALUES ("${timestamp}","${message}","${type}");
+EOF;
+        $db->setQuery($sql);
+        $db->query();
+        $ret=$db->getErrorMsg();
+        if((isset($ret))&&(!empty($ret))) {
+            if($GLOBALS['DEBUG_TRACE']) {
+                $out[]=__('ERROR_UPDATE_SQL').$ret;
+            } else {
+                $out[]=__('ERROR_UPDATE_SQL');
+            }
+        }
+
+        if(!db_priv_end($db)) {
+            $out[]=__('PROBLEM_CLOSING_CONNECTION');
+        }
+   }
+}
+// }}}
+
+
+
 
 ?>

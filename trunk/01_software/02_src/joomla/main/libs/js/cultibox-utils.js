@@ -21,7 +21,7 @@ function expand(div) {
                                  divAlarm.style.display = "none";
                                  divCost.style.display = "none";
                         
-                                 divLabelConfig.style.color = '#000000';
+                                 divLabelConfig.style.color = '#777779';
                                  divLabelSystem.style.color = '';
                                  divLabelAlarm.style.color = '';
                                  divLabelCost.style.color = '';
@@ -34,7 +34,7 @@ function expand(div) {
                                    divCost.style.display = "none";
 
                                    divLabelConfig.style.color = '';
-                                   divLabelSystem.style.color = '#000000';
+                                   divLabelSystem.style.color = '#777779';
                                    divLabelAlarm.style.color = '';
                                    divLabelCost.style.color = '';
                                    document.configform.submenu.value="system_interface";
@@ -47,7 +47,7 @@ function expand(div) {
 
                                   divLabelConfig.style.color = '';
                                   divLabelSystem.style.color = '';
-                                  divLabelAlarm.style.color = '#000000';
+                                  divLabelAlarm.style.color = '#777779';
                                   divLabelCost.style.color = '';
                                   document.configform.submenu.value="alarm_interface";
 
@@ -60,7 +60,7 @@ function expand(div) {
                                  divLabelConfig.style.color = '';
                                  divLabelSystem.style.color = '';
                                  divLabelAlarm.style.color = '';
-                                 divLabelCost.style.color = '#000000';
+                                 divLabelCost.style.color = '#777779';
                                  document.configform.submenu.value="cost_interface";
 
                                  break;
@@ -286,9 +286,9 @@ function getSelectedPlug(i,j) {
 // IN  input value: display or not the informations
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
 // USED BY: templates/programs.html 
-function getRegulation(i,j) {
-      var divValueRegul = document.getElementById('regul_value'+j);
-      var divLabelRegul = document.getElementById('regul_label'+j);
+function getRegulation(i) {
+      var divValueRegul = document.getElementById('regul_value');
+      var divLabelRegul = document.getElementById('regul_label');
 
       switch(i) {
          case 0 : divLabelRegul.style.display = ''; divValueRegul.style.display = ''; break;
@@ -299,14 +299,14 @@ function getRegulation(i,j) {
 
 
 // {{{ getProgramType()
-// ROLE chec or uncheck radio button depending of the type
+// ROLE check or uncheck radio button depending of the type
 // IN  i the input type and j the index
 // USED BY: templates/programs.html 
-function getProgramType(i,j) {
-      var PonctualRadio = document.getElementById('ponctual'+j);
-      var CyclicRadio = document.getElementById('cyclic'+j);
-      var divTimeCyclicField = document.getElementById('time_cyclic_field'+j);
-      var divTimeCyclic = document.getElementById('time_cyclic'+j);
+function getProgramType(i) {
+      var PonctualRadio = document.getElementById('ponctual');
+      var CyclicRadio = document.getElementById('cyclic');
+      var divTimeCyclicField = document.getElementById('time_cyclic_field');
+      var divTimeCyclic = document.getElementById('time_cyclic');
 
       switch(i) {
          case 'ponctual': PonctualRadio.checked=true; CyclicRadio.checked=false; divTimeCyclicField.style.display='none'; divTimeCyclic.style.display='none';  break;
@@ -331,3 +331,11 @@ function DeleteForm(message) {
             return false;
 }
 // }}}
+
+
+
+function sendForm(index,formname) {
+            alert(document.getElementById('selected_plug'));
+            document.getElementById('selected_plug').value=index;
+            document.formname.submit();
+}

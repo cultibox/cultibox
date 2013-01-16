@@ -81,7 +81,7 @@ timeFormat: 'hh:mm',
 <table class="conf-table">
    <tr>
       <td class="conf-marge"></td>
-      <td class="conf-marge-td"><?php echo __('CONFIGURE_LANGUAGE'); ?></td>
+      <td class="conf-marge-td"><?php echo __('CONFIGURE_LANGUAGE'); ?>:</td>
       <td><select name="lang">
          <?php foreach($GLOBALS['LIST_LANG'] as $value) {
             switch ($value) {
@@ -107,7 +107,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_HUMIDITY'); ?></td>
+      <td><?php echo __('CONFIGURE_HUMIDITY'); ?>:</td>
       <td><select name="color_humidity">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
          switch ($value) {
@@ -152,7 +152,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_TEMPERATURE'); ?></td>
+      <td><?php echo __('CONFIGURE_TEMPERATURE'); ?>:</td>
       <td><select name="color_temperature">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
          switch ($value) {
@@ -198,7 +198,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_COLOR_PROGRAM'); ?></td>
+      <td><?php echo __('CONFIGURE_COLOR_PROGRAM'); ?>:</td>
       <td><select name="color_program">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
          switch ($value) {
@@ -244,7 +244,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_POWER'); ?></td>
+      <td><?php echo __('CONFIGURE_POWER'); ?>:</td>
       <td><select name="color_power">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
          switch ($value) {
@@ -291,7 +291,7 @@ timeFormat: 'hh:mm',
    </tr>
      <tr>
       <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_COST_COLOR'); ?></td>
+      <td><?php echo __('CONFIGURE_COST_COLOR'); ?>:</td>
       <td><select name="color_cost">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
          switch ($value) {
@@ -338,7 +338,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_TEMP_AXIS'); ?> <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
+      <td><?php echo __('CONFIGURE_TEMP_AXIS'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
          <td><select name="temp_axis">
                 <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $value) {
             if("$value"=="$temp_axis") {
@@ -351,7 +351,7 @@ timeFormat: 'hh:mm',
         </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_HYGRO_AXIS'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
+      <td><?php echo __('CONFIGURE_HYGRO_AXIS'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
       <td><select name="hygro_axis">
          <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $value) {
            if("$value"=="$hygro_axis") {
@@ -364,7 +364,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_POWER_AXIS'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
+      <td><?php echo __('CONFIGURE_POWER_AXIS'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
       <td><select name="power_axis">
          <?php foreach($GLOBALS['LIST_MAX_POWER'] as $value) {
            if("$value"=="$power_axis") {
@@ -377,7 +377,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
          <td class="conf-marge"></td>
-         <td><?php echo __('CONFIGURE_POPUP'); ?> <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POPUP'); ?>" /></td>
+         <td><?php echo __('CONFIGURE_POPUP'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POPUP'); ?>" /></td>
          <td><select name="pop_up">
             <option value="True" <?php if(strcmp("$pop_up","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
             <option value="False" <?php if(strcmp("$pop_up","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
@@ -386,7 +386,7 @@ timeFormat: 'hh:mm',
    </tr>
     <tr>
          <td class="conf-marge"></td>
-         <td><?php echo __('CHECK_UPDATE'); ?> <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_CHECK_UPDATE'); ?>" /></td>
+         <td><?php echo __('CHECK_UPDATE'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_CHECK_UPDATE'); ?>" /></td>
          <td><select name="update">
             <option value="True" <?php if(strcmp("$update","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
             <option value="False" <?php if(strcmp("$update","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
@@ -395,7 +395,7 @@ timeFormat: 'hh:mm',
    </tr>
     <tr>
          <td class="conf-marge"></td>
-         <td><?php echo __('CONFIG_LOG_SEARCH'); ?></td>
+         <td><?php echo __('CONFIG_LOG_SEARCH'); ?>:</td>
          <td><select name="log_search">
             <?php foreach($GLOBALS['LOG_SEARCH'] as $value) {
                 if("$value"=="$log_search") {
@@ -409,7 +409,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
          <td class="conf-marge"></td>
-         <td><?php echo __('CHECK_STATISTICS'); ?></td>
+         <td><?php echo __('CHECK_STATISTICS'); ?>:</td>
          <td><select name="stats">
             <option value="True" <?php if(strcmp("$stats","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
             <option value="False" <?php if(strcmp("$stats","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
@@ -424,7 +424,7 @@ timeFormat: 'hh:mm',
 <tr>
 <td class="conf-marge"></td>
 <td class="conf-marge-td">
-   <?php echo __('CONFIGURE_FREQUENCY'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
+   <?php echo __('CONFIGURE_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
 </td>
 <td>
    <select name="record_frequency">
@@ -444,7 +444,7 @@ timeFormat: 'hh:mm',
 <tr>
 <td class="conf-marge"></td>
 <td>
-   <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
+   <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
 </td>
 <td>
    <select name="power_frequency">
@@ -463,9 +463,7 @@ timeFormat: 'hh:mm',
 </tr>
 <tr>
 <td class="conf-marge"></td>
-<td>
-   <?php echo __('CONFIGURE_NB_PLUGS'); ?>
-</td>
+<td><?php echo __('CONFIGURE_NB_PLUGS'); ?>:</td>
 <td>
    <select name="nb_plugs">
       <?php
@@ -484,7 +482,7 @@ timeFormat: 'hh:mm',
 <tr>
 <td class="conf-marge"></td>
 <td>
-   <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
+   <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
 </td>
 <td>
    <select name="update_frequency">
@@ -513,7 +511,7 @@ timeFormat: 'hh:mm',
 <table class="conf-table">
    <tr>  
       <td class="conf-marge"></td>
-      <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_ALARM'); ?>" /></td>
+      <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_ALARM'); ?>" /></td>
       <td><select name="alarm_enable" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
            <?php if("$alarm_enable"=="0001") {
                      echo "<option value='0001' selected>".__('YES')."</option>";
@@ -528,7 +526,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td><div id="label_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSO'); ?></div></td>
+      <td><div id="label_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSO'); ?>:</div></td>
       <td><div id="div_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><select name="alarm_senso" onChange="getUnity(this.selectedIndex,'');" onLoad="getUnity(this.selectedIndex,'');">
            <?php if("$alarm_senso"=="000T") {
                      echo "<option value='000T' selected>".__('ALARM_TEMP')."</option>";
@@ -543,13 +541,13 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
    <td class="conf-marge"></td>
-      <td><div id="label_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_VALUE'); ?></div></td>
+      <td><div id="label_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_VALUE'); ?>:</div></td>
       <td><div id="div_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value" onKeypress="return verifDigit(event);"><label id="label_degree" style="<?php if("$alarm_senso"=="000H") echo "display:none"; ?>">°C</label><label id="label_pourcent" style="<?php if("$alarm_senso"=="000T") echo "display:none"; ?>">%</label></div></td>
       <td><?php if((isset($error['alarm']))&&(!empty($error['alarm']))) echo "<div class='error'>".$error['alarm']."</div>"; ?></td>
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td ><div id="label_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSS'); ?></div></td>
+      <td ><div id="label_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSS'); ?>:</div></td>
       <td><div id="div_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><select name="alarm_senss">
            <?php if("$alarm_senss"=="000+") {
                      echo "<option value='000+' selected>".__('ALARM_ABOVE')."</option>";
@@ -569,7 +567,7 @@ timeFormat: 'hh:mm',
 <table class="conf-table">
    <tr>
       <td class="conf-marge"></td>
-      <td class="conf-marge-td"><?php echo __('CONFIGURE_COST_TYPE'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_TYPE'); ?>" /></td>
+      <td class="conf-marge-td"><?php echo __('CONFIGURE_COST_TYPE'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_TYPE'); ?>" /></td>
       <td>
             <select name="cost_type" onChange="getCostType(this.selectedIndex);" onLoad="getCostType(this.selectedIndex);">
                <option value="standard" <?php if(strcmp($cost_type,"standard")==0) echo "selected"; ?>><?php echo __('COST_STANDARD'); ?></option>
@@ -580,7 +578,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td class="conf-marge-td"><label id="cost_label_standard" style="<?php if(strcmp($cost_type,'standard')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_PRICE'); ?>" /></label><label id="cost_label_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HP'); ?></label></td> 
+      <td class="conf-marge-td"><label id="cost_label_standard" style="<?php if(strcmp($cost_type,'standard')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_PRICE'); ?>" /></label><label id="cost_label_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HP'); ?>:</label></td> 
       <td><label id="cost_input_standard" style="<?php if(strcmp($cost_type,'standard')!=0) echo 'display:none'; ?>">
         <input type="text" size="5" maxlength="5" name="cost_price" value="<?php echo "$cost_price"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp($cost_type,'standard')==0) { if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; }} ?></label>
         <label id="cost_input_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="5" maxlength="5" name="cost_price_hp" value="<?php echo "$cost_price_hp"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?></label>
@@ -589,7 +587,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td class="conf-marge-td"><label id="cost_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HC'); ?></label></td>
+      <td class="conf-marge-td"><label id="cost_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HC'); ?>:</label></td>
       <td><label id="cost_input_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="5" maxlength="5" name="cost_price_hc" value="<?php echo "$cost_price_hc"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?></label></td>
      <td><?php if((isset($error['price_hc']))&&(!empty($error['price_hc']))) echo "<div class='error'>".$error['price_hc']."</div>"; ?></td>
    </tr> 

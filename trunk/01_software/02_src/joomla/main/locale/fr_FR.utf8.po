@@ -177,10 +177,10 @@ msgid "CONFIG_LOG_SEARCH"
 msgstr "Nombre de mois sur lesquels rechercher des logs"
 
 msgid "CONFIGURE_START_HC"
-msgstr "Entrez l'heure de début de votre période creuse : (HH:MM)"
+msgstr "Entrez l'heure de début de votre période creuse: (HH:MM)"
 
 msgid "CONFIGURE_STOP_HC"
-msgstr "Entrez l'heure de fin de votre période creuse : (HH:MM)"
+msgstr "Entrez l'heure de fin de votre période creuse: (HH:MM)"
 
 msgid "CHECK_STATISTICS"
 msgstr "Envoie d'informations pour aider le développement"
@@ -347,6 +347,18 @@ msgstr "Importer les logs"
 msgid "SET_XY_ZOOM"
 msgstr "Activer le zoom sur l'axe Y"
 
+msgid "MANAGE_RESET_SD_CARD"
+msgstr "Formater les fichiers logs de votre carte SD"
+
+msgid "MANAGE_RESET_CARD"
+msgstr "Formatter la carte"
+
+msgid "RESET_CONFIRM_SD_CARD"
+msgstr "Êtes vous sur de vouloir formatter votre carte SD? Tous vos fichiers de logs seront perdus."
+
+msgid "VALID_RESET_SD"
+msgstr "Carte SD formatée avec succès"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -380,7 +392,7 @@ msgid "PLUG_HUMIDIFIER"
 msgstr "Humidificateur"
 
 msgid "PLUG_DEHUMIDIFIER"
-msgstr "Deshumidificateur"
+msgstr "Déshumidificateur"
 
 msgid "PLUG_HEATING"
 msgstr "Chauffage"
@@ -454,7 +466,7 @@ msgid "VALUE_REGUL"
 msgstr "Régulation"
 
 msgid "CURRENT_PLUG_PROGRAM"
-msgstr "Programme pour la prise"
+msgstr "Comportement actuel de la prise"
 
 msgid "TIMEPICKER_SELECT_TIME"
 msgstr "Choisissez une heure"
@@ -560,6 +572,24 @@ msgstr "cyclique"
 
 msgid "REPEAT_EVERY"
 msgstr "Répéter toutes les"
+
+msgid "MANAGE_PROGRAM_INFOS"
+msgstr "Gestion de vos programmes"
+
+msgid "TITLE_EXPORT_PROGRAM"
+msgstr "Exporter le programme de la prise courante"
+
+msgid "TITLE_IMPORT_PROGRAM"
+msgstr "Importer un programme pour la prise courante"
+
+msgid "TITLE_RESET_PROGRAM"
+msgstr "Effacer le programme de la prise courante"
+
+msgid "TITLE_ADD_PLUG"
+msgstr "Ajouter une prise à configurer"
+
+msgid "TITLE_REMOVE_PLUG"
+msgstr "Supprimer la dernière prise"
 
 
 # For the export module highchart part:
@@ -752,6 +782,51 @@ msgstr "Prix réel"
 msgid "THEORICAL_PRICE"
 msgstr "Prix théorique maximal (sans régulation)"
 
+
+# For the historic part:
+msgid "TITLE_HISTORIC"
+msgstr "Historique de vos actions"
+
+msgid "RESET_HISTORIC"
+msgstr "Effacer l'historique"
+
+msgid "RESET_CONFIRM_HISTORIC"
+msgstr "Êtes vous sur de vouloir supprimer l'historique de vos actions?"
+
+msgid "VALID_DELETE_HISTORIC"
+msgstr "Historique de vos actions supprimées avec succès"
+
+msgid "NO_HISTORIC_VALUE"
+msgstr "Aucune action enregistrée"
+
+msgid "WIZARD_PAGE"
+msgstr "Onglet du Wizard"
+
+msgid "PROGRAM_PAGE"
+msgstr "Onglet des Programmes"
+
+msgid "PLUG_PAGE"
+msgstr "Onglet des prises"
+
+msgid "WELCOME_PAGE"
+msgstr "Page principale"
+
+msgid "LOGS_PAGE"
+msgstr "Page des logs"
+
+msgid "CALENDAR_PAGE"
+msgstr "Onglet du calendrier"
+
+msgid "COST_PAGE"
+msgstr "Onglet des coûts"
+
+msgid "CONFIGURATION_PAGE"
+msgstr "Onglet de configuration"
+
+msgid "HISTORIC_EXPORT"
+msgstr "Export d'un programme"
+
+
 # For the footer:
 msgid "VERSION"
 msgstr "Version"
@@ -786,7 +861,6 @@ msgstr "Enregistrements d'hygrométrie vides pour certains de vos capteurs à la
 
 msgid "EMPTY_POWER_DATA"
 msgstr "Aucun enregistrement concernant la puissance consommée pour la date sélectionnée"
-
 
 msgid "ERROR_FORMAT_DATE_DAY_START"
 msgstr "Jour de départ: erreur dans le format de la date (AAAA-MM-JJ)"
@@ -911,6 +985,9 @@ msgstr "Programmes mis à jour avec succès"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Base des logs supprimée avec succès"
+
+msgid "VALID_RESET_CARD"
+msgstr "Carte formatée avec succée"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage"

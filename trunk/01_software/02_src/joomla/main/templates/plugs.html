@@ -30,7 +30,7 @@
 
 <br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm" id="plugForm">
-<p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('PLUG'); ?> 
+<p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('PLUG'); ?>: 
     <select name="selected_plug" onChange="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);" onLoad="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);">
     <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
                <option <?php if($selected_plug==$i) { echo 'selected';} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -48,7 +48,7 @@
       <tr>
          <td class="plug-marge-td"></td>
          <td class="plug-marge-title">
-              <?php echo __('NAME_PLUG'); ?>
+              <?php echo __('NAME_PLUG'); ?>:
          </td>
          <td class="plug-marge-field">
             <input type="text" size="15" maxlength="15" name="plug_name<?php echo $i; ?>" value="<?php echo $plug_name{$i}; ?>">
@@ -58,7 +58,7 @@
       <tr>
          <td></td>
          <td>
-            <?php echo __('TYPE_PLUG'); ?>
+            <?php echo __('TYPE_PLUG'); ?>:
          </td>
          <td>
             <select name="plug_type<?php echo $i; ?>" onChange="getTolerance(this.selectedIndex,<?php echo $i; ?>);" onLoad="getTolerance(this.selectedIndex,<?php echo $i; ?>);">
@@ -76,7 +76,7 @@
          <td></td>
          <td>
             <div id="tolerance_label<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"unknown")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
-               <?php echo __('TOLERANCE_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_TOLERANCE'); ?>" />
+               <?php echo __('TOLERANCE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_TOLERANCE'); ?>" />
             </div>
          </td>
          <td>
@@ -89,7 +89,7 @@
    <tr>
          <td></td>
          <td>
-            <?php echo __('ID_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_ID'); ?>" />
+            <?php echo __('ID_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_ID'); ?>" />
          </td>
          <td>
             <input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>" <?php if($i<=3) echo "disabled"; ?> onKeypress="return verifInt(event);">
@@ -99,7 +99,7 @@
      <tr>
          <td></td>
          <td>
-            <?php echo __('POWER_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER'); ?>" />
+            <?php echo __('POWER_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER'); ?>" />
          </td>
          <td>
             <input type="text" size="4" maxlength="4" name="plug_power<?php echo $i; ?>" value="<?php echo $plug_power{$i}; ?>" onKeypress="return verifInt(event);">W
@@ -129,7 +129,7 @@
 <table class="table_width">
    <tr>
       <td class="plug-regul"></td>
-      <td class="regul"><div id="label_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},'False')==0) { echo "display:none"; } ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_SENSO'); ?></div></td>
+      <td class="regul"><div id="label_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},'False')==0) { echo "display:none"; } ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_SENSO'); ?>:</div></td>
          <td><div id="div_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><div id="unknown_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"unknown")!=0)&&(strcmp($plug_type{$i},"lamp")!=0)) { echo "display:none"; } ?>">
 <select name="plug_senso<?php echo $i; ?>" onChange="getUnity(this.selectedIndex, <?php echo $i; ?>);" onLoad="getUnity(this.selectedIndex,<?php echo $i; ?>);">
            <?php 
@@ -155,7 +155,7 @@
 </tr>
    <tr>
       <td></td>
-      <td class="regul"><div id="label_regul_senss<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_SENSS'); ?></div></td>
+      <td class="regul"><div id="label_regul_senss<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_SENSS'); ?>:</div></td>
       <td><div id="div_regul_senss<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><select name="plug_senss<?php echo $i; ?>">
            <?php if(strcmp($plug_senss{$i},"-")==0) {
                      echo "<option value='+'>".__('REGUL_ABOVE')."</option>";
@@ -172,7 +172,7 @@
    </tr>
    <tr>
       <td></td>
-      <td class="regul"><div id="label_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_VALUE'); ?></div></td>
+      <td class="regul"><div id="label_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_VALUE'); ?>:</div></td>
       <td><div id="div_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_regul_value{$i}; ?>" name="plug_regul_value<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
     <td><?php if((isset($error[$i]['regul_value']))&&(!empty($error[$i]['regul_value']))) echo "<div class='error'>".$error[$i]['regul_value']."</div>"; ?></td>
    </tr>

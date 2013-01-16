@@ -58,7 +58,7 @@ $GLOBALS['FIRST_LOG_YEAR'] = '2012';
 $GLOBALS['UPDATE_FILE'] = 'http://cultibox.highproshop.fr/download/software/updates/update_list.txt';
 
 // Enable/Disable export and import module
-$GLOBALS['MODULE_IMPORT_EXPORT'] = false;
+$GLOBALS['MODULE_IMPORT_EXPORT'] = true;
 
 // List of value possible for log's research: 2, 3, 6 or 12 months
 $GLOBALS['LOG_SEARCH'] = array('2', '3', '6', '12');
