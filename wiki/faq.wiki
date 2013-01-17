@@ -2,12 +2,14 @@
 
 = Introduction =
 
-Add your content here.
+Retrouvez dans cette section la réponse à toutes les questions que vous vous posez.
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Peut-il y avoir un risque d'interférence avec mes autres appareils? =
+La Cultibox pilote les prises en utilisant la fréquence 433 MHz. Il existe un certain nombre d'appareils qui utilisent cette même fréquence. Par exemple: Télécommande de garage, interrupteur de lampe sans fils, chauffage à sonde déportée...
+Pour minimiser le risque d'interférence, il est possible d'indiquer la fréquence de rafraichissement des prises.
+  * Insérer votre carte SD dans l'ordinateur
+  * Lancer l'interface Cultibox
+  * Dans l'onglet configuration, sélectionner "Configuration de la Cultibox"
+  * Dans le champs "Fréquence de mise à jour des prises", sélectionner la valeur "5"
+  * Cliquer sur "Enregistrer la configuration"
+  * Insérer la carte SD dans votre Cultibox 
