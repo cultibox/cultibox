@@ -82,7 +82,7 @@ if((isset($pop_up))&&(!empty($pop_up))) {
 
 if((isset($update))&&(!empty($update))) {
    insert_configuration("CHECK_UPDATE",$update,$main_error);
-      $update_conf=true;
+   $update_conf=true;
 } else {
    $update = get_configuration("CHECK_UPDATE",$main_error);
 }

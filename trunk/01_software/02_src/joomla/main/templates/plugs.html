@@ -86,16 +86,6 @@
          </td>
          <td><?php if((isset($error[$i]['tolerance']))&&(!empty($error[$i]['tolerance']))) echo "<div class='error'>".$error[$i]['tolerance']."</div>"; ?></td>
       </tr>
-   <tr>
-         <td></td>
-         <td>
-            <?php echo __('ID_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_ID'); ?>" />
-         </td>
-         <td>
-            <input type="text" size="3" maxlength="3" name="plug_id<?php echo $i; ?>" value="<?php echo $plug_id{$i}; ?>" <?php if($i<=3) echo "disabled"; ?> onKeypress="return verifInt(event);">
-         </td>
-        <td><?php if((isset($error[$i]['plug_id']))&&(!empty($error[$i]['plug_id']))) echo "<div class='error'>".$error[$i]['plug_id']."</div>"; ?></td>
-      </tr>
      <tr>
          <td></td>
          <td>
@@ -183,15 +173,11 @@
 <div id="format_style<?php echo $i; ?>" style="display:none"><br /><hr /><br /></div>
    <?php } ?>
 <br /><br />
-   <table>
+<table class="table_width">
       <tr>
-         <td class="plug-marge-submit"></td>
-         <td class="plug-marge-submit">
-            <INPUT type="submit" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>">
-         </td>
-         <td class="plug-marge-submit">
-            <INPUT type="submit" name="reset" value="<?php echo __('RESET_PLUG_ID'); ?>">
-         </td>
+         <td></td>
+         <td class="program-valid-right"><input type="submit" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>"></td>
+         <td></td>
       </tr>
    </table>
 </form>

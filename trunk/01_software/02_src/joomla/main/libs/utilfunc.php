@@ -255,10 +255,11 @@ function get_power_value($file,&$array_line) {
 // {{{ clean_log_file()
 // ROLE copy an empty file to clean a log file
 // IN $file             file to clean
-// RET none
+// RET true if the copy is errorless, false else
 function clean_log_file($file) {
    $filetpl = 'main/templates/data/empty_file_64.tpl';
-   copy($filetpl, $file);
+   if(!copy($filetpl, $file)) return false;
+   return true;
 }
 //}}}
 
@@ -266,10 +267,11 @@ function clean_log_file($file) {
 // {{{ clean_big_file()
 // ROLE copy an empty file to clean a power file
 // IN $file             file to clean
-// RET none
+// RET true if the copy is errorless, false else
 function clean_big_file($file) {
    $filetpl = 'main/templates/data/empty_file_big.tpl';
-   copy($filetpl, $file);
+   if(!copy($filetpl, $file)) return false;
+   return true;
 }
 //}}}
 
@@ -534,14 +536,16 @@ function check_numeric_value($value="") {
 
 // {{{ get_sd_card()
 // ROLE get the sd card place to record configuration
-// IN   none 
+// IN  $hdd     list of hdd available which could be configured as cultibox SD card
 // RET false if nothing is found, the sd card place else
-function get_sd_card() {
+function get_sd_card(&$hdd="") {
         //For Linux
+        $ret=false;
         $dir="/media";
         $os=php_uname('s');
         switch($os) {
                 case 'Linux':
+                        /* 
                         $dir="/media";
                         if(is_dir($dir)) {
                                 $rep = opendir($dir);
@@ -553,6 +557,7 @@ function get_sd_card() {
                                         }
                                 }
                         }
+                        */
 
                         //In Ubuntu Quantal mounted folders are now in /media/$USER directory
                         $user=get_current_user();
@@ -562,8 +567,9 @@ function get_sd_card() {
                                 $rep = opendir($dir);
                                 while ($f = readdir($rep)) {
                                         if(is_dir("$dir/$f")) {
+                                                if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) $hdd[]="$dir/$f";
                                                 if(check_cultibox_card("$dir/$f")) {
-                                                        return "$dir/$f";
+                                                        $ret="$dir/$f";
                                                 }
                                         }
                                 }
@@ -577,8 +583,9 @@ function get_sd_card() {
                                 $rep = opendir($dir);
                                         while ($f = readdir($rep)) {
                                         if(is_dir("$dir/$f")) {
+                                                $hdd[]="$dir/$f";
                                                 if(check_cultibox_card("$dir/$f")) {
-                                                        return "$dir/$f";
+                                                        $ret="$dir/$f";
                                                 }
                                         }
                                 }
@@ -600,14 +607,15 @@ function get_sd_card() {
                         foreach($dir as $disque) {
                               $check=`dir $disque`;
                               if(strlen($check)>0) {
+                                 $hdd[]="$disque";
                                  if(check_cultibox_card("$disque")) {
-                                         return "$disque";
+                                         $ret="$disque";
                                  }
                               }
                         }
                         break;
         }
-        return false;
+        return $ret;
 }
 // }}}
 
@@ -784,6 +792,7 @@ function save_program_on_sd($sd_card,$program,&$out) {
    } else {
       return false;
    }
+   return true;
 }
 // }}}
 
@@ -859,7 +868,6 @@ function compare_program($data,$sd_card) {
 //      $out            error or warning messages
 // RET false is an error occured, true else
 function write_pluga($sd_card,&$out) {
-
    $file="$sd_card/pluga";
 
    if($f=fopen("$file","w+")) {
@@ -876,8 +884,12 @@ function write_pluga($sd_card,&$out) {
       foreach($pluga as $val) {
                 fputs($f,"$val"."\r\n");
       }
+   } else {
+        return false;
    }
+   
    fclose($f);
+   return true;
 }
 // }}}
 
@@ -898,8 +910,11 @@ function write_plugconf($data,$sd_card,&$out) {
 
       if($f=fopen("$file","w+")) {
          fputs($f,"$data[$i]"."\r\n");
+      } else { 
+         return false;
       }
       fclose($f);
+      return true;
    }
 }
 // }}}
@@ -917,7 +932,7 @@ function write_plugconf($data,$sd_card,&$out) {
 //   $alarm_senss        configure if the alarm have to be triggered above or under the value
 //   
 //   $out         error or warning message
-// RET none   
+// RET false if an error occured, true else  
 function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$alarm_senso="000T",$alarm_senss="000+",&$out) {
    $record=$record_frequency*60;
    $power=$power_frequency*60;
@@ -955,7 +970,9 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       fclose($f);
    } else {
       $out[]=__('ERROR_WRITE_SD');
+      return false;
    }
+   return true;
 }
 //}}}
 
@@ -1241,7 +1258,7 @@ function check_and_copy_firm($sd_card) {
 // ROLE check if the log.txt exists and if not, create it from empty_file64.tpl
 // IN  $sd_card     the sd card pathname 
 //     $out         error or warning message
-// RET none
+// RET false if an error occured, true else
 function check_and_copy_log($sd_card,&$out) {
     if(is_file("$sd_card/log.txt")) {
     } else {
@@ -1249,8 +1266,10 @@ function check_and_copy_log($sd_card,&$out) {
             copy("main/templates/data/empty_file_big.tpl", "$sd_card/log.txt");   
         }else {
             $out[]=__('ERROR_COPY_TPL');
+            return false;
         }
     }
+    return true;
 }
 // }}}
 
@@ -1511,10 +1530,15 @@ function check_format_time($time="") {
 // {{{ format_sd_card()
 // ROLE format log's file of a sd card by copying big_empty file
 // IN   $path       path to the sd card
+//      $out        error or warning messages
 // RET true 
-function format_sd_card($path="") {
-    if((is_dir("$path/logs"))&&(strcmp("$path","")!=0)) {
-            $path="$path/logs";
+function format_sd_card($path="",&$out="") {
+    $ret=true;
+    if((is_dir("$path"))&&(strcmp("$path","")!=0)) {
+            $logs="$path/logs";
+
+            if(!is_dir($logs)) mkdir("$logs");
+
             for($i=1;$i<=12;$i++) {
                 for($j=1;$j<=31;$j++) {     
                     if(strlen($i)<2) {
@@ -1529,14 +1553,67 @@ function format_sd_card($path="") {
                         $day="$j";
                     }
                    
-                    if(!is_dir("$path/$month")) {
-                        mkdir("$path/$month");
+                    if(!is_dir("$logs/$month")) {
+                        mkdir("$logs/$month");
                     }
-                    clean_log_file("$path/$month/$day");
+                    //Restore log and power files:
+                    if(!clean_log_file("$logs/$month/$day")) $ret=false;
+                    if(!clean_log_file("$logs/$month/pwr_$day")) $ret=false;
                 }
             }
-    }   
-    return true;
+
+            //Copiyng firmware:
+            if(is_file("tmp/emmeteur.hex")) {
+                        if(!copy("tmp/emmeteur.hex","$path/emmeteur.hex")) {
+                            $ret=false;
+                        }
+            } else {
+                $ret=false;
+            }
+
+
+            if(is_file("tmp/firm.hex")) {
+                        if(!copy("tmp/firm.hex","$path/firm.hex")) {
+                            $ret=false;
+                        }
+            } else {
+                    $ret=false;
+            }
+                            
+
+            //Creating pluga file:
+            if(!write_pluga($path,$out)) $ret=false;
+
+
+            //Creating conf file:
+            $update_frequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$out);
+            if("$update_frequency"=="-1") $update_frequency="0";
+            if(!write_sd_conf_file($path,get_configuration("RECORD_FREQUENCY",$out),"$update_frequency",get_configuration("POWER_FREQUENCY",$out),get_configuration("ALARM_ACTIV",$out),get_configuration("ALARM_VALUE",$out),get_configuration("ALARM_SENSO",$out),get_configuration("ALARM_SENSS",$out),$out)) $ret=false;
+
+
+            // Creating log.txt file:
+            if(!check_and_copy_log($path,$out)) $ret=false;
+
+
+            // Creating programs:
+            if(!copy("main/templates/data/empty_file.tpl","$path/plugv")) {
+                $ret=false;
+            }
+            $program=create_program_from_database($out);
+            if(!save_program_on_sd($path,$program,$out)) $ret=false;
+            
+
+            //Create plugXX files:
+            $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$out);
+            if(count($plugconf)>0) {
+                if(!write_plugconf($plugconf,$path,$out)) $ret=false;
+            }
+
+            return $ret;            
+    } else {
+        $out[]=__('ERROR_SD_CARD_PATH');
+        return false;
+    }
 }
 
 

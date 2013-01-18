@@ -74,13 +74,15 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 
 
 //Reset a program if selected by the user (button reset)
+/*
 if((isset($reset))&&(!empty($reset))) {
    reset_plug_identificator($main_error);
    $reset=true;
 } 
+*/
 
 for($nb=1;$nb<=$nb_plugs;$nb++) {
-   $id=getvar("plug_id${nb}");
+   //$id=getvar("plug_id${nb}");
    $name=getvar("plug_name${nb}");
    $type=getvar("plug_type${nb}");
    $tolerance=getvar("plug_tolerance{$nb}");
@@ -103,7 +105,8 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $old_senss=get_plug_conf("PLUG_SENSS",$nb,$main_error);
    $old_regul_value=get_plug_conf("PLUG_REGUL_VALUE",$nb,$main_error);
 
-   
+  
+   /* 
    if((!empty($id))&&(isset($id))&&(!$reset)) {
       if(strcmp("$old_id","$id")!=0) {
          if(check_numeric_value($id)) {
@@ -119,6 +122,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
          }
        }
    } 
+   */
 
    if((!empty($name))&&(isset($name))&&(!$reset)&&(strcmp("$old_name","$name")!=0)) {
       $name=mysql_escape_string($name);
@@ -144,10 +148,13 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
         }
    } 
 
+  
+   /* 
    $plug_id{$nb}=get_plug_conf("PLUG_ID",$nb,$main_error);
    if((empty($plug_id{$nb}))||(!isset($plug_id{$nb}))) {
             $plug_id{$nb}=$GLOBALS['PLUGA_DEFAULT'][$nb-1];
    }
+   */
 
 
    if((!empty($power))&&(isset($power))&&(!$reset)&&(strcmp("$old_power","$power")!=0)) {
@@ -252,7 +259,7 @@ if(($update_program)&&(count($error)==0)&&(!$count_err)) {
 // Write file plug01 plug02...
 if((isset($sd_card))&&(!empty($sd_card))) {
    // build conf plug array
-   $plugconf=create_plugconf_from_database(17,$main_error);
+   $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
    if(count($plugconf)>0) {
       write_plugconf($plugconf,$sd_card,$main_error);
    }
