@@ -348,13 +348,13 @@ msgid "SET_XY_ZOOM"
 msgstr "Enable zoom on Y-axis"
 
 msgid "MANAGE_RESET_SD_CARD"
-msgstr "Format logs file from your SD card"
+msgstr "Format a SD card to be compatible with the CultiBox"
 
 msgid "MANAGE_RESET_CARD"
 msgstr "Format your SD card"
 
 msgid "RESET_CONFIRM_SD_CARD"
-msgstr "Are you sur to format your logs file from your SD card? All your logs informations will be destroyed"
+msgstr "Do you really want to format your SD CARD? Logs and configurations files will be destroyed"
 
 msgid "VALID_RESET_SD"
 msgstr "SD card formated successfully"
@@ -376,9 +376,6 @@ msgstr "Plug tolerance"
 msgid "NAME_PLUG"
 msgstr "Plug's name"
 
-msgid "ID_PLUG"
-msgstr "Plug's identificator"
-
 msgid "PLUG_UNKNOWN"
 msgstr "Unknown"
 
@@ -399,9 +396,6 @@ msgstr "Heating"
 
 msgid "VALIDATION_PLUG_CONF"
 msgstr "Update plug configuration"
-
-msgid "RESET_PLUG_ID"
-msgstr "Reset plugs ID"
 
 msgid "POWER_PLUG"
 msgstr "Power (in Watt)"
@@ -927,9 +921,6 @@ msgstr "Value for the alarm must be more than 0 and less than 100"
 msgid "ERROR_REGUL_VALUE"
 msgstr "Value for the regulation must be more than 0 and less than 100"
 
-msgid "ERROR_PLUG_ID"
-msgstr "Plug identifier must be a numeric value"
-
 msgid "ERROR_POWER_VALUE"
 msgstr "Error in the power value: it must be more or equal to 0 Watt"
 
@@ -965,6 +956,13 @@ msgstr "Time start or stop of the full/empty hours is not configured properly. Y
 
 msgid "ERROR_COPY_TPL"
 msgstr "Can't copy empty_file_64.tpl file into your CultiBox SD card"
+
+msgid "ERROR_FORMAT_SD_CARD"
+msgstr "Error during formating your SD card"
+
+msgid "ERROR_SD_CARD_PATH"
+msgstr "Path to the SD card not found"
+
 
 # For the informations part:
 msgid "INFO_SD_CARD"
@@ -1061,9 +1059,6 @@ msgstr "La tolérance d'une prise permet de définir quelle doit être la préci
 
 msgid "TOOLTIP_PLUG_REGUL"
 msgstr "La régulation permet de définir des valeurs à partir desquelles l'équipement branché se mettre en route et s'éteindra. Si vous activez la régulation il faut faudra choisir: si vous voulez que l'équipement soit régulé en fonction de la température ou de l'hygrométrie, à partir de quel seuil la prise doit s'éteindre ou s'allumer et si elle doit se déclencher au dessus ou en dessous de ce seuil."
-
-msgid "TOOLTIP_PLUG_ID"
-msgstr "L'identificateur d'un prise permet à la CultiBox d'identifier de façon unique une prise. Cette valeur ne doit être changé qu'avec précaution."
 
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Cost of the kilo Watt for a hour. Fill this is necessary to compute how much cost your installation in the 'Cost' part"

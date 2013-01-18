@@ -45,7 +45,7 @@
 <?php if(count($historic)>0) { ?>
 <div class="div_code">
     <?php foreach($historic as $hist) { ?>
-      <?php echo "<b>".$hist['timestamp']."</b>&nbsp;&nbsp;&nbsp;<font class='".$hist['type']."'>".$hist['action']."</font>"; ?><br />
+      <?php echo "<b>".$hist['timestamp']."</b>&nbsp;&nbsp;&nbsp;<label class='".$hist['type']."'>".$hist['action']."</label>"; ?><br />
     <?php } ?>
 </div>
 <?php } else { ?>

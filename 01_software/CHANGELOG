@@ -8,6 +8,20 @@ Index: joomla/main/scripts/programs.php
 Index: joomla/main/templates/programs.html
 Index: joomla/main/locale/en_GB.utf8.po
 
+Index: joomla/main/templates/historic.html
+Index: joomla/main/templates/plugs.html
+Index: joomla/main/templates/logs.html
+Index: joomla/main/templates/calendar.html
+Index: joomla/main/locale/en_GB.utf8.po
+Index: joomla/main/locale/fr_FR.utf8.po
+Index: joomla/main/scripts/waiting.php
+Index: joomla/main/scripts/logs.php
+Index: joomla/main/scripts/configuration.php
+Index: joomla/main/scripts/plugs.php
+Index: joomla/main/libs/utilfunc.php
+Index: joomla/main/libs/css/cultibox.css
+
+
 Index: 01_install/01_src/02_sql/sql_update/update_sql_windows_from_1.0.1_to_1.1.2.sql
 Index: 02_src/joomla/main/libs/css/cultibox.css
 Index: 02_src/joomla/main/libs/config.php

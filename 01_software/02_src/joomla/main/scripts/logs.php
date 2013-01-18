@@ -58,6 +58,10 @@ $log_search=get_configuration("LOG_SEARCH",$main_error);
 $previous=getvar('previous');
 $next=getvar('next');
 $stats=get_configuration("STATISTICS",$main_error);
+$reset_log=getvar('reset_log');
+$reset_log_power=getvar('reset_log_power');
+$reset_sd_card=getvar('reset_sd_card');
+$selected_hdd=getvar('selected_hdd');
 
 
 //Setting some default values
@@ -69,49 +73,51 @@ if((!isset($log_search))||(empty($log_search))) {
 //Get values from the waiting page using SESSION variables
 if(isset($_SESSION['select_plug'])) {
    $select_plug=$_SESSION['select_plug'];
+} else {
+   $select_plug=getvar('select_plug');
 }
 
 
 if(isset($_SESSION['select_power'])) {
    $select_power=$_SESSION['select_power'];
+} else {
+   $select_power=getvar('select_power');
 }
 
 if(isset($_SESSION['select_sensor'])) {
    $select_sensor=$_SESSION['select_sensor'];
+} else {
+    $select_sensor=getvar('select_sensor');
 }
 
-if(isset($_SESSION['reset_log'])) {
-   $reset_log=$_SESSION['reset_log'];
-}
 
 if(isset($_SESSION['quick_load'])) {
    $quick_load=$_SESSION['quick_load'];
-}
-
-if(isset($_SESSION['reset_log_power'])) {
-   $reset_log_power=$_SESSION['reset_log_power'];
-}
-
-if(isset($_SESSION['reset_sd_card'])) {
-   $reset_sd_card=$_SESSION['reset_sd_card'];
-}
-
-
-if(isset($_SESSION['import_log'])) {
-   $import_log=$_SESSION['import_log'];
+} else {
+   $quick_load=getvar('quick_load');
 }
 
 if(isset($_SESSION['startday'])) {
    $startday=$_SESSION['startday'];
+} else {
+   $startday=getvar('startday');
 }
 
 if(isset($_SESSION['startmonth'])) {
-   $startmonth=$_SESSION['startmonth'];
+    $startmonth=$_SESSION['startmonth'];
+} else {
+    $startmonth=getvar('startmonth');
 }
 
 if(isset($_SESSION['startyear'])) {
-   $startyear=$_SESSION['startyear'];
+    $startyear=$_SESSION['startyear'];
+} else {
+    $startyear=getvar('startyear');
 }
+
+if(isset($_SESSION['import_log'])) {
+    $import_log=$_SESSION['import_log'];
+} 
 
 
 //Reset log from the reset button
@@ -135,16 +141,21 @@ if(!empty($reset_log_power)) {
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
-   $sd_card=get_sd_card();
+   $hdd_list=array();
+   $sd_card=get_sd_card($hdd_list);
 }
 
 
-//Reset power from the reset button
-if((!empty($reset_sd_card))&&(isset($sd_card))&&(!empty($sd_card))) {
-    if(format_sd_card($sd_card)) {
+//Create sd card from the format button
+if((!empty($reset_sd_card))&&(isset($reset_sd_card))&&(!empty($selected_hdd))&&(isset($selected_hdd))) {
+   if(format_sd_card($selected_hdd,$main_error)) {
         $main_info[]=__('VALID_RESET_SD');
         $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_RESET_SD'));
         set_historic_value(__('VALID_RESET_SD')." (".__('LOGS_PAGE').")","histo_info",$main_error);
+    } else {
+        $main_error[]=__('ERROR_FORMAT_SD_CARD');
+        $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_FORMAT_SD_CARD'));
+        set_historic_value(__('ERROR_FORMAT_SD_CARD')." (".__('LOGS_PAGE').")","histo_error",$main_error);
     }
 }
 
@@ -173,9 +184,6 @@ unset($_SESSION['startday']);
 unset($_SESSION['select_power']);
 unset($_SESSION['select_plug']);
 unset($_SESSION['select_sensor']);
-unset($_SESSION['reset_log']);
-unset($_SESSION['reset_log_power']);
-unset($_SESSION['reset_sd_card']);
 unset($_SESSION['quick_load']);
 unset($_SESSION['import_log']);
 unset($reset_log);
@@ -396,7 +404,7 @@ if("$type" == "days") {
         }
       } else {
         get_graph_array($temperature,"temperature/100","%%","1","True",$main_error);
-        $main_error[]=__('EMPTY_TEMPERATURE_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\".".__('TOOLTIP_FAKE_LOG_DATA').".\" /></li>";
+        $main_error[]=__('EMPTY_TEMPERATURE_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\".".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
 
         if(!empty($temperature)) {
           $data_temp=get_format_graph($temperature);
@@ -404,7 +412,7 @@ if("$type" == "days") {
         } 
 
         get_graph_array($humidity,"humidity/100","%%","1","True",$main_error);
-        $main_error[]=__('EMPTY_HUMIDITY_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\".".__('TOOLTIP_FAKE_LOG_DATA').".\" /></li>";
+        $main_error[]=__('EMPTY_HUMIDITY_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\".".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
 
         if(!empty($humidity)) {
             $fake_log=true;

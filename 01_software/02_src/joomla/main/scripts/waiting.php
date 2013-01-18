@@ -57,26 +57,6 @@ if(isset($_POST['select_sensor'])) {
       }
 }
 
-if(isset($_POST['reset_log'])) {
-      $_SESSION['reset_log']=$_POST['reset_log'];
-      if(!empty($_SESSION['reset_log'])) {
-        $quick_load=true;
-      }
-}
-
-if(isset($_POST['reset_log_power'])) {
-      $_SESSION['reset_log_power']=$_POST['reset_log_power'];
-      if(!empty($_SESSION['reset_log_power'])) {
-        $quick_load=true;
-      }
-}
-
-if(isset($_POST['reset_sd_card'])) {
-      $_SESSION['reset_sd_card']=$_POST['reset_sd_card'];
-      $quick_load=true;
-}
-
-
 if(isset($_POST['startyear'])) {
       $_SESSION['startyear']=$_POST['startyear'];
       if(!empty($_SESSION['startyear'])) {
@@ -90,12 +70,6 @@ if(isset($_POST['startmonth'])) {
         $quick_load=true;
       }
 }
-
-if(isset($_POST['import_log'])) {
-      $_SESSION['import_log']=$_POST['import_log'];
-      $quick_load=false;
-}
-
 
 if($quick_load) {
     $_SESSION['quick_load']="True";
