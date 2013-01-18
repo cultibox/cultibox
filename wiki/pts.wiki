@@ -1,4 +1,44 @@
 #summary Parametres
 
-A creer
+=Introduction=
 
+La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indique pour chaque exigence les critères d'acceptabilités
+
+=Cahier des charges=
+|| *Categorie* || *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Lien* ||
+|| environement || PTS_operating_temperature_°C || Température de fonctionnement || 0 || 25 || 60 || °C || 2 ||  ||  ||
+|| environement || PTS_operating_humidity_RH || Humidité de fonctionnement || 5 || 45 || 90 || %RH || 2 ||  ||  ||
+|| environement || PTS_operating_pressure_range_mbar || Pression de fonctionnement ||  || 1013 ||  || mBar || 0 ||  ||  ||
+|| environement || PTS_operating_shocks_g ||  ||  ||  || 30 || g || 1 ||  ||  ||
+|| environement || PTS_operating_vibrations_g ||  ||  ||  || 2 || g || 1 ||  ||  ||
+|| environement || PTS_storage_temperature_°C || Température de stockage || 0 || 25 || 60 || °C || 1 ||  ||  ||
+|| environement || PTS_storage_humidity_RH || Humidité de stockage || 5 || 45 || 95 || %RH || 1 ||  ||  ||
+|| environement || PTS_storage_drop_test_cm ||  ||  ||  || 100 || cm || 1 ||  ||  ||
+|| environement || PTS_EMC ||  ||  ||  ||  ||  || 3 ||  ||  ||
+|| electronic || PTS_electronic_input_voltage ||  || 4.5 || 5 || 5.5 || V || 2 ||  ||  ||
+|| electronic || PTS_electronic_input_current ||  ||  ||  || 0.5 || A || 2 ||  ||  ||
+|| electronic || PTS_electronic_precision_temperature_°C || Precision température || -1 || 0 || 1 || °C par rapport à la vrai valeur || 3 ||  ||  ||
+|| electronic || PTS_electronic_precision_humidity_RH || Precision Humidité || -3 || 0 || 3 || %RH par rapport à la vrai valeur || 3 ||  ||  ||
+|| electronic || PTS_electronic_battery_lifetime_days || Durée de vie non branchée || 100 ||  ||  || days || 3 ||  ||  ||
+|| electronic || PTS_electronic_rtc_precision_sec_days || Précision de l'horloge || -5 || 0 || 5 || s/jour || 3 ||  ||  ||
+|| electronic || PTS_electronic_nb_logs_logs || Nombre de log par jour || 1440 ||  ||  || logs/jour || 3 ||  ||  ||
+|| electronic || PTS_electronic_nb_sensor || Nombre de capteur de T/RH branchable || 0 || 1 || 4 || sensor || 3 ||  ||  ||
+|| electronic || PTS_electronic_nb_plug_plug || Nombre de prises différentes pilotable || 1 || 3 || 16 || prises || 3 ||  ||  ||
+|| electronic || PTS_electronic_emmetor_distance_m || Distance d'émission || 3 ||  ||  || m || 3 ||  ||  ||
+|| electronic || PTS_electronic_plug_one_reponse_time_s || Temps de réponse d'une prise ||  ||  || 5 || s || 3 ||  ||  ||
+|| electronic || PTS_electronic_regulation_temperature || Etre capable de reguler une prise / T ||  ||  ||  ||  || 3 ||  ||  ||
+|| electronic || PTS_electronic_regulation_humidite || Etre capable de reguler une prise / RH ||  ||  ||  ||  || 3 ||  ||  ||
+|| electronic || PTS_electronic_nb_state_plug_change_day || Nombre de changement pour l'ensemble des prises chaque jour || 250 ||  ||  || change ||  ||  ||  ||
+|| electronic || PTS_electronic_temperature_range || Plage de mesure de temperature  || 0 ||  || 60 || °C ||  ||  ||  ||
+|| electronic || PTS_electronic_humidity_range_RH || Plage de mesure d'humidité || 0 || || 100 || %RH ||  ||  ||  ||
+|| soft || PTS_soft_log_show || Affichage des logs ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_project_microcontoleur ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_project_electronic ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_project_mecanic ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_project_software ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_project_qualification ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_project_risk ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_project_hazard ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_users_manual ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_users_storage ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_users_general_caution ||  ||  ||  ||  ||  ||  ||  ||  ||
