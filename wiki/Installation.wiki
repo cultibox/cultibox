@@ -7,7 +7,7 @@ Quelques étapes suffisent pour se servir pleinement de la Cultibox.
   <ul>
     <li>Connectez la carte SD fournie dans l'ordinateur.</li>
     <li>Lancer le programme d'installation.</li>
-    <li>Votre ordinateur peut vous demander si vous accepter d'éxecuter les services mysql et appache. Autoriser l'execution de ces services.</li>
+    <li>Votre ordinateur peut vous demander si vous accepter d'exécuter les services mysql et appache. Autoriser l'exécution de ces services.</li>
     <li>Une fois installer, vous pouvez lancer le logiciel en cliquant sur "Démarrer" puis "Cultibox" puis sur l'icône "Cultibox".</li>
   </ul>
 
@@ -30,10 +30,10 @@ Le logiciel n'est pas encore disponible pour Linux
 
 =3. Installation=
   <ul>
-    <li>La Cultibox est prévue pour être installer à l'exterieur de l'environnement de culture. Derrière la Cultibox, un scratch autocollant est disponible. Installer la moitié du scratch sur un mur extérieur de votre espace de culture puis scratcher la Cultibox dessus.</li>
+    <li>La Cultibox est prévue pour être installer à l'extérieur de l'environnement de culture. Derrière la Cultibox, un scratch autocollant est disponible. Installer la moitié du scratch sur un mur extérieur de votre espace de culture puis scratcher la Cultibox dessus.</li>
     <li>Connecter la prise 1 entre votre lampe et la prise secteur.</li>
     <li>Installer les deux autres prise en fonction des choix que vous avez réalisé dans l'étape de configuration.</li>
-    <li>Installer le capteur dans l'expace de culture. Il ne doit pas être soumis à des projections d'eau. Connecter le capteur sur le port 1 de la cultibox.</li>
+    <li>Installer le capteur dans l'espace de culture. Il ne doit pas être soumis à des projections d'eau. Connecter le capteur sur le port 1 de la cultibox.</li>
     <li>Insérer la carte SD dans le port prévu à cette effet dans la Cultibox.</li>
     <li>Installer l'adaptateur secteur dans une prise électrique puis connecter le câble USB entre l'adaptateur secteur et la Cultibox.</li>
     <li>Oter le film plastique situé à coté du port USB. Cela permet à la pile de la cultibox d'entrer en fonction.</li>
