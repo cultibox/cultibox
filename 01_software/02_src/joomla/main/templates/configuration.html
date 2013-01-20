@@ -198,52 +198,6 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_COLOR_PROGRAM'); ?>:</td>
-      <td><select name="color_program">
-      <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
-         switch ($value) {
-            case 'blue':
-               if("${value}" == "${color_program}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_BLUE')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_BLUE')."</option>";    
-               }
-               break;
-            case 'red':
-               if("${value}" == "${color_program}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_RED')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_RED')."</option>";    
-               }
-            break;
-            case 'green':
-               if("${value}" == "${color_program}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_GREEN')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_GREEN')."</option>";    
-               }
-            break;
-            case 'black':
-               if("${value}" == "${color_program}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_BLACK')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
-               }
-            break;
-            case 'purple':
-               if("${value}" == "${color_program}") {
-                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
-               } else {
-                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
-               }
-               break;
-         }
-      }
-      ?></select></td>
-        <td></td>
-   </tr>
-   <tr>
-      <td class="conf-marge"></td>
       <td><?php echo __('CONFIGURE_POWER'); ?>:</td>
       <td><select name="color_power">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {

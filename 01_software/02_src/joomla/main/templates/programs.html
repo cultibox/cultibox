@@ -131,7 +131,7 @@ $(document).ready(function() {
             layout: 'vertical',
             verticalAlign: 'bottom',
             align: 'right',
-            y: -25,
+            y: -<?php echo ($GLOBALS['NB_MAX_PLUG']-$nb_plugs)*16+15; ?>,
             navigation: {
                 activeColor: '#3E576F',
                 animation: true,
@@ -168,6 +168,7 @@ $(document).ready(function() {
       yAxis: {
             min: 0,
             max: 100,
+            alternateGridColor: '#FDFFD5',
               labels: {
                      formatter: function() {
  if((this.value>=0)&&(this.value<=100)) {      

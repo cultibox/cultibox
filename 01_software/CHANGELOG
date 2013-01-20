@@ -1,135 +1,44 @@
 CultiBox (1.1.2) precise; urgency=low
-
+    + Ajout d'une variable de configuration permettant d'activer ou non l'envoi des statistiques (par défaut activé, à désactiver lors de la mise en prod)
+    + Changement de la gestion des messages et notament des messages d'erreut qui s'affichent à coté du champ concerné
+    + Suppression de la variable de configuration permettant de choisir la couleur des courbes des programmes dans les logs, la couleur utilisée est celle du programme en question
+    + Suppression d'une partie des variables de SESSION, on passe diectement les variables à la page concernée (pour le waiting-logs). Simplification du code
+    + Ajout des commentaires dans les pages scripts et templates
+    + Remise en forme des pages et des marges des tableaux
+    + Ajout d'un changement de couleur pour les axes des graphes highcharts (alternate color), à changer surement
+    + Ajout d'une fonction permettant de formatter une carte SD pour la rendre compatible cultibox
+    + Changement de l'affichage de la configuration des prises: une prise à la fois dynamiquement calculée ou toutes les prises d'un coup si selectionnée
+    + Suppression de la possibilité de changer le code d'identification d'une prise
+    + Changement de l'affichage des programmes comme pour les prises. Un programme affiché et configurable à la fois et possibilité d'afficher les autres programmes pour comparer
+    + Possibilité d'importer ou exporter les prises mise à ON par défaut
+    + Possibilité d'effacer l'ancien programme en même temps que l'on ajoute une action
+    + Réorganisation de la page des programmes
+    + Possibilité d'ajouter une action cyclique
+    + Début de codage pour la prochaine evolution permettant d'ajouter plusieurs programmes pour une prise: ajout des champs necessaires dans la base programs
+    + Ajout d'une page historique permettant de tracer les 100 dernières actions
+    + Pleins de correctifs de bugs...liste trop longue.
+    + Changement de la gestion des mises à jour: un seul binaire pour les MAJ et les nouvelles installations
+    + Nouveau fonctionnement du menu de configuration
+    + Corection bug sur le chargement des logs
+    + Modifications SQL:
 
 ALTER TABLE `cultibox`.`configuration` ADD `STATISTICS` VARCHAR( 5 ) NOT NULL DEFAULT 'True';
 
+CREATE TABLE IF NOT EXISTS `historic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `timestamp` varchar(25) NOT NULL,
+  `action` varchar(300) NOT NULL,
+  `type` VARCHAR( 15 ) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-Index: joomla/main/scripts/programs.php
-Index: joomla/main/templates/programs.html
-Index: joomla/main/locale/en_GB.utf8.po
+ALTER TABLE `programs` ADD `number` INT NOT NULL DEFAULT '1';
 
-Index: joomla/main/templates/historic.html
-Index: joomla/main/templates/plugs.html
-Index: joomla/main/templates/logs.html
-Index: joomla/main/templates/calendar.html
-Index: joomla/main/locale/en_GB.utf8.po
-Index: joomla/main/locale/fr_FR.utf8.po
-Index: joomla/main/scripts/waiting.php
-Index: joomla/main/scripts/logs.php
-Index: joomla/main/scripts/configuration.php
-Index: joomla/main/scripts/plugs.php
-Index: joomla/main/libs/utilfunc.php
-Index: joomla/main/libs/css/cultibox.css
+ALTER TABLE `programs` ADD `date_start` VARCHAR( 10 ) NOT NULL DEFAULT '0000-00-00',
+ADD `date_end` VARCHAR( 10 ) NOT NULL DEFAULT '0000-00-00';
 
+ALTER TABLE `configuration` DROP COLUMN `COLOR_PROGRAM_GRAPH`;
 
-Index: 01_install/01_src/02_sql/sql_update/update_sql_windows_from_1.0.1_to_1.1.2.sql
-Index: 02_src/joomla/main/libs/css/cultibox.css
-Index: 02_src/joomla/main/libs/config.php
-Index: 02_src/joomla/main/libs/js/cultibox-utils.js
-Index: 02_src/joomla/main/libs/utilfunc.php
-Index: 02_src/joomla/main/libs/db_common.php
-Index: 02_src/joomla/main/templates/historic.html
-Index: 02_src/joomla/main/templates/programs.html
-Index: 02_src/joomla/main/templates/plugs.html
-Index: 02_src/joomla/main/templates/welcome.html
-Index: 02_src/joomla/main/templates/logs.html
-Index: 02_src/joomla/main/templates/configuration.html
-Index: 02_src/joomla/main/templates/calendar.html
-Index: 02_src/joomla/main/locale/en_GB.utf8.po
-Index: 02_src/joomla/main/locale/fr_FR.utf8.po
-Index: 02_src/joomla/main/scripts/historic.php
-Index: 02_src/joomla/main/scripts/plugs.php
-Index: 02_src/joomla/main/scripts/programs.php
-Index: 02_src/joomla/main/scripts/welcome.php
-Index: 02_src/joomla/main/scripts/wizard.php
-Index: 02_src/joomla/main/scripts/waiting.php
-Index: 02_src/joomla/main/scripts/logs.php
-Index: 02_src/joomla/main/scripts/configuration.php
-Index: 02_src/joomla/main/scripts/cost.php
-Index: 02_src/joomla/main/scripts/calendar.php
-+Index: joomla/main/locale/fr_FR.utf8.po
-+Index: joomla/main/locale/en_GB.utf8.po
-+Index: joomla/main/scripts/plugs.php
-+Index: joomla/main/scripts/welcome.php
-+Index: joomla/main/scripts/waiting.php
-+Index: joomla/main/scripts/configuration.php
-+Index: joomla/main/scripts/cost.php
-+Index: joomla/main/scripts/calendar.php
-+Index: joomla/main/libs/css/cultibox.css
-+Index: joomla/main/libs/js/cultibox-utils.js
-+Index: joomla/main/libs/utilfunc.php
-+Index: joomla/main/libs/db_common.php
-+Index: joomla/main/templates/configuration.html
-+Index: joomla/main/templates/cost.html
-+Index: joomla/main/templates/calendar.html
-+Index: joomla/main/templates/programs.html
-+Index: joomla/main/templates/plugs.html
-+Index: joomla/main/templates/welcome.html
-+Index: joomla/main/templates/wizard.html
-+Index: joomla/main/templates/logs.html
-Index: 02_src/joomla/main/libs/js/cultibox-utils.js
-Index: 02_src/joomla/main/libs/utilfunc.php
-Index: 02_src/joomla/main/libs/db_common.php
-Index: 02_src/joomla/main/libs/css/cultibox.css
-Index: 02_src/joomla/main/templates/programs.html
-Index: 02_src/joomla/main/templates/plugs.html
-Index: 02_src/joomla/main/templates/wizard.html
-Index: 02_src/joomla/main/templates/logs.html
-Index: 02_src/joomla/main/templates/configuration.html
-Index: 02_src/joomla/main/locale/en_GB.utf8.po
-Index: 02_src/joomla/main/locale/fr_FR.utf8.po
-Index: 02_src/joomla/main/scripts/plugs.php
-Index: 02_src/joomla/main/scripts/welcome.php
-Index: 02_src/joomla/main/scripts/wizard.php
-Index: 02_src/joomla/main/scripts/waiting.php
-Index: 02_src/joomla/main/scripts/logs.php
-Index: 02_src/joomla/main/scripts/configuration.php
-Index: 02_src/joomla/main/scripts/cost.php
-Index: 02_src/joomla/main/scripts/calendar.php
-
-
-Index: joomla/main/locale/fr_FR.utf8.po
-Index: joomla/main/locale/en_GB.utf8.po
-Index: joomla/main/scripts/plugs.php
-Index: joomla/main/scripts/welcome.php
-Index: joomla/main/scripts/waiting.php
-Index: joomla/main/scripts/configuration.php
-Index: joomla/main/scripts/cost.php
-Index: joomla/main/scripts/calendar.php
-Index: joomla/main/libs/css/cultibox.css
-Index: joomla/main/libs/js/cultibox-utils.js
-Index: joomla/main/libs/utilfunc.php
-Index: joomla/main/libs/db_common.php
-Index: joomla/main/templates/configuration.html
-Index: joomla/main/templates/cost.html
-Index: joomla/main/templates/calendar.html
-Index: joomla/main/templates/programs.html
-Index: joomla/main/templates/plugs.html
-Index: joomla/main/templates/welcome.html
-Index: joomla/main/templates/wizard.html
-Index: joomla/main/templates/logs.html
-
-
-    + Nouveau fonctionnement du menu configuration
-        02_src/joomla/main/scripts/configuration.php
-        02_src/joomla/main/libs/js/cultibox-utils.js
-        02_src/joomla/main/templates/configuration.html
-        02_src/joomla/main/locale/en_GB.utf8.po
-        02_src/joomla/main/locale/fr_FR.utf8.po
-        02_src/joomla/templates/yoo_cloud/css/base.css
-
-    + Corection bug sur le chargement des logs
-        02_src/joomla/main/templates/logs.html
-        02_src/joomla/main/scripts/logs.php
-        02_src/joomla/main/libs/js/cultibox-utils.js
-
-    + Ajout de la possibilité de supprimer l'ancien programme quand on ajoute une action dans les programmes + possibilité de définir une action cyclique 
-        02_src/joomla/main/templates/programs.html
-        02_src/joomla/main/locale/en_GB.utf8.po
-        02_src/joomla/main/locale/fr_FR.utf8.po
-        02_src/joomla/main/scripts/programs.php
-        02_src/joomla/main/libs/utilfunc.php
-        02_src/joomla/main/libs/css/cultibox.css
 
 CultiBox (1.1.1) precise; urgency=low
    + Correction de l'afichage du formulaire des logs + correction de l'affichage des graphes de puissance + correction de la variable des graphes des couts 
