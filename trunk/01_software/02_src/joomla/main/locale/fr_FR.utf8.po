@@ -77,9 +77,6 @@ msgstr "Nombre de prises de votre système"
 msgid "CONFIGURE_PLUGS_FREQUENCY"
 msgstr "Fréquence de mise à jour de l'état des prises (en seconde)"
 
-msgid "CONFIGURE_COLOR_PROGRAM"
-msgstr "Couleur des courbes des programmes"
-
 msgid "CONFIGURE_POWER"
 msgstr "Couleur des courbes de puissance"
 
