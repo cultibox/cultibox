@@ -29,8 +29,8 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || electronic || PTS_electronic_regulation_temperature || Etre capable de reguler une prise / T ||  ||  ||  ||  || 3 ||  ||  ||
 || electronic || PTS_electronic_regulation_humidite || Etre capable de reguler une prise / RH ||  ||  ||  ||  || 3 ||  ||  ||
 || electronic || PTS_electronic_nb_state_plug_change_day || Nombre de changement pour l'ensemble des prises chaque jour || 250 ||  ||  || change ||  ||  ||  ||
-|| electronic || PTS_electronic_temperature_range || Plage de mesure de temperature  || 0 ||  || 60 || °C ||  ||  ||  ||
-|| electronic || PTS_electronic_humidity_range_RH || Plage de mesure d'humidité || 0 || || 100 || %RH ||  ||  ||  ||
+|| electronic || PTS_electronic_temperature_range || Plage de mesure de temperature  || 0 ||  || 60 || °C ||  || issue 337 ||  ||
+|| electronic || PTS_electronic_humidity_range_RH || Plage de mesure d'humidité || 0 || || 100 || %RH ||  || issue 338 ||  ||
 || soft || PTS_soft_log_show || Affichage des logs ||  ||  ||  ||  ||  ||  ||  ||
 || documentation || PTS_documentation_project_microcontoleur ||  ||  ||  ||  ||  ||  ||  ||  ||
 || documentation || PTS_documentation_project_electronic ||  ||  ||  ||  ||  ||  ||  ||  ||
