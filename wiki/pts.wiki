@@ -17,8 +17,8 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || environement || PTS_EMC ||  ||  ||  ||  ||  || 3 ||  ||  ||
 || electronic || PTS_electronic_input_voltage ||  || 4.5 || 5 || 5.5 || V || 2 ||  ||  ||
 || electronic || PTS_electronic_input_current ||  ||  ||  || 0.5 || A || 2 ||  ||  ||
-|| electronic || PTS_electronic_precision_temperature_°C || Precision température || -1 || 0 || 1 || °C par rapport à la vrai valeur || 3 || issue 334 ||  ||
-|| electronic || PTS_electronic_precision_humidity_RH || Precision Humidité || -3 || 0 || 3 || %RH par rapport à la vrai valeur || 3 || issue 335 ||  ||
+|| electronic || PTS_electronic_precision_temperature_°C || Precision température || -1.2 || 0 || 1.2 || °C par rapport à la vrai valeur || 3 || issue 334 ||  ||
+|| electronic || PTS_electronic_precision_humidity_RH || Precision Humidité || -5 || 0 || 5 || %RH par rapport à la vrai valeur || 3 || issue 335 ||  ||
 || electronic || PTS_electronic_battery_lifetime_days || Durée de vie non branchée || 100 ||  ||  || days || 3 ||  ||  ||
 || electronic || PTS_electronic_rtc_precision_sec_days || Précision de l'horloge || -5 || 0 || 5 || s/jour || 3 ||  ||  ||
 || electronic || PTS_electronic_nb_logs_logs || Nombre de log par jour || 1440 ||  ||  || logs/jour || 3 ||  ||  ||
