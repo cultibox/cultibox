@@ -1609,6 +1609,13 @@ function format_sd_card($path="",&$out="") {
                 if(!write_plugconf($plugconf,$path,$out)) $ret=false;
             }
 
+        
+            //Copying cultibox icon:
+            if(!copy("tmp/cultibox.ico","$path/cultibox.ico")) {
+                $ret=false;
+            }
+
+
             return $ret;            
     } else {
         $out[]=__('ERROR_SD_CARD_PATH');

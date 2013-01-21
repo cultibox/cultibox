@@ -194,7 +194,6 @@ $(function () {
          chart: {
             backgroundColor: '#F7F7F9',
             borderWidth: 3,
-            alignTicks: false,
             renderTo: 'container',
             zoomType: 'x',
             spacingRight: 20,
@@ -243,8 +242,9 @@ $(function () {
                min: -0.5,
                max: <?php echo "$hygro_axis"; ?>,
                startOnTick: false,
-               showFirstLabel: false,
+               showFirstLabel: true,
                alternateGridColor: '#FDFFD5',
+               tickInterval: <?php echo $hygro_axis/4; ?>,
                labels: {
                   formatter: function() {
                      if(this.value<=100) return this.value;
@@ -260,8 +260,9 @@ $(function () {
                min: 0,
                max: <?php echo "$temp_axis"; ?>,
                startOnTick: false,
-               showFirstLabel: false,
+               showFirstLabel: true,
                opposite: true,
+               tickInterval: <?php echo $temp_axis/4; ?>,
                labels: {
                   formatter: function() {
                      if(this.value<=100) return this.value;
