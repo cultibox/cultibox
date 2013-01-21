@@ -177,6 +177,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 }
 
 
+
 //Cleaning SESSION variables useless right now:
 unset($_SESSION['startyear']);
 unset($_SESSION['startmonth']);
@@ -199,6 +200,10 @@ if((!isset($startday))||(empty($startday))) {
 }
 $startday=str_replace(' ','',"$startday");
 
+if((!isset($select_sensor))||(empty($select_sensor))) {
+    $select_sensor=1;
+}
+
 
 if((!isset($startmonth))||(empty($startmonth))) {
    $startmonth=date('m');
@@ -215,7 +220,8 @@ if((!isset($type))||(empty($type))){
 $log = array();
 $power=array();
 $load_log=false;
-if((isset($sd_card))&&(!empty($sd_card))&&(!isset($quick_load))) {
+
+if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
    // Workaround to avoid timeout (60s)
    // Search only on two previous months
 
@@ -237,6 +243,7 @@ if((isset($sd_card))&&(!empty($sd_card))&&(!isset($quick_load))) {
    } else {
         $ListMonthSearch[]=date('m'); 
    }
+
 
    // Foreach months present in the array search logs and power
    foreach ($ListMonthSearch as $month) {       
@@ -291,6 +298,8 @@ if((isset($sd_card))&&(!empty($sd_card))&&(!isset($quick_load))) {
         }
    }
 }
+
+
 
 if($load_log) {
    if((isset($import_log))&&(!empty($import_log))) {
@@ -354,9 +363,9 @@ if("$type" == "days") {
       $stmonth=substr($startday, 5, 2)-1;
       $stday=substr($startday, 8, 2);
      
-
       get_graph_array($check_tmp,"temperature/100","%%","all","False",$main_error);
       get_graph_array($check_hum,"humidity/100","%%","all","False",$main_error);
+
 
       if((count($check_tmp)>0)||((count($check_hum)>0))||(!empty($datap))||(!empty($data))) {
         if(strcmp("$select_sensor","all")!=0) {
@@ -462,10 +471,12 @@ if("$type" == "days") {
    } 
 }
 
+
+
 $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
 $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$main_error);
 $color_power=get_configuration("COLOR_POWER_GRAPH",$main_error);
-$color_program=get_configuration("COLOR_PROGRAM_GRAPH",$main_error);
+
 
 $sd_card=get_sd_card();
 if((!empty($sd_card))&&(isset($sd_card))) {
@@ -483,6 +494,8 @@ if(strcmp("$update","True")==0) {
         }
       }
 }
+
+
 
 
 // The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True'
@@ -549,6 +562,8 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
         insert_informations("log",$informations["log"]);
     }
 }
+
+
 
 
 
