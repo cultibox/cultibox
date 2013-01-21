@@ -31,11 +31,10 @@ USE `cultibox`;
 CREATE TABLE IF NOT EXISTS `configuration` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `CHECK_UPDATE` varchar(5) NOT NULL DEFAULT 'False',
-  `VERSION` varchar(30) NOT NULL DEFAULT '1.1.1',
+  `VERSION` varchar(30) NOT NULL DEFAULT '1.1.2',
   `COLOR_HUMIDITY_GRAPH` varchar(30) NOT NULL DEFAULT 'blue',
   `COLOR_TEMPERATURE_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
   `COLOR_POWER_GRAPH` varchar(30) NOT NULL DEFAULT 'black',
-  `COLOR_PROGRAM_GRAPH` varchar(30) NOT NULL DEFAULT 'green',
   `COLOR_COST_GRAPH` varchar(30) NOT NULL DEFAULT 'purple',
   `RECORD_FREQUENCY` int(11) NOT NULL DEFAULT '5',
   `POWER_FREQUENCY` int(11) NOT NULL DEFAULT '5',
@@ -57,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `STOP_TIME_HC` varchar(5) NOT NULL DEFAULT '06:30',
   `COST_TYPE` varchar(20) NOT NULL DEFAULT 'standard',
   `LOG_SEARCH` int(11) NOT NULL DEFAULT '2',
+  `STATISTICS` varchar(5) NOT NULL DEFAULT 'True',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -64,10 +64,48 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 -- Dumping data for table `configuration`
 --
 
-INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_PROGRAM_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `LOG_POWER_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `LOG_SEARCH`) VALUES
-(1, 'False', '1.1.1', 'blue', 'red', 'black', 'green', 'purple', 5, 1, 3, -1, 'fr_FR', 50, 100, 1000, 'True', '0000', '50.0', '000H', '000+', 0.1249, 0.1353, 0.0926, '22:30', '06:30', 'standard', 2);
+INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `LOG_TEMP_AXIS`, `LOG_HYGRO_AXIS`, `LOG_POWER_AXIS`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `LOG_SEARCH`, `STATISTICS`) VALUES
+(1, 'False', '1.1.2', 'blue', 'red', 'black', 'purple', 5, 1, 3, -1, 'en_GB', 60, 100, 1000, 'True', '0000', '15', '000H', '000+', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 2, 'True');
 
 -- --------------------------------------------------------
+
+--
+-- Table structure for table `historic`
+--
+
+CREATE TABLE IF NOT EXISTS `historic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `timestamp` varchar(25) NOT NULL,
+  `action` varchar(300) NOT NULL,
+  `type` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `informations`
+--
+
+CREATE TABLE IF NOT EXISTS `informations` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `cbx_id` int(5) NOT NULL DEFAULT '0',
+  `firm_version` varchar(7) NOT NULL DEFAULT '000.000',
+  `emeteur_version` varchar(7) NOT NULL DEFAULT '000.000',
+  `sensor_version` varchar(7) NOT NULL DEFAULT '000.000',
+  `last_reboot` varchar(14) NOT NULL DEFAULT '00000000000000',
+  `nb_reboot` int(11) NOT NULL DEFAULT '0',
+  `id_computer` varchar(50) NOT NULL DEFAULT 'NULL',
+  `log` mediumtext,
+  PRIMARY KEY (`ID`),
+  KEY `ID` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version` ,`emeteur_version` ,`sensor_version` ,`last_reboot` ,`nb_reboot` ,`id_computer`,`log`) VALUES (NULL , '0', '0', '000.000', '000.000', '00000000000000', '0', 'NULL','');
+
+
+-- --------------------------------------------------------
+
 
 --
 -- Table structure for table `jqcalendar`
@@ -170,15 +208,13 @@ CREATE TABLE IF NOT EXISTS `programs` (
   `plug_id` int(11) NOT NULL,
   `time_start` varchar(6) NOT NULL,
   `time_stop` varchar(6) NOT NULL,
-  `value` decimal(3,1) NOT NULL
+  `value` decimal(3,1) NOT NULL,
+  `number` int(11) NOT NULL DEFAULT '1',
+  `date_start` varchar(10) NOT NULL DEFAULT '0000-00-00',
+  `date_end` varchar(10) NOT NULL DEFAULT '0000-00-00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-
-
-CREATE TABLE IF NOT EXISTS `informations` ( `ID` int(11) NOT NULL AUTO_INCREMENT, `cbx_id` int(5) NOT NULL DEFAULT '0', `firm_version` int(5) NOT NULL DEFAULT '0', `emeteur_version` varchar(7) NOT NULL DEFAULT '000.000', `sensor_version` varchar(7) NOT NULL DEFAULT '000.000', `last_reboot` varchar(14) NOT NULL DEFAULT '00000000000000', `nb_reboot` int(11) NOT NULL DEFAULT '0', `id_computer` varchar(50) NOT NULL DEFAULT 'NULL', `log` mediumtext, PRIMARY KEY (`ID`), KEY `ID` (`ID`)) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
-
-INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version` ,`emeteur_version` ,`sensor_version` ,`last_reboot` ,`nb_reboot` ,`id_computer`,`log`) VALUES (NULL , '0', '0', '000.000', '000.000', '00000000000000', '0', 'NULL','');
