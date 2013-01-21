@@ -20,6 +20,7 @@ CultiBox (1.1.2) precise; urgency=low
     + Changement de la gestion des mises à jour: un seul binaire pour les MAJ et les nouvelles installations
     + Nouveau fonctionnement du menu de configuration
     + Corection bug sur le chargement des logs
+    + Correction du champ "firm_version" qui doit être un VARCHAR et non un INT
     + Modifications SQL:
 
 ALTER TABLE `cultibox`.`configuration` ADD `STATISTICS` VARCHAR( 5 ) NOT NULL DEFAULT 'True';
@@ -38,6 +39,8 @@ ALTER TABLE `programs` ADD `date_start` VARCHAR( 10 ) NOT NULL DEFAULT '0000-00-
 ADD `date_end` VARCHAR( 10 ) NOT NULL DEFAULT '0000-00-00';
 
 ALTER TABLE `configuration` DROP COLUMN `COLOR_PROGRAM_GRAPH`;
+
+ALTER TABLE `informations` CHANGE `firm_version` `firm_version` VARCHAR( 7 ) NOT NULL DEFAULT '000.000';
 
 
 CultiBox (1.1.1) precise; urgency=low
