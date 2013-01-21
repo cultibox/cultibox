@@ -1,3 +1,7 @@
+/* For version before 1.1.2: */
+ALTER TABLE `cultibox`.`logs` ADD `sensor_nb` INT NOT NULL DEFAULT '1';
+
+/* For version 1.1.2: */
 ALTER TABLE `cultibox`.`configuration` ADD `STATISTICS` VARCHAR( 5 ) NOT NULL DEFAULT 'True';
 
 CREATE TABLE IF NOT EXISTS `historic` (
@@ -16,4 +20,3 @@ ADD `date_end` VARCHAR( 10 ) NOT NULL DEFAULT '0000-00-00';
 ALTER TABLE `configuration` DROP COLUMN `COLOR_PROGRAM_GRAPH`;
 
 ALTER TABLE `informations` CHANGE `firm_version` `firm_version` VARCHAR( 7 ) NOT NULL DEFAULT '000.000';
-
