@@ -489,11 +489,14 @@ EOF;
 
       if(count($res_power)==$GLOBALS['NB_MAX_PLUG']) {
             $nb_plugs=get_configuration("NB_PLUGS",$error);
+            $err=false;
             for($i=0;$i<$nb_plugs;$i++) {
                 if(strcmp($res_power[$i]['PLUG_POWER'],"0")==0) {
-                    $out[]=__('ERROR_POWER_PRICE_NULL');
+                    $err=true;
                 }
             }
+
+            if($err) $out[]=__('ERROR_POWER_PRICE_NULL'); 
 
             $timestamp=$res[0]['timestamp'];
             $save=$res[0];
@@ -700,7 +703,6 @@ function get_real_power($data="",$type="",&$out)  {
     if(strcmp($type,"standard")==0) {
         $price=get_configuration("COST_PRICE",$out);
         if($price==0) {
-            $out[]=__('ERROR_COST_PRICE_NULL');
             return 0;
         }
         $price=($price/60)/1000;
