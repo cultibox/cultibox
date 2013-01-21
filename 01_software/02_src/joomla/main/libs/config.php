@@ -43,7 +43,7 @@ $GLOBALS['DEBUG_TRACE'] = false;
 $GLOBALS['PLUGA_DEFAULT'] = array('004', '247', '222', '219', '215', '207', '252', '250', '246', '238', '187', '183', '189', '125', '123','119');
 
 // List of value possible for temperature and hygrometry axis:
-$GLOBALS['LIST_MAX_AXIS'] = array('20', '40', '50', '80','100');
+$GLOBALS['LIST_MAX_AXIS'] = array('20', '40', '60', '80','100');
 
 // List of value possible for power graphic axis:
 $GLOBALS['LIST_MAX_POWER'] = array('100', '200', '500', '1000','2000');
