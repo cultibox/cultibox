@@ -22,3 +22,6 @@ If not errorlevel 0 del ./backup/programs.sql
 xampp\mysql\bin\mysqldump.exe --no-create-db --no-create-info -u root -h localhost --port=3891 -pcultibox cultibox informations > ./backup/informations.sql
 If not errorlevel 0 del ./backup/informartions.sql
 
+xampp\mysql\bin\mysqldump.exe --no-create-db --no-create-info -u root -h localhost --port=3891 -pcultibox cultibox historic > ./backup/historic.sql
+If not errorlevel 0 del ./backup/historic.sql
+
