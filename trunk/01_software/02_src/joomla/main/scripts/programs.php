@@ -445,7 +445,7 @@ $informations["log"]="";
 if((!empty($sd_card))&&(isset($sd_card))) {
     find_informations("$sd_card/log.txt",$informations);
     if(strcmp($informations["log"],"")!=0) {
-        clean_big_file("$sd_card/log.txt");    
+        clean_log_file("$sd_card/log.txt");    
     }
 }
 
