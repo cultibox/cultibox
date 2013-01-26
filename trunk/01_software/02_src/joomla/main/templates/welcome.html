@@ -2,7 +2,12 @@
    <script>
       alert('<?php echo "$pop_up_message"; ?>');
    </script>
+<?php } else if((isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
+   <script>
+      alert('<?php echo "$pop_up_error_message"; ?>');
+   </script>
 <?php } ?>
+
 
 <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <div class="info">

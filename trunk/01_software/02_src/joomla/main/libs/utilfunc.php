@@ -1632,4 +1632,53 @@ function format_sd_card($path="",&$out="") {
 
 
 
+// {{{ get_browser_infos()
+// ROLE get client browser informations
+// RET array containing browser datas
+function get_browser_infos() {
+ $browser = array(
+    'version'   => '0.0.0',
+    'majorver'  => 0,
+    'minorver'  => 0,
+    'build'     => 0,
+    'name'      => 'unknown',
+    'useragent' => ''
+  );
+
+  $browsers = array(
+    'firefox', 'msie', 'opera', 'chrome', 'safari', 'mozilla', 'seamonkey', 'konqueror', 'netscape',
+    'gecko', 'navigator', 'mosaic', 'lynx', 'amaya', 'omniweb', 'avant', 'camino', 'flock', 'aol'
+  );
+
+  if (isset($_SERVER['HTTP_USER_AGENT'])) {
+    $browser['useragent'] = $_SERVER['HTTP_USER_AGENT'];
+    $user_agent = strtolower($browser['useragent']);
+    foreach($browsers as $_browser) {
+      if (preg_match("/($_browser)[\/ ]?([0-9.]*)/", $user_agent, $match)) {
+        $browser['name'] = $match[1];
+        $browser['version'] = $match[2];
+        @list($browser['majorver'], $browser['minorver'], $browser['build']) = explode('.', $browser['version']);
+        break;
+      }
+    }
+  }
+  return $browser;
+}
+// }}}
+
+
+// {{{ check_browser_compat()
+// ROLE check if the client browser in compatible with the cultibox
+// RET true if compat, false else
+function check_browser_compat($tab) {
+    if(count($tab)>0) {
+        if((strcmp($tab['name'],"firefox")==0)||(strcmp($tab['name'],"msie")==0)||(strcmp($tab['name'],"chrome")==0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return true;
+}
+
 ?>

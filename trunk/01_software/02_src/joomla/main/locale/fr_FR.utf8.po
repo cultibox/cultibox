@@ -961,6 +961,9 @@ msgstr "Erreur lors du formatage de votre carte SD"
 msgid "ERROR_SD_CARD_PATH"
 msgstr "Chemin d'accès à la carte SD introuvable"
 
+msgid "ERROR_COMPAT_BROWSER"
+msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez surement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accéssibles"
+
 # For the informations part:
 msgid "INFO_SD_CARD"
 msgstr "Une carte SD compatible cultibox est branchée"
