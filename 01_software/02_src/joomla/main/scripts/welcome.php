@@ -32,8 +32,17 @@ $wizard=true;
 $nb_plugs = get_configuration("NB_PLUGS",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $pop_up_message="";
+$pop_up_error_message="";
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
+$browser=array();
 
+
+$browser=get_browser_infos();
+if(count($browser)>0) {
+        if(!check_browser_compat($browser)) {
+            $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_COMPAT_BROWSER'));
+        }
+}
 
 //If programs configured by user is empty, display the wizard interface link
 if(isset($nb_plugs)&&(!empty($nb_plugs))) {

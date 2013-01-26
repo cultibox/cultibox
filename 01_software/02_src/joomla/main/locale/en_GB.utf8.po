@@ -960,6 +960,9 @@ msgstr "Error during formating your SD card"
 msgid "ERROR_SD_CARD_PATH"
 msgstr "Path to the SD card not found"
 
+msgid "ERROR_COMPAT_BROWSER"
+msgstr "Your internet browser doesn't seem to be compatible with the Cultibox software. You may use the software but some features may not be available"
+
 
 # For the informations part:
 msgid "INFO_SD_CARD"
