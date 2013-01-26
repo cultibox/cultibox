@@ -143,6 +143,7 @@ if(!empty($reset_log_power)) {
 if((!isset($sd_card))||(empty($sd_card))) {
    $hdd_list=array();
    $sd_card=get_sd_card($hdd_list);
+   sort($hdd_list);
 }
 
 
@@ -287,7 +288,7 @@ if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
 
                if(!empty($power)) {
                   if(db_update_power($power,$main_error)) {
-                     clean_big_file("$sd_card/logs/$mmonth/pwr_$dday");
+                     clean_log_file("$sd_card/logs/$mmonth/pwr_$dday");
                   } 
                   unset($power) ;
                   $power = array();
@@ -366,8 +367,8 @@ if("$type" == "days") {
       get_graph_array($check_tmp,"temperature/100","%%","all","False",$main_error);
       get_graph_array($check_hum,"humidity/100","%%","all","False",$main_error);
 
-
       if((count($check_tmp)>0)||((count($check_hum)>0))||(!empty($datap))||(!empty($data))) {
+
         if(strcmp("$select_sensor","all")!=0) {
             get_graph_array($temperature,"temperature/100",$startday,$select_sensor,"False",$main_error);
             get_graph_array($humidity,"humidity/100",$startday,$select_sensor,"False",$main_error);
@@ -514,7 +515,7 @@ $informations["log"]="";
 if((!empty($sd_card))&&(isset($sd_card))) {
     find_informations("$sd_card/log.txt",$informations);
     if(strcmp($informations["log"],"")!=0) {
-        clean_big_file("$sd_card/log.txt");
+        clean_log_file("$sd_card/log.txt");
     }
 }
 

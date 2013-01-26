@@ -257,18 +257,6 @@ function get_power_value($file,&$array_line) {
 // IN $file             file to clean
 // RET true if the copy is errorless, false else
 function clean_log_file($file) {
-   $filetpl = 'main/templates/data/empty_file_64.tpl';
-   if(!copy($filetpl, $file)) return false;
-   return true;
-}
-//}}}
-
-
-// {{{ clean_big_file()
-// ROLE copy an empty file to clean a power file
-// IN $file             file to clean
-// RET true if the copy is errorless, false else
-function clean_big_file($file) {
    $filetpl = 'main/templates/data/empty_file_big.tpl';
    if(!copy($filetpl, $file)) return false;
    return true;
@@ -1556,9 +1544,25 @@ function format_sd_card($path="",&$out="") {
                     if(!is_dir("$logs/$month")) {
                         mkdir("$logs/$month");
                     }
+
                     //Restore log and power files:
-                    if(!clean_log_file("$logs/$month/$day")) $ret=false;
-                    if(!clean_log_file("$logs/$month/pwr_$day")) $ret=false;
+                    if(is_file("$logs/$month/$day")) {
+                        if(filesize("$logs/$month/$day")!=filesize("main/templates/data/empty_file_big.tpl")) {
+                            if(!clean_log_file("$logs/$month/$day")) $ret=false;
+                        }
+                    } else {
+                        if(!clean_log_file("$logs/$month/$day")) $ret=false;
+                    }
+
+
+                    if(is_file("$logs/$month/pwr_$day")) {
+                        if(filesize("$logs/$month/pwr_$day")!=filesize("main/templates/data/empty_file_big.tpl")) {
+                            if(!clean_log_file("$logs/$month/pwr_$day")) $ret=false;
+                        }
+                    } else {
+                        if(!clean_log_file("$logs/$month/pwr_$day")) $ret=false;
+                    }
+
                 }
             }
 
