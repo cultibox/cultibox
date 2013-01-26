@@ -71,6 +71,22 @@ if(isset($_POST['startmonth'])) {
       }
 }
 
+
+if(isset($_POST['reset_sd_card'])) {
+    $_SESSION['reset_sd_card']=$_POST['reset_sd_card'];
+    if(!empty($_SESSION['reset_sd_card'])) {
+        $quick_load=false;
+    }
+}
+
+if(isset($_POST['selected_hdd'])) {
+    $_SESSION['selected_hdd']=$_POST['selected_hdd'];
+    if(!empty($_SESSION['selected_hdd'])) {
+        $quick_load=false;
+    }
+}
+
+
 if($quick_load) {
     $_SESSION['quick_load']="True";
 }
