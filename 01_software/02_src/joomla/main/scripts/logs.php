@@ -60,8 +60,6 @@ $next=getvar('next');
 $stats=get_configuration("STATISTICS",$main_error);
 $reset_log=getvar('reset_log');
 $reset_log_power=getvar('reset_log_power');
-$reset_sd_card=getvar('reset_sd_card');
-$selected_hdd=getvar('selected_hdd');
 
 
 //Setting some default values
@@ -119,6 +117,13 @@ if(isset($_SESSION['import_log'])) {
     $import_log=$_SESSION['import_log'];
 } 
 
+if(isset($_SESSION['reset_sd_card'])) {
+    $reset_sd_card=$_SESSION['reset_sd_card'];
+}
+
+if(isset($_SESSION['selected_hdd'])) {
+    $selected_hdd=$_SESSION['selected_hdd'];
+}
 
 //Reset log from the reset button
 if(!empty($reset_log)) { 
@@ -188,6 +193,8 @@ unset($_SESSION['select_plug']);
 unset($_SESSION['select_sensor']);
 unset($_SESSION['quick_load']);
 unset($_SESSION['import_log']);
+unset($_SESSION['reset_sd_card']);
+unset($_SESSION['selected_hdd']);
 unset($reset_log);
 unset($reset_log_power);
 
@@ -222,7 +229,7 @@ $log = array();
 $power=array();
 $load_log=false;
 
-if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
+if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))&&(empty($reset_sd_card))) {
    // Workaround to avoid timeout (60s)
    // Search only on two previous months
 
