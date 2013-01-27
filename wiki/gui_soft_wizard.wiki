@@ -1,0 +1,7 @@
+#summary template
+
+= Introduction =
+
+= Description de l'interface graphique =
+
+= Bug =

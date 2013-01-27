@@ -1,7 +1,6 @@
   * [utilisation Documentation utilisateur]
     * [Installation Installation]
     * [pilotage Pilotage des prises]
-  * [gui_soft Interface Graphique Logiciel]
   * [gui_box Interface Graphique Cultibox]
     * [gui_box_start Informations au démarrage]  
     * [gui_box_main Informations courantes]

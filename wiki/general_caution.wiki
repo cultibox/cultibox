@@ -1,0 +1,21 @@
+#summary Introduction à l'utilisation de la Cultibox
+
+= Introduction =
+Ce chapitre présente les différentes rêgle de sécurité.
+
+= Sécurité électrique =
+  les risques liés à une mauvaise installation électrique peuvent être catastrophique: incendie, electrocution...
+  Nous vous rappelons quelques règle de sécurité:
+
+ * Votre installation doit être réalisé par un électricien certifié.</li>
+ * Avant toute manipulation sur votre installation, assurez vous que le courant est coupé. Seule une coupure sur le tableau de répartition vous assure qu'aucune tension n'est présente dnas les fils. Si vous utilisez une lampe HPS ou MH, il y a un risque d'avoir un résidu de tension même après avoir couper le courant. Seul un voltmètre en position "alternatif" vous permet de vérifier l'absence de courant.</li>
+ * Une prise de terre est indispensable. Elle permet l'écoulement des courants de fuite. Si elle n'est pas présente, c'est vous qui réalisez cette liaison. Vous risquez la mort.</li>
+ * Une prise de terre doit être associée à un disjoncteur différentiel (de préférence 30mA) qui détecte les fuites de courant qui s’écoulent vers la terre et met automatiquement hors tension le circuit concerné. Ce disjoncteur assure donc une protection différentielle pour  tous les circuits de l’installation, en coupant l’alimentation lorsque le circuit ou l’équipement devient dangereux.</li>
+ * Tout risque d’un contact direct avec des éléments sous tension doit absolument être évité.
+Conducteurs dénudés, bornes électriques accessibles et autres appareillages détériorés doivent être remplacés immédiatement. Pour éviter leur dégradation, les fils électriques doivent être protégés de tout type de chocs par des conduits, des moulures ou des plinthes en matière isolante (c’est à dire qui ne conduisent pas l’électricité).</li>
+ * Aucune partie conductrice ne doit pouvoir être mise en contact avec de l'eau. Assurer vous que les prises sont suffisament en hauteur et hors de portée de l'eau. Pour être le plus en sécuroité possible, on peut considérer l'espace de culture comme une baignoire: la norme NFC 15-100, impose que aucune prise ne soit présente à moins de 2,60m de la baignoire.</li>
+ * Chaque prise vendue avec la Cultibox est faite pour ne piloter qu'un seul élément. Ne pas mettre de multiprise dessus.</li>
+
+  Ces règles de sécurités sont tirés de différentes sources d'informations, notamment: promotelec.
+  
+   
