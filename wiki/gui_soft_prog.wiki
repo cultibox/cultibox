@@ -1,7 +1,53 @@
-#summary template
+#summary Programmation des prises
 
 = Introduction =
+Chacune des prises possède un programme journalier. 
+Pour configurer le programme d'une prise:
+ * Connecter la carte SD sur l'ordinateur
+ * Ouvrir le logiciel Cultibox
+ * Cliquer sur l'onglet Programme
+ * Sélectionner dans le menu déroulant le numéro de la prise que vous souhaitez modifier
 
-= Description de l'interface graphique =
+= Type de programmation =
+Chaque prise peut être configuré de différente façon.
 
-= Bug =
+== Programmation standard ==
+Les deux états standards d'une prise sont: éteint ou allumé. Pour changer l'état d'une prise:
+ * Sélectionner une heure de début
+ * Sélectionner une heure de fin
+ * Sélectionner l'état de la prise
+ * Cliquer sur appliquer
+
+SI vous sélectionnez une heure de de fin qui est avant l'heure de début, le programme appliquera l'état choisi de la façon suivante:
+ * De heure de début à minuit
+ * De minuit à heure de fin
+Cette fonction est pratique pour allumer une lampe de 20h à 4h.
+
+== Programmation cyclique ==
+La programmation cyclique permet de réaliser les mêmes actions que la programmation standard. L'intérêt de ce mode de programmation est de répéter une même action plusieurs fois d'affiler.
+Pour appliquer une programmation cyclique
+ * Sélectionner une heure de début
+ * Sélectionner une heure de fin
+ * Sélectionner l'état de la prise
+ * Sélectionner le temps entre deux actions
+ * Cliquer sur appliquer
+
+== Régulation ==
+La régulation permet de changer l'état d'une prise en fonction d'une condition climatique.
+
+Pour qu'une prise puisse être utilisée en régulation il faut qu'elle soit configurée. Pour ce faire:
+ * Ouvrir l'onglet "Prise"
+ * Dans la liste déroulante, sélectionner la prise
+ * Définir le type de prise :
+   * Ventilateur: lorsque la prise est allumée, la température baisse
+   * Chauffage: lorsque la prise est allumée, la température augmente
+   * Humidificateur: lorsque la prise est allumée, l'humidité augmente
+   * Déshumidificateur: lorsque la prise est allumée, l'humidité baisse
+   * Les autres types (Lampe, inconnu) ne permettent pas de faire de régulation
+
+Le type de la prise détermine le fonctionnement de la régulation. Par exemple, sI vous choisissez "Chauffage", la prise sera allumée lorsque la température sera inférieur à la consigne. SI vous choisissez "humidificateur", la prise sera allumée lorsque l'humidité sera inférieur à la consigne.
+
+== Régulation secondaire ==
+ La régulation secondaire a un fonctionnement plus particulier. Une fois activée son fonctionnement est continu.
+La régulation secondaire permet de d'éteindre ou de mettre en route une prise quand une condition est atteinte.
+Par exemple: Un ventilateur est branchée sur une prise. La régulation classique permet d'allumer ou d'éteindre la prise en fonction de la température. La régulation secondaire permet de forcer l'allumage ou l'extinction de la prise en fonction de l'humidité. Cela permet, par exemple, de forcer la mise en route du ventilateur si l'humidité devient trop forte.
