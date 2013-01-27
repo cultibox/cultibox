@@ -1,7 +1,7 @@
 #summary Introduction à l'utilisation de la Cultibox
 
 = Introduction =
-Ce chapitre présente les différentes rêgle de sécurité.
+Ce chapitre présente les différentes rêgles de sécurité.
 
 = Sécurité électrique =
   les risques liés à une mauvaise installation électrique peuvent être catastrophique: incendie, electrocution...
@@ -16,6 +16,7 @@ Conducteurs dénudés, bornes électriques accessibles et autres appareillages d
  * Aucune partie conductrice ne doit pouvoir être mise en contact avec de l'eau. Assurer vous que les prises sont suffisament en hauteur et hors de portée de l'eau. Pour être le plus en sécuroité possible, on peut considérer l'espace de culture comme une baignoire: la norme NFC 15-100, impose que aucune prise ne soit présente à moins de 2,60m de la baignoire.
  * Chaque prise vendue avec la Cultibox est faite pour ne piloter qu'un seul élément. Ne pas mettre de multiprise dessus.
 
-  Ces règles de sécurités sont tirés de différentes sources d'informations, notamment: promotelec.
-  
-   
+= Cultibox =
+== Le boitier principal ==
+Le boitier principal doit être installé en dehors de l'espace de culture.
+

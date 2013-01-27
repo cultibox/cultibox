@@ -8,5 +8,4 @@ Le menu principal permet d'acceder rapidement aux différentes fonctions de la C
  * [gui_box_menu_param Paramètres]
 
 = Description de l'interface graphique =
-
-= Bug =
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_menu.png

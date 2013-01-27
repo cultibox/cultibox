@@ -2,7 +2,7 @@
 
 = Introduction =
 Bienvenue dans la documentantaion de la Cultibox. 
-Cette documentation est en constante amélioration. Si certains points ne sont pas très claire n'hésitez pas à nous le dire.
+Cette documentation est en constante amélioration. Si certains points ne sont pas très clair n'hésitez pas à nous le dire.
 
 Sommaire de la documentation:
    * [general_caution Regle de sécurité]
