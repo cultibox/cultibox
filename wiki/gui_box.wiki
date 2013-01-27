@@ -1,13 +1,18 @@
-#summary One-sentence summary of this page.
+#summary Sommaire de l'aide de l'interface graphique de la Cultibox
 
 = Introduction =
 
-Add your content here.
+Cette section de l'aide décrit le fonctionnement de l'interface graphique affichée sur l'écran de la Cultibox.
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Sommaire =
+ * [gui_box_start Informations au démarrage]  
+ * [gui_box_main Informations courantes]
+ * [gui_box_menu Menu principal]
+ * [gui_box_menu_logs Logs]
+ * [gui_box_menu_programme Programme]
+ * [gui_box_menu_calendar Calendrier]
+ * [gui_box_menu_param Paramètres]
+   * [gui_box_menu_param_culti Cultibox] 
+   * [gui_box_menu_param_emettor Émetteur]
+   * [gui_box_menu_param_sensor Capteur] 
+   
