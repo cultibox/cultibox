@@ -1,5 +1,25 @@
 #summary Parametres
 
-A creer
+= Introduction =
+Au démarrage, l'interface graphique de la Cultibox affiche quelques informations.
+
+= Description de l'interface graphique =
+L'écran suivant s'affiche au démarrage:
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_main.png
+
+On retrouve sur cet écran:
+ * En haut à droite: l'heure actuelle en alternace avec le jour actuel
+ * En haut à gauche : Un symbole qui indique la présence ou non de la carte SD
+ * Au centre: la température actuelle en alternace avec l'humisité actuelle
+
+Deux actions sont possible à partir de cet écran:
+ * Clique sur le bouton central: Affichage du [gui_box_menu Menu principal]
+ * Bouton de droite ou de gauche : défilement des informations
+
+En cliquant à droite ou a gauche, on fait défilier différentes informations:
+ 1. Température actuelle
+ 2. Humidité actuelle
+ 3. Température Min / Max de la journée (Remis à zéro à minuit issue 217)
+ 4. Humidité Min / Max de la journée (Remis à zéro à minuit issue 217)
+ 5. Evenement du jour

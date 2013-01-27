@@ -4,9 +4,6 @@
 
 Le menu programme permet de visualiser le programme définit pour chaque prise.
 
-= Bug =
-Si le nombre de changement d'état des prises est important, alors tous les changements ne sont pas affichée dans le menu programme. issue 158
-
 = Description de l'interface graphique =
 Lorsque l'utilisateur entre dans le menu, la fenêtre suivante s'affiche:
 
@@ -23,4 +20,7 @@ Une fois entré dans le menu programme, quatre actions sont possible:
  * Bouton haut: Visualisation du programme suivant
  * bouton bas: Visualisation du programme précédent
 
+
+= Bug =
+Si le nombre de changement d'état des prises est important, alors tous les changements ne sont pas affichée dans le menu programme. issue 158
     
