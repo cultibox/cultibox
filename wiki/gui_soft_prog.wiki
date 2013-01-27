@@ -51,3 +51,8 @@ Le type de la prise détermine le fonctionnement de la régulation. Par exemple,
  La régulation secondaire a un fonctionnement plus particulier. Une fois activée son fonctionnement est continu.
 La régulation secondaire permet de d'éteindre ou de mettre en route une prise quand une condition est atteinte.
 Par exemple: Un ventilateur est branchée sur une prise. La régulation classique permet d'allumer ou d'éteindre la prise en fonction de la température. La régulation secondaire permet de forcer l'allumage ou l'extinction de la prise en fonction de l'humidité. Cela permet, par exemple, de forcer la mise en route du ventilateur si l'humidité devient trop forte.
+
+Pour configurer la régulation secondaire:
+ * Dans l'onglet programme
+ * Sélectionner la prise
+ * Choisir les critères
