@@ -1,4 +1,4 @@
-Introduction
+[Introduction Introduction]
    * [general_caution Regle de sécurité]
    * [install Mise en place]   
    * [gui_soft_wizard Assistant de programmation]
