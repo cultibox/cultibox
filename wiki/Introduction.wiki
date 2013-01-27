@@ -1,13 +1,14 @@
 #summary Introduction à l'utilisation de la Cultibox
 
 = Introduction =
+Bienvenue dans la documentantaion de la Cultibox. 
+Cette documentation est en constante amélioration. Si certains points ne sont pas très claire n'hésitez pas à nous le dire.
 
-Add your content here.
+Sommaire de la documentation:
+ * Guide rapide d'installation
+ * L'interface graphique du logiciel
+ * L'interface graphique de la Cultibox 
+ * Le hardware
+   * Prises
+   * Capteur     
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages

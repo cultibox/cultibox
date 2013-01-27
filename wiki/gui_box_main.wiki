@@ -1,4 +1,4 @@
-#summary Parametres
+#summary Menu de départ
 
 = Introduction =
 Au démarrage, l'interface graphique de la Cultibox affiche quelques informations.
@@ -17,9 +17,13 @@ Deux actions sont possible à partir de cet écran:
  * Clique sur le bouton central: Affichage du [gui_box_menu Menu principal]
  * Bouton de droite ou de gauche : défilement des informations
 
-En cliquant à droite ou a gauche, on fait défilier différentes informations:
- 1. Température actuelle
- 2. Humidité actuelle
- 3. Température Min / Max de la journée (Remis à zéro à minuit issue 217)
- 4. Humidité Min / Max de la journée (Remis à zéro à minuit issue 217)
- 5. Evenement du jour
+En cliquant à droite ou a gauche, on fait défiler différentes informations:
+ # Température actuelle
+ # Humidité actuelle
+ # Température Min / Max de la journée (Remis à zéro à minuit issue 217)
+ # Humidité Min / Max de la journée (Remis à zéro à minuit issue 217)
+ # Evenement du jour
+
+ = Bug =
+Il n'est actuellement pas possible de définir à quelle heure le min et le max de la journée doivent être remis à zéro. issue 217
+    

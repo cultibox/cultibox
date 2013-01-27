@@ -1,4 +1,8 @@
-#summary Parametres
+#summary Menu Calendrier
 
-A creer
+= Introduction =
+Le menu calendrier permet de voir les différents éléments entrés dans le calendrier.
 
+= Description de l'interface graphique =
+
+= Bug =

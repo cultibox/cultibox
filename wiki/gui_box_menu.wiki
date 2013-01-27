@@ -1,7 +1,12 @@
-#summary Parametres
+#summary Menu principal
 
-A creer
+= Introduction =
+Le menu principal permet d'acceder rapidement aux différentes fonctions de la Cultibox
+ * [gui_box_menu_logs Logs]
+ * [gui_box_menu_programme Programme]
+ * [gui_box_menu_calendar Calendrier]
+ * [gui_box_menu_param Paramètres]
 
+= Description de l'interface graphique =
 
-
-qsdfq
+= Bug =

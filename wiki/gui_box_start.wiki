@@ -1,4 +1,8 @@
-#summary Parametres
+#summary Démarrage
 
-A creer
+= Introduction =
+Lors du démarrage, la Cultibox réalise une série d'opération qui peuvent prendre jusqu'à une minute.
 
+= Description de l'interface graphique =
+
+= Bug =
