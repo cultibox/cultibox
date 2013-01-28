@@ -23,8 +23,8 @@
             * [gui_box_menu_param_emettor Émetteur]
             * [gui_box_menu_param_sensor Capteur]    
    * Le hardware
-   * Prises
-   * Capteur
+      * Prises
+      * Capteur
    * [faq FAQ]       
    * [pts Cahier des charges]      
   
