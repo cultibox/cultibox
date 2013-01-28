@@ -239,7 +239,6 @@ if(!empty($apply)&&(isset($apply))) {
     } else {
             if((strcmp($regul_program,"on")!=0)&&(strcmp($regul_program,"off")!=0)) {
                 if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
-                    echo "ddddd: $value_program";
                     $check=check_format_values_program($value_program,"temp");
                 } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"deshumidifier")==0)) {
                     $check=check_format_values_program($value_program,"humi");
