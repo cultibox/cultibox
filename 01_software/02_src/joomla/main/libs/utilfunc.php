@@ -954,7 +954,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       fputs($f,"ALARM_VALUE:$alarm_value\r\n");
       fputs($f,"ALARM_SENSO:$alarm_senso\r\n");
       fputs($f,"ALARM_SENSS:$alarm_senss\r\n");
-      fputs($f,"RTC_OFFSET_:1127\r\n");
+      fputs($f,"RTC_OFFSET_:0000\r\n");
       fclose($f);
    } else {
       $out[]=__('ERROR_WRITE_SD');
