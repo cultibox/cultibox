@@ -1497,7 +1497,7 @@ EOF;
             if(strcmp($data['PLUG_REGUL'],"False")==0) {
                   $sec="SEC:N+0000";
             } else {
-                  $sec="SEC:".$data['PLUG_SENSS'].$data['PLUG_SENSO'];
+                  $sec="SEC:".$data['PLUG_SENSO'].$data['PLUG_SENSS'];
                   $val=$data['PLUG_REGUL_VALUE']*10;
                   while(strlen($val)<3) {
                      $val="0$val";
