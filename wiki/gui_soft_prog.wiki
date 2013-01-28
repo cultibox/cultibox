@@ -36,8 +36,11 @@ Pour appliquer une programmation cyclique
  * Cliquer sur Valider
 
 Par exemple, les parametres suivants:
+
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_3.png
+
 Donne le programme suivant:
+
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_4.png
 
 Astuce:
