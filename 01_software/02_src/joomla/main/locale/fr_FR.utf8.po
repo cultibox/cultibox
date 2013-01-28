@@ -348,10 +348,10 @@ msgid "MANAGE_RESET_SD_CARD"
 msgstr "Formater une carte SD pour la rendre compatible CultiBox"
 
 msgid "MANAGE_RESET_CARD"
-msgstr "Formatter la carte"
+msgstr "Formater la carte"
 
 msgid "RESET_CONFIRM_SD_CARD"
-msgstr "Êtes vous sur de vouloir formatter votre carte SD? Tous vos fichiers de logs et de configuration seront perdus."
+msgstr "Êtes vous sur de vouloir formater votre carte SD? Tous vos fichiers de logs et de configuration seront perdus."
 
 msgid "VALID_RESET_SD"
 msgstr "Carte SD formatée avec succès"

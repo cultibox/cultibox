@@ -1188,7 +1188,7 @@ function check_regul_value($value="0") {
 
 
 // {{{ check_and_copy_firm()
-// ROLE check if firmwares (firm.hex,emmeteur.hex) has to be copied and do the copy into the sd card
+// ROLE check if firmwares (firm.hex,emetteur.hex) has to be copied and do the copy into the sd card
 // IN  $sd_card     the sd card pathname 
 // RET none
 function check_and_copy_firm($sd_card) {
@@ -1196,7 +1196,7 @@ function check_and_copy_firm($sd_card) {
    $current_firm="";
 
    $firm_to_test[]="firm.hex";
-   $firm_to_test[]="emmeteur.hex";
+   $firm_to_test[]="emetteur.hex";
 
 
    foreach($firm_to_test as $firm) { 
@@ -1567,8 +1567,8 @@ function format_sd_card($path="",&$out="") {
             }
 
             //Copiyng firmware:
-            if(is_file("tmp/emmeteur.hex")) {
-                        if(!copy("tmp/emmeteur.hex","$path/emmeteur.hex")) {
+            if(is_file("tmp/emetteur.hex")) {
+                        if(!copy("tmp/emetteur.hex","$path/emetteur.hex")) {
                             $ret=false;
                         }
             } else {
