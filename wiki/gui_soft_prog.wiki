@@ -13,10 +13,12 @@ Chaque prise peut être configuré de différente façon.
 
 == Programmation standard ==
 Les deux états standards d'une prise sont: éteint ou allumé. Pour changer l'état d'une prise:
- * Sélectionner une heure de début
+ * Sélectionner une heure de départ
  * Sélectionner une heure de fin
  * Sélectionner l'état de la prise
- * Cliquer sur appliquer
+ * Cliquer sur Valider
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_2.png
 
 SI vous sélectionnez une heure de de fin qui est avant l'heure de début, le programme appliquera l'état choisi de la façon suivante:
  * De heure de début à minuit
@@ -24,13 +26,23 @@ SI vous sélectionnez une heure de de fin qui est avant l'heure de début, le pr
 Cette fonction est pratique pour allumer une lampe de 20h à 4h.
 
 == Programmation cyclique ==
-La programmation cyclique permet de réaliser les mêmes actions que la programmation standard. L'intérêt de ce mode de programmation est de répéter une même action plusieurs fois d'affiler.
+La programmation cyclique permet de réaliser les mêmes actions que la programmation standard. L'intérêt de ce mode de programmation est de répéter une même action plusieurs fois.
+L'action commence à l'heure de départ, dure le temps entre heure de fin et heure de départ et fini à minuit.
 Pour appliquer une programmation cyclique
- * Sélectionner une heure de début
+ * Sélectionner une heure de départ
  * Sélectionner une heure de fin
  * Sélectionner l'état de la prise
- * Sélectionner le temps entre deux actions
- * Cliquer sur appliquer
+ * Sélectionner le temps entre deux actions (Répéter toutes les)
+ * Cliquer sur Valider
+
+Par exemple, les parametres suivants:
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_3.png
+Donne le programme suivant:
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_4.png
+
+Astuce:
+ *  Si vous avez besoin que l'action répétée se finisse avant minuit: Valider l'action répétée puis appliquer une programmation standard sur la période ou vous ne désirez pas d'action répétée.
+
 
 == Régulation ==
 La régulation permet de changer l'état d'une prise en fonction d'une condition climatique.
@@ -47,6 +59,8 @@ Pour qu'une prise puisse être utilisée en régulation il faut qu'elle soit con
 
 Le type de la prise détermine le fonctionnement de la régulation. Par exemple, sI vous choisissez "Chauffage", la prise sera allumée lorsque la température sera inférieur à la consigne. SI vous choisissez "humidificateur", la prise sera allumée lorsque l'humidité sera inférieur à la consigne.
 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.png
+
 == Régulation secondaire ==
  La régulation secondaire a un fonctionnement plus particulier. Une fois activée son fonctionnement est continu.
 La régulation secondaire permet de d'éteindre ou de mettre en route une prise quand une condition est atteinte.
@@ -56,3 +70,6 @@ Pour configurer la régulation secondaire:
  * Dans l'onglet programme
  * Sélectionner la prise
  * Choisir les critères
+
+= Bug =
+ * issue 155 Impossible d'utiliser la régulation secondaire
