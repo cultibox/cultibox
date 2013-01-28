@@ -55,6 +55,7 @@ $reset_program=getvar("reset_old_program");
 $regul_program=getvar("regul_program");
 $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error);
 $cyclic=getvar("cyclic");
+$value_program=getvar('value_program');
 
 if(isset($cyclic)&&(!empty($cyclic))) {
     $repeat_time=getvar("repeat_time");
@@ -65,6 +66,7 @@ if(isset($cyclic)&&(!empty($cyclic))) {
         $cyclic_ch="";
     }
 }
+
 
 
 if(empty($apply)||(!isset($apply))) {
@@ -231,12 +233,13 @@ if(!empty($apply)&&(isset($apply))) {
     if("$regul_program"=="on") {
             $value_program="99.9";
             $check=true;
-        } else if("$regul_program"=="off") {
+    } else if("$regul_program"=="off") {
             $value_program="0";
             $check=true;
-        } else {
+    } else {
             if((strcmp($regul_program,"on")!=0)&&(strcmp($regul_program,"off")!=0)) {
                 if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
+                    echo "ddddd: $value_program";
                     $check=check_format_values_program($value_program,"temp");
                 } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"deshumidifier")==0)) {
                     $check=check_format_values_program($value_program,"humi");
