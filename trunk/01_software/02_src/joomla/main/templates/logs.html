@@ -719,7 +719,7 @@ $(function () {
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
-    <td class="log-manage-title"><?php echo __('IMPORT_LOG_TITLE')." ".$log_search." ".__('IMPORT_LAST_MONTH'); ?></td>
+    <td class="log-manage-title"><?php echo __('IMPORT_LOG_TITLE')." ".$log_search." ".__('IMPORT_LAST_MONTH'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_LOAD_LOG'); ?>" /></td>
     <td class="log-manage-field"><input type="submit" id="import_log" name="import_log" value="<?php echo __('IMPORT_LOG'); ?>" <?php if((!isset($sd_card))||(empty($sd_card))) echo "disabled"; ?>
 ></td>
     <td></td>
@@ -741,7 +741,7 @@ $(function () {
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
-    <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE'); ?></td>
+    <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RESET_LOG'); ?>" /></td>
     <td class="log-manage-field"><INPUT type="submit" id="reset_log" name="reset_log" value="<?php echo __('MANAGE_RESET'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')"></td>
     <td></td>
 </tr>
@@ -763,7 +763,7 @@ $(function () {
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
-    <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE_POWER'); ?></td>
+    <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE_POWER'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RESET_LOG'); ?>" /></td>
     <td class="log-manage-field"><input type="submit" id="reset_log_power" name="reset_log_power" value="<?php echo __('MANAGE_RESET'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')"></td>
     <td></td>
 </tr>
@@ -785,7 +785,7 @@ $(function () {
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
-    <td class="log-manage-title"><?php echo __('MANAGE_RESET_SD_CARD'); ?></td>
+    <td class="log-manage-title"><?php echo __('MANAGE_RESET_SD_CARD'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_FORMAT_SD'); ?>" /></td>
     <td class="log-manage-field"><?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?><select name="selected_hdd"><?php  foreach($hdd_list as $hdd) { ?><option value="<?php echo "$hdd"; ?>"><?php echo "$hdd"; ?></option><?php } ?></select><?php  } ?><input type="submit" id="reset_sd_card" name="reset_sd_card" value="<?php echo __('MANAGE_RESET_CARD'); ?>" <?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?>onclick="return DeleteForm('<?php echo __('RESET_CONFIRM_SD_CARD','javascript'); ?>')" <?php } else { echo "disabled='True'"; } ?>></td>
     <td></td>
 </tr>
@@ -800,3 +800,4 @@ $(function () {
 <input type="hidden" name="startday" value="<?php echo "$startday"; ?>">
 <?php } ?>
 </form>
+<br />
