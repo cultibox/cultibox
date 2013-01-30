@@ -586,7 +586,7 @@ function get_sd_card(&$hdd="") {
                   $dir=Array();
                   foreach($vol as $value) {
                      // repérer les deux derniers segments du nom de l'hôte
-                     preg_match('/[C-Z]:/', $value,$matches);
+                     preg_match('/[D-Z]:/', $value,$matches);
                      foreach($matches as $val) {
                         $dir[]=$val;
                      }
@@ -902,8 +902,8 @@ function write_plugconf($data,$sd_card,&$out) {
          return false;
       }
       fclose($f);
-      return true;
    }
+   return true;
 }
 // }}}
 
@@ -1197,6 +1197,7 @@ function check_and_copy_firm($sd_card) {
 
    $firm_to_test[]="firm.hex";
    $firm_to_test[]="emetteur.hex";
+   $firm_to_test[]="sht.hex";
 
 
    foreach($firm_to_test as $firm) { 
@@ -1220,10 +1221,7 @@ function check_and_copy_firm($sd_card) {
             fclose($handle);
         }
 
-        if((isset($new_firm))&&(!empty($new_firm))) {
-            if((!isset($current_firm))||(empty($current_firm))) {
-                copy($new_file, $current_file);
-            } else {
+        if((isset($new_firm))&&(!empty($new_firm))&&(isset($current_firm))&&(!empty($current_firm))) {
                 $current_firm=trim("$current_firm");
                 $new_firm=trim("$new_firm");
 
@@ -1235,8 +1233,15 @@ function check_and_copy_firm($sd_card) {
                         copy($new_file, $current_file);
                     }
                 }
-           }
+        } elseif((!is_file("$current_file"))&&(is_file("$new_file"))) {
+                copy($new_file, $current_file);
         }
+
+        unset($new_file);
+        unset($current_file);
+        unset($handle);
+        unset($current_firm);
+        unset($new_firm); 
     }
 }
 // }}}
@@ -1567,23 +1572,7 @@ function format_sd_card($path="",&$out="") {
             }
 
             //Copiyng firmware:
-            if(is_file("tmp/emetteur.hex")) {
-                        if(!copy("tmp/emetteur.hex","$path/emetteur.hex")) {
-                            $ret=false;
-                        }
-            } else {
-                $ret=false;
-            }
-
-
-            if(is_file("tmp/firm.hex")) {
-                        if(!copy("tmp/firm.hex","$path/firm.hex")) {
-                            $ret=false;
-                        }
-            } else {
-                    $ret=false;
-            }
-                            
+            check_and_copy_firm($path);
 
             //Creating pluga file:
             if(!write_pluga($path,$out)) $ret=false;
@@ -1605,7 +1594,7 @@ function format_sd_card($path="",&$out="") {
             }
             $program=create_program_from_database($out);
             if(!save_program_on_sd($path,$program,$out)) $ret=false;
-            
+
 
             //Create plugXX files:
             $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$out);
@@ -1613,9 +1602,13 @@ function format_sd_card($path="",&$out="") {
                 if(!write_plugconf($plugconf,$path,$out)) $ret=false;
             }
 
-        
             //Copying cultibox icon:
             if(!copy("tmp/cultibox.ico","$path/cultibox.ico")) {
+                $ret=false;
+            }
+
+            //Copying cultibox homepage:
+            if(!copy("tmp/cultibox.html","$path/cultibox.html")) {
                 $ret=false;
             }
 
