@@ -12,6 +12,7 @@ Ce chapitre présente les différentes règles de sécurité.
    # [general_caution#Prises_3500W Prise 3500W]
    # [general_caution#Prises_1000W Prise 1000W]
    # [general_caution#Adaptateur_secteur Adaptateur secteur]
+ # [general_caution#Stockage Stockage]
 
 = Sécurité électrique =
   les risques liés à une mauvaise installation électrique peuvent être catastrophique: incendie, électrocution...
@@ -66,3 +67,11 @@ Les règles suivantes doivent être respectées:
  * La température doit être comprise entre 0 et 40°C.
  * L'humidité doit être comprise entre 5 et 90% RH. 
  * L'adaptateur secteur ne doit pas être démontée.
+
+= Stockage =
+Lors du stockage, les conditions suivantes doivent être respectées:
+ * Température : entre 0° et 60°
+ * Humidité : entre 5% et 95%RH
+ * Shocks maximum : 20g
+ * Vibration : 1g
+ * La languette de la pile ne doit pas être retirée
