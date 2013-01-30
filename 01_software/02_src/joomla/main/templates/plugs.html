@@ -47,10 +47,25 @@
 <table class="table_width">
       <tr>
          <td class="plug-marge-td"></td>
+         <td class="plug-marge-title"><?php echo __('STATE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_STATE_PLUG'); ?>" /></td>
+         <td class="plug-marge-field">
+            <select name="plug_enable<?php echo $i; ?>" onChange="getEnable(this.selectedIndex,<?php echo $i; ?>);" onLoad="getEnable(this.selectedIndex,<?php echo $i; ?>);">
+               <option <?php if(strcmp($plug_enable{$i},"True")==0) { echo "selected";} ?> value="True"><?php echo __('PLUG_ENABLED'); ?></option>
+               <option <?php if(strcmp($plug_enable{$i},"False")==0) { echo "selected";} ?> value="False"><?php echo __('PLUG_DISABLED'); ?></option>
+            </select>
+         </td>
+         <td></td>
+      </tr>
+</table>
+
+<div id="state_plug<?php echo $i; ?>" style="<?php if((strcmp($plug_enable{$i},"False")==0)) { echo "display:none"; } ?>">
+<table class="table_width">
+      <tr>
+         <td class="plug-marge-td"></td>
          <td class="plug-marge-title">
               <?php echo __('NAME_PLUG'); ?>:
          </td>
-         <td class="plug-marge-field">
+         <td class="plug-marge-title">
             <input type="text" size="15" maxlength="15" name="plug_name<?php echo $i; ?>" value="<?php echo $plug_name{$i}; ?>">
          </td>
          <td></td>
@@ -63,7 +78,7 @@
          <td>
             <select name="plug_type<?php echo $i; ?>" onChange="getTolerance(this.selectedIndex,<?php echo $i; ?>);" onLoad="getTolerance(this.selectedIndex,<?php echo $i; ?>);">
                <option <?php if(strcmp($plug_type{$i},"unknown")==0) { echo 'selected';} ?> value="unknown"><?php echo __('PLUG_UNKNOWN'); ?></option>
-               <option <?php if(strcmp($plug_type{$i},"lamp")==0) { echo "selected";} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
+               <option <?php if(strcmp($plug_type{$i},"lamp")==0) { echo 'selected';} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"ventilator")==0) { echo 'selected';} ?> value="ventilator"><?php echo __('PLUG_VENTILATOR'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"heating")==0) { echo 'selected';} ?> value="heating"><?php echo __('PLUG_HEATING'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"humidifier")==0) { echo 'selected';} ?> value="humidifier"><?php echo __('PLUG_HUMIDIFIER'); ?></option>
@@ -171,6 +186,7 @@
 </div>
 
 <div id="format_style<?php echo $i; ?>" style="display:none"><br /><hr /><br /></div>
+</div>
    <?php } ?>
 <br /><br />
 <table class="table_width">

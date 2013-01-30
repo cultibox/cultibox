@@ -339,3 +339,21 @@ function sendForm(index,formname) {
             document.getElementById('selected_plug').value=index;
             document.formname.submit();
 }
+
+
+// {{{ getEnable()
+// ROLE display the plugs informations or not
+// IN  input value: display or not the informations
+// HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
+// USED BY: templates/plugs.html 
+function getEnable(i,j) {
+      var divEnable = document.getElementById('state_plug'+j);
+
+      switch(i) {
+         case 0 : divEnable.style.display = ''; break;
+         case 1 : divEnable.style.display = 'none'; break;
+         default: divEnable.style.display = ''; break;
+      }
+}
+// }}}
+

@@ -44,6 +44,7 @@ $stats=get_configuration("STATISTICS",$main_error);
 $selected_error="";
 
 
+
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
@@ -93,6 +94,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $regul_value=getvar("plug_regul_value${nb}");
    $regul_value=str_replace(',','.',$regul_value);
    $regul_value=str_replace(' ','',$regul_value);
+   $enable=getvar("plug_enable${nb}");
 
 
    $old_name=get_plug_conf("PLUG_NAME",$nb,$main_error);
@@ -104,8 +106,8 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $old_senso=get_plug_conf("PLUG_SENSO",$nb,$main_error);
    $old_senss=get_plug_conf("PLUG_SENSS",$nb,$main_error);
    $old_regul_value=get_plug_conf("PLUG_REGUL_VALUE",$nb,$main_error);
+   $old_enable=get_plug_conf("PLUG_ENABLED",$nb,$main_error);
 
-  
    /* 
    if((!empty($id))&&(isset($id))&&(!$reset)) {
       if(strcmp("$old_id","$id")!=0) {
@@ -124,29 +126,36 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    } 
    */
 
-   if((!empty($name))&&(isset($name))&&(!$reset)&&(strcmp("$old_name","$name")!=0)) {
-      $name=mysql_escape_string($name);
-      insert_plug_conf("PLUG_NAME",$nb,$name,$main_error);
-      $update_program=true;
-      $plug_update=true;
-   }
-   
+    if((!empty($enable))&&(isset($enable))&&(strcmp("$enable","$old_enable")!=0)) {
+        insert_plug_conf("PLUG_ENABLED",$nb,$enable,$main_error);
+        $update_program=true;
+        $plug_update=true;
+    }    
 
-   if((!empty($type))&&(isset($type))&&(!$reset)&&(strcmp("$old_type","$type")!=0)) {
-      insert_plug_conf("PLUG_TYPE",$nb,$type,$main_error);
-      $update_program=true;
-      $plug_update=true;
-   }
-
-   if(((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0))) {
-         if(check_tolerance_value($type,$tolerance)) {
-            insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$main_error);
+    if((!empty($enable))&&(isset($enable))&&(strcmp("$enable","True")==0)) {
+        if((!empty($name))&&(isset($name))&&(!$reset)&&(strcmp("$old_name","$name")!=0)) {
+            $name=mysql_escape_string($name);
+            insert_plug_conf("PLUG_NAME",$nb,$name,$main_error);
             $update_program=true;
             $plug_update=true;
-         } else {
-            $error[$nb]['tolerance']=__('ERROR_TOLERANCE_VALUE_DEGREE');
         }
-   } 
+   
+
+        if((!empty($type))&&(isset($type))&&(!$reset)&&(strcmp("$old_type","$type")!=0)) {
+            insert_plug_conf("PLUG_TYPE",$nb,$type,$main_error);
+            $update_program=true;
+            $plug_update=true;
+        }
+
+        if(((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0))) {
+            if(check_tolerance_value($type,$tolerance)) {
+                insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$main_error);
+                $update_program=true;
+                $plug_update=true;
+            } else {
+                $error[$nb]['tolerance']=__('ERROR_TOLERANCE_VALUE_DEGREE');
+            }
+        } 
 
   
    /* 
@@ -157,61 +166,65 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    */
 
 
-   if((!empty($power))&&(isset($power))&&(!$reset)&&(strcmp("$old_power","$power")!=0)) {
-      if(check_power_value($power)) {
-      	insert_plug_conf("PLUG_POWER",$nb,$power,$main_error);
-      	$update_program=true;
-      	$plug_update=true;
-     } else {
-        $error[$nb]['power']=__('ERROR_POWER_VALUE');
-     }
-   } else {
-         if((empty($power))&&(!$reset)&&(!empty($reccord))&&(strcmp("$old_power","$power")!=0)) {
-            insert_plug_conf("PLUG_POWER",$nb,0,$main_error);
-            $update_program=true;
-            $plug_update=true;
-         }
-   }
-
-   if((!empty($regul))&&(isset($regul))&&(!$reset)&&(strcmp("$old_regul","$regul")!=0)) {
-         insert_plug_conf("PLUG_REGUL",$nb,"$regul",$main_error);
-         $update_program=true;
-         $plug_update=true;
-   }
-
-   if((!empty($regul_senss))&&(isset($regul_senss))&&(!$reset)&&(strcmp("$old_senss","$regul_senss")!=0)) {
-         insert_plug_conf("PLUG_SENSS",$nb,"$regul_senss",$main_error);
-         $update_program=true;
-         $plug_update=true;
-   }
-
-
-   if((strcmp($type,"unknown")==0)||(strcmp($type,"lamp")==0)) {
-            $regul_senso=getvar("plug_senso${nb}");
-   } elseif((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
-            $regul_senso="H";
-   } elseif((strcmp($type,"humidifier")==0)||(strcmp($type,"deshumidifier")==0)) {
-            $regul_senso="T";
-   } else {
-            $regul_senso="";
-   }
-
-   if((!empty($regul_senso))&&(isset($regul_senso))&&(!$reset)&&(strcmp("$old_senso","$regul_senso")!=0)) {
-         insert_plug_conf("PLUG_SENSO",$nb,"$regul_senso",$main_error);
-         $update_program=true;
-         $plug_update=true;
-   }
-
-   if((!empty($regul_value))&&(isset($regul_value))&&(!$reset)&&(strcmp("$old_regul_value","$regul_value")!=0)) {
-         if(check_regul_value("$regul_value")) { 
-            insert_plug_conf("PLUG_REGUL_VALUE",$nb,"$regul_value",$main_error);
-            $update_program=true;
-            $plug_update=true;
-         } else {
-            $error[$nb]['regul_value']=__('ERROR_REGUL_VALUE');
+        if((!empty($power))&&(isset($power))&&(!$reset)&&(strcmp("$old_power","$power")!=0)) {
+            if(check_power_value($power)) {
+      	        insert_plug_conf("PLUG_POWER",$nb,$power,$main_error);
+      	        $update_program=true;
+      	        $plug_update=true;
+            } else {
+                $error[$nb]['power']=__('ERROR_POWER_VALUE');
+            }
+        } else {
+            if((empty($power))&&(!$reset)&&(!empty($reccord))&&(strcmp("$old_power","$power")!=0)) {
+                insert_plug_conf("PLUG_POWER",$nb,0,$main_error);
+                $update_program=true;
+                $plug_update=true;
+            }
         }
 
-   }
+
+        if((!empty($regul))&&(isset($regul))&&(!$reset)&&(strcmp("$old_regul","$regul")!=0)) {
+            insert_plug_conf("PLUG_REGUL",$nb,"$regul",$main_error);
+            $update_program=true;
+            $plug_update=true;
+        }
+
+
+        if((!empty($regul_senss))&&(isset($regul_senss))&&(!$reset)&&(strcmp("$old_senss","$regul_senss")!=0)) {
+            insert_plug_conf("PLUG_SENSS",$nb,"$regul_senss",$main_error);
+            $update_program=true;
+            $plug_update=true;
+        }
+
+
+        if((strcmp($type,"unknown")==0)||(strcmp($type,"lamp")==0)) {
+            $regul_senso=getvar("plug_senso${nb}");
+        } elseif((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
+            $regul_senso="H";
+        } elseif((strcmp($type,"humidifier")==0)||(strcmp($type,"deshumidifier")==0)) {
+            $regul_senso="T";
+        } else {
+            $regul_senso="";
+        }
+
+        if((!empty($regul_senso))&&(isset($regul_senso))&&(!$reset)&&(strcmp("$old_senso","$regul_senso")!=0)) {
+            insert_plug_conf("PLUG_SENSO",$nb,"$regul_senso",$main_error);
+            $update_program=true;
+            $plug_update=true;
+        }
+
+
+        if((!empty($regul_value))&&(isset($regul_value))&&(!$reset)&&(strcmp("$old_regul_value","$regul_value")!=0)) {
+            if(check_regul_value("$regul_value")) { 
+                    insert_plug_conf("PLUG_REGUL_VALUE",$nb,"$regul_value",$main_error);
+                $update_program=true;
+                $plug_update=true;
+            } else {
+                $error[$nb]['regul_value']=__('ERROR_REGUL_VALUE');
+            }
+        }
+    }
+
 
    if(!empty($error[$nb])) {
         foreach($error[$nb] as $err) {
@@ -238,6 +251,8 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_senso{$nb}=get_plug_conf("PLUG_SENSO",$nb,$main_error);
    $plug_senss{$nb}=get_plug_conf("PLUG_SENSS",$nb,$main_error);
    $plug_regul_value{$nb}=get_plug_conf("PLUG_REGUL_VALUE",$nb,$main_error);
+   $plug_enable{$nb}=get_plug_conf("PLUG_ENABLED",$nb,$main_error);
+
 
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
    if($plug_tolerance{$nb}==0) {
