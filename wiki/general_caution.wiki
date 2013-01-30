@@ -41,10 +41,10 @@ Le capteur doit être situé dans l'espace de culture. Les règles suivantes doi
  * Aucune projection d'eau ou de vapeur sur le boitier.
 
 == Câble reliant le capteur au boitier ==
-Le câble ne doit pas être installé à proximité de l’alimentation des lampes ou de tout autre source de forte perturbation électromagnétique. Si le câble est endommagé, débrancher le capteur, la Cultibox et tous les éléments raccordés à la Cultibox. Ensuit, faire changer le capteur.
+Le câble ne doit pas être installé à proximité de l’alimentation des lampes ou de tout autre source de forte perturbation électromagnétique. Si le câble est endommagé, débrancher le capteur, la Cultibox et tous les éléments raccordés à la Cultibox. Ensuite, faire changer le câble.
 
 == Prises 3500W ==
-La prise 3500W permet de piloter des éléments grourmands en énergie. Les 3500W annoncés correspondent à une puissance resistive pure, par exemple un chauffage.
+La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage.
 Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximum autorisée est *600W*.
 Les règles suivantes doivent être respectées:
  * La température doit être comprise entre 0 et 40°C.
@@ -53,7 +53,7 @@ Les règles suivantes doivent être respectées:
  * Aucune projection d'eau ou de vapeur sur la prise.
 
 == Prise 1000W ==
-La prise 1000W permet de piloter des éléments grourmands en énergie. Les 1000W annoncés correspondent à une puissance resistive pure, par exemple un chauffage.
+La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage.
 Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximum autorisée est *150W*.
 Les règles suivantes doivent être respectées:
  * La température doit être comprise entre 0 et 40°C.
