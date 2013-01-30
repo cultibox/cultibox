@@ -29,11 +29,24 @@
 <br />
 <?php } ?>
 
+<?php if(!$compat) { ?>
+<script>
+$(document).ready(
+function(){
+    $("#compat").fadeIn(2000);
+    
+});
+</script>
+<?php } ?>
+
+
 
 <div class="welcome"> 
 <p class="wizard_title"><?php echo __('WELCOME_TITLE'); ?></p>
 <br />
 <p class="text_info"><?php echo __('WELCOME_MESSAGE'); ?></p>
+<br />
+<div id="compat" style="display:none"><p class="text_info"><?php echo __('ERROR_COMPAT_BROWSER'); ?></p></div>
 <br />
 <?php if($wizard) { ?>
     <?php echo __('WELCOME_TUTO'); ?>
