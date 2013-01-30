@@ -424,6 +424,16 @@ msgstr "dessus du seuil"
 msgid "FOR_THE_PLUG"
 msgstr "pour la prise"
 
+msgid "STATE_PLUG"
+msgstr "Etat de la prise"
+
+msgid "PLUG_ENABLED"
+msgstr "Activée"
+
+msgid "PLUG_DISABLED"
+msgstr "Désactivée"
+
+
 # For the programs part:
 
 msgid "CONFIGURE_PROGRAM"
@@ -1081,3 +1091,8 @@ msgstr "Cette fonctionnalité vous permet de charger vos fichiers de logs, prés
 
 msgid "TOOLTIP_RESET_LOG"
 msgstr "En cliquant sur ce bouton toutes vos données des logs enregistrés seront supprimé. Cela peut être réalisé à la fin d'une culture, si vos logs ne vous sont plus utiles ou si vous voulez augmenter la rapidité de traitement de vos données par le logiciel"
+
+msgid "TOOLTIP_STATE_PLUG"
+msgstr "Vous pouvez désactiver les prises que vous ne voulez pas utiliser. Le logiciel n'affichera pas les informations relatives aux prises désactivées"
+
+
