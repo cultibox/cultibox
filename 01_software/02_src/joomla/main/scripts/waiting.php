@@ -101,7 +101,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
 if((!isset($sd_card))||(empty($sd_card))||($quick_load)) {      
    header( 'Location: ./view-logs' ) ;
 } else {
-   header("Refresh: 2;url=./view-logs");
+   header("Refresh: 3;url=./view-logs");
 }
 
 

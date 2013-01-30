@@ -282,7 +282,7 @@ msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte CultiBox</i></b> le temps que la page se charge et que le logiciel traite vos données"
+msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte CultiBox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note:</i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
 
 msgid "PREVIOUS_BUTTON_DAY"
 msgstr "Afficher les informations pour le jour précédent"
