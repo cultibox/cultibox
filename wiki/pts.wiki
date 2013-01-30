@@ -33,13 +33,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || electronic || PTS_electronic_temperature_range || Plage de mesure de temperature  || 0 ||  || 60 || °C ||  || issue 337 ||  ||
 || electronic || PTS_electronic_humidity_range_RH || Plage de mesure d'humidité || 0 || || 100 || %RH ||  || issue 338 ||  ||
 || soft || PTS_soft_log_show || Affichage des logs ||  ||  ||  ||  ||  ||  ||  ||
-|| documentation || PTS_documentation_project_microcontoleur ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| documentation || PTS_documentation_project_electronic ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| documentation || PTS_documentation_project_mecanic ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| documentation || PTS_documentation_project_software ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| documentation || PTS_documentation_project_qualification ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| documentation || PTS_documentation_project_risk ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| documentation || PTS_documentation_project_hazard ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| documentation || PTS_documentation_users_manual ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| documentation || PTS_documentation_users_storage ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| documentation || PTS_documentation_users_general_caution ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| documentation || PTS_documentation_project_qualification ||  ||  ||  ||  ||  ||  ||  || [http://code.google.com/p/cultibox/wiki/pts Lien] ||
+|| documentation || PTS_documentation_users_manual ||  ||  ||  ||  ||  ||  ||  || [http://code.google.com/p/cultibox/wiki/Introduction Lien] ||
+|| documentation || PTS_documentation_users_storage ||  ||  ||  ||  ||  ||  ||  || [http://code.google.com/p/cultibox/wiki/general_caution Lien] ||
+|| documentation || PTS_documentation_users_general_caution ||  ||  ||  ||  ||  ||  ||  || [http://code.google.com/p/cultibox/wiki/general_caution Lien] ||
