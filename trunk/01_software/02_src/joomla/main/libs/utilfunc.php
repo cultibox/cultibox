@@ -1665,11 +1665,23 @@ function get_browser_infos() {
 // RET true if compat, false else
 function check_browser_compat($tab) {
     if(count($tab)>0) {
-        if((strcmp($tab['name'],"firefox")==0)||(strcmp($tab['name'],"msie")==0)||(strcmp($tab['name'],"chrome")==0)) {
-            return true;
-        } else {
-            return false;
+        switch($tab['name']) {
+            case 'firefox':
+                //Do not support firefox 1.0 and 2.0
+                if($tab['version']<=2) return false;
+                return true;
+                break;
+            case 'msie':
+                //Do not support IE 6.0 or earlier
+                if($tab['version']<=6) return false;
+                return true;
+                break;
+            case 'chrome':
+                //Support every version of chrome
+                return true;
+                break;
         }
+        return false;
     }
     return true;
 }

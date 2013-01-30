@@ -35,13 +35,12 @@ $pop_up_message="";
 $pop_up_error_message="";
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $browser=array();
+$compat=true;
 
 
 $browser=get_browser_infos();
 if(count($browser)>0) {
-        if(!check_browser_compat($browser)) {
-            $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_COMPAT_BROWSER'));
-        }
+        $compat=check_browser_compat($browser); 
 }
 
 //If programs configured by user is empty, display the wizard interface link
