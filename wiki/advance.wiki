@@ -18,3 +18,4 @@ Cette page ne concerne que les utilisateurs experts
  # appuyer un coup sur le petit bouton de la prise. Elle doit clignoter
  # Rapidement, appuyer sur le bouton droite de la Cultibox.
  # La prise doit "claquer" plusieurs fois
+ # Si ça marche pas, refaire les étapes 10 à 13
