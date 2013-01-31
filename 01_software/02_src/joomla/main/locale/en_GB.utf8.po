@@ -433,6 +433,15 @@ msgstr "Enabled"
 msgid "PLUG_DISABLED"
 msgstr "Disabled"
 
+msgid "VALID_DISABLED_PLUG"
+msgstr "Plug disabled successfully"
+
+msgid "VALID_ENABLED_PLUG"
+msgstr "Plug enabled successfully"
+
+msgid "PLUG_HISTO_NUMBER"
+msgstr "Plug number"
+
 
 # For the programs part:
 msgid "CONFIGURE_PROGRAM"

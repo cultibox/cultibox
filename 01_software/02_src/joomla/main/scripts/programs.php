@@ -26,9 +26,11 @@ __('LANG');
 // ================= VARIABLES ================= //
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $selected_plug=getvar('selected_plug');
+$active_plugs=get_active_plugs($nb_plugs,$main_error);
+
 
 if((empty($selected_plug))||(!isset($selected_plug))) {
-    $selected_plug=1;
+    $selected_plug=$active_plugs[0]['id'];
 }
 
 $exportid=getvar('exportid');
@@ -56,6 +58,7 @@ $regul_program=getvar("regul_program");
 $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error);
 $cyclic=getvar("cyclic");
 $value_program=getvar('value_program');
+
 
 if(isset($cyclic)&&(!empty($cyclic))) {
     $repeat_time=getvar("repeat_time");

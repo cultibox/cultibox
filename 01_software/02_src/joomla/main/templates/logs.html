@@ -71,8 +71,8 @@ buttonImageOnly: 'true',
       <td><?php echo __('SELECT_PROGRAM_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_LOG_PROGRAM'); ?>" />:</td>
       <td> <select name="select_plug">
             <option value="">---</option>
-            <?php for($i=0;$i<$nb_plugs;$i++) { ?>
-               <option value="<?php echo $plugs_infos[$i]["id"]; ?>" <?php if(strcmp($select_plug,$plugs_infos[$i]["id"])==0) echo "selected"; ?>><?php echo $plugs_infos[$i]["PLUG_NAME"]; ?></option>
+            <?php foreach($active_plugs as $plugs) {  ; ?>
+               <option value="<?php echo $plugs['id']; ?>" <?php if(strcmp($select_plug,$plugs['id'])==0) echo "selected"; ?>><?php echo $plugs_infos[$plugs['id']-1]["PLUG_NAME"]; ?></option>
             <?php } ?>
          </select>
       </td>
@@ -83,8 +83,8 @@ buttonImageOnly: 'true',
       <td><?php echo __('SELECT_POWER_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER_LOG'); ?>" />:</td>
       <td> <select name="select_power">
             <option value="">---</option>
-            <?php for($i=0;$i<$nb_plugs;$i++) { ?>
-               <option value="<?php echo $plugs_infos[$i]["id"]; ?>" <?php if(strcmp($select_power,$plugs_infos[$i]["id"])==0) echo "selected"; ?>><?php echo $plugs_infos[$i]["PLUG_NAME"]; ?></option>
+            <?php foreach($active_plugs as $plugs) {  ?>
+               <option value="<?php echo  $plugs['id']; ?>" <?php if(strcmp($select_power,$plugs["id"])==0) echo "selected"; ?>><?php echo $plugs_infos[$plugs['id']-1]["PLUG_NAME"]; ?></option>
             <?php } ?>
                <option value="9990" <?php if(strcmp($select_power,9990)==0) echo "selected"; ?>><?php echo __('SELECT_ALL_PLUGS'); ?></option>
          </select>

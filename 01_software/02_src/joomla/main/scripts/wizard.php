@@ -224,9 +224,11 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
                 }
             }
 
+            insert_plug_conf("PLUG_ENABLED",$selected_plug,"True",$main_error);
+
             if(count($error)==0) {
                 if(($selected_plug==$nb_plugs)||((isset($finish))&&(!empty($finish)))) {            
-                    set_historic_value(__('VALID_UPDATE_PROGRAM')." (".__('WIZARD_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
+                    set_historic_value(__('VALID_UPDATE_PROGRAM')." (".__('WIZARD_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
                     header('Location: programs');
                 }
 			}

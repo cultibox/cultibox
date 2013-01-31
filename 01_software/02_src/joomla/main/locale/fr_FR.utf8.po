@@ -433,6 +433,15 @@ msgstr "Activée"
 msgid "PLUG_DISABLED"
 msgstr "Désactivée"
 
+msgid "VALID_DISABLED_PLUG"
+msgstr "Prise désactivée avec succée"
+
+msgid "VALID_ENABLED_PLUG"
+msgstr "Prise activée avec succèe"
+
+msgid "PLUG_HISTO_NUMBER"
+msgstr "Prise numéro"
+
 
 # For the programs part:
 
