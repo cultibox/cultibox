@@ -72,6 +72,14 @@ if(isset($_POST['startmonth'])) {
 }
 
 
+if(isset($_POST['import_log'])) {
+    $_SESSION['import_log']=$_POST['import_log'];
+    if(!empty($_SESSION['import_log'])) {
+        $quick_load=false;
+    }
+}
+
+
 if(isset($_POST['reset_sd_card'])) {
     $_SESSION['reset_sd_card']=$_POST['reset_sd_card'];
     if(!empty($_SESSION['reset_sd_card'])) {
@@ -99,7 +107,11 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 
 if((!isset($sd_card))||(empty($sd_card))||($quick_load)) {      
-   header( 'Location: ./view-logs' ) ;
+   if(((!isset($sd_card))||(empty($sd_card)))&&(!$quick_load)) {
+        header("Refresh: 3;url=./view-logs");
+   } else {
+        header( 'Location: ./view-logs' ) ;
+   }
 } else {
    header("Refresh: 3;url=./view-logs");
 }
