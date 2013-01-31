@@ -228,11 +228,13 @@ $(document).ready(function() {
         {
          name: <?php echo "'".clean_popup_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_popup_message($plugs_infos[$plugs['id']-1]['translate']).")',"; ?>
          color: <?php echo "'".$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs['id']-1]."'"; ?>,
-         <?php if($plugs['id']!=$selected_plug) echo "showCheckbox: true, visible: false,"; ?>
+         showCheckbox: true,
+         
+         <?php if($plugs['id']!=$selected_plug) { echo "visible: false,"; } else { echo "selected: true,"; } ?>
          data: [
             <?php echo $plugs_infos[$plugs['id']-1]["data"]; ?>
          ]
-         <?php if($plugs['id']!=$selected_plug) { ?>,events: {
+         ,events: {
                     checkboxClick: function(event) {
                         var series = chart.series[<?php echo $count; ?>];
                         if (series.visible) {
@@ -242,7 +244,6 @@ $(document).ready(function() {
                         }
                     }
                }
-        <?php } ?>
       }
      <?php 
      $count=$count+1;
