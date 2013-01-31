@@ -153,6 +153,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $new_arr=array();
    foreach($hdd_list as $hdd) {
         if(disk_total_space($hdd)<=2200000000) $new_arr[]=$hdd;
+
    }
    $hdd_list=$new_arr;
    sort($hdd_list);
