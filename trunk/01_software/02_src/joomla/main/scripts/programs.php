@@ -94,6 +94,7 @@ if((isset($add_plug))&&(!empty($add_plug))) {
                         $selected_plug=$nb_plugs;
                         $pop_up_message=$pop_up_message.clean_popup_message(__('PLUG_ADDED'));
                         set_historic_value(__('PLUG_ADDED')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
+                        $active_plugs=get_active_plugs($nb_plugs,$main_error);
                     }
             } else {
                     $main_error[]=__('PLUG_MAX_ADDED');
@@ -116,6 +117,7 @@ if((isset($remove_plug))&&(!empty($remove_plug))) {
                         }
                         set_historic_value(__('PLUG_REMOVED')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
                         $pop_up_message=$pop_up_message.clean_popup_message(__('PLUG_REMOVED'));
+                        $active_plugs=get_active_plugs($nb_plugs,$main_error);
                     }
             } else {
                     $main_error[]=__('PLUG_MIN_ADDED');

@@ -406,21 +406,21 @@ function get_data_power($date="",$dateend="",$id=0,&$out) {
       if(strcmp("$id","all")==0) {
          if((!isset($dateend))||(empty($dateend))) {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch = "{$date}" ORDER by time_catch ASC, plug_number ASC
+SELECT  * FROM `power` WHERE date_catch = "{$date}" AND (SELECT `PLUG_ENABLED` from `plugs` WHERE `id` = `plug_number`) LIKE "True" ORDER by time_catch ASC, plug_number ASC
 EOF;
          } else {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}"
+SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND (SELECT `PLUG_ENABLED` from `plugs` WHERE `id` = `plug_number`) LIKE "True"
 EOF;
 }
       } else {
          if((!isset($dateend))||(empty($dateend))) {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` = "{$id}}" ORDER by time_catch ASC, plug_number ASC
+SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` = "{$id}" AND (SELECT `PLUG_ENABLED` from `plugs` WHERE `id` = "{$id}") LIKE "True"  ORDER by time_catch ASC, plug_number ASC
 EOF;
       } else {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}}"
+SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}" AND (SELECT `PLUG_ENABLED` from `plugs` WHERE `id` = "{$id}") LIKE "True"
 EOF;
       }
 }
@@ -611,7 +611,7 @@ EOF;
 
    if(count($res)>0) {
       $sql = <<<EOF
-SELECT `PLUG_POWER` FROM `plugs` WHERE `id` <= ${nb_plugs}
+SELECT `PLUG_POWER`,`PLUG_ENABLED` FROM `plugs` WHERE `id` <= ${nb_plugs}
 EOF;
 
      $db->setQuery($sql);
@@ -641,9 +641,15 @@ EOF;
          foreach($res as $val) {
                $id=$val['plug_id']-1;
 
-               if($res_power[$id]['PLUG_POWER']==0) {
+               if(($res_power[$id]['PLUG_POWER']==0)&&(strcmp($res_power[$id]['PLUG_ENABLED'],"True")==0)) {
                      $error=1;
                }
+
+               if(strcmp($res_power[$id]['PLUG_ENABLED'],"True")==0) {
+                    $enable=1;
+               } else {
+                    $enable=0;
+               } 
 
                $shh=substr($val['time_start'],0,2);
                $smm=substr($val['time_start'],2,2);
@@ -673,11 +679,11 @@ EOF;
                                 $price=$price_hp;
                             }
                         }
-                        $theorical=$theorical+($price*$res_power[$id]['PLUG_POWER']);
+                        $theorical=$theorical+($price*$res_power[$id]['PLUG_POWER']*$enable);
                         $time_start=$time_start+1;
                     }          
                 } else {
-                    $theorical=$theorical+($time_final*$price*$res_power[$id]['PLUG_POWER']);
+                    $theorical=$theorical+($time_final*$price*$res_power[$id]['PLUG_POWER']*$enable);
                 }
 
          }
@@ -698,7 +704,6 @@ function get_real_power($data="",$type="",&$out)  {
     if((empty($data))||(!isset($data))||(empty($type))||(!isset($type))) {
         return 0;
     }
-
 
     if(strcmp($type,"standard")==0) {
         $price=get_configuration("COST_PRICE",$out);

@@ -40,6 +40,7 @@ $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $cost_type=get_configuration("COST_TYPE",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
+$active_plugs=get_active_plugs($nb_plugs,$main_error);
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
@@ -130,22 +131,21 @@ if(strcmp($select_plug,"distinct_all")!=0) {
         "color" => "$color_cost"
     );
 } else {
-    $nb_plugs = get_configuration("NB_PLUGS",$main_error);
     $nb=get_nb_days($startday,$endday)+1;
-    for($i=1;$i<=$nb_plugs;$i++) {
-       $theorical_power=get_theorical_power($i,$cost_type,$main_error,$check);
+    foreach($active_plugs as $plugs) { 
+       $theorical_power=get_theorical_power($plugs['id'],$cost_type,$main_error,$check);
        $theorical_power=$theorical_power*$nb;
 
-       $data_power=get_data_power($startday,$endday,$i,$main_error);
+       $data_power=get_data_power($startday,$endday,$plugs['id'],$main_error);
        $real_power=get_real_power($data_power,$cost_type,$main_error);
-       $title=$plugs_infos[$i-1]['PLUG_NAME'];
+       $title=$plugs_infos[$plugs['id']-1]['PLUG_NAME'];
 
        $data_price[]= array(
-        "number" => "$i",
+        "number" => $plugs['id'],
         "real" => "$real_power",
         "theorical" => "$theorical_power",
         "title" => "$title",
-        "color" => $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$i-1]
+        "color" => $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs['id']-1]
        ); 
     }
 }
