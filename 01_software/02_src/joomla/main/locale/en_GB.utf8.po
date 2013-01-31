@@ -282,7 +282,7 @@ msgid "FORCE_ON_CHART"
 msgstr "Forced to ON"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Thank you to wait few seconds and <b><i>to not disconnect</b></i> the CultiBox card during data loading...<br /><br /><b><i>Note:</i></b>If an error occured, you can reload this page in order to try to complete the operation."
+msgstr "Thank you to wait few seconds and <b><i>to not disconnect</b></i> the CultiBox card during data loading...<br /><br /><b><i>Note: </i></b>If an error occured, you can reload this page in order to try to complete the operation."
 
 msgid "PREVIOUS_BUTTON_DAY"
 msgstr "Display informations for the previous day"
@@ -1092,7 +1092,7 @@ msgid "TOOLTIP_COST_TYPE"
 msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommé."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "The SD card selected will be formated to be compatible with your Cultibox. Plugs files, programs files and configuration files according to your software parameters will be copied in the SD card. Logs and powers files will be also formated. If you have some logs files into your SD card those will be erased."
+msgstr "The SD card selected will be formated to be compatible with your Cultibox. Plugs files, programs files and configuration files according to your software parameters will be copied in the SD card. Logs and powers files will be also formated. If you have some logs files into your SD card those will be erased.<br /><b><i>Note: </i></b>to be recognize by the Cultibox, your SD card must be formatted with FAT16 filesystem type and so, must not be greater than 2Go"
 
 msgid "TOOLTIP_LOAD_LOG"
 msgstr "This feature will loads logs from your SD card into your software. When you load the logs page only the current month is seeked to complete your database. You can search for more agest logs with this feature which can be configured with the configuration page"
