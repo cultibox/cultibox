@@ -1477,32 +1477,38 @@ EOF;
                $tol="000";
             }
 
-            if($data['PLUG_TYPE']=="ventilator") {
-               $reg="REG:T+${tol}";
-               $sec="SEC:T+1000";
-            } else if($data['PLUG_TYPE']=="heating") {
-               $reg="REG:T-${tol}";
-               $sec="SEC:N-1000";
-            } else if($data['PLUG_TYPE']=="humidifier") {
-               $reg="REG:H-${tol}";
-               $sec="SEC:N-1000";
-            } else if($data['PLUG_TYPE']=="dehumidifier") {
-               $reg="REG:H+${tol}";
-               $sec="SEC:N+1000";
-            } else {
-               $reg="REG:N+000";
-               $sec="SEC:N+0000";
-            }
+           
+            if(strcmp($data['PLUG_ENABLED'],"True")==0) {
+                if($data['PLUG_TYPE']=="ventilator") {
+                    $reg="REG:T+${tol}";
+                    $sec="SEC:T+1000";
+                } else if($data['PLUG_TYPE']=="heating") {
+                    $reg="REG:T-${tol}";
+                    $sec="SEC:N-1000";
+                } else if($data['PLUG_TYPE']=="humidifier") {
+                    $reg="REG:H-${tol}";
+                    $sec="SEC:N-1000";
+                } else if($data['PLUG_TYPE']=="dehumidifier") {
+                    $reg="REG:H+${tol}";
+                    $sec="SEC:N+1000";
+                } else {
+                    $reg="REG:N+000";
+                    $sec="SEC:N+0000";
+                }
 
-            if(strcmp($data['PLUG_REGUL'],"False")==0) {
+                if(strcmp($data['PLUG_REGUL'],"False")==0) {
                   $sec="SEC:N+0000";
-            } else {
+                } else {
                   $sec="SEC:".$data['PLUG_SENSO'].$data['PLUG_SENSS'];
                   $val=$data['PLUG_REGUL_VALUE']*10;
                   while(strlen($val)<3) {
                      $val="0$val";
                   }
                   $sec=$sec."1$val";
+                }
+            } else {
+                $reg="REG:N+000";
+                $sec="SEC:N+0000";
             }
             
             $arr[]="$reg"."\r\n"."$sec";
