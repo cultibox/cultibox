@@ -2039,6 +2039,36 @@ EOF;
 // }}}
 
 
+// {{{ get_active_plugs()
+// ROLE get list of active plugs
+// IN $nb   number of maximal plug confiured
+//    $out   errors or warnings messages
+// RET array containing the list of active plug
+function get_active_plugs($nb,&$out="") {
+        $db = db_priv_start();
+        $sql = <<<EOF
+SELECT id FROM `plugs` WHERE id <={$nb} AND `PLUG_ENABLED` LIKE "True" 
+EOF;
+   $db->setQuery($sql);
+   $res = $db->loadAssocList();
+   $ret=$db->getErrorMsg();
+   if((isset($ret))&&(!empty($ret))) {
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out[]=__('ERROR_SELECT_SQL').$ret;
+      } else {
+         $out[]=__('ERROR_SELECT_SQL');
+      }
+   }
+
+   if(!db_priv_end($db)) {
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
+   return $res;
+}
+// }}}
+
+
+
 
 
 ?>

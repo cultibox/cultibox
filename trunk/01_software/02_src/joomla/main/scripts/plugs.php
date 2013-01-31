@@ -128,6 +128,11 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 
     if((!empty($enable))&&(isset($enable))&&(strcmp("$enable","$old_enable")!=0)) {
         insert_plug_conf("PLUG_ENABLED",$nb,$enable,$main_error);
+        if(strcmp("$enable","True")==0) {
+            set_historic_value(__('VALID_ENABLED_PLUG')." (".__('PLUG_PAGE')." - ".__('PLUG_HISTO_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+        } else {
+            set_historic_value(__('VALID_DISABLED_PLUG')." (".__('PLUG_PAGE')." - ".__('PLUG_HISTO_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+        }
         $update_program=true;
         $plug_update=true;
     }    
