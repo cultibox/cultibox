@@ -282,7 +282,7 @@ msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte CultiBox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note:</i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
+msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte CultiBox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note: </i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
 
 msgid "PREVIOUS_BUTTON_DAY"
 msgstr "Afficher les informations pour le jour précédent"
@@ -1093,7 +1093,7 @@ msgid "TOOLTIP_COST_TYPE"
 msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommé."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "La carte SD selectionnée sera rendu compatible Cultibox. Pour cela les fichiers de configuration des prise, des programmes et de la cultibox seront régénérés en fonction de vos paramêtres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déja présent sur votre carte SD ils seront perdus."
+msgstr "La carte SD selectionnée sera rendu compatible Cultibox. Pour cela les fichiers de configuration des prise, des programmes et de la cultibox seront régénérés en fonction de vos paramêtres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déja présent sur votre carte SD ils seront perdus.<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
 
 msgid "TOOLTIP_LOAD_LOG"
 msgstr "Cette fonctionnalité vous permet de charger vos fichiers de logs, présents sur la carte SD en revenant sur une plus grande période. Lorsque vous chargez la page des logs, seul les logs pour le mois courant sont insérés dans la base de donnée. Avec cette fonctionnalité il est possible de remonter plus loin en arrière en fonction de votre ce que vous avez choisis dans la partie cofiguration du logiciel."
