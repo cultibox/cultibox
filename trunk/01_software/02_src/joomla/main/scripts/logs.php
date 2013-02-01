@@ -61,6 +61,8 @@ $stats=get_configuration("STATISTICS",$main_error);
 $reset_log=getvar('reset_log');
 $reset_log_power=getvar('reset_log_power');
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
+$version=get_configuration("VERSION",$main_error);
+
 
 
 
@@ -505,7 +507,7 @@ if(strcmp("$update","True")==0) {
       $ret=array();
       check_update_available($ret,$main_error);
       foreach($ret as $file) {
-        if(count($file)==3) {
+         if((count($file)==3)&&(strcmp("$version","$file[1]")!=0)) {
                 $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2]." target='_blank'>".$file[1]."</a>";
         }
       }

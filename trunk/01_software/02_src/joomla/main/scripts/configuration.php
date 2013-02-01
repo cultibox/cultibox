@@ -51,6 +51,8 @@ $start_hc=getvar("start_hc",$main_error);
 $stop_hc=getvar("stop_hc",$main_error);
 $submenu=getvar("submenu",$main_error);
 $stats=getvar("stats",$main_error);
+$version=get_configuration("VERSION",$main_error);
+
 
 
 // By default the expanded menu is the user interface menu
@@ -361,7 +363,7 @@ if(strcmp("$update","True")==0) {
       $ret=array();
       check_update_available($ret,$main_error);
       foreach($ret as $file) {
-         if(count($file)==3) {
+         if((count($file)==3)&&(strcmp("$version","$file[1]")!=0)) {
                 $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2]." target='_blank'>".$file[1]."</a>";
          }
       }

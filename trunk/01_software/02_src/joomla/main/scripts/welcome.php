@@ -20,6 +20,7 @@ $main_info=array();
 $lang=get_configuration("LANG",$main_error);
 set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
+$version=get_configuration("VERSION",$main_error);
 __('LANG');
 
 
@@ -145,7 +146,7 @@ if(strcmp("$update","True")==0) {
       $ret=array();
       check_update_available($ret,$main_error);
       foreach($ret as $file) {
-         if(count($file)==3) {
+         if((count($file)==3)&&(strcmp("$version","$file[1]")!=0)) {
                 $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2]." target='_blank'>".$file[1]."</a>";
          }
       }
