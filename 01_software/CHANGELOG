@@ -1,3 +1,21 @@
+CultiBox (1.1.3) precise; urgency=low
+
+    + Une page waiting (la même que les logs) apparait maintenant quand on format une carte SD pour la rendre compatible Cultibox
+    + Le Browser Web du client est testé afin de savoir s'il est compatible avec le logiciel Cultibox, si non un message d'information apparait sur la page du Welcome
+    + Correction d'un bug critique concernant l'ajout des valeurs des programmes, une variable manquante empechait d'ajouter des programmes autres que On/Off
+    + Ajouts de tooltips pour aider l'utilisateur à comprendre les fonctions de gestion des logs
+    + Bug fixe pour l'offset dans la fonction de formatage du fichier de conf de la carte SD
+    + Bug fix sur la régulation secondaire et la valeur enregistrée dans les fichiers plugXX
+    + Possibilité de désactiver une prise dans le logiciel et de ne pas avoir les informations relative à cette prise affichée
+    + Détection d'une carte SD de plus de 2Go et blocage de la fonction formatage pour ces cartes (pour rester sur du FAT16)
+    + Possibilité de ne pas afficher le programme courant 
+    + Bug fixe sur le import qui ne marchait pas (il manquait une variable dans le waiting)
+    + Dans la basei cultibox.plugs : ajout d'un champ PLUG_ENABLED pour définir une prise comme active ou non 
+
+-- Yann Genevois <yann.genevois@gmail.com>  Sat Dec  8 13:00:03 CET 2012
+
+
+
 CultiBox (1.1.2) precise; urgency=low
     + Ajout d'une variable de configuration permettant d'activer ou non l'envoi des statistiques (par défaut activé, à désactiver lors de la mise en prod)
     + Changement de la gestion des messages et notament des messages d'erreut qui s'affichent à coté du champ concerné
@@ -41,6 +59,9 @@ ADD `date_end` VARCHAR( 10 ) NOT NULL DEFAULT '0000-00-00';
 ALTER TABLE `configuration` DROP COLUMN `COLOR_PROGRAM_GRAPH`;
 
 ALTER TABLE `informations` CHANGE `firm_version` `firm_version` VARCHAR( 7 ) NOT NULL DEFAULT '000.000';
+
+-- Yann Genevois <yann.genevois@gmail.com>  Sat Dec  8 13:00:03 CET 2012
+
 
 
 CultiBox (1.1.1) precise; urgency=low
