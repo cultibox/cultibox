@@ -23,6 +23,8 @@ $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
+$version=get_configuration("VERSION",$main_error);
+
 
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
@@ -134,7 +136,7 @@ if(strcmp("$update","True")==0) {
       $ret=array();
       check_update_available($ret,$main_error);
       foreach($ret as $file) {
-         if(count($file)==3) {
+         if((count($file)==3)&&(strcmp("$version","$file[1]")!=0)) {
                 $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2]." target='_blank'>".$file[1]."</a>";
          }
       }

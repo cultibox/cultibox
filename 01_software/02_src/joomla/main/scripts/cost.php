@@ -41,6 +41,8 @@ $version=get_configuration("VERSION",$main_error);
 $cost_type=get_configuration("COST_TYPE",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
+$version=get_configuration("VERSION",$main_error);
+
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
@@ -156,7 +158,7 @@ if(strcmp("$update","True")==0) {
       $ret=array();
       check_update_available($ret,$main_error);
       foreach($ret as $file) {
-           if(count($file)==3) {
+         if((count($file)==3)&&(strcmp("$version","$file[1]")!=0)) {
                 $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2]." target='_blank'>".$file[1]."</a>";
            }
       }
