@@ -12,6 +12,10 @@ ALTER TABLE `cultibox`.`configuration` DROP COLUMN `COLOR_PROGRAM_GRAPH`;
 
 ALTER TABLE `cultibox`.`informations` CHANGE `firm_version` `firm_version` VARCHAR( 7 ) NOT NULL DEFAULT '000.000';
 
+--Version 1.1.3:
+ALTER TABLE `cultibox`.`plugs` ADD `PLUG_ENABLED` VARCHAR( 5 ) NOT NULL DEFAULT 'True';
+
+
 UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.2' WHERE `configuration`.`id` =1;
 DROP DATABASE `cultibox_joomla`;
 

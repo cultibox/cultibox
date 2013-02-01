@@ -54,6 +54,9 @@ english.ContinueInstall=A current version of the Cultibox software seems to be a
 french.SaveDatas=Voulez-vous sauvegarder la configuration de votre ancienne version?
 english.SaveDatas=Do you want to save the configuration of your old CultiBox software?
 
+french.CleanCache=Vous venez d'installer une nouvelle version, n'oubliez pas de supprimer le cache de votre navigateur internet pour que celle-ci soit pleinement fonctionnelle
+english.CleanCache=You just install a new version of the Cultibox software, don't forget to delete your internet browser's cache to have a full working version.
+
 [code]
 var 
   ForceInstall: boolean;
@@ -140,6 +143,7 @@ var
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox --force < {sd}\{#MyAppName}\xampp\sql_install\update_sql.sql'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C del {sd}\{#MyAppName}\xampp\htdocs\cultibox\main\templates_c\*.ser'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        MsgBox(ExpandConstant('{cm:CleanCache}'), mbInformation, MB_OK);
      end;     
   end;
 end; 
@@ -195,6 +199,7 @@ Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_window
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion onlyifdoesntexist
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion 
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\emmeteur.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\sht.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\cultibox.ico"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\cultibox.html"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files

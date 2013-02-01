@@ -158,6 +158,7 @@ CREATE TABLE IF NOT EXISTS `plugs` (
   `PLUG_SENSO` varchar(1) NOT NULL DEFAULT 'T',
   `PLUG_SENSS` varchar(1) NOT NULL DEFAULT '+',
   `PLUG_REGUL_VALUE` decimal(3,1) NOT NULL DEFAULT '35.0',
+  `PLUG_ENABLED` varchar(5) NOT NULL DEFAULT 'True',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
@@ -165,23 +166,23 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 -- Dumping data for table `plugs`
 --
 
-INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_REGUL`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`) VALUES
-(1, '', 'prise1', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(2, '', 'prise2', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(3, '', 'prise3', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(4, '', 'prise4', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(5, '', 'prise5', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(6, '', 'prise6', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(7, '', 'prise7', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(8, '', 'prise8', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(9, '', 'prise9', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(10, '', 'prise10', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(11, '', 'prise11', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(12, '', 'prise12', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(13, '', 'prise13', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(14, '', 'prise14', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(15, '', 'prise15', 'unknown', NULL, 0, 'False', 'T', '+', 35.0),
-(16, '', 'prise16', 'unknown', NULL, 0, 'False', 'T', '+', 35.0);
+INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_REGUL`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_ENABLED`) VALUES
+(1, '', 'plug1', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(2, '', 'plug2', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(3, '', 'plug3', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(4, '', 'plug4', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(5, '', 'plug5', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(6, '', 'plug6', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(7, '', 'plug7', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(8, '', 'plug8', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(9, '', 'plug9', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(10, '', 'plug10', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(11, '', 'plug11', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(12, '', 'plug12', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(13, '', 'plug13', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(14, '', 'plug14', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(15, '', 'plug15', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True'),
+(16, '', 'plug16', 'unknown', NULL, 0, 'False', 'T', '+', 35.0,'True');
 
 -- --------------------------------------------------------
 
