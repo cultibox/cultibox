@@ -82,16 +82,10 @@ if(isset($_POST['import_log'])) {
 
 if(isset($_POST['reset_sd_card'])) {
     $_SESSION['reset_sd_card']=$_POST['reset_sd_card'];
-    if(!empty($_SESSION['reset_sd_card'])) {
-        $quick_load=false;
-    }
 }
 
 if(isset($_POST['selected_hdd'])) {
     $_SESSION['selected_hdd']=$_POST['selected_hdd'];
-    if(!empty($_SESSION['selected_hdd'])) {
-        $quick_load=false;
-    }
 }
 
 
@@ -106,12 +100,11 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 
-if((!isset($sd_card))||(empty($sd_card))||($quick_load)) {      
-   if(((!isset($sd_card))||(empty($sd_card)))&&(!$quick_load)) {
-        header("Refresh: 3;url=./view-logs");
-   } else {
-        header( 'Location: ./view-logs' ) ;
-   }
+if((isset($_POST['selected_hdd']))&&(!empty($_POST['selected_hdd']))&&(isset($_POST['reset_sd_card']))&&(!empty($_POST['reset_sd_card']))) {
+    $_SESSION['submenu']="card_interface";
+    header("Refresh: 3;url=./configuration");
+} elseif((!isset($sd_card))||(empty($sd_card))||($quick_load)) {      
+   header( 'Location: ./view-logs' ) ;
 } else {
    header("Refresh: 3;url=./view-logs");
 }

@@ -53,11 +53,25 @@ $submenu=getvar("submenu",$main_error);
 $stats=getvar("stats",$main_error);
 $version=get_configuration("VERSION",$main_error);
 
+if(isset($_SESSION['reset_sd_card'])) {
+    $reset_sd_card=$_SESSION['reset_sd_card'];
+}
+
+if(isset($_SESSION['selected_hdd'])) {
+    $selected_hdd=$_SESSION['selected_hdd'];
+}
+
+
 
 
 // By default the expanded menu is the user interface menu
 if((!isset($submenu))||(empty($submenu))) {
-        $submenu="user_interface";
+        if(isset($_SESSION['submenu'])) {
+            $submenu=$_SESSION['submenu'];
+            unset($_SESSION['submenu']);
+        } else {
+            $submenu="user_interface";
+        }
 } 
 
 
@@ -311,10 +325,40 @@ if((isset($stats))&&(!empty($stats))) {
         $stats = get_configuration("STATISTICS",$main_error);
 }
 
+// Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
+if((!isset($sd_card))||(empty($sd_card))) {
+   $hdd_list=array();
+   $sd_card=get_sd_card($hdd_list);
+   $new_arr=array();
+   foreach($hdd_list as $hdd) {
+        if(disk_total_space($hdd)<=2200000000) $new_arr[]=$hdd;
+
+   }
+   $hdd_list=$new_arr;
+   sort($hdd_list);
+}
+
+//Create sd card from the format button
+if((!empty($reset_sd_card))&&(isset($reset_sd_card))&&(!empty($selected_hdd))&&(isset($selected_hdd))) {
+   if(format_sd_card($selected_hdd,$main_error)) {
+        $main_info[]=__('VALID_RESET_SD');
+        $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_RESET_SD'));
+        set_historic_value(__('VALID_RESET_SD')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
+    } else {
+        $main_error[]=__('ERROR_FORMAT_SD_CARD');
+        $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_FORMAT_SD_CARD'));
+        set_historic_value(__('ERROR_FORMAT_SD_CARD')." (".__('CONFIGURATION_PAGE').")","histo_error",$main_error);
+    }
+    $sd_card=get_sd_card();
+}
+
+unset($_SESSION['reset_sd_card']);
+unset($_SESSION['selected_hdd']);
+
+
 // Is a field has been changed an there is no error in the value: display success message
 if(((empty($main_error))||(!isset($main_error)))&&(count($error)==0)) {
 	if($update_conf) {
-        $sd_card=get_sd_card();
         if((!empty($sd_card))&&(isset($sd_card))) {
 			   $main_info[]=__('VALID_UPDATE_CONF');
                set_historic_value(__('VALID_UPDATE_CONF')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
@@ -325,11 +369,6 @@ if(((empty($main_error))||(!isset($main_error)))&&(count($error)==0)) {
             $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_CONF_WITHOUT_SD'));
          }
 	}
-}
-
-// Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
-if((!isset($sd_card))||(empty($sd_card))) {
-   $sd_card=get_sd_card();
 }
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmware and log.txt files, check if 'programs' are up tp date...
