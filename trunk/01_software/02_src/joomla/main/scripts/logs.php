@@ -227,6 +227,7 @@ if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
 
    } else {
         $ListMonthSearch[]=date('m'); 
+        $_SESSION['loaded']=true;
    }
 
 
