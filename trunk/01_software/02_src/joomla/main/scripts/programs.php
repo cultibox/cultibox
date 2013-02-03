@@ -34,7 +34,6 @@ if((empty($selected_plug))||(!isset($selected_plug))) {
     $selected_plug=$active_plugs[0]['id'];
 }
 
-$exportid=getvar('exportid');
 $import=getvar('import');
 $export=getvar('export');
 $reset=getvar('reset');
@@ -133,29 +132,28 @@ $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
 
 // Manage the plug: reset, import, export:
-if((isset($action_prog))&&(!empty($action_prog))) {
-	if((isset($exportid))&&(!empty($exportid))) {
-         export_program($exportid,$main_error);
-         $file="tmp/program_plug${exportid}.prg";
-         if (($file != "") && (file_exists("./$file"))) {
-            $size = filesize("./$file");
-            header("Content-Type: application/force-download; name=\"$file\"");
-            header("Content-Transfer-Encoding: binary");
-            header("Content-Length: $size");
-            header("Content-Disposition: attachment; filename=\"".basename($file)."\"");
-            header("Expires: 0");
-            header("Cache-Control: no-cache, must-revalidate");
-            header("Pragma: no-cache");
-            readfile("./$file");    
-            set_historic_value(__('HISTORIC_EXPORT')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$exportid.")","histo_info",$main_error);
-            exit();
-         }
-	} elseif((isset($reset))&&(!empty($reset))) {
-		if(clean_program($selected_plug,$main_error)) {
-			$pop_up_message=$pop_up_message.clean_popup_message(__('INFO_RESET_PROGRAM'));
-            set_historic_value(__('INFO_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
-      }
-	} elseif((isset($import))&&(!empty($import))) {
+if((isset($export))&&(!empty($export))) {
+     export_program($selected_plug,$main_error);
+     $file="tmp/program_plug${selected_plug}.prg";
+     if (($file != "") && (file_exists("./$file"))) {
+        $size = filesize("./$file");
+        header("Content-Type: application/force-download; name=\"$file\"");
+        header("Content-Transfer-Encoding: binary");
+        header("Content-Length: $size");
+        header("Content-Disposition: attachment; filename=\"".basename($file)."\"");
+        header("Expires: 0");
+        header("Cache-Control: no-cache, must-revalidate");
+        header("Pragma: no-cache");
+        readfile("./$file");    
+        set_historic_value(__('HISTORIC_EXPORT')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+        exit();
+     }
+} elseif((isset($reset))&&(!empty($reset))) {
+    if(clean_program($selected_plug,$main_error)) {
+        $pop_up_message=$pop_up_message.clean_popup_message(__('INFO_RESET_PROGRAM'));
+        set_historic_value(__('INFO_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+    }
+} elseif((isset($import))&&(!empty($import))) {
       $target_path = "tmp/".basename( $_FILES['upload_file']['name']); 
       if(!move_uploaded_file($_FILES['upload_file']['tmp_name'], $target_path)) {
          $main_error[]=__('ERROR_UPLOADED_FILE');
@@ -189,14 +187,13 @@ if((isset($action_prog))&&(!empty($action_prog))) {
                      }
                }
             } else {
-                 $main_info[]=__('VALID_UPDATE_PROGRAM');
-                 $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_PROGRAM'));
-                 set_historic_value(__('VALID_UPDATE_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+                 $main_info[]=__('VALID_IMPORT_PROGRAM');
+                 $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_IMPORT_PROGRAM'));
+                 set_historic_value(__('VALID_IMPORT_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
             }
-         }
-      }
-   }  
-} 
+        }
+    }
+}  
 
 
 $main_info[]=__('WIZARD_ENABLE_FUNCTION');

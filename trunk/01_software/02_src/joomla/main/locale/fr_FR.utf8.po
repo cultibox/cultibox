@@ -1000,6 +1000,9 @@ msgstr "Configuration mise à jour avec succès dans le logiciel de la Cultibox.
 msgid "VALID_UPDATE_PROGRAM"
 msgstr "Programmes mis à jour avec succès"
 
+msgid "VALID_IMPORT_PROGRAM"
+msgstr "Programmes importé avec succés"
+
 msgid "VALID_DELETE_LOGS"
 msgstr "Base des logs supprimée avec succès"
 
