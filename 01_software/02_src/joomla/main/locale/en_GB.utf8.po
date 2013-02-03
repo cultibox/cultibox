@@ -999,6 +999,9 @@ msgstr "Configuration updated successfully in the CultiBox software!"
 msgid "VALID_UPDATE_PROGRAM"
 msgstr "Programs successfully updated"
 
+msgid "VALID_IMPORT_PROGRAM"
+msgstr "Program successfully imported"
+
 msgid "VALID_DELETE_LOGS"
 msgstr "Log's database successfully deleted"
 

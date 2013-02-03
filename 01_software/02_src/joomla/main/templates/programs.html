@@ -413,9 +413,7 @@ $(document).ready(function() {
     <td class="program-manage-marge"></td>
     <td class="program-manage-title"><?php echo __('TITLE_EXPORT_PROGRAM'); ?>:</td>
     <td class="program-manage-field">
-                        <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="reset" class="submit_plug">
-                        <input type="hidden" name="action_prog" value="action_prog">
-                        <input type="hidden" name="exportid" value="<?php echo $selected_plug; ?>">
+                        <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export" class="submit_plug">
                         <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
     </td>
     <td></td>
@@ -430,8 +428,8 @@ $(document).ready(function() {
     <td class="program-manage-title"><?php echo __('TITLE_IMPORT_PROGRAM'); ?>:</td>
     <td class="program-manage-field">
                      <input type="file" name="upload_file">
-                     <input type="hidden" name="action_prog" value="action_prog">
                      <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                     <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
                      <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>" class="submit_plug">
     </td>
     <td></td>
