@@ -31,6 +31,8 @@ case "$1" in
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_fr.sql
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`'/" ../../01_install/01_src/02_sql/cultibox_en.sql
 
+            sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`' WHERE \`configuration\`.\`id\` =1;/" ../01_src/02_sql/update_sql.sql
+
             if [ "$1" == "windows7" ]; then
                 sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=CultiBox_{#MyAppVersion}-windows7/" ./install_script_current.iss
                 tar zxvf xamp-lite-windows-1.8.1.tar.gz -C ../01_src/01_xampp/
