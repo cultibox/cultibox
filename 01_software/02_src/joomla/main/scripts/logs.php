@@ -121,14 +121,6 @@ if(isset($_SESSION['import_log'])) {
     $import_log=$_SESSION['import_log'];
 } 
 
-if(isset($_SESSION['reset_sd_card'])) {
-    $reset_sd_card=$_SESSION['reset_sd_card'];
-}
-
-if(isset($_SESSION['selected_hdd'])) {
-    $selected_hdd=$_SESSION['selected_hdd'];
-}
-
 //Reset log from the reset button
 if(!empty($reset_log)) { 
     if(reset_log("logs","1",$main_error)) {
@@ -150,31 +142,8 @@ if(!empty($reset_log_power)) {
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
-   $hdd_list=array();
-   $sd_card=get_sd_card($hdd_list);
-   $new_arr=array();
-   foreach($hdd_list as $hdd) {
-        if(disk_total_space($hdd)<=2200000000) $new_arr[]=$hdd;
-
-   }
-   $hdd_list=$new_arr;
-   sort($hdd_list);
+   $sd_card=get_sd_card();
 }
-
-
-//Create sd card from the format button
-if((!empty($reset_sd_card))&&(isset($reset_sd_card))&&(!empty($selected_hdd))&&(isset($selected_hdd))) {
-   if(format_sd_card($selected_hdd,$main_error)) {
-        $main_info[]=__('VALID_RESET_SD');
-        $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_RESET_SD'));
-        set_historic_value(__('VALID_RESET_SD')." (".__('LOGS_PAGE').")","histo_info",$main_error);
-    } else {
-        $main_error[]=__('ERROR_FORMAT_SD_CARD');
-        $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_FORMAT_SD_CARD'));
-        set_historic_value(__('ERROR_FORMAT_SD_CARD')." (".__('LOGS_PAGE').")","histo_error",$main_error);
-    }
-}
-
 
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
@@ -203,8 +172,6 @@ unset($_SESSION['select_plug']);
 unset($_SESSION['select_sensor']);
 unset($_SESSION['quick_load']);
 unset($_SESSION['import_log']);
-unset($_SESSION['reset_sd_card']);
-unset($_SESSION['selected_hdd']);
 unset($reset_log);
 unset($reset_log_power);
 
@@ -239,7 +206,7 @@ $log = array();
 $power=array();
 $load_log=false;
 
-if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))&&(empty($reset_sd_card))) {
+if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
    // Workaround to avoid timeout (60s)
    // Search only on two previous months
 

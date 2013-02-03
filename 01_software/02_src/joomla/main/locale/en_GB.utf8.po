@@ -56,6 +56,9 @@ msgstr "Always"
 msgid "CONFIGURE_HUMIDITY"
 msgstr "Select the humidity graphic color"
 
+msgid "CONFIGURE_CARD"
+msgstr "SD card management"
+
 msgid "CONFIGURE_TEMPERATURE"
 msgstr "Select the temperature graphic color"
 
@@ -181,6 +184,18 @@ msgstr "Fill in the end of your empty hours: (HH:MM)"
 
 msgid "CHECK_STATISTICS"
 msgstr "Send informations to help the cultibox development"
+
+msgid "MANAGE_RESET_SD_CARD"
+msgstr "Format a SD card to be compatible with the CultiBox"
+
+msgid "MANAGE_RESET_CARD"
+msgstr "Format your SD card"
+
+msgid "RESET_CONFIRM_SD_CARD"
+msgstr "Do you really want to format your SD CARD? Logs and configurations files will be destroyed"
+
+msgid "VALID_RESET_SD"
+msgstr "SD card formated successfully"
 
 
 # For the logs part:
@@ -343,18 +358,6 @@ msgstr "Import logs"
 
 msgid "SET_XY_ZOOM"
 msgstr "Enable zoom on Y-axis"
-
-msgid "MANAGE_RESET_SD_CARD"
-msgstr "Format a SD card to be compatible with the CultiBox"
-
-msgid "MANAGE_RESET_CARD"
-msgstr "Format your SD card"
-
-msgid "RESET_CONFIRM_SD_CARD"
-msgstr "Do you really want to format your SD CARD? Logs and configurations files will be destroyed"
-
-msgid "VALID_RESET_SD"
-msgstr "SD card formated successfully"
 
 
 # For the plugs part:

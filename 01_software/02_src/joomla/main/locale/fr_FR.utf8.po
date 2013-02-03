@@ -50,6 +50,9 @@ msgstr "Configuration de la cultibox"
 msgid "CONFIGURE_COST"
 msgstr "Configuration du coût"
 
+msgid "CONFIGURE_CARD"
+msgstr "Gestion de la carte SD"
+
 msgid "ALWAYS_RECORD"
 msgstr "Toujours"
 
@@ -181,6 +184,18 @@ msgstr "Entrez l'heure de fin de votre période creuse: (HH:MM)"
 
 msgid "CHECK_STATISTICS"
 msgstr "Envoie d'informations pour aider le développement"
+
+msgid "MANAGE_RESET_SD_CARD"
+msgstr "Formater une carte SD pour la rendre compatible CultiBox"
+
+msgid "MANAGE_RESET_CARD"
+msgstr "Formater la carte"
+
+msgid "RESET_CONFIRM_SD_CARD"
+msgstr "Êtes vous sur de vouloir formater votre carte SD? Tous vos fichiers de logs et de configuration seront perdus."
+
+msgid "VALID_RESET_SD"
+msgstr "Carte SD formatée avec succès"
 
 
 # For the logs part:
@@ -343,18 +358,6 @@ msgstr "Importer les logs"
 
 msgid "SET_XY_ZOOM"
 msgstr "Activer le zoom sur l'axe Y"
-
-msgid "MANAGE_RESET_SD_CARD"
-msgstr "Formater une carte SD pour la rendre compatible CultiBox"
-
-msgid "MANAGE_RESET_CARD"
-msgstr "Formater la carte"
-
-msgid "RESET_CONFIRM_SD_CARD"
-msgstr "Êtes vous sur de vouloir formater votre carte SD? Tous vos fichiers de logs et de configuration seront perdus."
-
-msgid "VALID_RESET_SD"
-msgstr "Carte SD formatée avec succès"
 
 
 # For the plugs part:

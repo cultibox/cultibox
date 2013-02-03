@@ -70,6 +70,7 @@ timeFormat: 'hh:mm',
     <td><div id="div_system_label" class="menu_h1"><label onclick="expand('system_interface')"><?php echo __('SYSTEM_CONF'); ?></label></div></td>
     <td><div id="div_alarm_label" class="menu_h1"><label onclick="expand('alarm_interface')"><?php echo __('CONFIGURE_ALARM'); ?></label></div></td>
     <td><div id="div_cost_label" class="menu_h1"><label onclick="expand('cost_interface')"><?php echo __('CONFIGURE_COST'); ?></label></div></td>
+    <td><div id="div_card_label" class="menu_h1"><label onclick="expand('card_interface')"><?php echo __('CONFIGURE_CARD'); ?></label></div></td>
 </tr>
 </table>    
 <br />
@@ -564,13 +565,32 @@ timeFormat: 'hh:mm',
 </table>
 </div>
 
+<div id="div_submit_interface" style="display:none">
 <br />
 <hr />
 <input type="hidden" id="submenu" name="submenu" value="<?php echo $submenu; ?>" />
 <br /><p class="p_center">
    <input type="submit" value="<?php echo __('VALIDATION_CONF'); ?>">
 </p>
+</div>
 </form>
+
+<div id="div_card_interface" style="display:none">
+<form action="/cultibox/index.php/display-logs" method="post">
+<table class="conf-table">
+<tr>
+    <td class="conf-marge"></td>
+    <td class="conf-marge-td"><?php echo __('MANAGE_RESET_SD_CARD'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_FORMAT_SD'); ?>" /></td>
+    <td ><?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?><select name="selected_hdd"><?php  foreach($hdd_list as $hdd) { ?><option value="<?php echo "$hdd"; ?>"><?php echo "$hdd"; ?></option><?php } ?></select><?php  } ?><input type="submit" id="reset_sd_card" name="reset_sd_card" value="<?php echo __('MANAGE_RESET_CARD'); ?>" <?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?>onclick="return DeleteForm('<?php echo __('RESET_CONFIRM_SD_CARD','javascript'); ?>')" <?php } else { echo "disabled='True'"; } ?>></td>
+    <td></td>
+</tr>
+</table>
+<br />
+<hr />
+</form>
+</div>
+
+
 <?php 
       echo "<script>expand('".$submenu."');</script>";
 ?>
