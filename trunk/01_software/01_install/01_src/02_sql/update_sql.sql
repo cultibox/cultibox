@@ -16,6 +16,6 @@ ALTER TABLE `cultibox`.`informations` CHANGE `firm_version` `firm_version` VARCH
 ALTER TABLE `cultibox`.`plugs` ADD `PLUG_ENABLED` VARCHAR( 5 ) NOT NULL DEFAULT 'True';
 
 
-UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.3' WHERE `configuration`.`id` =1;
+UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.4' WHERE `configuration`.`id` =1;
 DROP DATABASE `cultibox_joomla`;
 

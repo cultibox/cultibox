@@ -1,0 +1,11 @@
+Package: Cultibox
+Version: 1.0.0-ubuntu
+Section: web
+Maintainer: Yann Genevois <yann.genevois@gmail.com>
+Homepage: http://cultibox.fr
+Priority: extra
+Architecture: amd64
+Depends: ia32-libs
+Description: Web interface for the CultiBox
+ This is the web interface for the cultibox to configure your box, view logs, manage your plugs.
+

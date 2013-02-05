@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+if [ "$1" != "upgrade" ]; then
+    if [ -d /opt/cultibox ]; then
+        rm -R /opt/cultibox
+    fi
+
+    if [ -f /etc/init.d/cultibox ]; then
+        update-rc.d -f cultibox remove
+        rm /etc/init.d/cultibox
+    fi
+
+    if [ -f /usr/share/applications/cultibox.desktop ]; then
+        rm /usr/share/applications/cultibox.desktop
+    fi
+
+    if [ -L /opt/lampp ]; then
+        rm /opt/lampp
+    fi
+fi
+
+if [ "$1" == "upgrade" ]; then
+    touch /tmp/cultibox_upgrade
+fi
+
