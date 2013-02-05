@@ -1,3 +1,14 @@
+CultiBox (1.1.4) precise; urgency=low
+    + Correction pour la gestion des updates qui restait affiché même après une update
+    + Correction de l'import des programmes qui n'importait qu la prise 1
+    + Le formatage de la carte SD se fait dans la configuration
+    + Le temps d'une session est de 120s maintenant au lieu de 14400s
+    + Correction de l'affichage du waiting
+    + Nouveaux scripts pour la génération des paquets Linux (gestion des upgrades et des scripts de sauvegarde des bases)
+
+-- Yann Genevois <yann.genevois@gmail.com>  Tue Feb  5 14:14:08 CET 2013
+
+
 CultiBox (1.1.3) precise; urgency=low
 
     + Une page waiting (la même que les logs) apparait maintenant quand on format une carte SD pour la rendre compatible Cultibox
@@ -12,7 +23,7 @@ CultiBox (1.1.3) precise; urgency=low
     + Bug fixe sur le import qui ne marchait pas (il manquait une variable dans le waiting)
     + Dans la basei cultibox.plugs : ajout d'un champ PLUG_ENABLED pour définir une prise comme active ou non 
 
--- Yann Genevois <yann.genevois@gmail.com>  Sat Dec  8 13:00:03 CET 2012
+-- Yann Genevois <yann.genevois@gmail.com>  Sun Jan  27 11:15:03 CET 2013
 
 
 
