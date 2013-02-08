@@ -17,7 +17,13 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/user_cultibox.sql
     /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/joomla.sql
 
-    /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox.sql
+    lang=`echo $LANG|grep -i fr`
+    if [ "$lang" != "" ]; then
+        /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_fr.sql
+    else
+        /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_en.sql
+    fi
+
     /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/fake_log.sql
 
     cp /opt/lampp/daemon/cultibox /etc/init.d/
