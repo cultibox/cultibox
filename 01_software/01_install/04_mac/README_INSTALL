@@ -1,7 +1,0 @@
-1) Lancer le script pre-compil.sh
-
-./pre-compil.sh snow-leopard
-
-2) Récupérer l'archive créée dans ./snow-leopard et la décompresser sur un mac dans /Applications/
-3) Lancer le PackageMaker et utilisant les scripts de post et pre install se trouvant dans ./packagemaker ainsi que l'icone takecontrol.png
-4) Générer le fichier pkg et le récupérer
