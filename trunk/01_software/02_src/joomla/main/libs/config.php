@@ -42,6 +42,9 @@ $GLOBALS['DEBUG_TRACE'] = false;
 // Definition of the plugs addresses default values:
 $GLOBALS['PLUGA_DEFAULT'] = array('004', '247', '222', '219', '215', '207', '252', '250', '246', '238', '187', '183', '189', '125', '123','119');
 
+// Definition of the plugs addresses default values:
+$GLOBALS['PLUGA_DEFAULT_3500W'] = array('000', '000', '000', '006', '008', '010', '012', '014', '016', '018', '020', '022', '024', '026', '028','030');
+
 // List of value possible for temperature and hygrometry axis:
 $GLOBALS['LIST_MAX_AXIS'] = array('20', '40', '60', '80','100');
 
