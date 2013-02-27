@@ -78,7 +78,7 @@
          <td>
             <?php if($i <= $GLOBALS['NB_MIN_PLUG']) { ?>
                 <input type="text" name="plug_power_maximal<?php echo $i; ?>" value="<?php echo $plug_power_max{$i}; ?>W" readonly size="6" /> 
-            <? } else { ?>
+            <?php } else { ?>
                 <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="1000" <?php if(strcmp($plug_power_max{$i},"1000")==0) { echo "checked"; } ?>>1000W
                 <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="3500" <?php if(strcmp($plug_power_max{$i},"3500")==0) { echo "checked"; } ?>>3500W
             <?php } ?>
