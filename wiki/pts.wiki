@@ -6,7 +6,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 
 =Cahier des charges=
 || *Categorie* || *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Lien* ||
-|| environement || PTS_operating_temperature_°C || Température de fonctionnement || 0 || 25 || 60 || °C || 2 || issue 329 ||  ||
+|| environement || PTS_operating_temperature_°C || Température de fonctionnement || 10 || 25 || 40 || °C || 2 || issue 329 ||  ||
 || environement || PTS_operating_humidity_RH || Humidité de fonctionnement || 5 || 45 || 90 || %RH || 2 ||  ||  ||
 || environement || PTS_operating_pressure_range_mbar || Pression de fonctionnement ||  || 1013 ||  || mBar || 0 ||  ||  ||
 || environement || PTS_operating_vibrations_g || Vibrations admissible de fontionnement  ||  ||  || 0.3 || g || 1 ||  ||  ||
