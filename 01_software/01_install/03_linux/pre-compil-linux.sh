@@ -9,8 +9,8 @@ DEST_DIR=../../01_install/01_src/01_xampp
 
 function usage {
             echo "usage: $0"
-            echo "                      ubuntu32|ubuntu64 <version> fr|en"
-            echo "                      ubuntu32-admin|ubuntu64-admin <version> fr|en"
+            echo "                      ubuntu32|ubuntu64 <version>"
+            echo "                      ubuntu32-admin|ubuntu64-admin <version>"
             echo "                      clean"
             exit 1
 }
@@ -20,12 +20,7 @@ if [ "$2" == "" ] && [ "$1" != "clean" ]; then
     usage
 fi
 
-if [ "$3" == "" ] && [ "$1" != "clean" ]; then
-    usage
-fi
-
 VERSION=$2
-LANGUAGE=$3
 
 
 case "$1" in
@@ -76,7 +71,7 @@ case "$1" in
            mv ../01_src/01_xampp/cultibox/opt/lampp ../01_src/01_xampp/cultibox/opt/cultibox
 
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultibox
-           mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu64-`echo $VERSION`_`echo $LANGUAGE`.deb
+           mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu-amd64_`echo $VERSION`.deb
       ;;
       "ubuntu32"|"ubuntu32-admin")
             rm -Rf ../01_src/01_xampp/*
@@ -125,7 +120,7 @@ case "$1" in
            find ./../01_src/01_xampp/cultibox/opt/lampp -name ".svn"|xargs rm -Rf
            mv ../01_src/01_xampp/cultibox/opt/lampp ../01_src/01_xampp/cultibox/opt/cultibox
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultibox
-           mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu-`echo $VERSION`_`echo $LANGUAGE`.deb
+           mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu-i386_`echo $VERSION`.deb
       ;;
       "clean")
             rm -Rf ../01_src/01_xampp/*
