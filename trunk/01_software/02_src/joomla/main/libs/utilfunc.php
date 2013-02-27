@@ -1313,9 +1313,11 @@ function get_nb_days($start_date="",$end_date="") {
 // {{{ check_update_available()
 // ROLE get the update file from a distant site and check available updates
 // IN    $ret     array to return containing updates informations
+//       $version version of the current software
 //       $out     errors or warnings messages
 // RET   none  
-function check_update_available(&$ret,&$out) {
+function check_update_available($version,&$ret,&$out) {
+         $version=str_replace(".","",$version);
          if(isset($GLOBALS['UPDATE_FILE'])&&(!empty($GLOBALS['UPDATE_FILE']))) {
                $buffer=array();
                $tmp=array();
@@ -1328,8 +1330,11 @@ function check_update_available(&$ret,&$out) {
                   $os=php_uname('s');
                   foreach($buffer as $val) {
                                     $tmp=explode("*", $val);
-                                    if(strcmp($tmp[0],"$os")==0) {
-                                         $ret[]=$tmp; 
+                                    if(count($tmp)==3) {
+                                        $tmp_version=str_replace(".","","$tmp[1]");
+                                        if((strcmp($tmp[0],"$os")==0)&&($version<$tmp_version)) {
+                                            $ret[]=$tmp; 
+                                        }
                                     }
                  } 
                } else {

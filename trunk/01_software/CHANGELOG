@@ -1,4 +1,5 @@
 CultiBox (1.1.5) precise; urgency=low
+    + Verification que la version proposée pour les updates à un numéro de version plus grand que la version installée
     + Ajout de la possibilité de configurer une prise en 3500W ou 100W et changement des adresses et du fichier pluga en conséquence
 
 -- Yann Genevois <yann.genevois@gmail.com>  Wed Feb 27 10:40:15 CET 2013

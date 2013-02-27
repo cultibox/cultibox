@@ -473,15 +473,11 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {
       $ret=array();
-      check_update_available($ret,$main_error);
+      check_update_available($version,$ret,$main_error);
       foreach($ret as $file) {
-         if((count($file)==3)&&(strcmp("$version","$file[1]")!=0)) {
                 $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2]." target='_blank'>".$file[1]."</a>";
-        }
       }
 }
-
-
 
 
 // The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True'

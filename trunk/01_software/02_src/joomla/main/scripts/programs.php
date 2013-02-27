@@ -427,11 +427,9 @@ if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {
       $ret=array();
-      check_update_available($ret,$error);
+      check_update_available($version,$ret,$main_error);
       foreach($ret as $file) {
-         if((count($file)==3)&&(strcmp("$version","$file[1]")!=0)) {
                 $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2]." target='_blank'>".$file[1]."</a>";
-            }
       }
 }
 
