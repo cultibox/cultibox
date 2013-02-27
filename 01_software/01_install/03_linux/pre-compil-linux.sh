@@ -71,7 +71,12 @@ case "$1" in
            mv ../01_src/01_xampp/cultibox/opt/lampp ../01_src/01_xampp/cultibox/opt/cultibox
 
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultibox
-           mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu-amd64_`echo $VERSION`.deb
+           
+           if [ "$1" == "ubuntu64" ]; then
+                mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu-amd64_`echo $VERSION`.deb
+           else
+                mv cultibox.deb ../../03_linux/Output/cultibox-admin-ubuntu-amd64_`echo $VERSION`.deb
+           fi 
       ;;
       "ubuntu32"|"ubuntu32-admin")
             rm -Rf ../01_src/01_xampp/*

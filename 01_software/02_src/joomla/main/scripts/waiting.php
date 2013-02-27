@@ -102,13 +102,13 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 if((isset($_POST['selected_hdd']))&&(!empty($_POST['selected_hdd']))&&(isset($_POST['reset_sd_card']))&&(!empty($_POST['reset_sd_card']))) {
     $_SESSION['submenu']="card_interface";
-    header("Refresh: 3;url=./configuration");
+    header("Refresh: 5;url=./configuration");
 } elseif(((isset($_SESSION['import_log']))&&($_SESSION['import_log']))) {
-   header("Refresh: 3;url=./view-logs");
+   header("Refresh: 5;url=./view-logs");
 } elseif((!isset($sd_card))||(empty($sd_card))||($quick_load)||((isset($_SESSION['loaded']))&&($_SESSION['loaded']))) {      
    header( 'Location: ./view-logs' ) ;
 } else {
-   header("Refresh: 3;url=./view-logs");
+   header("Refresh: 5;url=./view-logs");
 }
 
 
