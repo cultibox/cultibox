@@ -19,6 +19,6 @@ ALTER TABLE `cultibox`.`plugs` ADD `PLUG_ENABLED` VARCHAR( 5 ) NOT NULL DEFAULT 
 ALTER TABLE `cultibox`.`plugs` ADD `PLUG_POWER_MAX` VARCHAR( 10 ) NOT NULL DEFAULT '1000' AFTER `PLUG_POWER`;
 UPDATE `cultibox`.`plugs` SET `PLUG_POWER_MAX` = '3500' WHERE `plugs`.`id` =1;
 
-UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.4' WHERE `configuration`.`id` =1;
+UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.5' WHERE `configuration`.`id` =1;
 DROP DATABASE `cultibox_joomla`;
 
