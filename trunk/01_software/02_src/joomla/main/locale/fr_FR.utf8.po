@@ -368,7 +368,7 @@ msgid "PLUG_INFOS"
 msgstr "Informations de la prise"
 
 msgid "TYPE_PLUG"
-msgstr "Type de la prise"
+msgstr "Type d'élément branché sur la prise"
 
 msgid "TOLERANCE_PLUG"
 msgstr "Tolérance de la prise"
@@ -398,7 +398,7 @@ msgid "VALIDATION_PLUG_CONF"
 msgstr "Enregistrer la configuration"
 
 msgid "POWER_PLUG"
-msgstr "Puissance (en Watt)"
+msgstr "Puissance consommée par l'élément (en Watt)"
 
 msgid "ENABLE_REGUL_PLUG"
 msgstr "Régulation de la prise"
@@ -444,6 +444,9 @@ msgstr "Prise activée avec succèe"
 
 msgid "PLUG_HISTO_NUMBER"
 msgstr "Prise numéro"
+
+msgid "PLUG_MAX_POWER"
+msgstr "Type de prise (puissance maximale)"
 
 
 # For the programs part:
