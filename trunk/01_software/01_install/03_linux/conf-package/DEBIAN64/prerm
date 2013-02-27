@@ -3,5 +3,6 @@
 if [ -d /opt/cultibox ]; then   
     /opt/lampp/backup.sh
     /etc/init.d/cultibox stop
+    
 fi
 exit 0

@@ -23,4 +23,3 @@ fi
 if [ "$1" == "upgrade" ]; then
     touch /tmp/cultibox_upgrade
 fi
-
