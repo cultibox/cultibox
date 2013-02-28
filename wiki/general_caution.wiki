@@ -13,6 +13,7 @@ Ce chapitre présente les différentes règles de sécurité.
    # [general_caution#Prises_1000W Prise 1000W]
    # [general_caution#Adaptateur_secteur Adaptateur secteur]
  # [general_caution#Stockage Stockage]
+ # [general_caution#Configuration minimale de l'ordinateur]
 
 = Sécurité électrique =
   les risques liés à une mauvaise installation électrique peuvent être catastrophique: incendie, électrocution...
@@ -75,3 +76,22 @@ Lors du stockage, les conditions suivantes doivent être respectées:
  * Shocks maximum : 20g
  * Vibration : 1g
  * La languette de la pile ne doit pas être retirée
+
+= Configuration minimale de l'ordinateur =
+Ordinateur Fixe :
+ * Système d'exploitation : Windows Xp/vista/seven (32 et 64Bits) 
+                            Mac 
+ * processeur : Inel Pentium IV, 2.8MHz ou équivalent
+ * Mémoire vive : 1Go de RAM
+ * 1 Go d'espace libre sur le disque dur
+ * Connexion internet
+ * Clavier et souris
+
+Ordinateur portable :
+ * Système d'exploitation : Windows Xp/vista/seven (32 et 64Bits) 
+                            Mac 
+ * processeur : Inel Pentium M, 1.4MHz ou équivalent
+ * Mémoire vive : 512 Mo de RAM
+ * 1 Go d'espace libre sur le disque dur
+ * Connexion internet
+ * Clavier et souris
