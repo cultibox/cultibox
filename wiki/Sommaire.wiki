@@ -1,6 +1,5 @@
 [Introduction Introduction]
    * [general_caution Règle de sécurité]
-   * [general_caution Configuration minimal de l'ordinateur]
    * [install Mise en place]   
    * [gui_soft_wizard Assistant de programmation]
    * [gui_soft_logs Relevé des conditions climatique]
