@@ -79,8 +79,7 @@ Lors du stockage, les conditions suivantes doivent être respectées:
 
 = Configuration minimale de l'ordinateur =
 Ordinateur Fixe :
- * Système d'exploitation : Windows Xp/vista/seven (32 et 64Bits) 
-                            Mac 
+ * Système d'exploitation : Mac os X ou Windows Xp/vista/seven (32 et 64Bits)                        
  * processeur : Inel Pentium IV, 2.8MHz ou équivalent
  * Mémoire vive : 1Go de RAM
  * 1 Go d'espace libre sur le disque dur
@@ -88,8 +87,7 @@ Ordinateur Fixe :
  * Clavier et souris
 
 Ordinateur portable :
- * Système d'exploitation : Windows Xp/vista/seven (32 et 64Bits) 
-                            Mac 
+ * Système d'exploitation : Mac os X ou Windows Xp/vista/seven (32 et 64Bits)
  * processeur : Inel Pentium M, 1.4MHz ou équivalent
  * Mémoire vive : 512 Mo de RAM
  * 1 Go d'espace libre sur le disque dur
