@@ -125,7 +125,12 @@ case "$1" in
            find ./../01_src/01_xampp/cultibox/opt/lampp -name ".svn"|xargs rm -Rf
            mv ../01_src/01_xampp/cultibox/opt/lampp ../01_src/01_xampp/cultibox/opt/cultibox
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultibox
-           mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu-i386_`echo $VERSION`.deb
+
+           if [ "$1" == "ubuntu32" ]; then
+                mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu-i386_`echo $VERSION`.deb
+           else
+                mv cultibox.deb ../../03_linux/Output/cultibox-admin-ubuntu-i386_`echo $VERSION`.deb
+           fi
       ;;
       "clean")
             rm -Rf ../01_src/01_xampp/*

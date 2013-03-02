@@ -269,11 +269,15 @@ if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
 
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {
+    if($sock = @fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
       $ret=array();
       check_update_available($version,$ret,$main_error);
       foreach($ret as $file) {
-                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2]." target='_blank'>".$file[1]."</a>";
+                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2].">".$file[1]."</a>";
       }
+   } else {
+    $main_error[]=__('ERROR_REMOTE_SITE');
+   }
 }
 
 

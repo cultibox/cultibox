@@ -989,6 +989,9 @@ msgstr "Chemin d'accès à la carte SD introuvable"
 msgid "ERROR_COMPAT_BROWSER"
 msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez surement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accéssibles. Voici la liste des navigateurs supportés:<br /><ul><li>Mozilla Firefox (3 ou supérieur)</li><li>Internet Explorer (7 ou supérieur)</li><li>Google Chrome</li></ul>"
 
+msgid "ERROR_REMOTE_SITE"
+msgstr "Impossible de s'assurer de la présence de mises à jours, vérifier que votre connexion internet fonctionne correctement"
+
 
 # For the informations part:
 msgid "INFO_SD_CARD"

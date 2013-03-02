@@ -31,7 +31,7 @@ $GLOBALS['NB_MAX_SENSOR'] = '4';
 $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');
 
 // Colors for plugs program:
-$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'] = array('#0033CC','#FF0000', '#336600', '#000000','#FF9900','#006666','#999966','#663300','#FF0066','#CC66FF','#660000','#3D96AE','#DB843D','#00FF00','#CCFF33','#B5CA92');
+$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'] = array('#0033CC','#FF0000', '#336600', '#F6F61A','#FF9900','#006666','#999966','#663300','#FF0066','#CC66FF','#660000','#3D96AE','#DB843D','#00FF00','#CCFF33','#B5CA92');
 
 //Subject for the calendar:
 $GLOBALS['LIST_SUBJECT_CALENDAR'] = array('Beginning','Fertilizers', 'Water', 'Bloom','Harvest','Other');
@@ -59,6 +59,9 @@ $GLOBALS['FIRST_LOG_YEAR'] = '2012';
 
 // Remote file to check update for the interface
 $GLOBALS['UPDATE_FILE'] = 'http://cultibox.highproshop.fr/download/software/updates/update_list.txt';
+
+// Remote site to test internet connection
+$GLOBALS['REMOTE_SITE'] = 'cultibox.highproshop.fr';
 
 // Enable/Disable export and import module
 $GLOBALS['MODULE_IMPORT_EXPORT'] = true;
