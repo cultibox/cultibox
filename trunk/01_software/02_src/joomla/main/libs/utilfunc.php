@@ -862,14 +862,11 @@ function write_pluga($sd_card,&$out) {
       $pluga=Array();
       $pluga[]=$GLOBALS['NB_MAX_PLUG'];
       for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
-        $tmp_pluga=get_plug_conf("PLUG_ID",$i+1,$out);
-        if((empty($tmp_pluga))||(!isset($tmp_pluga))) {
-            $tmp_power_max=get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
-            if(strcmp("$tmp_power_max","1000")==0) {
-                $tmp_pluga=$GLOBALS['PLUGA_DEFAULT'][$i];
-            } elseif(strcmp("$tmp_power_max","3500")==0) {
-                $tmp_pluga=$GLOBALS['PLUGA_DEFAULT_3500W'][$i];   
-            }
+        $tmp_power_max=get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
+        if(strcmp("$tmp_power_max","1000")==0) {
+            $tmp_pluga=$GLOBALS['PLUGA_DEFAULT'][$i];
+        } elseif(strcmp("$tmp_power_max","3500")==0) {
+            $tmp_pluga=$GLOBALS['PLUGA_DEFAULT_3500W'][$i];   
         }
         $pluga[]="$tmp_pluga";
       }
@@ -880,7 +877,6 @@ function write_pluga($sd_card,&$out) {
    } else {
         return false;
    }
-   
    fclose($f);
    return true;
 }

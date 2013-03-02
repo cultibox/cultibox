@@ -1,3 +1,17 @@
+CultiBox (1.1.7) precise; urgency=low
+    + Correctif pour la gestion des puissances des prises
+    + Corection de la couleur du programme 4 identique à celle de la puissance
+    + Vérification de l'accès à internet avant de vérifier la présence des mises à jours
+
+-- Yann Genevois <yann.genevois@gmail.com> Sat Mar  2 22:07:00 CET 2013
+
+
+CultiBox (1.1.6) precise; urgency=low
+    + Correctif pour la dernière version
+
+-- Yann Genevois <yann.genevois@gmail.com>  Fri Mar  1 21:27:02 CET 2013
+
+
 CultiBox (1.1.5) precise; urgency=low
     + Verification que la version proposée pour les updates à un numéro de version plus grand que la version installée
     + Ajout de la possibilité de configurer une prise en 3500W ou 100W et changement des adresses et du fichier pluga en conséquence
