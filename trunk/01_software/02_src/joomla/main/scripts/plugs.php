@@ -59,23 +59,6 @@ if((!isset($selected_plug))||(empty($selected_plug))) {
 }
 
 
-// If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-if((!empty($sd_card))&&(isset($sd_card))) {
-   $program=create_program_from_database($main_error);
-   if(!compare_program($program,$sd_card)) {
-      $main_info[]=__('UPDATED_PROGRAM');
-      $pop_up_message=$pop_up_message.clean_popup_message(__('UPDATED_PROGRAM'));
-      save_program_on_sd($sd_card,$program,$main_error);
-      set_historic_value(__('UPDATED_PROGRAM')." (".__('PLUG_PAGE').")","histo_info",$main_error);
-   }
-   check_and_copy_firm($sd_card,$main_error);
-   check_and_copy_log($sd_card,$main_error);
-   $main_info[]=__('INFO_SD_CARD').": $sd_card";
-} else {
-        $main_error[]=__('ERROR_SD_CARD_CONF');
-}
-
-
 //Reset a program if selected by the user (button reset)
 /*
 if((isset($reset))&&(!empty($reset))) {
@@ -103,7 +86,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $old_name=get_plug_conf("PLUG_NAME",$nb,$main_error);
    $old_type=get_plug_conf("PLUG_TYPE",$nb,$main_error);
    $old_tolerance=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
-   $old_id=get_plug_conf("PLUG_ID",$nb,$main_error);
+   //$old_id=get_plug_conf("PLUG_ID",$nb,$main_error);
    $old_power=get_plug_conf("PLUG_POWER",$nb,$main_error);
    $old_regul=get_plug_conf("PLUG_REGUL",$nb,$main_error);
    $old_senso=get_plug_conf("PLUG_SENSO",$nb,$main_error);
@@ -253,7 +236,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
         }
         insert_plug_conf("PLUG_TYPE",$nb,"$old_type",$main_error); 
         insert_plug_conf("PLUG_NAME",$nb,"$old_name",$main_error);
-        insert_plug_conf("PLUG_ID",$nb,"$old_id",$main_error);
+        //insert_plug_conf("PLUG_ID",$nb,"$old_id",$main_error);
         $count_err=true;
         $selected_error=$nb;
 
@@ -374,6 +357,23 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
     } else {
         insert_informations("log",$informations["log"]);
     }
+}
+
+
+// If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
+if((!empty($sd_card))&&(isset($sd_card))) {
+   $program=create_program_from_database($main_error);
+   if(!compare_program($program,$sd_card)) {
+      $main_info[]=__('UPDATED_PROGRAM');
+      $pop_up_message=$pop_up_message.clean_popup_message(__('UPDATED_PROGRAM'));
+      save_program_on_sd($sd_card,$program,$main_error);
+      set_historic_value(__('UPDATED_PROGRAM')." (".__('PLUG_PAGE').")","histo_info",$main_error);
+   }
+   check_and_copy_firm($sd_card,$main_error);
+   check_and_copy_log($sd_card,$main_error);
+   $main_info[]=__('INFO_SD_CARD').": $sd_card";
+} else {
+        $main_error[]=__('ERROR_SD_CARD_CONF');
 }
 
 

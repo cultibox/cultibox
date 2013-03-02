@@ -2,6 +2,7 @@ CultiBox (1.1.7) precise; urgency=low
     + Correctif pour la gestion des puissances des prises
     + Corection de la couleur du programme 4 identique à celle de la puissance
     + Vérification de l'accès à internet avant de vérifier la présence des mises à jours
+    + Les programmes des prises inactives ne sont plus ajoutées dans le fichier plugv
 
 -- Yann Genevois <yann.genevois@gmail.com> Sat Mar  2 22:07:00 CET 2013
 

@@ -1533,7 +1533,7 @@ EOF;
 function create_program_from_database(&$out) {
    $db = db_priv_start();
    $sql = <<<EOF
-SELECT * FROM `programs` ORDER by `time_start`
+SELECT * FROM `programs` WHERE `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by `time_start`
 EOF;
    $db->setQuery($sql);
    $res = $db->loadAssocList();
@@ -1547,7 +1547,7 @@ EOF;
    }
 
    $sql = <<<EOF
-SELECT * FROM `programs` WHERE time_start = "000000" ORDER by `time_start`
+SELECT * FROM `programs` WHERE time_start = "000000" AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by `time_start`
 EOF;
    $db->setQuery($sql);
    $first = $db->loadAssocList();
@@ -1561,7 +1561,7 @@ EOF;
    }
 
    $sql = <<<EOF
-SELECT * FROM `programs` WHERE time_stop = "235959" ORDER by `time_start`
+SELECT * FROM `programs` WHERE time_stop = "235959" AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by `time_start`
 EOF;
    $db->setQuery($sql);
    $last = $db->loadAssocList();
