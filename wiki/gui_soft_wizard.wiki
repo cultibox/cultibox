@@ -1,7 +1,8 @@
 #summary template
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 = Description de l'interface graphique =
-
-= Bug =

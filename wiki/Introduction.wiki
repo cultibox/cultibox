@@ -1,12 +1,16 @@
 #summary Introduction à l'utilisation de la Cultibox
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 Bienvenue dans la documentantaion de la Cultibox. 
 Cette documentation est en constante amélioration. Si certains points ne sont pas très clair n'hésitez pas à nous le dire.
 
 Sommaire de la documentation:
    * [general_caution Regle de sécurité]
-   * [install Mise en place]   
+   * [install Mise en place]
+      * [install_Plug Ajout d'une nouvelle prise 1000W ou 3500W]    
    * [gui_soft_wizard Assistant de programmation]
    * [gui_soft_logs Relevé des conditions climatique]
    * [gui_soft_prog Programmation]

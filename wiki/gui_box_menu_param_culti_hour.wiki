@@ -1,5 +1,8 @@
 #summary Parametres
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introdution = 
 
 Ce menu permet de changer l'heure de la Cultibox. 

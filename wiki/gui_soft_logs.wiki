@@ -1,4 +1,4 @@
-#summary template
+#summary Affichage des logs
 
 = Sommaire =
 <wiki:toc max_depth="3" />

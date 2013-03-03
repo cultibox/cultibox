@@ -1,7 +1,21 @@
-#summary template
+#summary Fenêtre cout
+
+= Sommaire =
+<wiki:toc max_depth="3" />
 
 = Introduction =
+L'onglet cout permet d'estimer puis de calculer le cout de votre installation. Il agit comme un consometre théorique puis pratique
 
-= Description de l'interface graphique =
+Pour acceder à l'onglet, cliquer sur "Cost" :
 
-= Bug =
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_cost.png
+
+= Parametrage =
+Pour un bon fonctionnement de l'algorithme, il est nécéssaire de bien configurer vos prises.
+Voir le chapitre [https://code.google.com/p/cultibox/wiki/gui_soft_conf Configuration]
+
+= Sélection des données à voir =
+
+La première partie de l'onglet permet de sélectionner les données à visualiser.
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cost_param.png

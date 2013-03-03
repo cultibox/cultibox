@@ -1,5 +1,8 @@
 #summary Installation
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 Quelques étapes suffisent pour se servir pleinement de la Cultibox.
 =1. Installation du logiciel=
 ==1.1. Windows==

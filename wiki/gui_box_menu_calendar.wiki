@@ -1,8 +1,9 @@
 #summary Menu Calendrier
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 Le menu calendrier permet de voir les différents éléments entrés dans le calendrier.
 
 = Description de l'interface graphique =
-
-= Bug =

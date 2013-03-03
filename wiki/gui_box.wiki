@@ -1,5 +1,8 @@
 #summary Sommaire de l'aide de l'interface graphique de la Cultibox
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 Cette section de l'aide décrit le fonctionnement de l'interface graphique affichée sur l'écran de la Cultibox.

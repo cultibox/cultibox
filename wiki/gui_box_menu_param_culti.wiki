@@ -1,5 +1,8 @@
 #summary Parametres Cultibox
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 Le menu paramètre de la cultibox permet l'accès aux menus suivants: 
 
   * [gui_box_menu_param_culti_hour Horloge]

@@ -1,5 +1,8 @@
 #summary Parametres
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introdution = 
 
 Le menu programme permet de visualiser le programme définit pour chaque prise.

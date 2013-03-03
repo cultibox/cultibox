@@ -1,5 +1,8 @@
 #summary Parametres
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 Le menu parametre permet l'acc&#grave;s aux menus suivants
 
 * [gui_box_menu_param_culti Parametres de la cultibox]

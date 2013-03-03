@@ -1,5 +1,8 @@
 #summary Menu de départ
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 Au démarrage, l'interface graphique de la Cultibox affiche quelques informations.
 

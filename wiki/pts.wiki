@@ -1,5 +1,8 @@
 #summary Parametres
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 =Introduction=
 
 La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indique pour chaque exigence les critères d'acceptabilités
