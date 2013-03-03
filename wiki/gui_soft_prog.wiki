@@ -8,6 +8,8 @@ Pour configurer le programme d'une prise:
  * Cliquer sur l'onglet Programme
  * Sélectionner dans le menu déroulant le numéro de la prise que vous souhaitez modifier
 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_programm.png
+
 = Type de programmation =
 Chaque prise peut être configuré de différente façon.
 
@@ -64,6 +66,8 @@ Le type de la prise détermine le fonctionnement de la régulation. Par exemple,
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.png
 
+<wiki:comment>
+
 == Régulation secondaire ==
  La régulation secondaire a un fonctionnement plus particulier. Une fois activée son fonctionnement est continu.
 La régulation secondaire permet de d'éteindre ou de mettre en route une prise quand une condition est atteinte.
@@ -79,3 +83,5 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_5.png
 
 = Bug =
  * issue 155 Impossible d'utiliser la régulation secondaire
+
+</wiki:comment>  
