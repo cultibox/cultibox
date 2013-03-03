@@ -30,3 +30,7 @@ Indiquer le programme pour votre nouvelle prise.
 = Branchement =
 Une fois le logiciel configuré, vous pouvez retirer votre carte SD et la brancher dans la Cultibox.
 Vous pouvez maintenant installer votre nouvelle prise.
+
+La puissance maximum de l'élement que vous pouvez brancher sur la Cultibox dépend de la nature de cet élément. Pour connaitre la puissance maximum de l'élément en fonction du type de prise, veuillez vous référer au tableau ci-dessous:
+Elément Puissance maximum avec une prise 1000W Puissance maximum avec une prise 3500W
+
