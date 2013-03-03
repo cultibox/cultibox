@@ -1,6 +1,7 @@
 [Introduction Introduction]
    * [general_caution Règle de sécurité]
    * [install Mise en place]   
+      * [install_Plug Ajout d'une nouvelle prise 1000W ou 3500W]
    * [gui_soft_wizard Assistant de programmation]
    * [gui_soft_logs Relevé des conditions climatique]
    * [gui_soft_prog Programmation]
