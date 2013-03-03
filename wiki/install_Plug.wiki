@@ -13,18 +13,35 @@ Trois étapes sont nécéssaires à la configuration du logiciel:
 Il faut tout d'abord brancher la carte SD dans l'ordinateur et executer le programme Cultibox.
 
 == Définition du nombre de prise ==
-Cliquer sur l'onglet "Configuration" puis sur "Cultibox".
-Dans le champ XXX indiquer le nouveau nombre total de prise.
+Cliquer sur l'onglet "Configuration":
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
+
+Puis sur "Configiguration de la Cultibox".
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.png
+
+Dans le champ "Nombre de prises de votre système:" sélectionner le nouveau nombre total de prise.
+
 Cliquer sur "Enregistrer la configuration"
 
 == Configuration de la nouvelle prise ==
 Cliquer sur l'onglet "Plugs".
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs.png
+
 Sélectionner le numéro correspondant à la nouvelle prise.
-Remplir les différents champs. C'est ici qu'on indique au programme si la prise est une prise 1000W ou une prise 3500W.
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_empty.png
+
+Remplir les différents champs. C'est ici qu'on indique au programme si la prise est une prise 1000W ou une prise 3500W (dans le champ "Type de prise (puissance maximale):").
 Cliquer sur "Enregistrer la configuration"
 
 == Création du programme de la nouvelle prise ==
 Cliquer sur l'onglet "Programme".
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_programm.png
+
 Indiquer le programme pour votre nouvelle prise.
 
 = Branchement =
@@ -32,5 +49,10 @@ Une fois le logiciel configuré, vous pouvez retirer votre carte SD et la branch
 Vous pouvez maintenant installer votre nouvelle prise.
 
 La puissance maximum de l'élement que vous pouvez brancher sur la Cultibox dépend de la nature de cet élément. Pour connaitre la puissance maximum de l'élément en fonction du type de prise, veuillez vous référer au tableau ci-dessous:
-Elément Puissance maximum avec une prise 1000W Puissance maximum avec une prise 3500W
-
+|| *Elément* || *Puissance maximum avec une prise 1000W* || *Puissance maximum avec une prise 3500W* ||
+|| Lampe HPS || 150W || 600W ||
+|| Lampe MH || 150W || 600W ||
+|| Chauffage || 1000W || 3500W ||
+|| Pompe || 150W || 600W ||
+|| Element purement resistif || 1000W || 3500W ||
+|| Element inductif ou capacitif || 1000W || 3500W ||
