@@ -1,0 +1,32 @@
+#summary Ajout d'une prise
+
+= Introduction =
+
+Afin de completer votre système, il est possible d'ajouter des prises supplémentaires. La cultibox peut piloter jusqu'à 10 prises.
+
+= Configuration du logiciel =
+Trois étapes sont nécéssaires à la configuration du logiciel:
+ # Définition du nombre de prise
+ # Configuration du la nouvelle prise
+ # Création du programme de la nouvelle prise
+
+Il faut tout d'abord brancher la carte SD dans l'ordinateur et executer le programme Cultibox.
+
+== Définition du nombre de prise ==
+Cliquer sur l'onglet "Configuration" puis sur "Cultibox".
+Dans le champ XXX indiquer le nouveau nombre total de prise.
+Cliquer sur "Enregistrer la configuration"
+
+== Configuration de la nouvelle prise ==
+Cliquer sur l'onglet "Plugs".
+Sélectionner le numéro correspondant à la nouvelle prise.
+Remplir les différents champs. C'est ici qu'on indique au programme si la prise est une prise 1000W ou une prise 3500W.
+Cliquer sur "Enregistrer la configuration"
+
+== Création du programme de la nouvelle prise ==
+Cliquer sur l'onglet "Programme".
+Indiquer le programme pour votre nouvelle prise.
+
+= Branchement =
+Une fois le logiciel configuré, vous pouvez retirer votre carte SD et la brancher dans la Cultibox.
+Vous pouvez maintenant installer votre nouvelle prise.
