@@ -1,5 +1,8 @@
 #summary Ajout d'une prise
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 Afin de compléter votre système, il est possible d'ajouter des prises supplémentaires. La Cultibox peut piloter jusqu'à 10 prises.

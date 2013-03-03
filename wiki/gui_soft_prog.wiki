@@ -1,5 +1,8 @@
 #summary Programmation des prises
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 Chacune des prises possède un programme journalier. 
 Pour configurer le programme d'une prise:

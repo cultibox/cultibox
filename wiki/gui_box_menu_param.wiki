@@ -1,5 +1,8 @@
 #summary Parametres
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 Le menu paramètre permet l'accès aux menus suivants
 
