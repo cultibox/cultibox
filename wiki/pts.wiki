@@ -18,7 +18,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || environement || PTS_storage_shocks_g || Shocks en transport  ||  ||  || 30 || g || 1 || issue 351 ||  ||
 || environement || PTS_storage_vibrations_g || Vibrations en transport ||  ||  || 2 || g || 1 || issue 352 ||  ||
 || environement || PTS_storage_drop_test_cm || Chute en transport ||  ||  || 100 || cm || 1 ||  issue 377 ||  ||
-|| environement || PTS_EMC ||  ||  ||  ||  ||  || 3 ||  ||  ||
+|| environement || PTS_EMC ||  ||  ||  ||  ||  || 3 || issue 394 ||  ||
 || electronic || PTS_electronic_input_voltage || Tension d'entrée admissible  || 4.5 || 5 || 5.5 || V || 2 || issue 378 ||  ||
 || electronic || PTS_electronic_input_current || Courant d'entrée admissible ||  ||  || 0.5 || A || 2 ||  issue 379 ||  ||
 || electronic || PTS_electronic_precision_temperature_°C || Precision température || -1.2 || 0 || 1.2 || °C par rapport à la vrai valeur || 3 || issue 334 ||  ||
