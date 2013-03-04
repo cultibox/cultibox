@@ -1,7 +1,63 @@
 #summary template
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
+La page de configuration permet de modifier les paramètres du logicel et de la Cultibox.
 
-= Description de l'interface graphique =
+Pour acceder à l'onglet , cliquer sur "Configuration":
 
-= Bug =
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
+
+Dans cet onglet, quatre menus sont disponibles:
+
+ * Configuration de l'interface
+ * Configuration de la Cultibox
+ * Configuration de l'alarme
+ * Configuration du cout
+ * Configuration de la Carte SD
+
+= Configuration de l'interface =
+La section "configuration de l'interface" permet de modifier les différents paramètres du site web.
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_interface.png
+
+= Configuration de la Cultibox =
+
+En cliquant sur "Configuration de l'interface", l'onglet change:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.PNG
+
+Dans cette section vous pouvez:
+ * Changer la langue
+ * Définir les couleurs des différentes courbes
+ * Sélectionner l'échelle des graphiques
+ * Activer / Désactiver l'afichage des pop-ups
+ * Activer la vérification automatique des mises à jours
+ * Définir le nombre de mois pour la recherche des logs
+ * Définir si vous désirez nous envoyer des information pour le dévellopement
+
+= Configuration de l'alarme =
+
+En cliquant sur "Configuration de l'alarme", l'onglet change:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_alarme.PNG
+
+L'alarme de la Cultibox peut être configurée dans cette section.
+
+= Configuration du cout =
+
+En cliquant sur "Configuration du cout", l'onglet change:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cost_standard.PNG
+
+Si vous sélectionnez "Heure creuse / Heure pleine", la section change:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cost_hchp.PNG
+
+= Configuration de la carte SD =
+
+En cliquant sur "Configuration de la carte SD", l'onglet change:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_SD.PNG
