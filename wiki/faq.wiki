@@ -1,8 +1,14 @@
 #summary Foire aux questions
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 Retrouvez dans cette section la réponse à toutes les questions que vous vous posez.
+
+= Pourquoi le dossier d'installation ne peut pas être changé =
+Sous Windows, le dossier d'instalation est fixé dans le répertoire c:/cultibox. L'affichage du logiciel est réalisé en utilisant un serveur appache intégré (wampp). Wampp ne permet pas d'être installé dans un dossier qui contient des espaces. Pour éviter tout problème, nous avons décidé de fixer le chemin d'installation.
 
 = Peut-il y avoir un risque d'interférence avec mes autres appareils? =
 La Cultibox pilote les prises en utilisant la fréquence 433 MHz. Il existe un certain nombre d'appareils qui utilisent cette même fréquence. Par exemple: Télécommande de garage, interrupteur de lampe sans fils, chauffage à sonde déportée...
