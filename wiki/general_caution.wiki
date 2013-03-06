@@ -46,7 +46,7 @@ Le câble ne doit pas être installé à proximité de l’alimentation des lamp
 
 == Prises 3500W ==
 La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage.
-Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximum autorisée est *600W*.
+Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est *600W*.
 Les règles suivantes doivent être respectées:
  * La température doit être comprise entre 0 et 40°C.
  * L'humidité doit être comprise entre 5 et 90% RH. 
@@ -55,7 +55,7 @@ Les règles suivantes doivent être respectées:
 
 == Prise 1000W ==
 La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage.
-Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximum autorisée est *150W*.
+Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est *150W*.
 Les règles suivantes doivent être respectées:
  * La température doit être comprise entre 0 et 40°C.
  * L'humidité doit être comprise entre 5 et 90% RH. 
