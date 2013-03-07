@@ -51,11 +51,22 @@ buttonImageOnly: 'true',
 });
 </script>
 
+
+<label class="title_conf"><?php echo __('SELECT_LOG_TITLE'); ?>:</label>
+<br />
+<div id="label_select_type">
 <form>
-<label class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SELECT_DISPLAYED_DAY'); ?>:</label>
-<input type= "radio" id="select_day" name="type_select" value="day" <?php if(strcmp($type,"days")==0) echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?>
-<input type= "radio" id="select_month" name="type_select" value="month" <?php if(strcmp($type,"month")==0) echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
+<table>
+    <tr>
+        <td class="log-marge-day-main"></td>
+        <td class="log-marge-day-title"><b><?php echo __('SELECT_DISPLAYED_DAY'); ?>:</b></td>
+        <td class="log-marge-day-field"><input type= "radio" id="select_day" name="type_select" value="day" <?php if(strcmp($type,"days")==0) echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?><input type= "radio" id="select_month" name="type_select" value="month" <?php if(strcmp($type,"month")==0) echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
+        </td>
+        <td></td>
+    </tr>
+</table>   
 </form>
+</div>
 <br />
 <div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
 <form action="/cultibox/index.php/display-logs" method="post">
@@ -767,7 +778,7 @@ $(function () {
 <hr />
 <br />
 
-<label class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('MANAGE_LOG_INFOS'); ?>:</label>
+<label class="title_conf"><?php echo __('MANAGE_LOG_INFOS'); ?>:</label>
 <form action="/cultibox/index.php/display-logs" method="post" >
 <table class="table_width">
 <tr>

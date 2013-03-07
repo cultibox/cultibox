@@ -23,7 +23,10 @@ msgid "WELCOME_MESSAGE"
 msgstr "This sofware will help you to configure and communicate with your cultibox"
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note:</b> if you have the previous version of the cultibox named the GreenBox: <ul><li>Remove your old plugs not compatible anymore</li><li>unplugged the Greenbox which can cause interferences with the cultibox</li></ul>"
+msgstr "<b>Note:</b> if you have the previous version of the cultibox named the GreenBox:"
+
+msgid "WELCOME_REQUIEREMENT"
+msgstr "<ul><li>Remove your old plugs not compatible anymore</li><li>unplugged the Greenbox which can cause interferences with the cultibox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Just click on the following link to launch the wizard configuration and begin to manipulate your cultibox"
@@ -41,14 +44,17 @@ msgid "WELCOME_PROGRAM"
 msgstr "Go to the plug's program page"
 
 # For the configuration part:
+msgid "CONFIGURE_TITLE_CULTIBOX"
+msgstr "Configure your Cultibox"
+
 msgid "USER_CONF"
-msgstr "User configuration"
+msgstr "Interface preferences"
 
 msgid "SYSTEM_CONF"
-msgstr "System configuration"
+msgstr "Cultibox preferences"
 
 msgid "CONFIGURE_COST"
-msgstr "Cost onfiguration"
+msgstr "Cost"
 
 msgid "ALWAYS_RECORD"
 msgstr "Always"
@@ -57,7 +63,7 @@ msgid "CONFIGURE_HUMIDITY"
 msgstr "Select the humidity graphic color"
 
 msgid "CONFIGURE_CARD"
-msgstr "SD card management"
+msgstr "SD card"
 
 msgid "CONFIGURE_TEMPERATURE"
 msgstr "Select the temperature graphic color"
@@ -120,7 +126,7 @@ msgid "NO"
 msgstr "No"
 
 msgid "CONFIGURE_ALARM"
-msgstr "Alarm configuration"
+msgstr "Alarm"
 
 msgid "CONFIGURE_ALARM_ACTIV"
 msgstr "Enable alarm system"
@@ -199,6 +205,9 @@ msgstr "Temperature & Humidity graphics"
 
 msgid "SELECT_DISPLAYED_DAY"
 msgstr "Select logs to display for"
+
+msgid "SELECT_LOG_TITLE"
+msgstr "Display data reccorded by the Cultibox"
 
 msgid "ONE_DAY"
 msgstr "a day"

@@ -100,11 +100,11 @@ include($this['path']->path('layouts:template.config.php'));
 						<?php endif; ?>
                   
                         <div id="box">                      
-                        	<img src="images/box.png">
+                        	<img src="main/libs/img/box.png" alt="">
                         </div>
                         			
                         <a class="logo" href="<?php echo $this['config']->get('site_url'); ?>">                       
-                        	<img src="images/logo_cultibox.png">
+                        	<img src="main/libs/img/logo_cultibox.png" alt="">
                         </a>		
                         	
 						<?php if($this['modules']->count('headerbar')) : ?>

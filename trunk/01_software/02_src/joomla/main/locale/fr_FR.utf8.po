@@ -23,7 +23,10 @@ msgid "WELCOME_MESSAGE"
 msgstr "Ce logiciel va vous permettre de manipuler simplement votre CultiBox afin de la configurer, de visualiser les données enregistrées ou encore d'accéder à certaines fonctionnalités telles que le calcul du coût d'électricité ou la création d'un calendrier de culture."
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note :</b> pour ceux qui possède l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument: <ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la CultiBox</li></ul>"
+msgstr "<b>Note :</b> pour ceux qui possède l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument:"
+
+msgid "WELCOME_REQUIEREMENT"
+msgstr "<ul><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la CultiBox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre CultiBox"
@@ -41,17 +44,20 @@ msgid "WELCOME_PROGRAM"
 msgstr "Aller à la page de création et visualisation des programmes des prises"
 
 # For the configuration part:
+msgid "CONFIGURE_TITLE_CULTIBOX"
+msgstr "Configurer votre système Cultibox"
+
 msgid "USER_CONF"
-msgstr "Configuration de l'interface"
+msgstr "Préférences interface"
 
 msgid "SYSTEM_CONF"
-msgstr "Configuration de la cultibox"
+msgstr "Préférences Cultibox"
 
 msgid "CONFIGURE_COST"
-msgstr "Configuration du coût"
+msgstr "Calcul du coût"
 
 msgid "CONFIGURE_CARD"
-msgstr "Gestion de la carte SD"
+msgstr "Carte SD"
 
 msgid "ALWAYS_RECORD"
 msgstr "Toujours"
@@ -120,7 +126,7 @@ msgid "NO"
 msgstr "Non"
 
 msgid "CONFIGURE_ALARM"
-msgstr "Configuration de l'alarme"
+msgstr "Alarme"
 
 msgid "CONFIGURE_ALARM_ACTIV"
 msgstr "Activer le système d'alarme"
@@ -193,12 +199,14 @@ msgstr "Carte SD formatée avec succès"
 
 
 # For the logs part:
-
 msgid "HISTO_GRAPH"
 msgstr "Graphiques climatiques"
 
 msgid "SELECT_DISPLAYED_DAY"
 msgstr "Afficher les informations pour"
+
+msgid "SELECT_LOG_TITLE"
+msgstr "Affichage des données enregistrées par la Cultibox"
 
 msgid "ONE_DAY"
 msgstr "un jour"

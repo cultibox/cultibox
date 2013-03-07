@@ -31,7 +31,7 @@
 
 
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="get" name="actionprog" id="actionprog">
-<p class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_PROGRAM'); ?>
+<p class="title_conf"><?php echo __('CONFIGURE_PROGRAM'); ?>
     <select name="selected_plug" onchange="this.form.submit()" id="selected_plug">
     <?php foreach($active_plugs as $plugs) {  ?>
                <option <?php if($selected_plug==$plugs['id']) { echo 'selected';} ?> value="<?php echo $plugs['id']; ?>" ><?php echo $plugs['id']." - ".$plugs_infos[$plugs['id']-1]['PLUG_NAME']; ?></option>
@@ -358,7 +358,7 @@ $(document).ready(function() {
 <br /><hr /><br />
 
 
-<label class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('MANAGE_PROGRAM_INFOS'); ?>:</label>
+<label class="title_conf"><?php echo __('MANAGE_PROGRAM_INFOS'); ?>:</label>
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
 <table class="table_width">
 <tr>
