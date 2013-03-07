@@ -22,6 +22,10 @@ UPDATE `cultibox`.`plugs` SET `PLUG_POWER_MAX` = '3500' WHERE `plugs`.`id` =1;
 -- Version 1.1.7:
 UPDATE `cultibox`.`plugs` SET `PLUG_ID` = '';
 
-UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.6' WHERE `configuration`.`id` =1;
+UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.7' WHERE `configuration`.`id` =1;
 DROP DATABASE `cultibox_joomla`;
+
+-- Version 1.1.8:
+ALTER TABLE `cultibox`.`configuration` DROP `LOG_TEMP_AXIS` , DROP `LOG_HYGRO_AXIS` ;
+UPDATE `cultibox`.`configuration` SET `CHECK_UPDATE` = 'True' WHERE `configuration`.`id` =1;
 

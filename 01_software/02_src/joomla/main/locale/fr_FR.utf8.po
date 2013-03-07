@@ -110,12 +110,6 @@ msgstr "Noir"
 msgid "COLOR_PURPLE"
 msgstr "Violet"
 
-msgid "CONFIGURE_TEMP_AXIS"
-msgstr "Valeur maximale de l'axe des températures pour les graphes"
-
-msgid "CONFIGURE_HYGRO_AXIS"
-msgstr "Valeur maximale de l'axe de l'hygrométrie pour les graphes"
-
 msgid "CONFIGURE_POWER_AXIS"
 msgstr "Valeur maximale de l'axe de puissance pour les graphes"
 
@@ -356,8 +350,20 @@ msgstr "derniers mois"
 msgid "IMPORT_LOG"
 msgstr "Importer les logs"
 
-msgid "SET_XY_ZOOM"
-msgstr "Activer le zoom sur l'axe Y"
+msgid "MIN_Y_AXIS_LOG"
+msgstr "Valeur minimale de l'axe Y"
+
+msgid "MAX_Y_AXIS_LOG"
+msgstr "Valeur maximale de l'axe Y"
+
+msgid "EMPTY_REGUL"
+msgstr "Aucune régulation programmée"
+
+msgid "SUMARY_REGUL_TITLE"
+msgstr "Résumé des régulations"
+
+msgid "REGUL_TITLE_PLUG"
+msgstr "Régulation pour la prise"
 
 
 # For the plugs part:
@@ -1069,7 +1075,7 @@ msgid "TOOLTIP_PLUG_FREQ"
 msgstr "Cette option permet de configurer la fréquence à laquelle sera mise à jour l'état (Marche/Arrêt) de vos prises."
 
 msgid "TOOLTIP_ALARM"
-msgstr "L'alarme de la CultiBox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil."
+msgstr "L'alarme de la CultiBox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil. <br /><br /><b>Il est à noter que l'alarme coupe toute les prises en cas de déclenchement du seuil configuré.</b>"
 
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la CultiBox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la CultiBox."
@@ -1080,8 +1086,8 @@ msgstr "Sans carte SD branchée les fichiers enregistrés par votre CultiBox con
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
 
-msgid "TOOLTIP_AXIS"
-msgstr "Cette option configure la valeur maximale de l'axe des ordonnées du graphique correspondant. Cependant le logiciel, pour une meilleure visualisation des graphiques, recalcule cette valeur en fonction de celle des autres graphiques. Il est donc possible que la valeur maximale ne corresponde pas exactement à la valeur selectionnée dans cette option."
+msgid "TOOLTIP_POWER_AXIS"
+msgstr "Cette option configure la valeur maximale de l'axe des ordonnées du graphique des puissances consommées."
 
 msgid "TOOLTIP_LOG_PROGRAM"
 msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la CultiBox et le comportement théorique de la prise."
@@ -1116,4 +1122,9 @@ msgstr "En cliquant sur ce bouton toutes vos données des logs enregistrés sero
 msgid "TOOLTIP_STATE_PLUG"
 msgstr "Vous pouvez désactiver les prises que vous ne voulez pas utiliser. Le logiciel n'affichera pas les informations relatives aux prises désactivées"
 
+msgid "TOOLTIP_MAX_POWER_PLUG"
+msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 600W<br /><br />La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
+
+msgid "TOOLTIP_MAX_LOG_IMPORT"
+msgstr "Cette variable définit le nombre de mois qui seront scrutés pour rechercher des logs lors de l'appuie sur le bouton 'Importer les logs' de l'onglet 'Logs'"
 

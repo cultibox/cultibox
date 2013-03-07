@@ -131,20 +131,6 @@ if((isset($color_cost))&&(!empty($color_cost))) {
    $color_cost = get_configuration("COLOR_COST_GRAPH",$main_error);
 }
 
-if((isset($temp_axis))&&(!empty($temp_axis))) {
-        insert_configuration("LOG_TEMP_AXIS",$temp_axis,$main_error);
-        $update_conf=true;
-} else {
-        $temp_axis = get_configuration("LOG_TEMP_AXIS",$main_error);
-}
-
-
-if((isset($hygro_axis))&&(!empty($hygro_axis))) {
-        insert_configuration("LOG_HYGRO_AXIS",$hygro_axis,$main_error);
-        $update_conf=true;
-} else {
-        $hygro_axis = get_configuration("LOG_HYGRO_AXIS",$main_error);
-}
 
 if((isset($power_axis))&&(!empty($power_axis))) {
         insert_configuration("LOG_POWER_AXIS",$power_axis,$main_error);

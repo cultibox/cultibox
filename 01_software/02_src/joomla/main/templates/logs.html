@@ -53,8 +53,8 @@ buttonImageOnly: 'true',
 
 <form>
 <label class="title_conf"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('SELECT_DISPLAYED_DAY'); ?>:</label>
-<INPUT type= "radio" id="select_day" name="type_select" value="day" <?php if(strcmp($type,"days")==0) echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?>
-<INPUT type= "radio" id="select_month" name="type_select" value="month" <?php if(strcmp($type,"month")==0) echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
+<input type= "radio" id="select_day" name="type_select" value="day" <?php if(strcmp($type,"days")==0) echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?>
+<input type= "radio" id="select_month" name="type_select" value="month" <?php if(strcmp($type,"month")==0) echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
 </form>
 <br />
 <div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
@@ -196,6 +196,7 @@ $(function () {
             borderWidth: 3,
             renderTo: 'container',
             zoomType: 'x',
+            alignTicks: false,
             spacingRight: 20,
             events: {
                load: function() {
@@ -239,12 +240,11 @@ $(function () {
                      color: <?php echo "'".$color_humidity."'"; ?>
                   }
                },
-               min: -0.5,
-               max: <?php echo "$hygro_axis"; ?>,
+               min: 0,
+               max: 100,
                startOnTick: false,
-               showFirstLabel: true,
+               endOnTick: false,
                alternateGridColor: '#FDFFD5',
-               tickInterval: <?php echo $hygro_axis/4; ?>,
                labels: {
                   formatter: function() {
                      if(this.value<=100) return this.value;
@@ -258,11 +258,10 @@ $(function () {
                   }
                },
                min: 0,
-               max: <?php echo "$temp_axis"; ?>,
-               startOnTick: false,
-               showFirstLabel: true,
+               max: 100,
                opposite: true,
-               tickInterval: <?php echo $temp_axis/4; ?>,
+               startOnTick: false,
+               endOnTick: false,
                labels: {
                   formatter: function() {
                      if(this.value<=100) return this.value;
@@ -302,12 +301,12 @@ $(function () {
                } ?>
             }[this.series.name];
             if(unit=='') { 
-               if(this.y==<?php echo $hygro_axis; ?>) {
+               if(this.y==100) {
                      behaviour='<?php echo __("VALUE_ON"); ?>';
                } else if(this.y==0){
                      behaviour='<?php echo __("VALUE_OFF"); ?>';
                } else {
-                     behaviour=(this.y)*100/<?php echo $hygro_axis; ?>;
+                     behaviour=(this.y)*100/100;
                      behaviour=behaviour.toFixed(1);
                }
                   <?php
@@ -634,6 +633,33 @@ $(function () {
             ]
         });
     });
+
+    $('#min_y_axis').change(function() {    
+        for(var i=0;i<chart.yAxis.length;i++) {
+            if($(this).val()!="") {
+                var extremes = chart.yAxis[i].getExtremes();
+                if(extremes.max>$(this).val()) {
+                    if(chart.axes[0].series[i].type=='area') {
+                        //console.log(chart.yAxis[i]);
+                        chart.yAxis[i].setExtremes($(this).val(), extremes.max);
+                    }
+                }
+            }
+        }
+    });
+
+    $('#max_y_axis').change(function() {
+        for(var i=0;i<chart.yAxis.length;i++) {
+            if($(this).val()!="") {
+                var extremes = chart.yAxis[i].getExtremes();
+                if(extremes.min<$(this).val()) {
+                    if(chart.axes[0].series[i].type=='area') {
+                        chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+                    }
+                }
+            }
+        }
+    });
     
 });
 
@@ -641,6 +667,11 @@ $(function () {
 </script>
 <br />
 <table class="table_width">
+<tr>
+    <td class="left_log"></td>
+    <td class="center_log"></td>
+    <td class="right_log"><img src="main/libs/img/resume.png" alt="" class="info-bulle-css" title="<?php echo $resume_regul; ?>" /></td></td>
+</tr>
 <tr>
     <td class="left_log">
         <?php if((strcmp("$type","month")!=0)||(($GLOBALS['FIRST_LOG_YEAR']!=$startyear)||($startmonth!=01))) { ?>
@@ -704,7 +735,29 @@ $(function () {
         <?php } ?>
     </td>
 </tr>
+<tr>
+    <td></td>
+    <td>
+        <p class="p_center">
+        <select id="min_y_axis">
+            <option value=""><?php echo __('MIN_Y_AXIS_LOG'); ?></option>
+            <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $val) {  ; ?>
+               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
+            <?php } ?>
+        </select>
+        &nbsp;&nbsp;
+        <select id="max_y_axis">
+            <option value=""><?php echo __('MAX_Y_AXIS_LOG'); ?></option>
+            <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $val) {  ; ?>
+               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
+            <?php } ?>
+        </select>
+        </p>
+    </td>
+    <td></td>
+</tr>
 </table>
+
 <p class="precision_infos">
 <?php if(strcmp($type,"days")==0)  echo "*"." ".__('PRECISION_GRAPH_DAY'); else echo "*"." ".__('PRECISION_GRAPH_MONTH'); ?>
 </p>

@@ -2079,6 +2079,19 @@ EOF;
 // }}}
 
 
+// {{{ format_regul_sumary()
+// ROLE format regulation of a plug to be displayed in a sumary
+// IN    $number     maximale plug's number
+// RET   sumary formated 
+function format_regul_sumary($number=0) {
+    $resume="";
+    if(strcmp("$resume","")==0) {
+        $resume="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE').":<br /></i></b></p><p align='center'>".__('EMPTY_REGUL')."</p>";    
+    }
+    return $resume;
+}
+// }}}
+
 
 
 

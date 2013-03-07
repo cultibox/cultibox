@@ -1,3 +1,10 @@
+CultiBox (1.1.8) precise; urgency=low
+    + Ajout de la possibilité de zoomer sur l'axe Y dans les logs 
+    + Correction de tooltip et de valeur par défaut dans la base configuration
+
+-- Yann Genevois <yann.genevois@gmail.com> Thu Mar  7 10:42:45 CET 2013
+
+
 CultiBox (1.1.7) precise; urgency=low
     + Correctif pour la gestion des puissances des prises
     + Corection de la couleur du programme 4 identique à celle de la puissance

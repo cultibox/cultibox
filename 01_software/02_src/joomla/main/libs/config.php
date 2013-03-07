@@ -46,10 +46,10 @@ $GLOBALS['PLUGA_DEFAULT'] = array('000', '247', '222', '219', '215', '207', '252
 $GLOBALS['PLUGA_DEFAULT_3500W'] = array('004', '000', '000', '006', '008', '010', '012', '014', '016', '018', '020', '022', '024', '026', '028','030');
 
 // List of value possible for temperature and hygrometry axis:
-$GLOBALS['LIST_MAX_AXIS'] = array('20', '40', '60', '80','100');
+$GLOBALS['LIST_MAX_AXIS'] = array('0', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100');
 
 // List of value possible for power graphic axis:
-$GLOBALS['LIST_MAX_POWER'] = array('100', '200', '500', '1000','2000');
+$GLOBALS['LIST_MAX_POWER'] = array('100', '200', '500', '1000','2000','5000');
 
 // Variable to enable/disable "first use" page:
 $GLOBALS['FIRST_USE'] = true;
