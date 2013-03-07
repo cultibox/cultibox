@@ -110,12 +110,6 @@ msgstr "Black"
 msgid "COLOR_PURPLE"
 msgstr "Purple"
 
-msgid "CONFIGURE_TEMP_AXIS"
-msgstr "Configure maximal axis value for temperature graphics"
-
-msgid "CONFIGURE_HYGRO_AXIS"
-msgstr "Configure maximal axis value for hygrometry graphics"
-
 msgid "CONFIGURE_POWER_AXIS"
 msgstr "Configure maximal axis value for power graphics"
 
@@ -356,8 +350,20 @@ msgstr "months"
 msgid "IMPORT_LOG"
 msgstr "Import logs"
 
-msgid "SET_XY_ZOOM"
-msgstr "Enable zoom on Y-axis"
+msgid "MIN_Y_AXIS_LOG"
+msgstr "Minimal value for Y-axis"
+
+msgid "MAX_Y_AXIS_LOG"
+msgstr "Maximal value for Y-axis"
+
+msgid "EMPTY_REGUL"
+msgstr "No regulation programmed"
+
+msgid "SUMARY_REGUL_TITLE"
+msgstr "Regulations summary"
+
+msgid "REGUL_TITLE_PLUG"
+msgstr "Regulation for the plug"
 
 
 # For the plugs part:
@@ -539,7 +545,7 @@ msgid "SUMARY_HOUR"
 msgstr "at"
 
 msgid "EMPTY_ACTION"
-msgstr "Aucune action programmée"
+msgstr "No action programmed"
 
 msgid "SUMARY_REGUL_ON"
 msgstr "Switch on regulation"
@@ -1080,8 +1086,8 @@ msgstr "Sans carte SD branchée les fichiers enregistrés par votre CultiBox con
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
 
-msgid "TOOLTIP_AXIS"
-msgstr "Cette option configure la valeur maximale de l'axe des ordonnées du graphique correspondant. Cependant le logiciel, pour une meilleure visualisation des graphiques, recalcule cette valeur en fonction de celle des autres graphiques. Il est donc possible que la valeur maximale ne corresponde pas exactement à la valeur selectionnée dans cette option."
+msgid "TOOLTIP_POWER_AXIS"
+msgstr "Tihis option configures the mximal value for the power consumed Y-axis graphics."
 
 msgid "TOOLTIP_LOG_PROGRAM"
 msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la CultiBox et le comportement théorique de la prise."
@@ -1115,4 +1121,11 @@ msgstr "This feature will erase all your previous logs recorded into your cultib
 
 msgid "TOOLTIP_STATE_PLUG"
 msgstr "You can disabled plugs you don't want to use. The Cultibox software will not show you informations about those disabled plugs"
+
+msgid "TOOLTIP_MAX_POWER_PLUG"
+msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 600W<br /><br />La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
+
+msgid "TOOLTIP_MAX_LOG_IMPORT"
+msgstr "This variable defines the number of month seek during the 'Import logs' process from the 'Logs' page"
+
 

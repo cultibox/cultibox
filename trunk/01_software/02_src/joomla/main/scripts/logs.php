@@ -42,8 +42,6 @@ $select_sensor="1";
 $startday="";
 $startmonth="";
 $startyear="";
-$hygro_axis=get_configuration("LOG_HYGRO_AXIS",$main_error);
-$temp_axis=get_configuration("LOG_TEMP_AXIS",$main_error);
 $power_axis=get_configuration("LOG_POWER_AXIS",$main_error);
 $fake_log=false;
 $program="";
@@ -52,6 +50,7 @@ $pop_up_message="";
 $pop_up_error_message="";
 $last_year=date('Y');
 $datap="";
+$resume_regul="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $log_search=get_configuration("LOG_SEARCH",$main_error);
@@ -286,6 +285,10 @@ if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
 }
 
 
+$resume_regul=format_data_sumary($nb_plugs);
+
+
+
 
 if($load_log) {
    if((isset($import_log))&&(!empty($import_log))) {
@@ -326,7 +329,7 @@ if("$type" == "days") {
    if($check_format) {
       if((isset($select_plug))&&(!empty($select_plug))) {
          $data_plug=get_data_plug($select_plug,$main_error);
-         $data_plug=format_axis_data($data_plug,$hygro_axis,$main_error);
+         $data_plug=format_axis_data($data_plug,100,$main_error);
          $data=format_program_highchart_data($data_plug,$startday);
          $plug_type=get_plug_conf("PLUG_TYPE",$select_plug,$main_error);
       }

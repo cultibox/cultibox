@@ -293,33 +293,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
       <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_TEMP_AXIS'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
-         <td><select name="temp_axis">
-                <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $value) {
-            if("$value"=="$temp_axis") {
-               echo "<option value=\"${value}\" selected>${value}°C</option>";
-            } else {
-               echo "<option value=\"${value}\">${value}°C</option>";
-            }
-                } ?></select></td>
-        <td></td>
-        </tr>
-   <tr>
-      <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_HYGRO_AXIS'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
-      <td><select name="hygro_axis">
-         <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $value) {
-           if("$value"=="$hygro_axis") {
-                   echo "<option value=\"${value}\" selected>${value}%</option>";
-           } else {
-                   echo "<option value=\"${value}\">${value}%</option>";
-           }
-      } ?></select></td>
-        <td></td>
-   </tr>
-   <tr>
-      <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_POWER_AXIS'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_AXIS'); ?>" /></td>
+      <td><?php echo __('CONFIGURE_POWER_AXIS'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER_AXIS'); ?>" /></td>
       <td><select name="power_axis">
          <?php foreach($GLOBALS['LIST_MAX_POWER'] as $value) {
            if("$value"=="$power_axis") {
@@ -350,7 +324,7 @@ timeFormat: 'hh:mm',
    </tr>
     <tr>
          <td class="conf-marge"></td>
-         <td><?php echo __('CONFIG_LOG_SEARCH'); ?>:</td>
+         <td><?php echo __('CONFIG_LOG_SEARCH'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_LOG_IMPORT'); ?>" /></td>
          <td><select name="log_search">
             <?php foreach($GLOBALS['LOG_SEARCH'] as $value) {
                 if("$value"=="$log_search") {
