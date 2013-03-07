@@ -4,6 +4,7 @@ CultiBox (1.1.8) precise; urgency=low
     + Suppression du composant joomfish dans joomla
     + Changement de la charte graphique du site, ajout du travail de Calagan
     + Désactivation des régulations secondaires
+    + Ajout du nouvel icone de calagan
 
 -- Yann Genevois <yann.genevois@gmail.com> Thu Mar  7 10:42:45 CET 2013
 
