@@ -1,6 +1,8 @@
 CultiBox (1.1.8) precise; urgency=low
     + Ajout de la possibilité de zoomer sur l'axe Y dans les logs 
     + Correction de tooltip et de valeur par défaut dans la base configuration
+    + Suppression du composant joomfish dans joomla
+    + Changement de la charte graphique du site, ajout du travail de Calagan
 
 -- Yann Genevois <yann.genevois@gmail.com> Thu Mar  7 10:42:45 CET 2013
 

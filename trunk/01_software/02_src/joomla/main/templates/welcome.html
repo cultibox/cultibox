@@ -56,17 +56,33 @@ function(){
 <?php } else { ?>
 <hr />
 <br />
+<!-- Calagan -->
 <table class="table_width">
-<tr><td class="welcome-link"><a href="index.php/display-logs"><img src="main/libs/img/logs.png" title="<?php echo __('WELCOME_LOGS'); ?>" alt="<?php echo __('WELCOME_LOGS'); ?>" /><br /><br /></a></td></tr>
-<tr><td class="welcome-link"><a href="index.php/programs"><img src="main/libs/img/program.png" title="<?php echo __('WELCOME_PROGRAM'); ?>" alt="<?php echo __('WELCOME_PROGRAM'); ?>" /><br /><br /></a></td></tr>
-<tr><td class="welcome-link"><a href="index.php/calendar"><img src="main/libs/img/calendar.png" title="<?php echo __('WELCOME_CALENDAR'); ?>" alt="<?php echo __('WELCOME_CALENDAR'); ?>"/><br /><br /></a></td></tr>
+<tr>
+<td class="welcome-link"><a href="index.php/display-logs"><img src="main/libs/img/logs.png" title="<?php echo __('WELCOME_LOGS'); ?>" alt="<?php echo __('WELCOME_LOGS'); ?>" /><br /></a></td><td class="welcome-link"><a href="index.php/programs"><img src="main/libs/img/program.png" title="<?php echo __('WELCOME_PROGRAM'); ?>" alt="<?php echo __('WELCOME_PROGRAM'); ?>" /><br /></a></td>
+<td class="welcome-link"><a href="index.php/calendar"><img src="main/libs/img/calendar.png" title="<?php echo __('WELCOME_CALENDAR'); ?>" alt="<?php echo __('WELCOME_CALENDAR'); ?>"/><br /></a></td></tr>
+
+<tr>
+<td class="welcome-link">
+<a href="index.php/display-logs">
+<?php echo __('WELCOME_LOGS'); ?>
+</a>
+</td>
+<td class="welcome-link"><a href="index.php/programs">
+<?php echo __('WELCOME_PROGRAM'); ?>
+</a>
+</td>
+<td class="welcome-link">
+<a href="index.php/calendar">
+<?php echo __('WELCOME_CALENDAR'); ?>
+</a>
+</td>
+</tr>
 </table>
 <br />
 <hr />
-<p class="p_center"><img src="main/libs/img/takecontrol.png" alt="" /></p>
 <?php } ?>
 </div>
-
 <?php if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) { ?>
 <script>
     var xhr=getXMLHttpRequest();

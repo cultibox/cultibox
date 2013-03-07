@@ -1,0 +1,203 @@
+body{
+	font-family: 'OpenSansRegular';
+	font-size:14px;	
+}
+
+a{
+	color:#696455;	
+}
+
+a:hover{
+	color:#C3B59B;
+}
+
+select, input, textarea, button {
+	font-family: 'OpenSansRegular';	
+}
+
+options {
+ 	padding:5px;
+	margin:5px;
+	height:24px;
+	line-height:24px;
+}
+
+option:focus{background: #ee986e;} 
+
+.error {
+	color:red;
+	font-size:14px;
+	font-family: 'OpenSansBold';	
+	font-style:normal;
+	font-weight:normal;
+}
+
+.menu_h1{
+	display:block;
+	text-align:center;	
+}
+
+p.p_right{
+	font-size:11px;		
+}
+
+button, input[type="button"], input[type="submit"] {
+	padding:6px 8px;
+	background: #C3B59B;
+	border-bottom-left-radius:11px;
+	border-bottom-right-radius:11px;
+	border-top-left-radius:11px;
+	border-top-right-radius:11px;
+}
+
+button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+	background: #f5ee31;
+}
+
+.step {
+  text-align:center;
+}
+
+.wizard_title {
+	color:#C3B59B;
+	font-size:24px;
+}
+
+#menubar {
+	border-bottom-left-radius:22px;
+	border-bottom-right-radius:22px;
+	border-top-left-radius:22px;
+	border-top-right-radius:22px;
+}
+
+.text_info, .step_info {
+	text-indent:0em;
+	display:block;
+	margin:auto;
+	width:80%;
+}
+
+.info {
+	color:#696455;
+	font-size:14px;
+	font-style:normal;
+	font-weight:normal;
+	display:block;
+	margin-bottom:15px;
+}
+
+ul { 
+	list-style-type: none; 
+	margin:0;
+	text-align:center;
+}
+ul, ol, dl {
+	padding-left:0px;
+}
+
+td.wizard-marge, td.wizard-input-previous {
+	width:0px;
+}
+
+td.wizard-marge-submit {
+	display:none;
+}
+
+td.wizard-input-previous, td.wizard-input-submit {
+	text-align:center;
+	vertical-align:top;
+}
+td.wizard-input-previous {
+	width:155px;
+}
+td.wizard-input-submit, td.wizard-input-previous2 {
+	width:310px;
+}
+
+td.wizard-input-previous input[type="submit"] {
+	width:100px;
+}
+hr {
+  margin:auto;
+  width:90%;
+}
+
+.error li{
+	margin:auto;
+	padding:12px;
+	border-radius:22px;
+	width:600px;
+	background:#F5EE31;
+	background:#e5dd2e;
+	display:block;
+	margin-bottom:5px;
+}
+
+.title_conf {
+	display:block;
+	margin:auto;
+	width:90%;
+	text-align:center;
+	font-size:19px;
+	font-style:normal;
+	font-weight:normal;
+	/*border-bottom:#CCC 1px solid;*/
+	padding-top:7px;
+	padding-bottom:20px;
+	background:url("../../../main/libs/img/fond_cartouche.png") center top no-repeat;
+}
+
+#menubar {
+	 padding:0 0 4px 25px;
+	 margin-right:80px;
+}
+
+a.logo img{
+	padding:10px 0 10px 30px;
+}
+
+#box{
+	position: absolute;
+	left:780px;
+	z-index:1000;
+}
+
+.menu_h1{
+	font-size:13px;
+	background:#CCC;
+	padding:10px 5px 9px 5px;
+	background:url("../../../main/libs/img/fond_cartouche.png") center center no-repeat;
+	border-radius:20px;
+}
+
+.menu_h1:hover{
+	background:url("../../../main/libs/img/fond_cartouche_vert.png") center center no-repeat;
+	color:#93982a;
+}
+
+td.conf-marge-td {
+  width:50%;
+}
+
+.info-bulle-contenu{
+	/*width:400px;*/
+	/* fonctionne bizarrement : javascript doit overrider ce css */
+	font-weight:normal;
+	background:#696455;
+	width:15%;
+	font-size:13px;
+}
+
+td.welcome-link {
+  width:33%;
+  vertical-align:top;
+}
+
+td.welcome-link img{
+  border-radius:22px;
+  border:#C3B59B 6px solid;
+}
+
+.info-bulle-css:hover{
+	cursor:pointer;
+}

@@ -93,6 +93,7 @@ $fonts = array(
 	'ubuntu' => 'template:fonts/ubuntu.css',
 	'metrophobic' => 'template:fonts/metrophobic.css',
 	'bebas' => 'template:fonts/bebas.css',
+	'opensans' => 'template:fonts/opensans.css',
 	'droidsans' => 'template:fonts/droidsans.css');
 
 foreach (array_unique(array($this['config']->get('font1'), $this['config']->get('font2'), $this['config']->get('font3'))) as $font) {
@@ -142,3 +143,4 @@ if ($this['useragent']->browser() == 'msie') {
 if (isset($head)) {
 	$this['template']->set('head', implode("\n", $head));
 }
+
