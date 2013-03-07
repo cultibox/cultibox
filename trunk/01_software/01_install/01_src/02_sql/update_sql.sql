@@ -22,7 +22,7 @@ UPDATE `cultibox`.`plugs` SET `PLUG_POWER_MAX` = '3500' WHERE `plugs`.`id` =1;
 -- Version 1.1.7:
 UPDATE `cultibox`.`plugs` SET `PLUG_ID` = '';
 
-UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.7' WHERE `configuration`.`id` =1;
+UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.8' WHERE `configuration`.`id` =1;
 DROP DATABASE `cultibox_joomla`;
 
 -- Version 1.1.8:
