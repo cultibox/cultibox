@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 21, 2013 at 03:43 PM
+-- Generation Time: Mar 07, 2013 at 12:01 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -41,48 +41,49 @@ CREATE TABLE IF NOT EXISTS `dkg45_assets` (
   UNIQUE KEY `idx_asset_name` (`name`),
   KEY `idx_lft_rgt` (`lft`,`rgt`),
   KEY `idx_parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `dkg45_assets`
 --
 
 INSERT INTO `dkg45_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
-(1, 0, 1, 69, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
+(1, 0, 1, 71, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
 (2, 1, 1, 2, 1, 'com_admin', 'com_admin', '{}'),
 (3, 1, 3, 6, 1, 'com_banners', 'com_banners', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (4, 1, 7, 8, 1, 'com_cache', 'com_cache', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
 (5, 1, 9, 10, 1, 'com_checkin', 'com_checkin', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
 (6, 1, 11, 12, 1, 'com_config', 'com_config', '{}'),
 (7, 1, 13, 16, 1, 'com_contact', 'com_contact', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(8, 1, 17, 20, 1, 'com_content', 'com_content', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
-(9, 1, 21, 22, 1, 'com_cpanel', 'com_cpanel', '{}'),
-(10, 1, 23, 24, 1, 'com_installer', 'com_installer', '{"core.admin":[],"core.manage":{"7":0},"core.delete":{"7":0},"core.edit.state":{"7":0}}'),
-(11, 1, 25, 26, 1, 'com_languages', 'com_languages', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(12, 1, 27, 28, 1, 'com_login', 'com_login', '{}'),
-(13, 1, 29, 30, 1, 'com_mailto', 'com_mailto', '{}'),
-(14, 1, 31, 32, 1, 'com_massmail', 'com_massmail', '{}'),
-(15, 1, 33, 34, 1, 'com_media', 'com_media', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":{"5":1}}'),
-(16, 1, 35, 36, 1, 'com_menus', 'com_menus', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(17, 1, 37, 38, 1, 'com_messages', 'com_messages', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
-(18, 1, 39, 40, 1, 'com_modules', 'com_modules', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(19, 1, 41, 44, 1, 'com_newsfeeds', 'com_newsfeeds', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(20, 1, 45, 46, 1, 'com_plugins', 'com_plugins', '{"core.admin":{"7":1},"core.manage":[],"core.edit":[],"core.edit.state":[]}'),
-(21, 1, 47, 48, 1, 'com_redirect', 'com_redirect', '{"core.admin":{"7":1},"core.manage":[]}'),
-(22, 1, 49, 50, 1, 'com_search', 'com_search', '{"core.admin":{"7":1},"core.manage":{"6":1}}'),
-(23, 1, 51, 52, 1, 'com_templates', 'com_templates', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(24, 1, 53, 56, 1, 'com_users', 'com_users', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(25, 1, 57, 60, 1, 'com_weblinks', 'com_weblinks', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
-(26, 1, 61, 62, 1, 'com_wrapper', 'com_wrapper', '{}'),
-(27, 8, 18, 19, 2, 'com_content.category.2', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(8, 1, 17, 24, 1, 'com_content', 'com_content', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
+(9, 1, 25, 26, 1, 'com_cpanel', 'com_cpanel', '{}'),
+(10, 1, 27, 28, 1, 'com_installer', 'com_installer', '{"core.admin":[],"core.manage":{"7":0},"core.delete":{"7":0},"core.edit.state":{"7":0}}'),
+(11, 1, 29, 30, 1, 'com_languages', 'com_languages', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(12, 1, 31, 32, 1, 'com_login', 'com_login', '{}'),
+(13, 1, 33, 34, 1, 'com_mailto', 'com_mailto', '{}'),
+(14, 1, 35, 36, 1, 'com_massmail', 'com_massmail', '{}'),
+(15, 1, 37, 38, 1, 'com_media', 'com_media', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":{"5":1}}'),
+(16, 1, 39, 40, 1, 'com_menus', 'com_menus', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(17, 1, 41, 42, 1, 'com_messages', 'com_messages', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
+(18, 1, 43, 44, 1, 'com_modules', 'com_modules', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(19, 1, 45, 48, 1, 'com_newsfeeds', 'com_newsfeeds', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(20, 1, 49, 50, 1, 'com_plugins', 'com_plugins', '{"core.admin":{"7":1},"core.manage":[],"core.edit":[],"core.edit.state":[]}'),
+(21, 1, 51, 52, 1, 'com_redirect', 'com_redirect', '{"core.admin":{"7":1},"core.manage":[]}'),
+(22, 1, 53, 54, 1, 'com_search', 'com_search', '{"core.admin":{"7":1},"core.manage":{"6":1}}'),
+(23, 1, 55, 56, 1, 'com_templates', 'com_templates', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(24, 1, 57, 60, 1, 'com_users', 'com_users', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(25, 1, 61, 64, 1, 'com_weblinks', 'com_weblinks', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
+(26, 1, 65, 66, 1, 'com_wrapper', 'com_wrapper', '{}'),
+(27, 8, 18, 23, 2, 'com_content.category.2', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
 (28, 3, 4, 5, 2, 'com_banners.category.3', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (29, 7, 14, 15, 2, 'com_contact.category.4', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(30, 19, 42, 43, 2, 'com_newsfeeds.category.5', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(31, 25, 58, 59, 2, 'com_weblinks.category.6', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(32, 24, 54, 55, 1, 'com_users.notes.category.7', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(33, 1, 63, 64, 1, 'com_finder', 'com_finder', '{"core.admin":{"7":1},"core.manage":{"6":1}}'),
-(34, 1, 65, 66, 1, 'com_jumi', 'com_jumi', '{}'),
-(35, 1, 67, 68, 1, 'com_joomfish', 'com_joomfish', '{}');
+(30, 19, 46, 47, 2, 'com_newsfeeds.category.5', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(31, 25, 62, 63, 2, 'com_weblinks.category.6', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(32, 24, 58, 59, 1, 'com_users.notes.category.7', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(33, 1, 67, 68, 1, 'com_finder', 'com_finder', '{"core.admin":{"7":1},"core.manage":{"6":1}}'),
+(34, 1, 69, 70, 1, 'com_jumi', 'com_jumi', '{}'),
+(36, 27, 19, 20, 3, 'com_content.article.1', 'Welcome', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(37, 27, 21, 22, 3, 'com_content.article.2', 'Configuration', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}');
 
 -- --------------------------------------------------------
 
@@ -351,7 +352,15 @@ CREATE TABLE IF NOT EXISTS `dkg45_content` (
   KEY `idx_featured_catid` (`featured`,`catid`),
   KEY `idx_language` (`language`),
   KEY `idx_xreference` (`xreference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `dkg45_content`
+--
+
+INSERT INTO `dkg45_content` (`id`, `asset_id`, `title`, `alias`, `title_alias`, `introtext`, `fulltext`, `state`, `sectionid`, `mask`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `parentid`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
+(1, 36, 'Welcome', 'welcome', '', '{Jumi [main/scripts/welcome.php]}\r\n', '', -2, 0, 0, 2, '2013-03-07 09:45:15', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2013-03-07 09:45:15', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":null,"urlatext":"","targeta":"","urlb":null,"urlbtext":"","targetb":"","urlc":null,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 0, 1, '', '', 1, 7, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
+(2, 37, 'Configuration', 'configuration', '', '{Jumi [main/scripts/configuration.php]}\r\n', '', -2, 0, 0, 2, '2013-03-07 09:49:09', 42, '', '2013-03-07 09:49:15', 42, 0, '0000-00-00 00:00:00', '2013-03-07 09:49:09', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":null,"urlatext":"","targeta":"","urlb":null,"urlbtext":"","targetb":"","urlc":null,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 2, 0, 0, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
 
 -- --------------------------------------------------------
 
@@ -565,11 +574,6 @@ INSERT INTO `dkg45_extensions` (`extension_id`, `name`, `type`, `element`, `fold
 (10001, 'System - Jumi', 'plugin', 'jumi', 'system', 0, 1, 1, 0, '{"legacy":false,"name":"System - Jumi","type":"plugin","creationDate":"January 2011","author":"Edvard Ananyan","copyright":"Copyright (c) 2006 - 2010 Martin Hajek, 2011 Edvard Ananyan. All rights reserved.","authorEmail":"edo888@gmail.com","authorUrl":"http:\\/\\/edo.webmaster.am","version":"2.0.6","description":"JUMIPLUGINDESC","group":""}', '{"default_absolute_path":"","hide_code":"0","nested_replace":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10002, 'System - Jumi Router', 'plugin', 'jumirouter', 'system', 0, 1, 1, 0, '{"legacy":false,"name":"System - Jumi Router","type":"plugin","creationDate":"January 2011","author":"Edvard Ananyan","copyright":"Copyright (C) 2008 - 2011 Edvard Ananyan. All rights reserved.","authorEmail":"edo888@gmail.com","authorUrl":"http:\\/\\/edo.webmaster.am","version":"2.0.6","description":"SEF routing plugin for Jumi, which will enable direct access to jumi application with it''s alias.","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 100, 0),
 (10003, 'com_jumi', 'component', 'com_jumi', '', 1, 1, 0, 0, '{"legacy":false,"name":"com_jumi","type":"component","creationDate":"January 2011","author":"Edvard Ananyan","copyright":"Copyright (c) 2008 - 2011 Edvard Ananyan. All rights reserved.","authorEmail":"edo888@gmail.com","authorUrl":"http:\\/\\/edo.webmaster.am\\/","version":"2.0.6","description":"This component includes custom scripts (html, php, js, css, ...) into Joomla! pages.<br \\/>Collaboration between multiple Joomla! pages and other Jumi extensions is easy.<br \\/>For Jumi downloads and guides visit <a href=\\"http:\\/\\/edo.webmaster.am\\/jumi\\" target=\\"_blank\\">http:\\/\\/edo.webmaster.am\\/jumi<\\/a><br \\/>For Jumi demos, tips and tricks visit <a href=\\"http:\\/\\/edo.webmaster.am\\/jumi\\/tutorial\\" target=\\"_blank\\">http:\\/\\/edo.webmaster.am\\/jumi\\/tutorial<\\/a>","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10005, 'PLG_SYSTEM_JFDATABASE', 'plugin', 'jfdatabase', 'system', 0, 0, 1, 0, '{"legacy":true,"name":"PLG_SYSTEM_JFDATABASE","type":"plugin","creationDate":"January 2012","author":"Geraint Edwards","copyright":"Copyright (C) 2003 - 2012, Think Network GmbH, Munich. All rights reserved.","authorEmail":"support@joomfish.net","authorUrl":"http:\\/\\/www.joomfish.net","version":"2.5.0 alpha","description":"PLG_SYSTEM_JFDATABASE_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10006, 'JOOMFISH_BASIC_ROUTER', 'plugin', 'jfrouter', 'system', 0, 0, 1, 0, '{"legacy":true,"name":"JOOMFISH_BASIC_ROUTER","type":"plugin","creationDate":"January 2012","author":"Joom!Fish Project","copyright":"2003 - 2012, Think Network GmbH, Munich","authorEmail":"support@joomfish.net","authorUrl":"http:\\/\\/www.joomfish.net","version":"2.5.0 alpha","description":"WHEN_ACTIVATED_THIS_PLUGIN_PROVIDES_LANGUAGE_DETERMINATION_AND_BASIC_ROUTING","group":""}', '{"determitLanguage":"1","newVisitorAction":"browser","use302redirect":"0","enableCookie":"1","sefordomain":"sefprefix","sefprefixes":"lang-","sefsubdomain":""}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10007, 'JOOMFISH_OVERRIDES', 'plugin', 'jfoverrides', 'system', 0, 0, 1, 0, '{"legacy":true,"name":"JOOMFISH_OVERRIDES","type":"plugin","creationDate":"January 2012","author":"Joom!Fish Project","copyright":"2003 - 2012, Think Network GmbH, Munich","authorEmail":"support@joomfish.net","authorUrl":"http:\\/\\/www.joomfish.net","version":"2.5.0 alpha","description":"WHEN_ACTIVATED_THIS_PLUGIN_PROVIDES_NECESSARY_JOOMLA_OVERRIDES","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10008, 'MOD_JFLANGUAGESELECTION', 'module', 'mod_jflanguageselection', '', 0, 0, 0, 0, '{"legacy":false,"name":"MOD_JFLANGUAGESELECTION","type":"module","creationDate":"January 2012","author":"Joom!Fish Project","copyright":"Copyright (C) 2003 - 2012, Think Network GmbH, Munich. All rights reserved.","authorEmail":"","authorUrl":"http:\\/\\/www.joomfish.net","version":"2.5.0 alpha","description":"MOD_JFLANGUAGESELECTION_XML_DESCRIPTION","group":""}', '{"type":"rawimages","show_active":"1","inc_jf_css":"1","moduleclass_sfx":"","@spacer":"","cache_href":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10009, 'com_joomfish', 'component', 'com_joomfish', '', 1, 1, 0, 0, '{"legacy":false,"name":"COM_JOOMFISH","type":"component","creationDate":"January 2012","author":"Joom!Fish Project","copyright":"2003 - 2012, Think Network GmbH, Munich","authorEmail":"support@joomfish.net","authorUrl":"http:\\/\\/www.joomfish.net","version":"2.5.0 alpha","description":"COM_JOOMFISH_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10010, 'FrenchFR', 'language', 'fr-FR', '', 0, 1, 0, 0, '{"legacy":false,"name":"French (FR)","type":"language","creationDate":"2012-02-02","author":"French translation team : joomla.fr","copyright":"Copyright (C) 2005 - 2012 joomla.fr et Open Source Matters. Tous droits r\\u00e9serv\\u00e9s","authorEmail":"traduction@joomla.fr","authorUrl":"www.joomla.fr","version":"2.5.1","description":"fr-FR site language","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10011, 'FrenchFR', 'language', 'fr-FR', '', 1, 1, 0, 0, '{"legacy":false,"name":"French (FR)","type":"language","creationDate":"2012-02-02","author":"French translation team : joomla.fr","copyright":"Copyright (C) 2005 - 2012 joomla.fr et Open Source Matters. Tous droits r\\u00e9serv\\u00e9s","authorEmail":"traduction@joomla.fr","authorUrl":"www.joomla.fr","version":"2.5.1","description":"fr-FR administrator language","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10012, 'TinyMCE langue FR', 'file', 'TinyMCE_fr-FR', '', 0, 1, 0, 0, '{"legacy":false,"name":"TinyMCE langue FR","type":"file","creationDate":"24 Janvier 2012","author":"French Translation Team","copyright":"(C) 2005-2012 French Translation Team","authorEmail":"info@comunidadjoomla.org","authorUrl":"http:\\/\\/www.comunidadjoomla.org","version":"3.4.3.2","description":"\\n\\t\\t<h3>Installation du pack de langue FR de TinyMCE 3 pour Joomla 2.5 effectu\\u00e9e avec succ\\u00e8s<\\/h3>\\n\\t\\t<div style=\\"font-weight:normal\\">N''oubliez pas de s\\u00e9lectionner la langue FR dans la <a href=\\"index.php?option=com_plugins&view=plugins&filter_search=TinyMCE\\"><strong>gestion du plug-in TinyMCE<\\/strong><\\/a><br \\/>\\n\\t\\tSi vous utilisez la d\\u00e9tection automatique, veillez \\u00e0 ce que soient install\\u00e9s les diff\\u00e9rents packs de langue de TinyMCE correspondants \\u00e0 ceux install\\u00e9s pour Joomla!<br\\/><br\\/>\\n\\t\\tTraduction <a href=\\"http:\\/\\/www.joomla.fr\\" target=\\"_blank\\" title=\\"\\"><strong>Joomla.fr<\\/strong><\\/a> sur la base de TinyMCE 3.4.3.2 pour Joomla! 2.5<br\\/>\\n\\t\\tVeuillez svp faire part des erreurs de traduction \\u00e0 l''adresse suivante : <a href=\\"mailto:traduction@joomla.fr\\"><strong>traduction@joomla.fr<\\/strong><\\/a><br\\/><br\\/><\\/div>\\n\\t\\t\\n\\t","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -1364,7 +1368,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_menu` (
 --
 
 INSERT INTO `dkg45_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `ordering`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 103, 0, '*', 0),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 83, 0, '*', 0),
 (2, 'menu', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 0, 1, 1, 4, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 1, 10, 0, '*', 1),
 (3, 'menu', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners', 'component', 0, 2, 2, 4, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 2, 3, 0, '*', 1),
 (4, 'menu', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&extension=com_banners', 'component', 0, 2, 2, 6, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-cat', 0, '', 4, 5, 0, '*', 1),
@@ -1386,7 +1390,7 @@ INSERT INTO `dkg45_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 (20, 'menu', 'com_weblinks_categories', 'Categories', '', 'Weblinks/Categories', 'index.php?option=com_categories&extension=com_weblinks', 'component', 0, 18, 2, 6, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:weblinks-cat', 0, '', 36, 37, 0, '*', 1),
 (21, 'menu', 'com_finder', 'Smart Search', '', 'Smart Search', 'index.php?option=com_finder', 'component', 0, 1, 1, 27, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:finder', 0, '', 29, 30, 0, '*', 1),
 (102, 'main', 'COM_JUMI_MENU', 'com-jumi-menu', '', 'com-jumi-menu', 'index.php?option=com_jumi', 'component', 0, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_jumi/images/jumi.png', 0, '', 41, 42, 0, '', 1),
-(103, 'mainmenu', 'Configuration', 'configuration', '', 'configuration', 'index.php?option=com_jumi&view=application&fileid=3', 'component', 1, 1, 1, 10003, 0, 42, '2013-01-16 13:22:08', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 45, 46, 0, 'en-GB', 0),
+(103, 'mainmenu', 'Configuration', 'configuration', '', 'configuration', 'index.php?option=com_jumi&view=application&fileid=3', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 45, 46, 0, 'en-GB', 0),
 (105, 'mainmenu', 'Programs', 'programs', '', 'programs', 'index.php?option=com_jumi&view=application&fileid=5', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 51, 52, 0, 'en-GB', 0),
 (106, 'main', 'Joom!Fish', 'joom-fish', '', 'joom-fish', 'index.php?option=com_joomfish', 'component', 0, 1, 1, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-joomfish.png', 0, '', 53, 72, 0, '', 1),
 (107, 'main', 'Control Panel', 'control-panel', '', 'joom-fish/control-panel', 'index.php?option=com_joomfish', 'component', 0, 106, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-cpanel.png', 0, '', 54, 55, 0, '', 1),
@@ -1398,24 +1402,14 @@ INSERT INTO `dkg45_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 (113, 'main', 'Languages', 'languages', '', 'joom-fish/languages', 'index.php?option=com_joomfish&task=languages.show', 'component', 0, 106, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-language.png', 0, '', 66, 67, 0, '', 1),
 (114, 'main', 'Content elements', 'content-elements', '', 'joom-fish/content-elements', 'index.php?option=com_joomfish&task=elements.show', 'component', 0, 106, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-extension.png', 0, '', 68, 69, 0, '', 1),
 (115, 'main', 'Plugins', 'plugins', '', 'joom-fish/plugins', 'index.php?option=com_joomfish&task=plugin.show', 'component', 0, 106, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-plugin.png', 0, '', 70, 71, 0, '', 1),
-(116, 'main', 'com_joomfish', 'com-joomfish', '', 'com-joomfish', 'index.php?option=com_joomfish', 'component', 0, 1, 1, 10009, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-joomfish.png', 0, '', 73, 92, 0, '', 1),
-(117, 'main', 'com_joomfish_control_panel', 'com-joomfish-control-panel', '', 'com-joomfish/com-joomfish-control-panel', 'index.php?option=com_joomfish', 'component', 0, 116, 2, 10009, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-cpanel.png', 0, '', 74, 75, 0, '', 1),
-(118, 'main', 'com_joomfish_translation', 'com-joomfish-translation', '', 'com-joomfish/com-joomfish-translation', 'index.php?option=com_joomfish&task=translate.overview', 'component', 0, 116, 2, 10009, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-translation.png', 0, '', 76, 77, 0, '', 1),
-(119, 'main', 'com_joomfish_orphan_translations', 'com-joomfish-orphan-translations', '', 'com-joomfish/com-joomfish-orphan-translations', 'index.php?option=com_joomfish&task=translate.orphans', 'component', 0, 116, 2, 10009, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-orphan.png', 0, '', 78, 79, 0, '', 1),
-(120, 'main', 'com_joomfish_manage_translations', 'com-joomfish-manage-translations', '', 'com-joomfish/com-joomfish-manage-translations', 'index.php?option=com_joomfish&task=manage.overview', 'component', 0, 116, 2, 10009, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-manage.png', 0, '', 80, 81, 0, '', 1),
-(121, 'main', 'com_joomfish_statistics', 'com-joomfish-statistics', '', 'com-joomfish/com-joomfish-statistics', 'index.php?option=com_joomfish&task=statistics.overview', 'component', 0, 116, 2, 10009, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-statistics.png', 0, '', 82, 83, 0, '', 1),
-(122, 'main', 'com_joomfish_languages', 'com-joomfish-languages', '', 'com-joomfish/com-joomfish-languages', 'index.php?option=com_joomfish&task=languages.show', 'component', 0, 116, 2, 10009, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-language.png', 0, '', 84, 85, 0, '', 1),
-(123, 'main', 'com_joomfish_content_elements', 'com-joomfish-content-elements', '', 'com-joomfish/com-joomfish-content-elements', 'index.php?option=com_joomfish&task=elements.show', 'component', 0, 116, 2, 10009, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-extension.png', 0, '', 86, 87, 0, '', 1),
-(124, 'main', 'com_joomfish_plugins', 'com-joomfish-plugins', '', 'com-joomfish/com-joomfish-plugins', 'index.php?option=com_joomfish&task=plugin.show', 'component', 0, 116, 2, 10009, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-plugin.png', 0, '', 88, 89, 0, '', 1),
-(125, 'main', 'com_joomfish_help', 'com-joomfish-help', '', 'com-joomfish/com-joomfish-help', 'index.php?option=com_joomfish&task=help.show', 'component', 0, 116, 2, 10009, 0, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_joomfish/assets/images/icon-16-help.png', 0, '', 90, 91, 0, '', 1),
 (130, 'mainmenu', 'Plugs', 'plugs', '', 'plugs', 'index.php?option=com_jumi&view=application&fileid=6', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 49, 50, 0, 'en-GB', 0),
-(132, 'mainmenu', 'Calendar', 'calendar', '', 'calendar', 'index.php?option=com_jumi&view=application&fileid=7', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 93, 94, 0, 'en-GB', 0),
-(133, 'mainmenu', 'Wizard', 'wizard', '', 'wizard', 'index.php?option=com_jumi&view=application&fileid=8', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 95, 96, 0, 'en-GB', 0),
+(132, 'mainmenu', 'Calendar', 'calendar', '', 'calendar', 'index.php?option=com_jumi&view=application&fileid=7', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 73, 74, 0, 'en-GB', 0),
+(133, 'mainmenu', 'Wizard', 'wizard', '', 'wizard', 'index.php?option=com_jumi&view=application&fileid=8', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 75, 76, 0, 'en-GB', 0),
 (134, 'mainmenu', 'Welcome', 'welcome', '', 'welcome', 'index.php?option=com_jumi&view=application&fileid=9', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 43, 44, 1, '*', 0),
-(135, 'mainmenu', 'Cost', 'cost', '', 'cost', 'index.php?option=com_jumi&view=application&fileid=10', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 97, 98, 0, 'en-GB', 0),
+(135, 'mainmenu', 'Cost', 'cost', '', 'cost', 'index.php?option=com_jumi&view=application&fileid=10', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 77, 78, 0, 'en-GB', 0),
 (137, 'mainmenu', 'Display Logs', 'display-logs', '', 'display-logs', 'index.php?option=com_jumi&view=application&fileid=11', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 47, 48, 0, 'en-GB', 0),
-(138, 'mainmenu', 'Historic', 'historic', '', 'historic', 'index.php?option=com_jumi&view=application&fileid=12', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 99, 100, 0, 'en-GB', 0),
-(139, 'mainmenu', 'Prises', 'prises', '', 'prises', 'index.php?option=com_jumi&view=application&fileid=6', 'component', -2, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 101, 102, 0, 'fr-FR', 0);
+(138, 'mainmenu', 'Historic', 'historic', '', 'historic', 'index.php?option=com_jumi&view=application&fileid=12', 'component', 1, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 79, 80, 0, 'en-GB', 0),
+(139, 'mainmenu', 'Prises', 'prises', '', 'prises', 'index.php?option=com_jumi&view=application&fileid=6', 'component', -2, 1, 1, 10003, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 81, 82, 0, 'fr-FR', 0);
 
 -- --------------------------------------------------------
 
@@ -1523,7 +1517,6 @@ INSERT INTO `dkg45_modules` (`id`, `title`, `note`, `content`, `ordering`, `posi
 (79, 'Multilanguage status', '', '', 1, 'status', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_multilangstatus', 3, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*'),
 (86, 'Joomla Version', '', '', 1, 'footer', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_version', 3, 1, '{"format":"short","product":"1","layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*'),
 (87, 'Jumi', '', '', 1, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_jumi', 1, 1, '{"notepad":"","code_written":"","source_code_storage":"","default_absolute_path":"","moduleclass_sfx":"","cache":"1","cache_time":"900"}', 0, '*'),
-(88, 'JoomFish language selector', '', '', 1, 'banner', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', -2, 'mod_jflanguageselection', 1, 1, '{"type":"rawimages","show_active":"1","inc_jf_css":"1","moduleclass_sfx":"","cache_href":"1"}', 0, '*'),
 (89, 'choose language', '', '', 1, 'footer', 42, '2013-01-16 13:14:03', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_languages', 1, 1, '{"header_text":"","footer_text":"","dropdown":"0","image":"1","inline":"1","show_active":"1","full_name":"1","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"itemid"}', 0, '*'),
 (90, 'Menu Principal', '', '', 1, 'menu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', -2, 'mod_menu', 1, 1, '{"menutype":"mainmenu","startLevel":"1","endLevel":"0","showAllChildren":"0","tag_id":"","class_sfx":"","window_open":"","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"itemid"}', 0, 'fr-FR');
 
@@ -1562,7 +1555,6 @@ INSERT INTO `dkg45_modules_menu` (`moduleid`, `menuid`) VALUES
 (79, 0),
 (86, 0),
 (87, 0),
-(88, 0),
 (89, 0),
 (90, 139);
 
@@ -1757,7 +1749,8 @@ CREATE TABLE IF NOT EXISTS `dkg45_session` (
 --
 
 INSERT INTO `dkg45_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`, `usertype`) VALUES
-('9e3f0903351b79f5638fcc10dff62069', 0, 1, '1358779299', '__default|a:4:{s:22:"session.client.browser";s:76:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:18.0) Gecko/20100101 Firefox/18.0";s:15:"session.counter";i:1;s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";N;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:8:"usertype";N;s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:0:{}s:5:"guest";i:1;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";N;s:14:"\0*\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}}LANG|s:5:"fr_FR";', 0, '', '');
+('55d6395e2b9219e84a7fdb15e522f138', 1, 0, '1362654062', '__default|a:8:{s:22:"session.client.browser";s:76:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:19.0) Gecko/20100101 Firefox/19.0";s:15:"session.counter";i:18;s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":3:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:0:"";}s:9:"com_menus";O:8:"stdClass":2:{s:5:"items";O:8:"stdClass":2:{s:6:"filter";O:8:"stdClass":1:{s:8:"menutype";s:8:"mainmenu";}s:10:"limitstart";i:0;}s:4:"edit";O:8:"stdClass":1:{s:4:"item";O:8:"stdClass":4:{s:2:"id";a:1:{i:0;i:134;}s:4:"data";N;s:4:"type";N;s:4:"link";N;}}}s:11:"com_content";O:8:"stdClass":1:{s:4:"edit";O:8:"stdClass":1:{s:7:"article";O:8:"stdClass":2:{s:2:"id";a:0:{}s:4:"data";N;}}}}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";b:1;s:2:"id";s:2:"42";s:4:"name";s:10:"Super User";s:8:"username";s:5:"admin";s:5:"email";s:12:"root@root.fr";s:8:"password";s:65:"851730d9e5d66633aac361c61dd7dc40:iGeo8EKfuh9HDXfISxghtP6aIZ2DBjw6";s:14:"password_clear";s:0:"";s:8:"usertype";s:10:"deprecated";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2012-03-28 07:13:27";s:13:"lastvisitDate";s:19:"2013-03-07 09:44:35";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\0*\0_authLevels";a:4:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}s:13:"session.token";s:32:"467fa2a13f42543671a7466a246252c1";s:19:"session.timer.start";i:1362654017;s:18:"session.timer.last";i:1362654061;s:17:"session.timer.now";i:1362654062;}', 42, 'admin', ''),
+('93a0de874f4ca89bb9e90b1d26771898', 0, 1, '1362654067', '__default|a:7:{s:15:"session.counter";i:3;s:19:"session.timer.start";i:1362654064;s:18:"session.timer.last";i:1362654066;s:17:"session.timer.now";i:1362654067;s:22:"session.client.browser";s:76:"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:19.0) Gecko/20100101 Firefox/19.0";s:8:"registry";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":23:{s:9:"\0*\0isRoot";N;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:8:"usertype";N;s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:0:{}s:5:"guest";i:1;s:10:"\0*\0_params";O:9:"JRegistry":1:{s:7:"\0*\0data";O:8:"stdClass":0:{}}s:14:"\0*\0_authGroups";N;s:14:"\0*\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\0*\0_authActions";N;s:12:"\0*\0_errorMsg";N;s:10:"\0*\0_errors";a:0:{}s:3:"aid";i:0;}}LANG|s:5:"fr_FR";', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -2001,7 +1994,7 @@ CREATE TABLE IF NOT EXISTS `dkg45_users` (
 --
 
 INSERT INTO `dkg45_users` (`id`, `name`, `username`, `email`, `password`, `usertype`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`) VALUES
-(42, 'Super User', 'admin', 'root@root.fr', '851730d9e5d66633aac361c61dd7dc40:iGeo8EKfuh9HDXfISxghtP6aIZ2DBjw6', 'deprecated', 0, 1, '2012-03-28 07:13:27', '2013-01-16 14:21:27', '0', '');
+(42, 'Super User', 'admin', 'root@root.fr', '851730d9e5d66633aac361c61dd7dc40:iGeo8EKfuh9HDXfISxghtP6aIZ2DBjw6', 'deprecated', 0, 1, '2012-03-28 07:13:27', '2013-03-07 11:00:17', '0', '');
 
 -- --------------------------------------------------------
 
