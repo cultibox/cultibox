@@ -144,7 +144,7 @@ hr {
 	/*border-bottom:#CCC 1px solid;*/
 	padding-top:7px;
 	padding-bottom:20px;
-	background:url("../../../main/libs/img/fond_cartouche.png") center top no-repeat;
+	background:url("../img/fond_cartouche.png") center top no-repeat;
 }
 
 #menubar {
@@ -166,12 +166,12 @@ a.logo img{
 	font-size:13px;
 	background:#CCC;
 	padding:10px 5px 9px 5px;
-	background:url("../../../main/libs/img/fond_cartouche.png") center center no-repeat;
+	background:url("../img/fond_cartouche.png") center center no-repeat;
 	border-radius:20px;
 }
 
 .menu_h1:hover{
-	background:url("../../../main/libs/img/fond_cartouche_vert.png") center center no-repeat;
+	background:url("../img/fond_cartouche_vert.png") center center no-repeat;
 	color:#93982a;
 }
 
