@@ -15,8 +15,16 @@ include($this['path']->path('layouts:template.config.php'));
 
 <head>
 <?php echo $this['template']->render('head'); ?>
+<?php 
+	// Surcharge Calagan
+	// L'idée est de remplacer les liens direct de menu Jumi par des liens vers des articles qui contiennent une syntaxe style {jumi [ok.php]}
+	require_once 'main/libs/config.php'; 
+	require_once 'main/libs/db_common.php'; 
+	require_once 'main/libs/utilfunc.php'; 
+?>
          <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css" />
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" />
+                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" /> 
+                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/calagan.css" />
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         
                 <!-- Javascript JQUERY libraries for cultibox components: calendar, datepicker, highcharts... -->
@@ -90,17 +98,21 @@ include($this['path']->path('layouts:template.config.php'));
 						<?php if ($this['modules']->count('logo')) : ?>	
 						<a id="logo" href="<?php echo $this['config']->get('site_url'); ?>"><?php echo $this['modules']->render('logo'); ?></a>
 						<?php endif; ?>
-                        
-						<?php if ($this['modules']->count('bus')) : ?>	
-						<a id="bus" href="<?php echo $this['config']->get('site_url')."/index.php"; ?>"><?php echo $this['modules']->render('bus'); ?></a>
-						<?php endif; ?>
-                        						
+                  
+                        <div id="box">                      
+                        	<img src="images/box.png">
+                        </div>
+                        			
+                        <a class="logo" href="<?php echo $this['config']->get('site_url'); ?>">                       
+                        	<img src="images/logo_cultibox.png">
+                        </a>		
+                        	
 						<?php if($this['modules']->count('headerbar')) : ?>
 						<div class="left"><?php echo $this['modules']->render('headerbar'); ?></div>
 						<?php endif; ?>    
                         
                         <div id="menubar" class="grid-block">
-						
+						                      
 							<?php  if ($this['modules']->count('menu')) : ?>
                             <nav id="menu"><?php echo $this['modules']->render('menu'); ?></nav>
                             <?php endif; ?>
@@ -185,8 +197,7 @@ include($this['path']->path('layouts:template.config.php'));
                      <!-- Displays version and license for the software at the footer -->
                   <?php 
                         $error="";
-                        echo __('VERSION').": ".get_configuration("VERSION",$error); 
-                        echo "&nbsp;-&nbsp;".__('LICENSE').": LGPL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />";
+                        echo "V".get_configuration("VERSION",$error)."&nbsp;-&nbsp;LGPL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />";
                   ?>    
                   </p>
 	               <br /><br />	
