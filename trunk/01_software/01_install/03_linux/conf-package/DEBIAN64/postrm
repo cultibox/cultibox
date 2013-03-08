@@ -2,10 +2,6 @@
 
 
 if [ "$1" != "upgrade" ]; then
-    if [ -d /opt/cultibox ]; then
-        rm -R /opt/cultibox
-    fi
-
     if [ -f /etc/init.d/cultibox ]; then
         update-rc.d -f cultibox remove
         rm /etc/init.d/cultibox
@@ -22,4 +18,10 @@ fi
 
 if [ "$1" == "upgrade" ]; then
     touch /tmp/cultibox_upgrade
+fi
+
+if [ "$1" == "purge" ]; then
+    if [ -d /opt/cultibox ]; then
+        rm -Rf /opt/cultibox
+    fi
 fi
