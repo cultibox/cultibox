@@ -47,7 +47,7 @@ case "$1" in
            cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/extra/
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-script/* ../01_src/01_xampp/cultibox/opt/lampp/
-           cp ../01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/opt/lampp/
+           cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
            cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/opt/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
            cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
@@ -100,7 +100,7 @@ case "$1" in
            cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/extra/
            cp conf-script/* ../01_src/01_xampp/cultibox/opt/lampp/
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
-           cp ../01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/opt/lampp/
+           cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
            cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/opt/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
            cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/

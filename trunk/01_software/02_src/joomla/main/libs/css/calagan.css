@@ -35,6 +35,7 @@ option:focus{background: #ee986e;}
 .menu_h1{
 	display:block;
 	text-align:center;	
+    width: 150px;
 }
 
 p.p_right{

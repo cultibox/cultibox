@@ -66,12 +66,14 @@ timeFormat: 'hh:mm',
 <br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
 <table class="table_width">
-<tr>
-    <td><div id="div_user_label" class="menu_h1"><label onclick="expand('user_interface')"><?php echo __('USER_CONF'); ?></label></div></td>
-    <td><div id="div_system_label" class="menu_h1"><label onclick="expand('system_interface')"><?php echo __('SYSTEM_CONF'); ?></label></div></td>
-    <td><div id="div_alarm_label" class="menu_h1"><label onclick="expand('alarm_interface')"><?php echo __('CONFIGURE_ALARM'); ?></label></div></td>
-    <td><div id="div_cost_label" class="menu_h1"><label onclick="expand('cost_interface')"><?php echo __('CONFIGURE_COST'); ?></label></div></td>
-    <td><div id="div_card_label" class="menu_h1"><label onclick="expand('card_interface')"><?php echo __('CONFIGURE_CARD'); ?></label></div></td>
+<tr>    
+    <td class="conf-menu-marge"></td>
+    <td><button id="div_user_label" class="menu_h1" onclick="expand('user_interface'); return false;"><?php echo __('USER_CONF'); ?></button></td>
+    <td><button id="div_system_label" class="menu_h1" onclick="expand('system_interface'); return false;"><?php echo __('SYSTEM_CONF'); ?></button></td>
+    <td><button id="div_alarm_label" class="menu_h1" onclick="expand('alarm_interface'); return false;"><?php echo __('CONFIGURE_ALARM'); ?></button></td>
+    <td><button id="div_cost_label" class="menu_h1" onclick="expand('cost_interface'); return false;"><?php echo __('CONFIGURE_COST'); ?></button></td>
+    <td><button id="div_card_label" class="menu_h1" onclick="expand('card_interface'); return false;"><?php echo __('CONFIGURE_CARD'); ?></button></td>
+    <td class="conf-menu-marge"></td>
 </tr>
 </table>    
 <br />
