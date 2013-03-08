@@ -48,10 +48,10 @@ msgid "CONFIGURE_TITLE_CULTIBOX"
 msgstr "Configure your Cultibox"
 
 msgid "USER_CONF"
-msgstr "Interface preferences"
+msgstr "Interface"
 
 msgid "SYSTEM_CONF"
-msgstr "Cultibox preferences"
+msgstr "Cultibox"
 
 msgid "CONFIGURE_COST"
 msgstr "Cost"

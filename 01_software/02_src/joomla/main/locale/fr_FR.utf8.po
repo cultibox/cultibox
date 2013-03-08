@@ -48,13 +48,13 @@ msgid "CONFIGURE_TITLE_CULTIBOX"
 msgstr "Configurer votre système Cultibox"
 
 msgid "USER_CONF"
-msgstr "Préférences interface"
+msgstr "Interface"
 
 msgid "SYSTEM_CONF"
-msgstr "Préférences Cultibox"
+msgstr "Cultibox"
 
 msgid "CONFIGURE_COST"
-msgstr "Calcul du coût"
+msgstr "Coût"
 
 msgid "CONFIGURE_CARD"
 msgstr "Carte SD"

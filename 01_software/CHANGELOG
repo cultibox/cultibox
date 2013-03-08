@@ -1,3 +1,12 @@
+CultiBox (1.1.9) precise; urgency=low
+    + Lancement de l'interface à la fin de l'installation sous windows
+    + On n'affiche plus les erreurs du update.sql (il y en aura forcément et c'est pas important)
+    + Suppression de l'image de la cultibox dans le welcome, calagan l'a ajouté au bout du menu
+    + Ajout de l'ancien icone pour le logiciel sur linux, ca le fait top moumouteuh
+
+-- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
+
+
 CultiBox (1.1.8) precise; urgency=low
     + Ajout de la possibilité de zoomer sur l'axe Y dans les logs 
     + Correction de tooltip et de valeur par défaut dans la base configuration

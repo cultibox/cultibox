@@ -57,6 +57,9 @@ english.SaveDatas=Do you want to save the configuration of your old CultiBox sof
 french.CleanCache=Vous venez d'installer une nouvelle version, n'oubliez pas de supprimer le cache de votre navigateur internet pour que celle-ci soit pleinement fonctionnelle
 english.CleanCache=You just install a new version of the Cultibox software, don't forget to delete your internet browser's cache to have a full working version.
 
+french.StartCultibox=Voulez-vous exécuter le logiciel Cultibox immédiatement?
+english.StartCultibox=Do you want to execute the Cultibox software immediatly?
+
 [code]
 var 
   ForceInstall: boolean;
@@ -140,11 +143,19 @@ var
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C setup_xampp.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox --force < {sd}\{#MyAppName}\xampp\sql_install\update_sql.sql'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox --force < {sd}\{#MyAppName}\xampp\sql_install\update_sql.sql 2>NULL'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C del {sd}\{#MyAppName}\xampp\htdocs\cultibox\main\templates_c\*.ser'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         MsgBox(ExpandConstant('{cm:CleanCache}'), mbInformation, MB_OK);
      end;     
+  end;
+
+  if(CurStep=ssDone) then
+  begin
+      if MsgBox(ExpandConstant('{cm:StartCultibox}'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES then                                                                                                                                 
+       begin
+          Exec (ExpandConstant ('{cmd}'), '/C start http://localhost:6891/cultibox', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+       end 
   end;
 end; 
 
