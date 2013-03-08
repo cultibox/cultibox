@@ -5,6 +5,7 @@ CultiBox (1.1.9) precise; urgency=low
     + Ajout de l'ancien icone pour le logiciel sur linux, ca le fait top moumouteuh
     + Ajout de bouttons dans le menu de configuration au lieu de liens
     + Correction des listes avec ajout d'une class dans calagan.css
+    + Correction du calcul du cout: le calcul théorique ne prend pas en compte les prises inactives, le calcul réel ne se base pas sur la configuration des prises mais uniquement les données enregistrées par la cultibox
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 
