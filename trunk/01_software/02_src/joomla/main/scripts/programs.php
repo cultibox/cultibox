@@ -44,7 +44,6 @@ $pop_up_message="";
 $pop_up_error_message="";
 $regul_program="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
-$version=get_configuration("VERSION",$main_error);
 $resume="";
 $add_plug=getvar('add_plug');
 $remove_plug=getvar('remove_plug');

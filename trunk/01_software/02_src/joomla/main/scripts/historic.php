@@ -25,7 +25,6 @@ $stats=get_configuration("STATISTICS",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $reset_historic=getvar('reset_historic');
 $historic=array();
-$version=get_configuration("VERSION",$main_error);
 
 
 
