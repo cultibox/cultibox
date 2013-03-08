@@ -406,21 +406,21 @@ function get_data_power($date="",$dateend="",$id=0,&$out) {
       if(strcmp("$id","all")==0) {
          if((!isset($dateend))||(empty($dateend))) {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch = "{$date}" AND (SELECT `PLUG_ENABLED` from `plugs` WHERE `id` = `plug_number`) LIKE "True" ORDER by time_catch ASC, plug_number ASC
+SELECT  * FROM `power` WHERE date_catch = "{$date}" ORDER by time_catch ASC, plug_number ASC
 EOF;
          } else {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND (SELECT `PLUG_ENABLED` from `plugs` WHERE `id` = `plug_number`) LIKE "True"
+SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" 
 EOF;
 }
       } else {
          if((!isset($dateend))||(empty($dateend))) {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` = "{$id}" AND (SELECT `PLUG_ENABLED` from `plugs` WHERE `id` = "{$id}") LIKE "True"  ORDER by time_catch ASC, plug_number ASC
+SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` = "{$id}"   ORDER by time_catch ASC, plug_number ASC
 EOF;
       } else {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}" AND (SELECT `PLUG_ENABLED` from `plugs` WHERE `id` = "{$id}") LIKE "True"
+SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}" 
 EOF;
       }
 }
@@ -583,11 +583,11 @@ function get_theorical_power($id=0,$type="",&$out,&$error=0) {
    $db = db_priv_start();
    if(strcmp("$id","all")==0) {
           $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <= ${nb_plugs}
+SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <= ${nb_plugs} AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") 
 EOF;
       } else {
       $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` = "{$id}" 
+SELECT * FROM `programs` WHERE `plug_id` = "{$id}" AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True")
 EOF;
    }
   
