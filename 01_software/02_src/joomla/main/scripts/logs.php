@@ -60,7 +60,6 @@ $stats=get_configuration("STATISTICS",$main_error);
 $reset_log=getvar('reset_log');
 $reset_log_power=getvar('reset_log_power');
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
-$version=get_configuration("VERSION",$main_error);
 
 
 

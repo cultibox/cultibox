@@ -41,7 +41,6 @@ $version=get_configuration("VERSION",$main_error);
 $cost_type=get_configuration("COST_TYPE",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
-$version=get_configuration("VERSION",$main_error);
 
 
 

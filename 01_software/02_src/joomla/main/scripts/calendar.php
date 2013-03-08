@@ -23,7 +23,6 @@ $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
-$version=get_configuration("VERSION",$main_error);
 
 
 

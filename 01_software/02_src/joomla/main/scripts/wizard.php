@@ -41,7 +41,6 @@ $version=get_configuration("VERSION",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $main_info[]=__('WIZARD_DISABLE_FUNCTION');
-$version=get_configuration("VERSION",$main_error);
 
 
 

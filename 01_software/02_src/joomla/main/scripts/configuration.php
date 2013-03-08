@@ -51,7 +51,6 @@ $start_hc=getvar("start_hc",$main_error);
 $stop_hc=getvar("stop_hc",$main_error);
 $submenu=getvar("submenu",$main_error);
 $stats=getvar("stats",$main_error);
-$version=get_configuration("VERSION",$main_error);
 
 if(isset($_SESSION['reset_sd_card'])) {
     $reset_sd_card=$_SESSION['reset_sd_card'];

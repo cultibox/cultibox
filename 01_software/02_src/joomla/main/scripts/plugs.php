@@ -42,7 +42,6 @@ $main_info[]=__('WIZARD_ENABLE_FUNCTION');
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $selected_error="";
-$version=get_configuration("VERSION",$main_error);
 
 
 

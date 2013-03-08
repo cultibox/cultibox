@@ -28,7 +28,6 @@ __('LANG');
 $program="";
 $sd_card="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
-$version=get_configuration("VERSION",$main_error);
 $wizard=true;
 $nb_plugs = get_configuration("NB_PLUGS",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
