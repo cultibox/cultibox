@@ -26,7 +26,7 @@ msgid "WELCOME_TUTO"
 msgstr "<b>Note:</b> if you have the previous version of the cultibox named the GreenBox:"
 
 msgid "WELCOME_REQUIEREMENT"
-msgstr "<ul><li>Remove your old plugs not compatible anymore</li><li>unplugged the Greenbox which can cause interferences with the cultibox</li></ul>"
+msgstr "<ul class='list_class'><li>Remove your old plugs not compatible anymore</li><li>unplugged the Greenbox which can cause interferences with the cultibox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Just click on the following link to launch the wizard configuration and begin to manipulate your cultibox"
@@ -696,7 +696,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "You are now going to configure a new plug."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choose the type of your plug: <ul><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an unknown type for all the other equipements. <br /><br />If you choose to configure a new lamp, this equipement must use <b>less than 200 Watts</b>" 
+msgstr "Choose the type of your plug: <ul class='list_class'><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an unknown type for all the other equipements. <br /><br />If you choose to configure a new lamp, this equipement must use <b>less than 200 Watts</b>" 
 
 #For the calendar part:
 msgid "TITLE_CALENDAR"
@@ -1002,7 +1002,7 @@ msgid "ERROR_SD_CARD_PATH"
 msgstr "Path to the SD card not found"
 
 msgid "ERROR_COMPAT_BROWSER"
-msgstr "Your internet browser doesn't seem to be compatible with the Cultibox software. You may use the software but some features may not be available. Here is the list of supported web broser:<br /><ul><li>Mozilla Firefox (3 or more)</li><li>Internet Explorer (7 or more)</li><li>Google Chrome</li></ul>"
+msgstr "Your internet browser doesn't seem to be compatible with the Cultibox software. You may use the software but some features may not be available. Here is the list of supported web broser:<br /><ul class='list_class'><li>Mozilla Firefox (3 or more)</li><li>Internet Explorer (7 or more)</li><li>Google Chrome</li></ul>"
 
 msgid "ERROR_REMOTE_SITE"
 msgstr "The software can't check if updates are available, please check your internet connection"
