@@ -96,6 +96,11 @@ ul, ol, dl {
 	padding-left:0px;
 }
 
+ul.list_class {
+    list-style-type: circle;
+    text-align: left;
+}
+
 td.wizard-marge, td.wizard-input-previous {
 	width:0px;
 }

@@ -3,6 +3,8 @@ CultiBox (1.1.9) precise; urgency=low
     + On n'affiche plus les erreurs du update.sql (il y en aura forcément et c'est pas important)
     + Suppression de l'image de la cultibox dans le welcome, calagan l'a ajouté au bout du menu
     + Ajout de l'ancien icone pour le logiciel sur linux, ca le fait top moumouteuh
+    + Ajout de bouttons dans le menu de configuration au lieu de liens
+    + Correction des listes avec ajout d'une class dans calagan.css
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 
