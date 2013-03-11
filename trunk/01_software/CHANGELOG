@@ -16,6 +16,7 @@ CultiBox (1.1.9) precise; urgency=low
     + AJout par calagan: d'une nouvelle image de waiting, de nouvelles images de fake_log, de l'image de resumé
     + Passage du css pour le timepicker dans le css de calagan
     + Affichage du bouton resetzoom dans highchart avec le zoom en Y
+    + AJout d'encres pour afficher la page après soumission au bon endroit
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 

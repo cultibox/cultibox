@@ -93,6 +93,11 @@ if($quick_load) {
     $_SESSION['quick_load']="True";
 }
 
+if(isset($_POST['anchor'])) {
+    $anchor=$_POST['anchor'];
+}
+
+
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -104,11 +109,23 @@ if((isset($_POST['selected_hdd']))&&(!empty($_POST['selected_hdd']))&&(isset($_P
     $_SESSION['submenu']="card_interface";
     header("Refresh: 5;url=./configuration");
 } elseif(((isset($_SESSION['import_log']))&&($_SESSION['import_log']))) {
-   header("Refresh: 5;url=./view-logs");
+    if((isset($anchor))&&(!empty($anchor))) {
+        header("Refresh: 5;url=./view-logs#$anchor");
+    } else { 
+        header("Refresh: 5;url=./view-logs");
+    }
 } elseif((!isset($sd_card))||(empty($sd_card))||($quick_load)||((isset($_SESSION['loaded']))&&($_SESSION['loaded']))) {      
-   header( 'Location: ./view-logs' ) ;
+   if((isset($anchor))&&(!empty($anchor))) {
+        header("Location: ./view-logs#$anchor");
+    } else {
+        header( 'Location: ./view-logs' ) ;
+    }
 } else {
-   header("Refresh: 5;url=./view-logs");
+    if((isset($anchor))&&(!empty($anchor))) {
+        header("Refresh: 5;url=./view-logs#$anchor");
+    } else {
+        header("Refresh: 5;url=./view-logs");
+    }
 }
 
 
