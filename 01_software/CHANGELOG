@@ -18,6 +18,7 @@ CultiBox (1.1.9) precise; urgency=low
     + Affichage du bouton resetzoom dans highchart avec le zoom en Y
     + AJout d'encres pour afficher la page après soumission au bon endroit
     + Passage de joomla 2.5.3 a 2.5.9
+    + Ajout de faux logs basés sur les données de philou le filou
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 
