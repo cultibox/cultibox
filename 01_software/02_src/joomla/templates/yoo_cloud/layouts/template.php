@@ -192,6 +192,11 @@ include($this['path']->path('layouts:template.config.php'));
 				<?php endif; ?>
 				
 				<?php if ($this['modules']->count('footer + debug') || $this['config']->get('warp_branding')) : ?>
+                <footer id="footer2" class="grid-block">                
+                    <div id="shortlogo">                      
+                        <img src="main/libs/img/shortlogo2.png">
+                    </div>           
+                </footer>
 				<footer id="footer" class="grid-block">
                   <p class="p_right">
                      <!-- Displays version and license for the software at the footer -->

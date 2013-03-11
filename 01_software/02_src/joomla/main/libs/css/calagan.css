@@ -1,3 +1,8 @@
+/*
+SURCHARGE CSS par Calagan v1.1.8
+
+*/
+
 body{
 	font-family: "OpenSansRegular";
 	font-size:14px;	
@@ -44,6 +49,16 @@ option:focus{background: #ee986e;}
 	font-weight:normal;
 }
 
+.error ul { 
+	list-style-type: none; 
+	margin:0;
+	text-align:center;
+}
+
+ul, ol, dl {
+	padding-left:0px;
+}
+
 .menu_h1{
 	display:block;
 	text-align:center;	
@@ -86,6 +101,7 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover {
 
 .text_info, .step_info {
 	text-indent:0em;
+    text-align : justify;
 	display:block;
 	margin:auto;
 	width:80%;
@@ -99,21 +115,6 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover {
 	display:block;
 	margin-bottom:15px;
 }
-
-ul { 
-	list-style-type: none; 
-	margin:0;
-	text-align:center;
-}
-ul, ol, dl {
-	padding-left:0px;
-}
-
-ul.list_class {
-    list-style-type: circle;
-    text-align: left;
-}
-
 
 td.wizard-marge, td.wizard-input-previous {
 	width:0px;
@@ -146,7 +147,7 @@ hr {
 	margin:auto;
 	padding:9px;
 	border-radius:22px;
-	width: 90%;
+	width:90%;
 	background:#F5EE31;
 	background:#e5dd2e;
 	background:#E3DDD1;
