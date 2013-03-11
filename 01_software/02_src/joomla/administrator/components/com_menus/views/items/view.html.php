@@ -2,13 +2,12 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_menus
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
 jimport('joomla.filesystem.file');
 jimport('joomla.filesystem.folder');
 
@@ -19,7 +18,7 @@ jimport('joomla.filesystem.folder');
  * @subpackage	com_menus
  * @version		1.6
  */
-class MenusViewItems extends JView
+class MenusViewItems extends JViewLegacy
 {
 	protected $f_levels;
 	protected $items;
@@ -150,7 +149,7 @@ class MenusViewItems extends JView
 		$options[]	= JHtml::_('select.option', '9', JText::_('J9'));
 		$options[]	= JHtml::_('select.option', '10', JText::_('J10'));
 
-		$this->assign('f_levels', $options);
+		$this->f_levels = $options;
 
 		parent::display($tpl);
 		$this->addToolbar();

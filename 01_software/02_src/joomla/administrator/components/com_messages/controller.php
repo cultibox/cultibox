@@ -1,13 +1,10 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access.
 defined('_JEXEC') or die;
-
-jimport('joomla.application.component.controller');
 
 /**
  * Messages master display controller.
@@ -16,7 +13,7 @@ jimport('joomla.application.component.controller');
  * @subpackage	com_messages
  * @since		1.6
  */
-class MessagesController extends JController
+class MessagesController extends JControllerLegacy
 {
 	/**
 	 * Method to display a view.

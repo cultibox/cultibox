@@ -2,19 +2,18 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_installer
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License, see LICENSE.php
  */
 
-// No direct access
 defined('_JEXEC') or die;
 
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_installer
  */
-class InstallerControllerUpdate extends JController {
-
+class InstallerControllerUpdate extends JControllerLegacy
+{
 	/**
 	 * Update a set of extensions.
 	 *
@@ -23,7 +22,7 @@ class InstallerControllerUpdate extends JController {
 	function update()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		$model	= $this->getModel('update');
 		$uid	= JRequest::getVar('cid', array(), '', 'array');
@@ -56,7 +55,7 @@ class InstallerControllerUpdate extends JController {
 	function find()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 		// Get the caching duration
 		jimport('joomla.application.component.helper');
 		$component = JComponentHelper::getComponent('com_installer');
@@ -79,7 +78,7 @@ class InstallerControllerUpdate extends JController {
 	{
 		// Purge updates
 		// Check for request forgeries
-		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 		$model = $this->getModel('update');
 		$model->purge();
 		$model->enableSites();

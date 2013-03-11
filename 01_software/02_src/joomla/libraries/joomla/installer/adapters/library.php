@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Installer
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -79,7 +79,7 @@ class JInstallerLibrary extends JAdapterInstance
 		if ($result)
 		{
 			// Already installed, can we upgrade?
-			if ($this->parent->getOverwrite() || $this->parent->getUpgrade())
+			if ($this->parent->isOverwrite() || $this->parent->isUpgrade())
 			{
 				// We can upgrade, so uninstall the old one
 				$installer = new JInstaller; // we don't want to compromise this instance!
@@ -113,7 +113,7 @@ class JInstallerLibrary extends JAdapterInstance
 		}
 		else
 		{
-			$this->parent->setPath('extension_root', JPATH_PLATFORM . '/' . implode(DS, explode('/', $group)));
+			$this->parent->setPath('extension_root', JPATH_PLATFORM . '/' . implode(DIRECTORY_SEPARATOR, explode('/', $group)));
 		}
 
 		// Filesystem Processing Section
@@ -312,6 +312,7 @@ class JInstallerLibrary extends JAdapterInstance
 			}
 		}
 
+		$this->parent->removeFiles($xml->media);
 		$this->parent->removeFiles($xml->languages);
 
 		$row->delete($row->extension_id);

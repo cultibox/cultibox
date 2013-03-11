@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_installer
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License, see LICENSE.php
  */
 
@@ -37,7 +37,7 @@ class JFormFieldGroup extends JFormField
 		$options = array();
 
 		foreach ($this->element->children() as $option) {
-			$options[] = JHtml::_('select.option', (string)$option->attributes()->value, JText::_(trim($option->data())));
+			$options[] = JHtml::_('select.option', (string)$option->attributes()->value, JText::_(trim((string) $option)));
 		}
 
 		$dbo = JFactory::getDbo();

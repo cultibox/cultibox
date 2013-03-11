@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -66,8 +66,8 @@ class UsersHelper
 			$extension = JRequest::getString('extension');
 			JSubMenuHelper::addEntry(
 				JText::_('COM_USERS_SUBMENU_NOTE_CATEGORIES'),
-				'index.php?option=com_categories&extension=com_users.notes',
-				$vName == 'categories' || $extension == 'com_users.notes'
+				'index.php?option=com_categories&extension=com_users',
+				$vName == 'categories' || $extension == 'com_users'
 			);
 		}
 	}
@@ -87,13 +87,11 @@ class UsersHelper
 			$user = JFactory::getUser();
 			self::$actions = new JObject;
 
-			$actions = array(
-				'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.state', 'core.delete'
-			);
+			$actions = JAccess::getActions('com_users');
 
 			foreach ($actions as $action)
 			{
-				self::$actions->set($action, $user->authorise($action, 'com_users'));
+				self::$actions->set($action->name, $user->authorise($action->name, 'com_users'));
 			}
 		}
 

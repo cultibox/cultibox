@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -15,7 +15,7 @@ $images = json_decode($this->item->images);
 $canEdit	= $this->item->params->get('access-edit');
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
-JHtml::core();
+JHtml::_('behavior.framework');
 
 ?>
 
@@ -146,7 +146,7 @@ JHtml::core();
 		$link1 = JRoute::_('index.php?option=com_users&view=login&Itemid=' . $itemId);
 		$returnURL = JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid));
 		$link = new JURI($link1);
-		$link->setVar('return', base64_encode($returnURL));
+		$link->setVar('return', base64_encode(urlencode($returnURL)));
 	endif;
 ?>
 		<p class="readmore">

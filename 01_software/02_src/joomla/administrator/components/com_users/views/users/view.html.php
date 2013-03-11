@@ -1,13 +1,10 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access
 defined('_JEXEC') or die;
-
-jimport('joomla.application.component.view');
 
 /**
  * View class for a list of users.
@@ -16,7 +13,7 @@ jimport('joomla.application.component.view');
  * @subpackage	com_users
  * @since		1.6
  */
-class UsersViewUsers extends JView
+class UsersViewUsers extends JViewLegacy
 {
 	protected $items;
 	protected $pagination;

@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -29,7 +29,6 @@ class BannersModelDownload extends JModelForm
 	 */
 	protected function populateState()
 	{
-		jimport('joomla.utilities.utility');
 		$basename = JRequest::getString(JApplication::getHash($this->_context.'.basename'), '__SITE__', 'cookie');
 		$this->setState('basename', $basename);
 

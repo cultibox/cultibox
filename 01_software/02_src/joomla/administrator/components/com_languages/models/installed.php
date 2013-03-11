@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -314,10 +314,9 @@ class LanguagesModelInstalled extends JModelList
 			return false;
 		}
 
-		// Clean the cache.
+		// Clean the cache of com_languages and component cache.
 		$this->cleanCache();
-		$this->cleanCache('_system', 0);
-		$this->cleanCache('_system', 1);
+		$this->cleanCache('_system');
 
 		return true;
 	}

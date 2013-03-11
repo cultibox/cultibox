@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Environment
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -504,7 +504,7 @@ class JRequest
 	 *
 	 * @return  boolean  True if found and valid, false otherwise.
 	 *
-	 * @deprecated  12.1
+	 * @deprecated  12.1 Use JSession::checkToken() instead.
 	 * @since       11.1
 	 */
 	public static function checkToken($method = 'post')

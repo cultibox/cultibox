@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	mod_articles_archive
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -32,7 +32,7 @@ class modArchiveHelper
 		$app	= JFactory::getApplication();
 		$menu	= $app->getMenu();
 		$item	= $menu->getItems('link', 'index.php?option=com_content&view=archive', true);
-		$itemid = isset($item) ? '&Itemid='.$item->id : '';
+		$itemid = (isset($item) && !empty($item->id) ) ? '&Itemid='.$item->id : '';
 
 		$i		= 0;
 		$lists	= array();

@@ -2,14 +2,11 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// no direct access
 defined('_JEXEC') or die;
-
-jimport('joomla.application.component.view');
 
 /**
  * Users mail view.
@@ -17,7 +14,7 @@ jimport('joomla.application.component.view');
  * @package		Joomla.Administrator
  * @subpackage	com_users
  */
-class UsersViewMail extends JView
+class UsersViewMail extends JViewLegacy
 {
 	/**
 	 * @var object form object

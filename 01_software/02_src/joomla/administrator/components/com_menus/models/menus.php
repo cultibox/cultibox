@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  *
  * @package     Joomla.Administrator
@@ -216,7 +216,7 @@ class MenusModelMenus extends JModelList
 	 */
 	public function &getModules()
 	{
-		$model	= JModel::getInstance('Menu', 'MenusModel', array('ignore_request' => true));
+		$model	= JModelLegacy::getInstance('Menu', 'MenusModel', array('ignore_request' => true));
 		$result	= &$model->getModules();
 
 		return $result;

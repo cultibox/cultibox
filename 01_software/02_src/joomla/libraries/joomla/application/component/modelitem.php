@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -24,15 +24,6 @@ abstract class JModelItem extends JModel
 	 * An item.
 	 *
 	 * @var    array
-	 * @since  11.1
-	 */
-	protected $item = null;
-
-	/**
-	 * An item.
-	 *
-	 * @var    array
-	 * @deprecated use $item declare as private
 	 */
 	protected $_item = null;
 
@@ -41,15 +32,6 @@ abstract class JModelItem extends JModel
 	 *
 	 * @var    string
 	 * @since  11.1
-	 */
-	protected $context = 'group.type';
-
-	/**
-	 * Model context string.
-	 *
-	 * @var    string
-	 * @since  11.1
-	 * @deprecated use $context declare as private
 	 */
 	protected $_context = 'group.type';
 

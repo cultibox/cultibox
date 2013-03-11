@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_installer
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.6
  */
@@ -13,8 +13,8 @@ defined('_JEXEC') or die;
 <tr class="<?php echo "row".$this->item->index % 2; ?>" <?php echo $this->item->style; ?>>
 	<td><?php echo $this->pagination->getRowOffset($this->item->index); ?></td>
 	<td>
-			<input type="checkbox" id="cb<?php echo $this->item->index;?>" name="eid[]" value="<?php echo $this->item->extension_id; ?>" onclick="isChecked(this.checked);" <?php echo $this->item->cbd; ?> />
-<!--		<input type="checkbox" id="cb<?php echo $this->item->index;?>" name="eid" value="<?php echo $this->item->extension_id; ?>" onclick="isChecked(this.checked);" <?php echo $this->item->cbd; ?> />-->
+			<input type="checkbox" id="cb<?php echo $this->item->index;?>" name="eid[]" value="<?php echo $this->item->extension_id; ?>" onclick="Joomla.isChecked(this.checked);" <?php echo $this->item->cbd; ?> />
+<!--		<input type="checkbox" id="cb<?php echo $this->item->index;?>" name="eid" value="<?php echo $this->item->extension_id; ?>" onclick="Joomla.isChecked(this.checked);" <?php echo $this->item->cbd; ?> />-->
 		<span class="bold"><?php echo $this->item->name; ?></span>
 	</td>
 	<td>

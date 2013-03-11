@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -54,7 +54,7 @@ class ContentModelArchive extends ContentModelArticles
 		// Get list limit
 		$app = JFactory::getApplication();
 		$itemid = JRequest::getInt('Itemid', 0);
-		$limit = $app->getUserStateFromRequest('com_content.archive.list' . $itemid . '.limit', 'limit', $params->get('display_num'));
+		$limit = $app->getUserStateFromRequest('com_content.archive.list' . $itemid . '.limit', 'limit', $params->get('display_num'), 'uint');
 		$this->setState('list.limit', $limit);
 	}
 
@@ -133,8 +133,8 @@ class ContentModelArchive extends ContentModelArticles
 			$params = $app->getParams();
 
 			// Get the pagination request variables
-			$limit		= JRequest::getVar('limit', $params->get('display_num', 20), '', 'int');
-			$limitstart	= JRequest::getVar('limitstart', 0, '', 'int');
+			$limit		= JRequest::getUInt('limit', $params->get('display_num', 20));
+			$limitstart	= JRequest::getUInt('limitstart', 0);
 
 			$query = $this->_buildQuery();
 

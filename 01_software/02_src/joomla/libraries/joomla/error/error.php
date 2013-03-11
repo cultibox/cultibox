@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Error
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -700,7 +700,7 @@ abstract class JError
 	public static function handleMessage(&$error, $options)
 	{
 		// Deprecation warning.
-		JLog::add('JError::hanleMessage() is deprecated.', JLog::WARNING, 'deprecated');
+		JLog::add('JError::handleMessage() is deprecated.', JLog::WARNING, 'deprecated');
 
 		$appl = JFactory::getApplication();
 		$type = ($error->get('level') == E_NOTICE) ? 'notice' : 'error';

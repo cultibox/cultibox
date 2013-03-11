@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_languages
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -85,7 +85,7 @@ class LanguagesModelOverrides extends JModelList
 		}
 
 		// Consider the pagination
-		if (!$all && $this->getTotal() > $this->getState('list.limit'))
+		if (!$all && $this->getState('list.limit') && $this->getTotal() > $this->getState('list.limit'))
 		{
 			$strings = array_slice($strings, $this->getStart(), $this->getState('list.limit'), true);
 		}
@@ -243,6 +243,10 @@ class LanguagesModelOverrides extends JModelList
 			{
 				unset($strings[$key]);
 			}
+		}
+
+		foreach ($strings as $key => $string) {
+			$strings[$key] = str_replace('"', '"_QQ_"', $string);
 		}
 
 		// Write override.ini file with the left strings

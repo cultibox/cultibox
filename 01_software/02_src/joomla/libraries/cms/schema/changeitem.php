@@ -5,7 +5,7 @@
  * @package     CMS.Library
  * @subpackage  Schema
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -188,7 +188,7 @@ abstract class JSchemaChangeitem extends JObject
 		if ($this->checkStatus === -2) {
 			// at this point we have a failed query
 			$this->db->setQuery($this->updateQuery);
-			if ($this->db->query()) {
+			if ($this->db->execute()) {
 				if ($this->check()) {
 					$this->checkStatus = 1;
 					$this->rerunStatus = 1;

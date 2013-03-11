@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_admin
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -85,6 +85,7 @@ defined('_JEXEC') or die;
 					<?php echo $this->info['version'];?>
 				</td>
 			</tr>
+			<tr>
 				<td>
 					<strong><?php echo JText::_('COM_ADMIN_PLATFORM_VERSION'); ?></strong>
 				</td>
@@ -97,7 +98,7 @@ defined('_JEXEC') or die;
 					<strong><?php echo JText::_('COM_ADMIN_USER_AGENT'); ?></strong>
 				</td>
 				<td>
-					<?php echo $this->info['useragent'];?>
+					<?php echo htmlspecialchars($this->info['useragent']);?>
 				</td>
 			</tr>
 		</tbody>

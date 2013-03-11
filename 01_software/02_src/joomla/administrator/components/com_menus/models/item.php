@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -747,12 +747,9 @@ class MenusModelItem extends JModelAdmin
 		// We are only interested if the module is displayed on ALL or THIS menu item (or the inverse ID number).
 		//sqlsrv changes for modulelink to menu manager
 		$query->select('a.id, a.title, a.position, a.published, map.menuid');
-		$case_when = ' (CASE WHEN ';
-		$case_when .= 'map2.menuid < 0 THEN map2.menuid ELSE NULL END) as ' . $db->qn('except');
-		$case_when .=$query->select( $case_when);
 		$query->from('#__modules AS a');
-		$query->join('LEFT', '#__modules_menu AS map ON map.moduleid = a.id AND (map.menuid = 0 OR ABS(map.menuid) = '.(int) $this->getState('item.id').')');
-		$query->join('LEFT', '#__modules_menu AS map2 ON map2.moduleid = a.id AND map2.menuid < 0');
+		$query->join('LEFT', sprintf('#__modules_menu AS map ON map.moduleid = a.id AND map.menuid IN (0, %1$d, -%1$d)', $this->getState('item.id')));
+		$query->select('(SELECT COUNT(*) FROM #__modules_menu WHERE moduleid = a.id AND menuid < 0) AS ' . $db->qn('except'));
 
 		// Join on the asset groups table.
 		$query->select('ag.title AS access_title');
@@ -764,8 +761,8 @@ class MenusModelItem extends JModelAdmin
 		$db->setQuery($query);
 		$result = $db->loadObjectList();
 
-		if ($error = $db->getError()) {
-			$this->setError($error);
+		if ($db->getErrorNum()) {
+			$this->setError($db->getErrorMsg());
 			return false;
 		}
 
@@ -822,7 +819,8 @@ class MenusModelItem extends JModelAdmin
 		}
 		$this->setState('item.parent_id', $parentId);
 
-		if (!($menuType = $app->getUserState('com_menus.edit.item.menutype'))) {
+		$menuType = $app->getUserState('com_menus.edit.item.menutype');
+		if (JRequest::getCmd('menutype', false)) {
 			$menuType = JRequest::getCmd('menutype', 'mainmenu');
 		}
 		$this->setState('item.menutype', $menuType);
@@ -1375,7 +1373,10 @@ class MenusModelItem extends JModelAdmin
 		$table = $this->getTable();
 		while ($table->load(array('alias' => $alias, 'parent_id' => $parent_id)))
 		{
-			$title = JString::increment($title);
+			if ($title == $table->title)
+			{
+				$title = JString::increment($title);
+			}
 			$alias = JString::increment($alias, 'dash');
 		}
 

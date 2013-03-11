@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -321,7 +321,6 @@ class PluginsModelPlugin extends JModelAdmin
 	 * @since	1.6
 	 */
 	protected function cleanCache($group = null, $client_id = 0) {
-		parent::cleanCache('com_plugins', 0);
-		parent::cleanCache('com_plugins', 1);
+		parent::cleanCache('com_plugins');
 	}
 }

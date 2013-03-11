@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -272,7 +272,8 @@ abstract class JTable extends JObject
 
 	/**
 	 * Method to get the parent asset under which to register this one.
-	 * By default, all assets are registered to the ROOT node with ID 1.
+	 * By default, all assets are registered to the ROOT node with ID,
+	 * which will default to 1 if none exists.
 	 * The extended class can define a table and id to lookup.  If the
 	 * asset does not exist it will be created.
 	 *
@@ -286,9 +287,11 @@ abstract class JTable extends JObject
 	protected function _getAssetParentId($table = null, $id = null)
 	{
 		// For simple cases, parent to the asset root.
-		if (empty($table) || empty($id))
+		$assets = self::getInstance('Asset', 'JTable', array('dbo' => $this->getDbo()));
+		$rootId = $assets->getRootId();
+		if (!empty($rootId))
 		{
-			return 1;
+			return $rootId;
 		}
 
 		return 1;
@@ -529,7 +532,7 @@ abstract class JTable extends JObject
 		{
 			$row = $this->_db->loadAssoc();
 		}
-		catch (JDatabaseException $e)
+		catch (RuntimeException $e)
 		{
 			$je = new JException($e->getMessage());
 			$this->setError($je);
@@ -591,6 +594,10 @@ abstract class JTable extends JObject
 	{
 		// Initialise variables.
 		$k = $this->_tbl_key;
+		if (!empty($this->asset_id))
+		{
+			$currentAssetId = $this->asset_id;
+		}
 
 		// The asset id field is managed privately by this class.
 		if ($this->_trackAssets)
@@ -670,7 +677,8 @@ abstract class JTable extends JObject
 			return false;
 		}
 
-		if (empty($this->asset_id))
+		// Create an asset_id or heal one that is corrupted.
+		if (empty($this->asset_id) || ($currentAssetId != $this->asset_id && !empty($this->asset_id)))
 		{
 			// Update the asset_id field in this table.
 			$this->asset_id = (int) $asset->id;
@@ -681,7 +689,7 @@ abstract class JTable extends JObject
 			$query->where($this->_db->quoteName($k) . ' = ' . (int) $this->$k);
 			$this->_db->setQuery($query);
 
-			if (!$this->_db->query())
+			if (!$this->_db->execute())
 			{
 				$e = new JException(JText::sprintf('JLIB_DATABASE_ERROR_STORE_FAILED_UPDATE_ASSET_ID', $this->_db->getErrorMsg()));
 				$this->setError($e);
@@ -804,7 +812,7 @@ abstract class JTable extends JObject
 		$this->_db->setQuery($query);
 
 		// Check for a database error.
-		if (!$this->_db->query())
+		if (!$this->_db->execute())
 		{
 			$e = new JException(JText::sprintf('JLIB_DATABASE_ERROR_DELETE_FAILED', get_class($this), $this->_db->getErrorMsg()));
 			$this->setError($e);
@@ -862,7 +870,7 @@ abstract class JTable extends JObject
 		$query->where($this->_tbl_key . ' = ' . $this->_db->quote($pk));
 		$this->_db->setQuery($query);
 
-		if (!$this->_db->query())
+		if (!$this->_db->execute())
 		{
 			$e = new JException(JText::sprintf('JLIB_DATABASE_ERROR_CHECKOUT_FAILED', get_class($this), $this->_db->getErrorMsg()));
 			$this->setError($e);
@@ -916,7 +924,7 @@ abstract class JTable extends JObject
 		$this->_db->setQuery($query);
 
 		// Check for a database error.
-		if (!$this->_db->query())
+		if (!$this->_db->execute())
 		{
 			$e = new JException(JText::sprintf('JLIB_DATABASE_ERROR_CHECKIN_FAILED', get_class($this), $this->_db->getErrorMsg()));
 			$this->setError($e);
@@ -966,7 +974,7 @@ abstract class JTable extends JObject
 		$this->_db->setQuery($query);
 
 		// Check for a database error.
-		if (!$this->_db->query())
+		if (!$this->_db->execute())
 		{
 			$e = new JException(JText::sprintf('JLIB_DATABASE_ERROR_HIT_FAILED', get_class($this), $this->_db->getErrorMsg()));
 			$this->setError($e);
@@ -1130,7 +1138,7 @@ abstract class JTable extends JObject
 					$this->_db->setQuery($query);
 
 					// Check for a database error.
-					if (!$this->_db->query())
+					if (!$this->_db->execute())
 					{
 						$e = new JException(
 							JText::sprintf('JLIB_DATABASE_ERROR_REORDER_UPDATE_ROW_FAILED', get_class($this), $i, $this->_db->getErrorMsg())
@@ -1218,7 +1226,7 @@ abstract class JTable extends JObject
 			$this->_db->setQuery($query);
 
 			// Check for a database error.
-			if (!$this->_db->query())
+			if (!$this->_db->execute())
 			{
 				$e = new JException(JText::sprintf('JLIB_DATABASE_ERROR_MOVE_FAILED', get_class($this), $this->_db->getErrorMsg()));
 				$this->setError($e);
@@ -1234,7 +1242,7 @@ abstract class JTable extends JObject
 			$this->_db->setQuery($query);
 
 			// Check for a database error.
-			if (!$this->_db->query())
+			if (!$this->_db->execute())
 			{
 				$e = new JException(JText::sprintf('JLIB_DATABASE_ERROR_MOVE_FAILED', get_class($this), $this->_db->getErrorMsg()));
 				$this->setError($e);
@@ -1255,7 +1263,7 @@ abstract class JTable extends JObject
 			$this->_db->setQuery($query);
 
 			// Check for a database error.
-			if (!$this->_db->query())
+			if (!$this->_db->execute())
 			{
 				$e = new JException(JText::sprintf('JLIB_DATABASE_ERROR_MOVE_FAILED', get_class($this), $this->_db->getErrorMsg()));
 				$this->setError($e);
@@ -1330,7 +1338,7 @@ abstract class JTable extends JObject
 		$this->_db->setQuery($query);
 
 		// Check for a database error.
-		if (!$this->_db->query())
+		if (!$this->_db->execute())
 		{
 			$e = new JException(JText::sprintf('JLIB_DATABASE_ERROR_PUBLISH_FAILED', get_class($this), $this->_db->getErrorMsg()));
 			$this->setError($e);

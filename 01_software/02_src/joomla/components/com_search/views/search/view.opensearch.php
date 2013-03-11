@@ -2,15 +2,12 @@
 /**
  * @package		Joomla.Site
  * @subpackage	Weblinks
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
-jimport('joomla.methods');
 jimport('joomla.environment.uri');
 
 /**
@@ -21,7 +18,7 @@ jimport('joomla.environment.uri');
  * @subpackage	Search
  * @since 1.7
  */
-class SearchViewSearch extends JView
+class SearchViewSearch extends JViewLegacy
 {
 	function display($tpl = null)
 	{

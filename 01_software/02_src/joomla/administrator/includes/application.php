@@ -1,7 +1,7 @@
 <?php
 /**
  * @package		Joomla.Administrator
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -148,6 +148,7 @@ class JAdministrator extends JApplication
 
 			$document->setTitle($this->getCfg('sitename'). ' - ' .JText::_('JADMINISTRATION'));
 			$document->setDescription($this->getCfg('MetaDesc'));
+			$document->setGenerator('Joomla! - Open Source Content Management');
 
 			$contents = JComponentHelper::renderComponent($component);
 			$document->setBuffer($contents, 'component');
@@ -329,7 +330,7 @@ class JAdministrator extends JApplication
 			. ' AND user_id_to = ' . (int) $userid
 			;
 			$db->setQuery($query);
-			$db->query();
+			$db->execute();
 		}
 	}
 }

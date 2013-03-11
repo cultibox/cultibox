@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -55,6 +55,7 @@ class ContentHelper
 	 */
 	public static function getActions($categoryId = 0, $articleId = 0)
 	{
+		// Reverted a change for version 2.5.6
 		$user	= JFactory::getUser();
 		$result	= new JObject;
 
