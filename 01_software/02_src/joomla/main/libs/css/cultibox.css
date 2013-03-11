@@ -181,11 +181,11 @@ td.left_log {
 }
 
 td.log-marge-day-main {
-   width: 10%;
+   width: 20%;
 }
 
 td.log-marge-day {
-   width: 15%;
+   width: 20%;
 }
 
 td.log-marge-day-title {
@@ -197,7 +197,7 @@ td.log-marge-day-field {
 }
 
 td.log-marge-month {
-   width: 10%;
+   width: 25%;
 }
 
 td.log-marge-month-title {

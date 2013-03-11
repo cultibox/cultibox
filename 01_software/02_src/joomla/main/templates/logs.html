@@ -52,9 +52,10 @@ buttonImageOnly: 'true',
 </script>
 
 
-<label class="title_conf"><?php echo __('SELECT_LOG_TITLE'); ?>:</label>
+<label class="title_conf"><?php echo __('SELECT_LOG_TITLE'); ?></label>
 <br />
 <div id="label_select_type">
+<label id="anchor-logs"></label>
 <form>
 <table>
     <tr>
@@ -70,7 +71,7 @@ buttonImageOnly: 'true',
 <br />
 <div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
 <form action="/cultibox/index.php/display-logs" method="post">
-<table>
+<table class="table_width">
    <tr>
       <td class="log-marge-day"></td>
       <td class="log-marge-day-title"><?php echo __('SELECT_DAY'); ?>:</td>
@@ -116,7 +117,6 @@ buttonImageOnly: 'true',
    </tr>
 </table>
 
-
 <table class="table_width">
 <tr>
     <td></td>
@@ -124,6 +124,7 @@ buttonImageOnly: 'true',
     <td></td>
 </tr>
 </table>
+    <input type="hidden" name="anchor" value="anchor-logs">
 </form>
 <br />
 </div>
@@ -183,6 +184,7 @@ buttonImageOnly: 'true',
     <td></td>
 </tr>
 </table>
+        <input type="hidden" name="anchor" value="anchor-logs">
 </form>
 </div>
 <br />
@@ -710,6 +712,7 @@ $(function () {
             <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
             <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
             <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
+            <input type="hidden" name="anchor" value="anchor-logs">
         </form>
         <?php } ?>
     </td>
@@ -744,6 +747,7 @@ $(function () {
             <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
             <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
             <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
+            <input type="hidden" name="anchor" value="anchor-logs">
         </form>
         <?php } ?>
     </td>
@@ -779,8 +783,9 @@ $(function () {
 <?php } ?>
 <hr />
 <br />
+<br />
 
-<label class="title_conf"><?php echo __('MANAGE_LOG_INFOS'); ?>:</label>
+<label class="title_conf"><?php echo __('MANAGE_LOG_INFOS'); ?></label>
 <form action="/cultibox/index.php/display-logs" method="post" >
 <table class="table_width">
 <tr>
@@ -800,10 +805,11 @@ $(function () {
 <?php } else { ?>
 <input type="hidden" name="startday" value="<?php echo "$startday"; ?>">
 <?php } ?>
+<input type="hidden" name="anchor" value="anchor-manage">
 </form>
 
 
-<form action="/cultibox/index.php/view-logs" method="post" >
+<form action="/cultibox/index.php/view-logs#anchor-manage" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
@@ -825,7 +831,8 @@ $(function () {
 </form>
 
 
-<form action="/cultibox/index.php/view-logs" method="post" >
+<label id="anchor-manage"></label>
+<form action="/cultibox/index.php/view-logs#anchor-manage" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
