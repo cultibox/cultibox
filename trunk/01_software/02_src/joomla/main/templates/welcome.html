@@ -33,8 +33,7 @@
 <script>
 $(document).ready(
 function(){
-    $("#compat").fadeIn(2000);
-    
+    $("#compat").fadeIn(4000);
 });
 </script>
 <?php } ?>
@@ -46,7 +45,6 @@ function(){
 <br />
 <p class="text_info"><?php echo __('WELCOME_MESSAGE'); ?></p>
 <br />
-<div id="compat" style="display:none" class="text_info"><?php echo __('ERROR_COMPAT_BROWSER'); ?></div>
 <?php if($wizard) { ?>
     <div class="text_info"><?php echo __('WELCOME_TUTO'); ?>:<br /><?php echo __('WELCOME_REQUIEREMENT'); ?></div>
     <br />
@@ -60,7 +58,6 @@ function(){
 <tr>
 <td class="welcome-link"><a href="index.php/display-logs"><img src="main/libs/img/logs.png" title="<?php echo __('WELCOME_LOGS'); ?>" alt="<?php echo __('WELCOME_LOGS'); ?>" /><br /></a></td><td class="welcome-link"><a href="index.php/programs"><img src="main/libs/img/program.png" title="<?php echo __('WELCOME_PROGRAM'); ?>" alt="<?php echo __('WELCOME_PROGRAM'); ?>" /><br /></a></td>
 <td class="welcome-link"><a href="index.php/calendar"><img src="main/libs/img/calendar.png" title="<?php echo __('WELCOME_CALENDAR'); ?>" alt="<?php echo __('WELCOME_CALENDAR'); ?>"/><br /></a></td></tr>
-
 <tr>
 <td class="welcome-link">
 <a href="index.php/display-logs">
@@ -90,3 +87,6 @@ function(){
 },500);
 </script>
 <?php } ?>
+
+<br />
+<div id="compat" style="display:none" class="text_info"><?php echo __('ERROR_COMPAT_BROWSER'); ?></div>

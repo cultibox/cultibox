@@ -35,13 +35,13 @@ msgid "WELCOME_WIZARD"
 msgstr "Assistant de configuration"
 
 msgid "WELCOME_LOGS"
-msgstr "Aller à la page de visualisation des logs"
+msgstr "Page de visualisation des logs"
 
 msgid "WELCOME_CALENDAR"
-msgstr "Aller à la page de programmation du calendrier de culture"
+msgstr "Page de programmation du calendrier de culture"
 
 msgid "WELCOME_PROGRAM"
-msgstr "Aller à la page de création et visualisation des programmes des prises"
+msgstr "Page de création et visualisation des programmes des prises"
 
 # For the configuration part:
 msgid "CONFIGURE_TITLE_CULTIBOX"
@@ -187,6 +187,9 @@ msgstr "Envoie d'informations pour aider le développement"
 
 msgid "MANAGE_RESET_SD_CARD"
 msgstr "Formater une carte SD pour la rendre compatible CultiBox"
+
+msgid "MANAGE_RESET_CARD_NOT_FOUND"
+msgstr "Aucune carte formatable détectée"
 
 msgid "MANAGE_RESET_CARD"
 msgstr "Formater la carte"
@@ -1001,7 +1004,7 @@ msgid "ERROR_SD_CARD_PATH"
 msgstr "Chemin d'accès à la carte SD introuvable"
 
 msgid "ERROR_COMPAT_BROWSER"
-msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez surement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accéssibles. Voici la liste des navigateurs supportés:<br /><ul class='list_class'><li>Mozilla Firefox (3 ou supérieur)</li><li>Internet Explorer (7 ou supérieur)</li><li>Google Chrome</li></ul>"
+msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez surement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accéssibles. Voici la liste des navigateurs officiellement supportés:<br /><ul class='list_class'><li>Mozilla Firefox (3 ou supérieur)</li><li>Internet Explorer (7 ou supérieur)</li><li>Google Chrome</li></ul>"
 
 msgid "ERROR_REMOTE_SITE"
 msgstr "Impossible de s'assurer de la présence de mises à jours, vérifier que votre connexion internet fonctionne correctement"

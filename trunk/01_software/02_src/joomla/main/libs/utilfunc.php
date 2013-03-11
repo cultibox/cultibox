@@ -792,7 +792,7 @@ function save_program_on_sd($sd_card,$program,&$out) {
 //      $out          error or warning messages
 // RET false is an error occured, true else
 function write_program($data,$file,&$out) {
-   if($f=fopen("$file","w+")) {
+   if($f=@fopen("$file","w+")) {
       $nbPlug = count($data);
       while(strlen($nbPlug)<3) {
          $nbPlug="0$nbPlug";
@@ -947,7 +947,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
 
    $update="000$update_frequency";
    $file="$sd_card/conf";
-   if($f=fopen("$file","w+")) {
+   if($f=@fopen("$file","w+")) {
       fputs($f,"PLUG_UPDATE:$update\r\n");
       fputs($f,"LOGS_UPDATE:$record\r\n");
       fputs($f,"POWR_UPDATE:$power\r\n"); 
@@ -1323,7 +1323,7 @@ function check_update_available($version,&$ret,&$out) {
                $buffer=array();
                $tmp=array();
                $file=$GLOBALS['UPDATE_FILE'];
-               if($handle=fopen($file,"r")) {
+               if($handle=@fopen($file,"r")) {
                   while (!feof($handle)) {
                      $buffer[] = fgets($handle);
                   }

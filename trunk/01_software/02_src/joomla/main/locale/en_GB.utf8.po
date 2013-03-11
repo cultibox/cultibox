@@ -188,6 +188,9 @@ msgstr "Send informations to help the cultibox development"
 msgid "MANAGE_RESET_SD_CARD"
 msgstr "Format a SD card to be compatible with the CultiBox"
 
+msgid "MANAGE_RESET_CARD_NOT_FOUND"
+msgstr "No SD card formatable detected"
+
 msgid "MANAGE_RESET_CARD"
 msgstr "Format your SD card"
 

@@ -70,7 +70,7 @@ p.p_right{
 }
 
 button, input[type="button"], input[type="submit"] {
-	padding:6px 8px;
+	padding:4px 7px;
 	background: #C3B59B;
 	border-bottom-left-radius:11px;
 	border-bottom-right-radius:11px;
