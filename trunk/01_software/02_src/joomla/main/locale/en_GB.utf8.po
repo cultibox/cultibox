@@ -1131,8 +1131,11 @@ msgstr "This feature will erase all your previous logs recorded into your cultib
 msgid "TOOLTIP_STATE_PLUG"
 msgstr "You can disabled plugs you don't want to use. The Cultibox software will not show you informations about those disabled plugs"
 
-msgid "TOOLTIP_MAX_POWER_PLUG"
-msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 600W<br /><br />La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
+msgid "TOOLTIP_MAX_POWER_PLUG_3500"
+msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 600W"
+
+msgid "TOOLTIP_MAX_POWER_PLUG_1000"
+msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
 
 msgid "TOOLTIP_MAX_LOG_IMPORT"
 msgstr "This variable defines the number of month seek during the 'Import logs' process from the 'Logs' page"

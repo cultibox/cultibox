@@ -1,5 +1,5 @@
 body{
-	font-family: 'OpenSansRegular';
+	font-family: "OpenSansRegular";
 	font-size:14px;	
 }
 
@@ -24,10 +24,22 @@ options {
 
 option:focus{background: #ee986e;} 
 
+#footer2 {
+	background: url(/cultibox/templates/yoo_cloud/images/fond_interface.png) center bottom no-repeat;
+}
+
+#shortlogo {
+	float: right;
+}
+
+#shortlogo img {
+	padding-right:20px; 
+}
+
 .error {
 	color:red;
 	font-size:14px;
-	font-family: 'OpenSansBold';	
+	/*font-family: 'OpenSansBold';*/	
 	font-style:normal;
 	font-weight:normal;
 }
@@ -53,6 +65,7 @@ button, input[type="button"], input[type="submit"] {
 
 button:hover, input[type="button"]:hover, input[type="submit"]:hover {
 	background: #f5ee31;
+	background: #D7DF21;
 }
 
 .step {
@@ -101,6 +114,7 @@ ul.list_class {
     text-align: left;
 }
 
+
 td.wizard-marge, td.wizard-input-previous {
 	width:0px;
 }
@@ -130,13 +144,16 @@ hr {
 
 .error li{
 	margin:auto;
-	padding:12px;
+	padding:9px;
 	border-radius:22px;
 	width:600px;
 	background:#F5EE31;
 	background:#e5dd2e;
+	background:#E3DDD1;
 	display:block;
 	margin-bottom:5px;
+	font-size: 14px;
+	font-weight: normal;
 }
 
 .title_conf {
@@ -150,7 +167,7 @@ hr {
 	/*border-bottom:#CCC 1px solid;*/
 	padding-top:7px;
 	padding-bottom:20px;
-	background:url("../img/fond_cartouche.png") center top no-repeat;
+	background:url("../../../main/libs/img/fond_cartouche.png") center top no-repeat;
 }
 
 #menubar {
@@ -172,12 +189,12 @@ a.logo img{
 	font-size:13px;
 	background:#CCC;
 	padding:10px 5px 9px 5px;
-	background:url("../img/fond_cartouche.png") center center no-repeat;
+	background:url("../../../main/libs/img/fond_cartouche.png") center center no-repeat;
 	border-radius:20px;
 }
 
 .menu_h1:hover{
-	background:url("../img/fond_cartouche_vert.png") center center no-repeat;
+	background:url("../../../main/libs/img/fond_cartouche_vert.png") center center no-repeat;
 	color:#93982a;
 }
 
@@ -206,4 +223,8 @@ td.welcome-link img{
 
 .info-bulle-css:hover{
 	cursor:pointer;
+}
+
+.menu-dropdown li.level1 a.level1 {
+	font-family: 'OpenSansRegular';
 }
