@@ -72,15 +72,18 @@
       </tr>
       <tr>
          <td></td>
-         <td>
-            <?php echo __('PLUG_MAX_POWER'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_POWER_PLUG'); ?>" />
-         </td>
+         <td><?php echo __('PLUG_MAX_POWER'); ?>:</td>
          <td>
             <?php if($i <= $GLOBALS['NB_MIN_PLUG']) { ?>
                 <input type="text" name="plug_power_maximal<?php echo $i; ?>" value="<?php echo $plug_power_max{$i}; ?>W" readonly size="6" /> 
+                <?php if($plug_power_max{$i}==3500) { ?>
+                    <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" />
+                <?php } else { ?>
+                    <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_1000'); ?>" /> 
+                <?php } ?>
             <?php } else { ?>
-                <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="1000" <?php if(strcmp($plug_power_max{$i},"1000")==0) { echo "checked"; } ?>>1000W
-                <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="3500" <?php if(strcmp($plug_power_max{$i},"3500")==0) { echo "checked"; } ?>>3500W
+                <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="1000" <?php if(strcmp($plug_power_max{$i},"1000")==0) { echo "checked"; } ?>>1000W<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_1000'); ?>" />
+                <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="3500" <?php if(strcmp($plug_power_max{$i},"3500")==0) { echo "checked"; } ?>>3500W<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" />
             <?php } ?>
          </td>
          <td></td>

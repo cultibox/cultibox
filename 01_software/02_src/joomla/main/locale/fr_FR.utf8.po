@@ -1130,8 +1130,11 @@ msgstr "En cliquant sur ce bouton toutes vos données des logs enregistrés sero
 msgid "TOOLTIP_STATE_PLUG"
 msgstr "Vous pouvez désactiver les prises que vous ne voulez pas utiliser. Le logiciel n'affichera pas les informations relatives aux prises désactivées"
 
-msgid "TOOLTIP_MAX_POWER_PLUG"
-msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 600W<br /><br />La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
+msgid "TOOLTIP_MAX_POWER_PLUG_3500"
+msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 600W"
+
+msgid "TOOLTIP_MAX_POWER_PLUG_1000"
+msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
 
 msgid "TOOLTIP_MAX_LOG_IMPORT"
 msgstr "Cette variable définit le nombre de mois qui seront scrutés pour rechercher des logs lors de l'appuie sur le bouton 'Importer les logs' de l'onglet 'Logs'"
