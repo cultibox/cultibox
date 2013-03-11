@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  User
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -134,7 +134,7 @@ class JUser extends JObject
 	public $params = null;
 
 	/**
-	 * Associative array of user names => group ids
+	 * Array of ids of groups that user belongs to
 	 *
 	 * @var    array
 	 * @since  11.1
@@ -148,6 +148,22 @@ class JUser extends JObject
 	 * @since  11.1
 	 */
 	public $guest = null;
+
+	/**
+	 * Last Reset Time
+	 *
+	 * @var    string
+	 * @since  Joomla 2.5.6
+	 */
+	public $lastResetTime = null;
+
+	/**
+	 * Count since last Reset Time
+	 *
+	 * @var    int
+	 * @since  Joomla 2.5.6
+	 */
+	public $resetCount = null;
 
 	/**
 	 * User parameters

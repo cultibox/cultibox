@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Application
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -28,15 +28,6 @@ abstract class JModelForm extends JModel
 	 *
 	 * @var    array
 	 * @since  11.1
-	 */
-	protected $forms = array();
-
-	/**
-	 * Array of form objects.
-	 *
-	 * @var    array
-	 * @since  11.1
-	 * @deprecated use $forms declare as private
 	 */
 	protected $_forms = array();
 
@@ -254,7 +245,7 @@ abstract class JModelForm extends JModel
 	/**
 	 * Method to validate the form data.
 	 *
-	 * @param   object  $form   The form to validate against.
+	 * @param   JForm   $form   The form to validate against.
 	 * @param   array   $data   The data to validate.
 	 * @param   string  $group  The name of the field group to validate.
 	 *

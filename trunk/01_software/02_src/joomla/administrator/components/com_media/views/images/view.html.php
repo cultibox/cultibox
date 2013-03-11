@@ -1,13 +1,10 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access
 defined('_JEXEC') or die;
-
-jimport('joomla.application.component.view');
 
 /**
  * HTML View class for the Media component
@@ -16,7 +13,7 @@ jimport('joomla.application.component.view');
  * @subpackage	com_media
  * @since 1.0
  */
-class MediaViewImages extends JView
+class MediaViewImages extends JViewLegacy
 {
 	function display($tpl = null)
 	{

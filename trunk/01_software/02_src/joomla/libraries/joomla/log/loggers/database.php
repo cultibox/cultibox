@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Log
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -164,7 +164,7 @@ class JLoggerDatabase extends JLogger
 			// Assign the database connector to the class.
 			$this->dbo = $db;
 		}
-		catch (JDatabaseException $e)
+		catch (RuntimeException $e)
 		{
 			throw new LogException($e->getMessage());
 		}

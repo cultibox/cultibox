@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -373,7 +373,8 @@ class UsersModelUsers extends JModelList
 					$dStart->setTime(0, 0, 0);
 
 					// Now change the timezone back to UTC.
-					$dStart->setOffset(0);
+					$tz = new DateTimeZone('GMT');
+					$dStart->setTimezone($tz);
 					break;
 			}
 

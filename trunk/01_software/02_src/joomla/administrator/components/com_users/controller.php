@@ -1,13 +1,10 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access
 defined('_JEXEC') or die;
-
-jimport('joomla.application.component.controller');
 
 /**
  * Users master display controller.
@@ -16,7 +13,7 @@ jimport('joomla.application.component.controller');
  * @subpackage	com_users
  * @since		1.6
  */
-class UsersController extends JController
+class UsersController extends JControllerLegacy
 {
 	/**
 	 * Checks whether a user can see this view.
@@ -99,7 +96,7 @@ class UsersController extends JController
 			// Somehow the person just went to the form - we don't allow that.
 			$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', $id));
 			$this->setMessage($this->getError(), 'error');
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=groups', false));
+			$this->setRedirect(JRoute::_('index.php?option=com_users&view=notes', false));
 
 			return false;
 		}

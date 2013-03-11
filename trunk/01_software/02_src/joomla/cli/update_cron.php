@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Cli
  *
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -59,7 +59,7 @@ class Updatecron extends JApplicationCli
 	 *
 	 * @since   2.5
 	 */
-	public function execute()
+	public function doExecute()
 	{
 		// Purge all old records
 		$db = JFactory::getDBO();

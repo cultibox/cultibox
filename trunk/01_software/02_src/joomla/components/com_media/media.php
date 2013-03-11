@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_media
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -29,6 +29,7 @@ define('COM_MEDIA_BASEURL', JURI::root().'/'.$params->get('image_path', 'images'
 
 $lang = JFactory::getLanguage();
 	$lang->load('com_media', JPATH_ADMINISTRATOR, null, false, false)
+	||	$lang->load('com_media', JPATH_SITE, null, false, false)
 	||	$lang->load('com_media', JPATH_ADMINISTRATOR, $lang->getDefault(), false, false);
 
 // Load the admin HTML view

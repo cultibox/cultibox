@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Database
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -585,7 +585,7 @@ class JDatabaseImporterMySQL
 					foreach ($queries as $query)
 					{
 						$this->db->setQuery((string) $query);
-						if (!$this->db->query())
+						if (!$this->db->execute())
 						{
 							$this->addLog('Fail: ' . $this->db->getQuery());
 							throw new Exception($this->db->getErrorMsg());
@@ -604,7 +604,7 @@ class JDatabaseImporterMySQL
 				$sql = $this->xmlToCreate($table);
 
 				$this->db->setQuery((string) $sql);
-				if (!$this->db->query())
+				if (!$this->db->execute())
 				{
 					$this->addLog('Fail: ' . $this->db->getQuery());
 					throw new Exception($this->db->getErrorMsg());

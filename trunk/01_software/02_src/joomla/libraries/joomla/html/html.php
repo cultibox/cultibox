@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -35,7 +35,7 @@ abstract class JHtml
 	 * @var    array
 	 * @since  11.1
 	 */
-	static $formatOptions = array('format.depth' => 0, 'format.eol' => "\n", 'format.indent' => "\t");
+	public static $formatOptions = array('format.depth' => 0, 'format.eol' => "\n", 'format.indent' => "\t");
 
 	/**
 	 * An array to hold included paths
@@ -864,11 +864,11 @@ abstract class JHtml
 			$attribs = JArrayHelper::toString($attribs);
 		}
 
-		if ((!$readonly) && (!$disabled))
+		if (!$readonly && !$disabled)
 		{
 			// Load the calendar behavior
-			JHtml::_('behavior.calendar');
-			JHtml::_('behavior.tooltip');
+			self::_('behavior.calendar');
+			self::_('behavior.tooltip');
 
 			// Only display the triggers once for each control.
 			if (!in_array($id, $done))
@@ -891,12 +891,16 @@ abstract class JHtml
 				);
 				$done[] = $id;
 			}
+			return '<input type="text" title="' . (0 !== (int) $value ? self::_('date', $value, null, null) : '') . '" name="' . $name . '" id="' . $id
+				. '" value="' . htmlspecialchars($value, ENT_COMPAT, 'UTF-8') . '" ' . $attribs . ' />'
+				. self::_('image', 'system/calendar.png', JText::_('JLIB_HTML_CALENDAR'), array('class' => 'calendar', 'id' => $id . '_img'), true);
 		}
-
-		return '<input type="text" title="' . (0 !== (int) $value ? JHtml::_('date', $value) : '') . '" name="' . $name . '" id="' . $id
-			. '" value="' . htmlspecialchars($value, ENT_COMPAT, 'UTF-8') . '" ' . $attribs . ' />'
-			. ($readonly ? ''
-			: JHtml::_('image', 'system/calendar.png', JText::_('JLIB_HTML_CALENDAR'), array('class' => 'calendar', 'id' => $id . '_img'), true));
+		else
+		{
+			return '<input type="text" title="' . (0 !== (int) $value ? self::_('date', $value, null, null) : '')
+				. '" value="' . (0 !== (int) $value ? self::_('date', $value, 'Y-m-d H:i:s', null) : '') . '" ' . $attribs
+				. ' /><input type="hidden" name="' . $name . '" id="' . $id . '" value="' . htmlspecialchars($value, ENT_COMPAT, 'UTF-8') . '" />';
+		}
 	}
 
 	/**

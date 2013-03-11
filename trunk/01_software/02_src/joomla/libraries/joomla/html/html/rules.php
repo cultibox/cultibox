@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -66,9 +66,9 @@ abstract class JHtmlRules
 		{
 			$html[] = '			<tr class="row' . ($i % 2) . '">';
 			$html[] = '				<td class="col1">' . $group->text . '</td>';
-			foreach ($actions as $i => $action)
+			foreach ($actions as $j => $action)
 			{
-				$html[] = '				<td class="col' . ($i + 2) . '">'
+				$html[] = '				<td class="col' . ($j + 2) . '">'
 					. ($assetId ? ($inherited->allow($action->name, $group->identities) ? $images['allow'] : $images['deny'])
 					: ($inheriting->allow($action->name, $group->identities) ? $images['allow'] : $images['deny'])) . '</td>';
 			}

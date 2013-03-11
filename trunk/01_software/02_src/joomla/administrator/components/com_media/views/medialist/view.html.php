@@ -1,13 +1,10 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access
 defined('_JEXEC') or die;
-
-jimport('joomla.application.component.view');
 
 /**
  * HTML View class for the Media component
@@ -16,7 +13,7 @@ jimport('joomla.application.component.view');
  * @subpackage	com_media
  * @since 1.0
  */
-class MediaViewMediaList extends JView
+class MediaViewMediaList extends JViewLegacy
 {
 	function display($tpl = null)
 	{
@@ -52,7 +49,7 @@ class MediaViewMediaList extends JView
 		$folders = $this->get('folders');
 		$state = $this->get('state');
 
-		$this->assign('baseURL', JURI::root());
+		$this->baseURL = JURI::root();
 		$this->assignRef('images', $images);
 		$this->assignRef('documents', $documents);
 		$this->assignRef('folders', $folders);

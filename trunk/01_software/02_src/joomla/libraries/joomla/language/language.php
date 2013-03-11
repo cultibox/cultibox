@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Language
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -187,26 +187,31 @@ class JLanguage extends JObject
 
 		// Look for a language specific localise class
 		$class = str_replace('-', '_', $lang . 'Localise');
-		if (!class_exists($class) && defined('JPATH_SITE'))
+		$paths = array();
+		if (defined('JPATH_SITE'))
 		{
-
-			// Class does not exist. Try to find it in the Site Language Folder
-			$localise = JPATH_SITE . "/language/$lang/$lang.localise.php";
-			if (file_exists($localise))
-			{
-				require_once $localise;
-			}
+			// Note: Manual indexing to enforce load order.
+			$paths[0] = JPATH_SITE . "/language/overrides/$lang.localise.php";
+			$paths[2] = JPATH_SITE . "/language/$lang/$lang.localise.php";
 		}
 
-		if (!class_exists($class) && defined('JPATH_ADMINISTRATOR'))
+		if (defined('JPATH_ADMINISTRATOR'))
 		{
+			// Note: Manual indexing to enforce load order.
+			$paths[1] = JPATH_ADMINISTRATOR . "/language/overrides/$lang.localise.php";
+			$paths[3] = JPATH_ADMINISTRATOR . "/language/$lang/$lang.localise.php";
+		}
 
-			// Class does not exist. Try to find it in the Administrator Language Folder
-			$localise = JPATH_ADMINISTRATOR . "/language/$lang/$lang.localise.php";
-			if (file_exists($localise))
+		ksort($paths);
+		$path = reset($paths);
+
+		while (!class_exists($class) && $path)
+		{
+			if (file_exists($path))
 			{
-				require_once $localise;
+				require_once $path;
 			}
+			$path = next($paths);
 		}
 
 		if (class_exists($class))

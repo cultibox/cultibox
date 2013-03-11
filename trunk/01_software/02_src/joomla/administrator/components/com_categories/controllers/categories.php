@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -40,7 +40,7 @@ class CategoriesControllerCategories extends JControllerAdmin
 	 */
 	public function rebuild()
 	{
-		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		$extension = JRequest::getCmd('extension');
 		$this->setRedirect(JRoute::_('index.php?option=com_categories&view=categories&extension='.$extension, false));
@@ -67,7 +67,7 @@ class CategoriesControllerCategories extends JControllerAdmin
 	 */
 	public function saveorder()
 	{
-		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// Get the arrays from the Request
 		$order	= JRequest::getVar('order',	null, 'post', 'array');

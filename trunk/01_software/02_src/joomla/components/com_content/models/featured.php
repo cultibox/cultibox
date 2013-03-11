@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -39,7 +39,7 @@ class ContentModelFeatured extends ContentModelArticles
 		parent::populateState($ordering, $direction);
 
 		// List state information
-		$limitstart = JRequest::getVar('limitstart', 0, '', 'int');
+		$limitstart = JRequest::getUInt('limitstart', 0);
 		$this->setState('list.start', $limitstart);
 
 		$params = $this->state->params;

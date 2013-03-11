@@ -1,13 +1,11 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
 JLoader::register('BannersHelper', JPATH_COMPONENT.'/helpers/banners.php');
 
 /**
@@ -17,7 +15,7 @@ JLoader::register('BannersHelper', JPATH_COMPONENT.'/helpers/banners.php');
  * @subpackage	com_banners
  * @since		1.5
  */
-class BannersViewClient extends JView
+class BannersViewClient extends JViewLegacy
 {
 	protected $form;
 	protected $item;

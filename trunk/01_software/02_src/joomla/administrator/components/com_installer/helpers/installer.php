@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_installer
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -55,6 +55,11 @@ class InstallerHelper
 					'index.php?option=com_installer&view=warnings',
 		$vName == 'warnings'
 		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_INSTALLER_SUBMENU_LANGUAGES'),
+			'index.php?option=com_installer&view=languages',
+			$vName == 'languages'
+		);
 	}
 
 	/**
@@ -70,12 +75,10 @@ class InstallerHelper
 
 		$assetName = 'com_installer';
 
-		$actions = array(
-			'core.admin', 'core.manage', 'core.edit.state', 'core.delete'
-		);
+		$actions = JAccess::getActions($assetName);
 
 		foreach ($actions as $action) {
-			$result->set($action,	$user->authorise($action, $assetName));
+			$result->set($action->name,	$user->authorise($action->name, $assetName));
 		}
 
 		return $result;

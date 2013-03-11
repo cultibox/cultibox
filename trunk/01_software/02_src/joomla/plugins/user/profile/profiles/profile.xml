@@ -111,18 +111,20 @@
 				filter="safehtml"
 			/>
 			<field
-					name="tos"
-					type="radio"
-					label="PLG_USER_PROFILE_FIELD_TOS_LABEL"
-					description="PLG_USER_PROFILE_FIELD_TOS_DESC">
-					<option	value="1">PLG_USER_PROFILE_OPTION_AGREE</option>
-			</field>
+				name="dob"
+				type="calendar"
+				label="PLG_USER_PROFILE_FIELD_DOB_LABEL"
+				description="PLG_USER_PROFILE_FIELD_DOB_DESC"
+			/>
 			<field
-					name="dob"
-					type="calendar"
-					label="PLG_USER_PROFILE_FIELD_DOB_LABEL"
-					description="PLG_USER_PROFILE_FIELD_DOB_DESC"
-				 />
+				name="tos"
+				type="tos"
+				default=""
+				label="PLG_USER_PROFILE_FIELD_TOS_LABEL"
+				description="PLG_USER_PROFILE_FIELD_TOS_DESC">
+				<option value="1">PLG_USER_PROFILE_OPTION_AGREE</option>
+				<option value="">JNO</option>
+			</field>
 		</fieldset>
 	</fields>
 </form>

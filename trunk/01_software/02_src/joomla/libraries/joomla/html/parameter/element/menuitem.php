@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -70,7 +70,7 @@ class JElementMenuItem extends JElement
 
 		// load the list of menu items
 		// TODO: move query to model
-		$query = 'SELECT id, parent_id, name, menutype, type' . ' FROM #__menu' . $where . ' ORDER BY menutype, parent_id, ordering';
+		$query = 'SELECT id, parent_id, title, menutype, type' . ' FROM #__menu' . $where . ' ORDER BY menutype, parent_id, ordering';
 
 		$db->setQuery($query);
 		$menuItems = $db->loadObjectList();

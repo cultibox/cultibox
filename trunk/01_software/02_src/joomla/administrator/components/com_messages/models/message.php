@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -192,7 +192,7 @@ class MessagesModelMessage extends JModelAdmin
 		}
 
 		// Load the recipient user configuration.
-		$model = JModel::getInstance('Config', 'MessagesModel', array('ignore_request' => true));
+		$model = JModelLegacy::getInstance('Config', 'MessagesModel', array('ignore_request' => true));
 		$model->setState('user.id', $table->user_id_to);
 		$config = $model->getItem();
 		if (empty($config)) {

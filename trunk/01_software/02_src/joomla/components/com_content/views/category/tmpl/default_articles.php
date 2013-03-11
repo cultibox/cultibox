@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
-JHtml::core();
+JHtml::_('behavior.framework');
 
 // Create some shortcuts.
 $params		= &$this->item->params;
@@ -121,20 +121,22 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 					</td>
 					<?php endif; ?>
 
-					<?php if ($this->params->get('list_show_author', 1) && !empty($article->author )) : ?>
+					<?php if ($this->params->get('list_show_author', 1)) : ?>
 					<td class="list-author">
-						<?php $author =  $article->author ?>
-						<?php $author = ($article->created_by_alias ? $article->created_by_alias : $author);?>
+						<?php if(!empty($article->author) || !empty($article->created_by_alias)) : ?>
+							<?php $author =  $article->author ?>
+							<?php $author = ($article->created_by_alias ? $article->created_by_alias : $author);?>
 
-						<?php if (!empty($article->contactid ) &&  $this->params->get('link_author') == true):?>
-							<?php echo JHtml::_(
-									'link',
-									JRoute::_('index.php?option=com_contact&view=contact&id='.$article->contactid),
-									$author
-							); ?>
+							<?php if (!empty($article->contactid ) &&  $this->params->get('link_author') == true):?>
+								<?php echo JHtml::_(
+										'link',
+										JRoute::_('index.php?option=com_contact&view=contact&id='.$article->contactid),
+										$author
+								); ?>
 
-						<?php else :?>
-							<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
+							<?php else :?>
+								<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
+							<?php endif; ?>
 						<?php endif; ?>
 					</td>
 					<?php endif; ?>
@@ -155,7 +157,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 							$link = JRoute::_('index.php?option=com_users&view=login&Itemid='.$itemId);
 							$returnURL = JRoute::_(ContentHelperRoute::getArticleRoute($article->slug));
 							$fullURL = new JURI($link);
-							$fullURL->setVar('return', base64_encode($returnURL));
+							$fullURL->setVar('return', base64_encode(urlencode($returnURL)));
 						?>
 						<a href="<?php echo $fullURL; ?>" class="register">
 							<?php echo JText::_( 'COM_CONTENT_REGISTER_TO_READ_MORE' ); ?></a>

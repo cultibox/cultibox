@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  HTML
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -21,11 +21,13 @@ abstract class JHtmlUser
 	/**
 	 * Displays a list of user groups.
 	 *
+	 * @param   boolean  true to include super admin groups, false to exclude them
+	 *
 	 * @return  array  An array containing a list of user groups.
 	 *
 	 * @since   11.4
 	 */
-	public static function groups()
+	public static function groups($includeSuperAdmin = false)
 	{
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
@@ -48,6 +50,20 @@ abstract class JHtmlUser
 		{
 			$options[$i]->text = str_repeat('- ', $options[$i]->level) . $options[$i]->text;
 			$groups[] = JHtml::_('select.option', $options[$i]->value, $options[$i]->text);
+		}
+
+		// Exclude super admin groups if requested
+		if (!$includeSuperAdmin)
+		{
+			$filteredGroups = array();
+			foreach ($groups as $group)
+			{
+				if (!JAccess::checkGroup($group->value, 'core.admin'))
+				{
+					$filteredGroups[] = $group;
+				}
+			}
+			$groups = $filteredGroups;
 		}
 
 		return $groups;

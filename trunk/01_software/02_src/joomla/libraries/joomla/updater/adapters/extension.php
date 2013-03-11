@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Updater
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -162,7 +162,7 @@ class JUpdaterExtension extends JUpdateAdapter
 			$query->set('enabled = 0');
 			$query->where('update_site_id = ' . $this->_update_site_id);
 			$dbo->setQuery($query);
-			$dbo->Query();
+			$dbo->execute();
 
 			JLog::add("Error opening url: " . $url, JLog::WARNING, 'updater');
 			$app = JFactory::getApplication();

@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_languages
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -33,7 +33,7 @@ class LanguagesControllerStrings extends JControllerAdmin
 	{
 		parent::__construct($config);
 
-		require_once JPATH_COMPONENT.DS.'helpers'.DS.'jsonresponse.php';
+		require_once JPATH_COMPONENT . '/helpers/jsonresponse.php';
 	}
 
 	/**
