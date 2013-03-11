@@ -7,6 +7,8 @@ CultiBox (1.1.9) precise; urgency=low
     + Correction des listes avec ajout d'une class dans calagan.css
     + Correction du calcul du cout: le calcul théorique ne prend pas en compte les prises inactives, le calcul réel ne se base pas sur la configuration des prises mais uniquement les données enregistrées par la cultibox
     + Le package Linux vérifie maintenant que le logiciel a été désintallé avec l'option --purge, sinon il annule la nouvelle installation et propose à l'utilisateur de lancer la commande
+    + Suppression du code en double qui detectait la version
+    + La fonction de vérification des mises à jours gère maintenant l'architecture (insertion dans la variable VERSION de l'arch) et propose l'update adequat
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 
