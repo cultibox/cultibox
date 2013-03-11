@@ -46,17 +46,6 @@ include($this['path']->path('layouts:template.config.php'));
 	            <script type="text/javascript" src="main/libs/js/cultibox.js"></script>
                 <script type="text/javascript" src="main/libs/js/cultibox-utils.js"></script>
                 <script type="text/javascript" src="main/libs/js/oXHR.js"></script>
-
-                <style type="text/css">
-                        /* css for timepicker */
-                        #ui-datepicker-div, .ui-datepicker{ width: 30%; font-size: 90%; }
-                        .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-                        .ui-timepicker-div dl { text-align: left; }
-                        .ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-                        .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
-                        .ui-timepicker-div td { font-size: 90%; }
-                        .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-                </style>
 </head>
 
 <body id="page" class="page <?php echo $this['config']->get('body_classes'); ?>" data-config='<?php echo $this['config']->get('body_config','{}'); ?>'>
