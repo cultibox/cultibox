@@ -4,6 +4,7 @@
 	font-style: italic;
 	color: green;
 	width: 100%;
+     
 }
 
 
@@ -27,7 +28,12 @@
 }
 
 #compat {
-    background-color: yellow;
+    background-color: #F30921;
+    padding:4px 7px;
+    border-bottom-left-radius:11px;
+    border-bottom-right-radius:11px;
+    border-top-left-radius:11px;
+    border-top-right-radius:11px;
 }
 
 #welcome {
