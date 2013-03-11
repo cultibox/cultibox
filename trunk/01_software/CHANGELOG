@@ -13,6 +13,7 @@ CultiBox (1.1.9) precise; urgency=low
     + Ajout de tooltips pour la gestion des puissances 1000 ou 3500W
     + Correction taille des informations affichées par le css de calagan
     + Passage de l'affichage des menus par des articles contenant le code Jumi plutôt que des applications Jumi: cela permet d'afficher l'onglet actif
+    + AJout par calagan: d'une nouvelle image de waiting, de nouvelles images de fake_log, de l'image de resumé
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 

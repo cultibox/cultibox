@@ -81,11 +81,6 @@ input.button_log {
     color: #6A7F7C;
 }
 
-
-.text_info {
-   text-indent:2em
-}
-
 .regul {
    font-size: 12px;
    font-style: italic;
@@ -137,6 +132,13 @@ input.button_log {
 .subtitle_right {
   text-align: right;
 }
+
+ul.list_class {
+    list-style-type: circle;
+    text-align: left;
+    padding-left: 70px;
+}
+
 
 table.conf-table { 
    width:100%; 
