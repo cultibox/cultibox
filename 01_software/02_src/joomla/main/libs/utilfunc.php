@@ -1314,6 +1314,11 @@ function get_nb_days($start_date="",$end_date="") {
 // RET   none  
 function check_update_available($version,&$ret,&$out) {
          $version=str_replace(".","",$version);
+         $temp=explode("-", $version);
+         $version=$temp[0];
+         $arch=$temp[1];
+         $arch=trim($arch);
+
          if(isset($GLOBALS['UPDATE_FILE'])&&(!empty($GLOBALS['UPDATE_FILE']))) {
                $buffer=array();
                $tmp=array();
@@ -1326,9 +1331,11 @@ function check_update_available($version,&$ret,&$out) {
                   $os=php_uname('s');
                   foreach($buffer as $val) {
                                     $tmp=explode("*", $val);
-                                    if(count($tmp)==3) {
+                                    if(count($tmp)>=4) {
                                         $tmp_version=str_replace(".","","$tmp[1]");
-                                        if((strcmp($tmp[0],"$os")==0)&&($version<$tmp_version)) {
+                                        $tmp[3]=trim($tmp[3]);
+
+                                        if((strcmp($tmp[0],"$os")==0)&&($version<$tmp_version)&&(strcmp("$arch","$tmp[3]")==0)) {
                                             $ret[]=$tmp; 
                                         }
                                     }
@@ -1573,7 +1580,6 @@ function format_sd_card($path="",&$out="") {
                     } else {
                         if(!clean_log_file("$logs/$month/pwr_$day")) $ret=false;
                     }
-
                 }
             }
 
