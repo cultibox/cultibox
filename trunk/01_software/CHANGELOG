@@ -11,6 +11,7 @@ CultiBox (1.1.9) precise; urgency=low
     + La fonction de vérification des mises à jours gère maintenant l'architecture (insertion dans la variable VERSION de l'arch) et propose l'update adequat
     + Correction par Calagan du css: menu actif en blanc, correction de la taille de l'image cultibox...
     + Ajout de tooltips pour la gestion des puissances 1000 ou 3500W
+    + Correction taille des informations affichées par le css de calagan
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 
