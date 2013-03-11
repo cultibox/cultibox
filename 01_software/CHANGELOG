@@ -14,6 +14,8 @@ CultiBox (1.1.9) precise; urgency=low
     + Correction taille des informations affichées par le css de calagan
     + Passage de l'affichage des menus par des articles contenant le code Jumi plutôt que des applications Jumi: cela permet d'afficher l'onglet actif
     + AJout par calagan: d'une nouvelle image de waiting, de nouvelles images de fake_log, de l'image de resumé
+    + Passage du css pour le timepicker dans le css de calagan
+    + Affichage du bouton resetzoom dans highchart avec le zoom en Y
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 

@@ -211,7 +211,7 @@ $(function () {
             spacingRight: 20,
             events: {
                load: function() {
-                  <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 80, 55, 143, 57)"; ?>
+                  <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 350, 60, 130, 50)"; ?>
                   <?php if($fake_log)  echo ".add();"; ?>
                }
             }
@@ -653,6 +653,7 @@ $(function () {
                     if(chart.axes[0].series[i].type=='area') {
                         //console.log(chart.yAxis[i]);
                         chart.yAxis[i].setExtremes($(this).val(), extremes.max);
+                        chart.showResetZoom();
                     }
                 }
             }
@@ -666,6 +667,7 @@ $(function () {
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='area') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+                        chart.showResetZoom();
                     }
                 }
             }
