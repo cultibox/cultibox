@@ -12,6 +12,7 @@ CultiBox (1.1.9) precise; urgency=low
     + Correction par Calagan du css: menu actif en blanc, correction de la taille de l'image cultibox...
     + Ajout de tooltips pour la gestion des puissances 1000 ou 3500W
     + Correction taille des informations affichées par le css de calagan
+    + Passage de l'affichage des menus par des articles contenant le code Jumi plutôt que des applications Jumi: cela permet d'afficher l'onglet actif
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 
