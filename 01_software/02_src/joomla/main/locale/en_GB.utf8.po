@@ -362,6 +362,9 @@ msgstr "months"
 msgid "IMPORT_LOG"
 msgstr "Import logs"
 
+msgid "NO_IMPORT_LOG"
+msgstr "No logs to import"
+
 msgid "MIN_Y_AXIS_LOG"
 msgstr "Minimal value for Y-axis"
 

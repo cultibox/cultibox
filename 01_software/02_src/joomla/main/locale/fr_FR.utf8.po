@@ -221,13 +221,13 @@ msgid "SELECT_DAY"
 msgstr "Jour à afficher (AAAA-MM-JJ)"
 
 msgid "SELECT_MONTH"
-msgstr "Selectionner le mois à afficher "
+msgstr "Sélectionner le mois à afficher "
 
 msgid "VIEW"
 msgstr "Afficher"
 
 msgid "DRAG_PLOT"
-msgstr "Selectionner une zone afin de l\'agrandir"
+msgstr "Sélectionner une zone afin de l\'agrandir"
 
 msgid "LEGEND_TEMP"
 msgstr "Température"
@@ -360,6 +360,9 @@ msgstr "derniers mois"
 
 msgid "IMPORT_LOG"
 msgstr "Importer les logs"
+
+msgid "NO_IMPORT_LOG"
+msgstr "Pas de logs à importer"
 
 msgid "MIN_Y_AXIS_LOG"
 msgstr "Valeur minimale de l'axe Y"
@@ -786,7 +789,7 @@ msgid "COST_PRICE_FOR_DAY"
 msgstr "pour le"
 
 msgid "COST_PRICE_TIME"
-msgstr "pour la periode du"
+msgstr "pour la période du"
 
 msgid "COST_PRICE_TO"
 msgstr "au"
@@ -887,10 +890,10 @@ msgid "EMPTY_HUMIDITY_DATA"
 msgstr "Aucun enregistrement concernant l'hygrométrie pour la date sélectionnée"
 
 msgid "EMPTY_TEMPERATURE_DATA_SENSOR"
-msgstr "Enregistrements de température vides pour certains de vos capteurs à la date selectionnée"
+msgstr "Enregistrements de température vides pour certains de vos capteurs à la date sélectionnée"
 
 msgid "EMPTY_HUMIDITY_DATA_SENSOR"
-msgstr "Enregistrements d'hygrométrie vides pour certains de vos capteurs à la date selectionnée"
+msgstr "Enregistrements d'hygrométrie vides pour certains de vos capteurs à la date sélectionnée"
 
 msgid "EMPTY_POWER_DATA"
 msgstr "Aucun enregistrement concernant la puissance consommée pour la date sélectionnée"
@@ -1122,10 +1125,10 @@ msgid "TOOLTIP_COST_TYPE"
 msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommé."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "La carte SD selectionnée sera rendu compatible Cultibox. Pour cela les fichiers de configuration des prise, des programmes et de la cultibox seront régénérés en fonction de vos paramêtres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déja présent sur votre carte SD ils seront perdus.<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
+msgstr "La carte SD sélectionnée sera rendu compatible Cultibox. Pour cela les fichiers de configuration des prise, des programmes et de la cultibox seront régénérés en fonction de vos paramêtres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déja présent sur votre carte SD ils seront perdus.<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
 
 msgid "TOOLTIP_LOAD_LOG"
-msgstr "Cette fonctionnalité vous permet de charger vos fichiers de logs, présents sur la carte SD en revenant sur une plus grande période. Lorsque vous chargez la page des logs, seul les logs pour le mois courant sont insérés dans la base de donnée. Avec cette fonctionnalité il est possible de remonter plus loin en arrière en fonction de votre ce que vous avez choisis dans la partie cofiguration du logiciel."
+msgstr "Cette fonctionnalité vous permet de charger vos fichiers de logs, présents sur la carte SD en revenant sur une plus grande période. Lorsque vous chargez la page des logs, seul les logs pour le mois courant sont insérés dans la base de donnée. Avec cette fonctionnalité il est possible de remonter plus loin en arrière en fonction de ce que vous avez choisis dans la partie cofiguration du logiciel."
 
 msgid "TOOLTIP_RESET_LOG"
 msgstr "En cliquant sur ce bouton toutes vos données des logs enregistrés seront supprimé. Cela peut être réalisé à la fin d'une culture, si vos logs ne vous sont plus utiles ou si vous voulez augmenter la rapidité de traitement de vos données par le logiciel"
