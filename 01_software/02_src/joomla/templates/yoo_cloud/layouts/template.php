@@ -190,7 +190,7 @@ include($this['path']->path('layouts:template.config.php'));
 				<?php if ($this['modules']->count('footer + debug') || $this['config']->get('warp_branding')) : ?>
                 <footer id="footer2" class="grid-block">                
                     <div id="shortlogo">                      
-                        <img src="main/libs/img/shortlogo2.png">
+                        <img src="main/libs/img/shortlogo2.png" alt="">
                     </div>           
                 </footer>
 				<footer id="footer" class="grid-block">

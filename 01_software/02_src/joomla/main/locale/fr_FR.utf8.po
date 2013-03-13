@@ -17,19 +17,19 @@ msgstr "Programmes"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
-msgstr "Bienvenue dans le logiciel de configuration de la CultiBox"
+msgstr "Bienvenue dans le logiciel de configuration de la Cultibox"
 
 msgid "WELCOME_MESSAGE"
-msgstr "Ce logiciel va vous permettre de manipuler simplement votre CultiBox afin de la configurer, de visualiser les données enregistrées ou encore d'accéder à certaines fonctionnalités telles que le calcul du coût d'électricité ou la création d'un calendrier de culture."
+msgstr "Ce logiciel va vous permettre de manipuler simplement votre Cultibox afin de la configurer, de visualiser les données enregistrées ou encore d'accéder à certaines fonctionnalités telles que le calcul du coût d'électricité ou la création d'un calendrier de culture."
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note :</b> pour ceux qui possède l'ancienne version de la CultiBox (la <b>greenbox</b>), il vous faudra absolument"
+msgstr "<b>Note :</b> pour ceux qui possède l'ancienne version de la Cultibox (la <b>greenbox</b>), il vous faudra absolument"
 
 msgid "WELCOME_REQUIEREMENT"
-msgstr "<ul class='list_class'><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la CultiBox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la CultiBox</li></ul>"
+msgstr "<ul class='list_class'><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la Cultibox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la Cultibox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
-msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre CultiBox"
+msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre Cultibox"
 
 msgid "WELCOME_WIZARD"
 msgstr "Assistant de configuration"
@@ -186,7 +186,7 @@ msgid "CHECK_STATISTICS"
 msgstr "Envoie d'informations pour aider le développement"
 
 msgid "MANAGE_RESET_SD_CARD"
-msgstr "Formater une carte SD pour la rendre compatible CultiBox"
+msgstr "Formater une carte SD pour la rendre compatible Cultibox"
 
 msgid "MANAGE_RESET_CARD_NOT_FOUND"
 msgstr "Aucune carte formatable détectée"
@@ -302,7 +302,7 @@ msgid "FORCE_ON_CHART"
 msgstr "Marche forcee"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte CultiBox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note: </i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
+msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte Cultibox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note: </i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
 
 msgid "PREVIOUS_BUTTON_DAY"
 msgstr "Afficher les informations pour le jour précédent"
@@ -1024,7 +1024,7 @@ msgid "INFO_SD_CARD"
 msgstr "Une carte SD compatible cultibox est branchée"
 
 msgid "INFO_PLUG_CULTIBOX_CARD"
-msgstr "Vous pouvez maintenant connecter la carte SD dans la CultiBox."
+msgstr "Vous pouvez maintenant connecter la carte SD dans la Cultibox."
 
 msgid "VALID_UPDATE_CONF"
 msgstr "Configuration mise à jour avec succès"
@@ -1048,10 +1048,10 @@ msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage"
 
 msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "Fichiers de logs du mois en cours enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur."
+msgstr "Fichiers de logs du mois en cours enregistrées avec succès, vous pouvez retirer votre carte Cultibox de votre ordinateur."
 
 msgid "VALID_LOAD_LOG"
-msgstr "Fichiers de logs des derniers mois enregistrées avec succès, vous pouvez retirer votre carte CultiBox de votre ordinateur."
+msgstr "Fichiers de logs des derniers mois enregistrées avec succès, vous pouvez retirer votre carte Cultibox de votre ordinateur."
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "Programme mis à jour avec succès"
@@ -1086,22 +1086,22 @@ msgid "TOOLTIP_POPUP"
 msgstr "Les messages affichés par l'interface sont par défaut affichés dans une boite de dialogue. Cette option vous permet de désactiver/activer ces boites de dialogue."
 
 msgid "TOOLTIP_RECORD_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle la CultiBox enregistre les données de température et d'hygrométrie."
+msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les données de température et d'hygrométrie."
 
 msgid "TOOLTIP_POWER_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle la CultiBox enregistre les valeurs de consomation d'énergie."
+msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les valeurs de consomation d'énergie."
 
 msgid "TOOLTIP_PLUG_FREQ"
 msgstr "Cette option permet de configurer la fréquence à laquelle sera mise à jour l'état (Marche/Arrêt) de vos prises."
 
 msgid "TOOLTIP_ALARM"
-msgstr "L'alarme de la CultiBox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil. <br /><br /><b>Il est à noter que l'alarme coupe toute les prises en cas de déclenchement du seuil configuré.</b>"
+msgstr "L'alarme de la Cultibox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil. <br /><br /><b>Il est à noter que l'alarme coupe toute les prises en cas de déclenchement du seuil configuré.</b>"
 
 msgid "TOOLTIP_WITHOUT_SD"
-msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la CultiBox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la CultiBox."
+msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."
 
 msgid "TOOLTIP_WITHOUT_SD_LOG"
-msgstr "Sans carte SD branchée les fichiers enregistrés par votre CultiBox concernant la température et l'hygrométrie ne pourront pas être affiché et sauvegardé. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
+msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox concernant la température et l'hygrométrie ne pourront pas être affiché et sauvegardé. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
 
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
@@ -1110,7 +1110,7 @@ msgid "TOOLTIP_POWER_AXIS"
 msgstr "Cette option configure la valeur maximale de l'axe des ordonnées du graphique des puissances consommées."
 
 msgid "TOOLTIP_LOG_PROGRAM"
-msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la CultiBox et le comportement théorique de la prise."
+msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la Cultibox et le comportement théorique de la prise."
 
 msgid "TOOLTIP_PLUG_TOLERANCE"
 msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation."

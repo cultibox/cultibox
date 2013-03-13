@@ -1,4 +1,4 @@
-CultiBox (1.1.9) precise; urgency=low
+Cultibox (1.1.9) precise; urgency=low
     + Lancement de l'interface à la fin de l'installation sous windows
     + On n'affiche plus les erreurs du update.sql (il y en aura forcément et c'est pas important)
     + Suppression de l'image de la cultibox dans le welcome, calagan l'a ajouté au bout du menu
@@ -23,11 +23,12 @@ CultiBox (1.1.9) precise; urgency=low
     + Suppression des alternatecolor dans highchart pour ne pas effacer le message de fake log
     + Possibilité d'exporter/importer un programme vide
     + Ajout d'encres dans la page des programmes
+    + Correctifs pour passer les standards HTML5 du W3C
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 
 
-CultiBox (1.1.8) precise; urgency=low
+Cultibox (1.1.8) precise; urgency=low
     + Ajout de la possibilité de zoomer sur l'axe Y dans les logs 
     + Correction de tooltip et de valeur par défaut dans la base configuration
     + Suppression du composant joomfish dans joomla
@@ -38,7 +39,7 @@ CultiBox (1.1.8) precise; urgency=low
 -- Yann Genevois <yann.genevois@gmail.com> Thu Mar  7 10:42:45 CET 2013
 
 
-CultiBox (1.1.7) precise; urgency=low
+Cultibox (1.1.7) precise; urgency=low
     + Correctif pour la gestion des puissances des prises
     + Corection de la couleur du programme 4 identique à celle de la puissance
     + Vérification de l'accès à internet avant de vérifier la présence des mises à jours
@@ -47,20 +48,20 @@ CultiBox (1.1.7) precise; urgency=low
 -- Yann Genevois <yann.genevois@gmail.com> Sat Mar  2 22:07:00 CET 2013
 
 
-CultiBox (1.1.6) precise; urgency=low
+Cultibox (1.1.6) precise; urgency=low
     + Correctif pour la dernière version
 
 -- Yann Genevois <yann.genevois@gmail.com>  Fri Mar  1 21:27:02 CET 2013
 
 
-CultiBox (1.1.5) precise; urgency=low
+Cultibox (1.1.5) precise; urgency=low
     + Verification que la version proposée pour les updates à un numéro de version plus grand que la version installée
     + Ajout de la possibilité de configurer une prise en 3500W ou 100W et changement des adresses et du fichier pluga en conséquence
 
 -- Yann Genevois <yann.genevois@gmail.com>  Wed Feb 27 10:40:15 CET 2013
 
 
-CultiBox (1.1.4) precise; urgency=low
+Cultibox (1.1.4) precise; urgency=low
     + Correction pour la gestion des updates qui restait affiché même après une update
     + Correction de l'import des programmes qui n'importait qu la prise 1
     + Le formatage de la carte SD se fait dans la configuration
@@ -71,7 +72,7 @@ CultiBox (1.1.4) precise; urgency=low
 -- Yann Genevois <yann.genevois@gmail.com>  Tue Feb  5 14:14:08 CET 2013
 
 
-CultiBox (1.1.3) precise; urgency=low
+Cultibox (1.1.3) precise; urgency=low
 
     + Une page waiting (la même que les logs) apparait maintenant quand on format une carte SD pour la rendre compatible Cultibox
     + Le Browser Web du client est testé afin de savoir s'il est compatible avec le logiciel Cultibox, si non un message d'information apparait sur la page du Welcome
@@ -89,7 +90,7 @@ CultiBox (1.1.3) precise; urgency=low
 
 
 
-CultiBox (1.1.2) precise; urgency=low
+Cultibox (1.1.2) precise; urgency=low
     + Ajout d'une variable de configuration permettant d'activer ou non l'envoi des statistiques (par défaut activé, à désactiver lors de la mise en prod)
     + Changement de la gestion des messages et notament des messages d'erreut qui s'affichent à coté du champ concerné
     + Suppression de la variable de configuration permettant de choisir la couleur des courbes des programmes dans les logs, la couleur utilisée est celle du programme en question
@@ -137,7 +138,7 @@ ALTER TABLE `informations` CHANGE `firm_version` `firm_version` VARCHAR( 7 ) NOT
 
 
 
-CultiBox (1.1.1) precise; urgency=low
+Cultibox (1.1.1) precise; urgency=low
    + Correction de l'afichage du formulaire des logs + correction de l'affichage des graphes de puissance + correction de la variable des graphes des couts 
         02_src/joomla/main/templates/logs.html
         02_src/joomla/main/scripts/logs.php
@@ -147,7 +148,7 @@ CultiBox (1.1.1) precise; urgency=low
         02_src/joomla/main/libs/css/cultibox.css
 
 
-CultiBox (1.1.0) precise; urgency=low
+Cultibox (1.1.0) precise; urgency=low
    + Passage par une bibliothèque externe des fonctions javascript
         02_src/joomla/templates/yoo_cloud/layouts/template.php
         02_src/joomla/main/scripts/cost.php
@@ -284,7 +285,7 @@ CultiBox (1.1.0) precise; urgency=low
 -- Yann Genevois <yann.genevois@gmail.com>  Sat Dec  8 13:00:03 CET 2012
 
 
-CultiBox (1.0.334) precise; urgency=low
+Cultibox (1.0.334) precise; urgency=low
     + Ajout de la possibilité de supprimer/ajouter une prise dans les programmes et blocage des prises à 3 minimum
         02_src/joomla/main/libs/config.php
         02_src/joomla/main/libs/css/cultibox.css
@@ -343,7 +344,7 @@ CultiBox (1.0.334) precise; urgency=low
 -- Yann Genevois <yann.genevois@gmail.com> Thu Dec  6 01:41:26 CET 2012
 
 
-CultiBox (1.0.325) precise; urgency=low
+Cultibox (1.0.325) precise; urgency=low
     + Correction d'un bug d'affichage dans l'onglet plugs
         02_src/joomla/main/templates/plugs.html
 
@@ -405,7 +406,7 @@ CultiBox (1.0.325) precise; urgency=low
  -- Yann Genevois <yann.genevois@gmail.com> Wed Nov 28 10:34:04 CET 2012
 
 
-CultiBox (1.0.316) precise; urgency=low
+Cultibox (1.0.316) precise; urgency=low
   + Modification de la gestion sous windows (Ajout des services)
 
   + Lors de l'installation sous windows le nom des prises sera en francais ou anglais en fonction de la langue choisie
@@ -426,7 +427,7 @@ CultiBox (1.0.316) precise; urgency=low
  -- Yann Genevois <yann.genevois@gmail.com> Fri Nov 16 11:42:10 CET 2012
 
 
-CultiBox (1.0.309) precise; urgency=low
+Cultibox (1.0.309) precise; urgency=low
 
   + Ajout du module xHR + passage au valaditeur du w3c pour le html + correction affichage
         02_src/joomla/main/libs/css/cultibox.css
@@ -454,7 +455,7 @@ CultiBox (1.0.309) precise; urgency=low
  -- Yann Genevois <yann.genevois@gmail.com> Thu Nov 15 12:23:46 CET 2012
 
 
-CultiBox (1.0.303) precise; urgency=low
+Cultibox (1.0.303) precise; urgency=low
 
   + Ajout des champs permettant de configurer le début et la fin de heures pleines/creuses + correction d'un bug d'affichage
         02_src/joomla/main/locale/en_GB.utf8.po
@@ -469,7 +470,7 @@ CultiBox (1.0.303) precise; urgency=low
  -- Yann Genevois <yann.genevois@gmail.com> Tue Nov 13 12:01:24 CET 2012
 
 
-CultiBox (1.0.296) precise; urgency=low
+Cultibox (1.0.296) precise; urgency=low
 
   + Ajout d'une fonction permettant de copier ou créer le fichier log.txt sur la carte SD
         02_src/joomla/main/scripts/plugs.php
@@ -487,7 +488,7 @@ CultiBox (1.0.296) precise; urgency=low
  -- Yann Genevois <yann.genevois@gmail.com> Tue Nov 13 12:01:24 CET 2012
 
 
-CultiBox (1.0.295) precise; urgency=low
+Cultibox (1.0.295) precise; urgency=low
 
   + Ajout des nouvelles images pour le welcome et changement des textes
         02_src/joomla/main/libs/css/cultibox.css
@@ -501,7 +502,7 @@ CultiBox (1.0.295) precise; urgency=low
  -- Yann Genevois <yann.genevois@gmail.com> Tue Nov 13 11:27:39 CET 2012
 
 
-CultiBox (1.0.293) precise; urgency=low
+Cultibox (1.0.293) precise; urgency=low
 
   + Changement de la taille des commentaires du calendrier
         02_src/joomla/main/libs/utilfunc.php
@@ -510,7 +511,7 @@ CultiBox (1.0.293) precise; urgency=low
  -- Alliaume Rico <alliaume.rico@gmail.com> Mon Nov 12 15:12:18 CET 2012
 
 
-CultiBox (1.0.264) precise; urgency=low
+Cultibox (1.0.264) precise; urgency=low
 
   + Correction erreur syntaxe dans la page de logs et correction de la gestion HP/HC quand on passe en anglais
         02_src/joomla/main/scripts/logs.php
@@ -561,7 +562,7 @@ CultiBox (1.0.264) precise; urgency=low
 
  -- Yann Genevois <yann.genevois@gmail.com>  Sat Oct 27 12:59:17 CEST 2012
 
-CultiBox (1.0.0) precise; urgency=low
+Cultibox (1.0.0) precise; urgency=low
 
   + Initial Release
 
