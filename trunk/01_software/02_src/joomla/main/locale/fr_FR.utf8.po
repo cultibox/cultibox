@@ -570,8 +570,14 @@ msgstr "Régulation à l'arrêt"
 msgid "ADD_PLUG"
 msgstr "Ajouter une prise"
 
+msgid "MAX_PLUG_REACHED"
+msgstr "Maximum de prises atteint"
+
 msgid "REMOVE_PLUG"
 msgstr "Supprimer une prise"
+
+msgid "MIN_PLUG_REACHED"
+msgstr "Minimum de prises atteint"
 
 msgid "PLUG_ADDED"
 msgstr "Prise ajoutée avec succée"

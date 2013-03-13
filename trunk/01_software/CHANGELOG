@@ -21,7 +21,8 @@ CultiBox (1.1.9) precise; urgency=low
     + Ajout de faux logs basés sur les données de philou le filou
     + Correction des accents dans les graphes highcharts des logs et du cost
     + Suppression des alternatecolor dans highchart pour ne pas effacer le message de fake log
-    
+    + Possibilité d'exporter/importer un programme vide
+    + Ajout d'encres dans la page des programmes
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Mar  8 11:27:13 CET 2013
 

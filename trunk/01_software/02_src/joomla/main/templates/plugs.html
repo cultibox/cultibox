@@ -30,7 +30,7 @@
 
 <br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm" id="plugForm">
-<p class="title_conf"><?php echo __('PLUG'); ?>: 
+<p class="title_conf"><?php echo __('PLUG'); ?> 
     <select name="selected_plug" onChange="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);" onLoad="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);">
     <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
                <option <?php if($selected_plug==$i) { echo 'selected';} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>

@@ -1,3 +1,4 @@
+<label id="anchor-programs"></label>
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>  
    <script>
       alert('<?php echo "$pop_up_message"; ?>');
@@ -29,8 +30,7 @@
 <br />
 <?php } ?>
 
-
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="get" name="actionprog" id="actionprog">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-programs" method="get" name="actionprog" id="actionprog">
 <p class="title_conf"><?php echo __('CONFIGURE_PROGRAM'); ?>
     <select name="selected_plug" onchange="this.form.submit()" id="selected_plug">
     <?php foreach($active_plugs as $plugs) {  ?>
@@ -358,8 +358,9 @@ $(document).ready(function() {
 <br /><hr /><br />
 
 
-<label class="title_conf"><?php echo __('MANAGE_PROGRAM_INFOS'); ?>:</label>
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<label id="anchor-manage"></label>
+<label class="title_conf"><?php echo __('MANAGE_PROGRAM_INFOS'); ?></label>
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -367,14 +368,14 @@ $(document).ready(function() {
     <td class="program-manage-field">
           <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
           <input type="hidden" name="add_plug" value="add_plug">
-          <input type="submit" value="<?php echo __('ADD_PLUG'); ?>" name="add" class="submit_plug" <?php if($nb_plugs>=$GLOBALS['NB_MAX_PLUG']) echo "disabled"; ?>>
+          <input type="submit" name="add" class="submit_plug" <?php if($nb_plugs>=$GLOBALS['NB_MAX_PLUG']) { ?> disabled value="<?php echo __('MAX_PLUG_REACHED'); ?>" <?php } else { ?>value="<?php echo __('ADD_PLUG'); ?>" <?php } ?>>
     </td>
     <td></td>
 </tr>
 </table>
 </form>
 
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -382,7 +383,7 @@ $(document).ready(function() {
     <td class="program-manage-field">
           <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
           <input type="hidden" name="remove_plug" value="remove_plug">
-          <input type="submit" value="<?php echo __('REMOVE_PLUG'); ?>" name="remove" class="submit_plug" <?php if($nb_plugs<=$GLOBALS['NB_MIN_PLUG']) echo "disabled"; ?>>
+          <input type="submit" name="remove" class="submit_plug" <?php if($nb_plugs<=$GLOBALS['NB_MIN_PLUG']) { ?> disabled value="<?php echo __('MIN_PLUG_REACHED'); ?>" <?php } else { ?>value="<?php echo __('REMOVE_PLUG'); ?>"<?php } ?>>
     </td>
     <td></td>
 </tr>
@@ -390,7 +391,7 @@ $(document).ready(function() {
 </form>
 
 
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -407,7 +408,7 @@ $(document).ready(function() {
 
 
 <?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -421,7 +422,7 @@ $(document).ready(function() {
 </table>
 </form>
 
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post" enctype="multipart/form-data">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -430,9 +431,8 @@ $(document).ready(function() {
                      <input type="file" name="upload_file">
                      <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
                      <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
-                     <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>" class="submit_plug">
     </td>
-    <td></td>
+    <td><input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>" class="submit_plug"></td>
 </table>
 </form>
 <?php } ?>
