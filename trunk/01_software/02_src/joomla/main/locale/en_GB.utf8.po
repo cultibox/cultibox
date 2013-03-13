@@ -186,7 +186,7 @@ msgid "CHECK_STATISTICS"
 msgstr "Send informations to help the cultibox development"
 
 msgid "MANAGE_RESET_SD_CARD"
-msgstr "Format a SD card to be compatible with the CultiBox"
+msgstr "Format a SD card to be compatible with the Cultibox"
 
 msgid "MANAGE_RESET_CARD_NOT_FOUND"
 msgstr "No SD card formatable detected"
@@ -303,7 +303,7 @@ msgid "FORCE_ON_CHART"
 msgstr "Forced to ON"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Thank you to wait few seconds and <b><i>to not disconnect</b></i> the CultiBox card during data loading...<br /><br /><b><i>Note: </i></b>If an error occured, you can reload this page in order to try to complete the operation."
+msgstr "Thank you to wait few seconds and <b><i>to not disconnect</b></i> the Cultibox card during data loading...<br /><br /><b><i>Note: </i></b>If an error occured, you can reload this page in order to try to complete the operation."
 
 msgid "PREVIOUS_BUTTON_DAY"
 msgstr "Display informations for the previous day"
@@ -1005,7 +1005,7 @@ msgid "ERROR_HPC_TIME_NULL"
 msgstr "Time start or stop of the full/empty hours is not configured properly. You can configure it <a href='configuration?submenu=cost_interface'>here</a>"
 
 msgid "ERROR_COPY_TPL"
-msgstr "Can't copy empty_file_64.tpl file into your CultiBox SD card"
+msgstr "Can't copy empty_file_64.tpl file into your Cultibox SD card"
 
 msgid "ERROR_FORMAT_SD_CARD"
 msgstr "Error during formating your SD card"
@@ -1031,7 +1031,7 @@ msgid "VALID_UPDATE_CONF"
 msgstr "Configuration successfully updated"
 
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
-msgstr "Configuration updated successfully in the CultiBox software!"
+msgstr "Configuration updated successfully in the Cultibox software!"
 
 msgid "VALID_UPDATE_PROGRAM"
 msgstr "Programs successfully updated"
@@ -1046,13 +1046,13 @@ msgid "VALID_RESET_CARD"
 msgstr "SD card formated successfully"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "Program updated successfully! You can unplug your SD card and put in the CultiBox"
+msgstr "Program updated successfully! You can unplug your SD card and put in the Cultibox"
 
 msgid "VALID_CURRENT_LOAD_LOG"
 msgstr "Logs file from the current month recorded sucessfully, you can unpluged the SD card from your computer"
 
 msgid "VALID_LOAD_LOG"
-msgstr "Logs successfully loaded, you can disconnect your CultiBox card from your computer"
+msgstr "Logs successfully loaded, you can disconnect your Cultibox card from your computer"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "Program successfully updated"
@@ -1087,22 +1087,22 @@ msgid "TOOLTIP_POPUP"
 msgstr ""
 
 msgid "TOOLTIP_RECORD_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle la CultiBox enregistre les données de température et d'hygrométrie."
+msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les données de température et d'hygrométrie."
 
 msgid "TOOLTIP_POWER_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle la CultiBox enregistre les valeurs de consomation d'énergie."
+msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les valeurs de consomation d'énergie."
 
 msgid "TOOLTIP_PLUG_FREQ"
 msgstr "Cette option permet de configurer la fréquence à laquelle sera mise à jour l'état (Marche/Arrêt) de vos prises."
 
 msgid "TOOLTIP_ALARM"
-msgstr "L'alarme de la CultiBox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil."
+msgstr "L'alarme de la Cultibox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil."
 
 msgid "TOOLTIP_WITHOUT_SD"
-msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la CultiBox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la CultiBox."
+msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."
 
 msgid "TOOLTIP_WITHOUT_SD_LOG"
-msgstr "Sans carte SD branchée les fichiers enregistrés par votre CultiBox concernant la température et l'hygrométrie ne pourront pas être affiché et sauvegardé. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
+msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox concernant la température et l'hygrométrie ne pourront pas être affiché et sauvegardé. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
 
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
@@ -1111,7 +1111,7 @@ msgid "TOOLTIP_POWER_AXIS"
 msgstr "Tihis option configures the mximal value for the power consumed Y-axis graphics."
 
 msgid "TOOLTIP_LOG_PROGRAM"
-msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la CultiBox et le comportement théorique de la prise."
+msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la Cultibox et le comportement théorique de la prise."
 
 msgid "TOOLTIP_PLUG_TOLERANCE"
 msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation."

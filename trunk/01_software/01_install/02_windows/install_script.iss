@@ -27,7 +27,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={sd}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-OutputBaseFilename=CultiBox_{#MyAppVersion}-windows7
+OutputBaseFilename=Cultibox_{#MyAppVersion}-windows7
 VersionInfoVersion={#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
@@ -52,7 +52,7 @@ french.ContinueInstall=Une version du logiciel Cultibox semble déja présente, vo
 english.ContinueInstall=A current version of the Cultibox software seems to be already installed on your computer. You can install this new software version over the old one but you may loose your configuration in the process. Your current configuration will be saved into the backup directory. Do you want to continue the install process?
 
 french.SaveDatas=Voulez-vous sauvegarder la configuration de votre ancienne version?
-english.SaveDatas=Do you want to save the configuration of your old CultiBox software?
+english.SaveDatas=Do you want to save the configuration of your old Cultibox software?
 
 french.CleanCache=Vous venez d'installer une nouvelle version, n'oubliez pas de supprimer le cache de votre navigateur internet pour que celle-ci soit pleinement fonctionnelle
 english.CleanCache=You just install a new version of the Cultibox software, don't forget to delete your internet browser's cache to have a full working version.
