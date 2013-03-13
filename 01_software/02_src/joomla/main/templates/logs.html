@@ -259,6 +259,13 @@ $(function () {
                max: 100,
                startOnTick: false,
                endOnTick: false,
+               events: {
+                afterSetExtremes: function() {
+                    if (this.min <= this.dataMin && this.max >= this.dataMax) {
+                        chart.resetZoomButton.hide();
+                    }
+                }
+               },
                labels: {
                   formatter: function() {
                      if(this.value<=100) return this.value;
@@ -654,9 +661,9 @@ $(function () {
                 var extremes = chart.yAxis[i].getExtremes();
                 if(extremes.max>$(this).val()) {
                     if(chart.axes[0].series[i].type=='area') {
-                        //console.log(chart.yAxis[i]);
                         chart.yAxis[i].setExtremes($(this).val(), extremes.max);
                         chart.showResetZoom();
+                        //console.log(chart);
                     }
                 }
             }
@@ -671,6 +678,7 @@ $(function () {
                     if(chart.axes[0].series[i].type=='area') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
                         chart.showResetZoom();
+                        //console.log(chart);
                     }
                 }
             }

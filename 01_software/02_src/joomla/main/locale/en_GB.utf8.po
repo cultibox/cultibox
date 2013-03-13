@@ -577,6 +577,12 @@ msgstr "Remove a plug"
 msgid "PLUG_ADDED"
 msgstr "Plug successfully added"
 
+msgid "MAX_PLUG_REACHED"
+msgstr "Maximal plugs reached"
+
+msgid "MIN_PLUG_REACHED"
+msgstr "Minimal plugs reached"
+
 msgid "PLUG_MAX_ADDED"
 msgstr "You have reached the maximal number of plug managable"
 

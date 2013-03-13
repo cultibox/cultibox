@@ -1356,6 +1356,8 @@ EOF;
                foreach($res as $record) {
                   fputs($f,$record['time_start'].",".$record['time_stop'].",".$record['value']."\r\n");
                }
+            } else {
+                    fputs($f,"000000".",235959,0\r\n");
             }
       } 
       fclose($f);
