@@ -34,13 +34,13 @@ Si vous voulez revenir à une version antérieure, il vous faudra désinstaller 
 Ce message signifie qu'une ancienne version Cultibox était installé sur votre système d'exploitation et qu'il en reste des traces. Pour éviter des problèmes à l'installation avec les restes d'une ancienne version, le logiciel lance une vérification de son environnement avant de procéder à l'installation.
 
 Pour remédier à ce problème il vous sufira de lancer la commande suivante avec les droits administrateurs:
-    dpkg --purge cultibox
+    *bold*dpkg --purge cultibox
 ou:
-    sudo dpkg --purge cultibox
+    *bold*sudo dpkg --purge cultibox
 
 Puis de relancer l'installation du logiciel, toujours avec des droits administrateurs:
-    dpkg -i package_cultibox.deb
+    *bold*dpkg -i package_cultibox.deb
 ou:
-    sudo dpkg -i package_cultibox.deb
+    *bold*sudo dpkg -i package_cultibox.deb
 
 
