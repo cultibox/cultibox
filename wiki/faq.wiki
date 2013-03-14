@@ -20,3 +20,25 @@ Pour minimiser le risque d'interférence, il est possible d'indiquer la fréquen
   * Dans le champs "Fréquence de mise à jour des prises", sélectionner la valeur "5"
   * Cliquer sur "Enregistrer la configuration"
   * Insérer la carte SD dans votre Cultibox 
+
+
+= Est-il possible d'installer une version antérieure du logiciel Cultibox? =
+
+Il est possible d'installer une ancienne version du logiciel Cultibox mais vous ne pourrez pas conserver vos informations de logs, vos programmes etc...
+Le logiciel Cultibox utilise un système de mise à jour qui n'autorise pas le retour à une version antérieure pour éviter des conflits et des erreurs dans les bases de données.
+Si vous voulez revenir à une version antérieure, il vous faudra désinstaller le logiciel Cultibox et réinstaller la version qui vous convient. Le logiciel détectera peut être une ancienne version installée avec vos anciennes données et vous demandera, si c'est le cas, si vous voulez essayer de charger ces données. Le résultat dépend grandement des versions utilisées.
+
+
+= Sur Ubuntu Linux, j'ai le méssage d'erreur suivant à l'installation du logiciel Cultibox: "An old version of the Cultibox seems to be remaining in your system [...]", pourquoi? =
+
+Ce message signifie qu'une ancienne version Cultibox était installé sur votre système d'exploitation et qu'il en reste des traces. Il n'a pas été supprimé comme il se doit. Pour éviter des problèmes à l'installation avec les restes d'une ancienne installation, sur Linux Ubuntu, le logiciel vérifie que son environnement est adéquat avant de lancer l'installation.
+Pour remédier à ce problème il vous sufira de lancer la commande suivante avec les droits administrateurs:
+    # dpkg --purge cultibox
+ou:
+    # sudo dpkg --purge cultibox
+Puis de relancer l'installation du logiciel:
+    # dpkg -i <package_name"
+ou:
+    # sudo dpkg -i <package_name>
+
+
