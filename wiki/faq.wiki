@@ -29,7 +29,7 @@ Le logiciel Cultibox utilise un système de mise à jour qui n'autorise pas le r
 Si vous voulez revenir à une version antérieure, il vous faudra désinstaller le logiciel Cultibox et réinstaller la version qui vous convient. Le logiciel détectera peut être une ancienne version installée avec vos anciennes données et vous demandera, si c'est le cas, de charger ou non ces données. Si vous accepter, il est à noté qu le résultat dépend grandement des versions utilisées et ne peut être garantis.
 
 
-= Pourquoi en installation le logiciel sur Ubuntu, le message suivant apparait: "An old version of the Cultibox seems to be remaining in your system [...]"? =
+= Pourquoi en installant le logiciel sur Ubuntu, le message suivant apparait: "An old version of the Cultibox seems to be remaining in your system [...]"? =
 
 Ce message signifie qu'une ancienne version Cultibox était installé sur votre système d'exploitation et qu'il en reste des traces. Pour éviter des problèmes à l'installation avec les restes d'une ancienne version, le logiciel lance une vérification de son environnement avant de procéder à l'installation.
 
