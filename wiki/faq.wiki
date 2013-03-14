@@ -39,8 +39,8 @@ ou:
     # sudo dpkg --purge cultibox
 
 Puis de relancer l'installation du logiciel, toujours avec des droits administrateurs:
-    # dpkg -i <package_name"
+    # dpkg -i package_cultibox.deb
 ou:
-    # sudo dpkg -i <package_name>
+    # sudo dpkg -i package_cultibox.deb
 
 
