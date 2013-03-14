@@ -5,6 +5,7 @@
 
 = Introduction =
 
+
 Retrouvez dans cette section la réponse à toutes les questions que vous vous posez.
 
 = Pourquoi le dossier d'installation ne peut pas être changé =
