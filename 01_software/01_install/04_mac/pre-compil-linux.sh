@@ -20,6 +20,8 @@ if [ "$2" == "" ] && [ "$1" != "clean" ]; then
 fi
 
 VERSION=$2
+WORK_DIR=/Users/yann/Desktop
+SERVER=macosx
 
 case "$1" in
       "snow-leopard" )
@@ -55,9 +57,14 @@ case "$1" in
 
 
             find ../01_src/01_xampp/XAMPP/ -name ".svn"|xargs rm -Rf
-            cd ../01_src/01_xampp/ && tar pzcvf cultibox.mac.tar.gz XAMPP
-            mv cultibox.mac.tar.gz ../../04_mac/Output/
-            
+            set +e
+            ssh root@$SERVER "if [ -d /Applications/XAMPP ]; then rm -Rf /Applications/XAMPP; fi"
+            scp -r ../01_src/01_xampp/XAMPP root@$SERVER:/Applications/
+            ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc ; fi"
+            scp -r cultibox.pmdoc root@$SERVER:$WORK_DIR/
+            ssh root@$SERVER "cd $WORK_DIR && /usr/bin/packagemaker --title cultibox -o cultibox-macosx_1.1.9.pkg --doc cultibox.pmdoc -v"
+            scp root@$SERVER:$WORK_DIR/cultibox-macosx_$2.pkg ./Output/
+            set -e
       ;; 
       "clean")
             rm -Rf ../01_src/01_xampp/*
