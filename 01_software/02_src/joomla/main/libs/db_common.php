@@ -1447,6 +1447,10 @@ function optimize_program($arr) {
 // 0x0D0A : caractère de fin de ligne (CR LF, \r\n)
 // Exmple "SEC:H+1800" : L'effecteur doit être On (1) si l'humidité (H) devient supérieur (+) à 80,0% RH (800).
 // 
+// Troisième ligne SEN:{VALEUR}0x0D0A
+// Cette ligne indiique le capteur à utiliser pour effectuer la régulation
+// {VALEUR} : Valeur sur 2 digits Indique le numéro du capteur à utiliser
+//
 // ROLE read plugs configuration from the database and format its to be write into a sd card
 // IN $nb   the number of plug to read
 //    $out   error or warning message
@@ -1518,7 +1522,7 @@ EOF;
                 $sec="SEC:N+0000";
             }
             
-            $arr[]="$reg"."\r\n"."$sec";
+            $arr[]="$reg"."\r\n"."$sec"."\r\n"."SEN:01";
          }
          return $arr;
       }
