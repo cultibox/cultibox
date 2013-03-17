@@ -826,6 +826,31 @@ msgstr "beetwen the"
 msgid "COST_PRICE_TO"
 msgstr "and the"
 
+msgid "SUMARY_COST_TITLE"
+msgstr "Cost configuration sumary"
+
+msgid "SUMARY_COST_TYPE"
+msgstr "Subscription"
+
+msgid "SUMARY_HP_HC"
+msgstr "Full/empty hours"
+
+msgid "SUMARY_COST_PRICE"
+msgstr "kilowattt-heure price"
+
+msgid "SUMARY_COST_PRICE_HC"
+msgstr "Empty hours price (kwh)"
+
+msgid "SUMARY_COST_PRICE_HP"
+msgstr "Full hours price (kwh)"
+
+msgid "SUMARY_START_HC"
+msgstr "Empty hours start"
+
+msgid "SUMARY_STOP_HC"
+msgstr "EMpty hours stop"
+
+
 # For the historic part:
 msgid "TITLE_HISTORIC"
 msgstr "Historic of your 100 lastest actions"
@@ -1151,5 +1176,12 @@ msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. L
 
 msgid "TOOLTIP_MAX_LOG_IMPORT"
 msgstr "This variable defines the number of month seek during the 'Import logs' process from the 'Logs' page"
+
+msgid "TOOLTIP_COST_START_TIME"
+msgstr "Start time for the cost computation. You can compute the cost of your installation beetween two dates define by the start time and stop time of this form"
+
+msgid "TOOLTIP_COST_STOP_TIME"
+msgstr "Stop time for the cost computation. You can compute the cost of your installation beetween two dates define by the start time and stop time of this form"
+
 
 

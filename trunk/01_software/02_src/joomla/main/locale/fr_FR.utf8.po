@@ -824,6 +824,33 @@ msgstr "Prix réel"
 msgid "THEORICAL_PRICE"
 msgstr "Prix théorique maximal (sans régulation)"
 
+msgid "SUMARY_COST_TITLE"
+msgstr "Résumé de la configuration"
+
+msgid "EMPTY_COST_INFOS"
+msgstr "Pas d'informations disponibles"
+
+msgid "SUMARY_COST_TYPE"
+msgstr "Abonnement"
+
+msgid "SUMARY_HP_HC"
+msgstr "Heures pleines/creuses"
+
+msgid "SUMARY_COST_PRICE"
+msgstr "Prix du kilowattt-heure"
+
+msgid "SUMARY_COST_PRICE_HC"
+msgstr "Prix en heures creuses (kwh)"
+
+msgid "SUMARY_COST_PRICE_HP"
+msgstr "Prix en heures pleines (kwh)"
+
+msgid "SUMARY_START_HC"
+msgstr "Départ des heures creuses"
+
+msgid "SUMARY_STOP_HC"
+msgstr "Fin des heures creuses"
+
 
 # For the historic part:
 msgid "TITLE_HISTORIC"
@@ -1150,4 +1177,10 @@ msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. L
 
 msgid "TOOLTIP_MAX_LOG_IMPORT"
 msgstr "Cette variable définit le nombre de mois qui seront scrutés pour rechercher des logs lors de l'appuie sur le bouton 'Importer les logs' de l'onglet 'Logs'"
+
+msgid "TOOLTIP_COST_START_TIME"
+msgstr "Date de départ du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
+
+msgid "TOOLTIP_COST_STOP_TIME"
+msgstr "Date de fin du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
 
