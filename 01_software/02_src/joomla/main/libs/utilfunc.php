@@ -1032,15 +1032,13 @@ function write_calendar($sd_card,$data,&$out) {
                         $number_to_show="0$number_to_show";
                      }
 
-                     fputs($f,"$number_to_show");
+                     fputs($f,"$number_to_show"."\r\n");
                      foreach($val['subject'] as $sub) {
-                        fputs($f,"\r\n"."$sub");
+                        fputs($f,"$sub"."\r\n");
                      }
                      foreach($val['description'] as $desc) {
-                        fputs($f,"\r\n"."$desc");
+                        fputs($f,"$desc"."\r\n");
                      }
-
-                     fputs($f,"\r\n");
                      fclose($f);
                   } 
 

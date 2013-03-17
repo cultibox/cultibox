@@ -1754,13 +1754,8 @@ EOF;
             $s[$number-1]=$s[$number-1]." ";
          }
 
+
          if((isset($val['Description']))&&(!empty($val['Description']))) {
-
-            if($number<17) {
-               $s[]="             ";
-               $number=$number+1;
-            }
-
             $count=0;
             $line="";
             for($i=0;$i<strlen($val['Description']);$i++) {
@@ -1812,7 +1807,6 @@ EOF;
                }
             }
          }
-
 
          $data[]=array(
             "start_month" => $start_month,
