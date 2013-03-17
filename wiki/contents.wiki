@@ -37,13 +37,13 @@ Sur le coté gauche, on trouve 4 ouverture. De gauche à droite:
  * Espace pour loger la carte SD
  * Ouverture USB permettant de connecter le câble USB
  * Fiche antenne. C'est à cet endroit que l'antenne doit être branchée
- * Ouverture pile. A la première mise en rout, il faut ôter le film plastique qui dépasse de cette ouverture. Celà à pour effet de connecter la pile. Ainsi la Cultibox continu à connaitre l'heure en permanence même si il y a une coupure de courant.   
+ * Ouverture pile. A la première mise en route, il faut ôter le film plastique qui dépasse de cette ouverture. Cela à pour effet de connecter la pile. Ainsi la Cultibox continu à connaitre l'heure en permanence même si il y a une coupure de courant.   
 
 == Coté droit ==
 
 http://cultibox.googlecode.com/svn/wiki/img/cbx_right.jpg
 
-Sur le coté droit de la Cultibox, 4 port RJ12 sont accéssible. Ils permettent de connecter différents éléments dont notamment le capteur.
+Sur le coté droit de la Cultibox, 4 port RJ12 sont accessibles. Ils permettent de connecter différents éléments dont notamment le capteur.
 
 = Prise 3500W =
 
@@ -73,22 +73,21 @@ La puissance maximum de l’élément que vous pouvez brancher sur la Cultibox d
 
 = 1 Capteur =
 
-Le capteur est conçu pour mesurer la température et l'humiditée.
+Le capteur est conçu pour mesurer la température et l’humidité.
 
 = Carte SD =
-La carte SD à une capcité de 2Go et est formatée ent FAT16.
+La carte SD à une capacité de 2Go et est formatée en FAT16.
 Elle contient un ensemble de fichier et de dossier permettant à la Cultibox de fonctionner.
-Sans la carte SD, la cultibox ne peut pas fonctionner.
+Sans la carte SD, la Cultibox ne peut pas fonctionner.
 
 = Adaptateur Secteur =
 L'adaptateur secteur permet d'alimenter la Cultibox. 
 
-= Cable USB =
+= Câble USB =
 Le câble USB permet d'alimenter la Cultibox. Il fait la liaison entre l'adaptateur secteur et la Cultibox.
 
-= Cable RJ12 =
+= Câble RJ12 =
 Le câble RJ12 permet de connecter le capteur à la Cultibox.
 
 = Notice =
-La notice contient l'aide nécéssaire à la mise en place de la CUltibox. Vous pouvez retrouver la dernière version à jour à l'adresse suivante: https://code.google.com/p/cultibox/wiki/Introduction
-
+La notice contient l'aide nécessaire à la mise en place de la Cultibox. Vous pouvez retrouver la dernière version à jour à l'adresse suivante: https://code.google.com/p/cultibox/wiki/Introduction
