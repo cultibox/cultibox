@@ -1,5 +1,6 @@
 [Introduction Introduction]
    * [general_caution Règle de sécurité]
+   * [contents Contenu du paquet]
    * [install Mise en place]   
       * [install_Plug Ajout d'une nouvelle prise 1000W ou 3500W]
    * [gui_soft_wizard Assistant de programmation]
@@ -23,9 +24,6 @@
                * [gui_box_menu_param_culti_regul Régulation]
             * [gui_box_menu_param_emettor Émetteur]
             * [gui_box_menu_param_sensor Capteur]    
-   * Le hardware
-      * Prises
-      * Capteur
    * [faq FAQ]       
    * [pts Cahier des charges]      
    * [advance Utilisation avancée]      
