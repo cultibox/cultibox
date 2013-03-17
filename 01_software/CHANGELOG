@@ -1,3 +1,7 @@
+Cultibox (1.1.10) precise; urgency=low
+    + La valeur par défaut des programmes est mise à "Marche" => correction de bug
+
+
 Cultibox (1.1.9) precise; urgency=low
     + Lancement de l'interface à la fin de l'installation sous windows
     + On n'affiche plus les erreurs du update.sql (il y en aura forcément et c'est pas important)

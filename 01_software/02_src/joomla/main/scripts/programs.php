@@ -73,13 +73,7 @@ if(isset($cyclic)&&(!empty($cyclic))) {
 
 if(empty($apply)||(!isset($apply))) {
     $value_program="";
-    $regul_program="";
-    
-    if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"unknown")==0)) {
-            $regul_program="on";
-    } else {
-            $regul_program="regul";
-    }
+    $regul_program="on";
 }
 
 // Add a plug dinamically to configure a new program, maximal plug is configured in config.php file by the variable $GLOBALS['NB_MAX_PLUG']
