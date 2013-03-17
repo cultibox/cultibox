@@ -41,6 +41,7 @@ $version=get_configuration("VERSION",$main_error);
 $cost_type=get_configuration("COST_TYPE",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
+$resume="";
 
 
 
@@ -81,6 +82,10 @@ if((!isset($endday))||(empty($endday))) {
    $endday=date('Y')."-".date('m')."-".date('d');
 } 
 $endday=str_replace(' ','',"$endday");
+
+
+//Get and format resume for cost configuration
+$resume=get_cost_summary();
 
 
 //Checking value entered by user before performing actions

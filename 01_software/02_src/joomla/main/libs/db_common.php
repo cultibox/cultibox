@@ -338,7 +338,7 @@ ORDER by id ASC
 EOF;
         $db->setQuery($sql);
         $db->query();
-   $res = $db->loadAssocList();
+        $res = $db->loadAssocList();
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
             if($GLOBALS['DEBUG_TRACE']) {
@@ -1447,10 +1447,6 @@ function optimize_program($arr) {
 // 0x0D0A : caractère de fin de ligne (CR LF, \r\n)
 // Exmple "SEC:H+1800" : L'effecteur doit être On (1) si l'humidité (H) devient supérieur (+) à 80,0% RH (800).
 // 
-// Troisième ligne SEN:{VALEUR}0x0D0A
-// Cette ligne indiique le capteur à utiliser pour effectuer la régulation
-// {VALEUR} : Valeur sur 2 digits Indique le numéro du capteur à utiliser
-//
 // ROLE read plugs configuration from the database and format its to be write into a sd card
 // IN $nb   the number of plug to read
 //    $out   error or warning message
@@ -1522,7 +1518,7 @@ EOF;
                 $sec="SEC:N+0000";
             }
             
-            $arr[]="$reg"."\r\n"."$sec"."\r\n"."SEN:01";
+            $arr[]="$reg"."\r\n"."$sec";
          }
          return $arr;
       }
@@ -2091,6 +2087,60 @@ function format_regul_sumary($number=0) {
     return $resume;
 }
 // }}}
+
+
+// {{{ get_cost_summary()
+// ROLE format cost configuration informations be displayed in a sumary
+// RET   sumary formated 
+function get_cost_summary() {
+    $resume="";
+    $db = db_priv_start();
+    $sql = <<<EOF
+SELECT COST_PRICE, COST_PRICE_HP, COST_PRICE_HC, START_TIME_HC, STOP_TIME_HC, COST_TYPE FROM `configuration` 
+EOF;
+   $db->setQuery($sql);
+   $res = $db->loadAssocList();
+   $ret=$db->getErrorMsg();
+   if((isset($ret))&&(!empty($ret))) {
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out[]=__('ERROR_SELECT_SQL').$ret;
+      } else {
+         $out[]=__('ERROR_SELECT_SQL');
+      }
+   }
+
+   if(!db_priv_end($db)) {
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
+
+   foreach($res as $result) {
+            $resume="<p align='center'><b><i>".__('SUMARY_COST_TITLE').":<br /></i></b></p>";
+            if(isset($_SESSION['LANG'])) {
+                if(strcmp($_SESSION['LANG'],"fr_FR")==0) {
+                    $unity="&euro;";
+                } else {
+                    $unity="&#163;";
+                }
+            } else {
+                $unity="&#163;";
+            }
+            if(strcmp($result['COST_TYPE'],"standard")==0) {
+                $resume=$resume."<br />".__('SUMARY_COST_TYPE').": ".$result['COST_TYPE'];
+                $resume=$resume."<br />".__('SUMARY_COST_PRICE').": ".$result['COST_PRICE'].$unity;
+            } else {
+                $resume=$resume."<br />".__('SUMARY_COST_TYPE').": ".__('SUMARY_HP_HC');
+                $resume=$resume."<br />".__('SUMARY_COST_PRICE_HC').": ".$result['COST_PRICE_HC'].$unity;
+                $resume=$resume."<br />".__('SUMARY_COST_PRICE_HP').": ".$result['COST_PRICE_HP'].$unity;
+                $resume=$resume."<br />".__('SUMARY_START_HC').": ".$result['START_TIME_HC'];
+                $resume=$resume."<br />".__('SUMARY_STOP_HC').": ".$result['STOP_TIME_HC'];
+            }
+    }
+
+    if(strlen($resume)>0) return $resume;
+    return "<p align='center'><b><i>".__('SUMARY_COST_TITLE').":<br /></i></b></p><p align='center'>".__('EMPTY_COST_INFOS')."</p>"; 
+}
+// }}}
+
 
 
 
