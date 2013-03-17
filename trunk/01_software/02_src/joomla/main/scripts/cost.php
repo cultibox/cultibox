@@ -157,20 +157,6 @@ if(strcmp($select_plug,"distinct_all")!=0) {
 }
 
 
-// Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
-if(strcmp("$update","True")==0) {
-    if($sock = @fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
-      $ret=array();
-      check_update_available($version,$ret,$main_error);
-      foreach($ret as $file) {
-                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2].">".$file[1]."</a>";
-      }
-   } else {
-    $main_error[]=__('ERROR_REMOTE_SITE');
-   }
-}
-
-
 // The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True'
 $informations = Array();
 $informations["nb_reboot"]=0;
@@ -234,6 +220,20 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
     } else {
         insert_informations("log",$informations["log"]);
     }
+}
+
+
+// Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
+if(strcmp("$update","True")==0) {
+    if($sock = @fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
+      $ret=array();
+      check_update_available($version,$ret,$main_error);
+      foreach($ret as $file) {
+                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2].">".$file[1]."</a>";
+      }
+   } else {
+    $main_error[]=__('ERROR_REMOTE_SITE');
+   }
 }
 
 
