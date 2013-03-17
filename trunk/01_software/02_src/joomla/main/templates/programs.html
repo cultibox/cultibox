@@ -208,14 +208,13 @@ $(document).ready(function() {
       },
       tooltip: {
          formatter: function() {
-        if(this.y == 99.9) {
-         return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("CHART_FORCE_ON_VALUE"); ?></b></p>';
-       } else if(this.y == 0) {
-         return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_OFF"); ?></b></p>';
+            if(this.y == 99.9) {
+                return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("CHART_FORCE_ON_VALUE"); ?></b></p>';
+            } else if(this.y == 0) {
+                return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_OFF"); ?></b></p>';
             } else { 
-         return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'°C</b></p>';
-      }   
-
+                return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'°C</b></p>'+this.series.index;
+            } 
          }
       },
       
