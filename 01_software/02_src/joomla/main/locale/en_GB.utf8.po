@@ -428,7 +428,7 @@ msgid "NAME_PLUG"
 msgstr "Plug's name"
 
 msgid "PLUG_UNKNOWN"
-msgstr "Unknown"
+msgstr "Other"
 
 msgid "PLUG_LAMP"
 msgstr "Lamp"
@@ -741,7 +741,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "You are now going to configure a new plug."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choose the type of your plug: <ul class='list_class'><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an unknown type for all the other equipements. <br /><br />If you choose to configure a new lamp, this equipement must use <b>less than 200 Watts</b>" 
+msgstr "Choose the type of your plug: <ul class='list_class'><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an 'other' type for all the other equipements. <br /><br />If you choose to configure a new lamp, this equipement must use <b>less than 200 Watts</b>" 
 
 #For the calendar part:
 msgid "TITLE_CALENDAR"
