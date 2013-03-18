@@ -80,6 +80,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $regul_value=str_replace(' ','',$regul_value);
    $enable=getvar("plug_enable${nb}");
    $power_max=getvar("plug_power_max${nb}");
+   $sensor=getvar("plug_sensor${nb}");
 
 
    $old_name=get_plug_conf("PLUG_NAME",$nb,$main_error);
@@ -93,6 +94,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $old_regul_value=get_plug_conf("PLUG_REGUL_VALUE",$nb,$main_error);
    $old_enable=get_plug_conf("PLUG_ENABLED",$nb,$main_error);
    $old_power_max=get_plug_conf("PLUG_POWER_MAX",$nb,$main_error);
+   $old_sensor=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
 
    /* 
    if((!empty($id))&&(isset($id))&&(!$reset)) {
@@ -219,7 +221,13 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
             } else {
                 $error[$nb]['regul_value']=__('ERROR_REGUL_VALUE');
             }
-        }
+       }
+
+       if((!empty($sensor))&&(isset($sensor))&&(!$reset)&&(strcmp("$old_sensor","$sensor")!=0)) {
+           insert_plug_conf("PLUG_REGUL_SENSOR",$nb,"$sensor",$main_error);
+           $update_program=true;
+           $plug_update=true;
+       }
     }
 
 
@@ -250,7 +258,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_regul_value{$nb}=get_plug_conf("PLUG_REGUL_VALUE",$nb,$main_error);
    $plug_enable{$nb}=get_plug_conf("PLUG_ENABLED",$nb,$main_error);
    $plug_power_max{$nb}=get_plug_conf("PLUG_POWER_MAX",$nb,$main_error);
-
+   $plug_sensor{$nb}=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
 
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
    if($plug_tolerance{$nb}==0) {
