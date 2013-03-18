@@ -95,7 +95,7 @@
          </td>
          <td>
             <select name="plug_type<?php echo $i; ?>" onChange="getTolerance(this.selectedIndex,<?php echo $i; ?>);" onLoad="getTolerance(this.selectedIndex,<?php echo $i; ?>);">
-               <option <?php if(strcmp($plug_type{$i},"unknown")==0) { echo 'selected';} ?> value="unknown"><?php echo __('PLUG_UNKNOWN'); ?></option>
+               <option <?php if(strcmp($plug_type{$i},"other")==0) { echo 'selected';} ?> value="other"><?php echo __('PLUG_UNKNOWN'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"lamp")==0) { echo 'selected';} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"ventilator")==0) { echo 'selected';} ?> value="ventilator"><?php echo __('PLUG_VENTILATOR'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"heating")==0) { echo 'selected';} ?> value="heating"><?php echo __('PLUG_HEATING'); ?></option>
@@ -108,12 +108,12 @@
       <tr>
          <td></td>
          <td>
-            <div id="tolerance_label<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"unknown")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
+            <div id="tolerance_label<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
                <?php echo __('TOLERANCE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_TOLERANCE'); ?>" />
             </div>
          </td>
          <td>
-            <div id="tolerance<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"unknown")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
+            <div id="tolerance<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
                <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 20%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label>
             </div>
          </td>
@@ -166,7 +166,7 @@
 <tr>
       <td class="plug-regul"></td>
       <td class="regul"><div id="label_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},'False')==0) { echo "display:none"; } ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_SENSO'); ?>:</div></td>
-         <td><div id="div_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><div id="unknown_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"unknown")!=0)&&(strcmp($plug_type{$i},"lamp")!=0)) { echo "display:none"; } ?>">
+         <td><div id="div_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><div id="unknown_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")!=0)&&(strcmp($plug_type{$i},"lamp")!=0)) { echo "display:none"; } ?>">
 <select name="plug_senso<?php echo $i; ?>" onChange="getUnity(this.selectedIndex, <?php echo $i; ?>);" onLoad="getUnity(this.selectedIndex,<?php echo $i; ?>);">
            <?php 
                 if(strcmp($plug_senso{$i},"H")==0) {

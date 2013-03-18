@@ -239,7 +239,7 @@ if(!empty($apply)&&(isset($apply))) {
                 } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"deshumidifier")==0)) {
                     $check=check_format_values_program($value_program,"humi");
                 } else {
-                    $check=check_format_values_program($value_program,"unknown");
+                    $check=check_format_values_program($value_program,"other");
                 }
             } else {
                 $check="1";
@@ -378,7 +378,7 @@ for($i=0;$i<$nb_plugs;$i++) {
     $plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"");
 
     switch($plugs_infos[$i]['PLUG_TYPE']) {
-        case 'unknown': $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
+        case 'other': $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
         case 'ventilator': $plugs_infos[$i]['translate']=__('PLUG_VENTILATOR'); break;
         case 'heating': $plugs_infos[$i]['translate']=__('PLUG_HEATING'); break;	
         case 'lamp': $plugs_infos[$i]['translate']=__('PLUG_LAMP'); break;

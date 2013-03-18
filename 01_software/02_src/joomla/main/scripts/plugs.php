@@ -196,7 +196,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
         }
 
 
-        if((strcmp($type,"unknown")==0)||(strcmp($type,"lamp")==0)) {
+        if((strcmp($type,"other")==0)||(strcmp($type,"lamp")==0)) {
             $regul_senso=getvar("plug_senso${nb}");
         } elseif((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
             $regul_senso="H";

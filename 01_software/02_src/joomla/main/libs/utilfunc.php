@@ -1418,7 +1418,7 @@ function format_data_sumary($data="",$name="",$number="",$type="") {
                 switch($type) {
                     case 'lamp': $unity="";
                                  break;
-                    case 'unknown': $unity="";
+                    case 'other': $unity="";
                                 break;
                     case 'ventilator': $unity="°C";
                                 break;
