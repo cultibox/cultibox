@@ -59,9 +59,9 @@ case "$1" in
             find ../01_src/01_xampp/XAMPP/ -name ".svn"|xargs rm -Rf
             set +e
             ssh root@$SERVER "if [ -d /Applications/XAMPP ]; then rm -Rf /Applications/XAMPP; fi"
-            scp -r ../01_src/01_xampp/XAMPP root@$SERVER:/Applications/
+            rsync -av ../01_src/01_xampp/XAMPP root@$SERVER:/Applications/
             ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc ; fi"
-            scp -r cultibox.pmdoc root@$SERVER:$WORK_DIR/
+            rsync -av cultibox.pmdoc root@$SERVER:$WORK_DIR/
             ssh root@$SERVER "cd $WORK_DIR && /usr/bin/packagemaker --title cultibox -o cultibox-macosx_1.1.9.pkg --doc cultibox.pmdoc -v"
             scp root@$SERVER:$WORK_DIR/cultibox-macosx_$2.pkg ./Output/
             set -e
