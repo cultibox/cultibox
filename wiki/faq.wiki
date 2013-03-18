@@ -42,3 +42,9 @@ Puis de relancer l'installation du logiciel, toujours avec des droits administra
 <br />  *dpkg -i package_cultibox.deb*<br/>
 ou:
 <br />  *sudo dpkg -i package_cultibox.deb*
+
+
+= Pourquoi dans le logiciel Cultibox, lorsque je calcul le coût de reviens de mon installation, le prix théorique diffère du prix réél? =
+
+Il est en effet possible de noter une légère différence entre le prix théorique et le prix réél du coût de votre installation. Le coût théorique de votre installation est calculé à partir des programmes que vous avez configuré, la précision de ce calcul est d'une seconde. Le coût réél de votre installation est quant à lui calculé sur les logs de puissance de votre Cultibox afin de déterminer quand une prise est en marche et quand elle ne l'est pas. Ce calcul réél à une précision moindre que le calcul théorique (par défaut une mesure de puissance est faites toutes les 5mn par la Cultibox).
+C'est cette différence de précision qui peut engendrer la différence de prix (généralement quelques centimes) entre le coût théorique et le coût réél.
