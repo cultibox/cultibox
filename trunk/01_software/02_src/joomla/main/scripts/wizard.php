@@ -118,7 +118,7 @@ if((empty($value_program))||(!isset($value_program))) {
             case 'lamp':
                 $value_program=0.0;
                 break;
-            case 'unknown' :
+            case 'other' :
                 $value_program=0.0;
                break;
         }
@@ -169,7 +169,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
             } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"deshumidifier")==0)) {
                 $chval=check_format_values_program($value_program,"humi");
             } else {
-                $chval=check_format_values_program($value_program,"unknown");
+                $chval=check_format_values_program($value_program,"other");
             }
             $plug_tolerance="1.0";
             if(strcmp("$chval","1")!=0) {

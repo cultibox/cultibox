@@ -172,7 +172,7 @@ $(document).ready(function() {
               labels: {
                      formatter: function() {
  if((this.value>=0)&&(this.value<=100)) {      
-               <?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"unknown")==0)) { ?>
+               <?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"other")==0)) { ?>
                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
                if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
 <?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"ventilator")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"heating")==0)) { ?>
@@ -282,7 +282,7 @@ $(document).ready(function() {
 <tr>
      <td></td>
      <td><?php echo __('VALUE_ON_OFF'); ?>:</td>
-     <td><?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"unknown")==0)) { ?>
+     <td><?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"other")==0)) { ?>
             <select id="regul_program" name="regul_program"> 
                 <option value="on" <?php if(strcmp("$regul_program","on")==1) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
                 <option value="off" <?php if(strcmp("$regul_program","off")==0) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
