@@ -28,7 +28,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || electronic || PTS_electronic_nb_logs_logs || Nombre de log par jour || 1400 || 1439 || 1439 || logs/jour || 3 || issue 344 ||  ||  ||
 || electronic || PTS_electronic_nb_sensor || Nombre de capteur de T/RH branchable || 0 || 1 || 4 || sensor || 3 || issue 333 ||  ||  ||
 || electronic || PTS_electronic_nb_plug_1000W_plug || Nombre de prises différentes pilotable || 1 || 2 || 10 || prises || 3 || issue 341 ||  ||  ||
-|| electronic || PTS_electronic_nb_plug_3500W_plug || Nombre de prises différentes pilotable || 1 || 1 || 5 || prises || 3 || issue 341 ||  ||  ||
+|| electronic || PTS_electronic_nb_plug_3500W_plug || Nombre de prises différentes pilotable || 1 || 1 || 8 || prises || 3 || issue 341 ||  ||  ||
 || electronic || PTS_electronic_transmitter_distance_m || Distance d'émission || 3 ||  ||  || m || 3 || issue 350 ||  ||  ||
 || electronic || PTS_electronic_plug_one_reponse_time_s || Temps de réponse d'une prise ||  ||  || 5 || s || 3 || issue 339 ||  ||  ||
 || electronic || PTS_electronic_regulation_temperature || Etre capable de reguler une prise / T ||  ||  ||  ||  || 3 || issue 380 ||  ||  ||
@@ -38,8 +38,8 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || electronic || PTS_electronic_humidity_range_RH || Plage de mesure d'humidité || 0 || || 100 || %RH ||  || issue 338 ||  ||  ||
 || electronic || PTS_electronic_alarm || Arrêt des prises sous certaines conditions  ||  ||  ||  ||  || 2 || issue xxx ||  ||  ||
 || electronic || PTS_electronic_SDcard || Taille de la carte SD  || 1 || 2 || 2 || Go || 3 || issue xxx ||  ||  ||
-|| mechanic || PTS_mechanic_RJ12_length || Longueur du câble RJ12 || 3 || 3 ||  || m || 1 || issue xxx ||  ||  ||
-|| mechanic || PTS_mechanic_USB_length || Longueur du câble USB || 1 || 1.5 ||  || m || 1 || issue xxx ||  ||  ||
+|| mechanic || PTS_mechanic_RJ12_length || Longueur du câble RJ12 || 3 || 3 ||  || m || 1 || issue 410 ||  ||  ||
+|| mechanic || PTS_mechanic_USB_length || Longueur du câble USB || 1 || 1.5 ||  || m || 1 || issue 411 ||  ||  ||
 || soft || PTS_soft_log_show || Affichage des logs ||  ||  ||  ||  ||  ||  ||  ||  ||
 || soft || PTS_soft_prog_plug || Programmation des prises ||  ||  ||  ||  ||  ||  ||  ||  ||
 || soft || PTS_soft_calendar || Calendrier ||  ||  ||  ||  ||  ||  ||  ||  ||
