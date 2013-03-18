@@ -36,7 +36,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || electronic || PTS_electronic_nb_state_plug_change_day || Nombre de changement pour l'ensemble des prises chaque jour || 250 ||  ||  || change ||  || issue 340 ||  ||  ||
 || electronic || PTS_electronic_temperature_range || Plage de mesure de temperature  || 0 ||  || 60 || °C ||  || issue 337 ||  ||  ||
 || electronic || PTS_electronic_humidity_range_RH || Plage de mesure d'humidité || 0 || || 100 || %RH ||  || issue 338 ||  ||  ||
-|| electronic || PTS_electronic_alarm || Arrêt des prises sous certaines conditions  ||  ||  ||  ||  || 2 || issue xxx ||  ||  ||
+|| electronic || PTS_electronic_alarm || Arrêt des prises sous certaines conditions  ||  ||  ||  ||  || 2 || issue 413 ||  ||  ||
 || electronic || PTS_electronic_SDcard || Taille de la carte SD  || 1 || 2 || 2 || Go || 3 || issue 412 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0005_PTS_electronic_SDcard_-.pdf CBX 1_13_0005] ||
 || mechanic || PTS_mechanic_RJ12_length || Longueur du câble RJ12 || 3 || 3 ||  || m || 1 || issue 410 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0004_PTS_mechanic_cable_length_-.pdf CBX 1_13_0004] ||
 || mechanic || PTS_mechanic_USB_length || Longueur du câble USB || 1 || 1.5 ||  || m || 1 || issue 411 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0004_PTS_mechanic_cable_length_-.pdf CBX 1_13_0004] ||
