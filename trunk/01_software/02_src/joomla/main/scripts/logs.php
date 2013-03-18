@@ -283,10 +283,40 @@ if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
    }
 }
 
+if(strcmp("$select_power","9990")==0) {
+    format_regul_sumary("all",$main_error,$resume_regul);
+} else {
+    if((strcmp("$select_power","")!=0)&&(strcmp("$select_plug","")!=0)) {
+        if($select_power<$select_plug) {
+            $first=$select_power;
+            $second=$select_plug;
+        } else {
+            $first=$select_plug;
+            $second=$select_power;
+        }
 
-$resume_regul=format_data_sumary($nb_plugs);
+        format_regul_sumary($first,$main_error,$resume_regul);
+        format_regul_sumary($second,$main_error,$resume_regul);
+    } else {
+        if(strcmp("$select_power","")!=0) {
+            format_regul_sumary($select_power,$main_error,$resume_regul);
+        }
 
+        if(strcmp("$select_plug","")!=0) {
+            format_regul_sumary($select_plug,$main_error,$resume_regul);
+        }
+    }
+}
 
+if(!empty($resume_regul)) {
+    $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b></p><br />".$resume_regul;
+} else {
+    if((empty($select_power))&&(empty($select_plug))) {
+        $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b><br /><br />".__('SUMARY_EMPTY_SELECTION')."</p>";
+    } else {
+        $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b><br /><br />".__('SUMARY_EMPTY_REGUL')."</p>";
+    }
+}
 
 
 if($load_log) {

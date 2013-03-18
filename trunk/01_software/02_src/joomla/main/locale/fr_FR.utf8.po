@@ -373,11 +373,41 @@ msgstr "Valeur maximale de l'axe Y"
 msgid "EMPTY_REGUL"
 msgstr "Aucune régulation programmée"
 
-msgid "SUMARY_REGUL_TITLE"
-msgstr "Résumé des régulations"
-
 msgid "REGUL_TITLE_PLUG"
 msgstr "Régulation pour la prise"
+
+msgid "SUMARY_REGUL_TITLE"
+msgstr "Résumé des régulations actives pour les prises sélectionnées"
+
+msgid "SUMARY_REGUL_SUBTITLE"
+msgstr "Régulation de la prise"
+
+msgid "SUMARY_REGUL_SENSO"
+msgstr "Déclenchement"
+
+msgid "SUMARY_REGUL_SENSS"
+msgstr "Seuil"
+
+msgid "SUMARY_REGUL_VALUE"
+msgstr "Valeur du seuil"
+
+msgid "SUMARY_EMPTY_REGUL"
+msgstr "Pas de régulation pour la/les prise(s) sélectionnée(s)"
+
+msgid "SUMARY_EMPTY_SELECTION"
+msgstr "Pas de prises sélectionnées"
+
+msgid "SUMARY_ABOVE"
+msgstr "Au dessus"
+
+msgid "SUMARY_UNDER"
+msgstr "En dessous"
+
+msgid "SUMARY_REGUL_TEMP"
+msgstr "Température"
+
+msgid "SUMARY_REGUL_HYGRO"
+msgstr "Hygrométrie"
 
 
 # For the plugs part:

@@ -374,11 +374,41 @@ msgstr "Maximal value for Y-axis"
 msgid "EMPTY_REGUL"
 msgstr "No regulation programmed"
 
-msgid "SUMARY_REGUL_TITLE"
-msgstr "Regulations summary"
-
 msgid "REGUL_TITLE_PLUG"
 msgstr "Regulation for the plug"
+
+msgid "SUMARY_REGUL_TITLE"
+msgstr "Sumary of the active regulation for selected plugs"
+
+msgid "SUMARY_REGUL_SUBTITLE"
+msgstr "Plug's regulation"
+
+msgid "SUMARY_REGUL_SENSO"
+msgstr "Released by"
+
+msgid "SUMARY_REGUL_SENSS"
+msgstr "Threshold"
+
+msgid "SUMARY_REGUL_VALUE"
+msgstr "Threshold value"
+
+msgid "SUMARY_EMPTY_REGUL"
+msgstr "Empty regulation for selected plugs"
+
+msgid "SUMARY_EMPTY_SELECTION"
+msgstr "No plugs selected"
+
+msgid "SUMARY_ABOVE"
+msgstr "Above"
+
+msgid "SUMARY_UNDER"
+msgstr "Under"
+
+msgid "SUMARY_REGUL_TEMP"
+msgstr "Temperature"
+
+msgid "SUMARY_REGUL_HYGRO"
+msgstr "Humidity"
 
 
 # For the plugs part:
@@ -848,7 +878,7 @@ msgid "SUMARY_START_HC"
 msgstr "Empty hours start"
 
 msgid "SUMARY_STOP_HC"
-msgstr "EMpty hours stop"
+msgstr "Empty hours stop"
 
 
 # For the historic part:

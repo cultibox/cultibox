@@ -87,9 +87,11 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover {
   text-align:center;
 }
 
-.wizard_title {
+.welcome_title {
 	color:#C3B59B;
 	font-size:24px;
+    text-align: center;
+    font-weight:bold;
 }
 
 #menubar {

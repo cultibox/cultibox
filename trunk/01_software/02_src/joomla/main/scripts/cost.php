@@ -85,7 +85,7 @@ $endday=str_replace(' ','',"$endday");
 
 
 //Get and format resume for cost configuration
-$resume=get_cost_summary();
+$resume=get_cost_summary($main_error);
 
 
 //Checking value entered by user before performing actions

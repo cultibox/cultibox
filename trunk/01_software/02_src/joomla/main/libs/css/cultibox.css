@@ -93,13 +93,6 @@ input.button_log {
    width: 30%;
 }
 
-.wizard_title {
-	font-size: 16px;
-	font-weight: bold;
-	color: #6E5419;
-	text-align: center;
-}
-
 .wizard_subtitle {
    font-size: 12px;
    font-weight: bold;
@@ -221,7 +214,7 @@ td.log-manage-title {
 }
 
 td.plug-marge-td {
-   width: 5%;
+   width: 10%;
 }
 
 td.plug-marge-title {
@@ -242,7 +235,7 @@ td.plug-marge-submit {
 }
 
 td.cost-marge {
-   width: 5%;
+   width: 10%;
 }
 
 td.cost-title {
@@ -337,7 +330,7 @@ td.program-field{
 }
 
 td.program-marge{
-   width: 5%;
+   width: 10%;
 }
 
 td.program-td-marge{
