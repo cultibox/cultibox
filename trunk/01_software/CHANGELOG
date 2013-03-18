@@ -5,6 +5,7 @@ Cultibox (1.1.10) precise; urgency=low
     + Réactivation de la régulation secondaire
     + Ajout d'un résumé des régulations dans les logs
     + Correction des titres des sections pour l'uniformité
+    + POssibilité de choisir le capteur utilisé pour la régulation
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 17 18:08:59 CET 2013
 

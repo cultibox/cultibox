@@ -29,3 +29,6 @@ DROP DATABASE `cultibox_joomla`;
 ALTER TABLE `cultibox`.`configuration` DROP `LOG_TEMP_AXIS` , DROP `LOG_HYGRO_AXIS` ;
 UPDATE `cultibox`.`configuration` SET `CHECK_UPDATE` = 'True' WHERE `configuration`.`id` =1;
 
+
+-- Version 1.1.10:
+ALTER TABLE `cultibox`.`plugs` ADD `PLUG_REGUL_SENSOR` INT NOT NULL DEFAULT '1' AFTER `PLUG_REGUL` 

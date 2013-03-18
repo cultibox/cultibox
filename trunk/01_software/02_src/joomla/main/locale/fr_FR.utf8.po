@@ -453,6 +453,9 @@ msgstr "Puissance consommée par l'élément (en Watt)"
 msgid "ENABLE_REGUL_PLUG"
 msgstr "Régulation de la prise"
 
+msgid "CONFIGURE_REGUL_SENSOR"
+msgstr "Capteur utilisé pour la régulation"
+
 msgid "CONFIGURE_REGUL_SENSO"
 msgstr "Déclenchement en fonction de"
 
@@ -1213,4 +1216,7 @@ msgstr "Date de départ du calcul de coût de votre installation. Vous pouvez ca
 
 msgid "TOOLTIP_COST_STOP_TIME"
 msgstr "Date de fin du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
+
+msgid "TOOLTIP_REGUL_SENSOR"
+msgstr "La régulation d'une prise est réalisée en fonction des données relevées par un capteur. Ce champ vous permet de sélectionner ce capteur."
 
