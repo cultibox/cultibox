@@ -132,31 +132,22 @@
 <tr>
          <td></td>
          <td>
-       <!-- Deactivation of the second regulation -->
-        <div style="display:none">
             <div id="second_regul_label<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
 <?php echo __('ENABLE_REGUL_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_REGUL'); ?>" />
             </div>
-        </div>
          </td>
          <td>
-           <!-- Deactivation of the second regulation -->
-          <div style="display:none">
             <div id="second_regul<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
             <select id="plug_regul<?php echo $i; ?>" name="plug_regul<?php echo $i; ?>" onChange="getRegul(this.selectedIndex,<?php echo $i; ?>);" onLoad="getRegul(this.selectedIndex,<?php echo $i; ?>);">
                <option <?php if(strcmp($plug_regul{$i},"True")==0) { echo 'selected';} ?> value="True"><?php echo __('VALUE_ON'); ?></option>
                <option <?php if(strcmp($plug_regul{$i},"False")==0) { echo 'selected';} ?> value="False"><?php echo __('VALUE_OFF'); ?></option>
             </select>
             </div>
-          </div>
          </td>
         <td></td>
       </tr>
 </table>
 
-
-<!-- Deactivation of the second regulation -->
-<div style="display:none">
 
 <div id="second_regul_param<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
 <table class="table_width">
@@ -210,7 +201,6 @@
     <td><?php if((isset($error[$i]['regul_value']))&&(!empty($error[$i]['regul_value']))) echo "<div class='error'>".$error[$i]['regul_value']."</div>"; ?></td>
    </tr>
    </table>
-</div>
 </div>
 </div>
 

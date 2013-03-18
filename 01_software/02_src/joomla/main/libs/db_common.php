@@ -2078,21 +2078,61 @@ EOF;
 // {{{ format_regul_sumary()
 // ROLE format regulation of a plug to be displayed in a sumary
 // IN    $number     maximale plug's number
+//       $out        error or warning messages
+//       $resume     string containing sumary formated
 // RET   sumary formated 
-function format_regul_sumary($number=0) {
-    $resume="";
-    if(strcmp("$resume","")==0) {
-        $resume="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE').":<br /></i></b></p><p align='center'>".__('EMPTY_REGUL')."</p>";    
+function format_regul_sumary($number=0, &$out,&$resume="") {
+    $db = db_priv_start();
+    if(strcmp("$number","all")==0) {
+    $sql = <<<EOF
+SELECT id, PLUG_REGUL, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" 
+EOF;
+    } else {
+        $sql = <<<EOF
+SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" AND `id` = {$number}
+EOF;
     }
-    return $resume;
+    $db->setQuery($sql);
+    $res=$db->loadAssocList();
+    $ret=$db->getErrorMsg();
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+    }
+
+    if(!db_priv_end($db)) {
+        $out[]=__('PROBLEM_CLOSING_CONNECTION');
+    }
+
+    if(count($res)>0) {
+        foreach($res as $result) {
+            $resume=$resume."<p align='center'><i>".__('SUMARY_REGUL_SUBTITLE')." ".$result['id'].":</i></p>";
+            if(strcmp($result['PLUG_SENSO'],"H")==0) {
+                $resume=$resume.__('SUMARY_REGUL_SENSO').": ".__('SUMARY_REGUL_TEMP');
+            } else {
+                $resume=$resume.__('SUMARY_REGUL_SENSO').": ".__('SUMARY_REGUL_HYGRO');
+            }
+
+            if(strcmp($result['PLUG_SENSS'],"+")==0) {
+                $resume=$resume."<br />".__('SUMARY_REGUL_SENSS').": ".__('SUMARY_ABOVE');
+            } else {
+                $resume=$resume."<br />".__('SUMARY_REGUL_SENSS').": ".__('SUMARY_UNDER');    
+            }
+            $resume=$resume."<br />".__('SUMARY_REGUL_VALUE').": ".$result['PLUG_REGUL_VALUE']."<br /><br />";
+        }
+    }
 }
 // }}}
 
 
 // {{{ get_cost_summary()
 // ROLE format cost configuration informations be displayed in a sumary
-// RET   sumary formated 
-function get_cost_summary() {
+// IN   out     error or warning messages
+// RET  sumary formated 
+function get_cost_summary(&$out) {
     $resume="";
     $db = db_priv_start();
     $sql = <<<EOF
@@ -2140,9 +2180,6 @@ EOF;
     return "<p align='center'><b><i>".__('SUMARY_COST_TITLE').":<br /></i></b></p><p align='center'>".__('EMPTY_COST_INFOS')."</p>"; 
 }
 // }}}
-
-
-
 
 
 ?>
