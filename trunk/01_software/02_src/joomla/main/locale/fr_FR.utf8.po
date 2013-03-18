@@ -427,7 +427,7 @@ msgid "NAME_PLUG"
 msgstr "Nom de la prise"
 
 msgid "PLUG_UNKNOWN"
-msgstr "Inconnu"
+msgstr "Autre"
 
 msgid "PLUG_LAMP"
 msgstr "Lampe"
@@ -739,7 +739,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "Vous allez maintenant configurer une nouvelle prise."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choisissez le type de prise à utiliser: <ul cass='list_class'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type inconnu servant pour tout les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
+msgstr "Choisissez le type de prise à utiliser: <ul cass='list_class'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type 'autre' servant pour tout les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
 
 #For the calendar part:
 msgid "TITLE_CALENDAR"
