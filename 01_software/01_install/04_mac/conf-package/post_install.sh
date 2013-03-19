@@ -1,14 +1,15 @@
 #!/bin/bash
 
 echo "Configuring your CultiBox environment:"
+ln -s /Applications/cultibox /Applications/XAMPP
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 
-chown -R $user_culti:$group_culti /Applications/XAMPP
-sed -i '' "s/User nobody/User $user_culti/" /Applications/XAMPP/xamppfiles/etc/httpd.conf
-sed -i '' "s/Group nogroup/Group $group_culti/" /Applications/XAMPP/xamppfiles/etc/httpd.conf
-chown -R nobody /Applications/XAMPP/xamppfiles/var/mysql
-chmod -R 775 /Applications/XAMPP/xamppfiles/var/mysql
+chown -R $user_culti:$group_culti /Applications/cultibox
+sed -i '' "s/User nobody/User $user_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
+sed -i '' "s/Group nogroup/Group $group_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
+chown -R nobody /Applications/cultibox/xamppfiles/var/mysql
+chmod -R 775 /Applications/cultibox/xamppfiles/var/mysql
 
 
 /Applications/XAMPP/xamppfiles/xampp restart
