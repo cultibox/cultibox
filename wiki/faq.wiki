@@ -57,7 +57,7 @@ Le logiciel cultibox utilise des ports propre à son fonctionnement interne conc
 
 * Si vous êtes sur un système Windows: vous n'avez rien à faire. Le logiciel Cultibox s'installe dans un répertoire différent du logiciel XAMPP et les ports sont indépendants
 
-* Si vous êtes sur un système Linux Ubuntu: Le logiciel cultibox s'installe dans /opt/cultibox, cependant le logiciel XAMPP interne de la Cultibox nécéssite d'avoir un chemin disponible vers /opt/XAMPP. Pour ce faire un lien symbolique de /opt/cultibox est créé vers /opt/XAMPP. Pour faire cohabiter le logiciel cultibox et une autre installation de XAMPP il vous faudra installer (ou déplacer) votre installation de XAMPP vers une autre location (exemple: /opt/newXAMPP) et de changer le lien symbolique en fonction de l'installation que vous voulz rendre fonctionnel (cultibox ou votre installation de XAMPP).
+* Si vous êtes sur un système Linux Ubuntu: Le logiciel cultibox s'installe dans /opt/cultibox, cependant le logiciel XAMPP interne de la Cultibox nécéssite d'avoir un chemin disponible vers /opt/lampp. Pour ce faire un lien symbolique de /opt/cultibox est créé vers /opt/lampp. Pour faire cohabiter le logiciel cultibox et une autre installation de XAMPP il vous faudra installer (ou déplacer) votre installation de XAMPP vers une autre location (exemple: /opt/newXAMPP) et de changer le lien symbolique en fonction de l'installation que vous voulz rendre fonctionnel (cultibox ou votre installation de XAMPP).
 
 
 * Si vous êtes sur Mac Os X: le problème et la solution sont les même que pour l'architecture Linux Ubuntu mais le chemin d'accès de la Cultibox se trouve dans /Applications. Il vous faudra donc changer le lien symbolique qui pointe vers /Applications/XAMPP entre l'installation Cultibox ou de votre nouveau XAMPP selon que vous voulez rendre fonctionnel l'un ou l'autre.
@@ -67,25 +67,49 @@ Exemple de commandes pour Linux Ubuntu (le logiciel Cultibox est installé dans 
 
 *Suppréssion de l'ancien lien symbolique:*
 {{{
-sudo /opt/XAMPP/xampp stop
-sudo rm /opt/XAMPP
+sudo /opt/lampp/lampp stop
+sudo rm /opt/lampp
 }}}
 
 
-<br />
 *Activation de l'installation XAMPP:*
 {{{
-sudo ln -s /opt/newXAMPP /opt/XAMPP
-sudo /opt/XAMPP/xampp start
+sudo ln -s /opt/newXAMPP /opt/lampp
+sudo /opt/lampp/lampp start
+}}}
+
+*Si maintenant je veux réactiver le logiciel cultibox:*
+{{{
+sudo /opt/lampp/lampp stop
+sudo rm /opt/lampp
+sudo ln -s /opt/cultibox /opt/lampp
+sudo /opt/lampp/lampp start
 }}}
 
 <br />
+Exemple de commandes pour Mac Os X (le logiciel Cultibox est installé dans /Applications/cultibox et une autre installation de XAMPP a été déplacé vers /Applications/newXAMPP):
+
+*Suppréssion de l'ancien lien symbolique:*
+{{{
+sudo /Applications/XAMPP/xamppfiles/xampp stop
+sudo rm //Applications/XAMPP
+}}}
+
+
+*Activation de l'installation XAMPP:*
+{{{
+sudo ln -s /Applications/newXAMPP /Applications/XAMPP
+sudo /Applications/XAMPP/xamppfiles/xampp start
+}}}
+
+
 *Si maintenant je veux réactiver le logiciel cultibox:*
 {{{
-sudo /opt/XAMPP/xampp stop
-sudo rm /opt/XAMPP
-sudo ln -s /opt/cultibox /opt/XAMPP
-sudo /opt/XAMPP start
+sudo /Applications/XAMPP/xamppfiles/xampp stop
+sudo rm /Applications/XAMPP
+sudo ln -s /Applications/cultibox /Applications/XAMPP
+sudo /Applications/XAMPP/xamppfiles/xampp start
 }}}
+
 
 
