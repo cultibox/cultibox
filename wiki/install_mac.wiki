@@ -1,0 +1,11 @@
+#summary Installation Mac
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+Cette page décrit les étapes pour installer / désinstaller le logiciel dans un environnement Mac.
+
+= Installation =
+
+= Désinstallation =
