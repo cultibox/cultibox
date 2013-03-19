@@ -72,13 +72,14 @@ sudo rm /opt/XAMPP
 }}}
 
 
+<br />
 *Activation de l'installation XAMPP:*
 {{{
 sudo ln -s /opt/newXAMPP /opt/XAMPP
 sudo /opt/XAMPP/xampp start
 }}}
 
-
+<br />
 *Si maintenant je veux réactiver le logiciel cultibox:*
 {{{
 sudo /opt/XAMPP/xampp stop
