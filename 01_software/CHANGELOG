@@ -8,6 +8,7 @@ Cultibox (1.1.10) precise; urgency=low
     + Possibilité de choisir le capteur utilisé pour la régulation
     + Changement du type 'Inconnu' en type 'Autre'
     + Ajout de safari comme navigateur officiellement supporté
+    + Installation d'un service de démarrage pour Mac Os X
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 17 18:08:59 CET 2013
 

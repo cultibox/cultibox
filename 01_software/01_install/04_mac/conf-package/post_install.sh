@@ -26,7 +26,7 @@ fi
 /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/fake_log.sql
 
 echo "Installing CultiBox as a service:"
-echo "/Applications/XAMPP/xamppfiles/xampp start" > /etc/rc.local
+mv /Applications/cultibox/package/cultibox.plist /System/Library/LaunchDaemons/
 
 echo "Restarting the CultiBox interface:"
 /Applications/XAMPP/xamppfiles/xampp restart
