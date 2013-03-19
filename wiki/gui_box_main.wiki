@@ -13,12 +13,14 @@ http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_main.png
 
 On retrouve sur cet écran:
  * En haut à droite: l'heure actuelle en alternace avec le jour actuel
- * En haut à gauche : Un symbole qui indique la présence ou non de la carte SD
- * Au centre: la température actuelle en alternace avec l'humisité actuelle
+ * En haut à gauche : Un symbole qui indique la présence ou non de la carte SD. Un petit "i" apparait si une action du calendrier est prévu pour aujourd'hui.
+ * Au centre: la température actuelle en alternace avec l'humidité actuelle
 
 Deux actions sont possible à partir de cet écran:
  * Clique sur le bouton central: Affichage du [gui_box_menu Menu principal]
  * Bouton de droite ou de gauche : défilement des informations
+
+== Défilement des informations ==
 
 En cliquant à droite ou a gauche, on fait défiler différentes informations:
  # Température actuelle
@@ -26,6 +28,12 @@ En cliquant à droite ou a gauche, on fait défiler différentes informations:
  # Température Min / Max de la journée (Remis à zéro à minuit issue 217)
  # Humidité Min / Max de la journée (Remis à zéro à minuit issue 217)
  # Evenement du jour
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil.PNG
+
+Pour afficher les informations des autres capteurs, vous pouvez appuyer sur les boutons Haut/Bas. Vous accéder ainsi à la température, l'humidité remonter par chacun des capteurs.
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil_large.PNG
 
  = Bug =
 Il n'est actuellement pas possible de définir à quelle heure le min et le max de la journée doivent être remis à zéro. issue 217
