@@ -49,6 +49,10 @@ case "$1" in
             cp ../../01_install/01_src/03_sd/cultibox.ico ../01_src/01_xampp/XAMPP/xamppfiles/htdocs/cultibox/tmp/
             cp ../../01_install/01_src/03_sd/cultibox.html ../01_src/01_xampp/XAMPP/xamppfiles/htdocs/cultibox/tmp/
 
+            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/XAMPP/sql_install/cultibox_fr.sql
+            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/XAMPP/sql_install/cultibox_en.sql
+
+
            #cp -R daemon ../01_src/01_xampp/cultibox/opt/lampp/
 
            #if [ "$1" == "ubuntu64-admin" ]; then
@@ -62,7 +66,7 @@ case "$1" in
             rsync -av ../01_src/01_xampp/XAMPP root@$SERVER:/Applications/
             ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc ; fi"
             rsync -av cultibox.pmdoc root@$SERVER:$WORK_DIR/
-            ssh root@$SERVER "cd $WORK_DIR && /usr/bin/packagemaker --title cultibox -o cultibox-macosx_1.1.9.pkg --doc cultibox.pmdoc -v"
+            ssh root@$SERVER "cd $WORK_DIR && /usr/bin/packagemaker --title cultibox -o cultibox-macosx_$VERSION.pkg --doc cultibox.pmdoc -v"
             scp root@$SERVER:$WORK_DIR/cultibox-macosx_$2.pkg ./Output/
             set -e
       ;; 
