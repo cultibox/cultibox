@@ -48,3 +48,34 @@ ou:
 
 Il est en effet possible de noter une légère différence entre le prix théorique et le prix réél du coût de votre installation. Le coût théorique de votre installation est calculé à partir des programmes que vous avez configuré, la précision de ce calcul est d'une seconde. Le coût réél de votre installation est quant à lui calculé sur les logs de puissance de votre Cultibox afin de déterminer quand une prise est en marche et quand elle ne l'est pas. Ce calcul réél à une précision moindre que le calcul théorique (par défaut une mesure de puissance est faites toutes les 5mn par la Cultibox).
 C'est cette différence de précision qui peut engendrer la différence de prix (généralement quelques centimes) entre le coût théorique et le coût réél.
+
+
+= Est-il possible d'avoir une installation du logiciel XAMPP (ou équivalent) en fonctionnement avec le logiciel Cultibox? =
+
+Il est possible d'avoir une installation de XAMPP fonctionnant avec le logiciel Cultibox (qui utilise lui aussi le logiciel XAMPP).
+Le logiciel cultibox utilise des ports propre à son fonctionnement interne concernant les services Apaches (port 6891)  et Mysql (port 3891), ce qui rend une autre installation de XAMPP et ses services Apache (port 80) et Mysql (port 3306) indépendants. Cependant en fonction de votre environnement, vous aurez peut être quelques manipulations à faire pour rendre la cohabitation possible:
+
+* Si vous êtes sur un système Windows: vous n'avez rien à faire. Le logiciel Cultibox s'installe dans un répertoire différent du logiciel XAMPP et les ports sont indépendants
+
+* Si vous êtes sur un système Linux Ubuntu: Le logiciel cultibox s'installe dans /opt/cultibox, cependant le logiciel XAMPP interne de la Cultibox nécéssite d'avoir un chemin disponible vers /opt/XAMPP. Pour ce faire un lien symbolique de /opt/cultibox est créé vers /opt/XAMPP. Pour faire cohabiter le logiciel cultibox et une autre installation de XAMPP il vous faudra installer (ou déplacer) votre installation de XAMPP vers une autre location (exemple: /opt/newXAMPP) et de changer le lien symbolique en fonction de l'installation que vous voulz rendre fonctionnel (cultibox ou votre installation de XAMPP).
+
+
+* Si vous êtes sur Mac Os X: le problème et la solution sont les même que pour l'architecture Linux Ubuntu mais le chemin d'accès de la Cultibox se trouve dans /Applications. Il vous faudra donc changer le lien symbolique qui pointe vers /Applications/XAMPP entre l'installation Cultibox ou de votre nouveau XAMPP selon que vous voulez rendre fonctionnel l'un ou l'autre.
+
+
+Exemple de commandes pour Linux Ubuntu (le logiciel Cultibox est installé dans /opt/cultibox et une autre installation de XAMPP a été déplacé vers /opt/newXAMPP):
+
+#Suppréssion de l'ancien lien symbolique:
+sudo /opt/XAMPP/xampp stop
+sudo rm /opt/XAMPP
+
+#Activation de l'installation XAMPP:
+sudo ln -s /opt/newXAMPP /opt/XAMPP
+sudo /opt/XAMPP/xampp start
+
+#Si maintenant je veux réactiver le logiciel cultibox:
+sudo /opt/XAMPP/xampp stop
+sudo rm /opt/XAMPP
+sudo ln -s /opt/cultibox /opt/XAMPP
+sudo /opt/XAMPP start
+
