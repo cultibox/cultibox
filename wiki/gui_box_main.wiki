@@ -12,11 +12,11 @@ L'écran suivant s'affiche au démarrage:
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_main.png
 
 On retrouve sur cet écran:
- * En haut à droite: l'heure actuelle en alternace avec le jour actuel
- * En haut à gauche : Un symbole qui indique la présence ou non de la carte SD. Un petit "i" apparait si une action du calendrier est prévu pour aujourd'hui.
- * Au centre: la température actuelle en alternace avec l'humidité actuelle
+ * En haut à droite: l'heure actuelle en alternance avec le jour actuel
+ * En haut à gauche : Un symbole qui indique la présence ou non de la carte SD. Un petit "i" apparait si une action du calendrier est prévue pour aujourd'hui.
+ * Au centre: la température actuelle en alternance avec l'humidité actuelle
 
-Deux actions sont possible à partir de cet écran:
+Deux actions sont possibles à partir de cet écran:
  * Clique sur le bouton central: Affichage du [gui_box_menu Menu principal]
  * Bouton de droite ou de gauche : défilement des informations
 
@@ -27,11 +27,11 @@ En cliquant à droite ou a gauche, on fait défiler différentes informations:
  # Humidité actuelle
  # Température Min / Max de la journée (Remis à zéro à minuit issue 217)
  # Humidité Min / Max de la journée (Remis à zéro à minuit issue 217)
- # Evenement du jour
+ # Événement du jour
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil.PNG
 
-Pour afficher les informations des autres capteurs, vous pouvez appuyer sur les boutons Haut/Bas. Vous accéder ainsi à la température, l'humidité remonter par chacun des capteurs.
+Pour afficher les informations des autres capteurs, vous pouvez appuyer sur le bouton Haut ou le bouton Bas. Vous accéder ainsi à la température, l'humidité remonter par chacun des capteurs.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil_large.PNG
 
