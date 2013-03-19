@@ -7,16 +7,24 @@ Quelques étapes suffisent pour se servir pleinement de la Cultibox.
 =1. Installation du logiciel=
 ==1.1. Windows==
 
- * Connectez la carte SD fournie dans l'ordinateur.
+Pour une aide plus détaillée, consulter la page suivante : [install_windows Windows Installation / Désinstallation du logiciel]
+
+ * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fournit.
  * Lancer le programme d'installation.
  * Votre ordinateur peut vous demander si vous accepter d'exécuter les services MySQL et Apache. Autoriser l'exécution de ces services.
  * Une fois installer, vous pouvez lancer le logiciel en cliquant sur "Démarrer" puis "Cultibox" puis sur l'icône "Cultibox".
 
 ==1.2. Linux==
-Le logiciel n'est pas encore disponible pour Linux
+
+Pour une aide plus détaillée, consulter la page suivante : [install_linux Linux Installation / Désinstallation du logiciel]
+
+ * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fournit.
 
 ==1.3. Mac==
-Le logiciel n'est pas encore disponible pour Linux
+
+Pour une aide plus détaillée, consulter la page suivante : [install_mac Mac Installation / Désinstallation du logiciel]
+
+ * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fournit.
 
 =2. Configuration=
  * Insérer la carte SD dans l'ordinateur puis lancer le logiciel.
