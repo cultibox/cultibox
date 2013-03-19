@@ -61,7 +61,7 @@ Le logiciel cultibox utilise des ports propre à son fonctionnement interne conc
  * Si vous êtes sur Mac Os X: le problème et la solution sont les même que pour l'architecture Linux Ubuntu mais le chemin d'accès de la Cultibox se trouve dans /Applications. Il vous faudra donc changer le lien symbolique qui pointe vers /Applications/XAMPP entre l'installation Cultibox ou de votre nouveau XAMPP selon que vous voulez rendre fonctionnel l'un ou l'autre.
 
 
-Exemple de commandes pour Linux Ubuntu (le logiciel Cultibox est installé dans /opt/cultibox et une autre installation de XAMPP a été déplacé vers /opt/newXAMPP):
+*Exemple de commandes pour Linux Ubuntu* (le logiciel Cultibox est installé dans /opt/cultibox et une autre installation de XAMPP a été déplacé vers /opt/newXAMPP):
 
 *Suppréssion de l'ancien lien symbolique:*
 {{{
@@ -85,7 +85,7 @@ sudo /opt/lampp/lampp start
 }}}
 
 <br />
-Exemple de commandes pour Mac Os X (le logiciel Cultibox est installé dans /Applications/cultibox et une autre installation de XAMPP a été déplacé vers /Applications/newXAMPP):
+*Exemple de commandes pour Mac Os X* (le logiciel Cultibox est installé dans /Applications/cultibox et une autre installation de XAMPP a été déplacé vers /Applications/newXAMPP):
 
 *Suppréssion de l'ancien lien symbolique:*
 {{{
