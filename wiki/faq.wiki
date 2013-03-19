@@ -55,7 +55,9 @@ C'est cette différence de précision qui peut engendrer la différence de prix 
 Il est possible d'avoir une installation de XAMPP fonctionnant avec le logiciel Cultibox (qui utilise lui aussi le logiciel XAMPP).
 Le logiciel cultibox utilise des ports propre à son fonctionnement interne concernant les services Apaches (port 6891)  et Mysql (port 3891), ce qui rend une autre installation de XAMPP et ses services Apache (port 80) et Mysql (port 3306) indépendants. Cependant en fonction de votre environnement, vous aurez peut être quelques manipulations à faire pour rendre la cohabitation possible:
  * Si vous êtes sur un système Windows: vous n'avez rien à faire. Le logiciel Cultibox s'installe dans un répertoire différent du logiciel XAMPP et les ports sont indépendants
+
  * Si vous êtes sur un système Linux Ubuntu: Le logiciel cultibox s'installe dans /opt/cultibox, cependant le logiciel XAMPP interne de la Cultibox nécéssite d'avoir un chemin disponible vers /opt/lampp. Pour ce faire un lien symbolique de /opt/cultibox est créé vers /opt/lampp. Pour faire cohabiter le logiciel cultibox et une autre installation de XAMPP il vous faudra installer (ou déplacer) votre installation de XAMPP vers une autre location (exemple: /opt/newXAMPP) et de changer le lien symbolique en fonction de l'installation que vous voulz rendre fonctionnel (cultibox ou votre installation de XAMPP).
+
  * Si vous êtes sur Mac Os X: le problème et la solution sont les même que pour l'architecture Linux Ubuntu mais le chemin d'accès de la Cultibox se trouve dans /Applications. Il vous faudra donc changer le lien symbolique qui pointe vers /Applications/XAMPP entre l'installation Cultibox ou de votre nouveau XAMPP selon que vous voulez rendre fonctionnel l'un ou l'autre.
 
 
