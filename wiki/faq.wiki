@@ -65,15 +65,12 @@ Le logiciel cultibox utilise des ports propre à son fonctionnement interne conc
 
 Exemple de commandes pour Linux Ubuntu (le logiciel Cultibox est installé dans /opt/cultibox et une autre installation de XAMPP a été déplacé vers /opt/newXAMPP):
 
-*Suppréssion de l'ancien lien symbolique:*
-
-sudo /opt/XAMPP/xampp stop
-
-sudo rm /opt/XAMPP
+*Suppréssion de l'ancien lien symbolique:*<br />
+sudo /opt/XAMPP/xampp stop<br />
+sudo rm /opt/XAMPP<br /><br />
 
 
 *Activation de l'installation XAMPP:*
-
 sudo ln -s /opt/newXAMPP /opt/XAMPP
 
 sudo /opt/XAMPP/xampp start
