@@ -1678,18 +1678,23 @@ function check_browser_compat($tab) {
         switch($tab['name']) {
             case 'firefox':
                 //Do not support firefox 1.0 and 2.0
-                if($tab['version']<=2) return false;
+                if($tab['majorver']<=2) return false;
                 return true;
                 break;
             case 'msie':
                 //Do not support IE 6.0 or earlier
-                if($tab['version']<=6) return false;
+                if($tab['majorver']<=6) return false;
                 return true;
                 break;
             case 'chrome':
                 //Support every version of chrome
                 return true;
                 break;
+            case 'safari':
+		        //Support for Mac Os X Safari
+		        if($tab['majorver']<500) return false;
+		        return true;
+		        break;
         }
         return false;
     }
