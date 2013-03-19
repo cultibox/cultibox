@@ -9,6 +9,7 @@ Cultibox (1.1.10) precise; urgency=low
     + Changement du type 'Inconnu' en type 'Autre'
     + Ajout de safari comme navigateur officiellement supporté
     + Installation d'un service de démarrage pour Mac Os X
+    + Ajout d'une application mac pour lancer le soft cultibox
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 17 18:08:59 CET 2013
 
