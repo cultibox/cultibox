@@ -34,14 +34,22 @@ Si vous voulez revenir à une version antérieure, il vous faudra désinstaller 
 Ce message signifie qu'une ancienne version Cultibox était installé sur votre système d'exploitation et qu'il en reste des traces. Pour éviter des problèmes à l'installation avec les restes d'une ancienne version, le logiciel lance une vérification de son environnement avant de procéder à l'installation.
 
 Pour remédier à ce problème il vous sufira de lancer la commande suivante avec les droits administrateurs:
-<br />  *dpkg --purge cultibox*<br />
+{{{
+dpkg --purge cultibox
+}}}
 ou:
-<br />  *sudo dpkg --purge cultibox*
+{{{
+sudo dpkg --purge cultibox
+}}}
 
 Puis de relancer l'installation du logiciel, toujours avec des droits administrateurs:
-<br />  *dpkg -i package_cultibox.deb*<br/>
+{{{
+dpkg -i package_cultibox.deb
+}}}
 ou:
-<br />  *sudo dpkg -i package_cultibox.deb*
+{{{
+sudo dpkg -i package_cultibox.deb
+}}}
 
 
 = Pourquoi dans le logiciel Cultibox, lorsque je calcul le coût de reviens de mon installation, le prix théorique diffère du prix réél? =
@@ -62,21 +70,20 @@ Le logiciel cultibox utilise des ports propre à son fonctionnement interne conc
 
 
 *Exemple de commandes pour Linux Ubuntu* (le logiciel Cultibox est installé dans /opt/cultibox et une autre installation de XAMPP a été déplacé vers /opt/newXAMPP):
-
-*Suppréssion de l'ancien lien symbolique:*
+ *Suppréssion de l'ancien lien symbolique:
 {{{
 sudo /opt/lampp/lampp stop
 sudo rm /opt/lampp
 }}}
 
 
-*Activation de l'installation XAMPP:*
+ *Activation de l'installation XAMPP:
 {{{
 sudo ln -s /opt/newXAMPP /opt/lampp
 sudo /opt/lampp/lampp start
 }}}
 
-*Si maintenant je veux réactiver le logiciel cultibox:*
+ *Si maintenant je veux réactiver le logiciel cultibox:
 {{{
 sudo /opt/lampp/lampp stop
 sudo rm /opt/lampp
@@ -86,22 +93,21 @@ sudo /opt/lampp/lampp start
 
 <br />
 *Exemple de commandes pour Mac Os X* (le logiciel Cultibox est installé dans /Applications/cultibox et une autre installation de XAMPP a été déplacé vers /Applications/newXAMPP):
-
-*Suppréssion de l'ancien lien symbolique:*
+ * Suppréssion de l'ancien lien symbolique:
 {{{
 sudo /Applications/XAMPP/xamppfiles/xampp stop
 sudo rm /Applications/XAMPP
 }}}
 
 
-*Activation de l'installation XAMPP:*
+ *Activation de l'installation XAMPP:
 {{{
 sudo ln -s /Applications/newXAMPP /Applications/XAMPP
 sudo /Applications/XAMPP/xamppfiles/xampp start
 }}}
 
 
-*Si maintenant je veux réactiver le logiciel cultibox:*
+ *Si maintenant je veux réactiver le logiciel cultibox:
 {{{
 sudo /Applications/XAMPP/xamppfiles/xampp stop
 sudo rm /Applications/XAMPP
