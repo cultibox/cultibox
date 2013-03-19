@@ -4,16 +4,7 @@
 Ce chapitre présente les différentes règles de sécurité.
 
 = Sommaire =
- # [general_caution#S%C3%A9curit%C3%A9_%C3%A9lectrique Sécurité électrique]
- # [general_caution#Cultibox Cultibox]
-   # [general_caution#Boitier_principal Boitier principal]
-   # [general_caution#Capteur Capteur]
-   # [general_caution#C%C3%A2ble_reliant_le_capteur_au_boitier Câble reliant le capteur au boitier]
-   # [general_caution#Prises_3500W Prise 3500W]
-   # [general_caution#Prises_1000W Prise 1000W]
-   # [general_caution#Adaptateur_secteur Adaptateur secteur]
- # [general_caution#Stockage Stockage]
- # [general_caution#Configuration minimale de l'ordinateur]
+<wiki:toc max_depth="3" />
 
 = Sécurité électrique =
   les risques liés à une mauvaise installation électrique peuvent être catastrophique: incendie, électrocution...
