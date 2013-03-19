@@ -1072,7 +1072,7 @@ msgid "ERROR_SD_CARD_PATH"
 msgstr "Path to the SD card not found"
 
 msgid "ERROR_COMPAT_BROWSER"
-msgstr "Your internet browser doesn't seem to be compatible with the Cultibox software. You may use the software but some features may not be available. Here is the list of supported web broser:<br /><ul class='list_class'><li>Mozilla Firefox (3 or more)</li><li>Internet Explorer (7 or more)</li><li>Google Chrome</li></ul>"
+msgstr "Your internet browser doesn't seem to be compatible with the Cultibox software. You may use the software but some features may not be available. Here is the list of supported web broser:<br /><ul class='list_class'><li>Mozilla Firefox (version 3 and more)</li><li>Internet Explorer (version 7 and more)</li><li>Google Chrome</li><li>Mac Os X Safari (version 5 and more)</li></ul>"
 
 msgid "ERROR_REMOTE_SITE"
 msgstr "The software can't check if updates are available, please check your internet connection"
