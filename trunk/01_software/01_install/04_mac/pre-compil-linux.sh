@@ -42,6 +42,7 @@ case "$1" in
             cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/LICENSE.txt
             cp conf-package/*.sh ../01_src/01_xampp/cultibox/package/
             cp conf-package/cultibox.plist  ../01_src/01_xampp/cultibox/package/
+            cp -R conf-package/cultibox.app ../01_src/01_xampp/cultibox/
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
 
             #cp conf-script/* ../01_src/01_xampp/cultibox/opt/lampp/
