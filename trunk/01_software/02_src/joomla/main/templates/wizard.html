@@ -75,7 +75,7 @@ timeFormat: 'hh:mm:ss',
 <?php } else { $tmp=$step-1; ?>
     <p class="step"><?php echo __('WIZARD_STEP')."&nbsp;".$tmp."/3:";?></p>
 <?php } ?>
-<table>
+<table class="table_width">
    <tr>
       <td></td>
       <td>
@@ -87,7 +87,7 @@ timeFormat: 'hh:mm:ss',
    if($selected_plug==1) {
       echo __('WIZARD_PLUG_NUMBER'); 
    } else { 
-      echo __('WIZARD_CONFIGURE_OTHER_PLUG')." $selected_plug.".__('WIZARD_OTHER_PLUG_NUMBER');
+      echo "<b>".__('WIZARD_CONFIGURE_OTHER_PLUG')." $selected_plug:</b> ".__('WIZARD_OTHER_PLUG_NUMBER');
    }
 } else if($step==3) { 
   if($selected_plug==1) {
@@ -108,11 +108,8 @@ timeFormat: 'hh:mm:ss',
 <br />
 <?php if($step==3) { 
         if($selected_plug!=1) { ?>
-        <table>
-         <tr>
-            <td class="wizard-marge-td"></td>
-            <td class="wizard-title"><?php echo __('TYPE_PLUG')." $selected_plug:"; ?></td>
-        <td>
+        <p class="p_center">
+            <?php echo __('TYPE_PLUG')." $selected_plug:"; ?>
            <select name="plug_type">
                <option <?php if(strcmp($plug_type,"other")==0) { echo 'selected';} ?> value="other"><?php echo __('PLUG_UNKNOWN'); ?></option>
                <option <?php if(strcmp($plug_type,"lamp")==0) { echo "selected";} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
@@ -121,8 +118,7 @@ timeFormat: 'hh:mm:ss',
                <option <?php if(strcmp($plug_type,"humidifier")==0) { echo 'selected';} ?> value="humidifier"><?php echo __('PLUG_HUMIDIFIER'); ?></option>
                <option <?php if(strcmp($plug_type,"dehumidifier")==0) { echo 'selected';} ?> value="dehumidifier"><?php echo __('PLUG_DEHUMIDIFIER'); ?></option>
             </select>
-	</td></tr>
-	</table>
+        </p>
         <?php } ?>
 <?php } ?>
 
