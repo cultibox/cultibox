@@ -68,13 +68,16 @@ case "$1" in
             set +e
             ssh root@$SERVER "if [ -d /Applications/cultibox ]; then rm -Rf /Applications/cultibox; fi"
             rsync -av ../01_src/01_xampp/cultibox root@$SERVER:/Applications/
-            ssh root@$SERVER "chmod -R root:wheel /Applications/cultibox"
+            ssh root@$SERVER "chown -R root:wheel /Applications/cultibox"
             ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc ; fi"
-            rsync -av cultibox.pmdoc root@$SERVER:$WORK_DIR/
 
-            ssh root@$SERVER "sed -i 's/<version>.*<\/version>/<version>`echo $VERSION`<\/version/' $WORK_DIR/cultibox.pmdoc/01cultibox.xml"
-            ssh root@$SERVER "sed -i 's/<build>.*<\/build>/<build>`echo $WORK_DIR`/cultibox-macosx_`echo $VERSION`.pkg<\/build/' $WORK_DIR/cultibox.pmdoc/index.xml"
-            
+            cp -R cultibox.pmdoc ../01_src/01_xampp/
+            sed -i "s#<version>.*</version>#<version>`echo $VERSION`</version>#" ../01_src/01_xampp/cultibox.pmdoc/01cultibox.xml
+            sed -i "s#<build>.*</build>#<build>`echo $WORK_DIR`/cultibox-macosx_`echo $VERSION`.pkg</build#" ../01_src/01_xampp/cultibox.pmdoc/index.xml
+
+            ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc; fi"
+            rsync -av ../01_src/01_xampp/cultibox.pmdoc root@$SERVER:$WORK_DIR/
+
             ssh root@$SERVER "cd $WORK_DIR && /usr/bin/packagemaker --title cultibox -o cultibox-macosx_$VERSION.pkg --doc cultibox.pmdoc -v"
             scp root@$SERVER:$WORK_DIR/cultibox-macosx_$2.pkg ./Output/
             set -e
