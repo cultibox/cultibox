@@ -45,7 +45,8 @@ case "$1" in
             cp -R conf-package/cultibox.app ../01_src/01_xampp/cultibox/
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
 
-            #cp conf-script/* ../01_src/01_xampp/cultibox/opt/lampp/
+            mkdir ../01_src/01_xampp/cultibox/run
+            cp conf-script/* ../01_src/01_xampp/cultibox/run/
             cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
             cp ../../01_install/01_src/03_sd/emetteur.hex ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
             cp ../../01_install/01_src/03_sd/sht.hex ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
