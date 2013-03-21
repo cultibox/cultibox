@@ -22,14 +22,15 @@ Conducteurs dénudés, bornes électriques accessibles et autres appareillages d
 = Cultibox =
 == Boitier principal ==
 Le boitier principal doit être installé en dehors de l'espace de culture. Les règles suivantes doivent être respectées:
- * La température doit être comprise entre 0 et 40°C.
+ * La température doit être comprise entre 5 et 40°C.
  * L'humidité doit être comprise entre 5 et 90% RH. 
  * Aucune projection d'eau ou de vapeur sur le boitier.
  * Ne jamais brancher de câble sur la Cultibox tant qu'elle n'est pas solidement fixée à un support. Risque de destruction de la Cutlibox.
+ * Ne pas faire tomber la Cultibox
 
 == Capteur ==
 Le capteur doit être situé dans l'espace de culture. Les règles suivantes doivent être respectées:
- * La température doit être comprise entre 0 et 60°C.
+ * La température doit être comprise entre 5 et 40°C.
  * L'humidité doit être comprise entre 5 et 90% RH. 
  * Aucune projection d'eau ou de vapeur sur le boitier.
 
@@ -65,8 +66,8 @@ Les règles suivantes doivent être respectées:
 Lors du stockage, les conditions suivantes doivent être respectées:
  * Température : entre 0° et 60°
  * Humidité : entre 5% et 95%RH
- * Shocks maximum : 20g
- * Vibration : 1g
+ * Shocks maximum : 30g
+ * Vibration : 2g
  * La languette de la pile ne doit pas être retirée
 
 = Configuration minimale de l'ordinateur =
