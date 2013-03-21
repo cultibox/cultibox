@@ -24,6 +24,18 @@ set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
 __('LANG');
 
+$reset_log=getvar('reset_log');
+$reset_log_power=getvar('reset_log_power');
+
+
+if((empty($reset_log))&&(empty($reset_log_power))) {
+    if(!isset($_SESSION['CHECKED'])) {
+        header("Location: ./waiting-data");
+    } else {
+        unset($_SESSION['CHECKED']);
+    }
+}
+
 
 // ================= VARIABLES ================= //
 $type="";
@@ -118,6 +130,7 @@ if(isset($_SESSION['startyear'])) {
 if(isset($_SESSION['import_log'])) {
     $import_log=$_SESSION['import_log'];
 } 
+
 
 //Reset log from the reset button
 if(!empty($reset_log)) { 
@@ -586,7 +599,7 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
 
 
 //Display the logs template
-include('main/templates/logs.html');
+include('main/templates/display-logs.html');
 
 
 ?>

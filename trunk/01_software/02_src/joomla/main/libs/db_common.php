@@ -1960,7 +1960,7 @@ function generate_program_from_file($file="",$plug,&$out) {
 // {{{ reset_log()
 // IN $out      error or warning message
 //    $table    table to be deleted: logs, power...
-//    $fake     1 to delete fake log, 0 else 
+//    $fake     1 to delete real log, 0 to delete all logs
 // RET  0 is an error occured, 1 else
 function reset_log($table="",$fake=0,&$out) {
     if(strcmp("$table","")==0) return 0;

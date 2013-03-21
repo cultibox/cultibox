@@ -323,6 +323,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
    sort($hdd_list);
 }
 
+
 //Create sd card from the format button
 if((!empty($reset_sd_card))&&(isset($reset_sd_card))&&(!empty($selected_hdd))&&(isset($selected_hdd))) {
    if(format_sd_card($selected_hdd,$main_error)) {

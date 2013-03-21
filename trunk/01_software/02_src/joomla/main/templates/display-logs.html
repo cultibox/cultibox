@@ -70,7 +70,7 @@ buttonImageOnly: 'true',
 </div>
 <br />
 <div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
-<form action="/cultibox/index.php/display-logs" method="post">
+<form action="/cultibox/index.php/waiting-data" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-day"></td>
@@ -129,7 +129,7 @@ buttonImageOnly: 'true',
 <br />
 </div>
 <div id="label_select_month" style="<?php if(strcmp($type,"days")==0) echo "display:none"; ?>">
-<form action="/cultibox/index.php/display-logs" method="post">
+<form action="/cultibox/index.php/waiting-data" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-month"></td>
@@ -699,7 +699,7 @@ $(function () {
 <tr>
     <td class="left_log">
         <?php if((strcmp("$type","month")!=0)||(($GLOBALS['FIRST_LOG_YEAR']!=$startyear)||($startmonth!=01))) { ?>
-        <form action="/cultibox/index.php/display-logs" method="post">
+        <form action="/cultibox/index.php/waiting-data" method="post">
             <input type="submit" value="<" name="previous" class="button_log" title="<?php if(strcmp($type,"days")==0) echo __('PREVIOUS_BUTTON_DAY'); else echo __('PREVIOUS_BUTTON_MONTH'); ?>">
             <?php if(strcmp($type,"days")==0) { ?>
                 <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("-1 day", strtotime("$startday"))); ?>">
@@ -734,7 +734,7 @@ $(function () {
 
           if(((strcmp("$type","month")==0)&&(($startyear!=date('Y'))||($startmonth!=12)))||((strcmp("$type","days")==0)&&(strcmp("$startday","$yy-$mm-$dd")!=0))) { 
         ?>
-        <form action="/cultibox/index.php/display-logs" method="post">
+        <form action="/cultibox/index.php/waiting-data" method="post">
             <input type="submit" value=">" name="next" class="button_log" title="<?php if(strcmp($type,"days")==0) echo __('NEXT_BUTTON_DAY'); else echo __('NEXT_BUTTON_MONTH'); ?>">
             <?php if(strcmp($type,"days")==0) { ?>
                 <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("+1 day", strtotime("$startday"))); ?>">
@@ -795,7 +795,7 @@ $(function () {
 <br />
 
 <label class="title_conf"><?php echo __('MANAGE_LOG_INFOS'); ?></label>
-<form action="/cultibox/index.php/display-logs" method="post" >
+<form action="/cultibox/index.php/waiting-data" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
@@ -818,7 +818,7 @@ $(function () {
 </form>
 
 
-<form action="/cultibox/index.php/view-logs#anchor-manage" method="post" >
+<form action="/cultibox/index.php/display-logs#anchor-manage" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
@@ -841,7 +841,7 @@ $(function () {
 
 
 <label id="anchor-manage"></label>
-<form action="/cultibox/index.php/view-logs#anchor-manage" method="post" >
+<form action="/cultibox/index.php/display-logs#anchor-manage" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>

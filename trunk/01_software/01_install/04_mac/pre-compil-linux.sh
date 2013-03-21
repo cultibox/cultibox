@@ -40,7 +40,10 @@ case "$1" in
             mkdir ../01_src/01_xampp/cultibox/package
             cp conf-package/takecontrol.png ../01_src/01_xampp/cultibox/package
             cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/LICENSE.txt
-            cp conf-package/*.sh ../01_src/01_xampp/cultibox/package/
+            cp conf-package/post* ../01_src/01_xampp/cultibox/package/
+            cp conf-package/pre* ../01_src/01_xampp/cultibox/package/
+            cp conf-package/VolumeCheck ../01_src/01_xampp/cultibox/package/
+            cp conf-package/InstallationCheck ../01_src/01_xampp/cultibox/package/
             cp conf-package/cultibox.plist  ../01_src/01_xampp/cultibox/package/
             cp -R conf-package/cultibox.app ../01_src/01_xampp/cultibox/
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
@@ -72,8 +75,8 @@ case "$1" in
             ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc ; fi"
 
             cp -R cultibox.pmdoc ../01_src/01_xampp/
-            sed -i "s#<version>.*</version>#<version>`echo $VERSION`</version>#" ../01_src/01_xampp/cultibox.pmdoc/01cultibox.xml
-            sed -i "s#<build>.*</build>#<build>`echo $WORK_DIR`/cultibox-macosx_`echo $VERSION`.pkg</build#" ../01_src/01_xampp/cultibox.pmdoc/index.xml
+            #sed -i "s#<version>.*</version>#<version>`echo $VERSION`</version>#" ../01_src/01_xampp/cultibox.pmdoc/01cultibox.xml
+            #sed -i "s#<build>.*</build>#<build>`echo $WORK_DIR`/cultibox-macosx_`echo $VERSION`.pkg</build#" ../01_src/01_xampp/cultibox.pmdoc/index.xml
 
             ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc; fi"
             rsync -av ../01_src/01_xampp/cultibox.pmdoc root@$SERVER:$WORK_DIR/

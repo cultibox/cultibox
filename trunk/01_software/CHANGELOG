@@ -11,6 +11,12 @@ Cultibox (1.1.10) precise; urgency=low
     + Installation d'un service de démarrage pour Mac Os X
     + Ajout d'une application mac pour lancer le soft cultibox
     + AJout des scripts load/backup pour Mac Os X
+    + Correction des redirections vers le waiting pour le formatage de la carte SD
+    + Renomage des scripts gérant les logs en display-logs pour être cohérent 
+    + Correction d'un bug sur l'affichage du menu du display-logs qui devait être en blanc quand actif
+    + Changement des couleurs du timepicker pour respecter la charte graphique
+    + Ajout d'un onglet Help pour la future documentation
+    + Nouvelle base joomla qui intègre la corection du menu display-logs + le menu help
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 17 18:08:59 CET 2013
 
