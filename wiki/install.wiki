@@ -46,6 +46,8 @@ La Cultibox est prévue pour être installer à l'extérieur de l'environnement 
 === Fixation ===
 Derrière la Cultibox, un scratch autocollant est disponible. Installer la moitié du scratch sur un mur extérieur de votre espace de culture puis scratcher la Cultibox dessus.
 
+* Il est impératif de ne jamais brancher de câble sur la Cultibox tant qu'elle n'est pas solidement fixée. Vous risquer de l'endommager définitivement *
+
 === Antenne ===
 Connecter l'antenne sur la Cultibox. L’antenne se visse sur le connecteur doré. Visser l'antenne. En desserrant vous pouvez changer l'angle de l'antenne pour que celle ci ne gène pas. Resserrer ensuite en maintenant l'antenne avec le bonne angle.
 
