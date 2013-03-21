@@ -1,32 +1,49 @@
 #!/bin/bash
 
-echo "Configuring your CultiBox environment:"
-ln -s /Applications/cultibox /Applications/XAMPP
-user_culti=`who|head -1|awk -F" " '{print $1}'`
-group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 
-chown -R $user_culti:$group_culti /Applications/cultibox
-sed -i '' "s/User nobody/User $user_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
-sed -i '' "s/Group nogroup/Group $group_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
-chown -R nobody /Applications/cultibox/xamppfiles/var/mysql
-chmod -R 775 /Applications/cultibox/xamppfiles/var/mysql
+if [ -d /Applications/cultibox ]; then
+    if [ -d /tmp/cultibox_backup/mysql ]; then
+        cp -R /tmp/cultibox_backup/var /Applications/cultibox/xamppfiles/var/
+        chown -R nobody /Applications/cultibox/xamppfiles/var/mysql
+        /Applications/cultibox/xamppfiles/xampp restart
+        rm -Rf /tmp/cultibox_backup
+
+        if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
+            /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
+        fi
+        /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
+        /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
+        /Applications/XAMPP/xamppfiles/xampp restart
+    fi
+else 
+    echo "Configuring your CultiBox environment:"
+    ln -s /Applications/cultibox /Applications/XAMPP
+    user_culti=`who|head -1|awk -F" " '{print $1}'`
+    group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
+
+    chown -R $user_culti:$group_culti /Applications/cultibox
+    sed -i '' "s/User nobody/User $user_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
+    sed -i '' "s/Group nogroup/Group $group_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
+    chown -R nobody /Applications/cultibox/xamppfiles/var/mysql
+    chmod -R 775 /Applications/cultibox/xamppfiles/var/mysql
 
 
-/Applications/XAMPP/xamppfiles/xampp restart
-sleep 3
-/Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h localhost password cultibox
-/Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/user_cultibox.sql
-/Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/joomla.sql
-lang=`echo $LANG|grep -i fr`
-if [ "$lang" != "" ]; then
-        /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_fr.sql
-else
+    /Applications/XAMPP/xamppfiles/xampp restart
+    sleep 3
+    /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h localhost password cultibox
+    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/user_cultibox.sql
+    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/joomla.sql
+    lang=`echo $LANG|grep -i fr`
+    if [ "$lang" != "" ]; then
+            /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_fr.sql
+    else
         /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_en.sql
+    fi
+    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/fake_log.sql
+
+    echo "Installing CultiBox as a service:"
+    mv /Applications/cultibox/package/cultibox.plist /System/Library/LaunchDaemons/
+
+    echo "Restarting the CultiBox interface:"
+    /Applications/XAMPP/xamppfiles/xampp restart
 fi
-/Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/fake_log.sql
-
-echo "Installing CultiBox as a service:"
-mv /Applications/cultibox/package/cultibox.plist /System/Library/LaunchDaemons/
-
-echo "Restarting the CultiBox interface:"
-/Applications/XAMPP/xamppfiles/xampp restart

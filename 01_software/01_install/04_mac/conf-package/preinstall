@@ -1,8 +1,9 @@
 #!/bin/bash
 
-if [ -d /Applications/XAMPP ]; then
-    echo "Directory /Applications/XAMPP already exists, please check that you don't have a running installation of Xampp or delete the /Applications/XAMPP directory"
-   exit 1
+if [ -d /Applications/cultibox ]; then
+    /Applications/cultibox/xamppfiles/xampp stop
+    mkdir /tmp/cultibox_backup
+    cp -R /Applications/cultibox/xamppfiles/var/mysql /tmp/cultibox_backup
 fi
 
 
