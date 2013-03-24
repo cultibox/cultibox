@@ -31,7 +31,6 @@ include($this['path']->path('layouts:template.config.php'));
 ?>
          <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css" />
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" /> 
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/calagan.css" />
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         
                 <!-- Javascript JQUERY libraries for cultibox components: calendar, datepicker, highcharts... -->
@@ -198,7 +197,7 @@ include($this['path']->path('layouts:template.config.php'));
                      <!-- Displays version and license for the software at the footer -->
                   <?php 
                         $error="";
-                        echo __('VERSION')." ".get_configuration("VERSION",$error)."&nbsp;-&nbsp;".__('LICENSE')."&nbsp;LGPL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />";
+                        echo __('VERSION')." ".get_configuration("VERSION",$error)."&nbsp;-&nbsp;".__('LICENSE')."&nbsp;LGPL<br />";
                   ?>    
                   </p>
 	               <br /><br />	
