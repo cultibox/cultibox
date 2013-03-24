@@ -23,4 +23,5 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cost_param.png
 = Remarque sur le calcul du cout =
 
   Pour calculer le cout réél, la Cultibox enregistre dans un fichier l'état de chacune des prises. La Cultibox ne se base que sur les commandes envoyées aux prises. Il n'y a pas de retour d'information de la part de la prise. Si la prise n'est pas branchée, la Cultibox ne peut pas savoir que la prise ne consomme pas. Dans le diagramme de cout, elle sera considérée comme active et consommant de la puissance.
+
   Dans certain cas la consommation réel indiqué est supérieur à la consommation théorique. Cela vient du fait que la valeur théorique est calculée à la seconde près d'après le programme enregistré alors que la valeur réelle est calculée d'après les informations de consommation des prises qui elles ont une précision de 5mn.
