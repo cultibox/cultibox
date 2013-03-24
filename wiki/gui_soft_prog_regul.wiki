@@ -82,13 +82,13 @@ Par exemple, vous utiliser un humidificateur. La régulation "classique" va le m
 
 Pour chaque type d'élément, retrouvez dans le tableau ci-dessous, la donnée climatique gérée par la régulation secondaire.
 
-| *Type d'élément* | *Capteur utilisé pour la régulation "classique"* | * Capteur utilisé pour la régulation "secondaire"* |
-| Chauffage | Température | Humidité |
-| Ventilateur | Température | Humidité |
-| Humidificateur | Humidité | Température |
-| Des-humidificateur | Humidité | Température |
-| Lampe | Aucune | Aucune |
-| Autre | Aucune | Aucune |
+|| *Type d'élément* || *Capteur utilisé pour la régulation "classique"* || * Capteur utilisé pour la régulation "secondaire"* ||
+|| Chauffage || Température || Humidité ||
+|| Ventilateur || Température || Humidité ||
+|| Humidificateur || Humidité || Température ||
+|| Des-humidificateur || Humidité || Température ||
+|| Lampe || Aucune || Aucune ||
+|| Autre || Aucune || Aucune ||
 
 == Parametres de la régulation secondaire ==
 Il n'est pas possible de définir un intervalle de temps pour l'activation de la régulation secondaire. A partir du moment ou l'utilisateur l'active, elle restera activée en permanence.
