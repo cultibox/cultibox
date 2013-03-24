@@ -1,12 +1,12 @@
 #!/bin/bash
 
 
-if [ -d /Applications/cultibox ]; then
-    if [ -d /tmp/cultibox_backup/mysql ]; then
-        cp -R /tmp/cultibox_backup/var /Applications/cultibox/xamppfiles/var/
+if [ -d /tmp/cultibox_backup/mysql ]; then
+        cp -R /tmp/cultibox_backup/mysql /Applications/cultibox/xamppfiles/var/
         chown -R nobody /Applications/cultibox/xamppfiles/var/mysql
         /Applications/cultibox/xamppfiles/xampp restart
         rm -Rf /tmp/cultibox_backup
+        sleep 5
 
         if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
             /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
@@ -14,7 +14,6 @@ if [ -d /Applications/cultibox ]; then
         /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
         /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
         /Applications/XAMPP/xamppfiles/xampp restart
-    fi
 else 
     echo "Configuring your CultiBox environment:"
     ln -s /Applications/cultibox /Applications/XAMPP
@@ -29,8 +28,9 @@ else
 
 
     /Applications/XAMPP/xamppfiles/xampp restart
-    sleep 3
+    sleep 5
     /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h localhost password cultibox
+    sleep 2
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/user_cultibox.sql
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/joomla.sql
     lang=`echo $LANG|grep -i fr`

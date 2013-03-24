@@ -1,3 +1,10 @@
+Cultibox (1.1.11) precise; urgency=low
+    + Correction d'erreur d'affichage dans les légendes des graphes des programmes et des logs
+    + L'affichage des programmes dans les logs est maintenant synchronisé en fonction du type: les ventilateurs et radiateurs sont synchronisés avec l'affichage des températures par exemple 
+
+-- Yann Genevois <yann.genevois@gmail.com> Sun Mar 24 12:28:40 CET 2013
+
+
 Cultibox (1.1.10) precise; urgency=low
     + La valeur par défaut des programmes est mise à "Marche" => correction de bug
     + Formattage des fichiers calc_XX pour le calendrier, suppréssion d'une ligne entre le titre et la description

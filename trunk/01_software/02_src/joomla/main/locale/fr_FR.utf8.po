@@ -377,7 +377,7 @@ msgid "REGUL_TITLE_PLUG"
 msgstr "Régulation pour la prise"
 
 msgid "SUMARY_REGUL_TITLE"
-msgstr "Résumé des régulations actives pour les prises sélectionnées"
+msgstr "Résumé des régulations secondaires actives pour les prises sélectionnées"
 
 msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Régulation de la prise"

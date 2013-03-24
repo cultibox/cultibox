@@ -324,8 +324,10 @@ $(function () {
             if(unit=='') { 
                if(this.y==100) {
                      behaviour='<?php echo __("VALUE_ON","highchart"); ?>';
+                     nounity=true; 
                } else if(this.y==0){
                      behaviour='<?php echo __("VALUE_OFF","highchart"); ?>';
+                     nounity=true;
                } else {
                      behaviour=(this.y)*100/100;
                      behaviour=behaviour.toFixed(1);
@@ -348,7 +350,11 @@ $(function () {
                                 break;
                         } 
                } ?>
-               var unit="<?php echo $unity; ?>";
+               if(!nounity) {
+                var unit="<?php echo $unity; ?>";
+               } else {
+                    var unit="";
+               }
                return val+"<p align='left'><b>"+this.series.name+":</b>"+behaviour+unit+"</p>";
             } else {
                return val+"<p align='left'><b>"+this.series.name+":</b>"+this.y+unit+"</p>";
@@ -532,6 +538,15 @@ $(function () {
                   name: <?php echo "'".clean_popup_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."'"; ?>,
                   showCheckbox: true,
                   color: <?php echo "'".$GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$select_plug-1]."'"; ?>,
+                  <?php switch($plugs_infos[$select_plug-1]["PLUG_TYPE"]) {
+                            case 'other': break;
+                            case 'ventilator': echo "yAxis: 1,"; break;
+                            case 'heating': echo "yAxis: 1,"; break;
+                            case 'deshumidifier':  echo "yAxis: 0,"; break;
+                            case 'humidifier':  echo "yAxis: 0,"; break;
+                            case 'lamp'; break;
+                        }
+                  ?>
                   selected: true,
                   data: [
                     <?php if((isset($data))&&(!empty($data))) echo "$data"; ?>

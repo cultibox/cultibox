@@ -7,7 +7,7 @@
 ; #####################################################################################
 
 
-#define MyAppName "Cultibox"
+#define MyAppName "cultibox"
 #define MyAppVersion "1.1.2"
 #define MyAppPublisher "Green Box SAS"
 #define MyAppURL "http://www.cultibox.fr/"
@@ -39,6 +39,7 @@ DisableDirPage=yes
 ExtraDiskSpaceRequired=419430400
 ;Desactive le choix de creation dans le menu demarrer
 DisableProgramGroupPage=yes
+LicenseFile=conf-package\lgpl3.txt
 
 
 
@@ -51,8 +52,8 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 french.ContinueInstall=Une version du logiciel Cultibox semble déja présente, vous pouvez tenter d'installer cette nouvelle version par dessus l'ancienne mais vous risquez de perdre votre configuration. Votre configuration actuelle sera sauvegardé dans le répertoire backup pour vous permettre de la retrouver. Voulez vous continuer et installer cette version?
 english.ContinueInstall=A current version of the Cultibox software seems to be already installed on your computer. You can install this new software version over the old one but you may loose your configuration in the process. Your current configuration will be saved into the backup directory. Do you want to continue the install process?
 
-french.SaveDatas=Voulez-vous sauvegarder la configuration de votre ancienne version?
-english.SaveDatas=Do you want to save the configuration of your old Cultibox software?
+french.SaveDatas=Voulez-vous sauvegarder la configuration de votre ancienne version afin de pouvoir la restaurer ultèrieurement si nécéssaire?
+english.SaveDatas=Do you want to save the configuration of your old Cultibox software to maybe ued it to restore your preferences later?
 
 french.CleanCache=Vous venez d'installer une nouvelle version, n'oubliez pas de supprimer le cache de votre navigateur internet pour que celle-ci soit pleinement fonctionnelle
 english.CleanCache=You just install a new version of the Cultibox software, don't forget to delete your internet browser's cache to have a full working version.
@@ -196,6 +197,7 @@ end;
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\backup.bat"; DestDir: "{app}\run"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; load file. Used in post install
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\load.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-package\lgpl3.txt"; DestDir: "{app}\LICENSE.txt"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\cultibox\*"; DestDir: "{app}\xampp"; Flags: onlyifdoesntexist ignoreversion recursesubdirs createallsubdirs 
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\cultibox\htdocs\cultibox\*"; DestDir: "{app}\xampp\htdocs\cultibox"; Flags: ignoreversion recursesubdirs createallsubdirs   
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\backup.bat"; DestDir: "{app}"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
