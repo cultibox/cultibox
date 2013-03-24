@@ -45,7 +45,7 @@ Remplir les différents champs:
  * Puissance consommée : En indiquant la puissance consommée vous permettez au logiciel de calculer correctement le cout de votre installation.
  * Tolérance de la prise : Indiquer la tolérance acceptée pour la régulation de cette prise. Pour plus d'information voir [gui_soft_prog_regul Régulation]
  * Capteur utilisé pour la régulation : La régulation est effectuée en fonction des valeurs données par un capteur. Choisissez dans ce champ le capteur.
- * Régulation secondaire de la prise : Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécéssaire d'activer ce champ. Pour plus d'information voir [gui_soft_prog_regul Régulation].  
+ * Régulation secondaire de la prise : Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécéssaire d'activer ce champ. Pour plus d'information voir [gui_soft_prog_regul#Régulation_secondaire Régulation].  
 
 Pour une aide plus détaillée, consulter la page suivante : [gui_soft_conf Configuration]
 
