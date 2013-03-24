@@ -6,6 +6,12 @@
 = Introduction =
 La page de configuration permet de modifier les paramètres du logicel et de la Cultibox.
 
+Les différents parametres sont disponibles dans deux onglets : 
+ * Configuration
+ * Plugs
+
+= Configuration générale =
+
 Pour acceder à l'onglet , cliquer sur "Configuration":
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
@@ -18,7 +24,7 @@ Dans cet onglet, quatre menus sont disponibles:
  * Configuration du cout
  * Configuration de la Carte SD
 
-= Configuration de l'interface =
+== Configuration de l'interface ==
 La section "configuration de l'interface" permet de modifier les différents paramètres du site web.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_interface.png
@@ -32,7 +38,7 @@ Dans cette section vous pouvez:
  * Définir le nombre de mois pour la recherche des logs
  * Définir si vous désirez nous envoyer des information pour le dévellopement
 
-= Configuration de la Cultibox =
+== Configuration de la Cultibox ==
 
 En cliquant sur "Configuration de la Cultibox", l'onglet change:
 
@@ -44,7 +50,7 @@ Dans cette section vous pouvez:
  * Indiquer le nombre de prise de votre système
  * Définir la fréquence de mise à jour des prises. Si vous avez d'autres équipements fonctionnants en 433MHz, vous pouvez choisir de ne plus piloter les prises en permanence.
 
-= Configuration de l'alarme =
+== Configuration de l'alarme ==
 
 En cliquant sur "Configuration de l'alarme", l'onglet change:
 
@@ -52,7 +58,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_alarme.PNG
 
 L'alarme de la Cultibox peut être configurée dans cette section.
 
-= Configuration du cout =
+== Configuration du cout ==
 
 En cliquant sur "Configuration du cout", l'onglet change:
 
@@ -68,7 +74,7 @@ Vous pouvez maintenant indiquer:
  * Le début de la période d'heure creuse.
  * Le début de la période d'heure pleine.
 
-= Configuration de la carte SD =
+== Configuration de la carte SD ==
 
 En cliquant sur "Configuration de la carte SD", l'onglet change:
 
@@ -76,3 +82,25 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_SD.PNG
 
 Encliquant sur le boutton, vous pouvez choisir de formatter votre carte. Il est conseiller de conserver la carte SD fournit avec le pack de départ. 
 Si vous perdez votre carte, vous pouvez en acheter une. La carte SD doit être d'une capacité de 2Go au maximum (La Cultibox ne reconnait pas les cartes SD Haute Capacité SDHC) et elle doit être formatée en FAT16.
+
+= Configuration des prises =
+
+Pour acceder à l'onglet , cliquer sur "Configuration":
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
+
+Vous pouvez modifier la configuration des prises dans cet onglet.
+
+Sélectionner la prise que vous souhaitez configurer.
+
+Remplir les différents champs:
+ * État de la prise : Vous pouvez désactiver la prise. Dans ce cas elle n'apparaitra plus dans les programmes ni dans les graphe de puissance.
+ * Nom de la prise : Il est possible de renommer la prise en remplissant le champ.
+ * Type de prise : C'est ici qu'on indique au programme si la prise est une prise 1000W ou une prise 3500W. *Il faut absolument remplir correctement ce champ, sinon la prise ne sera pas correctement pilotée par la Cultibox.*
+ * Type d'élément branché sur la prise : En indiquant le type d'élément branché sur la prise, vous indiquez quelle variable d'environnement (Température ou humidité) sera impactée par la mise en route de cette prise. Si l'élément branché n'est pas une lampe, n'impacte pas la température, n'impacte pas l'humidité, veuillez choisir le type "Inconnu".
+ * Puissance consommée : En indiquant la puissance consommée vous permettez au logiciel de calculer correctement le cout de votre installation.
+ * Tolérance de la prise : Indiquer la tolérance acceptée pour la régulation de cette prise. Pour plus d'information voir [gui_soft_prog_regul Régulation]
+ * Capteur utilisé pour la régulation : La régulation est effectuée en fonction des valeurs données par un capteur. Choisissez dans ce champ le capteur.
+ * Régulation secondaire de la prise : Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécéssaire d'activer ce champ. Pour plus d'information voir [gui_soft_prog_regul Régulation].  
+
+Cliquer sur "Enregistrer la configuration" pour dauvegarder vos modifications.

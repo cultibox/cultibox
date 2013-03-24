@@ -41,12 +41,15 @@ Remplir les différents champs:
  * État de la prise : Vous pouvez désactiver la prise. Dans ce cas elle n'apparaitra plus dans les programmes ni dans les graphe de puissance.
  * Nom de la prise : Il est possible de renommer la prise en remplissant le champ.
  * Type de prise : C'est ici qu'on indique au programme si la prise est une prise 1000W ou une prise 3500W. *Il faut absolument remplir correctement ce champ, sinon la prise ne sera pas correctement pilotée par la Cultibox.*
- * Élément branché sur la prise : En indiquant le type d'élément branché sur la prise, vous indiquez quelle variable d'environnement (Température ou humidité) sera impactée par la mise en route de cette prise. Si l'élément branché n'est pas une lampe, n'impacte pas la température, n'impacte pas l'humidité, veuillez choisir le type "Inconnu".
+ * Type d'élément branché sur la prise : En indiquant le type d'élément branché sur la prise, vous indiquez quelle variable d'environnement (Température ou humidité) sera impactée par la mise en route de cette prise. Si l'élément branché n'est pas une lampe, n'impacte pas la température, n'impacte pas l'humidité, veuillez choisir le type "Inconnu".
  * Puissance consommée : En indiquant la puissance consommée vous permettez au logiciel de calculer correctement le cout de votre installation.
+ * Tolérance de la prise : Indiquer la tolérance acceptée pour la régulation de cette prise. Pour plus d'information voir [gui_soft_prog_regul Régulation]
+ * Capteur utilisé pour la régulation : La régulation est effectuée en fonction des valeurs données par un capteur. Choisissez dans ce champ le capteur.
+ * Régulation secondaire de la prise : Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécéssaire d'activer ce champ. Pour plus d'information voir [gui_soft_prog_regul Régulation].  
 
+Pour une aide plus détaillée, consulter la page suivante : [gui_soft_conf Configuration]
 
-
-Cliquer sur "Enregistrer la configuration"
+Cliquer sur "Enregistrer la configuration".
 
 == Création du programme de la nouvelle prise ==
 Cliquer sur l'onglet "Programme".
