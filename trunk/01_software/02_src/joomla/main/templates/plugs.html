@@ -108,6 +108,16 @@
       <tr>
          <td></td>
          <td>
+            <?php echo __('POWER_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER'); ?>" />
+         </td>
+         <td>
+            <input type="text" size="4" maxlength="4" name="plug_power<?php echo $i; ?>" value="<?php echo $plug_power{$i}; ?>" onKeypress="return verifInt(event);">W
+         </td>
+        <td><?php if((isset($error[$i]['power']))&&(!empty($error[$i]['power']))) echo "<div class='error'>".$error[$i]['power']."</div>"; ?></td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>
             <div id="tolerance_label<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
                <?php echo __('TOLERANCE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_TOLERANCE'); ?>" />
             </div>
@@ -119,30 +129,20 @@
          </td>
          <td><?php if((isset($error[$i]['tolerance']))&&(!empty($error[$i]['tolerance']))) echo "<div class='error'>".$error[$i]['tolerance']."</div>"; ?></td>
       </tr>
-     <tr>
+      <tr>
          <td></td>
+         <td><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></td>
          <td>
-            <?php echo __('POWER_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER'); ?>" />
+               <select name="plug_sensor<?php echo $i; ?>" id="plug_sensor<?php echo $i; ?>">
+               <?php for($j=1; $j<=$GLOBALS['NB_MAX_SENSOR']; $j++) { ?>
+                  <option <?php if(strcmp($plug_sensor{$i},"$j")==0) { echo 'selected'; }?> value="<?php echo $j; ?>"><?php echo $j; ?></option>
+               <?php } ?>
+               </select>
          </td>
-         <td>
-            <input type="text" size="4" maxlength="4" name="plug_power<?php echo $i; ?>" value="<?php echo $plug_power{$i}; ?>" onKeypress="return verifInt(event);">W
-         </td>
-        <td><?php if((isset($error[$i]['power']))&&(!empty($error[$i]['power']))) echo "<div class='error'>".$error[$i]['power']."</div>"; ?></td>
+         <td></td>
       </tr>
-<tr>
-      <td></td>
-      <td><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></td>
-   <td>
-            <select name="plug_sensor<?php echo $i; ?>" id="plug_sensor<?php echo $i; ?>">
-            <?php for($j=1; $j<=$GLOBALS['NB_MAX_SENSOR']; $j++) { ?>
-               <option <?php if(strcmp($plug_sensor{$i},"$j")==0) { echo 'selected'; }?> value="<?php echo $j; ?>"><?php echo $j; ?></option>
-            <?php } ?>
-            </select>
-   </td>
-    <td></td>
-</tr>
 
-<tr>
+      <tr>
          <td></td>
          <td>
             <div id="second_regul_label<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
