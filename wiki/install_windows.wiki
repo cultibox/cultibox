@@ -6,6 +6,99 @@
 = Introduction =
 Cette page décrit les étapes pour installer / désinstaller le logiciel dans un environnement Windows.
 
+Pour télécharger la dernière version du logiciel:
+  *  Suiver le lien qui apparait en haut de l'interface. Ce lien n'est présent que si une nouvelle version est disponible.
+  *  Aller sur www.cultibox.fr puis dans l'onglet téléchargement, récuperer la version qui correspond à votre système d'exploitation. 
+
 = Installation =
 
+Double-cliquer sur le programme d'installation: 
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_1.png
+
+Cliquer sur "Executer".
+
+Sélectionner votre langue:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_2.png
+
+Cliquer sur suivant:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_5.png
+
+Il vous faut accepter les termes du contrat pour continuer:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_6.png
+
+Cliquer sur Installer pour procéder à l'installation:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_7.png
+
+Le logiciel s'instal:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_8.png
+
+Pour que le logiciel soit pleinement fonctionnel, il est nécéssaire de vider le cache de votre navigateur web:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_9.png
+
+Cliquer sur terminer:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_10.png
+
+Si vous désirez lancer le logiciel, cliquer sur oui:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_11.png
+
+
+= Mise à jour =
+
+Double-cliquer sur le programme d'installation: 
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_1.png
+
+Cliquer sur "Executer".
+
+Sélectionner votre langue:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_2.png
+
+Pour sauvegarder votre ancienne configuration, cliquer sur oui:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_3.png
+
+Pour sauvegarder votre ancienne configuration, cliquer sur oui:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_4.png
+
+Cliquer sur suivant:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_5.png
+
+Il vous faut accepter les termes du contrat pour continuer:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_6.png
+
+Cliquer sur Installer pour procéder à l'installation:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_7.png
+
+Le logiciel s'instal:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_8.png
+
+Pour que le logiciel soit pleinement fonctionnel, il est nécéssaire de vider le cache de votre navigateur web:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_9.png
+
+Cliquer sur terminer:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_10.png
+
+Si vous désirez lancer le logiciel, cliquer sur oui:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_11.png
+
 = Désinstallation =
+
+Pour désintaller le logiciel,cliquer sur "Désinstaller Cultibox" présent dans le menu démarrer de WIndows
