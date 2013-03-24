@@ -1,21 +1,3 @@
-.info {
-	font-size: 12px; 
-	font-weight: bolder; 
-	font-style: italic;
-	color: green;
-	width: 100%;
-     
-}
-
-
-.error {
-	font-size: 13px; 
-	font-weight: bolder; 
-	font-style: italic;
-    color: red;
-	width: 100%;
-}
-
 .histo_info {
     font-size: 13px;
     color: green;
@@ -75,13 +57,6 @@ input.button_log {
     width: 90%;
 }
 
-.menu_h1 {
-    color: #6E5419;
-    font-size: 12px;
-    font-weight:bold;
-}
-
-
 .precision_infos{
     font-size: 12px;
     color: #6A7F7C;
@@ -100,21 +75,6 @@ input.button_log {
    text-align: center;
 }
 
-.step {
-	font-weight: bold;
-	color: #6E5419;
-}
-
-.step_info {
-	text-align:justify;
-   text-indent:2em;
-}
-
-.title_conf{
-   font-size: 13px;
-   font-weight: bolder;
-   font-style: italic;
-}
 
 .title_subconf {
   font-size: 12px;
@@ -154,10 +114,6 @@ td.conf-marge {
 
 td.conf-menu-marge {
     width: 5%;
-}
-
-td.conf-marge-td {
-   width: 45%;
 }
 
 td.right_log {
@@ -248,10 +204,6 @@ td.cost-field {
 
 td.wizard-marge-submit {
    width: 20%;
-}
-
-td.wizard-marge {
-   width: 10%;
 }
 
 td.wizard-step {
@@ -363,10 +315,6 @@ P.p_center{
    text-align: center;
 }
 
-P.p_right{
-   text-align: right;
-}
-
 hr {
    width:40%;
    margin:auto;
@@ -391,3 +339,275 @@ label.input-file
     cursor: pointer;
 }
 
+
+
+/* Ancien override Calagan */
+
+body{
+	font-family: "OpenSansRegular";
+	font-size:14px;	
+}
+
+a{
+	color:#696455;	
+}
+
+a:hover{
+	color:#C3B59B;
+}
+
+select, input, textarea, button {
+	font-family: 'OpenSansRegular';	
+}
+
+options {
+ 	padding:5px;
+	margin:5px;
+	height:24px;
+	line-height:24px;
+}
+
+option:focus{background: #ee986e;} 
+
+#footer2 {
+	background: url(/cultibox/templates/yoo_cloud/images/fond_interface.png) center bottom no-repeat;
+}
+
+#shortlogo {
+	float: right;
+}
+
+#shortlogo img {
+	padding-right:20px; 
+}
+
+.error {
+	color:red;
+	font-size:14px;
+	/*font-family: 'OpenSansBold';*/	
+	font-style:normal;
+	font-weight:normal;
+    margin:auto;
+    padding:9px;
+    border-radius:22px;
+    width:90%;
+    background:#F5EE31;
+    background:#e5dd2e;
+    background:#E3DDD1;
+    display:block;
+    margin-bottom:5px;
+    font-size: 14px;
+}
+
+.error ul { 
+	list-style-type: circle; 
+	margin:0;
+	text-align:left;
+    margin-left: 100px;
+}
+
+.info ul {
+    list-style-type: circle;
+    margin:0;
+    text-align:left;
+    margin-left: 100px;
+}
+
+
+ul, ol, dl {
+	padding-left:0px;
+}
+
+p.p_right{
+	font-size:11px;		
+}
+
+button, input[type="button"], input[type="submit"] {
+	padding:4px 7px;
+	background: #C3B59B;
+	border-bottom-left-radius:11px;
+	border-bottom-right-radius:11px;
+	border-top-left-radius:11px;
+	border-top-right-radius:11px;
+}
+
+button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+	background: #f4ee31;
+	background: #D7DF21;
+}
+
+.step {
+  text-align:center;
+}
+
+.welcome_title {
+	color:#C3B59B;
+	font-size:24px;
+    text-align: center;
+    font-weight:bold;
+}
+
+.text_info, .step_info {
+	text-indent:0em;
+    text-align : justify;
+	display:block;
+	margin:auto;
+	width:80%;
+}
+
+.info {
+    color: #3A951F;
+    font-size:14px;
+    /*font-family: 'OpenSansBold';*/
+    font-style:normal;
+    font-weight:normal;
+    margin:auto;
+    padding:9px;
+    border-radius:22px;
+    width:90%;
+    background:#F5EE31;
+    background:#e5dd2e;
+    background:#E3DDD1;
+    display:block;
+    margin-bottom:5px;
+    font-size: 14px;
+}
+
+td.wizard-marge, td.wizard-input-previous {
+	width:0px;
+}
+
+td.wizard-marge-submit {
+	display:none;
+}
+
+td.wizard-input-previous, td.wizard-input-submit {
+	text-align:center;
+	vertical-align:top;
+}
+td.wizard-input-previous {
+	width:155px;
+}
+td.wizard-input-submit, td.wizard-input-previous2 {
+	width:310px;
+}
+
+td.wizard-input-previous input[type="submit"] {
+	width:100px;
+}
+hr {
+  margin:auto;
+  width:90%;
+}
+
+.title_conf {
+	display:block;
+	margin:auto;
+	width:90%;
+	text-align:center;
+	font-size:19px;
+	font-style:normal;
+	font-weight:normal;
+	/*border-bottom:#CCC 1px solid;*/
+	padding-top:7px;
+	padding-bottom:20px;
+	background:url("../../../main/libs/img/fond_cartouche.png") center top no-repeat;
+}
+
+#menubar {
+	 padding:0 0 4px 25px;
+	 margin-right:80px;
+}
+
+a.logo img{
+	padding:10px 0 10px 30px;
+}
+
+#box{
+	position: absolute;
+	left:820px;
+	z-index:1000;
+}
+
+.menu_h1{
+	font-size:13px;
+	background:#CCC;
+    width:125px;
+    font-weight:bold;
+	padding:10px 5px 9px 5px;
+	background:url("../../../main/libs/img/fond_cartouche.png") center center no-repeat;
+	border-radius:20px;
+}
+
+.menu_h1:hover{
+	background:url("../../../main/libs/img/fond_cartouche_vert.png") center center no-repeat;
+	color:#93982a;
+}
+
+td.conf-marge-td {
+  width:50%;
+}
+
+.info-bulle-contenu{
+	/*width:400px;*/
+	/* fonctionne bizarrement : javascript doit overrider ce css */
+	font-weight:normal;
+	background:#696455;
+	width:15%;
+	font-size:13px;
+}
+
+td.welcome-link {
+  width:33%;
+  vertical-align:top;
+}
+
+td.welcome-link img{
+  border-radius:22px;
+  border:#C3B59B 6px solid;
+}
+
+.info-bulle-css:hover{
+	cursor:pointer;
+}
+
+.menu-dropdown li.level1 a.level1 {
+	font-family: 'OpenSansRegular';
+}
+
+/* CALENDAR */
+
+.ui-datepicker {
+    width:auto;
+}
+
+.ui-datepicker-trigger:hover{
+    cursor:pointer;
+}
+
+.ui-widget-header {
+    background: url("../img/ui-bg_gloss-wave.png") repeat-x scroll 50% 50% #F6A828;
+    border: none;
+    background-color: #8aad2e;
+}
+
+#ui-datepicker-div button{
+    background: url("../img/ui-bg_gloss-wave.png") repeat-x scroll 50% 50% #F6A828;
+    color:#000000;
+    background-color: #8aad2e;
+    font-weight:bold;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    color: #696455;
+    font-size:12px;
+}
+
+/* css for timepicker */
+#ui-datepicker-div, .ui-datepicker{ width: 17%; font-size: 90%; border-radius:4px;}
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }

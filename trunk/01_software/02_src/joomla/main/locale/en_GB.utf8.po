@@ -936,6 +936,9 @@ msgid "LICENSE"
 msgstr "License"
 
 # For the errors or warnings part:
+msgid "ERROR_MESSAGE"
+msgstr "Warning"
+
 msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "Problem during the connection close procedure"
 
@@ -1079,6 +1082,9 @@ msgstr "The software can't check if updates are available, please check your int
 
 
 # For the informations part:
+msgid "INFORMATIONS"
+msgstr "Information(s)"
+
 msgid "INFO_SD_CARD"
 msgstr "A valid SD card was found"
 

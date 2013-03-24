@@ -936,7 +936,11 @@ msgstr "Version"
 msgid "LICENSE"
 msgstr "Licence"
 
+
 # For the errors or warnings part:
+msgid "ERROR_MESSAGE"
+msgstr "Attention"
+
 msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "Problème pendant la fermeture de la connexion"
 
@@ -1080,6 +1084,10 @@ msgstr "Impossible de s'assurer de la présence de mises à jours, vérifier que
 
 
 # For the informations part:
+
+msgid "INFORMATIONS"
+msgstr "Information(s)"
+
 msgid "INFO_SD_CARD"
 msgstr "Une carte SD compatible cultibox est branchée"
 
@@ -1108,10 +1116,10 @@ msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage"
 
 msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "Fichiers de logs du mois en cours enregistrées avec succès, vous pouvez retirer votre carte Cultibox de votre ordinateur."
+msgstr "Fichiers de logs du mois en cours enregistrées avec succès"
 
 msgid "VALID_LOAD_LOG"
-msgstr "Fichiers de logs des derniers mois enregistrées avec succès, vous pouvez retirer votre carte Cultibox de votre ordinateur."
+msgstr "Fichiers de logs des derniers mois enregistrées avec succès"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "Programme mis à jour avec succès"

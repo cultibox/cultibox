@@ -11,6 +11,7 @@
 
 <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <div class="info">
+<img src="main/libs/img/informations.png" alt=""><b><?php echo __("INFORMATIONS").":"; ?></b>
 <ul>
         <?php foreach($main_info as $inf) { 
             echo "<li>".$inf."</li>";            
@@ -20,6 +21,7 @@
 <?php } ?>
 <?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
 <div class="error">
+<img src="main/libs/img/informations.png" alt=""><b><?php echo __("ERROR_MESSAGE").":"; ?></b>
 <ul>
         <?php foreach($main_error as $err) { 
             echo "<li>".$err."</li>";            
@@ -37,8 +39,7 @@ function(){
 });
 </script>
 <?php } ?>
-
-
+<br />
 
 <div class="welcome"> 
 <p class="welcome_title"><?php echo __('WELCOME_TITLE'); ?></p>
@@ -53,7 +54,6 @@ function(){
 <?php } else { ?>
 <hr />
 <br />
-<!-- Calagan -->
 <table class="table_width">
 <tr>
 <td class="welcome-link"><a href="index.php/display-logs"><img src="main/libs/img/logs.png" title="<?php echo __('WELCOME_LOGS'); ?>" alt="<?php echo __('WELCOME_LOGS'); ?>" /><br /></a></td><td class="welcome-link"><a href="index.php/programs"><img src="main/libs/img/program.png" title="<?php echo __('WELCOME_PROGRAM'); ?>" alt="<?php echo __('WELCOME_PROGRAM'); ?>" /><br /></a></td>
