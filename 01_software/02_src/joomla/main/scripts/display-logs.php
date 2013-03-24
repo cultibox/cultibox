@@ -297,7 +297,7 @@ if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
 }
 
 if(strcmp("$select_power","9990")==0) {
-    format_regul_sumary("all",$main_error,$resume_regul);
+    format_regul_sumary("all",$main_error,$resume_regul,$nb_plugs);
 } else {
     if((strcmp("$select_power","")!=0)&&(strcmp("$select_plug","")!=0)) {
         if($select_power<$select_plug) {
@@ -308,15 +308,15 @@ if(strcmp("$select_power","9990")==0) {
             $second=$select_power;
         }
 
-        format_regul_sumary($first,$main_error,$resume_regul);
-        format_regul_sumary($second,$main_error,$resume_regul);
+        format_regul_sumary($first,$main_error,$resume_regul,$nb_plugs);
+        format_regul_sumary($second,$main_error,$resume_regul,$nb_plugs);
     } else {
         if(strcmp("$select_power","")!=0) {
-            format_regul_sumary($select_power,$main_error,$resume_regul);
+            format_regul_sumary($select_power,$main_error,$resume_regul,$nb_plugs);
         }
 
         if(strcmp("$select_plug","")!=0) {
-            format_regul_sumary($select_plug,$main_error,$resume_regul);
+            format_regul_sumary($select_plug,$main_error,$resume_regul,$nb_plugs);
         }
     }
 }

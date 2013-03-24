@@ -378,7 +378,7 @@ msgid "REGUL_TITLE_PLUG"
 msgstr "Regulation for the plug"
 
 msgid "SUMARY_REGUL_TITLE"
-msgstr "Sumary of the active regulation for selected plugs"
+msgstr "Sumary of the secondary active regulation for selected plugs"
 
 msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Plug's regulation"

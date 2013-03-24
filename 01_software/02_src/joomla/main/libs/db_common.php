@@ -2096,16 +2096,17 @@ EOF;
 // IN    $number     maximale plug's number
 //       $out        error or warning messages
 //       $resume     string containing sumary formated
+//       $max        the maximal number of plug tu be seeked
 // RET   sumary formated 
-function format_regul_sumary($number=0, &$out,&$resume="") {
+function format_regul_sumary($number=0, &$out,&$resume="",$max=0) {
     $db = db_priv_start();
     if(strcmp("$number","all")==0) {
     $sql = <<<EOF
-SELECT id, PLUG_REGUL, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" 
+SELECT id, PLUG_REGUL, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" AND id<{$max} 
 EOF;
     } else {
         $sql = <<<EOF
-SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" AND `id` = {$number}
+SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" AND `id` = {$number} AND id<{$max}
 EOF;
     }
     $db->setQuery($sql);
@@ -2127,9 +2128,9 @@ EOF;
         foreach($res as $result) {
             $resume=$resume."<p align='center'><i>".__('SUMARY_REGUL_SUBTITLE')." ".$result['id'].":</i></p>";
             if(strcmp($result['PLUG_SENSO'],"H")==0) {
-                $resume=$resume.__('SUMARY_REGUL_SENSO').": ".__('SUMARY_REGUL_TEMP');
-            } else {
                 $resume=$resume.__('SUMARY_REGUL_SENSO').": ".__('SUMARY_REGUL_HYGRO');
+            } else {
+                $resume=$resume.__('SUMARY_REGUL_SENSO').": ".__('SUMARY_REGUL_TEMP');
             }
 
             if(strcmp($result['PLUG_SENSS'],"+")==0) {
