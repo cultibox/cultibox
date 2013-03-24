@@ -21,14 +21,14 @@ Par exemple, vous désirez avoir une température de 22°C. Le capteur indique 2
 
 Il est donc très important de remplir correctement le champ "Type d'élément branché sur la prise" dans l'onglet "Plugs".
 
-Si l'élément ne correspond pas exactement aux choix possibles, vous devez sélectionner l'élemnt le plus proche selon les règles ci-dessous:
+Si l'élément ne correspond pas exactement aux choix possibles, vous devez sélectionner l'élement le plus proche selon les règles ci-dessous:
  * Si l'élément branché augmente la température de votre environnement lorsqu'il est en marche : sélectionner "Chauffage"
  * Si l'élément branché baisse la température de votre environnement lorsqu'il est en marche : sélectionner "Ventilateur"
  * Si l'élément branché augmente l'humidité de votre environnement lorsqu'il est en marche : sélectionner "Humidificateur"
  * Si l'élément branché baisse l'humidité de votre environnement lorsqu'il est en marche : sélectionner "Dés-humidificateur"
  
 == Hystérésis ==
-Les prises vendues avec le pack sont "Tout Ou Rien". Cela veut dire que la prise ne peut être que dans un des deux états suivants: Allumée ou éteinte. Pour ce type de prise, la régulation la plus éfficace est une régulation suivant un cycle d'hystérésis.
+Les prises vendues avec le pack sont "Tout Ou Rien". Cela veut dire que la prise ne peut être que dans un des deux états suivants: Allumée ou éteinte. Pour ce type de prise, la régulation la plus efficace est une régulation suivant un cycle d'hystérésis.
 
 === Chauffage ou humidificateur ===
 Dans le cas ou la prise agit de façon positive sur la valeur du capteur (Chauffage, Humidificateur). Les règles de changement d'état des prises sont les suivantes:
@@ -69,16 +69,16 @@ Pour désactiver le fonctionnement en hystérésis, il vous suffit d'indiquer un
 
 *Attention, la régulation secondaire est compliquée. Assurez vous d'en avoir vraiment besoin avant de l'activer.*
 
-la régulation secondaire permet de forcer l'état d'une prise en fonction de ceratines données climatique.
+la régulation secondaire permet de forcer l'état d'une prise en fonction de certaines données climatique.
 Elle agit comme une sorte d'alarme.
 Par exemple, vous utilisez un ventilateur pour réguler la température à 22°C. Il ne se met en marche que lorsque la température dépasse la consigne. Jusque là, c'est la régulation "classique" qui fonctionne.
-Vous désirez quen plus de ce fonctionnement normal, il soit actif si le taux d'humidité est supérieur à 80%. C'est la régulation secondaire qui va tenir ce rôle.
+Vous désirez qu'en plus de ce fonctionnement normal, il soit actif si le taux d'humidité est supérieur à 80%. C'est la régulation secondaire qui va tenir ce rôle.
 
 * La régulation secondaire est prioritaire dans la Cultibox. Dans le cas ou ses conditions d'activations sont remplies, elle prend le pas sur la régulation classique*
 
 == Donnée climatique ==
 La régulation classique, gère la prise en fonction du type d'élément branché dessus. La régulation secondaire va jouer sur l'autre condition climatique.
-Par exemple, vous utiliser un humidificateur. La régulation "classique" va le mettre en marche pour augmenter le taux d'humiditée. La régulation secondaire va donc jouer sur la deuxième donnée climatique: la température.
+Par exemple, vous utiliser un humidificateur. La régulation "classique" va le mettre en marche pour augmenter le taux d’humidité. La régulation secondaire va donc jouer sur la deuxième donnée climatique: la température.
 
 Pour chaque type d'élément, retrouvez dans le tableau ci-dessous, la donnée climatique gérée par la régulation secondaire.
 
@@ -90,7 +90,7 @@ Pour chaque type d'élément, retrouvez dans le tableau ci-dessous, la donnée c
 || Lampe || Aucune || Aucune ||
 || Autre || Aucune || Aucune ||
 
-== Parametres de la régulation secondaire ==
+== Paramètres de la régulation secondaire ==
 Il n'est pas possible de définir un intervalle de temps pour l'activation de la régulation secondaire. A partir du moment ou l'utilisateur l'active, elle restera activée en permanence.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_regul_second.png
