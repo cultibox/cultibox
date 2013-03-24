@@ -93,6 +93,8 @@ Vous pouvez modifier la configuration des prises dans cet onglet.
 
 Sélectionner la prise que vous souhaitez configurer.
 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_empty.png
+
 Remplir les différents champs:
  * État de la prise : Vous pouvez désactiver la prise. Dans ce cas elle n'apparaitra plus dans les programmes ni dans les graphe de puissance.
  * Nom de la prise : Il est possible de renommer la prise en remplissant le champ.
