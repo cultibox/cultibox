@@ -11,15 +11,15 @@ Cette page de l'aide explique et permet de comprendre le fonctionnement de la r�
 La régulation permet de piloter les prises afin d'obtenir des conditions de culture optimales.
 
 Principe général: 
-Vous choisissez une température ou une humidité, la Cultibox se charge d'allumer la prise en lorsque c'est nécéssaire.
+Vous choisissez une température ou une humidité, la Cultibox se charge d'allumer la prise en lorsque c'est nécessaire.
 Exemple : Vous décidez d'une température de 22°C. Vous effectuer cette régulation sur un ventilateur. La prise se met en route lorsque la température est supérieur à la consigne et s'éteint lorsque la température est inférieure à la consigne.
 
-Les prises vendues avec le pack sont "Tout Ou Rien". Cela veut dire que la prise ne peut être que dans un des deux états suivants: Allumée ou éteinte. Pour ce type de prise, la régulation la plus éfficace est une régulation suivant un cycle d'hystérésis.
+Les prises vendues avec le pack sont "Tout Ou Rien". Cela veut dire que la prise ne peut être que dans un des deux états suivants: Allumée ou éteinte. Pour ce type de prise, la régulation la plus efficace est une régulation suivant un cycle d'hystérésis.
 
 == hystérésis ==
 
 === Chauffage ou humidificateur ===
-Dans le cas ou la prise agit de façon positive sur la valeur du capteur (Chauffage, Humidificateur). Les rêgles de changement d'état des prises sont les suivantes:
+Dans le cas ou la prise agit de façon positive sur la valeur du capteur (Chauffage, Humidificateur). Les règles de changement d'état des prises sont les suivantes:
  * Si la valeur du capteur est inférieur à la consigne moins la tolérance : Prise activée
  * Si la valeur du capteur est supérieur à la consigne plus la tolérance : Prise désactivée
  * Pour les autres cas, la prise reste dans le même état. 
@@ -33,8 +33,8 @@ La prise ne s'éteint pas lorsque la température est supérieur à la consigne.
 
 http://cultibox.googlecode.com/svn/wiki/img/regul_4.png
 
-=== Ventilateur ou déshumidificateur ===
-Dans le cas ou la prise agit de façon négative sur la valeur du capteur (Ventilateur, Déshumidificateur). Les rêgles de changement d'état des prises sont les suivantes:
+=== Ventilateur ou dés-humidificateur ===
+Dans le cas ou la prise agit de façon négative sur la valeur du capteur (Ventilateur, Dés-humidificateur). Les règles de changement d'état des prises sont les suivantes:
  * Si la valeur du capteur est supérieur à la consigne plus la tolérance : Prise activée
  * Si la valeur du capteur est inférieur à la consigne moins la tolérance : Prise désactivée
  * Pour les autres cas, la prise reste dans le même état. 
@@ -48,7 +48,7 @@ La prise ne s'éteint pas lorsque la température est inférieur à la consigne.
 
 http://cultibox.googlecode.com/svn/wiki/img/regul_2.png
 
-=== Comment desactiver l'hystérésis ===
+=== Comment désactiver l'hystérésis ===
 Pour désactiver le fonctionnement en hystérésis, il vous suffit d'indiquer une valeur de tolérance de 0 pour la prise.
 
 = Régulation secondaire =
