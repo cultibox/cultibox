@@ -1,4 +1,4 @@
-#summary Installation windows.
+#summary Installation Windows.
 
 = Sommaire =
 <wiki:toc max_depth="3" />
@@ -7,8 +7,8 @@
 Cette page décrit les étapes pour installer / désinstaller le logiciel dans un environnement Windows.
 
 Pour télécharger la dernière version du logiciel:
-  *  Suiver le lien qui apparait en haut de l'interface. Ce lien n'est présent que si une nouvelle version est disponible.
-  *  Aller sur www.cultibox.fr puis dans l'onglet téléchargement, récuperer la version qui correspond à votre système d'exploitation. 
+  *  Suivre le lien qui apparaît en haut de l'interface. Ce lien n'est présent que si une nouvelle version est disponible.
+  *  Aller sur www.cultibox.fr puis dans l'onglet téléchargement, récupérer la version qui correspond à votre système d'exploitation. 
 
 = Installation =
 
@@ -16,7 +16,7 @@ Double-cliquer sur le programme d'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_1.png
 
-Cliquer sur "Executer".
+Cliquer sur "Exécuter".
 
 Sélectionner votre langue:
 
@@ -34,11 +34,11 @@ Cliquer sur Installer pour procéder à l'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_7.png
 
-Le logiciel s'instal:
+Le logiciel s'installe:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_8.png
 
-Pour que le logiciel soit pleinement fonctionnel, il est nécéssaire de vider le cache de votre navigateur web:
+Pour que le logiciel soit pleinement fonctionnel, il est nécessaire de vider le cache de votre navigateur web:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_9.png
 
@@ -57,7 +57,7 @@ Double-cliquer sur le programme d'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_1.png
 
-Cliquer sur "Executer".
+Cliquer sur "Exécuter".
 
 Sélectionner votre langue:
 
@@ -83,11 +83,11 @@ Cliquer sur Installer pour procéder à l'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_7.png
 
-Le logiciel s'instal:
+Le logiciel s'installe:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_8.png
 
-Pour que le logiciel soit pleinement fonctionnel, il est nécéssaire de vider le cache de votre navigateur web:
+Pour que le logiciel soit pleinement fonctionnel, il est nécessaire de vider le cache de votre navigateur web:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_9.png
 
