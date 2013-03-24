@@ -451,7 +451,7 @@ msgid "POWER_PLUG"
 msgstr "Puissance consommée par l'élément (en Watt)"
 
 msgid "ENABLE_REGUL_PLUG"
-msgstr "Régulation de la prise"
+msgstr "Régulation secondaire de la prise (utilisateur expert seulement)"
 
 msgid "CONFIGURE_REGUL_SENSOR"
 msgstr "Capteur utilisé pour la régulation"
@@ -1176,7 +1176,7 @@ msgid "TOOLTIP_PLUG_TOLERANCE"
 msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation."
 
 msgid "TOOLTIP_PLUG_REGUL"
-msgstr "La régulation permet de définir des valeurs à partir desquelles l'équipement branché se mettre en route et s'éteindra. Si vous activez la régulation il faut faudra choisir: si vous voulez que l'équipement soit régulé en fonction de la température ou de l'hygrométrie, à partir de quel seuil la prise doit s'éteindre ou s'allumer et si elle doit se déclencher au dessus ou en dessous de ce seuil."
+msgstr "La régulation secondaire a un fonctionnement compliquée et différent de la régulation principale. Veuillez bien lire la documentation avant de l'activer pour une prise. Si vous désirez piloter une prise pour qu'elle régule une condition climatique, il n'est pas nécéssaire d'activer la régulation secondaire."
 
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le prix de  revient de votre installation dans le menu 'Coût'"
