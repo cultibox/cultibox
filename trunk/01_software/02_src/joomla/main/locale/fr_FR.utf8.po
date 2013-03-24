@@ -1155,7 +1155,7 @@ msgid "TOOLTIP_PLUG_FREQ"
 msgstr "Cette option permet de configurer la fréquence à laquelle sera mise à jour l'état (Marche/Arrêt) de vos prises."
 
 msgid "TOOLTIP_ALARM"
-msgstr "L'alarme de la Cultibox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil. <br /><br /><b>Il est à noter que l'alarme coupe toute les prises en cas de déclenchement du seuil configuré.</b>"
+msgstr "L'alarme de la Cultibox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil. <br /><br /><b>Il est à noter que l'alarme coupe toutes les prises en cas de déclenchement du seuil configuré.</b>"
 
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."
