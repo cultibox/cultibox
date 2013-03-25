@@ -406,17 +406,17 @@ function get_data_power($date="",$dateend="",$id=0,&$out) {
       if(strcmp("$id","all")==0) {
          if((!isset($dateend))||(empty($dateend))) {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch = "{$date}" ORDER by time_catch ASC, plug_number ASC
+SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by time_catch ASC, plug_number ASC
 EOF;
          } else {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" 
+SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True")
 EOF;
 }
       } else {
          if((!isset($dateend))||(empty($dateend))) {
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` = "{$id}"   ORDER by time_catch ASC, plug_number ASC
+SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` = "{$id}" ORDER by time_catch ASC, plug_number ASC
 EOF;
       } else {
       $sql = <<<EOF
@@ -444,87 +444,84 @@ EOF;
    }
 
    
-   if(count($res)>0) {
-      $sql = <<<EOF
-SELECT `PLUG_POWER` FROM `plugs` 
+    if(count($res)>0) {
+        $sql = <<<EOF
+SELECT `PLUG_POWER` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True"
 EOF;
-     $db->setQuery($sql);
-     $db->query();
-     $res_power=$db->loadAssocList();
-     $ret=$db->getErrorMsg();
-     if((isset($ret))&&(!empty($ret))) {
+        $db->setQuery($sql);
+        $db->query();
+        $res_power=$db->loadAssocList();
+        $ret=$db->getErrorMsg();
+        if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
             $out[]=__('ERROR_SELECT_SQL').$ret;
          } else {
             $out[]=__('ERROR_SELECT_SQL');
          }
          return 0;
-      }
+        }
 
-      if(!db_priv_end($db)) {
-         $out[]=__('PROBLEM_CLOSING_CONNECTION');
-         return 0;
-      }
+        if(!db_priv_end($db)) {
+            $out[]=__('PROBLEM_CLOSING_CONNECTION');
+            return 0;
+        }
 
         if(strcmp("$id","all")!=0) {
-         if(strcmp($res_power[$id-1]['PLUG_POWER'],"0")==0) {
-            $out[]=__('ERROR_POWER_PRICE_NULL');
-         }
+            if(strcmp($res_power[$id-1]['PLUG_POWER'],"0")==0) {
+                $out[]=__('ERROR_POWER_PRICE_NULL');
+            }
 
-   
-         $tmp=array();
-   
-         foreach($res as $val) {
-               $value=round($val["record"]/10);
-               $tmp[]=array(
+            $tmp=array();
+            foreach($res as $val) {
+                $value=round($val["record"]/10);
+                $tmp[]=array(
                      "timestamp" => $val["timestamp"],
                      "record" => round(($res_power[$id-1]['PLUG_POWER']*$value)/999),
                      "plug_number" => $val["plug_number"],
                      "date_catch" => $val["date_catch"],
                      "time_catch" => $val["time_catch"]
                );
-         }
-         return $tmp;
-       }
-
-      if(count($res_power)==$GLOBALS['NB_MAX_PLUG']) {
-            $nb_plugs=get_configuration("NB_PLUGS",$error);
-            $err=false;
-            for($i=0;$i<$nb_plugs;$i++) {
-                if(strcmp($res_power[$i]['PLUG_POWER'],"0")==0) {
-                    $err=true;
-                }
             }
+            return $tmp;
+        }
 
-            if($err) $out[]=__('ERROR_POWER_PRICE_NULL'); 
 
-            $timestamp=$res[0]['timestamp'];
-            $save=$res[0];
-            $val=0;
-            $tmp=array();
-            for($i=0;$i<count($res);$i++) {
-               if(strcmp($res[$i]['timestamp'],$timestamp)==0) { 
-                  $count=$res[$i]['plug_number']-1;
-                  $pcent=round((int)$res[$i]['record']/10);
-                  $val=$val+($pcent * (int)$res_power[$count]['PLUG_POWER'])/999;
-               } else {
-                 $tmp[] = array (
-                     "timestamp" => "$timestamp",
-                     "record" => round($val),
-                     "plug_number" => $res[$i-1]["plug_number"],
-                     "date_catch" => $save["date_catch"],
-                     "time_catch" => $save["time_catch"]
-                 );
-
-                  $save=$res[$i];
-                  $val=0;
-                  $pcent=0;
-                  $timestamp=$res[$i]['timestamp'];
-                  $i=$i-1;
-               }
+        //For all plugs
+        $err=false;
+        for($i=0;$i<count($res_power);$i++) {
+            if(strcmp($res_power[$i]['PLUG_POWER'],"0")==0) {
+                $err=true;
             }
-            return $tmp;      
-      }
+        }
+
+        if($err) $out[]=__('ERROR_POWER_PRICE_NULL'); 
+
+        $timestamp=$res[0]['timestamp'];
+        $save=$res[0];
+        $val=0;
+        $tmp=array();
+        for($i=0;$i<count($res);$i++) {
+           if(strcmp($res[$i]['timestamp'],$timestamp)==0) { 
+              $count=$res[$i]['plug_number']-1;
+              $pcent=round((int)$res[$i]['record']/10);
+              $val=$val+($pcent * (int)$res_power[$count]['PLUG_POWER'])/999;
+           } else {
+             $tmp[] = array (
+                 "timestamp" => "$timestamp",
+                 "record" => round($val),
+                 "plug_number" => $res[$i-1]["plug_number"],
+                 "date_catch" => $save["date_catch"],
+                 "time_catch" => $save["time_catch"]
+             );
+
+              $save=$res[$i];
+              $val=0;
+              $pcent=0;
+              $timestamp=$res[$i]['timestamp'];
+              $i=$i-1;
+           }
+        }
+        return $tmp;      
    } else {
       return 0;
    } 

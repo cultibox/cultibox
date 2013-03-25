@@ -2,6 +2,9 @@ Cultibox (1.1.11) precise; urgency=low
     + Correction d'erreur d'affichage dans les légendes des graphes des programmes et des logs
     + L'affichage des programmes dans les logs est maintenant synchronisé en fonction du type: les ventilateurs et radiateurs sont synchronisés avec l'affichage des températures par exemple 
     + Correction de typos
+    + Mise en forme des panneaux d'informations et de warning/erreurs
+    + Fusion des deux css cultibox.css et calagan.css en un seul: cultibox.css
+    + L'algorithme de calcul du coût ne prend plus en compte les prises désactivées
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 24 12:28:40 CET 2013
 
