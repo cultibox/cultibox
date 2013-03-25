@@ -5,6 +5,7 @@ Cultibox (1.1.11) precise; urgency=low
     + Mise en forme des panneaux d'informations et de warning/erreurs
     + Fusion des deux css cultibox.css et calagan.css en un seul: cultibox.css
     + L'algorithme de calcul du coût ne prend plus en compte les prises désactivées
+    + Gestion de l'upgrade pour Mac Os X
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 24 12:28:40 CET 2013
 
