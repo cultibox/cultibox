@@ -88,6 +88,10 @@ if(isset($_POST['selected_hdd'])) {
     $_SESSION['selected_hdd']=$_POST['selected_hdd'];
 }
 
+if(isset($_POST['log_search'])) {
+    $_SESSION['log_search']=$_POST['log_search'];
+}
+
 
 
 if($quick_load) {
