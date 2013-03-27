@@ -209,7 +209,7 @@ function get_power_value($file,&$array_line) {
          if(!check_empty_string($buffer)) {
             break;
          } else {
-            $temp = explode("\t", $buffer);
+            $temp=explode("\t", $buffer);
 
             if(count($temp)!=17) {
                return false;
@@ -233,7 +233,7 @@ function get_power_value($file,&$array_line) {
 
 
                   for($i=1;$i<count($temp);$i++) {
-                        if(strcmp($temp[$i],"0000")!=0) {
+                        if((strcmp($temp[$i],"0000")!=0)&&(is_numeric($temp[$i]))) {
                             $array_line[] = array(
                                 "timestamp" => $temp[0],
                                 "power" => $temp[$i],
@@ -246,7 +246,6 @@ function get_power_value($file,&$array_line) {
             }
          }
       }
-
       fclose($handle);
    }
 }

@@ -171,14 +171,13 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
             } else {
                 $chval=check_format_values_program($value_program,"other");
             }
-            $plug_tolerance="1.0";
             if(strcmp("$chval","1")!=0) {
                 $error['value']=$chval; 
             }
         } else {
             $chval="1";
-			$plug_tolerance="0.0";
         }
+        $plug_tolerance="1.0";
 
         if(($chtime)&&(strcmp("$chval","1")==0)) {
             if($chtime==2) {
