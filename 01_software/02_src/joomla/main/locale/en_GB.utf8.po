@@ -1217,10 +1217,10 @@ msgid "TOOLTIP_FORMAT_SD"
 msgstr "The SD card selected will be formated to be compatible with your Cultibox. Plugs files, programs files and configuration files according to your software parameters will be copied in the SD card. Logs and powers files will be also formated. If you have some logs files into your SD card those will be erased.<br /><b><i>Note: </i></b>to be recognize by the Cultibox, your SD card must be formatted with FAT16 filesystem type and so, must not be greater than 2Go"
 
 msgid "TOOLTIP_LOAD_LOG"
-msgstr "This feature will loads logs from your SD card into your software. When you load the logs page only the current month is seeked to complete your database. You can search for more agest logs with this feature which can be configured with the configuration page"
+msgstr "This feature will loads logs from your SD card into your software. When you load the logs page only the last 30 days are seeked to complete your database. You can search for more agest logs with this feature"
 
 msgid "TOOLTIP_RESET_LOG"
-msgstr "This feature will erase all your previous logs recorded into your Cultibox software. You can use it at the end of a culture period, if you don't need your old logs or if you want to increase the data loading process"
+msgstr "This feature will erase all your previous logs recorded into your Cultibox software. You can use it at the end of a culture period, if you don't need your old logs and you wish to free space on your computer"
 
 msgid "TOOLTIP_STATE_PLUG"
 msgstr "You can disabled plugs you don't want to use. The Cultibox software will not show you informations about those disabled plugs"
