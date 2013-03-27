@@ -1220,10 +1220,10 @@ msgid "TOOLTIP_FORMAT_SD"
 msgstr "La carte SD sélectionnée sera rendu compatible Cultibox. Pour cela les fichiers de configuration des prise, des programmes et de la Cultibox seront régénérés en fonction de vos paramêtres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déja présent sur votre carte SD ils seront perdus.<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
 
 msgid "TOOLTIP_LOAD_LOG"
-msgstr "Cette fonctionnalité vous permet de charger vos fichiers de logs, présents sur la carte SD en revenant sur une plus grande période. Lorsque vous chargez la page des logs, seul les logs pour le mois courant sont insérés dans la base de donnée. Avec cette fonctionnalité il est possible de remonter plus loin en arrière en fonction de ce que vous avez choisis dans la partie cofiguration du logiciel."
+msgstr "Cette fonctionnalité vous permet de charger vos fichiers de logs, présents sur la carte SD en revenant sur une plus grande période. Lorsque vous chargez la page des logs, seul les logs pour les 30 derniers jours sont insérés dans la base de donnée. Avec cette fonctionnalité il est possible de remonter plus loin dans le temps"
 
 msgid "TOOLTIP_RESET_LOG"
-msgstr "En cliquant sur ce bouton toutes vos données des logs enregistrés seront supprimé. Cela peut être réalisé à la fin d'une culture, si vos logs ne vous sont plus utiles ou si vous voulez augmenter la rapidité de traitement de vos données par le logiciel"
+msgstr "En cliquant sur ce bouton toutes vos données des logs enregistrés seront supprimées. Cela peut être réalisé à la fin d'une culture, si vos logs ne vous sont plus utiles et que vous souhaitez libérer de l'espace sur votre ordinateur"
 
 msgid "TOOLTIP_STATE_PLUG"
 msgstr "Vous pouvez désactiver les prises que vous ne voulez pas utiliser. Le logiciel n'affichera pas les informations relatives aux prises désactivées"
