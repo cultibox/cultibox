@@ -12,6 +12,7 @@ Cultibox (1.1.11) precise; urgency=low
     + Possibilité de mettre la tolérance à 0
     + Passage de la gestion de la configuration du coût dans l'onglet coût
     + Relooking des erreurs pour les champs des formulaires
+    + Choix du nombre de mois pour l'import des logs transposé dans l'onglet display-logs
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 24 12:28:40 CET 2013
 

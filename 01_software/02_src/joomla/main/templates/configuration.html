@@ -327,20 +327,6 @@ timeFormat: 'hh:mm',
          </select></td>
         <td></td>
    </tr>
-    <tr>
-         <td class="conf-marge"></td>
-         <td><?php echo __('CONFIG_LOG_SEARCH'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_LOG_IMPORT'); ?>" /></td>
-         <td><select name="log_search">
-            <?php foreach($GLOBALS['LOG_SEARCH'] as $value) {
-                if("$value"=="$log_search") {
-                   echo "<option value=\"${value}\" selected>${value}</option>";
-                } else {
-                   echo "<option value=\"${value}\">${value}</option>";
-                }
-            } ?>
-         </select></td>
-        <td></td>
-   </tr>
    <tr>
          <td class="conf-marge"></td>
          <td><?php echo __('CHECK_STATISTICS'); ?>:</td>

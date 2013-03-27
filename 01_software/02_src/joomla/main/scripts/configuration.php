@@ -42,7 +42,6 @@ $alarm_senss=getvar('alarm_senss');
 $update=getvar('update');
 $program="";
 $version=get_configuration("VERSION",$main_error);
-$log_search=getvar("log_search",$main_error);
 $submenu=getvar("submenu",$main_error);
 $stats=getvar("stats",$main_error);
 $second_regul=getvar("second_regul",$main_error);
@@ -197,13 +196,6 @@ if(!empty($alarm_senss)) {
         $update_conf=true;
 } else {
         $alarm_senss = get_configuration("ALARM_SENSS",$main_error);
-}
-
-if(!empty($log_search)) {
-        insert_configuration("LOG_SEARCH","$log_search",$main_error);
-        $update_conf=true;
-} else {
-        $log_search = get_configuration("LOG_SEARCH",$main_error);
 }
 
 

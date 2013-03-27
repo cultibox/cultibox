@@ -155,9 +155,6 @@ msgstr "Humidity"
 msgid "CHECK_UPDATE"
 msgstr "Check automatically if updates are available"
 
-msgid "CONFIG_LOG_SEARCH"
-msgstr "Number of month to search for logs"
-
 msgid "CHECK_STATISTICS"
 msgstr "Send informations to help the Cultibox development"
 
@@ -1216,9 +1213,6 @@ msgstr "Votre installation électrique peut être définie de façon 'standard':
 msgid "TOOLTIP_FORMAT_SD"
 msgstr "The SD card selected will be formated to be compatible with your Cultibox. Plugs files, programs files and configuration files according to your software parameters will be copied in the SD card. Logs and powers files will be also formated. If you have some logs files into your SD card those will be erased.<br /><b><i>Note: </i></b>to be recognize by the Cultibox, your SD card must be formatted with FAT16 filesystem type and so, must not be greater than 2Go"
 
-msgid "TOOLTIP_LOAD_LOG"
-msgstr "This feature will loads logs from your SD card into your software. When you load the logs page only the last 30 days are seeked to complete your database. You can search for more agest logs with this feature"
-
 msgid "TOOLTIP_RESET_LOG"
 msgstr "This feature will erase all your previous logs recorded into your Cultibox software. You can use it at the end of a culture period, if you don't need your old logs and you wish to free space on your computer"
 
@@ -1245,4 +1239,7 @@ msgstr "Plug's regulation depends of data recorded by a sensor. This field confi
 
 msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Be sure to read the help before activating this option. This option is not necessary to regulate humidity or temperature by a plug"
+
+msgid "TOOLTIP_CONFIG_LOG_SEARCH"
+msgstr "During logs page loading, the software saves your logs temperature, humidity and power for the last 30 days. This feature allows you to load eager logs based on the number of months required"
 

@@ -816,7 +816,17 @@ $(function () {
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
-    <td class="log-manage-title"><?php echo __('IMPORT_LOG_TITLE')." ".$log_search." ".__('IMPORT_LAST_MONTH'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_LOAD_LOG'); ?>" /></td>
+    <td class="log-manage-title"><?php echo __('IMPORT_LOG_TITLE')." "; ?>
+        <select name="log_search">
+        <?php foreach($GLOBALS['LOG_SEARCH'] as $value) {
+                if("$value"=="$log_search") {
+                   echo "<option value=\"${value}\" selected>${value}</option>";
+                } else {
+                   echo "<option value=\"${value}\">${value}</option>";
+                }
+            } ?>
+         </select>
+        <?php echo __('IMPORT_LAST_MONTH'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_CONFIG_LOG_SEARCH'); ?>" />
     <td class="log-manage-field"><input type="submit" id="import_log" name="import_log" <?php if((!isset($sd_card))||(empty($sd_card))) { echo "disabled"; ?> value="<?php echo __('NO_IMPORT_LOG'); ?>" <?php } else { ?>value="<?php echo __('IMPORT_LOG'); ?>" <?php } ?>
 ></td>
     <td></td>

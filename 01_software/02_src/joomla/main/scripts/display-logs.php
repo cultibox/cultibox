@@ -65,7 +65,6 @@ $datap="";
 $resume_regul="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
-$log_search=get_configuration("LOG_SEARCH",$main_error);
 $previous=getvar('previous');
 $next=getvar('next');
 $stats=get_configuration("STATISTICS",$main_error);
@@ -75,15 +74,13 @@ $active_plugs=get_active_plugs($nb_plugs,$main_error);
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 
 
-
-
-//Setting some default values
-if((!isset($log_search))||(empty($log_search))) {
-    $log_search=2;
-}
-
-
 //Get values from the waiting page using SESSION variables
+if(isset($_SESSION['log_search'])) {
+   insert_configuration("LOG_SEARCH",$_SESSION['log_search'],$main_error);
+} 
+
+$log_search=get_configuration("LOG_SEARCH",$main_error);
+
 if(isset($_SESSION['select_plug'])) {
    $select_plug=$_SESSION['select_plug'];
 } else {
@@ -184,6 +181,7 @@ unset($_SESSION['select_plug']);
 unset($_SESSION['select_sensor']);
 unset($_SESSION['quick_load']);
 unset($_SESSION['import_log']);
+unset($_SESSION['log_search']);
 unset($reset_log);
 unset($reset_log_power);
 
