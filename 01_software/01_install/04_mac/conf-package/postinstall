@@ -7,7 +7,14 @@ fi
 
 
 echo "Configuring your CultiBox environment:"
-ln -s /Applications/cultibox /Applications/XAMPP
+if [ ! -L /Applications/XAMPP ]; then
+    ln -s /Applications/cultibox /Applications/XAMPP
+fi
+
+if [ -d /Applications/cultibox/cultibox.app ]; then
+    mv /Applications/cultibox/cultibox.app /Applications/
+fi
+
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 

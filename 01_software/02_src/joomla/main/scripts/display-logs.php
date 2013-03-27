@@ -72,6 +72,7 @@ $stats=get_configuration("STATISTICS",$main_error);
 $reset_log=getvar('reset_log');
 $reset_log_power=getvar('reset_log_power');
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
+$second_regul=get_configuration("SECOND_REGUL",$main_error);
 
 
 
@@ -269,7 +270,7 @@ if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
                 if(!empty($log)) {
                   if(db_update_logs($log,$main_error)) {
                     if(strcmp(date('md'),"${mmonth}${dday}")!=0) {
-                        clean_log_file("$sd_card/logs/$mmonth/$dday");
+                        if(!clean_log_file("$sd_card/logs/$mmonth/$dday")) $error_clean_log_file=true; 
                     }
                   }
                   unset($log) ;
@@ -284,7 +285,7 @@ if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
 
                if(!empty($power)) {
                   if(db_update_power($power,$main_error)) {
-                     clean_log_file("$sd_card/logs/$mmonth/pwr_$dday");
+                     if(!clean_log_file("$sd_card/logs/$mmonth/pwr_$dday")) $error_clean_log_file=true;
                   } 
                   unset($power) ;
                   $power = array();
@@ -296,30 +297,38 @@ if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
    }
 }
 
-if(strcmp("$select_power","9990")==0) {
+if(isset($error_clean_log_file)) {
+    $main_error[]=__('ERROR_WRITE_SD');
+}
+
+
+if(strcmp("$second_regul","True")==0) {
+    if(strcmp("$select_power","9990")==0) {
     format_regul_sumary("all",$main_error,$resume_regul,$nb_plugs);
-} else {
-    if((strcmp("$select_power","")!=0)&&(strcmp("$select_plug","")!=0)) {
-        if($select_power<$select_plug) {
-            $first=$select_power;
-            $second=$select_plug;
-        } else {
-            $first=$select_plug;
-            $second=$select_power;
-        }
-
-        format_regul_sumary($first,$main_error,$resume_regul,$nb_plugs);
-        format_regul_sumary($second,$main_error,$resume_regul,$nb_plugs);
     } else {
-        if(strcmp("$select_power","")!=0) {
-            format_regul_sumary($select_power,$main_error,$resume_regul,$nb_plugs);
-        }
+        if((strcmp("$select_power","")!=0)&&(strcmp("$select_plug","")!=0)) {
+            if($select_power<$select_plug) {
+                $first=$select_power;
+                $second=$select_plug;
+            } else {
+                $first=$select_plug;
+                $second=$select_power;
+            }
 
-        if(strcmp("$select_plug","")!=0) {
-            format_regul_sumary($select_plug,$main_error,$resume_regul,$nb_plugs);
+            format_regul_sumary($first,$main_error,$resume_regul,$nb_plugs);
+            format_regul_sumary($second,$main_error,$resume_regul,$nb_plugs);
+        } else {
+            if(strcmp("$select_power","")!=0) {
+                format_regul_sumary($select_power,$main_error,$resume_regul,$nb_plugs);
+            }
+
+            if(strcmp("$select_plug","")!=0) {
+                format_regul_sumary($select_plug,$main_error,$resume_regul,$nb_plugs);
+            }
         }
     }
-}
+} 
+
 
 if(!empty($resume_regul)) {
     $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b></p><br />".$resume_regul;

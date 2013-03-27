@@ -49,7 +49,7 @@ function(){
 <?php if($wizard) { ?>
     <div class="text_info"><?php echo __('WELCOME_TUTO'); ?>:<br /><?php echo __('WELCOME_REQUIEREMENT'); ?></div>
     <br />
-    <p class="p_center"><?php echo __('WELCOME_FOLLOW_LINK'); ?>:</p>
+    <p class="text_info"><?php echo __('WELCOME_FOLLOW_LINK'); ?>:</p>
 <form action="<?php echo($_SERVER['PHP_SELF'])."/wizard"; ?>" method="post"><p class="p_center"><input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>"></p></form>
 <?php } else { ?>
 <hr />

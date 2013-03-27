@@ -6,6 +6,8 @@ Cultibox (1.1.11) precise; urgency=low
     + Fusion des deux css cultibox.css et calagan.css en un seul: cultibox.css
     + L'algorithme de calcul du coût ne prend plus en compte les prises désactivées
     + Gestion de l'upgrade pour Mac Os X
+    + Vérification de la possibilité d'écrire sur la carte SD avant de modifier les fichiers de conf
+    + Le programme selectionné pour modification ne peut plus être déselectionné
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 24 12:28:40 CET 2013
 

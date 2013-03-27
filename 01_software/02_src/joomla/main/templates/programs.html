@@ -96,8 +96,8 @@ timeFormat: 'hh:mm:ss',
 
 Highcharts.setOptions({
 lang: {
-<?php echo "resetZoom : '".__('RESET_ZOOM')."',"; ?>
-<?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE')."'"; ?>
+<?php echo "resetZoom : '".__('RESET_ZOOM','highchart')."',"; ?>
+<?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE','highchart')."'"; ?>
 }
 });
 
@@ -121,14 +121,14 @@ $(document).ready(function() {
                <?php echo "'".__('DRAG_PLOT','highchart')."'"; ?>
       },
       lang: {
-         printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
-         exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART')."',"; ?>
-         downloadPNG : <?php echo "'".__('EXPORT_PNG')."',"; ?>
-         downloadJPEG : <?php echo "'".__('EXPORT_JPEG')."',"; ?>
-         downloadPDF : <?php echo "'".__('EXPORT_PDF')."',"; ?>
-         downloadSVG : <?php echo "'".__('EXPORT_SVG')."',"; ?>
-         resetZoom : <?php echo "'".__('RESET_ZOOM')."',"; ?>
-         resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>
+         printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART','highchart')."',"; ?>
+         exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART','highchart')."',"; ?>
+         downloadPNG : <?php echo "'".__('EXPORT_PNG','highchart')."',"; ?>
+         downloadJPEG : <?php echo "'".__('EXPORT_JPEG','highchart')."',"; ?>
+         downloadPDF : <?php echo "'".__('EXPORT_PDF','highchart')."',"; ?>
+         downloadSVG : <?php echo "'".__('EXPORT_SVG','highchart')."',"; ?>
+         resetZoom : <?php echo "'".__('RESET_ZOOM','highchart')."',"; ?>
+         resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE','highchart')."'"; ?>
       },
       legend: {
             layout: 'vertical',
@@ -229,9 +229,15 @@ $(document).ready(function() {
             ?>
 
         {
-         name: <?php echo "'".clean_popup_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_popup_message($plugs_infos[$plugs['id']-1]['translate']).")',"; ?>
+         <?php if($plugs['id']==$selected_plug) { ?>
+            name: <?php echo "'<b>".clean_popup_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_popup_message($plugs_infos[$plugs['id']-1]['translate']).")</b>',"; ?>
+         <?php } else { ?>
+            name: <?php echo "'".clean_popup_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_popup_message($plugs_infos[$plugs['id']-1]['translate']).")',"; ?>
+         <?php } ?>
          color: <?php echo "'".$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs['id']-1]."'"; ?>,
+         <?php if($plugs['id']!=$selected_plug) { ?>
          showCheckbox: true,
+         <?php } ?>
          
          <?php if($plugs['id']!=$selected_plug) { echo "visible: false,"; } else { echo "selected: true,"; } ?>
          data: [
@@ -325,12 +331,14 @@ $(document).ready(function() {
     </td>
     <td><?php if((isset($error['value']))&&(!empty($error['value']))) echo "<div class='error'>".$error['value']."</div>"; ?></td>
 </tr>
+<?php if(strcmp("$second_regul","True")==0) { ?>
 <tr>
     <td></td>
     <td><?php echo __('VALUE_REGUL_SECOND'); ?>:</td>
     <td><input type="text" name="second_regul_plug" value="<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_REGUL'],"False")==0) { echo __('SECOND_REGUL_OFF'); } else { echo __('SECOND_REGUL_ON'); } ?>" readonly size="10" /></td>
     <td></td>
 </tr>
+<?php } ?>
 <tr>
     <td></td>
     <td><?php echo __('RESET_OLD_PROGRAM'); ?>:</td>

@@ -351,6 +351,16 @@ timeFormat: 'hh:mm',
          </select></td>
         <td></td>
    </tr>
+   <tr>
+         <td class="conf-marge"></td>
+         <td><?php echo __('SECOND_REGUL_ENABLE'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_SECOND_REGUL_ENABLE'); ?>" /></td>
+         <td><select name="second_regul">
+            <option value="True" <?php if(strcmp("$second_regul","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
+            <option value="False" <?php if(strcmp("$second_regul","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
+         </select></td>
+        <td></td>
+   </tr>
+
 
 </table>
 </div>
