@@ -13,6 +13,7 @@ Cultibox (1.1.11) precise; urgency=low
     + Passage de la gestion de la configuration du coût dans l'onglet coût
     + Relooking des erreurs pour les champs des formulaires
     + Choix du nombre de mois pour l'import des logs transposé dans l'onglet display-logs
+    + Le choix min et max pour l'axe Y des puissances dans les logs se fait maintenant comme pour les autres axes directement dans l'onglet log
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 24 12:28:40 CET 2013
 

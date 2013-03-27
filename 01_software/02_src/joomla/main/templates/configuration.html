@@ -297,19 +297,6 @@ timeFormat: 'hh:mm',
         <td></td>
    </tr>
    <tr>
-      <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_POWER_AXIS'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER_AXIS'); ?>" /></td>
-      <td><select name="power_axis">
-         <?php foreach($GLOBALS['LIST_MAX_POWER'] as $value) {
-           if("$value"=="$power_axis") {
-                   echo "<option value=\"${value}\" selected>${value}W</option>";
-           } else {
-                   echo "<option value=\"${value}\">${value}W</option>";
-           }
-      } ?></select></td>
-        <td></td>
-   </tr>
-   <tr>
          <td class="conf-marge"></td>
          <td><?php echo __('CONFIGURE_POPUP'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POPUP'); ?>" /></td>
          <td><select name="pop_up">
