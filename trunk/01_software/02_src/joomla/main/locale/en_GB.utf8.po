@@ -940,7 +940,7 @@ msgstr "License"
 
 # For the errors or warnings part:
 msgid "ERROR_MESSAGE"
-msgstr "Warning"
+msgstr "Warning(s)"
 
 msgid "PROBLEM_CLOSING_CONNECTION"
 msgstr "Problem during the connection close procedure"
