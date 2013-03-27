@@ -152,35 +152,11 @@ msgstr "Temperature"
 msgid "ALARM_HUMI"
 msgstr "Humidity"
 
-msgid "CONFIGURE_COST_PRICE"
-msgstr "Cost of the KW.H"
-
-msgid "CONFIGURE_COST_PRICE_HP"
-msgstr "Configure price for full hours"
-
-msgid "CONFIGURE_COST_PRICE_HC"
-msgstr "Configure price for empty hours"
-
-msgid "COST_STANDARD"
-msgstr "Standard"
-
-msgid "COST_HPC"
-msgstr "Full Hours/Empty Hours"
-
-msgid "CONFIGURE_COST_TYPE"
-msgstr "Configure the type of your power fee"
-
 msgid "CHECK_UPDATE"
 msgstr "Check automatically if updates are available"
 
 msgid "CONFIG_LOG_SEARCH"
 msgstr "Number of month to search for logs"
-
-msgid "CONFIGURE_START_HC"
-msgstr "Fill in the beginning of your empty hours: (HH:MM)"
-
-msgid "CONFIGURE_STOP_HC"
-msgstr "Fill in the end of your empty hours: (HH:MM)"
 
 msgid "CHECK_STATISTICS"
 msgstr "Send informations to help the Cultibox development"
@@ -885,6 +861,30 @@ msgstr "Empty hours start"
 
 msgid "SUMARY_STOP_HC"
 msgstr "Empty hours stop"
+
+msgid "CONFIGURE_COST_TYPE"
+msgstr "Type of your power fee"
+
+msgid "COST_STANDARD"
+msgstr "Standard"
+
+msgid "COST_HPC"
+msgstr "Full Hours/Empty Hours"
+
+msgid "CONFIGURE_COST_PRICE"
+msgstr "Cost of the KW.H"
+
+msgid "CONFIGURE_COST_PRICE_HP"
+msgstr "Price for full hours"
+
+msgid "CONFIGURE_COST_PRICE_HC"
+msgstr "Price for empty hours"
+
+msgid "CONFIGURE_START_HC"
+msgstr "Empty hours start time: (HH:MM)"
+
+msgid "CONFIGURE_STOP_HC"
+msgstr "Empty hours end time: (HH:MM)"
 
 
 # For the historic part:

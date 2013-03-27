@@ -115,7 +115,7 @@
          <td>
             <input type="text" size="4" maxlength="4" name="plug_power<?php echo $i; ?>" value="<?php echo $plug_power{$i}; ?>" onKeypress="return verifInt(event);">W
          </td>
-        <td><?php if((isset($error[$i]['power']))&&(!empty($error[$i]['power']))) echo "<div class='error'>".$error[$i]['power']."</div>"; ?></td>
+        <td><?php if((isset($error[$i]['power']))&&(!empty($error[$i]['power']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error[$i]['power']."</div>"; ?></td>
       </tr>
       <tr>
          <td></td>
@@ -129,7 +129,7 @@
                <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 20%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label>
             </div>
          </td>
-         <td><?php if((isset($error[$i]['tolerance']))&&(!empty($error[$i]['tolerance']))) echo "<div class='error'>".$error[$i]['tolerance']."</div>"; ?></td>
+         <td><?php if((isset($error[$i]['tolerance']))&&(!empty($error[$i]['tolerance']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error[$i]['tolerance']."</div>"; ?></td>
       </tr>
       <tr>
          <td></td>
@@ -214,7 +214,7 @@
       <td></td>
       <td class="regul"><div id="label_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_VALUE'); ?>:</div></td>
       <td><div id="div_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_regul_value{$i}; ?>" name="plug_regul_value<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
-    <td><?php if((isset($error[$i]['regul_value']))&&(!empty($error[$i]['regul_value']))) echo "<div class='error'>".$error[$i]['regul_value']."</div>"; ?></td>
+    <td><?php if((isset($error[$i]['regul_value']))&&(!empty($error[$i]['regul_value']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error[$i]['regul_value']."</div>"; ?></td>
    </tr>
    </table>
 </div>

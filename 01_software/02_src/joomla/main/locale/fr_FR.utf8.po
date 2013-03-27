@@ -152,35 +152,11 @@ msgstr "Température"
 msgid "ALARM_HUMI"
 msgstr "Humidité"
 
-msgid "CONFIGURE_COST_PRICE"
-msgstr "Prix du kilowatt-heure"
-
-msgid "CONFIGURE_COST_PRICE_HP"
-msgstr "Configurer le prix en heure pleine"
-
-msgid "CONFIGURE_COST_PRICE_HC"
-msgstr "Configurer le prix en heure creuse"
-
-msgid "COST_STANDARD"
-msgstr "Standard"
-
-msgid "COST_HPC"
-msgstr "Heure pleine/Heure creuse"
-
-msgid "CONFIGURE_COST_TYPE"
-msgstr "Configurer le type d'abonnement électrique utilisé"
-
 msgid "CHECK_UPDATE"
 msgstr "Vérifier automatiquement la présence de mises à jour"
 
 msgid "CONFIG_LOG_SEARCH"
 msgstr "Nombre de mois sur lesquels rechercher des logs"
-
-msgid "CONFIGURE_START_HC"
-msgstr "Entrez l'heure de début de votre période creuse: (HH:MM)"
-
-msgid "CONFIGURE_STOP_HC"
-msgstr "Entrez l'heure de fin de votre période creuse: (HH:MM)"
 
 msgid "CHECK_STATISTICS"
 msgstr "Envoie d'informations pour aider le développement"
@@ -886,6 +862,30 @@ msgstr "Départ des heures creuses"
 
 msgid "SUMARY_STOP_HC"
 msgstr "Fin des heures creuses"
+
+msgid "CONFIGURE_COST_TYPE"
+msgstr "Type d'abonnement électrique"
+
+msgid "COST_STANDARD"
+msgstr "Standard"
+
+msgid "COST_HPC"
+msgstr "Heures pleine/creuse"
+
+msgid "CONFIGURE_COST_PRICE"
+msgstr "Prix du kilowatt-heure"
+
+msgid "CONFIGURE_COST_PRICE_HP"
+msgstr "Prix en heure pleine"
+
+msgid "CONFIGURE_COST_PRICE_HC"
+msgstr "Prix en heure creuse"
+
+msgid "CONFIGURE_START_HC"
+msgstr "Début des heures creuse: (HH:MM)"
+
+msgid "CONFIGURE_STOP_HC"
+msgstr "Fin des heures creuse: (HH:MM)"
 
 
 # For the historic part:
