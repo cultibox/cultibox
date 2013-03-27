@@ -42,6 +42,7 @@ $main_info[]=__('WIZARD_ENABLE_FUNCTION');
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $selected_error="";
+$second_regul=get_configuration("SECOND_REGUL",$main_error);
 
 
 
@@ -282,10 +283,18 @@ if((isset($sd_card))&&(!empty($sd_card))) {
    // build conf plug array
    $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
    if(count($plugconf)>0) {
-      write_plugconf($plugconf,$sd_card,$main_error);
+      if(!check_sd_card($sd_card)) {
+            $main_error[]=__('ERROR_WRITE_SD_PLUGCONF');
+      } else {
+            write_plugconf($plugconf,$sd_card,$main_error);
+      } 
    }
    //write pluga file
-   write_pluga($sd_card,$main_error);
+   if(!check_sd_card($sd_card)) {
+        $main_error[]=__('ERROR_WRITE_SD_PLUGA');
+   } else {
+        write_pluga($sd_card,$main_error);
+   }
 }
 
 

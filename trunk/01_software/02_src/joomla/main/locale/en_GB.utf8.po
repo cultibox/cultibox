@@ -17,19 +17,19 @@ msgstr "Programs"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
-msgstr "Welcome into the cultibox management software"
+msgstr "Welcome into the Cultibox management software"
 
 msgid "WELCOME_MESSAGE"
-msgstr "This sofware will help you to configure and communicate with your cultibox"
+msgstr "This sofware will help you to configure and communicate with your Cultibox"
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note:</b> if you have the previous version of the cultibox named the GreenBox:"
+msgstr "<b>Note:</b> if you have the previous version of the Cultibox named the GreenBox:"
 
 msgid "WELCOME_REQUIEREMENT"
-msgstr "<ul class='list_class'><li>Remove your old plugs not compatible anymore</li><li>unplugged the Greenbox which can cause interferences with the cultibox</li></ul>"
+msgstr "<ul class='list_class'><li>Remove your old plugs not compatible anymore</li><li>unplugged the Greenbox which can cause interferences with the Cultibox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
-msgstr "Just click on the following link to launch the wizard configuration and begin to manipulate your cultibox"
+msgstr "Just click on the following link to launch the wizard configuration and begin to manipulate your Cultibox"
 
 msgid "WELCOME_WIZARD"
 msgstr "Configuration Wizard"
@@ -183,7 +183,7 @@ msgid "CONFIGURE_STOP_HC"
 msgstr "Fill in the end of your empty hours: (HH:MM)"
 
 msgid "CHECK_STATISTICS"
-msgstr "Send informations to help the cultibox development"
+msgstr "Send informations to help the Cultibox development"
 
 msgid "MANAGE_RESET_SD_CARD"
 msgstr "Format a SD card to be compatible with the Cultibox"
@@ -199,6 +199,9 @@ msgstr "Do you really want to format your SD CARD? Logs and configurations files
 
 msgid "VALID_RESET_SD"
 msgstr "SD card formated successfully"
+
+msgid "SECOND_REGUL_ENABLE"
+msgstr "Enable secondary regulation (Expert user only)"
 
 
 # For the logs part:
@@ -745,7 +748,7 @@ msgstr "Choose the type of your plug: <ul class='list_class'><li>a heating to in
 
 #For the calendar part:
 msgid "TITLE_CALENDAR"
-msgstr "Calendar for the cultibox"
+msgstr "Calendar for the Cultibox"
 
 msgid "LOADING_DATA"
 msgstr "Loading..."
@@ -1080,6 +1083,21 @@ msgstr "Your internet browser doesn't seem to be compatible with the Cultibox so
 msgid "ERROR_REMOTE_SITE"
 msgstr "The software can't check if updates are available, please check your internet connection"
 
+msgid "ERROR_WRITE_SD_PLUGCONF"
+msgstr "Error writing the plug's configuration file on the SD card"
+
+msgid "ERROR_WRITE_PLUGA"
+msgstr "Error writing the plug's address configuration file on the SD card"
+
+msgid "ERROR_WRITE_SD_CONF"
+msgstr "Error writing configuration file on the SD card"
+
+msgid "ERROR_WRITE_CALENDAR"
+msgstr "Error writing calendar on the SD card"
+
+msgid "ERROR_WRITE_PROGRAM"                    
+msgstr "Error writing programs on the SD card"
+
 
 # For the informations part:
 msgid "INFORMATIONS"
@@ -1178,7 +1196,7 @@ msgid "TOOLTIP_LOG_PROGRAM"
 msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la Cultibox et le comportement théorique de la prise."
 
 msgid "TOOLTIP_PLUG_TOLERANCE"
-msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation."
+msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation. Par exemple, si vous avez rentré une valeur de régulation de 22°C pour un chauffage et que la tolérance est de 2°C, le chauffage sera mis en marche/arrêt entre 20°C et 24°C (votre régulation +/- la tolérance)"
 
 msgid "TOOLTIP_PLUG_REGUL"
 msgstr "La régulation secondaire a un fonctionnement compliquée et différent de la régulation principale. Veuillez bien lire la documentation avant de l'activer pour une prise. Si vous désirez piloter une prise pour qu'elle régule une condition climatique, il n'est pas nécéssaire d'activer la régulation secondaire."
@@ -1202,7 +1220,7 @@ msgid "TOOLTIP_LOAD_LOG"
 msgstr "This feature will loads logs from your SD card into your software. When you load the logs page only the current month is seeked to complete your database. You can search for more agest logs with this feature which can be configured with the configuration page"
 
 msgid "TOOLTIP_RESET_LOG"
-msgstr "This feature will erase all your previous logs recorded into your cultibox software. You can use it at the end of a culture period, if you don't need your old logs or if you want to increase the data loading process"
+msgstr "This feature will erase all your previous logs recorded into your Cultibox software. You can use it at the end of a culture period, if you don't need your old logs or if you want to increase the data loading process"
 
 msgid "TOOLTIP_STATE_PLUG"
 msgstr "You can disabled plugs you don't want to use. The Cultibox software will not show you informations about those disabled plugs"
@@ -1224,4 +1242,7 @@ msgstr "Stop time for the cost computation. You can compute the cost of your ins
 
 msgid "TOOLTIP_REGUL_SENSOR"
 msgstr "Plug's regulation depends of data recorded by a sensor. This field configure the sensor to be used."
+
+msgid "TOOLTIP_SECOND_REGUL_ENABLE"
+msgstr "Be sure to read the help before activating this option. This option is not necessary to regulate humidity or temperature by a plug"
 

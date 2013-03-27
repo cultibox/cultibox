@@ -258,7 +258,7 @@ function get_power_value($file,&$array_line) {
 // RET true if the copy is errorless, false else
 function clean_log_file($file) {
    $filetpl = 'main/templates/data/empty_file_big.tpl';
-   if(!copy($filetpl, $file)) return false;
+   if(!@copy($filetpl, $file)) return false;
    return true;
 }
 //}}}
@@ -775,7 +775,20 @@ function save_program_on_sd($sd_card,$program,&$out) {
    if(is_file("${sd_card}/plugv")) {
       $file="${sd_card}/plugv";
       if(count($program)>0) {
-         write_program($program,"$sd_card/plugv",$out);
+         if($f=@fopen("$sd_card/plugv","w+")) {
+            $nbPlug = count($program);
+            while(strlen($nbPlug)<3) {
+                $nbPlug="0$nbPlug";
+            }
+       
+            fputs($f,$nbPlug."\r\n");
+            for($i=0; $i<count($program); $i++) {
+                fputs($f,"$program[$i]"."\r\n");
+            }
+            fclose($f); 
+        } else {
+            return false;
+        }
       }
    } else {
       return false;
@@ -827,7 +840,7 @@ function compare_program($data,$sd_card) {
                while (!feof($handle)) {
                   $buffer = fgets($handle);
                   $buffer=rtrim($buffer);
-                  
+
                   if(!empty($buffer)) {
                      if($nb==0) {
                         if($nbdata!=$buffer) { 
@@ -839,7 +852,7 @@ function compare_program($data,$sd_card) {
                         }  
                      }
                      $nb=$nb+1;
-                  }
+                  } 
                }
                fclose($handle);
             }
@@ -958,7 +971,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       fputs($f,"RTC_OFFSET_:0000\r\n");
       fclose($f);
    } else {
-      $out[]=__('ERROR_WRITE_SD');
+      $out[]=__('ERROR_WRITE_SD_CONF');
       return false;
    }
    return true;
@@ -1009,8 +1022,9 @@ function concat_calendar_entries($data,$month,$day) {
 // IN $sd_card         sd card location
 //    $data            data to write into the sd card
 //    $out             error or warning messages
-// RET none
+// RET false if an error occured, true else
 function write_calendar($sd_card,$data,&$out) {
+   $status=true;
    if(isset($sd_card)&&(!empty($sd_card))) {
       if(count($data)>0) {
          for($month=1;$month<=12;$month++) {
@@ -1040,7 +1054,9 @@ function write_calendar($sd_card,$data,&$out) {
                         fputs($f,"$desc"."\r\n");
                      }
                      fclose($f);
-                  } 
+                  } else {  
+                    $status=false;
+                  }
 
                   if($day==31) {
                      $day="01";
@@ -1051,6 +1067,7 @@ function write_calendar($sd_card,$data,&$out) {
         }
      }
     }
+    return $status;
 }
 //}}}
 
@@ -1097,13 +1114,13 @@ function check_date($datestart="",$dateend="") {
 function check_tolerance_value($type,&$tolerance=0) {
    $tolerance=str_replace(",",".",$tolerance);
    if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
-      if(($tolerance > 0)&&($tolerance <= 10)) {
+      if(($tolerance >= 0)&&($tolerance <= 10)) {
          return true;
       } else {
          return false;
       }
    } else if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
-      if(($tolerance > 0)&&($tolerance <= 25.5)) {
+      if(($tolerance >= 0)&&($tolerance <= 25.5)) {
          return true;
       } else {
          return false;
@@ -1700,5 +1717,21 @@ function check_browser_compat($tab) {
     }
     return true;
 }
+// }}}
+
+
+// {{{ check_sd_card()
+// ROLE check if the soft can write on a sd card
+//  IN      $sd_card        the sd_card path to be checked
+// RET true if we can, false else
+function check_sd_card($sd_card="") {
+    if($f=@fopen("$sd_card/plugv","w+")) {
+       fclose($f);
+       return true;
+   } else {
+       return false;
+   }
+}
+// }}}
 
 ?>

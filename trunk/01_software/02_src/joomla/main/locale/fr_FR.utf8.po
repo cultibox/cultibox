@@ -200,6 +200,9 @@ msgstr "Êtes vous sur de vouloir formater votre carte SD? Tous vos fichiers de 
 msgid "VALID_RESET_SD"
 msgstr "Carte SD formatée avec succès"
 
+msgid "SECOND_REGUL_ENABLE"
+msgstr "Activer la régulation secondaire (Utilisateur expert seulement)"
+
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -743,7 +746,7 @@ msgstr "Choisissez le type de prise à utiliser: <ul class='list_class'><li>un c
 
 #For the calendar part:
 msgid "TITLE_CALENDAR"
-msgstr "Calendrier pour la cultibox"
+msgstr "Calendrier pour la Cultibox"
 
 msgid "LOADING_DATA"
 msgstr "Chargement..."
@@ -981,16 +984,16 @@ msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "Mois à afficher: erreur dans le format (MM)"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "Impossible de trouver une carte SD pour sauvegarder votre configuration. Vérifier que votre carte soit branchée"
+msgstr "Aucune carte SD compatible Cultibox detectée pour sauvegarder votre configuration"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "Impossible de trouver une carte SD valide, pour charger vos fichiers de logs, vérifier que votre carte soit branchée"
+msgstr "Aucune carte SD compatible Cultibox detectée, pour charger vos fichiers de logs"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "Impossible de trouver une carte SD valide, pour sauver votre configuration, vérifier que votre carte soit branchée"
+msgstr "Aucune carte SD compatible Cultibox detectée pour sauvegarder votre configuration"
 
 msgid "ERROR_SD_CARD"
-msgstr "Impossible de trouver une carte SD valide, vérifier que votre carte soit correctement branchée"
+msgstr "Aucune carte SD compatible Cultibox detectée, vérifiez que votre carte soit correctement branchée"
 
 msgid "ERROR_MISSING_VALUE_TIME"
 msgstr "Valeur manquante pour la date de début/fin du programme"
@@ -1056,7 +1059,7 @@ msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
 msgstr "Erreur lors du chargement des données du fichier des programmes, vérifiez que le fichier est au bon format"
 
 msgid "ERROR_REMOTE_UPDATE_FILE"
-msgstr "Impossible d'accéder au fichier des mises à jours, vérifier votre configuration"
+msgstr "Impossible d'accéder au fichier des mises à jours, vérifiez votre configuration"
 
 msgid "ERROR_POWER_PRICE_NULL"
 msgstr "La puissance de certaine de vos prises n'est pas configurée, vous pouvez la configurer: <a href='plugs'>ici</a>"
@@ -1080,7 +1083,22 @@ msgid "ERROR_COMPAT_BROWSER"
 msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez surement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accéssibles. Voici la liste des navigateurs officiellement supportés:<br /><ul class='list_class'><li>Mozilla Firefox (version 3 et supérieure)</li><li>Internet Explorer (version 7 et supérieure)</li><li>Google Chrome (Toutes versions)</li><li>Max Os X Safari (version 5 et supérieure)</li></ul>"
 
 msgid "ERROR_REMOTE_SITE"
-msgstr "Impossible de s'assurer de la présence de mises à jours, vérifier que votre connexion internet fonctionne correctement"
+msgstr "Impossible de s'assurer de la présence de mises à jours, vérifiez que votre connexion internet fonctionne correctement"
+
+msgid "ERROR_WRITE_SD_PLUGCONF"
+msgstr "Erreur lors de l'écriture de la configuration des prises sur la carte SD"
+
+msgid "ERROR_WRITE_SD_PLUGA"
+msgstr "Erreur lors de l'écriture du fichier d'adresse des prises sur la carte SD"
+
+msgid "ERROR_WRITE_SD_CONF"
+msgstr "Erreur lors de l'écriture des fichiers de configuration sur la carte SD"
+
+msgid "ERROR_WRITE_CALENDAR"
+msgstr "Erreur lors de l'écriture du calendrier sur la carte SD"
+
+msgid "ERROR_WRITE_PROGRAM"
+msgstr "Erreur lors de l'écriture des programmes sur la carte SD"
 
 
 # For the informations part:
@@ -1089,7 +1107,7 @@ msgid "INFORMATIONS"
 msgstr "Information(s)"
 
 msgid "INFO_SD_CARD"
-msgstr "Une carte SD compatible cultibox est branchée"
+msgstr "Une carte SD compatible Cultibox est branchée"
 
 msgid "INFO_PLUG_CULTIBOX_CARD"
 msgstr "Vous pouvez maintenant connecter la carte SD dans la Cultibox."
@@ -1113,7 +1131,7 @@ msgid "VALID_RESET_CARD"
 msgstr "Carte formatée avec succée"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la cultibox pour que cela soit effectif si vous avez finis vos paramètrage"
+msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la Cultibox pour que cela soit effectif si vous avez finis vos paramètrage"
 
 msgid "VALID_CURRENT_LOAD_LOG"
 msgstr "Fichiers de logs du mois en cours enregistrées avec succès"
@@ -1181,7 +1199,7 @@ msgid "TOOLTIP_LOG_PROGRAM"
 msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la Cultibox et le comportement théorique de la prise."
 
 msgid "TOOLTIP_PLUG_TOLERANCE"
-msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation."
+msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation. Par exemple, si vous avez rentré une valeur de régulation de 22°C pour un chauffage et que la tolérance est de 2°C, le chauffage sera mis en marche/arrêt entre 20°C et 24°C (votre régulation +/- la tolérance)"
 
 msgid "TOOLTIP_PLUG_REGUL"
 msgstr "La régulation secondaire a un fonctionnement compliquée et différent de la régulation principale. Veuillez bien lire la documentation avant de l'activer pour une prise. Si vous désirez piloter une prise pour qu'elle régule une condition climatique, il n'est pas nécéssaire d'activer la régulation secondaire."
@@ -1199,7 +1217,7 @@ msgid "TOOLTIP_COST_TYPE"
 msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommé."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "La carte SD sélectionnée sera rendu compatible Cultibox. Pour cela les fichiers de configuration des prise, des programmes et de la cultibox seront régénérés en fonction de vos paramêtres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déja présent sur votre carte SD ils seront perdus.<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
+msgstr "La carte SD sélectionnée sera rendu compatible Cultibox. Pour cela les fichiers de configuration des prise, des programmes et de la Cultibox seront régénérés en fonction de vos paramêtres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déja présent sur votre carte SD ils seront perdus.<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
 
 msgid "TOOLTIP_LOAD_LOG"
 msgstr "Cette fonctionnalité vous permet de charger vos fichiers de logs, présents sur la carte SD en revenant sur une plus grande période. Lorsque vous chargez la page des logs, seul les logs pour le mois courant sont insérés dans la base de donnée. Avec cette fonctionnalité il est possible de remonter plus loin en arrière en fonction de ce que vous avez choisis dans la partie cofiguration du logiciel."
@@ -1227,4 +1245,7 @@ msgstr "Date de fin du calcul de coût de votre installation. Vous pouvez calcul
 
 msgid "TOOLTIP_REGUL_SENSOR"
 msgstr "La régulation d'une prise est réalisée en fonction des données relevées par un capteur. Ce champ vous permet de sélectionner ce capteur."
+
+msgid "TOOLTIP_SECOND_REGUL_ENABLE"
+msgstr "Assurez vous de bien avoir lu l'aide avant d'activer cette option. Il n'est pas nécessaire de l'activer pour qu'une prise régule la température ou l'humidité."
 

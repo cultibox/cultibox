@@ -938,7 +938,7 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                $new_value = array(
                   "time_start" => $first['time_start'],
                                                 "time_stop" => $current['time_stop'],
-                                                "value" => $current['time_value']               
+                                                "value" => $current['value']               
                );
                $first['time_start']=$current['time_stop'];
                                         $tmp[]=$new_value;
@@ -1453,6 +1453,7 @@ function optimize_program($arr) {
 //    $out   error or warning message
 // RET an array containing datas
 function create_plugconf_from_database($nb=0,&$out) {
+   $second_regul=get_configuration("SECOND_REGUL",$out);
    if($nb>0) {
       $db = db_priv_start();
       $sql = <<<EOF
@@ -1487,7 +1488,7 @@ EOF;
             }
 
            
-            if(strcmp($data['PLUG_ENABLED'],"True")==0) {
+            if((strcmp($data['PLUG_ENABLED'],"True")==0)&&(strcmp("$second_regul","True")==0)) {
                 if($data['PLUG_TYPE']=="ventilator") {
                     $reg="REG:T+${tol}";
                     $sec="SEC:T+1000";

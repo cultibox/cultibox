@@ -124,7 +124,11 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
 if((isset($sd_card))&&(!empty($sd_card))) {
    $data=create_calendar_from_database($main_error);
    if(count($data)>0) {
-      write_calendar($sd_card,$data,$main_error);
+      if(!check_sd_card($sd_card)) {
+            $main_error[]=__('ERROR_WRITE_CALENDAR');
+      } else {
+            write_calendar($sd_card,$data,$main_error);
+      }
    }
    $main_info[]=__('INFO_SD_CARD').": $sd_card";
 }

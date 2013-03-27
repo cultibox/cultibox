@@ -51,6 +51,7 @@ $start_hc=getvar("start_hc",$main_error);
 $stop_hc=getvar("stop_hc",$main_error);
 $submenu=getvar("submenu",$main_error);
 $stats=getvar("stats",$main_error);
+$second_regul=getvar("second_regul",$main_error);
 
 if(isset($_SESSION['reset_sd_card'])) {
     $reset_sd_card=$_SESSION['reset_sd_card'];
@@ -309,6 +310,15 @@ if((isset($stats))&&(!empty($stats))) {
 } else {
         $stats = get_configuration("STATISTICS",$main_error);
 }
+
+
+if((isset($second_regul))&&(!empty($second_regul))) {
+        insert_configuration("SECOND_REGUL","$second_regul",$main_error);
+        $update_conf=true;
+} else {
+        $second_regul = get_configuration("SECOND_REGUL",$main_error);
+}
+
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {

@@ -57,6 +57,7 @@ $regul_program=getvar("regul_program");
 $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error);
 $cyclic=getvar("cyclic");
 $value_program=getvar('value_program');
+$second_regul=get_configuration("SECOND_REGUL",$main_error);
 
 
 if(isset($cyclic)&&(!empty($cyclic))) {
@@ -400,16 +401,20 @@ for($i=0;$i<$nb_plugs;$i++) {
 
 if((isset($sd_card))&&(!empty($sd_card))) {
       $program=create_program_from_database($main_error);
-      if(!compare_program($program,$sd_card)) {
-         if(((empty($selected_plug))||(!isset($selected_plug)))&&((!isset($reset))||(empty($reset)))) {
-            $main_info[]=__('UPDATED_PROGRAM');
-            $pop_up_message=$pop_up_message.clean_popup_message(__('UPDATED_PROGRAM'));
-            set_historic_value(__('UPDATED_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
-         }
-         save_program_on_sd($sd_card,$program,$main_error);
-      }
-      check_and_copy_firm($sd_card,$main_error);
-      check_and_copy_log($sd_card,$main_error);
+      if(check_sd_card($sd_card)) {
+        if(!compare_program($program,$sd_card)) {
+            if(((empty($selected_plug))||(!isset($selected_plug)))&&((!isset($reset))||(empty($reset)))) {
+                $main_info[]=__('UPDATED_PROGRAM');
+                $pop_up_message=$pop_up_message.clean_popup_message(__('UPDATED_PROGRAM'));
+                set_historic_value(__('UPDATED_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+            }
+            save_program_on_sd($sd_card,$program,$main_error);
+        }
+        check_and_copy_firm($sd_card,$main_error);
+        check_and_copy_log($sd_card,$main_error);
+       } else {
+            $main_error[]=__('ERROR_WRITE_PROGRAM');
+       }
 }
 
 if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
