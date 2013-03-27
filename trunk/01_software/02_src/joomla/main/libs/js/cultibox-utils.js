@@ -8,28 +8,24 @@ function expand(div) {
       var divConfig = document.getElementById('div_user_interface');
       var divSystem = document.getElementById('div_system_interface');
       var divAlarm = document.getElementById('div_alarm_interface');
-      var divCost = document.getElementById('div_cost_interface');
       var divCard = document.getElementById('div_card_interface');
       var divSubmit = document.getElementById('div_submit_interface');
 
       var divLabelConfig = document.getElementById('div_user_label');
       var divLabelSystem = document.getElementById('div_system_label');
       var divLabelAlarm = document.getElementById('div_alarm_label');
-      var divLabelCost = document.getElementById('div_cost_label');
       var divLabelCard = document.getElementById('div_card_label');
 
       switch(div) {
          case 'user_interface' : divConfig.style.display = '';
                                  divSystem.style.display = "none";
                                  divAlarm.style.display = "none";
-                                 divCost.style.display = "none";
                                  divCard.style.display = "none";
                                  divSubmit.style.display = "";
                         
                                  divLabelConfig.style.color = '#777779';
                                  divLabelSystem.style.color = '';
                                  divLabelAlarm.style.color = '';
-                                 divLabelCost.style.color = '';
                                  divLabelCard.style.color = '';
 
                                  /*
@@ -37,7 +33,6 @@ function expand(div) {
                                  divLabelConfig.style.fontSize = "13px";
                                  divLabelSystem.style.fontSize = "12px";
                                  divLabelAlarm.style.fontSize = "12px";
-                                 divLabelCost.style.fontSize = "12px";
                                  */
 
                                  document.configform.submenu.value="user_interface";
@@ -46,14 +41,12 @@ function expand(div) {
          case 'system_interface' : divConfig.style.display = "none";
                                    divSystem.style.display = '';
                                    divAlarm.style.display = "none";
-                                   divCost.style.display = "none";
                                    divCard.style.display = "none";
                                    divSubmit.style.display = "";
 
                                    divLabelConfig.style.color = '';
                                    divLabelSystem.style.color = '#777779';
                                    divLabelAlarm.style.color = '';
-                                   divLabelCost.style.color = '';
                                    divLabelCard.style.color = '';
    
                                    /* 
@@ -61,7 +54,6 @@ function expand(div) {
                                    divLabelConfig.style.fontSize = "12px";
                                    divLabelSystem.style.fontSize = "13px";
                                    divLabelAlarm.style.fontSize = "12px";
-                                   divLabelCost.style.fontSize = "12px";
                                    */
 
                                    document.configform.submenu.value="system_interface";
@@ -70,63 +62,32 @@ function expand(div) {
          case 'alarm_interface' : divConfig.style.display = "none";
                                   divSystem.style.display = "none";
                                   divAlarm.style.display = '';
-                                  divCost.style.display = "none";
                                   divCard.style.display = "none";
                                   divSubmit.style.display = "";
 
                                   divLabelConfig.style.color = '';
                                   divLabelSystem.style.color = '';
                                   divLabelAlarm.style.color = '#777779';
-                                  divLabelCost.style.color = '';
                                   divLabelCard.style.color = '';
-   
                                   /* 
                                   divLabelCard.style.fontSize = "12px";
                                   divLabelConfig.style.fontSize = "12px";
                                   divLabelSystem.style.fontSize = "12px";
                                   divLabelAlarm.style.fontSize = "13px";
-                                  divLabelCost.style.fontSize = "12px";
                                   */
 
                                   document.configform.submenu.value="alarm_interface";
 
                                   break;
-         case 'cost_interface' : divConfig.style.display = "none";
-                                 divSystem.style.display = "none";
-                                 divAlarm.style.display = "none";
-                                 divCost.style.display = '';
-                                 divCard.style.display = "none";
-                                 divSubmit.style.display = "";
-
-                                 divLabelConfig.style.color = '';
-                                 divLabelSystem.style.color = '';
-                                 divLabelAlarm.style.color = '';
-                                 divLabelCost.style.color = '#777779';
-                                 divLabelCard.style.color = '';
-       
-                                 /* 
-                                 divLabelCard.style.fontSize = "12px";
-                                 divLabelConfig.style.fontSize = "12px";
-                                 divLabelSystem.style.fontSize = "12px";
-                                 divLabelAlarm.style.fontSize = "12px";
-                                 divLabelCost.style.fontSize = "13px";
-                                 */
-
-                                 document.configform.submenu.value="cost_interface";
-
-                                 break;
-
          case 'card_interface' : divConfig.style.display = "none";
                                  divSystem.style.display = "none";
                                  divAlarm.style.display = "none";
-                                 divCost.style.display = 'none';
                                  divCard.style.display = "";
                                  divSubmit.style.display = "none";
 
                                  divLabelConfig.style.color = '';
                                  divLabelSystem.style.color = '';
                                  divLabelAlarm.style.color = '';
-                                 divLabelCost.style.color = '';
                                  divLabelCard.style.color = '#777779';
 
                                  /*
@@ -134,7 +95,6 @@ function expand(div) {
                                  divLabelConfig.style.fontSize = "12px";
                                  divLabelSystem.style.fontSize = "12px";
                                  divLabelAlarm.style.fontSize = "12px";
-                                 divLabelCost.style.fontSize = "12px";
                                  */
 
                                  document.configform.submenu.value="card_interface";

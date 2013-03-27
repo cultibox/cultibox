@@ -29,6 +29,7 @@
 </div>
 <br />
 <?php } ?>
+<br />
 
 
 <?php switch($lang) {
@@ -137,20 +138,20 @@ $(function () {
 
 <label class="title_conf"><?php echo __('COST_PRICE_COMPUTE'); ?>:</label>
 <br /><br />
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-cost" method="post">
 
 <table class="table_width">
    <tr>
       <td class="cost-marge"></td>
       <td class="cost-title"><?php echo __('SELECT_START_DAY'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_START_TIME'); ?>" /></td>
       <td class="cost-field"><input id="datepicker_start" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
-      <td><?php if((isset($error['startday']))&&(!empty($error['startday']))) echo "<div class='error'>".$error['startday']."</div>"; ?><?php if((isset($error['interval']))&&(!empty($error['interval']))) echo "<div class='error'>".$error['interval']."</div>"; ?></td>
+      <td><?php if((isset($error['startday']))&&(!empty($error['startday']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['startday']."</div>"; ?><?php if((isset($error['interval']))&&(!empty($error['interval']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['interval']."</div>"; ?></td>
    </tr>
    <tr>
       <td></td>
       <td><?php echo __('SELECT_END_DAY'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_STOP_TIME'); ?>" /></td>
       <td><input id="datepicker_end" name="endday" type="text" class="whitefield" size="10" value="<?php echo $endday; ?>"></td>
-      <td><?php if((isset($error['endday']))&&(!empty($error['endday']))) echo "<div class='error'>".$error['endday']."</div>"; ?></td>
+      <td><?php if((isset($error['endday']))&&(!empty($error['endday']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['endday']."</div>"; ?></td>
    </tr>
    <tr>
       <td></td>
@@ -164,6 +165,48 @@ $(function () {
          </select></td>
      <td></td>
    </tr>
+   <tr>
+      <td></td>
+      <td><?php echo __('CONFIGURE_COST_TYPE'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_TYPE'); ?>" /></td>
+      <td>
+            <select name="cost_type" onChange="getCostType(this.selectedIndex);" onLoad="getCostType(this.selectedIndex);">
+               <option value="standard" <?php if(strcmp($cost_type,"standard")==0) echo "selected"; ?>><?php echo __('COST_STANDARD'); ?></option>
+               <option value="hpc" <?php if(strcmp($cost_type,"hpc")==0) echo "selected"; ?>><?php echo __('COST_HPC'); ?></option>
+            </select>
+      </td>
+      <td></td>
+   </tr>
+   <tr>
+      <td></td>
+      <td><label id="cost_label_standard" style="<?php if(strcmp($cost_type,'standard')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_PRICE'); ?>" /></label><label id="cost_label_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HP'); ?>:</label></td>
+      <td><label id="cost_input_standard" style="<?php if(strcmp($cost_type,'standard')!=0) echo 'display:none'; ?>">
+        <input type="text" size="6" maxlength="6" name="cost_price" value="<?php echo "$cost_price"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp($cost_type,'standard')==0) { if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; }} ?></label>
+        <label id="cost_input_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="6" maxlength="6" name="cost_price_hp" value="<?php echo "$cost_price_hp"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?></label>
+      </td>
+    <td><?php if((isset($error['cost']))&&(!empty($error['cost']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['cost']."</div>"; ?><?php if((isset($error['price_hp']))&&(!empty($error['price_hp']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['price_hp']."</div>"; ?></td>
+   </tr>
+   <tr>
+      <td></td>
+      <td><label id="cost_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HC'); ?>:</label></td>
+      <td><label id="cost_input_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="6" maxlength="6" name="cost_price_hc" value="<?php echo "$cost_price_hc"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?></label></td>
+     <td><?php if((isset($error['price_hc']))&&(!empty($error['price_hc']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['price_hc']."</div>"; ?></td>
+   </tr>
+   <tr>
+      <td></td>
+      <td><label id="start_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_START_HC'); ?></label></td>
+      <td>
+            <label id="start_value_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" maxlength="5" size="5" name="start_hc" id="start_hc" <?php if((isset($start_hc))&&(!empty($start_hc))) { ?> value="<?php echo $start_hc; ?>" <?php } else { ?> value="00:00" <?php } ?> /></label>
+      </td>
+      <td><?php if((isset($error['start_hc']))&&(!empty($error['start_hc']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['start_hc']."</div>"; ?></td>
+   </tr>
+    <tr>
+      <td></td>
+      <td><label id="stop_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_STOP_HC'); ?></label></td>
+      <td>
+            <label id="stop_value_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" maxlength="5" size="5" name="stop_hc" id="stop_hc" <?php if((isset($stop_hc))&&(!empty($stop_hc))) { ?> value="<?php echo $stop_hc; ?>" <?php } else { ?> value="00:00" <?php } ?> /></label>
+      </td>
+     <td><?php if((isset($error['stop_hc']))&&(!empty($error['stop_hc']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['stop_hc']."</div>"; ?></td>
+   </tr>
 </table>
 <br />
 <p class="p_center"><INPUT type="submit" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);"></p>
@@ -171,6 +214,7 @@ $(function () {
 <hr />
 <br />
 
+<label id="anchor-cost"></label>
 <table class="table_width">
 <tr>
     <td></td><td><img src="main/libs/img/resume.png" alt="" class="info-bulle-css" title="<?php echo $resume; ?>" /></td>

@@ -130,13 +130,13 @@ timeFormat: 'hh:mm:ss',
       <td class="wizard-marge-td"></td>
       <td class="wizard-title"><input type="hidden" name="program" value="program"><?php echo __('START_TIME_PROGRAM'); ?>:</td>
       <td class="wizard-field"><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td>
-      <td><?php if((isset($error['start_time']))&&(!empty($error['start_time']))) echo "<div class='error'>".$error['start_time']."</div>"; ?></td>
+      <td><?php if((isset($error['start_time']))&&(!empty($error['start_time']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['start_time']."</div>"; ?></td>
     </tr>
     <tr>
       <td></td>
       <td><?php echo __('END_TIME_PROGRAM'); ?>:</td>
       <td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td>
-      <td><?php if((isset($error['end_time']))&&(!empty($error['end_time']))) echo "<div class='error'>".$error['end_time']."</div>"; ?></td>
+      <td><?php if((isset($error['end_time']))&&(!empty($error['end_time']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['end_time']."</div>"; ?></td>
     </tr>
       <?php if(strcmp($plug_type,"lamp")!=0) { ?>
    <tr>
@@ -150,7 +150,7 @@ timeFormat: 'hh:mm:ss',
                                } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { 
                                       echo 'value="55"';  } ?>/><?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo " °C"; } else { echo " %"; } ?>
     </td>
-    <td><?php if((isset($error['value']))&&(!empty($error['value']))) echo "<div class='error'>".$error['value']."</div>"; ?></td>
+    <td><?php if((isset($error['value']))&&(!empty($error['value']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['value']."</div>"; ?></td>
     </tr>
 <?php } } ?>
 </table>

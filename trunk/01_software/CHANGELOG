@@ -10,6 +10,8 @@ Cultibox (1.1.11) precise; urgency=low
     + Le programme selectionné pour modification ne peut plus être déselectionné
     + Correction des requettes d'import des valeurs 'power': on vérufie que c'est bien un type numérique avant l'import
     + Possibilité de mettre la tolérance à 0
+    + Passage de la gestion de la configuration du coût dans l'onglet coût
+    + Relooking des erreurs pour les champs des formulaires
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 24 12:28:40 CET 2013
 

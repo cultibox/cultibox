@@ -28,6 +28,12 @@ __('LANG');
 // ================= VARIABLES ================= //
 $startday=getvar('startday');
 $endday=getvar('endday');
+$cost_price=getvar('cost_price');
+$cost_price_hp=getvar('cost_price_hp');
+$cost_price_hc=getvar('cost_price_hc');
+$cost_type=getvar('cost_type');
+$start_hc=getvar("start_hc",$main_error);
+$stop_hc=getvar("stop_hc",$main_error);
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $price=get_configuration("COST_PRICE",$main_error);
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
@@ -38,7 +44,6 @@ $pop_up="";
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
-$cost_type=get_configuration("COST_TYPE",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
 $resume="";
@@ -86,6 +91,97 @@ $endday=str_replace(' ','',"$endday");
 
 //Get and format resume for cost configuration
 $resume=get_cost_summary($main_error);
+
+
+//Save cost configuration or retrieve it:
+if(!empty($cost_type)) {
+        insert_configuration("COST_TYPE","$cost_type",$main_error);
+} else {
+        $cost_type = get_configuration("COST_TYPE",$main_error);
+}
+
+if(!empty($cost_price)||("$cost_price"=="0")) {
+         $cost_price=str_replace(",",".","$cost_price");
+         if(check_numeric_value("$cost_price")) {
+            insert_configuration("COST_PRICE","$cost_price",$main_error);
+         } else {
+            $cost_price = get_configuration("COST_PRICE",$main_error);
+            $error['cost']=__('ERROR_PRICE_VALUE');
+            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['cost']);
+            $submenu="cost_interface";
+         }
+} else {
+        $cost_price = get_configuration("COST_PRICE",$main_error);
+}
+
+
+if(!empty($cost_price_hc)||("$cost_price_hc"=="0")) {
+         $cost_price_hc=str_replace(",",".","$cost_price_hc");
+         if(check_numeric_value("$cost_price_hc")) {
+            insert_configuration("COST_PRICE_HC","$cost_price_hc",$main_error);
+         } else {
+            $cost_price_hc = get_configuration("COST_PRICE_HC",$main_error);
+            $error['price_hc']=__('ERROR_PRICE_VALUE_HC');
+            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hc']);
+            $submenu="cost_interface";
+         }
+} else {
+        $cost_price_hc = get_configuration("COST_PRICE_HC",$main_error);
+}
+
+if(!empty($cost_price_hp)||("$cost_price_hp"=="0")) {
+         $cost_price_hp=str_replace(",",".","$cost_price_hp");
+         if(check_numeric_value("$cost_price_hp")) {
+            insert_configuration("COST_PRICE_HP","$cost_price_hp",$main_error);
+         } else {
+            $cost_price_hp = get_configuration("COST_PRICE_HP",$main_error);
+            $error['price_hp']=__('ERROR_PRICE_VALUE_HP');
+            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hp']);
+            $submenu="cost_interface";
+         }
+} else {
+        $cost_price_hp = get_configuration("COST_PRICE_HP",$main_error);
+}
+
+
+if((isset($start_hc))&&(!empty($start_hc))) {
+        if(strlen($start_hc)==4) {
+                $start_hc="0$start_hc";
+        }
+
+        if((strlen($start_hc)==5)&&(preg_match('#^[0-9][0-9]:[0-9][0-9]$#', $start_hc))) {
+                insert_configuration("START_TIME_HC","$start_hc",$main_error);
+        } else {
+                $start_hc = get_configuration("START_TIME_HC",$main_error);
+                $error['start_hc']=__('ERROR_TIME_VALUE');
+                $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['start_hc']);
+                $submenu="cost_interface";
+        }
+} else {
+        $start_hc = get_configuration("START_TIME_HC",$main_error);
+}
+
+
+if((isset($stop_hc))&&(!empty($stop_hc))) {
+        if(strlen($stop_hc)==4) {
+                $stop_hc="0$stop_hc";
+        }
+
+        if((strlen($stop_hc)==5)&&(preg_match('#^[0-9][0-9]:[0-9][0-9]$#', $stop_hc))) {
+                insert_configuration("STOP_TIME_HC","$stop_hc",$main_error);
+        } else {
+                $stop_hc = get_configuration("STOP_TIME_HC",$main_error);
+                $error['stop_hc']=__('ERROR_TIME_VALUE');
+                $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['stop_hc']);
+                $submenu="cost_interface";
+        }
+} else {
+        $stop_hc = get_configuration("STOP_TIME_HC",$main_error);
+}
+
+
+
+
 
 
 //Checking value entered by user before performing actions

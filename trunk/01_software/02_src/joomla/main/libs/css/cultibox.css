@@ -9,6 +9,16 @@
     color: red;
 }
 
+.error_field {
+    color: red;
+    border-radius:22px;
+    background:#E3DDD1;
+    margin:auto;
+    padding:2px;
+    display:block;
+    vertical-align:middle;
+}
+
 #compat {
     background-color: #F30921;
     padding:4px 7px;
@@ -199,7 +209,7 @@ td.cost-title {
 }
 
 td.cost-field {
-   width: 25%;
+   width: 18%;
 }
 
 td.wizard-marge-submit {
@@ -391,8 +401,6 @@ option:focus{background: #ee986e;}
     padding:9px;
     border-radius:22px;
     width:90%;
-    background:#F5EE31;
-    background:#e5dd2e;
     background:#E3DDD1;
     display:block;
     margin-bottom:5px;

@@ -78,7 +78,7 @@ buttonImageOnly: 'true',
       <td class="log-marge-day"></td>
       <td class="log-marge-day-title"><?php echo __('SELECT_DAY'); ?>:</td>
       <td class="log-marge-day-field"><input id="datepicker" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
-      <td><?php if((isset($error['startday']))&&(!empty($error['startday']))) echo "<div class='error'>".$error['startday']."</div>"; ?></td>
+      <td><?php if((isset($error['startday']))&&(!empty($error['startday']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['startday']."</div>"; ?></td>
    </tr>
    <tr>
       <td></td>
@@ -164,7 +164,7 @@ buttonImageOnly: 'true',
                   echo "</select>";
             } ?>
       </td>
-	  <td><?php if((isset($error['startmonth']))&&(!empty($error['tartmonth']))) echo "<div class='error'>".$error['startmonth']."</div>"; ?></td> 
+	  <td><?php if((isset($error['startmonth']))&&(!empty($error['tartmonth']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['startmonth']."</div>"; ?></td> 
    </tr>
    <tr>
       <td></td>
