@@ -8,6 +8,7 @@ Cultibox (1.1.11) precise; urgency=low
     + Gestion de l'upgrade pour Mac Os X
     + Vérification de la possibilité d'écrire sur la carte SD avant de modifier les fichiers de conf
     + Le programme selectionné pour modification ne peut plus être déselectionné
+    + Correction des requettes d'import des valeurs 'power': on vérufie que c'est bien un type numérique avant l'import
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 24 12:28:40 CET 2013
 

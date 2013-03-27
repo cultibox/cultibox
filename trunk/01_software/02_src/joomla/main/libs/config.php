@@ -37,7 +37,7 @@ $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'] = array('#0033CC','#FF0000', '#336600', '
 $GLOBALS['LIST_SUBJECT_CALENDAR'] = array('Beginning','Fertilizers', 'Water', 'Bloom','Harvest','Other');
 
 //To print debug trace:
-$GLOBALS['DEBUG_TRACE'] = false;
+$GLOBALS['DEBUG_TRACE'] = true;
 
 // Definition of the plugs addresses default values:
 $GLOBALS['PLUGA_DEFAULT'] = array('000', '247', '222', '219', '215', '207', '252', '250', '246', '238', '187', '183', '189', '125', '123','119');
