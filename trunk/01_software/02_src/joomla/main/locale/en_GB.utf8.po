@@ -116,9 +116,6 @@ msgstr "Black"
 msgid "COLOR_PURPLE"
 msgstr "Purple"
 
-msgid "CONFIGURE_POWER_AXIS"
-msgstr "Configure maximal axis value for power graphics"
-
 msgid "YES"
 msgstr "Yes"
 
@@ -1185,9 +1182,6 @@ msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox con
 
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
-
-msgid "TOOLTIP_POWER_AXIS"
-msgstr "Tihis option configures the mximal value for the power consumed Y-axis graphics."
 
 msgid "TOOLTIP_LOG_PROGRAM"
 msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la Cultibox et le comportement théorique de la prise."

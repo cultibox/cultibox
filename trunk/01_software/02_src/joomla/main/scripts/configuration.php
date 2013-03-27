@@ -31,7 +31,6 @@ $lang=getvar('lang');
 $update_conf=false;
 $temp_axis=getvar('temp_axis');
 $hygro_axis=getvar('hygro_axis');
-$power_axis=getvar('power_axis');
 $pop_up=getvar('pop_up');
 $pop_up_message="";
 $pop_up_error_message="";
@@ -122,14 +121,6 @@ if((isset($color_cost))&&(!empty($color_cost))) {
    $update_conf=true;
 } else {
    $color_cost = get_configuration("COLOR_COST_GRAPH",$main_error);
-}
-
-
-if((isset($power_axis))&&(!empty($power_axis))) {
-        insert_configuration("LOG_POWER_AXIS",$power_axis,$main_error);
-        $update_conf=true;
-} else {
-        $power_axis = get_configuration("LOG_POWER_AXIS",$main_error);
 }
 
 

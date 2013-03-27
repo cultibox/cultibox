@@ -116,9 +116,6 @@ msgstr "Noir"
 msgid "COLOR_PURPLE"
 msgstr "Violet"
 
-msgid "CONFIGURE_POWER_AXIS"
-msgstr "Valeur maximale de l'axe de puissance pour les graphes"
-
 msgid "YES"
 msgstr "Oui"
 
@@ -385,6 +382,12 @@ msgstr "Température"
 msgid "SUMARY_REGUL_HYGRO"
 msgstr "Hygrométrie"
 
+msgid "CONFIGURE_Y_AXIS_LOG"
+msgstr "Réglage de l'axe des ordonnées les logs"
+
+msgid "CONFIGURE_Y_AXIS_POWER"
+msgstr "Réglage de l'axe des ordonnées la puissance"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -427,7 +430,7 @@ msgid "POWER_PLUG"
 msgstr "Puissance consommée par l'élément (en Watt)"
 
 msgid "ENABLE_REGUL_PLUG"
-msgstr "Régulation secondaire de la prise (utilisateur expert seulement)"
+msgstr "Régulation secondaire (utilisateur expert seulement)"
 
 msgid "CONFIGURE_REGUL_SENSOR"
 msgstr "Capteur utilisé pour la régulation"
@@ -1188,9 +1191,6 @@ msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox con
 
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
-
-msgid "TOOLTIP_POWER_AXIS"
-msgstr "Cette option configure la valeur maximale de l'axe des ordonnées du graphique des puissances consommées."
 
 msgid "TOOLTIP_LOG_PROGRAM"
 msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la Cultibox et le comportement théorique de la prise."

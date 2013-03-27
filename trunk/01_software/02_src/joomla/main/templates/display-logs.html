@@ -299,8 +299,7 @@ $(function () {
                      color: <?php echo "'".$color_power."'"; ?>
                   }
                },
-               min: 0,
-               max: <?php echo "$power_axis"; ?>,
+               min: 0
             }
             <?php } ?>
 
@@ -701,6 +700,39 @@ $(function () {
             }
         }
     });
+
+
+      $('#min_y_axis_power').change(function() {
+        for(var i=0;i<chart.yAxis.length;i++) {
+            if($(this).val()!="") {
+                var extremes = chart.yAxis[i].getExtremes();
+                if(extremes.min<$(this).val()) {
+                    if(chart.axes[0].series[i].type=='spline') {
+                        chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+                        chart.showResetZoom();
+                        //console.log(chart);
+                    }
+                }
+            }
+        }
+    });
+
+
+      $('#max_y_axis_power').change(function() {
+        for(var i=0;i<chart.yAxis.length;i++) {
+            if($(this).val()!="") {
+                var extremes = chart.yAxis[i].getExtremes();
+                if(extremes.min<$(this).val()) {
+                    if(chart.axes[0].series[i].type=='spline') {
+                        chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+                        chart.showResetZoom();
+                        //console.log(chart);
+                    }
+                }
+            }
+        }
+    });
+
     
 });
 
@@ -778,8 +810,34 @@ $(function () {
         <?php } ?>
     </td>
 </tr>
+</table>
+
+<table class="table_width">
 <tr>
     <td></td>
+    <td><p class="p_center"><?php echo __('CONFIGURE_Y_AXIS_POWER'); ?>:</p></td>
+    <td><p class="p_center"><?php echo __('CONFIGURE_Y_AXIS_LOG'); ?>:</p></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td>
+        <p class="p_center">
+        <select id="min_y_axis_power">
+            <option value=""><?php echo __('MIN_Y_AXIS_LOG'); ?></option>
+            <?php foreach($GLOBALS['LIST_MAX_POWER'] as $val) {  ; ?>
+               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
+            <?php } ?>
+        </select>
+        &nbsp;&nbsp;
+        <select id="max_y_axis_power">
+            <option value=""><?php echo __('MAX_Y_AXIS_LOG'); ?></option>
+            <?php foreach($GLOBALS['LIST_MAX_POWER'] as $val) {  ; ?>
+               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
+            <?php } ?>
+        </select>
+        </p>
+    </td>
     <td>
         <p class="p_center">
         <select id="min_y_axis">
