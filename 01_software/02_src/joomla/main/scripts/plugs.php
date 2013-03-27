@@ -262,9 +262,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_sensor{$nb}=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
 
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
-   if($plug_tolerance{$nb}==0) {
-      $plug_tolerance{$nb}="1.0";
-   }
 }
 
 if((!empty($selected_error))&&(strcmp("$selected_plug","all")!=0)) { 
