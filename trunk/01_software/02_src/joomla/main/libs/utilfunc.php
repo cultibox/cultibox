@@ -1721,10 +1721,10 @@ function check_browser_compat($tab) {
 
 // {{{ check_sd_card()
 // ROLE check if the soft can write on a sd card
-//  IN      $sd_card        the sd_card path to be checked
+//  IN      $sd        the sd_card path to be checked
 // RET true if we can, false else
-function check_sd_card($sd_card="") {
-    if($f=@fopen("$sd_card/plugv","w+")) {
+function check_sd_card($sd="") {
+    if($f=fopen("$sd/plugv","w+")) {
        fclose($f);
        return true;
    } else {

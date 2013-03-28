@@ -151,10 +151,6 @@ if(!empty($reset_log_power)) {
 }
 
 
-export_table_csv("logs",$main_error);
-
-
-
 if((isset($export_log))&&(!empty($export_log))) {
      export_table_csv("logs",$main_error);
      $file="tmp/logs.csv";
@@ -263,82 +259,72 @@ $power=array();
 $load_log=false;
 
 if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
-   // Workaround to avoid timeout (60s)
-   // Search only on two previous months
-
-   if((isset($import_log))&&(!empty($import_log))) {
-    $ListMonthSearch=array();
-    $MonthSearch = date('n');
-    $ListMonthSearch[]=$MonthSearch;
-
-    $i=1;
-    while($i<$log_search) {
-        $MonthSearch=$MonthSearch-1;
-        if($MonthSearch<1) {
-            $MonthSearch=12;
-        }
-        $ListMonthSearch[]=$MonthSearch;  
-        $i=$i+1;
+    // Workaround to avoid timeout (60s)
+    // Search only on 31 previous days
+    $monthSearch = date('n');
+    $daySearch= date('j');
+    if((isset($import_log))&&(!empty($import_log))) {
+        $nb_days=31*$log_search;
+    } else {
+        $nb_days=31;
     }
+    $count=0;
 
-   } else {
-        $ListMonthSearch[]=date('m'); 
-        $_SESSION['loaded']=true;
-   }
+    while($count!=$nb_days) {
+        if(strlen($daySearch)<2) {
+            $dday="0".$daySearch;
+        } else {
+            $dday=$daySearch;
+        }
 
+        if(strlen($monthSearch)<2) {
+            $mmonth="0".$monthSearch;
+        } else {
+            $mmonth=$monthSearch;
+        }
 
-   // Foreach months present in the array search logs and power
-   foreach ($ListMonthSearch as $month) {       
-        for ($day = 1; $day <= 31; $day++) {
-      
-         // Don't search for nexts days
-         if ($month != date('n') || $day <= date('j') ) {
-            // Convert date to be equivalent of directory
-             if(strlen($day)<2) {
-               $dday="0".$day;
-             } else {
-               $dday=$day;
-             }
-            if(strlen($month)<2) {
-                  $mmonth="0".$month;
-            } else {
-               $mmonth=$month;
-             }
+        // Search if file exists
+        if(file_exists("$sd_card/logs/$mmonth/$dday")) {
+            // get log value
+            if(is_file("$sd_card/logs/$mmonth/$dday")) {
+                get_log_value("$sd_card/logs/$mmonth/$dday",$log);
+            }
 
-            // Search if file exists
-            if(file_exists("$sd_card/logs/$mmonth/$dday")) {
-                // get log value
-               if(is_file("$sd_card/logs/$mmonth/$dday")) {
-                  get_log_value("$sd_card/logs/$mmonth/$dday",$log);
-               }
-                if(!empty($log)) {
-                  if(db_update_logs($log,$main_error)) {
+            if(!empty($log)) {
+                if(db_update_logs($log,$main_error)) {
                     if(strcmp(date('md'),"${mmonth}${dday}")!=0) {
                         if(!clean_log_file("$sd_card/logs/$mmonth/$dday")) $error_clean_log_file=true; 
                     }
-                  }
-                  unset($log) ;
-                  $log = array();
-                  $load_log=true;
-               }
-
-               // get power values
-               if(is_file("$sd_card/logs/$mmonth/pwr_$dday")) {
-                  get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);
-               }
-
-               if(!empty($power)) {
-                  if(db_update_power($power,$main_error)) {
-                     if(!clean_log_file("$sd_card/logs/$mmonth/pwr_$dday")) $error_clean_log_file=true;
-                  } 
-                  unset($power) ;
-                  $power = array();
-                  $load_log=true;
-               }
+                }
+                unset($log) ;
+                $log = array();
+                $load_log=true;
             }
-         }
+
+            // get power values
+            if(is_file("$sd_card/logs/$mmonth/pwr_$dday")) {
+                get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);
+            }
+
+            if(!empty($power)) {
+                if(db_update_power($power,$main_error)) {
+                    if(!clean_log_file("$sd_card/logs/$mmonth/pwr_$dday")) $error_clean_log_file=true;
+                } 
+                unset($power) ;
+                $power = array();
+                $load_log=true;
+            }
         }
-   }
+        $count=$count+1;
+        $daySearch=$daySearch-1;
+        if($daySearch==0) {
+            $daySearch=31;
+            $monthSearch=$monthSearch-1;
+            if($monthSearch==0) {
+                $monthSearch=12;
+            }
+        } 
+    }
 }
 
 if(isset($error_clean_log_file)) {
@@ -395,7 +381,37 @@ if($load_log) {
        $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_CURRENT_LOAD_LOG'));       
        set_historic_value(__('VALID_CURRENT_LOAD_LOG')." (".__('LOGS_PAGE').")","histo_info",$main_error);
    }
-} 
+
+
+    if($nb_days==31) {
+        if(strlen($daySearch)<2) {
+            $dday="0".$daySearch;
+        } else {
+            $dday=$daySearch;
+        }
+
+        if(strlen($monthSearch)<2) {
+            $mmonth="0".$monthSearch;
+        } else {
+            $mmonth=$monthSearch;
+        }
+
+        get_log_value("$sd_card/logs/$mmonth/$dday",$log);
+        if(!empty($log)) {
+            $main_info[]=__('STILL_LOG_FILE');
+            $pop_up_message=$pop_up_message.clean_popup_message(__('STILL_LOG_FILE'));
+            unset($log);
+        } else {
+            get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);
+            if(!empty($power)) {
+                $main_info[]=__('STILL_LOG_FILE');
+                $pop_up_message=$pop_up_message.clean_popup_message(__('STILL_LOG_FILE'));
+                unset($power);
+            }
+        }
+    }
+}
+
 
 
 //Checking values entered by user:

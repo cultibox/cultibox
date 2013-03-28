@@ -21,13 +21,6 @@ include($this['path']->path('layouts:template.config.php'));
 	require_once 'main/libs/config.php'; 
 	require_once 'main/libs/db_common.php'; 
 	require_once 'main/libs/utilfunc.php'; 
-
-    $main_error=array();
-    $main_info=array();
-    $lang=get_configuration("LANG",$main_error);
-    set_lang($lang);
-    $_SESSION['LANG'] = get_current_lang();
-    __('LANG');
 ?>
          <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css" />
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" /> 
@@ -197,7 +190,7 @@ include($this['path']->path('layouts:template.config.php'));
                      <!-- Displays version and license for the software at the footer -->
                   <?php 
                         $error="";
-                        echo __('VERSION')." ".get_configuration("VERSION",$error)."&nbsp;-&nbsp;".__('LICENSE')."&nbsp;LGPL<br />";
+                        echo "v".get_configuration("VERSION",$error)."&nbsp;&nbsp;LGPL<br />";
                   ?>    
                   </p>
 	               <br /><br />	

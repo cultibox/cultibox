@@ -168,22 +168,22 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 --
 
 INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_POWER_MAX`, `PLUG_REGUL`, `PLUG_REGUL_SENSOR`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_ENABLED`) VALUES
-(1, '', 'plug1', 'other', NULL, 1.0, '3500', 'False', '1', 'T', '+', 35.0,'True'),
-(2, '', 'plug2', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(3, '', 'plug3', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(4, '', 'plug4', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(5, '', 'plug5', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(6, '', 'plug6', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(7, '', 'plug7', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(8, '', 'plug8', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(9, '', 'plug9', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(10, '', 'plug10', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(11, '', 'plug11', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(12, '', 'plug12', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(13, '', 'plug13', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(14, '', 'plug14', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(15, '', 'plug15', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(16, '', 'plug16', 'other', NULL, 1.0, '1000', 'False', '1', 'T', '+', 35.0,'True');
+(1, '', 'prise1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,'True'),
+(2, '', 'prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(3, '', 'prise3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(4, '', 'prise4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(5, '', 'prise5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(6, '', 'prise6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(7, '', 'prise7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(8, '', 'prise8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(9, '', 'prise9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(10, '', 'prise10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(11, '', 'prise11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(12, '', 'prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(13, '', 'prise13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(14, '', 'prise14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(15, '', 'prise15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(16, '', 'prise16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True');
 
 -- --------------------------------------------------------
 

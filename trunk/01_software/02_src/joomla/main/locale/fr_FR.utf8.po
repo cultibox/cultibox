@@ -1150,7 +1150,7 @@ msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la Cultibox pour que cela soit effectif si vous avez finis vos paramètrage"
 
 msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "Fichiers de logs du mois en cours enregistrées avec succès"
+msgstr "Fichiers de logs des 31 derniers jours enregistrées avec succès"
 
 msgid "VALID_LOAD_LOG"
 msgstr "Fichiers de logs des derniers mois enregistrées avec succès"
@@ -1175,6 +1175,9 @@ msgstr "Vos programmes n'était pas à jour sur votre carte, la mise à jour à 
 
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "Une mise à jour est disponible pour passer à la version: "
+
+msgid "STILL_LOG_FILE"
+msgstr "Il reste des fichiers de logs plus ancien à charger, pour cela utilisez le bouton 'importer les logs'"
 
 # For the tooltip part:
 

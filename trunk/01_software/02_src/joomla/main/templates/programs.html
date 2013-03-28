@@ -92,6 +92,10 @@ timeFormat: 'hh:mm:ss',
 </script>
 
 <script type="text/javascript">
+plugs_infoJS = <?php echo json_encode($plugs_infos) ?>;
+</script>
+
+<script type="text/javascript">
 
 Highcharts.setOptions({
 lang: {
@@ -215,8 +219,13 @@ $(document).ready(function() {
             } else if(this.y == 0) {
                 return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("VALUE_OFF"); ?></b></p>';
             } else { 
-                return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+'°C</b></p>';
-                //+this.series.index;
+                var unity="";
+                if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="heating")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="ventilator")) {
+                    unity="°C";
+                } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="deshumidifier")) {
+                    unity="%";
+                } 
+                return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+unity+'</b></p>';
             } 
          }
       },

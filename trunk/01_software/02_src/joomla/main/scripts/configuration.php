@@ -13,12 +13,26 @@ require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
 
 
-// ================= VARIABLES ================= //
+// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
 $error=array();
 $main_error=array();
 $info=array();
 $main_info=array();
 
+$lang=getvar('lang');
+if((isset($lang))&&(!empty($lang))) {
+    insert_configuration("LANG",$lang,$main_error);
+} else {
+    $lang=get_configuration("LANG",$main_error);
+}
+
+set_lang($lang);
+$_SESSION['LANG'] = get_current_lang();
+__('LANG');
+
+
+
+// ================= VARIABLES ================= //
 $color_humidity = getvar('color_humidity');
 $color_temperature = getvar('color_temperature');
 $color_power=getvar('color_power');
@@ -27,7 +41,6 @@ $record_frequency=getvar('record_frequency');
 $power_frequency=getvar('power_frequency');
 $update_frequency=getvar('update_frequency');
 $nb_plugs=getvar('nb_plugs');
-$lang=getvar('lang');
 $update_conf=false;
 $temp_axis=getvar('temp_axis');
 $hygro_axis=getvar('hygro_axis');
@@ -65,18 +78,6 @@ if((!isset($submenu))||(empty($submenu))) {
             $submenu="user_interface";
         }
 } 
-
-
-// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
-if((isset($lang))&&(!empty($lang))) {
-	insert_configuration("LANG",$lang,$main_error);
-} else {
-	$lang=get_configuration("LANG",$main_error);
-}
-
-set_lang($lang);
-$_SESSION['LANG'] = get_current_lang();
-__('LANG');
 
 
 //============================== GET OR SET CONFIGURATION PART ====================
@@ -222,7 +223,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 //Create sd card from the format button
 if((!empty($reset_sd_card))&&(isset($reset_sd_card))&&(!empty($selected_hdd))&&(isset($selected_hdd))) {
-   if(check_sd_card($sd_card)) {
+   if(check_sd_card($selected_hdd)) {
     if(format_sd_card($selected_hdd,$main_error)) {
         $main_info[]=__('VALID_RESET_SD');
         $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_RESET_SD'));
