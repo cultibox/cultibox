@@ -27,10 +27,9 @@
         } ?>
 </ul>
 </div>
-<br />
 <?php } ?>
 
-<br />
+<br /><br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm" id="plugForm">
 <p class="title_conf"><?php echo __('PLUG'); ?> 
     <select name="selected_plug" onChange="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);" onLoad="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);">

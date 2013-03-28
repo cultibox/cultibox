@@ -222,7 +222,8 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 //Create sd card from the format button
 if((!empty($reset_sd_card))&&(isset($reset_sd_card))&&(!empty($selected_hdd))&&(isset($selected_hdd))) {
-   if(format_sd_card($selected_hdd,$main_error)) {
+   if(check_sd_card($sd_card)) {
+    if(format_sd_card($selected_hdd,$main_error)) {
         $main_info[]=__('VALID_RESET_SD');
         $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_RESET_SD'));
         set_historic_value(__('VALID_RESET_SD')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
@@ -232,6 +233,10 @@ if((!empty($reset_sd_card))&&(isset($reset_sd_card))&&(!empty($selected_hdd))&&(
         set_historic_value(__('ERROR_FORMAT_SD_CARD')." (".__('CONFIGURATION_PAGE').")","histo_error",$main_error);
     }
     $sd_card=get_sd_card();
+   } else {
+        $main_error[]=__('ERROR_FORMAT_SD_CARD');
+        $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_FORMAT_SD_CARD'));
+   }
 }
 
 unset($_SESSION['reset_sd_card']);

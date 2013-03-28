@@ -54,7 +54,6 @@ $select_sensor="1";
 $startday="";
 $startmonth="";
 $startyear="";
-$power_axis=get_configuration("LOG_POWER_AXIS",$main_error);
 $fake_log=false;
 $program="";
 $pop_up=get_configuration("SHOW_POPUP",$main_error);

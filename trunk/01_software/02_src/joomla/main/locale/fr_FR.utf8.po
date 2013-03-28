@@ -383,10 +383,10 @@ msgid "SUMARY_REGUL_HYGRO"
 msgstr "Hygrométrie"
 
 msgid "CONFIGURE_Y_AXIS_LOG"
-msgstr "Réglage de l'axe des ordonnées les logs"
+msgstr "Réglage de l'axe des ordonnées des logs"
 
 msgid "CONFIGURE_Y_AXIS_POWER"
-msgstr "Réglage de l'axe des ordonnées la puissance"
+msgstr "Réglage de l'axe des ordonnées de la puissance"
 
 
 # For the plugs part:

@@ -508,6 +508,11 @@ hr {
   width:90%;
 }
 
+.subtitle_log {
+    text-align: center;
+    font-weight:bold;
+}
+
 .title_conf {
 	display:block;
 	margin:auto;
@@ -619,3 +624,11 @@ td.welcome-link img{
 .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+
+.title_help {
+    text-align: center;
+    color:#C3B59B;
+    font-size:24px;
+    font-weight:bold;
+}
