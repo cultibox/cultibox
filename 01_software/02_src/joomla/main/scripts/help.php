@@ -1,4 +1,3 @@
-
 <?php
 
    // Définition des variables
@@ -349,6 +348,23 @@
       return $line;
    }
 
+   // Cette fonction parse les tags code
+   function parse_code ($line) {
+      // Le premier caractere est une {{{
+      if (strpos($line, "{{{") !== false) {
+         // On ajoute la balise pre en début de code
+         $line =  " <pre> \n" . str_replace("{{{","",$line);
+      }
+
+      // Le premier caractere est une {{{
+      if (strpos($line, "}}}") !== false) {
+         // On ajoute la balise pre en début de code
+         $line =  str_replace("}}}","",$line) . " \n </pre> \n";
+      }
+
+      return $line;
+   }
+
    // On récupére la page à afficher
    if (isset ($_GET['page'])) {
       // On lit la page demandé
@@ -402,12 +418,15 @@
    		$buffer = str_replace($wikiOldLink,$wikiNewLink,$buffer);
 
    		// On enleve la ligne de summary
-         if (strpos($buffer, "#summary") !== false) {
-            $buffer = "";
-         }
+       if (strpos($buffer, "#summary") !== false) {
+          $buffer = "";
+       }
 
-         // On cherche si une table de sommaire est définie
-         $buffer = parse_summary($buffer);
+       // On cherche si une table de sommaire est définie
+       $buffer = parse_summary($buffer);
+
+       // Parse le code
+       $buffer = parse_code($buffer);
 
    		// On l'affiche
    		echo $buffer;
