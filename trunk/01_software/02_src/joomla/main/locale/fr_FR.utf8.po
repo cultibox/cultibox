@@ -661,6 +661,9 @@ msgstr "Ajouter une prise à configurer"
 msgid "TITLE_REMOVE_PLUG"
 msgstr "Supprimer la dernière prise"
 
+msgid "RESET_CONFIRM_PROGRAM"
+msgstr "Êtes vous sur de vouloir réinitialiser le programme de la prise courante?"
+
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"

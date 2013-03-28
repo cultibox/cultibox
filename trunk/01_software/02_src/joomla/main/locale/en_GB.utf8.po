@@ -662,6 +662,9 @@ msgstr "Add a plug to configure"
 msgid "TITLE_REMOVE_PLUG"
 msgstr "Remove the last plug"
 
+msgid "RESET_CONFIRM_PROGRAM"
+msgstr "Do you really want to reset the program of the current plug?"
+
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"

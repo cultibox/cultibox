@@ -418,7 +418,7 @@ $(document).ready(function() {
     <td class="program-manage-field">
                   <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
                   <input type="hidden" name="action_prog" value="action_prog">
-                  <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset" class="submit_plug">
+                  <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset" class="submit_plug" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM_PROGRAM','javascript'); ?>')">
     </td>
     <td></td>
 </tr>

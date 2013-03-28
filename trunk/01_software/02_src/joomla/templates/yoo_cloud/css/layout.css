@@ -44,6 +44,7 @@ body{
 #system {
 	padding-left:15px;
 	padding-right:15px;	
+    min-height: 450px;
 }
 
 #sidebar-a {
