@@ -116,4 +116,17 @@ sudo /Applications/XAMPP/xamppfiles/xampp start
 }}}
 
 
+= Pourquoi lorsque je formatte ma carte SD, que j'importe des logs ou que j'affiche un mois entier de logs, le message d'erreur suivant apparait: "Fatal error: maximum execution time of 120 seconds exceededi [...]"? =
 
+Par mesure de sécurité, les scripts PHP ont une durée maximum d'exécution authorisées, la Cultibox authorise des scripts à se lancer pendant 120 secondes maximum. Les opérations citées plus haut (formattage, import de logs, affichage sur une grande période...) sont des opérations qui peuvent demander à votre ordinateur un plus grand temps d'éxécution en fonction des performances de celui-ci.
+
+ * Pour le formatage de la carte SD ou l'import des logs: il vous suffit d'actualiser la page jusqu'à ce que l'opération se complète
+ * Pour l'affichage des données: il vous faudra trier et afficher moins d'informations en vous servant des différents champs du formulaire d'affichage des logs
+
+
+Note pour les utilisateurs expérimentés: il est possible d'augmenter l'authorisation du temps d'éxécution des scripts PHP en modifiant le fichier php.ini qui se trouve:
+ * Sous Windows: c:\Cultibox\xampp\php\php.ini
+ * Sous Linux: /opt/cultibox/etc/php.ini
+ * Sous Mac os X: /Applications/cultibox/xamppfiles/etc/php.ini
+
+et de modifier (à vos risques et périls!!!) la directive: "max_execution_time"

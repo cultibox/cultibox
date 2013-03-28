@@ -44,5 +44,5 @@ Pour des questions de rapidité, le logiciel ne charge que les données climatiq
 Pour charger des logs plus ancien, vous pouvez cliquer sur le boutton "Importer les logs"
 
 == Supprimer les logs ==
-Si la base de donnée est très grosse, le temps de chargement peut être long. Dans ce cas, les deux bouton de suppression des logs permettent de vider un peu la base.
+Si la base de donnée est très grosse et que vous voulez libérer de l'espace sur vos disque, deux boutons de suppression des logs permettent de supprimer vos logs.
 
