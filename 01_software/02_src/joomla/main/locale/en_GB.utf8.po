@@ -1147,7 +1147,7 @@ msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "Program updated successfully! You can unplug your SD card and put in the Cultibox"
 
 msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "Logs file from the current month recorded sucessfully, you can unpluged the SD card from your computer"
+msgstr "Logs file for the last 31 days recorded sucessfully"
 
 msgid "VALID_LOAD_LOG"
 msgstr "Logs successfully loaded, you can disconnect your Cultibox card from your computer"
@@ -1172,6 +1172,10 @@ msgstr "Your programs wasn't up to date, the update process has been executed"
 
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "New update availabe to upgrade to the software version: "
+
+msgid "STILL_LOG_FILE"
+msgstr "There are oldest log files to load, please use the 'import logs' button to do that"
+
 
 # For the tooltip part:
 

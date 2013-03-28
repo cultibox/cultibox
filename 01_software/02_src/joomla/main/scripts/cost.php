@@ -89,10 +89,6 @@ if((!isset($endday))||(empty($endday))) {
 $endday=str_replace(' ','',"$endday");
 
 
-//Get and format resume for cost configuration
-$resume=get_cost_summary($main_error);
-
-
 //Save cost configuration or retrieve it:
 if(!empty($cost_type)) {
         insert_configuration("COST_TYPE","$cost_type",$main_error);
@@ -251,6 +247,9 @@ if(strcmp($select_plug,"distinct_all")!=0) {
        ); 
     }
 }
+
+//Get and format resume for cost configuration
+$resume=get_cost_summary($main_error);
 
 
 // The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True'

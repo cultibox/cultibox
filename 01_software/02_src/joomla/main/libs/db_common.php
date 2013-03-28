@@ -1886,7 +1886,6 @@ EOF;
             }
          }
 
-            print_r($desc);
          $data[]=array(
             "start_month" => $start_month,
             "start_day" => $start_day,
