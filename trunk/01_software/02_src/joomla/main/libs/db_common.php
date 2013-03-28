@@ -1362,6 +1362,66 @@ EOF;
 // }}}
 
 
+// {{{ export_table_csv()
+// ROLE export a program into a text file
+// IN $table       name of the table to be exported
+//    $out         error or warning message
+// RET none
+function export_table_csv($name="",&$out) {
+       if(strcmp("$name","")==0) return 0;
+
+       $file="tmp/$name.csv";
+       $db = db_priv_start();
+       $sql_name = <<<EOF
+SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME = '{$name}'
+EOF;
+       $db->setQuery($sql_name);
+       $res_name = $db->loadAssocList();
+       $ret_name=$db->getErrorMsg();
+
+       $sql = <<<EOF
+SELECT * FROM `{$name}` 
+EOF;
+       $db->setQuery($sql);
+       $res = $db->loadAssocList();
+       $ret=$db->getErrorMsg();
+
+       if($f=fopen("$file","w+")) {
+            $line="";
+            foreach($res_name as $column) {
+                foreach($column as $col) {
+                    if(strcmp("$line","")==0) {
+                        $line="$col"; 
+                    } else {
+                        $line=$line.",".$col;
+                    }
+                }
+            }
+            fputs($f,$line."\n");
+            $line="";
+
+
+            if(count($res)>0) {
+               foreach($res as $record) {
+                    $line="";
+                    foreach($record as $val) {
+                            if(strcmp("$line","")==0) { 
+                                $line="$val"; 
+                            } else {
+                                $line=$line.",".$val;
+                            }
+                    }
+                    $line=$line."\n";
+                    fputs($f,$line);
+               }
+            } 
+      }
+      fclose($f);
+}
+// }}}
+
+
+
 // {{{ purge_program()
 // ROLE purge and check program 
 // IN $arr        array containing value of the program

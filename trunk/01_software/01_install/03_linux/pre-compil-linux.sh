@@ -4,6 +4,7 @@ set -e
 dir=`dirname $0`
 cd $dir
 (cd ../../../ && svn up)
+(cd ../../../wiki/ && svn up)
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../../01_install/01_src/01_xampp
 
@@ -40,6 +41,7 @@ case "$1" in
             fi
 
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
+            cp -R ../../../wiki/* ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/modules/wiki/
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION
 
            cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/

@@ -16,6 +16,7 @@ Cultibox (1.1.11) precise; urgency=low
     + Le choix min et max pour l'axe Y des puissances dans les logs se fait maintenant comme pour les autres axes directement dans l'onglet log
     + Ajout du parser php de wiki de Al
     + Prise en compte des sauts de ligne dans le calendar
+    + Ajout des fonctions d'export au format csv pour les logs et les puissances
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 24 12:28:40 CET 2013
 
