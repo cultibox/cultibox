@@ -319,8 +319,12 @@ msgstr "Supprimer vos anciens logs de température et d'hygrométrie"
 msgid "MANAGE_RESET_TITLE_POWER"
 msgstr "Supprimer vos anciens logs de mesure de puissance"
 
-msgid "MANAGE_RESET"
+msgid "MANAGE_RESET_LOG"
 msgstr "Supprimer les logs"
+
+msgid "MANAGE_RESET_POWER"
+msgstr "Supprimer les logs de puissance "
+
 
 msgid "RESET_CONFIRM"
 msgstr "Êtes vous sur de vouloir supprimer les données des logs déja enregistrées?"
@@ -387,6 +391,18 @@ msgstr "Réglage de l'axe des ordonnées des logs"
 
 msgid "CONFIGURE_Y_AXIS_POWER"
 msgstr "Réglage de l'axe des ordonnées de la puissance"
+
+msgid "MANAGE_EXPORT_LOG_CSV"
+msgstr "Exporter vos informations de logs"
+
+msgid "MANAGE_EXPORT_POWER_CSV"
+msgstr "Exporter vos informations de puissance"
+
+msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
+msgstr "Export de vos logs"
+
+msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
+msgstr "Export de vos logs de puissance"
 
 
 # For the plugs part:
@@ -1245,5 +1261,12 @@ msgstr "Assurez vous de bien avoir lu l'aide avant d'activer cette option. Il n'
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
 msgstr "Lorsque vous chargez la page des logs, le logiciel enregistre vos logs de température, humidité et puissance pour les 30 derniers jours. Cette fonctionnalité vous permet de charger des logs plus anciens en fonction du nombre de mois souhaité"
+
+
+msgid "TOOLTIP_EXPORT_LOG_CSV"
+msgstr "Exporter vos informations de logs dans un fichier au format CSV"
+
+msgid "TOOLTIP_EXPORT_POWER_CSV"
+msgstr "Exporter vos informations de puissance dans un fichier au format CSV"
 
 

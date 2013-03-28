@@ -4,6 +4,7 @@ set -e
 dir=`dirname $0`
 cd $dir
 (cd ../../../ && svn up)
+(cd ../../../wiki/ && svn up)
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../../01_install/01_src/01_xampp
 

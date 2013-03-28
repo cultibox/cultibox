@@ -26,9 +26,12 @@ __('LANG');
 
 $reset_log=getvar('reset_log');
 $reset_log_power=getvar('reset_log_power');
+$export_log=getvar('export_log');
+$export_log_power=getvar('export_log_power');
 
 
-if((empty($reset_log))&&(empty($reset_log_power))) {
+
+if((empty($reset_log))&&(empty($reset_log_power))&&(empty($export_log))&&(empty($export_log_power))) {
     if(!isset($_SESSION['CHECKED'])) {
         header("Location: ./waiting-data");
     } else {
@@ -146,6 +149,50 @@ if(!empty($reset_log_power)) {
         set_historic_value(__('VALID_DELETE_LOGS')." (".__('LOGS_PAGE').")","histo_info",$main_error);
     }
 }
+
+
+export_table_csv("logs",$main_error);
+
+
+
+if((isset($export_log))&&(!empty($export_log))) {
+     export_table_csv("logs",$main_error);
+     $file="tmp/logs.csv";
+     if (($file != "") && (file_exists("./$file"))) {
+        $size = filesize("./$file");
+        header("Content-Type: application/force-download; name=\"$file\"");
+        header("Content-Transfer-Encoding: binary");
+        header("Content-Length: $size");
+        header("Content-Disposition: attachment; filename=\"".basename($file)."\"");
+        header("Expires: 0");
+        header("Cache-Control: no-cache, must-revalidate");
+        header("Pragma: no-cache");
+        readfile("./$file");
+        exit();
+     }
+}
+
+
+
+if((isset($export_log_power))&&(!empty($export_log_power))) {
+     export_table_csv("power",$main_error);
+     $file="tmp/power.csv";
+     if (($file != "") && (file_exists("./$file"))) {
+        $size = filesize("./$file");
+        header("Content-Type: application/force-download; name=\"$file\"");
+        header("Content-Transfer-Encoding: binary");
+        header("Content-Length: $size");
+        header("Content-Disposition: attachment; filename=\"".basename($file)."\"");
+        header("Expires: 0");
+        header("Cache-Control: no-cache, must-revalidate");
+        header("Pragma: no-cache");
+        readfile("./$file");
+        exit();
+     }
+}
+
+
+
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card

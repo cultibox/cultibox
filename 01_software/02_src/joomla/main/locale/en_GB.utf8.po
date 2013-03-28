@@ -192,7 +192,7 @@ msgid "ONE_MONTH"
 msgstr "a month"
 
 msgid "SELECT_DAY"
-msgstr "Day to displai (YYYY-MM-DD):"
+msgstr "Day to display (YYYY-MM-DD):"
 
 msgid "SELECT_MONTH"
 msgstr "Select month to display: "
@@ -320,8 +320,11 @@ msgstr "Delete all of your previous humidity and temperature logs"
 msgid "MANAGE_RESET_TITLE_POWER"
 msgstr "Delete all of your previous power logs"
 
-msgid "MANAGE_RESET"
+msgid "MANAGE_RESET_LOG"
 msgstr "Reset logs"
+
+msgid "MANAGE_RESET_POWER"
+msgstr "Reset power"
 
 msgid "RESET_CONFIRM"
 msgstr "Do you really want to delete previous logs file reccorded?"
@@ -382,6 +385,25 @@ msgstr "Temperature"
 
 msgid "SUMARY_REGUL_HYGRO"
 msgstr "Humidity"
+
+msgid "CONFIGURE_Y_AXIS_LOG"
+msgstr "Configure Y-axis for logs graphics"
+
+msgid "CONFIGURE_Y_AXIS_POWER"
+msgstr "Configure Y-axis for power graphics"
+
+msgid "MANAGE_EXPORT_LOG_CSV"
+msgstr "Export your log informations"
+
+msgid "MANAGE_EXPORT_POWER_CSV"
+msgstr "Export your power informations"
+
+msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
+msgstr "Export logs"
+
+msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
+msgstr "Export power"
+
 
 
 # For the plugs part:
@@ -1236,4 +1258,11 @@ msgstr "Be sure to read the help before activating this option. This option is n
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
 msgstr "During logs page loading, the software saves your logs temperature, humidity and power for the last 30 days. This feature allows you to load eager logs based on the number of months required"
+
+msgid "TOOLTIP_EXPORT_LOG_CSV"
+msgstr "Export you logs informations into a file in CSV format"
+
+msgid "TOOLTIP_EXPORT_POWER_CSV"
+msgstr "Export you power informations into a file in CSV format"
+
 

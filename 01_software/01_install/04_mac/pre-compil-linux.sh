@@ -4,6 +4,7 @@ set -e
 dir=`dirname $0`
 cd $dir
 (cd ../../../ && svn up)
+(cd ../../../wiki/ && svn up)
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../01_src/01_xampp
 
@@ -29,6 +30,7 @@ case "$1" in
             tar zxvfp xampp-mac-lite-1.7.3.tar.gz -C ../01_src/01_xampp/
             mv ../01_src/01_xampp/XAMPP ../01_src/01_xampp/cultibox
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox
+            cp -R ../../../wiki/* ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/modules/wiki/
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
 
             cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/xamppfiles/etc/
