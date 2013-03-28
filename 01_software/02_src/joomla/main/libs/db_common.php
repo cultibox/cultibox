@@ -1769,35 +1769,43 @@ EOF;
             $count=0;
             $line="";
             for($i=0;$i<strlen($val['Description']);$i++) {
-               $count=$count+1;
-               if($count==1) {
-                  if(strcmp($val['Description'][$i]," ")==0) {
-                     $count=0;
-                  } else {
-                     $line=$line.$val['Description'][$i];
-                     }
-               } else {
-                  $line=$line.$val['Description'][$i];
-               }
-
-
-               if($count==12) {
-                  if((strcmp($val['Description'][$i]," ")!=0)&&(isset($val['Description'][$i+1]))&&(strcmp($val['Description'][$i+1]," ")!=0)) {
-                     if(isset($val['Description'][$i+2])) {
-                        $line=$line."-";
-                        $count=$count+1;
-                     }
-                  } elseif(strcmp($val['Description'][$i]," ")==0) {
+               if(strcmp($val['Description'][$i],"\n")==0) {
+                   while(strlen($line)<=12) {
                         $line=$line." ";
-                        $count=$count+1;
-                  }
-               }
+                   }
+                   $desc[]=$line;$line="";
+                   $count=0;
+                   $number=$number+1;
+               } else {
+                   $count=$count+1;
+                   if($count==1) {
+                        if(strcmp($val['Description'][$i]," ")==0) {
+                            $count=0;
+                        } else {
+                            $line=$line.$val['Description'][$i];
+                        }
+                    } else {
+                            $line=$line.$val['Description'][$i];
+                    }
 
-               if($count==13) {
-                  $desc[]=$line;
-                  $line="";
-                  $count=0;
-                  $number=$number+1;
+                    if($count==12) {
+                        if((strcmp($val['Description'][$i]," ")!=0)&&(isset($val['Description'][$i+1]))&&(strcmp($val['Description'][$i+1]," ")!=0)) {
+                            if(isset($val['Description'][$i+2])) {
+                                $line=$line."-";
+                                $count=$count+1;
+                            }
+                        } elseif(strcmp($val['Description'][$i]," ")==0) {
+                                $line=$line." ";
+                                $count=$count+1;
+                        }
+                    }
+
+                    if($count==13) {
+                        $desc[]=$line;
+                        $line="";
+                        $count=0;
+                        $number=$number+1;
+                    }
                }
 
                if("$number"=="18") {
@@ -1818,6 +1826,7 @@ EOF;
             }
          }
 
+            print_r($desc);
          $data[]=array(
             "start_month" => $start_month,
             "start_day" => $start_day,
