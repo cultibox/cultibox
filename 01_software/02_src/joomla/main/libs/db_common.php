@@ -62,6 +62,7 @@ EOF;
          $index = $index +1;
       }
    }
+
    $db->setQuery($sql);
    $db->query();
    $ret=$db->getErrorMsg();

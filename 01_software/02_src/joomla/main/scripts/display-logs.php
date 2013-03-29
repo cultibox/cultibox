@@ -31,15 +31,6 @@ $export_log_power=getvar('export_log_power');
 
 
 
-if((empty($reset_log))&&(empty($reset_log_power))&&(empty($export_log))&&(empty($export_log_power))) {
-    if(!isset($_SESSION['CHECKED'])) {
-        header("Location: ./waiting-data");
-    } else {
-        unset($_SESSION['CHECKED']);
-    }
-}
-
-
 // ================= VARIABLES ================= //
 $type="";
 $temperature= array();
@@ -80,8 +71,8 @@ $second_regul=get_configuration("SECOND_REGUL",$main_error);
 if(isset($_SESSION['log_search'])) {
    insert_configuration("LOG_SEARCH",$_SESSION['log_search'],$main_error);
 } 
-
 $log_search=get_configuration("LOG_SEARCH",$main_error);
+
 
 if(isset($_SESSION['select_plug'])) {
    $select_plug=$_SESSION['select_plug'];
@@ -102,12 +93,6 @@ if(isset($_SESSION['select_sensor'])) {
     $select_sensor=getvar('select_sensor');
 }
 
-
-if(isset($_SESSION['quick_load'])) {
-   $quick_load=$_SESSION['quick_load'];
-} else {
-   $quick_load=getvar('quick_load');
-}
 
 if(isset($_SESSION['startday'])) {
    $startday=$_SESSION['startday'];
@@ -221,7 +206,6 @@ unset($_SESSION['startday']);
 unset($_SESSION['select_power']);
 unset($_SESSION['select_plug']);
 unset($_SESSION['select_sensor']);
-unset($_SESSION['quick_load']);
 unset($_SESSION['import_log']);
 unset($_SESSION['log_search']);
 unset($reset_log);
@@ -258,7 +242,7 @@ $log = array();
 $power=array();
 $load_log=false;
 
-if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
+if((isset($sd_card))&&(!empty($sd_card))) {
     // Workaround to avoid timeout (60s)
     // Search only on 31 previous days
     $monthSearch = date('n');
@@ -266,7 +250,12 @@ if((isset($sd_card))&&(!empty($sd_card))&&(empty($quick_load))) {
     if((isset($import_log))&&(!empty($import_log))) {
         $nb_days=31*$log_search;
     } else {
-        $nb_days=31;
+        if((isset($_SESSION['loaded']))&&($_SESSION['loaded'])) {
+            $nb_days=0;
+        } else {
+            $nb_days=31;
+            $_SESSION['loaded']=true;
+        }
     }
     $count=0;
 
@@ -416,7 +405,6 @@ if($load_log) {
 
 //Checking values entered by user:
 if("$type"=="days") {
-   $legend_date=$startday;
    $check_format=check_format_date($startday,$type);
    if(!$check_format) {
       $error['startday']=__('ERROR_FORMAT_DATE_DAY');
@@ -424,8 +412,8 @@ if("$type"=="days") {
       $startday=date('Y')."-".date('m')."-".date('d');
       $check_format=true;
   }
+  $legend_date=$startday;
 } else {
-   $legend_date=$startyear."-".$startmonth;
    $check_format=check_format_date($startmonth,$type);
    if(!$check_format) {
       $error['startmonth']=__('ERROR_FORMAT_DATE_MONTH');
@@ -434,6 +422,7 @@ if("$type"=="days") {
       $startmonth=date('m');
       $startyear=date('Y');
    }
+   $legend_date=$startyear."-".$startmonth;
 }
 
 if("$type" == "days") {
