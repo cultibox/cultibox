@@ -166,22 +166,22 @@ function get_log_value($file,&$array_line) {
           
 
                 if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)) {
-                    $col=1;
-                    for($i=0;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
-                        if((!empty($temp[$col]))&&(!empty($temp[$col+1]))) {
-                            if((strlen($temp[$col])==4)&&(strlen($temp[$col+1])==4)&&(strlen($temp[0])==14)) {
-                                $array_line[] = array(
-                                    "timestamp" => $temp[0],
-                                    "temperature" => $temp[1],
-                                    "humidity" => $temp[2],
-                                    "date_catch" => $date_catch,
-                                    "time_catch" => $time_catch,
-                                    "sensor_nb" => $i+1
-                                );
+                        for($i=0;$i<$GLOBALS['NB_MAX_SENSOR'];$i++) {
+                            if((!empty($temp[$i+1]))&&(!empty($temp[$i+2]))) {
+                                if((strlen($temp[$i+1])==4)&&(strlen($temp[$i+2])==4)&&(strlen($temp[0])==14)) {  
+                                    if((strcmp($temp[1+2*$i],"0000")!=0)||(strcmp($temp[2+2*$i],"0000")!=0)) {
+                                        $array_line[] = array(
+                                            "timestamp" => $temp[0],
+                                            "temperature" => $temp[1+2*$i],
+                                            "humidity" => $temp[2+2*$i],
+                                            "date_catch" => $date_catch,
+                                            "time_catch" => $time_catch,
+                                            "sensor_nb" => $i+1
+                                        );
+                                    }
+                                }
                             }
                         }
-                        $col=$col+2;
-                    }
                 }
             }
          }

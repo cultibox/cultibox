@@ -1264,7 +1264,7 @@ msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Be sure to read the help before activating this option. This option is not necessary to regulate humidity or temperature by a plug"
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
-msgstr "During logs page loading, the software saves your logs temperature, humidity and power for the last 30 days. This feature allows you to load eager logs based on the number of months required"
+msgstr "During logs page loading, the software saves your logs temperature, humidity and power for the last 31 days. This feature allows you to load eager logs based on the number of months required"
 
 msgid "TOOLTIP_EXPORT_LOG_CSV"
 msgstr "Export you logs informations into a file in CSV format"

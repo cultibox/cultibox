@@ -264,7 +264,7 @@ $(function () {
                events: {
                 afterSetExtremes: function() {
                     if (this.min <= this.dataMin && this.max >= this.dataMax) {
-                        chart.resetZoomButton.hide();
+                        chart.hideResetZoom();
                     }
                 }
                },
@@ -748,7 +748,7 @@ $(function () {
 <tr>
     <td class="left_log">
         <?php if((strcmp("$type","month")!=0)||(($GLOBALS['FIRST_LOG_YEAR']!=$startyear)||($startmonth!=01))) { ?>
-        <form action="/cultibox/index.php/waiting-data" method="post">
+        <form action="/cultibox/index.php/display-logs#anchor-logs" method="post">
             <input type="submit" value="<" name="previous" class="button_log" title="<?php if(strcmp($type,"days")==0) echo __('PREVIOUS_BUTTON_DAY'); else echo __('PREVIOUS_BUTTON_MONTH'); ?>">
             <?php if(strcmp($type,"days")==0) { ?>
                 <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("-1 day", strtotime("$startday"))); ?>">
@@ -783,7 +783,7 @@ $(function () {
 
           if(((strcmp("$type","month")==0)&&(($startyear!=date('Y'))||($startmonth!=12)))||((strcmp("$type","days")==0)&&(strcmp("$startday","$yy-$mm-$dd")!=0))) { 
         ?>
-        <form action="/cultibox/index.php/waiting-data" method="post">
+        <form action="/cultibox/index.php/display-logs#anchor-logs" method="post">
             <input type="submit" value=">" name="next" class="button_log" title="<?php if(strcmp($type,"days")==0) echo __('NEXT_BUTTON_DAY'); else echo __('NEXT_BUTTON_MONTH'); ?>">
             <?php if(strcmp($type,"days")==0) { ?>
                 <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("+1 day", strtotime("$startday"))); ?>">
