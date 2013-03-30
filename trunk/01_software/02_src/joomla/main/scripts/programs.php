@@ -58,6 +58,18 @@ $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error);
 $cyclic=getvar("cyclic");
 $value_program=getvar('value_program');
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
+$reset_selected=getvar("reset_selected_plug");
+
+
+if((!isset($reset_selected))||(empty($reset_selected))) {
+    $reset_selected=$selected_plug;
+} else {
+    if(strcmp("$reset_selected","all")==0) {
+        $selected_plug=1;
+    } else {
+        $selected_plug=$reset_selected;
+    }
+}
 
 
 if(isset($cyclic)&&(!empty($cyclic))) {
@@ -125,7 +137,7 @@ if((isset($remove_plug))&&(!empty($remove_plug))) {
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
 
-// Manage the plug: reset, import, export:
+// Manage the plug: reset, import, export, reset_all:
 if((isset($export))&&(!empty($export))) {
      export_program($selected_plug,$main_error);
      $file="tmp/program_plug${selected_plug}.prg";
@@ -143,9 +155,27 @@ if((isset($export))&&(!empty($export))) {
         exit();
      }
 } elseif((isset($reset))&&(!empty($reset))) {
-    if(clean_program($selected_plug,$main_error)) {
-        $pop_up_message=$pop_up_message.clean_popup_message(__('INFO_RESET_PROGRAM'));
-        set_historic_value(__('INFO_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+    if(strcmp("$reset_selected","all")==0) {
+        $status=true;
+        for($i=1;$i<=$nb_plugs;$i++) {
+            if(!clean_program($i,$main_error)) $status=false;
+        }
+        if($status) {
+            $pop_up_message=$pop_up_message.clean_popup_message(__('INFO_RESET_PROGRAM'));
+            $main_info[]=__('INFO_RESET_PROGRAM');
+            set_historic_value(__('INFO_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_info",$main_error);
+        } else {
+            $pop_up_message=$pop_up_message.clean_popup_message(__('ERROR_RESET_PROGRAM'));
+            $main_info[]=__('ERROR_RESET_PROGRAM');
+            set_historic_value(__('ERROR_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_error",$main_error);
+        }
+        $reset_selected=1;
+    } else {
+        if(clean_program($reset_selected,$main_error)) {
+            $pop_up_message=$pop_up_message.clean_popup_message(__('INFO_RESET_PROGRAM'));
+            $main_info[]=__('INFO_RESET_PROGRAM');
+            set_historic_value(__('INFO_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_info",$main_error);
+        }
     }
 } elseif((isset($import))&&(!empty($import))) {
       $target_path = "tmp/".basename( $_FILES['upload_file']['name']); 
@@ -187,7 +217,7 @@ if((isset($export))&&(!empty($export))) {
             }
         }
     }
-}  
+} 
 
 
 $main_info[]=__('WIZARD_ENABLE_FUNCTION');

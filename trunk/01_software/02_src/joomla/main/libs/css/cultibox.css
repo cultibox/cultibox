@@ -105,8 +105,16 @@ input.button_log {
 ul.list_class {
     list-style-type: circle;
     text-align: left;
-    padding-left: 70px;
+    padding-left: 40px;
 }
+
+
+ul.list_class_wizard {
+    list-style-type: circle;
+    text-align: left;
+    padding-left: 140px;
+}
+
 
 
 table.conf-table { 
@@ -339,6 +347,7 @@ span.info-bulle-contenu
    padding-left: 12px;
    padding-right: 12px;
    color: white;
+   background:#696455;
 }
 
 label.input-file
@@ -562,12 +571,10 @@ td.conf-marge-td {
 }
 
 .info-bulle-contenu{
-	/*width:400px;*/
-	/* fonctionne bizarrement : javascript doit overrider ce css */
 	font-weight:normal;
-	background:#696455;
-	width:15%;
+	width: 20%;
 	font-size:13px;
+    border-radius:22px;
 }
 
 td.welcome-link {
@@ -601,7 +608,7 @@ td.welcome-link img{
 .ui-widget-header {
     background: url("../img/ui-bg_gloss-wave.png") repeat-x scroll 50% 50% #F6A828;
     border: none;
-    background-color: #8aad2e;
+    background-color: #000000;
 }
 
 #ui-datepicker-div button{

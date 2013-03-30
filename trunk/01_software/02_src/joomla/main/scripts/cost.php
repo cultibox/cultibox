@@ -46,6 +46,7 @@ $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
+$submit=getvar("view-cost");
 $resume="";
 
 
@@ -96,7 +97,7 @@ if(!empty($cost_type)) {
         $cost_type = get_configuration("COST_TYPE",$main_error);
 }
 
-if(!empty($cost_price)||("$cost_price"=="0")) {
+if(!empty($cost_price)&&($cost_price!=0)) {
          $cost_price=str_replace(",",".","$cost_price");
          if(check_numeric_value("$cost_price")) {
             insert_configuration("COST_PRICE","$cost_price",$main_error);
@@ -108,10 +109,14 @@ if(!empty($cost_price)||("$cost_price"=="0")) {
          }
 } else {
         $cost_price = get_configuration("COST_PRICE",$main_error);
+        if(!empty($submit)) {
+            $error['cost']=__('ERROR_PRICE_VALUE');
+            $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_PRICE_VALUE'));
+        }
 }
 
 
-if(!empty($cost_price_hc)||("$cost_price_hc"=="0")) {
+if(!empty($cost_price_hc)&&($cost_price_hc!=0)) {
          $cost_price_hc=str_replace(",",".","$cost_price_hc");
          if(check_numeric_value("$cost_price_hc")) {
             insert_configuration("COST_PRICE_HC","$cost_price_hc",$main_error);
@@ -119,13 +124,16 @@ if(!empty($cost_price_hc)||("$cost_price_hc"=="0")) {
             $cost_price_hc = get_configuration("COST_PRICE_HC",$main_error);
             $error['price_hc']=__('ERROR_PRICE_VALUE_HC');
             $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hc']);
-            $submenu="cost_interface";
          }
 } else {
         $cost_price_hc = get_configuration("COST_PRICE_HC",$main_error);
+        if(!empty($submit)) {
+            $error['price_hc']=__('ERROR_PRICE_VALUE_HC');
+            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hc']);
+        }
 }
 
-if(!empty($cost_price_hp)||("$cost_price_hp"=="0")) {
+if(!empty($cost_price_hp)&&($cost_price_hp!=0)) {
          $cost_price_hp=str_replace(",",".","$cost_price_hp");
          if(check_numeric_value("$cost_price_hp")) {
             insert_configuration("COST_PRICE_HP","$cost_price_hp",$main_error);
@@ -133,10 +141,13 @@ if(!empty($cost_price_hp)||("$cost_price_hp"=="0")) {
             $cost_price_hp = get_configuration("COST_PRICE_HP",$main_error);
             $error['price_hp']=__('ERROR_PRICE_VALUE_HP');
             $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hp']);
-            $submenu="cost_interface";
          }
 } else {
         $cost_price_hp = get_configuration("COST_PRICE_HP",$main_error);
+        if(!empty($submit)) {
+            $error['price_hp']=__('ERROR_PRICE_VALUE_HP');
+            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hp']);
+        }
 }
 
 
@@ -151,7 +162,6 @@ if((isset($start_hc))&&(!empty($start_hc))) {
                 $start_hc = get_configuration("START_TIME_HC",$main_error);
                 $error['start_hc']=__('ERROR_TIME_VALUE');
                 $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['start_hc']);
-                $submenu="cost_interface";
         }
 } else {
         $start_hc = get_configuration("START_TIME_HC",$main_error);
@@ -169,7 +179,6 @@ if((isset($stop_hc))&&(!empty($stop_hc))) {
                 $stop_hc = get_configuration("STOP_TIME_HC",$main_error);
                 $error['stop_hc']=__('ERROR_TIME_VALUE');
                 $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['stop_hc']);
-                $submenu="cost_interface";
         }
 } else {
         $stop_hc = get_configuration("STOP_TIME_HC",$main_error);

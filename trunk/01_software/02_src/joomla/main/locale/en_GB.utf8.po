@@ -654,7 +654,7 @@ msgid "TITLE_IMPORT_PROGRAM"
 msgstr "Import a program for your current plug"
 
 msgid "TITLE_RESET_PROGRAM"
-msgstr "Reset the program of your current plug"
+msgstr "Reset the program of the plug"
 
 msgid "TITLE_ADD_PLUG"
 msgstr "Add a plug to configure"
@@ -739,7 +739,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "You are now going to configure a new plug."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choose the type of your plug: <ul class='list_class'><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an 'other' type for all the other equipements. <br /><br />If you choose to configure a new lamp, this equipement must use <b>less than 200 Watts</b>" 
+msgstr "Choose the type of your plug: <ul class='list_class_wizard'><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an 'other' type for all the other equipements. <br /><br />If you choose to configure a new lamp, this equipement must use <b>less than 200 Watts</b>" 
 
 #For the calendar part:
 msgid "TITLE_CALENDAR"
@@ -1058,13 +1058,16 @@ msgid "ERROR_POWER_VALUE"
 msgstr "Error in the power value: it must be more or equal to 0 Watt"
 
 msgid "ERROR_PRICE_VALUE"
-msgstr "Price of the kilowatt-hour price must be greater or equal to 0."
+msgstr "Price of the kilowatt-hour price must be greater than 0"
 
 msgid "ERROR_PRICE_VALUE_HP"
-msgstr "Full hour: price of the kilowatt-hour price must be greater or equal to 0"
+msgstr "Full hour: price of the kilowatt-hour price must be greater than 0"
 
 msgid "ERROR_PRICE_VALUE_HC"
-msgstr "EMpty hour: price of the kilowatt-hour price must be greater or equal to 0"
+msgstr "Empty hour: price of the kilowatt-hour price must be greater than 0"
+
+msgid "ERROR_COST_PRICE_NULL"
+msgstr "Price of the kilowatt-hour price must be greater than 0"
 
 msgid "ERROR_DATE_INTERVAL"
 msgstr "Error in the date: the begining date must be less or equal to the ended date"
@@ -1080,9 +1083,6 @@ msgstr "Enable to access to the update files, please check your configuration"
 
 msgid "ERROR_POWER_PRICE_NULL"
 msgstr "Power of all your plugs doesn't seem to be configured, you can configure it: <a href='plugs'>here</a>"
-
-msgid "ERROR_COST_PRICE_NULL"
-msgstr "Price of the kilowatt-hour isn't configured, you can configure it: <a href='configuration?submenu=cost_interface'>here</a>"
 
 msgid "ERROR_HPC_TIME_NULL"
 msgstr "Time start or stop of the full/empty hours is not configured properly. You can configure it <a href='configuration?submenu=cost_interface'>here</a>"
@@ -1116,6 +1116,9 @@ msgstr "Error writing calendar on the SD card"
 
 msgid "ERROR_WRITE_PROGRAM"                    
 msgstr "Error writing programs on the SD card"
+
+msgid "ERROR_RESET_PROGRAM"
+msgstr "Error during plug(s) reset"
 
 
 # For the informations part:
