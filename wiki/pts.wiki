@@ -28,7 +28,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || electronic || PTS_electronic_rtc_precision_sec_days || Précision de l'horloge || -5 || 0 || 5 || s/jour || 3 || issue 342 || PASS ||  ||
 || electronic || PTS_electronic_nb_logs_logs || Nombre de log par jour || 1400 || 1439 || 1439 || logs/jour || 3 || issue 344 ||  ||  ||
 || electronic || PTS_electronic_nb_sensor || Nombre de capteur de T/RH "branchable" || 0 || 1 || 4 || sensor || 3 || issue 333 ||  ||  ||
-|| electronic || PTS_electronic_nb_plug_1000W_plug || Nombre de prises différentes pilotable || 1 || 2 || 10 || prises || 3 || issue 341 ||  ||  ||
+|| electronic || PTS_electronic_nb_plug_1000W_plug || Nombre de prises différentes pilotable || 1 || 2 || 9 || prises || 3 || issue 341 ||  ||  ||
 || electronic || PTS_electronic_nb_plug_3500W_plug || Nombre de prises différentes pilotable || 1 || 1 || 8 || prises || 3 || issue 341 ||  ||  ||
 || electronic || PTS_electronic_transmitter_distance_m || Distance d'émission || 3 ||  ||  || m || 3 || issue 350 ||  ||  ||
 || electronic || PTS_electronic_plug_one_reponse_time_s || Temps de réponse d'une prise ||  ||  || 5 || s || 3 || issue 339 ||  ||  ||
