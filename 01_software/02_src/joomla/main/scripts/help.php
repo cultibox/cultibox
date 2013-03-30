@@ -9,6 +9,9 @@
    // Nom de la page par défaut
    $wikiDefaultPage = "Introduction.wiki";
 
+   // Nom du sommaire
+   $wikiSommairePage = "Sommaire.wiki";
+
    // Ancien lien vers SVN
    $wikiOldLink = "http://cultibox.googlecode.com/svn/wiki/";
    // Nouveau lien
@@ -45,7 +48,7 @@
 
    // Cette fonction permet de parser les titres
    function parse_title ($line, $char, $number) {
-
+      global $inBalise;
       // Définition du compteur
       $count = 0;
 
@@ -56,11 +59,11 @@
       if (strpos($line, $char, $pos + 1) === false) {
          return $line;
       }
-
+      $inBalise = 2;
       // On récupérer le nom du titre
       $title = trim(str_replace("=","",$line));
 
-      $line = "<br /><br /><p class='title_help'>" . $title . "</p><br />\n";
+      $line = "<h" . $number . ' >' . $title . "</h" . $number . ">\n";
 
       return $line;
    }
@@ -73,7 +76,7 @@
       global $listeIn;
       global $listeOldLevel;
       global $listeOldNuerot;
-
+      global $inBalise;
       // On regarde si la chaine de caractere commence par une étoile
       $pos = strpos(trim($line), "*");
       $posSsTrim = strpos($line, "*");
@@ -87,7 +90,7 @@
 
       // Le premier caractere est une étoile
       if ($pos == 0 && $pos !== false) {
-
+         $inBalise = 1;
          // On remplace le premier charactere
          $line = substr_replace($line, "<li> \n", strpos($line, "*"), 1);
          //$line = " <li> " . $line . " </li>";
@@ -98,7 +101,7 @@
          // Il faut créer le tag si le niveau change
 
          if ($posSsTrim > $listeOldLevel ) {
-            $line = "<" . $numerotee . "> \n " . $line;
+            $line = "<" . $numerotee . ' style="padding-left: 25px;">' . " \n " . $line;
             $listeIn = 1;
             $listeOldLevel = $posSsTrim;
          }
@@ -117,6 +120,7 @@
          if ($listeIn == 1) {
             $line = "</" . $listeOldNuerot . "> \n " . $line;
             $listeIn = 0;
+            $inBalise = 2;
          }
       }
 
@@ -126,8 +130,10 @@
 
 
    // Cette fonction parse les liens
-   function parse_link ($line, $parser,$filter) {
-
+   function parse_link ($line, $parser, $filter) {
+      global $parserPage;
+      global $imageLinkFilter;
+      
       // Recherche du début et de la fin du lien
       $posStart = strpos($line, "[");
       $posEnd = strpos($line, "]");
@@ -135,7 +141,7 @@
       // Un lien est présent dans la page
       if ($posStart !== false && $posEnd !== false) {
          // On remplace le crochet ouvrant
-         $line = substr_replace($line, '<a href="'.$parser.'?page=', $posStart, 1);
+         $line = substr_replace($line, '<a href="' . "/cultibox/index.php/help" . '?page=', $posStart, 1);
 
          // On remplace le premier espace
          $line = substr_replace($line, '.wiki"> ', strpos($line, " ", $posStart + 3), 1);
@@ -167,7 +173,7 @@
          $nouvelleLigne= strpos($textLink, "\n");
 
          // On recherche si le lien pointe vers une image
-         $image= strpos($textLink, $filter);
+         $image= strpos($textLink, "svn/wiki/img/");
 
          if ($image === false) {
             // Ce n'est pas une image
@@ -200,7 +206,8 @@
    $tableIn = 0;
    function parse_table ($line) {
       global $tableIn;
-
+      global $inBalise;
+      
       // On regarde si la chaine de caractere commence par un ||
       $pos = strpos($line, "||");
 
@@ -214,6 +221,7 @@
             if ($inCase == 0) {
                $line = substr_replace($line, '<tr> <td style="border: 1px solid #ccc; padding: 5px;"> ', $pos, 2);
                $inCase = 1;
+               $inBalise = 1;
             } else {
                // Si ce n'est pas le dernier
                $NewPos = strpos($line, "||", $pos + 1);
@@ -238,6 +246,7 @@
          if ($tableIn == 1) {
             $line = "</table> " . $line;
             $tableIn = 0;
+            $inBalise = 0;
          }
       }
 
@@ -309,12 +318,12 @@
    // Cette fonction ajoute le sommaire si nécéssaire
    function parse_summary ($line) {
       global $sumUp;
-
+      global $inBalise;
       // On regarde si la chaine de caractere commence par un ||
       $pos = strpos($line, "wiki:toc");
 
       if ($pos !== false) {
-
+         $inBalise = 2;
          // On recherche le nombre de niveau
          $pos = strpos($line, "max_depth=");
          $nbIndex = substr($line, $pos + 11, 1);
@@ -329,7 +338,7 @@
 
                // Si on chnage de niveau il faut ouvrir la balise ul
                if ($sumUp[$i]["niveau"] > $level) {
-                  $line = $line . "<ul>";
+                  $line = $line . '<ul style="padding-left: 25px;">';
                }
                $line = $line . "\n" . '<li> <a href="#' . str_replace(" " , "_" , $sumUp[$i]["titre"]) . '">' . $sumUp[$i]["titre"] . "</a> </li> \n";
 
@@ -350,19 +359,102 @@
 
    // Cette fonction parse les tags code
    function parse_code ($line) {
+      global $inBalise;
       // Le premier caractere est une {{{
       if (strpos($line, "{{{") !== false) {
          // On ajoute la balise pre en début de code
          $line =  " <pre> \n" . str_replace("{{{","",$line);
+         $inBalise = 1;
       }
 
       // Le premier caractere est une {{{
       if (strpos($line, "}}}") !== false) {
          // On ajoute la balise pre en début de code
          $line =  str_replace("}}}","",$line) . " \n </pre> \n";
+         $inBalise = 2;
       }
 
       return $line;
+   }
+
+   function parseWiki ($wikipage) {
+      global $inBalise;
+      global $parserPage;
+      global $imageLinkFilter;
+      global $wikiOldLink;
+      global $wikiNewLink;
+      
+      // Préparation des éléments haut niveau
+      // On analyse la page pour faire un sommaire
+      make_summary($wikipage);
+   
+      // Analyse du fichier et création de la page
+      // Ouverture du fichier en lecture seule
+      $handle = fopen($wikipage, 'r');
+      // Si on a réussi à ouvrir le fichier
+      if ($handle)
+      {
+         $inBalise = 0;
+      	// Tant que l'on est pas à la fin du fichier
+      	while (!feof($handle))
+      	{
+      		// On lit la ligne courante
+      		$buffer = fgets($handle);
+            
+      		// Remplecement des listes
+      		$buffer = parse_list($buffer);
+   
+      		// Recherche du bold
+      		$array = array('<b>', '</b>');
+      		$buffer = parse_char($buffer,"*",$array);
+   
+      		// Recherche des titres
+      		$buffer = parse_title($buffer,"=====",6);
+      		$buffer = parse_title($buffer,"=====",5);
+      		$buffer = parse_title($buffer,"====",4);
+      		$buffer = parse_title($buffer,"===",3);
+      		$buffer = parse_title($buffer,"==",2);
+      		$buffer = parse_title($buffer,"=",1);
+   
+      		// On parse les liens
+      		$buffer = parse_link($buffer , $parserPage , $imageLinkFilter);
+   
+      		// On parse les tables
+      		$buffer = parse_table($buffer);
+   
+      		// On remplace les liens en dur
+      		$buffer = str_replace($wikiOldLink,$wikiNewLink,$buffer);
+   
+      		// On enleve la ligne de summary
+          if (strpos($buffer, "summary") !== false) {
+             $buffer = "";
+          }
+   
+          // On cherche si une table de sommaire est définie
+          $buffer = parse_summary($buffer);
+   
+          // Parse le code
+          $buffer = parse_code($buffer);
+   
+          if ($inBalise == 0)
+            echo '<p>';
+   
+   		 // On l'affiche
+   		 echo $buffer;
+         
+          if ($inBalise == 0)
+            echo '</p>';
+            
+           if ($inBalise == 2)
+            $inBalise = 0;
+            
+   
+      	}
+      	// On ferme le fichier
+      	fclose($handle);
+      } else {
+         echo "La page demandée n'existe pas";
+      }
    }
 
    // On récupére la page à afficher
@@ -377,70 +469,16 @@
    // On crée le chemin vers le fichier
    $wikipage = $wikiDir . $wikipage;
 
-   // Préparation des éléments haut niveau
-   // On analyse la page pour faire un sommaire
-   make_summary($wikipage);
-
-   // Analyse du fichier et création de la page
-   // Ouverture du fichier en lecture seule
-   $handle = fopen($wikipage, 'r');
-   // Si on a réussi à ouvrir le fichier
-   if ($handle)
-   {
-   	// Tant que l'on est pas à la fin du fichier
-   	while (!feof($handle))
-   	{
-   		// On lit la ligne courante
-   		$buffer = fgets($handle);
-
-   		// Remplecement des listes
-   		$buffer = parse_list($buffer,$parserPage);
-
-   		// Recherche du bold
-   		$array = array('<b>', '</b>');
-   		$buffer = parse_char($buffer,"*",$array);
-
-   		// Recherche des titres
-   		$buffer = parse_title($buffer,"=====",6);
-   		$buffer = parse_title($buffer,"=====",5);
-   		$buffer = parse_title($buffer,"====",4);
-   		$buffer = parse_title($buffer,"===",3);
-   		$buffer = parse_title($buffer,"==",2);
-   		$buffer = parse_title($buffer,"=",1);
-
-   		// On parse les liens
-   		$buffer = parse_link($buffer,$parserPage,$imageLinkFilter);
-
-   		// On parse les tables
-   		$buffer = parse_table($buffer);
-
-   		// On remplace les liens en dur
-   		$buffer = str_replace($wikiOldLink,$wikiNewLink,$buffer);
-
-   		// On enleve la ligne de summary
-       if (strpos($buffer, "#summary") !== false) {
-          $buffer = "";
-       }
-
-       // On cherche si une table de sommaire est définie
-       $buffer = parse_summary($buffer);
-
-       // Parse le code
-       $buffer = parse_code($buffer);
-
-   		// On l'affiche
-   		echo $buffer;
-   	}
-   	// On ferme le fichier
-   	fclose($handle);
-   } else {
-      echo "La page demandée n'existe pas";
-   }
-
-   // Création du bas de page
-
-   echo '  </body>' . "\n";
-   echo '</html>' . "\n";
-
+   // Creation de la table qui gère : a gauche le sommaire, a droite la page
+   echo '<table style="border: 1px solid rgb(70, 70, 70) border-spacing: 2px;">';
+   echo '<tr>';
+   echo '<td valign="top" style="border: 1px solid #ccc; padding: 5px;">';
+   parseWiki($wikiDir . $wikiSommairePage);
+   echo '</td>';
+   echo '<td valign="top" style="border: 1px solid #ccc; padding: 5px;">';
+   parseWiki($wikipage);
+   echo '</td>';
+   echo '</tr>';
+   echo '</table>';
 ?>
 
