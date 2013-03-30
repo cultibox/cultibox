@@ -1,13 +1,14 @@
 <label id="anchor-programs"></label>
-<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>  
-   <script>
-      alert('<?php echo "$pop_up_message"; ?>');
-   </script>
+<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
+    <div class="pop_up_message">
+            <?php echo str_replace("\\n\\n","<br /><br />","$pop_up_message"); ?>
+    </div>
 <?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
-   <script>
-      alert('<?php echo "$pop_up_error_message"; ?>');
-   </script>
+       <div class="pop_up_error">
+            <?php echo str_replace("\\n\\n","<br /><br />","$pop_up_error_message"); ?>
+       </div>
 <?php } ?>
+
 
 
 <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
@@ -383,7 +384,7 @@ $(document).ready(function() {
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
-    <td class="program-manage-title"><?php echo __('TITLE_ADD_PLUG'); ?>:</td>
+    <td class="program-manage-title"><?php echo __('TITLE_ADD_PLUG'); ?></td>
     <td class="program-manage-field">
           <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
           <input type="hidden" name="add_plug" value="add_plug">
@@ -398,7 +399,7 @@ $(document).ready(function() {
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
-    <td class="program-manage-title"><?php echo __('TITLE_REMOVE_PLUG'); ?>:</td>
+    <td class="program-manage-title"><?php echo __('TITLE_REMOVE_PLUG'); ?></td>
     <td class="program-manage-field">
           <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
           <input type="hidden" name="remove_plug" value="remove_plug">
@@ -414,7 +415,18 @@ $(document).ready(function() {
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
-    <td class="program-manage-title"><?php echo __('TITLE_RESET_PROGRAM'); ?>:</td>
+    <td class="program-manage-title"><?php echo __('TITLE_RESET_PROGRAM'); ?>
+         <select name="reset_selected_plug">
+        <?php for($i=1;$i<=$nb_plugs;$i++) {
+                if("$i"=="$reset_selected") {
+                   echo "<option value=\"${i}\" selected>${i}</option>";
+                } else {
+                   echo "<option value=\"${i}\">${i}</option>";
+                }
+            } ?>
+            <option value="all"><?php echo __('RESET_ALL_PROGRAM'); ?></option>";
+         </select>
+    </td>
     <td class="program-manage-field">
                   <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
                   <input type="hidden" name="action_prog" value="action_prog">
@@ -431,7 +443,7 @@ $(document).ready(function() {
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
-    <td class="program-manage-title"><?php echo __('TITLE_EXPORT_PROGRAM'); ?>:</td>
+    <td class="program-manage-title"><?php echo __('TITLE_EXPORT_PROGRAM'); ?></td>
     <td class="program-manage-field">
                         <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export" class="submit_plug">
                         <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
@@ -445,7 +457,7 @@ $(document).ready(function() {
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
-    <td class="program-manage-title"><?php echo __('TITLE_IMPORT_PROGRAM'); ?>:</td>
+    <td class="program-manage-title"><?php echo __('TITLE_IMPORT_PROGRAM'); ?></td>
     <td class="program-manage-field">
                      <input type="file" name="upload_file">
                      <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />

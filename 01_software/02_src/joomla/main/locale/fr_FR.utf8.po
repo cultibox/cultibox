@@ -653,7 +653,10 @@ msgid "TITLE_IMPORT_PROGRAM"
 msgstr "Importer un programme pour la prise courante"
 
 msgid "TITLE_RESET_PROGRAM"
-msgstr "Effacer le programme de la prise courante"
+msgstr "Effacer le programme de la prise"
+
+msgid "RESET_ALL_PROGRAM"
+msgstr "de toute les prises"
 
 msgid "TITLE_ADD_PLUG"
 msgstr "Ajouter une prise à configurer"
@@ -737,7 +740,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "Vous allez maintenant configurer une nouvelle prise."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choisissez le type de prise à utiliser: <ul class='list_class'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type 'autre' servant pour tout les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
+msgstr "Choisissez le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type 'autre' servant pour tout les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
 
 #For the calendar part:
 msgid "TITLE_CALENDAR"
@@ -1060,13 +1063,16 @@ msgid "ERROR_POWER_VALUE"
 msgstr "Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt"
 
 msgid "ERROR_PRICE_VALUE"
-msgstr "Le prix du kilowatt-heure doit être supérieure ou égal à 0."
+msgstr "Le prix du kilowatt-heure doit être supérieure à 0"
 
 msgid "ERROR_PRICE_VALUE_HP"
-msgstr "Heure pleine: le prix du kilowatt-heure doit être supérieure ou égal à 0."
+msgstr "Heure pleine: le prix du kilowatt-heure doit être supérieure à 0"
 
 msgid "ERROR_PRICE_VALUE_HC"
-msgstr "Heure creuse: le prix du kilowatt-heure doit être supérieure ou égal à 0."
+msgstr "Heure creuse: le prix du kilowatt-heure doit être supérieure à 0"
+
+msgid "ERROR_COST_PRICE_NULL"
+msgstr "Le prix du kilowatt-heure doit être supérieure à 0"
 
 msgid "ERROR_DATE_INTERVAL"
 msgstr "Erreur dans les dates choisies: la date de départ doit être inférieure ou égale à la date de fin"
@@ -1082,9 +1088,6 @@ msgstr "Impossible d'accéder au fichier des mises à jours, vérifiez votre con
 
 msgid "ERROR_POWER_PRICE_NULL"
 msgstr "La puissance de certaine de vos prises n'est pas configurée, vous pouvez la configurer: <a href='plugs'>ici</a>"
-
-msgid "ERROR_COST_PRICE_NULL"
-msgstr "Le prix du kilowatt-heure n'est pas configuré, vous pouvez le configurer: <a href='configuration?submenu=cost_interface'>ici</a>"
 
 msgid "ERROR_HPC_TIME_NULL"
 msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configuré, vous pouvez le configurer <a href='configuration?submenu=cost_interface'>ici</a>"
@@ -1118,6 +1121,9 @@ msgstr "Erreur lors de l'écriture du calendrier sur la carte SD"
 
 msgid "ERROR_WRITE_PROGRAM"
 msgstr "Erreur lors de l'écriture des programmes sur la carte SD"
+
+msgid "ERROR_RESET_PROGRAM"
+msgstr "Erreur lors de la remise à zéro du/des programmes"
 
 
 # For the informations part:
@@ -1168,7 +1174,7 @@ msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs'><img src="main/libs/img/wizard.png" alt="interface classique" title="Cliquez sur l'icône pour revenir au mode de configuration classique" id="Classic" /></a>"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "Programme réinitialisé avec succès"
+msgstr "Programme(s) réinitialisé(s) avec succès"
 
 msgid "WAITING_LOG"
 msgstr "Merci de patienter quelques instants durant le chargement des logs..."

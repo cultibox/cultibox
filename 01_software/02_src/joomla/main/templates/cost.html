@@ -1,12 +1,14 @@
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
-   <script>
-      alert('<?php echo "$pop_up_message"; ?>');
-   </script>
+    <div class="pop_up_message">
+            <?php echo str_replace("\\n\\n","<br /><br />","$pop_up_message"); ?>
+    </div>
 <?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
-   <script>
-      alert('<?php echo "$pop_up_error_message"; ?>');
-   </script>
+       <div class="pop_up_error">
+            <?php echo str_replace("\\n\\n","<br /><br />","$pop_up_error_message"); ?>
+       </div>
 <?php } ?>
+
+
 
 <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <div class="info">
@@ -208,7 +210,7 @@ $(function () {
    </tr>
 </table>
 <br />
-<p class="p_center"><INPUT type="submit" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);"></p>
+<p class="p_center"><INPUT type="submit" name="view-cost" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);"></p>
 </form>
 <hr />
 <br />
