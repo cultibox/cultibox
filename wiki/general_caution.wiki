@@ -64,7 +64,7 @@ Les règles suivantes doivent être respectées:
 
 = Stockage =
 Lors du stockage, les conditions suivantes doivent être respectées:
- * Température : entre 0° et 60°
+ * Température : entre 0°C et 60°C
  * Humidité : entre 5% et 95%RH
  * Shocks maximum : 30g
  * Vibration : 2g
