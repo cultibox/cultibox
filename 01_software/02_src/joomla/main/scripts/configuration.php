@@ -169,7 +169,7 @@ if(!empty($alarm_value)) {
         } else {
            $alarm_value=get_configuration("ALARM_VALUE",$main_error);
            $error['alarm']=__('ERROR_ALARM_VALUE');
-           $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['alarm']);
+           $pop_up_error_message=$pop_up_error_message.popup_message($error['alarm']);
            $submenu="alarm_interface";
         }
 } else {
@@ -226,17 +226,17 @@ if((!empty($reset_sd_card))&&(isset($reset_sd_card))&&(!empty($selected_hdd))&&(
    if(check_sd_card($selected_hdd)) {
     if(format_sd_card($selected_hdd,$main_error)) {
         $main_info[]=__('VALID_RESET_SD');
-        $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_RESET_SD'));
+        $pop_up_message=$pop_up_message.popup_message(__('VALID_RESET_SD'));
         set_historic_value(__('VALID_RESET_SD')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
     } else {
         $main_error[]=__('ERROR_FORMAT_SD_CARD');
-        $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_FORMAT_SD_CARD'));
+        $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_FORMAT_SD_CARD'));
         set_historic_value(__('ERROR_FORMAT_SD_CARD')." (".__('CONFIGURATION_PAGE').")","histo_error",$main_error);
     }
     $sd_card=get_sd_card();
    } else {
         $main_error[]=__('ERROR_FORMAT_SD_CARD');
-        $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_FORMAT_SD_CARD'));
+        $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_FORMAT_SD_CARD'));
    }
 }
 
@@ -250,29 +250,33 @@ if(((empty($main_error))||(!isset($main_error)))&&(count($error)==0)) {
         if((!empty($sd_card))&&(isset($sd_card))) {
 			   $main_info[]=__('VALID_UPDATE_CONF');
                set_historic_value(__('VALID_UPDATE_CONF')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
-			   $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_CONF'));
+			   $pop_up_message=$pop_up_message.popup_message(__('VALID_UPDATE_CONF'));
          } else {
             $main_info[]=__('VALID_UPDATE_CONF_WITHOUT_SD');
             set_historic_value(__('VALID_UPDATE_CONF_WITHOUT_SD')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
-            $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_UPDATE_CONF_WITHOUT_SD'));
+            $pop_up_message=$pop_up_message.popup_message(__('VALID_UPDATE_CONF_WITHOUT_SD'));
          }
 	}
 }
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
-   $program=create_program_from_database($main_error);
-   if(!compare_program($program,$sd_card)) {
-      $main_info[]=__('UPDATED_PROGRAM');
-      $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
-      save_program_on_sd($sd_card,$program,$main_error);
-      set_historic_value(__('UPDATED_PROGRAM')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
-   }
-   check_and_copy_firm($sd_card,$main_error);
-   check_and_copy_log($sd_card,$main_error);
-   $main_info[]=__('INFO_SD_CARD').": $sd_card";
+    if(check_sd_card($sd_card)) {
+        $program=create_program_from_database($main_error);
+        if(!compare_program($program,$sd_card)) {
+            $main_info[]=__('UPDATED_PROGRAM');
+            $pop_up_message=popup_message(__('UPDATED_PROGRAM'));
+            save_program_on_sd($sd_card,$program,$main_error);
+            set_historic_value(__('UPDATED_PROGRAM')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
+        }
+        check_and_copy_firm($sd_card,$main_error);
+        check_and_copy_log($sd_card,$main_error);
+        $main_info[]=__('INFO_SD_CARD').": $sd_card";
+    } else {
+        $main_error[]=__('ERROR_WRITE_PROGRAM');
+    }
 } else {
-        $main_error[]=__('ERROR_SD_CARD_CONF')." <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\"".__('TOOLTIP_WITHOUT_SD')."\" />";
+    $main_error[]=__('ERROR_SD_CARD_CONF')." <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\"".__('TOOLTIP_WITHOUT_SD')."\" />";
 }
 
 

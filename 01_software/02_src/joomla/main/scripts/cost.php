@@ -59,16 +59,20 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
-   $program=create_program_from_database($main_error);
-   if(!compare_program($program,$sd_card)) {
-      $main_info[]=__('UPDATED_PROGRAM');
-      $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
-      save_program_on_sd($sd_card,$program,$main_error);
-      set_historic_value(__('UPDATED_PROGRAM')." (".__('COST_PAGE').")","histo_info",$main_error);
-   }
-   check_and_copy_firm($sd_card,$main_error);
-   check_and_copy_log($sd_card,$main_error);
-   $main_info[]=__('INFO_SD_CARD').": $sd_card";
+    if(check_sd_card($sd_card)) {
+        $program=create_program_from_database($main_error);
+        if(!compare_program($program,$sd_card)) {
+            $main_info[]=__('UPDATED_PROGRAM');
+            $pop_up_message=popup_message(__('UPDATED_PROGRAM'));
+            save_program_on_sd($sd_card,$program,$main_error);
+            set_historic_value(__('UPDATED_PROGRAM')." (".__('COST_PAGE').")","histo_info",$main_error);
+        }
+        check_and_copy_firm($sd_card,$main_error);
+        check_and_copy_log($sd_card,$main_error);
+        $main_info[]=__('INFO_SD_CARD').": $sd_card";
+    } else {
+        $main_error[]=__('ERROR_WRITE_PROGRAM');
+    }
 } else {
         $main_error[]=__('ERROR_SD_CARD');
 }
@@ -104,14 +108,14 @@ if(!empty($cost_price)&&($cost_price!=0)) {
          } else {
             $cost_price = get_configuration("COST_PRICE",$main_error);
             $error['cost']=__('ERROR_PRICE_VALUE');
-            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['cost']);
+            $pop_up_error_message=$pop_up_error_message.popup_message($error['cost']);
             $submenu="cost_interface";
          }
 } else {
         $cost_price = get_configuration("COST_PRICE",$main_error);
         if(!empty($submit)) {
             $error['cost']=__('ERROR_PRICE_VALUE');
-            $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_PRICE_VALUE'));
+            $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_PRICE_VALUE'));
         }
 }
 
@@ -123,13 +127,13 @@ if(!empty($cost_price_hc)&&($cost_price_hc!=0)) {
          } else {
             $cost_price_hc = get_configuration("COST_PRICE_HC",$main_error);
             $error['price_hc']=__('ERROR_PRICE_VALUE_HC');
-            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hc']);
+            $pop_up_error_message=$pop_up_error_message.popup_message($error['price_hc']);
          }
 } else {
         $cost_price_hc = get_configuration("COST_PRICE_HC",$main_error);
         if(!empty($submit)) {
             $error['price_hc']=__('ERROR_PRICE_VALUE_HC');
-            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hc']);
+            $pop_up_error_message=$pop_up_error_message.popup_message($error['price_hc']);
         }
 }
 
@@ -140,13 +144,13 @@ if(!empty($cost_price_hp)&&($cost_price_hp!=0)) {
          } else {
             $cost_price_hp = get_configuration("COST_PRICE_HP",$main_error);
             $error['price_hp']=__('ERROR_PRICE_VALUE_HP');
-            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hp']);
+            $pop_up_error_message=$pop_up_error_message.popup_message($error['price_hp']);
          }
 } else {
         $cost_price_hp = get_configuration("COST_PRICE_HP",$main_error);
         if(!empty($submit)) {
             $error['price_hp']=__('ERROR_PRICE_VALUE_HP');
-            $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['price_hp']);
+            $pop_up_error_message=$pop_up_error_message.popup_message($error['price_hp']);
         }
 }
 
@@ -161,7 +165,7 @@ if((isset($start_hc))&&(!empty($start_hc))) {
         } else {
                 $start_hc = get_configuration("START_TIME_HC",$main_error);
                 $error['start_hc']=__('ERROR_TIME_VALUE');
-                $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['start_hc']);
+                $pop_up_error_message=$pop_up_error_message.popup_message($error['start_hc']);
         }
 } else {
         $start_hc = get_configuration("START_TIME_HC",$main_error);
@@ -178,7 +182,7 @@ if((isset($stop_hc))&&(!empty($stop_hc))) {
         } else {
                 $stop_hc = get_configuration("STOP_TIME_HC",$main_error);
                 $error['stop_hc']=__('ERROR_TIME_VALUE');
-                $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['stop_hc']);
+                $pop_up_error_message=$pop_up_error_message.popup_message($error['stop_hc']);
         }
 } else {
         $stop_hc = get_configuration("STOP_TIME_HC",$main_error);
@@ -193,14 +197,14 @@ if((isset($stop_hc))&&(!empty($stop_hc))) {
 $check_format=check_format_date($startday,"days");
 if(!$check_format) {
       $error['startday']=__('ERROR_FORMAT_DATE_DAY_START');
-      $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['startday']);
+      $pop_up_error_message=$pop_up_error_message.popup_message($error['startday']);
       $startday=date('Y')."-".date('m')."-".date('d');
 } 
 
 $check_format=check_format_date($endday,"days");
 if(!$check_format) {
       $error['endday']=__('ERROR_FORMAT_DATE_DAY_END');
-      $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['endday']);
+      $pop_up_error_message=$pop_up_error_message.popup_message($error['endday']);
       $endday=$startday;
       $check_format=true;
 }
@@ -209,7 +213,7 @@ if(!check_date("$startday,","$endday")) {
       $startday=date('Y')."-".date('m')."-".date('d');
       $endday=$startday;
       $error['interval']=__('ERROR_DATE_INTERVAL');
-      $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['interval']);
+      $pop_up_error_message=$pop_up_error_message.popup_message($error['interval']);
 }
 
 

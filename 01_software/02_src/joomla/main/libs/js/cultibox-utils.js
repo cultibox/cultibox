@@ -369,14 +369,6 @@ function DeleteForm(message) {
 // }}}
 
 
-
-function sendForm(index,formname) {
-            alert(document.getElementById('selected_plug'));
-            document.getElementById('selected_plug').value=index;
-            document.formname.submit();
-}
-
-
 // {{{ getEnable()
 // ROLE display the plugs informations or not
 // IN  input value: display or not the informations

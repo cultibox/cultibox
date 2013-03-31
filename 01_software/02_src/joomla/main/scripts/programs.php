@@ -98,7 +98,7 @@ if((isset($add_plug))&&(!empty($add_plug))) {
                         $nb_plugs=$nb_plugs+1;
                         $main_info[]=__('PLUG_ADDED');
                         $selected_plug=$nb_plugs;
-                        $pop_up_message=$pop_up_message.clean_popup_message(__('PLUG_ADDED'));
+                        $pop_up_message=$pop_up_message.popup_message(__('PLUG_ADDED'));
                         set_historic_value(__('PLUG_ADDED')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
                         $active_plugs=get_active_plugs($nb_plugs,$main_error);
                     }
@@ -122,7 +122,7 @@ if((isset($remove_plug))&&(!empty($remove_plug))) {
                             $selected_plug=$nb_plugs;
                         }
                         set_historic_value(__('PLUG_REMOVED')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
-                        $pop_up_message=$pop_up_message.clean_popup_message(__('PLUG_REMOVED'));
+                        $pop_up_message=$pop_up_message.popup_message(__('PLUG_REMOVED'));
                         $active_plugs=get_active_plugs($nb_plugs,$main_error);
                     }
             } else {
@@ -161,18 +161,18 @@ if((isset($export))&&(!empty($export))) {
             if(!clean_program($i,$main_error)) $status=false;
         }
         if($status) {
-            $pop_up_message=$pop_up_message.clean_popup_message(__('INFO_RESET_PROGRAM'));
+            $pop_up_message=$pop_up_message.popup_message(__('INFO_RESET_PROGRAM'));
             $main_info[]=__('INFO_RESET_PROGRAM');
             set_historic_value(__('INFO_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_info",$main_error);
         } else {
-            $pop_up_message=$pop_up_message.clean_popup_message(__('ERROR_RESET_PROGRAM'));
+            $pop_up_message=$pop_up_message.popup_message(__('ERROR_RESET_PROGRAM'));
             $main_info[]=__('ERROR_RESET_PROGRAM');
             set_historic_value(__('ERROR_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_error",$main_error);
         }
         $reset_selected=1;
     } else {
         if(clean_program($reset_selected,$main_error)) {
-            $pop_up_message=$pop_up_message.clean_popup_message(__('INFO_RESET_PROGRAM'));
+            $pop_up_message=$pop_up_message.popup_message(__('INFO_RESET_PROGRAM'));
             $main_info[]=__('INFO_RESET_PROGRAM');
             set_historic_value(__('INFO_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_info",$main_error);
         }
@@ -181,7 +181,7 @@ if((isset($export))&&(!empty($export))) {
       $target_path = "tmp/".basename( $_FILES['upload_file']['name']); 
       if(!move_uploaded_file($_FILES['upload_file']['tmp_name'], $target_path)) {
          $main_error[]=__('ERROR_UPLOADED_FILE');
-         $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_UPLOADED_FILE'));
+         $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_UPLOADED_FILE'));
          set_historic_value(__('ERROR_UPLOADED_FILE')." (".__('PROGRAM_PAGE')." - tmp/".basename( $_FILES['upload_file']['name']).")","histo_error",$main_error);
       } else {
          $chprog=true;
@@ -190,7 +190,7 @@ if((isset($export))&&(!empty($export))) {
          if(count($data_prog)==0) { 
             $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');
             set_historic_value(__('ERROR_GENERATE_PROGRAM_FROM_FILE')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
-            $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
+            $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
             
          } else {
             clean_program($selected_plug,$main_error);
@@ -202,7 +202,7 @@ if((isset($export))&&(!empty($export))) {
          if(!$chprog) {
                $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');        
                set_historic_value(__('ERROR_GENERATE_PROGRAM_FROM_FILE')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
-               $pop_up_error_message=$pop_up_error_message.clean_popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
+               $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
 
                $data_prog=generate_program_from_file("tmp/program_plug${selected_plug}.prg",$selected_plug,$main_error);
                if(count($data_prog)>0) {
@@ -212,7 +212,7 @@ if((isset($export))&&(!empty($export))) {
                }
             } else {
                  $main_info[]=__('VALID_IMPORT_PROGRAM');
-                 $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_IMPORT_PROGRAM'));
+                 $pop_up_message=$pop_up_message.popup_message(__('VALID_IMPORT_PROGRAM'));
                  set_historic_value(__('VALID_IMPORT_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
             }
         }
@@ -371,13 +371,13 @@ if(!empty($apply)&&(isset($apply))) {
 
             if($ch_insert) {
                    $main_info[]=__('INFO_VALID_UPDATE_PROGRAM');
-                   $pop_up_message=$pop_up_message.clean_popup_message(__('INFO_VALID_UPDATE_PROGRAM'));                    
+                   $pop_up_message=$pop_up_message.popup_message(__('INFO_VALID_UPDATE_PROGRAM'));                    
                    set_historic_value(__('INFO_VALID_UPDATE_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
 
 
                    if((isset($sd_card))&&(!empty($sd_card))) {
                             $main_info[]=__('INFO_PLUG_CULTIBOX_CARD');
-                            $pop_up_message=$pop_up_message.clean_popup_message(__('INFO_PLUG_CULTIBOX_CARD'));
+                            $pop_up_message=$pop_up_message.popup_message(__('INFO_PLUG_CULTIBOX_CARD'));
                    }
             } 
         } 
@@ -395,11 +395,11 @@ if(!empty($apply)&&(isset($apply))) {
 
 if((isset($error))&&(!empty($error))&&(count($error)>0)) {
     foreach($error as $err) {
-        $pop_up_error_message=$pop_up_error_message.clean_popup_message($err);
+        $pop_up_error_message=$pop_up_error_message.popup_message($err);
     }
 } else if((isset($info))&&(!empty($info))&&(count($info)>0)) {
         foreach($info as $inf) {
-            $pop_up_message=$pop_up_message.clean_popup_message($inf);
+            $pop_up_message=$pop_up_message.popup_message($inf);
     }
 }
 
@@ -433,18 +433,13 @@ if((isset($sd_card))&&(!empty($sd_card))) {
       $program=create_program_from_database($main_error);
       if(check_sd_card($sd_card)) {
         if(!compare_program($program,$sd_card)) {
-            if(((empty($selected_plug))||(!isset($selected_plug)))&&((!isset($reset))||(empty($reset)))) {
-                $main_info[]=__('UPDATED_PROGRAM');
-                $pop_up_message=$pop_up_message.clean_popup_message(__('UPDATED_PROGRAM'));
-                set_historic_value(__('UPDATED_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
-            }
             save_program_on_sd($sd_card,$program,$main_error);
         }
         check_and_copy_firm($sd_card,$main_error);
         check_and_copy_log($sd_card,$main_error);
-       } else {
-            $main_error[]=__('ERROR_WRITE_PROGRAM');
-       }
+      } else {
+           $main_error[]=__('ERROR_WRITE_PROGRAM');
+      }
 }
 
 if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
