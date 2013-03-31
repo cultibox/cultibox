@@ -1,10 +1,10 @@
-#summary Introduction à l'utilisation de la Cultibox
-
-= Introduction =
-Ce chapitre présente les différentes règles de sécurité.
+#summary Règles de sécurité
 
 = Sommaire =
 <wiki:toc max_depth="3" />
+
+= Introduction =
+Ce chapitre présente les différentes règles de sécurité.
 
 = Sécurité électrique =
   les risques liés à une mauvaise installation électrique peuvent être catastrophique: incendie, électrocution...
@@ -25,8 +25,9 @@ Le boitier principal doit être installé en dehors de l'espace de culture. Les 
  * La température doit être comprise entre 5 et 40°C.
  * L'humidité doit être comprise entre 5 et 90% RH. 
  * Aucune projection d'eau ou de vapeur sur le boitier.
- * Ne jamais brancher de câble sur la Cultibox tant qu'elle n'est pas solidement fixée à un support. Risque de destruction de la Cutlibox.
+ * Ne jamais brancher de câble sur la Cultibox tant qu'elle n'est pas solidement fixée à un support. Risque de destruction de la Cultibox.
  * Ne pas faire tomber la Cultibox
+ * Une pile de remplacement inappropriée peut exploser. Ne remplacer qu'avec une pile identique (CR2032).
 
 == Capteur ==
 Le capteur doit être situé dans l'espace de culture. Les règles suivantes doivent être respectées:
@@ -61,6 +62,7 @@ Les règles suivantes doivent être respectées:
  * La température doit être comprise entre 0 et 40°C.
  * L'humidité doit être comprise entre 5 et 90% RH. 
  * L'adaptateur secteur ne doit pas être démontée.
+ * N'exposez pas l'adaptateur secteur à la pluie, à l'humidité, aux éclaboussures et ne placez pas d'objet rempli d'eau près de l'appareil.
 
 = Stockage =
 Lors du stockage, les conditions suivantes doivent être respectées:
@@ -69,6 +71,15 @@ Lors du stockage, les conditions suivantes doivent être respectées:
  * Shocks maximum : 30g
  * Vibration : 2g
  * La languette de la pile ne doit pas être retirée
+
+= Information relatives à l'évacuation des déchets =
+La Cultibox et ses accessoires ne doivent pas être jetés avec les ordures ménagères. Pour que la Cultibox et ses accessoires subissent un traitement, une récupération et un recyclage appropriés, envoyez-les dans les points de collecte désignés, ou ils peuvent être déposés gratuitement. Dans certains pays, il est possible de renvoyer les produits au revendeur local en cas d'achat d'un produit équivalent.
+En éliminant correctement ce produit, vous contribuerez à la conservation des ressources vitales et à la prévention des éventuels effets négatifs sur l’environnement et la santé humaine qui pourraient survenir dans le cas contraire.
+Afin de connaître le point de collecte le plus proche, veuillez contacter vos autorités locales.
+Des sanctions peuvent être appliquées en cas d'élimination incorrecte de ces déchets, conformément à la législation nationale.
+
+== Remarque sur la pile ==
+La Cultibox intègre une pile pour conserver l'heure. La pile ne doit pas être jetée aux déchets ménagers. Informez-vous au près de l'autorité locale compétente afin de connaître les endroits où vous pouvez déposer celle-ci.
 
 = Configuration minimale de l'ordinateur =
 Ordinateur Fixe :
