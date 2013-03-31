@@ -121,7 +121,7 @@ if(isset($_SESSION['import_log'])) {
 if(!empty($reset_log)) { 
     if(reset_log("logs","1",$main_error)) {
         $main_info[]=__('VALID_DELETE_LOGS');
-        $pop_up_message=clean_popup_message(__('VALID_DELETE_LOGS'));
+        $pop_up_message=popup_message(__('VALID_DELETE_LOGS'));
         set_historic_value(__('VALID_DELETE_LOGS')." (".__('LOGS_PAGE').")","histo_info",$main_error);
     }
 }
@@ -130,7 +130,7 @@ if(!empty($reset_log)) {
 if(!empty($reset_log_power)) {
     if(reset_log("power","0",$main_error)) {
         $main_info[]=__('VALID_DELETE_LOGS');
-        $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_DELETE_LOGS'));       
+        $pop_up_message=$pop_up_message.popup_message(__('VALID_DELETE_LOGS'));       
         set_historic_value(__('VALID_DELETE_LOGS')." (".__('LOGS_PAGE').")","histo_info",$main_error);
     }
 }
@@ -184,15 +184,19 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
-   $program=create_program_from_database($main_error);
-   if(!compare_program($program,$sd_card)) {
-      $main_info[]=__('UPDATED_PROGRAM');
-      $pop_up_message=$pop_up_message.clean_popup_message(__('UPDATED_PROGRAM'));
-      save_program_on_sd($sd_card,$program,$main_error);
-      set_historic_value(__('UPDATED_PROGRAM')." (".__('LOGS_PAGE').")","histo_info",$main_error);
-   }
-   check_and_copy_firm($sd_card,$main_error);
-   check_and_copy_log($sd_card,$main_error);
+    if(check_sd_card($sd_card)) {
+        $program=create_program_from_database($main_error);
+        if(!compare_program($program,$sd_card)) {
+            $main_info[]=__('UPDATED_PROGRAM');
+            $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
+            save_program_on_sd($sd_card,$program,$main_error);
+            set_historic_value(__('UPDATED_PROGRAM')." (".__('LOGS_PAGE').")","histo_info",$main_error);
+        }
+        check_and_copy_firm($sd_card,$main_error);
+        check_and_copy_log($sd_card,$main_error);
+    } else {
+        $main_error[]=__('ERROR_WRITE_PROGRAM');
+    }
 } else {
    $main_error[]=__('ERROR_SD_CARD_LOGS')." <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\"".__('TOOLTIP_WITHOUT_SD')."\" />";
 }
@@ -363,11 +367,11 @@ if(!empty($resume_regul)) {
 if($load_log) {
    if((isset($import_log))&&(!empty($import_log))) {
         $main_info[]=__('VALID_LOAD_LOG');
-        $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_LOAD_LOG'));
+        $pop_up_message=$pop_up_message.popup_message(__('VALID_LOAD_LOG'));
         set_historic_value(__('VALID_LOAD_LOG')." (".__('LOGS_PAGE').")","histo_info",$main_error);
    } else {
        $main_info[]=__('VALID_CURRENT_LOAD_LOG');
-       $pop_up_message=$pop_up_message.clean_popup_message(__('VALID_CURRENT_LOAD_LOG'));       
+       $pop_up_message=$pop_up_message.popup_message(__('VALID_CURRENT_LOAD_LOG'));       
        set_historic_value(__('VALID_CURRENT_LOAD_LOG')." (".__('LOGS_PAGE').")","histo_info",$main_error);
    }
 
@@ -388,13 +392,13 @@ if($load_log) {
         get_log_value("$sd_card/logs/$mmonth/$dday",$log);
         if(!empty($log)) {
             $main_info[]=__('STILL_LOG_FILE');
-            $pop_up_message=$pop_up_message.clean_popup_message(__('STILL_LOG_FILE'));
+            $pop_up_message=$pop_up_message.popup_message(__('STILL_LOG_FILE'));
             unset($log);
         } else {
             get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);
             if(!empty($power)) {
                 $main_info[]=__('STILL_LOG_FILE');
-                $pop_up_message=$pop_up_message.clean_popup_message(__('STILL_LOG_FILE'));
+                $pop_up_message=$pop_up_message.popup_message(__('STILL_LOG_FILE'));
                 unset($power);
             }
         }
@@ -408,7 +412,7 @@ if("$type"=="days") {
    $check_format=check_format_date($startday,$type);
    if(!$check_format) {
       $error['startday']=__('ERROR_FORMAT_DATE_DAY');
-      $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['startday']);
+      $pop_up_error_message=$pop_up_error_message.popup_message($error['startday']);
       $startday=date('Y')."-".date('m')."-".date('d');
       $check_format=true;
   }
@@ -417,7 +421,7 @@ if("$type"=="days") {
    $check_format=check_format_date($startmonth,$type);
    if(!$check_format) {
       $error['startmonth']=__('ERROR_FORMAT_DATE_MONTH');
-      $pop_up_error_message=$pop_up_error_message.clean_popup_message($error['startmonth']);
+      $pop_up_error_message=$pop_up_error_message.popup_message($error['startmonth']);
       $legend_date=date('Y')."-".date('m');
       $startmonth=date('m');
       $startyear=date('Y');
@@ -442,7 +446,11 @@ if("$type" == "days") {
          }
 
          if(!empty($data_power)) {
-            $datap=get_format_graph_power($data_power);
+            $tmp_power=get_format_graph_power($data_power);
+            $power_format=format_data_power($tmp_power);    
+            $datap=format_program_highchart_data($power_format,$startday);
+            
+            
          } else {
             $main_error[]=__('EMPTY_POWER_DATA');
          }

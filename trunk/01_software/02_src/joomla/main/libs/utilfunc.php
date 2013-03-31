@@ -322,6 +322,9 @@ function set_lang($lang) {
 // IN $arr           array containing datas
 // RET $data         data at the highcharts format (a string)
 function get_format_graph($arr) {
+   $err="";
+   $hole=get_configuration("RECORD_FREQUENCY",$err);
+   if(strcmp("$hole","")==0) $hole=1;
    $data="";
    $last_mm="";
    $last_hh="";
@@ -334,7 +337,7 @@ function get_format_graph($arr) {
 
       if(("$hh:$mm" != "00:00")&&(empty($data))&&(empty($last_value))) {
          $data=fill_data("00","00","$hh","$mm","null","$data");
-      } else if((check_empty_record("$last_hh","$last_mm","$hh","$mm"))&&("$hh:$mm" != "00:00")) {
+      } else if((check_empty_record("$last_hh","$last_mm","$hh","$mm",$hole))&&("$hh:$mm" != "00:00")) {
          $data=fill_data("$last_hh","$last_mm","$hh","$mm","$last_value","$data");
       } else {
          if("$hh:$mm" != "00:00") {
@@ -346,7 +349,7 @@ function get_format_graph($arr) {
       $last_mm=$mm;
    }
    if("$last_hh:$last_mm" != "23:59") {
-      if((check_empty_record("$last_hh","$last_mm","24","00"))&&("$hh:$mm" != "00:00")) {
+      if((check_empty_record("$last_hh","$last_mm","24","00",$hole))&&("$hh:$mm" != "00:00")) {
                $data=fill_data("$last_hh","$last_mm","24","00","$last_value","$data");
       } else {
          $data=fill_data("$last_hh","$last_mm","24","00","null","$data");
@@ -365,10 +368,15 @@ function get_format_graph($arr) {
 // IN $arr           array containing datas
 // RET $data         data at the highcharts format (a string)
 function get_format_graph_power($arr) {
+
    $data="";
    $last_mm="";
    $last_hh="";
    $last_value="";
+   $err="";
+   $hole=get_configuration("RECORD_POWER",$err);
+   if(strcmp("$hole","")==0) $hole=1;
+
 
    if(count($arr)>0) {
    foreach($arr as $value) {
@@ -376,13 +384,9 @@ function get_format_graph_power($arr) {
       $mm=substr($value['time_catch'], 2, 2);
 
       if(("$hh:$mm" != "00:00")&&(empty($data))&&(empty($last_value))) {
-         if(("$hh"=="00")&&($mm<20)) {
-            $data=fill_data("00","00","$hh","$mm",$value['record'],"$data");
-         } else {
             $data=fill_data("00","00","$hh","$mm","0","$data");
-         }
-      } else if((check_empty_record("$last_hh","$last_mm","$hh","$mm"))&&("$hh:$mm" != "00:00")) {
-         $data=fill_data("$last_hh","$last_mm","$hh","$mm","$last_value","$data");
+      } else if((check_empty_record("$last_hh","$last_mm","$hh","$mm",$hole))&&("$hh:$mm" != "00:00")) {
+            $data=fill_data("$last_hh","$last_mm","$hh","$mm","$last_value","$data");
       } else {
          if("$hh:$mm" != "00:00") {
             $data=fill_data("$last_hh","$last_mm","$hh","$mm","0","$data");
@@ -393,11 +397,7 @@ function get_format_graph_power($arr) {
       $last_mm=$mm;
    }
    if("$last_hh:$last_mm" != "23:59") {
-      if((check_empty_record("$last_hh","$last_mm","24","00"))&&("$hh:$mm" != "00:00")) {
-               $data=fill_data("$last_hh","$last_mm","24","00","$last_value","$data");
-      } else {
          $data=fill_data("$last_hh","$last_mm","24","00","0","$data");
-      }
    }
    } else {
           $data=fill_data("00","00","24","00","0","$data");
@@ -405,6 +405,77 @@ function get_format_graph_power($arr) {
    return $data;
 }
 //}}}
+
+// {{{ format_data_power()
+// ROLE format data power like programs graph, using space time
+// IN $data       string containing 1440 values, one per minute for a day
+// RET array containing formated datas
+function format_data_power($data="") {
+        $arr=array();
+        $data_power=explode(",",$data);
+         if(count($data_power) != 1440) return $arr();
+
+         $count=0;
+         $time_start="";
+         $time_stop="";
+         $value="";
+         foreach($data_power as $data) {
+                if($data!=0) {
+                    if(empty($value)) {
+                        $time_start=$count;
+                        $value=$data;
+                    } elseif($value!=$data) {
+                        $time_stop=$count-1;
+                    } 
+                } else {
+                    if(!empty($time_start)) {
+                        $time_stop=$count-1;
+                    }
+                }
+                $count=$count+1;
+
+                if((!empty($time_stop))&&(!empty($time_start))) {
+                      $arr[]=array(
+                                    "time_start" => Chrono($time_start*60),
+                                    "time_stop" => Chrono($time_stop*60),
+                                    "value" => $value
+                                );
+                       $time_stop="";
+                       $time_start="";
+                       $value="";
+                }
+          }
+          return $arr;
+}
+// }}}
+
+
+
+
+// {{{ function Chrono()
+// ROLE Transform seconds into HHMMSS
+// IN   seconds to be transformed
+// RET  time transformed (format HHMMSS)
+function Chrono($TotSec) {
+    $heures  =  bcdiv($TotSec,  3600,  0);
+    $minutes  =  (bcdiv($TotSec,  60,  0)  %  60);
+    $secondes = $TotSec-(($heures * 3600) + ($minutes * 60));
+    
+    while(strlen($heures)<2) {
+        $heures="0".$heures;
+    }
+
+    while(strlen($minutes)<2) {
+        $minutes="0".$minutes;
+    }
+
+    while(strlen($secondes)<2) {
+        $secondes="0".$secondes;
+    }
+    return "$heures$minutes$secondes";
+}
+// }}}
+
 
 
 // {{{ fill_data()
@@ -449,12 +520,13 @@ function fill_data($fhh,$fmm,$lhh,$lmm,$val,$data) {
 //    $last_mm       last record minutes
 //    $hh            first record hours
 //    $mm            first record minutes
+//    $hole          number of minutes to determine if there is a hole beetween two values
 // RET true is there isn't an empty record, false else.
-function check_empty_record($last_hh,$last_mm,$hh,$mm) {
+function check_empty_record($last_hh,$last_mm,$hh,$mm,$hole=1) {
       $lhh= 60 * $last_hh + $last_mm;
       $chh= 60 * $hh + $mm;
 
-      if($chh-$lhh<=30) {
+      if($chh-$lhh<=$hole) {
          return true;
       } else {
          return false;
@@ -774,7 +846,7 @@ function save_program_on_sd($sd_card,$program,&$out) {
    if(is_file("${sd_card}/plugv")) {
       $file="${sd_card}/plugv";
       if(count($program)>0) {
-         if($f=@fopen("$sd_card/plugv","w+")) {
+         if($f=fopen("$sd_card/plugv","w+")) {
             $nbPlug = count($program);
             while(strlen($nbPlug)<3) {
                 $nbPlug="0$nbPlug";
@@ -825,7 +897,7 @@ function write_program($data,$file,&$out) {
 // ROLE write programs into the sd card
 // IN   $data         array containing datas to write
 //      $sd_card      sd card path to save data
-// RET false is there is nothing to write, true else
+// RET false is there is something to write, true else
 function compare_program($data,$sd_card) {
     if(is_file("${sd_card}/plugv")) {
 
@@ -836,7 +908,7 @@ function compare_program($data,$sd_card) {
          if(count($data)>0) {
             $handle = fopen($file, 'r');
             if ($handle) {
-               while (!feof($handle)) {
+               while(!feof($handle)) {
                   $buffer = fgets($handle);
                   $buffer=rtrim($buffer);
 
@@ -851,6 +923,8 @@ function compare_program($data,$sd_card) {
                         }  
                      }
                      $nb=$nb+1;
+                  } else {
+                    return false;
                   } 
                }
                fclose($handle);
@@ -1283,16 +1357,25 @@ function check_and_copy_log($sd_card,&$out) {
 
 
 // {{{ clean_popup_message()
-// ROLE clean popup message by removing non-appropriate char for javascript
+// ROLE clean highchart message by removing non-appropriate char for javascript
 // IN  $message         message to be cleaned
 // RET   new message cleaned 
-function clean_popup_message(&$message="") {
+function clean_highchart_message($message="") {
    $old = array("'","&eacute;","&agrave;","&egrave;","&ecirc;","&deg;","&ucirc;","&ocirc;");
    $new   = array("\'","é","à","è","ê","°","û","ô");
-   
    return str_replace($old, $new, $message)."\\n\\n";
 }
 // }}}
+
+// {{{ popup_message()
+// ROLE popup message formatting
+// IN  $message         message to be formatted
+// RET new message cleaned 
+function popup_message($message="") {
+   return $message."<br /><br />";
+}
+// }}}
+
 
 
 // {{{ get_nb_days()
@@ -1724,7 +1807,7 @@ function check_browser_compat($tab) {
 //  IN      $sd        the sd_card path to be checked
 // RET true if we can, false else
 function check_sd_card($sd="") {
-    if($f=fopen("$sd/plugv","w+")) {
+    if(@$f=fopen("$sd/plugv","w+")) {
        fclose($f);
        return true;
    } else {

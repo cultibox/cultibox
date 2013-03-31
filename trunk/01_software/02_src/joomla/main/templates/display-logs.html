@@ -73,7 +73,7 @@ buttonImageOnly: 'true',
 </div>
 <br />
 <div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
-<form action="/cultibox/index.php/waiting-data" method="post">
+<form action="/cultibox/index.php/display-logs" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-day"></td>
@@ -132,7 +132,7 @@ buttonImageOnly: 'true',
 <br />
 </div>
 <div id="label_select_month" style="<?php if(strcmp($type,"days")==0) echo "display:none"; ?>">
-<form action="/cultibox/index.php/waiting-data" method="post">
+<form action="/cultibox/index.php/display-logs" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-month"></td>
@@ -320,7 +320,7 @@ $(function () {
                } ?>
                <?php echo "'".__('LEGEND_POWER','highchart')."'"; ?>: 'W'
                <?php if((isset($select_plug))&&(!empty($select_plug))) {
-                     echo ",'".clean_popup_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."': ''"; 
+                     echo ",'".clean_highchart_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."': ''"; 
                } ?>
             }[this.series.name];
             if(unit=='') { 
@@ -537,7 +537,7 @@ $(function () {
 
                <?php if((isset($data))&&(!empty($data))) { ?>
                , {
-                  name: <?php echo "'".clean_popup_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."'"; ?>,
+                  name: <?php echo "'".clean_highchart_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."'"; ?>,
                   showCheckbox: true,
                   color: <?php echo "'".$GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$select_plug-1]."'"; ?>,
                   <?php switch($plugs_infos[$select_plug-1]["PLUG_TYPE"]) {
@@ -644,7 +644,7 @@ $(function () {
 
                <?php if((isset($data))&&(!empty($data))) { ?>
                , {
-                  name: <?php echo "'".clean_popup_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."'"; ?>,
+                  name: <?php echo "'".clean_highchart_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."'"; ?>,
                   showCheckbox: true,
                   color: <?php echo "'".$GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$select_plug-1]."'"; ?>,
                   selected: true,

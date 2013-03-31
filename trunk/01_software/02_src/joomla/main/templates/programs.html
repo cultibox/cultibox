@@ -110,7 +110,9 @@ $(document).ready(function() {
    chart = new Highcharts.Chart({
       chart: {
          backgroundColor: '#F7F7F9',
-         borderWidth: 2,
+         borderWidth: 3,
+         borderColor: '#959891',
+         borderRadius: 20,
          spacingRight: 35,
          renderTo: 'plug',
          type: 'spline',
@@ -239,9 +241,9 @@ $(document).ready(function() {
 
         {
          <?php if($plugs['id']==$selected_plug) { ?>
-            name: <?php echo "'<b>".clean_popup_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_popup_message($plugs_infos[$plugs['id']-1]['translate']).")</b>',"; ?>
+            name: <?php echo "'<b>".clean_highchart_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_highchart_message($plugs_infos[$plugs['id']-1]['translate']).")</b>',"; ?>
          <?php } else { ?>
-            name: <?php echo "'".clean_popup_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_popup_message($plugs_infos[$plugs['id']-1]['translate']).")',"; ?>
+            name: <?php echo "'".clean_highchart_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_highchart_message($plugs_infos[$plugs['id']-1]['translate']).")',"; ?>
          <?php } ?>
          color: <?php echo "'".$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs['id']-1]."'"; ?>,
          <?php if($plugs['id']!=$selected_plug) { ?>

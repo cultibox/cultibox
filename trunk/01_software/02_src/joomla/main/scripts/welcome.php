@@ -59,16 +59,20 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
-   $program=create_program_from_database($main_error);
-   if(!compare_program($program,$sd_card)) {
-      $main_info[]=__('UPDATED_PROGRAM');
-      $pop_up_message=clean_popup_message(__('UPDATED_PROGRAM'));
-      save_program_on_sd($sd_card,$program,$main_error);
-      set_historic_value(__('UPDATED_PROGRAM')." (".__('WELCOME_PAGE').")","histo_info",$main_error);
-   }
-   check_and_copy_firm($sd_card,$main_error);
-   check_and_copy_log($sd_card,$main_error);
-   $main_info[]=__('INFO_SD_CARD').": $sd_card";
+    if(check_sd_card($sd_card)) {
+        $program=create_program_from_database($main_error);
+        if(!compare_program($program,$sd_card)) {
+            $main_info[]=__('UPDATED_PROGRAM');
+            $pop_up_message=popup_message(__('UPDATED_PROGRAM'));
+            save_program_on_sd($sd_card,$program,$main_error);
+            set_historic_value(__('UPDATED_PROGRAM')." (".__('WELCOME_PAGE').")","histo_info",$main_error);
+        }
+        check_and_copy_firm($sd_card,$main_error);
+        check_and_copy_log($sd_card,$main_error);
+        $main_info[]=__('INFO_SD_CARD').": $sd_card";
+    } else {
+        $main_error[]=__('ERROR_WRITE_PROGRAM');
+    }
 } else {
         $main_error[]=__('ERROR_SD_CARD');
 }
