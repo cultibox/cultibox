@@ -1,21 +1,19 @@
 #summary Sommaire de l'aide de l'interface graphique de la Cultibox
 
-= Sommaire =
-<wiki:toc max_depth="3" />
-
 = Introduction =
 
 Cette section de l'aide décrit le fonctionnement de l'interface graphique affichée sur l'écran de la Cultibox.
 
-= Sommaire =
- * [gui_box_start Informations au démarrage]  
- * [gui_box_main Informations courantes]
- * [gui_box_menu Menu principal]
- * [gui_box_menu_logs Logs]
- * [gui_box_menu_programme Programme]
- * [gui_box_menu_calendar Calendrier]
- * [gui_box_menu_param Paramètres]
-   * [gui_box_menu_param_culti Cultibox] 
-   * [gui_box_menu_param_emettor Émetteur]
-   * [gui_box_menu_param_sensor Capteur] 
+L'interface graphique de la CUltibox est accéssible directement sur la Cultibox.
+Les informations sont lisible sur l'écran, et un clavier de 5 touches est incrusté dans la face avant.
+
+http://cultibox.googlecode.com/svn/wiki/img/face_top.jpg
+
+Vous pouvez vous déplacer en utilisant les touches du clavier.
+
+== Remarque ==
+Régulièrement, la Cultibox enregistre les conditions climatique et l'état des prises.
+Durant ces opérations, l'utilisateur ne peut plus agir sur la Cultibox. Cet état transitif dure en général moins d'une seconde.
+La fréquence de cet état dépend de la configuration que vous avez choisit. Si vous avez décidé que la Cultibox enregistre les condition climatique toutes les 5 minutes, alors ce léger blocage arriverar toutes les 5 minutes
+
    
