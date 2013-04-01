@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Installation / Désinstalation pour Linux
 
 = Sommaire =
 <wiki:toc max_depth="3" />

@@ -1,4 +1,4 @@
-#summary template
+#summary Assistant de programmation
 
 = Sommaire =
 <wiki:toc max_depth="3" />

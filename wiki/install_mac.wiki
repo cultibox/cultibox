@@ -8,4 +8,37 @@ Cette page décrit les étapes pour installer / désinstaller le logiciel dans u
 
 = Installation =
 
+Double cliquer sur le package que vous venez de télécharger.
+La fenêtre suivante s'ouvre. Cliquer sur "Continuer":
+
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_1.jpg
+
+Liser attentivement la licence du logiciel puis cliquer sur continuer:
+
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_2.jpg
+
+Vous devez accepter la licence du logiciel pour continuer:
+
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_3.jpg
+
+Cliquer sur "Installer". Pour que l'installation démarre, vous devez entrer votre num d'utilisateur ainsi que votre mot de passe.
+
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_4.jpg
+
+Le logiciel s'installe:
+
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_5.jpg
+
+Une fois l'installation terminée, la fenêtre suivante s'ouvre:
+
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_6.jpg
+
+= Lancement du logiciel =
+
+Une icone du logiciel est disponible dans le dossier application.
+
+Vous pouvez aussi entrer l'adresse suivante dans votre explorateur web :
+
+localhost:6891/cultibox/
+
 = Désinstallation =

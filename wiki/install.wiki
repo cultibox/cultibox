@@ -4,8 +4,8 @@
 <wiki:toc max_depth="3" />
 
 Quelques étapes suffisent pour se servir pleinement de la Cultibox.
-=1. Installation du logiciel=
-==1.1. Windows==
+= Installation du logiciel=
+== Windows==
 
 Pour une aide plus détaillée, consulter la page suivante : [install_windows Windows Installation / Désinstallation du logiciel]
 
@@ -14,19 +14,19 @@ Pour une aide plus détaillée, consulter la page suivante : [install_windows Wi
  * Votre ordinateur peut vous demander si vous accepter d'exécuter les services MySQL et Apache. Autoriser l'exécution de ces services.
  * Une fois installer, vous pouvez lancer le logiciel en cliquant sur "Démarrer" puis "Cultibox" puis sur l'icône "Cultibox".
 
-==1.2. Linux==
+== Linux==
 
 Pour une aide plus détaillée, consulter la page suivante : [install_linux Linux Installation / Désinstallation du logiciel]
 
  * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fournit.
 
-==1.3. Mac==
+== Mac==
 
 Pour une aide plus détaillée, consulter la page suivante : [install_mac Mac Installation / Désinstallation du logiciel]
 
  * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fournit.
 
-=2. Configuration=
+= Configuration=
 
 Pour une aide plus détaillée, consulter la page suivante : [gui_soft_wizard Assistant de programmation]
 
@@ -38,7 +38,7 @@ Pour une aide plus détaillée, consulter la page suivante : [gui_soft_wizard As
  * Faire de même pour la troisième prise.
 
 
-=3. Installation=
+= Installation=
 
 == Préparation et installation de la Cultibox ==
 La Cultibox est prévue pour être installer à l'extérieur de l'environnement de culture. 
@@ -75,7 +75,7 @@ Pour une aide plus détaillée, consulter la page suivante : [install_Plug Ajout
  * Connecter la prise 1 entre votre lampe et la prise secteur.
  * Installer les deux autres prise en fonction des choix que vous avez réalisé dans l'étape de configuration.
 
-=4. Démarrage =
+= Démarrage =
 Lors du branchement de l'adapteteur secteur, la Cultibox démarre. Elle ne peut pas fonctionner sans carte SD. Si vous n'avez pas inséré de carte SD, il est donc normal qu'elle affiche un message d'erreur. 
 
 Un écran s'affiche vous permettant de régler l'heure 

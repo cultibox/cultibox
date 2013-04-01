@@ -5,17 +5,17 @@
 Cette page ne concerne que les utilisateurs experts
 
 = Changer le numéro de la prise 3500W =
- # Débrancher la Cultibox
- # Brancher la prise 3500W
- # Appuyer sur le petit bouton en façade pendant au moins 10s jusqu’à ce que la LED clignote. 
- # Attendre que la LED ne clignote plus
- # Ouvrir le fichier pluga
- # changer la première ligne. Mettre 001.
- # Mettre le numéro pour la prise sur la deuxième ligne (typiquement 004)
- # Brancher la Cultibox
- # Aller dans le menu Param --> Émetteur --> reg prise
- # Clique gauche pour éteindre la prise
- # appuyer un coup sur le petit bouton de la prise. Elle doit clignoter
- # Rapidement, appuyer sur le bouton droite de la Cultibox.
- # La prise doit "claquer" plusieurs fois
- # Si ça marche pas, refaire les étapes 10 à 13
+ * Débrancher la Cultibox
+ * Brancher la prise 3500W
+ * Appuyer sur le petit bouton en façade pendant au moins 10s jusqu’à ce que la LED clignote. 
+ * Attendre que la LED ne clignote plus
+ * Ouvrir le fichier pluga
+ * changer la première ligne. Mettre 001.
+ * Mettre le numéro pour la prise sur la deuxième ligne (typiquement 004)
+ * Brancher la Cultibox
+ * Aller dans le menu Param --> Émetteur --> reg prise
+ * Clique gauche pour éteindre la prise
+ * appuyer un coup sur le petit bouton de la prise. Elle doit clignoter
+ * Rapidement, appuyer sur le bouton droite de la Cultibox.
+ * La prise doit "claquer" plusieurs fois
+ * Si ça marche pas, refaire les étapes 10 à 13

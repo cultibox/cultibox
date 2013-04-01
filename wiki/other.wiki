@@ -1,0 +1,6 @@
+#summary Autre
+
+= Introduction =
+
+Cette section de l'aide donne quelques informations supplémentaires.
+

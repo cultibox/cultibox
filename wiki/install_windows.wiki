@@ -99,6 +99,14 @@ Si vous désirez lancer le logiciel, cliquer sur oui:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_11.png
 
+= Lancement du logiciel =
+
+Une icone du logiciel est disponible dans le menu "Démarrer" -> "Prgramme" -> "Cultibox".
+
+Vous pouvez aussi entrer l'adresse suivante dans votre explorateur web :
+
+localhost:6891/cultibox/
+
 = Désinstallation =
 
-Pour désintaller le logiciel,cliquer sur "Désinstaller Cultibox" présent dans le menu démarrer de WIndows
+Pour désintaller le logiciel,cliquer sur "Désinstaller Cultibox" présent dans le menu démarrer de Windows.
