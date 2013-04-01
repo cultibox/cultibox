@@ -22,6 +22,7 @@ Cultibox (1.1.11) precise; urgency=low
     + Divers bug fixes...inombrables et innomables... ... ... ...!!
     + Agrandissement du fond de l'interface pour éviter les débordements si le contenu est trop long
     + Passage des messages pop up en jquery customisable
+    + Changement de l'algorithme d'affichage des mesures de puissances: affichage comme les programmes sans trous (valeur à 0 à la place)
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Mar 24 12:28:40 CET 2013
 

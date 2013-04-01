@@ -45,7 +45,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
     if(check_sd_card($sd_card)) {
         if(!compare_program($program,$sd_card)) {
             $main_info[]=__('UPDATED_PROGRAM');
-            $pop_up_message=popup_message(__('UPDATED_PROGRAM'));
+            $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
             save_program_on_sd($sd_card,$program,$main_error);
             set_historic_value(__('UPDATED_PROGRAM')." (".__('CALENDAR_PAGE').")","histo_info",$main_error);
         }
