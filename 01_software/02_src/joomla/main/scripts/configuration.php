@@ -265,7 +265,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         $program=create_program_from_database($main_error);
         if(!compare_program($program,$sd_card)) {
             $main_info[]=__('UPDATED_PROGRAM');
-            $pop_up_message=popup_message(__('UPDATED_PROGRAM'));
+            $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
             save_program_on_sd($sd_card,$program,$main_error);
             set_historic_value(__('UPDATED_PROGRAM')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
         }

@@ -575,6 +575,9 @@ msgstr "Import"
 msgid "RESET_PROGRAM"
 msgstr "Reset"
 
+msgid "RESET_ALL_PROGRAM"
+msgstr "all plugs"
+
 msgid "SUMARY_TITLE"
 msgstr "Actions summary for the plug"
 
