@@ -12,8 +12,8 @@ http://cultibox.googlecode.com/svn/wiki/img/face_top.jpg
 Vous pouvez vous déplacer en utilisant les touches du clavier.
 
 == Remarque ==
-Régulièrement, la Cultibox enregistre les conditions climatique et l'état des prises.
+Régulièrement, la Cultibox enregistre les conditions climatiques et l'état des prises.
 Durant ces opérations, l'utilisateur ne peut plus agir sur la Cultibox. Cet état transitif dure en général moins d'une seconde.
-La fréquence de cet état dépend de la configuration que vous avez choisit. Si vous avez décidé que la Cultibox enregistre les condition climatique toutes les 5 minutes, alors ce léger blocage arrivera toutes les 5 minutes
+La fréquence de cet état dépend de la configuration que vous avez choisi. Si vous avez décidé que la Cultibox enregistre les conditions climatiques toutes les 5 minutes, alors ce léger blocage arrivera toutes les 5 minutes.
 
    
