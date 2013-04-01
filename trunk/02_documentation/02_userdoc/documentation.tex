@@ -1,0 +1,87 @@
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX) 
+%%% PAGE DIMENSIONS                                                        
+\usepackage{geometry} % to change the page dimensions                     
+\geometry{a4paper} % or letterpaper (US) or a5paper or....                 
+\usepackage{graphicx} % support the \includegraphics command and options   
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent  
+%%% PACKAGES                                                    
+\usepackage{booktabs} % for much better looking tables           
+\usepackage{array} % for better arrays (eg matrices) in maths    
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)               
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim        
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage[francais]{babel}  
+\usepackage{textcomp}         
+\usepackage{hyperref}         
+% These packages are all incorporated in the memoir class to one degree or another...
+%%% HEADERS & FOOTERS                                                         
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry 
+\pagestyle{fancy} % options: empty , plain , fancy           
+\renewcommand{\headrulewidth}{1pt} % customise the layout... 
+\lhead{Manuel Cultibox}\chead{}\rhead{}        
+\lfoot{}\cfoot{\thepage}\rfoot{}
+%%% SECTION TITLE APPEARANCE    
+\usepackage{sectsty}            
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)  
+% (This matches ConTeXt defaults)   
+%%% ToC (table of contents) APPEARANCE 
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC 
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+%%% END Article customizations
+%%% The "real" document content comes below...
+\title{Manuel d'utilisation de la Cultibox}
+\author{Cultibox}
+\begin{document}
+\begin{titlepage}             
+\includegraphics{./wiki/img/box_3d_1.png}      
+\begin{center}                     
+\Huge                               
+Manuel d'utilisation de la Cultibox\\
+\date\today    
+\end{center}    
+\end{titlepage} 
+\maketitle
+
+\newpage
+\tableofcontents 
+\input{./wiki_tex/Introduction}
+\input{./wiki_tex/general_caution}
+\input{./wiki_tex/contents}
+\input{./wiki_tex/install}
+\input{./wiki_tex/install_windows}
+\input{./wiki_tex/install_mac}
+\input{./wiki_tex/install_linux}
+\input{./wiki_tex/install_Plug}
+\input{./wiki_tex/install_sensor}
+\input{./wiki_tex/interface_logiciel}
+\input{./wiki_tex/gui_soft_wizard}
+\input{./wiki_tex/gui_soft_logs}
+\input{./wiki_tex/gui_soft_prog}
+\input{./wiki_tex/gui_soft_prog_regul}
+\input{./wiki_tex/gui_soft_cal}
+\input{./wiki_tex/gui_soft_cost}
+\input{./wiki_tex/gui_soft_conf}
+\input{./wiki_tex/gui_box}
+\input{./wiki_tex/gui_box_start}
+\input{./wiki_tex/gui_box_main}
+\input{./wiki_tex/gui_box_menu}
+\input{./wiki_tex/gui_box_menu_logs}
+\input{./wiki_tex/gui_box_menu_programme}
+\input{./wiki_tex/gui_box_menu_calendar}
+\input{./wiki_tex/gui_box_menu_param}
+\input{./wiki_tex/gui_box_menu_param_culti}
+\input{./wiki_tex/gui_box_menu_param_culti_hour}
+\input{./wiki_tex/gui_box_menu_param_culti_reg}
+\input{./wiki_tex/gui_box_menu_param_culti_alarme}
+\input{./wiki_tex/gui_box_menu_param_culti_regul}
+\input{./wiki_tex/gui_box_menu_param_emettor}
+\input{./wiki_tex/gui_box_menu_param_sensor}
+\input{./wiki_tex/other}
+\input{./wiki_tex/faq}
+\input{./wiki_tex/pts}
+\input{./wiki_tex/advance}
+\end{document}
+
