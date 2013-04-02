@@ -1,7 +1,7 @@
 set path [file dirname [info script]]
 
 # Exe path of sam2p.exe
-set sam2p {F:\Cultibox_web\02_documentation\02_userdoc\JPG-PNGtoEPS\sam2p.exe}
+set sam2p {/usr/bin/sam2p}
 
 # Input directories
 set wikiPath [file join $path wiki]
