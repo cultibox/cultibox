@@ -24,6 +24,7 @@ VERSION=$2
 
 case "$1" in
       "windows7"|"windows7-admin" )
+            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
             rm -Rf ../01_src/01_xampp/*
             cp ./install_script.iss ./install_script_current.iss
             sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss

@@ -200,7 +200,7 @@ Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_window
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-package\lgpl3.txt"; DestDir: "{app}\LICENSE.txt"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\cultibox\*"; DestDir: "{app}\xampp"; Flags: onlyifdoesntexist ignoreversion recursesubdirs createallsubdirs 
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\cultibox\htdocs\cultibox\*"; DestDir: "{app}\xampp\htdocs\cultibox"; Flags: ignoreversion recursesubdirs createallsubdirs   
-Source: "C:\users\yann\Desktop\Project\cultibox\wiki\*"; DestDir: "{app}\xampp\htdocs\cultibox\main\modules\wiki\"; Flags: ignoreversion recursesubdirs createallsubdirs   
+Source: "C:\users\yann\Desktop\Project\cultibox\02_documentation\02_userdoc\documentation.pdf"; DestDir: "{app}\xampp\htdocs\cultibox\main\modules\docs\documentation_cultibox.pdf"; Flags: ignoreversion recursesubdirs createallsubdirs   
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\backup.bat"; DestDir: "{app}"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\load.bat"; DestDir: "{app}"; DestName: "load.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\02_sql\*"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
