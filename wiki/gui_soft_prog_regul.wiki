@@ -76,6 +76,14 @@ Vous désirez qu'en plus de ce fonctionnement normal, il soit actif si le taux d
 
 * La régulation secondaire est prioritaire dans la Cultibox. Dans le cas ou ses conditions d'activations sont remplies, elle prend le pas sur la régulation classique*
 
+== Activation ==
+Pour activer la possibilitée de mettre en place la régulation secondaire:
+  * Ouvrer l'onglet "Configuration"
+  * Mettre à "Oui" le champs situé en face de "Activer la régulation secondaire (Utilisateur expert seulement):"
+  * Cliquer sur "Enregistrer la configuration"
+
+http://cultibox.googlecode.com/svn/wiki/img/regul_secondaire_activation.jpg        
+
 == Donnée climatique ==
 La régulation classique, gère la prise en fonction du type d'élément branché dessus. La régulation secondaire va jouer sur l'autre condition climatique.
 Par exemple, vous utiliser un humidificateur. La régulation "classique" va le mettre en marche pour augmenter le taux d’humidité. La régulation secondaire va donc jouer sur la deuxième donnée climatique: la température.
