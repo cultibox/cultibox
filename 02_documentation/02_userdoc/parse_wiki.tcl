@@ -1,4 +1,3 @@
-
 set path [file dirname [info script]]
 
 # Exe path of sam2p.exe
@@ -42,26 +41,26 @@ proc parseTitle {line level} {
    
    set summary [string map {"=" "" {_} " "} $line]
    
-   switch $level {
-      -1 {
+   switch -- ${level} {
+      "-1" {
          return "\\part\{${summary}\}"
       }
-      0 {
+      "0" {
          return "\\chapter\{${summary}\}"
       }
-      1 {
+      "1" {
          return "\\section\{${summary}\}"
       }
-      2 {
+      "2" {
          return "\\subsection\{${summary}\}"
       }
-      3 {
+      "3" {
          return "\\subsubsection\{${summary}\}"
       }
-      4 {
+      "4" {
          return "\\paragraph\{${summary}\}"
       }
-      5 {
+      "5" {
          return "\\subparagraph\{${summary}\}"
       }                        
    }
@@ -153,20 +152,20 @@ proc parse {inFileName outFileName level} {
    set out [open $outFileName w+]
    
    # Ajout du nom du fichier
-   switch $level {
-      -1 {
+   switch -- ${level} {
+      "-1" {
          puts $out "\\part\{${summary}\}"
       }
-      0 {
+      "0" {
          puts $out "\\chapter\{${summary}\}"
       }
-      1 {
+      "1" {
          puts $out "\\section\{${summary}\}"
       }
-      2 {
+      "2" {
          puts $out "\\subsection\{${summary}\}"
       }
-      3 {
+      "3" {
          puts $out "\\subsubsection\{${summary}\}"
       }                  
    }
