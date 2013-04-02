@@ -289,7 +289,7 @@ while {[eof $fid2] != 1} {
       # Compute level
       set level [string first "*" $line]
       if {$level != -1} {
-         set level [expr ($level - 3) / 3]
+         set level [expr ($level - 2) / 2]
       }
       
       # Search file name
