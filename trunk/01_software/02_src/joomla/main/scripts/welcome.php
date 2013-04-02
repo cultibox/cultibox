@@ -56,11 +56,11 @@ if((!isset($sd_card))||(empty($sd_card))) {
         $sd_card=get_sd_card();
 }
 
-
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
     if(check_sd_card($sd_card)) {
         $program=create_program_from_database($main_error);
+
         if(!compare_program($program,$sd_card)) {
             $main_info[]=__('UPDATED_PROGRAM');
             $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));

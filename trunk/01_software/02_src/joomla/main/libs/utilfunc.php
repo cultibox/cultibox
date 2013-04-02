@@ -923,7 +923,7 @@ function compare_program($data,$sd_card) {
                         }  
                      }
                      $nb=$nb+1;
-                  } else {
+                  } else if($nb==0) {
                     return false;
                   } 
                }
@@ -1807,8 +1807,9 @@ function check_browser_compat($tab) {
 //  IN      $sd        the sd_card path to be checked
 // RET true if we can, false else
 function check_sd_card($sd="") {
-    if(@$f=fopen("$sd/plugv","w+")) {
+    if(@$f=fopen("$sd/test.txt","w+")) {
        fclose($f);
+       unlink("$sd/test.txt");
        return true;
    } else {
        return false;

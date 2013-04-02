@@ -1004,13 +1004,13 @@ msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "Error in the date format: MM"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged"
+msgstr "Can't find your SD card, if you want to save your configuration, please check your card is correctly pluged"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "Can't find your SD card, if you want to load your logs record, please check that your card is correctly pluged"
+msgstr "Can't find your SD card, if you want to load your logs record, please check your card is correctly pluged"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "Can't find your SD card, if you want to save your configuration, please check that your card is correctly pluged"
+msgstr "Can't find your SD card, if you want to save your configuration, please check your card is correctly pluged"
 
 msgid "ERROR_SD_CARD"
 msgstr "Can't find your SD card, please check that your card is correctly pluged"
