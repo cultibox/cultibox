@@ -1,6 +1,6 @@
 #summary Sommaire
 
-  *[Introduction Introduction]
+  * [Introduction Introduction]
     * [general_caution Règle de sécurité]
     * [contents Contenu du paquet]
   * [install Mise en place]
