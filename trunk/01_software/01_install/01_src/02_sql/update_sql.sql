@@ -31,8 +31,8 @@ UPDATE `cultibox`.`configuration` SET `CHECK_UPDATE` = 'True' WHERE `configurati
 
 
 -- Version 1.1.10:
-ALTER TABLE `cultibox`.`plugs` ADD `PLUG_REGUL_SENSOR` INT NOT NULL DEFAULT '1' AFTER `PLUG_REGUL` 
+ALTER TABLE `cultibox`.`plugs` ADD `PLUG_REGUL_SENSOR` INT NOT NULL DEFAULT '1' AFTER `PLUG_REGUL`;
 
 -- Version 1.1.11:
-ALTER TABLE `cultibox`.`configuration` ADD `SECOND_REGUL` VARCHAR( 5 ) NOT NULL DEFAULT 'False'
-ALTER TABLE `cultibox`.`configuration` DROP `LOG_TEMP_AXIS` , DROP `LOG_HYGRO_AXIS` , DROP `LOG_POWER_AXIS` ;
+ALTER TABLE `cultibox`.`configuration` ADD `SECOND_REGUL` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
+ALTER TABLE `cultibox`.`configuration` DROP `LOG_TEMP_AXIS` , DROP `LOG_HYGRO_AXIS` , DROP `LOG_POWER_AXIS`;
