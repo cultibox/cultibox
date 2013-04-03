@@ -1,5 +1,9 @@
 #summary Cahier des charges
 
+<wiki:comment>
+\begin{landscape}
+</wiki:comment>
+
 =Introduction=
 
 La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indique pour chaque exigence les critères d'acceptabilités, l'issue associée et le rapport permettant de conclure.
@@ -48,3 +52,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || documentation || PTS_documentation_users_manual ||  ||  ||  ||  ||  ||  ||  || PASS || [http://code.google.com/p/cultibox/wiki/Introduction Lien] ||
 || documentation || PTS_documentation_users_storage ||  ||  ||  ||  ||  ||  ||  || PASS  || [http://code.google.com/p/cultibox/wiki/general_caution Lien] ||
 || documentation || PTS_documentation_users_general_caution ||  ||  ||  ||  ||  ||  ||  || PASS || [http://code.google.com/p/cultibox/wiki/general_caution Lien] ||
+
+<wiki:comment>
+\end{landscape}
+</wiki:comment>

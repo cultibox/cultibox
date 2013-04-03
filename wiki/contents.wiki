@@ -91,4 +91,5 @@ Le câble RJ12 permet de connecter le capteur à la Cultibox.
 
 = Notice =
 La notice contient l'aide nécessaire à la mise en place de la Cultibox. Vous pouvez retrouver la dernière version à jour à l'adresse suivante:
+
 https://code.google.com/p/cultibox/wiki/Introduction
