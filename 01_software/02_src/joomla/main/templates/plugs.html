@@ -95,7 +95,7 @@
             <?php echo __('TYPE_PLUG'); ?>:
          </td>
          <td>
-            <select name="plug_type<?php echo $i; ?>" onChange="getTolerance(this.selectedIndex,<?php echo $i; ?>);" onLoad="getTolerance(this.selectedIndex,<?php echo $i; ?>);">
+            <select name="plug_type<?php echo $i; ?>" onChange='getTolerance(this.selectedIndex,<?php echo $i; ?>,<?php echo "\"$second_regul\""; ?>);' onLoad='getTolerance(this.selectedIndex,<?php echo $i; ?>,<?php echo "\"$second_regul\""; ?>);'>
                <option <?php if(strcmp($plug_type{$i},"other")==0) { echo 'selected';} ?> value="other"><?php echo __('PLUG_UNKNOWN'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"lamp")==0) { echo 'selected';} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"ventilator")==0) { echo 'selected';} ?> value="ventilator"><?php echo __('PLUG_VENTILATOR'); ?></option>
@@ -132,13 +132,15 @@
       </tr>
       <tr>
          <td></td>
-         <td><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></td>
+         <td><div id="label_sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>"><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></div></td>
          <td>
+               <div id="sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
                <select name="plug_sensor<?php echo $i; ?>" id="plug_sensor<?php echo $i; ?>">
                <?php for($j=1; $j<=$GLOBALS['NB_MAX_SENSOR']; $j++) { ?>
                   <option <?php if(strcmp($plug_sensor{$i},"$j")==0) { echo 'selected'; }?> value="<?php echo $j; ?>"><?php echo $j; ?></option>
                <?php } ?>
                </select>
+               </div>
          </td>
          <td></td>
       </tr>
@@ -188,7 +190,7 @@
           <div id="temp_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>">
                <input type="text" size="10" value="<?php echo __('REGUL_TEMP'); ?>" name="regul_temp_fake<?php echo $i; ?>" disabled>
          </div>
-         </div>
+   </div>
    </td>
     <td></td>
 </tr>
