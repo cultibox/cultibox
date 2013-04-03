@@ -23,6 +23,8 @@ lappend CaracSpeciaux "%" "\\%"
 set CaracSpeciauxEnd [list]
 lappend CaracSpeciauxEnd "*" ""
 
+set largeurTable 15
+
 proc parseTitle {line level} {
 
    if {[string match "*=*Sommaire*=*" $line]} {
@@ -101,10 +103,10 @@ proc parseTab {line} {
        }
        set nbCol [llength $lineSplitt]
    
-      set line "\\hline\n[join $lineSplitt " & "] \\\\"
+      set line "\\hline\n[join $lineSplitt " & "] \\tabularnewline"
    
       if {$::inTab == 0} {
-         set line "\n\\begin{tabular}\{|*\{${nbCol}\}\{c|\}\}\n$line"
+         set line "\n\\begin{tabular}\{|*\{${nbCol}\}\{p\{[expr $::largeurTable / ${nbCol} ]cm\}|\}\}\n$line"
       }
       
       set ::inTab 1
@@ -171,13 +173,14 @@ proc parse {inFileName outFileName level} {
    }
 
    
+   set inComment 0
    while {[eof $fid] != 1} {
       gets $fid line
       
       # Remplacement des caractere spéciaux
       if {[string first {http://cultibox.googlecode.com/svn/wiki/img/} $line] != -1} {
          set line [string map {{http://cultibox.googlecode.com/svn/wiki/img/} "\\includegraphics\{./wiki/img/" {.jpg} ".jpg\}" {.png} ".png\}" {.PNG} ".PNG\}"} $line]     
-      } else {
+      } elseif {$inComment == 0} {
          set line [string map $::CaracSpeciaux $line]
       }
       
@@ -194,7 +197,14 @@ proc parse {inFileName outFileName level} {
       if {[string first {wiki:toc} $line] != -1} {
          set line "";
       } 
-      
+      if {[string first {wiki:comment} $line] != -1} {
+         set line "";
+         if {$inComment == 0} {
+            set inComment 1
+         } else {
+            set inComment 0
+         }
+      } 
 
       
       puts $out $line
@@ -237,6 +247,7 @@ puts $fid {\usepackage{subfig} % make it possible to include more than one capti
 puts $fid {\usepackage[francais]{babel}  }
 puts $fid {\usepackage{textcomp}         }
 puts $fid {\usepackage{hyperref}         }
+puts $fid {\usepackage{lscape}         }
 puts $fid {% These packages are all incorporated in the memoir class to one degree or another...}
 
 puts $fid {%%% HEADERS & FOOTERS                                                         }
