@@ -1432,7 +1432,7 @@ function purge_program($arr) {
    asort($arr);
    if(count($arr)>0) {
       foreach($arr as $val) {
-         if(($val['value']!=0)&&($val['time_start']!=$val['time_stop'])) {
+         if(($val['value']!=0)&&($val['time_start']!=$val['time_stop'])&&(strcmp($val['value'],"")!=0)&&(strcmp($val['time_start'],"")!=0)&&(strcmp($val['time_stop'],"")!=0)) {
                $tmp_arr = array(
                   "time_start" => $val['time_start'],
                   "time_stop" => $val['time_stop'],
@@ -1467,11 +1467,16 @@ function optimize_program($arr) {
                $jump=false;
                $i=$i+2;   
             } else {
-               $tmp[]=$arr[$i];
+               if(array_key_exists($i,$arr)) {
+                    $tmp[]=$arr[$i];
+               }
                $i=$i+1;
             }
          }
-         $tmp[]=$arr[$i];
+        
+         if(array_key_exists($i,$arr)) {
+            $tmp[]=$arr[$i];
+         }
          if(!$jump) {
             $arr=$tmp;
             unset($tmp);

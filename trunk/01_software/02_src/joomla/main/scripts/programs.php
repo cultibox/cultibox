@@ -304,7 +304,7 @@ if(!empty($apply)&&(isset($apply))) {
             }
 
 
-            if(isset($cyclic)&&(!empty($cyclic))) {
+            if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
                     date_default_timezone_set('UTC');
                     $cyclic_start= $start_time;
                     $cyclic_end=$end_time;

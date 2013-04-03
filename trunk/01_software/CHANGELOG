@@ -6,6 +6,7 @@ Cultibox (1.1.12) precise; urgency=low
     + Correction pour le changement de numéro de version en upgrade sur les plateformes mac et linux
     + Ouverture de l'aide dans un nouvel onglet
     + Correction des trous de l'affichage des logs paramètré à 10 fois la fréquence d'enregistrement
+    + Correction sur la gestion des programmes: boucle infini si le repeat time est à 0 corrigé + correction sur le dernier élément d'un ajout cyclique qui se retrouvait vide
     
 
 -- Yann Genevois <yann.genevois@gmail.com> Wed Apr  3 11:32:52 CEST 2013
