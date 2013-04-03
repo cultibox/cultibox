@@ -41,11 +41,12 @@ if [ ! -d /tmp/cultibox_backup/mysql ]; then
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/fake_log.sql
 else
     if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
-            /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
+        /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
     fi
     /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
     /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
     rm -Rf /tmp/cultibox_backup
+    rm -f /Applications/cultibox/xamppfiles/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
 fi
 
 echo "Installing CultiBox as a service:"

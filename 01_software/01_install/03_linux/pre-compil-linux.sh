@@ -53,6 +53,7 @@ case "$1" in
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt
            cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/opt/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
+           sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-amd64' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/update_sql.sql
            cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/emetteur.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/sht.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
@@ -82,7 +83,7 @@ case "$1" in
            fi 
       ;;
       "ubuntu32"|"ubuntu32-admin")
-            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
+            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
             rm -Rf ../01_src/01_xampp/*
             mkdir ../01_src/01_xampp/cultibox
             cp -R ./conf-package/DEBIAN ../01_src/01_xampp/cultibox/DEBIAN
@@ -97,6 +98,7 @@ case "$1" in
             fi
 
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
+            cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION
 
            cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/
@@ -105,8 +107,10 @@ case "$1" in
            cp conf-script/* ../01_src/01_xampp/cultibox/opt/lampp/
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
+           cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt
            cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/opt/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
+           sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-amd64' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/update_sql.sql
            cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/emetteur.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/sht.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/

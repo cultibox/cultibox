@@ -1,6 +1,10 @@
 Cultibox (1.1.12) precise; urgency=low
     + Le choix du capteur n'apparait plus pour les types 'autre' et 'lampe'
     + Correction d'un bug javascript: on ne recherche plus les éléments de la seconde régulation si celle-ci est désactivée
+    + Correction du fichier update_sql.sql (il manquait deux ;)
+    + Modification de la commande d'update de la base sous max: on utilise l'option -f pour forcer le script à continuer
+    + Correction pour le changement de numéro de version en upgrade sur les plateformes mac et linux
+    
 
 -- Yann Genevois <yann.genevois@gmail.com> Wed Apr  3 11:32:52 CEST 2013
 
