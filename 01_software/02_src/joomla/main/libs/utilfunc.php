@@ -323,8 +323,8 @@ function set_lang($lang) {
 // RET $data         data at the highcharts format (a string)
 function get_format_graph($arr) {
    $err="";
-   $hole=get_configuration("RECORD_FREQUENCY",$err);
-   if(strcmp("$hole","")==0) $hole=1;
+   $hole=get_configuration("RECORD_FREQUENCY",$err)*10;
+   if(strcmp("$hole","")==0) $hole=10;
    $data="";
    $last_mm="";
    $last_hh="";
@@ -411,8 +411,9 @@ function get_format_graph_power($arr) {
 // IN $data       string containing 1440 values, one per minute for a day
 // RET array containing formated datas
 function format_data_power($data="") {
-        $arr=array();
-        $data_power=explode(",",$data);
+         $arr=array();
+         if(strcmp("$data","")==0) return $arr();
+         $data_power=explode(",",$data);
          if(count($data_power) != 1440) return $arr();
 
          $count=0;
@@ -522,7 +523,7 @@ function fill_data($fhh,$fmm,$lhh,$lmm,$val,$data) {
 //    $mm            first record minutes
 //    $hole          number of minutes to determine if there is a hole beetween two values
 // RET true is there isn't an empty record, false else.
-function check_empty_record($last_hh,$last_mm,$hh,$mm,$hole=1) {
+function check_empty_record($last_hh,$last_mm,$hh,$mm,$hole=10) {
       $lhh= 60 * $last_hh + $last_mm;
       $chh= 60 * $hh + $mm;
 
