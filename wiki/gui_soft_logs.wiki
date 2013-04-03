@@ -32,8 +32,11 @@ L'affichage d'un jour permet de visualiser plus d'informations:
  * Le programme d'une prise
  * La puissance consommée  
 
- Si trop d'information apparaisent sur l'écran, vous pouvez en déselectionner certaines en cliquant sur leur nom dans le bas du graphique
- 
+Si trop d'information apparaisent sur l'écran, vous pouvez en déselectionner certaines en cliquant sur leur nom dans le bas du graphique
+
+=== Interpolation ===
+Il arrive que la Cultibox n'enregistre pas une ou plusieurs données climatiques. Le Logiciel Cultibox interpole les points manquants. Cette interpolation est limitée à une période de 20 minutes.
+
 = Gestion de vos données climatiques =
 Cette section permet de gérer les données de la base.
 
@@ -45,4 +48,3 @@ Pour charger des logs plus ancien, vous pouvez cliquer sur le boutton "Importer 
 
 == Supprimer les logs ==
 Si la base de donnée est très grosse et que vous voulez libérer de l'espace sur vos disque, deux boutons de suppression des logs permettent de supprimer vos logs.
-
