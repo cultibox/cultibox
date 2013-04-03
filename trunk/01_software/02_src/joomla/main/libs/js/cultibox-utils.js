@@ -258,7 +258,7 @@ function getRegul(i,j) {
 // IN  input value: display or not the informations
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
 // USED BY: templates/plugs.html 
-function getTolerance(i,j) {
+function getTolerance(i,j,secondR) {
       var divTolerance = document.getElementById('tolerance'+j);
       var divToleranceLabel = document.getElementById('tolerance_label'+j);
       var pDegree = document.getElementById('degree'+j);
@@ -272,14 +272,135 @@ function getTolerance(i,j) {
       var secondVal = document.getElementById('second_regul'+j);
       var secondParam = document.getElementById('second_regul_param'+j);
 
+      var labelSensor = document.getElementById('label_sensor'+j);
+      var Sensor = document.getElementById('sensor'+j);
+
+
       switch(i) {
-         case 0 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break; 
-         case 1 : divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = 'none'; seconLabel.style.display = 'none'; secondVal.style.display = 'none'; secondParam.style.display = 'none'; break;
-         case 2 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; divHumiRegul.style.display = ''; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = ''; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;
-         case 3 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = ''; pPourcent.style.display = 'none'; divHumiRegul.style.display = ''; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = 'none'; labelDeg.style.display = 'none'; labelPct.style.display = ''; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;
-         case 4 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; divHumiRegul.style.display = 'none'; divTempRegul.style.display = ''; divUnknownRegul.style.display = 'none'; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;
-         case 5 : divTolerance.style.display = ''; divToleranceLabel.style.display = ''; pDegree.style.display = 'none'; pPourcent.style.display = ''; divHumiRegul.style.display = 'none'; divTempRegul.style.display = ''; divUnknownRegul.style.display = 'none'; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = ''; secondVal.style.display = ''; secondParam.style.display = ''; break;         
-         default: divTolerance.style.display = 'none'; divToleranceLabel.style.display = 'none'; pDegree.style.display = 'none'; pPourcent.style.display = 'none'; divHumiRegul.style.display = 'none'; divTempRegul.style.display = 'none'; divUnknownRegul.style.display = ''; labelDeg.style.display = ''; labelPct.style.display = 'none'; seconLabel.style.display = 'none'; secondVal.style.display = 'none'; secondParam.style.display = 'none'; break;
+         case 0 :   divTolerance.style.display = 'none'; 
+                    divToleranceLabel.style.display = 'none'; 
+                    pDegree.style.display = 'none'; 
+                    pPourcent.style.display = 'none'; 
+                    if(secondR=="True") { 
+                        seconLabel.style.display = ''; 
+                        secondVal.style.display = ''; 
+                        secondParam.style.display = ''; 
+                        divHumiRegul.style.display = 'none'; 
+                        divTempRegul.style.display = 'none';
+                        divUnknownRegul.style.display = '';
+                        labelDeg.style.display = '';
+                        labelPct.style.display = 'none';
+                    } 
+                    labelSensor.style.display = 'none'; 
+                    Sensor.style.display = 'none'; 
+                    break; 
+
+         case 1 :   divTolerance.style.display = 'none'; 
+                    divToleranceLabel.style.display = 'none'; 
+                    pDegree.style.display = 'none'; 
+                    pPourcent.style.display = 'none'; 
+                    if(secondR=="True") {
+                        divHumiRegul.style.display = 'none'; 
+                        divTempRegul.style.display = 'none'; 
+                        divUnknownRegul.style.display = 'none'; 
+                        labelDeg.style.display = 'none'; 
+                        labelPct.style.display = 'none'; 
+                        seconLabel.style.display = 'none'; 
+                        secondVal.style.display = 'none'; 
+                        secondParam.style.display = 'none'; 
+                    }
+                    labelSensor.style.display = 'none'; 
+                    Sensor.style.display = 'none'; 
+                    break;
+
+         case 2 :   divTolerance.style.display = ''; 
+                    divToleranceLabel.style.display = ''; 
+                    pDegree.style.display = ''; 
+                    pPourcent.style.display = 'none'; 
+                    if(secondR=="True") {
+                        divHumiRegul.style.display = ''; 
+                        divTempRegul.style.display = 'none'; 
+                        divUnknownRegul.style.display = 'none'; 
+                        labelDeg.style.display = 'none'; 
+                        labelPct.style.display = ''; 
+                        seconLabel.style.display = ''; 
+                        secondVal.style.display = ''; 
+                        secondParam.style.display = '';  
+                    }
+                    labelSensor.style.display = ''; 
+                    Sensor.style.display = ''; 
+                    break;
+
+         case 3 :   divTolerance.style.display = ''; 
+                    divToleranceLabel.style.display = ''; 
+                    pDegree.style.display = ''; 
+                    pPourcent.style.display = 'none'; 
+                    if(secondR=="True") {
+                        divHumiRegul.style.display = ''; 
+                        divTempRegul.style.display = 'none'; 
+                        divUnknownRegul.style.display = 'none'; 
+                        labelDeg.style.display = 'none'; 
+                        labelPct.style.display = '';            
+                        seconLabel.style.display = ''; 
+                        secondVal.style.display = ''; 
+                        secondParam.style.display = ''; 
+                    }
+                    labelSensor.style.display = ''; 
+                    Sensor.style.display = ''; break;
+
+         case 4 :   divTolerance.style.display = ''; 
+                    divToleranceLabel.style.display = ''; 
+                    pDegree.style.display = 'none'; 
+                    pPourcent.style.display = ''; 
+                    if(secondR=="True") {
+                        divHumiRegul.style.display = 'none'; 
+                        divTempRegul.style.display = ''; 
+                        divUnknownRegul.style.display = 'none'; 
+                        labelDeg.style.display = ''; 
+                        labelPct.style.display = 'none'; 
+                        seconLabel.style.display = ''; 
+                        secondVal.style.display = ''; 
+                        secondParam.style.display = ''; 
+                    }
+                    labelSensor.style.display = ''; i
+                    Sensor.style.display = ''; i
+                    break;
+
+         case 5 :   divTolerance.style.display = ''; 
+                    divToleranceLabel.style.display = ''; 
+                    pDegree.style.display = 'none'; 
+                    pPourcent.style.display = ''; 
+                    if(secondR=="True") {
+                        divHumiRegul.style.display = 'none'; 
+                        divTempRegul.style.display = ''; 
+                        divUnknownRegul.style.display = 'none'; 
+                        labelDeg.style.display = ''; 
+                        labelPct.style.display = 'none'; 
+                        seconLabel.style.display = ''; 
+                        secondVal.style.display = ''; 
+                        secondParam.style.display = '';
+                    }
+                    labelSensor.style.display = '';
+                    Sensor.style.display = ''; 
+                    break;         
+    
+         default:   divTolerance.style.display = 'none'; 
+                    divToleranceLabel.style.display = 'none'; 
+                    pDegree.style.display = 'none'; 
+                    pPourcent.style.display = 'none'; 
+                    if(secondR=="True") {
+                        divHumiRegul.style.display = 'none'; 
+                        divTempRegul.style.display = 'none'; 
+                        divUnknownRegul.style.display = ''; 
+                        labelDeg.style.display = ''; 
+                        labelPct.style.display = 'none'; 
+                        seconLabel.style.display = 'none'; 
+                        secondVal.style.display = 'none'; 
+                        secondParam.style.display = 'none';
+                    } 
+                    labelSensor.style.display = 'none'; 
+                    Sensor.style.display = 'none'; 
+                    break;
       }
 }
 // }}}
