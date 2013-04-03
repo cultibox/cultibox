@@ -141,6 +141,7 @@ function check_empty_string($value="") {
 //    $array_line    array to store log's values
 // RET none
 function get_log_value($file,&$array_line) {
+   $check=true;
    if(!file_exists("$file")) return false;
    $handle = fopen("$file", 'r');
    if ($handle)
@@ -149,8 +150,13 @@ function get_log_value($file,&$array_line) {
       {
          $buffer = fgets($handle);
          if(!check_empty_string($buffer)) {
-            break;
+            if($check) {
+                $check=false;
+            } else {
+                break;
+            }
          } else {
+            if(!$check) $check=true;
             $temp = explode("\t", $buffer);
             if(count($temp)==($GLOBALS['NB_MAX_SENSOR']*2+1)) { 
                 for($i=0;$i<count($temp);$i++) {
@@ -198,6 +204,7 @@ function get_log_value($file,&$array_line) {
 //    $array_line       array to store log's values
 // RET none
 function get_power_value($file,&$array_line) {
+   $check=true;
    if(!file_exists("$file")) return false;
    $handle = fopen("$file", 'r');
    if ($handle)
@@ -207,24 +214,26 @@ function get_power_value($file,&$array_line) {
          $buffer = fgets($handle);
          $buffer=trim($buffer);
          if(!check_empty_string($buffer)) {
-            break;
+            if($check) {
+                $check=false;
+            } else {
+                break;
+            }
          } else {
+            if(!$check) $check=true;
             $temp=explode("\t", $buffer);
 
-            if(count($temp)!=17) {
-               return false;
-            }
+            if(count($temp)==17) {
+                for($i=0;$i<count($temp);$i++) {
+                    $temp[$i]=rtrim($temp[$i]);
+                }
 
-            for($i=0;$i<count($temp);$i++) {
-               $temp[$i]=rtrim($temp[$i]);
-            }
+                $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
+                $date_catch=rtrim($date_catch);
+                $time_catch=substr($temp[0], 8,6);
+                $time_catch=rtrim($time_catch);
 
-            $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
-            $date_catch=rtrim($date_catch);
-            $time_catch=substr($temp[0], 8,6);
-            $time_catch=rtrim($time_catch);
-
-            if((!empty($date_catch))&&(!empty($time_catch))) {
+                if((!empty($date_catch))&&(!empty($time_catch))) {
                   for($i=1;$i<count($temp);$i++) {
                      if(strlen($temp[$i])!=4) {
                         return false;
@@ -243,6 +252,7 @@ function get_power_value($file,&$array_line) {
                             );    
                         }
                   }
+                }
             }
          }
       }
@@ -412,9 +422,9 @@ function get_format_graph_power($arr) {
 // RET array containing formated datas
 function format_data_power($data="") {
          $arr=array();
-         if(strcmp("$data","")==0) return $arr();
+         if(strcmp("$data","")==0) return $arr;
          $data_power=explode(",",$data);
-         if(count($data_power) != 1440) return $arr();
+         if(count($data_power) != 1440) return $arr;
 
          $count=0;
          $time_start="";
