@@ -40,7 +40,6 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `POWER_FREQUENCY` int(11) NOT NULL DEFAULT '5',
   `NB_PLUGS` int(11) NOT NULL DEFAULT '3',
   `UPDATE_PLUGS_FREQUENCY` int(20) NOT NULL DEFAULT '-1',
-  `LANG` varchar(5) NOT NULL DEFAULT 'en_GB',
   `SHOW_POPUP` varchar(5) NOT NULL DEFAULT 'True',
   `ALARM_ACTIV` varchar(4) NOT NULL DEFAULT '0000',
   `ALARM_VALUE` varchar(5) NOT NULL DEFAULT '50.00',
@@ -63,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 --
 
 
-INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `LANG`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `LOG_SEARCH`, `STATISTICS`,`SECOND_REGUL`) VALUES
-(1, 'True', '1.1.9', 'blue', 'red', 'black', 'purple', 5, 1, 3, -1, 'fr_FR', 'True', '0000', '15', '000H', '000+', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 2, 'True', 'False');
+INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `ALARM_SENSO`, `ALARM_SENSS`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `LOG_SEARCH`, `STATISTICS`,`SECOND_REGUL`) VALUES
+(1, 'True', '1.1.9', 'blue', 'red', 'black', 'purple', 5, 1, 3, -1, 'True', '0000', '15', '000H', '000+', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 2, 'True', 'False');
 
 -- --------------------------------------------------------
 
@@ -168,22 +167,22 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 --
 
 INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_POWER_MAX`, `PLUG_REGUL`, `PLUG_REGUL_SENSOR`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_ENABLED`) VALUES
-(1, '', 'prise1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,'True'),
-(2, '', 'prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(3, '', 'prise3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(4, '', 'prise4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(5, '', 'prise5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(6, '', 'prise6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(7, '', 'prise7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(8, '', 'prise8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(9, '', 'prise9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(10, '', 'prise10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(11, '', 'prise11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(12, '', 'prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(13, '', 'prise13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(14, '', 'prise14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(15, '', 'prise15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(16, '', 'prise16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True');
+(1, '', 'Prise1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,'True'),
+(2, '', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(3, '', 'Prise3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(4, '', 'Prise4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(5, '', 'Prise5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(6, '', 'Prise6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(7, '', 'Prise7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(8, '', 'Prise8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(9, '', 'Prise9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(10, '', 'Prise10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(11, '', 'Prise11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(12, '', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(13, '', 'Prise13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(14, '', 'Prise14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(15, '', 'Prise15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
+(16, '', 'Prise16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True');
 
 -- --------------------------------------------------------
 
