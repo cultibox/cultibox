@@ -26,14 +26,18 @@ function __() {
       return "";
    }
    $args = func_get_args();
+
   
    if (!isset($__translations)) {
       $__translations = __translations_get($_SESSION['LANG']);
       $__translations_fallback = __translations_get(LANG_FALLBACK);
+
       if (empty($__translations_fallback)) {
          die("No translation file");
       }
+      
       $string_lang = array($_SESSION['LANG'] => $__translations);
+
    }
    
    $msg = $args[0];
@@ -301,27 +305,62 @@ function get_format_month($data) {
 // {{{ get_current_lang()
 // ROLE get the current language selected for the interface
 // IN none
-// RET current lang using the l10n format, ex: en-GB with joomla format is replaced by en_GB
+// RET current lang using the l10n format, ex: fr in url for joomla format is replaced by fr_FR
 function get_current_lang() {
-   $lang =& JFactory::getLanguage();
-   return str_replace("-","_",$lang->getTag());
+    $url=$_SERVER["REQUEST_URI"];
+    $url=str_replace("/"," ",$url);
+    $tab_url=explode(" ",$url);
+    $lang="";
+    if(count($tab_url)>0) {
+        foreach($tab_url as $val) {
+            $val=strtolower($val);
+            switch($val) {  
+                case 'fr':
+                         $lang="fr_FR";
+                         break;
+                case 'en':
+                         $lang="en_GB";
+                         break;
+                case 'it':
+                         $lang="it_IT";
+                         break;
+                case 'de':
+                         $lang="de_DE";
+                         break;
+                case 'es':
+                         $lang="es_ES";
+                         break;
+            }    
+            
+            if(strcmp($lang,"")!=0) {
+                return $lang;
+            }
+        }
+    } else {
+          return "en_GB";
+    }
 }
 //}}}
 
 
-// {{{ set_current_lang()
-// ROLE set the Joomla language for the interface
-// IN $lang       lang to set using the l10n format (ex: en_GB)
-// RET true
-function set_lang($lang) {
-   $lang=str_replace("_","-",$lang);
-   $language =& JFactory::getLanguage();
-   $language->setLanguage("${lang}");
-   $language->load();
+// {{{ get_short_lang()
+// ROLE get the current language selected for the interface
+// IN none
+// RET current lang in short format example: fr_FR is replaced by fr
+function get_short_lang($lang="") {
+    if(strcmp("$lang","")==0) return "en";
 
-   //FIXME check error
-   return true;
+    switch($lang) {
+        case 'fr_FR': return "fr";
+        case 'en_GB': return "en";
+        case 'it_IT': return "it";
+        case 'de_DE': return "de";
+        case 'es_ES': return "es";
+    }
+    return "en";
 }
+//}}}
+
 
 
 // }}}

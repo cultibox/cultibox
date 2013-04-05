@@ -20,9 +20,8 @@ $main_info=array();
 $error=array();
 $info=array();
 
-$lang=get_configuration("LANG",$main_error);
-set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
+$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 __('LANG');
 
 
@@ -73,7 +72,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 
 
 if((isset($close))&&(!empty($close))) {
-    header('Location: plugs');
+    header('Location: plugs-'.$_SESSION['SHORTLANG']);
 }
 
 
@@ -233,7 +232,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
             if(count($error)==0) {
                 if(($selected_plug==$nb_plugs)||((isset($finish))&&(!empty($finish)))) {            
                     set_historic_value(__('VALID_UPDATE_PROGRAM')." (".__('WIZARD_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
-                    header('Location: programs');
+                    header('Location: programs-'.$_SESSION['SHORTLANG']);
                 }
 			}
 

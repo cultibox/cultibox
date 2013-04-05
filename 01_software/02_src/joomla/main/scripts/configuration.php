@@ -19,15 +19,8 @@ $main_error=array();
 $info=array();
 $main_info=array();
 
-$lang=getvar('lang');
-if((isset($lang))&&(!empty($lang))) {
-    insert_configuration("LANG",$lang,$main_error);
-} else {
-    $lang=get_configuration("LANG",$main_error);
-}
-
-set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
+$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 __('LANG');
 
 

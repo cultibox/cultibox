@@ -17,9 +17,11 @@ require_once('main/libs/utilfunc.php');
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
 $main_error=array();
-$lang=get_configuration("LANG",$main_error);
-set_lang($lang);
-$_SESSION['LANG'] = get_current_lang();
+
+if((!isset($_SESSION['LANG']))||(empty($_SESSION['LANG']))) {
+    $_SESSION['LANG']="en_GB";
+    $_SESSION['SHORTLANG'] = "en";
+}
 __('LANG');
 
 
@@ -83,12 +85,15 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 if((isset($_POST['selected_hdd']))&&(!empty($_POST['selected_hdd']))&&(isset($_POST['reset_sd_card']))&&(!empty($_POST['reset_sd_card']))) {
     $_SESSION['submenu']="card_interface";
-    header("Refresh: 5;url=./configuration");
+    $url="./configuration-".$_SESSION['SHORTLANG'];
+    header("Refresh: 5;url=$url");
 } elseif(((isset($_SESSION['import_log']))&&($_SESSION['import_log']))) {
     if((isset($anchor))&&(!empty($anchor))) {
-        header("Refresh: 5;url=./display-logs#$anchor");
+        $url="./display-logs-".$_SESSION['SHORTLANG']."#$anchor";
+        header("Refresh: 5;url=$url");
     } else { 
-        header("Refresh: 5;url=./display-logs");
+        $url="./display-logs-".$_SESSION['SHORTLANG'];
+        header("Refresh: 5;url=$url");
     }
 } 
 

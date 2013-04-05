@@ -19,9 +19,8 @@ require_once('main/libs/utilfunc.php');
 $error=array();
 $main_error=array();
 $main_info=array();
-$lang=get_configuration("LANG",$main_error);
-set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
+$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 __('LANG');
 
 $reset_log=getvar('reset_log');
@@ -65,6 +64,11 @@ $reset_log=getvar('reset_log');
 $reset_log_power=getvar('reset_log_power');
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
+
+
+//Check empty table for export process:
+$empty_log=check_export_table_csv("logs",$main_error);
+$empty_power=check_export_table_csv("power",$main_error);
 
 
 //Get values from the waiting page using SESSION variables

@@ -51,26 +51,26 @@ function(){
     <div class="text_info"><?php echo __('WELCOME_TUTO'); ?>:<br /><?php echo __('WELCOME_REQUIEREMENT'); ?></div>
     <br />
     <p class="text_info"><?php echo __('WELCOME_FOLLOW_LINK'); ?>:</p>
-<form action="<?php echo($_SERVER['PHP_SELF'])."/wizard"; ?>" method="post"><p class="p_center"><input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>"></p></form>
+<form action="<?php echo($_SERVER['PHP_SELF'])."/wizard-".$_SESSION['SHORTLANG']; ?>" method="post"><p class="p_center"><input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>"></p></form>
 <?php } else { ?>
 <hr />
 <br />
 <table class="table_width">
 <tr>
-<td class="welcome-link"><a href="index.php/display-logs"><img src="main/libs/img/logs.png" title="<?php echo __('WELCOME_LOGS'); ?>" alt="<?php echo __('WELCOME_LOGS'); ?>" /><br /></a></td><td class="welcome-link"><a href="index.php/programs"><img src="main/libs/img/program.png" title="<?php echo __('WELCOME_PROGRAM'); ?>" alt="<?php echo __('WELCOME_PROGRAM'); ?>" /><br /></a></td>
-<td class="welcome-link"><a href="index.php/calendar"><img src="main/libs/img/calendar.png" title="<?php echo __('WELCOME_CALENDAR'); ?>" alt="<?php echo __('WELCOME_CALENDAR'); ?>"/><br /></a></td></tr>
+<td class="welcome-link"><a href="index.php/display-logs-<?php echo $_SESSION['SHORTLANG']; ?>"><img src="main/libs/img/logs.png" title="<?php echo __('WELCOME_LOGS'); ?>" alt="<?php echo __('WELCOME_LOGS'); ?>" /><br /></a></td><td class="welcome-link"><a href="index.php/programs-<?php echo $_SESSION['SHORTLANG']; ?>"><img src="main/libs/img/program.png" title="<?php echo __('WELCOME_PROGRAM'); ?>" alt="<?php echo __('WELCOME_PROGRAM'); ?>" /><br /></a></td>
+<td class="welcome-link"><a href="index.php/calendar-<?php echo $_SESSION['SHORTLANG']; ?>"><img src="main/libs/img/calendar.png" title="<?php echo __('WELCOME_CALENDAR'); ?>" alt="<?php echo __('WELCOME_CALENDAR'); ?>"/><br /></a></td></tr>
 <tr>
 <td class="welcome-link">
-<a href="index.php/display-logs">
+<a href="index.php/display-logs-<?php echo $_SESSION['SHORTLANG']; ?>">
 <?php echo __('WELCOME_LOGS'); ?>
 </a>
 </td>
-<td class="welcome-link"><a href="index.php/programs">
+<td class="welcome-link"><a href="index.php/programs-<?php echo $_SESSION['SHORTLANG']; ?>">
 <?php echo __('WELCOME_PROGRAM'); ?>
 </a>
 </td>
 <td class="welcome-link">
-<a href="index.php/calendar">
+<a href="index.php/calendar-<?php echo $_SESSION['SHORTLANG']; ?>">
 <?php echo __('WELCOME_CALENDAR'); ?>
 </a>
 </td>

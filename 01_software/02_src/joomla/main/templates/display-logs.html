@@ -33,11 +33,19 @@
 <br /><br />
 
 
-<?php switch($lang) {
-
-	case 'fr_FR': 
+<?php switch($_SESSION['LANG']) {
+	    case 'fr_FR': 
                 echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-fr.js"></script>'; 
-		break;
+		        break;
+        case 'it_IT':
+                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-it.js"></script>';
+                break;
+        case 'de_DE':
+                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-de.js"></script>';
+                break;
+        case 'es_ES':
+                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-es.js"></script>';
+                break;
         }
 ?>
 
@@ -47,7 +55,7 @@ $(function() {
 dateFormat: "yy-mm-dd",
 showButtonPanel: true,
 showOn: "both",
-buttonImage: "../main/libs/img/datepicker.png",
+buttonImage: "../../main/libs/img/datepicker.png",
 buttonImageOnly: 'true',
 <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
 }).val()
@@ -73,7 +81,7 @@ buttonImageOnly: 'true',
 </div>
 <br />
 <div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
-<form action="/cultibox/index.php/display-logs" method="post">
+<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-day"></td>
@@ -132,7 +140,7 @@ buttonImageOnly: 'true',
 <br />
 </div>
 <div id="label_select_month" style="<?php if(strcmp($type,"days")==0) echo "display:none"; ?>">
-<form action="/cultibox/index.php/display-logs" method="post">
+<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-month"></td>
@@ -749,7 +757,7 @@ $(function () {
 <tr>
     <td class="left_log">
         <?php if((strcmp("$type","month")!=0)||(($GLOBALS['FIRST_LOG_YEAR']!=$startyear)||($startmonth!=01))) { ?>
-        <form action="/cultibox/index.php/display-logs#anchor-logs" method="post">
+        <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-logs" method="post">
             <input type="submit" value="<" name="previous" class="button_log" title="<?php if(strcmp($type,"days")==0) echo __('PREVIOUS_BUTTON_DAY'); else echo __('PREVIOUS_BUTTON_MONTH'); ?>">
             <?php if(strcmp($type,"days")==0) { ?>
                 <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("-1 day", strtotime("$startday"))); ?>">
@@ -784,7 +792,7 @@ $(function () {
 
           if(((strcmp("$type","month")==0)&&(($startyear!=date('Y'))||($startmonth!=12)))||((strcmp("$type","days")==0)&&(strcmp("$startday","$yy-$mm-$dd")!=0))) { 
         ?>
-        <form action="/cultibox/index.php/display-logs#anchor-logs" method="post">
+        <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-logs" method="post">
             <input type="submit" value=">" name="next" class="button_log" title="<?php if(strcmp($type,"days")==0) echo __('NEXT_BUTTON_DAY'); else echo __('NEXT_BUTTON_MONTH'); ?>">
             <?php if(strcmp($type,"days")==0) { ?>
                 <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("+1 day", strtotime("$startday"))); ?>">
@@ -904,12 +912,12 @@ $(function () {
 </form>
 
 
-<form action="/cultibox/index.php/display-logs#anchor-manage" method="post" >
+<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-manage" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
     <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RESET_LOG'); ?>" /></td>
-    <td class="log-manage-field"><INPUT type="submit" id="reset_log" name="reset_log" value="<?php echo __('MANAGE_RESET_LOG'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')"></td>
+    <td class="log-manage-field"><INPUT type="submit" id="reset_log" name="reset_log" <?php if(!$empty_log) { echo 'disabled'; ?> value="<?php echo __('MANAGE_EXPORT_EMPTY_LOG_CSV'); ?>" <?php } else { ?> value="<?php echo __('MANAGE_RESET_LOG'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')" <?php } ?>></td>
     <td></td>
 </tr>
 </table>
@@ -927,12 +935,12 @@ $(function () {
 
 
 
-<form action="/cultibox/index.php/display-logs#anchor-manage" method="post" >
+<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-manage" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
     <td class="log-manage-title"><?php echo __('MANAGE_EXPORT_LOG_CSV'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_EXPORT_LOG_CSV'); ?>" /></td>
-    <td class="log-manage-field"><INPUT type="submit" id="export_log" name="export_log" value="<?php echo __('MANAGE_EXPORT_LOG_CSV_BUTTON'); ?>"></td>
+    <td class="log-manage-field"><INPUT type="submit" id="export_log" name="export_log" <?php if(!$empty_log) { echo 'disabled'; ?> value="<?php echo __('MANAGE_EXPORT_EMPTY_LOG_CSV'); ?>" <?php } else { ?> value="<?php echo __('MANAGE_EXPORT_LOG_CSV_BUTTON'); ?>"<?php } ?>></td>
     <td></td>
 </tr>
 </table>
@@ -952,12 +960,12 @@ $(function () {
 
 
 <label id="anchor-manage"></label>
-<form action="/cultibox/index.php/display-logs#anchor-manage" method="post" >
+<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-manage" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
     <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE_POWER'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RESET_LOG'); ?>" /></td>
-    <td class="log-manage-field"><input type="submit" id="reset_log_power" name="reset_log_power" value="<?php echo __('MANAGE_RESET_POWER'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')"></td>
+    <td class="log-manage-field"><input type="submit" id="reset_log_power" name="reset_log_power" <?php if(!$empty_log) { echo 'disabled'; ?> value="<?php echo __('MANAGE_EXPORT_EMPTY_POWER_CSV'); ?>" <?php } else { ?> value="<?php echo __('MANAGE_RESET_POWER'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')" <?php } ?>></td>
     <td></td>
 </tr>
 </table>
@@ -974,12 +982,12 @@ $(function () {
 </form>
 
 
-<form action="/cultibox/index.php/display-logs#anchor-manage" method="post" >
+<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-manage" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
     <td class="log-manage-title"><?php echo __('MANAGE_EXPORT_POWER_CSV'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_EXPORT_POWER_CSV'); ?>" /></td>
-    <td class="log-manage-field"><INPUT type="submit" id="export_log_power" name="export_log_power" value="<?php echo __('MANAGE_EXPORT_POWER_CSV_BUTTON'); ?>"></td>
+    <td class="log-manage-field"><INPUT type="submit" id="export_log_power" name="export_log_power"  <?php if(!$empty_power) { echo 'disabled'; ?> value="<?php echo __('MANAGE_EXPORT_EMPTY_POWER_CSV'); ?>" <?php } else { ?>  value="<?php echo __('MANAGE_EXPORT_POWER_CSV_BUTTON'); ?>"<?php } ?>></td>
     <td></td>
 </tr>
 </table>

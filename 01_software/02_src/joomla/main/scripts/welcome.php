@@ -17,9 +17,8 @@ require_once('main/libs/utilfunc.php');
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
 $main_error=array();
 $main_info=array();
-$lang=get_configuration("LANG",$main_error);
-set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
+$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 $version=get_configuration("VERSION",$main_error);
 __('LANG');
 

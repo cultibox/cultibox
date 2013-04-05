@@ -10,9 +10,10 @@ define ('CACHE', $toroot);
 define ('__TRANSLATIONS_MAX_LINE_LENGTH', 8192);
 define ('__TRANSLATIONS_CACHE_FILEPATH', '%s/main/templates_c/l10n.%s.ser');
 define ('__TRANSLATIONS_PO_FILEPATH', '%s/main/locale/%s.utf8.po');
+
 if(isset($_SESSION["LANG"])) {
-   define ('__TRANSLATIONS_CACHE_FILEPATH_MODULE', '../../templates_c/l10n.'.$_SESSION["LANG"].'.ser');
-   define ('__TRANSLATIONS_PO_FILEPATH_MODULE', '../../locale/'.$_SESSION["LANG"].'.utf8.po');
+   define ('__TRANSLATIONS_CACHE_FILEPATH_MODULE', '../../../main/templates_c/l10n.'.$_SESSION["LANG"].'.ser');
+   define ('__TRANSLATIONS_PO_FILEPATH_MODULE', '../../../main/locale/'.$_SESSION["LANG"].'.utf8.po');
 }
 
 function __translations_check_lang($lang) {
