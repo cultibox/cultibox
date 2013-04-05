@@ -246,7 +246,7 @@ function get_power_value($file,&$array_line) {
 
 
                   for($i=1;$i<count($temp);$i++) {
-                        if((strcmp($temp[$i],"0000")!=0)&&(is_numeric($temp[$i]))) {
+                        if(is_numeric($temp[$i])) {
                             $array_line[] = array(
                                 "timestamp" => $temp[0],
                                 "power" => $temp[$i],
@@ -369,10 +369,15 @@ function get_short_lang($lang="") {
 // {{{ get_format_graph()
 // ROLE get datas for the highcharts graphics
 // IN $arr           array containing datas
+//    $type          type to compute a hole
 // RET $data         data at the highcharts format (a string)
-function get_format_graph($arr) {
+function get_format_graph($arr,$type="log") {
    $err="";
-   $hole=get_configuration("RECORD_FREQUENCY",$err)*10;
+   if(strcmp("$type","log")==0) {
+        $hole=get_configuration("RECORD_FREQUENCY",$err)*4;
+   } elseif(strcmp("$type","power")==0) {
+        $hole=get_configuration("POWER_FREQUENCY",$err)*4;
+   } 
    if(strcmp("$hole","")==0) $hole=10;
    $data="";
    $last_mm="";
@@ -412,117 +417,20 @@ function get_format_graph($arr) {
 //}}}
 
 
-// {{{ get_format_graph_power()
-// ROLE get datas for the highcharts graphics for the power graphic (special display)
-// IN $arr           array containing datas
-// RET $data         data at the highcharts format (a string)
-function get_format_graph_power($arr) {
-
-   $data="";
-   $last_mm="";
-   $last_hh="";
-   $last_value="";
-   $err="";
-   $hole=get_configuration("RECORD_POWER",$err);
-   if(strcmp("$hole","")==0) $hole=1;
-
-
-   if(count($arr)>0) {
-   foreach($arr as $value) {
-      $hh=substr($value['time_catch'], 0, 2);
-      $mm=substr($value['time_catch'], 2, 2);
-
-      if(("$hh:$mm" != "00:00")&&(empty($data))&&(empty($last_value))) {
-            $data=fill_data("00","00","$hh","$mm","0","$data");
-      } else if((check_empty_record("$last_hh","$last_mm","$hh","$mm",$hole))&&("$hh:$mm" != "00:00")) {
-            $data=fill_data("$last_hh","$last_mm","$hh","$mm","$last_value","$data");
-      } else {
-         if("$hh:$mm" != "00:00") {
-            $data=fill_data("$last_hh","$last_mm","$hh","$mm","0","$data");
-         }
-      }
-      $last_value="$value[record]";
-      $last_hh=$hh;
-      $last_mm=$mm;
-   }
-   if("$last_hh:$last_mm" != "23:59") {
-         $data=fill_data("$last_hh","$last_mm","24","00","0","$data");
-   }
-   } else {
-          $data=fill_data("00","00","24","00","0","$data");
-   }
-   return $data;
-}
-//}}}
-
 // {{{ format_data_power()
 // ROLE format data power like programs graph, using space time
-// IN $data       string containing 1440 values, one per minute for a day
+// IN $data       array containing power values
 // RET array containing formated datas
-function format_data_power($data="") {
+function format_data_power($data) {
          $arr=array();
-         if(strcmp("$data","")==0) return $arr;
-         $data_power=explode(",",$data);
-         if(count($data_power) != 1440) return $arr;
-
-         $count=0;
-         $time_start="";
-         $time_stop="";
-         $value="";
-         foreach($data_power as $data) {
-                if($data!=0) {
-                    if(empty($value)) {
-                        $time_start=$count;
-                        $value=$data;
-                    } elseif($value!=$data) {
-                        $time_stop=$count-1;
-                    } 
-                } else {
-                    if(!empty($time_start)) {
-                        $time_stop=$count-1;
-                    }
-                }
-                $count=$count+1;
-
-                if((!empty($time_stop))&&(!empty($time_start))) {
-                      $arr[]=array(
-                                    "time_start" => Chrono($time_start*60),
-                                    "time_stop" => Chrono($time_stop*60),
-                                    "value" => $value
-                                );
-                       $time_stop="";
-                       $time_start="";
-                       $value="";
-                }
+         if(count($data)==0) return $arr;
+         foreach($data as $datap) {
+                        $arr[]=array(
+                            "time_catch" => $datap['time_catch'],
+                            "record" => $datap['record']
+                        );
           }
           return $arr;
-}
-// }}}
-
-
-
-
-// {{{ function Chrono()
-// ROLE Transform seconds into HHMMSS
-// IN   seconds to be transformed
-// RET  time transformed (format HHMMSS)
-function Chrono($TotSec) {
-    $heures  =  bcdiv($TotSec,  3600,  0);
-    $minutes  =  (bcdiv($TotSec,  60,  0)  %  60);
-    $secondes = $TotSec-(($heures * 3600) + ($minutes * 60));
-    
-    while(strlen($heures)<2) {
-        $heures="0".$heures;
-    }
-
-    while(strlen($minutes)<2) {
-        $minutes="0".$minutes;
-    }
-
-    while(strlen($secondes)<2) {
-        $secondes="0".$secondes;
-    }
-    return "$heures$minutes$secondes";
 }
 // }}}
 

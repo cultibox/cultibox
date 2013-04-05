@@ -965,7 +965,7 @@ $(function () {
 <tr>
     <td class="log-manage-marge"></td>
     <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE_POWER'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RESET_LOG'); ?>" /></td>
-    <td class="log-manage-field"><input type="submit" id="reset_log_power" name="reset_log_power" <?php if(!$empty_log) { echo 'disabled'; ?> value="<?php echo __('MANAGE_EXPORT_EMPTY_POWER_CSV'); ?>" <?php } else { ?> value="<?php echo __('MANAGE_RESET_POWER'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')" <?php } ?>></td>
+    <td class="log-manage-field"><input type="submit" id="reset_log_power" name="reset_log_power" <?php if(!$empty_power) { echo 'disabled'; ?> value="<?php echo __('MANAGE_EXPORT_EMPTY_POWER_CSV'); ?>" <?php } else { ?> value="<?php echo __('MANAGE_RESET_POWER'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')" <?php } ?>></td>
     <td></td>
 </tr>
 </table>

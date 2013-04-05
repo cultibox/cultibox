@@ -1,3 +1,5 @@
+
+
 .histo_info {
     font-size: 13px;
     color: green;
@@ -538,16 +540,21 @@ hr {
 
 #menubar {
 	 padding:0 0 4px 25px;
-	 margin-right:80px;
+	 margin-right:2%;
+     margin-left: 2%;
+}
+
+.mod-languages {
+    text-align: center;
 }
 
 a.logo img{
-	padding:10px 0 10px 30px;
+	padding:10px 0 10px 50px;
 }
 
 #box{
 	position: absolute;
-	left:820px;
+	left:800px;
 	z-index:1000;
 }
 
