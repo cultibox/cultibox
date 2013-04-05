@@ -39,7 +39,7 @@ $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
-$main_info[]=__('WIZARD_DISABLE_FUNCTION');
+$main_info[]=__('WIZARD_DISABLE_FUNCTION').": <a href='programs-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('CLASSIC')." title='' id='Classic' /></a>";
 
 
 

@@ -219,7 +219,8 @@ if((isset($export))&&(!empty($export))) {
 } 
 
 
-$main_info[]=__('WIZARD_ENABLE_FUNCTION');
+$main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
+
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card

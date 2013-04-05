@@ -1093,10 +1093,10 @@ msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "Impossible d'accéder au fichier des mises à jours, vérifiez votre configuration"
 
 msgid "ERROR_POWER_PRICE_NULL"
-msgstr "La puissance de certaine de vos prises n'est pas configurée, vous pouvez la configurer: <a href='plugs'>ici</a>"
+msgstr "La puissance de certaine de vos prises n'est pas configurée, vous pouvez la configurer"
 
 msgid "ERROR_HPC_TIME_NULL"
-msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configuré, vous pouvez le configurer <a href='configuration?submenu=cost_interface'>ici</a>"
+msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configuré, vous pouvez le configurer"
 
 msgid "ERROR_COPY_TPL"
 msgstr "Impossible de copier le fichier empty_file_64.tpl sur votre carte SD"
@@ -1133,6 +1133,15 @@ msgstr "Erreur lors de la remise à zéro du/des programmes"
 
 
 # For the informations part:
+
+msgid "HERE"
+msgstr "ici"
+
+msgid "WIZARD"
+msgstr "Assistant"
+
+msgid "CLASSIC"
+msgstr "Classique"
 
 msgid "INFORMATIONS"
 msgstr "Information(s)"
@@ -1174,10 +1183,10 @@ msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "Programme mis à jour avec succès"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici: <a href='wizard'><img src="main/libs/img/wizard.png" alt="assistant" title="Cliquez sur l'icône pour lancer l'assistant de configuration" id="wizard" /></a>"
+msgstr "Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici"
 
 msgid "WIZARD_DISABLE_FUNCTION"
-msgstr "Vous pouvez utiliser l'interface de configuration classique en cliquant ici: <a href='programs'><img src="main/libs/img/wizard.png" alt="interface classique" title="Cliquez sur l'icône pour revenir au mode de configuration classique" id="Classic" /></a>"
+msgstr "Vous pouvez utiliser l'interface de configuration classique en cliquant ici"
 
 msgid "INFO_RESET_PROGRAM"
 msgstr "Programme(s) réinitialisé(s) avec succès"

@@ -77,7 +77,6 @@ EOF;
    if(!db_priv_end($db)) {
       $out[]=__('PROBLEM_CLOSING_CONNECTION');   
    }
-
    return $return;
 }
 // }}}
@@ -469,7 +468,7 @@ EOF;
 
         if(strcmp("$id","all")!=0) {
             if(strcmp($res_power[$id-1]['PLUG_POWER'],"0")==0) {
-                $out[]=__('ERROR_POWER_PRICE_NULL');
+                $out[]=__('ERROR_POWER_PRICE_NULL')." <a href='plugs-".$_SESSION['SHORTLANG']."'>".__('HERE')."</a>";
             }
 
             $tmp=array();
@@ -495,7 +494,7 @@ EOF;
             }
         }
 
-        if($err) $out[]=__('ERROR_POWER_PRICE_NULL'); 
+        if($err) $out[]=__('ERROR_POWER_PRICE_NULL')." <a href='plugs-".$_SESSION['SHORTLANG']."'>".__('HERE')."</a>";
 
         $timestamp=$res[0]['timestamp'];
         $save=$res[0];
@@ -558,7 +557,7 @@ function get_theorical_power($id=0,$type="",&$out,&$error=0) {
         }
 
         if((strcmp($start_hc,"")==0)||(strcmp($stop_hc,"")==0)) {
-            $out[]=__('ERROR_HPC_TIME_NULL');
+            $out[]=__('ERROR_HPC_TIME_NULL')." <a href='plugs-".$_SESSION['SHORTLANG']."'>".__('HERE')."</a>";  
         } else {
             $stahch=substr($start_hc,0,2);
             $stahcm=substr($start_hc,3,2);

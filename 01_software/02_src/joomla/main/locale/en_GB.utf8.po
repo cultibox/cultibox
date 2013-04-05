@@ -1091,10 +1091,10 @@ msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "Enable to access to the update files, please check your configuration"
 
 msgid "ERROR_POWER_PRICE_NULL"
-msgstr "Power of all your plugs doesn't seem to be configured, you can configure it: <a href='plugs'>here</a>"
+msgstr "Power of all your plugs doesn't seem to be configured, you can configure it"
 
 msgid "ERROR_HPC_TIME_NULL"
-msgstr "Time start or stop of the full/empty hours is not configured properly. You can configure it <a href='configuration?submenu=cost_interface'>here</a>"
+msgstr "Time start or stop of the full/empty hours is not configured properly. You can configure it"
 
 msgid "ERROR_COPY_TPL"
 msgstr "Can't copy empty_file_64.tpl file into your Cultibox SD card"
@@ -1131,6 +1131,15 @@ msgstr "Error during plug(s) reset"
 
 
 # For the informations part:
+msgid "HERE"
+msgstr "here"
+
+msgid "WIZARD"
+msgstr "Wizard"
+
+msgid "CLASSIC"
+msgstr "Classic"
+
 msgid "INFORMATIONS"
 msgstr "Information(s)"
 
@@ -1171,7 +1180,7 @@ msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "Program successfully updated"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "You can also use the wizard assistant to configure the first plug, just click here: <a href='wizard'><img src="main/libs/img/wizard.png" title="Just click to launch the wizzard" alt="wizard" id="wizard" /></a>"
+msgstr "You can also use the wizard assistant to configure the first plug, just click here"
 
 msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "You can use the standard interface to configure your programs instead. Just click here: <a href='programs'><img src="main/libs/img/wizard.png" title="Just click to launch the classic configuration mode" alt="classic" id="Classic" /></a>"

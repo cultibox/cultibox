@@ -37,7 +37,7 @@ $count_err=false;
 $program="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
-$main_info[]=__('WIZARD_ENABLE_FUNCTION');
+$main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $selected_error="";
