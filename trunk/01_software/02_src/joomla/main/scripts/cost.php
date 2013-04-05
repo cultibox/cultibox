@@ -19,9 +19,8 @@ $main_error=array();
 $main_info=array();
 $error=array();
 $info=array();
-$lang=get_configuration("LANG",$main_error);
-set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
+$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 __('LANG');
 
 
@@ -48,6 +47,7 @@ $stats=get_configuration("STATISTICS",$main_error);
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
 $submit=getvar("view-cost");
 $resume="";
+$lang=$_SESSION['LANG'];
 
 
 

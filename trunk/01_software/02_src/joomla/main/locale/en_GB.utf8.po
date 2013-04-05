@@ -339,7 +339,7 @@ msgid "IMPORT_LOG"
 msgstr "Import logs"
 
 msgid "NO_IMPORT_LOG"
-msgstr "No logs to import"
+msgstr "No SD card detected"
 
 msgid "MIN_Y_AXIS_LOG"
 msgstr "Minimal value for Y-axis"
@@ -395,8 +395,14 @@ msgstr "Configure Y-axis for power graphics"
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Export your log informations"
 
+msgid "MANAGE_EXPORT_EMPTY_LOG_CSV"
+msgstr "Empty logs database"
+
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Export your power informations"
+
+msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
+msgstr "Empty power logs database"
 
 msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
 msgstr "Export logs"
@@ -444,7 +450,7 @@ msgid "VALIDATION_PLUG_CONF"
 msgstr "Update plug configuration"
 
 msgid "POWER_PLUG"
-msgstr "Power consummed by the equipment plugged (in Watt)"
+msgstr "Power consummed by the equipment plugged (Watt)"
 
 msgid "ENABLE_REGUL_PLUG"
 msgstr "Secondary plug regulation (Expert user only)"
@@ -1240,7 +1246,7 @@ msgid "TOOLTIP_COST_TYPE"
 msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommé."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "The SD card selected will be formated to be compatible with your Cultibox. Plugs files, programs files and configuration files according to your software parameters will be copied in the SD card. Logs and powers files will be also formated. If you have some logs files into your SD card those will be erased.<br /><b><i>Note: </i></b>to be recognize by the Cultibox, your SD card must be formatted with FAT16 filesystem type and so, must not be greater than 2Go"
+msgstr "The SD card selected will be formated to be compatible with your Cultibox. Plugs files, programs files and configuration files according to your software parameters will be copied in the SD card. Logs and powers files will be also formated. If you have some logs files into your SD card those could be erased.<br /><b><i>Note: </i></b>to be recognize by the Cultibox, your SD card must be formatted with FAT16 filesystem type and so, must not be greater than 2Go"
 
 msgid "TOOLTIP_RESET_LOG"
 msgstr "This feature will erase all your previous logs recorded into your Cultibox software. You can use it at the end of a culture period, if you don't need your old logs and you wish to free space on your computer"

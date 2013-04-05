@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
    session_start();
 }
  
-$_SESSION['LANG']=$_GET["lang"];
+$_SESSION['LANG']=$_GET['lang'];
 
 require_once('../../libs/config.php');
 require_once('../../libs/db_common.php');

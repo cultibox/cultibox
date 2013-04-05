@@ -1365,7 +1365,7 @@ EOF;
 
 // {{{ export_table_csv()
 // ROLE export a program into a text file
-// IN $table       name of the table to be exported
+// IN $name       name of the table to be exported
 //    $out         error or warning message
 // RET none
 function export_table_csv($name="",&$out) {
@@ -1380,9 +1380,15 @@ EOF;
        $res_name = $db->loadAssocList();
        $ret_name=$db->getErrorMsg();
 
-       $sql = <<<EOF
-SELECT * FROM `{$name}` 
+        if(strcmp("$name","logs")==0) {
+            $sql = <<<EOF
+SELECT * FROM `{$name}` WHERE `fake_log` LIKE "False";
 EOF;
+       } else {
+            $sql = <<<EOF
+SELECT * FROM `{$name}`;
+EOF;
+       }
        $db->setQuery($sql);
        $res = $db->loadAssocList();
        $ret=$db->getErrorMsg();
@@ -1421,6 +1427,35 @@ EOF;
 }
 // }}}
 
+
+
+// {{{ check_export_table_csv()
+// ROLE check that a tabler is empty or not
+// IN $name       name of the table to be exported
+//    $out         error or warning message
+// RET false is table is empty, true else
+function check_export_table_csv($name="",&$out) {
+       if(strcmp("$name","")==0) return false;
+
+       $db = db_priv_start();
+
+        if(strcmp("$name","logs")==0) {
+            $sql = <<<EOF
+SELECT * FROM `{$name}` WHERE `fake_log` LIKE "False";
+EOF;
+       } else {
+            $sql = <<<EOF
+SELECT * FROM `{$name}`;
+EOF;
+       }
+       $db->setQuery($sql);
+       $res = $db->loadAssocList();
+       $ret=$db->getErrorMsg();
+
+       if(!$res) return false;
+       return true;
+}
+// }}}
 
 
 // {{{ purge_program()
@@ -2200,17 +2235,17 @@ EOF;
         foreach($res as $result) {
             $resume=$resume."<p align='center'><i>".__('SUMARY_REGUL_SUBTITLE')." ".$result['id'].":</i></p>";
             if(strcmp($result['PLUG_SENSO'],"H")==0) {
-                $resume=$resume.__('SUMARY_REGUL_SENSO').": ".__('SUMARY_REGUL_HYGRO');
+                $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_HYGRO');
             } else {
-                $resume=$resume.__('SUMARY_REGUL_SENSO').": ".__('SUMARY_REGUL_TEMP');
+                $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_TEMP');
             }
 
             if(strcmp($result['PLUG_SENSS'],"+")==0) {
-                $resume=$resume."<br />".__('SUMARY_REGUL_SENSS').": ".__('SUMARY_ABOVE');
+                $resume=$resume."<br /><b>".__('SUMARY_REGUL_SENSS').":</b> ".__('SUMARY_ABOVE');
             } else {
-                $resume=$resume."<br />".__('SUMARY_REGUL_SENSS').": ".__('SUMARY_UNDER');    
+                $resume=$resume."<br /><b>".__('SUMARY_REGUL_SENSS').":</b> ".__('SUMARY_UNDER');    
             }
-            $resume=$resume."<br />".__('SUMARY_REGUL_VALUE').": ".$result['PLUG_REGUL_VALUE']."<br /><br />";
+            $resume=$resume."<br /><b>".__('SUMARY_REGUL_VALUE').":</b> ".$result['PLUG_REGUL_VALUE']."<br /><br />";
         }
     }
 }
@@ -2245,7 +2280,7 @@ EOF;
    foreach($res as $result) {
             $resume="<p align='center'><b><i>".__('SUMARY_COST_TITLE').":<br /></i></b></p>";
             if(isset($_SESSION['LANG'])) {
-                if(strcmp($_SESSION['LANG'],"fr_FR")==0) {
+                if((strcmp($_SESSION['LANG'],"fr_FR")==0)||(strcmp($_SESSION['LANG'],"de_DE"))||(strcmp($_SESSION['LANG'],"es_ES"))||(strcmp($_SESSION['LANG'],"it_IT"))) {
                     $unity="&euro;";
                 } else {
                     $unity="&#163;";
@@ -2254,14 +2289,14 @@ EOF;
                 $unity="&#163;";
             }
             if(strcmp($result['COST_TYPE'],"standard")==0) {
-                $resume=$resume."<br />".__('SUMARY_COST_TYPE').": ".$result['COST_TYPE'];
-                $resume=$resume."<br />".__('SUMARY_COST_PRICE').": ".$result['COST_PRICE'].$unity;
+                $resume=$resume."<br /><b>".__('SUMARY_COST_TYPE').":</b> ".$result['COST_TYPE'];
+                $resume=$resume."<br /><b>".__('SUMARY_COST_PRICE').":</b> ".$result['COST_PRICE'].$unity;
             } else {
-                $resume=$resume."<br />".__('SUMARY_COST_TYPE').": ".__('SUMARY_HP_HC');
-                $resume=$resume."<br />".__('SUMARY_COST_PRICE_HC').": ".$result['COST_PRICE_HC'].$unity;
-                $resume=$resume."<br />".__('SUMARY_COST_PRICE_HP').": ".$result['COST_PRICE_HP'].$unity;
-                $resume=$resume."<br />".__('SUMARY_START_HC').": ".$result['START_TIME_HC'];
-                $resume=$resume."<br />".__('SUMARY_STOP_HC').": ".$result['STOP_TIME_HC'];
+                $resume=$resume."<br /><b>".__('SUMARY_COST_TYPE').":</b> ".__('SUMARY_HP_HC');
+                $resume=$resume."<br /><b>".__('SUMARY_COST_PRICE_HC').":</b> ".$result['COST_PRICE_HC'].$unity;
+                $resume=$resume."<br /><b>".__('SUMARY_COST_PRICE_HP').":</b> ".$result['COST_PRICE_HP'].$unity;
+                $resume=$resume."<br /><b>".__('SUMARY_START_HC').":</b> ".$result['START_TIME_HC'];
+                $resume=$resume."<br /><b>".__('SUMARY_STOP_HC').":</b> ".$result['STOP_TIME_HC'];
             }
     }
 

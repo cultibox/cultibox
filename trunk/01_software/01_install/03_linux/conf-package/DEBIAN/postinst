@@ -3,7 +3,9 @@
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 
-ln -s /opt/cultibox /opt/lampp
+if [ ! -f /opt/lampp ] && [ ! -L /opt/lampp ]; then
+    ln -s /opt/cultibox /opt/lampp
+fi
 chown -R $user_culti:$group_culti /opt/cultibox
 sed -i "s/User nobody/User $user_culti/" /opt/lampp/etc/httpd.conf
 sed -i "s/Group nogroup/Group $group_culti/" /opt/lampp/etc/httpd.conf

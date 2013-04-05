@@ -27,9 +27,9 @@ $pop_up = get_configuration("SHOW_POPUP",$main_error);
 
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
-$lang=get_configuration("LANG",$main_error);
-set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
+$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
+$lang=$_SESSION['LANG'];
 __('LANG');
 
 

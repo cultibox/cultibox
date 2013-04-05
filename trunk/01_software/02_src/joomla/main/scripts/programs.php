@@ -17,10 +17,9 @@ require_once('main/libs/utilfunc.php');
 $main_error=array();
 $main_info=array();
 $error=array();
-$lang=get_configuration("LANG",$main_error);
 $version=get_configuration("VERSION",$main_error);
-set_lang($lang);
 $_SESSION['LANG'] = get_current_lang();
+$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 __('LANG');
 
 

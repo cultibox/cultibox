@@ -10,6 +10,7 @@ Cultibox (1.1.12) precise; urgency=low
     + Correction d'un appel de fonction erroné pour l'importation des logs de puissance
     + Lorsqu'on charge les fichiers de log on authorise une ligne vide, à la ligneuxième ligne vide on ferme le fichier et on passe au suivant
     + Les données éronnées dans les fichiers de logs n'empèchent pas de poursuivre la lecture des autres lignes à la recherche d'autres données valides
+    + Ajout du selecteur de langue pour joomla et des langues: espagnol, italien et allemand
     
 
 -- Yann Genevois <yann.genevois@gmail.com> Wed Apr  3 11:32:52 CEST 2013

@@ -87,33 +87,7 @@ timeFormat: 'hh:mm',
 <table class="conf-table">
    <tr>
       <td class="conf-marge"></td>
-      <td class="conf-marge-td"><?php echo __('CONFIGURE_LANGUAGE'); ?>:</td>
-      <td><select name="lang">
-         <?php foreach($GLOBALS['LIST_LANG'] as $value) {
-            switch ($value) {
-               case 'fr_FR':
-                  if("${value}" == $_SESSION['LANG']) {
-                     echo "<option value=\"${value}\" selected>".__('LANG_FR')."</option>";
-                  } else {
-                     echo "<option value=\"${value}\">".__('LANG_FR')."</option>";
-                  }
-               break;
-               case 'en_GB':
-                  if("${value}" == $_SESSION['LANG']) {
-                     echo "<option value=\"${value}\" selected>".__('LANG_EN')."</option>";
-                   } else {
-                     echo "<option value=\"${value}\">".__('LANG_EN')."</option>";
-                  }
-               break;
-            }
-         }
-         ?>
-      </select></td>
-      <td></td>
-   </tr>
-   <tr>
-      <td class="conf-marge"></td>
-      <td><?php echo __('CONFIGURE_HUMIDITY'); ?>:</td>
+      <td class="conf-marge-td"><?php echo __('CONFIGURE_HUMIDITY'); ?>:</td>
       <td><select name="color_humidity">
       <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
          switch ($value) {

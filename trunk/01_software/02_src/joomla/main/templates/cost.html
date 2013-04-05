@@ -33,11 +33,19 @@
 <br /><br />
 
 
-<?php switch($lang) {
-
-   case 'fr_FR': 
+<?php switch($_SESSION['LANG']) {
+        case 'fr_FR': 
                 echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-fr.js"></script>'; 
-      break;
+                break;
+        case 'it_IT':
+                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-it.js"></script>';
+                break;
+        case 'de_DE':
+                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-de.js"></script>';
+                break;
+        case 'es_ES':
+                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-es.js"></script>';
+                break;
         }
 ?>
 
@@ -47,7 +55,7 @@ $(function() {
 dateFormat: "yy-mm-dd",
 showButtonPanel: true,
 showOn: "both",
-buttonImage: "../main/libs/img/datepicker.png",
+buttonImage: "../../main/libs/img/datepicker.png",
 buttonImageOnly: 'true',
 <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
 }).val()
@@ -60,7 +68,7 @@ $(function() {
 dateFormat: "yy-mm-dd",
 showButtonPanel: true,
 showOn: "both",
-buttonImage: "../main/libs/img/datepicker.png",
+buttonImage: "../../main/libs/img/datepicker.png",
 buttonImageOnly: 'true',
 <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
 }).val()
@@ -116,7 +124,7 @@ $(function () {
       },
       tooltip: {
          formatter: function() {
-            return ''+ this.y +'<?php if(strcmp("$lang","fr_FR")==0) { echo "€"; } else { echo "£"; } ?>';
+            return ''+ this.y +'<?php if(strcmp("$lang","en_GB")!=0) { echo "€"; } else { echo "£"; } ?>';
          }
       },
       plotOptions: {
@@ -183,15 +191,15 @@ $(function () {
       <td></td>
       <td><label id="cost_label_standard" style="<?php if(strcmp($cost_type,'standard')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_COST_PRICE'); ?>" /></label><label id="cost_label_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HP'); ?>:</label></td>
       <td><label id="cost_input_standard" style="<?php if(strcmp($cost_type,'standard')!=0) echo 'display:none'; ?>">
-        <input type="text" size="6" maxlength="6" name="cost_price" value="<?php echo "$cost_price"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp($cost_type,'standard')==0) { if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; }} ?></label>
-        <label id="cost_input_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="6" maxlength="6" name="cost_price_hp" value="<?php echo "$cost_price_hp"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?></label>
+        <input type="text" size="6" maxlength="6" name="cost_price" value="<?php echo "$cost_price"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp($cost_type,'standard')==0) { if(strcmp("$lang","en_GB")!=0) { echo "&euro;"; } else { echo "&#163;"; }} ?></label>
+        <label id="cost_input_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="6" maxlength="6" name="cost_price_hp" value="<?php echo "$cost_price_hp"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","en_GB")!=0) { echo "&euro;"; } else { echo "&#163;"; } ?></label>
       </td>
     <td><?php if((isset($error['cost']))&&(!empty($error['cost']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['cost']."</div>"; ?><?php if((isset($error['price_hp']))&&(!empty($error['price_hp']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['price_hp']."</div>"; ?></td>
    </tr>
    <tr>
       <td></td>
       <td><label id="cost_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HC'); ?>:</label></td>
-      <td><label id="cost_input_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="6" maxlength="6" name="cost_price_hc" value="<?php echo "$cost_price_hc"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","fr_FR")==0) { echo "&euro;"; } else { echo "&#163;"; } ?></label></td>
+      <td><label id="cost_input_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="6" maxlength="6" name="cost_price_hc" value="<?php echo "$cost_price_hc"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","en_GB")!=0) { echo "&euro;"; } else { echo "&#163;"; } ?></label></td>
      <td><?php if((isset($error['price_hc']))&&(!empty($error['price_hc']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['price_hc']."</div>"; ?></td>
    </tr>
    <tr>
