@@ -84,7 +84,7 @@ include($this['path']->path('layouts:template.config.php'));
 					<div id="headerbar" class="grid-block">
 									
 						<?php if ($this['modules']->count('logo')) : ?>	
-						<a id="logo" href="<?php echo $this['config']->get('site_url'); ?>"><?php echo $this['modules']->render('logo'); ?></a>
+						<?php echo $this['modules']->render('logo'); ?>
 						<?php endif; ?>
                   
                         <div id="box">                      
