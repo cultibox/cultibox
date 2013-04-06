@@ -27,7 +27,7 @@ InstallationInfoBulle = function() {
 
 $(document).ready(function() {
    InstallationInfoBulle();
-   $( ".pop_up_error" ).dialog({ width: 500, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true });
-   $( ".pop_up_message" ).dialog({ width: 500, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true });
+   $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
+   $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
 });
 
