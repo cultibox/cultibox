@@ -273,7 +273,9 @@ $(function () {
                events: {
                 afterSetExtremes: function() {
                     if (this.min <= this.dataMin && this.max >= this.dataMax) {
-                        chart.resetZoomButton.hide();
+                        if(chart.resetZoomButton) {
+                            chart.resetZoomButton.hide();
+                        }
                     }
                 }
                },
@@ -687,7 +689,7 @@ $(function () {
                 if(extremes.max>$(this).val()) {
                     if(chart.axes[0].series[i].type=='area') {
                         chart.yAxis[i].setExtremes($(this).val(), extremes.max);
-                        if( !chart.resetZoomButton ) {
+                        if(!chart.resetZoomButton) {
                             chart.showResetZoom();
                         }
                         //console.log(chart);
@@ -704,7 +706,7 @@ $(function () {
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='area') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
-                        if( !chart.resetZoomButton ) {
+                        if(!chart.resetZoomButton) {
                             chart.showResetZoom();
                         }
                         //console.log(chart);
@@ -722,7 +724,7 @@ $(function () {
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='spline') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
-                        if( !chart.resetZoomButton ) {
+                        if(!chart.resetZoomButton) {
                             chart.showResetZoom();
                         }
                         //console.log(chart);
@@ -740,7 +742,7 @@ $(function () {
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='spline') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
-                        if( !chart.resetZoomButton ) {
+                        if(!chart.resetZoomButton) {
                             chart.showResetZoom();
                         }
                         //console.log(chart);
