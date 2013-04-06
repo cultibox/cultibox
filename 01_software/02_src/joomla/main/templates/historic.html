@@ -33,7 +33,7 @@
 <br /><br />
 
 <p class="title_conf"><?php echo __('TITLE_HISTORIC'); ?>:</p>
-
+<br />
 <table class="table_width">
 <tr>
     <td class="subtitle_right">
@@ -44,17 +44,23 @@
 </tr>
 </table>
 <br />
-
+<table class="table_width">
+<tr>
+    <td class="code_marge"></td>
+    <td>
 <?php if(count($historic)>0) { ?>
-<div class="div_code">
+<code class="div_code">
     <?php foreach($historic as $hist) { ?>
       <?php echo "<b>".$hist['timestamp']."</b>&nbsp;&nbsp;&nbsp;<label class='".$hist['type']."'>".$hist['action']."</label>"; ?><br />
     <?php } ?>
-</div>
+</code>
 <?php } else { ?>
-<div class="div_code">
+<code class="div_code">
     <ul>
         <li><?php echo __('NO_HISTORIC_VALUE'); ?></li>
     </ul>
-</div>
+</code>
 <?php } ?>
+</td>
+</tr>
+</table>

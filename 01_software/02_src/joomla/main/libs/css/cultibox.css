@@ -1,14 +1,12 @@
-
-
 .histo_info {
-    font-size: 13px;
-    color: green;
+    font-size: 14px;
+    color: #2A9011;
 }
 
 
 .histo_error {
-    font-size: 12px;
-    color: red;
+    font-size: 14px;
+    color: #AF0F0F;
 }
 
 .error_field {
@@ -40,17 +38,6 @@
    text-align: center;
 }
 
-input.submit_plug
-{
-    /* background: url(../img/submit.png) 0px 0px no-repeat;
-    border: 1px solid #def;
-    cursor: pointer;
-    padding: 3px 30px;
-    margin: 0 10px;
-    font-size: 12px;
-    */
-}
-
 input.button_log {
     font-size: 18px;
     font-weight: bold;
@@ -58,15 +45,7 @@ input.button_log {
 
 .div_code
 {
-    background-repeat: repeat-x;
-    background-color: white;
-    margin-left:20px;
-    width:580px;
-    padding:10px;
-    border:solid 1px gray;
-    border-top:solid 2px #008B8B;
-    line-height:15px;   
-    width: 90%;
+    width: 95%;
 }
 
 .precision_infos{
@@ -126,6 +105,10 @@ table.conf-table {
 
 table.table_width{
    width: 100%;
+}
+
+td.code_marge {
+    width: 5%;
 }
 
 td.conf-marge {
@@ -360,10 +343,6 @@ label.input-file
     cursor: pointer;
 }
 
-
-
-/* Ancien override Calagan */
-
 body{
 	font-family: "OpenSansRegular";
 	font-size:14px;	
@@ -405,7 +384,6 @@ option:focus{background: #ee986e;}
 .error {
 	color:red;
 	font-size:14px;
-	/*font-family: 'OpenSansBold';*/	
 	font-style:normal;
 	font-weight:normal;
     margin:auto;
@@ -430,6 +408,10 @@ option:focus{background: #ee986e;}
     margin:0;
     text-align:left;
     margin-left: 100px;
+}
+
+.inputDisable {
+    color: white;
 }
 
 
@@ -477,7 +459,6 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover {
 .info {
     color: #3A951F;
     font-size:14px;
-    /*font-family: 'OpenSansBold';*/
     font-style:normal;
     font-weight:normal;
     margin:auto;
@@ -532,7 +513,6 @@ hr {
 	font-size:19px;
 	font-style:normal;
 	font-weight:normal;
-	/*border-bottom:#CCC 1px solid;*/
 	padding-top:7px;
 	padding-bottom:20px;
 	background:url("../../../main/libs/img/fond_cartouche.png") center top no-repeat;
@@ -615,7 +595,7 @@ td.welcome-link img{
 .ui-widget-header {
     background: url("../img/ui-bg_gloss-wave.png") repeat-x scroll 50% 50% #F6A828;
     border: none;
-    background-color: #000000;
+    background-color: #849325;
 }
 
 #ui-datepicker-div button{
@@ -638,4 +618,16 @@ td.welcome-link img{
 .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+
+
+/* css for dialog widget */
+.popup_error {
+    color:#aaa; 
+}
+
+
+.popup_message {
+    color:#aaa;
+}
 
