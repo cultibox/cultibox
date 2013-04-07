@@ -7,7 +7,8 @@
 
 Ce menu permet de consulter et modifier des paramètres de la Cultibox. 
 Il est a noter que hormis le "Contraste", la plus part de ces paramètres et informations ne sont pas prévu pour les utilisateurs.
-* Attention : Si d'autres paramètres que le contraste est modifié, les informations relevées par la Cultibox peuvent être altéré! *
+
+* Attention : Si d'autres paramètres que le contraste est modifié, les informations relevées par la Cultibox peuvent être altérées! *
 
 = Description de l'interface graphique du registre =
 
