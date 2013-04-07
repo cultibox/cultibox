@@ -10,5 +10,7 @@ Il est a noter que la Cultibox ne change pas d'heure toute seule pour le passage
 
 = Description de l'interface graphique =
 Pour changer un chiffre : Appuyer sur haut ou bas
-Pour chnger de chiffre à modifier : Appuyer sur gauche ou droite
+
+Pour changer de chiffre à modifier : Appuyer sur gauche ou droite
+
 Pour enregistrer l'heure : Appuyer sur le bouton central
