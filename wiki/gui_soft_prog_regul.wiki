@@ -21,7 +21,7 @@ Par exemple, vous désirez avoir une température de 22°C. Le capteur indique 2
 
 Il est donc très important de remplir correctement le champ "Type d'élément branché sur la prise" dans l'onglet "Plugs".
 
-Si l'élément ne correspond pas exactement aux choix possibles, vous devez sélectionner l'élement le plus proche selon les règles ci-dessous:
+Si l'élément ne correspond pas exactement aux choix possibles, vous devez sélectionner l’élément le plus proche selon les règles ci-dessous:
  * Si l'élément branché augmente la température de votre environnement lorsqu'il est en marche : sélectionner "Chauffage"
  * Si l'élément branché baisse la température de votre environnement lorsqu'il est en marche : sélectionner "Ventilateur"
  * Si l'élément branché augmente l'humidité de votre environnement lorsqu'il est en marche : sélectionner "Humidificateur"
@@ -77,7 +77,7 @@ Vous désirez qu'en plus de ce fonctionnement normal, il soit actif si le taux d
 * La régulation secondaire est prioritaire dans la Cultibox. Dans le cas ou ses conditions d'activations sont remplies, elle prend le pas sur la régulation classique*
 
 == Activation ==
-Pour activer la possibilitée de mettre en place la régulation secondaire:
+Pour activer la possibilité de mettre en place la régulation secondaire:
   * Ouvrer l'onglet "Configuration"
   * Mettre à "Oui" le champs situé en face de "Activer la régulation secondaire (Utilisateur expert seulement):"
   * Cliquer sur "Enregistrer la configuration"
@@ -106,3 +106,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_regul_second.png
 Vous pouvez choisir si la prise doit se mettre en route lorsque la donnée climatique est supérieur ou inférieur à la consigne.
 
 Vous devez définir le seuil de déclenchement.
+
+== Impact de la régulation secondaire sur la régulation principale ==
+La régulation secondaire est prioritaire sur la régulation principale. Si les conditions définies pour la régulation secondaire sont respectées, alors la régulation secondaire entre en oeuvre et al régulation principale s’arrête. 
+Il y a un autre impact: Dans la zone de transition de la régulation principale entre |Consigne - tolérance | et | consigne + tolérance | l'état de la prise dépend de son état précédent. Si la régulation secondaire entre en oeuvre, elle modifie l'état de la prise. Une fois que la régulation secondaire ne fonctionne plus, la régulation principale prend comme dernière état de la prise, l'état appliqué par la régulation secondaire. issue 479
