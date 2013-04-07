@@ -225,7 +225,7 @@ $(document).ready(function() {
                 var unity="";
                 if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="heating")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="ventilator")) {
                     unity="°C";
-                } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="deshumidifier")) {
+                } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="dehumidifier")) {
                     unity="%";
                 } 
                 return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b>'+this.y+unity+'</b></p>';
