@@ -46,20 +46,39 @@ LicenseFile=conf-package\lgpl3.txt
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "french"; MessagesFile: "compiler:Languages\French.isl"
+Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "german"; MessagesFile: "compiler:Languages\German.isl"
+Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
+
 
 
 [CustomMessages]
 french.ContinueInstall=Une version du logiciel Cultibox semble déja présente, vous pouvez tenter d'installer cette nouvelle version par dessus l'ancienne mais vous risquez de perdre votre configuration. Votre configuration actuelle sera sauvegardé dans le répertoire backup pour vous permettre de la retrouver. Voulez vous continuer et installer cette version?
 english.ContinueInstall=A current version of the Cultibox software seems to be already installed on your computer. You can install this new software version over the old one but you may loose your configuration in the process. Your current configuration will be saved into the backup directory. Do you want to continue the install process?
+italian.ContinueInstall=Una versione aggiornata del software Cultibox sembra essere già installato sul tuo computer. È possibile installare questa nuova versione del software rispetto al passato, ma si può perdere la configurazione nel processo. La configurazione corrente viene salvato nella directory di backup. Si desidera continuare il processo di installazione?
+german.ContinueInstall=Eine aktuelle Version des Cultibox Software scheint bereits auf Ihrem Computer installiert sein. Sie können diese neue Software-Version über die alte Version installieren, aber Sie können Ihre Konfiguration in den Prozess verlieren. Ihre aktuelle Konfiguration wird in das Backup-Verzeichnis gespeichert werden. Wollen Sie die Installation fortsetzen?
+spanish.ContinueInstall=Una versión actual del software Cultibox parece estar ya instalado en su ordenador. Puede instalar esta versión de software nuevo con el antiguo, pero puede perder la configuración en el proceso. La configuración actual se guardará en el directorio de copia de seguridad. ¿Desea continuar con el proceso de instalación?
+
 
 french.SaveDatas=Voulez-vous sauvegarder la configuration de votre ancienne version afin de pouvoir la restaurer ultèrieurement si nécéssaire?
-english.SaveDatas=Do you want to save the configuration of your old Cultibox software to maybe ued it to restore your preferences later?
+english.SaveDatas=Do you want to save the configuration of your old Cultibox software to maybe used it to restore your preferences later?
+italian.aveDatas=Vuoi salvare la configurazione del software Cultibox vecchio forse è utilizzato per ripristinare le preferenze più tardi?
+german.aveDatas=Wollen Sie die Konfiguration Ihres alten Cultibox Software vielleicht ist es verwendet, um Ihre Einstellungen später wiederherstellen zu retten?
+spanish.aveDatas=¿Desea guardar la configuración de su software Cultibox viejo tal vez lo usó para restaurar sus preferencias más tarde?
+
 
 french.CleanCache=Vous venez d'installer une nouvelle version, n'oubliez pas de supprimer le cache de votre navigateur internet pour que celle-ci soit pleinement fonctionnelle
 english.CleanCache=You just install a new version of the Cultibox software, don't forget to delete your internet browser's cache to have a full working version.
+italian.CleanCache=Basta installare una nuova versione del software Cultibox, non dimenticare di cancellare la cache del browser Internet di avere una versione completa di lavoro
+german.CleanCache=Sie haben eine neue Version des Cultibox Software, vergessen Sie nicht, Ihren Internet-Browser-Cache löschen, um eine voll funktionsfähige Version haben
+spanish.CleanCache=Usted acaba de instalar una nueva versión del software Cultibox, no te olvides de borrar la caché de su navegador de Internet para tener una versión completa
+
 
 french.StartCultibox=Voulez-vous exécuter le logiciel Cultibox immédiatement?
 english.StartCultibox=Do you want to execute the Cultibox software immediatly?
+italian.StartCultibox=Vuoi eseguire il software Cultibox immediatamente?
+german.StartCultibox=Wollen Sie die Cultibox Software sofort auszuführen?
+spanish.StartCultibox=¿Desea ejecutar el software Cultibox inmediatamente?
 
 [code]
 var 

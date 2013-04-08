@@ -29,6 +29,7 @@ include($this['path']->path('layouts:template.config.php'));
                 <!-- Javascript JQUERY libraries for cultibox components: calendar, datepicker, highcharts... -->
                 <script type="text/javascript" src="main/libs/js/jquery-1.7.2.min.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-1.8.19.custom.min.js"></script>
+                <script type="text/javascript" src="main/libs/js/jquery.tools.min.js"></script>
                 <script type="text/javascript" src="main/libs/js/highcharts.js"></script>
                 <script type="text/javascript" src="main/libs/js/exporting.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-timepicker-addon.js"></script>
