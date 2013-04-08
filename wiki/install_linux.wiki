@@ -27,7 +27,7 @@ En remplacant <nom_paquet_cultibox> par le nom du paquet (fichier .deb) que vous
 sudo dpkg -i cultibox-ubuntu-amd64_1.1.12.deb
 }}}
  
-Note: il existe une version 32bits (nommée i386) et une version 64bits (nommée amd64). Il vous faudra choisir la version en fonction de votre environnement Linux Ubuntu. Si cette dernière est installée en version 64bits, il vous faudra récupérer le fichier amd64, sinon prenez la version i386.
+*Note:* il existe une version 32bits (nommée i386) et une version 64bits (nommée amd64). Il vous faudra choisir la version en fonction de votre environnement Linux Ubuntu. Si cette dernière est installée en version 64bits, il vous faudra récupérer le fichier amd64, sinon prenez la version i386.
 Pour vérifier cela sur votre système, tapez simplement la commande suivante:
 
 {{{
@@ -68,6 +68,11 @@ Pour accéder au logiciel cultibox, vous avez deux possibilités:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_linux3.png
 
+= Mise à jour =
+
+Pour mettre à jour le logiciel Cultibox, il vous suffit de suivre la même procédure que pour l'installation du logiciel. L'installateur réalisera les tâches nécéssaires tout seul.
+
+*Note:* il est théoriquement possible de repasser à une version antérieure de cette manière, seulement le logiciel Cultibox ne le gère pas. Cela peut donc être fait à vos risques et péril et vous pourrez endommager votre installation actuelle: perte de vos programmes, logs..., erreur dans les bases SQL...
 
 = Désinstallation =
 
