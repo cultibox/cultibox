@@ -1,11 +1,13 @@
 #!/bin/bash
 
+echo "----> Configuring/checking Cultibox environment..."
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 
 if [ ! -f /opt/lampp ] && [ ! -L /opt/lampp ]; then
     ln -s /opt/cultibox /opt/lampp
 fi
+
 
 chown -R $user_culti:$group_culti /opt/cultibox
 sed -i "s/User nobody/User $user_culti/" /opt/lampp/etc/httpd.conf
@@ -15,6 +17,7 @@ sed -i "s/user*.*= nobody/user    = $user_culti/" /opt/lampp/etc/my.cnf
 /opt/lampp/lampp restart
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
+    echo "----> Installing the CUltibox software..."
     /opt/lampp/bin/mysqladmin -u root -h localhost password cultibox
 
     /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/user_cultibox.sql
@@ -35,6 +38,7 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
 
     /opt/lampp/lampp restart
 else 
+    echo "---> A previous version of Cultibox was installed, upgrading your software..."
     home=`egrep "^$user_culti" /etc/passwd|awk -F":" '{print $6}'`
     if [ -f /opt/lampp/sql_install/update_sql.sql ]; then
         /opt/lampp/bin/mysql -f -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/update_sql.sql 2>/dev/null
@@ -45,4 +49,3 @@ else
     rm -f /tmp/cultibox_upgrade
     rm -f /opt/cultibox/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
 fi
-
