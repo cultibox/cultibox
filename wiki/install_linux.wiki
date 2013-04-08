@@ -9,8 +9,8 @@ Cette page présente comment installer et désinstaller le logiciel dans un envi
 = Installation =
 
 Pour installer le logiciel Cultibox sur un environnement Linux Ubuntu, vous avez deux possibilités:
-* L'installer en ligne de commandes
-* L'installation en mode graphique avec le gestionnaire de paquet de votre distribution
+ * L'installer en ligne de commandes
+ * L'installation en mode graphique avec le gestionnaire de paquet de votre distribution
 
 
 == Installation en ligne de commandes ==
@@ -21,7 +21,7 @@ Pour installer le logiciel en ligne de commande, il vous suffira de taper la com
 sudo dpkg -i <nom_paquet_cultibox>
 }}}
 
-En remplacant <nom_paquet_cultibox> par le nom du paquet (fichier .deb) que vous avez télécharger. Par exemple:
+En remplacant <nom_paquet_cultibox> par le nom du paquet (fichier .deb) que vous avez téléchargé. Par exemple:
 
 {{{
 sudo dpkg -i cultibox-ubuntu-amd64_1.1.12.deb
@@ -46,25 +46,25 @@ On voit apparaitre le tag X86_64 en fin de ligne qui correspond à un système 6
 
 Pour installer votre logiciel en utilisant le gestionnaire de paquets de votre distribution:
 
-* Double cliquez sur le paquet (fichier .deb) que vous venez de télécharger, l'interface se lancera automatiquement
-* Cliquez sur le bouton "Installer":
+ * Double cliquez sur le paquet (fichier .deb) que vous venez de télécharger, l'interface se lancera automatiquement
+ * Cliquez sur le bouton "Installer":
 
 http://cultibox.googlecode.com/svn/wiki/img/install_linux1.png
 
 
-* Le gestionnaire vous demandera alors de vous authentifier:
+ * Le gestionnaire vous demandera alors de vous authentifier:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_linux2.png
 
 
-* Laisser l'installation se poursuivre et le logiciel Cultibox sera alors installé
+ * Laisser l'installation se poursuivre et le logiciel Cultibox sera alors installé
 
 
 = Lancement de l'interface Cultibox =
 Pour accéder au logiciel cultibox, vous avez deux possibilités:
 
-* Ouvrir un navigateur Web (Firefox, Chrome, IE) et visitez la page suivante: http://localhost:6891/cultibox/
-* Ouvrir le logiciel grâce aux raccourcis dans les applications Linux Ubuntu, pour cela ouvrez le gestionnaire des programmes et tapez simplement cultibox dans la recherche pour le voir apparaite. Il vous suffira de cliquer dessus pour lancer l'interface:
+ * Ouvrir un navigateur Web (Firefox, Chrome, IE) et visitez la page suivante: http://localhost:6891/cultibox/
+ * Ouvrir le logiciel grâce aux raccourcis dans les applications Linux Ubuntu, pour cela ouvrez le gestionnaire des programmes et tapez simplement cultibox dans la recherche pour le voir apparaite. Il vous suffira de cliquer dessus pour lancer l'interface:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_linux3.png
 
@@ -135,6 +135,6 @@ sudo dpkg -i package_cultibox.deb
 
 = Notes sur l'installation du logiciel Cultibox =
 
-* Le logiciel cultibox s'installe dans le répertoire /opt/cultibox
-* Un lien symbolique est fait entre ce répertoire et la destination /opt/lampp pour faire fonctionner XAMPP, intégré au logiciel
-* Il est tout à fait possible d'avoir une installation de XAMPP et le logiciel Cultibox fonctionnel ensemble. Pour cela se référer à la FAQ. 
+ * Le logiciel cultibox s'installe dans le répertoire /opt/cultibox
+ * Un lien symbolique est fait entre ce répertoire et la destination /opt/lampp pour faire fonctionner XAMPP, intégré au logiciel
+ * Il est tout à fait possible d'avoir une installation de XAMPP et le logiciel Cultibox fonctionnel ensemble. Pour cela se référer à la FAQ. 
