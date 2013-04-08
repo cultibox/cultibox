@@ -29,29 +29,6 @@ Le logiciel Cultibox utilise un système de mise à jour qui n'autorise pas le r
 Si vous voulez revenir à une version antérieure, il vous faudra désinstaller le logiciel Cultibox et réinstaller la version qui vous convient. Le logiciel détectera peut être une ancienne version installée avec vos anciennes données et vous demandera, si c'est le cas, de charger ou non ces données. Si vous accepter, il est à noté qu le résultat dépend grandement des versions utilisées et ne peut être garantis.
 
 
-= Pourquoi en installant le logiciel sur Ubuntu, le message suivant apparait: "An old version of the Cultibox seems to be remaining in your system [...]"? =
-
-Ce message signifie qu'une ancienne version Cultibox était installé sur votre système d'exploitation et qu'il en reste des traces. Pour éviter des problèmes à l'installation avec les restes d'une ancienne version, le logiciel lance une vérification de son environnement avant de procéder à l'installation.
-
-Pour remédier à ce problème il vous sufira de lancer la commande suivante avec les droits administrateurs:
-{{{
-dpkg --purge cultibox
-}}}
-ou:
-{{{
-sudo dpkg --purge cultibox
-}}}
-
-Puis de relancer l'installation du logiciel, toujours avec des droits administrateurs:
-{{{
-dpkg -i package_cultibox.deb
-}}}
-ou:
-{{{
-sudo dpkg -i package_cultibox.deb
-}}}
-
-
 = Pourquoi dans le logiciel Cultibox, lorsque je calcul le coût de reviens de mon installation, le prix théorique diffère du prix réél? =
 
 Il est en effet possible de noter une légère différence entre le prix théorique et le prix réél du coût de votre installation. Le coût théorique de votre installation est calculé à partir des programmes que vous avez configuré, la précision de ce calcul est d'une seconde. Le coût réél de votre installation est quant à lui calculé sur les logs de puissance de votre Cultibox afin de déterminer quand une prise est en marche et quand elle ne l'est pas. Ce calcul réél à une précision moindre que le calcul théorique (par défaut une mesure de puissance est faites toutes les 5mn par la Cultibox).
