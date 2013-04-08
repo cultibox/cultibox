@@ -4,18 +4,18 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-Cette page présente comment installer et désinstaller le logiciel dans un environnement linux Ubuntu
+Cette page présente comment installer et désinstaller le logiciel dans un environnement Linux Ubuntu
 
 = Installation =
 
 Pour installer le logiciel Cultibox sur un environnement Linux Ubuntu, vous avez deux possibilités:
  * L'installer en ligne de commandes
- * L'installation en mode graphique avec le gestionnaire de paquet de votre distribution
+ * L'installer en mode graphique avec le gestionnaire de paquet de votre distribution
 
 
 == Installation en ligne de commandes ==
 
-Pour installer le logiciel en ligne de commande, il vous suffira de taper la commande suivante dans un terminal (droits administrateurs requits):
+Pour installer le logiciel en ligne de commande, il vous suffira de taper la commande suivante dans un terminal (droits administrateurs requis):
 
 {{{
 sudo dpkg -i <nom_paquet_cultibox>
@@ -25,61 +25,6 @@ En remplacant <nom_paquet_cultibox> par le nom du paquet (fichier .deb) que vous
 
 {{{
 sudo dpkg -i cultibox-ubuntu-amd64_1.1.12.deb
-}}}
- 
-*Note:* il existe une version 32bits (nommée i386) et une version 64bits (nommée amd64). Il vous faudra choisir la version en fonction de votre environnement Linux Ubuntu. Si cette dernière est installée en version 64bits, il vous faudra récupérer le fichier amd64, sinon prenez la version i386.
-Pour vérifier cela sur votre système, tapez simplement la commande suivante:
-
-{{{
-uname -a
-}}}
-
-Qui devrait produire l'affichae suivant:
-{{{
-Linux XXXXX 3.5.0-26-generic #42-Ubuntu SMP Fri Mar 8 23:18:20 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
-}}}
-On voit apparaitre le tag X86_64 en fin de ligne qui correspond à un système 64bits.
-
-
-
-== Installation en mode graphique ==
-
-Pour installer votre logiciel en utilisant le gestionnaire de paquets de votre distribution:
-
- * Double cliquez sur le paquet (fichier .deb) que vous venez de télécharger, l'interface se lancera automatiquement
- * Cliquez sur le bouton "Installer":
-
-http://cultibox.googlecode.com/svn/wiki/img/install_linux1.png
-
-
- * Le gestionnaire vous demandera alors de vous authentifier:
-
-http://cultibox.googlecode.com/svn/wiki/img/install_linux2.png
-
-
- * Laisser l'installation se poursuivre et le logiciel Cultibox sera alors installé
-
-
-= Lancement de l'interface Cultibox =
-Pour accéder au logiciel cultibox, vous avez deux possibilités:
-
- * Ouvrir un navigateur Web (Firefox, Chrome, IE) et visitez la page suivante: http://localhost:6891/cultibox/
- * Ouvrir le logiciel grâce aux raccourcis dans les applications Linux Ubuntu, pour cela ouvrez le gestionnaire des programmes et tapez simplement cultibox dans la recherche pour le voir apparaite. Il vous suffira de cliquer dessus pour lancer l'interface:
-
-http://cultibox.googlecode.com/svn/wiki/img/install_linux3.png
-
-= Mise à jour =
-
-Pour mettre à jour le logiciel Cultibox, il vous suffit de suivre la même procédure que pour l'installation du logiciel. L'installateur réalisera les tâches nécéssaires tout seul.
-
-*Note:* il est théoriquement possible de repasser à une version antérieure de cette manière, seulement le logiciel Cultibox ne le gère pas. Cela peut donc être fait à vos risques et péril et vous pourrez endommager votre installation actuelle: perte de vos programmes, logs..., erreur dans les bases SQL...
-
-= Désinstallation =
-
-Pour désinstaller le logiciel Cultibox, vous devez exécuter la commande suivante dans un terminal afin de s'assurer qu'aucun fichier de configuration ne restera après la désinstallation:
-
-{{{
-sudo dpkg --purge cultibox
 }}}
 
 
@@ -120,18 +65,101 @@ Processing triggers for desktop-file-utils ...
 Processing triggers for gnome-menus ...
 }}}
 
-= Erreur lors de l'installation =
 
-En installant le logiciel sur Linux Ubuntu, le message suivant pourrait apparaitre: "An old version of the Cultibox seems to be remaining in your system [...]"
-Ce message signifie qu'une ancienne version Cultibox était installé sur votre système d'exploitation et qu'il n'a pas été supprimé avec la commande citée précédement et donc qu'il peut rester des anciens fichiers du système Cultibox sur votre environnement. Pour éviter des problèmes à l'installation avec les restes d'une ancienne version, le logiciel lance une vérification de son environnement avant de procéder à l'installation.
+ 
+*Note:* il existe une version 32bits (nommée i386) et une version 64bits (nommée amd64). Il vous faudra choisir la version en fonction de votre environnement Linux Ubuntu. Si cette dernière est installée en version 64bits, il vous faudra récupérer le fichier amd64, sinon prenez la version i386.
+Pour vérifier cela sur votre système, tapez simplement la commande suivante dans un terminal:
 
-Pour remédier à ce problème il vous sufira de lancer la commande suivante avec les droits administrateurs: 
+{{{
+uname -a
+}}}
+
+Qui devrait produire l'affichage suivant:
+{{{
+Linux XXXXX 3.5.0-26-generic #42-Ubuntu SMP Fri Mar 8 23:18:20 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+}}}
+On voit apparaitre le tag X86_64 en fin de ligne qui correspond à un système 64bits. Sinon le tag X86 devrait apparaitre.
+
+
+
+== Installation en mode graphique ==
+
+Pour installer votre logiciel en utilisant le gestionnaire de paquets de votre distribution:
+
+ * Double cliquez sur le paquet (fichier .deb) que vous venez de télécharger, l'interface se lancera automatiquement
+ * Cliquez sur le bouton "Installer":
+
+http://cultibox.googlecode.com/svn/wiki/img/install_linux1.png
+
+
+ * Le gestionnaire vous demandera alors de vous authentifier:
+
+http://cultibox.googlecode.com/svn/wiki/img/install_linux2.png
+
+
+ * Laisser l'installation se poursuivre et le logiciel Cultibox sera alors disponible
+
+
+= Lancement de l'interface Cultibox =
+Pour accéder au logiciel cultibox, vous avez deux possibilités:
+
+ * Ouvrir un navigateur Web (Firefox, Chrome, IE) et visitez la page suivante: http://localhost:6891/cultibox/
+ * Ouvrir le logiciel grâce au raccourci dans les applications Linux Ubuntu. Pour cela ouvrez le gestionnaire des programmes (le "Dash") et tapez simplement cultibox dans la recherche pour le voir apparaite. Il vous suffira de cliquer dessus pour lancer l'interface:
+
+http://cultibox.googlecode.com/svn/wiki/img/install_linux3.png
+
+= Mise à jour =
+
+Pour mettre à jour le logiciel Cultibox, il vous suffit de suivre la même procédure que pour l'installation du logiciel. L'installateur réalisera les tâches nécéssaires tout seul.
+
+*Note:* il est théoriquement possible de repasser à une version antérieure de cette manière, seulement le logiciel Cultibox ne le gère pas. Cela peut donc être fait à vos risques et péril et vous pourrez endommager votre installation actuelle: perte de vos programmes, logs..., erreur dans les bases SQL...
+
+= Désinstallation =
+
+Pour désinstaller le logiciel Cultibox, vous devez exécuter la commande suivante dans un terminal afin de s'assurer qu'aucun fichier de configuration ne restera après la désinstallation:
 
 {{{
 sudo dpkg --purge cultibox
 }}}
 
-Puis de relancer l'installation du logiciel, toujours avec des droits administrateurs (ou d'installer le logiciel en utilisant l'interface graphique de votre gestionnaire de paquets):
+
+L'affichage suivant devrait apparaitre:
+
+{{{
+(Reading database ... 418800 files and directories currently installed.)
+Removing cultibox ...
+ * Stopping system cultibox                                                                                                                                                                                  Stopping XAMPP for Linux 1.8.1...
+XAMPP: Stopping Apache...
+XAMPP: Stopping MySQL...
+XAMPP stopped.
+                                                                                                                                                                                                      [ OK ]
+ Removing any system startup links for /etc/init.d/cultibox ...
+   /etc/rc0.d/K20cultibox
+   /etc/rc1.d/K20cultibox
+   /etc/rc2.d/S20cultibox
+   /etc/rc3.d/S20cultibox
+   /etc/rc4.d/S20cultibox
+   /etc/rc5.d/S20cultibox
+   /etc/rc6.d/K20cultibox
+Purging configuration files for cultibox ...
+Processing triggers for bamfdaemon ...
+Rebuilding /usr/share/applications/bamf.index...
+Processing triggers for desktop-file-utils ...
+Processing triggers for gnome-menus ...
+}}}
+
+= Erreur lors de l'installation =
+
+En installant le logiciel sur Linux Ubuntu, le message suivant pourrait apparaitre: "An old version of the Cultibox seems to be remaining in your system [...]"
+Ce message signifie qu'une ancienne version Cultibox était installé sur votre système d'exploitation et qu'il n'a pas été supprimé avec la commande citée précédement et donc qu'il peut rester des anciens fichiers du système Cultibox sur votre environnement. Pour éviter des problèmes à l'installation avec les restes d'une ancienne version, le logiciel lance une vérification de son environnement avant de procéder à l'installation.
+
+Pour remédier à ce problème il vous sufira de lancer la commande suivante (droits administrateurs requis):
+
+{{{
+sudo dpkg --purge cultibox
+}}}
+
+Puis de relancer l'installation du logiciel (toujours des droits administrateurs requis)  ou d'installer le logiciel en utilisant l'interface graphique de votre gestionnaire de paquets:
 
 {{{
 sudo dpkg -i package_cultibox.deb
