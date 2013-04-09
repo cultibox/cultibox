@@ -169,7 +169,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
         if(strcmp($plug_type,"lamp")!=0) {
             if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
 		        $chval=check_format_values_program($value_program,"temp");
-            } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"deshumidifier")==0)) {
+            } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
                 $chval=check_format_values_program($value_program,"humi");
             } else {
                 $chval=check_format_values_program($value_program,"other");

@@ -140,7 +140,7 @@ buttonImageOnly: 'true',
 <br />
 </div>
 <div id="label_select_month" style="<?php if(strcmp($type,"days")==0) echo "display:none"; ?>">
-<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
+<form action="/cultibox/index.php/waiting-data" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-month"></td>
@@ -273,7 +273,9 @@ $(function () {
                events: {
                 afterSetExtremes: function() {
                     if (this.min <= this.dataMin && this.max >= this.dataMax) {
-                        chart.resetZoomButton.hide();
+                        if(chart.resetZoomButton) {
+                            chart.resetZoomButton.hide();
+                        }
                     }
                 }
                },
@@ -356,7 +358,7 @@ $(function () {
                                 break;
                             case 'humidifier': $unity="%";
                                 break;
-                            case 'deshumidifier': $unity="%";
+                            case 'dehumidifier': $unity="%";
                                 break;
                         } 
                } ?>
@@ -552,7 +554,7 @@ $(function () {
                             case 'other': break;
                             case 'ventilator': echo "yAxis: 1,"; break;
                             case 'heating': echo "yAxis: 1,"; break;
-                            case 'deshumidifier':  echo "yAxis: 0,"; break;
+                            case 'dehumidifier':  echo "yAxis: 0,"; break;
                             case 'humidifier':  echo "yAxis: 0,"; break;
                             case 'lamp'; break;
                         }

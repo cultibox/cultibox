@@ -73,18 +73,27 @@ if(isset($_SESSION['log_search'])) {
 $log_search=get_configuration("LOG_SEARCH",$main_error);
 
 
-if(isset($_SESSION['select_plug'])) {
-   $select_plug=$_SESSION['select_plug'];
-} else {
-   $select_plug=getvar('select_plug');
-}
-
 
 if(isset($_SESSION['select_power'])) {
    $select_power=$_SESSION['select_power'];
 } else {
-   $select_power=getvar('select_power');
+    $select_power=getvar('select_power');
 }
+
+
+if(isset($_SESSION['select_plug'])) {
+   $select_plug=$_SESSION['select_plug'];
+} else {
+    $select_plug=getvar('select_plug');
+}
+
+
+if(isset($_SESSION['startday'])) {
+   $startday=$_SESSION['startday'];
+} else {
+    $startday=getvar('startday');
+}
+
 
 if(isset($_SESSION['select_sensor'])) {
    $select_sensor=$_SESSION['select_sensor'];
@@ -92,12 +101,6 @@ if(isset($_SESSION['select_sensor'])) {
     $select_sensor=getvar('select_sensor');
 }
 
-
-if(isset($_SESSION['startday'])) {
-   $startday=$_SESSION['startday'];
-} else {
-   $startday=getvar('startday');
-}
 
 if(isset($_SESSION['startmonth'])) {
     $startmonth=$_SESSION['startmonth'];
@@ -203,12 +206,12 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 //Cleaning SESSION variables useless right now:
 unset($_SESSION['startyear']);
 unset($_SESSION['startmonth']);
-unset($_SESSION['startday']);
-unset($_SESSION['select_power']);
-unset($_SESSION['select_plug']);
 unset($_SESSION['select_sensor']);
 unset($_SESSION['import_log']);
 unset($_SESSION['log_search']);
+unset($_SESSION['select_power']);
+unset($_SESSION['select_plug']);
+unset($_SESSION['startday']);
 unset($reset_log);
 unset($reset_log_power);
 
@@ -336,7 +339,9 @@ if(strcmp("$second_regul","True")==0) {
             }
 
             format_regul_sumary($first,$main_error,$resume_regul,$nb_plugs);
-            format_regul_sumary($second,$main_error,$resume_regul,$nb_plugs);
+            if(strcmp("$first","$second")!=0) {
+                format_regul_sumary($second,$main_error,$resume_regul,$nb_plugs);
+            }
         } else {
             if(strcmp("$select_power","")!=0) {
                 format_regul_sumary($select_power,$main_error,$resume_regul,$nb_plugs);

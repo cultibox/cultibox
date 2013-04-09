@@ -1479,7 +1479,7 @@ function format_data_sumary($data) {
                     case 'ventilator': $unity="°C"; break;
                     case 'heating': $unity="°C"; break;
                     case 'humidifier': $unity="%"; break; 
-                    case 'deshumidifier': $unity="%"; break;
+                    case 'dehumidifier': $unity="%"; break;
             }
             $actions=array();
             $actions=explode('[',$plugs_info["data"]);
@@ -1592,8 +1592,14 @@ function format_sd_card($path="",&$out="") {
     $ret=true;
     if((is_dir("$path"))&&(strcmp("$path","")!=0)) {
             $logs="$path/logs";
+            $cnf="$path/cnf";
 
             if(!is_dir($logs)) mkdir("$logs");
+            if(!is_dir($cnf)) mkdir("$cnf");
+
+            if(!copy("tmp/cnf/cnt","$cnf/cnt")) {
+                $ret=false;
+            }
 
             for($i=1;$i<=12;$i++) {
                 for($j=1;$j<=31;$j++) {     

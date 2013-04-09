@@ -4,7 +4,7 @@
 
 # For the menu:
 msgid "LANG"
-msgstr "de_DE"
+msgstr "fr_FR"
 
 msgid "CONFIGURATION"
 msgstr "Configuration"
@@ -276,6 +276,9 @@ msgstr "Marche forcee"
 
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte Cultibox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note: </i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
+
+msgid "WAITING_MONTH_WITHOUT_SD"
+msgstr "Merci de patienter quelques instants le temps que la page se charge et que le logiciel traite vos données"
 
 msgid "PREVIOUS_BUTTON_DAY"
 msgstr "Afficher les informations pour le jour précédent"

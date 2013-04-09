@@ -73,11 +73,17 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $tolerance=getvar("plug_tolerance{$nb}");
    $plug_update=false;
    $power=getvar("plug_power${nb}");
-   $regul=getvar("plug_regul${nb}");
-   $regul_senss=getvar("plug_senss${nb}");
-   $regul_value=getvar("plug_regul_value${nb}");
-   $regul_value=str_replace(',','.',$regul_value);
-   $regul_value=str_replace(' ','',$regul_value);
+    
+   if((strcmp("$type","lamp")==0)||(strcmp("$type","other")==0)) {
+        $regul="False";
+   } else {
+        $regul=getvar("plug_regul${nb}");
+        $regul_senss=getvar("plug_senss${nb}");
+        $regul_value=getvar("plug_regul_value${nb}");
+        $regul_value=str_replace(',','.',$regul_value);
+        $regul_value=str_replace(' ','',$regul_value);
+   }
+   
    $enable=getvar("plug_enable${nb}");
    $power_max=getvar("plug_power_max${nb}");
    $sensor=getvar("plug_sensor${nb}");
@@ -200,7 +206,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
             $regul_senso=getvar("plug_senso${nb}");
         } elseif((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
             $regul_senso="H";
-        } elseif((strcmp($type,"humidifier")==0)||(strcmp($type,"deshumidifier")==0)) {
+        } elseif((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
             $regul_senso="T";
         } else {
             $regul_senso="";
