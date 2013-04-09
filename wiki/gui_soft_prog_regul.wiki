@@ -14,6 +14,8 @@ Principe général:
 Vous choisissez une température ou une humidité, la Cultibox se charge d'allumer la prise en lorsque c'est nécessaire.
 Exemple : Vous décidez d'une température de 22°C. Vous effectuer cette régulation sur un ventilateur. La prise se met en route lorsque la température est supérieur à la consigne et s'éteint lorsque la température est inférieure à la consigne.
 
+Il n'est pas possible d'activer la régulation principale sur une prise déclarée comme "lampe" ou comme "autre" . Une prise "autre", est une prise qui ne modifie ni la température ni l'humidité de l'espace de culture. Il n'est donc pas possible d'effectuer de la régulation (principale ou secondaire) sur cette prise. De la même façon, il est impossible d'activer la régulation principale sur une prise déclarée comme "lampe".
+
 == Sélection du type d'élément branché sur la prise ==
 Pour assurer correctement la régulation, la Cultibox à besoin de savoir quel élément est branché sur la prise.
 
@@ -73,6 +75,8 @@ la régulation secondaire permet de forcer l'état d'une prise en fonction de ce
 Elle agit comme une sorte d'alarme.
 Par exemple, vous utilisez un ventilateur pour réguler la température à 22°C. Il ne se met en marche que lorsque la température dépasse la consigne. Jusque là, c'est la régulation "classique" qui fonctionne.
 Vous désirez qu'en plus de ce fonctionnement normal, il soit actif si le taux d'humidité est supérieur à 80%. C'est la régulation secondaire qui va tenir ce rôle.
+
+Il n'est pas possible d'activer la régulation secondaire sur une prise déclarée comme "lampe" ou comme "autre" . Une prise "autre", est une prise qui ne modifie ni la température ni l'humidité de l'espace de culture. Il n'est donc pas possible d'effectuer de la régulation (principale ou secondaire) sur cette prise. De la même façon, il est impossible d'activer la régulation secondaire sur une prise déclarée comme "lampe".
 
 * La régulation secondaire est prioritaire dans la Cultibox. Dans le cas ou ses conditions d'activations sont remplies, elle prend le pas sur la régulation classique*
 
