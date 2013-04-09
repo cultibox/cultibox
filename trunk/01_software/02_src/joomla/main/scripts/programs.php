@@ -43,7 +43,7 @@ $pop_up_message="";
 $pop_up_error_message="";
 $regul_program="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
-$resume="";
+$resume=array();
 $add_plug=getvar('add_plug');
 $remove_plug=getvar('remove_plug');
 $stats=get_configuration("STATISTICS",$main_error);
@@ -424,9 +424,7 @@ for($i=0;$i<$nb_plugs;$i++) {
         unset($plugs_infos[$i]["RESET"]);
     }
 
-    if(isset($selected_plug)&&(!empty($selected_plug))&&($i==$selected_plug-1)) {
-            $resume=format_data_sumary($plugs_infos[$i]["data"],$plugs_infos[$i]['PLUG_NAME'],$i+1,$plugs_infos[$i]['PLUG_TYPE']);
-    }
+    $resume=format_data_sumary($plugs_infos);
 }
 
 if((isset($sd_card))&&(!empty($sd_card))) {

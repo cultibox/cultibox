@@ -91,7 +91,7 @@ buttonImageOnly: 'true',
    </tr>
    <tr>
       <td></td>
-      <td><?php echo __('SELECT_PROGRAM_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_LOG_PROGRAM'); ?>" />:</td>
+      <td><?php echo __('SELECT_PROGRAM_PLUG'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_LOG_PROGRAM'); ?>" />:</td>
       <td> <select name="select_plug">
             <option value="">---</option>
             <?php foreach($active_plugs as $plugs) {  ; ?>
@@ -103,7 +103,7 @@ buttonImageOnly: 'true',
    </tr>
    <tr>
       <td></td>
-      <td><?php echo __('SELECT_POWER_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER_LOG'); ?>" />:</td>
+      <td><?php echo __('SELECT_POWER_PLUG'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POWER_LOG'); ?>" />:</td>
       <td> <select name="select_power">
             <option value="">---</option>
             <?php foreach($active_plugs as $plugs) {  ?>
@@ -273,9 +273,7 @@ $(function () {
                events: {
                 afterSetExtremes: function() {
                     if (this.min <= this.dataMin && this.max >= this.dataMax) {
-                        if(chart.resetZoomButton) {
-                            chart.resetZoomButton.hide();
-                        }
+                        chart.resetZoomButton.hide();
                     }
                 }
                },
@@ -689,7 +687,7 @@ $(function () {
                 if(extremes.max>$(this).val()) {
                     if(chart.axes[0].series[i].type=='area') {
                         chart.yAxis[i].setExtremes($(this).val(), extremes.max);
-                        if(!chart.resetZoomButton) {
+                        if( !chart.resetZoomButton ) {
                             chart.showResetZoom();
                         }
                         //console.log(chart);
@@ -706,7 +704,7 @@ $(function () {
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='area') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
-                        if(!chart.resetZoomButton) {
+                        if( !chart.resetZoomButton ) {
                             chart.showResetZoom();
                         }
                         //console.log(chart);
@@ -724,7 +722,7 @@ $(function () {
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='spline') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
-                        if(!chart.resetZoomButton) {
+                        if( !chart.resetZoomButton ) {
                             chart.showResetZoom();
                         }
                         //console.log(chart);
@@ -742,7 +740,7 @@ $(function () {
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='spline') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
-                        if(!chart.resetZoomButton) {
+                        if( !chart.resetZoomButton ) {
                             chart.showResetZoom();
                         }
                         //console.log(chart);
@@ -762,7 +760,7 @@ $(function () {
 <tr>
     <td class="left_log"></td>
     <td class="center_log"></td>
-    <td class="right_log"><?php if(strcmp("$second_regul","True")==0) { if((!empty($resume_regul))&&(isset($resume_regul))) { ?><img src="main/libs/img/resume.png" alt="" class="info-bulle-css" title="<?php echo $resume_regul; ?>" /><?php } } ?></td>
+    <td class="right_log"><?php if(strcmp("$second_regul","True")==0) { if((!empty($resume_regul))&&(isset($resume_regul))) { ?><img src="main/libs/img/resume.png" alt="" title="<?php echo $resume_regul; ?>" /><?php } } ?></td>
 </tr>
 <tr>
     <td class="left_log">
@@ -903,7 +901,7 @@ $(function () {
                 }
             } ?>
          </select>
-        <?php echo __('IMPORT_LAST_MONTH'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_CONFIG_LOG_SEARCH'); ?>" />
+        <?php echo __('IMPORT_LAST_MONTH'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CONFIG_LOG_SEARCH'); ?>" />
     <td class="log-manage-field"><input type="submit" id="import_log" name="import_log" <?php if((!isset($sd_card))||(empty($sd_card))) { echo "disabled"; ?> class="inputDisable" value="<?php echo __('NO_IMPORT_LOG'); ?>" <?php } else { ?>value="<?php echo __('IMPORT_LOG'); ?>" <?php } ?>
 ></td>
     <td></td>
@@ -926,7 +924,7 @@ $(function () {
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
-    <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RESET_LOG'); ?>" /></td>
+    <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_LOG'); ?>" /></td>
     <td class="log-manage-field"><INPUT type="submit" id="reset_log" name="reset_log" <?php if(!$empty_log) { echo 'disabled'; ?> class="inputDisable" value="<?php echo __('MANAGE_EXPORT_EMPTY_LOG_CSV'); ?>" <?php } else { ?> value="<?php echo __('MANAGE_RESET_LOG'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')" <?php } ?>></td>
     <td></td>
 </tr>
@@ -949,7 +947,7 @@ $(function () {
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
-    <td class="log-manage-title"><?php echo __('MANAGE_EXPORT_LOG_CSV'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_EXPORT_LOG_CSV'); ?>" /></td>
+    <td class="log-manage-title"><?php echo __('MANAGE_EXPORT_LOG_CSV'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_LOG_CSV'); ?>" /></td>
     <td class="log-manage-field"><INPUT type="submit" id="export_log" name="export_log" <?php if(!$empty_log) { echo 'disabled'; ?> class="inputDisable" value="<?php echo __('MANAGE_EXPORT_EMPTY_LOG_CSV'); ?>" <?php } else { ?> value="<?php echo __('MANAGE_EXPORT_LOG_CSV_BUTTON'); ?>"<?php } ?>></td>
     <td></td>
 </tr>
@@ -974,7 +972,7 @@ $(function () {
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
-    <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE_POWER'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RESET_LOG'); ?>" /></td>
+    <td class="log-manage-title"><?php echo __('MANAGE_RESET_TITLE_POWER'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_LOG'); ?>" /></td>
     <td class="log-manage-field"><input type="submit" id="reset_log_power" name="reset_log_power" <?php if(!$empty_power) { echo 'disabled'; ?> class="inputDisable" value="<?php echo __('MANAGE_EXPORT_EMPTY_POWER_CSV'); ?>" <?php } else { ?> value="<?php echo __('MANAGE_RESET_POWER'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM','javascript'); ?>')" <?php } ?>></td>
     <td></td>
 </tr>
@@ -996,7 +994,7 @@ $(function () {
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
-    <td class="log-manage-title"><?php echo __('MANAGE_EXPORT_POWER_CSV'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_EXPORT_POWER_CSV'); ?>" /></td>
+    <td class="log-manage-title"><?php echo __('MANAGE_EXPORT_POWER_CSV'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_POWER_CSV'); ?>" /></td>
     <td class="log-manage-field"><INPUT type="submit" id="export_log_power" name="export_log_power"  <?php if(!$empty_power) { echo 'disabled'; ?> class="inputDisable" value="<?php echo __('MANAGE_EXPORT_EMPTY_POWER_CSV'); ?>" <?php } else { ?>  value="<?php echo __('MANAGE_EXPORT_POWER_CSV_BUTTON'); ?>"<?php } ?>></td>
     <td></td>
 </tr>

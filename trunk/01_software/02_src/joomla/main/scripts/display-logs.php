@@ -195,7 +195,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         $main_error[]=__('ERROR_WRITE_PROGRAM');
     }
 } else {
-   $main_error[]=__('ERROR_SD_CARD_LOGS')." <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\"".__('TOOLTIP_WITHOUT_SD')."\" />";
+   $main_error[]=__('ERROR_SD_CARD_LOGS')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_WITHOUT_SD')."\" />";
 }
 
 
@@ -505,7 +505,7 @@ if("$type" == "days") {
         }
       } else {
         get_graph_array($temperature,"temperature/100","%%","1","True",$main_error);
-        $main_error[]=__('EMPTY_TEMPERATURE_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\"".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
+        $main_error[]=__('EMPTY_TEMPERATURE_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
 
         if(!empty($temperature)) {
           $data_temp=get_format_graph($temperature,"log");
@@ -513,7 +513,7 @@ if("$type" == "days") {
         } 
 
         get_graph_array($humidity,"humidity/100","%%","1","True",$main_error);
-        $main_error[]=__('EMPTY_HUMIDITY_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" class=\"info-bulle-css\" title=\"".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
+        $main_error[]=__('EMPTY_HUMIDITY_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
 
         if(!empty($humidity)) {
             $fake_log=true;

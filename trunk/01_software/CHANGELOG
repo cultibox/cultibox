@@ -1,4 +1,12 @@
 Cultibox (1.1.12) precise; urgency=low
+    + Non rechargement de la page des programmes, passage a jquery 1.9, relooking css...
+    
+
+
+-- Yann Genevois <yann.genevois@gmail.com> Tue Apr  9 09:24:50 CEST 2013
+
+
+Cultibox (1.1.12) precise; urgency=low
     + Le choix du capteur n'apparait plus pour les types 'autre' et 'lampe'
     + Correction d'un bug javascript: on ne recherche plus les éléments de la seconde régulation si celle-ci est désactivée
     + Correction du fichier update_sql.sql (il manquait deux ;)

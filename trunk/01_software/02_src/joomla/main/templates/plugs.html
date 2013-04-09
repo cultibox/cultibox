@@ -48,7 +48,7 @@
 <table class="table_width">
       <tr>
          <td class="plug-marge-td"></td>
-         <td class="plug-marge-title"><?php echo __('STATE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_STATE_PLUG'); ?>" /></td>
+         <td class="plug-marge-title"><?php echo __('STATE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_STATE_PLUG'); ?>" /></td>
          <td class="plug-marge-field">
             <select name="plug_enable<?php echo $i; ?>" onChange="getEnable(this.selectedIndex,<?php echo $i; ?>);" onLoad="getEnable(this.selectedIndex,<?php echo $i; ?>);">
                <option <?php if(strcmp($plug_enable{$i},"True")==0) { echo "selected";} ?> value="True"><?php echo __('PLUG_ENABLED'); ?></option>
@@ -78,13 +78,13 @@
             <?php if($i <= $GLOBALS['NB_MIN_PLUG']) { ?>
                 <input type="text" name="plug_power_maximal<?php echo $i; ?>" value="<?php echo $plug_power_max{$i}; ?>W" readonly size="6" /> 
                 <?php if($plug_power_max{$i}==3500) { ?>
-                    <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" />
+                    <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" />
                 <?php } else { ?>
-                    <img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_1000'); ?>" /> 
+                    <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_1000'); ?>" /> 
                 <?php } ?>
             <?php } else { ?>
-                <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="1000" <?php if(strcmp($plug_power_max{$i},"1000")==0) { echo "checked"; } ?>>1000W<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_1000'); ?>" />
-                <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="3500" <?php if(strcmp($plug_power_max{$i},"3500")==0) { echo "checked"; } ?>>3500W<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" />
+                <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="1000" <?php if(strcmp($plug_power_max{$i},"1000")==0) { echo "checked"; } ?>>1000W<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_1000'); ?>" />
+                <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="3500" <?php if(strcmp($plug_power_max{$i},"3500")==0) { echo "checked"; } ?>>3500W<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" />
             <?php } ?>
          </td>
          <td></td>
@@ -109,7 +109,7 @@
       <tr>
          <td></td>
          <td>
-            <?php echo __('POWER_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER'); ?>" />
+            <?php echo __('POWER_PLUG'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_POWER'); ?>" />
          </td>
          <td>
             <input type="text" size="4" maxlength="4" name="plug_power<?php echo $i; ?>" value="<?php echo $plug_power{$i}; ?>" onKeypress="return verifInt(event);">W
@@ -120,7 +120,7 @@
          <td></td>
          <td>
             <div id="tolerance_label<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
-               <?php echo __('TOLERANCE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_TOLERANCE'); ?>" />
+               <?php echo __('TOLERANCE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_PLUG_TOLERANCE'); ?>" />
             </div>
          </td>
          <td>
@@ -132,7 +132,7 @@
       </tr>
       <tr>
          <td></td>
-         <td><div id="label_sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>"><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></div></td>
+         <td><div id="label_sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>"><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></div></td>
          <td>
                <div id="sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
                <select name="plug_sensor<?php echo $i; ?>" id="plug_sensor<?php echo $i; ?>">
@@ -149,7 +149,7 @@
          <td></td>
          <td>
             <div id="second_regul_label<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
-<?php echo __('ENABLE_REGUL_PLUG'); ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_REGUL'); ?>" />
+<?php echo __('ENABLE_REGUL_PLUG'); ?><img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_PLUG_REGUL'); ?>" />
             </div>
          </td>
          <td>

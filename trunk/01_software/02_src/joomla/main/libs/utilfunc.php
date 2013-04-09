@@ -1462,66 +1462,58 @@ if(!file_exists("$log_file")) return $ret;
 
 // {{{ format_data_sumary()
 // ROLE format actions of a plug to be displayed in a sumary
-// IN    $data       actions of the plug
-//       $name       name of the plug
-//       $number     plug's number
+// IN    $data       plug's informations array
 // RET   sumary formated 
-function format_data_sumary($data="",$name="",$number="",$type="") {
-    $resume="";
+function format_data_sumary($data) {
+    $resume=array();
     $unity="";
-    if((empty($data))||(empty($name))||(empty($number))|(empty($type))) {
-            $resume="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.":<br /> ".$name."</i></b></p><p align='center'>".__('EMPTY_ACTION')."</p>";
-    } else {
-                switch($type) {
-                    case 'lamp': $unity="";
-                                 break;
-                    case 'other': $unity="";
-                                break;
-                    case 'ventilator': $unity="°C";
-                                break;
-                    case 'heating': $unity="°C";
-                                break;
-                    case 'humidifier': $unity="%";
-                                break; 
-                    case 'deshumidifier': $unity="%";
-                                break;
-                }
+    $number=1;
+    foreach($data as $plugs_info) {
+        $resume[$number]="";
+        if((empty($plugs_info["data"]))||(empty($plugs_info['PLUG_NAME']))||(empty($number))|(empty($plugs_info['PLUG_TYPE']))) {
+            $resume[]="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.":<br /> ".$plugs_info['PLUG_NAME']."</i></b></p><p align='center'>".__('EMPTY_ACTION')."</p>";
+        } else {
+            switch($plugs_info['PLUG_TYPE']) {
+                    case 'lamp': $unity=""; break;
+                    case 'other': $unity=""; break;
+                    case 'ventilator': $unity="°C"; break;
+                    case 'heating': $unity="°C"; break;
+                    case 'humidifier': $unity="%"; break; 
+                    case 'deshumidifier': $unity="%"; break;
+            }
+            $actions=array();
+            $actions=explode('[',$plugs_info["data"]);
+            $prev_value="0";
+            $value=array();
+            foreach($actions as $action) {
+                $action=str_replace('],','',$action);
+                $action=str_replace(']','',$action);
+                $action=explode(',',$action);
+                if((isset($action[0]))&&(isset($action[1]))&&(strcmp($action[0],"")!=0)&&(strcmp($action[1],"")!=0)) {
+                      $heure=date ("H:i:s", $action[0]/1000);
 
-               
-                $actions=array();
-                $actions=explode('[',$data);
-                $prev_value="0";
-                $value=array();
-                foreach($actions as $action) {
-
-                    $action=str_replace('],','',$action);
-                    $action=str_replace(']','',$action);
-                    $action=explode(',',$action);
-
-                    if((isset($action[0]))&&(isset($action[1]))&&(strcmp($action[0],"")!=0)&&(strcmp($action[1],"")!=0)) {
-                          $heure=date ("H:i:s", $action[0]/1000);
-
-                          if(strcmp("$prev_value","$action[1]")!=0) {
-                            if(strcmp($action[1],"0")!=0) {
-                                    if(strcmp($resume,"")==0) {
+                      if(strcmp("$prev_value","$action[1]")!=0) {
+                          if(strcmp($action[1],"0")!=0) {
+                            if(strcmp($resume[$number],"")==0) {
                                         if(strcmp($action[1],"99.9")==0) {
-                                            $resume="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.":<br /> ".$name."</i></b></p><p align='left'>".__('SUMARY_ON')." ".__('SUMARY_HOUR')." ".$heure."<br />";
+                                            $resume[$number]="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.":<br /> ".$plugs_info['PLUG_NAME']."</i></b></p><p align='left'>".__('SUMARY_ON')." ".__('SUMARY_HOUR')." ".$heure."<br />";
                                         } else {
-                                            $resume="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.":<br /> ".$name."</i></b></p><p align='left'>".__('SUMARY_REGUL_ON')." (".$action[1].$unity.") ".__('SUMARY_HOUR')." ".$heure."<br />";
+                                            $resume[$number]="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.":<br /> ".$plugs_info['PLUG_NAME']."</i></b></p><p align='left'>".__('SUMARY_REGUL_ON')." (".$action[1].$unity.") ".__('SUMARY_HOUR')." ".$heure."<br />";
                                         }
                                     } else {
                                         if(strcmp($action[1],"99.9")==0) {
-                                            $resume=$resume.__('SUMARY_ON')." ".__('SUMARY_HOUR')." ".$heure."<br />";
+                                            $resume[$number]=$resume[$number].__('SUMARY_ON')." ".__('SUMARY_HOUR')." ".$heure."<br />";
                                         } else {
-                                            $resume=$resume.__('SUMARY_REGUL_ON')." (".$action[1].$unity.") ".__('SUMARY_HOUR')." ".$heure."<br />";
+                                            $resume[$number]=$resume[$number].__('SUMARY_REGUL_ON')." (".$action[1].$unity.") ".__('SUMARY_HOUR')." ".$heure."<br />";
                                         }
                                     }
                                     $prev_value=$action[1];
                             } else if(strcmp($prev_value,"0")!=0) {
                                         if(strcmp("$prev_value","99.9")==0) {
-                                            $resume=$resume.__('SUMARY_OFF')." ".__('SUMARY_HOUR')." ".$heure."<br />";
+                                            $resume[$number]=$resume[$number].__('SUMARY_OFF')." ".__('SUMARY_HOUR')." ".$heure."<br />";
                                         } else {
-                                            $resume=$resume.__('SUMARY_REGUL_OFF')." ".__('SUMARY_HOUR')." ".$heure."<br />";
+                                            $resume[$number]=$resume[$number].__('SUMARY_REGUL_OFF')." ".__('SUMARY_HOUR')." ".$heure."<br />";
+
                                         }
                                             $prev_value=0;
                             } 
@@ -1529,11 +1521,14 @@ function format_data_sumary($data="",$name="",$number="",$type="") {
                     } 
                 }
 
-                if(strcmp($resume,"")==0) { 
-                        $resume="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.": <br />".$name."</i></b></p><p align='center'>".__('EMPTY_ACTION')."</p>";
+                if(strcmp($resume[$number],"")==0) { 
+                        $resume[$number]="<p align='center'><b><i>".__('SUMARY_TITLE')." ".$number.": <br />".$plugs_info['PLUG_NAME']."</i></b></p><p align='center'>".__('EMPTY_ACTION')."</p>";
                 } else {
-                        $resume=$resume."</p>";
+                        $resume[$number]=$resume[$number]."</p>";
                 }
+
+            }
+       $number=$number+1;
     }
     return $resume;
 }

@@ -272,7 +272,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
          <td class="conf-marge"></td>
-         <td><?php echo __('CONFIGURE_POPUP'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POPUP'); ?>" /></td>
+         <td><?php echo __('CONFIGURE_POPUP'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POPUP'); ?>" /></td>
          <td><select name="pop_up">
             <option value="True" <?php if(strcmp("$pop_up","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
             <option value="False" <?php if(strcmp("$pop_up","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
@@ -281,7 +281,7 @@ timeFormat: 'hh:mm',
    </tr>
     <tr>
          <td class="conf-marge"></td>
-         <td><?php echo __('CHECK_UPDATE'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_CHECK_UPDATE'); ?>" /></td>
+         <td><?php echo __('CHECK_UPDATE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CHECK_UPDATE'); ?>" /></td>
          <td><select name="update">
             <option value="True" <?php if(strcmp("$update","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
             <option value="False" <?php if(strcmp("$update","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
@@ -299,7 +299,7 @@ timeFormat: 'hh:mm',
    </tr>
    <tr>
          <td class="conf-marge"></td>
-         <td><?php echo __('SECOND_REGUL_ENABLE'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_SECOND_REGUL_ENABLE'); ?>" /></td>
+         <td><?php echo __('SECOND_REGUL_ENABLE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SECOND_REGUL_ENABLE'); ?>" /></td>
          <td><select name="second_regul">
             <option value="True" <?php if(strcmp("$second_regul","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
             <option value="False" <?php if(strcmp("$second_regul","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
@@ -315,7 +315,7 @@ timeFormat: 'hh:mm',
 <tr>
 <td class="conf-marge"></td>
 <td class="conf-marge-td">
-   <?php echo __('CONFIGURE_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
+   <?php echo __('CONFIGURE_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
 </td>
 <td>
    <select name="record_frequency">
@@ -335,7 +335,7 @@ timeFormat: 'hh:mm',
 <tr>
 <td class="conf-marge"></td>
 <td>
-   <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
+   <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
 </td>
 <td>
    <select name="power_frequency">
@@ -373,7 +373,7 @@ timeFormat: 'hh:mm',
 <tr>
 <td class="conf-marge"></td>
 <td>
-   <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
+   <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
 </td>
 <td>
    <select name="update_frequency">
@@ -402,7 +402,7 @@ timeFormat: 'hh:mm',
 <table class="conf-table">
    <tr>  
       <td class="conf-marge"></td>
-      <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_ALARM'); ?>" /></td>
+      <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_ALARM'); ?>" /></td>
       <td><select name="alarm_enable" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
            <?php if("$alarm_enable"=="0001") {
                      echo "<option value='0001' selected>".__('YES')."</option>";
@@ -469,7 +469,7 @@ timeFormat: 'hh:mm',
 <table class="conf-table">
 <tr>
     <td class="conf-marge"></td>
-    <td class="conf-marge-td"><?php echo __('MANAGE_RESET_SD_CARD'); ?>:<img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_FORMAT_SD'); ?>" /></td>
+    <td class="conf-marge-td"><?php echo __('MANAGE_RESET_SD_CARD'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_FORMAT_SD'); ?>" /></td>
     <td ><?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?><select name="selected_hdd" id="selected_hdd"><?php  foreach($hdd_list as $hdd) { ?><option value="<?php echo "$hdd"; ?>"><?php echo "$hdd"; ?></option><?php } ?></select><?php  } ?>
         <input type="submit" id="reset_sd_card" name="reset_sd_card" <?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?> value="<?php echo __('MANAGE_RESET_CARD'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM_SD_CARD','javascript'); ?>')" <?php } else { ?>disabled value="<?php echo __('MANAGE_RESET_CARD_NOT_FOUND'); ?>" class="inputDisable"<?php } ?>></td>
     <td></td>

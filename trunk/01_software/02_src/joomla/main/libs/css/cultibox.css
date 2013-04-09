@@ -323,17 +323,6 @@ hr {
    margin:auto;
 }
 
-span.info-bulle-contenu
-{
-   display: none;
-   position: absolute;
-   background:black;
-   padding: 6px;
-   padding-left: 12px;
-   padding-right: 12px;
-   color: white;
-   background:#696455;
-}
 
 label.input-file
 {
@@ -557,12 +546,6 @@ td.conf-marge-td {
   width:50%;
 }
 
-.info-bulle-contenu{
-	font-weight:normal;
-	width: 20%;
-	font-size:13px;
-    border-radius:22px;
-}
 
 td.welcome-link {
   width:33%;
@@ -572,10 +555,6 @@ td.welcome-link {
 td.welcome-link img{
   border-radius:22px;
   border:#C3B59B 6px solid;
-}
-
-.info-bulle-css:hover{
-	cursor:pointer;
 }
 
 .menu-dropdown li.level1 a.level1 {
@@ -619,6 +598,10 @@ td.welcome-link img{
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+
 
 
 /* css for dialog widget */
@@ -629,5 +612,21 @@ td.welcome-link img{
 
 .popup_message {
     color:#aaa;
+}
+
+.ui-tooltip
+{
+       font-size:13px;
+       font-family:Calibri;
+       background: #696455;
+       border-radius:20px;  
+       padding: 5px;
+       color: #ffffff;
+       cursor:pointer;
+       position: absolute;
+       padding: 6px;
+       padding-left: 12px;
+       padding-right: 12px;
+       width: 20%;
 }
 
