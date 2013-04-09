@@ -210,7 +210,9 @@ $(document).ready(function() {
             series: {
                 events: {
                     legendItemClick: function(event) {
-                            return false;
+                            if(this.index==$('#selected_plug').val()-1) {
+                                return false;
+                            }
                     }
                 }
             }
