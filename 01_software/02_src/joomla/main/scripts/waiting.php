@@ -19,8 +19,8 @@ require_once('main/libs/utilfunc.php');
 $main_error=array();
 
 if((!isset($_SESSION['LANG']))||(empty($_SESSION['LANG']))) {
-    $_SESSION['LANG']="en_GB";
-    $_SESSION['SHORTLANG'] = "en";
+    $_SESSION['LANG']="fr_FR";
+    $_SESSION['SHORTLANG'] = "fr";
 }
 __('LANG');
 
@@ -29,17 +29,20 @@ __('LANG');
 $error=array();
 
 
-if(isset($_POST['startday'])) {
-      $_SESSION['startday']=$_POST['startday'];
-}
+
 
 if(isset($_POST['select_power'])) {
       $_SESSION['select_power']=$_POST['select_power'];
 }
 
+if(isset($_POST['startday'])) {
+      $_SESSION['startday']=$_POST['startday'];
+}
+
 if(isset($_POST['select_plug'])) {
       $_SESSION['select_plug']=$_POST['select_plug'];
 }
+
 
 if(isset($_POST['select_sensor'])) {
       $_SESSION['select_sensor']=$_POST['select_sensor'];
@@ -95,7 +98,14 @@ if((isset($_POST['selected_hdd']))&&(!empty($_POST['selected_hdd']))&&(isset($_P
         $url="./display-logs-".$_SESSION['SHORTLANG'];
         header("Refresh: 5;url=$url");
     }
-} 
+} else if(isset($_POST['startmonth'])) {
+    $with_sd=false;
+    if((isset($sd_card))&&(!empty($sd_card))) {
+        $with_sd=true;    
+    } 
+    $url="./display-logs-".$_SESSION['SHORTLANG'];
+    header("Refresh: 5;url=$url");
+}
 
 //Display the waiting template
 include('main/templates/waiting.html');

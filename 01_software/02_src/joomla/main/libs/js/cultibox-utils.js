@@ -282,13 +282,13 @@ function getTolerance(i,j,secondR) {
                     pDegree.style.display = 'none'; 
                     pPourcent.style.display = 'none'; 
                     if(secondR=="True") { 
-                        seconLabel.style.display = ''; 
-                        secondVal.style.display = ''; 
-                        secondParam.style.display = ''; 
+                        seconLabel.style.display = 'none'; 
+                        secondVal.style.display = 'none'; 
+                        secondParam.style.display = 'none'; 
                         divHumiRegul.style.display = 'none'; 
                         divTempRegul.style.display = 'none';
-                        divUnknownRegul.style.display = '';
-                        labelDeg.style.display = '';
+                        divUnknownRegul.style.display = 'none';
+                        labelDeg.style.display = 'none';
                         labelPct.style.display = 'none';
                     } 
                     labelSensor.style.display = 'none'; 
