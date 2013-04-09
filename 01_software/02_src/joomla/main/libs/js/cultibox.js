@@ -1,33 +1,20 @@
-AfficherInfoBulle = function(e) {
-   var text = $(this).next('.info-bulle-contenu');
-   if (text.attr('class') != 'info-bulle-contenu') return false;
-   text.fadeIn()
-   .css('top', e.pageY)
-   .css('left', e.pageX+10);
-   return false;
+clean_highchart_message = function(message) { {
+    message=message.replace("'", "\'");
+    message=message.replace("&eacute;", "é");
+    message=message.replace("&agrave;", "à");
+    message=message.replace("&egrave;", "è");
+    message=message.replace("&ecirc;", "ê");
+    message=message.replace("&deg;", "°");
+    message=message.replace("&ucirc;", "û");
+    message=message.replace("&ocirc;", "ô");
+    return message;
+    }
 }
 
-CacherInfoBulle = function(e) {
-   var text = $(this).next('.info-bulle-contenu');
-   if (text.attr('class') != 'info-bulle-contenu') return false;
-   text.fadeOut();
-}
-
-InstallationInfoBulle = function() {
-   $('.info-bulle-css')
-   .each(function(){
-      $(this)
-      .after($('<span/>')
-      .attr('class', 'info-bulle-contenu')
-      .html($(this).attr('title')))
-      .attr('title', '');
-   })
-   .hover(AfficherInfoBulle, CacherInfoBulle);
-}
 
 $(document).ready(function() {
-   InstallationInfoBulle();
+   // Affichage des tooltips sur les éléments avec un title
+   $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
    $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
    $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
 });
-

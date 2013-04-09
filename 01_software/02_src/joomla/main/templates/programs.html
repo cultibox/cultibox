@@ -35,7 +35,7 @@
 
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-programs" method="get" name="actionprog" id="actionprog">
 <p class="title_conf"><?php echo __('CONFIGURE_PROGRAM'); ?>
-    <select name="selected_plug" onchange="this.form.submit()" id="selected_plug">
+    <select name="selected_plug" id="selected_plug">
     <?php foreach($active_plugs as $plugs) {  ?>
                <option <?php if($selected_plug==$plugs['id']) { echo 'selected';} ?> value="<?php echo $plugs['id']; ?>" ><?php echo $plugs['id']." - ".$plugs_infos[$plugs['id']-1]['PLUG_NAME']; ?></option>
     <?php } ?>
@@ -57,7 +57,7 @@ timeFormat: 'hh:mm:ss',
 <?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
 <?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
 <?php echo "currentText: '".__('TIMEPICKER_NOW')."',"; ?>
-<?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
+<?php echo "closeText: '".__('TIMEPICKER_CLOSE')."',"; ?>
 });
 $('#end_time').timepicker({
 <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
@@ -94,6 +94,8 @@ timeFormat: 'hh:mm:ss',
 
 <script type="text/javascript">
 plugs_infoJS = <?php echo json_encode($plugs_infos) ?>;
+highchart_plug=<?php echo $selected_plug; ?>;
+resume_plugs=<?php echo json_encode($resume) ?>;
 </script>
 
 <script type="text/javascript">
@@ -141,15 +143,16 @@ $(document).ready(function() {
             verticalAlign: 'bottom',
             align: 'right',
             y: -<?php echo ($GLOBALS['NB_MAX_PLUG']-count($active_plugs))*16+15; ?>,
+            x: +25,
             navigation: {
                 activeColor: '#3E576F',
                 animation: true,
-                arrowSize: 12,
+                arrowSize: 10,
                 inactiveColor: '#CCC',
                 style: {
                     fontWeight: 'bold',
                     color: '#333',
-                    fontSize: '12px'    
+                    fontSize: '10px'    
                 }
             }
          },
@@ -203,17 +206,17 @@ $(document).ready(function() {
               },
          title: false
       },
-      credits: {
-                   enabled: false
-      },
       plotOptions: {
             series: {
                 events: {
-                    legendItemClick: function () {
-                        return false;
+                    legendItemClick: function(event) {
+                            return false;
                     }
                 }
             }
+      },
+      credits: {
+                   enabled: false
       },
       tooltip: {
          formatter: function() {
@@ -232,7 +235,6 @@ $(document).ready(function() {
             } 
          }
       },
-      
       series: [
             <?php 
             $count=0;
@@ -246,9 +248,7 @@ $(document).ready(function() {
             name: <?php echo "'".clean_highchart_message($plugs_infos[$plugs['id']-1]['PLUG_NAME'])." (".clean_highchart_message($plugs_infos[$plugs['id']-1]['translate']).")',"; ?>
          <?php } ?>
          color: <?php echo "'".$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs['id']-1]."'"; ?>,
-         <?php if($plugs['id']!=$selected_plug) { ?>
-         showCheckbox: true,
-         <?php } ?>
+         showCheckbox: false,
          
          <?php if($plugs['id']!=$selected_plug) { echo "visible: false,"; } else { echo "selected: true,"; } ?>
          data: [
@@ -271,6 +271,56 @@ $(document).ready(function() {
     } ?>
 ] 
    });
+
+    $('#selected_plug').change(function() {
+        $.each( chart.series, function() {
+            if(this.index==$('#selected_plug').val()-1) {
+                chart.series[$('#selected_plug').val()-1].show();
+                chart.series[$('#selected_plug').val()-1].select(); 
+                chart.series[$('#selected_plug').val()-1].name = "<b>"+clean_highchart_message(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_NAME'])+" ("+clean_highchart_message(plugs_infoJS[$('#selected_plug').val()-1]['translate'])+")</b>";
+                chart.series[$('#selected_plug').val()-1].legendItem = chart.series[$('#selected_plug').val()-1].legendItem.destroy();
+                tmp_highchart_plug=this.index;
+
+                $("#reset_selected_plug").val($('#selected_plug').val());
+                $("#selected_plug_export").val($('#selected_plug').val());
+                $("#selected_plug_import").val($('#selected_plug').val());
+                $("#resume_img").prop('tooltipText', resume_plugs[$('#selected_plug').val()]);
+            } else if(this.index==highchart_plug-1) {
+                chart.series[this.index].name = clean_highchart_message(plugs_infoJS[this.index]['PLUG_NAME'])+" ("+clean_highchart_message(plugs_infoJS[this.index]['translate'])+")";
+                chart.series[this.index].legendItem = chart.series[this.index].legendItem.destroy();
+                chart.series[this.index].select(false);
+                chart.series[this.index].hide();
+            } else {
+                chart.series[this.index].select(false);
+                chart.series[this.index].hide();
+            }
+        });
+
+        if((plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']=="other")||(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']=="lamp")) {
+            if($('#regul_program option[value="regul"]').length!=0) {
+                $("#regul_program option[value='regul']").remove();
+            }
+        } else {
+            if($('#regul_program option[value="regul"]').length==0) {
+                $("#regul_program").append('<option value="regul"><?php echo __('VALUE_REGUL'); ?></option>');
+            }
+        }
+
+        getRegulation($("#regul_program").prop("selectedIndex"),plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']); 
+
+        if(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_REGUL']=="False") {
+            $("#second_regul_plug").val("<?php echo __('SECOND_REGUL_OFF','highchart'); ?>");
+        } else {
+            $("#second_regul_plug").val("<?php echo __('SECOND_REGUL_ON','highchart'); ?>");
+        }
+
+        $("#resume_img").prop('title', resume_plugs[$('#selected_plug').val()]);
+        highchart_plug=tmp_highchart_plug+1;
+        chart.isDirtyLegend = true;
+        chart.redraw(); 
+        
+    });
+
 });
 
 </script>
@@ -304,15 +354,15 @@ $(document).ready(function() {
      <td></td>
      <td><?php echo __('VALUE_ON_OFF'); ?>:</td>
      <td><?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"other")==0)) { ?>
-            <select id="regul_program" name="regul_program"> 
+            <select id="regul_program" name="regul_program" id="regul_program" onChange="getRegulation(this.selectedIndex,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);"> 
                 <option value="on" <?php if(strcmp("$regul_program","on")==1) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
                 <option value="off" <?php if(strcmp("$regul_program","off")==0) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
             </select>
             <?php } else { ?>
-             <select id="regul_program" name="regul_program" onChange="getRegulation(this.selectedIndex);" onLoad="getRegulation(this.selectedIndex);">
-                 <option value="regul" <?php if(strcmp("$regul_program","regul")==0) { ?>selected<?php } ?>><?php echo __('VALUE_REGUL'); ?></option>
+             <select id="regul_program" name="regul_program" id="regul_program" onChange="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);">
 			     <option value="on" <?php if(strcmp("$regul_program","on")==0) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
                  <option value="off" <?php if(strcmp("$regul_program","off")==0) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
+                 <option value="regul" <?php if(strcmp("$regul_program","regul")==0) { ?>selected<?php } ?>><?php echo __('VALUE_REGUL'); ?></option>
             </select>
             <?php } ?>
     </td>
@@ -320,15 +370,19 @@ $(document).ready(function() {
 </tr>
 <tr>
     <td></td>
-    <td><div id="regul_label" style="<?php if(strcmp("$regul_program","regul")!=0) echo "display:none"; ?>"><?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)) { 
-                            echo __('TEMP_WISHED').":"; 
-                            } elseif((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) {
-                                    echo __('HUMI_WISHED').":"; 
-                            } ?><img src="main/libs/img/infos.png" alt="" class="info-bulle-css" title="<?php echo __('TOOLTIP_VALUE'); ?>" /></div></td>
+    <td><div id="regul_label" style="<?php if(strcmp("$regul_program","regul")!=0) echo "display:none"; ?>">
+            <label id="regul_label_temp"  style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)) { echo ''; } else { echo 'display:none'; } ?>"> 
+                <?php echo __('TEMP_WISHED').":"; ?>
+            </label>
+            
+            <label id="regul_label_humi" style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) { echo ''; } else { echo 'display:none'; } ?>">
+                <?php echo __('HUMI_WISHED').":"; ?>
+            </label><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_VALUE'); ?>" />
+            </div></td>
     <td><div id="regul_value" style="<?php if(strcmp("$regul_program","regul")!=0) echo "display:none"; ?>">
                        <input type="text" id="value_program" name="value_program" size="4" maxlength="4" 
                        <?php if(!empty($value_program)) { 
-                               ?>value="<?php echo $value_program;?>" <?php 
+                               ?> value="<?php echo $value_program;?>" <?php 
                         } else { 
                               if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0))  { 
                                       echo 'value="22"'; 
@@ -336,9 +390,13 @@ $(document).ready(function() {
                                       echo 'value="55"'; 
                               } 
                         } ?> />
-                                                <?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)) echo "°C"; ?>
-                  <?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) echo "%"; ?>
-               </div>
+    
+                    <label id="regul_value_temp" style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)) { echo ''; } else { echo 'display:none'; } ?>">°C
+                    </label>
+
+                    <label id="regul_value_humi" style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) { echo ''; } else { echo 'display:none'; } ?>">%
+                    </label>
+        </div>
     </td>
     <td><?php if((isset($error['value']))&&(!empty($error['value']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['value']."</div>"; ?></td>
 </tr>
@@ -346,7 +404,7 @@ $(document).ready(function() {
 <tr>
     <td></td>
     <td><?php echo __('VALUE_REGUL_SECOND'); ?>:</td>
-    <td><input type="text" name="second_regul_plug" value="<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_REGUL'],"False")==0) { echo __('SECOND_REGUL_OFF'); } else { echo __('SECOND_REGUL_ON'); } ?>" readonly size="10" /></td>
+    <td><input type="text" id="second_regul_plug" name="second_regul_plug" value="<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_REGUL'],"False")==0) { echo __('SECOND_REGUL_OFF'); } else { echo __('SECOND_REGUL_ON'); } ?>" readonly size="10" /></td>
     <td></td>
 </tr>
 <?php } ?>
@@ -371,7 +429,7 @@ $(document).ready(function() {
 
 <table class="table_width">
 <tr>
-    <td class="program-div-margin"></td><td class="program-div"></td><td><img src="main/libs/img/resume.png" alt="" class="info-bulle-css" title="<?php echo $resume; ?>" /></td>
+    <td class="program-div-margin"></td><td class="program-div"></td><td><img src="main/libs/img/resume.png" alt="" id="resume_img" title="<?php echo $resume[$selected_plug]; ?>" /></td>
 </tr>
 <tr>
     <td></td><td><div id="plug" style="width: 100%; height: 350px; margin: 0 auto"></div></td><td></td>
@@ -390,7 +448,7 @@ $(document).ready(function() {
     <td class="program-manage-field">
           <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
           <input type="hidden" name="add_plug" value="add_plug">
-          <input type="submit" name="add" class="submit_plug" <?php if($nb_plugs>=$GLOBALS['NB_MAX_PLUG']) { ?> disabled value="<?php echo __('MAX_PLUG_REACHED'); ?>" <?php } else { ?>value="<?php echo __('ADD_PLUG'); ?>" <?php } ?>>
+          <input type="submit" name="add" <?php if($nb_plugs>=$GLOBALS['NB_MAX_PLUG']) { ?> disabled value="<?php echo __('MAX_PLUG_REACHED'); ?>" class="inputDisable" <?php } else { ?>value="<?php echo __('ADD_PLUG'); ?>" <?php } ?>>
     </td>
     <td></td>
 </tr>
@@ -405,7 +463,7 @@ $(document).ready(function() {
     <td class="program-manage-field">
           <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
           <input type="hidden" name="remove_plug" value="remove_plug">
-          <input type="submit" name="remove" class="submit_plug" <?php if($nb_plugs<=$GLOBALS['NB_MIN_PLUG']) { ?> disabled value="<?php echo __('MIN_PLUG_REACHED'); ?>" <?php } else { ?>value="<?php echo __('REMOVE_PLUG'); ?>"<?php } ?>>
+          <input type="submit" name="remove" <?php if($nb_plugs<=$GLOBALS['NB_MIN_PLUG']) { ?> disabled value="<?php echo __('MIN_PLUG_REACHED'); ?>" class="inputDisable" <?php } else { ?>value="<?php echo __('REMOVE_PLUG'); ?>"<?php } ?>>
     </td>
     <td></td>
 </tr>
@@ -418,7 +476,7 @@ $(document).ready(function() {
 <tr>
     <td class="program-manage-marge"></td>
     <td class="program-manage-title"><?php echo __('TITLE_RESET_PROGRAM'); ?>
-         <select name="reset_selected_plug">
+         <select name="reset_selected_plug" id="reset_selected_plug">
         <?php for($i=1;$i<=$nb_plugs;$i++) {
                 if("$i"=="$reset_selected") {
                    echo "<option value=\"${i}\" selected>${i}</option>";
@@ -432,7 +490,7 @@ $(document).ready(function() {
     <td class="program-manage-field">
                   <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
                   <input type="hidden" name="action_prog" value="action_prog">
-                  <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset" class="submit_plug" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM_PROGRAM','javascript'); ?>')">
+                  <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM_PROGRAM','javascript'); ?>')">
     </td>
     <td></td>
 </tr>
@@ -447,8 +505,8 @@ $(document).ready(function() {
     <td class="program-manage-marge"></td>
     <td class="program-manage-title"><?php echo __('TITLE_EXPORT_PROGRAM'); ?></td>
     <td class="program-manage-field">
-                        <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export" class="submit_plug">
-                        <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
+                        <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export">
+                        <input type="hidden" name="selected_plug" id="selected_plug_export" value="<?php echo $selected_plug; ?>">
     </td>
     <td></td>
 </tr>
@@ -463,9 +521,9 @@ $(document).ready(function() {
     <td class="program-manage-field">
                      <input type="file" name="upload_file">
                      <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-                     <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
+                     <input type="hidden" name="selected_plug" id="selected_plug_import" value="<?php echo $selected_plug; ?>">
     </td>
-    <td><input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>" class="submit_plug"></td>
+    <td><input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>"></td>
 </table>
 </form>
 <?php } ?>

@@ -443,14 +443,42 @@ function getSelectedPlug(i,j) {
 // IN  input value: display or not the informations
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
 // USED BY: templates/programs.html 
-function getRegulation(i) {
+function getRegulation(i, type) {
+        var divValTemp = document.getElementById('regul_value_temp');
+        var divLabelTemp = document.getElementById('regul_label_temp');
+        var divValHumi = document.getElementById('regul_value_humi');
+        var divLabelHumi = document.getElementById('regul_label_humi');
+
+        if((type=="humidifier")||(type=="dehumidifier")) {
+            divValHumi.style.display = '';
+            divLabelHumi.style.display = '';
+            divValTemp.style.display = 'none';
+            divLabelTemp.style.display = 'none';
+            var divValue = document.getElementById('value_program');
+            divValue.value="55";
+      } else if((type=="heating")||(type=="ventilator")) {
+            divValHumi.style.display = 'none';
+            divLabelHumi.style.display = 'none';
+            divValTemp.style.display = '';
+            divLabelTemp.style.display = '';
+
+            var divValue = document.getElementById('value_program');
+                divValue.value="22";
+      } else {
+            var divValue = document.getElementById('value_program');
+            divValue.value="";
+      }
+
       var divValueRegul = document.getElementById('regul_value');
       var divLabelRegul = document.getElementById('regul_label');
 
+
+    
       switch(i) {
-         case 0 : divLabelRegul.style.display = ''; divValueRegul.style.display = ''; break;
+         case 2 : divLabelRegul.style.display = ''; divValueRegul.style.display = ''; break;
          default: divLabelRegul.style.display = 'none'; divValueRegul.style.display = 'none'; break;
       }
+
 }
 // }}}
 
