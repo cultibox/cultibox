@@ -233,7 +233,6 @@ Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_window
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion onlyifdoesntexist
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion 
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\cnf\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp\cnf"; Flags: ignoreversion 
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\emetteur.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\sht.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\cultibox.ico"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\cultibox.html"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion

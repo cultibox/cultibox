@@ -3,8 +3,7 @@ Cultibox (1.1.12) precise; urgency=low
     + Debug en masse...
     + Mise en place de la personnalisation des boites de dialogues d'erreur, de confirmation et de validation grâce à JQUERY
     + Mise en place du timezone en fonction de la langue selectionnée
-    
-
+    + Changement de place de emetteur.hex qui se trouve maintenant dans le dossier cnf
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Apr  9 09:24:50 CEST 2013
 
