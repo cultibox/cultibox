@@ -55,11 +55,11 @@ case "$1" in
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
            sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-amd64' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/update_sql.sql
            cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp ../../01_install/01_src/03_sd/emetteur.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/sht.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/cultibox.html ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp -R ../../01_install/01_src/03_sd/cnf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
+
             
            cp -R daemon ../01_src/01_xampp/cultibox/opt/lampp/
 
@@ -113,7 +113,6 @@ case "$1" in
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
            sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-amd64' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/update_sql.sql
            cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp ../../01_install/01_src/03_sd/emetteur.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/sht.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/cultibox.html ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/

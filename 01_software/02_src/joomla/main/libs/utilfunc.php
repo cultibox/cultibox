@@ -1248,7 +1248,7 @@ function check_and_copy_firm($sd_card) {
    $current_firm="";
 
    $firm_to_test[]="firm.hex";
-   $firm_to_test[]="emetteur.hex";
+   $firm_to_test[]="cnf/emetteur.hex";
    $firm_to_test[]="sht.hex";
 
 
@@ -1603,6 +1603,10 @@ function format_sd_card($path="",&$out="") {
             if(!is_dir($cnf)) mkdir("$cnf");
 
             if(!copy("tmp/cnf/cnt","$cnf/cnt")) {
+                $ret=false;
+            }
+
+            if(!copy("tmp/cnf/emetteur.hex","$cnf/emetteur.hex")) {
                 $ret=false;
             }
 
