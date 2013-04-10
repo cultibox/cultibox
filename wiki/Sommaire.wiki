@@ -1,5 +1,6 @@
 #summary Sommaire
 
+  * [quick_guide Guide rapide]
   * [Introduction Introduction]
     * [general_caution Règle de sécurité]
     * [contents Contenu du paquet]

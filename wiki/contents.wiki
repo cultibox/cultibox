@@ -45,6 +45,12 @@ http://cultibox.googlecode.com/svn/wiki/img/cbx_right.jpg
 
 Sur le coté droit de la Cultibox, 4 port RJ12 sont accessibles. Ils permettent de connecter différents éléments dont notamment le capteur.
 
+= Antenne =
+
+L'antenne doit être assemblée sur la Cultibox pour que celle-ci puisse piloter les prises.
+
+http://cultibox.googlecode.com/svn/wiki/img/Antenne.jpg
+
 = Prise 3500W =
 
 Une Prise 3500W est fournit dans le package. Cette prise est particulièrement adaptée pour piloter des lampes HPS ou MH jusqu'à 600W.
@@ -57,6 +63,8 @@ La puissance maximum de l’élément que vous pouvez brancher sur la Cultibox d
 || Pompe || 600W ||
 || Élément purement résistif || 3500W ||
 || Élément inductif ou capacitif || 3500W ||
+
+http://cultibox.googlecode.com/svn/wiki/img/3500W.jpg
 
 = Prises 1000W =
 
@@ -71,23 +79,36 @@ La puissance maximum de l’élément que vous pouvez brancher sur la Cultibox d
 || Élément purement résistif || 1000W ||
 || Élément inductif ou capacitif || 1000W ||
 
+http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
+http://cultibox.googlecode.com/svn/wiki/img/prise3.jpg
+
 = 1 Capteur =
 
 Le capteur est conçu pour mesurer la température et l’humidité.
+
+http://cultibox.googlecode.com/svn/wiki/img/capteur.jpg
 
 = Carte SD =
 La carte SD à une capacité de 2Go et est formatée en FAT16.
 Elle contient un ensemble de fichier et de dossier permettant à la Cultibox de fonctionner.
 Sans la carte SD, la Cultibox ne peut pas fonctionner.
 
+http://cultibox.googlecode.com/svn/wiki/img/SD.jpg
+
 = Adaptateur Secteur =
 L'adaptateur secteur permet d'alimenter la Cultibox. 
+
+http://cultibox.googlecode.com/svn/wiki/img/chargeur_usb.png
 
 = Câble USB =
 Le câble USB permet d'alimenter la Cultibox. Il fait la liaison entre l'adaptateur secteur et la Cultibox.
 
+http://cultibox.googlecode.com/svn/wiki/img/usb_cable.jpg
+
 = Câble RJ12 =
 Le câble RJ12 permet de connecter le capteur à la Cultibox.
+
+http://cultibox.googlecode.com/svn/wiki/img/RJ12.jpg
 
 = Notice =
 La notice contient l'aide nécessaire à la mise en place de la Cultibox. Vous pouvez retrouver la dernière version à jour à l'adresse suivante:
