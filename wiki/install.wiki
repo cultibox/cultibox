@@ -53,7 +53,7 @@ Connecter l'antenne sur la Cultibox. L’antenne se visse sur le connecteur dor�
 
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_antenne.jpg
 
-== Insertion Carte SD ===
+=== Insertion Carte SD ===
 Insérer la Carte SD dans le logement prévu à cet effet.
 
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_SD.jpg
@@ -77,7 +77,12 @@ http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_4.jpg
 
 * Il est impératif de ne jamais brancher de câble sur la Cultibox tant qu'elle n'est pas solidement fixée. Vous risquer de l'endommager définitivement *
 
-=== Mise en place du capteur ===
+
+=== Branchement de l'alimentation === 
+Brancher l'adaptateur secteur-USB sur le secteur. Brancher ensuite le câble USB entre la Cultibox et l'adaptateur secteur.
+
+
+== Mise en place du capteur ==
 Installer le capteur dans l'espace de culture. Il ne doit pas être soumis à des projections d'eau. 
 Connecter le cable blanc (RJ12)sur le capteur:
 
@@ -88,16 +93,16 @@ Connecter l'autre partie sur la Cultibox:
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12.jpg
 
 
-=== Branchement de l'alimentation === 
-Brancher l'adaptateur secteur-USB sur le secteur. Brancher ensuite le câble USB entre la Cultibox et l'adaptateur secteur.
-
-
 == Installation des prises ==
 
 Pour une aide plus détaillée, consulter la page suivante : [install_Plug Ajout d'une nouvelle prise 1000W ou 3500W]
 
- * Connecter la prise 1 entre votre lampe et la prise secteur.
+ * Connecter la prise 1 (3500W) entre votre lampe et la prise secteur.
  * Installer les deux autres prise en fonction des choix que vous avez réalisé dans l'étape de configuration.
+
+http://cultibox.googlecode.com/svn/wiki/img/3500W.jpg
+http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
+http://cultibox.googlecode.com/svn/wiki/img/prise3.jpg
 
 = Démarrage =
 Lors du branchement de l'adapteteur secteur, la Cultibox démarre. Elle ne peut pas fonctionner sans carte SD. Si vous n'avez pas inséré de carte SD, il est donc normal qu'elle affiche un message d'erreur. 
