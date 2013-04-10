@@ -605,13 +605,13 @@ td.welcome-link img{
 
 
 /* css for dialog widget */
-.popup_error {
-    color:#aaa; 
+.popup_error .ui-widget-header{
+    background: #BA0000; 
 }
 
 
-.popup_message {
-    color:#aaa;
+.popup_message .ui-widget-header{
+    background:#849325;
 }
 
 .ui-tooltip
@@ -630,3 +630,7 @@ td.welcome-link img{
        width: 20%;
 }
 
+
+.dialog_cultibox .ui-widget-header {
+    background: #4054A4;
+}

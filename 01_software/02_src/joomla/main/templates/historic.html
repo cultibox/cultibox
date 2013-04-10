@@ -37,12 +37,16 @@
 <table class="table_width">
 <tr>
     <td class="subtitle_right">
-        <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
-            <input type="submit" name="reset_historic" value="<?php echo __('RESET_HISTORIC'); ?>" onclick="return DeleteForm('<?php echo clean_highchart_message(__('RESET_CONFIRM_HISTORIC','javascript')); ?>')" />
+        <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" id="delete_historic_form">
+            <input type="hidden" name="reset_historic" value="reset_historic">
+            <input type="submit" class="delete" name="reset_historic_submit" value="<?php echo __('RESET_HISTORIC'); ?>" />
         </form>
     </td>
 </tr>
 </table>
+<div id="delete_dialog_historic" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
+<p><?php echo __('RESET_CONFIRM_HISTORIC'); ?></p>
+</div>
 <br />
 <table class="table_width">
 <tr>

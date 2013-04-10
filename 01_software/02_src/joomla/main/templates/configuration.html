@@ -465,16 +465,24 @@ timeFormat: 'hh:mm',
 </form>
 
 <div id="div_card_interface" style="display:none">
-<form action="/cultibox/index.php/waiting-data" method="post">
+<form action="/cultibox/index.php/waiting-data" method="post" id="format_sd_form">
 <table class="conf-table">
 <tr>
     <td class="conf-marge"></td>
     <td class="conf-marge-td"><?php echo __('MANAGE_RESET_SD_CARD'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_FORMAT_SD'); ?>" /></td>
-    <td ><?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?><select name="selected_hdd" id="selected_hdd"><?php  foreach($hdd_list as $hdd) { ?><option value="<?php echo "$hdd"; ?>"><?php echo "$hdd"; ?></option><?php } ?></select><?php  } ?>
-        <input type="submit" id="reset_sd_card" name="reset_sd_card" <?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?> value="<?php echo __('MANAGE_RESET_CARD'); ?>" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM_SD_CARD','javascript'); ?>')" <?php } else { ?>disabled value="<?php echo __('MANAGE_RESET_CARD_NOT_FOUND'); ?>" class="inputDisable"<?php } ?>></td>
+    <td >
+    <input type="hidden" name="reset_sd_card" value="reset_sd_card">
+
+<?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?><select name="selected_hdd" id="selected_hdd"><?php  foreach($hdd_list as $hdd) { ?><option value="<?php echo "$hdd"; ?>"><?php echo "$hdd"; ?></option><?php } ?></select><?php  } ?>
+        <input type="submit" id="reset_sd_card_submit" name="reset_sd_card_submit" <?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?> class="delete" value="<?php echo __('MANAGE_RESET_CARD'); ?>" <?php } else { ?>disabled value="<?php echo __('MANAGE_RESET_CARD_NOT_FOUND'); ?>" class="inputDisable"<?php } ?>>
+
+    </td>
     <td></td>
 </tr>
 </table>
+<div id="format_dialog_sd" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
+<p><?php echo __('RESET_CONFIRM_SD_CARD'); ?></p>
+</div>
 <br />
 <hr />
 </form>

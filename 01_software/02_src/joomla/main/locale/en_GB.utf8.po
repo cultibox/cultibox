@@ -165,7 +165,7 @@ msgid "MANAGE_RESET_CARD"
 msgstr "Format your SD card"
 
 msgid "RESET_CONFIRM_SD_CARD"
-msgstr "Do you really want to format your SD CARD? Logs and configurations files will be destroyed"
+msgstr "Do you really want to format your SD CARD? Logs and configurations files might be destroyed"
 
 msgid "VALID_RESET_SD"
 msgstr "SD card formated successfully"
@@ -675,7 +675,7 @@ msgid "TITLE_REMOVE_PLUG"
 msgstr "Remove the last plug"
 
 msgid "RESET_CONFIRM_PROGRAM"
-msgstr "Do you really want to reset the program of the current plug?"
+msgstr "Do you really want to reset the program for the selected plug(s)?"
 
 
 # For the export module highchart part:
@@ -1134,6 +1134,12 @@ msgstr "Error during plug(s) reset"
 
 
 # For the informations part:
+msgid "CLOSE_CONFIRM"
+msgstr "Close"
+
+msgid "CONFIRMATION"
+msgstr "Confirmation"
+
 msgid "HERE"
 msgstr "here"
 

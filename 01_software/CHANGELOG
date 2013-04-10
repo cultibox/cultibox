@@ -1,5 +1,7 @@
 Cultibox (1.1.12) precise; urgency=low
     + Non rechargement de la page des programmes, passage a jquery 1.9, relooking css...
+    + Debug en masse...
+    + Mise en place de la personnalisation des boites de dialogues d'erreur, de confirmation et de validation grâce à JQUERY
     
 
 
