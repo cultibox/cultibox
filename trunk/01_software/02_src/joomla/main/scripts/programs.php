@@ -372,6 +372,7 @@ if(!empty($apply)&&(isset($apply))) {
             if($ch_insert) {
                    $main_info[]=__('INFO_VALID_UPDATE_PROGRAM');
                    $pop_up_message=$pop_up_message.popup_message(__('INFO_VALID_UPDATE_PROGRAM'));                    
+                   date_default_timezone_set('');
                    set_historic_value(__('INFO_VALID_UPDATE_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
 
 

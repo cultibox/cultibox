@@ -2143,12 +2143,18 @@ EOF;
 // RET none
 function set_historic_value($message="",$type="",&$out) {
     if((strcmp("$message","")!=0)&&(strcmp("$type","")!=0)) {
+        if(!isset($_SESSION['TIMEZONE'])) {
+                $_SESSION['TIMEZONE']="Europe/Paris";
+        }
+
+        date_default_timezone_set($_SESSION['TIMEZONE']);
         $timestamp=date('Y-m-d H:i:s');
 
         $db = db_priv_start();
         $sql = <<<EOF
 INSERT INTO `historic`(`timestamp`,`action`, `type`) VALUES ("${timestamp}","${message}","${type}");
 EOF;
+
         $db->setQuery($sql);
         $db->query();
         $ret=$db->getErrorMsg();

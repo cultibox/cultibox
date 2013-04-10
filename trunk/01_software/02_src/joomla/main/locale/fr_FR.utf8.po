@@ -1164,7 +1164,7 @@ msgid "VALID_UPDATE_CONF"
 msgstr "Configuration mise à jour avec succès"
 
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
-msgstr "Configuration mise à jour avec succès dans le logiciel de la Cultibox."
+msgstr "Configuration mise à jour avec succès dans le logiciel."
 
 msgid "VALID_UPDATE_PROGRAM"
 msgstr "Programmes mis à jour avec succès"
