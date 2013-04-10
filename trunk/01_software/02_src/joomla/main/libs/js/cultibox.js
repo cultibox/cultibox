@@ -12,10 +12,54 @@ clean_highchart_message = function(message) { {
 }
 
 
+confirmForm = function(SendForm,idDialog) {
+    $("#"+idDialog).dialog({
+        resizable: false,
+        height:200,
+        width: 400,
+        modal: true,
+        dialogClass: "dialog_cultibox",
+        buttons: {
+            "OK": function() { $( this ).dialog( "close" ); SendForm.submit(); 
+            },
+            Cancel: function() { $( this ).dialog( "close" ); return false;}
+        }
+    });
+}
+
+
 $(document).ready(function() {
    // Affichage des tooltips sur les éléments avec un title
    $("#selected_plug").prop("selectedIndex",0);
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
    $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
    $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+
+   $(".delete").click(function() {
+          var currentForm;
+          currentForm = $(this).closest('form');
+          var FormId = currentForm.attr('id');
+          var DialogId="";
+
+          switch (FormId) {
+            case 'reset_program_form':  DialogId="delete_dialog_program";
+                                        break;
+            case 'format_sd_form': DialogId="format_dialog_sd";
+                                        break;
+            case 'delete_historic_form': DialogId="delete_dialog_historic";
+                                        break;
+            case 'reset_log_form': DialogId="reset_dialog_log";
+                                        break;
+            case 'reset_log_power_form': DialogId="reset_dialog_log_power";
+                                        break;
+            } 
+
+
+
+          if(!confirmForm(currentForm,DialogId)) {
+            return false;
+          } else {
+            return true;    
+          }
+   });
 });

@@ -473,7 +473,7 @@ $(document).ready(function() {
 </form>
 
 
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post" id="reset_program_form">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -492,12 +492,17 @@ $(document).ready(function() {
     <td class="program-manage-field">
                   <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
                   <input type="hidden" name="action_prog" value="action_prog">
-                  <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset" onclick="return DeleteForm('<?php echo __('RESET_CONFIRM_PROGRAM','javascript'); ?>')">
+                  <input type="hidden" name="reset" value="reset">
+                  <input type="submit" class="delete" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset_submit">
     </td>
     <td></td>
 </tr>
 </table>
 </form>
+
+<div id="delete_dialog_program" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
+<p><?php echo __('RESET_CONFIRM_PROGRAM'); ?></p>
+</div>
 
 
 <?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>

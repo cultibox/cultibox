@@ -503,21 +503,6 @@ function getProgramType(i) {
 // }}}
 
 
-// {{{ DeleteForm()
-// ROLE function of confirmation to delete logs from a specific database (logs, power...)
-// IN message to be displayed 
-// HOW IT WORKS: just ask user to confirm his command
-// USED BY: templates/logs.html 
-function DeleteForm(message) {
-            var answer = confirm(message);
-            if (answer) {
-                    return true;
-            }
-            return false;
-}
-// }}}
-
-
 // {{{ getEnable()
 // ROLE display the plugs informations or not
 // IN  input value: display or not the informations
