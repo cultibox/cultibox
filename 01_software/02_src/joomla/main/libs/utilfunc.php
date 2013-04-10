@@ -317,18 +317,23 @@ function get_current_lang() {
             switch($val) {  
                 case 'fr':
                          $lang="fr_FR";
+                         $_SESSION['TIMEZONE']="Europe/Paris";
                          break;
                 case 'en':
                          $lang="en_GB";
+                         $_SESSION['TIMEZONE']="Europe/London";
                          break;
                 case 'it':
                          $lang="it_IT";
+                         $_SESSION['TIMEZONE']="Europe/Rome";
                          break;
                 case 'de':
                          $lang="de_DE";
+                         $_SESSION['TIMEZONE']="Europe/Berlin";
                          break;
                 case 'es':
                          $lang="es_ES";
+                         $_SESSION['TIMEZONE']="Europe/Madrid";
                          break;
             }    
             

@@ -107,6 +107,11 @@ table.table_width{
    width: 100%;
 }
 
+td.historic_marge {
+   width: 20%; 
+   vertical-align: top;
+}
+
 td.code_marge {
     width: 5%;
 }
