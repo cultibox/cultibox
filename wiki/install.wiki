@@ -101,7 +101,7 @@ http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
 http://cultibox.googlecode.com/svn/wiki/img/prise3.jpg
 
 
-=== Branchement de l'alimentation === 
+== Branchement de l'alimentation == 
 Brancher l'adaptateur secteur-USB sur le secteur. Brancher ensuite le câble USB entre la Cultibox et l'adaptateur secteur.
 
 
