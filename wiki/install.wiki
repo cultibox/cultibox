@@ -78,10 +78,6 @@ http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_4.jpg
 * Il est impératif de ne jamais brancher de câble sur la Cultibox tant qu'elle n'est pas solidement fixée. Vous risquer de l'endommager définitivement *
 
 
-=== Branchement de l'alimentation === 
-Brancher l'adaptateur secteur-USB sur le secteur. Brancher ensuite le câble USB entre la Cultibox et l'adaptateur secteur.
-
-
 == Mise en place du capteur ==
 Installer le capteur dans l'espace de culture. Il ne doit pas être soumis à des projections d'eau. 
 Connecter le câble blanc (RJ12)sur le capteur:
@@ -103,6 +99,11 @@ Pour une aide plus détaillée, consulter la page suivante : [install_Plug Ajout
 http://cultibox.googlecode.com/svn/wiki/img/3500W.jpg
 http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
 http://cultibox.googlecode.com/svn/wiki/img/prise3.jpg
+
+
+=== Branchement de l'alimentation === 
+Brancher l'adaptateur secteur-USB sur le secteur. Brancher ensuite le câble USB entre la Cultibox et l'adaptateur secteur.
+
 
 = Démarrage =
 Lors du branchement de l’adaptateur secteur, la Cultibox démarre. Elle ne peut pas fonctionner sans carte SD. Si vous n'avez pas inséré de carte SD, il est donc normal qu'elle affiche un message d'erreur. 
