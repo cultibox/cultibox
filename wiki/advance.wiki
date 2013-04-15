@@ -83,6 +83,15 @@ Exemple de catégorie:
 <category term = "hydro" label = "Hydroponique" />
 }}}
 
+==== Lien ====
+Un lien vers lui même:
+
+Exemple:
+
+{{{
+<link rel="self" href="www.cultibox.fr/flux.xml" />
+}}}
+
 === Informations non obligatoire ===
 De plus, le fabriquant à la possibilité de définir les rubriques suivantes:
   * Icon
@@ -94,14 +103,14 @@ Le fabricant peut définir une icone.
 Exemple:
 
 {{{
-<icon>http://www..com/images/icon.png</icon>
+<icon>http://wwww.com/images/icon.png</icon>
 }}}
 ==== Logo ====
 Le fabricant peut définir un logo.
 Exemple:
 
 {{{
-<logo>http://www..com/images/icon.png</logo>
+<logo>http://wwww.com/images/icon.png</logo>
 }}}
 ==== Droits, copyrights ====
 Cette balise est une construction « texte ».
@@ -109,7 +118,189 @@ Cette balise est une construction « texte ».
 Exemple:
 
 {{{
-<right>GNU GPL V3</right>
+<rights type = "text">
+    © Cultibox, 2013
+</rights>
+}}}
+
+=== Les entrées ===
+Chaque entrée est contenu dans une balise <entry>. Les entrées correspondent à des événement du calendrier.
+
+==== Informations Obligatoires ====
+===== Titre =====
+Chaque entrée doit contenir le titre. C'est le titre qui sera donné à l'événement du calendrier.
+
+Exemple de titre:
+
+{{{
+<title>Phase croissance</title>
+}}}
+
+===== Date de mise à jour =====
+Chaque entrée doit avoir une date de mise à jour. Elle doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+
+Exemple de date de mise à jour:
+
+{{{
+<updated>2008-05-29T13:14:57+02:00</updated>
+}}}
+
+
+===== Identifiant unique =====
+Chaque entrée doit contenir un identifiant unique.
+
+Exemple d'identifiant:
+
+{{{
+<id>http://www.cultibox.fr/id1</id>
+}}}
+
+
+==== Informations facultatives ====
+===== Auteur =====
+Le flux ATOM doit contenir un auteur. Comme un auteur est définit dans les balises feed, vous n'êtes pas obligé de redéfinir un auteur.
+Exemple d'auteur:
+
+{{{
+<author>
+    <name>Cultibox</name>
+    <uri>http://www.cultibox.fr/</uri>
+    <email>info@cultibox.fr</email>
+</author>
+}}}
+
+===== résumé =====
+Exemple:
+
+{{{
+<summary>Phase de croissance</summary>
+}}}
+
+==== Catégorie ====
+Cette information permet de Elle nous permet d'identifier quel type d'engrais est contenu dans ce fichier.
+Les catégories disponible sont:
+|| *term* || *label* ||
+|| bouture || Bouturage ||
+|| vegetation || Vegetation ||
+|| prefloraison  || prefloraison  ||
+|| floraison || floraison ||
+|| recolte || recolte ||
+
+Exemple de catégorie:
+
+{{{
+<category term = "bouture" label = "Bouturage" />
+}}}
+
+===== contenu =====
+C'est cette balise qui contient le texte de l'événement.
+
+Exemple:
+
+{{{
+<content type = "text">
+   N'oubliez pas une dose de XX!
+</content>
+}}}
+
+===== durée =====
+Cette balise permet de définir la durée de l'événement. La durée est définit en nombre de jour.
+
+Exemple (3 jours):
+
+{{{
+<duration>3</duration>
+}}}
+
+===== Début de cet événement =====
+Cette balise permet de définir au bout de combien de jour cet événement doit devenir actif. La durée est définit en nombre de jour.
+
+Exemple (Au bout de 18 jours):
+
+{{{
+<start>18</start>
+}}}
+
+===== Nutriment =====
+Cette balise permet de définir le nom du nutriment.
+
+Exemple:
+
+{{{
+<nutriment>Engrais 1</nutriment>
+}}}
+
+===== Dosage =====
+Exemple:
+
+{{{
+<dosage>3ml/l</dosage>
+}}}
+
+== Exmple de fichier ==
+
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+   <updated>2008-05-29T13:14:57+02:00</updated>
+   <id>http://www.cultibox.fr/</id>
+   <title>Engrais Top</title>
+   <subtitle>Engrais numéro 1</subtitle>
+   <author>
+      <name>Cultibox</name>
+      <uri>http://www.cultibox.fr/</uri>
+      <email>info@cultibox.fr</email>
+   </author>
+   <category term = "hydro" label = "Hydroponique" />
+   <link rel="self" href="www.cultibox.fr/flux.xml" />
+   <icon>http://wwww.com/images/icon.png</icon>
+   <logo>http://wwww.com/images/icon.png</logo>
+   <rights type = "text">
+    © Cultibox, 2013
+   </rights>
+   
+   <entry>
+      <title>Phase croissance</title>
+      <summary>Phase de croissance</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         N'oubliez pas une dose de XX!
+      </content>
+      <duration>14</duration>
+      <start>0</start>
+      <nutriment>Engrais 1</nutriment>
+      <dosage>3ml/l</dosage>
+   </entry>
+   
+   <entry>
+      <title>Phase de prefloraison  </title>
+      <summary>Phase de prefloraison </summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id2</id>
+      <category term = "prefloraison" label = "prefloraison" />
+      <content type = "text">
+         N'oubliez pas une dose de YY!
+      </content>
+      <duration>28</duration>
+      <start>14</start>
+      <nutriment>Engrais 2</nutriment>
+      <dosage>6ml/l</dosage>
+   </entry>
+   <entry>
+      <title>Phase de prefloraison  </title>
+      <summary>Phase de prefloraison </summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id2</id>
+      <category term = "prefloraison" label = "prefloraison" />
+      <duration>28</duration>
+      <start>14</start>
+      <nutriment>Engrais 3</nutriment>
+      <dosage>2ml/l</dosage>
+   </entry>
+
+</feed>
 }}}
 
 = Changer le numéro de la prise 3500W =
