@@ -46,7 +46,8 @@ case "$1" in
             cp conf-package/pre* ../01_src/01_xampp/cultibox/package/
             cp conf-package/VolumeCheck ../01_src/01_xampp/cultibox/package/
             cp conf-package/InstallationCheck ../01_src/01_xampp/cultibox/package/
-            cp conf-package/cultibox.plist  ../01_src/01_xampp/cultibox/package/
+            cp conf-package/cultibox_mysql.plist  ../01_src/01_xampp/cultibox/package/
+            cp conf-package/cultibox_apache.plist  ../01_src/01_xampp/cultibox/package/
             cp -R conf-package/cultibox.app ../01_src/01_xampp/cultibox/
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
 

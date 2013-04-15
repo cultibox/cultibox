@@ -764,29 +764,11 @@ msgstr "Demande en cours..."
 msgid "SUCCESS"
 msgstr "Operation reussie"
 
-msgid "MANAGE_CALENDAR"
-msgstr "Gerer l'evenement"
-
 msgid "DELETE_EVENT"
 msgstr "Voulez-vous supprimer cet evenement?"
 
 msgid "ERROR_LOADING_DATA"
 msgstr "Impossible de charger les donnees"
-
-msgid "TODAY"
-msgstr "Aujourd'hui"
-
-msgid "CALENDAR_SUBJECT"
-msgstr "* Sujet"
-
-msgid "CALENDAR_COLOR"
-msgstr "* Choisir une couleur"
-
-msgid "CALENDAR_REMARK"
-msgstr "* Remarque"
-
-msgid "CALENDAR_SAVE"
-msgstr "Sauvegarder"
 
 msgid "CALENDAR_CLOSE"
 msgstr "Fermer"
@@ -820,6 +802,47 @@ msgstr "à"
 
 msgid "CALENDAR_INVALID_DATE"
 msgstr "Format de la date invalide (MM/JJ/AAAA)"
+
+
+msgid "WHAT_DIALOG_CALENDAR"
+msgstr "Que voulez-vous faire?"
+
+msgid "REMOVE_DIALOG_CALENDAR"
+msgstr "Supprimer l'évènement"
+
+msgid "CANCEL_DIALOG_CALENDAR"
+msgstr "Annuler"
+
+msgid "EDIT_DIALOG_CALENDAR"
+msgstr "Editer l'évènement"
+
+msgid "CREATE_DIALOG_CALENDAR"
+msgstr "Créer un évènement"
+
+msgid "CALENDAR_SUBJECT"
+msgstr "Sujet"
+
+msgid "CALENDAR_COLOR"
+msgstr "Choisir une couleur"
+
+msgid "CALENDAR_REMARK"
+msgstr "Remarque"
+
+msgid "CALENDAR_START_DATE"
+msgstr "Date de départ (AAAA-MM-JJ)"
+
+msgid "CALENDAR_STOP_DATE"
+msgstr "Date de fin (AAAA-MM-JJ)"
+
+msgid "MANAGE_CALENDAR"
+msgstr "Gerer l'evenement"
+
+msgid "SAVE_DIALOG_CALENDAR"
+msgstr "Sauvegarder"
+
+msgid "TODAY"
+msgstr "Aujourd'hui"
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"

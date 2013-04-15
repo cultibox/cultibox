@@ -775,21 +775,6 @@ msgstr "Do you really want to delete this event?"
 msgid "ERROR_LOADING_DATA"
 msgstr "Error during data loading..."
 
-msgid "TODAY"
-msgstr "Today"
-
-msgid "CALENDAR_SUBJECT"
-msgstr "* Subject:"
-
-msgid "CALENDAR_COLOR"
-msgstr "* Choose a color:"
-
-msgid "CALENDAR_REMARK"
-msgstr "* Remark :"
-
-msgid "CALENDAR_SAVE"
-msgstr "Save"
-
 msgid "CALENDAR_CLOSE"
 msgstr "Close"
 
@@ -822,6 +807,44 @@ msgstr "To"
 
 msgid "CALENDAR_INVALID_DATE"
 msgstr "Invalid date format (MM/DD/YYYY)"
+
+
+msgid "WHAT_DIALOG_CALENDAR"
+msgstr "What do you want to do?"
+
+msgid "REMOVE_DIALOG_CALENDAR"
+msgstr "Delete the event"
+
+msgid "CANCEL_DIALOG_CALENDAR"
+msgstr "Cancel"
+
+msgid "EDIT_DIALOG_CALENDAR"
+msgstr "Edit the event"
+
+msgid "CALENDAR_SUBJECT"
+msgstr "Subject"
+
+msgid "CALENDAR_COLOR"
+msgstr "Choose a color"
+
+msgid "CALENDAR_REMARK"
+msgstr "Remark"
+
+msgid "CALENDAR_START_DATE"
+msgstr "Start date (YYYY-MM-DD)"
+
+msgid "CALENDAR_STOP_DATE"
+msgstr "Stop date (YYYY-MM-DD)"
+
+msgid "CREATE_DIALOG_CALENDAR"
+msgstr "Create an event"
+
+msgid "TODAY"
+msgstr "Today"
+
+msgid "SAVE_DIALOG_CALENDAR"
+msgstr "Save"
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"

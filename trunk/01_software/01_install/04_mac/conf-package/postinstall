@@ -1,12 +1,13 @@
 #!/bin/bash
 
-
 if [ -d /tmp/cultibox_backup/mysql ]; then
+    echo "  * An old saved of your Cultibox has been found, restoring datas..."
     cp -R /tmp/cultibox_backup/mysql /Applications/cultibox/xamppfiles/var/
+    echo "... OK!"
 fi
 
 
-echo "Configuring your CultiBox environment:"
+echo "  * Configuring your CultiBox environment..."
 if [ ! -L /Applications/XAMPP ]; then
     ln -s /Applications/cultibox /Applications/XAMPP
 fi
@@ -26,8 +27,9 @@ chmod -R 775 /Applications/cultibox/xamppfiles/var/mysql
 
 /Applications/XAMPP/xamppfiles/xampp restart
 sleep 5
-
+echo "... OK!"
 if [ ! -d /tmp/cultibox_backup/mysql ]; then
+    echo "  * Configuring your Cultibox software..."
     /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h localhost password cultibox
     sleep 2
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/user_cultibox.sql
@@ -39,7 +41,9 @@ if [ ! -d /tmp/cultibox_backup/mysql ]; then
         /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_en.sql
     fi
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/fake_log.sql
+    echo "... OK!"
 else
+    echo "  * Upgrading the Cultibox software configuration..."
     if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
         /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
     fi
@@ -47,10 +51,16 @@ else
     /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
     rm -Rf /tmp/cultibox_backup
     rm -f /Applications/cultibox/xamppfiles/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
+    echo "... OK!"
 fi
 
-echo "Installing CultiBox as a service:"
-mv /Applications/cultibox/package/cultibox.plist /System/Library/LaunchDaemons/
+echo "  * Installing CultiBox as a service..."
+mv /Applications/cultibox/package/cultibox_apache.plist /System/Library/LaunchDaemons/
+mv /Applications/cultibox/package/cultibox_mysql.plist /System/Library/LaunchDaemons/
+chown root:wheel /System/Library/LaunchDaemons/cultibox_*.plist
+chmod 644 /System/Library/LaunchDaemons/cultibox_*.plist
+echo "... OK!"
 
-echo "Restarting the CultiBox interface:"
+echo "  * Restarting the CultiBox interface..."
 /Applications/XAMPP/xamppfiles/xampp restart
+echo "... OK!"

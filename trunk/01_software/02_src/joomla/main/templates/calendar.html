@@ -9,7 +9,6 @@
 <?php } ?>
 
 
-
 <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <div class="info">
 <img src="main/libs/img/informations.png" alt=""><b><?php echo __("INFORMATIONS").":"; ?></b>
@@ -32,4 +31,298 @@
 <?php } ?>
 <br /><br />
 
-<p class="p_center"><iframe src="main/modules/calendar/index.php?lang=<?php echo $lang; ?>" height="550" width="750"></iframe>
+
+<script>
+
+
+    $(document).ready(function() {
+        $('#calendar').fullCalendar({
+        
+            editable: true,
+            dragable: true,
+            selectable: true,
+            unselectable: true,
+            theme: true,
+            monthNames:["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+            monthNamesShort:['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'],
+            dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+            dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            buttonText: { today: "<?php echo __('TODAY'); ?>"}, 
+            select: function(start, end, allDay) {
+                $("#edit_start_date").text($.fullCalendar.formatDate(start, "yyyy-MM-dd"));
+                     if(end) {
+                        $("#edit_stop_date").text($.fullCalendar.formatDate(end, "yyyy-MM-dd"));
+                     }else {
+                        $("#edit_stop_date").text($.fullCalendar.formatDate(start, "yyyy-MM-dd"));
+                }
+
+                $("#dialog_create").dialog({
+                        resizable: true,
+                        width: 600,
+                        modal: true,
+                        buttons: {
+                            "<?php echo __('CREATE_DIALOG_CALENDAR','highchart'); ?>": function() { 
+                                        $( this ).dialog( "close" ); 
+                
+                                        new_start=$.fullCalendar.formatDate( start, "yyyy-MM-dd HH:mm:ss");
+                                        new_end=$.fullCalendar.formatDate( end, "yyyy-MM-dd HH:mm:ss");        
+                                        var title=$('#select_title option:selected').val(); 
+                                        var description=$('#select_remark').val();
+                                        if(!description) {
+                                            description="";
+                                        }
+                                        if (title) {
+                                            $('#calendar').fullCalendar('renderEvent', {
+                                            title: title,
+                                            start: new_start,
+                                            end: new_end,
+                                            description: description,
+                                            allDay: allDay
+                                        });
+
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "http://localhost:6891/cultibox/main/modules/json-events/json-add-events.php",
+                                            data: 'title='+title+'&start='+new_start+'&end='+new_end+'&desc='+description
+                                        });
+                                        }
+                                        $('#calendar').fullCalendar('unselect');
+                                        return false;
+                        },
+                    "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); return false;}
+                        }
+                    });
+
+            },
+            events: "http://localhost:6891/cultibox/main/modules/json-events/json-events.php",
+            
+            eventDrop: function(event, delta) {
+                new_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
+                if(!event.end) {
+                    event.end=event.start
+                }
+
+                new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+
+
+                $.ajax({
+                      type: "POST",
+                      url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
+                      data: 'title='+event.title+'&start='+ new_start +'&end='+ new_end +'&id='+event.id
+                });
+            },
+            eventResize: function( event, dayDelta, minuteDelta) { 
+                new_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
+                if(!event.end) {
+                    event.end=event.start
+                }
+
+                new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+
+
+                $.ajax({
+                      type: "POST",
+                      url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
+                      data: 'title='+event.title+'&start='+ new_start +'&end='+ new_end +'&id='+event.id
+                });
+            },
+            eventClick: function(event, element) {
+                     $("#title").text(event.title);
+                     $("#start_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+                     if(event.end) {
+                        $("#stop_date").text($.fullCalendar.formatDate(event.end, "yyyy-MM-dd"));
+                     }else {
+                        $("#stop_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+                     }
+                     if(event.description) {
+                        $("#remark").text(event.description);
+                     }
+                      
+                     $("#dialog_edit").dialog({
+                        resizable: true,
+                        width: 600,
+                        modal: true,
+                        buttons: {
+                            "<?php echo __('EDIT_DIALOG_CALENDAR','highchart'); ?>": function() { 
+                                $( this ).dialog( "close" ); 
+
+
+                                $('#select_title option[value="'+event.title+'"]').prop('selected', true);
+                                $("#edit_start_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+                                if(event.end) {
+                                    $("#edit_stop_date").text($.fullCalendar.formatDate(event.end, "yyyy-MM-dd"));
+                                }else {
+                                     $("#edit_stop_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+                                }
+                                if(event.description) {
+                                     $("#select_remark").text(event.description);
+                                }
+
+                                $("#dialog_create").dialog({
+                                resizable: true,
+                                width: 600,
+                                modal: true,
+                                buttons: {
+                                    "<?php echo __('SAVE_DIALOG_CALENDAR','highchart'); ?>": function() { 
+                                        $( this ).dialog( "close" ); 
+        
+                                        new_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
+                                        new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");        
+
+                                        var title=$('#select_title option:selected').val(); 
+                                        var description=$('#select_remark').val();
+                                        if(!description) {
+                                            description="";
+                                        }
+                                        if (title) {
+                                            $('#calendar').fullCalendar('renderEvent', {
+                                            title: title,
+                                            start: new_start,
+                                            end: new_end,
+                                            description: description
+                                        });
+
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
+                                            data: 'title='+title+'&start='+new_start+'&end='+new_end+'&desc='+description+'&id='+event.id
+                                        });
+                                        }
+                                        event.title=title;
+                                        event.description=description;
+                                        $('#calendar').fullCalendar('updateEvent', event);
+                                        return false;
+                                    },
+                                    "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); return false;}
+                            }
+                            });
+                        },
+                            "<?php echo __('REMOVE_DIALOG_CALENDAR','highchart'); ?>": 
+                            function() { 
+                                        $( this ).dialog( "close" ); 
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "http://localhost:6891/cultibox/main/modules/json-events/json-remove-events.php",
+                                            data: 'id='+event.id
+                                        });
+                                        $('#calendar').fullCalendar('removeEvents', event.id);
+                                        return false;
+                            },
+                            "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); return false;}
+                        }
+                    });
+        },
+            loading: function(bool) {
+                if (bool) $('#loading').show();
+                else $('#loading').hide();
+            }
+            
+        });
+        
+    });
+
+
+
+</script>
+
+<div id='calendar'></div>
+
+<div id="dialog_edit" title="<?php echo __('WHAT_DIALOG_CALENDAR'); ?>" style="display:none">
+<table class="table_width">
+<tr>
+    <td><b><?php echo __('CALENDAR_SUBJECT'); ?>:</b></td>
+    <td><span id="title"></span></td>
+</tr>
+<tr>
+    <td><b><?php echo __('CALENDAR_START_DATE'); ?>:</b></td>
+    <td><span id="start_date"></span></td>
+</tr>
+<tr>
+    <td><b><?php echo __('CALENDAR_STOP_DATE'); ?>:</b></td>
+    <td><span id="stop_date"></span></td>
+</tr>
+<tr>
+    <td><b><?php echo __('CALENDAR_REMARK'); ?>:</b></td>
+    <td><span id="remark"></span></td>
+</tr>
+</table>
+</div>
+
+
+
+<div id="dialog_create" title="<?php echo __('MANAGE_CALENDAR'); ?>" style="display:none">
+<form>
+<table class="table_width">
+<tr>
+    <td><b><?php echo __('CALENDAR_SUBJECT'); ?>:</b></td>
+    <td><select id="select_title">
+ <?php foreach($GLOBALS['LIST_SUBJECT_CALENDAR'] as $value) {
+               $old=array('&eacute;', '&egrave;','&agrave;','&ecirc;');
+               $new=array('e', 'e','a','e');
+
+
+            switch ($value) {
+            case 'Beginning':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_START')))==0) {
+                     echo "<option value=\"".__('SUBJECT_START')."\" selected>".__('SUBJECT_START')."</option>";
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_START')."\">".__('SUBJECT_START')."</option>";
+                  }
+               break;
+            case 'Fertilizers':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_FERTILIZERS')))==0) {
+                     echo "<option value=\"".__('SUBJECT_FERTILIZERS')."\" selected>".__('SUBJECT_FERTILIZERS')."</option>";
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_FERTILIZERS')."\">".__('SUBJECT_FERTILIZERS')."</option>";
+                  }
+               break;
+            case 'Water':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_WATER')))==0) {
+                     echo "<option value=\"".__('SUBJECT_WATER')."\" selected>".__('SUBJECT_WATER')."</option>";
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_WATER')."\">".__('SUBJECT_WATER')."</option>";
+                  }
+               break;
+            case 'Bloom':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_BLOOM')))==0) {
+                     echo "<option value=\"".__('SUBJECT_BLOOM')."\" selected>".__('SUBJECT_BLOOM')."</option>";
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_BLOOM')."\">".__('SUBJECT_BLOOM')."</option>";
+                  }
+               break;
+            case 'Harvest':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_HARVEST')))==0) {
+                     echo "<option value=\"".__('SUBJECT_HARVEST')."\" selected>".__('SUBJECT_HARVEST')."</option>";
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_HARVEST')."\">".__('SUBJECT_HARVEST')."</option>";
+                  }
+               break;
+            case 'Other':
+                  if(strcmp($event->Subject,str_replace($old,$new,__('SUBJECT_OTHER')))==0) {
+                     echo "<option value=\"".__('SUBJECT_OTHER')."\" selected>".__('SUBJECT_OTHER')."</option>";
+                  } else {
+                     echo "<option value=\"".__('SUBJECT_OTHER')."\">".__('SUBJECT_OTHER')."</option>";
+                  }
+               break;
+         }
+      } ?></select>
+    </td>
+</tr>
+<tr>
+    <td><b><?php echo __('CALENDAR_START_DATE'); ?>:</b></td>
+    <td><span id="edit_start_date"></span></td>
+</tr>
+<tr>
+    <td><b><?php echo __('CALENDAR_STOP_DATE'); ?>:</b></td>
+    <td><span id="edit_stop_date"></span></td>
+</tr>
+<tr>
+    <td><b><?php echo __('CALENDAR_REMARK'); ?>:</b></td>
+    <td><textarea rows="3" cols="30" id="select_remark"></textarea> 
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+

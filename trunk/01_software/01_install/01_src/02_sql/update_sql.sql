@@ -39,3 +39,12 @@ ALTER TABLE `cultibox`.`configuration` DROP `LOG_TEMP_AXIS` , DROP `LOG_HYGRO_AX
 -- Version 1.1.12:
 ALTER TABLE `cultibox`.`configuration` DROP COLUMN `LANG`;
 
+-- Version 1.1.13:
+RENAME TABLE `cultibox`.`jqcalendar` TO calendar; 
+ALTER TABLE `cultibox`.`calendar` CHANGE `Subject` `Title` VARCHAR( 1000 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+ALTER TABLE `cultibox`.`calendar` DROP COLUMN `color`;
+ALTER TABLE `cultibox`.`calendar` DROP COLUMN `RecurringRule`;
+Un autre
+
+
+
