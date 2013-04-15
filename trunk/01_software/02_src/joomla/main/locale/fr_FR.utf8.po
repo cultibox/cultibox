@@ -262,6 +262,42 @@ msgstr "Novembre"
 msgid "MONTH12"
 msgstr "Décembre"
 
+msgid "M01"
+msgstr "Jan"
+
+msgid "M02"
+msgstr "Fév"
+
+msgid "M03"
+msgstr "Mar"
+
+msgid "M04"
+msgstr "Avr"
+
+msgid "M05"
+msgstr "Mai"
+
+msgid "M06"
+msgstr "Juin"
+
+msgid "M07"
+msgstr "Juil"
+
+msgid "M08"
+msgstr "Août"
+
+msgid "M09"
+msgstr "Sept"
+
+msgid "M10"
+msgstr "Oct"
+
+msgid "M11"
+msgstr "Nov"
+
+msgid "M12"
+msgstr "Déc"
+
 msgid "SELECT_PROGRAM_PLUG"
 msgstr "Programme à comparer"
 
@@ -752,58 +788,6 @@ msgid "WIZARD_OTHER_PLUG_TYPE"
 msgstr "Choisissez le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type 'autre' servant pour tout les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
 
 #For the calendar part:
-msgid "TITLE_CALENDAR"
-msgstr "Calendrier pour la Cultibox"
-
-msgid "LOADING_DATA"
-msgstr "Chargement..."
-
-msgid "REQUEST_PROCESSED"
-msgstr "Demande en cours..."
-
-msgid "SUCCESS"
-msgstr "Operation reussie"
-
-msgid "DELETE_EVENT"
-msgstr "Voulez-vous supprimer cet evenement?"
-
-msgid "ERROR_LOADING_DATA"
-msgstr "Impossible de charger les donnees"
-
-msgid "CALENDAR_CLOSE"
-msgstr "Fermer"
-
-msgid "CALENDAR_DELETE"
-msgstr "Supprimer"
-
-msgid "SUBJECT_START"
-msgstr "Début de culture"
-
-msgid "SUBJECT_FERTILIZERS"
-msgstr "Engrais"
-
-msgid "SUBJECT_WATER"
-msgstr "Changement d'eau"
-
-msgid "SUBJECT_BLOOM"
-msgstr "Floraison"
-
-msgid "SUBJECT_HARVEST"
-msgstr "Récolte"
-
-msgid "SUBJECT_OTHER"
-msgstr "Autre"
-
-msgid "CALENDAR_DATE"
-msgstr "* Choisir la date de l'événement"
-
-msgid "CALENDAR_TO"
-msgstr "à"
-
-msgid "CALENDAR_INVALID_DATE"
-msgstr "Format de la date invalide (MM/JJ/AAAA)"
-
-
 msgid "WHAT_DIALOG_CALENDAR"
 msgstr "Que voulez-vous faire?"
 
@@ -842,6 +826,75 @@ msgstr "Sauvegarder"
 
 msgid "TODAY"
 msgstr "Aujourd'hui"
+
+msgid "SUBJECT_START"
+msgstr "Début de culture"
+
+msgid "SUBJECT_FERTILIZERS"
+msgstr "Engrais"
+
+msgid "SUBJECT_WATER"
+msgstr "Changement d'eau"
+
+msgid "SUBJECT_BLOOM"
+msgstr "Floraison"
+
+msgid "SUBJECT_HARVEST"
+msgstr "Récolte"
+
+msgid "SUBJECT_OTHER"
+msgstr "Autre"
+
+msgid "DAY01"
+msgstr "Lundi"
+
+msgid "DAY02"
+msgstr "Mardi"
+
+msgid "DAY03"
+msgstr "Mercredi"
+
+msgid "DAY04"
+msgstr "Jeudi"
+
+msgid "DAY05"
+msgstr "Vendredi"
+
+msgid "DAY06"
+msgstr "Samedi"
+
+msgid "DAY07"
+msgstr "Dimanche"
+
+msgid "D01"
+msgstr "Lun"
+
+msgid "D02"
+msgstr "Mar"
+
+msgid "D03"
+msgstr "Mer"
+
+msgid "D04"
+msgstr "Jeu"
+
+msgid "D05"
+msgstr "Ven"
+
+msgid "D06"
+msgstr "Sam"
+
+msgid "D07"
+msgstr "Dim"
+
+msgid "MANAGE_RESET_CALENDAR"
+msgstr "Supprimer tous les évènements du calendrier"
+
+msgid "RESET_CONFIRM_CALENDAR"
+msgstr "Êtes vous sur de vouloir supprimer tous les événements enregistrés dans le calendrier?"
+
+msgid "VALID_DELETE_CALENDAR"
+msgstr "Calendrier supprimé avec succès"
 
 
 # For the cost part:
