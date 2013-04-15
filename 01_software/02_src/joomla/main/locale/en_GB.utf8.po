@@ -263,6 +263,42 @@ msgstr "November"
 msgid "MONTH12"
 msgstr "December"
 
+msgid "M01"
+msgstr "Jan."
+
+msgid "M02"
+msgstr "Feb."
+
+msgid "M03"
+msgstr "Mar."
+
+msgid "M04"
+msgstr "Apr."
+
+msgid "M05"
+msgstr "May."
+
+msgid "M06"
+msgstr "Juin."
+
+msgid "M07"
+msgstr "Jul."
+
+msgid "M08"
+msgstr "Aug."
+
+msgid "M09"
+msgstr "Sept."
+
+msgid "M10"
+msgstr "Oct."
+
+msgid "M11"
+msgstr "Nov."
+
+msgid "M12"
+msgstr "Dec."
+
 msgid "SELECT_PROGRAM_PLUG"
 msgstr "and a program to compare"
 
@@ -754,32 +790,8 @@ msgid "WIZARD_OTHER_PLUG_TYPE"
 msgstr "Choose the type of your plug: <ul class='list_class_wizard'><li>a heating to increase the temperature</li><li>a ventilator to decrease the temperature</li><li>a humidifier to increase pourcentage of humidity</li><li>a dehumidifier to decrease the humidity</li><li>a lamp</li><li>an 'other' type for all the other equipements. <br /><br />If you choose to configure a new lamp, this equipement must use <b>less than 200 Watts</b>" 
 
 #For the calendar part:
-msgid "TITLE_CALENDAR"
-msgstr "Calendar for the Cultibox"
-
-msgid "LOADING_DATA"
-msgstr "Loading..."
-
-msgid "REQUEST_PROCESSED"
-msgstr "Request proccessed..."
-
-msgid "SUCCESS"
-msgstr "Success!"
-
 msgid "MANAGE_CALENDAR"
 msgstr "Manage the event"
-
-msgid "DELETE_EVENT"
-msgstr "Do you really want to delete this event?"
-
-msgid "ERROR_LOADING_DATA"
-msgstr "Error during data loading..."
-
-msgid "CALENDAR_CLOSE"
-msgstr "Close"
-
-msgid "CALENDAR_DELETE"
-msgstr "Delete"
 
 msgid "SUBJECT_START"
 msgstr "Beginning of Culture"
@@ -798,16 +810,6 @@ msgstr "Harvest"
 
 msgid "SUBJECT_OTHER"
 msgstr "Other"
-
-msgid "CALENDAR_DATE"
-msgstr "* Select date for the event"
-
-msgid "CALENDAR_TO"
-msgstr "To"
-
-msgid "CALENDAR_INVALID_DATE"
-msgstr "Invalid date format (MM/DD/YYYY)"
-
 
 msgid "WHAT_DIALOG_CALENDAR"
 msgstr "What do you want to do?"
@@ -844,6 +846,57 @@ msgstr "Today"
 
 msgid "SAVE_DIALOG_CALENDAR"
 msgstr "Save"
+
+msgid "DAY01"
+msgstr "Monday"
+
+msgid "DAY02"
+msgstr "Tuesday"
+
+msgid "DAY03"
+msgstr "Wednesday"
+
+msgid "DAY04"
+msgstr "Thursday"
+
+msgid "DAY05"
+msgstr "Friday"
+
+msgid "DAY06"
+msgstr "Saturday"
+
+msgid "DAY07"
+msgstr "Sunday"
+
+msgid "D01"
+msgstr "Mon"
+
+msgid "D02"
+msgstr "Tue"
+
+msgid "D03"
+msgstr "Wed"
+
+msgid "D04"
+msgstr "Thu"
+
+msgid "D05"
+msgstr "Fri"
+
+msgid "D06"
+msgstr "Sat"
+
+msgid "D07"
+msgstr "Sun"
+
+msgid "MANAGE_RESET_CALENDAR"
+msgstr "Delete all events from the calendar"
+
+msgid "RESET_CONFIRM_CALENDAR"
+msgstr "Do you really want to delete all events from the calendar?"
+
+msgid "VALID_DELETE_CALENDAR"
+msgstr "Calendar deleted successfully"
 
 
 # For the cost part:

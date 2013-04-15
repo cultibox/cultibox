@@ -1331,6 +1331,9 @@ EOF;
 // }}}}
 
 
+
+
+
 // {{{ export_program()
 // ROLE export a program into a text file
 // IN $id          id of the program
@@ -1790,7 +1793,7 @@ function create_calendar_from_database(&$out) {
    $year=date('Y');
         $db = db_priv_start();
         $sql = <<<EOF
-SELECT `Subject`,`StartTime`,`EndTime`, `Description` FROM `jqcalendar` WHERE `StartTime` LIKE "{$year}-%"
+SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%"
 EOF;
         $db->setQuery($sql);
         $res = $db->loadAssocList();
@@ -1819,32 +1822,32 @@ EOF;
          $count=0;
          $number=0;
 
-         for($i=0;$i<strlen($val['Subject']);$i++) {
+         for($i=0;$i<strlen($val['Title']);$i++) {
             $count=$count+1;
             if($count==1) {
-               if(strcmp($val['Subject'][$i]," ")==0) {
+               if(strcmp($val['Title'][$i]," ")==0) {
                   $count=0;
                } else {
-                  $line=$line.$val['Subject'][$i];
+                  $line=$line.$val['Title'][$i];
                }
             } else {
-                 $line=$line.$val['Subject'][$i];
+                 $line=$line.$val['Title'][$i];
             }
 
             if($count==12) {
-               if((strcmp($val['Subject'][$i]," ")!=0)&&(isset($val['Subject'][$i+1]))&&(strcmp($val['Subject'][$i+1]," ")!=0)) {
-                  if(isset($val['Subject'][$i+2])) {
+               if((strcmp($val['Title'][$i]," ")!=0)&&(isset($val['Title'][$i+1]))&&(strcmp($val['Title'][$i+1]," ")!=0)) {
+                  if(isset($val['Title'][$i+2])) {
                      $line=$line."-";
                      $count=$count+1;
                   }
-               } elseif(strcmp($val['Subject'][$i]," ")==0) {
+               } elseif(strcmp($val['Title'][$i]," ")==0) {
                      $line=$line." ";
                      $count=$count+1;
               }
             }
 
             if($count==13) {
-               $s[]=strtoupper($line);
+               $s[]=mb_strtoupper($line, 'UTF-8');
                $line="";
                $count=0;
                $number=$number+1;
@@ -1856,7 +1859,7 @@ EOF;
          }
 
          if(("$count"!="13")&&("$number"!="18")) {
-            $s[]=strtoupper($line);
+            $s[]=mb_strtoupper($line, 'UTF-8');
             $number=$number+1;
          }
 
@@ -2103,6 +2106,36 @@ EOF;
            return $error;
 }
 // }}}
+
+
+// {{{ reset_calendar()
+// ROLE clean calendar table
+// IN   out     errors or warnings messages
+// RET false if an error occured, true else
+function reset_calendar(&$out) {
+   $db = db_priv_start();
+   $sql = <<<EOF
+DELETE FROM  `calendar`;
+EOF;
+   $db->setQuery($sql);
+   $db->query();
+   $ret=$db->getErrorMsg();
+   if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+                  $out[]=__('ERROR_UPDATE_SQL').$ret;
+            } else {
+                  $out[]=__('ERROR_UPDATE_SQL');
+        }
+        return false;
+   }
+   if(!db_priv_end($db)) {
+        $out[]=__('PROBLEM_CLOSING_CONNECTION');
+        return false;
+   }
+   return true;
+}
+// }}}}
+
 
 
 // {{{ get_historic_value()

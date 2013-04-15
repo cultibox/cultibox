@@ -23,6 +23,10 @@ $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
+$pop_up_message=""; 
+$reset=getvar('reset_calendar_submit');
+
+
 
 
 
@@ -149,6 +153,15 @@ if(strcmp("$update","True")==0) {
    } else {
     $main_error[]=__('ERROR_REMOTE_SITE');
    }
+}
+
+
+if((isset($reset))&&(!empty($reset))) {
+    if(reset_calendar($main_error)) {
+        $main_info[]=__('VALID_DELETE_CALENDAR');
+        $pop_up_message=$pop_up_message.popup_message(__('VALID_DELETE_CALENDAR'));
+        set_historic_value(__('VALID_DELETE_CALENDAR')." (".__('CALENDAR_PAGE').")","histo_info",$main_error);
+    }
 }
 
 

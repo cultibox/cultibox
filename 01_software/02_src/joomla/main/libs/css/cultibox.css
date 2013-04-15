@@ -415,6 +415,7 @@ ul, ol, dl {
 
 p.p_right{
 	font-size:11px;		
+    text-align: right;
 }
 
 button, input[type="button"], input[type="submit"] {

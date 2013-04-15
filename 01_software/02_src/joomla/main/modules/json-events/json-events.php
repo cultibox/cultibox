@@ -21,10 +21,11 @@ $res = mysql_query($sql);
 while($row = mysql_fetch_array($res, MYSQL_ASSOC)) {
         $event[]=array(
                         "id" => $row['Id'],
-                        "title" => $row['Title'],
+                        "title" => utf8_decode($row['Title']),
                         "start" => $row['StartTime'],
                         "end" => $row['EndTime'],
-                        "description" => $row['Description']
+                        "description" => utf8_decode($row['Description']),
+                        "color" => $row['Color']
             );
 }
 
