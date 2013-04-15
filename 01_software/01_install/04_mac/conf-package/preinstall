@@ -1,9 +1,11 @@
 #!/bin/bash
 
 if [ -d /Applications/cultibox ]; then
+    echo "  * Finding an old Cultibox configuration, saving datas..."
     /Applications/cultibox/xamppfiles/xampp stop
     mkdir /tmp/cultibox_backup
     cp -R /Applications/cultibox/xamppfiles/var/mysql /tmp/cultibox_backup
+    echo "...OK!"
 fi
 
 

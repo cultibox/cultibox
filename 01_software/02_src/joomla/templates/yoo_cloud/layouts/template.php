@@ -24,20 +24,20 @@ include($this['path']->path('layouts:template.config.php'));
 ?>
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css" />
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" />
+                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/fullcalendar.css" />
 
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
                 <script type="text/javascript" src="main/libs/js/jquery-1.8.3.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-1.9.2.custom.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-1.9.2.custom.min.js"></script>
-        
-                <!-- Javascript JQUERY libraries for cultibox components: calendar, datepicker, highcharts... -->
                 <script type="text/javascript" src="main/libs/js/highcharts.js"></script>
                 <script type="text/javascript" src="main/libs/js/exporting.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery-ui-timepicker-addon.js"></script>
-                
 	            <script type="text/javascript" src="main/libs/js/cultibox.js"></script>
                 <script type="text/javascript" src="main/libs/js/cultibox-utils.js"></script>
                 <script type="text/javascript" src="main/libs/js/oXHR.js"></script>
+                <script type="text/javascript" src="main/libs/js/fullcalendar.js"></script>
 </head>
 
 <body id="page" class="page <?php echo $this['config']->get('body_classes'); ?>" data-config='<?php echo $this['config']->get('body_config','{}'); ?>'>

@@ -152,6 +152,7 @@ if(strcmp("$update","True")==0) {
 }
 
 
+
 //Display the calendar template
 include('main/templates/calendar.html');
 
