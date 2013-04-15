@@ -9,6 +9,9 @@ Cette page ne concerne que les utilisateurs experts.
 
 = Calendriers d'engrais =
 == Introduction ==
+
+Cette fonctionnalitée n'est pour l'instant pas disponible : Cf issue 425
+
 Les fabriquants d'engrais peuvent nous soumettre les calendriers de leurs engrais pour qu'ils soient disponible dans le calendrier de l'utilisateur.
 Nous nous reservons le droit d'ajouter ou de supprimer les calendriers.
 
@@ -237,7 +240,7 @@ Exemple:
 <dosage>3ml/l</dosage>
 }}}
 
-== Exmple de fichier ==
+== Exemple de fichier ==
 
 {{{
 <?xml version="1.0" encoding="utf-8"?>
