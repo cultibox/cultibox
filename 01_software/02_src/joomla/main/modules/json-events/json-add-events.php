@@ -1,7 +1,6 @@
 <?php
 
-
-$title=utf8_encode($_POST["title"]);
+$title=utf8_decode($_POST["title"]);
 $start=$_POST["start"];
 $end=$_POST["end"];
 $color=$_POST["color"];
@@ -10,7 +9,7 @@ $color=$_POST["color"];
 
 if((isset($title))&&(!empty($title))&&(isset($start))&&(!empty($start))&&(isset($end))&&(!empty($end))&&(isset($color))&&(!empty($color))) {
             if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
-                $description=utf8_encode(($_POST["desc"]));    
+                $description=utf8_decode(($_POST["desc"]));    
             }
 
             
@@ -28,7 +27,6 @@ EOF;
 INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Color`) VALUES("{$title}", "{$start}", "{$end}", "{$color}");
 EOF;
             }
-        echo $sql;
         $res = mysql_query($sql);
 }
 
