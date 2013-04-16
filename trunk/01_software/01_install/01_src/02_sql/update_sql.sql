@@ -44,7 +44,7 @@ RENAME TABLE `cultibox`.`jqcalendar` TO calendar;
 ALTER TABLE `cultibox`.`calendar` CHANGE `Subject` `Title` VARCHAR( 1000 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
 ALTER TABLE `cultibox`.`calendar` DROP COLUMN `color`;
 ALTER TABLE `cultibox`.`calendar` DROP COLUMN `RecurringRule`;
-Un autre
-
+ALTER TABLE `cultibox`.`calendar` DROP COLUMN `Location`;
+ALTER TABLE `calendar` ADD `Color` VARCHAR( 7 ) NOT NULL DEFAULT '#000000';
 
 

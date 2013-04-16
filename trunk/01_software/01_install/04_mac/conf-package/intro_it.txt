@@ -1,0 +1,5 @@
+===============================================
+    INSTALLAZIONE DEL SOFTWARE CULTIBOX
+===============================================
+
+Benvenuti al Cultibox di installazione del software. Questo programma vi guiderà passo per passo per installare il software. Il software consente di gestire il vostro Cultibox: gestione del programma presa, aggiungere eventi a un calendario, visualizzare la temperatura e l'umidità registri ...

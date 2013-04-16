@@ -34,11 +34,19 @@ if [ ! -d /tmp/cultibox_backup/mysql ]; then
     sleep 2
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/user_cultibox.sql
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/joomla.sql
-    lang=`echo $LANG|grep -i fr`
-    if [ "$lang" != "" ]; then
-        /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_fr.sql
-    else
+    lang=`defaults read /Library/Preferences/.GlobalPreferences AppleLanguages| tr -d [:space:] | cut -c2-3`
+    if [ "$lang" == "En" ]; then
         /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_en.sql
+    elif [ "$lang" == "Fr" ]; then
+        /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_fr.sql
+    elif [ "$lang" == "De" ]; then
+	    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_de.sql
+    elif [ "$lang" == "It" ]; then
+	    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_it.sql
+    elif [ "$lang" == "Es" ]; then
+        /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_es.sql
+    else
+	    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_en.sql
     fi
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/fake_log.sql
     echo "... OK!"

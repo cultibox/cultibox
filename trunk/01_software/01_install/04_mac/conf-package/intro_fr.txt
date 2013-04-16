@@ -1,0 +1,5 @@
+===============================================
+     INSTALLATION DU LOGICIEL CULTIBOX
+===============================================
+
+Bienvenue dans l'installateur du logiciel Cultibox.  Ce programme va vous guider pas à pas afin d'installer le logiciel.  Le logiciel permet de gérer votre Cultibox: gestion des programmes des prises, ajout d'évènements dans un calendrier, visualisation de ses logs de température et d'hygrométrie...
