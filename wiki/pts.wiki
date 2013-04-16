@@ -16,7 +16,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || environement || PTS_operating_vibrations_g || Vibrations admissible de fonctionnement 10Hz-150Hz 5 balayages 3 Axes (IEC 60068-2-6) ||  ||  || 0.5 || g || 1 || issue 386 ||  ||  ||
 || environement || PTS_operating_secousses_g || Secousses admissible de fonctionnement (IEC 60068-2-27) ||  ||  ||  || g || 1 ||  ||  ||  ||
 || environement || PTS_operating_drop_test_mm || Chute en fonctionnement (IEC 60068-2-31) ||  ||  || 1000 || mm || 1 || issue 421 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0007_PTS_operating_drop_test_mm_-.pdf CBX_1_13_0007] ||
-|| environement || PTS_storage_temperature_°C || Température de stockage (IEC 60068-2-1 & IEC 60068-2-2 & IEC 60068-2-14) || 0 || 25 || 60 || °C || 1 || issue 382 ||  ||  ||
+|| environement || PTS_storage_temperature_°C || Température de stockage (IEC 60068-2-1 & IEC 60068-2-2 & IEC 60068-2-14) || 0 || 25 || 60 || °C || 1 || issue 382 || PASS ||[http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0011_PTS_storage_temperature_°C_-.pdf CBX_1_13_0011] ||
 || environement || PTS_storage_humidity_RH || Humidité de stockage (IEC 60068-2-30 & IEC 60068-2-78) || 5 || 45 || 95 || %RH || 1 || issue 383 ||  ||  ||
 || environement || PTS_storage_shocks_g || Shocks en transport  ||  ||  || 30 || g || 1 || issue 351 ||  ||  ||
 || environement || PTS_storage_vibrations_g || Vibrations en transport ||  ||  || 2 || g || 1 || issue 352 ||  ||  ||
