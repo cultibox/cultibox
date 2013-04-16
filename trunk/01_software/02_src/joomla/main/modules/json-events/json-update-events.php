@@ -1,9 +1,8 @@
 <?php
 
-
 if((isset($_POST["title"]))&&(!empty($_POST["title"]))&&(isset($_POST["start"]))&&(!empty($_POST["start"]))&&(isset($_POST["end"]))&&(!empty($_POST["end"]))&&(isset($_POST["id"]))&&(!empty($_POST["id"]))&&(isset($_POST["color"]))&&(!empty($_POST["color"]))) {
 
-    $title=utf8_encode($_POST["title"]);
+    $title=utf8_decode($_POST["title"]);
     $start=$_POST["start"];
     $end=$_POST["end"];
     $id=$_POST["id"];
@@ -11,8 +10,9 @@ if((isset($_POST["title"]))&&(!empty($_POST["title"]))&&(isset($_POST["start"]))
     
 
     if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
-            $description=utf8_encode($_POST["desc"]);
+            $description=utf8_decode($_POST["desc"]);
     }
+
 
     if((isset($description))&&(!empty($description))) {
         $sql = <<<EOF
@@ -26,11 +26,9 @@ EOF;
 
     $link = mysql_connect('localhost','cultibox','cultibox');
     if (!$link) { die('Could not connect: ' . mysql_error()); }
-        mysql_select_db('cultibox');
+    mysql_select_db('cultibox');
 
-        echo $sql;
-        
-        $res = mysql_query($sql);
+    $res = mysql_query($sql);
 }
 
 ?>

@@ -1,6 +1,5 @@
 <?php
 
-
 if((isset($_POST["id"]))&&(!empty($_POST["id"]))) {
     $id=$_POST["id"];
 
@@ -11,7 +10,6 @@ if((isset($_POST["id"]))&&(!empty($_POST["id"]))) {
         $sql = <<<EOF
 DELETE FROM `calendar` WHERE `Id` = {$id}
 EOF;
-        echo $sql;
         $res = mysql_query($sql);
 }
 
