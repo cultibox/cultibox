@@ -72,13 +72,14 @@ Exemple d'auteur:
 }}}
 
 ==== Catégorie ====
-Cette information est obligatoire. Elle nous permet d'identifier quel type d'engrais est contenu dans ce fichier.
+Cette information est obligatoire. Elle nous permet d'identifier quel type d'engrais est contenu dans ce fichier. Elle permet aussi de séparer le calendrier lunbaire des autres calendriers.
 Les catégories disponible sont:
 || *term* || *label* ||
 || terre || Terre ||
 || hydro || Hydroponique ||
 || coco || Coco ||
 || orch || Orchidee ||
+|| lunaire || lunaire ||
 
 Exemple de catégorie:
 
@@ -207,21 +208,39 @@ Exemple:
 }}}
 
 ===== durée =====
-Cette balise permet de définir la durée de l'événement. La durée est définit en nombre de jour.
+Cette balise permet de définir la durée de l'événement. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
 
 Exemple (3 jours):
 
 {{{
-<duration>3</duration>
+<duration>0000-00-03T00:00:00</duration>
 }}}
 
 ===== Début de cet événement =====
-Cette balise permet de définir au bout de combien de jour cet événement doit devenir actif. La durée est définit en nombre de jour.
+Cette balise permet de définir la date de début de l'événement. La date doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
 
 Exemple (Au bout de 18 jours):
 
 {{{
-<start>18</start>
+<start>2008-05-29T13:14:57+02:00</start>
+}}}
+
+===== Periode de cet événement =====
+Cette balise permet de définir au bout de combien de jour cette événement doit revenir. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+
+Exemple (Au bout de 18 jours):
+
+{{{
+<period>0000-00-18T00:00:00</period>
+}}}
+
+===== Offset de cet événement =====
+Cette balise permet de définir au bout de combien de jour cet événement doit devenir actif. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+
+Exemple (Au bout de 18 jours):
+
+{{{
+<start_offset>0000-00-18T00:00:00</start_offset>
 }}}
 
 ===== Nutriment =====
