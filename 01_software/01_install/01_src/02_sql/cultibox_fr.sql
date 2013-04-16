@@ -106,21 +106,20 @@ INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version` ,`emeteur_
 
 
 --
--- Table structure for table `jqcalendar`
+-- Table structure for table `calendar`
 --
 
-CREATE TABLE IF NOT EXISTS `jqcalendar` (
+CREATE TABLE IF NOT EXISTS `calendar` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Subject` varchar(1000) CHARACTER SET utf8 DEFAULT NULL,
-  `Location` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
+  `Title` varchar(1000) CHARACTER SET utf8 DEFAULT NULL,
   `Description` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `StartTime` datetime DEFAULT NULL,
   `EndTime` datetime DEFAULT NULL,
   `IsAllDayEvent` smallint(6) NOT NULL,
-  `Color` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
-  `RecurringRule` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
+  `Color` varchar(7) NOT NULL DEFAULT '#4A40A4',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 
 -- --------------------------------------------------------
 
