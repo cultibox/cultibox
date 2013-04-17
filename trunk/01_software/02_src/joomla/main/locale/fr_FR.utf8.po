@@ -772,8 +772,11 @@ msgstr "Cet assistant vous permet de vous familiariser avec les configurations d
 msgid "WIZARD_PLUG_TYPE"
 msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximum</b>. Il est possible de configurer les autres prises comme des lampes mais elles ne pourront accueillir une lampe dont la puissance dépasse <b>200 Watts</b>. "
 
-msgid "WIZARD_PLUG_PROGRAM"
+msgid "WIZARD_PLUG_LAMP"
 msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe. Pour cela choisissez une heure de départ où la lampe se mettra en route et une heure de fin où la lampe s'éteindra."
+
+msgid "WIZARD_PLUG_PROGRAM"
+msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de votre équipement. Pour cela choisissez une heure de départ où l'équipement se mettra en route et une heure de fin où l'équipement s'éteindra."
 
 msgid "WIZARD_STEP"
 msgstr "Etape"
@@ -1290,7 +1293,7 @@ msgstr "Il reste des fichiers de logs plus ancien à charger, pour cela utilisez
 # For the tooltip part:
 
 msgid "TOOLTIP_VALUE"
-msgstr "La Cultibox va éteindre <br />ou allumer la prise pour <br />atteindre cette valeur."
+msgstr "La Cultibox va éteindre ou allumer la prise pour atteindre cette valeur."
 
 msgid "TOOLTIP_POWER"
 msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consomation de votre installation, son prix..."
