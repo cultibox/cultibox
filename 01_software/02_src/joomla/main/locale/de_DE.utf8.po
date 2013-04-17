@@ -262,6 +262,42 @@ msgstr "Novembre"
 msgid "MONTH12"
 msgstr "Décembre"
 
+msgid "M01"
+msgstr "Jan"
+
+msgid "M02"
+msgstr "Fév"
+
+msgid "M03"
+msgstr "Mar"
+
+msgid "M04"
+msgstr "Avr"
+
+msgid "M05"
+msgstr "Mai"
+
+msgid "M06"
+msgstr "Juin"
+
+msgid "M07"
+msgstr "Juil"
+
+msgid "M08"
+msgstr "Août"
+
+msgid "M09"
+msgstr "Sept"
+
+msgid "M10"
+msgstr "Oct"
+
+msgid "M11"
+msgstr "Nov"
+
+msgid "M12"
+msgstr "Déc"
+
 msgid "SELECT_PROGRAM_PLUG"
 msgstr "Programme à comparer"
 
@@ -736,8 +772,11 @@ msgstr "Cet assistant vous permet de vous familiariser avec les configurations d
 msgid "WIZARD_PLUG_TYPE"
 msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximum</b>. Il est possible de configurer les autres prises comme des lampes mais elles ne pourront accueillir une lampe dont la puissance dépasse <b>200 Watts</b>. "
 
-msgid "WIZARD_PLUG_PROGRAM"
+msgid "WIZARD_PLUG_LAMP"
 msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe. Pour cela choisissez une heure de départ où la lampe se mettra en route et une heure de fin où la lampe s'éteindra."
+
+msgid "WIZARD_PLUG_PROGRAM"
+msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de votre équipement. Pour cela choisissez une heure de départ où l'équipement se mettra en route et une heure de fin où l'équipement s'éteindra."
 
 msgid "WIZARD_STEP"
 msgstr "Etape"
@@ -752,47 +791,44 @@ msgid "WIZARD_OTHER_PLUG_TYPE"
 msgstr "Choisissez le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type 'autre' servant pour tout les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
 
 #For the calendar part:
-msgid "TITLE_CALENDAR"
-msgstr "Calendrier pour la Cultibox"
+msgid "WHAT_DIALOG_CALENDAR"
+msgstr "Que voulez-vous faire?"
 
-msgid "LOADING_DATA"
-msgstr "Chargement..."
+msgid "REMOVE_DIALOG_CALENDAR"
+msgstr "Supprimer l'évènement"
 
-msgid "REQUEST_PROCESSED"
-msgstr "Demande en cours..."
+msgid "CANCEL_DIALOG_CALENDAR"
+msgstr "Annuler"
 
-msgid "SUCCESS"
-msgstr "Operation reussie"
+msgid "EDIT_DIALOG_CALENDAR"
+msgstr "Editer l'évènement"
+
+msgid "CREATE_DIALOG_CALENDAR"
+msgstr "Créer un évènement"
+
+msgid "CALENDAR_SUBJECT"
+msgstr "Sujet"
+
+msgid "CALENDAR_COLOR"
+msgstr "Choisir une couleur"
+
+msgid "CALENDAR_REMARK"
+msgstr "Remarque"
+
+msgid "CALENDAR_START_DATE"
+msgstr "Date de départ (AAAA-MM-JJ)"
+
+msgid "CALENDAR_STOP_DATE"
+msgstr "Date de fin (AAAA-MM-JJ)"
 
 msgid "MANAGE_CALENDAR"
 msgstr "Gerer l'evenement"
 
-msgid "DELETE_EVENT"
-msgstr "Voulez-vous supprimer cet evenement?"
-
-msgid "ERROR_LOADING_DATA"
-msgstr "Impossible de charger les donnees"
+msgid "SAVE_DIALOG_CALENDAR"
+msgstr "Sauvegarder"
 
 msgid "TODAY"
 msgstr "Aujourd'hui"
-
-msgid "CALENDAR_SUBJECT"
-msgstr "* Sujet"
-
-msgid "CALENDAR_COLOR"
-msgstr "* Choisir une couleur"
-
-msgid "CALENDAR_REMARK"
-msgstr "* Remarque"
-
-msgid "CALENDAR_SAVE"
-msgstr "Sauvegarder"
-
-msgid "CALENDAR_CLOSE"
-msgstr "Fermer"
-
-msgid "CALENDAR_DELETE"
-msgstr "Supprimer"
 
 msgid "SUBJECT_START"
 msgstr "Début de culture"
@@ -812,14 +848,57 @@ msgstr "Récolte"
 msgid "SUBJECT_OTHER"
 msgstr "Autre"
 
-msgid "CALENDAR_DATE"
-msgstr "* Choisir la date de l'événement"
+msgid "DAY01"
+msgstr "Lundi"
 
-msgid "CALENDAR_TO"
-msgstr "à"
+msgid "DAY02"
+msgstr "Mardi"
 
-msgid "CALENDAR_INVALID_DATE"
-msgstr "Format de la date invalide (MM/JJ/AAAA)"
+msgid "DAY03"
+msgstr "Mercredi"
+
+msgid "DAY04"
+msgstr "Jeudi"
+
+msgid "DAY05"
+msgstr "Vendredi"
+
+msgid "DAY06"
+msgstr "Samedi"
+
+msgid "DAY07"
+msgstr "Dimanche"
+
+msgid "D01"
+msgstr "Lun"
+
+msgid "D02"
+msgstr "Mar"
+
+msgid "D03"
+msgstr "Mer"
+
+msgid "D04"
+msgstr "Jeu"
+
+msgid "D05"
+msgstr "Ven"
+
+msgid "D06"
+msgstr "Sam"
+
+msgid "D07"
+msgstr "Dim"
+
+msgid "MANAGE_RESET_CALENDAR"
+msgstr "Supprimer tous les évènements du calendrier"
+
+msgid "RESET_CONFIRM_CALENDAR"
+msgstr "Êtes vous sur de vouloir supprimer tous les événements enregistrés dans le calendrier?"
+
+msgid "VALID_DELETE_CALENDAR"
+msgstr "Calendrier supprimé avec succès"
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"
@@ -1214,7 +1293,7 @@ msgstr "Il reste des fichiers de logs plus ancien à charger, pour cela utilisez
 # For the tooltip part:
 
 msgid "TOOLTIP_VALUE"
-msgstr "La Cultibox va éteindre <br />ou allumer la prise pour <br />atteindre cette valeur."
+msgstr "La Cultibox va éteindre ou allumer la prise pour atteindre cette valeur."
 
 msgid "TOOLTIP_POWER"
 msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consomation de votre installation, son prix..."
