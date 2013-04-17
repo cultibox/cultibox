@@ -530,10 +530,10 @@ msgid "PLUG_DISABLED"
 msgstr "Désactivée"
 
 msgid "VALID_DISABLED_PLUG"
-msgstr "Prise désactivée avec succée"
+msgstr "Prise désactivée avec succès"
 
 msgid "VALID_ENABLED_PLUG"
-msgstr "Prise activée avec succèe"
+msgstr "Prise activée avec succès"
 
 msgid "PLUG_HISTO_NUMBER"
 msgstr "Prise numéro"
@@ -653,7 +653,7 @@ msgid "MIN_PLUG_REACHED"
 msgstr "Minimum de prises atteint"
 
 msgid "PLUG_ADDED"
-msgstr "Prise ajoutée avec succée"
+msgstr "Prise ajoutée avec succès"
 
 msgid "PLUG_MAX_ADDED"
 msgstr "Vous avez atteint le nombre maximal de prises confgurables"
@@ -662,7 +662,7 @@ msgid "PLUG_MIN_ADDED"
 msgstr "Vous avez atteint le nombre minimal de proses configurables"
 
 msgid "PLUG_REMOVED"
-msgstr "Prise supprimée avec succée"
+msgstr "Prise supprimée avec succès"
 
 msgid "VALUE_REGUL_SECOND"
 msgstr "Régulation secondaire"
@@ -1249,13 +1249,13 @@ msgid "VALID_UPDATE_PROGRAM"
 msgstr "Programmes mis à jour avec succès"
 
 msgid "VALID_IMPORT_PROGRAM"
-msgstr "Programmes importé avec succés"
+msgstr "Programme importé avec succès"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Base des logs supprimée avec succès"
 
 msgid "VALID_RESET_CARD"
-msgstr "Carte formatée avec succée"
+msgstr "Carte formatée avec succès"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la Cultibox pour que cela soit effectif si vous avez finis vos paramètrage"
