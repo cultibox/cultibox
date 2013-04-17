@@ -188,7 +188,7 @@ include($this['path']->path('layouts:template.config.php'));
                     </div>           
                 </footer>
 				<footer id="footer" class="grid-block">
-                  <p class="p_right">
+                  <p class="p_center">
                      <!-- Displays version and license for the software at the footer -->
                   <?php 
                         $error="";
