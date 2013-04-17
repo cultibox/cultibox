@@ -4,6 +4,7 @@ Cultibox (1.1.13) precise; urgency=low
     + Mise en place de la personnalisation des boites de dialogues d'erreur, de confirmation et de validation grâce à JQUERY
     + Mise en place du timezone en fonction de la langue selectionnée
     + Changement de place de emetteur.hex qui se trouve maintenant dans le dossier cnf
+    + Modification des scripts d'install pour prend en compte les différentes langues
     + Passage du WdCalendar à FullCalendar, un calendrier pour la gestion des évènements full Jquery-CSS
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Apr  9 09:24:50 CEST 2013
