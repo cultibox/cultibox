@@ -62,9 +62,9 @@ spanish.ContinueInstall=Una versión actual del software Cultibox parece estar ya
 
 french.SaveDatas=Voulez-vous sauvegarder la configuration de votre ancienne version afin de pouvoir la restaurer ultèrieurement si nécéssaire?
 english.SaveDatas=Do you want to save the configuration of your old Cultibox software to maybe used it to restore your preferences later?
-italian.aveDatas=Vuoi salvare la configurazione del software Cultibox vecchio forse è utilizzato per ripristinare le preferenze più tardi?
-german.aveDatas=Wollen Sie die Konfiguration Ihres alten Cultibox Software vielleicht ist es verwendet, um Ihre Einstellungen später wiederherstellen zu retten?
-spanish.aveDatas=¿Desea guardar la configuración de su software Cultibox viejo tal vez lo usó para restaurar sus preferencias más tarde?
+italian.SaveDatas=Vuoi salvare la configurazione del software Cultibox vecchio forse è utilizzato per ripristinare le preferenze più tardi?
+german.SaveDatas=Wollen Sie die Konfiguration Ihres alten Cultibox Software vielleicht ist es verwendet, um Ihre Einstellungen später wiederherstellen zu retten?
+spanish.SaveDatas=¿Desea guardar la configuración de su software Cultibox viejo tal vez lo usó para restaurar sus preferencias más tarde?
 
 
 french.CleanCache=Vous venez d'installer une nouvelle version, n'oubliez pas de supprimer le cache de votre navigateur internet pour que celle-ci soit pleinement fonctionnelle
@@ -147,12 +147,22 @@ var
         'french' :  
             begin
               Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_fr.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "UPDATE `cultibox`.`configuration` SET `LANG` = ''fr_FR'' WHERE `configuration`.`id` =1;"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
             end;
         'english' :
             begin
               Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_en.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
-              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "UPDATE `cultibox`.`configuration` SET `LANG` = ''en_GB'' WHERE `configuration`.`id` =1;"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+            end;
+         'italian' :
+            begin
+              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_it.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
+            end;
+         'german' :
+            begin
+              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_de.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
+            end;
+         'spanish' :
+            begin
+              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_es.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
             end;
          end;
      end;

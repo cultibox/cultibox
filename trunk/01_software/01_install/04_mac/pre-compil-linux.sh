@@ -41,10 +41,7 @@ case "$1" in
             cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/sql_install
             mkdir ../01_src/01_xampp/cultibox/package
             cp conf-package/takecontrol.png ../01_src/01_xampp/cultibox/package
-            cp conf-package/lgpl3_en.txt ../01_src/01_xampp/cultibox/LICENSE_en.txt
-            cp conf-package/lgpl3_fr.txt ../01_src/01_xampp/cultibox/LICENSE_fr.txt
-            cp conf-package/lgpl3_de.txt ../01_src/01_xampp/cultibox/LICENSE_de.txt
-            cp conf-package/lgpl3_it.txt ../01_src/01_xampp/cultibox/LICENSE_it.txt
+            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/LICENSE.txt
             cp conf-package/intro_* ../01_src/01_xampp/cultibox/package/
             cp conf-package/post* ../01_src/01_xampp/cultibox/package/
             cp conf-package/pre* ../01_src/01_xampp/cultibox/package/

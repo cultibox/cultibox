@@ -22,7 +22,7 @@ UPDATE `cultibox`.`plugs` SET `PLUG_POWER_MAX` = '3500' WHERE `plugs`.`id` =1;
 -- Version 1.1.7:
 UPDATE `cultibox`.`plugs` SET `PLUG_ID` = '';
 
-UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.9' WHERE `configuration`.`id` =1;
+UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.13-amd64' WHERE `configuration`.`id` =1;
 
 -- Version 1.1.8:
 ALTER TABLE `cultibox`.`configuration` DROP `LOG_TEMP_AXIS` , DROP `LOG_HYGRO_AXIS` ;
@@ -40,11 +40,11 @@ ALTER TABLE `cultibox`.`configuration` DROP `LOG_TEMP_AXIS` , DROP `LOG_HYGRO_AX
 ALTER TABLE `cultibox`.`configuration` DROP COLUMN `LANG`;
 
 -- Version 1.1.13:
-RENAME TABLE `cultibox`.`jqcalendar` TO calendar; 
+RENAME TABLE `cultibox`.`jqcalendar` TO `cultibox`.`calendar`; 
 ALTER TABLE `cultibox`.`calendar` CHANGE `Subject` `Title` VARCHAR( 1000 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
 ALTER TABLE `cultibox`.`calendar` DROP COLUMN `color`;
 ALTER TABLE `cultibox`.`calendar` DROP COLUMN `RecurringRule`;
 ALTER TABLE `cultibox`.`calendar` DROP COLUMN `Location`;
-ALTER TABLE `calendar` ADD `Color` VARCHAR( 7 ) NOT NULL DEFAULT '#000000';
+ALTER TABLE `cultibox`.`calendar` ADD `Color` VARCHAR( 7 ) NOT NULL DEFAULT '#000000';
 
 
