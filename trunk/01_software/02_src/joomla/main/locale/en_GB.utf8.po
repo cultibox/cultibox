@@ -1293,7 +1293,7 @@ msgstr "There are oldest log files to load, please use the 'import logs' button 
 # For the tooltip part:
 
 msgid "TOOLTIP_VALUE"
-msgstr "Cultibox will switch on or off<br />the plug to get this value"
+msgstr "Cultibox will switch on or off the plug to get this value"
 
 msgid "TOOLTIP_POWER"
 msgstr "The power of the equipement pluged in Watts. This is usefull if you want to calculate power consumed, cost of your installation..."
