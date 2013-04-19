@@ -15,7 +15,7 @@ mysql_select_db('cultibox');
 if((isset($sd_card))&&(!empty($sd_card))) {
         $year=date('Y');
         $sql = <<<EOF
-SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%"
+SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%" AND `External` = 0
 EOF;
         $res = mysql_query($sql);
         $data=array();
