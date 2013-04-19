@@ -9,10 +9,10 @@ Cette page vous donne quelques explications sur les différentes phases du calen
 
 = Les périodes de la lune =
 On distingue cinq révolutions différentes de la lune:
- * Révolution sidérale : Donne du point du vue de la terre, les phases ou la lune est montante / descendante.
- * Révolution anomalistique : Nous interesse pour les passages au périgée et à l'apogée.
- * Révolution draconitique : Nous permet de connaitre les noeud lunaire.
- * Révolution synodique : Cette révolution donne les [http://fr.wikipedia.org/wiki/Mois_lunaire mois lunaire]. Elle permet du point de vue de la terre de déterminer les phases croissante, décroissante, pleine lune et nouvelle lune.
+ * Révolution sidérale : Donne du point du vue de la terre, les phases ou la lune est [https://code.google.com/p/cultibox/wiki/gui_soft_cal_lunar?ts=1366372208&updated=gui_soft_cal_lunar#Montante_/_Descendante montante / descendante].
+ * Révolution anomalistique : Nous interesse pour les passages au [https://code.google.com/p/cultibox/wiki/gui_soft_cal_lunar?ts=1366372208&updated=gui_soft_cal_lunar#Périgée_/_Apogée périgée et à l'apogée].
+ * Révolution draconitique : Nous permet de connaitre les [https://code.google.com/p/cultibox/wiki/gui_soft_cal_lunar?ts=1366372208&updated=gui_soft_cal_lunar#Nœud_lunaire noeuds lunaires].
+ * Révolution synodique : Cette révolution donne les [http://fr.wikipedia.org/wiki/Mois_lunaire mois lunaire]. Elle permet du point de vue de la terre de déterminer les phases [https://code.google.com/p/cultibox/wiki/gui_soft_cal_lunar?ts=1366372208&updated=gui_soft_cal_lunar#Croissant_/_Décroissante croissante, décroissante, pleine lune et nouvelle lune].
  * Révolution tropique : [http://pgj.pagesperso-orange.fr/planetes/phaslune.htm Durée qui sépare deux passages de la Lune au point vernal (position du Soleil dans le ciel au moment de l'équinoxe de printemps)] .
 
 = Montante / Descendante =
