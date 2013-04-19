@@ -261,6 +261,11 @@ $(function () {
             <?php if("$type"=="month") { echo "tickInterval: 5 * 24 * 3600 * 1000,"; } ?>
             title: {
                text: <?php echo "'".__("$xlegend",'highchart')."'"; ?>
+            },
+            events: {
+                afterSetExtremes: function(event){
+                    $('#resetzoom').show();
+                }
             }
          },
          yAxis: [
@@ -720,10 +725,6 @@ $(function () {
                     if(chart.axes[0].series[i].type=='area') {
                         chart.yAxis[i].setExtremes($(this).val(), extremes.max);
                         showzoom=true;
-                        if( !chart.resetZoomButton ) {
-                            chart.showResetZoom();
-                        }
-                        //console.log(chart);
                     }
                 }
             }
@@ -743,10 +744,6 @@ $(function () {
                     if(chart.axes[0].series[i].type=='area') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
                         showzoom=true;
-                        if( !chart.resetZoomButton ) {
-                            chart.showResetZoom();
-                        }
-                        //console.log(chart);
                     }
                 }
             }
@@ -768,10 +765,6 @@ $(function () {
                     if(chart.axes[0].series[i].type=='spline') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
                         showzoom=true;
-                        if( !chart.resetZoomButton ) {
-                            chart.showResetZoom();
-                        }
-                        //console.log(chart);
                     }
                 }
             }
@@ -793,10 +786,6 @@ $(function () {
                     if(chart.axes[0].series[i].type=='spline') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
                         showzoom=true;
-                        if( !chart.resetZoomButton ) {
-                            chart.showResetZoom();
-                        }
-                        //console.log(chart);
                     }
                 }
             }
