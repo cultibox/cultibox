@@ -119,6 +119,12 @@
             events: "http://localhost:6891/cultibox/main/modules/json-events/json-events.php",
             
             eventDrop: function(event, delta) {
+                if(event.external) {
+                    $('#calendar').fullCalendar( 'refetchEvents' );
+                    $('#calendar').fullCalendar( 'rerenderEvents' );
+                    return false;
+                }
+
                 new_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
                 if(!event.end) {
                     event.end=event.start
@@ -143,6 +149,11 @@
 
             },
             eventResize: function( event, dayDelta, minuteDelta) { 
+                if(event.external) {
+                    $('#calendar').fullCalendar( 'refetchEvents' );
+                    $('#calendar').fullCalendar( 'rerenderEvents' );
+                    return false;
+                }
                 new_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
                 if(!event.end) {
                     event.end=event.start
