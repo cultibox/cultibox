@@ -69,7 +69,7 @@
          C'est la pleine lune.
       </content>
       <duration>1</duration>
-      <start>2014-01-16T04:54:00+00:00</start>
+      <start>2013-01-27T04:40:00+00:00</start>
       <period>0000-00-29T12:44:03</period>
    </entry>
 
@@ -83,7 +83,7 @@
          C'est la nouvelle lune.
       </content>
       <duration>1</duration>
-      <start>2014-01-30T23:16:02+00:00</start>
+      <start>2013-01-11T19:45:02+00:00</start>
       <period>0000-00-29T12:44:03</period>
    </entry>
 
@@ -99,7 +99,7 @@
          Récoltez les fleurs
       </content>
       <duration>12</duration>
-      <start>2014-03-05T12:00:00+00:00</start>
+      <start>2013-03-05T12:00:00+00:00</start>
       <period>0000-00-27T07:43:12</period>
    </entry>
 
@@ -117,7 +117,7 @@
          Enrichissez le sol
       </content>
       <duration>12</duration>
-      <start>2014-03-18T12:00:00+00:00</start>
+      <start>2013-03-18T12:00:00+00:00</start>
       <period>00000-00-27T07:43:12</period>
    </entry>
 </feed>
