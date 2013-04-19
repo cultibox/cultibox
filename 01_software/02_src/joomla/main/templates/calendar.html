@@ -83,7 +83,7 @@
                                             end: new_end,
                                             description: description,
                                             color: color,
-                                            allDay: allDay
+                                            external: external
                                         });
 
                                         if(!color) {
@@ -177,7 +177,7 @@
                      if(event.description) {
                         $("#remark").text(event.description);
                      }
-                      
+                     
                      $("#dialog_edit").dialog({
                         resizable: true,
                         width: 600,
@@ -281,6 +281,12 @@
                             "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); return false;}
                         }
                     });
+
+                     if(event.external) {
+                                    $(".ui-dialog-buttonpane button:contains('<?php echo __('EDIT_DIALOG_CALENDAR','highchart'); ?>')").attr("disabled", true).addClass("ui-state-disabled");
+                                    $(".ui-dialog-buttonpane button:contains('<?php echo __('REMOVE_DIALOG_CALENDAR','highchart'); ?>')").attr("disabled", true).addClass("ui-state-disabled");
+                     }
+
         },
             loading: function(bool) {
                 if (bool) $('#loading').show();

@@ -8,7 +8,7 @@ if((isset($_POST["id"]))&&(!empty($_POST["id"]))) {
         mysql_select_db('cultibox');
 
         $sql = <<<EOF
-DELETE FROM `calendar` WHERE `Id` = {$id}
+DELETE FROM `calendar` WHERE `Id` = {$id} AND `External` = 0
 EOF;
         $res = mysql_query($sql);
 }

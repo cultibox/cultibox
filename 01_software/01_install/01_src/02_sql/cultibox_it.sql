@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `calendar` (
   `Description` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `StartTime` datetime DEFAULT NULL,
   `EndTime` datetime DEFAULT NULL,
-  `IsAllDayEvent` smallint(6) NOT NULL,
+  `External` SMALLINT( 6 ) NOT NULL DEFAULT '0',
   `Color` varchar(7) NOT NULL DEFAULT '#4A40A4',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

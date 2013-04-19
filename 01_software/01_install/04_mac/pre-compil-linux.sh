@@ -68,14 +68,6 @@ case "$1" in
             sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-amd64' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/sql_install/update_sql.sql
 
 
-
-           #cp -R daemon ../01_src/01_xampp/cultibox/opt/lampp/
-
-           #if [ "$1" == "ubuntu64-admin" ]; then
-           #     cp conf-lampp/config.inc.php ../01_src/01_xampp/cultibox/opt/lampp/phpmyadmin/
-           #fi
-
-
             find ../01_src/01_xampp/cultibox/ -name ".svn"|xargs rm -Rf
             set +e
             ssh root@$SERVER "if [ -d /Applications/cultibox ]; then rm -Rf /Applications/cultibox; fi"
