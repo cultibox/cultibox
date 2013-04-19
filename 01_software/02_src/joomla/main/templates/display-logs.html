@@ -224,6 +224,11 @@ $(function () {
             zoomType: 'x',
             alignTicks: false,
             spacingRight: 20,
+            resetZoomButton: {
+                theme: {
+                 display: 'none'
+                }
+            },
             events: {
                load: function() {
                   <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 350, 60, 130, 50)"; ?>
@@ -682,13 +687,39 @@ $(function () {
         });
     });
 
+    $('#resetzoom').click(function() {
+        var showzoom=false;
+        for(var i=0;i<chart.yAxis.length;i++) {
+            if(chart.axes[0].series[i].type=='area') {
+                chart.yAxis[i].setExtremes(0, 100);
+                showzoom=true;
+            }
+
+            if(chart.axes[0].series[i].type=='spline') {
+                chart.yAxis[i].setExtremes(0, 5000);
+                showzoom=true;
+            }         
+        }
+
+        chart.xAxis[0].setExtremes(null, null,true, true);
+
+        if(showzoom) {
+            $('#resetzoom').hide();
+        }
+
+    });
+
+
+
     $('#min_y_axis').change(function() {    
+        var showzoom=false;
         for(var i=0;i<chart.yAxis.length;i++) {
             if($(this).val()!="") {
                 var extremes = chart.yAxis[i].getExtremes();
                 if(extremes.max>$(this).val()) {
                     if(chart.axes[0].series[i].type=='area') {
                         chart.yAxis[i].setExtremes($(this).val(), extremes.max);
+                        showzoom=true;
                         if( !chart.resetZoomButton ) {
                             chart.showResetZoom();
                         }
@@ -697,15 +728,21 @@ $(function () {
                 }
             }
         }
+
+        if(showzoom) {
+            $('#resetzoom').show();
+        }
     });
 
     $('#max_y_axis').change(function() {
+        var showzoom=false;
         for(var i=0;i<chart.yAxis.length;i++) {
             if($(this).val()!="") {
                 var extremes = chart.yAxis[i].getExtremes();
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='area') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+                        showzoom=true;
                         if( !chart.resetZoomButton ) {
                             chart.showResetZoom();
                         }
@@ -714,16 +751,23 @@ $(function () {
                 }
             }
         }
+
+        if(showzoom) {
+            $('#resetzoom').show();
+        }
+
     });
 
 
       $('#min_y_axis_power').change(function() {
+        var showzoom=false;
         for(var i=0;i<chart.yAxis.length;i++) {
             if($(this).val()!="") {
                 var extremes = chart.yAxis[i].getExtremes();
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='spline') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+                        showzoom=true;
                         if( !chart.resetZoomButton ) {
                             chart.showResetZoom();
                         }
@@ -732,16 +776,23 @@ $(function () {
                 }
             }
         }
+
+        if(showzoom) {
+            $('#resetzoom').show();
+        }
+
     });
 
 
       $('#max_y_axis_power').change(function() {
+        var showzoom=false;
         for(var i=0;i<chart.yAxis.length;i++) {
             if($(this).val()!="") {
                 var extremes = chart.yAxis[i].getExtremes();
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='spline') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+                        showzoom=true;
                         if( !chart.resetZoomButton ) {
                             chart.showResetZoom();
                         }
@@ -750,6 +801,11 @@ $(function () {
                 }
             }
         }
+
+        if(showzoom) {
+            $('#resetzoom').show();
+        }
+
     });
 
     
@@ -793,7 +849,7 @@ $(function () {
         </form>
         <?php } ?>
     </td>
-    <td class="center_log"><div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div></td>
+    <td class="center_log"><button id="resetzoom" name="button" style="display:none"><?php echo __('RESET_ZOOM'); ?></button><br /><br /><div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div></td>
     <td class="right_log">
         <?php 
              $dd=date('d');    

@@ -7,6 +7,7 @@ Cultibox (1.1.13) precise; urgency=low
     + Modification des scripts d'install pour prend en compte les différentes langues
     + Passage du WdCalendar à FullCalendar, un calendrier pour la gestion des évènements full Jquery-CSS
     + Ajout de la possibilité d'utiliser des fichiers XML au format atom pour programmer des évènements dans le calendrier
+    + Passage par un boutton exterieur pour réinitialiser le zoom de highchart...bug dans le code de highchart
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Apr  9 09:24:50 CEST 2013
 
