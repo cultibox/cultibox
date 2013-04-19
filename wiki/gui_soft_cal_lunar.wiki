@@ -5,19 +5,38 @@
 Cette page vous donne quelques explications sur les différentes phases du calendrier lunaire. Vous pouvez retrouver le calendrier lunaire dans l'onglet calendrier du logiciel.
 
 = Les périodes de la lune =
-On distingue trois "mouvements" différents de la lune.
+On distingue cinq révolutions différentes de la lune:
+ * Révolution sidérale : Donne du point du vue de la terre, les phases ou la lune est montante / descendante.
+ * Révolution anomalistique : Nous interesse pour les passages au périgée et à l'apogée.
+ * Révolution draconitique : Nous permet de connaitre les noeud lunaire.
+ * Révolution synodique : Cette révolution donne les [http://fr.wikipedia.org/wiki/Mois_lunaire mois lunaire]. Elle permet du point de vue de la terre de déterminer les phases croissante, décroissante, pleine lune et nouvelle lune.
+ * Révolution tropique : [http://pgj.pagesperso-orange.fr/planetes/phaslune.htm Durée qui sépare deux passages de la Lune au point vernal (position du Soleil dans le ciel au moment de l'équinoxe de printemps)] .
 
 == Montante / Descendante ==
-Ce cycle est la révolution anomalistique qui dure : 27 jours, 8 heures.
+Ce cycle est inscrit dans la révolution sidérale qui dure :  27 jours, 7 heures, 43 minutes et 11,5 secondes (27,321661).
+
+Voir aussi les articles suivants:
+ * [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/pourquoi-dit-on-que-lune-est-ascendante-ou-descendante,7421.html Rustica : Pourquoi dit-on que la lune est ascendante ou descendante ?]
 
 === Que faire en lune montante? ===
+
+En résumé:
+ * Semez vos graines
+ * Récoltez les fleurs
+
 Selon [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/lune-croissante-lune-montante-deux-cycles-differents-pour-jardiner,3851.html Rustica] :
  En lune montante, semez, récoltez les feuilles, les fleurs et les fruits, prélevez et greffez.
 
+Voir aussi les liens suivants:
+ * [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/que-faire-jardin-lune-montante,5452.html Rustica : Que faire au jardin en lune montante]
+
 === Que faire en lune descendante? ===
 
-Selon [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/jardiner-avec-lune-et-produits-phytosanitaires,7391.html Rustica] :
- Pour lutter contre les parasites et les maladies, il faut traiter dans la mesure du possible avec des produits naturels, faits maison ou non, en lune descendante.
+En résumé:
+ * Repiquez vos plantes
+ * Bouturez vos plantes
+ * Taillez vos plantes
+ * Enrichissez le sol
 
 Selon [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/semer-eclaircir-et-repiquer-avec-lune,7394.html Rustica] :
  On repique en lune descendante, lorsque les plantules ont deux vraies feuilles.
@@ -28,35 +47,54 @@ Selon [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/lune-croissante-
 Selon [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/quand-travailler-et-enrichir-terre-avec-lune,7438.html Rustica] :
  Enrichissez la terre avec du compost ou des engrais naturels tout au long de l’année, toujours en lune descendante.
 
-== Croissant / Décroissante ==
-Ce cycle est la révolution lunaire synodique qui dure : 29 jours 12 heures 44 minutes et 2,9 secondes (29.53058867 jours).
+Selon [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/jardiner-avec-lune-et-produits-phytosanitaires,7391.html Rustica] :
+ Pour lutter contre les parasites et les maladies, il faut traiter dans la mesure du possible avec des produits naturels, faits maison ou non, en lune descendante.
 
-Lorsque la lune est entierment visible, on parle de pleine lune. Lorsque la lune n'est plus visible, on parle de nouvelle lune.
+Voir aussi les liens suivants:
+ * [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/que-faire-jardin-lune-descendante,5458.html Rustica : Que faire au jardin en lune descendante]
+
+== Périgée / Apogée ==
+Le périgée est la position ou la lune est le plus proche de la terre. L'apogée est la position ou la lune est la plus lointaine de la terre. Ce cycle est le même que pour la lune Montante/Descendante, c'est la révolution anomalistique. La révolution complète dure : 27 jours, 13 heures, 18 minutes et 33 secondes (27,554550 jours).
 
 Calcul :http://www.uppp.free.fr/Ciel9.htm
 
+En résumé: *Ne jardinez pas* durant l'apogée et le périgée de la lune.
+
+Selon [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/lune-apogee-et-perigee,617.html Rustica] :
+ Lors de ces deux passages extrêmes, la Lune envoie des influences négatives aux plantes. Quand elle est au périgée, elle exerce une attraction beaucoup plus forte, qui provoque l’étiolement des jeunes semis. Les plantes sont fragilisées et demeurent moins robustes. Au moment où la Lune passe à l’apogée, son attraction est amoindrie. Les jeunes semis poussent moins bien et ils restent chétifs. Ils donnent par la suite des plantes qui présentent une plus grande sensibilité aux parasites ainsi qu’aux maladies.
+ Ne jardinez pas !
+ Compte tenu des influences plutôt néfastes de la Lune sur les végétaux pendant les périodes de l’année correspondant à son passage à l’apogée et au périgée, il est fortement conseillé de s’abstenir de jardiner ces jours-là.
+
+== Croissant / Décroissante ==
+Ce cycle est la révolution lunaire synodique qui dure : 29 jours 12 heures 44 minutes et 2,9 secondes (29.53058867 jours).
+
+Lorsque la lune est entierement visible, on parle de pleine lune. Lorsque la lune n'est plus visible, on parle de nouvelle lune.
+
+Le calcul des dates est disponible avec le site suivant: http://www.uppp.free.fr/Ciel9.htm
+
 === Que faire en lune Croissante? ===
+
+En résumé:
+ * Taillez vos plantes
+
 Selon [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/lune-croissante-lune-montante-deux-cycles-differents-pour-jardiner,3851.html Rustica] :
  Arracher pour conserver, tailler, cueillir et récolter en lune croissante (autrement appelée “lune jeune”).
- En lune décroissante, le jardinier ramasse pour consommer vite ou pour prolonger les parfums.
 
 Selon [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/lune-croissante-et-decroissante,616.html Rustica] :
  En lune croissante, les végétaux sont plus résistants aux maladies. Effectuez toutes les opérations qui les affaiblissent – comme la taille ou l’arrachage – pendant cette période. Les fleurs cueillies pour confectionner des bouquets tiennent plus longtemps en vase, les légumes et les fruits récoltés se conservent mieux et sur une durée plus longue.
 
 === Que faire en lune décroissante? ===
+
 Selon [http://www.rustica.fr/articles-jardin/jardiner-avec-lune/lune-croissante-et-decroissante,616.html Rustica] :
  En lune décroissante, les plantes ont une vitalité moindre, mais leur parfum, leurs couleurs et leur saveur sont exacerbés. C’est le moment idéal pour cueillir les légumes ou les fruits à consommer ou à transformer immédiatement, car leur durée de conservation est faible.
 
-== Périgée / Apogée ==
-27 jours, 13 heures, 18 minutes et 33 secondes.
+= Nœud lunaire =
+Ce cycle est inscrit dans la révolution draconitique qui dure :27 jours, 5 heures, 5 minutes et 35,8 secondes (27,212221 jours).
 
-Calcul :http://www.uppp.free.fr/Ciel9.htm
+En résumé:
+ * Ne rien faire durant les +/- 4 heures autour du noeud lunaire.
 
-Recommandation: 
-Ne pas jardiner.
+Voir aussi les liens suivants:
+ * [http://fr.ekopedia.org/Calendrier_(lunaire)#Principe_2_:_LUNE_montante_ou_descendante Ekopedia : Nœud lunaire]
+ * [http://fr.wikipedia.org/wiki/N%C5%93ud_lunaire Wikipedia : Nœud lunaire]
 
-= nœud lunaire =
-http://fr.wikipedia.org/wiki/N%C5%93ud_lunaire
-Ce cylce est la révolution draconitique qui dure :27 jours, 5 heures, 5 minutes et 36 secondes (27.21 jours).
-Recommandation: 
-Ne rien faire durant les +/- 4 heures autour du noeud lunaire.
