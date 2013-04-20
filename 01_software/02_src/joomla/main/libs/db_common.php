@@ -32,7 +32,8 @@ function db_priv_start() {
 // RET none
 function db_priv_end($dbconn) {
    if($dbconn) {
-      $dbconn->disconnect();
+      $dbconn->freeResult();
+      $dbconn->close();
       return 1;
    }
    return 0;
@@ -46,7 +47,6 @@ function db_priv_end($dbconn) {
 //    $out   error or warning message 
 // RET none
 function db_update_logs($arr,&$out) {
-   $db = db_priv_start();
    $index=0;
    $return=1;
    $sql = <<<EOF
@@ -63,9 +63,14 @@ EOF;
       }
    }
 
+   $db = db_priv_start();
    $db->setQuery($sql);
    $db->query();
+   if(!db_priv_end($db)) {
+    $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
    $ret=$db->getErrorMsg();
+
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_UPDATE_SQL').$ret;
@@ -73,9 +78,6 @@ EOF;
          $out[]=__('ERROR_UPDATE_SQL');
       }
       $return=0; 
-   }
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');   
    }
    return $return;
 }
@@ -88,7 +90,6 @@ EOF;
 //    $out   error or warning message 
 // RET none
 function db_update_power($arr,&$out) {
-   $db = db_priv_start();
    $index=0;
    $return=1;
    $sql = <<<EOF
@@ -105,8 +106,12 @@ EOF;
       }
    }
 
+   $db = db_priv_start();
    $db->setQuery($sql);
    $db->query();
+   if(!db_priv_end($db)) {
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
@@ -116,10 +121,6 @@ EOF;
       }
       $return=0;
    }
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
-   }
-
    return $return;
 }
 // }}}
@@ -132,21 +133,31 @@ EOF;
 //    $startdate   date (format YYYY-MM-DD) to check what datas to select
 //    $sensor       the number of the sensor to be displayed
 //    $fake   to select fake or real logs
+//    $limit    limit number of row return from sql request
 //    $out      errors or warnings messages
 // RET none
-function get_graph_array(&$res,$key,$startdate,$sensor=1,$fake="False",&$out) {
-   $db = db_priv_start();
+function get_graph_array(&$res,$key,$startdate,$sensor=1,$fake="False",$limit=0,&$out) {
+   if($limit!=0) {
+        $sql_limit="LIMIT ".$limit;
+   } else {
+        $sql_limit="";
+   }
     
    if(strcmp("$sensor","all")==0) {
         $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" GROUP BY time_catch ORDER BY time_catch ASC
+SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" GROUP BY time_catch ORDER BY time_catch ASC {$sql_limit}
 EOF;
 } else {
         $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" AND sensor_nb LIKE "{$sensor}" GROUP BY time_catch ORDER BY time_catch ASC
+SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" AND sensor_nb LIKE "{$sensor}" GROUP BY time_catch ORDER BY time_catch ASC {$sql_limit}
 EOF;
 }
+   echo "$sql <br />";
+   $db = db_priv_start();
    $db->setQuery($sql);
+   if(!db_priv_end($db)) {
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
    $res = $db->loadAssocList();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
@@ -155,10 +166,6 @@ EOF;
       } else {
          $out[]=__('ERROR_SELECT_SQL');
       }
-   }
-
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION'); 
    }
 }
 // }}}
@@ -172,23 +179,22 @@ EOF;
 //Note: if to select a value is limited to 1. Only one configuration is available,
 //there isn't a user configuration management yet.
 function get_configuration($key,&$out="") {
-        $db = db_priv_start();
         $sql = <<<EOF
 SELECT {$key} FROM `configuration` WHERE id = 1
 EOF;
+   $db = db_priv_start();
    $db->setQuery($sql);
-        $res = $db->loadResult();
+   $res = $db->loadResult();
    $ret=$db->getErrorMsg();
+   if(!db_priv_end($db)) {
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_SELECT_SQL').$ret;
       } else {
          $out[]=__('ERROR_SELECT_SQL');
       }
-   }
-   
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
    return $res;
 }
@@ -199,11 +205,14 @@ EOF;
 // IN $key   the key selectable from the database 
 // RET $res   value of the key   
 function get_informations($key) {
-    $db = db_priv_start();
         $sql = <<<EOF
 SELECT {$key} FROM `informations` WHERE id = 1
 EOF;
+   $db = db_priv_start();
    $db->setQuery($sql);
+   if(!db_priv_end($db)) {
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
    $res = $db->loadResult();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
@@ -214,9 +223,6 @@ EOF;
       }
    }
 
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
-   }
    return $res;
 }
 // }}}
@@ -231,13 +237,23 @@ EOF;
 //Note: if to select a value is limited to 1. Only one configuration is available,
 //there isn't a user configuration management yet.
 function insert_configuration($key,$value,&$out) {
-   $db = db_priv_start();
    $sql = <<<EOF
 UPDATE `configuration` SET  {$key} = "{$value}" WHERE id = 1
 EOF;
+   $db = db_priv_start();
    $db->setQuery($sql);
    $db->query();
+   if(!db_priv_end($db)) {
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
    $ret=$db->getErrorMsg();
+   if((isset($ret))&&(!empty($ret))) {
+      if($GLOBALS['DEBUG_TRACE']) {
+         $out[]=__('ERROR_UPDATE_SQL').$ret;
+      } else {
+         $out[]=__('ERROR_UPDATE_SQL');
+      }
+   }
 }
 // }}}
 
@@ -250,13 +266,14 @@ EOF;
 //Note: if to select a value is limited to 1. Only one configuration is available,
 //there isn't a user configuration management yet.
 function insert_informations($key,$value) {
-   $db = db_priv_start();
    $sql = <<<EOF
 UPDATE `informations` SET  {$key} = "{$value}" WHERE id = 1
 EOF;
+   $db = db_priv_start();
    $db->setQuery($sql);
    $db->query();
    $ret=$db->getErrorMsg();
+   db_priv_end($db);
 }
 // }}}
 
@@ -268,11 +285,14 @@ EOF;
 //    $out      errors or warnings messages
 // RET $res   value result for the plug configuration entrie
 function get_plug_conf($key,$id,&$out) {
-   $db = db_priv_start();
    $sql = <<<EOF
 SELECT {$key} FROM `plugs` WHERE id = {$id}
 EOF;
+   $db = db_priv_start();
    $db->setQuery($sql);
+   if(!db_priv_end($db)) {
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
    $res = $db->loadResult();
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
@@ -283,11 +303,6 @@ EOF;
       }
 
    }
-
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
-   }
-   
    return $res;
 }
 // }}}
@@ -301,12 +316,15 @@ EOF;
 //    $out      errors or warnings messages
 // RET none
 function insert_plug_conf($key,$id,$value,&$out) {
-   $db = db_priv_start();
    $sql = <<<EOF
 UPDATE `plugs` SET  {$key} = "{$value}" WHERE id = {$id}
 EOF;
+   $db = db_priv_start();
    $db->setQuery($sql);
    $db->query();
+   if(!db_priv_end($db)) {
+      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   }
    $ret=$db->getErrorMsg();
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
@@ -314,10 +332,6 @@ EOF;
       } else {
          $out[]=__('ERROR_UPDATE_SQL');
       }
-   }
-
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
 }
 // }}}
@@ -329,15 +343,18 @@ EOF;
 //    $out      errors or warnings messages
 // RET return an array containing plugid and its name
 function get_plugs_infos($nb=0,&$out) {
-        $db = db_priv_start();
         $sql = <<<EOF
 SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`,`PLUG_REGUL`
 FROM `plugs`
 WHERE id <= {$nb}
 ORDER by id ASC
 EOF;
+        $db = db_priv_start();
         $db->setQuery($sql);
         $db->query();
+        if(!db_priv_end($db)) {
+                $out[]=__('PROBLEM_CLOSING_CONNECTION');
+        }
         $res = $db->loadAssocList();
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
@@ -346,10 +363,6 @@ EOF;
             } else {
                $out[]=__('ERROR_SELECT_SQL');
            }
-        }
-
-        if(!db_priv_end($db)) {
-                $out[]=__('PROBLEM_CLOSING_CONNECTION');
         }
         return $res;
 }
@@ -364,13 +377,16 @@ EOF;
 function get_data_plug($selected_plug="",&$out) {
    $res="";
    if((isset($selected_plug))&&(!empty($selected_plug))) {
-      $db = db_priv_start();
       $sql = <<<EOF
 SELECT  `time_start`,`time_stop`,`value` FROM `programs` WHERE plug_id = {$selected_plug} ORDER by time_start ASC
 EOF;
-           $db->setQuery($sql);
-           $db->query();
-           $res=$db->loadAssocList();
+      $db = db_priv_start();
+      $db->setQuery($sql);
+      $db->query();
+      if(!db_priv_end($db)) {
+        $out[]=__('PROBLEM_CLOSING_CONNECTION');
+      }
+      $res=$db->loadAssocList();
       $ret=$db->getErrorMsg();
            if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
@@ -379,11 +395,6 @@ EOF;
                       $out[]=__('ERROR_SELECT_SQL');
                 }
                 return 0;
-           }
-
-           if(!db_priv_end($db)) {
-                   $out[]=__('PROBLEM_CLOSING_CONNECTION');
-         return 0;   
            }
    }
    return $res;
@@ -401,8 +412,6 @@ EOF;
 function get_data_power($date="",$dateend="",$id=0,&$out) {
    $res="";
    if((isset($date))&&(!empty($date))) {
-      $db = db_priv_start();
-
       if(strcmp("$id","all")==0) {
          if((!isset($dateend))||(empty($dateend))) {
       $sql = <<<EOF
@@ -424,8 +433,13 @@ SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND 
 EOF;
       }
 }
+           $db = db_priv_start();
            $db->setQuery($sql);
            $db->query();
+           if(!db_priv_end($db)) {
+                  $out[]=__('PROBLEM_CLOSING_CONNECTION');
+                  return 0;
+           }
            $res=$db->loadAssocList();
            $ret=$db->getErrorMsg();
            if((isset($ret))&&(!empty($ret))) {
@@ -436,11 +450,6 @@ EOF;
                 }
                 return 0;
           }
-
-          if(!db_priv_end($db)) {
-                  $out[]=__('PROBLEM_CLOSING_CONNECTION');
-                  return 0;
-          }
    }
 
    
@@ -448,6 +457,7 @@ EOF;
         $sql = <<<EOF
 SELECT `PLUG_POWER` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True"
 EOF;
+        $db = db_priv_start();
         $db->setQuery($sql);
         $db->query();
         $res_power=$db->loadAssocList();
@@ -577,7 +587,6 @@ function get_theorical_power($id=0,$type="",&$out,&$error=0) {
    }
 
    $res="";
-   $db = db_priv_start();
    if(strcmp("$id","all")==0) {
           $sql = <<<EOF
 SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <= ${nb_plugs} AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") 
@@ -587,7 +596,7 @@ EOF;
 SELECT * FROM `programs` WHERE `plug_id` = "{$id}" AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True")
 EOF;
    }
-  
+   $db = db_priv_start();
    $db->setQuery($sql);
    $db->query();
    $res=$db->loadAssocList();
@@ -607,6 +616,7 @@ EOF;
    }
 
    if(count($res)>0) {
+      $db = db_priv_start();
       $sql = <<<EOF
 SELECT `PLUG_POWER`,`PLUG_ENABLED` FROM `plugs` WHERE `id` <= ${nb_plugs}
 EOF;
@@ -1276,10 +1286,10 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 //    $out              error or warning message
 // RET false is there is an error, true else
 function insert_program_value($plug_id,$start_time,$end_time,$value,&$out) {
-   $db = db_priv_start();
    $sql = <<<EOF
 INSERT INTO `programs`(`plug_id`,`time_start`,`time_stop`, `value`) VALUES('{$plug_id}',"{$start_time}","{$end_time}",'{$value}')
 EOF;
+        $db = db_priv_start();
         $db->setQuery($sql);
         $db->query();
         $ret=$db->getErrorMsg();
@@ -1307,11 +1317,11 @@ EOF;
 //    $out              error or warning message
 // RET false if an error occured, true else
 function clean_program($plug_id,&$out) {
-   $db = db_priv_start();
         $sql = <<<EOF
 DELETE FROM `programs` WHERE plug_id = {$plug_id}
 EOF;
-   $db->setQuery($sql);
+        $db = db_priv_start();
+        $db->setQuery($sql);
         $db->query();
         $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
@@ -1340,10 +1350,10 @@ EOF;
 //    $out         error or warning message
 // RET none
 function export_program($id,&$out) {
-       $db = db_priv_start();
        $sql = <<<EOF
 SELECT * FROM `programs` WHERE plug_id = {$id}
 EOF;
+       $db = db_priv_start();
        $db->setQuery($sql);
        $res = $db->loadAssocList();
        $ret=$db->getErrorMsg();
@@ -1374,10 +1384,10 @@ function export_table_csv($name="",&$out) {
        if(strcmp("$name","")==0) return 0;
 
        $file="tmp/$name.csv";
-       $db = db_priv_start();
        $sql_name = <<<EOF
 SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME = '{$name}'
 EOF;
+       $db = db_priv_start();
        $db->setQuery($sql_name);
        $res_name = $db->loadAssocList();
        $ret_name=$db->getErrorMsg();
@@ -1394,6 +1404,10 @@ EOF;
        $db->setQuery($sql);
        $res = $db->loadAssocList();
        $ret=$db->getErrorMsg();
+       if(!db_priv_end($db)) {
+            $out[]=__('PROBLEM_CLOSING_CONNECTION');
+        }
+
 
        if($f=fopen("$file","w+")) {
             $line="";
@@ -1432,25 +1446,29 @@ EOF;
 
 
 // {{{ check_export_table_csv()
-// ROLE check that a tabler is empty or not
+// ROLE check that a table is empty or not
 // IN $name       name of the table to be exported
 //    $out         error or warning message
 // RET false is table is empty, true else
 function check_export_table_csv($name="",&$out) {
        if(strcmp("$name","")==0) return false;
 
-       $db = db_priv_start();
-
         if(strcmp("$name","logs")==0) {
             $sql = <<<EOF
-SELECT * FROM `{$name}` WHERE `fake_log` LIKE "False";
+SELECT * FROM `{$name}` WHERE `fake_log` LIKE "False" LIMIT 1;
 EOF;
        } else {
             $sql = <<<EOF
-SELECT * FROM `{$name}`;
+SELECT * FROM `{$name}` LIMIT 1;
 EOF;
        }
+       $db = db_priv_start();
        $db->setQuery($sql);
+       if(!db_priv_end($db)) {
+        $out[]=__('PROBLEM_CLOSING_CONNECTION');
+       }
+
+
        $res = $db->loadAssocList();
        $ret=$db->getErrorMsg();
 
@@ -1558,10 +1576,10 @@ function optimize_program($arr) {
 function create_plugconf_from_database($nb=0,&$out) {
    $second_regul=get_configuration("SECOND_REGUL",$out);
    if($nb>0) {
-      $db = db_priv_start();
       $sql = <<<EOF
 SELECT * FROM `plugs` WHERE id <= {$nb}
 EOF;
+      $db = db_priv_start();
       $db->setQuery($sql);
       $res = $db->loadAssocList();
       $ret=$db->getErrorMsg();
@@ -1798,6 +1816,9 @@ EOF;
         $db->setQuery($sql);
         $res = $db->loadAssocList();
         $ret=$db->getErrorMsg();
+        if(!db_priv_end($db)) {
+            $out[]=__('PROBLEM_CLOSING_CONNECTION');
+        }
         if((isset($ret))&&(!empty($ret))) {
            if($GLOBALS['DEBUG_TRACE']) {
                $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -1996,6 +2017,7 @@ EOF;
            $db->setQuery($sql);
            $res = $db->loadAssocList();
            $ret=$db->getErrorMsg();
+           db_priv_end($db);
       if(!isset($res)||(empty($res))) {
          return false;
       } else {
@@ -2013,10 +2035,10 @@ EOF;
 // IN  $out       warnings or errors messages 
 // RET none
 function reset_plug_identificator(&$out) {
-           $db = db_priv_start();
            $sql = <<<EOF
 UPDATE `plugs` SET  `PLUG_ID` = ""
 EOF;
+           $db = db_priv_start();
            $db->setQuery($sql);
            $db->query();
            $ret=$db->getErrorMsg();
@@ -2073,7 +2095,6 @@ function generate_program_from_file($file="",$plug,&$out) {
 // RET  0 is an error occured, 1 else
 function reset_log($table="",$fake=0,&$out) {
     if(strcmp("$table","")==0) return 0;
-    $db = db_priv_start();
     $error=1;
 if($fake==0) {
     $sql = <<<EOF
@@ -2085,6 +2106,7 @@ DELETE FROM `{$table}` WHERE `fake_log` LIKE "False"
 EOF;
 }
 
+           $db = db_priv_start();
            $db->setQuery($sql);
            $db->query();
            $ret=$db->getErrorMsg();
@@ -2113,10 +2135,10 @@ EOF;
 // IN   out     errors or warnings messages
 // RET false if an error occured, true else
 function reset_calendar(&$out) {
-   $db = db_priv_start();
    $sql = <<<EOF
 DELETE FROM  `calendar`;
 EOF;
+   $db = db_priv_start();
    $db->setQuery($sql);
    $db->query();
    $ret=$db->getErrorMsg();
@@ -2143,11 +2165,10 @@ EOF;
 //    $res      return array containing data
 // RET none 
 function get_historic_value(&$res,&$out) {
-    $db = db_priv_start();
     $sql = <<<EOF
 SELECT * from `historic` ORDER by `timestamp` DESC LIMIT 0,100 
 EOF;
-
+   $db = db_priv_start();
    $db->setQuery($sql);
    $res=$db->loadAssocList();
    $ret=$db->getErrorMsg();
