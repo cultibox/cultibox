@@ -10,6 +10,7 @@ if (!isset($_SESSION)) {
         db_common.php : manage database requests
         utilfunc.php  : manage variables and files manipulations
 */
+
 require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
@@ -407,7 +408,8 @@ if($load_log) {
     }
 }
 
-
+$empty_log=check_export_table_csv("logs",$main_error);
+$empty_power=check_export_table_csv("power",$main_error);
 
 //Checking values entered by user:
 if("$type"=="days") {
@@ -458,15 +460,12 @@ if("$type" == "days") {
       $styear=substr($startday, 0, 4);
       $stmonth=substr($startday, 5, 2)-1;
       $stday=substr($startday, 8, 2);
-     
-      get_graph_array($check_tmp,"temperature/100","%%","all","False",$main_error);
-      get_graph_array($check_hum,"humidity/100","%%","all","False",$main_error);
 
-      if((count($check_tmp)>0)||((count($check_hum)>0))||(!empty($datap))||(!empty($data))) {
+      if((count($empty_log)>0)||(!empty($datap))||(!empty($data))) {
 
         if(strcmp("$select_sensor","all")!=0) {
-            get_graph_array($temperature,"temperature/100",$startday,$select_sensor,"False",$main_error);
-            get_graph_array($humidity,"humidity/100",$startday,$select_sensor,"False",$main_error);
+            get_graph_array($temperature,"temperature/100",$startday,$select_sensor,"False","0",$main_error);
+            get_graph_array($humidity,"humidity/100",$startday,$select_sensor,"False","0",$main_error);
 
             if(!empty($temperature)) {
                 $data_temp=get_format_graph($temperature,"log");
@@ -483,8 +482,8 @@ if("$type" == "days") {
             $humi_err=false;
             $temp_err=false;
             for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
-                get_graph_array($temperature,"temperature/100",$startday,$i,"False",$main_error);
-                get_graph_array($humidity,"humidity/100",$startday,$i,"False",$main_error);
+                get_graph_array($temperature,"temperature/100",$startday,$i,"False","0",$main_error);
+                get_graph_array($humidity,"humidity/100",$startday,$i,"False","0",$main_error);
     
 
                 if(!empty($temperature)) {
@@ -509,7 +508,7 @@ if("$type" == "days") {
             }
         }
       } else {
-        get_graph_array($temperature,"temperature/100","%%","1","True",$main_error);
+        get_graph_array($temperature,"temperature/100","%%","1","True","0",$main_error);
         $main_error[]=__('EMPTY_TEMPERATURE_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
 
         if(!empty($temperature)) {
@@ -517,7 +516,7 @@ if("$type" == "days") {
           $fake_log=true;
         } 
 
-        get_graph_array($humidity,"humidity/100","%%","1","True",$main_error);
+        get_graph_array($humidity,"humidity/100","%%","1","True","0",$main_error);
         $main_error[]=__('EMPTY_HUMIDITY_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
 
         if(!empty($humidity)) {
@@ -527,6 +526,7 @@ if("$type" == "days") {
      }
      $next=1;
    } 
+
 } else {
    if($check_format) {
       $nb = date('t',mktime(0, 0, 0, $startmonth, 1, $startyear)); 
@@ -535,8 +535,8 @@ if("$type" == "days") {
             $i="0$i";
          }
          $ddate="$startyear-$startmonth-$i";
-         get_graph_array($temperature,"temperature/100","$ddate",$select_sensor,"False",$main_error);
-         get_graph_array($humidity,"humidity/100","$ddate",$select_sensor,"False",$main_error);
+         get_graph_array($temperature,"temperature/100","$ddate",$select_sensor,"False","0",$main_error);
+         get_graph_array($humidity,"humidity/100","$ddate",$select_sensor,"False","0",$main_error);
 
          if("$data_temp" != "" ) {
             $data_temp="$data_temp, ".get_format_graph($temperature,"log");
@@ -568,8 +568,6 @@ if("$type" == "days") {
       $next=20;
    } 
 }
-
-
 
 $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
 $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$main_error);
@@ -662,14 +660,6 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
 }
 
 
-//Check empty table for export process:
-$empty_log=check_export_table_csv("logs",$main_error);
-$empty_power=check_export_table_csv("power",$main_error);
-
-
-
 //Display the logs template
 include('main/templates/display-logs.html');
-
-
 ?>

@@ -27,16 +27,13 @@ chown -R nobody /Applications/cultibox/xamppfiles/var/mysql
 chmod -R 775 /Applications/cultibox/xamppfiles/var/mysql
 
 /Applications/XAMPP/xamppfiles/xampp restart
-sleep 5
-echo "... OK!"
+sleep 5 
+echo "... OK"
 if [ ! -d /tmp/cultibox_backup/mysql ]; then
     echo "  * Configuring your Cultibox software..."
     /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h localhost password cultibox
-    sleep 5
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/user_cultibox.sql
-    sleep 2
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/joomla.sql
-    sleep 2
     lang=`defaults read /Library/Preferences/.GlobalPreferences AppleLanguages| tr -d [:space:] | cut -c2-3`
     if [ "$lang" == "En" ]; then
         /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_en.sql
@@ -51,21 +48,18 @@ if [ ! -d /tmp/cultibox_backup/mysql ]; then
     else
 	    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_en.sql
     fi
-    sleep 2
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/fake_log.sql
-    echo "... OK!"
+    echo "... OK"
 else
     echo "  * Upgrading the Cultibox software configuration..."
     if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
         /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
-        sleep 2
     fi
     /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
-    sleep 2
     /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
     rm -Rf /tmp/cultibox_backup
     rm -f /Applications/cultibox/xamppfiles/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
-    echo "... OK!"
+    echo "... OK"
 fi
 
 echo "  * Installing CultiBox as a service..."
@@ -73,8 +67,8 @@ mv /Applications/cultibox/package/cultibox_apache.plist /System/Library/LaunchDa
 mv /Applications/cultibox/package/cultibox_mysql.plist /System/Library/LaunchDaemons/
 chown root:wheel /System/Library/LaunchDaemons/cultibox_*.plist
 chmod 644 /System/Library/LaunchDaemons/cultibox_*.plist
-echo "... OK!"
+echo "... OK"
 
 echo "  * Restarting the CultiBox interface..."
 /Applications/XAMPP/xamppfiles/xampp restart
-echo "... OK!"
+echo "... OK"
