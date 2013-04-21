@@ -7,9 +7,7 @@ require_once('../../../main/libs/utilfunc.php');
 $sd_card=$_POST['sd_card'];
 $main_error=array();
 
-$link = mysql_connect('localhost','cultibox','cultibox');
-if (!$link) { die('Could not connect: ' . mysql_error()); }
-mysql_select_db('cultibox');
+$db = new PDO('mysql:host=localhost;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
 
 // Part for the calendar: if a cultibox SD card is present, the 'calendar' is updated into this SD card
 if((isset($sd_card))&&(!empty($sd_card))) {
@@ -17,9 +15,8 @@ if((isset($sd_card))&&(!empty($sd_card))) {
         $sql = <<<EOF
 SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%" AND `External` = 0
 EOF;
-        $res = mysql_query($sql);
         $data=array();
-        while($val = mysql_fetch_array($res, MYSQL_ASSOC)) {
+        foreach($db->query("$sql") as $val) {
          $s=array();
          $desc=array();
          $line="";
@@ -153,7 +150,7 @@ EOF;
          unset($s);
       }
 
-
+    $db=null;
     if(isset($sd_card)&&(!empty($sd_card))) {
       if(count($data)>0) {
          write_calendar($sd_card,$data,$main_error);

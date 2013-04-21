@@ -4,6 +4,10 @@ if (!isset($_SESSION)) {
    session_start();
 }
 
+// Compute page time loading for debug option
+$start_load = getmicrotime();
+
+
 
 /* Libraries requiered: 
         db_common.php : manage database requests
@@ -63,7 +67,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 
 // Reset the historic:
 if((!empty($reset_historic))&&(isset($reset_historic))) {
-    if(reset_log("historic","0",$main_error)) {
+    if(reset_log("historic",$main_error)) {
         $main_info[]=__('VALID_DELETE_HISTORIC');
         $pop_up_message=popup_message(__('VALID_DELETE_HISTORIC'));
         set_historic_value(__('VALID_DELETE_HISTORIC'),"histo_info",$main_error);
@@ -155,5 +159,18 @@ if(strcmp("$update","True")==0) {
 
 //Display the historic template
 include('main/templates/historic.html');
+
+
+//Compute time loading for debug option
+$end_load = getmicrotime();
+
+if($GLOBALS['DEBUG_TRACE']) {
+    echo __('GENERATE_TIME').": ".round($end_load-$start_load, 3) ." s.<br />";
+    echo "---------------------------------------";
+    aff_variables();
+    echo "---------------------------------------<br />";
+    memory_stat();
+}
+
 
 ?>

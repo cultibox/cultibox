@@ -1,5 +1,8 @@
 <?php
 
+// Compute page time loading for debug option
+$start_load = getmicrotime();
+
 if (!isset($_SESSION)) {
    session_start();
 }
@@ -157,7 +160,7 @@ if(strcmp("$update","True")==0) {
 
 
 if((isset($reset))&&(!empty($reset))) {
-    if(reset_calendar($main_error)) {
+    if(reset_log("calendar",$main_error)) {
         $main_info[]=__('VALID_DELETE_CALENDAR');
         $pop_up_message=$pop_up_message.popup_message(__('VALID_DELETE_CALENDAR'));
         set_historic_value(__('VALID_DELETE_CALENDAR')." (".__('CALENDAR_PAGE').")","histo_info",$main_error);
@@ -168,5 +171,17 @@ if((isset($reset))&&(!empty($reset))) {
 
 //Display the calendar template
 include('main/templates/calendar.html');
+
+//Compute time loading for debug option
+$end_load = getmicrotime();
+
+if($GLOBALS['DEBUG_TRACE']) {
+    echo __('GENERATE_TIME').": ".round($end_load-$start_load, 3) ." s.<br />";
+    echo "---------------------------------------";
+    aff_variables();
+    echo "---------------------------------------<br />";
+    memory_stat();
+}
+
 
 ?>

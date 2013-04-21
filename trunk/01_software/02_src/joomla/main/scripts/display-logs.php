@@ -1,6 +1,10 @@
 <?php
 
 
+// Compute page time loading for debug option
+$start_load = getmicrotime();
+
+
 if (!isset($_SESSION)) {
 	session_start();
 }
@@ -122,7 +126,7 @@ if(isset($_SESSION['import_log'])) {
 
 //Reset log from the reset button
 if(!empty($reset_log)) { 
-    if(reset_log("logs","1",$main_error)) {
+    if(reset_log("logs",$main_error)) {
         $main_info[]=__('VALID_DELETE_LOGS');
         $pop_up_message=popup_message(__('VALID_DELETE_LOGS'));
         set_historic_value(__('VALID_DELETE_LOGS')." (".__('LOGS_PAGE').")","histo_info",$main_error);
@@ -131,7 +135,7 @@ if(!empty($reset_log)) {
 
 //Reset power from the reset button
 if(!empty($reset_log_power)) {
-    if(reset_log("power","0",$main_error)) {
+    if(reset_log("power",$main_error)) {
         $main_info[]=__('VALID_DELETE_LOGS');
         $pop_up_message=$pop_up_message.popup_message(__('VALID_DELETE_LOGS'));       
         set_historic_value(__('VALID_DELETE_LOGS')." (".__('LOGS_PAGE').")","histo_info",$main_error);
@@ -141,7 +145,7 @@ if(!empty($reset_log_power)) {
 
 if((isset($export_log))&&(!empty($export_log))) {
      export_table_csv("logs",$main_error);
-     $file="tmp/logs.csv";
+    $file="tmp/logs.csv";
      if (($file != "") && (file_exists("./$file"))) {
         $size = filesize("./$file");
         header("Content-Type: application/force-download; name=\"$file\"");
@@ -569,6 +573,7 @@ if("$type" == "days") {
    } 
 }
 
+
 $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
 $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$main_error);
 $color_power=get_configuration("COLOR_POWER_GRAPH",$main_error);
@@ -662,4 +667,16 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
 
 //Display the logs template
 include('main/templates/display-logs.html');
+
+//Compute time loading for debug option
+$end_load = getmicrotime();
+
+if($GLOBALS['DEBUG_TRACE']) {
+    echo __('GENERATE_TIME').": ".round($end_load-$start_load, 3) ." s.<br />";
+    echo "---------------------------------------";
+    aff_variables();
+    echo "---------------------------------------<br />";
+    memory_stat();
+}
+
 ?>

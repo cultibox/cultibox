@@ -1,8 +1,6 @@
 <?php
 
-$link = mysql_connect('localhost','cultibox','cultibox');
-if (!$link) { die('Could not connect: ' . mysql_error()); }
-mysql_select_db('cultibox');
+$db = new PDO('mysql:host=localhost;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
 
 
 // Initializes a container array for all of the calendar events
@@ -14,9 +12,7 @@ $sql = <<<EOF
 SELECT * FROM `calendar`;
 EOF;
 
-
-$res = mysql_query($sql);
-while($row = mysql_fetch_array($res, MYSQL_ASSOC)) {
+foreach($db->query("$sql") as $row) {
         $event[]=array(
                         "id" => $row['Id'],
                         "title" => utf8_encode($row['Title']),
@@ -27,6 +23,7 @@ while($row = mysql_fetch_array($res, MYSQL_ASSOC)) {
                         "external" => 0
             );
 }
+$db=null;
 
 
 if ($handle = opendir('../../xml')) {

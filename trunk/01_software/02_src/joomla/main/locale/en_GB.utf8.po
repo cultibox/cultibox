@@ -1383,3 +1383,10 @@ msgid "TOOLTIP_EXPORT_POWER_CSV"
 msgstr "Export you power informations into a file in CSV format"
 
 
+#For the debug part:
+msgid "GENERATE_TIME"
+msgstr "Generate in"
+
+
+
+
