@@ -137,6 +137,9 @@ EOF;
 //    $out      errors or warnings messages
 // RET none
 function get_graph_array(&$res,$key,$startdate,$sensor=1,$fake="False",$limit=0,&$out) {
+   $startdate=str_replace("-","",$startdate);
+   $startdate=substr($startdate,2,8);
+
    if($limit!=0) {
         $sql_limit="LIMIT ".$limit;
    } else {
@@ -145,14 +148,14 @@ function get_graph_array(&$res,$key,$startdate,$sensor=1,$fake="False",$limit=0,
     
    if(strcmp("$sensor","all")==0) {
         $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" GROUP BY time_catch ORDER BY time_catch ASC {$sql_limit}
+SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate}%" AND fake_log LIKE "{$fake}" GROUP BY timestamp ORDER BY timestamp ASC {$sql_limit}
 EOF;
 } else {
         $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE date_catch LIKE "{$startdate}" AND fake_log LIKE "{$fake}" AND sensor_nb LIKE "{$sensor}" GROUP BY time_catch ORDER BY time_catch ASC {$sql_limit}
+SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate}%" AND fake_log LIKE "{$fake}" AND sensor_nb LIKE "{$sensor}" GROUP BY timestamp ORDER BY timestamp ASC {$sql_limit}
 EOF;
 }
-   echo "$sql <br />";
+
    $db = db_priv_start();
    $db->setQuery($sql);
    if(!db_priv_end($db)) {
@@ -411,25 +414,37 @@ EOF;
 // RET data power formated for highchart
 function get_data_power($date="",$dateend="",$id=0,&$out) {
    $res="";
+   $date=str_replace("-","",$date);
+   $date=substr($date,2,8);
+
    if((isset($date))&&(!empty($date))) {
       if(strcmp("$id","all")==0) {
          if((!isset($dateend))||(empty($dateend))) {
-      $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by time_catch ASC, plug_number ASC
+            $sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by timestamp ASC, plug_number ASC
 EOF;
          } else {
+         $date=$date."00000000";
+         $dateend=str_replace("-","",$dateend);
+         $dateend=substr($dateend,2,8);
+         $dateend=$dateend."99999999";
+         
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True")
+SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True")
 EOF;
 }
       } else {
          if((!isset($dateend))||(empty($dateend))) {
-      $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch = "{$date}" AND `plug_number` = "{$id}" ORDER by time_catch ASC, plug_number ASC
+            $sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` = "{$id}" ORDER by timestamp ASC, plug_number ASC
 EOF;
       } else {
-      $sql = <<<EOF
-SELECT  * FROM `power` WHERE date_catch BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}" 
+            $date=$date."00000000";
+            $dateend=str_replace("-","",$dateend);
+            $dateend=substr($dateend,2,8);
+            $dateend=$dateend."99999999";
+            $sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}" 
 EOF;
       }
 }
@@ -1391,55 +1406,50 @@ EOF;
        $db->setQuery($sql_name);
        $res_name = $db->loadAssocList();
        $ret_name=$db->getErrorMsg();
-
-        if(strcmp("$name","logs")==0) {
-            $sql = <<<EOF
-SELECT * FROM `{$name}` WHERE `fake_log` LIKE "False";
-EOF;
-       } else {
-            $sql = <<<EOF
-SELECT * FROM `{$name}`;
-EOF;
-       }
-       $db->setQuery($sql);
-       $res = $db->loadAssocList();
-       $ret=$db->getErrorMsg();
        if(!db_priv_end($db)) {
             $out[]=__('PROBLEM_CLOSING_CONNECTION');
         }
 
 
-       if($f=fopen("$file","w+")) {
-            $line="";
+        if(is_file($file)) {
+            unlink($file);
+        }
+        $os=php_uname('s');
+        switch($os) {
+                case 'Linux':
+                        exec("/opt/lampp/bin/mysqldump -u cultibox -pcultibox -t -T tmp/ cultibox $name --fields-enclosed-by=\\\" --fields-terminated-by=,");
+                        break;
+
+                case 'Mac':
+                        exec("/Applications/XAMPP/xamppfiles/bin/mysqldump -u cultibox -pcultibox -t -T tmp/ cultibox $name --fields-enclosed-by=\\\" --fields-terminated-by=,");
+                        break;
+                case 'Windows NT':
+                        exec("c:\Cultibox\xampp\bin\mysqldump.exe -u cultibox -pcultibox -t -T tmp/ cultibox $name --fields-enclosed-by=\\\" --fields-terminated-by=,");
+                        break;
+        }
+       if (copy("tmp/$name.txt","$file")) {
+            unlink("tmp/$name.txt");
+            
+        }
+        unlink("tmp/$name.sql");
+
+
+         $line="";
+         if($f=fopen("$file","r+")) {
             foreach($res_name as $column) {
                 foreach($column as $col) {
                     if(strcmp("$line","")==0) {
-                        $line="$col"; 
+                        $line="$col";
                     } else {
                         $line=$line.",".$col;
                     }
                 }
             }
-            fputs($f,$line."\n");
-            $line="";
-
-
-            if(count($res)>0) {
-               foreach($res as $record) {
-                    $line="";
-                    foreach($record as $val) {
-                            if(strcmp("$line","")==0) { 
-                                $line="$val"; 
-                            } else {
-                                $line=$line.",".$val;
-                            }
-                    }
-                    $line=$line."\n";
-                    fputs($f,$line);
-               }
-            } 
-      }
-      fclose($f);
+        
+            $contents = file_get_contents($file);
+            fputs($f,$line."\n".$contents);
+            fclose($f);
+        }
 }
 // }}}
 
@@ -1455,13 +1465,17 @@ function check_export_table_csv($name="",&$out) {
 
         if(strcmp("$name","logs")==0) {
             $sql = <<<EOF
-SELECT * FROM `{$name}` WHERE `fake_log` LIKE "False" LIMIT 1;
+SELECT `timestamp` FROM `{$name}` WHERE `fake_log` LIKE "False" LIMIT 1;
+EOF;
+       } else if(strcmp("$name","power")==0) {
+            $sql = <<<EOF
+SELECT `timestamp` FROM `{$name}` LIMIT 1;
 EOF;
        } else {
             $sql = <<<EOF
 SELECT * FROM `{$name}` LIMIT 1;
 EOF;
-       }
+}
        $db = db_priv_start();
        $db->setQuery($sql);
        if(!db_priv_end($db)) {
@@ -2091,21 +2105,13 @@ function generate_program_from_file($file="",$plug,&$out) {
 // {{{ reset_log()
 // IN $out      error or warning message
 //    $table    table to be deleted: logs, power...
-//    $fake     1 to delete real log, 0 to delete all logs
 // RET  0 is an error occured, 1 else
-function reset_log($table="",$fake=0,&$out) {
+function reset_log($table="",&$out) {
     if(strcmp("$table","")==0) return 0;
     $error=1;
-if($fake==0) {
     $sql = <<<EOF
-DELETE FROM `{$table}`
+TRUNCATE `{$table}`
 EOF;
-} else {
-    $sql = <<<EOF
-DELETE FROM `{$table}` WHERE `fake_log` LIKE "False"
-EOF;
-}
-
            $db = db_priv_start();
            $db->setQuery($sql);
            $db->query();
@@ -2128,36 +2134,6 @@ EOF;
            return $error;
 }
 // }}}
-
-
-// {{{ reset_calendar()
-// ROLE clean calendar table
-// IN   out     errors or warnings messages
-// RET false if an error occured, true else
-function reset_calendar(&$out) {
-   $sql = <<<EOF
-DELETE FROM  `calendar`;
-EOF;
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   $db->query();
-   $ret=$db->getErrorMsg();
-   if((isset($ret))&&(!empty($ret))) {
-        if($GLOBALS['DEBUG_TRACE']) {
-                  $out[]=__('ERROR_UPDATE_SQL').$ret;
-            } else {
-                  $out[]=__('ERROR_UPDATE_SQL');
-        }
-        return false;
-   }
-   if(!db_priv_end($db)) {
-        $out[]=__('PROBLEM_CLOSING_CONNECTION');
-        return false;
-   }
-   return true;
-}
-// }}}}
-
 
 
 // {{{ get_historic_value()

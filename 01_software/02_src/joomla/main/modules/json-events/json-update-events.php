@@ -24,11 +24,9 @@ UPDATE `calendar` SET `Title`="{$title}",`StartTime`="{$start}",`EndTime`="{$end
 EOF;
     }
 
-    $link = mysql_connect('localhost','cultibox','cultibox');
-    if (!$link) { die('Could not connect: ' . mysql_error()); }
-    mysql_select_db('cultibox');
-
-    $res = mysql_query($sql);
+    $db = new PDO('mysql:host=localhost;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
+    $db->exec("$sql");
+    $db=null;
 }
 
 ?>

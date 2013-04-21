@@ -9,6 +9,10 @@ Cultibox (1.1.13) precise; urgency=low
     + Ajout de la possibilité d'utiliser des fichiers XML au format atom pour programmer des évènements dans le calendrier
     + Passage par un boutton exterieur pour réinitialiser le zoom de highchart...bug dans le code de highchart
     + Optimisation mémoire de la page des logs, division par 4 du temps de chargement et par 10 de la mémoire utilisée
+    + Ajout d'un module de debug mémoire si l'option DEBUG est activée
+    + Utilisation de PDO pour créer les connexions aux bases de données pour la partie calendrier
+    + Optimisation des requettes de la partie logs
+    + Utilisation de la commande mysqldump pour export au format csv les données des bases
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Apr  9 09:24:50 CEST 2013
 

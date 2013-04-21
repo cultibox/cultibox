@@ -4,6 +4,10 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
+// Compute page time loading for debug option
+$start_load = getmicrotime();
+
+
 
 /* Libraries requiered: 
         db_common.php : manage database requests
@@ -350,5 +354,17 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
 
 //Display the wizard template
 include('main/templates/wizard.html');
+
+//Compute time loading for debug option
+$end_load = getmicrotime();
+
+if($GLOBALS['DEBUG_TRACE']) {
+    echo __('GENERATE_TIME').": ".round($end_load-$start_load, 3) ." s.<br />";
+    echo "---------------------------------------";
+    aff_variables();
+    echo "---------------------------------------<br />";
+    memory_stat();
+}
+
 
 ?>
