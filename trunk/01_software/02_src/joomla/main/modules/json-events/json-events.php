@@ -38,80 +38,49 @@ if ($handle = opendir('../../xml')) {
                     if(is_array($val)) {
                         if((array_key_exists('title', $val))&&(array_key_exists('content', $val))&&(array_key_exists('start', $val))) {
                             if((!empty($val['title']))&&(!empty($val['content']))&&(!empty($val['start']))) {
-                                $start=substr($val['start'], 0, 10);  
-                                $hour="00:00:00";
-                                //$hour=substr($val['start'], 11, 8);
+                                $timestart=date("U",strtotime($val['start']));
+
                                 if(array_key_exists('duration', $val))  {
-                                        if($val['duration']>1) {
-                                            $duration=$val['duration']-1;
-                                            $tmpEnd=strtotime($start);
-                                            $end=date("Y-m-d", strtotime("+".$duration." days", $tmpEnd ));
-                                        } else {
-                                            $end=$start;
-                                        }
-                                } else {
-                                    $end=$start;
-                                    //$hour="00:00:00";
+                                        $timeend=date("U", strtotime("+".$val['duration']." days", $timestart));
                                 }
 
                 
                                if(array_key_exists('period', $val))  {
                                     if(!empty($val['period'])) {
-                                        $period=substr($val['period'], 0, 10);
-                                        $py=substr($period, 0, 4);    
-                                        $pm=substr($period, 5, 2);
-                                        $pd=substr($period, 8, 2);
-                                        $actual_year=substr($val['start'], 0, 4);
+                                        $py=substr($val['period'], 0, 4);
+                                        $pm=substr($val['period'], 5, 2);
+                                        $pd=substr($val['period'], 8, 2);
+                                        $ph=substr($val['period'], 11, 2);
+                                        $pmi=substr($val['period'], 14, 2);
+                                        $ps=substr($val['period'], 17, 2);
+                                        $timeperiod=$ps+(60*$pmi)+(3600*$ph)+(86400*$pd);
                                     }
                                 } 
-                    
+                                $actual_year=substr($val['start'], 0, 4);
+ 
                                 do {
-
-                                    if((strlen($start)==10)&&(strlen($end)==10)) {
-                                        $event[]=array(
+                                    $start=date('Y-m-d H:i:s', $timestart);
+                                    $end=date('Y-m-d H:i:s', $timeend);
+                                    $event[]=array(
                                             "id" => $id,
-                                            "title" => utf8_encode($val['title']),
-                                            "start" => $start." ".$hour,
-                                            "end" => $end." ".$hour,
-                                            "description" => utf8_encode($val['content']),
+                                            "title" => $val['title'],
+                                            "start" => $start,
+                                            "end" => $end,
+                                            "description" => $val['content'],
                                             "color" => "#A4408D",
                                             "external" => 1
+                                            //"allDay" => false
                                         );
                                         $id=$id+1;
-                                    }
 
-                                    if(!isset($period)) {
+                                    if(!isset($timeperiod)) {
                                         break;
                                     } else {
-                                        $tmpStart=strtotime($start);
-                                        if($py!=0) {
-                                            $start=date("Y-m-d", strtotime("+".$py." years", $tmpStart ));
-                                            $tmpStart=strtotime($start);
-                                        }
-                                        if($pm!=0) {
-                                            $start=date("Y-m-d", strtotime("+".$pm." months", $tmpStart ));
-                                            $tmpStart=strtotime($start);
-                                        }
+                                        $timestart=$timestart+$timeperiod;
+                                        $timeend=$timeend+$timeperiod;
+                                    }                    
 
-                                        if($pd!=0) {
-                                            $start=date("Y-m-d", strtotime("+".$pd." days", $tmpStart ));
-                                            $tmpStart=strtotime($start);
-                                        }
-
-                                        if(array_key_exists('duration', $val))  {
-                                            if($val['duration']>1) {
-                                                $tmpEnd=strtotime($start);
-                                                $end=date("Y-m-d", strtotime("+".$duration." days", $tmpEnd ));
-                                            } else {
-                                                $end=$start;
-                                            }
-                                        } else {
-                                            $end=$start;
-                                            //$hour="00:00:00";
-                                        }                    
-
-                                        $test_year=substr($start, 0, 4);
-                                    }
+                                    $test_year=date('Y',$timeend);
                                 } while($actual_year==$test_year);
                             }
                         }
