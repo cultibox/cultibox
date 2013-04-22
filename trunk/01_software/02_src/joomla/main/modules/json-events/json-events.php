@@ -1,7 +1,7 @@
 <?php
 
-$db = new PDO('mysql:host=localhost;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
-
+require_once('../../../main/libs/db_common.php');
+if(!$db = db_priv_pdo_start()) return false;
 
 // Initializes a container array for all of the calendar events
 $jsonArray = array();
@@ -15,10 +15,10 @@ EOF;
 foreach($db->query("$sql") as $row) {
         $event[]=array(
                         "id" => $row['Id'],
-                        "title" => utf8_encode($row['Title']),
+                        "title" => $row['Title'],
                         "start" => $row['StartTime'],
                         "end" => $row['EndTime'],
-                        "description" => utf8_encode($row['Description']),
+                        "description" => $row['Description'],
                         "color" => $row['Color'],
                         "external" => 0
             );

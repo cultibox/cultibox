@@ -672,7 +672,7 @@ include('main/templates/display-logs.html');
 $end_load = getmicrotime();
 
 if($GLOBALS['DEBUG_TRACE']) {
-    echo __('GENERATE_TIME').": ".round($end_load-$start_load, 3) ." s.<br />";
+    echo __('GENERATE_TIME').": ".round($end_load-$start_load, 3) ." secondes.<br />";
     echo "---------------------------------------";
     aff_variables();
     echo "---------------------------------------<br />";

@@ -1,44 +1,18 @@
 <?php
 
-// {{{ db_priv_start()
-// ROLE create a connection to the DB using joomla connector: JDatabase
+// {{{ db_priv_pdo_start()
+// ROLE create a connection to the DB using PDO
 // IN none 
 // RET database connection object
-function db_priv_start() {
-   if (isset($GLOBALS['dbconn'])) {
-      $dbconn = &$GLOBALS['dbconn'];
-   } else {
-      $option = array(); //Prevent problems
-      $option['driver']   = 'mysql';            // Database driver name
-      $option['host']     = 'localhost';    // Database host name
-      $option['user']     = 'cultibox';       // User for database authentication
-      $option['password'] = 'cultibox';   // Password for database authentication
-      $option['database'] = 'cultibox';      // Database name
-      $option['prefix']   = '';             // Database prefix (may be empty)
-      $dbconn = & JDatabase::getInstance( $option );
-
-      if ($dbconn) {
-         $GLOBALS['dbconn'] = &$dbconn;
-      }
-   }
-   return $dbconn;
+function db_priv_pdo_start() {
+    try {
+        $db = new PDO('mysql:host=localhost;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
+        $db->exec("SET CHARACTER SET utf8");
+        return $db;
+    } catch (PDOException $e) {
+        return 0;
+    }
 }
-// }}}
-
-
-// {{{ db_priv_end()
-// ROLE closes the connection to the DB
-// IN $dbconn as a JDatabase object
-// RET none
-function db_priv_end($dbconn) {
-   if($dbconn) {
-      $dbconn->freeResult();
-      $dbconn->close();
-      return 1;
-   }
-   return 0;
-}
-// }}}
 
 
 // {{{ db_update_logs()
@@ -63,13 +37,13 @@ EOF;
       }
    }
 
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   $db->query();
-   if(!db_priv_end($db)) {
-    $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   $db=db_priv_pdo_start();
+   try {
+        $db->exec("$sql");
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();     
    }
-   $ret=$db->getErrorMsg();
+   $db=null;
 
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
@@ -106,13 +80,14 @@ EOF;
       }
    }
 
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   $db->query();
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   $db=db_priv_pdo_start();
+   try {
+        $db->exec("$sql");
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();  
    }
-   $ret=$db->getErrorMsg();
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_UPDATE_SQL').$ret;
@@ -156,13 +131,17 @@ SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate
 EOF;
 }
 
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   
+   $db=db_priv_pdo_start();
+   try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();
    }
-   $res = $db->loadAssocList();
-   $ret=$db->getErrorMsg();
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -185,13 +164,16 @@ function get_configuration($key,&$out="") {
         $sql = <<<EOF
 SELECT {$key} FROM `configuration` WHERE id = 1
 EOF;
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   $res = $db->loadResult();
-   $ret=$db->getErrorMsg();
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   $db=db_priv_pdo_start();
+   try {
+        $sth=$db->prepare("$sql");
+        $sth-> execute();
+        $res=$sth->fetch();
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();
    }
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -199,7 +181,7 @@ EOF;
          $out[]=__('ERROR_SELECT_SQL');
       }
    }
-   return $res;
+   return $res[0];
 }
 // }}}
 
@@ -208,16 +190,19 @@ EOF;
 // IN $key   the key selectable from the database 
 // RET $res   value of the key   
 function get_informations($key) {
-        $sql = <<<EOF
+   $sql = <<<EOF
 SELECT {$key} FROM `informations` WHERE id = 1
 EOF;
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   $db=db_priv_pdo_start();
+   try {
+        $sth=$db->prepare("$sql");
+        $sth-> execute();
+        $res=$sth->fetch();
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();
    }
-   $res = $db->loadResult();
-   $ret=$db->getErrorMsg();
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -226,7 +211,7 @@ EOF;
       }
    }
 
-   return $res;
+   return $res[0];
 }
 // }}}
 
@@ -243,13 +228,14 @@ function insert_configuration($key,$value,&$out) {
    $sql = <<<EOF
 UPDATE `configuration` SET  {$key} = "{$value}" WHERE id = 1
 EOF;
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   $db->query();
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   $db=db_priv_pdo_start();
+   try {
+        $db->exec("$sql");
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();
    }
-   $ret=$db->getErrorMsg();
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_UPDATE_SQL').$ret;
@@ -272,11 +258,13 @@ function insert_informations($key,$value) {
    $sql = <<<EOF
 UPDATE `informations` SET  {$key} = "{$value}" WHERE id = 1
 EOF;
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   $db->query();
-   $ret=$db->getErrorMsg();
-   db_priv_end($db);
+   $db=db_priv_pdo_start();
+   try {
+        $db->exec("$sql");
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();
+   }
+   $db=null;
 }
 // }}}
 
@@ -291,13 +279,16 @@ function get_plug_conf($key,$id,&$out) {
    $sql = <<<EOF
 SELECT {$key} FROM `plugs` WHERE id = {$id}
 EOF;
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+  $db=db_priv_pdo_start();
+   try {
+        $sth=$db->prepare("$sql");
+        $sth-> execute();
+        $res=$sth->fetch();
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();
    }
-   $res = $db->loadResult();
-   $ret=$db->getErrorMsg();
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -306,7 +297,7 @@ EOF;
       }
 
    }
-   return $res;
+   return $res[0];
 }
 // }}}
 
@@ -322,13 +313,14 @@ function insert_plug_conf($key,$id,$value,&$out) {
    $sql = <<<EOF
 UPDATE `plugs` SET  {$key} = "{$value}" WHERE id = {$id}
 EOF;
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   $db->query();
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
+   $db=db_priv_pdo_start();
+   try {
+        $db->exec("$sql");
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();
    }
-   $ret=$db->getErrorMsg();
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_UPDATE_SQL').$ret;
@@ -352,22 +344,24 @@ FROM `plugs`
 WHERE id <= {$nb}
 ORDER by id ASC
 EOF;
-        $db = db_priv_start();
-        $db->setQuery($sql);
-        $db->query();
-        if(!db_priv_end($db)) {
-                $out[]=__('PROBLEM_CLOSING_CONNECTION');
-        }
-        $res = $db->loadAssocList();
-        $ret=$db->getErrorMsg();
-        if((isset($ret))&&(!empty($ret))) {
-            if($GLOBALS['DEBUG_TRACE']) {
-               $out[]=__('ERROR_SELECT_SQL').$ret;
-            } else {
-               $out[]=__('ERROR_SELECT_SQL');
-           }
-        }
-        return $res;
+       $db=db_priv_pdo_start();
+       try {
+            $sth=$db->prepare("$sql");
+            $sth->execute();
+            $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+       } catch(PDOException $e) {
+            $ret=$e->getMessage();
+       }
+       $db=null;
+
+       if((isset($ret))&&(!empty($ret))) {
+           if($GLOBALS['DEBUG_TRACE']) {
+              $out[]=__('ERROR_SELECT_SQL').$ret;
+           } else {
+              $out[]=__('ERROR_SELECT_SQL');
+          }
+       }
+       return $res;
 }
 // }}}
 
@@ -383,24 +377,26 @@ function get_data_plug($selected_plug="",&$out) {
       $sql = <<<EOF
 SELECT  `time_start`,`time_stop`,`value` FROM `programs` WHERE plug_id = {$selected_plug} ORDER by time_start ASC
 EOF;
-      $db = db_priv_start();
-      $db->setQuery($sql);
-      $db->query();
-      if(!db_priv_end($db)) {
-        $out[]=__('PROBLEM_CLOSING_CONNECTION');
+      $db=db_priv_pdo_start();
+      try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+      } catch(PDOException $e) {
+        $ret=$e->getMessage();
       }
-      $res=$db->loadAssocList();
-      $ret=$db->getErrorMsg();
-           if((isset($ret))&&(!empty($ret))) {
+      $db=null;
+
+      if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
                       $out[]=__('ERROR_SELECT_SQL').$ret;
                 } else {
                       $out[]=__('ERROR_SELECT_SQL');
                 }
                 return 0;
-           }
-   }
-   return $res;
+          }
+    }
+    return $res;
 }
 // }}}
 
@@ -448,23 +444,24 @@ SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `
 EOF;
       }
 }
-           $db = db_priv_start();
-           $db->setQuery($sql);
-           $db->query();
-           if(!db_priv_end($db)) {
-                  $out[]=__('PROBLEM_CLOSING_CONNECTION');
-                  return 0;
-           }
-           $res=$db->loadAssocList();
-           $ret=$db->getErrorMsg();
-           if((isset($ret))&&(!empty($ret))) {
+        $db=db_priv_pdo_start();
+        try {
+            $sth=$db->prepare("$sql");
+            $sth->execute();
+            $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+        $db=null;
+
+        if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
                       $out[]=__('ERROR_SELECT_SQL').$ret;
                 } else {
                       $out[]=__('ERROR_SELECT_SQL');
                 }
                 return 0;
-          }
+        }
    }
 
    
@@ -472,11 +469,19 @@ EOF;
         $sql = <<<EOF
 SELECT `PLUG_POWER` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True"
 EOF;
-        $db = db_priv_start();
-        $db->setQuery($sql);
-        $db->query();
-        $res_power=$db->loadAssocList();
-        $ret=$db->getErrorMsg();
+
+        $db=db_priv_pdo_start();
+        try {
+            $sth=$db->prepare("$sql");
+            $sth->execute();
+            $res_power=$sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+        $db=null;
+
+        
+
         if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
             $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -484,11 +489,6 @@ EOF;
             $out[]=__('ERROR_SELECT_SQL');
          }
          return 0;
-        }
-
-        if(!db_priv_end($db)) {
-            $out[]=__('PROBLEM_CLOSING_CONNECTION');
-            return 0;
         }
 
         if(strcmp("$id","all")!=0) {
@@ -611,11 +611,17 @@ EOF;
 SELECT * FROM `programs` WHERE `plug_id` = "{$id}" AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True")
 EOF;
    }
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   $db->query();
-   $res=$db->loadAssocList();
-   $ret=$db->getErrorMsg();
+
+   $db=db_priv_pdo_start();
+   try {
+       $sth=$db->prepare("$sql");
+       $sth->execute();
+       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
                       $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -625,21 +631,23 @@ EOF;
          return 0;
    }
 
-   if(!db_priv_end($db)) {
-        $out[]=__('PROBLEM_CLOSING_CONNECTION');
-        return 0;
-   }
 
    if(count($res)>0) {
-      $db = db_priv_start();
       $sql = <<<EOF
 SELECT `PLUG_POWER`,`PLUG_ENABLED` FROM `plugs` WHERE `id` <= ${nb_plugs}
 EOF;
 
-     $db->setQuery($sql);
-     $db->query();
-     $res_power=$db->loadAssocList();
-     $ret=$db->getErrorMsg();
+     $db=db_priv_pdo_start();
+     unset($ret);
+     try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res_power=$sth->fetchAll(PDO::FETCH_ASSOC);
+     } catch(PDOException $e) {
+        $ret=$e->getMessage();
+     }
+     $db=null;
+
      if((isset($ret))&&(!empty($ret))) {
          if($GLOBALS['DEBUG_TRACE']) {
             $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -649,10 +657,6 @@ EOF;
          return 0;
       }
 
-      if(!db_priv_end($db)) {
-         $out[]=__('PROBLEM_CLOSING_CONNECTION');
-         return 0;
-      }
    } else {
       return 0;
    }
@@ -1304,24 +1308,24 @@ function insert_program_value($plug_id,$start_time,$end_time,$value,&$out) {
    $sql = <<<EOF
 INSERT INTO `programs`(`plug_id`,`time_start`,`time_stop`, `value`) VALUES('{$plug_id}',"{$start_time}","{$end_time}",'{$value}')
 EOF;
-        $db = db_priv_start();
-        $db->setQuery($sql);
-        $db->query();
-        $ret=$db->getErrorMsg();
-        if((isset($ret))&&(!empty($ret))) {
-            if($GLOBALS['DEBUG_TRACE']) {
-                  $out[]=__('ERROR_UPDATE_SQL').$ret;
-                  return false;
-            } else {
-                  $out[]=__('ERROR_UPDATE_SQL');
-                  return false;
-            }
-        }
-        if(!db_priv_end($db)) {
-                $out[]=__('PROBLEM_CLOSING_CONNECTION');
-                return false;
-        }
-        return true;
+   $db=db_priv_pdo_start();
+   try {
+        $db->exec("$sql");
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();
+   }
+   $db=null;
+
+   if((isset($ret))&&(!empty($ret))) {
+       if($GLOBALS['DEBUG_TRACE']) {
+             $out[]=__('ERROR_UPDATE_SQL').$ret;
+             return false;
+       } else {
+             $out[]=__('ERROR_UPDATE_SQL');
+             return false;
+       }
+   }
+   return true;
 }
 // }}}
 
@@ -1332,26 +1336,26 @@ EOF;
 //    $out              error or warning message
 // RET false if an error occured, true else
 function clean_program($plug_id,&$out) {
-        $sql = <<<EOF
+   $sql = <<<EOF
 DELETE FROM `programs` WHERE plug_id = {$plug_id}
 EOF;
-        $db = db_priv_start();
-        $db->setQuery($sql);
-        $db->query();
-        $ret=$db->getErrorMsg();
-        if((isset($ret))&&(!empty($ret))) {
-          if($GLOBALS['DEBUG_TRACE']) {
-                  $out[]=__('ERROR_UPDATE_SQL').$ret;
-            } else {
-                  $out[]=__('ERROR_UPDATE_SQL');
-            }
-      return false;
-        }
-        if(!db_priv_end($db)) {
-                $out[]=__('PROBLEM_CLOSING_CONNECTION');
-      return false;
-        }
-        return true;
+   $db=db_priv_pdo_start();
+   try {
+        $db->exec("$sql");
+   } catch(PDOException $e) {
+        $ret=$e->getMessage();
+   }
+   $db=null;
+
+    if((isset($ret))&&(!empty($ret))) {
+     if($GLOBALS['DEBUG_TRACE']) {
+             $out[]=__('ERROR_UPDATE_SQL').$ret;
+     } else {
+            $out[]=__('ERROR_UPDATE_SQL');
+     }
+     return false;
+    }
+    return true;
 }
 // }}}}
 
@@ -1368,11 +1372,15 @@ function export_program($id,&$out) {
        $sql = <<<EOF
 SELECT * FROM `programs` WHERE plug_id = {$id}
 EOF;
-       $db = db_priv_start();
-       $db->setQuery($sql);
-       $res = $db->loadAssocList();
-       $ret=$db->getErrorMsg();
-
+       $db=db_priv_pdo_start();
+       try {
+           $sth=$db->prepare("$sql");
+           $sth->execute();
+           $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+       } catch(PDOException $e) {
+           $ret=$e->getMessage();
+       }
+       $db=null;
        $file="tmp/program_plug${id}.prg";
 
       if($f=fopen("$file","w+")) {
@@ -1402,14 +1410,15 @@ function export_table_csv($name="",&$out) {
        $sql_name = <<<EOF
 SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME = '{$name}'
 EOF;
-       $db = db_priv_start();
-       $db->setQuery($sql_name);
-       $res_name = $db->loadAssocList();
-       $ret_name=$db->getErrorMsg();
-       if(!db_priv_end($db)) {
-            $out[]=__('PROBLEM_CLOSING_CONNECTION');
+        $db=db_priv_pdo_start();
+        try {
+            $sth=$db->prepare("$sql_name");
+            $sth->execute();
+            $res_name=$sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            $ret_name=$e->getMessage();
         }
-
+        $db=null;
 
         if(is_file($file)) {
             unlink($file);
@@ -1417,14 +1426,14 @@ EOF;
         $os=php_uname('s');
         switch($os) {
                 case 'Linux':
-                        exec("/opt/lampp/bin/mysqldump -u cultibox -pcultibox -t -T tmp/ cultibox $name --fields-enclosed-by=\\\" --fields-terminated-by=,");
+                        exec("../../bin/mysqldump -u cultibox -pcultibox -t -T tmp/ cultibox $name --fields-terminated-by=,");
                         break;
 
                 case 'Mac':
-                        exec("/Applications/XAMPP/xamppfiles/bin/mysqldump -u cultibox -pcultibox -t -T tmp/ cultibox $name --fields-enclosed-by=\\\" --fields-terminated-by=,");
+                        exec("../../bin/mysqldump -u cultibox -pcultibox -t -T tmp/ cultibox $name --fields-terminated-by=,");
                         break;
                 case 'Windows NT':
-                        exec("c:\Cultibox\xampp\bin\mysqldump.exe -u cultibox -pcultibox -t -T tmp/ cultibox $name --fields-enclosed-by=\\\" --fields-terminated-by=,");
+                        exec("..\..\mysql\bin\mysqldump.exe -u cultibox -pcultibox -t -T tmp cultibox $name --fields-terminated-by=,");
                         break;
         }
        if (copy("tmp/$name.txt","$file")) {
@@ -1476,18 +1485,19 @@ EOF;
 SELECT * FROM `{$name}` LIMIT 1;
 EOF;
 }
-       $db = db_priv_start();
-       $db->setQuery($sql);
-       if(!db_priv_end($db)) {
-        $out[]=__('PROBLEM_CLOSING_CONNECTION');
-       }
 
+        $db=db_priv_pdo_start();
+        try {
+            $sth=$db->prepare("$sql");
+            $sth->execute();
+            $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+        $db=null;
 
-       $res = $db->loadAssocList();
-       $ret=$db->getErrorMsg();
-
-       if(!$res) return false;
-       return true;
+       if(count($res)>0) return true;
+       return false;
 }
 // }}}
 
@@ -1593,10 +1603,15 @@ function create_plugconf_from_database($nb=0,&$out) {
       $sql = <<<EOF
 SELECT * FROM `plugs` WHERE id <= {$nb}
 EOF;
-      $db = db_priv_start();
-      $db->setQuery($sql);
-      $res = $db->loadAssocList();
-      $ret=$db->getErrorMsg();
+       $db=db_priv_pdo_start();
+       try {
+           $sth=$db->prepare("$sql");
+           $sth->execute();
+           $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+       } catch(PDOException $e) {
+           $ret=$e->getMessage();
+       }
+       $db=null;
       if((isset($ret))&&(!empty($ret))) {
           if($GLOBALS['DEBUG_TRACE']) {
                   $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -1605,10 +1620,6 @@ EOF;
             }
       }
       
-      if(!db_priv_end($db)) {
-         $out[]=__('PROBLEM_CLOSING_CONNECTION');
-      }
-
       if(count($res)>0) {
          $arr=array();
          foreach($res as $data) {
@@ -1682,13 +1693,19 @@ EOF;
 // IN $out        error or warning message
 // RET an array containing datas
 function create_program_from_database(&$out) {
-   $db = db_priv_start();
    $sql = <<<EOF
 SELECT * FROM `programs` WHERE `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by `time_start`
 EOF;
-   $db->setQuery($sql);
-   $res = $db->loadAssocList();
-   $ret=$db->getErrorMsg();
+  
+   $db=db_priv_pdo_start();
+   try {
+       $sth=$db->prepare("$sql");
+       $sth->execute();
+       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
    if((isset($ret))&&(!empty($ret))) {
           if($GLOBALS['DEBUG_TRACE']) {
                   $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -1696,13 +1713,19 @@ EOF;
                   $out[]=__('ERROR_SELECT_SQL');
             }
    }
-
+   unset($ret);
    $sql = <<<EOF
 SELECT * FROM `programs` WHERE time_start = "000000" AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by `time_start`
 EOF;
-   $db->setQuery($sql);
-   $first = $db->loadAssocList();
-   $ret=$db->getErrorMsg();
+   $db=db_priv_pdo_start();
+   try {
+       $sth=$db->prepare("$sql");
+       $sth->execute();
+       $first=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
                   $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -1710,13 +1733,21 @@ EOF;
                   $out[]=__('ERROR_SELECT_SQL');
       }
    }
+   unset($ret);
 
    $sql = <<<EOF
 SELECT * FROM `programs` WHERE time_stop = "235959" AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by `time_start`
 EOF;
-   $db->setQuery($sql);
-   $last = $db->loadAssocList();
-   $ret=$db->getErrorMsg();
+   $db=db_priv_pdo_start();
+   try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $last=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
             if($GLOBALS['DEBUG_TRACE']) {
                   $out[]=__('ERROR_SELECT_SQL').$ret;
@@ -1725,10 +1756,6 @@ EOF;
             }
    }
    
-   if(!db_priv_end($db)) {
-          $out[]=__('PROBLEM_CLOSING_CONNECTION');
-   }
-
    $j=1;
    $data=array();
    $data[0] = "";
@@ -1822,27 +1849,13 @@ EOF;
 // IN   $out         error or warning message
 // RET an array containing datas
 function create_calendar_from_database(&$out) {
-   $year=date('Y');
-        $db = db_priv_start();
+        $year=date('Y');
+        $data=array();
+        $db = db_priv_pdo_start();
         $sql = <<<EOF
 SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%"
 EOF;
-        $db->setQuery($sql);
-        $res = $db->loadAssocList();
-        $ret=$db->getErrorMsg();
-        if(!db_priv_end($db)) {
-            $out[]=__('PROBLEM_CLOSING_CONNECTION');
-        }
-        if((isset($ret))&&(!empty($ret))) {
-           if($GLOBALS['DEBUG_TRACE']) {
-               $out[]=__('ERROR_SELECT_SQL').$ret;
-            } else {
-               $out[]=__('ERROR_SELECT_SQL');
-            }
-        } else {
-      $data=array();
-      foreach($res as $val) {
-        
+      foreach($db->query("$sql") as $val) {
          $s=array();
          $desc=array();
          $line="";
@@ -1898,7 +1911,8 @@ EOF;
             $number=$number+1;
          }
 
-         while(strlen($s[$number-1])<13) {
+
+         while(mb_strlen($s[$number-1])<13) {
             $s[$number-1]=$s[$number-1]." ";
          }
 
@@ -1908,7 +1922,7 @@ EOF;
             $line="";
             for($i=0;$i<strlen($val['Description']);$i++) {
                if(strcmp($val['Description'][$i],"\n")==0) {
-                   while(strlen($line)<=12) {
+                   while(mb_strlen($line)<=12) {
                         $line=$line." ";
                    }
                    $desc[]=$line;$line="";
@@ -1958,7 +1972,7 @@ EOF;
 
 
             if(count($desc)>0) {
-               while(strlen($desc[count($desc)-1])<13) {
+               while(mb_strlen($desc[count($desc)-1])<13) {
                   $desc[count($desc)-1]=$desc[count($desc)-1]." ";
                }
             }
@@ -1976,8 +1990,8 @@ EOF;
          unset($s);
       }
 
+      $db=null;
       return $data;
-   }
 }
 // }}}
 
@@ -2024,18 +2038,27 @@ function find_value_for_plug($data,$time,$plug) {
 // RET true if there is a program defined, false else
 function check_programs($nb_plugs=0) {
    if($nb_plugs>0) {
-      $db = db_priv_start();
            $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` <= {$nb_plugs}
+SELECT * FROM `programs` WHERE `plug_id` <= {$nb_plugs} LIMIT 1
 EOF;
-           $db->setQuery($sql);
-           $res = $db->loadAssocList();
-           $ret=$db->getErrorMsg();
-           db_priv_end($db);
+      $db=db_priv_pdo_start();
+      try {
+            $sth=$db->prepare("$sql");
+            $sth->execute();
+            $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+      } catch(PDOException $e) {
+            $ret=$e->getMessage();
+      }
+      $db=null;
+
       if(!isset($res)||(empty($res))) {
          return false;
       } else {
-         return true;
+         if(count($res)>0) {
+            return true;
+         } else {
+            return false;
+         }
       }
    } else {
       return false;
@@ -2052,21 +2075,20 @@ function reset_plug_identificator(&$out) {
            $sql = <<<EOF
 UPDATE `plugs` SET  `PLUG_ID` = ""
 EOF;
-           $db = db_priv_start();
-           $db->setQuery($sql);
-           $db->query();
-           $ret=$db->getErrorMsg();
-   
+           $db=db_priv_pdo_start();
+           try {
+                $db->exec("$sql");
+           } catch(PDOException $e) {
+                $ret=$e->getMessage();
+           }
+           $db=null;
+
            if((isset($ret))&&(!empty($ret))) {
                if($GLOBALS['DEBUG_TRACE']) {
                   $out[]=__('ERROR_UPDATE_SQL').$ret;
                } else {
                   $out[]=__('ERROR_UPDATE_SQL');
                }
-           }
-   
-           if(!db_priv_end($db)) {
-                $out[]=__('PROBLEM_CLOSING_CONNECTION');
            }
 }
 // }}}
@@ -2112,10 +2134,13 @@ function reset_log($table="",&$out) {
     $sql = <<<EOF
 TRUNCATE `{$table}`
 EOF;
-           $db = db_priv_start();
-           $db->setQuery($sql);
-           $db->query();
-           $ret=$db->getErrorMsg();
+           $db=db_priv_pdo_start();
+           try {
+                $db->exec("$sql");
+           } catch(PDOException $e) {
+                $ret=$e->getMessage();
+           }
+           $db=null;
 
            if((isset($ret))&&(!empty($ret))) {
                if($GLOBALS['DEBUG_TRACE']) {
@@ -2125,11 +2150,6 @@ EOF;
                   $out[]=__('ERROR_DELETE_SQL');
                   $error=0;
                }
-           }
-
-           if(!db_priv_end($db)) {
-                $out[]=__('PROBLEM_CLOSING_CONNECTION');
-                $error=0;
            }
            return $error;
 }
@@ -2144,11 +2164,15 @@ function get_historic_value(&$res,&$out) {
     $sql = <<<EOF
 SELECT * from `historic` ORDER by `timestamp` DESC LIMIT 0,100 
 EOF;
-   $db = db_priv_start();
-   $db->setQuery($sql);
-   $res=$db->loadAssocList();
-   $ret=$db->getErrorMsg();
-
+   $db=db_priv_pdo_start();
+   try {
+       $sth=$db->prepare("$sql");
+       $sth->execute();
+       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
 
    if((isset($ret))&&(!empty($ret))) {
        if($GLOBALS['DEBUG_TRACE']) {
@@ -2156,10 +2180,6 @@ EOF;
        } else {
           $out[]=__('ERROR_DELETE_SQL');
        }
-   }
-
-   if(!db_priv_end($db)) {
-         $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
 }
 // }}}
@@ -2180,24 +2200,23 @@ function set_historic_value($message="",$type="",&$out) {
         date_default_timezone_set($_SESSION['TIMEZONE']);
         $timestamp=date('Y-m-d H:i:s');
 
-        $db = db_priv_start();
         $sql = <<<EOF
 INSERT INTO `historic`(`timestamp`,`action`, `type`) VALUES ("${timestamp}","${message}","${type}");
 EOF;
+        $db=db_priv_pdo_start();
+        try {
+            $db->exec("$sql");
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+        $db=null;
 
-        $db->setQuery($sql);
-        $db->query();
-        $ret=$db->getErrorMsg();
         if((isset($ret))&&(!empty($ret))) {
             if($GLOBALS['DEBUG_TRACE']) {
                 $out[]=__('ERROR_UPDATE_SQL').$ret;
             } else {
                 $out[]=__('ERROR_UPDATE_SQL');
             }
-        }
-
-        if(!db_priv_end($db)) {
-            $out[]=__('PROBLEM_CLOSING_CONNECTION');
         }
    }
 }
@@ -2210,23 +2229,25 @@ EOF;
 //    $out   errors or warnings messages
 // RET array containing the list of active plug
 function get_active_plugs($nb,&$out="") {
-        $db = db_priv_start();
         $sql = <<<EOF
 SELECT id FROM `plugs` WHERE id <={$nb} AND `PLUG_ENABLED` LIKE "True" 
 EOF;
-   $db->setQuery($sql);
-   $res = $db->loadAssocList();
-   $ret=$db->getErrorMsg();
+   $db=db_priv_pdo_start();
+   try {
+       $sth=$db->prepare("$sql");
+       $sth->execute();
+       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_SELECT_SQL').$ret;
       } else {
          $out[]=__('ERROR_SELECT_SQL');
       }
-   }
-
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
    return $res;
 }
@@ -2241,7 +2262,6 @@ EOF;
 //       $max        the maximal number of plug tu be seeked
 // RET   sumary formated 
 function format_regul_sumary($number=0, &$out,&$resume="",$max=0) {
-    $db = db_priv_start();
     if(strcmp("$number","all")==0) {
     $sql = <<<EOF
 SELECT id, PLUG_REGUL, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" AND id<{$max} 
@@ -2251,19 +2271,22 @@ EOF;
 SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" AND `id` = {$number} AND id<{$max}
 EOF;
     }
-    $db->setQuery($sql);
-    $res=$db->loadAssocList();
-    $ret=$db->getErrorMsg();
+    $db=db_priv_pdo_start();
+    try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
     if((isset($ret))&&(!empty($ret))) {
         if($GLOBALS['DEBUG_TRACE']) {
             $out[]=__('ERROR_SELECT_SQL').$ret;
         } else {
             $out[]=__('ERROR_SELECT_SQL');
         }
-    }
-
-    if(!db_priv_end($db)) {
-        $out[]=__('PROBLEM_CLOSING_CONNECTION');
     }
 
     if(count($res)>0) {
@@ -2293,23 +2316,25 @@ EOF;
 // RET  sumary formated 
 function get_cost_summary(&$out) {
     $resume="";
-    $db = db_priv_start();
     $sql = <<<EOF
 SELECT COST_PRICE, COST_PRICE_HP, COST_PRICE_HC, START_TIME_HC, STOP_TIME_HC, COST_TYPE FROM `configuration` 
 EOF;
-   $db->setQuery($sql);
-   $res = $db->loadAssocList();
-   $ret=$db->getErrorMsg();
+   $db=db_priv_pdo_start();
+   try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
+
    if((isset($ret))&&(!empty($ret))) {
       if($GLOBALS['DEBUG_TRACE']) {
          $out[]=__('ERROR_SELECT_SQL').$ret;
       } else {
          $out[]=__('ERROR_SELECT_SQL');
       }
-   }
-
-   if(!db_priv_end($db)) {
-      $out[]=__('PROBLEM_CLOSING_CONNECTION');
    }
 
    foreach($res as $result) {
