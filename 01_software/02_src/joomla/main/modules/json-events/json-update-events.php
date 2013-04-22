@@ -1,8 +1,11 @@
 <?php
 
+require_once('../../../main/libs/db_common.php');
+
+
 if((isset($_POST["title"]))&&(!empty($_POST["title"]))&&(isset($_POST["start"]))&&(!empty($_POST["start"]))&&(isset($_POST["end"]))&&(!empty($_POST["end"]))&&(isset($_POST["id"]))&&(!empty($_POST["id"]))&&(isset($_POST["color"]))&&(!empty($_POST["color"]))) {
 
-    $title=utf8_decode($_POST["title"]);
+    $title=$_POST["title"];
     $start=$_POST["start"];
     $end=$_POST["end"];
     $id=$_POST["id"];
@@ -10,7 +13,7 @@ if((isset($_POST["title"]))&&(!empty($_POST["title"]))&&(isset($_POST["start"]))
     
 
     if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
-            $description=utf8_decode($_POST["desc"]);
+            $description=$_POST["desc"];
     }
 
 
@@ -24,9 +27,10 @@ UPDATE `calendar` SET `Title`="{$title}",`StartTime`="{$start}",`EndTime`="{$end
 EOF;
     }
 
-    $db = new PDO('mysql:host=localhost;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
-    $db->exec("$sql");
-    $db=null;
+    if($db = db_priv_pdo_start()) {
+        $db->exec("$sql");
+        $db=null;
+    }
 }
 
 ?>

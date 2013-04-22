@@ -13,6 +13,7 @@ Cultibox (1.1.13) precise; urgency=low
     + Utilisation de PDO pour créer les connexions aux bases de données pour la partie calendrier
     + Optimisation des requettes de la partie logs
     + Utilisation de la commande mysqldump pour export au format csv les données des bases
+    + Passage au connecteur php PDO au lieu de JDatabase pour les requettes SQL
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Apr  9 09:24:50 CEST 2013
 

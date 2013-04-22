@@ -2,12 +2,12 @@
 
 
 require_once('../../../main/libs/utilfunc.php');
+require_once('../../../main/libs/db_common.php');
+
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 $sd_card=$_POST['sd_card'];
 $main_error=array();
-
-$db = new PDO('mysql:host=localhost;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
 
 // Part for the calendar: if a cultibox SD card is present, the 'calendar' is updated into this SD card
 if((isset($sd_card))&&(!empty($sd_card))) {
@@ -15,6 +15,8 @@ if((isset($sd_card))&&(!empty($sd_card))) {
         $sql = <<<EOF
 SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%" AND `External` = 0
 EOF;
+        
+        if(!$db = db_priv_pdo_start()) return false;
         $data=array();
         foreach($db->query("$sql") as $val) {
          $s=array();
