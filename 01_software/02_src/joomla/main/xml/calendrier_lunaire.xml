@@ -26,7 +26,7 @@
       <content type = "text">
          Perigee: ne pas jardiner.
       </content>
-      <duration>1</duration>
+      <duration>0</duration>
       <start>2013-01-01T21:17:00+00:00</start>
       <period>0000-00-27T13:18:33</period>
    </entry>
@@ -40,7 +40,7 @@
       <content type = "text">
          Apogee: ne pas jardiner.
       </content>
-      <duration>1</duration>
+      <duration>0</duration>
       <start>2013-01-16T01:54:00+00:00</start>
       <period>0000-00-27T13:18:33</period>
    </entry>
@@ -54,7 +54,7 @@
       <content type = "text">
          Noeud lunaire: ne pas jardiner.
       </content>
-      <duration>1</duration>
+      <duration>0</duration>
       <start>2013-04-26T06:00:00+02:00</start>
       <period>0000-00-13T17:32:48+00:00</period>
    </entry>
@@ -68,7 +68,7 @@
       <content type = "text">
          C'est la pleine lune.
       </content>
-      <duration>1</duration>
+      <duration>0</duration>
       <start>2013-01-27T04:40:00+00:00</start>
       <period>0000-00-29T12:44:03</period>
    </entry>
@@ -82,7 +82,7 @@
       <content type = "text">
          C'est la nouvelle lune.
       </content>
-      <duration>1</duration>
+      <duration>0</duration>
       <start>2013-01-11T19:45:02+00:00</start>
       <period>0000-00-29T12:44:03</period>
    </entry>
@@ -118,6 +118,6 @@
       </content>
       <duration>12</duration>
       <start>2013-03-18T12:00:00+00:00</start>
-      <period>00000-00-27T07:43:12</period>
+      <period>0000-00-27T07:43:12</period>
    </entry>
 </feed>
