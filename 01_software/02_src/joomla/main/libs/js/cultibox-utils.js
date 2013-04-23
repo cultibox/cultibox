@@ -28,12 +28,10 @@ function expand(div) {
                                  divLabelAlarm.style.color = '';
                                  divLabelCard.style.color = '';
 
-                                 /*
-                                 divLabelCard.style.fontSize = "12px";
-                                 divLabelConfig.style.fontSize = "13px";
-                                 divLabelSystem.style.fontSize = "12px";
-                                 divLabelAlarm.style.fontSize = "12px";
-                                 */
+                                 divLabelCard.style.color = "black";
+                                 divLabelConfig.style.color = "#6E8915";
+                                 divLabelSystem.style.color = "black";
+                                 divLabelAlarm.style.color = "black";
 
                                  document.configform.submenu.value="user_interface";
                                  
@@ -49,12 +47,10 @@ function expand(div) {
                                    divLabelAlarm.style.color = '';
                                    divLabelCard.style.color = '';
    
-                                   /* 
-                                   divLabelCard.style.fontSize = "12px";
-                                   divLabelConfig.style.fontSize = "12px";
-                                   divLabelSystem.style.fontSize = "13px";
-                                   divLabelAlarm.style.fontSize = "12px";
-                                   */
+                                   divLabelCard.style.color = "black";
+                                   divLabelConfig.style.color = "black";
+                                   divLabelSystem.style.color = "#6E8915";
+                                   divLabelAlarm.style.color = "black";
 
                                    document.configform.submenu.value="system_interface";
 
@@ -69,12 +65,12 @@ function expand(div) {
                                   divLabelSystem.style.color = '';
                                   divLabelAlarm.style.color = '#777779';
                                   divLabelCard.style.color = '';
-                                  /* 
-                                  divLabelCard.style.fontSize = "12px";
-                                  divLabelConfig.style.fontSize = "12px";
-                                  divLabelSystem.style.fontSize = "12px";
-                                  divLabelAlarm.style.fontSize = "13px";
-                                  */
+
+                                  divLabelCard.style.color = "black";
+                                  divLabelConfig.style.color = "black";
+                                  divLabelSystem.style.color = "black";
+                                  divLabelAlarm.style.color = "#6E8915";
+
 
                                   document.configform.submenu.value="alarm_interface";
 
@@ -90,12 +86,10 @@ function expand(div) {
                                  divLabelAlarm.style.color = '';
                                  divLabelCard.style.color = '#777779';
 
-                                 /*
-                                 divLabelCard.style.fontSize="13px";
-                                 divLabelConfig.style.fontSize = "12px";
-                                 divLabelSystem.style.fontSize = "12px";
-                                 divLabelAlarm.style.fontSize = "12px";
-                                 */
+                                 divLabelCard.style.color = "#6E8915";
+                                 divLabelConfig.style.color = "black";
+                                 divLabelSystem.style.color = "black";
+                                 divLabelAlarm.style.color = "black";
 
                                  document.configform.submenu.value="card_interface";
 

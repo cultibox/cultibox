@@ -25,7 +25,7 @@ VERSION=$2
 
 case "$1" in
       "ubuntu64"|"ubuntu64-admin" )
-            #(cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
+            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
             rm -Rf ../01_src/01_xampp/*
             mkdir ../01_src/01_xampp/cultibox
             cp -R ./conf-package/DEBIAN64 ../01_src/01_xampp/cultibox/DEBIAN

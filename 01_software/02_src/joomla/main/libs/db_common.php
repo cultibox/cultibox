@@ -6,7 +6,7 @@
 // RET database connection object
 function db_priv_pdo_start() {
     try {
-        $db = new PDO('mysql:host=localhost;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
+        $db = new PDO('mysql:host=localhost;port=3891;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
         $db->exec("SET CHARACTER SET utf8");
         return $db;
     } catch (PDOException $e) {
@@ -1426,14 +1426,17 @@ EOF;
         $os=php_uname('s');
         switch($os) {
                 case 'Linux':
-                        exec("../../bin/mysqldump -u cultibox -pcultibox -t -T tmp/ cultibox $name --fields-terminated-by=,");
+                        exec("../../bin/mysqldump -u cultibox -pcultibox --port=3891 -t -T tmp/ cultibox $name --fields-terminated-by=,");
                         break;
-
-                case 'Mac':
-                        exec("../../bin/mysqldump -u cultibox -pcultibox -t -T tmp/ cultibox $name --fields-terminated-by=,");
+                  case 'Mac'||'Darwin':
+                        exec("../../bin/mysqldump -u cultibox -pcultibox --port=3891 -t -T /tmp/ cultibox $name --fields-terminated-by=,");
+                        copy("/tmp/$name.txt","$file");
+                        copy("/tmp/$name.sql","tmp/$name.sql");
+                        unlink("/tmp/$name.txt");
+                        unlink("/tmp/$name.sql");
                         break;
                 case 'Windows NT':
-                        exec("..\..\mysql\bin\mysqldump.exe -u cultibox -pcultibox -t -T tmp cultibox $name --fields-terminated-by=,");
+                        exec("..\..\mysql\bin\mysqldump.exe -u cultibox -pcultibox --port=3891 -t -T tmp cultibox $name --fields-terminated-by=,");
                         break;
         }
        if (copy("tmp/$name.txt","$file")) {

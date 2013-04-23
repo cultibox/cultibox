@@ -18,30 +18,30 @@
    </rights>
 
    <entry>
-      <title>Perigee</title>
-      <summary>Date des Perigee</summary>
-      <updated>2013-04-16T13:14:57+02:00</updated>
+      <title>Périgée</title>
+      <summary>Date des Périgées</summary>
+      <updated>2013-04-22T23:19:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "perigee" label = "Perigee" />
       <content type = "text">
          Perigee: ne pas jardiner.
       </content>
       <duration>0</duration>
-      <start>2013-01-01T21:17:00+00:00</start>
+      <start>2013-01-10T11:26:00+00:00</start>
       <period>0000-00-27T13:18:33</period>
    </entry>
    
    <entry>
-      <title>Apogee</title>
-      <summary>Date des Apogee</summary>
-      <updated>2013-04-16T13:14:57+02:00</updated>
+      <title>Apogée</title>
+      <summary>Date des Apogée</summary>
+      <updated>2013-04-22T23:19:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "apogee" label = "Apogee" />
       <content type = "text">
-         Apogee: ne pas jardiner.
+         Apogée: ne pas jardiner.
       </content>
       <duration>0</duration>
-      <start>2013-01-16T01:54:00+00:00</start>
+      <start>2013-01-22T11:52:00+00:00</start>
       <period>0000-00-27T13:18:33</period>
    </entry>
 
@@ -55,14 +55,14 @@
          Noeud lunaire: ne pas jardiner.
       </content>
       <duration>0</duration>
-      <start>2013-04-26T06:00:00+02:00</start>
+      <start>2013-01-07T06:00:00+02:00</start>
       <period>0000-00-13T17:32:48+00:00</period>
    </entry>
 
    <entry>
       <title> Pleine Lune </title>
       <summary> Pleine Lune </summary>
-      <updated>2013-04-16T13:14:57+02:00</updated>
+      <updated>2013-04-22T23:19:57+02:00</updated>
       <id>http://www.cultibox.fr/id2</id>
       <category term = "pleine_lune" label = "Pleine lune" />
       <content type = "text">
@@ -76,7 +76,7 @@
    <entry>
       <title> Lune Nouvelle </title>
       <summary> Lune Nouvelle </summary>
-      <updated>2013-04-16T13:14:57+02:00</updated>
+      <updated>2013-04-22T23:19:57+02:00</updated>
       <id>http://www.cultibox.fr/id2</id>
       <category term = "lune_nouvelle" label = "Lune nouvelle" />
       <content type = "text">
@@ -90,7 +90,7 @@
    <entry>
       <title> Lune montante </title>
       <summary> Lune montante </summary>
-      <updated>2013-04-16T13:14:57+02:00</updated>
+      <updated>2013-04-22T23:19:57+02:00</updated>
       <id>http://www.cultibox.fr/id2</id>
       <category term = "lune_montante" label = "lune montante" />
       <content type = "text">
