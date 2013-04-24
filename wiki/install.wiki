@@ -44,7 +44,8 @@ Pour une aide plus détaillée, consulter la page suivante : [gui_soft_wizard As
 La Cultibox est prévue pour être installer à l'extérieur de l'environnement de culture. 
 
 === Mise en route de la pile ===
-Ôter le film situé à coté du port USB. Cela permet à la pile de la Cultibox d'entrer en fonction.
+Ôter le film situé à coté du port USB. Cela permet à la pile de la Cultibox d'entrer en fonction. A partir du moment ou vous enlevez ce film, l'horloge interne de la Cultibox est mise en marche. 
+Le fait d'enlever le film ne fait pas démarrer la Cultibox.
 
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_pile.jpg
 
