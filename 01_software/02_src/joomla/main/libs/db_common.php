@@ -1428,7 +1428,8 @@ EOF;
                 case 'Linux':
                         exec("../../bin/mysqldump -u cultibox -pcultibox --port=3891 -t -T tmp/ cultibox $name --fields-terminated-by=,");
                         break;
-                  case 'Mac'||'Darwin':
+                case 'Mac':
+                case 'Darwin':
                         exec("../../bin/mysqldump -u cultibox -pcultibox --port=3891 -t -T /tmp/ cultibox $name --fields-terminated-by=,");
                         copy("/tmp/$name.txt","$file");
                         copy("/tmp/$name.sql","tmp/$name.sql");
