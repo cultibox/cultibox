@@ -49,6 +49,8 @@ ALTER TABLE `cultibox`.`calendar` ADD `Color` VARCHAR( 7 ) NOT NULL DEFAULT '#00
 ALTER TABLE `cultibox`.`calendar` CHANGE `IsAllDayEvent` `External` SMALLINT( 6 ) NOT NULL DEFAULT '0';
 REVOKE ALL PRIVILEGES ON * . * FROM 'cultibox'@'localhost';
 REVOKE GRANT OPTION ON * . * FROM 'cultibox'@'localhost';
-
-
 GRANT SELECT , INSERT , UPDATE , DELETE , DROP, LOCK TABLES, FILE ON * . * TO 'cultibox'@'localhost' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+
+-- Version 1.1.14:
+ALTER TABLE `power` ADD INDEX ( `timestamp` );
+ALTER TABLE `logs` ADD INDEX ( `timestamp` );
