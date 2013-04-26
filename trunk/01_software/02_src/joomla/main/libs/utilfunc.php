@@ -599,7 +599,8 @@ function get_sd_card(&$hdd="") {
                         }
                         break;
 
-                case 'Mac'||'Darwin':
+                case 'Mac':
+                case 'Darwin':
                         $dir="/Volumes";
                         if(is_dir($dir)) {
                                 $rep = opendir($dir);
