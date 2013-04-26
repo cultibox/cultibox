@@ -1054,9 +1054,6 @@ msgstr "Licence"
 msgid "ERROR_MESSAGE"
 msgstr "Avertissement(s)"
 
-msgid "PROBLEM_CLOSING_CONNECTION"
-msgstr "Problème pendant la fermeture de la connexion"
-
 msgid "ERROR_UPDATE_SQL"
 msgstr "Erreur dans la requête SQL UPDATE"
 
