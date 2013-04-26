@@ -89,14 +89,14 @@ if((!isset($sd_card))||(empty($sd_card))) {
 if((isset($_POST['selected_hdd']))&&(!empty($_POST['selected_hdd']))&&(isset($_POST['reset_sd_card']))&&(!empty($_POST['reset_sd_card']))) {
     $_SESSION['submenu']="card_interface";
     $url="./configuration-".$_SESSION['SHORTLANG'];
-    header("Refresh: 5;url=$url");
+    header("Refresh: 2;url=$url");
 } elseif(((isset($_SESSION['import_log']))&&($_SESSION['import_log']))) {
     if((isset($anchor))&&(!empty($anchor))) {
         $url="./display-logs-".$_SESSION['SHORTLANG']."#$anchor";
-        header("Refresh: 5;url=$url");
+        header("Refresh: 2;url=$url");
     } else { 
         $url="./display-logs-".$_SESSION['SHORTLANG'];
-        header("Refresh: 5;url=$url");
+        header("Refresh: 2;url=$url");
     }
 } else if(isset($_POST['startmonth'])) {
     $with_sd=false;
@@ -104,7 +104,7 @@ if((isset($_POST['selected_hdd']))&&(!empty($_POST['selected_hdd']))&&(isset($_P
         $with_sd=true;    
     } 
     $url="./display-logs-".$_SESSION['SHORTLANG'];
-    header("Refresh: 5;url=$url");
+    header("Refresh: 2;url=$url");
 }
 
 //Display the waiting template
