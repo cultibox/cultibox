@@ -1053,9 +1053,6 @@ msgstr "License"
 msgid "ERROR_MESSAGE"
 msgstr "Warning(s)"
 
-msgid "PROBLEM_CLOSING_CONNECTION"
-msgstr "Problem during the connection close procedure"
-
 msgid "ERROR_UPDATE_SQL"
 msgstr "Error during the update sql request"
 

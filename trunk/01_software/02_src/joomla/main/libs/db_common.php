@@ -6,7 +6,7 @@
 // RET database connection object
 function db_priv_pdo_start() {
     try {
-        $db = new PDO('mysql:host=localhost;port=3891;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
+        $db = new PDO('mysql:host=127.0.0.1;port=3891;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
         $db->exec("SET CHARACTER SET utf8");
         return $db;
     } catch (PDOException $e) {
