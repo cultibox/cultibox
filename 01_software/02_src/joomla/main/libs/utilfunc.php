@@ -567,20 +567,6 @@ function get_sd_card(&$hdd="") {
         $os=php_uname('s');
         switch($os) {
                 case 'Linux':
-                        /* 
-                        $dir="/media";
-                        if(is_dir($dir)) {
-                                $rep = opendir($dir);
-                                while ($f = readdir($rep)) {
-                                        if(is_dir("$dir/$f")) {
-                                                if(check_cultibox_card("$dir/$f")) {
-                                                        return "$dir/$f";
-                                                }
-                                        }
-                                }
-                        }
-                        */
-
                         //In Ubuntu Quantal mounted folders are now in /media/$USER directory
                         $user=get_current_user();
                         if((isset($user))&&(!empty($user))) {
@@ -606,7 +592,7 @@ function get_sd_card(&$hdd="") {
                                 $rep = opendir($dir);
                                         while ($f = readdir($rep)) {
                                         if(is_dir("$dir/$f")) {
-                                                $hdd[]="$dir/$f";
+                                                if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) $hdd[]="$dir/$f";
                                                 if(check_cultibox_card("$dir/$f")) {
                                                         $ret="$dir/$f";
                                                 }

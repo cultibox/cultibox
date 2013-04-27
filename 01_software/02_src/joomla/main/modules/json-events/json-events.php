@@ -1,5 +1,6 @@
 <?php
 
+usleep(500000);
 require_once('../../../main/libs/db_common.php');
 if(!$db = db_priv_pdo_start()) return false;
 

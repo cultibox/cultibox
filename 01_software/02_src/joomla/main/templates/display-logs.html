@@ -204,6 +204,8 @@ buttonImageOnly: 'true',
 <?php if($check_format) { ?>
 <script type="text/javascript">
 
+var extremes_save = null;
+
 Highcharts.setOptions({
 lang: {
 <?php echo "resetZoom : '".__('RESET_ZOOM','highchart')."',"; ?>
@@ -701,12 +703,19 @@ $(function () {
             }
 
             if(chart.axes[0].series[i].type=='spline') {
-                chart.yAxis[i].setExtremes(0, 5000);
-                showzoom=true;
+                if(extremes_save) {
+                    chart.yAxis[i].setExtremes(extremes_save.min, extremes_save.max);
+                    extremes_save=null;
+                    showzoom=true;
+                }
             }         
         }
 
         chart.xAxis[0].setExtremes(null, null,true, true);
+        $("#min_y_axis").prop("selectedIndex",0);
+        $("#max_y_axis").prop("selectedIndex",0);
+        $("#min_y_axis_power").prop("selectedIndex",0);
+        $("#max_y_axis_power").prop("selectedIndex",0);
 
         if(showzoom) {
             $('#resetzoom').hide();
@@ -764,6 +773,9 @@ $(function () {
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='spline') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+                        if(!extremes_save) {
+                            extremes_save=extremes;
+                        }
                         showzoom=true;
                     }
                 }
@@ -785,6 +797,9 @@ $(function () {
                 if(extremes.min<$(this).val()) {
                     if(chart.axes[0].series[i].type=='spline') {
                         chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+                        if(!extremes_save) {
+                            extremes_save=extremes;
+                        }
                         showzoom=true;
                     }
                 }
