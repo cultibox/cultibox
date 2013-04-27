@@ -357,12 +357,12 @@ $(document).ready(function() {
      <td></td>
      <td><?php echo __('VALUE_ON_OFF'); ?>:</td>
      <td><?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"other")==0)) { ?>
-            <select id="regul_program" name="regul_program" id="regul_program" onChange="getRegulation(this.selectedIndex,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);"> 
+            <select name="regul_program" id="regul_program" onChange="getRegulation(this.selectedIndex,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);"> 
                 <option value="on" <?php if(strcmp("$regul_program","on")==1) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
                 <option value="off" <?php if(strcmp("$regul_program","off")==0) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
             </select>
             <?php } else { ?>
-             <select id="regul_program" name="regul_program" id="regul_program" onChange="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);">
+             <select name="regul_program" id="regul_program" onChange="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);">
 			     <option value="on" <?php if(strcmp("$regul_program","on")==0) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
                  <option value="off" <?php if(strcmp("$regul_program","off")==0) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
                  <option value="regul" <?php if(strcmp("$regul_program","regul")==0) { ?>selected<?php } ?>><?php echo __('VALUE_REGUL'); ?></option>
