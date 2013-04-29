@@ -261,7 +261,7 @@ Exemple:
 
 
 ===== Couleur =====
-Cette balise permet de définir la couleur qui sera utilisé pour être afficher dans le calendrier du logiciel. La couleur peut être définie aussi bien que par son nom anglais (exemple: red, yellow...) que par son code hexadécimal (exemple: #ffffff, #A485E9 ...)
+Cette balise permet de définir la couleur qui sera utilisée lors de l'affichage de l'évènement dans le calendrier du logiciel. La couleur peut être définie aussi bien par son nom anglais (exemple: red, yellow...) que par son code hexadécimal (exemple: #ffffff, #A485E9 ...)
 
 Exemple:
 
