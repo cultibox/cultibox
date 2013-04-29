@@ -8,6 +8,7 @@ Cultibox (1.1.14) precise; urgency=low
     + Suppression du fichier json-refresh.php puisque chaque script gère indépendamenet sa partie d'écriture sur la carte SD
     + Optimisation de la recherche de la carte SD: on oublie les repertoire . et ..
     + Debug des commandes mysql: sous windows Vista, les commandes mysql utilisant localhost pour créer une connexion plantent, on passe à l'adresse 127.0.0.1
+    + Ajout des fichiers de langues pour la datepicker
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Apr 26 11:02:38 CEST 2013
 
