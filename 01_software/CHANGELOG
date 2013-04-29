@@ -1,5 +1,6 @@
 Cultibox (1.1.17) precise; urgency=low
     + Correction du calendrier: les evènements sur deux mois fonctionnent à nouveau
+    + Les accents dans les fichiers calc sont maintenant bien pris en compte
 
 -- Yann Genevois <yann.genevois@gmail.com> Mon Apr 29 21:45:39 CEST 2013
 

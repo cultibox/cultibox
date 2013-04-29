@@ -1885,25 +1885,31 @@ EOF;
          $count=0;
          $number=0;
 
-         for($i=0;$i<strlen($val['Title']);$i++) {
+         $value=array();
+         $len = mb_strlen($val['Title'], "UTF-8");
+         for ($i = 0; $i < $len; $i++) {
+             $value[] = mb_substr($val['Title'], $i, 1, "UTF-8");
+         }
+
+         for($i=0;$i<count($value);$i++) {
             $count=$count+1;
             if($count==1) {
-               if(strcmp($val['Title'][$i]," ")==0) {
+               if(strcmp($value[$i]," ")==0) {
                   $count=0;
                } else {
-                  $line=$line.$val['Title'][$i];
+                  $line=$line.$value[$i];
                }
             } else {
-                 $line=$line.$val['Title'][$i];
+                 $line=$line.$value[$i];
             }
 
             if($count==12) {
-               if((strcmp($val['Title'][$i]," ")!=0)&&(isset($val['Title'][$i+1]))&&(strcmp($val['Title'][$i+1]," ")!=0)) {
-                  if(isset($val['Title'][$i+2])) {
+               if((strcmp($value[$i]," ")!=0)&&(isset($value[$i+1]))&&(strcmp($value[$i+1]," ")!=0)) {
+                  if(isset($value[$i+2])) {
                      $line=$line."-";
                      $count=$count+1;
                   }
-               } elseif(strcmp($val['Title'][$i]," ")==0) {
+               } elseif(strcmp($value[$i]," ")==0) {
                      $line=$line." ";
                      $count=$count+1;
               }
@@ -1935,8 +1941,13 @@ EOF;
          if((isset($val['Description']))&&(!empty($val['Description']))) {
             $count=0;
             $line="";
-            for($i=0;$i<strlen($val['Description']);$i++) {
-               if(strcmp($val['Description'][$i],"\n")==0) {
+            $value=array();
+            $len = mb_strlen($val['Description'], "UTF-8");
+            for ($i = 0; $i < $len; $i++) {
+                $value[] = mb_substr($val['Description'], $i, 1, "UTF-8");
+            }
+            for($i=0;$i<count($value);$i++) {
+               if(strcmp($value[$i],"\n")==0) {
                    while(mb_strlen($line)<=12) {
                         $line=$line." ";
                    }
@@ -1946,22 +1957,22 @@ EOF;
                } else {
                    $count=$count+1;
                    if($count==1) {
-                        if(strcmp($val['Description'][$i]," ")==0) {
+                        if(strcmp($value[$i]," ")==0) {
                             $count=0;
                         } else {
-                            $line=$line.$val['Description'][$i];
+                            $line=$line.$value[$i];
                         }
                     } else {
-                            $line=$line.$val['Description'][$i];
+                            $line=$line.$value[$i];
                     }
 
                     if($count==12) {
-                        if((strcmp($val['Description'][$i]," ")!=0)&&(isset($val['Description'][$i+1]))&&(strcmp($val['Description'][$i+1]," ")!=0)) {
-                            if(isset($val['Description'][$i+2])) {
+                        if((strcmp($value[$i]," ")!=0)&&(isset($value[$i+1]))&&(strcmp($value[$i+1]," ")!=0)) {
+                            if(isset($value[$i+2])) {
                                 $line=$line."-";
                                 $count=$count+1;
                             }
-                        } elseif(strcmp($val['Description'][$i]," ")==0) {
+                        } elseif(strcmp($value[$i]," ")==0) {
                                 $line=$line." ";
                                 $count=$count+1;
                         }
