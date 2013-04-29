@@ -1,3 +1,10 @@
+Cultibox (1.1.15) precise; urgency=low
+    + Ajout des fichiers de langues pour la datepicker
+    + Modificaition de localhost en 127.0.0.1 dans le fichier configuration.php de joomla
+
+-- Yann Genevois <yann.genevois@gmail.com> Mon Apr 29 14:32:31 CEST 2013
+
+
 Cultibox (1.1.14) precise; urgency=low
     + Correction de la connxion PDO: passage de localhost à 127.0.0.1 (problème de timeout due au reverse DNS IPV6)
     + Correction des cases avec plusieurs valeurs qui ne marchaient pas
@@ -8,7 +15,6 @@ Cultibox (1.1.14) precise; urgency=low
     + Suppression du fichier json-refresh.php puisque chaque script gère indépendamenet sa partie d'écriture sur la carte SD
     + Optimisation de la recherche de la carte SD: on oublie les repertoire . et ..
     + Debug des commandes mysql: sous windows Vista, les commandes mysql utilisant localhost pour créer une connexion plantent, on passe à l'adresse 127.0.0.1
-    + Ajout des fichiers de langues pour la datepicker
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Apr 26 11:02:38 CEST 2013
 

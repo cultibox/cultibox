@@ -12,7 +12,7 @@ class JConfig {
 	public $debug = '0';
 	public $debug_lang = '0';
 	public $dbtype = 'mysqli';
-	public $host = 'localhost';
+	public $host = '127.0.0.1';
 	public $user = 'root';
 	public $password = 'cultibox';
 	public $db = 'cultibox_joomla';
