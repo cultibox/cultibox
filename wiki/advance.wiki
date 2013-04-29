@@ -181,7 +181,7 @@ Exemple:
 }}}
 
 ==== Catégorie ====
-Cette information permet de Elle nous permet d'identifier quel type d'engrais est contenu dans ce fichier.
+Cette information permet d'identifier quel type d'engrais est contenu dans ce fichier.
 Les catégories disponible sont:
 || *term* || *label* ||
 || bouture || Bouturage ||
@@ -259,6 +259,17 @@ Exemple:
 <dosage>3ml/l</dosage>
 }}}
 
+
+===== Couleur =====
+Cette balise permet de définir la couleur qui sera utilisé pour être afficher dans le calendrier du logiciel. La couleur peut être définie aussi bien que par son nom anglais (exemple: red, yellow...) que par son code hexadécimal (exemple: #ffffff, #A485E9 ...)
+
+Exemple:
+
+{{{
+<color>red</color>
+}}}
+
+
 == Exemple de fichier ==
 
 {{{
@@ -294,6 +305,7 @@ Exemple:
       <start>0</start>
       <nutriment>Engrais 1</nutriment>
       <dosage>3ml/l</dosage>
+      <color>red</color>
    </entry>
    
    <entry>
@@ -320,6 +332,7 @@ Exemple:
       <start>14</start>
       <nutriment>Engrais 3</nutriment>
       <dosage>2ml/l</dosage>
+      <color>#48A78E</color>
    </entry>
 
 </feed>
