@@ -575,9 +575,11 @@ function get_sd_card(&$hdd="") {
                                 $rep = opendir($dir);
                                 while ($f = readdir($rep)) {
                                         if(is_dir("$dir/$f")) {
-                                                if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) $hdd[]="$dir/$f";
-                                                if(check_cultibox_card("$dir/$f")) {
+                                                if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
+                                                    $hdd[]="$dir/$f";
+                                                    if(check_cultibox_card("$dir/$f")) {
                                                         $ret="$dir/$f";
+                                                    }
                                                 }
                                         }
                                 }
@@ -592,9 +594,11 @@ function get_sd_card(&$hdd="") {
                                 $rep = opendir($dir);
                                         while ($f = readdir($rep)) {
                                         if(is_dir("$dir/$f")) {
-                                                if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) $hdd[]="$dir/$f";
-                                                if(check_cultibox_card("$dir/$f")) {
+                                                if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
+                                                    $hdd[]="$dir/$f";
+                                                    if(check_cultibox_card("$dir/$f")) {
                                                         $ret="$dir/$f";
+                                                    }
                                                 }
                                         }
                                 }
@@ -635,7 +639,7 @@ function get_sd_card(&$hdd="") {
 // RET true if it's a cultibox directory, false else
 function check_cultibox_card($dir="") {
    if((is_file("$dir/plugv"))&&(is_file("$dir/pluga"))&&(is_dir("$dir/logs"))) {
-         return true;
+                return true;
    } 
    return false;
 }
@@ -1010,8 +1014,13 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
 // RET return an array containing all datas for the day checked
 function concat_calendar_entries($data,$month,$day) {
          $new_data=array();
+           
          foreach($data as $val) {
-            if(($val['start_month']<=$month)&&($val['end_month']>=$month)&&($val['start_day']<=$day)&&($val['end_day']>=$day)) {
+            $current=strtotime("$month/$day");
+            $start=strtotime($val['start_month']."/".$val['start_day']);
+            $end=strtotime($val['end_month']."/".$val['end_day']);
+
+            if(($start<=$current)&&($end>=$current)) {
                if(empty($new_data)) {
                   $new_data=$val;
                } else {
@@ -1039,19 +1048,104 @@ function concat_calendar_entries($data,$month,$day) {
 }
 // }}}
 
+// {{{ clean_calendar()
+// ROLE delete all calc_XX files 
+// IN $sd_card         sd card location
+//    $start           start and end: to clean just a part of the calendar
+//    $end             if empty: clean all the calendar
+// RET false if an error occured, true else
+function clean_calendar($sd_card="",$start="",$end="") {
+    if(strcmp("$sd_card","")==0) return false;
+
+    $path="$sd_card/logs";
+    if(is_dir($path)) {
+        if((strcmp("$start","")==0)||(strcmp("$end","")==0)) {
+            for($i=1;$i<=12;$i++) {
+                if(strlen("$i")<2) {
+                    $i="0".$i;
+                }
+        
+                $sq = opendir($path."/".$i); 
+                while ($f = readdir($sq)) {
+                    if("$f" != "." && "$f" != "..") {
+                        if(preg_match('/^cal_/', $f)) {
+                            unlink($path."/".$i."/".$f);
+                        }
+                    }
+                }
+            }
+        } elseif((strcmp("$start","")!=0)&&(strcmp("$end","")==0)) {
+            $stmon=substr($start,5,2);
+            $stday=substr($start,8,2);
+
+            if(is_file($sd_card."/logs".$stmon."/cal_".$stday)) {
+                unlink($sd_card."/logs".$stmon."/cal_".$stday);
+            }
+        } elseif((strcmp("$start","")!=0)&&(strcmp("$end","")!=0)) {
+            $stmon=substr($start,5,2);
+            $stday=substr($start,8,2);
+            $edmon=substr($end,5,2);
+            $edday=substr($end,8,2);
+
+           for($i=$stmon;$i<=$edmon;$i++) {
+               while(1) {
+                    if(strlen("$i")<2) {
+                        $i="0".$i;
+                    } 
+                
+                    if(strlen("$stday")<2) {
+                        $stday="0".$stday;
+                    }
+
+                    if(is_file($sd_card."/logs/".$i."/cal_".$stday)) {
+                        unlink($sd_card."/logs/".$i."/cal_".$stday);
+                    }
+                   
+                    if(($stday==31)||(($stday==$edday)&&($i==$edmon))) {
+                        $stday=1;
+                        break;
+                    }
+                    $stday=$stday+1;
+               }
+           }
+        }
+    }
+    return true;
+}
+// }}}
+
 
 // {{{ write_calendar()
 // ROLE save calendar informations into the SD card
 // IN $sd_card         sd card location
 //    $data            data to write into the sd card
 //    $out             error or warning messages
+//    $start           write calendar between two dates
+//    $end             if start and end are not set: write full calendar
 // RET false if an error occured, true else
-function write_calendar($sd_card,$data,&$out) {
+function write_calendar($sd_card,$data,&$out,$start="",$end="") {
    $status=true;
    if(isset($sd_card)&&(!empty($sd_card))) {
       if(count($data)>0) {
-         for($month=1;$month<=12;$month++) {
-            for($day=1;$day<=31;$day++) {
+        if((strcmp("$start","")==0)&&(strcmp("$end","")==0)) {
+            $month_end=12;
+            $month_start=1;
+            $day_end=31;
+            $day_start=1;
+         } else if((strcmp("$start","")!=0)&&(strcmp("$end","")==0)) {
+            $month_end=substr($start,5,2);
+            $month_start=$month_end;
+            $day_end=substr($start,8,2);
+            $day_start=$day_end;
+        } else {
+            $month_start=substr($start,5,2);
+            $day_start=substr($start,8,2);
+            $month_end=substr($end,5,2);
+            $day_end=substr($end,8,2);
+        }
+
+        for($month=$month_start;$month<=$month_end;$month++) {
+            for($day=$day_start;$day<=$day_end;$day++) {
                $val=concat_calendar_entries($data,$month,$day);
                if(!empty($val)) {
                   while(strlen($day)<2) {
@@ -1064,6 +1158,7 @@ function write_calendar($sd_card,$data,&$out) {
                   $file="$sd_card/logs/$month/cal_$day";
                   if($f=fopen("$file","w+")) {
                      // format number of line to show. Must be 3 caractere width
+                     
                      $number_to_show  = "$val[number]";
                      while(strlen($number_to_show)<3) {
                         $number_to_show="0$number_to_show";
@@ -1087,7 +1182,7 @@ function write_calendar($sd_card,$data,&$out) {
                   unset($val);
                }
           }
-        }
+       }
      }
     }
     return $status;

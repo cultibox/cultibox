@@ -68,11 +68,11 @@ buttonImageOnly: 'true',
 <div id="label_select_type">
 <label id="anchor-logs"></label>
 <form>
-<table>
+<table class="table_width">
     <tr>
         <td class="log-marge-day-main"></td>
-        <td class="log-marge-day-title"><b><?php echo __('SELECT_DISPLAYED_DAY'); ?>:</b></td>
-        <td class="log-marge-day-field"><input type= "radio" id="select_day" name="type_select" value="day" <?php if(strcmp($type,"days")==0) echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?><input type= "radio" id="select_month" name="type_select" value="month" <?php if(strcmp($type,"month")==0) echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
+        <td class="log-marge-day-title-select"><b><?php echo __('SELECT_DISPLAYED_DAY'); ?>:</b></td>
+        <td class="log-marge-day-field-select"><input type= "radio" id="select_day" name="type_select" value="day" <?php if(strcmp($type,"days")==0) echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?><input type= "radio" id="select_month" name="type_select" value="month" <?php if(strcmp($type,"month")==0) echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
         </td>
         <td></td>
     </tr>
@@ -213,6 +213,8 @@ lang: {
 }
 });
 
+var showzoomX = false;
+
 $(function () {
    var chart;
    $(document).ready(function() {
@@ -266,7 +268,8 @@ $(function () {
             },
             events: {
                 afterSetExtremes: function(event){
-                    $('#resetzoom').show();
+                    $('#resetXzoom').show();
+                    showzoomX=true;
                 }
             }
          },
@@ -712,6 +715,8 @@ $(function () {
         }
 
         chart.xAxis[0].setExtremes(null, null,true, true);
+        $('#resetXzoom').hide();
+        showzoomX=false;
         $("#min_y_axis").prop("selectedIndex",0);
         $("#max_y_axis").prop("selectedIndex",0);
         $("#min_y_axis_power").prop("selectedIndex",0);
@@ -719,6 +724,16 @@ $(function () {
 
         if(showzoom) {
             $('#resetzoom').hide();
+        }
+
+    });
+
+
+    $('#resetXzoom').click(function() {
+        if(showzoomX) {
+            chart.xAxis[0].setExtremes(null, null,true, true); 
+            $('#resetXzoom').hide();
+            showzoomX=false;
         }
 
     });
@@ -761,7 +776,6 @@ $(function () {
         if(showzoom) {
             $('#resetzoom').show();
         }
-
     });
 
 
@@ -890,7 +904,7 @@ $(function () {
     </td>
 </tr>
 </table>
-<p class="p_center"><button id="resetzoom" name="button" style="display:none"><?php echo __('RESET_ZOOM'); ?></button></p>
+<p class="p_center"><button id="resetXzoom" name="buttonX" style="display:none"><?php echo __('RESET_X_ZOOM'); ?></button> <button id="resetzoom" name="button" style="display:none"><?php echo __('RESET_ZOOM'); ?></button></p>
 <br />
 <table class="table_width">
 <tr>

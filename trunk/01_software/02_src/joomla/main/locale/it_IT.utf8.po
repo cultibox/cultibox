@@ -733,7 +733,10 @@ msgid "EXPORT_SVG"
 msgstr "Exporter au format SVG"
 
 msgid "RESET_ZOOM"
-msgstr "Annuler le zoom"
+msgstr "Annuler les différents zoom"
+
+msgid "RESET_X_ZOOM"
+msgstr "Annuler le zoom temporel"
 
 msgid "RESET_ZOOM_TITLE"
 msgstr "Annuler le zoom"

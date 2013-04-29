@@ -1852,14 +1852,25 @@ EOF;
 // ROLE read calendar from the database and format its to be write into a sd card
 // IN   $out         error or warning message
 // RET an array containing datas
-function create_calendar_from_database(&$out) {
+function create_calendar_from_database(&$out,$start="",$end="") {
         $year=date('Y');
         $data=array();
         $db = db_priv_pdo_start();
-        $sql = <<<EOF
+        if((strcmp("$start","")!=0)&&((strcmp("$end","")!=0))) {
+             $sql = <<<EOF
+SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` BETWEEN '{$start}' AND '{$end}'
+EOF;
+        } else if((strcmp("$start","")!=0)&&((strcmp("$end","")==0))) {
+             $sql = <<<EOF
+SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$start}"
+EOF;
+
+        } else {
+            $sql = <<<EOF
 SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%"
 EOF;
-      foreach($db->query("$sql") as $val) {
+        }
+        foreach($db->query("$sql") as $val) {
          $s=array();
          $desc=array();
          $line="";

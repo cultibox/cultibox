@@ -1,11 +1,15 @@
 <?php
 
+require_once('../../../main/libs/config.php');
 require_once('../../../main/libs/db_common.php');
+require_once('../../../main/libs/utilfunc.php');
 
 $title=$_POST["title"];
 $start=$_POST["start"];
 $end=$_POST["end"];
 $color=$_POST["color"];
+$sd_card=$_POST["card"];
+$main_error=array();
 
 
 
@@ -30,6 +34,18 @@ EOF;
             if($db = db_priv_pdo_start()) {
                 $db->exec("$sql");
                 $db=null;
+
+                if((isset($sd_card))&&(!empty($sd_card))) {
+                    if((strcmp("$start","$end")==0)||(!isset($end))||(empty($end))) {
+                        $calendar=create_calendar_from_database($main_error,$start);
+                    } else {
+                        $calendar=create_calendar_from_database($main_error,$start);
+                    }
+
+                    if(count($calendar)>0) {
+                        write_calendar($sd_card,$calendar,$main_error);
+                    }
+                }
             }
 }
 

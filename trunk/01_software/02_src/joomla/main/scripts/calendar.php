@@ -131,20 +131,6 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
 }
 
 
-// Part for the calendar: if a cultibox SD card is present, the 'calendar' is updated into this SD card
-if((isset($sd_card))&&(!empty($sd_card))) {
-   $data=create_calendar_from_database($main_error);
-   if(count($data)>0) {
-      if(!check_sd_card($sd_card)) {
-            $main_error[]=__('ERROR_WRITE_CALENDAR');
-      } else {
-            write_calendar($sd_card,$data,$main_error);
-      }
-   }
-   $main_info[]=__('INFO_SD_CARD').": $sd_card";
-}
-
-
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {
     if($sock = @fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
@@ -165,6 +151,21 @@ if((isset($reset))&&(!empty($reset))) {
         $pop_up_message=$pop_up_message.popup_message(__('VALID_DELETE_CALENDAR'));
         set_historic_value(__('VALID_DELETE_CALENDAR')." (".__('CALENDAR_PAGE').")","histo_info",$main_error);
     }
+}
+
+
+// Part for the calendar: if a cultibox SD card is present, the 'calendar' is updated into this SD card
+if((isset($sd_card))&&(!empty($sd_card))) {
+   $data=create_calendar_from_database($main_error);
+   if(!check_sd_card($sd_card)) {
+            $main_error[]=__('ERROR_WRITE_CALENDAR');
+   } else {
+            clean_calendar($sd_card);
+            if(count($data)>0) {
+                write_calendar($sd_card,$data,$main_error);
+            }
+   } 
+   $main_info[]=__('INFO_SD_CARD').": $sd_card";
 }
 
 

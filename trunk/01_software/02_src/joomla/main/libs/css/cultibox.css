@@ -153,6 +153,15 @@ td.log-marge-day-field {
    width: 20%;
 }
 
+td.log-marge-day-title-select {
+   width: 25%
+}
+
+td.log-marge-day-field-select {
+   width: 30%;
+}
+
+
 td.log-marge-month {
    width: 25%;
 }

@@ -1,7 +1,10 @@
 <?php
 
 usleep(500000);
+require_once('../../../main/libs/config.php');
 require_once('../../../main/libs/db_common.php');
+require_once('../../../main/libs/utilfunc.php');
+
 if(!$db = db_priv_pdo_start()) return false;
 
 // Initializes a container array for all of the calendar events

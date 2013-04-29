@@ -28,7 +28,11 @@
         } ?>
 </ul>
 </div>
-<?php } ?>
+
+<?php } 
+
+if(!isset($sd_card)) $sd_card="";
+?>
 <br /><br />
 
 <script>
@@ -93,7 +97,7 @@
                                         $.ajax({
                                             type: "POST",
                                             url: "http://localhost:6891/cultibox/main/modules/json-events/json-add-events.php",
-                                            data: 'title='+title+'&start='+new_start+'&end='+new_end+'&desc='+description+'&color='+color
+                                            data: 'title='+title+'&start='+new_start+'&end='+new_end+'&desc='+description+'&color='+color+'&card=<?php echo $sd_card; ?>'
                                         });
                                         }
                                         $('#calendar').fullCalendar('unselect');
@@ -101,13 +105,6 @@
                                         $('#calendar').fullCalendar( 'rerenderEvents' );
                                         $("#select_remark").text("");
                                         $("#select_remark").val("");
-                                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "http://localhost:6891/cultibox/main/modules/json-events/json-refresh.php",
-                                            data: 'sd_card=<?php echo $sd_card; ?>'
-                                        });
-                                        <?php } ?>
                                         delete event;
                                         return false;
                         },
@@ -136,16 +133,8 @@
                 $.ajax({
                       type: "POST",
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                      data: 'title='+event.title+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color
+                      data: 'title='+event.title+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
                 });
-
-                 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "http://localhost:6891/cultibox/main/modules/json-events/json-refresh.php",
-                                            data: 'sd_card=<?php echo $sd_card; ?>'
-                                        });
-                 <?php } ?>
 
             },
             eventResize: function( event, dayDelta, minuteDelta) { 
@@ -165,17 +154,8 @@
                 $.ajax({
                       type: "POST",
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                      data: 'title='+event.title+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color
+                      data: 'title='+event.title+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
                 });
-
-                 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "http://localhost:6891/cultibox/main/modules/json-events/json-refresh.php",
-                                            data: 'sd_card=<?php echo $sd_card; ?>'
-                                        });
-                                        <?php } ?>
-
             },
             eventClick: function(event, element) {
                      $("#title").text(event.title);
@@ -250,7 +230,7 @@
                                         $.ajax({
                                             type: "POST",
                                             url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                                            data: 'title='+title+'&start='+new_start+'&end='+new_end+'&desc='+description+'&id='+event.id+'&color='+color
+                                            data: 'title='+title+'&start='+new_start+'&end='+new_end+'&desc='+description+'&id='+event.id+'&color='+color+'&card=<?php echo $sd_card; ?>'
                                         });
                                         }
                                         event.title=title;
@@ -262,13 +242,6 @@
                                         $('#calendar').fullCalendar( 'rerenderEvents' );
                                         $("#select_remark").text("");
                                         $("#select_remark").val("");
-                                         <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "http://localhost:6891/cultibox/main/modules/json-events/json-refresh.php",
-                                            data: 'sd_card=<?php echo $sd_card; ?>'
-                                        });
-                                        <?php } ?>
 
                                         delete event;
                                         return false;
@@ -283,7 +256,7 @@
                                         $.ajax({
                                             type: "POST",
                                             url: "http://localhost:6891/cultibox/main/modules/json-events/json-remove-events.php",
-                                            data: 'id='+event.id
+                                            data: 'id='+event.id+'&card=<?php echo $sd_card; ?>'
                                         });
                                         $('#calendar').fullCalendar('removeEvents', event.id);
                                         $('#calendar').fullCalendar( 'refetchEvents' );
