@@ -32,6 +32,7 @@ $db=null;
 
 if ($handle = opendir('../../xml')) {
     while (false !== ($entry = readdir($handle))) {
+      if(($entry!=".")&&($entry!="..")) {
         $rss_file = file_get_contents("../../xml/".$entry);
         $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
         $id=10000;
@@ -92,6 +93,7 @@ if ($handle = opendir('../../xml')) {
                 }
             }
         }
+      }
     }
 }
 
