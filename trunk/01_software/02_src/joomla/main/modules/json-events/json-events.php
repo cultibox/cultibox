@@ -32,7 +32,6 @@ $db=null;
 
 if ($handle = opendir('../../xml')) {
     while (false !== ($entry = readdir($handle))) {
-      if(($entry!=".")&&($entry!="..")) {
         $rss_file = file_get_contents("../../xml/".$entry);
         $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
         $id=10000;
@@ -62,6 +61,13 @@ if ($handle = opendir('../../xml')) {
                                     }
                                 } 
                                 $actual_year=substr($val['start'], 0, 4);
+
+                                if(array_key_exists('color', $val))  {
+                                        $color=$val['color'];
+                                } else {
+                                        $color="#A4408D";
+                                }
+
  
                                 do {
                                     $start=date('Y-m-d H:i:s', $timestart);
@@ -72,7 +78,7 @@ if ($handle = opendir('../../xml')) {
                                             "start" => $start,
                                             "end" => $end,
                                             "description" => $val['content'],
-                                            "color" => "#A4408D",
+                                            "color" => $color,
                                             "external" => 1
                                             //"allDay" => false
                                         );
@@ -93,7 +99,6 @@ if ($handle = opendir('../../xml')) {
                 }
             }
         }
-      }
     }
 }
 
