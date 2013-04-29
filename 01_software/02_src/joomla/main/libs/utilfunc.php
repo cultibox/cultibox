@@ -1014,11 +1014,12 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
 // RET return an array containing all datas for the day checked
 function concat_calendar_entries($data,$month,$day) {
          $new_data=array();
-           
+
          foreach($data as $val) {
-            $current=strtotime("$month/$day");
+            $current=strtotime($month."/".$day);
             $start=strtotime($val['start_month']."/".$val['start_day']);
             $end=strtotime($val['end_month']."/".$val['end_day']);
+
 
             if(($start<=$current)&&($end>=$current)) {
                if(empty($new_data)) {
@@ -1144,14 +1145,14 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
             $day_end=substr($end,8,2);
         }
 
-        for($month=$month_start;$month<=$month_end;$month++) {
-            for($day=$day_start;$day<=$day_end;$day++) {
+        $month=$month_start;
+        $day=$day_start;
+        while(1) {
                $val=concat_calendar_entries($data,$month,$day);
                if(!empty($val)) {
                   while(strlen($day)<2) {
                      $day="0$day";
                   }
-
                   while(strlen($month)<2) {
                      $month="0$month";
                   }
@@ -1175,15 +1176,20 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
                   } else {  
                     $status=false;
                   }
-
-                  if($day==31) {
-                     $day="01";
-                  } 
-                  unset($val);
                }
-          }
+
+               if(($month==$month_end)&&($day==$day_end)) break;
+
+               if($day==31) {
+                 $day="01";
+                 $month=$month+1;
+               } else {
+                 $day=$day+1;
+               }
+               unset($val);
+        } 
        }
-     }
+
     }
     return $status;
 }

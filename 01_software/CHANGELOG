@@ -1,3 +1,9 @@
+Cultibox (1.1.17) precise; urgency=low
+    + Correction du calendrier: les evènements sur deux mois fonctionnent à nouveau
+
+-- Yann Genevois <yann.genevois@gmail.com> Mon Apr 29 21:45:39 CEST 2013
+
+
 Cultibox (1.1.16) precise; urgency=low
     + Correction du calendrier pour windows: on ne regarde pas les repertoire . et .. pour la recherche de fichiers xml 
 
