@@ -138,31 +138,31 @@ var
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C apache_installservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\apache'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql_uninstallservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql_installservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysqladmin.exe -u root -h localhost  --port=3891 password cultibox'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\user_cultibox.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\fake_log.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysqladmin.exe -u root -h 127.0.0.1  --port=3891 password cultibox'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\user_cultibox.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\fake_log.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         
         case ActiveLanguage() of  { ActiveLanguage() retourne la langue chosie }
         'french' :  
             begin
-              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_fr.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_fr.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
             end;
         'english' :
             begin
-              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_en.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
+              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_en.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
             end;
          'italian' :
             begin
-              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_it.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
+              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_it.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
             end;
          'german' :
             begin
-              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_de.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
+              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_de.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
             end;
          'spanish' :
             begin
-              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_es.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
+              Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_es.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
             end;
          end;
      end;
@@ -173,9 +173,9 @@ var
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C setup_xampp.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox --force < {sd}\{#MyAppName}\xampp\sql_install\update_sql.sql 2>NULL'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "DROP DATABASE `cultibox_joomla`;"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h localhost --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox --force < {sd}\{#MyAppName}\xampp\sql_install\update_sql.sql 2>NULL'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE `cultibox_joomla`;"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C del {sd}\{#MyAppName}\xampp\htdocs\cultibox\main\templates_c\*.ser'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         MsgBox(ExpandConstant('{cm:CleanCache}'), mbInformation, MB_OK);
      end;     

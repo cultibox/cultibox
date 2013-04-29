@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "   * Configuring/checking Cultibox environment..."
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 
@@ -12,49 +13,54 @@ sed -i "s/Group nogroup/Group $group_culti/" /opt/lampp/etc/httpd.conf
 sed -i "s/user*.*= nobody/user    = $user_culti/" /opt/lampp/etc/my.cnf
 
 /opt/lampp/lampp restart
+echo "... OK"
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
-    /opt/lampp/bin/mysqladmin -u root -h localhost password cultibox
+    echo "   * Installing the Cultibox software..."
+    /opt/lampp/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
 
-    /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/user_cultibox.sql
-    /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/joomla.sql
+    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/user_cultibox.sql
+    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/joomla.sql
 
     lang=`echo $LANG`
     case "$lang" in
         fr_*)
-            /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_fr.sql
+            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_fr.sql
             ;;
         en_*)
-            /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_en.sql
+            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_en.sql
             ;;
         it_*)
-            /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_it.sql
+            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_it.sql
             ;;
         de_*)
-            /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_de.sql
+            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_de.sql
             ;;
         es_*)
-            /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_es.sql
+            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_es.sql
             ;;
         *)
-            /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_en.sql
+            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_en.sql
             ;;
     esac
-    /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/fake_log.sql
+    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/fake_log.sql
 
     cp /opt/lampp/daemon/cultibox /etc/init.d/
     chmod 755 /etc/init.d/cultibox
     update-rc.d cultibox defaults
 
     /opt/lampp/lampp restart
+    echo "... OK"
 else 
+    echo "   * A previous version of Cultibox was installed, upgrading your software..."
     home=`egrep "^$user_culti" /etc/passwd|awk -F":" '{print $6}'`
     if [ -f /opt/lampp/sql_install/update_sql.sql ]; then
-        /opt/lampp/bin/mysql -f -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/update_sql.sql 2>/dev/null
+        /opt/lampp/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/update_sql.sql 2>/dev/null
     fi
-    /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
-    /opt/lampp/bin/mysql -u root -h localhost --port=3891 -pcultibox < /opt/lampp/sql_install/joomla.sql
+    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
+    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/joomla.sql
     /opt/lampp/lampp restart
     rm -f /tmp/cultibox_upgrade
     rm -f /opt/cultibox/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
+    echo "... OK"
 fi

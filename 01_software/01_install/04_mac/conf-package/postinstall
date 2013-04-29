@@ -2,13 +2,13 @@
 
 set -x
 if [ -d /tmp/cultibox_backup/mysql ]; then
-    echo "  * An old saved of your Cultibox has been found, restoring datas..."
+    echo "   * An old saved of your Cultibox has been found, restoring datas..."
     cp -R /tmp/cultibox_backup/mysql /Applications/cultibox/xamppfiles/var/
-    echo "... OK!"
+    echo "...OK"
 fi
 
 
-echo "  * Configuring your CultiBox environment..."
+echo "   * Configuring your CultiBox environment..."
 if [ ! -L /Applications/XAMPP ]; then
     ln -s /Applications/cultibox /Applications/XAMPP
 fi
@@ -28,47 +28,47 @@ chmod -R 775 /Applications/cultibox/xamppfiles/var/mysql
 
 /Applications/XAMPP/xamppfiles/xampp restart
 sleep 5 
-echo "... OK"
+echo "...OK"
 if [ ! -d /tmp/cultibox_backup/mysql ]; then
-    echo "  * Configuring your Cultibox software..."
-    /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h localhost password cultibox
-    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/user_cultibox.sql
-    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/joomla.sql
+    echo "   * Configuring your Cultibox software..."
+    /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
+    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/user_cultibox.sql
+    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/joomla.sql
     lang=`defaults read /Library/Preferences/.GlobalPreferences AppleLanguages| tr -d [:space:] | cut -c2-3`
     if [ "$lang" == "En" ]; then
-        /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_en.sql
+        /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_en.sql
     elif [ "$lang" == "Fr" ]; then
-        /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_fr.sql
+        /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_fr.sql
     elif [ "$lang" == "De" ]; then
-	    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_de.sql
+	    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_de.sql
     elif [ "$lang" == "It" ]; then
-	    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_it.sql
+	    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_it.sql
     elif [ "$lang" == "Es" ]; then
-        /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_es.sql
+        /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_es.sql
     else
-	    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_en.sql
+	    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/cultibox_en.sql
     fi
-    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/XAMPP/sql_install/fake_log.sql
-    echo "... OK"
+    /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/fake_log.sql
+    echo "...OK"
 else
-    echo "  * Upgrading the Cultibox software configuration..."
+    echo "   * Upgrading the Cultibox software configuration..."
     if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
-        /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
+        /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
     fi
-    /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
-    /Applications/cultibox/xamppfiles/bin/mysql -u root -h localhost --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
+    /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
+    /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
     rm -Rf /tmp/cultibox_backup
     rm -f /Applications/cultibox/xamppfiles/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
-    echo "... OK"
+    echo "...OK"
 fi
 
-echo "  * Installing CultiBox as a service..."
+echo "   * Installing CultiBox as a service..."
 mv /Applications/cultibox/package/cultibox_apache.plist /System/Library/LaunchDaemons/
 mv /Applications/cultibox/package/cultibox_mysql.plist /System/Library/LaunchDaemons/
 chown root:wheel /System/Library/LaunchDaemons/cultibox_*.plist
 chmod 644 /System/Library/LaunchDaemons/cultibox_*.plist
-echo "... OK"
+echo "...OK"
 
-echo "  * Restarting the CultiBox interface..."
+echo "   * Restarting the CultiBox interface..."
 /Applications/XAMPP/xamppfiles/xampp restart
-echo "... OK"
+echo "...OK"

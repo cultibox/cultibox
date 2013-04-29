@@ -3,6 +3,11 @@ Cultibox (1.1.14) precise; urgency=low
     + Correction des cases avec plusieurs valeurs qui ne marchaient pas
     + Déplacement du boutton "resetzoom" des logs au centre en bas du graphe
     + Création des index sur le timestamp pour les tables des logs et power
+    + Correction d'un bug d'affichage des radios boutons dans les logs
+    + Modifications des scripts php du calendrier: les evènements sont directements écrits sur la carte sd et l'ont ne modifie plus que la plage de dates de lévènement pour optimiser
+    + Suppression du fichier json-refresh.php puisque chaque script gère indépendamenet sa partie d'écriture sur la carte SD
+    + Optimisation de la recherche de la carte SD: on oublie les repertoire . et ..
+    + Debug des commandes mysql: sous windows Vista, les commandes mysql utilisant localhost pour créer une connexion plantent, on passe à l'adresse 127.0.0.1
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Apr 26 11:02:38 CEST 2013
 
