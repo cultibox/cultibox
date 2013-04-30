@@ -241,22 +241,25 @@ $(function () {
             }
          },
          title: {
-             text: <?php echo "'<b>".__('HISTO_GRAPH','highchart')." (".$legend_date.")*</b>'"; ?>,
+	     useHTML: true,
+             text: <?php echo "'<b>".__('HISTO_GRAPH')." (".$legend_date.")*</b>'"; ?>,
          },
          subtitle: {
+	     useHTML: true,
              text: document.ontouchstart === undefined ?
-               <?php echo "'".__('DRAG_PLOT','highchart')."'"; ?>:
-               <?php echo "'".__('DRAG_PLOT','highchart')."'"; ?>
+               <?php echo "'".__('DRAG_PLOT')."'"; ?>:
+               <?php echo "'".__('DRAG_PLOT')."'"; ?>
          },
          lang: {
-            printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART','highchart')."',"; ?>
-            exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART','highchart')."',"; ?>
-            downloadPNG : <?php echo "'".__('EXPORT_PNG','highchart')."',"; ?>
-            downloadJPEG : <?php echo "'".__('EXPORT_JPEG','highchart')."',"; ?>
-            downloadPDF : <?php echo "'".__('EXPORT_PDF','highchart')."',"; ?>
-            downloadSVG : <?php echo "'".__('EXPORT_SVG','highchart')."',"; ?>
-            resetZoom : <?php echo "'".__('RESET_ZOOM','highchart')."',"; ?>
-            resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE','highchart')."'"; ?>
+	    useHTML: true,
+            printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
+            exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART')."',"; ?>
+            downloadPNG : <?php echo "'".__('EXPORT_PNG')."',"; ?>
+            downloadJPEG : <?php echo "'".__('EXPORT_JPEG')."',"; ?>
+            downloadPDF : <?php echo "'".__('EXPORT_PDF')."',"; ?>
+            downloadSVG : <?php echo "'".__('EXPORT_SVG')."',"; ?>
+            resetZoom : <?php echo "'".__('RESET_ZOOM')."',"; ?>
+            resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>
          },
          xAxis: {
             type: 'datetime',
@@ -264,7 +267,8 @@ $(function () {
             showFirstLabel: true,
             <?php if("$type"=="month") { echo "tickInterval: 5 * 24 * 3600 * 1000,"; } ?>
             title: {
-               text: <?php echo "'".__("$xlegend",'highchart')."'"; ?>
+	       useHTML: true,
+               text: <?php echo "'".__("$xlegend")."'"; ?>
             },
             events: {
                 afterSetExtremes: function(event){
@@ -276,7 +280,8 @@ $(function () {
          yAxis: [
             {
                title: {
-                  text: <?php echo "'".__('YAXIS_LEGEND','highchart')."'"; ?>,
+		  useHTML: true,
+                  text: <?php echo "'".__('YAXIS_LEGEND')."'"; ?>,
                   style: {
                      color: <?php echo "'".$color_humidity."'"; ?>
                   }
@@ -301,7 +306,8 @@ $(function () {
                }
             }, {
                title: {
-                  text: <?php echo "'".__('Y2AXIS_LEGEND','highchart')."'"; ?>,
+		  useHTML: true,
+                  text: <?php echo "'".__('Y2AXIS_LEGEND')."'"; ?>,
                   style: {
                      color: <?php echo "'".$color_temperature."'"; ?>
                   }
@@ -320,6 +326,7 @@ $(function () {
             <?php if((isset($datap))&&(!empty($datap))) { ?>
             ,{
                title: {
+		  useHTML: true,
                   text: <?php echo "'".__('Y3AXIS_LEGEND')."'"; ?>,
                   style: {
                      color: <?php echo "'".$color_power."'"; ?>
@@ -331,29 +338,30 @@ $(function () {
 
          ],
          tooltip: {
+            useHTML: true,
             formatter: function() {
                var tab=new Array;
                <?php if("$type"=="month") { ?>
-                  var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY','highchart'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S %Y/%m/%d', this.x)+"</p>";
+                  var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S %Y/%m/%d', this.x)+"</p>";
                <?php } else { ?>
-                  var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY','highchart'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x)+"</p>"; 
+                  var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x)+"</p>"; 
                <?php } ?>
                   var unit = {
                      <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) { 
-                     echo "'".__('LEGEND_HUMI','highchart')." (".__('SENSOR','highchart')." ".$i.")': '%',";
-                     echo "'".__('LEGEND_TEMP','highchart')." (".__('SENSOR','highchart')." ".$i.")': '°C',";
+                     echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$i.")': '%',";
+                     echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$i.")': '°C',";
                } ?>
-               <?php echo "'".__('LEGEND_POWER','highchart')."'"; ?>: 'W'
+               <?php echo "'".__('LEGEND_POWER')."'"; ?>: 'W'
                <?php if((isset($select_plug))&&(!empty($select_plug))) {
                      echo ",'".clean_highchart_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."': ''"; 
                } ?>
             }[this.series.name];
             if(unit=='') { 
                if(this.y==100) {
-                     behaviour='<?php echo __("VALUE_ON","highchart"); ?>';
+                     behaviour='<?php echo __("VALUE_ON"); ?>';
                      nounity=true; 
                } else if(this.y==0){
-                     behaviour='<?php echo __("VALUE_OFF","highchart"); ?>';
+                     behaviour='<?php echo __("VALUE_OFF"); ?>';
                      nounity=true;
                } else {
                      behaviour=(this.y)*100/100;
@@ -382,13 +390,14 @@ $(function () {
                } else {
                     var unit="";
                }
-               return val+"<p align='left'><b>"+this.series.name+":</b>"+behaviour+unit+"</p>";
+               return val+"<p align='left'><b>"+this.series.name+":</b> "+behaviour+unit+"</p>";
             } else {
-               return val+"<p align='left'><b>"+this.series.name+":</b>"+this.y+unit+"</p>";
+               return val+"<p align='left'><b>"+this.series.name+":</b> "+this.y+unit+"</p>";
             }
           }
          },
          legend: {
+	    useHTML: true,
             layout: 'horizontal',
             verticalAlign: 'bottom',
             navigation: {
@@ -469,7 +478,7 @@ $(function () {
               {
               type: 'area',
                showCheckbox: true,
-               name: <?php echo "'".__('LEGEND_HUMI','highchart')." (".__('SENSOR','highchart')." ".$nb.")'"; ?>,
+               name: <?php echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$nb.")'"; ?>,
                pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
                <?php switch($color_humidity) {
@@ -501,7 +510,7 @@ $(function () {
             }, {
                type: 'area',
                showCheckbox: true,
-               name: <?php echo "'".__('LEGEND_TEMP','highchart')." (".__('SENSOR','highchart')." ".$nb.")'"; ?>,
+               name: <?php echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$nb.")'"; ?>,
                pointInterval: <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
                    <?php switch($color_temperature) {
@@ -540,7 +549,7 @@ $(function () {
                   showCheckbox: true,
                   pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
                   pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-                  name: <?php echo "'".__('LEGEND_POWER','highchart')."'"; ?>,
+                  name: <?php echo "'".__('LEGEND_POWER')."'"; ?>,
                   yAxis: 2,
                   color: <?php echo "'".$color_power."'"; ?>,
                   selected: true,
@@ -600,7 +609,7 @@ $(function () {
                {
                type: 'area',
                showCheckbox: true,
-               name: <?php echo "'".__('LEGEND_HUMI','highchart')." (".__('SENSOR','highchart')." ".$select_sensor.")'"; ?>,
+               name: <?php echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$select_sensor.")'"; ?>,
                pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
                color: <?php echo "'".$color_humidity."'"; ?>,
@@ -621,7 +630,7 @@ $(function () {
             }, {
                type: 'area',
                showCheckbox: true,
-               name: <?php echo "'".__('LEGEND_TEMP','highchart')." (".__('SENSOR','highchart')." ".$select_sensor.")'"; ?>,
+               name: <?php echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$select_sensor.")'"; ?>,
                pointInterval: <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
                color: <?php echo "'".$color_temperature."'"; ?>,
@@ -647,7 +656,7 @@ $(function () {
                   showCheckbox: true,
                   pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
                   pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-                  name: <?php echo "'".__('LEGEND_POWER','highchart')."'"; ?>,
+                  name: <?php echo "'".__('LEGEND_POWER')."'"; ?>,
                   yAxis: 2,
                   color: <?php echo "'".$color_power."'"; ?>,
                   selected: true,
