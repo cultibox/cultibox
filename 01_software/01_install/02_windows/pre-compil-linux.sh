@@ -44,6 +44,7 @@ case "$1" in
                 tar zxvf xamp-lite-admin-windows-1.8.1.tar.gz -C ../01_src/01_xampp/cultibox
             fi
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/htdocs/cultibox
+            cp conf-package/lgpl3.txt ../01_src/01_xampp/LICENSE.txt
             cat ../../CHANGELOG >> ../01_src/01_xampp/cultibox/VERSION.txt
             mkdir ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/cnf
             wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "install_script_current.iss"
