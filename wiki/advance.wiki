@@ -269,6 +269,21 @@ Exemple:
 <color>red</color>
 }}}
 
+===== Icône =====
+Cette balise permet de définir une icône qui sera utilisée lors de l'affichage de l'évènement dans le calendrier du logiciel. L'icône  être définie de deux façons: en ne donnant que le nom de l'icône et en plaçant cette icône dans le répertoire htdocs/cultibox/main/modules/img/ ou alors en fournissant une adresse complète (exemple: http://voici.une.url.com/icone.png). L'affichae est optimisé pour une icône de 15 pixels sur 15 pixels.
+Exemple:
+
+{{{
+<icon>moon.png</icon>
+}}}
+
+ou alors:
+
+{{{
+<icon>http://voici.une.url.com/icone.png</icon>
+}}}
+
+
 
 == Exemple de fichier ==
 
@@ -321,6 +336,7 @@ Exemple:
       <start>14</start>
       <nutriment>Engrais 2</nutriment>
       <dosage>6ml/l</dosage>
+      <icon>engrais.png</icon>
    </entry>
    <entry>
       <title>Phase de prefloraison  </title>
