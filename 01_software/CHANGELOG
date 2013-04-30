@@ -3,6 +3,7 @@ Cultibox (1.1.17) precise; urgency=low
     + Les accents dans les fichiers calc sont maintenant bien pris en compte
     + Ajout d'un champ color possible dans les fichiers xml pour choisir la couleur de ses evènements
     + Ajout d'un champ icon dans les entry du fichier xml pour ajouter une icone dans le titre (exemple calendrier lunaire)
+    + Correctif pour l'affichage des accents dans highchart pour mac: passage par HTML
 
 -- Yann Genevois <yann.genevois@gmail.com> Mon Apr 29 21:45:39 CEST 2013
 

@@ -103,7 +103,7 @@ resume_plugs=<?php echo json_encode($resume) ?>;
 
 Highcharts.setOptions({
 lang: {
-<?php echo "resetZoom : '".__('RESET_ZOOM','highchart')."',"; ?>
+<?php echo "resetZoom : '".__('RESET_X_ZOOM','highchart')."',"; ?>
 <?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE','highchart')."'"; ?>
 }
 });
@@ -122,22 +122,25 @@ $(document).ready(function() {
          zoomType: 'x'
       },
       title: {
-         text: <?php echo "'".__('CURRENT_PLUG_PROGRAM','highchart').": '"; ?>
+        useHTML: true,
+        text: <?php echo "'".__('CURRENT_PLUG_PROGRAM').": '"; ?>
       },
        subtitle: {
+             useHTML: true,
              text: document.ontouchstart === undefined ?
-               <?php echo "'".__('DRAG_PLOT','highchart')."'"; ?>:
-               <?php echo "'".__('DRAG_PLOT','highchart')."'"; ?>
+               <?php echo "'".__('DRAG_PLOT')."'"; ?>:
+               <?php echo "'".__('DRAG_PLOT')."'"; ?>
       },
       lang: {
-         printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART','highchart')."',"; ?>
-         exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART','highchart')."',"; ?>
-         downloadPNG : <?php echo "'".__('EXPORT_PNG','highchart')."',"; ?>
-         downloadJPEG : <?php echo "'".__('EXPORT_JPEG','highchart')."',"; ?>
-         downloadPDF : <?php echo "'".__('EXPORT_PDF','highchart')."',"; ?>
-         downloadSVG : <?php echo "'".__('EXPORT_SVG','highchart')."',"; ?>
-         resetZoom : <?php echo "'".__('RESET_ZOOM','highchart')."',"; ?>
-         resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE','highchart')."'"; ?>
+         useHTML: true,
+         printButtonTitle: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
+         exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART')."',"; ?>
+         downloadPNG : <?php echo "'".__('EXPORT_PNG')."',"; ?>
+         downloadJPEG : <?php echo "'".__('EXPORT_JPEG')."',"; ?>
+         downloadPDF : <?php echo "'".__('EXPORT_PDF')."',"; ?>
+         downloadSVG : <?php echo "'".__('EXPORT_SVG')."',"; ?>
+         resetZoom : <?php echo "'".__('RESET_ZOOM')."',"; ?>
+         resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>
       },
       legend: {
             layout: 'vertical',
