@@ -66,6 +66,12 @@ if ($handle = opendir('../../xml')) {
                                         $color=$val['color'];
                                 } else {
                                         $color="#A4408D";
+                                } 
+
+                                if(array_key_exists('icon', $val))  {
+                                        $icon=$val['icon'];
+                                } else {
+                                        $icon=null;
                                 }
 
  
@@ -79,6 +85,7 @@ if ($handle = opendir('../../xml')) {
                                             "end" => $end,
                                             "description" => $val['content'],
                                             "color" => $color,
+                                            "icon" => $icon,
                                             "external" => 1
                                             //"allDay" => false
                                         );

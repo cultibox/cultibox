@@ -272,6 +272,24 @@ if(!isset($sd_card)) $sd_card="";
                      }
 
         },
+            eventRender: function(event, eventElement) {
+                var iconurl=null;
+                
+                if(event.icon) {
+                   if(event.icon.search('http')>-1) {
+                        iconurl=event.icon;
+                    } else {
+                        iconurl="http://localhost:6891/cultibox/main/modules/img/"+event.icon;
+                    }
+
+                    if (eventElement.find('span.fc-event-time').length) {
+                        eventElement.find('span.fc-event-time').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
+                    } else {
+                        eventElement.find('span.fc-event-title').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
+                    }
+                }
+            },
+
             loading: function(bool) {
                 if (bool) $('#loading').show();
                 else $('#loading').hide();
