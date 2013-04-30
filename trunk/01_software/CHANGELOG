@@ -1,3 +1,9 @@
+Cultibox (1.1.18) precise; urgency=low
+    + Correction pour l'affichage du calendrier lunaire...
+
+-- Yann Genevois <yann.genevois@gmail.com>  Tue Apr 30 19:27:18 CEST 2013
+
+
 Cultibox (1.1.17) precise; urgency=low
     + Correction du calendrier: les evènements sur deux mois fonctionnent à nouveau
     + Les accents dans les fichiers calc sont maintenant bien pris en compte
