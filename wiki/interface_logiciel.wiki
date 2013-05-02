@@ -1,6 +1,0 @@
-#summary Interface logiciel
-
-= Introduction =
-
-Cette section de l'aide décrit et explique l'interface logiciel.
-
