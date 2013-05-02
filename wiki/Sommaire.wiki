@@ -1,16 +1,5 @@
-#summary Introduction à l'utilisation de la Cultibox
+#summary Sommaire
 
-= Introduction =
-
-Bienvenue dans la documentation de la Cultibox. 
-
-Nous vous remercions d'avoir choisi la Cultibox pour contrôler votre environnement de culture. Veuillez lire attentivement ce manuel et le conserver à portée de main pour vous y référer chaque fois que vous en aurez besoin.
-
-Cette documentation est en constante amélioration. Si vous avez des questions particulière ou si certain point ne sont pas suffisamment clair, contactez nous.
-
-= Sommaire de la documentation =
-
-[Introduction Introduction]
   * [quick_guide Guide rapide]
   * [Introduction Introduction]
     * [general_caution Règle de sécurité]
@@ -48,4 +37,4 @@ Cette documentation est en constante amélioration. Si vous avez des questions p
   * [other Autre]       
     * [faq FAQ]
     * [pts Cahier des charges]
-    * [advance Utilisation avancée]  
+    * [advance Utilisation avancée]
