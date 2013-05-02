@@ -37,10 +37,10 @@ case "$1" in
 
             mkdir ../01_src/01_xampp/cultibox
             if [ "$1" == "windows7" ]; then
-                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows7_{#MyAppVersion}/" ./install_script_current.iss
+                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows_{#MyAppVersion}/" ./install_script_current.iss
                 tar zxvf xamp-lite-windows-1.8.1.tar.gz -C ../01_src/01_xampp/cultibox
             else
-                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox_admin-windows7_{#MyAppVersion}/" ./install_script_current.iss
+                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox_admin-windows_{#MyAppVersion}/" ./install_script_current.iss
                 tar zxvf xamp-lite-admin-windows-1.8.1.tar.gz -C ../01_src/01_xampp/cultibox
             fi
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/htdocs/cultibox
