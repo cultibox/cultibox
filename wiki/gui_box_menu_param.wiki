@@ -1,0 +1,14 @@
+#summary Parametres
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+Le menu paramètre permet l'accès aux menus suivants
+
+  * [gui_box_menu_param_culti Parametres de la cultibox]
+  * [gui_box_menu_param_emettor Parametres de l'emetteur]
+  * [gui_box_menu_param_sensor Parametres du capteur]
+
+= Description de l'interface graphique =
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param.png

@@ -1,0 +1,39 @@
+#summary Calendrier
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+Le calendrier permet de définir et de se souvenir des informations correspondant à votre espace de culture.
+Ces informations sont ensuite disponible sur l'écran LCD de la Cultibox.
+
+Pour acceder à l'onglet, cliquer sur "Calendar" :
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_calendar.png
+
+Une fenêtre avec le mois en cours s'affiche à l'écran:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_main.png
+
+On retrouve sur cette fenêtre l'ensemble des événements que vous avez créés.
+
+= Ajouter un événement =
+
+Pour ajouter un événement cliquer sur le jour de l'évenement ou sur un enesemble de jour.
+
+Une fenêtre s'affiche avec un lien permettant de "Editer / Créer un événement"
+
+= Configurer l'événement =
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_edit.png
+
+Différents éléments sont configurable:
+ * La couleur d'affichage
+ * Le "sujet"
+ * Les dates
+ * Remarque
+
+Dans la cultibox, ne sont visible que les éléments suivants:
+ * Le "sujet"
+ * Remarque
+ 

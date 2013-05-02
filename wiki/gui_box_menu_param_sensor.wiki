@@ -1,0 +1,10 @@
+#summary Paramètres du capteur
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+Le menu paramètre permet l'accès aux menus suivants
+
+* [gui_box_menu_param_culti Parametres de la Cultibox]
+* [gui_box_menu_param_emettor Parametres de l’émetteur]
+* [gui_box_menu_param_sensor Parametres du capteur]

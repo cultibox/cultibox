@@ -1,0 +1,10 @@
+#summary Menu logs
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+Le menu logs permet de visualiser l'évolution de la température et de l'humidité de chacun des capteurs.
+Un seul point par tranche de 20 minutes est affiché.
+
+= Description de l'interface graphique =

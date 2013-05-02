@@ -1,0 +1,50 @@
+#summary Affichage des logs
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+L'onglet log permet de visualiser les conditions climatique.
+
+Pour l'ouvrir, cliquer sur "Display Logs":
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_logs.png
+
+= Description de l'interface graphique =
+
+L'interface graphique permet de sélectionner les données à visualiser.
+
+Vous pouvez choisir d'afficher les données d'un mois ou d'un jour. Pour cela, choisissez le radio-boutton correspondant.
+
+== Affichage d'un mois ==
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_timeselection_month.png
+
+Les champs de sélection vous permettent de choisir le mois à afficher ainsi que de choisir le capteur.
+
+== Affichage d'un jour ==
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_timeselection_day.png
+
+L'affichage d'un jour permet de visualiser plus d'informations:
+ * Les données climatiques d'un capteur
+ * Le programme d'une prise
+ * La puissance consommée  
+
+Si trop d'information apparaisent sur l'écran, vous pouvez en déselectionner certaines en cliquant sur leur nom dans le bas du graphique
+
+=== Interpolation ===
+Il arrive que la Cultibox n'enregistre pas une ou plusieurs données climatiques. Le Logiciel Cultibox interpole les points manquants. Cette interpolation est limitée à une période de 20 minutes.
+
+= Gestion de vos données climatiques =
+Cette section permet de gérer les données de la base.
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_datagestion.png
+
+== Importer les logs sur deux mois ==
+Pour des questions de rapidité, le logiciel ne charge que les données climatique et de puissance du mois en cours.
+Pour charger des logs plus ancien, vous pouvez cliquer sur le boutton "Importer les logs"
+
+== Supprimer les logs ==
+Si la base de donnée est très grosse et que vous voulez libérer de l'espace sur vos disque, deux boutons de suppression des logs permettent de supprimer vos logs.

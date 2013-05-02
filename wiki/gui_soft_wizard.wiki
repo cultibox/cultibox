@@ -1,0 +1,8 @@
+#summary Assistant de programmation
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+= Description de l'interface graphique =

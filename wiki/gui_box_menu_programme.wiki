@@ -1,0 +1,29 @@
+#summary Parametres
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introdution = 
+
+Le menu programme permet de visualiser le programme définit pour chaque prise.
+
+= Description de l'interface graphique =
+Lorsque l'utilisateur entre dans le menu, la fenêtre suivante s'affiche:
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_programme_1.png
+
+La barre noir à gauche représente la position du curseur
+La barre en pointillé représente l'heure actuelle
+
+
+= Fonctionnement =
+Une fois entré dans le menu programme, quatre actions sont possible:
+ * Bouton gauche : Décalage de la barre de sélection de l'heure vers la gauche
+ * Bouton droite : Décalage de la barre de sélection de l'heure vers la droite
+ * Bouton haut: Visualisation du programme suivant
+ * bouton bas: Visualisation du programme précédent
+
+
+= Bug =
+Si le nombre de changement d'état des prises est important, alors tous les changements ne sont pas affichée dans le menu programme. issue 158
+    

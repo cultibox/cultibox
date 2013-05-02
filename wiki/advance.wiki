@@ -1,0 +1,372 @@
+#summary Utilisation avancée
+
+= Sommaire =
+<wiki:toc max_depth="4" />
+
+= Introduction =
+
+Cette page ne concerne que les utilisateurs experts.
+
+= Calendriers d'engrais =
+== Introduction ==
+
+Cette fonctionnalitée n'est pour l'instant pas disponible : Cf issue 425
+
+Les fabriquants d'engrais peuvent nous soumettre les calendriers de leurs engrais pour qu'ils soient disponible dans le calendrier de l'utilisateur.
+Nous nous reservons le droit d'ajouter ou de supprimer les calendriers.
+
+== Format du calendrier ==
+Le calendrier est au format XML. Il doit être écrit selon le format d'un flux de syndication ATOM.
+
+=== Informations obligatoires ===
+Il est nécéssaire de spécifier la balise d'en-tête XML, et le nœud racine contenant l'URL du namespace d'Atom. Pour Atom, ce nœud s'appelle feed et le namespace est http://www.w3.org/2005/Atom.
+
+Construction du fichier:
+
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+</feed>
+}}}
+
+==== Date de mise à jour ====
+La date de mise à jour du flux ATOM doit être spécifiée. Elle doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+
+Exemple de date de mise à jour:
+
+{{{
+<updated>2008-05-29T13:14:57+02:00</updated>
+}}}
+
+==== Identifiant unique ====
+Le flux ATOM doit contenir un identifiant unique. Le plus simple est d'indiquer directement le nom du site web du fabricant.
+
+Exemple d'identifiant:
+
+{{{
+<id>http://www.cultibox.fr/</id>
+}}}
+
+==== Titre ====
+Le flux ATOM doit contenir le titre et le sous titre. Pour notre calendrier:
+  * Le titre est le fabricant.
+  * Le sous titre est le nom du produit ou de la gamme.
+
+Exemple de titre:
+
+{{{
+<title>Engrais Top</title>
+<subtitle>Engrais numéro 1</subtitle>
+}}}
+
+==== Auteur ====
+Le flux ATOM doit contenir un auteur. Pour définir un auteur, il faut utiliser la balise <author>.
+Exemple d'auteur:
+
+{{{
+<author>
+    <name>Cultibox</name>
+    <uri>http://www.cultibox.fr/</uri>
+    <email>info@cultibox.fr</email>
+</author>
+}}}
+
+==== Catégorie ====
+Cette information est obligatoire. Elle nous permet d'identifier quel type d'engrais est contenu dans ce fichier. Elle permet aussi de séparer le calendrier lunbaire des autres calendriers.
+Les catégories disponible sont:
+|| *term* || *label* ||
+|| terre || Terre ||
+|| hydro || Hydroponique ||
+|| coco || Coco ||
+|| orch || Orchidee ||
+|| lunaire || lunaire ||
+
+Exemple de catégorie:
+
+{{{
+<category term = "hydro" label = "Hydroponique" />
+}}}
+
+==== Lien ====
+Un lien vers lui même:
+
+Exemple:
+
+{{{
+<link rel="self" href="www.cultibox.fr/flux.xml" />
+}}}
+
+=== Informations non obligatoire ===
+De plus, le fabriquant à la possibilité de définir les rubriques suivantes:
+  * Icon
+  * Logo
+  * Droits
+
+==== Icon ====
+Le fabricant peut définir une icone.
+Exemple:
+
+{{{
+<icon>http://wwww.com/images/icon.png</icon>
+}}}
+==== Logo ====
+Le fabricant peut définir un logo.
+Exemple:
+
+{{{
+<logo>http://wwww.com/images/icon.png</logo>
+}}}
+==== Droits, copyrights ====
+Cette balise est une construction « texte ».
+
+Exemple:
+
+{{{
+<rights type = "text">
+    © Cultibox, 2013
+</rights>
+}}}
+
+=== Les entrées ===
+Chaque entrée est contenu dans une balise <entry>. Les entrées correspondent à des événement du calendrier.
+
+==== Informations Obligatoires ====
+===== Titre =====
+Chaque entrée doit contenir le titre. C'est le titre qui sera donné à l'événement du calendrier.
+
+Exemple de titre:
+
+{{{
+<title>Phase croissance</title>
+}}}
+
+===== Date de mise à jour =====
+Chaque entrée doit avoir une date de mise à jour. Elle doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+
+Exemple de date de mise à jour:
+
+{{{
+<updated>2008-05-29T13:14:57+02:00</updated>
+}}}
+
+
+===== Identifiant unique =====
+Chaque entrée doit contenir un identifiant unique.
+
+Exemple d'identifiant:
+
+{{{
+<id>http://www.cultibox.fr/id1</id>
+}}}
+
+
+==== Informations facultatives ====
+===== Auteur =====
+Le flux ATOM doit contenir un auteur. Comme un auteur est définit dans les balises feed, vous n'êtes pas obligé de redéfinir un auteur.
+Exemple d'auteur:
+
+{{{
+<author>
+    <name>Cultibox</name>
+    <uri>http://www.cultibox.fr/</uri>
+    <email>info@cultibox.fr</email>
+</author>
+}}}
+
+===== résumé =====
+Exemple:
+
+{{{
+<summary>Phase de croissance</summary>
+}}}
+
+==== Catégorie ====
+Cette information permet d'identifier quel type d'engrais est contenu dans ce fichier.
+Les catégories disponible sont:
+|| *term* || *label* ||
+|| bouture || Bouturage ||
+|| vegetation || Vegetation ||
+|| prefloraison  || prefloraison  ||
+|| floraison || floraison ||
+|| recolte || recolte ||
+
+Exemple de catégorie:
+
+{{{
+<category term = "bouture" label = "Bouturage" />
+}}}
+
+===== contenu =====
+C'est cette balise qui contient le texte de l'événement.
+
+Exemple:
+
+{{{
+<content type = "text">
+   N'oubliez pas une dose de XX!
+</content>
+}}}
+
+===== durée =====
+Cette balise permet de définir la durée de l'événement. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+
+Exemple (3 jours):
+
+{{{
+<duration>0000-00-03T00:00:00</duration>
+}}}
+
+===== Début de cet événement =====
+Cette balise permet de définir la date de début de l'événement. La date doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+
+Exemple (Au bout de 18 jours):
+
+{{{
+<start>2008-05-29T13:14:57+02:00</start>
+}}}
+
+===== Periode de cet événement =====
+Cette balise permet de définir au bout de combien de jour cette événement doit revenir. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+
+Exemple (Au bout de 18 jours):
+
+{{{
+<period>0000-00-18T00:00:00</period>
+}}}
+
+===== Offset de cet événement =====
+Cette balise permet de définir au bout de combien de jour cet événement doit devenir actif. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+
+Exemple (Au bout de 18 jours):
+
+{{{
+<start_offset>0000-00-18T00:00:00</start_offset>
+}}}
+
+===== Nutriment =====
+Cette balise permet de définir le nom du nutriment.
+
+Exemple:
+
+{{{
+<nutriment>Engrais 1</nutriment>
+}}}
+
+===== Dosage =====
+Exemple:
+
+{{{
+<dosage>3ml/l</dosage>
+}}}
+
+
+===== Couleur =====
+Cette balise permet de définir la couleur qui sera utilisée lors de l'affichage de l'évènement dans le calendrier du logiciel. La couleur peut être définie aussi bien par son nom anglais (exemple: red, yellow...) que par son code hexadécimal (exemple: #ffffff, #A485E9 ...)
+
+Exemple:
+
+{{{
+<color>red</color>
+}}}
+
+===== Icône =====
+Cette balise permet de définir une icône qui sera utilisée lors de l'affichage de l'évènement dans le calendrier du logiciel. L'icône peut être définie de deux façons: en ne donnant que le nom de l'icône et en plaçant cette icône dans le répertoire *htdocs/cultibox/main/modules/img/* ou alors en fournissant une adresse complète. L'affichage est optimisé pour une icône de 15 pixels sur 15 pixels.
+Exemple:
+
+{{{
+<icon>moon.png</icon>
+}}}
+
+ou alors:
+
+{{{
+<icon>http://voici.une.url.com/icone.png</icon>
+}}}
+
+
+
+== Exemple de fichier ==
+
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+   <updated>2008-05-29T13:14:57+02:00</updated>
+   <id>http://www.cultibox.fr/</id>
+   <title>Engrais Top</title>
+   <subtitle>Engrais numéro 1</subtitle>
+   <author>
+      <name>Cultibox</name>
+      <uri>http://www.cultibox.fr/</uri>
+      <email>info@cultibox.fr</email>
+   </author>
+   <category term = "hydro" label = "Hydroponique" />
+   <link rel="self" href="www.cultibox.fr/flux.xml" />
+   <icon>http://wwww.com/images/icon.png</icon>
+   <logo>http://wwww.com/images/icon.png</logo>
+   <rights type = "text">
+    © Cultibox, 2013
+   </rights>
+   
+   <entry>
+      <title>Phase croissance</title>
+      <summary>Phase de croissance</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         N'oubliez pas une dose de XX!
+      </content>
+      <duration>14</duration>
+      <start>0</start>
+      <nutriment>Engrais 1</nutriment>
+      <dosage>3ml/l</dosage>
+      <color>red</color>
+   </entry>
+   
+   <entry>
+      <title>Phase de prefloraison  </title>
+      <summary>Phase de prefloraison </summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id2</id>
+      <category term = "prefloraison" label = "prefloraison" />
+      <content type = "text">
+         N'oubliez pas une dose de YY!
+      </content>
+      <duration>28</duration>
+      <start>14</start>
+      <nutriment>Engrais 2</nutriment>
+      <dosage>6ml/l</dosage>
+      <icon>engrais.png</icon>
+   </entry>
+   <entry>
+      <title>Phase de prefloraison  </title>
+      <summary>Phase de prefloraison </summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id2</id>
+      <category term = "prefloraison" label = "prefloraison" />
+      <duration>28</duration>
+      <start>14</start>
+      <nutriment>Engrais 3</nutriment>
+      <dosage>2ml/l</dosage>
+      <color>#48A78E</color>
+   </entry>
+
+</feed>
+}}}
+
+= Changer le numéro de la prise 3500W =
+ * Débrancher la Cultibox
+ * Brancher la prise 3500W
+ * Appuyer sur le petit bouton en façade pendant au moins 10s jusqu’à ce que la LED clignote. 
+ * Relacher le bouton puis apuyer une fois sur le bouton.
+ * La prise clignote deux fois
+ * Ouvrir le fichier pluga
+ * changer la première ligne. Mettre 001.
+ * Mettre le numéro pour la prise sur la deuxième ligne (typiquement 004)
+ * Brancher la Cultibox
+ * Aller dans le menu Param --> Émetteur --> reg prise
+ * Clique gauche pour éteindre la prise
+ * appuyer un coup sur le petit bouton de la prise. Elle doit clignoter
+ * Rapidement, appuyer sur le bouton droite de la Cultibox.
+ * La prise doit clignoter deux fois
+ * Si ça marche pas, refaire les étapes 10 à 13

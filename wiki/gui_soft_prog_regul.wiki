@@ -1,0 +1,116 @@
+#summary Régulation
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+Cette page de l'aide explique et permet de comprendre le fonctionnement de la régulation.
+
+= Régulation =
+== Introduction ==
+La régulation permet de piloter les prises afin d'obtenir des conditions de culture optimales.
+
+Principe général: 
+Vous choisissez une température ou une humidité, la Cultibox se charge d'allumer la prise en lorsque c'est nécessaire.
+Exemple : Vous décidez d'une température de 22°C. Vous effectuer cette régulation sur un ventilateur. La prise se met en route lorsque la température est supérieur à la consigne et s'éteint lorsque la température est inférieure à la consigne.
+
+Il n'est pas possible d'activer la régulation principale sur une prise déclarée comme "lampe" ou comme "autre" . Une prise "autre", est une prise qui ne modifie ni la température ni l'humidité de l'espace de culture. Il n'est donc pas possible d'effectuer de la régulation (principale ou secondaire) sur cette prise. De la même façon, il est impossible d'activer la régulation principale sur une prise déclarée comme "lampe".
+
+== Sélection du type d'élément branché sur la prise ==
+Pour assurer correctement la régulation, la Cultibox à besoin de savoir quel élément est branché sur la prise.
+
+Par exemple, vous désirez avoir une température de 22°C. Le capteur indique 20°C. La Cultibox ne doit mettre en route la prise que si c'est un élément du type chauffage qui est branché dessus.
+
+Il est donc très important de remplir correctement le champ "Type d'élément branché sur la prise" dans l'onglet "Plugs".
+
+Si l'élément ne correspond pas exactement aux choix possibles, vous devez sélectionner l’élément le plus proche selon les règles ci-dessous:
+ * Si l'élément branché augmente la température de votre environnement lorsqu'il est en marche : sélectionner "Chauffage"
+ * Si l'élément branché baisse la température de votre environnement lorsqu'il est en marche : sélectionner "Ventilateur"
+ * Si l'élément branché augmente l'humidité de votre environnement lorsqu'il est en marche : sélectionner "Humidificateur"
+ * Si l'élément branché baisse l'humidité de votre environnement lorsqu'il est en marche : sélectionner "Dés-humidificateur"
+ 
+== Hystérésis ==
+Les prises vendues avec le pack sont "Tout Ou Rien". Cela veut dire que la prise ne peut être que dans un des deux états suivants: Allumée ou éteinte. Pour ce type de prise, la régulation la plus efficace est une régulation suivant un cycle d'hystérésis.
+
+=== Chauffage ou humidificateur ===
+Dans le cas ou la prise agit de façon positive sur la valeur du capteur (Chauffage, Humidificateur). Les règles de changement d'état des prises sont les suivantes:
+ * Si la valeur du capteur est inférieur à la consigne moins la tolérance : Prise activée
+ * Si la valeur du capteur est supérieur à la consigne plus la tolérance : Prise désactivée
+ * Pour les autres cas, la prise reste dans le même état. 
+
+Le graphique ci-dessous montre le fonctionnement pour une consigne de 24°C et une tolérance de 1°C:
+
+http://cultibox.googlecode.com/svn/wiki/img/regul_3.png
+
+On peut voir que la prise ne se met en route que lorsque la température descend en dessous de 23°C (Consigne - tolérance = 24 - 1).
+La prise ne s'éteint pas lorsque la température est supérieur à la consigne. Il faut que la température dépasse la consigne + la tolérance pour que la prise s'éteigne:
+
+http://cultibox.googlecode.com/svn/wiki/img/regul_4.png
+
+=== Ventilateur ou dés-humidificateur ===
+Dans le cas ou la prise agit de façon négative sur la valeur du capteur (Ventilateur, Dés-humidificateur). Les règles de changement d'état des prises sont les suivantes:
+ * Si la valeur du capteur est supérieur à la consigne plus la tolérance : Prise activée
+ * Si la valeur du capteur est inférieur à la consigne moins la tolérance : Prise désactivée
+ * Pour les autres cas, la prise reste dans le même état. 
+
+Le graphique ci-dessous montre le fonctionnement pour une consigne de 24°C et une tolérance de 1°C:
+
+http://cultibox.googlecode.com/svn/wiki/img/regul_1.png
+
+On peut voir que la prise ne se met en route que lorsque la température est supérieur à 25°C (Consigne + tolérance = 24 + 1).
+La prise ne s'éteint pas lorsque la température est inférieur à la consigne. Il faut que la température soit inférieur à la consigne - la tolérance pour que la prise s'éteigne:
+
+http://cultibox.googlecode.com/svn/wiki/img/regul_2.png
+
+=== Comment désactiver l'hystérésis ===
+Pour désactiver le fonctionnement en hystérésis, il vous suffit d'indiquer une valeur de tolérance de 0 pour la prise.
+
+= Régulation secondaire =
+
+== Introduction ==
+
+*Attention, la régulation secondaire est compliquée. Assurez vous d'en avoir vraiment besoin avant de l'activer.*
+
+la régulation secondaire permet de forcer l'état d'une prise en fonction de certaines données climatique.
+Elle agit comme une sorte d'alarme.
+Par exemple, vous utilisez un ventilateur pour réguler la température à 22°C. Il ne se met en marche que lorsque la température dépasse la consigne. Jusque là, c'est la régulation "classique" qui fonctionne.
+Vous désirez qu'en plus de ce fonctionnement normal, il soit actif si le taux d'humidité est supérieur à 80%. C'est la régulation secondaire qui va tenir ce rôle.
+
+Il n'est pas possible d'activer la régulation secondaire sur une prise déclarée comme "lampe" ou comme "autre" . Une prise "autre", est une prise qui ne modifie ni la température ni l'humidité de l'espace de culture. Il n'est donc pas possible d'effectuer de la régulation (principale ou secondaire) sur cette prise. De la même façon, il est impossible d'activer la régulation secondaire sur une prise déclarée comme "lampe".
+
+* La régulation secondaire est prioritaire dans la Cultibox. Dans le cas ou ses conditions d'activations sont remplies, elle prend le pas sur la régulation classique*
+
+== Activation ==
+Pour activer la possibilité de mettre en place la régulation secondaire:
+  * Ouvrer l'onglet "Configuration"
+  * Mettre à "Oui" le champs situé en face de "Activer la régulation secondaire (Utilisateur expert seulement):"
+  * Cliquer sur "Enregistrer la configuration"
+
+http://cultibox.googlecode.com/svn/wiki/img/regul_secondaire_activation.jpg        
+
+== Donnée climatique ==
+La régulation classique, gère la prise en fonction du type d'élément branché dessus. La régulation secondaire va jouer sur l'autre condition climatique.
+Par exemple, vous utiliser un humidificateur. La régulation "classique" va le mettre en marche pour augmenter le taux d’humidité. La régulation secondaire va donc jouer sur la deuxième donnée climatique: la température.
+
+Pour chaque type d'élément, retrouvez dans le tableau ci-dessous, la donnée climatique gérée par la régulation secondaire.
+
+|| *Type d'élément* || *Capteur utilisé pour la régulation "classique"* || * Capteur utilisé pour la régulation "secondaire"* ||
+|| Chauffage || Température || Humidité ||
+|| Ventilateur || Température || Humidité ||
+|| Humidificateur || Humidité || Température ||
+|| Des-humidificateur || Humidité || Température ||
+|| Lampe || Aucune || Aucune ||
+|| Autre || Aucune || Aucune ||
+
+== Paramètres de la régulation secondaire ==
+Il n'est pas possible de définir un intervalle de temps pour l'activation de la régulation secondaire. A partir du moment ou l'utilisateur l'active, elle restera activée en permanence.
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_regul_second.png
+
+Vous pouvez choisir si la prise doit se mettre en route lorsque la donnée climatique est supérieur ou inférieur à la consigne.
+
+Vous devez définir le seuil de déclenchement.
+
+== Impact de la régulation secondaire sur la régulation principale ==
+La régulation secondaire est prioritaire sur la régulation principale. Si les conditions définies pour la régulation secondaire sont respectées, alors la régulation secondaire entre en oeuvre et al régulation principale s’arrête. 
+Il y a un autre impact: Dans la zone de transition de la régulation principale entre |Consigne - tolérance | et | consigne + tolérance | l'état de la prise dépend de son état précédent. Si la régulation secondaire entre en oeuvre, elle modifie l'état de la prise. Une fois que la régulation secondaire ne fonctionne plus, la régulation principale prend comme dernière état de la prise, l'état appliqué par la régulation secondaire. issue 479
