@@ -25,7 +25,7 @@ Il est donc très important de remplir correctement le champ "Type d'élément b
 
 Si l'élément ne correspond pas exactement aux choix possibles, vous devez sélectionner l’élément le plus proche selon les règles ci-dessous:
  * Si l'élément branché augmente la température de votre environnement lorsqu'il est en marche : sélectionner "Chauffage"
- * Si l'élément branché baisse la température de votre environnement lorsqu'il est en marche : sélectionner "Ventilateur"
+ * Si l'élément branché baisse la température de votre environnement lorsqu'il est en marche : sélectionner "Ventilateur" (Exemple: intracteur, extracteur, refroidisseur ...)
  * Si l'élément branché augmente l'humidité de votre environnement lorsqu'il est en marche : sélectionner "Humidificateur"
  * Si l'élément branché baisse l'humidité de votre environnement lorsqu'il est en marche : sélectionner "Dés-humidificateur"
  
