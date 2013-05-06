@@ -713,6 +713,9 @@ msgstr "Remove the last plug"
 msgid "RESET_CONFIRM_PROGRAM"
 msgstr "Do you really want to reset the program for the selected plug(s)?"
 
+msgid "DATA_LABEL"
+msgstr "Display states of selected plugs"
+
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"
@@ -739,6 +742,8 @@ msgstr "Cancel all zoom"
 msgid "RESET_X_ZOOM"
 msgstr "Cancel temporal zoom"
 
+msgid "RESET_ZOOM_TITLE"
+msgstr "Cancel zoom"
 
 # For the wizard part:
 
@@ -1379,6 +1384,21 @@ msgstr "Export you logs informations into a file in CSV format"
 
 msgid "TOOLTIP_EXPORT_POWER_CSV"
 msgstr "Export you power informations into a file in CSV format"
+
+msgid "TOOLTIP_ADD_PLUG"
+msgstr "Cette fonctionnalité vous permet d'ajouter une prise dont vous pouvez directement configurer le programme sur cette page. Cette action revient à se déplacer dans la partie configuration et augmenter le nombre de prises de votre système"
+
+msgid "TOOLTIP_REMOVE_PLUG"
+msgstr "Cette fonctionnalité vous permet de supprimer une prise utilisable dans votre système Cultibox. Cette action revient à se déplacer dans la partie configuration et diminuer le nombre de prises de votre système"
+
+msgid "TOOLTIP_RESET_PROGRAM"
+msgstr "Cette fonctionnalité permet de remettre à zéro un programme. Le prise selectionnée n'aura plus d'actions attribuée, elle se retrouvera éteinte pour toute la journée"
+
+msgid "TOOLTIP_EXPORT_PROGRAM"
+msgstr "Cette fonctionnalité vous permet d'exporter un programme dans un format csv (lisisble par un tableur). Ce fichier peut être utilisé pour appliquer, avec la fonction d'importation, un même programme sur d'autres prises ou encore afin de s'échanger des programmes avec d'autres utilisateurs Cultibox"
+
+msgid "TOOLTIP_IMPORT_PROGRAM"
+msgstr "Cette fonctionnalité permet d'importer un programme depuis un fichier csv (lisible par un tableur). Le fichier à importer peut être créé par la fonction d'exportation par un autre utilisateur Cultibox pour s'échanger des programmes ou depuis une autre de vos prises pour appliquer un même programme à plusieurs prises"
 
 
 #For the debug part:
