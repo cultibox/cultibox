@@ -1,3 +1,11 @@
+Cultibox (1.1.19) precise; urgency=low
+    + La checkbox qui permet d'effacer un programme avant d'en ajouter un autre ne reste plus selectionnée
+    + Ajout de tooltips pour la partie gestion des programmes
+    + Inversion des deux boutons 'fin' et 'configurer une autre prise' du wizard
+
+-- Yann Genevois <yann.genevois@gmail.com>  Mon May  6 12:26:10 CEST 2013
+
+
 Cultibox (1.1.18) precise; urgency=low
     + Correction pour l'affichage du calendrier lunaire...
 
