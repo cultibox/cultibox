@@ -108,6 +108,7 @@ lang: {
 }
 });
 
+enabled = false;
 var chart;
 $(document).ready(function() {
    chart = new Highcharts.Chart({
@@ -123,7 +124,8 @@ $(document).ready(function() {
       },
       title: {
         useHTML: true,
-        text: <?php echo "'".__('CURRENT_PLUG_PROGRAM').": '"; ?>
+        text: <?php echo "'".__('CURRENT_PLUG_PROGRAM').": '"; ?>,
+        margin: 40
       },
        subtitle: {
              useHTML: true,
@@ -148,6 +150,7 @@ $(document).ready(function() {
             align: 'right',
             y: -<?php echo ($GLOBALS['NB_MAX_PLUG']-count($active_plugs))*16+15; ?>,
             x: +25,
+            maxHeight: 200,
             navigation: {
                 activeColor: '#3E576F',
                 animation: true,
@@ -185,11 +188,12 @@ $(document).ready(function() {
             min: 0,
             max: 100,
             alternateGridColor: '#FDFFD5',
-              labels: {
+            useHTML: true,
+            labels: {
                      formatter: function() {
  if((this.value>=0)&&(this.value<=100)) {      
                <?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"other")==0)) { ?>
-               if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+               if(this.value==0) return '<?php echo __("VALUE_OFF","highchart"); ?>';
                if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
 <?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"ventilator")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"heating")==0)) { ?>
                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
@@ -218,6 +222,36 @@ $(document).ready(function() {
                                 return false;
                             }
                     }
+                },
+                marker : {
+                    lineWidth : 2,
+                    radius : 6,
+                    symbol : 'circle'
+                },
+                dataLabels: {
+                    enabled: false,
+                    borderRadius: 5,
+                    backgroundColor: 'rgba(252, 255, 197, 0.7)',
+                    borderWidth: 1,
+                    borderColor: '#AAA',
+                    y: -8,
+                    x: +20,
+                    useHTML: true,
+                    formatter: function(){ 
+                        if (this.visible) {                      
+                            if(this.y=="99.9") { return "<?php echo __('CHART_FORCE_ON_VALUE'); ?>"; }
+                            else if(this.y=="0") { return "<?php echo __('VALUE_OFF'); ?>"; }
+                            else { 
+                                var unity="";
+                                if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="heating")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="ventilator")) {
+                                    unity="°C";
+                                } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="dehumidifier")) {
+                                    unity="%";
+                                } 
+                                return "<?php echo __('VALUE_REGUL'); ?>: "+this.y+unity;
+                            }
+                        }
+                    }
                 }
             }
       },
@@ -225,6 +259,7 @@ $(document).ready(function() {
                    enabled: false
       },
       tooltip: {
+         useHTML: true,
          formatter: function() {
             if(this.y == 99.9) {
                 return Highcharts.dateFormat('%H:%M:%S', this.x) +'<br /><p align=center><b><?php echo __("CHART_FORCE_ON_VALUE"); ?></b></p>';
@@ -324,9 +359,18 @@ $(document).ready(function() {
         highchart_plug=tmp_highchart_plug+1;
         chart.isDirtyLegend = true;
         chart.redraw(); 
-        
     });
 
+     /*   $('#datalabel').click(function() {
+        if (!$(this).is(':checked')) {
+            chart.xAxis[0].isDirty = true;
+            chart.redraw();
+        } else {
+                chart.xAxis[0].isDirty = false;
+                chart.redraw();
+        }
+     });
+        */
 });
 
 </script>
@@ -417,7 +461,7 @@ $(document).ready(function() {
 <tr>
     <td></td>
     <td><?php echo __('RESET_OLD_PROGRAM'); ?>:</td>
-    <td><input type="checkbox" name="reset_old_program" value="Yes" <?php if((isset($plugs_infos[$selected_plug-1]['RESET']))&&(!empty($plugs_infos[$selected_plug-1]['RESET']))) echo "checked"; ?> /></td>
+    <td><input type="checkbox" name="reset_old_program" value="Yes" /></td>
     <td></td>
 </tr>
 </table>
@@ -440,6 +484,13 @@ $(document).ready(function() {
 <tr>
     <td></td><td><div id="plug" style="width: 100%; height: 350px; margin: 0 auto"></div></td><td></td>
 </tr>
+<tr>
+    <td></td>
+    <td>
+        <form><p class="subtitle_log"><?php echo __('DATA_LABEL'); ?>: <input type="checkbox" name="datalabel" id="datalabel" value="data"></p></form>
+    </td>
+    <td></td>
+</tr>
 </table>
 <br /><hr /><br />
 
@@ -450,7 +501,7 @@ $(document).ready(function() {
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
-    <td class="program-manage-title"><?php echo __('TITLE_ADD_PLUG'); ?></td>
+    <td class="program-manage-title"><?php echo __('TITLE_ADD_PLUG'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_ADD_PLUG'); ?>" /></td>
     <td class="program-manage-field">
           <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
           <input type="hidden" name="add_plug" value="add_plug">
@@ -465,7 +516,7 @@ $(document).ready(function() {
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
-    <td class="program-manage-title"><?php echo __('TITLE_REMOVE_PLUG'); ?></td>
+    <td class="program-manage-title"><?php echo __('TITLE_REMOVE_PLUG'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_REMOVE_PLUG'); ?>" /></td>
     <td class="program-manage-field">
           <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
           <input type="hidden" name="remove_plug" value="remove_plug">
@@ -481,7 +532,7 @@ $(document).ready(function() {
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
-    <td class="program-manage-title"><?php echo __('TITLE_RESET_PROGRAM'); ?>
+    <td class="program-manage-title"><?php echo __('TITLE_RESET_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_PROGRAM'); ?>" />
          <select name="reset_selected_plug" id="reset_selected_plug">
         <?php for($i=1;$i<=$nb_plugs;$i++) {
                 if("$i"=="$reset_selected") {
@@ -514,7 +565,7 @@ $(document).ready(function() {
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
-    <td class="program-manage-title"><?php echo __('TITLE_EXPORT_PROGRAM'); ?></td>
+    <td class="program-manage-title"><?php echo __('TITLE_EXPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_PROGRAM'); ?>" /></td>
     <td class="program-manage-field">
                         <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export">
                         <input type="hidden" name="selected_plug" id="selected_plug_export" value="<?php echo $selected_plug; ?>">
@@ -528,7 +579,7 @@ $(document).ready(function() {
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
-    <td class="program-manage-title"><?php echo __('TITLE_IMPORT_PROGRAM'); ?></td>
+    <td class="program-manage-title"><?php echo __('TITLE_IMPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_PROGRAM'); ?>" /></td>
     <td class="program-manage-field">
                      <input type="file" name="upload_file">
                      <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />

@@ -365,6 +365,7 @@ if(!empty($apply)&&(isset($apply))) {
             //If the reset checkbox is checked
             if((isset($reset_program))&&(strcmp($reset_program,"Yes")==0)) {
                 clean_program($selected_plug,$main_error);
+                unset($reset_program);
             } 
                                                                   
 
@@ -421,13 +422,6 @@ for($i=0;$i<$nb_plugs;$i++) {
         case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DEHUMIDIFIER'); break;
         default: $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
     }
-
-    if(isset($selected_plug)&&(!empty($selected_plug))&&($i==$selected_plug-1)&&(isset($reset_program))&&(strcmp($reset_program,"Yes")==0)) {
-        $plugs_infos[$i]["RESET"]='Yes';
-    } else {
-        unset($plugs_infos[$i]["RESET"]);
-    }
-
     $resume=format_data_sumary($plugs_infos);
 }
 
