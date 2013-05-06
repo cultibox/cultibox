@@ -76,7 +76,7 @@
          <td><?php echo __('PLUG_MAX_POWER'); ?>:</td>
          <td>
             <?php if($i <= $GLOBALS['NB_MIN_PLUG']) { ?>
-                <input type="text" name="plug_power_maximal<?php echo $i; ?>" value="<?php echo $plug_power_max{$i}; ?>W" readonly size="6" /> 
+                <label class="readonly" name="plug_power_maximal<?php echo $i; ?>"><?php echo $plug_power_max{$i}; ?>W</label> 
                 <?php if($plug_power_max{$i}==3500) { ?>
                     <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" />
                 <?php } else { ?>
@@ -142,7 +142,7 @@
                         <?php } ?>
                         </select>
                     <?php } else { ?>
-                    <input type="text" name="sensor_regul" value="<?php echo $plug_sensor{$i}; ?>" readonly size="6" />
+                    <label class="readonly" name="sensor_regul"><?php echo $plug_sensor{$i}; ?></label>
                 <?php } ?>
                </div>
          </td>

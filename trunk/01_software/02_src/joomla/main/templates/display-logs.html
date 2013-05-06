@@ -160,18 +160,15 @@ buttonImageOnly: 'true',
                <option <?php if("$startmonth" == "11") { echo 'selected';} ?> value="11"><?php echo __('MONTH11'); ?></option>
                <option <?php if("$startmonth" == "12") { echo 'selected';} ?> value="12"><?php echo __('MONTH12'); ?></option>
             </select>
-            <?php if($GLOBALS['FIRST_LOG_YEAR']==$last_year) {
-                  echo '<input type="text" name="startyear" value="'.$last_year.'" size="4" readonly="readonly">';
-            }
 
-            if($GLOBALS['FIRST_LOG_YEAR']!=$last_year) {
+            <?php 
                  echo '<select name="startyear">';
                  $first=$GLOBALS['FIRST_LOG_YEAR'];
                  for($i=$first;$i<=$last_year;$i++) { ?>
                      <option <?php if("$startyear" == "$i") { echo 'selected';} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
                   <?php }
                   echo "</select>";
-            } ?>
+            ?>
       </td>
 	  <td><?php if((isset($error['startmonth']))&&(!empty($error['tartmonth']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['startmonth']."</div>"; ?></td> 
    </tr>
@@ -261,6 +258,13 @@ $(function () {
             resetZoom : <?php echo "'".__('RESET_ZOOM')."',"; ?>
             resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>
          },
+        scrollbar: {
+            enabled: true
+        },
+        
+        rangeSelector: {
+            selected: 1
+        },
          xAxis: {
             type: 'datetime',
             endOnTick: false,

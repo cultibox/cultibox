@@ -4,6 +4,7 @@ Cultibox (1.1.19) precise; urgency=low
     + Inversion des deux boutons 'fin' et 'configurer une autre prise' du wizard
     + Ajout d'une option de configuration permettant d'activer ou non le selection du capteur pour la régulation
     + Correction d'un bug sur le zoom des puissances dans les logs
+    + Suppression des input en readonly et remplacement par un label customisable par la classe readonly en css
 
 -- Yann Genevois <yann.genevois@gmail.com>  Mon May  6 12:26:10 CEST 2013
 
