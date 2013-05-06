@@ -4,24 +4,69 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-Cette partie de la documentation vous aide pour gérer les cas atypique
+Cette partie de la documentation vous aide pour gérer les cas atypique.
 
 = CO² =
-En fnction de l'équipement que vous possédez, il y a plusieur façon de gérer le CO².
+En fonction de l'équipement que vous possédez, il y a plusieurs façon de gérer le CO².
 
 == Extinction de l'appareil lorsque l'extracteur est en route ==
-Ce cas d'utilisation se présente lorsque l'appareil pilotant le CO² se régule tout seul. La seule chose que vous souhaitez faire est de couper l'arrivée de CO² lorsque l'extracteur se met en route. En d'autre termes, lorsque la température devient trop haute, le ventilateur doit se mettre en route et le CO² doit s'arreter.
+Ce cas d'utilisation se présente lorsque l'appareil pilotant le CO² se régule tout seul. La seule chose que vous souhaitez faire est de couper l'arrivée de CO² lorsque l'extracteur se met en route. En d'autre termes, lorsque la température devient trop haute, le ventilateur doit se mettre en route et le CO² doit s’arrêter.
 
 Programmer de façon classique votre extracteur. On souhaite que le CO² se coupe lorsque la température dépasse la consigne de l'extracteur. On donc choisir pour cette prise le [https://code.google.com/p/cultibox/wiki/gui_soft_conf#Configuration_des_prises type "chauffage"]. Toujours dans cet onglet, mettre la même tolérance pour la régulation que la valeur mise pour l'extracteur.
 
 Dans l'onglet programme, mettre le même programme que le programme de l'extracteur.
 
-Ce qui va se passer: lorsque la température va devenir trop haute, l'extracteur va se mettre en route. Au même moment, la prise CO² va s'arreter (comme si c'était un chauffage).
+Ce qui va se passer: lorsque la température va devenir trop haute, l'extracteur va se mettre en route. Au même moment, la prise CO² va s’arrêter (comme si c'était un chauffage).
 
-= Augmenter la plage d'hysteresis sans changer la valeur de déclenchement =
+= Augmenter la plage d’hystérésis sans changer la valeur de déclenchement =
 En fonction de votre environnement de culture, une prise en régulation peut changer un peu trop souvent d'état.
-Exemple: un extracteur avec une valeur de tolérance de 1,0°C, en régulation à 24°C change d'état à 23°C (extinction) et à 25°C (mise en route). Vous souhaitez que la valeur de mise en route (25°C) ne change pas mais que le ventilateur s'arrete lorsque la température la température atteint 21°C. 
-Pour ce faire, il faut choisir une valeur de régulation située exactement à mis chemin entre les seuils de déclenchement (21°C et 25°C) et appliquer une tolérance égale à la moitiée de l'écart entre les deux seuils de déclenchement. 
+Exemple: un extracteur avec une valeur de tolérance de 1,0°C, en régulation à 24°C change d'état à 23°C (extinction) et à 25°C (mise en route). Vous souhaitez que la valeur de mise en route (25°C) ne change pas mais que le ventilateur s’arrête lorsque la température la température atteint 21°C. 
+Pour ce faire, il faut choisir une valeur de régulation située exactement à mis chemin entre les seuils de déclenchement (21°C et 25°C) et appliquer une tolérance égale à la moitié de l'écart entre les deux seuils de déclenchement. 
 Dans notre exemple:
- * La valeur de régulation doit être à la moitiée entre 25°C et 21°C : (25 + 21) / 2 = 23 °C .
- * La valeur de tolérance doit être la moitiée de la différence entre 25°C et 21°C : (25 - 21) / 2 = 2°C
+ * La valeur de régulation doit être à la moitié entre 25°C et 21°C : (25 + 21) / 2 = 23 °C .
+ * La valeur de tolérance doit être la moitié de la différence entre 25°C et 21°C : (25 - 21) / 2 = 2°C
+ 
+= Appliquer une marche forcé régulièrement en opposition avec une régulation =
+Vous désirez mettre en route votre ventilateur 1/4 d'heure toutes les demi-heures et que le reste du temps une régulation soit appliquée?
+
+Plusieurs solutions sont possible:
+
+== Régulation puis cyclique ==
+La deuxième solution consiste à appliquer la régulation de façon continue sur la journée puis à mettre en marche forcé la prise de façon cyclique.
+
+Commencer par définir le programme de régulation:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_5.jpg
+
+Le graphique du programme doit ressembler à ça:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_6.jpg
+
+Définissez le programme cyclique de marche forcé:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_1.jpg
+
+Au final, le programme ressemble à ça:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_7.jpg
+
+== Double cycles ==
+La première solution consiste à appliquer un programme cyclique de marche forcé en opposition avec un programme de régulation.
+
+Commencer par définir le programme cyclique de marche forcé:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_1.jpg
+
+Le graphique du programme doit ressembler à ça:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_2.jpg
+
+Définissez le programme cyclique de régulation:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_3.jpg
+
+Au final, le programme ressemble à ça:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_4.jpg
+
+Nota: La dernière partie à 0 est un bug ( issue 554 ). Vous pouvez combler ce trou en ajoutant une dernière programmation classique.

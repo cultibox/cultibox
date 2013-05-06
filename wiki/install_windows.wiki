@@ -87,6 +87,10 @@ Le logiciel s'installe:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_8.png
 
+Autoriser l'accès à Apache à votre réseau:
+
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_12.jpg
+
 Pour que le logiciel soit pleinement fonctionnel, il est nécessaire de vider le cache de votre navigateur web:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_9.png
@@ -101,7 +105,7 @@ http://cultibox.googlecode.com/svn/wiki/img/update_windows_11.png
 
 = Lancement du logiciel =
 
-Une icone du logiciel est disponible dans le menu "Démarrer" -> "Programme" -> "Cultibox".
+Une icône du logiciel est disponible dans le menu "Démarrer" -> "Programme" -> "Cultibox".
 
 Vous pouvez aussi entrer l'adresse suivante dans votre explorateur web :
 
