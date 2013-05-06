@@ -1,0 +1,27 @@
+#summary Cas atypique
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+Cette partie de la documentation vous aide pour gérer les cas atypique
+
+= CO² =
+En fnction de l'équipement que vous possédez, il y a plusieur façon de gérer le CO².
+
+== Extinction de l'appareil lorsque l'extracteur est en route ==
+Ce cas d'utilisation se présente lorsque l'appareil pilotant le CO² se régule tout seul. La seule chose que vous souhaitez faire est de couper l'arrivée de CO² lorsque l'extracteur se met en route. En d'autre termes, lorsque la température devient trop haute, le ventilateur doit se mettre en route et le CO² doit s'arreter.
+
+Programmer de façon classique votre extracteur. On souhaite que le CO² se coupe lorsque la température dépasse la consigne de l'extracteur. On donc choisir pour cette prise le [https://code.google.com/p/cultibox/wiki/gui_soft_conf#Configuration_des_prises type "chauffage"]. Toujours dans cet onglet, mettre la même tolérance pour la régulation que la valeur mise pour l'extracteur.
+
+Dans l'onglet programme, mettre le même programme que le programme de l'extracteur.
+
+Ce qui va se passer: lorsque la température va devenir trop haute, l'extracteur va se mettre en route. Au même moment, la prise CO² va s'arreter (comme si c'était un chauffage).
+
+= Augmenter la plage d'hysteresis sans changer la valeur de déclenchement =
+En fonction de votre environnement de culture, une prise en régulation peut changer un peu trop souvent d'état.
+Exemple: un extracteur avec une valeur de tolérance de 1,0°C, en régulation à 24°C change d'état à 23°C (extinction) et à 25°C (mise en route). Vous souhaitez que la valeur de mise en route (25°C) ne change pas mais que le ventilateur s'arrete lorsque la température la température atteint 21°C. 
+Pour ce faire, il faut choisir une valeur de régulation située exactement à mis chemin entre les seuils de déclenchement (21°C et 25°C) et appliquer une tolérance égale à la moitiée de l'écart entre les deux seuils de déclenchement. 
+Dans notre exemple:
+ * La valeur de régulation doit être à la moitiée entre 25°C et 21°C : (25 + 21) / 2 = 23 °C .
+ * La valeur de tolérance doit être la moitiée de la différence entre 25°C et 21°C : (25 - 21) / 2 = 2°C
