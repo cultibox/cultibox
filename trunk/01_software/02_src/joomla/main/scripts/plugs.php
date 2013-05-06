@@ -30,6 +30,7 @@ __('LANG');
 
 // ================= VARIABLES ================= //
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
+$several_sensor=get_configuration("REGUL_SENSOR",$main_error);
 $update_program=false;
 $reset=getvar('reset');
 $reccord=getvar('reccord');

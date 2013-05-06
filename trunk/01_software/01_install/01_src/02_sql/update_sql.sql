@@ -52,5 +52,8 @@ REVOKE GRANT OPTION ON * . * FROM 'cultibox'@'localhost';
 GRANT SELECT , INSERT , UPDATE , DELETE , DROP, LOCK TABLES, FILE ON * . * TO 'cultibox'@'localhost' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 
 -- Version 1.1.14:
-ALTER TABLE `power` ADD INDEX ( `timestamp` );
-ALTER TABLE `logs` ADD INDEX ( `timestamp` );
+ALTER TABLE `cultibox`.`power` ADD INDEX ( `timestamp` );
+ALTER TABLE `cultibox`.`logs` ADD INDEX ( `timestamp` );
+
+-- Version 1.1.19:
+ALTER TABLE `cultibox`.`configuration` ADD `REGUL_SENSOR` VARCHAR( 5 ) NOT NULL DEFAULT 'True'

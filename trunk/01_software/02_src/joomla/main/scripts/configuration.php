@@ -53,6 +53,7 @@ $program="";
 $version=get_configuration("VERSION",$main_error);
 $submenu=getvar("submenu",$main_error);
 $stats=getvar("stats",$main_error);
+$several_sensor=getvar("several_sensor",$main_error);
 $second_regul=getvar("second_regul",$main_error);
 
 if(isset($_SESSION['reset_sd_card'])) {
@@ -193,6 +194,19 @@ if((isset($stats))&&(!empty($stats))) {
         $update_conf=true;
 } else {
         $stats = get_configuration("STATISTICS",$main_error);
+}
+
+
+if((isset($several_sensor))&&(!empty($several_sensor))) {
+        insert_configuration("REGUL_SENSOR","$several_sensor",$main_error);
+        if(strcmp("$several_sensor","False")==0) {
+            for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
+                insert_plug_conf("PLUG_REGUL_SENSOR",$i,"1",$main_error);
+            }
+        }
+        $update_conf=true;
+} else {
+        $several_sensor = get_configuration("REGUL_SENSOR",$main_error);
 }
 
 

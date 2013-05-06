@@ -135,11 +135,15 @@
          <td><div id="label_sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>"><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></div></td>
          <td>
                <div id="sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
-               <select name="plug_sensor<?php echo $i; ?>" id="plug_sensor<?php echo $i; ?>">
-               <?php for($j=1; $j<=$GLOBALS['NB_MAX_SENSOR']; $j++) { ?>
-                  <option <?php if(strcmp($plug_sensor{$i},"$j")==0) { echo 'selected'; }?> value="<?php echo $j; ?>"><?php echo $j; ?></option>
-               <?php } ?>
-               </select>
+                    <?php if(strcmp("$several_sensor","True")==0) { ?>
+                        <select name="plug_sensor<?php echo $i; ?>" id="plug_sensor<?php echo $i; ?>">
+                        <?php for($j=1; $j<=$GLOBALS['NB_MAX_SENSOR']; $j++) { ?>
+                        <option <?php if(strcmp($plug_sensor{$i},"$j")==0) { echo 'selected'; }?> value="<?php echo $j; ?>"><?php echo $j; ?></option>
+                        <?php } ?>
+                        </select>
+                    <?php } else { ?>
+                    <input type="text" name="sensor_regul" value="<?php echo $plug_sensor{$i}; ?>" readonly size="6" />
+                <?php } ?>
                </div>
          </td>
          <td></td>
