@@ -2,7 +2,7 @@
 /* Written by Keith Wood (kbwood{at}iinet.com.au) and Stéphane Nahmani (sholby@sholby.net). */
 jQuery(function($){
 	$.datepicker.regional['it'] = {
-		closeText: 'Fermer',
+		closeText: 'Valider',
 		prevText: '&#x3c;Préc',
 		nextText: 'Suiv&#x3e;',
 		currentText: 'Aujourd\'hui',

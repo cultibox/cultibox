@@ -596,7 +596,7 @@ msgid "TIMEPICKER_NOW"
 msgstr "Heure actuelle"
 
 msgid "TIMEPICKER_CLOSE"
-msgstr "Fermer"
+msgstr "Valider"
 
 msgid "TIMEPICKER_BUTTON_TEXT"
 msgstr "Choisir l\'heure"
@@ -712,6 +712,9 @@ msgstr "Supprimer la dernière prise"
 msgid "RESET_CONFIRM_PROGRAM"
 msgstr "Êtes vous sur de vouloir réinitialiser le programme pour la/les prise(s) sélectionnée(s)?"
 
+msgid "DATA_LABEL"
+msgstr "Afficher les états des prises selectionnées"
+
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"
@@ -740,6 +743,7 @@ msgstr "Annuler le zoom temporel"
 
 msgid "RESET_ZOOM_TITLE"
 msgstr "Annuler le zoom"
+
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
@@ -1376,12 +1380,26 @@ msgstr "Assurez vous de bien avoir lu l'aide avant d'activer cette option. Il n'
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
 msgstr "Lorsque vous chargez la page des logs, le logiciel enregistre vos logs de température, humidité et puissance pour les 31 derniers jours. Cette fonctionnalité vous permet de charger des logs plus anciens en fonction du nombre de mois souhaité"
 
-
 msgid "TOOLTIP_EXPORT_LOG_CSV"
 msgstr "Exporter vos informations de logs dans un fichier au format CSV"
 
 msgid "TOOLTIP_EXPORT_POWER_CSV"
 msgstr "Exporter vos informations de puissance dans un fichier au format CSV"
+
+msgid "TOOLTIP_ADD_PLUG"
+msgstr "Cette fonctionnalité vous permet d'ajouter une prise dont vous pouvez directement configurer le programme sur cette page. Cette action revient à se déplacer dans la partie configuration et augmenter le nombre de prises de votre système"
+
+msgid "TOOLTIP_REMOVE_PLUG"
+msgstr "Cette fonctionnalité vous permet de supprimer une prise utilisable dans votre système Cultibox. Cette action revient à se déplacer dans la partie configuration et diminuer le nombre de prises de votre système"
+
+msgid "TOOLTIP_RESET_PROGRAM"
+msgstr "Cette fonctionnalité permet de remettre à zéro un programme. Le prise selectionnée n'aura plus d'actions attribuée, elle se retrouvera éteinte pour toute la journée"
+
+msgid "TOOLTIP_EXPORT_PROGRAM"
+msgstr "Cette fonctionnalité vous permet d'exporter un programme dans un format csv (lisisble par un tableur). Ce fichier peut être utilisé pour appliquer, avec la fonction d'importation, un même programme sur d'autres prises ou encore afin de s'échanger des programmes avec d'autres utilisateurs Cultibox"
+
+msgid "TOOLTIP_IMPORT_PROGRAM"
+msgstr "Cette fonctionnalité permet d'importer un programme depuis un fichier csv (lisible par un tableur). Le fichier à importer peut être créé par la fonction d'exportation par un autre utilisateur Cultibox pour s'échanger des programmes ou depuis une autre de vos prises pour appliquer un même programme à plusieurs prises"
 
 
 #For the debug part:
