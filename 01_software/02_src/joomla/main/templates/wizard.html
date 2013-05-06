@@ -182,9 +182,9 @@ timeFormat: 'hh:mm:ss',
 <?php if($step>1) { ?><td class="wizard-input-previous <?php if($step===4) { ?>wizard-input-previous2<?php } ?>"><input type=submit name="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>"></td><?php } ?>
 <?php if($step<4) { ?><td class="wizard-input-previous <?php if($step===1) { ?>wizard-input-previous2<?php } ?>"><input type=submit name="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>"></td> <?php } ?>
 <td class="wizard-input-submit">
-<?php if($step==4) { ?><input type=submit name="finish" value="<?php echo __('WIZARD_FINISH_STEP'); ?>"><?php } ?>
+<?php if($step==4) { ?><input type=submit name="next_plug" value="<?php echo __('WIZARD_OTHER_STEP'); ?>"><?php } ?>
 <?php if(($step==4)&&($selected_plug<$nb_plugs)) { ?>
-<input type=submit name="next_plug" value="<?php echo __('WIZARD_OTHER_STEP'); ?>">
+<input type=submit name="finish" value="<?php echo __('WIZARD_FINISH_STEP'); ?>">
 </td>
 <?php } ?>
 </tr>
