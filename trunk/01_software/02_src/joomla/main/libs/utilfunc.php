@@ -510,10 +510,14 @@ function check_format_date($date="",$type) {
          return 0;
       }
 
+      $tmp=explode("-","$date");
+      if(count($tmp)!=3) return 0;
+
       if(!preg_match('#^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$#', $date)) {
          return 0;
       }
-      return 1;
+
+      return checkdate($tmp[1], $tmp[2], $tmp[0]);
    }
 
    if("$type" == "month") {
@@ -521,14 +525,14 @@ function check_format_date($date="",$type) {
          return 0;
       }
 
+      $tmp=explode("-","$date");
+      if(count($tmp)!=2) return 0;
+
       if(!preg_match('#^[0-9][0-9]$#', $date)) {
          return 0;
       }
 
-      if(($date < 1)||($date > 12)) {
-         return 0;
-      }
-      return 1;
+      return checkdate("1", $tmp[1], $tmp[0]);
    }
    return 0;
 }
