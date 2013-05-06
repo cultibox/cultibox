@@ -15,6 +15,8 @@
     * [gui_soft_logs Relevé des conditions climatique]
     * [gui_soft_prog Programmation]
       * [gui_soft_prog_regul Régulation]
+        * [gui_soft_prog_regul_sec Régulation Secondaire]
+        * [gui_soft_prog_regul_atypique Cas Atypique]
     * [gui_soft_cal Calendrier]
       * [gui_soft_cal_lunar Calendrier lunaire]
     * [gui_soft_cost Cout]
