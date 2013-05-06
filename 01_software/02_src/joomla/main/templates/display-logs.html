@@ -306,7 +306,7 @@ $(function () {
                }
             }, {
                title: {
-		  useHTML: true,
+		          useHTML: true,
                   text: <?php echo "'".__('Y2AXIS_LEGEND')."'"; ?>,
                   style: {
                      color: <?php echo "'".$color_temperature."'"; ?>
@@ -326,12 +326,14 @@ $(function () {
             <?php if((isset($datap))&&(!empty($datap))) { ?>
             ,{
                title: {
-		  useHTML: true,
+		          useHTML: true,
                   text: <?php echo "'".__('Y3AXIS_LEGEND')."'"; ?>,
                   style: {
                      color: <?php echo "'".$color_power."'"; ?>
                   }
                },
+               startOnTick: false,
+               endOnTick: false,
                min: 0
             }
             <?php } ?>
@@ -793,9 +795,9 @@ $(function () {
         for(var i=0;i<chart.yAxis.length;i++) {
             if($(this).val()!="") {
                 var extremes = chart.yAxis[i].getExtremes();
-                if(extremes.min<$(this).val()) {
+                if(extremes.max>$(this).val()) {
                     if(chart.axes[0].series[i].type=='spline') {
-                        chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+                        chart.yAxis[i].setExtremes($(this).val(),extremes.max);
                         if(!extremes_save) {
                             extremes_save=extremes;
                         }

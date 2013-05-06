@@ -173,6 +173,9 @@ msgstr "SD card formated successfully"
 msgid "SECOND_REGUL_ENABLE"
 msgstr "Enable secondary regulation (Expert user only)"
 
+msgid "MULTIPLE_REGUL_SENSOR"
+msgstr "Regulation on several sensors"
+
 
 # For the logs part:
 
@@ -1399,6 +1402,9 @@ msgstr "Cette fonctionnalité vous permet d'exporter un programme dans un format
 
 msgid "TOOLTIP_IMPORT_PROGRAM"
 msgstr "Cette fonctionnalité permet d'importer un programme depuis un fichier csv (lisible par un tableur). Le fichier à importer peut être créé par la fonction d'exportation par un autre utilisateur Cultibox pour s'échanger des programmes ou depuis une autre de vos prises pour appliquer un même programme à plusieurs prises"
+
+msgid "TOOLTIP_REGUL_SEVERAL_SENSOR"
+msgstr "Si vous activez la sélection de la régulation de plusieurs capteurs, vous pourrez choisir le numéro de votre capteur vous permettant de gérer la régulation. Sinon et par défaut la régulation se fera sur le capteur numéro un"
 
 
 #For the debug part:
