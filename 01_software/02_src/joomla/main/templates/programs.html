@@ -350,9 +350,9 @@ $(document).ready(function() {
         getRegulation($("#regul_program").prop("selectedIndex"),plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']); 
 
         if(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_REGUL']=="False") {
-            $("#second_regul_plug").val("<?php echo __('SECOND_REGUL_OFF','highchart'); ?>");
+            $("#second_regul_plug").text("<?php echo __('SECOND_REGUL_OFF','highchart'); ?>");
         } else {
-            $("#second_regul_plug").val("<?php echo __('SECOND_REGUL_ON','highchart'); ?>");
+            $("#second_regul_plug").text("<?php echo __('SECOND_REGUL_ON','highchart'); ?>");
         }
 
         $("#resume_img").prop('title', resume_plugs[$('#selected_plug').val()]);
@@ -454,7 +454,7 @@ $(document).ready(function() {
 <tr>
     <td></td>
     <td><?php echo __('VALUE_REGUL_SECOND'); ?>:</td>
-    <td><input type="text" id="second_regul_plug" name="second_regul_plug" value="<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_REGUL'],"False")==0) { echo __('SECOND_REGUL_OFF'); } else { echo __('SECOND_REGUL_ON'); } ?>" readonly size="10" /></td>
+    <td><label class="readonly" id="second_regul_plug" name="second_regul_plug"><?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_REGUL'],"False")==0) { echo __('SECOND_REGUL_OFF'); } else { echo __('SECOND_REGUL_ON'); } ?></label></td>
     <td></td>
 </tr>
 <?php } ?>

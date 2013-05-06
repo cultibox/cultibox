@@ -650,3 +650,8 @@ td.welcome-link img{
 .dialog_cultibox .ui-widget-header {
     background: #4054A4;
 }
+
+
+.readonly {
+    font-style: italic;
+}
