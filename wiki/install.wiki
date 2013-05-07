@@ -109,4 +109,8 @@ Brancher l'adaptateur secteur-USB sur le secteur. Brancher ensuite le câble USB
 = Démarrage =
 Lors du branchement de l’adaptateur secteur, la Cultibox démarre. Elle ne peut pas fonctionner sans carte SD. Si vous n'avez pas inséré de carte SD, il est donc normal qu'elle affiche un message d'erreur. 
 
-Un écran s'affiche vous permettant de régler l'heure 
+Un écran s'affiche vous permettant de régler l'heure. Pour changer le chiffre, appuyer sur ahut ou sur bas. Pour changer le chiffre à modifier, appuyer sur gauche ou sur droite. Pour plus d'information sur le changement de l'heure voir le chapitre consacré [https://code.google.com/p/cultibox/wiki/gui_box_menu_param_culti_hour à l'horloge].
+
+Une fois démarré, la Cultibox indique sur l'écran la valeur de la température en alternance avec la valeur de l'humidité. Vous pouvez faire défiler ces informations en appuyant sur Gauche ou Droite. Pour plus d'information sur ce qui est affiché voir le chapitre [https://code.google.com/p/cultibox/wiki/gui_box_main Information Courante de l'interface Graphique Cultibox].
+
+Un menu permettant d'accéder à quelques informations est disponible en appuyant sur le bouton central. Pour plus d'information sur les informations accéssible dans la Cultibox, voir le chapitre [https://code.google.com/p/cultibox/wiki/gui_box_menu Menu Principal de l'interface Graphique Cultibox].
