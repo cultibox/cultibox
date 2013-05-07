@@ -4,3 +4,17 @@
 
 Cette section de l'aide décrit et explique l'interface logiciel.
 
+Pour installer le logiciel, rendez vous sur le [https://code.google.com/p/cultibox/wiki/install#Installation_du_logiciel lien suivant].
+
+= Sommaire =
+
+  * [gui_soft_wizard Assistant de programmation]
+  * [gui_soft_logs Relevé des conditions climatique]
+  * [gui_soft_prog Programmation]
+    * [gui_soft_prog_regul Régulation]
+      * [gui_soft_prog_regul_sec Régulation Secondaire]
+      * [gui_soft_prog_regul_atypique Cas Atypique]
+  * [gui_soft_cal Calendrier]
+    * [gui_soft_cal_lunar Calendrier lunaire]
+  * [gui_soft_cost Cout]
+  * [gui_soft_conf Configuration]
