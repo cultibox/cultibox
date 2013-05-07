@@ -4,19 +4,17 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-Cette page de l'aide explique et permet de comprendre le fonctionnement de la régulation.
-
-= Régulation =
-== Introduction ==
 La régulation permet de piloter les prises afin d'obtenir des conditions de culture optimales.
 
-Principe général: 
+*Principe général:*
 Vous choisissez une température ou une humidité, la Cultibox se charge d'allumer la prise en lorsque c'est nécessaire.
 Exemple : Vous décidez d'une température de 22°C. Vous effectuer cette régulation sur un ventilateur. La prise se met en route lorsque la température est supérieur à la consigne et s'éteint lorsque la température est inférieure à la consigne.
 
 Il n'est pas possible d'activer la régulation principale sur une prise déclarée comme "lampe" ou comme "autre" . Une prise "autre", est une prise qui ne modifie ni la température ni l'humidité de l'espace de culture. Il n'est donc pas possible d'effectuer de la régulation (principale ou secondaire) sur cette prise. De la même façon, il est impossible d'activer la régulation principale sur une prise déclarée comme "lampe".
 
-== Sélection du type d'élément branché sur la prise ==
+La Cultibox vérifie et change l'état des prises avec une fréquence d'environ 10 secondes. Ce qui veut dire que vous pouvez voir une température ou une humidité qui doit déclencher le mise en route d'une prise mais que la Cultibox ne déclenchera la prise que quelques secondes plus tard.
+
+= Sélection du type d'élément branché sur la prise =
 Pour assurer correctement la régulation, la Cultibox à besoin de savoir quel élément est branché sur la prise.
 
 Par exemple, vous désirez avoir une température de 22°C. Le capteur indique 20°C. La Cultibox ne doit mettre en route la prise que si c'est un élément du type chauffage qui est branché dessus.
@@ -29,12 +27,12 @@ Si l'élément ne correspond pas exactement aux choix possibles, vous devez sél
  * Si l'élément branché augmente l'humidité de votre environnement lorsqu'il est en marche : sélectionner "Humidificateur"
  * Si l'élément branché baisse l'humidité de votre environnement lorsqu'il est en marche : sélectionner "Dés-humidificateur"
  
-== Hystérésis ==
+= Hystérésis =
 Les prises vendues avec le pack sont "Tout Ou Rien". Cela veut dire que la prise ne peut être que dans un des deux états suivants: Allumée ou éteinte. Pour ce type de prise, la régulation la plus efficace est une régulation suivant un [http://fr.wikipedia.org/wiki/Hyst%C3%A9r%C3%A9sis cycle d'hystérésis].
 
 Un parametre apparait pour régler l'hystérésis : la tolérance. Ce paramêtre se règle dans l'onglet [https://code.google.com/p/cultibox/wiki/gui_soft_conf#Configuration_des_prises prise]. Il définit quelle tolérance doit être appliquée par rapport à la consigne. Par exemple un extracteur avec une tolérance de 1°C et une valeur de régulation de 24°C, se met en route à 25°C et s'éteint à 23°C.
 
-=== Chauffage ou humidificateur ===
+== Chauffage ou humidificateur ==
 Dans le cas ou la prise agit de façon positive sur la valeur du capteur (Chauffage, Humidificateur). Les règles de changement d'état des prises sont les suivantes:
  * Si la valeur du capteur est inférieur à la consigne moins la tolérance : Prise activée
  * Si la valeur du capteur est supérieur à la consigne plus la tolérance : Prise désactivée
@@ -49,7 +47,7 @@ La prise ne s'éteint pas lorsque la température est supérieur à la consigne.
 
 http://cultibox.googlecode.com/svn/wiki/img/regul_4.png
 
-=== Ventilateur ou dés-humidificateur ===
+== Ventilateur ou dés-humidificateur ==
 Dans le cas ou la prise agit de façon négative sur la valeur du capteur (Ventilateur, Dés-humidificateur). Les règles de changement d'état des prises sont les suivantes:
  * Si la valeur du capteur est supérieur à la consigne plus la tolérance : Prise activée
  * Si la valeur du capteur est inférieur à la consigne moins la tolérance : Prise désactivée
@@ -64,5 +62,5 @@ La prise ne s'éteint pas lorsque la température est inférieur à la consigne.
 
 http://cultibox.googlecode.com/svn/wiki/img/regul_2.png
 
-=== Comment désactiver l'hystérésis ===
+== Comment désactiver l'hystérésis ==
 Pour désactiver le fonctionnement en hystérésis, il vous suffit d'indiquer une valeur de tolérance de 0 pour la prise.
