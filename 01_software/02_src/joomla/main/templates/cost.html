@@ -178,8 +178,8 @@ $(function () {
       <td><select name="select_plug">
             <option value="all"><?php echo __('PRICE_ALL_PLUG'); ?></option>
             <option value="distinct_all" <?php if(strcmp($select_plug,"distinct_all")==0) { echo "selected"; } ?>><?php echo __('PRICE_DISTINCT_ALL_PLUG'); ?></option>
-            <?php foreach($active_plugs as $plugs) {  ; ?>
-               <option value="<?php echo $plugs['id']; ?>" <?php if(strcmp($select_plug,$plugs['id'])==0) echo "selected"; ?>><?php echo __('PRICE_FOR_PLUG').": ".$plugs_infos[$plugs['id']-1]["PLUG_NAME"]; ?></option>
+            <?php for($plugs=1;$plugs<=$nb_plugs;$plugs++) {  ; ?>
+               <option value="<?php echo $plugs; ?>" <?php if(strcmp($select_plug,$plugs)==0) echo "selected"; ?>><?php echo __('PRICE_FOR_PLUG').": ".$plugs_infos[$plugs-1]["PLUG_NAME"]; ?></option>
             <?php } ?>
          </select></td>
      <td></td>

@@ -47,7 +47,6 @@ $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
-$active_plugs=get_active_plugs($nb_plugs,$main_error);
 $submit=getvar("view-cost");
 $resume="";
 $lang=$_SESSION['LANG'];
@@ -246,21 +245,25 @@ if(strcmp($select_plug,"distinct_all")!=0) {
     );
 } else {
     $nb=get_nb_days($startday,$endday)+1;
-    foreach($active_plugs as $plugs) { 
-       $theorical_power=get_theorical_power($plugs['id'],$cost_type,$main_error,$check);
+    $tmp_err=array();
+    for($plugs=1;$plugs<=$nb_plugs;$plugs++) { 
+       $theorical_power=get_theorical_power($plugs,$cost_type,$main_error,$check);
        $theorical_power=$theorical_power*$nb;
 
-       $data_power=get_data_power($startday,$endday,$plugs['id'],$main_error);
+       $data_power=get_data_power($startday,$endday,$plugs,$tmp_err);
        $real_power=get_real_power($data_power,$cost_type,$main_error);
-       $title=$plugs_infos[$plugs['id']-1]['PLUG_NAME'];
+       $title=$plugs_infos[$plugs-1]['PLUG_NAME'];
 
        $data_price[]= array(
-        "number" => $plugs['id'],
+        "number" => $plugs,
         "real" => "$real_power",
         "theorical" => "$theorical_power",
         "title" => "$title",
-        "color" => $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs['id']-1]
+        "color" => $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs-1]
        ); 
+    }
+    if(count($tmp_err)>0) {
+        $main_error[]=$tmp_err[0];
     }
 }
 

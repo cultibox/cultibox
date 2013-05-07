@@ -10,6 +10,9 @@ Cultibox (1.1.19) precise; urgency=low
     + Correction d'affichage des accents, de l'espacement titre-graphe [...] dans le graphe des programmes
     + Correction du calcul des puissances et des prises configurées
     + On autorise maintenant la valeur nulle pour les puissance qui déclenche un message lorsqu'on calcul un cout ou qu'on affiche les valeurs d'une prise
+    + Le bouton de reset du zoom des programmes utilise le même format que le bouton des logs (bouton exterieur au graphe)
+    + L'affichage des puissances dans les logs ou le calcul du cout prend en compte les prises qui sont déclarées inactives: on peut visualer les informations des prises que l'on a configuré comme inactive, ce n'était pas le cas avant
+    + Correction de le detection de la configuration des puissances. La valeur nulle ("") déclenche un message d'erreur dans le calcul du cout et l'affichage des logs
 
 -- Yann Genevois <yann.genevois@gmail.com>  Mon May  6 12:26:10 CEST 2013
 
