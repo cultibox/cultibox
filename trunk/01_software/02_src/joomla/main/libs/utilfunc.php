@@ -532,7 +532,7 @@ function check_format_date($date="",$type) {
          return 0;
       }
 
-      return checkdate("1", $tmp[1], $tmp[0]);
+      return checkdate($tmp[1], "1", $tmp[0]);
    }
    return 0;
 }
@@ -1293,10 +1293,13 @@ function check_format_values_program(&$value="0",$type="temp") {
 // ROLE check AND format power value of a plug
 // IN   $value   value to check and format
 // RET false is there is a wrong value, true else
-function check_power_value($value="0") {
+function check_power_value($value="") {
    if($value<0) {
                 return false;
    }
+
+   if($value=="") return true;
+
    if(!is_numeric($value)) {
                 return false;
    }

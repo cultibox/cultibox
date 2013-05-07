@@ -719,6 +719,12 @@ msgstr "Do you really want to reset the program for the selected plug(s)?"
 msgid "DATA_LABEL"
 msgstr "Display states of selected plugs"
 
+msgid "BEHAVIOUR"
+msgstr "Comportement"
+
+msgid "REGULATION"
+msgstr "régulation"
+
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"

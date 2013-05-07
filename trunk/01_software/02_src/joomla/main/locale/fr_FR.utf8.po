@@ -718,6 +718,12 @@ msgstr "Êtes vous sur de vouloir réinitialiser le programme pour la/les prise(
 msgid "DATA_LABEL"
 msgstr "Afficher les états des prises selectionnées"
 
+msgid "BEHAVIOUR"
+msgstr "Comportement"
+
+msgid "REGULATION"
+msgstr "régulation"
+
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"

@@ -169,7 +169,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    }
    */
 
-
         if((!empty($power))&&(isset($power))&&(!$reset)&&(strcmp("$old_power","$power")!=0)) {
             if(check_power_value($power)) {
       	        insert_plug_conf("PLUG_POWER",$nb,$power,$main_error);
@@ -180,7 +179,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
             }
         } else {
             if((empty($power))&&(!$reset)&&(!empty($reccord))&&(strcmp("$old_power","$power")!=0)) {
-                insert_plug_conf("PLUG_POWER",$nb,0,$main_error);
+                insert_plug_conf("PLUG_POWER",$nb,"",$main_error);
                 $update_program=true;
                 $plug_update=true;
             }

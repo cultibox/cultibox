@@ -310,9 +310,15 @@ EOF;
 //    $out      errors or warnings messages
 // RET none
 function insert_plug_conf($key,$id,$value,&$out) {
+    if(strcmp("$value","")!=0) {
    $sql = <<<EOF
 UPDATE `plugs` SET  {$key} = "{$value}" WHERE id = {$id}
 EOF;
+    } else {
+$sql = <<<EOF
+UPDATE `plugs` SET  {$key} = NULL WHERE id = {$id}
+EOF;
+    }
    $db=db_priv_pdo_start();
    try {
         $db->exec("$sql");
@@ -467,7 +473,7 @@ EOF;
    
     if(count($res)>0) {
         $sql = <<<EOF
-SELECT `PLUG_POWER` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True"
+SELECT `PLUG_POWER` FROM `plugs`;  
 EOF;
 
         $db=db_priv_pdo_start();
@@ -492,7 +498,8 @@ EOF;
         }
 
         if(strcmp("$id","all")!=0) {
-            if(strcmp($res_power[$id-1]['PLUG_POWER'],"0")==0) {
+            if(strcmp($res_power[$id-1]['PLUG_POWER'],"")==0) {
+                $res_power[$id-1]['PLUG_POWER']=0;
                 $out[]=__('ERROR_POWER_PRICE_NULL')." <a href='plugs-".$_SESSION['SHORTLANG']."'>".__('HERE')."</a>";
             }
 
@@ -508,14 +515,14 @@ EOF;
                );
             }
             return $tmp;
-        }
-
-
-        //For all plugs
-        $err=false;
-        for($i=0;$i<count($res_power);$i++) {
-            if(strcmp($res_power[$i]['PLUG_POWER'],"0")==0) {
-                $err=true;
+        } else {
+            //For all plugs
+            $err=false;
+            for($i=0;$i<count($res_power);$i++) {
+                if(strcmp($res_power[$i]['PLUG_POWER'],"")==0) {
+                    $res_power[$i]['PLUG_POWER']=0;
+                    $err=true;
+                }
             }
         }
 
@@ -1637,40 +1644,54 @@ EOF;
                $tol="000";
             }
 
-           
-            if((strcmp($data['PLUG_ENABLED'],"True")==0)&&(strcmp("$second_regul","True")==0)) {
+            if(strcmp($data['PLUG_ENABLED'],"True")==0) {
+                //Main regulation:
                 if($data['PLUG_TYPE']=="ventilator") {
                     $reg="REG:T+${tol}";
-                    $sec="SEC:T+1000";
                 } else if($data['PLUG_TYPE']=="heating") {
                     $reg="REG:T-${tol}";
-                    $sec="SEC:N-1000";
                 } else if($data['PLUG_TYPE']=="humidifier") {
                     $reg="REG:H-${tol}";
-                    $sec="SEC:N-1000";
                 } else if($data['PLUG_TYPE']=="dehumidifier") {
                     $reg="REG:H+${tol}";
-                    $sec="SEC:N+1000";
                 } else {
                     $reg="REG:N+000";
-                    $sec="SEC:N+0000";
                 }
 
-                if(strcmp($data['PLUG_REGUL'],"False")==0) {
-                  $sec="SEC:N+0000";
+
+                // Second regulation:
+                if(strcmp("$second_regul","True")==0) {
+                    //Default second regulation value:
+                    if($data['PLUG_TYPE']=="ventilator") {
+                        $sec="SEC:T+1000";
+                    } else if($data['PLUG_TYPE']=="heating") {
+                        $sec="SEC:N-1000";
+                    } else if($data['PLUG_TYPE']=="humidifier") {
+                        $sec="SEC:N-1000";
+                    } else if($data['PLUG_TYPE']=="dehumidifier") {
+                        $sec="SEC:N+1000";
+                    } else {
+                        $sec="SEC:N+0000";
+                    }
+
+                    //User second regulation value:
+                    if(strcmp($data['PLUG_REGUL'],"False")==0) {
+                        $sec="SEC:N+0000";
+                    } else {
+                        $sec="SEC:".$data['PLUG_SENSO'].$data['PLUG_SENSS'];
+                        $val=$data['PLUG_REGUL_VALUE']*10;
+                        while(strlen($val)<3) {
+                            $val="0$val";
+                        }
+                        $sec=$sec."1$val";
+                    }
                 } else {
-                  $sec="SEC:".$data['PLUG_SENSO'].$data['PLUG_SENSS'];
-                  $val=$data['PLUG_REGUL_VALUE']*10;
-                  while(strlen($val)<3) {
-                     $val="0$val";
-                  }
-                  $sec=$sec."1$val";
+                    $sec="SEC:N+0000";
                 }
             } else {
                 $reg="REG:N+000";
                 $sec="SEC:N+0000";
             }
-
 
             if(strcmp($data['PLUG_REGUL_SENSOR'],"")!=0) {
                 if(strlen($data['PLUG_REGUL_SENSOR'])<2) {
@@ -1683,7 +1704,6 @@ EOF;
             }
             $arr[]="$reg"."\r\n"."$sec"."\r\n"."$sens";
          }
-
          return $arr;
       }
    } 
