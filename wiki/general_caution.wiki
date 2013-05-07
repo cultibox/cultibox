@@ -83,7 +83,8 @@ La Cultibox intègre une pile pour conserver l'heure. La pile ne doit pas être 
 
 = Configuration minimale de l'ordinateur =
 Ordinateur Fixe :
- * Système d'exploitation : Mac os X ou Windows Xp/vista/seven (32 et 64Bits)                        
+ * Système d'exploitation : Mac os X ou Windows Xp/vista/seven (32 ou 64Bits)       
+ * Vous devez posseder les droits administrateur                 
  * processeur : Inel Pentium IV, 2.8MHz ou équivalent
  * Mémoire vive : 1Go de RAM
  * 1 Go d'espace libre sur le disque dur
@@ -91,7 +92,8 @@ Ordinateur Fixe :
  * Clavier et souris
 
 Ordinateur portable :
- * Système d'exploitation : Mac os X ou Windows Xp/vista/seven (32 et 64Bits)
+ * Système d'exploitation : Mac os X ou Windows Xp/vista/seven (32 ou 64Bits)
+ * Vous devez posseder les droits administrateur  
  * processeur : Inel Pentium M, 1.4MHz ou équivalent
  * Mémoire vive : 512 Mo de RAM
  * 1 Go d'espace libre sur le disque dur
