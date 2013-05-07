@@ -108,7 +108,8 @@ lang: {
 }
 });
 
-enabled = false;
+var enabled = false;
+var showzoomX=false;
 var chart;
 $(document).ready(function() {
    chart = new Highcharts.Chart({
@@ -182,7 +183,16 @@ $(document).ready(function() {
                 if(tmp=="00:00") return "24:00";
                 return tmp;
             }
-         }
+         },
+         events: {
+                afterSetExtremes: function(event){
+                    $('#resetXzoom').show();
+                    showzoomX=true;
+                    if(chart.resetZoomButton) {
+                            chart.resetZoomButton.hide();
+                    }
+            }
+        }
       },
       yAxis: {
             min: 0,
@@ -361,6 +371,16 @@ $(document).ready(function() {
         chart.redraw(); 
     });
 
+       $('#resetXzoom').click(function() {
+        if(showzoomX) {
+            chart.xAxis[0].setExtremes(null, null,true, true); 
+            $('#resetXzoom').hide();
+            showzoomX=false;
+        }
+
+    });
+
+
      /*   $('#datalabel').click(function() {
         if (!$(this).is(':checked')) {
             chart.xAxis[0].isDirty = true;
@@ -484,6 +504,13 @@ $(document).ready(function() {
 <tr>
     <td></td><td><div id="plug" style="width: 100%; height: 350px; margin: 0 auto"></div></td><td></td>
 </tr>
+<tr>
+    <td></td>
+    <td><p class="p_center"><button id="resetXzoom" name="buttonX" style="display:none"><?php echo __('RESET_X_ZOOM'); ?></button> <button id="resetzoom" name="button" style="display:none"><?php echo __('RESET_ZOOM'); ?></button></p>
+    </td>
+    <td></td>
+</tr>
+
 <!--
 <tr>
     <td></td>

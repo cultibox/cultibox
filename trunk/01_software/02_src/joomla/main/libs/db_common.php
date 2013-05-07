@@ -471,7 +471,6 @@ EOF;
    }
 
    
-    if(count($res)>0) {
         $sql = <<<EOF
 SELECT `PLUG_POWER` FROM `plugs`;  
 EOF;
@@ -528,35 +527,36 @@ EOF;
 
         if($err) $out[]=__('ERROR_POWER_PRICE_NULL')." <a href='plugs-".$_SESSION['SHORTLANG']."'>".__('HERE')."</a>";
 
-        $timestamp=$res[0]['timestamp'];
-        $save=$res[0];
-        $val=0;
-        $tmp=array();
-        for($i=0;$i<count($res);$i++) {
-           if(strcmp($res[$i]['timestamp'],$timestamp)==0) { 
-              $count=$res[$i]['plug_number']-1;
-              $pcent=round((int)$res[$i]['record']/10);
-              $val=$val+($pcent * (int)$res_power[$count]['PLUG_POWER'])/999;
-           } else {
-             $tmp[] = array (
-                 "timestamp" => "$timestamp",
-                 "record" => round($val),
-                 "plug_number" => $res[$i-1]["plug_number"],
-                 "date_catch" => $save["date_catch"],
-                 "time_catch" => $save["time_catch"]
-             );
+        if(count($res)>0) {
+            $timestamp=$res[0]['timestamp'];
+            $save=$res[0];
+            $val=0;
+            $tmp=array();
+            for($i=0;$i<count($res);$i++) {
+                if(strcmp($res[$i]['timestamp'],$timestamp)==0) { 
+                    $count=$res[$i]['plug_number']-1;
+                    $pcent=round((int)$res[$i]['record']/10);
+                    $val=$val+($pcent * (int)$res_power[$count]['PLUG_POWER'])/999;
+                } else {
+                    $tmp[] = array (
+                        "timestamp" => "$timestamp",
+                        "record" => round($val),
+                        "plug_number" => $res[$i-1]["plug_number"],
+                        "date_catch" => $save["date_catch"],
+                        "time_catch" => $save["time_catch"]
+                    );
 
-              $save=$res[$i];
-              $val=0;
-              $pcent=0;
-              $timestamp=$res[$i]['timestamp'];
-              $i=$i-1;
-           }
+                    $save=$res[$i];
+                    $val=0;
+                    $pcent=0;
+                    $timestamp=$res[$i]['timestamp'];
+                    $i=$i-1;
+                }
+            }
+        } else { 
+            return 0;
         }
         return $tmp;      
-   } else {
-      return 0;
-   } 
 }
 // }}}
 

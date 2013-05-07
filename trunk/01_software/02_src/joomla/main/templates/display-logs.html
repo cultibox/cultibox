@@ -106,8 +106,8 @@ buttonImageOnly: 'true',
       <td><?php echo __('SELECT_POWER_PLUG'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POWER_LOG'); ?>" />:</td>
       <td> <select name="select_power">
             <option value="">---</option>
-            <?php foreach($active_plugs as $plugs) {  ?>
-               <option value="<?php echo  $plugs['id']; ?>" <?php if(strcmp($select_power,$plugs["id"])==0) echo "selected"; ?>><?php echo $plugs_infos[$plugs['id']-1]["PLUG_NAME"]; ?></option>
+            <?php for($plugs=1;$plugs<=$nb_plugs;$plugs++) {  ?>
+               <option value="<?php echo  $plugs; ?>" <?php if(strcmp($select_power,$plugs)==0) echo "selected"; ?>><?php echo $plugs_infos[$plugs-1]["PLUG_NAME"]; ?></option>
             <?php } ?>
                <option value="9990" <?php if(strcmp($select_power,9990)==0) echo "selected"; ?>><?php echo __('SELECT_ALL_PLUGS'); ?></option>
          </select>
