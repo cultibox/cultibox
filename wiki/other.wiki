@@ -2,5 +2,12 @@
 
 = Introduction =
 
-Cette section de l'aide donne quelques informations supplémentaires.
+Cette section de l'aide donne quelques informations supplémentaires. Vous trouverez notamment:
+ * [faq  Une foire au questions]
+ * [pts le cahier des charges]
 
+= Sommaire =
+
+  * [faq FAQ]
+  * [pts Cahier des charges]
+  * [advance Utilisation avancée]
