@@ -42,7 +42,7 @@ Dans cette section vous pouvez:
 
 En cliquant sur "Configuration de la Cultibox", l'onglet change:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.PNG
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.jpg
 
 Dans cette section vous pouvez:
  * Définir à quelle fréquence la Cultibox enregistre les conditions climatique. 

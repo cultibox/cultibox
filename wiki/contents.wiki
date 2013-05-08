@@ -79,8 +79,12 @@ La puissance maximum de l’élément que vous pouvez brancher sur la Cultibox d
 || Élément purement résistif || 1000W ||
 || Élément inductif ou capacitif || 1000W ||
 
+
 http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
+
+
 http://cultibox.googlecode.com/svn/wiki/img/prise3.jpg
+
 
 = 1 Capteur =
 
