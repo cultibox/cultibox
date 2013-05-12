@@ -729,6 +729,9 @@ msgstr "Les heures du programme rentrées sont les même que le précédent prog
 
 
 # For the export module highchart part:
+msgid "CONTEXT_MENU"
+msgstr "Exporter votre graphe"
+
 msgid "PRINT_HIGHCHART"
 msgstr "Imprimer le graphique"
 
