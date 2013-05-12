@@ -5,6 +5,8 @@ Cultibox (1.1.20) precise; urgency=low
     + Passage des input disabled en label avec la classe readonly
     + Correction de l'affichage des logs par mois dans la fonction check_format_date
     + Ajout de la possibilité de créer un icône cultibox sur le bureau pour windows
+    + Correction des zooms sur l'affichage des logs
+    + Mise en place d'un temps d'attente après chaque action du calendrier si une carte SD est détectée grâce à la librairie blockUI
 
 -- Yann Genevois <yann.genevois@gmail.com>  Sun May 12 15:58:22 CEST 2013
 

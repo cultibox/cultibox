@@ -68,6 +68,7 @@ if(!isset($sd_card)) $sd_card="";
                 $("#dialog_create").dialog({
                         resizable: true,
                         width: 600,
+                        modal: true,
                         buttons: {
                             "<?php echo __('CREATE_DIALOG_CALENDAR','highchart'); ?>": function() { 
                                         $( this ).dialog( "close" ); 
@@ -106,6 +107,9 @@ if(!isset($sd_card)) $sd_card="";
                                         $("#select_remark").text("");
                                         $("#select_remark").val("");
                                         delete event;
+                                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                            $.blockUI({ message: '', timeout: 1000 }); 
+                                        <?php } ?> 
                                         return false;
                         },
                     "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); return false;}
@@ -135,6 +139,9 @@ if(!isset($sd_card)) $sd_card="";
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
                       data: 'title='+event.title+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
                 });
+                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                    $.blockUI({ message: '', timeout: 1000 }); 
+                <?php } ?> 
 
             },
             eventResize: function( event, dayDelta, minuteDelta) { 
@@ -156,6 +163,9 @@ if(!isset($sd_card)) $sd_card="";
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
                       data: 'title='+event.title+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
                 });
+                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                    $.blockUI({ message: '', timeout: 1000 }); 
+                <?php } ?> 
             },
             eventClick: function(event, element) {
                      $("#title").text(event.title);
@@ -172,6 +182,7 @@ if(!isset($sd_card)) $sd_card="";
                      $("#dialog_edit").dialog({
                         resizable: true,
                         width: 600,
+                        modal: true,
                         buttons: {
                             "<?php echo __('EDIT_DIALOG_CALENDAR','highchart'); ?>": function() { 
                                 $( this ).dialog( "close" ); 
@@ -195,6 +206,7 @@ if(!isset($sd_card)) $sd_card="";
 
                                 $("#dialog_create").dialog({
                                 resizable: true,
+                                modal: true,
                                 width: 600,
                                 buttons: {
                                     "<?php echo __('SAVE_DIALOG_CALENDAR','highchart'); ?>": function() { 
@@ -244,6 +256,10 @@ if(!isset($sd_card)) $sd_card="";
                                         $("#select_remark").val("");
 
                                         delete event;
+                                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                            $.blockUI({ message: '', timeout: 1000 }); 
+                                        <?php } ?> 
+
                                         return false;
                                     },
                                     "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); return false;}
@@ -261,6 +277,9 @@ if(!isset($sd_card)) $sd_card="";
                                         $('#calendar').fullCalendar('removeEvents', event.id);
                                         $('#calendar').fullCalendar( 'refetchEvents' );
                                         $('#calendar').fullCalendar( 'rerenderEvents' );
+                                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                            $.blockUI({ message: '', timeout: 1000 }); 
+                                        <?php } ?> 
                             },
                             "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); return false;}
                         }
