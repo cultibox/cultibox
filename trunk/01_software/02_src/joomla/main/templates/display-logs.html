@@ -238,7 +238,8 @@ $(function () {
             }
          },
          title: {
-	     useHTML: true,
+             margin: 55,
+    	     useHTML: true,
              text: <?php echo "'<b>".__('HISTO_GRAPH')." (".$legend_date.")*</b>'"; ?>,
          },
          subtitle: {
@@ -285,7 +286,7 @@ $(function () {
          yAxis: [
             {
                title: {
-		  useHTML: true,
+		          useHTML: true,
                   text: <?php echo "'".__('YAXIS_LEGEND')."'"; ?>,
                   style: {
                      color: <?php echo "'".$color_humidity."'"; ?>
@@ -294,7 +295,9 @@ $(function () {
                min: -1,
                max: 100,
                startOnTick: false,
-               endOnTick: false,
+               endOnTick: false, 
+               allowDecimals: true,
+               minTickInterval: 10, 
                events: {
                 afterSetExtremes: function() {
                     if (this.min <= this.dataMin && this.max >= this.dataMax) {
@@ -319,9 +322,11 @@ $(function () {
                },
                min: -1,
                max: 100,
+               allowDecimals: true,
                opposite: true,
-               startOnTick: false,
                endOnTick: false,
+               startOnTick: false,
+               minTickInterval: 10,
                labels: {
                   formatter: function() {
                      if(this.value<=100) return this.value;
@@ -715,20 +720,15 @@ $(function () {
 
     $('#resetzoom').click(function() {
         var showzoom=false;
-        for(var i=0;i<chart.yAxis.length;i++) {
-            if(chart.axes[0].series[i].type=='area') {
-                chart.yAxis[i].setExtremes(0, 100);
-                showzoom=true;
-            }
+        chart.yAxis[0].setExtremes(0, 100);
+        chart.yAxis[1].setExtremes(1, 100);
+        showzoom=true;
 
-            if(chart.axes[0].series[i].type=='spline') {
-                if(extremes_save) {
-                    chart.yAxis[i].setExtremes(extremes_save.min, extremes_save.max);
-                    extremes_save=null;
-                    showzoom=true;
-                }
-            }         
-        }
+        if(extremes_save) {
+            chart.yAxis[2].setExtremes(extremes_save.min, extremes_save.max);
+            extremes_save=null;
+            showzoom=true;
+        }         
 
         chart.xAxis[0].setExtremes(null, null,true, true);
         $('#resetXzoom').hide();
@@ -758,15 +758,18 @@ $(function () {
 
     $('#min_y_axis').change(function() {    
         var showzoom=false;
-        for(var i=0;i<chart.yAxis.length;i++) {
-            if($(this).val()!="") {
-                var extremes = chart.yAxis[i].getExtremes();
-                if(extremes.max>$(this).val()) {
-                    if(chart.axes[0].series[i].type=='area') {
-                        chart.yAxis[i].setExtremes($(this).val(), extremes.max);
+        if($(this).val()!="") {
+            var extremes = chart.yAxis[0].getExtremes();
+            if(extremes.max>parseInt($(this).val())) {
+                for(j=0;j<chart.axes.length;j++) {
+                    if(chart.axes[j].series[0].type=='area') {
+                        chart.yAxis[0].setExtremes($(this).val(), extremes.max);
+                        chart.yAxis[1].setExtremes($(this).val(), extremes.max);
                         showzoom=true;
                     }
                 }
+            } else {
+                $("#min_y_axis").prop("selectedIndex",0);
             }
         }
 
@@ -777,15 +780,14 @@ $(function () {
 
     $('#max_y_axis').change(function() {
         var showzoom=false;
-        for(var i=0;i<chart.yAxis.length;i++) {
-            if($(this).val()!="") {
-                var extremes = chart.yAxis[i].getExtremes();
-                if(extremes.min<$(this).val()) {
-                    if(chart.axes[0].series[i].type=='area') {
-                        chart.yAxis[i].setExtremes(extremes.min, $(this).val());
-                        showzoom=true;
-                    }
-                }
+        if($(this).val()!="") {
+            var extremes = chart.yAxis[0].getExtremes();
+            if(extremes.min<parseInt($(this).val())) {
+                    chart.yAxis[0].setExtremes(extremes.min, $(this).val());
+                    chart.yAxis[1].setExtremes(extremes.min, $(this).val());
+                    showzoom=true;
+            } else {
+                $("#max_y_axis").prop("selectedIndex",0);
             }
         }
 
@@ -797,19 +799,22 @@ $(function () {
 
       $('#min_y_axis_power').change(function() {
         var showzoom=false;
-        for(var i=0;i<chart.yAxis.length;i++) {
-            if($(this).val()!="") {
-                var extremes = chart.yAxis[i].getExtremes();
-                if(extremes.max>$(this).val()) {
-                    if(chart.axes[0].series[i].type=='spline') {
-                        chart.yAxis[i].setExtremes($(this).val(),extremes.max);
+        if($(this).val()!="") {
+            var extremes = chart.yAxis[2].getExtremes();
+            if(extremes.max>parseInt($(this).val())) {
+                for(j=0;j<chart.axes.length;j++) {
+                    if(chart.axes[j].series[0].type=='spline') {
+                        chart.yAxis[2].setExtremes($(this).val(),extremes.max);
                         if(!extremes_save) {
                             extremes_save=extremes;
                         }
                         showzoom=true;
                     }
                 }
+            } else {
+                $("#min_y_axis_power").prop("selectedIndex",0);
             }
+
         }
 
         if(showzoom) {
@@ -821,18 +826,20 @@ $(function () {
 
       $('#max_y_axis_power').change(function() {
         var showzoom=false;
-        for(var i=0;i<chart.yAxis.length;i++) {
-            if($(this).val()!="") {
-                var extremes = chart.yAxis[i].getExtremes();
-                if(extremes.min<$(this).val()) {
-                    if(chart.axes[0].series[i].type=='spline') {
-                        chart.yAxis[i].setExtremes(extremes.min, $(this).val());
+        if($(this).val()!="") {
+            var extremes = chart.yAxis[2].getExtremes();
+            if(extremes.min<parseInt($(this).val())) {
+                for(j=0;j<chart.axes.length;j++) {
+                    if(chart.axes[j].series[0].type=='spline') {
+                        chart.yAxis[2].setExtremes(extremes.min, $(this).val());
                         if(!extremes_save) {
                             extremes_save=extremes;
                         }
                         showzoom=true;
                     }
                 }
+            } else {
+                $("#max_y_axis_power").prop("selectedIndex",0);
             }
         }
 
