@@ -50,7 +50,8 @@ Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 
-
+[Tasks]
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [CustomMessages]
 french.ContinueInstall=Une version du logiciel Cultibox semble déja présente, vous pouvez tenter d'installer cette nouvelle version par dessus l'ancienne mais vous risquez de perdre votre configuration. Votre configuration actuelle sera sauvegardé dans le répertoire backup pour vous permettre de la retrouver. Voulez vous continuer et installer cette version?
@@ -251,6 +252,7 @@ Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03
 [Icons]
 Name: "{group}\Cultibox"; Filename: "http://localhost:6891/cultibox"; Comment: "Run cultibox"; IconFilename: "{app}\sd\cultibox.ico"; AppUserModelID: "Cultibox.Cultibox"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: {uninstallexe}; Comment: "Uninstall cultibox"
+Name: "{commondesktop}\Cultibox"; Filename: "http://localhost:6891/cultibox"; IconFilename: "{app}\sd\cultibox.ico"; Tasks: desktopicon
 
 
 [UninstallDelete]

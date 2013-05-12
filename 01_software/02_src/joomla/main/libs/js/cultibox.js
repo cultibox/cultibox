@@ -16,7 +16,7 @@ confirmForm = function(SendForm,idDialog) {
     $("#"+idDialog).dialog({
         resizable: false,
         height:200,
-        width: 400,
+        width: 500,
         modal: true,
         dialogClass: "dialog_cultibox",
         buttons: {
@@ -57,9 +57,13 @@ $(document).ready(function() {
                                         break;
             case 'reset_calendar_form': DialogId="reset_dialog_calendar";
                                         break;
-            
+            case 'actionprog':  if((start!=$('#start_time').val())||(end!=$('#end_time').val())) {
+                                    return true;
+                                } else {
+                                    DialogId="same_dialog_program";
+                                }
+                                break;
             } 
-
 
 
           if(!confirmForm(currentForm,DialogId)) {

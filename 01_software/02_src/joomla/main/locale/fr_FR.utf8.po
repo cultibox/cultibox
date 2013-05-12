@@ -724,6 +724,9 @@ msgstr "Comportement"
 msgid "REGULATION"
 msgstr "régulation"
 
+msgid "CONFIRM_SAME_PROGRAM"
+msgstr "Les heures du programme rentrées sont les même que le précédent programme. Ceci modifiera votre ancien programe, voulez-vous appliquer ce programme tout de même?"
+
 
 # For the export module highchart part:
 msgid "PRINT_HIGHCHART"
@@ -1225,6 +1228,9 @@ msgstr "Erreur lors de l'écriture des programmes sur la carte SD"
 msgid "ERROR_RESET_PROGRAM"
 msgstr "Erreur lors de la remise à zéro du/des programmes"
 
+msgid "ERROR_MINIMAL_TIME"
+msgstr "Le temps minimal autorisé est de 5 minutes"
+
 
 # For the informations part:
 msgid "CLOSE_CONFIRM"
@@ -1412,6 +1418,9 @@ msgstr "Cette fonctionnalité permet d'importer un programme depuis un fichier c
 
 msgid "TOOLTIP_REGUL_SEVERAL_SENSOR"
 msgstr "Si vous activez la sélection de la régulation de plusieurs capteurs, vous pourrez choisir le numéro de votre capteur vous permettant de gérer la régulation. Sinon et par défaut la régulation se fera sur le capteur numéro un"
+
+msgid "TOOLTIP_REPEAT_VALUE"
+msgstr "Cette valeur définie à quel fréquence votre évènement sera répété. Par exemple, si votre évènement commence à 01:00:00 et que la répétition est de 04:00:00, l'évènement suivant débutera à 05:00:00. Le temps de répétition est ajouté au temps de départ de l'évènement pour déterminer le départ de l'évènement suivant. Le temps minimum autorisé est de 5mn."
 
 
 #For the debug part:
