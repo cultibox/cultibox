@@ -188,11 +188,11 @@
            ?>
     </select></div>
          <div id="humi_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"ventilator")!=0)&&(strcmp($plug_type{$i},"heating")!=0)) { echo "display:none"; } ?>">
-               <input type="text" size="10" value="<?php echo __('REGUL_HUMI'); ?>" name="regul_humi_fake<?php echo $i; ?>" disabled>
+               <label class="readonly"><?php echo __('REGUL_HUMI'); ?></label>
          </div>
 
           <div id="temp_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>">
-               <input type="text" size="10" value="<?php echo __('REGUL_TEMP'); ?>" name="regul_temp_fake<?php echo $i; ?>" disabled>
+               <label class="readonly"><?php echo __('REGUL_TEMP'); ?></label>
          </div>
    </div>
    </td>
