@@ -426,7 +426,7 @@ if("$type"=="days") {
   }
   $legend_date=$startday;
 } else {
-   $check_format=check_format_date($startmonth,$type);
+   $check_format=check_format_date("$startyear-$startmonth",$type);
    if(!$check_format) {
       $error['startmonth']=__('ERROR_FORMAT_DATE_MONTH');
       $pop_up_error_message=$pop_up_error_message.popup_message($error['startmonth']);

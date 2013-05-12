@@ -521,14 +521,14 @@ function check_format_date($date="",$type) {
    }
 
    if("$type" == "month") {
-      if(strlen("$date")!=2) {
+      if(strlen("$date")!=7) {
          return 0;
       }
 
       $tmp=explode("-","$date");
       if(count($tmp)!=2) return 0;
 
-      if(!preg_match('#^[0-9][0-9]$#', $date)) {
+      if(!preg_match('#^[0-9][0-9][0-9][0-9]-[0-9][0-9]$#', $date)) {
          return 0;
       }
 
