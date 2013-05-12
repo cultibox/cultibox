@@ -1,3 +1,10 @@
+Cultibox (1.1.20) precise; urgency=low
+    + Ajout de tooltip pour la partie cyclique
+    + Ajout d'une pop up si deux programmes succéssifs ont les même heures
+
+-- Yann Genevois <yann.genevois@gmail.com>  Sun May 12 15:58:22 CEST 2013
+
+
 Cultibox (1.1.19) precise; urgency=low
     + La checkbox qui permet d'effacer un programme avant d'en ajouter un autre ne reste plus selectionnée
     + Ajout de tooltips pour la partie gestion des programmes

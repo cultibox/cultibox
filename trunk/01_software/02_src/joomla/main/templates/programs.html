@@ -32,7 +32,7 @@
 </div>
 <?php } ?>
 <br /><br />
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-programs" method="get" name="actionprog" id="actionprog">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-programs" method="post" name="actionprog" id="actionprog">
 <p class="title_conf"><?php echo __('CONFIGURE_PROGRAM'); ?>
     <select name="selected_plug" id="selected_plug">
     <?php foreach($active_plugs as $plugs) {  ?>
@@ -97,6 +97,9 @@ timeFormat: 'hh:mm:ss',
 plugs_infoJS = <?php echo json_encode($plugs_infos) ?>;
 highchart_plug=<?php echo $selected_plug; ?>;
 resume_plugs=<?php echo json_encode($resume) ?>;
+start=<?php echo json_encode($start) ?>;
+end=<?php echo json_encode($end) ?>;
+rep=<?php echo json_encode($rep) ?>;
 </script>
 
 <script type="text/javascript">
@@ -416,7 +419,7 @@ $(document).ready(function() {
 </tr>
 <tr>
     <td></td>
-    <td><div id="time_cyclic" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('REPEAT_EVERY'); ?>:</div></td>
+    <td><div id="time_cyclic" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('REPEAT_EVERY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_REPEAT_VALUE'); ?>" /></div></td>
     <td> <div id="time_cyclic_field" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><input type="text" size="10" name="repeat_time" id="repeat_time" <?php if(!empty($repeat_time)) { ?>value="<?php echo $repeat_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> /></div> </td>
     <td><?php if((isset($error['repeat_time']))&&(!empty($error['repeat_time']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['repeat_time']."</div>"; ?></td>
 </tr>
@@ -485,15 +488,18 @@ $(document).ready(function() {
     <td></td>
 </tr>
 </table>
-
+<input type="hidden" name="apply" value="apply">
 <table class="table_width">
 <tr>
     <td></td>
-    <td class="program-valid-right"><br /><input type="submit" name="apply" value="<?php echo __('APPLY_PROGRAM'); ?>"></td>
+    <td class="program-valid-right"><br /><input type="submit" class="delete" name="applyform" value="<?php echo __('APPLY_PROGRAM'); ?>" id="apply"></td>
     <td></td>
 </tr>
 </table>
 </form>
+<div id="same_dialog_program" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
+<p><?php echo __('CONFIRM_SAME_PROGRAM'); ?></p>
+</div>
 
 <br /><hr /><br />
 

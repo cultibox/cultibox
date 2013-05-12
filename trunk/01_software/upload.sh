@@ -126,7 +126,6 @@ if [ "$version" != "" ]; then
         if [ "$md5sum" == "true" ]; then
             md5sum_package
         fi
-        exit 0
     fi
 
     if [ "$md5sum" == "true" ]; then

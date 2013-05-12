@@ -62,6 +62,10 @@ $cyclic=getvar("cyclic");
 $value_program=getvar('value_program');
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $reset_selected=getvar("reset_selected_plug");
+$start="";
+$end="";
+$rep="";
+
 
 
 if((!isset($reset_selected))||(empty($reset_selected))) {
@@ -78,10 +82,18 @@ if((!isset($reset_selected))||(empty($reset_selected))) {
 if(isset($cyclic)&&(!empty($cyclic))) {
     $repeat_time=getvar("repeat_time");
     $cyclic_ch=check_format_time($repeat_time);
+    $error['repeat_time']="";
     if(!$cyclic_ch) {
         $error['repeat_time']=__('ERROR_FORMAT_TIME');
         set_historic_value(__('ERROR_FORMAT_TIME')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
         $cyclic_ch="";
+    } else {
+        $tmp=str_replace(":","",$repeat_time);
+        if($tmp<500) {
+            $error['repeat_time']=__('ERROR_MINIMAL_TIME');
+            set_historic_value(__('ERROR_MINIMAL_TIME')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
+            $cyclic_ch="";
+        }
     }
 }
 
@@ -239,7 +251,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 
-
 //Create a new program:
 if(!empty($apply)&&(isset($apply))) { 
     if(!check_format_time($start_time)) {
@@ -306,6 +317,8 @@ if(!empty($apply)&&(isset($apply))) {
                                 "selected_plug" => "$selected_plug"
                 );
             }
+            $start=$start_time;
+            $end=$end_time;
 
 
             if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
@@ -358,6 +371,15 @@ if(!empty($apply)&&(isset($apply))) {
                                     }
                             }
                             $chk_first=true;
+                    }
+                    $rep=$repeat_time;
+                    if((strcmp("$cyclic_end","00:00:00")==0)) {
+                         $prog[]= array(
+                                    "start_time" => "$cyclic_start",
+                                    "end_time" => "23:59:59",
+                                    "value_program" => "$value_program",
+                                    "selected_plug" => "$selected_plug"
+                                );
                     }
             } 
 
