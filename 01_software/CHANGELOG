@@ -3,6 +3,8 @@ Cultibox (1.1.20) precise; urgency=low
     + Ajout d'une pop up si deux programmes succéssifs ont les même heures
     + Passage a highchart 3.0.1 pour corriger des problèmes d'affichage
     + Passage des input disabled en label avec la classe readonly
+    + Correction de l'affichage des logs par mois dans la fonction check_format_date
+    + Ajout de la possibilité de créer un icône cultibox sur le bureau pour windows
 
 -- Yann Genevois <yann.genevois@gmail.com>  Sun May 12 15:58:22 CEST 2013
 
