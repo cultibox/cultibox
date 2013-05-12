@@ -1,6 +1,7 @@
 Cultibox (1.1.20) precise; urgency=low
     + Ajout de tooltip pour la partie cyclique
     + Ajout d'une pop up si deux programmes succéssifs ont les même heures
+    + Passage a highchart 3.0.1 pour corriger des problèmes d'affichage
 
 -- Yann Genevois <yann.genevois@gmail.com>  Sun May 12 15:58:22 CEST 2013
 
