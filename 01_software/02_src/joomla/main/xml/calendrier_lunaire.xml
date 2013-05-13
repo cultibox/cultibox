@@ -721,7 +721,7 @@
       <start>2013-04-28T21:07:00+00:00</start>
       <period>0000-00-27T07:43:12</period>
       <icon>moon.png</icon>
-      <color>green</color>
+      <color>#529865</color>
    </entry>
 
    <entry>
@@ -741,6 +741,6 @@
       <start>2013-03-18T22:50:00+00:00</start>
       <period>0000-00-27T07:43:12</period>
       <icon>moon.png</icon>
-      <color>red</color>
+      <color>#B71F3D</color>
    </entry>
 </feed>
