@@ -66,7 +66,7 @@ if ($handle = opendir('../../xml')) {
                                 if(array_key_exists('color', $val))  {
                                         $color=$val['color'];
                                 } else {
-                                        $color="#A4408D";
+                                        $color="#821D78";
                                 } 
 
                                 if(array_key_exists('icon', $val))  {
