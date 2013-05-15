@@ -8,6 +8,10 @@ Cultibox (1.1.20) precise; urgency=low
     + Correction des zooms sur l'affichage des logs
     + Mise en place d'un temps d'attente après chaque action du calendrier si une carte SD est détectée grâce à la librairie blockUI
     + Changement des couleurs pour le calendrier lunaire
+    + Agrandissement de la taille du datepicker et du timepicker
+    + Affichage du résumé de la régulation secondaire dans le tooltip des programmes
+    + Suppréssion des accents pour la créationdes fichiers du calendrier
+    + Affichage des numéros de capteurs qui ne contiennent pas de données dans les logs
 
 -- Yann Genevois <yann.genevois@gmail.com>  Sun May 12 15:58:22 CEST 2013
 

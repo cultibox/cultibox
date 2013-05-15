@@ -65,6 +65,14 @@ $reset_selected=getvar("reset_selected_plug");
 $start="";
 $end="";
 $rep="";
+$resume_regul=array();
+$tmp="";
+
+for($i=1;$i<=$nb_plugs;$i++) {
+    format_regul_sumary("$i",$main_error,$tmp,$nb_plugs);
+    $resume_regul[]="$tmp";
+    $tmp="";
+}
 
 
 

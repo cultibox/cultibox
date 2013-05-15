@@ -1090,10 +1090,10 @@ msgid "EMPTY_HUMIDITY_DATA"
 msgstr "Empty humidity data for the selected date"
 
 msgid "EMPTY_TEMPERATURE_DATA_SENSOR"
-msgstr "Empty temperature date for the selected date and some of the sensors"
+msgstr "Enregistrements de température vides à la date sélectionnée pour le(s) capteur(s)"
 
 msgid "EMPTY_HUMIDITY_DATA_SENSOR"
-msgstr "EMpty humidity data for the selected date and some of the sensors"
+msgstr "Enregistrements d'hygrométrie vides à la date sélectionnée pour le(s) capteur(s)"
 
 msgid "EMPTY_POWER_DATA"
 msgstr "Empty power data for the selected date"
