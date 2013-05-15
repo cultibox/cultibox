@@ -412,8 +412,8 @@ if($load_log) {
     }
 }
 
-$empty_log=check_export_table_csv("logs",$main_error);
-$empty_power=check_export_table_csv("power",$main_error);
+$check_log=check_export_table_csv("logs",$main_error);
+$check_power=check_export_table_csv("power",$main_error);
 
 //Checking values entered by user:
 if("$type"=="days") {
@@ -465,7 +465,7 @@ if("$type" == "days") {
       $stmonth=substr($startday, 5, 2)-1;
       $stday=substr($startday, 8, 2);
 
-      if((count($empty_log)>0)||(!empty($datap))||(!empty($data))) {
+      if(($check_log)||(!empty($datap))||(!empty($data))) {
 
         if(strcmp("$select_sensor","all")!=0) {
             get_graph_array($temperature,"temperature/100",$startday,$select_sensor,"False","0",$main_error);
