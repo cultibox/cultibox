@@ -1891,6 +1891,9 @@ SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `Start
 EOF;
         }
         foreach($db->query("$sql") as $val) {
+         $val['Title']=clean_calendar_message($val['Title']);
+         $val['Description']=clean_calendar_message($val['Description']);
+
          $s=array();
          $desc=array();
          $line="";
@@ -2314,7 +2317,7 @@ SELECT id, PLUG_REGUL, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHE
 EOF;
     } else {
         $sql = <<<EOF
-SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" AND `id` = {$number} AND id<{$max}
+SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" AND `id` = {$number} AND id<={$max}
 EOF;
     }
     $db=db_priv_pdo_start();

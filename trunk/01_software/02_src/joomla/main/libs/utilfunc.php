@@ -1425,6 +1425,19 @@ function clean_highchart_message($message="") {
 }
 // }}}
 
+
+// {{{ clean_calendar_message()
+// ROLE clean calendar field to be formated for the cultibox that doesn't manage accents
+// IN  $message         message to be cleaned
+// RET new message cleaned 
+function clean_calendar_message($message="") {
+    $search = array('À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ò','Ó','Ô','Õ','Ö','Ù','Ú','Û','Ü','Ý','à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ð','ò','ó','ô','õ','ö','ù','ú','û','ü','ý','ÿ');
+   $replace = array('A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','O','O','O','O','O','U','U','U','U','Y','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','o','o','o','o','o','u','u','u','u','y','y');
+   return str_replace($search, $replace, $message);
+}
+// }}}
+
+
 // {{{ popup_message()
 // ROLE popup message formatting
 // IN  $message         message to be formatted

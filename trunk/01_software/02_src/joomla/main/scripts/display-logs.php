@@ -493,23 +493,34 @@ if("$type" == "days") {
                 if(!empty($temperature)) {
                     $data_temp[]=get_format_graph($temperature,"log");
                 } else {
-                    $data_temp[]="";
-                    if(!$temp_err) { 
-                        $main_error[]=__('EMPTY_TEMPERATURE_DATA_SENSOR');
-                        $temp_err=true;
+                    if(!isset($mess_temp)) {
+                        $mess_temp=": $i";
+                    } else {
+                        $mess_temp=$mess_temp.", $i";
                     }
+                    $data_temp[]="";
                 }
 
                 if(!empty($humidity)) {
                     $data_humi[]=get_format_graph($humidity,"log");
                 } else {
-                    $data_humi[]="";
-                    if(!$humi_err) {
-                            $main_error[]=__('EMPTY_HUMIDITY_DATA_SENSOR');
-                            $humi_err=true;
+                    if(!isset($mess_hum)) {
+                        $mess_hum=": $i";
+                    } else {
+                        $mess_hum=$mess_hum.", $i";
                     }
+                    $data_humi[]="";
                 }
             }
+            if(isset($mess_temp)) { 
+                $main_error[]=__('EMPTY_TEMPERATURE_DATA_SENSOR').$mess_temp;
+                $temp_err=true;
+            }
+
+            if(isset($mess_hum)) {       
+                 $main_error[]=__('EMPTY_HUMIDITY_DATA_SENSOR').$mess_hum;
+                 $humi_err=true;
+           }
         }
       } else {
         get_graph_array($temperature,"temperature/100","%%","1","True","0",$main_error);

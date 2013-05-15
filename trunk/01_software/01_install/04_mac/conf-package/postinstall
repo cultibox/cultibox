@@ -1,6 +1,8 @@
 #!/bin/bash
 
 set -x
+
+/Applications/XAMPP/xamppfiles/xampp stop
 if [ -d /tmp/cultibox_backup/mysql ]; then
     echo "   * An old saved of your Cultibox has been found, restoring datas..."
     cp -R /tmp/cultibox_backup/mysql /Applications/cultibox/xamppfiles/var/
@@ -32,6 +34,10 @@ echo "...OK"
 if [ ! -d /tmp/cultibox_backup/mysql ]; then
     echo "   * Configuring your Cultibox software..."
     /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
+    if [ $? -ne 0 ]; then
+        /Applications/XAMPP/xamppfiles/xampp restart
+        /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
+    fi
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/user_cultibox.sql
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/joomla.sql
     lang=`defaults read /Library/Preferences/.GlobalPreferences AppleLanguages| tr -d [:space:] | cut -c2-3`
@@ -54,8 +60,16 @@ else
     echo "   * Upgrading the Cultibox software configuration..."
     if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
         /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
+        if [ $? -ne 0 ]; then
+            /Applications/XAMPP/xamppfiles/xampp restart
+            /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
+        fi
     fi
     /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
+    if [ $? -ne 0 ]; then
+        /Applications/XAMPP/xamppfiles/xampp restart
+        /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
+    fi
     /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
     rm -Rf /tmp/cultibox_backup
     rm -f /Applications/cultibox/xamppfiles/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
