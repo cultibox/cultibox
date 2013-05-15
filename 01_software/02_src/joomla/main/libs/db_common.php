@@ -1501,13 +1501,17 @@ EOF;
         try {
             $sth=$db->prepare("$sql");
             $sth->execute();
-            $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+            $res=$sth->fetch(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {
             $ret=$e->getMessage();
         }
         $db=null;
 
-       if(count($res)>0) return true;
+       if(count($res)>0) {
+             if(strcmp($res['timestamp'],"")!=0) {
+                return true;
+             }
+       }
        return false;
 }
 // }}}
