@@ -11,7 +11,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 =Cahier des charges=
 || *Categorie* || *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
 || environement || PTS_operating_temperature_°C || Température de fonctionnement (IEC 60068-2-1 & IEC 60068-2-2 & IEC 60068-2-14) || 2 || 25 || 40 || °C || 2 || issue 384 ||  ||  ||
-|| environement || PTS_operating_humidity_RH || Humidité de fonctionnement (IEC 60068-2-30 & IEC 60068-2-78) || 5 || 45 || 90 || %RH || 2 || issue 385 ||  ||  ||
+|| environement || PTS_operating_humidity_RH || Humidité de fonctionnement (IEC 60068-2-30 & IEC 60068-2-78) || 5 || 45 || 90 || %RH || 2 || issue 385 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0018_PTS_operating_humidity_RH_-.pdf CBX 1_13_0018] ||
 || environement || PTS_operating_pressure_range_mbar || Pression de fonctionnement ||  || 1013 ||  || mBar || 0 || issue 393 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0006_PTS_operating_pressure_range_mbar_-.pdf CBX 1_13_0006] ||
 || environement || PTS_operating_vibrations_g || Vibrations admissible de fonctionnement 10Hz-150Hz 5 balayages 3 Axes (IEC 60068-2-6) ||  ||  || 1 || g || 1 || issue 386 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0015_PTS_operating_vibrations_g_A.pdf CBX_1_13_0015] ||
 || environement || PTS_operating_bumps_g || Secousses admissible de fonctionnement (IEC 60068-2-27 6ms 1000 shocks 3 axes) ||  ||  || 15 || g || 1 || issue 510 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0015_PTS_operating_vibrations_g_A.pdf CBX_1_13_0015] ||
