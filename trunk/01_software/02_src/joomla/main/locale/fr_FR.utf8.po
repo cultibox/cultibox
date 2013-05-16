@@ -544,6 +544,9 @@ msgstr "Prise numéro"
 msgid "PLUG_MAX_POWER"
 msgstr "Type de prise (puissance maximale)"
 
+msgid "SAVE_AND_CONFIGURE_PROGRAM"
+msgstr "Sauvegarder les changements et configurer le programme de la prise"
+
 
 # For the programs part:
 
@@ -727,6 +730,9 @@ msgstr "régulation"
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Les heures du programme rentrées sont les même que le précédent programme. Ceci modifiera votre ancien programe, voulez-vous appliquer ce programme tout de même?"
 
+msgid "JUMPTO_PLUG"
+msgstr "Configurer la prise associée à ce programme"
+
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
@@ -758,6 +764,7 @@ msgstr "Annuler le zoom temporel"
 
 msgid "RESET_ZOOM_TITLE"
 msgstr "Annuler le zoom"
+
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
@@ -1425,6 +1432,15 @@ msgstr "Si vous activez la sélection de la régulation de plusieurs capteurs, v
 
 msgid "TOOLTIP_REPEAT_VALUE"
 msgstr "Cette valeur définie à quel fréquence votre évènement sera répété. Par exemple, si votre évènement commence à 01:00:00 et que la répétition est de 04:00:00, l'évènement suivant débutera à 05:00:00. Le temps de répétition est ajouté au temps de départ de l'évènement pour déterminer le départ de l'évènement suivant. Le temps minimum autorisé est de 5mn."
+
+msgid "TOOLTIP_RESET_OLD_PROGRAM"
+msgstr "En cochant cette case vous éffacerez l'ancien programme de votre prise pour enregistrer votre nouvelle action sur un programme vide. Si vous ne cochez pas cette case, votre action se superposera au programme déja enregistré."
+
+msgid "TOOLTIP_VALUE_PROGRAM"
+msgstr "Vous pouvez choisir jusqu'à trois fonctionnements différents pour votre équipement en fonction de son type: Marche (la prise sera en marche pour la période donnée), Arrêt (la prise sera à l'arrêt pour la période donnée) ou Régulation (la prise s'allumera et s'éteindra pour atteindre une valeur de température ou d'humidité déterminée - ne marche pas pour les prises définies comme ' autre' ou 'lampe')"
+
+msgid "TOOLTIP_REGUL_SECOND"
+msgstr "Si la régulation secondaire est activée dans la configuration du logiciel, ce champ affiche son état pour la prise sélectionnée: activée ou désactivée. Si la régulation est activée pour la prise sélectionnée, vous trouverez aussi les informations concernant la configuration de cette régulation."
 
 
 #For the debug part:

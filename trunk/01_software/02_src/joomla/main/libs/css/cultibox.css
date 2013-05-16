@@ -198,6 +198,10 @@ td.plug-marge-field {
    width: 25%;
 }
 
+td.plug-marge-jumpto {
+    width: 70%;
+}
+
 
 td.plug-regul {
    width: 20%;
@@ -274,6 +278,10 @@ td.program-marge-action {
 
 td.program-marge-resume {
     width: 17%;
+}
+
+td.program-marge-jumpto {
+    width: 70%;
 }
 
 
@@ -651,7 +659,11 @@ td.welcome-link img{
     background: #4054A4;
 }
 
-
 .readonly {
     font-style: italic;
+}
+
+.jumpto {
+    width:250px;
+    height: 80px;
 }
