@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 /Applications/XAMPP/xamppfiles/xampp stop
 if [ -d /tmp/cultibox_backup/mysql ]; then
     echo "   * An old saved of your Cultibox has been found, restoring datas..."

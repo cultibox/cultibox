@@ -364,7 +364,29 @@ $(document).ready(function() {
             }
         }
 
-        getRegulation($("#regul_program").prop("selectedIndex"),plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']); 
+        var regul="";
+        if($('#regprog').is(':checked')) {
+            regul="regul";
+        } else {
+            regul="on";
+        }
+            
+        switch(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']) { 
+            case 'other': getRegulation("on",plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']); 
+                          if($('#regprog').is(':checked')) {
+                           $('#regoff').attr('checked', true); 
+                          }  
+                          $('#regul_div').hide();
+                          break;
+            case 'lamp': getRegulation("on",plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']); 
+                         $('#regul_div').hide(); 
+                         if($('#regprog').is(':checked')) {
+                           $('#regoff').attr('checked', true); 
+                         }  
+                         $('#regul_div').hide(); 
+                         break;
+            default: getRegulation(regul,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']); $('#regul_div').show(); break;
+        }
 
         if(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_REGUL']=="False") {
             $("#second_regul_plug").text("<?php echo __('SECOND_REGUL_OFF','highchart'); ?>");
@@ -433,18 +455,23 @@ $(document).ready(function() {
 <tr>
      <td></td>
      <td><?php echo __('VALUE_ON_OFF'); ?>:</td>
-     <td><?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"other")==0)) { ?>
-            <select name="regul_program" id="regul_program" onChange="getRegulation(this.selectedIndex,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);"> 
-                <option value="on" <?php if(strcmp("$regul_program","on")==1) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
-                <option value="off" <?php if(strcmp("$regul_program","off")==0) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
-            </select>
-            <?php } else { ?>
-             <select name="regul_program" id="regul_program" onChange="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.selectedIndex, plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);">
-			     <option value="on" <?php if(strcmp("$regul_program","on")==0) { ?>selected<?php } ?>><?php echo __('VALUE_ON'); ?></option>
-                 <option value="off" <?php if(strcmp("$regul_program","off")==0) { ?>selected<?php } ?>><?php echo __('VALUE_OFF'); ?></option>
-                 <option value="regul" <?php if(strcmp("$regul_program","regul")==0) { ?>selected<?php } ?>><?php echo __('VALUE_REGUL'); ?></option>
-            </select>
-            <?php } ?>
+     <td><table width="table_width"><tr>
+            <td>
+            <input type="radio" name="regul_program" id="regon" value="on" <?php if(strcmp("$regul_program","on")==0) { ?>checked<?php } ?> onClick="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);"><?php echo __('VALUE_ON'); ?>
+            </td>
+            <td>
+            <input type="radio" name="regul_program" id="regoff" value="off" <?php if(strcmp("$regul_program","off")==0) { ?>checked<?php } ?> onClick="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);"><?php echo __('VALUE_OFF'); ?>
+            </td>
+            <td>
+                <?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"other")==0)) { ?>
+                    <div id="regul_div" style="display:none"><input type="radio" name="regul_program" id="regprog" value="regul" <?php if(strcmp("$regul_program","regul")==0) { ?>checked<?php } ?> onClick="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);"><?php echo __('VALUE_REGUL'); ?></div>
+                <?php } else { ?>
+                    <div id="regul_div" style=""><input type="radio" name="regul_program" id="regprog" value="regul" <?php if(strcmp("$regul_program","regul")==0) { ?>checked<?php } ?> onClick="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);"><?php echo __('VALUE_REGUL'); ?></div>
+                <?php } ?>
+            </td>
+            </tr>
+            </table>
+
     </td>
     <td></td>
 </tr>
@@ -523,16 +550,6 @@ $(document).ready(function() {
     </td>
     <td></td>
 </tr>
-
-<!--
-<tr>
-    <td></td>
-    <td>
-        <form><p class="subtitle_log"><?php echo __('DATA_LABEL'); ?>: <input type="checkbox" name="datalabel" id="datalabel" value="data"></p></form>
-    </td>
-    <td></td>
-</tr>
--->
 </table>
 <br /><hr /><br />
 
