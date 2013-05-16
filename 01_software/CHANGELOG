@@ -13,6 +13,7 @@ Cultibox (1.1.20) precise; urgency=low
     + Suppréssion des accents pour la créationdes fichiers du calendrier
     + Affichage des numéros de capteurs qui ne contiennent pas de données dans les logs
     + Remise en marche de l'apparition de faux logs
+    + Remplacement de la liste de sélection par des radios boutons pour le choix de l'action des programmes
 
 -- Yann Genevois <yann.genevois@gmail.com>  Sun May 12 15:58:22 CEST 2013
 

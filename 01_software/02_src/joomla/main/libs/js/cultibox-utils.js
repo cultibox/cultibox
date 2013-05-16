@@ -438,6 +438,7 @@ function getSelectedPlug(i,j) {
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
 // USED BY: templates/programs.html 
 function getRegulation(i, type) {
+
         var divValTemp = document.getElementById('regul_value_temp');
         var divLabelTemp = document.getElementById('regul_label_temp');
         var divValHumi = document.getElementById('regul_value_humi');
@@ -465,11 +466,9 @@ function getRegulation(i, type) {
 
       var divValueRegul = document.getElementById('regul_value');
       var divLabelRegul = document.getElementById('regul_label');
-
-
     
       switch(i) {
-         case 2 : divLabelRegul.style.display = ''; divValueRegul.style.display = ''; break;
+         case 'regul' : divLabelRegul.style.display = ''; divValueRegul.style.display = ''; break;
          default: divLabelRegul.style.display = 'none'; divValueRegul.style.display = 'none'; break;
       }
 

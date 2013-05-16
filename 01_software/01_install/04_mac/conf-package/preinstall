@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -x
 if [ -d /Applications/cultibox ]; then
     echo "  * Finding an old Cultibox configuration, saving datas..."
     /Applications/cultibox/xamppfiles/xampp stop
