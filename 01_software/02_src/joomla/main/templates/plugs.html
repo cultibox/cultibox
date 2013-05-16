@@ -226,8 +226,17 @@
 <?php } ?>
 </div>
 
+<table class="table_width">
+    <tr>
+        <td class="plug-marge-jumpto"></td>
+        <td><input type="hidden" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>"><button class="jumpto" name="jumpto<?php echo $i; ?>"  onclick='addHidden(document.forms["plugForm"], "<?php echo $i; ?>"); document.forms["plugForm"].submit();'><?php echo __('SAVE_AND_CONFIGURE_PROGRAM').": $i"; ?></button></td>
+    </tr>
+</table>
+
+
 <div id="format_style<?php echo $i; ?>" style="display:none"><br /><hr /><br /></div>
 </div>
+
    <?php } ?>
 
 <br /><br />

@@ -47,8 +47,7 @@ $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $selected_error="";
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
-
-
+$jumpto=getvar("jumpto");
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
@@ -400,6 +399,13 @@ if((!empty($sd_card))&&(isset($sd_card))) {
     }
 } else {
         $main_error[]=__('ERROR_SD_CARD_CONF');
+}
+
+if((isset($jumpto))&&(!empty($jumpto))) {
+    if((!isset($pop_up_error_message))||(empty($pop_up_error_message))) {
+        $url="./programs-".$_SESSION['SHORTLANG']."?selected_plug=".$jumpto;
+        header("Refresh: 0;url=$url");
+    }
 }
 
 

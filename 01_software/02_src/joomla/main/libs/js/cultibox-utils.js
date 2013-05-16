@@ -423,7 +423,7 @@ function getSelectedPlug(i,j) {
                 document.getElementById('title_infos_all_plugs'+k).style.display="none";
                 document.getElementById('format_style'+k).style.display="none";
             }
-    } 
+    }
 }
 // }}}
 
@@ -509,6 +509,21 @@ function getEnable(i,j) {
          case 1 : divEnable.style.display = 'none'; break;
          default: divEnable.style.display = ''; break;
       }
+}
+// }}}
+
+
+// {{{ addHidden()
+// ROLE add hidden field to a form
+// IN  input value: the form to be used and the value of the field
+// USED BY: templates/plugs.html 
+function addHidden(theForm, value) {
+    // Create a hidden input element, and append it to the form:
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'jumpto';
+    input.value = value;
+    theForm.appendChild(input);
 }
 // }}}
 
