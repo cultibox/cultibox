@@ -68,7 +68,6 @@ if(!isset($sd_card)) $sd_card="";
                 $("#dialog_create").dialog({
                         resizable: true,
                         width: 600,
-                        modal: true,
                         buttons: {
                             "<?php echo __('CREATE_DIALOG_CALENDAR','highchart'); ?>": function() { 
                                         $( this ).dialog( "close" ); 
@@ -206,7 +205,6 @@ if(!isset($sd_card)) $sd_card="";
 
                                 $("#dialog_create").dialog({
                                 resizable: true,
-                                modal: true,
                                 width: 600,
                                 buttons: {
                                     "<?php echo __('SAVE_DIALOG_CALENDAR','highchart'); ?>": function() { 

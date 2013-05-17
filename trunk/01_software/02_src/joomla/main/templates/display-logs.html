@@ -484,7 +484,7 @@ $(function () {
          }
          },
          series: [
-              <?php if((isset($select_sensor))&&(strcmp("$select_sensor","all")==0)) { $count=0; ?>
+              <?php if((isset($select_sensor))&&(strcmp("$select_sensor","all")==0)&&(!$fake_log)) { $count=0; ?>
               <?php for($i=0;$i<$GLOBALS['NB_MAX_SENSOR'];$i++) { $nb=$i+1;  ?>
                 <?php if($i>0) { echo ","; $count=$count+2; } ?>
               {
@@ -621,7 +621,11 @@ $(function () {
                {
                type: 'area',
                showCheckbox: true,
-               name: <?php echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$select_sensor.")'"; ?>,
+               <?php if($fake_log) { ?>
+                    name: <?php echo "'".__('LEGEND_HUMI')." (".__('EXAMPLE_LOG').")'"; ?>,
+                <?php } else { ?>
+                    name: <?php echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$select_sensor.")'"; ?>,
+               <?php } ?>
                pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
                color: <?php echo "'".$color_humidity."'"; ?>,
@@ -642,7 +646,11 @@ $(function () {
             }, {
                type: 'area',
                showCheckbox: true,
-               name: <?php echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$select_sensor.")'"; ?>,
+               <?php if($fake_log) { ?>
+                    name: <?php echo "'".__('LEGEND_TEMP')." (".__('EXAMPLE_LOG').")'"; ?>,
+               <?php } else { ?>
+                    name: <?php echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$select_sensor.")'"; ?>,
+               <?php } ?>
                pointInterval: <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
                color: <?php echo "'".$color_temperature."'"; ?>,

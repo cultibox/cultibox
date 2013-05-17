@@ -452,6 +452,9 @@ msgstr "Export de vos logs"
 msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
 msgstr "Export de vos logs de puissance"
 
+msgid "EXAMPLE_LOG"
+msgstr "Example de logs"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -598,8 +601,8 @@ msgstr "Minute"
 msgid "TIMEPICKER_SECOND"
 msgstr "Seconde"
 
-msgid "TIMEPICKER_NOW"
-msgstr "Heure actuelle"
+msgid "TIMEPICKER_ENDDAY"
+msgstr "Fin de la journée"
 
 msgid "TIMEPICKER_CLOSE"
 msgstr "Valider"
