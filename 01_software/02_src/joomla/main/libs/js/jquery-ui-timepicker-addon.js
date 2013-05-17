@@ -30,7 +30,7 @@ $.extend($.ui, { timepicker: { version: "0.9.9" } });
 function Timepicker() {
 	this.regional = []; // Available regional settings, indexed by language code
 	this.regional[''] = { // Default regional settings
-		currentText: 'Now',
+		currentText: 'End of day',
 		closeText: 'Done',
 		ampm: false,
 		amNames: ['AM', 'A'],
@@ -1089,7 +1089,7 @@ $.datepicker._gotoToday = function(id) {
 	var inst = this._getInst($(id)[0]),
 		$dp = inst.dpDiv;
 	this._base_gotoToday(id);
-	var now = new Date();
+	var now = new Date(0,0,0,23,59,59);
 	var tp_inst = this._get(inst, 'timepicker');
 	if (tp_inst && tp_inst._defaults.showTimezone && tp_inst.timezone_select) {
 		var tzoffset = now.getTimezoneOffset(); // If +0100, returns -60
@@ -1101,7 +1101,7 @@ $.datepicker._gotoToday = function(id) {
 			tzoffset = tzoffset.substring(0, 3) + ':' + tzoffset.substring(3);
 		tp_inst.timezone_select.val(tzoffset);
 	}
-	this._setTime(inst, now);
+	this._setTime(inst,now);
 	$( '.ui-datepicker-today', $dp).click(); 
 };
 

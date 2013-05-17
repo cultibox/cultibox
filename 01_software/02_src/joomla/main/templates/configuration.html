@@ -1,37 +1,3 @@
-<script>
-$(document).ready(function(){
-$('#start_hc').timepicker({
-<?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
-showSecond: false,
-showOn: 'both',
-buttonImage: "../main/libs/img/datepicker.png",
-buttonImageOnly: 'true',
-<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
-timeFormat: 'hh:mm',
-<?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
-<?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
-<?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
-<?php echo "currentText: '".__('TIMEPICKER_NOW')."',"; ?>
-<?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
-});
-$('#stop_hc').timepicker({
-<?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
-showOn: 'both',
-buttonImage: "../main/libs/img/datepicker.png",
-buttonImageOnly: 'true',
-<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
-showSecond: false,
-timeFormat: 'hh:mm',
-<?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
-<?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
-<?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
-<?php echo "currentText: '".__('TIMEPICKER_NOW')."',"; ?>
-<?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
-});
-});
-</script>
-
-
 <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <div class="info">
 <img src="main/libs/img/informations.png" alt=""><b><?php echo __("INFORMATIONS").":"; ?></b>

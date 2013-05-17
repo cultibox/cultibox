@@ -15,6 +15,9 @@ Cultibox (1.1.20) precise; urgency=low
     + Remise en marche de l'apparition de faux logs
     + Remplacement de la liste de sélection par des radios boutons pour le choix de l'action des programmes
     + Ajout de deux boutons: dans la partie plug qui enregistre les modifications et passe sur la page des programmes associés et dans la partie programme dans la partie programme qui passe sur la prise du programme en cours
+    + Correction d'une fenêtre modale sur le calendrier qui empêchait de selectionner le color picker
+    + Correction de l'affichage des faux logs
+    + Ajout d'un bouton 'Fin de la journée' dans le timepicker
 
 -- Yann Genevois <yann.genevois@gmail.com>  Sun May 12 15:58:22 CEST 2013
 
