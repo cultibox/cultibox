@@ -693,20 +693,6 @@
       <icon>moon.png</icon>
    </entry>
    <entry>
-      <title>Noeud lunaire</title>
-      <summary>Date des Noeud lunaire</summary>
-      <updated>2013-04-16T13:14:57+02:00</updated>
-      <id>http://www.cultibox.fr/id1</id>
-      <category term = "noeud_lunaire" label = "Noeud lunaire" />
-      <content type = "text">
-         Noeud lunaire: ne pas jardiner.
-      </content>
-      <duration>0</duration>
-      <start>2013-01-07T06:00:00+02:00</start>
-      <period>0000-00-13T17:32:48+00:00</period>
-      <icon>moon.png</icon>
-   </entry>
-   <entry>
       <title> Lune montante </title>
       <summary> Lune montante </summary>
       <updated>2013-04-22T23:19:57+02:00</updated>
@@ -723,7 +709,6 @@
       <icon>moon.png</icon>
       <color>#529865</color>
    </entry>
-
    <entry>
       <title> Lune descendante </title>
       <summary> Lune descendante </summary>
@@ -742,5 +727,213 @@
       <period>0000-00-27T07:43:12</period>
       <icon>moon.png</icon>
       <color>#B71F3D</color>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-05-24T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-06-06T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-06-20T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-07-03T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-07-17T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-07-30T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-08-13T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-09-09T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-09-22T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-10-06T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-10-20T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-11-03T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-11-16T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-11-30T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-12-13T06:00:00+02:00</start>
+      <icon>moon.png</icon>
+   </entry>
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text">
+         Noeud lunaire: ne pas jardiner.
+      </content>
+      <duration>0</duration>
+      <start>2013-12-28T06:00:00+02:00</start>
+      <icon>moon.png</icon>
    </entry>
 </feed>
