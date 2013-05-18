@@ -37,6 +37,13 @@ $(document).ready(function() {
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
    $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
    $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+   
+   $( ".info" ).dialog({ width: 325, resizable: false, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", dialogClass: "popup_message", position: [15,15], title: '<img src="../../main/libs/img/informations.png" alt="" />' });
+   $(".info").dialog().parent().css('position', 'fixed');
+
+   $( ".error" ).dialog({ width: 325, resizable: false, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); }} ], position: [15,360] , hide: "fold", dialogClass: "popup_error", title: '<img src="../../main/libs/img/warning.png" alt="" />'  });
+   $(".error").dialog().parent().css('position', 'fixed');
+
 
    $(".delete").click(function() {
           var currentForm;

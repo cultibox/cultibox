@@ -1078,9 +1078,6 @@ msgid "LICENSE"
 msgstr "License"
 
 # For the errors or warnings part:
-msgid "ERROR_MESSAGE"
-msgstr "Warning(s)"
-
 msgid "ERROR_UPDATE_SQL"
 msgstr "Error during the update sql request"
 
@@ -1256,9 +1253,6 @@ msgstr "Wizard"
 
 msgid "CLASSIC"
 msgstr "Classic"
-
-msgid "INFORMATIONS"
-msgstr "Information(s)"
 
 msgid "INFO_SD_CARD"
 msgstr "A valid SD card was found"

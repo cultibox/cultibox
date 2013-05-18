@@ -394,31 +394,10 @@ option:focus{background: #ee986e;}
 
 .error {
 	color:red;
-	font-size:14px;
+	font-size:12px;
 	font-style:normal;
 	font-weight:normal;
-    margin:auto;
-    padding:9px;
     border-radius:22px;
-    width:90%;
-    background:#E3DDD1;
-    display:block;
-    margin-bottom:5px;
-    font-size: 14px;
-}
-
-.error ul { 
-	list-style-type: circle; 
-	margin:0;
-	text-align:left;
-    margin-left: 100px;
-}
-
-.info ul {
-    list-style-type: circle;
-    margin:0;
-    text-align:left;
-    margin-left: 100px;
 }
 
 .inputDisable {
@@ -471,19 +450,10 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover {
 
 .info {
     color: #3A951F;
-    font-size:14px;
+    font-size:12px;
     font-style:normal;
     font-weight:normal;
-    margin:auto;
-    padding:9px;
     border-radius:22px;
-    width:90%;
-    background:#F5EE31;
-    background:#e5dd2e;
-    background:#E3DDD1;
-    display:block;
-    margin-bottom:5px;
-    font-size: 14px;
 }
 
 td.wizard-marge, td.wizard-input-previous {
@@ -630,7 +600,7 @@ td.welcome-link img{
 
 /* css for dialog widget */
 .popup_error .ui-widget-header{
-    background: #BA0000; 
+    background: #E34C4C; 
 }
 
 
@@ -667,3 +637,4 @@ td.welcome-link img{
     width:250px;
     height: 60px;
 }
+
