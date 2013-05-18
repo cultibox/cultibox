@@ -28,6 +28,29 @@
 </div>
 <?php } ?>
 <br /><br />
+<p class="title_conf"><?php echo __('VIEW_CURRENT_PROGRAM'); ?>
+<select name="selected_plug" id="selected_plug_conf">
+    <?php foreach($active_plugs as $plugs) {  ?>
+               <option value="<?php echo $plugs['id']; ?>"  <?php if(strcmp($selected_plug,$plugs['id'])==0) { echo 'selected';} ?> ><?php echo $plugs['id']." - ".$plugs_infos[$plugs['id']-1]['PLUG_NAME']; ?></option>
+    <?php } ?>
+    </select>
+</p>
+<table class="table_width">
+<tr>
+    <td class="program-div-margin"></td><td class="program-div"></td><td><img src="main/libs/img/resume.png" alt="" id="resume_img" title="<?php echo $resume[$selected_plug]; ?>" /></td>
+</tr>
+<tr>
+    <td></td><td><div id="plug" style="width: 100%; height: 350px; margin: 0 auto"></div></td><td></td>
+</tr>
+<tr>
+    <td></td>
+    <td><p class="p_center"><button id="resetXzoom" name="buttonX" style="display:none"><?php echo __('RESET_X_ZOOM'); ?></button> <button id="resetzoom" name="button" style="display:none"><?php echo __('RESET_ZOOM'); ?></button></p>
+    </td>
+    <td></td>
+</tr>
+</table>
+<br /><hr /><br />
+
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-programs" method="post" name="actionprog" id="actionprog">
 <p class="title_conf"><?php echo __('CONFIGURE_PROGRAM'); ?>
     <select name="selected_plug" id="selected_plug">
@@ -399,6 +422,7 @@ $(document).ready(function() {
         chart.redraw(); 
 
         $("#jumpplug input[name=selected_plug]").val($('#selected_plug').val());
+        $('#selected_plug_conf').val($('#selected_plug').val());
     });
 
        $('#resetXzoom').click(function() {
@@ -421,6 +445,93 @@ $(document).ready(function() {
         }
      });
         */
+
+
+    $('#selected_plug_conf').change(function() {
+        $.each( chart.series, function() {
+            if(this.index==$('#selected_plug_conf').val()-1) {
+                chart.series[$('#selected_plug_conf').val()-1].show();
+                chart.series[$('#selected_plug_conf').val()-1].select(); 
+                chart.series[$('#selected_plug_conf').val()-1].name = "<b>"+clean_highchart_message(plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_NAME'])+" ("+clean_highchart_message(plugs_infoJS[$('#selected_plug_conf').val()-1]['translate'])+")</b>";
+                chart.series[$('#selected_plug_conf').val()-1].legendItem = chart.series[$('#selected_plug_conf').val()-1].legendItem.destroy();
+                tmp_highchart_plug=this.index;
+
+                $("#reset_selected_plug").val($('#selected_plug_conf').val());
+                $("#selected_plug_export").val($('#selected_plug_conf').val());
+                $("#selected_plug_import").val($('#selected_plug_conf').val());
+                $("#resume_img").prop('tooltipText', resume_plugs[$('#selected_plug_conf').val()]);
+            } else if(this.index==highchart_plug-1) {
+                chart.series[this.index].name = clean_highchart_message(plugs_infoJS[this.index]['PLUG_NAME'])+" ("+clean_highchart_message(plugs_infoJS[this.index]['translate'])+")";
+                chart.series[this.index].legendItem = chart.series[this.index].legendItem.destroy();
+                chart.series[this.index].select(false);
+                chart.series[this.index].hide();
+            } else {
+                chart.series[this.index].select(false);
+                chart.series[this.index].hide();
+            }
+        });
+
+        if((plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']=="other")||(plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']=="lamp")) {
+            if($('#regul_program option[value="regul"]').length!=0) {
+                $("#regul_program option[value='regul']").remove();
+            }
+        } else {
+            if($('#regul_program option[value="regul"]').length==0) {
+                $("#regul_program").append('<option value="regul"><?php echo __('VALUE_REGUL'); ?></option>');
+            }
+        }
+
+        var regul="";
+        if($('#regprog').is(':checked')) {
+            regul="regul";
+        } else {
+            regul="on";
+        }
+            
+        switch(plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']) { 
+            case 'other': getRegulation("on",plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']); 
+                          if($('#regprog').is(':checked')) {
+                           $('#regoff').attr('checked', true); 
+                          }  
+                          $('#regul_div').hide();
+                          break;
+            case 'lamp': getRegulation("on",plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']); 
+                         $('#regul_div').hide(); 
+                         if($('#regprog').is(':checked')) {
+                           $('#regoff').attr('checked', true); 
+                         }  
+                         $('#regul_div').hide(); 
+                         break;
+            default: getRegulation(regul,plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']); $('#regul_div').show(); break;
+        }
+
+        if(plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_REGUL']=="False") {
+            $("#second_regul_plug").text("<?php echo __('SECOND_REGUL_OFF','highchart'); ?>");
+            $("#second_regul_info").css("display", "none");
+        } else {
+            $("#second_regul_plug").text("<?php echo __('SECOND_REGUL_ON','highchart'); ?>");
+            $("#second_regul_img").attr("title", resume_regul[$('#selected_plug_conf').val()-1]);
+            $("#second_regul_info").css("display", "");
+        }
+
+        $("#resume_img").prop('title', resume_plugs[$('#selected_plug_conf').val()]);
+        highchart_plug=tmp_highchart_plug+1;
+        chart.isDirtyLegend = true;
+        chart.redraw(); 
+
+        $("#jumpplug input[name=selected_plug]").val($('#selected_plug_conf').val());
+        $('#selected_plug').val($('#selected_plug_conf').val());
+    });
+
+       $('#resetXzoom').click(function() {
+        if(showzoomX) {
+            chart.xAxis[0].setExtremes(null, null,true, true); 
+            $('#resetXzoom').hide();
+            showzoomX=false;
+        }
+
+    });
+
 });
 
 </script>
@@ -539,22 +650,6 @@ $(document).ready(function() {
 </tr>
 </table>
 
-<br /><hr /><br />
-
-<table class="table_width">
-<tr>
-    <td class="program-div-margin"></td><td class="program-div"></td><td><img src="main/libs/img/resume.png" alt="" id="resume_img" title="<?php echo $resume[$selected_plug]; ?>" /></td>
-</tr>
-<tr>
-    <td></td><td><div id="plug" style="width: 100%; height: 350px; margin: 0 auto"></div></td><td></td>
-</tr>
-<tr>
-    <td></td>
-    <td><p class="p_center"><button id="resetXzoom" name="buttonX" style="display:none"><?php echo __('RESET_X_ZOOM'); ?></button> <button id="resetzoom" name="button" style="display:none"><?php echo __('RESET_ZOOM'); ?></button></p>
-    </td>
-    <td></td>
-</tr>
-</table>
 <br /><hr /><br />
 
 <label id="anchor-manage"></label>

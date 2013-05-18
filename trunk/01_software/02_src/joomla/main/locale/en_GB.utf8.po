@@ -552,6 +552,9 @@ msgstr "Sauvegarder les changements et configurer le programme de la prise"
 
 
 # For the programs part:
+msgid "VIEW_CURRENT_PROGRAM"
+msgstr "Visualiser le comportement actuel de la prise"
+
 msgid "CONFIGURE_PROGRAM"
 msgstr "Configure plug behaviour"
 
