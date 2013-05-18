@@ -19,6 +19,7 @@ Cultibox (1.1.20) precise; urgency=low
     + Correction de l'affichage des faux logs
     + Ajout d'un bouton 'Fin de la journée' dans le timepicker
     + Déplacement des messages d'erreur et d'informations dans des fenêtres séparées
+    + Réorganisation de la page des programmes
 
 -- Yann Genevois <yann.genevois@gmail.com>  Sun May 12 15:58:22 CEST 2013
 
