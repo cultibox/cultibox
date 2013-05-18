@@ -12,20 +12,18 @@
 
 <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <div class="info">
-<img src="main/libs/img/informations.png" alt=""><b><?php echo __("INFORMATIONS").":"; ?></b>
 <ul>
         <?php foreach($main_info as $inf) { 
-            echo "<li>".$inf."</li>";            
+            echo $inf."<br /><br />";            
         } ?>
 </ul>
 </div>
 <?php } ?>
 <?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
 <div class="error">
-<img src="main/libs/img/warning.png" alt=""><b><?php echo __("ERROR_MESSAGE").":"; ?></b>
 <ul>
         <?php foreach($main_error as $err) { 
-            echo "<li>".$err."</li>";            
+            echo $err."<br /><br />";            
         } ?>
 </ul>
 </div>

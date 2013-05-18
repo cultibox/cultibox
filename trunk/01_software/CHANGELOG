@@ -18,6 +18,7 @@ Cultibox (1.1.20) precise; urgency=low
     + Correction d'une fenêtre modale sur le calendrier qui empêchait de selectionner le color picker
     + Correction de l'affichage des faux logs
     + Ajout d'un bouton 'Fin de la journée' dans le timepicker
+    + Déplacement des messages d'erreur et d'informations dans des fenêtres séparées
 
 -- Yann Genevois <yann.genevois@gmail.com>  Sun May 12 15:58:22 CEST 2013
 

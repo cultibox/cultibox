@@ -1082,9 +1082,6 @@ msgstr "Licence"
 
 
 # For the errors or warnings part:
-msgid "ERROR_MESSAGE"
-msgstr "Avertissement(s)"
-
 msgid "ERROR_UPDATE_SQL"
 msgstr "Erreur dans la requête SQL UPDATE"
 
@@ -1260,9 +1257,6 @@ msgstr "Assistant"
 
 msgid "CLASSIC"
 msgstr "Classique"
-
-msgid "INFORMATIONS"
-msgstr "Information(s)"
 
 msgid "INFO_SD_CARD"
 msgstr "Une carte SD compatible Cultibox est branchée"
