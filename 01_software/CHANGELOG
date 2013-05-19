@@ -1,3 +1,9 @@
+Cultibox (1.1.21) precise; urgency=low
+    + Changement de la couleur de selection des jours dans le calendrier
+
+-- Yann Genevois <yann.genevois@gmail.com>  Sun May 19 18:50:39 CEST 2013
+
+
 Cultibox (1.1.20) precise; urgency=low
     + Ajout de tooltip pour la partie cyclique
     + Ajout d'une pop up si deux programmes succéssifs ont les même heures
