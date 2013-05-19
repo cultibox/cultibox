@@ -124,7 +124,7 @@ html .fc,
 	}
 	
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
-	background: #bce8f1;
+	background: #238074;
 	opacity: .3;
 	filter: alpha(opacity=30); /* for IE */
 	}
