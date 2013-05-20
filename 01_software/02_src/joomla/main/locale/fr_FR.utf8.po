@@ -23,13 +23,13 @@ msgid "WELCOME_MESSAGE"
 msgstr "Ce logiciel va vous permettre de manipuler simplement votre Cultibox afin de la configurer, de visualiser les données enregistrées ou encore d'accéder à certaines fonctionnalités telles que le calcul du coût d'électricité ou la création d'un calendrier de culture."
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note :</b> pour ceux qui possède l'ancienne version de la Cultibox (la <b>greenbox</b>), il vous faudra absolument"
+msgstr "<b>Note :</b> pour ceux qui possèdent l'ancienne version de la Cultibox (la <b>greenbox</b>), il vous faudra absolument"
 
 msgid "WELCOME_REQUIEREMENT"
 msgstr "<ul class='list_class'><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la Cultibox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la Cultibox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
-msgstr "Cliquez sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre Cultibox"
+msgstr "Cliquer sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre Cultibox"
 
 msgid "WELCOME_WIZARD"
 msgstr "Assistant de configuration"
@@ -153,7 +153,7 @@ msgid "CHECK_UPDATE"
 msgstr "Vérifier automatiquement la présence de mises à jour"
 
 msgid "CHECK_STATISTICS"
-msgstr "Envoie d'informations pour aider le développement"
+msgstr "Envoi d'informations pour aider le développement"
 
 msgid "MANAGE_RESET_SD_CARD"
 msgstr "Formater une carte SD pour la rendre compatible Cultibox"
@@ -165,7 +165,7 @@ msgid "MANAGE_RESET_CARD"
 msgstr "Formater la carte"
 
 msgid "RESET_CONFIRM_SD_CARD"
-msgstr "Êtes vous sur de vouloir formater votre carte SD? Vos fichiers de logs pourraient être détruits."
+msgstr "Êtes-vous sûr de vouloir formater votre carte SD? Vos fichiers de logs pourraient être détruits."
 
 msgid "VALID_RESET_SD"
 msgstr "Carte SD formatée avec succès"
@@ -311,7 +311,7 @@ msgid "SELECT_ALL_PLUGS"
 msgstr "Toutes les prises"
 
 msgid "FORCE_ON_CHART"
-msgstr "Marche forcee"
+msgstr "Marche forcée"
 
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte Cultibox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note: </i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
@@ -332,10 +332,10 @@ msgid "NEXT_BUTTON_MONTH"
 msgstr "Afficher les informations pour le mois suivant"
 
 msgid "PRECISION_GRAPH_DAY"
-msgstr "Les logs sont affichés avec une précision maximale d'un point toute les minutes"
+msgstr "Les logs sont affichés avec une précision maximale d'un point toutes les minutes"
 
 msgid "PRECISION_GRAPH_MONTH"
-msgstr "Les logs sont affichés avec une précision maximale d'un point toute les vingt minutes"
+msgstr "Les logs sont affichés avec une précision maximale d'un point toutes les vingt minutes"
 
 msgid "SELECT_SENSOR_NB"
 msgstr "Afficher les valeurs pour"
@@ -369,7 +369,7 @@ msgstr "Supprimer les logs de puissance "
 
 
 msgid "RESET_CONFIRM"
-msgstr "Êtes vous sur de vouloir supprimer les données des logs déja enregistrées?"
+msgstr "Êtes-vous sûr de vouloir supprimer les données des logs déja enregistrées?"
 
 msgid "IMPORT_LOG_TITLE"
 msgstr "Importer les logs de: température, humidité, puissance des"
@@ -414,13 +414,13 @@ msgid "SUMARY_EMPTY_REGUL"
 msgstr "Pas de régulation pour la/les prise(s) sélectionnée(s)"
 
 msgid "SUMARY_EMPTY_SELECTION"
-msgstr "Pas de prises sélectionnées"
+msgstr "Pas de prise(s) sélectionnée(s)"
 
 msgid "SUMARY_ABOVE"
-msgstr "Au dessus"
+msgstr "Au-dessus"
 
 msgid "SUMARY_UNDER"
-msgstr "En dessous"
+msgstr "En-dessous"
 
 msgid "SUMARY_REGUL_TEMP"
 msgstr "Température"
@@ -453,7 +453,7 @@ msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
 msgstr "Export de vos logs de puissance"
 
 msgid "EXAMPLE_LOG"
-msgstr "Example de logs"
+msgstr "Exemple de logs"
 
 
 # For the plugs part:
@@ -589,7 +589,7 @@ msgid "CURRENT_PLUG_PROGRAM"
 msgstr "Comportement actuel de la prise"
 
 msgid "TIMEPICKER_SELECT_TIME"
-msgstr "Choisissez une heure"
+msgstr "Choisir une heure"
 
 msgid "TIMEPICKER_TIME"
 msgstr "Temps"
@@ -628,7 +628,7 @@ msgid "IMPORT_PROGRAM"
 msgstr "Importer"
 
 msgid "RESET_PROGRAM"
-msgstr "Reinitialiser"
+msgstr "Re-initialiser"
 
 msgid "SUMARY_TITLE"
 msgstr "Résumé des actions pour la prise"
@@ -667,10 +667,10 @@ msgid "PLUG_ADDED"
 msgstr "Prise ajoutée avec succès"
 
 msgid "PLUG_MAX_ADDED"
-msgstr "Vous avez atteint le nombre maximal de prises confgurables"
+msgstr "Vous avez atteint le nombre maximal de prises configurables"
 
 msgid "PLUG_MIN_ADDED"
-msgstr "Vous avez atteint le nombre minimal de proses configurables"
+msgstr "Vous avez atteint le nombre minimal de prises configurables"
 
 msgid "PLUG_REMOVED"
 msgstr "Prise supprimée avec succès"
@@ -712,7 +712,7 @@ msgid "TITLE_RESET_PROGRAM"
 msgstr "Effacer le programme de la prise"
 
 msgid "RESET_ALL_PROGRAM"
-msgstr "de toute les prises"
+msgstr "de toutes les prises"
 
 msgid "TITLE_ADD_PLUG"
 msgstr "Ajouter une prise à configurer"
@@ -721,7 +721,7 @@ msgid "TITLE_REMOVE_PLUG"
 msgstr "Supprimer la dernière prise"
 
 msgid "RESET_CONFIRM_PROGRAM"
-msgstr "Êtes vous sur de vouloir réinitialiser le programme pour la/les prise(s) sélectionnée(s)?"
+msgstr "Êtes-vous sûr de vouloir ré-initialiser le programme pour la/les prise(s) sélectionnée(s)?"
 
 msgid "DATA_LABEL"
 msgstr "Afficher les états des prises selectionnées"
@@ -733,7 +733,7 @@ msgid "REGULATION"
 msgstr "régulation"
 
 msgid "CONFIRM_SAME_PROGRAM"
-msgstr "Les heures du programme rentrées sont les même que le précédent programme. Ceci modifiera votre ancien programe, voulez-vous appliquer ce programme tout de même?"
+msgstr "Les heures du programme rentrées sont les mêmes que le précédent programme. Ceci modifiera votre ancien programme, voulez-vous appliquer ce programme tout de même?"
 
 msgid "JUMPTO_PLUG"
 msgstr "Configurer la prise associée à ce programme"
@@ -762,7 +762,7 @@ msgid "EXPORT_SVG"
 msgstr "Exporter au format SVG"
 
 msgid "RESET_ZOOM"
-msgstr "Annuler les différents zoom"
+msgstr "Annuler les différents zooms"
 
 msgid "RESET_X_ZOOM"
 msgstr "Annuler le zoom temporel"
@@ -773,7 +773,7 @@ msgstr "Annuler le zoom"
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
-msgstr "Bienvenue dans l'interface de configuration et d'utilisation de votre Cultibox. L'assistant va vous permettre facilement de configurer les programmes associés à vos prises, de configurer le type de prise et leur comportement. Cliquez sur le bouton <b>suivant</b> pour lancer l'assistant. Vous pouvez passer cette étape et configurer manuellement vos prises en cliquant sur le bouton <b>Fermer l'assistant</b>"
+msgstr "Bienvenue dans l'interface de configuration et d'utilisation de votre Cultibox. L'assistant va vous permettre facilement de configurer les programmes associés à vos prises, de configurer le type de prise et leur comportement. Cliquer sur le bouton <b>suivant</b> pour lancer l'assistant. Vous pouvez passer cette étape et configurer manuellement vos prises en cliquant sur le bouton <b>Fermer l'assistant</b>"
 
 msgid "CLOSE_WIZARD"
 msgstr "Fermer l'assistant"
@@ -803,7 +803,7 @@ msgid "WIZARD_PLUG_NUMBER"
 msgstr "Cet assistant vous permet de vous familiariser avec les configurations des prises et des programmes en configurant avec vous la première prise."
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximum</b>. Il est possible de configurer les autres prises comme des lampes mais elles ne pourront accueillir une lampe dont la puissance dépasse <b>200 Watts</b>. "
+msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximum</b>. Il est possible de configurer les autres prises comme des lampes mais elles ne pourront pas accueillir une lampe dont la puissance dépasse <b>200 Watts</b>. "
 
 msgid "WIZARD_PLUG_LAMP"
 msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe. Pour cela choisissez une heure de départ où la lampe se mettra en route et une heure de fin où la lampe s'éteindra."
@@ -821,7 +821,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "Vous allez maintenant configurer une nouvelle prise."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choisissez le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type 'autre' servant pour tout les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
+msgstr "Choisir le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type 'autre' servant pour tous les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
 
 
 #For the calendar part:
@@ -856,7 +856,7 @@ msgid "CALENDAR_STOP_DATE"
 msgstr "Date de fin (AAAA-MM-JJ)"
 
 msgid "MANAGE_CALENDAR"
-msgstr "Gerer l'evenement"
+msgstr "Gérer l'évènement"
 
 msgid "SAVE_DIALOG_CALENDAR"
 msgstr "Sauvegarder"
@@ -928,7 +928,7 @@ msgid "MANAGE_RESET_CALENDAR"
 msgstr "Supprimer tous les évènements du calendrier"
 
 msgid "RESET_CONFIRM_CALENDAR"
-msgstr "Êtes vous sur de vouloir supprimer tous les événements enregistrés dans le calendrier?"
+msgstr "Êtes-vous sûr de vouloir supprimer tous les événements enregistrés dans le calendrier?"
 
 msgid "VALID_DELETE_CALENDAR"
 msgstr "Calendrier supprimé avec succès"
@@ -1014,7 +1014,7 @@ msgid "COST_STANDARD"
 msgstr "Standard"
 
 msgid "COST_HPC"
-msgstr "Heures pleine/creuse"
+msgstr "Heure pleine/creuse"
 
 msgid "CONFIGURE_COST_PRICE"
 msgstr "Prix du kilowatt-heure"
@@ -1026,10 +1026,10 @@ msgid "CONFIGURE_COST_PRICE_HC"
 msgstr "Prix en heure creuse"
 
 msgid "CONFIGURE_START_HC"
-msgstr "Début des heures creuse: (HH:MM)"
+msgstr "Début des heures creuses: (HH:MM)"
 
 msgid "CONFIGURE_STOP_HC"
-msgstr "Fin des heures creuse: (HH:MM)"
+msgstr "Fin des heures creuses: (HH:MM)"
 
 
 # For the historic part:
@@ -1040,10 +1040,10 @@ msgid "RESET_HISTORIC"
 msgstr "Effacer l'historique"
 
 msgid "RESET_CONFIRM_HISTORIC"
-msgstr "Êtes vous sur de vouloir supprimer l'historique de vos actions?"
+msgstr "Êtes-vous sûr de vouloir supprimer l'historique de vos actions?"
 
 msgid "VALID_DELETE_HISTORIC"
-msgstr "Historique de vos actions supprimées avec succès"
+msgstr "Historique de vos actions supprimé avec succès"
 
 msgid "NO_HISTORIC_VALUE"
 msgstr "Aucune action enregistrée"
@@ -1122,16 +1122,16 @@ msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "Mois à afficher: erreur dans le format (MM)"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "Aucune carte SD compatible Cultibox detectée pour sauvegarder votre configuration"
+msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre configuration"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "Aucune carte SD compatible Cultibox detectée, pour charger vos fichiers de logs"
+msgstr "Aucune carte SD compatible Cultibox détectée pour charger vos fichiers de logs"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "Aucune carte SD compatible Cultibox detectée pour sauvegarder votre configuration"
+msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre configuration"
 
 msgid "ERROR_SD_CARD"
-msgstr "Aucune carte SD compatible Cultibox detectée, vérifiez que votre carte soit correctement branchée"
+msgstr "Aucune carte SD compatible Cultibox détectée, vérifier que votre carte soit correctement branchée"
 
 msgid "ERROR_MISSING_VALUE_TIME"
 msgstr "Valeur manquante pour la date de début/fin du programme"
@@ -1179,34 +1179,34 @@ msgid "ERROR_POWER_VALUE"
 msgstr "Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt"
 
 msgid "ERROR_PRICE_VALUE"
-msgstr "Le prix du kilowatt-heure doit être supérieure à 0"
+msgstr "Le prix du kilowatt-heure doit être supérieur à 0"
 
 msgid "ERROR_PRICE_VALUE_HP"
-msgstr "Heure pleine: le prix du kilowatt-heure doit être supérieure à 0"
+msgstr "Heure pleine: le prix du kilowatt-heure doit être supérieur à 0"
 
 msgid "ERROR_PRICE_VALUE_HC"
-msgstr "Heure creuse: le prix du kilowatt-heure doit être supérieure à 0"
+msgstr "Heure creuse: le prix du kilowatt-heure doit être supérieur à 0"
 
 msgid "ERROR_COST_PRICE_NULL"
-msgstr "Le prix du kilowatt-heure doit être supérieure à 0"
+msgstr "Le prix du kilowatt-heure doit être supérieur à 0"
 
 msgid "ERROR_DATE_INTERVAL"
 msgstr "Erreur dans les dates choisies: la date de départ doit être inférieure ou égale à la date de fin"
 
 msgid "ERROR_UPLOADED_FILE"
-msgstr "Erreur lors du chargement de fichier des programmes"
+msgstr "Erreur lors du chargement du fichier des programmes"
 
 msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
-msgstr "Erreur lors du chargement des données du fichier des programmes, vérifiez que le fichier est au bon format"
+msgstr "Erreur lors du chargement des données du fichier des programmes, vérifier que le fichier est au bon format"
 
 msgid "ERROR_REMOTE_UPDATE_FILE"
-msgstr "Impossible d'accéder au fichier des mises à jours, vérifiez votre configuration"
+msgstr "Impossible d'accéder au fichier des mises à jour, vérifier votre configuration"
 
 msgid "ERROR_POWER_PRICE_NULL"
-msgstr "La puissance de certaine de vos prises n'est pas configurée, vous pouvez la configurer"
+msgstr "La puissance de certaines de vos prises n'est pas configurée, vous pouvez la configurer"
 
 msgid "ERROR_HPC_TIME_NULL"
-msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configuré, vous pouvez le configurer"
+msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configurée, vous pouvez la configurer"
 
 msgid "ERROR_COPY_TPL"
 msgstr "Impossible de copier le fichier empty_file_64.tpl sur votre carte SD"
@@ -1218,10 +1218,10 @@ msgid "ERROR_SD_CARD_PATH"
 msgstr "Chemin d'accès à la carte SD introuvable"
 
 msgid "ERROR_COMPAT_BROWSER"
-msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez surement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accéssibles. Voici la liste des navigateurs officiellement supportés:<br /><ul class='list_class'><li>Mozilla Firefox (version 3 et supérieure)</li><li>Internet Explorer (version 7 et supérieure)</li><li>Google Chrome (Toutes versions)</li><li>Max Os X Safari (version 5 et supérieure)</li></ul>"
+msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez sûrement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accessibles. Voici la liste des navigateurs officiellement supportés:<br /><ul class='list_class'><li>Mozilla Firefox (version 3 et supérieure)</li><li>Internet Explorer (version 7 et supérieure)</li><li>Google Chrome (Toutes versions)</li><li>Max Os X Safari (version 5 et supérieure)</li></ul>"
 
 msgid "ERROR_REMOTE_SITE"
-msgstr "Impossible de s'assurer de la présence de mises à jours, vérifiez que votre connexion internet fonctionne correctement"
+msgstr "Impossible de s'assurer de la présence de mises à jour, vérifier que votre connexion internet fonctionne correctement"
 
 msgid "ERROR_WRITE_SD_PLUGCONF"
 msgstr "Erreur lors de l'écriture de la configuration des prises sur la carte SD"
@@ -1239,7 +1239,7 @@ msgid "ERROR_WRITE_PROGRAM"
 msgstr "Erreur lors de l'écriture des programmes sur la carte SD"
 
 msgid "ERROR_RESET_PROGRAM"
-msgstr "Erreur lors de la remise à zéro du/des programmes"
+msgstr "Erreur lors de la remise à zéro du(des) programme(s)"
 
 msgid "ERROR_MINIMAL_TIME"
 msgstr "Le temps minimal autorisé est de 5 minutes"
@@ -1286,13 +1286,13 @@ msgid "VALID_RESET_CARD"
 msgstr "Carte formatée avec succès"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la Cultibox pour que cela soit effectif si vous avez finis vos paramètrage"
+msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la Cultibox pour que cela soit effectif si vous avez fini vos paramètrages"
 
 msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "Fichiers de logs des 31 derniers jours enregistrées avec succès"
+msgstr "Fichiers de logs des 31 derniers jours enregistrés avec succès"
 
 msgid "VALID_LOAD_LOG"
-msgstr "Fichiers de logs des derniers mois enregistrées avec succès"
+msgstr "Fichiers de logs des derniers mois enregistrés avec succès"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "Programme mis à jour avec succès"
@@ -1310,13 +1310,13 @@ msgid "WAITING_LOG"
 msgstr "Merci de patienter quelques instants durant le chargement des logs..."
 
 msgid "UPDATED_PROGRAM"
-msgstr "Vos programmes n'était pas à jour sur votre carte, la mise à jour à été exécuté"
+msgstr "Vos programmes n'étaient pas à jour sur votre carte, la mise à jour a été exécutée"
 
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "Une mise à jour est disponible pour passer à la version: "
 
 msgid "STILL_LOG_FILE"
-msgstr "Il reste des fichiers de logs plus ancien à charger, pour cela utilisez le bouton 'importer les logs'"
+msgstr "Il reste des fichiers de logs plus anciens à charger, pour cela utilisez le bouton 'importer les logs'"
 
 # For the tooltip part:
 
@@ -1324,7 +1324,7 @@ msgid "TOOLTIP_VALUE"
 msgstr "La Cultibox va éteindre ou allumer la prise pour atteindre cette valeur."
 
 msgid "TOOLTIP_POWER"
-msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consomation de votre installation, son prix..."
+msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consommation de votre installation, son prix..."
 
 msgid "TOOLTIP_POPUP"
 msgstr "Les messages affichés par l'interface sont par défaut affichés dans une boite de dialogue. Cette option vous permet de désactiver/activer ces boites de dialogue."
@@ -1333,19 +1333,19 @@ msgid "TOOLTIP_RECORD_FREQ"
 msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les données de température et d'hygrométrie."
 
 msgid "TOOLTIP_POWER_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les valeurs de consomation d'énergie."
+msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les valeurs de consommation d'énergie."
 
 msgid "TOOLTIP_PLUG_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle sera mise à jour l'état (Marche/Arrêt) de vos prises."
+msgstr "Cette option permet de configurer la fréquence à laquelle sera mis à jour l'état (Marche/Arrêt) de vos prises."
 
 msgid "TOOLTIP_ALARM"
-msgstr "L'alarme de la Cultibox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil. <br /><br /><b>Il est à noter que l'alarme coupe toutes les prises en cas de déclenchement du seuil configuré.</b>"
+msgstr "L'alarme de la Cultibox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au-dessus ou en-dessous de ce seuil. <br /><br /><b>Il est à noter que l'alarme coupe toutes les prises en cas de déclenchement du seuil configuré.</b>"
 
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."
 
 msgid "TOOLTIP_WITHOUT_SD_LOG"
-msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox concernant la température et l'hygrométrie ne pourront pas être affiché et sauvegardé. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
+msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox concernant la température et l'hygrométrie ne pourront pas être affichés et sauvegardés. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
 
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
@@ -1357,22 +1357,22 @@ msgid "TOOLTIP_PLUG_TOLERANCE"
 msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation. Par exemple, si vous avez rentré une valeur de régulation de 22°C pour un chauffage et que la tolérance est de 2°C, le chauffage sera mis en marche/arrêt entre 20°C et 24°C (votre régulation +/- la tolérance)"
 
 msgid "TOOLTIP_PLUG_REGUL"
-msgstr "La régulation secondaire a un fonctionnement compliquée et différent de la régulation principale. Veuillez bien lire la documentation avant de l'activer pour une prise. Si vous désirez piloter une prise pour qu'elle régule une condition climatique, il n'est pas nécéssaire d'activer la régulation secondaire."
+msgstr "La régulation secondaire a un fonctionnement compliqué et différent de la régulation principale. Veuillez bien lire la documentation avant de l'activer pour une prise. Si vous désirez piloter une prise pour qu'elle régule une condition climatique, il n'est pas nécéssaire d'activer la régulation secondaire."
 
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le prix de  revient de votre installation dans le menu 'Coût'"
 
 msgid "TOOLTIP_FAKE_LOG_DATA"
-msgstr "Aucune données ne sont présentes dans la base pour le moment, les logs affichés le sont à titre d'exemple et ne correspondent pas à l'enregistrement des données de votre installation"
+msgstr "Aucune donnée n'est présente dans la base pour le moment, les logs affichés le sont à titre d'exemple et ne correspondent pas à l'enregistrement des données de votre installation"
 
 msgid "TOOLTIP_CHECK_UPDATE"
-msgstr "Vérifie si des mises à jour sont disponibles et vous propose de les télécharger le cas échéant"
+msgstr "Vérifier si des mises à jour sont disponibles et vous propose de les télécharger le cas échéant"
 
 msgid "TOOLTIP_COST_TYPE"
-msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommé."
+msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommez."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "La carte SD sélectionnée sera rendu compatible Cultibox. Pour cela les fichiers de configuration des prise, des programmes et de la Cultibox seront régénérés en fonction de vos paramêtres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déja présent sur votre carte SD ils peuvent être perdus lors du processus<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
+msgstr "La carte SD sélectionnée sera rendue compatible Cultibox. Pour cela les fichiers de configuration des prises, des programmes et de la Cultibox seront régénérés en fonction de vos paramètres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déjà présents sur votre carte SD ils peuvent être perdus lors du processus<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
 
 msgid "TOOLTIP_RESET_LOG"
 msgstr "En cliquant sur ce bouton toutes vos données des logs enregistrés seront supprimées. Cela peut être réalisé à la fin d'une culture, si vos logs ne vous sont plus utiles et que vous souhaitez libérer de l'espace sur votre ordinateur"
@@ -1387,7 +1387,7 @@ msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
 
 msgid "TOOLTIP_MAX_LOG_IMPORT"
-msgstr "Cette variable définit le nombre de mois qui seront scrutés pour rechercher des logs lors de l'appuie sur le bouton 'Importer les logs' de l'onglet 'Logs'"
+msgstr "Cette variable définit le nombre de mois qui seront scrutés pour rechercher des logs lors de l'appui sur le bouton 'Importer les logs' de l'onglet 'Logs'"
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Date de départ du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
@@ -1396,10 +1396,10 @@ msgid "TOOLTIP_COST_STOP_TIME"
 msgstr "Date de fin du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
 
 msgid "TOOLTIP_REGUL_SENSOR"
-msgstr "La régulation d'une prise est réalisée en fonction des données relevées par un capteur. Ce champ vous permet de sélectionner ce capteur si vous avez activez la sélection multiple des capteurs dans la partie configuration "
+msgstr "La régulation d'une prise est réalisée en fonction des données relevées par un capteur. Ce champ vous permet de sélectionner ce capteur si vous avez activé la sélection multiple des capteurs dans la partie configuration "
 
 msgid "TOOLTIP_SECOND_REGUL_ENABLE"
-msgstr "Assurez vous de bien avoir lu l'aide avant d'activer cette option. Il n'est pas nécessaire de l'activer pour qu'une prise régule la température ou l'humidité."
+msgstr "Assurez-vous de bien avoir lu l'aide avant d'activer cette option. Il n'est pas nécessaire de l'activer pour qu'une prise régule la température ou l'humidité."
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
 msgstr "Lorsque vous chargez la page des logs, le logiciel enregistre vos logs de température, humidité et puissance pour les 31 derniers jours. Cette fonctionnalité vous permet de charger des logs plus anciens en fonction du nombre de mois souhaité"
@@ -1418,22 +1418,22 @@ msgid "TOOLTIP_REMOVE_PLUG"
 msgstr "Cette fonctionnalité vous permet de supprimer une prise utilisable dans votre système Cultibox. Cette action revient à se déplacer dans la partie configuration et diminuer le nombre de prises de votre système"
 
 msgid "TOOLTIP_RESET_PROGRAM"
-msgstr "Cette fonctionnalité permet de remettre à zéro un programme. Le prise selectionnée n'aura plus d'actions attribuée, elle se retrouvera éteinte pour toute la journée"
+msgstr "Cette fonctionnalité permet de remettre à zéro un programme. Le prise sélectionnée n'aura plus d'action attribuée, elle se retrouvera éteinte pour toute la journée"
 
 msgid "TOOLTIP_EXPORT_PROGRAM"
-msgstr "Cette fonctionnalité vous permet d'exporter un programme dans un format csv (lisisble par un tableur). Ce fichier peut être utilisé pour appliquer, avec la fonction d'importation, un même programme sur d'autres prises ou encore afin de s'échanger des programmes avec d'autres utilisateurs Cultibox"
+msgstr "Cette fonctionnalité vous permet d'exporter un programme dans un format csv (lisible par un tableur). Ce fichier peut être utilisé pour appliquer, avec la fonction d'importation, un même programme sur d'autres prises ou encore afin d'échanger des programmes avec d'autres utilisateurs Cultibox"
 
 msgid "TOOLTIP_IMPORT_PROGRAM"
-msgstr "Cette fonctionnalité permet d'importer un programme depuis un fichier csv (lisible par un tableur). Le fichier à importer peut être créé par la fonction d'exportation par un autre utilisateur Cultibox pour s'échanger des programmes ou depuis une autre de vos prises pour appliquer un même programme à plusieurs prises"
+msgstr "Cette fonctionnalité permet d'importer un programme depuis un fichier csv (lisible par un tableur). Le fichier à importer peut être créé par la fonction d'exportation par un autre utilisateur Cultibox pour échanger des programmes ou depuis une autre de vos prises pour appliquer un même programme à plusieurs prises"
 
 msgid "TOOLTIP_REGUL_SEVERAL_SENSOR"
 msgstr "Si vous activez la sélection de la régulation de plusieurs capteurs, vous pourrez choisir le numéro de votre capteur vous permettant de gérer la régulation. Sinon et par défaut la régulation se fera sur le capteur numéro un"
 
 msgid "TOOLTIP_REPEAT_VALUE"
-msgstr "Cette valeur définie à quel fréquence votre évènement sera répété. Par exemple, si votre évènement commence à 01:00:00 et que la répétition est de 04:00:00, l'évènement suivant débutera à 05:00:00. Le temps de répétition est ajouté au temps de départ de l'évènement pour déterminer le départ de l'évènement suivant. Le temps minimum autorisé est de 5mn."
+msgstr "Cette valeur définit à quelle fréquence votre évènement sera répété. Par exemple, si votre évènement commence à 01:00:00 et que la répétition est de 04:00:00, l'évènement suivant débutera à 05:00:00. Le temps de répétition est ajouté au temps de départ de l'évènement pour déterminer le départ de l'évènement suivant. Le temps minimum autorisé est de 5mn."
 
 msgid "TOOLTIP_RESET_OLD_PROGRAM"
-msgstr "En cochant cette case vous éffacerez l'ancien programme de votre prise pour enregistrer votre nouvelle action sur un programme vide. Si vous ne cochez pas cette case, votre action se superposera au programme déja enregistré."
+msgstr "En cochant cette case vous effacerez l'ancien programme de votre prise pour enregistrer votre nouvelle action sur un programme vide. Si vous ne cochez pas cette case, votre action se superposera au programme déjà enregistré."
 
 msgid "TOOLTIP_VALUE_PROGRAM"
 msgstr "Vous pouvez choisir jusqu'à trois fonctionnements différents pour votre équipement en fonction de son type: Marche (la prise sera en marche pour la période donnée), Arrêt (la prise sera à l'arrêt pour la période donnée) ou Régulation (la prise s'allumera et s'éteindra pour atteindre une valeur de température ou d'humidité déterminée - ne marche pas pour les prises définies comme ' autre' ou 'lampe')"
