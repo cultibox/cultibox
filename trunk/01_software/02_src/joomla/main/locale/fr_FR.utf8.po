@@ -1094,17 +1094,11 @@ msgstr "Erreur dans la requête SQL DELETE"
 msgid "ERROR_SELECT_SQL"
 msgstr "Erreur dans la requête SQL SELECT"
 
-msgid "EMPTY_TEMPERATURE_DATA"
-msgstr "Aucun enregistrement concernant la température pour la date sélectionnée"
+msgid "EMPTY_DATA"
+msgstr "Aucun enregistrement de température et d'humidité à la date sélectionnée"
 
-msgid "EMPTY_HUMIDITY_DATA"
-msgstr "Aucun enregistrement concernant l'hygrométrie pour la date sélectionnée"
-
-msgid "EMPTY_TEMPERATURE_DATA_SENSOR"
-msgstr "Enregistrements de température vides à la date sélectionnée pour le(s) capteur(s)"
-
-msgid "EMPTY_HUMIDITY_DATA_SENSOR"
-msgstr "Enregistrements d'hygrométrie vides à la date sélectionnée pour le(s) capteur(s)"
+msgid "EMPTY_DATA_SENSOR"
+msgstr "Aucun enregistrement de température et d'humidité à la date sélectionnée pour le(s) capteur(s)"
 
 msgid "EMPTY_POWER_DATA"
 msgstr "Aucun enregistrement concernant la puissance consommée pour la date sélectionnée"
