@@ -225,27 +225,27 @@ end;
 
 [Files]
 ; Backup file. Used in pre install
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\backup.bat"; DestDir: "{app}\run"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-script\backup.bat"; DestDir: "{app}\run"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; load file. Used in post install
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\load.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\cultibox\*"; DestDir: "{app}\xampp"; Flags: onlyifdoesntexist ignoreversion recursesubdirs createallsubdirs 
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\cultibox\htdocs\cultibox\*"; DestDir: "{app}\xampp\htdocs\cultibox"; Flags: ignoreversion recursesubdirs createallsubdirs   
-Source: "C:\users\yann\Desktop\Project\cultibox\02_documentation\02_userdoc\documentation.pdf"; DestDir: "{app}\xampp\htdocs\cultibox\main\modules\docs\documentation_cultibox.pdf"; Flags: ignoreversion recursesubdirs createallsubdirs   
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\backup.bat"; DestDir: "{app}"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\load.bat"; DestDir: "{app}"; DestName: "load.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\01_xampp\02_sql\*"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-script\load.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\..\01_software\01_install\01_src\01_xampp\cultibox\*"; DestDir: "{app}\xampp"; Flags: onlyifdoesntexist ignoreversion recursesubdirs createallsubdirs 
+Source: "..\..\..\01_software\01_install\01_src\01_xampp\cultibox\htdocs\cultibox\*"; DestDir: "{app}\xampp\htdocs\cultibox"; Flags: ignoreversion recursesubdirs createallsubdirs   
+Source: "..\..\..\02_documentation\02_userdoc\documentation.pdf"; DestDir: "{app}\xampp\htdocs\cultibox\main\modules\docs\documentation_cultibox.pdf"; Flags: ignoreversion recursesubdirs createallsubdirs   
+Source: "conf-script\backup.bat"; DestDir: "{app}"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-script\load.bat"; DestDir: "{app}"; DestName: "load.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\..\01_software\01_install\01_src\01_xampp\02_sql\*"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\..\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
 ;Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\04_run\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\users\yann\Desktop\Project\cultibox\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-script\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion onlyifdoesntexist  
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion  onlyifdoesntexist
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\02_windows\conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion onlyifdoesntexist
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion 
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\cnf\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp\cnf"; Flags: ignoreversion 
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\sht.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\cultibox.ico"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
-Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\03_sd\cultibox.html"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
+Source: "..\..\..\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-script\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "conf-lampp\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion onlyifdoesntexist  
+Source: "conf-lampp\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion  onlyifdoesntexist
+Source: "conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion onlyifdoesntexist
+Source: "..\..\..\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion 
+Source: "..\..\..\01_software\01_install\01_src\03_sd\cnf\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp\cnf"; Flags: ignoreversion 
+Source: "..\..\..\01_software\01_install\01_src\03_sd\sht.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
+Source: "..\..\..\01_software\01_install\01_src\03_sd\cultibox.ico"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
+Source: "..\..\..\01_software\01_install\01_src\03_sd\cultibox.html"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 
