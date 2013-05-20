@@ -1,6 +1,7 @@
 Cultibox (1.1.21) precise; urgency=low
     + Changement de la couleur de selection des jours dans le calendrier
     + Suppréssion des bandes de couleurs dans les programmes
+    + Un seul méssage pour l'affichage des logs concernant les températures et humidités vides
 
 -- Yann Genevois <yann.genevois@gmail.com>  Sun May 19 18:50:39 CEST 2013
 
