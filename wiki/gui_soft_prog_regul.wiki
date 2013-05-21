@@ -19,7 +19,7 @@ Pour assurer correctement la régulation, la Cultibox à besoin de savoir quel �
 
 Par exemple, vous désirez avoir une température de 22°C. Le capteur indique 20°C. La Cultibox ne doit mettre en route la prise que si c'est un élément du type chauffage qui est branché dessus.
 
-Il est donc très important de remplir correctement le champ "Type d'élément branché sur la prise" dans l'onglet "Plugs".
+Il est donc très important de remplir correctement le champ "Type d'élément branché sur la prise" dans l'onglet "Prises".
 
 Si l'élément ne correspond pas exactement aux choix possibles, vous devez sélectionner l’élément le plus proche selon les règles ci-dessous:
  * Si l'élément branché augmente la température de votre environnement lorsqu'il est en marche : sélectionner "Chauffage"
@@ -30,7 +30,7 @@ Si l'élément ne correspond pas exactement aux choix possibles, vous devez sél
 = Hystérésis =
 Les prises vendues avec le pack sont "Tout Ou Rien". Cela veut dire que la prise ne peut être que dans un des deux états suivants: Allumée ou éteinte. Pour ce type de prise, la régulation la plus efficace est une régulation suivant un [http://fr.wikipedia.org/wiki/Hyst%C3%A9r%C3%A9sis cycle d'hystérésis].
 
-Un parametre apparait pour régler l'hystérésis : la tolérance. Ce paramêtre se règle dans l'onglet [https://code.google.com/p/cultibox/wiki/gui_soft_conf#Configuration_des_prises prise]. Il définit quelle tolérance doit être appliquée par rapport à la consigne. Par exemple un extracteur avec une tolérance de 1°C et une valeur de régulation de 24°C, se met en route à 25°C et s'éteint à 23°C.
+Un paramètre apparait pour régler l'hystérésis : la tolérance. Ce paramètre est réglé dans l'onglet [https://code.google.com/p/cultibox/wiki/gui_soft_conf#Configuration_des_prises prise]. Il définit quelle tolérance doit être appliquée par rapport à la consigne. Par exemple un extracteur avec une tolérance de 1°C et une valeur de régulation de 24°C, se met en route à 25°C et s'éteint à 23°C.
 
 == Chauffage ou humidificateur ==
 Dans le cas ou la prise agit de façon positive sur la valeur du capteur (Chauffage, Humidificateur). Les règles de changement d'état des prises sont les suivantes:

@@ -40,7 +40,7 @@ Pour appliquer une programmation cyclique
  * Sélectionner le temps entre deux actions (Répéter toutes les)
  * Cliquer sur Valider
 
-Par exemple, les parametres suivants:
+Par exemple, les paramètres suivants:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_3.png
 
@@ -65,9 +65,30 @@ Pour qu'une prise puisse être utilisée en régulation il faut qu'elle soit con
    * Déshumidificateur: lorsque la prise est allumée, l'humidité baisse
    * Les autres types (Lampe, inconnu) ne permettent pas de faire de régulation
 
-Le type de la prise détermine le fonctionnement de la régulation. Par exemple, sI vous choisissez "Chauffage", la prise sera allumée lorsque la température sera inférieur à la consigne. SI vous choisissez "humidificateur", la prise sera allumée lorsque l'humidité sera inférieur à la consigne.
+Le type de la prise détermine le fonctionnement de la régulation. Par exemple, si vous choisissez "Chauffage", la prise sera allumée lorsque la température sera inférieur à la consigne. SI vous choisissez "humidificateur", la prise sera allumée lorsque l'humidité sera inférieur à la consigne.
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.jpg
+
+== Combinaison ==
+Il est tout à fait possible de combiner plusieurs actions dans la même journée.
+Par exemple, l'utilisateur veut :
+- La prise 2 allumée de 2h à 5h
+- En régulation à 22°C de 5h à 16h
+- En régulation à 28°C de 16h à 18h
+- Éteinte, le reste du temps
+
+Il faut donc programmer trois actions. La première action est la suivante (N'oublier pas de cliquer sur valider entre chaque action):
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_6.jpg
+
+La deuxième action:
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.jpg
+
+Et la dernière action:
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_7.jpg
+
+Ce qui donne le résultat suivant:
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_8.jpg
 
 <wiki:comment>
 
@@ -80,7 +101,7 @@ Pour configurer la régulation secondaire:
  * Dans l'onglet Prise
  * Sélectionner la prise
  * Activer la régulation secondaire de la prise
- * Parametrer 
+ * Paramétrer 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_5.png
 
