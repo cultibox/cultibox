@@ -3,13 +3,18 @@
 set -e 
 dir=`dirname $0`
 cd $dir
-(cd ../../../ && svn up)
+
+# Remove svn up when using jenkins
+if [ "$3" == "" ]; then
+    (cd ../../../ && svn up)
+fi
+
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../01_src/01_xampp
 
 function usage {
             echo "usage: $0"
-            echo "                      snow-leopard <version>"
+            echo "                      snow-leopard <version> ?jenkins?"
             echo "                      clean"
             exit 1
 }

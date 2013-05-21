@@ -3,14 +3,19 @@
 set -e 
 dir=`dirname $0`
 cd $dir
-(cd ../../../ && svn up)
+
+# Remove svn up when using jenkins
+if [ "$3" == "" ]; then
+    (cd ../../../ && svn up)
+fi
+
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../../01_install/01_src/01_xampp
 
 function usage {
             echo "usage: $0"
-            echo "                      ubuntu32|ubuntu64 <version>"
-            echo "                      ubuntu32-admin|ubuntu64-admin <version>"
+            echo "                      ubuntu32|ubuntu64 <version> ?jenkins?"
+            echo "                      ubuntu32-admin|ubuntu64-admin <version> ?jenkins?"
             echo "                      clean"
             exit 1
 }
