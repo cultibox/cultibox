@@ -17,26 +17,27 @@ if((isset($_POST["title"]))&&(!empty($_POST["title"]))&&(isset($_POST["start"]))
     $main_error=array();
     
 
-    if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
-            $description=$_POST["desc"];
-    }
+    if($db = db_priv_pdo_start()) {
+
+        if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
+            $description=$db->quote($_POST["desc"]);
+        }
 
 
-    if((isset($description))&&(!empty($description))) {
-        $sql = <<<EOF
-UPDATE `calendar` SET `Title`="{$title}",`StartTime`="{$start}",`EndTime`="{$end}",`Color`="{$color}", `Description`="{$description}" WHERE `Id` = {$id}
+        if((isset($description))&&(!empty($description))) {
+            $sql = <<<EOF
+UPDATE `calendar` SET `Title`={$db->quote($title)},`StartTime`="{$start}",`EndTime`="{$end}",`Color`="{$color}", `Description`={$description} WHERE `Id` = {$id}
 EOF;
-    } else {
-        $sql = <<<EOF
-UPDATE `calendar` SET `Title`="{$title}",`StartTime`="{$start}",`EndTime`="{$end}", `Color`="{$color}" WHERE `Id` = {$id}
+        } else {
+            $sql = <<<EOF
+UPDATE `calendar` SET `Title`={$db->quote($title)},`StartTime`="{$start}",`EndTime`="{$end}", `Color`="{$color}" WHERE `Id` = {$id}
 EOF;
-    }
+        }
 
-    $sql_old= <<<EOF
+        $sql_old= <<<EOF
 SELECT  * FROM `calendar` WHERE `Id` = {$id}
 EOF;
 
-    if($db = db_priv_pdo_start()) {
         $sth=$db->prepare("$sql_old");
         $sth-> execute();
         $res=$sth->fetchAll(PDO::FETCH_ASSOC);
