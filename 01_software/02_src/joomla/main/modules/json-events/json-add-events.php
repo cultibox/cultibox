@@ -41,7 +41,7 @@ EOF;
                 if((strcmp("$start","$end")==0)||(!isset($end))||(empty($end))) {
                     $calendar=create_calendar_from_database($main_error,$start);
                 } else {
-                    $calendar=create_calendar_from_database($main_error,$start);
+                    $calendar=create_calendar_from_database($main_error,$start,$end);
                 }
 
                 if(count($calendar)>0) {

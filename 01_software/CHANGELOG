@@ -2,6 +2,7 @@ Cultibox (1.1.22) precise; urgency=low
     + Correction des accents dans le graphe de coût pour Mac OS X
     + Correction du numéro de version dans les paquets windows
     + Gestion des caractères spéciaux dans le calendrier pour les requettes SQL
+    + Correction d'une erreur sur la création d'évènements multiples
 
 -- Yann Genevois <yann.genevois@gmail.com>  Wed May 22 10:11:33 CEST 2013
 
