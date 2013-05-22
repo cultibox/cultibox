@@ -1,3 +1,9 @@
+Cultibox (1.1.22) precise; urgency=low
+    + Correction des accents dans le graphe de coût pour Mac OS X
+
+-- Yann Genevois <yann.genevois@gmail.com>  Wed May 22 10:11:33 CEST 2013
+
+
 Cultibox (1.1.21) precise; urgency=low
     + Changement de la couleur de selection des jours dans le calendrier
     + Suppréssion des bandes de couleurs dans les programmes
