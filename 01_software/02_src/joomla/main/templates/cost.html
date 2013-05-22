@@ -108,11 +108,13 @@ $(function () {
             contextButtonTitle: <?php echo "'".__('CONTEXT_MENU')."'"; ?>
       },
       xAxis: {
-         useHTML: true,
          categories: [
             '<?php echo __('REAL_PRICE'); ?>',
             '<?php echo __('THEORICAL_PRICE'); ?>'
-         ]
+         ],
+	 labels: {
+		useHTML: true
+         },
       },
       yAxis: {
          min: 0,
@@ -143,6 +145,7 @@ $(function () {
         series: [
         <?php foreach($data_price as $data) { ?>
          {
+		useHTML: true,
                 name: <?php echo "'".html_entity_decode($data['title'])."'," ?>
                 color: <?php echo "'".$data['color']."'"; ?>,
                 data: [<?php echo $data['real']; ?>,<?php echo $data['theorical']; ?>]
