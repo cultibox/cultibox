@@ -15,14 +15,17 @@ $main_error=array();
 
 
 
+
+
 if((isset($title))&&(!empty($title))&&(isset($start))&&(!empty($start))&&(isset($end))&&(!empty($end))&&(isset($color))&&(!empty($color))) {
+        if($db = db_priv_pdo_start()) {
             if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
-                $description=$_POST["desc"];    
+                $description=$db->quote($_POST["desc"]);    
             }
 
             if((isset($description))&&(!empty($description))) {
             $sql = <<<EOF
-INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Description`,`Color`,`External`) VALUES("{$title}", "{$start}", "{$end}", "{$description}", "{$color}","0");
+INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Description`,`Color`,`External`) VALUES({$db->quote($title)}, "{$start}", "{$end}", {$description}, "{$color}","0");
 EOF;
 
             } else {
@@ -31,22 +34,20 @@ INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Color`,`External`) VALUES
 EOF;
             }
 
-            if($db = db_priv_pdo_start()) {
-                $db->exec("$sql");
-                $db=null;
+            $db->exec("$sql");
+            $db=null;
 
-                if((isset($sd_card))&&(!empty($sd_card))) {
-                    if((strcmp("$start","$end")==0)||(!isset($end))||(empty($end))) {
-                        $calendar=create_calendar_from_database($main_error,$start);
-                    } else {
-                        $calendar=create_calendar_from_database($main_error,$start);
-                    }
+            if((isset($sd_card))&&(!empty($sd_card))) {
+                if((strcmp("$start","$end")==0)||(!isset($end))||(empty($end))) {
+                    $calendar=create_calendar_from_database($main_error,$start);
+                } else {
+                    $calendar=create_calendar_from_database($main_error,$start);
+                }
 
-                    if(count($calendar)>0) {
-                        write_calendar($sd_card,$calendar,$main_error);
-                    }
+                if(count($calendar)>0) {
+                    write_calendar($sd_card,$calendar,$main_error);
                 }
             }
+        }
 }
-
 ?>

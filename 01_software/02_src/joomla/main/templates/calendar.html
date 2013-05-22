@@ -91,7 +91,7 @@ if(!isset($sd_card)) $sd_card="";
                                         $.ajax({
                                             type: "POST",
                                             url: "http://localhost:6891/cultibox/main/modules/json-events/json-add-events.php",
-                                            data: 'title='+title+'&start='+new_start+'&end='+new_end+'&desc='+description+'&color='+color+'&card=<?php echo $sd_card; ?>'
+                                            data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&color='+color+'&card=<?php echo $sd_card; ?>'
                                         });
                                         }
                                         $('#calendar').fullCalendar('unselect');
@@ -130,7 +130,7 @@ if(!isset($sd_card)) $sd_card="";
                 $.ajax({
                       type: "POST",
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                      data: 'title='+event.title+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
+                      data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
                 });
                 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                     $.blockUI({ message: '', timeout: 1000 }); 
@@ -154,7 +154,7 @@ if(!isset($sd_card)) $sd_card="";
                 $.ajax({
                       type: "POST",
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                      data: 'title='+event.title+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
+                      data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
                 });
                 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                     $.blockUI({ message: '', timeout: 1000 }); 
@@ -234,7 +234,7 @@ if(!isset($sd_card)) $sd_card="";
                                         $.ajax({
                                             type: "POST",
                                             url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                                            data: 'title='+title+'&start='+new_start+'&end='+new_end+'&desc='+description+'&id='+event.id+'&color='+color+'&card=<?php echo $sd_card; ?>'
+                                            data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&id='+event.id+'&color='+color+'&card=<?php echo $sd_card; ?>'
                                         });
                                         }
                                         event.title=title;
