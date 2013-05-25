@@ -354,11 +354,28 @@ ou alors:
 </feed>
 }}}
 
+= Ajouter un test Sélénium =
+== Sélénium IDE ==
+Avant toute chose, il vous faut Mozilla Firefox. Ensuite télécharger le plug-in sélénium pour Firefox:
+/http://release.seleniumhq.org/selenium-ide/2.0.0/selenium-ide-2.0.0.xpi
+
+Autoriser l'installation puis suivez les instructions.
+
+== Enregistrer un test ==
+Lancer firefox.
+Dans le menu Firefox puis Développement  Web, cliquer sur Selenium IDE.
+Une interface s'affiche.
+
+Cliquer sur le rond rouge pour démarrer ou arrêter l’enregistrement de votre test.
+
+Ensuite, il faut enregistrer votre suite de test. Cliquer sur fichier, enregistrer la suite de test sous (et non pas sauver le test sous).
+Vous devez enregistrer chacun des fichier pour chaque test puis enregistrer le fichier qui contient la suite de test.
+
 = Changer le numéro de la prise 3500W =
  * Débrancher la Cultibox
  * Brancher la prise 3500W
  * Appuyer sur le petit bouton en façade pendant au moins 10s jusqu’à ce que la LED clignote. 
- * Relacher le bouton puis apuyer une fois sur le bouton.
+ * Relâcher le bouton puis appuyer une fois sur le bouton.
  * La prise clignote deux fois
  * Ouvrir le fichier pluga
  * changer la première ligne. Mettre 001.
