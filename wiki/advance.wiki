@@ -371,6 +371,15 @@ Cliquer sur le rond rouge pour démarrer ou arrêter l’enregistrement de votre
 Ensuite, il faut enregistrer votre suite de test. Cliquer sur fichier, enregistrer la suite de test sous (et non pas sauver le test sous).
 Vous devez enregistrer chacun des fichier pour chaque test puis enregistrer le fichier qui contient la suite de test.
 
+== Archiver le test ==
+Pour pouvoir lancer le test, il est nécessaire d'archiver le test dans SVN.
+Il faut ajouter un dossier dans le dossier trunk/01_software/03_test/01_selenium avec votre test, puis coller les fichiers Selenium à l'intérieur. 
+N'oubliez pas de commiter.
+
+== Créer le test dans Jenkins ==
+Dans Jenkins, dans la vue test, cliquer sur "nouveau job". Puis cliquer sur "Copier un job existant". Entrer test_selenium dans "Copier à partir de". Le nom de votre job doit être le même que le nom du dossier. 
+Dans la partie "Exécuter un script shell" de la section build, changer les chemins pour qu'ils pointent vers votre test.
+
 = Changer le numéro de la prise 3500W =
  * Débrancher la Cultibox
  * Brancher la prise 3500W
