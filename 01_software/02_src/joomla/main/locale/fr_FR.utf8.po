@@ -829,16 +829,16 @@ msgid "WHAT_DIALOG_CALENDAR"
 msgstr "Que voulez-vous faire?"
 
 msgid "REMOVE_DIALOG_CALENDAR"
-msgstr "Supprimer l'évènement"
+msgstr "Supprimer l'annotation"
 
 msgid "CANCEL_DIALOG_CALENDAR"
 msgstr "Annuler"
 
 msgid "EDIT_DIALOG_CALENDAR"
-msgstr "Editer l'évènement"
+msgstr "Editer l'annotation"
 
 msgid "CREATE_DIALOG_CALENDAR"
-msgstr "Créer un évènement"
+msgstr "Ajouter une annotation"
 
 msgid "CALENDAR_SUBJECT"
 msgstr "Sujet"
@@ -856,7 +856,7 @@ msgid "CALENDAR_STOP_DATE"
 msgstr "Date de fin (AAAA-MM-JJ)"
 
 msgid "MANAGE_CALENDAR"
-msgstr "Gérer l'évènement"
+msgstr "Gestion des annotations"
 
 msgid "SAVE_DIALOG_CALENDAR"
 msgstr "Sauvegarder"
@@ -925,7 +925,7 @@ msgid "D07"
 msgstr "Dim"
 
 msgid "MANAGE_RESET_CALENDAR"
-msgstr "Supprimer tous les évènements du calendrier"
+msgstr "Supprimer toutes les annotations enregistrées"
 
 msgid "RESET_CONFIRM_CALENDAR"
 msgstr "Êtes-vous sûr de vouloir supprimer tous les événements enregistrés dans le calendrier?"
