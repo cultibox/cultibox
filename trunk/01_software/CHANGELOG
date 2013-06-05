@@ -1,3 +1,10 @@
+Cultibox (1.1.23) precise; urgency=low
+    + Ajout des images de faux logs pour les langues: Italien, Allemand et Espagnol
+    + Utilisation du terme annotation plutot qu'evènement pour le calendrier
+
+-- Yann Genevois <yann.genevois@gmail.com>  Wed Jun  5 13:33:21 CEST 2013
+
+
 Cultibox (1.1.22) precise; urgency=low
     + Correction des accents dans le graphe de coût pour Mac OS X
     + Correction du numéro de version dans les paquets windows
