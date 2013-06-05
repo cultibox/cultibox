@@ -455,6 +455,7 @@ for($i=0;$i<$nb_plugs;$i++) {
     $resume=format_data_sumary($plugs_infos);
 }
 
+
 if((isset($sd_card))&&(!empty($sd_card))) {
       $program=create_program_from_database($main_error);
       if(check_sd_card($sd_card)) {
@@ -479,7 +480,7 @@ if(strcmp("$update","True")==0) {
       $ret=array();
       check_update_available($version,$ret,$main_error);
       foreach($ret as $file) {
-                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a href=".$file[2].">".$file[1]."</a>";
+                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a class='download' href=".$file[2].">".$file[1]."</a>";
       }
    } else {
     $main_error[]=__('ERROR_REMOTE_SITE');

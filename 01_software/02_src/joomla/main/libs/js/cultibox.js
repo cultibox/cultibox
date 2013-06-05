@@ -79,4 +79,20 @@ $(document).ready(function() {
             return true;    
           }
    });
+
+
+    $(".download").click(function(e) {
+        e.preventDefault();
+
+        $url = 'http://localhost:6891/cultibox/main/scripts/force-download.php?file='+$(".download").attr("href");
+        $.ajax({
+            type: 'GET',
+            url: $url,
+            success: function(data){
+                   if(data != true){
+                    window.location =""+$url+"";
+                   }
+            }
+        });
+    });
 });
