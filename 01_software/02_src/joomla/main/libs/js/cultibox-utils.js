@@ -503,11 +503,12 @@ function getProgramType(i) {
 // USED BY: templates/plugs.html 
 function getEnable(i,j) {
       var divEnable = document.getElementById('state_plug'+j);
+      var divButton = document.getElementById('button_program'+j);
 
       switch(i) {
-         case 0 : divEnable.style.display = ''; break;
-         case 1 : divEnable.style.display = 'none'; break;
-         default: divEnable.style.display = ''; break;
+         case 0 : divEnable.style.display = ''; divButton.style.display = '';break;
+         case 1 : divEnable.style.display = 'none'; divButton.style.display = 'none'; break;
+         default: divEnable.style.display = ''; divButton.style.display = ''; break;
       }
 }
 // }}}
