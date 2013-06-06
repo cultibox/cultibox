@@ -382,6 +382,30 @@ $(document).ready(function() {
             }
         });
 
+        chart.yAxis[0].update({
+            labels: {
+                     useHTML: true,
+                     formatter: function() {
+                        if((this.value>=0)&&(this.value<=100)) {      
+                            if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="lamp")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="other")) {
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                                if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
+                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="ventilator")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="heating")) { 
+                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                                if(this.value>0) return this.value+'°C';
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="dehumidifier")) { 
+                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                                if(this.value>0) return this.value+'%';
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                            } else { 
+                                return this.value;
+                            }
+                        }
+                  }
+           }
+        });
+
         if((plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']=="other")||(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']=="lamp")) {
             if($('#regul_program option[value="regul"]').length!=0) {
                 $("#regul_program option[value='regul']").remove();
@@ -478,6 +502,30 @@ $(document).ready(function() {
                 chart.series[this.index].select(false);
                 chart.series[this.index].hide();
             }
+        });
+
+        chart.yAxis[0].update({
+            labels: {
+                     useHTML: true,
+                     formatter: function() {
+                        if((this.value>=0)&&(this.value<=100)) {      
+                            if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="lamp")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="other")) {
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                                if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
+                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="ventilator")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="heating")) { 
+                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                                if(this.value>0) return this.value+'°C';
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="dehumidifier")) { 
+                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                                if(this.value>0) return this.value+'%';
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                            } else { 
+                                return this.value;
+                            }
+                        }
+                  }
+           }
         });
 
         if((plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']=="other")||(plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']=="lamp")) {

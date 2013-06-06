@@ -49,9 +49,6 @@ $selected_error="";
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $jumpto=getvar("jumpto");
 
-// Retrieve plug's informations from the database
-$plugs_infos=get_plugs_infos($nb_plugs,$main_error);
-
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -411,6 +408,8 @@ if((isset($jumpto))&&(!empty($jumpto))) {
     }
 }
 
+// Retrieve plug's informations from the database
+$plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
 //Display the plug template
 include('main/templates/plugs.html');

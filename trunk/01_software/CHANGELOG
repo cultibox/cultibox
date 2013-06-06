@@ -5,6 +5,7 @@ Cultibox (1.1.23) precise; urgency=low
     + Correction de l'affichage des graphes des programmes: l'affichage se s'enmèle plus les pinceaux quand certaines prises sont désactivées
     + Le bouton permettant de sauvegarder et configurer un programme dans l'onglet des prises est caché si la prise est désactivée
     + Correction de l'affichage du calendrier lunaire: doublons de certaines entrée due à une mauvaise gestion de la clef 'period'
+    + Dans l'onglet programme, l'echèlle affichée correspond à celle de la prise selectionnée et non plus à celle de la première prise affichée
 
 -- Yann Genevois <yann.genevois@gmail.com>  Wed Jun  5 13:33:21 CEST 2013
 
