@@ -30,8 +30,12 @@
 <br /><br />
 <p class="title_conf"><?php echo __('VIEW_CURRENT_PROGRAM'); ?>
 <select name="selected_plug" id="selected_plug_conf">
-    <?php foreach($active_plugs as $plugs) {  ?>
-               <option value="<?php echo $plugs['id']; ?>"  <?php if(strcmp($selected_plug,$plugs['id'])==0) { echo 'selected';} ?> ><?php echo $plugs['id']." - ".$plugs_infos[$plugs['id']-1]['PLUG_NAME']; ?></option>
+    <?php for($i=0;$i<count($plugs_infos);$i++) { ?>
+                <?php if(strcmp($plugs_infos[$i]['PLUG_ENABLED'],"False")==0) { ?>
+                    <option disabled value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']." (".__('PLUG_DISABLED').")"; ?></option>
+                <?php } else { ?>
+                    <option value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']; ?></option>
+                <?php } ?>
     <?php } ?>
     </select>
 </p>
@@ -54,9 +58,14 @@
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-programs" method="post" name="actionprog" id="actionprog">
 <p class="title_conf"><?php echo __('CONFIGURE_PROGRAM'); ?>
     <select name="selected_plug" id="selected_plug">
-    <?php foreach($active_plugs as $plugs) {  ?>
-               <option value="<?php echo $plugs['id']; ?>"  <?php if(strcmp($selected_plug,$plugs['id'])==0) { echo 'selected';} ?> ><?php echo $plugs['id']." - ".$plugs_infos[$plugs['id']-1]['PLUG_NAME']; ?></option>
+          <?php for($i=0;$i<count($plugs_infos);$i++) { ?>
+                <?php if(strcmp($plugs_infos[$i]['PLUG_ENABLED'],"False")==0) { ?>
+                    <option disabled value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']." (".__('PLUG_DISABLED').")"; ?></option>
+                <?php } else { ?>
+                    <option value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']; ?></option>
+                <?php } ?>
     <?php } ?>
+
     </select>
 </p>
 
@@ -188,7 +197,7 @@ $(document).ready(function() {
                 }
             }
          },
-      xAxis: {
+        xAxis: {
          type: 'datetime',
          endOnTick: true,
          showFirstLabel: false,
@@ -226,7 +235,7 @@ $(document).ready(function() {
             labels: {
                      useHTML: true,
                      formatter: function() {
- if((this.value>=0)&&(this.value<=100)) {      
+    if((this.value>=0)&&(this.value<=100)) {      
                <?php if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"lamp")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"other")==0)) { ?>
                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
                if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
@@ -314,7 +323,7 @@ $(document).ready(function() {
       series: [
             <?php 
             $count=0;
-            foreach($active_plugs as $plugs) {  
+            foreach($plugs_infos as $plugs) {  
             ?>
 
         {
@@ -340,10 +349,11 @@ $(document).ready(function() {
                         }
                     }
                }
+        <?php if(strcmp($plugs['PLUG_ENABLED'],"False")==0) echo ",showInLegend: false"; ?>
       }
      <?php 
      $count=$count+1;
-     if($count!=count($active_plugs)) echo ","; 
+     if($count!=count($plugs_infos)) echo ","; 
     } ?>
 ] 
    });
@@ -691,10 +701,15 @@ $(document).ready(function() {
     <td class="program-manage-title"><?php echo __('TITLE_RESET_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_PROGRAM'); ?>" />
          <select name="reset_selected_plug" id="reset_selected_plug">
         <?php for($i=1;$i<=$nb_plugs;$i++) {
+                if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],"False")==0) { $enable="Disabled"; } else { $enable=""; } 
                 if("$i"=="$reset_selected") {
                    echo "<option value=\"${i}\" selected>${i}</option>";
                 } else {
-                   echo "<option value=\"${i}\">${i}</option>";
+                   if(strcmp("$enable","")==0) {
+                    echo "<option value=\"${i}\">${i}</option>";
+                   } else {
+                    echo "<option disabled value=\"${i}\">${i} (".__('PLUG_DISABLED').")</option>";
+                   }
                 }
             } ?>
             <option value="all"><?php echo __('RESET_ALL_PROGRAM'); ?></option>

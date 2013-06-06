@@ -180,8 +180,8 @@ if((isset($export))&&(!empty($export))) {
 } elseif((isset($reset))&&(!empty($reset))) {
     if(strcmp("$reset_selected","all")==0) {
         $status=true;
-        for($i=1;$i<=$nb_plugs;$i++) {
-            if(!clean_program($i,$main_error)) $status=false;
+        foreach($active_plugs as $aplugs) {
+            if(!clean_program($aplugs['id'],$main_error)) $status=false;
         }
         if($status) {
             $pop_up_message=$pop_up_message.popup_message(__('INFO_RESET_PROGRAM'));

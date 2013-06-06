@@ -344,7 +344,7 @@ EOF;
 // RET return an array containing plugid and its name
 function get_plugs_infos($nb=0,&$out) {
         $sql = <<<EOF
-SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`,`PLUG_REGUL`
+SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`,`PLUG_REGUL`, `PLUG_ENABLED`
 FROM `plugs`
 WHERE id <= {$nb}
 ORDER by id ASC
