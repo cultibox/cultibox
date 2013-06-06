@@ -359,6 +359,8 @@ $(function () {
                      echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$i.")': '%',";
                      echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$i.")': '°C',";
                } ?>
+               <?php echo "'".__('LEGEND_HUMI')." (".__('EXAMPLE_LOG').")': '%',"; ?>
+               <?php echo "'".__('LEGEND_TEMP')." (".__('EXAMPLE_LOG').")': '%',"; ?>
                <?php echo "'".__('LEGEND_POWER')."'"; ?>: 'W'
                <?php if((isset($select_plug))&&(!empty($select_plug))) {
                      echo ",'".clean_highchart_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."': ''"; 
