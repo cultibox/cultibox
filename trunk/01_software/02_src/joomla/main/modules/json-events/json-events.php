@@ -75,7 +75,7 @@ if ($handle = opendir('../../xml')) {
                                         $icon=null;
                                 }
 
- 
+
                                 do {
                                     $start=date('Y-m-d H:i:s', $timestart);
                                     $end=date('Y-m-d H:i:s', $timeend);
@@ -92,7 +92,7 @@ if ($handle = opendir('../../xml')) {
                                         );
                                         $id=$id+1;
 
-                                    if(!isset($timeperiod)) {
+                                    if(!array_key_exists('period', $val)) {
                                         break;
                                     } else {
                                         $timestart=$timestart+$timeperiod;
@@ -101,6 +101,7 @@ if ($handle = opendir('../../xml')) {
 
                                     $test_year=date('Y',$timeend);
                                 } while($actual_year==$test_year);
+                                if(isset($timeperiod)) unset($timeperiod);
                             }
                         }
                     }
@@ -110,6 +111,7 @@ if ($handle = opendir('../../xml')) {
         }
     }
 }
+
 
 
 
