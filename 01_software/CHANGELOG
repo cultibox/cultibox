@@ -2,6 +2,7 @@ Cultibox (1.1.23) precise; urgency=low
     + Ajout des images de faux logs pour les langues: Italien, Allemand et Espagnol
     + Utilisation du terme annotation plutot qu'evènement pour le calendrier
     + Téléchargement de la mise à jour dans la mise page que la page courante
+    + Correction de l'affichage des graphes des programmes: l'affichage se s'enmèle plus les pinceaux quand certaines prises sont désactivées
 
 -- Yann Genevois <yann.genevois@gmail.com>  Wed Jun  5 13:33:21 CEST 2013
 
