@@ -234,7 +234,7 @@ $(function () {
             }
          },
          title: {
-             margin: 55,
+             margin: 35,
     	     useHTML: true,
              text: <?php echo "'<b>".__('HISTO_GRAPH')." (".$legend_date.")*</b>'"; ?>,
          },
@@ -288,12 +288,11 @@ $(function () {
                      color: <?php echo "'".$color_humidity."'"; ?>
                   }
                },
-               min: -1,
+               min: 0,
                max: 100,
                startOnTick: false,
                endOnTick: false, 
                allowDecimals: true,
-               minTickInterval: 10, 
                events: {
                 afterSetExtremes: function() {
                     if (this.min <= this.dataMin && this.max >= this.dataMax) {
@@ -316,13 +315,12 @@ $(function () {
                      color: <?php echo "'".$color_temperature."'"; ?>
                   }
                },
-               min: -1,
+               min: 0,
                max: 100,
                allowDecimals: true,
                opposite: true,
                endOnTick: false,
                startOnTick: false,
-               minTickInterval: 10,
                labels: {
                   formatter: function() {
                      if(this.value<=100) return this.value;
@@ -340,6 +338,7 @@ $(function () {
                },
                startOnTick: false,
                endOnTick: false,
+               allowDecimals: true,
                min: 0
             }
             <?php } ?>
@@ -744,6 +743,14 @@ $(function () {
         $("#min_y_axis_power").prop("selectedIndex",0);
         $("#max_y_axis_power").prop("selectedIndex",0);
 
+        chart.yAxis[0].update({
+                 tickPositions: [0, 20, 40, 60, 80, 100]
+        });
+        chart.yAxis[1].update({
+                 tickPositions: [0, 20, 40, 60, 80, 100]
+        });
+
+
         if(showzoom) {
             $('#resetzoom').hide();
         }
@@ -764,6 +771,8 @@ $(function () {
 
     $('#min_y_axis').change(function() {    
         var showzoom=false;
+        var save_min;
+        var save_max;
         if($(this).val()!="") {
             var extremes = chart.yAxis[0].getExtremes();
             if(extremes.max>parseInt($(this).val())) {
@@ -771,6 +780,8 @@ $(function () {
                     if(chart.axes[j].series[0].type=='area') {
                         chart.yAxis[0].setExtremes($(this).val(), extremes.max);
                         chart.yAxis[1].setExtremes($(this).val(), extremes.max);
+                        save_min=$(this).val();
+                        save_max=extremes.max;
                         showzoom=true;
                     }
                 }
@@ -781,16 +792,30 @@ $(function () {
 
         if(showzoom) {
             $('#resetzoom').show();
+           
+            var step=parseFloat((save_max-save_min)/4);  
+
+            chart.yAxis[0].update({
+                     tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
+            });
+            chart.yAxis[1].update({
+                     tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
+
+            });
         }
     });
 
     $('#max_y_axis').change(function() {
         var showzoom=false;
+        var save_min;
+        var save_max;
         if($(this).val()!="") {
             var extremes = chart.yAxis[0].getExtremes();
             if(extremes.min<parseInt($(this).val())) {
                     chart.yAxis[0].setExtremes(extremes.min, $(this).val());
                     chart.yAxis[1].setExtremes(extremes.min, $(this).val());
+                    save_max=$(this).val();
+                    save_min=extremes.min;
                     showzoom=true;
             } else {
                 $("#max_y_axis").prop("selectedIndex",0);
@@ -799,6 +824,15 @@ $(function () {
 
         if(showzoom) {
             $('#resetzoom').show();
+
+            var step=parseFloat((save_max-save_min)/4);  
+            chart.yAxis[0].update({
+                     tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
+            });
+            chart.yAxis[1].update({
+                     tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
+            });
+
         }
     });
 
