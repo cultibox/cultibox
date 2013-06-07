@@ -7,6 +7,7 @@ Cultibox (1.1.23) precise; urgency=low
     + Correction de l'affichage du calendrier lunaire: doublons de certaines entrée due à une mauvaise gestion de la clef 'period'
     + Dans l'onglet programme, l'echèlle affichée correspond à celle de la prise selectionnée et non plus à celle de la première prise affichée
     + Ajout des unités dans les graphes des fake logs
+    + Correction des echèlles des logs après zoom: l'echelle est calculée automatiquement avec des décimals pour empêcher que le graphe dbore sur le titre
 
 -- Yann Genevois <yann.genevois@gmail.com>  Wed Jun  5 13:33:21 CEST 2013
 
