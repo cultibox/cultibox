@@ -638,3 +638,15 @@ td.welcome-link img{
     height: 60px;
 }
 
+
+.format_success {
+   font-weight: bold;
+   color: #2A9011;
+}
+
+
+.format_error {
+   font-weight: bold;
+   color: #AF0F0F;
+}
+

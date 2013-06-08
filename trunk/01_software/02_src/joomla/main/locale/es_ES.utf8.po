@@ -167,14 +167,20 @@ msgstr "Formater la carte"
 msgid "RESET_CONFIRM_SD_CARD"
 msgstr "Êtes-vous sûr de vouloir formater votre carte SD? Vos fichiers de logs pourraient être détruits."
 
-msgid "VALID_RESET_SD"
-msgstr "Carte SD formatée avec succès"
-
 msgid "SECOND_REGUL_ENABLE"
 msgstr "Activer la régulation secondaire (Utilisateur expert seulement)"
 
 msgid "MULTIPLE_REGUL_SENSOR"
 msgstr "Permettre la régulation sur d'autres capteurs"
+
+msgid "FORMAT_PROGRESS"
+msgstr "Progréssion du formattage"
+
+msgid "SUCCESS_FORMAT"
+msgstr "Formatage de la carte réalisé avec succès"
+
+msgid "ERROR_FORMAT"
+msgstr "Erreur lors du formatage de la carte SD"
 
 
 # For the logs part:
@@ -1204,12 +1210,6 @@ msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas co
 
 msgid "ERROR_COPY_TPL"
 msgstr "Impossible de copier le fichier empty_file_64.tpl sur votre carte SD"
-
-msgid "ERROR_FORMAT_SD_CARD"
-msgstr "Erreur lors du formatage de votre carte SD"
-
-msgid "ERROR_SD_CARD_PATH"
-msgstr "Chemin d'accès à la carte SD introuvable"
 
 msgid "ERROR_COMPAT_BROWSER"
 msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez sûrement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accessibles. Voici la liste des navigateurs officiellement supportés:<br /><ul class='list_class'><li>Mozilla Firefox (version 3 et supérieure)</li><li>Internet Explorer (version 7 et supérieure)</li><li>Google Chrome (Toutes versions)</li><li>Max Os X Safari (version 5 et supérieure)</li></ul>"

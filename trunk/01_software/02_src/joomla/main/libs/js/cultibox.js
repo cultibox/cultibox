@@ -28,6 +28,28 @@ confirmForm = function(SendForm,idDialog) {
 }
 
 
+
+formatCard = function(hdd,pourcent) {
+            $.ajax({ 
+                cache: false,
+                url: "../../main/scripts/format.php",
+                data: {hdd:hdd, progress: pourcent}
+            }).done(function (data) {
+                $("#progress_bar").progressbar({ value: 4*parseInt(data) });
+                if(data==100) { 
+                    $("#success_format").show();
+                    return true 
+                } else if(data>=0) { 
+                    formatCard(hdd,data); 
+                } else {
+                    $("#error_format").show();
+                }
+            });
+}
+
+
+
+
 $(document).ready(function() {
    // Affichage des tooltips sur les éléments avec un title
    jQuery('#jquery-colour-picker-example select').colourPicker({ 
@@ -53,8 +75,6 @@ $(document).ready(function() {
 
           switch (FormId) {
             case 'reset_program_form':  DialogId="delete_dialog_program";
-                                        break;
-            case 'format_sd_form': DialogId="format_dialog_sd";
                                         break;
             case 'delete_historic_form': DialogId="delete_dialog_historic";
                                         break;
@@ -92,6 +112,42 @@ $(document).ready(function() {
                    if(data != true){
                     window.location =""+$url+"";
                    }
+            }
+        });
+    });
+
+    $("#reset_sd_card_submit").click(function(e) {
+        e.preventDefault();
+        $("#format_dialog_sd").dialog({
+            resizable: false,
+            height:200,
+            width: 500,
+            modal: true,
+            dialogClass: "dialog_cultibox",
+            buttons: {
+                "OK": function() { $( this ).dialog("close"); 
+                        $("#progress").dialog({
+                            resizable: false,
+                            height:200,
+                            width: 500,
+                            modal: true,
+                            dialogClass: "popup_message",
+                            buttons: {
+                                Close: function() { 
+                                    $( this ).dialog("close"); 
+                                    window.location.reload();
+                                    return false;
+
+                                }
+                            }
+                        });
+                        $("#progress_bar").progressbar({value:0});
+                        formatCard($("#selected_hdd").val(),0);
+                },
+                Cancel: function() { 
+                            $( this ).dialog("close"); 
+                            return false;
+                }
             }
         });
     });
