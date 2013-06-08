@@ -548,7 +548,13 @@ if("$type" == "days") {
          }
          $ddate="$startyear-$startmonth-$i";
          get_graph_array($humidity,"humidity/100","$ddate",$select_sensor,"False","0",$main_error);
-         $humidity=array();
+
+         if("$data_humi" != "" ) {
+            $data_humi="$data_humi, ".get_format_graph($humidity,"log");
+         } else {
+            $data_humi=get_format_graph($humidity,"log");
+         }
+         $humidity=Array();
         }
       }
 
