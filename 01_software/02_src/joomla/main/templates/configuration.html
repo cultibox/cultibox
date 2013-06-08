@@ -436,7 +436,7 @@
 </form>
 
 <div id="div_card_interface" style="display:none">
-<form action="/cultibox/index.php/waiting-data" method="post" id="format_sd_form">
+<form action="" method="post" id="format_sd_form">
 <table class="conf-table">
 <tr>
     <td class="conf-marge"></td>
@@ -445,7 +445,13 @@
     <input type="hidden" name="reset_sd_card" value="reset_sd_card">
 
 <?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?><select name="selected_hdd" id="selected_hdd"><?php  foreach($hdd_list as $hdd) { ?><option value="<?php echo "$hdd"; ?>"><?php echo "$hdd"; ?></option><?php } ?></select><?php  } ?>
-        <input type="submit" id="reset_sd_card_submit" name="reset_sd_card_submit" <?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?> class="delete" value="<?php echo __('MANAGE_RESET_CARD'); ?>" <?php } else { ?>disabled value="<?php echo __('MANAGE_RESET_CARD_NOT_FOUND'); ?>" class="inputDisable"<?php } ?>>
+        <button id="reset_sd_card_submit" name="reset_sd_card_submit" 
+                <?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?> 
+                    class="delete"><?php echo __('MANAGE_RESET_CARD'); ?>
+                <?php } else { ?>
+                    disabled class="inputDisable"><?php echo __('MANAGE_RESET_CARD_NOT_FOUND'); ?>
+                <?php } ?>
+        </button>
 
     </td>
     <td></td>
@@ -457,6 +463,15 @@
 <br />
 <hr />
 </form>
+
+<div id="progress" title="<?php echo __('FORMAT_PROGRESS'); ?>" style="display:none">
+    <div id="progress_bar"></div>
+    <br />
+    <p class="p_center">
+        <label class="format_success" id="success_format" style="display:none"><?php echo __('SUCCESS_FORMAT'); ?></label>
+        <label class="format_error" id="erreur_format" style="display:none"><?php echo __('ERROR_FORMAT'); ?></label>
+    </p>
+</div>
 </div>
 
 <?php 

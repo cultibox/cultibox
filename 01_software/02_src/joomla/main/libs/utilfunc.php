@@ -12,6 +12,8 @@ static $string_lang;
 
 if(is_file("main/libs/l10n.php")) {
    require_once 'main/libs/l10n.php';
+} else if(is_file("../libs/l10n.php")) {
+   require_once '../libs/l10n.php';
 } else {
    require_once '../../libs/l10n.php';
 }
@@ -270,7 +272,11 @@ function get_power_value($file,&$array_line) {
 // IN $file             file to clean
 // RET true if the copy is errorless, false else
 function clean_log_file($file) {
-   $filetpl = 'main/templates/data/empty_file_big.tpl';
+   if(is_file('main/templates/data/empty_file_big.tpl')) {
+        $filetpl = 'main/templates/data/empty_file_big.tpl';
+   } else {
+        $filetpl = '../templates/data/empty_file_big.tpl';
+   }
    if(!@copy($filetpl, $file)) return false;
    return true;
 }
@@ -1404,7 +1410,9 @@ function check_and_copy_log($sd_card,&$out) {
     } else {
         if(is_file("main/templates/data/empty_file_64.tpl")) {
             copy("main/templates/data/empty_file_big.tpl", "$sd_card/log.txt");   
-        }else {
+        } else if(is_file("../templates/data/empty_file_64.tpl")) {
+            copy("../templates/data/empty_file_big.tpl", "$sd_card/log.txt");
+        } else {
             $out[]=__('ERROR_COPY_TPL');
             return false;
         }
@@ -1704,120 +1712,6 @@ function check_format_time($time="") {
 
 
 // }}}
-
-
-// {{{ format_sd_card()
-// ROLE format log's file of a sd card by copying big_empty file
-// IN   $path       path to the sd card
-//      $out        error or warning messages
-// RET true 
-function format_sd_card($path="",&$out="") {
-    $ret=true;
-    if((is_dir("$path"))&&(strcmp("$path","")!=0)) {
-            $logs="$path/logs";
-            $cnf="$path/cnf";
-
-            if(!is_dir($logs)) mkdir("$logs");
-            if(!is_dir($cnf)) mkdir("$cnf");
-
-            if(!copy("tmp/cnf/cnt","$cnf/cnt")) {
-                $ret=false;
-            }
-
-            if(!copy("tmp/cnf/emetteur.hex","$cnf/emetteur.hex")) {
-                $ret=false;
-            }
-
-            for($i=1;$i<=12;$i++) {
-                for($j=1;$j<=31;$j++) {     
-                    if(strlen($i)<2) {
-                        $month="0".$i;
-                    } else {
-                        $month="$i";
-                    }
-
-                    if(strlen($j)<2) {
-                        $day="0".$j;
-                    } else {
-                        $day="$j";
-                    }
-                   
-                    if(!is_dir("$logs/$month")) {
-                        mkdir("$logs/$month");
-                    }
-
-                    //Restore log and power files:
-                    if(is_file("$logs/$month/$day")) {
-                        if(filesize("$logs/$month/$day")!=filesize("main/templates/data/empty_file_big.tpl")) {
-                            if(!clean_log_file("$logs/$month/$day")) $ret=false;
-                        }
-                    } else {
-                        if(!clean_log_file("$logs/$month/$day")) $ret=false;
-                    }
-
-
-                    if(is_file("$logs/$month/pwr_$day")) {
-                        if(filesize("$logs/$month/pwr_$day")!=filesize("main/templates/data/empty_file_big.tpl")) {
-                            if(!clean_log_file("$logs/$month/pwr_$day")) $ret=false;
-                        }
-                    } else {
-                        if(!clean_log_file("$logs/$month/pwr_$day")) $ret=false;
-                    }
-                }
-            }
-
-            //Copiyng firmware:
-            check_and_copy_firm($path);
-
-            //Creating pluga file:
-            if(!write_pluga($path,$out)) $ret=false;
-
-
-            //Creating conf file:
-            $update_frequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$out);
-            if("$update_frequency"=="-1") $update_frequency="0";
-            if(!write_sd_conf_file($path,get_configuration("RECORD_FREQUENCY",$out),"$update_frequency",get_configuration("POWER_FREQUENCY",$out),get_configuration("ALARM_ACTIV",$out),get_configuration("ALARM_VALUE",$out),get_configuration("ALARM_SENSO",$out),get_configuration("ALARM_SENSS",$out),$out)) $ret=false;
-
-
-            // Creating log.txt file:
-            if(!check_and_copy_log($path,$out)) $ret=false;
-
-
-            // Creating programs:
-            if(!copy("main/templates/data/empty_file.tpl","$path/plugv")) {
-                $ret=false;
-            }
-            $program=create_program_from_database($out);
-            if(!save_program_on_sd($path,$program,$out)) $ret=false;
-
-
-            //Create plugXX files:
-            $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$out);
-            if(count($plugconf)>0) {
-                if(!write_plugconf($plugconf,$path,$out)) $ret=false;
-            }
-
-            //Copying cultibox icon:
-            if(!copy("tmp/cultibox.ico","$path/cultibox.ico")) {
-                $ret=false;
-            }
-
-            //Copying cultibox homepage:
-            if(!copy("tmp/cultibox.html","$path/cultibox.html")) {
-                $ret=false;
-            }
-
-
-            return $ret;            
-    } else {
-        $out[]=__('ERROR_SD_CARD_PATH');
-        return false;
-    }
-}
-
-
-// }}}
-
 
 
 // {{{ get_browser_infos()

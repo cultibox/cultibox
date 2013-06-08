@@ -62,14 +62,6 @@ if(isset($_POST['import_log'])) {
 }
 
 
-if(isset($_POST['reset_sd_card'])) {
-    $_SESSION['reset_sd_card']=$_POST['reset_sd_card'];
-}
-
-if(isset($_POST['selected_hdd'])) {
-    $_SESSION['selected_hdd']=$_POST['selected_hdd'];
-}
-
 if(isset($_POST['log_search'])) {
     $_SESSION['log_search']=$_POST['log_search'];
 }
@@ -86,11 +78,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 
-if((isset($_POST['selected_hdd']))&&(!empty($_POST['selected_hdd']))&&(isset($_POST['reset_sd_card']))&&(!empty($_POST['reset_sd_card']))) {
-    $_SESSION['submenu']="card_interface";
-    $url="./configuration-".$_SESSION['SHORTLANG'];
-    header("Refresh: 2;url=$url");
-} elseif(((isset($_SESSION['import_log']))&&($_SESSION['import_log']))) {
+if(((isset($_SESSION['import_log']))&&($_SESSION['import_log']))) {
     if((isset($anchor))&&(!empty($anchor))) {
         $url="./display-logs-".$_SESSION['SHORTLANG']."#$anchor";
         header("Refresh: 2;url=$url");

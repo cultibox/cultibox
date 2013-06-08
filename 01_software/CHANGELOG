@@ -8,6 +8,7 @@ Cultibox (1.1.23) precise; urgency=low
     + Dans l'onglet programme, l'echèlle affichée correspond à celle de la prise selectionnée et non plus à celle de la première prise affichée
     + Ajout des unités dans les graphes des fake logs
     + Correction des echèlles des logs après zoom: l'echelle est calculée automatiquement avec des décimals pour empêcher que le graphe dbore sur le titre
+    + Ajout d'une barre de progréssion pour le formatage de la carte SD afin d'éviter les timeout
 
 -- Yann Genevois <yann.genevois@gmail.com>  Wed Jun  5 13:33:21 CEST 2013
 

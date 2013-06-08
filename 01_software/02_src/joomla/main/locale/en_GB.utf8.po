@@ -176,6 +176,15 @@ msgstr "Enable secondary regulation (Expert user only)"
 msgid "MULTIPLE_REGUL_SENSOR"
 msgstr "Regulation on several sensors"
 
+msgid "FORMAT_PROGRESS"
+msgstr "Progréssion du formattage"
+
+msgid "SUCCESS_FORMAT"
+msgstr "Formatage de la carte réalisé avec succès"
+
+msgid "ERROR_FORMAT"
+msgstr "Erreur lors du formatage de la carte SD"
+
 
 # For the logs part:
 
@@ -1207,12 +1216,6 @@ msgstr "Time start or stop of the full/empty hours is not configured properly. Y
 msgid "ERROR_COPY_TPL"
 msgstr "Can't copy empty_file_64.tpl file into your Cultibox SD card"
 
-msgid "ERROR_FORMAT_SD_CARD"
-msgstr "Error during formating your SD card"
-
-msgid "ERROR_SD_CARD_PATH"
-msgstr "Path to the SD card not found"
-
 msgid "ERROR_COMPAT_BROWSER"
 msgstr "Your internet browser doesn't seem to be compatible with the Cultibox software. You may use the software but some features may not be available. Here is the list of supported web broser:<br /><ul class='list_class'><li>Mozilla Firefox (version 3 and more)</li><li>Internet Explorer (version 7 and more)</li><li>Google Chrome</li><li>Mac Os X Safari (version 5 and more)</li></ul>"
 
@@ -1277,9 +1280,6 @@ msgstr "Program successfully imported"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Log's database successfully deleted"
-
-msgid "VALID_RESET_CARD"
-msgstr "SD card formated successfully"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
 msgstr "Program updated successfully! You can unplug your SD card and put in the Cultibox"
