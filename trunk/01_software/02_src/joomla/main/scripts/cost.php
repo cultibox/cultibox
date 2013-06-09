@@ -260,8 +260,17 @@ if(strcmp($select_plug,"distinct_all")!=0) {
        $theorical_power=get_theorical_power($plugs,$cost_type,$main_error,$check);
        $theorical_power=$theorical_power*$nb;
 
-       $data_power=get_data_power($startday,$endday,$plugs,$tmp_err);
-       $real_power=get_real_power($data_power,$cost_type,$main_error);
+       $startTime = strtotime("$startday 12:00");
+       $endTime = strtotime("$endday 12:00");
+       $real_power=0;
+
+       for ($i = $startTime; $i <= $endTime; $i = $i + 86400) {
+            $thisDate = date('Y-m-d', $i); // 2010-05-01, 2010-05-02, etc
+            $data_power=get_data_power($thisDate,$thisDate,$plugs,$tmp_err);
+            $real_power=get_real_power($data_power,$cost_type,$main_error)+$real_power;
+            unset($data_power);
+       }
+
        $title=$plugs_infos[$plugs-1]['PLUG_NAME'];
 
        $data_price[]= array(
