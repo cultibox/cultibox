@@ -409,6 +409,8 @@ $(function () {
 	    useHTML: true,
             layout: 'horizontal',
             verticalAlign: 'bottom',
+            width: 400,
+            itemWidth: 200,
             navigation: {
                 activeColor: '#3E576F',
                 animation: true,
@@ -486,7 +488,9 @@ $(function () {
                 <?php if($i>0) { echo ","; $count=$count+2; } ?>
               {
               type: 'area',
+               <?php if((isset($data_humi))&&(!empty($data_humi))&&(strcmp($data_humi[$i],"")!=0)) { ?>
                showCheckbox: true,
+               <?php } ?>
                name: <?php echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$nb.")'"; ?>,
                pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
@@ -516,9 +520,12 @@ $(function () {
                         }
                     }
                }
-            }, {
+            }, 
+		      {
                type: 'area',
-               showCheckbox: true,
+               <?php if((isset($data_temp))&&(!empty($data_temp))&&(strcmp($data_temp[$i],"")!=0)) { ?>
+                showCheckbox: true,
+               <?php } ?>
                name: <?php echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$nb.")'"; ?>,
                pointInterval: <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
@@ -550,7 +557,8 @@ $(function () {
                     }
                }
               }
-               <?php } ?>
+                           <?php } ?>
+
 
                 <?php if((isset($datap))&&(!empty($datap))) { ?>
                  , {
@@ -721,6 +729,16 @@ $(function () {
             <?php } ?>
             ]
         });
+
+    chart.series.each(function (item) {
+        if(item.data=="") {
+                item.options.showInLegend = false;
+                item.legendItem = item.legendItem.destroy();;
+                chart.legend.destroyItem(item);
+        }
+        chart.legend.render();
+    });
+
     });
 
     $('#resetzoom').click(function() {
@@ -889,7 +907,6 @@ $(function () {
 
     });
 
-    
 });
 
 
@@ -930,7 +947,7 @@ $(function () {
         </form>
         <?php } ?>
     </td>
-    <td class="center_log"><div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div></td>
+    <td class="center_log"><div id="container" style="width: 850px; height: 425px; margin: 0 auto"></div></td>
     <td class="right_log">
         <?php 
              $dd=date('d');    
