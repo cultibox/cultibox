@@ -10,6 +10,7 @@ Cultibox (1.1.23) precise; urgency=low
     + Correction des echèlles des logs après zoom: l'echelle est calculée automatiquement avec des décimals pour empêcher que le graphe dbore sur le titre
     + Ajout d'une barre de progréssion pour le formatage de la carte SD afin d'éviter les timeout
     + L'affichage de l'humidité sur un mois fonctionne à nouveau
+    + Modification de l'affichage de la légende pour les logs: 2 colonnes + on n'affiche plus les légendes des capteurs sans données
 
 -- Yann Genevois <yann.genevois@gmail.com>  Wed Jun  5 13:33:21 CEST 2013
 
