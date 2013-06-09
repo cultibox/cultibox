@@ -233,8 +233,18 @@ if(strcmp($select_plug,"distinct_all")!=0) {
         $color_cost=$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$select_plug-1];
     }
 
-    $data_power=get_data_power($startday,$endday,$select_plug,$main_error);
-    $real_power=get_real_power($data_power,$cost_type,$main_error);
+    //$data_power=get_data_power($startday,$endday,$select_plug,$main_error);
+    //$real_power=get_real_power($data_power,$cost_type,$main_error);
+    $startTime = strtotime("$startday 12:00");
+    $endTime = strtotime("$endday 12:00");
+    $real_power=0;
+
+    for ($i = $startTime; $i <= $endTime; $i = $i + 86400) {
+            $thisDate = date('Y-m-d', $i); // 2010-05-01, 2010-05-02, etc
+            $data_power=get_data_power($thisDate,$thisDate,$select_plug,$main_error);
+            $real_power=get_real_power($data_power,$cost_type,$main_error)+$real_power;
+            unset($data_power);
+    }
 
     $data_price[]= array( 
         "number" => "$select_plug",
