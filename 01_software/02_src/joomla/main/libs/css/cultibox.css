@@ -397,8 +397,17 @@ option:focus{background: #ee986e;}
 	font-size:12px;
 	font-style:normal;
 	font-weight:normal;
-    border-radius:22px;
+    padding-left : 15px;
 }
+
+.error_title {
+    color:red;
+    font-size:14px;
+    font-style:normal;
+    font-weight:bold;
+}
+
+
 
 .inputDisable {
     color: white;
@@ -453,7 +462,14 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover {
     font-size:12px;
     font-style:normal;
     font-weight:normal;
-    border-radius:22px;
+    padding-left : 15px;
+}
+
+.info_title {
+    color: #3A951F;
+    font-size:14px;
+    font-style:normal;
+    font-weight:bold;
 }
 
 td.wizard-marge, td.wizard-input-previous {
