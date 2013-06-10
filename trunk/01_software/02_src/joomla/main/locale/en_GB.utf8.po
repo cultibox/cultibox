@@ -1090,6 +1090,12 @@ msgid "LICENSE"
 msgstr "License"
 
 # For the errors or warnings part:
+msgid "INFORMATION"
+msgstr "Information(s)"
+
+msgid "WARNING"
+msgstr "Avertissement(s)"
+
 msgid "ERROR_UPDATE_SQL"
 msgstr "Error during the update sql request"
 

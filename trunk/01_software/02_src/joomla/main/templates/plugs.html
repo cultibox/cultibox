@@ -8,26 +8,36 @@
        </div>
 <?php } ?>
 
-<?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
+<?php if((((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)))||((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0))) { ?>
+<div class="message">
+        <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
+<img src="main/libs/img/informations.png" alt="" /><label class="info_title"><?php echo __('INFORMATION'); ?>:</label>
 <div class="info">
 <ul>
+    <li>
         <?php foreach($main_info as $inf) { 
-            echo $inf."<br /><br />";            
+            echo $inf;            
         } ?>
+    </li>
 </ul>
+<br />
 </div>
-<?php } ?>
-<?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
+    <?php } ?>
+    <?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
+<img src="main/libs/img/warning.png" alt="" /><label class="error_title"><?php echo __('WARNING'); ?>:</label>
 <div class="error">
 <ul>
+    <li>
         <?php foreach($main_error as $err) { 
-            echo $err."<br /><br />";            
+            echo $err;            
         } ?>
+    </li>
 </ul>
 </div>
+    <?php } ?>
+</div>
 <?php } ?>
-
-<br /><br />
+<br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm" id="plugForm">
 <p class="title_conf"><?php echo __('PLUG'); ?> 
     <select name="selected_plug" onChange="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);" onLoad="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);">
