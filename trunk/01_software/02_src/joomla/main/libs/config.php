@@ -52,7 +52,7 @@ $GLOBALS['LIST_MAX_POWER'] = array('100', '200', '500', '1000','2000','5000');
 $GLOBALS['FIRST_USE'] = true;
 
 // Variable to define the first year to be used for the log part:
-$GLOBALS['FIRST_LOG_YEAR'] = '2012';
+$GLOBALS['FIRST_LOG_YEAR'] = '2013';
 
 // Remote file to check update for the interface
 $GLOBALS['UPDATE_FILE'] = 'http://cultibox.highproshop.fr/download/software/updates/update_list.txt';
