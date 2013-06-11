@@ -51,6 +51,55 @@ formatCard = function(hdd,pourcent) {
 
 
 $(document).ready(function() {
+   $.ajax({
+                cache: false,
+                url: "../../main/scripts/position.php"
+    }).done(function (data) {
+
+        if ( typeof data.split(',')[0] !== "undefined" && data.split(',')[0]) {
+            var x = parseInt(data.split(',')[0].replace("\"", ""));
+        } else {
+            var x = 15;
+        }
+
+        if ( typeof data.split(',')[1] !== "undefined" && data.split(',')[1]) {
+            var y = parseInt(data.split(',')[1].replace("\"", ""));
+        } else {
+            var y = 15;
+        }
+
+        if ( typeof data.split(',')[2] !== "undefined" && data.split(',')[2]) {
+            var wid = parseInt(data.split(',')[2].replace("\"", ""));
+        } else {
+            var wid = 325;
+        }
+
+        $( ".message" ).dialog({ width: wid, resizable: true, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", dialogClass: "dialog_cultibox", position: [x,y], dragStop: function( event, ui ) { 
+            if(data!="") { 
+                var tmp = $(".message").dialog( "option", "position" );
+                var width = $(".message").dialog( "option", "width" );
+
+                $.ajax({
+                cache: false,
+                url: "../../main/scripts/position.php",
+                data: { POSITION_X: tmp[0], POSITION_Y: tmp[1], WIDTH: width }
+                }); 
+            }
+    },
+    resizeStop: function( event, ui ) {
+        if(data!="") {
+                var tmp = $(".message").dialog( "option", "position" );
+                var width = $(".message").dialog( "option", "width" );
+
+                $.ajax({
+                cache: false,
+                url: "../../main/scripts/position.php",
+                data: { WIDTH: width, POSITION_X: tmp[0], POSITION_Y: tmp[1] }
+                });
+        }
+    } });
+                $(".message").dialog().parent().css('position', 'fixed');
+    }); 
    // Affichage des tooltips sur les éléments avec un title
    jQuery('#jquery-colour-picker-example select').colourPicker({ 
         ico:    'http://localhost:6891/cultibox/main/libs/img/jquery.colourPicker.gif', 
@@ -59,10 +108,7 @@ $(document).ready(function() {
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
    $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
    $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
-   
-   $( ".message" ).dialog({ width: 325, resizable: true, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", dialogClass: "dialog_cultibox", position: [15,15] });
-   $(".message").dialog().parent().css('position', 'fixed');
-
+  
 
    $(".delete").click(function() {
           var currentForm;

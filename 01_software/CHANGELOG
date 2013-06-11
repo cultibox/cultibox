@@ -13,6 +13,7 @@ Cultibox (1.1.23) precise; urgency=low
     + Modification de l'affichage de la légende pour les logs: 2 colonnes + on n'affiche plus les légendes des capteurs sans données
     + Découpage jour par jour par le calcul du cout pour éviter les timeout
     + Regroupement des deux boites de messages avertissement et information en une seule
+    + Sauvegarde de la position de la boite de message dans un cookie valide 30 jours
 
 -- Yann Genevois <yann.genevois@gmail.com>  Wed Jun  5 13:33:21 CEST 2013
 

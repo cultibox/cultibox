@@ -6,6 +6,10 @@
 * @license   YOOtheme Proprietary Use License (http://www.yootheme.com/license)
 */
 
+if (!isset($_COOKIE['position'])) {
+    setcookie("position", "15,15,325", time()+(86400 * 30));
+}
+
 // get template configuration
 include($this['path']->path('layouts:template.config.php'));
 	
