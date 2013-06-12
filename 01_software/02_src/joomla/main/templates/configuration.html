@@ -4,11 +4,9 @@
 <img src="main/libs/img/informations.png" alt="" /><label class="info_title"><?php echo __('INFORMATION'); ?>:</label>
 <div class="info">
 <ul>
-    <li>
         <?php foreach($main_info as $inf) { 
-            echo $inf;            
+            echo "<li>".$inf."</li>";            
         } ?>
-    </li>
 </ul>
 <br />
 </div>
@@ -17,11 +15,9 @@
 <img src="main/libs/img/warning.png" alt="" /><label class="error_title"><?php echo __('WARNING'); ?>:</label>
 <div class="error">
 <ul>
-    <li>
         <?php foreach($main_error as $err) { 
-            echo $err;            
+            echo "<li>".$err."</li>";            
         } ?>
-    </li>
 </ul>
 </div>
     <?php } ?>

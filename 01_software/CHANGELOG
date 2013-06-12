@@ -14,6 +14,7 @@ Cultibox (1.1.23) precise; urgency=low
     + Découpage jour par jour par le calcul du cout pour éviter les timeout
     + Regroupement des deux boites de messages avertissement et information en une seule
     + Sauvegarde de la position de la boite de message dans un cookie valide 30 jours
+    + Limitation du nombre de changement d'état des prises à 250 dans les programmes
 
 -- Yann Genevois <yann.genevois@gmail.com>  Wed Jun  5 13:33:21 CEST 2013
 

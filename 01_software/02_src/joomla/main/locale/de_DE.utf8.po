@@ -744,6 +744,9 @@ msgstr "Les heures du programme rentrées sont les mêmes que le précédent pro
 msgid "JUMPTO_PLUG"
 msgstr "Configurer la prise associée à ce programme"
 
+msgid "ERROR_MAX_PROGRAM"
+msgstr "Le nombre de changement est limité à 250 pour toutes les prises confondues, la limite a été atteinte"
+
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
