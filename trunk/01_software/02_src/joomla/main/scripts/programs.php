@@ -302,6 +302,7 @@ if(!empty($apply)&&(isset($apply))) {
 
 
     if((empty($cyclic)&&($chtime))||((!empty($cyclic))&&($cyclic_ch)&&($chtime))) {
+
         if(strcmp("$check","1")==0) {
             if($chtime==2) {
                 $prog[]= array(
@@ -401,7 +402,14 @@ if(!empty($apply)&&(isset($apply))) {
 
             $ch_insert=true;
             foreach($prog as $val) {
-                if(!insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$main_error))  $ch_insert=false;
+                $nb_prog=count(create_program_from_database($main_error));
+                if($nb_prog<249) {
+                    if(!insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$main_error))  $ch_insert=false;
+                } else { 
+                    $error['repeat_time']=__('ERROR_MAX_PROGRAM');
+                    break;
+                }
+                unset($nb_prog);
             }
 
             if($ch_insert) {
