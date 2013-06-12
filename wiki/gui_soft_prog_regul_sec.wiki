@@ -16,6 +16,8 @@ Vous désirez qu'en plus de ce fonctionnement normal, il soit actif si le taux d
 
 Il n'est pas possible d'activer la régulation secondaire sur une prise déclarée comme "lampe" ou comme "autre" . Une prise "autre", est une prise qui ne modifie ni la température ni l'humidité de l'espace de culture. Il n'est donc pas possible d'effectuer de la régulation (principale ou secondaire) sur cette prise. De la même façon, il est impossible d'activer la régulation secondaire sur une prise déclarée comme "lampe".
 
+* La régulation secondaire ne fonctionne que lorsque le programme de la prise est en régulation principale"
+
 * La régulation secondaire est prioritaire dans la Cultibox. Dans le cas ou ses conditions d'activations sont remplies, elle prend le pas sur la régulation classique*
 
 == Activation ==
