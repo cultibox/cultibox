@@ -106,8 +106,54 @@ $(document).ready(function() {
         title:    false
    });
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
-   $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
-   $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+
+    //Portage pour Chrome:
+    if(/chrom(e|ium)/.test(navigator.userAgent.toLowerCase())){
+        var ytop=0; 
+        if(window.location.hash) {
+            var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+            var position = $("#"+hash).position();
+            ytop = position.top+100;
+        }
+        if(ytop!=0) {
+            $( ".pop_up_message" ).dialog({ 
+                position: [($(window).width() / 2) - (550 / 2), ytop],
+                width: 550, 
+                buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], 
+                hide: "fold", 
+                modal: true,  
+                dialogClass: "popup_message"  
+            }); 
+        } else {    
+            $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+        }
+    } else {
+        $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+    }
+
+    //Portage pour Chrome:
+    if(/chrom(e|ium)/.test(navigator.userAgent.toLowerCase())){
+        var ytop=0;
+        if(window.location.hash) {
+            var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+            var position = $("#"+hash).position();
+            ytop = position.top+100;
+        }
+        if(ytop!=0) {
+            $( ".pop_up_error" ).dialog({
+                position: [($(window).width() / 2) - (550 / 2), ytop],
+                width: 550,
+                buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ],
+                hide: "fold",
+                modal: true,
+                dialogClass: "popup_error"
+            });
+        } else {
+            $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
+        }
+    } else {
+        $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
+    }
   
 
    $(".delete").click(function() {
