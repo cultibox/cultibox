@@ -1,5 +1,5 @@
 <?php if((((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)))||((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0))) { ?>
-<div class="message">
+<div class="message" style="display:none">
         <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <img src="main/libs/img/informations.png" alt="" /><label class="info_title"><?php echo __('INFORMATION'); ?>:</label>
 <div class="info">
@@ -443,7 +443,7 @@
 </form>
 
 <div id="div_card_interface" style="display:none">
-<form action="" method="post" id="format_sd_form">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" id="format_sd_form">
 <table class="conf-table">
 <tr>
     <td class="conf-marge"></td>

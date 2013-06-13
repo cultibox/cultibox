@@ -219,19 +219,15 @@ if((isset($export))&&(!empty($export))) {
             clean_program($selected_plug,$main_error);
             export_program($selected_plug,$main_error); 
             
-            foreach($data_prog as $val) {
-               if(!insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$main_error)) $chprog=false;
-         }
-         if(!$chprog) {
+            if(!insert_program($data_prog,$main_error)) $chprog=false;
+            if(!$chprog) {
                $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');        
                set_historic_value(__('ERROR_GENERATE_PROGRAM_FROM_FILE')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
                $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
 
                $data_prog=generate_program_from_file("tmp/program_plug${selected_plug}.prg",$selected_plug,$main_error);
                if(count($data_prog)>0) {
-                     foreach($data_prog as $val) {
-                        insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$main_error);
-                     }
+                        insert_program($data_prog,$main_error);
                }
             } else {
                  $main_info[]=__('VALID_IMPORT_PROGRAM');
@@ -401,16 +397,16 @@ if(!empty($apply)&&(isset($apply))) {
                                                                   
 
             $ch_insert=true;
-            foreach($prog as $val) {
-                $nb_prog=count(create_program_from_database($main_error));
-                if($nb_prog<249) {
-                    if(!insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$main_error))  $ch_insert=false;
-                } else { 
-                    $error['repeat_time']=__('ERROR_MAX_PROGRAM');
-                    break;
-                }
-                unset($nb_prog);
-            }
+            $nb_prog=count(create_program_from_database($main_error));
+
+            
+            //if($nb_prog<249) {
+            if(!insert_program($prog,$main_error))  $ch_insert=false;
+            //} else { 
+            //    $error['repeat_time']=__('ERROR_MAX_PROGRAM');
+            //    break;
+            //}
+            //$end_load = getmicrotime();
 
             if($ch_insert) {
                    $main_info[]=__('INFO_VALID_UPDATE_PROGRAM');
@@ -572,6 +568,5 @@ if($GLOBALS['DEBUG_TRACE']) {
     echo "---------------------------------------<br />";
     memory_stat();
 }
-
 
 ?>

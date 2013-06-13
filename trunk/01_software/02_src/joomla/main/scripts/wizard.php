@@ -218,17 +218,15 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
                 insert_plug_conf("PLUG_TOLERANCE",$selected_plug,$plug_tolerance,$main_error);
             }
 
-            foreach($prog as $val) {	
-                if(insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$main_error)) {
-                    insert_program($val["selected_plug"],$val["start_time"],$val["end_time"],$val["value_program"],$main_error);
-                        if((!empty($sd_card))&&(isset($sd_card))) {
-                            $program=create_program_from_database($main_error);
-                            save_program_on_sd($sd_card,$program,$main_error);
-                        } 
-				        insert_plug_conf("PLUG_TYPE",$val["selected_plug"],$val["plug_type"],$main_error);
-                } else {
-                    unset($finish);
-                }
+            if(insert_program($prog,$main_error)) {
+                    insert_program($prog,$main_error);
+                    if((!empty($sd_card))&&(isset($sd_card))) {
+                        $program=create_program_from_database($main_error);
+                        save_program_on_sd($sd_card,$program,$main_error);
+                    } 
+				    insert_plug_conf("PLUG_TYPE",$prog[0]["selected_plug"],$prog[0]["plug_type"],$main_error);
+            } else {
+                unset($finish);
             }
 
             insert_plug_conf("PLUG_ENABLED",$selected_plug,"True",$main_error);
