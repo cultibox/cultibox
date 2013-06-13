@@ -823,112 +823,124 @@ function get_real_power($data="",$type="",&$out)  {
 
 // {{{ insert_program()
 // ROLE check and create new plug program
-// IN $plug_id      id of the plug
-//    $start_time   start time for the program
-//    $end_time      end time for the program
-//    $value      value of the program
+// IN $program     array containing program data 
 //    $out      error or warning message
 // RET true
-function insert_program($plug_id,$start_time,$end_time,$value,&$out) {
-   $data_plug=get_data_plug($plug_id,$out);
-   asort($data_plug);
-   $start_time=str_replace(':','',"$start_time");
-   $end_time=str_replace(':','',"$end_time");
-   $tmp=array();
-   $current= array(
-      "time_start" => "$start_time",
-                "time_stop" => "$end_time",
-                "value" => "$value"
-   );
+function insert_program($program,&$out) {
+   $ret=true;
+   $data_plug=get_data_plug($program[0]['selected_plug'],$out);
+   if(count($program>0)) clean_program($program[0]['selected_plug'],$out);
+   $final=array();
 
-   if((empty($first))||(!isset($first))) {
-      $first=array(
-         "time_start" => "000000",
-         "time_stop" => "000000",
-         "value" => "0"
-      );
-   }
-
-   $data_plug[] = array(
-      "time_start" => "240000",
-                "time_stop" => "240000",
-                "value" => "0"
+   $first=array(
+        "time_start" => "000000",
+        "time_stop" => "000000",
+        "value" => "0"
    );
 
    $data_plug[] = array(
-                "time_start" => "end",
-                "time_stop" => "end",
-                "value" => "end"
-        );
+        "time_start" => "240000",
+        "time_stop" => "240000",
+        "value" => "0"
+   );
 
    $data_plug[] = array(
-                "time_start" => "end",
-                "time_stop" => "end",
-                "value" => "end"
+        "time_start" => "end",
+        "time_stop" => "end",
+        "value" => "end"
+   );
+
+   $data_plug[] = array(
+        "time_start" => "end",
+        "time_stop" => "end",
+        "value" => "end"
+   );
+
+
+   foreach($program as $prog) {
+        asort($data_plug);
+        $start_time=str_replace(':','',$prog['start_time']);
+        $end_time=str_replace(':','',$prog['end_time']);
+        $value=$prog['value_program'];
+        $tmp=array();
+        $current= array(
+            "time_start" => "$start_time",
+            "time_stop" => "$end_time",
+            "value" => "$value"
         );
 
+        $continue="1";
+        if(count($data_plug)>1) {
+            foreach($data_plug as $data) {   
+                if("$continue"!="3") {
+                    if((empty($last))||(!isset($last))) {
+                        $last = $data;
+                    } 
 
-   $continue="1";
-   clean_program($plug_id,$out);
-
-   if(count($data_plug)>1) {
-      foreach($data_plug as $data) {   
-         if("$continue"!="3") {
-         if((empty($last))||(!isset($last))) {
-            $last = $data;
-         } 
-
-         if(("$continue"=="1")) {
-            if($GLOBALS['DEBUG_TRACE']) {
-               echo "<br />";
+                    if(("$continue"=="1")) {
+                        if($GLOBALS['DEBUG_TRACE']) {
+                            echo "<br />";
                                    print_r($first);
                                    echo "<br />";
                                    print_r($last);
                                    echo "<br />";
                                    print_r($current);
-               echo "<br />";
+                            echo "<br />";
+                        }
+
+                        $continue=compare_data_program($first,$last,$current,$tmp);
+
+                        if($GLOBALS['DEBUG_TRACE']) {
+                            echo "<br />";
+                            print_r($first);
+                            echo "<br />";
+                            print_r($last);
+                            echo "<br />";
+                            print_r($current);
+                            echo "<br />";
+                            print_r($tmp);
+                            echo "<br />-------------------<br />";
+                        }
+                    } else {
+                        $continue="1";
+                    }
+
+                    if("$continue"!="2") {   
+                        $first=$last;
+                        unset($last);
+                    }
+                } else {
+                    $continue="1";
+                }
             }
 
-            $continue=compare_data_program($first,$last,$current,$tmp);
+            $tmp=purge_program($tmp);
+            $tmp=optimize_program($tmp);
+            $data_plug=$tmp;
+             $data_plug[] = array(
+                    "time_start" => "240000",
+                    "time_stop" => "240000",
+                    "value" => "0"
+            );
 
-            if($GLOBALS['DEBUG_TRACE']) {
-               echo "<br />";
-               print_r($first);
-               echo "<br />";
-               print_r($last);
-               echo "<br />";
-               print_r($current);
-               echo "<br />";
-               print_r($tmp);
-               echo "<br />-------------------<br />";
-             }
-         } else {
-            $continue="1";
-         }
+            $data_plug[] = array(
+                    "time_start" => "end",
+                    "time_stop" => "end",
+                    "value" => "end"
+            );
 
-         if("$continue"!="2") {   
-            $first=$last;
-            unset($last);
-         }
-         } else {
-         $continue="1";
-         }
-      }
-
-
-      $tmp=purge_program($tmp);
-      $tmp=optimize_program($tmp);
-      if(count($tmp)>0) {
-         foreach($tmp as $new_val) {
-            if(!insert_program_value($plug_id,$new_val['time_start'],$new_val['time_stop'],$new_val['value'],$out)) return false;   
-         }
-      }
-   } else {
-      if($value!=0) {
-         if(!insert_program_value($plug_id,$start_time,$end_time,$value,$out)) return false;
-      }
-   }
-   return true;
+            $data_plug[] = array(
+                    "time_start" => "end",
+                    "time_stop" => "end",
+                    "value" => "end"
+            );
+        }
+    }
+   
+    if(count($tmp)>0) {
+            if(!insert_program_value($program[0]['selected_plug'],$tmp,$out)) $ret=false;   
+    }
+    return $ret;
 }
 // }}}
 
@@ -1304,16 +1316,23 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 
 // {{{ insert_program_value()
 // ROLE insert a program into the database
-// IN $plug_id          id of the plug
-//    $start_time       start time for the program
-//    $end_time         end time for the program
-//    $value            value of the program
+// IN $plugid           id of the plug
+//    $program          array containing programs datas
 //    $out              error or warning message
 // RET false is there is an error, true else
-function insert_program_value($plug_id,$start_time,$end_time,$value,&$out) {
-   $sql = <<<EOF
-INSERT INTO `programs`(`plug_id`,`time_start`,`time_stop`, `value`) VALUES('{$plug_id}',"{$start_time}","{$end_time}",'{$value}')
+function insert_program_value($plugid,$program,&$out) {
+$sql="";
+foreach($program as $prog) {
+    $start_time=$prog['time_start'];
+    $end_time=$prog['time_stop'];
+    $value=$prog['value'];
+
+   $sql = $sql . <<<EOF
+
+INSERT INTO `programs`(`plug_id`,`time_start`,`time_stop`, `value`) VALUES('{$plugid}',"{$start_time}","{$end_time}",'{$value}');
 EOF;
+}
+
    $db=db_priv_pdo_start();
    try {
         $db->exec("$sql");
@@ -1517,7 +1536,7 @@ EOF;
 
 
 // {{{ purge_program()
-// ROLE purge and check program 
+// ROLE purge,check and format program 
 // IN $arr        array containing value of the program
 // RET the array purged
 function purge_program($arr) {
@@ -1529,7 +1548,7 @@ function purge_program($arr) {
                $tmp_arr = array(
                   "time_start" => $val['time_start'],
                   "time_stop" => $val['time_stop'],
-                   "value" => $val['value']
+                  "value" => $val['value']
                );
                $tmp[]=$tmp_arr;
              }

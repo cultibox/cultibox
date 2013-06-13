@@ -9,7 +9,7 @@
 <?php } ?>
 
 <?php if((((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)))||((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0))) { ?>
-<div class="message">
+<div class="message" style="display:none">
         <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <img src="main/libs/img/informations.png" alt="" /><label class="info_title"><?php echo __('INFORMATION'); ?>:</label>
 <div class="info">
@@ -80,7 +80,7 @@
          <td><?php echo __('PLUG_MAX_POWER'); ?>:</td>
          <td>
             <?php if($i <= $GLOBALS['NB_MIN_PLUG']) { ?>
-                <label class="readonly" name="plug_power_maximal<?php echo $i; ?>"><?php echo $plug_power_max{$i}; ?>W</label> 
+                <label class="readonly" id="plug_power_maximal<?php echo $i; ?>"><?php echo $plug_power_max{$i}; ?>W</label> 
                 <?php if($plug_power_max{$i}==3500) { ?>
                     <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" />
                 <?php } else { ?>
@@ -146,7 +146,7 @@
                         <?php } ?>
                         </select>
                     <?php } else { ?>
-                    <label class="readonly" name="sensor_regul"><?php echo $plug_sensor{$i}; ?></label>
+                    <label class="readonly" id="sensor_regul<?php echo $i; ?>"><?php echo $plug_sensor{$i}; ?></label>
                 <?php } ?>
                </div>
          </td>
