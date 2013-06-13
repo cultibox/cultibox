@@ -638,6 +638,7 @@ td.welcome-link img{
        padding-left: 12px;
        padding-right: 12px;
        width: 20%;
+       z-index: 10000; 
 }
 
 
