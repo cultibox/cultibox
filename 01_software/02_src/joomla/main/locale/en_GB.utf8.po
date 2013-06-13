@@ -753,7 +753,7 @@ msgstr "Le nombre de changement est limité à 250 pour toutes les prises confon
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
-msgstr "Menu d'export de votre graphe"
+msgstr "Export your chart"
 
 msgid "PRINT_HIGHCHART"
 msgstr "Print the chart"

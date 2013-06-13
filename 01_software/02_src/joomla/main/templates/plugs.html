@@ -1,9 +1,9 @@
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
-    <div class="pop_up_message">
+    <div class="pop_up_message" style="display:none">
             <?php echo "$pop_up_message"; ?>
     </div>
 <?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
-       <div class="pop_up_error">
+       <div class="pop_up_error" style="display:none">
             <?php echo "$pop_up_error_message"; ?>
        </div>
 <?php } ?>
