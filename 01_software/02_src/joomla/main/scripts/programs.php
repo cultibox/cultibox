@@ -396,17 +396,46 @@ if(!empty($apply)&&(isset($apply))) {
             } 
                                                                   
 
+            $base=create_program_from_database($main_error);
+            $nb_prog=count($base);  
+            $count=-1;
+
+            foreach($prog as $program) {
+               if($nb_prog>=250) {
+                    break;
+               }
+               if(find_new_line($base,$program['start_time'])) {
+                    $nb_prog=$nb_prog+1;
+               } 
+        
+               if(find_new_line($base,$program['end_time'])) {
+                    $nb_prog=$nb_prog+1;
+               }
+               $count=$count+1;
+            }
+
             $ch_insert=true;
-            $nb_prog=count(create_program_from_database($main_error));
+            if($nb_prog>=250) {
+                if($nb_prog>250) {
+                   $count=$count-1;
+                }
+                $main_error[]=__('ERROR_MAX_PROGRAM');
+                $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_MAX_PROGRAM'));
+                $ch_insert=false;
+            }
 
             
-            //if($nb_prog<249) {
-            if(!insert_program($prog,$main_error))  $ch_insert=false;
-            //} else { 
-            //    $error['repeat_time']=__('ERROR_MAX_PROGRAM');
-            //    break;
-            //}
-            //$end_load = getmicrotime();
+            
+            if($count>-1) {
+                if($count+1!=count($prog)) {
+                    $tmp=array_chunk($prog, $count+1);
+                } else {
+                    $tmp[]=$prog;
+                }   
+                if(!insert_program($tmp[0],$main_error))  $ch_insert=false;
+            } else {
+                $ch_insert=false;
+            }
 
             if($ch_insert) {
                    $main_info[]=__('INFO_VALID_UPDATE_PROGRAM');

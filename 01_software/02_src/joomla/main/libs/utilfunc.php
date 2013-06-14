@@ -1798,7 +1798,7 @@ function check_sd_card($sd="") {
 // }}}
 
 
-// {{{  getmicrotime()()
+// {{{  getmicrotime()
 // ROLE    send a time to compute page loading
 //  IN     none
 // RET     time elapsed 
@@ -1815,7 +1815,7 @@ function getmicrotime(){
 
 
 
-// {{{  convert_SIZE()()
+// {{{  convert_SIZE()
 // ROLE    convert octet into kB,MB,GB
 //  IN     size to be converted
 // RET     size converted 
@@ -1827,7 +1827,7 @@ function convert_SIZE($size)
 // }}}
 
 
-// {{{  aff_variables()()
+// {{{  aff_variables()
 // ROLE    display all variables used and its memory
 //  IN     none
 // RET     none
@@ -1859,7 +1859,7 @@ function sizeofvar($var)
 // }}}
 
 
-// {{{  memory_stat()()
+// {{{  memory_stat()
 // ROLE    display memory usage for a PHP script
 //  IN     none
 // RET     none
@@ -1875,6 +1875,29 @@ function memory_stat()
    ' || MAX autorisé : '.
    ini_get('memory_limit') ;  ;
 }
+
+
+// {{{ find_new_ine()
+// ROLE    check if a start or end time for a program will add a new line into the plugv file
+//  IN     $tab     array containing data from already recorded program
+// RET     $time    time to check
+function find_new_line($tab, $time="") {
+    if(strcmp($time,"")==0) return false;
+
+    $ret=true;
+    $time=str_replace(":","",$time);
+    foreach($tab as $line) {
+        $base_time=substr(0,5,$line);
+        $hh=substr(0,2,$time);
+        $mm=substr(2,2,$time);
+        $ss=substr(4,2,$time);
+        $new_time=(3600*$hh)+(60*$mm)+$ss;
+        
+        if(strcmp($base_time,$new_time)==0) $ret=false;
+    }
+    return $ret;
+}
+// }}}
 
 
 ?>
