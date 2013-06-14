@@ -748,7 +748,7 @@ msgid "JUMPTO_PLUG"
 msgstr "Configurer la prise associée à ce programme"
 
 msgid "ERROR_MAX_PROGRAM"
-msgstr "Le nombre de changement est limité à 250 pour toutes les prises confondues, la limite a été atteinte"
+msgstr "Programme mis à jour mais le nombre maximal de changement, limité à 250 pour toutes les prises confondues, a été atteint. Votre programme peut ne pas être complet."
 
 
 # For the export module highchart part:

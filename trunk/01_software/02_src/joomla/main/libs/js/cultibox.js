@@ -100,11 +100,13 @@ $(document).ready(function() {
     } });
                 $(".message").dialog().parent().css('position', 'fixed');
     }); 
-   // Affichage des tooltips sur les éléments avec un title
+
    jQuery('#jquery-colour-picker-example select').colourPicker({ 
         ico:    'http://localhost:6891/cultibox/main/libs/img/jquery.colourPicker.gif', 
         title:    false
    });
+
+   // Affichage des tooltips sur les éléments avec un title
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
 
     //Portage pour Chrome:
