@@ -105,9 +105,9 @@ http://cultibox.googlecode.com/svn/wiki/img/update_windows_11.png
 
 = Lancement du logiciel =
 
-* Une icône du logiciel est disponible dans le menu "Démarrer" -> "Programme" -> "Cultibox".
-* Vous pouvez aussi entrer l'adresse suivante dans votre explorateur web : http://localhost:6891/cultibox/
-* Une icône Cultibox est disponible sur votre Bureau si vous avez autorisé sa création pendant la phase d'installation du logiciel 
+  * Une icône du logiciel est disponible dans le menu "Démarrer" -> "Programme" -> "Cultibox".
+  * Vous pouvez aussi entrer l'adresse suivante dans votre explorateur web : *http://localhost:6891/cultibox/*
+  * Une icône Cultibox est disponible sur votre Bureau si vous avez autorisé sa création pendant la phase d'installation du logiciel 
 
 = Désinstallation =
 
