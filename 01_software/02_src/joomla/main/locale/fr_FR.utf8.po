@@ -830,7 +830,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "Vous allez maintenant configurer une nouvelle prise."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choisir le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type 'autre' servant pour tous les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
+msgstr "Choisir le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour augmenter l'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>'autre' servant pour tous les autres type d'équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
 
 
 #For the calendar part:
