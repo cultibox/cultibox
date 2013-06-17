@@ -45,3 +45,6 @@ Puis à l'étape 3, en fonction du type choisit (pour les ventilateurs, humidifi
 
 http://cultibox.googlecode.com/svn/wiki/img/wizard6.png
 
+
+Vous pourrez recomencer l'opération pour toutes vos prises et ainsi visualiser les courbes de fonctionnement di vos programmes en vous rendant dans l'onglet "Programme" du menu principal.
+
