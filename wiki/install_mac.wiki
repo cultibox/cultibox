@@ -6,6 +6,10 @@
 = Introduction =
 Cette page décrit les étapes pour installer/désinstaller le logiciel dans un environnement Mac.
 
+Pour télécharger la dernière version du logiciel:
+  *  Suivre le lien qui apparaît en haut de l'interface. Ce lien n'est présent que si une nouvelle version est disponible.
+  *  Aller sur www.cultibox.fr puis dans l'onglet téléchargement, récupérer la version qui correspond à votre système d'exploitation.
+
 = Installation =
 
 Double-cliquez sur le package que vous venez de télécharger.
