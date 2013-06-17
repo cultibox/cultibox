@@ -21,22 +21,27 @@ Pour une aide plus détaillée, consultez la page suivante : [install_windows Wi
 
 Pour une aide plus détaillée, consultez la page suivante : [install_linux Linux Installation / Désinstallation du logiciel]
 
- * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fournit
- * Vous pouvez exécuter l'installation graphiquement en cliquant sur le programme (nommé "cultibox-linux_X.X.X.deb où les X représentent le numéro de version du logiciel)
- * Vous pouvez exécuter l'installation en mode console en exécutant la commande suivante avec des droits administrateurs: dpkg -i cultibox-linux_X.X.X.deb
- * Une fois installé, vous pouvez lancer le logiciel en cherchant "Cultibox" dans la barre de recherche des programmes Ubuntu ou en lancant un navigateur Web et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
+ * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fourni
+ * Vous pouvez installer le logiciel de deux manières différentes:
+    * vous pouvez exécuter l'installation graphiquement en cliquant sur le programme (nommé "cultibox-linux_X.X.X.deb où les X représentent le numéro de version du logiciel)
+    * vous pouvez exécuter l'installation en mode console en exécutant la commande suivante avec des droits administrateurs: *dpkg -i cultibox-linux_X.X.X.deb*
+ * Une fois installé, vous pouvez lancer le logiciel de deux manières différentes:
+    * en cherchant "Cultibox" dans la barre de recherche des programmes Ubuntu et en cliquant sur le logiciel "Cultibox"
+    * en lancant un navigateur Web (Firefox, Chrome, Internet Explorer...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
 
 == Mac==
 
 Pour une aide plus détaillée, consultez la page suivante : [install_mac Mac Installation / Désinstallation du logiciel]
 
- * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fournit
+ * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fourni
  * Lancez le programme d'installation (nommé "cultibox-macosx_X.X.X.exe où les X représentent le numéro de version du logiciel)
- * Une fois installé, vous pouvez lancer le logiciel en cliquant sur l'application Cultibox présente dans le répertoire Applications ou en lancant un navigateur Web et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
+ * Une fois installé, vous pouvez lancer le logiciel de deux manières différentes:
+    * en cliquant sur l'application Cultibox présente dans le répertoire Applications
+    * en lancant un navigateur Web et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
 
 = Configuration=
 
-Pour une aide plus détaillée, consulter la page suivante : [gui_soft_wizard Assistant de programmation]
+Pour une aide plus détaillée, consultez la page suivante : [gui_soft_wizard Assistant de programmation]
 
  * Insérez la carte SD dans l'ordinateur puis lancez le logiciel
  * Sur la page d'accueil, un lien apparaît vous guidant vers l'assistant qui vous permettra de configurer facilement le fonctionnement de vos prises 
@@ -49,7 +54,7 @@ Pour une aide plus détaillée, consulter la page suivante : [gui_soft_wizard As
 = Installation=
 
 == Préparation et installation de la Cultibox ==
-La Cultibox est prévue pour être installé à l'extérieur de l'environnement de culture. 
+La Cultibox est prévue pour être installée à l'extérieur de l'environnement de culture. 
 
 === Mise en route de la pile ===
 Ôter le film situé à coté du port USB. Cela permet à la pile de la Cultibox d'entrer en fonction.
