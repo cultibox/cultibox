@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "Stopping services..."
+if [ -f /Applications/cultibox/xamppfiles/xampp ]; then
+    /Applications/cultibox/xamppfiles/xampp stop
+fi
+echo "... OK"
+
+echo "Removing services files..."
+if [ -f /System/Library/LaunchDaemons/cultibox_apache.plist ]; then
+    sudo rm -Rf /System/Library/LaunchDaemons/cultibox_apache.plist
+fi
+
+if [ -f /System/Library/LaunchDaemons/cultibox_mysql.plist ]; then
+    sudo rm -Rf /System/Library/LaunchDaemons/cultibox_mysql.plist
+fi
+
+
+echo "Removing remaining files..."
+sudo rm -Rf /Applications/cultibox*
+echo "...OK"
+
