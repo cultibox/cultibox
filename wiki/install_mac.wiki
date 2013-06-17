@@ -21,11 +21,11 @@ Vous devez accepter la licence du logiciel pour continuer:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_3.jpg
 
-Cliquez ensuite sur suivant pour installer le logiciel pour tous les utilisateurs:
+Cliquez ensuite sur "Continuer" pour installer le logiciel pour tous les utilisateurs:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_4.png
 
-Cliquez sur "Installer". Pour que l'installation démarre, vous devez entrer votre nom d'utilisateur ainsi que votre mot de passe.
+Cliquez sur "Installer". Pour que l'installation démarre: 
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_5.jpg
 
