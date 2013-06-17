@@ -8,15 +8,36 @@
 L'assistant de configuration de l'interface logicielle vous permet de configurer simplement vos prises et leur programme.
 Une fois la carte SD branchée, pour accéder à cette partie, vous avez deux possibilités: 
  * Lancez le logiciel et s'il s'agit de votre première utilisation la page d'accueil vous guidera vers l'assistant de configuration à travers un lien à suivre
- * Lancez le logiciel et Si ce n'est pas votre première utilisation, vous trouverez l'onglet "Assistant" dans la barre de menu principale. Il vous suffira de cliquer dessus pour accèder à l'assistant de configuration 
-
-= Description de l'interface graphique =
+ * Lancez le logiciel et si ce n'est pas votre première utilisation, vous trouverez l'onglet "Assistant" dans la barre de menu principale. Il vous suffira de cliquer dessus pour accèder à l'assistant de configuration 
 
 == Configuration de la première prise ==
 
-Lors du lancement de l'assistant, celui-ci va vous guider afin de configurer la première prise. Par défaut, la première prise étant la plus puissante, elle sera configurée comme une lampe.
+Lors du lancement de l'assistant, celui-ci va vous guider afin de configurer la première prise. Par défaut, la première prise étant la plus puissante, elle sera configurée comme une lampe (étape 1 à 3):
+L'étape 4 vous permettra de choisir les heures auxquels il faudra allumer et etteindre la lampe:
+
+http://cultibox.googlecode.com/svn/wiki/img/wizard1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/wizard2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/wizard3.png
 
 
+Une fois ces horraires rentrés, vous avez plusieurs possibilités:
+ * Revenir à une étape précédente en cliquant sur le bouton "Précédent"
+ * Enregister la configuration de la prise 1 et fermer l'assistant pour commencer à utiliser le logiciel en mode "Avancé" en cliquant sur le bouton "Enregister et fermer l'assistant"
+ * Enregister la configuration de la prise 1 et commencer à configurer la prise 2 en cliquant sur le bouton: "Enregistrer et configurer une autre prise"
+
+http://cultibox.googlecode.com/svn/wiki/img/wizard4.png
+
+Il est à noter qu'à tout moment vous pouvez revenir sur une étape précédente en cliquant sur le bouton "Précédent" ou fermer l'assistant en cliquant sur le bouton "Fermer l'assistant"
 
 
 == Configuration des autres prises ==
+
+Si vous décider de configurer une autre prise après cela, les étapes 3 et 4 changeront légèrement:
+A l'étape 3, il vous sera demandé de choisr le type d'équipement de la prise:
+ 
+
+Puis à l'étape 4, en fonction du type choisit, il vous faudra rentrer la valeur de fonctionnement. Cette valeur servira a déclencher automatiquement l'équipement.
+Par exemple, si vous choisisez de configurer la deuxième prise comme un ventilateur vous pourrez choisir  à partir de quelle température il se mettra en route. Si vous choisissez 22° C, votre prise se mettre en marche dès que la température dépassera cette valeur et s'arrêtera si elle descend en dessous.
+
