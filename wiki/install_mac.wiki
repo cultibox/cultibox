@@ -48,4 +48,9 @@ http://cultibox.googlecode.com/svn/wiki/img/install_mac_8.jpg
 
 = Mise à jour =
 
+Pour mettre à jour votre logiciel, il vous suffira la nouvelle installation et de suivre les même étapes que pour l'installation. Le programme gèrera la mise à jour automatiquement.
+
 = Désinstallation =
+
+Pour désintaller le logiciel de votre ordinateur, il vous suffira de lancer en double-cliquant sur le fichier suivant: /Applications/cultibox/package/uninstall
+Le programme peut vous demander un mot de passe afin de réaliser la désintallation, il vous suffira de rentrer votre mot de passe utilisateur.
