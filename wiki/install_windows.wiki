@@ -12,17 +12,17 @@ Pour télécharger la dernière version du logiciel:
 
 = Installation =
 
-Double-cliquer sur le programme d'installation: 
+Double-cliquez sur le programme d'installation: 
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_1.png
 
-Cliquer sur "Exécuter".
+Cliquez sur "Exécuter".
 
-Sélectionner votre langue:
+Sélectionnez votre langue:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_2.png
 
-Cliquer sur suivant:
+Cliquez sur suivant:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_5.png
 
@@ -34,7 +34,7 @@ Vous pouvez aussi créer une icône du logiciel Cultibox sur votre bureau pour f
 
 http://cultibox.googlecode.com/svn/wiki/img/createiconwin.png
 
-Cliquer sur Installer pour procéder à l'installation:
+Cliquez sur "Installer" pour procéder à l'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_7.png
 
@@ -46,7 +46,7 @@ Pour que le logiciel soit pleinement fonctionnel, il est nécessaire de vider le
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_9.png
 
-Cliquer sur terminer:
+Cliquez sur terminer:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_10.png
 
@@ -61,7 +61,7 @@ Double-cliquer sur le programme d'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_1.png
 
-Cliquer sur "Exécuter".
+Cliquez sur "Exécuter".
 
 Sélectionner votre langue:
 
@@ -75,7 +75,7 @@ Pour sauvegarder votre ancienne configuration, cliquer sur oui:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_4.png
 
-Cliquer sur suivant:
+Cliquez sur suivant:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_5.png
 
@@ -83,7 +83,7 @@ Il vous faut accepter les termes du contrat pour continuer:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_6.png
 
-Cliquer sur Installer pour procéder à l'installation:
+Cliquez sur Installer pour procéder à l'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_7.png
 
@@ -91,7 +91,7 @@ Le logiciel s'installe:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_8.png
 
-Autoriser l'accès à Apache à votre réseau:
+Autorisez l'accès à Apache à votre réseau:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_12.jpg
 
@@ -99,7 +99,7 @@ Pour que le logiciel soit pleinement fonctionnel, il est nécessaire de vider le
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_9.png
 
-Cliquer sur terminer:
+Cliquez sur terminer:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_10.png
 
