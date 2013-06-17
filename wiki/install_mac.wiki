@@ -4,16 +4,16 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-Cette page décrit les étapes pour installer / désinstaller le logiciel dans un environnement Mac.
+Cette page décrit les étapes pour installer/désinstaller le logiciel dans un environnement Mac.
 
 = Installation =
 
-Double cliquer sur le package que vous venez de télécharger.
-La fenêtre suivante s'ouvre. Cliquer sur "Continuer":
+Double-cliquez sur le package que vous venez de télécharger.
+La fenêtre suivante s'ouvre. Cliquez sur "Continuer":
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_1.jpg
 
-Liser attentivement la licence du logiciel puis cliquer sur continuer:
+Lisez attentivement la licence du logiciel puis cliquez sur continuer:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_2.jpg
 
@@ -21,21 +21,31 @@ Vous devez accepter la licence du logiciel pour continuer:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_3.jpg
 
-Cliquer sur "Installer". Pour que l'installation démarre, vous devez entrer votre num d'utilisateur ainsi que votre mot de passe.
+Cliquez ensuite sur suivant pour installer le logiciel pour tous les utilisateurs:
 
-http://cultibox.googlecode.com/svn/wiki/img/install_mac_4.jpg
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_4.png
 
-Le logiciel s'installe:
+Cliquez sur "Installer". Pour que l'installation démarre, vous devez entrer votre nom d'utilisateur ainsi que votre mot de passe.
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_5.jpg
 
+Une identification est demandée pour installer les services nécéssaires au bon fonctionnement du logiciel, rentrez votre nom utilisateur et votre mot de passe:
+
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_6.png
+
+Le logiciel s'installe:
+
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_7.jpg
+
 Une fois l'installation terminée, la fenêtre suivante s'ouvre:
 
-http://cultibox.googlecode.com/svn/wiki/img/install_mac_6.jpg
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_8.jpg
 
 = Lancement du logiciel =
 
   * Une icone du logiciel est disponible dans le dossier application.
   * Vous pouvez aussi entrer l'adresse suivante dans votre explorateur web: http://localhost:6891/cultibox/
+
+= Mise à jour =
 
 = Désinstallation =
