@@ -44,7 +44,10 @@ http://cultibox.googlecode.com/svn/wiki/img/install_mac_8.jpg
 = Lancement du logiciel =
 
   * Une icone du logiciel est disponible dans le dossier application.
-  * Vous pouvez aussi entrer l'adresse suivante dans votre explorateur web: http://localhost:6891/cultibox/
+  * Vous pouvez aussi entrer l'adresse suivante dans votre explorateur web: 
+{{{
+http://localhost:6891/cultibox/
+}}}
 
 = Mise à jour =
 
