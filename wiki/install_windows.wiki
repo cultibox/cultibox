@@ -30,6 +30,10 @@ Il vous faut accepter les termes du contrat pour continuer:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_6.png
 
+Vous pouvez aussi créer une icône du logiciel Cultibox sur votre bureau pour faciliter son lancement:
+
+http://cultibox.googlecode.com/svn/wiki/img/createiconwindows.png
+
 Cliquer sur Installer pour procéder à l'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_7.png
@@ -111,4 +115,7 @@ http://cultibox.googlecode.com/svn/wiki/img/update_windows_11.png
 
 = Désinstallation =
 
-Pour désinstaller le logiciel, cliquez sur "Désinstaller Cultibox" présent dans le menu démarrer de Windows.
+Pour désinstaller le logiciel, cliquez sur "Désinstaller Cultibox" présent dans le menu démarrer de Windows et autorisez l'éxécution du programme.
+Laissez faire le programme de désintallation pour qu'il supprime tous les composants du logiciel Cultibox.
+
+Note: Si vous avez sauvegardé vos bases à l'aide des outils Cultibox ou que vous avez rajouté manuellement des fichiers, ces derniers ne seront pas supprimés et seront toujours présent dans le répertoire "C:\Cultibox". Il vous faudra les supprimer manuellement.
