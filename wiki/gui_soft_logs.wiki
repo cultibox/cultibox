@@ -5,9 +5,9 @@
 
 = Introduction =
 
-L'onglet log permet de visualiser les conditions climatique.
+L'onglet "Logs" permet de visualiser les conditions climatiques enregistrées par votre Cultibox.
 
-Pour l'ouvrir, cliquer sur "Display Logs":
+Pour l'ouvrir, cliquer sur l'onglet "Logs" du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_logs.png
 
