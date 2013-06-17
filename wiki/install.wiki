@@ -9,10 +9,13 @@ Quelques étapes suffisent pour se servir pleinement de la Cultibox.
 
 Pour une aide plus détaillée, consultez la page suivante : [install_windows Windows Installation / Désinstallation du logiciel]
 
- * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fournit
+ * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fourni
  * Lancez le programme d'installation (nommé "cultibox-windows_X.X.X.exe où les X représentent le numéro de version du logiciel)
- * Votre ordinateur peut vous demander si vous acceptez d'exécuter les services MySQL et Apache. Autorisez l'exécution de ces services
- * Une fois installé, vous pouvez lancer le logiciel en cliquant sur "Démarrer" puis "Cultibox" puis sur l'icône "Cultibox" ou en cliquant sur l'icône "Cultibox" présente sur le bureau si vous avez accepté d'en créer une lors de l'installation
+ * Votre ordinateur peut vous demander l'autorisation d'exécuter les services MySQL et Apache. Autorisez l'exécution de ces services
+ * Une fois installé, vous pouvez lancer le logiciel de trois façon différentes:
+    * en cliquant sur "Démarrer" puis "Cultibox" puis sur l'icône "Cultibox" 
+    * en cliquant sur l'icône "Cultibox" présente sur le bureau si vous avez accepté d'en créer une lors de l'installation
+    * en ouvrant un navigateur Web (Firefox, Chrome, Internet Explorer...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
 
 == Linux==
 
@@ -35,8 +38,8 @@ Pour une aide plus détaillée, consultez la page suivante : [install_mac Mac In
 
 Pour une aide plus détaillée, consulter la page suivante : [gui_soft_wizard Assistant de programmation]
 
- * Insérer la carte SD dans l'ordinateur puis lancez le logiciel
- * Un assistant s'ouvre. Il vous permet de configurer facilement le fonctionnement de vos prises 
+ * Insérez la carte SD dans l'ordinateur puis lancez le logiciel
+ * Sur la page d'accueil, un lien apparaît vous guidant vers l'assistant qui vous permettra de configurer facilement le fonctionnement de vos prises 
  * La première étape est la configuration de la première prise. Cette prise permet de piloter des éléments jusqu'à une puissance de 3500W. C'est la seule prise fournie avec le pack de départ qui permet de piloter une lampe HPS ou MH d'une puissance comprise 400W et 600W
  * Sélectionnez l'heure à laquelle la prise doit s'allumer et l'heure à laquelle elle doit s'éteindre
  * L'assistant vous propose ensuite de configurer la seconde prise. En fonction du type vous aurez différentes possibilités de régulation

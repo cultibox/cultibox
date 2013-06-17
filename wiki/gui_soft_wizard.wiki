@@ -5,4 +5,18 @@
 
 = Introduction =
 
+L'assistant de configuration de l'interface logicielle vous permet de configurer simplement vos prises et leur programme.
+Une fois la carte SD branchée, pour accéder à cette partie, vous avez deux possibilités: 
+ * Lancez le logiciel et s'il s'agit de votre première utilisation la page d'accueil vous guidera vers l'assistant de configuration à travers un lien à suivre
+ * Lancez le logiciel et Si ce n'est pas votre première utilisation, vous trouverez l'onglet "Assistant" dans la barre de menu principale. Il vous suffira de cliquer dessus pour accèder à l'assistant de configuration 
+
 = Description de l'interface graphique =
+
+== Configuration de la première prise ==
+
+Lors du lancement de l'assistant, celui-ci va vous guider afin de configurer la première prise. Par défaut, la première prise étant la plus puissante, elle sera configurée comme une lampe.
+
+
+
+
+== Configuration des autres prises ==
