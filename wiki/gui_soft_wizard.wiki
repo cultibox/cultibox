@@ -21,23 +21,24 @@ http://cultibox.googlecode.com/svn/wiki/img/wizard2.png
 
 http://cultibox.googlecode.com/svn/wiki/img/wizard3.png
 
+http://cultibox.googlecode.com/svn/wiki/img/wizard4.png
+
 
 Une fois ces horraires rentrés, vous avez plusieurs possibilités:
  * Revenir à une étape précédente en cliquant sur le bouton "Précédent"
  * Enregister la configuration de la prise 1 et fermer l'assistant pour commencer à utiliser le logiciel en mode "Avancé" en cliquant sur le bouton "Enregister et fermer l'assistant"
  * Enregister la configuration de la prise 1 et commencer à configurer la prise 2 en cliquant sur le bouton: "Enregistrer et configurer une autre prise"
 
-http://cultibox.googlecode.com/svn/wiki/img/wizard4.png
 
-Il est à noter qu'à tout moment vous pouvez revenir sur une étape précédente en cliquant sur le bouton "Précédent" ou fermer l'assistant en cliquant sur le bouton "Fermer l'assistant"
+Il est à noter qu'à tout moment vous pouvez revenir sur une étape précédente en cliquant sur le bouton "Précédent" ou fermer l'assistant sans enregistrer de changements en cliquant sur le bouton "Fermer l'assistant"
 
 
 == Configuration des autres prises ==
 
 Si vous décider de configurer une autre prise après cela, les étapes 3 et 4 changeront légèrement:
 A l'étape 3, il vous sera demandé de choisr le type d'équipement de la prise:
- 
 
-Puis à l'étape 4, en fonction du type choisit, il vous faudra rentrer la valeur de fonctionnement. Cette valeur servira a déclencher automatiquement l'équipement.
-Par exemple, si vous choisisez de configurer la deuxième prise comme un ventilateur vous pourrez choisir  à partir de quelle température il se mettra en route. Si vous choisissez 22° C, votre prise se mettre en marche dès que la température dépassera cette valeur et s'arrêtera si elle descend en dessous.
+http://cultibox.googlecode.com/svn/wiki/img/wizard5.png
+ 
+Puis à l'étape 4, en fonction du type choisit (pour les ventilateurs, humidificateurs, deshumidificateurs et chauffages), il vous faudra rentrer la valeur de fonctionnement. Cette valeur servira a déclencher automatiquement l'équipement. Par exemple, si vous choisisez de configurer la deuxième prise comme un ventilateur, vous pourrez choisir à partir de quelle température il se mettra en route. Si vous choisissez 22° C, votre prise se mettre en marche dès que la température dépassera cette valeur et s'arrêtera si elle descend en dessous.
 
