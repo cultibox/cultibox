@@ -32,7 +32,7 @@ http://cultibox.googlecode.com/svn/wiki/img/update_windows_6.png
 
 Vous pouvez aussi créer une icône du logiciel Cultibox sur votre bureau pour faciliter son lancement:
 
-http://cultibox.googlecode.com/svn/wiki/img/createiconwindows.png
+http://cultibox.googlecode.com/svn/wiki/img/createiconwin.png
 
 Cliquer sur Installer pour procéder à l'installation:
 
