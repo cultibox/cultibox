@@ -16,7 +16,15 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_logs.png
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_timeselection_month.png
 
-Les champs de sélection vous permettent de choisir le mois à afficher ainsi que de choisir le capteur.
+Les champs de sélection vous permettent de choisir:
+ * le mois à afficher
+ * l'année à afficher
+ * le capteur à afficher (par défaut le capteur 1)
+
+Voici un exemple de rendu d'affichage pour un mois des données d'une Cultibox:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log.png
+
 
 == Affichage d'un jour ==
 
