@@ -21,19 +21,30 @@ Les champs de sélection vous permettent de choisir:
  * l'année à afficher
  * le capteur à afficher (par défaut le capteur 1)
 
-Voici un exemple de rendu d'affichage pour un mois des données d'une Cultibox:
+Voici un exemple de rendu d'affichage pour un mois de données enregistrées par une Cultibox:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log_month.png
 
 
 == Affichage d'un jour ==
 
+L'affichage d'un jour permet de visualiser plus d'informations:
+ * Les données climatiques d'un capteur spécifique ou de tous les capteurs
+ * Le programme d'une prise
+ * La puissance consommée d'une prise spécifique ou de toutes les prises (il est à noter qu'il vous faudra configurer la puissance correspondante à l'équipement branché pour que cette courbe soit significative. Se référer à la partie de configuration des prises pour plus d'informations)
+
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_timeselection_day.png
 
-L'affichage d'un jour permet de visualiser plus d'informations:
- * Les données climatiques d'un capteur
- * Le programme d'une prise
- * La puissance consommée  
+La date rentrée doit être au format AAAA-MM-JJ. Pour vous aider dans le choix de la date, un calendrier est à votre disposition. Cliquez sur l'icône de l'horloge à coté du champ de selection du jour à afficher. Puis choisissez la date que vous voulez afficher dans le calendrier en cliquant simplement dessus. Le champ de sélection du jour à afficher est maintenant rempli:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_timepicker.png
+
+Voici un exemple d'affichage des différentes informations enregistrées par la CUltibox pour une journée:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log_day.png
+
+
+== Fonctionnalités des graphiques du menu Logs ==
 
 Si trop d'information apparaisent sur l'écran, vous pouvez en déselectionner certaines en cliquant sur leur nom dans le bas du graphique
 
