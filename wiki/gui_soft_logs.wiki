@@ -50,6 +50,9 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log_day.png
 
 Les graphiques de logs offrent de nombreuses fonctionnalités vous permettant d'accèder rapidement aux données qui vous intérèssent:
  * *Désactivationi/Activation des courbes*: si vous voulez cacher ou faire appraitre certaines courbes, il vous suffira de cocher/décocher la case se trouvant en face du nom de la courbe dans la légende en bas du graphique
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_hide.png
+
  * *Zoom temporel*: il est possible de zoomer sur une partie du graphique afin de n'afficher qu'une partie du temps écoulé et mieux se rendre compte des variations pendant cette période. Pour cela selectionnez simplement la zone qui vous intérèsse et le graphique fera le reste. Une fois qu'un zoom est réalisé, un bouton apparaitra en bas du graphique nommé "Annuler le zoom temporel". Il vous suffira de cliquer dessus afin de revenir au format d'origine du graphique
  * *Zoom des puissances et des logs*: Il est aussi possible de zoomer sur l'axe des ordonnées en utilisant les menus se trouvant juste en dessous du graphique. De la même façon, un boutton apparaitra en bas du graphique vous permettant de revenir au format d'origine 
  * *Export du graphique dans un fichier/Mode impréssion*: en haut à droite du graphique se trouve un menu vous permettant diverses actions. Une fois que vous avez cliquez sur ce menu, il vous est possible d'exporter votre graphique dans de nombreux format (PDF, JPG...). Il est aussi possible d'afficher le mode impréssion du graphique. Votre graphique sera alors affiché sans le reste de la page.
