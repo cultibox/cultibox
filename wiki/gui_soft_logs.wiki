@@ -12,6 +12,8 @@ Cliquez sur l'onglet "Logs" du menu principal afin d'accèder à ces fonctionnal
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_logs.png
 
 
+= Affichage des graphiques de Logs =
+
 == Affichage d'un mois ==
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_timeselection_month.png
@@ -39,10 +41,10 @@ La date rentrée doit être au format AAAA-MM-JJ. Pour vous aider dans le choix 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_timepicker.png
 
-Voici un exemple d'affichage des différentes informations enregistrées par la CUltibox pour une journée:
+
+Voici un exemple d'affichage des différentes informations enregistrées par la Cultibox pour une journée:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log_day.png
-
 
 == Fonctionnalités des graphiques du menu Logs ==
 
