@@ -72,16 +72,21 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_print.png
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_next_previous.png
 
 == Interpolation ==
-Il arrive que la Cultibox n'enregistre pas une ou plusieurs données climatiques. Le Logiciel Cultibox interpole les points manquants. Cette interpolation est limitée à une période de 20 minutes.
+Il arrive que la Cultibox n'enregistre pas une ou plusieurs données climatiques. Le Logiciel Cultibox interpole les points manquants en fonction des derniers points enregistrés par la Cultibox. Cette interpolation est limitée à une période de 20 minutes, cela signifie que si la Cultibox n'enregistre pas de points pendant une période dépassant 20 minutes, le graphique climatique n'affichera rien et vous pourrez voir appraitre des espaces vides dans vos graphiques.
 
 = Gestion de vos données climatiques =
-Cette section permet de gérer les données de la base.
+Cette section permet de gérer les données enregistrées dans le logiciel de la Cultibox:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_datagestion.png
 
-== Importer les logs sur deux mois ==
-Pour des questions de rapidité, le logiciel ne charge que les données climatique et de puissance du mois en cours.
-Pour charger des logs plus ancien, vous pouvez cliquer sur le boutton "Importer les logs"
+== Importer les logs  ==
+Pour des questions de rapidité, lorsque vous chargez la page des logs et qu'une carte SD est branchée, le logiciel chargera les données enregistrées sur les deux derniers mois. Une fois ces données enregistrées, le logiciel n'enregistrera plus rien automatiquement pendant une période de 30 minutes. Si vous voulez enregistrer des données sur une période plus ancienne ou que vous voulez recharger les données avant la fin  des 30 minutes, il vous faudra utiliser la fonction d'import. En cliquant sur le bouton "Importer les logs", le logiciel chargera les données présentes sur la carte SD en fonction du nombre de mois que vous lui avez demandé de rechercher (valeurs possibles de : 2, 3, 6 et 12 mois).
 
 == Supprimer les logs ==
-Si la base de donnée est très grosse et que vous voulez libérer de l'espace sur vos disque, deux boutons de suppression des logs permettent de supprimer vos logs.
+Si la base de donnée est très grosse et que vous voulez libérer de l'espace sur vos disque, deux boutons de suppression des logs permettent de supprimer vos logs: le bouton de suppréssion des logs de température et d'humidité "Supprimer les logs" et le bouton de suppréssion des logs de puissance "Supprimer les logs de puissance".
+
+En cliquant sur l'un de ces boutons vous supprimerez de façon définitive les logs enregistrés dans vos bases, libérant ainsi de l'espace sur vos disques et gagnant possiblement en rapidité d'éxécution du logiciel.
+
+== Exporter les logs ==
+Il est possible d'exporter les logs enregistrés dans votre base (puissance, humidité et température), au format csv (format lisible par un tableau: Excell, Openoffice...), afin d'en avoir une copie de sauvegarde ou de pouvoir les réutiliser d'une autre manière. En cliquant sur le bouton "Export de vos logs", vous pourrez télécharger le fichier contenant vos logs de température et d'humidité et l'enregistrer sur votre ordinateur. En cliquant sur le bouton "Export de vos logs de puissance", vous réaliserez la même opération pour les logs de puissance.
+
