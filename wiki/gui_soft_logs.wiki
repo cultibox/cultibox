@@ -50,7 +50,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log_day.png
 
 Si trop d'information apparaisent sur l'écran, vous pouvez en déselectionner certaines en cliquant sur leur nom dans le bas du graphique
 
-=== Interpolation ===
+== Interpolation ==
 Il arrive que la Cultibox n'enregistre pas une ou plusieurs données climatiques. Le Logiciel Cultibox interpole les points manquants. Cette interpolation est limitée à une période de 20 minutes.
 
 = Gestion de vos données climatiques =
