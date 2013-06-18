@@ -5,17 +5,12 @@
 
 = Introduction =
 
-L'onglet "Logs" permet de visualiser les conditions climatiques enregistrées par votre Cultibox.
-
-Pour l'ouvrir, cliquer sur l'onglet "Logs" du menu principal:
+L'interface graphique des Logs permet de sélectionner et d'afficher dans un graphique les données de température, d'humidité et de puissance enregistrée par la Cultibox pour une période mensuelle ou journalière.
+Elle permet aussi de gérer (exporter ou importer) vos logs enregistrés par la Cultibox sur la carte SD pour les stocker dans le logiciel.
+Cliquez sur l'onglet "Logs" du menu principal afin d'accèder à ces fonctionnalités:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_logs.png
 
-= Description de l'interface graphique =
-
-L'interface graphique permet de sélectionner les données à visualiser.
-
-Vous pouvez choisir d'afficher les données d'un mois ou d'un jour. Pour cela, choisissez le radio-boutton correspondant.
 
 == Affichage d'un mois ==
 
