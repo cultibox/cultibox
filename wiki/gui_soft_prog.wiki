@@ -82,12 +82,15 @@ Il faut donc programmer trois actions. La première action est la suivante (N'ou
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_6.jpg
 
 La deuxième action:
+
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.jpg
 
 Et la dernière action:
+
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_7.jpg
 
 Ce qui donne le résultat suivant:
+
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_8.jpg
 
 <wiki:comment>
