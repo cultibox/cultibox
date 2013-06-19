@@ -4,21 +4,34 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-L'onglet cout permet d'estimer puis de calculer le cout de votre installation. Il agit comme un consometre théorique puis pratique
-
-Pour acceder à l'onglet, cliquer sur "Cost" :
+L'onglet coût permet d'estimer puis de calculer le coût de reviens de votre installation. Il agit comme un consomètre théorique puis pratique.
+Pour calculer le coût de votre installation, cliquez sur l'onglet "Coût" du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_cost.png
 
+Pour un bon fonctionnement de l'algorithme, il est nécéssaire de bien configurer vos prises (notamment de renseigner la puissance de l'équipement branché sur la/les prise(s))
+Voir le chapitre [gui_soft_conf Configuration]
+
 = Parametrage =
-Pour un bon fonctionnement de l'algorithme, il est nécéssaire de bien configurer vos prises.
-Voir le chapitre [https://code.google.com/p/cultibox/wiki/gui_soft_conf Configuration]
+
+Une fois sur l'onglet de calcul du coût de votre installation, vous arriverez sur une page vous permettant de rentrer de nombreuses informations:
+
+Vous pouvez à partir de cette page:
+ * Déclarer le jour de départ et de fin permettant de calculer le coût sur la période voulue (un jour, trois mois, une année...)
+ * Afficher le prix théorique et réél: pour une prise spécifique, pour toutes les prises confondue afin d'avoir le coût total de l'installation ou encore pour chaque prise
+ * Configurez votre type d'abonnement électrique: Heures creuses/Heures pleines ou Standard
+ * Dans le cas d'un abonnement en Heures creuses/Heures pleines, vous pourrez aussi définir les heures délimitant ces différentes périodes
+ * Configurez le prix de du kilowattheure
+
+Une fois cela réalisé, vous n'aurez plus qu'à cliquer sur le bouton "Afficher" pour que le logiciel calcul le coput théorique et réél de la consommation de votre installation.
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cost_param.png
+
 
 = Sélection des données à voir =
 
 La première partie de l'onglet permet de sélectionner les données à visualiser.
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cost_param.png
 
 = Remarque sur le calcul du cout =
 
