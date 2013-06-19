@@ -399,6 +399,7 @@ if(!empty($apply)&&(isset($apply))) {
             $base=create_program_from_database($main_error);
             $nb_prog=count($base);  
             $count=-1;
+            $tmp_prog=array();
 
             foreach($prog as $program) {
                if($nb_prog>=250) {
@@ -428,11 +429,11 @@ if(!empty($apply)&&(isset($apply))) {
             
             if($count>-1) {
                 if($count+1!=count($prog)) {
-                    $tmp=array_chunk($prog, $count+1);
+                    $tmp_prog=array_chunk($prog, $count+1);
                 } else {
-                    $tmp[]=$prog;
+                    $tmp_prog[]=$prog;
                 }   
-                if(!insert_program($tmp[0],$main_error))  $ch_insert=false;
+                if(!insert_program($tmp_prog[0],$main_error))  $ch_insert=false;
             } else {
                 $ch_insert=false;
             }
