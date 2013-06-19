@@ -1,5 +1,7 @@
 Cultibox (1.1.24) precise; urgency=low
     + Ajout d'un script de désintallation pour Mac Os X
+    + Correction d'un problèe de nom de variable dans la gestion des programmes cycliques
+    + Les résumés des actions des prises sont tronquées au bout de 40 actions
 
 -- Yann Genevois <yann.genevois@gmail.com> Mon Jun 17 14:32:30 CEST 2013
 

@@ -486,7 +486,25 @@ for($i=0;$i<$nb_plugs;$i++) {
         case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DEHUMIDIFIER'); break;
         default: $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
     }
-    $resume=format_data_sumary($plugs_infos);
+}
+
+
+$resume=format_data_sumary($plugs_infos);
+$tmp_resume[]="";
+foreach($resume as $res) {
+      $tmp_res=explode("<br />",$res);
+      if(count($tmp_res)>40) {
+          $tmpr=array_chunk($tmp_res,39);
+          $tmpr[0][]="[...]";
+          $tmp_resume[]=implode("<br />", $tmpr[0]);
+      } else {
+          $tmp_resume[]=$res;
+      }
+}
+
+if(count($tmp_resume)>0) {
+    unset($resume);
+    $resume=$tmp_resume;
 }
 
 
