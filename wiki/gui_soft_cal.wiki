@@ -34,6 +34,8 @@ Il est à noter que dans la Cultibox, seul les champs "Sujet" et "Remarque" ne s
 
 Pour modifier ou supprimer une annotation, il vous suffit de cliquer dessus. Une fenêtre va alors apparaitre avec deux boutons: un bouton "Editer l'annotation" (pour modifier une annotaion) et un bouton "Supprimer l'annotation" (pour supprimer définitivement l'annotation).
 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_edit.png
+
 Si vous:
  * Editez une annotation: une autre fenêtre s'ouvrira ressemblant exactement à la fenêtre de création mais contenant les informations déja enregistrées, vous permettant ainsi de les modifier
  * Supprimez une annotation: une confirmation vous sera demandé avec de supprimer définitivement une annotation
@@ -49,5 +51,7 @@ Deux actions sont encore possibles sur les annotations déja créées:
 
 = Effacer toutes les annotations = 
 
-En bas de la pga du calendrier se trouve un bouton nommé "Supprimer toutes les annotations enregistrées". En cliquant dessus et après confirmation, vous effacerez de façon définitive toutes les annotations que vous avez rentré manuellement. Les annotations définies dans les fichiers xml (comme le calendrier lunaire) ne seront pas supprimées.
+En bas de la page du calendrier se trouve un bouton nommé "Supprimer toutes les annotations enregistrées". En cliquant dessus et après confirmation, vous éffacerez de façon définitive toutes les annotations que vous avez rentré manuellement. Les annotations définies dans les fichiers xml (comme le calendrier lunaire) ne seront pas supprimées.
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_del.png
 
