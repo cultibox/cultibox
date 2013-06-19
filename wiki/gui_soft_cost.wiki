@@ -27,11 +27,9 @@ Une fois cela réalisé, vous n'aurez plus qu'à cliquer sur le bouton "Afficher
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cost_param.png
 
+Il est à noter que la configuration utilisée pour calculer le graphique en cours est visualisable en passant simplement la souris sur le pingouin à coté du graphique:
 
-= Sélection des données à voir =
-
-La première partie de l'onglet permet de sélectionner les données à visualiser.
-
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cost_resume.png
 
 = Remarque sur le calcul du cout =
 
