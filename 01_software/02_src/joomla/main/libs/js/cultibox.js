@@ -74,7 +74,7 @@ $(document).ready(function() {
             var wid = 325;
         }
 
-        $( ".message" ).dialog({ width: wid, resizable: true, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", dialogClass: "dialog_cultibox", position: [x,y], dragStop: function( event, ui ) { 
+        $( ".message" ).dialog({ width: wid, resizable: true, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", dialogClass: "dialog_message", position: [x,y], dragStop: function( event, ui ) { 
             if(data!="") { 
                 var tmp = $(".message").dialog( "option", "position" );
                 var width = $(".message").dialog( "option", "width" );
