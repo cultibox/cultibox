@@ -15,7 +15,7 @@ Une fenêtre avec le mois en cours s'affiche à l'écran:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_main.png
 
-On retrouve sur cette fenêtre l'ensemble des annotations que vous avez créé et les annotations définies par l'utilisation avancée de fichiers xml (pour plus d'informationi voir [gui_soft_cal_lunar   ])
+On retrouve sur cette fenêtre l'ensemble des annotations que vous avez créé et les annotations définies par l'utilisation avancée de fichiers xml (pour plus d'informationi voir [gui_soft_cal_lunar])
 
 = Ajouter une annotation =
 
