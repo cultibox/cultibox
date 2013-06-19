@@ -643,7 +643,11 @@ td.welcome-link img{
 
 
 .dialog_cultibox .ui-widget-header {
-    background: #4054A4;
+    background: #45549F;
+}
+
+.dialog_message .ui-widget-header {
+    background: #5BA440;
 }
 
 .readonly {
