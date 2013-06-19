@@ -10,7 +10,6 @@ Pour calculer le coût de votre installation, cliquez sur l'onglet "Coût" du me
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_cost.png
 
 Pour un bon fonctionnement de l'algorithme, il est nécéssaire de bien configurer vos prises (notamment de renseigner la puissance de l'équipement branché sur la/les prise(s))
-Voir le chapitre [gui_soft_conf Configuration]
 
 = Parametrage =
 
