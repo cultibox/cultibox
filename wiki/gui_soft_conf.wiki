@@ -58,7 +58,7 @@ En cliquant sur "Carte SD", l'onglet change:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_SD.png
 
-En cliquant sur le bouton, vous pouvez choisir de formater votre carte. Il est conseiller de conserver la carte SD fourni avec le pack de départ. 
+Afin de formater une carte SD pour la rendre compatible Cultibox, vous devez sélectionner la carte dans la liste et cliquer sur le bouton "Formater la carte". Il est conseiller de conserver la carte SD fourni avec le pack de départ. 
 Si vous perdez votre carte, vous pouvez en acheter une. La carte SD doit être d'une capacité de 2Go au maximum (La Cultibox ne reconnait pas les cartes SD Haute Capacité SDHC) et elle doit être formatée en FAT16. Il est possible d'utiliser une carte SD de plus grande capacité mais il vous faudra:
  * Créer une partition FAT16
  * Faire en sorte que cette partition ne dépasse pas 2GO
