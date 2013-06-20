@@ -22,7 +22,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 
 Puis sur "Configuration de la Cultibox".
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.png
 
 Dans le champ "Nombre de prises de votre système:" sélectionner le nouveau nombre total de prise.
 

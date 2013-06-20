@@ -21,13 +21,12 @@ La section "Interface" permet de modifier les différents paramètres du site we
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_interface.png
 
 Dans cette section vous pouvez:
- * Changer la langue
  * Définir les couleurs des différentes courbes
- * Sélectionner l'échelle des graphiques
  * Activer / Désactiver l'afichage des pop-ups
- * Activer la vérification automatique des mises à jours. Il est conseiller de laisser cette option activée.
- * Définir le nombre de mois pour la recherche des logs
- * Définir si vous désirez nous envoyer des information pour le dévellopement
+ * Activer la vérification automatique des mises à jours. Il est conseiller de laisser cette option activée. Si cette option est activée, le logiciel vérifiera sur le site officiel de la Cultibox si une nouvelle version est disponible et vous préviendra si c'est le cas.
+ * Activer ou non l'utilisation de la régulation secondaire, pour plus d'information se reporter à la section [gui_soft_second_regul Régulation secondaire]
+ * Définir si vous désirez nous envoyer des information pour aider au dévellopement, les informations envoyés se basent sur l'utilisation de l'interface Web: la version et le nom de votre navigateur, les version du logiciel et fu firmware de votre Cultibox... ceci afin définir quelles technologies nous devons privilégié lors de notre développement et de facilement débuguer les erreurs découvertes
+
 
 == Configuration de la Cultibox ==
 
@@ -36,10 +35,13 @@ En cliquant sur "Cultibox", l'onglet change:
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.png
 
 Dans cette section vous pouvez:
- * Définir à quelle fréquence la Cultibox enregistre les conditions climatique. 
- * Définir à quelle fréquence la Cultibox enregistre l'état des prises. 
+ * Définir à quelle fréquence la Cultibox enregistre les conditions climatique
+ * Définir à quelle fréquence la Cultibox enregistre l'état des prises
  * Indiquer le nombre de prise de votre système
- * Définir la fréquence de mise à jour des prises. Si vous avez d'autres équipements fonctionnants en 433MHz, vous pouvez choisir de ne plus piloter les prises en permanence.
+ * Définir la fréquence de mise à jour des prises. Si vous avez d'autres équipements fonctionnants en 433MHz, vous pouvez choisir de ne plus piloter les prises en permanence
+
+Pour configurer plus finement les prises (le type, la régulation, etc...), reportez vous à la section [gui_soft_plug Configuration des prises]
+
 
 == Configuration de l'alarme ==
 
@@ -47,7 +49,7 @@ En cliquant sur "Alarme", l'onglet change:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_alarme.png
 
-L'alarme de la Cultibox peut être configurée dans cette section.
+L'alarme de la Cultibox peut être configurée dans cette section. 
 
 
 == Configuration de la carte SD ==
@@ -58,31 +60,16 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_SD.png
 
 En cliquant sur le bouton, vous pouvez choisir de formater votre carte. Il est conseiller de conserver la carte SD fourni avec le pack de départ. 
 Si vous perdez votre carte, vous pouvez en acheter une. La carte SD doit être d'une capacité de 2Go au maximum (La Cultibox ne reconnait pas les cartes SD Haute Capacité SDHC) et elle doit être formatée en FAT16. Il est possible d'utiliser une carte SD de plus grande capacité mais il vous faudra:
-* Créer une partition FAT16
-* Faire en sorte que cette partition ne dépasse pas 2GO
-* Formater la carte
+ * Créer une partition FAT16
+ * Faire en sorte que cette partition ne dépasse pas 2GO
+ * Formater la carte
 
 
-= Configuration des prises =
+Le formatage d'une carte SD afin de la rendre compatible avec la Cultibox consiste à créer les fichiers nécéssaire au bon fonctionnement de votre équipement:
+ * Copie des fichiers logs s'ils sont manquant (attention: formater une carte SD qui contient des logs peut causer la destruction de ces logs)
+ * Copie des fichiers de firmware pour la Cultibox
+ * Copie des différents fichiers de configuration nécéssaire au fonctionnement de la Cultibox
+ * Copie des fichiers supplémentaires: icones, pages html...
 
-Pour acceder à l'onglet , cliquer sur "Configuration":
+Cette opération peut prendre un certain temps, la patience est de rigueur.
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
-
-Vous pouvez modifier la configuration des prises dans cet onglet.
-
-Sélectionner la prise que vous souhaitez configurer.
-
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_empty.png
-
-Remplir les différents champs:
- * État de la prise : Vous pouvez désactiver la prise. Dans ce cas elle n'apparaitra plus dans les programmes ni dans les graphe de puissance.
- * Nom de la prise : Il est possible de renommer la prise en remplissant le champ.
- * Type de prise : C'est ici qu'on indique au programme si la prise est une prise 1000W ou une prise 3500W. *Il faut absolument remplir correctement ce champ, sinon la prise ne sera pas correctement pilotée par la Cultibox.*
- * Type d'élément branché sur la prise : En indiquant le type d'élément branché sur la prise, vous indiquez quelle variable d'environnement (Température ou humidité) sera impactée par la mise en route de cette prise. Si l'élément branché n'est pas une lampe, n'impacte pas la température, n'impacte pas l'humidité, veuillez choisir le type "Inconnu".
- * Puissance consommée : En indiquant la puissance consommée vous permettez au logiciel de calculer correctement le cout de votre installation.
- * Tolérance de la prise : Indiquer la tolérance acceptée pour la régulation de cette prise. Pour plus d'information voir [gui_soft_prog_regul Régulation]
- * Capteur utilisé pour la régulation : La régulation est effectuée en fonction des valeurs données par un capteur. Choisissez dans ce champ le capteur.
- * Régulation secondaire de la prise : Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécéssaire d'activer ce champ. Pour plus d'information voir [gui_soft_prog_regul Régulation].  
-
-Cliquer sur "Enregistrer la configuration" pour dauvegarder vos modifications.
