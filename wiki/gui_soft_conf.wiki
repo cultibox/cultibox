@@ -33,7 +33,7 @@ Dans cette section vous pouvez:
 
 En cliquant sur "Cultibox", l'onglet change:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.png
 
 Dans cette section vous pouvez:
  * Définir à quelle fréquence la Cultibox enregistre les conditions climatique. 
@@ -45,7 +45,7 @@ Dans cette section vous pouvez:
 
 En cliquant sur "Alarme", l'onglet change:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_alarme.PNG
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_alarme.png
 
 L'alarme de la Cultibox peut être configurée dans cette section.
 
@@ -54,7 +54,7 @@ L'alarme de la Cultibox peut être configurée dans cette section.
 
 En cliquant sur "Carte SD", l'onglet change:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_SD.PNG
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_SD.png
 
 En cliquant sur le bouton, vous pouvez choisir de formater votre carte. Il est conseiller de conserver la carte SD fourni avec le pack de départ. 
 Si vous perdez votre carte, vous pouvez en acheter une. La carte SD doit être d'une capacité de 2Go au maximum (La Cultibox ne reconnait pas les cartes SD Haute Capacité SDHC) et elle doit être formatée en FAT16. Il est possible d'utiliser une carte SD de plus grande capacité mais il vous faudra:
