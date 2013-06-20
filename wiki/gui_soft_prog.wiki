@@ -91,7 +91,7 @@ Astuce:
 La régulation permet de changer l'état d'une prise en fonction d'une condition climatique.
 
 Pour qu'une prise puisse être utilisée en régulation il faut qu'elle soit configurée. Pour ce faire:
- * Cliquez sur l'onglet "Prise" du menu principal  et sélectionnez le numéro de la prise à configurer dans la liste déroulante, ou alors, depuis la page des programmes, utilisez le bouton "Configurer la prise associée à ce programme" qui vous permet de passer directement à la configuration de la prise du programme sélectionné:
+ * Cliquez sur l'onglet "Prise" du menu principal  et sélectionnez le numéro de la prise à configurer dans la liste déroulante, ou alors, depuis la page des programmes, utilisez le bouton "Configurer la prise associée à ce programme" qui vous permet de passer directement à la configuration de la prise du programme sélectionné: (pour plus d'informations vous pouvez aussi vous reporter à la section [gui_soft_plugs Configuration des prises]):
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_jump_plug.png
 
@@ -132,19 +132,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_8.png
 <wiki:comment>
 
 == Régulation secondaire ==
-La régulation secondaire a un fonctionnement plus particulier. Une fois activée son fonctionnement est continu.
-La régulation secondaire permet de d'éteindre ou de mettre en route une prise quand une condition est atteinte.
-Par exemple: Un ventilateur est branchée sur une prise. La régulation classique permet d'allumer ou d'éteindre la prise en fonction de la température. La régulation secondaire permet de forcer l'allumage ou l'extinction de la prise en fonction de l'humidité. Cela permet, par exemple, de forcer la mise en route du ventilateur si l'humidité devient trop forte.
+La régulation secondaire a un fonctionnement plus particulier. Pour vous familiariser avec son fonctionnement, reportez vous à la section [gui_soft_second_regul Régulation secondaire]
 
-Pour configurer la régulation secondaire:
- * Dans l'onglet Prise
- * Sélectionner la prise
- * Activer la régulation secondaire de la prise
- * Paramétrer 
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_5.png
-
-= Bug =
- * issue 155 Impossible d'utiliser la régulation secondaire
-
-</wiki:comment>  
+= Gestion des programmes =
