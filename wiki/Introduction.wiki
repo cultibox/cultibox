@@ -22,6 +22,7 @@ Cette documentation est en constante amélioration. Si vous avez des questions p
     * [install_Plug Ajout d'une nouvelle prise 1000W ou 3500W]
     * [install_sensor Ajout d'un capteur]
   * [interface_logiciel Interface logiciel]
+    * [gui_soft_welcome Accueil]
     * [gui_soft_wizard Assistant de programmation]
     * [gui_soft_logs Relevé des conditions climatique]
     * [gui_soft_prog Programmation]
