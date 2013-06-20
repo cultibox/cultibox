@@ -15,15 +15,15 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs.png
 
 Pour configurer une prise il vous faudra d'abord choisir le numéro de la prise à configurer en utilisant la lite déroulante à coté du titre: "Configurer la prise numéro". Vous pouvez sélectionner une seule prise ou afficher toutes les prises d'un coup en sélectionnant l'entrée: "Toutes les prises":
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs_main.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugs_main.png
 
 Vous pouvez réaliser plusieurs modifications, changez de numéro de prises (etc...) mais vos changements ne seront effectif que si vous cliquez sur le bouton "Enregistrer la configuration" en bas de la page: 
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs_record.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugs_record.png
 
 Vous pouvez aussi enregistrer vos changements et directement passer au programme associé de la prise en cliquant sur le bouton "Sauvegarder les changements et configurer le programme de la prise", présent à côté de chaque prises:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs_jump.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugs_jump.png
 
 
 Pour finir il est à noter que vos modifications ne seront pris en compte que si vous avez branché votre carte SD avant de réaliser ces changements. Vous pouvez brancher une carte SD après avoir enregistré vos changements mais pour en voir les effets dans la Cultibox, il faudra rafraichir la page (cliquez sur l'ONglet prise) pour que le logiciel écrive ces changements sur la carte.
