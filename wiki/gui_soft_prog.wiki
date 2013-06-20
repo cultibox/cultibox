@@ -131,8 +131,6 @@ Ce qui donne le résultat suivant:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_8.png
 
-<wiki:comment>
-
 == Régulation secondaire ==
 La régulation secondaire a un fonctionnement plus particulier. Pour vous familiariser avec son fonctionnement, reportez vous à la section [gui_soft_second_regul Régulation secondaire]
 
