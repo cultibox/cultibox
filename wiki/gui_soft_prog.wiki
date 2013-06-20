@@ -139,7 +139,7 @@ La régulation secondaire a un fonctionnement plus particulier. Pour vous famili
 
 La dernière section porte sur les fonctionnalités offerte quant à la gestion des vos programmes/prises. Dans l'onglet des programmes, tout en bas, vous avez accès à ces fonctionnalités:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_manage.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_manage.png
 
 Il vous est donc possible:
 
