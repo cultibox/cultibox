@@ -94,8 +94,10 @@ Astuce:
 La régulation permet de changer l'état d'une prise en fonction d'une condition climatique.
 
 Pour qu'une prise puisse être utilisée en régulation il faut qu'elle soit configurée. Pour ce faire:
- * Ouvrir l'onglet "Prise"
- * Dans la liste déroulante, sélectionner la prise
+ * Cliquez sur l'onglet "Prise" du menu principal  et sélectionnez le numéro de la prise à configurer dans la liste déroulante, ou alors, depuis la page des programmes, utilisez le bouton "Configurer la prise associée à ce programme" qui vous permet de passer directement à la configuration de la prise du programme sélectionné:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_jump_plug.png
+
  * Définir le type de prise :
    * Ventilateur: lorsque la prise est allumée, la température baisse
    * Chauffage: lorsque la prise est allumée, la température augmente
@@ -105,7 +107,7 @@ Pour qu'une prise puisse être utilisée en régulation il faut qu'elle soit con
 
 Le type de la prise détermine le fonctionnement de la régulation. Par exemple, si vous choisissez "Chauffage", la prise sera allumée lorsque la température sera inférieur à la consigne. SI vous choisissez "humidificateur", la prise sera allumée lorsque l'humidité sera inférieur à la consigne.
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.png
 
 == Combinaison ==
 Il est tout à fait possible de combiner plusieurs actions dans la même journée.
