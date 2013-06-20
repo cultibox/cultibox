@@ -51,10 +51,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_2.png
 
 Quelques remarques sur la programation des actions:
 
- * Si vous sélectionnez une heure de fin qui est avant l'heure de début, le programme appliquera l'état choisi de la façon suivante:
-  * De heure de début à minuit
-  * De minuit à heure de fin
-Cette fonction est pratique pour allumer une lampe de 20h à 4h.
+ * Si vous sélectionnez une heure de fin qui est avant l'heure de début, le programme appliquera l'état choisi de la façon suivante: de heure de début à minuit et de minuit à heure de fin. Cette fonction est pratique pour allumer une lampe de 20h à 4h.
  * Vous pouvez utiliser l'assistant de choix d'heure. En cliquant sur l'icône de l'horloge à coté des heures de début et de fin, un assistant s'ouvrira vous permettant de choisir facilement les heures voulues (les heures doivent être au format HH:MM:SS):
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_timehelper.png
