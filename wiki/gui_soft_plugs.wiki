@@ -5,16 +5,40 @@
 
 = Introduction =
 
+La configuration des prises de définir les informations relatives (type, tolérance...) de chaque prises. Ces informations influencent la façon dont la Cultibox gèrera les programmes.
+Pour accéder à la configuration des prises, cliquez sur l'onglet "Prises" du menu principal:
 
-= Configuration des prises =
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs.png
 
-Pour acceder à l'onglet , cliquer sur "Configuration":
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
+= Fonctionnement de la page =
 
-Vous pouvez modifier la configuration des prises dans cet onglet.
+Pour configurer une prise il vous faudra d'abord choisir le numéro de la prise à configurer en utilisant la lite déroulante à coté du titre: "Configurer la prise numéro". Vous pouvez sélectionner une seule prise ou afficher toutes les prises d'un coup en sélectionnant l'entrée: "Toutes les prises":
 
-Sélectionner la prise que vous souhaitez configurer.
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs_main.png
+
+Vous pouvez réaliser plusieurs modifications, changez de numéro de prises (etc...) mais vos changements ne seront effectif que si vous cliquez sur le bouton "Enregistrer la configuration" en bas de la page: 
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs_record.png
+
+Vous pouvez aussi enregistrer vos changements et directement passer au programme associé de la prise en cliquant sur le bouton "Sauvegarder les changements et configurer le programme de la prise", présent à côté de chaque prises:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs_jump.png
+
+
+Pour finir il est à noter que vos modifications ne seront pris en compte que si vous avez branché votre carte SD avant de réaliser ces changements. Vous pouvez brancher une carte SD après avoir enregistré vos changements mais pour en voir les effets dans la Cultibox, il faudra rafraichir la page (cliquez sur l'ONglet prise) pour que le logiciel écrive ces changements sur la carte.
+
+= Configuration de base de la prise =
+
+De base, la configuration de la prise consiste à rentrer les informations suivantes:
+ * *Etat de la prise*: Activée ou désactivée, ce champ permet de rendre actif ou non une prise. Si une prise est désactivée, aucune information la concernant ne sera affichée dans les programmes ou dans les autres onglets
+ * *Nom de la prise*: le nom de votre prise afin que vous puissiez l'identifier facilement dans le logiciel
+ * *Type de la prise*: deux types de prises peuvent être utilisée avec la Cultibox faisant référence à la puissance de l'équipement qu'elles peuvent supporter (3500W ou 1000W). Par défaut les trois premières prises (qui sont fournis avec le pack Cultibox) sont déja configurée: 3500W pour la prise 1 et 1000W pour la prise 2 et 3. Vous pouvez vous procurer d'autres prises, c'est pour cela qu'au dela de la prise 3, ce champ devra être renseigné par vous
+ * *Type d'élément branché*: plusieurs choix s'offrent à vous: ventilateur, chauffage, lampe, humidificateur, deshumidificateur et autre. Les types lampes et autre offrent la possibilité de fonctionner en marche/arrêt. Les autres types permettent de gérer une régulation sur la température ou l'humidité en fonction de l'équipement choisis. POur plus d'information se reporter à la section [gui_soft_regul Régulation]
+ * *Puissance consommée*: la puissance que consomme l'équipement branché. Renseigné, ce champ permet de calculer le [gui_soft_cost coût] de votre installation mais aussi d'afficher le graphique de puissance consommé dans la partie [gui_soft_logs Logs]
+
+= Configuration avancée = 
+
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_empty.png
 
