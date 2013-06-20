@@ -22,17 +22,17 @@ La page des programmes vous permet de réaliser trois actions distinctes:
 = Visualisation des programmes =
 Dans la première partie de la page des programmes, un graphique s'affiche contenant le programme de la prise sélectionné. Un menu déroulant à côté du titre "Visualiser le comportement actuel de la prise" vous permet d'afficher un programme pour une prise particulière. Ce graphique vous offre plusieurs fonctionnalités pour rendre plus facile la visualisation ou la comparaison des programmes:
 
- * *Afficher ou cacher des programmes*: si vous voulez cacher ou faire appraitre les programmes des autres prises, il vous siffut de cliquer sur leur titre présent dans la légende à droite du graphique
+ * *Afficher ou cacher des programmes*: si vous voulez cacher ou faire apparaitre les programmes des autres prises, il vous suffit de cliquer sur leur titre présent dans la légende à droite du graphique
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_hideshow.png
 
- * *Zoom temporel*: il est possible de zoomer sur une partie du programme afin de n'afficher qu'une partie du temps écoulé et mieux se rendre compte des variations pendant cette période. Pour cela selectionnez simplement la zone qui vous intérèsse et le graphique fera le reste. Une fois qu'un zoom est réalisé, un bouton apparaitra en bas du graphique nommé "Annuler le zoom temporel". Il vous suffira de cliquer dessus afin de revenir au format d'origine du graphique
+ * *Zoom temporel*: il est possible de zoomer sur une partie du programme afin de n'afficher qu'une partie du temps écoulé et mieux se rendre compte des variations pendant cette période. Pour cela sélectionnez simplement la zone qui vous intéresse et le graphique fera le reste. Une fois qu'un zoom est réalisé, un bouton apparaitra en bas du graphique nommé "Annuler le zoom temporel". Il vous suffira de cliquer dessus afin de revenir au format d'origine du graphique
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_zoomx.png
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_cancelx.png
 
- * *Export du graphique dans un fichier/Mode impréssion*: en haut à droite du graphique se trouve un menu vous permettant diverses actions. Une fois que vous avez cliquez sur ce menu, il vous est possible d'exporter votre graphique dans de nombreux format (PDF, JPG...). Il est aussi possible d'afficher le mode impréssion du graphique. Votre graphique sera alors affiché sans le reste de la page.
+ * *Export du graphique dans un fichier/Mode impréssion*: en haut à droite du graphique se trouve un menu vous permettant diverses actions. Une fois que vous avez cliquez sur ce menu, il vous est possible d'exporter votre graphique dans de nombreux format (PDF, JPG...). Il est aussi possible d'afficher le mode impression du graphique. Votre graphique sera alors affiché sans le reste de la page.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_print.png
 
@@ -49,14 +49,14 @@ Les deux états standards d'une prise sont: éteint ou allumé. Pour changer l'�
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_2.png
 
 
-Quelques remarques sur la programation des actions:
+Quelques remarques sur la programmation des actions:
 
  * Si vous sélectionnez une heure de fin qui est avant l'heure de début, le programme appliquera l'état choisi de la façon suivante: de heure de début à minuit et de minuit à heure de fin. Cette fonction est pratique pour allumer une lampe de 20h à 4h.
  * Vous pouvez utiliser l'assistant de choix d'heure. En cliquant sur l'icône de l'horloge à coté des heures de début et de fin, un assistant s'ouvrira vous permettant de choisir facilement les heures voulues (les heures doivent être au format HH:MM:SS):
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_timehelper.png
 
- * La case à chocher nommée "Effacer l'ancien programme" vous permet d'appliquer votre nouveau programme comme si aucun programme n'était encore défini. L'ancien programme en cours est remplacé par le nouveau que vous venez de valider
+ * La case à cocher nommée "Effacer l'ancien programme" vous permet d'appliquer votre nouveau programme comme si aucun programme n'était encore défini. L'ancien programme en cours est remplacé par le nouveau que vous venez de valider
 
 
 == Programmation cyclique ==
