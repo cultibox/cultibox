@@ -4,7 +4,7 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-La page de configuration permet de modifier les paramètres du logicel et de la Cultibox.
+La page de configuration permet de modifier les paramètres du logiciel et de la Cultibox.
 Les différents paramètres sont disponibles dans quatre onglets : 
  * *Interface*: pour personnaliser l'interface logicielle de la Cultibox
  * *Cultibox*: pour configurer la Cultibox
@@ -22,10 +22,10 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_interface.png
 
 Dans cette section vous pouvez:
  * Définir les couleurs des différentes courbes
- * Activer / Désactiver l'afichage des pop-ups
+ * Activer / Désactiver l’affichage des pop-ups
  * Activer la vérification automatique des mises à jours. Il est conseiller de laisser cette option activée. Si cette option est activée, le logiciel vérifiera sur le site officiel de la Cultibox si une nouvelle version est disponible et vous préviendra si c'est le cas.
  * Activer ou non l'utilisation de la régulation secondaire, pour plus d'information se reporter à la section [gui_soft_second_regul Régulation secondaire]
- * Définir si vous désirez nous envoyer des information pour aider au dévellopement, les informations envoyés se basent sur l'utilisation de l'interface Web: la version et le nom de votre navigateur, les version du logiciel et fu firmware de votre Cultibox... ceci afin définir quelles technologies nous devons privilégié lors de notre développement et de facilement débuguer les erreurs découvertes
+ * Définir si vous désirez nous envoyer des information pour aider au développement, les informations envoyés se basent sur l'utilisation de l'interface Web: la version et le nom de votre navigateur, les version du logiciel et du firmware de votre Cultibox... ceci afin définir quelles technologies nous devons privilégié lors de notre développement et de facilement déboguer les erreurs découvertes
 
 
 == Configuration de la Cultibox ==
@@ -38,7 +38,7 @@ Dans cette section vous pouvez:
  * Définir à quelle fréquence la Cultibox enregistre les conditions climatique
  * Définir à quelle fréquence la Cultibox enregistre l'état des prises
  * Indiquer le nombre de prise de votre système
- * Définir la fréquence de mise à jour des prises. Si vous avez d'autres équipements fonctionnants en 433MHz, vous pouvez choisir de ne plus piloter les prises en permanence
+ * Définir la fréquence de mise à jour des prises. Si vous avez d'autres équipements fonctionnant en 433MHz, vous pouvez choisir de ne plus piloter les prises en permanence
 
 Pour configurer plus finement les prises (le type, la régulation, etc...), reportez vous à la section [gui_soft_plug Configuration des prises]
 
@@ -65,11 +65,10 @@ Si vous perdez votre carte, vous pouvez en acheter une. La carte SD doit être d
  * Formater la carte
 
 
-Le formatage d'une carte SD afin de la rendre compatible avec la Cultibox consiste à créer les fichiers nécéssaire au bon fonctionnement de votre équipement:
+Le formatage d'une carte SD afin de la rendre compatible avec la Cultibox consiste à créer les fichiers nécessaires au bon fonctionnement de votre équipement:
  * Copie des fichiers logs s'ils sont manquant (attention: formater une carte SD qui contient des logs peut causer la destruction de ces logs)
  * Copie des fichiers de firmware pour la Cultibox
- * Copie des différents fichiers de configuration nécéssaire au fonctionnement de la Cultibox
- * Copie des fichiers supplémentaires: icones, pages html...
+ * Copie des différents fichiers de configuration nécessaires au fonctionnement de la Cultibox
+ * Copie des fichiers supplémentaires: icônes, pages html...
 
 Cette opération peut prendre un certain temps, la patience est de rigueur.
-
