@@ -27,6 +27,7 @@ Cette documentation est en constante amélioration. Si vous avez des questions p
     * [gui_soft_logs Relevé des conditions climatique]
     * [gui_soft_prog Programmation]
       * [gui_soft_prog_regul Régulation]
+      * [gui_soft_second_regul Régulation secondaire]
     * [gui_soft_cost Cout]
     * [gui_soft_cal Calendrier]
       * [gui_soft_cal_lunar Calendrier lunaire]

@@ -102,9 +102,11 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_jump_plug.png
    * Déshumidificateur: lorsque la prise est allumée, l'humidité baisse
    * Les autres types (Lampe, inconnu) ne permettent pas de faire de régulation
 
-Le type de la prise détermine le fonctionnement de la régulation. Par exemple, si vous choisissez "Chauffage", la prise sera allumée lorsque la température sera inférieur à la consigne. SI vous choisissez "humidificateur", la prise sera allumée lorsque l'humidité sera inférieur à la consigne.
+Le type de la prise détermine le fonctionnement de la régulation. Par exemple, si vous choisissez "Chauffage", la prise sera allumée lorsque la température sera inférieur à la consigne. SI vous choisissez "humidificateur", la prise sera allumée lorsque l'humidité sera inférieur à la consigne. 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.png
+
+Pour plus d'informations, se reporter à la section [gui_soft_prog_regul Régulation]
 
 == Combinaison ==
 Il est tout à fait possible de combiner plusieurs actions dans la même journée. Par exemple:
