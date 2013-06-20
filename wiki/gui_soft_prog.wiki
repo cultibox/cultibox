@@ -108,14 +108,14 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.png
 
 == Combinaison ==
 Il est tout à fait possible de combiner plusieurs actions dans la même journée. Par exemple:
-  * La prise 2 allumée de 2h à 5h
-  * En régulation à 22°C de 5h à 16h
-  * En régulation à 28°C de 16h à 18h
-  * Éteinte, le reste du temps
+ * La prise 2 allumée de 2h à 5h
+ * En régulation à 22°C de 5h à 16h
+ * En régulation à 28°C de 16h à 18h
+ * Éteinte, le reste du temps
 
 Il faut donc programmer trois actions. La première action est la suivante (N'oublier pas de cliquer sur valider entre chaque action):
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_6.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_6.png
 
 La deuxième action:
 
@@ -123,11 +123,11 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.png
 
 Et la dernière action:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_7.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_7.png
 
 Ce qui donne le résultat suivant:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_8.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_8.png
 
 <wiki:comment>
 
