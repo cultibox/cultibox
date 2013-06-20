@@ -51,18 +51,15 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_2.png
 
 Quelques remarques sur la programation des actions:
 
-  * Si vous sélectionnez une heure de fin qui est avant l'heure de début, le programme appliquera l'état choisi de la façon suivante:
-    * De heure de début à minuit
-    * De minuit à heure de fin
+ * Si vous sélectionnez une heure de fin qui est avant l'heure de début, le programme appliquera l'état choisi de la façon suivante:
+  * De heure de début à minuit
+  * De minuit à heure de fin
 Cette fonction est pratique pour allumer une lampe de 20h à 4h.
-
-
-  * Vous pouvez utiliser l'assistant de choix d'heure. En cliquant sur l'icône de l'horloge à coté des heures de début et de fin, un assistant s'ouvrira vous permettant de choisir facilement les heures voulues (les heures doivent être au format HH:MM:SS):
+ * Vous pouvez utiliser l'assistant de choix d'heure. En cliquant sur l'icône de l'horloge à coté des heures de début et de fin, un assistant s'ouvrira vous permettant de choisir facilement les heures voulues (les heures doivent être au format HH:MM:SS):
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_timehelper.png
 
-
-  * La case à chocher nommée "Effacer l'ancien programme" vous permet d'appliquer votre nouveau programme comme si aucun programme n'était encore défini. L'ancien programme en cours est remplacé par le nouveau que vous venez de valider
+ * La case à chocher nommée "Effacer l'ancien programme" vous permet d'appliquer votre nouveau programme comme si aucun programme n'était encore défini. L'ancien programme en cours est remplacé par le nouveau que vous venez de valider
 
 
 == Programmation cyclique ==
@@ -110,12 +107,11 @@ Le type de la prise détermine le fonctionnement de la régulation. Par exemple,
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.png
 
 == Combinaison ==
-Il est tout à fait possible de combiner plusieurs actions dans la même journée.
-Par exemple, l'utilisateur veut :
-- La prise 2 allumée de 2h à 5h
-- En régulation à 22°C de 5h à 16h
-- En régulation à 28°C de 16h à 18h
-- Éteinte, le reste du temps
+Il est tout à fait possible de combiner plusieurs actions dans la même journée. Par exemple:
+  * La prise 2 allumée de 2h à 5h
+  * En régulation à 22°C de 5h à 16h
+  * En régulation à 28°C de 16h à 18h
+  * Éteinte, le reste du temps
 
 Il faut donc programmer trois actions. La première action est la suivante (N'oublier pas de cliquer sur valider entre chaque action):
 
@@ -123,7 +119,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_6.jpg
 
 La deuxième action:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.png
 
 Et la dernière action:
 
@@ -136,7 +132,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_8.jpg
 <wiki:comment>
 
 == Régulation secondaire ==
- La régulation secondaire a un fonctionnement plus particulier. Une fois activée son fonctionnement est continu.
+La régulation secondaire a un fonctionnement plus particulier. Une fois activée son fonctionnement est continu.
 La régulation secondaire permet de d'éteindre ou de mettre en route une prise quand une condition est atteinte.
 Par exemple: Un ventilateur est branchée sur une prise. La régulation classique permet d'allumer ou d'éteindre la prise en fonction de la température. La régulation secondaire permet de forcer l'allumage ou l'extinction de la prise en fonction de l'humidité. Cela permet, par exemple, de forcer la mise en route du ventilateur si l'humidité devient trop forte.
 
