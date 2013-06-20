@@ -5,27 +5,18 @@
 
 = Introduction =
 La page de configuration permet de modifier les paramètres du logicel et de la Cultibox.
+Les différents paramètres sont disponibles dans quatre onglets : 
+ * *Interface*: pour personnaliser l'interface logicielle de la Cultibox
+ * *Cultibox*: pour configurer la Cultibox
+ * *Alarme*: pour configurer le système d'alarme présent dans la Cultibox
+ * *Carte SD*: pour formater une carte SD et la rendre compatible avec la Cultibox
 
-Les différents parametres sont disponibles dans deux onglets : 
- * Configuration
- * Plugs
-
-= Configuration générale =
-
-Pour acceder à l'onglet , cliquer sur "Configuration":
+Pour accéder à la partie configuration, il vous suffit de cliquer sur l'onglet "Configuration" du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 
-Dans cet onglet, quatre menus sont disponibles:
-
- * Configuration de l'interface
- * Configuration de la Cultibox
- * Configuration de l'alarme
- * Configuration du cout
- * Configuration de la Carte SD
-
 == Configuration de l'interface ==
-La section "configuration de l'interface" permet de modifier les différents paramètres du site web.
+La section "Interface" permet de modifier les différents paramètres du site web.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_interface.png
 
@@ -40,7 +31,7 @@ Dans cette section vous pouvez:
 
 == Configuration de la Cultibox ==
 
-En cliquant sur "Configuration de la Cultibox", l'onglet change:
+En cliquant sur "Cultibox", l'onglet change:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.jpg
 
@@ -52,36 +43,25 @@ Dans cette section vous pouvez:
 
 == Configuration de l'alarme ==
 
-En cliquant sur "Configuration de l'alarme", l'onglet change:
+En cliquant sur "Alarme", l'onglet change:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_alarme.PNG
 
 L'alarme de la Cultibox peut être configurée dans cette section.
 
-== Configuration du cout ==
-
-En cliquant sur "Configuration du cout", l'onglet change:
-
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cost_standard.PNG
-
-Si vous sélectionnez "Heure creuse / Heure pleine", la section change:
-
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cost_hchp.PNG
-
-Vous pouvez maintenant indiquer:
- * Le tarif que votre fournisseur d'énergie vous facture en heure pleine.
- * Le tarif que votre fournisseur d'énergie vous facture en heure creuse.
- * Le début de la période d'heure creuse.
- * Le début de la période d'heure pleine.
 
 == Configuration de la carte SD ==
 
-En cliquant sur "Configuration de la carte SD", l'onglet change:
+En cliquant sur "Carte SD", l'onglet change:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_SD.PNG
 
-Encliquant sur le boutton, vous pouvez choisir de formatter votre carte. Il est conseiller de conserver la carte SD fournit avec le pack de départ. 
-Si vous perdez votre carte, vous pouvez en acheter une. La carte SD doit être d'une capacité de 2Go au maximum (La Cultibox ne reconnait pas les cartes SD Haute Capacité SDHC) et elle doit être formatée en FAT16.
+En cliquant sur le bouton, vous pouvez choisir de formater votre carte. Il est conseiller de conserver la carte SD fourni avec le pack de départ. 
+Si vous perdez votre carte, vous pouvez en acheter une. La carte SD doit être d'une capacité de 2Go au maximum (La Cultibox ne reconnait pas les cartes SD Haute Capacité SDHC) et elle doit être formatée en FAT16. Il est possible d'utiliser une carte SD de plus grande capacité mais il vous faudra:
+* Créer une partition FAT16
+* Faire en sorte que cette partition ne dépasse pas 2GO
+* Formater la carte
+
 
 = Configuration des prises =
 
