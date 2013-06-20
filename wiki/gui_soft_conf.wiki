@@ -40,7 +40,7 @@ Dans cette section vous pouvez:
  * Indiquer le nombre de prise de votre système
  * Définir la fréquence de mise à jour des prises. Si vous avez d'autres équipements fonctionnant en 433MHz, vous pouvez choisir de ne plus piloter les prises en permanence
 
-Pour configurer plus finement les prises (le type, la régulation, etc...), reportez vous à la section [gui_soft_plug Configuration des prises]
+Pour configurer plus finement les prises (le type, la régulation, etc...), reportez vous à la section [gui_soft_plugs Configuration des prises]
 
 
 == Configuration de l'alarme ==
