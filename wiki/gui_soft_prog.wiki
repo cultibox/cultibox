@@ -24,17 +24,17 @@ Dans la première partie de la page des programmes, un graphique s'affiche conte
 
  * *Afficher ou cacher des programmes*: si vous voulez cacher ou faire appraitre les programmes des autres prises, il vous siffut de cliquer sur leur titre présent dans la légende à droite du graphique
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_hide.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_hideshow.png
 
  * *Zoom temporel*: il est possible de zoomer sur une partie du programme afin de n'afficher qu'une partie du temps écoulé et mieux se rendre compte des variations pendant cette période. Pour cela selectionnez simplement la zone qui vous intérèsse et le graphique fera le reste. Une fois qu'un zoom est réalisé, un bouton apparaitra en bas du graphique nommé "Annuler le zoom temporel". Il vous suffira de cliquer dessus afin de revenir au format d'origine du graphique
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_zoomx.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_zoomx.png
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_cancelx.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_cancelx.png
 
  * *Export du graphique dans un fichier/Mode impréssion*: en haut à droite du graphique se trouve un menu vous permettant diverses actions. Une fois que vous avez cliquez sur ce menu, il vous est possible d'exporter votre graphique dans de nombreux format (PDF, JPG...). Il est aussi possible d'afficher le mode impréssion du graphique. Votre graphique sera alors affiché sans le reste de la page.
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_print.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_print.png
 
 
 = Créer ou modifier un programme pour une prise =
