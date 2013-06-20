@@ -136,3 +136,15 @@ La régulation secondaire a un fonctionnement plus particulier. Pour vous famili
 
 
 = Gestion des programmes =
+
+La dernière section porte sur les fonctionnalités offerte quant à la gestion des vos programmes/prises. Dans l'onglet des programmes, tout en bas, vous avez accès à ces fonctionnalités:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_manage.png
+
+Il vous est donc possible:
+
+ * *Ajouter ou supprimer une prise*: le nombre de prises de base est définie à trois, cependant la Cultibox peut gérer jusqu'à 16 prises. Pour ajouter ou supprimer ces prises dans le logiciel, vous avez deux possibilités: soit vous rendre dans l'onglet "Configuration" du menu et configurer le nombre de prises ([gui_soft_conf Configuration]) ou alors cliquez sur les boutons "Ajouter une prise" ou "Supprimer une prise" pour réaliser cette opération directement
+
+ * *Effacer un ou tous les programmes*: pour remettre à zéro un programme, vous pouvez utiliser le "Ré-initialiser" qui remet à zéro le programme de la prise choisie ou de toutes les prises si vous choisissez "de toutes les prises" dans la liste déroulante
+
+ * *Exporter/Importer un programme*: vous pouvez en cliquant sur le bouton "Exporter", exporter un programme dans un fichier décrivant les changements d'une prise. Ce fichier peut être utilisé pour configurer une prise en sélectionnant le bouton "Importer". Vous pouvez aussi configurer de cette façon plusieurs prises avec le même programme ou échanger des programmes avec d'autres utilisateur Cultibox 
