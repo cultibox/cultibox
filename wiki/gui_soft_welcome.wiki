@@ -3,22 +3,20 @@
 
 = Introduction =
 La page d'accueil est la première page affichée lors de l'exécution du logiciel. 
-Il est aussi possible de revenir sur cette page d'accueil en cliquant sur l'onglet "Bienvenu" du menu principal:
+Il est aussi possible de revenir sur cette page d'accueil en cliquant sur l'onglet "Bienvenue" du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_welcome.png
 
 
 = Composition de la page =
 
-Lors de votre première utilisation, la page d'accueil vous proposera d'accèder directement à l'Assistant de configuration (pour plus d'informations sur l'Assistant voir la section [gui_soft_wizard Assistant]:
+Lors de votre première utilisation, la page d'accueil vous propose d’accéder directement à l'assistant de configuration (pour plus d'informations sur l'assistant voir la section [gui_soft_wizard Assistant]):
 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_welcome_main.png
 
 
-
-Si jamais des programmes ont été configuré, la page d'accueil proposera l'accès aux trois principales sections: [gui_soft_logs Visualisation des logs], [gui_soft_prog Création des programmes] et [gui_soft_cal Calendrier]).
+Si vous avez déjà configuré des programmes, la page d'accueil propose l'accès aux trois principales sections: [gui_soft_logs Visualisation des logs], [gui_soft_prog Création des programmes] et [gui_soft_cal Calendrier]).
 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_welcome_link.png
-
