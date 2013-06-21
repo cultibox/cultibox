@@ -4,25 +4,25 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-L'onglet coût permet d'estimer puis de calculer le coût de reviens de votre installation. Il agit comme un consomètre théorique puis pratique.
+L'onglet coût permet d'estimer puis de calculer le coût de reviens de votre installation. Il agit comme un conso-mètre théorique puis pratique.
 Pour calculer le coût de votre installation, cliquez sur l'onglet "Coût" du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_cost.png
 
-Pour un bon fonctionnement de l'algorithme, il est nécéssaire de bien configurer vos prises (notamment de renseigner la puissance de l'équipement branché sur la/les prise(s))
+Pour un bon fonctionnement de l'algorithme, il est nécessaire de bien configurer vos prises (notamment de renseigner la puissance de l'équipement branché sur la/les prise(s))
 
-= Parametrage =
+= Paramétrage =
 
 Une fois sur l'onglet de calcul du coût de votre installation, vous arriverez sur une page vous permettant de rentrer de nombreuses informations:
 
 Vous pouvez à partir de cette page:
  * Déclarer le jour de départ et de fin permettant de calculer le coût sur la période voulue (un jour, trois mois, une année...)
- * Afficher le prix théorique et réél: pour une prise spécifique, pour toutes les prises confondue afin d'avoir le coût total de l'installation ou encore pour chaque prise
+ * Afficher le prix théorique et réel: pour une prise spécifique, pour toutes les prises confondue afin d'avoir le coût total de l'installation ou encore pour chaque prise
  * Configurez votre type d'abonnement électrique: Heures creuses/Heures pleines ou Standard
  * Dans le cas d'un abonnement en Heures creuses/Heures pleines, vous pourrez aussi définir les heures délimitant ces différentes périodes
  * Configurez le prix de du kilowattheure
 
-Une fois cela réalisé, vous n'aurez plus qu'à cliquer sur le bouton "Afficher" pour que le logiciel calcul le coput théorique et réél de la consommation de votre installation.
+Une fois cela réalisé, vous n'aurez plus qu'à cliquer sur le bouton "Afficher" pour que le logiciel calcul le coût théorique et réel de la consommation de votre installation.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cost_param.png
 
@@ -30,10 +30,10 @@ Il est à noter que la configuration utilisée pour calculer le graphique en cou
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cost_resume.png
 
-= Remarque sur le calcul du cout =
+= Remarque sur le calcul du coût =
 
 Quelques remarques sur le calcul du coût:
 
-  * Pour calculer le cout réél, la Cultibox enregistre dans un fichier l'état de chacune des prises. La Cultibox ne se base que sur les commandes envoyées aux prises. Il n'y a pas de retour d'information de la part de la prise. Si la prise n'est pas branchée, la Cultibox ne peut pas savoir que la prise ne consomme pas. Dans le diagramme de coût, elle sera considérée comme active et consommant de la puissance.
+  * Pour calculer le coût réel, la Cultibox enregistre dans un fichier l'état de chacune des prises. La Cultibox ne se base que sur les commandes envoyées aux prises. Il n'y a pas de retour d'information de la part de la prise. Si la prise n'est pas branchée, la Cultibox ne peut pas savoir que la prise ne consomme pas. Dans le diagramme de coût, elle sera considérée comme active et consommant de la puissance.
 
-  * Dans certain cas la consommation réel indiqué est supérieure à la consommation théorique. Cela vient du fait que la valeur théorique est calculée à la seconde près d'après le programme enregistré alors que la valeur réelle est calculée d'après les informations de consommation des prises qui elles ont une précision de 5 minutes. Un léger décallage peut donc apparaitre entre le calcul réél et théorique.
+  * Dans certain cas la consommation réel indiqué est supérieure à la consommation théorique. Cela vient du fait que la valeur théorique est calculée à la seconde près d'après le programme enregistré alors que la valeur réelle est calculée d'après les informations de consommation des prises qui elles ont une précision de 5 minutes. Un léger décalage peut donc apparaître entre le calcul réel et théorique.
