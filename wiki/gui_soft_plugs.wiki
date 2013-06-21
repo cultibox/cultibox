@@ -30,6 +30,8 @@ Pour finir il est à noter que vos modifications ne seront pris en compte que si
 
 = Configuration des prises =
 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_empty.png
+
 De base, la configuration de la prise consiste à rentrer les informations suivantes:
  * *Etat de la prise*: Activée ou désactivée, ce champ permet de rendre actif ou non une prise. Si une prise est désactivée, aucune information la concernant ne sera affichée dans les programmes et dans celui des puissances
  * *Nom de la prise*: le nom de votre prise afin que vous puissiez l'identifier facilement dans le logiciel
@@ -43,6 +45,4 @@ Deux autres champs supplémentaire peuvent apparaitre si vous avez activé les o
  * *Régulation secondaire de la prise*: Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécéssaire d'activer ce champ. Pour plus d'information voir [gui_soft_prog_regul Régulation].
 
 Cliquer sur "Enregistrer la configuration" pour sauvegarder vos modifications.
-
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_empty.png
 
