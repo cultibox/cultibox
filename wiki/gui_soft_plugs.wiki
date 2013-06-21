@@ -31,26 +31,23 @@ Pour finir il est à noter que vos modifications ne seront pris en compte que si
 = Configuration de base de la prise =
 
 De base, la configuration de la prise consiste à rentrer les informations suivantes:
- * *Etat de la prise*: Activée ou désactivée, ce champ permet de rendre actif ou non une prise. Si une prise est désactivée, aucune information la concernant ne sera affichée dans les programmes ou dans les autres onglets
+ * *Etat de la prise*: Activée ou désactivée, ce champ permet de rendre actif ou non une prise. Si une prise est désactivée, aucune information la concernant ne sera affichée dans les programmes et dans celui des puissances
  * *Nom de la prise*: le nom de votre prise afin que vous puissiez l'identifier facilement dans le logiciel
- * *Type de la prise*: deux types de prises peuvent être utilisée avec la Cultibox faisant référence à la puissance de l'équipement qu'elles peuvent supporter (3500W ou 1000W). Par défaut les trois premières prises (qui sont fournis avec le pack Cultibox) sont déja configurée: 3500W pour la prise 1 et 1000W pour la prise 2 et 3. Vous pouvez vous procurer d'autres prises, c'est pour cela qu'au dela de la prise 3, ce champ devra être renseigné par vous
- * *Type d'élément branché*: plusieurs choix s'offrent à vous: ventilateur, chauffage, lampe, humidificateur, deshumidificateur et autre. Les types lampes et autre offrent la possibilité de fonctionner en marche/arrêt. Les autres types permettent de gérer une régulation sur la température ou l'humidité en fonction de l'équipement choisis. POur plus d'information se reporter à la section [gui_soft_regul Régulation]
+ * *Type de la prise*: deux types de prises peuvent être utilisée avec la Cultibox faisant référence à la puissance de l'équipement qu'elles peuvent supporter (3500W ou 1000W). Par défaut les trois premières prises (qui sont fournis avec le pack Cultibox) sont déja configurée: 3500W pour la prise 1 et 1000W pour la prise 2 et 3. Vous pouvez vous procurer d'autres prises, c'est pour cela qu'au dela de la prise 3, ce champ devra être renseigné par vous.  *Il faut absolument remplir correctement ce champ, sinon la prise ne sera pas correctement pilotée par la Cultibox.*
+ * *Type d'élément branché*:  En indiquant le type d'élément branché sur la prise, vous indiquez quelle variable d'environnement (Température ou humidité) sera impactée par la mise en route de cette prise Plusieurs choix s'offrent à vous: ventilateur, chauffage, lampe, humidificateur, deshumidificateur et autre. Les types lampes et autre offrent la possibilité de fonctionner en marche/arrêt. Les autres types permettent de gérer une régulation sur la température ou l'humidité en fonction de l'équipement choisis. 
  * *Puissance consommée*: la puissance que consomme l'équipement branché. Renseigné, ce champ permet de calculer le [gui_soft_cost coût] de votre installation mais aussi d'afficher le graphique de puissance consommé dans la partie [gui_soft_logs Logs]
+ * *Tolérance de la prise*: Indiquer la tolérance acceptée pour la régulation de cette prise. Pour plus d'information voir [gui_soft_prog_regul Régulation]
+
+Deux autres champs supplémentaire peuvent apparaitre si vous avez activé les options de régulation sur d'autres capteurs ou encore la régulation secondaire dans la partie [gui_soft_conf Configuration]:
+ * *Capteur utilisé pour la régulation*: La régulation est effectuée en fonction des valeurs données par un capteur. Choisissez dans ce champ le numéro du capteur concerné capteur
+ * *Régulation secondaire de la prise*: Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécéssaire d'activer ce champ. Pour plus d'information voir [gui_soft_prog_regul Régulation].
+
+Cliquer sur "Enregistrer la configuration" pour sauvegarder vos modifications.
+
+
 
 = Configuration avancée = 
 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_empty.png
-
-Remplir les différents champs:
- * État de la prise : Vous pouvez désactiver la prise. Dans ce cas elle n'apparaitra plus dans les programmes ni dans les graphe de puissance.
- * Nom de la prise : Il est possible de renommer la prise en remplissant le champ.
- * Type de prise : C'est ici qu'on indique au programme si la prise est une prise 1000W ou une prise 3500W. *Il faut absolument remplir correctement ce champ, sinon la prise ne sera pas correctement pilotée par la Cultibox.*
- * Type d'élément branché sur la prise : En indiquant le type d'élément branché sur la prise, vous indiquez quelle variable d'environnement (Température ou humidité) sera impactée par la mise en route de cette prise. Si l'élément branché n'est pas une lampe, n'impacte pas la température, n'impacte pas l'humidité, veuillez choisir le type "Inconnu".
- * Puissance consommée : En indiquant la puissance consommée vous permettez au logiciel de calculer correctement le cout de votre installation.
- * Tolérance de la prise : Indiquer la tolérance acceptée pour la régulation de cette prise. Pour plus d'information voir [gui_soft_prog_regul Régulation]
- * Capteur utilisé pour la régulation : La régulation est effectuée en fonction des valeurs données par un capteur. Choisissez dans ce champ le capteur.
- * Régulation secondaire de la prise : Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécéssaire d'activer ce champ. Pour plus d'information voir [gui_soft_prog_regul Régulation].
-
-Cliquer sur "Enregistrer la configuration" pour dauvegarder vos modifications.
 
