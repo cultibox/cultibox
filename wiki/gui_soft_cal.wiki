@@ -7,7 +7,7 @@
 Le calendrier permet de définir et de se souvenir des informations correspondant à votre espace de culture.
 Ces informations sont ensuite disponible sur l'écran LCD de la Cultibox si vous avez branché votre carte SD Cultibox lors des modifications du calendrier.
 
-Pour acceder à l'onglet, cliquer sur l'onglet "Calendrier" du menu principal :
+Pour accéder à l'onglet, cliquer sur l'onglet "Calendrier" du menu principal :
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_calendar.png
 
@@ -15,11 +15,11 @@ Une fenêtre avec le mois en cours s'affiche à l'écran:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_main.png
 
-On retrouve sur cette fenêtre l'ensemble des annotations que vous avez créé et les annotations définies par l'utilisation avancée de fichiers xml (pour plus d'informationi voir [advance Utilisation avancée])
+On retrouve sur cette fenêtre l'ensemble des annotations que vous avez créé et les annotations définies par l'utilisation avancée de fichiers xml (pour plus d’information voir [advance Utilisation avancée])
 
 = Ajouter une annotation =
 
-Vous pouvez ajouter une annotation sur un jour spécifique ou sur une période en cliquant simplement sur le jour concerné ou en selectionnant la période à laquelle se reportera votre annotation.
+Vous pouvez ajouter une annotation sur un jour spécifique ou sur une période en cliquant simplement sur le jour concerné ou en sélectionnant la période à laquelle se reportera votre annotation.
 Une fenêtre s'affiche alors vous permettant de configurer votre annotation et de la créer en cliquant sur le bouton "Ajouter une annotation". Une annotation peut contenir différentes informations:
  * Un sujet (prédéfinie dans une liste)
  * Les dates de départ et de fin définie par le jour ou la période que vous avez sélectionné
@@ -30,28 +30,27 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_add.png
 
 Il est à noter que dans la Cultibox, seul les champs "Sujet" et "Remarque" ne seront visible.
 
-= Modifier ou supprimer un évènement =
+= Modifier ou supprimer un événement =
 
-Pour modifier ou supprimer une annotation, il vous suffit de cliquer dessus. Une fenêtre va alors apparaitre avec deux boutons: un bouton "Editer l'annotation" (pour modifier une annotaion) et un bouton "Supprimer l'annotation" (pour supprimer définitivement l'annotation).
+Pour modifier ou supprimer une annotation, il vous suffit de cliquer dessus. Une fenêtre va alors apparaître avec deux boutons: un bouton "Editer l'annotation" (pour modifier une annotation) et un bouton "Supprimer l'annotation" (pour supprimer définitivement l'annotation).
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_edit.png
 
 Si vous:
- * Editez une annotation: une autre fenêtre s'ouvrira ressemblant exactement à la fenêtre de création mais contenant les informations déja enregistrées, vous permettant ainsi de les modifier
+ * Éditez une annotation: une autre fenêtre s'ouvrira ressemblant exactement à la fenêtre de création mais contenant les informations déjà enregistrées, vous permettant ainsi de les modifier
  * Supprimez une annotation: une confirmation vous sera demandé avec de supprimer définitivement une annotation
 
-Il est à noter que seul les évènements que vous avez créé manuellement sont éditable/supprimable. Les évènements liés aux fichiers xml (comme le calendrier lunaire) ne peuvent pas être modifié ainsi.
+Il est à noter que seul les événements que vous avez créé manuellement sont éditable/supprimable. Les événements liés aux fichiers xml (comme le calendrier lunaire) ne peuvent pas être modifié ainsi.
 
 = Autres fonctionnalités des annotations =
 
-Deux actions sont encore possibles sur les annotations déja créées:
- * *Déplacer une annotation*: vous pouvez déplacer une annotation à une période différente et l'attaprant avec un clic souris et en la faisant glisser sur une nouvelle date
+Deux actions sont encore possibles sur les annotations déjà créées:
+ * *Déplacer une annotation*: vous pouvez déplacer une annotation à une période différente et l’attrapant avec un clic souris et en la faisant glisser sur une nouvelle date
  * *Réduire ou agrandir une annotation dans le temps*: en cliquant sur les bords d'une annotation, il est possible d'agrandir ou de réduire le temps auquel se réfère une annotation
 
 
 = Effacer toutes les annotations = 
 
-En bas de la page du calendrier se trouve un bouton nommé "Supprimer toutes les annotations enregistrées". En cliquant dessus et après confirmation, vous éffacerez de façon définitive toutes les annotations que vous avez rentré manuellement. Les annotations définies dans les fichiers xml (comme le calendrier lunaire) ne seront pas supprimées.
+En bas de la page du calendrier se trouve un bouton nommé "Supprimer toutes les annotations enregistrées". En cliquant dessus et après confirmation, vous effacerez de façon définitive toutes les annotations que vous avez rentré manuellement. Les annotations définies dans les fichiers xml (comme le calendrier lunaire) ne seront pas supprimées.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_del.png
-
