@@ -29,7 +29,7 @@ Pour configurer la régulation secondaire:
  * Il ne vous reste plus qu'à paramétrer votre régulation avec les nouveaux champs qui s'affichent:
    * *Déclenchement en fonction de*: est défini par défaut en fonction du type de la prise. Un ventilateur ou un chauffage se déclencheront en fonction de l'humidité tandis qu'un himidificateur et un deshumidificateur se déclencheront en fonction de la température
    * *Déclenchement si la mesure est en*: Permet de définir si la prise doit se déclencher si on dépasse la valeur ou si l'on est en dessous de la valeur du seuil
-   * *Seuil de déclenchement*: la valeur qui définit qiand votre prise doit se délencher 
+   * *Seuil de déclenchement*: la valeur qui définit quand votre prise doit se délencher 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_5.png
 
