@@ -16,7 +16,7 @@ Pour accéder à la partie configuration, il vous suffit de cliquer sur l'onglet
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 
 
-Il est à noter que vous pouvez passer d'un onglet à un autre sans perdre vos modifications. Le logiciel sauvegarde vos modifications temporairement le temps que vous ayez finis. Cela permet donc de faire plusieurs changements sans appuyer à chaque fois sur le bouton "Enregistrer la configuration". Cependant ces changements ne seront rééllement enregistré qu'à partir du moment ou vous cliquez sur le bouton "Enregister la configuration". Si vous réalisé des changements et que vous changez de page sans avoir au préalable appuyé sur le bouton d'enregistrement, vos modifications seront perdues.
+Il est à noter que vous pouvez passer d'un onglet à un autre sans perdre vos modifications. Le logiciel sauvegarde vos modifications temporairement le temps que vous ayez finis. Cela permet donc de faire plusieurs changements sans appuyer à chaque fois sur le bouton "Enregistrer la configuration". Cependant ces changements ne seront réellement enregistré qu'à partir du moment ou vous cliquez sur le bouton "Enregistrer la configuration". Si vous réalisé des changements et que vous changez de page sans avoir au préalable appuyé sur le bouton d'enregistrement, vos modifications seront perdues.
 
 == Configuration de l'interface ==
 La section "Interface" permet de modifier les différents paramètres du site web.
@@ -74,6 +74,6 @@ Le formatage d'une carte SD afin de la rendre compatible avec la Cultibox consis
  * Copie des différents fichiers de configuration nécessaires au fonctionnement de la Cultibox
  * Copie des fichiers supplémentaires: icônes, pages html...
 
-Il est à noter que la copie des fichiers logs ne se fera que si les fichiers n'ont pas la taille requise. Cela signifie que des fichiers logs contenant déja des logs ne seront pas effacés. Il peut donc vous rester des informations de logs dans vos fichiers provenant d'une ancienne session de culture.
+Il est à noter que la copie des fichiers logs ne se fera que si les fichiers n'ont pas la taille requise. Cela signifie que des fichiers logs contenant déjà des logs ne seront pas effacés. Il peut donc vous rester des informations de logs dans vos fichiers provenant d'une ancienne session de culture.
 
 Cette opération peut prendre un certain temps, la patience est de rigueur.
