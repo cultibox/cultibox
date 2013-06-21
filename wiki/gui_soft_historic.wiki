@@ -2,9 +2,9 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-La page d'historique affiche les différentes actions que vous avez réalisé à travers l'interface logicielle de la Cultibox. Les actions réussies ainsi que les messages d'erreurs sont enregistrés afin de garder une trâce des modifications que vous avez pu apporter à la configuration du logicielle.
+La page d'historique affiche les différentes actions que vous avez réalisé à travers l'interface logicielle de la Cultibox. Les actions réussies ainsi que les messages d'erreurs sont enregistrés afin de garder une trace des modifications que vous avez pu apporter à la configuration du logicielle.
 
-Afin d'accèder à cette page, il vous suffit de cliquer sur l'onglet "Historique" du menu principal:
+Afin d’accéder à cette page, il vous suffit de cliquer sur l'onglet "Historique" du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_historic.png
 
@@ -25,4 +25,3 @@ Pour remettre à zéro l'historique, il vous suffit de cliquer sur le bouton "Ef
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_historic_reset.png
 
 Ceci supprimera définitivement l'historique des modifications apportés sur l'interface.
-
