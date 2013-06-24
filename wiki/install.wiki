@@ -9,46 +9,46 @@ Quelques étapes suffisent pour se servir pleinement de la Cultibox.
 
 Pour une aide plus détaillée, consultez la page suivante : [install_windows Windows Installation / Désinstallation du logiciel]
 
- * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fourni
- * Lancez le programme d'installation (nommé "cultibox-windows_X.X.X.exe où les X représentent le numéro de version du logiciel)
- * Votre ordinateur peut vous demander l'autorisation d'exécuter les services MySQL et Apache. Autorisez l'exécution de ces services
- * Une fois installé, vous pouvez lancer le logiciel de trois façon différentes:
-    * en cliquant sur "Démarrer" puis "Cultibox" puis sur l'icône "Cultibox" 
-    * en cliquant sur l'icône "Cultibox" présente sur le bureau si vous avez accepté d'en créer une lors de l'installation
-    * en ouvrant un navigateur Web (Firefox, Chrome, Internet Explorer...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
+ * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fourni.
+ * Lancez le programme d'installation (nommé *cultibox-windows_X.X.X.exe* où les X représentent le numéro de version du logiciel).
+ * Votre ordinateur peut vous demander l'autorisation d'exécuter les services MySQL et Apache. Autorisez l'exécution de ces services.
+ * Une fois installé, vous pouvez lancer le logiciel de trois façons différentes:
+    * en cliquant sur *Démarrer* puis *Cultibox* puis sur l'icône *Cultibox*, 
+    * en cliquant sur l'icône *Cultibox* présente sur le bureau si vous avez accepté d'en créer une lors de l'installation,
+    * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
 
 == Linux==
 
 Pour une aide plus détaillée, consultez la page suivante : [install_linux Linux Installation / Désinstallation du logiciel]
 
- * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fourni
+ * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fourni.
  * Vous pouvez installer le logiciel de deux manières différentes:
-    * vous pouvez exécuter l'installation graphiquement en cliquant sur le programme (nommé "cultibox-linux_X.X.X.deb où les X représentent le numéro de version du logiciel)
+    * vous pouvez exécuter l'installation graphiquement en cliquant sur le programme (nommé *cultibox-linux_X.X.X.deb* où les X représentent le numéro de version du logiciel)
     * vous pouvez exécuter l'installation en mode console en exécutant la commande suivante avec des droits administrateurs: *dpkg -i cultibox-linux_X.X.X.deb*
  * Une fois installé, vous pouvez lancer le logiciel de deux manières différentes:
-    * en cherchant "Cultibox" dans la barre de recherche des programmes Ubuntu et en cliquant sur le logiciel "Cultibox"
-    * en lancant un navigateur Web (Firefox, Chrome, Internet Explorer...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
+    * en cherchant *Cultibox* dans la barre de recherche des programmes Ubuntu et en cliquant sur le logiciel *Cultibo*x
+    * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
 
 == Mac==
 
 Pour une aide plus détaillée, consultez la page suivante : [install_mac Mac Installation / Désinstallation du logiciel]
 
- * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fourni
- * Lancez le programme d'installation (nommé "cultibox-macosx_X.X.X.exe où les X représentent le numéro de version du logiciel)
+ * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fourni.
+ * Lancez le programme d'installation (nommé *cultibox-macosx_X.X.X.exe* où les X représentent le numéro de version du logiciel).
  * Une fois installé, vous pouvez lancer le logiciel de deux manières différentes:
-    * en cliquant sur l'application Cultibox présente dans le répertoire Applications
-    * en lancant un navigateur Web et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
+    * en cliquant sur l'application Cultibox présente dans le répertoire: */Applications*
+    * en ouvrant un navigateur Web (Safari, Chrome, Firefox...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
 
 = Configuration=
 
 Pour une aide plus détaillée, consultez la page suivante : [gui_soft_wizard Assistant de programmation]
 
- * Insérez la carte SD dans l'ordinateur puis lancez le logiciel
- * Sur la page d'accueil, un lien apparaît vous guidant vers l'assistant qui vous permettra de configurer facilement le fonctionnement de vos prises 
- * La première étape est la configuration de la première prise. Cette prise permet de piloter des éléments jusqu'à une puissance de 3500W. C'est la seule prise fournie avec le pack de départ qui permet de piloter une lampe HPS ou MH d'une puissance comprise 400W et 600W
- * Sélectionnez l'heure à laquelle la prise doit s'allumer et l'heure à laquelle elle doit s'éteindre
- * L'assistant vous propose ensuite de configurer la seconde prise. En fonction du type vous aurez différentes possibilités de régulation
- * Faire de même pour la troisième prise
+ * Insérez la carte SD dans l'ordinateur puis lancez le logiciel.
+ * Sur la page d'accueil, un lien apparaît vous guidant vers l'assistant qui vous permettra de configurer facilement le fonctionnement de vos prises.
+ * La première étape est la configuration de la première prise. Cette prise permet de piloter des éléments jusqu'à une puissance de 3500W. C'est la seule prise fournie avec le pack de départ qui permet de piloter une lampe HPS ou MH d'une puissance comprise 400W et 600W.
+ * Sélectionnez l'heure à laquelle la prise doit s'allumer et l'heure à laquelle elle doit s'éteindre.
+ * L'assistant vous propose ensuite de configurer la seconde prise. En fonction du type vous aurez différentes possibilités de régulation.
+ * Faire de même pour la troisième prise.
 
 
 = Installation=
@@ -57,12 +57,12 @@ Pour une aide plus détaillée, consultez la page suivante : [gui_soft_wizard As
 La Cultibox est prévue pour être installée à l'extérieur de l'environnement de culture. 
 
 === Mise en route de la pile ===
-Ôter le film situé à coté du port USB. Cela permet à la pile de la Cultibox d'entrer en fonction.
+Ôtez le film situé à côté du port USB. Cela permet à la pile de la Cultibox d'entrer en fonction.
 
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_pile.jpg
 
 === Antenne ===
-Connectez l'antenne sur la Cultibox. L’antenne se visse sur le connecteur doré. Vissez l'antenne. En desserrant légèrement vous pouvez changer l'angle de l'antenne pour que celle ci ne gène pas. Resserrez ensuite en maintenant l'antenne avec le bonne angle.
+Connectez l'antenne sur la Cultibox. L’antenne se visse sur le connecteur doré. Vissez l'antenne. En desserrant légèrement vous pouvez changer l'angle de l'antenne pour que celle-ci ne gène pas. Resserrez ensuite en maintenant l'antenne avec le bon angle.
 
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_antenne.jpg
 
@@ -80,7 +80,7 @@ Décollez le film plastique:
 
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_2.jpg
 
-Collez cette moitié de scratch sur votre support (Un mur de préférence). L'endroit ou vous collez le scratch doit être lisse et propre. De plus il doit être en dehors de votre espace de culture.
+Collez cette moitié de scratch sur votre support (un mur de préférence). L'endroit où vous collez le scratch doit être lisse et propre. De plus il doit être en dehors de votre espace de culture.
 
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_3.jpg
 
@@ -88,12 +88,12 @@ Scratchez la Cultibox dessus:
 
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_4.jpg
 
-* Il est impératif de ne jamais brancher de câble sur la Cultibox tant qu'elle n'est pas solidement fixée. Vous risquer de l'endommager définitivement *
+* Il est impératif de ne jamais brancher de câble sur la Cultibox tant qu'elle n'est pas solidement fixée. Vous risquez de l'endommager définitivement *
 
 
 == Mise en place du capteur ==
 Installez le capteur dans l'espace de culture. Il ne doit pas être soumis à des projections d'eau. 
-Connectez le câble blanc (RJ12)sur le capteur:
+Connectez le câble blanc (RJ12) sur le capteur:
 
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12_2.jpg
 
@@ -104,10 +104,10 @@ http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12.jpg
 
 == Installation des prises ==
 
-Pour une aide plus détaillée, consulter la page suivante : [install_Plug Ajout d'une nouvelle prise 1000W ou 3500W]
+Pour une aide plus détaillée, consultez la page suivante : [install_Plug Ajout d'une nouvelle prise 1000W ou 3500W]
 
- * Connectez la prise 1 (3500W) entre votre lampe et la prise secteur
- * Installez les deux autres prise en fonction des choix que vous avez réalisé dans l'étape de configuration
+ * Connectez la prise 1 (3500W) entre votre lampe et la prise secteur.
+ * Installez les deux autres prise en fonction des choix que vous avez réalisé dans l'étape de configuration.
 
 http://cultibox.googlecode.com/svn/wiki/img/3500W.jpg
 http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
@@ -115,10 +115,10 @@ http://cultibox.googlecode.com/svn/wiki/img/prise3.jpg
 
 
 == Branchement de l'alimentation == 
-Branchez l'adaptateur secteur-USB sur le secteur. Branchez ensuite le câble USB entre la Cultibox et l'adaptateur secteur
+Branchez l'adaptateur secteur-USB sur le secteur. Branchez ensuite le câble USB entre la Cultibox et l'adaptateur secteur.
 
 
 = Démarrage =
 Lors du branchement de l’adaptateur secteur, la Cultibox démarre. Elle ne peut pas fonctionner sans carte SD. Si vous n'avez pas inséré de carte SD, il est donc normal qu'elle affiche un message d'erreur. 
 
-Un écran s'affiche vous permettant de régler l'heure 
+Un écran s'affiche vous permettant de régler l'heure.
