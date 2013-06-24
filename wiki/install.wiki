@@ -15,7 +15,10 @@ Pour une aide plus détaillée, consultez la page suivante : [install_windows Wi
  * Une fois installé, vous pouvez lancer le logiciel de trois façons différentes:
     * en cliquant sur *Démarrer* puis *Cultibox* puis sur l'icône *Cultibox*, 
     * en cliquant sur l'icône *Cultibox* présente sur le bureau si vous avez accepté d'en créer une lors de l'installation,
-    * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
+    * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: 
+{{{
+http://localhost:6891/cultibox/
+}}}
 
 == Linux==
 
@@ -30,7 +33,10 @@ dpkg -i cultibox-linux_X.X.X.deb
 }}}
  * Une fois installé, vous pouvez lancer le logiciel de deux manières différentes:
     * en cherchant *Cultibox* dans la barre de recherche des programmes Ubuntu et en cliquant sur le logiciel *Cultibox*
-    * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
+    * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: 
+{{{
+http://localhost:6891/cultibox/
+}}}
 
 == Mac==
 
@@ -40,7 +46,10 @@ Pour une aide plus détaillée, consultez la page suivante : [install_mac Mac In
  * Lancez le programme d'installation (nommé *cultibox-macosx_X.X.X.exe* où les X représentent le numéro de version du logiciel).
  * Une fois installé, vous pouvez lancer le logiciel de deux manières différentes:
     * en cliquant sur l'application Cultibox présente dans le répertoire: */Applications*
-    * en ouvrant un navigateur Web (Safari, Chrome, Firefox...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
+    * en ouvrant un navigateur Web (Safari, Chrome, Firefox...) et en rentrant l'adresse suivante: 
+{{{
+http://localhost:6891/cultibox/
+}}}
 
 = Configuration=
 
