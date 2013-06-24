@@ -2,9 +2,9 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-La page d'historique affiche les différentes actions que vous avez réalisé à travers l'interface logicielle de la Cultibox. Les actions réussies ainsi que les messages d'erreurs sont enregistrés afin de garder une trace des modifications que vous avez pu apporter à la configuration du logicielle.
+La page d'historique affiche les différentes actions que vous avez réalisé à travers l'interface logicielle de la Cultibox. Les actions réussies ainsi que les messages d'erreurs sont enregistrés afin de garder une trace des modifications que vous avez pu apporter à la configuration du logiciel.
 
-Afin d’accéder à cette page, il vous suffit de cliquer sur l'onglet "Historique" du menu principal:
+Afin d’accéder à cette page, il vous suffit de cliquer sur l'onglet *Historique* du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_historic.png
 
@@ -12,16 +12,16 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_historic.png
 = Composition de la page =
 
 
-Les actions considérées comme réussie seront affichées en vert tandis que les messages d'erreurs seront affichés en rouge. A coté de chaque action se trouve la date à laquelle cette dernière a été réalisée afin de tracer dans le temps les modifications:
+Les actions considérées comme réussies seront affichées en vert tandis que les messages d'erreurs seront affichés en rouge. A côté de chaque action se trouve la date à laquelle cette dernière a été réalisée afin de tracer dans le temps les modifications:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_historic_main.png
 
-Il est à noter que seul les cent dernières actions sont ainsi afficher afin de ne pas surcharger la page.
+Il est à noter que seul les cent dernières actions sont ainsi affichées afin de ne pas surcharger la page.
 
 = Effacement de l'historique =
 
-Pour remettre à zéro l'historique, il vous suffit de cliquer sur le bouton "Effacer l'historique" en haut de la page:
+Pour remettre à zéro l'historique, il vous suffit de cliquer sur le bouton *Effacer l'historique* en haut de la page:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_historic_reset.png
 
-Ceci supprimera définitivement l'historique des modifications apportés sur l'interface.
+Ceci supprimera définitivement l'historique des modifications apportées sur l'interface.
