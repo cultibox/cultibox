@@ -9,7 +9,13 @@ Cette page donne les instructions pour ajouter un capteur.
 = Mise en place =
 
  # Débrancher votre Cultibox
- # Connecter le cable RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.
+ # Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.
  # Brancher votre Cultibox
 
 La mise en place est terminée.
+
+= Conditions idéales =
+
+Pour obtenir la meilleur précision possible avec le capteur, il est nécessaire, qu'un léger flux d'air passe au niveau du capteur. Sinon, une dérive de la température (donc de l'humidité) peut être observée.
+
+Attention à ne jamais pulvérisé de l'eau sur le capteur. Les valeurs remontées pourraient être biaisées pendant plusieurs jours.
