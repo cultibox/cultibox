@@ -8,16 +8,16 @@ Cette page décrit les étapes pour installer/désinstaller le logiciel dans un 
 
 Pour télécharger la dernière version du logiciel:
   *  Suivre le lien qui apparaît en haut de l'interface. Ce lien n'est présent que si une nouvelle version est disponible.
-  *  Aller sur www.cultibox.fr puis dans l'onglet téléchargement, récupérer la version qui correspond à votre système d'exploitation.
+  *  Aller sur http://www.cultibox.fr puis dans l'onglet téléchargement, récupérer la version qui correspond à votre système d'exploitation.
 
 = Installation =
 
 Double-cliquez sur le package que vous venez de télécharger.
-La fenêtre suivante s'ouvre. Cliquez sur "Continuer":
+La fenêtre suivante s'ouvre. Cliquez sur *Continuer*:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_1.jpg
 
-Lisez attentivement la licence du logiciel puis cliquez sur continuer:
+Lisez attentivement la licence du logiciel puis cliquez sur *Continuer*:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_2.jpg
 
@@ -25,15 +25,15 @@ Vous devez accepter la licence du logiciel pour continuer:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_3.jpg
 
-Cliquez ensuite sur "Continuer" pour installer le logiciel pour tous les utilisateurs:
+Cliquez ensuite sur *Continuer* pour installer le logiciel pour tous les utilisateurs:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_4.png
 
-Cliquez sur "Installer". Pour que l'installation démarre: 
+Cliquez sur *Installer*. Pour que l'installation démarre: 
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_5.jpg
 
-Une identification est demandée pour installer les services nécéssaires au bon fonctionnement du logiciel, rentrez votre nom utilisateur et votre mot de passe:
+Une identification est demandée pour installer les services necéssaires au bon fonctionnement du logiciel, rentrez votre nom utilisateur et votre mot de passe:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_6.png
 
@@ -47,20 +47,25 @@ http://cultibox.googlecode.com/svn/wiki/img/install_mac_8.jpg
 
 = Lancement du logiciel =
 
-  * Une icone du logiciel est disponible dans le dossier application.
-  * Vous pouvez aussi entrer l'adresse suivante dans votre explorateur web: 
+  * Une icône du logiciel est disponible dans le dossier: */Applications*.
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_mac1.png
+
+  * Vous pouvez aussi entrer l'adresse suivante dans votre navigateur Internet: 
 {{{
 http://localhost:6891/cultibox/
 }}}
 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_mac1.png
+
 = Mise à jour =
 
-Pour mettre à jour votre logiciel, il vous suffira la nouvelle installation et de suivre les même étapes que pour l'installation. Le programme gèrera la mise à jour automatiquement.
+Pour mettre à jour votre logiciel, il vous suffira de suicre les mêmes étapes que par la partie Installation. Le programme gérera la mise à jour automatiquement.
 
 = Désinstallation =
 
-Pour désintaller le logiciel de votre ordinateur, il vous suffira de lancer en double-cliquant sur le fichier suivant: 
+Pour désintaller le logiciel de votre ordinateur, il vous suffira de lancer le script de désinstallation en double-cliquant sur le fichier: 
 {{{
 /Applications/cultibox/package/uninstall
 }}}
+
 Le programme peut vous demander un mot de passe afin de réaliser la désintallation, il vous suffira de rentrer votre mot de passe utilisateur.
