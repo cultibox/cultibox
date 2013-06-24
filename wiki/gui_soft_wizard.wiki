@@ -8,12 +8,12 @@
 L'assistant de configuration de l'interface logicielle vous permet de configurer simplement vos prises et leur programme.
 Une fois la carte SD branchée, pour accéder à cette partie, vous avez deux possibilités: 
  * Lancez le logiciel et s'il s'agit de votre première utilisation la page d'accueil vous guidera vers l'assistant de configuration à travers un lien à suivre
- * Lancez le logiciel et si ce n'est pas votre première utilisation, vous trouverez l'onglet "Assistant" dans la barre de menu principale. Il vous suffira de cliquer dessus pour accéder à l'assistant de configuration 
+ * Lancez le logiciel et si ce n'est pas votre première utilisation, vous trouverez l'onglet *Assistant* dans la barre de menu principale. Il vous suffira de cliquer dessus pour accéder à l'assistant de configuration 
 
 == Configuration de la première prise ==
 
 Lors du lancement de l'assistant, celui-ci va vous guider afin de configurer la première prise. Par défaut, la première prise étant la plus puissante, elle sera configurée comme une lampe (étape 1 à 3):
-L'étape 4 vous permettra de choisir les heures auxquels il faudra allumer et éteindre la lampe:
+L'étape 4 vous permet de choisir les heures auxquels il faut allumer et éteindre la lampe:
 
 http://cultibox.googlecode.com/svn/wiki/img/wizard1.png
 
@@ -25,25 +25,25 @@ http://cultibox.googlecode.com/svn/wiki/img/wizard4.png
 
 
 Une fois ces horaires rentrés, vous avez plusieurs possibilités:
- * Revenir à une étape précédente en cliquant sur le bouton "Précédent"
- * Enregistrer la configuration de la prise 1 et fermer l'assistant pour commencer à utiliser le logiciel en mode "Avancé" en cliquant sur le bouton "Enregistrer et fermer l'assistant"
- * Enregistrer la configuration de la prise 1 et commencer à configurer la prise 2 en cliquant sur le bouton: "Enregistrer et configurer une autre prise"
+ * Revenir à une étape précédente en cliquant sur le bouton *Précédent*
+ * Enregistrer la configuration de la prise 1 et fermer l'assistant pour commencer à utiliser le logiciel en mode *Avancé* en cliquant sur le bouton *Enregistrer et fermer l'assistant*
+ * Enregistrer la configuration de la prise 1 et commencer à configurer la prise 2 en cliquant sur le bouton: *Enregistrer et configurer une autre prise*
 
 
-Il est à noter qu'à tout moment vous pouvez revenir sur une étape précédente en cliquant sur le bouton "Précédent" ou fermer l'assistant sans enregistrer de changements en cliquant sur le bouton "Fermer l'assistant"
+Il est à noter qu'à tout moment vous pouvez revenir sur une étape précédente en cliquant sur le bouton *Précédent* ou fermer l'assistant sans enregistrer de changements en cliquant sur le bouton *Fermer l'assistant*
 
 
 == Configuration des autres prises ==
 
-Si vous décider de configurer une autre prise après cela, les étapes 2 et 3 vont changer:
+Si vous décidez de configurer une autre prise après cela, les étapes 2 et 3 vont changer:
 A l'étape 2, il vous sera demandé de choisir le type d'équipement de la prise:
 
 http://cultibox.googlecode.com/svn/wiki/img/wizard5.png
  
 
-Puis à l'étape 3, en fonction du type choisit (pour les ventilateurs, humidificateurs, déshumidificateurs et chauffages), il vous faudra rentrer la valeur de fonctionnement de l'équipement et ses heures de mise en marche/arrêt. Cette valeur servira a déclencher automatiquement l'équipement. Par exemple, si vous choisissez de configurer la deuxième prise comme un ventilateur, vous pourrez choisir à partir de quelle température il se mettra en route. Si vous choisissez 22° C, votre prise se mettre en marche dès que la température dépassera cette valeur et s'arrêtera si elle descend en dessous.
+Puis à l'étape 3, en fonction du type choisit (pour les ventilateurs, humidificateurs, déshumidificateurs et chauffages), il vous faudra rentrer la valeur de fonctionnement de l'équipement et ses heures de mise en marche/arrêt. Cette valeur servira à déclencher automatiquement l'équipement. Par exemple, si vous choisissez de configurer la deuxième prise comme un ventilateur, vous pourrez choisir à partir de quelle température il se mettra en route. Si vous choisissez 22° C, votre prise se mettre en marche dès que la température dépassera cette valeur et s'arrêtera si elle descend en dessous.
 
 http://cultibox.googlecode.com/svn/wiki/img/wizard6.png
 
 
-Vous pourrez recommencer l'opération pour toutes vos prises et ainsi visualiser les courbes de fonctionnement de vos programmes en vous rendant dans l'onglet "Programme" du menu principal.
+Vous pourrez recommencer l'opération pour toutes vos prises et ainsi visualiser les courbes de fonctionnement de vos programmes en vous rendant dans l'onglet *Programme* du menu principal.
