@@ -24,7 +24,10 @@ Pour une aide plus détaillée, consultez la page suivante : [install_linux Linu
  * Connectez la carte SD fournie dans l'ordinateur. Si votre ordinateur n'est pas pourvu de lecteur de carte SD, vous pouvez utiliser l'adaptateur fourni.
  * Vous pouvez installer le logiciel de deux manières différentes:
     * vous pouvez exécuter l'installation graphiquement en cliquant sur le programme (nommé *cultibox-linux_X.X.X.deb* où les X représentent le numéro de version du logiciel)
-    * vous pouvez exécuter l'installation en mode console en exécutant la commande suivante avec des droits administrateurs: *dpkg -i cultibox-linux_X.X.X.deb*
+    * vous pouvez exécuter l'installation en mode console en exécutant la commande suivante avec des droits administrateurs: 
+{{{
+dpkg -i cultibox-linux_X.X.X.deb
+}}}
  * Une fois installé, vous pouvez lancer le logiciel de deux manières différentes:
     * en cherchant *Cultibox* dans la barre de recherche des programmes Ubuntu et en cliquant sur le logiciel *Cultibo*x
     * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
