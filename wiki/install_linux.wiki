@@ -90,7 +90,7 @@ On voit apparaitre le tag X86_64 en fin de ligne qui correspond à un système 6
 
 Pour installer votre logiciel en utilisant le gestionnaire de paquets de votre distribution:
 
- * Double cliquez sur le paquet (fichier .deb) que vous venez de télécharger, l'interface se lancera automatiquement
+ * Double-cliquez sur le paquet (fichier .deb) que vous venez de télécharger, l'interface se lancera automatiquement
  * Cliquez sur le bouton "Installer":
 
 http://cultibox.googlecode.com/svn/wiki/img/install_linux1.png
@@ -101,13 +101,13 @@ http://cultibox.googlecode.com/svn/wiki/img/install_linux1.png
 http://cultibox.googlecode.com/svn/wiki/img/install_linux2.png
 
 
- * Laisser l'installation se poursuivre et le logiciel Cultibox sera alors disponible
+ * Laissez l'installation se poursuivre et le logiciel Cultibox sera alors disponible
 
 
 = Lancement de l'interface Cultibox =
 Pour accéder au logiciel cultibox, vous avez deux possibilités:
 
- * Ouvrir un navigateur Web (Firefox, Chrome, IE) et visitez la page suivante: http://localhost:6891/cultibox/
+ * Ouvrir un navigateur Web (Firefox, Chrome, IE) et visiter la page suivante: http://localhost:6891/cultibox/
  * Ouvrir le logiciel grâce au raccourci dans les applications Linux Ubuntu. Pour cela ouvrez le gestionnaire des programmes (le "Dash") et tapez simplement cultibox dans la recherche pour le voir apparaite. Il vous suffira de cliquer dessus pour lancer l'interface:
 
 http://cultibox.googlecode.com/svn/wiki/img/install_linux3.png
