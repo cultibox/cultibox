@@ -3,7 +3,7 @@
 
 = Introduction =
 La page d'accueil est la première page affichée lors de l'exécution du logiciel. 
-Il est aussi possible de revenir sur cette page d'accueil en cliquant sur l'onglet "Bienvenue" du menu principal:
+Il est aussi possible de revenir sur cette page d'accueil en cliquant sur l'onglet *Bienvenue* du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_welcome.png
 
