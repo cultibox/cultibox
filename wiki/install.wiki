@@ -14,11 +14,17 @@ Pour une aide plus détaillée, consultez la page suivante : [install_windows Wi
  * Votre ordinateur peut vous demander l'autorisation d'exécuter les services MySQL et Apache. Autorisez l'exécution de ces services.
  * Une fois installé, vous pouvez lancer le logiciel de trois façons différentes:
     * en cliquant sur *Démarrer* puis *Cultibox* puis sur l'icône *Cultibox*, 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win2.png
+
     * en cliquant sur l'icône *Cultibox* présente sur le bureau si vous avez accepté d'en créer une lors de l'installation,
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win1.png
+
     * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: 
 {{{
 http://localhost:6891/cultibox/
 }}}
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win3.png
 
 == Linux==
 
@@ -33,10 +39,13 @@ dpkg -i cultibox-linux_X.X.X.deb
 }}}
  * Une fois installé, vous pouvez lancer le logiciel de deux manières différentes:
     * en cherchant *Cultibox* dans la barre de recherche des programmes Ubuntu et en cliquant sur le logiciel *Cultibox*
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_linux_1.png
+
     * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: 
 {{{
 http://localhost:6891/cultibox/
 }}}
+
 
 == Mac==
 
