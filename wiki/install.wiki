@@ -17,7 +17,7 @@ Pour une aide plus détaillée, consultez la page suivante : [install_windows Wi
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win2.png
 
     * en cliquant sur l'icône *Cultibox* présente sur le bureau si vous avez accepté d'en créer une lors de l'installation,
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win1.png
+[[Image:http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win1.png|Démarre de l'application sous windows]]
 
     * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: 
 {{{
