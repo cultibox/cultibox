@@ -108,7 +108,7 @@ http://cultibox.googlecode.com/svn/wiki/img/install_linux2.png
 Pour accéder au logiciel cultibox, vous avez deux possibilités:
 
  * Ouvrir un navigateur Web (Firefox, Chrome, IE) et visiter la page suivante: http://localhost:6891/cultibox/
-http://cultibox.googlecode.com/svn/wiki/img/install_linux2.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_linux2.png
 
  * Ouvrir le logiciel grâce au raccourci dans les applications Linux Ubuntu. Pour cela ouvrez le gestionnaire des programmes (le "Dash") et tapez simplement cultibox dans la recherche pour le voir apparaite. Il vous suffira de cliquer dessus pour lancer l'interface:
 http://cultibox.googlecode.com/svn/wiki/img/install_linux3.png
@@ -116,7 +116,7 @@ http://cultibox.googlecode.com/svn/wiki/img/install_linux3.png
 = Mise à jour =
 
 Pour mettre à jour le logiciel Cultibox, il vous suffit de suivre la même procédure que pour l'installation du logiciel. L'installateur réalisera les tâches nécessaires tout seul.
-Si vous utilisez la mise à jour en mode ligne de commande, k'affichage suivrant apparaîtra:
+Si vous utilisez la mise à jour en mode ligne de commande, l'affichage suivrant apparaîtra:
 
 {{{
 Preparing to replace cultibox 1.1.24-ubuntu (using cultibox-ubuntu-amd64_1.1.24.deb) ...
