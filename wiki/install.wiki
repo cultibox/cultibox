@@ -57,10 +57,14 @@ Pour une aide plus détaillée, consultez la page suivante : [install_mac Mac In
  * Lancez le programme d'installation (nommé *cultibox-macosx_X.X.X.exe* où les X représentent le numéro de version du logiciel).
  * Une fois installé, vous pouvez lancer le logiciel de deux manières différentes:
     * en cliquant sur l'application Cultibox présente dans le répertoire: */Applications*
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_mac1.png
+
     * en ouvrant un navigateur Web (Safari, Chrome, Firefox...) et en rentrant l'adresse suivante: 
 {{{
 http://localhost:6891/cultibox/
 }}}
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_mac2.png
 
 = Configuration=
 
