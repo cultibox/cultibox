@@ -29,7 +29,7 @@ Pour une aide plus détaillée, consultez la page suivante : [install_linux Linu
 dpkg -i cultibox-linux_X.X.X.deb
 }}}
  * Une fois installé, vous pouvez lancer le logiciel de deux manières différentes:
-    * en cherchant *Cultibox* dans la barre de recherche des programmes Ubuntu et en cliquant sur le logiciel *Cultibo*x
+    * en cherchant *Cultibox* dans la barre de recherche des programmes Ubuntu et en cliquant sur le logiciel *Cultibox*
     * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante: http://localhost:6891/cultibox/
 
 == Mac==
