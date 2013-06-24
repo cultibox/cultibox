@@ -8,7 +8,7 @@ Cette page décrit les étapes pour installer / désinstaller le logiciel dans u
 
 Pour télécharger la dernière version du logiciel:
   *  Suivre le lien qui apparaît en haut de l'interface. Ce lien n'est présent que si une nouvelle version est disponible.
-  *  Aller sur www.cultibox.fr puis dans l'onglet téléchargement, récupérer la version qui correspond à votre système d'exploitation. 
+  *  Allez sur http://www.cultibox.fr puis dans l'onglet téléchargement, récupérez la version qui correspond à votre système d'exploitation. 
 
 = Installation =
 
@@ -50,28 +50,28 @@ Cliquez sur terminer:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_10.png
 
-Si vous désirez lancer le logiciel, cliquer sur oui:
+Si vous désirez lancer le logiciel, cliquez sur *oui*:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_11.png
 
 
 = Mise à jour =
 
-Double-cliquer sur le programme d'installation: 
+Double-cliquez sur le programme d'installation: 
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_1.png
 
-Cliquez sur "Exécuter".
+Cliquez sur *Exécuter*.
 
 Sélectionner votre langue:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_2.png
 
-Pour sauvegarder votre ancienne configuration, cliquer sur oui:
+Pour sauvegarder votre ancienne configuration, cliquez sur *oui*:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_3.png
 
-Pour sauvegarder votre ancienne configuration, cliquer sur oui:
+Pour sauvegarder votre ancienne configuration, cliquez sur *oui*:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_4.png
 
@@ -83,7 +83,7 @@ Il vous faut accepter les termes du contrat pour continuer:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_6.png
 
-Cliquez sur Installer pour procéder à l'installation:
+Cliquez sur *Installer* pour procéder à l'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_7.png
 
@@ -99,26 +99,34 @@ Pour que le logiciel soit pleinement fonctionnel, il est nécessaire de vider le
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_9.png
 
-Cliquez sur terminer:
+Cliquez sur *Terminer*:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_10.png
 
-Si vous désirez lancer le logiciel, cliquer sur oui:
+Si vous désirez lancer le logiciel, cliquez sur *oui*:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_11.png
 
 = Lancement du logiciel =
 
-  * Une icône du logiciel est disponible dans le menu "Démarrer" -> "Programme" -> "Cultibox".
-  * Une icône Cultibox est disponible sur votre Bureau si vous avez autorisé sa création pendant la phase d'installation du logiciel
-  * Vous pouvez aussi entrer l'adresse suivante dans votre navigateur web (Firefox, Chrome, Internet Explorer...) : 
+Une fois installé, vous pouvez lancer le logiciel de trois façons différentes:
+  * en cliquant sur *Démarrer* puis *Programmes* puis *Cultibox* et enfin sur l'icône *Cultibox*, 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win2.png
+
+  * en cliquant sur l'icône *Cultibox* présente sur le bureau si vous avez accepté d'en créer une lors de l'installation,
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win1.png
+
+  * en ouvrant un navigateur Web (Firefox, Chrome, Safari, Internet Explorer...) et en rentrant l'adresse suivante:
 {{{
 http://localhost:6891/cultibox/
 }}}
 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win3.png
+
+
 = Désinstallation =
 
-Pour désinstaller le logiciel, cliquez sur "Désinstaller Cultibox" présent dans le menu démarrer de Windows et autorisez l'éxécution du programme.
+Pour désinstaller le logiciel, cliquez sur *Désinstaller Cultibox* présent dans le menu démarrer de Windows et autorisez l'exécution du programme.
 Laissez faire le programme de désintallation pour qu'il supprime tous les composants du logiciel Cultibox.
 
-Note: Si vous avez sauvegardé vos bases à l'aide des outils Cultibox ou que vous avez rajouté manuellement des fichiers, ces derniers ne seront pas supprimés et seront toujours présent dans le répertoire "C:\Cultibox". Il vous faudra les supprimer manuellement.
+Note: Si vous avez sauvegardé vos bases à l'aide des outils Cultibox ou que vous avez rajouté manuellement des fichiers, ces derniers ne seront pas supprimés et seront toujours présents dans le répertoire "C:\Cultibox". Il vous faudra les supprimer manuellement.

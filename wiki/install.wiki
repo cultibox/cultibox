@@ -13,7 +13,7 @@ Pour une aide plus détaillée, consultez la page suivante : [install_windows Wi
  * Lancez le programme d'installation (nommé *cultibox-windows_X.X.X.exe* où les X représentent le numéro de version du logiciel).
  * Votre ordinateur peut vous demander l'autorisation d'exécuter les services MySQL et Apache. Autorisez l'exécution de ces services.
  * Une fois installé, vous pouvez lancer le logiciel de trois façons différentes:
-    * en cliquant sur *Démarrer* puis *Cultibox* puis sur l'icône *Cultibox*, 
+    * en cliquant sur *Démarrer* puis *Programmes* puis *Cultibox* et enfin sur l'icône *Cultibox*, 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win2.png
 
     * en cliquant sur l'icône *Cultibox* présente sur le bureau si vous avez accepté d'en créer une lors de l'installation,
