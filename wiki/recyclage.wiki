@@ -1,5 +1,8 @@
 #summary Recyclage.
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 En concevant le produit Cultibox, nous avons essayer de minimiser les déchets non recyclable. Ce chapitre vous indique que faire des déchets.
