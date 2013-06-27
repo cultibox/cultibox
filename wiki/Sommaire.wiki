@@ -5,6 +5,8 @@
     * [general_caution Règle de sécurité]
     * [contents Contenu du paquet]
     * [sav Service après vente]
+    * [recyclage Recyclage]
+    * [fabrication Fabrication française]
   * [install Mise en place]
     * [install_windows Windows Installation / Désinstallation du logiciel]
     * [install_mac Mac Installation / Désinstallation du logiciel]
