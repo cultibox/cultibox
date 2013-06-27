@@ -1,14 +1,52 @@
-#summary Parametres Cultibox
+#summary Paramètres Cultibox
 
 = Sommaire =
+
+Le menu paramètre de la Cultibox permet l'accès aux menus suivants: 
+
 <wiki:toc max_depth="3" />
 
-Le menu paramètre de la cultibox permet l'accès aux menus suivants: 
-
-  * [gui_box_menu_param_culti_hour Horloge]
-  * [gui_box_menu_param_culti_reg Registre]
-  * [gui_box_menu_param_culti_alarme Alarme]
-  * [gui_box_menu_param_culti_regul Régulation]
-
-
 http://cultibox.googlecode.com/svn/wiki/img/gui_box_menu_param_culti.png
+
+= Horloge =
+Ce menu permet de changer l'heure de la Cultibox. 
+Il est a noter que la Cultibox ne change pas d'heure toute seule pour le passage de l'heure d'été à l'heure d'hiver.
+
+Pour changer un chiffre : Appuyer sur haut ou bas.
+Pour changer de chiffre à modifier : Appuyer sur gauche ou droite.
+Pour enregistrer l'heure : Appuyer sur le bouton central.
+
+= Registre =
+
+Ce menu permet de consulter et modifier des paramètres de la Cultibox. 
+Il est a noter que hormis le "Contraste", la plus part de ces paramètres et informations ne sont pas prévu pour les utilisateurs.
+
+* Attention : Si d'autres paramètres que le contraste sont modifiés, les informations relevées par la Cultibox peuvent être altérées! *
+
+Sauf pour le contraste, l'utilisateur ne peut pas modifier les paramètres.
+
+* Version firm: *
+Ce numéro indique la version du firmware de la Cultibox.
+
+* ID Culti: *
+Ceci est le numéro d'identité de votre Cultibox. Il nous permet de suivre ce qui la compose et son cycle de vie.
+
+* Contraste(Pour utilisateur): *
+Cette valeur permet de modifier le contraste de l'écran de votre Cultibox.
+Pour modifier le contraste: Appuyer sur gauche ou droite pour changer ça valeur. La valeur de contraste est enregistrée dans un fichier (/cnf/cnt) sur la carte SD. Au démarrage de la Cultibox, une valeur par défaut est chargée. Votre écran peut donc être un peu sombre ou un peu trop clair au démarrage. Durant le chargement de la configuration, la Cultibox charge votre valeur de contraste et l'applique à l'écran.
+
+* Freq plug: *
+Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox met à jour l'état des prises (0 indique une mise a jours permanente)
+
+* Log freq: *
+Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox enregistre les valeurs envoyé par chacune de ces sondes.
+
+* Pwr freq: *
+Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox enregistre les valeurs d'état de chaque prise qu'elle contrôle.
+
+* RTC off: *
+Cette valeur indique, un décalage "artificiel" créé entre la Cultibox et l'heure "réelle". Cette valeur est à 0 par défaut.
+
+= Alarme =
+
+= Régulation =
