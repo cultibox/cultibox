@@ -1,5 +1,8 @@
 #summary Service après vente.
 
+= Sommaire =
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 Le produit Cultibox est vendu accompagné d'une garantie de deux ans. C'est une garantie constructeur pièce et main d'oeuvre. La durée de garantie s'applique à partir du jour de l'achat.
