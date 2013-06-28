@@ -131,24 +131,6 @@ msgstr "Enable alarm system"
 msgid "CONFIGURE_ALARM_VALUE"
 msgstr "Threshold value triggering the alarm"
 
-msgid "CONFIGURE_ALARM_SENSO"
-msgstr "Threshold the alarm with the "
-
-msgid "CONFIGURE_ALARM_SENSS"
-msgstr "Sound an alarm if the sensor measures a value"
-
-msgid "ALARM_UNDER"
-msgstr "under the threshold"
-
-msgid "ALARM_ABOVE"
-msgstr "above the threshold"
-
-msgid "ALARM_TEMP"
-msgstr "Temperature"
-
-msgid "ALARM_HUMI"
-msgstr "Humidity"
-
 msgid "CHECK_UPDATE"
 msgstr "Check automatically if updates are available"
 
@@ -184,6 +166,9 @@ msgstr "Formatage de la carte réalisé avec succès"
 
 msgid "ERROR_FORMAT"
 msgstr "Erreur lors du formatage de la carte SD"
+
+msgid "ALARM_DESCRIPTION"
+msgstr "L'alarme de la Cultibox permet d'éteindre toutes les prises lorsque la sécurité de l'espace de culture est en jeu. Définissez une température qui, une fois dépassée, provoque la coupure de toute les prises. <br /><br /><b>Attention</b>: une fois ce seuil atteint, les prises se coupent et la Cultibox ne reviendra à un état normale que lorsque vous aurez acquitté l'alarme directement sur le boitier."
 
 
 # For the logs part:
@@ -1343,9 +1328,6 @@ msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox 
 
 msgid "TOOLTIP_PLUG_FREQ"
 msgstr "Cette option permet de configurer la fréquence à laquelle sera mise à jour l'état (Marche/Arrêt) de vos prises."
-
-msgid "TOOLTIP_ALARM"
-msgstr "L'alarme de la Cultibox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au dessus ou en dessous de ce seuil."
 
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."

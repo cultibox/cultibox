@@ -967,12 +967,11 @@ function write_plugconf($data,$sd_card,&$out) {
 //   $power_frequency    record of the power frequency value
 //   $alarm_enable       enable or disable the alarm system
 //   $alarm_value        value to trigger the alarm
-//   $alarm_senso        humidity or temperature to use to trigger the alarm
-//   $alarm_senss        configure if the alarm have to be triggered above or under the value
-//   
-//   $out         error or warning message
+//   $out                error or warning message
 // RET false if an error occured, true else  
-function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$alarm_senso="000T",$alarm_senss="000+",&$out) {
+function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",&$out) {
+   $alarm_senso="000T";
+   $alarm_senss="000+";
    $record=$record_frequency*60;
    $power=$power_frequency*60;
 

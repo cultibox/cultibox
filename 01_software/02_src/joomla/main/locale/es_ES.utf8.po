@@ -131,24 +131,6 @@ msgstr "Activer le système d'alarme"
 msgid "CONFIGURE_ALARM_VALUE"
 msgstr "Valeur du seuil de déclenchement de l'alarme"
 
-msgid "CONFIGURE_ALARM_SENSO"
-msgstr "Déclenchement de l'alarme en fonction de"
-
-msgid "CONFIGURE_ALARM_SENSS"
-msgstr "Déclencher l'alarme si le capteur mesure une valeur en"
-
-msgid "ALARM_UNDER"
-msgstr "dessous du seuil"
-
-msgid "ALARM_ABOVE"
-msgstr "dessus du seuil"
-
-msgid "ALARM_TEMP"
-msgstr "Température"
-
-msgid "ALARM_HUMI"
-msgstr "Humidité"
-
 msgid "CHECK_UPDATE"
 msgstr "Vérifier automatiquement la présence de mises à jour"
 
@@ -182,6 +164,8 @@ msgstr "Formatage de la carte réalisé avec succès"
 msgid "ERROR_FORMAT"
 msgstr "Erreur lors du formatage de la carte SD"
 
+msgid "ALARM_DESCRIPTION"
+msgstr "L'alarme de la Cultibox permet d'éteindre toutes les prises lorsque la sécurité de l'espace de culture est en jeu. Définissez une température qui, une fois dépassée, provoque la coupure de toute les prises. <br /><br /><b>Attention</b>: une fois ce seuil atteint, les prises se coupent et la Cultibox ne reviendra à un état normale que lorsque vous aurez acquitté l'alarme directement sur le boitier."
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1340,9 +1324,6 @@ msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox 
 
 msgid "TOOLTIP_PLUG_FREQ"
 msgstr "Cette option permet de configurer la fréquence à laquelle sera mis à jour l'état (Marche/Arrêt) de vos prises."
-
-msgid "TOOLTIP_ALARM"
-msgstr "L'alarme de la Cultibox est un moyen simple de vérifier qu'une composante (température ou hygrométrie) ne passe pas au dessus ou en dessous d'un certain seuil. Si vous activez le système d'alarme, il faut faudra choisir: si vous voulez vérifier la température ou l'hygrométrie, à partir de quel seuil l'alarme doit se déclencher et si elle doit se déclencher au-dessus ou en-dessous de ce seuil. <br /><br /><b>Il est à noter que l'alarme coupe toutes les prises en cas de déclenchement du seuil configuré.</b>"
 
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."

@@ -1,3 +1,10 @@
+Cultibox (1.1.25) precise; urgency=low
+    + Sipmlification de l'alarme (on ne règle plus que la température)
+    + Réduction de la taille de l'installation (suppréssion de PERL)
+
+-- Yann Genevois <yann.genevois@gmail.com> Fri Jun 28 14:51:12 CEST 2013
+
+
 Cultibox (1.1.24) precise; urgency=low
     + Ajout d'un script de désintallation pour Mac Os X
     + Correction d'un problèe de nom de variable dans la gestion des programmes cycliques
