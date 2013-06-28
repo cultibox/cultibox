@@ -46,8 +46,6 @@ $pop_up_message="";
 $pop_up_error_message="";
 $alarm_enable=getvar('alarm_enable');
 $alarm_value=getvar('alarm_value');
-$alarm_senso=getvar('alarm_senso');
-$alarm_senss=getvar('alarm_senss');
 $update=getvar('update');
 $program="";
 $version=get_configuration("VERSION",$main_error);
@@ -166,20 +164,6 @@ if(!empty($alarm_value)) {
         $alarm_value = get_configuration("ALARM_VALUE",$main_error);
 }
 
-if(!empty($alarm_senso)) {
-        insert_configuration("ALARM_SENSO","$alarm_senso",$main_error);
-        $update_conf=true;
-} else {
-        $alarm_senso = get_configuration("ALARM_SENSO",$main_error);
-}
-
-if(!empty($alarm_senss)) {
-        insert_configuration("ALARM_SENSS","$alarm_senss",$main_error);
-        $update_conf=true;
-} else {
-        $alarm_senss = get_configuration("ALARM_SENSS",$main_error);
-}
-
 
 if((isset($stats))&&(!empty($stats))) {
         insert_configuration("STATISTICS","$stats",$main_error);
@@ -263,9 +247,9 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 // Change files on the cultibox SD card after the configuration has been updated: plug's frequency, alarm value etc...
 if((isset($sd_card))&&(!empty($sd_card))) {
 	if("$update_frequency"=="-1") {
-		write_sd_conf_file($sd_card,$record_frequency,"0",$power_frequency,"$alarm_enable","$alarm_value","$alarm_senso","$alarm_senss",$main_error);
+		write_sd_conf_file($sd_card,$record_frequency,"0",$power_frequency,"$alarm_enable","$alarm_value",$main_error);
 	} else {
-		write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,"$alarm_enable","$alarm_value","$alarm_senso","$alarm_senss",$main_error);	
+		write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,"$alarm_enable","$alarm_value",$main_error);	
 	}	
 }
 

@@ -16,12 +16,15 @@ function expand(div) {
       var divLabelAlarm = document.getElementById('div_alarm_label');
       var divLabelCard = document.getElementById('div_card_label');
 
+      var divAlarmDesc = document.getElementById('div_alarm_description');
+
       switch(div) {
          case 'user_interface' : divConfig.style.display = '';
                                  divSystem.style.display = "none";
                                  divAlarm.style.display = "none";
                                  divCard.style.display = "none";
                                  divSubmit.style.display = "";
+                                 divAlarmDesc.style.display = "none";
                         
                                  divLabelConfig.style.color = '#777779';
                                  divLabelSystem.style.color = '';
@@ -41,6 +44,7 @@ function expand(div) {
                                    divAlarm.style.display = "none";
                                    divCard.style.display = "none";
                                    divSubmit.style.display = "";
+                                   divAlarmDesc.style.display = "none";
 
                                    divLabelConfig.style.color = '';
                                    divLabelSystem.style.color = '#777779';
@@ -60,6 +64,8 @@ function expand(div) {
                                   divAlarm.style.display = '';
                                   divCard.style.display = "none";
                                   divSubmit.style.display = "";
+                                  divAlarmDesc.style.display = "";
+
 
                                   divLabelConfig.style.color = '';
                                   divLabelSystem.style.color = '';
@@ -80,6 +86,7 @@ function expand(div) {
                                  divAlarm.style.display = "none";
                                  divCard.style.display = "";
                                  divSubmit.style.display = "none";
+                                 divAlarmDesc.style.display = "none";
 
                                  divLabelConfig.style.color = '';
                                  divLabelSystem.style.color = '';
@@ -118,16 +125,12 @@ function verifDigit(e) {
 // USED BY: templates/configuration.html
 function getAlarm(i) {
       var divAval = document.getElementById('div_alarm_value');
-      var divAsenso = document.getElementById('div_alarm_senso');
-      var divAsenss = document.getElementById('div_alarm_senss');
-      var labelAsenss = document.getElementById('label_alarm_senss');
-      var labelAsenso = document.getElementById('label_alarm_senso');
       var labelAvalue = document.getElementById('label_alarm_value');
 
       switch(i) {
-         case 0 : divAval.style.display = ''; divAsenso.style.display = ''; divAsenss.style.display = ''; labelAvalue.style.display = ''; labelAsenso.style.display = ''; labelAsenss.style.display = '';break;
-         case 1 : divAval.style.display = 'none'; divAsenso.style.display = 'none'; divAsenss.style.display = 'none'; labelAvalue.style.display = 'none'; labelAsenso.style.display = 'none'; labelAsenss.style.display = 'none'; break;
-         default: divAval.style.display = ''; divAsenso.style.display = ''; divAsenss.style.display = ''; labelAvalue.style.display = ''; labelAsenso.style.display = ''; labelAsenss.style.display = ''; break;
+         case 0 : divAval.style.display = ''; labelAvalue.style.display = ''; break;
+         case 1 : divAval.style.display = 'none'; labelAvalue.style.display = 'none'; break;
+         default: divAval.style.display = ''; labelAvalue.style.display = ''; break;
       }
 }
 //}}}

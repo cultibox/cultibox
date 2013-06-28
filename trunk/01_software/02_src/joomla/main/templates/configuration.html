@@ -50,6 +50,17 @@
 </tr>
 </table>    
 <br />
+<div id="div_alarm_description" style="display:none">
+<br />
+<table class="table_width">
+<tr>
+    <td class="conf-menu-marge"></td>
+    <td><?php echo __('ALARM_DESCRIPTION'); ?></td>
+    <td class="conf-menu-marge"></td>
+</tr>
+</table>
+<br />
+</div>
 <hr />
 <br />
     
@@ -380,7 +391,7 @@
 <table class="conf-table">
    <tr>  
       <td class="conf-marge"></td>
-      <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_ALARM'); ?>" /></td>
+      <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?>:</td>
       <td><select name="alarm_enable" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
            <?php if("$alarm_enable"=="0001") {
                      echo "<option value='0001' selected>".__('YES')."</option>";
@@ -394,40 +405,10 @@
       <td></td>
    </tr>
    <tr>
-      <td class="conf-marge"></td>
-      <td><div id="label_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSO'); ?>:</div></td>
-      <td><div id="div_alarm_senso" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><select name="alarm_senso" onChange="getUnity(this.selectedIndex,'');" onLoad="getUnity(this.selectedIndex,'');">
-           <?php if("$alarm_senso"=="000T") {
-                     echo "<option value='000T' selected>".__('ALARM_TEMP')."</option>";
-                     echo "<option value='000H'>".__('ALARM_HUMI')."</option>";
-                  } else {
-                     echo "<option value='000T'>".__('ALARM_TEMP')."</option>";
-                     echo "<option value='000H' selected>".__('ALARM_HUMI')."</option>";
-                  }
-           ?>
-      </select></div></td>
-    <td></td>
-   </tr>
-   <tr>
    <td class="conf-marge"></td>
       <td><div id="label_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_VALUE'); ?>:</div></td>
-      <td><div id="div_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value" onKeypress="return verifDigit(event);"><label id="label_degree" style="<?php if("$alarm_senso"=="000H") echo "display:none"; ?>">°C</label><label id="label_pourcent" style="<?php if("$alarm_senso"=="000T") echo "display:none"; ?>">%</label></div></td>
+      <td><div id="div_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value" onKeypress="return verifDigit(event);"><label id="label_degree">°C</label></div></td>
       <td><?php if((isset($error['alarm']))&&(!empty($error['alarm']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['alarm']."</div>"; ?></td>
-   </tr>
-   <tr>
-      <td class="conf-marge"></td>
-      <td ><div id="label_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_SENSS'); ?>:</div></td>
-      <td><div id="div_alarm_senss" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><select name="alarm_senss">
-           <?php if("$alarm_senss"=="000+") {
-                     echo "<option value='000+' selected>".__('ALARM_ABOVE')."</option>";
-                     echo "<option value='000-'>".__('ALARM_UNDER')."</option>";
-                  } else {
-                     echo "<option value='000+'>".__('ALARM_ABOVE')."</option>";
-                     echo "<option value='000-' selected>".__('ALARM_UNDER')."</option>";
-                  }
-           ?>
-      </select></div></td>
-      <td></td>
    </tr>
 </table>
 </div>
