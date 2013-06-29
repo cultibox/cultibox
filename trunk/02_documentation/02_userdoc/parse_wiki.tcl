@@ -179,7 +179,7 @@ proc parseLink {line} {
                 set line "${textBefore}\\href\{[lindex $textLink 0]\}\{[lrange $textLink 1 end]\}${textAfter}"
             } else {
                 set TempLink [string map {"#" "_"} [removeDiatric [lindex [split [lindex $textLink 0] "/"] end]]]
-                set line "${textBefore}[lindex $textLink 1] (\\S \\ref\{${TempLink}\}\{\})${textAfter}"
+                set line "${textBefore}[lrange $textLink 1 end] (\\S \\ref\{${TempLink}\}\{\})${textAfter}"
                 #set line "${textBefore}${textAfter}"
             }
         }
@@ -226,7 +226,7 @@ proc parse {inFileName outFileName level} {
       
       # Remplacement des caractere spéciaux
       if {[string first {http://cultibox.googlecode.com/svn/wiki/img/} $line] != -1} {
-         set line [string map {{http://cultibox.googlecode.com/svn/wiki/img/} "\\includegraphics\[width=0.9\\textwidth\]\{./wiki/img/" {.jpg} ".jpg\}" {.png} ".png\}" {.PNG} ".PNG\}"} $line]     
+         set line [string map {{http://cultibox.googlecode.com/svn/wiki/img/} "\\scalegraphics\{./wiki/img/" {.jpg} ".jpg\}" {.png} ".png\}" {.PNG} ".PNG\}"} $line]     
       } elseif {$inComment == 0} {
          set line [string map $::CaracSpeciaux $line]
       }
@@ -297,6 +297,7 @@ puts $fid {\usepackage[francais]{babel}  }
 puts $fid {\usepackage{textcomp}         }
 puts $fid {\usepackage{hyperref}         }
 puts $fid {\usepackage{lscape}         }
+puts $fid {\usepackage{calc}}
 puts $fid {% These packages are all incorporated in the memoir class to one degree or another...}
 
 puts $fid {%%% HEADERS & FOOTERS                                                         }
@@ -310,6 +311,14 @@ puts $fid {\renewcommand{\footrulewidth}{1pt}}
 puts $fid {\fancyfoot[L]{}}
 puts $fid {\fancyfoot[C]{}}
 puts $fid {\fancyfoot[R]{\textbf{page \thepage}}}
+
+puts $fid {%%% Command}
+puts $fid {\newlength{\imgwidth}}
+puts $fid "\\newcommand\\scalegraphics\[1\]\{%"   
+puts $fid {    \settowidth{\imgwidth}{\includegraphics{#1}}%}
+puts $fid {    \setlength{\imgwidth}{\minof{\imgwidth}{0.9\textwidth}}%}
+puts $fid {    \includegraphics[width=\imgwidth]{#1}%}
+puts $fid "\}"
 
 puts $fid {%%% SECTION TITLE APPEARANCE    }
 puts $fid {\usepackage{sectsty}            }
