@@ -13,7 +13,7 @@ set imgTexPath [file join $path wiki_tex img]
 
 # Define rules for special cars
 set CaracSpeciaux [list]
-lappend CaracSpeciaux "°C" "\\\\textdegree"
+lappend CaracSpeciaux "°C" "\\textdegree{}C"
 lappend CaracSpeciaux "#" "\\#"
 lappend CaracSpeciaux "_" "\\_"
 lappend CaracSpeciaux "\\" "\\textbackslash{}"
@@ -24,6 +24,24 @@ set CaracSpeciauxEnd [list]
 lappend CaracSpeciauxEnd "*" ""
 
 set largeurTable 15
+set ::PageActualyParse ""
+
+proc removeDiatric {st} {
+ return [string map {
+        "Ą" "A"  "Ł" "L"  "Ľ" "L"  "Ś" "S"  "Š" "S"  "Ş" "S"  "Ť" "T"  "Ź" "Z"
+        "Ž" "Z"  "Ż" "Z"  "ą" "a"  "ł" "l"  "ľ" "l"  "ś" "s"  "š" "s"  "ş" "s"
+        "ť" "t"  "ź" "z"  "ž" "z"  "ż" "z"  "Ŕ" "R"  "Á" "A"  "A" "A"  "Ă" "A"
+        "Ä" "A"  "Ĺ" "L"  "Ć" "C"  "Ç" "C"  "Č" "C"  "É" "E"  "Ę" "E"  "Ë" "E"
+        "Ě" "E"  "Í" "I"  "Î" "I"  "Ď" "D"  "Đ" "D"  "Ń" "N"  "Ň" "N"  "Ó" "O"
+        "Ô" "O"  "Ő" "O"  "Ö" "O"  "×" "x"  "Ř" "R"  "Ů" "U"  "Ú" "U"  "Ű" "U"
+        "Ü" "U"  "Ý" "Y"  "Ţ" "T"  "ß" "s"  "ŕ" "r"  "á" "a"  "â" "a"  "ă" "a"
+        "ä" "a"  "ĺ" "l"  "ć" "c"  "ç" "c"  "č" "c"  "é" "e"  "ę" "e"  "ë" "e"
+        "ě" "e"  "í" "i"  "î" "i"  "ď" "d"  "đ" "d"  "ń" "n"  "ň" "n"  "ó" "o"
+        "ô" "o"  "ő" "o"  "ö" "o"  "ř" "r"  "ů" "u"  "ú" "u"  "ű" "u"  "ü" "u"
+        "ý" "y"  "ţ" "t"  "à" "a"  "û" "u"  "œ" "oe" "è" "e"  "ê" "e"
+    } $st]
+}
+
 
 proc parseTitle {line level} {
 
@@ -41,29 +59,32 @@ proc parseTitle {line level} {
       return $line
    }
    
-   set summary [string map {"=" "" {_} " "} $line]
+   set summary [string trim [string map {"=" "" {_} " "} $line]]
+   set Sous [removeDiatric [string map {" " "_"} ${summary}]]
+   if {$Sous != ""} {set Sous "_$Sous"}
+   set label "\\label\{[file rootname ${::PageActualyParse}]${Sous}\}"
    
    switch -- ${level} {
       "-1" {
-         return "\\part\{${summary}\}"
+         return "\\part\{${summary}\}  $label"
       }
       "0" {
-         return "\\chapter\{${summary}\}"
+         return "\\chapter\{${summary}\}  $label"
       }
       "1" {
-         return "\\section\{${summary}\}"
+         return "\\section\{${summary}\}  $label"
       }
       "2" {
-         return "\\subsection\{${summary}\}"
+         return "\\subsection\{${summary}\}  $label"
       }
       "3" {
-         return "\\subsubsection\{${summary}\}"
+         return "\\subsubsection\{${summary}\}  $label"
       }
       "4" {
-         return "\\paragraph\{${summary}\}"
+         return "\\paragraph\{${summary}\}  $label"
       }
       "5" {
-         return "\\subparagraph\{${summary}\}"
+         return "\\subparagraph\{${summary}\}  $label"
       }                        
    }
    
@@ -143,9 +164,34 @@ proc parseListe {line} {
    return $line
 }
 
+proc parseLink {line} {
+
+    if {[string first "\[" $line] != -1} {
+    
+        set startLink [string first "\[" $line]
+        set endLink   [string first "\]" $line]
+        set textBefore [string range $line 0 [expr $startLink - 1]]
+        set textAfter [string range $line [expr $endLink + 1] end]
+        set textLink  [string map {"\[" "" "\]" ""} [string range $line $startLink $endLink]]
+
+        if {[llength $textLink] >= 2} {
+            if {[string first "code.google.com" $line] == -1 && [string first "http" $line] != -1} {
+                set line "${textBefore}\\href\{[lindex $textLink 0]\}\{[lrange $textLink 1 end]\}${textAfter}"
+            } else {
+                set TempLink [string map {"#" "_"} [removeDiatric [lindex [split [lindex $textLink 0] "/"] end]]]
+                set line "${textBefore}[lindex $textLink 1] (\\S \\ref\{${TempLink}\}\{\})${textAfter}"
+                #set line "${textBefore}${textAfter}"
+            }
+        }
+    }
+
+    return $line
+}
+
 #
 proc parse {inFileName outFileName level} {
    puts "Parsing $inFileName"; update
+   set ::PageActualyParse [file tail $inFileName]
    
    # Recherche du titre de la page
    set summary [searchSumary $inFileName]
@@ -154,21 +200,22 @@ proc parse {inFileName outFileName level} {
    set out [open $outFileName w+]
    
    # Ajout du nom du fichier
+   set labelT "\\label\{[file rootname ${::PageActualyParse}]\}"
    switch -- ${level} {
       "-1" {
-         puts $out "\\part\{${summary}\}"
+         puts $out "\\part\{${summary}\}  $labelT"
       }
       "0" {
-         puts $out "\\chapter\{${summary}\}"
+         puts $out "\\chapter\{${summary}\}  $labelT"
       }
       "1" {
-         puts $out "\\section\{${summary}\}"
+         puts $out "\\section\{${summary}\}  $labelT"
       }
       "2" {
-         puts $out "\\subsection\{${summary}\}"
+         puts $out "\\subsection\{${summary}\}  $labelT"
       }
       "3" {
-         puts $out "\\subsubsection\{${summary}\}"
+         puts $out "\\subsubsection\{${summary}\}  $labelT"
       }                  
    }
 
@@ -179,10 +226,12 @@ proc parse {inFileName outFileName level} {
       
       # Remplacement des caractere spéciaux
       if {[string first {http://cultibox.googlecode.com/svn/wiki/img/} $line] != -1} {
-         set line [string map {{http://cultibox.googlecode.com/svn/wiki/img/} "\\includegraphics\{./wiki/img/" {.jpg} ".jpg\}" {.png} ".png\}" {.PNG} ".PNG\}"} $line]     
+         set line [string map {{http://cultibox.googlecode.com/svn/wiki/img/} "\\includegraphics\[width=0.9\\textwidth\]\{./wiki/img/" {.jpg} ".jpg\}" {.png} ".png\}" {.PNG} ".PNG\}"} $line]     
       } elseif {$inComment == 0} {
          set line [string map $::CaracSpeciaux $line]
       }
+      
+      set line [parseLink $line]
       
       set line [parseListe $line] 
       set line [string map $::CaracSpeciauxEnd $line]
@@ -190,6 +239,8 @@ proc parse {inFileName outFileName level} {
       set line [parseTitle $line $level]
       
       set line [parseTab $line]
+      
+
 
       if {[string first {#summary} $line] != -1} {
          set line "";
@@ -206,9 +257,7 @@ proc parse {inFileName outFileName level} {
          }
       } 
 
-      
       puts $out $line
-   
    }
    
    if {$::inTab == 1} {
@@ -253,9 +302,14 @@ puts $fid {% These packages are all incorporated in the memoir class to one degr
 puts $fid {%%% HEADERS & FOOTERS                                                         }
 puts $fid {\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry }
 puts $fid {\pagestyle{fancy} % options: empty , plain , fancy           }
-puts $fid {\renewcommand{\headrulewidth}{1pt} % customise the layout... }
-puts $fid {\lhead{Manuel Cultibox}\chead{}\rhead{}        }
-puts $fid {\lfoot{}\cfoot{\thepage}\rfoot{}}
+puts $fid {\renewcommand{\headrulewidth}{1pt} % customise the layout... } 
+puts $fid {\fancyhead[L]{\leftmark}}
+puts $fid {\fancyhead[R]{Manuel Cultibox}}
+
+puts $fid {\renewcommand{\footrulewidth}{1pt}}
+puts $fid {\fancyfoot[L]{}}
+puts $fid {\fancyfoot[C]{}}
+puts $fid {\fancyfoot[R]{\textbf{page \thepage}}}
 
 puts $fid {%%% SECTION TITLE APPEARANCE    }
 puts $fid {\usepackage{sectsty}            }
