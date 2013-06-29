@@ -1,4 +1,4 @@
-#summary Sommaire de l'aide de l'interface graphique de la Cultibox
+#summary Interface Boitier
 
 = Introduction =
 
