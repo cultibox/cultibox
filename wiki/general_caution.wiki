@@ -20,6 +20,9 @@ Conducteurs dénudés, bornes électriques accessibles et autres appareillages d
  * Chaque prise vendue avec la Cultibox est faite pour ne piloter qu'un seul élément. Ne pas mettre de multiprise dessus.
 
 = Cultibox =
+Pour l'ensemble du système les règles suivantes doivent être respectées:
+ * Cet appareil n'est pas destiné à être utilisé par des personnes (notamment des enfants) dont les capacités physiques, sensorielles ou intellectuelles sont réduites, ou par des personnes manquant d'expérience ou de connaissance.
+
 == Boitier principal ==
 Le boitier principal doit être installé en dehors de l'espace de culture. Les règles suivantes doivent être respectées:
  * La température doit être comprise entre 5 et 40°C.
@@ -42,23 +45,28 @@ Le câble ne doit pas être installé à proximité de l’alimentation des lamp
 La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage.
 Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est *600W*.
 Les règles suivantes doivent être respectées:
+ * La tension secteur locale doit être : 230V 50Hz 
  * La température doit être comprise entre 0 et 40°C.
  * L'humidité doit être comprise entre 5 et 90% RH. 
  * La prise ne doit pas être démontée.
  * Aucune projection d'eau ou de vapeur sur la prise.
-
+ * Ne pas ouvrir le boitier, vous risqueriez une électrocution.
+ 
 == Prise 1000W ==
 La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage.
 Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est *150W*.
 Les règles suivantes doivent être respectées:
+ * La tension secteur locale doit être : 230V 50Hz 
  * La température doit être comprise entre 0 et 40°C.
  * L'humidité doit être comprise entre 5 et 90% RH. 
  * La prise ne doit pas être démontée.
  * Aucune projection d'eau ou de vapeur sur la prise.
+ * Ne pas ouvrir le boitier, vous risqueriez une électrocution.
 
 == Adaptateur secteur ==
 L'adaptateur secteur permet d'alimenter la Cultibox en électricité.
 Les règles suivantes doivent être respectées:
+ * La tension secteur locale doit être : 230V 50Hz 
  * La température doit être comprise entre 0 et 40°C.
  * L'humidité doit être comprise entre 5 et 90% RH. 
  * L'adaptateur secteur ne doit pas être démontée.
@@ -68,33 +76,33 @@ Les règles suivantes doivent être respectées:
 Lors du stockage, les conditions suivantes doivent être respectées:
  * Température : entre 0°C et 60°C
  * Humidité : entre 5% et 95%RH
- * Shocks maximum : 30g
+ * Choque maximum : 30g
  * Vibration : 2g
  * La languette de la pile ne doit pas être retirée
 
 = Information relatives à l'évacuation des déchets =
 La Cultibox et ses accessoires ne doivent pas être jetés avec les ordures ménagères. Pour que la Cultibox et ses accessoires subissent un traitement, une récupération et un recyclage appropriés, envoyez-les dans les points de collecte désignés, ou ils peuvent être déposés gratuitement. Dans certains pays, il est possible de renvoyer les produits au revendeur local en cas d'achat d'un produit équivalent.
 En éliminant correctement ce produit, vous contribuerez à la conservation des ressources vitales et à la prévention des éventuels effets négatifs sur l’environnement et la santé humaine qui pourraient survenir dans le cas contraire.
-Afin de connaître le point de collecte le plus proche, veuillez contacter vos autorités locales.
+Afin de connaitre le point de collecte le plus proche, veuillez contacter vos autorités locales.
 Des sanctions peuvent être appliquées en cas d'élimination incorrecte de ces déchets, conformément à la législation nationale.
 
 == Remarque sur la pile ==
-La Cultibox intègre une pile pour conserver l'heure. La pile ne doit pas être jetée aux déchets ménagers. Informez-vous au près de l'autorité locale compétente afin de connaître les endroits où vous pouvez déposer celle-ci.
+La Cultibox intègre une pile pour conserver l'heure. La pile ne doit pas être jetée aux déchets ménagers. Informez-vous au près de l'autorité locale compétente afin de connaitre les endroits où vous pouvez déposer celle-ci.
 
 = Configuration minimale de l'ordinateur =
 Ordinateur Fixe :
- * Système d'exploitation : Mac os X ou Windows Xp/vista/seven (32 ou 64Bits)       
- * Vous devez posseder les droits administrateur                 
- * processeur : Inel Pentium IV, 2.8MHz ou équivalent
+ * Système d'exploitation : Mac os X ou Windows Xp/Vista/Seven/Eight (32 ou 64Bits)       
+ * Vous devez posséder les droits administrateur                 
+ * processeur : Intel Pentium IV, 2.8MHz ou équivalent
  * Mémoire vive : 1Go de RAM
  * 1 Go d'espace libre sur le disque dur
  * Connexion internet
  * Clavier et souris
 
 Ordinateur portable :
- * Système d'exploitation : Mac os X ou Windows Xp/vista/seven (32 ou 64Bits)
- * Vous devez posseder les droits administrateur  
- * processeur : Inel Pentium M, 1.4MHz ou équivalent
+ * Système d'exploitation : Mac os X ou Windows Xp/Vista/Seven/Eight (32 ou 64Bits)
+ * Vous devez posséder les droits administrateur  
+ * processeur : Intel Pentium M, 1.4MHz ou équivalent
  * Mémoire vive : 512 Mo de RAM
  * 1 Go d'espace libre sur le disque dur
  * Connexion internet
