@@ -8,6 +8,10 @@ Nous vous remercions d'avoir choisi la Cultibox pour contrôler votre environnem
 
 Cette documentation est en constante amélioration. Si vous avez des questions particulière ou si certain point ne sont pas suffisamment clair, contactez nous.
 
+<wiki:comment>
+\begin{comment} 
+</wiki:comment>
+
 = Sommaire de la documentation =
 
   * [quick_guide Guide rapide]
@@ -55,3 +59,7 @@ Cette documentation est en constante amélioration. Si vous avez des questions p
     * [faq FAQ]
     * [pts Cahier des charges]
     * [advance Utilisation avancée]
+    
+<wiki:comment>
+\end{comment} 
+</wiki:comment>

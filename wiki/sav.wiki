@@ -1,4 +1,4 @@
-#summary Service après vente.
+#summary Service après vente
 
 = Sommaire =
 <wiki:toc max_depth="3" />

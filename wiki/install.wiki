@@ -137,9 +137,10 @@ Pour une aide plus détaillée, consultez la page suivante : [install_Plug Ajout
  * Installez les deux autres prise en fonction des choix que vous avez réalisé dans l'étape de configuration.
 
 http://cultibox.googlecode.com/svn/wiki/img/3500W.jpg
-http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
-http://cultibox.googlecode.com/svn/wiki/img/prise3.jpg
 
+http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
+
+http://cultibox.googlecode.com/svn/wiki/img/prise3.jpg
 
 == Branchement de l'alimentation == 
 Branchez l'adaptateur secteur-USB sur le secteur. Branchez ensuite le câble USB entre la Cultibox et l'adaptateur secteur.

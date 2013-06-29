@@ -1,4 +1,4 @@
-summary Configuration
+#summary Régulation secondaire
 
 = Sommaire =
 <wiki:toc max_depth="3" />

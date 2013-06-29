@@ -1,3 +1,5 @@
+#summary Page de bienvenue
+
 = Sommaire =
 <wiki:toc max_depth="3" />
 

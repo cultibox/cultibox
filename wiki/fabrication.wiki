@@ -43,5 +43,7 @@ Les cordons RJ12 sont achetés aux Etats-unis, le câble USB et la carte SD en C
 Conçu par nos soins (notice) et réalisé en France.
 
 = Liens =
+
 [http://www.douane.gouv.fr/data/file/1480.pdf Douane]
+
 [http://fr.wikipedia.org/wiki/Fabriqu%C3%A9_en_France wikipedia]

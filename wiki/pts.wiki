@@ -1,6 +1,10 @@
 #summary Cahier des charges
 
 <wiki:comment>
+\begin{comment} 
+</wiki:comment>
+
+<wiki:comment>
 \begin{landscape}
 </wiki:comment>
 
@@ -60,4 +64,8 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 
 <wiki:comment>
 \end{landscape}
+</wiki:comment>
+
+<wiki:comment>
+\end{comment} 
 </wiki:comment>
