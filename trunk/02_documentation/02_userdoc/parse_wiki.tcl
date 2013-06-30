@@ -19,12 +19,15 @@ lappend CaracSpeciaux "_" "\\_"
 lappend CaracSpeciaux "\\" "\\textbackslash{}"
 lappend CaracSpeciaux "&" "\\&"
 lappend CaracSpeciaux "%" "\\%"
+lappend CaracSpeciaux "<" "\\textless{}"
+lappend CaracSpeciaux ">" "\\textgreater{}"
 
 set CaracSpeciauxEnd [list]
 lappend CaracSpeciauxEnd "*" ""
 
-set largeurTable 15
+set largeurTable 12
 set ::PageActualyParse ""
+set inCode 0
 
 proc removeDiatric {st} {
  return [string map {
@@ -144,7 +147,7 @@ proc parseTab {line} {
 set inListe 0
 proc parseListe {line} {
 
-   if {[string first "*" [string trim $line]] == 0} {
+   if {[string first "*" [string trim $line]] == 0 && $::inCode == 0} {
 
       set line "\\item [string map {"*" ""} $line]"
    
@@ -176,13 +179,27 @@ proc parseLink {line} {
 
         if {[llength $textLink] >= 2} {
             if {[string first "code.google.com" $line] == -1 && [string first "http" $line] != -1} {
-                set line "${textBefore}\\href\{[lindex $textLink 0]\}\{[lrange $textLink 1 end]\}${textAfter}"
+                set line "${textBefore}\\begin\{bfseries\}\\href\{[lindex $textLink 0]\}\{[lrange $textLink 1 end]\}\\end\{bfseries\}${textAfter}"
             } else {
                 set TempLink [string map {"#" "_"} [removeDiatric [lindex [split [lindex $textLink 0] "/"] end]]]
                 set line "${textBefore}[lrange $textLink 1 end] (\\S \\ref\{${TempLink}\}\{\})${textAfter}"
                 #set line "${textBefore}${textAfter}"
             }
         }
+    }
+
+    return $line
+}
+
+proc parseCode {line} {
+
+    if {[string first "\{\{\{" $line] != -1} {
+        set line "\\begin\{center\} \\colorbox\{gray\}\{  \\begin\{minipage\}\[c\]\{0.7\\textwidth\} \\begin\{itshape\}"
+        set ::inCode 1
+    }
+    if {[string first "\}\}\}" $line] != -1} {
+        set line "\\end\{itshape\} \\end\{minipage\}  \} \\end\{center\}"
+        set ::inCode 0
     }
 
     return $line
@@ -231,16 +248,21 @@ proc parse {inFileName outFileName level} {
          set line [string map $::CaracSpeciaux $line]
       }
       
-      set line [parseLink $line]
+      if {$::inCode == 0} {set line [parseLink $line]}
       
-      set line [parseListe $line] 
+      set line [parseCode $line]     
+      
+      set line [parseListe $line]
+      
+      set line [parseCode $line]
+
       set line [string map $::CaracSpeciauxEnd $line]
         
-      set line [parseTitle $line $level]
+      if {$::inCode == 0} {set line [parseTitle $line $level]}
       
-      set line [parseTab $line]
+      if {$::inCode == 0} {set line [parseTab $line]}
       
-
+      
 
       if {[string first {#summary} $line] != -1} {
          set line "";
@@ -298,6 +320,7 @@ puts $fid {\usepackage{textcomp}         }
 puts $fid {\usepackage{hyperref}         }
 puts $fid {\usepackage{lscape}         }
 puts $fid {\usepackage{calc}}
+puts $fid {\usepackage{xcolor}}
 puts $fid {% These packages are all incorporated in the memoir class to one degree or another...}
 
 puts $fid {%%% HEADERS & FOOTERS                                                         }
