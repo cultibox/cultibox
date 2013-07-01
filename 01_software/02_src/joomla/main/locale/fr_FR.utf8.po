@@ -167,6 +167,15 @@ msgstr "Erreur lors du formatage de la carte SD"
 msgid "ALARM_DESCRIPTION"
 msgstr "L'alarme de la Cultibox permet d'éteindre toutes les prises lorsque la sécurité de l'espace de culture est en jeu. Définissez une température qui, une fois dépassée, provoque la coupure de toute les prises. <br /><br /><b>Attention</b>: une fois ce seuil atteint, les prises se coupent et la Cultibox ne reviendra à un état normale que lorsque vous aurez acquitté l'alarme directement sur le boitier."
 
+msgid "SHOW_COST"
+msgstr "Afficher le menu de calcul des coûts"
+
+msgid "SHOW_HISTORIC"
+msgstr "Afficher le menu d'historique de vos actions"
+
+msgid "SHOW_WIZARD"
+msgstr "Afficher le menu d'assistant de configuration des prises"
+
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1425,6 +1434,15 @@ msgstr "Vous pouvez choisir jusqu'à trois fonctionnements différents pour votr
 
 msgid "TOOLTIP_REGUL_SECOND"
 msgstr "Si la régulation secondaire est activée dans la configuration du logiciel, ce champ affiche son état pour la prise sélectionnée: activée ou désactivée. Si la régulation est activée pour la prise sélectionnée, vous trouverez aussi les informations concernant la configuration de cette régulation."
+
+msgid "TOOLTIP_SHOW_COST"
+msgstr "En activant cette option vous pouvez avoir accès à la page de calcul des coûts de votre installation grâce au menu 'Coût' qui apparaît dans la barre du menu principal"
+
+msgid "TOOLTIP_SHOW_HISTORIC"
+msgstr "En activant cette option vous pouvez avoir accès à la page d'affichage de l'historique de vos actions dans le logiciel grâce au menu 'Historique' qui apparaît dans la barre du menu principal"
+
+msgid "TOOLTIP_SHOW_WIZARD"
+msgstr "En activant cette option vous pouvez avoir accès à la page de l'assistant de configuration des prises et des programmes grâce au menu 'Assistant' qui apparaît dans la barre du menu principal"
 
 
 #For the debug part:

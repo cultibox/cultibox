@@ -14,6 +14,17 @@ function db_priv_pdo_start() {
     }
 }
 
+function db_priv_pdo_start_joomla() {
+    try {
+        $db = new PDO('mysql:host=127.0.0.1;port=3891;dbname=cultibox_joomla;charset=utf8', 'root', 'cultibox');
+        $db->exec("SET CHARACTER SET utf8");
+        return $db;
+    } catch (PDOException $e) {
+        return 0;
+    }
+}
+
+
 
 // {{{ db_update_logs()
 // ROLE update logs table in the Database with the array $arr
@@ -2433,6 +2444,50 @@ EOF;
 
     if(strlen($resume)>0) return $resume;
     return "<p align='center'><b><i>".__('SUMARY_COST_TITLE').":<br /></i></b></p><p align='center'>".__('EMPTY_COST_INFOS')."</p>"; 
+}
+// }}}
+
+
+// {{{ configure_menu()
+// ROLE hide or display joomla's menu
+// IN   cost        value for displaying or not the cost menu
+//      wizard      value for displaying or not the wizard menu
+//      historic    value for displaying or not the historic menu
+// RET  none
+function configure_menu($cost="False",$wizard="False",$historic="False") {
+   if(strcmp("$cost","True")==0) {
+            $cost=1;
+    } else {
+            $cost=0;
+    }
+
+    if(strcmp("$wizard","True")==0) {
+            $wizard=1;
+    } else {
+            $wizard=0;
+    }
+
+    if(strcmp("$historic","True")==0) {
+            $historic=1;
+    } else {
+            $historic=0;
+    }
+
+
+  $sql = <<<EOF
+UPDATE `dkg45_menu` SET  published = "{$cost}" WHERE alias LIKE "cost-%";
+UPDATE `dkg45_menu` SET  published = "{$wizard}" WHERE alias LIKE "wizard-%";
+UPDATE `dkg45_menu` SET  published = "{$historic}" WHERE alias LIKE "historic-%";
+EOF;
+   $db=db_priv_pdo_start_joomla();
+   if($db) {
+        try {
+            $db->exec("$sql");
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+        $db=null;
+    }
 }
 // }}}
 

@@ -53,6 +53,9 @@ $submenu=getvar("submenu",$main_error);
 $stats=getvar("stats",$main_error);
 $several_sensor=getvar("several_sensor",$main_error);
 $second_regul=getvar("second_regul",$main_error);
+$show_cost=getvar("show_cost",$main_error);
+$show_wizard=getvar("show_wizard",$main_error);
+$show_historic=getvar("show_historic",$main_error);
 
 
 
@@ -192,6 +195,34 @@ if((isset($second_regul))&&(!empty($second_regul))) {
 } else {
         $second_regul = get_configuration("SECOND_REGUL",$main_error);
 }
+
+
+if((isset($show_cost))&&(!empty($show_cost))) {
+        insert_configuration("SHOW_COST","$show_cost",$main_error);
+        $update_conf=true;
+} else {
+        $show_cost = get_configuration("SHOW_COST",$main_error);
+}
+
+if((isset($show_wizard))&&(!empty($show_wizard))) {
+        insert_configuration("SHOW_WIZARD","$show_wizard",$main_error);
+        $update_conf=true;
+} else {
+        $show_wizard = get_configuration("SHOW_WIZARD",$main_error);
+}
+
+
+if((isset($show_historic))&&(!empty($show_historic))) {
+        insert_configuration("SHOW_HISTORIC","$show_historic",$main_error);
+        $update_conf=true;
+} else {
+        $show_historic = get_configuration("SHOW_HISTORIC",$main_error);
+}
+
+configure_menu(get_configuration("SHOW_COST",$main_error),get_configuration("SHOW_WIZARD",$main_error),get_configuration("SHOW_HISTORIC",$main_error));
+
+
+
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
