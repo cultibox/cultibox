@@ -62,3 +62,26 @@ ALTER TABLE `cultibox`.`plugs` CHANGE `PLUG_POWER` `PLUG_POWER` INT( 11 ) NULL D
 -- Version 1.1.25:
 ALTER TABLE `cultibox`.`configuration` DROP COLUMN `ALARM_SENSO`;
 ALTER TABLE `cultibox`.`configuration` DROP COLUMN `ALARM_SENSS`;
+
+ALTER TABLE `cultibox`.`configuration` ADD `SHOW_COST` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
+ALTER TABLE `cultibox`.`configuration` ADD `SHOW_WIZARD` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
+ALTER TABLE `cultibox`.`configuration` ADD `SHOW_HISTORIC` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
+
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =200;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =169;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =191;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =161;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =180;
+
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =202;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =171;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =193;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =163;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =182;
+
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =203;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =174;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =194;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =173;
+UPDATE `cultibox_joomla`.`dkg45_menu` SET `published` = '0' WHERE `dkg45_menu`.`id` =183;
+

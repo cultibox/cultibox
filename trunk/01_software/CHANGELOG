@@ -1,6 +1,7 @@
 Cultibox (1.1.25) precise; urgency=low
     + Sipmlification de l'alarme (on ne règle plus que la température)
     + Réduction de la taille de l'installation (suppréssion de PERL)
+    + Les menus 'coût', 'Historique' et 'assistants' sont en options dans la configuration
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Jun 28 14:51:12 CEST 2013
 
