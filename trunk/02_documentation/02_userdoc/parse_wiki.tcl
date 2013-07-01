@@ -336,6 +336,7 @@ puts $fid {\renewcommand{\footrulewidth}{1pt}}
 puts $fid {\fancyfoot[L]{}}
 puts $fid {\fancyfoot[C]{}}
 puts $fid {\fancyfoot[R]{\textbf{page \thepage}}}
+puts $fid {\setlength{\headheight}{15pt}}
 
 puts $fid {%%% Command}
 puts $fid {\newlength{\imgwidth}}
