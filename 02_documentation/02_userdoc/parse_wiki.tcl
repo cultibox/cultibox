@@ -210,6 +210,8 @@ proc parse {inFileName outFileName level} {
    puts "Parsing $inFileName"; update
    set ::PageActualyParse [file tail $inFileName]
    
+   if {[file exists $inFileName] != 1} {return 0}
+   
    # Recherche du titre de la page
    set summary [searchSumary $inFileName]
    
