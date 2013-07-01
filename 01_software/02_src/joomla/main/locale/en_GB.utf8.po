@@ -159,7 +159,7 @@ msgid "MULTIPLE_REGUL_SENSOR"
 msgstr "Regulation on several sensors"
 
 msgid "FORMAT_PROGRESS"
-msgstr "Progréssion du formattage"
+msgstr "Progression du formatage"
 
 msgid "SUCCESS_FORMAT"
 msgstr "Formatage de la carte réalisé avec succès"
