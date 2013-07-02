@@ -115,7 +115,7 @@ http://cultibox.googlecode.com/svn/wiki/img/install_linux3.png
 
 = Mise à jour =
 
-Pour mettre à jour le logiciel Cultibox, il vous suffit de suivre la même procédure que pour l'installation du logiciel. L'installateur réalisera les tâches nécessaires tout seul.
+Pour mettre à jour le logiciel Cultibox, il vous suffit de suivre la même procédure que pour l'installation du logiciel. L'installateur réalise les tâches nécessaires tout seul.
 Si vous utilisez la mise à jour en mode ligne de commande, l'affichage suivant apparaitra:
 
 {{{
