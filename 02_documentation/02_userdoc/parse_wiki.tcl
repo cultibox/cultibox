@@ -297,7 +297,16 @@ proc parse {inFileName outFileName level} {
 
 }
 
-# On génére le fichier tex
+# on supprime les fichiers existants
+if {[file exists [file join $path documentation.aux]] == 1} {file delete -force  [file join $path documentation.aux]}
+if {[file exists [file join $path documentation.log]] == 1} {file delete -force  [file join $path documentation.log]}
+if {[file exists [file join $path documentation.out]] == 1} {file delete -force  [file join $path documentation.out]}
+if {[file exists [file join $path documentation.toc]] == 1} {file delete -force  [file join $path documentation.toc]}
+if {[file exists [file join $path documentation.pdf]] == 1} {file delete -force  [file join $path documentation.pdf]}
+if {[file exists [file join $path documentation.synctex.gz]] == 1} {file delete -force  [file join $path documentation.synctex.gz]}
+
+
+# On génère le fichier tex
 set fid [open [file join $path documentation.tex] w+]
 puts $fid {\documentclass[11pt]{report}}
 
