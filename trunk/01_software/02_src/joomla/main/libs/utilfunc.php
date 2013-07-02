@@ -858,7 +858,7 @@ function write_program($data,$file,&$out) {
 
 
 // {{{ compare_program()
-// ROLE write programs into the sd card
+// ROLE compare programs and data to check if they are up to date
 // IN   $data         array containing datas to write
 //      $sd_card      sd card path to save data
 // RET false is there is something to write, true else
@@ -899,6 +899,59 @@ function compare_program($data,$sd_card) {
    return false;
 }
 // }}}
+
+
+// {{{ compare_pluga()
+// ROLE compare pluga and data from databases to check if the file is up to date
+// IN   $sd_card      sd card path to save data
+// RET false is there is something to write, true else
+function compare_pluga($sd_card) {
+    if(is_file("${sd_card}/pluga")) {
+         $nb=0;
+         $file="${sd_card}/pluga";
+
+         $pluga=Array();
+         $pluga[]=$GLOBALS['NB_MAX_PLUG'];
+         for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
+            $tmp_power_max=get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
+            if(strcmp("$tmp_power_max","1000")==0) {
+                $tmp_pluga=$GLOBALS['PLUGA_DEFAULT'][$i];
+            } elseif(strcmp("$tmp_power_max","3500")==0) {
+                $tmp_pluga=$GLOBALS['PLUGA_DEFAULT_3500W'][$i];
+            }
+            $pluga[]="$tmp_pluga";
+        }
+
+        $nbdata=count($pluga);
+
+        if(count($pluga)>0) {
+            $handle = fopen($file, 'r');
+            if ($handle) {
+               while(!feof($handle)) {
+                  $buffer=fgets($handle);
+                  $buffer=rtrim($buffer);
+
+                  if(!empty($buffer)) {
+                    if(strcmp($pluga[$nb],$buffer)!=0) {
+                       return false;
+                    } 
+                    $nb=$nb+1;
+
+                  } elseif($nb==$nbdata) {
+                    return true;
+                  } else {
+                    return false;
+                  }
+               }
+               fclose($handle);
+            }
+            return true;
+       }
+   }
+   return false;
+}
+// }}}
+
 
 // {{{ write_pluga()
 // ROLE write plug_a into the sd card
@@ -956,6 +1009,131 @@ function write_plugconf($data,$sd_card,&$out) {
    }
    return true;
 }
+// }}}
+
+
+// {{{ compare_plugconf()
+// ROLE compare plug's configuration with the database
+// IN   $data    array containing plugconf datas
+//      sd_card     path to the sd_card
+// OUT false is there is a difference, true else
+function compare_plugconf($data, $sd_card="") {
+   for($i=0;$i<count($data);$i++) {
+        $nb=$i+1;
+        if($nb<10) {
+            $file="$sd_card/plug0$nb";
+        } else {
+            $file="$sd_card/plug$nb";
+        }
+        
+        if(!is_file($file)) return false;
+        $tmp=explode("\r\n",$data[$i]);
+        foreach($tmp as $dt) {
+           $new_tmp[]=trim($dt);
+        }
+
+        $tmp=$new_tmp; 
+
+        if($handle=@fopen($file,"r")) {
+            while (!feof($handle)) {
+               $buffer[] = fgets($handle);
+            }
+        }
+        fclose($handle);
+        $buffer=array_filter($buffer);
+        foreach($buffer as $bf) {
+           $new_buffer[]=trim($bf);
+        }
+
+        $buffer=$new_buffer;
+
+        if(count($buffer)!=count($tmp)) return false;
+
+        for($j=0;$j<count($buffer);$j++) {
+            if(strcmp($tmp[$j],$buffer[$j])!=0) {
+                    return false;
+            }
+        }
+
+        unset($tmp);
+        unset($buffer);
+   }
+   return true; 
+
+
+}
+// }}}
+
+
+// {{{ compare_sd_conf_file()
+// ROLE  compare conf file data with the database
+// IN   $sd_card      location of the sd card to save data
+//      $record_frequency   record frequency value
+//      $update_frequency   update frequency value
+//      $power_frequency    record of the power frequency value
+//      $alarm_enable       enable or disable the alarm system
+//      $alarm_value        value to trigger the alarm
+// RET false if there is a difference, true else
+function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$power_frequency,$alarm_enable,$alarm_value) {
+    if(!is_file($sd_card."/conf")) return false;
+
+    $file="${sd_card}/conf";
+
+    $record=$record_frequency*60;
+    $power=$power_frequency*60;
+    $update="000$update_frequency";
+
+
+    while(strlen($alarm_enable)<4) {
+        $alarm_enable="0$alarm_enable";
+    }
+
+    $alarm_value=$alarm_value*100;
+    while(strlen($alarm_value)<4) {
+        $alarm_value="0$alarm_value";
+    }
+
+    while(strlen($record)<4) {
+        $record="0$record";
+    }
+
+   while(strlen($power)<4) {
+      $power="0$power";
+   }
+
+    
+    $conf[]="PLUG_UPDATE:$update";
+    $conf[]="LOGS_UPDATE:$record";
+    $conf[]="POWR_UPDATE:$power";
+    $conf[]="ALARM_ACTIV:$alarm_enable";
+    $conf[]="ALARM_VALUE:$alarm_value";
+    $conf[]="ALARM_SENSO:000T";
+    $conf[]="ALARM_SENSS:000+";
+    $conf[]="RTC_OFFSET_:0000";
+
+    $nb=0;
+
+
+    $handle = fopen($file, 'r');
+    if ($handle) {
+        while(!feof($handle)) {
+            $buffer=fgets($handle);
+            $buffer=rtrim($buffer);
+
+            if(!empty($buffer)) {
+                if(strcmp($conf[$nb],$buffer)!=0) {
+                       return false;
+                }
+                $nb=$nb+1;
+            }
+        }
+        fclose($handle);
+    }
+    return true;
+}
+
+
+
 // }}}
 
 
@@ -1342,10 +1520,11 @@ function check_regul_value($value="0") {
 // {{{ check_and_copy_firm()
 // ROLE check if firmwares (firm.hex,emetteur.hex) has to be copied and do the copy into the sd card
 // IN  $sd_card     the sd card pathname 
-// RET none
+// RET true if if as least one firmware has been copied, false else
 function check_and_copy_firm($sd_card) {
    $new_firm="";
    $current_firm="";
+   $copy=false;
 
    $firm_to_test[]="firm.hex";
    $firm_to_test[]="cnf/emetteur.hex";
@@ -1383,10 +1562,12 @@ function check_and_copy_firm($sd_card) {
 
                     if(hexdec($new_firm) > hexdec($current_firm)) {
                         copy($new_file, $current_file);
+                        $copy=true;
                     }
                 }
         } elseif((!is_file("$current_file"))&&(is_file("$new_file"))) {
                 copy($new_file, $current_file);
+                $copy=true;
         }
 
         unset($new_file);
@@ -1395,6 +1576,7 @@ function check_and_copy_firm($sd_card) {
         unset($current_firm);
         unset($new_firm); 
     }
+    return $copy;
 }
 // }}}
 

@@ -56,6 +56,7 @@ $second_regul=getvar("second_regul",$main_error);
 $show_cost=getvar("show_cost",$main_error);
 $show_wizard=getvar("show_wizard",$main_error);
 $show_historic=getvar("show_historic",$main_error);
+$submit=getvar("submit_conf",$main_error);
 
 
 
@@ -68,6 +69,79 @@ if((!isset($submenu))||(empty($submenu))) {
         } else {
             $submenu="user_interface";
         }
+} 
+
+
+// Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
+if((!isset($sd_card))||(empty($sd_card))) {
+   $hdd_list=array();
+   $sd_card=get_sd_card($hdd_list);
+   $new_arr=array();
+   foreach($hdd_list as $hdd) {
+        if(disk_total_space($hdd)<=2200000000) $new_arr[]=$hdd;
+
+   }
+   $hdd_list=$new_arr;
+   sort($hdd_list);
+}
+
+
+// If a cultibox SD card is plugged, manage some administrators operations: check the firmware and log.txt files, check if 'programs' are up to date...
+if((!empty($sd_card))&&(isset($sd_card))) {
+    $conf_uptodate=true;
+    if(check_sd_card($sd_card)) {
+        $program=create_program_from_database($main_error);
+
+        if(!compare_program($program,$sd_card)) {
+            $conf_uptodate=false;
+            save_program_on_sd($sd_card,$program,$main_error);
+        }
+
+        if(check_and_copy_firm($sd_card,$main_error)) {
+            $conf_uptodate=false;
+        }
+
+        if(!compare_pluga($sd_card)) {
+            $conf_uptodate=false;
+            write_pluga($sd_card,$main_error);
+        }
+
+
+        $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
+        if(count($plugconf)>0) {
+            if(!compare_plugconf($plugconf,$sd_card)) {
+                $conf_uptodate=false;
+                write_plugconf($plugconf,$sd_card,$main_error);
+            }
+        }
+
+        check_and_copy_log($sd_card,$main_error);
+
+        if((!isset($submit))||(empty($submit))) {
+            $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
+            $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
+            $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
+            $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
+            $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
+            if("$updatefrequency"=="-1") {
+                $updatefrequency="0";
+            }
+
+            if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue)) {
+                $conf_uptodate=false;
+                write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue",$main_error);
+            }
+        }
+
+        if(!$conf_uptodate) {
+            $main_info[]=__('UPDATED_PROGRAM');
+            $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
+            set_historic_value(__('UPDATED_PROGRAM')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
+        }
+        $main_info[]=__('INFO_SD_CARD').": $sd_card";
+    } else {
+        $main_error[]=__('ERROR_WRITE_PROGRAM');
+    }
 } 
 
 
@@ -223,23 +297,7 @@ configure_menu(get_configuration("SHOW_COST",$main_error),get_configuration("SHO
 
 
 
-
-
-// Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
-if((!isset($sd_card))||(empty($sd_card))) {
-   $hdd_list=array();
-   $sd_card=get_sd_card($hdd_list);
-   $new_arr=array();
-   foreach($hdd_list as $hdd) {
-        if(disk_total_space($hdd)<=2200000000) $new_arr[]=$hdd;
-
-   }
-   $hdd_list=$new_arr;
-   sort($hdd_list);
-}
-
-
-// Is a field has been changed an there is no error in the value: display success message
+// Is a field has been changed and there is no error in the value: display success message
 if(((empty($main_error))||(!isset($main_error)))&&(count($error)==0)) {
 	if($update_conf) {
         if((!empty($sd_card))&&(isset($sd_card))) {
@@ -254,34 +312,21 @@ if(((empty($main_error))||(!isset($main_error)))&&(count($error)==0)) {
 	}
 }
 
-// If a cultibox SD card is plugged, manage some administrators operations: check the firmware and log.txt files, check if 'programs' are up tp date...
-if((!empty($sd_card))&&(isset($sd_card))) {
-    if(check_sd_card($sd_card)) {
-        $program=create_program_from_database($main_error);
-        if(!compare_program($program,$sd_card)) {
-            $main_info[]=__('UPDATED_PROGRAM');
-            $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
-            save_program_on_sd($sd_card,$program,$main_error);
-            set_historic_value(__('UPDATED_PROGRAM')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
-        }
-        check_and_copy_firm($sd_card,$main_error);
-        check_and_copy_log($sd_card,$main_error);
-        $main_info[]=__('INFO_SD_CARD').": $sd_card";
-    } else {
-        $main_error[]=__('ERROR_WRITE_PROGRAM');
-    }
-} else {
+if((!isset($sd_card))||(empty($sd_card))) {
     $main_error[]=__('ERROR_SD_CARD_CONF')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_WITHOUT_SD')."\" />";
 }
 
 
+
 // Change files on the cultibox SD card after the configuration has been updated: plug's frequency, alarm value etc...
-if((isset($sd_card))&&(!empty($sd_card))) {
-	if("$update_frequency"=="-1") {
-		write_sd_conf_file($sd_card,$record_frequency,"0",$power_frequency,"$alarm_enable","$alarm_value",$main_error);
-	} else {
-		write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,"$alarm_enable","$alarm_value",$main_error);	
-	}	
+if((isset($submit))&&(!empty($submit))) {
+    if((isset($sd_card))&&(!empty($sd_card))) {
+	    if("$update_frequency"=="-1") {
+		    write_sd_conf_file($sd_card,$record_frequency,"0",$power_frequency,"$alarm_enable","$alarm_value",$main_error);
+	    } else {
+		    write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,"$alarm_enable","$alarm_value",$main_error);	
+	    }	
+    }
 }
 
 

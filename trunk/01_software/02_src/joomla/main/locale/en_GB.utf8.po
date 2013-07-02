@@ -1309,7 +1309,7 @@ msgid "WAITING_LOG"
 msgstr "PLease just wait few seconds during logs loading..."
 
 msgid "UPDATED_PROGRAM"
-msgstr "Your programs wasn't up to date, the update process has been executed"
+msgstr "Vos programmes/configuration des prises/configuration de la Cultibox n'étaient pas à jour sur votre carte, la mise à jour a été exécuté"
 
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "New update availabe to upgrade to the software version: "
