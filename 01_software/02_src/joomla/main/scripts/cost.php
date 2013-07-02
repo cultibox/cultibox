@@ -61,16 +61,54 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
+    $conf_uptodate=true;
     if(check_sd_card($sd_card)) {
         $program=create_program_from_database($main_error);
+
         if(!compare_program($program,$sd_card)) {
+            $conf_uptodate=false;
+            save_program_on_sd($sd_card,$program,$main_error);
+        }
+
+        if(check_and_copy_firm($sd_card,$main_error)) {
+            $conf_uptodate=false;
+        }
+
+        if(!compare_pluga($sd_card)) {
+            $conf_uptodate=false;
+            write_pluga($sd_card,$main_error);
+        }
+
+        $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
+        if(count($plugconf)>0) {
+            if(!compare_plugconf($plugconf,$sd_card)) {
+                $conf_uptodate=false;
+                write_plugconf($plugconf,$sd_card,$main_error);
+            }
+        }
+
+        check_and_copy_log($sd_card,$main_error);
+
+        $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
+        $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
+        $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
+        $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
+        $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
+        if("$updatefrequency"=="-1") {
+            $updatefrequency="0";
+        }
+
+        if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue)) {
+            $conf_uptodate=false;
+            write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue",$main_error);
+        }
+
+        if(!$conf_uptodate) {
             $main_info[]=__('UPDATED_PROGRAM');
             $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
-            save_program_on_sd($sd_card,$program,$main_error);
             set_historic_value(__('UPDATED_PROGRAM')." (".__('COST_PAGE').")","histo_info",$main_error);
         }
-        check_and_copy_firm($sd_card,$main_error);
-        check_and_copy_log($sd_card,$main_error);
+
         $main_info[]=__('INFO_SD_CARD').": $sd_card";
     } else {
         $main_error[]=__('ERROR_WRITE_PROGRAM');
@@ -78,6 +116,8 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 } else {
         $main_error[]=__('ERROR_SD_CARD');
 }
+
+
 
 
 //Setting some default value if they are not configured
