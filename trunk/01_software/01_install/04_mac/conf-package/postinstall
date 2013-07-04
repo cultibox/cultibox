@@ -34,6 +34,7 @@ if [ ! -d /tmp/cultibox_backup/mysql ]; then
     /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
     if [ $? -ne 0 ]; then
         /Applications/XAMPP/xamppfiles/xampp restart
+	sleep 5
         /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
     fi
     /Applications/XAMPP/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/XAMPP/sql_install/user_cultibox.sql
@@ -60,12 +61,14 @@ else
         /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
         if [ $? -ne 0 ]; then
             /Applications/XAMPP/xamppfiles/xampp restart
+           sleep 5
             /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
         fi
     fi
     /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
     if [ $? -ne 0 ]; then
         /Applications/XAMPP/xamppfiles/xampp restart
+	sleep 5
         /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
     fi
     /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
