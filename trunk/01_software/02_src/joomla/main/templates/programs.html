@@ -135,6 +135,7 @@ resume_plugs=<?php echo json_encode($resume) ?>;
 resume_regul=<?php echo json_encode($resume_regul) ?>;
 start=<?php echo json_encode($start) ?>;
 end=<?php echo json_encode($end) ?>;
+plug_selected=<?php echo json_encode($selected_plug) ?>;
 rep=<?php echo json_encode($rep) ?>;
 </script>
 
@@ -703,7 +704,7 @@ $(document).ready(function() {
     <td></td>
 </tr>
 </table>
-<input type="hidden" name="submit_progs">
+<input type="hidden" name="submit_progs" value="submit_progs">
 </form>
 <div id="same_dialog_program" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
 <p><?php echo __('CONFIRM_SAME_PROGRAM'); ?></p>

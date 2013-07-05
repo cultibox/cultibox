@@ -175,7 +175,7 @@ $(document).ready(function() {
                                         break;
             case 'reset_calendar_form': DialogId="reset_dialog_calendar";
                                         break;
-            case 'actionprog':  if((start!=$('#start_time').val())||(end!=$('#end_time').val())) {
+            case 'actionprog':  if((start!=$('#start_time').val())||(end!=$('#end_time').val())||(plug_selected!=$('#selected_plug').val())) {
                                     return true;
                                 } else {
                                     DialogId="same_dialog_program";

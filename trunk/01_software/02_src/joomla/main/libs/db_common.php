@@ -426,8 +426,10 @@ EOF;
 // RET data power formated for highchart
 function get_data_power($date="",$dateend="",$id=0,&$out) {
    $res="";
+   $nb_plugs=get_configuration("NB_PLUGS",$out);
    $date=str_replace("-","",$date);
    $date=substr($date,2,8);
+   
 
    if((isset($date))&&(!empty($date))) {
       if(strcmp("$id","all")==0) {
@@ -482,7 +484,7 @@ EOF;
 
    
         $sql = <<<EOF
-SELECT `PLUG_POWER` FROM `plugs`;  
+SELECT `PLUG_POWER` FROM `plugs` WHERE `id` <= {$nb_plugs};  
 EOF;
 
         $db=db_priv_pdo_start();
@@ -868,12 +870,12 @@ function insert_program($program,&$out) {
    );
 
 
+   $tmp=array();
    foreach($program as $prog) {
         asort($data_plug);
         $start_time=str_replace(':','',$prog['start_time']);
         $end_time=str_replace(':','',$prog['end_time']);
         $value=$prog['value_program'];
-        $tmp=array();
         $current= array(
             "time_start" => "$start_time",
             "time_stop" => "$end_time",
@@ -928,7 +930,13 @@ function insert_program($program,&$out) {
             $tmp=purge_program($tmp);
             $tmp=optimize_program($tmp);
             $data_plug=$tmp;
-             $data_plug[] = array(
+            $first=array(
+                "time_start" => "000000",
+                "time_stop" => "000000",
+                "value" => "0"
+            );
+
+            $data_plug[] = array(
                     "time_start" => "240000",
                     "time_stop" => "240000",
                     "value" => "0"
@@ -1316,8 +1324,8 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
       return $continue;
   } else {
       if($GLOBALS['DEBUG_TRACE']) {
-                        echo "nothing;";
-                }
+            echo "nothing;";
+      }
       $tmp[]=$first;
       return "1";
   }
@@ -1902,7 +1910,7 @@ EOF;
 
 
 // {{{ create_calendar_from_database()
-// ROLE read calendar from the database and format its to be write into a sd card
+// ROLE read calendar from the database and format its to be writen into a sd card
 // IN   $out         error or warning message
 // RET an array containing datas
 function create_calendar_from_database(&$out,$start="",$end="") {
@@ -1911,18 +1919,18 @@ function create_calendar_from_database(&$out,$start="",$end="") {
         $db = db_priv_pdo_start();
         if((strcmp("$start","")!=0)&&((strcmp("$end","")!=0))) {
              $sql = <<<EOF
-SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` BETWEEN '{$start}' AND '{$end}'
+SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE (`StartTime` BETWEEN '{$start}' AND '{$end}') OR (`EndTime` BETWEEN '{$start}' AND '{$end}') OR (`StartTime` <= '{$start}' AND `EndTime` >= '{$end}')
 EOF;
         } else if((strcmp("$start","")!=0)&&((strcmp("$end","")==0))) {
              $sql = <<<EOF
-SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$start}"
+SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE "{$start}" BETWEEN `StartTime`AND `EndTime` 
 EOF;
-
         } else {
             $sql = <<<EOF
 SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%"
 EOF;
         }
+
         foreach($db->query("$sql") as $val) {
          $val['Title']=clean_calendar_message($val['Title']);
          $val['Description']=clean_calendar_message($val['Description']);

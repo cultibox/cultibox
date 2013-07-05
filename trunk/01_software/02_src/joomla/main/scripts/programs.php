@@ -427,14 +427,17 @@ if(!empty($apply)&&(isset($apply))) {
             }
 
             
-            
+           
             if($count>-1) {
                 if($count+1!=count($prog)) {
                     $tmp_prog=array_chunk($prog, $count+1);
                 } else {
                     $tmp_prog[]=$prog;
                 }   
-                if(!insert_program($tmp_prog[0],$main_error))  $ch_insert=false;
+
+                foreach($tmp_prog as $prg) {
+                    if(!insert_program($prg,$main_error))  $ch_insert=false;
+                }
             } else {
                 $ch_insert=false;
             }
@@ -586,6 +589,19 @@ if(strcmp("$update","True")==0) {
     $main_error[]=__('ERROR_REMOTE_SITE');
    }
 }
+
+
+if((!empty($sd_card))&&(isset($sd_card))) {
+    if(check_sd_card($sd_card)) {
+        if((isset($submit))&&(!empty($submit))) {
+            $program=create_program_from_database($main_error);
+            if(!compare_program($program,$sd_card)) {
+                save_program_on_sd($sd_card,$program,$main_error);
+            }
+        }
+    }
+}
+
 
 
 // The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True'

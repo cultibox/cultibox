@@ -1247,7 +1247,7 @@ function clean_calendar($sd_card="",$start="",$end="") {
 
     $path="$sd_card/logs";
     if(is_dir($path)) {
-        if((strcmp("$start","")==0)||(strcmp("$end","")==0)) {
+        if((strcmp("$start","")==0)&&(strcmp("$end","")==0)) {
             for($i=1;$i<=12;$i++) {
                 if(strlen("$i")<2) {
                     $i="0".$i;
@@ -1266,8 +1266,8 @@ function clean_calendar($sd_card="",$start="",$end="") {
             $stmon=substr($start,5,2);
             $stday=substr($start,8,2);
 
-            if(is_file($sd_card."/logs".$stmon."/cal_".$stday)) {
-                unlink($sd_card."/logs".$stmon."/cal_".$stday);
+            if(is_file($sd_card."/logs/".$stmon."/cal_".$stday)) {
+                unlink($sd_card."/logs/".$stmon."/cal_".$stday);
             }
         } elseif((strcmp("$start","")!=0)&&(strcmp("$end","")!=0)) {
             $stmon=substr($start,5,2);

@@ -71,6 +71,9 @@
                         buttons: {
                             "<?php echo __('CREATE_DIALOG_CALENDAR','highchart'); ?>": function() { 
                                         $( this ).dialog( "close" ); 
+                                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                            $.blockUI({ message: ''});
+                                        <?php } ?>
                 
                                         new_start=$.fullCalendar.formatDate( start, "yyyy-MM-dd HH:mm:ss");
                                         new_end=$.fullCalendar.formatDate( end, "yyyy-MM-dd HH:mm:ss");        
@@ -98,6 +101,10 @@
                                             type: "POST",
                                             url: "http://localhost:6891/cultibox/main/modules/json-events/json-add-events.php",
                                             data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&color='+color+'&card=<?php echo $sd_card; ?>'
+            
+                                            <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                                ,complete: function() { $.unblockUI(); }
+                                            <?php } ?> 
                                         });
                                         }
                                         $('#calendar').fullCalendar('unselect');
@@ -106,9 +113,6 @@
                                         $("#select_remark").text("");
                                         $("#select_remark").val("");
                                         delete event;
-                                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                            $.blockUI({ message: '', timeout: 1000 }); 
-                                        <?php } ?> 
                                         return false;
                         },
                     "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); return false;}
@@ -132,16 +136,18 @@
 
                 new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
 
-
+                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                    $.blockUI({ message: ''}); 
+                <?php } ?> 
                 $.ajax({
                       type: "POST",
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
                       data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
+                         <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                            ,complete: function() { $.unblockUI(); }
+                         <?php } ?> 
+  
                 });
-                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                    $.blockUI({ message: '', timeout: 1000 }); 
-                <?php } ?> 
-
             },
             eventResize: function( event, dayDelta, minuteDelta) { 
                 if(event.external) {
@@ -156,15 +162,17 @@
 
                 new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
 
-
+                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                    $.blockUI({ message: ''}); 
+                <?php } ?>
                 $.ajax({
                       type: "POST",
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
                       data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
+                      <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                          ,complete: function() { $.unblockUI(); }
+                      <?php } ?>
                 });
-                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                    $.blockUI({ message: '', timeout: 1000 }); 
-                <?php } ?> 
             },
             eventClick: function(event, element) {
                      $("#title").text(event.title);
@@ -236,11 +244,17 @@
                                             color="#000000";
                                         }
 
+                                       <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                            $.blockUI({ message: ''}); 
+                                       <?php } ?>
 
                                         $.ajax({
                                             type: "POST",
                                             url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
                                             data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&id='+event.id+'&color='+color+'&card=<?php echo $sd_card; ?>'
+                                            <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                                ,complete: function() { $.unblockUI(); }
+                                            <?php } ?>
                                         });
                                         }
                                         event.title=title;
@@ -267,10 +281,16 @@
                             "<?php echo __('REMOVE_DIALOG_CALENDAR','highchart'); ?>": 
                             function() { 
                                         $( this ).dialog( "close" ); 
+                                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                            $.blockUI({ message: ''}); 
+                                        <?php } ?>
                                         $.ajax({
                                             type: "POST",
                                             url: "http://localhost:6891/cultibox/main/modules/json-events/json-remove-events.php",
                                             data: 'id='+event.id+'&card=<?php echo $sd_card; ?>'
+                                            <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                                ,complete: function() { $.unblockUI(); }
+                                            <?php } ?>
                                         });
                                         $('#calendar').fullCalendar('removeEvents', event.id);
                                         $('#calendar').fullCalendar( 'refetchEvents' );

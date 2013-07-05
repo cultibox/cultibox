@@ -58,7 +58,7 @@ EOF;
                     clean_calendar($sd_card,$start,$end);
                     $calendar=create_calendar_from_database($main_error,$start,$end);
                     if(count($calendar)>0) {
-                        write_calendar($sd_card,$calendar,$main_error);
+                        write_calendar($sd_card,$calendar,$main_error,$start,$end);
                     }
                 }
             }
