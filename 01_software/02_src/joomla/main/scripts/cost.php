@@ -40,7 +40,6 @@ $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $price=get_configuration("COST_PRICE",$main_error);
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 $select_plug=getvar('select_plug');
-$compute=0;
 $pop_up_error_message="";
 $pop_up="";
 $pop_up=get_configuration("SHOW_POPUP",$main_error);

@@ -1533,7 +1533,6 @@ EOF;
 SELECT * FROM `{$name}` LIMIT 1;
 EOF;
 }
-
         $db=db_priv_pdo_start();
         try {
             $sth=$db->prepare("$sql");
