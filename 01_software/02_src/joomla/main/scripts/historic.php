@@ -101,6 +101,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
     }
 } else {
         $main_error[]=__('ERROR_SD_CARD');
+}
 
 
 
