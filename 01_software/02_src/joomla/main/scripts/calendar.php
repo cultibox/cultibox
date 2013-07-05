@@ -205,7 +205,6 @@ if((isset($sd_card))&&(!empty($sd_card))) {
                 write_calendar($sd_card,$data,$main_error);
             }
    } 
-   $main_info[]=__('INFO_SD_CARD').": $sd_card";
 }
 
 

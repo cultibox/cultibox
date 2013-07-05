@@ -40,14 +40,19 @@ EOF;
             if((isset($sd_card))&&(!empty($sd_card))) {
                 if((strcmp("$start","$end")==0)||(!isset($end))||(empty($end))) {
                     $calendar=create_calendar_from_database($main_error,$start);
+                    if(count($calendar)>0) {
+                        clean_calendar($sd_card,$start);
+                        write_calendar($sd_card,$calendar,$main_error,$start);
+                    }
                 } else {
                     $calendar=create_calendar_from_database($main_error,$start,$end);
-                }
-
-                if(count($calendar)>0) {
-                    write_calendar($sd_card,$calendar,$main_error);
+                    if(count($calendar)>0) {
+                        clean_calendar($sd_card,$start,$end);
+                        write_calendar($sd_card,$calendar,$main_error,$start,$end); 
+                    }
                 }
             }
+
         }
 }
 ?>

@@ -4,6 +4,7 @@ Cultibox (1.1.25) precise; urgency=low
     + Les menus 'coût', 'Historique' et 'assistants' sont en options dans la configuration
     + Chaque onglet vérifie maintenant la cohérence entre la base de donnée (configuration des programmes, des prises, des firmware, des options...) et la carte SD
     + Correction du script de postinstallation sur Mac os X, qui attend la fin du redémarrage de XAMPP avant de continuer
+    + Divers corrections: problème lors de la création des programmes, mauvaises écriture du calendrier sur la carte...
 
 -- Yann Genevois <yann.genevois@gmail.com> Fri Jun 28 14:51:12 CEST 2013
 

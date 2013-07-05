@@ -1393,11 +1393,10 @@ msgid "TOOLTIP_REGUL_SENSOR"
 msgstr "La régulation d'une prise est réalisée en fonction des données relevées par un capteur. Ce champ vous permet de sélectionner ce capteur si vous avez activé la sélection multiple des capteurs dans la partie configuration "
 
 msgid "TOOLTIP_SECOND_REGUL_ENABLE"
-msgstr "Assurez-vous de bien avoir lu l'aide avant d'activer cette option. Il n'est pas nécessaire de l'activer pour qu'une prise régule la température ou l'humidité."
+msgstr "Assurez-vous de bien avoir lu l'aide avant d'activer cette option. Il n'est pas nécessaire de l'activer pour qu'une prise régule la température ou l'humidité. Une fois activée, la régulation est configurable pour une prise différente du type 'Lampe' et 'Autre'. Les options de configuration de la régulation secondaire seront disponible dans l'onglet 'Prises'"
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
 msgstr "Lorsque vous chargez la page des logs, le logiciel enregistre vos logs de température, humidité et puissance pour les 31 derniers jours. Cette fonctionnalité vous permet de charger des logs plus anciens en fonction du nombre de mois souhaité"
-
 
 msgid "TOOLTIP_EXPORT_LOG_CSV"
 msgstr "Exporter vos informations de logs dans un fichier au format CSV"
