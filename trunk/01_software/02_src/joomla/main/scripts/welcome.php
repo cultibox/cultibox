@@ -39,6 +39,8 @@ $pop_up_error_message="";
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $browser=array();
 $compat=true;
+$show_wizard=get_configuration("SHOW_WIZARD",$main_error);
+
 
 
 $browser=get_browser_infos();
