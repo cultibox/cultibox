@@ -316,7 +316,25 @@ $(document).ready(function() {
                 data: {name:name}
             }).done(function (data) {
                 if(!data) {
+                    $("#progress_load").dialog({
+                        resizable: false,
+                        width: 550,
+                        modal: true,
+                        dialogClass: "popup_message",
+                        buttons: {
+                            Close: function() {
+                                $( this ).dialog("close");
+                                $("#error_load_power").css("display","none");
+                                $("#error_load").css("display","none");
+                                $("#success_load_power").css("display","none");
+                                $("#success_load").css("display","none");
+                            }
+                        }
+                    });
+                    $("#progress_bar_load").progressbar({value:0});
+                    $("#progress_bar_load_power").progressbar({value:0});
                     loadLog("1",0,"logs");
+                    loadLog("1",0,"power");
                 }
             });
     }
