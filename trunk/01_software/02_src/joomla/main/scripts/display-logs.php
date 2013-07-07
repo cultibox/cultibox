@@ -76,28 +76,9 @@ if(isset($_SESSION['log_search'])) {
    insert_configuration("LOG_SEARCH",$_SESSION['log_search'],$main_error);
 } 
 $log_search=get_configuration("LOG_SEARCH",$main_error);
-
-
-
-if(isset($_SESSION['select_power'])) {
-   $select_power=$_SESSION['select_power'];
-} else {
-    $select_power=getvar('select_power');
-}
-
-
-if(isset($_SESSION['select_plug'])) {
-   $select_plug=$_SESSION['select_plug'];
-} else {
-    $select_plug=getvar('select_plug');
-}
-
-
-if(isset($_SESSION['startday'])) {
-   $startday=$_SESSION['startday'];
-} else {
-    $startday=getvar('startday');
-}
+$select_power=getvar('select_power');
+$select_plug=getvar('select_plug');
+$startday=getvar('startday');
 
 
 if(isset($_SESSION['select_sensor'])) {
@@ -118,10 +99,6 @@ if(isset($_SESSION['startyear'])) {
 } else {
     $startyear=getvar('startyear');
 }
-
-if(isset($_SESSION['import_log'])) {
-    $import_log=$_SESSION['import_log'];
-} 
 
 
 //Reset log from the reset button
@@ -252,11 +229,6 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 unset($_SESSION['startyear']);
 unset($_SESSION['startmonth']);
 unset($_SESSION['select_sensor']);
-unset($_SESSION['import_log']);
-unset($_SESSION['log_search']);
-unset($_SESSION['select_power']);
-unset($_SESSION['select_plug']);
-unset($_SESSION['startday']);
 unset($reset_log);
 unset($reset_log_power);
 
@@ -284,85 +256,6 @@ if((!isset($startmonth))||(empty($startmonth))) {
 
 if((!isset($type))||(empty($type))){
 	$type="days";
-}
-
-// ************  Log and power file reading from SD card  ********************//
-$log = array();
-$power=array();
-$load_log=false;
-
-if((isset($sd_card))&&(!empty($sd_card))) {
-    // Workaround to avoid timeout (60s)
-    // Search only on 31 previous days
-    $monthSearch = date('n');
-    $daySearch= date('j');
-    if((isset($import_log))&&(!empty($import_log))) {
-        $nb_days=31*$log_search;
-    } else {
-        if((isset($_SESSION['loaded']))&&($_SESSION['loaded'])) {
-            $nb_days=0;
-        } else {
-            $nb_days=31;
-            $_SESSION['loaded']=true;
-        }
-    }
-    $count=0;
-
-    while($count!=$nb_days) {
-        if(strlen($daySearch)<2) {
-            $dday="0".$daySearch;
-        } else {
-            $dday=$daySearch;
-        }
-
-        if(strlen($monthSearch)<2) {
-            $mmonth="0".$monthSearch;
-        } else {
-            $mmonth=$monthSearch;
-        }
-
-        // Search if file exists
-        if(file_exists("$sd_card/logs/$mmonth/$dday")) {
-            // get log value
-            if(is_file("$sd_card/logs/$mmonth/$dday")) {
-                get_log_value("$sd_card/logs/$mmonth/$dday",$log);
-            }
-
-            if(!empty($log)) {
-                if(db_update_logs($log,$main_error)) {
-                    if(strcmp(date('md'),"${mmonth}${dday}")!=0) {
-                        if(!clean_log_file("$sd_card/logs/$mmonth/$dday")) $error_clean_log_file=true; 
-                    }
-                }
-                unset($log) ;
-                $log = array();
-                $load_log=true;
-            }
-
-            // get power values
-            if(is_file("$sd_card/logs/$mmonth/pwr_$dday")) {
-                get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);
-            }
-
-            if(!empty($power)) {
-                if(db_update_power($power,$main_error)) {
-                    if(!clean_log_file("$sd_card/logs/$mmonth/pwr_$dday")) $error_clean_log_file=true;
-                } 
-                unset($power) ;
-                $power = array();
-                $load_log=true;
-            }
-        }
-        $count=$count+1;
-        $daySearch=$daySearch-1;
-        if($daySearch==0) {
-            $daySearch=31;
-            $monthSearch=$monthSearch-1;
-            if($monthSearch==0) {
-                $monthSearch=12;
-            }
-        } 
-    }
 }
 
 if(isset($error_clean_log_file)) {
@@ -411,7 +304,7 @@ if(!empty($resume_regul)) {
 }
 
 
-if($load_log) {
+/*if($load_log) {
    if((isset($import_log))&&(!empty($import_log))) {
         $main_info[]=__('VALID_LOAD_LOG');
         $pop_up_message=$pop_up_message.popup_message(__('VALID_LOAD_LOG'));
@@ -451,6 +344,7 @@ if($load_log) {
         }
     }
 }
+*/
 
 $check_log=check_export_table_csv("logs",$main_error);
 $check_power=check_export_table_csv("power",$main_error);

@@ -1,8 +1,8 @@
 <?php
 
-require_once('../libs/utilfunc.php');
-require_once('../libs/db_common.php');
-require_once('../libs/config.php');
+require_once('../../libs/utilfunc.php');
+require_once('../../libs/db_common.php');
+require_once('../../libs/config.php');
 
 if((isset($_GET['hdd']))&&(!empty($_GET['hdd']))) {
     $path=$_GET['hdd'];
@@ -29,12 +29,12 @@ if((!isset($path))||(empty($path))) {
             if(!is_dir($logs)) mkdir("$logs");
             if(!is_dir($cnf)) mkdir("$cnf");
 
-            if(!copy("../../tmp/cnf/cnt","$cnf/cnt")) {
+            if(!copy("../../../tmp/cnf/cnt","$cnf/cnt")) {
                 echo -1;
                 return 0;
             }
 
-            if(!copy("../../tmp/cnf/emetteur.hex","$cnf/emetteur.hex")) {
+            if(!copy("../../../tmp/cnf/emetteur.hex","$cnf/emetteur.hex")) {
                 echo -1;
                 return 0;
             }
@@ -67,7 +67,7 @@ if((!isset($path))||(empty($path))) {
 
 
             // Creating programs:
-            if(!copy("../templates/data/empty_file.tpl","$path/plugv")) {
+            if(!copy("../../templates/data/empty_file.tpl","$path/plugv")) {
                 echo -1;
                 return 0;
             }
@@ -89,13 +89,13 @@ if((!isset($path))||(empty($path))) {
             }
 
             //Copying cultibox icon:
-            if(!copy("../../tmp/cultibox.ico","$path/cultibox.ico")) {
+            if(!copy("../../../tmp/cultibox.ico","$path/cultibox.ico")) {
                 echo -1;
                 return 0;
             }
 
             //Copying cultibox homepage:
-            if(!copy("../../tmp/cultibox.html","$path/cultibox.html")) {
+            if(!copy("../../../tmp/cultibox.html","$path/cultibox.html")) {
                 echo -1;
                 return 0;
             }
@@ -120,7 +120,7 @@ if((!isset($path))||(empty($path))) {
 
                     //Restore log and power files:
                     if(is_file("$logs/$month/$day")) {
-                        if(filesize("$logs/$month/$day")!=filesize("../templates/data/empty_file_big.tpl")) {
+                        if(filesize("$logs/$month/$day")!=filesize("../../templates/data/empty_file_big.tpl")) {
                             if(!clean_log_file("$logs/$month/$day")) {
                                 echo -1;
                                 return 0;
@@ -135,7 +135,7 @@ if((!isset($path))||(empty($path))) {
 
 
                     if(is_file("$logs/$month/pwr_$day")) {
-                        if(filesize("$logs/$month/pwr_$day")!=filesize("../templates/data/empty_file_big.tpl")) {
+                        if(filesize("$logs/$month/pwr_$day")!=filesize("../../templates/data/empty_file_big.tpl")) {
                             if(!clean_log_file("$logs/$month/pwr_$day")) {
                                 echo -1;
                                 return 0;
@@ -149,7 +149,6 @@ if((!isset($path))||(empty($path))) {
                     }
             }
             if($progress==12) {
-                //set_historic_value(__('VALID_RESET_SD')." (".__('CONFIGURATION_PAGE').")","histo_info",$main_error);
                 echo 100;
             } else {
                 echo $progress+1;

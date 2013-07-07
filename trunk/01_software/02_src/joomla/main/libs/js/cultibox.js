@@ -32,13 +32,13 @@ confirmForm = function(SendForm,idDialog) {
 formatCard = function(hdd,pourcent) {
             $.ajax({ 
                 cache: false,
-                url: "../../main/scripts/format.php",
+                url: "../../main/modules/external/format.php",
                 data: {hdd:hdd, progress: pourcent}
             }).done(function (data) {
                 $("#progress_bar").progressbar({ value: 4*parseInt(data) });
                 if(data==100) { 
                     $("#success_format").show();
-                    return true 
+                    return true;
                 } else if(data>=0) { 
                     formatCard(hdd,data); 
                 } else {
@@ -48,12 +48,49 @@ formatCard = function(hdd,pourcent) {
 }
 
 
+loadLog = function(month,pourcent,type) {
+            $.ajax({
+                cache: false,
+                async: false,
+                url: "../../main/modules/external/load_log.php",
+                data: {month:month, progress: pourcent,type:type}
+            }).done(function (data) {
+                if(type=="power") {
+                    $("#progress_bar_load_power").progressbar({ value: parseInt(data) });
+                } else {
+                    $("#progress_bar_load").progressbar({ value: parseInt(data) });
+                }
+
+                if(!$.isNumeric(data)) {
+                    if(type=="power") {
+                        $("#error_load_power").show();
+                    } else {
+                        $("#error_load").show();
+                    }
+                    return true;
+                }
+
+                if(data==100) {
+                    if(type=="power") {
+                        $("#success_load_power").show();
+                    } else {
+                        $("#success_load").show();
+                    }
+                    return true;
+                } else if(data>=0) {
+                    loadLog(month-1,data,type);
+                } 
+            });
+}
+
+
+
 
 
 $(document).ready(function() {
    $.ajax({
                 cache: false,
-                url: "../../main/scripts/position.php"
+                url: "../../main/modules/external/position.php"
     }).done(function (data) {
 
         if ( typeof data.split(',')[0] !== "undefined" && data.split(',')[0]) {
@@ -81,7 +118,7 @@ $(document).ready(function() {
 
                 $.ajax({
                 cache: false,
-                url: "../../main/scripts/position.php",
+                url: "../../main/modules/external/position.php",
                 data: { POSITION_X: tmp[0], POSITION_Y: tmp[1], WIDTH: width }
                 }); 
             }
@@ -93,7 +130,7 @@ $(document).ready(function() {
 
                 $.ajax({
                 cache: false,
-                url: "../../main/scripts/position.php",
+                url: "../../main/modules/external/position.php",
                 data: { WIDTH: width, POSITION_X: tmp[0], POSITION_Y: tmp[1] }
                 });
         }
@@ -195,7 +232,7 @@ $(document).ready(function() {
     $(".download").click(function(e) {
         e.preventDefault();
 
-        $url = 'http://localhost:6891/cultibox/main/scripts/force-download.php?file='+$(".download").attr("href");
+        $url = 'http://localhost:6891/cultibox/main/modules/external/force-download.php?file='+$(".download").attr("href");
         $.ajax({
             type: 'GET',
             url: $url,
@@ -242,4 +279,46 @@ $(document).ready(function() {
             }
         });
     });
+
+
+
+    $("#import_log").click(function(e) {
+        e.preventDefault();
+        $("#progress_load").dialog({
+            resizable: false,
+            width: 550,
+            modal: true,
+            dialogClass: "popup_message",
+            buttons: {
+                Close: function() {
+                    $( this ).dialog("close");
+                    $("#error_load_power").css("display","none");
+                    $("#error_load").css("display","none");
+                    $("#success_load_power").css("display","none");
+                    $("#success_load").css("display","none");
+                }
+            }
+         });
+         $("#progress_bar_load").progressbar({value:0});
+         $("#progress_bar_load_power").progressbar({value:0});
+         loadLog($("#log_search").val(),0,"logs");
+         loadLog($("#log_search").val(),0,"power");
+    });
+
+
+    var check = window.location.pathname.match(/display-logs/g);
+    if(check) {
+         var name="load_log";
+         $.ajax({
+                cache: false,
+                async: false,
+                url: "../../main/modules/external/get_variable.php",
+                data: {name:name}
+            }).done(function (data) {
+                if(!data) {
+                    loadLog("1",0,"logs");
+                }
+            });
+    }
+
 });

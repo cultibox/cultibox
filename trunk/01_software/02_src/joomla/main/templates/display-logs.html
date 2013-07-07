@@ -417,8 +417,13 @@ $(function () {
 	    useHTML: true,
             layout: 'horizontal',
             verticalAlign: 'bottom',
-            width: 450,
-            itemWidth: 225,
+            <?php if($fake_log) { ?>
+                width: 450,
+                itemWidth: 225,
+            <?php } else { ?>
+                width: 400,
+                itemWidth: 200,
+            <?php } ?>
             navigation: {
                 activeColor: '#3E576F',
                 animation: true,
@@ -1052,12 +1057,12 @@ $(function () {
 <br />
 
 <label class="title_conf"><?php echo __('MANAGE_LOG_INFOS'); ?></label>
-<form action="/cultibox/index.php/waiting-data" method="post" >
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
     <td class="log-manage-title"><?php echo __('IMPORT_LOG_TITLE')." "; ?>
-        <select name="log_search">
+        <select name="log_search" id="log_search":>
         <?php foreach($GLOBALS['LOG_SEARCH'] as $value) {
                 if("$value"=="$log_search") {
                    echo "<option value=\"${value}\" selected>${value}</option>";
@@ -1084,6 +1089,25 @@ $(function () {
 <input type="hidden" name="anchor" value="anchor-manage">
 </form>
 
+
+<div id="progress_load" title="<?php echo __('LOAD_LOG_PROGRESS'); ?>" style="display:none">
+    <p><?php echo __('PROGRESS_LOG'); ?>:</p>
+    <div id="progress_bar_load"></div>
+    <p class="p_center">
+        <label class="format_success" id="success_load" style="display:none"><?php echo __('VALID_LOAD_LOG'); ?></label>
+        <label class="format_error" id="error_load" style="display:none"><?php echo __('ERROR_LOAD_LOG'); ?></label>
+    </p>
+
+    <br />
+    <p><?php echo __('PROGRESS_POWER'); ?>:</p>
+
+    <div id="progress_bar_load_power"></div>
+    <p class="p_center">
+        <label class="format_success" id="success_load_power" style="display:none"><?php echo __('VALID_LOAD_LOG'); ?></label>
+        <label class="format_error" id="error_load_power" style="display:none"><?php echo __('ERROR_LOAD_LOG'); ?></label>
+    </p>
+    </div>
+</div>
 
 <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-manage" method="post" id="reset_log_form">
 <table class="table_width">

@@ -61,7 +61,6 @@ $update_menu=false;
 
 
 
-
 // By default the expanded menu is the user interface menu
 if((!isset($submenu))||(empty($submenu))) {
         if(isset($_SESSION['submenu'])) {

@@ -274,9 +274,12 @@ function get_power_value($file,&$array_line) {
 function clean_log_file($file) {
    if(is_file('main/templates/data/empty_file_big.tpl')) {
         $filetpl = 'main/templates/data/empty_file_big.tpl';
-   } else {
+   } else if(is_file('../main/templates/data/empty_file_big.tpl')) {
         $filetpl = '../templates/data/empty_file_big.tpl';
+   } else {
+        $filetpl = '../../templates/data/empty_file_big.tpl';
    }
+
    if(!@copy($filetpl, $file)) return false;
    return true;
 }
