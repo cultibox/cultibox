@@ -458,6 +458,18 @@ msgstr "Export power"
 msgid "EXAMPLE_LOG"
 msgstr "Example de logs"
 
+msgid "LOAD_LOG_PROGRESS"
+msgstr "Progression du chargement des logs"
+
+msgid "PROGRESS_POWER"
+msgstr "Progression du chargement des fichiers de puissance"
+
+msgid "PROGRESS_LOG"
+msgstr "Progression du chargement des fichiers de température et d'humidité"
+
+msgid "ERROR_LOAD_LOG"
+msgstr "Erreur lors du chargement des logs, ceci peut être du à un temps de réponse trop long, recommencez l'opération pour vous en assurer"
+
 
 # For the plugs part:
 msgid "PLUG"
