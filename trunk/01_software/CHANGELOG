@@ -1,6 +1,7 @@
 Cultibox (1.1.26) precise; urgency=low
     + Ajout d'une barre de progression pour le chargement des logs + correction des timeouts sur le chargement des logs
     + Correction de l'écriture de la configuration sur la carte SD
+    + Suppréssion du cache enregistré pour les pages
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Jul  7 19:49:46 CEST 2013
 
