@@ -57,6 +57,14 @@ if [ ! -d /tmp/cultibox_backup/mysql ]; then
     echo "...OK"
 else
     echo "   * Upgrading the Cultibox software configuration..."
+    /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
+    if [ $? -ne 0 ]; then
+        /Applications/XAMPP/xamppfiles/xampp restart
+	    sleep 5
+        /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
+    fi
+    /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
+
     if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
         /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
         if [ $? -ne 0 ]; then
@@ -65,13 +73,7 @@ else
             /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
         fi
     fi
-    /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
-    if [ $? -ne 0 ]; then
-        /Applications/XAMPP/xamppfiles/xampp restart
-	sleep 5
-        /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
-    fi
-    /Applications/cultibox/xamppfiles/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/joomla.sql
+
     rm -Rf /tmp/cultibox_backup
     rm -f /Applications/cultibox/xamppfiles/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "...OK"

@@ -69,4 +69,4 @@ ALTER TABLE `cultibox`.`configuration` ADD `SHOW_HISTORIC` VARCHAR( 5 ) NOT NULL
 
 -- Version 1.1.26:
 ALTER TABLE `cultibox`.`configuration` DROP COLUMN `SHOW_WIZARD`;
-UPDATE `dkg45_menu` SET  published = "1" WHERE alias LIKE "wizard-%";
+UPDATE `cultibox_joomla`.`dkg45_menu` SET  published = "1" WHERE alias LIKE "wizard-%";
