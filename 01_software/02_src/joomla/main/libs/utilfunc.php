@@ -1400,7 +1400,6 @@ function check_date($datestart="",$dateend="") {
          $month_end=substr($dateend,5,2);
          $day_end=substr($dateend,8,2);
 
-
          if($year_start<$year_end) {
                return true;
          }
@@ -1410,9 +1409,13 @@ function check_date($datestart="",$dateend="") {
          } 
 
          if($month_start<=$month_end) {
-               if($day_start<=$day_end) {
+              if($month_start==$month_end) {
+                  if($day_start<=$day_end) {
+                      return true;
+                  }
+              } else {
                   return true;
-               }
+              }
          }
          return false;
 

@@ -457,7 +457,6 @@
     <td class="conf-marge"></td>
     <td class="conf-marge-td"><?php echo __('MANAGE_RESET_SD_CARD'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_FORMAT_SD'); ?>" /></td>
     <td >
-    <input type="hidden" name="reset_sd_card" value="reset_sd_card">
 
 <?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?><select name="selected_hdd" id="selected_hdd"><?php  foreach($hdd_list as $hdd) { ?><option value="<?php echo "$hdd"; ?>"><?php echo "$hdd"; ?></option><?php } ?></select><?php  } ?>
         <button id="reset_sd_card_submit" name="reset_sd_card_submit" 
