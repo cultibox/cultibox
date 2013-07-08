@@ -1057,7 +1057,7 @@ $(function () {
 <br />
 
 <label class="title_conf"><?php echo __('MANAGE_LOG_INFOS'); ?></label>
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" >
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
@@ -1077,16 +1077,6 @@ $(function () {
     <td></td>
 </tr>
 </table>
-<input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
-<input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
-<input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
-<?php if(strcmp("$type","month")==0) { ?>
-<input type="hidden" name="startmonth" value="<?php echo "$startmonth"; ?>">
-<input type="hidden" name="startyear" value="<?php echo "$startyear"; ?>" >
-<?php } else { ?>
-<input type="hidden" name="startday" value="<?php echo "$startday"; ?>">
-<?php } ?>
-<input type="hidden" name="anchor" value="anchor-manage">
 </form>
 
 
