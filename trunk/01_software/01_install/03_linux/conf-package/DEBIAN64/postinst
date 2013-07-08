@@ -58,11 +58,13 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
 else 
     echo "   * A previous version of Cultibox was installed, upgrading your software..."
     home=`egrep "^$user_culti" /etc/passwd|awk -F":" '{print $6}'`
+    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
+    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/joomla.sql
+
     if [ -f /opt/lampp/sql_install/update_sql.sql ]; then
         /opt/lampp/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/update_sql.sql 2>/dev/null
     fi
-    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
-    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/joomla.sql
+
     /opt/lampp/lampp restart
     rm -f /tmp/cultibox_upgrade
     rm -f /opt/cultibox/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
