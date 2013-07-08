@@ -508,6 +508,7 @@ EOF;
          return 0;
         }
 
+
         if(strcmp("$id","all")!=0) {
             if(strcmp($res_power[$id-1]['PLUG_POWER'],"")==0) {
                 $res_power[$id-1]['PLUG_POWER']=0;
@@ -535,7 +536,12 @@ EOF;
                     $err=true;
                 }
             }
+
+            while(count($res_power)!=$GLOBALS['NB_MAX_PLUG']) {
+                $res_power[]=0;
+            }
         }
+
 
         if($err) $out[]=__('ERROR_POWER_PRICE_NULL')." <a href='plugs-".$_SESSION['SHORTLANG']."'>".__('HERE')."</a>";
 
@@ -556,19 +562,19 @@ EOF;
                         "plug_number" => $res[$i-1]["plug_number"],
                         "date_catch" => $save["date_catch"],
                         "time_catch" => $save["time_catch"]
-                    );
+                    ); 
 
                     $save=$res[$i];
                     $val=0;
                     $pcent=0;
                     $timestamp=$res[$i]['timestamp'];
                     $i=$i-1;
-                }
+                } 
             }
         } else { 
             return 0;
         }
-        return $tmp;      
+        return $tmp;
 }
 // }}}
 
@@ -2483,7 +2489,6 @@ function configure_menu($cost="False",$wizard="False",$historic="False") {
 
   $sql = <<<EOF
 UPDATE `dkg45_menu` SET  published = "{$cost}" WHERE alias LIKE "cost-%";
-UPDATE `dkg45_menu` SET  published = "{$wizard}" WHERE alias LIKE "wizard-%";
 UPDATE `dkg45_menu` SET  published = "{$historic}" WHERE alias LIKE "historic-%";
 EOF;
    $db=db_priv_pdo_start_joomla();
