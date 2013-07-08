@@ -66,3 +66,7 @@ ALTER TABLE `cultibox`.`configuration` DROP COLUMN `ALARM_SENSS`;
 ALTER TABLE `cultibox`.`configuration` ADD `SHOW_COST` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
 ALTER TABLE `cultibox`.`configuration` ADD `SHOW_WIZARD` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
 ALTER TABLE `cultibox`.`configuration` ADD `SHOW_HISTORIC` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
+
+-- Version 1.1.26:
+ALTER TABLE `cultibox`.`configuration` DROP COLUMN `SHOW_WIZARD`;
+UPDATE `dkg45_menu` SET  published = "1" WHERE alias LIKE "wizard-%";
