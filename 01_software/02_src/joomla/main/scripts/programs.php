@@ -51,6 +51,7 @@ $resume=array();
 $add_plug=getvar('add_plug');
 $remove_plug=getvar('remove_plug');
 $stats=get_configuration("STATISTICS",$main_error);
+$show_wizard=get_configuration("SHOW_WIZARD",$main_error);
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $apply=getvar('apply');
 $start_time=getvar("start_time");
@@ -68,6 +69,7 @@ $rep="";
 $resume_regul=array();
 $tmp="";
 $submit=getvar("submit_progs",$main_error);
+
 
 for($i=1;$i<=$nb_plugs;$i++) {
     format_regul_sumary("$i",$main_error,$tmp,$nb_plugs);
@@ -240,7 +242,10 @@ if((isset($export))&&(!empty($export))) {
 } 
 
 
-$main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
+if(strcmp($show_wizard,"True")==0) {
+    $main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
+}
+
 
 
 
