@@ -53,10 +53,8 @@ function(){
 <?php if($wizard) { ?>
     <div class="text_info"><?php echo __('WELCOME_TUTO'); ?>:<br /><?php echo __('WELCOME_REQUIEREMENT'); ?></div>
     <br />
-<?php if(strcmp($show_wizard,"True")==0) { ?>
     <p class="text_info"><?php echo __('WELCOME_FOLLOW_LINK'); ?>:</p>
 <form action="<?php echo($_SERVER['PHP_SELF'])."wizard-".$_SESSION['SHORTLANG']; ?>" method="post"><p class="p_center"><input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>"></p></form>
-<?php } ?>
 <?php } else { ?>
 <hr />
 <br />

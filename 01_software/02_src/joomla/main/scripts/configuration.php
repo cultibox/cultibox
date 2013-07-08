@@ -54,7 +54,6 @@ $stats=getvar("stats",$main_error);
 $several_sensor=getvar("several_sensor",$main_error);
 $second_regul=getvar("second_regul",$main_error);
 $show_cost=getvar("show_cost",$main_error);
-$show_wizard=getvar("show_wizard",$main_error);
 $show_historic=getvar("show_historic",$main_error);
 $submit=getvar("submit_conf",$main_error);
 $update_menu=false;
@@ -277,14 +276,6 @@ if((isset($show_cost))&&(!empty($show_cost))) {
         $update_menu=true;
 } else {
         $show_cost = get_configuration("SHOW_COST",$main_error);
-}
-
-if((isset($show_wizard))&&(!empty($show_wizard))) {
-        insert_configuration("SHOW_WIZARD","$show_wizard",$main_error);
-        $update_conf=true;
-        $update_menu=true;
-} else {
-        $show_wizard = get_configuration("SHOW_WIZARD",$main_error);
 }
 
 
