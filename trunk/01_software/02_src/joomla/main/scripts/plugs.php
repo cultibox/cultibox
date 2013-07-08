@@ -42,13 +42,17 @@ $count_err=false;
 $program="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
-$main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
+$show_wizard=get_configuration("SHOW_WIZARD",$main_error);
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $selected_error="";
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $jumpto=getvar("jumpto");
 $submit=getvar("submit_plugs");
+
+if(strcmp($show_wizard,"True")==0) {
+    $main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
+} 
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card

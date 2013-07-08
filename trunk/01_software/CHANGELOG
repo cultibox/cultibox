@@ -3,6 +3,7 @@ Cultibox (1.1.26) precise; urgency=low
     + Correction de l'écriture de la configuration sur la carte SD
     + Suppréssion du cache enregistré pour les pages
     + Correction d'un bug sur la vérification de l'interval entre deux dates
+    + L'information dans la boite de message stipulant que l'on peut utiliser l'assistant ne s'affiche plus si on a désactivé l'onglet de l'assistant
 
 -- Yann Genevois <yann.genevois@gmail.com> Sun Jul  7 19:49:46 CEST 2013
 
