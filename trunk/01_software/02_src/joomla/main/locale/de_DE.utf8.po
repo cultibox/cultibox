@@ -23,10 +23,10 @@ msgid "WELCOME_MESSAGE"
 msgstr "Ce logiciel va vous permettre de manipuler simplement votre Cultibox afin de la configurer, de visualiser les données enregistrées ou encore d'accéder à certaines fonctionnalités telles que le calcul du coût d'électricité ou la création d'un calendrier de culture."
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note :</b> pour ceux qui possèdent l'ancienne version de la Cultibox (la <b>greenbox</b>), il vous faudra absolument"
+msgstr "<b>Note :</b> pour ceux qui possèdent l'ancienne version de la Cultibox (<b>Green Box</b>), il vous faudra absolument"
 
 msgid "WELCOME_REQUIEREMENT"
-msgstr "<ul class='list_class'><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la Cultibox</li><li>déconnecter votre GreenBox qui peut causer des interférences avec la Cultibox</li></ul>"
+msgstr "<ul class='list_class'><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la Cultibox</li><li>déconnecter votre Green Box qui peut causer des interférences avec la Cultibox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Cliquer sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre Cultibox"
@@ -172,9 +172,6 @@ msgstr "Afficher le menu de calcul des coûts"
 
 msgid "SHOW_HISTORIC"
 msgstr "Afficher le menu d'historique de vos actions"
-
-msgid "SHOW_WIZARD"
-msgstr "Afficher le menu d'assistant de configuration des prises"
 
 
 # For the logs part:
@@ -836,7 +833,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "Vous allez maintenant configurer une nouvelle prise."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choisir le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour baisser le pourcentage d'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>le type 'autre' servant pour tous les autres équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
+msgstr "Choisir le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour augmenter l'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>'autre' servant pour tous les autres type d'équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
 
 
 #For the calendar part:
@@ -1217,8 +1214,17 @@ msgstr "Erreur lors du chargement des données du fichier des programmes, vérif
 msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "Impossible d'accéder au fichier des mises à jour, vérifier votre configuration"
 
-msgid "ERROR_POWER_PRICE_NULL"
-msgstr "La puissance de certaines de vos prises n'est pas configurée, vous pouvez la configurer"
+msgid "ERROR_POWER_PLUG"
+msgstr "La puissance de la prise"
+
+msgid "UNCONFIGURED_POWER"
+msgstr "n'est pas configurée."
+
+msgid "CONFIGURABLE_PAGE_POWER"
+msgstr "Vous pouvez la configurer"
+
+msgid "ERROR_POWER_PLUGS"
+msgstr "La puissance des prises"
 
 msgid "ERROR_HPC_TIME_NULL"
 msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configurée, vous pouvez la configurer"
@@ -1451,9 +1457,6 @@ msgstr "En activant cette option vous pouvez avoir accès à la page de calcul d
 
 msgid "TOOLTIP_SHOW_HISTORIC"
 msgstr "En activant cette option vous pouvez avoir accès à la page d'affichage de l'historique de vos actions dans le logiciel grâce au menu 'Historique' qui apparaît dans la barre du menu principal"
-
-msgid "TOOLTIP_SHOW_WIZARD"
-msgstr "En activant cette option vous pouvez avoir accès à la page de l'assistant de configuration des prises et des programmes grâce au menu 'Assistant' qui apparaît dans la barre du menu principal"
 
 
 #For the debug part:

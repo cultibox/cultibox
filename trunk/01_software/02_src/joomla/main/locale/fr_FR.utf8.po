@@ -1214,8 +1214,17 @@ msgstr "Erreur lors du chargement des données du fichier des programmes, vérif
 msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "Impossible d'accéder au fichier des mises à jour, vérifier votre configuration"
 
-msgid "ERROR_POWER_PRICE_NULL"
-msgstr "La puissance de certaines de vos prises n'est pas configurée, vous pouvez la configurer"
+msgid "ERROR_POWER_PLUG"
+msgstr "La puissance de la prise"
+
+msgid "UNCONFIGURED_POWER"
+msgstr "n'est pas configurée."
+
+msgid "CONFIGURABLE_PAGE_POWER"
+msgstr "Vous pouvez la configurer"
+
+msgid "ERROR_POWER_PLUGS"
+msgstr "La puissance des prises"
 
 msgid "ERROR_HPC_TIME_NULL"
 msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configurée, vous pouvez la configurer"

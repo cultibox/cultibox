@@ -25,6 +25,10 @@ include($this['path']->path('layouts:template.config.php'));
 	require_once 'main/libs/config.php'; 
 	require_once 'main/libs/db_common.php'; 
 	require_once 'main/libs/utilfunc.php'; 
+
+    $main_error=array();
+    configure_menu(get_configuration("SHOW_COST",$main_error),get_configuration("SHOW_WIZARD",$main_error),get_configuration("SHOW_HISTORIC",$main_error));
+
 ?>
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css" />
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" />
