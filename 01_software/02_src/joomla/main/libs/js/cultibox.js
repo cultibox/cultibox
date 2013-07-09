@@ -51,7 +51,7 @@ formatCard = function(hdd,pourcent) {
 loadLog = function(month,pourcent,type) {
             $.ajax({
                 cache: false,
-                async: false,
+                //async: false,
                 url: "../../main/modules/external/load_log.php",
                 data: {month:month, progress: pourcent,type:type}
             }).done(function (data) {
@@ -311,7 +311,7 @@ $(document).ready(function() {
          var name="load_log";
          $.ajax({
                 cache: false,
-                async: false,
+                async: true,
                 url: "../../main/modules/external/get_variable.php",
                 data: {name:name}
             }).done(function (data) {
@@ -328,6 +328,7 @@ $(document).ready(function() {
                                 $("#error_load").css("display","none");
                                 $("#success_load_power").css("display","none");
                                 $("#success_load").css("display","none");
+                                window.location.reload();
                             }
                         }
                     });

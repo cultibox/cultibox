@@ -287,8 +287,6 @@ if((isset($show_historic))&&(!empty($show_historic))) {
         $show_historic = get_configuration("SHOW_HISTORIC",$main_error);
 }
 
-configure_menu(get_configuration("SHOW_COST",$main_error),get_configuration("SHOW_WIZARD",$main_error),get_configuration("SHOW_HISTORIC",$main_error));
-
 
 // Is a field has been changed and there is no error in the value: display success message
 if(((empty($main_error))||(!isset($main_error)))&&(count($error)==0)) {

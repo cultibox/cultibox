@@ -7,11 +7,11 @@ if (!isset($_SESSION)) {
 $start_load = getmicrotime();
 
 
-
 /* Libraries requiered: 
         db_common.php : manage database requests
         utilfunc.php  : manage variables and files manipulations
 */
+
 require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
@@ -49,6 +49,7 @@ $stats=get_configuration("STATISTICS",$main_error);
 $submit=getvar("view-cost");
 $resume="";
 $lang=$_SESSION['LANG'];
+
 
 
 
@@ -258,6 +259,36 @@ if(!check_date("$startday,","$endday")) {
 }
 
 
+if((strcmp($select_plug,"all")!=0)&&(strcmp($select_plug,"distinct_all")!=0)) {
+        if(!check_configuration_power($select_plug,$main_error)) {
+            $main_error[]=__('ERROR_POWER_PLUG')." ".$select_plug." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=".$select_plug."'>".__('HERE')."</a>";
+        }
+} else {
+        $nb=array();
+        for($plugs=1;$plugs<=$nb_plugs;$plugs++) {
+            if(!check_configuration_power($plugs,$main_error)) {
+               $nb[]=$plugs; 
+            }
+        }
+
+        if(count($nb)>0) {
+            if(count($nb)==1) {
+                $main_error[]=__('ERROR_POWER_PLUG')." ".$nb[0]." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=".$nb[0]."'>".__('HERE')."</a>";
+            } else {
+                $tmp_number="";     
+                foreach($nb as $number) {
+                    if(strcmp($tmp_number,"")!=0) {
+                        $tmp_number=$tmp_number.", ";
+                    }
+                    $tmp_number=$tmp_number.$number;
+                }
+                $main_error[]=__('ERROR_POWER_PLUGS')." ".$tmp_number." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=all'>".__('HERE')."</a>";
+            }
+        }
+}
+
+
+
 //Computing cost value:
 if(strcmp($select_plug,"distinct_all")!=0) {
     $theorical_power=get_theorical_power($select_plug,$cost_type,$main_error,$check);
@@ -272,8 +303,6 @@ if(strcmp($select_plug,"distinct_all")!=0) {
         $color_cost=$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$select_plug-1];
     }
 
-    //$data_power=get_data_power($startday,$endday,$select_plug,$main_error);
-    //$real_power=get_real_power($data_power,$cost_type,$main_error);
     $startTime = strtotime("$startday 12:00");
     $endTime = strtotime("$endday 12:00");
     $real_power=0;
@@ -305,7 +334,7 @@ if(strcmp($select_plug,"distinct_all")!=0) {
 
        for ($i = $startTime; $i <= $endTime; $i = $i + 86400) {
             $thisDate = date('Y-m-d', $i); // 2010-05-01, 2010-05-02, etc
-            $data_power=get_data_power($thisDate,$thisDate,$plugs,$tmp_err);
+            $data_power=get_data_power($thisDate,$thisDate,$plugs,$main_error);
             $real_power=get_real_power($data_power,$cost_type,$main_error)+$real_power;
             unset($data_power);
        }
@@ -319,9 +348,6 @@ if(strcmp($select_plug,"distinct_all")!=0) {
         "title" => "$title",
         "color" => $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs-1]
        ); 
-    }
-    if(count($tmp_err)>0) {
-        $main_error[]=$tmp_err[0];
     }
 }
 

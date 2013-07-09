@@ -1,3 +1,9 @@
+Cultibox (1.1.27) precise; urgency=low
+    + Correction de l'affichage du message de configuration des puissances: le message indique quelle prise il faut configurer et renvoie sur l'onglet 'Prises' adequat
+
+-- Yann Genevois <yann.genevois@gmail.com> Tue Jul  9 11:33:58 CEST 2013
+
+
 Cultibox (1.1.26) precise; urgency=low
     + Ajout d'une barre de progression pour le chargement des logs + correction des timeouts sur le chargement des logs
     + Correction de l'écriture de la configuration sur la carte SD

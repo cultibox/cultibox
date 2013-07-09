@@ -512,7 +512,6 @@ EOF;
         if(strcmp("$id","all")!=0) {
             if(strcmp($res_power[$id-1]['PLUG_POWER'],"")==0) {
                 $res_power[$id-1]['PLUG_POWER']=0;
-                $out[]=__('ERROR_POWER_PRICE_NULL')." <a href='plugs-".$_SESSION['SHORTLANG']."'>".__('HERE')."</a>";
             }
 
             $tmp=array();
@@ -529,11 +528,9 @@ EOF;
             return $tmp;
         } else {
             //For all plugs
-            $err=false;
             for($i=0;$i<count($res_power);$i++) {
                 if(strcmp($res_power[$i]['PLUG_POWER'],"")==0) {
-                    $res_power[$i]['PLUG_POWER']=0;
-                    $err=true;
+                    $res_power[$i]['PLUG_POWER']=0; 
                 }
             }
 
@@ -542,8 +539,6 @@ EOF;
             }
         }
 
-
-        if($err) $out[]=__('ERROR_POWER_PRICE_NULL')." <a href='plugs-".$_SESSION['SHORTLANG']."'>".__('HERE')."</a>";
 
         if(count($res)>0) {
             $timestamp=$res[0]['timestamp'];
@@ -2500,6 +2495,44 @@ EOF;
         }
         $db=null;
     }
+}
+// }}}
+
+
+// {{{ check_configuration_power()
+// ROLE check of power of plugs is configured
+// IN  $id     id of the plug to be checked
+// OUT false if a plug is not configured, true else
+function check_configuration_power($id=0) {
+      $sql = <<<EOF
+SELECT `PLUG_POWER` FROM `plugs` WHERE `id` = {$id} AND `PLUG_ENABLED` LIKE "True";
+EOF;
+
+        $db=db_priv_pdo_start();
+        try {
+            $sth=$db->prepare("$sql");
+            $sth->execute();
+            $res_power=$sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+        $db=null;
+
+        if((isset($ret))&&(!empty($ret))) {
+         if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+         } else {
+            $out[]=__('ERROR_SELECT_SQL');
+         }
+         return 0;
+        }
+
+        if(count($res_power)>0) {
+            if(strcmp($res_power[0]['PLUG_POWER'],"")==0) {
+                return false;
+            }
+        }
+        return true;
 }
 // }}}
 
