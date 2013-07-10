@@ -71,11 +71,6 @@ $active_plugs=get_active_plugs($nb_plugs,$main_error);
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 
 
-//Get values from the waiting page using SESSION variables
-if(isset($_SESSION['log_search'])) {
-   insert_configuration("LOG_SEARCH",$_SESSION['log_search'],$main_error);
-} 
-$log_search=get_configuration("LOG_SEARCH",$main_error);
 $select_power=getvar('select_power');
 $select_plug=getvar('select_plug');
 $startday=getvar('startday');
@@ -303,48 +298,6 @@ if(!empty($resume_regul)) {
     }
 }
 
-
-/*if($load_log) {
-   if((isset($import_log))&&(!empty($import_log))) {
-        $main_info[]=__('VALID_LOAD_LOG');
-        $pop_up_message=$pop_up_message.popup_message(__('VALID_LOAD_LOG'));
-        set_historic_value(__('VALID_LOAD_LOG')." (".__('LOGS_PAGE').")","histo_info",$main_error);
-   } else {
-       $main_info[]=__('VALID_CURRENT_LOAD_LOG');
-       $pop_up_message=$pop_up_message.popup_message(__('VALID_CURRENT_LOAD_LOG'));       
-       set_historic_value(__('VALID_CURRENT_LOAD_LOG')." (".__('LOGS_PAGE').")","histo_info",$main_error);
-   }
-
-
-    if($nb_days==31) {
-        if(strlen($daySearch)<2) {
-            $dday="0".$daySearch;
-        } else {
-            $dday=$daySearch;
-        }
-
-        if(strlen($monthSearch)<2) {
-            $mmonth="0".$monthSearch;
-        } else {
-            $mmonth=$monthSearch;
-        }
-
-        get_log_value("$sd_card/logs/$mmonth/$dday",$log);
-        if(!empty($log)) {
-            $main_info[]=__('STILL_LOG_FILE');
-            $pop_up_message=$pop_up_message.popup_message(__('STILL_LOG_FILE'));
-            unset($log);
-        } else {
-            get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);
-            if(!empty($power)) {
-                $main_info[]=__('STILL_LOG_FILE');
-                $pop_up_message=$pop_up_message.popup_message(__('STILL_LOG_FILE'));
-                unset($power);
-            }
-        }
-    }
-}
-*/
 
 $check_log=check_export_table_csv("logs",$main_error);
 $check_power=check_export_table_csv("power",$main_error);

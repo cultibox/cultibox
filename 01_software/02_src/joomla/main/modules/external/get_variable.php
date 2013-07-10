@@ -20,8 +20,8 @@ if((!isset($name))||(empty($name))) {
 
 switch ($name) {
     case 'load_log':
-        if((isset($_SESSION['load_log']))&&(!empty($_SESSION['load_log']))) {
-            echo $_SESSION['load_log'];
+        if((isset($_SESSION['LOAD_LOG']))&&(!empty($_SESSION['LOAD_LOG']))) {
+            echo $_SESSION['LOAD_LOG'];
         }
         break;
     case 'sd_card':
