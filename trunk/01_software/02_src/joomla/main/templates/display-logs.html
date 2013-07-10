@@ -85,7 +85,7 @@ buttonImageOnly: 'true',
 </div>
 <br />
 <div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
-<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
+<form name="display-log-day" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-day"></td>
@@ -144,7 +144,7 @@ buttonImageOnly: 'true',
 <br />
 </div>
 <div id="label_select_month" style="<?php if(strcmp($type,"days")==0) echo "display:none"; ?>">
-<form action="/cultibox/index.php/waiting-data" method="post">
+<form name="display-log-month" action="/cultibox/index.php/waiting-data" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-month"></td>
@@ -1064,12 +1064,8 @@ $(function () {
     <td class="log-manage-title"><?php echo __('IMPORT_LOG_TITLE')." "; ?>
         <select name="log_search" id="log_search":>
         <?php foreach($GLOBALS['LOG_SEARCH'] as $value) {
-                if("$value"=="$log_search") {
-                   echo "<option value=\"${value}\" selected>${value}</option>";
-                } else {
                    echo "<option value=\"${value}\">${value}</option>";
-                }
-            } ?>
+        } ?>
          </select>
         <?php echo __('IMPORT_LAST_MONTH'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CONFIG_LOG_SEARCH'); ?>" />
     <td class="log-manage-field"><input type="submit" id="import_log" name="import_log" <?php if((!isset($sd_card))||(empty($sd_card))) { echo "disabled"; ?> class="inputDisable" value="<?php echo __('NO_IMPORT_LOG'); ?>" <?php } else { ?>value="<?php echo __('IMPORT_LOG'); ?>" <?php } ?>

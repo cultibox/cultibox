@@ -1,3 +1,8 @@
+var OK_button="";
+var CANCEL_button="";
+var CLOSE_button="";
+
+
 clean_highchart_message = function(message) { {
     message=message.replace("'", "\'");
     message=message.replace("&eacute;", "é");
@@ -19,11 +24,17 @@ confirmForm = function(SendForm,idDialog) {
         width: 500,
         modal: true,
         dialogClass: "dialog_cultibox",
-        buttons: {
-            "OK": function() { $( this ).dialog( "close" ); SendForm.submit(); 
-            },
-            Cancel: function() { $( this ).dialog( "close" ); return false;}
-        }
+        buttons: [{
+            text: OK_button,
+            click: function () {
+                $( this ).dialog( "close" ); SendForm.submit();
+            }
+        }, {
+            text: CANCEL_button,
+            click: function () {
+                $( this ).dialog( "close" ); return false;
+            }
+        }]
     });
 }
 
@@ -38,6 +49,7 @@ formatCard = function(hdd,pourcent) {
                 $("#progress_bar").progressbar({ value: 4*parseInt(data) });
                 if(data==100) { 
                     $("#success_format").show();
+                    $("#btnCancel").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
                     return true;
                 } else if(data>=0) { 
                     formatCard(hdd,data); 
@@ -76,6 +88,7 @@ loadLog = function(month,pourcent,type) {
                     } else {
                         $("#success_load").show();
                     }
+                    $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
                     return true;
                 } else if(data>=0) {
                     loadLog(month-1,data,type);
@@ -83,40 +96,85 @@ loadLog = function(month,pourcent,type) {
             });
 }
 
+get_lang = function() {
+        var lang="";
+        lang = window.location.pathname.match(/\/fr\//g);
+        if(!lang) {
+            lang = window.location.pathname.match(/\/en\//g);
+            if(!lang) {
+                lang = window.location.pathname.match(/\/es\//g);
+                if(!lang) {
+                    lang = window.location.pathname.match(/\/it\//g);
+                    if(!lang) {
+                        lang = window.location.pathname.match(/\/de\//g);
+                    }
+                }
+            }
+        }
+        return lang;
+}
 
 
 
 
 $(document).ready(function() {
-   $.ajax({
-                cache: false,
-                url: "../../main/modules/external/position.php"
+    $.ajax({
+        cache: false,
+        url: "../../main/modules/external/position.php"
     }).done(function (data) {
 
-        if ( typeof data.split(',')[0] !== "undefined" && data.split(',')[0]) {
-            var x = parseInt(data.split(',')[0].replace("\"", ""));
-        } else {
-            var x = 15;
-        }
+    var lang = get_lang();
+    if(!lang) {
+        lang="/fr/";
+    }
 
-        if ( typeof data.split(',')[1] !== "undefined" && data.split(',')[1]) {
-            var y = parseInt(data.split(',')[1].replace("\"", ""));
-        } else {
-            var y = 15;
-        }
+    if(lang=="/it/") {
+        OK_button="Continuare";
+        CANCEL_button="Annullare";
+        CLOSE_button="Chiudere";
+    } else if(lang=="/de/") {
+        OK_button="Weiter";
+        CANCEL_button="Stornieren";
+        CLOSE_button="Schliessen";
+    } else if(lang=="/en/") {
+        OK_button="OK";
+        CANCEL_button="Cancel";
+        CLOSE_button="Close";
+    } else if(lang=="/es/") {
+        OK_button="Continuar";
+        CANCEL_button="Cancelar";
+        CLOSE_button="Cerrar";
+    } else {
+        OK_button="Continuer";
+        CANCEL_button="Annuler";
+        CLOSE_button="Fermer";
+    }
 
-        if ( typeof data.split(',')[2] !== "undefined" && data.split(',')[2]) {
-            var wid = parseInt(data.split(',')[2].replace("\"", ""));
-        } else {
-            var wid = 325;
-        }
+    
+    if ( typeof data.split(',')[0] !== "undefined" && data.split(',')[0]) {
+        var x = parseInt(data.split(',')[0].replace("\"", ""));
+    } else {
+        var x = 15;
+    }
 
-        $( ".message" ).dialog({ width: wid, resizable: true, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", dialogClass: "dialog_message", position: [x,y], dragStop: function( event, ui ) { 
-            if(data!="") { 
-                var tmp = $(".message").dialog( "option", "position" );
-                var width = $(".message").dialog( "option", "width" );
+    if ( typeof data.split(',')[1] !== "undefined" && data.split(',')[1]) {
+        var y = parseInt(data.split(',')[1].replace("\"", ""));
+    } else {
+        var y = 15;
+    }
 
-                $.ajax({
+    if ( typeof data.split(',')[2] !== "undefined" && data.split(',')[2]) {
+        var wid = parseInt(data.split(',')[2].replace("\"", ""));
+    } else {
+        var wid = 325;
+    }
+
+    $( ".message" ).dialog({ width: wid, resizable: true, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", dialogClass: "dialog_message", position: [x,y], dragStop: function( event, ui ) { 
+        if(data!="") { 
+            var tmp = $(".message").dialog( "option", "position" );
+            var width = $(".message").dialog( "option", "width" );
+
+            $.ajax({
                 cache: false,
                 url: "../../main/modules/external/position.php",
                 data: { POSITION_X: tmp[0], POSITION_Y: tmp[1], WIDTH: width }
@@ -158,16 +216,16 @@ $(document).ready(function() {
             $( ".pop_up_message" ).dialog({ 
                 position: [($(window).width() / 2) - (550 / 2), ytop],
                 width: 550, 
-                buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], 
+                buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], 
                 hide: "fold", 
                 modal: true,  
                 dialogClass: "popup_message"  
             }); 
         } else {    
-            $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+            $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
         }
     } else {
-        $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+        $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
     }
 
     //Portage pour Chrome:
@@ -182,16 +240,16 @@ $(document).ready(function() {
             $( ".pop_up_error" ).dialog({
                 position: [($(window).width() / 2) - (550 / 2), ytop],
                 width: 550,
-                buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ],
+                buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ],
                 hide: "fold",
                 modal: true,
                 dialogClass: "popup_error"
             });
         } else {
-            $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
+            $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
         }
     } else {
-        $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
+        $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
     }
   
 
@@ -252,34 +310,38 @@ $(document).ready(function() {
             width: 500,
             modal: true,
             dialogClass: "dialog_cultibox",
-            buttons: {
-                "OK": function() { $( this ).dialog("close"); 
-                        $("#progress").dialog({
-                            resizable: false,
-                            height:200,
-                            width: 500,
-                            modal: true,
-                            dialogClass: "popup_message",
-                            buttons: {
-                                Close: function() { 
-                                    $( this ).dialog("close"); 
-                                    window.location.reload();
-                                    return false;
-
-                                }
-                            }
-                        });
-                        $("#progress_bar").progressbar({value:0});
-                        formatCard($("#selected_hdd").val(),0);
-                },
-                Cancel: function() { 
-                            $( this ).dialog("close"); 
-                            return false;
-                }
-            }
+            buttons: [{
+                        text: OK_button,
+                        click: function () {
+                            $( this ).dialog( "close" ); 
+                            $("#progress").dialog({
+                                resizable: false,
+                                height:200,
+                                width: 500,
+                                modal: true,
+                                dialogClass: "popup_message",
+                                buttons: [{
+                                    text: CANCEL_button,
+                                    "id": "btnCancel",
+                                    click: function () {
+                                        $( this ).dialog( "close" ); 
+                                        $("#btnCancel").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
+                                        window.location.reload();
+                                        return false;
+                                    }
+                                }]
+                            });
+                            $("#progress_bar").progressbar({value:0});
+                            formatCard($("#selected_hdd").val(),0);
+                        }
+                    }, {
+                        text: CANCEL_button,
+                        click: function () {
+                            $( this ).dialog( "close" ); return false;
+                        }
+                    }]
         });
     });
-
 
 
     $("#import_log").click(function(e) {
@@ -289,15 +351,20 @@ $(document).ready(function() {
             width: 550,
             modal: true,
             dialogClass: "popup_message",
-            buttons: {
-                Close: function() {
-                    $( this ).dialog("close");
-                    $("#error_load_power").css("display","none");
-                    $("#error_load").css("display","none");
-                    $("#success_load_power").css("display","none");
-                    $("#success_load").css("display","none");
-                }
-            }
+            buttons: [{
+                    text: CANCEL_button,
+                    "id": "btnClose",
+                    click: function () {
+                        $( this ).dialog("close");
+                        $("#error_load_power").css("display","none");
+                        $("#error_load").css("display","none");
+                        $("#success_load_power").css("display","none");
+                        $("#success_load").css("display","none");
+                        $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
+                        document.forms['display-log-day'].submit();
+                    }
+            }]
+
          });
          $("#progress_bar_load").progressbar({value:0});
          $("#progress_bar_load_power").progressbar({value:0});
@@ -329,16 +396,19 @@ $(document).ready(function() {
                                 width: 550,
                                 modal: true,
                                 dialogClass: "popup_message",
-                                buttons: {
-                                    Close: function() {
+                                buttons: [{ 
+                                    text: CANCEL_button,
+                                    "id": "btnClose",
+                                    click: function () {
                                         $( this ).dialog("close");
                                         $("#error_load_power").css("display","none");
                                         $("#error_load").css("display","none");
                                         $("#success_load_power").css("display","none");
                                         $("#success_load").css("display","none");
-                                        window.location.reload();
+                                        $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
+                                        document.forms['display-log-day'].submit();
                                     }
-                                }
+                                }]
                             });
 
                             $("#progress_bar_load").progressbar({value:0});

@@ -65,8 +65,8 @@ if((isset($sd_card))&&(!empty($sd_card))) {
     $nb_days=31;
     $count=0;
 
-    if((!isset($_SESSION['load_log']))||(empty($_SESSION['load_log']))) {
-        $_SESSION['load_log']=True; 
+    if((!isset($_SESSION['LOAD_LOG']))||(empty($_SESSION['LOAD_LOG']))) {
+        $_SESSION['LOAD_LOG']="True"; 
     }
 
 
