@@ -1754,10 +1754,11 @@ EOF;
 
 
 /// {{{ create_program_from_database()
-// ROLE read programs from the database and format its to be write into a sd card
+// ROLE read programs from the database and format its to be writen into a sd card
 // IN $out        error or warning message
 // RET an array containing datas
 function create_program_from_database(&$out) {
+   $nb_plugs=get_configuration("NB_PLUGS",$out);
    $sql = <<<EOF
 SELECT * FROM `programs` WHERE `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by `time_start`
 EOF;
@@ -1827,8 +1828,12 @@ EOF;
    date_default_timezone_set('UTC');
 
    if(count($first)>0) {
-      while( $j <= 16 ) {
-         $result=find_value_for_plug($first,"000000",$j);
+      while( $j <= $GLOBALS['NB_MAX_PLUG'] ) {
+         if($j>$nb_plugs) {
+            $result="000";
+         } else {
+            $result=find_value_for_plug($first,"000000",$j);
+         }
          $data[0]=$data[0]."$result";
          $j=$j+1;
       }
@@ -1870,15 +1875,20 @@ EOF;
       for($i=0;$i<count($event);$i++) {
          $data[$i+1] = "";
          $j=1;
-         while($j<=16) {
-            $result=find_value_for_plug($res,$event[$i],$j);
+         while($j<= $GLOBALS['NB_MAX_PLUG']) {
+            if($j>$nb_plugs) {
+                $result="000";
+            } else {
+                $result=find_value_for_plug($res,$event[$i],$j);
+            }
+
             $data[$i+1]=$data[$i+1]."$result";
             $j=$j+1;
          }
          
          $ehh=substr($event[$i],0,2);
-                        $emm=substr($event[$i],2,2);
-                        $ess=substr($event[$i],4,2);
+         $emm=substr($event[$i],2,2);
+         $ess=substr($event[$i],4,2);
          $time_event=mktime($ehh,$emm,$ess,1,1,1970);
          while(strlen($time_event)!=5) {
             $time_event="0$time_event";
@@ -1890,16 +1900,20 @@ EOF;
    $count=count($data);
    $j=1;
    if(count($last)>0) {
-       while($j<=16) {
-            $result=find_value_for_plug($last,"235959",$j);
-      if(isset($data[$count])) {
+       while($j<= $GLOBALS['NB_MAX_PLUG']) {
+            if($j>$nb_plugs) {
+                $result="000";
+            } else {
+                $result=find_value_for_plug($last,"235959",$j);
+            }
+
+            if(isset($data[$count])) {
                   $data[$count]=$data[$count]."$result";
-      } else {
-         $data[$count]="$result";
-      }
+            } else {
+                  $data[$count]="$result";
+            }
             $j=$j+1;
       }
-
       $data[$count]="86399".$data[$count];
    } else {
       $data[$count]="86399000000000000000000000000000000000000000000000000";

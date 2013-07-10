@@ -569,9 +569,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
     } else {
         $main_error[]=__('ERROR_WRITE_PROGRAM');
     }
-} else {
-        $main_error[]=__('ERROR_SD_CARD');
-}
+} 
 
 
 if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
