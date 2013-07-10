@@ -32,8 +32,11 @@ Ce numéro indique la version du firmware de la Cultibox.
 Ceci est le numéro d'identité de votre Cultibox. Il nous permet de suivre ce qui la compose et son cycle de vie.
 
 * Contraste(Pour utilisateur): *
-Cette valeur permet de modifier le contraste de l'écran de votre Cultibox.
-Pour modifier le contraste: Appuyer sur gauche ou droite pour changer ça valeur. La valeur de contraste est enregistrée dans un fichier (/cnf/cnt) sur la carte SD. Au démarrage de la Cultibox, une valeur par défaut est chargée. Votre écran peut donc être un peu sombre ou un peu trop clair au démarrage. Durant le chargement de la configuration, la Cultibox charge votre valeur de contraste et l'applique à l'écran.
+Cette valeur permet de modifier le contraste de l'écran de votre Cultibox. Au premier démarrage de la Cultibox, une valeur par défaut est chargée. Votre écran peut donc être un peu sombre ou un peu trop clair au démarrage. 
+Pour modifier le contraste: 
+ * Faite défiler l'écran jusqu’à ce que la ligne contraste soit tout en haut.
+ * Appuyer sur gauche ou droite pour changer la valeur.
+La valeur de contraste est enregistrée dans un fichier (/cnf/cnt) sur la carte SD. Durant le chargement de la configuration, la Cultibox charge votre valeur de contraste et l'applique à l'écran.
 
 * Freq plug: *
 Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox met à jour l'état des prises (0 indique une mise a jours permanente)
