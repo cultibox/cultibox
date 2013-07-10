@@ -1,5 +1,8 @@
 <?php 
 
+require_once('../../libs/utilfunc.php');
+
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -20,6 +23,9 @@ switch ($name) {
         if((isset($_SESSION['load_log']))&&(!empty($_SESSION['load_log']))) {
             echo $_SESSION['load_log'];
         }
+        break;
+    case 'sd_card':
+        echo get_sd_card();
         break;
 }
 
