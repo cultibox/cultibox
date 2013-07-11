@@ -4,6 +4,10 @@ require_once('../../libs/utilfunc.php');
 require_once('../../libs/db_common.php');
 require_once('../../libs/config.php');
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 if((isset($_GET['hdd']))&&(!empty($_GET['hdd']))) {
     $path=$_GET['hdd'];
 }
@@ -43,12 +47,12 @@ if((!isset($path))||(empty($path))) {
              //Copiyng firmware:
             check_and_copy_firm($path);
 
+
             //Creating pluga file:
             if(!write_pluga($path,$out)) {
                     echo -1;
                     return 0;
             }
-
 
             //Creating conf file:
             $update_frequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$out);
@@ -59,8 +63,9 @@ if((!isset($path))||(empty($path))) {
             }
 
 
+
             // Creating log.txt file:
-            if(!check_and_copy_log($path,$out)) {
+            if(!check_and_copy_log($path)) {
                 echo -1;
                 return 0;
             }
@@ -72,6 +77,8 @@ if((!isset($path))||(empty($path))) {
                 return 0;
             }
 
+
+
             $program=create_program_from_database($out);
             if(!save_program_on_sd($path,$program,$out)) {
                 echo -1;
@@ -82,11 +89,11 @@ if((!isset($path))||(empty($path))) {
             //Create plugXX files:
             $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$out);
             if(count($plugconf)>0) {
-                if(!write_plugconf($plugconf,$path,$out)) {
+                if(!write_plugconf($plugconf,$path)) {
                     echo -1;
                     return 0;
                 }
-            }
+            }   
 
             //Copying cultibox icon:
             if(!copy("../../../tmp/cultibox.ico","$path/cultibox.ico")) {

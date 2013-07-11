@@ -5,6 +5,7 @@ Cultibox (1.1.27) precise; urgency=low
     + On ne tente pas de charger les logs des 31 derniers jours sans carte SD branchée
     + Gestion des différentes langues pour les boutons JQUERY
     + Passage de la requette d'envoie d'information en AJAX pour gagner du temps au chargement du welcome
+    + Correction du formatage de la carte SD qui copie maintenant les firmwares
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Jul  9 11:33:58 CEST 2013
 
