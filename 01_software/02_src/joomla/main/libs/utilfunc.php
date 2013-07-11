@@ -1086,6 +1086,10 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $power=$power_frequency*60;
     $update="000$update_frequency";
 
+    // Format values
+    while(strlen($record)<4) {
+        $record="0$record";
+    }
 
     while(strlen($alarm_enable)<4) {
         $alarm_enable="0$alarm_enable";
@@ -1094,10 +1098,6 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $alarm_value=$alarm_value*100;
     while(strlen($alarm_value)<4) {
         $alarm_value="0$alarm_value";
-    }
-
-    while(strlen($record)<4) {
-        $record="0$record";
     }
 
    while(strlen($power)<4) {
@@ -1155,30 +1155,33 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
    $alarm_senss="000+";
    $record=$record_frequency*60;
    $power=$power_frequency*60;
-
+   $alarm_value=$alarm_value*100;
+   
+   // Format values
+   while(strlen($update_frequency)<4) {
+       $update_frequency="0$update_frequency";
+   }
+    
+   while(strlen($record)<4) {
+       $record="0$record";
+   }
+   
+   while(strlen($power)<4) {
+      $power="0$power";
+   }
    
    while(strlen($alarm_enable)<4) {
       $alarm_enable="0$alarm_enable";
    }
 
-   $alarm_value=$alarm_value*100;
    while(strlen($alarm_value)<4) {
       $alarm_value="0$alarm_value";
    }
 
-
-   while(strlen($record)<4) {
-      $record="0$record";
-   }
-
-   while(strlen($power)<4) {
-      $power="0$power";
-   }
-
-   $update="000$update_frequency";
+   // Write falues in conf file
    $file="$sd_card/conf";
    if($f=@fopen("$file","w+")) {
-      fputs($f,"PLUG_UPDATE:$update\r\n");
+      fputs($f,"PLUG_UPDATE:$update_frequency\r\n");
       fputs($f,"LOGS_UPDATE:$record\r\n");
       fputs($f,"POWR_UPDATE:$power\r\n"); 
       fputs($f,"ALARM_ACTIV:$alarm_enable\r\n");
