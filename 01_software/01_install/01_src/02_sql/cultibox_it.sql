@@ -49,7 +49,6 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `START_TIME_HC` varchar(5) NOT NULL DEFAULT '22:30',
   `STOP_TIME_HC` varchar(5) NOT NULL DEFAULT '06:30',
   `COST_TYPE` varchar(20) NOT NULL DEFAULT 'standard',
-  `LOG_SEARCH` int(11) NOT NULL DEFAULT '2',
   `STATISTICS` varchar(5) NOT NULL DEFAULT 'True',
   `SECOND_REGUL` VARCHAR( 5 ) NOT NULL DEFAULT 'False',
   `REGUL_SENSOR` VARCHAR( 5 ) NOT NULL DEFAULT 'False',
@@ -63,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 --
 
 
-INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `LOG_SEARCH`, `STATISTICS`,`SECOND_REGUL`,`REGUL_SENSOR`,`SHOW_COST`,`SHOW_HISTORIC`) VALUES
-(1, 'True', '1.1.9', 'blue', 'red', 'black', 'purple', 5, 1, 3, -1, 'True', '0000', '15', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 2, 'True', 'False', 'False','False','False');
+INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `STATISTICS`,`SECOND_REGUL`,`REGUL_SENSOR`,`SHOW_COST`,`SHOW_HISTORIC`) VALUES
+(1, 'True', '1.1.9', 'blue', 'red', 'black', 'purple', 5, 1, 3, -1, 'True', '0000', '15', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 'False','False','False');
 
 -- --------------------------------------------------------
 
@@ -90,17 +89,13 @@ CREATE TABLE IF NOT EXISTS `informations` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `cbx_id` int(5) NOT NULL DEFAULT '0',
   `firm_version` varchar(7) NOT NULL DEFAULT '000.000',
-  `emeteur_version` varchar(7) NOT NULL DEFAULT '000.000',
-  `sensor_version` varchar(7) NOT NULL DEFAULT '000.000',
-  `last_reboot` varchar(14) NOT NULL DEFAULT '00000000000000',
-  `nb_reboot` int(11) NOT NULL DEFAULT '0',
   `id_computer` varchar(50) NOT NULL DEFAULT 'NULL',
   `log` mediumtext,
   PRIMARY KEY (`ID`),
   KEY `ID` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version` ,`emeteur_version` ,`sensor_version` ,`last_reboot` ,`nb_reboot` ,`id_computer`,`log`) VALUES (NULL , '0', '0', '000.000', '000.000', '00000000000000', '0', 'NULL','');
+INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version`,`id_computer`,`log`) VALUES (NULL , '0', '0', 'NULL','');
 
 
 -- --------------------------------------------------------

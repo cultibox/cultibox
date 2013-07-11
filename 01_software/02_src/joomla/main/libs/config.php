@@ -76,4 +76,7 @@ $GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'] = array ('#F089B6','#F00068','#8D00
 //Color for the calendar:
 $GLOBALS['LIST_GRAPHIC_COLOR_CALENDAR'] = array ('00', '44', '88', 'DD', 'CC','FF');
 
+// Remote script to send informations:
+$GLOBALS['REMOTE_DATABASE'] = "http://www.cbx.greenbox-botanic.com/index.php";
+
 ?>
