@@ -992,9 +992,8 @@ function write_pluga($sd_card,&$out) {
 // ROLE write plug_configuration into the sd card
 // IN   $data           array containing datas to write
 //      $sd_card        the sd card to be written
-//      $out            error or warning messages
 // RET false is an error occured, true else
-function write_plugconf($data,$sd_card,&$out) {
+function write_plugconf($data,$sd_card) {
    for($i=0;$i<count($data);$i++) {
       $nb=$i+1;
       if($nb<10) {
@@ -1086,10 +1085,6 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $power=$power_frequency*60;
     $update="000$update_frequency";
 
-    // Format values
-    while(strlen($record)<4) {
-        $record="0$record";
-    }
 
     while(strlen($alarm_enable)<4) {
         $alarm_enable="0$alarm_enable";
@@ -1098,6 +1093,10 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $alarm_value=$alarm_value*100;
     while(strlen($alarm_value)<4) {
         $alarm_value="0$alarm_value";
+    }
+
+    while(strlen($record)<4) {
+        $record="0$record";
     }
 
    while(strlen($power)<4) {
@@ -1155,33 +1154,30 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
    $alarm_senss="000+";
    $record=$record_frequency*60;
    $power=$power_frequency*60;
-   $alarm_value=$alarm_value*100;
-   
-   // Format values
-   while(strlen($update_frequency)<4) {
-       $update_frequency="0$update_frequency";
-   }
-    
-   while(strlen($record)<4) {
-       $record="0$record";
-   }
-   
-   while(strlen($power)<4) {
-      $power="0$power";
-   }
+
    
    while(strlen($alarm_enable)<4) {
       $alarm_enable="0$alarm_enable";
    }
 
+   $alarm_value=$alarm_value*100;
    while(strlen($alarm_value)<4) {
       $alarm_value="0$alarm_value";
    }
 
-   // Write falues in conf file
+
+   while(strlen($record)<4) {
+      $record="0$record";
+   }
+
+   while(strlen($power)<4) {
+      $power="0$power";
+   }
+
+   $update="000$update_frequency";
    $file="$sd_card/conf";
    if($f=@fopen("$file","w+")) {
-      fputs($f,"PLUG_UPDATE:$update_frequency\r\n");
+      fputs($f,"PLUG_UPDATE:$update\r\n");
       fputs($f,"LOGS_UPDATE:$record\r\n");
       fputs($f,"POWR_UPDATE:$power\r\n"); 
       fputs($f,"ALARM_ACTIV:$alarm_enable\r\n");
@@ -1541,7 +1537,16 @@ function check_and_copy_firm($sd_card) {
 
 
    foreach($firm_to_test as $firm) { 
-        $new_file="tmp/$firm";
+        if(is_file("tmp/$firm")) {
+            $new_file="tmp/$firm";
+        } else if(is_file("../tmp/$firm")) {
+            $new_file="../tmp/$firm";
+        } else if(is_file("../../tmp/$firm")) {
+            $new_file="../../tmp/$firm";
+        } else {
+            $new_file="../../../tmp/$firm";
+        }
+
         $current_file="$sd_card/$firm";
 
         if(is_file("$new_file")) {
@@ -1593,17 +1598,16 @@ function check_and_copy_firm($sd_card) {
 // {{{ check_and_copy_log()
 // ROLE check if the log.txt exists and if not, create it from empty_file64.tpl
 // IN  $sd_card     the sd card pathname 
-//     $out         error or warning message
 // RET false if an error occured, true else
-function check_and_copy_log($sd_card,&$out) {
-    if(is_file("$sd_card/log.txt")) {
-    } else {
+function check_and_copy_log($sd_card) {
+    if(!is_file("$sd_card/log.txt")) {
         if(is_file("main/templates/data/empty_file_64.tpl")) {
             copy("main/templates/data/empty_file_big.tpl", "$sd_card/log.txt");   
         } else if(is_file("../templates/data/empty_file_64.tpl")) {
             copy("../templates/data/empty_file_big.tpl", "$sd_card/log.txt");
+        } else if(is_file("../../templates/data/empty_file_64.tpl")) {
+            copy("../../templates/data/empty_file_big.tpl", "$sd_card/log.txt");
         } else {
-            $out[]=__('ERROR_COPY_TPL');
             return false;
         }
     }

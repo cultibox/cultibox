@@ -1665,7 +1665,7 @@ EOF;
        }
        $db=null;
       if((isset($ret))&&(!empty($ret))) {
-          if($GLOBALS['DEBUG_TRACE']) {
+          if(($GLOBALS['DEBUG_TRACE'])) {
                   $out[]=__('ERROR_SELECT_SQL').$ret;
             } else {
                   $out[]=__('ERROR_SELECT_SQL');

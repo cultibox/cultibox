@@ -83,11 +83,13 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         if(count($plugconf)>0) {
             if(!compare_plugconf($plugconf,$sd_card)) {
                 $conf_uptodate=false;
-                write_plugconf($plugconf,$sd_card,$main_error);
+                write_plugconf($plugconf,$sd_card);
             }
         }
 
-        check_and_copy_log($sd_card,$main_error);
+        if(!check_and_copy_log($sd_card)) {
+            $main_error[]=__('ERROR_COPY_TPL');
+        }
 
         $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
         $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
