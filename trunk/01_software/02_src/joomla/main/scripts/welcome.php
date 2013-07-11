@@ -122,12 +122,8 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 
 // The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True'
 $informations = Array();
-$informations["nb_reboot"]=0;
-$informations["last_reboot"]="";
 $informations["cbx_id"]="";
 $informations["firm_version"]="";
-$informations["emeteur_version"]="";
-$informations["sensor_version"]="";
 $informations["id_computer"]=php_uname("a");
 $informations["log"]="";
 
@@ -140,18 +136,6 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 }
 
 if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
-    if(strcmp($informations["nb_reboot"],"0")==0) {
-        $informations["nb_reboot"]=get_informations("nb_reboot");
-    } else {
-        insert_informations("nb_reboot",$informations["nb_reboot"]);
-    } 
-
-    if(strcmp($informations["last_reboot"],"")==0) {
-        $informations["last_reboot"]=get_informations("last_reboot");
-    } else {
-        insert_informations("last_reboot",$informations["last_reboot"]);
-    }
-
     if(strcmp($informations["cbx_id"],"")==0) {
         $informations["cbx_id"]=get_informations("cbx_id");
     } else {
@@ -163,18 +147,6 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
     } else {
         insert_informations("firm_version",$informations["firm_version"]);
     }
-
-    if(strcmp($informations["emeteur_version"],"")==0) {
-        $informations["emeteur_version"]=get_informations("emeteur_version");
-    } else {
-        insert_informations("emeteur_version",$informations["emeteur_version"]);
-    }
-
-    if(strcmp($informations["sensor_version"],"")==0) {
-        $informations["sensor_version"]=get_informations("sensor_version");
-    } else {
-        insert_informations("sensor_version",$informations["sensor_version"]);
-    }    
 
     if(strcmp($informations["log"],"")!=0) {
         insert_informations("log",$informations["log"]);

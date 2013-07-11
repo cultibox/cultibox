@@ -1,5 +1,10 @@
 Cultibox (1.1.27) precise; urgency=low
     + Correction de l'affichage du message de configuration des puissances: le message indique quelle prise il faut configurer et renvoie sur l'onglet 'Prises' adequat
+    + Correction de l'affichage du message de détection de la carte SD dans les programmes qui s'affichait deux fois
+    + Correction de la création des programmes, le nombre de prises configurée dans l'onglet 'Configuration' agit maintenant sur le fichier plugv (ce n'était pas le cas avant)
+    + On ne tente pas de charger les logs des 31 derniers jours sans carte SD branchée
+    + Gestion des différentes langues pour les boutons JQUERY
+    + Passage de la requette d'envoie d'information en AJAX pour gagner du temps au chargement du welcome
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Jul  9 11:33:58 CEST 2013
 

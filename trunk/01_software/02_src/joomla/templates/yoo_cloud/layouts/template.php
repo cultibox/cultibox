@@ -46,7 +46,6 @@ include($this['path']->path('layouts:template.config.php'));
                 <script type="text/javascript" src="main/libs/js/jquery.colourPicker.js"></script>
 	            <script type="text/javascript" src="main/libs/js/cultibox.js"></script>
                 <script type="text/javascript" src="main/libs/js/cultibox-utils.js"></script>
-                <script type="text/javascript" src="main/libs/js/oXHR.js"></script>
                 <script type="text/javascript" src="main/libs/js/fullcalendar.js"></script>
                 <script type="text/javascript" src="main/libs/js/jquery.blockUI.js"></script>
 </head>

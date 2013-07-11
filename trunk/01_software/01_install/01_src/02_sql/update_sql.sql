@@ -70,3 +70,7 @@ ALTER TABLE `cultibox`.`configuration` ADD `SHOW_HISTORIC` VARCHAR( 5 ) NOT NULL
 -- Version 1.1.26:
 ALTER TABLE `cultibox`.`configuration` DROP COLUMN `SHOW_WIZARD`;
 UPDATE `cultibox_joomla`.`dkg45_menu` SET  published = "1" WHERE alias LIKE "wizard-%";
+
+-- Version 1.1.27:
+ALTER TABLE `cultibox`.`configuration` DROP COLUMN `LOG_SEARCH`;
+ALTER TABLE `cultibox`.`informations` DROP `emeteur_version`, DROP `sensor_version`, DROP `last_reboot`, DROP `nb_reboot`;
