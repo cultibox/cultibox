@@ -3,6 +3,49 @@ var CANCEL_button="";
 var CLOSE_button="";
 
 
+
+var lang="";
+lang = window.location.pathname.match(/\/fr\//g);
+if(!lang) {
+    lang = window.location.pathname.match(/\/en\//g);
+    if(!lang) {
+        lang = window.location.pathname.match(/\/es\//g);
+        if(!lang) {
+            lang = window.location.pathname.match(/\/it\//g);
+            if(!lang) {
+                lang = window.location.pathname.match(/\/de\//g);
+            }
+        }
+    }
+}
+
+if(!lang) {
+    lang="/fr/";
+}
+
+if(lang=="/it/") {
+    OK_button="Continuare";
+    CANCEL_button="Annullare";
+    CLOSE_button="Chiudere";
+} else if(lang=="/de/") {
+    OK_button="Weiter";
+    CANCEL_button="Stornieren";
+    CLOSE_button="Schliessen";
+} else if(lang=="/en/") {
+    OK_button="OK";
+    CANCEL_button="Cancel";
+    CLOSE_button="Close";
+} else if(lang=="/es/") {
+    OK_button="Continuar";
+    CANCEL_button="Cancelar";
+    CLOSE_button="Cerrar";
+} else {
+    OK_button="Continuer";
+    CANCEL_button="Annuler";
+    CLOSE_button="Fermer";
+}
+
+
 clean_highchart_message = function(message) { {
     message=message.replace("'", "\'");
     message=message.replace("&eacute;", "é");
@@ -96,26 +139,6 @@ loadLog = function(month,pourcent,type) {
             });
 }
 
-get_lang = function() {
-        var lang="";
-        lang = window.location.pathname.match(/\/fr\//g);
-        if(!lang) {
-            lang = window.location.pathname.match(/\/en\//g);
-            if(!lang) {
-                lang = window.location.pathname.match(/\/es\//g);
-                if(!lang) {
-                    lang = window.location.pathname.match(/\/it\//g);
-                    if(!lang) {
-                        lang = window.location.pathname.match(/\/de\//g);
-                    }
-                }
-            }
-        }
-        return lang;
-}
-
-
-
 
 $(document).ready(function() {
     $.ajax({
@@ -123,34 +146,6 @@ $(document).ready(function() {
         url: "../../main/modules/external/position.php"
     }).done(function (data) {
 
-    var lang = get_lang();
-    if(!lang) {
-        lang="/fr/";
-    }
-
-    if(lang=="/it/") {
-        OK_button="Continuare";
-        CANCEL_button="Annullare";
-        CLOSE_button="Chiudere";
-    } else if(lang=="/de/") {
-        OK_button="Weiter";
-        CANCEL_button="Stornieren";
-        CLOSE_button="Schliessen";
-    } else if(lang=="/en/") {
-        OK_button="OK";
-        CANCEL_button="Cancel";
-        CLOSE_button="Close";
-    } else if(lang=="/es/") {
-        OK_button="Continuar";
-        CANCEL_button="Cancelar";
-        CLOSE_button="Cerrar";
-    } else {
-        OK_button="Continuer";
-        CANCEL_button="Annuler";
-        CLOSE_button="Fermer";
-    }
-
-    
     if ( typeof data.split(',')[0] !== "undefined" && data.split(',')[0]) {
         var x = parseInt(data.split(',')[0].replace("\"", ""));
     } else {
@@ -168,6 +163,7 @@ $(document).ready(function() {
     } else {
         var wid = 325;
     }
+
 
     $( ".message" ).dialog({ width: wid, resizable: true, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", dialogClass: "dialog_message", position: [x,y], dragStop: function( event, ui ) { 
         if(data!="") { 
@@ -201,6 +197,7 @@ $(document).ready(function() {
         title:    false
    });
 
+
    // Affichage des tooltips sur les éléments avec un title
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
 
@@ -216,16 +213,16 @@ $(document).ready(function() {
             $( ".pop_up_message" ).dialog({ 
                 position: [($(window).width() / 2) - (550 / 2), ytop],
                 width: 550, 
-                buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], 
+                buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } }], 
                 hide: "fold", 
                 modal: true,  
                 dialogClass: "popup_message"  
             }); 
         } else {    
-            $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+            $( ".pop_up_message" ).dialog({ width: 550, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } }], hide: "fold", modal: true,  dialogClass: "popup_message"  });
         }
     } else {
-        $( ".pop_up_message" ).dialog({ width: 550, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+        $(".pop_up_message").dialog({ width: 550, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
     }
 
     //Portage pour Chrome:
