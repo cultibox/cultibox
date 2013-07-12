@@ -486,8 +486,8 @@ function fill_data($fhh,$fmm,$lhh,$lmm,$val,$data) {
 
 
 // {{{ check_empty_record()
-// ROLE check if there is an empty record. An empty reccord is defined is the time spaces
-// between two values is greatan than 30minutes
+// ROLE check if there is an empty record. An empty reccord is defined if the time spaces
+// between two values is greatan than $hole variable
 // IN $last_hh       last record hours
 //    $last_mm       last record minutes
 //    $hh            first record hours
