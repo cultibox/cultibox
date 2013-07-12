@@ -126,7 +126,6 @@ loadLog = function(nb_day,pourcent,type,pourcent) {
                     }
                     loadLog(nb_day-1,data,type,pourcent);
                 } else {
-                    loadLog(0,data,type,pourcent);
                     if(type=="power") {
                         $("#success_load_power").show();
                         $("#progress_bar_load_power").progressbar({ value: 100 });
