@@ -73,6 +73,12 @@ italian.StartCultibox=Vuoi eseguire il software Cultibox immediatamente?
 german.StartCultibox=Wollen Sie die Cultibox Software sofort auszuführen?
 spanish.StartCultibox=¿Desea ejecutar el software Cultibox inmediatamente?
 
+french.CleanCache=Vous venez d'installer une nouvelle version, n'oubliez pas de supprimer le cache de votre navigateur internet pour que celle-ci soit pleinement fonctionnelle 		
+english.CleanCache=You just install a new version of the Cultibox software, don't forget to delete your internet browser's cache to have a full working version. 		
+italian.CleanCache=Basta installare una nuova versione del software Cultibox, non dimenticare di cancellare la cache del browser Internet di avere una versione completa di lavoro 		
+german.CleanCache=Sie haben eine neue Version des Cultibox Software, vergessen Sie nicht, Ihren Internet-Browser-Cache löschen, um eine voll funktionsfähige Version haben 		
+spanish.CleanCache=Usted acaba de instalar una nueva versión del software Cultibox, no te olvides de borrar la caché de su navegador de Internet para tener una versión completa
+
 [code]
 var 
   ForceInstall: boolean;
@@ -170,6 +176,7 @@ var
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox --force < {sd}\{#MyAppName}\xampp\sql_install\update_sql.sql 2>NULL'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C del {sd}\{#MyAppName}\xampp\htdocs\cultibox\main\templates_c\*.ser'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        MsgBox(ExpandConstant('{cm:CleanCache}'), mbInformation, MB_OK);
      end;     
   end;
 
