@@ -566,8 +566,6 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
             set_historic_value(__('UPDATED_PROGRAM')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
         }
-
-        $main_info[]=__('INFO_SD_CARD').": $sd_card";
     } else {
         $main_error[]=__('ERROR_WRITE_PROGRAM');
     }

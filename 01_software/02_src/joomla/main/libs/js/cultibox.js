@@ -103,38 +103,38 @@ formatCard = function(hdd,pourcent) {
 }
 
 
-loadLog = function(month,pourcent,type) {
+loadLog = function(nb_day,pourcent,type,pourcent) {
             $.ajax({
                 cache: false,
-                //async: false,
                 url: "../../main/modules/external/load_log.php",
-                data: {month:month, progress: pourcent,type:type}
+                data: {nb_day:nb_day, type:type}
             }).done(function (data) {
-                if(type=="power") {
-                    $("#progress_bar_load_power").progressbar({ value: parseInt(data) });
-                } else {
-                    $("#progress_bar_load").progressbar({ value: parseInt(data) });
-                }
-
-                if(!$.isNumeric(data)) {
+                if(nb_day!=0) {
                     if(type=="power") {
-                        $("#error_load_power").show();
+                        $("#progress_bar_load_power").progressbar({ value: parseInt(((pourcent-nb_day)/pourcent)*100) });
                     } else {
-                        $("#error_load").show();
+                        $("#progress_bar_load").progressbar({ value: parseInt(((pourcent-nb_day)/pourcent)*100) });
                     }
-                    return true;
-                }
 
-                if(data==100) {
+                    if(!$.isNumeric(data)) {
+                        if(type=="power") {
+                            $("#error_load_power").show();
+                        } else {
+                            $("#error_load").show();
+                        }
+                        return true;
+                    }
+                    loadLog(nb_day-1,data,type,pourcent);
+                } else {
                     if(type=="power") {
                         $("#success_load_power").show();
+                        $("#progress_bar_load_power").progressbar({ value: 100 });
                     } else {
                         $("#success_load").show();
+                        $("#progress_bar_load").progressbar({ value: 100 });
                     }
                     $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
                     return true;
-                } else if(data>=0) {
-                    loadLog(month-1,data,type);
                 } 
             });
 }
@@ -365,8 +365,8 @@ $(document).ready(function() {
          });
          $("#progress_bar_load").progressbar({value:0});
          $("#progress_bar_load_power").progressbar({value:0});
-         loadLog($("#log_search").val(),0,"logs");
-         loadLog($("#log_search").val(),0,"power");
+         loadLog($("#log_search").val()*31,0,"logs",$("#log_search").val()*31);
+         loadLog($("#log_search").val()*31,0,"power",$("#log_search").val()*31);
     });
 
 
@@ -410,8 +410,8 @@ $(document).ready(function() {
 
                             $("#progress_bar_load").progressbar({value:0});
                             $("#progress_bar_load_power").progressbar({value:0});
-                            loadLog("1",0,"logs");
-                            loadLog("1",0,"power");
+                            loadLog("31",0,"logs","31");
+                            loadLog("31",0,"power","31");
                         }
                     });
                 }
