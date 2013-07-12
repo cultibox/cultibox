@@ -338,8 +338,33 @@ if("$type" == "days") {
       if((isset($select_power))&&(!empty($select_power))) {
          if($select_power!=9990) {
             $data_power=get_data_power($startday,"",$select_power,$main_error);
+            if(!check_configuration_power($select_power,$main_error)) {
+                $main_error[]=__('ERROR_POWER_PLUG')." ".$select_power." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=".$select_power."'>".__('HERE')."</a>";
+            }
          } else {
             $data_power=get_data_power($startday,"","all",$main_error);
+
+            $nb=array();
+            for($plugs=1;$plugs<=$nb_plugs;$plugs++) {
+                if(!check_configuration_power($plugs,$main_error)) {
+                    $nb[]=$plugs;
+                }
+            }
+
+            if(count($nb)>0) {
+                if(count($nb)==1) {
+                    $main_error[]=__('ERROR_POWER_PLUG')." ".$nb[0]." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=".$nb[0]."'>".__('HERE')."</a>";
+                } else {
+                    $tmp_number="";
+                    foreach($nb as $number) {
+                        if(strcmp($tmp_number,"")!=0) {
+                            $tmp_number=$tmp_number.", ";
+                        }
+                        $tmp_number=$tmp_number.$number;
+                    }
+                    $main_error[]=__('ERROR_POWER_PLUGS')." ".$tmp_number." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=all'>".__('HERE')."</a>";
+                }
+            }
          }
 
          if(!empty($data_power)) {

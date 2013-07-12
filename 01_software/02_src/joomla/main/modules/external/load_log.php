@@ -11,6 +11,8 @@ if (!isset($_SESSION)) {
 
 if((isset($_GET['nb_day']))&&(!empty($_GET['nb_day']))) {
     $nb_day=$_GET['nb_day'];
+} else { 
+    $nb_day=0;
 }
 
 
@@ -18,11 +20,6 @@ if((isset($_GET['type']))&&(!empty($_GET['type']))) {
     $type=$_GET['type'];
 }
 
-
-if((!isset($nb_day))||(empty($nb_day))) {   
-    echo "NOK";
-    return 0;
-} 
 
 if((!isset($type))||(empty($type))) {
     echo "NOK";
@@ -53,13 +50,15 @@ if((isset($sd_card))&&(!empty($sd_card))) {
     $daySearch= date('j');
     $monthSearch = date('n');
 
-    for($j=$nb_day;$j>0;$j--)  {
-        $daySearch= $daySearch-1;
-        if($daySearch==0) {
-            $daySearch=31;
-            $monthSearch=$monthSearch-1;
-            if($monthSearch==0) {
-                $monthSearch=12;
+    if($nb_day!=0) {
+        for($j=$nb_day;$j>0;$j--)  {
+            $daySearch= $daySearch-1;
+            if($daySearch==0) {
+                $daySearch=31;
+                $monthSearch=$monthSearch-1;
+                if($monthSearch==0) {
+                    $monthSearch=12;
+                }
             }
         }
     }
@@ -74,6 +73,10 @@ if((isset($sd_card))&&(!empty($sd_card))) {
         $mmonth="0".$monthSearch;
     } else {
         $mmonth=$monthSearch;
+    }
+
+    if((!isset($_SESSION['LOAD_LOG']))||(empty($_SESSION['LOAD_LOG']))) {
+        $_SESSION['LOAD_LOG']="True";
     }
 
     // Search if file exists
@@ -110,11 +113,5 @@ if((isset($sd_card))&&(!empty($sd_card))) {
    }
 }
 echo "0";
-
-if($nb_day==1) {
-    if((!isset($_SESSION['LOAD_LOG']))||(empty($_SESSION['LOAD_LOG']))) {
-        $_SESSION['LOAD_LOG']="True"; 
-    }
-}
 
 ?>

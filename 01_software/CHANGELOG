@@ -7,6 +7,7 @@ Cultibox (1.1.27) precise; urgency=low
     + Passage de la requette d'envoie d'information en AJAX pour gagner du temps au chargement du welcome
     + Correction du formatage de la carte SD qui copie maintenant les firmwares
     + Correction de l'affichage du nom des boutons pour les popups
+    + Correction de l'import du jour en cours avec la nouvelle barre de progression
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Jul  9 11:33:58 CEST 2013
 
