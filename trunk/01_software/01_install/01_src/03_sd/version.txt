@@ -11,6 +11,56 @@
 + Bug can be view at adress : http://code.google.com/p/cultibox                +
 +------------------------------------------------------------------------------+
 
++ Version 1.28
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+   To test :
+      427 : [Regul] Gestion de mauvaises données des capteurs
+   Solved :
+      - Réduction du nombre de prise affichable dans menu programme
+      - Décalage de de ID à la fin du menu
+    
++ Version 1.27
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+   To test :
+      427 : [Regul] Gestion de mauvaises données des capteurs
+   Solved :
+      172 : Tester Régulation secondaire
+      366 : [CULTI] prise qui ne change pas d'etat
+      216 : Ajouter la régulation avec le second capteur
+      270 : [PLUG] La lampe s'allume tous les matins à 8h
+    
++ Version 1.26
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+      366 : [CULTI] prise qui ne change pas d'etat
+   To test :
+      216 : Ajouter la régulation avec le second capteur
+      270 : [PLUG] La lampe s'allume tous les matins à 8h
+      427 : [Regul] Gestion de mauvaises données des capteurs
+   Solved :
+      213 : Possibilité d'un second capteur
+      283 : [LOG] Affichage des autres capteur
+      372 : [CULTI] information Temperature humidité des 4 capteurs
+      431 : [CULTI] Température inférieur à 0°C
+
 + Version 1.25
    Comment:
    Issues :
