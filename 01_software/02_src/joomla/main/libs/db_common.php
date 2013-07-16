@@ -2550,4 +2550,34 @@ EOF;
 }
 // }}}
 
+
+// {{{ get_notes()
+// IN $out      error or warning message
+//    $res      return array containing data
+// RET none 
+function get_notes(&$res,&$out) {
+    $sql = <<<EOF
+SELECT * from `notes` ORDER by `id`
+EOF;
+   $db=db_priv_pdo_start();
+   try {
+       $sth=$db->prepare("$sql");
+       $sth->execute();
+       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
+
+   if((isset($ret))&&(!empty($ret))) {
+       if($GLOBALS['DEBUG_TRACE']) {
+          $out[]=__('ERROR_DELETE_SQL').$ret;
+       } else {
+          $out[]=__('ERROR_DELETE_SQL');
+       }
+   }
+}
+// }}}
+
+
 ?>
