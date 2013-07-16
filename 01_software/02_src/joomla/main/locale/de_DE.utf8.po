@@ -1312,6 +1312,9 @@ msgstr "Fichiers de logs des 31 derniers jours enregistrés avec succès"
 msgid "VALID_LOAD_LOG"
 msgstr "Fichiers de logs des derniers mois enregistrés avec succès"
 
+msgid "VALID_AUTO_LOAD_LOG"
+msgstr "Fichiers de logs des 31 derniers jours enregistrés avec succès"
+
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "Programme mis à jour avec succès"
 

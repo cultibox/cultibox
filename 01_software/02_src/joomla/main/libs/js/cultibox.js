@@ -103,7 +103,7 @@ formatCard = function(hdd,pourcent) {
 }
 
 
-loadLog = function(nb_day,pourcent,type,pourcent) {
+loadLog = function(nb_day,pourcent,type,pourcent,search) {
             $.ajax({
                 cache: false,
                 url: "../../main/modules/external/load_log.php",
@@ -124,17 +124,29 @@ loadLog = function(nb_day,pourcent,type,pourcent) {
                         }
                         return true;
                     }
-                    loadLog(nb_day-1,data,type,pourcent);
+                    loadLog(nb_day-1,data,type,pourcent,search);
                 } else {
-                    if(type=="power") {
-                        $("#success_load_power").show();
-                        $("#progress_bar_load_power").progressbar({ value: 100 });
+                    if(search=="submit") {
+                        if(type=="power") {
+                            $("#success_load_power").show();
+                            $("#progress_bar_load_power").progressbar({ value: 100 });
+                        } else {
+                            $("#success_load").show();
+                            $("#progress_bar_load").progressbar({ value: 100 });
+                        }
+                        $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
+                        return true;
                     } else {
-                        $("#success_load").show();
-                        $("#progress_bar_load").progressbar({ value: 100 });
+                        if(type=="power") {
+                            $("#success_load_power_auto").show();
+                            $("#progress_bar_load_power").progressbar({ value: 100 });
+                        } else {
+                            $("#success_load_auto").show();
+                            $("#progress_bar_load").progressbar({ value: 100 });
+                        }
+                        $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
+                        return true;
                     }
-                    $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
-                    return true;
                 } 
             });
 }
@@ -365,8 +377,8 @@ $(document).ready(function() {
          });
          $("#progress_bar_load").progressbar({value:0});
          $("#progress_bar_load_power").progressbar({value:0});
-         loadLog($("#log_search").val()*31,0,"logs",$("#log_search").val()*31);
-         loadLog($("#log_search").val()*31,0,"power",$("#log_search").val()*31);
+         loadLog($("#log_search").val()*31,0,"logs",$("#log_search").val()*31,"submit");
+         loadLog($("#log_search").val()*31,0,"power",$("#log_search").val()*31,"submit");
     });
 
 
@@ -400,8 +412,8 @@ $(document).ready(function() {
                                         $( this ).dialog("close");
                                         $("#error_load_power").css("display","none");
                                         $("#error_load").css("display","none");
-                                        $("#success_load_power").css("display","none");
-                                        $("#success_load").css("display","none");
+                                        $("#success_load_power_auto").css("display","none");
+                                        $("#success_load_auto").css("display","none");
                                         $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
                                         document.forms['display-log-day'].submit();
                                     }
@@ -410,8 +422,8 @@ $(document).ready(function() {
 
                             $("#progress_bar_load").progressbar({value:0});
                             $("#progress_bar_load_power").progressbar({value:0});
-                            loadLog("31",0,"logs","31");
-                            loadLog("31",0,"power","31");
+                            loadLog("31",0,"logs","31","auto");
+                            loadLog("31",0,"power","31","auto");
                         }
                     });
                 }
