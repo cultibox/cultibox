@@ -1112,7 +1112,8 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $conf[]="ALARM_SENSO:000T";
     $conf[]="ALARM_SENSS:000+";
     $conf[]="RTC_OFFSET_:0000";
-
+    $conf[]="RESET_MINAX:0000";
+    
     $nb=0;
 
 
