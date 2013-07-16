@@ -107,7 +107,7 @@ loadLog = function(nb_day,pourcent,type,pourcent,search) {
             $.ajax({
                 cache: false,
                 url: "../../main/modules/external/load_log.php",
-                data: {nb_day:nb_day, type:type}
+                data: {nb_day:nb_day, type:type,search:search}
             }).done(function (data) {
                 if(nb_day!=0) {
                     if(type=="power") {
@@ -137,12 +137,16 @@ loadLog = function(nb_day,pourcent,type,pourcent,search) {
                         $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
                         return true;
                     } else {
+                        if(data=="-2") {
+                            $("#success_load_still_log").show();
+                        } 
+
                         if(type=="power") {
-                            $("#success_load_power_auto").show();
-                            $("#progress_bar_load_power").progressbar({ value: 100 });
+                                $("#success_load_power_auto").show();
+                                $("#progress_bar_load_power").progressbar({ value: 100 });
                         } else {
-                            $("#success_load_auto").show();
-                            $("#progress_bar_load").progressbar({ value: 100 });
+                                $("#success_load_auto").show();
+                                $("#progress_bar_load").progressbar({ value: 100 });
                         }
                         $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
                         return true;
@@ -369,6 +373,7 @@ $(document).ready(function() {
                         $("#error_load").css("display","none");
                         $("#success_load_power").css("display","none");
                         $("#success_load").css("display","none");
+                        $("#success_load_still_log").css("display","none");
                         $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
                         document.forms['display-log-day'].submit();
                     }
@@ -414,6 +419,7 @@ $(document).ready(function() {
                                         $("#error_load").css("display","none");
                                         $("#success_load_power_auto").css("display","none");
                                         $("#success_load_auto").css("display","none");
+                                        $("#success_load_still_log").css("display","none");
                                         $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
                                         document.forms['display-log-day'].submit();
                                     }
