@@ -1337,7 +1337,7 @@ msgid "INFO_UPDATE_AVAILABLE"
 msgstr "Une mise à jour est disponible pour passer à la version: "
 
 msgid "STILL_LOG_FILE"
-msgstr "Il reste des fichiers de logs plus anciens à charger, pour cela utilisez le bouton 'importer les logs'"
+msgstr "Il reste des fichiers des données de température, d'humidité ou de puissance plus anciens à charger, pour cela utilisez le bouton 'importer les logs'"
 
 # For the tooltip part:
 
