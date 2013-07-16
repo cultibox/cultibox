@@ -1,5 +1,6 @@
 Cultibox (1.1.28) precise; urgency=low
     + Ajout de la section "Le saviez-vous?" dans la page de welcome
+    + Différenciation des messages de chargement des logs en mode auto ou lors de la soumission du formulaire
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Jul 16 10:42:56 CEST 2013
 

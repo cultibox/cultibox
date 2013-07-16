@@ -1062,7 +1062,7 @@ $(function () {
 <tr>
     <td class="log-manage-marge"></td>
     <td class="log-manage-title"><?php echo __('IMPORT_LOG_TITLE')." "; ?>
-        <select name="log_search" id="log_search":>
+        <select name="log_search" id="log_search">
         <?php foreach($GLOBALS['LOG_SEARCH'] as $value) {
                    echo "<option value=\"${value}\">${value}</option>";
         } ?>
@@ -1082,6 +1082,7 @@ $(function () {
     <p class="p_center">
         <label class="format_success" id="success_load" style="display:none"><?php echo __('VALID_LOAD_LOG'); ?></label>
         <label class="format_error" id="error_load" style="display:none"><?php echo __('ERROR_LOAD_LOG'); ?></label>
+        <label class="format_success" id="success_load_auto" style="display:none"><?php echo __('VALID_AUTO_LOAD_LOG'); ?></label>
     </p>
 
     <br />
@@ -1091,8 +1092,8 @@ $(function () {
     <p class="p_center">
         <label class="format_success" id="success_load_power" style="display:none"><?php echo __('VALID_LOAD_LOG'); ?></label>
         <label class="format_error" id="error_load_power" style="display:none"><?php echo __('ERROR_LOAD_LOG'); ?></label>
+        <label class="format_success" id="success_load_power_auto" style="display:none"><?php echo __('VALID_AUTO_LOAD_LOG'); ?></label>
     </p>
-    </div>
 </div>
 
 <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-manage" method="post" id="reset_log_form">
