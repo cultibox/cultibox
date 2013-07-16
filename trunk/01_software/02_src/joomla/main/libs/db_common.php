@@ -2554,10 +2554,11 @@ EOF;
 // {{{ get_notes()
 // IN $out      error or warning message
 //    $res      return array containing data
+//    $lang     lang of the current note to search
 // RET none 
-function get_notes(&$res,&$out) {
+function get_notes(&$res,$lang="fr_FR",&$out) {
     $sql = <<<EOF
-SELECT * from `notes` ORDER by `id`
+SELECT * from `notes` WHERE `lang` LIKE "{$lang}" ORDER by `id`
 EOF;
    $db=db_priv_pdo_start();
    try {

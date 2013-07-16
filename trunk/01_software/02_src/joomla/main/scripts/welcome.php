@@ -174,8 +174,7 @@ if(strcmp("$update","True")==0) {
    }
 }
 
-
-get_notes($notes,$main_error);
+get_notes($notes,$_SESSION['LANG'],$main_error);
 
 //Display the welcome template
 include('main/templates/welcome.html');
