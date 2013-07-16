@@ -671,3 +671,22 @@ td.welcome-link img{
    color: #AF0F0F;
 }
 
+
+.border_note_title {
+    width:5%;    
+}
+
+.title_note {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.border_note_desc {
+    width: 10%;
+}
+
+.image_note {
+    text-align: center;
+    font-size: 15px;
+}
+

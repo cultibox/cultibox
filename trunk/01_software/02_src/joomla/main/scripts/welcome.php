@@ -39,6 +39,7 @@ $pop_up_error_message="";
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $browser=array();
 $compat=true;
+$notes=array();
 
 
 
@@ -172,6 +173,9 @@ if(strcmp("$update","True")==0) {
     $main_error[]=__('ERROR_REMOTE_SITE');
    }
 }
+
+
+get_notes($notes,$main_error);
 
 //Display the welcome template
 include('main/templates/welcome.html');
