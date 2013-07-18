@@ -28,8 +28,6 @@ $_SESSION['LANG'] = get_current_lang();
 $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 __('LANG');
 
-$reset_log=getvar('reset_log');
-$reset_log_power=getvar('reset_log_power');
 $export_log=getvar('export_log');
 $export_log_power=getvar('export_log_power');
 
@@ -65,8 +63,6 @@ $version=get_configuration("VERSION",$main_error);
 $previous=getvar('previous');
 $next=getvar('next');
 $stats=get_configuration("STATISTICS",$main_error);
-$reset_log=getvar('reset_log');
-$reset_log_power=getvar('reset_log_power');
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 
@@ -93,25 +89,6 @@ if(isset($_SESSION['startyear'])) {
     $startyear=$_SESSION['startyear'];
 } else {
     $startyear=getvar('startyear');
-}
-
-
-//Reset log from the reset button
-if(!empty($reset_log)) { 
-    if(reset_log("logs",$main_error)) {
-        $main_info[]=__('VALID_DELETE_LOGS');
-        $pop_up_message=popup_message(__('VALID_DELETE_LOGS'));
-        set_historic_value(__('VALID_DELETE_LOGS')." (".__('LOGS_PAGE').")","histo_info",$main_error);
-    }
-}
-
-//Reset power from the reset button
-if(!empty($reset_log_power)) {
-    if(reset_log("power",$main_error)) {
-        $main_info[]=__('VALID_DELETE_LOGS');
-        $pop_up_message=$pop_up_message.popup_message(__('VALID_DELETE_LOGS'));       
-        set_historic_value(__('VALID_DELETE_LOGS')." (".__('LOGS_PAGE').")","histo_info",$main_error);
-    }
 }
 
 
@@ -226,8 +203,6 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 unset($_SESSION['startyear']);
 unset($_SESSION['startmonth']);
 unset($_SESSION['select_sensor']);
-unset($reset_log);
-unset($reset_log_power);
 
 
 

@@ -2239,15 +2239,23 @@ function generate_program_from_file($file="",$plug,&$out) {
 
 
 // {{{ reset_log()
-// IN $out      error or warning message
-//    $table    table to be deleted: logs, power...
+// IN $table    table to be deleted: logs, power...
+//    $start    delete logs between two specific dates, between $start and $end
+//    $end      
 // RET  0 is an error occured, 1 else
-function reset_log($table="",&$out) {
+function reset_log($table="",$start="",$end="") {
     if(strcmp("$table","")==0) return 0;
     $error=1;
+
+if((strcmp($start,"")==0)||(strcmp($end,"")==0)) {
     $sql = <<<EOF
 TRUNCATE `{$table}`
 EOF;
+} else {
+    $sql = <<<EOF
+DELETE FROM `{$table}` WHERE `date_catch` BETWEEN "{$start}" AND "{$end}"
+EOF;
+}
            $db=db_priv_pdo_start();
            try {
                 $db->exec("$sql");
@@ -2257,13 +2265,7 @@ EOF;
            $db=null;
 
            if((isset($ret))&&(!empty($ret))) {
-               if($GLOBALS['DEBUG_TRACE']) {
-                  $out[]=__('ERROR_DELETE_SQL').$ret;
                   $error=0;
-               } else {
-                  $out[]=__('ERROR_DELETE_SQL');
-                  $error=0;
-               }
            }
            return $error;
 }

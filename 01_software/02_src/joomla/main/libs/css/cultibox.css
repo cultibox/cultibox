@@ -690,3 +690,12 @@ td.welcome-link img{
     font-size: 15px;
 }
 
+.delete_message_border {
+    width: 80%;
+}
+
+td.field_delete_form {
+    text-align: center;
+}
+
+
