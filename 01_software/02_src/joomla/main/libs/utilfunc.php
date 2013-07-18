@@ -651,7 +651,7 @@ function get_sd_card(&$hdd="") {
 // IN   $dir         directory to check
 // RET true if it's a cultibox directory, false else
 function check_cultibox_card($dir="") {
-   if((is_file("$dir/prg/plugv"))&&(is_file("$dir/plg/pluga"))&&(is_dir("$dir/logs"))) {
+   if((is_file("$dir/cnf/prg/plugv"))&&(is_file("$dir/cnf/plg/pluga"))&&(is_dir("$dir/logs"))) {
                 return true;
    } 
    return false;
@@ -810,10 +810,10 @@ function format_program_highchart_data($arr,$date_start="") {
 //      $out            error or warning messages
 // RET data for highchart and cultibox programs
 function save_program_on_sd($sd_card,$program,&$out) {
-   if(is_file("${sd_card}/prg/plugv")) {
-      $file="${sd_card}/prg/plugv";
+   if(is_file("${sd_card}/cnf/prg/plugv")) {
+      $file="${sd_card}/cnf/prg/plugv";
       if(count($program)>0) {
-         if($f=fopen("$sd_card/prg/plugv","w+")) {
+         if($f=fopen("$sd_card/cnf/prg/plugv","w+")) {
             $nbPlug = count($program);
             while(strlen($nbPlug)<3) {
                 $nbPlug="0$nbPlug";
@@ -866,11 +866,11 @@ function write_program($data,$file,&$out) {
 //      $sd_card      sd card path to save data
 // RET false is there is something to write, true else
 function compare_program($data,$sd_card) {
-    if(is_file("${sd_card}/prg/plugv")) {
+    if(is_file("${sd_card}/cnf/prg/plugv")) {
 
          $nb=0;
          $nbdata=count($data);
-         $file="${sd_card}/prg/plugv";
+         $file="${sd_card}/cnf/prg/plugv";
 
          if(count($data)>0) {
             $handle = fopen($file, 'r');
@@ -909,9 +909,9 @@ function compare_program($data,$sd_card) {
 // IN   $sd_card      sd card path to save data
 // RET false is there is something to write, true else
 function compare_pluga($sd_card) {
-    if(is_file("${sd_card}/plg/pluga")) {
+    if(is_file("${sd_card}/cnf/plg/pluga")) {
          $nb=0;
-         $file="${sd_card}/plg/pluga";
+         $file="${sd_card}/cnf/plg/pluga";
 
          $pluga=Array();
          $pluga[]=$GLOBALS['NB_MAX_PLUG'];

@@ -70,7 +70,7 @@ if((!isset($path))||(empty($path))) {
 
 
             // Creating programs:
-            if(!copy("../../templates/data/empty_file.tpl","$path/prg/plugv")) {
+            if(!copy("../../templates/data/empty_file.tpl","$path/cnf/prg/plugv")) {
                 echo -1;
                 return 0;
             }
