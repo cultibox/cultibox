@@ -1622,29 +1622,39 @@ function optimize_program($arr) {
 
 /// {{{ create_plugconf_from_database()
 // 
-// 1 fichier par prise : plugnn ou n est le numéro de la prise. Exemple plug01 ou encore plug14
+// 1 fichier par prise : plugnn ou n est le numÃ©ro de la prise. Exemple plug01 ou encore plug14
 // 
 // Dans ce fichier:
-// Première ligne: REG:{T|H|N}{+|-}{PRECISION}0x0D0A
-// {T|H|N} : doit être T pour température ou H pour humidité ou N pour null. En cas de null, les valeur suivante sont rempli au pif.
-// {+|-} : doit être + Si l'effecteur doit se mettre en route en dessus de la consigne ou - si le contraire
-// {PRECISION} : Valeur de précision X 10 sur 3 digits
-// 0x0D0A : caractère de fin de ligne (CR LF, \r\n)
-// Exemple "REG:T+020" : L'effecteur se met en route si la température dépasse la consigne + 2,0°C. (2,0°C --> 020)
+// PremiÃ¨re ligne: REG:{T|H|N}{+|-}{PRECISION}0x0D0A
+// {T|H|N} : doit Ãªtre T pour tempÃ©rature ou H pour humiditÃ© ou N pour null. En cas de null, les valeur suivante sont rempli au pif.
+// {+|-} : doit Ãªtre + Si l'effecteur doit se mettre en route en dessus de la consigne ou - si le contraire
+// {PRECISION} : Valeur de prÃ©cision X 10 sur 3 digits
+// 0x0D0A : caractÃ¨re de fin de ligne (CR LF, \r\n)
+// Exemple "REG:T+020" : L'effecteur se met en route si la tempÃ©rature dÃ©passe la consigne + 2,0Â°C. (2,0Â°C --> 020)
 // 
-// Deuxième ligne SEC:{T|H|N}{+|-}{1|0}{VALEUR}0x0D0A
-// Cette ligne permet de définir une deuxième capteur permettant la marche forcé ou l’arrêt forcé de l'effecteur.
-// {T|H|N} : doit être T pour température ou H pour humidité ou N pour null. En cas de null, les valeur suivante sont rempli au pif.
-// {+|-} : doit être + Si l'effecteur doit se mettre en {ON|OFF} en dessus de la consigne ou - si le contraire
-// {1|0} : Est_ce que l'effecteur doit être ON (1) ou off (0) lorsque les conditions sont remplises.
+// DeuxiÃ¨me ligne SEC:{T|H|N}{+|-}{1|0}{VALEUR}0x0D0A
+// Cette ligne permet de dÃ©finir une deuxiÃ¨me capteur permettant la marche forcÃ© ou lÂ’arrÃªt forcÃ© de l'effecteur.
+// {T|H|N} : doit Ãªtre T pour tempÃ©rature ou H pour humiditÃ© ou N pour null. En cas de null, les valeur suivante sont rempli au pif.
+// {+|-} : doit Ãªtre + Si l'effecteur doit se mettre en {ON|OFF} en dessus de la consigne ou - si le contraire
+// {1|0} : Est_ce que l'effecteur doit Ãªtre ON (1) ou off (0) lorsque les conditions sont remplises.
 // {VALEUR} : Valeur X 10 sur 3 digits
-// 0x0D0A : caractère de fin de ligne (CR LF, \r\n)
-// Exmple "SEC:H+1800" : L'effecteur doit être On (1) si l'humidité (H) devient supérieur (+) à 80,0% RH (800).
+// 0x0D0A : caractÃ¨re de fin de ligne (CR LF, \r\n)
+// Exmple "SEC:H+1800" : L'effecteur doit Ãªtre On (1) si l'humiditÃ© (H) devient supÃ©rieur (+) Ã  80,0% RH (800).
 // 
-// Troisième ligne SEN:{VALEUR}0x0D0A
-// Cette ligne indiique le capteur à utiliser pour effectuer la régulation
-// {VALEUR} : Valeur sur 2 digits Indique le numéro du capteur à utiliser
-
+// TroisiÃ¨me ligne SEN:{CALCUL}{CAPTEUR_1}{CAPTEUR_2}{CAPTEUR_3}{CAPTEUR_4}0x0D0A
+// Cette ligne indique le(s) capteur(s) Ã  utiliser pour effectuer la rÃ©gulation
+// {CALCUL} : Valeur sur 1 digit Indique le mode de calcul entre les diffÃ©rents capteurs:
+// M : Moyenne des capteurs (par dÃ©faut)
+// I : Minimum des capteurs
+// A : Maximum des capteurs
+// {CAPTEUR_X} Indique si le capteur doit Ãªtre utilisÃ© (1) pour le calcul ou non (0)
+// Exemple SEN:M0101 : La rÃ©gulation est effectuÃ© sur la moyenne du capteur 2 et 4
+// 
+// QuatriÃ¨me ligne STOL:{VALEUR}0x0D0A
+// Cette ligne indique la tolÃ©rance Ã  utiliser pour la rÃ©gulation secondaire
+// {VALEUR} : Valeur sur 3 digits la tolÃ©rance X 10
+// Exemple STOL:025 : La rÃ©gulation secondaire aura une tolÃ©rance de 2.5Â°C ou 2.5%RH
+//
 // ROLE read plugs configuration from the database and format its to be write into a sd card
 // IN $nb   the number of plug to read
 //    $out   error or warning message
