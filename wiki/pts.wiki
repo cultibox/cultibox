@@ -50,10 +50,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || mechanic || PTS_mechanic_USB_length || Longueur du câble USB || 1 || 1.5 ||  || m || 1 || issue 411 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0004_PTS_mechanic_cable_length_-.pdf CBX 1_13_0004] ||
 || reliability || PTS_reliability_main || Taux de défaillance de la Cultibox sur la période de garantie  ||  ||  || 5 || % || 3 || issue 483 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0014_PTS_reliability_-.pdf CBX_1_13_0014] ||
 || reliability || PTS_reliability_sensor || Taux de défaillance de la Cultibox sur la période de garantie  ||  ||  || 1 || % || 3 || issue 484 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0014_PTS_reliability_-.pdf CBX_1_13_0014] ||
-|| soft || PTS_soft_log_show || Affichage des logs ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| soft || PTS_soft_prog_plug || Programmation des prises ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| soft || PTS_soft_calendar || Calendrier ||  ||  ||  ||  ||  ||  ||  ||  ||
-|| soft || PTS_soft_OS || Compatibilité des différents OS : Windows, Mac, Linux ||  ||  ||  ||  ||  ||  ||  ||  ||
+|| soft || PTS_soft || Vérification des fonctionnalités du logiciel ||  ||  ||  ||  ||  ||  || PASS || CBX_1_13_0021_Test_Software_Firmware ||
 || documentation || PTS_documentation_project_qualification ||  ||  ||  ||  ||  ||  ||  || PASS || [http://code.google.com/p/cultibox/wiki/pts Lien] ||
 || documentation || PTS_documentation_users_manual ||  ||  ||  ||  ||  ||  ||  || PASS || [http://code.google.com/p/cultibox/wiki/Introduction Lien] ||
 || documentation || PTS_documentation_users_storage ||  ||  ||  ||  ||  ||  ||  || PASS  || [http://code.google.com/p/cultibox/wiki/general_caution Lien] ||
