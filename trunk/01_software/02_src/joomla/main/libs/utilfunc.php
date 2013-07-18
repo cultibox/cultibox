@@ -997,9 +997,9 @@ function write_plugconf($data,$sd_card) {
    for($i=0;$i<count($data);$i++) {
       $nb=$i+1;
       if($nb<10) {
-         $file="$sd_card/plg/plug0$nb";
+         $file="$sd_card/cnf/plg/plug0$nb";
       } else {
-         $file="$sd_card/plg/plug$nb";
+         $file="$sd_card/cnf/plg/plug$nb";
       }
 
       if($f=fopen("$file","w+")) {
@@ -1023,9 +1023,9 @@ function compare_plugconf($data, $sd_card="") {
    for($i=0;$i<count($data);$i++) {
         $nb=$i+1;
         if($nb<10) {
-            $file="$sd_card/plg/plug0$nb";
+            $file="$sd_card/cnf/plg/plug0$nb";
         } else {
-            $file="$sd_card/plg/plug$nb";
+            $file="$sd_card/cnf/plg/plug$nb";
         }
         
         if(!is_file($file)) return false;
