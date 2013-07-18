@@ -30,12 +30,15 @@ if((!isset($path))||(empty($path))) {
         $cnf="$path/cnf";
         $plg="$cnf/plg";
         $prg="$cnf/prg";
+        $bin="$path/bin";
 
         if(strcmp("$progress","0")==0) {
             if(!is_dir($logs)) mkdir("$logs");
             if(!is_dir($cnf)) mkdir("$cnf");
             if(!is_dir($plg)) mkdir("$plg");
             if(!is_dir($prg)) mkdir("$prg");
+            if(!is_dir($bin)) mkdir("$bin");
+
 
             if(!copy("../../../tmp/cnf/cnt","$cnf/cnt")) {
                 echo -1;
