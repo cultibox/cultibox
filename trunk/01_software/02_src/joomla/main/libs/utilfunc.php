@@ -267,7 +267,6 @@ function get_power_value($file,&$array_line) {
 }
 //}}}
 
-
 // {{{ clean_log_file()
 // ROLE copy an empty file to clean a log file
 // IN $file             file to clean
@@ -652,7 +651,7 @@ function get_sd_card(&$hdd="") {
 // IN   $dir         directory to check
 // RET true if it's a cultibox directory, false else
 function check_cultibox_card($dir="") {
-   if((is_file("$dir/plugv"))&&(is_file("$dir/pluga"))&&(is_dir("$dir/logs"))) {
+   if((is_file("$dir/prg/plugv"))&&(is_file("$dir/plg/pluga"))&&(is_dir("$dir/logs"))) {
                 return true;
    } 
    return false;
@@ -811,10 +810,10 @@ function format_program_highchart_data($arr,$date_start="") {
 //      $out            error or warning messages
 // RET data for highchart and cultibox programs
 function save_program_on_sd($sd_card,$program,&$out) {
-   if(is_file("${sd_card}/plugv")) {
-      $file="${sd_card}/plugv";
+   if(is_file("${sd_card}/prg/plugv")) {
+      $file="${sd_card}/prg/plugv";
       if(count($program)>0) {
-         if($f=fopen("$sd_card/plugv","w+")) {
+         if($f=fopen("$sd_card/prg/plugv","w+")) {
             $nbPlug = count($program);
             while(strlen($nbPlug)<3) {
                 $nbPlug="0$nbPlug";
@@ -867,11 +866,11 @@ function write_program($data,$file,&$out) {
 //      $sd_card      sd card path to save data
 // RET false is there is something to write, true else
 function compare_program($data,$sd_card) {
-    if(is_file("${sd_card}/plugv")) {
+    if(is_file("${sd_card}/prg/plugv")) {
 
          $nb=0;
          $nbdata=count($data);
-         $file="${sd_card}/plugv";
+         $file="${sd_card}/prg/plugv";
 
          if(count($data)>0) {
             $handle = fopen($file, 'r');
@@ -910,9 +909,9 @@ function compare_program($data,$sd_card) {
 // IN   $sd_card      sd card path to save data
 // RET false is there is something to write, true else
 function compare_pluga($sd_card) {
-    if(is_file("${sd_card}/pluga")) {
+    if(is_file("${sd_card}/plg/pluga")) {
          $nb=0;
-         $file="${sd_card}/pluga";
+         $file="${sd_card}/plg/pluga";
 
          $pluga=Array();
          $pluga[]=$GLOBALS['NB_MAX_PLUG'];
@@ -963,7 +962,7 @@ function compare_pluga($sd_card) {
 //      $out            error or warning messages
 // RET false is an error occured, true else
 function write_pluga($sd_card,&$out) {
-   $file="$sd_card/pluga";
+   $file="$sd_card/cnf/plg/pluga";
 
    if($f=fopen("$file","w+")) {
       $pluga=Array();
@@ -998,9 +997,9 @@ function write_plugconf($data,$sd_card) {
    for($i=0;$i<count($data);$i++) {
       $nb=$i+1;
       if($nb<10) {
-         $file="$sd_card/plug0$nb";
+         $file="$sd_card/plg/plug0$nb";
       } else {
-         $file="$sd_card/plug$nb";
+         $file="$sd_card/plg/plug$nb";
       }
 
       if($f=fopen("$file","w+")) {
@@ -1024,9 +1023,9 @@ function compare_plugconf($data, $sd_card="") {
    for($i=0;$i<count($data);$i++) {
         $nb=$i+1;
         if($nb<10) {
-            $file="$sd_card/plug0$nb";
+            $file="$sd_card/plg/plug0$nb";
         } else {
-            $file="$sd_card/plug$nb";
+            $file="$sd_card/plg/plug$nb";
         }
         
         if(!is_file($file)) return false;
@@ -1078,9 +1077,9 @@ function compare_plugconf($data, $sd_card="") {
 //      $alarm_value        value to trigger the alarm
 // RET false if there is a difference, true else
 function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$power_frequency,$alarm_enable,$alarm_value) {
-    if(!is_file($sd_card."/conf")) return false;
+    if(!is_file($sd_card."/cnf/conf")) return false;
 
-    $file="${sd_card}/conf";
+    $file="${sd_card}/cnf/conf";
 
     $record=$record_frequency*60;
     $power=$power_frequency*60;
@@ -1113,8 +1112,6 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $conf[]="ALARM_SENSO:000T";
     $conf[]="ALARM_SENSS:000+";
     $conf[]="RTC_OFFSET_:0000";
-    $conf[]="RESET_MINAX:0000";
-    $conf[]="PRESSION___:0000";
 
     $nb=0;
 
@@ -1178,7 +1175,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
    }
 
    $update="000$update_frequency";
-   $file="$sd_card/conf";
+   $file="$sd_card/cnf/conf";
    if($f=@fopen("$file","w+")) {
       fputs($f,"PLUG_UPDATE:$update\r\n");
       fputs($f,"LOGS_UPDATE:$record\r\n");
@@ -1188,8 +1185,6 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       fputs($f,"ALARM_SENSO:$alarm_senso\r\n");
       fputs($f,"ALARM_SENSS:$alarm_senss\r\n");
       fputs($f,"RTC_OFFSET_:0000\r\n");
-      fputs($f,"RESET_MINAX:0000\r\n");
-      fputs($f,"PRESSION___:0000\r\n");
       fclose($f);
    } else {
       $out[]=__('ERROR_WRITE_SD_CONF');

@@ -28,21 +28,19 @@ if((!isset($path))||(empty($path))) {
 
         $logs="$path/logs";
         $cnf="$path/cnf";
+        $plg="$cnf/plg";
+        $prg="$cnf/prg";
 
         if(strcmp("$progress","0")==0) {
             if(!is_dir($logs)) mkdir("$logs");
             if(!is_dir($cnf)) mkdir("$cnf");
+            if(!is_dir($plg)) mkdir("$plg");
+            if(!is_dir($prg)) mkdir("$prg");
 
             if(!copy("../../../tmp/cnf/cnt","$cnf/cnt")) {
                 echo -1;
                 return 0;
             }
-
-            if(!copy("../../../tmp/cnf/emetteur.hex","$cnf/emetteur.hex")) {
-                echo -1;
-                return 0;
-            }
-
 
              //Copiyng firmware:
             check_and_copy_firm($path);
@@ -72,7 +70,7 @@ if((!isset($path))||(empty($path))) {
 
 
             // Creating programs:
-            if(!copy("../../templates/data/empty_file.tpl","$path/plugv")) {
+            if(!copy("../../templates/data/empty_file.tpl","$path/prg/plugv")) {
                 echo -1;
                 return 0;
             }
