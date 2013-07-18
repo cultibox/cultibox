@@ -182,20 +182,6 @@ function getCostType(i) {
 //}}}
 
 
-
-// {{{ verifDate()
-// ROLE function of verification that the input field contains a valid date (a digit and some special caracters "-/"
-// IN  input value "e" of the field
-// HOW IT WORKS: check ascii code fo the input value
-// USED BY: templates/cost.html   templates/logs.html
-function verifDate(e) {
-   if((e.keyCode < 45 || e.keyCode > 57)&&(e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
-   if((e.which < 45 || e.which > 57)&&(e.which != 08 && e.which != 10 && e.which != 13)) return false;
-}
-// }}}
-
-
-
 // {{{ getType()
 // IN  input value: display the type og log: 0 for daily logs, 1 for monthly
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
@@ -528,6 +514,30 @@ function addHidden(theForm, value) {
     input.name = 'jumpto';
     input.value = value;
     theForm.appendChild(input);
+}
+// }}}
+
+
+// {{{ compareDate()
+// ROLE compare two date and check that data1 > date2
+// USED by libs/js/cutibox.js
+function compareDate(date1,date2) {
+    d1=date1.split('-').join('')
+        d2=date2.split('-').join('')
+if(d2>=d1) return true;
+    return false;
+}
+// }}}
+
+
+// {{{ checkFormatDate()
+// ROLE check tht a date has a YYYY-MM-DD format
+// USED by libs/js/cutibox.js
+function checkFormatDate(date) {
+    if(!date.match(/^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/)) {
+         return false;
+    }
+    return true;
 }
 // }}}
 

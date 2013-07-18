@@ -158,7 +158,7 @@ if(strcmp("$update","True")==0) {
 
 
 if((isset($reset))&&(!empty($reset))) {
-    if(reset_log("calendar",$main_error)) {
+    if(reset_log("calendar")) {
         $main_info[]=__('VALID_DELETE_CALENDAR');
         $pop_up_message=$pop_up_message.popup_message(__('VALID_DELETE_CALENDAR'));
         set_historic_value(__('VALID_DELETE_CALENDAR')." (".__('CALENDAR_PAGE').")","histo_info",$main_error);

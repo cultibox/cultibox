@@ -367,10 +367,6 @@ msgstr "Supprimer les logs"
 msgid "MANAGE_RESET_POWER"
 msgstr "Supprimer les logs de puissance "
 
-
-msgid "RESET_CONFIRM"
-msgstr "Êtes-vous sûr de vouloir supprimer les données des logs déja enregistrées?"
-
 msgid "IMPORT_LOG_TITLE"
 msgstr "Importer les logs de: température, humidité, puissance des"
 
@@ -466,6 +462,24 @@ msgstr "Progression du chargement des fichiers de température et d'humidité"
 
 msgid "ERROR_LOAD_LOG"
 msgstr "Erreur lors du chargement des logs, ceci peut être du à un temps de réponse trop long, recommencez l'opération pour vous en assurer"
+
+msgid "DELETE_ALL_LOGS"
+msgstr "Supprimer tous les logs existant"
+
+msgid "DELETE_SPECIFIC_LOGS"
+msgstr "Supprimer les logs d'une période précise"
+
+msgid "DELETE_LOGS_FROM"
+msgstr "Supprimer les logs du (AAAA-MM-JJ)"
+
+msgid "DELETE_LOGS_TO"
+msgstr "jusqu'au (AAAA-MM-JJ)"
+
+msgid "ERROR_DELETE_LOGS"
+msgstr "Problème lors de la suppréssion des logs dans la base."
+
+msgid "ERROR_FORMAT_DATE"
+msgstr "Erreur dans le format de la date (AAAA-MM-JJ). Le jour de fin doit être égal ou supérieur ou jour de départ"
 
 
 # For the plugs part:
