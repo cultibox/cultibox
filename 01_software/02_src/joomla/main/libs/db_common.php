@@ -1744,16 +1744,27 @@ EOF;
                 $sec="SEC:N+0000";
             }
 
-            if(strcmp($data['PLUG_REGUL_SENSOR'],"")!=0) {
-                if(strlen($data['PLUG_REGUL_SENSOR'])<2) {
-                    $sens="SEN:0".$data['PLUG_REGUL_SENSOR'];
-                } else {
-                   $sens="SEN:".$data['PLUG_REGUL_SENSOR'];
-                }
-            } else {
-                $sens="SEN:01";
+            if(strcmp($data['PLUG_REGUL_SENSOR'],"")!=0) {  
+                $vsen="";
+                for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
+                    if($data['PLUG_REGUL_SENSOR']==$i) {
+                        $vsen=$vsen."1";
+                    } else {
+                        $vsen=$vsen."0";
+                    }
+                } 
+             } else {
+                $vsen="1000";
+             }
+             $sens="SEN:M".$vsen;
+
+            $sereg=$data['PLUG_SECOND_TOLERANCE']*10;
+            while(strlen($sereg)<3) {
+                $sereg="0".$sereg;
             }
-            $arr[]="$reg"."\r\n"."$sec"."\r\n"."$sens";
+            $sec_regul="STOL:$sereg";
+
+            $arr[]="$reg"."\r\n"."$sec"."\r\n"."$sens"."\r\n"."$sec_regul";
          }
          return $arr;
       }
