@@ -39,12 +39,11 @@
 $(document).ready(function(){
     $('#reset_min_max').timepicker({
     <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
-    showSecond: false,
     showOn: 'both',
     buttonImage: "../../main/libs/img/datepicker.png",
     buttonImageOnly: 'true',
     <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
-    timeFormat: 'hh:mm:ss',
+    timeFormat: 'hh:mm',
     <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
     <?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
     <?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
@@ -428,9 +427,9 @@ $(document).ready(function(){
    <?php echo __('RESET_MINMAX'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_MINMAX'); ?>" />
 </td>
 <td>
-   <input type="text" size="10" name="minmax" id="reset_min_max" <?php if(!empty($minmax)) { ?> value="<?php echo $minmax;?>" <?php } else { ?> value="00:00:00" <?php } ?> />
+   <input type="text" size="5" name="minmax" id="reset_min_max" <?php if(!empty($minmax)) { ?> value="<?php echo $minmax;?>" <?php } else { ?> value="00:00" <?php } ?> />
 </td>
-<td></td>
+<td><?php if((isset($error['minmax']))&&(!empty($error['minmax']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['minmax']."</div>"; ?></td>
 </tr>
 </table>
 </div>

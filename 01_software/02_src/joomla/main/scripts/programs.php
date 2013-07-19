@@ -517,6 +517,10 @@ if(count($tmp_resume)>0) {
 if((!empty($sd_card))&&(isset($sd_card))) {
     $conf_uptodate=true;
     if(check_sd_card($sd_card)) {
+        /* TO BE DELETED */
+        compat_old_sd_card($sd_card);   
+        /* ************* */
+
         if((!isset($submit))||(empty($submit))) {
             $program=create_program_from_database($main_error);
 

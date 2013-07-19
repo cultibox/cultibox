@@ -90,6 +90,10 @@ if((!empty($sd_card))&&(isset($sd_card))) {
     if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
         $conf_uptodate=true;
         if(check_sd_card($sd_card)) {
+           /* TO BE DELETED */
+           compat_old_sd_card($sd_card);   
+           /* ************* */
+
             $program=create_program_from_database($main_error);
 
             if(!compare_program($program,$sd_card)) {

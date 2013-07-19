@@ -6,6 +6,7 @@ Cultibox (1.1.28) precise; urgency=low
     + Réorganisation des fichiers de la carte SD
     + Ajout du fichier index dans le repertoire logs
     + Mise en place de la fonctionnalité de remise à zéro du min/max des capteurs
+    + Compatibilité descendante des cartes SD
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Jul 16 10:42:56 CEST 2013
 
