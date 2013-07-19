@@ -4,6 +4,7 @@ Cultibox (1.1.28) precise; urgency=low
     + Remise en fonction de la notification de logs plus anciens présent à être chargé
     + Une fenêtre permet de selectionner une date de début et de fin pour la suppréssion des logs de la base ou encore de supprimer tous les logs existant
     + Réorganisation des fichiers de la carte SD
+    + Ajout du fichier index dans le repertoire logs
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Jul 16 10:42:56 CEST 2013
 

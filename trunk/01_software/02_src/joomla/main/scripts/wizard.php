@@ -85,10 +85,9 @@ if((empty($plug_type))||(!isset($plug_type))) {
 }
 
 
-
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
-    if($step==1) {
+    if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
         $conf_uptodate=true;
         if(check_sd_card($sd_card)) {
             $program=create_program_from_database($main_error);
@@ -119,6 +118,11 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             if(!check_and_copy_log($sd_card)) {
               $main_error[]=__('ERROR_COPY_TPL');
             }
+
+            if(!check_and_copy_index($sd_card)) {
+                $main_error[]=__('ERROR_COPY_FILE');
+            }
+
 
             $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
             $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);

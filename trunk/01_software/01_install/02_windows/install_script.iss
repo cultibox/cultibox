@@ -242,6 +242,7 @@ Source: "conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignorever
 Source: "..\..\..\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion 
 Source: "..\..\..\01_software\01_install\01_src\03_sd\cnf\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp\cnf"; Flags: ignoreversion 
 Source: "..\..\..\01_software\01_install\01_src\03_sd\bin\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp\bin"; Flags: ignoreversion
+Source: "..\..\..\01_software\01_install\01_src\03_sd\logs\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp\logs"; Flags: ignoreversion 
 Source: "..\..\..\01_software\01_install\01_src\03_sd\cultibox.ico"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 Source: "..\..\..\01_software\01_install\01_src\03_sd\cultibox.html"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files

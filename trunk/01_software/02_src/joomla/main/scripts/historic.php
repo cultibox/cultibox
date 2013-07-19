@@ -77,6 +77,10 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             $main_error[]=__('ERROR_COPY_TPL');
         }
 
+        if(!check_and_copy_index($sd_card)) {
+            $main_error[]=__('ERROR_COPY_FILE');
+        }
+
         $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
         $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
         $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
