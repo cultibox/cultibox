@@ -1075,8 +1075,9 @@ function compare_plugconf($data, $sd_card="") {
 //      $power_frequency    record of the power frequency value
 //      $alarm_enable       enable or disable the alarm system
 //      $alarm_value        value to trigger the alarm
+//      $reset_value        value for the sensor's reset min/max
 // RET false if there is a difference, true else
-function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$power_frequency,$alarm_enable,$alarm_value) {
+function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$power_frequency,$alarm_enable,$alarm_value,$reset_value) {
     if(!is_file($sd_card."/cnf/conf")) return false;
 
     $file="${sd_card}/cnf/conf";
@@ -1103,6 +1104,13 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
       $power="0$power";
    }
 
+   $reset_value=str_replace(":","",$reset_value);
+   if((strlen($reset_value)!=6)||($reset_value<0)) {
+        $reset_value="0000";
+   } else {
+        $reset_value=substr($reset_value,0,4);
+   }
+
     
     $conf[]="PLUG_UPDATE:$update";
     $conf[]="LOGS_UPDATE:$record";
@@ -1112,7 +1120,7 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $conf[]="ALARM_SENSO:000T";
     $conf[]="ALARM_SENSS:000+";
     $conf[]="RTC_OFFSET_:0000";
-    $conf[]="RESET_MINAX:0000";
+    $conf[]="RESET_MINAX:$reset_value";
     $conf[]="PRESSION___:0000";
 
     $nb=0;
@@ -1151,7 +1159,7 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
 //   $alarm_value        value to trigger the alarm
 //   $out                error or warning message
 // RET false if an error occured, true else  
-function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",&$out) {
+function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$reset_value,&$out) {
    $alarm_senso="000T";
    $alarm_senss="000+";
    $record=$record_frequency*60;
@@ -1176,6 +1184,14 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       $power="0$power";
    }
 
+   $reset_value=str_replace(":","",$reset_value);
+   if((strlen($reset_value)!=6)||($reset_value<0)) {
+        $reset_value="0000";
+   } else {
+        $reset_value=substr($reset_value,0,4);
+   }
+
+
    $update="000$update_frequency";
    $file="$sd_card/cnf/conf";
    if($f=@fopen("$file","w+")) {
@@ -1187,7 +1203,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       fputs($f,"ALARM_SENSO:$alarm_senso\r\n");
       fputs($f,"ALARM_SENSS:$alarm_senss\r\n");
       fputs($f,"RTC_OFFSET_:0000\r\n");
-      fputs($f,"RESET_MINAX:0000\r\n");
+      fputs($f,"RESET_MINAX:$reset_value\r\n");
       fputs($f,"PRESSION___:0000\r\n");
       fclose($f);
    } else {

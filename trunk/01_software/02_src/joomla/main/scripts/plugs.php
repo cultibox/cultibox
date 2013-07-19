@@ -403,13 +403,15 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
         $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
         $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
+        $resetvalue= get_configuration("RESET_MINMAX",$main_error);
+
         if("$updatefrequency"=="-1") {
             $updatefrequency="0";
         }
 
-        if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue)) {
+        if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue")) {
             $conf_uptodate=false;
-            write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue",$main_error);
+            write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error);
         }
 
         if(!$conf_uptodate) {

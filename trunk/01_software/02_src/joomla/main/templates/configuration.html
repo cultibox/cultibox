@@ -35,6 +35,26 @@
        </div>
 <?php } ?>
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#reset_min_max').timepicker({
+    <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
+    showSecond: false,
+    showOn: 'both',
+    buttonImage: "../../main/libs/img/datepicker.png",
+    buttonImageOnly: 'true',
+    <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
+    timeFormat: 'hh:mm:ss',
+    <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
+    <?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
+    <?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
+    <?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
+    <?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
+    <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."',"; ?>
+});
+});
+</script>
+
 
 <p class="title_conf"><?php echo __('CONFIGURE_TITLE_CULTIBOX'); ?></p>
 <br />
@@ -399,6 +419,16 @@
       }
       ?>
       </select>
+</td>
+<td></td>
+</tr>
+<tr>
+<td class="conf-marge"></td>
+<td>
+   <?php echo __('RESET_MINMAX'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_MINMAX'); ?>" />
+</td>
+<td>
+   <input type="text" size="10" name="minmax" id="reset_min_max" <?php if(!empty($minmax)) { ?> value="<?php echo $minmax;?>" <?php } else { ?> value="00:00:00" <?php } ?> />
 </td>
 <td></td>
 </tr>
