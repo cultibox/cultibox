@@ -651,9 +651,18 @@ function get_sd_card(&$hdd="") {
 // IN   $dir         directory to check
 // RET true if it's a cultibox directory, false else
 function check_cultibox_card($dir="") {
+/* TO BE DELETED */
+   if((is_file("$dir/plugv"))&&(is_file("$dir/pluga"))&&(is_dir("$dir/logs"))) {
+       if((is_file("$dir/plugv"))&&(is_file("$dir/pluga"))&&(is_dir("$dir/logs"))) {
+            return true;
+        }
+   }
+/* ********* */
+
    if((is_file("$dir/cnf/prg/plugv"))&&(is_file("$dir/cnf/plg/pluga"))&&(is_dir("$dir/logs"))) {
                 return true;
    } 
+
    return false;
 }
 // }}}
@@ -1105,12 +1114,9 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
    }
 
    $reset_value=str_replace(":","",$reset_value);
-   if((strlen($reset_value)!=6)||($reset_value<0)) {
+   if((strlen($reset_value)!=4)||($reset_value<0)) {
         $reset_value="0000";
-   } else {
-        $reset_value=substr($reset_value,0,4);
-   }
-
+   } 
     
     $conf[]="PLUG_UPDATE:$update";
     $conf[]="LOGS_UPDATE:$record";
@@ -1185,12 +1191,9 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
    }
 
    $reset_value=str_replace(":","",$reset_value);
-   if((strlen($reset_value)!=6)||($reset_value<0)) {
+   if((strlen($reset_value)!=4)||($reset_value<0)) {
         $reset_value="0000";
-   } else {
-        $reset_value=substr($reset_value,0,4);
-   }
-
+   } 
 
    $update="000$update_frequency";
    $file="$sd_card/cnf/conf";
@@ -2136,5 +2139,27 @@ function find_new_line($tab, $time="") {
 }
 // }}}
 
+
+/* TO BE DELETED */
+function compat_old_sd_card($sd_card="") {
+    if((isset($sd_card))&&(!empty($sd_card))) {
+        $logs="$sd_card/logs";
+        $cnf="$sd_card/cnf";
+        $plg="$cnf/plg";
+        $prg="$cnf/prg";
+        $bin="$sd_card/bin";
+
+        if(!is_dir($logs)) mkdir("$logs");
+        if(!is_dir($cnf)) mkdir("$cnf");
+        if(!is_dir($plg)) mkdir("$plg");
+        if(!is_dir($prg)) mkdir("$prg");
+        if(!is_dir($bin)) mkdir("$bin");
+
+        if(!is_file("$sd_card/cnf/prg/plugv")) {
+            copy("main/templates/data/empty_file.tpl","$sd_card/cnf/prg/plugv");  
+        }
+    }
+}
+/* **************** */ 
 
 ?>

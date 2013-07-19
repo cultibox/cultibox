@@ -90,6 +90,10 @@ if((!isset($sd_card))||(empty($sd_card))) {
 if((!empty($sd_card))&&(isset($sd_card))) {
     $conf_uptodate=true;
     if(check_sd_card($sd_card)) {
+        /* TO BE DELETED */
+        compat_old_sd_card($sd_card);   
+        /* ************* */
+
         $program=create_program_from_database($main_error);
 
         if(!compare_program($program,$sd_card)) {
@@ -298,8 +302,15 @@ if((isset($show_historic))&&(!empty($show_historic))) {
 
 
 if((isset($minmax))&&(!empty($minmax))) {
+    if(check_format_time("$minmax:00")) {
         insert_configuration("RESET_MINMAX","$minmax",$main_error);
         $update_conf=true;
+    } else {
+        $minmax=get_configuration("RESET_MINMAX",$main_error);
+        $error['minmax']=__('ERROR_TIME_VALUE');
+        $pop_up_error_message=$pop_up_error_message.popup_message($error['minmax']);
+        $submenu="system_interface";
+    }
 } else {
         $minmax = get_configuration("RESET_MINMAX",$main_error);
 }
