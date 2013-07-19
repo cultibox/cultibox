@@ -225,9 +225,18 @@
       <td><div id="div_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_regul_value{$i}; ?>" name="plug_regul_value<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
     <td><?php if((isset($error[$i]['regul_value']))&&(!empty($error[$i]['regul_value']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error[$i]['regul_value']."</div>"; ?></td>
    </tr>
+   <tr>
+      <td></td>
+      <td class="regul"><div id="label_regul_tolerance<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_TOLERANCE'); ?>:</div></td>
+      <td><div id="div_regul_tolerance_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_second_tolerance{$i}; ?>" name="plug_second_tolerance<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
+    <td><?php if((isset($error[$i]['second_tolerance_value']))&&(!empty($error[$i]['second_tolerance_value']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error[$i]['second_tolerance_value']."</div>"; ?></td>
+   </tr>
+
    </table>
 </div>
 <?php } ?>
+
+
 </div>
 <table class="table_width">
     <tr>

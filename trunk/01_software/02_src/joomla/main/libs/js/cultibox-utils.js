@@ -224,11 +224,13 @@ function getRegul(i,j) {
       var labelRsenss = document.getElementById('label_regul_senss'+j);
       var labelRsenso = document.getElementById('label_regul_senso'+j);
       var labelRvalue = document.getElementById('label_regul_value'+j);
+      var secondTolLabel = document.getElementById('label_regul_tolerance'+j);
+      var secondTolValue = document.getElementById('div_regul_tolerance_value'+j);
 
       switch(i) {
-         case 0 : divRval.style.display = ''; divRsenso.style.display = ''; divRsenss.style.display = ''; labelRvalue.style.display = ''; labelRsenso.style.display = ''; labelRsenss.style.display = '';break;
-         case 1 : divRval.style.display = 'none'; divRsenso.style.display = 'none'; divRsenss.style.display = 'none';  labelRvalue.style.display = 'none'; labelRsenso.style.display = 'none'; labelRsenss.style.display = 'none'; break;
-         default: divRval.style.display = ''; divRsenso.style.display = ''; divRsenss.style.display = '';  labelRvalue.style.display = ''; labelRsenso.style.display = ''; labelRsenss.style.display = ''; break;
+         case 0 : divRval.style.display = ''; divRsenso.style.display = ''; divRsenss.style.display = ''; labelRvalue.style.display = ''; labelRsenso.style.display = ''; labelRsenss.style.display = ''; secondTolLabel.style.display = ''; secondTolValue.style.display = ''; break;
+         case 1 : divRval.style.display = 'none'; divRsenso.style.display = 'none'; divRsenss.style.display = 'none';  labelRvalue.style.display = 'none'; labelRsenso.style.display = 'none'; labelRsenss.style.display = 'none'; secondTolLabel.style.display = 'none'; secondTolValue.style.display = 'none';break;
+         default: divRval.style.display = ''; divRsenso.style.display = ''; divRsenss.style.display = '';  labelRvalue.style.display = ''; labelRsenso.style.display = ''; labelRsenss.style.display = ''; secondTolLabel.style.display = ''; secondTolValue.style.display = '';break;
       }
 }
 // }}}
@@ -254,6 +256,8 @@ function getTolerance(i,j,secondR) {
       var seconLabel = document.getElementById('second_regul_label'+j);
       var secondVal = document.getElementById('second_regul'+j);
       var secondParam = document.getElementById('second_regul_param'+j);
+      var secondTolLabel = document.getElementById('label_regul_tolerance'+j);
+      var secondTolValue = document.getElementById('div_regul_tolerance_value'+j);
 
       var labelSensor = document.getElementById('label_sensor'+j);
       var Sensor = document.getElementById('sensor'+j);
@@ -273,6 +277,8 @@ function getTolerance(i,j,secondR) {
                         divUnknownRegul.style.display = 'none';
                         labelDeg.style.display = 'none';
                         labelPct.style.display = 'none';
+                        secondTolLabel.style.display = 'none';
+                        secondTolValue.style.display = 'none';
                     } 
                     labelSensor.style.display = 'none'; 
                     Sensor.style.display = 'none'; 
@@ -291,6 +297,8 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = 'none'; 
                         secondVal.style.display = 'none'; 
                         secondParam.style.display = 'none'; 
+                        secondTolLabel.style.display = 'none';
+                        secondTolValue.style.display = 'none';
                     }
                     labelSensor.style.display = 'none'; 
                     Sensor.style.display = 'none'; 
@@ -308,7 +316,9 @@ function getTolerance(i,j,secondR) {
                         labelPct.style.display = ''; 
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
-                        secondParam.style.display = '';  
+                        secondParam.style.display = ''; 
+                        secondTolLabel.style.display = '';
+                        secondTolValue.style.display = '';
                     }
                     labelSensor.style.display = ''; 
                     Sensor.style.display = ''; 
@@ -327,6 +337,8 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = ''; 
+                        secondTolLabel.style.display = '';
+                        secondTolValue.style.display = '';
                     }
                     labelSensor.style.display = ''; 
                     Sensor.style.display = ''; break;
@@ -344,6 +356,8 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = ''; 
+                        secondTolLabel.style.display = '';
+                        secondTolValue.style.display = '';
                     }
                     labelSensor.style.display = ''; i
                     Sensor.style.display = ''; i
@@ -362,6 +376,8 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = '';
+                        secondTolLabel.style.display = '';
+                        secondTolValue.style.display = '';
                     }
                     labelSensor.style.display = '';
                     Sensor.style.display = ''; 
@@ -380,6 +396,8 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = 'none'; 
                         secondVal.style.display = 'none'; 
                         secondParam.style.display = 'none';
+                        secondTolLabel.style.display = 'none';
+                        secondTolValue.style.display = 'none';
                     } 
                     labelSensor.style.display = 'none'; 
                     Sensor.style.display = 'none'; 

@@ -579,6 +579,9 @@ msgstr "Type de prise (puissance maximale)"
 msgid "SAVE_AND_CONFIGURE_PROGRAM"
 msgstr "Sauvegarder les changements et configurer le programme de la prise"
 
+msgid "CONFIGURE_REGUL_TOLERANCE"
+msgstr "Tolérance de la régulation secondaire"
+
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
