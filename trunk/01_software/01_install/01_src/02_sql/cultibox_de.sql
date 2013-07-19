@@ -154,6 +154,7 @@ CREATE TABLE IF NOT EXISTS `plugs` (
   `PLUG_SENSS` varchar(1) NOT NULL DEFAULT '+',
   `PLUG_REGUL_VALUE` decimal(3,1) NOT NULL DEFAULT '35.0',
   `PLUG_ENABLED` varchar(5) NOT NULL DEFAULT 'True',
+  `PLUG_SECOND_TOLERANCE` DECIMAL( 3, 1 ) NOT NULL DEFAULT '0.0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
@@ -161,23 +162,23 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 -- Dumping data for table `plugs`
 --
 
-INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_POWER_MAX`, `PLUG_REGUL`, `PLUG_REGUL_SENSOR`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_ENABLED`) VALUES
-(1, '', 'Stecker1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,'True'),
-(2, '', 'Stecker2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(3, '', 'Stecker3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(4, '', 'Stecker4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(5, '', 'Stecker5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(6, '', 'Stecker6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(7, '', 'Stecker7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(8, '', 'Stecker8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(9, '', 'Stecker9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(10, '', 'Stecker10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(11, '', 'Stecker11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(12, '', 'Stecker12', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(13, '', 'Stecker13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(14, '', 'Stecker14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(15, '', 'Stecker15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True'),
-(16, '', 'Stecker16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True');
+INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_POWER_MAX`, `PLUG_REGUL`, `PLUG_REGUL_SENSOR`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_ENABLED`,`PLUG_SECOND_TOLERANCE`) VALUES
+(1, '', 'Stecker1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(2, '', 'Stecker2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(3, '', 'Stecker3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(4, '', 'Stecker4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(5, '', 'Stecker5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(6, '', 'Stecker6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(7, '', 'Stecker7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(8, '', 'Stecker8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(9, '', 'Stecker9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(10, '', 'Stecker10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(11, '', 'Stecker11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(12, '', 'Stecker12', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(13, '', 'Stecker13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(14, '', 'Stecker14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(15, '', 'Stecker15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
+(16, '', 'Stecker16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0));
 
 -- --------------------------------------------------------
 
