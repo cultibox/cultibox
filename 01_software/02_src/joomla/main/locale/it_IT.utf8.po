@@ -1249,6 +1249,9 @@ msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas co
 msgid "ERROR_COPY_TPL"
 msgstr "Impossible de copier le fichier empty_file_64.tpl sur votre carte SD"
 
+msgid "ERROR_COPY_FILE"
+msgstr "Erreur lors de la copie d'un fichier"
+
 msgid "ERROR_COMPAT_BROWSER"
 msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez sûrement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accessibles. Voici la liste des navigateurs officiellement supportés:<br /><ul class='list_class'><li>Mozilla Firefox (version 3 et supérieure)</li><li>Internet Explorer (version 7 et supérieure)</li><li>Google Chrome (Toutes versions)</li><li>Max Os X Safari (version 5 et supérieure)</li></ul>"
 

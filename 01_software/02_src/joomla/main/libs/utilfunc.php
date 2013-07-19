@@ -1619,6 +1619,30 @@ function check_and_copy_log($sd_card) {
 // }}}
 
 
+// {{{ check_and_copy_index()
+// ROLE check if the index file exists and if not, create it 
+// IN  $sd_card     the sd card pathname 
+// RET false if an error occured, true else
+function check_and_copy_index($sd_card) {
+    if(!is_file("$sd_card/logs/index")) {
+        if(is_file("tmp/logs/index")) {
+            copy("tmp/logs/index", "$sd_card/logs/index");
+        } else if(is_file("../tmp/logs/index")) {
+            copy("../tmp/logs/index", "$sd_card/logs/index");
+        } else if(is_file("../../tmp/logs/index")) {
+            copy("../../tmp/logs/index", "$sd_card/logs/index");
+        } else if(is_file("../../../tmp/logs/index")) {
+            copy("../../../tmp/logs/index", "$sd_card/logs/index");
+        } else {
+            return false;
+        }
+    }
+    return true;
+}
+// }}}
+
+
+
 // {{{ clean_popup_message()
 // ROLE clean highchart message by removing non-appropriate char for javascript
 // IN  $message         message to be cleaned

@@ -48,7 +48,12 @@ if((!isset($path))||(empty($path))) {
              //Copiyng firmware:
             check_and_copy_firm($path);
 
-
+            
+            if(!check_and_copy_index($path)) {
+                echo "-1";
+                return 0;
+            }
+            
             //Creating pluga file:
             if(!write_pluga($path,$out)) {
                     echo -1;
