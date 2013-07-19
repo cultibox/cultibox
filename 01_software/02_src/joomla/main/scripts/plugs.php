@@ -82,12 +82,15 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
     
    if((strcmp("$type","lamp")==0)||(strcmp("$type","other")==0)) {
         $regul="False";
+        $error_tol="";
    } else {
         $regul=getvar("plug_regul${nb}");
         $regul_senss=getvar("plug_senss${nb}");
         $regul_value=getvar("plug_regul_value${nb}");
         $regul_value=str_replace(',','.',$regul_value);
         $regul_value=str_replace(' ','',$regul_value);
+        $second_tol=getvar("plug_second_tolerance${nb}");
+        $second_tol=str_replace(',','.',$second_tol);
    }
    
    $enable=getvar("plug_enable${nb}");
@@ -107,6 +110,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $old_enable=get_plug_conf("PLUG_ENABLED",$nb,$main_error);
    $old_power_max=get_plug_conf("PLUG_POWER_MAX",$nb,$main_error);
    $old_sensor=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
+   $old_second_tol=get_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$main_error);
 
    /* 
    if((!empty($id))&&(isset($id))&&(!$reset)) {
@@ -206,6 +210,21 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
             $plug_update=true;
         }
 
+        if((!empty($second_tol))&&(isset($second_tol))&&(!$reset)&&(strcmp("$old_second_tol","$second_tol")!=0)) {
+            if((check_numeric_value($second_tol))&&(check_tolerance_value($type,$second_tol))) {
+                insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"$second_tol",$main_error);
+                $update_program=true;
+                $plug_update=true;
+            } else {
+                 if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
+                    $error[$nb]['second_tolerance']=__('ERROR_TOLERANCE_VALUE_POURCENT');
+                 } else if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
+                    $error[$nb]['second_tolerance']=__('ERROR_TOLERANCE_VALUE_DEGREE');
+                }
+            }
+        }
+
+
 
         if((strcmp($type,"other")==0)||(strcmp($type,"lamp")==0)) {
             $regul_senso=getvar("plug_senso${nb}");
@@ -270,8 +289,8 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_enable{$nb}=get_plug_conf("PLUG_ENABLED",$nb,$main_error);
    $plug_power_max{$nb}=get_plug_conf("PLUG_POWER_MAX",$nb,$main_error);
    $plug_sensor{$nb}=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
-
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
+   $plug_second_tolerance{$nb}=get_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$main_error); 
 }
 
 if((!empty($selected_error))&&(strcmp("$selected_plug","all")!=0)) { 
