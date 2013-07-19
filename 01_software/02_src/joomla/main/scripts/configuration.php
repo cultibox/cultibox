@@ -57,6 +57,7 @@ $show_cost=getvar("show_cost",$main_error);
 $show_historic=getvar("show_historic",$main_error);
 $submit=getvar("submit_conf",$main_error);
 $update_menu=false;
+$minmax=getvar("minmax",$main_error);
 
 
 
@@ -128,13 +129,15 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
             $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
             $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
+            $resetvalue= get_configuration("RESET_MINMAX",$main_error);
+
             if("$updatefrequency"=="-1") {
                 $updatefrequency="0";
             }
 
-            if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue)) {
+            if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue")) {
                 $conf_uptodate=false;
-                write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue",$main_error);
+                write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error);
             }
         }
 
@@ -294,6 +297,14 @@ if((isset($show_historic))&&(!empty($show_historic))) {
 }
 
 
+if((isset($minmax))&&(!empty($minmax))) {
+        insert_configuration("RESET_MINMAX","$minmax",$main_error);
+        $update_conf=true;
+} else {
+        $minmax = get_configuration("RESET_MINMAX",$main_error);
+}
+
+
 // Is a field has been changed and there is no error in the value: display success message
 if(((empty($main_error))||(!isset($main_error)))&&(count($error)==0)) {
 	if($update_conf) {
@@ -319,9 +330,9 @@ if((!isset($sd_card))||(empty($sd_card))) {
 if((isset($submit))&&(!empty($submit))) {
     if((isset($sd_card))&&(!empty($sd_card))) {
 	    if("$update_frequency"=="-1") {
-		    write_sd_conf_file($sd_card,$record_frequency,"0",$power_frequency,"$alarm_enable","$alarm_value",$main_error);
+		    write_sd_conf_file($sd_card,$record_frequency,"0",$power_frequency,"$alarm_enable","$alarm_value","$minmax",$main_error);
 	    } else {
-		    write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,"$alarm_enable","$alarm_value",$main_error);	
+		    write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,"$alarm_enable","$alarm_value","$minmax",$main_error);	
 	    }	
     }
 }

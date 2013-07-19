@@ -176,6 +176,9 @@ msgstr "Afficher le menu de calcul des coûts"
 msgid "SHOW_HISTORIC"
 msgstr "Afficher le menu d'historique de vos actions"
 
+msgid "RESET_MINMAX"
+msgstr "Remise à zéro du min/max"
+
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1480,6 +1483,9 @@ msgstr "En activant cette option vous pouvez avoir accès à la page de calcul d
 
 msgid "TOOLTIP_SHOW_HISTORIC"
 msgstr "En activant cette option vous pouvez avoir accès à la page d'affichage de l'historique de vos actions dans le logiciel grâce au menu 'Historique' qui apparaît dans la barre du menu principal"
+
+msgid "TOOLTIP_RESET_MINMAX"
+msgstr "Ce champs permet de choisir l'heure de remise à zéro du min/max de tous les capteurs affichés sur l'écran de la Cultibox"
 
 
 #For the debug part:

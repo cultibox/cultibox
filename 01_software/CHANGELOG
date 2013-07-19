@@ -5,6 +5,7 @@ Cultibox (1.1.28) precise; urgency=low
     + Une fenêtre permet de selectionner une date de début et de fin pour la suppréssion des logs de la base ou encore de supprimer tous les logs existant
     + Réorganisation des fichiers de la carte SD
     + Ajout du fichier index dans le repertoire logs
+    + Mise en place de la fonctionnalité de remise à zéro du min/max des capteurs
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Jul 16 10:42:56 CEST 2013
 
