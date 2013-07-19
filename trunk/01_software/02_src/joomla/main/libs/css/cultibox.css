@@ -11,7 +11,7 @@
 
 .error_field {
     color: red;
-    border-radius:22px;
+    border-radius:15px;
     background:#E3DDD1;
     margin:auto;
     padding:2px;
@@ -195,7 +195,7 @@ td.plug-marge-title {
 }
 
 td.plug-marge-field {
-   width: 25%;
+   width: 20%;
 }
 
 td.plug-marge-jumpto {

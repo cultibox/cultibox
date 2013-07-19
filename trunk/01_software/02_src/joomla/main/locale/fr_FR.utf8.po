@@ -1193,7 +1193,7 @@ msgid "ERROR_TOLERANCE_VALUE_DEGREE"
 msgstr "Valeur de tolérance: elle doit être comprise entre 0°C et 10°C"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "Valeur de tolérance: elle doit être comprise entre 0% et 25.5%"
+msgstr "Valeur de tolérance: elle doit être comprise entre 0&#37; et 25.5&#37;"
 
 msgid "ERROR_VALUE_PROGRAM"
 msgstr "Erreur: la valeur rentrée doit être un nombre"
@@ -1202,7 +1202,7 @@ msgid "ERROR_VALUE_PROGRAM_TEMP"
 msgstr "Valeur de température: elle doit être comprise entre 5°C et 60°C"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "Valeur d'humidité: elle doit être comprise entre 10% et 95%"
+msgstr "Valeur d'humidité: elle doit être comprise entre 10&#37; et 95&#37;"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100"

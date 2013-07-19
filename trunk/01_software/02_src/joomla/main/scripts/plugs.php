@@ -82,7 +82,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
     
    if((strcmp("$type","lamp")==0)||(strcmp("$type","other")==0)) {
         $regul="False";
-        $error_tol="";
    } else {
         $regul=getvar("plug_regul${nb}");
         $regul_senss=getvar("plug_senss${nb}");
@@ -162,7 +161,11 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
                 $update_program=true;
                 $plug_update=true;
             } else {
-                $error[$nb]['tolerance']=__('ERROR_TOLERANCE_VALUE_DEGREE');
+                if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
+                    $error[$nb]['tolerance']=__('ERROR_TOLERANCE_VALUE_DEGREE','html');
+                } elseif((strcmp($type,"dehumidifier")==0)||(strcmp($type,"humidifier")==0)) {
+                    $error[$nb]['tolerance']=__('ERROR_TOLERANCE_VALUE_POURCENT','html');
+                }
             }
         } 
 
@@ -217,9 +220,9 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
                 $plug_update=true;
             } else {
                  if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
-                    $error[$nb]['second_tolerance']=__('ERROR_TOLERANCE_VALUE_POURCENT');
+                    $error[$nb]['second_tolerance_value']=__('ERROR_TOLERANCE_VALUE_DEGREE','html');
                  } else if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
-                    $error[$nb]['second_tolerance']=__('ERROR_TOLERANCE_VALUE_DEGREE');
+                    $error[$nb]['second_tolerance_value']=__('ERROR_TOLERANCE_VALUE_POURCENT','html');
                 }
             }
         }
