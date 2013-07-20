@@ -1766,7 +1766,12 @@ EOF;
              } else {
                 $vsen="1000";
              }
-             $sens="SEN:M".$vsen;
+
+             if(strcmp($data['PLUG_COMPUTE_METHOD'],"")!=0) {
+                $sens="SEN:".$data['PLUG_COMPUTE_METHOD'].$vsen;
+             } else {
+                $sens="SEN:M".$vsen;
+            }
 
             $sereg=$data['PLUG_SECOND_TOLERANCE']*10;
             while(strlen($sereg)<3) {
