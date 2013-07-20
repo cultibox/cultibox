@@ -1746,11 +1746,21 @@ EOF;
 
             if(strcmp($data['PLUG_REGUL_SENSOR'],"")!=0) {  
                 $vsen="";
+                $tmp_sensor=explode("-",$data['PLUG_REGUL_SENSOR']);
+                $find=false;
                 for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
-                    if($data['PLUG_REGUL_SENSOR']==$i) {
-                        $vsen=$vsen."1";
-                    } else {
+                    foreach($tmp_sensor as $sensor) {
+                        if($sensor==$i) {
+                            $vsen=$vsen."1";
+                            $find=true;
+                            break;
+                        }
+                    }
+
+                    if(!$find) {
                         $vsen=$vsen."0";
+                    } else {
+                        $find=false;
                     }
                 } 
              } else {
@@ -2575,6 +2585,7 @@ EOF;
 
 
 // {{{ get_notes()
+// ROLE get welcome's notes depending the lang
 // IN $out      error or warning message
 //    $res      return array containing data
 //    $lang     lang of the current note to search
@@ -2602,6 +2613,55 @@ EOF;
    }
 }
 // }}}
+
+
+// {{{ get_plug_regul_sensor()
+// ROLE get plug sensors
+// IN $out      error or warning message
+//    $id       id of the plug
+// RET return array containing data
+function get_plug_regul_sensor($id,&$out) {
+    $sql = <<<EOF
+SELECT `PLUG_REGUL_SENSOR` from `plugs` WHERE `id` = {$id}
+EOF;
+   $db=db_priv_pdo_start();
+   try {
+       $sth=$db->prepare("$sql");
+       $sth->execute();
+       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
+
+   if((isset($ret))&&(!empty($ret))) {
+       if($GLOBALS['DEBUG_TRACE']) {
+          $out[]=__('ERROR_DELETE_SQL').$ret;
+       } else {
+          $out[]=__('ERROR_DELETE_SQL');
+       }
+   }
+
+   if(!empty($res)) {
+           $tmp=explode("-",$res[0]['PLUG_REGUL_SENSOR']);
+           $result=array();                                           
+           for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
+             foreach($tmp as $sensor) {
+                if($sensor==$i) {
+                    $result[$i]="True";
+                }
+             }
+             if(!isset($result[$i])) {
+                    $result[$i]="False";
+             }
+           }
+           return $result; 
+   } else {
+        return false;
+   }
+}
+// }}}
+
 
 
 ?>

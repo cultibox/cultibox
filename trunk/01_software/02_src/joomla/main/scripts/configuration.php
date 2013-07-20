@@ -51,7 +51,7 @@ $program="";
 $version=get_configuration("VERSION",$main_error);
 $submenu=getvar("submenu",$main_error);
 $stats=getvar("stats",$main_error);
-$several_sensor=getvar("several_sensor",$main_error);
+$advanced_regul=getvar("advanced_regul",$main_error);
 $second_regul=getvar("second_regul",$main_error);
 $show_cost=getvar("show_cost",$main_error);
 $show_historic=getvar("show_historic",$main_error);
@@ -262,16 +262,16 @@ if((isset($stats))&&(!empty($stats))) {
 }
 
 
-if((isset($several_sensor))&&(!empty($several_sensor))) {
-        insert_configuration("REGUL_SENSOR","$several_sensor",$main_error);
-        if(strcmp("$several_sensor","False")==0) {
+if((isset($advanced_regul))&&(!empty($advanced_regul))) {
+        insert_configuration("ADVANCED_REGUL_OPTIONS","$advanced_regul",$main_error);
+        if(strcmp("$advanced_regul","False")==0) {
             for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
                 insert_plug_conf("PLUG_REGUL_SENSOR",$i,"1",$main_error);
             }
         }
         $update_conf=true;
 } else {
-        $several_sensor = get_configuration("REGUL_SENSOR",$main_error);
+        $advanced_regul = get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
 }
 
 

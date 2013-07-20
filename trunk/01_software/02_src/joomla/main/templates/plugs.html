@@ -138,17 +138,39 @@
          <td></td>
          <td><div id="label_sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>"><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></div></td>
          <td>
-               <div id="sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
-                    <?php if(strcmp("$several_sensor","True")==0) { ?>
-                        <select name="plug_sensor<?php echo $i; ?>" id="plug_sensor<?php echo $i; ?>">
-                        <?php for($j=1; $j<=$GLOBALS['NB_MAX_SENSOR']; $j++) { ?>
-                        <option <?php if(strcmp($plug_sensor{$i},"$j")==0) { echo 'selected'; }?> value="<?php echo $j; ?>"><?php echo $j; ?></option>
+           <div id="sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
+               <table class="table_width">
+               <tr>
+                    <?php for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR'];$j++) { ?>
+                        <td><?php echo __('SENSOR')." ".$j; ?></td>
+                    <?php } ?>
+               </tr>
+               <tr>
+                    <?php if(strcmp("$advanced_regul","True")==0) { ?>
+                        <?php for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR'];$j++) { ?> 
+                            <td>
+                            <select name="plug_sensor<?php echo $i; ?><?php echo $j; ?>" id="plug_sensor<?php echo $i; ?><?php echo $j; ?>">
+                                <option <?php if(strcmp($plug_sensor[$i][$j],"True")==0) { echo 'selected'; }?> value="True"><?php echo __('YES'); ?></option> 
+                                <option <?php if(strcmp($plug_sensor[$i][$j],"False")==0) { echo 'selected'; }?> value="False"><?php echo __('NO'); ?></option> 
+                            </select>
+                            </td>
                         <?php } ?>
-                        </select>
                     <?php } else { ?>
-                    <label class="readonly" id="sensor_regul<?php echo $i; ?>"><?php echo $plug_sensor{$i}; ?></label>
+                          <?php for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR'];$j++) { ?>
+                            <td>
+                            <select name="plug_sensor<?php echo $i; ?><?php echo $j; ?>" id="plug_sensor<?php echo $i; ?><?php echo $j; ?>" disabled>
+                                 <?php if($j==1) { ?>
+                                <option value="True"><?php echo __('YES'); ?></option>
+                                 <?php } else { ?>
+                                <option value="False"><?php echo __('NO'); ?></option>
+                                <?php } ?>
+                            </select>
+                            </td>
+                        <?php } ?>
                 <?php } ?>
-               </div>
+               </tr>
+              </table>
+            </div>
          </td>
          <td></td>
       </tr>

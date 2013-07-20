@@ -155,8 +155,8 @@ msgstr "Êtes-vous sûr de vouloir formater votre carte SD? Vos fichiers de logs
 msgid "SECOND_REGUL_ENABLE"
 msgstr "Activer la régulation secondaire (Utilisateur expert seulement)"
 
-msgid "MULTIPLE_REGUL_SENSOR"
-msgstr "Permettre la régulation sur d'autres capteurs"
+msgid "ADVANCED_REGUL_OPTIONS"
+msgstr "Autoriser la modification des options avancées de régulation"
 
 msgid "FORMAT_PROGRESS"
 msgstr "Progression du formatage"
@@ -529,7 +529,7 @@ msgid "ENABLE_REGUL_PLUG"
 msgstr "Régulation secondaire (utilisateur expert seulement)"
 
 msgid "CONFIGURE_REGUL_SENSOR"
-msgstr "Capteur utilisé pour la régulation"
+msgstr "Capteur(s) utilisé(s) pour la régulation"
 
 msgid "CONFIGURE_REGUL_SENSO"
 msgstr "Déclenchement en fonction de"
@@ -1437,7 +1437,7 @@ msgid "TOOLTIP_COST_STOP_TIME"
 msgstr "Date de fin du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
 
 msgid "TOOLTIP_REGUL_SENSOR"
-msgstr "La régulation d'une prise est réalisée en fonction des données relevées par un capteur. Ce champ vous permet de sélectionner ce capteur si vous avez activé la sélection multiple des capteurs dans la partie configuration "
+msgstr "La régulation d'une prise est réalisée en fonction des données relevées par un ou plusieurs capteurs. Ce champ vous permet de sélectionner ce(s) capteur(s) si vous avez activé les options avancées de régulation dans la partie configuration"
 
 msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Assurez-vous de bien avoir lu l'aide avant d'activer cette option. Il n'est pas nécessaire de l'activer pour qu'une prise régule la température ou l'humidité. Une fois activée, la régulation est configurable pour une prise différente du type 'Lampe' et 'Autre'. Les options de configuration de la régulation secondaire seront disponible dans l'onglet 'Prises'"
@@ -1466,8 +1466,8 @@ msgstr "Cette fonctionnalité vous permet d'exporter un programme dans un format
 msgid "TOOLTIP_IMPORT_PROGRAM"
 msgstr "Cette fonctionnalité permet d'importer un programme depuis un fichier csv (lisible par un tableur). Le fichier à importer peut être créé par la fonction d'exportation par un autre utilisateur Cultibox pour échanger des programmes ou depuis une autre de vos prises pour appliquer un même programme à plusieurs prises"
 
-msgid "TOOLTIP_REGUL_SEVERAL_SENSOR"
-msgstr "Si vous activez la sélection de la régulation de plusieurs capteurs, vous pourrez choisir le numéro de votre capteur vous permettant de gérer la régulation. Sinon et par défaut la régulation se fera sur le capteur numéro un"
+msgid "TOOLTIP_ADVANCED_REGUL_OPTIONS"
+msgstr "Si vous activez cette option, vous aurez la possibilité de choisir le ou les capteurs utilisé(s) pour la régulation ainsi que le mode de calcul"
 
 msgid "TOOLTIP_REPEAT_VALUE"
 msgstr "Cette valeur définit à quelle fréquence votre évènement sera répété. Par exemple, si votre évènement commence à 01:00:00 et que la répétition est de 04:00:00, l'évènement suivant débutera à 05:00:00. Le temps de répétition est ajouté au temps de départ de l'évènement pour déterminer le départ de l'évènement suivant. Le temps minimum autorisé est de 5mn."

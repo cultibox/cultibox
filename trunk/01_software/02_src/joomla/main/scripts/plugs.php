@@ -30,7 +30,7 @@ __('LANG');
 
 // ================= VARIABLES ================= //
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
-$several_sensor=get_configuration("REGUL_SENSOR",$main_error);
+$advanced_regul=get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
 $update_program=false;
 $reset=getvar('reset');
 $reccord=getvar('reccord');
@@ -94,8 +94,18 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    
    $enable=getvar("plug_enable${nb}");
    $power_max=getvar("plug_power_max${nb}");
-   $sensor=getvar("plug_sensor${nb}");
 
+   $sensor="";
+   for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR'];$j++) { 
+       $tmp_sensor=getvar("plug_sensor${nb}${j}");
+       if(strcmp($tmp_sensor,"True")==0) {
+            if(strcmp($sensor,"")!=0) {
+                $sensor=$sensor."-".$j;
+            } else {
+                $sensor="$j";
+            }
+        }
+   }
 
    $old_name=get_plug_conf("PLUG_NAME",$nb,$main_error);
    $old_type=get_plug_conf("PLUG_TYPE",$nb,$main_error);
@@ -291,9 +301,11 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_regul_value{$nb}=get_plug_conf("PLUG_REGUL_VALUE",$nb,$main_error);
    $plug_enable{$nb}=get_plug_conf("PLUG_ENABLED",$nb,$main_error);
    $plug_power_max{$nb}=get_plug_conf("PLUG_POWER_MAX",$nb,$main_error);
-   $plug_sensor{$nb}=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
    $plug_second_tolerance{$nb}=get_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$main_error); 
+
+   $plug_sensor[$nb]=get_plug_regul_sensor($nb,$main_error);
+
 }
 
 if((!empty($selected_error))&&(strcmp("$selected_plug","all")!=0)) { 

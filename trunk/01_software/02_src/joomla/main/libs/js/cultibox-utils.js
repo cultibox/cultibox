@@ -328,9 +328,9 @@ function getTolerance(i,j,secondR) {
                         secondParam.style.display = ''; 
                         secondTolLabel.style.display = '';
                         secondTolValue.style.display = '';
+                        labelSensor.style.display = '';
+                        Sensor.style.display = '';
                     }
-                    labelSensor.style.display = ''; 
-                    Sensor.style.display = ''; 
                     break;
 
          case 3 :   divTolerance.style.display = ''; 
@@ -350,9 +350,10 @@ function getTolerance(i,j,secondR) {
                         secondParam.style.display = ''; 
                         secondTolLabel.style.display = '';
                         secondTolValue.style.display = '';
+                        labelSensor.style.display = '';
+                        Sensor.style.display = ''; 
                     }
-                    labelSensor.style.display = ''; 
-                    Sensor.style.display = ''; break;
+                    break;
 
          case 4 :   divTolerance.style.display = ''; 
                     divToleranceLabel.style.display = ''; 
@@ -371,9 +372,9 @@ function getTolerance(i,j,secondR) {
                         secondParam.style.display = ''; 
                         secondTolLabel.style.display = '';
                         secondTolValue.style.display = '';
+                        labelSensor.style.display = ''; 
+                        Sensor.style.display = ''; 
                     }
-                    labelSensor.style.display = ''; i
-                    Sensor.style.display = ''; i
                     break;
 
          case 5 :   divTolerance.style.display = ''; 
@@ -393,9 +394,9 @@ function getTolerance(i,j,secondR) {
                         secondParam.style.display = '';
                         secondTolLabel.style.display = '';
                         secondTolValue.style.display = '';
+                        labelSensor.style.display = '';
+                        Sensor.style.display = '';
                     }
-                    labelSensor.style.display = '';
-                    Sensor.style.display = ''; 
                     break;         
     
          default:   divTolerance.style.display = 'none'; 
