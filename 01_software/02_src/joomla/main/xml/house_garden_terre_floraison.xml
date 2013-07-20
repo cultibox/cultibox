@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+   <updated>2013-04-16T13:14:57+02:00</updated>
+   <id>http://www.cultibox.fr/</id>
+   <title>House Garden terre</title>
+   <subtitle></subtitle>
+   <author>
+      <name>Cultibox</name>
+      <uri>http://www.cultibox.fr/</uri>
+      <email>info@cultibox.fr</email>
+   </author>
+   <category term = "engrais" label = "engrais" />
+   <link rel="self" href="www.cultibox.fr/house_garden_terre.xml" />
+   <icon></icon>
+   <logo></logo>
+   <rights type = "text">
+    © Cultibox, 2013
+   </rights>
+   <entry>
+      <title>Phase Floraison Semaine 1</title>
+      <summary>Phase Floraison Semaine 1</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         Ec conseillé : 1,4
+         Vous pouvez remplacer Composant-Bio par Terre A&B (2ml/l - 3ml/l)
+         Vous pouvez remplacer Roots Excelurator par Stimulator 1 roots (1ml/l)
+      </content>
+      <duration>7</duration>
+      <start>0</start>
+
+      <nutriment>
+        <name>Composant/ Bio</name>
+        <dosage>4ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Roots Excelurator</name>
+        <dosage>0.3ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Amino Treatment</name>
+        <dosage>0.5ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Multi Zyme</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <color>red</color>
+   </entry>
+   
+    <entry>
+      <title>Phase Floraison Semaine 2 - 3</title>
+      <summary>Phase Floraison Semaine 2 - 3</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         Ec conseillé : 1,4 - 1,6
+         Vous pouvez remplacer Composant-Bio par Terre A&B (3ml/l - 3,5ml/l)
+         Vous pouvez remplacer Roots Excelurator par Stimulator 1 roots (1ml/l)
+      </content>
+      <duration>7</duration>
+      <start>14</start>
+
+      <nutriment>
+        <name>Composant/ Bio</name>
+        <dosage>4ml/l - 5ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Roots Excelurator</name>
+        <dosage>0.3ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Amino Treatment</name>
+        <dosage>0.5ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Multi Zyme</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <color>red</color>
+   </entry>
+   
+    <entry>
+      <title>Phase Floraison Semaine 4</title>
+      <summary>Phase Floraison Semaine 4</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         Ec conseillé : 1,6 - 1,8
+         Vous pouvez remplacer Composant-Bio par Terre A&B (3ml/l - 3,5ml/l)
+      </content>
+      <duration>7</duration>
+      <start>21</start>
+
+      <nutriment>
+        <name>Composant/ Bio</name>
+        <dosage>4ml/l - 5ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Multi Zyme</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bud Xl</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Booster / PK13-14</name>
+        <dosage>0,5ml/l</dosage>
+      </nutriment>
+      <color>red</color>
+   </entry>
+   
+    <entry>
+      <title>Phase Floraison Semaine 5</title>
+      <summary>Phase Floraison Semaine 5</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         Ec conseillé : 1,6 - 1,8
+         Vous pouvez remplacer Composant-Bio par Terre A&B (3ml/l - 3,5ml/l)
+      </content>
+      <duration>7</duration>
+      <start>28</start>
+
+      <nutriment>
+        <name>Composant/ Bio</name>
+        <dosage>4ml/l - 5ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Multi Zyme</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bud Xl</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Booster / PK13-14</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <color>red</color>
+   </entry>
+   
+    <entry>
+      <title>Phase Floraison Semaine 6</title>
+      <summary>Phase Floraison Semaine 6</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         Ec conseillé : 1,8 - 2
+         Vous pouvez remplacer Composant-Bio par Terre A&B (1ml/l - 1,5ml/l)
+         Vous pouvez ajouter 0,5ml/l de Top shooter. Dans ce cas, ne pas mettre de Top Booster / PK13-14.
+      </content>
+      <duration>7</duration>
+      <start>35</start>
+
+      <nutriment>
+        <name>Composant/ Bio</name>
+        <dosage>2ml/l - 3ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Multi Zyme</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bud Xl</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Booster / PK13-14</name>
+        <dosage>1,5ml/l</dosage>
+      </nutriment>
+      <color>red</color>
+   </entry>
+   
+    <entry>
+      <title>Phase Floraison Semaine 7 - 8</title>
+      <summary>Phase Floraison Semaine 7 - 8</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         Ec conseillé : 1,8 - 2
+         Vous pouvez remplacer Composant-Bio par Terre A&B (1ml/l - 1,5ml/l)
+         Vous pouvez ajouter 1ml/l de Top shooter. Dans ce cas, ne pas mettre de Top Booster / PK13-14.
+      </content>
+      <duration>13</duration>
+      <start>42</start>
+
+      <nutriment>
+        <name>Composant/ Bio</name>
+        <dosage>2ml/l - 3ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Multi Zyme</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bud Xl</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Booster / PK13-14</name>
+        <dosage>1,5ml/l</dosage>
+      </nutriment>
+      <color>red</color>
+   </entry>
+   
+    <entry>
+      <title>Rinçage</title>
+      <summary>Rinçage</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         Rinçage à l'eau claire.
+      </content>
+      <duration>1</duration>
+      <start>55</start>
+      <color>red</color>
+   </entry>
+   
+    <entry>
+      <title>Phase Floraison Semaine 9 - 10</title>
+      <summary>Phase Floraison Semaine 9 - 10</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         Ec conseillé : 1,8 - 2
+         Vous pouvez remplacer Composant-Bio par Terre A&B (1ml/l - 1,5ml/l)
+         Vous pouvez ajouter 1ml/l de Top shooter. Dans ce cas, ne pas mettre de Top Booster / PK13-14.
+      </content>
+      <duration>14</duration>
+      <start>56</start>
+
+      <nutriment>
+        <name>Composant/ Bio</name>
+        <dosage>2ml/l - 3ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Multi Zyme</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bud Xl</name>
+        <dosage>1ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Booster / PK13-14</name>
+        <dosage>1,5ml/l</dosage>
+      </nutriment>
+      <color>red</color>
+   </entry>
+   
+    <entry>
+      <title>Rinçage</title>
+      <summary>Rinçage</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">
+         Rinçage à l'eau claire.
+      </content>
+      <duration>1</duration>
+      <start>70</start>
+      <color>red</color>
+   </entry>
+   
+</feed>
