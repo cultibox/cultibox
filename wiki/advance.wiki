@@ -132,11 +132,11 @@ Exemple:
 }}}
 
 === Les entrées ===
-Chaque entrée est contenu dans une balise <entry>. Les entrées correspondent à des évènement du calendrier.
+Chaque entrée est contenu dans une balise <entry>. Les entrées correspondent à des événement du calendrier.
 
 ==== Informations Obligatoires ====
 ===== Titre =====
-Chaque entrée doit contenir le titre. C'est le titre qui sera donné à l’évènement du calendrier.
+Chaque entrée doit contenir le titre. C'est le titre qui sera donné à l’événement du calendrier.
 
 Exemple de titre:
 
@@ -201,7 +201,7 @@ Exemple de catégorie:
 }}}
 
 ===== contenu =====
-C'est cette balise qui contient le texte de l’évènement.
+C'est cette balise qui contient le texte de l’événement.
 
 Exemple:
 
@@ -212,7 +212,7 @@ Exemple:
 }}}
 
 ===== durée =====
-Cette balise permet de définir la durée de l’évènement. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+Cette balise permet de définir la durée de l’événement. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
 
 Exemple (3 jours):
 
@@ -220,8 +220,8 @@ Exemple (3 jours):
 <duration>0000-00-03T00:00:00</duration>
 }}}
 
-===== Début de cet évènement =====
-Cette balise permet de définir la date de début de l'évènement. La date doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+===== Début de cet événement =====
+Cette balise permet de définir la date de début de l’événement. La date doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
 
 Exemple (Au bout de 18 jours):
 
@@ -229,8 +229,8 @@ Exemple (Au bout de 18 jours):
 <start>2008-05-29T13:14:57+02:00</start>
 }}}
 
-===== Période de cet évènement =====
-Cette balise permet de définir au bout de combien de jour cette évènement doit revenir. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+===== Période de cet événement =====
+Cette balise permet de définir au bout de combien de jour cette événement doit revenir. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
 
 Exemple (Au bout de 18 jours):
 
@@ -238,8 +238,8 @@ Exemple (Au bout de 18 jours):
 <period>0000-00-18T00:00:00</period>
 }}}
 
-===== Offset de cet évènement =====
-Cette balise permet de définir au bout de combien de jour cet évènement doit devenir actif. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+===== Offset de cet événement =====
+Cette balise permet de définir au bout de combien de jour cet événement doit devenir actif. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
 
 Exemple (Au bout de 18 jours):
 
@@ -248,24 +248,19 @@ Exemple (Au bout de 18 jours):
 }}}
 
 ===== Nutriment =====
-Cette balise permet de définir le nom du nutriment.
+Cette balise permet de définir le nom du nutriment et le dosage. Elle peut contenir deux champs : name et dosage.
 
 Exemple:
 
 {{{
-<nutriment>Engrais 1</nutriment>
+<nutriment>
+  <name>Engrais 1</name>
+  <dosage>3ml/l</dosage>
+</nutriment>
 }}}
-
-===== Dosage =====
-Exemple:
-
-{{{
-<dosage>3ml/l</dosage>
-}}}
-
 
 ===== Couleur =====
-Cette balise permet de définir la couleur qui sera utilisée lors de l'affichage de l'évènement dans le calendrier du logiciel. La couleur peut être définie aussi bien par son nom anglais (exemple: red, yellow...) que par son code hexadécimal (exemple: #ffffff, #A485E9 ...)
+Cette balise permet de définir la couleur qui sera utilisée lors de l'affichage de l’événement dans le calendrier du logiciel. La couleur peut être définie aussi bien par son nom anglais (exemple: red, yellow...) que par son code hexadécimal (exemple: #ffffff, #A485E9 ...)
 
 Exemple:
 
@@ -274,7 +269,7 @@ Exemple:
 }}}
 
 ===== Icône =====
-Cette balise permet de définir une icône qui sera utilisée lors de l'affichage de l'évènement dans le calendrier du logiciel. L'icône peut être définie de deux façons: en ne donnant que le nom de l'icône et en plaçant cette icône dans le répertoire *htdocs/cultibox/main/modules/img/* ou alors en fournissant une adresse complète. L'affichage est optimisé pour une icône de 15 pixels sur 15 pixels.
+Cette balise permet de définir une icône qui sera utilisée lors de l'affichage de l’événement dans le calendrier du logiciel. L'icône peut être définie de deux façons: en ne donnant que le nom de l'icône et en plaçant cette icône dans le répertoire *htdocs/cultibox/main/modules/img/* ou alors en fournissant une adresse complète. L'affichage est optimisé pour une icône de 15 pixels sur 15 pixels.
 Exemple:
 
 {{{
@@ -370,7 +365,7 @@ Avant toute chose, il vous faut Mozilla Firefox. Ensuite télécharger le plug-i
 Autoriser l'installation puis suivez les instructions.
 
 == Enregistrer un test ==
-Lancer firefox.
+Lancer Firefox.
 Dans le menu Firefox puis Développement  Web, cliquer sur Selenium IDE.
 Une interface s'affiche.
 
