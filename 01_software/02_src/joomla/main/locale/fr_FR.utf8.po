@@ -582,6 +582,18 @@ msgstr "Sauvegarder les changements et configurer le programme de la prise"
 msgid "CONFIGURE_REGUL_TOLERANCE"
 msgstr "Tolérance de la régulation secondaire"
 
+msgid "COMPUTE_REGUL_METHOD"
+msgstr "Méthode de calcul de la valeur de régulation"
+
+msgid "AVERAGE"
+msgstr "Moyenne"
+
+msgid "MINIMUM"
+msgstr "Minimum"
+
+msgid "MAXIMUM"
+msgstr "Maximum"
+
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
@@ -1489,6 +1501,9 @@ msgstr "En activant cette option vous pouvez avoir accès à la page d'affichage
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Ce champs permet de choisir l'heure de remise à zéro du min/max de tous les capteurs affichés sur l'écran de la Cultibox"
+
+msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
+msgstr "Cette valeur n'est modifiable que si vous avez autorisé la modification des options de régulation dans l'onglet configuration. Vous pouvez choisir comment est calculée la valeur utilisée pour effectuer la régulation"
 
 
 #For the debug part:

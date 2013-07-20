@@ -264,6 +264,8 @@ function getTolerance(i,j,secondR) {
 
       var labelSensor = document.getElementById('label_sensor'+j);
       var Sensor = document.getElementById('sensor'+j);
+      var labelComputeRegul = document.getElementById('label_regul_compute'+j);    
+      var computeRegul = document.getElementById('regul_compute'+j);
 
 
       switch(i) {
@@ -287,6 +289,8 @@ function getTolerance(i,j,secondR) {
                     } 
                     labelSensor.style.display = 'none'; 
                     Sensor.style.display = 'none'; 
+                    labelComputeRegul.style.display = 'none';
+                    computeRegul.style.display = 'none';
                     break; 
 
          case 1 :   divTolerance.style.display = 'none'; 
@@ -309,6 +313,8 @@ function getTolerance(i,j,secondR) {
                     }
                     labelSensor.style.display = 'none'; 
                     Sensor.style.display = 'none'; 
+                    labelComputeRegul.style.display = 'none';
+                    computeRegul.style.display = 'none';
                     break;
 
          case 2 :   divTolerance.style.display = ''; 
@@ -330,6 +336,8 @@ function getTolerance(i,j,secondR) {
                         secondTolValue.style.display = '';
                         labelSensor.style.display = '';
                         Sensor.style.display = '';
+                        labelComputeRegul.style.display = '';
+                        computeRegul.style.display = '';
                     }
                     break;
 
@@ -352,6 +360,8 @@ function getTolerance(i,j,secondR) {
                         secondTolValue.style.display = '';
                         labelSensor.style.display = '';
                         Sensor.style.display = ''; 
+                        labelComputeRegul.style.display = '';
+                        computeRegul.style.display = '';
                     }
                     break;
 
@@ -374,6 +384,8 @@ function getTolerance(i,j,secondR) {
                         secondTolValue.style.display = '';
                         labelSensor.style.display = ''; 
                         Sensor.style.display = ''; 
+                        labelComputeRegul.style.display = '';
+                        computeRegul.style.display = '';
                     }
                     break;
 
@@ -396,6 +408,8 @@ function getTolerance(i,j,secondR) {
                         secondTolValue.style.display = '';
                         labelSensor.style.display = '';
                         Sensor.style.display = '';
+                        labelComputeRegul.style.display = '';
+                        computeRegul.style.display = '';
                     }
                     break;         
     
@@ -419,6 +433,8 @@ function getTolerance(i,j,secondR) {
                     } 
                     labelSensor.style.display = 'none'; 
                     Sensor.style.display = 'none'; 
+                    labelComputeRegul.style.display = 'none';
+                    computeRegul.style.display = 'none';
                     break;
       }
 }

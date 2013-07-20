@@ -79,6 +79,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $tolerance=getvar("plug_tolerance{$nb}");
    $plug_update=false;
    $power=getvar("plug_power${nb}");
+   $compute_method=getvar("plug_compute_method${nb}");
     
    if((strcmp("$type","lamp")==0)||(strcmp("$type","other")==0)) {
         $regul="False";
@@ -120,6 +121,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $old_power_max=get_plug_conf("PLUG_POWER_MAX",$nb,$main_error);
    $old_sensor=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
    $old_second_tol=get_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$main_error);
+   $old_compute_method=get_plug_conf("COMPUTE_METHOD",$nb,$main_error);
 
    /* 
    if((!empty($id))&&(isset($id))&&(!$reset)) {
@@ -271,6 +273,12 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
            $update_program=true;
            $plug_update=true;
        }
+
+       if((!empty($compute_method))&&(isset($compute_method))&&(!$reset)&&(strcmp("$old_compute_method","$compute_method")!=0)) {
+           insert_plug_conf("PLUG_COMPUTE_METHOD",$nb,"$compute_method",$main_error);
+           $update_program=true;
+           $plug_update=true;
+       }
     }
 
 
@@ -303,6 +311,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_power_max{$nb}=get_plug_conf("PLUG_POWER_MAX",$nb,$main_error);
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
    $plug_second_tolerance{$nb}=get_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$main_error); 
+   $plug_compute_method{$nb}=get_plug_conf("PLUG_COMPUTE_METHOD",$nb,$main_error);
 
    $plug_sensor[$nb]=get_plug_regul_sensor($nb,$main_error);
 
