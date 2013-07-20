@@ -309,10 +309,10 @@ $(document).ready(function(){
    </tr>
    <tr>
          <td class="conf-marge"></td>
-         <td><?php echo __('MULTIPLE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_REGUL_SEVERAL_SENSOR'); ?>" /></td>
-         <td><select name="several_sensor">
-            <option value="True" <?php if(strcmp("$several_sensor","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
-            <option value="False" <?php if(strcmp("$several_sensor","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
+         <td><?php echo __('ADVANCED_REGUL_OPTIONS'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_ADVANCED_REGUL_OPTIONS'); ?>" /></td>
+         <td><select name="advanced_regul">
+            <option value="True" <?php if(strcmp("$advanced_regul","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
+            <option value="False" <?php if(strcmp("$advanced_regul","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
          </select></td>
         <td></td>
    </tr>
