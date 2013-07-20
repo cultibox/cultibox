@@ -155,6 +155,7 @@ CREATE TABLE IF NOT EXISTS `plugs` (
   `PLUG_REGUL_VALUE` decimal(3,1) NOT NULL DEFAULT '35.0',
   `PLUG_ENABLED` varchar(5) NOT NULL DEFAULT 'True',
   `PLUG_SECOND_TOLERANCE` DECIMAL( 3, 1 ) NOT NULL DEFAULT '0.0',
+  `PLUG_COMPUTE_METHOD` VARCHAR( 1 ) NOT NULL DEFAULT 'M',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
@@ -162,23 +163,23 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 -- Dumping data for table `plugs`
 --
 
-INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_POWER_MAX`, `PLUG_REGUL`, `PLUG_REGUL_SENSOR`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_ENABLED`,`PLUG_SECOND_TOLERANCE`) VALUES
-(1, '', 'Spina1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(2, '', 'Spina2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(3, '', 'Spina3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(4, '', 'Spina4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(5, '', 'Spina5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(6, '', 'Spina6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(7, '', 'Spina7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(8, '', 'Spina8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(9, '', 'Spina9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(10, '', 'Spina10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(11, '', 'Spina11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(12, '', 'Spina12', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(13, '', 'Spina13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(14, '', 'Spina14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(15, '', 'Spina15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0)),
-(16, '', 'Spina16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0));
+INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_POWER_MAX`, `PLUG_REGUL`, `PLUG_REGUL_SENSOR`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_ENABLED`,`PLUG_SECOND_TOLERANCE`,`PLUG_COMPUTE_METHOD`) VALUES
+(1, '', 'Spina1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(2, '', 'Spina2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(3, '', 'Spina3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(4, '', 'Spina4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(5, '', 'Spina5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(6, '', 'Spina6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(7, '', 'Spina7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(8, '', 'Spina8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(9, '', 'Spina9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(10, '', 'Spina10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(11, '', 'Spina11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(12, '', 'Spina12', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(13, '', 'Spina13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(14, '', 'Spina14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(15, '', 'Spina15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
+(16, '', 'Spina16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M');
 
 -- --------------------------------------------------------
 
