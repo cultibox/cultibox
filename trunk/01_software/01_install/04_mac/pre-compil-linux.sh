@@ -65,7 +65,7 @@ case "$1" in
             cp ../../01_install/01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
             cp ../../01_install/01_src/03_sd/cultibox.html ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
             cp -R ../../01_install/01_src/03_sd/cnf ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
-            cp -R ../../01_install/01_src/03_sd/logs ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
+            cp -R ../../01_install/01_src/03_sd/logs ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
 
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_fr.sql
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_en.sql
