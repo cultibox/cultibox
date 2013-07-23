@@ -8,6 +8,7 @@ Cultibox (1.1.28) precise; urgency=low
     + Mise en place de la fonctionnalité de remise à zéro du min/max des capteurs
     + Compatibilité descendante des cartes SD
     + Ajout de la tolérance sur la régulation secondaire dans le fichier plugXX
+    + Ajout du chargement des logs pour le capteur de température d'eau
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Jul 16 10:42:56 CEST 2013
 

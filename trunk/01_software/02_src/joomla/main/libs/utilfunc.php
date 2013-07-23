@@ -147,7 +147,6 @@ function check_empty_string($value="") {
 //    $array_line    array to store log's values
 // RET none
 function get_log_value($file,&$array_line) {
-   $check=true;
    if(!file_exists("$file")) return false;
    $handle = fopen("$file", 'r');
    if ($handle)
@@ -155,19 +154,13 @@ function get_log_value($file,&$array_line) {
       while (!feof($handle))
       {
          $buffer = fgets($handle);
-         if(!check_empty_string($buffer)) {
-            if($check) {
-                $check=false;
-            } else {
-                break;
-            }
-         } else {
-            if(!$check) $check=true;
+         if(check_empty_string($buffer)) {
             $temp = explode("\t", $buffer);
             if(count($temp)==($GLOBALS['NB_MAX_SENSOR']*2+1)) { 
                 for($i=0;$i<count($temp);$i++) {
                     $temp[$i]=rtrim($temp[$i]);
                     $temp[$i]=str_replace(" ","",$temp[$i]);
+                    $temp[$i]=str_replace("0000","",$temp[$i]);
                 }
 
                 $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
@@ -175,13 +168,10 @@ function get_log_value($file,&$array_line) {
                 $time_catch=substr($temp[0], 8,6);
                 $time_catch=rtrim($time_catch);
 
-          
 
-                if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)) {
+                if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)&&(strlen($temp[0])==14)) {
                         for($i=0;$i<$GLOBALS['NB_MAX_SENSOR'];$i++) {
-                            if((!empty($temp[$i+1]))&&(!empty($temp[$i+2]))) {
-                                if((strlen($temp[$i+1])==4)&&(strlen($temp[$i+2])==4)&&(strlen($temp[0])==14)) {  
-                                    if((strcmp($temp[1+2*$i],"0000")!=0)||(strcmp($temp[2+2*$i],"0000")!=0)) {
+                            if((!empty($temp[2*$i+1]))||(!empty($temp[2*$i+2]))) {
                                         $array_line[] = array(
                                             "timestamp" => $temp[0],
                                             "temperature" => $temp[1+2*$i],
@@ -190,9 +180,7 @@ function get_log_value($file,&$array_line) {
                                             "time_catch" => $time_catch,
                                             "sensor_nb" => $i+1
                                         );
-                                    }
-                                }
-                            }
+                            } 
                         }
                 }
             }

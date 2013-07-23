@@ -38,6 +38,14 @@ function db_update_logs($arr,&$out) {
 INSERT INTO `logs`(`timestamp`,`temperature`, `humidity`,`date_catch`,`time_catch`,`sensor_nb`) VALUES
 EOF;
    foreach($arr as $value) {
+      if(empty($value['temperature'])) {
+        $value['temperature']="NULL";
+      }
+    
+      if(empty($value['humidity'])) {
+        $value['humidity']="NULL";
+      }
+
       if((array_key_exists("timestamp", $value))&&(array_key_exists("temperature", $value))&&(array_key_exists("humidity", $value))&&(array_key_exists("date_catch", $value))&&(array_key_exists("time_catch", $value))&&(array_key_exists("sensor_nb", $value))) {
          if("$index" == "0") {
             $sql = $sql . "(${value['timestamp']}, ${value['temperature']},${value['humidity']},\"${value['date_catch']}\",\"${value['time_catch']}\",\"${value['sensor_nb']}\")";
