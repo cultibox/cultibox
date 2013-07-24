@@ -233,23 +233,28 @@ if(!empty($update_frequency)) {
 
 
 if(!empty($alarm_enable)) {
-        insert_configuration("ALARM_ACTIV","$alarm_enable",$main_error);
-        $update_conf=true;
+       insert_configuration("ALARM_ACTIV","$alarm_enable",$main_error);
+       $update_conf=true;
+
+       if((strcmp($alarm_enable,"0001")==0)&&(!empty($alarm_value))) {
+           insert_configuration("ALARM_VALUE","$alarm_value",$main_error);
+       } else {
+            $alarm_value = get_configuration("ALARM_VALUE",$main_error);
+       }
 } else {
-        $alarm_enable = get_configuration("ALARM_ACTIV",$main_error);
+       $alarm_enable = get_configuration("ALARM_ACTIV",$main_error);
+       $alarm_value = get_configuration("ALARM_VALUE",$main_error);
 }
 
-if(!empty($alarm_value)) {
-	if((check_numeric_value("$alarm_value"))&&(check_alarm_value("$alarm_value"))) {
-           insert_configuration("ALARM_VALUE","$alarm_value",$main_error);
-           $update_conf=true;
-        } else {
+if(empty($alarm_value)) {
+        /* TO BE DELETED 
+           else {
            $alarm_value=get_configuration("ALARM_VALUE",$main_error);
            $error['alarm']=__('ERROR_ALARM_VALUE');
            $pop_up_error_message=$pop_up_error_message.popup_message($error['alarm']);
            $submenu="alarm_interface";
         }
-} else {
+        */
         $alarm_value = get_configuration("ALARM_VALUE",$main_error);
 }
 
@@ -302,15 +307,16 @@ if((isset($show_historic))&&(!empty($show_historic))) {
 
 
 if((isset($minmax))&&(!empty($minmax))) {
-    if(check_format_time("$minmax:00")) {
-        insert_configuration("RESET_MINMAX","$minmax",$main_error);
-        $update_conf=true;
-    } else {
+    insert_configuration("RESET_MINMAX","$minmax",$main_error);
+    $update_conf=true;
+    /* TO BE DELETED
+        else {
         $minmax=get_configuration("RESET_MINMAX",$main_error);
         $error['minmax']=__('ERROR_TIME_VALUE');
         $pop_up_error_message=$pop_up_error_message.popup_message($error['minmax']);
         $submenu="system_interface";
     }
+    */
 } else {
         $minmax = get_configuration("RESET_MINMAX",$main_error);
 }

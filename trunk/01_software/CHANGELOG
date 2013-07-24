@@ -9,6 +9,8 @@ Cultibox (1.1.28) precise; urgency=low
     + Compatibilité descendante des cartes SD
     + Ajout de la tolérance sur la régulation secondaire dans le fichier plugXX
     + Ajout du chargement des logs pour le capteur de température d'eau
+    + Les catégories du menu s'affichent maintenant directement après modification de la configuration
+    + Les erreurs dans le menu de configuraion sont gérées en AJAX sans rechargement de page
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Jul 16 10:42:56 CEST 2013
 

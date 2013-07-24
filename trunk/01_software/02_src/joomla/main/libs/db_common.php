@@ -2519,20 +2519,13 @@ EOF;
 // {{{ configure_menu()
 // ROLE hide or display joomla's menu
 // IN   cost        value for displaying or not the cost menu
-//      wizard      value for displaying or not the wizard menu
 //      historic    value for displaying or not the historic menu
 // RET  none
-function configure_menu($cost="False",$wizard="False",$historic="False") {
+function configure_menu($cost="False",$historic="False") {
    if(strcmp("$cost","True")==0) {
             $cost=1;
     } else {
             $cost=0;
-    }
-
-    if(strcmp("$wizard","True")==0) {
-            $wizard=1;
-    } else {
-            $wizard=0;
     }
 
     if(strcmp("$historic","True")==0) {
