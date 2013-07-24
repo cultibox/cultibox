@@ -461,7 +461,51 @@ $(document).ready(function() {
     });
 
 
+        $("#submit_conf").click(function(e) {
+            e.preventDefault();
+            var checked=true;
+            $.ajax({
+                cache: false,
+                async: false,
+                url: "../../main/modules/external/check_value.php",
+                data: {value:$("#reset_min_max").val(),type:'short_time'}
+            }).done(function (data) {
+                if(data!=1) {
+                    $("#error_min_max").show(700);
+                    checked=false;
+                     expand('system_interface');
+                } else {
+                    $("#error_min_max").css("display","none");
+                }
+            });
 
+            if($("#alarm_enable option:selected").val()=="0001") {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#alarm_value").val(),type:'alarm_value'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_alarm_value").show(700);
+                        checked=false;
+                        expand('alarm_interface');
+                    } else {
+                        $("#error_alarm_value").css("display","none");
+                    }
+                });
+            }
+
+            if(checked) {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/configure_menu.php",
+                    data: {cost:$("#show_cost").val(),historic:$("#show_historic").val()}
+                });
+                document.forms['configform'].submit();
+            }
+        }); 
 
         $("#reset_log_power_submit").click(function(e) {
         e.preventDefault();

@@ -567,6 +567,10 @@ td.welcome-link img{
   border:#C3B59B 6px solid;
 }
 
+td.conf-alarm-field {
+    width: 10%;
+}
+
 .menu-dropdown li.level1 a.level1 {
 	font-family: 'OpenSansRegular';
 }

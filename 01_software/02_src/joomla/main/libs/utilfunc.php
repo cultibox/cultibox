@@ -1513,7 +1513,7 @@ function check_power_value($value="") {
 function check_alarm_value($value="0") {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
-   if(($value>99.99)||($value<0)) return false;
+   if(($value>=100)||($value<=0)) return false;
    if(!is_numeric($value)) return false;
    return true;
 }

@@ -57,7 +57,7 @@ $(document).ready(function(){
 
 <p class="title_conf"><?php echo __('CONFIGURE_TITLE_CULTIBOX'); ?></p>
 <br />
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform" id="configform">
 <table class="table_width">
 <tr>    
     <td class="conf-menu-marge"></td>
@@ -319,7 +319,7 @@ $(document).ready(function(){
     <tr>
          <td class="conf-marge"></td>
          <td><?php echo __('SHOW_COST'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SHOW_COST'); ?>" /></td>
-         <td><select name="show_cost">
+         <td><select name="show_cost" id="show_cost">
             <option value="True" <?php if(strcmp("$show_cost","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
             <option value="False" <?php if(strcmp("$show_cost","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
          </select></td>
@@ -328,7 +328,7 @@ $(document).ready(function(){
    <tr>
          <td class="conf-marge"></td>
          <td><?php echo __('SHOW_HISTORIC'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SHOW_HISTORIC'); ?>" /></td>
-         <td><select name="show_historic">
+         <td><select name="show_historic" id="show_historic">
             <option value="True" <?php if(strcmp("$show_historic","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
             <option value="False" <?php if(strcmp("$show_historic","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
          </select></td>
@@ -429,7 +429,7 @@ $(document).ready(function(){
 <td>
    <input type="text" size="5" name="minmax" id="reset_min_max" <?php if(!empty($minmax)) { ?> value="<?php echo $minmax;?>" <?php } else { ?> value="00:00" <?php } ?> />
 </td>
-<td><?php if((isset($error['minmax']))&&(!empty($error['minmax']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['minmax']."</div>"; ?></td>
+<td><div id="error_min_max" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
 </tr>
 </table>
 </div>
@@ -439,7 +439,7 @@ $(document).ready(function(){
    <tr>  
       <td class="conf-marge"></td>
       <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?>:</td>
-      <td><select name="alarm_enable" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
+      <td class="conf-alarm-field"><select name="alarm_enable" id="alarm_enable" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
            <?php if("$alarm_enable"=="0001") {
                      echo "<option value='0001' selected>".__('YES')."</option>";
                      echo "<option value='0000'>".__('NO')."</option>";
@@ -454,8 +454,8 @@ $(document).ready(function(){
    <tr>
    <td class="conf-marge"></td>
       <td><div id="label_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><?php echo __('CONFIGURE_ALARM_VALUE'); ?>:</div></td>
-      <td><div id="div_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value" onKeypress="return verifDigit(event);"><label id="label_degree">°C</label></div></td>
-      <td><?php if((isset($error['alarm']))&&(!empty($error['alarm']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['alarm']."</div>"; ?></td>
+      <td><div id="div_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value" id="alarm_value" onKeypress="return verifDigit(event);"><label id="label_degree">°C</label></div></td>
+      <td><div id="error_alarm_value" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_ALARM_VALUE'); ?></div></td>
    </tr>
 </table>
 </div>
