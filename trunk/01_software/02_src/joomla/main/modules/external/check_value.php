@@ -17,6 +17,7 @@ if((isset($_GET['value']))&&(!empty($_GET['value']))) {
 }
 
 
+
 switch($type) {
     case 'short_time': if(!check_format_time("$value:00")) {
                             echo "error";
@@ -26,6 +27,10 @@ switch($type) {
                             echo "error";
                         }
                         break;
+   case 'date': if(!check_format_date($value,"days")) {
+                        echo "error";
+                }
+                break;
 }
 
 echo "1";

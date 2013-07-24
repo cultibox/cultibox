@@ -127,13 +127,13 @@ buttonImageOnly: 'true',
 </div>
 <br />
 <div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
-<form name="display-log-day" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
+<form name="display-log-day" id="display-log-day" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-day"></td>
       <td class="log-marge-day-title"><?php echo __('SELECT_DAY'); ?>:</td>
       <td class="log-marge-day-field"><input id="datepicker" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
-      <td><?php if((isset($error['startday']))&&(!empty($error['startday']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['startday']."</div>"; ?></td>
+      <td><div id="error_start_days" style="display:none" name="error_start_days" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_DATE_DAY'); ?></div></td>
    </tr>
    <tr>
       <td></td>
@@ -177,7 +177,7 @@ buttonImageOnly: 'true',
 <table class="table_width">
 <tr>
     <td></td>
-    <td class="program-valid-right"><br /><INPUT type="submit" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);"></td>
+    <td class="program-valid-right"><br /><input type="submit" value=<?php echo __('VIEW'); ?> name="display-log-submit" id="display-log-submit"  onKeypress="return verifDigit(event);"></td>
     <td></td>
 </tr>
 </table>
@@ -216,7 +216,7 @@ buttonImageOnly: 'true',
                   echo "</select>";
             ?>
       </td>
-	  <td><?php if((isset($error['startmonth']))&&(!empty($error['tartmonth']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['startmonth']."</div>"; ?></td> 
+	  <td><?php if((isset($error['startmonth']))&&(!empty($error['startmonth']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['startmonth']."</div>"; ?></td> 
    </tr>
    <tr>
       <td></td>
@@ -243,8 +243,6 @@ buttonImageOnly: 'true',
 </div>
 <br />
 <hr />
-
-<?php if($check_format) { ?>
 <script type="text/javascript">
 
 var extremes_save = null;
@@ -1093,7 +1091,6 @@ $(function () {
 </p>
 
 
-<?php } ?>
 <hr />
 <br />
 <br />

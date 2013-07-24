@@ -290,6 +290,7 @@ $check_log=check_export_table_csv("logs",$main_error);
 $check_power=check_export_table_csv("power",$main_error);
 
 //Checking values entered by user:
+/* TO BE DELETED
 if("$type"=="days") {
    $check_format=check_format_date($startday,$type);
    if(!$check_format) {
@@ -299,7 +300,8 @@ if("$type"=="days") {
       $check_format=true;
   }
   $legend_date=$startday;
-} else {
+*/
+if(strcmp("$type","days")!=0) {
    $check_format=check_format_date("$startyear-$startmonth",$type);
    if(!$check_format) {
       $error['startmonth']=__('ERROR_FORMAT_DATE_MONTH');
@@ -309,10 +311,11 @@ if("$type"=="days") {
       $startyear=date('Y');
    }
    $legend_date=$startyear."-".$startmonth;
+} else {
+      $legend_date=$startday;
 }
 
 if("$type" == "days") {
-   if($check_format) {
       if((isset($select_plug))&&(!empty($select_plug))) {
          $data_plug=get_data_plug($select_plug,$main_error);
          $data_plug=format_axis_data($data_plug,100,$main_error);
@@ -416,8 +419,6 @@ if("$type" == "days") {
         } 
      }
      $next=1;
-   } 
-
 } else {
    if($check_format) {
       $nb = date('t',mktime(0, 0, 0, $startmonth, 1, $startyear)); 
