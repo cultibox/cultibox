@@ -507,6 +507,23 @@ $(document).ready(function() {
             }
         }); 
 
+        $("#display-log-submit").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                cache: false,
+                async: false,
+                url: "../../main/modules/external/check_value.php",
+                data: {value:$("#datepicker").val(),type:'date'}
+            }).done(function (data) {
+                if(data!=1) {
+                    $("#error_start_days").show(700);
+                } else {
+                    document.forms['display-log-day'].submit();
+                }
+            });
+        });
+
+
         $("#reset_log_power_submit").click(function(e) {
         e.preventDefault();
         $("#delete_log_form_power").dialog({
