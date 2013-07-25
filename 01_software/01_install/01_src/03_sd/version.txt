@@ -20,12 +20,17 @@
    To test :
       427 : [Regul] Gestion de mauvaises données des capteurs
       217 : Permettre la RAZ du min/max à une autre heure que minuit
+      424 : [Beta CT] [CULTI] Accessiblité d'infos sur l'écran cultibox
+      545 : Ajouter une tolérance pour la régulation secondaire
+      585 : Moyenne de température
    Solved :
       - Suppression de la possibilité de changer Vop
       - Ajout de flèche autour du mot contraste
       - Ajout du fichier logs/index
       - Changement de place des fichiers
-      - Ajout de la tolérance pour la régul secondaire
+      - Prise en compte du capteur TWATER
+      - Sauvegarde des versions des firmware capteur
+      - Déplacement des fichiers sur la carte SD
 
 + Version 1.28
    Comment:
