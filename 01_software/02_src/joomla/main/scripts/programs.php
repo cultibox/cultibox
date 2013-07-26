@@ -69,6 +69,10 @@ $resume_regul=array();
 $tmp="";
 $submit=getvar("submit_progs",$main_error);
 
+$error_value[2]=__('ERROR_VALUE_PROGRAM','html');
+$error_value[3]=__('ERROR_VALUE_PROGRAM_TEMP','html');
+$error_value[4]=__('ERROR_VALUE_PROGRAM_HUMI','html');
+$error_value[5]=__('ERROR_VALUE_PROGRAM','html');
 
 for($i=1;$i<=$nb_plugs;$i++) {
     format_regul_sumary("$i",$main_error,$tmp,$nb_plugs);
@@ -92,19 +96,6 @@ if((!isset($reset_selected))||(empty($reset_selected))) {
 if(isset($cyclic)&&(!empty($cyclic))) {
     $repeat_time=getvar("repeat_time");
     $cyclic_ch=check_format_time($repeat_time);
-    $error['repeat_time']="";
-    if(!$cyclic_ch) {
-        $error['repeat_time']=__('ERROR_FORMAT_TIME');
-        set_historic_value(__('ERROR_FORMAT_TIME')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
-        $cyclic_ch="";
-    } else {
-        $tmp=str_replace(":","",$repeat_time);
-        if($tmp<500) {
-            $error['repeat_time']=__('ERROR_MINIMAL_TIME');
-            set_historic_value(__('ERROR_MINIMAL_TIME')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
-            $cyclic_ch="";
-        }
-    }
 }
 
 
@@ -260,25 +251,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 //Create a new program:
 if(!empty($apply)&&(isset($apply))) { 
-    if(!check_format_time($start_time)) {
-        $error['start_time']=__('ERROR_FORMAT_TIME_START');
-        $start_time="";
-    }
-
-    if(!check_format_time($end_time)) {
-        $error['end_time']=__('ERROR_FORMAT_TIME_END'); 
-        $end_time="";
-    }
-
-    if((!isset($error['start_time']))&&(!isset($error['end_time']))) {
-        $chtime=check_times($start_time,$end_time);
-        if(!$chtime) {
-            $error['start_time']=__('ERROR_SAME_TIME');
-        }
-    } else {
-        $chtime=false;
-    }
-
+    $chtime=check_times($start_time,$end_time);
     if("$regul_program"=="on") {
             $value_program="99.9";
             $check=true;
@@ -298,9 +271,6 @@ if(!empty($apply)&&(isset($apply))) {
                 $check="1";
             }
     }
-
-
-    if((empty($cyclic)&&($chtime))||((!empty($cyclic))&&($cyclic_ch)&&($chtime))) {
 
         if(strcmp("$check","1")==0) {
             if($chtime==2) {
@@ -389,8 +359,7 @@ if(!empty($apply)&&(isset($apply))) {
                                     "selected_plug" => "$selected_plug"
                                 );
                     }
-            } 
-
+                }
 
             //If the reset checkbox is checked
             if((isset($reset_program))&&(strcmp($reset_program,"Yes")==0)) {
@@ -455,16 +424,8 @@ if(!empty($apply)&&(isset($apply))) {
                             $pop_up_message=$pop_up_message.popup_message(__('INFO_PLUG_CULTIBOX_CARD'));
                    }
             } 
-        } 
 
     }
-
-    if(strcmp("$check","1")!=0) {
-            $error['value']=$check;
-            $value_program="";
-
-        }
-
 }
 
 

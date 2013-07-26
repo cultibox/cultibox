@@ -31,8 +31,55 @@ switch($type) {
                         echo "error";
                 }
                 break;
-}
+    case 'time': if(!check_format_time("$value")) {
+                     echo "error";
+                 }
+                 break;
+    case 'same_time': $value=explode('_',$value);
+                      if(count($value)!=2) {
+                        echo "error";
+                        break;
+                       }
+                
+                       if(!check_times($value[0],$value[1])) {
+                            echo "error";
+                       }
+                       break;
+    case 'cyclic_time';
+                     if(!check_format_time("$value")) {
+                        echo "error";
+                     }
+                     $tmp=str_replace(":","",$value);
+                     if($tmp<500) {
+                        echo "2"; 
+                        return 0;
+                     }
+                     break;
+    case 'value_program': if((isset($_GET['plug_type']))&&(!empty($_GET['plug_type']))) {
+                            $plug_type=$_GET['plug_type'];
+                            $check=0;
+                            if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
+                                $check=check_format_values_program($value,"temp");
+                            } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
+                                $check=check_format_values_program($value,"humi");
+                            } else {
+                                $check=check_format_values_program($value,"other");
+                            }
+                            if($check!=1) {
+                                echo "$check";
+                                return 0;
+                            }
+                          } else {
+                            echo "error";
+                            return 0;
+                          }
+                          break;
+    case 'month': if(!check_format_date("$value",$type)) {
+                        echo "error";
+                    }
+                    break;
 
+}
 echo "1";
 
 ?>

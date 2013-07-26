@@ -137,6 +137,7 @@ start=<?php echo json_encode($start) ?>;
 end=<?php echo json_encode($end) ?>;
 plug_selected=<?php echo json_encode($selected_plug) ?>;
 rep=<?php echo json_encode($rep) ?>;
+error_valueJS=<?php echo json_encode($error_value) ?>;
 </script>
 
 <script type="text/javascript">
@@ -367,6 +368,7 @@ $(document).ready(function() {
    });
 
     $('#selected_plug').change(function() {
+        $("#error_value_program").css("display","none");
         $.each( chart.series, function() {
             if(this.index==$('#selected_plug').val()-1) {
                 chart.series[$('#selected_plug').val()-1].show();
@@ -489,6 +491,7 @@ $(document).ready(function() {
 
 
     $('#selected_plug_conf').change(function() {
+        $("#error_value_program").css("display","none");
         $.each( chart.series, function() {
             if(this.index==$('#selected_plug_conf').val()-1) {
                 chart.series[$('#selected_plug_conf').val()-1].show();
@@ -612,19 +615,19 @@ $(document).ready(function() {
    <td></td>
    <td><?php echo __('START_TIME_PROGRAM'); ?>:</td>
    <td><input type="text" size="10" name="start_time" id="start_time" <?php if(!empty($start_time)) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> /></td>
-   <td><?php if((isset($error['start_time']))&&(!empty($error['start_time']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['start_time']."</div>"; ?></td>
+   <td><div id="error_start_time" name="error_start_time" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_TIME_START'); ?></div><div id="error_same_start" name="error_same_start" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SAME_TIME'); ?></div></td>
 </tr>
 <tr>
     <td></td>
     <td><?php echo __('END_TIME_PROGRAM'); ?>:</td>
     <td><input type="text" size="10" name="end_time" id="end_time" <?php if(!empty($end_time)) { ?>value="<?php echo $end_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> /></td>
-    <td><?php if((isset($error['end_time']))&&(!empty($error['end_time']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['end_time']."</div>"; ?></td>
+    <td><div id="error_end_time" name="error_end_time" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_TIME_END'); ?></div><div id="error_same_end" name="error_same_end" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SAME_TIME'); ?></div></td>
 </tr>
 <tr>
     <td></td>
     <td><div id="time_cyclic" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('REPEAT_EVERY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_REPEAT_VALUE'); ?>" /></div></td>
     <td> <div id="time_cyclic_field" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><input type="text" size="10" name="repeat_time" id="repeat_time" <?php if(!empty($repeat_time)) { ?>value="<?php echo $repeat_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> /></div> </td>
-    <td><?php if((isset($error['repeat_time']))&&(!empty($error['repeat_time']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['repeat_time']."</div>"; ?></td>
+    <td><div id="error_cyclic_time" name="error_cyclic_time" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_TIME'); ?></div><div id="error_minimal_cyclic" name="error_minimal_cyclic" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_MINIMAL_TIME'); ?></div></td>
 </tr>
 <tr>
      <td></td>
@@ -679,7 +682,7 @@ $(document).ready(function() {
                     </label>
         </div>
     </td>
-    <td><?php if((isset($error['value']))&&(!empty($error['value']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['value']."</div>"; ?></td>
+    <td><div id="error_value_program" name="error_value_program" class="error_field" style="display:none"></div></td>
 </tr>
 <?php if(strcmp("$second_regul","True")==0) { ?>
 <tr>

@@ -173,7 +173,7 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
 
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {
-    if($sock = @fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
+    if($sock=@fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) { 
       $ret=array();
       check_update_available($version,$ret,$main_error);
       foreach($ret as $file) {

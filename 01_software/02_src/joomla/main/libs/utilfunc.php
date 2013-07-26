@@ -1128,6 +1128,7 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
 
             if(!empty($buffer)) {
                 if(strcmp($conf[$nb],$buffer)!=0) {
+                       echo "$conf[$nb]";
                        return false;
                 }
                 $nb=$nb+1;
@@ -1467,21 +1468,21 @@ function check_format_values_program(&$value="0",$type="temp") {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
 
-    if(!is_numeric($value)) {
-                return __('ERROR_VALUE_PROGRAM');
+    if(!is_numeric($value)) {   
+                return 2;
    }
 
    if(strcmp($type,"temp")==0) {
       if(($value>60)||($value<5)) {
-        return __('ERROR_VALUE_PROGRAM_TEMP');
+        return 3;
       }
    } elseif(strcmp($type,"humi")==0) {
       if(($value>95)||($value<10)) {
-                return __('ERROR_VALUE_PROGRAM_HUMI');
+                return 4;
       }
    } else {
    if(($value>99.9)||($value<0)) {
-                return __('ERROR_VALUE_PROGRAM');
+                return 5;
        }
    }
    return 1;

@@ -289,30 +289,10 @@ if(!empty($resume_regul)) {
 $check_log=check_export_table_csv("logs",$main_error);
 $check_power=check_export_table_csv("power",$main_error);
 
-//Checking values entered by user:
-/* TO BE DELETED
-if("$type"=="days") {
-   $check_format=check_format_date($startday,$type);
-   if(!$check_format) {
-      $error['startday']=__('ERROR_FORMAT_DATE_DAY');
-      $pop_up_error_message=$pop_up_error_message.popup_message($error['startday']);
-      $startday=date('Y')."-".date('m')."-".date('d');
-      $check_format=true;
-  }
-  $legend_date=$startday;
-*/
 if(strcmp("$type","days")!=0) {
-   $check_format=check_format_date("$startyear-$startmonth",$type);
-   if(!$check_format) {
-      $error['startmonth']=__('ERROR_FORMAT_DATE_MONTH');
-      $pop_up_error_message=$pop_up_error_message.popup_message($error['startmonth']);
-      $legend_date=date('Y')."-".date('m');
-      $startmonth=date('m');
-      $startyear=date('Y');
-   }
    $legend_date=$startyear."-".$startmonth;
 } else {
-      $legend_date=$startday;
+   $legend_date=$startday;
 }
 
 if("$type" == "days") {
@@ -420,10 +400,9 @@ if("$type" == "days") {
      }
      $next=1;
 } else {
-   if($check_format) {
-      $nb = date('t',mktime(0, 0, 0, $startmonth, 1, $startyear)); 
-      for($i=1;$i<=$nb;$i++) {
-         if($i<10) {
+    $nb = date('t',mktime(0, 0, 0, $startmonth, 1, $startyear)); 
+    for($i=1;$i<=$nb;$i++) {
+        if($i<10) {
             $i="0$i";
          }
          $ddate="$startyear-$startmonth-$i";
@@ -435,12 +414,12 @@ if("$type" == "days") {
             $data_temp=get_format_graph($temperature,"log");
          }
          $temperature=array();
-      }
+    }
 
-      if(str_replace("null, ","","$data_temp")=="null") {
+    if(str_replace("null, ","","$data_temp")=="null") {
          $main_error[]=__('EMPTY_DATA');
          $data_humi=$data_temp;
-      } else {
+    } else {
         $nb = date('t',mktime(0, 0, 0, $startmonth, 1, $startyear));
         for($i=1;$i<=$nb;$i++) {
          if($i<10) {
@@ -456,16 +435,15 @@ if("$type" == "days") {
          }
          $humidity=Array();
         }
-      }
+    }
 
-      $data_temp=get_format_month($data_temp);
-      $data_humi=get_format_month($data_humi);
-      $xlegend="XAXIS_LEGEND_MONTH";
-      $styear=$startyear;
-      $stmonth=$startmonth-1;
-      $stday=1;
-      $next=20;
-   } 
+    $data_temp=get_format_month($data_temp);
+    $data_humi=get_format_month($data_humi);
+    $xlegend="XAXIS_LEGEND_MONTH";
+    $styear=$startyear;
+    $stmonth=$startmonth-1;
+    $stday=1;
+    $next=20;
 }
 
 
