@@ -172,12 +172,18 @@ function getCostType(i) {
       var labelStopHC = document.getElementById('stop_label_hc');
       var valueStartHC = document.getElementById('start_value_hc');
       var valueStopHC = document.getElementById('stop_value_hc');
+      var errorHP = document.getElementById('error_cost_price_hp');
+      var errorHC= document.getElementById('error_cost_price_hc');
+      var errorPrice = document.getElementById('error_cost_price');
+      var errorHCstart= document.getElementById('error_start_hc');
+      var errorHCstop = document.getElementById('error_stop_hc');
+
 
 
       switch(i) {
-         case 0 : labelStandard.style.display = ''; labelHP.style.display = 'none'; labelHC.style.display = 'none'; labelInputStandard.style.display = ''; labelInputHP.style.display = 'none'; labelInputHC.style.display = 'none'; labelStartHC.style.display = 'none'; labelStopHC.style.display = 'none'; valueStartHC.style.display = 'none'; valueStopHC.style.display = 'none'; break;
-         case 1 : labelStandard.style.display = 'none'; labelHP.style.display = ''; labelHC.style.display = ''; labelInputStandard.style.display = 'none'; labelInputHP.style.display = ''; labelInputHC.style.display = ''; labelStartHC.style.display = ''; labelStopHC.style.display = ''; valueStartHC.style.display = ''; valueStopHC.style.display = ''; break;
-         default: labelStandard.style.display = ''; labelHP.style.display = 'none'; labelHC.style.display = 'none'; labelInputStandard.style.display = ''; labelInputHP.style.display = 'none'; labelInputHC.style.display = 'none'; labelStartHC.style.display = 'none'; labelStopHC.style.display = 'none'; valueStartHC.style.display = 'none'; valueStopHC.style.display = 'none'; break;
+         case 0 : labelStandard.style.display = ''; labelHP.style.display = 'none'; labelHC.style.display = 'none'; labelInputStandard.style.display = ''; labelInputHP.style.display = 'none'; labelInputHC.style.display = 'none'; labelStartHC.style.display = 'none'; labelStopHC.style.display = 'none'; valueStartHC.style.display = 'none'; valueStopHC.style.display = 'none'; errorHP.style.display = 'none';errorHC.style.display = 'none'; errorHCstart.style.display = 'none'; errorHCstop.style.display = 'none'; break;
+         case 1 : labelStandard.style.display = 'none'; labelHP.style.display = ''; labelHC.style.display = ''; labelInputStandard.style.display = 'none'; labelInputHP.style.display = ''; labelInputHC.style.display = ''; labelStartHC.style.display = ''; labelStopHC.style.display = ''; valueStartHC.style.display = ''; valueStopHC.style.display = ''; errorPrice.style.display = 'none'; break;
+         default: labelStandard.style.display = ''; labelHP.style.display = 'none'; labelHC.style.display = 'none'; labelInputStandard.style.display = ''; labelInputHP.style.display = 'none'; labelInputHC.style.display = 'none'; labelStartHC.style.display = 'none'; labelStopHC.style.display = 'none'; valueStartHC.style.display = 'none'; valueStopHC.style.display = 'none'; errorHP.style.display = 'none';errorHC.style.display = 'none'; errorHCstart.style.display = 'none'; errorHCstop.style.display = 'none'; break;
       }
 }
 //}}}
