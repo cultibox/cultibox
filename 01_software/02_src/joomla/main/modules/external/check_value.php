@@ -78,7 +78,20 @@ switch($type) {
                         echo "error";
                     }
                     break;
+    case 'date_interval': $value=explode('_',$value);
+                          if(count($value)!=2) {
+                            echo "error";
+                            break;
+                          }
 
+                          if(!check_date($value[0],$value[1])) {
+                              echo "error";
+                          }
+                          break;
+    case 'numeric': if(!check_numeric_value("$value")) {
+                        echo "error";
+                    }
+                    break; 
 }
 echo "1";
 

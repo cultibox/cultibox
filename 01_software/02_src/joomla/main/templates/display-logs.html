@@ -190,7 +190,7 @@ buttonImageOnly: 'true',
       <td class="log-marge-month"></td>
       <td class="log-marge-month-title"><?php echo __('MONTH_DATE'); ?>:</td>
       <td class="log-marge-month-field">
-            <select name="startmonth">
+            <select name="startmonth" id="startmonth">
                <option <?php if("$startmonth" == "1") { echo 'selected';} ?> value="01"><?php echo __('MONTH01'); ?></option>
                <option <?php if("$startmonth" == "2") { echo 'selected';} ?> value="02"><?php echo __('MONTH02'); ?></option>
                <option <?php if("$startmonth" == "3") { echo 'selected';} ?> value="03"><?php echo __('MONTH03'); ?></option>
@@ -206,7 +206,7 @@ buttonImageOnly: 'true',
             </select>
 
             <?php 
-                 echo '<select name="startyear">';
+                 echo '<select name="startyear" id="startyear">';
                  $first=$GLOBALS['FIRST_LOG_YEAR'];
                  for($i=$first;$i<=$last_year;$i++) { ?>
                      <option <?php if("$startyear" == "$i") { echo 'selected';} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
