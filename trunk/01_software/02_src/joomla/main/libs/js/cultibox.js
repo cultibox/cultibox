@@ -460,7 +460,7 @@ $(document).ready(function() {
          });
     });
 
-
+        // Check errors for the configuration part:
         $("#submit_conf").click(function(e) {
             e.preventDefault();
             var checked=true;
@@ -507,6 +507,7 @@ $(document).ready(function() {
             }
         }); 
 
+        // Check errors for the display logs part:
         $("#display-log-submit").click(function(e) {
             e.preventDefault();
             $.ajax({
@@ -521,6 +522,121 @@ $(document).ready(function() {
                     document.forms['display-log-day'].submit();
                 }
             });
+        });
+
+
+        $("#display-log-month").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                cache: false,
+                async: false,
+                url: "../../main/modules/external/check_value.php",
+                data: {value:$("#datepicker").val(),type:'month'}
+            }).done(function (data) {
+                if(data!=1) {
+                    $("#error_start_month").show(700);
+                } else {
+                    document.forms['display-log-month'].submit();
+                }
+            });
+        });
+
+
+        // Check errors for the programs part:
+        $("#apply").click(function(e) {
+            $("#error_same_start").css("display","none");
+            $("#error_same_end").css("display","none");
+            
+            e.preventDefault();
+            var checked=true;
+            $.ajax({
+                cache: false,
+                async: false,
+                url: "../../main/modules/external/check_value.php",
+                data: {value:$("#start_time").val(),type:'time'}
+            }).done(function (data) {
+                if(data!=1) {
+                    $("#error_start_time").show(700);
+                    checked=false;
+                } else {
+                    $("#error_start_time").css("display","none");
+                }
+            });
+
+            $.ajax({
+                cache: false,
+                async: false,
+                url: "../../main/modules/external/check_value.php",
+                data: {value:$("#end_time").val(),type:'time'}
+            }).done(function (data) {
+                if(data!=1) {
+                    $("#error_end_time").show(700);
+                    checked=false;
+                } else {
+                    $("#error_end_time").css("display","none");
+                }
+            });
+
+            
+            if(checked) {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#start_time").val()+"_"+$("#end_time").val(),type:'same_time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_same_start").show(700);
+                        $("#error_same_end").show(700);
+                        checked=false;
+                    } else {
+                        $("#error_same_start").css("display","none");
+                        $("#error_same_end").css("display","none");
+                    }
+                });
+            }
+
+            if($('#cyclic').is(':checked')) {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#repeat_time").val(),type:'cyclic_time'}
+                }).done(function (data) {
+                    if(data!="1") {
+                        if(data=="2") {
+                            $("#error_minimal_cyclic").show(700);
+                        } else {
+                            $("#error_cyclic_time").show(700);
+                        }
+                        checked=false;
+                    } else {
+                        $("#error_cyclic_time").css("display","none");
+                        $("#error_minimal_cyclic").css("display","none");
+                    }
+                });
+            }
+
+            if($('#regprog').is(':checked')) {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#value_program").val(),type:'value_program',plug_type:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']}
+                }).done(function (data) {
+                    if(data!="1") {
+                        $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[data]);
+                        $("#error_value_program").show(700);
+                        checked=false;
+                    } else {
+                        $("#error_value_program").css("display","none");
+                    }
+                });
+            }
+
+            if(checked) {
+                document.forms['actionprog'].submit();
+            }
         });
 
 

@@ -526,11 +526,13 @@ function getProgramType(i) {
       var CyclicRadio = document.getElementById('cyclic');
       var divTimeCyclicField = document.getElementById('time_cyclic_field');
       var divTimeCyclic = document.getElementById('time_cyclic');
+      var errorCyclic = document.getElementById('error_cyclic_time');
+      var errorMinimal = document.getElementById('error_minimal_cyclic');
 
       switch(i) {
-         case 'ponctual': PonctualRadio.checked=true; CyclicRadio.checked=false; divTimeCyclicField.style.display='none'; divTimeCyclic.style.display='none';  break;
+         case 'ponctual': PonctualRadio.checked=true; CyclicRadio.checked=false; divTimeCyclicField.style.display='none'; divTimeCyclic.style.display='none';  errorCyclic.style.display='none'; errorMinimal.style.display='none'; break;
          case 'cyclic': PonctualRadio.checked=false; CyclicRadio.checked=true; divTimeCyclicField.style.display=''; divTimeCyclic.style.display=''; break;
-         default: PonctualRadio.checked=true; CyclicRadio.checked=false; divTimeCyclicField.style.display='none'; divTimeCyclic.style.display='none'; break;
+         default: PonctualRadio.checked=true; CyclicRadio.checked=false; divTimeCyclicField.style.display='none'; divTimeCyclic.style.display='none'; errorCyclic.style.display='none'; errorMinimal.style.display='none';break;
       }
 
 }

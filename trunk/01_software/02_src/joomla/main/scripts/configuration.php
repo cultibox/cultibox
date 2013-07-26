@@ -55,7 +55,7 @@ $advanced_regul=getvar("advanced_regul",$main_error);
 $second_regul=getvar("second_regul",$main_error);
 $show_cost=getvar("show_cost",$main_error);
 $show_historic=getvar("show_historic",$main_error);
-$submit=getvar("submit_conf",$main_error);
+$submit=getvar("submit_conf_value",$main_error);
 $update_menu=false;
 $minmax=getvar("minmax",$main_error);
 
@@ -239,7 +239,7 @@ if(!empty($alarm_enable)) {
        if((strcmp($alarm_enable,"0001")==0)&&(!empty($alarm_value))) {
            insert_configuration("ALARM_VALUE","$alarm_value",$main_error);
        } else {
-            $alarm_value = get_configuration("ALARM_VALUE",$main_error);
+            $alarm_value=get_configuration("ALARM_VALUE",$main_error);
        }
 } else {
        $alarm_enable = get_configuration("ALARM_ACTIV",$main_error);
@@ -247,14 +247,6 @@ if(!empty($alarm_enable)) {
 }
 
 if(empty($alarm_value)) {
-        /* TO BE DELETED 
-           else {
-           $alarm_value=get_configuration("ALARM_VALUE",$main_error);
-           $error['alarm']=__('ERROR_ALARM_VALUE');
-           $pop_up_error_message=$pop_up_error_message.popup_message($error['alarm']);
-           $submenu="alarm_interface";
-        }
-        */
         $alarm_value = get_configuration("ALARM_VALUE",$main_error);
 }
 
@@ -309,14 +301,6 @@ if((isset($show_historic))&&(!empty($show_historic))) {
 if((isset($minmax))&&(!empty($minmax))) {
     insert_configuration("RESET_MINMAX","$minmax",$main_error);
     $update_conf=true;
-    /* TO BE DELETED
-        else {
-        $minmax=get_configuration("RESET_MINMAX",$main_error);
-        $error['minmax']=__('ERROR_TIME_VALUE');
-        $pop_up_error_message=$pop_up_error_message.popup_message($error['minmax']);
-        $submenu="system_interface";
-    }
-    */
 } else {
         $minmax = get_configuration("RESET_MINMAX",$main_error);
 }

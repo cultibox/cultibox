@@ -112,7 +112,6 @@ buttonImageOnly: 'true',
 <label class="title_conf"><?php echo __('SELECT_LOG_TITLE'); ?></label>
 <br />
 <div id="label_select_type">
-<label id="anchor-logs"></label>
 <form>
 <table class="table_width">
     <tr>
@@ -127,7 +126,7 @@ buttonImageOnly: 'true',
 </div>
 <br />
 <div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
-<form name="display-log-day" id="display-log-day" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
+<form name="display-log-day" id="display-log-day" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-logs" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-day"></td>
@@ -181,12 +180,11 @@ buttonImageOnly: 'true',
     <td></td>
 </tr>
 </table>
-    <input type="hidden" name="anchor" value="anchor-logs">
 </form>
 <br />
 </div>
 <div id="label_select_month" style="<?php if(strcmp($type,"days")==0) echo "display:none"; ?>">
-<form name="display-log-month" action="/cultibox/index.php/waiting-data" method="post">
+<form name="display-log-month" id="display-log-month" action="/cultibox/index.php/waiting-data" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-month"></td>
@@ -216,7 +214,7 @@ buttonImageOnly: 'true',
                   echo "</select>";
             ?>
       </td>
-	  <td><?php if((isset($error['startmonth']))&&(!empty($error['startmonth']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error['startmonth']."</div>"; ?></td> 
+	  <td><div id="error_start_month" name="error_start_month" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_DATE_MONTH'); ?></div></td> 
    </tr>
    <tr>
       <td></td>
@@ -238,7 +236,6 @@ buttonImageOnly: 'true',
     <td></td>
 </tr>
 </table>
-        <input type="hidden" name="anchor" value="anchor-logs">
 </form>
 </div>
 <br />
@@ -964,6 +961,7 @@ $(function () {
 
 
 </script>
+<label id="anchor-logs"></label>
 <br />
 <table class="table_width">
 <tr>
@@ -996,7 +994,6 @@ $(function () {
             <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
             <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
             <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
-            <input type="hidden" name="anchor" value="anchor-logs">
         </form>
         <?php } ?>
     </td>
@@ -1031,7 +1028,6 @@ $(function () {
             <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
             <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
             <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
-            <input type="hidden" name="anchor" value="anchor-logs">
         </form>
         <?php } ?>
     </td>
@@ -1089,8 +1085,6 @@ $(function () {
 <p class="precision_infos">
 <?php if(strcmp($type,"days")==0)  echo "*"." ".__('PRECISION_GRAPH_DAY'); else echo "*"." ".__('PRECISION_GRAPH_MONTH'); ?>
 </p>
-
-
 <hr />
 <br />
 <br />
