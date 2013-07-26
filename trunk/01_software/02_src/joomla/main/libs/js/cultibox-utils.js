@@ -233,10 +233,11 @@ function getRegul(i,j) {
       var labelRvalue = document.getElementById('label_regul_value'+j);
       var secondTolLabel = document.getElementById('label_regul_tolerance'+j);
       var secondTolValue = document.getElementById('div_regul_tolerance_value'+j);
+      //var tableRegul = document.getElementById('table_regul'+j);
 
       switch(i) {
-         case 0 : divRval.style.display = ''; divRsenso.style.display = ''; divRsenss.style.display = ''; labelRvalue.style.display = ''; labelRsenso.style.display = ''; labelRsenss.style.display = ''; secondTolLabel.style.display = ''; secondTolValue.style.display = ''; break;
-         case 1 : divRval.style.display = 'none'; divRsenso.style.display = 'none'; divRsenss.style.display = 'none';  labelRvalue.style.display = 'none'; labelRsenso.style.display = 'none'; labelRsenss.style.display = 'none'; secondTolLabel.style.display = 'none'; secondTolValue.style.display = 'none';break;
+         case 0 : divRval.style.display = ''; divRsenso.style.display = ''; divRsenss.style.display = ''; labelRvalue.style.display = ''; labelRsenso.style.display = ''; labelRsenss.style.display = ''; secondTolLabel.style.display = ''; secondTolValue.style.display = ''; /* tableRegul.style.border = "1px solid red"; */break;
+         case 1 : divRval.style.display = 'none'; divRsenso.style.display = 'none'; divRsenss.style.display = 'none';  labelRvalue.style.display = 'none'; labelRsenso.style.display = 'none'; labelRsenss.style.display = 'none'; secondTolLabel.style.display = 'none'; secondTolValue.style.display = 'none'; /* tableRegul.style.border = "0px"; */ break;
          default: divRval.style.display = ''; divRsenso.style.display = ''; divRsenss.style.display = '';  labelRvalue.style.display = ''; labelRsenso.style.display = ''; labelRsenss.style.display = ''; secondTolLabel.style.display = ''; secondTolValue.style.display = '';break;
       }
 }
