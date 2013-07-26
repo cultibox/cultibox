@@ -211,7 +211,7 @@
 
 <?php if(strcmp("$second_regul","True")==0) { ?>
 <div id="second_regul_param<?php echo $i; ?>" <?php if(strcmp($plug_type{$i},"lamp")==0) echo 'style="display:none"'; ?>>
-<table class="table_width">
+<table class="table_width" id="table_regul<?php echo $i; ?>">
 <tr>
       <td class="plug-regul"></td>
       <td class="regul"><div id="label_regul_senso<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},'False')==0) { echo "display:none"; } ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_SENSO'); ?>:</div></td>
