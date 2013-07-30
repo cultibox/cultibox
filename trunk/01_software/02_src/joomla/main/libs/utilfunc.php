@@ -1112,7 +1112,6 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
 
             if(!empty($buffer)) {
                 if(strcmp($conf[$nb],$buffer)!=0) {
-                       echo "$conf[$nb]";
                        return false;
                 }
                 $nb=$nb+1;
