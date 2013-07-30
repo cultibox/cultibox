@@ -12,6 +12,7 @@ Cultibox (1.1.28) precise; urgency=low
     + Les catégories du menu s'affichent maintenant directement après modification de la configuration
     + Les erreurs dans le menu de configuraion et d'affichage des logs sont gérées en AJAX sans rechargement de page
     + Debug de la gestion et création des programmes
+    + Désactivation de la limite de nombre d'état de 250 dans le fichier plugv, sera remise en fonction dans la 1.1.29
 
 -- Yann Genevois <yann.genevois@gmail.com> Tue Jul 16 10:42:56 CEST 2013
 
