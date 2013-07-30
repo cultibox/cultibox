@@ -270,13 +270,15 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
                 insert_plug_conf("PLUG_TOLERANCE",$selected_plug,$plug_tolerance,$main_error);
             }
 
-            if(insert_program($prog,$main_error)) {
-                    insert_program($prog,$main_error);
-                    if((!empty($sd_card))&&(isset($sd_card))) {
-                        $program=create_program_from_database($main_error);
-                        save_program_on_sd($sd_card,$program,$main_error);
-                    } 
-				    insert_plug_conf("PLUG_TYPE",$prog[0]["selected_plug"],$prog[0]["plug_type"],$main_error);
+            $chinsert=true;
+            if(!insert_program($prog,$main_error)) $chinsert=false;
+
+            if($chinsert) {
+               if((!empty($sd_card))&&(isset($sd_card))) {
+                    $program=create_program_from_database($main_error);
+                    save_program_on_sd($sd_card,$program,$main_error);
+                } 
+			    insert_plug_conf("PLUG_TYPE",$program[0]["selected_plug"],$program[0]["plug_type"],$main_error);
             } else {
                 unset($finish);
             }

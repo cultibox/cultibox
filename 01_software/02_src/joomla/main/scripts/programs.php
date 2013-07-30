@@ -114,6 +114,8 @@ if((isset($add_plug))&&(!empty($add_plug))) {
                         $nb_plugs=$nb_plugs+1;
                         $main_info[]=__('PLUG_ADDED');
                         $selected_plug=$nb_plugs;
+                        $reset_selected=$nb_plugs;
+                        
                         $pop_up_message=$pop_up_message.popup_message(__('PLUG_ADDED'));
                         set_historic_value(__('PLUG_ADDED')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
                         $active_plugs=get_active_plugs($nb_plugs,$main_error);
@@ -136,6 +138,7 @@ if((isset($remove_plug))&&(!empty($remove_plug))) {
                         $main_info[]=__('PLUG_REMOVED');
                         if($selected_plug>$nb_plugs) {
                             $selected_plug=$nb_plugs;
+                            $reset_selected=$nb_plugs;
                         }
                         set_historic_value(__('PLUG_REMOVED')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
                         $pop_up_message=$pop_up_message.popup_message(__('PLUG_REMOVED'));
@@ -211,17 +214,16 @@ if((isset($export))&&(!empty($export))) {
          } else {
             clean_program($selected_plug,$main_error);
             export_program($selected_plug,$main_error); 
-            
+         
             if(!insert_program($data_prog,$main_error)) $chprog=false;
+
             if(!$chprog) {
                $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');        
                set_historic_value(__('ERROR_GENERATE_PROGRAM_FROM_FILE')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
                $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
 
                $data_prog=generate_program_from_file("tmp/program_plug${selected_plug}.prg",$selected_plug,$main_error);
-               if(count($data_prog)>0) {
-                        insert_program($data_prog,$main_error);
-               }
+               if(!insert_program($data_prog,$main_error)) $chprog=false;
             } else {
                  $main_info[]=__('VALID_IMPORT_PROGRAM');
                  $pop_up_message=$pop_up_message.popup_message(__('VALID_IMPORT_PROGRAM'));
@@ -272,6 +274,8 @@ if(!empty($apply)&&(isset($apply))) {
             }
     }
 
+        
+
         if(strcmp("$check","1")==0) {
             if($chtime==2) {
                 $prog[]= array(
@@ -297,8 +301,9 @@ if(!empty($apply)&&(isset($apply))) {
             }
             $start=$start_time;
             $end=$end_time;
+            $ch_insert=true;
 
-
+        
             if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
                     date_default_timezone_set('UTC');
                     $cyclic_start= $start_time;
@@ -311,7 +316,38 @@ if(!empty($apply)&&(isset($apply))) {
                     $chk_stop=mktime();
                     $chk_first=false;
 
-                    while(($chk_stop-$chk_start)<86400) {
+                    $start_check=str_replace(":","",$start_time);
+                    $stop_check=str_replace(":","",$end_time);
+                    $repeat_check=str_replace(":","",$repeat_time);
+                    $optimize=false;
+
+
+                    if($chtime!=2) {
+                        if($stop_check-$start_check>=$repeat_check) {
+                            $optimize=true;
+                            unset($prog);
+                            $prog[]= array(
+                                    "start_time" => "$cyclic_start",
+                                    "end_time" => "23:59:59",
+                                    "value_program" => "$value_program",
+                                    "selected_plug" => "$selected_plug"
+                                );
+                        }
+                    } else {
+                        if((235959-$start_check)+$stop_check>=$repeat_check) {
+                            $optimize=true;
+                            unset($prog);
+                            $prog[]= array(
+                                    "start_time" => "00:00:00",
+                                    "end_time" => "23:59:59",
+                                    "value_program" => "$value_program",
+                                    "selected_plug" => "$selected_plug"
+                                );
+                        }
+                    }
+
+                    if(!$optimize) {
+                        while(($chk_stop-$chk_start)<86400) {
                             if($chk_first) {
                                 $prog[]= array(
                                     "start_time" => "$cyclic_start",
@@ -327,7 +363,7 @@ if(!empty($apply)&&(isset($apply))) {
 
                             $shh=substr($cyclic_end,0,2);
                             $smm=substr($cyclic_end,3,2);
-                            $sss=substr($cyclic_end,6,2); 
+                            $sss=substr($cyclic_end,6,2);
 
                             $val_start=mktime($hh,$mm,$ss)+$step;
                             $val_stop=mktime($shh,$smm,$sss)+$step;
@@ -335,39 +371,37 @@ if(!empty($apply)&&(isset($apply))) {
                             $cyclic_start=date('H:i:s', $val_start);
                             $cyclic_end=date('H:i:s', $val_stop);
 
-                            $chk_stop=$val_stop;
 
-                            if(($chtime==2)&&(!$chk_first)) {
-                                    if(((str_replace(":","",$cyclic_start)<=235959)&&((str_replace(":","",$cyclic_start))>=(str_replace(":","",$start_time))))||((str_replace(":","",$cyclic_start))<=(str_replace(":","",$end_time)))) {
-                                        unset($prog);
-                                        $prog[]= array(
-                                                "start_time" => "00:00:00",
-                                                "end_time" => "23:59:59",
-                                                "value_program" => "$value_program",
-                                                "selected_plug" => "$selected_plug"
-                                        );
-                                    }
+                            //Pour eviter que la partie cyclique reboucle:
+                            if(($chtime==2)&&(str_replace(":","",$cyclic_end)>str_replace(":","",$start_time))) {
+                                break;
                             }
+
+                            $chk_stop=$val_stop;
                             $chk_first=true;
-                    }
-                    $rep=$repeat_time;
-                    if((strcmp("$cyclic_end","00:00:00")==0)) {
-                         $prog[]= array(
+                        }
+
+                        // Si le dernier évènement cyclique dépasse, on le raccourcis pour qu'il finisse a 23:59:59
+                        if((strcmp("$cyclic_end","00:00:00")==0)||(str_replace(":","",$cyclic_end)<str_replace(":","",$cyclic_start))) {
+                            $prog[]= array(
                                     "start_time" => "$cyclic_start",
                                     "end_time" => "23:59:59",
                                     "value_program" => "$value_program",
                                     "selected_plug" => "$selected_plug"
                                 );
-                    }
+                        }
                 }
+                $rep=$repeat_time;
+            }
 
             //If the reset checkbox is checked
             if((isset($reset_program))&&(strcmp($reset_program,"Yes")==0)) {
                 clean_program($selected_plug,$main_error);
                 unset($reset_program);
             } 
-                                                                  
 
+
+            // To compute the number of action for the plugv file limited to 250 actions:
             $base=create_program_from_database($main_error);
             $nb_prog=count($base);  
             $count=-1;
@@ -395,20 +429,18 @@ if(!empty($apply)&&(isset($apply))) {
                 $main_error[]=__('ERROR_MAX_PROGRAM');
                 $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_MAX_PROGRAM'));
                 $ch_insert=false;
-            }
+            } 
 
-            
            
             if($count>-1) {
                 if($count+1!=count($prog)) {
-                    $tmp_prog=array_chunk($prog, $count+1);
+                    $tmp=array_chunk($prog, $count+1);
+                    $tmp_prog=$tmp[0];
                 } else {
-                    $tmp_prog[]=$prog;
-                }   
+                    $tmp_prog=$prog;
+                }  
 
-                foreach($tmp_prog as $prg) {
-                    if(!insert_program($prg,$main_error))  $ch_insert=false;
-                }
+                if(!insert_program($tmp_prog,$main_error)) $ch_insert=false;
             } else {
                 $ch_insert=false;
             }
@@ -423,7 +455,7 @@ if(!empty($apply)&&(isset($apply))) {
                             $main_info[]=__('INFO_PLUG_CULTIBOX_CARD');
                             $pop_up_message=$pop_up_message.popup_message(__('INFO_PLUG_CULTIBOX_CARD'));
                    }
-            } 
+            }  
 
     }
 }

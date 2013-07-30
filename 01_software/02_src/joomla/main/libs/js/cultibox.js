@@ -285,12 +285,6 @@ $(document).ready(function() {
                                         break;
             case 'reset_calendar_form': DialogId="reset_dialog_calendar";
                                         break;
-            case 'actionprog':  if((start!=$('#start_time').val())||(end!=$('#end_time').val())||(plug_selected!=$('#selected_plug').val())) {
-                                    return true;
-                                } else {
-                                    DialogId="same_dialog_program";
-                                }
-                                break;
             } 
 
 
@@ -739,22 +733,45 @@ $(document).ready(function() {
             }
 
             if($('#regprog').is(':checked')) {
-                $.ajax({
-                    cache: false,
-                    async: false,
-                    url: "../../main/modules/external/check_value.php",
-                    data: {value:$("#value_program").val(),type:'value_program',plug_type:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']}
-                }).done(function (data) {
-                    if(data!="1") {
-                        $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[data]);
-                        $("#error_value_program").show(700);
-                        checked=false;
-                    } 
-                });
+                if(($("#value_program").val())&&($("#value_program").val()!="0")) { 
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                        data: {value:$("#value_program").val(),type:'value_program',plug_type:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']}
+                    }).done(function (data) {
+                        if(data!="1") {
+                            $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[data]);
+                            $("#error_value_program").show(700);
+                            checked=false;
+                        } 
+                    });
+                } else {
+                    if((plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="heating")||(plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="ventilator")) {
+                                var check=3;
+                     } else if((plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="humidifier")||(plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="dehumidifier")) {
+                                var check=4;
+                     } else {
+                                var check=5;
+                     }
+
+                    alert(check);
+
+                     $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[check]);
+                     $("#error_value_program").show(700);
+                     checked=false;
+                }
             }
 
             if(checked) {
-                document.forms['actionprog'].submit();
+                if((start==$('#start_time').val())&&(end==$('#end_time').val())&&(plug_selected==$('#selected_plug').val())) {
+                    currentForm = $(this).closest('form');
+                    if(confirmForm(currentForm,"same_dialog_program")) {
+                        document.forms['actionprog'].submit();
+                    }
+                } else {
+                    document.forms['actionprog'].submit();
+                } 
             }
         });
 
