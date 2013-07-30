@@ -190,13 +190,13 @@ $(function () {
       <td class="cost-marge"></td>
       <td class="cost-title"><?php echo __('SELECT_START_DAY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_COST_START_TIME'); ?>" /></td>
       <td class="cost-field"><input id="datepicker_start" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
-      <td><div id="error_start_cost" name="error_start_cost" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_DATE_DAY_START'); ?></div><div id="error_start_interval" name="error_start_interval" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_DATE_INTERVAL'); ?></div></td>
+      <td><div id="error_start_cost" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_DATE_DAY_START'); ?></div><div id="error_start_interval" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_DATE_INTERVAL'); ?></div></td>
    </tr>
    <tr>
       <td></td>
       <td><?php echo __('SELECT_END_DAY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_COST_STOP_TIME'); ?>" /></td>
       <td><input id="datepicker_end" name="endday" type="text" class="whitefield" size="10" value="<?php echo $endday; ?>"></td>
-      <td><div id="error_end_cost" name="error_end_cost" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_DATE_DAY_END'); ?></div><div id="error_end_interval" name="error_end_interval" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_DATE_INTERVAL'); ?></div></td>
+      <td><div id="error_end_cost" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_DATE_DAY_END'); ?></div><div id="error_end_interval" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_DATE_INTERVAL'); ?></div></td>
    </tr>
    <tr>
       <td></td>
@@ -204,13 +204,13 @@ $(function () {
       <td><select name="select_plug">
             <option value="all"><?php echo __('PRICE_ALL_PLUG'); ?></option>
             <option value="distinct_all" <?php if(strcmp($select_plug,"distinct_all")==0) { echo "selected"; } ?>><?php echo __('PRICE_DISTINCT_ALL_PLUG'); ?></option>
-            <?php for($plugs=1;$plugs<=$nb_plugs;$plugs++) {  ; ?>
-x               <?php if(strcmp($plugs_infos[$plugs-1]['PLUG_ENABLED'],"False")==0) { ?>
-                    <option value="<?php echo $plugs; ?>" disabled><?php echo __('PRICE_FOR_PLUG').": ".$plugs_infos[$plugs-1]["PLUG_NAME"]; ?></option> 
-                <?php } else { ?>
-                    <option value="<?php echo $plugs; ?>" <?php if(strcmp($select_plug,$plugs)==0) echo "selected"; ?>><?php echo __('PRICE_FOR_PLUG').": ".$plugs_infos[$plugs-1]["PLUG_NAME"]; ?></option>
-                <?php }?>
-            <?php } ?>
+            <?php for($plugs=1;$plugs<=$nb_plugs;$plugs++) {  ?>
+                <?php if(strcmp($plugs_infos[$plugs-1]['PLUG_ENABLED'],"False")==0) { ?>
+                    <option value="<?php echo $plugs; ?>" disabled><?php echo __('PRICE_FOR_PLUG').": ".$plugs_infos[$plugs-1]["PLUG_NAME"]; ?></option>
+                <?php } else { ?>
+                    <option value="<?php echo $plugs; ?>" <?php if(strcmp("$select_plug","$plugs")==0) echo "selected"; ?>><?php echo __('PRICE_FOR_PLUG').": ".$plugs_infos[$plugs-1]["PLUG_NAME"]; ?></option>
+                <?php } ?>
+            <?php } ?> 
          </select></td>
      <td></td>
    </tr>
@@ -232,13 +232,13 @@ x               <?php if(strcmp($plugs_infos[$plugs-1]['PLUG_ENABLED'],"False")=
         <input type="text" size="6" maxlength="6" name="cost_price" id="cost_price" value="<?php echo "$cost_price"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp($cost_type,'standard')==0) { if(strcmp("$lang","en_GB")!=0) { echo "&euro;"; } else { echo "&#163;"; }} ?></label>
         <label id="cost_input_hp" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="6" maxlength="6" id="cost_price_hp" name="cost_price_hp" value="<?php echo "$cost_price_hp"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","en_GB")!=0) { echo "&euro;"; } else { echo "&#163;"; } ?></label>
       </td>
-    <td><div id="error_cost_price" name="error_cost_price" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PRICE_VALUE'); ?></div><div id="error_cost_price_hp" name="error_cost_price_hp" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PRICE_VALUE_HP'); ?></div></td>
+    <td><div id="error_cost_price" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PRICE_VALUE'); ?></div><div id="error_cost_price_hp" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PRICE_VALUE_HP'); ?></div></td>
    </tr>
    <tr>
       <td></td>
       <td><label id="cost_label_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><?php echo __('CONFIGURE_COST_PRICE_HC'); ?>:</label></td>
       <td><label id="cost_input_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" size="6" maxlength="6" id="cost_price_hc" name="cost_price_hc" value="<?php echo "$cost_price_hc"; ?>" onKeypress="return verifDigit(event);"><?php if(strcmp("$lang","en_GB")!=0) { echo "&euro;"; } else { echo "&#163;"; } ?></label></td>
-     <td><div id="error_cost_price_hc" name="error_cost_price_hc" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PRICE_VALUE_HC'); ?></div></td>
+     <td><div id="error_cost_price_hc" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PRICE_VALUE_HC'); ?></div></td>
    </tr>
    <tr>
       <td></td>
@@ -246,7 +246,7 @@ x               <?php if(strcmp($plugs_infos[$plugs-1]['PLUG_ENABLED'],"False")=
       <td>
             <label id="start_value_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" maxlength="5" size="5" name="start_hc" id="start_hc" <?php if((isset($start_hc))&&(!empty($start_hc))) { ?> value="<?php echo $start_hc; ?>" <?php } else { ?> value="00:00" <?php } ?> /></label>
       </td>
-      <td><div id="error_start_hc" name="error_start_hc" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
+      <td><div id="error_start_hc" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
    </tr>
     <tr>
       <td></td>
@@ -254,7 +254,7 @@ x               <?php if(strcmp($plugs_infos[$plugs-1]['PLUG_ENABLED'],"False")=
       <td>
             <label id="stop_value_hc" style="<?php if(strcmp($cost_type,'hpc')!=0) echo 'display:none'; ?>"><input type="text" maxlength="5" size="5" name="stop_hc" id="stop_hc" <?php if((isset($stop_hc))&&(!empty($stop_hc))) { ?> value="<?php echo $stop_hc; ?>" <?php } else { ?> value="00:00" <?php } ?> /></label>
       </td>
-     <td><div id="error_stop_hc" name="error_stop_hc" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
+     <td><div id="error_stop_hc" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
    </tr>
 </table>
 <br />
