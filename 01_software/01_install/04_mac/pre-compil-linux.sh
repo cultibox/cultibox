@@ -36,7 +36,6 @@ case "$1" in
             mv ../01_src/01_xampp/XAMPP ../01_src/01_xampp/cultibox
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox
             cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/main/docs/documentation_cultibox.pdf
-            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
 
             cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/xamppfiles/etc/
             cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/xamppfiles/etc/
