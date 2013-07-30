@@ -180,6 +180,7 @@ buttonImageOnly: 'true',
     <td></td>
 </tr>
 </table>
+    <input type="hidden" name="import_load" id="import_load" value="<?php echo $import_load; ?>">
 </form>
 <br />
 </div>
@@ -1097,7 +1098,11 @@ $(function () {
     <td class="log-manage-title"><?php echo __('IMPORT_LOG_TITLE')." "; ?>
         <select name="log_search" id="log_search">
         <?php foreach($GLOBALS['LOG_SEARCH'] as $value) {
-                   echo "<option value=\"${value}\">${value}</option>";
+                   if($value==$import_load) {
+                        echo "<option value=\"${value}\" selected>${value}</option>";
+                   } else {
+                        echo "<option value=\"${value}\">${value}</option>";
+                   }
         } ?>
          </select>
         <?php echo __('IMPORT_LAST_MONTH'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CONFIG_LOG_SEARCH'); ?>" />

@@ -70,6 +70,10 @@ $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $select_power=getvar('select_power');
 $select_plug=getvar('select_plug');
 $startday=getvar('startday');
+$import_load=getvar('import_load');
+if((!isset($import_load))||(empty($import_load))) {
+    $import_load=2;
+}
 
 
 if(isset($_SESSION['select_sensor'])) {
@@ -223,6 +227,10 @@ if((!isset($startday))||(empty($startday))) {
 	$type = "days";
 }
 $startday=str_replace(' ','',"$startday");
+if(!check_format_date($startday,"days")) {
+    $startday=date('Y')."-".date('m')."-".date('d');
+}
+
 
 if((!isset($select_sensor))||(empty($select_sensor))) {
     $select_sensor=1;

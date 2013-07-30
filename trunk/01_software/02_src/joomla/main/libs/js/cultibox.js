@@ -371,6 +371,7 @@ $(document).ready(function() {
                         $("#success_load").css("display","none");
                         $("#success_load_still_log").css("display","none");
                         $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
+                        $("#import_load").val($("#log_search").val());
                         document.forms['display-log-day'].submit();
                     }
             }]
