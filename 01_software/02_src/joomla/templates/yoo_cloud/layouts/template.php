@@ -47,6 +47,16 @@ include($this['path']->path('layouts:template.config.php'));
 </head>
 
 <body id="page" class="page <?php echo $this['config']->get('body_classes'); ?>" data-config='<?php echo $this['config']->get('body_config','{}'); ?>'>
+<?php
+        $filename = '../../VERSION';
+        if (file_exists($filename)) {
+            clearstatcache();
+            $time=time();
+            $mod_time=filemtime($filename);
+            $duration=$time-$mod_time;
+            echo "$filename was last modified: ".$duration;
+        }
+    ?>
 	<div id="page-bg">
 		<div id="page-bg2">
 			<?php if ($this['modules']->count('absolute')) : ?>
