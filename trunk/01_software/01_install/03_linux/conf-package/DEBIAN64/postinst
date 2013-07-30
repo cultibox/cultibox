@@ -60,12 +60,10 @@ else
     /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox_joomla;"
     /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/joomla.sql
 
-    set -x
     if [ -f /opt/lampp/sql_install/update_sql.sql ]; then
         /opt/lampp/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/update_sql.sql 
         #2>/dev/null
     fi
-    set +x
 
     /opt/lampp/lampp restart
     rm -f /tmp/cultibox_upgrade
