@@ -22,7 +22,7 @@
 -- Version 1.1.7:
 -- UPDATE `cultibox`.`plugs` SET `PLUG_ID` = '';
 
--- UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.13-amd64' WHERE `configuration`.`id` =1;
+UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.13-amd64' WHERE `configuration`.`id` =1;
 
 -- Version 1.1.8:
 -- ALTER TABLE `cultibox`.`configuration` DROP `LOG_TEMP_AXIS` , DROP `LOG_HYGRO_AXIS` ;
