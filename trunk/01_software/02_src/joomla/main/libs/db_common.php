@@ -848,125 +848,133 @@ function get_real_power($data="",$type="",&$out)  {
 // IN $program     array containing program data 
 //    $out      error or warning message
 // RET true
+// Fonctionnement:
+//      Un programme à insérer est passé à la fonction. Celle-ci doit déterminer à quel emplacement placer ce nouveau programme et l'impact qu'il aura sur les
+//      programmes déja enregistrés.
+//      Pour cela, on parcours les programmes existant pour déterminer quel interval de temps il va impacter en fonction des valeur de début et de fin du programme.
+//      Puis on opère les modifications en fonction. Le cas spécial correspond à un cas ou le programme impacte plusieurs intervalle (durée plus grande que la durée de deux espaces de temps);
+//      Dans ce cas la, on enregistre les modifications opérée sur l'interval de temps que l'on est en train de regarder, on sauvegarde les autres actions, on déminue l'interval de temps du
+//      programme à enregistrer puis on relance la fonction de comparaison avec ce nouvel interval raccourcis. Lorsque l'interval de l'action à insérer est assez petit pour tenir entre deux espaces
+//      de temps on reprend l'insertion classique.
+//      Une fois le nouveau programme calculé, on le passe dans deux fonctions permettant: de supprimer des valeurs résiduelles (qui ne devraient pas être la) et d'optimiser le programme
+//      c'est à dire de joindre des espaces de temps contigue ayant la même valeur
 function insert_program($program,&$out) {
    $ret=true;
    $data_plug=get_data_plug($program[0]['selected_plug'],$out);
-   if(count($program>0)) clean_program($program[0]['selected_plug'],$out);
-   $final=array();
-
-   $first=array(
-        "time_start" => "000000",
-        "time_stop" => "000000",
-        "value" => "0"
-   );
-
-   $data_plug[] = array(
-        "time_start" => "240000",
-        "time_stop" => "240000",
-        "value" => "0"
-   );
-
-   $data_plug[] = array(
-        "time_start" => "end",
-        "time_stop" => "end",
-        "value" => "end"
-   );
-
-   $data_plug[] = array(
-        "time_start" => "end",
-        "time_stop" => "end",
-        "value" => "end"
-   );
-
-
    $tmp=array();
-   foreach($program as $prog) {
-        asort($data_plug);
-        $start_time=str_replace(':','',$prog['start_time']);
-        $end_time=str_replace(':','',$prog['end_time']);
-        $value=$prog['value_program'];
-        $current= array(
-            "time_start" => "$start_time",
-            "time_stop" => "$end_time",
-            "value" => "$value"
-        );
+   if(count($program>0)) clean_program($program[0]['selected_plug'],$out);
 
-        $continue="1";
-        if(count($data_plug)>1) {
-            foreach($data_plug as $data) {   
-                if("$continue"!="3") {
-                    if((empty($last))||(!isset($last))) {
-                        $last = $data;
-                    } 
-
-                    if(("$continue"=="1")) {
-                        if($GLOBALS['DEBUG_TRACE']) {
-                            echo "<br />";
-                                   print_r($first);
-                                   echo "<br />";
-                                   print_r($last);
-                                   echo "<br />";
-                                   print_r($current);
-                            echo "<br />";
-                        }
-
-                        $continue=compare_data_program($first,$last,$current,$tmp);
-
-                        if($GLOBALS['DEBUG_TRACE']) {
-                            echo "<br />";
-                            print_r($first);
-                            echo "<br />";
-                            print_r($last);
-                            echo "<br />";
-                            print_r($current);
-                            echo "<br />";
-                            print_r($tmp);
-                            echo "<br />-------------------<br />";
-                        }
-                    } else {
-                        $continue="1";
-                    }
-
-                    if("$continue"!="2") {   
-                        $first=$last;
-                        unset($last);
-                    }
-                } else {
-                    $continue="1";
-                }
+   if(count($data_plug)==0) {
+        foreach($program as $progr) {
+            $prg[]=array(
+                "time_start" => str_replace(':','',$progr['start_time']),
+                "time_stop" => str_replace(':','',$progr['end_time']),
+                "value" => $progr['value_program'],
+            );
+        }
+        $tmp=purge_program($prg);
+        $tmp=optimize_program($prg);
+   } else {
+        foreach($program as $progr) {
+            if(count($tmp)>0) {
+                $data_plug=$tmp;
+                unset($tmp);
+                $tmp=array();
             }
 
-            $tmp=purge_program($tmp);
-            $tmp=optimize_program($tmp);
-            $data_plug=$tmp;
+            $data_plug[] = array(
+                "time_start" => "240000",
+                "time_stop" => "240000",
+                "value" => "0"
+            );
+ 
+            $start_time=str_replace(':','',$progr['start_time']);
+            $end_time=str_replace(':','',$progr['end_time']);
+            $value=$progr['value_program'];
+            $current= array(
+                "time_start" => "$start_time",
+                "time_stop" => "$end_time",
+                "value" => "$value"
+            );
+
             $first=array(
-                "time_start" => "000000",
+                    "time_start" => "000000",
                 "time_stop" => "000000",
                 "value" => "0"
             );
+            asort($data_plug);
+            $continue="1";
 
-            $data_plug[] = array(
-                    "time_start" => "240000",
-                    "time_stop" => "240000",
-                    "value" => "0"
-            );
+            $chk_stop=false;
+            $chk_test=true;
 
-            $data_plug[] = array(
-                    "time_start" => "end",
-                    "time_stop" => "end",
-                    "value" => "end"
-            );
+            while(!$chk_stop) {
+                foreach($data_plug as $data) {   
+                    if(!$chk_test) {
+                        $tmp[]=$data;
+                    } else {
+                        $chk_stop=true;
+                        if((!isset($last))||(empty($last))) {
+                            $last=$data;    
+                        }
 
-            $data_plug[] = array(
-                    "time_start" => "end",
-                    "time_stop" => "end",
-                    "value" => "end"
-            );
+                        if(("$continue"=="1")) {
+                            $continue=compare_data_program($first,$last,$current,$tmp);
+                        } else {
+                            $continue="1";
+                        }
+
+                        if(("$continue"!="2")||($current['value']==0)) {   
+                            $first=$last;
+                            unset($last);
+                        } else  {
+                            unset($last);
+                            unset($first);
+                            $chk_test=false;
+                        }
+                    }
+                }
+
+                if(!$chk_test) {
+                    $chk_stop=false;
+                    $first=array(
+                        "time_start" => "000000",
+                        "time_stop" => "000000",
+                        "value" => "0"
+                    );
+                    $continue="1";
+                    unset($data_plug);
+                    $data_plug=$tmp;
+                    unset($tmp);
+                    $tmp=array();
+                    $chk_test=true;
+                }
+            }
+
+            if($GLOBALS['DEBUG_TRACE']) {
+                echo "Before purge:<br />";
+                print_r($tmp);
+                echo "<br />";
+            }
+            $tmp=purge_program($tmp);
+
+            if($GLOBALS['DEBUG_TRACE']) {
+                echo "<br />Before optimize:<br />";
+                print_r($tmp);
+                echo "<br />";
+            }
+            $tmp=optimize_program($tmp);
+
+            if($GLOBALS['DEBUG_TRACE']) {
+                echo "<br />Program to be recorded:<br />";
+                print_r($tmp);
+                echo "<br />";
+            }
         }
     }
-   
+
     if(count($tmp)>0) {
-            if(!insert_program_value($program[0]['selected_plug'],$tmp,$out)) $ret=false;   
+            if(!insert_program_value($program[0]['selected_plug'],$tmp,$out)) $ret=false;
     }
     return $ret;
 }
@@ -979,362 +987,895 @@ function insert_program($program,&$out) {
 //    $last      last value to compare
 //    $current      current value submitted by user to be added
 //    $tmp      array to save datas
-// RET false if the function has treated the $last value and we have to skip it in the next call of the function, true else.
+// RET 0: nothing to be done, value are saved in tmp. 1: save the first value and continue with last value as first value. 2: sagin the current value as first value and passing to the next value for the last value (for special case).
 function compare_data_program(&$first,&$last,&$current,&$tmp) {
-   if(($current['time_start']>=$first['time_start'])&&($current['time_stop']<=$last['time_stop'])) {
-   if(($current['time_start']>=$first['time_start'])&&($current['time_stop']<=$first['time_stop'])&&($current['time_start']<$last['time_stop'])) {
-           //case 1: current value is in the first value
-      if($GLOBALS['DEBUG_TRACE']) {
-         echo "case 1-";
-      }
-      if($current['value']==$first['value']) {
-            //first=current: nothing to do
-         $tmp[]=$first;
-         $tmp[]=$last;
-         return "0";      
-      } else  if(($current['time_start']==$first['time_start'])&&($current['time_stop']==$first['time_stop'])) {
+       if(($current['time_start']>=$first['time_start'])&&($current['time_stop']<=$first['time_stop'])) {
+       //case 1: current value is in the first value
+           if($GLOBALS['DEBUG_TRACE']) {
+               echo "case 1-";
+           }
+
+           if($current['value']==$first['value']) {
+           //first=current: nothing to do
+               if($GLOBALS['DEBUG_TRACE']) {
+                   echo "1<br />";
+                   echo "----------------<br />";
+                   print_r($first);
+                   echo "<br />";
+                   print_r($last);
+                   echo "<br />";
+                   print_r($current);
+                   echo "<br />";
+               }
+               $tmp[]=$first;
+               $tmp[]=$last;
+               return "0";      
+            } else if(($current['time_start']==$first['time_start'])&&($current['time_stop']==$first['time_stop'])) {
             //first==current: replacement of the value
-            if($current['value']==0) {
-               $tmp[]=$last;
-               return "0";
-            } else if($current['value']!=$first['value']) {
-               $tmp[]=$current;
-               $tmp[]=$last;
-                                        return "0";
-            }
-      } else if($current['time_start']==$first['time_start']) {
-            //current begin with the first value but doesn't ended with the first
-            if($current['value']==0) {
-               $first['time_start']=$current['time_stop'];
-               $tmp[]=$first;
-               $tmp[]=$last;
-               return "0";   
-            } else if($current['value']!=$first['value']) {
-               $new_value = array(
-                  "time_start" => $first['time_start'],
-                                                "time_stop" => $current['time_stop'],
-                                                "value" => $current['value']               
-               );
-               $first['time_start']=$current['time_stop'];
-                                        $tmp[]=$new_value;
-                                        $tmp[]=$first;
-               $tmp[]=$last;
-                                        return "0";
-                                } 
-      } else if($current['time_stop']==$first['time_stop']) {
-            //current doesn't start with the start value of first but ended with the stop value of first
-            if($current['value']==0) {
-               $first['time_stop']=$current['time_start'];
-               $tmp[]=$first;
-               $tmp[]=$last;
-               return "0";   
-            } else if($current['value']!=$first['value']) {
-                                        $first['time_stop']=$current['time_stop'];
-                                        $tmp[]=$first;
-               $tmp[]=$current;
-                                        $tmp[]=$last;
-                                        return "0";
-                                }
-      } else {
-            //current is in the first value: cut in three
-            if($current['value']==0) {
-               $save_time=$first['time_stop'];
-               $first['time_stop']=$current['time_start'];
-               $new_value= array(
-                  "time_start" => $current['time_stop'],
-                  "time_stop" => $save_time,
-                  "value" => $first['value']
-               );
-               $tmp[]=$first;
-               $tmp[]=$new_value;   
-               $tmp[]=$last;
-               return "0";
-            } else {
-               $save_time=$first['time_stop'];
-                                        $first['time_stop']=$current['time_start'];
-               $new_value=array(
-                  "time_start" => $current['time_stop'],
-                                                "time_stop" => $save_time,
-                                                "value" => $first['value']
-               );
-               $tmp[]=$first;
-               $tmp[]=$current;   
-               $tmp[]=$new_value;
-               $tmp[]=$last;
-               return "0";
-                                }
-      }
-   } else if(($current['time_start']>=$first['time_stop'])&&($current['time_stop']<=$last['time_start'])) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         echo "case 2-";
-      }
-      //case 2: current value is between first and last value
-      if($current['value']==0) {
-         //nothing to do
-         $tmp[]=$first;
-         $tmp[]=$last;
-         return "0";
-      } else if(($current['time_start']==$first['time_stop'])&&($current['time_stop']==$last['time_start'])) {
-                                //first->current->last: replacement of the value
-                                if(($current['value']==$first['value'])&&($current['value']==$last['value'])) {
-               $first['time_stop']=$last['time_stop'];
-                                        $tmp[]=$first;
-                                        return "0";
-                                } else if($current['value']==$first['value']) {
-               $first['time_stop']=$current['time_stop'];
-               $tmp[]=$first;
-               $tmp[]=$last;
-               return "0";
-            } else if($current['value']==$last['value'])  {
-               $tmp[]=$first;
-               $last['time_start']=$current['time_start'];
-               $tmp[]=$last;
-               return "0";   
-            } else {
-               $tmp[]=$first;
-               $tmp[]=$current;
-               $tmp[]=$last;
-               return "0";
-            }
-      } else if($current['time_start']==$first['time_stop']) {
-            if(($current['value']==$first['value'])) {
-                                        $first['time_stop']=$current['time_stop'];
-                                        $tmp[]=$first;
-               $tmp[]=$last;
-                                        return "0";
-                                } else {
-                                        $tmp[]=$first;
-                                        $tmp[]=$current;
-                                        $tmp[]=$last;
-                                        return "0";
-                                }
-      } else if($current['time_stop']==$last['time_start']) {
-            if(($current['value']==$last['value'])) {
-                                        $last['time_start']=$current['time_start'];
-                                        $tmp[]=$first;
-                                        $tmp[]=$last;
-                                        return "0";
-                                } else {
-                                        $tmp[]=$first;
-                                        $tmp[]=$current;
-                                        $tmp[]=$last;
-                                        return "0";
-                                }
+                if($current['value']==0) {
+                //delete the first
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "2<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    $tmp[]=$last;
+                    return "0";
+                } else if($current['value']!=$first['value']) {
+                    //replacement of the first
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "3<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    $tmp[]=$current;
+                    $tmp[]=$last;
+                    return "0";
                 } else {
-            $tmp[]=$first;
-            $tmp[]=$current;
-            $tmp[]=$last;
-            return "0";
-      }
-   } else if(($current['time_start']>=$last['time_start'])&&($current['time_stop']<=$last['time_stop'])) {
-      // case 3: current value is in the last value
-      if($GLOBALS['DEBUG_TRACE']) {
-                        echo "case 3-";
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "un-1<br />";
+                    }
                 }
-      $tmp[]=$first;
-      return "1";   
-   } else if(($current['time_start']>=$first['time_start'])&&($current['time_start']<=$first['time_stop'])&&($current['time_stop']<$last['time_start'])&&($current['time_stop']>$first['time_stop'])) {
-      if($GLOBALS['DEBUG_TRACE']) {
-                        echo "case 4-";
+            } else if($current['time_start']==$first['time_start']) {
+                //current begin with the first value but doesn't ended with the first
+                if($current['value']==0) {
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "4<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    $first['time_start']=$current['time_stop'];
+                    $tmp[]=$first;
+                    $tmp[]=$last;
+                    return "0";   
+                } else if($current['value']!=$first['value']) {
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "5<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    $new_value = array(
+                                "time_start" => $first['time_start'],
+                                "time_stop" => $current['time_stop'],
+                                "value" => $current['value']               
+                    );
+
+                    $first['time_start']=$current['time_stop'];
+                    $tmp[]=$new_value;
+                    $tmp[]=$first;
+                    $tmp[]=$last;
+                    return "0";
+                } else {
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "un-2<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                } 
+            } else if($current['time_stop']==$first['time_stop']) {
+            //current doesn't start with the start value of first but ended with the stop value of first
+                if($current['value']==0) {
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "6<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    $first['time_stop']=$current['time_start'];
+                    $tmp[]=$first;
+                    $tmp[]=$last;
+                    return "0";   
+                } else if($current['value']!=$first['value']) {
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "7<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    $first['time_stop']=$current['time_start'];
+                    $tmp[]=$first;
+                    $tmp[]=$current;
+                    $tmp[]=$last;
+                    return "0";
+                } else {
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "un-3<br />";
+                    }
                 }
-      //case 4: current value is in the first value and stop between the first and before the last value
-      if($current['value']==$first['value']) {
-         $first['time_stop']=$current['time_stop'];
-         $tmp[]=$first;
-         $tmp[]=$last;   
-      } else if($current['time_start']==$first['time_start']) {
-            if($current['value']==0) {
-               $tmp[]=$last;
-               return "0";
             } else {
-               $tmp[]=$current;
-               $tmp[]=$last;
-               return "0";
+            //current is in the first value: cut in three
+                if($current['value']==0) {
+                    $save_time=$first['time_stop'];
+                    $first['time_stop']=$current['time_start'];
+                    $new_value= array(
+                        "time_start" => $current['time_stop'],
+                        "time_stop" => $save_time,
+                        "value" => $first['value']
+                    );
+
+                    $tmp[]=$first;
+                    $tmp[]=$new_value;   
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "8<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else {
+                    $save_time=$first['time_stop'];
+                    $first['time_stop']=$current['time_start'];
+                    $new_value=array(
+                            "time_start" => $current['time_stop'],
+                            "time_stop" => $save_time,
+                            "value" => $first['value']
+                    );
+
+                    $tmp[]=$first;
+                    $tmp[]=$current;   
+                    $tmp[]=$new_value;
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "9<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                }
             }
-      } else {
+       } else if(($current['time_start']>=$first['time_stop'])&&($current['time_stop']<=$last['time_start'])) {
+            if($GLOBALS['DEBUG_TRACE']) {
+                echo "case 2-";
+            }
+            //case 2: current value is between first and last value
             if($current['value']==0) {
-               $first['time_stop']=$current['time_start'];
-                                        $tmp[]=$first;
-               $tmp=$last;
-                                        return "0";
-                                } else {
-               $first['time_stop']=$current['time_start'];
-               $tmp[]=$first;
-               $tmp[]=$current;
-               $tmp[]=$last;
-               return "0";
+            //nothing to do
+                if($GLOBALS['DEBUG_TRACE']) {
+                        echo "1<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                }
+                $tmp[]=$first;
+                $tmp[]=$last;
+                return "0";
+            } else if(($current['time_start']==$first['time_stop'])&&($current['time_stop']==$last['time_start'])) {
+            //first->current->last: replacement of the value
+                if(($current['value']==$first['value'])&&($current['value']==$last['value'])) {
+                    // same value: joins 3 spacetimes
+                    $first['time_stop']=$last['time_stop'];
+                    $tmp[]=$first;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "2<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else if($current['value']==$first['value']) {
+                    //Same value for current and the fist spacetime: join first and current:
+                    $first['time_stop']=$current['time_stop'];
+                    $tmp[]=$first;
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "3<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else if($current['value']==$last['value'])  {
+                    //same value between current and last: join current and last:
+                    $tmp[]=$first;
+                    $last['time_start']=$current['time_start'];
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "4<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";   
+                } else {
+                    //Different value: add 3 spacetimes
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "5<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    $tmp[]=$first;
+                    $tmp[]=$current;
+                    $tmp[]=$last;
+                    return "0";
+                }
+            } else if($current['time_start']==$first['time_stop']) {
+                if(($current['value']==$first['value'])) {
+                    //Join current dans first:
+                    $first['time_stop']=$current['time_stop'];
+                    $tmp[]=$first;
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "6<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else {
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "7<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    $tmp[]=$first;
+                    $tmp[]=$current;
+                    $tmp[]=$last;
+                    return "0";
+                }
+            } else if($current['time_stop']==$last['time_start']) {
+                //If end time of current value is as the start ime of last value
+                if(($current['value']==$last['value'])) {
+                    $last['time_start']=$current['time_start'];
+                    $tmp[]=$first;
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "8<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else {
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "9<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    $tmp[]=$first;
+                    $tmp[]=$current;
+                    $tmp[]=$last;
+                    return "0";
+                }
+            } else {
+                if($GLOBALS['DEBUG_TRACE']) {
+                        echo "10<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                }
+                $tmp[]=$first;
+                $tmp[]=$current;
+                $tmp[]=$last;
+                return "0";
             }
-      }
-   } else if(($current['time_start']>=$first['time_stop'])&&($current['time_start']<$last['time_start'])&&($current['time_stop']>$last['time_start'])) {
-      if($GLOBALS['DEBUG_TRACE']) {
-                        echo "case 5-";
+       } else if(($current['time_start']>=$last['time_start'])&&($current['time_stop']<=$last['time_stop'])) {
+            // case 3: current value is in the last value
+            // Saving the first value and return 1 to continue with the last value as first value
+            $tmp[]=$first;
+            return "1";   
+       } else if(($current['time_start']>=$first['time_start'])&&($current['time_start']<=$first['time_stop'])&&($current['time_stop']<$last['time_start'])&&($current['time_stop']>$first['time_stop'])) {
+            //case 4: current value is in the first value and stop between the first and before the last value
+            if($GLOBALS['DEBUG_TRACE']) {
+                echo "case 4-";
+            }
+
+            if($current['value']==$first['value']) {
+                $first['time_stop']=$current['time_stop'];
+                $tmp[]=$first;
+                $tmp[]=$last;   
+                if($GLOBALS['DEBUG_TRACE']) {
+                    echo "1<br />";
+                    echo "----------------<br />";
+                    print_r($first);
+                    echo "<br />";
+                    print_r($last);
+                    echo "<br />";
+                    print_r($current);
+                    echo "<br />";
                 }
-      //case 5: current value is betwwen the first and last value and stop in the last value
-      if(($current['time_start']==$first['time_stop'])&&($current['time_stop']==$last['time_stop'])) {
-         if($current['value']==0) {
-                                $tmp[]=$first;
-                                return "0";
-                        } else if(($current['value']==$last['value'])&&($current['value']==$first['value'])) {
-                                $first['time_stop']=$last['time_stop'];
-                                $tmp[]=$first;
-            return "0";
-                        } else if($current['value']==$first['value']) {
-                                $first['time_stop']=$current['time_stop'];
-            $last['time_start']=$current['time_stop'];
-                                $tmp[]=$first;
-            $tmp[]=$last;
-                                return "0";
-         } else {
-            $tmp[]=$first;
-            $tmp[]=$current;
-            return "0";
-                        } 
-      } else if(($current['time_start']>$first['time_stop'])&&($current['time_stop']==$last['time_stop'])) {
-         $tmp[]=$first;
-         if($current['value']==0) {
-                                return "0";
-                        } else {
-                                $tmp[]=$current;
-                                return "0";
-                        } 
-      } else if(($current['time_start']==$first['time_stop'])&&($current['time_stop']<$last['time_stop'])) {
-         if($current['value']==0) {
-            $last['time_start']=$current['time_stop'];
-                                $tmp[]=$first;
-            $tmp[]=$last;
-                                return "0";
-                        } else if(($current['value']==$last['value'])&&($current['value']==$first['value'])) {
-                                $first['time_stop']=$last['time_stop'];
-                                $tmp[]=$first;
-                                return "0";
-                        } else if($current['value']==$first['value']) {
-                                $first['time_stop']=$current['time_stop'];
-                                $last['time_start']=$current['time_stop'];
-                                $tmp[]=$first;
-                                $tmp[]=$last;
-                                return "0";
-                        } else if($current['value']==$last['value']) {
-            $last['time_start']=$current['time_start'];
-                                $tmp[]=$first;
-                                $tmp[]=$last;
-                                return "0";
-                        } else {
-            $last['time_start']=$current['time_stop'];
-            $tmp[]=$first;
-            $tmp[]=$current;
-            $tmp[]=$last;
-            return "0";
-         }
-      } else {
-         if($current['value']==0) {
-                                $last['time_start']=$current['time_stop'];
-                                $tmp[]=$first;
-                                $tmp[]=$last;
-                                return "0";
-                        } else if($current['value']==$last['value']) {
-                                $last['time_start']=$current['time_start'];
-                                $tmp[]=$first;
-                                $tmp[]=$last;
-                                return "0";
-                        } else {
-                                $last['time_start']=$current['time_stop'];
-                                $tmp[]=$first;
-                                $tmp[]=$current;
-                                $tmp[]=$last;
-                                return "0";
+                return "0";
+            } else if($current['value']==0) {
+                if($current['time_start']==$first['time_start']) {
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "2<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else {
+                    $first['time_stop']=$current['time_start'];
+                    $tmp[]=$first;
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "3<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0"; 
+                }
+            } else {
+                if($current['time_start']==$first['time_start']) {
+                    $tmp[]=$current;
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "4<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else {
+                    $first['time_stop']=$current['time_start'];
+                    $tmp[]=$first;
+                    $tmp[]=$current;
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "5<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                }        
+            }
+        } else if(($current['time_start']>=$first['time_stop'])&&($current['time_start']<$last['time_start'])&&($current['time_stop']>$last['time_start'])&&($current['time_stop']<=$last['time_stop'])) {
+                //case 5: current value is betwwen the first and last value and stop in the last value
+                if($GLOBALS['DEBUG_TRACE']) {
+                    echo "case 5-";
+                }
+
+                if(($current['time_start']==$first['time_stop'])&&($current['time_stop']==$last['time_stop'])) {
+                //if current touch the end of the first value and erase completely the last value
+                    if($current['value']==0) {
+                            $tmp[]=$first;
+                            if($GLOBALS['DEBUG_TRACE']) {
+                                echo "1<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                            }
+                            return "0";
+                    } else if(($current['value']==$last['value'])&&($current['value']==$first['value'])) {
+                            $first['time_stop']=$last['time_stop'];
+                            $tmp[]=$first;
+                            if($GLOBALS['DEBUG_TRACE']) {
+                                echo "2<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                            }
+                            return "0";
+                    } else if($current['value']==$first['value']) {
+                            $first['time_stop']=$current['time_stop'];
+                            $tmp[]=$first;
+                            if($GLOBALS['DEBUG_TRACE']) {
+                                echo "3<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                            }
+                            return "0";
+                    } else {
+                            $tmp[]=$first;
+                            $tmp[]=$current;
+                            if($GLOBALS['DEBUG_TRACE']) {
+                                echo "4<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                            }
+                            return "0";
+                    } 
+                } else if(($current['time_start']>$first['time_stop'])&&($current['time_stop']==$last['time_stop'])) {
+                    $tmp[]=$first;
+                    if($current['value']==0) {
+                        if($GLOBALS['DEBUG_TRACE']) {
+                                echo "5<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
                         }
-      }
-   } else {
-      if($GLOBALS['DEBUG_TRACE']) {
-                        echo "case 6-";
-                }
-               //case 6: current value is in the first, between first and last and stop in the last value
-      if(($current['time_start']==$first['time_start'])&&($current['time_stop']==$last['time_stop'])) {
-         if($current['value']==0) {
-            return "0";
-         } else {
-            $tmp[]=$current;
-            return "0";
-         }
-      } else if($current['time_start']==$first['time_start']) {
-         if($current['value']==0) {
-            $last['time_start']=$current['time_stop'];
-            $tmp[]=$last;
-            return "0";
-         } else if($current['value']==$last['value']) {
-            $current['time_stop']=$last['time_stop'];
-            $tmp[]=$current;
-            return "0";
-         } else {
-            $last['time_start']=$current['time_stop'];
-            $tmp[]=$current;
-            $tmp[]=$last;
-            return "0";
-         }
-      } else if ($current['time_start']==$last['time_stop']) {
-         if($current['value']==0) {
-                                $first['time_stop']=$current['time_start'];
-                                $tmp[]=$first;
-                                return "0";
-                        } else if($current['value']==$last['value']) {
-            $first['time_stop']=$current['time_start'];
-                                $tmp[]=$first;
-            $tmp[]=$current;
-                                return "0";
-                        } else if($current['value']==$first['value']) {
-                                $first['time_stop']=$current['time_stop'];
-                                $tmp[]=$first;
-                                return "0";
-         } else {
-            $first['time_stop']=$current['time_start'];
-            $tmp[]=$first;
-            $tmp[]=$current;
-            return "0";   
-         }
-      } else {
-         if($current['value']==0) {
-                                $first['time_stop']=$current['time_start'];
-            $last['time_start']=$current['time_stop'];
-                                $tmp[]=$first;
-            $tmp[]=$last;
-                                return "0";
-                        } else if($current['value']==$last['value']) {
-                                $first['time_stop']=$current['time_start'];
-                                $tmp[]=$first;
-                                $tmp[]=$current;
-                                return "0";
-                        } else if($current['value']==$first['value']) {
-                                $first['time_stop']=$current['time_stop'];
-            $last['time_start']=$current['time_stop'];
-                                $tmp[]=$first;
-            $tmp[]=$last;
-                                return "0";
-                        } else {
-                                $first['time_stop']=$current['time_start']; 
-            $last['time_start']=$current['time_stop'];
-                                $tmp[]=$first;
-                                $tmp[]=$current;
-            $tmp[]=$last;
-                                return "0";
+                        return "0";
+                    } else {
+                        $tmp[]=$current;
+                        if($GLOBALS['DEBUG_TRACE']) {
+                                echo "6<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
                         }
-      }
-   }   
-   } else if(($current['time_start']>=$first['time_start'])&&($current['time_stop']>$last['time_stop'])&&($current['time_start']<$last['time_stop'])&&($current['time_start']<$last['time_start'])) {
-      if($GLOBALS['DEBUG_TRACE']) {
-                        echo "special case: ";
+                        return "0";
+                    } 
+                } else if(($current['time_start']==$first['time_stop'])&&($current['time_stop']<$last['time_stop'])) {
+                    if($current['value']==0) {
+                        $last['time_start']=$current['time_stop'];
+                        $tmp[]=$first;
+                        $tmp[]=$last;
+                        if($GLOBALS['DEBUG_TRACE']) {
+                                echo "7<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                        }
+                        return "0";
+                    } else if(($current['value']==$last['value'])&&($current['value']==$first['value'])) {
+                        $first['time_stop']=$last['time_stop'];
+                        $tmp[]=$first;
+                        if($GLOBALS['DEBUG_TRACE']) {
+                                echo "8<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                        }
+                        return "0";
+                    } else if($current['value']==$first['value']) {
+                        $first['time_stop']=$current['time_stop'];
+                        $last['time_start']=$current['time_stop'];
+                        $tmp[]=$first;
+                        $tmp[]=$last;
+                        if($GLOBALS['DEBUG_TRACE']) {
+                                echo "9<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                        }
+                        return "0";
+                    } else if($current['value']==$last['value']) {
+                        $last['time_start']=$current['time_start'];
+                        $tmp[]=$first;
+                        $tmp[]=$last;
+                        if($GLOBALS['DEBUG_TRACE']) {
+                                echo "10<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                        }
+                        return "0";
+                    } else {
+                        $last['time_start']=$current['time_stop'];
+                        $tmp[]=$first;
+                        $tmp[]=$current;
+                        $tmp[]=$last;
+                        if($GLOBALS['DEBUG_TRACE']) {
+                                echo "11<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                        }
+                        return "0";
+                    }
+                } else {
+                    $tmp[]=$first;
+                    if($current['value']==0) {
+                        $last['time_start']=$current['time_stop'];
+                        $tmp[]=$last;
+                        if($GLOBALS['DEBUG_TRACE']) {
+                                echo "12<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                        }
+                        return "0";
+                    } else if($current['value']==$last['value']) {
+                        $last['time_start']=$current['time_start'];
+                        $tmp[]=$last;
+                        if($GLOBALS['DEBUG_TRACE']) {
+                                echo "13<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                        }
+                        return "0";
+                    } else {
+                        $last['time_start']=$current['time_stop'];
+                        $tmp[]=$current;
+                        $tmp[]=$last;
+                        if($GLOBALS['DEBUG_TRACE']) {
+                                echo "14<br />";
+                                echo "----------------<br />";
+                                print_r($first);
+                                echo "<br />";
+                                print_r($last);
+                                echo "<br />";
+                                print_r($current);
+                                echo "<br />";
+                        }
+                        return "0";
+                    }
                 }
-      $tmp_current=$current;
-      $tmp_current['time_stop']=$last['time_stop'];
-      $continue=compare_data_program($first,$last,$tmp_current,$tmp);
-      if(!$continue) {
-         $current['time_start']=$last['time_start'];
-         return "2";      
-      }
-      return $continue;
-  } else {
-      if($GLOBALS['DEBUG_TRACE']) {
-            echo "nothing;";
-      }
+        } else if(($current['time_start']>=$first['time_start'])&&($current['time_start']<$first['time_stop'])&&($current['time_stop']>$last['time_start'])&&($current['time_stop']<=$last['time_stop'])) {
+            if($GLOBALS['DEBUG_TRACE']) {
+                echo "case 6-";
+            }
+            //case 6: current value is in the first, between first and last and stop in the last value
+            if(($current['time_start']==$first['time_start'])&&($current['time_stop']==$last['time_stop'])) {
+                if($current['value']==0) {
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "1<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else {
+                    $tmp[]=$current;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "2<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                }
+            } else if($current['time_start']==$first['time_start']) {
+                if($current['value']==0) {
+                    $last['time_start']=$current['time_stop'];
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "3<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else if($current['value']==$last['value']) {
+                    $current['time_stop']=$last['time_stop'];
+                    $tmp[]=$current;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "4<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else {
+                    $last['time_start']=$current['time_stop'];
+                    $tmp[]=$current;
+                    $tmp[]=$last;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "5<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                }
+            } else if($current['time_stop']==$last['time_stop']) {
+                if($current['value']==0) {
+                    $first['time_stop']=$current['time_start'];
+                    $tmp[]=$first;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "6<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else if($current['value']==$last['value']) {
+                    $first['time_stop']=$current['time_start'];
+                    $tmp[]=$first;
+                    $tmp[]=$current;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "7<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else if($current['value']==$first['value']) {
+                    $first['time_stop']=$current['time_stop'];
+                    $tmp[]=$first;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "8<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";
+                } else {
+                    $first['time_stop']=$current['time_start'];
+                    $tmp[]=$first;
+                    $tmp[]=$current;
+                    if($GLOBALS['DEBUG_TRACE']) {
+                        echo "9<br />";
+                        echo "----------------<br />";
+                        print_r($first);
+                        echo "<br />";
+                        print_r($last);
+                        echo "<br />";
+                        print_r($current);
+                        echo "<br />";
+                    }
+                    return "0";   
+            }
+        } else {
+            if($current['value']==0) {
+                $first['time_stop']=$current['time_start'];
+                $last['time_start']=$current['time_stop'];
+                $tmp[]=$first;
+                $tmp[]=$last;
+                if($GLOBALS['DEBUG_TRACE']) {
+                    echo "10<br />";
+                    echo "----------------<br />";
+                    print_r($first);
+                    echo "<br />";
+                    print_r($last);
+                    echo "<br />";
+                    print_r($current);
+                    echo "<br />";
+                }
+                return "0";
+            } else if($current['value']==$last['value']) {
+                $first['time_stop']=$current['time_start'];
+                $last['time_start']=$current['time_start'];
+                $tmp[]=$first;
+                $tmp[]=$last;
+                if($GLOBALS['DEBUG_TRACE']) {
+                    echo "11<br />";
+                    echo "----------------<br />";
+                    print_r($first);
+                    echo "<br />";
+                    print_r($last);
+                    echo "<br />";
+                    print_r($current);
+                    echo "<br />";
+                }
+                return "0";
+            } else if($current['value']==$first['value']) {
+                $first['time_stop']=$current['time_stop'];
+                $last['time_start']=$current['time_stop'];
+                $tmp[]=$first;
+                $tmp[]=$last;
+                if($GLOBALS['DEBUG_TRACE']) {
+                    echo "12<br />";
+                    echo "----------------<br />";
+                    print_r($first);
+                    echo "<br />";
+                    print_r($last);
+                    echo "<br />";
+                    print_r($current);
+                    echo "<br />";
+                }
+                return "0";
+            } else {
+                $first['time_stop']=$current['time_start']; 
+                $last['time_start']=$current['time_stop'];
+                $tmp[]=$first;
+                $tmp[]=$current;
+                $tmp[]=$last;
+                if($GLOBALS['DEBUG_TRACE']) {
+                    echo "13<br />";
+                    echo "----------------<br />";
+                    print_r($first);
+                    echo "<br />";
+                    print_r($last);
+                    echo "<br />";
+                    print_r($current);
+                    echo "<br />";
+                }
+                return "0";
+            }
+        } 
+    } else if(($current['time_start']>=$first['time_start'])&&($current['time_stop']>$last['time_stop'])&&($current['time_start']<$last['time_stop'])&&($current['time_start']<$last['time_start'])) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            echo "special case: <br />";
+            echo "--------------------<br />";
+        }
+        $tmp_current=$current;
+        $tmp_current['time_stop']=$last['time_stop'];
+        $continue=compare_data_program($first,$last,$tmp_current,$tmp);
+        $current['time_start']=$last['time_stop'];
+        return "2";      
+    } else {
       $tmp[]=$first;
       return "1";
   }
@@ -1571,7 +2112,9 @@ function purge_program($arr) {
    asort($arr);
    if(count($arr)>0) {
       foreach($arr as $val) {
-         if(($val['value']!=0)&&($val['time_start']!=$val['time_stop'])&&(strcmp($val['value'],"")!=0)&&(strcmp($val['time_start'],"")!=0)&&(strcmp($val['time_stop'],"")!=0)) {
+         if(($val['value']==0)||($val['time_start']==$val['time_stop'])||(strcmp($val['value'],"")==0)||(strcmp($val['time_start'],"")==0)&&(strcmp($val['time_stop'],"")==0)) {
+            //nothing to do
+         } else {
                $tmp_arr = array(
                   "time_start" => $val['time_start'],
                   "time_stop" => $val['time_stop'],
@@ -1579,8 +2122,8 @@ function purge_program($arr) {
                );
                $tmp[]=$tmp_arr;
              }
-      } 
-   return $tmp;
+        }
+      return $tmp;
    }
 }
 // }}}
