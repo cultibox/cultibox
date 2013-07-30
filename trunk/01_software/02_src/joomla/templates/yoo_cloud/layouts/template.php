@@ -18,6 +18,22 @@ include($this['path']->path('layouts:template.config.php'));
 <html lang="<?php echo $this['config']->get('language'); ?>" dir="<?php echo $this['config']->get('direction'); ?>">
 
 <head>
+<?php
+    $filename = '../../VERSION.txt';
+    if (file_exists($filename)) {
+        clearstatcache();
+        $time=time();
+        $mod_time=filemtime($filename);
+        $duration=$time-$mod_time;
+        if($duration<600) { //10 Minutes après l'installation:
+            header( 'Expires: Sat, 26 Jul 1997 05:00:00 GMT' );
+            header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
+            header( 'Cache-Control: no-store, no-cache, must-revalidate' );
+            header( 'Cache-Control: post-check=0, pre-check=0', false );
+            header( 'Pragma: no-cache' ); 
+        }
+    }
+?>
 <?php echo $this['template']->render('head'); ?>
 <?php 
 	// Surcharge Calagan
@@ -47,16 +63,6 @@ include($this['path']->path('layouts:template.config.php'));
 </head>
 
 <body id="page" class="page <?php echo $this['config']->get('body_classes'); ?>" data-config='<?php echo $this['config']->get('body_config','{}'); ?>'>
-<?php
-        $filename = '../../VERSION';
-        if (file_exists($filename)) {
-            clearstatcache();
-            $time=time();
-            $mod_time=filemtime($filename);
-            $duration=$time-$mod_time;
-            echo "$filename was last modified: ".$duration;
-        }
-    ?>
 	<div id="page-bg">
 		<div id="page-bg2">
 			<?php if ($this['modules']->count('absolute')) : ?>

@@ -404,7 +404,6 @@ if(!empty($apply)&&(isset($apply))) {
             // To compute the number of action for the plugv file limited to 250 actions:
             // To do: enregistrer toutes les actions puis regarder à combien on est: si > 250, on supprime la dernière action jusqu'à descendre en dessous de 250
             // Autre possibilité, laisser le programme enregistré mais indiquer sur les programmes à partir de quelle heure les prises ne changent plus d'état et gerdent leur état...
-            /* 
             $base=create_program_from_database($main_error);
             $nb_prog=count($base);  
             $count=-1;
@@ -421,10 +420,9 @@ if(!empty($apply)&&(isset($apply))) {
                if(find_new_line($base,$program['end_time'])) {
                     $nb_prog=$nb_prog+1;
                }
+
                $count=$count+1;
             }
-
-            echo "$nb_prog----";
 
             $ch_insert=true;
             if($nb_prog>=250) {
@@ -449,8 +447,7 @@ if(!empty($apply)&&(isset($apply))) {
             } else {
                 $ch_insert=false;
             }
-            */
-            $tmp_prog=$prog;
+
             if(!insert_program($tmp_prog,$main_error)) $ch_insert=false;
 
             if($ch_insert) {
