@@ -1297,6 +1297,9 @@ msgstr "Erreur lors de la remise à zéro du(des) programme(s)"
 msgid "ERROR_MINIMAL_TIME"
 msgstr "Le temps minimal autorisé est de 5 minutes"
 
+msgid "ERROR_SELECT_SENSOR"
+msgstr "Au moins un capteur doit être choisis pour la régulation, par défaut le capteur 1 sera selectionné"
+
 
 # For the informations part:
 msgid "CLOSE_CONFIRM"

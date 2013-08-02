@@ -873,7 +873,6 @@ function insert_program($program,&$out) {
             );
         }
         $tmp=purge_program($prg);
-        $tmp=optimize_program($prg);
    } else {
         foreach($program as $progr) {
             if(count($tmp)>0) {
