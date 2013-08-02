@@ -3160,6 +3160,16 @@ EOF;
           $out[]=__('ERROR_DELETE_SQL');
        }
    }
+
+   for($i=0;$i<count($res);$i++) {
+        $res[$i]['title']=htmlentities($res[$i]['title'], ENT_NOQUOTES, "UTF-8");
+        $res[$i]['title']=htmlspecialchars_decode($res[$i]['title']);
+        $res[$i]['desc']=htmlentities($res[$i]['desc'], ENT_NOQUOTES, "UTF-8");
+        $res[$i]['desc']=htmlspecialchars_decode($res[$i]['desc']);
+        
+   }
+
+   
 }
 // }}}
 
