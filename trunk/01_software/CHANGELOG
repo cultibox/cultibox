@@ -1,5 +1,6 @@
 Cultibox (1.1.29) precise; urgency=low
     + Correction des accents sur Mac et concernant la partie Notes
+    + Ajout de la librairie scrollTo JQUERY pour gérer le déplacement des fenêtres après une action
 
 -- Yann Genevois <yann.genevois@gmail.com>  Fri Aug  2 10:30:41 CEST 2013
 
