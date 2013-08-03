@@ -34,6 +34,11 @@
 </div>
 <?php } ?>
 <br />
+
+<script>
+sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR']) ?>;
+</script>
+
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm" id="plugForm">
 <p class="title_conf"><?php echo __('PLUG'); ?> 
     <select name="selected_plug" onChange="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);" onLoad="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);">
@@ -172,7 +177,7 @@
               </table>
             </div>
          </td>
-         <td><div id="error_select_sensor" style="display:none" class="error_field"><?php echo __('ERROR_SELECT_SENSOR'); ?></div></td>
+         <td><div id="error_select_sensor" style="display:none" class="error_field"><img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_SELECT_SENSOR'); ?></div></td>
       </tr>
       <tr>
          <td></td>
