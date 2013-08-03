@@ -796,9 +796,9 @@ $(document).ready(function() {
             }
 
             if(!check) {
-               $("#error_select_sensor").show();
+               $("#error_select_sensor"+plug).show();
             } else {
-               $("#error_select_sensor").css("display","none");
+               $("#error_select_sensor"+plug).css("display","none");
             }
         }
     });
