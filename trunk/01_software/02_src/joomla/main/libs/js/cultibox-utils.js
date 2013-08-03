@@ -264,11 +264,8 @@ function getTolerance(i,j,secondR) {
       var seconLabel = document.getElementById('second_regul_label'+j);
       var secondVal = document.getElementById('second_regul'+j);
       var secondParam = document.getElementById('second_regul_param'+j);
-      var secondTolLabel = document.getElementById('label_regul_tolerance'+j);
-      var secondTolValue = document.getElementById('div_regul_tolerance_value'+j);
       var labelSecondDeg = document.getElementById('label_second_degree'+j);
       var labelSecondPct = document.getElementById('label_second_pourcent'+j);
-
       var labelSensor = document.getElementById('label_sensor'+j);
       var Sensor = document.getElementById('sensor'+j);
       var labelComputeRegul = document.getElementById('label_regul_compute'+j);    
@@ -291,8 +288,6 @@ function getTolerance(i,j,secondR) {
                         labelPct.style.display = 'none';
                         labelSecondDeg.style.display = 'none';
                         labelSecondPct.style.display = 'none';
-                        secondTolLabel.style.display = 'none';
-                        secondTolValue.style.display = 'none';
                     } 
                     labelSensor.style.display = 'none'; 
                     Sensor.style.display = 'none'; 
@@ -315,8 +310,6 @@ function getTolerance(i,j,secondR) {
                         labelSecondDeg.style.display = 'none';
                         labelSecondPct.style.display = 'none';
                         secondParam.style.display = 'none'; 
-                        secondTolLabel.style.display = 'none';
-                        secondTolValue.style.display = 'none';
                     }
                     labelSensor.style.display = 'none'; 
                     Sensor.style.display = 'none'; 
@@ -339,8 +332,6 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = ''; 
-                        secondTolLabel.style.display = '';
-                        secondTolValue.style.display = '';
                         labelSensor.style.display = '';
                         Sensor.style.display = '';
                         labelComputeRegul.style.display = '';
@@ -363,8 +354,6 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = ''; 
-                        secondTolLabel.style.display = '';
-                        secondTolValue.style.display = '';
                         labelSensor.style.display = '';
                         Sensor.style.display = ''; 
                         labelComputeRegul.style.display = '';
@@ -387,8 +376,6 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = ''; 
-                        secondTolLabel.style.display = '';
-                        secondTolValue.style.display = '';
                         labelSensor.style.display = ''; 
                         Sensor.style.display = ''; 
                         labelComputeRegul.style.display = '';
@@ -411,8 +398,6 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = '';
-                        secondTolLabel.style.display = '';
-                        secondTolValue.style.display = '';
                         labelSensor.style.display = '';
                         Sensor.style.display = '';
                         labelComputeRegul.style.display = '';
@@ -435,8 +420,6 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = 'none'; 
                         secondVal.style.display = 'none'; 
                         secondParam.style.display = 'none';
-                        secondTolLabel.style.display = 'none';
-                        secondTolValue.style.display = 'none';
                     } 
                     labelSensor.style.display = 'none'; 
                     Sensor.style.display = 'none'; 
