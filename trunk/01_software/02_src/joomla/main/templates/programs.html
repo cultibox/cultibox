@@ -747,7 +747,7 @@ $(document).ready(function() {
     <td class="program-manage-field">
           <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
           <input type="hidden" name="add_plug" value="add_plug">
-          <input type="submit" name="add" <?php if($nb_plugs>=$GLOBALS['NB_MAX_PLUG']) { ?> disabled value="<?php echo __('MAX_PLUG_REACHED'); ?>" class="inputDisable" <?php } else { ?>value="<?php echo __('ADD_PLUG'); ?>" <?php } ?>>
+          <input type="submit" name="add" <?php if($nb_plugs>=$GLOBALS['NB_SELECTABLE_PLUG']) { ?> disabled value="<?php echo __('MAX_PLUG_REACHED'); ?>" class="inputDisable" <?php } else { ?>value="<?php echo __('ADD_PLUG'); ?>" <?php } ?>>
     </td>
     <td></td>
 </tr>
