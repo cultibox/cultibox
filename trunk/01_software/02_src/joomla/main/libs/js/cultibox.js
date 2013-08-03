@@ -784,6 +784,24 @@ $(document).ready(function() {
          });
     });
 
+    
+    $('select[id^="plug_sensor"]').change(function () {
+        var plug = $(this).attr('id').substring(11,12);
+        var check=false;
+        if(sensors) {
+            for (var i = 1  ; i<=sensors; i++) {
+                if($("#plug_sensor"+plug+i+" option:selected").val()=="True") {
+                    check=true;
+                }
+            }
+
+            if(!check) {
+               $("#error_select_sensor").show();
+            } else {
+               $("#error_select_sensor").css("display","none");
+            }
+        }
+    });
 
 
     var check = window.location.pathname.match(/display-logs/g);
