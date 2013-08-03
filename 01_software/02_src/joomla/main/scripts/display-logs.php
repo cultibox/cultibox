@@ -65,8 +65,7 @@ $next=getvar('next');
 $stats=get_configuration("STATISTICS",$main_error);
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
-
-
+$anchor=getvar('anchor');
 $select_power=getvar('select_power');
 $select_plug=getvar('select_plug');
 $startday=getvar('startday');

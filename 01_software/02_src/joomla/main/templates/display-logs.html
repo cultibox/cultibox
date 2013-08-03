@@ -53,6 +53,16 @@
         }
 ?>
 
+<?php if((isset($anchor))&&(!empty($anchor))) { ?>
+    <script>
+        $(document).ready(function(){
+           $.scrollTo('#<?php echo $anchor; ?>',300); 
+        });
+    </script>
+<?php } ?>
+
+
+
 <script>
 $(function() {
    $("#datepicker").datepicker({ 
@@ -126,7 +136,7 @@ buttonImageOnly: 'true',
 </div>
 <br />
 <div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
-<form name="display-log-day" id="display-log-day" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-logs" method="post">
+<form name="display-log-day" id="display-log-day" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-day"></td>
@@ -181,6 +191,7 @@ buttonImageOnly: 'true',
 </tr>
 </table>
     <input type="hidden" name="import_load" id="import_load" value="<?php echo $import_load; ?>">
+    <input type="hidden" name="anchor" value="anchor-logs">
 </form>
 <br />
 </div>
@@ -973,7 +984,7 @@ $(function () {
 <tr>
     <td class="left_log">
         <?php if((strcmp("$type","month")!=0)||(($GLOBALS['FIRST_LOG_YEAR']!=$startyear)||($startmonth!=01))) { ?>
-        <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-logs" method="post">
+        <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
             <input type="submit" value="<" name="previous" class="button_log" title="<?php if(strcmp($type,"days")==0) echo __('PREVIOUS_BUTTON_DAY'); else echo __('PREVIOUS_BUTTON_MONTH'); ?>">
             <?php if(strcmp($type,"days")==0) { ?>
                 <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("-1 day", strtotime("$startday"))); ?>">
@@ -989,12 +1000,13 @@ $(function () {
                     }
                 ?>
                 <input type="hidden" name="startmonth" value="<?php echo "$month"; ?>">
-                <input type="hidden" name="startyear" value="<?php if(strcmp("$startmonth","01")==0) echo $startyear-1; else echo $startyear; ?>" >
+                <input type="hidden" name="startyear" value="<?php if(strcmp("$startmonth","01")==0) echo $startyear-1; else echo $startyear; ?>">
             <?php } ?>
 
             <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
             <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
             <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
+            <input type="hidden" name="anchor" value="anchor-logs">
         </form>
         <?php } ?>
     </td>
@@ -1007,7 +1019,7 @@ $(function () {
 
           if(((strcmp("$type","month")==0)&&(($startyear!=date('Y'))||($startmonth!=12)))||((strcmp("$type","days")==0)&&(strcmp("$startday","$yy-$mm-$dd")!=0))) { 
         ?>
-        <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-logs" method="post">
+        <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
             <input type="submit" value=">" name="next" class="button_log" title="<?php if(strcmp($type,"days")==0) echo __('NEXT_BUTTON_DAY'); else echo __('NEXT_BUTTON_MONTH'); ?>">
             <?php if(strcmp($type,"days")==0) { ?>
                 <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("+1 day", strtotime("$startday"))); ?>">
@@ -1029,6 +1041,7 @@ $(function () {
             <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
             <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
             <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
+            <input type="hidden" name="anchor" value="anchor-logs">
         </form>
         <?php } ?>
     </td>
@@ -1136,7 +1149,7 @@ $(function () {
         <label class="format_success" id="success_load_still_log" style="display:none"><?php echo __('STILL_LOG_FILE'); ?></label>
 </div>
 
-<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-manage" method="post" id="reset_log_form">
+<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post" id="reset_log_form">
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
@@ -1145,10 +1158,11 @@ $(function () {
     <td></td>
 </tr>
 </table>
+    <input type="hidden" name="anchor" value="anchor-manage">
 </form>
 
 
-<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-manage" method="post" >
+<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
@@ -1161,6 +1175,7 @@ $(function () {
 <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
 <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
 <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
+<input type="hidden" name="anchor" value="anchor-manage">
 <?php if(strcmp("$type","month")==0) { ?>
 <input type="hidden" name="startmonth" value="<?php echo "$startmonth"; ?>">
 <input type="hidden" name="startyear" value="<?php echo "$startyear"; ?>" >
@@ -1173,7 +1188,7 @@ $(function () {
 
 
 <label id="anchor-manage"></label>
-<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-manage" method="post" id="reset_log_power_form">
+<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post" id="reset_log_power_form">
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>
@@ -1182,10 +1197,11 @@ $(function () {
     <td></td>
 </tr>
 </table>
+     <input type="hidden" name="anchor" value="anchor-manage">
 </form>
 
 
-<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>#anchor-manage" method="post" >
+<form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post" >
 <table class="table_width">
 <tr>
     <td class="log-manage-marge"></td>

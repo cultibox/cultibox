@@ -68,6 +68,7 @@ $rep="";
 $resume_regul=array();
 $tmp="";
 $submit=getvar("submit_progs",$main_error);
+$anchor=getvar('anchor');
 
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');
 $error_value[3]=__('ERROR_VALUE_PROGRAM_TEMP','html');

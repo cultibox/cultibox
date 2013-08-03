@@ -34,6 +34,7 @@
     <?php } ?>
 </div>
 <?php } ?>
+
 <br />
 <p class="title_conf"><?php echo __('VIEW_CURRENT_PROGRAM'); ?>
 <select name="selected_plug" id="selected_plug_conf">
@@ -62,7 +63,7 @@
 </table>
 <br /><hr /><br />
 
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-programs" method="post" name="actionprog" id="actionprog">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="actionprog" id="actionprog">
 <p class="title_conf"><?php echo __('CONFIGURE_PROGRAM'); ?>
     <select name="selected_plug" id="selected_plug">
           <?php for($i=0;$i<count($plugs_infos);$i++) { ?>
@@ -139,6 +140,20 @@ plug_selected=<?php echo json_encode($selected_plug) ?>;
 rep=<?php echo json_encode($rep) ?>;
 error_valueJS=<?php echo json_encode($error_value) ?>;
 </script>
+
+<?php if((isset($pop_up))&&("$pop_up"!="False")) { ?>
+    <?php if((isset($anchor))&&(!empty($anchor))) { ?>
+        <script>anchor = <?php echo json_encode($anchor) ?>;</script>
+    <?php } ?>
+<?php  } else { ?>
+    <?php if((isset($anchor))&&(!empty($anchor))) { ?>
+        <script>
+            $(document).ready(function(){
+                $.scrollTo('#<?php echo $anchor; ?>',300); 
+            });
+        </script>
+    <?php } ?>
+<?php } ?>
 
 <script type="text/javascript">
 
@@ -708,6 +723,7 @@ $(document).ready(function() {
 </tr>
 </table>
 <input type="hidden" name="submit_progs" value="submit_progs">
+<input type="hidden" name="anchor" value="anchor-programs">
 </form>
 <div id="same_dialog_program" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
 <p><?php echo __('CONFIRM_SAME_PROGRAM'); ?></p>
@@ -723,7 +739,7 @@ $(document).ready(function() {
 
 <label id="anchor-manage"></label>
 <label class="title_conf"><?php echo __('MANAGE_PROGRAM_INFOS'); ?></label>
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -736,9 +752,10 @@ $(document).ready(function() {
     <td></td>
 </tr>
 </table>
+<input type="hidden" name="anchor" value="anchor-manage">
 </form>
 
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -751,10 +768,11 @@ $(document).ready(function() {
     <td></td>
 </tr>
 </table>
+<input type="hidden" name="anchor" value="anchor-manage">
 </form>
 
 
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post" id="reset_program_form">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" id="reset_program_form">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -785,6 +803,7 @@ $(document).ready(function() {
 </tr>
 </table>
 <input type="hidden" name="submit_progs" value="submit_progs">
+<input type="hidden" name="anchor" value="anchor-manage">
 </form>
 
 <div id="delete_dialog_program" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
@@ -793,7 +812,7 @@ $(document).ready(function() {
 
 
 <?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -805,9 +824,10 @@ $(document).ready(function() {
     <td></td>
 </tr>
 </table>
+<input type="hidden" name="anchor" value="anchor-manage">
 </form>
 
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-manage" method="post" enctype="multipart/form-data">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
 <table class="table_width">
 <tr>
     <td class="program-manage-marge"></td>
@@ -820,6 +840,7 @@ $(document).ready(function() {
     <td><input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>"></td>
 </table>
 <input type="hidden" name="submit_progs" value="submit_progs">
+<input type="hidden" name="anchor" value="anchor-manage">
 </form>
 <?php } ?>
 
