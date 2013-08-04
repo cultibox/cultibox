@@ -223,8 +223,8 @@ $(document).ready(function() {
    // Affichage des tooltips sur les éléments avec un title
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
 
-   $(".pop_up_message").dialog({ width: 550, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(anchor) {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
-   $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(anchor) {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
+   $(".pop_up_message").dialog({ width: 550, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+   $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
 
    $(".delete").click(function() {
           var currentForm;
@@ -800,6 +800,100 @@ $(document).ready(function() {
             } else {
                $("#error_select_sensor"+plug).css("display","none");
             }
+        }
+    });
+
+
+    // Check errors for the wizard part:
+    $("#finish, #next_plug").click(function(e) {
+        e.preventDefault();
+        var checked=true;
+
+        $("#error_start_time").css("display","none");
+        $("#error_end_time").css("display","none");
+        $("#error_same_start").css("display","none");
+        $("#error_same_end").css("display","none");
+        $("#error_value_program").css("display","none");
+
+
+        e.preventDefault();
+        var checked=true;
+        $.ajax({
+            cache: false,
+            async: false,
+            url: "../../main/modules/external/check_value.php",
+            data: {value:$("#start_time").val(),type:'time'}
+        }).done(function (data) {
+            if(data!=1) {
+                $("#error_start_time").show(700);
+                checked=false;
+            }
+        });
+
+        $.ajax({
+            cache: false,
+            async: false,
+            url: "../../main/modules/external/check_value.php",
+            data: {value:$("#end_time").val(),type:'time'}
+        }).done(function (data) {
+            if(data!=1) {
+                $("#error_end_time").show(700);
+                checked=false;
+            }
+        });
+
+
+        if(checked) {
+            $.ajax({
+                cache: false,
+                async: false,
+                url: "../../main/modules/external/check_value.php",
+                data: {value:$("#start_time").val()+"_"+$("#end_time").val(),type:'same_time'}
+            }).done(function (data) {
+                if(data!=1) {
+                    $("#error_same_start").show(700);
+                    $("#error_same_end").show(700);
+                    checked=false;
+                } 
+            });
+        }
+
+        if(plug_type!="lamp") {
+            if(($("#value_program").val())&&($("#value_program").val()!="0")) {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#value_program").val(),type:'value_program',plug_type:plug_type}
+                }).done(function (data) {
+                    if(data!="1") {
+                        $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[data]);
+                        $("#error_value_program").show(700);
+                        checked=false;
+                    }
+                });
+            } else {
+                if((plug_type=="heating")||(plug_type=="ventilator")) {
+                    var check=3;
+                } else if((plug_type=="humidifier")||(plug_type=="dehumidifier")) {
+                    var check=4;
+                } else {
+                    var check=5;
+                }
+
+                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[check]);
+                $("#error_value_program").show(700);
+                checked=false;
+            }
+        }
+
+        if(checked) {
+            if($(this).attr('id')=="finish") {
+                $('#type_submit').val("submit_close");
+            } else {
+                $('#type_submit').val("submit_next");
+            }
+            document.forms['submit_wizard'].submit();
         }
     });
 

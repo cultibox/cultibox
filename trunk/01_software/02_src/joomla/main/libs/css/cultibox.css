@@ -232,7 +232,7 @@ td.wizard-step {
 }
 
 td.wizard-marge-td {
-   width: 30%;
+   width: 20%;
 }
 
 td.wizard-title {
@@ -240,6 +240,10 @@ td.wizard-title {
 }
 
 td.wizard-field {
+   width: 20%;
+}
+
+td.wizard-error {
    width: 30%;
 }
 
@@ -450,7 +454,7 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover {
 }
 
 .text_info, .step_info {
-	text-indent:0em;
+	text-indent:2%;
     text-align : justify;
 	display:block;
 	margin:auto;
