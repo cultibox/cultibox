@@ -31,10 +31,8 @@ __('LANG');
 
 
 // ================= VARIABLES ================= //
-$finish=getvar('finish');
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $selected_plug=getvar('selected_plug');
-$next_plug=getvar('next_plug');
 $close=getvar('close');
 $program="";
 $pop_up_message="";
@@ -44,8 +42,12 @@ $version=get_configuration("VERSION",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $main_info[]=__('WIZARD_DISABLE_FUNCTION').": <a href='programs-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('CLASSIC')."' title='' id='Classic' /></a>";
+$type_submit=getvar('type_submit');
 
-
+$error_value[2]=__('ERROR_VALUE_PROGRAM','html');
+$error_value[3]=__('ERROR_VALUE_PROGRAM_TEMP','html');
+$error_value[4]=__('ERROR_VALUE_PROGRAM_HUMI','html');
+$error_value[5]=__('ERROR_VALUE_PROGRAM','html');
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
@@ -55,7 +57,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 
 if((isset($close))&&(!empty($close))) {
-    header('Location: plugs-'.$_SESSION['SHORTLANG']);
+    header('Location: programs-'.$_SESSION['SHORTLANG']."?selected_plug=".$selected_plug);
 }
 
 
@@ -185,9 +187,9 @@ if((empty($value_program))||(!isset($value_program))) {
 }
 
 
+$plug_power_max=get_plug_conf("PLUG_POWER_MAX",$selected_plug,$main_error);
 
-
-if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_plug)))) {
+if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")==0)) {
     $program=getvar('program');
 
     if((isset($program))&&(!empty($program))) {
@@ -203,24 +205,7 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
             $end_time=getvar('end_time');
         }
 
-        if(!check_format_time($start_time)) {
-            $error['start_time']=__('ERROR_FORMAT_TIME_START');         
-        }
-
-                
-        if(!check_format_time($end_time)) {
-            $error['end_time']=__('ERROR_FORMAT_TIME_END'); 
-        }
-
-        if((!isset($error['start_time']))&&(!isset($error['end_time']))) {
-            $chtime=check_times($start_time,$end_time); 
-            if(!$chtime) {
-                $error['start_time']=__('ERROR_SAME_TIME');
-                $error['end_time']=__('ERROR_SAME_TIME');           
-            }
-        } else {
-            $chtime=false;
-        }
+        $chtime=check_times($start_time,$end_time); 
 
         if(strcmp($plug_type,"lamp")!=0) {
             if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
@@ -280,15 +265,15 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
                 } 
 			    insert_plug_conf("PLUG_TYPE",$prog[0]["selected_plug"],$prog[0]["plug_type"],$main_error);
             } else {
-                unset($finish);
+                unset($type_submit);
             }
 
             insert_plug_conf("PLUG_ENABLED",$selected_plug,"True",$main_error);
 
             if(count($error)==0) {
-                if(($selected_plug==$nb_plugs)||((isset($finish))&&(!empty($finish)))) {            
+                if(($selected_plug==$nb_plugs)||((isset($type_submit))&&(!empty($type_submit))&&(strcmp($type_submit,"submit_close")==0))) {            
                     set_historic_value(__('VALID_UPDATE_PROGRAM')." (".__('WIZARD_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
-                    header('Location: programs-'.$_SESSION['SHORTLANG']);
+                    header('Location: programs-'.$_SESSION['SHORTLANG']."?selected_plug=".$selected_plug);
                 }
 			}
 
@@ -300,9 +285,9 @@ if(((isset($finish))&&(!empty($finish)))||((isset($next_plug))&&(!empty($next_pl
             }
         }
     }
-    if((isset($next_plug))&&(!empty($next_plug))&&(count($error)==0)) {
+    if((isset($type_submit))&&(!empty($type_submit))&&(strcmp($type_submit,"submit_next")==0)&&(count($error)==0)) {
         $selected_plug=$selected_plug+1;
-        $step=2;
+        $step=1;
     }
 }
 
@@ -312,11 +297,7 @@ if((!empty($selected_plug))&&(isset($selected_plug))) {
 
 
 if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
-    if(($selected_plug==1)) {
-        $step=1;
-    } else {
-        $step=2;
-    }
+    $step=1;
 } else if((isset($next))&&(!empty($next))) {
     $step=$step+1;	
 } else if((isset($previous))&&(!empty($previous))) {

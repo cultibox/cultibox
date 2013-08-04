@@ -846,14 +846,11 @@ msgstr "Enregistrer et configurer une autre prise"
 msgid "WIZARD_NEXT_PLUG"
 msgstr "Suivant >"
 
-msgid "WIZARD_PLUG_NUMBER"
-msgstr "Cet assistant vous permet de vous familiariser avec les configurations des prises et des programmes en configurant avec vous la première prise."
-
 msgid "WIZARD_PLUG_TYPE"
-msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximum</b>. Il est possible de configurer les autres prises comme des lampes mais elles ne pourront pas accueillir une lampe dont la puissance dépasse <b>200 Watts</b>. "
+msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximum</b>."
 
 msgid "WIZARD_PLUG_LAMP"
-msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe. Pour cela choisissez une heure de départ où la lampe se mettra en route et une heure de fin où la lampe s'éteindra."
+msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe afin de déterminer le fonctionnement de votre équipement."
 
 msgid "WIZARD_PLUG_PROGRAM"
 msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de votre équipement. Pour cela choisissez une heure de départ où l'équipement se mettra en route et une heure de fin où l'équipement s'éteindra."
@@ -869,6 +866,18 @@ msgstr "Vous allez maintenant configurer une nouvelle prise."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
 msgstr "Choisir le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour augmenter l'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>'autre' servant pour tous les autres type d'équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
+
+msgid "START_TIME_LAMP"
+msgstr "Heure d'allumage de la lampe"
+
+msgid "END_TIME_LAMP"
+msgstr "Heure d'extinction de la lampe"
+
+msgid "START_TIME_EQUIPMENT"
+msgstr "Heure d'allumage de l'équipement"
+
+msgid "END_TIME_EQUIPMENT"
+msgstr "Heure d'extinction de l'équipement"
 
 
 #For the calendar part:
