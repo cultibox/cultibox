@@ -594,6 +594,9 @@ msgstr "Minimum"
 msgid "MAXIMUM"
 msgstr "Maximum"
 
+msgid "JUMPTO_WIZARD"
+msgstr "Utiliser l'assistant pour configurer cette prise"
+
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"

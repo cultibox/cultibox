@@ -551,11 +551,11 @@ function getEnable(i,j) {
 // ROLE add hidden field to a form
 // IN  input value: the form to be used and the value of the field
 // USED BY: templates/plugs.html 
-function addHidden(theForm, value) {
+function addHidden(theForm, value,name) {
     // Create a hidden input element, and append it to the form:
     var input = document.createElement('input');
     input.type = 'hidden';
-    input.name = 'jumpto';
+    input.name = name;
     input.value = value;
     theForm.appendChild(input);
 }

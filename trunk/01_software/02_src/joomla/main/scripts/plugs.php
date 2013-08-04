@@ -48,6 +48,12 @@ $selected_error="";
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $jumpto=getvar("jumpto");
 $submit=getvar("submit_plugs");
+$jumpwizard=getvar("jumpwizard");
+
+if((isset($jumpwizard))&&(!empty($jumpwizard))) {
+       $url="./wizard-".$_SESSION['SHORTLANG']."?selected_plug=".$jumpwizard;
+       header("Location: $url");
+}
 
 $main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
 
