@@ -1,5 +1,0 @@
-===============================================
-     CULTIBOX INSTALLATION SOFTWARE
-===============================================
-
-Welcome to the software installer Cultibox. This program will guide you, step by step, installing the Cultibox software. The Cutibox software allows you to manage your Cultibox: program management, events calendar, displaying logs temperature and humidity ...
