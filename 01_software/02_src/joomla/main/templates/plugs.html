@@ -191,7 +191,8 @@ sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR']) ?>;
          <td><div id="label_regul_compute<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>"><?php echo __('COMPUTE_REGUL_METHOD'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_REGUL_COMPUTE_METHOD'); ?>" /></div></td>
          <td>
            <div id="regul_compute<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
-                <select name="plug_compute_method<?php echo $i; ?>" id="plug_compute_method<?php echo $i; ?>">
+                <select name="plug_compute_method<?php echo $i; ?>" id="plug_compute_method<?php echo $i; ?>" <?php if(strcmp("$advanced_regul","False")==0) { echo "disabled"; } ?>>
+                   
                    <option <?php if(strcmp($plug_compute_method{$i},"M")==0) { echo 'selected'; }?> value="M"><?php echo __('AVERAGE'); ?></option>
                    <option <?php if(strcmp($plug_compute_method{$i},"I")==0) { echo 'selected'; }?> value="I"><?php echo __('MINIMUM'); ?></option>
                    <option <?php if(strcmp($plug_compute_method{$i},"A")==0) { echo 'selected'; }?> value="A"><?php echo __('MAXIMUM'); ?></option>
