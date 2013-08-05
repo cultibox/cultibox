@@ -264,6 +264,14 @@ if((isset($advanced_regul))&&(!empty($advanced_regul))) {
         if(strcmp("$advanced_regul","False")==0) {
             for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
                 insert_plug_conf("PLUG_REGUL_SENSOR",$i,"1",$main_error);
+                insert_plug_conf("PLUG_COMPUTE_METHOD",$i,"M",$main_error);
+           
+                if((!empty($sd_card))&&(isset($sd_card))) {
+                    $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
+                    if(count($plugconf)>0) {
+                        write_plugconf($plugconf,$sd_card);
+                    }
+                }
             }
         }
         $update_conf=true;
