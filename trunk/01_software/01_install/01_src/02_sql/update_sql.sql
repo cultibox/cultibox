@@ -86,3 +86,15 @@ ALTER TABLE `cultibox`.`configuration` CHANGE `REGUL_SENSOR` `ADVANCED_REGUL_OPT
 ALTER TABLE `cultibox`.`plugs` CHANGE `PLUG_REGUL_SENSOR` `PLUG_REGUL_SENSOR` VARCHAR( 7 ) NOT NULL DEFAULT '1';
 ALTER TABLE `cultibox`.`plugs` ADD `PLUG_COMPUTE_METHOD` VARCHAR( 1 ) NOT NULL DEFAULT 'M';
 ALTER TABLE `cultibox`.`logs` ADD `type_sensor` INT NOT NULL DEFAULT '2';
+
+-- Version 1.1.29
+INSERT INTO `cultibox`.`notes` ( `id` , `title` , `desc` , `image` , `link` , `type_link` , `lang`) VALUES ( NULL , 'Documentation', 'Find a more complete documentation in the software by clicking on the Help tab <a href="http://localhost:6891/cultibox/main/docs/documentation_cultibox.pdf" target="_blank"> </ a>. The most current version is available using the following address:', NULL , 'https://code.google.com/p/cultibox', 'external', 'en_GB');
+
+INSERT INTO `cultibox`.`notes` ( `id` , `title` , `desc` , `image` , `link` , `type_link` , `lang`) VALUES ( NULL , 'Some questions?', 'If help is not enough to answer one of your question, send us an email at the following address:', NULL , 'support@cultibox.fr', 'mail', 'en_GB');
+
+INSERT INTO `cultibox`.`notes` ( `id` , `title` , `desc` , `image` , `link` , `type_link` , `lang`) VALUES ( NULL , 'Accessories', 'You can complete your package by purchasing additional sensors, 1000W and 3500W plugs or other accessories by visiting the website:', NULL , 'http://www.cultibox.fr', 'external', 'en_GB');
+
+INSERT INTO `cultibox`.`notes` ( `id` , `title` , `desc` , `image` , `link` , `type_link` , `lang`) VALUES ( NULL , 'Recycling', 'At Cultibox we reprocess all part of our products. The packaging can be recycled and Cultibox contains a lithium battery that should not be thrown away. For optimal recycling, return us the Cultibox and you will be rewarded.', 'recycling.png', NULL , NULL , 'en_GB');
+
+INSERT INTO `cultibox`.`notes` ( `id` , `title` , `desc` , `image` , `link` , `type_link` , `lang`) VALUES ( NULL , 'Warrantly', 'The Cultibox and accessories are warranted for two years. We ensure the security directly, without intermediary. To contact us:', NULL , 'support@cultibox.fr', 'mail', 'en_GB');
+
