@@ -884,6 +884,24 @@ msgstr "Heure d'extinction de l'équipement"
 
 
 #For the calendar part:
+msgid "CALENDAR_TITLE"
+msgstr "Calendrier"
+
+msgid "CALENDAR_ENGRAIS"
+msgstr "Planification d'engrais"
+
+msgid "CALENDAR_SUBSTRAT"
+msgstr "Substrat utilisé"
+
+msgid "CALENDAR_PROGRAM"
+msgstr "Programme d'engrais à appliquer"
+
+msgid "CALENDAR_STARTDATE"
+msgstr "Date de départ du programme"
+
+msgid "CREATE_CALENDAR_PROGRAM"
+msgstr "Créer le programme dans le calendrier"
+
 msgid "WHAT_DIALOG_CALENDAR"
 msgstr "Que voulez-vous faire?"
 
@@ -991,6 +1009,9 @@ msgstr "Êtes-vous sûr de vouloir supprimer tous les événements enregistrés 
 
 msgid "VALID_DELETE_CALENDAR"
 msgstr "Calendrier supprimé avec succès"
+
+msgid "VALID_ADD_PROGRAM"
+msgstr "Calendrier mis à jour avec le programme selectionné"
 
 
 # For the cost part:
@@ -1174,6 +1195,9 @@ msgstr "Jour de départ: erreur dans le format de la date (AAAA-MM-JJ)"
 msgid "ERROR_FORMAT_DATE_DAY_END"
 msgstr "Jour de fin: erreur dans le format de la date (AAAA-MM-JJ)"
 
+msgid "ERROR_FORMAT_CALENDAR_DATE"
+msgstr "Erreur dans le format de la date (AAAA-MM-JJ)"
+
 msgid "ERROR_FORMAT_DATE_DAY"
 msgstr "Jour à afficher: erreur dans le format (AAAA-MM-JJ)"
 
@@ -1311,6 +1335,9 @@ msgstr "Le temps minimal autorisé est de 5 minutes"
 
 msgid "ERROR_SELECT_SENSOR"
 msgstr "Au moins un capteur doit être choisis pour la régulation, par défaut le capteur 1 sera selectionné"
+
+msgid "ERROR_ADD_CALENDAR_PROGRAM"
+msgstr "Erreur lors de l'enregistrement du calendrier à partir du programme selectionné"
 
 
 # For the informations part:

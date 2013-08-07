@@ -44,6 +44,7 @@
       </nutriment>
 
       <color>red</color>
+      <icon>green.png</icon>
    </entry>
    
    <entry>
@@ -78,6 +79,7 @@
       </nutriment>
       
       <color>red</color>
+      <icon>green.png</icon>
    </entry>
    
    <entry>
@@ -112,6 +114,7 @@
       </nutriment>
       
       <color>red</color>
+      <icon>green.png</icon>
    </entry>
    
    <entry>
@@ -126,7 +129,7 @@
          Vous pouvez remplacer Roots Excelurator par Stimulator 1 roots (1ml/l)
       </content>
       <duration>7</duration>
-      <start>14</start>
+      <start>21</start>
 
       <nutriment>
         <name>Composant-1 / Bio Flower 1</name>
@@ -146,6 +149,7 @@
       </nutriment>
       
       <color>red</color>
+      <icon>green.png</icon>
    </entry>
    
 </feed>

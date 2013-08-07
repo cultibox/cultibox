@@ -24,6 +24,7 @@ foreach($db->query("$sql") as $row) {
                         "end" => $row['EndTime'],
                         "description" => $row['Description'],
                         "color" => $row['Color'],
+                        "icon" => $row['Icon'],
                         "external" => 0
             );
 }

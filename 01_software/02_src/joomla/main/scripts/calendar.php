@@ -28,10 +28,7 @@ $stats=get_configuration("STATISTICS",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $pop_up_message=""; 
 $reset=getvar('reset_calendar_submit');
-
-
-
-
+$calendar_start=getvar('calendar_startdate');
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
 $_SESSION['LANG'] = get_current_lang();
@@ -43,6 +40,108 @@ __('LANG');
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
+}
+
+if((!isset($calendar_start))||(empty($calendar_start))) {
+    $calendar_start=date('Y')."-".date('m')."-".date('d');
+} else {
+    $program_substrat=getvar('substrat');
+    $program_product=getvar('product');
+    $file="";
+
+    if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_product))&&(!empty($program_product))) {
+        if($handle = @opendir('main/xml')) {
+            while (false !== ($entry = readdir($handle))) {
+                if(($entry!=".")&&($entry!="..")) {
+                    $rss_file = file_get_contents("main/xml/".$entry);
+                    $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
+
+                    foreach ($xml as $tab) {
+                        if(is_array($tab)) {
+                            if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))&&(array_key_exists('periode', $tab))) {
+                                if((strcmp(strtolower($tab['marque']." - ".$tab['periode']),strtolower($program_product))==0)&&((strcmp(strtolower($tab['substrat']),strtolower($program_substrat))==0))) {
+                                    $file=$entry;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if(!empty($file)) {
+            $event=array();
+            if($handle = @opendir('main/xml')) {
+                $rss_file = file_get_contents("main/xml/".$file);
+                $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
+                
+                foreach ($xml as $tab) {
+                    if(is_array($tab)) {
+                        foreach($tab as $val) {
+                            if(is_array($val)) {
+                                if((array_key_exists('title', $val))&&(array_key_exists('duration', $val))&&(array_key_exists('start', $val))&&(array_key_exists('content', $val))) {
+                                        if((!empty($val['title']))&&(!empty($val['content']))) {
+                                            $datestartTimestamp = strtotime($calendar_start);
+                                            $timestart = date('Ymd', strtotime('+'.$val['start'].' days', $datestartTimestamp));
+
+                                            if(empty($val['start'])) {
+                                                $val['start']=0;
+                                            }
+
+                                            if(empty($val['duration'])) {
+                                                $val['duration']=0;
+                                            }
+
+                                            $val['duration']=$val['duration']-1;
+                                            if($val['duration']<=0) {
+                                                $timeend=$timestart;
+                                            } else {
+                                                $dateendTimestamp = strtotime($timestart);
+                                                $timeend = date('Ymd', strtotime('+'.$val['duration'].' days', $dateendTimestamp));
+                                            }
+
+                                            if(array_key_exists('color', $val))  {
+                                                $color=$val['color'];
+                                            } else {
+                                                $color="#821D78";
+                                            }
+
+                                            if(array_key_exists('icon', $val))  {
+                                                $icon=$val['icon'];
+                                            } else {
+                                                $icon=null;
+                                            }
+
+                                            $event[]=array(
+                                                    "title" => $val['title'],
+                                                    "start" => $timestart,
+                                                    "end" => $timeend,
+                                                    "description" => $val['content'],
+                                                    "color" => $color,
+                                                    "icon" => $icon,
+                                                    "external" => "0"
+                                                    //"allDay" => false
+                                            );
+                                        }   
+                                }
+                            }
+                       }
+                   } 
+                } 
+            }
+            if(count($event)>0) {
+                 if(insert_calendar($event,$main_error)) {
+                    $main_info[]=__('VALID_ADD_PROGRAM');
+                    $pop_up_message=$pop_up_message.popup_message(__('VALID_ADD_PROGRAM'));
+                 } else {
+                    $main_error[]=__('ERROR_ADD_CALENDAR_PROGRAM');
+                    $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_ADD_CALENDAR_PROGRAM'));
+                    
+                }
+            }
+        }
+    }
 }
 
 
@@ -151,6 +250,30 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
         insert_informations("log",$informations["log"]);
     }
 }
+
+
+//Get informations from XML files
+$substrat=array();
+$product=array();
+if($handle = @opendir('main/xml')) {
+    while (false !== ($entry = readdir($handle))) {
+        if(($entry!=".")&&($entry!="..")) {
+            $rss_file = file_get_contents("main/xml/".$entry);
+            $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
+
+            foreach ($xml as $tab) {
+                if(is_array($tab)) {
+                    if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))&&(array_key_exists('periode', $tab))) {
+                        $substrat[]=ucwords(strtolower($tab['substrat']));
+                        $product[]=ucwords(strtolower($tab['marque']))." - ".ucwords(strtolower($tab['periode']));
+                    }
+                }
+            }
+        }
+    }
+}
+
+$substrat=array_unique($substrat);
 
 
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div

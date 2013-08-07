@@ -110,6 +110,7 @@ INSERT INTO `cultibox`.`notes` ( `id` , `title` , `desc` , `image` , `link` , `t
 INSERT INTO `cultibox`.`notes` ( `id` , `title` , `desc` , `image` , `link` , `type_link` , `lang`) VALUES ( NULL , 'Garantie', 'Die Cultibox und Zubehör sind für zwei Jahre garantiert. Wir sorgen für die Sicherheit direkt, ohne Vermittler. Um uns zu kontaktieren:', NULL , 'support@cultibox.fr', 'mail', 'de_DE');
 
 UPDATE `cultibox`.`notes` SET `title` = 'Recyclage' WHERE `notes`.`id` =4;
+ALTER TABLE `cultibox`.`calendar` ADD `Icon` VARCHAR( 30 ) NULL ;
 
 
 

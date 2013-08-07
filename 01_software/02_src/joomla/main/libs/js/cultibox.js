@@ -815,8 +815,6 @@ $(document).ready(function() {
         $("#error_same_end").css("display","none");
         $("#error_value_program").css("display","none");
 
-
-        e.preventDefault();
         var checked=true;
         $.ajax({
             cache: false,
@@ -896,6 +894,28 @@ $(document).ready(function() {
             document.forms['submit_wizard'].submit();
         }
     });
+
+    
+    // Check errors for the calendar part:
+    $("#calendar-program").click(function(e) {
+        e.preventDefault();
+
+        $("#error_calendar_startdate").css("display","none");
+
+        $.ajax({
+            cache: false,
+            async: false,
+            url: "../../main/modules/external/check_value.php",
+            data: {value:$("#calendar_startdate").val(),type:'date'}
+        }).done(function (data) {
+            if(data!=1) {
+                $("#error_calendar_startdate").show(700);
+            } else {
+                document.forms['create_calendar_program'].submit();
+            }
+        });
+    });
+
 
 
     var check = window.location.pathname.match(/display-logs/g);

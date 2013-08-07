@@ -50,7 +50,8 @@
         <name>Multi Zyme</name>
         <dosage>1ml/l</dosage>
       </nutriment>
-      <color>red</color>
+      <color>orange</color>
+      <icon>green.png</icon>
    </entry>
    
     <entry>
@@ -64,8 +65,8 @@
          Vous pouvez remplacer Composant-Bio par Terre A et B (3ml/l - 3,5ml/l)
          Vous pouvez remplacer Roots Excelurator par Stimulator 1 roots (1ml/l)
       </content>
-      <duration>7</duration>
-      <start>14</start>
+      <duration>14</duration>
+      <start>7</start>
 
       <nutriment>
         <name>Composant/ Bio</name>
@@ -83,7 +84,8 @@
         <name>Multi Zyme</name>
         <dosage>1ml/l</dosage>
       </nutriment>
-      <color>red</color>
+      <color>orange</color>
+      <icon>green.png</icon>
    </entry>
    
     <entry>
@@ -115,7 +117,8 @@
         <name>Top Booster / PK13-14</name>
         <dosage>0,5ml/l</dosage>
       </nutriment>
-      <color>red</color>
+      <color>orange</color>
+      <icon>green.png</icon>
    </entry>
    
     <entry>
@@ -147,7 +150,8 @@
         <name>Top Booster / PK13-14</name>
         <dosage>1ml/l</dosage>
       </nutriment>
-      <color>red</color>
+      <color>orange</color>
+      <icon>green.png</icon>
    </entry>
    
     <entry>
@@ -180,7 +184,8 @@
         <name>Top Booster / PK13-14</name>
         <dosage>1,5ml/l</dosage>
       </nutriment>
-      <color>red</color>
+      <color>orange</color>
+      <icon>green.png</icon>
    </entry>
    
     <entry>
@@ -213,7 +218,8 @@
         <name>Top Booster / PK13-14</name>
         <dosage>1,5ml/l</dosage>
       </nutriment>
-      <color>red</color>
+      <color>orange</color>
+      <icon>green.png</icon>
    </entry>
    
     <entry>
@@ -227,7 +233,8 @@
       </content>
       <duration>1</duration>
       <start>55</start>
-      <color>red</color>
+      <color>orange</color>
+      <icon>green.png</icon>
    </entry>
    
     <entry>
@@ -260,7 +267,8 @@
         <name>Top Booster / PK13-14</name>
         <dosage>1,5ml/l</dosage>
       </nutriment>
-      <color>red</color>
+      <color>orange</color>
+      <icon>green.png</icon>
    </entry>
    
     <entry>
@@ -274,7 +282,8 @@
       </content>
       <duration>1</duration>
       <start>70</start>
-      <color>red</color>
+      <color>orange</color>
+      <icon>green.png</icon>
    </entry>
    
 </feed>
