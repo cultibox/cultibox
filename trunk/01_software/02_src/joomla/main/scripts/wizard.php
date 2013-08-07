@@ -269,6 +269,15 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
             }
 
             insert_plug_conf("PLUG_ENABLED",$selected_plug,"True",$main_error);
+            if((!empty($sd_card))&&(isset($sd_card))) {
+                $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
+                if(count($plugconf)>0) {
+                    if(!compare_plugconf($plugconf,$sd_card)) {
+                        write_plugconf($plugconf,$sd_card);
+                    }
+                }
+            }
+
 
             if(count($error)==0) {
                 if(($selected_plug==$nb_plugs)||((isset($type_submit))&&(!empty($type_submit))&&(strcmp($type_submit,"submit_close")==0))) {            
