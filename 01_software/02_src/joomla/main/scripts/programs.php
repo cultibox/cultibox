@@ -565,7 +565,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         }
 
         if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue")) {
-            $conf_uptodate=false;
+            $conf_uptodate=false;   
             write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error);
         }
 
