@@ -114,6 +114,7 @@ CREATE TABLE IF NOT EXISTS `calendar` (
   `EndTime` datetime DEFAULT NULL,
   `External` SMALLINT( 6 ) NOT NULL DEFAULT '0',
   `Color` varchar(7) NOT NULL DEFAULT '#4A40A4',
+  `Icon` VARCHAR( 30 ) NULL, 
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

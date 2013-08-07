@@ -339,6 +339,21 @@ td.welcome-link {
    text-align: center;
 }
 
+td.calendar-marge {
+   width: 15%;
+}
+
+td.calendar-title {
+   width: 30%
+}
+
+td.calendar-field {
+   width: 20%;
+}
+
+td.calendar-error {
+   width: 20%;
+}
 
 P.p_center{
    text-align: center;

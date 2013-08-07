@@ -2509,6 +2509,27 @@ EOF;
 // }}}
 
 
+// {{{ insert_calendar()
+// ROLE insert a new calendar event
+// IN   $out         error or warning message
+//      $event[]     the event to be recorded
+// RET false if errors occured, true else
+function insert_calendar($event,&$out) {
+    if(count($event)==0) return false;
+        $sql="";
+        foreach($event as $evt) {
+        $sql = $sql.<<<EOF
+INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Description`,`Color`,`External`,`Icon`) VALUES("{$evt['title']}", "{$evt['start']}", "{$evt['end']}", "{$evt['description']}", "{$evt['color']}","0","{$evt['icon']}");
+EOF;
+        }
+    $db = db_priv_pdo_start();
+    $db->exec("$sql");
+    $db=null;
+    return true;
+}
+// }}}
+
+
 // {{{ create_calendar_from_database()
 // ROLE read calendar from the database and format its to be writen into a sd card
 // IN   $out         error or warning message

@@ -5,6 +5,7 @@ Cultibox (1.1.29) precise; urgency=low
     + Ajout de la possibilité de configurer le type de puissance max d'une prise dans l'assistant
     + Ajout d'un bouton dans la partie prise qui permet de configurer la prise actuelle à l'aide de l'assistant
     + Ajout d'un tooltip d'explication sur l'option d'envoie d'informations
+    + Ajout des evènements dans le calendrier depuis les fichiers d'engrais XML
 
 -- Yann Genevois <yann.genevois@gmail.com>  Fri Aug  2 10:30:41 CEST 2013
 
