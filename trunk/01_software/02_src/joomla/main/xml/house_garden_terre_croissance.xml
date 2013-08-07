@@ -9,10 +9,11 @@
       <uri>http://www.cultibox.fr/</uri>
       <email>info@cultibox.fr</email>
    </author>
-   <category term = "engrais" label = "engrais" />
-  <substrat>terre</substrat>
-  <periode>croissance</periode>
-  <marque>House Garden</marque>
+   <category term = "engrais" label = "engrais">
+        <substrat>terre</substrat>
+        <periode>croissance</periode>
+        <marque>House Garden</marque>
+   </category>
    <link rel="self" href="www.cultibox.fr/house_garden_terre.xml" />
    <icon></icon>
    <logo></logo>
