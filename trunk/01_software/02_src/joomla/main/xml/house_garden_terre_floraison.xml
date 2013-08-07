@@ -27,7 +27,7 @@
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text">
          Ec conseillé : 1,4
-         Vous pouvez remplacer Composant-Bio par Terre A&B (2ml/l - 3ml/l)
+         Vous pouvez remplacer Composant-Bio par Terre A et B (2ml/l - 3ml/l)
          Vous pouvez remplacer Roots Excelurator par Stimulator 1 roots (1ml/l)
       </content>
       <duration>7</duration>
@@ -60,7 +60,7 @@
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text">
          Ec conseillé : 1,4 - 1,6
-         Vous pouvez remplacer Composant-Bio par Terre A&B (3ml/l - 3,5ml/l)
+         Vous pouvez remplacer Composant-Bio par Terre A et B (3ml/l - 3,5ml/l)
          Vous pouvez remplacer Roots Excelurator par Stimulator 1 roots (1ml/l)
       </content>
       <duration>7</duration>
@@ -93,7 +93,7 @@
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text">
          Ec conseillé : 1,6 - 1,8
-         Vous pouvez remplacer Composant-Bio par Terre A&B (3ml/l - 3,5ml/l)
+         Vous pouvez remplacer Composant-Bio par Terre A et B (3ml/l - 3,5ml/l)
       </content>
       <duration>7</duration>
       <start>21</start>
@@ -125,7 +125,7 @@
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text">
          Ec conseillé : 1,6 - 1,8
-         Vous pouvez remplacer Composant-Bio par Terre A&B (3ml/l - 3,5ml/l)
+         Vous pouvez remplacer Composant-Bio par Terre A et B (3ml/l - 3,5ml/l)
       </content>
       <duration>7</duration>
       <start>28</start>
@@ -157,7 +157,7 @@
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text">
          Ec conseillé : 1,8 - 2
-         Vous pouvez remplacer Composant-Bio par Terre A&B (1ml/l - 1,5ml/l)
+         Vous pouvez remplacer Composant-Bio par Terre A et B (1ml/l - 1,5ml/l)
          Vous pouvez ajouter 0,5ml/l de Top shooter. Dans ce cas, ne pas mettre de Top Booster / PK13-14.
       </content>
       <duration>7</duration>
@@ -190,7 +190,7 @@
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text">
          Ec conseillé : 1,8 - 2
-         Vous pouvez remplacer Composant-Bio par Terre A&B (1ml/l - 1,5ml/l)
+         Vous pouvez remplacer Composant-Bio par Terre A et B (1ml/l - 1,5ml/l)
          Vous pouvez ajouter 1ml/l de Top shooter. Dans ce cas, ne pas mettre de Top Booster / PK13-14.
       </content>
       <duration>13</duration>
@@ -237,7 +237,7 @@
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text">
          Ec conseillé : 1,8 - 2
-         Vous pouvez remplacer Composant-Bio par Terre A&B (1ml/l - 1,5ml/l)
+         Vous pouvez remplacer Composant-Bio par Terre A et B (1ml/l - 1,5ml/l)
          Vous pouvez ajouter 1ml/l de Top shooter. Dans ce cas, ne pas mettre de Top Booster / PK13-14.
       </content>
       <duration>14</duration>
