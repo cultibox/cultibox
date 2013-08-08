@@ -1,3 +1,9 @@
+Cultibox (1.1.30) precise; urgency=low 
+    + Correction des accents sur les notes en français uniquement pour les updates
+
+-- Yann Genevois <yann.genevois@gmail.com>  Thu Aug  8 23:00:52 CEST 2013
+
+
 Cultibox (1.1.29) precise; urgency=low
     + Correction des accents sur Mac et concernant la partie Notes
     + Ajout de la librairie scrollTo JQUERY pour gérer le déplacement des fenêtres après une action
