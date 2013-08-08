@@ -908,7 +908,7 @@ function insert_program($program,&$out) {
             $chk_test=true;
 
             while(!$chk_stop) {
-                foreach($data_plug as $data) {   
+                foreach($data_plug as $data) { 
                     if(!$chk_test) {
                         $tmp[]=$data;
                     } else {
@@ -923,7 +923,7 @@ function insert_program($program,&$out) {
                             $continue="1";
                         }
 
-                        if(("$continue"!="2")||($current['value']==0)) {   
+                        if("$continue"!="2") {   
                             $first=$last;
                             unset($last);
                         } else  {
@@ -944,6 +944,7 @@ function insert_program($program,&$out) {
                     $continue="1";
                     unset($data_plug);
                     $data_plug=$tmp;
+                    asort($data_plug);
                     unset($tmp);
                     $tmp=array();
                     $chk_test=true;
