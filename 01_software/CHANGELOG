@@ -1,5 +1,6 @@
 Cultibox (1.1.30) precise; urgency=low 
     + Correction des accents sur les notes en français uniquement pour les updates
+    + Ajout des dosages d'engrais dans le calendrier
 
 -- Yann Genevois <yann.genevois@gmail.com>  Thu Aug  8 23:00:52 CEST 2013
 

@@ -109,7 +109,7 @@ INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version`,`id_comput
 CREATE TABLE IF NOT EXISTS `calendar` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Title` varchar(1000) CHARACTER SET utf8 DEFAULT NULL,
-  `Description` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `Description` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
   `StartTime` datetime DEFAULT NULL,
   `EndTime` datetime DEFAULT NULL,
   `External` SMALLINT( 6 ) NOT NULL DEFAULT '0',

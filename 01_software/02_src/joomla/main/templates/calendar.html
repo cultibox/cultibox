@@ -70,7 +70,6 @@ buttonImageOnly: 'true',
 
     $(document).ready(function() {
         $('#calendar').fullCalendar({
-        
             editable: true,
             dragable: true,
             selectable: true,
@@ -97,7 +96,7 @@ buttonImageOnly: 'true',
 
                 $("#dialog_create").dialog({
                         resizable: true,
-                        width: 600,
+                        width: 800,
                         buttons: {
                             "<?php echo __('CREATE_DIALOG_CALENDAR','highchart'); ?>": function() { 
                                         $( this ).dialog( "close" ); 
@@ -218,7 +217,7 @@ buttonImageOnly: 'true',
                      
                      $("#dialog_edit").dialog({
                         resizable: true,
-                        width: 600,
+                        width: 800,
                         modal: true,
                         buttons: {
                             "<?php echo __('EDIT_DIALOG_CALENDAR','highchart'); ?>": function() { 
@@ -243,7 +242,7 @@ buttonImageOnly: 'true',
 
                                 $("#dialog_create").dialog({
                                 resizable: true,
-                                width: 600,
+                                width: 800,
                                 buttons: {
                                     "<?php echo __('SAVE_DIALOG_CALENDAR','highchart'); ?>": function() { 
                                         $( this ).dialog( "close" ); 
@@ -390,7 +389,7 @@ buttonImageOnly: 'true',
 </tr>
 <tr>
     <td><b><?php echo __('CALENDAR_REMARK'); ?>:</b></td>
-    <td><span id="remark"></span></td>
+    <td><span id="remark" disabled></span></td>
 </tr>
 </table>
 </div>
@@ -441,7 +440,7 @@ buttonImageOnly: 'true',
 </tr>
 <tr>
     <td><b><?php echo __('CALENDAR_REMARK'); ?>:</b></td>
-    <td><textarea rows="3" cols="30" id="select_remark"></textarea> 
+    <td><textarea rows="5" cols="60" id="select_remark"></textarea> 
 </td>
 </tr>
 <tr>

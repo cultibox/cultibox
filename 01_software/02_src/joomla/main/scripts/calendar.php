@@ -113,11 +113,20 @@ if((!isset($calendar_start))||(empty($calendar_start))) {
                                                 $icon=null;
                                             }
 
+                                            $desc=$val['content'];
+
+                                            if(array_key_exists('nutriment', $val))  {
+                                                        $desc=$desc."\n* Engrais:\n";
+                                                        foreach($val['nutriment'] as $nut) {
+                                                            $desc=$desc.$nut['name'].": ".$nut['dosage']."\n";
+                                                        }
+
+                                            }
                                             $event[]=array(
                                                     "title" => $val['title'],
                                                     "start" => $timestart,
                                                     "end" => $timeend,
-                                                    "description" => $val['content'],
+                                                    "description" => $desc,
                                                     "color" => $color,
                                                     "icon" => $icon,
                                                     "external" => "0"
