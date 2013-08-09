@@ -39,7 +39,7 @@
         <dosage>1ml/l</dosage>
       </nutriment>
 
-      <color>red</color>
+      <color>#4E3D28</color>
       <icon>green.png</icon>
    </entry>
    
@@ -65,7 +65,7 @@
         <dosage>2ml/l</dosage>
       </nutriment>
 
-      <color>red</color>
+      <color>#4E3D28</color>
       <icon>green.png</icon>
    </entry>
   
@@ -92,7 +92,7 @@
         <dosage>2,5ml/l</dosage>
       </nutriment>
 
-      <color>red</color>
+      <color>#4E3D28</color>
       <icon>green.png</icon>
    </entry>
    
@@ -118,7 +118,7 @@
         <dosage>3ml/l</dosage>
       </nutriment>
       
-      <color>red</color>
+      <color>#4E3D28</color>
       <icon>green.png</icon>
    </entry>
    
