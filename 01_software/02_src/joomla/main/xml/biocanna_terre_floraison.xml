@@ -27,11 +27,9 @@
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text">
-         N'oubliez pas le changement d'engrais BioFlores + BioBoost!
-	     Température conseillée jour : 23 °C , nuit : 18 °C
-         RH conseillée: 70%
-      </content>
+      <content type = "text">* N'oubliez pas le changement d'engrais BioFlores + BioBoost!
+* Température conseillée jour : 23 °C , nuit : 18 °C
+* RH conseillée: 70%</content>
       <duration>7</duration>
       <start>0</start>
 
@@ -53,10 +51,8 @@
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text">
-	     Température conseillée jour : 23 °C , nuit : 18 °C
-         RH conseillée: 70%
-      </content>
+      <content type = "text">* Température conseillée jour : 23 °C , nuit : 18 °C
+* RH conseillée: 70%</content>
       <duration>7</duration>
       <start>7</start>
 
@@ -78,14 +74,12 @@
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text">
-         Température conseillée jour : 25 - 26°C Nuit: 19 °C
-         RH conseillée: 60%
-      </content>
+      <content type = "text">* Température conseillée jour : 25 - 26°C Nuit: 19 °C
+* RH conseillée: 60%</content>
       <duration>7</duration>
       <start>14</start>
 
-        <nutriment>
+      <nutriment>
         <name>BioFlores</name>
         <dosage>3ml/l</dosage>
       </nutriment>
@@ -104,14 +98,12 @@
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text">
-         Température conseillée jour : 25 - 26°C Nuit: 19 °C
-         RH conseillée: 60%
-      </content>
+      <content type = "text">* Température conseillée jour : 25 - 26°C Nuit: 19 °C
+* RH conseillée: 60%</content>
       <duration>7</duration>
       <start>21</start>
 
-        <nutriment>
+      <nutriment>
         <name>BioFlores</name>
         <dosage>4ml/l</dosage>
       </nutriment>
@@ -129,10 +121,8 @@
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text">
-         Température conseillée jour : 25 - 26°C Nuit: 19 °C
-         RH conseillée: 60%
-      </content>
+      <content type = "text">* Température conseillée jour : 25 - 26°C Nuit: 19 °C
+* RH conseillée: 60%</content>
       <duration>7</duration>
       <start>28</start>
 
@@ -155,10 +145,8 @@
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text">
-         Température conseillée jour : 26°C Nuit: 19 °C
-         RH conseillée: 60%
-      </content>
+      <content type = "text">* Température conseillée jour : 26°C Nuit: 19 °C
+* RH conseillée: 60%</content>
       <duration>7</duration>
       <start>35</start>
       <nutriment>
@@ -174,15 +162,13 @@
    </entry>
 
     <entry>
-      <title>Phase Floraison Semaine 6</title>
+      <title>Phase Floraison Semaine 7</title>
       <summary>Phase Floraison Semaine 7</summary>
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text">
-         Température conseillée jour : 26°C Nuit: 19 °C
-         RH conseillée: 60%
-      </content>
+      <content type = "text">* Température conseillée jour : 26°C Nuit: 19 °C
+* RH conseillée: 60%</content>
       <duration>7</duration>
       <start>42</start>
       <nutriment>
@@ -196,24 +182,17 @@
       <color>#856D4D</color>
       <icon>green.png</icon>
    </entry>
-   
-   
+
     <entry>
       <title>Fin de floraison</title>
       <summary>Fin de floraison</summary>
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text">
-         Période de rinçage à l'eau claire
-      </content>
+      <content type = "text">* Période de rinçage à l'eau claire</content>
       <duration>21</duration>
       <start>49</start>
 
-      <nutriment>
-        <name>EAU</name>
-        <dosage>X</dosage>
-      </nutriment>
       <color>#856D4D</color>
       <icon>green.png</icon>
    </entry>
