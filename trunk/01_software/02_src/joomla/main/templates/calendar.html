@@ -212,7 +212,7 @@ buttonImageOnly: 'true',
                         $("#stop_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
                      }
                      if(event.description) {
-                        $("#remark").text(event.description);
+                        $("#remark").val(event.description);
                      }
                      
                      $("#dialog_edit").dialog({
@@ -389,7 +389,7 @@ buttonImageOnly: 'true',
 </tr>
 <tr>
     <td><b><?php echo __('CALENDAR_REMARK'); ?>:</b></td>
-    <td><span id="remark" disabled></span></td>
+    <td><textarea rows="5" cols="50" id="remark" disabled></textarea></td>
 </tr>
 </table>
 </div>
