@@ -117,10 +117,17 @@ if((!isset($calendar_start))||(empty($calendar_start))) {
 
                                             if(array_key_exists('nutriment', $val))  {
                                                         $desc=$desc."\n* Engrais:\n";
-                                                        foreach($val['nutriment'] as $nut) {
-                                                            $desc=$desc.$nut['name'].": ".$nut['dosage']."\n";
-                                                        }
-
+                                                        if(is_array($val['nutriment'])) {
+                                                            foreach($val['nutriment'] as $nut) {
+                                                                if(is_array($nut)) {
+                                                                    if((array_key_exists('name', $nut))&&(array_key_exists('dosage', $nut)))  {
+                                                                        $desc=$desc.$nut['name']." ".$nut['dosage']."\n";
+                                                                    }
+                                                                } else {
+                                                                    $desc=$desc.$nut." ";
+                                                                }
+                                                            }
+                                                        } 
                                             }
                                             $event[]=array(
                                                     "title" => $val['title'],
