@@ -43,7 +43,7 @@
         <name>BioBoost</name>
         <dosage>1ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>#856D4D</color>
       <icon>green.png</icon>
    </entry>
    
@@ -68,7 +68,7 @@
         <name>BioBoost</name>
         <dosage>2ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>#856D4D</color>
       <icon>green.png</icon>
    </entry>
    
@@ -93,7 +93,7 @@
         <name>BioBoost</name>
         <dosage>3ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>#856D4D</color>
       <icon>green.png</icon>
    </entry>
 
@@ -119,7 +119,7 @@
         <name>BioBoost</name>
         <dosage>4ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>#856D4D</color>
       <icon>green.png</icon>
    </entry>
    
@@ -144,7 +144,7 @@
         <name>BioBoost</name>
         <dosage>3ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>#856D4D</color>
       <icon>green.png</icon>
    </entry>
    
@@ -169,7 +169,7 @@
         <name>BioBoost</name>
         <dosage>2ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>#856D4D</color>
       <icon>green.png</icon>
    </entry>
 
@@ -193,7 +193,7 @@
         <name>BioBoost</name>
         <dosage>1ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>#856D4D</color>
       <icon>green.png</icon>
    </entry>
    
@@ -214,7 +214,7 @@
         <name>EAU</name>
         <dosage>X</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>#856D4D</color>
       <icon>green.png</icon>
    </entry>
    
