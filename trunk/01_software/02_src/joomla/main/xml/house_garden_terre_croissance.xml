@@ -42,7 +42,7 @@
       </nutriment>
 
       <color>red</color>
-      <icon>green.png</icon>
+      <icon>house_n_garden.png</icon>
    </entry>
    
    <entry>
@@ -75,7 +75,7 @@
       </nutriment>
       
       <color>red</color>
-      <icon>green.png</icon>
+      <icon>house_n_garden.png</icon>
    </entry>
    
    <entry>
@@ -108,7 +108,7 @@
       </nutriment>
       
       <color>red</color>
-      <icon>green.png</icon>
+      <icon>house_n_garden.png</icon>
    </entry>
    
    <entry>
@@ -141,7 +141,7 @@
       </nutriment>
       
       <color>red</color>
-      <icon>green.png</icon>
+      <icon>house_n_garden.png</icon>
    </entry>
    
 </feed>
