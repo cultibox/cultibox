@@ -251,7 +251,7 @@ function getRegul(i,j) {
 // IN  input value: display or not the informations
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
 // USED BY: templates/plugs.html 
-function getTolerance(i,j,secondR) {
+function getTolerance(i,j,secondR,advancedOpt) {
       var divTolerance = document.getElementById('tolerance'+j);
       var divToleranceLabel = document.getElementById('tolerance_label'+j);
       var pDegree = document.getElementById('degree'+j);
@@ -332,11 +332,15 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = ''; 
-                        labelSensor.style.display = '';
+                    }
+
+                    if(advancedOpt=="True") {
                         Sensor.style.display = '';
+                        labelSensor.style.display = '';
                         labelComputeRegul.style.display = '';
                         computeRegul.style.display = '';
                     }
+
                     break;
 
          case 3 :   divTolerance.style.display = ''; 
@@ -354,8 +358,11 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = ''; 
+                    }
+
+                    if(advancedOpt=="True") {
+                        Sensor.style.display = '';
                         labelSensor.style.display = '';
-                        Sensor.style.display = ''; 
                         labelComputeRegul.style.display = '';
                         computeRegul.style.display = '';
                     }
@@ -376,8 +383,11 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = ''; 
-                        labelSensor.style.display = ''; 
-                        Sensor.style.display = ''; 
+                    }
+
+                    if(advancedOpt=="True") {
+                        Sensor.style.display = '';
+                        labelSensor.style.display = '';
                         labelComputeRegul.style.display = '';
                         computeRegul.style.display = '';
                     }
@@ -398,8 +408,11 @@ function getTolerance(i,j,secondR) {
                         seconLabel.style.display = ''; 
                         secondVal.style.display = ''; 
                         secondParam.style.display = '';
-                        labelSensor.style.display = '';
+                    }
+
+                    if(advancedOpt=="True") {
                         Sensor.style.display = '';
+                        labelSensor.style.display = '';
                         labelComputeRegul.style.display = '';
                         computeRegul.style.display = '';
                     }

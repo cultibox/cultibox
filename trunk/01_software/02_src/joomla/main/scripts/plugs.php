@@ -114,6 +114,10 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
         }
    }
 
+   if($sensor=="") {
+        $sensor="1";
+   }
+
    $old_name=get_plug_conf("PLUG_NAME",$nb,$main_error);
    $old_type=get_plug_conf("PLUG_TYPE",$nb,$main_error);
    $old_tolerance=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
