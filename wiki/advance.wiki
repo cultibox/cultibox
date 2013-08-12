@@ -358,6 +358,9 @@ ou alors:
 </wiki:comment>
 
 = Ajouter un test Sélénium =
+== Introduction ==
+Sélénium est un environnement de test qui permet de valider notre logiciel. Ce chapitre ne concerne que les personnes qui souhaitent participer au développement et à l'amélioration du logiciel.
+
 == Sélénium IDE ==
 Avant toute chose, il vous faut Mozilla Firefox. Ensuite télécharger le plug-in sélénium pour Firefox:
 /http://release.seleniumhq.org/selenium-ide/2.0.0/selenium-ide-2.0.0.xpi
