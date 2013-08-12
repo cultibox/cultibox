@@ -108,6 +108,13 @@ Note pour les utilisateurs expérimentés: il est possible d'augmenter l’autor
 
 et de modifier (à vos risques et périls!!!) la directive: "max_execution_time"
 
+= Est-ce que je peux mettre un extracteur avec ma lampeHPS sur la prise 3500W =
+Si la puissance totale est inférieur à 600W, il n'y a pas de problème.
+
+= Est-ce qu'il est nécessaire d’éteindre la Cultibox pour mettre à jour le programme? =
+
+La Cultibox mémorise un tout petit bout du programme. Il n'est donc pas nécessaire d'éteindre la Cultibox pour mettre à jour le programme. Par contre penser à rebrancher la carte SD rapidement!
+
 = Avez-vous un modèle SketchUp de la Cultibox =
 
 Oui! Vous pouvez le retrouver dans l’entrepôt d'objet SketchUp (Warehouse). Le lien direct, est le suivant: http://sketchup.google.com/3dwarehouse/details?mid=81797e1f12ff0696f68ade8e51b8ff67
