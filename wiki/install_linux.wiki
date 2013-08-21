@@ -1,4 +1,4 @@
-#summary Installation / Désinstallation pour Linux
+#summary Installation Linux
 
 = Sommaire =
 <wiki:toc max_depth="3" />
