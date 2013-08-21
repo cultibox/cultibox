@@ -1,4 +1,4 @@
-#summary Installation Windows.
+#summary Installation Windows
 
 = Sommaire =
 <wiki:toc max_depth="3" />
