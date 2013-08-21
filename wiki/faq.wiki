@@ -111,7 +111,7 @@ et de modifier (à vos risques et périls!!!) la directive: "max_execution_time"
 = Est-ce que je peux mettre un extracteur avec ma lampeHPS sur la prise 3500W =
 Si la puissance totale est inférieur à 600W, il n'y a pas de problème.
 
-= Est-ce qu'il est nécessaire d’éteindre la Cultibox pour mettre à jour le programme? =
+= Est-ce qu'il est nécessaire d'éteindre la Cultibox pour mettre à jour le programme? =
 
 La Cultibox mémorise un tout petit bout du programme. Il n'est donc pas nécessaire d'éteindre la Cultibox pour mettre à jour le programme. Par contre penser à rebrancher la carte SD rapidement!
 
