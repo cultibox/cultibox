@@ -41,3 +41,4 @@
     * [faq FAQ]
     * [pts Cahier des charges]
     * [advance Utilisation avancée]
+    * [declaration_ce Déclaration CE]
