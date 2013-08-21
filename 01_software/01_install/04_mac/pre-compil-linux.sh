@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e 
+set -x
 dir=`dirname $0`
 cd $dir
 
