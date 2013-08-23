@@ -25,6 +25,7 @@
 .frontpagelist h2 {
 	font-size: 28px;
 	line-height: 28px;
+    color: #93982a;
 }
 
 /* Frontpage Botton */
@@ -116,4 +117,12 @@ p.p_center{
 
 a:link {color:#93982a;}
 a:visited {color:#93982a;}
+a:hover{
+    color:#C3B59B;
+}
+
+
+h2 { 
+    color: #93982a;
+}
 
