@@ -320,18 +320,20 @@ puts $fid {\usepackage{graphicx} % support the \includegraphics command and opti
 
 puts $fid {% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent  }
 
-puts $fid {%%% PACKAGES                                                    }
-puts $fid {\usepackage{booktabs} % for much better looking tables           }
-puts $fid {\usepackage{array} % for better arrays (eg matrices) in maths    }
-puts $fid {\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)               }
-puts $fid {\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim        }
+# Definition des packages utilisés
+puts $fid {%%% PACKAGES}
+puts $fid {\usepackage{booktabs} % for much better looking tables}
+puts $fid {\usepackage{array} % for better arrays (eg matrices) in maths}
+puts $fid {\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)}
+puts $fid {\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim}
 puts $fid {\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float}
-puts $fid {\usepackage[francais]{babel}  }
-puts $fid {\usepackage{textcomp}         }
-puts $fid {\usepackage{hyperref}         }
-puts $fid {\usepackage{lscape}         }
+puts $fid {\usepackage[francais]{babel}}
+puts $fid {\usepackage{textcomp}}
+puts $fid {\usepackage{hyperref}}
+puts $fid {\usepackage{lscape}}
 puts $fid {\usepackage{calc}}
 puts $fid {\usepackage{xcolor}}
+# puts $fid {\usepackage{wallpaper}}
 puts $fid {% These packages are all incorporated in the memoir class to one degree or another...}
 
 puts $fid {%%% HEADERS & FOOTERS                                                         }
@@ -342,8 +344,8 @@ puts $fid {\fancyhead[L]{\leftmark}}
 puts $fid {\fancyhead[R]{Manuel Cultibox}}
 
 puts $fid {\renewcommand{\footrulewidth}{1pt}}
-puts $fid {\fancyfoot[L]{}}
-puts $fid {\fancyfoot[C]{}}
+puts $fid {\fancyfoot[L]{\includegraphics[scale=0.3]{./wiki/img/logo_seul.png}}}
+puts $fid {\fancyfoot[C]{Green Box SAS}}
 puts $fid {\fancyfoot[R]{\textbf{page \thepage}}}
 puts $fid {\setlength{\headheight}{15pt}}
 
@@ -373,16 +375,37 @@ puts $fid {%%% The "real" document content comes below...}
 puts $fid {\title{Manuel d'utilisation de la Cultibox}}
 puts $fid {\author{Cultibox}}
 puts $fid {\begin{document}}
-puts $fid {\begin{titlepage}             }
-puts $fid {\includegraphics{./wiki/img/box_3d_1.png}      }
-puts $fid {\begin{center}                     }
-puts $fid {\Huge                               }
-puts $fid {Manuel d'utilisation de la Cultibox\\} 
-puts $fid {\date\today    }
-puts $fid {\end{center}    }
-puts $fid {\end{titlepage} }
+puts $fid {\makeatletter}
+puts $fid {  \begin{titlepage}             }
+puts $fid {    \includegraphics{./wiki/img/box_3d_1.png}      }
+#puts $fid {    \begin{center}                     }
+#puts $fid {    \end{center}}
+puts $fid {    \vskip 1pt}
 
-puts $fid {\maketitle}
+puts $fid {    \Huge                               }
+puts $fid {    Manuel d'utilisation de la Cultibox} 
+puts $fid {    \vskip 5pt}
+puts $fid {}
+puts $fid {    \hrule{}\hrule{}\hrule{}\hrule{}}
+puts $fid {    \hrule{}\hrule{}\hrule{}\hrule{}}
+
+puts $fid {    \begin{flushright}}
+puts $fid {    {\large\textbf{\@date}}}
+puts $fid {    \vskip 1pt}
+puts $fid {    {\large\textbf{Green Box SAS}}}
+puts $fid {    \vskip 1pt}
+puts $fid {    {\large\textbf{8 Rue Marceau}}}
+puts $fid {    \vskip 1pt}
+puts $fid {    {\large\textbf{38000 Grenoble}}}
+puts $fid {    \end{flushright}}
+puts $fid {    \vfill}
+puts $fid {    \begin{center}}
+puts $fid {    \includegraphics[scale=1.5]{./wiki/img/logo_seul.png}}
+puts $fid {    \end{center}}
+puts $fid {    \date\today}
+puts $fid {  \end{titlepage}}
+puts $fid {\makeatother}
+
 puts $fid {}
 puts $fid {\newpage}
 puts $fid {\tableofcontents }
