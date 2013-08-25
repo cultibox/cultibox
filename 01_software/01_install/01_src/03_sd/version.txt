@@ -11,6 +11,22 @@
 + Bug can be view at adress : http://code.google.com/p/cultibox                +
 +------------------------------------------------------------------------------+
 
++ Version 2.0
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      234 : [LOGS] amélioration graph min/max
+      235 : [LOGS] amélioration graph interpolation
+      357 : [ID] La partie haute de l'ID de la Cultibox n'est pas sauvegardée
+   To test :
+      427 : [Regul] Gestion de mauvaises données des capteurs
+      545 : Ajouter une tolérance pour la régulation secondaire
+      676 : [Culti] meu capteur sans retour
+      677 : [Culti] regulation moyenne/max/min
+   Solved :
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      585 : Moyenne de température
+
 + Version 1.31
    Comment:
    Issues :
