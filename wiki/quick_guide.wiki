@@ -1,7 +1,17 @@
 #summary Guide Rapide
 
-http://cultibox.googlecode.com/svn/wiki/img/contents.png
+http://cultibox.googlecode.com/svn/wiki/img/quick_guide_1.jpg
 
-http://cultibox.googlecode.com/svn/wiki/img/soft.png
+http://cultibox.googlecode.com/svn/wiki/img/quick_guide_2.jpg
 
-http://cultibox.googlecode.com/svn/wiki/img/installation.png
+http://cultibox.googlecode.com/svn/wiki/img/quick_guide_3.jpg
+
+http://cultibox.googlecode.com/svn/wiki/img/quick_guide_4.jpg
+
+http://cultibox.googlecode.com/svn/wiki/img/quick_guide_5.jpg
+
+http://cultibox.googlecode.com/svn/wiki/img/quick_guide_6.jpg
+
+http://cultibox.googlecode.com/svn/wiki/img/quick_guide_7.jpg
+
+http://cultibox.googlecode.com/svn/wiki/img/quick_guide_8.jpg
