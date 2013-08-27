@@ -70,4 +70,4 @@ Afin d'appliquer ce programme au calendrier il faut donc:
 
 Une fois cela fait, le programme apparaît dans le calendrier.
 
-Certains programmes d'engrais ont été développé par des utilisateurs qui ont donné leur travail à la communauté en nous les faisant parvenir. Si vous souhaitez plus d'informations concernant les programmes d'engrais et la gestion des fichiers XML, repportez-vous à la section [[advance.wiki Utilisation avancée]].
+Certains programmes d'engrais ont été développé par des utilisateurs qui ont donné leur travail à la communauté en nous les faisant parvenir. Si vous souhaitez plus d'informations concernant les programmes d'engrais et la gestion des fichiers XML, repportez-vous à la section [advance Utilisation avancée].
