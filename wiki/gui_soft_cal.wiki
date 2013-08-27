@@ -68,6 +68,8 @@ Afin d'appliquer ce programme au calendrier il faut donc:
  * Choisir la date de départ à laquelle appliquer le programme
  * Cliquer sur le bouton *Créer le programme dans le calendrier*
 
-Une fois cela fait, le programme apparaît dans le calendrier.
+Une fois cela fait, le programme apparaît dans le calendrier:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_view_engrais.png
 
 Certains programmes d'engrais ont été développé par des utilisateurs qui ont donné leur travail à la communauté en nous les faisant parvenir. Si vous souhaitez plus d'informations concernant les programmes d'engrais et la gestion des fichiers XML, repportez-vous à la section [advance Utilisation avancée].
