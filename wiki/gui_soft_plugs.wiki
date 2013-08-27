@@ -45,3 +45,9 @@ Deux autres champs supplémentaire peuvent apparaître si vous avez activé les 
  * *Régulation secondaire de la prise*: Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécessaire d'activer ce champ. Pour plus d'information voir [gui_soft_second_regul Régulation secondaire].
 
 Cliquer sur *Enregistrer la configuration* pour sauvegarder vos modifications.
+
+= Configuration avancée des prises =
+
+Il est possible de pousser encore plus loin la configuration de votre espace de culture en activant les *modifications des options avancées de régulation* dans l'onglet *Configuration* du menu principal.
+Pour plus d'informations se reporter à la section [gui_soft_second_regul Régulation secondaire].
+
