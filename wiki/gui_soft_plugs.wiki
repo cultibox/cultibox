@@ -42,12 +42,19 @@ De base, la configuration de la prise consiste à rentrer les informations suiva
 
 Deux autres champs supplémentaire peuvent apparaître si vous avez activé les options de régulation sur d'autres capteurs ou encore la régulation secondaire dans la partie [gui_soft_conf Configuration]:
  * *Capteur utilisé pour la régulation*: La régulation est effectuée en fonction des valeurs données par un capteur. Choisissez dans ce champ le numéro du capteur concerné capteur
- * *Régulation secondaire de la prise*: Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécessaire d'activer ce champ. Pour plus d'information voir [gui_soft_second_regul Régulation secondaire].
+ * *Régulation secondaire de la prise*: Ce champ ne doit être activé que dans des cas très particulier. Pour la majorité des utilisateurs, il n'est pas nécessaire d'activer ce champ. Pour plus d'information voir [gui_soft_second_regul Régulation Avancée].
 
 Cliquer sur *Enregistrer la configuration* pour sauvegarder vos modifications.
+
+= Utilisation de l'assistant =
+Vous pouvez facilement utiliser l'assistant de la prise en vours de visualisation en cliquant sur le bouton *Utiliser l'assistant pour configurer cette prise*:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugs_wizard.png
+
+Pour plus d'informations sur *l'assistant* se reporter à la section correcpondante: [gui_soft_wizard Assistant]
 
 = Configuration avancée des prises =
 
 Il est possible de pousser encore plus loin la configuration de votre espace de culture en activant les *modifications des options avancées de régulation* dans l'onglet *Configuration* du menu principal.
-Pour plus d'informations se reporter à la section [gui_soft_second_regul Régulation secondaire].
+Pour plus d'informations se reporter à la section [gui_soft_second_regul Régulation Avancée].
 
