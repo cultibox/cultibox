@@ -1,3 +1,9 @@
+Cultibox (1.1.31) precise; urgency=low
+    + Correction de la configuration du type de prise dans le wizard
+
+-- Yann Genevois <yann.genevois@gmail.com>  Tue Aug 27 11:51:14 CEST 2013
+
+
 Cultibox (1.1.30) precise; urgency=low 
     + Correction des accents sur les notes en français uniquement pour les updates
     + Ajout des dosages d'engrais dans le calendrier

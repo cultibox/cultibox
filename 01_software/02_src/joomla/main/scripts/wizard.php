@@ -80,10 +80,18 @@ if($selected_plug==1) {
     $plug_type=getvar('plug_type');
 }
 
+if($selected_plug>3) {
+    $plug_power_max=getvar('plug_power_max');
+} 
+
 $value_program=getvar('value_program');
 
 if((empty($plug_type))||(!isset($plug_type))) {
     $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error); 
+}
+
+if((empty($plug_power_max))||(!isset($plug_power_max))) {
+    $plug_power_max=get_plug_conf("PLUG_POWER_MAX",$selected_plug,$main_error);
 }
 
 
@@ -187,8 +195,6 @@ if((empty($value_program))||(!isset($value_program))) {
 }
 
 
-$plug_power_max=get_plug_conf("PLUG_POWER_MAX",$selected_plug,$main_error);
-
 if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")==0)) {
     $program=getvar('program');
 
@@ -253,6 +259,10 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
 			clean_program($selected_plug,$main_error);
 			if(isset($plug_tolerance)) {
                 insert_plug_conf("PLUG_TOLERANCE",$selected_plug,$plug_tolerance,$main_error);
+            }
+
+            if(isset($plug_power_max)) {
+                insert_plug_conf("PLUG_POWER_MAX",$selected_plug,$plug_power_max,$main_error);
             }
 
             $chinsert=true;
