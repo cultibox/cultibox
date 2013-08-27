@@ -196,6 +196,9 @@ error_valueJS=<?php echo json_encode($error_value) ?>;
        <?php } ?>
 <?php } ?>
 
+<?php if((isset($plug_power_max))&&(!empty($plug_power_max))&&($step==3)) { ?>
+      <input type="hidden" name="plug_power_max" value="<?php echo "$plug_power_max"; ?>">
+<?php } ?>
 
 <input type="hidden" name="selected_plug" value="<?php echo "$selected_plug"; ?>">
 <?php if($step>1) { ?>
@@ -210,8 +213,8 @@ error_valueJS=<?php echo json_encode($error_value) ?>;
 <td class="wizard-input-previous"><?php if($step>1) { ?><input type=submit name="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>"><?php } ?></td>
 <td class="wizard-input-previous"><?php if($step<3) { ?><input type=submit name="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>"><?php } ?></td>
 <td class="wizard-input-submit">
-<?php if($step==3) { ?><input type=submit name="next_plug" id="next_plug" value="<?php echo __('WIZARD_OTHER_STEP'); ?>"><?php } ?>
-<?php if(($step==3)&&($selected_plug<$nb_plugs)) { ?>
+<?php if(($step==3)&&($selected_plug<$nb_plugs)) { ?><input type=submit name="next_plug" id="next_plug" value="<?php echo __('WIZARD_OTHER_STEP'); ?>"><?php } ?>
+<?php if($step==3) { ?>
 <input type=submit name="finish" id="finish" value="<?php echo __('WIZARD_FINISH_STEP'); ?>">
 </td>
 <?php } ?>
