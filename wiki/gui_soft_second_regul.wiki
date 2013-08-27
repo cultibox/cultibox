@@ -3,12 +3,13 @@
 = Sommaire =
 <wiki:toc max_depth="3" />
 
-= Introduction =
+= Régulation secondaire =
+== Introduction ==
 
 La régulation secondaire d'une prise permet d'éteindre ou de mettre en route une prise quand une condition est atteinte.
 Par exemple: Un ventilateur est branché sur une prise. La régulation classique permet d'allumer ou d'éteindre la prise en fonction de la température. La régulation secondaire permet de forcer l'allumage ou l'extinction de la prise en fonction de l'humidité. Cela permet, par exemple, de forcer la mise en route du ventilateur si l'humidité devient trop forte.
 
-= Activation de la régulation secondaire =
+== Activation de la régulation secondaire ==
 
 Par défaut la régulation secondaire n'est pas activée. Afin de l’activer vous devrez vous rendre dans l'onglet *Configuration* du menu principal:
 
@@ -17,7 +18,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 Puis dans le premier onglet nommée *Interface* vous trouverez une ligne nommée: *Activer la régulation secondaire (Utilisateur expert seulement)*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer la régulation secondaire.
 
 
-= Paramétrage de la régulation secondaire =
+== Paramétrage de la régulation secondaire ==
 
 Une fois activée la régulation secondaire est disponible dans l'onglet *Prises* du menu principal:
 
@@ -33,14 +34,15 @@ Pour configurer la régulation secondaire:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_5.png
 
-= Activation de la modification des options avancées de régulation =
+= Options avancées de régulation =
+== Activation de la modification des options avancées de régulation ==
 Par défaut la modification des options avancées de régulation n'est pas activée. Afin de l’activer vous devrez vous rendre dans l'onglet *Configuration* du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 
 Puis dans le premier onglet nommée *Interface* vous trouverez une ligne nommée: *Autoriser la modification des options avancées de régulation*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer les options avancées de régulation.
 
-= Paramétrage des options avancées de régulation  =
+== Paramétrage des options avancées de régulation  ==
 Une fois activée les options avancées de régulation sont disponibles dans l'onglet *Prises* du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_advanced_options_regul.png
