@@ -54,3 +54,20 @@ Deux actions sont encore possibles sur les annotations déjà créées:
 En bas de la page du calendrier se trouve un bouton nommé *Supprimer toutes les annotations enregistrées*. En cliquant dessus et après confirmation, vous effacerez de façon définitive toutes les annotations que vous avez rentré manuellement. Les annotations définies dans les fichiers xml (comme le calendrier lunaire) ne seront pas supprimées.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_del.png
+
+= Appliquer un programme d'engrais prédéfini = 
+
+La seconde partie de la page du calendrier permet d'appliquer au calendrier un programme prédéfini d'engrais. En fonction de votre substrat et du type d'engrais voulu, plusieurs choix s'offre à vous:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_engrais.png
+
+
+Afin d'appliquer ce programme au calendrier il faut donc:
+ * Choisir le substrat (terre, eau...)
+ * Choisir le type d'engrais voulu
+ * Choisir la date de départ à laquelle appliquer le programme
+ * Cliquer sur le bouton *Créer le programme dans le calendrier*
+
+Une fois cela fait, le programme apparaît dans le calendrier.
+
+Certains programmes d'engrais ont été développé par des utilisateurs qui ont donné leur travail à la communauté en nous les faisant parvenir. Si vous souhaitez plus d'informations concernant les programmes d'engrais et la gestion des fichiers XML, repportez-vous à la section [advance.wiki Utilisation avancée].
