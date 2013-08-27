@@ -32,3 +32,21 @@ Pour configurer la régulation secondaire:
    * *Seuil de déclenchement*: la valeur qui définit quand votre prise doit se déclencher 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_5.png
+
+= Activation de la modification des options avancées de régulation =
+Par défaut la modification des options avancées de régulation n'est pas activée. Afin de l’activer vous devrez vous rendre dans l'onglet *Configuration* du menu principal:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
+
+Puis dans le premier onglet nommée *Interface* vous trouverez une ligne nommée: *Autoriser la modification des options avancées de régulation*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer les options avancées de régulation.
+
+= Paramétrage des options avancées de régulation  =
+Une fois activée les options avancées de régulation sont disponibles dans l'onglet *Prises* du menu principal:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_advanced_options_regul.png
+
+Les options avancées vous permettent:
+ * De choisir le ou les capteurs seront utilisés pour réguler votre environnement
+ * De savoir si la régulation doit se faire sur la moyenne des valeurs de plusieurs capteurs, leur minimum ou leur maximum
+
+Il est à noter que ces options ne sont visibles qu'à partir du moment ou le type de l'équipement n'est pas définit comme une "lampe" ou un type "autre".
