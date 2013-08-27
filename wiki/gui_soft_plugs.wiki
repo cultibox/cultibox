@@ -51,7 +51,7 @@ Vous pouvez facilement utiliser l'assistant de la prise en vours de visualisatio
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugs_wizard.png
 
-Pour plus d'informations sur *l'assistant* se reporter à la section correcpondante: [gui_soft_wizard Assistant]
+Pour plus d'informations sur *l'assistant* se reporter à la section correspondante: [gui_soft_wizard Assistant]
 
 = Configuration avancée des prises =
 
