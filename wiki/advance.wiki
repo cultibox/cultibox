@@ -88,7 +88,24 @@ Les catégories disponible sont:
 Exemple de catégorie:
 
 {{{
-<category term = "hydro" label = "Hydroponique" />
+<category term = "hydro" label = "Hydroponique">
+    [...]
+</category>
+}}}
+
+Si vous voulez que votre engrais soit reconnu et affiché dans la gestion du calendrier il faudra rajouter à cela plusieurs champs:
+ * substrat: permettant de définir le type de substrat (terre, eau)
+ * periode: la periode adaptée à l'utilisation de l'engrais (croissance, floraison...)
+ * marque: la marque de l'engrais
+
+Voici un exemple complet:
+
+{{{
+<category term = "hydro" label = "Hydroponique">
+   <substrat>terre</substrat>
+   <periode>croissance</periode>
+   <marque>BIOCANNA</marque>
+</category>
 }}}
 
 ==== Lien ====
