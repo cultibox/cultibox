@@ -44,3 +44,5 @@ http://cultibox.googlecode.com/svn/wiki/img/wizard5.png
 
 
 Vous pourrez recommencer l'opération pour toutes vos prises et ainsi visualiser les courbes de fonctionnement de vos programmes en vous rendant dans l'onglet *Programme* du menu principal.
+
+*Note:* les trois premières prises étant fournit avec le pack Cultibox, leur puissance maximale est fixe (3500W pour la prise 1 et 1000W pour les deux autres). Si vous utilisez l'assistant pour configurer d'autres prises, vous avez la possibilité de choisir la puissance maximale en même temps que le type de prises.
