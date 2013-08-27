@@ -12,8 +12,8 @@ Une fois la carte SD branchée, pour accéder à cette partie, vous avez deux po
 
 == Configuration de la première prise ==
 
-Lors du lancement de l'assistant, celui-ci va vous guider afin de configurer la première prise. Par défaut, la première prise étant la plus puissante, elle sera configurée comme une lampe (étape 1 à 3):
-L'étape 4 vous permet de choisir les heures auxquels il faut allumer et éteindre la lampe:
+Lors du lancement de l'assistant, celui-ci va vous guider afin de configurer la première prise. Par défaut, la première prise étant la plus puissante, elle sera configurée comme une lampe (étape 1 et 2):
+L'étape 3 vous permet de choisir les heures auxquels il faut allumer et éteindre la lampe:
 
 http://cultibox.googlecode.com/svn/wiki/img/wizard1.png
 
