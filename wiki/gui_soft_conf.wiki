@@ -15,8 +15,9 @@ Pour accéder à la partie configuration, il vous suffit de cliquer sur l'onglet
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 
-
+[[==]]
 Il est à noter que vous pouvez passer d'un onglet à un autre sans perdre vos modifications. Le logiciel sauvegarde vos modifications temporairement le temps que vous ayez fini. Cela permet donc de faire plusieurs changements sans appuyer à chaque fois sur le bouton *Enregistrer la configuration*. Cependant, ces changements ne seront rééllement enregistré qu'à partir du moment où vous cliquez sur le bouton *Enregister la configuration*. Si vous réalisez des changements et que vous changez de page sans avoir au préalable appuyé sur le bouton d'enregistrement, vos modifications seront perdues.
+[[/==]]
 
 == Configuration de l'interface ==
 La section *Interface* permet de modifier les différents paramètres du site web.
