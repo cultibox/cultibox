@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e 
-set -x
 dir=`dirname $0`
 cd $dir
 
@@ -86,7 +85,6 @@ case "$1" in
             #sed -i "s#<build>.*</build>#<build>`echo $WORK_DIR`/cultibox-macosx_`echo $VERSION`.pkg</build#" ../01_src/01_xampp/cultibox.pmdoc/index.xml
             ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc; fi"
             rsync -av ../01_src/01_xampp/cultibox.pmdoc root@$SERVER:$WORK_DIR/
-
             ssh root@$SERVER "cd $WORK_DIR && /usr/bin/packagemaker --title cultibox -o cultibox-macosx_$VERSION.pkg --doc cultibox.pmdoc -v"
             scp root@$SERVER:$WORK_DIR/cultibox-macosx_$2.pkg ./Output/
             set -e
