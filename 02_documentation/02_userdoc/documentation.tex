@@ -5,16 +5,16 @@
 \geometry{a4paper} % or letterpaper (US) or a5paper or....                 
 \usepackage{graphicx} % support the \includegraphics command and options   
 % \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent  
-%%% PACKAGES                                                    
-\usepackage{booktabs} % for much better looking tables           
-\usepackage{array} % for better arrays (eg matrices) in maths    
-\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)               
-\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim        
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
-\usepackage[francais]{babel}  
-\usepackage{textcomp}         
-\usepackage{hyperref}         
-\usepackage{lscape}         
+\usepackage[francais]{babel}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{lscape}
 \usepackage{calc}
 \usepackage{xcolor}
 % These packages are all incorporated in the memoir class to one degree or another...
@@ -25,8 +25,8 @@
 \fancyhead[L]{\leftmark}
 \fancyhead[R]{Manuel Cultibox}
 \renewcommand{\footrulewidth}{1pt}
-\fancyfoot[L]{}
-\fancyfoot[C]{}
+\fancyfoot[L]{\includegraphics[scale=0.3]{./wiki/img/logo_seul.png}}
+\fancyfoot[C]{Green Box SAS}
 \fancyfoot[R]{\textbf{page \thepage}}
 \setlength{\headheight}{15pt}
 %%% Command
@@ -50,15 +50,32 @@
 \title{Manuel d'utilisation de la Cultibox}
 \author{Cultibox}
 \begin{document}
-\begin{titlepage}             
-\includegraphics{./wiki/img/box_3d_1.png}      
-\begin{center}                     
-\Huge                               
-Manuel d'utilisation de la Cultibox\\
-\date\today    
-\end{center}    
-\end{titlepage} 
-\maketitle
+\makeatletter
+  \begin{titlepage}             
+    \includegraphics{./wiki/img/box_3d_1.png}      
+    \vskip 1pt
+    \Huge                               
+    Manuel d'utilisation de la Cultibox
+    \vskip 5pt
+
+    \hrule{}\hrule{}\hrule{}\hrule{}
+    \hrule{}\hrule{}\hrule{}\hrule{}
+    \begin{flushright}
+    {\large\textbf{\@date}}
+    \vskip 1pt
+    {\large\textbf{Green Box SAS}}
+    \vskip 1pt
+    {\large\textbf{8 Rue Marceau}}
+    \vskip 1pt
+    {\large\textbf{38000 Grenoble}}
+    \end{flushright}
+    \vfill
+    \begin{center}
+    \includegraphics[scale=1.5]{./wiki/img/logo_seul.png}
+    \end{center}
+    \date\today
+  \end{titlepage}
+\makeatother
 
 \newpage
 \tableofcontents 
@@ -103,5 +120,6 @@ Manuel d'utilisation de la Cultibox\\
 \input{./wiki_tex/faq}
 \input{./wiki_tex/pts}
 \input{./wiki_tex/advance}
+\input{./wiki_tex/declaration_ce}
 \end{document}
 

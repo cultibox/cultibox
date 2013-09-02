@@ -33,37 +33,15 @@ website_infos() {
     md5ubuntu64=`md5sum 01_install/03_linux/Output/cultibox-ubuntu-amd64_$version.deb|awk -F" " '{print $1}'`
     md5ubuntu32=`md5sum 01_install/03_linux/Output/cultibox-ubuntu-i386_$version.deb|awk -F" " '{print $1}'`
     md5mac=`md5sum 01_install/04_mac/Output/cultibox-macosx_$version.pkg|awk -F" " '{print $1}'`
+    html=`sed -e "s/XX\.XX\.XX/$version/g" ../04_website/telechargement.html`
 
-cat << EOF
-<h1><span style="font-family: arial, helvetica, sans-serif;">Cultibox App</span></h1>
-<p style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;">Le logic<span style="font-family: arial, helvetica, sans-serif;">iel pour la gestion du clim</span>at de vos cultures.&nbsp;<br />Il est proposé&nbsp;<em style="font-weight: bold; font-style: normal;">gratuitement</em>&nbsp;afin de vous permettre de juger par vous-même sa simplicité d'utilisation.</p>
-<ul>
-<li style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;">Prise en main facile</li>
-<li style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;">Programme de culture précis et intuitif</li>
-<li style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;">Visualisation des relevés climatiques sur des courbes claires</li>
-<li style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;">Compatible Windows (XP minimum), Linux Ubuntu et Mac Os X (Snow Leopard minimum)</li>
-<li style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;">Version `echo $version`</li>
-</ul>
-<br />
+    html=`echo -n "$html" | sed -e "s/MD5SUM_WIN/$md5win/"`
+    html=`echo -n "$html" | sed -e "s/MD5SUM_LINUX32/$md5ubuntu32/"`
+    html=`echo -n "$html" | sed -e "s/MD5SUM_LINUX64/$md5ubuntu64/"`
+    html=`echo -n "$html" | sed -e "s/MD5SUM_MAC/$md5mac/"`
 
-<p style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;"> Téléchargement du logiciel:
-<ul>
-<li style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;">Windows 32-bits et 64-bits: <a href="download/software/cultibox-windows_`echo $version`.exe" title="Logiciel `echo $version`"><span style="font-family: arial, helvetica, sans-serif;">Téléchargement Windows Version `echo $version`</span></a><br />md5sum: `echo $md5win`</p>
-<p><span style="font-family: arial, helvetica, sans-serif;"></span></li>
-
-<li style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;">Linux Ubuntu 64bits: <a href="download/software/cultibox-ubuntu-amd64_`echo $version`.deb" title="Logiciel `echo $version`"><span style="font-family: arial, helvetica, sans-serif;">Téléchargement Linux Version `echo $version` 64bits</span></a><br />md5sum: `echo $md5ubuntu64`</p>
-<p><span style="font-family: arial, helvetica, sans-serif;"></span></li>
-
-<li style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;">Linux Ubuntu 32bits: <a href="download/software/cultibox-ubuntu-i386_`echo $version`.deb" title="Logiciel `echo $version`"><span style="font-family: arial, helvetica, sans-serif;">Téléchargement Linux Version `echo $version` 32bits</span></a><br />md5sum: `echo $md5ubuntu32`</p>
-<p><span style="font-family: arial, helvetica, sans-serif;"></span></li>
-
-<li style="font-family: Arial, Helvetica, sans-serif; font-size: small; color: #151515; line-height: normal; text-align: -webkit-auto;">Mac os X Snow Leopard:  <a href="download/software/cultibox-macosx_`echo $version`.pkg" title="Logiciel `echo $version`"><span style="font-family: arial, helvetica, sans-serif;">Téléchargement Mac Os X Snow Leopard Version `echo $version`</span></a><br />md5sum: `echo $md5mac`</p>
-<p><span style="font-family: arial, helvetica, sans-serif;"></span></li>
-</ul>
-</p>
-EOF
-
-    set +x
+    echo -n "$html"
+    echo ""
 }
 
 
