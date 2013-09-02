@@ -624,7 +624,7 @@ td.conf-alarm-field {
 
 /* css for timepicker */
 #ui-datepicker-div, .ui-datepicker{ width: 25%; font-size: 90%; border-radius:4px;}
-.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px;}
 .ui-timepicker-div dl { text-align: left; }
 .ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
 .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }

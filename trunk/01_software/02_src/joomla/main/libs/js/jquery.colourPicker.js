@@ -210,7 +210,7 @@ jQuery.fn.colourPicker = function (conf) {
 
 			colourPicker.html(heading + '<ul>' + loc + '</ul>').css({
 				position: 'absolute', 
-				left: iconPos.left + 300 + 'px', 
+				left: iconPos.left + 500 + 'px', 
 				top: iconPos.top - 250 + 'px'
 			}).show(config.speed);
 

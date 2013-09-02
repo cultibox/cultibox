@@ -19,7 +19,7 @@ h6,
 }
 
 ::-moz-selection { background: #65ADC5; color: #fff; }
-::selection { background: #65ADC5; color: #fff; }
+/*::selection { background: #65ADC5; color: #fff; }*/
 
 
 /* Menus
@@ -104,7 +104,7 @@ a.button-more {
 					rgba(161,206,221,1.0) 100%
 				);
 	background: linear-gradient(
-					top,
+				/*	top,*/
 					rgba(177,215,228,1.0) 0%,
 					rgba(161,206,221,1.0) 100%
 				);

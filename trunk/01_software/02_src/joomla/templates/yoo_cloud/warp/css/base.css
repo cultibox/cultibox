@@ -27,7 +27,7 @@ a:hover, a:active { outline: none; }
 textarea { overflow: auto; }
 
 /* Remove background from selected images */
-img::selection { background: transparent; }
+/*img::selection { background: transparent; }*/
 img::-moz-selection { background: transparent; }
 
 /* Remove borders */
