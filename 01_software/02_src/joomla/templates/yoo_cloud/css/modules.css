@@ -129,7 +129,7 @@ a#bus div.module {
 	color:#555554;
 	font-size:11px;
 	line-height:13px;
-	border-radius: none;
+	/*border-radius: none;*/
 	background: none;
 	box-shadow:none;
 }

@@ -18,45 +18,41 @@
 	z-index: 99;
 }
 
-	#jquery-colour-picker h2 {
-		margin: 0 0 5px 0;
-		font-size: 14px;
-	}
+#jquery-colour-picker h2 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+}
 
-	#jquery-colour-picker ul {
-		margin: 0;
-		padding: 0;
-		list-style-type: none;
+#jquery-colour-picker ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    /*+zoom: 1;*/
+}
 
-		+zoom: 1;
-	}
+#jquery-colour-picker ul:after {
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
 
-	#jquery-colour-picker ul:after {
-		content: ".";
-		display: block;
-		height: 0;
-		visibility: hidden;
-		clear: both;
-	}
+#jquery-colour-picker ul li {
+    float: left;
+    margin: 0 5px 5px 0;
+}
 
-		#jquery-colour-picker ul li {
-			float: left;
-			margin: 0 5px 5px 0;
-		}
+#jquery-colour-picker ul li a {
+    display: block;
+    width: 13px;
+    height: 13px;
+    text-decoration: none;
+    text-indent: -100000px;
+    outline: 0;
+    border: 1px solid #aaa;
+}
 
-			#jquery-colour-picker ul li a {
-				display: block;
-
-				width: 13px;
-				height: 13px;
-
-				text-decoration: none;
-				text-indent: -100000px;
-				outline: 0;
-
-				border: 1px solid #aaa;
-			}
-
-			#jquery-colour-picker ul li a:hover {
-				border-color: #000;
-			}
+#jquery-colour-picker ul li a:hover {
+    border-color: #000;
+}

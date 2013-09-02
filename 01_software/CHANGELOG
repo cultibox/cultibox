@@ -1,3 +1,9 @@
+Cultibox (1.1.32) precise; urgency=low
+    + Passage du CSS au W3C pour respecter les standards
+
+-- Yann Genevois <yann.genevois@gmail.com>  Mon Sep  2 16:47:46 CEST 2013
+
+
 Cultibox (1.1.31) precise; urgency=low
     + Correction de la configuration du type de prise dans le wizard
 
