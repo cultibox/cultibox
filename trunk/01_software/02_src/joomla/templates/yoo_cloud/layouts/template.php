@@ -111,7 +111,7 @@ include($this['path']->path('layouts:template.config.php'));
 						<?php endif; ?>
                   
                         <div id="box">                      
-                        	<img src="main/libs/img/box.png" alt="">
+                        	<img src="main/libs/img/box.png" alt="" height="115" width="125">
                         </div>
                         			
                         <a class="logo" href="<?php echo $this['config']->get('site_url'); ?>">                       
