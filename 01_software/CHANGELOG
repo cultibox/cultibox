@@ -1,3 +1,9 @@
+Cultibox (1.1.33) precise; urgency=low
+    + Remise en forme de l'image de la cultibox sur le logiciel
+
+-- Yann Genevois <yann.genevois@gmail.com> Tue Sep  3 11:43:25 CEST 2013
+
+
 Cultibox (1.1.32) precise; urgency=low
     + Passage du CSS au W3C pour respecter les standards
 
