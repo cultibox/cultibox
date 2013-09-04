@@ -1,17 +1,105 @@
-<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="float: right;">
+﻿<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/menus.css" />
+    <link rel="stylesheet" href="./css/modules.css" />
+    <link rel="stylesheet" href="./css/tools.css" />
+    <link rel="stylesheet" href="./css/system.css" />
+    <link rel="stylesheet" href="./css/extensions.css" />
+    <link rel="stylesheet" href="./css/custom.css" />
+    <link rel="stylesheet" href="./css/animations.css" />
+    <link rel="stylesheet" href="./css/lightblue.css" />
+    <link rel="stylesheet" href="./css/noise.css" />
+    <link rel="stylesheet" href="./css/aller.css" />
+    <link rel="stylesheet" href="./css/blue_gradient_style.css" />
+    <link rel="stylesheet" href="./css/print.css" />
+    <link rel="stylesheet" href="./fonts/aller.css" />
+    <title>Cultibox : Achat</title>
+  </head>
+  <body id="page" class="page sidebar-a-right sidebar-b-right isblog team" >
+    <div id="fb-root" class=" fb_reset">
+      <div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+        <div>
+          <iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="http://static.ak.facebook.com/connect/xd_arbiter.php?version=26#channel=f1bbda2b&amp;channel_path=%2F%3Ffb_xd_fragment%23xd_sig%3Dfa2f91a4%26&amp;origin=http%3A%2F%2Fcultibox.highproshop.fr" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="https://s-static.ak.facebook.com/connect/xd_arbiter.php?version=26#channel=f1bbda2b&amp;channel_path=%2F%3Ffb_xd_fragment%23xd_sig%3Dfa2f91a4%26&amp;origin=http%3A%2F%2Fcultibox.highproshop.fr" style="border: none;">
+          </iframe>
+        </div>
+      </div>
+      <div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+        <div></div>
+      </div>
+    </div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="page-bg">
+      <div id="page-bg2">
+        <div class="wrapper grid-block">
+
+        <header id="header">
+          <div id="headerbar" class="grid-block">
+            <img src="./images/logo_cultibox.jpg" alt="logo cultibox" height="74" width="368">
+            <a id="bus" href="./index.html">
+              <div class="module mod-box  deepest">
+                <p><img src="./images/box-alpha.png" alt="Vue 3D Cultibox" class="noborder" height="200" width="250"></p>
+              </div>
+            </a>
+            <div id="menubar" class="grid-block">
+              <nav id="menu">
+                <ul class="menu menu-dropdown">
+                  <li class="level1 item182">
+                    <a href="./index.html" class="level1"><span>Produit</span></a>
+                  </li>
+                  <li class="level1 item219">
+                    <a href="./telechargement.html" class="level1"><span>Téléchargement</span></a>
+                  </li>
+                  <li class="level1 item227">
+                    <a href="./achat.html" class="level1"><span>Achat</span></a>
+                  </li>
+                  <li class="level1 item228">
+                    <a href="./aide.html" class="level1"><span>Aide</span></a>
+                  </li>
+                  <li class="level1 item229">
+                    <a href="./contact.html" class="level1"><span>Contact</span></a>
+                  </li>
+                </ul>
+              </nav>
+            </div>               
+          </div>          
+          <div id="diaporama" class="grid-block"></div>   
+        </header>
+
+        <div id="main" class="grid-block">
+          <div id="maininner" class="grid-box">
+            <section id="content" class="grid-block">
+              <div id="system">
+                <article class="item">
+                  <header>
+                    <h1 class="title">Achat</h1>
+                  </header>
+                    <div class="content clearfix">
+
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="right">
   <input type="hidden" name="cmd" value="_cart">
   <input type="hidden" name="business" value="HHD66JL4QH948">
   <input type="hidden" name="display" value="1">
-  <input type="image" src="https://cultibox.googlecode.com/svn/wiki/img/afficher_le_pannier.png" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+  <input type="image" src="https://cultibox.googlecode.com/svn/wiki/img/afficher_le_pannier.png" name="submit" alt="Afficher le panier Paypal">
   <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
 </form>
 
 <ul>
-   <li><a href="#pack_cultibox">Pack Cultibox</a></li>
-   <li><a href="#accessoire">Accessoires disponibles</a></li>
-   <li><a href="#remplacement">Pièces de remplacement de votre Pack</a></li>
-   <li><a href="http://cultibox.highproshop.fr/garantie/">Garantie</a></li>
-  <li><a href="http://cultibox.highproshop.fr/cgv/">Conditions générales de vente</a></li>
+  <li><a href="#pack_cultibox">Pack Cultibox</a></li>
+  <li><a href="#accessoire">Accessoires disponibles</a></li>
+  <li><a href="#remplacement">Pièces de remplacement de votre Pack</a></li>
+  <li><a href="./garantie.html">Garantie</a></li>
+  <li><a href="./cgv.html">Conditions générales de vente</a></li>
 </ul>
 <br /><br /><br />
 <hr />
@@ -21,13 +109,13 @@
 <div class="module mod-box mod-box-header  deepest">
 <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
   <h3 class="module-title">Le pack cultibox à 299€
-         <input type="hidden" name="cmd" value="_s-xclick" />
-         <input type="hidden" name="hosted_button_id" value="YNRWV6FSE4Z9S" />
-         <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !" style="float: right;" />
-         <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
+    <input type="hidden" name="cmd" value="_s-xclick" />
+    <input type="hidden" name="hosted_button_id" value="YNRWV6FSE4Z9S" />
+    <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="Ajouter au panier" class="right" />
+    <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
     <br /><br /></h3>   
   </form>
-   <img src="/images/yootheme/box-alpha.png" alt="Cultibox" style="border: 0px none;float: right;" width="180" />
+   <img src="./images/box-alpha.png" alt="Vue 3D Cultibox" class="img-cultibox" width="180" />
    <p class="text-cultibox-bulle">Le pack Cultibox est l'idéal pour commencer. Il se compose des éléments suivants:</p>
    <ul>
       <li>Une Cultibox (dimensions sans l'antenne: 12,8cm x 10,6cm x 3,3cm)</li>
@@ -37,31 +125,32 @@
       <li>Les accessoires : carte SD, adaptateur SD/USB, câble USB, adaptateur secteur, câble capteur</li>
    </ul>
 
-   <img src="/images/yootheme/prise_100W.png" alt="prise 1000W" style="border: 0px none;" width="80" />
-   <img src="/images/yootheme/prise_100W.png" alt="prise 1000W" style="border: 0px none;" width="80" />
-   <img src="/images/yootheme/PRISE_3500W_c.gif" alt="Prise 3500W" style="border: 0px none" width="80" />
-   <img src="/images/yootheme/capteur.png" alt="capteur de temperature" style="border: 0px none;" width="120" />
+   <img src="./images/prise_100W.png" alt="Prise 1000W sans fils" class="noborder" width="80" />
+   <img src="./images/prise_100W.png" alt="Prise 1000W sans fils" class="noborder" width="80" />
+   <img src="./images/PRISE_3500W_c.gif" alt="Prise 3500W pour HPS" class="noborder" width="80" />
+   <img src="./images/capteur.png" alt="Capteur de temperature et d'humidité" class="noborder" width="120" />
 </div>
 <br /><br />
 <h2 id="accessoire">Accessoires disponibles</h2>
 
 <div class="module mod-box mod-box-header  deepest">
-          <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-   <h3 class="module-title">Capteur
-          <input type="hidden" name="cmd" value="_s-xclick" />
-          <input type="hidden" name="hosted_button_id" value="SCDZG2H4HJDQJ" />
-          <input type="hidden" name="on0" value="Numéro du capteur" />
-                <select name="os0">
-                  <option value="Numéro 2">n°2 </option>
-                  <option value="Numéro 3">n°3 </option>
-                  <option value="Numéro 4">n°4 </option>
-     </select><label class="soustitre_achat">(température et humidité)</label> à 39€
-                <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !" style="float: right;" />
-                <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
-     <br /><br /></h3>
-         </form>
-
-   <img src="/images/yootheme/capteur.png" alt="capteur.png" style="border: 0px none;float: right;" />
+  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <h3 class="module-title">Capteur
+      <input type="hidden" name="cmd" value="_s-xclick" />
+      <input type="hidden" name="hosted_button_id" value="SCDZG2H4HJDQJ" />
+      <input type="hidden" name="on0" value="Numéro du capteur" />
+      <select name="os0">
+        <option value="Numéro 2">n°2 </option>
+        <option value="Numéro 3">n°3 </option>
+        <option value="Numéro 4">n°4 </option>
+      </select>
+      <label class="soustitre_achat">(température et humidité)</label> à 39€
+      <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="Ajouter au panier" class="right" />
+      <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
+     <br /><br />
+    </h3>
+  </form>
+   <img src="./images/capteur.png" alt="Capteur de température et d'humidité" class="img-cultibox" />
    <p class="text-cultibox-bulle">La Cultibox peut être connectée à quatre capteurs. En ajoutant un capteur à votre pack de base, vous pouvez visualiser les conditions climatiques d'un second espace et réguler vos prises par rapport à ce nouveau capteur.</p>
    <p class="text-cultibox-bulle">Chaque capteur est vendu avec sa notice et un câble de 2,2 mètres. Si vous avez besoin de plus de longueur, des câbles plus longs sont disponibles.</p>
    <p class="text-cultibox-bulle">Les quatre capteurs doivent tous avoir un numéro différent  (le capteur d'origine dans le pack de base est le capteur n°1), vous pouvez donc compléter votre pack Cultibox en achetant d'abord un capteur n°2 puis un capteur n°3 et enfin un capteur n°4.</p>
@@ -69,61 +158,64 @@
 </div>
 <br />
 <div class="module mod-box mod-box-header  deepest">
-          <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <h3 class="module-title">Prise 1000W
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="hidden" name="hosted_button_id" value="63BPGBV7LM98A" />
-    <input type="hidden" name="on0" value="Numéro de prise" />    
-            <select name="os0">
-             <option value="Prise 4">n°4 </option>
-             <option value="Prise 5">n°5 </option>
-             <option value="Prise 6">n°6 </option>
-           </select>&nbsp;à 29€
-           <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !" style="float: right;" />
-           <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1" />
-    <br /><br /></h3>
-          </form>
-   <img src="/images/yootheme/prise_100W.png" alt="Prise 1000W" style="border: 0px none;float: right;" width="100" />
+  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <h3 class="module-title">Prise 1000W
+      <input type="hidden" name="cmd" value="_s-xclick" />
+      <input type="hidden" name="hosted_button_id" value="63BPGBV7LM98A" />
+      <input type="hidden" name="on0" value="Numéro de prise" />    
+      <select name="os0">
+        <option value="Prise 4">n°4 </option>
+        <option value="Prise 5">n°5 </option>
+        <option value="Prise 6">n°6 </option>
+      </select>&nbsp;à 29€
+      <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="Ajouter au panier" class="right" />
+      <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1" />
+      <br /><br />
+    </h3>
+  </form>
+   <img src="./images/prise_100W.png" alt="Prise 1000W" class="img-cultibox" width="100" />
   <p class="text-cultibox-bulle">La Cultibox est capable de piloter jusqu'à dix prises. Donner plus d'envergure à votre pack Cultibox en ajoutant des prises supplémentaires. Les prises 1000W sont parfaites pour piloter un ventilateur, une pompe, un tapis chauffant...</p>
 </div>
 <br />
 <div class="module mod-box mod-box-header  deepest">
-         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-   <h3 class="module-title">Prise 3500W
-         <input type="hidden" name="cmd" value="_s-xclick" />
-         <input type="hidden" name="hosted_button_id" value="5HYZKYCHZFKLY" />
-     <input type="hidden" name="on0" value="Numéro de prise" />
-     <select name="os0">
-           <option value="Prise 4">n°4 </option>
-           <option value="Prise 5">n°5 </option>
-           <option value="Prise 6">n°6 </option>
-         </select>&nbsp;à 39€
-             <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !" style="float: right;" />
-             <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1" />
-     <br /><br /></h3>
-         </form>
+  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <h3 class="module-title">Prise 3500W
+      <input type="hidden" name="cmd" value="_s-xclick" />
+      <input type="hidden" name="hosted_button_id" value="5HYZKYCHZFKLY" />
+      <input type="hidden" name="on0" value="Numéro de prise" />
+      <select name="os0">
+        <option value="Prise 4">n°4 </option>
+        <option value="Prise 5">n°5 </option>
+        <option value="Prise 6">n°6 </option>
+      </select>&nbsp;à 39€
+      <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="Ajouter au panier" class="right" />
+      <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1" />
+      <br /><br />
+    </h3>
+  </form>
 
-   <img src="/images/yootheme/PRISE_3500W_c.gif" alt="Prise 3500W" style="border: 0px none;float: right;" />
+   <img src="./images/PRISE_3500W_c.gif" alt="Prise 3500W" class="img-cultibox" />
    <p class="text-cultibox-bulle">La Cultibox est capable de piloter jusqu'à dix prises. Donner plus d'envergure à votre pack Cultibox en ajoutant des prises supplémentaires. Les prises 3500W sont parfaites pour piloter une lampe HPS ou MH</p>
 </div>
 <br />
 <div class="module mod-box mod-box-header  deepest">
- <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-   <h3 class="module-title">Câble capteur de
-           <input type="hidden" name="cmd" value="_s-xclick" />
-           <input type="hidden" name="hosted_button_id" value="RZFPG7N4AZ37C" />
-           <input type="hidden" name="on0" value="Longueur" />
-            <select name="os0">
-           <option value="2,1 m">2,1 m </option>
-           <option value="4,2 m">4,2 m </option>
-           <option value="7,6 m">7,6 m </option>
-             </select>&nbsp;à 9,99€
-               <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !" style="float: right;" />
-               <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
-     <br /><br /></h3>
-         </form>
+  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <h3 class="module-title">Câble capteur de
+      <input type="hidden" name="cmd" value="_s-xclick" />
+      <input type="hidden" name="hosted_button_id" value="RZFPG7N4AZ37C" />
+      <input type="hidden" name="on0" value="Longueur" />
+      <select name="os0">
+        <option value="2,1 m">2,1 m </option>
+        <option value="4,2 m">4,2 m </option>
+        <option value="7,6 m">7,6 m </option>
+      </select>&nbsp;à 9,99€
+      <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="Ajouter au panier" class="right" />
+      <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
+      <br /><br />
+    </h3>
+  </form>
 
-   <img src="/images/yootheme/RJ12.png" alt="cable capteur" style="border: 0px none;float: right;" width="200" />
+   <img src="./images/RJ12.png" alt="cable capteur" class="img-cultibox" width="200" />
    <p class="text-cultibox-bulle">Augmentez la distance entre votre Cultibox et votre capteur en achetant ce câble. Trois longueurs disponible: 2,1 mètres (taille du pack de base), 4,2 mètres ou 7,6 mètres (prix identique quelque soi la longueur choisie)</p>
 </div>
 
@@ -131,52 +223,103 @@
 
 <h2 id="remplacement">Pièce de remplacement de votre Pack</h2>
 <div class="module mod-box mod-box-header  deepest">
-         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <h3 class="module-title">Câble USB à 9,99€
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="hidden" name="hosted_button_id" value="NRTDU6Q72RR9C" />
-            <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !" style="float: right;" />
-            <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
-    <br /><br /></h3>
-           </form>
-          <img src="/images/yootheme/cable_usb.png" alt="cable_usb" style="border: 0px none;float: right;" width="100" />
-   <p class="text-cultibox-bulle">Le câble USB permet de faire la connexion entre l'adaptateur secteur et la Cultibox. Il permet d'alimenter la Cultibox en énergie électrique.</p>
+  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <h3 class="module-title">Câble USB à 9,99€
+      <input type="hidden" name="cmd" value="_s-xclick" />
+      <input type="hidden" name="hosted_button_id" value="NRTDU6Q72RR9C" />
+      <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="Ajouter au panier" class="right" />
+      <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
+      <br /><br />
+    </h3>
+  </form>
+  <img src="./images/cable_usb.png" alt="Cable USB" class="img-cultibox" width="100" />
+  <p class="text-cultibox-bulle">Le câble USB permet de faire la connexion entre l'adaptateur secteur et la Cultibox. Il permet d'alimenter la Cultibox en énergie électrique.</p>
 </div>
 <br />
 <div class="module mod-box mod-box-header  deepest">
- <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <h3 class="module-title">Adaptateur Secteur à 9,99€
-        <input type="hidden" name="cmd" value="_s-xclick" />
-        <input type="hidden" name="hosted_button_id" value="XYFMJG4Y5N69C" />
-        <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !" style="float: right;" />
-        <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
-    <br /><br /></h3>
-        </form>
+  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <h3 class="module-title">Adaptateur Secteur à 9,99€
+      <input type="hidden" name="cmd" value="_s-xclick" />
+      <input type="hidden" name="hosted_button_id" value="XYFMJG4Y5N69C" />
+      <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="Ajouter au panier" class="right" />
+      <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
+      <br /><br />
+    </h3>
+  </form>
 
-   <img src="/images/yootheme/chargeur_usb2.png" alt="chargeur usb" style="border: 0px none;float: right;" width="100" />
+   <img src="./images/chargeur_usb2.png" alt="chargeur usb" class="img-cultibox" width="100" />
    <p class="text-cultibox-bulle">L'alimentation électrique de la Cultibox est réalisée avec un adaptateur secteur. Il fournit une tension de 5V avec un courant de 500mA qui permet à la Cultibox de fonctionner en toute sécurité.</p>
 </div>
 <br />
 <div class="module mod-box mod-box-header  deepest">
-          <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <h3 class="module-title">Carte SD préformatée (2Go) à 9,99€
-           <input type="hidden" name="cmd" value="_s-xclick" />
-           <input type="hidden" name="hosted_button_id" value="T6ZFC7PRZ62KG" />
-           <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !" style="float: right;" />
-           <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
-    <br /><br /></h3>
-         </form>
-      
-   <img src="/images/yootheme/SD2.png" alt="SD" style="border: 0px none;float: right; margin-left: 15px" width="80" />
+  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <h3 class="module-title">Carte SD préformatée (2Go) à 9,99€
+      <input type="hidden" name="cmd" value="_s-xclick" />
+      <input type="hidden" name="hosted_button_id" value="T6ZFC7PRZ62KG" />
+      <input type="image" src="http://cultibox.googlecode.com/svn/wiki/img/ajouter_au_pannier.png" name="submit" alt="Ajouter au panier" class="right" />
+      <img alt="" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" />
+      <br /><br />
+    </h3>
+  </form>
+
+   <img src="./images/SD2.png" alt="SD"  class="img-cultibox margleft" width="80" />
    <p class="text-cultibox-bulle">La Cultibox fonctionne avec une carte SD qui contient les programmes et les enregistrements des capteurs. Si vous avez perdu ou cassé la carte fournit avec le pack, vous pouvez en acheter une nouvelle. Elle est vendue pré-formatée pour être directement utilisable dans la Cultibox.</p>
 </div>
 <br />
 <p class="p_center"><a href="#page">Revenir en haut de la page</a></p>
 <br />
 
-<p class="p_center"><a href="https://www.paypal.com/fr/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside" title="PayPal Comment Ca Marche" target="_blank"><img src="images/paypal.png" alt="PayPal Acceptance Mark" /></a></p>
+<p class="p_center">
+  <a href="https://www.paypal.com/fr/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside" title="PayPal Comment Ca Marche" target="_blank">
+    <img src="images/paypal.png" alt="PayPal Acceptance Mark" />
+  </a>
+</p>
 
 <hr /><br />
 <div class="fb-like" data-href="https://www.facebook.com/cultibox" data-send="true" data-width="450" data-show-faces="false" data-action="recommend"></div>
+
+
+                    </div> <!-- <div class="content clearfix"> -->
+                  </article> <!-- <article class="item"> -->
+                </div> <!-- <div id="system"> -->
+              </section> <!-- <section id="content" class="grid-block"> -->
+            </div> <!-- <div id="maininner" class="grid-box" style="min-height: 2222px;"> -->
+            
+            <aside id="sidebar-a" class="grid-box">
+              <div class="grid-box width100 grid-v">
+                <div class="module mod-box mod-box-header badge-new deepest">
+                  <div class="badge badge-new"></div>
+                  <h3 class="module-title">Le saviez-vous?</h3>    
+                    <p>Nous sommes en train de concevoir les futurs capteurs. La rumeur parle d'un capteur de température immergeable...</p>
+                </div>
+              </div>
+            </aside>
+            
+            
+          </div> <!-- <div id="main" class="grid-block"> -->
+          <section id="bottom-b" class="grid-block">
+            <div class="grid-box width100 grid-h" style="width: 980px;">
+              <div class="module mod-box adresse deepest" style="min-height: 2px;">
+                <table style="width: 100%;">
+                  <tbody>
+                    <tr>
+                      <td style="text-align: right;">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <footer id="footer" class="grid-block">
+          </footer>
+        </div> <!-- <div class="wrapper grid-block"> -->
+      </div> <!-- <div id="page-bg2"> -->
+
+      <div id="fb-root"></div>
+
+    </div> <!-- <div id="page-bg"> -->
+  </body>
+</html>
 
 
