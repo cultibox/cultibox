@@ -1,0 +1,14 @@
+/* Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/* Texture: Noise
+----------------------------------------------------------------------------------------------------*/
+
+body#page.page { 
+	background: #bdd2e5 url(../../images/texture/noise/page.jpg) 0 0 repeat; 
+	background: transparent;
+}
+
+html{
+	background: #7d1e50 url(../images/fond_interface-quentel.jpg) 50% top no-repeat; 
+	background: #e3ddd1 url(../images/fond_page_bottom.png) 0 100% repeat-x; 
+}

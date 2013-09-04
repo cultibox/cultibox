@@ -1,0 +1,9 @@
+/* Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+body { font-family: "AllerRegular"; }
+
+.menu-line li a { background-position: 0 1px; }
+.menu-line li a:hover { background-position: 0 -49px; }
+
+.menu-dropdown a.level1,
+.menu-dropdown span.level1 { font-family: "AllerRegular"; }
