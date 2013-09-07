@@ -135,7 +135,7 @@ buttonImageOnly: 'true',
 </form>
 </div>
 <br />
-<div id="label_select_day" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
+<div id="label_select_day" class="div_height" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
 <form name="display-log-day" id="display-log-day" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
 <table class="table_width">
    <tr>
@@ -195,7 +195,7 @@ buttonImageOnly: 'true',
 </form>
 <br />
 </div>
-<div id="label_select_month" style="<?php if(strcmp($type,"days")==0) echo "display:none"; ?>">
+<div id="label_select_month" class="div_height" style="<?php if(strcmp($type,"days")==0) echo "display:none"; ?>">
 <form name="display-log-month" id="display-log-month" action="/cultibox/index.php/waiting-data" method="post">
 <table class="table_width">
    <tr>
@@ -249,6 +249,7 @@ buttonImageOnly: 'true',
 </tr>
 </table>
 </form>
+<br />
 </div>
 <br />
 <hr />
