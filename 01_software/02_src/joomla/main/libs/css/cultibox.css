@@ -688,6 +688,11 @@ td.conf-alarm-field {
    color: #2A9011;
 }
 
+.format_current {
+   font-weight: bold;
+   color: #F07204;
+}
+
 
 .format_error {
    font-weight: bold;

@@ -1377,6 +1377,9 @@ msgstr "Programme importé avec succès"
 msgid "VALID_DELETE_LOGS"
 msgstr "Base des logs supprimée avec succès"
 
+msgid "CURRENT_DELETE_LOGS"
+msgstr "Logs en cours de suppréssion, merci de patienter le temps que l'opération se termine"
+
 msgid "VALID_RESET_CARD"
 msgstr "Carte formatée avec succès"
 

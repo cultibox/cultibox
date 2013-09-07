@@ -368,12 +368,14 @@ $(document).ready(function() {
                         $("#error_delete_logs").css("display","none"); 
                         $("#success_delete_logs").css("display","none"); 
                         $("#error_format_date_logs").css("display","none");
+                        $("#current_delete_logs").css("display","none");
                         $( this ).dialog( "close" ); 
                         return false;
                     }}, {
                     text: DELETE_button,
                         click: function () {
                             $("#error_format_date_logs").css("display","none");
+                            $("#current_delete_logs").show();
                             if((checkFormatDate($("#datepicker_from").val()))&&(checkFormatDate($("#datepicker_to").val()))&&(compareDate($("#datepicker_from").val(),$("#datepicker_to").val()))) {
                             $.ajax({
                                 cache: false,
@@ -383,11 +385,14 @@ $(document).ready(function() {
                             }).done(function (data) {
                                 if(!$.isNumeric(data)) {
                                     $("#error_delete_logs").show();
+                                    $("#current_delete_logs").css("display","none");
                                 } else {
                                     if(data=="1") {
                                         $("#success_delete_logs").show();
+                                        $("#current_delete_logs").css("display","none");
                                     } else {
                                         $("#error_delete_log").show();
+                                        $("#current_delete_logs").css("display","none");
                                     }
                                 }
                                 $("#delete_log_form").dialog({ buttons: [ {
@@ -396,6 +401,7 @@ $(document).ready(function() {
                                             $("#error_delete_logs").css("display","none");
                                             $("#success_delete_logs").css("display","none");
                                             $("#error_format_date_logs").css("display","none");
+                                            $("#current_delete_logs").css("display","none");
                                             $( this ).dialog( "close" );
                                             document.forms['display-log-day'].submit();
                                             return false;
