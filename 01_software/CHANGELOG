@@ -1,5 +1,6 @@
 Cultibox (1.1.33) precise; urgency=low
     + Remise en forme de l'image de la cultibox sur le logiciel
+    + Remise en forme de de l'affichage des différentes partie des logs pour que la page ne bouge plus quand on choisis un affichage par mois ou par jour
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Sep  3 11:43:25 CEST 2013
 
