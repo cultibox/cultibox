@@ -59,7 +59,10 @@ $GLOBALS['FIRST_USE'] = true;
 $GLOBALS['FIRST_LOG_YEAR'] = '2013';
 
 // Remote file to check update for the interface
-$GLOBALS['UPDATE_FILE'] = 'http://cultibox.highproshop.fr/download/software/updates/update_list.txt';
+$GLOBALS['UPDATE_FILE'] = 'http://cultibox.highproshop.fr/download/software/updates/VERSION';
+
+//Website to download software:
+$GLOBALS['WEBSITE'] = 'http://cultibox.highproshop.fr/telechargement.html';
 
 // Remote site to test internet connection
 $GLOBALS['REMOTE_SITE'] = 'cultibox.highproshop.fr';

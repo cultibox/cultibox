@@ -1414,7 +1414,7 @@ msgid "UPDATED_PROGRAM"
 msgstr "Vos programmes/configuration des prises/configuration de la Cultibox n'étaient pas à jour sur votre carte, la mise à jour a été exécuté"
 
 msgid "INFO_UPDATE_AVAILABLE"
-msgstr "Une mise à jour est disponible pour passer à la version: "
+msgstr "Une mise à jour est disponible pour passer vers une version plus récente en cliquant"
 
 msgid "STILL_LOG_FILE"
 msgstr "Il reste des fichiers des données de température, d'humidité ou de puissance plus anciens à charger, pour cela utilisez le bouton 'importer les logs'"

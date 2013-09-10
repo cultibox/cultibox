@@ -1706,42 +1706,31 @@ function get_nb_days($start_date="",$end_date="") {
 
 // {{{ check_update_available()
 // ROLE get the update file from a distant site and check available updates
-// IN    $ret     array to return containing updates informations
-//       $version version of the current software
+// IN    $version version of the current software
 //       $out     errors or warnings messages
 // RET   none  
-function check_update_available($version,&$ret,&$out) {
+function check_update_available($version,&$out) {
          $version=str_replace(".","",$version);
          $temp=explode("-", $version);
          $version=$temp[0];
-         $arch=$temp[1];
-         $arch=trim($arch);
 
          if(isset($GLOBALS['UPDATE_FILE'])&&(!empty($GLOBALS['UPDATE_FILE']))) {
-               $buffer=array();
-               $tmp=array();
                $file=$GLOBALS['UPDATE_FILE'];
                if($handle=@fopen($file,"r")) {
-                  while (!feof($handle)) {
-                     $buffer[] = fgets($handle);
-                  }
+                  $val=fgets($handle);
                   fclose($handle);
-                  $os=php_uname('s');
-                  foreach($buffer as $val) {
-                                    $tmp=explode("*", $val);
-                                    if(count($tmp)>=4) {
-                                        $tmp_version=str_replace(".","","$tmp[1]");
-                                        $tmp[3]=trim($tmp[3]);
-
-                                        if((strcmp($tmp[0],"$os")==0)&&($version<$tmp_version)&&(strcmp("$arch","$tmp[3]")==0)) {
-                                            $ret[]=$tmp; 
-                                        }
-                                    }
-                 } 
+                  if(!empty($val)) { 
+                    $tmp_version=str_replace(".","","$val");
+                    $tmp_version=trim($tmp_version);
+                    if(($version<$tmp_version)) {
+                        return true;
+                    }
+                  }
                } else {
                   $out[]=__('ERROR_REMOTE_UPDATE_FILE');
                }
          }
+         return false;
 }
 // }}}
 
