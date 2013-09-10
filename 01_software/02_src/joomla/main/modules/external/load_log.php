@@ -89,7 +89,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
         if(file_exists("$sd_card/logs/$mmonth/$dday")) {
             // get log value
             if(is_file("$sd_card/logs/$mmonth/$dday")) {
-                get_log_value("$sd_card/logs/$mmonth/$dday",$log);
+                get_log_value("$sd_card","$mmonth","$dday",$log);
             }
 
             if(!empty($log)) {
@@ -150,7 +150,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
             }
 
             if(file_exists("$sd_card/logs/$mmonth/$dday")) {
-                get_log_value("$sd_card/logs/$mmonth/$dday",$log);
+                get_log_value("$sd_card","$mmonth","$dday",$log);
             }
 
             if(!empty($log)) {

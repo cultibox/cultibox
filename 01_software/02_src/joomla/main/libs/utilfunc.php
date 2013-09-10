@@ -143,10 +143,14 @@ function check_empty_string($value="") {
 
 // {{{ get_log_value()
 // ROLE get log's values from files and clean it
-// IN $file          file to explode
+// IN $sd_card       path to the sd card
+//    $month         month to be proceed
+//    $day           day to be proceed
 //    $array_line    array to store log's values
 // RET none
-function get_log_value($file,&$array_line) {
+function get_log_value($sd_card,$month,$day,&$array_line) {
+   $file="$sd_card/logs/$month/$day";
+
    if(!file_exists("$file")) return false;
    $handle = fopen("$file", 'r');
    if ($handle)
@@ -171,6 +175,11 @@ function get_log_value($file,&$array_line) {
 
                 if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)&&(strlen($temp[0])==14)) {
                         for($i=0;$i<$GLOBALS['NB_MAX_SENSOR'];$i++) {
+                            $sensor_type=get_sensor_type($i,"$sd_card","$month","$day");
+                            if(empty($sensor_type)) {
+                                $sensor_type="2";
+                            }
+
                             if((!empty($temp[2*$i+1]))||(!empty($temp[2*$i+2]))) {
                                         $array_line[] = array(
                                             "timestamp" => $temp[0],
@@ -178,7 +187,8 @@ function get_log_value($file,&$array_line) {
                                             "humidity" => $temp[2+2*$i],
                                             "date_catch" => $date_catch,
                                             "time_catch" => $time_catch,
-                                            "sensor_nb" => $i+1
+                                            "sensor_nb" => $i+1,    
+                                            "sensor_type" => $sensor_type
                                         );
                             } 
                         }
@@ -2101,6 +2111,37 @@ function find_new_line($tab, $time="") {
 // }}}
 
 
+// {{{ get_sensor_type()
+// ROLE get sensor type from the index file
+// IN $nmb      number of the sensor 
+//    $sd_card  path to the SD card plugged
+//    $month    month to be checked
+//    $day      day to be checked
+// RET sensor type number
+function get_sensor_type($nmb,$sd_card,$month,$day) {
+   $file="$sd_card/logs/index";
+   if(!file_exists("$file")) return false;
+
+   $handle = fopen("$file", 'r');
+   if($handle) {
+      while(!feof($handle)) {
+         $buffer = fgets($handle);
+         $tmp=substr($buffer, 0, 4);
+
+         if(strcmp("$tmp","$month$day")==0) {
+            $sensor=substr("$buffer",4+$nmb,1);
+            fclose($handle);
+            return "$sensor";     
+         }
+      }
+      fclose($handle);
+      return false;
+   }
+   return false;
+}
+// }}}
+
+
 /* TO BE DELETED */
 function compat_old_sd_card($sd_card="") {
     if((isset($sd_card))&&(!empty($sd_card))) {
@@ -2121,6 +2162,8 @@ function compat_old_sd_card($sd_card="") {
         }
     }
 }
-/* **************** */ 
+
+/* **************** */
+
 
 ?>
