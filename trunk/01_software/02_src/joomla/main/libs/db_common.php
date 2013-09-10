@@ -35,7 +35,7 @@ function db_update_logs($arr,&$out) {
    $index=0;
    $return=1;
    $sql = <<<EOF
-INSERT INTO `logs`(`timestamp`,`temperature`, `humidity`,`date_catch`,`time_catch`,`sensor_nb`) VALUES
+INSERT INTO `logs`(`timestamp`,`temperature`, `humidity`,`date_catch`,`time_catch`,`sensor_nb`,`type_sensor`) VALUES
 EOF;
    foreach($arr as $value) {
       if(empty($value['temperature'])) {
@@ -46,11 +46,15 @@ EOF;
         $value['humidity']="NULL";
       }
 
+      if(empty($value['sensor_type'])) {
+        $value['sensor_type']="NULL";
+      } 
+
       if((array_key_exists("timestamp", $value))&&(array_key_exists("temperature", $value))&&(array_key_exists("humidity", $value))&&(array_key_exists("date_catch", $value))&&(array_key_exists("time_catch", $value))&&(array_key_exists("sensor_nb", $value))) {
          if("$index" == "0") {
-            $sql = $sql . "(${value['timestamp']}, ${value['temperature']},${value['humidity']},\"${value['date_catch']}\",\"${value['time_catch']}\",\"${value['sensor_nb']}\")";
+            $sql = $sql . "(${value['timestamp']}, ${value['temperature']},${value['humidity']},\"${value['date_catch']}\",\"${value['time_catch']}\",\"${value['sensor_nb']}\",\"${value['sensor_type']}\")";
          } else {
-            $sql = $sql . ",(${value['timestamp']}, ${value['temperature']},${value['humidity']},\"${value['date_catch']}\",\"${value['time_catch']}\",\"${value['sensor_nb']}\")";
+            $sql = $sql . ",(${value['timestamp']}, ${value['temperature']},${value['humidity']},\"${value['date_catch']}\",\"${value['time_catch']}\",\"${value['sensor_nb']}\",\"${value['sensor_type']}\")";
          }
          $index = $index +1;
       }
