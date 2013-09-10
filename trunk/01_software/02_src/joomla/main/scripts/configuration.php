@@ -349,11 +349,9 @@ if((isset($submit))&&(!empty($submit))) {
 
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {
-    if($sock = @fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
-      $ret=array();
-      check_update_available($version,$ret,$main_error);
-      foreach($ret as $file) {
-                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a class='download' href=".$file[2].">".$file[1]."</a>";
+    if($sock=@fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
+      if(check_update_available($version,$main_error)) {
+        $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a target='_blank' href=".$GLOBALS['WEBSITE'].">".__('HERE')."</a>";
       }
    } else {
     $main_error[]=__('ERROR_REMOTE_SITE');
