@@ -1,0 +1,28 @@
+Le template d'un email contenant du HTML est disponible ici:
+http://code.google.com/p/cultibox/source/browse/trunk/05_mailtype/newsletters/newsletters.html
+
+Les images du mail sont contenues ici:
+http://code.google.com/p/cultibox/source/browse/trunk/05_mailtype/newsletters/ 
+
+
+Marche à suivre pour envoyer un mail html:
+
+
+1- Faire un svn up (ou checkout) pour récupérer le template du mail: trunk/05_mailtype/newsletters/newsletters.html 
+
+2- Lancer Thunderbird et écrire un nouveau mail
+
+3- Cliquez sur le corps du mail et faire "Insérer" puis "HTML"
+
+4- Dans la fenêtre qui s'ouvre coller le code html contenu dans le fichier trunk/05_mailtype/newsletters/newsletters.html
+
+5- Changer les liens des images qui doivent pointer sur les images local du répertoire <votre_dépôt>/trunk/05_mailtype/newsletters/ puis valider le code HTML
+
+Le mail est prêt à être envoyé.
+
+
+
+Remarque 1: Pour ré-éditer le code il suffit de sélectionner le corps du message en entier (CTRL + a ) et de refaire "Inserer" puis "HTML"
+
+Remarque 2:  Certains affichages ne marchent pas dans la visualisation du mail de Thunderbird (comme la couleur des liens) mais fonctionne à la reception du mail. Toujours faire un essai d'envoie à soit même pour vérifier l'aspect visuel avant d'envoyer le mail aux utilisateurs.
+
