@@ -213,7 +213,7 @@ include($this['path']->path('layouts:template.config.php'));
                      <!-- Displays version and license for the software at the footer -->
                   <?php 
                         $error="";
-                        echo "v".get_configuration("VERSION",$error)."&nbsp;&nbsp;LGPL<br />";
+                        echo "v".get_configuration("VERSION",$error)."&nbsp;&nbsp;GPL-V3<br />";
                   ?>    
                   </p>
 	               <br /><br />	

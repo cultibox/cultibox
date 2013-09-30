@@ -6,6 +6,7 @@ Homepage: http://cultibox.fr
 Priority: extra
 Architecture: amd64
 Depends: ia32-libs
-Description: Web interface for the CultiBox
+Installed-Size: 790000
+Description: Web interface for the Cultibox
  This is the web interface for the cultibox to configure your box, view logs, manage your plugs.
 
