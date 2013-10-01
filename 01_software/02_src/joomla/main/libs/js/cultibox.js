@@ -923,6 +923,251 @@ $(document).ready(function() {
     });
 
 
+    // Check errors for the plugs part:
+    $("#reccord_plugs").click(function(e) {
+        selected_plug=$("#selected_plug").val();
+        if(selected_plug!="all") { 
+            nb_plugs=selected_plug;
+        } else {
+            selected_plug=1;
+        }
+
+        e.preventDefault();
+        var checked=true;
+        var anchor="";
+
+        for(i=selected_plug;i<=nb_plugs;i++) {
+            $("#error_power_value"+i).css("display","none");
+            $("#error_tolerance_value_humi"+i).css("display","none");
+            $("#error_tolerance_value_temp"+i).css("display","none");
+            $("#error_second_tolerance_value_humi"+i).css("display","none");
+            $("#error_second_tolerance_value_temp"+i).css("display","none");
+            $("#error_regul_value"+i).css("display","none");
+
+            if($("#plug_enable"+i).val()=="True") {
+                if($("#power_value"+i).val()) {
+                    //Check power value:
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                            data: {value:$("#power_value"+i).val(),type:'numeric'}
+                        }).done(function(data) {
+                            if(data!=1) {
+                                $("#error_power_value"+i).show(700);
+                                checked=false;
+                            }
+                    });
+                }
+
+
+                //Check tolerance value
+                if(($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")||($("#plug_type"+i).val()=="ventilator")) {
+                    if(($("#plug_tolerance"+i).val()=="0")||($("#plug_tolerance"+i).val()=="")) {
+                       $("#plug_tolerance"+i).val('0'); 
+                    } else { 
+                        $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                            data: {value:$("#plug_tolerance"+i).val(),type:'tolerance',plug: $("#plug_type"+i).val()}
+                        }).done(function(data) {
+                            if(data!=1) {
+                                if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
+                                    $("#error_tolerance_value_humi"+i).show(700);
+                                }
+
+                                if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
+                                    $("#error_tolerance_value_temp"+i).show(700);
+                                }
+                                checked=false;
+                            }
+                        });
+                    }
+
+
+                    //Check the second regul values:
+                    if($("#plug_regul"+i).val()=="True") {
+                        if(($("#plug_second_tolerance"+i).val()=="0")||($("#plug_second_tolerance"+i).val()=="")) {
+                            $("#plug_second_tolerance"+i).val('0');
+                        } else {
+                            $.ajax({
+                            cache: false,
+                            async: false,
+                            url: "../../main/modules/external/check_value.php",
+                            data: {value:$("#plug_second_tolerance"+i).val(),type:'tolerance',plug: $("#plug_type"+i).val()}
+                            }).done(function(data) {
+                                if(data!=1) {
+                                    if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
+                                        $("#error_second_tolerance_value_temp"+i).show(700);
+                                    }
+
+                                    if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
+                                        $("#error_second_tolerance_value_humi"+i).show(700);
+                                    }
+                                    checked=false;
+                                }
+                            });
+                        } 
+
+
+                        if(($("#plug_regul_value"+i).val()=="0")||($("#plug_regul_value"+i).val()=="")) {
+                            $("#error_regul_value"+i).show(700);
+                            checked=false;
+                        } else {
+                            $.ajax({
+                            cache: false,
+                            async: false,
+                            url: "../../main/modules/external/check_value.php",
+                            data: {value:$("#plug_regul_value"+i).val(),type:'regulation'}
+                            }).done(function(data) {
+                                if(data!=1) {
+                                    $("#error_regul_value"+i).show(700);
+                                    checked=false;
+                                }
+                            });
+                        }
+                    }
+
+                	
+                    if((!checked)&&(anchor=="")) {
+                        anchor="anchor"+i;
+                    }
+                }
+            }
+         }
+
+        if(checked) {
+            document.forms['plugForm'].submit();
+        } else if(anchor!="") {
+           $.scrollTo("#"+anchor,300); 
+        }
+    });
+
+
+    $('[id^="jumpto"]').click(function(e) {
+             selected_plug=$("#selected_plug").val();
+        if(selected_plug!="all") {
+            nb_plugs=selected_plug;
+        } else {
+            selected_plug=1;
+        }
+
+        e.preventDefault();
+        var checked=true;
+        var anchor="";
+
+        for(i=selected_plug;i<=nb_plugs;i++) {
+            $("#error_power_value"+i).css("display","none");
+            $("#error_tolerance_value_humi"+i).css("display","none");
+            $("#error_tolerance_value_temp"+i).css("display","none");
+            $("#error_second_tolerance_value_humi"+i).css("display","none");
+            $("#error_second_tolerance_value_temp"+i).css("display","none");
+            $("#error_regul_value"+i).css("display","none");
+
+            if($("#plug_enable"+i).val()=="True") {
+                if($("#power_value"+i).val()) {
+                    //Check power value:
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                            data: {value:$("#power_value"+i).val(),type:'numeric'}
+                        }).done(function(data) {
+                            if(data!=1) {
+                                $("#error_power_value"+i).show(700);
+                                checked=false;
+                            }
+                    });
+                }
+
+
+                //Check tolerance value
+                if(($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")||($("#plug_type"+i).val()=="ventilator")) {
+                    if(($("#plug_tolerance"+i).val()=="0")||($("#plug_tolerance"+i).val()=="")) {
+                       $("#plug_tolerance"+i).val('0');
+                    } else {
+                        $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                            data: {value:$("#plug_tolerance"+i).val(),type:'tolerance',plug: $("#plug_type"+i).val()}
+                        }).done(function(data) {
+                            if(data!=1) {
+                                if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
+                                    $("#error_tolerance_value_humi"+i).show(700);
+                                }
+
+                                if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
+                                    $("#error_tolerance_value_temp"+i).show(700);
+                                }
+                                checked=false;
+                            }
+                        });
+                    }
+
+
+                      //Check the second regul values:
+                    if($("#plug_regul"+i).val()=="True") {
+                        if(($("#plug_second_tolerance"+i).val()=="0")||($("#plug_second_tolerance"+i).val()=="")) {
+                            $("#plug_second_tolerance"+i).val('0');
+                        } else {
+                            $.ajax({
+                            cache: false,
+                            async: false,
+                            url: "../../main/modules/external/check_value.php",
+                            data: {value:$("#plug_second_tolerance"+i).val(),type:'tolerance',plug: $("#plug_type"+i).val()}
+                            }).done(function(data) {
+                                if(data!=1) {
+                                    if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
+                                        $("#error_second_tolerance_value_temp"+i).show(700);
+                                    }
+
+                                    if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
+                                        $("#error_second_tolerance_value_humi"+i).show(700);
+                                    }
+                                    checked=false;
+                                }
+                            });
+                        }
+
+
+                         if(($("#plug_regul_value"+i).val()=="0")||($("#plug_regul_value"+i).val()=="")) {
+                            $("#error_regul_value"+i).show(700);
+                            checked=false;
+                        } else {
+                            $.ajax({
+                            cache: false,
+                            async: false,
+                            url: "../../main/modules/external/check_value.php",
+                            data: {value:$("#plug_regul_value"+i).val(),type:'regulation'}
+                            }).done(function(data) {
+                                if(data!=1) {
+                                    $("#error_regul_value"+i).show(700);
+                                    checked=false;
+                                }
+                            });
+                        }
+
+                    }
+
+
+                 }
+                if((!checked)&&(anchor=="")) {
+                    anchor="anchor"+i;
+                }
+            }
+        }
+
+        if(checked) {
+            document.forms['plugForm'].submit();
+        } else if(anchor!="") {
+           $.scrollTo("#"+anchor,300);
+        }
+    });
+
+
+
 
     var check = window.location.pathname.match(/display-logs/g);
     if(check) {
