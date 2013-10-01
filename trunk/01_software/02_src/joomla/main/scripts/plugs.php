@@ -178,17 +178,9 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
         }
 
         if(((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0))) {
-            if(check_tolerance_value($type,$tolerance)) {
                 insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$main_error);
                 $update_program=true;
                 $plug_update=true;
-            } else {
-                if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
-                    $error[$nb]['tolerance']=__('ERROR_TOLERANCE_VALUE_DEGREE','html');
-                } elseif((strcmp($type,"dehumidifier")==0)||(strcmp($type,"humidifier")==0)) {
-                    $error[$nb]['tolerance']=__('ERROR_TOLERANCE_VALUE_POURCENT','html');
-                }
-            }
         } 
 
   
@@ -200,13 +192,9 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    */
 
         if((!empty($power))&&(isset($power))&&(!$reset)&&(strcmp("$old_power","$power")!=0)) {
-            if(check_power_value($power)) {
       	        insert_plug_conf("PLUG_POWER",$nb,$power,$main_error);
       	        $update_program=true;
       	        $plug_update=true;
-            } else {
-                $error[$nb]['power']=__('ERROR_POWER_VALUE');
-            }
         } else {
             if((empty($power))&&(!$reset)&&(!empty($reccord))&&(strcmp("$old_power","$power")!=0)) {
                 insert_plug_conf("PLUG_POWER",$nb,"",$main_error);
@@ -229,24 +217,16 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
         }
 
 
-        if((!empty($regul_senss))&&(isset($regul_senss))&&(!$reset)&&(strcmp("$old_senss","$regul_senss")!=0)) {
+        if((!empty($regul_senss))&&(isset($regul_senss))&&(!$reset)&&(strcmp("$old_senss","$regul_senss")!=0)&&(strcmp($second_regul,"True")==0)) {
             insert_plug_conf("PLUG_SENSS",$nb,"$regul_senss",$main_error);
             $update_program=true;
             $plug_update=true;
         }
 
-        if((!empty($second_tol))&&(isset($second_tol))&&(!$reset)&&(strcmp("$old_second_tol","$second_tol")!=0)) {
-            if((check_numeric_value($second_tol))&&(check_tolerance_value($type,$second_tol))) {
-                insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"$second_tol",$main_error);
-                $update_program=true;
-                $plug_update=true;
-            } else {
-                 if((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
-                    $error[$nb]['second_tolerance_value']=__('ERROR_TOLERANCE_VALUE_DEGREE','html');
-                 } else if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
-                    $error[$nb]['second_tolerance_value']=__('ERROR_TOLERANCE_VALUE_POURCENT','html');
-                }
-            }
+        if((!empty($second_tol))&&(isset($second_tol))&&(!$reset)&&(strcmp("$old_second_tol","$second_tol")!=0)&&(strcmp($second_regul,"True")==0)) {
+            insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"$second_tol",$main_error);
+            $update_program=true;
+            $plug_update=true;
         }
 
 
@@ -261,21 +241,17 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
             $regul_senso="";
         }
 
-        if((!empty($regul_senso))&&(isset($regul_senso))&&(!$reset)&&(strcmp("$old_senso","$regul_senso")!=0)) {
+        if((!empty($regul_senso))&&(isset($regul_senso))&&(!$reset)&&(strcmp("$old_senso","$regul_senso")!=0)&&(strcmp($second_regul,"True")==0)) {
             insert_plug_conf("PLUG_SENSO",$nb,"$regul_senso",$main_error);
             $update_program=true;
             $plug_update=true;
         }
 
 
-        if((!empty($regul_value))&&(isset($regul_value))&&(!$reset)&&(strcmp("$old_regul_value","$regul_value")!=0)) {
-            if(check_regul_value("$regul_value")) { 
-                    insert_plug_conf("PLUG_REGUL_VALUE",$nb,"$regul_value",$main_error);
-                $update_program=true;
-                $plug_update=true;
-            } else {
-                $error[$nb]['regul_value']=__('ERROR_REGUL_VALUE');
-            }
+        if((!empty($regul_value))&&(isset($regul_value))&&(!$reset)&&(strcmp("$old_regul_value","$regul_value")!=0)&&(strcmp($second_regul,"True")==0)) {
+            insert_plug_conf("PLUG_REGUL_VALUE",$nb,"$regul_value",$main_error);
+            $update_program=true;
+            $plug_update=true;
        }
 
        if((!empty($sensor))&&(isset($sensor))&&(!$reset)&&(strcmp("$old_sensor","$sensor")!=0)) {

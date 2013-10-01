@@ -1434,6 +1434,9 @@ function check_date($datestart="",$dateend="") {
 // RET false is there is a wrong value, true else
 function check_tolerance_value($type,&$tolerance=0) {
    $tolerance=str_replace(",",".",$tolerance);
+
+    if(!is_numeric($tolerance)) return false;
+
    if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
       if(($tolerance >= 0)&&($tolerance <= 10)) {
          return true;
@@ -1479,24 +1482,6 @@ function check_format_values_program(&$value="0",$type="temp") {
        }
    }
    return 1;
-}
-// }}}
-
-// {{{ check_power_value()
-// ROLE check AND format power value of a plug
-// IN   $value   value to check and format
-// RET false is there is a wrong value, true else
-function check_power_value($value="") {
-   if($value<0) {
-                return false;
-   }
-
-   if($value=="") return true;
-
-   if(!is_numeric($value)) {
-                return false;
-   }
-   return true;
 }
 // }}}
 

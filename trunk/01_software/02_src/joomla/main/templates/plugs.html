@@ -37,11 +37,12 @@
 
 <script>
 sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR']) ?>;
+nb_plugs = <?php echo json_encode($nb_plugs) ?>;
 </script>
 
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm" id="plugForm">
 <p class="title_conf"><?php echo __('PLUG'); ?> 
-    <select name="selected_plug" onChange="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);" onLoad="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);">
+    <select name="selected_plug" id="selected_plug" onChange="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);" onLoad="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);">
     <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
                <option <?php if($selected_plug==$i) { echo 'selected';} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
     <?php } ?>
@@ -51,6 +52,7 @@ sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR']) ?>;
 <br />
 <div id="title_infos_plug" style="<?php if(strcmp($selected_plug,"all")==0) echo 'display:none'; ?>"><p class="title_plug"><?php echo __('PLUG_INFOS'); ?>:</p></div>
    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+    <label id="anchor<?php echo $i; ?>"></label>
     <div id="title_infos_all_plugs<?php echo $i; ?>" style="<?php if(strcmp($selected_plug,"all")!=0) echo 'display:none'; ?>"><p class="title_plug"><?php echo __('PLUG_INFOS')." ".$i; ?>:</p></div>
    <div id="div_selected_plug<?php echo $i; ?>" style="<?php if(($selected_plug!=$i)&&(strcmp($selected_plug,"all")!=0)) echo 'display:none'; ?>">
 <br />
@@ -66,7 +68,7 @@ sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR']) ?>;
          <td class="plug-marge-td"></td>
          <td class="plug-marge-title"><?php echo __('STATE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_STATE_PLUG'); ?>" /></td>
          <td class="plug-marge-field">
-            <select name="plug_enable<?php echo $i; ?>" onChange="getEnable(this.selectedIndex,<?php echo $i; ?>);" onLoad="getEnable(this.selectedIndex,<?php echo $i; ?>);">
+            <select name="plug_enable<?php echo $i; ?>" id="plug_enable<?php echo $i; ?>" onChange="getEnable(this.selectedIndex,<?php echo $i; ?>);" onLoad="getEnable(this.selectedIndex,<?php echo $i; ?>);">
                <option <?php if(strcmp($plug_enable{$i},"True")==0) { echo "selected";} ?> value="True"><?php echo __('PLUG_ENABLED'); ?></option>
                <option <?php if(strcmp($plug_enable{$i},"False")==0) { echo "selected";} ?> value="False"><?php echo __('PLUG_DISABLED'); ?></option>
             </select>
@@ -111,7 +113,7 @@ sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR']) ?>;
             <?php echo __('TYPE_PLUG'); ?>:
          </td>
          <td>
-            <select name="plug_type<?php echo $i; ?>" onChange='getTolerance(this.selectedIndex,<?php echo $i; ?>,<?php echo "\"$second_regul\""; ?>,<?php echo "\"$advanced_regul\""; ?>);' onLoad='getTolerance(this.selectedIndex,<?php echo $i; ?>,<?php echo "\"$second_regul\""; ?>);'>
+            <select name="plug_type<?php echo $i; ?>" id="plug_type<?php echo $i; ?>" onChange='getTolerance(this.selectedIndex,<?php echo $i; ?>,<?php echo "\"$second_regul\""; ?>,<?php echo "\"$advanced_regul\""; ?>);' onLoad='getTolerance(this.selectedIndex,<?php echo $i; ?>,<?php echo "\"$second_regul\""; ?>);'>
                <option <?php if(strcmp($plug_type{$i},"other")==0) { echo 'selected';} ?> value="other"><?php echo __('PLUG_UNKNOWN'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"lamp")==0) { echo 'selected';} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"ventilator")==0) { echo 'selected';} ?> value="ventilator"><?php echo __('PLUG_VENTILATOR'); ?></option>
@@ -128,9 +130,9 @@ sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR']) ?>;
             <?php echo __('POWER_PLUG'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_POWER'); ?>" />
          </td>
          <td>
-            <input type="text" size="4" maxlength="4" name="plug_power<?php echo $i; ?>" value="<?php echo $plug_power{$i}; ?>" onKeypress="return verifInt(event);">W
+            <input type="text" size="4" maxlength="4" id="plug_power<?php echo $i; ?>" name="plug_power<?php echo $i; ?>" value="<?php echo $plug_power{$i}; ?>" onKeypress="return verifInt(event);">W
          </td>
-        <td><?php if((isset($error[$i]['power']))&&(!empty($error[$i]['power']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error[$i]['power']."</div>"; ?></td>
+        <td><div id="error_power_value<?php echo $i; ?>" class='error_field' style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_POWER_VALUE'); ?></div></td>
       </tr>
       <tr>
          <td></td>
@@ -144,7 +146,10 @@ sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR']) ?>;
                <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 20%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label>
             </div>
          </td>
-         <td><?php if((isset($error[$i]['tolerance']))&&(!empty($error[$i]['tolerance']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error[$i]['tolerance']."</div>"; ?></td>
+         <td>
+            <div class='error_field' id="error_tolerance_value_temp<?php echo $i; ?>" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_TOLERANCE_VALUE_DEGREE','html'); ?></div>
+            <div class='error_field' id="error_tolerance_value_humi<?php echo $i; ?>" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_TOLERANCE_VALUE_POURCENT','html'); ?></div>
+         </td>
       </tr>
       <tr>
          <td></td>
@@ -271,14 +276,19 @@ sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR']) ?>;
    <tr>
       <td></td>
       <td class="regul"><div id="label_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_VALUE'); ?>:</div></td>
-      <td><div id="div_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_regul_value{$i}; ?>" name="plug_regul_value<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
-    <td><?php if((isset($error[$i]['regul_value']))&&(!empty($error[$i]['regul_value']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error[$i]['regul_value']."</div>"; ?></td>
+      <td><div id="div_regul_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_regul_value{$i}; ?>" name="plug_regul_value<?php echo $i; ?>" id="plug_regul_value<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
+    <td>
+        <div class='error_field' style="display:none" id="error_regul_value<?php echo $i; ?>"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_REGUL_VALUE'); ?></div>
+    </td>
    </tr>
    <tr>
       <td></td>
       <td class="regul"><div id="label_regul_tolerance<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><img src="main/libs/img/arrow.png" alt="" /><?php echo __('CONFIGURE_REGUL_TOLERANCE'); ?>:</div></td>
-      <td><div id="div_regul_tolerance_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_second_tolerance{$i}; ?>" name="plug_second_tolerance<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_second_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_second_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
-    <td><?php if((isset($error[$i]['second_tolerance_value']))&&(!empty($error[$i]['second_tolerance_value']))) echo "<div class='error_field'><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>".$error[$i]['second_tolerance_value']."</div>"; ?></td>
+      <td><div id="div_regul_tolerance_value<?php echo $i; ?>" style="<?php if(strcmp($plug_regul{$i},"False")==0) echo "display:none"; ?>"><input type="text" size="5" maxlength="4" value="<?php echo $plug_second_tolerance{$i}; ?>" name="plug_second_tolerance<?php echo $i; ?>" id="plug_second_tolerance<?php echo $i; ?>" onKeypress="return verifDigit(event);"><label id="label_second_degree<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"H")==0) echo "display:none"; ?>">°C</label><label id="label_second_pourcent<?php echo $i; ?>" style="<?php if(strcmp($plug_senso{$i},"T")==0) echo "display:none"; ?>">%</label></div></td>
+    <td>
+        <div id="error_second_tolerance_value_temp<?php echo $i; ?>" class='error_field' style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_TOLERANCE_VALUE_DEGREE','html'); ?></div>
+        <div id="error_second_tolerance_value_humi<?php echo $i; ?>" class='error_field' style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_TOLERANCE_VALUE_POURCENT','html'); ?></div>
+    </td>
    </tr>
 
    </table>
@@ -290,7 +300,7 @@ sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR']) ?>;
 <table class="table_width">
     <tr>
         <td class="plug-marge-jumpto"></td>
-        <td><input type="hidden" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>"><div id="button_program<?php echo $i;?>" style="<?php if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],'False')==0) echo 'display:none'; ?>"><button class="jumpto" name="jumpto<?php echo $i; ?>"  onclick='addHidden(document.forms["plugForm"], "<?php echo $i; ?>","jumpto"); document.forms["plugForm"].submit();'><?php echo __('SAVE_AND_CONFIGURE_PROGRAM').": $i"; ?></button></div></td>
+        <td><input type="hidden" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>"><div id="button_program<?php echo $i;?>" style="<?php if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],'False')==0) echo 'display:none'; ?>"><button class="jumpto" name="jumpto<?php echo $i; ?>" id="jumpto<?php echo $i; ?>"  onclick='addHidden(document.forms["plugForm"], "<?php echo $i; ?>","jumpto");'><?php echo __('SAVE_AND_CONFIGURE_PROGRAM').": $i"; ?></button></div></td>
     </tr>
 </table>
 

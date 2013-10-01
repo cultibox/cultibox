@@ -4,7 +4,8 @@ Cultibox (1.1.33) precise; urgency=low
     + Ajout d'un texte annoncant la suppréssion en cours d'une base de logs dans la fênetre de suppréssion des logs
     + Modification de la gestion des mises à jour qui renvoie vers le site cultibox pour le téléchargement des fichiers
     + Utilisation du fichier index pour gérer les différents capteurs possible de la Cultibox
-    + COrrection de l'affichage de la hauteur des legendes des programmes
+    + Correction de l'affichage de la hauteur des legendes des programmes
+    + La gestion des erreurs pour la partie 'prise' est gérée en AJAX sans rechargement
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Sep  3 11:43:25 CEST 2013
 

@@ -18,6 +18,8 @@ if((isset($_GET['value']))&&(!empty($_GET['value']))) {
 
 
 
+
+
 switch($type) {
     case 'short_time': if(!check_format_time("$value:00")) {
                             echo "error";
@@ -92,6 +94,25 @@ switch($type) {
                         echo "error";
                     }
                     break; 
+    
+
+    case 'tolerance': 
+                        if((isset($_GET['plug']))&&(!empty($_GET['plug']))) {
+                            $plug=$_GET['plug'];
+                        } else {
+                            return 0;
+                        }
+
+                        if(!check_tolerance_value($plug,$value)) {
+                            echo "error";
+                        }
+                        break;
+
+    case 'regulation': if(!check_regul_value("$value")) {
+                            echo "error";
+                       }
+                       break;
+
 }
 echo "1";
 
