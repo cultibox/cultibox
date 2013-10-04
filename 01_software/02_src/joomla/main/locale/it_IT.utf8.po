@@ -484,6 +484,9 @@ msgstr "Problème lors de la suppréssion des logs dans la base."
 msgid "ERROR_FORMAT_DATE"
 msgstr "Erreur dans le format de la date (AAAA-MM-JJ). Le jour de fin doit être égal ou supérieur ou jour de départ"
 
+msgid "DELETE_PROGRESS"
+msgstr "Progression de la suppréssion"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -1375,10 +1378,7 @@ msgid "VALID_IMPORT_PROGRAM"
 msgstr "Programme importé avec succès"
 
 msgid "VALID_DELETE_LOGS"
-msgstr "Base des logs supprimée avec succès"
-
-msgid "CURRENT_DELETE_LOGS"
-msgstr "Logs en cours de suppréssion, merci de patienter le temps que l'opération se termine"
+msgstr "Suppréssion des logs effectuée avec succès"
 
 msgid "VALID_RESET_CARD"
 msgstr "Carte formatée avec succès"
