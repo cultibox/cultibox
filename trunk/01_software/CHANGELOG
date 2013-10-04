@@ -6,6 +6,7 @@ Cultibox (1.1.33) precise; urgency=low
     + Utilisation du fichier index pour gérer les différents capteurs possible de la Cultibox
     + Correction de l'affichage de la hauteur des legendes des programmes
     + La gestion des erreurs pour la partie 'prise' est gérée en AJAX sans rechargement
+    + Ajout d'une barre de progréssion pour la suppréssion des logs 
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Sep  3 11:43:25 CEST 2013
 

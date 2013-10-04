@@ -1253,11 +1253,18 @@ $(function () {
         <br />
         <br />
         <p class="p_center">
-            <label class="format_current" id="current_delete_logs" style="display:none"><?php echo __('CURRENT_DELETE_LOGS'); ?></label>
-            <label class="format_success" id="success_delete_logs" style="display:none"><?php echo __('VALID_DELETE_LOGS'); ?></label>
-            <label class="format_error" id="error_delete_logs" style="display:none"><?php echo __('ERROR_DELETE_LOGS'); ?></label>
             <label class="format_error" id="error_format_date_logs" style="display:none"><?php echo __('ERROR_FORMAT_DATE'); ?></label>
         </p>
+
+        <div id="progress_delete_logs" style="display:none">
+            <p><?php echo __('DELETE_PROGRESS'); ?>:</p>
+            <div id="progress_bar_delete_logs"></div>
+            <br />
+            <p class="p_center">
+                <label class="format_success" id="success_delete_logs" style="display:none"><?php echo __('VALID_DELETE_LOGS'); ?></label>
+                <label class="format_error" id="error_delete_logs" style="display:none"><?php echo __('ERROR_DELETE_LOGS'); ?></label>
+            </p>
+        </div>
 </div>
 
 
@@ -1289,11 +1296,20 @@ $(function () {
 
         <br />
         <br />
+        
         <p class="p_center">
-            <label class="format_success" id="success_delete_logs_power" style="display:none"><?php echo __('VALID_DELETE_LOGS'); ?></label>
-            <label class="format_error" id="error_delete_logs_power" style="display:none"><?php echo __('ERROR_DELETE_LOGS'); ?></label>
             <label class="format_error" id="error_format_date_logs_power" style="display:none"><?php echo __('ERROR_FORMAT_DATE'); ?></label>
         </p>
+
+        <div id="progress_delete_logs_power" style="display:none">
+            <p><?php echo __('DELETE_PROGRESS'); ?>:</p>
+            <div id="progress_bar_delete_logs_power"></div>
+            <br />
+            <p class="p_center">
+                <label class="format_success" id="success_delete_logs_power" style="display:none"><?php echo __('VALID_DELETE_LOGS'); ?></label>
+                <label class="format_error" id="error_delete_logs_power" style="display:none"><?php echo __('ERROR_DELETE_LOGS'); ?></label>
+            </p>
+        </div>
 </div>
 
 

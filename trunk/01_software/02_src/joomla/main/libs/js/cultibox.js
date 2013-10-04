@@ -51,6 +51,14 @@ if(lang=="/it/") {
     DELETE_button="Supprimer";
 }
 
+diffdate = function(d1,d2) {
+    var WNbJours = d2.getTime() - d1.getTime();
+    return Math.ceil(WNbJours/(1000*60*60*24)+1);
+}
+
+
+addZ = function(n){return n<10? '0'+n:''+n;}
+
 
 clean_highchart_message = function(message) { {
     message=message.replace("'", "\'");
@@ -106,6 +114,55 @@ formatCard = function(hdd,pourcent) {
                     $("#error_format").show();
                 }
             });
+}
+
+delete_logs = function(type, type_reset, nb_jours, start,count) {
+        var step=100/count;
+        var pourcent=(count-nb_jours)*step
+
+        $.ajax({
+              cache: false,
+              url: "../../main/modules/external/delete_logs.php",
+              data: {type:type,type_reset:type_reset,start:start}
+        }).done(function (data) {
+              if(!$.isNumeric(data)) {
+                if(type=="logs") {
+                    $("#error_delete_logs").show();
+                } else {
+                    $("#error_delete_log_power").show();
+                }
+              } else {
+                 if(data=="1") {
+                     if(type=="logs") {
+                        $("#progress_bar_delete_logs").progressbar({value:pourcent});  
+                     } else {
+                        $("#progress_bar_delete_logs_power").progressbar({value:pourcent});
+                     }
+
+                     if(nb_jours>1) {
+                        var date = new Date( Date.parse(start) ); 
+                        date.setDate(date.getDate()+1);
+                        var dateString = (date.getFullYear().toString()+"-"+addZ((date.getMonth() + 1)) + "-" + addZ(date.getDate()));
+
+                        delete_logs(type,type_reset, nb_jours-1,dateString,count);
+                     } else {
+                        if(type=="logs") {
+                            $("#success_delete_logs").show();                              
+                            $("#progress_bar_delete_logs").progressbar({value:100});
+                        } else {
+                            $("#success_delete_logs_power").show(); 
+                            $("#progress_bar_delete_logs_power").progressbar({value:100});
+                        }
+                     }
+                 } else {
+                     if(type=="logs") {
+                        $("#error_delete_log").show();
+                     } else {
+                        $("#error_delete_log_power").show();
+                    }
+                 }
+              }
+        });
 }
 
 
@@ -368,52 +425,46 @@ $(document).ready(function() {
                         $("#error_delete_logs").css("display","none"); 
                         $("#success_delete_logs").css("display","none"); 
                         $("#error_format_date_logs").css("display","none");
-                        $("#current_delete_logs").css("display","none");
                         $( this ).dialog( "close" ); 
                         return false;
                     }}, {
                     text: DELETE_button,
                         click: function () {
                             $("#error_format_date_logs").css("display","none");
-                            $("#current_delete_logs").show();
-                            if((checkFormatDate($("#datepicker_from").val()))&&(checkFormatDate($("#datepicker_to").val()))&&(compareDate($("#datepicker_from").val(),$("#datepicker_to").val()))) {
-                            $.ajax({
-                                cache: false,
-                                async: false,
-                                url: "../../main/modules/external/delete_logs.php",
-                                data: {type:"logs",type_reset:$("input:radio[name=check_type_delete]:checked").val(),start:$("#datepicker_from").val(), end:$("#datepicker_to").val()}
-                            }).done(function (data) {
-                                if(!$.isNumeric(data)) {
-                                    $("#error_delete_logs").show();
-                                    $("#current_delete_logs").css("display","none");
+                            if(((checkFormatDate($("#datepicker_from").val()))&&(checkFormatDate($("#datepicker_to").val()))&&(compareDate($("#datepicker_from").val(),$("#datepicker_to").val())))||($("input:radio[name=check_type_delete]:checked").val()=="all")) {
+                                $("#progress_delete_logs").show();
+                                $("#progress_bar_delete_logs").progressbar({value:0});
+
+                                var myArray = $("#datepicker_from").val().split('-');
+                                var myArray2 = $("#datepicker_to").val().split('-');
+                                var Date1 = new Date(myArray[0],myArray[1],myArray[2]);
+                                var Date2 = new Date(myArray2[0],myArray2[1],myArray2[2]);
+
+                                if($("input:radio[name=check_type_delete]:checked").val()=="all") {
+                                    var nb_jours=1;
                                 } else {
-                                    if(data=="1") {
-                                        $("#success_delete_logs").show();
-                                        $("#current_delete_logs").css("display","none");
-                                    } else {
-                                        $("#error_delete_log").show();
-                                        $("#current_delete_logs").css("display","none");
-                                    }
+                                    var nb_jours=diffdate(Date1,Date2);
                                 }
+
+                                delete_logs("logs",$("input:radio[name=check_type_delete]:checked").val(), nb_jours,$("#datepicker_from").val(),nb_jours);
+
                                 $("#delete_log_form").dialog({ buttons: [ {
-                                        text: CLOSE_button,
-                                        click: function() {
-                                            $("#error_delete_logs").css("display","none");
-                                            $("#success_delete_logs").css("display","none");
-                                            $("#error_format_date_logs").css("display","none");
-                                            $("#current_delete_logs").css("display","none");
-                                            $( this ).dialog( "close" );
-                                            document.forms['display-log-day'].submit();
-                                            return false;
-                               } } ] });
-                            });
+                                            text: CLOSE_button,
+                                            click: function() {
+                                                $("#error_delete_logs").css("display","none");
+                                                $("#success_delete_logs").css("display","none");
+                                                $("#error_format_date_logs").css("display","none");
+                                                $( this ).dialog( "close" );
+                                                document.forms['display-log-day'].submit();
+                                                return false;
+                              } } ] });
                             } else {
                                 $("#error_format_date_logs").css("display","");
                             }
                         }
-            }]
-         });
-    });
+                    }]
+                });
+        });
 
         // Check errors for the configuration part:
         $("#submit_conf").click(function(e) {
@@ -755,33 +806,34 @@ $(document).ready(function() {
                     text: DELETE_button,
                         click: function () {
                             $("#error_format_date_logs_power").css("display","none");
-                            if((checkFormatDate($("#datepicker_from_power").val()))&&(checkFormatDate($("#datepicker_to_power").val()))&&(compareDate($("#datepicker_from_power").val(),$("#datepicker_to_power").val()))) {
-                            $.ajax({
-                                cache: false,
-                                async: false,
-                                url: "../../main/modules/external/delete_logs.php",
-                                data: {type:"power",type_reset:$("input:radio[name=check_type_delete_power]:checked").val(),start:$("#datepicker_from_power").val(), end:$("#datepicker_to_power").val()}
-                            }).done(function (data) {
-                                if(!$.isNumeric(data)) {
-                                    $("#error_delete_logs_power").show();
-                                } else {
-                                    if(data=="1") {
-                                        $("#success_delete_logs_power").show();
-                                    } else {
-                                        $("#error_delete_log_power").show();
-                                    }
-                                }
-                                $("#delete_log_form_power").dialog({ buttons: [ {
-                                        text: CLOSE_button,
-                                        click: function() {
-                                            $("#error_delete_logs_power").css("display","none");
-                                            $("#success_delete_logs_power").css("display","none");
-                                            $("#error_format_date_logs_power").css("display","none");
-                                            $( this ).dialog( "close" );
-                                            document.forms['display-log-day'].submit();
-                                            return false;
-                               } } ] });
-                            });
+                            if(((checkFormatDate($("#datepicker_from_power").val()))&&(checkFormatDate($("#datepicker_to_power").val()))&&(compareDate($("#datepicker_from_power").val(),$("#datepicker_to_power").val())))||($("input:radio[name=check_type_delete_power]:checked").val()=="all")) {
+                            $("#progress_delete_logs_power").show();
+                            $("#progress_bar_delete_logs_power").progressbar({value:0});
+
+                            var myArray = $("#datepicker_from_power").val().split('-');
+                            var myArray2 = $("#datepicker_to_power").val().split('-');
+                            var Date1 = new Date(myArray[0],myArray[1],myArray[2]);
+                            var Date2 = new Date(myArray2[0],myArray2[1],myArray2[2]);
+
+                            if($("input:radio[name=check_type_delete_power]:checked").val()=="all") {
+                                var nb_jours=1;
+                            } else {
+                                    var nb_jours=diffdate(Date1,Date2);
+                            }
+
+                            delete_logs("power",$("input:radio[name=check_type_delete_power]:checked").val(),nb_jours,$("#datepicker_from_power").val(),nb_jours);
+
+                            $("#delete_log_form_power").dialog({ buttons: [ {
+                                text: CLOSE_button,
+                                 click: function() {
+                                    $("#error_delete_logs_power").css("display","none");
+                                    $("#success_delete_logs_power").css("display","none");
+                                    $("#error_format_date_logs_power").css("display","none");
+                                    $( this ).dialog( "close" );
+                                    document.forms['display-log-day'].submit();
+                                    return false;
+                            } } ] });
+
                             } else {
                                 $("#error_format_date_logs_power").css("display","");
                             }
