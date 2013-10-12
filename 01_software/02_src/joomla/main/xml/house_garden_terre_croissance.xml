@@ -41,7 +41,7 @@
         <dosage>0.3ml/l</dosage>
       </nutriment>
 
-      <color>red</color>
+      <color>green</color>
       <icon>house_n_garden.png</icon>
    </entry>
    
@@ -74,7 +74,7 @@
         <dosage>1ml/l</dosage>
       </nutriment>
       
-      <color>red</color>
+      <color>green</color>
       <icon>house_n_garden.png</icon>
    </entry>
    
@@ -107,7 +107,7 @@
         <dosage>1ml/l</dosage>
       </nutriment>
       
-      <color>red</color>
+      <color>green</color>
       <icon>house_n_garden.png</icon>
    </entry>
    
@@ -140,7 +140,7 @@
         <dosage>1ml/l</dosage>
       </nutriment>
       
-      <color>red</color>
+      <color>green</color>
       <icon>house_n_garden.png</icon>
    </entry>
    
