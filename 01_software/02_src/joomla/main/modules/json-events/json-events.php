@@ -33,10 +33,11 @@ $db=null;
 
 if ($handle = opendir('../../xml')) {
     while (false !== ($entry = readdir($handle))) {
-     if(($entry!=".")&&($entry!="..")) {
+     if(($entry!=".")&&($entry!="..")&&(check_xml_calendar_file($entry))) {
         $rss_file = file_get_contents("../../xml/".$entry);
         $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
         $id=10000;
+
 
         foreach ($xml as $tab) {
             if(is_array($tab)) {
@@ -44,6 +45,7 @@ if ($handle = opendir('../../xml')) {
                     if(is_array($val)) {
                         if((array_key_exists('title', $val))&&(array_key_exists('content', $val))&&(array_key_exists('start', $val))) {
                             if((!empty($val['title']))&&(!empty($val['content']))&&(!empty($val['start']))) {
+                              if(check_config_xml_file($entry)) {
                                 $timestart=date("U",strtotime($val['start']));
 
                                 if(array_key_exists('duration', $val))  {
@@ -103,6 +105,7 @@ if ($handle = opendir('../../xml')) {
                                     $test_year=date('Y',$timeend);
                                 } while($actual_year==$test_year);
                                 if(isset($timeperiod)) unset($timeperiod);
+                              }
                             }
                         }
                     }
@@ -112,8 +115,6 @@ if ($handle = opendir('../../xml')) {
         }
     }
 }
-
-
 
 
 echo json_encode($event);

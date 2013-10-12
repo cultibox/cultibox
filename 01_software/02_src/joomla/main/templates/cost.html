@@ -99,8 +99,12 @@ timeFormat: 'hh:mm',
 </script>
 
 <script type="text/javascript">
+submit_cost = <?php echo json_encode($submit) ?>;
+</script>
+
+<script type="text/javascript">
+var chart;
 $(function () {
-   var chart;
    $(document).ready(function() {
     chart = new Highcharts.Chart({
       chart: {
@@ -181,6 +185,7 @@ $(function () {
 });
 </script>
 
+
 <label class="title_conf"><?php echo __('COST_PRICE_COMPUTE'); ?>:</label>
 <br /><br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-cost" method="post" name="display-cost" id="display-cost">
@@ -201,7 +206,7 @@ $(function () {
    <tr>
       <td></td>
       <td><?php echo __('SELECT_PRICE_PLUG'); ?>:</td>
-      <td><select name="select_plug">
+      <td><select name="select_plug" id="select_plug">
             <option value="all"><?php echo __('PRICE_ALL_PLUG'); ?></option>
             <option value="distinct_all" <?php if(strcmp($select_plug,"distinct_all")==0) { echo "selected"; } ?>><?php echo __('PRICE_DISTINCT_ALL_PLUG'); ?></option>
             <?php for($plugs=1;$plugs<=$nb_plugs;$plugs++) {  ?>
@@ -258,10 +263,20 @@ $(function () {
    </tr>
 </table>
 <br />
+<input type="hidden" name="submit_cost" id="subit_cost" value="submit_cost">
 <p class="p_center"><input type="submit" name="view-cost" id="view-cost" value=<?php echo __('VIEW'); ?> onKeypress="return verifDigit(event);"></p>
 </form>
 <hr />
 <br />
+
+<div id="progress_cost" title="<?php echo __('PROGRESS_COST'); ?>" style="display:none">
+    <div id="progress_bar_cost"></div>
+    <br />
+    <p class="p_center">
+        <label class="format_error" id="error_cost_compute" style="display:none"><?php echo __('ERROR_COMPUTE_COST'); ?></label>
+    </p>
+</div>
+
 
 <label id="anchor-cost"></label>
 <table class="table_width">

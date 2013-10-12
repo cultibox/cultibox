@@ -61,8 +61,28 @@ showOn: "both",
 buttonImage: "../../main/libs/img/datepicker.png",
 buttonImageOnly: 'true',
 <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
-}).val()
+}).val();
+
+
+$("#datepicker_calendar").datepicker({ 
+dateFormat: "yy-mm-dd",
+showButtonPanel: true,
+showOn: "both",
+buttonImage: "../../main/libs/img/calendar_icon.png",
+buttonImageOnly: 'true',
+<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
+inline: true,
+        onSelect: function(dateText, inst) {
+            date_val=$("#datepicker_calendar").val();
+            month=date_val.substring(5,7)-1;
+            year=date_val.substring(0,4);
+            $("#calendar").fullCalendar( 'gotoDate', year , month );
+        }
+}).val();
 });
+
+
+
 </script>
 
 <script>
@@ -137,8 +157,8 @@ buttonImageOnly: 'true',
                                         });
                                         }
                                         $('#calendar').fullCalendar('unselect');
-                                        $('#calendar').fullCalendar( 'refetchEvents' );
-                                        $('#calendar').fullCalendar( 'rerenderEvents' );
+                                        $('#calendar').fullCalendar('refetchEvents');
+                                        $('#calendar').fullCalendar('rerenderEvents');
                                         $("#select_remark").text("");
                                         $("#select_remark").val("");
                                         delete event;
@@ -147,7 +167,6 @@ buttonImageOnly: 'true',
                     "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); return false;}
                         }
                     });
-
             },
             events: "http://localhost:6891/cultibox/main/modules/json-events/json-events.php",
             
@@ -175,10 +194,9 @@ buttonImageOnly: 'true',
                          <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                             ,complete: function() { $.unblockUI(); }
                          <?php } ?> 
-  
                 });
             },
-            eventResize: function( event, dayDelta, minuteDelta) { 
+            eventResize: function(event, dayDelta, minuteDelta) { 
                 if(event.external) {
                     $('#calendar').fullCalendar( 'refetchEvents' );
                     $('#calendar').fullCalendar( 'rerenderEvents' );
@@ -364,12 +382,15 @@ buttonImageOnly: 'true',
         });
         
     });
-
-
-
 </script>
 
 <label class="title_conf"><?php echo __('CALENDAR_TITLE'); ?></label>
+<table class="table_width">
+    <tr>
+        <td class="calendar_right"></td>
+        <td><input id="datepicker_calendar" name="datepicker_calendar" type="hidden" value=""></td>
+    </tr>
+</table>
 
 <div id='calendar'></div>
 
@@ -393,7 +414,6 @@ buttonImageOnly: 'true',
 </tr>
 </table>
 </div>
-
 
 
 <div id="dialog_create" title="<?php echo __('MANAGE_CALENDAR'); ?>" style="display:none">
@@ -467,15 +487,42 @@ buttonImageOnly: 'true',
 
 <br />
 <form action="calendar-<?php echo $_SESSION['SHORTLANG']; ?>" method="post" id="reset_calendar_form">
-    <input type="hidden" id="reset_calendar_submit" name="reset_calendar_submit" value="<?php echo __('MANAGE_RESET_CALENDAR'); ?>">
-<p class="p_right">
-    <input type="submit" id="reset_calendar" name="reset_calendar" class="delete" value="<?php echo __('MANAGE_RESET_CALENDAR'); ?>">
-</p>
+    <table class="table_width">
+    <tr>
+        <td class="calendar-marge"></td>
+        <td><input type="submit" id="display_calendar" name="display_calendar" value="<?php echo __('MANAGE_EXTERNAL_XML'); ?>"></td>
+        <td><input type="submit" id="reset_calendar" name="reset_calendar" class="delete" value="<?php echo __('MANAGE_RESET_CALENDAR'); ?>">
+        </td>
+        <td class="calendar-marge"></td>
+    </tr>
+    </table>
 </form>
 <div id="reset_dialog_calendar" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
 <p><?php echo __('RESET_CONFIRM_CALENDAR'); ?></p>
 </div>
+
+<div id="valid_reset_calendar" style="display:none">
+<p><?php echo __('VALID_DELETE_CALENDAR'); ?></p>
+</div>
+
+<div id="manage_external_xml" style="display:none" title="<?php echo __('XML_DISPLAYED_FILE'); ?>">
+    <form name="xml_config" id="xml_config" action="calendar-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
+
+    <?php foreach($list_xml as $file) { ?>
+        <?php echo $file['name']; ?>: <input type="checkbox" id="<?php echo $file['name']; ?>" name="xml_checkbox" <?php if(strcmp($file['value'],"1")==0) echo 'checked'; ?>><br />
+    <?php } ?>
+    </form>
+</div>
+
 <br /><br /><br /><br /><br />
+
+<div id="valid_create_calendar" style="display:none">
+<p><?php echo __('VALID_ADD_CALENDAR'); ?></p>
+</div>
+
+<div id="error_create_calendar" style="display:none">
+<p><?php echo __('ERROR_ADD_CALENDAR_PROGRAM'); ?></p>
+</div>
 
 <label class="title_conf"><?php echo __('CALENDAR_ENGRAIS'); ?></label>
 <form name="create_calendar_program" id="create_calendar_program" action="calendar-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">

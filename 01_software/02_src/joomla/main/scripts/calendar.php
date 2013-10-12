@@ -27,8 +27,10 @@ $version=get_configuration("VERSION",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $pop_up_message=""; 
-$reset=getvar('reset_calendar_submit');
 $calendar_start=getvar('calendar_startdate');
+$external_calc = get_configuration("SHOW_EXTERNAL_CALENDAR",$main_error);
+$xml_list=get_external_calendar_file();
+
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
 $_SESSION['LANG'] = get_current_lang();
@@ -42,123 +44,18 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+$list_xml=array();
+foreach($xml_list as $liste) {
+    $check_xml=check_config_xml_file($liste);
+    $list_xml[]=array(
+            "name" => $liste,
+            "value" => $check_xml
+            );
+}
+
 if((!isset($calendar_start))||(empty($calendar_start))) {
     $calendar_start=date('Y')."-".date('m')."-".date('d');
-} else {
-    $program_substrat=getvar('substrat');
-    $program_product=getvar('product');
-    $file="";
-
-    if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_product))&&(!empty($program_product))) {
-        if($handle = @opendir('main/xml')) {
-            while (false !== ($entry = readdir($handle))) {
-                if(($entry!=".")&&($entry!="..")) {
-                    $rss_file = file_get_contents("main/xml/".$entry);
-                    $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
-
-                    foreach ($xml as $tab) {
-                        if(is_array($tab)) {
-                            if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))&&(array_key_exists('periode', $tab))) {
-                                if((strcmp(strtolower($tab['marque']." - ".$tab['periode']),strtolower($program_product))==0)&&((strcmp(strtolower($tab['substrat']),strtolower($program_substrat))==0))) {
-                                    $file=$entry;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        if(!empty($file)) {
-            $event=array();
-            if($handle = @opendir('main/xml')) {
-                $rss_file = file_get_contents("main/xml/".$file);
-                $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
-                
-                foreach ($xml as $tab) {
-                    if(is_array($tab)) {
-                        foreach($tab as $val) {
-                            if(is_array($val)) {
-                                if((array_key_exists('title', $val))&&(array_key_exists('duration', $val))&&(array_key_exists('start', $val))&&(array_key_exists('content', $val))) {
-                                        if((!empty($val['title']))&&(!empty($val['content']))) {
-                                            $datestartTimestamp = strtotime($calendar_start);
-                                            $timestart = date('Ymd', strtotime('+'.$val['start'].' days', $datestartTimestamp));
-
-                                            if(empty($val['start'])) {
-                                                $val['start']=0;
-                                            }
-
-                                            if(empty($val['duration'])) {
-                                                $val['duration']=0;
-                                            }
-
-                                            $val['duration']=$val['duration']-1;
-                                            if($val['duration']<=0) {
-                                                $timeend=$timestart;
-                                            } else {
-                                                $dateendTimestamp = strtotime($timestart);
-                                                $timeend = date('Ymd', strtotime('+'.$val['duration'].' days', $dateendTimestamp));
-                                            }
-
-                                            if(array_key_exists('color', $val))  {
-                                                $color=$val['color'];
-                                            } else {
-                                                $color="#821D78";
-                                            }
-
-                                            if(array_key_exists('icon', $val))  {
-                                                $icon=$val['icon'];
-                                            } else {
-                                                $icon=null;
-                                            }
-
-                                            $desc=$val['content'];
-
-                                            if(array_key_exists('nutriment', $val))  {
-                                                        $desc=$desc."\n* Engrais:\n";
-                                                        if(is_array($val['nutriment'])) {
-                                                            foreach($val['nutriment'] as $nut) {
-                                                                if(is_array($nut)) {
-                                                                    if((array_key_exists('name', $nut))&&(array_key_exists('dosage', $nut)))  {
-                                                                        $desc=$desc.$nut['name']." ".$nut['dosage']."\n";
-                                                                    }
-                                                                } else {
-                                                                    $desc=$desc.$nut." ";
-                                                                }
-                                                            }
-                                                        } 
-                                            }
-                                            $event[]=array(
-                                                    "title" => $val['title'],
-                                                    "start" => $timestart,
-                                                    "end" => $timeend,
-                                                    "description" => $desc,
-                                                    "color" => $color,
-                                                    "icon" => $icon,
-                                                    "external" => "0"
-                                                    //"allDay" => false
-                                            );
-                                        }   
-                                }
-                            }
-                       }
-                   } 
-                } 
-            }
-            if(count($event)>0) {
-                 if(insert_calendar($event,$main_error)) {
-                    $main_info[]=__('VALID_ADD_PROGRAM');
-                    $pop_up_message=$pop_up_message.popup_message(__('VALID_ADD_PROGRAM'));
-                 } else {
-                    $main_error[]=__('ERROR_ADD_CALENDAR_PROGRAM');
-                    $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_ADD_CALENDAR_PROGRAM'));
-                    
-                }
-            }
-        }
-    }
-}
+} 
 
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
@@ -301,15 +198,6 @@ if(strcmp("$update","True")==0) {
    } else {
     $main_error[]=__('ERROR_REMOTE_SITE');
    }
-}
-
-
-if((isset($reset))&&(!empty($reset))) {
-    if(reset_log("calendar")) {
-        $main_info[]=__('VALID_DELETE_CALENDAR');
-        $pop_up_message=$pop_up_message.popup_message(__('VALID_DELETE_CALENDAR'));
-        set_historic_value(__('VALID_DELETE_CALENDAR')." (".__('CALENDAR_PAGE').")","histo_info",$main_error);
-    }
 }
 
 
