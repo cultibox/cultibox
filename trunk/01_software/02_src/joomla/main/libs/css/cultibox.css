@@ -355,6 +355,10 @@ td.calendar-error {
    width: 20%;
 }
 
+td.calendar_right {
+    width: 95%;
+}
+
 P.p_center{
    text-align: center;
 }

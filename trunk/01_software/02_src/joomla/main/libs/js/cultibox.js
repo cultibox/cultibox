@@ -3,8 +3,6 @@ var CANCEL_button="";
 var CLOSE_button="";
 var DELETE_button="";
 
-
-
 var lang="";
 lang = window.location.pathname.match(/\/fr\//g);
 if(!lang) {
@@ -29,26 +27,31 @@ if(lang=="/it/") {
     CANCEL_button="Annullare";
     CLOSE_button="Chiudere";
     DELETE_button="Rimuovere";
+    SAVE_button="Registrati";
 } else if(lang=="/de/") {
     OK_button="Weiter";
     CANCEL_button="Stornieren";
     CLOSE_button="Schliessen";
     DELETE_button="Entfernen";
+    SAVE_button="Registrieren";
 } else if(lang=="/en/") {
     OK_button="OK";
     CANCEL_button="Cancel";
     CLOSE_button="Close";
     DELETE_button="Delete";
+    SAVE_button="Save";
 } else if(lang=="/es/") {
     OK_button="Continuar";
     CANCEL_button="Cancelar";
     CLOSE_button="Cerrar";
     DELETE_button="Eliminar";
+    SAVE_button="Registro";
 } else {
     OK_button="Continuer";
     CANCEL_button="Annuler";
     CLOSE_button="Fermer";
     DELETE_button="Supprimer";
+    SAVE_button="Enregistrer";
 }
 
 diffdate = function(d1,d2) {
@@ -118,7 +121,7 @@ formatCard = function(hdd,pourcent) {
 
 delete_logs = function(type, type_reset, nb_jours, start,count) {
         var step=100/count;
-        var pourcent=(count-nb_jours)*step
+        var pourcent=(count-nb_jours)*step;
 
         $.ajax({
               cache: false,
@@ -164,6 +167,37 @@ delete_logs = function(type, type_reset, nb_jours, start,count) {
               }
         });
 }
+
+compute_cost = function(type,startday, select_plug, nb_jours, count, cost) {
+        var step=100/count;
+        var pourcent=(count-nb_jours)*step;
+
+        $.ajax({
+              cache: false,
+              async: false,
+              url: "../../main/modules/external/compute_cost.php",
+              data: {type:type,startday:startday,select_plug:select_plug,cost:cost}
+        }).done(function (data) {
+              if(!$.isNumeric(data)) {
+                     $("#error_compute_cost").show();
+              } else {
+                     $("#progress_bar_cost").progressbar({value:pourcent});
+                     cost=parseFloat(cost)+parseFloat(data);
+
+                     if(nb_jours>1) {
+                        var date = new Date( Date.parse(start) );
+                        date.setDate(date.getDate()+1);
+                        var dateString = (date.getFullYear().toString()+"-"+addZ((date.getMonth() + 1)) + "-" + addZ(date.getDate()));
+
+                        compute_cost(type,startday, select_plug, nb_jours-1, count, cost);
+                     } else {
+                        alert(chart);
+                        return cost;
+                     }
+                 } 
+        });
+}
+
 
 
 loadLog = function(nb_day,pourcent,type,pourcent,search) {
@@ -293,8 +327,6 @@ $(document).ready(function() {
             case 'reset_program_form':  DialogId="delete_dialog_program";
                                         break;
             case 'delete_historic_form': DialogId="delete_dialog_historic";
-                                        break;
-            case 'reset_calendar_form': DialogId="reset_dialog_calendar";
                                         break;
             } 
 
@@ -437,8 +469,8 @@ $(document).ready(function() {
 
                                 var myArray = $("#datepicker_from").val().split('-');
                                 var myArray2 = $("#datepicker_to").val().split('-');
-                                var Date1 = new Date(myArray[0],myArray[1],myArray[2]);
-                                var Date2 = new Date(myArray2[0],myArray2[1],myArray2[2]);
+                                var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
+                                var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
 
                                 if($("input:radio[name=check_type_delete]:checked").val()=="all") {
                                     var nb_jours=1;
@@ -596,7 +628,7 @@ $(document).ready(function() {
                         $("#error_start_interval").show(700);
                         $("#error_end_interval").show(700);
                         checked=false;
-                    }
+                    } 
                 });
             }
 
@@ -812,8 +844,8 @@ $(document).ready(function() {
 
                             var myArray = $("#datepicker_from_power").val().split('-');
                             var myArray2 = $("#datepicker_to_power").val().split('-');
-                            var Date1 = new Date(myArray[0],myArray[1],myArray[2]);
-                            var Date2 = new Date(myArray2[0],myArray2[1],myArray2[2]);
+                            var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
+                            var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
 
                             if($("input:radio[name=check_type_delete_power]:checked").val()=="all") {
                                 var nb_jours=1;
@@ -969,7 +1001,43 @@ $(document).ready(function() {
             if(data!=1) {
                 $("#error_calendar_startdate").show(700);
             } else {
-                document.forms['create_calendar_program'].submit();
+                $.ajax({
+                    cache: false,
+                    url: "../../main/modules/external/update_calendar_external.php",
+                    data: {substrat:$("#substrat").val(), product:$("#product").val(), calendar_start:$("#calendar_startdate").val()}
+                }).done(function (data) {
+                   if(data=="1") {
+                            $('#calendar').fullCalendar( 'refetchEvents' );
+                            $("#valid_create_calendar").dialog({
+                                resizable: true,
+                                width: 450,
+                                modal: true,
+                                dialogClass: "popup_message",
+                                buttons: [{
+                                text: CLOSE_button,
+                                click: function () {
+                                    $( this ).dialog( "close" );
+                                    return false;
+                                }
+                                }]
+                            });
+                    } else {
+                        $('#calendar').fullCalendar( 'refetchEvents' );
+                            $("#error_create_calendar").dialog({
+                                resizable: true,
+                                width: 450,
+                                modal: true,
+                                dialogClass: "popup_error",
+                                buttons: [{
+                                text: CLOSE_button,
+                                click: function () {
+                                    $( this ).dialog( "close" );
+                                    return false;
+                                }
+                                }]
+                            });
+                    }
+                    });
             }
         });
     });
@@ -1269,5 +1337,122 @@ $(document).ready(function() {
                 }
             });
     }
+
+
+   
+
+    if((typeof(submit_cost)!='undefined')&&(submit_cost)) {
+    $("#progress_cost").dialog({
+            resizable: false,
+            width: 550,
+            modal: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                    text: CANCEL_button,
+                    "id": "btnClose",
+                    click: function () {
+                        $( this ).dialog( "close" ); return false;
+                    }
+            }],
+            open: function( event, ui ) {
+                $("#progress_bar_cost").progressbar({value:0});
+                var myArray = $("#datepicker_start").val().split('-');
+                var myArray2 = $("#datepicker_end").val().split('-');
+                var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
+                var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
+                var nb_jours=diffdate(Date1,Date2);
+    
+                compute_cost("theorical",$("#datepicker_start").val(),$("#select_plug").val(), nb_jours,nb_jours,"0");
+                //var real=compute_cost("real",$("#datepicker_start").val(),$("#select_plug").val(), nb_jours,nb_jours,"0");
+            }
+
+    });
+    }
+
+    $("#display_calendar").click(function(e) {
+           e.preventDefault();
+           
+           $("#manage_external_xml").dialog({
+            resizable: false,
+            width: 550,
+            modal: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                    text: CANCEL_button,
+                    "id": "btnClose",
+                    click: function () {
+                        $( this ).dialog( "close" ); return false;
+                    }
+            },{
+            text: SAVE_button,
+            click: function () {
+                $( this ).dialog( "close" );
+                var list="";
+                $('input[name=xml_checkbox]').each(function() {
+                    if(list=="") {
+                        list=this.id+"*"+this.checked;
+                    } else {
+                        list=list+"/"+this.id+"*"+this.checked;
+                    }
+                })
+
+                $.ajax({
+                   cache: false,
+                   url: "../../main/modules/external/update_config_xml.php",
+                   data: {list:list}
+                }).done(function (data) {
+                    if(data=="1") {
+                        $('#calendar').fullCalendar( 'refetchEvents' );
+                    }
+                });
+           } } ],
+           });
+    });
+
+
+    $("#reset_calendar").click(function(e) {
+           e.preventDefault();
+           $("#reset_dialog_calendar").dialog({
+                resizable: false,
+                height:200,
+                width: 500,
+                modal: true,
+                dialogClass: "dialog_cultibox",
+                buttons: [{
+                    text: OK_button,
+                    click: function () {
+                        $( this ).dialog("close"); 
+                        $.ajax({
+                            cache: false,
+                            url: "../../main/modules/external/delete_logs.php",
+                            data: {type:"calendar",type_reset:"all"}
+                        }).done(function (data) {
+                            if(data=="1") {
+                                $('#calendar').fullCalendar( 'refetchEvents' );
+        
+                                $("#valid_reset_calendar").dialog({
+                                    resizable: true,
+                                    width: 450,
+                                    modal: true,
+                                    dialogClass: "popup_message",
+                                    buttons: [{
+                                    text: CLOSE_button,
+                                    click: function () {
+                                        $( this ).dialog( "close" );
+                                        return false;
+                                    }
+                                    }]
+                                });
+                            } 
+                        });
+                    }
+                }, {
+                    text: CANCEL_button,
+                    click: function () {
+                        $( this ).dialog( "close" ); return false;
+                    }
+                }]
+         });
+    });
 
 });

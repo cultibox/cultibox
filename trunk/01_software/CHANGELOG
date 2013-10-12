@@ -7,6 +7,9 @@ Cultibox (1.1.33) precise; urgency=low
     + Correction de l'affichage de la hauteur des legendes des programmes
     + La gestion des erreurs pour la partie 'prise' est gérée en AJAX sans rechargement
     + Ajout d'une barre de progréssion pour la suppréssion des logs 
+    + Passage en AJAX des actions du calendrier
+    + Ajout de la possibilité de désactiver l'affichage des fichiers externe XML du calendrier
+    + Ajout d'un datepicker pour choisir rapidement le mois du calendrier
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Sep  3 11:43:25 CEST 2013
 

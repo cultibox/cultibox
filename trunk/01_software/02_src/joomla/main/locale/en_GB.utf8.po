@@ -1013,8 +1013,14 @@ msgstr "Êtes-vous sûr de vouloir supprimer tous les événements enregistrés 
 msgid "VALID_DELETE_CALENDAR"
 msgstr "Calendrier supprimé avec succès"
 
-msgid "VALID_ADD_PROGRAM"
+msgid "VALID_ADD_CALENDAR"
 msgstr "Calendrier mis à jour avec le programme selectionné"
+
+msgid "MANAGE_EXTERNAL_XML"
+msgstr "Gestion des fichiers XML externes"
+
+msgid "XML_DISPLAYED_FILE"
+msgstr "Fichiers XML à afficher"
 
 
 # For the cost part:
@@ -1113,6 +1119,12 @@ msgstr "Début des heures creuses: (HH:MM)"
 
 msgid "CONFIGURE_STOP_HC"
 msgstr "Fin des heures creuses: (HH:MM)"
+
+msgid "PROGRESS_COST"
+msgstr "Calcul du coût en cours"
+
+msgid "ERROR_COMPUTE_COST"
+msgstr "Erreur lors du calcul du coût de votre installation"
 
 
 # For the historic part:

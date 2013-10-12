@@ -46,7 +46,7 @@ $pop_up=get_configuration("SHOW_POPUP",$main_error);
 $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
-$submit=getvar("view-cost");
+$submit=getvar("submit_cost");
 $resume="";
 $lang=$_SESSION['LANG'];
 
@@ -232,9 +232,25 @@ if((strcmp($select_plug,"all")!=0)&&(strcmp($select_plug,"distinct_all")!=0)) {
 
 //Computing cost value:
 if(strcmp($select_plug,"distinct_all")!=0) {
-    $theorical_power=get_theorical_power($select_plug,$cost_type,$main_error,$check);
-    $nb=get_nb_days($startday,$endday)+1;
-    $theorical_power=$theorical_power*$nb;
+    if((isset($submit))&&(!empty($submit))) {
+        $theorical_power="0";
+        $real_power="0";
+    } else {
+        $theorical_power=get_theorical_power($select_plug,$cost_type,$main_error,$check);
+        $nb=get_nb_days($startday,$endday)+1;
+        $theorical_power=$theorical_power*$nb;
+
+        $startTime = strtotime("$startday 12:00");
+        $endTime = strtotime("$endday 12:00");
+        $real_power=0;
+
+        for ($i = $startTime; $i <= $endTime; $i = $i + 86400) {
+            $thisDate = date('Y-m-d', $i); // 2010-05-01, 2010-05-02, etc
+            $data_power=get_data_power($thisDate,$thisDate,$select_plug,$main_error);
+            $real_power=get_real_power($data_power,$cost_type,$main_error)+$real_power;
+            unset($data_power);
+        }
+    }
 
     if(strcmp($select_plug,"all")==0) {
         $title=__('PRICE_SELECT_ALL_PLUG');
@@ -244,16 +260,6 @@ if(strcmp($select_plug,"distinct_all")!=0) {
         $color_cost=$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$select_plug-1];
     }
 
-    $startTime = strtotime("$startday 12:00");
-    $endTime = strtotime("$endday 12:00");
-    $real_power=0;
-
-    for ($i = $startTime; $i <= $endTime; $i = $i + 86400) {
-            $thisDate = date('Y-m-d', $i); // 2010-05-01, 2010-05-02, etc
-            $data_power=get_data_power($thisDate,$thisDate,$select_plug,$main_error);
-            $real_power=get_real_power($data_power,$cost_type,$main_error)+$real_power;
-            unset($data_power);
-    }
 
     $data_price[]= array( 
         "number" => "$select_plug",
@@ -264,30 +270,33 @@ if(strcmp($select_plug,"distinct_all")!=0) {
     );
 } else {
     $nb=get_nb_days($startday,$endday)+1;
-    $tmp_err=array();
     for($plugs=1;$plugs<=$nb_plugs;$plugs++) { 
-       $theorical_power=get_theorical_power($plugs,$cost_type,$main_error,$check);
-       $theorical_power=$theorical_power*$nb;
+        if((isset($submit))&&(!empty($submit))) {
+            $theorical_power="0";
+            $real_power="0";
+        } else {
+            $theorical_power=get_theorical_power($plugs,$cost_type,$main_error,$check);
+            $theorical_power=$theorical_power*$nb;
 
-       $startTime = strtotime("$startday 12:00");
-       $endTime = strtotime("$endday 12:00");
-       $real_power=0;
+            $startTime = strtotime("$startday 12:00");
+            $endTime = strtotime("$endday 12:00");
+            $real_power=0;
 
-       for ($i = $startTime; $i <= $endTime; $i = $i + 86400) {
-            $thisDate = date('Y-m-d', $i); // 2010-05-01, 2010-05-02, etc
-            $data_power=get_data_power($thisDate,$thisDate,$plugs,$main_error);
-            $real_power=get_real_power($data_power,$cost_type,$main_error)+$real_power;
-            unset($data_power);
-       }
+            for ($i = $startTime; $i <= $endTime; $i = $i + 86400) {
+                $thisDate = date('Y-m-d', $i); // 2010-05-01, 2010-05-02, etc
+                $data_power=get_data_power($thisDate,$thisDate,$plugs,$main_error);
+                $real_power=get_real_power($data_power,$cost_type,$main_error)+$real_power;
+                unset($data_power);
+            }
+        }
 
-       $title=$plugs_infos[$plugs-1]['PLUG_NAME'];
-
-       $data_price[]= array(
-        "number" => $plugs,
-        "real" => "$real_power",
-        "theorical" => "$theorical_power",
-        "title" => "$title",
-        "color" => $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs-1]
+        $title=$plugs_infos[$plugs-1]['PLUG_NAME'];
+        $data_price[]= array(
+            "number" => $plugs,
+            "real" => "$real_power",
+            "theorical" => "$theorical_power",
+            "title" => "$title",
+            "color" => $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$plugs-1]
        ); 
     }
 }

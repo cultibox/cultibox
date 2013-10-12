@@ -2127,6 +2127,154 @@ function get_sensor_type($nmb,$sd_card,$month,$day) {
 // }}}
 
 
+// {{{ check_config_xml_file()
+// ROLE check if an external xml file should be displayed for the calendar
+// IN file     file to be checked
+// RET true if the file has to be displayed, false else
+function check_config_xml_file($file) {
+    if(!is_file('../../xml/config')) {
+        if(!is_file('main/xml/config')) {    
+             return true;
+        } else {
+            $config="main/xml/config";
+        }
+    } else {
+        $config="../../xml/config";
+    }
+
+    $handle = fopen("$config", 'r');
+    if($handle) {
+      while (!feof($handle)) {
+        $buffer = fgets($handle);
+        if(strcmp(rtrim($buffer),"$file")==0) return false;
+      }
+    } else {    
+        return true;
+    }
+    return true;
+}
+// }}}
+
+// {{{ get_external_calendar_file()
+// ROLE get an array containing list of xml external files available for calendar (like moon calendar)
+// RET array containing datas
+function get_external_calendar_file() {
+    $ret=array();
+
+    if(!is_dir('main/xml')) {
+        if(!is_dir('../../xml')) {
+            return $ret;
+        } else {
+            $dir='../../xml';
+        }
+    } else {
+        $dir='main/xml';
+    }
+
+
+    if($handle = @opendir($dir)) {
+        while (false !== ($entry = readdir($handle))) {
+            if(($entry!=".")&&($entry!="..")&&(strcmp(pathinfo($entry,PATHINFO_EXTENSION),"xml")==0)) {
+                $rss_file = file_get_contents($dir."/".$entry);
+                $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
+
+                $check=true;
+                foreach ($xml as $tab) {
+                    if(is_array($tab)) {
+                        if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))) {
+                            $check=false;
+                        }   
+                    }
+                }
+
+                if($check) {
+                     $ret[]=$entry;
+                }
+            }
+        }
+    }
+    return $ret;
+}
+// }}}
+
+
+// {{{ get_xml_file()
+// ROLE get usable others xml files 
+// RET array containing datas
+function get_xml_file() {
+    $ret=array();
+
+    if(!is_dir('main/xml')) {
+        if(!is_dir('../../xml')) {
+            return $ret;
+        } else {
+            $dir='../../xml';
+        }
+    } else {
+        $dir='main/xml';
+    }
+
+    if($handle = @opendir($dir)) {
+        while (false !== ($entry = readdir($handle))) {
+            if(($entry!=".")&&($entry!="..")&&(strcmp(pathinfo($entry,PATHINFO_EXTENSION),"xml")==0)) {
+                $rss_file = file_get_contents($dir."/".$entry);
+                $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
+
+                foreach ($xml as $tab) {
+                    if(is_array($tab)) {
+                        if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))) {
+                            $ret[]=$entry;
+                            break;
+                        }   
+                    }
+                }
+            }
+        }
+    }
+    return $ret;
+}
+// }}}
+
+
+// {{{ check_xml_calendar_file()
+// ROLE check if a file is an external calendar (like moon calendar)
+// RET  true if it's the case, false else
+function check_xml_calendar_file($file) {
+    if(!is_dir('main/xml')) {
+        if(!is_dir('../../xml')) {
+            return false;
+        } else {
+            $dir='../../xml';
+        }
+    } else {
+        $dir='main/xml';
+    }
+
+    if($handle = @opendir($dir)) {
+        while (false !== ($entry = readdir($handle))) {
+            if(($entry!=".")&&($entry!="..")&&(strcmp(pathinfo($entry,PATHINFO_EXTENSION),"xml")==0)&&(strcmp("$entry","$file")==0)) {
+            $rss_file = file_get_contents($dir."/".$entry);
+            $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
+
+            $check=true;
+            foreach ($xml as $tab) {
+                if(is_array($tab)) {
+                    if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))) {
+                        $check=false;
+                    }
+                }
+            }
+
+            if($check) {
+                return true;
+            }
+            }
+        }
+    }
+}
+// }}}
+
+
 /* TO BE DELETED */
 function compat_old_sd_card($sd_card="") {
     if((isset($sd_card))&&(!empty($sd_card))) {
