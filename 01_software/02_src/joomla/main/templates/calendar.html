@@ -65,25 +65,32 @@ buttonImageOnly: 'true',
 
 
 $("#datepicker_calendar").datepicker({ 
-dateFormat: "yy-mm-dd",
-showButtonPanel: true,
+dateFormat: "yy-mm",
+yearRange: "-20:+0",
+changeMonth: true, 
+changeYear: true,
 showOn: "both",
+showButtonPanel: true,
 buttonImage: "../../main/libs/img/calendar_icon.png",
 buttonImageOnly: 'true',
-<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
-inline: true,
-        onSelect: function(dateText, inst) {
-            date_val=$("#datepicker_calendar").val();
-            month=date_val.substring(5,7)-1;
-            year=date_val.substring(0,4);
-            $("#calendar").fullCalendar( 'gotoDate', year , month );
-        }
+<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."'"; ?>,
+beforeShow: function() { 
+        $('#hideday').html('.ui-datepicker-calendar{display:none;}'); 
+        $('#hidetoday').html('.ui-datepicker-current{display:none;}');
+},
+onClose: function(dateText, inst){
+        setTimeout(function(){$('#hideday').html('');},300);
+        setTimeout(function(){$('#hidetoday').html('');},300);
+        var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+        var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+        $("#calendar").fullCalendar( 'gotoDate', year , month );
+}
 }).val();
 });
-
-
-
 </script>
+
+<style id='hideday'></style>
+<style id='hidetoday'></style>
 
 <script>
 
