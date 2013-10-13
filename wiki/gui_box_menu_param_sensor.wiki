@@ -1,6 +1,8 @@
-#summary Paramètres du capteur
+#summary Paramètres des capteurs
 
-= Sommaire =
-<wiki:toc max_depth="3" />
+= Introduction =
+Ce menu permet d'accéder aux paramètres de chaque capteur.
 
-A créer
+Pour voir les paramètres d'un capteur descendez la sélection sur le capteur puis cliquer sur le bouton central.
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur.png
