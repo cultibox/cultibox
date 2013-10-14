@@ -4,6 +4,7 @@ var CLOSE_button="";
 var DELETE_button="";
 
 var lang="";
+
 lang = window.location.pathname.match(/\/fr\//g);
 if(!lang) {
     lang = window.location.pathname.match(/\/en\//g);
@@ -143,7 +144,7 @@ delete_logs = function(type, type_reset, nb_jours, start,count) {
                      }
 
                      if(nb_jours>1) {
-                        var date = new Date( Date.parse(start) ); 
+                        var date = new Date(Date.parse(start)); 
                         date.setDate(date.getDate()+1);
                         var dateString = (date.getFullYear().toString()+"-"+addZ((date.getMonth() + 1)) + "-" + addZ(date.getDate()));
 
@@ -168,31 +169,36 @@ delete_logs = function(type, type_reset, nb_jours, start,count) {
         });
 }
 
-compute_cost = function(type,startday, select_plug, nb_jours, count, cost) {
+compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,index) {
         var step=100/count;
         var pourcent=(count-nb_jours)*step;
 
         $.ajax({
               cache: false,
-              async: false,
+              async: true,
               url: "../../main/modules/external/compute_cost.php",
               data: {type:type,startday:startday,select_plug:select_plug,cost:cost}
         }).done(function (data) {
               if(!$.isNumeric(data)) {
                      $("#error_compute_cost").show();
               } else {
-                     $("#progress_bar_cost").progressbar({value:pourcent});
+                     $("#progress_bar_cost_"+type).progressbar({value:pourcent});
+
                      cost=parseFloat(cost)+parseFloat(data);
 
                      if(nb_jours>1) {
-                        var date = new Date( Date.parse(start) );
+                        var date = new Date( Date.parse(startday));
                         date.setDate(date.getDate()+1);
                         var dateString = (date.getFullYear().toString()+"-"+addZ((date.getMonth() + 1)) + "-" + addZ(date.getDate()));
 
-                        compute_cost(type,startday, select_plug, nb_jours-1, count, cost);
+                        compute_cost(type,dateString, select_plug, nb_jours-1, count, cost,chart,index);
                      } else {
-                        alert(chart);
-                        return cost;
+                        $("#progress_cost").dialog("close");
+                        if(type=="theorical") {
+                            chart.series[index].data[1].update(Math.round(cost*100)/100); 
+                        } else {
+                            chart.series[index].data[0].update(Math.round(cost*100)/100); 
+                        }   
                      }
                  } 
         });
@@ -1340,34 +1346,6 @@ $(document).ready(function() {
 
 
    
-
-    if((typeof(submit_cost)!='undefined')&&(submit_cost)) {
-    $("#progress_cost").dialog({
-            resizable: false,
-            width: 550,
-            modal: true,
-            dialogClass: "popup_message",
-            buttons: [{
-                    text: CANCEL_button,
-                    "id": "btnClose",
-                    click: function () {
-                        $( this ).dialog( "close" ); return false;
-                    }
-            }],
-            open: function( event, ui ) {
-                $("#progress_bar_cost").progressbar({value:0});
-                var myArray = $("#datepicker_start").val().split('-');
-                var myArray2 = $("#datepicker_end").val().split('-');
-                var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
-                var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
-                var nb_jours=diffdate(Date1,Date2);
-    
-                compute_cost("theorical",$("#datepicker_start").val(),$("#select_plug").val(), nb_jours,nb_jours,"0");
-                //var real=compute_cost("real",$("#datepicker_start").val(),$("#select_plug").val(), nb_jours,nb_jours,"0");
-            }
-
-    });
-    }
 
     $("#display_calendar").click(function(e) {
            e.preventDefault();

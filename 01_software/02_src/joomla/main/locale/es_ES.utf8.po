@@ -1120,8 +1120,14 @@ msgstr "Début des heures creuses: (HH:MM)"
 msgid "CONFIGURE_STOP_HC"
 msgstr "Fin des heures creuses: (HH:MM)"
 
-msgid "PROGRESS_COST"
-msgstr "Calcul du coût en cours"
+msgid "PROGRESS_COST_REAL"
+msgstr "Calcul du coût réel en cours"
+
+msgid "PROGRESS_COST_THEORICAL"
+msgstr "Calcul du coût théorique en cours"
+
+msgid "COMPUTE_COST"
+msgstr "Calcul du coût de votre installation en cours"
 
 msgid "ERROR_COMPUTE_COST"
 msgstr "Erreur lors du calcul du coût de votre installation"
