@@ -35,6 +35,7 @@ http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_reg_2.png
 Sauf pour le contraste, l'utilisateur ne peut pas modifier les paramètres.
 
 * Contraste(Pour utilisateur): *
+
 Cette valeur permet de modifier le contraste de l'écran de votre Cultibox. Au premier démarrage de la Cultibox, une valeur par défaut est chargée. Votre écran peut donc être un peu sombre ou un peu trop clair au démarrage. 
 Pour modifier le contraste: 
  * Faite défiler l'écran jusqu’à ce que la ligne contraste soit tout en haut.
@@ -42,21 +43,27 @@ Pour modifier le contraste:
 La valeur de contraste est enregistrée dans un fichier (/cnf/cnt) sur la carte SD. Durant le chargement de la configuration, la Cultibox charge votre valeur de contraste et l'applique à l'écran.
 
 * Version firm: *
+
 Ce numéro indique la version du firmware de la Cultibox.
 
 * ID Culti: *
+
 Ceci est le numéro d'identité de votre Cultibox. Il nous permet de suivre ce qui la compose et son cycle de vie.
 
 * Freq plug: *
+
 Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox met à jour l'état des prises (0 indique une mise a jours permanente)
 
 * Log freq: *
+
 Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox enregistre les valeurs envoyé par chacune de ces sondes.
 
 * Pwr freq: *
+
 Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox enregistre les valeurs d'état de chaque prise qu'elle contrôle.
 
 * RTC off: *
+
 Cette valeur indique, un décalage "artificiel" créé entre la Cultibox et l'heure "réelle". Cette valeur est à 0 par défaut.
 
 = Alarme =
@@ -66,16 +73,20 @@ Cette fenêtre permet de visualiser l'état des paramètres de l'alarme.
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_alarme.png
 
 * Active: *
+
 1 Si l'alarme est activée
 0 Si l'alarme n'est pas activée
 
 * Value: *
+
 Indique la valeur seuil. C'est la valeur qui sera comparé au capteur pour déterminer si l'alarme doit s'enclencher ou non.
 
 * Sensor: *
+
 Indique quel capteur est utilisé pour savoir si la valeur seuil est dépassée.
 
 * Sens: *
+
 Indique dans quel sens le seuil doit être dépassé pour activer l'alarme.
 
 = Prise =
@@ -90,15 +101,18 @@ http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_1.png
 La première série d'information indique les données utilisées pour la régulation principale.
 
 * Type: *
+
 Indique quel type de régulation est appliquée:
  * N : Aucune
  * T : Régulation en température
  * H : Régulation en humidité
 
 * Sens: *
+
 Indique dans quel sens le seuil doit être dépassé pour activer la prise.
 
 * Tol: *
+
 Indique la tolérance pour cette régulation.
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_2.png
@@ -106,60 +120,75 @@ http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_2.png
 La deuxième série d'information indique les données utilisées pour la régulation secondaire.
 
 * Type: *
+
 Indique quel type de régulation est appliquée:
  * N : Aucune
  * T : Régulation en température
  * H : Régulation en humidité
 
 * Sens: *
+
 Indique dans quel sens le seuil doit être dépassé pour activer la prise.
 
 * État Actif: *
+
  * 1 : si la prise doit être allumée lorsque le seuil est dépassé (ie ventilateur...)
  * 0 : si la prise doit être éteinte lorsque le seuil est dépassé (ie humidificateur...)
 
 * Valeur: *
+
 Valeur utilisée pour la régulation
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_3.png
 
 * Tol: *
+
 Indique la tolérance pour cette régulation.
 
 La troisième série d'information permet de savoir comment est calculée la valeur utilisée pour la régulation.
 
 * Type: *
+
  * Moyenne : la moyenne des capteurs est utilisée
  * Min : le minimum des capteurs est utilisée
  * Max : le maximum des capteurs est utilisée
 
 * Capteur 1: *
+
 Indique si le capteur n°1 est utilisé pour la régulation
  
 * Capteur 2: *
+
 Indique si le capteur n°2 est utilisé pour la régulation
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_4.png
 
 * Capteur 3: *
+
 Indique si le capteur n°3 est utilisé pour la régulation
 
 * Capteur 4: *
+
 Indique si le capteur n°4 est utilisé pour la régulation
 
 * Val Pri: *
+
 Indique la valeur calculée pour la régulation primaire
 
 * Val Sec: *
+
 Indique la valeur calculée pour la régulation secondaire
 
 * Seuil: *
+
 Seuil utilisé pour la régulation
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_5.png
 
 * État Prise: *
+
 État de la prise
 
 * Debug: *
+
 Porte bien son nom !
