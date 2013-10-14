@@ -6,7 +6,7 @@ Le menu paramètre de la Cultibox permet l'accès aux menus suivants:
 
 <wiki:toc max_depth="3" />
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_box_menu_param_culti.png
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox.png
 
 = Horloge =
 Ce menu permet de changer l'heure de la Cultibox. 
@@ -65,6 +65,19 @@ Cette fenêtre permet de visualiser l'état des paramètres de l'alarme.
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_alarme.png
 
+* Active: *
+1 Si l'alarme est activée
+0 Si l'alarme n'est pas activée
+
+* Value: *
+Indique la valeur seuil. C'est la valeur qui sera comparé au capteur pour déterminer si l'alarme doit s'enclencher ou non.
+
+* Sensor: *
+Indique quel capteur est utilisé pour savoir si la valeur seuil est dépassée.
+
+* Sens: *
+Indique dans quel sens le seuil doit être dépassé pour activer l'alarme.
+
 = Prise =
 Cette fenêtre permet de visualiser l'état des paramètres de chaque prise.
 
@@ -74,11 +87,79 @@ En cliquant sur une prise, on atteint un sous menu qui donne le descriptif compl
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_1.png
 
+La première série d'information indique les données utilisées pour la régulation principale.
+
+* Type: *
+Indique quel type de régulation est appliquée:
+ * N : Aucune
+ * T : Régulation en température
+ * H : Régulation en humidité
+
+* Sens: *
+Indique dans quel sens le seuil doit être dépassé pour activer la prise.
+
+* Tol: *
+Indique la tolérance pour cette régulation.
+
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_2.png
+
+La deuxième série d'information indique les données utilisées pour la régulation secondaire.
+
+* Type: *
+Indique quel type de régulation est appliquée:
+ * N : Aucune
+ * T : Régulation en température
+ * H : Régulation en humidité
+
+* Sens: *
+Indique dans quel sens le seuil doit être dépassé pour activer la prise.
+
+* État Actif: *
+ * 1 : si la prise doit être allumée lorsque le seuil est dépassé (ie ventilateur...)
+ * 0 : si la prise doit être éteinte lorsque le seuil est dépassé (ie humidificateur...)
+
+* Valeur: *
+Valeur utilisée pour la régulation
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_3.png
 
+* Tol: *
+Indique la tolérance pour cette régulation.
+
+La troisième série d'information permet de savoir comment est calculée la valeur utilisée pour la régulation.
+
+* Type: *
+ * Moyenne : la moyenne des capteurs est utilisée
+ * Min : le minimum des capteurs est utilisée
+ * Max : le maximum des capteurs est utilisée
+
+* Capteur 1: *
+Indique si le capteur n°1 est utilisé pour la régulation
+ 
+* Capteur 2: *
+Indique si le capteur n°2 est utilisé pour la régulation
+
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_4.png
+
+* Capteur 3: *
+Indique si le capteur n°3 est utilisé pour la régulation
+
+* Capteur 4: *
+Indique si le capteur n°4 est utilisé pour la régulation
+
+* Val Pri: *
+Indique la valeur calculée pour la régulation primaire
+
+* Val Sec: *
+Indique la valeur calculée pour la régulation secondaire
+
+* Seuil: *
+Seuil utilisé pour la régulation
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_5.png
 
+* État Prise: *
+État de la prise
+
+* Debug: *
+Porte bien son nom !
