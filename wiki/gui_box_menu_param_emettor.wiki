@@ -3,4 +3,21 @@
 = Sommaire =
 <wiki:toc max_depth="3" />
 
-A créer
+= Introduction =
+
+En arrivant dans le menu, l'écran affiche les choix suivant:
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur.png
+
+= Paramètres =
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur_param.png
+
+= Registres Prises =
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur_reg_prises.png
+
+= Registres Autres =
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur_reg_autres.png
+

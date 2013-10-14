@@ -21,15 +21,13 @@ Pour enregistrer l'heure : Appuyer sur le bouton central.
 Ce menu permet de consulter et modifier des paramètres de la Cultibox. 
 Il est a noter que hormis le "Contraste", la plus part de ces paramètres et informations ne sont pas prévu pour les utilisateurs.
 
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_reg_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_reg_2.png
+
 * Attention : Si d'autres paramètres que le contraste sont modifiés, les informations relevées par la Cultibox peuvent être altérées! *
 
 Sauf pour le contraste, l'utilisateur ne peut pas modifier les paramètres.
-
-* Version firm: *
-Ce numéro indique la version du firmware de la Cultibox.
-
-* ID Culti: *
-Ceci est le numéro d'identité de votre Cultibox. Il nous permet de suivre ce qui la compose et son cycle de vie.
 
 * Contraste(Pour utilisateur): *
 Cette valeur permet de modifier le contraste de l'écran de votre Cultibox. Au premier démarrage de la Cultibox, une valeur par défaut est chargée. Votre écran peut donc être un peu sombre ou un peu trop clair au démarrage. 
@@ -37,6 +35,12 @@ Pour modifier le contraste:
  * Faite défiler l'écran jusqu’à ce que la ligne contraste soit tout en haut.
  * Appuyer sur gauche ou droite pour changer la valeur.
 La valeur de contraste est enregistrée dans un fichier (/cnf/cnt) sur la carte SD. Durant le chargement de la configuration, la Cultibox charge votre valeur de contraste et l'applique à l'écran.
+
+* Version firm: *
+Ce numéro indique la version du firmware de la Cultibox.
+
+* ID Culti: *
+Ceci est le numéro d'identité de votre Cultibox. Il nous permet de suivre ce qui la compose et son cycle de vie.
 
 * Freq plug: *
 Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox met à jour l'état des prises (0 indique une mise a jours permanente)
@@ -52,4 +56,24 @@ Cette valeur indique, un décalage "artificiel" créé entre la Cultibox et l'he
 
 = Alarme =
 
-= Régulation =
+Cette fenêtre permet de visualiser l'état des paramètres de l'alarme.
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_alarme.png
+
+= Prise =
+Cette fenêtre permet de visualiser l'état des paramètres de chaque prise.
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise.png
+
+En cliquant sur une prise, on atteint un sous menu qui donne le descriptif complet:
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_3.png
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_4.png
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_5.png
+
