@@ -12,9 +12,14 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_box_menu_param_culti.png
 Ce menu permet de changer l'heure de la Cultibox. 
 Il est a noter que la Cultibox ne change pas d'heure toute seule pour le passage de l'heure d'été à l'heure d'hiver.
 
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_hour.png
+
 Pour changer un chiffre : Appuyer sur haut ou bas.
 Pour changer de chiffre à modifier : Appuyer sur gauche ou droite.
 Pour enregistrer l'heure : Appuyer sur le bouton central.
+
+Format de la date : Jour / Mois / Année
+Format de l'heure : Heure : Minute
 
 = Registre =
 

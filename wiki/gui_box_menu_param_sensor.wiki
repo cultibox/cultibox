@@ -6,3 +6,13 @@ Ce menu permet d'accéder aux paramètres de chaque capteur.
 Pour voir les paramètres d'un capteur descendez la sélection sur le capteur puis cliquer sur le bouton central.
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur.png
+
+= Paramètres =
+
+Pour chaque capteur , la fenêtre suivante s'affiche :
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_sensor_reg.png
+
+Elle indique quel capteur est branché.
+
+
