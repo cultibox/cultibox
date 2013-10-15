@@ -169,9 +169,14 @@ delete_logs = function(type, type_reset, nb_jours, start,count) {
         });
 }
 
-compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,index) {
+compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,index,plug) {
         var step=100/count;
         var pourcent=(count-nb_jours)*step;
+        if(plug>0) {
+            var nb=index+1;
+        } else {
+            var nb="";
+        }
 
         $.ajax({
               cache: false,
@@ -180,9 +185,13 @@ compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,
               data: {type:type,startday:startday,select_plug:select_plug,cost:cost}
         }).done(function (data) {
               if(!$.isNumeric(data)) {
-                     $("#error_compute_cost").show();
+                        if(type=="theorical") {
+                            $("#error_compute_cost_theorical"+nb).show();
+                        } else {
+                            $("#error_compute_cost_real"+nb).show();
+                        }
               } else {
-                     $("#progress_bar_cost_"+type).progressbar({value:pourcent});
+                     $("#progress_bar_cost_"+type+nb).progressbar({value:pourcent});
 
                      cost=parseFloat(cost)+parseFloat(data);
 
@@ -191,14 +200,20 @@ compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,
                         date.setDate(date.getDate()+1);
                         var dateString = (date.getFullYear().toString()+"-"+addZ((date.getMonth() + 1)) + "-" + addZ(date.getDate()));
 
-                        compute_cost(type,dateString, select_plug, nb_jours-1, count, cost,chart,index);
+                        compute_cost(type,dateString, select_plug, nb_jours-1, count, cost,chart,index,plug);
                      } else {
-                        $("#progress_cost").dialog("close");
+                        $("#progress_bar_cost_"+type+nb).progressbar({value:100});
                         if(type=="theorical") {
                             chart.series[index].data[1].update(Math.round(cost*100)/100); 
+                            $("#valid_cost_compute_theorical"+nb).show();
                         } else {
                             chart.series[index].data[0].update(Math.round(cost*100)/100); 
-                        }   
+                            $("#valid_cost_compute_real"+nb).show();
+                        }  
+
+                        if(($("#valid_cost_compute_theorical").css("display")!="none")&&($("#valid_cost_compute_theorical").css("display")!="none")) {
+                            $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
+                        }
                      }
                  } 
         });

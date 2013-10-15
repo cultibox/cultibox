@@ -1129,8 +1129,20 @@ msgstr "Calcul du coût théorique en cours"
 msgid "COMPUTE_COST"
 msgstr "Calcul du coût de votre installation en cours"
 
+msgid "COMPUTE_COST_PLUG_REAL"
+msgstr "Calcul du coût réel pour la prise"
+
+msgid "COMPUTE_COST_PLUG_THEORICAL"
+msgstr "Calcul du coût théorique pour la prise"
+
 msgid "ERROR_COMPUTE_COST"
 msgstr "Erreur lors du calcul du coût de votre installation"
+
+msgid "VALID_REAL_COST_COMPUTE"
+msgstr "Calcul du coût réel réalisé avec succés"
+
+msgid "VALID_THEORICAL_COST_COMPUTE"
+msgstr "Calcul du coût théorique réalisé avec succés"
 
 
 # For the historic part:
