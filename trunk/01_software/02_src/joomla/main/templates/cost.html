@@ -186,19 +186,24 @@ $(function () {
     if((typeof(submit_cost)!='undefined')&&(submit_cost)) {
         $("#progress_cost").dialog({
             resizable: false,
-            width: 550,
+            <?php if(strcmp($select_plug,"distinct_all")==0) { ?>
+                width: 750,
+            <?php } else { ?> 
+                width: 550,
+            <?php } ?>
             modal: true,
+            <?php if(strcmp($select_plug,"distinct_all")==0) { ?>
+                position: 'top',
+            <?php } ?>
             dialogClass: "popup_message",
             buttons: [{
                     text: CANCEL_button,
                     "id": "btnClose",
                     click: function () {
-                        $( this ).dialog( "close" ); window.location = "cost-<?php echo $_SESSION['SHORTLANG']; ?>"; 
+                        $( this ).dialog( "close" );  
                     }
             }],
             open: function( event, ui ) {
-                $("#progress_bar_cost_theorical").progressbar({value:0});
-                $("#progress_bar_cost_real").progressbar({value:0});
                 var myArray = $("#datepicker_start").val().split('-');
                 var myArray2 = $("#datepicker_end").val().split('-');
                 var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
@@ -206,12 +211,14 @@ $(function () {
                 var nb_jours=diffdate(Date1,Date2);
 
                 if($("#select_plug").val()!="distinct_all") {
-                    compute_cost("theorical",$("#datepicker_start").val(),$("#select_plug").val(), nb_jours,nb_jours,"0",chart,0);
-                    compute_cost("real",$("#datepicker_start").val(),$("#select_plug").val(), nb_jours,nb_jours,"0",chart,0);
+                    compute_cost("theorical",$("#datepicker_start").val(),$("#select_plug").val(), nb_jours,nb_jours,"0",chart,0,0);
+                    compute_cost("real",$("#datepicker_start").val(),$("#select_plug").val(), nb_jours,nb_jours,"0",chart,0,0);
+                    $("#progress_bar_cost_theorical").progressbar({value:0});
+                    $("#progress_bar_cost_real").progressbar({value:0});
                 } else {
-                    for(plugs=1;plugs<=nb_plugs;plugs++) {  
-                        compute_cost("theorical",$("#datepicker_start").val(),plugs, nb_jours,nb_jours,"0",chart,plugs-1);
-                        compute_cost("real",$("#datepicker_start").val(),plugs, nb_jours,nb_jours,"0",chart,plugs-1);
+                    for(plugs=1;plugs<=nb_plugs;plugs++) {
+                        compute_cost("theorical",$("#datepicker_start").val(),plugs, nb_jours,nb_jours,"0",chart,plugs-1,nb_plugs);
+                        compute_cost("real",$("#datepicker_start").val(),plugs, nb_jours,nb_jours,"0",chart,plugs-1,nb_plugs);
                     }
                     
                 }
@@ -224,7 +231,7 @@ $(function () {
 
 <label class="title_conf"><?php echo __('COST_PRICE_COMPUTE'); ?>:</label>
 <br /><br />
-<form action="<?php echo($_SERVER['PHP_SELF']); ?>#anchor-cost" method="post" name="display-cost" id="display-cost">
+<form action="<?php echo($_SERVER['PHP_SELF']); ?><?php if(strcmp($select_plug,'distinct_all')!=0) { echo '#anchor-cost'; } ?>" method="post" name="display-cost" id="display-cost">
 
 <table class="table_width">
    <tr>
@@ -306,20 +313,44 @@ $(function () {
 <br />
 
 <div id="progress_cost" title="<?php echo __('COMPUTE_COST'); ?>" style="display:none">
+    <?php if(strcmp($select_plug,"distinct_all")!=0) { ?>
     <p><?php echo __('PROGRESS_COST_THEORICAL'); ?>:</p>
     <div id="progress_bar_cost_theorical"></div>
-    <br />
     <p class="p_center">
         <label class="format_error" id="error_cost_compute_theorical" style="display:none"><?php echo __('ERROR_COMPUTE_COST'); ?></label>
+        <label class="format_success" id="valid_cost_compute_theorical" style="display:none"><?php echo __('VALID_THEORICAL_COST_COMPUTE'); ?></label>
     </p>
     <br />
    
     <p><?php echo __('PROGRESS_COST_REAL'); ?>:</p> 
     <div id="progress_bar_cost_real"></div>
-    <br />
     <p class="p_center">
         <label class="format_error" id="error_cost_compute_real" style="display:none"><?php echo __('ERROR_COMPUTE_COST'); ?></label>
+        <label class="format_success" id="valid_cost_compute_real" style="display:none"><?php echo __('VALID_REAL_COST_COMPUTE'); ?></label>
     </p>
+    <?php } else { ?>
+        <table class="table_width">
+        <?php for($nb=1; $nb<=$nb_plugs; $nb++) { ?>
+            <?php if ($nb % 2 != 0) echo '<tr>'; ?>
+            <?php if ($nb % 2 == 0) echo '<td class="cost-marge"></td>'; ?>
+            <td>
+            <p><?php echo __('COMPUTE_COST_PLUG_THEORICAL')." ".$nb; ?>:</p>
+            <div id="progress_bar_cost_theorical<?php echo $nb; ?>"></div>
+            <p class="p_center">
+                <label class="format_error" id="error_cost_compute_theorical<?php echo $nb; ?>" style="display:none"><?php echo __('ERROR_COMPUTE_COST'); ?></label>
+                <label class="format_success" id="valid_cost_compute_theorical<?php echo $nb; ?>" style="display:none"><?php echo __('VALID_THEORICAL_COST_COMPUTE'); ?></label>
+            </p>
+            <p><?php echo __('COMPUTE_COST_PLUG_REAL')." ".$nb; ?>:</p> 
+            <div id="progress_bar_cost_real<?php echo $nb; ?>"></div>
+            <p class="p_center">
+                <label class="format_error" id="error_cost_compute_real<?php echo $nb; ?>" style="display:none"><?php echo __('ERROR_COMPUTE_COST'); ?></label>
+                <label class="format_success" id="valid_cost_compute_real<?php echo $nb; ?>" style="display:none"><?php echo __('VALID_REAL_COST_COMPUTE'); ?></label>
+            </p>
+            <hr />
+            <br />
+            </td>
+            <?php if ($nb % 2 == 0) echo '</tr>'; ?>
+    <?php } echo '</table>';  } ?>
 </div>
 
 <label id="anchor-cost"></label>
