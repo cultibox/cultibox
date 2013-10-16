@@ -11,6 +11,7 @@
 <thead>
 <tr><td rowspan="1" colspan="3">clean</td></tr>
 </thead><tbody>
+<!--Ouverture page configuration (On met le nombre de prise à 10 pour effacer tous les programmes)-->
 <tr>
 	<td>open</td>
 	<td>/cultibox/index.php/fr/configuration-fr</td>
@@ -47,6 +48,1077 @@
 	<td></td>
 </tr>
 <tr>
+	<td>open</td>
+	<td>/cultibox/index.php/fr/wizard-fr?selected_plug=1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=li.level1.item159 &gt; a.level1 &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=selected_plug</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=selected_plug</td>
+	<td>label=Toutes les prises</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;all&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_enable1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_type1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;lamp&quot;]</td>
+	<td></td>
+</tr>
+<!--Prise 1-->
+<tr>
+	<td>click</td>
+	<td>id=plug_power1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_power1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_power1</td>
+	<td>100</td>
+</tr>
+<!--Prise 2-->
+<tr>
+	<td>click</td>
+	<td>id=plug_enable2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_enable2 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_type2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_type2 &gt; option[value=&quot;ventilator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_power2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_power2</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_tolerance2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_tolerance2</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor21</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor21 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor22</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor22 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor23</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor23 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor24</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor24 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_compute_method2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_compute_method2</td>
+	<td>label=Moyenne</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_compute_method2 &gt; option[value=&quot;M&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_regul2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_regul2</td>
+	<td>label=Arrêt</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_regul2 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<!--Prise 3-->
+<tr>
+	<td>click</td>
+	<td>id=plug_enable3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_enable3 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_type3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_type3 &gt; option[value=&quot;ventilator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_power3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_power3</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_tolerance3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_tolerance3</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor31</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor31 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor32</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor32 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor33</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor33 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor34</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor34 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_compute_method3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_compute_method3</td>
+	<td>label=Moyenne</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_compute_method3 &gt; option[value=&quot;M&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_regul3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_regul3</td>
+	<td>label=Arrêt</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_regul3 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<!--Prise 4-->
+<tr>
+	<td>click</td>
+	<td>id=plug_enable4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_enable4 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_type4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_type4 &gt; option[value=&quot;ventilator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_power4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_power4</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_tolerance4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_tolerance4</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor41</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor41 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor42</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor42 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor43</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor43 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor44</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor44 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_compute_method4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_compute_method4</td>
+	<td>label=Moyenne</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_compute_method4 &gt; option[value=&quot;M&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_regul4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_regul4</td>
+	<td>label=Arrêt</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_regul4 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<!--Prise 5-->
+<tr>
+	<td>click</td>
+	<td>id=plug_enable5</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_enable5 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_type5</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_type5 &gt; option[value=&quot;ventilator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_power5</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_power5</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_tolerance5</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_tolerance5</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor51</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor51 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor52</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor52 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor53</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor53 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor54</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor54 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_compute_method5</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_compute_method5</td>
+	<td>label=Moyenne</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_compute_method5 &gt; option[value=&quot;M&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_regul5</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_regul5</td>
+	<td>label=Arrêt</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_regul5 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<!--Prise 6-->
+<tr>
+	<td>click</td>
+	<td>id=plug_enable6</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_enable6 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_type6</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_type6 &gt; option[value=&quot;ventilator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_power6</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_power6</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_tolerance6</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_tolerance6</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor61</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor61 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor62</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor62 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor63</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor63 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor64</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor64 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_compute_method6</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_compute_method6</td>
+	<td>label=Moyenne</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_compute_method6 &gt; option[value=&quot;M&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_regul6</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_regul6</td>
+	<td>label=Arrêt</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_regul6 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<!--Prise 7-->
+<tr>
+	<td>click</td>
+	<td>id=plug_enable7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_enable7 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_type7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_type7 &gt; option[value=&quot;ventilator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_power7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_power7</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_tolerance7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_tolerance7</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor71</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor71 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor72</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor72 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor73</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor73 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor74</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor74 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_compute_method7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_compute_method7</td>
+	<td>label=Moyenne</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_compute_method7 &gt; option[value=&quot;M&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_regul7</td>
+	<td></td>
+</tr>
+<!--Prise 8-->
+<tr>
+	<td>click</td>
+	<td>id=plug_enable8</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_enable8 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_type8</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_type8 &gt; option[value=&quot;ventilator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_power8</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_power8</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_tolerance8</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_tolerance8</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor81</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor81 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor82</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor82 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor83</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor83 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor84</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor84 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_compute_method8</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_compute_method8</td>
+	<td>label=Moyenne</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_compute_method8 &gt; option[value=&quot;M&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_regul8</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_regul8</td>
+	<td>label=Arrêt</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_regul8 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_regul8</td>
+	<td>label=Arrêt</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_regul8 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<!--Prise 9-->
+<tr>
+	<td>click</td>
+	<td>id=plug_enable9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_enable9 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_type9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_type9 &gt; option[value=&quot;ventilator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_power9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_power9</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_tolerance9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_tolerance9</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor91</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor91 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor92</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor92 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor93</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor93 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor94</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor94 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_compute_method9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_compute_method9</td>
+	<td>label=Moyenne</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_compute_method9 &gt; option[value=&quot;M&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_regul9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_regul9</td>
+	<td>label=Arrêt</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_regul9 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<!--Prise 10-->
+<tr>
+	<td>click</td>
+	<td>id=plug_enable10</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_enable10 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_type10</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_type10 &gt; option[value=&quot;ventilator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_power10</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_power10</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_tolerance10</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plug_tolerance10</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor101</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor101 &gt; option[value=&quot;True&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor102</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor102 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor103</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor103 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_sensor104</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_sensor104 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_compute_method10</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_compute_method10</td>
+	<td>label=Moyenne</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_compute_method10 &gt; option[value=&quot;M&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=plug_regul10</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=plug_regul10</td>
+	<td>label=Arrêt</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#plug_regul10 &gt; option[value=&quot;False&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=reccord_plugs</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='button']</td>
+	<td></td>
+</tr>
+<!--Suppression des programmes-->
+<tr>
 	<td>clickAndWait</td>
 	<td>css=li.level1.item160 &gt; a.level1 &gt; span</td>
 	<td></td>
@@ -81,11 +1153,13 @@
 	<td>//button[@type='button']</td>
 	<td></td>
 </tr>
+<!--Ouverture page configuration-->
 <tr>
 	<td>clickAndWait</td>
 	<td>css=li.level1.item157 &gt; a.level1 &gt; span</td>
 	<td></td>
 </tr>
+<!--Onglet Cultibox pour réinitialiser-->
 <tr>
 	<td>click</td>
 	<td>id=div_system_label</td>
