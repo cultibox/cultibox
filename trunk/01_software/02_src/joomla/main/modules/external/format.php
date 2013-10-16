@@ -39,10 +39,11 @@ if((!isset($path))||(empty($path))) {
             if(!is_dir($prg)) mkdir("$prg");
             if(!is_dir($bin)) mkdir("$bin");
 
-
-            if(!copy("../../../tmp/cnf/cnt","$cnf/cnt")) {
-                echo -1;
-                return 0;
+            if(!is_file("$cnf/cnt")) {
+                if(!copy("../../../tmp/cnf/cnt","$cnf/cnt")) {
+                    echo -1;
+                    return 0;
+                }
             }
 
              //Copiyng firmware:

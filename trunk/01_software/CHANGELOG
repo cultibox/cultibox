@@ -10,6 +10,7 @@ Cultibox (1.1.33) precise; urgency=low
     + Passage en AJAX des actions du calendrier
     + Ajout de la possibilité de désactiver l'affichage des fichiers externe XML du calendrier
     + Ajout d'un datepicker pour choisir rapidement le mois du calendrier
+    + Si le fichier des contrastes existe sur la carte SD on ne le remplace pas lors du formatage
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Sep  3 11:43:25 CEST 2013
 
