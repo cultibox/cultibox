@@ -7,10 +7,6 @@
 
 Cette page ne concerne que les utilisateurs experts.
 
-<wiki:comment>
-\begin{comment} 
-</wiki:comment>
-
 = Calendriers d'engrais =
 == Introduction ==
 
@@ -322,7 +318,8 @@ ou alors:
    <rights type = "text">
     © Cultibox, 2013
    </rights>
-   
+}}}
+{{{
    <entry>
       <title>Phase croissance</title>
       <summary>Phase de croissance</summary>
@@ -338,7 +335,8 @@ ou alors:
       <dosage>3ml/l</dosage>
       <color>red</color>
    </entry>
-   
+}}}
+{{{
    <entry>
       <title>Phase de prefloraison  </title>
       <summary>Phase de prefloraison </summary>
@@ -354,6 +352,8 @@ ou alors:
       <dosage>6ml/l</dosage>
       <icon>engrais.png</icon>
    </entry>
+}}}
+{{{
    <entry>
       <title>Phase de prefloraison  </title>
       <summary>Phase de prefloraison </summary>
@@ -369,10 +369,6 @@ ou alors:
 
 </feed>
 }}}
-
-<wiki:comment>
-\end{comment} 
-</wiki:comment>
 
 = Ajouter un test Sélénium =
 == Introduction ==
