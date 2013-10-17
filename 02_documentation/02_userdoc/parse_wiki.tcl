@@ -28,6 +28,7 @@ lappend CaracSpeciauxEnd "*" ""
 set largeurTable 12
 set ::PageActualyParse ""
 set inCode 0
+set startInCode 0
 
 proc removeDiatric {st} {
  return [string map {
@@ -264,7 +265,9 @@ proc parse {inFileName outFileName level} {
       
       if {$::inCode == 0} {set line [parseTab $line]}
       
-      
+	  if {$::inCode == 0} {set ::startInCode 0}
+      if {$::startInCode == 1} {set line "$line\\newline"}
+	  if {$::inCode == 1} {set ::startInCode 1}
 
       if {[string first {#summary} $line] != -1} {
          set line "";
