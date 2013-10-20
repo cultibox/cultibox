@@ -21,6 +21,12 @@ if((isset($_GET['calendar_start']))&&(!empty($_GET['calendar_start']))) {
     $calendar_start=$_GET['calendar_start'];
 }
 
+$calendar_end=$calendar_start;
+
+if((isset($_GET['sd_card']))&&(!empty($_GET['sd_card']))) {
+    $sd_card=$_GET['sd_card'];
+}
+
 if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_product))&&(!empty($program_product))&&(isset($calendar_start))&&(!empty($calendar_start))) {
     $file="";
     $main_error=array();
@@ -115,6 +121,8 @@ if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_prod
                                                     "external" => "0"
                                                     //"allDay" => false
                                             );
+    
+                                            $calendar_end=$timeend;
                                         }   
                                 }
                             }
@@ -124,14 +132,23 @@ if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_prod
             }
             if(count($event)>0) {
                  if(insert_calendar($event,$main_error)) {
-                    //$main_info[]=__('VALID_ADD_PROGRAM');
-                    //$pop_up_message=$pop_up_message.popup_message(__('VALID_ADD_PROGRAM'));
+                    if((isset($sd_card))&&(!empty($sd_card))) {
+                        if(strlen($calendar_end)==8) {
+                            $year=substr($calendar_end,0,4);
+                            $month=substr($calendar_end,4,2);
+                            $day=substr($calendar_end,6,2);
+                            $calendar_end="$year-$month-$day";
+                      
+                            $calendar=create_calendar_from_database($main_error,$calendar_start,$calendar_end);
+                            if(count($calendar)>0) {
+                                clean_calendar($sd_card,$calendar_start,$calendar_end);
+                                write_calendar($sd_card,$calendar,$main_error,$calendar_start,$calendar_end);
+                            }
+                        }
+                    }
                     echo "1";
                  } else {
-                    //$main_error[]=__('ERROR_ADD_CALENDAR_PROGRAM');
                     echo "-1";
-                    //$pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_ADD_CALENDAR_PROGRAM'));
-                    
                 }
             }
         }
