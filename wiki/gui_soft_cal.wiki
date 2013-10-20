@@ -73,3 +73,26 @@ Une fois cela fait, le programme apparaît dans le calendrier:
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_view_engrais.png
 
 Certains programmes d'engrais ont été développé par des utilisateurs qui ont donné leur travail à la communauté en nous les faisant parvenir. Si vous souhaitez plus d'informations concernant les programmes d'engrais et la gestion des fichiers XML, repportez-vous à la section [advance Utilisation avancée].
+
+
+= Activer/Désactiver l'affichage des fichiers XML externes =
+
+Par défaut les fichiers présents dans votre logiciel seront affichés dans le calendrier (par exemple le calendrier lunaire). Il est possible de désactiver/activer l'affichage de ces fichiers s'ils ne vous intérésse pas. Pour cela, cliquez sur le bouton *Gestion des fichiers XML externes*: 
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_external_manage.png
+
+Un panneau de configuration s'ouvre où il est possible de désactiver ou d'activer chaque fichier XML indépendament:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_external_xml.png
+
+Une fois votre configuration faites, il suffit de cliquer sur le bouton *Enregistrer*. Le bouton annuler fermera le panneau sans prendre en compte vos modifications.
+
+= Note sur les fichiers XML =
+
+Il existe deux types de fichiers XML gérés par la logiciel Cultibox:
+
+* Les fichiers de type "calendrier externe": ces fichiers regroupent les calendriers définis sur une année entière et ne pouvant pas être modifié (sauf manuellement) comme le calendrier lunaire. 
+* Les fichiers de type "calendrier d'engrais": ces fichiers sont applicables à la demande. Par défaut ils ne sont pas ajoutés dans le calendrier mais peuvent l'être à partir d'une date définit par l'utilisateur quelque soit l'année.
+
+La gestion des fichiers XML à partir du calendrier ne conserne que les fichiers externes (type calendrier lunaire).
+
