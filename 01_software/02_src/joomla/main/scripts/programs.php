@@ -20,7 +20,6 @@ require_once('main/libs/utilfunc.php');
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
 $main_error=array();
 $main_info=array();
-$error=array();
 $version=get_configuration("VERSION",$main_error);
 $_SESSION['LANG'] = get_current_lang();
 $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
@@ -245,12 +244,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
 	$sd_card=get_sd_card();
 }
 
-if((!isset($sd_card))||(empty($sd_card))) {
-       	$main_error[]=__('ERROR_SD_CARD_PROGRAMS');
-} else {
-       	$main_info[]=__('INFO_SD_CARD').": $sd_card";
-}
-
 
 //Create a new program:
 if(!empty($apply)&&(isset($apply))) { 
@@ -465,18 +458,6 @@ if(!empty($apply)&&(isset($apply))) {
 
     }
 }
-
-
-if((isset($error))&&(!empty($error))&&(count($error)>0)) {
-    foreach($error as $err) {
-        $pop_up_error_message=$pop_up_error_message.popup_message($err);
-    }
-} else if((isset($info))&&(!empty($info))&&(count($info)>0)) {
-        foreach($info as $inf) {
-            $pop_up_message=$pop_up_message.popup_message($inf);
-    }
-}
-
 	
 for($i=0;$i<$nb_plugs;$i++) {
     $data_plug=get_data_plug($i+1,$main_error);
@@ -513,46 +494,73 @@ if(count($tmp_resume)>0) {
 }
 
 
+// If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
+    $program="";
     $conf_uptodate=true;
+    $error_copy=false;
     if(check_sd_card($sd_card)) {
+
+
         /* TO BE DELETED */
-        compat_old_sd_card($sd_card);   
+        if(!compat_old_sd_card($sd_card)) { 
+            $main_error[]=__('ERROR_COPY_FILE'); 
+            $error_copy=true;
+        }   
         /* ************* */
 
-        if((!isset($submit))||(empty($submit))) {
-            $program=create_program_from_database($main_error);
 
-            if(!compare_program($program,$sd_card)) {
-                $conf_uptodate=false;
-                save_program_on_sd($sd_card,$program,$main_error);
+        $program=create_program_from_database($main_error);
+        if(!compare_program($program,$sd_card)) {
+            $conf_uptodate=false;
+            if(!save_program_on_sd($sd_card,$program)) { 
+                $main_error[]=__('ERROR_WRITE_PROGRAM'); 
+                $error_copy=true;
             }
         }
 
-        if(check_and_copy_firm($sd_card,$main_error)) {
+
+        $ret_firm=check_and_copy_firm($sd_card);
+        if(!$ret_firm) {
+            $main_error[]=__('ERROR_COPY_FIRM');
+            $error_copy=true;
+        } else if($ret_firm==1) {
             $conf_uptodate=false;
         }
 
+
         if(!compare_pluga($sd_card)) {
             $conf_uptodate=false;
-            write_pluga($sd_card,$main_error);
+            if(!write_pluga($sd_card,$main_error)) {
+                $main_error[]=__('ERROR_COPY_PLUGA');
+                $error_copy=true;
+            }
         }
+
 
         $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
         if(count($plugconf)>0) {
             if(!compare_plugconf($plugconf,$sd_card)) {
                 $conf_uptodate=false;
-                write_plugconf($plugconf,$sd_card);
+                if(!write_plugconf($plugconf,$sd_card)) {
+                    $main_error[]=__('ERROR_COPY_PLUG_CONF');
+                    $error_copy=true;
+                }
             }
         }
 
+
         if(!check_and_copy_log($sd_card)) {
             $main_error[]=__('ERROR_COPY_TPL');
+            $error_copy=true;
         }
 
+        
         if(!check_and_copy_index($sd_card)) {
-            $main_error[]=__('ERROR_COPY_FILE');
+            $main_error[]=__('ERROR_COPY_INDEX');
+            $error_copy=true;
         }
+
 
         $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
         $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
@@ -564,20 +572,29 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             $updatefrequency="0";
         }
 
+
         if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue")) {
-            $conf_uptodate=false;   
-            write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error);
+            $conf_uptodate=false;
+            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error)) {
+                $main_error[]=__('ERROR_WRITE_SD_CONF');
+                $error_copy=true;
+            }
         }
 
-        if(!$conf_uptodate) {
+        if((!$conf_uptodate)&&(!$error_copy)) {
             $main_info[]=__('UPDATED_PROGRAM');
             $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
             set_historic_value(__('UPDATED_PROGRAM')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
         }
+
+        $main_info[]=__('INFO_SD_CARD').": $sd_card";
     } else {
-        $main_error[]=__('ERROR_WRITE_PROGRAM');
+        $main_error[]=__('ERROR_WRITE_SD');
+        $main_info[]=__('INFO_SD_CARD').": $sd_card";
     }
-} 
+} else {
+        $main_error[]=__('ERROR_SD_CARD_PROGRAMS');
+}
 
 
 if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
@@ -602,7 +619,9 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         if((isset($submit))&&(!empty($submit))) {
             $program=create_program_from_database($main_error);
             if(!compare_program($program,$sd_card)) {
-                save_program_on_sd($sd_card,$program,$main_error);
+                if(!save_program_on_sd($sd_card,$program,$main_error)) {
+                    $main_error[]=__('ERROR_WRITE_PROGRAM');
+                }
             }
         }
     }

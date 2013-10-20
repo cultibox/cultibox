@@ -1,3 +1,10 @@
+Cultibox (1.1.34) precise; urgency=low
+    + Ajout de tests de vérification d'écriture sur la carte SD
+    + Valeur par défaut appliquée sur un champ si un mauvais format est rentré
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Oct 20 14:58:21 CEST 2013
+
+
 Cultibox (1.1.33) precise; urgency=low
     + Remise en forme de l'image de la cultibox sur le logiciel
     + Remise en forme de de l'affichage des différentes partie des logs pour que la page ne bouge plus quand on choisis un affichage par mois ou par jour

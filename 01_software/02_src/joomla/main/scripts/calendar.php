@@ -21,14 +21,12 @@ require_once('main/libs/utilfunc.php');
 $main_error=array();
 $main_info=array();
 $informations = Array();
-$program="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $pop_up_message=""; 
 $calendar_start=getvar('calendar_startdate');
-$external_calc = get_configuration("SHOW_EXTERNAL_CALENDAR",$main_error);
 $xml_list=get_external_calendar_file();
 
 
@@ -44,6 +42,8 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+
+// After creating the XML available file list, checking that each file is an external file like moon calendar
 $list_xml=array();
 foreach($xml_list as $liste) {
     $check_xml=check_config_xml_file($liste);
@@ -60,44 +60,71 @@ if((!isset($calendar_start))||(empty($calendar_start))) {
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
+    $program="";
     $conf_uptodate=true;
+    $error_copy=false;
     if(check_sd_card($sd_card)) {
+
+
         /* TO BE DELETED */
-        compat_old_sd_card($sd_card);   
+        if(!compat_old_sd_card($sd_card)) { 
+            $main_error[]=__('ERROR_COPY_FILE'); 
+            $error_copy=true;
+        }   
         /* ************* */
 
-        $program=create_program_from_database($main_error);
 
+        $program=create_program_from_database($main_error);
         if(!compare_program($program,$sd_card)) {
             $conf_uptodate=false;
-            save_program_on_sd($sd_card,$program,$main_error);
+            if(!save_program_on_sd($sd_card,$program)) { 
+                $main_error[]=__('ERROR_WRITE_PROGRAM'); 
+                $error_copy=true;
+            }
         }
 
-        if(check_and_copy_firm($sd_card,$main_error)) {
+
+        $ret_firm=check_and_copy_firm($sd_card);
+        if(!$ret_firm) {
+            $main_error[]=__('ERROR_COPY_FIRM');
+            $error_copy=true;
+        } else if($ret_firm==1) {
             $conf_uptodate=false;
         }
+
 
         if(!compare_pluga($sd_card)) {
             $conf_uptodate=false;
-            write_pluga($sd_card,$main_error);
+            if(!write_pluga($sd_card,$main_error)) {
+                $main_error[]=__('ERROR_COPY_PLUGA');
+                $error_copy=true;
+            }
         }
+
 
         $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
         if(count($plugconf)>0) {
             if(!compare_plugconf($plugconf,$sd_card)) {
                 $conf_uptodate=false;
-                write_plugconf($plugconf,$sd_card);
+                if(!write_plugconf($plugconf,$sd_card)) {
+                    $main_error[]=__('ERROR_COPY_PLUG_CONF');
+                    $error_copy=true;
+                }
             }
         }
 
 
         if(!check_and_copy_log($sd_card)) {
             $main_error[]=__('ERROR_COPY_TPL');
+            $error_copy=true;
         }
 
+        
         if(!check_and_copy_index($sd_card)) {
-            $main_error[]=__('ERROR_COPY_FILE');
+            $main_error[]=__('ERROR_COPY_INDEX');
+            $error_copy=true;
         }
+
 
         $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
         $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
@@ -105,17 +132,20 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
         $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
         $resetvalue= get_configuration("RESET_MINMAX",$main_error);
-
         if("$updatefrequency"=="-1") {
             $updatefrequency="0";
         }
 
+
         if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue")) {
             $conf_uptodate=false;
-            write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error);
+            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error)) {
+                $main_error[]=__('ERROR_WRITE_SD_CONF');
+                $error_copy=true;
+            }
         }
 
-        if(!$conf_uptodate) {
+        if((!$conf_uptodate)&&(!$error_copy)) {
             $main_info[]=__('UPDATED_PROGRAM');
             $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
             set_historic_value(__('UPDATED_PROGRAM')." (".__('CALENDAR_PAGE').")","histo_info",$main_error);
@@ -209,7 +239,9 @@ if((isset($sd_card))&&(!empty($sd_card))) {
    } else {
             clean_calendar($sd_card);
             if(count($data)>0) {
-                write_calendar($sd_card,$data,$main_error);
+                if(!write_calendar($sd_card,$data,$main_error)) {
+                    $main_error[]=__('ERROR_WRITE_CALENDAR');
+                }
             }
    } 
 }

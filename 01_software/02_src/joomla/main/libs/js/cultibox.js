@@ -116,6 +116,7 @@ formatCard = function(hdd,pourcent) {
                     formatCard(hdd,data); 
                 } else {
                     $("#error_format").show();
+                    $("#btnCancel").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
                 }
             });
 }
@@ -532,7 +533,7 @@ $(document).ready(function() {
                 if(data!=1) {
                     $("#error_min_max").show(700);
                     checked=false;
-                     expand('system_interface');
+                    expand('system_interface');
                 } else {
                     $("#error_min_max").css("display","none");
                 }
@@ -578,6 +579,8 @@ $(document).ready(function() {
                 }).done(function (data) {
                     if(data!=1) {
                         $("#error_start_days").show(700);
+                        var current=$("#datepicker").datepicker('getDate').getFullYear()+"-"+($("#datepicker").datepicker('getDate').getMonth() + 1)+"-"+$("#datepicker").datepicker('getDate').getDate();
+                        $("#datepicker").val(current);
                     } else {
                         document.forms['display-log-day'].submit();
                     }
@@ -599,6 +602,7 @@ $(document).ready(function() {
         });
             
 
+        // Check errors for the cost part:
         $("#view-cost").click(function(e) {
             e.preventDefault();
             var checked=true;
@@ -622,6 +626,8 @@ $(document).ready(function() {
             }).done(function (data) {
                 if(data!=1) {
                     $("#error_start_cost").show(700);
+                    var current=$("#datepicker_start").datepicker('getDate').getFullYear()+"-"+($("#datepicker_start").datepicker('getDate').getMonth() + 1)+"-"+$("#datepicker_start").datepicker('getDate').getDate();
+                    $("#datepicker_start").val(current);
                     checked=false;
                 } 
             });
@@ -634,6 +640,8 @@ $(document).ready(function() {
             }).done(function (data) {
                 if(data!=1) {
                     $("#error_end_cost").show(700);
+                    var current=$("#datepicker_end").datepicker('getDate').getFullYear()+"-"+($("#datepicker_end").datepicker('getDate').getMonth() + 1)+"-"+$("#datepicker_end").datepicker('getDate').getDate();
+                    $("#datepicker_end").val(current);
                     checked=false;
                 }
             });
@@ -664,6 +672,7 @@ $(document).ready(function() {
                 }).done(function (data) {
                     if(data!=1) {
                         $("#error_cost_price").show(700);
+                        $("#cost_price").val(default_cost);
                         checked=false;
                     }
                 });
@@ -677,6 +686,7 @@ $(document).ready(function() {
                 }).done(function (data) {
                     if(data!=1) {
                         $("#error_cost_price_hp").show(700);
+                        $("#cost_price_hp").val(default_cost_hp);
                         checked=false;
                     }
                 });
@@ -689,6 +699,7 @@ $(document).ready(function() {
                 }).done(function (data) {
                     if(data!=1) {
                         $("#error_cost_price_hc").show(700);
+                        $("#cost_price_hc").val(default_cost_hc);
                         checked=false;
                     }
                 });
@@ -701,6 +712,7 @@ $(document).ready(function() {
                 }).done(function (data) {
                     if(data!=1) {
                         $("#error_start_hc").show(700);
+                        $("#start_hc").val(default_start_hc);
                         checked=false;
                     }
                 });
@@ -714,6 +726,7 @@ $(document).ready(function() {
                 }).done(function (data) {
                     if(data!=1) {
                         $("#error_stop_hc").show(700);
+                        $("#stop_hc").val(default_stop_hc);
                         checked=false;
                     }
                 });
@@ -747,6 +760,7 @@ $(document).ready(function() {
             }).done(function (data) {
                 if(data!=1) {
                     $("#error_start_time").show(700);
+                    $('#start_time').val("00:00:00");
                     checked=false;
                 } 
             });
@@ -759,6 +773,7 @@ $(document).ready(function() {
             }).done(function (data) {
                 if(data!=1) {
                     $("#error_end_time").show(700);
+                    $('#end_time').val("00:00:00");
                     checked=false;
                 } 
             });
@@ -789,8 +804,10 @@ $(document).ready(function() {
                     if(data!="1") {
                         if(data=="2") {
                             $("#error_minimal_cyclic").show(700);
+                            $('#repeat_time').val("01:00:00");
                         } else {
                             $("#error_cyclic_time").show(700);
+                            $('#repeat_time').val("01:00:00");
                         }
                         checked=false;
                     } 
@@ -935,6 +952,7 @@ $(document).ready(function() {
         }).done(function (data) {
             if(data!=1) {
                 $("#error_start_time").show(700);
+                $("#start_time").val("06:00:00");
                 checked=false;
             }
         });
@@ -947,6 +965,7 @@ $(document).ready(function() {
         }).done(function (data) {
             if(data!=1) {
                 $("#error_end_time").show(700);
+                $("#end_time").val("18:00:00");
                 checked=false;
             }
         });
@@ -1021,6 +1040,8 @@ $(document).ready(function() {
         }).done(function (data) {
             if(data!=1) {
                 $("#error_calendar_startdate").show(700);
+                var current=$("#calendar_startdate").datepicker('getDate').getFullYear()+"-"+($("#calendar_startdate").datepicker('getDate').getMonth() + 1)+"-"+$("#calendar_startdate").datepicker('getDate').getDate();
+                $("#calendar_startdate").val(current);
             } else {
                 $.ajax({
                     cache: false,

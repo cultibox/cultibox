@@ -1339,6 +1339,18 @@ msgstr "Impossible de copier le fichier empty_file_64.tpl sur votre carte SD"
 msgid "ERROR_COPY_FILE"
 msgstr "Erreur lors de la copie d'un fichier"
 
+msgid "ERROR_COPY_FIRM"
+msgstr "Erreur lors de la vérification ou de la copie d'un nouveau firmware"
+
+msgid "ERROR_COPY_INDEX"
+msgstr "Erreur lors de la copie du fichier index"
+
+msgid "ERROR_COPY_PLUGA"
+msgstr "Erreur lors de la copie des adresses des prises"
+
+msgid "ERROR_COPY_PLUG_CONF"
+msgstr "Erreur lors de la copie de la configuration des prises"
+
 msgid "ERROR_COMPAT_BROWSER"
 msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez sûrement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accessibles. Voici la liste des navigateurs officiellement supportés:<br /><ul class='list_class'><li>Mozilla Firefox (version 3 et supérieure)</li><li>Internet Explorer (version 7 et supérieure)</li><li>Google Chrome (Toutes versions)</li><li>Max Os X Safari (version 5 et supérieure)</li></ul>"
 

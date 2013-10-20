@@ -28,7 +28,6 @@ __('LANG');
 
 
 // ================= VARIABLES ================= //
-$program="";
 $sd_card="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
 $wizard=true;
@@ -37,13 +36,12 @@ $stats=get_configuration("STATISTICS",$main_error);
 $pop_up_message="";
 $pop_up_error_message="";
 $pop_up=get_configuration("SHOW_POPUP",$main_error);
-$browser=array();
 $compat=true;
 $notes=array();
-
-
-
 $browser=get_browser_infos();
+
+
+//Check the browser compatibility, if it's not compatible, the welcome page wil display a warning message
 if(count($browser)>0) {
         $compat=check_browser_compat($browser); 
 }
@@ -61,27 +59,46 @@ if((!isset($sd_card))||(empty($sd_card))) {
         $sd_card=get_sd_card();
 }
 
+
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
+    $program="";
     $conf_uptodate=true;
+    $error_copy=false;
     if(check_sd_card($sd_card)) {
         /* TO BE DELETED */
-        compat_old_sd_card($sd_card);   
+        if(!compat_old_sd_card($sd_card)) { 
+            $main_error[]=__('ERROR_COPY_FILE'); 
+            $error_copy=true;
+        }   
         /* ************* */
-        $program=create_program_from_database($main_error);
 
+
+        $program=create_program_from_database($main_error);
         if(!compare_program($program,$sd_card)) {
             $conf_uptodate=false;
-            save_program_on_sd($sd_card,$program,$main_error);
+            if(!save_program_on_sd($sd_card,$program)) { 
+                $main_error[]=__('ERROR_WRITE_PROGRAM'); 
+                $error_copy=true;
+            }
         }
 
-        if(check_and_copy_firm($sd_card,$main_error)) {
+
+        $ret_firm=check_and_copy_firm($sd_card);
+        if(!$ret_firm) {
+            $main_error[]=__('ERROR_COPY_FIRM');
+            $error_copy=true;
+        } else if($ret_firm==1) {
             $conf_uptodate=false;
         }
+
 
         if(!compare_pluga($sd_card)) {
             $conf_uptodate=false;
-            write_pluga($sd_card,$main_error);
+            if(!write_pluga($sd_card,$main_error)) {
+                $main_error[]=__('ERROR_COPY_PLUGA');
+                $error_copy=true;
+            }
         }
 
 
@@ -89,17 +106,23 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         if(count($plugconf)>0) {
             if(!compare_plugconf($plugconf,$sd_card)) {
                 $conf_uptodate=false;
-                write_plugconf($plugconf,$sd_card);
+                if(!write_plugconf($plugconf,$sd_card)) {
+                    $main_error[]=__('ERROR_COPY_PLUG_CONF');
+                    $error_copy=true;
+                }
             }
         }
 
+
         if(!check_and_copy_log($sd_card)) {
             $main_error[]=__('ERROR_COPY_TPL');
+            $error_copy=true;
         }
 
         
         if(!check_and_copy_index($sd_card)) {
-            $main_error[]=__('ERROR_COPY_FILE');
+            $main_error[]=__('ERROR_COPY_INDEX');
+            $error_copy=true;
         }
 
 
@@ -113,12 +136,16 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             $updatefrequency="0";
         }
 
+
         if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue")) {
             $conf_uptodate=false;
-            write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error);
+            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error)) {
+                $main_error[]=__('ERROR_WRITE_SD_CONF');
+                $error_copy=true;
+            }
         }
 
-        if(!$conf_uptodate) {
+        if((!$conf_uptodate)&&(!$error_copy)) {
             $main_info[]=__('UPDATED_PROGRAM');
             $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
             set_historic_value(__('UPDATED_PROGRAM')." (".__('WELCOME_PAGE').")","histo_info",$main_error);
@@ -126,7 +153,8 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 
         $main_info[]=__('INFO_SD_CARD').": $sd_card";
     } else {
-        $main_error[]=__('ERROR_WRITE_PROGRAM');
+        $main_error[]=__('ERROR_WRITE_SD');
+        $main_info[]=__('INFO_SD_CARD').": $sd_card";
     }
 } else {
         $main_error[]=__('ERROR_SD_CARD');
