@@ -1046,7 +1046,7 @@ $(document).ready(function() {
                 $.ajax({
                     cache: false,
                     url: "../../main/modules/external/update_calendar_external.php",
-                    data: {substrat:$("#substrat").val(), product:$("#product").val(), calendar_start:$("#calendar_startdate").val()}
+                    data: {substrat:$("#substrat").val(), product:$("#product").val(), calendar_start:$("#calendar_startdate").val(), sd_card: sd_card}
                 }).done(function (data) {
                    if(data=="1") {
                             $('#calendar').fullCalendar( 'refetchEvents' );
@@ -1453,6 +1453,7 @@ $(document).ready(function() {
                                     text: CLOSE_button,
                                     click: function () {
                                         $( this ).dialog( "close" );
+                                        location.reload(); 
                                         return false;
                                     }
                                     }]
