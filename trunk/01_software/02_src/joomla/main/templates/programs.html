@@ -641,7 +641,7 @@ $(document).ready(function() {
 <tr>
     <td></td>
     <td><div id="time_cyclic" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('REPEAT_EVERY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_REPEAT_VALUE'); ?>" /></div></td>
-    <td> <div id="time_cyclic_field" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><input type="text" size="10" name="repeat_time" id="repeat_time" <?php if(!empty($repeat_time)) { ?>value="<?php echo $repeat_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> /></div> </td>
+    <td> <div id="time_cyclic_field" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><input type="text" size="10" name="repeat_time" id="repeat_time" <?php if(!empty($repeat_time)) { ?>value="<?php echo $repeat_time;?>" <?php } else { ?>value="01:00:00" <?php } ?> /></div> </td>
     <td><div id="error_cyclic_time" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_TIME'); ?></div><div id="error_minimal_cyclic" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_MINIMAL_TIME'); ?></div></td>
 </tr>
 <tr>

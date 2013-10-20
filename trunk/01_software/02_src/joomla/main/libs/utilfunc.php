@@ -795,24 +795,23 @@ function format_program_highchart_data($arr,$date_start="") {
 
 
 // {{{ save_program_on_sd()
-// ROLE format data to be used by highchart for the programs part
+// ROLE write programs into the sd card
 // IN   $sd_card        path to the sd card to save datas
 //      $program        the program to be save in the sd card 
-//      $out            error or warning messages
-// RET data for highchart and cultibox programs
-function save_program_on_sd($sd_card,$program,&$out) {
+// RET true if data correctly written, false else
+function save_program_on_sd($sd_card,$program) {
    if(is_file("${sd_card}/cnf/prg/plugv")) {
       $file="${sd_card}/cnf/prg/plugv";
       if(count($program)>0) {
-         if($f=fopen("$sd_card/cnf/prg/plugv","w+")) {
+         if($f=@fopen("$sd_card/cnf/prg/plugv","w+")) {
             $nbPlug = count($program);
             while(strlen($nbPlug)<3) {
                 $nbPlug="0$nbPlug";
             }
        
-            fputs($f,$nbPlug."\r\n");
+            if(!@fputs($f,$nbPlug."\r\n")) { fclose($f); return false; }
             for($i=0; $i<count($program); $i++) {
-                fputs($f,"$program[$i]"."\r\n");
+                if(!@fputs($f,"$program[$i]"."\r\n")) { fclose($f); return false; }
             }
             fclose($f); 
         } else {
@@ -823,30 +822,6 @@ function save_program_on_sd($sd_card,$program,&$out) {
       return false;
    }
    return true;
-}
-// }}}
-
-
-// {{{ write_program()
-// ROLE write programs into the sd card
-// IN   $data         array containing datas to write
-//      $file         file path to save data
-//      $out          error or warning messages
-// RET false is an error occured, true else
-function write_program($data,$file,&$out) {
-   if($f=@fopen("$file","w+")) {
-      $nbPlug = count($data);
-      while(strlen($nbPlug)<3) {
-         $nbPlug="0$nbPlug";
-      }
-      fputs($f,$nbPlug."\r\n");
-      for($i=0; $i<count($data); $i++) {
-         fputs($f,"$data[$i]"."\r\n");
-      }
-      fclose($f);
-   } else {
-      $out[]=__('ERROR_WRITE_SD');
-   }
 }
 // }}}
 
@@ -955,7 +930,7 @@ function compare_pluga($sd_card) {
 function write_pluga($sd_card,&$out) {
    $file="$sd_card/cnf/plg/pluga";
 
-   if($f=fopen("$file","w+")) {
+   if($f=@fopen("$file","w+")) {
       $pluga=Array();
       $pluga[]=$GLOBALS['NB_MAX_PLUG'];
       for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
@@ -969,7 +944,10 @@ function write_pluga($sd_card,&$out) {
       }
 
       foreach($pluga as $val) {
-                fputs($f,"$val"."\r\n");
+                if(!@fputs($f,"$val"."\r\n")) {
+                    fclose($f);
+                    return false;
+                }
       }
    } else {
         return false;
@@ -993,8 +971,11 @@ function write_plugconf($data,$sd_card) {
          $file="$sd_card/cnf/plg/plug$nb";
       }
 
-      if($f=fopen("$file","w+")) {
-         fputs($f,"$data[$i]"."\r\n");
+      if($f=@fopen("$file","w+")) {
+         if(!@fputs($f,"$data[$i]"."\r\n")) {
+            fclose($f);
+            return false;
+         }
       } else { 
          return false;
       }
@@ -1147,7 +1128,7 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
 //   $alarm_value        value to trigger the alarm
 //   $out                error or warning message
 // RET false if an error occured, true else  
-function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$reset_value,&$out) {
+function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$reset_value) {
    $alarm_senso="000T";
    $alarm_senss="000+";
    $record=$record_frequency*60;
@@ -1179,20 +1160,24 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
 
    $update="000$update_frequency";
    $file="$sd_card/cnf/conf";
+   $check=true;
    if($f=@fopen("$file","w+")) {
-      fputs($f,"PLUG_UPDATE:$update\r\n");
-      fputs($f,"LOGS_UPDATE:$record\r\n");
-      fputs($f,"POWR_UPDATE:$power\r\n"); 
-      fputs($f,"ALARM_ACTIV:$alarm_enable\r\n");
-      fputs($f,"ALARM_VALUE:$alarm_value\r\n");
-      fputs($f,"ALARM_SENSO:$alarm_senso\r\n");
-      fputs($f,"ALARM_SENSS:$alarm_senss\r\n");
-      fputs($f,"RTC_OFFSET_:0000\r\n");
-      fputs($f,"RESET_MINAX:$reset_value\r\n");
-      fputs($f,"PRESSION___:0000\r\n");
+      if(!@fputs($f,"PLUG_UPDATE:$update\r\n")) $check=false;
+      if(!@fputs($f,"LOGS_UPDATE:$record\r\n")) $check=false;
+      if(!@fputs($f,"POWR_UPDATE:$power\r\n")) $check=false; 
+      if(!@fputs($f,"ALARM_ACTIV:$alarm_enable\r\n")) $check=false;
+      if(!@fputs($f,"ALARM_VALUE:$alarm_value\r\n")) $check=false;
+      if(!@fputs($f,"ALARM_SENSO:$alarm_senso\r\n")) $check=false;
+      if(!@fputs($f,"ALARM_SENSS:$alarm_senss\r\n")) $check=false;
+      if(!@fputs($f,"RTC_OFFSET_:0000\r\n")) $check=false;
+      if(!@fputs($f,"RESET_MINAX:$reset_value\r\n")) $check=false;
+      if(!@fputs($f,"PRESSION___:0000\r\n")) $check=false;
       fclose($f);
+
+      if(!$check) {
+        return false;
+      }
    } else {
-      $out[]=__('ERROR_WRITE_SD_CONF');
       return false;
    }
    return true;
@@ -1260,11 +1245,11 @@ function clean_calendar($sd_card="",$start="",$end="") {
                     $i="0".$i;
                 }
         
-                $sq = opendir($path."/".$i); 
-                while ($f = readdir($sq)) {
+                $sq=@opendir($path."/".$i); 
+                while ($f=@readdir($sq)) {
                     if("$f" != "." && "$f" != "..") {
                         if(preg_match('/^cal_/', $f)) {
-                            unlink($path."/".$i."/".$f);
+                            @unlink($path."/".$i."/".$f);
                         }
                     }
                 }
@@ -1274,7 +1259,7 @@ function clean_calendar($sd_card="",$start="",$end="") {
             $stday=substr($start,8,2);
 
             if(is_file($sd_card."/logs/".$stmon."/cal_".$stday)) {
-                unlink($sd_card."/logs/".$stmon."/cal_".$stday);
+                @unlink($sd_card."/logs/".$stmon."/cal_".$stday);
             }
         } elseif((strcmp("$start","")!=0)&&(strcmp("$end","")!=0)) {
             $stmon=substr($start,5,2);
@@ -1293,7 +1278,7 @@ function clean_calendar($sd_card="",$start="",$end="") {
                     }
 
                     if(is_file($sd_card."/logs/".$i."/cal_".$stday)) {
-                        unlink($sd_card."/logs/".$i."/cal_".$stday);
+                        @unlink($sd_card."/logs/".$i."/cal_".$stday);
                     }
                    
                     if(($stday==31)||(($stday==$edday)&&($i==$edmon))) {
@@ -1351,7 +1336,7 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
                      $month="0$month";
                   }
                   $file="$sd_card/logs/$month/cal_$day";
-                  if($f=fopen("$file","w+")) {
+                  if($f=@fopen("$file","w+")) {
                      // format number of line to show. Must be 3 caractere width
                      
                      $number_to_show  = "$val[number]";
@@ -1359,12 +1344,12 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
                         $number_to_show="0$number_to_show";
                      }
 
-                     fputs($f,"$number_to_show"."\r\n");
+                     if(!@fputs($f,"$number_to_show"."\r\n")) $status=false;
                      foreach($val['subject'] as $sub) {
-                        fputs($f,"$sub"."\r\n");
+                        if(!@fputs($f,"$sub"."\r\n")) $status=false;
                      }
                      foreach($val['description'] as $desc) {
-                        fputs($f,"$desc"."\r\n");
+                        if(!@fputs($f,"$desc"."\r\n")) $status=false;
                      }
                      fclose($f);
                   } else {  
@@ -1515,11 +1500,12 @@ function check_regul_value($value="0") {
 // {{{ check_and_copy_firm()
 // ROLE check if firmwares (firm.hex,emetteur.hex) has to be copied and do the copy into the sd card
 // IN  $sd_card     the sd card pathname 
-// RET true if if as least one firmware has been copied, false else
+// RET 1 if at least one firmware has been copied, 0 if an error occured, -1 else
 function check_and_copy_firm($sd_card) {
    $new_firm="";
    $current_firm="";
-   $copy=false;
+   $new_file="";
+   $copy=-1;
 
    $firm_to_test[]="firm.hex";
    $firm_to_test[]="bin/emetteur.hex";
@@ -1534,26 +1520,30 @@ function check_and_copy_firm($sd_card) {
             $new_file="../../tmp/$firm";
         } else {
             $new_file="../../../tmp/$firm";
-        }
+        } 
 
         $current_file="$sd_card/$firm";
 
         if(is_file("$new_file")) {
-            $handle = fopen("$new_file", 'r');
-            if ($handle) {
+            $handle = @fopen("$new_file", 'r');
+            if($handle) {
                 $new_firm = fgets($handle);
+            } else {
+                $copy=0;
             }
             fclose($handle);
-        }
+        } 
 
 
         if(is_file("$current_file")) {
-            $handle = fopen("$current_file", 'r');
-            if ($handle) {
+            $handle=@fopen("$current_file", 'r');
+            if($handle) {
                 $current_firm = fgets($handle);
+            } else {
+                $copy=0;
             }
             fclose($handle);
-        }
+        } 
 
         if((isset($new_firm))&&(!empty($new_firm))&&(isset($current_firm))&&(!empty($current_firm))) {
                 $current_firm=trim("$current_firm");
@@ -1565,12 +1555,16 @@ function check_and_copy_firm($sd_card) {
 
                     if(hexdec($new_firm) > hexdec($current_firm)) {
                         copy($new_file, $current_file);
-                        $copy=true;
-                    }
+                        if($copy) $copy=1;
+                    } 
+                } else {
+                    $copy=0;
                 }
         } elseif((!is_file("$current_file"))&&(is_file("$new_file"))) {
                 copy($new_file, $current_file);
-                $copy=true;
+                if($copy) $copy=1;
+        } else {
+            $copy=0;
         }
 
         unset($new_file);
@@ -1591,11 +1585,11 @@ function check_and_copy_firm($sd_card) {
 function check_and_copy_log($sd_card) {
     if(!is_file("$sd_card/log.txt")) {
         if(is_file("main/templates/data/empty_file_64.tpl")) {
-            copy("main/templates/data/empty_file_big.tpl", "$sd_card/log.txt");   
+            if(!@copy("main/templates/data/empty_file_big.tpl", "$sd_card/log.txt")) return false;   
         } else if(is_file("../templates/data/empty_file_64.tpl")) {
-            copy("../templates/data/empty_file_big.tpl", "$sd_card/log.txt");
+            if(!@copy("../templates/data/empty_file_big.tpl", "$sd_card/log.txt")) return false;
         } else if(is_file("../../templates/data/empty_file_64.tpl")) {
-            copy("../../templates/data/empty_file_big.tpl", "$sd_card/log.txt");
+            if(!@copy("../../templates/data/empty_file_big.tpl", "$sd_card/log.txt")) return false;
         } else {
             return false;
         }
@@ -1612,13 +1606,13 @@ function check_and_copy_log($sd_card) {
 function check_and_copy_index($sd_card) {
     if(!is_file("$sd_card/logs/index")) {
         if(is_file("tmp/logs/index")) {
-            copy("tmp/logs/index", "$sd_card/logs/index");
+            if(!@copy("tmp/logs/index", "$sd_card/logs/index")) return false;
         } else if(is_file("../tmp/logs/index")) {
-            copy("../tmp/logs/index", "$sd_card/logs/index");
+            if(!@copy("../tmp/logs/index", "$sd_card/logs/index")) return false;
         } else if(is_file("../../tmp/logs/index")) {
-            copy("../../tmp/logs/index", "$sd_card/logs/index");
+            if(!@copy("../../tmp/logs/index", "$sd_card/logs/index")) return false;
         } else if(is_file("../../../tmp/logs/index")) {
-            copy("../../../tmp/logs/index", "$sd_card/logs/index");
+            if(!@copy("../../../tmp/logs/index", "$sd_card/logs/index")) return false;
         } else {
             return false;
         }
@@ -1985,7 +1979,7 @@ function check_browser_compat($tab) {
 function check_sd_card($sd="") {
     if(@$f=fopen("$sd/test.txt","w+")) {
        fclose($f);
-       unlink("$sd/test.txt");
+       if(!@unlink("$sd/test.txt")) return false;
        return true;
    } else {
        return false;
@@ -2284,16 +2278,23 @@ function compat_old_sd_card($sd_card="") {
         $prg="$cnf/prg";
         $bin="$sd_card/bin";
 
-        if(!is_dir($logs)) mkdir("$logs");
-        if(!is_dir($cnf)) mkdir("$cnf");
-        if(!is_dir($plg)) mkdir("$plg");
-        if(!is_dir($prg)) mkdir("$prg");
-        if(!is_dir($bin)) mkdir("$bin");
+        $error_copy=false;
+
+        if(!is_dir($logs)) if(!@mkdir("$logs")) { $error_copy=true; };
+        if(!is_dir($cnf)) if(!@mkdir("$cnf")) { $error_copy=true; };
+        if(!is_dir($plg)) if(!@mkdir("$plg")) { $error_copy=true; }; 
+        if(!is_dir($prg)) if(!@mkdir("$prg")) { $error_copy=true; };
+        if(!is_dir($bin)) if(!@mkdir("$bin")) { $error_copy=true; };
 
         if(!is_file("$sd_card/cnf/prg/plugv")) {
-            copy("main/templates/data/empty_file.tpl","$sd_card/cnf/prg/plugv");  
+            if(!@copy("main/templates/data/empty_file.tpl","$sd_card/cnf/prg/plugv")) { $error_copy=true; };
+        }
+
+        if($error_copy) {
+            return false;
         }
     }
+    return true;
 }
 
 /* **************** */
