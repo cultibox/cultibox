@@ -187,9 +187,9 @@ compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,
         }).done(function (data) {
               if(!$.isNumeric(data)) {
                         if(type=="theorical") {
-                            $("#error_compute_cost_theorical"+nb).show();
+                            $("#error_cost_compute_theorical"+nb).show();
                         } else {
-                            $("#error_compute_cost_real"+nb).show();
+                            $("#error_cost_compute_real"+nb).show();
                         }
               } else {
                      $("#progress_bar_cost_"+type+nb).progressbar({value:pourcent});
@@ -579,7 +579,7 @@ $(document).ready(function() {
                 }).done(function (data) {
                     if(data!=1) {
                         $("#error_start_days").show(700);
-                        var current=$("#datepicker").datepicker('getDate').getFullYear()+"-"+($("#datepicker").datepicker('getDate').getMonth() + 1)+"-"+$("#datepicker").datepicker('getDate').getDate();
+                        var current=$("#datepicker").datepicker('getDate').getFullYear()+"-"+('0'+($("#datepicker").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#datepicker").datepicker('getDate').getDate())).slice(-2);
                         $("#datepicker").val(current);
                     } else {
                         document.forms['display-log-day'].submit();
@@ -626,7 +626,7 @@ $(document).ready(function() {
             }).done(function (data) {
                 if(data!=1) {
                     $("#error_start_cost").show(700);
-                    var current=$("#datepicker_start").datepicker('getDate').getFullYear()+"-"+($("#datepicker_start").datepicker('getDate').getMonth() + 1)+"-"+$("#datepicker_start").datepicker('getDate').getDate();
+                    var current=$("#datepicker_start").datepicker('getDate').getFullYear()+"-"+('0'+($("#datepicker_start").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#datepicker_start").datepicker('getDate').getDate())).slice(-2)
                     $("#datepicker_start").val(current);
                     checked=false;
                 } 
@@ -640,7 +640,7 @@ $(document).ready(function() {
             }).done(function (data) {
                 if(data!=1) {
                     $("#error_end_cost").show(700);
-                    var current=$("#datepicker_end").datepicker('getDate').getFullYear()+"-"+($("#datepicker_end").datepicker('getDate').getMonth() + 1)+"-"+$("#datepicker_end").datepicker('getDate').getDate();
+                    var current=$("#datepicker_end").datepicker('getDate').getFullYear()+"-"+('0'+($("#datepicker_end").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#datepicker_end").datepicker('getDate').getDate())).slice(-2)
                     $("#datepicker_end").val(current);
                     checked=false;
                 }
@@ -1040,7 +1040,7 @@ $(document).ready(function() {
         }).done(function (data) {
             if(data!=1) {
                 $("#error_calendar_startdate").show(700);
-                var current=$("#calendar_startdate").datepicker('getDate').getFullYear()+"-"+($("#calendar_startdate").datepicker('getDate').getMonth() + 1)+"-"+$("#calendar_startdate").datepicker('getDate').getDate();
+                var current=$("#calendar_startdate").datepicker('getDate').getFullYear()+"-"+('0'+($("#calendar_startdate").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#calendar_startdate").datepicker('getDate').getDate())).slice(-2)
                 $("#calendar_startdate").val(current);
             } else {
                 $.ajax({

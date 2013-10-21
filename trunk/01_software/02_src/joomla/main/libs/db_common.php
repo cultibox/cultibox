@@ -434,9 +434,10 @@ EOF;
 // IN $date   date to select reccords
 //    $datend end of the interval of date
 //    $id     id of the plug to be used ('all' for all the plugs)
-//    $out      errors or warnings messages
+//    $out    errors or warnings messages
+//    $short  select 0 if $short is not set 
 // RET data power formated for highchart
-function get_data_power($date="",$dateend="",$id=0,&$out) {
+function get_data_power($date="",$dateend="",$id=0,&$out,$short="") {
    $res="";
    $nb_plugs=get_configuration("NB_PLUGS",$out);
    $date=str_replace("-","",$date);
@@ -446,34 +447,60 @@ function get_data_power($date="",$dateend="",$id=0,&$out) {
    if((isset($date))&&(!empty($date))) {
       if(strcmp("$id","all")==0) {
          if((!isset($dateend))||(empty($dateend))) {
+            if(empty($short)) {
             $sql = <<<EOF
 SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by timestamp ASC, plug_number ASC
 EOF;
+            } else {
+            $sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") AND `record` != 0 ORDER by timestamp ASC, plug_number ASC
+EOF;
+            }
          } else {
          $date=$date."00000000";
          $dateend=str_replace("-","",$dateend);
          $dateend=substr($dateend,2,8);
          $dateend=$dateend."99999999";
-         
+        
+         if(empty($short)) {  
       $sql = <<<EOF
 SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True")
 EOF;
+         } else {
+$sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") AND `record` != 0
+EOF;
+         }
 }
       } else {
          if((!isset($dateend))||(empty($dateend))) {
+            if(empty($short)) {
             $sql = <<<EOF
 SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` = "{$id}" ORDER by timestamp ASC, plug_number ASC
 EOF;
+            } else {
+            $sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` = "{$id}" AND `record` != 0 ORDER by timestamp ASC, plug_number ASC
+EOF;
+            }
       } else {
             $date=$date."00000000";
             $dateend=str_replace("-","",$dateend);
             $dateend=substr($dateend,2,8);
             $dateend=$dateend."99999999";
+    
+            if(empty($short)) {
             $sql = <<<EOF
 SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}" 
 EOF;
+            } else {
+            $sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` = "{$id}" AND `record` != 0
+EOF;
+            }
       }
 }
+
         $db=db_priv_pdo_start();
         try {
             $sth=$db->prepare("$sql");
@@ -770,6 +797,7 @@ function get_real_power($data="",$type="",&$out)  {
         }
         $price=($price/60)/1000;
    } else {
+
         $price_hp=get_configuration("COST_PRICE_HP",$out);
         $price_hc=get_configuration("COST_PRICE_HC",$out);
         $start_hc=get_configuration("START_TIME_HC",$out);
@@ -794,10 +822,8 @@ function get_real_power($data="",$type="",&$out)  {
 
             date_default_timezone_set('UTC');
 
-            $starthc=mktime($stahch,$stahcm,0,0,0,1971);
-            $stophc=mktime($stohch,$stohcm,0,0,0,1971);
-
         }
+
 
         $price_hc=($price_hc/60)/1000;
         $price_hp=($price_hp/60)/1000;
@@ -813,7 +839,6 @@ function get_real_power($data="",$type="",&$out)  {
     date_default_timezone_set('UTC');
     $compute=0;
 
-
     foreach($data as $val) {
                $hh=substr($val['time_catch'],0,2);
                $mm=substr($val['time_catch'],2,2);
@@ -823,12 +848,15 @@ function get_real_power($data="",$type="",&$out)  {
                $YYYY=substr($val['date_catch'],0,4);
         
                $time=mktime($hh,$mm,$ss,$DD,$MM,$YYYY);
+               $starthc=mktime($stahch,$stahcm,0,$DD,$MM,$YYYY);
+               $stophc=mktime($stohch,$stohcm,0,$DD,$MM,$YYYY);
 
                if($starthc<=$stophc) {
                    if(($time>=$starthc)&&($time<=$stophc)) {
                           $price=$price_hc;
                    } else {
                           $price=$price_hp;
+                          return "test: ".$val['time_catch'];
                    }
                } else {
                    if(($time>=$starthc)||($time<=$stophc)) {

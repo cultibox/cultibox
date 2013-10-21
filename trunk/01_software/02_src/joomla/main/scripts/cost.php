@@ -205,6 +205,7 @@ if(strcmp($cost_type,"standard")==0) {
 
     if(!empty($cost_price_hp)&&($cost_price_hp!=0)) {
          $cost_price_hp=str_replace(",",".","$cost_price_hp");
+         insert_configuration("COST_PRICE_HP","$cost_price_hp",$main_error);
     } else {
         $cost_price_hp = get_configuration("COST_PRICE_HP",$main_error);
     }

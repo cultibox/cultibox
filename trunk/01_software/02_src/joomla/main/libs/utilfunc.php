@@ -583,8 +583,9 @@ function get_sd_card(&$hdd="") {
                         if((isset($user))&&(!empty($user))) {
                             $dir="/media/".$user;
                             if(is_dir($dir)) {
-                                $rep = opendir($dir);
-                                while ($f = readdir($rep)) {
+                                $rep = @opendir($dir);
+                                if($rep) {
+                                    while ($f = @readdir($rep)) {
                                         if(is_dir("$dir/$f")) {
                                                 if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
                                                     $hdd[]="$dir/$f";
@@ -593,6 +594,8 @@ function get_sd_card(&$hdd="") {
                                                     }
                                                 }
                                         }
+                                    }
+                                    closedir($rep);
                                 }
                             }
                         }
@@ -602,16 +605,19 @@ function get_sd_card(&$hdd="") {
                 case 'Darwin':
                         $dir="/Volumes";
                         if(is_dir($dir)) {
-                                $rep = opendir($dir);
-                                        while ($f = readdir($rep)) {
-                                        if(is_dir("$dir/$f")) {
+                                $rep=@opendir($dir);    
+                                if($rep) {
+                                        while ($f=@readdir($rep)) {
+                                            if(is_dir("$dir/$f")) {
                                                 if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
                                                     $hdd[]="$dir/$f";
                                                     if(check_cultibox_card("$dir/$f")) {
                                                         $ret="$dir/$f";
                                                     }
                                                 }
+                                            }
                                         }
+                                        closedir($rep);
                                 }
                         }
                         break;
@@ -1977,7 +1983,7 @@ function check_browser_compat($tab) {
 //  IN      $sd        the sd_card path to be checked
 // RET true if we can, false else
 function check_sd_card($sd="") {
-    if(@$f=fopen("$sd/test.txt","w+")) {
+    if($f=@fopen("$sd/test.txt","w+")) {
        fclose($f);
        if(!@unlink("$sd/test.txt")) return false;
        return true;
