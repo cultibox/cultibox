@@ -2,6 +2,7 @@ Cultibox (1.1.34) precise; urgency=low
     + Ajout de tests de vérification d'écriture sur la carte SD
     + Valeur par défaut appliquée sur un champ si un mauvais format est rentré
     + La suppréssion de tous les évènements du calendrier ainsi que l'ajout d'un calendrier d'engrais met à jour la carte SD
+    + Correction du calcul du coût: correction de la modification du prix des heures creuses
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun Oct 20 14:58:21 CEST 2013
 
