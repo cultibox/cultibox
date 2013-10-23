@@ -95,22 +95,28 @@ if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_prod
                                                 $icon=null;
                                             }
 
-                                            $desc=$val['content'];
-
+                                            // Create description using nutriment section
+                                            $desc = "";
                                             if(array_key_exists('nutriment', $val))  {
-                                                        $desc=$desc."\n* Engrais:\n";
-                                                        if(is_array($val['nutriment'])) {
-                                                            foreach($val['nutriment'] as $nut) {
-                                                                if(is_array($nut)) {
-                                                                    if((array_key_exists('name', $nut))&&(array_key_exists('dosage', $nut)))  {
-                                                                        $desc=$desc.$nut['name']." ".$nut['dosage']."\n";
-                                                                    }
-                                                                } else {
-                                                                    $desc=$desc.$nut." ";
-                                                                }
+                                                $desc=$desc."Engrais:\n";
+                                                if(is_array($val['nutriment'])) {
+                                                    foreach($val['nutriment'] as $nut) {
+                                                        if(is_array($nut)) {
+                                                            if((array_key_exists('name', $nut))&&(array_key_exists('dosage', $nut)))  {
+                                                                $desc=$desc.$nut['name']." ".$nut['dosage']."\n";
                                                             }
-                                                        } 
+                                                        } else {
+                                                            $desc=$desc.$nut." ";
+                                                        }
+                                                    }
+                                                } 
+                                            } 
+
+                                            // Add in description part content section
+                                            if(array_key_exists('content', $val))  {
+                                                $desc=$desc.$val['content'];
                                             }
+
                                             $event[]=array(
                                                     "title" => $val['title'],
                                                     "start" => $timestart,
