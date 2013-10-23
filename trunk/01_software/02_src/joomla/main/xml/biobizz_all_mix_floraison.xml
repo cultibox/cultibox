@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+   <updated>2013-04-16T13:14:57+02:00</updated>
+   <id>http://www.cultibox.fr/</id>
+   <title>Biobizz All Mix Floraison</title>
+   <subtitle></subtitle>
+   <author>
+      <name>Cultibox</name>
+      <uri>http://www.cultibox.fr/</uri>
+      <email>info@cultibox.fr</email>
+   </author>
+   <category term = "engrais" label = "engrais">
+        <substrat>All Mix</substrat>
+        <periode>floraison</periode>
+        <marque>Biobizz</marque>
+   </category>
+   <link rel="self" href="www.cultibox.fr/biobizz_all_mix_croissance.xml" />
+   <icon></icon>
+   <logo></logo>
+   <rights type = "text">
+    © Cultibox, 2013
+   </rights>
+   <entry>
+      <title>Phase floraison Semaine 1</title>
+      <summary>Phase floraison Semaine 1</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "floraison" label = "floraison" />
+      <content type = "text">*</content>
+      <duration>7</duration>
+      <start>0</start>
+
+      <nutriment>
+        <name>Bio Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Heaven</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Max</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>biobizz.png</icon>
+   </entry>
+   
+   <entry>
+      <title>Phase floraison Semaine 2</title>
+      <summary>Phase floraison Semaine 2</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "floraison" label = "floraison" />
+      <content type = "text">*</content>
+      <duration>7</duration>
+      <start>7</start>
+
+      <nutriment>
+        <name>Bio Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Heaven</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Max</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>biobizz.png</icon>
+   </entry>
+   
+  <entry>
+      <title>Phase floraison Semaine 3</title>
+      <summary>Phase floraison Semaine 3</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "floraison" label = "floraison" />
+      <content type = "text">*</content>
+      <duration>7</duration>
+      <start>14</start>
+
+      <nutriment>
+        <name>Bio Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Heaven</name>
+        <dosage>3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Max</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>biobizz.png</icon>
+   </entry>
+   
+   <entry>
+      <title>Phase floraison Semaine 4</title>
+      <summary>Phase floraison Semaine 4</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "floraison" label = "floraison" />
+      <content type = "text">*</content>
+      <duration>7</duration>
+      <start>21</start>
+
+      <nutriment>
+        <name>Bio Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Heaven</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Max</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>biobizz.png</icon>
+   </entry>
+   
+   <entry>
+      <title>Phase floraison Semaine 5</title>
+      <summary>Phase floraison Semaine 5</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "floraison" label = "floraison" />
+      <content type = "text">*</content>
+      <duration>7</duration>
+      <start>28</start>
+
+      <nutriment>
+        <name>Bio Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Heaven</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Max</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>biobizz.png</icon>
+   </entry>
+   
+   <entry>
+      <title>Phase floraison Semaine 6</title>
+      <summary>Phase floraison Semaine 6</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "floraison" label = "floraison" />
+      <content type = "text">*</content>
+      <duration>7</duration>
+      <start>35</start>
+
+      <nutriment>
+        <name>Bio Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Heaven</name>
+        <dosage>5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Max</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>biobizz.png</icon>
+   </entry>
+   
+   <entry>
+      <title>Phase floraison Semaine 7</title>
+      <summary>Phase floraison Semaine 7</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "floraison" label = "floraison" />
+      <content type = "text">*</content>
+      <duration>7</duration>
+      <start>42</start>
+
+      <nutriment>
+        <name>Bio Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Heaven</name>
+        <dosage>5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Max</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>biobizz.png</icon>
+   </entry>
+   
+   <entry>
+      <title>Phase floraison Semaine 8</title>
+      <summary>Phase floraison Semaine 8</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "floraison" label = "floraison" />
+      <content type = "text">*</content>
+      <duration>7</duration>
+      <start>49</start>
+
+      <nutriment>
+        <name>Bio Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio Heaven</name>
+        <dosage>5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Top Max</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>biobizz.png</icon>
+   </entry>
+   
+   <entry>
+      <title>Rinçage</title>
+      <summary>Rinçage</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "floraison" label = "floraison" />
+      <content type = "text">Rinçage</content>
+      <duration>7</duration>
+      <start>56</start>
+
+      <color>orange</color>
+      <icon>biobizz.png</icon>
+   </entry>
+   
+   <entry>
+      <title>Récolte</title>
+      <summary>Récolte</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "floraison" label = "floraison" />
+      <content type = "text">Récolte</content>
+      <duration>7</duration>
+      <start>63</start>
+
+      <color>orange</color>
+      <icon>biobizz.png</icon>
+   </entry>
+   
+</feed>
