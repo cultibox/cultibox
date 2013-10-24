@@ -932,6 +932,30 @@ $(document).ready(function() {
     });
 
 
+    $('#substrat').change(function () {
+        var i=0;
+        var save_index=-1;
+        $("#product").find('option').each(function() {
+            if($('#substrat').val()!=product[i]['substrat']) {
+                $(this).attr('disabled','disabled');
+            } else {
+                $(this).removeAttr('disabled');
+                if(save_index==-1) {
+                    save_index=$(this).prop('index');
+                }
+            }
+            i=i+1;
+        });
+
+        if(save_index==-1) {
+            save_index=0;
+        }
+    
+        $("#product").prop('selectedIndex', save_index); 
+          
+    });
+
+
     // Check errors for the wizard part:
     $("#finish, #next_plug").click(function(e) {
         e.preventDefault();

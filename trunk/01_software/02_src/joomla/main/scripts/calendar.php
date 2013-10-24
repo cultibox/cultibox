@@ -208,7 +208,11 @@ if($handle = @opendir('main/xml')) {
                 if(is_array($tab)) {
                     if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))&&(array_key_exists('periode', $tab))) {
                         $substrat[]=ucwords(strtolower($tab['substrat']));
-                        $product[]=ucwords(strtolower($tab['marque']))." - ".ucwords(strtolower($tab['periode']));
+                        $product[]= array(
+                                "marque" => ucwords(strtolower($tab['marque'])),
+                                "periode" => ucwords(strtolower($tab['periode'])),
+                                "substrat" => ucwords(strtolower($tab['substrat']))
+                        );
                     }
                 }
             }

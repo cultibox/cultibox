@@ -1332,7 +1332,7 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
 
         $month=$month_start;
         $day=$day_start;
-        while(1) {
+        while(($month<$month_end)||(($month==$month_end)&&($day<=$day_end))) {
                $val=concat_calendar_entries($data,$month,$day);
                if(!empty($val)) {
                   while(strlen($day)<2) {
@@ -1362,8 +1362,6 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
                     $status=false;
                   }
                }
-
-               if(($month==$month_end)&&($day==$day_end)) break;
 
                if($day==31) {
                  $day="01";

@@ -1,5 +1,7 @@
 Cultibox (1.1.35) precise; urgency=low
-    + Ajout de textes d'aide pour les boutons 'Gestion des fichierx XML' et 'Suppréssion des annotations' du calendrier
+    + Ajout de textes d'aide pour les boutons 'Gestion des fichierx XML',  'Suppréssion des annotations' du calendrier et 'Création de programmes d'engrais'
+    + Correction d'n filtre en fonction du substrat choisis pour le calendrier
+    + Désactivation des boutons et modification du texte si aucun fichiers XML est présent
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Thu Oct 24 11:33:49 CEST 2013
 

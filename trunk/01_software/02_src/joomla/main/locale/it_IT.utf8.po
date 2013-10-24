@@ -905,6 +905,9 @@ msgstr "Date de départ du programme"
 msgid "CREATE_CALENDAR_PROGRAM"
 msgstr "Créer le programme dans le calendrier"
 
+msgid "DISABLED_CREATE_CALENDAR_PROGRAM"
+msgstr "Aucun fichier XML présent pour créer un programme"
+
 msgid "WHAT_DIALOG_CALENDAR"
 msgstr "Que voulez-vous faire?"
 
@@ -1018,6 +1021,9 @@ msgstr "Calendrier mis à jour avec le programme selectionné"
 
 msgid "MANAGE_EXTERNAL_XML"
 msgstr "Gestion des fichiers XML externes"
+
+msgid "DISABLED_MANAGE_EXTERNAL_XML"
+msgstr "Aucun calendrier XML présent"
 
 msgid "XML_DISPLAYED_FILE"
 msgstr "Fichiers XML à afficher"
@@ -1599,6 +1605,9 @@ msgstr "Supprime toutes les annotations du calendrier que vous avez rentré manu
 
 msgid "TOOLTIP_MANAGE_XML"
 msgstr "Permet de gérer facilement l'affichage des calendriers externes tel que les calendriers lunaires en sélectionnant les fichiers à afficher et ceux à cacher"
+
+msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
+msgstr "Créer simplement un programme d'engrais prédéfini. Ce type de programme est à créer à partir du premier jour où vous souhaitez appliquer vos engrais, le reste est calculé en fonction du substrat et de la marque d'engrais choisie"
 
 
 #For the debug part:
