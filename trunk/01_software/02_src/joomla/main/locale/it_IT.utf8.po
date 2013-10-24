@@ -1594,6 +1594,12 @@ msgstr "Ce champs permet de choisir l'heure de remise à zéro du min/max de tou
 msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
 msgstr "Cette valeur n'est modifiable que si vous avez autorisé la modification des options de régulation dans l'onglet configuration. Vous pouvez choisir comment est calculée la valeur utilisée pour effectuer la régulation"
 
+msgid "TOOLTIP_RESET_CALENDAR"
+msgstr "Supprime toutes les annotations du calendrier que vous avez rentré manuellement. Ceci comprend les engrais de croissance possiblement ajoutés mais ne comprend pas les calendriers externes du type calendrier lunaire"  
+
+msgid "TOOLTIP_MANAGE_XML"
+msgstr "Permet de gérer facilement l'affichage des calendriers externes tel que les calendriers lunaires en sélectionnant les fichiers à afficher et ceux à cacher"
+
 
 #For the debug part:
 msgid "GENERATE_TIME"
