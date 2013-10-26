@@ -24,6 +24,7 @@
     * [gui_soft_cost Cout]
     * [gui_soft_cal Calendrier]
       * [gui_soft_cal_lunar Calendrier lunaire]
+      * [gui_soft_cal_engrais Calendrier d'engrais]
     * [gui_soft_wizard Assistant de programmation]
     * [gui_soft_historic Historique des modifications]
   * [gui_box Interface Graphique Cultibox]
