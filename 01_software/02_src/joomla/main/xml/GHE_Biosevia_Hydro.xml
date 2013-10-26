@@ -11,7 +11,7 @@
    </author>
    <category term = "engrais" label = "engrais">
     <substrat>Hydro</substrat>
-    <periode>Flora Duo</periode>
+    <periode>Biosevia</periode>
     <marque>GHE</marque>
    </category>
    <link rel="self" href="www.cultibox.fr/GHE_Hydro.xml" />
@@ -31,20 +31,24 @@
       <duration>7</duration>
       <start>0</start>
       <nutriment>
+        <name>BioRoot Plus</name>
+        <dosage>0,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
         <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <dosage>0,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>BioSevia Grow</name>
+        <dosage>0,3 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Diamond Nectar</name>
         <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>0,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>0,5 ml/l</dosage>
+        <name>Bioprotect</name>
+        <dosage>5 ml/l</dosage>
       </nutriment>
       <color>green</color>
       <icon>GHE.png</icon>
@@ -60,24 +64,20 @@
       <duration>7</duration>
       <start>7</start>
       <nutriment>
+        <name>BioRoot Plus</name>
+        <dosage>0,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
         <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <dosage>0,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>BioSevia Grow</name>
+        <dosage>0,3 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Diamond Nectar</name>
         <dosage>2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>0,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>0,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
       </nutriment>
       <color>green</color>
       <icon>GHE.png</icon>
@@ -93,24 +93,16 @@
       <duration>7</duration>
       <start>14</start>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>BioRoot Plus</name>
+        <dosage>0,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>BioSevia Grow</name>
+        <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Diamond Nectar</name>
         <dosage>2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>0,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>1,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
       </nutriment>
       <color>green</color>
       <icon>GHE.png</icon>
@@ -126,20 +118,12 @@
       <duration>7</duration>
       <start>21</start>
       <nutriment>
-        <name>Diamond Nectar</name>
+        <name>BioSevia Grow</name>
         <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>3 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Diamond Nectar</name>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Bioprotect</name>
@@ -163,20 +147,8 @@
         <dosage>0,2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Nectar</name>
+        <name>BioSevia Bloom</name>
         <dosage>2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>3 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -196,16 +168,8 @@
         <dosage>0,2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>3 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>BioSevia Bloom</name>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Bioprotect</name>
@@ -229,16 +193,8 @@
         <dosage>0,2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>3 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>BioSevia Bloom</name>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -254,20 +210,8 @@
       <duration>7</duration>
       <start>49</start>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>4 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>BioSevia Bloom</name>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -283,16 +227,8 @@
       <duration>7</duration>
       <start>56</start>
       <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>4 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>BioSevia Bloom</name>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -308,16 +244,8 @@
       <duration>7</duration>
       <start>63</start>
       <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>4 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>BioSevia Bloom</name>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -333,16 +261,8 @@
       <duration>7</duration>
       <start>70</start>
       <nutriment>
-        <name>FloraDuo Bloom</name>
-        <dosage>4 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>BioSevia Bloom</name>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -357,14 +277,6 @@
       <ec></ec>
       <duration>7</duration>
       <start>77</start>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Ripen</name>
-        <dosage>6 ml/l</dosage>
-      </nutriment>
       <color>black</color>
       <icon>GHE.png</icon>
    </entry>
