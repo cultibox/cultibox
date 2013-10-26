@@ -181,6 +181,7 @@ product_array = <?php echo json_encode($product) ?>;
                                         $('#calendar').fullCalendar('rerenderEvents');
                                         $("#select_remark").text("");
                                         $("#select_remark").val("");
+                                        delete description;
                                         delete event;
                                         return false;
                         },
@@ -251,8 +252,10 @@ product_array = <?php echo json_encode($product) ?>;
                      }
                      if(event.description) {
                         $("#remark").val(event.description);
+                     } else {
+                        $("#remark").val('');
                      }
-                     
+
                      $("#dialog_edit").dialog({
                         resizable: true,
                         width: 800,
@@ -271,6 +274,9 @@ product_array = <?php echo json_encode($product) ?>;
                                 }
                                 if(event.description) {
                                      $("#select_remark").val(event.description);
+                                } else {
+                                    $("#select_remark").val('');
+                                    $("#select_remark").text('');
                                 }
 
                                 if(event.color) {
@@ -341,7 +347,7 @@ product_array = <?php echo json_encode($product) ?>;
 
                                         return false;
                                     },
-                                    "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); return false;}
+                                    "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { $( this ).dialog( "close" ); delete event; delete description; $("#select_remark").text("");$("#select_remark").val(""); return false;}
                             }
                             });
                         },
