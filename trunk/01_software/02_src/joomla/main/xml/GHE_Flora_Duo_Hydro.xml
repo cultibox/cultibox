@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+   <updated>2013-04-16T13:14:57+02:00</updated>
+   <id>http://www.cultibox.fr/</id>
+   <title>House Garden Terre Floraison</title>
+   <subtitle></subtitle>
+   <author>
+      <name>Cultibox</name>
+      <uri>http://www.cultibox.fr/</uri>
+      <email>info@cultibox.fr</email>
+   </author>
+   <category term = "engrais" label = "engrais">
+    <substrat>Hydro</substrat>
+    <periode>floraison</periode>
+    <marque>GHE</marque>
+   </category>
+   <link rel="self" href="www.cultibox.fr/GHE_Hydro.xml" />
+   <icon></icon>
+   <logo></logo>
+   <rights type = "text">
+    © Cultibox, 2013
+   </rights>
+    <entry>
+      <title>S1 Croissance</title>
+      <summary>S1 Croissance</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>0</start>
+      <nutriment>
+        <name>BioSevia Bloom</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Diamond Nectar</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <color>green</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S2 Croissance</title>
+      <summary>S2 Croissance</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>7</start>
+      <nutriment>
+        <name>BioSevia Bloom</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Diamond Nectar</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bioprotect</name>
+        <dosage>5 ml/l</dosage>
+      </nutriment>
+      <color>green</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S3 Croissance</title>
+      <summary>S3 Croissance</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>14</start>
+      <nutriment>
+        <name>BioSevia Bloom</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Diamond Nectar</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>1,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <color>green</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S4 Floraison</title>
+      <summary>S4 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>21</start>
+      <nutriment>
+        <name>Diamond Nectar</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bioprotect</name>
+        <dosage>5 ml/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S5 Floraison</title>
+      <summary>S5 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>28</start>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>0,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Diamond Nectar</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S6 Floraison</title>
+      <summary>S6 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>35</start>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>0,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bioprotect</name>
+        <dosage>5 ml/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S7 Floraison</title>
+      <summary>S7 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>42</start>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>0,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S8 Floraison</title>
+      <summary>S8 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>49</start>
+      <nutriment>
+        <name>Bio Bloom</name>
+        <dosage>0,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S9 Floraison</title>
+      <summary>S9 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>56</start>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S10 Floraison</title>
+      <summary>S10 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>63</start>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S11 Floraison</title>
+      <summary>S11 Floraison</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>70</start>
+      <nutriment>
+        <name>FloraDuo Bloom</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraDuo Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <color>orange</color>
+      <icon>GHE.png</icon>
+   </entry>
+    <entry>
+      <title>S11 Rincage</title>
+      <summary>S11 Rincage</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text">Rincage</content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>73</start>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Ripen</name>
+        <dosage>6 ml/l</dosage>
+      </nutriment>
+      <color>black</color>
+      <icon>GHE.png</icon>
+   </entry>
+</feed>
