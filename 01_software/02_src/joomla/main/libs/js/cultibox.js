@@ -936,7 +936,7 @@ $(document).ready(function() {
         var i=0;
         var save_index=-1;
         $("#product").find('option').each(function() {
-            if($('#substrat').val()!=product[i]['substrat']) {
+            if($('#substrat').val()!=product_array[i]['substrat']) {
                 $(this).attr('disabled','disabled');
             } else {
                 $(this).removeAttr('disabled');

@@ -92,13 +92,15 @@ onClose: function(dateText, inst){
 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
 <script>
 sd_card = <?php echo json_encode($sd_card) ?>;
-product = <?php echo json_encode($product) ?>;
 </script>
 <?php } else { ?>
 <script>
 sd_card = "";
 </script>
 <?php } ?>
+<script>
+product_array = <?php echo json_encode($product) ?>;
+</script>
 
 <style id='hideday'></style>
 <style id='hidetoday'></style>

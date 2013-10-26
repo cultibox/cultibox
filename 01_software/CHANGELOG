@@ -1,6 +1,7 @@
 Cultibox (1.1.36) precise; urgency=low
     + Modification de la taille de l'image de la cultibox pour rendre accéssible les menus en dessous
     + Ajout d'informations sur le calcul du coût réel et théorique dans l'onglet des coûts
+    + Correction du filtre sur le champ substrat sans la carte SD  breanchée
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sat Oct 26 12:58:55 CEST 2013
 
