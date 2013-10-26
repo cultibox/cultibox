@@ -10,11 +10,11 @@
       <email>info@cultibox.fr</email>
    </author>
    <category term = "engrais" label = "engrais">
-    <substrat>Hydro</substrat>
+    <substrat>Terre</substrat>
     <periode>Flora Duo</periode>
     <marque>GHE</marque>
    </category>
-   <link rel="self" href="www.cultibox.fr/GHE_Hydro.xml" />
+   <link rel="self" href="www.cultibox.fr/GHE_Terre.xml" />
    <icon></icon>
    <logo></logo>
    <rights type = "text">
@@ -40,11 +40,11 @@
       </nutriment>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>0,5 ml/l</dosage>
+        <dosage>0,25 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>0,5 ml/l</dosage>
+        <dosage>0,25 ml/l</dosage>
       </nutriment>
       <color>green</color>
       <icon>GHE.png</icon>
@@ -69,11 +69,11 @@
       </nutriment>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>0,5 ml/l</dosage>
+        <dosage>0,25 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>0,5 ml/l</dosage>
+        <dosage>0,25 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Bioprotect</name>
@@ -102,11 +102,11 @@
       </nutriment>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>0,5 ml/l</dosage>
+        <dosage>0,25 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>1,5 ml/l</dosage>
+        <dosage>0,75 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Mineral Magic</name>
@@ -131,11 +131,11 @@
       </nutriment>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>3 ml/l</dosage>
+        <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Mineral Magic</name>
@@ -168,11 +168,11 @@
       </nutriment>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>3 ml/l</dosage>
+        <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Mineral Magic</name>
@@ -197,11 +197,11 @@
       </nutriment>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>3 ml/l</dosage>
+        <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Mineral Magic</name>
@@ -230,11 +230,11 @@
       </nutriment>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>3 ml/l</dosage>
+        <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Mineral Magic</name>
@@ -259,11 +259,11 @@
       </nutriment>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>4 ml/l</dosage>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Mineral Magic</name>
@@ -284,11 +284,11 @@
       <start>56</start>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>4 ml/l</dosage>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Mineral Magic</name>
@@ -309,11 +309,11 @@
       <start>63</start>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>4 ml/l</dosage>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Mineral Magic</name>
@@ -334,11 +334,11 @@
       <start>70</start>
       <nutriment>
         <name>FloraDuo Bloom</name>
-        <dosage>4 ml/l</dosage>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>FloraDuo Grow</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Mineral Magic</name>
