@@ -552,8 +552,12 @@ product_array = <?php echo json_encode($product) ?>;
     <td class="calendar-title"><?php echo __('CALENDAR_SUBSTRAT'); ?>:</td>
     <td class="calendar-field">
         <select name="substrat" id="substrat">
-            <?php foreach($substrat as $sub) { ?>
-                <option value="<?php echo $sub; ?>"><?php echo $sub; ?></option>
+            <?php if(count($substrat)>0) { ?>
+                <?php foreach($substrat as $sub) { ?>
+                    <option value="<?php echo $sub; ?>"><?php echo $sub; ?></option>
+                <?php } ?>
+            <?php } else { ?>
+                    <option value="" disabled><?php echo __('DISABLED_XML_FILE'); ?></option>
             <?php } ?>
         </select>
     </td>
@@ -564,8 +568,12 @@ product_array = <?php echo json_encode($product) ?>;
     <td><?php echo __('CALENDAR_PROGRAM'); ?>:</td>
     <td>
         <select name="product" id="product">
-             <?php foreach($product as $prod) { ?>
-                <option value="<?php echo $prod['marque']." - ".$prod['periode']; ?>" <?php if(strcmp($prod['substrat'],$substrat[0])!=0) echo 'disabled'; ?>><?php echo $prod['marque']." - ".$prod['periode']." (".$prod['substrat'].")"; ?></option>
+           <?php if(count($product)>0) { ?>
+                <?php foreach($product as $prod) { ?>
+                    <option value="<?php echo $prod['marque']." - ".$prod['periode']; ?>" <?php if(strcmp($prod['substrat'],$substrat[0])!=0) echo 'disabled'; ?>><?php echo $prod['marque']." - ".$prod['periode']." (".$prod['substrat'].")"; ?></option>
+                <?php } ?>
+            <?php } else { ?>
+                    <option value="" disabled><?php echo __('DISABLED_XML_FILE'); ?></option>
             <?php } ?>
         </select>
     </td>

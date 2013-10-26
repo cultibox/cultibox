@@ -908,6 +908,9 @@ msgstr "Créer le programme dans le calendrier"
 msgid "DISABLED_CREATE_CALENDAR_PROGRAM"
 msgstr "Aucun fichier XML présent pour créer un programme"
 
+msgid "DISABLED_XML_FILE"
+msgstr "Aucun fichier XML détecté"
+
 msgid "WHAT_DIALOG_CALENDAR"
 msgstr "Que voulez-vous faire?"
 
