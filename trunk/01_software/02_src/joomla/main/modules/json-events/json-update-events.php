@@ -21,7 +21,7 @@ if((isset($_POST["title"]))&&(!empty($_POST["title"]))&&(isset($_POST["start"]))
 
         if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
             $description=$db->quote($_POST["desc"]);
-        }
+        } 
 
 
         if((isset($description))&&(!empty($description))) {
@@ -30,7 +30,7 @@ UPDATE `calendar` SET `Title`={$db->quote($title)},`StartTime`="{$start}",`EndTi
 EOF;
         } else {
             $sql = <<<EOF
-UPDATE `calendar` SET `Title`={$db->quote($title)},`StartTime`="{$start}",`EndTime`="{$end}", `Color`="{$color}" WHERE `Id` = {$id}
+UPDATE `calendar` SET `Title`={$db->quote($title)},`StartTime`="{$start}",`EndTime`="{$end}", `Color`="{$color}", `Description`= NULL WHERE `Id` = {$id}
 EOF;
         }
 
