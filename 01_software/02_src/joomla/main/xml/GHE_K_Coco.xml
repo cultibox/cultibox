@@ -10,11 +10,11 @@
       <email>info@cultibox.fr</email>
    </author>
    <category term = "engrais" label = "engrais">
-    <substrat>Terre</substrat>
-    <periode>Biosevia</periode>
+    <substrat>Coco</substrat>
+    <periode>K</periode>
     <marque>GHE</marque>
    </category>
-   <link rel="self" href="www.cultibox.fr/GHE_Terre.xml" />
+   <link rel="self" href="www.cultibox.fr/GHE_Coco.xml" />
    <icon></icon>
    <logo></logo>
    <rights type = "text">
@@ -27,24 +27,28 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>0,8</ec>
       <duration>7</duration>
       <start>0</start>
       <nutriment>
-        <name>BioRoot Plus</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
         <name>BioSevia Bloom</name>
-        <dosage>0,25 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Grow</name>
-        <dosage>0,25 ml/l</dosage>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Diamond Nectar</name>
         <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraBloom</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraGro</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Flora Micro Hard</name>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <color>green</color>
       <icon>GHE.png</icon>
@@ -56,31 +60,31 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,1</ec>
       <duration>7</duration>
       <start>7</start>
       <nutriment>
-        <name>BioRoot Plus</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
         <name>BioSevia Bloom</name>
-        <dosage>0,25 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Grow</name>
-        <dosage>0,25 ml/l</dosage>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Diamond Nectar</name>
         <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
+        <name>FloraBloom</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Shield (Bio protect)</name>
+        <name>FloraGro</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Flora Micro Hard</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bioprotect</name>
         <dosage>5 ml/l</dosage>
       </nutriment>
       <color>green</color>
@@ -93,20 +97,32 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,3</ec>
       <duration>7</duration>
       <start>14</start>
       <nutriment>
-        <name>BioRoot Plus</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Grow</name>
-        <dosage>1,5 ml/l</dosage>
+        <name>BioSevia Bloom</name>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Diamond Nectar</name>
         <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraBloom</name>
+        <dosage>1,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraGro</name>
+        <dosage>1,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Flora Micro Hard</name>
+        <dosage>1,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
       </nutriment>
       <color>green</color>
       <icon>GHE.png</icon>
@@ -118,27 +134,31 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,4</ec>
       <duration>7</duration>
       <start>21</start>
-      <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Grow</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
       <nutriment>
         <name>Diamond Nectar</name>
         <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
+        <name>FloraBloom</name>
+        <dosage>1,3 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Shield (Bio protect)</name>
+        <name>FloraGro</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Flora Micro Hard</name>
+        <dosage>1,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bioprotect</name>
         <dosage>5 ml/l</dosage>
       </nutriment>
       <color>orange</color>
@@ -151,7 +171,7 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,4</ec>
       <duration>7</duration>
       <start>28</start>
       <nutriment>
@@ -159,12 +179,24 @@
         <dosage>0,2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>1 ml/l</dosage>
+        <name>Diamond Nectar</name>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>BioSevia Grow</name>
-        <dosage>1 ml/l</dosage>
+        <name>FloraBloom</name>
+        <dosage>1,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraGro</name>
+        <dosage>1,6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Flora Micro Hard</name>
+        <dosage>1,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -176,7 +208,7 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,6</ec>
       <duration>7</duration>
       <start>35</start>
       <nutriment>
@@ -184,15 +216,23 @@
         <dosage>0,2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>BioSevia Bloom</name>
+        <name>FloraBloom</name>
+        <dosage>1,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraGro</name>
         <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
+        <name>Flora Micro Hard</name>
+        <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Shield (Bio protect)</name>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bioprotect</name>
         <dosage>5 ml/l</dosage>
       </nutriment>
       <color>orange</color>
@@ -205,7 +245,7 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,6</ec>
       <duration>7</duration>
       <start>42</start>
       <nutriment>
@@ -213,8 +253,20 @@
         <dosage>0,2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>BioSevia Bloom</name>
+        <name>FloraBloom</name>
         <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraGro</name>
+        <dosage>1,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Flora Micro Hard</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -226,12 +278,28 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,6</ec>
       <duration>7</duration>
       <start>49</start>
       <nutriment>
-        <name>BioSevia Bloom</name>
+        <name>Bio Bloom</name>
+        <dosage>0,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraBloom</name>
+        <dosage>2,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraGro</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Flora Micro Hard</name>
         <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -243,12 +311,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,4</ec>
       <duration>7</duration>
       <start>56</start>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>FloraBloom</name>
+        <dosage>2,6 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraGro</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Flora Micro Hard</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -260,12 +340,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,4</ec>
       <duration>7</duration>
       <start>63</start>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>FloraBloom</name>
+        <dosage>3,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraGro</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Flora Micro Hard</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -277,12 +369,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,4</ec>
       <duration>7</duration>
       <start>70</start>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>FloraBloom</name>
+        <dosage>3,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>FloraGro</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Flora Micro Hard</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>GHE.png</icon>
@@ -297,6 +401,14 @@
       <ec></ec>
       <duration>7</duration>
       <start>77</start>
+      <nutriment>
+        <name>Mineral Magic</name>
+        <dosage>0,4 g/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Ripen</name>
+        <dosage>6 ml/l</dosage>
+      </nutriment>
       <color>black</color>
       <icon>GHE.png</icon>
    </entry>
