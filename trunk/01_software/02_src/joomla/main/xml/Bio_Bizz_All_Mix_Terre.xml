@@ -11,10 +11,10 @@
    </author>
    <category term = "engrais" label = "engrais">
     <substrat>Terre</substrat>
-    <periode>Biosevia</periode>
-    <marque>GHE</marque>
+    <periode>All Mix</periode>
+    <marque>Bio Bizz</marque>
    </category>
-   <link rel="self" href="www.cultibox.fr/GHE_Terre.xml" />
+   <link rel="self" href="www.cultibox.fr/Bio Bizz_Terre.xml" />
    <icon></icon>
    <logo></logo>
    <rights type = "text">
@@ -31,23 +31,11 @@
       <duration>7</duration>
       <start>0</start>
       <nutriment>
-        <name>BioRoot Plus</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>0,25 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Grow</name>
-        <dosage>0,25 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>RootJuice</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <color>green</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
       <title>S2 Croissance</title>
@@ -60,31 +48,11 @@
       <duration>7</duration>
       <start>7</start>
       <nutriment>
-        <name>BioRoot Plus</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>0,25 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Grow</name>
-        <dosage>0,25 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Diamond Shield (Bio protect)</name>
-        <dosage>5 ml/l</dosage>
+        <name>RootJuice</name>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <color>green</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
       <title>S3 Croissance</title>
@@ -97,19 +65,15 @@
       <duration>7</duration>
       <start>14</start>
       <nutriment>
-        <name>BioRoot Plus</name>
-        <dosage>0,2 ml/l</dosage>
+        <name>Bio-grow</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>BioSevia Grow</name>
-        <dosage>1,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>RootJuice</name>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <color>green</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
       <title>S4 Floraison</title>
@@ -122,27 +86,11 @@
       <duration>7</duration>
       <start>21</start>
       <nutriment>
-        <name>BioSevia Bloom</name>
+        <name>Bio-grow</name>
         <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Grow</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Diamond Shield (Bio protect)</name>
-        <dosage>5 ml/l</dosage>
       </nutriment>
       <color>orange</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
       <title>S5 Floraison</title>
@@ -155,19 +103,19 @@
       <duration>7</duration>
       <start>28</start>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Bloom</name>
+        <name>Bio-Bloom</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>BioSevia Grow</name>
+        <name>Bio-grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Topmax</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
       <color>orange</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
       <title>S6 Floraison</title>
@@ -180,23 +128,19 @@
       <duration>7</duration>
       <start>35</start>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Bloom</name>
+        <name>Bio-Bloom</name>
         <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
+        <name>Bio-grow</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Shield (Bio protect)</name>
-        <dosage>5 ml/l</dosage>
+        <name>Topmax</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <color>orange</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
       <title>S7 Floraison</title>
@@ -209,15 +153,19 @@
       <duration>7</duration>
       <start>42</start>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>BioSevia Bloom</name>
+        <name>Bio-Bloom</name>
         <dosage>2 ml/l</dosage>
       </nutriment>
+      <nutriment>
+        <name>Bio-grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Topmax</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
       <color>orange</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
       <title>S8 Floraison</title>
@@ -230,11 +178,19 @@
       <duration>7</duration>
       <start>49</start>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>Bio-Bloom</name>
+        <dosage>3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio-grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Topmax</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <color>orange</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
       <title>S9 Floraison</title>
@@ -247,11 +203,19 @@
       <duration>7</duration>
       <start>56</start>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>Bio-Bloom</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio-grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Topmax</name>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <color>orange</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
       <title>S10 Floraison</title>
@@ -264,11 +228,19 @@
       <duration>7</duration>
       <start>63</start>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>Bio-Bloom</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio-grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Topmax</name>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <color>orange</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
       <title>S11 Floraison</title>
@@ -281,23 +253,31 @@
       <duration>7</duration>
       <start>70</start>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>Bio-Bloom</name>
+        <dosage>4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio-grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Topmax</name>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <color>orange</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
-      <title>S12 Rincage</title>
-      <summary>S12 Rincage</summary>
+      <title>S11 Rincage</title>
+      <summary>S11 Rincage</summary>
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text">Rincage</content>
+      <content type = "text"></content>
       <ec></ec>
       <duration>7</duration>
-      <start>77</start>
+      <start>73</start>
       <color>black</color>
-      <icon>GHE.png</icon>
+      <icon>Bio_Bizz.png</icon>
    </entry>
 </feed>
