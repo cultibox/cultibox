@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-   <updated>2013-04-16T13:14:57+02:00</updated>
+   <updated>2013-10-28T07:49:35+02:00/updated>
    <id>http://www.cultibox.fr/</id>
-   <title>House Garden Terre Floraison</title>
+   <title>Bio Bizz Light Mix Terre</title>
    <subtitle></subtitle>
    <author>
       <name>Cultibox</name>
@@ -21,6 +21,23 @@
     © Cultibox, 2013
    </rights>
     <entry>
+      <title>S12 S0</title>
+      <summary>S12 S0</summary>
+      <updated>2008-05-29T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec></ec>
+      <duration>7</duration>
+      <start>77</start>
+      <nutriment>
+        <name>RootJuice</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <color>black</color>
+      <icon>Bio_Bizz.png</icon>
+   </entry>
+    <entry>
       <title>S1 Croissance</title>
       <summary>S1 Croissance</summary>
       <updated>2008-05-29T13:14:57+02:00</updated>
@@ -32,7 +49,7 @@
       <start>0</start>
       <nutriment>
         <name>RootJuice</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <color>green</color>
       <icon>Bio_Bizz.png</icon>
@@ -47,6 +64,10 @@
       <ec></ec>
       <duration>7</duration>
       <start>7</start>
+      <nutriment>
+        <name>Bio-grow</name>
+        <dosage>2 ml/l</dosage>
+      </nutriment>
       <nutriment>
         <name>RootJuice</name>
         <dosage>4 ml/l</dosage>
@@ -68,10 +89,6 @@
         <name>Bio-grow</name>
         <dosage>2 ml/l</dosage>
       </nutriment>
-      <nutriment>
-        <name>RootJuice</name>
-        <dosage>4 ml/l</dosage>
-      </nutriment>
       <color>green</color>
       <icon>Bio_Bizz.png</icon>
    </entry>
@@ -86,8 +103,20 @@
       <duration>7</duration>
       <start>21</start>
       <nutriment>
+        <name>Alg-A-mic</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bio-Bloom</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
         <name>Bio-grow</name>
         <dosage>2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Topmax</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>Bio_Bizz.png</icon>
@@ -104,11 +133,11 @@
       <start>28</start>
       <nutriment>
         <name>Alg-A-mic</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Bio-Bloom</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>2 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Bio-grow</name>
@@ -141,7 +170,7 @@
       </nutriment>
       <nutriment>
         <name>Bio-grow</name>
-        <dosage>2 ml/l</dosage>
+        <dosage>3 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Topmax</name>
@@ -162,11 +191,11 @@
       <start>42</start>
       <nutriment>
         <name>Alg-A-mic</name>
-        <dosage>2 ml/l</dosage>
+        <dosage>3 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Bio-Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <dosage>3 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Bio-grow</name>
@@ -191,19 +220,19 @@
       <start>49</start>
       <nutriment>
         <name>Alg-A-mic</name>
-        <dosage>3 ml/l</dosage>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Bio-Bloom</name>
-        <dosage>3 ml/l</dosage>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Bio-grow</name>
-        <dosage>3 ml/l</dosage>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <nutriment>
         <name>Topmax</name>
-        <dosage>1 ml/l</dosage>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <color>orange</color>
       <icon>Bio_Bizz.png</icon>
@@ -296,15 +325,15 @@
       <icon>Bio_Bizz.png</icon>
    </entry>
     <entry>
-      <title>S11 Rincage</title>
-      <summary>S11 Rincage</summary>
+      <title>S12 Rincage</title>
+      <summary>S12 Rincage</summary>
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text"></content>
+      <content type = "text">Rincage</content>
       <ec></ec>
       <duration>7</duration>
-      <start>73</start>
+      <start>77</start>
       <color>black</color>
       <icon>Bio_Bizz.png</icon>
    </entry>
