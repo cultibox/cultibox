@@ -1,4 +1,3 @@
-
 #summary Calendrier des engrais
 
 = Sommaire =
@@ -8,19 +7,14 @@
 
 Le logiciel Cultibox vous permet de planifier les engrais que vous souhaitez appliquer.
 
-= Engrais =
-
-House And Garden
-
-Source : [http://www.house-garden.ca/ Schéma de culture]
-
+Ci-dessous vous trouverez tout les schéma de culture utilisé:
 
 
 == GHE ==
 
+Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Biosevia ===
-
 
 ==== Terre ====
 
@@ -102,7 +96,6 @@ Source : [http://www.house-garden.ca/ Schéma de culture]
 
 === Flora Nova ===
 
-
 ==== Coco ====
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
@@ -152,7 +145,6 @@ Source : [http://www.house-garden.ca/ Schéma de culture]
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
 === Flora Series ===
-
 
 ==== Coco ====
 
@@ -204,7 +196,6 @@ Source : [http://www.house-garden.ca/ Schéma de culture]
 
 === One Part ===
 
-
 ==== Coco ====
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
@@ -254,7 +245,6 @@ Source : [http://www.house-garden.ca/ Schéma de culture]
 || Semaine 12 || Rincage || ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||  ||  ||
 
 === K ===
-
 
 ==== Hydro ====
 
@@ -306,7 +296,6 @@ Source : [http://www.house-garden.ca/ Schéma de culture]
 
 == Bio Bizz ==
 
-
 === All Mix ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio-Bloom* || *Bio-grow* || *RootJuice* || *Topmax* ||
@@ -341,6 +330,7 @@ Source : [http://www.house-garden.ca/ Schéma de culture]
 
 == House and Garden ==
 
+Source : [http://www.house-garden.us/ Schéma de culture]
 
 === Standard ===
 
@@ -389,9 +379,9 @@ Source : [http://www.house-garden.ca/ Schéma de culture]
 
 == Plagron ==
 
+Source : [http://www.plagron.co.uk/ Schéma de culture]
 
 === Normal ===
-
 
 ==== Terre ====
 
