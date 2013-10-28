@@ -2,7 +2,7 @@ set outPutDir [file join [file dirname [info script] ] out]
 set outPutDoc [file join [file dirname [info script] ] gui_soft_cal_engrais.wiki]
 
 set inputFile [file join [file dirname [info script] ] engrais.txt]
-
+set inputFileRef [file join [file dirname [info script] ] engrais_ref.txt]
 
 
 proc initFile {fid marque substrat programme} {
@@ -41,7 +41,7 @@ proc addNutriment {fid name dose} {
 	puts $fid {      </nutriment>}
 }
 
-proc startEntry {fid start name remarque ec} {
+proc startEntry {fid start name remarque ec facultative} {
 	puts $fid {    <entry>}
 	puts $fid "      <title>S[expr ${start} / 7 + 1] ${name}</title>"
 	puts $fid "      <summary>S[expr ${start} / 7 + 1] ${name}</summary>"
@@ -52,6 +52,7 @@ proc startEntry {fid start name remarque ec} {
 	puts $fid "      <ec>${ec}</ec>"
 	puts $fid {      <duration>7</duration>}
 	puts $fid "      <start>${start}</start>"
+	puts $fid "      <facultative>${facultative}<falcutative>"
 }
 
 proc closeEntry {fid marque color} {
@@ -84,6 +85,7 @@ while {[eof $fidIn] != 1} {
 	set remarque [lindex $UneLigne 4]
 	set ec [lindex $UneLigne 5]
     set utilise [lindex $UneLigne 6]
+	set facultative [lindex $UneLigne 7]
 	
     if {$utilise == 1} {
 
@@ -108,86 +110,96 @@ while {[eof $fidIn] != 1} {
                 "Graines" {
                     set start 0
                     set phase Croissance
-                    set color green
+                    set color greenyellow
                 }
                 "S2" -
                 "Plantules" {
                     set start 7
                     set phase Croissance
-                    set color green
+                    set color yellowgreen
                 }
                 "S3" -
                 "Boutures" {
                     set start 14
                     set phase Croissance
-                    set color green
+                    set color darkgreen
                 }
                 "S4" -
                 "Veg 18 h" {
                     set start 21
                     set phase Floraison
-                    set color orange
+                    set color khaki
                 }
                 "S5" -
                 "Pass 12/12 " {
                     set start 28
                     set phase Floraison
-                    set color orange
+                    set color wheat
                 }
                 "S6" -
                 "Strech" {
                     set start 35
                     set phase Floraison
-                    set color orange
+                    set color tan
                 }		
                 "S7" -
                 "1ers pistils" {
                     set start 42
                     set phase Floraison
-                    set color orange
+                    set color goldenrod
                 }		
                 "S8" -			
                 "Debut Flo" {
                     set start 49
                     set phase Floraison
-                    set color orange
+                    set color peru
                 }
                 "S9" -
                 "Floraison" {
                     set start 56
                     set phase Floraison
-                    set color orange
+                    set color chocolate
                 }
                 "S10" -
                 "Boom floral" {
                     set start 63
                     set phase Floraison
-                    set color orange
+                    set color brown
                 }
                 "S11" -
                 "Fin floraison" {
                     set start 70
                     set phase Floraison
-                    set color orange
+                    set color maroon
                 }
                 "S12" -			
                 "Noir" {
                     set start 77
                     set phase Rincage
+					set remarque Rincage
                     set color black
                 }			
             }
 
-            startEntry $fid $start $phase $remarque $ec
+            startEntry $fid $start $phase $remarque $ec $facultative
             
-            set idx 7
-            foreach Dosage [lrange $UneLigne 7 end] {
+            set idx 8
+            foreach Dosage [lrange $UneLigne 8 end] {
                 
                 if {$Dosage != 0} {
                     set unit "ml/l"
-                    if {[lindex $EngraisName $idx] == "Mineral Magic"} {
-                        set unit "g/l"
-                    }
+					switch [lindex $EngraisName $idx] {
+						"Mineral Magic" -
+						"Piranha" -
+						"Carboload" -
+						"Bud Blood" -
+						"Big Bud" {
+							set unit "g/l"
+						}
+						"SuperVit" {
+							set unit "goutte/4,5l"
+						}
+					}
                     addNutriment $fid [lindex $EngraisName $idx] "${Dosage} ${unit}"
                 }
                 incr idx
@@ -213,8 +225,22 @@ if {$fid != ""} {
 close $fidIn
 
 
-
 # Génération de la doc
+
+# Chargement du fichier de référence sur les engrais
+set fidIn [open $inputFileRef r]
+gets $fidIn UneLigne
+while {[eof $fidIn] != 1} {
+	gets $fidIn UneLigne
+    set UneLigne [split $UneLigne "\t"]
+    set marque [lindex $UneLigne 0]
+    set utilise [lindex $UneLigne 1]
+	set source [lindex $UneLigne 2]
+	set engref(${marque},source) $source
+}
+close $fidIn
+
+
 set fid [open $outPutDoc w+]
 set fidIn [open $inputFile r]
 
@@ -224,8 +250,7 @@ set EngraisMarque [split $UneLigne "\t"]
 gets $fidIn UneLigne
 set EngraisName [split $UneLigne "\t"]
 
-puts $fid {
-#summary Calendrier des engrais
+puts $fid {#summary Calendrier des engrais
 
 = Sommaire =
 <wiki:toc max_depth="3" />
@@ -234,11 +259,7 @@ puts $fid {
 
 Le logiciel Cultibox vous permet de planifier les engrais que vous souhaitez appliquer.
 
-= Engrais =
-
-House And Garden
-
-Source : [http://www.house-garden.ca/ Schéma de culture]
+Ci-dessous vous trouverez tout les schéma de culture utilisé:
 
 }
 
@@ -297,6 +318,7 @@ while {[eof $fidIn] != 1} {
                     puts -nonewline $fid "||"
                     puts $fid ""
                 }
+				puts $fid ""
                 array unset eng
                 
 
@@ -304,23 +326,27 @@ while {[eof $fidIn] != 1} {
         }
     
         if {$marque != $oldmarque && $marque != ""} {
+            puts $fid "= ${marque} ="
             puts $fid ""
-            puts $fid "== ${marque} =="
-            puts $fid ""
+			
+			if {[array names engref ${marque},source] != ""} {
+				puts $fid "Source : \[$engref(${marque},source) Schéma de culture\]"
+				puts $fid ""
+			}
+			
         }
         
         if {$nomProgramme != $oldProgramme && $nomProgramme != ""} {
+            puts $fid "== ${nomProgramme} =="
             puts $fid ""
-            puts $fid "=== ${nomProgramme} ==="
-            puts $fid ""
+			set oldSubstrat ""
         }
         
         if {$Substrat != $oldSubstrat && $Substrat != ""} {
 
             set semaine 1
 
-            puts $fid ""
-            puts $fid "==== ${Substrat} ===="
+            puts $fid "=== ${Substrat} ==="
             puts $fid ""
             
         }
@@ -333,9 +359,12 @@ while {[eof $fidIn] != 1} {
             
             if {$Dosage != 0} {
                 set unit "ml/l"
-                if {[lindex $EngraisName $idx] == "Mineral Magic"} {
+                if {[lindex $EngraisName $idx] == "Mineral Magic" || [lindex $EngraisName $idx] == "Piranha"} {
                     set unit "g/l"
                 }
+				if {[lindex $EngraisName $idx] == "SuperVit"} {
+					set unit "goutte/4,5l"
+				}
                 set eng(${semaine},[lindex $EngraisName $idx]) "${Dosage} ${unit}"
             }
             incr idx
