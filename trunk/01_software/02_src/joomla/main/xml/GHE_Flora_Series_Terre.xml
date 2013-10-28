@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-   <updated>2013-10-28T07:49:34+02:00/updated>
+   <updated>2013-10-28T22:13:06+02:00/updated>
    <id>http://www.cultibox.fr/</id>
    <title>GHE Flora Series Terre</title>
    <subtitle></subtitle>
@@ -30,6 +30,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>0</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>BioSevia Bloom</name>
         <dosage>2 ml/l</dosage>
@@ -50,7 +51,7 @@
         <name>FloraMicro</name>
         <dosage>0,25 ml/l</dosage>
       </nutriment>
-      <color>green</color>
+      <color>greenyellow</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -63,6 +64,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>7</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>BioSevia Bloom</name>
         <dosage>2 ml/l</dosage>
@@ -87,7 +89,7 @@
         <name>Bioprotect</name>
         <dosage>5 ml/l</dosage>
       </nutriment>
-      <color>green</color>
+      <color>yellowgreen</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -100,6 +102,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>14</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>BioSevia Bloom</name>
         <dosage>2 ml/l</dosage>
@@ -124,7 +127,7 @@
         <name>Mineral Magic</name>
         <dosage>0,4 g/l</dosage>
       </nutriment>
-      <color>green</color>
+      <color>darkgreen</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -137,6 +140,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>21</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Diamond Nectar</name>
         <dosage>2 ml/l</dosage>
@@ -161,7 +165,7 @@
         <name>Bioprotect</name>
         <dosage>5 ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>khaki</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -174,6 +178,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>28</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Bio Bloom</name>
         <dosage>0,2 ml/l</dosage>
@@ -198,7 +203,7 @@
         <name>Mineral Magic</name>
         <dosage>0,4 g/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>wheat</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -211,6 +216,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>35</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Bio Bloom</name>
         <dosage>0,2 ml/l</dosage>
@@ -235,7 +241,7 @@
         <name>Bioprotect</name>
         <dosage>5 ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>tan</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -248,6 +254,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>42</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Bio Bloom</name>
         <dosage>0,2 ml/l</dosage>
@@ -268,7 +275,7 @@
         <name>Mineral Magic</name>
         <dosage>0,4 g/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>goldenrod</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -281,6 +288,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>49</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Bio Bloom</name>
         <dosage>0,2 ml/l</dosage>
@@ -301,7 +309,7 @@
         <name>Mineral Magic</name>
         <dosage>0,4 g/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>peru</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -314,6 +322,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>56</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>FloraBloom</name>
         <dosage>0,9 ml/l</dosage>
@@ -330,7 +339,7 @@
         <name>Mineral Magic</name>
         <dosage>0,4 g/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>chocolate</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -343,6 +352,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>63</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>FloraBloom</name>
         <dosage>0,9 ml/l</dosage>
@@ -359,7 +369,7 @@
         <name>Mineral Magic</name>
         <dosage>0,4 g/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>brown</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -372,6 +382,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>70</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>FloraBloom</name>
         <dosage>0,9 ml/l</dosage>
@@ -388,7 +399,7 @@
         <name>Mineral Magic</name>
         <dosage>0,4 g/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>maroon</color>
       <icon>GHE.png</icon>
    </entry>
     <entry>
@@ -401,6 +412,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>77</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Mineral Magic</name>
         <dosage>0,4 g/l</dosage>
