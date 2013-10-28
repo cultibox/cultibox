@@ -8,9 +8,9 @@ set inputFile [file join [file dirname [info script] ] engrais.txt]
 proc initFile {fid marque substrat programme} {
 	puts $fid {<?xml version="1.0" encoding="utf-8"?>}
 	puts $fid {<feed xmlns="http://www.w3.org/2005/Atom">}
-	puts $fid {   <updated>2013-04-16T13:14:57+02:00</updated>}
+	puts $fid "   <updated>[clock format [clock seconds] -format {%Y-%m-%dT%H:%M:%S+02:00}]/updated>"
 	puts $fid {   <id>http://www.cultibox.fr/</id>}
-	puts $fid {   <title>House Garden Terre Floraison</title>}
+	puts $fid "   <title>${marque} ${programme} ${substrat}</title>"
 	puts $fid {   <subtitle></subtitle>}
 	puts $fid {   <author>}
 	puts $fid {      <name>Cultibox</name>}
