@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-   <updated>2013-10-28T07:49:35+02:00/updated>
+   <updated>2013-10-28T22:13:06+02:00/updated>
    <id>http://www.cultibox.fr/</id>
    <title>House and Garden Standard Terre</title>
    <subtitle></subtitle>
@@ -30,6 +30,7 @@
       <ec>1,2</ec>
       <duration>7</duration>
       <start>0</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Roots Excelurator</name>
         <dosage>0,3 ml/l</dosage>
@@ -46,7 +47,7 @@
         <name>Algen extract</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <color>green</color>
+      <color>greenyellow</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -59,6 +60,7 @@
       <ec>1,2</ec>
       <duration>7</duration>
       <start>7</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Roots Excelurator</name>
         <dosage>0,3 ml/l</dosage>
@@ -75,7 +77,7 @@
         <name>Algen extract</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <color>green</color>
+      <color>yellowgreen</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -88,6 +90,7 @@
       <ec>1,2</ec>
       <duration>7</duration>
       <start>14</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Roots Excelurator</name>
         <dosage>0,3 ml/l</dosage>
@@ -104,7 +107,7 @@
         <name>Algen extract</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <color>green</color>
+      <color>darkgreen</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -117,6 +120,7 @@
       <ec>1,4</ec>
       <duration>7</duration>
       <start>21</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Roots Excelurator</name>
         <dosage>0,3 ml/l</dosage>
@@ -133,7 +137,7 @@
         <name>Algen extract</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>khaki</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -146,6 +150,7 @@
       <ec>1,6</ec>
       <duration>7</duration>
       <start>28</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Multi Enzym</name>
         <dosage>1 ml/l</dosage>
@@ -162,7 +167,7 @@
         <name>Algen extract</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>wheat</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -175,6 +180,7 @@
       <ec>1,7</ec>
       <duration>7</duration>
       <start>35</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Multi Enzym</name>
         <dosage>1 ml/l</dosage>
@@ -191,7 +197,7 @@
         <name>Algen extract</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>tan</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -204,6 +210,7 @@
       <ec>1,9</ec>
       <duration>7</duration>
       <start>42</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Multi Enzym</name>
         <dosage>1 ml/l</dosage>
@@ -224,7 +231,7 @@
         <name>Algen extract</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>goldenrod</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -237,6 +244,7 @@
       <ec>2</ec>
       <duration>7</duration>
       <start>49</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Multi Enzym</name>
         <dosage>1 ml/l</dosage>
@@ -253,7 +261,7 @@
         <name>Algen extract</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>peru</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -266,6 +274,7 @@
       <ec>2</ec>
       <duration>7</duration>
       <start>56</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Bud XL</name>
         <dosage>1 ml/l</dosage>
@@ -286,7 +295,7 @@
         <name>Algen extract</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>chocolate</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -299,6 +308,7 @@
       <ec>2</ec>
       <duration>7</duration>
       <start>63</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Bud XL</name>
         <dosage>1 ml/l</dosage>
@@ -319,7 +329,7 @@
         <name>Algen extract</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>brown</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -332,6 +342,7 @@
       <ec>2</ec>
       <duration>7</duration>
       <start>70</start>
+      <facultative>0<falcutative>
       <nutriment>
         <name>Bud XL</name>
         <dosage>1 ml/l</dosage>
@@ -348,7 +359,7 @@
         <name>Top Shooter</name>
         <dosage>0,5 ml/l</dosage>
       </nutriment>
-      <color>orange</color>
+      <color>maroon</color>
       <icon>House_and_Garden.png</icon>
    </entry>
     <entry>
@@ -361,6 +372,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>77</start>
+      <facultative>0<falcutative>
       <color>black</color>
       <icon>House_and_Garden.png</icon>
    </entry>
