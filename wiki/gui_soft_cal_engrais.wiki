@@ -294,39 +294,92 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || 0,67||  ||  ||  ||  || 0,25 ml/l|| 1,75 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
+== Hesi ==
+
+Source : [http://www.hesinutrients.com Schéma de culture]
+
+=== Normal ===
+
+|| *Semaine* || *Remarque* || *EC* || *Complexe Floraison* || *Complexe Racinaire* || *Falc* || *Phospore Plus* || *PowerZyme* || *SuperVit* || *TNT Complexe* ||
+|| Semaine 13 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
+|| Semaine 14 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
+|| Semaine 15 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
+|| Semaine 16 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
+|| Semaine 17 ||  || || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 18 ||  || || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 19 ||  || || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 20 ||  || || 5 ml/l||  ||  || 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 21 ||  || || 5 ml/l||  ||  || 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 22 ||  || || 5 ml/l||  ||  || 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 23 ||  || || 5 ml/l||  || 1 ml/l|| 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+
+==== Hydro ====
+
+|| *Semaine* || *Remarque* || *EC* || *Complexe Racinaire* || *Falc* || *Hydro Croissance* || *Hydro Floraison* || *PK 13/14* || *PowerZyme* || *SuperVit* ||
+|| Semaine 1 ||  || || 5 ml/l||  || 2,5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||
+|| Semaine 2 ||  || || 5 ml/l||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||
+|| Semaine 3 ||  || || 5 ml/l||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||
+|| Semaine 4 ||  || || 5 ml/l||  ||  || 5 ml/l||  || 2 ml/l|| 1 goutte/4,5l||
+|| Semaine 5 ||  || ||  ||  ||  || 5 ml/l||  || 2 ml/l|| 1 goutte/4,5l||
+|| Semaine 6 ||  || ||  ||  ||  || 5 ml/l||  || 2 ml/l|| 1 goutte/4,5l||
+|| Semaine 7 ||  || ||  ||  ||  || 5 ml/l|| 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||
+|| Semaine 8 ||  || ||  ||  ||  || 5 ml/l|| 5 ml/l|| 2 ml/l|| 1 goutte/4,5l||
+|| Semaine 9 ||  || ||  ||  ||  || 5 ml/l|| 0,75 ml/l|| 2 ml/l|| 1 goutte/4,5l||
+|| Semaine 10 ||  || ||  ||  ||  || 5 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||
+|| Semaine 11 ||  || ||  || 1 ml/l||  || 5 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||
+
+==== Coco ====
+
+|| *Semaine* || *Remarque* || *EC* || *Coco* || *Complexe Racinaire* || *Falc* || *PK 13/14* || *PowerZyme* || *SuperVit* || *TNT Complexe* ||
+|| Semaine 1 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
+|| Semaine 2 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
+|| Semaine 3 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
+|| Semaine 4 ||  || || 5 ml/l|| 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 5 ||  || || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 6 ||  || || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 7 ||  || || 5 ml/l||  ||  || 0,25 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 8 ||  || || 5 ml/l||  ||  || 0,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 9 ||  || || 5 ml/l||  ||  || 0,75 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 10 ||  || || 5 ml/l||  ||  || 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| Semaine 11 ||  || || 5 ml/l||  || 1 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+
 == Bio Bizz ==
+
+Source : [http://www.biobizz.com/fr/ Schéma de culture]
 
 === All Mix ===
 
+==== Terre ====
+
 || *Semaine* || *Remarque* || *EC* || *Bio-Bloom* || *Bio-grow* || *RootJuice* || *Topmax* ||
-|| Semaine 13 ||  || ||  ||  || 1 ml/l||  ||
-|| Semaine 14 ||  || ||  ||  || 4 ml/l||  ||
-|| Semaine 15 ||  || ||  || 1 ml/l|| 4 ml/l||  ||
-|| Semaine 16 ||  || ||  || 1 ml/l||  ||  ||
-|| Semaine 17 ||  || || 1 ml/l|| 1 ml/l||  || 1 ml/l||
-|| Semaine 18 ||  || || 2 ml/l|| 1 ml/l||  || 1 ml/l||
-|| Semaine 19 ||  || || 2 ml/l|| 1 ml/l||  || 1 ml/l||
-|| Semaine 20 ||  || || 3 ml/l|| 1 ml/l||  || 1 ml/l||
-|| Semaine 21 ||  || || 4 ml/l|| 1 ml/l||  || 4 ml/l||
-|| Semaine 22 ||  || || 4 ml/l|| 1 ml/l||  || 4 ml/l||
-|| Semaine 23 ||  || || 4 ml/l|| 1 ml/l||  || 4 ml/l||
-|| Semaine 24 ||  || || 4 ml/l|| 1 ml/l||  || 4 ml/l||
+|| Semaine 1 ||  || ||  ||  || 1-4 ml/l||  ||
+|| Semaine 2 ||  || ||  || 1 ml/l||  ||  ||
+|| Semaine 3 ||  || ||  || 1 ml/l||  ||  ||
+|| Semaine 4 ||  || ||  || 1 ml/l||  ||  ||
+|| Semaine 5 ||  || || 1 ml/l|| 1 ml/l||  || 1 ml/l||
+|| Semaine 6 ||  || || 2 ml/l|| 1 ml/l||  || 1 ml/l||
+|| Semaine 7 ||  || || 2 ml/l|| 1 ml/l||  || 1 ml/l||
+|| Semaine 8 ||  || || 3 ml/l|| 1 ml/l||  || 1 ml/l||
+|| Semaine 9 ||  || || 4 ml/l|| 1 ml/l||  || 4 ml/l||
+|| Semaine 10 ||  || || 4 ml/l|| 1 ml/l||  || 4 ml/l||
+|| Semaine 11 ||  || || 4 ml/l|| 1 ml/l||  || 4 ml/l||
+|| Semaine 12 ||  || || 4 ml/l|| 1 ml/l||  || 4 ml/l||
 
 === Light Mix ===
 
 || *Semaine* || *Remarque* || *EC* || *Alg-A-mic* || *Bio-Bloom* || *Bio-grow* || *RootJuice* || *Topmax* ||
-|| Semaine 26 ||  || ||  ||  ||  || 1 ml/l||  ||
-|| Semaine 27 ||  || ||  ||  ||  || 4 ml/l||  ||
-|| Semaine 28 ||  || ||  ||  || 2 ml/l|| 4 ml/l||  ||
-|| Semaine 29 ||  || ||  ||  || 2 ml/l||  ||  ||
-|| Semaine 30 ||  || || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 1 ml/l||
-|| Semaine 31 ||  || || 2 ml/l|| 2 ml/l|| 2 ml/l||  || 1 ml/l||
-|| Semaine 32 ||  || || 2 ml/l|| 2 ml/l|| 3 ml/l||  || 1 ml/l||
-|| Semaine 33 ||  || || 3 ml/l|| 3 ml/l|| 3 ml/l||  || 1 ml/l||
-|| Semaine 34 ||  || || 4 ml/l|| 4 ml/l|| 4 ml/l||  || 4 ml/l||
-|| Semaine 35 ||  || || 4 ml/l|| 4 ml/l|| 4 ml/l||  || 4 ml/l||
-|| Semaine 36 ||  || || 4 ml/l|| 4 ml/l|| 4 ml/l||  || 4 ml/l||
-|| Semaine 37 ||  || || 4 ml/l|| 4 ml/l|| 4 ml/l||  || 4 ml/l||
+|| Semaine 14 ||  || ||  ||  ||  || 1-4 ml/l||  ||
+|| Semaine 15 ||  || ||  ||  || 2 ml/l||  ||  ||
+|| Semaine 16 ||  || ||  ||  || 2 ml/l||  ||  ||
+|| Semaine 17 ||  || ||  ||  || 2 ml/l||  ||  ||
+|| Semaine 18 ||  || || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 1 ml/l||
+|| Semaine 19 ||  || || 2 ml/l|| 2 ml/l|| 2 ml/l||  || 1 ml/l||
+|| Semaine 20 ||  || || 2 ml/l|| 2 ml/l|| 3 ml/l||  || 1 ml/l||
+|| Semaine 21 ||  || || 3 ml/l|| 3 ml/l|| 3 ml/l||  || 1 ml/l||
+|| Semaine 22 ||  || || 4 ml/l|| 4 ml/l|| 4 ml/l||  || 4 ml/l||
+|| Semaine 23 ||  || || 4 ml/l|| 4 ml/l|| 4 ml/l||  || 4 ml/l||
+|| Semaine 24 ||  || || 4 ml/l|| 4 ml/l|| 4 ml/l||  || 4 ml/l||
+|| Semaine 25 ||  || || 4 ml/l|| 4 ml/l|| 4 ml/l||  || 4 ml/l||
 
 == House and Garden ==
 
@@ -335,17 +388,17 @@ Source : [http://www.house-garden.us/ Schéma de culture]
 === Standard ===
 
 || *Semaine* || *Remarque* || *EC* || *Algen extract* || *Amino Treatment* || *Bud XL* || *Multi Enzym* || *Roots Excelurator* || *Terre A B* || *Top Booster* || *Top Shooter* ||
-|| Semaine 39 ||  || 1,2|| 1 ml/l|| 0,25 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
-|| Semaine 40 ||  || 1,2|| 1 ml/l|| 0,35 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
-|| Semaine 41 ||  || 1,2|| 1 ml/l|| 0,5 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
-|| Semaine 42 ||  || 1,4|| 1 ml/l|| 1 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
-|| Semaine 43 ||  || 1,6|| 1 ml/l|| 1 ml/l||  || 1 ml/l||  || 2 ml/l||  ||  ||
-|| Semaine 44 ||  || 1,7|| 1 ml/l|| 1 ml/l||  || 1 ml/l||  || 2,5 ml/l||  ||  ||
-|| Semaine 45 ||  || 1,9|| 1 ml/l|| 1 ml/l||  || 1 ml/l||  || 2,5 ml/l|| 0,5 ml/l||  ||
-|| Semaine 46 ||  || 2|| 1 ml/l||  ||  || 1 ml/l||  || 3 ml/l|| 1 ml/l||  ||
-|| Semaine 47 ||  || 2|| 1 ml/l||  || 1 ml/l||  ||  || 3 ml/l|| 1,5 ml/l|| 0,5 ml/l||
-|| Semaine 48 ||  || 2|| 1 ml/l||  || 1 ml/l||  ||  || 3 ml/l|| 1,5 ml/l|| 0,5 ml/l||
-|| Semaine 49 ||  || 2||  ||  || 1 ml/l||  ||  || 3 ml/l|| 1,5 ml/l|| 0,5 ml/l||
+|| Semaine 27 ||  || 1,2|| 1 ml/l|| 0,25 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
+|| Semaine 28 ||  || 1,2|| 1 ml/l|| 0,35 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
+|| Semaine 29 ||  || 1,2|| 1 ml/l|| 0,5 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
+|| Semaine 30 ||  || 1,4|| 1 ml/l|| 1 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
+|| Semaine 31 ||  || 1,6|| 1 ml/l|| 1 ml/l||  || 1 ml/l||  || 2 ml/l||  ||  ||
+|| Semaine 32 ||  || 1,7|| 1 ml/l|| 1 ml/l||  || 1 ml/l||  || 2,5 ml/l||  ||  ||
+|| Semaine 33 ||  || 1,9|| 1 ml/l|| 1 ml/l||  || 1 ml/l||  || 2,5 ml/l|| 0,5 ml/l||  ||
+|| Semaine 34 ||  || 2|| 1 ml/l||  ||  || 1 ml/l||  || 3 ml/l|| 1 ml/l||  ||
+|| Semaine 35 ||  || 2|| 1 ml/l||  || 1 ml/l||  ||  || 3 ml/l|| 1,5 ml/l|| 0,5 ml/l||
+|| Semaine 36 ||  || 2|| 1 ml/l||  || 1 ml/l||  ||  || 3 ml/l|| 1,5 ml/l|| 0,5 ml/l||
+|| Semaine 37 ||  || 2||  ||  || 1 ml/l||  ||  || 3 ml/l|| 1,5 ml/l|| 0,5 ml/l||
 
 ==== Hydro ====
 
@@ -442,3 +495,174 @@ Source : [http://www.plagron.co.uk/ Schéma de culture]
 || Semaine 9 ||  || || 3 ml/l||  || 1 ml/l||  ||  ||
 || Semaine 10 ||  || || 3 ml/l||  || 1 ml/l||  ||  ||
 || Semaine 11 ||  || || 3 ml/l||  || 1 ml/l||  ||  ||
+
+== Earth Juice ==
+
+Source : [http://www.hydro-organics.com Schéma de culture]
+
+=== Simple ===
+
+==== Terre ====
+
+|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Grow* ||
+|| Semaine 3 ||  || ||  || 4 ml/l||
+|| Semaine 4 ||  || ||  || 4 ml/l||
+|| Semaine 5 ||  || ||  || 4 ml/l||
+|| Semaine 6 ||  || ||  || 4 ml/l||
+|| Semaine 7 ||  || || 4 ml/l|| 2 ml/l||
+|| Semaine 8 ||  || || 4 ml/l|| 2 ml/l||
+|| Semaine 9 ||  || || 4 ml/l|| 2 ml/l||
+|| Semaine 10 ||  || || 4 ml/l|| 2 ml/l||
+|| Semaine 11 ||  || || 4 ml/l||  ||
+
+=== Basic ===
+
+|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Catalyst* || *Grow* ||
+|| Semaine 13 ||  || || 1,3 ml/l|| 0,7 ml/l|| 2 ml/l||
+|| Semaine 14 ||  || ||  || 1,3 ml/l|| 4 ml/l||
+|| Semaine 15 ||  || ||  || 1,3 ml/l|| 4 ml/l||
+|| Semaine 16 ||  || ||  || 1,3 ml/l|| 4 ml/l||
+|| Semaine 17 ||  || ||  || 1,3 ml/l|| 4 ml/l||
+|| Semaine 18 ||  || || 4 ml/l|| 1,3 ml/l|| 2 ml/l||
+|| Semaine 19 ||  || || 4 ml/l|| 1,3 ml/l|| 2 ml/l||
+|| Semaine 20 ||  || || 4 ml/l|| 1,3 ml/l|| 2 ml/l||
+|| Semaine 21 ||  || || 4 ml/l|| 1,3 ml/l|| 2 ml/l||
+|| Semaine 22 ||  || || 4 ml/l|| 2,6 ml/l||  ||
+|| Semaine 23 ||  || || 4 ml/l|| 2,6 ml/l||  ||
+
+=== Advanced ===
+
+|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
+|| Semaine 25 ||  || || 1,3 ml/l|| 0,7 ml/l|| 2 ml/l||  || 0,7 ml/l||
+|| Semaine 26 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 27 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 28 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 29 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 30 ||  || || 4 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 31 ||  || || 4 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 32 ||  || || 4 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 33 ||  || || 4 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 34 ||  || || 4 ml/l|| 2,6 ml/l||  || 1,3 ml/l|| 1,3 ml/l||
+|| Semaine 35 ||  || || 4 ml/l|| 2,6 ml/l||  || 1,3 ml/l|| 1,3 ml/l||
+
+=== Advanced Plus ===
+
+|| *Semaine* || *Remarque* || *EC* || *Big Bloomin Guano* || *Bloom* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
+|| Semaine 37 ||  || || 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 2 ml/l||  || 0,7 ml/l||
+|| Semaine 38 ||  || || 0,7 ml/l||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 39 ||  || || 0,7 ml/l||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 40 ||  || || 0,7 ml/l||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 41 ||  || || 0,7 ml/l||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 42 ||  || || 2 ml/l|| 2 ml/l|| 2 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 43 ||  || || 2 ml/l|| 2 ml/l|| 2 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 44 ||  || || 2 ml/l|| 2 ml/l|| 2 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 45 ||  || || 2 ml/l|| 2 ml/l|| 2 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 46 ||  || || 1,3 ml/l|| 2,6 ml/l|| 1,3 ml/l||  || 1,3 ml/l|| 1,3 ml/l||
+|| Semaine 47 ||  || || 1,3 ml/l|| 2,6 ml/l|| 1,3 ml/l||  || 1,3 ml/l|| 1,3 ml/l||
+
+=== Sugar Peak Basic ===
+
+==== Hydro ====
+
+|| *Semaine* || *Remarque* || *EC* || *Sugar peak Flowering* || *Sugar peak Vegetative* ||
+|| Semaine 1 ||  || ||  || 1,3 ml/l||
+|| Semaine 2 ||  || ||  || 5,3 ml/l||
+|| Semaine 3 ||  || ||  || 5,3 ml/l||
+|| Semaine 4 ||  || ||  || 5,3 ml/l||
+|| Semaine 5 ||  || ||  || 5,3 ml/l||
+|| Semaine 6 ||  || || 7,9 ml/l||  ||
+|| Semaine 7 ||  || || 7,9 ml/l||  ||
+|| Semaine 8 ||  || || 7,9 ml/l||  ||
+|| Semaine 9 ||  || || 7,9 ml/l||  ||
+|| Semaine 10 ||  || || 2,7 ml/l||  ||
+|| Semaine 11 ||  || || 2,7 ml/l||  ||
+
+=== Sugar Peak Intermediate ===
+
+|| *Semaine* || *Remarque* || *EC* || *Sugar peak Flowering* || *Sugar peak Grande Finale* || *Sugar peak Vegetative* ||
+|| Semaine 13 ||  || ||  ||  || 1,3 ml/l||
+|| Semaine 14 ||  || ||  ||  || 5,3 ml/l||
+|| Semaine 15 ||  || ||  ||  || 5,3 ml/l||
+|| Semaine 16 ||  || ||  ||  || 5,3 ml/l||
+|| Semaine 17 ||  || ||  ||  || 5,3 ml/l||
+|| Semaine 18 ||  || || 7,9 ml/l||  ||  ||
+|| Semaine 19 ||  || || 7,9 ml/l||  ||  ||
+|| Semaine 20 ||  || || 7,9 ml/l||  ||  ||
+|| Semaine 21 ||  || || 7,9 ml/l||  ||  ||
+|| Semaine 22 ||  || ||  || 5,3 ml/l||  ||
+|| Semaine 23 ||  || ||  || 5,3 ml/l||  ||
+
+=== Sugar Peak Advanced ===
+
+|| *Semaine* || *Remarque* || *EC* || *Sugar peak Briximus Maximus* || *Sugar peak Flowering* || *Sugar peak Grande Finale* || *Sugar peak Transition* || *Sugar peak Vegetative* ||
+|| Semaine 25 ||  || ||  ||  ||  ||  || 1,3 ml/l||
+|| Semaine 26 ||  || ||  ||  ||  ||  || 5,3 ml/l||
+|| Semaine 27 ||  || ||  ||  ||  ||  || 5,3 ml/l||
+|| Semaine 28 ||  || ||  ||  ||  ||  || 5,3 ml/l||
+|| Semaine 29 ||  || ||  ||  ||  ||  || 5,3 ml/l||
+|| Semaine 30 ||  || ||  ||  ||  || 5,3 ml/l||  ||
+|| Semaine 31 ||  || ||  ||  ||  || 5,3 ml/l||  ||
+|| Semaine 32 ||  || ||  || 7,9 ml/l||  ||  ||  ||
+|| Semaine 33 ||  || ||  || 7,9 ml/l||  ||  ||  ||
+|| Semaine 34 ||  || || 15,9 ml/l||  || 5,3 ml/l||  ||  ||
+|| Semaine 35 ||  || || 15,9 ml/l||  || 5,3 ml/l||  ||  ||
+
+=== Hi-Brix ===
+
+|| *Semaine* || *Remarque* || *EC* || *Hi-Brix Bloom Part B* || *Hi-Brix Grow Part A* ||
+|| Semaine 37 ||  || || 1,3 ml/l|| 2,7 ml/l||
+|| Semaine 38 ||  || || 2,7 ml/l|| 5,3 ml/l||
+|| Semaine 39 ||  || || 2,7 ml/l|| 5,3 ml/l||
+|| Semaine 40 ||  || || 2,7 ml/l|| 5,3 ml/l||
+|| Semaine 41 ||  || || 4 ml/l|| 4 ml/l||
+|| Semaine 42 ||  || || 4 ml/l|| 4 ml/l||
+|| Semaine 43 ||  || || 5,3 ml/l|| 2,7 ml/l||
+|| Semaine 44 ||  || || 5,3 ml/l|| 2,7 ml/l||
+|| Semaine 45 ||  || || 5,3 ml/l|| 2,7 ml/l||
+|| Semaine 46 ||  || || 5,3 ml/l|| 2,7 ml/l||
+|| Semaine 47 ||  || || 8 ml/l||  ||
+
+=== Sweet And Heavy ===
+
+|| *Semaine* || *Remarque* || *EC* || *Sweet And Heavy Bloom* || *Sweet And Heavy Finish* || *Sweet And Heavy Grow* || *Sweet And Heavy Prime* ||
+|| Semaine 49 ||  || || 0,7 ml/l||  || 2 ml/l|| 1,3 ml/l||
+|| Semaine 50 ||  || || 1,3 ml/l||  || 5,3 ml/l|| 2,6 ml/l||
+|| Semaine 51 ||  || || 1,3 ml/l||  || 5,3 ml/l|| 2,6 ml/l||
+|| Semaine 52 ||  || || 1,3 ml/l||  || 5,3 ml/l|| 2,6 ml/l||
+|| Semaine 53 ||  || || 1,3 ml/l||  || 5,3 ml/l|| 2,6 ml/l||
+|| Semaine 54 ||  || || 5,3 ml/l||  || 1,3 ml/l|| 2,6 ml/l||
+|| Semaine 55 ||  || || 5,3 ml/l||  || 1,3 ml/l|| 2,6 ml/l||
+|| Semaine 56 ||  || || 5,3 ml/l||  || 1,3 ml/l|| 2,6 ml/l||
+|| Semaine 57 ||  || || 5,3 ml/l||  || 1,3 ml/l|| 2,6 ml/l||
+|| Semaine 58 ||  || ||  || 5,3 ml/l||  ||  ||
+|| Semaine 59 ||  || ||  || 5,3 ml/l||  ||  ||
+
+=== SeaBlast ===
+
+|| *Semaine* || *Remarque* || *EC* || *SeaBlast Bloom* || *SeaBlast Grow* || *SeaBlast Transition* ||
+|| Semaine 61 ||  || ||  || 0,33 ml/l||  ||
+|| Semaine 62 ||  || ||  || 1,32 ml/l||  ||
+|| Semaine 63 ||  || ||  || 1,32 ml/l||  ||
+|| Semaine 64 ||  || ||  || 1,32 ml/l||  ||
+|| Semaine 65 ||  || ||  ||  || 1,32 ml/l||
+|| Semaine 66 ||  || ||  ||  || 1,32 ml/l||
+|| Semaine 67 ||  || ||  ||  || 1,32 ml/l||
+|| Semaine 68 ||  || || 1,32 ml/l||  ||  ||
+|| Semaine 69 ||  || || 1,32 ml/l||  ||  ||
+|| Semaine 70 ||  || || 1,32 ml/l||  ||  ||
+|| Semaine 71 ||  || || 1,32 ml/l||  ||  ||
+
+=== Big Bloomin Guano ===
+
+|| *Semaine* || *Remarque* || *EC* || *Big Bloomin Guano* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
+|| Semaine 73 ||  || || 1,3 ml/l|| 0,7 ml/l|| 2 ml/l||  || 0,7 ml/l||
+|| Semaine 74 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 75 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 76 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 77 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
+|| Semaine 78 ||  || || 5,9 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 79 ||  || || 5,9 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 80 ||  || || 5,9 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 81 ||  || || 5,9 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,3 ml/l|| 1,3 ml/l||
+|| Semaine 82 ||  || || 4 ml/l|| 2,6 ml/l||  || 1,3 ml/l|| 1,3 ml/l||
+|| Semaine 83 ||  || || 4 ml/l|| 2,6 ml/l||  || 1,3 ml/l|| 1,3 ml/l||
