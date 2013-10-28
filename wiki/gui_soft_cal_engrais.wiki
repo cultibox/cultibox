@@ -10,13 +10,13 @@ Le logiciel Cultibox vous permet de planifier les engrais que vous souhaitez app
 Ci-dessous vous trouverez tout les schéma de culture utilisé:
 
 
-== GHE ==
+= GHE =
 
 Source : [http://fr.eurohydro.com/ Schéma de culture]
 
-=== Biosevia ===
+== Biosevia ==
 
-==== Terre ====
+=== Terre ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioRoot Plus* || *BioSevia Bloom* || *BioSevia Grow* || *Bioprotect* || *Diamond Nectar* ||
 || Semaine 1 ||  || ||  || 0,2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  || 2 ml/l||
@@ -31,7 +31,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 10 ||  || ||  ||  || 2 ml/l||  ||  ||  ||
 || Semaine 11 ||  || ||  ||  || 2 ml/l||  ||  ||  ||
 
-==== Hydro ====
+=== Hydro ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioRoot Plus* || *BioSevia Bloom* || *BioSevia Grow* || *Bioprotect* || *Diamond Nectar* ||
 || Semaine 1 ||  || ||  || 0,2 ml/l|| 0,3 ml/l|| 0,3 ml/l|| 5 ml/l|| 2 ml/l||
@@ -46,7 +46,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 10 ||  || ||  ||  || 2 ml/l||  ||  ||  ||
 || Semaine 11 ||  || ||  ||  || 2 ml/l||  ||  ||  ||
 
-=== Flora Duo ===
+== Flora Duo ==
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
 || Semaine 13 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
@@ -62,7 +62,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 23 ||  || ||  ||  ||  ||  || 4 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || Semaine 24 || Rincage || ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
-==== Coco ====
+=== Coco ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
 || Semaine 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
@@ -78,7 +78,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || ||  ||  ||  ||  || 4 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
-==== Terre ====
+=== Terre ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
 || Semaine 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
@@ -94,25 +94,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || ||  ||  ||  ||  || 2 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
-=== Flora Nova ===
+== Flora Nova ==
 
-==== Coco ====
-
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
-|| Semaine 1 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
-|| Semaine 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
-|| Semaine 3 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
-|| Semaine 4 ||  || ||  ||  || 5 ml/l|| 1,5 ml/l||  || 1,4 ml/l|| 0,4 g/l||  ||
-|| Semaine 5 ||  || || 0,2 ml/l||  ||  || 1,5 ml/l|| 0,6 ml/l|| 0,8 ml/l|| 0,4 g/l||  ||
-|| Semaine 6 ||  || || 0,2 ml/l||  || 5 ml/l||  || 1,4 ml/l||  || 0,4 g/l||  ||
-|| Semaine 7 ||  || || 0,2 ml/l||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
-|| Semaine 8 ||  || || 0,2 ml/l||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
-|| Semaine 9 ||  || ||  ||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
-|| Semaine 10 ||  || ||  ||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
-|| Semaine 11 ||  || ||  ||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
-|| Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
-
-==== Hydro ====
+=== Coco ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
 || Semaine 1 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
@@ -128,7 +112,23 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || ||  ||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
-==== Terre ====
+=== Hydro ===
+
+|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
+|| Semaine 1 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
+|| Semaine 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
+|| Semaine 3 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
+|| Semaine 4 ||  || ||  ||  || 5 ml/l|| 1,5 ml/l||  || 1,4 ml/l|| 0,4 g/l||  ||
+|| Semaine 5 ||  || || 0,2 ml/l||  ||  || 1,5 ml/l|| 0,6 ml/l|| 0,8 ml/l|| 0,4 g/l||  ||
+|| Semaine 6 ||  || || 0,2 ml/l||  || 5 ml/l||  || 1,4 ml/l||  || 0,4 g/l||  ||
+|| Semaine 7 ||  || || 0,2 ml/l||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
+|| Semaine 8 ||  || || 0,2 ml/l||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
+|| Semaine 9 ||  || ||  ||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
+|| Semaine 10 ||  || ||  ||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
+|| Semaine 11 ||  || ||  ||  ||  ||  || 1,4 ml/l||  || 0,4 g/l||  ||
+|| Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
+
+=== Terre ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
 || Semaine 1 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 0,3 ml/l||  ||  ||
@@ -144,25 +144,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || ||  ||  ||  ||  || 0,7 ml/l||  || 0,4 g/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
-=== Flora Series ===
+== Flora Series ==
 
-==== Coco ====
-
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
-|| Semaine 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| Semaine 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| Semaine 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
-|| Semaine 4 ||  || ||  ||  || 5 ml/l|| 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 5 ||  || || 0,2 ml/l||  ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 6 ||  || || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 7 ||  || || 0,2 ml/l||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 8 ||  || || 0,2 ml/l||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 9 ||  || ||  ||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 10 ||  || ||  ||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 11 ||  || ||  ||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
-
-==== Hydro ====
+=== Coco ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
 || Semaine 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
@@ -178,7 +162,23 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || ||  ||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
-==== Terre ====
+=== Hydro ===
+
+|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
+|| Semaine 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| Semaine 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| Semaine 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
+|| Semaine 4 ||  || ||  ||  || 5 ml/l|| 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 5 ||  || || 0,2 ml/l||  ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 6 ||  || || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 7 ||  || || 0,2 ml/l||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 8 ||  || || 0,2 ml/l||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 9 ||  || ||  ||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 10 ||  || ||  ||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 11 ||  || ||  ||  ||  ||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
+
+=== Terre ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
 || Semaine 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
@@ -194,25 +194,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || ||  ||  ||  ||  || 0,9 ml/l|| 0,3 ml/l|| 0,6 ml/l|| 0,4 g/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
-=== One Part ===
+== One Part ==
 
-==== Coco ====
-
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
-|| Semaine 1 ||  || ||  || 2 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
-|| Semaine 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
-|| Semaine 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
-|| Semaine 4 ||  || ||  ||  || 5 ml/l|| 2 ml/l|| 0,4 g/l||  ||  || 5 ml/l||
-|| Semaine 5 ||  || || 0,2 ml/l||  ||  || 2 ml/l|| 0,4 g/l||  || 2,4 ml/l|| 4 ml/l||
-|| Semaine 6 ||  || || 0,2 ml/l||  || 5 ml/l||  || 0,4 g/l||  || 6 ml/l||  ||
-|| Semaine 7 ||  || || 0,2 ml/l||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
-|| Semaine 8 ||  || || 0,2 ml/l||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
-|| Semaine 9 ||  || ||  ||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
-|| Semaine 10 ||  || ||  ||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
-|| Semaine 11 ||  || ||  ||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
-|| Semaine 12 || Rincage || ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||  ||  ||
-
-==== Hydro ====
+=== Coco ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
 || Semaine 1 ||  || ||  || 2 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
@@ -228,7 +212,23 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || ||  ||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||  ||  ||
 
-==== Terre ====
+=== Hydro ===
+
+|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
+|| Semaine 1 ||  || ||  || 2 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
+|| Semaine 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
+|| Semaine 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
+|| Semaine 4 ||  || ||  ||  || 5 ml/l|| 2 ml/l|| 0,4 g/l||  ||  || 5 ml/l||
+|| Semaine 5 ||  || || 0,2 ml/l||  ||  || 2 ml/l|| 0,4 g/l||  || 2,4 ml/l|| 4 ml/l||
+|| Semaine 6 ||  || || 0,2 ml/l||  || 5 ml/l||  || 0,4 g/l||  || 6 ml/l||  ||
+|| Semaine 7 ||  || || 0,2 ml/l||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
+|| Semaine 8 ||  || || 0,2 ml/l||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
+|| Semaine 9 ||  || ||  ||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
+|| Semaine 10 ||  || ||  ||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
+|| Semaine 11 ||  || ||  ||  ||  ||  || 0,4 g/l||  || 6 ml/l||  ||
+|| Semaine 12 || Rincage || ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||  ||  ||
+
+=== Terre ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
 || Semaine 1 ||  || ||  || 2 ml/l||  || 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
@@ -244,25 +244,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || ||  ||  ||  ||  || 0,4 g/l||  || 4 ml/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||  ||  ||
 
-=== K ===
+== K ==
 
-==== Hydro ====
-
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
-|| Semaine 1 ||  || 0,8||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| Semaine 2 ||  || 1,1||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
-|| Semaine 3 ||  || 1,3||  || 2 ml/l||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
-|| Semaine 4 ||  || 1,4||  ||  || 5 ml/l|| 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
-|| Semaine 5 ||  || 1,4|| 0,2 ml/l||  ||  || 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
-|| Semaine 6 ||  || 1,6|| 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,4 g/l||  ||
-|| Semaine 7 ||  || 1,6|| 0,2 ml/l||  ||  ||  || 2 ml/l|| 2 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
-|| Semaine 8 ||  || 1,6|| 0,2 ml/l||  ||  ||  || 2 ml/l|| 2,3 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 9 ||  || 1,4||  ||  ||  ||  || 1 ml/l|| 2,6 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 10 ||  || 1,4||  ||  ||  ||  || 0,5 ml/l|| 3,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 11 ||  || 1,4||  ||  ||  ||  || 0,5 ml/l|| 3,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
-|| Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
-
-==== Coco ====
+=== Hydro ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
 || Semaine 1 ||  || 0,8||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
@@ -278,7 +262,23 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || 1,4||  ||  ||  ||  || 0,5 ml/l|| 3,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
-==== Terre ====
+=== Coco ===
+
+|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
+|| Semaine 1 ||  || 0,8||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| Semaine 2 ||  || 1,1||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
+|| Semaine 3 ||  || 1,3||  || 2 ml/l||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
+|| Semaine 4 ||  || 1,4||  ||  || 5 ml/l|| 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
+|| Semaine 5 ||  || 1,4|| 0,2 ml/l||  ||  || 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
+|| Semaine 6 ||  || 1,6|| 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,4 g/l||  ||
+|| Semaine 7 ||  || 1,6|| 0,2 ml/l||  ||  ||  || 2 ml/l|| 2 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
+|| Semaine 8 ||  || 1,6|| 0,2 ml/l||  ||  ||  || 2 ml/l|| 2,3 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 9 ||  || 1,4||  ||  ||  ||  || 1 ml/l|| 2,6 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 10 ||  || 1,4||  ||  ||  ||  || 0,5 ml/l|| 3,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 11 ||  || 1,4||  ||  ||  ||  || 0,5 ml/l|| 3,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
+|| Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
+
+=== Terre ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
 || Semaine 1 ||  || 0,22||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
@@ -294,11 +294,11 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || Semaine 11 ||  || 0,67||  ||  ||  ||  || 0,25 ml/l|| 1,75 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
-== Hesi ==
+= Hesi =
 
 Source : [http://www.hesinutrients.com Schéma de culture]
 
-=== Normal ===
+== Normal ==
 
 || *Semaine* || *Remarque* || *EC* || *Complexe Floraison* || *Complexe Racinaire* || *Falc* || *Phospore Plus* || *PowerZyme* || *SuperVit* || *TNT Complexe* ||
 || Semaine 13 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
@@ -313,7 +313,7 @@ Source : [http://www.hesinutrients.com Schéma de culture]
 || Semaine 22 ||  || || 5 ml/l||  ||  || 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
 || Semaine 23 ||  || || 5 ml/l||  || 1 ml/l|| 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
 
-==== Hydro ====
+=== Hydro ===
 
 || *Semaine* || *Remarque* || *EC* || *Complexe Racinaire* || *Falc* || *Hydro Croissance* || *Hydro Floraison* || *PK 13/14* || *PowerZyme* || *SuperVit* ||
 || Semaine 1 ||  || || 5 ml/l||  || 2,5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||
@@ -328,7 +328,7 @@ Source : [http://www.hesinutrients.com Schéma de culture]
 || Semaine 10 ||  || ||  ||  ||  || 5 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||
 || Semaine 11 ||  || ||  || 1 ml/l||  || 5 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||
 
-==== Coco ====
+=== Coco ===
 
 || *Semaine* || *Remarque* || *EC* || *Coco* || *Complexe Racinaire* || *Falc* || *PK 13/14* || *PowerZyme* || *SuperVit* || *TNT Complexe* ||
 || Semaine 1 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
@@ -343,13 +343,13 @@ Source : [http://www.hesinutrients.com Schéma de culture]
 || Semaine 10 ||  || || 5 ml/l||  ||  || 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
 || Semaine 11 ||  || || 5 ml/l||  || 1 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
 
-== Bio Bizz ==
+= Bio Bizz =
 
 Source : [http://www.biobizz.com/fr/ Schéma de culture]
 
-=== All Mix ===
+== All Mix ==
 
-==== Terre ====
+=== Terre ===
 
 || *Semaine* || *Remarque* || *EC* || *Bio-Bloom* || *Bio-grow* || *RootJuice* || *Topmax* ||
 || Semaine 1 ||  || ||  ||  || 1-4 ml/l||  ||
@@ -365,7 +365,7 @@ Source : [http://www.biobizz.com/fr/ Schéma de culture]
 || Semaine 11 ||  || || 4 ml/l|| 1 ml/l||  || 4 ml/l||
 || Semaine 12 ||  || || 4 ml/l|| 1 ml/l||  || 4 ml/l||
 
-=== Light Mix ===
+== Light Mix ==
 
 || *Semaine* || *Remarque* || *EC* || *Alg-A-mic* || *Bio-Bloom* || *Bio-grow* || *RootJuice* || *Topmax* ||
 || Semaine 14 ||  || ||  ||  ||  || 1-4 ml/l||  ||
@@ -381,11 +381,11 @@ Source : [http://www.biobizz.com/fr/ Schéma de culture]
 || Semaine 24 ||  || || 4 ml/l|| 4 ml/l|| 4 ml/l||  || 4 ml/l||
 || Semaine 25 ||  || || 4 ml/l|| 4 ml/l|| 4 ml/l||  || 4 ml/l||
 
-== House and Garden ==
+= House and Garden =
 
 Source : [http://www.house-garden.us/ Schéma de culture]
 
-=== Standard ===
+== Standard ==
 
 || *Semaine* || *Remarque* || *EC* || *Algen extract* || *Amino Treatment* || *Bud XL* || *Multi Enzym* || *Roots Excelurator* || *Terre A B* || *Top Booster* || *Top Shooter* ||
 || Semaine 27 ||  || 1,2|| 1 ml/l|| 0,25 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
@@ -400,7 +400,7 @@ Source : [http://www.house-garden.us/ Schéma de culture]
 || Semaine 36 ||  || 2|| 1 ml/l||  || 1 ml/l||  ||  || 3 ml/l|| 1,5 ml/l|| 0,5 ml/l||
 || Semaine 37 ||  || 2||  ||  || 1 ml/l||  ||  || 3 ml/l|| 1,5 ml/l|| 0,5 ml/l||
 
-==== Hydro ====
+=== Hydro ===
 
 || *Semaine* || *Remarque* || *EC* || *Algen extract* || *Amino Treatment* || *Bud XL* || *Hydro A B* || *Multi Enzym* || *Roots Excelurator* || *Shooting Powder* || *Top Booster* ||
 || Semaine 1 ||  || 1,2|| 1 ml/l|| 0,2 ml/l||  || 1 ml/l||  || 0,3 ml/l||  ||  ||
@@ -415,7 +415,7 @@ Source : [http://www.house-garden.us/ Schéma de culture]
 || Semaine 10 ||  || 2|| 1 ml/l||  ||  || 3 ml/l||  ||  || 2 ml/l|| 1,5 ml/l||
 || Semaine 11 ||  || 2|| 1 ml/l||  ||  || 3 ml/l||  ||  || 2 ml/l|| 1,5 ml/l||
 
-==== Coco ====
+=== Coco ===
 
 || *Semaine* || *Remarque* || *EC* || *Algen extract* || *Amino Treatment* || *Bud XL* || *Coco A B* || *Multi Enzym* || *Roots Excelurator* || *Shooting Powder* || *Top Booster* ||
 || Semaine 1 ||  || 1,2|| 1 ml/l|| 0,2 ml/l||  || 1 ml/l||  || 0,3 ml/l||  ||  ||
@@ -430,13 +430,13 @@ Source : [http://www.house-garden.us/ Schéma de culture]
 || Semaine 10 ||  || 2|| 1 ml/l||  ||  || 3 ml/l||  ||  || 2 ml/l|| 1,5 ml/l||
 || Semaine 11 ||  || 2|| 1 ml/l||  ||  || 3 ml/l||  ||  || 2 ml/l|| 1,5 ml/l||
 
-== Plagron ==
+= Plagron =
 
 Source : [http://www.plagron.co.uk/ Schéma de culture]
 
-=== Normal ===
+== Normal ==
 
-==== Terre ====
+=== Terre ===
 
 || *Semaine* || *Remarque* || *EC* || *Enzymes* || *Green Sensation* || *Power Roots* || *Terra Bloom* || *Terra Grow* ||
 || Semaine 1 ||  || || 1 ml/l||  || 10 ml/l||  ||  ||
@@ -451,7 +451,7 @@ Source : [http://www.plagron.co.uk/ Schéma de culture]
 || Semaine 10 ||  || ||  || 1 ml/l||  || 5 ml/l||  ||
 || Semaine 11 ||  || ||  || 1 ml/l||  || 5 ml/l||  ||
 
-==== Hydro ====
+=== Hydro ===
 
 || *Semaine* || *Remarque* || *EC* || *Alga-Bloom* || *Alga-Grow* || *Green Sensation* || *Power Roots* || *Vita Race (Phyt-Amin)* ||
 || Semaine 1 ||  || ||  || 1 ml/l||  || 1 ml/l|| 3 ml/l||
@@ -466,7 +466,7 @@ Source : [http://www.plagron.co.uk/ Schéma de culture]
 || Semaine 10 ||  || || 3 ml/l||  || 1 ml/l||  ||  ||
 || Semaine 11 ||  || || 3 ml/l||  || 1 ml/l||  ||  ||
 
-==== Aero ====
+=== Aero ===
 
 || *Semaine* || *Remarque* || *EC* || *Alga-Bloom* || *Alga-Grow* || *Green Sensation* || *Power Roots* || *Vita Race (Phyt-Amin)* ||
 || Semaine 1 ||  || ||  || 1 ml/l||  || 1 ml/l|| 3 ml/l||
@@ -481,7 +481,7 @@ Source : [http://www.plagron.co.uk/ Schéma de culture]
 || Semaine 10 ||  || || 3 ml/l||  || 1 ml/l||  ||  ||
 || Semaine 11 ||  || || 3 ml/l||  || 1 ml/l||  ||  ||
 
-==== Coco ====
+=== Coco ===
 
 || *Semaine* || *Remarque* || *EC* || *Alga-Bloom* || *Alga-Grow* || *Green Sensation* || *Power Roots* || *Vita Race (Phyt-Amin)* ||
 || Semaine 1 ||  || ||  || 1 ml/l||  || 1 ml/l|| 3 ml/l||
@@ -496,13 +496,13 @@ Source : [http://www.plagron.co.uk/ Schéma de culture]
 || Semaine 10 ||  || || 3 ml/l||  || 1 ml/l||  ||  ||
 || Semaine 11 ||  || || 3 ml/l||  || 1 ml/l||  ||  ||
 
-== Earth Juice ==
+= Earth Juice =
 
 Source : [http://www.hydro-organics.com Schéma de culture]
 
-=== Simple ===
+== Simple ==
 
-==== Terre ====
+=== Terre ===
 
 || *Semaine* || *Remarque* || *EC* || *Bloom* || *Grow* ||
 || Semaine 3 ||  || ||  || 4 ml/l||
@@ -515,7 +515,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 10 ||  || || 4 ml/l|| 2 ml/l||
 || Semaine 11 ||  || || 4 ml/l||  ||
 
-=== Basic ===
+== Basic ==
 
 || *Semaine* || *Remarque* || *EC* || *Bloom* || *Catalyst* || *Grow* ||
 || Semaine 13 ||  || || 1,3 ml/l|| 0,7 ml/l|| 2 ml/l||
@@ -530,7 +530,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 22 ||  || || 4 ml/l|| 2,6 ml/l||  ||
 || Semaine 23 ||  || || 4 ml/l|| 2,6 ml/l||  ||
 
-=== Advanced ===
+== Advanced ==
 
 || *Semaine* || *Remarque* || *EC* || *Bloom* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
 || Semaine 25 ||  || || 1,3 ml/l|| 0,7 ml/l|| 2 ml/l||  || 0,7 ml/l||
@@ -545,7 +545,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 34 ||  || || 4 ml/l|| 2,6 ml/l||  || 1,3 ml/l|| 1,3 ml/l||
 || Semaine 35 ||  || || 4 ml/l|| 2,6 ml/l||  || 1,3 ml/l|| 1,3 ml/l||
 
-=== Advanced Plus ===
+== Advanced Plus ==
 
 || *Semaine* || *Remarque* || *EC* || *Big Bloomin Guano* || *Bloom* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
 || Semaine 37 ||  || || 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 2 ml/l||  || 0,7 ml/l||
@@ -560,9 +560,9 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 46 ||  || || 1,3 ml/l|| 2,6 ml/l|| 1,3 ml/l||  || 1,3 ml/l|| 1,3 ml/l||
 || Semaine 47 ||  || || 1,3 ml/l|| 2,6 ml/l|| 1,3 ml/l||  || 1,3 ml/l|| 1,3 ml/l||
 
-=== Sugar Peak Basic ===
+== Sugar Peak Basic ==
 
-==== Hydro ====
+=== Hydro ===
 
 || *Semaine* || *Remarque* || *EC* || *Sugar peak Flowering* || *Sugar peak Vegetative* ||
 || Semaine 1 ||  || ||  || 1,3 ml/l||
@@ -577,7 +577,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 10 ||  || || 2,7 ml/l||  ||
 || Semaine 11 ||  || || 2,7 ml/l||  ||
 
-=== Sugar Peak Intermediate ===
+== Sugar Peak Intermediate ==
 
 || *Semaine* || *Remarque* || *EC* || *Sugar peak Flowering* || *Sugar peak Grande Finale* || *Sugar peak Vegetative* ||
 || Semaine 13 ||  || ||  ||  || 1,3 ml/l||
@@ -592,7 +592,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 22 ||  || ||  || 5,3 ml/l||  ||
 || Semaine 23 ||  || ||  || 5,3 ml/l||  ||
 
-=== Sugar Peak Advanced ===
+== Sugar Peak Advanced ==
 
 || *Semaine* || *Remarque* || *EC* || *Sugar peak Briximus Maximus* || *Sugar peak Flowering* || *Sugar peak Grande Finale* || *Sugar peak Transition* || *Sugar peak Vegetative* ||
 || Semaine 25 ||  || ||  ||  ||  ||  || 1,3 ml/l||
@@ -607,7 +607,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 34 ||  || || 15,9 ml/l||  || 5,3 ml/l||  ||  ||
 || Semaine 35 ||  || || 15,9 ml/l||  || 5,3 ml/l||  ||  ||
 
-=== Hi-Brix ===
+== Hi-Brix ==
 
 || *Semaine* || *Remarque* || *EC* || *Hi-Brix Bloom Part B* || *Hi-Brix Grow Part A* ||
 || Semaine 37 ||  || || 1,3 ml/l|| 2,7 ml/l||
@@ -622,7 +622,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 46 ||  || || 5,3 ml/l|| 2,7 ml/l||
 || Semaine 47 ||  || || 8 ml/l||  ||
 
-=== Sweet And Heavy ===
+== Sweet And Heavy ==
 
 || *Semaine* || *Remarque* || *EC* || *Sweet And Heavy Bloom* || *Sweet And Heavy Finish* || *Sweet And Heavy Grow* || *Sweet And Heavy Prime* ||
 || Semaine 49 ||  || || 0,7 ml/l||  || 2 ml/l|| 1,3 ml/l||
@@ -637,7 +637,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 58 ||  || ||  || 5,3 ml/l||  ||  ||
 || Semaine 59 ||  || ||  || 5,3 ml/l||  ||  ||
 
-=== SeaBlast ===
+== SeaBlast ==
 
 || *Semaine* || *Remarque* || *EC* || *SeaBlast Bloom* || *SeaBlast Grow* || *SeaBlast Transition* ||
 || Semaine 61 ||  || ||  || 0,33 ml/l||  ||
@@ -652,7 +652,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 70 ||  || || 1,32 ml/l||  ||  ||
 || Semaine 71 ||  || || 1,32 ml/l||  ||  ||
 
-=== Big Bloomin Guano ===
+== Big Bloomin Guano ==
 
 || *Semaine* || *Remarque* || *EC* || *Big Bloomin Guano* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
 || Semaine 73 ||  || || 1,3 ml/l|| 0,7 ml/l|| 2 ml/l||  || 0,7 ml/l||
