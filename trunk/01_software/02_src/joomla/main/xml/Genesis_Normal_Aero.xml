@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
    <updated>2013-10-29T16:08:18+02:00/updated>
    <id>http://www.cultibox.fr/</id>
-   <title>GHE One Part Coco</title>
+   <title>Genesis Normal Aero</title>
    <subtitle></subtitle>
    <author>
       <name>Cultibox</name>
@@ -10,11 +10,11 @@
       <email>info@cultibox.fr</email>
    </author>
    <category term = "engrais" label = "engrais">
-    <substrat>Coco</substrat>
-    <periode>One Part</periode>
-    <marque>GHE</marque>
+    <substrat>Aero</substrat>
+    <periode>Normal</periode>
+    <marque>Genesis</marque>
    </category>
-   <link rel="self" href="www.cultibox.fr/GHE_Coco.xml" />
+   <link rel="self" href="www.cultibox.fr/Genesis_Aero.xml" />
    <icon></icon>
    <logo></logo>
    <rights type = "text">
@@ -27,28 +27,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>0,6</ec>
       <duration>7</duration>
       <start>0</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>Microbase</name>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>Grow</name>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Total Gro</name>
-        <dosage>0,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Total Bloom</name>
-        <dosage>0,5 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>4 ml/l</dosage>
       </nutriment>
       <color>greenyellow</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S2 Croissance</title>
@@ -57,32 +53,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>0,9</ec>
       <duration>7</duration>
       <start>7</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>Microbase</name>
+        <dosage>8 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>Grow</name>
+        <dosage>8 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Total Gro</name>
-        <dosage>0,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Total Bloom</name>
-        <dosage>0,5 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>8 ml/l</dosage>
       </nutriment>
       <color>yellowgreen</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S3 Croissance</title>
@@ -91,28 +79,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,2</ec>
       <duration>7</duration>
       <start>14</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>2 ml/l</dosage>
+        <name>Microbase</name>
+        <dosage>11 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>Grow</name>
+        <dosage>11 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Total Gro</name>
-        <dosage>2,5 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>11 ml/l</dosage>
       </nutriment>
       <color>darkgreen</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S4 Floraison</title>
@@ -121,28 +105,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,4</ec>
       <duration>7</duration>
       <start>21</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>Microbase</name>
+        <dosage>15 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Grow</name>
+        <dosage>15 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Total Gro</name>
-        <dosage>5 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>15 ml/l</dosage>
       </nutriment>
       <color>khaki</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S5 Floraison</title>
@@ -151,32 +131,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,6</ec>
       <duration>7</duration>
       <start>28</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
+        <name>Microbase</name>
+        <dosage>16 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>Grow</name>
+        <dosage>16 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Total Gro</name>
-        <dosage>4 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Total Bloom</name>
-        <dosage>2,4 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>16 ml/l</dosage>
       </nutriment>
       <color>wheat</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S6 Floraison</title>
@@ -185,28 +157,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,6</ec>
       <duration>7</duration>
       <start>35</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
+        <name>Microbase</name>
+        <dosage>16 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Grow</name>
+        <dosage>16 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Total Bloom</name>
-        <dosage>6 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>16 ml/l</dosage>
       </nutriment>
       <color>tan</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S7 Floraison</title>
@@ -215,24 +183,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,8</ec>
       <duration>7</duration>
       <start>42</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
+        <name>Microbase</name>
+        <dosage>20 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Grow</name>
+        <dosage>10 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Total Bloom</name>
-        <dosage>6 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>20 ml/l</dosage>
       </nutriment>
       <color>goldenrod</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S8 Floraison</title>
@@ -241,24 +209,24 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,8</ec>
       <duration>7</duration>
       <start>49</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
+        <name>Microbase</name>
+        <dosage>20 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Grow</name>
+        <dosage>10 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Total Bloom</name>
-        <dosage>6 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>20 ml/l</dosage>
       </nutriment>
       <color>peru</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S9 Floraison</title>
@@ -267,20 +235,20 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,8</ec>
       <duration>7</duration>
       <start>56</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Microbase</name>
+        <dosage>25 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Total Bloom</name>
-        <dosage>6 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>25 ml/l</dosage>
       </nutriment>
       <color>chocolate</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S10 Floraison</title>
@@ -289,20 +257,20 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,6</ec>
       <duration>7</duration>
       <start>63</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Microbase</name>
+        <dosage>25 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Total Bloom</name>
-        <dosage>6 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>25 ml/l</dosage>
       </nutriment>
       <color>brown</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S11 Floraison</title>
@@ -311,20 +279,20 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text"></content>
-      <ec></ec>
+      <ec>1,2</ec>
       <duration>7</duration>
       <start>70</start>
       <facultative>0<falcutative>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Microbase</name>
+        <dosage>15 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Total Bloom</name>
-        <dosage>6 ml/l</dosage>
+        <name>Bloom</name>
+        <dosage>15 ml/l</dosage>
       </nutriment>
       <color>maroon</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
     <entry>
       <title>S12 Rincage</title>
@@ -333,19 +301,11 @@
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
       <content type = "text">Rincage</content>
-      <ec></ec>
+      <ec>0</ec>
       <duration>7</duration>
       <start>77</start>
       <facultative>0<falcutative>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Ripen</name>
-        <dosage>6 ml/l</dosage>
-      </nutriment>
       <color>black</color>
-      <icon>GHE.png</icon>
+      <icon>Genesis.png</icon>
    </entry>
 </feed>
