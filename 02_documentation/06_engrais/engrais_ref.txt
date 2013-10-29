@@ -6,3 +6,5 @@ Bio Bizz	1	http://www.biobizz.com/fr/
 Hesi	1	http://www.hesinutrients.com
 Earth Juice	1	http://www.hydro-organics.com
 Advanced Nutrient	1	http://www.an-europe.com
+Canna	1	http://www.canna.com/‎
+Genesis	1	http://www.premiergrow.com
