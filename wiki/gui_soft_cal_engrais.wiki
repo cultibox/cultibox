@@ -899,3 +899,92 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || Semaine 11 ||  || || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 ml/l|| 1 ml/l||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  ||  ||  || 8 ml/l||  ||
 || Semaine 12 || Rincage || ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
+= Canna =
+
+Source : [http://www.canna.com/‎ Schéma de culture]
+
+== Aqua ==
+
+=== Hydro ===
+
+|| *Semaine* || *Remarque* || *EC* || *Aqua Flores* || *Aqua Vega* || *CannaBoost* || *CannaZym* || *PK 13/14* || *Rhizotonic* ||
+|| Semaine 1 ||  || 1,1||  || 2 ml/l||  ||  ||  || 4 ml/l||
+|| Semaine 2 ||  || 1,6||  || 2,5 ml/l||  || 2,5 ml/l||  || 1 ml/l||
+|| Semaine 3 ||  || 1,6||  || 2,5 ml/l||  || 2,5 ml/l||  || 1 ml/l||
+|| Semaine 4 ||  || 1,3|| 3,5 ml/l||  || 2 ml/l|| 2,5 ml/l||  || 0,5 ml/l||
+|| Semaine 5 ||  || 1,42|| 3,5 ml/l||  || 2,25 ml/l|| 2,5 ml/l||  || 0,5 ml/l||
+|| Semaine 6 ||  || 1,54|| 3 ml/l||  || 2,5 ml/l|| 2,5 ml/l|| 1,5 ml/l|| 0,5 ml/l||
+|| Semaine 7 ||  || 1,66|| 3 ml/l||  || 2,75 ml/l|| 2,5 ml/l||  || 0,5 ml/l||
+|| Semaine 8 ||  || 1,78|| 3 ml/l||  || 3,25 ml/l|| 2,5 ml/l||  || 0,5 ml/l||
+|| Semaine 9 ||  || 1,9|| 3 ml/l||  || 3,5 ml/l|| 2,5 ml/l||  || 0,5 ml/l||
+|| Semaine 10 ||  || 0|| 2,5 ml/l||  || 3,75 ml/l|| 2,5 ml/l||  ||  ||
+|| Semaine 11 ||  || 0|| 2,5 ml/l||  || 4 ml/l|| 2,5 ml/l||  ||  ||
+
+== Hydro ==
+
+=== Hydro ===
+
+|| *Semaine* || *Remarque* || *EC* || *Aqua Flores* || *CannaBoost* || *CannaZym* || *Hydro Flores* || *Hydro Vega* || *PK 13/14* || *Rhizotonic* ||
+|| Semaine 1 ||  || 1,1||  ||  ||  ||  || 2 ml/l||  || 4 ml/l||
+|| Semaine 2 ||  || 1,6||  ||  || 2,5 ml/l||  || 3 ml/l||  || 1 ml/l||
+|| Semaine 3 ||  || 1,6||  ||  || 2,5 ml/l||  || 3 ml/l||  || 1 ml/l||
+|| Semaine 4 ||  || 1,3||  || 2 ml/l|| 2,5 ml/l|| 3,5 ml/l||  ||  || 0,5 ml/l||
+|| Semaine 5 ||  || 1,42||  || 2,25 ml/l|| 2,5 ml/l|| 3,5 ml/l||  ||  || 0,5 ml/l||
+|| Semaine 6 ||  || 1,7|| 3 ml/l|| 2,5 ml/l|| 2,5 ml/l||  ||  || 1,5 ml/l|| 0,5 ml/l||
+|| Semaine 7 ||  || 1,4|| 3 ml/l|| 2,75 ml/l|| 2,5 ml/l||  ||  ||  || 0,5 ml/l||
+|| Semaine 8 ||  || 1,5|| 3 ml/l|| 3,25 ml/l|| 2,5 ml/l||  ||  ||  || 0,5 ml/l||
+|| Semaine 9 ||  || 1,6|| 3 ml/l|| 3,5 ml/l|| 2,5 ml/l||  ||  ||  || 0,5 ml/l||
+|| Semaine 10 ||  || 0||  || 3,75 ml/l|| 2,5 ml/l||  ||  ||  ||  ||
+|| Semaine 11 ||  || 0||  || 4 ml/l|| 2,5 ml/l||  ||  ||  ||  ||
+
+= Genesis =
+
+Source : [http://www.premiergrow.com Schéma de culture]
+
+== Normal ==
+
+=== Terre ===
+
+|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Grow* || *Microbase* ||
+|| Semaine 1 ||  || 0,6|| 4 ml/l|| 4 ml/l|| 4 ml/l||
+|| Semaine 2 ||  || 0,9|| 8 ml/l|| 8 ml/l|| 8 ml/l||
+|| Semaine 3 ||  || 1,2|| 11 ml/l|| 11 ml/l|| 11 ml/l||
+|| Semaine 4 ||  || 1,4|| 15 ml/l|| 15 ml/l|| 15 ml/l||
+|| Semaine 5 ||  || 1,6|| 16 ml/l|| 16 ml/l|| 16 ml/l||
+|| Semaine 6 ||  || 1,6|| 16 ml/l|| 16 ml/l|| 16 ml/l||
+|| Semaine 7 ||  || 1,8|| 20 ml/l|| 10 ml/l|| 20 ml/l||
+|| Semaine 8 ||  || 1,8|| 20 ml/l|| 10 ml/l|| 20 ml/l||
+|| Semaine 9 ||  || 1,8|| 25 ml/l||  || 25 ml/l||
+|| Semaine 10 ||  || 1,6|| 25 ml/l||  || 25 ml/l||
+|| Semaine 11 ||  || 1,2|| 15 ml/l||  || 15 ml/l||
+
+=== Hydro ===
+
+|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Grow* || *Microbase* ||
+|| Semaine 1 ||  || 0,6|| 4 ml/l|| 4 ml/l|| 4 ml/l||
+|| Semaine 2 ||  || 0,9|| 8 ml/l|| 8 ml/l|| 8 ml/l||
+|| Semaine 3 ||  || 1,2|| 11 ml/l|| 11 ml/l|| 11 ml/l||
+|| Semaine 4 ||  || 1,4|| 15 ml/l|| 15 ml/l|| 15 ml/l||
+|| Semaine 5 ||  || 1,6|| 16 ml/l|| 16 ml/l|| 16 ml/l||
+|| Semaine 6 ||  || 1,6|| 16 ml/l|| 16 ml/l|| 16 ml/l||
+|| Semaine 7 ||  || 1,8|| 20 ml/l|| 10 ml/l|| 20 ml/l||
+|| Semaine 8 ||  || 1,8|| 20 ml/l|| 10 ml/l|| 20 ml/l||
+|| Semaine 9 ||  || 1,8|| 25 ml/l||  || 25 ml/l||
+|| Semaine 10 ||  || 1,6|| 25 ml/l||  || 25 ml/l||
+|| Semaine 11 ||  || 1,2|| 15 ml/l||  || 15 ml/l||
+
+=== Aero ===
+
+|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Grow* || *Microbase* ||
+|| Semaine 1 ||  || 0,6|| 4 ml/l|| 4 ml/l|| 4 ml/l||
+|| Semaine 2 ||  || 0,9|| 8 ml/l|| 8 ml/l|| 8 ml/l||
+|| Semaine 3 ||  || 1,2|| 11 ml/l|| 11 ml/l|| 11 ml/l||
+|| Semaine 4 ||  || 1,4|| 15 ml/l|| 15 ml/l|| 15 ml/l||
+|| Semaine 5 ||  || 1,6|| 16 ml/l|| 16 ml/l|| 16 ml/l||
+|| Semaine 6 ||  || 1,6|| 16 ml/l|| 16 ml/l|| 16 ml/l||
+|| Semaine 7 ||  || 1,8|| 20 ml/l|| 10 ml/l|| 20 ml/l||
+|| Semaine 8 ||  || 1,8|| 20 ml/l|| 10 ml/l|| 20 ml/l||
+|| Semaine 9 ||  || 1,8|| 25 ml/l||  || 25 ml/l||
+|| Semaine 10 ||  || 1,6|| 25 ml/l||  || 25 ml/l||
+|| Semaine 11 ||  || 1,2|| 15 ml/l||  || 15 ml/l||
+
