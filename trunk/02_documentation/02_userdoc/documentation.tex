@@ -17,7 +17,9 @@
 \usepackage{lscape}
 \usepackage{calc}
 \usepackage{xcolor}
+\usepackage{pdflscape}
 % These packages are all incorporated in the memoir class to one degree or another...
+
 %%% HEADERS & FOOTERS                                                         
 \usepackage{fancyhdr} % This should be set AFTER setting up the page geometry 
 \pagestyle{fancy} % options: empty , plain , fancy           
@@ -29,6 +31,10 @@
 \fancyfoot[C]{Green Box SAS}
 \fancyfoot[R]{\textbf{page \thepage}}
 \setlength{\headheight}{15pt}
+%%% Definition de la profondeur de la numerotation
+\setcounter{secnumdepth}{7}
+\setcounter{tocdepth}{7}
+
 %%% Command
 \newlength{\imgwidth}
 \newcommand\scalegraphics[1]{%
@@ -40,11 +46,13 @@
 \usepackage{sectsty}            
 \allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)  
 % (This matches ConTeXt defaults)   
+
 %%% ToC (table of contents) APPEARANCE 
 \usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC 
 \usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
 \renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
 %%% END Article customizations
 %%% The "real" document content comes below...
 \title{Manuel d'utilisation de la Cultibox}
@@ -103,6 +111,7 @@
 \input{./wiki_tex/gui_soft_cost}
 \input{./wiki_tex/gui_soft_cal}
 \input{./wiki_tex/gui_soft_cal_lunar}
+\input{./wiki_tex/gui_soft_cal_engrais}
 \input{./wiki_tex/gui_soft_wizard}
 \input{./wiki_tex/gui_soft_historic}
 \input{./wiki_tex/gui_box}
