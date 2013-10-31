@@ -307,7 +307,7 @@ while {[eof $fidIn] != 1} {
                 puts $fid ""
                     
                 foreach Semaine $listSemaine {
-                    puts -nonewline $fid "|| Semaine $Semaine || $eng(${Semaine},remarque) || $eng(${Semaine},ec)"
+                    puts -nonewline $fid "|| $Semaine || $eng(${Semaine},remarque) || $eng(${Semaine},ec)"
                     foreach Engrais $listEngrais {
                         if {[array names eng ${Semaine},${Engrais}] != ""} {
                             puts -nonewline $fid "|| $eng(${Semaine},${Engrais})"
