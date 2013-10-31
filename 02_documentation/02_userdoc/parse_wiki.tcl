@@ -70,25 +70,26 @@ proc parseTitle {line level} {
    
    switch -- ${level} {
       "-1" {
-         return "\\part\{${summary}\}  $label"
+         return "\\part\{${summary}\}  $label  "
       }
       "0" {
-         return "\\chapter\{${summary}\}  $label"
+         return "\\chapter\{${summary}\}  $label  "
       }
       "1" {
-         return "\\section\{${summary}\}  $label"
+         return "\\section\{${summary}\}  $label  "
       }
       "2" {
-         return "\\subsection\{${summary}\}  $label"
+         return "\\subsection\{${summary}\}  $label  "
       }
       "3" {
-         return "\\subsubsection\{${summary}\}  $label"
+		# On ajoute un saute de ligne pour les section inférieurs à subsubsection
+         return "\\subsubsection\{${summary}\}  $label  \\leavevmode\\par"
       }
       "4" {
-         return "\\paragraph\{${summary}\}  $label"
+         return "\\paragraph\{${summary}\}  $label  \\leavevmode\\par"
       }
       "5" {
-         return "\\subparagraph\{${summary}\}  $label"
+         return "\\subparagraph\{${summary}\}  $label  \\leavevmode\\par"
       }                        
    }
    
@@ -117,32 +118,45 @@ proc searchSumary {file} {
 }
 
 set inTab 0
+set Landscape 0
 proc parseTab {line} {
 
-   if {[string first "||" $line] != -1} {
-       set lineSplitt ""
-       foreach elem [split $line "||" ] {
-         if {$elem != ""} {
-            lappend lineSplitt $elem
-         }
-       }
-       set nbCol [llength $lineSplitt]
-   
-      set line "\\hline\n[join $lineSplitt " & "] \\tabularnewline"
-   
-      if {$::inTab == 0} {
-         set line "\n\\begin{tabular}\{|*\{${nbCol}\}\{p\{[expr $::largeurTable / ${nbCol} ]cm\}|\}\}\n$line"
-      }
-      
-      set ::inTab 1
+	if {[string first "||" $line] != -1} {
+		set lineSplitt ""
+		foreach elem [split $line "||" ] {
+			if {$elem != ""} {
+				lappend lineSplitt $elem
+			}
+		}
+		set nbCol [llength $lineSplitt]
+		set lineout ""
+		if {$nbCol > 11} {
+			set ::Landscape 1
+			set lineout "\\begin{landscape}"
+		}
 
-   } else {
-      if {$::inTab == 1} {
-         set line "\\hline\n\\end{tabular}\n$line"
-         set ::inTab 0
-      }
-   }
-   return $line
+		set LargeurCellule  [expr $::largeurTable / (1.0 * ${nbCol}) ]
+
+		set line "\\hline\n[join $lineSplitt " & "] \\tabularnewline"
+
+		if {$::inTab == 0} {
+			set line "${lineout}\n\\begin{tabular}\{|*\{${nbCol}\}\{p\{${LargeurCellule}cm\}|\}\}\n$line"
+		}
+
+		set ::inTab 1
+
+	} else {
+		if {$::inTab == 1} {
+			
+			set line "\\hline\n\\end{tabular}\n$line"
+			set ::inTab 0
+			if {$::Landscape == 1} {
+				set line "${line}\n\\end{landscape}"
+			}
+			set ::Landscape 0
+		}
+	}
+	return $line
 }
 
 set inListe 0
@@ -336,8 +350,10 @@ puts $fid {\usepackage{hyperref}}
 puts $fid {\usepackage{lscape}}
 puts $fid {\usepackage{calc}}
 puts $fid {\usepackage{xcolor}}
+puts $fid {\usepackage{pdflscape}}
 # puts $fid {\usepackage{wallpaper}}
 puts $fid {% These packages are all incorporated in the memoir class to one degree or another...}
+puts $fid {}
 
 puts $fid {%%% HEADERS & FOOTERS                                                         }
 puts $fid {\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry }
@@ -352,6 +368,11 @@ puts $fid {\fancyfoot[C]{Green Box SAS}}
 puts $fid {\fancyfoot[R]{\textbf{page \thepage}}}
 puts $fid {\setlength{\headheight}{15pt}}
 
+puts $fid {%%% Definition de la profondeur de la numerotation}
+puts $fid {\setcounter{secnumdepth}{7}}
+puts $fid {\setcounter{tocdepth}{7}}
+puts $fid {}
+
 puts $fid {%%% Command}
 puts $fid {\newlength{\imgwidth}}
 puts $fid "\\newcommand\\scalegraphics\[1\]\{%"   
@@ -364,12 +385,14 @@ puts $fid {%%% SECTION TITLE APPEARANCE    }
 puts $fid {\usepackage{sectsty}            }
 puts $fid {\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)  }
 puts $fid {% (This matches ConTeXt defaults)   }
+puts $fid {}
 
 puts $fid {%%% ToC (table of contents) APPEARANCE }
 puts $fid {\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC }
 puts $fid {\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents}
 puts $fid {\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}}
 puts $fid {\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!}
+puts $fid {}
 
 puts $fid {%%% END Article customizations}
 
