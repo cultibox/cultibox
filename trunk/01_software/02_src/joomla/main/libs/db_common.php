@@ -3275,5 +3275,68 @@ EOF;
 // }}}
 
 
+// {{{ get_title_list()
+// ROLE get list of available titles from the calendar database
+// RET return array containing data
+function get_title_list() {
+    $title=array();
+
+    foreach($GLOBALS['LIST_SUBJECT_CALENDAR'] as $value) {
+        switch ($value) {
+            case 'Beginning':
+                $title[]=__('SUBJECT_START','calendar');
+               break;
+            case 'Fertilizers':
+               $title[]=__('SUBJECT_FERTILIZERS','calendar');
+               break;
+            case 'Water':
+               $title[]=__('SUBJECT_WATER','calendar');
+               break;
+            case 'Bloom':
+               $title[]=__('SUBJECT_BLOOM','calendar');
+               break;
+            case 'Harvest':
+               $title[]=__('SUBJECT_HARVEST','calendar');
+               break;
+            case 'Other':
+               $tmp=__('SUBJECT_OTHER','calendar');
+               break;
+        }
+    }
+
+    $sql = <<<EOF
+SELECT DISTINCT `title` from `calendar`
+EOF;
+   $db=db_priv_pdo_start();
+   $res="";
+   try {
+       $sth=$db->prepare("$sql");
+       $sth->execute();
+       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
+
+   if(!empty($res)) {
+        foreach($res as $result) {
+            foreach($result as $data) {
+               if(strcmp(rtrim($data),$tmp)!=0) {
+                $title[]=rtrim($data);
+               }
+            }
+        }
+   }
+
+   //To put the 'other' value at the end:
+   $title_return=array_unique($title);
+   $title_return[]=$tmp;
+
+   return $title_return;
+}
+// }}}
+
 
 ?>
+
+
