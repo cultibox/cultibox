@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-   <updated>2013-10-29T16:08:18+02:00/updated>
+   <updated>2013-11-01T19:18:27+02:00</updated>
    <id>http://www.cultibox.fr/</id>
    <title>Advanced Nutrients Sensi Grow Medium Feed Hydro</title>
    <subtitle></subtitle>
@@ -30,7 +30,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>0</start>
-      <facultative>0<falcutative>
+      <facultative>0</facultative>
       <nutriment>
         <name>Sensi Grow A</name>
         <dosage>4 ml/l</dosage>
@@ -84,7 +84,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>7</start>
-      <facultative>0<falcutative>
+      <facultative>0</facultative>
       <nutriment>
         <name>Sensi Grow A</name>
         <dosage>4 ml/l</dosage>
@@ -138,7 +138,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>14</start>
-      <facultative>0<falcutative>
+      <facultative>0</facultative>
       <nutriment>
         <name>Sensi Grow A</name>
         <dosage>4 ml/l</dosage>
@@ -192,7 +192,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>21</start>
-      <facultative>0<falcutative>
+      <facultative>0</facultative>
       <nutriment>
         <name>Sensi Bloom A</name>
         <dosage>2 ml/l</dosage>
@@ -250,7 +250,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>28</start>
-      <facultative>0<falcutative>
+      <facultative>0</facultative>
       <nutriment>
         <name>Sensi Bloom A</name>
         <dosage>2,4 ml/l</dosage>
@@ -308,7 +308,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>35</start>
-      <facultative>0<falcutative>
+      <facultative>0</facultative>
       <nutriment>
         <name>Sensi Bloom A</name>
         <dosage>2,8 ml/l</dosage>
@@ -362,7 +362,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>42</start>
-      <facultative>0<falcutative>
+      <facultative>0</facultative>
       <nutriment>
         <name>Sensi Bloom A</name>
         <dosage>3,2 ml/l</dosage>
@@ -416,7 +416,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>49</start>
-      <facultative>0<falcutative>
+      <facultative>0</facultative>
       <nutriment>
         <name>Sensi Bloom A</name>
         <dosage>2,8 ml/l</dosage>
@@ -470,7 +470,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>56</start>
-      <facultative>0<falcutative>
+      <facultative>0</facultative>
       <nutriment>
         <name>Sensi Bloom A</name>
         <dosage>2,4 ml/l</dosage>
@@ -524,7 +524,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>63</start>
-      <facultative>1<falcutative>
+      <facultative>1</facultative>
       <nutriment>
         <name>Sensi Bloom A</name>
         <dosage>2,4 ml/l</dosage>
@@ -578,7 +578,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>70</start>
-      <facultative>1<falcutative>
+      <facultative>1</facultative>
       <nutriment>
         <name>Sensi Bloom A</name>
         <dosage>2,4 ml/l</dosage>
@@ -632,7 +632,7 @@
       <ec></ec>
       <duration>7</duration>
       <start>77</start>
-      <facultative>0<falcutative>
+      <facultative>0</facultative>
       <nutriment>
         <name>Final Phase</name>
         <dosage>2,5 ml/l</dosage>
