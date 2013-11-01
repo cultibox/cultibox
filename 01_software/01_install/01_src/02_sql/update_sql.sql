@@ -24,7 +24,7 @@ SET CHARACTER SET utf8;
 -- Version 1.1.7:
 -- UPDATE `cultibox`.`plugs` SET `PLUG_ID` = '';
 
-UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.13-amd64' WHERE `configuration`.`id` =1;
+UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.36-amd64' WHERE `configuration`.`id` =1;
 
 -- Version 1.1.8:
 -- ALTER TABLE `cultibox`.`configuration` DROP `LOG_TEMP_AXIS` , DROP `LOG_HYGRO_AXIS` ;
@@ -62,12 +62,12 @@ UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.13-amd64' WHERE `configur
 -- ALTER TABLE `cultibox`.`plugs` CHANGE `PLUG_POWER` `PLUG_POWER` INT( 11 ) NULL DEFAULT NULL;
 
 -- Version 1.1.25:
-ALTER TABLE `cultibox`.`configuration` DROP COLUMN `ALARM_SENSO`;
-ALTER TABLE `cultibox`.`configuration` DROP COLUMN `ALARM_SENSS`;
+-- ALTER TABLE `cultibox`.`configuration` DROP COLUMN `ALARM_SENSO`;
+-- ALTER TABLE `cultibox`.`configuration` DROP COLUMN `ALARM_SENSS`;
 
-ALTER TABLE `cultibox`.`configuration` ADD `SHOW_COST` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
-ALTER TABLE `cultibox`.`configuration` ADD `SHOW_WIZARD` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
-ALTER TABLE `cultibox`.`configuration` ADD `SHOW_HISTORIC` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
+-- ALTER TABLE `cultibox`.`configuration` ADD `SHOW_COST` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
+-- ALTER TABLE `cultibox`.`configuration` ADD `SHOW_WIZARD` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
+-- ALTER TABLE `cultibox`.`configuration` ADD `SHOW_HISTORIC` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
 
 -- Version 1.1.26:
 ALTER TABLE `cultibox`.`configuration` DROP COLUMN `SHOW_WIZARD`;
