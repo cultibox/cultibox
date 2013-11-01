@@ -29,12 +29,13 @@ $pop_up_message="";
 $calendar_start=getvar('calendar_startdate');
 $xml_list=get_external_calendar_file();
 
-
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
 $_SESSION['LANG'] = get_current_lang();
 $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 $lang=$_SESSION['LANG'];
 __('LANG');
+
+$title_list=get_title_list();
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card

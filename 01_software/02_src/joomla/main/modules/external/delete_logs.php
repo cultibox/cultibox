@@ -18,6 +18,7 @@ if((isset($_GET['type_reset']))&&(!empty($_GET['type_reset']))) {
 }
 
 
+
 if((isset($type))&&(!empty($type))&&(isset($type_reset))&&(!empty($type_reset))) {
     if(strcmp($type_reset,"all")==0) {
         if(reset_log($type)) {

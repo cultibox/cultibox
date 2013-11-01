@@ -2,8 +2,11 @@ var OK_button="";
 var CANCEL_button="";
 var CLOSE_button="";
 var DELETE_button="";
+var REDUCE_button="";
+var EXTEND_button="";
 
 var lang="";
+var reduced="";
 
 lang = window.location.pathname.match(/\/fr\//g);
 if(!lang) {
@@ -29,30 +32,40 @@ if(lang=="/it/") {
     CLOSE_button="Chiudere";
     DELETE_button="Rimuovere";
     SAVE_button="Registrati";
+    REDUCE_button="Abbassare";
+    EXTEND_button="Ingrandisci"
 } else if(lang=="/de/") {
     OK_button="Weiter";
     CANCEL_button="Stornieren";
     CLOSE_button="Schliessen";
     DELETE_button="Entfernen";
     SAVE_button="Registrieren";
+    REDUCE_button="Senken";
+    EXTEND_button="Vergrößern"
 } else if(lang=="/en/") {
     OK_button="OK";
     CANCEL_button="Cancel";
     CLOSE_button="Close";
     DELETE_button="Delete";
     SAVE_button="Save";
+    REDUCE_button="Shorten";
+    EXTEND_button="Enlarge"
 } else if(lang=="/es/") {
     OK_button="Continuar";
     CANCEL_button="Cancelar";
     CLOSE_button="Cerrar";
     DELETE_button="Eliminar";
     SAVE_button="Registro";
+    REDUCE_button="Bajar";
+    EXTEND_button="Agrandar"
 } else {
     OK_button="Continuer";
     CANCEL_button="Annuler";
     CLOSE_button="Fermer";
     DELETE_button="Supprimer";
     SAVE_button="Enregistrer";
+    REDUCE_button="Réduire";
+    EXTEND_button="Agrandir"
 }
 
 diffdate = function(d1,d2) {
@@ -137,7 +150,7 @@ delete_logs = function(type, type_reset, nb_jours, start,count) {
                     $("#error_delete_log_power").show();
                 }
               } else {
-                 if(data=="1") {
+                 if(data==1) {
                      if(type=="logs") {
                         $("#progress_bar_delete_logs").progressbar({value:pourcent});  
                      } else {
@@ -256,7 +269,7 @@ loadLog = function(nb_day,pourcent,type,pourcent,search) {
                         $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
                         return true;
                     } else {
-                        if(data=="-2") {
+                        if(data==-2) {
                             $("#success_load_still_log").show();
                         } 
 
@@ -299,8 +312,42 @@ $(document).ready(function() {
         var wid = 325;
     }
 
+    if ( typeof data.split(',')[3] !== "undefined" && data.split(',')[3]) {
+        reduced  = String(data.split(',')[3].replace("\"", ""));
+    } else {
+        reduced="False";
+    }
 
-    $( ".message" ).dialog({ width: wid, resizable: true, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } } ], hide: "fold", dialogClass: "dialog_message", position: [x,y], dragStop: function( event, ui ) { 
+
+    $( ".message" ).dialog({ width: wid, resizable: true, buttons: [ 
+        { 
+            text: CLOSE_button, 
+            click: function() { $( this ).dialog( "close" ); }
+        }, {
+            text: REDUCE_button, 
+            id: "button_reduce" ,
+            click: function() { 
+                if(reduced=="True") {
+                    $(this).dialog('option', 'height', 'auto');
+                    $(this).parent().find(".ui-dialog-buttonset .ui-button-text:eq(1)").text(REDUCE_button);
+                    var tmp_reduced="False";
+                } else {
+                    $(this).dialog('option', 'height', 10); 
+                    $(this).parent().find(".ui-dialog-buttonset .ui-button-text:eq(1)").text(EXTEND_button);
+                    var tmp_reduced="True";
+                }
+                var tmp = $(".message").dialog( "option", "position" );
+                var width = $(".message").dialog( "option", "width" );
+
+                $.ajax({
+                cache: false,
+                url: "../../main/modules/external/position.php",
+                data: { POSITION_X: tmp[0], POSITION_Y: tmp[1], WIDTH: width, REDUCED: tmp_reduced }
+                });
+                reduced=tmp_reduced;
+        }} ], 
+        hide: "fold", dialogClass: "dialog_message", position: [x,y], dragStop: function( event, ui ) { 
+
         if(data!="") { 
             var tmp = $(".message").dialog( "option", "position" );
             var width = $(".message").dialog( "option", "width" );
@@ -308,8 +355,14 @@ $(document).ready(function() {
             $.ajax({
                 cache: false,
                 url: "../../main/modules/external/position.php",
-                data: { POSITION_X: tmp[0], POSITION_Y: tmp[1], WIDTH: width }
+                data: { POSITION_X: tmp[0], POSITION_Y: tmp[1], WIDTH: width, REDUCED: reduced }
                 }); 
+        }
+    },
+    create: function( event, ui ) {
+            if(reduced=="True") {
+                $(this).dialog('option', 'height', 10);
+                $(this).parent().find(".ui-dialog-buttonset .ui-button-text:eq(1)").text(EXTEND_button);
             }
     },
     resizeStop: function( event, ui ) {
@@ -801,8 +854,8 @@ $(document).ready(function() {
                     url: "../../main/modules/external/check_value.php",
                     data: {value:$("#repeat_time").val(),type:'cyclic_time'}
                 }).done(function (data) {
-                    if(data!="1") {
-                        if(data=="2") {
+                    if(data!=1) {
+                        if(data==2) {
                             $("#error_minimal_cyclic").show(700);
                             $('#repeat_time').val("01:00:00");
                         } else {
@@ -822,7 +875,7 @@ $(document).ready(function() {
                         url: "../../main/modules/external/check_value.php",
                         data: {value:$("#value_program").val(),type:'value_program',plug_type:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']}
                     }).done(function (data) {
-                        if(data!="1") {
+                        if(data!=1) {
                             $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[data]);
                             $("#error_value_program").show(700);
                             checked=false;
@@ -955,6 +1008,15 @@ $(document).ready(function() {
           
     });
 
+    $('#select_title').change(function () {
+        var length = $('#select_title').children('option').length;
+        if(($("#select_title").prop('selectedIndex')+1)==length) {
+           $("#other_title_div").show();
+        } else {
+            $("#other_title_div").css("display","none");
+        }
+    });
+
 
     // Check errors for the wizard part:
     $("#finish, #next_plug").click(function(e) {
@@ -1018,7 +1080,7 @@ $(document).ready(function() {
                     url: "../../main/modules/external/check_value.php",
                     data: {value:$("#value_program").val(),type:'value_program',plug_type:plug_type}
                 }).done(function (data) {
-                    if(data!="1") {
+                    if(data!=1) {
                         $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[data]);
                         $("#error_value_program").show(700);
                         checked=false;
@@ -1072,7 +1134,7 @@ $(document).ready(function() {
                     url: "../../main/modules/external/update_calendar_external.php",
                     data: {substrat:$("#substrat").val(), product:$("#product").val(), calendar_start:$("#calendar_startdate").val(), sd_card: sd_card}
                 }).done(function (data) {
-                   if(data=="1") {
+                   if(data==1) {
                             $('#calendar').fullCalendar( 'refetchEvents' );
                             $("#valid_create_calendar").dialog({
                                 resizable: true,
@@ -1439,7 +1501,7 @@ $(document).ready(function() {
                    url: "../../main/modules/external/update_config_xml.php",
                    data: {list:list}
                 }).done(function (data) {
-                    if(data=="1") {
+                    if(data==1) {
                         $('#calendar').fullCalendar( 'refetchEvents' );
                     }
                 });
@@ -1465,9 +1527,8 @@ $(document).ready(function() {
                             url: "../../main/modules/external/delete_logs.php",
                             data: {type:"calendar",type_reset:"all"}
                         }).done(function (data) {
-                            if(data=="1") {
+                            if(data==1) {
                                 $('#calendar').fullCalendar( 'refetchEvents' );
-        
                                 $("#valid_reset_calendar").dialog({
                                     resizable: true,
                                     width: 450,

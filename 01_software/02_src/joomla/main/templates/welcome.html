@@ -9,7 +9,8 @@
 <?php } ?>
 
 <?php if((((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)))||((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0))) { ?>
-<div class="message" style="display:none">
+<div class="message" style="display:none" title="<?php echo __('MESSAGE_BOX'); ?>">
+        <br />
         <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
 <img src="main/libs/img/informations.png" alt="" /><label class="info_title"><?php echo __('INFORMATION'); ?>:</label>
 <div class="info">
@@ -43,6 +44,7 @@ function(){
 });
 </script>
 <?php } ?>
+
 <br />
 
 <div class="welcome"> 

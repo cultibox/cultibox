@@ -1470,6 +1470,9 @@ msgstr "Une mise à jour est disponible pour passer vers une version plus récen
 msgid "STILL_LOG_FILE"
 msgstr "Il reste des fichiers des données de température, d'humidité ou de puissance plus anciens à charger, pour cela utilisez le bouton 'importer les logs'"
 
+msgid "MESSAGE_BOX"
+msgstr "Messages du logiciel"
+
 # For the tooltip part:
 msgid "TOOLTIP_SEND_INFOS"
 msgstr "En activant cette option, vous permettez l'envoie d'informations sur un site distant afin d'aider au développement et à la correction d'erreurs du système Cultibox. Les informations envoyées concernent: la version du logiciel, le type de votre navigateur, les versions des firmwares de la Cultibox et votre type de système d'exploitation"

@@ -3,6 +3,9 @@ Cultibox (1.1.36) precise; urgency=low
     + Ajout d'informations sur le calcul du coût réel et théorique dans l'onglet des coûts
     + Correction du filtre sur le champ substrat sans la carte SD  breanchée
     + Correction de l'ajout ou la modification d'un évènement du calendrier avec une remarque vide qui posait ne marchait pas
+    + Ajout d'un bouton dee réduction et d'agrandissement automatique pour la boite de message
+    + Possibilité d'ajouter des titres qui ne sont pas dans la liste prédéfinie dans le calendrier
+    + Multiples corrections sur le calendrier
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sat Oct 26 12:58:55 CEST 2013
 
