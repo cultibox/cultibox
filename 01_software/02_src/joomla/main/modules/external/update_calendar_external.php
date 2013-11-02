@@ -114,7 +114,10 @@ if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_prod
 
                                             // Add in description part content section
                                             if(array_key_exists('content', $val))  {
-                                                $desc=$desc.$val['content'];
+                                                // Si c'est un vecteur, c'est que le champs est vide
+                                                if (!is_array($val['content'])) {
+                                                    $desc=$desc.$val['content'];
+                                                }
                                             }
 
                                             $event[]=array(
