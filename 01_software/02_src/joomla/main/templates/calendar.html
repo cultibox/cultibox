@@ -673,7 +673,16 @@ product_array = <?php echo json_encode($product) ?>;
             <td><input id="event_name" name="event_name" type="text" class="whitefield" size="10" value=""></td>
             <td></td>
         </tr>
-
+        <tr>
+            <td></td>
+            <td><?php echo __('CALENDAR_SELECT_CROISSANCE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_SELECT_CROISSANCE'); ?>" /></td>
+            <td>
+                <input type="radio" name="select_croissance" id="select_croissance" value="croi" checked="" /> <?php echo __('CALENDAR_CROISSANCE'); ?>
+                <input type="radio" name="select_croissance" id="select_croissance" value="flo" checked="" /> <?php echo __('CALENDAR_FLORAISON'); ?>
+                <input type="radio" name="select_croissance" id="select_croissance" value="all" checked="" /> <?php echo __('CALENDAR_CROISSANCE_+_FLORAISON'); ?>
+            </td>
+            <td></td>
+        </tr>
     </table>
     <p class="p_center"><input type="submit" id="calendar-program" name="calendar-program" title="<?php echo __('TOOLTIP_CREATE_CALENDAR_PROGRAM'); ?>" <?php if((count($product)==0)||(count($substrat)==0)) { ?>class="inputDisable" disabled value="<?php echo __('DISABLED_CREATE_CALENDAR_PROGRAM'); ?>" <?php } else { ?> value="<?php echo __('CREATE_CALENDAR_PROGRAM'); ?>" <?php } ?>></p>
 </form>
