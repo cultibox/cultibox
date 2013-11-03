@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-   <updated>2013-11-01T19:18:27+02:00</updated>
+   <updated>2013-11-03T10:37:57+02:00</updated>
    <id>http://www.cultibox.fr/</id>
    <title>Earth Juice Simple Terre</title>
    <subtitle></subtitle>
@@ -31,7 +31,7 @@
       <duration>7</duration>
       <start>0</start>
       <facultative>0</facultative>
-      <color>greenyellow</color>
+      <color>#98FB98</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -45,7 +45,7 @@
       <duration>7</duration>
       <start>7</start>
       <facultative>0</facultative>
-      <color>yellowgreen</color>
+      <color>#9ACD32</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -63,7 +63,7 @@
         <name>Grow</name>
         <dosage>4 ml/l</dosage>
       </nutriment>
-      <color>darkgreen</color>
+      <color>#006400</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -81,7 +81,7 @@
         <name>Grow</name>
         <dosage>4 ml/l</dosage>
       </nutriment>
-      <color>khaki</color>
+      <color>#F0E68C</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -99,7 +99,7 @@
         <name>Grow</name>
         <dosage>4 ml/l</dosage>
       </nutriment>
-      <color>wheat</color>
+      <color>#F5DEB3</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -117,7 +117,7 @@
         <name>Grow</name>
         <dosage>4 ml/l</dosage>
       </nutriment>
-      <color>tan</color>
+      <color>#D2B48C</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -139,7 +139,7 @@
         <name>Bloom</name>
         <dosage>4 ml/l</dosage>
       </nutriment>
-      <color>goldenrod</color>
+      <color>#DAA520</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -161,7 +161,7 @@
         <name>Bloom</name>
         <dosage>4 ml/l</dosage>
       </nutriment>
-      <color>peru</color>
+      <color>#CD853F</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -183,7 +183,7 @@
         <name>Bloom</name>
         <dosage>4 ml/l</dosage>
       </nutriment>
-      <color>chocolate</color>
+      <color>#D2691E</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -205,7 +205,7 @@
         <name>Bloom</name>
         <dosage>4 ml/l</dosage>
       </nutriment>
-      <color>brown</color>
+      <color>#A0522D</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -223,7 +223,7 @@
         <name>Bloom</name>
         <dosage>4 ml/l</dosage>
       </nutriment>
-      <color>maroon</color>
+      <color>#8B4513</color>
       <icon>Earth_Juice.png</icon>
    </entry>
     <entry>
@@ -237,7 +237,7 @@
       <duration>7</duration>
       <start>77</start>
       <facultative>0</facultative>
-      <color>black</color>
+      <color>#000000</color>
       <icon>Earth_Juice.png</icon>
    </entry>
 </feed>

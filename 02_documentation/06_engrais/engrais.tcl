@@ -110,74 +110,74 @@ while {[eof $fidIn] != 1} {
                 "Graines" {
                     set start 0
                     set phase Croissance
-                    set color greenyellow
+                    set color "#98FB98"
                 }
                 "S2" -
                 "Plantules" {
                     set start 7
                     set phase Croissance
-                    set color yellowgreen
+                    set color "#9ACD32"
                 }
                 "S3" -
                 "Boutures" {
                     set start 14
                     set phase Croissance
-                    set color darkgreen
+                    set color "#006400"
                 }
                 "S4" -
                 "Veg 18 h" {
                     set start 21
                     set phase Floraison
-                    set color khaki
+                    set color "#F0E68C"
                 }
                 "S5" -
                 "Pass 12/12 " {
                     set start 28
                     set phase Floraison
-                    set color wheat
+                    set color "#F5DEB3"
                 }
                 "S6" -
                 "Strech" {
                     set start 35
                     set phase Floraison
-                    set color tan
+                    set color "#D2B48C"
                 }		
                 "S7" -
                 "1ers pistils" {
                     set start 42
                     set phase Floraison
-                    set color goldenrod
+                    set color "#DAA520"
                 }		
                 "S8" -			
                 "Debut Flo" {
                     set start 49
                     set phase Floraison
-                    set color peru
+                    set color #CD853F
                 }
                 "S9" -
                 "Floraison" {
                     set start 56
                     set phase Floraison
-                    set color chocolate
+                    set color #D2691E
                 }
                 "S10" -
                 "Boom floral" {
                     set start 63
                     set phase Floraison
-                    set color brown
+                    set color #A0522D
                 }
                 "S11" -
                 "Fin floraison" {
                     set start 70
                     set phase Floraison
-                    set color maroon
+                    set color #8B4513
                 }
                 "S12" -			
                 "Noir" {
                     set start 77
                     set phase Rincage
 					set remarque Rincage
-                    set color black
+                    set color #000000
                 }			
             }
 

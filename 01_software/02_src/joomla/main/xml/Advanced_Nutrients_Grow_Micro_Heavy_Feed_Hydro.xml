@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-   <updated>2013-11-01T19:18:27+02:00</updated>
+   <updated>2013-11-03T10:37:58+02:00</updated>
    <id>http://www.cultibox.fr/</id>
    <title>Advanced Nutrients Grow Micro Heavy Feed Hydro</title>
    <subtitle></subtitle>
@@ -75,7 +75,7 @@
         <name>Voodoo Juice</name>
         <dosage>1,5 ml/l</dosage>
       </nutriment>
-      <color>greenyellow</color>
+      <color>#98FB98</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -133,7 +133,7 @@
         <name>Voodoo Juice</name>
         <dosage>1,5 ml/l</dosage>
       </nutriment>
-      <color>yellowgreen</color>
+      <color>#9ACD32</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -191,7 +191,7 @@
         <name>Voodoo Juice</name>
         <dosage>1,5 ml/l</dosage>
       </nutriment>
-      <color>darkgreen</color>
+      <color>#006400</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -253,7 +253,7 @@
         <name>Bud Blood</name>
         <dosage>0,5 g/l</dosage>
       </nutriment>
-      <color>khaki</color>
+      <color>#F0E68C</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -315,7 +315,7 @@
         <name>Big Bud</name>
         <dosage>0,4 g/l</dosage>
       </nutriment>
-      <color>wheat</color>
+      <color>#F5DEB3</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -373,7 +373,7 @@
         <name>Big Bud</name>
         <dosage>0,5 g/l</dosage>
       </nutriment>
-      <color>tan</color>
+      <color>#D2B48C</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -431,7 +431,7 @@
         <name>Big Bud</name>
         <dosage>0,6 g/l</dosage>
       </nutriment>
-      <color>goldenrod</color>
+      <color>#DAA520</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -489,7 +489,7 @@
         <name>Overdrive</name>
         <dosage>3,6 ml/l</dosage>
       </nutriment>
-      <color>peru</color>
+      <color>#CD853F</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -547,7 +547,7 @@
         <name>Overdrive</name>
         <dosage>3,2 ml/l</dosage>
       </nutriment>
-      <color>chocolate</color>
+      <color>#D2691E</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -605,7 +605,7 @@
         <name>Overdrive</name>
         <dosage>3,2 ml/l</dosage>
       </nutriment>
-      <color>brown</color>
+      <color>#A0522D</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -663,7 +663,7 @@
         <name>Overdrive</name>
         <dosage>3,2 ml/l</dosage>
       </nutriment>
-      <color>maroon</color>
+      <color>#8B4513</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
     <entry>
@@ -681,7 +681,7 @@
         <name>Final Phase</name>
         <dosage>2,5 ml/l</dosage>
       </nutriment>
-      <color>black</color>
+      <color>#000000</color>
       <icon>Advanced_Nutrients.png</icon>
    </entry>
 </feed>
