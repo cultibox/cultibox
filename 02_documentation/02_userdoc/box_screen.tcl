@@ -238,6 +238,26 @@ set texte {
 }
 set name {lcd_menu_param_cultibox_prise_5.png}
 
+set texte {
+  {--Parametres--}
+  {Type : NO}
+  {Firm : 000.000}
+  {Reg: 00: 000}
+  {Reg: 01: 000}
+  {Reg: 02: 000}
+}
+set name {lcd_menu_param_sensor_reg.png}
+
+set texte {
+  {   Horloge}
+  {}
+  {Date: 01/02/13}
+  {Heure:   04:05}
+  {}
+  {   Valider}
+}
+set name {lcd_menu_param_cultibox_hour.png}
+
 # Mise en place du fond
 for {set i 0} {$i < 180} {incr i} {
 	for {set j 0} {$j < 136} {incr j} {
