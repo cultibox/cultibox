@@ -26,21 +26,9 @@
 <?php } ?>
 <br />
 
-
-<?php switch($_SESSION['LANG']) {
-        case 'fr_FR': 
-                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-fr.js"></script>'; 
-                break;
-        case 'it_IT':
-                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-it.js"></script>';
-                break;
-        case 'de_DE':
-                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-de.js"></script>';
-                break;
-        case 'es_ES':
-                echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-es.js"></script>';
-                break;
-        }
+<?php
+    // Load date picker according language
+    echo '<script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-' . substr($_SESSION['LANG'], 0 , 2) . '.js"></script>'; 
 ?>
 
 <script type="text/javascript">
