@@ -1031,13 +1031,15 @@ msgstr "Aucun calendrier XML présent"
 msgid "XML_DISPLAYED_FILE"
 msgstr "Fichiers XML à afficher"
 
+msgid "CALENDAR_EVENT_NAME"
+msgstr "Event name"
 
 # For the cost part:
 msgid "SELECT_START_DAY"
-msgstr "Jour de départ (AAAA-MM-JJ)"
+msgstr "Strat day (YYYY-MM-DD)"
 
 msgid "SELECT_END_DAY"
-msgstr "Jour de fin (AAAA-MM-JJ)"
+msgstr "End Day (YYYY-MM-DD)"
 
 msgid "COST_PRICE_COMPUTE"
 msgstr "Calcul du coût de votre installation"

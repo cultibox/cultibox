@@ -628,47 +628,54 @@ product_array = <?php echo json_encode($product) ?>;
 
 <label class="title_conf"><?php echo __('CALENDAR_ENGRAIS'); ?></label>
 <form name="create_calendar_program" id="create_calendar_program" action="calendar-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
-<table class="table_width">
-<tr>
-    <td class="calendar-marge"></td>
-    <td class="calendar-title"><?php echo __('CALENDAR_SUBSTRAT'); ?>:</td>
-    <td class="calendar-field">
-        <select name="substrat" id="substrat">
-            <?php if(count($substrat)>0) { ?>
-                <?php foreach($substrat as $sub) { ?>
-                    <option value="<?php echo $sub; ?>"><?php echo $sub; ?></option>
-                <?php } ?>
-            <?php } else { ?>
-                    <option value="" disabled><?php echo __('DISABLED_XML_FILE'); ?></option>
-            <?php } ?>
-        </select>
-    </td>
-    <td></td>
-</tr>
-<tr>
-    <td></td>
-    <td><?php echo __('CALENDAR_PROGRAM'); ?>:</td>
-    <td>
-        <select name="product" id="product">
-           <?php if(count($product)>0) { ?>
-                <?php foreach($product as $prod) { ?>
-                    <option value="<?php echo $prod['marque']." - ".$prod['periode']; ?>" <?php if(strcmp($prod['substrat'],$substrat[0])!=0) echo 'disabled'; ?>><?php echo $prod['marque']." - ".$prod['periode']." (".$prod['substrat'].")"; ?></option>
-                <?php } ?>
-            <?php } else { ?>
-                    <option value="" disabled><?php echo __('DISABLED_XML_FILE'); ?></option>
-            <?php } ?>
-        </select>
-    </td>
-    <td></td>
-</tr>
-<tr>
-    <td></td>
-    <td><?php echo __('CALENDAR_STARTDATE'); ?>:</td>
-    <td><input id="calendar_startdate" name="calendar_startdate" type="text" class="whitefield" size="10" value="<?php echo $calendar_start; ?>"></td>
-    <td><div id="error_calendar_startdate" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_CALENDAR_DATE'); ?></div></td>
-</tr>
-</table>
-<p class="p_center"><input type="submit" id="calendar-program" name="calendar-program" title="<?php echo __('TOOLTIP_CREATE_CALENDAR_PROGRAM'); ?>" <?php if((count($product)==0)||(count($substrat)==0)) { ?>class="inputDisable" disabled value="<?php echo __('DISABLED_CREATE_CALENDAR_PROGRAM'); ?>" <?php } else { ?> value="<?php echo __('CREATE_CALENDAR_PROGRAM'); ?>" <?php } ?>></p>
+    <table class="table_width">
+        <tr>
+            <td class="calendar-marge"></td>
+            <td class="calendar-title"><?php echo __('CALENDAR_SUBSTRAT'); ?>:</td>
+            <td class="calendar-field">
+                <select name="substrat" id="substrat">
+                    <?php if(count($substrat)>0) { ?>
+                        <?php foreach($substrat as $sub) { ?>
+                            <option value="<?php echo $sub; ?>"><?php echo $sub; ?></option>
+                        <?php } ?>
+                    <?php } else { ?>
+                            <option value="" disabled><?php echo __('DISABLED_XML_FILE'); ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><?php echo __('CALENDAR_PROGRAM'); ?>:</td>
+            <td>
+                <select name="product" id="product">
+                   <?php if(count($product)>0) { ?>
+                        <?php foreach($product as $prod) { ?>
+                            <option value="<?php echo $prod['marque']." - ".$prod['periode']; ?>" <?php if(strcmp($prod['substrat'],$substrat[0])!=0) echo 'disabled'; ?>><?php echo $prod['marque']." - ".$prod['periode']." (".$prod['substrat'].")"; ?></option>
+                        <?php } ?>
+                    <?php } else { ?>
+                            <option value="" disabled><?php echo __('DISABLED_XML_FILE'); ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><?php echo __('CALENDAR_STARTDATE'); ?>:</td>
+            <td><input id="calendar_startdate" name="calendar_startdate" type="text" class="whitefield" size="10" value="<?php echo $calendar_start; ?>"></td>
+            <td><div id="error_calendar_startdate" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_CALENDAR_DATE'); ?></div></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><?php echo __('CALENDAR_EVENT_NAME'); ?>:</td>
+            <td><input id="event_name" name="event_name" type="text" class="whitefield" size="10" value=""></td>
+            <td></td>
+        </tr>
+
+    </table>
+    <p class="p_center"><input type="submit" id="calendar-program" name="calendar-program" title="<?php echo __('TOOLTIP_CREATE_CALENDAR_PROGRAM'); ?>" <?php if((count($product)==0)||(count($substrat)==0)) { ?>class="inputDisable" disabled value="<?php echo __('DISABLED_CREATE_CALENDAR_PROGRAM'); ?>" <?php } else { ?> value="<?php echo __('CREATE_CALENDAR_PROGRAM'); ?>" <?php } ?>></p>
 </form>
 
 
