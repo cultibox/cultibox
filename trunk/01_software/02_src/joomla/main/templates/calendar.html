@@ -631,7 +631,7 @@ product_array = <?php echo json_encode($product) ?>;
     <table class="table_width">
         <tr>
             <td class="calendar-marge"></td>
-            <td class="calendar-title"><?php echo __('CALENDAR_SUBSTRAT'); ?>:</td>
+            <td class="calendar-title"><?php echo __('CALENDAR_SUBSTRAT'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_SUBSTRAT'); ?>" /></td>
             <td class="calendar-field">
                 <select name="substrat" id="substrat">
                     <?php if(count($substrat)>0) { ?>
@@ -647,7 +647,7 @@ product_array = <?php echo json_encode($product) ?>;
         </tr>
         <tr>
             <td></td>
-            <td><?php echo __('CALENDAR_PROGRAM'); ?>:</td>
+            <td><?php echo __('CALENDAR_PROGRAM'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_PROGRAM'); ?>" /></td>
             <td>
                 <select name="product" id="product">
                    <?php if(count($product)>0) { ?>
@@ -663,13 +663,13 @@ product_array = <?php echo json_encode($product) ?>;
         </tr>
         <tr>
             <td></td>
-            <td><?php echo __('CALENDAR_STARTDATE'); ?>:</td>
+            <td><?php echo __('CALENDAR_STARTDATE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_STARTDATE'); ?>" /></td>
             <td><input id="calendar_startdate" name="calendar_startdate" type="text" class="whitefield" size="10" value="<?php echo $calendar_start; ?>"></td>
             <td><div id="error_calendar_startdate" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_CALENDAR_DATE'); ?></div></td>
         </tr>
         <tr>
             <td></td>
-            <td><?php echo __('CALENDAR_EVENT_NAME'); ?>:</td>
+            <td><?php echo __('CALENDAR_EVENT_NAME'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_EVENT_NAME'); ?>" /></td>
             <td><input id="event_name" name="event_name" type="text" class="whitefield" size="10" value=""></td>
             <td></td>
         </tr>
