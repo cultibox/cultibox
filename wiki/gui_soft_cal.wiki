@@ -30,7 +30,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_add.png
 
 Il est à noter que dans la Cultibox, seul les champs *Sujet* et *Remarque* ne seront visibles.
 
-= Modifier ou supprimer un événement =
+= Modifier ou supprimer un évènement =
 
 Pour modifier ou supprimer une annotation, il vous suffit de cliquer dessus. Une fenêtre va alors apparaître avec deux boutons: un bouton *Editer l'annotation* (pour modifier une annotation) et un bouton *Supprimer l'annotation* (pour supprimer définitivement l'annotation).
 
@@ -40,7 +40,7 @@ Si vous:
  * Éditez une annotation: une autre fenêtre s'ouvrira ressemblant exactement à la fenêtre de création mais contenant les informations déjà enregistrées, vous permettant ainsi de les modifier
  * Supprimez une annotation: une confirmation vous sera demandé avec de supprimer définitivement une annotation
 
-Il est à noter que seul les événements que vous avez créé manuellement sont éditable/supprimable. Les événements liés aux fichiers xml (comme le calendrier lunaire) ne peuvent pas être modifié ainsi.
+Il est à noter que seul les évènements que vous avez créé manuellement sont éditable/supprimable. Les évènements liés aux fichiers xml (comme le calendrier lunaire) ne peuvent pas être modifié ainsi.
 
 = Autres fonctionnalités des annotations =
 
@@ -51,7 +51,7 @@ Deux actions sont encore possibles sur les annotations déjà créées:
 
 = Effacer toutes les annotations = 
 
-En bas de la page du calendrier se trouve un bouton nommé *Supprimer toutes les annotations enregistrées*. En cliquant dessus et après confirmation, vous effacerez de façon définitive toutes les annotations que vous avez rentré manuellement. Les annotations définies dans les fichiers xml (comme le calendrier lunaire) ne seront pas supprimées.
+En bas de la page du calendrier se trouve un bouton nommé *Supprimer toutes les annotations enregistrées*. En cliquant dessus et après confirmation, vous effacerez de façon définitive toutes les annotations que vous avez rentré manuellement. Les annotations définies dans les fichiers XML (comme le calendrier lunaire) ne seront pas supprimées.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_del.png
 
@@ -63,25 +63,28 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_engrais.png
 
 
 Afin d'appliquer ce programme au calendrier il faut donc:
- * Choisir le substrat (terre, eau...)
- * Choisir le type d'engrais voulu
+ * Choisir le substrat (Terre, Hydro, Coco, Aero)
+ * Choisir le programme d'engrais
  * Choisir la date de départ à laquelle appliquer le programme
+ * Éventuellement ajouter un nom à ce programme. Si vous définissez un nom, celui-ci apparait dans le titre de l'annotation.
+ * Définir si vous désirez appliquer qu'une partie de ce programme. Les programmes d'engrais fournies sont construit sur une base de 12 semaines. Les 3 premières sont de la croissance et les 9 dernières la floraison. En choisissant croissance, uniquement les trois premières semaines seront appliquées. En choisissant floraison uniquement les 9 dernières semaines seront appliquées.
  * Cliquer sur le bouton *Créer le programme dans le calendrier*
 
 Une fois cela fait, le programme apparaît dans le calendrier:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_view_engrais.png
 
-Certains programmes d'engrais ont été développé par des utilisateurs qui ont donné leur travail à la communauté en nous les faisant parvenir. Si vous souhaitez plus d'informations concernant les programmes d'engrais et la gestion des fichiers XML, repportez-vous à la section [advance Utilisation avancée].
+Certains programmes d'engrais ont été développé par des utilisateurs qui ont donné leur travail à la communauté en nous les faisant parvenir. Si vous souhaitez plus d'informations concernant la construction d'un programme d’engrais et la gestion des fichiers XML, reportez-vous à la section [advance Utilisation avancée].
 
+Pour chaque programme d'engrais, nous avons indiqué dans la documentation le programme exacte appliqué. Pour retrouver ces informations rendez vous sur la page [gui_soft_cal_engrais Calendrier d'engrais].
 
 = Activer/Désactiver l'affichage des fichiers XML externes =
 
-Par défaut les fichiers présents dans votre logiciel seront affichés dans le calendrier (par exemple le calendrier lunaire). Il est possible de désactiver/activer l'affichage de ces fichiers s'ils ne vous intérésse pas. Pour cela, cliquez sur le bouton *Gestion des fichiers XML externes*: 
+Par défaut les fichiers présents dans votre logiciel seront affichés dans le calendrier (par exemple le calendrier lunaire). Il est possible de désactiver/activer l'affichage de ces fichiers s'ils ne vous intéresse pas. Pour cela, cliquez sur le bouton *Gestion des fichiers XML externes*: 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_manage_external.png
 
-Un panneau de configuration s'ouvre où il est possible de désactiver ou d'activer chaque fichier XML indépendament:
+Un panneau de configuration s'ouvre où il est possible de désactiver ou d'activer chaque fichier XML indépendamment:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_external_xml.png
 
@@ -94,5 +97,5 @@ Il existe deux types de fichiers XML gérés par la logiciel Cultibox:
  * Les fichiers de type "calendrier externe": ces fichiers regroupent les calendriers définis sur une année entière et ne pouvant pas être modifié (sauf manuellement) comme le calendrier lunaire. 
  * Les fichiers de type "calendrier d'engrais": ces fichiers sont applicables à la demande. Par défaut ils ne sont pas ajoutés dans le calendrier mais peuvent l'être à partir d'une date définit par l'utilisateur quelque soit l'année.
 
-La gestion des fichiers XML à partir du calendrier ne conserne que les fichiers externes (type calendrier lunaire).
+La gestion des fichiers XML à partir du calendrier ne concerne que les fichiers externes (type calendrier lunaire).
 
