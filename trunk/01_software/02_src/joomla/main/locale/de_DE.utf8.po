@@ -1034,6 +1034,19 @@ msgstr "Fichiers XML à afficher"
 msgid "CALENDAR_EVENT_NAME"
 msgstr "Nom de l’évènement"
 
+msgid "CALENDAR_SELECT_CROISSANCE"
+msgstr "Sélection de la partie à appliquer"
+
+msgid "CALENDAR_CROISSANCE"
+msgstr "Croissance"
+
+msgid "CALENDAR_FLORAISON"
+msgstr "Floraison"
+
+msgid "CALENDAR_CROISSANCE_+_FLORAISON"
+msgstr "Croissance + Floraison"
+
+
 # For the cost part:
 msgid "SELECT_START_DAY"
 msgstr "Jour de départ (AAAA-MM-JJ)"
@@ -1632,6 +1645,9 @@ msgstr "Grâce à ce champ, vous pouvez sélectionner le premier jour ou sera ap
 
 msgid "TOOLTIP_CALENDAR_EVENT_NAME"
 msgstr "Ce champ permet de définir un nom pour votre programme d'engrais. Ce nom apparait dans le titre de chaque évènement."
+
+msgid "TOOLTIP_CALENDAR_SELECT_CROISSANCE"
+msgstr "Si vous choisissez croissance, les trois premières semaines du programme de culture seront appliquées. Si vous choisissez floraison, les huit dernières semaines du programme de culture seront appliquées."
 
 #For the debug part:
 msgid "GENERATE_TIME"
