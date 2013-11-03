@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-
+// Read parameters send
 if((isset($_GET['substrat']))&&(!empty($_GET['substrat']))) {
     $program_substrat=$_GET['substrat'];
 } 
@@ -25,6 +25,12 @@ $calendar_end=$calendar_start;
 
 if((isset($_GET['sd_card']))&&(!empty($_GET['sd_card']))) {
     $sd_card=$_GET['sd_card'];
+}
+
+// Read Text to add to each event
+$event_name = '';
+if((isset($_GET['event_name']))&&(!empty($_GET['event_name']))) {
+    $event_name=$_GET['event_name'];
 }
 
 if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_product))&&(!empty($program_product))&&(isset($calendar_start))&&(!empty($calendar_start))) {
@@ -112,16 +118,31 @@ if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_prod
                                                 } 
                                             } 
 
+                                            // Add EC if present
+                                            if(array_key_exists('ec', $val))  {
+                                                // If field is empty, it's an array!
+                                                if (!is_array($val['ec'])) {
+                                                    $desc=$desc . "Ec:" . $val['ec'];
+                                                }
+                                            }
+                                            
                                             // Add in description part content section
                                             if(array_key_exists('content', $val))  {
-                                                // Si c'est un vecteur, c'est que le champs est vide
+                                                // If field is empty, it's an array!
                                                 if (!is_array($val['content'])) {
                                                     $desc=$desc.$val['content'];
                                                 }
                                             }
 
+                                            // Create name of the event
+                                            $title = $val['title'];
+                                            if ($event_name != "") {
+                                                $title = $title . " " . $event_name ;
+                                            }
+                                            
+
                                             $event[]=array(
-                                                    "title" => $val['title'],
+                                                    "title" => $title,
                                                     "start" => $timestart,
                                                     "end" => $timeend,
                                                     "description" => $desc,
