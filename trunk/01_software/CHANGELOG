@@ -1,3 +1,10 @@
+Cultibox (1.1.37) precise; urgency=low
+    + Correction de l'affichage des titres dans le calendrier
+    + La première colonne du mois en cours correspond à un lundi et non plus un dimanche
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Nov  3 11:30:44 CET 2013
+
+
 Cultibox (1.1.36) precise; urgency=low
     + Modification de la taille de l'image de la cultibox pour rendre accéssible les menus en dessous
     + Ajout d'informations sur le calcul du coût réel et théorique dans l'onglet des coûts
