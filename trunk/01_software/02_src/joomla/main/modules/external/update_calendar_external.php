@@ -33,6 +33,12 @@ if((isset($_GET['event_name']))&&(!empty($_GET['event_name']))) {
     $event_name=$_GET['event_name'];
 }
 
+// Read variable used to say if croissance (croi) or floraison (flo) or all must be used must be used
+$select_croissance = '';
+if((isset($_GET['select_croissance']))&&(!empty($_GET['select_croissance']))) {
+    $select_croissance=$_GET['select_croissance'];
+}
+
 if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_product))&&(!empty($program_product))&&(isset($calendar_start))&&(!empty($calendar_start))) {
     $file="";
     $main_error=array();
@@ -69,13 +75,26 @@ if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_prod
                         foreach($tab as $val) {
                             if(is_array($val)) {
                                 if((array_key_exists('title', $val))&&(array_key_exists('duration', $val))&&(array_key_exists('start', $val))&&(array_key_exists('content', $val))) {
-                                        if((!empty($val['title']))&&(!empty($val['content']))) {
-                                            $datestartTimestamp = strtotime($calendar_start);
-                                            $timestart = date('Ymd', strtotime('+'.$val['start'].' days', $datestartTimestamp));
+                                    if((!empty($val['title']))&&(!empty($val['content']))) {
 
+                                        if ($select_croissance == 'croi' && $val['start'] <= 14 
+                                            || $select_croissance == 'all'
+                                            || $select_croissance == 'flo' && $val['start'] > 14 ) {
+
+                                            // Save start day in  $startDay
                                             if(empty($val['start'])) {
-                                                $val['start']=0;
+                                                $startDay = 0;
+                                            } else {
+                                                $startDay = $val['start'];
                                             }
+                                            
+                                            // If user need only flo, remove 3 weeks to the programm  
+                                            if ($select_croissance == 'flo') {
+                                                $startDay = $startDay - 21;
+                                            }
+
+                                            $datestartTimestamp = strtotime($calendar_start);
+                                            $timestart = date('Ymd', strtotime('+'.$startDay.' days', $datestartTimestamp));
 
                                             if(empty($val['duration'])) {
                                                 $val['duration']=0;
@@ -139,7 +158,6 @@ if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_prod
                                             if ($event_name != "") {
                                                 $title = $title . " " . $event_name ;
                                             }
-                                            
 
                                             $event[]=array(
                                                     "title" => $title,
@@ -153,7 +171,8 @@ if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_prod
                                             );
     
                                             $calendar_end=$timeend;
-                                        }   
+                                        }
+                                    }   
                                 }
                             }
                        }
