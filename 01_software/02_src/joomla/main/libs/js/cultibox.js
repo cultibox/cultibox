@@ -34,6 +34,7 @@ if(lang=="/it/") {
     SAVE_button="Registrati";
     REDUCE_button="Abbassare";
     EXTEND_button="Ingrandisci"
+    var llang="it_IT";
 } else if(lang=="/de/") {
     OK_button="Weiter";
     CANCEL_button="Stornieren";
@@ -42,6 +43,7 @@ if(lang=="/it/") {
     SAVE_button="Registrieren";
     REDUCE_button="Senken";
     EXTEND_button="Vergrößern"
+    var llang="de_DE";
 } else if(lang=="/en/") {
     OK_button="OK";
     CANCEL_button="Cancel";
@@ -50,6 +52,7 @@ if(lang=="/it/") {
     SAVE_button="Save";
     REDUCE_button="Shorten";
     EXTEND_button="Enlarge"
+    var llang="en_GB";
 } else if(lang=="/es/") {
     OK_button="Continuar";
     CANCEL_button="Cancelar";
@@ -58,6 +61,7 @@ if(lang=="/it/") {
     SAVE_button="Registro";
     REDUCE_button="Bajar";
     EXTEND_button="Agrandar"
+    var llang="es_ES";
 } else {
     OK_button="Continuer";
     CANCEL_button="Annuler";
@@ -66,6 +70,7 @@ if(lang=="/it/") {
     SAVE_button="Enregistrer";
     REDUCE_button="Réduire";
     EXTEND_button="Agrandir"
+    var llang="fr_FR";
 }
 
 diffdate = function(d1,d2) {
@@ -1150,7 +1155,7 @@ $(document).ready(function() {
                                 }]
                             });
                     } else {
-                        $('#calendar').fullCalendar( 'refetchEvents' );
+                        $('#calendar').fullCalendar('refetchEvents');
                             $("#error_create_calendar").dialog({
                                 resizable: true,
                                 width: 450,
@@ -1165,6 +1170,22 @@ $(document).ready(function() {
                                 }]
                             });
                     }
+
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
+                        data: {lang: llang}
+                    }).done(function (data) {
+                        if(data!="") {
+                            var myTitle = data.split(',,,'); 
+                            $('#select_title').children().remove();
+                            $.each( myTitle, function( key, value ) {
+                                $('#select_title').append(new Option(value, value, true, true)); 
+                            });
+                            $("#select_title").prop('selectedIndex', 0);  
+                            $("#other_title_div").css("display","none");
+                        }
+                    });
                     });
             }
         });
@@ -1541,7 +1562,10 @@ $(document).ready(function() {
                                         location.reload(); 
                                         return false;
                                     }
-                                    }]
+                                    }],
+                                    open: function(event, ui) {
+                                            $("a.ui-dialog-titlebar-close").remove();    
+                                    }
                                 });
                             } 
                         });
@@ -1551,7 +1575,10 @@ $(document).ready(function() {
                     click: function () {
                         $( this ).dialog( "close" ); return false;
                     }
-                }]
+                }],
+                open: function(event, ui) {
+                    $("a.ui-dialog-titlebar-close").remove();   
+                }
          });
     });
 
