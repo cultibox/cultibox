@@ -10,8 +10,6 @@ Cette page ne concerne que les utilisateurs experts.
 = Calendriers d'engrais =
 == Introduction ==
 
-Cette fonctionnalité n'est pour l'instant pas disponible : Cf issue 425
-
 Les fabricants d'engrais peuvent nous soumettre les calendriers de leurs engrais pour qu'ils soient disponible dans le calendrier de l'utilisateur.
 Nous nous réservons le droit d'ajouter ou de supprimer les calendriers.
 
@@ -73,34 +71,29 @@ Exemple d'auteur:
 
 ==== Catégorie ====
 Cette information est obligatoire. Elle nous permet d'identifier quel type d'engrais est contenu dans ce fichier. Elle permet aussi de séparer le calendrier lunaire des autres calendriers.
-Les catégories disponible sont:
-|| *term* || *label* ||
-|| terre || Terre ||
-|| hydro || Hydroponique ||
-|| coco || Coco ||
-|| orch || Orchidee ||
-|| lunaire || lunaire ||
+
+la catégorie doit être engrais. 
 
 Exemple de catégorie:
 
 {{{
-<category term = "hydro" label = "Hydroponique">
+<category term = "engrais" label = "engrais">
     [...]
 </category>
 }}}
 
 Si vous voulez que votre engrais soit reconnu et affiché dans la gestion du calendrier il faudra rajouter à cela plusieurs champs:
- * substrat: permettant de définir le type de substrat (terre, eau)
- * periode: la periode adaptée à l'utilisation de l'engrais (croissance, floraison...)
+ * substrat: permettant de définir le type de substrat (Terre, Hydro, Aero, Coco)
+ * periode: la période adaptée à l'utilisation de l'engrais (croissance, floraison...). C'est le nom qui est affiché dans le selecteur d'engrais.
  * marque: la marque de l'engrais
 
 Voici un exemple complet:
 
 {{{
-<category term = "hydro" label = "Hydroponique">
-   <substrat>terre</substrat>
+<category term = "engrais" label = "engrais">
+   <substrat>Terre</substrat>
    <periode>croissance</periode>
-   <marque>BIOCANNA</marque>
+   <marque>Biocanna</marque>
 </category>
 }}}
 
@@ -118,6 +111,7 @@ De plus, le fabriquant à la possibilité de définir les rubriques suivantes:
   * Icon
   * Logo
   * Droits
+Ces informations ne sont pour l'instant pas utilisées.
 
 ==== Icon ====
 Le fabricant peut définir une icône.
@@ -213,6 +207,8 @@ Exemple de catégorie:
 <category term = "bouture" label = "Bouturage" />
 }}}
 
+Non utilisé.
+
 ===== contenu =====
 C'est cette balise qui contient le texte de l’événement.
 
@@ -225,39 +221,21 @@ Exemple:
 }}}
 
 ===== durée =====
-Cette balise permet de définir la durée de l’événement. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+Cette balise permet de définir la durée de l’événement. La durée est inscrite en jour.
 
 Exemple (3 jours):
 
 {{{
-<duration>0000-00-03T00:00:00</duration>
+<duration>3</duration>
 }}}
 
 ===== Début de cet événement =====
-Cette balise permet de définir la date de début de l’événement. La date doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
+Cette balise permet de définir la date de début de l’événement. La durée est inscrite en jour.
 
 Exemple (Au bout de 18 jours):
 
 {{{
 <start>2008-05-29T13:14:57+02:00</start>
-}}}
-
-===== Période de cet événement =====
-Cette balise permet de définir au bout de combien de jour cette événement doit revenir. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
-
-Exemple (Au bout de 18 jours):
-
-{{{
-<period>0000-00-18T00:00:00</period>
-}}}
-
-===== Offset de cet événement =====
-Cette balise permet de définir au bout de combien de jour cet événement doit devenir actif. La durée doit être écrite au format [http://www.faqs.org/rfcs/rfc3339.html  RCF 3339 / ISO 8601].
-
-Exemple (Au bout de 18 jours):
-
-{{{
-<start_offset>0000-00-18T00:00:00</start_offset>
 }}}
 
 ===== Nutriment =====
@@ -295,78 +273,95 @@ ou alors:
 <icon>http://voici.une.url.com/icone.png</icon>
 }}}
 
-
-
 == Exemple de fichier ==
 
 {{{
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-   <updated>2008-05-29T13:14:57+02:00</updated>
+   <updated>2013-11-03T10:37:57+02:00</updated>
    <id>http://www.cultibox.fr/</id>
-   <title>Engrais Top</title>
-   <subtitle>Engrais numéro 1</subtitle>
+   <title>House and Garden Standard Terre</title>
+   <subtitle></subtitle>
    <author>
       <name>Cultibox</name>
       <uri>http://www.cultibox.fr/</uri>
       <email>info@cultibox.fr</email>
    </author>
-   <category term = "hydro" label = "Hydroponique" />
-   <link rel="self" href="www.cultibox.fr/flux.xml" />
-   <icon>http://wwww.com/images/icon.png</icon>
-   <logo>http://wwww.com/images/icon.png</logo>
+   <category term = "engrais" label = "engrais">
+    <substrat>Terre</substrat>
+    <periode>Standard</periode>
+    <marque>House and Garden</marque>
+   </category>
+   <link rel="self" href="www.cultibox.fr/House and Garden_Terre.xml" />
+   <icon></icon>
+   <logo></logo>
    <rights type = "text">
     © Cultibox, 2013
    </rights>
 }}}
 {{{
-   <entry>
-      <title>Phase croissance</title>
-      <summary>Phase de croissance</summary>
+    <entry>
+      <title>S1 Croissance</title>
+      <summary>S1 Croissance</summary>
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text">
-         N'oubliez pas une dose de XX!
-      </content>
-      <duration>14</duration>
+      <content type = "text"></content>
+      <ec>1,2</ec>
+      <duration>7</duration>
       <start>0</start>
-      <nutriment>Engrais 1</nutriment>
-      <dosage>3ml/l</dosage>
-      <color>red</color>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Roots Excelurator</name>
+        <dosage>0,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Terre A B</name>
+        <dosage>1,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Amino Treatment</name>
+        <dosage>0,25 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Algen extract</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <color>#98FB98</color>
+      <icon>House_and_Garden.png</icon>
    </entry>
 }}}
 {{{
-   <entry>
-      <title>Phase de prefloraison  </title>
-      <summary>Phase de prefloraison </summary>
+    <entry>
+      <title>S2 Croissance</title>
+      <summary>S2 Croissance</summary>
       <updated>2008-05-29T13:14:57+02:00</updated>
-      <id>http://www.cultibox.fr/id2</id>
-      <category term = "prefloraison" label = "prefloraison" />
-      <content type = "text">
-         N'oubliez pas une dose de YY!
-      </content>
-      <duration>28</duration>
-      <start>14</start>
-      <nutriment>Engrais 2</nutriment>
-      <dosage>6ml/l</dosage>
-      <icon>engrais.png</icon>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "vegetation" label = "Vegetation" />
+      <content type = "text"></content>
+      <ec>1,2</ec>
+      <duration>7</duration>
+      <start>7</start>
+      <facultative>0</facultative>
+      <nutriment>
+        <name>Roots Excelurator</name>
+        <dosage>0,3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Terre A B</name>
+        <dosage>1,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Amino Treatment</name>
+        <dosage>0,35 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Algen extract</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <color>#9ACD32</color>
+      <icon>House_and_Garden.png</icon>
    </entry>
-}}}
-{{{
-   <entry>
-      <title>Phase de prefloraison  </title>
-      <summary>Phase de prefloraison </summary>
-      <updated>2008-05-29T13:14:57+02:00</updated>
-      <id>http://www.cultibox.fr/id2</id>
-      <category term = "prefloraison" label = "prefloraison" />
-      <duration>28</duration>
-      <start>14</start>
-      <nutriment>Engrais 3</nutriment>
-      <dosage>2ml/l</dosage>
-      <color>#48A78E</color>
-   </entry>
-
 </feed>
 }}}
 
