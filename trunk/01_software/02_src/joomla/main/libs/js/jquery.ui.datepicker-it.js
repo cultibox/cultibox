@@ -2,14 +2,14 @@
 /* Written by Keith Wood (kbwood{at}iinet.com.au) and Stéphane Nahmani (sholby@sholby.net). */
 jQuery(function($){
 	$.datepicker.regional['it'] = {
-		closeText: 'Valider',
+		closeText: 'Presentare',
 		prevText: '&#x3c;Préc',
 		nextText: 'Suiv&#x3e;',
 		currentText: 'Aujourd\'hui',
-		monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin',
-		'Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
-		monthNamesShort: ['Jan','Fév','Mar','Avr','Mai','Jun',
-		'Jul','Aoû','Sep','Oct','Nov','Déc'],
+		monthNames: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+		'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'],
+		monthNamesShort: ['Gen','Feb','Mar','Apr','Mag','Giu',
+		'Lug','Ago','Set','Ott','Nov','Dic'],
 		dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
 		dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
 		dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
