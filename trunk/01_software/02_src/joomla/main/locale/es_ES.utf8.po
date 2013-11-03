@@ -1031,6 +1031,8 @@ msgstr "Aucun calendrier XML présent"
 msgid "XML_DISPLAYED_FILE"
 msgstr "Fichiers XML à afficher"
 
+msgid "CALENDAR_EVENT_NAME"
+msgstr "Nom de l’évènement"
 
 # For the cost part:
 msgid "SELECT_START_DAY"

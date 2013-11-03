@@ -63,6 +63,13 @@ function __() {
 }
 //}}}
 
+function deb($txt)
+{
+    $handle = fopen("d:/debug.txt", 'a+');
+    fwrite($handle,$txt . "\n");
+    fclose($handle);
+}
+
 
 // {{{ htmlentitiesOutsideHTMLTags()
 // ROLE encode a string in HTML and preserve HTML tags

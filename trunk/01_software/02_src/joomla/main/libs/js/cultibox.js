@@ -1137,7 +1137,7 @@ $(document).ready(function() {
                 $.ajax({
                     cache: false,
                     url: "../../main/modules/external/update_calendar_external.php",
-                    data: {substrat:$("#substrat").val(), product:$("#product").val(), calendar_start:$("#calendar_startdate").val(), sd_card: sd_card}
+                    data: {substrat:$("#substrat").val(), product:$("#product").val(), calendar_start:$("#calendar_startdate").val(), sd_card: sd_card, event_name:$("#event_name").val()}
                 }).done(function (data) {
                    if(data==1) {
                             $('#calendar').fullCalendar( 'refetchEvents' );
