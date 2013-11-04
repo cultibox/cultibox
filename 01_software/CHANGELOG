@@ -1,6 +1,8 @@
 Cultibox (1.1.37) precise; urgency=low
     + Correction de l'affichage des titres dans le calendrier
     + La première colonne du mois en cours correspond à un lundi et non plus un dimanche
+    + Ajout et correction des fichiers XML des calendriers d'engrais
+    + Diverses corrections du calendrier
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun Nov  3 11:30:44 CET 2013
 
