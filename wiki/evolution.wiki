@@ -1,4 +1,7 @@
-#summary Futurs évolutions.
+#summary Futurs évolutions
+
+= Sommaire =
+<wiki:toc max_depth="4" />
 
 = Introduction =
 
@@ -6,21 +9,26 @@ Ce paragraphe concerne toutes les futurs évolutions.
 
 = Évolution : Dans les cartons =
 
-== Capteur ==
+== Hard ==
 
  * Capteur EC
  * Capteur PH
  * Capteur Niveau d'eau
  * Capteur CO²
+ * Capteur T/RH sans fils
  
 == Soft ==
 
  * Capteur utilisateur : Permettre à l'utilisateur d'ajouter un capteur manuel dont il remplira tout seul les valeurs. Ces valeurs doivent pouvoir être affichées dans l'onglet des logs.
+ * Application pour smartphone
 
 = Évolution : Conception =
 
+== Hard ==
+
  * Capteur Humidité du sol
  * Wifi
+ * Prise variateur
 
 = Évolution : En test =
 
