@@ -49,7 +49,7 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>/cultibox/index.php/fr/wizard-fr?selected_plug=1</td>
+	<td>/cultibox/index.php/fr/plugs-fr</td>
 	<td></td>
 </tr>
 <tr>
@@ -1174,13 +1174,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>name=reset_submit</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//button[@type='button'])[2]</td>
+	<td>xpath=(//button[@type='button'])[3]</td>
 	<td></td>
 </tr>
 <tr>
@@ -1263,6 +1268,36 @@
 </tr>
 <tr>
 	<td>click</td>
+	<td>name=record_frequency</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=record_frequency</td>
+	<td>label=30</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;30&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=power_frequency</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=power_frequency</td>
+	<td>label=30</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=select[name=&quot;power_frequency&quot;] &gt; option[value=&quot;30&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
 	<td>name=nb_plugs</td>
 	<td></td>
 </tr>
@@ -1273,37 +1308,57 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=option[value=&quot;3&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>name=record_frequency</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=option[value=&quot;5&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>name=power_frequency</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=select[name=&quot;power_frequency&quot;] &gt; option[value=&quot;1&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
 	<td>name=update_frequency</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=option[value=&quot;-1&quot;]</td>
+	<td>id=page-bg2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=img.ui-datepicker-trigger</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='button'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=update_frequency</td>
+	<td>label=5</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=reset_min_max</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reset_min_max</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='div_system_interface']/table/tbody/tr[5]/td[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=reset_min_max</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reset_min_max</td>
+	<td>00:00</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=div_submit_interface</td>
 	<td></td>
 </tr>
 <tr>
