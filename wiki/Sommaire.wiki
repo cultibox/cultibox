@@ -40,6 +40,7 @@
         * [gui_box_menu_param_sensor Capteur]
   * [other Autre]       
     * [faq FAQ]
-    * [pts Cahier des charges]
     * [advance Utilisation avancée]
+    * [evolution Futurs évolutions]
+    * [pts Cahier des charges]
     * [declaration_ce Déclaration CE]
