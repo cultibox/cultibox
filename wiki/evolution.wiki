@@ -31,6 +31,9 @@ Ce paragraphe concerne toutes les futurs évolutions.
  * Faire défiler les infos du calendrier sur l'écran de la culti (Issue 673)
  * Configuration évoluée des prises dans le wizard (Issue 615)
 
+== Site Web ==
+ * Création d'un modèle 3D à intégrer dans le site Web (http://www.google.com/webdesigner/)
+
 
 = Évolution : Conception =
 
@@ -46,4 +49,4 @@ Ce paragraphe concerne toutes les futurs évolutions.
 
 = Évolution : Réalisé =
 
- * Calendrier avec schéma de culture
+ * Calendrier avec schéma de culture (Logiciel depuis la version 1.1.36)
