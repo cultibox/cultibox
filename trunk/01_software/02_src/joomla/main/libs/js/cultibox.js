@@ -123,7 +123,7 @@ formatCard = function(hdd,pourcent) {
             $.ajax({ 
                 cache: false,
                 url: "../../main/modules/external/format.php",
-                data: {hdd:hdd, progress: pourcent}
+                data: {hdd:hdd, progress: parseInt(pourcent)}
             }).done(function (data) {
                 $("#progress_bar").progressbar({ value: 4*parseInt(data) });
                 if(data==100) { 
@@ -131,7 +131,7 @@ formatCard = function(hdd,pourcent) {
                     $("#btnCancel").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
                     return true;
                 } else if(data>=0) { 
-                    formatCard(hdd,data); 
+                    formatCard(hdd,parseInt(data)); 
                 } else {
                     $("#error_format").show();
                     $("#btnCancel").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
