@@ -1,3 +1,12 @@
+Cultibox (1.1.38) precise; urgency=low
+    + Correction du passage en paramètre d'une variable Int dans un appel Ajax (formatage de la carte SD)
+    + Modification du texte et de l'image du tooltip de calcul des coûts
+    + Mise en place d'un script sql d'update de la base joomla plutôt qu'une recréation de la base à chaque installation
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Nov  6 12:53:01 CET 2013
+
+
+
 Cultibox (1.1.37) precise; urgency=low
     + Correction de l'affichage des titres dans le calendrier
     + La première colonne du mois en cours correspond à un lundi et non plus un dimanche

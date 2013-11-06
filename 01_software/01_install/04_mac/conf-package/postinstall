@@ -74,6 +74,15 @@ else
         fi
     fi
 
+    if [ -f /Applications/cultibox/sql_install/update_joomla.sql ]; then
+        /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_joomla.sql 2>/dev/null
+        if [ $? -ne 0 ]; then
+            /Applications/XAMPP/xamppfiles/xampp restart
+           sleep 5
+            /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_joomla.sql 2>/dev/null
+        fi
+    fi
+
     rm -Rf /tmp/cultibox_backup
     rm -f /Applications/cultibox/xamppfiles/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "...OK"

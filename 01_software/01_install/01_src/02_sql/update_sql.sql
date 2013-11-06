@@ -70,8 +70,8 @@ UPDATE `cultibox`.`configuration` SET `VERSION` = '1.1.36-amd64' WHERE `configur
 -- ALTER TABLE `cultibox`.`configuration` ADD `SHOW_HISTORIC` VARCHAR( 5 ) NOT NULL DEFAULT 'False';
 
 -- Version 1.1.26:
-ALTER TABLE `cultibox`.`configuration` DROP COLUMN `SHOW_WIZARD`;
-UPDATE `cultibox_joomla`.`dkg45_menu` SET  published = "1" WHERE alias LIKE "wizard-%";
+-- ALTER TABLE `cultibox`.`configuration` DROP COLUMN `SHOW_WIZARD`;
+-- UPDATE `cultibox_joomla`.`dkg45_menu` SET  published = "1" WHERE alias LIKE "wizard-%";
 
 -- Version 1.1.27:
 ALTER TABLE `cultibox`.`configuration` DROP COLUMN `LOG_SEARCH`;
