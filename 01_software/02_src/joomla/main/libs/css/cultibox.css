@@ -89,6 +89,12 @@ ul.list_class {
     padding-left: 40px;
 }
 
+ul.list_class_tooltip {
+    list-style-type: circle;
+    text-align: left;
+    padding-left: 20px;
+}
+
 
 ul.list_class_wizard {
     list-style-type: circle;
