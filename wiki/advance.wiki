@@ -299,6 +299,7 @@ ou alors:
     © Cultibox, 2013
    </rights>
 }}}
+
 {{{
     <entry>
       <title>S1 Croissance</title>
@@ -331,6 +332,7 @@ ou alors:
       <icon>House_and_Garden.png</icon>
    </entry>
 }}}
+
 {{{
     <entry>
       <title>S2 Croissance</title>
