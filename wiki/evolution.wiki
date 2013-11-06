@@ -16,7 +16,7 @@ Ce paragraphe concerne toutes les futurs évolutions.
  * Capteur Niveau d'eau
  * Capteur CO²
  * Capteur T/RH sans fils
- * Beeper (ID 586)
+ * Beeper (Issue 586)
 == Soft ==
 
  * Capteur utilisateur : Permettre à l'utilisateur d'ajouter un capteur manuel dont il remplira tout seul les valeurs. Ces valeurs doivent pouvoir être affichées dans l'onglet des logs.
@@ -24,8 +24,11 @@ Ce paragraphe concerne toutes les futurs évolutions.
  * Comparaison de courbes de capteur relevées
  * Amélioration de l'interface des programmes : suppression de bout du programme en live
  * Ajouter la possibilité de corriger la température en fonction de la pression
- * Programmation au jour (ID 173)
- * Limite en régulation (ID 587)
+ * Programmation au jour (Issue 173)
+ * Limite en régulation (Issue 587)
+ * Traitement automatique des paiement paypal (Issue 688)
+ * Faire défiler les infos du calendrier sur l'écran de la culti (Issue 673)
+ * Configuration évoluée des prises dans le wizard (Issue 615)
 
 
 = Évolution : Conception =
@@ -33,7 +36,7 @@ Ce paragraphe concerne toutes les futurs évolutions.
 == Hard ==
 
  * Capteur Humidité du sol
- * Wifi
+ * Wifi (Issue 321)
  * Prise variateur
 
 = Évolution : En test =
