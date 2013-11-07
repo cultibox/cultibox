@@ -1,8 +1,8 @@
 Package: Cultibox
 Version: 1.0.0-ubuntu
 Section: web
-Maintainer: Yann Genevois <yann.genevois@gmail.com>
-Homepage: http://cultibox.fr
+Maintainer: Yann Genevois <yann.genevois@cultibox.fr>
+Homepage: http://www.cultibox.fr
 Priority: extra
 Architecture: i386
 Installed-Size: 790000
