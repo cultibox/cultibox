@@ -31,29 +31,35 @@ fi
 
 case "$1" in
       "ubuntu64"|"ubuntu64-admin" )
-            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && pdflatex documentation.tex && pdflatex documentation.tex)
-            rm -Rf ../01_src/01_xampp/*
-            mkdir ../01_src/01_xampp/cultibox
-            cp -R ./conf-package/DEBIAN64 ../01_src/01_xampp/cultibox/DEBIAN
-            mkdir ../01_src/01_xampp/cultibox/opt
-            mkdir -p ../01_src/01_xampp/cultibox/usr/share/applications/
-            cp ./conf-package/cultibox.desktop ../01_src/01_xampp/cultibox/usr/share/applications/
+           (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && pdflatex documentation.tex && pdflatex documentation.tex)
+           rm -Rf ../01_src/01_xampp/*
+           mkdir ../01_src/01_xampp/cultibox
+           cp -R ./conf-package/DEBIAN64 ../01_src/01_xampp/cultibox/DEBIAN
+           mkdir ../01_src/01_xampp/cultibox/opt
+           mkdir -p ../01_src/01_xampp/cultibox/usr/share/applications/
+           cp ./conf-package/cultibox.desktop ../01_src/01_xampp/cultibox/usr/share/applications/
             
 
-            if [ "$1" == "ubuntu64" ]; then
-                tar zxvfp xampp-linux-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox/opt/
-            else
-                tar zxvfp xampp-linux-admin-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox/opt/
-            fi
+           if [ "$1" == "ubuntu64" ]; then
+               tar zxvfp xampp-linux-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox/opt/
+           else
+               tar zxvfp xampp-linux-admin-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox/opt/
+           fi
 
-            cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
-            cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
-            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
+           cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
+           cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
+           cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
 
            cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/extra/
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
+           
+            cat > ../01_src/01_xampp/cultibox/etc/my-extra.cnf << "EOF" 
+[client]
+user="root"
+password="cultibox"
+EOF
            cp conf-script/* ../01_src/01_xampp/cultibox/opt/lampp/
            cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt
@@ -120,6 +126,11 @@ case "$1" in
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt
+cat > ../01_src/01_xampp/cultibox/etc/my-extra.cnf << "EOF" 
+[client]
+user="root"
+password="cultibox"
+EOF
            cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/opt/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
            sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-amd64' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/update_sql.sql

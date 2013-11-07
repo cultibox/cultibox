@@ -1,20 +1,24 @@
 #!/bin/bash
 
+
+set -e
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 home=`egrep "^$user_culti" /etc/passwd|awk -F":" '{print $6}'`
 
-if [ -f $home/.cultibox/backup_cultibox ]; then
-    # To load a previous database dump: saving the current database into $home/.cultibox/backup_cultibox.bak , deletion of the current database, creation of the new database, import of the previous dump.
-    if [ -f /opt/lampp/backup.sh ]; then
-        /opt/lampp/backup.sh
-    fi
+echo "-----------------------------------------------------------------"
+echo "              Cultibox load database script                    "
+echo "-----------------------------------------------------------------"
+echo ""
 
-    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "DROP DATABASE cultibox;"
-    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox -e "CREATE DATABASE cultibox;"
-    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox < $home/.cultibox/backup_cultibox
-
-    if [ -f /opt/lampp/sql_install/update_sql.sql ]; then
-        /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/update_sql.sql 2>/dev/null
-    fi    
+if [ -f $home/.cultibox/backup_cultibox.bak ]; then
+    # To load a previous database dump: deletion of the current database, creation of the new database, import of the previous dump.
+    echo "* Deletion of the current database, creation of an empty database, import of your backup database..."
+    /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox;"
+    /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox;"
+    /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < $home/.cultibox/backup_cultibox.bak
+    echo "... OK"
+else
+    echo "* Missing $home/.cultibox/backup_cultibox.bak file..."
+    echo "...NOK"
 fi
