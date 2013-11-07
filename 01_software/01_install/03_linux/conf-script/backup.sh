@@ -12,15 +12,15 @@ echo "-----------------------------------------------------------------"
 echo ""
 
 if [ ! -d $home/.cultibox ]; then
-    echo "* Creating $home/.cultibox directory to store backup files"
+    echo "  * Creating $home/.cultibox directory to store backup files"
     mkdir $home/.cultibox
     chown $user_culti:$group_culti $home/.cultibox
 else 
-    echo "* $home/.cultibox already exists and will be used to store backup files"
+    echo "  * $home/.cultibox already exists and will be used to store backup files"
 fi
 
 #Saving the database in the directory $home/.cultibox:
-echo "* Saving your current database..."
+echo "  * Saving your current database..."
 if [ -f $home/.cultibox/backup_cultibox.bak ]; then
     echo "    --> A previous backup file was found: backup_cultibox.bak"
     echo "        This file will be move to backup_cultibox.bak.old"
