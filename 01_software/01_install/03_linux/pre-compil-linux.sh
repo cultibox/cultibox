@@ -4,11 +4,6 @@ set -e
 dir=`dirname $0`
 cd $dir
 
-# Remove svn up when using jenkins
-if [ "$3" == "" ]; then
-    (cd ../../../ && svn up)
-fi
-
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../../01_install/01_src/01_xampp
 
@@ -21,11 +16,17 @@ function usage {
 }
 
 
+#Print usage informations if a parameter is missing
 if [ "$2" == "" ] && [ "$1" != "clean" ]; then
     usage
 fi
 
 VERSION=$2
+
+# Remove svn up when using jenkins
+if [ "$3" == "" ]; then
+    (cd ../../../ && svn up)
+fi
 
 
 case "$1" in
@@ -40,9 +41,9 @@ case "$1" in
             
 
             if [ "$1" == "ubuntu64" ]; then
-                tar zxvfp xampp-linux-1.8.1.tar.gz -C ../01_src/01_xampp/cultibox/opt/
+                tar zxvfp xampp-linux-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox/opt/
             else
-                tar zxvfp xampp-linux-admin-1.8.1.tar.gz -C ../01_src/01_xampp/cultibox/opt/
+                tar zxvfp xampp-linux-admin-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox/opt/
             fi
 
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
@@ -103,9 +104,9 @@ case "$1" in
             cp ./conf-package/cultibox.desktop ../01_src/01_xampp/cultibox/usr/share/applications/
 
             if [ "$1" == "ubuntu32" ]; then
-                tar zxvfp xampp-linux-1.8.1.tar.gz -C ../01_src/01_xampp/cultibox/opt/
+                tar zxvfp xampp-linux-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox/opt/
             else
-                tar zxvfp xampp-linux-admin-1.8.1.tar.gz -C ../01_src/01_xampp/cultibox/opt/
+                tar zxvfp xampp-linux-admin-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox/opt/
             fi
 
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
