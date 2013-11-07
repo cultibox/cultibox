@@ -11,8 +11,20 @@ chown -R $user_culti:$group_culti /opt/cultibox
 sed -i "s/User nobody/User $user_culti/" /opt/lampp/etc/httpd.conf
 sed -i "s/Group nogroup/Group $group_culti/" /opt/lampp/etc/httpd.conf
 sed -i "s/user*.*= nobody/user    = $user_culti/" /opt/lampp/etc/my.cnf
+sed -i "s/apache_server_port=80/apache_server_port=6891/" /opt/lampp/properties.ini
+sed -i "s/apache_user=daemon/apache_user=$user_culti/" /opt/lampp/properties.ini
+sed -i "s/apache_group=daemon/apache_group=$group_culti/" /opt/lampp/properties.ini
+sed -i "s/mysql_port=3306/mysql_port=3891/" /opt/lampp/properties.ini
+
+if [ `/usr/bin/getent passwd  mysql` == "" ]; then
+    /usr/sbin/addgroup --gid 999 mysql
+    /usr/sbin/useradd -d /home/mysql -M -u 999 -s /bin/sh -g mysql mysql
+fi
+
+chown -R mysql /opt/cultibox/var/mysql
 
 /opt/lampp/lampp restart
+sleep 4
 echo "... OK"
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
@@ -50,10 +62,11 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     update-rc.d cultibox defaults
 
     /opt/lampp/lampp restart
+    sleep 4
     echo "... OK"
 else 
     echo "   * A previous version of Cultibox was installed, upgrading your software..."
-    if [ -f /opt/lampp/sql_install/update_sql.sql ]; then
+    if [ -f /opt/lampp/sql_install/update_joomla.sql ]; then
         /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/update_joomla.sql
     fi
 
@@ -62,6 +75,7 @@ else
     fi
 
     /opt/lampp/lampp restart
+    sleep 4
     rm -f /tmp/cultibox_upgrade
     rm -f /opt/cultibox/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "... OK"
