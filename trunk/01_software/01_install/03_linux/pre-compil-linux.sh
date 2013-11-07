@@ -55,7 +55,7 @@ case "$1" in
            cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/extra/
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            
-            cat > ../01_src/01_xampp/cultibox/etc/my-extra.cnf << "EOF" 
+            cat > ../01_src/01_xampp/cultibox/opt/lampp/etc/my-extra.cnf << "EOF" 
 [client]
 user="root"
 password="cultibox"
@@ -126,7 +126,7 @@ EOF
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt
-cat > ../01_src/01_xampp/cultibox/etc/my-extra.cnf << "EOF" 
+            cat > ../01_src/01_xampp/cultibox/opt/lampp/etc/my-extra.cnf << "EOF" 
 [client]
 user="root"
 password="cultibox"
