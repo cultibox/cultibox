@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "   * Configuring/checking Cultibox environment..."
+echo "  * Configuring/checking Cultibox environment..."
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 
@@ -28,7 +28,7 @@ sleep 4
 echo "... OK"
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
-    echo "   * Installing the Cultibox software..."
+    echo "  * Installing the Cultibox software..."
     /opt/lampp/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
 
     /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/user_cultibox.sql
@@ -65,7 +65,7 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     sleep 4
     echo "... OK"
 else 
-    echo "   * A previous version of Cultibox was installed, upgrading your software..."
+    echo "  * A previous version of Cultibox was installed, upgrading your software..."
     if [ -f /opt/lampp/sql_install/update_joomla.sql ]; then
         /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql
     fi
