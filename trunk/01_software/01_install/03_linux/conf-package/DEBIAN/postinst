@@ -68,6 +68,8 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
 else 
     echo "  * A previous version of Cultibox was installed, upgrading your software..."
     /opt/lampp/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
+    /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/user_cultibox.sql
+
     /opt/lampp/load.sh
     if [ -f /opt/lampp/sql_install/update_joomla.sql ]; then
         /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql
