@@ -6,9 +6,3 @@ if [ -f /opt/cultibox/etc/php.ini ] && [ ! -f  /opt/cultibox/lampp ]; then
     exit 1
 fi
 
-if [ "$1" == "upgrade" ]; then
-    /opt/lampp/lampp start
-    sleep 2
-    /opt/lampp/backup.sh    
-    /opt/lampp/lampp stop
-fi

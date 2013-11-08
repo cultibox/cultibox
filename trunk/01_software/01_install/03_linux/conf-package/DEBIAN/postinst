@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 echo "  * Configuring/checking Cultibox environment..."
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
@@ -71,12 +73,13 @@ else
     /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/user_cultibox.sql
 
     /opt/lampp/load.sh
+    sleep 2
     if [ -f /opt/lampp/sql_install/update_joomla.sql ]; then
-        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql
+        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql 2>/dev/null
     fi
 
     if [ -f /opt/lampp/sql_install/update_sql.sql ]; then
-        /opt/lampp/bin/mysql -f --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_sql.sql 2>/dev/null
+        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_sql.sql 2>/dev/null
     fi
 
     /opt/lampp/lampp restart
