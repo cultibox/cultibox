@@ -33,12 +33,12 @@ if [ -d /opt/cultibox/var/cultibox_joomla.save ]; then
 fi
 
 for ligne in `ls /opt/cultibox/var/ibdata*`; do
-    file_name=`filename $line`
+    file_name=`basename $line`
     mv $ligne /opt/cultibox/var/mysql/`echo ${file_name%%.*}`
 done 
 
 for ligne in `ls /opt/cultibox/var/ib_logfile*`; do
-    file_name=`filename $line`
+    file_name=`basename $line`
     mv $ligne /opt/cultibox/var/mysql/`echo ${file_name%%.*}`
 done
 
