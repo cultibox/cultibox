@@ -85,3 +85,7 @@ h2 {
     font-size: 18px;
 }
 
+.tiny_text {
+    font-size: 12px;
+    font-style: italic;
+}
