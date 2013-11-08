@@ -24,17 +24,23 @@ if [ `/usr/bin/getent passwd  mysql` == "" ]; then
 fi
 
 
-if [ -d /opt/lampp/var/cultibox.save ]; then
-    mv /opt/lampp/var/cultibox.save /opt/lampp/var/mysql/cultibox
+if [ -d /opt/cultibox/var/cultibox.save ]; then
+    mv /opt/cultibox/var/cultibox.save /opt/cultibox/var/mysql/cultibox
 fi
 
-if [ -d /opt/lampp/var/cultibox_joomla.save ]; then
-    mv /opt/lampp/var/cultibox_joomla.save /opt/lampp/var/mysql/cultibox_joomla
+if [ -d /opt/cultibox/var/cultibox_joomla.save ]; then
+    mv /opt/cultibox/var/cultibox_joomla.save /opt/cultibox/var/mysql/cultibox_joomla
 fi
 
-if [ -f /opt/lampp/var/ibdata1.save ]; then
-    mv /opt/lampp/var/ibdata1.save /opt/lampp/var/mysql/ibdata1
-fi
+for ligne in `ls /opt/cultibox/var/ibdata*`; do
+    file_name=`filename $line`
+    mv $ligne /opt/cultibox/var/mysql/`echo ${file_name%%.*}`
+done 
+
+for ligne in `ls /opt/cultibox/var/ib_logfile*`; do
+    file_name=`filename $line`
+    mv $ligne /opt/cultibox/var/mysql/`echo ${file_name%%.*}`
+done
 
 
 chown -R mysql /opt/cultibox/var/mysql
@@ -82,6 +88,7 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "... OK"
 else 
     echo "  * A previous version of Cultibox was installed, upgrading your software..."
+    /opt/lampp/bin/mysqladmin --defaults-extra-file=/opt/cultibox/etc/my-extra.cn -h 127.0.0.1 password cultibox
     if [ -f /opt/lampp/sql_install/update_joomla.sql ]; then
         /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql
     fi
