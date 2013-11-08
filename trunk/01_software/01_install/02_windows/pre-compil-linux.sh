@@ -6,10 +6,6 @@ cd $dir
 
 echo "Parametres : $0 $1 !2 !3"
 
-if [ "$3" == "" ]; then
-    (cd ../../../ && svn up)
-fi
-
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../../01_install/01_src/01_xampp
 
@@ -24,6 +20,11 @@ function usage {
 
 if [ "$2" == "" ] && [ "$1" != "clean" ]; then
     usage
+fi
+
+if [ "$3" == "" ]; then
+    (cd ../../../ && svn up)
+    (cd ../../../wiki && svn up)
 fi
 
 VERSION=$2
