@@ -1,18 +1,10 @@
 #!/bin/bash
 
+set -x
+
 if [ -d /opt/cultibox ]; then   
     /opt/lampp/backup.sh
     /etc/init.d/cultibox stop
 fi
-
-
-if [ "$1" == "upgrade" ]; then
-    if [ -f /opt/cultibox/var/mysql/ibdata1 ]; then
-        cp /opt/cultibox/var/mysql/ibdata1 /opt/cultibox/var/mysql/ibdata1.save
-    fi
-fi
-
-
-
 
 exit 0

@@ -35,7 +35,6 @@ fi
 
 /opt/lampp/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > $home/.cultibox/backup_cultibox.bak
 /opt/lampp/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla > $home/.cultibox/backup_joomla.bak
-chown $user_culti:$group_culti $home/.cultibox/backup_cultibox.bak
-chown $user_culti:$group_culti $home/.cultibox/backup_joomla.bak
+chown $user_culti:$group_culti $home/.cultibox/*
 
 echo "... OK"
