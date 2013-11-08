@@ -16,10 +16,10 @@ if [ "$1" == "upgrade" ]; then
     fi
 
     for ligne in `ls /opt/cultibox/var/mysql/ibdata*`; do
-        cp $ligne /opt/cultibox/var/`filename $line`.save
+        cp $ligne /opt/cultibox/var/`basename $line`.save
     done 
 
     for ligne in `ls /opt/cultibox/var/mysql/ib_logfile*`; do
-        cp $ligne /opt/cultibox/var/`filename $line`.save
+        cp $ligne /opt/cultibox/var/`basename $line`.save
     done
 fi
