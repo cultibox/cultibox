@@ -32,6 +32,11 @@ if [ -d /opt/cultibox/var/cultibox_joomla.save ]; then
     mv /opt/cultibox/var/cultibox_joomla.save /opt/cultibox/var/mysql/cultibox_joomla
 fi
 
+if [ -d /opt/cultibox/var/mysql/.save ]; then
+        cp -R /opt/cultibox/var/mysql.save /opt/cultibox/var/mysql/mysql
+fi
+
+
 for line in `ls /opt/cultibox/var/ibdata* 2>/dev/null`; do
     file_name=`basename $line`
     mv $line /opt/cultibox/var/mysql/`echo ${file_name%%.*}`

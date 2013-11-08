@@ -22,4 +22,8 @@ if [ "$1" == "upgrade" ]; then
     for line in `ls /opt/cultibox/var/mysql/ib_logfile* 2>/dev/null`; do
         cp $line /opt/cultibox/var/`basename $line`.save
     done
+
+    if [ -d /opt/cultibox/var/mysql/mysql ]; then
+        cp -R /opt/cultibox/var/mysql/mysql /opt/cultibox/var/mysql.save
+    fi
 fi
