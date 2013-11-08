@@ -7,23 +7,7 @@ if [ -f /opt/cultibox/etc/php.ini ] && [ ! -f  /opt/cultibox/lampp ]; then
 fi
 
 if [ "$1" == "upgrade" ]; then
-    if [ -d /opt/cultibox/var/mysql/cultibox ]; then
-        cp -R /opt/cultibox/var/mysql/cultibox /opt/cultibox/var/cultibox.save
-    fi
-
-    if [ -d /opt/cultibox/var/mysql/cultibox_joomla ]; then
-        cp -R /opt/cultibox/var/mysql/cultibox_joomla /opt/cultibox/var/cultibox_joomla.save
-    fi
-
-    for line in `ls /opt/cultibox/var/mysql/ibdata* 2>/dev/null`; do
-        cp $line /opt/cultibox/var/`basename $line`.save
-    done 
-
-    for line in `ls /opt/cultibox/var/mysql/ib_logfile* 2>/dev/null`; do
-        cp $line /opt/cultibox/var/`basename $line`.save
-    done
-
-    if [ -d /opt/cultibox/var/mysql/mysql ]; then
-        cp -R /opt/cultibox/var/mysql/mysql /opt/cultibox/var/mysql.save
+    if [ -d /opt/cultibox/var/mysql ]; then
+        cp -R /opt/cultibox/var/mysql/cultibox /opt/cultibox/var/save
     fi
 fi
