@@ -2,5 +2,3 @@ GRANT SELECT, INSERT, UPDATE, DELETE, DROP, LOCK TABLES, FILE ON *.* TO 'cultibo
 
 GRANT SELECT, INSERT, UPDATE, DROP ON `cultibox`.* TO 'cultibox'@'localhost';
 
-FLUSH PRIVILEGE;
-
