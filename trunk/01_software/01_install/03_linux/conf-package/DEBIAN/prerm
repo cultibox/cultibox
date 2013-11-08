@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 if [ -d /opt/cultibox ]; then   
     /opt/lampp/backup.sh
     /etc/init.d/cultibox stop

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 echo "  * Configuring/checking Cultibox environment..."
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
@@ -27,7 +25,7 @@ fi
 chown -R mysql /opt/cultibox/var/mysql
 
 /opt/lampp/lampp restart
-sleep 4
+sleep 2
 echo "... OK"
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
@@ -65,7 +63,7 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     update-rc.d cultibox defaults
 
     /opt/lampp/lampp restart
-    sleep 4
+    sleep 2
     echo "... OK"
 else 
     echo "  * A previous version of Cultibox was installed, upgrading your software..."
@@ -80,7 +78,7 @@ else
     fi
 
     /opt/lampp/lampp restart
-    sleep 4
+    sleep 2
     rm -f /tmp/cultibox_upgrade
     rm -f /opt/cultibox/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "... OK"
