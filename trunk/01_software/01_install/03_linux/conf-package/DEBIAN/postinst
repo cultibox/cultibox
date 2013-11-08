@@ -23,9 +23,19 @@ if [ `/usr/bin/getent passwd  mysql` == "" ]; then
     /usr/sbin/useradd -d /home/mysql -M -u 999 -s /bin/sh -g mysql mysql
 fi
 
-if [ -f /opt/cultibox/var/mysql/ibdata1.save ]; then
-    mv /opt/cultibox/var/mysql/ibdata1.save /opt/cultibox/var/mysql/ibdata1
+
+if [ -d /opt/lampp/var/cultibox.save ]; then
+    mv /opt/lampp/var/cultibox.save /opt/lampp/var/mysql/cultibox
 fi
+
+if [ -d /opt/lampp/var/cultibox_joomla.save ]; then
+    mv /opt/lampp/var/cultibox_joomla.save /opt/lampp/var/mysql/cultibox_joomla
+fi
+
+if [ -f /opt/lampp/var/ibdata1.save ]; then
+    mv /opt/lampp/var/ibdata1.save /opt/lampp/var/mysql/ibdata1
+fi
+
 
 chown -R mysql /opt/cultibox/var/mysql
 
@@ -72,8 +82,6 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "... OK"
 else 
     echo "  * A previous version of Cultibox was installed, upgrading your software..."
-    /opt/lampp/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
-
     if [ -f /opt/lampp/sql_install/update_joomla.sql ]; then
         /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql
     fi

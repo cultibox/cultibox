@@ -24,9 +24,9 @@ fi
 VERSION=$2
 
 # Remove svn up when using jenkins
-#if [ "$3" == "" ]; then
-#    (cd ../../../ && svn up)
-#fi
+if [ "$3" == "" ]; then
+    (cd ../../../ && svn up)
+fi
 
 
 case "$1" in
@@ -133,7 +133,7 @@ password="cultibox"
 EOF
            cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/opt/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
-           sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-amd64' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/update_sql.sql
+           sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-i386' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/update_sql.sql
            cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp -R ../../01_install/01_src/03_sd/bin ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp ../../01_install/01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
