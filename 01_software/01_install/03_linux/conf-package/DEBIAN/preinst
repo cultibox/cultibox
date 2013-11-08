@@ -7,7 +7,5 @@ if [ -f /opt/cultibox/etc/php.ini ] && [ ! -f  /opt/cultibox/lampp ]; then
 fi
 
 if [ "$1" == "upgrade" ]; then
-    if [ -d /opt/cultibox/var/mysql ]; then
-        cp -R /opt/cultibox/var/mysql/cultibox /opt/cultibox/var/save
-    fi
+    /opt/lampp/backup.sh
 fi
