@@ -26,6 +26,16 @@ if [ -f $home/.cultibox/backup_cultibox.bak ]; then
     echo "        This file will be move to backup_cultibox.bak.old"
     mv $home/.cultibox/backup_cultibox.bak $home/.cultibox/backup_cultibox.bak.old
 fi
+
+if [ -f $home/.cultibox/backup_joomla.bak ]; then
+    echo "    --> A previous backup file was found: backup_joomla.bak"
+    echo "        This file will be move to backup_joomla.bak.old"
+    mv $home/.cultibox/backup_joomla.bak $home/.cultibox/backup_joomla.bak.old
+fi
+
 /opt/lampp/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > $home/.cultibox/backup_cultibox.bak
+/opt/lampp/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla > $home/.cultibox/backup_joomla.bak
 chown $user_culti:$group_culti $home/.cultibox/backup_cultibox.bak
+chown $user_culti:$group_culti $home/.cultibox/backup_joomla.bak
+
 echo "... OK"
