@@ -5,3 +5,4 @@ if [ -f /opt/cultibox/etc/php.ini ] && [ ! -f  /opt/cultibox/lampp ]; then
     echo "      dpkg --purge cultibox"
     exit 1
 fi
+

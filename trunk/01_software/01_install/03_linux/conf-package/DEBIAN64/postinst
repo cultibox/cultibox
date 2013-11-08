@@ -1,70 +1,89 @@
 #!/bin/bash
-echo "   * Configuring/checking Cultibox environment..."
+
+set -x
+
+echo "  * Configuring/checking Cultibox environment..."
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 
 if [ ! -f /opt/lampp ] && [ ! -L /opt/lampp ]; then
     ln -s /opt/cultibox /opt/lampp
 fi
-
-
 chown -R $user_culti:$group_culti /opt/cultibox
 sed -i "s/User nobody/User $user_culti/" /opt/lampp/etc/httpd.conf
 sed -i "s/Group nogroup/Group $group_culti/" /opt/lampp/etc/httpd.conf
 sed -i "s/user*.*= nobody/user    = $user_culti/" /opt/lampp/etc/my.cnf
+sed -i "s/apache_server_port=80/apache_server_port=6891/" /opt/lampp/properties.ini
+sed -i "s/apache_user=daemon/apache_user=$user_culti/" /opt/lampp/properties.ini
+sed -i "s/apache_group=daemon/apache_group=$group_culti/" /opt/lampp/properties.ini
+sed -i "s/mysql_port=3306/mysql_port=3891/" /opt/lampp/properties.ini
+
+if [ `/usr/bin/getent passwd  mysql` == "" ]; then
+    /usr/sbin/addgroup --gid 999 mysql
+    /usr/sbin/useradd -d /home/mysql -M -u 999 -s /bin/sh -g mysql mysql
+fi
+
+
+chown -R mysql /opt/cultibox/var/mysql
 
 /opt/lampp/lampp restart
-
+sleep 2
 echo "... OK"
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
-    echo "   * Installing the Cultibox software..."
+    echo "  * Installing the Cultibox software..."
     /opt/lampp/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
 
-    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/user_cultibox.sql
-    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/joomla.sql
+    /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/user_cultibox.sql
+    /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/joomla.sql
 
     lang=`echo $LANG`
     case "$lang" in
         fr_*)
-            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_fr.sql
+            /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/cultibox_fr.sql
             ;;
         en_*)
-            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_en.sql
+            /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/cultibox_en.sql
             ;;
         it_*)
-            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_it.sql
+            /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/cultibox_it.sql
             ;;
         de_*)
-            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_de.sql
+            /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/cultibox_de.sql
             ;;
         es_*)
-            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_es.sql
+            /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/cultibox_es.sql
             ;;
         *)
-            /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/cultibox_en.sql
+            /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/cultibox_en.sql
             ;;
     esac
-
-    /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/fake_log.sql
+    /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/fake_log.sql
 
     cp /opt/lampp/daemon/cultibox /etc/init.d/
     chmod 755 /etc/init.d/cultibox
     update-rc.d cultibox defaults
 
     /opt/lampp/lampp restart
+    sleep 2
     echo "... OK"
 else 
-    echo "   * A previous version of Cultibox was installed, upgrading your software..."
+    echo "  * A previous version of Cultibox was installed, upgrading your software..."
+    /opt/lampp/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
+    /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/user_cultibox.sql
+
+    /opt/lampp/load.sh
+    sleep 2
     if [ -f /opt/lampp/sql_install/update_joomla.sql ]; then
-        /opt/lampp/bin/mysql -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/update_joomla.sql
+        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql 2>/dev/null
     fi
 
     if [ -f /opt/lampp/sql_install/update_sql.sql ]; then
-        /opt/lampp/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /opt/lampp/sql_install/update_sql.sql 2>/dev/null
+        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_sql.sql 2>/dev/null
     fi
 
     /opt/lampp/lampp restart
+    sleep 2
     rm -f /tmp/cultibox_upgrade
     rm -f /opt/cultibox/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "... OK"
