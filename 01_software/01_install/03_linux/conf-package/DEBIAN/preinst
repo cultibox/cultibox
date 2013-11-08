@@ -15,11 +15,11 @@ if [ "$1" == "upgrade" ]; then
         cp -R /opt/cultibox/var/mysql/cultibox_joomla /opt/cultibox/var/cultibox_joomla.save
     fi
 
-    for ligne in `ls /opt/cultibox/var/mysql/ibdata*`; do
-        cp $ligne /opt/cultibox/var/`basename $line`.save
+    for line in `ls /opt/cultibox/var/mysql/ibdata* 2>/dev/null`; do
+        cp $line /opt/cultibox/var/`basename $line`.save
     done 
 
-    for ligne in `ls /opt/cultibox/var/mysql/ib_logfile*`; do
-        cp $ligne /opt/cultibox/var/`basename $line`.save
+    for line in `ls /opt/cultibox/var/mysql/ib_logfile* 2>/dev/null`; do
+        cp $line /opt/cultibox/var/`basename $line`.save
     done
 fi
