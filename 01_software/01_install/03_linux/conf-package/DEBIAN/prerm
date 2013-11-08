@@ -2,6 +2,10 @@
 
 if [ -d /opt/cultibox ]; then   
     /opt/lampp/backup.sh
+    if [ $? -ne 0 ]; then
+        echo "==== Error during the backup of your installation, please check that the Cultibox software is correctly running, exiting"
+        exit 1
+    fi
     /etc/init.d/cultibox stop
 fi
 
