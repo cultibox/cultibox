@@ -9,4 +9,9 @@ if [ -d /opt/cultibox ]; then
     /etc/init.d/cultibox stop
 fi
 
+if [ "$1" == "upgrade" ]; then
+    
+
+fi
+
 exit 0
