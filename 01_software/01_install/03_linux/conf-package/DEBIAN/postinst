@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 echo "  * Configuring/checking Cultibox environment..."
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
@@ -18,9 +16,12 @@ sed -i "s/apache_user=daemon/apache_user=$user_culti/" /opt/lampp/properties.ini
 sed -i "s/apache_group=daemon/apache_group=$group_culti/" /opt/lampp/properties.ini
 sed -i "s/mysql_port=3306/mysql_port=3891/" /opt/lampp/properties.ini
 
-if [ `/usr/bin/getent passwd  mysql` == "" ]; then
-    /usr/sbin/addgroup --gid 999 mysql
-    /usr/sbin/useradd -d /home/mysql -M -u 999 -s /bin/sh -g mysql mysql
+if [ "`/usr/bin/getent group mysql`" == "" ]; then
+    /usr/sbin/addgroup mysql
+fi
+
+if [ "`/usr/bin/getent passwd  mysql`" == "" ]; then
+    /usr/sbin/useradd -d /home/mysql -M -s /bin/sh -g mysql mysql
 fi
 
 
