@@ -85,7 +85,7 @@ else
         #Removing architecture information
         version=`echo ${version%%-*}`
         if [ "$version" != "" ]; then
-            for file in `ls /opt/lampp/sql_install/update_joomla-*`; do
+            for file in `ls /opt/lampp/sql_install/update_joomla-* 2>/dev/null`; do
                #Remove path file information
                file_name=`basename $file`
                #Remove extension information
@@ -102,7 +102,7 @@ else
                fi
             done    
 
-            for file in `ls /opt/lampp/sql_install/update_sql-*`; do
+            for file in `ls /opt/lampp/sql_install/update_sql-* 2>/dev/null`; do
                #Remove path file information
                file_name=`basename $file`
                #Remove extension information
