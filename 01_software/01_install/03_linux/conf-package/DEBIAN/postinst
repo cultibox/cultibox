@@ -76,11 +76,54 @@ else
     /opt/lampp/load.sh
     sleep 2
     if [ -f /opt/lampp/sql_install/update_joomla.sql ]; then
-        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql 2>/dev/null
+        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql 
+    fi
+
+    if [ -f /tmp/cultibox_version ]; then
+        #Get previous cultibox version
+        version=`cat /tmp/cultibox_version`
+        #Removing architecture information
+        version=`echo ${version%%-*}`
+        if [ "$version" != "" ]; then
+            for file in `ls /opt/lampp/sql_install/update_joomla-*`; do
+               #Remove path file information
+               file_name=`basename $file`
+               #Remove extension information
+               file_name=` echo ${file_name%.*}`
+               #Get version information
+               file_name=`echo $file_name|awk -F"-" '{print $2}'`
+               file_name=`echo ${file_name//./}`
+
+               if [ "$file_name" != "" ]; then
+                    #if file version >= version
+                    if [ $file_name -ge $version ]; then
+                        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < $file 
+                    fi        
+               fi
+            done    
+
+            for file in `ls /opt/lampp/sql_install/update_sql-*`; do
+               #Remove path file information
+               file_name=`basename $file`
+               #Remove extension information
+               file_name=` echo ${file_name%.*}`
+               #Get version information
+               file_name=`echo $file_name|awk -F"-" '{print $2}'`
+               file_name=`echo ${file_name//./}`
+
+               if [ "$file_name" != "" ]; then
+                    #if file version >= version
+                    if [ $file_name -ge $version ]; then
+                        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < $file 
+                    fi
+               fi
+            done
+        fi
+        rm /tmp/cultibox_version
     fi
 
     if [ -f /opt/lampp/sql_install/update_sql.sql ]; then
-        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_sql.sql 2>/dev/null
+        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_sql.sql
     fi
 
     /opt/lampp/lampp restart
