@@ -8,11 +8,11 @@ if [ -f /Applications/cultibox/xamppfiles/etc/php.ini ] && [ ! -f  /Applications
     exit 1
 else
    if [ -d /Applications/cultibox ]; then
-        if [ -f /Applications/cultibox/get_version.sh ]; then
+        if [ -f /Applications/cultibox/run/get_version.sh ]; then
             if [ -f /tmp/cultibox_version ]; then
                 rm /tmp/cultibox_version
             fi
-            /Applications/cultibox/get_version.sh > /tmp/cultibox_version
+            /Applications/cultibox/run/get_version.sh > /tmp/cultibox_version
         fi
         touch /tmp/cultibox_upgrade
    fi

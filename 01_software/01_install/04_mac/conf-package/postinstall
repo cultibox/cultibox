@@ -59,7 +59,7 @@ else
     /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
     /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/user_cultibox.sql
 
-    /Applications/XAMPP/xamppfiles/load.sh
+    /Applications/XAMPP/run/load.sh
     sleep 2
 
     if [ -f /Applications/XAMPP/sql_install/update_joomla.sql ]; then
