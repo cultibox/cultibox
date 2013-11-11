@@ -17,8 +17,8 @@ user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 
 chown -R $user_culti:$group_culti /Applications/cultibox
-sed -i '' "s/User nobody/User $user_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
-sed -i '' "s/Group nogroup/Group $group_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
+sed -i '' "s/User daemon/User $user_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
+sed -i '' "s/Group daemon/Group $group_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
 sed -i '' "s/apache_server_port=80/apache_server_port=6891/" /Applications/cultibox/xamppfiles/properties.ini
 sed -i '' "s/apache_user=daemon/apache_user=$user_culti/" /Applications/cultibox/xamppfiles/properties.ini
 sed -i '' "s/apache_group=daemon/apache_group=$group_culti/" /Applications/cultibox/xamppfiles/properties.ini
