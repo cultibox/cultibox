@@ -92,21 +92,26 @@ sudo ln -s /Applications/cultibox /Applications/XAMPP
 sudo /Applications/XAMPP/xamppfiles/xampp start
 }}}
 
+= Je viens de faire un passage de Windows 7 vers Windows 8 et le logiciel ne fonctionne plus, que faire? =
 
-= Pourquoi lorsque je formate ma carte SD, que j'importe des logs ou que j'affiche un mois entier de logs, le message d'erreur suivant apparaît: "Fatal error: maximum execution time of 120 seconds exceeded [...]"? =
+La mise à niveau du système Windows 7 vers Windows 8 supprime les services cultibox (nommées cultibox_apache et cultibox_mysql) qui ont été installé par le logiciel et qui sont nécéssaires à son fonctionnement. Pour corriger le problème, il suffit simplement de les réinstaller avec la procédure suivante:
 
-Par mesure de sécurité, les scripts PHP ont une durée maximum d'exécution autorisées, la Cultibox autorise des scripts à se lancer pendant 120 secondes maximum. Les opérations citées plus haut (formatage, import de logs, affichage sur une grande période...) sont des opérations qui peuvent demander à votre ordinateur un plus grand temps d’exécution en fonction des performances de celui-ci.
+ * Faire un clic droit sur le fichier nommé c:\cultibox\xampp\apache\apache_installservice.bat et l'exécuter avec des droits administrateurs (menu: "Exécuter en tant qu'administrateur")
+ * Faire un clic droit sur le fichier nommé c:\cultibox\xampp\mysql\mysql_installservice.bat et l'exécuter avec des droits administrateurs (menu: "Exécuter en tant qu'administrateur")
 
- * Pour le formatage de la carte SD ou l'import des logs: il vous suffit d'actualiser la page jusqu'à ce que l'opération se complète
- * Pour l'affichage des données: il vous faudra trier et afficher moins d'informations en vous servant des différents champs du formulaire d'affichage des logs
+Les deux services sont alors de nouveau disponible, si vous redémarrer votre ordinateur ils se lanceront automatiquement au démarrage.
+
+Vous pouvez vérifier qu'ils sont correctement installé en vous rendant dans le gestionnaire des tâches:
+
+ * Appuyer simultanément sur les touches CTRL-ALT-SUPPR et cliquer sur le menu "Gestionnaire des tâches"
+ * Cliquer ensuite sur le bouton "Plus de détails" pour voir s'afficher les différents onglets disponibles et sélectionner l'onglet "Services"
+ * Les services cultibox doivent être visibles avec le status "En cours d'exécution"
+
+http://cultibox.googlecode.com/svn/wiki/img/services_windows8.png
+
+ * S'ils ne sont pas lancés, il est possible de faire un clic droit sur le/les services concernés et de cliquer sur le menu "Démarrer le service"
 
 
-Note pour les utilisateurs expérimentés: il est possible d'augmenter l’autorisation du temps d’exécution des scripts PHP en modifiant le fichier php.ini qui se trouve:
- * Sous Windows: c:\Cultibox\xampp\php\php.ini
- * Sous Linux: /opt/cultibox/etc/php.ini
- * Sous Mac os X: /Applications/cultibox/xamppfiles/etc/php.ini
-
-et de modifier (à vos risques et périls!!!) la directive: "max_execution_time"
 
 = Est-ce que je peux mettre un extracteur avec ma lampeHPS sur la prise 3500W =
 Si la puissance totale est inférieur à 600W, il n'y a pas de problème.
