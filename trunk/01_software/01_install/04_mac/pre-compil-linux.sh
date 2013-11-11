@@ -4,11 +4,6 @@ set -e
 dir=`dirname $0`
 cd $dir
 
-# Remove svn up when using jenkins
-if [ "$3" == "" ]; then
-    (cd ../../../ && svn up)
-fi
-
 SRC_DIR=../../02_src/joomla
 DEST_DIR=../01_src/01_xampp
 
@@ -22,6 +17,11 @@ function usage {
 
 if [ "$2" == "" ] && [ "$1" != "clean" ]; then
     usage
+fi
+
+# Remove svn up when using jenkins
+if [ "$3" == "" ]; then
+    (cd ../../../ && svn up)
 fi
 
 VERSION=$2
