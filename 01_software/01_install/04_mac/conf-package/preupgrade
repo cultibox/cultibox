@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [ -f /Applications/XAMPP/xamppfiles/backup.sh ]; then
     /Applications/XAMPP/xamppfiles/backup.sh
     if [ $? -ne 0 ]; then

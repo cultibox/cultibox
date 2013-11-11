@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 echo "   * Configuring your CultiBox environment..."
 if [ ! -L /Applications/XAMPP ]; then
     ln -s /Applications/cultibox /Applications/XAMPP
@@ -17,13 +19,15 @@ group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 chown -R $user_culti:$group_culti /Applications/cultibox
 sed -i '' "s/User nobody/User $user_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
 sed -i '' "s/Group nogroup/Group $group_culti/" /Applications/cultibox/xamppfiles/etc/httpd.conf
-sed -i "s/apache_server_port=80/apache_server_port=6891/" /Applications/cultibox/xamppfiles/properties.ini
-sed -i "s/apache_user=daemon/apache_user=$user_culti/" /Applications/cultibox/xamppfiles/properties.ini
-sed -i "s/apache_group=daemon/apache_group=$group_culti/" /Applications/cultibox/xamppfiles/properties.ini
-sed -i "s/mysql_port=3306/mysql_port=3891/" /Applications/cultibox/xamppfiles/properties.ini
+sed -i '' "s/apache_server_port=80/apache_server_port=6891/" /Applications/cultibox/xamppfiles/properties.ini
+sed -i '' "s/apache_user=daemon/apache_user=$user_culti/" /Applications/cultibox/xamppfiles/properties.ini
+sed -i '' "s/apache_group=daemon/apache_group=$group_culti/" /Applications/cultibox/xamppfiles/properties.ini
+sed -i '' "s/mysql_port=3306/mysql_port=3891/" /Applications/cultibox/xamppfiles/properties.ini
 
 chown -R mysql /Applications/cultibox/xamppfiles/var/mysql
-/Applications/XAMPP/xamppfiles/lampp start
+chown -R mysql /Applications/cultibox/xamppfiles/temp/mysql
+
+/Applications/XAMPP/xamppfiles/xampp start
 
 sleep 4
 echo "... OK"
