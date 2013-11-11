@@ -41,6 +41,13 @@ case "$1" in
             cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/xamppfiles/etc/
             cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/xamppfiles/etc/extra/
             cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/xamppfiles/etc/
+
+  cat > ../01_src/01_xampp/cultibox/xamppfiles/etc/my-extra.cnf << "EOF" 
+[client]
+user="root"
+password="cultibox"
+EOF
+
             cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/sd
             cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/sql_install
             mkdir ../01_src/01_xampp/cultibox/package
