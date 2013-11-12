@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 echo "Stopping services..."
 if [ -f /Applications/cultibox/xamppfiles/xampp ]; then
     /Applications/cultibox/xamppfiles/xampp stop
@@ -19,6 +17,6 @@ fi
 
 
 echo "Removing remaining files..."
-sudo rm -Rf /Applications/cultibox*
+sudo rm -Rf /Applications/cultibox /Applications/cultibox.app
 echo "...OK"
 
