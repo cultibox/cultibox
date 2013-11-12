@@ -27,13 +27,15 @@ chown -R mysql /Applications/cultibox/xamppfiles/var/mysql
 chown -R mysql /Applications/cultibox/xamppfiles/temp/mysql
 
 /Applications/cultibox/xamppfiles/xampp start
-
-sleep 4
+sleep 6
 echo "... OK"
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "   * Configuring your Cultibox software..."
     /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
+    if [ $? -ne 0 ]; then
+        exit 1
+    fi
 
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/user_cultibox.sql
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/joomla.sql
@@ -59,7 +61,7 @@ else
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/user_cultibox.sql
 
     /Applications/cultibox/run/load.sh
-    sleep 2
+    sleep 6
 
     if [ -f /Applications/cultibox/sql_install/update_joomla.sql ]; then
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_joomla.sqll
@@ -127,5 +129,5 @@ echo "...OK"
 
 echo "   * Restarting the CultiBox interface..."
 /Applications/cultibox/xamppfiles/xampp restart
-sleep 4
+sleep 6
 echo "...OK"
