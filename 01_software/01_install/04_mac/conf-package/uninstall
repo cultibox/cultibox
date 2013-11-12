@@ -18,5 +18,6 @@ fi
 
 echo "Removing remaining files..."
 sudo rm -Rf /Applications/cultibox /Applications/cultibox.app
+sudo rm -Rf $HOME/.cultibox 2>/dev/null
 echo "...OK"
 
