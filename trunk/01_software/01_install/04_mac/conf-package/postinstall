@@ -1,13 +1,12 @@
 #!/bin/bash
 
-set -x
 
 echo "   * Configuring your CultiBox environment..."
 if [ ! -L /Applications/XAMPP ]; then
     ln -s /Applications/cultibox /Applications/XAMPP
 fi
 
-/Applications/XAMPP/xamppfiles/xampp stop
+/Applications/cultibox/xamppfiles/xampp stop
 
 if [ -d /Applications/cultibox/cultibox.app ]; then
     mv /Applications/cultibox/cultibox.app /Applications/
@@ -27,43 +26,43 @@ sed -i '' "s/mysql_port=3306/mysql_port=3891/" /Applications/cultibox/xamppfiles
 chown -R mysql /Applications/cultibox/xamppfiles/var/mysql
 chown -R mysql /Applications/cultibox/xamppfiles/temp/mysql
 
-/Applications/XAMPP/xamppfiles/xampp start
+/Applications/cultibox/xamppfiles/xampp start
 
 sleep 4
 echo "... OK"
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "   * Configuring your Cultibox software..."
-    /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
+    /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
 
-    /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/user_cultibox.sql
-    /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/joomla.sql
+    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/user_cultibox.sql
+    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/joomla.sql
     lang=`defaults read /Library/Preferences/.GlobalPreferences AppleLanguages| tr -d [:space:] | cut -c2-3`
     if [ "$lang" == "En" ]; then
-        /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/cultibox_en.sql
+        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/cultibox_en.sql
     elif [ "$lang" == "Fr" ]; then
-        /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/cultibox_fr.sql
+        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/cultibox_fr.sql
     elif [ "$lang" == "De" ]; then
-	    /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/cultibox_de.sql
+	    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/cultibox_de.sql
     elif [ "$lang" == "It" ]; then
-	    /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/cultibox_it.sql
+	    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/cultibox_it.sql
     elif [ "$lang" == "Es" ]; then
-        /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/cultibox_es.sql
+        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/cultibox_es.sql
     else
-	    /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/cultibox_en.sql
+	    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/cultibox_en.sql
     fi
-    /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/fake_log.sql
+    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/fake_log.sql
     echo "...OK"
 else
     echo "   * Upgrading the Cultibox software configuration..."
-    /Applications/XAMPP/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
-    /Applications/XAMPP/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/user_cultibox.sql
+    /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
+    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/user_cultibox.sql
 
-    /Applications/XAMPP/run/load.sh
+    /Applications/cultibox/run/load.sh
     sleep 2
 
-    if [ -f /Applications/XAMPP/sql_install/update_joomla.sql ]; then
-        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /Applications/XAMPP/sql_install/update_joomla.sqll
+    if [ -f /Applications/cultibox/sql_install/update_joomla.sql ]; then
+        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_joomla.sqll
     fi
 
 
@@ -73,7 +72,7 @@ else
         #Removing architecture information
         version=`echo ${version%%-*}`
         if [ "$version" != "" ]; then
-            for file in `ls /Applications/XAMPP/sql_install/update_joomla-* 2>/dev/null`; do
+            for file in `ls /Applications/cultibox/sql_install/update_joomla-* 2>/dev/null`; do
                #Remove path file information
                file_name=`basename $file`
                #Remove extension information
@@ -90,7 +89,7 @@ else
                fi
             done
 
-            for file in `ls /Applications/XAMPP/sql_install/update_sql-* 2>/dev/null`; do
+            for file in `ls /Applications/cultibox/sql_install/update_sql-* 2>/dev/null`; do
                #Remove path file information
                file_name=`basename $file`
                #Remove extension information
@@ -127,6 +126,6 @@ chmod 644 /System/Library/LaunchDaemons/cultibox_*.plist
 echo "...OK"
 
 echo "   * Restarting the CultiBox interface..."
-/Applications/XAMPP/xamppfiles/xampp restart
+/Applications/cultibox/xamppfiles/xampp restart
 sleep 4
 echo "...OK"
