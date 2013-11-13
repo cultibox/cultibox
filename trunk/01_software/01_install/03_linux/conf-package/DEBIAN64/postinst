@@ -29,6 +29,17 @@ chown -R mysql /opt/cultibox/var/mysql
 
 /opt/lampp/lampp restart
 sleep 2
+
+# Check if mysql is alive
+/opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    sleep 4
+    /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 -u root -h 127.0.0.1 ping >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "==== Error, the mysql service doesn't seem to be started... exiting ===="
+        exit 1
+    fi
+fi
 echo "... OK"
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
@@ -74,6 +85,9 @@ else
     /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/user_cultibox.sql
 
     /opt/lampp/load.sh
+    if [ $? -ne 0 ]; then
+        exit 1
+    fi
     sleep 2
     if [ -f /opt/lampp/sql_install/update_joomla.sql ]; then
         /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql 
