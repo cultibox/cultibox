@@ -28,6 +28,17 @@ chown -R mysql /Applications/cultibox/xamppfiles/temp/mysql
 
 /Applications/cultibox/xamppfiles/xampp start
 sleep 6
+# Check if mysql is alive
+/Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    sleep 4
+    /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "==== Error, the mysql service doesn't seem be started... exiting ===="
+        exit 1
+    fi
+fi
+
 echo "... OK"
 
 if [ ! -f /tmp/cultibox_upgrade ]; then
