@@ -75,7 +75,7 @@ else
     sleep 6
 
     if [ -f /Applications/cultibox/sql_install/update_joomla.sql ]; then
-        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_joomla.sqll
+        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_joomla.sqll
     fi
 
 
@@ -123,7 +123,7 @@ else
     fi
 
     if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
-        /Applications/cultibox/xamppfiles/bin/mysql -f -u root -h 127.0.0.1 --port=3891 -pcultibox < /Applications/cultibox/sql_install/update_sql.sql 
+        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_sql.sql 
     fi
 
     rm /tmp/cultibox_upgrade
