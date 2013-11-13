@@ -4,23 +4,25 @@ if [ -f /Applications/cultibox/xamppfiles/etc/php.ini ] && [ ! -f  /Applications
     echo " === An old version of the Cultibox seems to be remaining in your system, please remove manually the remaining Cultibox system in /Applications directory ===="
     exit 1
 else
-    /Applications/cultibox/xamppfiles/xampp start
-    sleep 6
+    if [ -d /Applications/cultibox ]; then
+        /Applications/cultibox/xamppfiles/xampp start
+        sleep 6
 
-    # Upgrade case:
-    if [ -f /Applications/cultibox/run/get_version.sh ]; then
-        if [ -f /tmp/cultibox_version ]; then
-            rm /tmp/cultibox_version
+        # Upgrade case:
+        if [ -f /Applications/cultibox/run/get_version.sh ]; then
+            if [ -f /tmp/cultibox_version ]; then
+                rm /tmp/cultibox_version
+            fi
+            /Applications/cultibox/run/get_version.sh > /tmp/cultibox_version
         fi
-        /Applications/cultibox/run/get_version.sh > /tmp/cultibox_version
-    fi
-    touch /tmp/cultibox_upgrade
+        touch /tmp/cultibox_upgrade
 
-    if [ -f /Applications/cultibox/run/backup.sh ]; then
-        /Applications/cultibox/run/backup.sh
-        if [ $? -ne 0 ]; then
-            echo "==== Error during the backup of your installation, please check that the Cultibox software is correctly running, exiting ===="
-            exit 1
+        if [ -f /Applications/cultibox/run/backup.sh ]; then
+            /Applications/cultibox/run/backup.sh
+            if [ $? -ne 0 ]; then
+                echo "==== Error during the backup of your installation, please check that the Cultibox software is correctly running, exiting ===="
+                exit 1
+            fi
         fi
     fi
 fi
