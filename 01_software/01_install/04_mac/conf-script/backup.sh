@@ -43,16 +43,17 @@ fi
 echo "  * Saving previous Cultibox backup database..."
 if [ -f $HOME/.cultibox/backup_cultibox.bak ]; then
     mv $HOME/.cultibox/backup_cultibox.bak $HOME/.cultibox/backup_cultibox.bak.old
-    mv $HOME/.cultibox/backup_cultibox.bak.new $HOME/.cultibox/backup_cultibox.bak
     echo "... OK"
 fi
+
 
 echo "  * Saving previous Joomla backups database..."
 if [ -f $HOME/.cultibox/backup_joomla.bak ]; then
     mv $HOME/.cultibox/backup_joomla.bak $HOME/.cultibox/backup_joomla.bak.old
-    mv $HOME/.cultibox/backup_joomla.bak.new $HOME/.cultibox/backup_joomla.bak
     echo "... OK"
 fi
 
+mv $HOME/.cultibox/backup_cultibox.bak.new $HOME/.cultibox/backup_cultibox.bak
+mv $HOME/.cultibox/backup_joomla.bak.new $HOME/.cultibox/backup_joomla.bak
 chown $user_culti:$group_culti $HOME/.cultibox/*
 exit 0
