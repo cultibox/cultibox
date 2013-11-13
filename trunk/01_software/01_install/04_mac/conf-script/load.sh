@@ -17,7 +17,7 @@ if [ -f $HOME/.cultibox/backup_cultibox.bak ]; then
     # Test of the connection:
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SHOW TABLES;">/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo -u mysql /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox;"
+        rm -Rf /Applications/cultibox/xamppfiles/var/mysql/cultibox
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox;"
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < $HOME/.cultibox/backup_cultibox.bak
     else
@@ -40,7 +40,7 @@ if [ -f $HOME/.cultibox/backup_joomla.bak ]; then
     
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla -e "SHOW TABLES;" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-        sudo -u mysql /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox_joomla;"
+        rm -Rf /Applications/cultibox/xamppfiles/var/mysql/cultibox_joomla
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox_joomla;"
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla < $HOME/.cultibox/backup_joomla.bak
     else
