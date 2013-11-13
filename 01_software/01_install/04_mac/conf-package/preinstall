@@ -12,10 +12,10 @@ else
 
         # Upgrade case:
         if [ ! -f /Applications/cultibox/xamppfiles/etc/my-extra.cnf ]; then
-          for file in `find /var/folders/ -name "my-extra.cnf"`; do
-                cp "$file" /Applications/cultibox/xamppfiles/etc/
-                break
-          done
+          file=`find /var/folders/ -name "my-extra.cnf"|head -1`
+          if [ "$file" != "" ]; then
+            cp $file /Applications/cultibox/xamppfiles/etc/
+          fi
         fi
 
         if [ -f /Applications/cultibox/run/get_version.sh ]; then
@@ -24,19 +24,19 @@ else
             fi
             /Applications/cultibox/run/get_version.sh > /tmp/cultibox_version
         else 
-          for file in `find /var/folders/ -name "get_version.sh"`; do
-                cp "$file" /Applications/cultibox/run/
-                break
-          done
+          file=`find /var/folders/ -name "get_version.sh"`
+          if [ "$file" != "" ]; then
+            cp "$file" /Applications/cultibox/run/
+          fi
         fi
 
         touch /tmp/cultibox_upgrade
 
         if [ -f /Applications/cultibox/run/backup.sh ]; then
-            for file in `find /var/folders/ -name "backup.sh" -anewer /Applications/cultibox/run/backup.sh`; do
+            file=`find /var/folders/ -name "backup.sh" -anewer /Applications/cultibox/run/backup.sh`
+            if [ "$file" != "" ]; then
                 cp "$file" /Applications/cultibox/run/
-                break
-            done
+            fi
             
             /Applications/cultibox/run/backup.sh
             if [ $? -ne 0 ]; then
@@ -44,10 +44,10 @@ else
                 exit 1
             fi
         else 
-          for file in `find /var/folders/ -name "backup.sh"`; do
+            file=`find /var/folders/ -name "backup.sh"`
+            if [ "$file" != "" ]; then
                 cp "$file" /Applications/cultibox/run
-                break
-          done
+            fi
         fi
     fi
 fi
