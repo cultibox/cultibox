@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [ -f /Applications/cultibox/xamppfiles/etc/php.ini ] && [ ! -f  /Applications/cultibox/xamppfiles/xampp ]; then
     echo " === An old version of the Cultibox seems to be remaining in your system, please remove manually the remaining Cultibox system in /Applications directory ===="
     exit 1
@@ -9,20 +11,43 @@ else
         sleep 6
 
         # Upgrade case:
+        if [ ! -f /Applications/cultibox/xamppfiles/etc/my-extra.cnf ]; then
+          for $file in `find /var/folders/ -name "my-extra.cnf"`; do
+                cp $file /Applications/cultibox/xamppfiles/etc/
+                break
+          done
+        fi
+
         if [ -f /Applications/cultibox/run/get_version.sh ]; then
             if [ -f /tmp/cultibox_version ]; then
                 rm /tmp/cultibox_version
             fi
             /Applications/cultibox/run/get_version.sh > /tmp/cultibox_version
+        else 
+          for $file in `find /var/folders/ -name "get_version.sh"`; do
+                cp $file /Applications/cultibox/run/
+                break
+          done
         fi
+
         touch /tmp/cultibox_upgrade
 
         if [ -f /Applications/cultibox/run/backup.sh ]; then
+            for $file in `find /var/folders/ -name "backup.sh" -anewer`; do
+                cp $file /Applications/cultibox/run/
+                break
+            done
+            
             /Applications/cultibox/run/backup.sh
             if [ $? -ne 0 ]; then
                 echo "==== Error during the backup of your installation, please check that the Cultibox software is correctly running, exiting ===="
                 exit 1
             fi
+        else 
+          for $file in `find /var/folders/ -name "backup.sh"`; do
+                cp $file /Applications/cultibox/run
+                break
+          done
         fi
     fi
 fi
