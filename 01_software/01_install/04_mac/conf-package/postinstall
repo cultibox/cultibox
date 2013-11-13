@@ -28,6 +28,7 @@ chown -R mysql /Applications/cultibox/xamppfiles/temp/mysql
 
 /Applications/cultibox/xamppfiles/xampp start
 sleep 6
+
 # Check if mysql is alive
 /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
 if [ $? -ne 0 ]; then
@@ -72,6 +73,9 @@ else
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/user_cultibox.sql
 
     /Applications/cultibox/run/load.sh
+    if [ $? -ne 0 ]; then
+        exit 1
+    fi
     sleep 6
 
     if [ -f /Applications/cultibox/sql_install/update_joomla.sql ]; then
