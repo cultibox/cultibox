@@ -12,7 +12,7 @@ else
 
         # Upgrade case:
         if [ ! -f /Applications/cultibox/xamppfiles/etc/my-extra.cnf ]; then
-          for $file in `find /var/folders/ -name "my-extra.cnf"`; do
+          for file in `find /var/folders/ -name "my-extra.cnf"`; do
                 cp $file /Applications/cultibox/xamppfiles/etc/
                 break
           done
@@ -24,7 +24,7 @@ else
             fi
             /Applications/cultibox/run/get_version.sh > /tmp/cultibox_version
         else 
-          for $file in `find /var/folders/ -name "get_version.sh"`; do
+          for file in `find /var/folders/ -name "get_version.sh"`; do
                 cp $file /Applications/cultibox/run/
                 break
           done
@@ -33,7 +33,7 @@ else
         touch /tmp/cultibox_upgrade
 
         if [ -f /Applications/cultibox/run/backup.sh ]; then
-            for $file in `find /var/folders/ -name "backup.sh" -anewer`; do
+            for file in `find /var/folders/ -name "backup.sh" -anewer`; do
                 cp $file /Applications/cultibox/run/
                 break
             done
@@ -44,7 +44,7 @@ else
                 exit 1
             fi
         else 
-          for $file in `find /var/folders/ -name "backup.sh"`; do
+          for file in `find /var/folders/ -name "backup.sh"`; do
                 cp $file /Applications/cultibox/run
                 break
           done
