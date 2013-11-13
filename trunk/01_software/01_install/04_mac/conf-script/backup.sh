@@ -21,22 +21,20 @@ fi
 echo "  * Exporting your current databae..."
 /Applications/cultibox/xamppfiles/bin/mysqldump --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > $HOME/.cultibox/backup_cultibox.bak.new
 if [ $? -eq 0 ]; then
-    mv $HOME/.cultibox/backup_cultibox.bak.new $HOME/.cultibox/backup_cultibox.bak
     echo "... cultibox: OK"
 else 
     rm $HOME/.cultibox/backup_cultibox.bak.new
-    echo "==== Error during the backup of the cultibox database, exiting"
+    echo "==== Error during the backup of the cultibox database, exiting ==="
     echo "... NOK"
     exit 1
 fi
 
 /Applications/cultibox/xamppfiles/bin/mysqldump --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla > $HOME/.cultibox/backup_joomla.bak.new
 if [ $? -eq 0 ]; then
-    mv $HOME/.cultibox/backup_joomla.bak.new $HOME/.cultibox/backup_joomla.bak
     echo "... joomla: OK"
 else
     rm $HOME/.cultibox/backup_joomla.bak.new
-    echo "==== Error during the backup of the joomla database, exiting"
+    echo "==== Error during the backup of the joomla database, exiting ===="
     echo "... NOK"
     exit 1
 fi
@@ -45,12 +43,14 @@ fi
 echo "  * Saving previous Cultibox backup database..."
 if [ -f $HOME/.cultibox/backup_cultibox.bak ]; then
     mv $HOME/.cultibox/backup_cultibox.bak $HOME/.cultibox/backup_cultibox.bak.old
+    mv $HOME/.cultibox/backup_cultibox.bak.new $HOME/.cultibox/backup_cultibox.bak
     echo "... OK"
 fi
 
 echo "  * Saving previous Joomla backups database..."
 if [ -f $HOME/.cultibox/backup_joomla.bak ]; then
     mv $HOME/.cultibox/backup_joomla.bak $HOME/.cultibox/backup_joomla.bak.old
+    mv $HOME/.cultibox/backup_joomla.bak.new $HOME/.cultibox/backup_joomla.bak
     echo "... OK"
 fi
 
