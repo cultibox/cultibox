@@ -79,6 +79,10 @@ else
 
     /Applications/cultibox/run/load.sh
     if [ $? -ne 0 ]; then
+        rm /tmp/cultibox_upgrade
+        if [ -f /tmp/cultibox_version ]; then
+            rm /tmp/cultibox_version
+        fi
         exit 1
     fi
     sleep 6
