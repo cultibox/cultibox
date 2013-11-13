@@ -14,7 +14,7 @@ else
         if [ ! -f /Applications/cultibox/xamppfiles/etc/my-extra.cnf ]; then
           file=`find /var/folders/ -name "my-extra.cnf"|head -1`
           if [ "$file" != "" ]; then
-            cp $file /Applications/cultibox/xamppfiles/etc/
+            cp "$file" /Applications/cultibox/xamppfiles/etc/
           fi
         fi
 
