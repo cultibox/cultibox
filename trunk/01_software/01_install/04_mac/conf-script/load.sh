@@ -15,7 +15,7 @@ if [ -f $HOME/.cultibox/backup_cultibox.bak ]; then
     # To load a previous database dump: deletion of the current database, creation of the new database, import of the previous dump.
     echo "  * Cultibox: deletion of the current database, creation of an empty database, import of your backup database..."
     # Test of the connection:
-    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SELECT * FROM  configuration;" > /dev/null 2>&1
+    /Applications/cultibox/xamppfiles/bin/mysqladmin --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SHOW TABLES;">/dev/null 2>&1
     if [ $? -eq 0 ]; then
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox;"
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox;"
@@ -37,7 +37,8 @@ if [ -f $HOME/.cultibox/backup_joomla.bak ]; then
     # To load a previous database dump: deletion of the current database, creation of the new database, import of the previous dump.
     echo "  * Joomla: deletion of the current database, creation of an empty database, import of your backup database..."
     # Test of the connection:
-    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla -e "SELECT * FROM dkg45_session;" > /dev/null 2>&1
+    
+    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla -e "SHOW TABLES;" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox_joomla;"
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox_joomla;"
