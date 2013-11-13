@@ -4,6 +4,7 @@
 set -e
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
+error=0
 
 echo "-----------------------------------------------------------------"
 echo "              Cultibox load database script                    "
@@ -27,6 +28,7 @@ if [ -f $HOME/.cultibox/backup_cultibox.bak ]; then
     echo "... OK"
 else
     echo "  * Missing $HOME/.cultibox/backup_cultibox.bak file..."
+    error=1
     echo "...NOK"
 fi
 
@@ -49,6 +51,9 @@ if [ -f $HOME/.cultibox/backup_joomla.bak ]; then
 else
     echo "  * Missing $HOME/.cultibox/backup_joomla.bak file..."
     echo "...NOK"
+    if [ $error -eq 1 ]; then
+        exit 2
+    fi
 fi
 
 exit 0
