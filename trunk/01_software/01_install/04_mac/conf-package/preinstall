@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 if [ -f /Applications/cultibox/xamppfiles/etc/php.ini ] && [ ! -f  /Applications/cultibox/xamppfiles/xampp ]; then
     echo " === An old version of the Cultibox seems to be remaining in your system, please remove manually the remaining Cultibox system in /Applications directory ===="
     exit 1
