@@ -9,7 +9,12 @@ fi
 /Applications/cultibox/xamppfiles/xampp stop
 
 if [ -d /Applications/cultibox/cultibox.app ]; then
-    mv /Applications/cultibox/cultibox.app /Applications/
+    if [ -d /Applications/cultibox.app ]; then
+        rsync -a /Applications/cultibox.app /Applications/cultibox.app
+        rm -Rf /Applications/cultibox/cultibox.app
+    else 
+        mv /Applications/cultibox/cultibox.app /Applications/
+    fi
 fi
 
 user_culti=`who|head -1|awk -F" " '{print $1}'`
@@ -79,7 +84,7 @@ else
     sleep 6
 
     if [ -f /Applications/cultibox/sql_install/update_joomla.sql ]; then
-        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_joomla.sqll
+        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_joomla.sql
     fi
 
 
@@ -88,6 +93,8 @@ else
         version=`cat /tmp/cultibox_version`
         #Removing architecture information
         version=`echo ${version%%-*}`
+        version=`echo ${version//./}`
+
         if [ "$version" != "" ]; then
             for file in `ls /Applications/cultibox/sql_install/update_joomla-* 2>/dev/null`; do
                #Remove path file information
@@ -127,10 +134,15 @@ else
     fi
 
     if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
-        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_sql.sql 
+        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_sql.sql 
     fi
 
     rm /tmp/cultibox_upgrade
+    
+    if [ -f /tmp/cultibox_version ]; then
+        rm /tmp/cultibox_version
+    fi
+
     rm -f /Applications/cultibox/xamppfiles/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "...OK"
 fi
