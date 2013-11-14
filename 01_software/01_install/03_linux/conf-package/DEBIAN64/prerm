@@ -2,20 +2,20 @@
 
 if [ -d /opt/cultibox ]; then   
     /etc/init.d/cultibox start
-    /opt/lampp/backup.sh
+    /opt/cultibox/run/backup.sh
     if [ $? -ne 0 ]; then
-        echo "==== Error during the backup of your installation, please check that the Cultibox software is correctly running, exiting"
+        echo "==== Error during the backup of your installation, please check that the Cultibox software is correctly running, exiting ===="
         exit 1
     fi
 fi
 
 if [ "$1" == "upgrade" ]; then
-    if [ -f /opt/cultibox/get_version.sh ]; then
+    if [ -f /opt/cultibox/run/get_version.sh ]; then
     	if [ -f /tmp/cultibox_version ]; then
         	rm /tmp/cultibox_version
     	fi
         /etc/init.d/cultibox start
-    	/opt/cultibox/get_version.sh > /tmp/cultibox_version 
+    	/opt/cultibox/run/get_version.sh > /tmp/cultibox_version 
     	touch /tmp/cultibox_upgrade
     fi
 fi

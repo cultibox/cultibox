@@ -84,7 +84,7 @@ else
     /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
     /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/user_cultibox.sql
 
-    /opt/cultibox/load.sh
+    /opt/cultibox/run/load.sh
     if [ $? -ne 0 ]; then
         rm /tmp/cultibox_upgrade
         if [ -f /tmp/cultibox_version ]; then
