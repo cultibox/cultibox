@@ -106,12 +106,11 @@ EOF
     /opt/cultibox/lampp stop
     if [ "`ps aux|grep cultibox`" != "" ]; then
         for process in `ps aux|grep cultibox|awk -F" " '{print $2}'`; do
-            kill -9 $process
+            kill -9 $process 2>/dev/null
         done
     fi
     /opt/cultibox/lampp start
     sleep 2
     fi
 fi
-
-
+exit 0
