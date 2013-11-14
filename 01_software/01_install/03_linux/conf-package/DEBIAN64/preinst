@@ -7,6 +7,9 @@ if [ -f /opt/cultibox/etc/php.ini ] && [ ! -f  /opt/cultibox/lampp ]; then
 else
     #Upgrade case:
     if [ -d /opt/cultibox ]; then
+        if [ ! -d /opt/cultibox/run ]; then
+            mkdir -p /opt/cultibox/run
+        fi
         #Update of the needed scripts to back up the environment:
         cat > /opt/cultibox/etc/my-extra.cnf << "EOF" 
 [client]
