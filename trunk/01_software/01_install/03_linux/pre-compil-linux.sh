@@ -54,6 +54,8 @@ case "$1" in
            cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/extra/
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
+           cp conf-lampp/properties.ini ../01_src/01_xampp/cultibox/opt/lampp/
+
            
             cat > ../01_src/01_xampp/cultibox/opt/lampp/etc/my-extra.cnf << "EOF" 
 [client]
@@ -122,6 +124,8 @@ EOF
            cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/extra/
+           cp conf-lampp/properties.ini ../01_src/01_xampp/cultibox/opt/lampp/
+
            cp -R conf-script ../01_src/01_xampp/cultibox/opt/lampp/run
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
