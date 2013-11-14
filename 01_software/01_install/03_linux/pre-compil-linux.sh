@@ -24,9 +24,9 @@ fi
 VERSION=$2
 
 # Remove svn up when using jenkins
-#if [ "$3" == "" ]; then
-#    (cd ../../../ && svn up)
-#fi
+if [ "$3" == "" ]; then
+    (cd ../../../ && svn up)
+fi
 
 
 case "$1" in

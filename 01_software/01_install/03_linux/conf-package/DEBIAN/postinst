@@ -86,9 +86,13 @@ else
 
     /opt/lampp/load.sh
     if [ $? -ne 0 ]; then
+        rm /tmp/cultibox_upgrade
+        if [ -f /tmp/cultibox_version ]; then
+            rm /tmp/cultibox_version
+        fi
         exit 1
     fi
-    sleep 2
+
     if [ -f /opt/lampp/sql_install/update_joomla.sql ]; then
         /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /opt/lampp/sql_install/update_joomla.sql 
     fi
@@ -98,6 +102,8 @@ else
         version=`cat /tmp/cultibox_version`
         #Removing architecture information
         version=`echo ${version%%-*}`
+        version=`echo ${version//./}`
+
         if [ "$version" != "" ]; then
             for file in `ls /opt/lampp/sql_install/update_joomla-* 2>/dev/null`; do
                #Remove path file information
@@ -143,6 +149,9 @@ else
     /opt/lampp/lampp restart
     sleep 2
     rm -f /tmp/cultibox_upgrade
+    if [ -f /tmp/cultibox_version ]; then
+        rm /tmp/cultibox_version
+    fi
     rm -f /opt/cultibox/htdocs/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "... OK"
 fi
