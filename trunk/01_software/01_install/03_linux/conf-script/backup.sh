@@ -19,7 +19,7 @@ else
 fi
 
 echo "  * Exporting your current databae..."
-/opt/lampp/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > $home/.cultibox/backup_cultibox.bak.new
+/opt/cultibox/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > $home/.cultibox/backup_cultibox.bak.new
 if [ $? -eq 0 ]; then
     echo "... cultibox: OK"
 else 
@@ -29,7 +29,7 @@ else
     exit 1
 fi
 
-/opt/lampp/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla > $home/.cultibox/backup_joomla.bak.new
+/opt/cultibox/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla > $home/.cultibox/backup_joomla.bak.new
 if [ $? -eq 0 ]; then
     echo "... joomla: OK"
 else
