@@ -20,4 +20,10 @@ if [ "$1" == "purge" ]; then
     if [ -d /opt/cultibox ]; then
         rm -Rf /opt/cultibox
     fi
+
+    if [ "`ps aux|grep cultibox`" != "" ]; then
+        for process in `ps aux|grep cultibox|awk -F" " '{print $2}'`; do
+            kill -9 $process
+        done
+    fi
 fi
