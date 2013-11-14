@@ -60,7 +60,7 @@ case "$1" in
 user="root"
 password="cultibox"
 EOF
-           cp conf-script/* ../01_src/01_xampp/cultibox/opt/lampp/
+           cp -R conf-script ../01_src/01_xampp/cultibox/opt/lampp/run
            cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt
            cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/opt/lampp/sd
@@ -122,7 +122,7 @@ EOF
            cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/extra/
-           cp conf-script/* ../01_src/01_xampp/cultibox/opt/lampp/
+           cp -R conf-script ../01_src/01_xampp/cultibox/opt/lampp/run
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt

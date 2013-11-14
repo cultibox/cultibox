@@ -14,7 +14,7 @@ user="root"
 password="cultibox"
 EOF
 
-        cat > /opt/cultibox/backup.sh << "EOF" 
+        cat > /opt/cultibox/run/backup.sh << "EOF" 
 #!/bin/bash
 set -e
 
@@ -36,7 +36,7 @@ else
 fi
 
 echo "  * Exporting your current databae..."
-/opt/lampp/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > $home/.cultibox/backup_cultibox.bak.new
+/opt/cultibox/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > $home/.cultibox/backup_cultibox.bak.new
 if [ $? -eq 0 ]; then
     echo "... cultibox: OK"
 else
@@ -46,7 +46,7 @@ else
     exit 1
 fi
 
-/opt/lampp/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla > $home/.cultibox/backup_joomla.bak.new
+/opt/cultibox/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla > $home/.cultibox/backup_joomla.bak.new
 if [ $? -eq 0 ]; then
     echo "... joomla: OK"
 else
@@ -74,7 +74,7 @@ exit 0
 EOF
 
 
-        cat > /opt/cultibox/get_version.sh << "EOF" 
+        cat > /opt/cultibox/run/get_version.sh << "EOF" 
 #!/bin/bash
 
 set -e
@@ -84,9 +84,9 @@ group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 home=`egrep "^$user_culti" /etc/passwd|awk -F":" '{print $6}'`
 
 # Test of the connection:
-/opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SELECT * FROM  configuration;" > /dev/null 2>&1
+/opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SELECT * FROM  configuration;" > /dev/null 2>&1
 if [ $? -eq 0 ]; then
-        result=`/opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 --batch cultibox -e "SELECT VERSION FROM configuration;"`
+        result=`/opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 --batch cultibox -e "SELECT VERSION FROM configuration;"`
         for res in `echo $result`; do
             if [ "`echo $res|egrep [1-9].*\.[1-9].*\.[1-9].*-.*`" != "" ]; then
                 echo $res
@@ -98,5 +98,15 @@ else
 fi
 exit 0
 EOF
+
+    #Killing remaining process
+    /opt/cultibox/xampp stop
+    if [ "`ps aux|grep cultibox`" != "" ]; then
+        pkill -9 cultibox
+    fi
+    /opt/cultibox/xampp start
+    sleep 2
     fi
 fi
+
+
