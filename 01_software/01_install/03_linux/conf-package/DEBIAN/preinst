@@ -103,13 +103,13 @@ exit 0
 EOF
 
     #Killing remaining process
-    /opt/cultibox/xampp stop
+    /opt/cultibox/lampp stop
     if [ "`ps aux|grep cultibox`" != "" ]; then
         for process in `ps aux|grep cultibox|awk -F" " '{print $2}'`; do
             kill -9 $process
         done
     fi
-    /opt/cultibox/xampp start
+    /opt/cultibox/lampp start
     sleep 2
     fi
 fi
