@@ -24,7 +24,7 @@ if [ $? -eq 0 ]; then
     echo "... cultibox: OK"
 else 
     rm $HOME/.cultibox/backup_cultibox.bak.new
-    echo "==== Error during the backup of the cultibox database, exiting ==="
+    echo "==== Error during the backup of the cultibox database, exiting ===="
     echo "... NOK"
     exit 1
 fi
