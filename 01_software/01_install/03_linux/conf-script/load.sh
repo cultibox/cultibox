@@ -17,11 +17,11 @@ if [ -f $home/.cultibox/backup_cultibox.bak ]; then
     # To load a previous database dump: deletion of the current database, creation of the new database, import of the previous dump.
     echo "  * Cultibox: deletion of the current database, creation of an empty database, import of your backup database..."
     # Test of the connection:
-    /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SELECT * FROM  configuration;" > /dev/null 2>&1
+    /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SELECT * FROM  configuration;" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox;"
-        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox;"
-        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < $home/.cultibox/backup_cultibox.bak
+        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox;"
+        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox;"
+        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < $home/.cultibox/backup_cultibox.bak
     else
         echo "===== Error accessing cultibox database, exiting... ===="
         echo "... NOK"
@@ -39,11 +39,11 @@ if [ -f $home/.cultibox/backup_joomla.bak ]; then
     # To load a previous database dump: deletion of the current database, creation of the new database, import of the previous dump.
     echo "  * Joomla: deletion of the current database, creation of an empty database, import of your backup database..."
     # Test of the connection:
-    /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla -e "SELECT * FROM dkg45_session;" > /dev/null 2>&1
+    /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla -e "SELECT * FROM dkg45_session;" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox_joomla;"
-        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox_joomla;"
-        /opt/lampp/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla < $home/.cultibox/backup_joomla.bak
+        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox_joomla;"
+        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox_joomla;"
+        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla < $home/.cultibox/backup_joomla.bak
     else
         echo "===== Error accessing joomla database, exiting... ===="
         echo "... NOK"
