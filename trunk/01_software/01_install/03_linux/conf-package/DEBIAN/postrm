@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 
 if [ "$1" != "upgrade" ]; then
     if [ -f /etc/init.d/cultibox ]; then
@@ -21,9 +23,9 @@ if [ "$1" == "purge" ]; then
         rm -Rf /opt/cultibox
     fi
 
-    if [ "`ps aux|grep cultibox`" != "" ]; then
-        for process in `ps aux|grep cultibox|awk -F" " '{print $2}'`; do
-            kill -9 $process
+    if [ "`ps aux|grep httpd|grep cultibox`" != "" ]; then
+        for process in `ps aux|grep httpd|grep cultibox|awk -F" " '{print $2}'`; do
+            kill -9 $process 2>/dev/null
         done
     fi
 fi
