@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [ -d /opt/cultibox ]; then   
     /etc/init.d/cultibox start
     /opt/cultibox/run/backup.sh
@@ -8,16 +10,4 @@ if [ -d /opt/cultibox ]; then
         exit 1
     fi
 fi
-
-if [ "$1" == "upgrade" ]; then
-    if [ -f /opt/cultibox/run/get_version.sh ]; then
-    	if [ -f /tmp/cultibox_version ]; then
-        	rm /tmp/cultibox_version
-    	fi
-        /etc/init.d/cultibox start
-    	/opt/cultibox/run/get_version.sh > /tmp/cultibox_version 
-    	touch /tmp/cultibox_upgrade
-    fi
-fi
-
 exit 0

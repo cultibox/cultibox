@@ -4,7 +4,6 @@ set -e
 
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
-home=`egrep "^$user_culti" /etc/passwd|awk -F":" '{print $6}'`
 
 # Test of the connection:
 /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SELECT * FROM  configuration;" > /dev/null 2>&1
