@@ -6,16 +6,13 @@ echo -----------------------------------------------------------------
 echo 
 
 echo test > %HOMEPATH%\cultibox\test.txt
-if exist %HOMEPATH%\cultibox\test.txt goto EXIST
+if exist %HOMEPATH%\cultibox\test.txt (
+ echo   * %HOMEPATH%\cultibox already exists and will be used to store backup files
+ del %HOMEPATH%\cultibox\test.txt >nul
+) else (
+    mkdir %HOMEPATH%\cultibox
+)
 
-mkdir %HOMEPATH%\cultibox
-echo   * %HOMEPATH%\cultibox already exists and will be used to store backup files
-goto START_BACKUP
-
-:EXIST
-del %HOMEPATH%\cultibox\test.txt >nul
-
-:START_BACKUP
 echo   * Exporting your current databae...
 C:\cultibox\xampp\mysql\bin\mysqldump.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox > %HOMEPATH%\cultibox\backup_cultibox.bak.new
 If errorlevel 0 (

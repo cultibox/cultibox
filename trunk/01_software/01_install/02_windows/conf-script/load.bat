@@ -1,93 +1,90 @@
 @ECHO OFF
-If exist "./backup/backup.sql" (
-    for %%R in (./backup/backup.sql) do (
-        if not %%~zR equ 0 (
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM jqcalendar"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM logs"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM configuration"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM plugs"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM power"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM programs"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM informations"
 
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox < ./backup/backup.sql
-        )
+
+
+echo -----------------------------------------------------------------
+
+echo               Cultibox load database script                    
+
+echo -----------------------------------------------------------------
+
+echo 
+
+
+set test_error=0
+
+
+
+If exist %HOMEPATH%\cultibox\backup_cultibox.bak (
+
+    echo   * Cultibox: deletion of the current database, creation of an empty database, import of your backup database...
+
+    c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox -e "SHOW TABLES;" > NUL
+
+    If errorlevel 0 (
+
+        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox;"
+
+        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox;"
+
+        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox < %HOMEPATH%\cultibox\backup_cultibox.bak    
+        echo ... OK
+    ) else (
+
+        echo ===== Error accessing cultibox database, exiting... ====
+ 
+        echo ... NOK
+
+
+	pause
+        exit 1
+
     )
-)
 
-If exist "./backup/jqcalendar.sql" (
-    for %%R in (./backup/jqcalendar.sql) do (
-        if not %%~zR equ 0 (
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM jqcalendar"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox < ./backup/jqcalendar.sql
-        )
-    )
-)
+) else (
 
-If exist "./backup/logs.sql" (
-    for %%R in (./backup/logs.sql) do (
-        if not %%~zR equ 0 (
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM logs"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox < ./backup/logs.sql
-        )
-    )
-)
+    echo   * Missing %HOMEPATH%\cultibox\backup_cultibox.bak file...
 
+    set test_error=1
 
-If exist "./backup/configuration.sql" (
-    for %%R in (./backup/configuration.sql) do (
-        if not %%~zR equ 0 (
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM configuration"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox < ./backup/configuration.sql
-        )
-    )
-)
+    echo ...NOK
 
-
-If exist "./backup/plugs.sql" (
-    for %%R in (./backup/plugs.sql) do (
-        if not %%~zR equ 0 (
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM plugs"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox < ./backup/plugs.sql
-        )
-    )
-)
-
-
-If exist "./backup/power.sql" (
-    for %%R in (./backup/power.sql) do (
-        if not %%~zR equ 0 (
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM power"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox < ./backup/power.sql
-        )
-    )
 )
 
 
-If exist "./backup/programs.sql" (
-    for %%R in (./backup/programs.sql) do (
-        if not %%~zR equ 0 (
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM programs"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox < ./backup/programs.sql
-        )
-    )
-)
+If exist %HOMEPATH%\cultibox\backup_joomla.bak (
+
+    echo   * Joomla: deletion of the current database, creation of an empty database, import of your backup database...
+
+    c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox_joomla -e "SHOW TABLES;" > NUL
+
+    If errorlevel 0 (
+
+        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox_joomla;"
+
+        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox_joomla;"
+
+        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox < %HOMEPATH%\cultibox\backup_joomla.bak    
+        echo ... OK
+    ) else (
+
+        echo ===== Error accessing joomla database, exiting... ====
+ 
+        echo ... NOK
 
 
-If exist "./backup/informations.sql" (
-    for %%R in (./backup/informations.sql) do (
-        if not %%~zR equ 0 (
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM informations"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox < ./backup/informations.sql
-        )
-    )
-)
+	pause
+        exit 1
 
-If exist "./backup/historic.sql" (
-    for %%R in (./backup/historic.sql) do (
-        if not %%~zR equ 0 (
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox -e "DELETE FROM historic"
-            xampp\mysql\bin\mysql.exe -u root -h 127.0.0.1 --port=3891 -pcultibox cultibox < ./backup/historic.sql
-        )
+    )
+
+) else (
+
+    echo   * Missing %HOMEPATH%\cultibox\backup_joomla.bak file...
+    echo ...NOK
+    if not "%test_error%" == "0" (
+	exit 2
     )
 )
+exit 0
+
