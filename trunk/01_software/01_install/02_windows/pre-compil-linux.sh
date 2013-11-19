@@ -45,10 +45,10 @@ case "$1" in
             mkdir ../01_src/01_xampp/cultibox
             if [ "$1" == "windows7" ]; then
                 sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows_{#MyAppVersion}/" ./install_script_current.iss
-                tar zxvf xampp-lite-windows-1.8.1.tar.gz -C ../01_src/01_xampp/cultibox
+                tar zxvf xampp-windows-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox
             else
                 sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox_admin-windows_{#MyAppVersion}/" ./install_script_current.iss
-                tar zxvf xampp-lite-admin-windows-1.8.1.tar.gz -C ../01_src/01_xampp/cultibox
+                tar zxvf xampp-admin-windows-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox
             fi
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/htdocs/cultibox
             cp conf-package/lgpl3.txt ../01_src/01_xampp/LICENSE.txt
@@ -57,6 +57,12 @@ case "$1" in
             mkdir ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/cnf
             mkdir ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/bin
             mkdir ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/logs
+
+            cat > ../01_src/01_xampp/cultibox/mysql/bin/my-extra.cnf << "EOF" 
+[client]
+user="root"
+password="cultibox"
+EOF
 
             wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "install_script_current.iss"
             rm ./install_script_current.iss
