@@ -158,9 +158,30 @@ Pour remettre à zéro un programme, vous pouvez utiliser le *Ré-initialiser* q
 
 == Exporter un programme ==
 
-Vous pouvez exporter un programme dans un fichier en cliquant sur le bouton *Exporter*. Ce fichier décrit les changements d'état de la prise courante. Le fichier exporté est au format CSV et porte l'extension .prg.
+Vous pouvez exporter un programme dans un fichier en cliquant sur le bouton *Exporter*. Ce fichier décrit les changements d'état de la prise courante. Pour plus d'information sur le format du fichier exporter voir le paragraphe Fichier Programme.
 
 == Importer un programme ==
 
-Vous pouvez importer un fichier pour configurer une prise en sélectionnant le bouton *Importer*. Vous pouvez aussi configurer de cette façon plusieurs prises avec le même programme ou échanger des programmes avec d'autres utilisateur Cultibox.
+Vous pouvez importer un *Fichier Programme* pour configurer une prise en sélectionnant le bouton *Importer*. Vous pouvez aussi configurer de cette façon plusieurs prises avec le même programme ou échanger des programmes avec d'autres utilisateur Cultibox.
 
+== Fichier Programme ==
+
+Le fichier utilisé pour réaliser  les importation/exportation de programme est un fichier au format CSV. Il porte l'extension .prg.
+La première ligne de ce fichier contient le titre des colonnes :
+
+{{{
+#Program : time_start time_stop value
+}}}
+
+En dessous de ce titre, une ligne représente une action. Sur chaque ligne, on trouve dans l'ordre : l'heure de départ de l'action, l'heure de fin de l'action et l'état de la prise. L'état de la prise peut être:
+ * 99.9 Si elle doit être allumée 
+ * Tout autre valeur définit une valeur de régulation
+Il n'est pas nécessaire de définir quand la prise doit être éteint. C4est l'état par défaut.
+
+Par exemple :
+{{{
+080000,200000,99.9
+210000,223000,18.5
+}}}
+
+Indique que la prise doit être allumée (99.9) de 08h00m00s à 20h00m00s puis que de 21h00m00s à 22h30m00s une régulation de 18.5 doit être appliquée.
