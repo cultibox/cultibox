@@ -79,16 +79,19 @@ begin
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
-        ExtractTemporaryFile ('run\backup.bat');
-        ExtractTemporaryFile ('run\get_version.bat');
-        ExtractTemporaryFile ('xampp\mysql\bin\my-extra.cnf');
+        ExtractTemporaryFile ('backup.bat');
+        ExtractTemporaryFile ('get_version.bat');
+        ExtractTemporaryFile ('my-extra.cnf');
 
 
         Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C move backup.bat {sd}\{#MyAppName}\run\backup.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C move get_version.bat {sd}\{#MyAppName}\run\get_version.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C my-extra.cnf {sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C move my-extra.cnf {sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
         Exec (ExpandConstant ('{cmd}'), '/C run\backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C del /F /Q {sd}\{#MyAppName}\xampp\install\install.sys'), '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
   end;  
 end;
 
@@ -98,16 +101,17 @@ var
 
  begin
   if(CurStep=ssPostInstall) then
-  begin
+  begin   
+    Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C setup_xampp.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+    Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C apache_uninstallservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\apache'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+    Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C apache_installservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\apache'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+    Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql_uninstallservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+    Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql_installservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+    Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysqladmin.exe -u root -h 127.0.0.1  --port=3891 password cultibox'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+    Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\user_cultibox.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        
     if not (ForceInstall) then
-    begin    
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C setup_xampp.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C apache_uninstallservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\apache'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C apache_installservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\apache'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql_uninstallservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql_installservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysqladmin.exe -u root -h 127.0.0.1  --port=3891 password cultibox'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\user_cultibox.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+    begin 
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\fake_log.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         
@@ -138,12 +142,7 @@ var
 
      if (ForceInstall) then 
      begin
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C setup_xampp.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysqladmin.exe -u root -h 127.0.0.1  --port=3891 password cultibox'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\user_cultibox.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C {sd}\{#MyAppName}\sql_install\update_sql.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C {sd}\{#MyAppName}\xampp\sql_install\update_sql.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C del {sd}\{#MyAppName}\xampp\htdocs\cultibox\main\templates_c\*.ser'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
      end;     
   end;
@@ -190,18 +189,21 @@ end;
 
 [Files]
 ; Backup file. Used in pre install
-Source: "conf-script\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "..\..\..\01_software\01_install\01_src\01_xampp\cultibox\*"; DestDir: "{app}\xampp"; Flags: onlyifdoesntexist ignoreversion recursesubdirs createallsubdirs 
+Source: "conf-script\load.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-script\backup.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-script\get_version.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\..\01_software\01_install\01_src\01_xampp\cultibox\*"; DestDir: "{app}\xampp"; Flags: ignoreversion recursesubdirs createallsubdirs 
 Source: "..\..\..\01_software\01_install\01_src\01_xampp\cultibox\htdocs\cultibox\*"; DestDir: "{app}\xampp\htdocs\cultibox"; Flags: ignoreversion recursesubdirs createallsubdirs   
 Source: "..\..\..\02_documentation\02_userdoc\documentation.pdf"; DestDir: "{app}\xampp\htdocs\cultibox\main\modules\docs\documentation_cultibox.pdf"; Flags: ignoreversion recursesubdirs createallsubdirs   
 Source: "..\..\..\01_software\01_install\01_src\01_xampp\02_sql\*"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "conf-package\update_sql.bat"; DestDir: "{app}\sql_install"; Flags: ignoreversion
+Source: "conf-package\update_sql.bat"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\..\..\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\..\..\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "conf-script\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "conf-lampp\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion onlyifdoesntexist  
-Source: "conf-lampp\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion  onlyifdoesntexist
-Source: "conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion onlyifdoesntexist
+Source: "conf-script\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-lampp\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags:   ignoreversion  
+Source: "conf-lampp\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion
+Source: "conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion
+Source: "conf-lampp\my-extra.cnf"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion
 Source: "..\..\..\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
