@@ -58,12 +58,6 @@ case "$1" in
             mkdir ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/bin
             mkdir ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/logs
 
-            cat > ../01_src/01_xampp/cultibox/mysql/bin/my-extra.cnf << "EOF" 
-[client]
-user="root"
-password="cultibox"
-EOF
-
             wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "install_script_current.iss"
             rm ./install_script_current.iss
       ;;
