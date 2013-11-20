@@ -52,5 +52,3 @@ If exist C:\cultibox\run\get_version.bat (
     pause
     exit 1
 )
-
-pause
