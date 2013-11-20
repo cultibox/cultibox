@@ -142,11 +142,11 @@ La dernière section porte sur les fonctionnalités offertes quant à la gestion
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_manage.png
 
 Il est possible de:
- * Ajouter une prise
- * Supprimer une prise
- * Effacer un ou tous les programmes des prises
- * Exporter le programme
- * Importer un programme
+ * [Ajouter une prise gui_soft_prog#Ajouter_ou_supprimer_une_prise]
+ * [Supprimer une prise gui_soft_prog#Ajouter_ou_supprimer_une_prise]
+ * [Effacer un ou tous les programmes des prises gui_soft_prog#Effacer_un_ou_tous_les_programmes]
+ * [Exporter le programme gui_soft_prog#Exporter_un_programme]
+ * [Importer un programme gui_soft_prog#Importer_un_programme]
 
 == Ajouter ou supprimer une prise ==
 
@@ -158,11 +158,11 @@ Pour remettre à zéro un programme, vous pouvez utiliser le *Ré-initialiser* q
 
 == Exporter un programme ==
 
-Vous pouvez exporter un programme dans un fichier en cliquant sur le bouton *Exporter*. Ce fichier décrit les changements d'état de la prise courante. Pour plus d'information sur le format du fichier exporter voir le paragraphe Fichier Programme.
+Vous pouvez exporter un programme dans un [Fichier Programme gui_soft_prog#Fichier_Programme] en cliquant sur le bouton *Exporter*. Ce fichier décrit les changements d'état de la prise courante. Pour plus d'information sur le format du fichier exporter voir le paragraphe [Fichier Programme gui_soft_prog#Fichier_Programme].
 
 == Importer un programme ==
 
-Vous pouvez importer un *Fichier Programme* pour configurer une prise en sélectionnant le bouton *Importer*. Vous pouvez aussi configurer de cette façon plusieurs prises avec le même programme ou échanger des programmes avec d'autres utilisateur Cultibox.
+Vous pouvez importer un [Fichier Programme gui_soft_prog#Fichier_Programme] pour configurer une prise en sélectionnant le bouton *Importer*. Vous pouvez aussi configurer de cette façon plusieurs prises avec le même programme ou échanger des programmes avec d'autres utilisateur Cultibox.
 
 == Fichier Programme ==
 
