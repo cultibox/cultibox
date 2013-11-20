@@ -54,19 +54,6 @@ Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [CustomMessages]
-french.ContinueInstall=Une version du logiciel Cultibox semble déja présente, vous pouvez tenter d'installer cette nouvelle version par dessus l'ancienne mais vous risquez de perdre votre configuration. Votre configuration actuelle sera sauvegardé dans le répertoire backup pour vous permettre de la retrouver. Voulez vous continuer et installer cette version?
-english.ContinueInstall=A current version of the Cultibox software seems to be already installed on your computer. You can install this new software version over the old one but you may loose your configuration in the process. Your current configuration will be saved into the backup directory. Do you want to continue the install process?
-italian.ContinueInstall=Una versione aggiornata del software Cultibox sembra essere già installato sul tuo computer. È possibile installare questa nuova versione del software rispetto al passato, ma si può perdere la configurazione nel processo. La configurazione corrente viene salvato nella directory di backup. Si desidera continuare il processo di installazione?
-german.ContinueInstall=Eine aktuelle Version des Cultibox Software scheint bereits auf Ihrem Computer installiert sein. Sie können diese neue Software-Version über die alte Version installieren, aber Sie können Ihre Konfiguration in den Prozess verlieren. Ihre aktuelle Konfiguration wird in das Backup-Verzeichnis gespeichert werden. Wollen Sie die Installation fortsetzen?
-spanish.ContinueInstall=Una versión actual del software Cultibox parece estar ya instalado en su ordenador. Puede instalar esta versión de software nuevo con el antiguo, pero puede perder la configuración en el proceso. La configuración actual se guardará en el directorio de copia de seguridad. ¿Desea continuar con el proceso de instalación?
-
-
-french.SaveDatas=Voulez-vous sauvegarder la configuration de votre ancienne version afin de pouvoir la restaurer ultèrieurement si nécéssaire?
-english.SaveDatas=Do you want to save the configuration of your old Cultibox software to maybe used it to restore your preferences later?
-italian.SaveDatas=Vuoi salvare la configurazione del software Cultibox vecchio forse è utilizzato per ripristinare le preferenze più tardi?
-german.SaveDatas=Wollen Sie die Konfiguration Ihres alten Cultibox Software vielleicht ist es verwendet, um Ihre Einstellungen später wiederherstellen zu retten?
-spanish.SaveDatas=¿Desea guardar la configuración de su software Cultibox viejo tal vez lo usó para restaurar sus preferencias más tarde?
-
 french.StartCultibox=Voulez-vous exécuter le logiciel Cultibox immédiatement?
 english.StartCultibox=Do you want to execute the Cultibox software immediatly?
 italian.StartCultibox=Vuoi eseguire il software Cultibox immediatamente?
@@ -84,36 +71,24 @@ begin
   Result := True;  
   if FileExists(ExpandConstant('{sd}\{#MyAppName}\unins000.exe')) then
   begin
-       // Ask the user a Yes/No question, defaulting to No
-       if MsgBox(ExpandConstant('{cm:ContinueInstall}'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES then                                                                                                                                 
-       begin
-           // user clicked Yes
-           ForceInstall := True;
-           Result := True;
-       end else 
-       begin
-           ForceInstall := False;
-           Result := False;
-       end; 
-  end else
-  begin
-    ForceInstall := False;
-    Result := True;
+       ForceInstall := True;      
   end;
 
   if(ForceInstall) then
   begin
-       if MsgBox(ExpandConstant('{cm:SaveDatas}'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES then                                                                                                                                 
-       begin                                                      
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
-        ExtractTemporaryFile ('backup.bat');
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C copy backup.bat {sd}\{#MyAppName}\backup.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), '/C backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-       end;
-       Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
-       Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        ExtractTemporaryFile ('run\backup.bat');
+        ExtractTemporaryFile ('run\get_version.bat');
+        ExtractTemporaryFile ('xampp\mysql\bin\my-extra.cnf');
+
+
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C move backup.bat {sd}\{#MyAppName}\run\backup.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C move get_version.bat {sd}\{#MyAppName}\run\get_version.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C my-extra.cnf {sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+
+        Exec (ExpandConstant ('{cmd}'), '/C run\backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
   end;  
 end;
 
@@ -166,10 +141,9 @@ var
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C setup_xampp.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf root -h 127.0.0.1 --port=3891 -e "DROP DATABASE `cultibox_joomla`;"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf root -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf root -h 127.0.0.1 --port=3891 --force < {sd}\{#MyAppName}\xampp\sql_install\update_sql.sql 2>NULL'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf root -h 127.0.0.1 --port=3891 --force < {sd}\{#MyAppName}\xampp\sql_install\update_joomla.sql 2>NULL'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysqladmin.exe -u root -h 127.0.0.1  --port=3891 password cultibox'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\user_cultibox.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C {sd}\{#MyAppName}\sql_install\update_sql.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C del {sd}\{#MyAppName}\xampp\htdocs\cultibox\main\templates_c\*.ser'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
      end;     
   end;
@@ -182,7 +156,6 @@ var
        end 
   end;
 end; 
-
 
 
 
@@ -217,28 +190,19 @@ end;
 
 [Files]
 ; Backup file. Used in pre install
-Source: "conf-script\backup.bat"; DestDir: "{app}\run"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
-; load file. Used in post install
-Source: "conf-script\load.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-script\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\..\..\01_software\01_install\01_src\01_xampp\cultibox\*"; DestDir: "{app}\xampp"; Flags: onlyifdoesntexist ignoreversion recursesubdirs createallsubdirs 
 Source: "..\..\..\01_software\01_install\01_src\01_xampp\cultibox\htdocs\cultibox\*"; DestDir: "{app}\xampp\htdocs\cultibox"; Flags: ignoreversion recursesubdirs createallsubdirs   
 Source: "..\..\..\02_documentation\02_userdoc\documentation.pdf"; DestDir: "{app}\xampp\htdocs\cultibox\main\modules\docs\documentation_cultibox.pdf"; Flags: ignoreversion recursesubdirs createallsubdirs   
-Source: "conf-script\backup.bat"; DestDir: "{app}"; DestName: "backup.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "conf-script\load.bat"; DestDir: "{app}"; DestName: "load.bat"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\..\..\01_software\01_install\01_src\01_xampp\02_sql\*"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-package\update_sql.bat"; DestDir: "{app}\sql_install"; Flags: ignoreversion
 Source: "..\..\..\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
-;Source: "C:\users\yann\Desktop\Project\cultibox\01_software\01_install\01_src\04_run\*"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\..\..\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "conf-script\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "conf-lampp\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags: ignoreversion onlyifdoesntexist  
 Source: "conf-lampp\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion  onlyifdoesntexist
 Source: "conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion onlyifdoesntexist
-Source: "..\..\..\01_software\01_install\01_src\03_sd\firm.hex"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion 
-Source: "..\..\..\01_software\01_install\01_src\03_sd\cnf\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp\cnf"; Flags: ignoreversion 
-Source: "..\..\..\01_software\01_install\01_src\03_sd\bin\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp\bin"; Flags: ignoreversion
-Source: "..\..\..\01_software\01_install\01_src\03_sd\logs\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp\logs"; Flags: ignoreversion 
-Source: "..\..\..\01_software\01_install\01_src\03_sd\cultibox.ico"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
-Source: "..\..\..\01_software\01_install\01_src\03_sd\cultibox.html"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion
+Source: "..\..\..\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 
