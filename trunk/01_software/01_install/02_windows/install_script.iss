@@ -60,6 +60,12 @@ italian.StartCultibox=Vuoi eseguire il software Cultibox immediatamente?
 german.StartCultibox=Wollen Sie die Cultibox Software sofort auszuführen?
 spanish.StartCultibox=¿Desea ejecutar el software Cultibox inmediatamente?
 
+french.AbortCultibox=Une erreur s'est produite lors de la sauvegarde de vos données, la mise à jour a été annulée
+english.AbortCultibox=An error occured during database saving, update has been canceled.
+italian.AbortCultibox=Si è verificato un errore durante il backup dei vostri dati, l'aggiornamento è stato annullato
+german.AbortCultibox=Ein Fehler ist aufgetreten während der Sicherung Ihrer Daten, wurde das Update abgebrochen
+spanish.AbortCultibox=Se ha producido un error durante la copia de seguridad de sus datos, la actualización ha sido cancelada
+
 [code]
 var 
   ForceInstall: boolean;
@@ -88,7 +94,16 @@ begin
         Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C move get_version.bat {sd}\{#MyAppName}\run\get_version.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C move my-extra.cnf {sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
-        Exec (ExpandConstant ('{cmd}'), '/C run\backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+        if Exec (ExpandConstant ('{cmd}'), '/C run\backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode) then
+        begin
+          if(ResultCode <> 0) then
+          begin
+            Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+            Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
+            MsgBox(ExpandConstant('{cm:AbortCultibox}'), mbCriticalError, MB_OK);
+            WizardForm.Close;
+          end
+        end
         Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
         Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C del /F /Q {sd}\{#MyAppName}\xampp\install\install.sys'), '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
@@ -111,7 +126,7 @@ var
     Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\user_cultibox.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         
     if not (ForceInstall) then
-    begin 
+    begin
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\fake_log.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         
