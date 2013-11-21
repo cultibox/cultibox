@@ -15,7 +15,7 @@ if exist %HOMEPATH%\cultibox\test.txt (
 
 echo   * Exporting your current databae...
 C:\cultibox\xampp\mysql\bin\mysqldump.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox > %HOMEPATH%\cultibox\backup_cultibox.bak.new
-If errorlevel 0 (
+if %ERRORLEVEL% EQU 0  (
     echo ... cultibox: OK
 ) else (
     del %HOMEPATH%\cultibox\backup_cultibox.bak.new
@@ -27,7 +27,7 @@ If errorlevel 0 (
 
 
 C:\cultibox\xampp\mysql\bin\mysqldump.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox_joomla > %HOMEPATH%\cultibox\backup_joomla.bak.new
-If errorlevel 0 (
+if %ERRORLEVEL% EQU 0  (
     echo ... cultibox: OK
 ) else (
     del %HOMEPATH%\cultibox\backup_cultibox.bak.new

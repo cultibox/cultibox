@@ -21,7 +21,7 @@ If exist %HOMEPATH%\cultibox\backup_cultibox.bak (
 
     c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox -e "SHOW TABLES;" > NUL
 
-    If errorlevel 0 (
+    if %ERRORLEVEL% EQU 0  (
 
         c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox;"
 
@@ -58,7 +58,7 @@ If exist %HOMEPATH%\cultibox\backup_joomla.bak (
 
     c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox_joomla -e "SHOW TABLES;" > NUL
 
-    If errorlevel 0 (
+    if %ERRORLEVEL% EQU 0  (
 
         c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 -e "DROP DATABASE cultibox_joomla;"
 
