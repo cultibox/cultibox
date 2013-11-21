@@ -60,11 +60,11 @@ italian.StartCultibox=Vuoi eseguire il software Cultibox immediatamente?
 german.StartCultibox=Wollen Sie die Cultibox Software sofort auszuführen?
 spanish.StartCultibox=¿Desea ejecutar el software Cultibox inmediatamente?
 
-french.AbortCultibox=Une erreur s'est produite lors de la sauvegarde de vos données, la mise à jour a été annulée
-english.AbortCultibox=An error occured during database saving, update has been canceled.
-italian.AbortCultibox=Si è verificato un errore durante il backup dei vostri dati, l'aggiornamento è stato annullato
-german.AbortCultibox=Ein Fehler ist aufgetreten während der Sicherung Ihrer Daten, wurde das Update abgebrochen
-spanish.AbortCultibox=Se ha producido un error durante la copia de seguridad de sus datos, la actualización ha sido cancelada
+french.AbortCultibox=Une erreur s'est produite lors de la sauvegarde de vos données, la mise à jour a été annulée. Vous pouvez contacter les administrateurs en écrivant à: info@cultibox.fr
+english.AbortCultibox=An error occured during database saving, update has been canceled. You can contact the administrators by writing to: info@cultibox.fr
+italian.AbortCultibox=Si è verificato un errore durante il backup dei vostri dati, l'aggiornamento è stato annullato. È possibile contattare gli amministratori scrivendo a: info@cultibox.fr
+german.AbortCultibox=Ein Fehler ist aufgetreten während der Sicherung Ihrer Daten, wurde das Update abgebrochen. Sie können die Administratoren durch das Schreiben an: info@cultibox.fr
+spanish.AbortCultibox=Se ha producido un error durante la copia de seguridad de sus datos, la actualización ha sido cancelada. Puede ponerse en contacto con los administradores por escrito a: info@cultibox.fr
 
 [code]
 var 
@@ -101,7 +101,7 @@ begin
             Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
             Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
             MsgBox(ExpandConstant('{cm:AbortCultibox}'), mbCriticalError, MB_OK);
-            WizardForm.Close;
+            Result := False;
           end
         end
         Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
