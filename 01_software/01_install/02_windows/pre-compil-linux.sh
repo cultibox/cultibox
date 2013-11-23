@@ -30,7 +30,7 @@ fi
 VERSION=$2
 
 case "$1" in
-      "windows7"|"windows7-admin" )
+      "windows"|"windows-xp")
             (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl  && pdflatex documentation.tex && pdflatex documentation.tex)
             rm -Rf ../01_src/01_xampp/*
             cp ./install_script.iss ./install_script_current.iss
@@ -43,13 +43,17 @@ case "$1" in
             sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-noarch' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/02_sql/update_sql.sql
 
             mkdir ../01_src/01_xampp/cultibox
-            if [ "$1" == "windows7" ]; then
-                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows_{#MyAppVersion}/" ./install_script_current.iss
+            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows_{#MyAppVersion}/" ./install_script_current.iss
+
+            if [ "$1" == "windows" ]; then
                 tar zxvf xampp-windows-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox
+            else if [ "$1" == "windows-xp" ]; then
+                tar zxvf xampp-windows-1.8.2.tar.gz -C ../01_src/01_xampp/cultibox
             else
-                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox_admin-windows_{#MyAppVersion}/" ./install_script_current.iss
-                tar zxvf xampp-admin-windows-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox
+                echo "==== Error, unknown OS requested"
+                exit 1
             fi
+
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/htdocs/cultibox
             cp conf-package/lgpl3.txt ../01_src/01_xampp/LICENSE.txt
             cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/htdocs/cultibox/main/docs/documentation_cultibox.pdf
