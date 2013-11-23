@@ -43,11 +43,12 @@ case "$1" in
             sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-noarch' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/02_sql/update_sql.sql
 
             mkdir ../01_src/01_xampp/cultibox
-            sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows_{#MyAppVersion}/" ./install_script_current.iss
 
             if [ "$1" == "windows" ]; then
+                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows_{#MyAppVersion}/" ./install_script_current.iss
                 tar zxvf xampp-windows-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox
             else if [ "$1" == "windows-xp" ]; then
+                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows-xp_{#MyAppVersion}/" ./install_script_current.iss
                 tar zxvf xampp-windows-1.8.2.tar.gz -C ../01_src/01_xampp/cultibox
             else
                 echo "==== Error, unknown OS requested"
