@@ -1,3 +1,17 @@
+Cultibox (1.2.02) precise; urgency=low
+    + Passage à XAMPP 1.8.3 pour windows Vista, 7 et 8
+    + Epuration de Joomla
+    + Passage a XAMPP 1.8.2 pour Widows XP
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Nov 24 23:46:00 CET 2013
+
+
+Cultibox (1.2.01) precise; urgency=low
+    + Passage a XAMPP 1.8.3 pour Mac Os X et Linux
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Nov 17 14:58:13 CET 2013
+
+
 Cultibox (1.1.38) precise; urgency=low
     + Correction du passage en paramètre d'une variable Int dans un appel Ajax (formatage de la carte SD)
     + Modification du texte et de l'image du tooltip de calcul des coûts
