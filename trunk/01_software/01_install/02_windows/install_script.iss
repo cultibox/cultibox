@@ -60,11 +60,18 @@ italian.StartCultibox=Vuoi eseguire il software Cultibox immediatamente?
 german.StartCultibox=Wollen Sie die Cultibox Software sofort auszuführen?
 spanish.StartCultibox=¿Desea ejecutar el software Cultibox inmediatamente?
 
-french.AbortCultibox=Une erreur s'est produite lors de la sauvegarde de vos données, la mise à jour a été annulée. Vous pouvez contacter les administrateurs en écrivant à: info@cultibox.fr
-english.AbortCultibox=An error occured during database saving, update has been canceled. You can contact the administrators by writing to: info@cultibox.fr
-italian.AbortCultibox=Si è verificato un errore durante il backup dei vostri dati, l'aggiornamento è stato annullato. È possibile contattare gli amministratori scrivendo a: info@cultibox.fr
-german.AbortCultibox=Ein Fehler ist aufgetreten während der Sicherung Ihrer Daten, wurde das Update abgebrochen. Sie können die Administratoren durch das Schreiben an: info@cultibox.fr
-spanish.AbortCultibox=Se ha producido un error durante la copia de seguridad de sus datos, la actualización ha sido cancelada. Puede ponerse en contacto con los administradores por escrito a: info@cultibox.fr
+french.AbortCultibox=Une erreur s'est produite lors de la sauvegarde de vos données, la mise à jour a été annulée. Vous pouvez contacter les administrateurs en écrivant à:%n%n    info@cultibox.fr
+english.AbortCultibox=An error occured during database saving, update has been canceled. You can contact the administrators by writing to:%n%n    info@cultibox.fr
+italian.AbortCultibox=Si è verificato un errore durante il backup dei vostri dati, l'aggiornamento è stato annullato. È possibile contattare gli amministratori scrivendo a:%n%n    info@cultibox.fr
+german.AbortCultibox=Ein Fehler ist aufgetreten während der Sicherung Ihrer Daten, wurde das Update abgebrochen. Sie können die Administratoren durch das Schreiben an:%n%n    info@cultibox.fr
+spanish.AbortCultibox=Se ha producido un error durante la copia de seguridad de sus datos, la actualización ha sido cancelada. Puede ponerse en contacto con los administradores por escrito a:%n%n    info@cultibox.fr
+
+
+french.UpgradeCultibox=Une ancienne version du logiciel Cultibox a été détecté. Si vous continuez l'installation, le logiciel sera mis à jour.%nMerci de prendre note des informations suivantes avant de lancer la mise à jour:%n%nLe passage vers une version antérieure n'est pas assurée par le logiciel. Ceci peut être réalisé à vos risques et périls, sans garantis de succés.%n%nSi vous avez modifié manuellement certains fichiers, les changements peuvent être perdues durant la mise à jour. Les données et la configuration de votre logiciel seront toujours opérationnel dans la nouvelle version.%n%nAfin de réaliser une mise à jour, le logiciel actuel doit être pleinement fonctionnel.%n%n%nVoulez-vous continuer l'installation de la mise à jour du logiciel Cultibox?
+english.UpgradeCultibox=An older version of Cultibox software was detected. If you continue the installation, the software will be updated.%nPlease note the following information before starting the update.%n%nThe shift to an earlier version is not provided by the software . This can be done at your own risk, without guaranteed success.%n%nIf you have changed some files manually, changes may be lost during the update. Data and configuration of your software will always be operational in the new version.%n%nTo perform an update, the current software must be fully functional.%n%n%nDo you want to continue installing the update Cultibox software update?
+italian.UpgradeCultibox=È stata rilevata una versione precedente del software Cultibox. Se si continua l'installazione, il software verrà aggiornato%nSi prega di notare le seguenti informazioni prima di avviare l'aggiornamento.%n%nIl passaggio a una versione precedente non è fornito dal software . Questo può essere fatto a proprio rischio e pericolo, senza successo garantito.%n%nSe hai modificato alcuni file manualmente, le modifiche possono essere perse durante l'aggiornamento. I dati e la configurazione del software saranno sempre operativi nella nuova versione.%n%nPer eseguire l'aggiornamento, il software corrente deve essere pienamente funzionale.%n%n%nVuoi continuare l'installazione dell'aggiornamento aggiornamento software Cultibox?
+german.UpgradeCultibox=Eine ältere Version der Software Cultibox erkannt. Wenn Sie die Installation fortsetzen, wird die Software aktualisiert werden%nBitte beachten Sie die folgenden Informationen, bevor Sie das Update.%n%nDer Wechsel zu einer früheren Version wird von der Software nicht vorgesehen . Dies kann auf eigene Gefahr durchgeführt werden, ohne Erfolgsgarantie.%n%nWenn Sie einige Dateien manuell geändert haben, können sich Änderungen während der Aktualisierung verloren. Daten und Konfiguration Ihrer Software immer funktionsfähig sein in der neuen Version.%n%nUm ein Update durchzuführen, muss die aktuelle Software voll funktionsfähig.%n%n%nwerden Sie um die Installation des Update wollen Cultibox Software-Update?                                                               
+spanish.UpgradeCultibox=Se ha detectado una versión anterior del software Cultibox. Si continúa con la instalación, el software se actualizará%nTenga en cuenta la siguiente información antes de iniciar la actualización.%n%nEl cambio a una versión anterior no es proporcionado por el software . Esto se puede hacer por su cuenta y riesgo, y sin garantía de éxito.%n%nSi ha cambiado algunos archivos manualmente, los cambios pueden perderse durante la actualización. Los datos y la configuración de su software siempre estarán en funcionamiento en la nueva versión.%n%nPara realizar una actualización, el software actual debe ser completamente funcional.%n%n%n¿Desea continuar con la instalación de la actualización actualización de software Cultibox?
 
 [code]
 var 
@@ -82,6 +89,14 @@ begin
 
   if(ForceInstall) then
   begin
+       if MsgBox(ExpandConstant('{cm:UpgradeCultibox}'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) <> IDYES then                                                                                                                                 
+       begin
+           Result := False;
+       end; 
+
+
+       if (Result) then
+       begin 
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
 
@@ -102,12 +117,15 @@ begin
             Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
             MsgBox(ExpandConstant('{cm:AbortCultibox}'), mbCriticalError, MB_OK);
             Result := False;
-          end
-        end
-        Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C del /F /Q {sd}\{#MyAppName}\xampp\install\install.sys'), '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
-  end;  
+
+          end else begin
+            Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+            Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
+            Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C del /F /Q {sd}\{#MyAppName}\xampp\install\install.sys'), '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+          end;
+        end;
+      end;
+    end;  
 end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
@@ -128,7 +146,6 @@ var
     if not (ForceInstall) then
     begin
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\fake_log.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         
         case ActiveLanguage() of  { ActiveLanguage() retourne la langue chosie }
         'french' :  
@@ -152,11 +169,15 @@ var
               Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\cultibox_es.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);         
             end;
          end;
+
+         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\fake_log.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+
      end;
 
 
      if (ForceInstall) then 
      begin
+        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C {sd}\{#MyAppName}\run\load.bat'), ExpandConstant ('{sd}\{#MyAppName}\run'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C {sd}\{#MyAppName}\xampp\sql_install\update_sql.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C del {sd}\{#MyAppName}\xampp\htdocs\cultibox\main\templates_c\*.ser'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
      end;     
@@ -206,20 +227,13 @@ end;
 ; Backup file. Used in pre install
 Source: "conf-script\load.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "conf-script\backup.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-script\load_client.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "conf-script\backup_client.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "conf-script\get_version.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\..\..\01_software\01_install\01_src\01_xampp\cultibox\*"; DestDir: "{app}\xampp"; Flags: ignoreversion recursesubdirs createallsubdirs 
-Source: "..\..\..\01_software\01_install\01_src\01_xampp\cultibox\htdocs\cultibox\*"; DestDir: "{app}\xampp\htdocs\cultibox"; Flags: ignoreversion recursesubdirs createallsubdirs   
-Source: "..\..\..\02_documentation\02_userdoc\documentation.pdf"; DestDir: "{app}\xampp\htdocs\cultibox\main\modules\docs\documentation_cultibox.pdf"; Flags: ignoreversion recursesubdirs createallsubdirs   
-Source: "..\..\..\01_software\01_install\01_src\01_xampp\02_sql\*"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "conf-package\update_sql.bat"; DestDir: "{app}\xampp\sql_install"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\..\..\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\..\..\02_documentation\02_userdoc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "conf-script\cultibox.bat"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "conf-lampp\httpd.conf"; DestDir: "{app}\xampp\apache\conf"; Flags:   ignoreversion  
-Source: "conf-lampp\php.ini"; DestDir: "{app}\xampp\php"; Flags: ignoreversion
-Source: "conf-lampp\my.ini"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion
 Source: "conf-lampp\my-extra.cnf"; DestDir: "{app}\xampp\mysql\bin\"; Flags: ignoreversion
-Source: "..\..\..\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\xampp\htdocs\cultibox\tmp"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 

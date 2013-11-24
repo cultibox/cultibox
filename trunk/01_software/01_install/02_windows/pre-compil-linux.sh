@@ -31,40 +31,53 @@ VERSION=$2
 
 case "$1" in
       "windows"|"windows-xp")
-            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl  && pdflatex documentation.tex && pdflatex documentation.tex)
-            rm -Rf ../01_src/01_xampp/*
-            cp ./install_script.iss ./install_script_current.iss
-            sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
+           (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl  && pdflatex documentation.tex && pdflatex documentation.tex)
+           rm -Rf ../01_src/01_xampp/*
+           cp ./install_script.iss ./install_script_current.iss
+           sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
 
-            cp -R ../01_src/02_sql ../01_src/01_xampp/
-            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/02_sql/cultibox_fr.sql
-            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/02_sql/cultibox_en.sql
+           mkdir ../01_src/01_xampp/cultibox
 
-            sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-noarch' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/02_sql/update_sql.sql
+           if [ "$1" == "windows" ]; then
+               sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows_{#MyAppVersion}/" ./install_script_current.iss
+               tar zxvf xampp-windows-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox
+           else 
+               sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows-xp_{#MyAppVersion}/" ./install_script_current.iss
+               tar zxvf xampp-windows-1.8.2.tar.gz -C ../01_src/01_xampp/cultibox
+           fi
 
-            mkdir ../01_src/01_xampp/cultibox
+           cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/htdocs/cultibox
+           cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/htdocs/cultibox/main/docs/documentation_cultibox.pdf
+           cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
+           cp conf-package/lgpl3.txt ../01_src/01_xampp/LICENSE.txt
 
-            if [ "$1" == "windows" ]; then
-                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows_{#MyAppVersion}/" ./install_script_current.iss
-                tar zxvf xampp-windows-1.8.3.tar.gz -C ../01_src/01_xampp/cultibox
-            else if [ "$1" == "windows-xp" ]; then
-                sed -i "s/OutputBaseFilename=.*/OutputBaseFilename=cultibox-windows-xp_{#MyAppVersion}/" ./install_script_current.iss
-                tar zxvf xampp-windows-1.8.2.tar.gz -C ../01_src/01_xampp/cultibox
-            else
-                echo "==== Error, unknown OS requested"
-                exit 1
-            fi
 
-            cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/htdocs/cultibox
-            cp conf-package/lgpl3.txt ../01_src/01_xampp/LICENSE.txt
-            cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/htdocs/cultibox/main/docs/documentation_cultibox.pdf
-            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
-            mkdir ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/cnf
-            mkdir ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/bin
-            mkdir ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/logs
+           cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/apache/conf/
+           cp conf-lampp/my.ini ../01_src/01_xampp/cultibox/mysql/bin/
+           cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/php/
+           cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/apache/conf/extra/
 
-            wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "install_script_current.iss"
-            rm ./install_script_current.iss
+           cp -R ../01_src/02_sql ../01_src/01_xampp/cultibox/sql_install
+           cp conf-package/update_sql.bat ../01_src/01_xampp/cultibox/sql_install/
+
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_fr.sql
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_en.sql
+           sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-noarch' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/sql_install/update_sql.sql
+    
+           cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/
+           cp -R ../../01_install/01_src/03_sd/bin ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/
+           cp ../../01_install/01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/
+           cp ../../01_install/01_src/03_sd/cultibox.html ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/
+           cp -R ../../01_install/01_src/03_sd/cnf ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/
+           cp -R ../../01_install/01_src/03_sd/logs ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/
+
+           #For XAMPP 1.8.3: to prevent a warning
+           if [ "$1" == "windows" ]; then
+                sed -i "/# Change here for bind listening/i\explicit_defaults_for_timestamp=TRUE\n" ../01_src/01_xampp/cultibox/mysql/bin/my.ini
+           fi
+
+           wine "C:\Program Files (x86)\Inno Setup 5\iscc.exe"  "install_script_current.iss"
+           rm ./install_script_current.iss
       ;;
       "clean")
             rm -Rf ../01_src/01_xampp/* 2>/dev/null
