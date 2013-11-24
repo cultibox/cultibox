@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 if [ -d /opt/cultibox ]; then   
     /etc/init.d/cultibox start
     /opt/cultibox/run/backup.sh

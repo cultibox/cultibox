@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 if [ -f /opt/cultibox/etc/php.ini ] && [ ! -f  /opt/cultibox/lampp ]; then
     echo "An old version of the Cultibox seems to be remaining in your system, please execute the following command before installing a new Cultibox version:"
     echo "      dpkg --purge cultibox"
