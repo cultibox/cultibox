@@ -15,7 +15,7 @@ set test_error=0
 
 
 
-If exist %HOMEPATH%\cultibox\backup_cultibox.bak (
+If exist "%userprofile%\cultibox\backup_cultibox.bak" (
 
     echo   * Cultibox: deletion of the current database, creation of an empty database, import of your backup database...
 
@@ -27,7 +27,7 @@ If exist %HOMEPATH%\cultibox\backup_cultibox.bak (
 
         c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox;"
 
-        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox < %HOMEPATH%\cultibox\backup_cultibox.bak    
+        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox < "%userprofile%\cultibox\backup_cultibox.bak"    
         echo ... OK
     ) else (
 
@@ -43,7 +43,7 @@ If exist %HOMEPATH%\cultibox\backup_cultibox.bak (
 
 ) else (
 
-    echo   * Missing %HOMEPATH%\cultibox\backup_cultibox.bak file...
+    echo   * Missing %userprofile%\cultibox\backup_cultibox.bak file...
 
     set test_error=1
 
@@ -52,7 +52,7 @@ If exist %HOMEPATH%\cultibox\backup_cultibox.bak (
 )
 
 
-If exist %HOMEPATH%\cultibox\backup_joomla.bak (
+If exist "%userprofile%\cultibox\backup_joomla.bak" (
 
     echo   * Joomla: deletion of the current database, creation of an empty database, import of your backup database...
 
@@ -64,7 +64,7 @@ If exist %HOMEPATH%\cultibox\backup_joomla.bak (
 
         c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox_joomla;"
 
-        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox < %HOMEPATH%\cultibox\backup_joomla.bak    
+        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox_joomla < "%userprofile%\cultibox\backup_joomla.bak"    
         echo ... OK
     ) else (
 
@@ -80,10 +80,14 @@ If exist %HOMEPATH%\cultibox\backup_joomla.bak (
 
 ) else (
 
-    echo   * Missing %HOMEPATH%\cultibox\backup_joomla.bak file...
+    echo   * Missing %userprofile%\cultibox\backup_joomla.bak file...
     echo ...NOK
     if not "%test_error%" == "0" (
-	exit 2
+        pause
+	    exit 3
+    ) else (
+        pause
+        exit 2
     )
 )
 exit 0
