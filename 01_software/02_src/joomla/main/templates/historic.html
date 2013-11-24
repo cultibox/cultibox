@@ -1,0 +1,80 @@
+<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
+    <div class="pop_up_message" style="display:none">
+            <?php echo str_replace("\\n\\n","<br /><br />","$pop_up_message"); ?>
+    </div>
+<?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
+       <div class="pop_up_error" style="display:none">
+            <?php echo str_replace("\\n\\n","<br /><br />","$pop_up_error_message"); ?>
+       </div>
+<?php } ?>
+
+
+
+<?php if((((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)))||((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0))) { ?>
+<div class="message" style="display:none" title="<?php echo __('MESSAGE_BOX'); ?>">
+        <br />
+        <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
+<img src="main/libs/img/informations.png" alt="" /><label class="info_title"><?php echo __('INFORMATION'); ?>:</label>
+<div class="info">
+<ul>
+        <?php foreach($main_info as $inf) { 
+            echo "<li>".$inf."</li>";            
+        } ?>
+</ul>
+<br />
+</div>
+    <?php } ?>
+    <?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
+<img src="main/libs/img/warning.png" alt="" /><label class="error_title"><?php echo __('WARNING'); ?>:</label>
+<div class="error">
+<ul>
+        <?php foreach($main_error as $err) { 
+            echo "<li>".$err."</li>";            
+        } ?>
+</ul>
+</div>
+    <?php } ?>
+</div>
+<?php } ?>
+<br />
+
+<p class="title_conf"><?php echo __('TITLE_HISTORIC'); ?>:</p>
+<br />
+<table class="table_width">
+<tr>
+    <td class="subtitle_right">
+        <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" id="delete_historic_form">
+            <input type="hidden" name="reset_historic" value="reset_historic">
+            <input type="submit" class="delete" name="reset_historic_submit" value="<?php echo __('RESET_HISTORIC'); ?>" />
+        </form>
+    </td>
+</tr>
+</table>
+<div id="delete_dialog_historic" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
+<p><?php echo __('RESET_CONFIRM_HISTORIC'); ?></p>
+</div>
+<br />
+<table class="table_width">
+<tr>
+    <td class="code_marge"></td>
+    <td>
+<?php if(count($historic)>0) { ?>
+<div class="div_code">
+    <table class="table_width">
+    <?php foreach($historic as $hist) { ?>
+      <tr> 
+      <?php echo "<td class='historic_marge'><b>".$hist['timestamp']."</b></td><td><label class='".$hist['type']."'>".$hist['action']."</label>"; ?></td>
+     </tr>
+    <?php } ?>
+    </table>
+</div>
+<?php } else { ?>
+<code class="div_code">
+    <ul>
+        <li><?php echo __('NO_HISTORIC_VALUE'); ?></li>
+    </ul>
+</code>
+<?php } ?>
+</td>
+</tr>
+</table>
