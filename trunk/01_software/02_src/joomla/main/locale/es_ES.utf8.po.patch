@@ -1,0 +1,15 @@
+--- trunk/01_software/02_src/joomla/main/locale/es_ES.utf8.po
++++ trunk/01_software/02_src/joomla/main/locale/es_ES.utf8.po
+@@ -4,10 +4,10 @@
+ 
+ # For the menu:
+ msgid "LANG"
+-msgstr "fr_FR"
++msgstr "es_ES"
+ 
+ msgid "CONFIGURATION"
+-msgstr "Configuration"
++msgstr "Configuracion"
+ 
+ msgid "LOGS"
+ msgstr "Logs"

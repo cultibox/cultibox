@@ -1,0 +1,14 @@
+<p class="p_center"><img src="main/libs/img/waiting.gif" alt=""></p>
+
+<div id="waiting_title">
+<?php if(!isset($with_sd)) { 
+    echo __('WAITING_LOGS_WITH_SD');
+} else {
+    if($with_sd) {
+            echo __('WAITING_LOGS_WITH_SD');
+    } else {
+            echo __('WAITING_MONTH_WITHOUT_SD');
+    }
+}
+?>
+</div>
