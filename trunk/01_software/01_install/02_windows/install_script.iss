@@ -60,13 +60,6 @@ italian.StartCultibox=Vuoi eseguire il software Cultibox immediatamente?
 german.StartCultibox=Wollen Sie die Cultibox Software sofort auszuführen?
 spanish.StartCultibox=¿Desea ejecutar el software Cultibox inmediatamente?
 
-french.AbortCultibox=Une erreur s'est produite lors de la sauvegarde de vos données, la mise à jour a été annulée. Vous pouvez contacter les administrateurs en écrivant à:%n%n    info@cultibox.fr
-english.AbortCultibox=An error occured during database saving, update has been canceled. You can contact the administrators by writing to:%n%n    info@cultibox.fr
-italian.AbortCultibox=Si è verificato un errore durante il backup dei vostri dati, l'aggiornamento è stato annullato. È possibile contattare gli amministratori scrivendo a:%n%n    info@cultibox.fr
-german.AbortCultibox=Ein Fehler ist aufgetreten während der Sicherung Ihrer Daten, wurde das Update abgebrochen. Sie können die Administratoren durch das Schreiben an:%n%n    info@cultibox.fr
-spanish.AbortCultibox=Se ha producido un error durante la copia de seguridad de sus datos, la actualización ha sido cancelada. Puede ponerse en contacto con los administradores por escrito a:%n%n    info@cultibox.fr
-
-
 french.UpgradeCultibox=Une ancienne version du logiciel Cultibox a été détecté. Si vous continuez l'installation, le logiciel sera mis à jour.%nMerci de prendre note des informations suivantes avant de lancer la mise à jour:%n%nLe passage vers une version antérieure n'est pas assurée par le logiciel. Ceci peut être réalisé à vos risques et périls, sans garantis de succés.%n%nSi vous avez modifié manuellement certains fichiers, les changements peuvent être perdues durant la mise à jour. Les données et la configuration de votre logiciel seront toujours opérationnel dans la nouvelle version.%n%nAfin de réaliser une mise à jour, le logiciel actuel doit être pleinement fonctionnel.%n%n%nVoulez-vous continuer l'installation de la mise à jour du logiciel Cultibox?
 english.UpgradeCultibox=An older version of Cultibox software was detected. If you continue the installation, the software will be updated.%nPlease note the following information before starting the update.%n%nThe shift to an earlier version is not provided by the software . This can be done at your own risk, without guaranteed success.%n%nIf you have changed some files manually, changes may be lost during the update. Data and configuration of your software will always be operational in the new version.%n%nTo perform an update, the current software must be fully functional.%n%n%nDo you want to continue installing the update Cultibox software update?
 italian.UpgradeCultibox=È stata rilevata una versione precedente del software Cultibox. Se si continua l'installazione, il software verrà aggiornato%nSi prega di notare le seguenti informazioni prima di avviare l'aggiornamento.%n%nIl passaggio a una versione precedente non è fornito dal software . Questo può essere fatto a proprio rischio e pericolo, senza successo garantito.%n%nSe hai modificato alcuni file manualmente, le modifiche possono essere perse durante l'aggiornamento. I dati e la configurazione del software saranno sempre operativi nella nuova versione.%n%nPer eseguire l'aggiornamento, il software corrente deve essere pienamente funzionale.%n%n%nVuoi continuare l'installazione dell'aggiornamento aggiornamento software Cultibox?
@@ -97,33 +90,9 @@ begin
 
        if (Result) then
        begin 
-        Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
-
-        ExtractTemporaryFile ('backup.bat');
-        ExtractTemporaryFile ('get_version.bat');
-        ExtractTemporaryFile ('my-extra.cnf');
-
-
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C move backup.bat {sd}\{#MyAppName}\run\backup.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C move get_version.bat {sd}\{#MyAppName}\run\get_version.bat'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C move my-extra.cnf {sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf'), ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-
-        if Exec (ExpandConstant ('{cmd}'), '/C run\backup.bat', ExpandConstant ('{sd}\{#MyAppName}'), SW_SHOW, ewWaitUntilTerminated, ResultCode) then
-        begin
-          if(ResultCode <> 0) then
-          begin
-            Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
-            Exec (ExpandConstant ('{cmd}'), '/C net start cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
-            MsgBox(ExpandConstant('{cm:AbortCultibox}'), mbCriticalError, MB_OK);
-            Result := False;
-
-          end else begin
             Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_apache', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
             Exec (ExpandConstant ('{cmd}'), '/C net stop cultibox_mysql', '', SW_SHOW, ewWaitUntilTerminated, ResultCode); 
             Exec (ExpandConstant ('{cmd}'), ExpandConstant ('/C del /F /Q {sd}\{#MyAppName}\xampp\install\install.sys'), '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
-          end;
-        end;
       end;
     end;  
 end;
@@ -142,6 +111,8 @@ var
     Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql_installservice.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
     Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysqladmin.exe -u root -h 127.0.0.1  --port=3891 password cultibox'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
     Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\user_cultibox.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+    Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 mysql < "{sd}\{#MyAppName}\xampp\sql_install\five-tables.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin\'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
+ 
         
     if not (ForceInstall) then
     begin
@@ -177,7 +148,6 @@ var
 
      if (ForceInstall) then 
      begin
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C {sd}\{#MyAppName}\run\load.bat'), ExpandConstant ('{sd}\{#MyAppName}\run'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C {sd}\{#MyAppName}\xampp\sql_install\update_sql.bat'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
         Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C del {sd}\{#MyAppName}\xampp\htdocs\cultibox\main\templates_c\*.ser'), ExpandConstant ('{sd}\{#MyAppName}\xampp'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
      end;     
@@ -186,9 +156,9 @@ var
   if(CurStep=ssDone) then
   begin
       if MsgBox(ExpandConstant('{cm:StartCultibox}'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES then                                                                                                                                 
-       begin
+      begin
           Exec (ExpandConstant ('{cmd}'), '/C start http://localhost:6891/cultibox', ExpandConstant ('{tmp}'), SW_SHOW, ewWaitUntilTerminated, ResultCode);
-       end 
+       end; 
   end;
 end; 
 
