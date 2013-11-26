@@ -4,48 +4,53 @@ if [ -f /Applications/cultibox/xamppfiles/etc/php.ini ] && [ ! -f  /Applications
     echo " === An old version of the Cultibox seems to be remaining in your system, please remove manually the remaining Cultibox system in /Applications directory ===="
     exit 1
 else
-    if [ -d /Applications/cultibox ]; then
-        /Applications/cultibox/xamppfiles/xampp start
-        sleep 6
+    if [ -f /tmp/cultibox_upgrade ]; then
+        rm -f /tmp/cultibox_upgrade
+    fi
+ 
+         cat > /Applications/cultibox/xamppfiles/etc/my-extra.cnf << "EOF" 
+[client]
+user="root"
+password="cultibox"
+EOF
 
-        # Upgrade case:
-        if [ ! -f /Applications/cultibox/xamppfiles/etc/my-extra.cnf ]; then
-          file=`find /var/folders/ -name "my-extra.cnf"|head -1`
-          if [ "$file" != "" ]; then
-            cp "$file" /Applications/cultibox/xamppfiles/etc/
-          fi
-        fi
+        cat > /Applications/cultibox/run/get_version.sh << "EOF"
+#!/bin/bash
 
-        if [ -f /Applications/cultibox/run/get_version.sh ]; then
-            if [ -f /tmp/cultibox_version ]; then
-                rm /tmp/cultibox_version
-            fi
-            /Applications/cultibox/run/get_version.sh > /tmp/cultibox_version
-        else 
-          file=`find /var/folders/ -name "get_version.sh"`
-          if [ "$file" != "" ]; then
-            cp "$file" /Applications/cultibox/run/
-          fi
-        fi
+set -e
 
-        touch /tmp/cultibox_upgrade
+user_culti=`who|head -1|awk -F" " '{print $1}'`
+group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
+home=`egrep "^$user_culti" /etc/passwd|awk -F":" '{print $6}'`
 
-        if [ -f /Applications/cultibox/run/backup.sh ]; then
-            file=`find /var/folders/ -name "backup.sh" -anewer /Applications/cultibox/run/backup.sh`
-            if [ "$file" != "" ]; then
-                cp "$file" /Applications/cultibox/run/
+# Test of the connection:
+/Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SELECT * FROM  configuration;" > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+        result=`/Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 --batch cultibox -e "SELECT VERSION FROM configuration;"`
+        for res in `echo $result`; do
+            if [ "`echo $res|egrep [1-9].*\.[1-9].*\.[1-9].*-.*`" != "" ]; then
+                echo $res
+                exit 0
             fi
-            
-            /Applications/cultibox/run/backup.sh
-            if [ $? -ne 0 ]; then
-                echo "==== Error during the backup of your installation, please check that the Cultibox software is correctly running, exiting ===="
-                exit 1
-            fi
-        else 
-            file=`find /var/folders/ -name "backup.sh"`
-            if [ "$file" != "" ]; then
-                cp "$file" /Applications/cultibox/run
-            fi
-        fi
+        done
+else
+        exit 1
+fi
+exit 0
+EOF
+   if [ -d /Applications/cultibox ]; then
+      /Applications/cultibox/xamppfiles/xampp stop
+      sleep 4
+
+      if [ -d /tmp/cultibox_backup ]; then
+        rm -Rf /tmp/cultibox_backup
+      fi
+
+      mkdir -p /tmp/cultibox_backup
+      
+      cp -R /Applications/cultibox/xamppfiles/var/mysql/ibdata* /tmp/cultibox_backup/
+      cp -R /Applications/cultibox/xamppfiles/var/mysql/ib_logfile* /tmp/cultibox_backup/
+ 
+      touch /tmp/cultibox_upgrade
     fi
 fi
