@@ -9,7 +9,7 @@ DEST_DIR=../01_src/01_xampp
 
 function usage {
             echo "usage: $0"
-            echo "                      snow-leopard <version> ?jenkins?"
+            echo "                      osx <version> ?jenkins?"
             echo "                      clean"
             exit 1
 }
@@ -29,7 +29,7 @@ WORK_DIR=/Users/yann/Desktop
 SERVER=macosx
 
 case "$1" in
-      "snow-leopard" )
+      "osx" )
             (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && pdflatex documentation.tex && pdflatex documentation.tex)
             rm -Rf ../01_src/01_xampp/*
             tar zxvfp xampp-mac-1.8.3.tar.gz -C ../01_src/01_xampp/
