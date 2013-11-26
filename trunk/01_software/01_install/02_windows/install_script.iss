@@ -197,8 +197,6 @@ end;
 ; Backup file. Used in pre install
 Source: "conf-script\load.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "conf-script\backup.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "conf-script\load_client.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "conf-script\backup_client.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "conf-script\get_version.bat"; DestDir: "{app}\run"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\..\..\01_software\01_install\01_src\01_xampp\cultibox\*"; DestDir: "{app}\xampp"; Flags: ignoreversion recursesubdirs createallsubdirs 
 Source: "..\..\..\01_software\01_install\01_src\03_sd\*"; DestDir: "{app}\sd"; Flags: ignoreversion recursesubdirs createallsubdirs
