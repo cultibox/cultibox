@@ -27,22 +27,22 @@ fi
 
 chown -R mysql /opt/cultibox/var/mysql
 
-/opt/cultibox/lampp restart
-sleep 2
-
-# Check if mysql is alive
-/opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
-if [ $? -ne 0 ]; then
-    sleep 4
-    /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 -u root -h 127.0.0.1 ping >/dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        echo "==== Error, the mysql service doesn't seem to be started... exiting ===="
-        exit 1
-    fi
-fi
-echo "... OK"
-
 if [ ! -f /tmp/cultibox_upgrade ]; then
+    /opt/cultibox/lampp restart
+    sleep 2
+
+    # Check if mysql is alive
+    /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        sleep 4
+        /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 -u root -h 127.0.0.1 ping >/dev/null 2>&1
+        if [ $? -ne 0 ]; then
+            echo "==== Error, the mysql service doesn't seem to be started... exiting ===="
+            exit 1
+        fi
+    fi
+    echo "... OK"
+
     echo "  * Installing the Cultibox software..."
     /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
 
@@ -81,17 +81,36 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     echo "... OK"
 else 
     echo "  * A previous version of Cultibox was installed, upgrading your software..."
-    /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
-    /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/user_cultibox.sql
-
-    /opt/cultibox/run/load.sh
-    if [ $? -ne 0 ]; then
-        rm /tmp/cultibox_upgrade
-        if [ -f /tmp/cultibox_version ]; then
-            rm /tmp/cultibox_version
-        fi
+    if [ -d /tmp/cultibox_backup ]; then
+        cp -R /tmp/cultibox_backup/* /opt/cultibox/var/mysql/
+        rm -f /opt/cultibox/var/mysql/mysql/innodb_index_stats*
+        rm -f /opt/cultibox/var/mysql/mysql/innodb_table_stats*
+        rm -f /opt/cultibox/var/mysql/mysql/slave_master_info*
+        rm -f /opt/cultibox/var/mysql/mysql/slave_relay_log_info*
+        rm -f /opt/cultibox/var/mysql/mysql/slave_worker_info*
+    else
+        echo "==== Error, can't access to the cultibox backup directory... exiting ===="
         exit 1
     fi
+
+    /opt/cultibox/lampp restart
+    sleep 2
+
+    # Check if mysql is alive
+    /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        sleep 4
+        /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 -u root -h 127.0.0.1 ping >/dev/null 2>&1
+        if [ $? -ne 0 ]; then
+            echo "==== Error, the mysql service doesn't seem to be started... exiting ===="
+            exit 1
+        fi
+    fi
+    echo "... OK"
+
+    /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
+    /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/user_cultibox.sql
+    /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 mysql < /opt/cultibox/sql_install/five-tables.sql
 
     if [ -f /opt/cultibox/sql_install/update_joomla.sql ]; then
         /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/update_joomla.sql 

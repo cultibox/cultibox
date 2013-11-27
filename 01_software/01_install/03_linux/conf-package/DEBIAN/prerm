@@ -1,11 +1,20 @@
 #!/bin/bash
 
 if [ -d /opt/cultibox ]; then   
-    /etc/init.d/cultibox start
-    /opt/cultibox/run/backup.sh
-    if [ $? -ne 0 ]; then
-        echo "==== Error during the backup of your installation, please check that the Cultibox software is correctly running, exiting ===="
-        exit 1
+    if [ -f /etc/init.d/cultibox ]; then
+        /etc/init.d/cultibox stop
+        sleep 2
+    fi
+
+    # Killing remaining process:
+    if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
+        for process in `ps aux|grep httpd| grep cultibox| awk -F" " '{print $2}'`; do
+            kill -9 $process
+        done
+
+        for process in `ps aux|grep mysql| grep cultibox| awk -F" " '{print $2}'`; do
+            kill -9 $process
+        done
     fi
 fi
 exit 0

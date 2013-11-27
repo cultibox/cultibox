@@ -8,13 +8,13 @@ else
         rm -f /tmp/cultibox_upgrade
     fi
  
-         cat > /Applications/cultibox/xamppfiles/etc/my-extra.cnf << "EOF" 
+    cat > /Applications/cultibox/xamppfiles/etc/my-extra.cnf << "EOF" 
 [client]
 user="root"
 password="cultibox"
 EOF
 
-        cat > /Applications/cultibox/run/get_version.sh << "EOF"
+    cat > /Applications/cultibox/run/get_version.sh << "EOF"
 #!/bin/bash
 
 set -e
@@ -38,19 +38,37 @@ else
 fi
 exit 0
 EOF
-   if [ -d /Applications/cultibox ]; then
+
+    chmod +x /Applications/cultibox/run/get_version.sh
+
+    if [ -d /Applications/cultibox ]; then
       /Applications/cultibox/xamppfiles/xampp stop
       sleep 4
 
       # Remaining process:
       if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
         for process in `ps aux|grep httpd| grep cultibox| awk -F" " '{print $2}'`; do
-            sudo kill -9 $process
+            kill -9 $process
         done
 
         for process in `ps aux|grep mysql| grep cultibox| awk -F" " '{print $2}'`; do
-            sudo kill -9 $process
+            kill -9 $process
         done
+      fi
+
+      /Applications/cultibox/xamppfiles/xampp start
+      sleep 4 
+
+      if [ -f /Applications/cultibox/run/get_version.sh ]; then
+          if [ -f /tmp/cultibox_version ]; then
+              rm /tmp/cultibox_version
+          fi
+
+          /Applications/cultibox/run/get_version.sh > /tmp/cultibox_version
+          if [ $? -ne 0 ]; then
+              echo "==== Error during preinstall script, please check that the Cultibox software is correctly running, exiting ===="
+              exit 1
+          fi
       fi
 
       if [ -d /tmp/cultibox_backup ]; then
@@ -63,5 +81,8 @@ EOF
       cp -R /Applications/cultibox/xamppfiles/var/mysql/ib_logfile* /tmp/cultibox_backup/
  
       touch /tmp/cultibox_upgrade
+
+      /Applications/cultibox/xamppfiles/xampp stop
+      sleep 4
     fi
 fi
