@@ -42,6 +42,17 @@ EOF
       /Applications/cultibox/xamppfiles/xampp stop
       sleep 4
 
+      # Remaining process:
+      if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
+        for process in `ps aux|grep httpd| grep cultibox| awk -F" " '{print $2}'`; do
+            sudo kill -9 $process
+        done
+
+        for process in `ps aux|grep mysql| grep cultibox| awk -F" " '{print $2}'`; do
+            sudo kill -9 $process
+        done
+      fi
+
       if [ -d /tmp/cultibox_backup ]; then
         rm -Rf /tmp/cultibox_backup
       fi
