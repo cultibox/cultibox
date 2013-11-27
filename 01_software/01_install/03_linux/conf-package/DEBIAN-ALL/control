@@ -1,0 +1,11 @@
+Package: Cultibox
+Version: 1.0.0-ubuntu
+Section: web
+Maintainer: Yann Genevois <yann.genevois@cultibox.fr>
+Homepage: http://www.cultibox.fr
+Priority: extra
+Architecture: all
+Installed-Size: 500000
+Description: Web interface for the Cultibox
+ This is the web interface for the cultibox to configure your box, view logs, manage your plugs.
+

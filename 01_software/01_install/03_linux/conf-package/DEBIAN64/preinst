@@ -10,72 +10,12 @@ else
         if [ ! -d /opt/cultibox/run ]; then
             mkdir -p /opt/cultibox/run
         fi
-        #Update of the needed scripts to back up the environment:
+        #Update of the needed scripts:
         cat > /opt/cultibox/etc/my-extra.cnf << "EOF" 
 [client]
 user="root"
 password="cultibox"
 EOF
-
-        cat > /opt/cultibox/run/backup.sh << "EOF" 
-#!/bin/bash
-set -e
-
-user_culti=`who|head -1|awk -F" " '{print $1}'`
-group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
-home=`egrep "^$user_culti" /etc/passwd|awk -F":" '{print $6}'`
-
-echo "-----------------------------------------------------------------"
-echo "              Cultibox backup database script                    "
-echo "-----------------------------------------------------------------"
-echo ""
-
-if [ ! -d $home/.cultibox ]; then
-    echo "  * Creating $home/.cultibox directory to store backup files"
-    mkdir $home/.cultibox
-    chown $user_culti:$group_culti $home/.cultibox
-else
-    echo "  * $home/.cultibox already exists and will be used to store backup files"
-fi
-
-echo "  * Exporting your current databae..."
-/opt/cultibox/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox > $home/.cultibox/backup_cultibox.bak.new
-if [ $? -eq 0 ]; then
-    echo "... cultibox: OK"
-else
-    rm $home/.cultibox/backup_cultibox.bak.new
-    echo "==== Error during the backup of the cultibox database, exiting ===="
-    echo "... NOK"
-    exit 1
-fi
-
-/opt/cultibox/bin/mysqldump --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla > $home/.cultibox/backup_joomla.bak.new
-if [ $? -eq 0 ]; then
-    echo "... joomla: OK"
-else
-    rm $home/.cultibox/backup_joomla.bak.new
-    echo "==== Error during the backup of the joomla database, exiting ===="
-    echo "... NOK"
-    exit 1
-fi
-
-#Saving the database in the directory $home/.cultibox:
-echo "  * Saving previous Cultibox backup database..."
-if [ -f $home/.cultibox/backup_cultibox.bak ]; then
-    mv $home/.cultibox/backup_cultibox.bak $home/.cultibox/backup_cultibox.bak.old
-    echo "... OK"
-fi
-echo "  * Saving previous Joomla backups database..."
-if [ -f $home/.cultibox/backup_joomla.bak ]; then
-    mv $home/.cultibox/backup_joomla.bak $home/.cultibox/backup_joomla.bak.old
-    echo "... OK"
-fi
-mv $home/.cultibox/backup_cultibox.bak.new $home/.cultibox/backup_cultibox.bak
-mv $home/.cultibox/backup_joomla.bak.new $home/.cultibox/backup_joomla.bak
-chown $user_culti:$group_culti $home/.cultibox/*
-exit 0
-EOF
-
 
         cat > /opt/cultibox/run/get_version.sh << "EOF" 
 #!/bin/bash
@@ -101,18 +41,51 @@ else
 fi
 exit 0
 EOF
+        chmod +x /opt/cultibox/run/get_version.sh
 
-    #Killing remaining process
-    /opt/cultibox/lampp stop
-    if [ "`ps aux|grep cultibox`" != "" ]; then
-        for process in `ps aux|grep httpd|grep cultibox|awk -F" " '{print $2}'`; do
-            kill -9 $process 2>/dev/null
-        done
-    fi
-    /opt/cultibox/lampp start
-    sleep 2
+        #Killing remaining process
+        /opt/cultibox/lampp stop
+        sleep 2
+
+        # Killing remaining process:
+        if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
+            for process in `ps aux|grep httpd| grep cultibox| awk -F" " '{print $2}'`; do
+                kill -9 $process
+            done
+
+            for process in `ps aux|grep mysql| grep cultibox| awk -F" " '{print $2}'`; do
+                kill -9 $process
+            done
+        fi
+
+        /opt/cultibox/lampp start
+        sleep 2
+
+        if [ -f /opt/cultibox/run/get_version.sh ]; then
+            if [ -f /tmp/cultibox_version ]; then
+                rm /tmp/cultibox_version
+            fi
+
+            /opt/cultibox/run/get_version.sh > /tmp/cultibox_version
+            if [ $? -ne 0 ]; then
+                echo "==== Error during preinstall script, please check that the Cultibox software is correctly running, exiting ===="
+                exit 1
+            fi
+        fi
+
+        if [ -d /tmp/cultibox_backup ]; then
+            rm -Rf /tmp/cultibox_backup
+        fi
+
+        mkdir -p /tmp/cultibox_backup
+
+        cp -R /opt/cultibox/var/mysql/ibdata* /tmp/cultibox_backup/
+        cp -R /opt/cultibox/var/mysql/ib_logfile* /tmp/cultibox_backup/
+
+        touch /tmp/cultibox_upgrade
+
+        /opt/cultibox/lampp stop
+        sleep 2
     fi
 fi
 exit 0
-
-
