@@ -13,12 +13,10 @@ echo ""
 
 if [ -f $HOME/.cultibox/backup_cultibox.bak ]; then
     # To load a previous database dump: deletion of the current database, creation of the new database, import of the previous dump.
-    echo "  * Cultibox: deletion of the current database, creation of an empty database, import of your backup database..."
+    echo "  * Cultibox: import of your backup database..."
     # Test of the connection:
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SHOW TABLES;">/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        rm -Rf /Applications/cultibox/xamppfiles/var/mysql/cultibox
-        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox;"
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < $HOME/.cultibox/backup_cultibox.bak
     else
         echo "===== Error accessing cultibox database, exiting... ===="
@@ -35,13 +33,10 @@ fi
 
 if [ -f $HOME/.cultibox/backup_joomla.bak ]; then
     # To load a previous database dump: deletion of the current database, creation of the new database, import of the previous dump.
-    echo "  * Joomla: deletion of the current database, creation of an empty database, import of your backup database..."
+    echo "  * Joomla: import of your backup database..."
     # Test of the connection:
-    
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla -e "SHOW TABLES;" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-        rm -Rf /Applications/cultibox/xamppfiles/var/mysql/cultibox_joomla
-        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox_joomla;"
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla < $HOME/.cultibox/backup_joomla.bak
     else
         echo "===== Error accessing joomla database, exiting... ===="
