@@ -19,13 +19,13 @@ if [ "$1" != "upgrade" ]; then
 fi
 
 if [ "$1" == "purge" ]; then
-    if [ -d /opt/cultibox ]; then
-        rm -Rf /opt/cultibox
-    fi
+    if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
+        for process in `ps aux|grep httpd| grep cultibox| awk -F" " '{print $2}'`; do
+            kill -9 $process
+        done
 
-    if [ "`ps aux|grep httpd|grep cultibox`" != "" ]; then
-        for process in `ps aux|grep httpd|grep cultibox|awk -F" " '{print $2}'`; do
-            kill -9 $process 2>/dev/null
+        for process in `ps aux|grep mysql| grep cultibox| awk -F" " '{print $2}'`; do
+            kill -9 $process
         done
     fi
 fi
