@@ -57,7 +57,7 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || documentation || PTS_documentation_users_general_caution ||  ||  ||  ||  ||  ||  ||  || PASS || [http://code.google.com/p/cultibox/wiki/general_caution Lien] ||
 || documentation || PTS_documentation_technical_documentation ||  ||  ||  ||  ||  ||  ||  || en cours || CBX_4_13_0001_documentation_technique ||
 || verification|| PTS_verif_marquage_CE ||  ||  ||  ||  ||  ||  ||  || en cours || [http://code.google.com/p/cultibox/wiki/declaration_ce Lien] ||
-|| verification|| PTS_verif_directive_CE ||  ||  ||  ||  ||  ||  ||  || en cours || CBX_4_13_0002_Checklist_Directive_1999-05-CE_R&TTE\n CBX_4_13_0003_Checklist_Directive_2005-32-CE_ecoconception\n CBX_4_13_0004_Checklist_Directive_2006-95-CE_BT ||
+|| verification|| PTS_verif_directive_CE ||  ||  ||  ||  ||  ||  ||  || en cours || CBX_4_13_0002_Checklist_Directive_1999-05-CE_R&TTE CBX_4_13_0003_Checklist_Directive_2005-32-CE_ecoconception CBX_4_13_0004_Checklist_Directive_2006-95-CE_BT ||
 
 <wiki:comment>
 \end{landscape}
