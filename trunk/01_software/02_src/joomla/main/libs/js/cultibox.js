@@ -240,11 +240,11 @@ compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,
 
 
 
-loadLog = function(nb_day,pourcent,type,pourcent,search) {
+loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
             $.ajax({
                 cache: false,
                 url: "../../main/modules/external/load_log.php",
-                data: {nb_day:nb_day, type:type,search:search}
+                data: {nb_day:nb_day, type:type,search:search,sd_card:sd_card}
             }).done(function (data) {
                 if(nb_day!=0) {
                     if(type=="power") {
@@ -261,7 +261,7 @@ loadLog = function(nb_day,pourcent,type,pourcent,search) {
                         }
                         return true;
                     }
-                    loadLog(nb_day-1,data,type,pourcent,search);
+                    loadLog(nb_day-1,data,type,pourcent,search,sd_card);
                 } else {
                     if(search=="submit") {
                         if(type=="power") {
@@ -502,8 +502,22 @@ $(document).ready(function() {
          });
          $("#progress_bar_load").progressbar({value:0});
          $("#progress_bar_load_power").progressbar({value:0});
-         loadLog($("#log_search").val()*31,0,"logs",$("#log_search").val()*31,"submit");
-         loadLog($("#log_search").val()*31,0,"power",$("#log_search").val()*31,"submit");
+		 
+		 var name="sd_card";
+         $.ajax({
+            cache: false,
+            async: true,
+            url: "../../main/modules/external/get_variable.php",
+            data: {name:name}
+         }).done(function (data) {
+            if(data) {
+				loadLog($("#log_search").val()*31,0,"logs",$("#log_search").val()*31,"submit",data);
+				loadLog($("#log_search").val()*31,0,"power",$("#log_search").val()*31,"submit",data);
+			} else {
+                $("#error_load_power").show();
+                $("#error_load").show();
+            }
+		});
     });
 
     $("input:radio[name=check_type_delete]").click(function() {
@@ -1479,8 +1493,8 @@ $(document).ready(function() {
 
                             $("#progress_bar_load").progressbar({value:0});
                             $("#progress_bar_load_power").progressbar({value:0});
-                            loadLog("31",0,"logs","31","auto");
-                            loadLog("31",0,"power","31","auto");
+                            loadLog("31",0,"logs","31","auto",data);
+                            loadLog("31",0,"power","31","auto",data);
                         }
                     });
                 }
