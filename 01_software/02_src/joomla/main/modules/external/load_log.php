@@ -4,6 +4,7 @@ require_once('../../libs/utilfunc.php');
 require_once('../../libs/db_common.php');
 require_once('../../libs/config.php');
 
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -21,6 +22,10 @@ if((isset($_GET['type']))&&(!empty($_GET['type']))) {
 }
 
 
+if((isset($_GET['sd_card']))&&(!empty($_GET['sd_card']))) {
+    $sd_card=$_GET['sd_card'];
+}
+
 if((isset($_GET['search']))&&(!empty($_GET['search']))) {
     $search=$_GET['search'];
 }
@@ -32,6 +37,11 @@ if((!isset($type))||(empty($type))) {
 } 
 
 
+if((!isset($sd_card))||(empty($sd_card))) {
+    echo "NOK";
+    return 0;
+} 
+
 if(strcmp($type,"power")==0) { 
     $file_type="pwr_";
 } else {
@@ -39,19 +49,15 @@ if(strcmp($type,"power")==0) {
 }
 
 
-    
+   
 // ************  Log and power file reading from SD card  ********************//
 $log = array();
 $power=array();
 
-// Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
-if((!isset($sd_card))||(empty($sd_card))) {
-   $sd_card=get_sd_card();
-}
-
 if((isset($sd_card))&&(!empty($sd_card))) {
     // Workaround to avoid timeout (60s)
     // Search only on 31 previous days
+
     $daySearch= date('j');
     $monthSearch = date('n');
 
@@ -115,7 +121,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
             unset($power) ;
             $power = array();
         }
-   }
+   } 
 
 
    if(($nb_day==0)&&(strcmp($search,"auto")==0)) {
@@ -126,7 +132,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 
         $nb_day=38;
         while($nb_day>31) {
-            for($j=$nb_day;$j>0;$j--)  {
+             for($j=$nb_day;$j>0;$j--)  {
                 $daySearch= $daySearch-1;
                 if($daySearch==0) {
                     $daySearch=31;
@@ -165,10 +171,11 @@ if((isset($sd_card))&&(!empty($sd_card))) {
             if(!empty($power)) {
                 echo "-2";
                 return 0;
-            }
+            } 
             $nb_day=$nb_day-1;
         }
    }
+   
 }
 echo "0";
 
