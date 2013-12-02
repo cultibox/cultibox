@@ -7,153 +7,154 @@ msgid "LANG"
 msgstr "es_ES"
 
 msgid "CONFIGURATION"
-msgstr "Configuration"
+msgstr "Configuración"
 
 msgid "LOGS"
 msgstr "Logs"
 
 msgid "PROGRAMS"
-msgstr "Programmes"
+msgstr "Programas"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
-msgstr "Bienvenue dans le logiciel de configuration de la Cultibox"
+msgstr "Bienvenido en el programa de configuración de la Cultibox"
 
 msgid "DID_YOU_KNOW"
 msgstr "Le saviez-vous?"
 
 msgid "WELCOME_MESSAGE"
-msgstr "Ce logiciel va vous permettre de manipuler simplement votre Cultibox afin de la configurer, de visualiser les données enregistrées ou encore d'accéder à certaines fonctionnalités telles que le calcul du coût d'électricité ou la création d'un calendrier de culture."
+msgstr "Este programo permite comunicar con vuestra Cultibox. Se puede configurar, visualizar datos y acceder a otras funciones como el consumo eléctrico y la creación de calendarios de cultivos."
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note :</b> pour ceux qui possèdent l'ancienne version de la Cultibox (<b>Green Box</b>), il vous faudra absolument"
+msgstr "<b>Note :</b> para los que ya tienen la antigua versión de la Cultibox(la <b>greenbox</b>), se necesitará"
 
 msgid "WELCOME_REQUIEREMENT"
-msgstr "<ul class='list_class'><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la Cultibox</li><li>déconnecter votre Green Box qui peut causer des interférences avec la Cultibox</li></ul>"
+msgstr "<ul class='list_class'><li>quitar los antiguos enchufes que no son mas compatible y conectar las de la Cultibox</li><li>desconectar vuestra GreenBox que puede causar interferencias con la Cultibox</li></ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
-msgstr "Cliquer sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre Cultibox"
+msgstr "Darle al botón SIGUIENTE para lanzar la configuración y empezar a pilotar vuestra Cultibox"
 
 msgid "WELCOME_WIZARD"
-msgstr "Assistant de configuration"
+msgstr "Ayudante de configuración"
 
 msgid "WELCOME_LOGS"
-msgstr "Page de visualisation des logs"
+msgstr "Pagina de visualización de los logs"
 
 msgid "WELCOME_CALENDAR"
-msgstr "Page de programmation du calendrier de culture"
+msgstr "Pagina de programación del calendario de cultivo"
 
 msgid "WELCOME_PROGRAM"
-msgstr "Page de création et visualisation des programmes des prises"
+msgstr "Pagina de creación y visualización de los programas de enchufes"
+
 
 # For the configuration part:
 msgid "CONFIGURE_TITLE_CULTIBOX"
-msgstr "Configurer votre système Cultibox"
+msgstr "Configurar vuestro sistema Cultibox"
 
 msgid "USER_CONF"
-msgstr "Interface"
+msgstr "Interfaz"
 
 msgid "SYSTEM_CONF"
 msgstr "Cultibox"
 
 msgid "CONFIGURE_COST"
-msgstr "Coût"
+msgstr "Coste"
 
 msgid "CONFIGURE_CARD"
-msgstr "Carte SD"
+msgstr "Tarjeta SD"
 
 msgid "ALWAYS_RECORD"
-msgstr "Toujours"
+msgstr "Siempre"
 
 msgid "CONFIGURE_HUMIDITY"
-msgstr "Couleur des courbes d'hygrométrie"
+msgstr "Color de las curvas de higrometría"
 
 msgid "CONFIGURE_TEMPERATURE"
-msgstr "Couleur des courbes des températures"
+msgstr "Color de las curvas de temperaturas"
 
 msgid "CONFIGURE_COST_COLOR"
-msgstr "Couleur du graphe de coût de l'installation"
+msgstr "Color del gráfico del coste de la instalación"
 
 msgid "CONFIGURE_LANGUAGE"
-msgstr "Choisir votre langue"
+msgstr "Elegir un idioma"
 
 msgid "CONFIGURE_FREQUENCY"
-msgstr "Fréquence d'enregistrement du climat (en minute)"
+msgstr "Frecuencia de grabación del clima (en minutos)"
 
 msgid "CONFIGURE_POWER_FREQUENCY"
-msgstr "Fréquence d'enregistrement de la puissance (en minute)"
+msgstr "Frecuencia de grabación de la potencia (en minutos)"
 
 msgid "CONFIGURE_NB_PLUGS"
-msgstr "Nombre de prises de votre système"
+msgstr "Números de enchufes en vuestro sistema"
 
 msgid "CONFIGURE_PLUGS_FREQUENCY"
-msgstr "Fréquence de mise à jour de l'état des prises (en seconde)"
+msgstr "Frecuencia de actualización del estado de los enchufes(en segundos)"
 
 msgid "CONFIGURE_POWER"
-msgstr "Couleur des courbes de puissance"
+msgstr "Color de las curvas de potencia"
 
 msgid "CONFIGURE_POPUP"
-msgstr "Activer l'affichage des messages par popup"
+msgstr "Activar la visualización de los mensajes por popup"
 
 msgid "VALIDATION_CONF"
-msgstr "Enregistrer la configuration"
+msgstr "Grabar la configuración"
 
 msgid "LANG_FR"
-msgstr "Français"
+msgstr "Francés"
 
 msgid "LANG_EN"
-msgstr "Anglais"
+msgstr "Ingles"
 
 msgid "COLOR_BLUE"
-msgstr "Bleu"
+msgstr "Azul"
 
 msgid "COLOR_RED"
-msgstr "Rouge"
+msgstr "Rojo"
 
 msgid "COLOR_GREEN"
-msgstr "Vert"
+msgstr "Verde"
 
 msgid "COLOR_BLACK"
-msgstr "Noir"
+msgstr "Negro"
 
 msgid "COLOR_PURPLE"
-msgstr "Violet"
+msgstr "Lila"
 
 msgid "YES"
-msgstr "Oui"
+msgstr "Si"
 
 msgid "NO"
-msgstr "Non"
+msgstr "No"
 
 msgid "CONFIGURE_ALARM"
-msgstr "Alarme"
+msgstr "Alarma"
 
 msgid "CONFIGURE_ALARM_ACTIV"
-msgstr "Activer le système d'alarme"
+msgstr "Activar el sistema de alarma"
 
 msgid "CONFIGURE_ALARM_VALUE"
-msgstr "Valeur du seuil de déclenchement de l'alarme"
+msgstr "Valor umbral de activación de alarma"
 
 msgid "CHECK_UPDATE"
-msgstr "Vérifier automatiquement la présence de mises à jour"
+msgstr "Comprobación automática actualización"
 
 msgid "CHECK_STATISTICS"
-msgstr "Envoi d'informations pour aider le développement"
+msgstr "Enviar informaciones para ayudar el desarrollo"
 
 msgid "MANAGE_RESET_SD_CARD"
-msgstr "Formater une carte SD pour la rendre compatible Cultibox"
+msgstr "Formatear una tarjeta SD para compatibilidad Cultibox "
 
 msgid "MANAGE_RESET_CARD_NOT_FOUND"
-msgstr "Aucune carte formatable détectée"
+msgstr "Ninguna tarjeta detectada"
 
 msgid "MANAGE_RESET_CARD"
-msgstr "Formater la carte"
+msgstr "Formatear la tarjeta"
 
 msgid "RESET_CONFIRM_SD_CARD"
-msgstr "Êtes-vous sûr de vouloir formater votre carte SD? Vos fichiers de logs pourraient être détruits."
+msgstr "Seguro que quieres formatear la tarjeta SD? Los ficheros logs podrían desaparecer."
 
 msgid "SECOND_REGUL_ENABLE"
-msgstr "Activer la régulation secondaire (Utilisateur expert seulement)"
+msgstr "Activar la regulación segundaría (usuario experto solo)"
 
 msgid "ADVANCED_REGUL_OPTIONS"
 msgstr "Autoriser la modification des options avancées de régulation"
@@ -182,115 +183,115 @@ msgstr "Remise à zéro du min/max"
 
 # For the logs part:
 msgid "HISTO_GRAPH"
-msgstr "Graphiques climatiques"
+msgstr "Gráficos climáticos"
 
 msgid "SELECT_DISPLAYED_DAY"
-msgstr "Afficher les informations pour"
+msgstr "Visualizar los datos para"
 
 msgid "SELECT_LOG_TITLE"
-msgstr "Affichage des données enregistrées par la Cultibox"
+msgstr "Visualización de los datos grabados por la Cultibox"
 
 msgid "ONE_DAY"
-msgstr "un jour"
+msgstr "un día"
 
 msgid "ONE_MONTH"
-msgstr "un mois"
+msgstr "un mes"
 
 msgid "SELECT_DAY"
-msgstr "Jour à afficher (AAAA-MM-JJ)"
+msgstr "Día a visualizar (AAAA-MM-JJ)"
 
 msgid "SELECT_MONTH"
-msgstr "Sélectionner le mois à afficher "
+msgstr "Seleccionar el mes a visualizar"
 
 msgid "VIEW"
-msgstr "Afficher"
+msgstr "Visualizar"
 
 msgid "DRAG_PLOT"
-msgstr "Sélectionner une zone afin de l\'agrandir"
+msgstr "Seleccionar una zona a ampliar"
 
 msgid "LEGEND_TEMP"
-msgstr "Température"
+msgstr "Temperatura"
 
 msgid "LEGEND_HUMI"
-msgstr "Hygrométrie"
+msgstr "Higrometría"
 
 msgid "LEGEND_POWER"
-msgstr "Puissance"
+msgstr "Potencia"
 
 msgid "XAXIS_LEGEND_DAY"
-msgstr "Heure"
+msgstr "Hora"
 
 msgid "XAXIS_LEGEND_MONTH"
-msgstr "Jours du mois"
+msgstr "Días del mes"
 
 msgid "YAXIS_LEGEND"
-msgstr "Pourcentage d\'humidité"
+msgstr "Porcentaje de higrometría"
 
 msgid "Y2AXIS_LEGEND"
-msgstr "Température en degrés"
+msgstr "Temperatura en grados"
 
 msgid "Y3AXIS_LEGEND"
-msgstr "Puissance en watt"
+msgstr "Potencia en Watts"
 
 msgid "MONTH01"
-msgstr "Janvier"
+msgstr "Enero"
 
 msgid "MONTH02"
-msgstr "Février"
+msgstr "Febrero"
 
 msgid "MONTH03"
-msgstr "Mars"
+msgstr "Marzo"
 
 msgid "MONTH04"
-msgstr "Avril"
+msgstr "Abril"
 
 msgid "MONTH05"
-msgstr "Mai"
+msgstr "Mayo"
 
 msgid "MONTH06"
-msgstr "Juin"
+msgstr "Junio"
 
 msgid "MONTH07"
-msgstr "Juillet"
+msgstr "Julio"
 
 msgid "MONTH08"
-msgstr "Août"
+msgstr "Agosto"
 
 msgid "MONTH09"
-msgstr "Septembre"
+msgstr "Septiembre"
 
 msgid "MONTH10"
-msgstr "Octobre"
+msgstr "Octubre"
 
 msgid "MONTH11"
-msgstr "Novembre"
+msgstr "Noviembre"
 
 msgid "MONTH12"
-msgstr "Décembre"
+msgstr "Diciembre"
 
 msgid "M01"
-msgstr "Jan"
+msgstr "Ene"
 
 msgid "M02"
-msgstr "Fév"
+msgstr "Feb"
 
 msgid "M03"
 msgstr "Mar"
 
 msgid "M04"
-msgstr "Avr"
+msgstr "Abr"
 
 msgid "M05"
-msgstr "Mai"
+msgstr "May"
 
 msgid "M06"
-msgstr "Juin"
+msgstr "Jun"
 
 msgid "M07"
-msgstr "Juil"
+msgstr "Jul"
 
 msgid "M08"
-msgstr "Août"
+msgstr "Ago"
 
 msgid "M09"
 msgstr "Sept"
@@ -302,154 +303,154 @@ msgid "M11"
 msgstr "Nov"
 
 msgid "M12"
-msgstr "Déc"
+msgstr "Dec"
 
 msgid "SELECT_PROGRAM_PLUG"
-msgstr "Programme à comparer"
+msgstr "Programa a comparar"
 
 msgid "SELECT_POWER_PLUG"
-msgstr "Afficher la puissance consommée"
+msgstr "Visualizar la potencia consumida"
 
 msgid "SELECT_ALL_PLUGS"
-msgstr "Toutes les prises"
+msgstr "Todos los enchufes"
 
 msgid "FORCE_ON_CHART"
-msgstr "Marche forcée"
+msgstr "Marcha forzada"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte Cultibox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note: </i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
+msgstr "Gracias por esperar algunos instantes y de no<b><i>retirar la tarjeta Cultibox</i></b> el tiempo que se cargue la pagina y que el programa analice los datos.<br /><br /><b><i>Nota: </i></b>Si ocurre un error, se puede recargar la pagina para intentar finalizar la operación"
 
 msgid "WAITING_MONTH_WITHOUT_SD"
-msgstr "Merci de patienter quelques instants le temps que la page se charge et que le logiciel traite vos données"
+msgstr "Gracias por esperar algunos instantes que se cargue la pagina y que el programa trate los datos"
 
 msgid "PREVIOUS_BUTTON_DAY"
-msgstr "Afficher les informations pour le jour précédent"
+msgstr "Visualizar los datos para el día anterior"
 
 msgid "NEXT_BUTTON_DAY"
-msgstr "Afficher les informations pour le jour suivant"
+msgstr "Visualizar los datos para el día siguiente"
 
 msgid "PREVIOUS_BUTTON_MONTH"
-msgstr "Afficher les informations pour le mois précédent"
+msgstr "Visualizar los datos para el mes anterior"
 
 msgid "NEXT_BUTTON_MONTH"
-msgstr "Afficher les informations pour le mois suivant"
+msgstr "Visualizar los datos para el mes siguiente"
 
 msgid "PRECISION_GRAPH_DAY"
-msgstr "Les logs sont affichés avec une précision maximale d'un point toutes les minutes"
+msgstr "Los logs tienen una precisión máxima de un punto cada minuto"
 
 msgid "PRECISION_GRAPH_MONTH"
-msgstr "Les logs sont affichés avec une précision maximale d'un point toutes les vingt minutes"
+msgstr "Los logs tienen una precisión máxima de un punto cada vente minutos"
 
 msgid "SELECT_SENSOR_NB"
-msgstr "Afficher les valeurs pour"
+msgstr "Visualizar los valores para"
 
 msgid "SENSOR"
-msgstr "Capteur"
+msgstr "sensor"
 
 msgid "MONTH_DATE"
-msgstr "Mois et année à afficher"
+msgstr "Mes y año a visualizar"
 
 msgid "ALL_SENSOR"
-msgstr "tous les capteurs"
+msgstr "Todos los sensores"
 
 msgid "SELECT_SENSOR"
-msgstr "le capteur"
+msgstr "El sensor"
 
 msgid "MANAGE_LOG_INFOS"
-msgstr "Gestion de vos données climatiques"
+msgstr "Gestión de los datos climáticos"
 
 msgid "MANAGE_RESET_TITLE"
-msgstr "Supprimer vos anciens logs de température et d'hygrométrie"
+msgstr "Borrar antiguos logs de temperatura y higrometría"
 
 msgid "MANAGE_RESET_TITLE_POWER"
-msgstr "Supprimer vos anciens logs de mesure de puissance"
+msgstr "Borrar antiguos logs de medida de potencia"
 
 msgid "MANAGE_RESET_LOG"
-msgstr "Supprimer les logs"
+msgstr "Borrar los logs"
 
 msgid "MANAGE_RESET_POWER"
-msgstr "Supprimer les logs de puissance "
+msgstr "Borrar los logs de potencia"
 
 msgid "IMPORT_LOG_TITLE"
-msgstr "Importer les logs de: température, humidité, puissance des"
+msgstr "Importar los logs de: temperatura, humedad, potencia de los"
 
 msgid "IMPORT_LAST_MONTH"
-msgstr "derniers mois"
+msgstr "últimos meses"
 
 msgid "IMPORT_LOG"
-msgstr "Importer les logs"
+msgstr "Importar los logs"
 
 msgid "NO_IMPORT_LOG"
-msgstr "Pas de carte SD détectée"
+msgstr "Ninguna tarjeta detectada"
 
 msgid "MIN_Y_AXIS_LOG"
-msgstr "Valeur minimale de l'axe Y"
+msgstr "Valor mínima del eje Y"
 
 msgid "MAX_Y_AXIS_LOG"
-msgstr "Valeur maximale de l'axe Y"
+msgstr "Valor máxima del eje Y"
 
 msgid "EMPTY_REGUL"
-msgstr "Aucune régulation programmée"
+msgstr "Ninguna regulación programada"
 
 msgid "REGUL_TITLE_PLUG"
-msgstr "Régulation pour la prise"
+msgstr "Regulación para el enchufe"
 
 msgid "SUMARY_REGUL_TITLE"
-msgstr "Résumé des régulations secondaires actives pour les prises sélectionnées"
+msgstr "Resumen de las regulaciones segundarías activas para los enchufes seleccionados"
 
 msgid "SUMARY_REGUL_SUBTITLE"
-msgstr "Régulation de la prise"
+msgstr "Regulación del enchufe"
 
 msgid "SUMARY_REGUL_SENSO"
-msgstr "Déclenchement"
+msgstr "Activación"
 
 msgid "SUMARY_REGUL_SENSS"
-msgstr "Seuil"
+msgstr "Umbral"
 
 msgid "SUMARY_REGUL_VALUE"
-msgstr "Valeur du seuil"
+msgstr "Valor umbral"
 
 msgid "SUMARY_EMPTY_REGUL"
-msgstr "Pas de régulation pour la/les prise(s) sélectionnée(s)"
+msgstr "Ninguna regulación para el/los enchufes seleccionado(s)"
 
 msgid "SUMARY_EMPTY_SELECTION"
-msgstr "Pas de prise(s) sélectionnée(s)"
+msgstr "Ningún enchufe seleccionado"
 
 msgid "SUMARY_ABOVE"
-msgstr "Au-dessus"
+msgstr "Por encima"
 
 msgid "SUMARY_UNDER"
-msgstr "En-dessous"
+msgstr "Por debajo"
 
 msgid "SUMARY_REGUL_TEMP"
-msgstr "Température"
+msgstr "Temperatura"
 
 msgid "SUMARY_REGUL_HYGRO"
-msgstr "Hygrométrie"
+msgstr "Higrometría"
 
 msgid "CONFIGURE_Y_AXIS_LOG"
-msgstr "Réglage de l'axe des ordonnées des logs"
+msgstr "Ajuste del primer eje de los logs"
 
 msgid "CONFIGURE_Y_AXIS_POWER"
-msgstr "Réglage de l'axe des ordonnées de la puissance"
+msgstr "Ajuste del primer eje de la potencia"
 
 msgid "MANAGE_EXPORT_LOG_CSV"
-msgstr "Exporter vos informations de logs"
+msgstr "Exportar los datos de los logs"
 
 msgid "MANAGE_EXPORT_EMPTY_LOG_CSV"
-msgstr "Pas de logs dans votre base"
+msgstr "Ningún logs en la base de datos"
 
 msgid "MANAGE_EXPORT_POWER_CSV"
-msgstr "Exporter vos informations de puissance"
+msgstr "Exportar los datos de potencia"
 
 msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
-msgstr "Pas de logs de puissance dans votre base"
+msgstr "Ningún logs de potencia en la base de datos"
 
 msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
-msgstr "Export de vos logs"
+msgstr "Exportar los logs"
 
 msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
-msgstr "Export de vos logs de puissance"
+msgstr "Exportar los logs de potencias"
 
 msgid "EXAMPLE_LOG"
 msgstr "Exemple de logs"
@@ -490,94 +491,94 @@ msgstr "Progression de la suppréssion"
 
 # For the plugs part:
 msgid "PLUG"
-msgstr "Configurer la prise numéro"
+msgstr "Configurar el enchufe numero"
 
 msgid "PLUG_INFOS"
-msgstr "Informations de la prise"
+msgstr "datos del enchufe"
 
 msgid "TYPE_PLUG"
-msgstr "Type d'élément branché sur la prise"
+msgstr "Tipo de elemento conectado al enchufe"
 
 msgid "TOLERANCE_PLUG"
-msgstr "Tolérance de la prise"
+msgstr "Tolerancia del enchufe"
 
 msgid "NAME_PLUG"
-msgstr "Nom de la prise"
+msgstr "Nombre del enchufe"
 
 msgid "PLUG_UNKNOWN"
-msgstr "Autre"
+msgstr "Otro"
 
 msgid "PLUG_LAMP"
-msgstr "Lampe"
+msgstr "Lampara"
 
 msgid "PLUG_VENTILATOR"
-msgstr "Ventilateur"
+msgstr "Ventilador"
 
 msgid "PLUG_HUMIDIFIER"
-msgstr "Humidificateur"
+msgstr "Humidificador"
 
 msgid "PLUG_DEHUMIDIFIER"
-msgstr "Déshumidificateur"
+msgstr "Deshumificador"
 
 msgid "PLUG_HEATING"
-msgstr "Chauffage"
+msgstr "Calentador"
 
 msgid "VALIDATION_PLUG_CONF"
-msgstr "Enregistrer la configuration"
+msgstr "Salvar la configuración"
 
 msgid "POWER_PLUG"
-msgstr "Puissance consommée par l'élément (en Watt)"
+msgstr "Potencia consumida por el elemento (en Watt)"
 
 msgid "ENABLE_REGUL_PLUG"
-msgstr "Régulation secondaire (utilisateur expert seulement)"
+msgstr "Regulación segundaría  (usuario experto solo)"
 
 msgid "CONFIGURE_REGUL_SENSOR"
-msgstr "Capteur(s) utilisé(s) pour la régulation"
+msgstr "Sensor usado para la regulación"
 
 msgid "CONFIGURE_REGUL_SENSO"
-msgstr "Déclenchement en fonction de"
+msgstr "Activación en función de"
 
 msgid "CONFIGURE_REGUL_VALUE"
-msgstr "Seuil de déclenchement"
+msgstr "Umbral de activación"
 
 msgid "CONFIGURE_REGUL_SENSS"
-msgstr "Déclenchement si la mesure est en"
+msgstr "Activación si la medida esta"
 
 msgid "REGUL_TEMP"
-msgstr "Température"
+msgstr "Temperatura"
 
 msgid "REGUL_HUMI"
-msgstr "Humidité"
+msgstr "Humedad"
 
 msgid "REGUL_UNDER"
-msgstr "dessous du seuil"
+msgstr "por debajo del umbral"
 
 msgid "REGUL_ABOVE"
-msgstr "dessus du seuil"
+msgstr "por encima del umbral"
 
 msgid "FOR_THE_PLUG"
-msgstr "pour la prise"
+msgstr "para el enchufe"
 
 msgid "STATE_PLUG"
-msgstr "Etat de la prise"
+msgstr "Estado del enchufe"
 
 msgid "PLUG_ENABLED"
-msgstr "Activée"
+msgstr "Activado"
 
 msgid "PLUG_DISABLED"
-msgstr "Désactivée"
+msgstr "Desactivado"
 
 msgid "VALID_DISABLED_PLUG"
-msgstr "Prise désactivée avec succès"
+msgstr "Enchufe desactivado con excito"
 
 msgid "VALID_ENABLED_PLUG"
-msgstr "Prise activée avec succès"
+msgstr "Enchufe activado con excito"
 
 msgid "PLUG_HISTO_NUMBER"
-msgstr "Prise numéro"
+msgstr "Enchufe numero"
 
 msgid "PLUG_MAX_POWER"
-msgstr "Type de prise (puissance maximale)"
+msgstr "Tipo de enchufe(potencia máxima)"
 
 msgid "SAVE_AND_CONFIGURE_PROGRAM"
 msgstr "Sauvegarder les changements et configurer le programme de la prise"
@@ -606,172 +607,172 @@ msgid "VIEW_CURRENT_PROGRAM"
 msgstr "Visualiser le comportement actuel de la prise"
 
 msgid "CONFIGURE_PROGRAM"
-msgstr "Configurer le comportement de la prise"
+msgstr "Configurar acción del enchufe"
 
 msgid "START_TIME_PROGRAM"
-msgstr "Heure de départ"
+msgstr "Hora de inicio"
 
 msgid "END_TIME_PROGRAM"
-msgstr "Heure de fin"
+msgstr "Hora de fin"
 
 msgid "APPLY_PROGRAM"
-msgstr "Valider"
+msgstr "Validar"
 
 msgid "VALUE_ON_OFF"
-msgstr "Fonctionnement"
+msgstr "Funcionamiento"
 
 msgid "HUMI_WISHED"
-msgstr "Humidité voulue"
+msgstr "Humedad deseada"
 
 msgid "TEMP_WISHED"
-msgstr "Température voulue"
+msgstr "Temperatura deseada"
 
 msgid "VALUE_ON"
-msgstr "Marche"
+msgstr "Activar"
 
 msgid "VALUE_OFF"
-msgstr "Arrêt"
+msgstr "Parar"
 
 msgid "VALUE_REGUL"
-msgstr "Régulation"
+msgstr "Regulación"
 
 msgid "CURRENT_PLUG_PROGRAM"
-msgstr "Comportement actuel de la prise"
+msgstr "Actuación actual del enchufe"
 
 msgid "TIMEPICKER_SELECT_TIME"
-msgstr "Choisir une heure"
+msgstr "Elegir una hora"
 
 msgid "TIMEPICKER_TIME"
-msgstr "Temps"
+msgstr "Tiempo"
 
 msgid "TIMEPICKER_HOUR"
-msgstr "Heure"
+msgstr "Hora"
 
 msgid "TIMEPICKER_MINUTE"
-msgstr "Minute"
+msgstr "Minutos"
 
 msgid "TIMEPICKER_SECOND"
-msgstr "Seconde"
+msgstr "Segundos"
 
 msgid "TIMEPICKER_ENDDAY"
-msgstr "Fin de la journée"
+msgstr "Fin del día"
 
 msgid "TIMEPICKER_CLOSE"
-msgstr "Valider"
+msgstr "Cerrar"
 
 msgid "TIMEPICKER_BUTTON_TEXT"
-msgstr "Choisir l\'heure"
+msgstr "Elegir la hora"
 
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
-msgstr "Choisir la date"
+msgstr "Elegir la fecha"
 
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
-msgstr "Comportement de votre prise"
+msgstr "Actuación de vuestro enchufe"
 
 msgid "CHART_FORCE_ON_VALUE"
-msgstr "Marche forcée" 
+msgstr "Marcha forzada" 
 
 msgid "EXPORT_PROGRAM"
-msgstr "Exporter"
+msgstr "Exportar"
 
 msgid "IMPORT_PROGRAM"
-msgstr "Importer"
+msgstr "Importar"
 
 msgid "RESET_PROGRAM"
-msgstr "Re-initialiser"
+msgstr "Reinicializar"
 
 msgid "SUMARY_TITLE"
-msgstr "Résumé des actions pour la prise"
+msgstr "Resumen de las actuaciones del enchufe"
 
 msgid "SUMARY_ON"
-msgstr "Mise en marche de la prise"
+msgstr "Puesta en marcha del enchufe"
 
 msgid "SUMARY_OFF"
-msgstr "Mise hors tension de la prise"
+msgstr "Apagar el enchufe"
 
 msgid "SUMARY_HOUR"
-msgstr "à"
+msgstr "a las"
 
 msgid "EMPTY_ACTION"
-msgstr "Aucune action programmée"
+msgstr "Ninguna acción programada"
 
 msgid "SUMARY_REGUL_ON"
-msgstr "Régulation en marche"
+msgstr "Regulación en marcha"
 
 msgid "SUMARY_REGUL_OFF"
-msgstr "Régulation à l'arrêt"
+msgstr "Regulación parada"
 
 msgid "ADD_PLUG"
-msgstr "Ajouter une prise"
+msgstr "Añadir un enchufe"
 
 msgid "MAX_PLUG_REACHED"
-msgstr "Maximum de prises atteint"
+msgstr "Límite máximo de enchufe"
 
 msgid "REMOVE_PLUG"
-msgstr "Supprimer une prise"
+msgstr "Eliminar un enchufe"
 
 msgid "MIN_PLUG_REACHED"
-msgstr "Minimum de prises atteint"
+msgstr "Limite mínimo de enchufe"
 
 msgid "PLUG_ADDED"
-msgstr "Prise ajoutée avec succès"
+msgstr "Enchufe añadido con excito"
 
 msgid "PLUG_MAX_ADDED"
-msgstr "Vous avez atteint le nombre maximal de prises configurables"
+msgstr "Limite máximo de enchufes programables alcanzado"
 
 msgid "PLUG_MIN_ADDED"
-msgstr "Vous avez atteint le nombre minimal de prises configurables"
+msgstr "Limite mínimo de enchufes programables alcanzado"
 
 msgid "PLUG_REMOVED"
-msgstr "Prise supprimée avec succès"
+msgstr "Enchufe eliminado con excito"
 
 msgid "VALUE_REGUL_SECOND"
-msgstr "Régulation secondaire"
+msgstr "Regulación segundaria"
 
 msgid "SECOND_REGUL_ON"
-msgstr "Activée"
+msgstr "Activada"
 
 msgid "SECOND_REGUL_OFF"
-msgstr "Désactivée"
+msgstr "Desactivada"
 
 msgid "RESET_OLD_PROGRAM"
-msgstr "Effacer l'ancien programme"
+msgstr "Borrar el programa anterior"
 
 msgid "PROGRAM_NEW_ACTION"
-msgstr "Programmer une action"
+msgstr "Programar una acción"
 
 msgid "PROGRAM_PONCTUAL"
-msgstr "ponctuelle"
+msgstr "puntúale"
 
 msgid "PROGRAM_CYCLIC"
-msgstr "cyclique"
+msgstr "cíclico"
 
 msgid "REPEAT_EVERY"
-msgstr "Répéter toutes les"
+msgstr "Repetir cada"
 
 msgid "MANAGE_PROGRAM_INFOS"
-msgstr "Gestion de vos programmes"
+msgstr "Gestión de vuestros programas"
 
 msgid "TITLE_EXPORT_PROGRAM"
-msgstr "Exporter le programme de la prise courante"
+msgstr "Exportar el programa del enchufe activo"
 
 msgid "TITLE_IMPORT_PROGRAM"
-msgstr "Importer un programme pour la prise courante"
+msgstr "Importar un programa para el enchufe activo"
 
 msgid "TITLE_RESET_PROGRAM"
-msgstr "Effacer le programme de la prise"
+msgstr "Borrar el programa del enchufe"
 
 msgid "RESET_ALL_PROGRAM"
-msgstr "de toutes les prises"
+msgstr "de todos los enchufes"
 
 msgid "TITLE_ADD_PLUG"
-msgstr "Ajouter une prise à configurer"
+msgstr "Anadir un enchufe a programar"
 
 msgid "TITLE_REMOVE_PLUG"
-msgstr "Supprimer la dernière prise"
+msgstr "Eliminar el ultimo enchufe"
 
 msgid "RESET_CONFIRM_PROGRAM"
-msgstr "Êtes-vous sûr de vouloir ré-initialiser le programme pour la/les prise(s) sélectionnée(s)?"
+msgstr "Seguro de reinicializar el programa para el/los enchufe(s) seleccionado(s)?"
 
 msgid "DATA_LABEL"
 msgstr "Afficher les états des prises selectionnées"
@@ -794,84 +795,84 @@ msgstr "Programme mis à jour mais le nombre maximal de changement, limité à 2
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
-msgstr "Exporter votre graphe"
+msgstr "Exportar el grafico"
 
 msgid "PRINT_HIGHCHART"
-msgstr "Imprimer le graphique"
+msgstr "Imprimir el grafico"
 
 msgid "EXPORT_HIGHCHART"
-msgstr "Exporter le graphique dans un document ou une image"
+msgstr "Exportar el grafico en un documento o una imagen"
 
 msgid "EXPORT_PNG"
-msgstr "Exporter au format PNG"
+msgstr "Exportar como PNG"
 
 msgid "EXPORT_JPEG"
-msgstr "Exporter au format JPEG"
+msgstr "Exportar como JPEG"
 
 msgid "EXPORT_PDF"
-msgstr "Exporter au format PDF"
+msgstr "Exportar como PDF"
 
 msgid "EXPORT_SVG"
-msgstr "Exporter au format SVG"
+msgstr "Exportar como SVG"
 
 msgid "RESET_ZOOM"
-msgstr "Annuler les différents zooms"
+msgstr "Cancelar los zoom"
 
 msgid "RESET_X_ZOOM"
-msgstr "Annuler le zoom temporel"
+msgstr "Cancelar el zoom temporal"
 
 msgid "RESET_ZOOM_TITLE"
-msgstr "Annuler le zoom"
+msgstr "Cancelar el zoom"
 
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
-msgstr "Bienvenue dans l'interface de configuration et d'utilisation de votre Cultibox. L'assistant va vous permettre facilement de configurer les programmes associés à vos prises, de configurer le type de prise et leur comportement. Cliquer sur le bouton <b>suivant</b> pour lancer l'assistant. Vous pouvez passer cette étape et configurer manuellement vos prises en cliquant sur le bouton <b>Fermer l'assistant</b>"
+msgstr "Bienvenido en la interfaz de configuración y de uso de vuestra Cultibox. El asistente de configuración permite fácilmente configurar los programas asociados a los enchufes, configurar el tipo de enchufe y su acción. Apretar el botón <b>siguiente</b> para arrancar el asistente. Se puede omitir esa etapa y configurar manualmente los enchufes apretando el botón <b>Cerrar el asistente </b>"
 
 msgid "CLOSE_WIZARD"
-msgstr "Fermer l'assistant"
+msgstr "Cerrar el asistente"
 
 msgid "WIZARD_INTRO"
-msgstr "Assistant de configuration des prises"
+msgstr "Asistente de configuración de los enchufes "
 
 msgid "WIZARD_CONFIGURE_PLUG_NUMBER"
-msgstr "Prise numéro"
+msgstr "Enchufe numero"
 
 msgid "WIZARD_NEXT_STEP"
-msgstr "Suivant >"
+msgstr "Siguiente>"
 
 msgid "WIZARD_PREVIOUS_STEP"
-msgstr "< Précédent"
+msgstr "< Precedente"
 
 msgid "WIZARD_FINISH_STEP"
-msgstr "Enregistrer et fermer l'assistant"
+msgstr "Salvar y cerrar el asistente "
 
 msgid "WIZARD_OTHER_STEP"
-msgstr "Enregistrer et configurer une autre prise"
+msgstr "Salvar y configurar otro enchufe "
 
 msgid "WIZARD_NEXT_PLUG"
-msgstr "Suivant >"
+msgstr "Siguiente >"
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximum</b>."
+msgstr "El enchufe numero 1 será configurado como lámpara. Este enchufe podrá alimentar una lámpara de <b>600 Vatios</b> como <b>máximo</b>.Sera posible configurar otros enchufes pero no podrán alimentar una lámpara cuya potencia será superior a <b>200 Vatios</b>."
 
 msgid "WIZARD_PLUG_LAMP"
-msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe afin de déterminer le fonctionnement de votre équipement."
+msgstr "Se puede ahora elegir la hora de arranque y de apago de la luz. Para eso, elegir una hora de arranque en cual la lámpara se pondrá en marcha y una hora de fin para el apago."
 
 msgid "WIZARD_PLUG_PROGRAM"
-msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de votre équipement. Pour cela choisissez une heure de départ où l'équipement se mettra en route et une heure de fin où l'équipement s'éteindra."
+msgstr "Se puede ahora elegir una hora de arranque y de apago del equipo. Para eso, elegir una hora de arranque y una hora de apago. "
 
 msgid "WIZARD_STEP"
-msgstr "Etape"
+msgstr "Etapa"
 
 msgid "WIZARD_CONFIGURE_OTHER_PLUG"
-msgstr "Configuration de la prise"
+msgstr "Configuracion del enchufe"
 
 msgid "WIZARD_OTHER_PLUG_NUMBER"
-msgstr "Vous allez maintenant configurer une nouvelle prise."
+msgstr "Ahora se configura un nuevo enchufe."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choisir le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour augmenter l'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une lampe</li><li>'autre' servant pour tous les autres type d'équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
+msgstr "Elegir el tipo de enchufe a usar: <ul class='list_class_wizard'><li>un calentador para aumentar la temperatura </li><li>un ventilador para bajar la temperatura</li><li>un humidificador para bajar el porcentaje de humedad</li><li>un deshumidificador para bajar la humedad </li><li>una lámpara</li><li>el tipo 'otro' sirve para cualquier otro equipamiento.<br /><br />Si se elige la configuración de una nueva lámpara , esa tiene que ser<b>menos potente que 200 Vatios</b>"
 
 msgid "START_TIME_LAMP"
 msgstr "Heure d'allumage de la lampe"
@@ -912,82 +913,82 @@ msgid "DISABLED_XML_FILE"
 msgstr "Aucun fichier XML détecté"
 
 msgid "WHAT_DIALOG_CALENDAR"
-msgstr "Que voulez-vous faire?"
+msgstr "Que quiere hacer?"
 
 msgid "REMOVE_DIALOG_CALENDAR"
-msgstr "Supprimer l'annotation"
+msgstr "Borrar el evento"
 
 msgid "CANCEL_DIALOG_CALENDAR"
-msgstr "Annuler"
+msgstr "Cancelar"
 
 msgid "EDIT_DIALOG_CALENDAR"
-msgstr "Editer l'annotation"
+msgstr "Editar el evento"
 
 msgid "CREATE_DIALOG_CALENDAR"
-msgstr "Ajouter une annotation"
+msgstr "Crear un evento"
 
 msgid "CALENDAR_SUBJECT"
-msgstr "Sujet"
+msgstr "Sujeto"
 
 msgid "CALENDAR_COLOR"
-msgstr "Choisir une couleur"
+msgstr "Elegir un color"
 
 msgid "CALENDAR_REMARK"
-msgstr "Remarque"
+msgstr "Comentario"
 
 msgid "CALENDAR_START_DATE"
-msgstr "Date de départ (AAAA-MM-JJ)"
+msgstr "Fecha de inicio (AAAA-MM-DD)"
 
 msgid "CALENDAR_STOP_DATE"
-msgstr "Date de fin (AAAA-MM-JJ)"
+msgstr "Fecha de fin (AAAA-MM-DD)"
 
 msgid "MANAGE_CALENDAR"
-msgstr "Gestion des annotations"
+msgstr "Gestionar el evento"
 
 msgid "SAVE_DIALOG_CALENDAR"
-msgstr "Sauvegarder"
+msgstr "Grabar"
 
 msgid "TODAY"
-msgstr "Aujourd'hui"
+msgstr "Hoy"
 
 msgid "SUBJECT_START"
-msgstr "Début de culture"
+msgstr "Inicio de Cultura"
 
 msgid "SUBJECT_FERTILIZERS"
-msgstr "Engrais"
+msgstr "Abonos"
 
 msgid "SUBJECT_WATER"
-msgstr "Changement d'eau"
+msgstr "Cambio de agua"
 
 msgid "SUBJECT_BLOOM"
-msgstr "Floraison"
+msgstr "Floración"
 
 msgid "SUBJECT_HARVEST"
-msgstr "Récolte"
+msgstr "Cosecha"
 
 msgid "SUBJECT_OTHER"
-msgstr "Autre"
+msgstr "Otro"
 
 msgid "DAY01"
-msgstr "Lundi"
+msgstr "Lunes"
 
 msgid "DAY02"
-msgstr "Mardi"
+msgstr "Martes"
 
 msgid "DAY03"
-msgstr "Mercredi"
+msgstr "Miércoles"
 
 msgid "DAY04"
-msgstr "Jeudi"
+msgstr "Jueves"
 
 msgid "DAY05"
-msgstr "Vendredi"
+msgstr "Viernes"
 
 msgid "DAY06"
-msgstr "Samedi"
+msgstr "Sábado"
 
 msgid "DAY07"
-msgstr "Dimanche"
+msgstr "Domingo"
 
 msgid "D01"
 msgstr "Lun"
@@ -996,28 +997,28 @@ msgid "D02"
 msgstr "Mar"
 
 msgid "D03"
-msgstr "Mer"
+msgstr "Mier"
 
 msgid "D04"
-msgstr "Jeu"
+msgstr "Jue"
 
 msgid "D05"
-msgstr "Ven"
+msgstr "Vier"
 
 msgid "D06"
-msgstr "Sam"
+msgstr "Sab"
 
 msgid "D07"
-msgstr "Dim"
+msgstr "Dom"
 
 msgid "MANAGE_RESET_CALENDAR"
-msgstr "Supprimer toutes les annotations enregistrées"
+msgstr "Borrar todos los eventos del calendario"
 
 msgid "RESET_CONFIRM_CALENDAR"
-msgstr "Êtes-vous sûr de vouloir supprimer tous les événements enregistrés dans le calendrier?"
+msgstr "Seguro de querer borrar todos los eventos grabados en el calendario?"
 
 msgid "VALID_DELETE_CALENDAR"
-msgstr "Calendrier supprimé avec succès"
+msgstr "Calendario borrado con excito"
 
 msgid "VALID_ADD_CALENDAR"
 msgstr "Calendrier mis à jour avec le programme selectionné"
@@ -1049,100 +1050,100 @@ msgstr "Croissance + Floraison"
 
 # For the cost part:
 msgid "SELECT_START_DAY"
-msgstr "Jour de départ (AAAA-MM-JJ)"
+msgstr "Día de inicio (AAAA-MM-DD)"
 
 msgid "SELECT_END_DAY"
-msgstr "Jour de fin (AAAA-MM-JJ)"
+msgstr "Día de fin (AAAA-MM-DD)"
 
 msgid "COST_PRICE_COMPUTE"
-msgstr "Calcul du coût de votre installation"
+msgstr "Calculo del coste de su instalación"
 
 msgid "COST_PRICE_COMPUTE_GRAPH"
-msgstr "Coût de votre installation" 
+msgstr "Coste de su instalación" 
 
 msgid "COST_PRICE_FOR_DAY"
-msgstr "pour le"
+msgstr "para el"
 
 msgid "COST_PRICE_TIME"
-msgstr "pour la période du"
+msgstr "para el periodo de"
 
 msgid "COST_PRICE_TO"
-msgstr "au"
+msgstr "hasta"
 
 msgid "INSTALLATION_PRICE"
-msgstr "Prix de l\'installation (en euros)"
+msgstr "Precio de la instalación (en euros)"
 
 msgid "SELECT_PRICE_PLUG"
-msgstr "Afficher le prix"
+msgstr "Enseñar el precio"
 
 msgid "PRICE_ALL_PLUG"
-msgstr "pour toutes les prises"
+msgstr "para todos los enchufes"
 
 msgid "PRICE_DISTINCT_ALL_PLUG"
-msgstr "par prise"
+msgstr "por enchufe"
 
 msgid "PRICE_FOR_PLUG"
-msgstr "pour la prise"
+msgstr "para el enchufe"
 
 msgid "PRICE_SELECT_ALL_PLUG"
-msgstr "Pour toutes vos prises"
+msgstr "Para todos sus enchufes "
 
 msgid "REAL_PRICE"
-msgstr "Prix réel"
+msgstr "Precio real"
 
 msgid "THEORICAL_PRICE"
-msgstr "Prix théorique maximal"
+msgstr "Precio teórico máximum (sin regulación) "
 
 msgid "SUMARY_COST_TITLE"
-msgstr "Résumé de la configuration"
+msgstr "Resumen de la configuración"
 
 msgid "EMPTY_COST_INFOS"
-msgstr "Pas d'informations disponibles"
+msgstr "Ninguna información disponible"
 
 msgid "SUMARY_COST_TYPE"
-msgstr "Abonnement"
+msgstr "Subscripción"
 
 msgid "SUMARY_HP_HC"
-msgstr "Heures pleines/creuses"
+msgstr "Hora con precio entero/reducido "
 
 msgid "SUMARY_COST_PRICE"
-msgstr "Prix du kilowattt-heure"
+msgstr "Precio del KVatios-hora"
 
 msgid "SUMARY_COST_PRICE_HC"
-msgstr "Prix en heures creuses (kwh)"
+msgstr "Precio en hora con precio reducido (kvh)"
 
 msgid "SUMARY_COST_PRICE_HP"
-msgstr "Prix en heures pleines (kwh)"
+msgstr " Precio en hora con precio entero (kvh)"
 
 msgid "SUMARY_START_HC"
-msgstr "Départ des heures creuses"
+msgstr "Inicio de las horas con precio reducido"
 
 msgid "SUMARY_STOP_HC"
-msgstr "Fin des heures creuses"
+msgstr "Final de las horas con precio reducido"
 
 msgid "CONFIGURE_COST_TYPE"
-msgstr "Type d'abonnement électrique"
+msgstr "Tipo de tarifa eléctrica"
 
 msgid "COST_STANDARD"
-msgstr "Standard"
+msgstr "Estándar"
 
 msgid "COST_HPC"
-msgstr "Heure pleine/creuse"
+msgstr "Hora con precio entero/reducido"
 
 msgid "CONFIGURE_COST_PRICE"
-msgstr "Prix du kilowatt-heure"
+msgstr "Precio del KVatio-hora"
 
 msgid "CONFIGURE_COST_PRICE_HP"
-msgstr "Prix en heure pleine"
+msgstr "Tarifa en hora con precio entero"
 
 msgid "CONFIGURE_COST_PRICE_HC"
-msgstr "Prix en heure creuse"
+msgstr "Tarifa en hora con precio reducido"
 
 msgid "CONFIGURE_START_HC"
-msgstr "Début des heures creuses: (HH:MM)"
+msgstr "Inicio de las horas con precio reducido: (HH:MM)"
 
 msgid "CONFIGURE_STOP_HC"
-msgstr "Fin des heures creuses: (HH:MM)"
+msgstr "Fin de las horas con precio entero: (HH:MM)"
 
 msgid "PROGRESS_COST_REAL"
 msgstr "Calcul du coût réel en cours"
@@ -1171,54 +1172,54 @@ msgstr "Calcul du coût théorique réalisé avec succés"
 
 # For the historic part:
 msgid "TITLE_HISTORIC"
-msgstr "Historique de vos 100 dernières actions"
+msgstr "Histórico de las últimas 100 acciones"
 
 msgid "RESET_HISTORIC"
-msgstr "Effacer l'historique"
+msgstr "Borrar el histórico"
 
 msgid "RESET_CONFIRM_HISTORIC"
-msgstr "Êtes-vous sûr de vouloir supprimer l'historique de vos actions?"
+msgstr "Seguro de querer borrar el histórico de acciones?"
 
 msgid "VALID_DELETE_HISTORIC"
-msgstr "Historique de vos actions supprimé avec succès"
+msgstr "Histórico de acciones borrado con excito"
 
 msgid "NO_HISTORIC_VALUE"
-msgstr "Aucune action enregistrée"
+msgstr "Ninguna acción guardada"
 
 msgid "WIZARD_PAGE"
-msgstr "Onglet du Wizard"
+msgstr "Pestaña del asistente"
 
 msgid "PROGRAM_PAGE"
-msgstr "Onglet des Programmes"
+msgstr "Pestaña de los programas"
 
 msgid "PLUG_PAGE"
-msgstr "Onglet des prises"
+msgstr "Pestaña de los enchufes"
 
 msgid "WELCOME_PAGE"
-msgstr "Page principale"
+msgstr "Página principal "
 
 msgid "LOGS_PAGE"
-msgstr "Page des logs"
+msgstr " Página de los logs "
 
 msgid "CALENDAR_PAGE"
-msgstr "Onglet du calendrier"
+msgstr "Pestaña del calendario"
 
 msgid "COST_PAGE"
-msgstr "Onglet des coûts"
+msgstr "Pestaña de los costes"
 
 msgid "CONFIGURATION_PAGE"
-msgstr "Onglet de configuration"
+msgstr "Pestaña de configuración"
 
 msgid "HISTORIC_EXPORT"
-msgstr "Export d'un programme"
+msgstr "Exportar un programa"
 
 
 # For the footer:
 msgid "VERSION"
-msgstr "Version"
+msgstr "Versión"
 
 msgid "LICENSE"
-msgstr "Licence"
+msgstr "Licencia"
 
 
 # For the errors or warnings part:
@@ -1229,13 +1230,13 @@ msgid "WARNING"
 msgstr "Avertissement(s)"
 
 msgid "ERROR_UPDATE_SQL"
-msgstr "Erreur dans la requête SQL UPDATE"
+msgstr "Error en la petición SQL UPDATE"
 
 msgid "ERROR_DELETE_SQL"
-msgstr "Erreur dans la requête SQL DELETE"
+msgstr "Error en la petición SQL DELETE"
 
 msgid "ERROR_SELECT_SQL"
-msgstr "Erreur dans la requête SQL SELECT"
+msgstr "Error en la petición SQL SELECT"
 
 msgid "EMPTY_DATA"
 msgstr "Aucun enregistrement de température et d'humidité à la date sélectionnée"
@@ -1244,103 +1245,103 @@ msgid "EMPTY_DATA_SENSOR"
 msgstr "Aucun enregistrement de température et d'humidité à la date sélectionnée pour le(s) capteur(s)"
 
 msgid "EMPTY_POWER_DATA"
-msgstr "Aucun enregistrement concernant la puissance consommée pour la date sélectionnée"
+msgstr "Ninguna grabación con respecto a potencia consumida para la fecha seleccionada."
 
 msgid "ERROR_FORMAT_DATE_DAY_START"
-msgstr "Jour de départ: erreur dans le format de la date (AAAA-MM-JJ)"
-
-msgid "ERROR_FORMAT_DATE_DAY_END"
-msgstr "Jour de fin: erreur dans le format de la date (AAAA-MM-JJ)"
+msgstr "Día de inicio: error en el formato de la fecha(AAAA-MM-DD)"
 
 msgid "ERROR_FORMAT_CALENDAR_DATE"
 msgstr "Erreur dans le format de la date (AAAA-MM-JJ)"
 
+msgid "ERROR_FORMAT_DATE_DAY_END"
+msgstr "Día de fin: error en el formato de la fecha(AAAA-MM-DD)"
+
 msgid "ERROR_FORMAT_DATE_DAY"
-msgstr "Jour à afficher: erreur dans le format (AAAA-MM-JJ)"
+msgstr "Día a ensenar: error en el formato (AAAA-MM-DD)"
 
 msgid "ERROR_FORMAT_DATE_MONTH"
-msgstr "Mois à afficher: erreur dans le format (MM)"
+msgstr " Mes a ensenar: error en el formato (MM)"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre configuration"
+msgstr "Ninguna tarjeta SD compatible Cultibox detectada para grabar su configuración"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "Aucune carte SD compatible Cultibox détectée pour charger vos fichiers de logs"
+msgstr " Ninguna tarjeta SD compatible Cultibox detectada para cargar sus ficheros de logs."
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre configuration"
+msgstr " Ninguna tarjeta SD compatible Cultibox detectada para grabar su configuración."
 
 msgid "ERROR_SD_CARD"
-msgstr "Aucune carte SD compatible Cultibox détectée, vérifier que votre carte soit correctement branchée"
+msgstr " Ninguna tarjeta SD compatible Cultibox detectada, comprobar que su tarjeta este correctamente conectada."
 
 msgid "ERROR_MISSING_VALUE_TIME"
-msgstr "Valeur manquante pour la date de début/fin du programme"
+msgstr "Falta valor de fecha de inicio/fin del programa"
 
 msgid "ERROR_FORMAT_TIME"
-msgstr "Erreur dans le format de l'heure: HH:MM:SS"
+msgstr "Error en el formato de la hora: HH:MM:SS"
 
 msgid "ERROR_FORMAT_TIME_START"
-msgstr "Heure de départ: erreur dans le format (HH:MM:SS)"
+msgstr "Hora de inicio: error en el formato (HH:MM:SS)"
 
 msgid "ERROR_FORMAT_TIME_END"
-msgstr "Heure de fin: erreur dans le format (HH:MM:SS)"
+msgstr " Hora de fin: error en el formato (HH:MM:SS)"
 
 msgid "ERROR_TIME_VALUE"
-msgstr "Erreur dans le format de l'heure: HH:MM"
+msgstr "Error en el formato de la hora: HH:MM"
 
 msgid "ERROR_SAME_TIME"
-msgstr "L'heure de départ et l'heure de fin doivent être différentes."
+msgstr "Las horas de inicio y de fin tienen que ser diferentes."
 
 msgid "ERROR_WRITE_SD"
-msgstr "Erreur durant l'écriture sur la carte SD"
+msgstr "Error en la grabación en la tarjeta SD"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "Valeur de tolérance: elle doit être comprise entre 0°C et 10°C"
+msgstr "Valor de tolerancia : tiene de estar entre 0°C et 10°C"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "Valeur de tolérance: elle doit être comprise entre 0&#37; et 25.5&#37;"
+msgstr " Valor de tolerancia : tiene de estar entre 0&#37; y 25.5&#37;"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "Erreur: la valeur rentrée doit être un nombre"
+msgstr "Error: el valor indicado tiene que ser un numero"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "Valeur de température: elle doit être comprise entre 5°C et 60°C"
+msgstr "Valor de temperatura: tiene que estar entre 5°C y 60°C"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "Valeur d'humidité: elle doit être comprise entre 10&#37; et 95&#37;"
+msgstr "Valor de humedad: tiene que estar entre 10&#37; y 95&#37;"
 
 msgid "ERROR_ALARM_VALUE"
-msgstr "La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100"
+msgstr "El valor de disparo del alarma tiene que ser superior a 0 y inferior a 100 "
 
 msgid "ERROR_REGUL_VALUE"
-msgstr "La valeur de déclenchement de la régulation doit être supérieure à 0 et inférieure à 100"
+msgstr "El valor de disparo de la regulación tiene que ser superior a 0 y inferior a 100"
 
 msgid "ERROR_POWER_VALUE"
-msgstr "Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt"
+msgstr "Error del valor de la potencia: tiene que ser superior o igual a 0 Vatios "
 
 msgid "ERROR_PRICE_VALUE"
-msgstr "Le prix du kilowatt-heure doit être supérieur à 0"
+msgstr "El precio del KVatio-hora tiene que ser superior a 0. "
 
 msgid "ERROR_PRICE_VALUE_HP"
-msgstr "Heure pleine: le prix du kilowatt-heure doit être supérieur à 0"
+msgstr "Hora con tarifa entero : el precio del KVatio-hora tiene que ser superior a 0"
 
 msgid "ERROR_PRICE_VALUE_HC"
-msgstr "Heure creuse: le prix du kilowatt-heure doit être supérieur à 0"
+msgstr "Hora con tarifa reducida : el precio del KVatio-hora tiene que ser superior a 0"
 
 msgid "ERROR_COST_PRICE_NULL"
-msgstr "Le prix du kilowatt-heure doit être supérieur à 0"
+msgstr "El precio del KVatio-hora tiene que ser superior a 0 "
 
 msgid "ERROR_DATE_INTERVAL"
-msgstr "Erreur dans les dates choisies: la date de départ doit être inférieure ou égale à la date de fin"
+msgstr "Error en las fechas elegidas: la fecha de inicio tiene que ser inferior o igual a la hora de fin "
 
 msgid "ERROR_UPLOADED_FILE"
-msgstr "Erreur lors du chargement du fichier des programmes"
+msgstr "Error en la subida de fichero de los programas "
 
 msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
-msgstr "Erreur lors du chargement des données du fichier des programmes, vérifier que le fichier est au bon format"
+msgstr "Error en la subida de los datos del fichero de los programas , comprobar el formato del fichero "
 
 msgid "ERROR_REMOTE_UPDATE_FILE"
-msgstr "Impossible d'accéder au fichier des mises à jour, vérifier votre configuration"
+msgstr "Imposible de acceder al fichero de puesta al día , comprobar su configuración"
 
 msgid "ERROR_POWER_PLUG"
 msgstr "La puissance de la prise"
@@ -1355,10 +1356,10 @@ msgid "ERROR_POWER_PLUGS"
 msgstr "La puissance des prises"
 
 msgid "ERROR_HPC_TIME_NULL"
-msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configurée, vous pouvez la configurer"
+msgstr "La hora de inicio o fin de las horas con tarifa reducida/reducida no está configurada, se puede configurar "
 
 msgid "ERROR_COPY_TPL"
-msgstr "Impossible de copier le fichier empty_file_64.tpl sur votre carte SD"
+msgstr "Imposible de copiar el fichero empty_64.tpl en su tarjeta SD "
 
 msgid "ERROR_COPY_FILE"
 msgstr "Erreur lors de la copie d'un fichier"
@@ -1376,28 +1377,28 @@ msgid "ERROR_COPY_INDEX"
 msgstr "Erreur lors de la copie du fichier index"
 
 msgid "ERROR_COMPAT_BROWSER"
-msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez sûrement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accessibles. Voici la liste des navigateurs officiellement supportés:<br /><ul class='list_class'><li>Mozilla Firefox (version 3 et supérieure)</li><li>Internet Explorer (version 7 et supérieure)</li><li>Google Chrome (Toutes versions)</li><li>Max Os X Safari (version 5 et supérieure)</li></ul>"
+msgstr "Su navegador no parece compatible con el programa Cultibox. Se podrá usar este programa pero algunas funciones no funcionarán. Aquí una lista de los navegadores compatibles:<br /><ul class='list_class'><li>Mozilla Firefox (versión 3 et más)</li><li>Internet Explorer (version 7 y más)</li><li>Google Chrome (Todas versiones)</li><li>Max Os X Safari (versión 5 y más)</li></ul>"
 
 msgid "ERROR_REMOTE_SITE"
-msgstr "Impossible de s'assurer de la présence de mises à jour, vérifier que votre connexion internet fonctionne correctement"
+msgstr "Imposible de asegurarse de la presencia actualizaciones, comprobar su conexión internet."
 
 msgid "ERROR_WRITE_SD_PLUGCONF"
-msgstr "Erreur lors de l'écriture de la configuration des prises sur la carte SD"
+msgstr "Error en la grabación de la configuración de los enchufes en la tarjeta SD "
 
 msgid "ERROR_WRITE_SD_PLUGA"
-msgstr "Erreur lors de l'écriture du fichier d'adresse des prises sur la carte SD"
+msgstr "Error en la grabación del fichero de dirección de los enchufes en su tarjeta SD "
 
 msgid "ERROR_WRITE_SD_CONF"
-msgstr "Erreur lors de l'écriture des fichiers de configuration sur la carte SD"
+msgstr " Error en la grabación de los ficheros de configuración en su tarjeta SD"
 
 msgid "ERROR_WRITE_CALENDAR"
-msgstr "Erreur lors de l'écriture du calendrier sur la carte SD"
+msgstr " Error en la grabación del fichero de calendario en su tarjeta SD"
 
 msgid "ERROR_WRITE_PROGRAM"
-msgstr "Erreur lors de l'écriture des programmes sur la carte SD"
+msgstr " Error en la grabación de los programas en su tarjeta SD"
 
 msgid "ERROR_RESET_PROGRAM"
-msgstr "Erreur lors de la remise à zéro du(des) programme(s)"
+msgstr "Error en el reseteo del o de los programas"
 
 msgid "ERROR_MINIMAL_TIME"
 msgstr "Le temps minimal autorisé est de 5 minutes"
@@ -1411,79 +1412,79 @@ msgstr "Erreur lors de l'enregistrement du calendrier à partir du programme sel
 
 # For the informations part:
 msgid "CLOSE_CONFIRM"
-msgstr "Annuler"
+msgstr "Cancelar"
 
 msgid "CONFIRMATION"
-msgstr "Confirmation"
+msgstr "Validar"
 
 msgid "HERE"
-msgstr "ici"
+msgstr "Aquí"
 
 msgid "WIZARD"
-msgstr "Assistant"
+msgstr "Asistente"
 
 msgid "CLASSIC"
-msgstr "Classique"
+msgstr "Clásico"
 
 msgid "INFO_SD_CARD"
-msgstr "Une carte SD compatible Cultibox est branchée"
+msgstr "Una tarjeta compatible con la Cultibox está conectada"
 
 msgid "INFO_PLUG_CULTIBOX_CARD"
-msgstr "Vous pouvez maintenant connecter la carte SD dans la Cultibox."
+msgstr "Se puede ahora conectar su tarjeta SD a la Cultibox."
 
 msgid "VALID_UPDATE_CONF"
-msgstr "Configuration mise à jour avec succès"
+msgstr "Configuración actualizada con excitó"
 
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
-msgstr "Configuration mise à jour avec succès dans le logiciel."
+msgstr "Configuración actualizada con excitó en el programa."
 
 msgid "VALID_UPDATE_PROGRAM"
-msgstr "Programmes mis à jour avec succès"
+msgstr "Programas actualizados con excitó"
 
 msgid "VALID_IMPORT_PROGRAM"
-msgstr "Programme importé avec succès"
+msgstr "Programa importado con excitó"
 
 msgid "VALID_DELETE_LOGS"
-msgstr "Suppréssion des logs effectuée avec succès"
+msgstr "Base de Logs borrado con excitó"
 
 msgid "VALID_RESET_CARD"
-msgstr "Carte formatée avec succès"
+msgstr "Tarjeta formateada con excitó"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la Cultibox pour que cela soit effectif si vous avez fini vos paramètrages"
+msgstr "Programas actualizados con excitó! Se puede sacar su tarjeta SD y colocar la en su Cultibox si la configuración está acabada."
 
 msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "Fichiers de logs des 31 derniers jours enregistrés avec succès"
+msgstr "Fichero de los logs de los 31 últimos días grabado con excitó"
 
 msgid "VALID_LOAD_LOG"
-msgstr "Fichiers de logs des derniers mois enregistrés avec succès"
+msgstr "Ficheros de los logs de los últimos meses grabados con excitó"
 
 msgid "VALID_AUTO_LOAD_LOG"
 msgstr "Fichiers de logs des 31 derniers jours enregistrés avec succès"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "Programme mis à jour avec succès"
+msgstr "Programa actualizado con excitó"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici"
+msgstr "Se puede usar el asistente para configurar los enchufes y sus programas apretando aquí"
 
 msgid "WIZARD_DISABLE_FUNCTION"
-msgstr "Vous pouvez utiliser l'interface de configuration classique en cliquant ici"
+msgstr "Se puede usar la interfaz de configuración clásica apretando aquí"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "Programme(s) réinitialisé(s) avec succès"
+msgstr "Programa(s) reseteado(s) con excitó"
 
 msgid "WAITING_LOG"
-msgstr "Merci de patienter quelques instants durant le chargement des logs..."
+msgstr "Esperar unos segundos la subida de los logs..."
 
 msgid "UPDATED_PROGRAM"
-msgstr "Vos programmes/configuration des prises/configuration de la Cultibox n'étaient pas à jour sur votre carte, la mise à jour a été exécuté"
+msgstr "Sus programas no estaban actualizados , se ha realizado una actualización. "
 
 msgid "INFO_UPDATE_AVAILABLE"
-msgstr "Une mise à jour est disponible pour passer vers une version plus récente en cliquant"
+msgstr "Una actualización está disponible para pasar a la versión: "
 
 msgid "STILL_LOG_FILE"
-msgstr "Il reste des fichiers des données de température, d'humidité ou de puissance plus anciens à charger, pour cela utilisez le bouton 'importer les logs'"
+msgstr "Quedan ficheros más antiguos a subir, apretar el botón 'importar los logs'"
 
 msgid "MESSAGE_BOX"
 msgstr "Messages du logiciel"
@@ -1494,91 +1495,92 @@ msgid "TOOLTIP_SEND_INFOS"
 msgstr "En activant cette option, vous permettez l'envoie d'informations sur un site distant afin d'aider au développement et à la correction d'erreurs du système Cultibox. Les informations envoyées concernent: la version du logiciel, le type de votre navigateur, les versions des firmwares de la Cultibox et votre type de système d'exploitation"
 
 msgid "TOOLTIP_VALUE"
-msgstr "La Cultibox va éteindre ou allumer la prise pour atteindre cette valeur."
+msgstr "La Cultibox va a apagar o encender el enchufe para alcanzar este valor."
 
 msgid "TOOLTIP_POWER"
-msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consommation de votre installation, son prix..."
+msgstr "La potencia del equipo conectado. Llenar este campo permite calcular el consumo de su instalación , su precio… "
 
 msgid "TOOLTIP_POPUP"
-msgstr "Les messages affichés par l'interface sont par défaut affichés dans une boite de dialogue. Cette option vous permet de désactiver/activer ces boites de dialogue."
+msgstr "Los mensajes enseñados en la interfaz están por defecto presentados en una ventana de dialogo. Esta opción permite activar o desactivar estas ventanas de dialogo."
 
 msgid "TOOLTIP_RECORD_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les données de température et d'hygrométrie."
+msgstr "Esta opción permite configurar la frecuencia con cual la Cultibox graba los datos de temperatura y de hidrometría."
 
 msgid "TOOLTIP_POWER_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les valeurs de consommation d'énergie."
+msgstr "Esta opción permite configurar la frecuencia con cual la Cultibox graba los datos de consumo de energía."
 
 msgid "TOOLTIP_PLUG_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle sera mis à jour l'état (Marche/Arrêt) de vos prises."
+msgstr "Esta opción permite configurar la frecuencia de actualización del estado (activo o inactivo ) de sus enchufes."
 
 msgid "TOOLTIP_WITHOUT_SD"
-msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."
+msgstr "Sin tarjeta SD conectado a su Cultibox, su configuración estará guardado en el programa pero no en la Cultibox. Para que su configuración sea efectiva , habrá que conectar una tarjeta SD, guardar su configuración o cargar de nuevo la pagina y conectar esta tarjeta SD en la Cultibox."
 
 msgid "TOOLTIP_WITHOUT_SD_LOG"
-msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox concernant la température et l'hygrométrie ne pourront pas être affichés et sauvegardés. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
+msgstr "Sin tarjeta SD conectado , los ficheros guardados por su Cultibox de temperatura y hidrometría no se podrán enseñar o guardar. Para subir su nuevos ficheros logs, habrá que conectar una tarjeta SD y cargar de nuevo esta página. 
+"
 
 msgid "TOOLTIP_POWER_LOG"
-msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
+msgstr "Esta opción calcula y enseña la potencia consumida para un enchufe determinado. Para que eso funcione, hay que llenar el campo ‘potencia’ en la parte de configuración de los enchufes."
 
 msgid "TOOLTIP_LOG_PROGRAM"
-msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la Cultibox et le comportement théorique de la prise."
+msgstr "Esta opción permite enseñar el programa de un enchufe con el fin de comparar los datos grabados por la Cultibox y el funcionamiento teórico de este enchufe."
 
 msgid "TOOLTIP_PLUG_TOLERANCE"
-msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation. Par exemple, si vous avez rentré une valeur de régulation de 22°C pour un chauffage et que la tolérance est de 2°C, le chauffage sera mis en marche/arrêt entre 20°C et 24°C (votre régulation +/- la tolérance)"
+msgstr "La tolerancia de un enchufe permite definir la precisión de los datos de regulación. Por ejemplo , si se entra un valor de regulación de 22°C para un calentamiento y una tolerancia de 2°C, el calentamiento se pondrá activo/inactivo entre 20°C y 24°C (regulación +/- la tolerancia)"
 
 msgid "TOOLTIP_PLUG_REGUL"
-msgstr "La régulation secondaire a un fonctionnement compliqué et différent de la régulation principale. Veuillez bien lire la documentation avant de l'activer pour une prise. Si vous désirez piloter une prise pour qu'elle régule une condition climatique, il n'est pas nécéssaire d'activer la régulation secondaire."
+msgstr "la regulación segundaria tiene un funcionamiento complejo y distinto de la regulación principal. Leer la documentación antes de activarla para un enchufe . Si se desea controlar un enchufe para una regulación climática , no es necesario activar una regulación segundaria."
 
 msgid "TOOLTIP_COST_PRICE"
-msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le prix de  revient de votre installation dans le menu 'Coût'"
+msgstr "Precio del KVatio-hora. Llenar este campo permite calcular el precio de su instalación en el menú 'Coste'"
 
 msgid "TOOLTIP_FAKE_LOG_DATA"
-msgstr "Aucune donnée n'est présente dans la base pour le moment, les logs affichés le sont à titre d'exemple et ne correspondent pas à l'enregistrement des données de votre installation"
+msgstr "Ningún dato presente en la base, los logs ensenados son solo ejemplos y no corresponden a la grabación de datos de su instalación."
 
 msgid "TOOLTIP_CHECK_UPDATE"
-msgstr "Vérifier si des mises à jour sont disponibles et vous propose de les télécharger le cas échéant"
+msgstr "Comprobar si las actualizaciones están disponibles y si se pueden descargar."
 
 msgid "TOOLTIP_COST_TYPE"
-msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommez."
+msgstr "Su instalación eléctrica se puede configurar de modo estándar: usted paga el KVatio-hora al mismo precio cual sea la hora del día. Se puede definir su instalación como ‘tarifa alta/tarifa baja’: el precio del KVatio-hora cambia según la hora del cunsumo."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "La carte SD sélectionnée sera rendue compatible Cultibox. Pour cela les fichiers de configuration des prises, des programmes et de la Cultibox seront régénérés en fonction de vos paramètres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déjà présents sur votre carte SD ils peuvent être perdus lors du processus<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
+msgstr "La tarjeta SD seleccionada se volverá compatible con Cultibox. Para eso, los ficheros de configuración de los enchufes, de los programas y de la Cultibox estarán generados según sus parámetros actual y los ficheros conteniendo sus futuros logs estarán establecidos. Si existen logs en su tarjeta, se pueden perder<br /><b><i>Nota: </i></b>para que su tarjeta este reconocida por la Cultibox, tiene que estar formateada en FAT16 y no puede pasarse de los 2Go"
 
 msgid "TOOLTIP_RESET_LOG"
-msgstr "En cliquant sur ce bouton toutes vos données des logs enregistrés seront supprimées. Cela peut être réalisé à la fin d'une culture, si vos logs ne vous sont plus utiles et que vous souhaitez libérer de l'espace sur votre ordinateur"
+msgstr "Apretando este botón ,todos los datos estarán borrado. Se puede realizar al final de una cultura, y si los logs no son más útiles y que se quiere liberar espacio en su ordenador."
 
 msgid "TOOLTIP_STATE_PLUG"
-msgstr "Vous pouvez désactiver les prises que vous ne voulez pas utiliser. Le logiciel n'affichera pas les informations relatives aux prises désactivées"
+msgstr "Se puede desactivar los enchufes que no se quiere usar. El programa no enseñara los datos relacionados con los enchufes inactivos."
 
 msgid "TOOLTIP_MAX_POWER_PLUG_3500"
-msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 600W"
+msgstr "El enchufe 3500W permite controlar los elementos ingentes en energía. Los 3500W anunciados corresponden a una potencia resistiva pura, por ejemplo un calentamiento. Si se conecta una lámpara HPS o MH en este enchufe, la potencia máxima autorizada es de 600W"
 
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
-msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
+msgstr "El enchufe 1000W permite controlar los elementes ingentes en energía. Los 1000W anunciados corresponden a una potencia resistiva pura, por ejemplo un calentamiento. Si se conecta una lámpara HPS o MH en este enchufe, la potencia máxima autorizada es de 150W"
 
 msgid "TOOLTIP_MAX_LOG_IMPORT"
-msgstr "Cette variable définit le nombre de mois qui seront scrutés pour rechercher des logs lors de l'appui sur le bouton 'Importer les logs' de l'onglet 'Logs'"
+msgstr "Esta variable define el número de meses que estarán analizado para la búsqueda de los logs apretando en el botón 'Importar los logs' de la pestaña 'Logs'"
 
 msgid "TOOLTIP_COST_START_TIME"
-msgstr "Date de départ du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
+msgstr "Fecha de inicio del cálculo del coste de su instalación. Se puede calcular el coste de su instalación sobre un periodo definido por la fecha de inicio y de fin de este formulario"
 
 msgid "TOOLTIP_COST_STOP_TIME"
-msgstr "Date de fin du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
+msgstr "Fecha de fin del cálculo del coste de su instalación. Se puede calcular el coste de su instalación sobre un periodo definido por la fecha de inicio y de fin de este formulario"
 
 msgid "TOOLTIP_REGUL_SENSOR"
-msgstr "La régulation d'une prise est réalisée en fonction des données relevées par un ou plusieurs capteurs. Ce champ vous permet de sélectionner ce(s) capteur(s) si vous avez activé les options avancées de régulation dans la partie configuration<br /><b>Note:</b> les capteurs non adaptés ne seront pas pris en compte lors du calcul, un capteur de PH/Ec par exemple ne sera pas utilisé pour calculer une moyenne de température."
+msgstr "La regulación de un enchufe se realiza en función de los datos medidos por un sensor. Este campo permite seleccionar un sensor."
 
 msgid "TOOLTIP_SECOND_REGUL_ENABLE"
-msgstr "Assurez-vous de bien avoir lu l'aide avant d'activer cette option. Il n'est pas nécessaire de l'activer pour qu'une prise régule la température ou l'humidité. Une fois activée, la régulation est configurable pour une prise différente du type 'Lampe' et 'Autre'. Les options de configuration de la régulation secondaire seront disponible dans l'onglet 'Prises'"
+msgstr "Asegurarse de leer bien la Ayuda antes de activar esta opción. No es necesario activarla para que un enchufe regule la temperatura o humedad."
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
-msgstr "Lorsque vous chargez la page des logs, le logiciel enregistre vos logs de température, humidité et puissance pour les 31 derniers jours. Cette fonctionnalité vous permet de charger des logs plus anciens en fonction du nombre de mois souhaité"
+msgstr "Cuando se carga la pagina de los logs, el programa graba los logs de temperatura, humedad y potencia para los últimos 31 días. Esta funcionalidad permite cargar logs mas antiguos en función del número de meses deseado."
 
 msgid "TOOLTIP_EXPORT_LOG_CSV"
-msgstr "Exporter vos informations de logs dans un fichier au format CSV"
+msgstr "Exportar sus datos de logs en un fichero con formato CSV"
 
 msgid "TOOLTIP_EXPORT_POWER_CSV"
-msgstr "Exporter vos informations de puissance dans un fichier au format CSV"
+msgstr "Exportar sus datos de potencia en un fichero con formato CSV"
 
 msgid "TOOLTIP_ADD_PLUG"
 msgstr "Cette fonctionnalité vous permet d'ajouter une prise dont vous pouvez directement configurer le programme sur cette page. Cette action revient à se déplacer dans la partie configuration et augmenter le nombre de prises de votre système"
@@ -1651,6 +1653,7 @@ msgstr "Si vous choisissez croissance, les trois premières semaines du programm
 
 #For the debug part:
 msgid "GENERATE_TIME"
-msgstr "Généré en"
+msgstr "Generado en"
+
 
 
