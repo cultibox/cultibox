@@ -42,25 +42,25 @@ include($this['path']->path('layouts:template.config.php'));
 	require_once 'main/libs/db_common.php'; 
 	require_once 'main/libs/utilfunc.php'; 
 ?>
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css" />
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css" />
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/fullcalendar.css" />
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery.colourPicker.css" />
+                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css?v=<?=@filemtime('main/libs/css/jquery-ui-1.8.19.custom.css')?>" />
+                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css?v=<?=@filemtime('main/libs/css/cultibox.css')?>" />
+                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/fullcalendar.css?v=<?=@filemtime('main/libs/css/fullcalendar.css')?>" />
+                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery.colourPicker.css?v=<?=@filemtime('main/libs/css/jquery.colourPicker.css')?>" />
 
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                <script type="text/javascript" src="main/libs/js/jquery-1.8.3.js"></script>
-                <script type="text/javascript" src="main/libs/js/jquery-ui-1.9.2.custom.js"></script>
-                <script type="text/javascript" src="main/libs/js/jquery-ui-1.9.2.custom.min.js"></script>
+                <script type="text/javascript" src="main/libs/js/jquery-1.8.3.js?v=<?=@filemtime('main/libs/js/jquery-1.8.3.js')?>"></script>
+                <script type="text/javascript" src="main/libs/js/jquery-ui-1.9.2.custom.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.js')?>"></script>
+                <script type="text/javascript" src="main/libs/js/jquery-ui-1.9.2.custom.min.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.min.js')?>"></script>
                 <!-- Javascript JQUERY libraries for cultibox components: calendar, datepicker, highcharts... -->
-                <script type="text/javascript" src="main/libs/js/highcharts.js"></script>
-                <script type="text/javascript" src="main/libs/js/exporting.js"></script>
-                <script type="text/javascript" src="main/libs/js/jquery-ui-timepicker-addon.js"></script>
+                <script type="text/javascript" src="main/libs/js/highcharts.js?v=<?=@filemtime('main/libs/js/main/libs/js/highcharts.js')?>"></script>
+                <script type="text/javascript" src="main/libs/js/exporting.js?v=<?=@filemtime('main/libs/js/main/libs/js/exporting.js')?>"></script>
+                <script type="text/javascript" src="main/libs/js/jquery-ui-timepicker-addon.js?v=<?=@filemtime('main/libs/js/jquery-ui-timepicker-addon.js')?>"></script>
                 <script type="text/javascript" src="main/libs/js/jquery.colourPicker.js"></script>
-	            <script type="text/javascript" src="main/libs/js/cultibox.js"></script>
-                <script type="text/javascript" src="main/libs/js/cultibox-utils.js"></script>
-                <script type="text/javascript" src="main/libs/js/fullcalendar.js"></script>
-                <script type="text/javascript" src="main/libs/js/jquery.blockUI.js"></script>
-                <script type="text/javascript" src="main/libs/js/scrollTo.js"></script>
+	            <script type="text/javascript" src="main/libs/js/cultibox.js?v=<?=@filemtime('main/libs/js/main/libs/js/cultibox.js')?>"></script>
+                <script type="text/javascript" src="main/libs/js/cultibox-utils.js?v=<?=@filemtime('main/libs/js/main/libs/js/cultibox-utils.js')?>"></script>
+                <script type="text/javascript" src="main/libs/js/fullcalendar.js?v=<?=@filemtime('main/libs/js/main/libs/js/fullcalendar.js')?>"></script>
+                <script type="text/javascript" src="main/libs/js/jquery.blockUI.js?v=<?=@filemtime('main/libs/js/main/libs/js/jquery.blockUI.js')?>"></script>
+                <script type="text/javascript" src="main/libs/js/scrollTo.js?v=<?=@filemtime('main/libs/js/main/libs/js/scrollTo.js')?>"></script>
 </head>
 
 <body id="page" class="page <?php echo $this['config']->get('body_classes'); ?>" data-config='<?php echo $this['config']->get('body_config','{}'); ?>'>
