@@ -1488,6 +1488,7 @@ msgstr "Il reste des fichiers des données de température, d'humidité ou de pu
 msgid "MESSAGE_BOX"
 msgstr "Messages du logiciel"
 
+
 # For the tooltip part:
 msgid "TOOLTIP_SEND_INFOS"
 msgstr "En activant cette option, vous permettez l'envoie d'informations sur un site distant afin d'aider au développement et à la correction d'erreurs du système Cultibox. Les informations envoyées concernent: la version du logiciel, le type de votre navigateur, les versions des firmwares de la Cultibox et votre type de système d'exploitation"

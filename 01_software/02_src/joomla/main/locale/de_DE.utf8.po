@@ -1249,11 +1249,11 @@ msgstr "Aucun enregistrement concernant la puissance consommée pour la date sé
 msgid "ERROR_FORMAT_DATE_DAY_START"
 msgstr "Jour de départ: erreur dans le format de la date (AAAA-MM-JJ)"
 
-msgid "ERROR_FORMAT_DATE_DAY_END"
-msgstr "Jour de fin: erreur dans le format de la date (AAAA-MM-JJ)"
-
 msgid "ERROR_FORMAT_CALENDAR_DATE"
 msgstr "Erreur dans le format de la date (AAAA-MM-JJ)"
+
+msgid "ERROR_FORMAT_DATE_DAY_END"
+msgstr "Jour de fin: erreur dans le format de la date (AAAA-MM-JJ)"
 
 msgid "ERROR_FORMAT_DATE_DAY"
 msgstr "Jour à afficher: erreur dans le format (AAAA-MM-JJ)"
