@@ -226,14 +226,23 @@ $substrat=array_unique($substrat);
 
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {
-    if($sock=@fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
-      if(check_update_available($version,$main_error)) {
+    if((!isset($_SESSION['UPDATE_CHECKED']))||(empty($_SESSION['UPDATE_CHECKED']))) {
+        if($sock=@fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
+            if(check_update_available($version,$main_error)) {
+                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a target='_blank' href=".$GLOBALS['WEBSITE'].">".__('HERE')."</a>";
+                $_SESSION['UPDATE_CHECKED']="True";
+            } else {
+                $_SESSION['UPDATE_CHECKED']="False";
+            }
+        } else {
+            $main_error[]=__('ERROR_REMOTE_SITE');
+            $_SESSION['UPDATE_CHECKED']="";
+        }
+    } else if(strcmp($_SESSION['UPDATE_CHECKED'],"True")==0) {
         $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a target='_blank' href=".$GLOBALS['WEBSITE'].">".__('HERE')."</a>";
-      }
-   } else {
-    $main_error[]=__('ERROR_REMOTE_SITE');
-   }
-}
+    }
+} 
+
 
 
 // Part for the calendar: if a cultibox SD card is present, the 'calendar' is updated into this SD card
