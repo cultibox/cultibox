@@ -378,8 +378,10 @@ $(document).ready(function() {
                 $.ajax({
                 cache: false,
                 url: "../../main/modules/external/position.php",
-                data: { WIDTH: width, POSITION_X: tmp[0], POSITION_Y: tmp[1] }
+                data: { WIDTH: width, POSITION_X: tmp[0], POSITION_Y: tmp[1], WIDTH: width, REDUCED: reduced }
                 });
+                reduced="False";
+                $(this).parent().find(".ui-dialog-buttonset .ui-button-text:eq(1)").text(REDUCE_button);
         }
     } });
                 $(".message").dialog().parent().css('position', 'fixed');
