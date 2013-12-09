@@ -449,11 +449,11 @@ function get_data_power($date="",$dateend="",$id=0,&$out,$short="") {
          if((!isset($dateend))||(empty($dateend))) {
             if(empty($short)) {
             $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by timestamp ASC, plug_number ASC
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") GROUP BY time_catch ORDER by timestamp ASC, plug_number ASC
 EOF;
             } else {
             $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") AND `record` != 0 ORDER by timestamp ASC, plug_number ASC
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") AND `record` != 0 GROUP BY time_catch ORDER by timestamp ASC, plug_number ASC
 EOF;
             }
          } else {
