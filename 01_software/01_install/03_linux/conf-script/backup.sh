@@ -30,7 +30,12 @@ echo "  * Exporting your current databae..."
 if [ $? -eq 0 ]; then
     echo "... cultibox: OK"
 else 
-    echo "==== Error during the backup of the cultibox database, exiting ===="
+    echo "==== Error during the backup of the cultibox database ===="
+    if [ -f $home/.cultibox/backup_cultibox.sql.old ]; then
+        rm -f $home/.cultibox/backup_cultibox.sql
+        mv $home/.cultibox/backup_cultibox.sql.old $home/.cultibox/backup_cultibox.sql
+    fi
+
     echo "... NOK"
     exit 1
 fi

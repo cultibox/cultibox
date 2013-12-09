@@ -5,7 +5,6 @@ set -e
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 home=`egrep "^$user_culti" /etc/passwd|awk -F":" '{print $6}'`
-error=0
 
 
 echo "-----------------------------------------------------------------"
@@ -35,7 +34,6 @@ if [ -f $home/.cultibox/backup_cultibox.sql ]; then
     echo "... OK"
 else
     echo "  * Missing $home/.cultibox/backup_cultibox.sql file..."
-    error=1
     echo "...NOK"
 fi
 
