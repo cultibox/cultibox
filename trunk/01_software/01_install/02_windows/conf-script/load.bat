@@ -16,11 +16,21 @@ if NOT %ERRORLEVEL% EQU 0  (
         echo ... OK"
 )
 
+:question
+SET /P ANSWER=Do you want to continue (Y/N)?
+if /i {%ANSWER%}=={y} (goto :yes)
+if /i {%ANSWER%}=={yes} (goto :yes)
+if /i {%ANSWER%}=={n} (goto :no)
+if /i {%ANSWER%}=={no} (goto :no)
+
+goto :question
+:no
+exit 0 
+
+:yes
 
 echo * Loading Cultibox database...
 If exist "%userprofile%\cultibox\backup_cultibox.sql" (
-        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891  -e "DROP DATABASE CULTIBOX;"
-        c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891  -e "CREATE DATABASE cultibox;"
         c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891  cultibox < "%userprofile%\cultibox\backup_cultibox.sql"
             if %ERRORLEVEL% EQU 0  (
                 echo ... OK

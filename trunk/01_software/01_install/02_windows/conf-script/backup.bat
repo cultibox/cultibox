@@ -21,7 +21,7 @@ if exist "%userprofile%\cultibox\backup_cultibox.sql" (
     move "%userprofile%\cultibox\backup_cultibox.sql" "%userprofile%\cultibox\backup_cultibox.sql.old"
 )
 echo    * Saving the database...
-C:\cultibox\xampp\mysql\bin\mysqldump.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" --no-create-db --no-create-info -h 127.0.0.1 --port=3891 cultibox > "%userprofile%\cultibox\backup_cultibox.sql"
+C:\cultibox\xampp\mysql\bin\mysqldump.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox > "%userprofile%\cultibox\backup_cultibox.sql"
 If not %ERRORLEVEL% EQU 0 (
     del "%userprofile%\cultibox\backup_cultibox.sql"
     echo .... NOK
