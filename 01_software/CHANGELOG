@@ -5,6 +5,7 @@ Cultibox (1.2.03) precise; urgency=low
     + Ajout d'un paramètre dépendant du dernier changement lors de l'appel des css et scripts js pour éviter de vider le cache à chaque mise à jour
     + Ajout d'une variable SESSION pour ne vérifier qu'une fois par session la présence de mise à jour et gagner en rapidité d'affichage des pages
     + Correction de la gestion de réduction/agrandissement de la boite de message quand on change la taille manuellement
+    + Ajout du min/max des courbes sur la page des logs
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun Dec  1 22:41:08 CET 2013
 

@@ -70,6 +70,7 @@ $select_power=getvar('select_power');
 $select_plug=getvar('select_plug');
 $startday=getvar('startday');
 $import_load=getvar('import_load');
+$resume_minmax="";
 if((!isset($import_load))||(empty($import_load))) {
     $import_load=2;
 }
@@ -398,11 +399,16 @@ if("$type" == "days") {
                 if(!empty($humidity)) {
                     $data_humi=get_format_graph($humidity,"log");
                 } 
+                format_minmax_sumary($startday,$main_error,$resume_minmax,$select_sensor);
+                if(!empty($resume_minmax)) {
+                    $resume_minmax="<p align='center'><b><i>".__('SUMARY_RESUME_MINMAX')." ".$startday.":</i></b></p>".$resume_minmax."<br />";
+                }
             } else {
                 $main_error[]=__('EMPTY_DATA');
             }
         } else {
             for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
+                format_minmax_sumary($startday,$main_error,$resume_minmax,$i);
                 get_graph_array($temperature,"temperature/100",$startday,$i,"False","0",$main_error);
 
                 if(!empty($temperature)) {
@@ -423,6 +429,9 @@ if("$type" == "days") {
             }
             if(isset($mess)) { 
                 $main_error[]=__('EMPTY_DATA_SENSOR').$mess;
+            }
+            if(!empty($resume_minmax)) {
+                $resume_minmax="<p align='center'><b><i>".__('SUMARY_RESUME_MINMAX')." ".$startday." (".__('ALL_SENSOR')."):</i></b></p>".$resume_minmax."<br />";
             }
         }
       } else {

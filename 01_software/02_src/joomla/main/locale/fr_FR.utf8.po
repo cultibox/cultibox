@@ -487,6 +487,20 @@ msgstr "Erreur dans le format de la date (AAAA-MM-JJ). Le jour de fin doit être
 msgid "DELETE_PROGRESS"
 msgstr "Progression de la suppréssion"
 
+msgid "SUMARY_MAX_TEMP"
+msgstr "Température maximale "
+
+msgid "SUMARY_MAX_HUMI"
+msgstr "Humidité maximale"
+
+msgid "SUMARY_MIN_TEMP"
+msgstr "Température minimale"
+
+msgid "SUMARY_MIN_HUMI"
+msgstr "Humidité minimale"
+
+msgid "SUMARY_RESUME_MINMAX"
+msgstr "Résumé des valeurs minimales et maximales pour le"
 
 # For the plugs part:
 msgid "PLUG"

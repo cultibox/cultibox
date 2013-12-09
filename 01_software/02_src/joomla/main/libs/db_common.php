@@ -3056,6 +3056,149 @@ EOF;
 // }}}
 
 
+// {{{ format_minmax_sumary()
+// ROLE format min/max sumary to be displayed in logs page
+// IN    $start         day to be seeked
+//       $out           error or warning messages
+//       $resume        string containing sumary formated
+//       $sensor        the selected sensor to be used
+//       $color_temp color of the temperature graph
+//       $color_humi color of the humidity graph
+// RET   sumary formated 
+function format_minmax_sumary($start="", &$out,&$resume="",$sensor=1,$color_temp="red",$color_humi="blue") {
+    if(empty($start)) {
+        return 0;
+    }
+
+    $startday=str_replace("-","",$start);
+    $startday=substr($startday,2,8);
+    
+    $sql_maxtemp = <<<EOF
+SELECT round(MAX(temperature)/100,2) as max_temp FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True";
+EOF;
+    $sql_maxhumi = <<<EOF
+SELECT round(MAX(humidity)/100,2) as max_humi FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True";
+EOF;
+
+ $sql_mintemp = <<<EOF
+SELECT round(MIN(temperature)/100,2) as min_temp FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True";
+EOF;
+    $sql_minhumi = <<<EOF
+SELECT round(MIN(humidity)/100,2) as min_humi FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True";
+EOF;
+
+
+    $db=db_priv_pdo_start();
+    try {
+        $sth=$db->prepare("$sql_maxtemp");
+        $sth->execute();
+        $res_maxtemp=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    try {
+        $sth=$db->prepare("$sql_maxhumi");
+        $sth->execute();
+        $res_maxhumi=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    try {
+        $sth=$db->prepare("$sql_mintemp");
+        $sth->execute();
+        $res_mintemp=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    try {
+        $sth=$db->prepare("$sql_minhumi");
+        $sth->execute();
+        $res_minhumi=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+    }
+
+    switch($color_temp) {
+       case 'blue': $color_temp=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$sensor-1];
+            break
+            ;;
+       case 'red': $color_temp=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$sensor-1];
+            break
+            ;;
+        case 'green': $color_temp=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$sensor-1];
+            break
+            ;;
+        case 'black': $color_temp=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$sensor-1];
+            break
+            ;;
+        case 'purple': $color_temp=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$sensor-1];
+            break
+            ;;
+    }
+
+    switch($color_humi) {
+       case 'blue': $color_humi=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$sensor-1];
+            break
+            ;;
+       case 'red': $color_humi=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$sensor-1];
+            break
+            ;;
+        case 'green': $color_humi=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$sensor-1];
+            break
+            ;;
+        case 'black': $color_humi=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$sensor-1];
+            break
+            ;;
+        case 'purple': $color_humi=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$sensor-1];
+            break
+            ;;
+    }
+        
+    if((count($res_maxtemp)>0)||(count($res_maxhumi)>0)) {
+        $resume=$resume."<br /><b><i>".__('SENSOR')." ".$sensor.":</i></b>";
+        if(count($res_mintemp)>0) {
+            foreach($res_mintemp as $result) {
+                $resume=$resume."<br />".__('SUMARY_MIN_TEMP').": <font color='".$color_temp."'><b>".$result['min_temp']."&deg;C </b></font>";
+            }
+        }
+
+        if(count($res_maxtemp)>0) {
+            foreach($res_maxtemp as $result) {
+                $resume=$resume."<br />".__('SUMARY_MAX_TEMP').": <font color='".$color_temp."'><b>".$result['max_temp']."&deg;C </b></font>";
+            }
+        }
+
+
+        if(count($res_minhumi)>0) {
+            foreach($res_minhumi as $result) {
+                $resume=$resume."<br />".__('SUMARY_MIN_HUMI').": <font color='".$color_humi."'><b>".$result['min_humi']."&#37; </b></font>";
+            }
+        }
+
+        if(count($res_maxhumi)>0) {
+            foreach($res_maxhumi as $result) {
+                $resume=$resume."<br />".__('SUMARY_MAX_HUMI').": <font color='".$color_humi."'><b>".$result['max_humi']."&#37; </b></font>";
+            }
+        }
+        $resume=$resume."<br />"; 
+
+    }
+}
+// }}}
+
+
 // {{{ get_cost_summary()
 // ROLE format cost configuration informations be displayed in a sumary
 // IN   out     error or warning messages
