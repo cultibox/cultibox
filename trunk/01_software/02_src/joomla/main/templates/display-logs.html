@@ -981,7 +981,7 @@ $(function () {
 <tr>
     <td class="left_log"></td>
     <td class="center_log"></td>
-    <td class="right_log"><?php if(strcmp("$second_regul","True")==0) { if((!empty($resume_regul))&&(isset($resume_regul))) { ?><img src="main/libs/img/resume.png" alt="" title="<?php echo $resume_regul; ?>" /><?php } } ?></td>
+    <td class="right_log"><?php if((!empty($resume_minmax))||(strcmp("$second_regul","True")==0)) { ?><img src="main/libs/img/resume.png" alt="" title="<?php if(!empty($resume_minmax)) { echo $resume_minmax; } if((!empty($resume_regul))&&(strcmp("$second_regul","True")==0)) { echo $resume_regul; } ?>" /><?php } ?></td>
 </tr>
 <tr>
     <td class="left_log">
