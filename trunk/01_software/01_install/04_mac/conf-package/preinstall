@@ -8,13 +8,13 @@ else
         rm -f /tmp/cultibox_upgrade
     fi
  
-    cat > /Applications/cultibox/xamppfiles/etc/my-extra.cnf << "EOF" 
+    if [ -d /Applications/cultibox ]; then
+        cat > /Applications/cultibox/xamppfiles/etc/my-extra.cnf << "EOF" 
 [client]
 user="root"
 password="cultibox"
 EOF
-
-    cat > /Applications/cultibox/run/get_version.sh << "EOF"
+        cat > /Applications/cultibox/run/get_version.sh << "EOF"
 #!/bin/bash
 
 set -e
@@ -38,10 +38,7 @@ else
 fi
 exit 0
 EOF
-
-    chmod +x /Applications/cultibox/run/get_version.sh
-
-    if [ -d /Applications/cultibox ]; then
+      chmod +x /Applications/cultibox/run/get_version.sh
       /Applications/cultibox/xamppfiles/xampp stop
       sleep 4
 
@@ -84,5 +81,16 @@ EOF
 
       /Applications/cultibox/xamppfiles/xampp stop
       sleep 4
+    else 
+        # Remaining process:
+        if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
+            for process in `ps aux|grep httpd| grep cultibox| awk -F" " '{print $2}'`; do
+                kill -9 $process
+            done
+
+            for process in `ps aux|grep mysql| grep cultibox| awk -F" " '{print $2}'`; do
+                kill -9 $process
+            done
+        fi
     fi
 fi
