@@ -146,11 +146,11 @@ function get_graph_array(&$res,$key,$startdate,$sensor=1,$fake="False",$limit=0,
     
    if(strcmp("$sensor","all")==0) {
         $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate}%" AND fake_log LIKE "{$fake}" GROUP BY timestamp ORDER BY time_catch ASC {$sql_limit}
+SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate}%" AND fake_log LIKE "{$fake}" GROUP BY time_catch ORDER BY time_catch ASC {$sql_limit}
 EOF;
 } else {
         $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate}%" AND fake_log LIKE "{$fake}" AND sensor_nb LIKE "{$sensor}" GROUP BY timestamp ORDER BY time_catch ASC {$sql_limit}
+SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate}%" AND fake_log LIKE "{$fake}" AND sensor_nb LIKE "{$sensor}" GROUP BY time_catch ORDER BY time_catch ASC {$sql_limit}
 EOF;
 }
 
