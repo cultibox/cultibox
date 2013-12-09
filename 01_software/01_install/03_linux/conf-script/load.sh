@@ -13,15 +13,20 @@ echo "              Cultibox load database script                    "
 echo "-----------------------------------------------------------------"
 echo ""
 
-if [ -f $home/.cultibox/backup_cultibox.bak ]; then
-    # To load a previous database dump: deletion of the current database, creation of the new database, import of the previous dump.
-    echo "  * Cultibox: deletion of the current database, creation of an empty database, import of your backup database..."
+if [ -f $home/.cultibox/backup_cultibox.sql ]; then
     # Test of the connection:
     /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SHOW TABLES;" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-        rm -Rf /opt/cultibox/var/mysql/cultibox
-        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox;"
-        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < $home/.cultibox/backup_cultibox.bak
+        yn=""
+        while [ "$yn" != "Yes" ] && [ "$yn" != "Y" ] && [ "$yn" != "y" ]; do
+            echo "Do you want to continue? (Y/N)"
+            read yn
+            if [ "$yn" == "No" ] || [ "$yn" == "N" ] || [ "$yn" == "n" ]; then
+                exit 0
+            fi
+        done
+        echo "  * Loading $home/.cultibox/backup_cultibox.sql file..."
+        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < $home/.cultibox/backup_cultibox.sql
     else
         echo "===== Error accessing cultibox database, exiting... ===="
         echo "... NOK"
@@ -29,33 +34,9 @@ if [ -f $home/.cultibox/backup_cultibox.bak ]; then
     fi
     echo "... OK"
 else
-    echo "  * Missing $home/.cultibox/backup_cultibox.bak file..."
+    echo "  * Missing $home/.cultibox/backup_cultibox.sql file..."
     error=1
     echo "...NOK"
 fi
 
-
-if [ -f $home/.cultibox/backup_joomla.bak ]; then
-    # To load a previous database dump: deletion of the current database, creation of the new database, import of the previous dump.
-    echo "  * Joomla: deletion of the current database, creation of an empty database, import of your backup database..."
-    # Test of the connection:
-    /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla -e "SHOW TABLES;" > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        rm -Rf /opt/cultibox/var/mysql/cultibox_joomla
-        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 -e "CREATE DATABASE cultibox_joomla;"
-        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox_joomla < $home/.cultibox/backup_joomla.bak
-    else
-        echo "===== Error accessing joomla database, exiting... ===="
-        echo "... NOK"
-        exit 1
-    fi
-    echo "... OK"
-else
-    echo "  * Missing $home/.cultibox/backup_joomla.bak file..."
-    echo "...NOK"
-    if [ $error -eq 1 ]; then
-        exit 2
-    fi
-fi
 exit 0
-
