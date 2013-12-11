@@ -640,7 +640,7 @@ product_array = <?php echo json_encode($product) ?>;
                 <select name="product" id="product">
                    <?php if(count($product)>0) { ?>
                         <?php foreach($product as $prod) { ?>
-                            <option value="<?php echo $prod['marque']." - ".$prod['periode']; ?>" <?php if(strcmp($prod['substrat'],$substrat[0])!=0) echo 'disabled'; ?>><?php echo $prod['marque']." - ".$prod['periode']." (".$prod['substrat'].")"; ?></option>
+                            <option value="<?php echo $prod['marque']." - ".$prod['periode']; ?>" <?php if(strcmp($prod['substrat'],reset($substrat))!=0) echo 'disabled'; ?>><?php echo $prod['marque']." - ".$prod['periode']." (".$prod['substrat'].")"; ?></option>
                         <?php } ?>
                     <?php } else { ?>
                             <option value="" disabled><?php echo __('DISABLED_XML_FILE'); ?></option>
