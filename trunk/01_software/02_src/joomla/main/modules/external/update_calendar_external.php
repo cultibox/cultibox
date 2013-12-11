@@ -69,116 +69,138 @@ if((isset($program_substrat))&&(!empty($program_substrat))&&(isset($program_prod
             if($handle = @opendir('../../xml')) {
                 $rss_file = file_get_contents("../../xml/".$file);
                 $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
+                $value=array();
                 
                 foreach ($xml as $tab) {
                     if(is_array($tab)) {
-                        foreach($tab as $val) {
-                            if(is_array($val)) {
-                                if((array_key_exists('title', $val))&&(array_key_exists('duration', $val))&&(array_key_exists('start', $val))&&(array_key_exists('content', $val))) {
-                                    if((!empty($val['title']))&&(!empty($val['content']))) {
+                        if((array_key_exists('title', $tab))&&(array_key_exists('duration', $tab))&&(array_key_exists('start', $tab))&&(array_key_exists('content', $tab))) {
+                           if((!empty($tab['title']))&&(!empty($tab['content']))) {
+                               $value[]=$tab;
+                            } 
+                        }
+                    }
+                }
 
-                                        if ($select_croissance == 'croi' && $val['start'] <= 14 
-                                            || $select_croissance == 'all'
-                                            || $select_croissance == 'flo' && $val['start'] > 14 ) {
+                if(count($value)==0) {
+                    foreach ($xml as $tab) {
+                        if(is_array($tab)) {
+                            foreach($tab as $val) {
+                               if(is_array($val)) {
+                                   if((array_key_exists('title', $val))&&(array_key_exists('duration', $val))&&(array_key_exists('start', $val))&&(array_key_exists('content', $val))) {
+                                       if((!empty($val['title']))&&(!empty($val['content']))) {
+                                           $value[]=$val;
+                                       }            
+                                   }
+                               }
+                            }
+                        }
+                    } 
+                }
+
+
+                if(count($value)>0) {
+                    foreach($value as $val) {
+                        if(is_array($val)) {
+                            if ($select_croissance == 'croi' && $val['start'] <= 14 
+                                || $select_croissance == 'all'
+                                || $select_croissance == 'flo' && $val['start'] > 14 ) {
 
                                             // Save start day in  $startDay
-                                            if(empty($val['start'])) {
-                                                $startDay = 0;
-                                            } else {
-                                                $startDay = $val['start'];
-                                            }
-                                            
-                                            // If user need only flo, remove 3 weeks to the programm  
-                                            if ($select_croissance == 'flo') {
-                                                $startDay = $startDay - 21;
-                                            }
-
-                                            $datestartTimestamp = strtotime($calendar_start);
-                                            $timestart = date('Ymd', strtotime('+'.$startDay.' days', $datestartTimestamp));
-
-                                            if(empty($val['duration'])) {
-                                                $val['duration']=0;
-                                            }
-
-                                            $val['duration']=$val['duration']-1;
-                                            if($val['duration']<=0) {
-                                                $timeend=$timestart;
-                                            } else {
-                                                $dateendTimestamp = strtotime($timestart);
-                                                $timeend = date('Ymd', strtotime('+'.$val['duration'].' days', $dateendTimestamp));
-                                            }
-
-                                            if(array_key_exists('color', $val))  {
-                                                $color=$val['color'];
-                                            } else {
-                                                $color="#821D78";
-                                            }
-
-                                            if(array_key_exists('icon', $val))  {
-                                                $icon=$val['icon'];
-                                            } else {
-                                                $icon=null;
-                                            }
-
-                                            // Create description using nutriment section
-                                            $desc = "";
-                                            if(array_key_exists('nutriment', $val))  {
-                                                $desc=$desc."Engrais:\n";
-                                                if(is_array($val['nutriment'])) {
-                                                    foreach($val['nutriment'] as $nut) {
-                                                        if(is_array($nut)) {
-                                                            if((array_key_exists('name', $nut))&&(array_key_exists('dosage', $nut)))  {
-                                                                $desc=$desc.$nut['name']." ".$nut['dosage']."\n";
-                                                            }
-                                                        } else {
-                                                            $desc=$desc.$nut." ";
-                                                        }
-                                                    }
-                                                } 
-                                            } 
-
-                                            // Add EC if present
-                                            if(array_key_exists('ec', $val))  {
-                                                // If field is empty, it's an array!
-                                                if (!is_array($val['ec'])) {
-                                                    $desc=$desc . "Ec:" . $val['ec'];
-                                                }
-                                            }
-                                            
-                                            // Add in description part content section
-                                            if(array_key_exists('content', $val))  {
-                                                // If field is empty, it's an array!
-                                                if (!is_array($val['content'])) {
-                                                    $desc=$desc.$val['content'];
-                                                }
-                                            }
-
-                                            // Create name of the event
-                                            $title = $val['title'];
-                                            if ($event_name != "") {
-                                                $title = $title . " " . $event_name ;
-                                            }
-
-                                            $event[]=array(
-                                                    "title" => $title,
-                                                    "start" => $timestart,
-                                                    "end" => $timeend,
-                                                    "description" => $desc,
-                                                    "color" => $color,
-                                                    "icon" => $icon,
-                                                    "external" => "0"
-                                                    //"allDay" => false
-                                            );
-    
-                                            $calendar_end=$timeend;
-                                        }
-                                    }   
+                                if(empty($val['start'])) {
+                                    $startDay = 0;
+                                } else {
+                                    $startDay = $val['start'];
                                 }
+                                            
+                                // If user need only flo, remove 3 weeks to the programm  
+                                if ($select_croissance == 'flo') {
+                                    $startDay = $startDay - 21;
+                                }
+
+                                $datestartTimestamp = strtotime($calendar_start);
+                                $timestart = date('Ymd', strtotime('+'.$startDay.' days', $datestartTimestamp));
+
+                                if(empty($val['duration'])) {
+                                    $val['duration']=0;
+                                }
+
+                                $val['duration']=$val['duration']-1;
+                                if($val['duration']<=0) {
+                                    $timeend=$timestart;
+                                } else {
+                                    $dateendTimestamp = strtotime($timestart);
+                                    $timeend = date('Ymd', strtotime('+'.$val['duration'].' days', $dateendTimestamp));
+                                }
+
+                                if(array_key_exists('color', $val))  {
+                                    $color=$val['color'];
+                                } else {
+                                    $color="#821D78";
+                                }
+
+                                if(array_key_exists('icon', $val))  {
+                                    $icon=$val['icon'];
+                                } else {
+                                    $icon=null;
+                                }
+
+                                // Create description using nutriment section
+                                $desc = "";
+                                if(array_key_exists('nutriment', $val))  {
+                                    $desc=$desc."Engrais:\n";
+                                    if(is_array($val['nutriment'])) {
+                                        foreach($val['nutriment'] as $nut) {
+                                            if(is_array($nut)) {
+                                                if((array_key_exists('name', $nut))&&(array_key_exists('dosage', $nut)))  {
+                                                    $desc=$desc.$nut['name']." ".$nut['dosage']."\n";
+                                                }
+                                            } else {
+                                                    $desc=$desc.$nut." ";
+                                            }
+                                        }
+                                    } 
+                                } 
+
+                                // Add EC if present
+                                if(array_key_exists('ec', $val))  {
+                                    // If field is empty, it's an array!
+                                    if (!is_array($val['ec'])) {
+                                        $desc=$desc . "Ec:" . $val['ec'];
+                                    }
+                                }
+                                            
+                                // Add in description part content section
+                                if(array_key_exists('content', $val))  {
+                                    // If field is empty, it's an array!
+                                    if (!is_array($val['content'])) {
+                                        $desc=$desc.$val['content'];
+                                    }
+                                }
+
+                                // Create name of the event
+                                $title = $val['title'];
+                                if ($event_name != "") {
+                                    $title = $title . " " . $event_name ;
+                                }
+
+                                $event[]=array(
+                                    "title" => $title,
+                                    "start" => $timestart,
+                                    "end" => $timeend,
+                                    "description" => $desc,
+                                    "color" => $color,
+                                    "icon" => $icon,
+                                    "external" => "0"
+                                    //"allDay" => false
+                                );
+  
+                                $calendar_end=$timeend;
                             }
-                       }
-                   } 
-                } 
+                        }   
+                    }
+                }
             }
+
             if(count($event)>0) {
                  if(insert_calendar($event,$main_error)) {
                     if((isset($sd_card))&&(!empty($sd_card))) {

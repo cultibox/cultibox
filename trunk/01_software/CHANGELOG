@@ -7,6 +7,8 @@ Cultibox (1.2.03) precise; urgency=low
     + Correction de la gestion de réduction/agrandissement de la boite de message quand on change la taille manuellement
     + Ajout du min/max des courbes sur la page des logs
     + On ne prend plus les doublons dans les courbes s'ils existent
+    + Un fichier XML avec une seule entrée ne génère plus d'erreur 
+    + L'affichage des listes des marques, substrats et fichiers XML sont triées par ordre alphabétique
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun Dec  1 22:41:08 CET 2013
 

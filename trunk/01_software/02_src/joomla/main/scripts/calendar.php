@@ -199,29 +199,39 @@ if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
 //Get informations from XML files
 $substrat=array();
 $product=array();
+$file=array();
 if($handle = @opendir('main/xml')) {
     while (false !== ($entry = readdir($handle))) {
         if(($entry!=".")&&($entry!="..")) {
-            $rss_file = file_get_contents("main/xml/".$entry);
-            $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
-
-            foreach ($xml as $tab) {
-                if(is_array($tab)) {
-                    if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))&&(array_key_exists('periode', $tab))) {
-                        $substrat[]=ucwords(strtolower($tab['substrat']));
-                        $product[]= array(
-                                "marque" => ucwords(strtolower($tab['marque'])),
-                                "periode" => ucwords(strtolower($tab['periode'])),
-                                "substrat" => ucwords(strtolower($tab['substrat']))
-                        );
-                    }
-                }
-            }
+            $file[]=$entry;
         }
     }
 }
 
+if(count($file)>0) {
+    asort($file);
+    foreach($file as $entry) {
+        $rss_file = file_get_contents("main/xml/".$entry);
+        $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
+
+        foreach ($xml as $tab) {
+            if(is_array($tab)) {
+                if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))&&(array_key_exists('periode', $tab))) {
+                    $substrat[]=ucwords(strtolower($tab['substrat']));
+                    $product[]= array(
+                            "marque" => ucwords(strtolower($tab['marque'])),
+                            "periode" => ucwords(strtolower($tab['periode'])),
+                            "substrat" => ucwords(strtolower($tab['substrat']))
+                    );
+                }
+            }
+        }
+        
+    }
+}
+
 $substrat=array_unique($substrat);
+asort($substrat);
 
 
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
