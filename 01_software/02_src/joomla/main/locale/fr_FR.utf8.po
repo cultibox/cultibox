@@ -1060,6 +1060,9 @@ msgstr "Floraison"
 msgid "CALENDAR_CROISSANCE_+_FLORAISON"
 msgstr "Croissance + Floraison"
 
+msgid "CALENDAR_IMPORTANT"
+msgstr "Evènement important"
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"

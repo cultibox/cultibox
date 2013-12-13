@@ -9,10 +9,8 @@ $start=$_POST["start"];
 $end=$_POST["end"];
 $color=$_POST["color"];
 $sd_card=$_POST["card"];
+$important=$_POST["important"];
 $main_error=array();
-
-
-
 
 
 
@@ -25,12 +23,12 @@ if((isset($title))&&(!empty($title))&&(isset($start))&&(!empty($start))&&(isset(
 
             if((isset($description))&&(!empty($description))) {
             $sql = <<<EOF
-INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Description`,`Color`,`External`) VALUES({$db->quote($title)}, "{$start}", "{$end}", {$description}, "{$color}","0");
+INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Description`,`Color`,`External`,`Important`) VALUES({$db->quote($title)}, "{$start}", "{$end}", {$description}, "{$color}","0","${important}");
 EOF;
 
             } else {
             $sql = <<<EOF
-INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Color`,`External`) VALUES("{$title}", "{$start}", "{$end}", "{$color}","0");
+INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Color`,`External`,`Important`) VALUES("{$title}", "{$start}", "{$end}", "{$color}","0","${important}");
 EOF;
             }
 

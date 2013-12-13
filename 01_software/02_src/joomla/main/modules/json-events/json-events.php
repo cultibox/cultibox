@@ -25,6 +25,7 @@ foreach($db->query("$sql") as $row) {
                         "description" => $row['Description'],
                         "color" => $row['Color'],
                         "icon" => $row['Icon'],
+                        "important" => $row['Important'],
                         "external" => 0
             );
 }
