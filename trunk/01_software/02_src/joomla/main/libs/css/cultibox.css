@@ -740,3 +740,7 @@ td.field_delete_form {
     height: 175px;
 }
 
+.ui-dialog-titlebar-close {
+  visibility: hidden;
+}
+
