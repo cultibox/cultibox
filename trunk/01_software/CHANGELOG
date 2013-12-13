@@ -11,6 +11,8 @@ Cultibox (1.2.03) precise; urgency=low
     + L'affichage des listes des marques, substrats et fichiers XML sont triées par ordre alphabétique
     + Lors de l'ajout d'un nouveau champ titre dans le calendrier, les données sont encodées en JSON pour éviter les caractères parasites
     + Ajout d'un champ 'important' dans les évènements du calendrier permettant de générer des alertes
+    + Mise en forme de certaines boîtes de messages
+    + Correction de l'export des logs avec la nouvelle version de XAMPP
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun Dec  1 22:41:08 CET 2013
 

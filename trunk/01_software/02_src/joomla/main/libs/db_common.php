@@ -2033,61 +2033,23 @@ function export_table_csv($name="",&$out) {
        if(strcmp("$name","")==0) return 0;
 
        $file="tmp/$name.csv";
-       $sql_name = <<<EOF
-SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME = '{$name}'
-EOF;
-        $db=db_priv_pdo_start();
-        try {
-            $sth=$db->prepare("$sql_name");
-            $sth->execute();
-            $res_name=$sth->fetchAll(PDO::FETCH_ASSOC);
-        } catch(PDOException $e) {
-            $ret_name=$e->getMessage();
-        }
-        $db=null;
-
-        if(is_file($file)) {
+    
+       if(is_file($file)) {
             unlink($file);
-        }
-        $os=php_uname('s');
-        switch($os) {
+       }
+
+       $os=php_uname('s');
+       switch($os) {
                 case 'Linux':
-                        exec("../../bin/mysqldump -u cultibox -pcultibox --port=3891 -t -T tmp/ cultibox $name --fields-terminated-by=,");
+                        exec("../../bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
                         break;
                 case 'Mac':
                 case 'Darwin':
-                        exec("../../bin/mysqldump -u cultibox -pcultibox --port=3891 -t -T /tmp/ cultibox $name --fields-terminated-by=,");
-                        copy("/tmp/$name.txt","$file");
-                        copy("/tmp/$name.sql","tmp/$name.sql");
-                        unlink("/tmp/$name.txt");
-                        unlink("/tmp/$name.sql");
+                        exec("../../bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
                         break;
                 case 'Windows NT':
-                        exec("..\..\mysql\bin\mysqldump.exe -u cultibox -pcultibox --port=3891 -t -T tmp cultibox $name --fields-terminated-by=,");
+                        exec("..\..\mysql\bin\mysql.exe --defaults-extra-file=C:\cultibox\XAMPP\etc\my-extra.cnf  -B  -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
                         break;
-        }
-       if (copy("tmp/$name.txt","$file")) {
-            unlink("tmp/$name.txt");
-            
-        }
-        unlink("tmp/$name.sql");
-
-
-         $line="";
-         if($f=fopen("$file","r+")) {
-            foreach($res_name as $column) {
-                foreach($column as $col) {
-                    if(strcmp("$line","")==0) {
-                        $line="$col";
-                    } else {
-                        $line=$line.",".$col;
-                    }
-                }
-            }
-        
-            $contents = file_get_contents($file);
-            fputs($f,$line."\n".$contents);
-            fclose($f);
         }
 }
 // }}}

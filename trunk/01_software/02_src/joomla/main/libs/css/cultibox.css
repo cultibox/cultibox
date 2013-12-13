@@ -744,3 +744,11 @@ td.field_delete_form {
   visibility: hidden;
 }
 
+
+a:link.note_link {color:#93982a;}
+a:visited.note_link {color:#93982a;}
+a:hover.note_link {
+    color:#C3B59B;
+}
+
+

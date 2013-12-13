@@ -397,8 +397,8 @@ $(document).ready(function() {
    // Affichage des tooltips sur les éléments avec un title
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
 
-   $(".pop_up_message").dialog({ width: 550, closeOnEscape: false, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
-   $( ".pop_up_error" ).dialog({ width: 550, closeOnEscape: false, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
+   $(".pop_up_message").dialog({ width: 550, resizable: false, closeOnEscape: false, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+   $( ".pop_up_error" ).dialog({ width: 550, resizable: false, closeOnEscape: false, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
 
    $(".delete").click(function() {
           var currentForm;
@@ -461,19 +461,27 @@ $(document).ready(function() {
                                     text: CANCEL_button,
                                     "id": "btnCancel",
                                     click: function () {
+                                        $("#progress_bar").progressbar({value:0});
+                                        $("#success_format").css("display","none");
+                                        $("#error_format").css("display","none");
                                         $( this ).dialog( "close" ); 
                                         $("#btnCancel").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
-                                        window.location.reload();
                                         return false;
                                     }
                                 }]
                             });
                             $("#progress_bar").progressbar({value:0});
+                            $("#success_format").css("display","none");
+                            $("#error_format").css("display","none");
                             formatCard($("#selected_hdd").val(),0);
                         }
                     }, {
                         text: CANCEL_button,
                         click: function () {
+                            $("#progress_bar").progressbar({value:0}); 
+                            $("#success_format").css("display","none");
+                            $("#error_format").css("display","none");
+                            $("#btnCancel").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
                             $( this ).dialog( "close" ); return false;
                         }
                     }]
@@ -547,7 +555,7 @@ $(document).ready(function() {
     $("#reset_log_submit").click(function(e) {
         e.preventDefault();
         $("#delete_log_form").dialog({
-            resizable: true,
+            resizable: false,
             width: 750,
             modal: true,
             closeOnEscape: false,
