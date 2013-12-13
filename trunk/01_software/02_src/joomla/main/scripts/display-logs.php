@@ -97,7 +97,7 @@ if(isset($_SESSION['startyear'])) {
 
 
 if((isset($export_log))&&(!empty($export_log))) {
-     export_table_csv("logs",$main_error);
+    export_table_csv("logs",$main_error);
     $file="tmp/logs.csv";
      if (($file != "") && (file_exists("./$file"))) {
         $size = filesize("./$file");
@@ -127,6 +127,9 @@ if((isset($export_log_power))&&(!empty($export_log_power))) {
         header("Expires: 0");
         header("Cache-Control: no-cache, must-revalidate");
         header("Pragma: no-cache");
+        ob_clean();
+        flush();
+        ob_end_flush();
         readfile("./$file");
         exit();
      }
