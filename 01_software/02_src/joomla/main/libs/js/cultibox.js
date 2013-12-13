@@ -101,6 +101,7 @@ confirmForm = function(SendForm,idDialog) {
         resizable: false,
         height:200,
         width: 500,
+        closeOnEscape: false,
         modal: true,
         dialogClass: "dialog_cultibox",
         buttons: [{
@@ -324,7 +325,7 @@ $(document).ready(function() {
     }
 
 
-    $( ".message" ).dialog({ width: wid, resizable: true, buttons: [ 
+    $( ".message" ).dialog({ width: wid, closeOnEscape: false, resizable: true, buttons: [ 
         { 
             text: CLOSE_button, 
             click: function() { $( this ).dialog( "close" ); }
@@ -396,8 +397,8 @@ $(document).ready(function() {
    // Affichage des tooltips sur les éléments avec un title
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
 
-   $(".pop_up_message").dialog({ width: 550, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
-   $( ".pop_up_error" ).dialog({ width: 550, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
+   $(".pop_up_message").dialog({ width: 550, closeOnEscape: false, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
+   $( ".pop_up_error" ).dialog({ width: 550, closeOnEscape: false, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
 
    $(".delete").click(function() {
           var currentForm;
@@ -442,6 +443,7 @@ $(document).ready(function() {
             resizable: false,
             height:200,
             width: 500,
+            closeOnEscape: false,
             modal: true,
             dialogClass: "dialog_cultibox",
             buttons: [{
@@ -452,6 +454,7 @@ $(document).ready(function() {
                                 resizable: false,
                                 height:200,
                                 width: 500,
+                                closeOnEscape: false,
                                 modal: true,
                                 dialogClass: "popup_message",
                                 buttons: [{
@@ -484,6 +487,7 @@ $(document).ready(function() {
             resizable: false,
             width: 550,
             modal: true,
+            closeOnEscape: false,
             dialogClass: "popup_message",
             buttons: [{
                     text: CANCEL_button,
@@ -546,6 +550,7 @@ $(document).ready(function() {
             resizable: true,
             width: 750,
             modal: true,
+            closeOnEscape: false,
             dialogClass: "popup_message",
             buttons: [{
                     text: CANCEL_button,
@@ -576,7 +581,7 @@ $(document).ready(function() {
 
                                 delete_logs("logs",$("input:radio[name=check_type_delete]:checked").val(), nb_jours,$("#datepicker_from").val(),nb_jours);
 
-                                $("#delete_log_form").dialog({ buttons: [ {
+                                $("#delete_log_form").dialog({ closeOnEscape: false, buttons: [ {
                                             text: CLOSE_button,
                                             click: function() {
                                                 $("#error_delete_logs").css("display","none");
@@ -937,6 +942,7 @@ $(document).ready(function() {
             resizable: true,
             width: 750,
             modal: true,
+            closeOnEscape: false,
             dialogClass: "popup_message",
             buttons: [{
                     text: CANCEL_button,
@@ -967,7 +973,7 @@ $(document).ready(function() {
 
                             delete_logs("power",$("input:radio[name=check_type_delete_power]:checked").val(),nb_jours,$("#datepicker_from_power").val(),nb_jours);
 
-                            $("#delete_log_form_power").dialog({ buttons: [ {
+                            $("#delete_log_form_power").dialog({ closeOnEscape: false, buttons: [ {
                                 text: CLOSE_button,
                                  click: function() {
                                     $("#error_delete_logs_power").css("display","none");
@@ -1161,6 +1167,7 @@ $(document).ready(function() {
                                 resizable: true,
                                 width: 450,
                                 modal: true,
+                                closeOnEscape: false,
                                 dialogClass: "popup_message",
                                 buttons: [{
                                 text: CLOSE_button,
@@ -1176,6 +1183,7 @@ $(document).ready(function() {
                                 resizable: true,
                                 width: 450,
                                 modal: true,
+                                closeOnEscape: false,
                                 dialogClass: "popup_error",
                                 buttons: [{
                                 text: CLOSE_button,
@@ -1476,6 +1484,7 @@ $(document).ready(function() {
                                 resizable: false,
                                 width: 550,
                                 modal: true,
+                                closeOnEscape: false,
                                 dialogClass: "popup_message",
                                 buttons: [{ 
                                     text: CANCEL_button,
@@ -1513,6 +1522,7 @@ $(document).ready(function() {
             resizable: false,
             width: 550,
             modal: true,
+            closeOnEscape: false,
             dialogClass: "popup_message",
             buttons: [{
                     text: CANCEL_button,
@@ -1554,6 +1564,7 @@ $(document).ready(function() {
                 height:200,
                 width: 500,
                 modal: true,
+                closeOnEscape: false,
                 dialogClass: "dialog_cultibox",
                 buttons: [{
                     text: OK_button,
@@ -1569,7 +1580,8 @@ $(document).ready(function() {
                                 $("#valid_reset_calendar").dialog({
                                     resizable: true,
                                     width: 450,
-                                    modal: true,
+                                    modal: true,    
+                                    closeOnEscape: false,
                                     dialogClass: "popup_message",
                                     buttons: [{
                                     text: CLOSE_button,
