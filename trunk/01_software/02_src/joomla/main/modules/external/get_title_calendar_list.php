@@ -20,15 +20,7 @@ if((isset($_POST['lang']))&&(!empty($_POST['lang']))) {
     $title=get_title_list();
 
     if(count($title)>0) {
-        $tmp="";
-        foreach($title as $value) {
-            if(strcmp($tmp,"")==0) {
-                $tmp=$value;
-            } else {
-                $tmp=$tmp.",,,".$value;
-            }
-        }
-        echo "$tmp";
+        echo json_encode($title);
     } else {
         echo "-1";
     }

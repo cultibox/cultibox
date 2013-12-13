@@ -148,6 +148,13 @@ product_array = <?php echo json_encode($product) ?>;
                                         }
                                         var description=$('#select_remark').val();  
                                         var color=$('#select_color').val();
+        
+                                        if($("#event_important").prop('checked') == true) {
+                                            var important=1; 
+                                        } else {
+                                            var important=0;
+                                        }
+
                                         if(!description) {
                                             description="";
                                         }
@@ -168,8 +175,7 @@ product_array = <?php echo json_encode($product) ?>;
                                         $.ajax({
                                             type: "POST",
                                             url: "http://localhost:6891/cultibox/main/modules/json-events/json-add-events.php",
-                                            data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&color='+color+'&card=<?php echo $sd_card; ?>'
-            
+                                            data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&color='+color+'&card=<?php echo $sd_card; ?>'+'&important='+important
                                             <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                                                 ,complete: function() { $.unblockUI(); }
                                             <?php } ?> 
@@ -181,19 +187,20 @@ product_array = <?php echo json_encode($product) ?>;
                                                     data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
                                                 }).done(function (data) {
                                                     if(data!="") {
-                                                        var myTitle = data.split(',,,'); 
+                                                        var objJSON = jQuery.parseJSON(data);
                                                         $('#select_title').children().remove();
-                                                        $.each( myTitle, function( key, value ) {
+                                                        $.each(objJSON, function( key, value ) {
                                                             $('#select_title').append(new Option(value, value, true, true)); 
                                                         });
                                                         $("#select_title").prop('selectedIndex', 0);  
                                                         $("#other_title_div").css("display","none");
-                                                    }
+                                                    } 
                                                 });       
-                                            }
+                                            } 
                                         });
 
                                         }
+
                                         $('#calendar').fullCalendar('unselect');
                                         $('#calendar').fullCalendar('refetchEvents');
                                         $('#calendar').fullCalendar('rerenderEvents');
@@ -202,8 +209,10 @@ product_array = <?php echo json_encode($product) ?>;
                                         $("#other_field_title").text("");
                                         $("#other_field_title").val("");
                                         $("#select_title").prop('selectedIndex', 0);  
+                                        $("#event_important").attr('checked', false);
                                          
                                         delete description;
+                                        delete important;
                                         delete event;
                                         return false;
                         },
@@ -214,7 +223,9 @@ product_array = <?php echo json_encode($product) ?>;
                                         $("#other_field_title").text("");
                                         $("#other_field_title").val("");
                                         $("#select_title").prop('selectedIndex', 0);  
+                                        $("#event_important").attr('checked', false);
                                         delete description;
+                                        delete important;
                                         delete event;
                                         return false;}
                         }
@@ -242,7 +253,7 @@ product_array = <?php echo json_encode($product) ?>;
                 $.ajax({
                       type: "POST",
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                      data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
+                      data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'+'&important='+event.important
                          <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                             ,complete: function() { $.unblockUI(); }
                          <?php } ?> 
@@ -267,7 +278,7 @@ product_array = <?php echo json_encode($product) ?>;
                 $.ajax({
                       type: "POST",
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                      data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'
+                      data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'+'&important='+event.important
                       <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                           ,complete: function() { $.unblockUI(); }
                       <?php } ?>
@@ -285,6 +296,12 @@ product_array = <?php echo json_encode($product) ?>;
                         $("#remark").val(event.description);
                      } else {
                         $("#remark").val('');
+                     }
+
+                     if(event.important==1) {
+                        $("#important").attr('checked', true);
+                     } else {
+                        $("#important").attr('checked', false);
                      }
 
                      $("#dialog_edit").dialog({
@@ -308,6 +325,12 @@ product_array = <?php echo json_encode($product) ?>;
                                 } else {
                                     $("#select_remark").val('');
                                     $("#select_remark").text('');
+                                }
+
+                                if(event.important==1) {
+                                    $("#event_important").attr('checked', true);
+                                } else {
+                                    $("#event_important").attr('checked', false);
                                 }
 
                                 if(event.color) {
@@ -358,6 +381,12 @@ product_array = <?php echo json_encode($product) ?>;
                                             color="#000000";
                                         }
 
+                                        if($("#event_important").prop('checked') == true) {
+                                            var important=1; 
+                                        } else {
+                                            var important=0;
+                                        }
+
                                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                                             $.blockUI({ message: ''}); 
                                        <?php } ?>
@@ -365,7 +394,7 @@ product_array = <?php echo json_encode($product) ?>;
                                         $.ajax({
                                             type: "POST",
                                             url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                                            data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&id='+event.id+'&color='+color+'&card=<?php echo $sd_card; ?>'
+                                            data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&id='+event.id+'&color='+color+'&card=<?php echo $sd_card; ?>'+'&important='+important
                                             <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                                                 ,complete: function() { $.unblockUI(); }
                                             <?php } ?>
@@ -399,6 +428,8 @@ product_array = <?php echo json_encode($product) ?>;
                                         $("#other_field_title").text("");
                                         $("#other_field_title").val("");
                                         $("#select_title").prop('selectedIndex', 0);  
+                                        $("#event_important").attr('checked', false);
+                                        
                                         delete event;
                                         <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                                             $.blockUI({ message: '', timeout: 1000 }); 
@@ -410,11 +441,13 @@ product_array = <?php echo json_encode($product) ?>;
                                         $( this ).dialog( "close" ); 
                                         delete event; 
                                         delete description; 
+                                        delete important;
                                         $("#select_remark").text("");
                                         $("#select_remark").val(""); 
                                         $("#other_field_title").text("");
                                         $("#other_field_title").val("");
                                         $("#select_title").prop('selectedIndex', 0);
+                                        $("#event_important").attr('checked', false);
                                         return false;
                                     }
                             }
@@ -524,6 +557,10 @@ product_array = <?php echo json_encode($product) ?>;
             <td><b><?php echo __('CALENDAR_REMARK'); ?>:</b></td>
             <td><textarea rows="5" cols="50" id="remark" disabled></textarea></td>
         </tr>
+        <tr>
+            <td><b><?php echo __('CALENDAR_IMPORTANT'); ?>:</b></td>
+            <td><input type="checkbox" id="important" name="important" value="important" disabled></td>
+        </tr>
     </table>
 </div>
 
@@ -569,6 +606,11 @@ product_array = <?php echo json_encode($product) ?>;
             ?>
         </select>
 </div></td>
+</tr>
+<tr>
+    <td><b><?php echo __('CALENDAR_IMPORTANT'); ?>:</b></td>
+    <td><input type="checkbox" id="event_important" name="event_important" value="important"></textarea>
+</td>
 </tr>
 </table>
 <input type="hidden" id="select_color" value="">
