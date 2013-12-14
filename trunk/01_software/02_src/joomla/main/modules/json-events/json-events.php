@@ -112,6 +112,17 @@ if ($handle = opendir('../../xml')) {
                         $icon=null;
                 }
 
+                if(array_key_exists('important', $val))  {
+                    if($val['important']=="1") {
+                        $color_text="red";
+                    } else {
+                        $color_text="white";
+                    }
+                } else {
+                    $color_text="white";
+                }
+
+
 
                 do {
                     $start=date('Y-m-d H:i:s', $timestart);
@@ -124,6 +135,7 @@ if ($handle = opendir('../../xml')) {
                             "description" => $val['content'],
                             "color" => $color,
                             "icon" => $icon,
+                            "textColor" => $color_text,
                             "external" => 1
                             //"allDay" => false
                         );

@@ -1521,6 +1521,40 @@ $(document).ready(function() {
     }
 
 
+    var checkCal = window.location.pathname.match(/calendar/g);
+    if(checkCal) {
+        $.ajax({
+           cache: false,
+           url: "../../main/modules/external/get_variable.php",
+           data: {name:"important_calendar"}
+        }).done(function (data) {
+                if(data!="True") {
+                      $("#dialog_calendar_important").dialog({
+                        resizable: true,
+                        width: 550,
+                        modal: true,
+                        closeOnEscape: false,
+                        dialogClass: "popup_message",
+                        buttons: [{
+                            text: CLOSE_button,
+                            "id": "btnClose",
+                            click: function () {
+                                $( this ).dialog("close");
+                            }
+                        }]
+                    });
+                }
+            });
+
+        $.ajax({
+            cache: false,
+            url: "../../main/modules/external/set_variable.php",
+            data: {name:"IMPORTANT", value: "True"}
+        });
+    }
+    
+
+
    
 
     $("#display_calendar").click(function(e) {

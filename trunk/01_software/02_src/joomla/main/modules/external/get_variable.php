@@ -27,6 +27,11 @@ switch ($name) {
     case 'sd_card':
         echo get_sd_card();
         break;
+    case 'important_calendar':
+        if((isset($_SESSION['IMPORTANT']))&&(!empty($_SESSION['IMPORTANT']))) {
+            echo $_SESSION['IMPORTANT'];
+        }
+        break;
 }
 
 ?>

@@ -3442,6 +3442,35 @@ EOF;
 // }}}
 
 
+// {{{ get_important_event_list()
+// ROLE get list of important event for next or past week
+// IN $out      error or warning message
+// RET array containing datas
+function get_important_event_list(&$out) {
+    $start=date('Y-m-j',strtotime('-7 days'));
+    $end=date('Y-m-j',strtotime('+7 days'));
+    $sql = <<<EOF
+SELECT title,StartTime,EndTime,color,Description from `calendar` WHERE `important`=1 AND ((`StartTime` BETWEEN '{$start}' AND '{$end}')OR (`EndTime` BETWEEN '{$start}' AND '{$end}')OR(`StartTime` <= '{$start}' AND `EndTime` >= '{$end}'))
+EOF;
+
+    $db=db_priv_pdo_start();
+    $res="";
+    try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    if(count($res)>0) {
+        return $res;
+    }
+    return false;
+}
+///
+
 ?>
 
 
