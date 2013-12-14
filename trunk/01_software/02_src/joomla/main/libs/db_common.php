@@ -2033,7 +2033,7 @@ function export_table_csv($name="",&$out) {
        if(strcmp("$name","")==0) return 0;
 
        $file="tmp/$name.csv";
-    
+   
        if(is_file($file)) {
             unlink($file);
        }
@@ -2048,7 +2048,7 @@ function export_table_csv($name="",&$out) {
                         exec("../../bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
                         break;
                 case 'Windows NT':
-                        exec("..\..\mysql\bin\mysql.exe --defaults-extra-file=\"C:\cultibox\xampp\mysql\bin\my-extra.cnf\" -B -h 127.0.0.1 --port=3891 cultibox -e \"SELECT * FROM `${name}`\" > $file");
+                        exec("..\..\mysql\bin\mysql.exe --defaults-extra-file=\"C:\cultibox\\xampp\mysql\bin\my-extra.cnf\" -B -h 127.0.0.1 --port=3891 cultibox -e \"SELECT * FROM `${name}`\" > $file");
                         break;
         }
 }
