@@ -17,6 +17,12 @@ SELECT * FROM `calendar`;
 EOF;
 
 foreach($db->query("$sql") as $row) {
+        if($row['Important']==1) {
+            $color_event="red";
+        } else {
+            $color_event="white";
+        }
+        
         $event[]=array(
                         "id" => $row['Id'],
                         "title" => $row['Title'],
@@ -26,6 +32,7 @@ foreach($db->query("$sql") as $row) {
                         "color" => $row['Color'],
                         "icon" => $row['Icon'],
                         "important" => $row['Important'],
+                        "textColor" => $color_event,
                         "external" => 0
             );
 }

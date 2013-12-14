@@ -5,14 +5,19 @@ require_once('../../../main/libs/db_common.php');
 require_once('../../../main/libs/utilfunc.php');
 
 
-if((isset($_POST["title"]))&&(!empty($_POST["title"]))&&(isset($_POST["start"]))&&(!empty($_POST["start"]))&&(isset($_POST["end"]))&&(!empty($_POST["end"]))&&(isset($_POST["id"]))&&(!empty($_POST["id"]))&&(isset($_POST["color"]))&&(!empty($_POST["color"]))&&(isset($_POST["important"]))&&(!empty($_POST["important"]))) {
+if((isset($_POST["title"]))&&(!empty($_POST["title"]))&&(isset($_POST["start"]))&&(!empty($_POST["start"]))&&(isset($_POST["end"]))&&(!empty($_POST["end"]))&&(isset($_POST["id"]))&&(!empty($_POST["id"]))&&(isset($_POST["color"]))&&(!empty($_POST["color"]))) {
 
     $title=$_POST["title"];
     $start=$_POST["start"];
     $end=$_POST["end"];
     $id=$_POST["id"];
     $color=$_POST["color"];
-    $important=$_POST["important"];
+
+    if((!isset($_POST["important"]))||(empty($_POST["important"]))) {  
+        $important=0;
+    }else {
+        $important=1;
+    }
 
     $sd_card=$_POST["card"];
     $main_error=array();
@@ -86,6 +91,8 @@ EOF;
             }
         }
     }
+} else {
+    echo "-1";
 }
 
 ?>
