@@ -110,6 +110,7 @@ Exemple:
 De plus, le fabriquant à la possibilité de définir les rubriques suivantes:
   * Icon
   * Logo
+  * Important
   * Droits
 Ces informations ne sont pour l'instant pas utilisées.
 
@@ -127,6 +128,25 @@ Exemple:
 {{{
 <logo>http://wwww.com/images/icon.png</logo>
 }}}
+
+==== Important ====
+Le champ nommé important défini ou non un évènement comme important.
+Une valeur à "1" définit l'évènement comme important, une valeur à 0 (ou l'absence du champ Important) définit
+l'évènement comme non important
+
+Exemple:
+
+{{{
+<important>1</important>
+}}}
+==== Logo ====
+Le fabricant peut définir un logo.
+Exemple:
+
+{{{
+<logo>http://wwww.com/images/icon.png</logo>
+}}}
+
 ==== Droits, copyrights ====
 Cette balise est une construction « texte ».
 
