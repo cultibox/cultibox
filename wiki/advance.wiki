@@ -130,7 +130,7 @@ Exemple:
 }}}
 
 ==== Important ====
-Le champ nommé important défini ou non un évènement comme important.
+Le champ nommé important définit ou non un évènement comme important.
 Une valeur à "1" définit l'évènement comme important, une valeur à 0 (ou l'absence du champ Important) définit
 l'évènement comme non important
 
