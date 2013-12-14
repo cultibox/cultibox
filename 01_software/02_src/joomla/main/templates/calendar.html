@@ -151,13 +151,20 @@ product_array = <?php echo json_encode($product) ?>;
         
                                         if($("#event_important").prop('checked') == true) {
                                             var important=1; 
+                                            var text_color="white";
                                         } else {
                                             var important=0;
+                                            var text_color="red";
                                         }
 
                                         if(!description) {
                                             description="";
                                         }
+    
+                                        if(!color) {
+                                            color="#000000";
+                                        }
+
                                         if (title) {
                                             $('#calendar').fullCalendar('renderEvent', {
                                             title: title,
@@ -167,10 +174,6 @@ product_array = <?php echo json_encode($product) ?>;
                                             color: color,
                                             external: external
                                         });
-
-                                        if(!color) {
-                                            color="#000000";
-                                        }
 
                                         $.ajax({
                                             type: "POST",
@@ -405,7 +408,7 @@ product_array = <?php echo json_encode($product) ?>;
                                                     data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
                                                 }).done(function (data) {
                                                     if(data!="") {
-                                                        var myTitle = data.split(',,,'); 
+                                                        var myTitle=jQuery.parseJSON(data);
                                                         $('#select_title').children().remove();
                                                         $.each( myTitle, function( key, value ) {
                                                             $('#select_title').append(new Option(value, value, true, true)); 
