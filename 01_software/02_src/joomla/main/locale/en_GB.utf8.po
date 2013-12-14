@@ -1063,6 +1063,15 @@ msgstr "Croissance + Floraison"
 msgid "CALENDAR_IMPORTANT"
 msgstr "Evènement important"
 
+msgid "SUMARY_IMPORTANT_LIST"
+msgstr "Résumé des derniers évènements importants"
+
+msgid "EVENT_FROM"
+msgstr "Evènement du"
+
+msgid "EVENT_TO"
+msgstr "au"
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"

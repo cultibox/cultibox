@@ -89,7 +89,10 @@ sd_card = "";
 <?php } ?>
 <script>
 product_array = <?php echo json_encode($product) ?>;
+important_list=<?php echo json_encode($important_list) ?>;
 </script>
+
+
 
 <style id='hideday'></style>
 <style id='hidetoday'></style>
@@ -719,6 +722,19 @@ product_array = <?php echo json_encode($product) ?>;
     </table>
     <p class="p_center"><input type="submit" id="calendar-program" name="calendar-program" title="<?php echo __('TOOLTIP_CREATE_CALENDAR_PROGRAM'); ?>" <?php if((count($product)==0)||(count($substrat)==0)) { ?>class="inputDisable" disabled value="<?php echo __('DISABLED_CREATE_CALENDAR_PROGRAM'); ?>" <?php } else { ?> value="<?php echo __('CREATE_CALENDAR_PROGRAM'); ?>" <?php } ?>></p>
 </form>
+
+<div id="dialog_calendar_important" style="display:none" title="<?php echo __('SUMARY_IMPORTANT_LIST'); ?>">
+    <?php if(count($important_list)>0) { 
+        echo "<ul>";
+        foreach($important_list as $imp) { ?>
+            <li><?php echo __('EVENT_FROM')." ".substr($imp['StartTime'],0,10)." ".__('EVENT_TO')." ".substr($imp['EndTime'],0,10).":"; ?>
+            <?php echo "<p class='imp_center' style='color:".$imp['color']."'>".$imp['title']."</p>".$imp['Description']."<br /><br /><br />"; ?>
+            </li>
+   <?php     }
+        echo "</ul>";
+    } ?>
+</div>
+
 
 
 

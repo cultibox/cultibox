@@ -53,6 +53,8 @@ if(isset($nb_plugs)&&(!empty($nb_plugs))) {
     }
 }
 
+echo date('Y-m-d', strtotime('+15 days'));
+
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
