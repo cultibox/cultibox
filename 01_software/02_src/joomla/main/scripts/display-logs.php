@@ -108,6 +108,9 @@ if((isset($export_log))&&(!empty($export_log))) {
         header("Expires: 0");
         header("Cache-Control: no-cache, must-revalidate");
         header("Pragma: no-cache");
+        ob_clean();
+        flush();
+        ob_end_flush();
         readfile("./$file");
         exit();
      }
