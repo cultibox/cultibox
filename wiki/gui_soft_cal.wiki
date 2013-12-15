@@ -25,7 +25,7 @@ Une fenêtre s'affiche alors vous permettant de configurer votre annotation et d
  * Les dates de départ et de fin définie par le jour ou la période que vous avez sélectionné
  * Une couleur d'affichage dans le calendrier
  * Une remarque servant à ajouter des informations
- * Marquer l'évènement comme important pour avoir un rappel qui s'affiche lors de l'ouverture du calendrier
+ * Un marquage de l'évènement comme important pour avoir un rappel qui s'affiche lors de l'ouverture du calendrier
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_add.png
 
@@ -106,6 +106,6 @@ Lorsque vous ouvrez le calendrier, un rappel contenant les derniers évènements
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_important.png
 
-Ce rappel fait état des évènements important de la semaine précédente et suivante par rapport au jour actuel. Un rappel de deux semaines s'affiche donc si des évènements importants ont été détecté durant ce laps de temps.
+Ce rappel fait état des évènements notés comme importants sur la semaine précédent et suivant le jour actuel. Ce rappel de deux semaines s'affiche donc si des évènements importants ont été détecté durant ce laps de temps.
 
 
