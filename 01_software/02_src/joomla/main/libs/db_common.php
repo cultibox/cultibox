@@ -3445,7 +3445,7 @@ EOF;
 // {{{ get_important_event_list()
 // ROLE get list of important event for next or past week
 // IN $out      error or warning message
-// RET array containing datas
+// RET array containing datas or nothing if no data catched
 function get_important_event_list(&$out) {
     $start=date('Y-m-j',strtotime('-7 days'));
     $end=date('Y-m-j',strtotime('+7 days'));
@@ -3464,10 +3464,7 @@ EOF;
     }
     $db=null;
 
-    if(count($res)>0) {
-        return $res;
-    }
-    return false;
+    return $res;
 }
 ///
 

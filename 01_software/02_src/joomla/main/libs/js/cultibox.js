@@ -1522,7 +1522,7 @@ $(document).ready(function() {
 
 
     var checkCal = window.location.pathname.match(/calendar/g);
-    if(checkCal) {
+    if((checkCal)&&(important_list.length>0)) {
         $.ajax({
            cache: false,
            url: "../../main/modules/external/get_variable.php",

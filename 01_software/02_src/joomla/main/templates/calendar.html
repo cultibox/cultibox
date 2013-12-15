@@ -724,15 +724,15 @@ important_list=<?php echo json_encode($important_list) ?>;
 </form>
 
 <div id="dialog_calendar_important" style="display:none" title="<?php echo __('SUMARY_IMPORTANT_LIST'); ?>">
-    <?php if(count($important_list)>0) { 
-        echo "<ul>";
-        foreach($important_list as $imp) { ?>
+    <?php if(count($important_list)>0) { ?>
+        <ul>
+    <?php foreach($important_list as $imp) { ?>
             <li><?php echo __('EVENT_FROM')." ".substr($imp['StartTime'],0,10)." ".__('EVENT_TO')." ".substr($imp['EndTime'],0,10).":"; ?>
             <?php echo "<p class='imp_center' style='color:".$imp['color']."'>".$imp['title']."</p>".$imp['Description']."<br /><br /><br />"; ?>
             </li>
-   <?php     }
-        echo "</ul>";
-    } ?>
+   <?php     } ?>
+        </ul>
+    <? } ?>
 </div>
 
 

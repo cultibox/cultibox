@@ -55,6 +55,7 @@ foreach($xml_list as $liste) {
 }
 
 //Get the important event list for the previous and next week to display:
+$important_list=array();
 $important_list=get_important_event_list($main_error);
 
 if((!isset($calendar_start))||(empty($calendar_start))) {
