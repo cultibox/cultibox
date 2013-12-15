@@ -25,6 +25,7 @@ Une fenêtre s'affiche alors vous permettant de configurer votre annotation et d
  * Les dates de départ et de fin définie par le jour ou la période que vous avez sélectionné
  * Une couleur d'affichage dans le calendrier
  * Une remarque servant à ajouter des informations
+ * Marquer l'évènement comme important pour avoir un rappel qui s'affiche lors de l'ouverture du calendrier
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_add.png
 
@@ -98,4 +99,13 @@ Il existe deux types de fichiers XML gérés par la logiciel Cultibox:
  * Les fichiers de type "calendrier d'engrais": ces fichiers sont applicables à la demande. Par défaut ils ne sont pas ajoutés dans le calendrier mais peuvent l'être à partir d'une date définit par l'utilisateur quelque soit l'année.
 
 La gestion des fichiers XML à partir du calendrier ne concerne que les fichiers externes (type calendrier lunaire).
+
+= Rappel des évènements importants =
+
+Lorsque vous ouvrez le calendrier, un rappel contenant les derniers évènements importants peut s'afficher:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_important.png
+
+Ce rappel fait état des évènements important de la semaine précédente et suivante par rapport au jour actuel. Un rappel de deux semaines s'affiche donc si des évènements importants ont été détecté durant ce laps de temps.
+
 
