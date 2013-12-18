@@ -2,6 +2,7 @@ Cultibox (1.2.04) precise; urgency=low
     + Passage de la période -1 jours/ + 7 jours pour l'affichage des messages importans du calendrier
     + Correction du choix du capteur lors de l'affichage des min/max dans les logs
     + Correction des requetes SQL lors de tris sur de multiples critères
+    + Correction de l'affichage des min/max des logs pour ne pas afficher les capteurs qui n'ont pas de données significatives
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Wed Dec 18 11:07:03 CET 2013
 
