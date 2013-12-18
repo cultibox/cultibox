@@ -146,7 +146,7 @@ function get_graph_array(&$res,$key,$startdate,$sensor=1,$fake="False",$limit=0,
     
    if(strcmp("$sensor","all")==0) {
         $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate}%" AND fake_log LIKE "{$fake}" GROUP BY time_catch ORDER BY time_catch ASC {$sql_limit}
+SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate}%" AND fake_log LIKE "{$fake}" GROUP BY time_catch,sensor_nb ORDER BY time_catch ASC {$sql_limit}
 EOF;
 } else {
         $sql = <<<EOF
@@ -449,11 +449,11 @@ function get_data_power($date="",$dateend="",$id=0,&$out,$short="") {
          if((!isset($dateend))||(empty($dateend))) {
             if(empty($short)) {
             $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") GROUP BY time_catch ORDER by timestamp ASC, plug_number ASC
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") GROUP BY time_catch,plug_number ORDER by timestamp ASC, plug_number ASC
 EOF;
             } else {
             $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") AND `record` != 0 GROUP BY time_catch ORDER by timestamp ASC, plug_number ASC
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") AND `record` != 0 GROUP BY time_catch,plug_number ORDER by timestamp ASC, plug_number ASC
 EOF;
             }
          } else {
@@ -476,11 +476,11 @@ EOF;
          if((!isset($dateend))||(empty($dateend))) {
             if(empty($short)) {
             $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` = "{$id}" ORDER by timestamp ASC, plug_number ASC
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` = "{$id}" ORDER by time_catch,plug_number ASC, plug_number ASC
 EOF;
             } else {
             $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` = "{$id}" AND `record` != 0 ORDER by timestamp ASC, plug_number ASC
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` = "{$id}" AND `record` != 0 ORDER by time_catch,plug_number ASC, plug_number ASC
 EOF;
             }
       } else {
