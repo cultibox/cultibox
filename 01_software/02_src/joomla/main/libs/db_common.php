@@ -3054,7 +3054,7 @@ EOF;
     try {
         $sth=$db->prepare("$sql_maxtemp");
         $sth->execute();
-        $res_maxtemp=$sth->fetchAll(PDO::FETCH_ASSOC);
+        $res_maxtemp=$sth->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
         $ret=$e->getMessage();
     }
@@ -3062,7 +3062,7 @@ EOF;
     try {
         $sth=$db->prepare("$sql_maxhumi");
         $sth->execute();
-        $res_maxhumi=$sth->fetchAll(PDO::FETCH_ASSOC);
+        $res_maxhumi=$sth->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
         $ret=$e->getMessage();
     }
@@ -3070,7 +3070,7 @@ EOF;
     try {
         $sth=$db->prepare("$sql_mintemp");
         $sth->execute();
-        $res_mintemp=$sth->fetchAll(PDO::FETCH_ASSOC);
+        $res_mintemp=$sth->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
         $ret=$e->getMessage();
     }
@@ -3078,7 +3078,7 @@ EOF;
     try {
         $sth=$db->prepare("$sql_minhumi");
         $sth->execute();
-        $res_minhumi=$sth->fetchAll(PDO::FETCH_ASSOC);
+        $res_minhumi=$sth->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
         $ret=$e->getMessage();
     }
@@ -3128,31 +3128,22 @@ EOF;
             ;;
     }
         
-    if((count($res_maxtemp)>0)||(count($res_maxhumi)>0)) {
+    if((strcmp($res_maxtemp['max_temp'],"")!=0)||(strcmp($res_maxhumi['max_humi'],"")!=0)) {
         $resume=$resume."<br /><b><i>".__('SENSOR')." ".$sensor.":</i></b>";
-        if(count($res_mintemp)>0) {
-            foreach($res_mintemp as $result) {
-                $resume=$resume."<br />".__('SUMARY_MIN_TEMP').": <font color='".$color_temp."'><b>".$result['min_temp']."&deg;C </b></font>";
-            }
+        if(strcmp($res_mintemp['min_temp'],"")!=0) {
+           $resume=$resume."<br />".__('SUMARY_MIN_TEMP').": <font color='".$color_temp."'><b>".$res_mintemp['min_temp']."&deg;C </b></font>";
         }
 
-        if(count($res_maxtemp)>0) {
-            foreach($res_maxtemp as $result) {
-                $resume=$resume."<br />".__('SUMARY_MAX_TEMP').": <font color='".$color_temp."'><b>".$result['max_temp']."&deg;C </b></font>";
-            }
+        if(strcmp($res_maxtemp['max_temp'],"")!=0) {
+           $resume=$resume."<br />".__('SUMARY_MAX_TEMP').": <font color='".$color_temp."'><b>".$res_maxtemp['max_temp']."&deg;C </b></font>";
         }
 
-
-        if(count($res_minhumi)>0) {
-            foreach($res_minhumi as $result) {
-                $resume=$resume."<br />".__('SUMARY_MIN_HUMI').": <font color='".$color_humi."'><b>".$result['min_humi']."&#37; </b></font>";
-            }
+        if(strcmp($res_minhumi['min_humi'],"")!=0) {
+           $resume=$resume."<br />".__('SUMARY_MIN_HUMI').": <font color='".$color_humi."'><b>".$res_minhumi['min_humi']."&#37; </b></font>";
         }
 
-        if(count($res_maxhumi)>0) {
-            foreach($res_maxhumi as $result) {
-                $resume=$resume."<br />".__('SUMARY_MAX_HUMI').": <font color='".$color_humi."'><b>".$result['max_humi']."&#37; </b></font>";
-            }
+        if(strcmp($res_maxhumi['max_humi'],"")!=0) {
+           $resume=$resume."<br />".__('SUMARY_MAX_HUMI').": <font color='".$color_humi."'><b>".$res_maxhumi['max_humi']."&#37; </b></font>";
         }
         $resume=$resume."<br />"; 
 
