@@ -3036,17 +3036,17 @@ function format_minmax_sumary($start="", &$out,&$resume="",$sensor=1,$color_temp
     $startday=substr($startday,2,8);
     
     $sql_maxtemp = <<<EOF
-SELECT round(MAX(temperature)/100,2) as max_temp FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True";
+SELECT round(MAX(temperature)/100,2) as max_temp FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor} ;
 EOF;
     $sql_maxhumi = <<<EOF
-SELECT round(MAX(humidity)/100,2) as max_humi FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True";
+SELECT round(MAX(humidity)/100,2) as max_humi FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor};
 EOF;
 
  $sql_mintemp = <<<EOF
-SELECT round(MIN(temperature)/100,2) as min_temp FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True";
+SELECT round(MIN(temperature)/100,2) as min_temp FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor};
 EOF;
     $sql_minhumi = <<<EOF
-SELECT round(MIN(humidity)/100,2) as min_humi FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True";
+SELECT round(MIN(humidity)/100,2) as min_humi FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor};
 EOF;
 
 
@@ -3447,7 +3447,7 @@ EOF;
 // IN $out      error or warning message
 // RET array containing datas or nothing if no data catched
 function get_important_event_list(&$out) {
-    $start=date('Y-m-j',strtotime('-1 days'));
+    $start=date('Y-m-j',strtotime('-7 days'));
     $end=date('Y-m-j',strtotime('+7 days'));
     $sql = <<<EOF
 SELECT title,StartTime,EndTime,color,Description from `calendar` WHERE `important`=1 AND ((`StartTime` BETWEEN '{$start}' AND '{$end}')OR (`EndTime` BETWEEN '{$start}' AND '{$end}')OR(`StartTime` <= '{$start}' AND `EndTime` >= '{$end}'))
