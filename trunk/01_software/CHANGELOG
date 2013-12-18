@@ -1,3 +1,9 @@
+Cultibox (1.2.04) precise; urgency=low
+    + Passage de la période -1 jours/ + 7 jours pour l'affichage des messages importans du calendrier
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Dec 18 11:07:03 CET 2013
+
+
 Cultibox (1.2.03) precise; urgency=low
     + Correction du chargement des logs sur Windows XP
     + Ajout des calendriers de changement 2013 et 2014 comme fichier XML
