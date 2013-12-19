@@ -36,15 +36,18 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     sleep 6
 
     # Check if mysql is alive
+    cpt=0
     /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        sleep 4
-        /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
-        if [ $? -ne 0 ]; then
+    cpt=0
+    while [ $? -ne 0 ]; do
+        if [ $cpt -ge 5 ];then
             echo "==== Error, the mysql service doesn't seem be started... exiting ===="
             exit 1
         fi
-    fi
+        $cpt=`expr $cpt + 1`
+        sleep 6
+        /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
+    done
 
     echo "   * Configuring your Cultibox software..."
     /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
@@ -88,15 +91,18 @@ else
     sleep 6
 
     # Check if mysql is alive
+    cpt=0
     /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        sleep 4
-        /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
-        if [ $? -ne 0 ]; then
+    while [ $? -ne 0 ]; do
+        if [ $cpt -ge 5 ];then
             echo "==== Error, the mysql service doesn't seem be started... exiting ===="
             exit 1
         fi
-    fi
+        $cpt=`expr $cpt + 1`
+        sleep 6
+        /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
+    done
+
 
     echo "   * Configuring your Cultibox software..."
     /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
