@@ -38,7 +38,6 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     # Check if mysql is alive
     cpt=0
     /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
-    cpt=0
     while [ $? -ne 0 ]; do
         if [ $cpt -ge 5 ];then
             echo "==== Error, the mysql service doesn't seem be started... exiting ===="
@@ -77,11 +76,23 @@ else
     echo "   * Upgrading the Cultibox software configuration..."
     if [ -d /tmp/cultibox_backup ]; then
         cp -R /tmp/cultibox_backup/* /Applications/cultibox/xamppfiles/var/mysql/
-        rm -f /Applications/cultibox/xamppfiles/var/mysql/mysql/innodb_index_stats*
-        rm -f /Applications/cultibox/xamppfiles/var/mysql/mysql/innodb_table_stats*
-        rm -f /Applications/cultibox/xamppfiles/var/mysql/mysql/slave_master_info*
-        rm -f /Applications/cultibox/xamppfiles/var/mysql/mysql/slave_relay_log_info*
-        rm -f /Applications/cultibox/xamppfiles/var/mysql/mysql/slave_worker_info*
+
+        if [ -f /tmp/cultibox_version ]; then
+            #Get previous cultibox version
+            ver=`cat /tmp/cultibox_version`
+            #Removing architecture information
+            ver=`echo ${ver%%-*}`
+            ver=`echo ${ver//./}`
+
+            #upgrade from 1.1.XX to 1.2.XX: TO BE DELETED
+            if [ $ver -lt 1200 ]; then
+                rm -f /Applications/cultibox/xamppfiles/var/mysql/mysql/innodb_index_stats*
+                rm -f /Applications/cultibox/xamppfiles/var/mysql/mysql/innodb_table_stats*
+                rm -f /Applications/cultibox/xamppfiles/var/mysql/mysql/slave_master_info*
+                rm -f /Applications/cultibox/xamppfiles/var/mysql/mysql/slave_relay_log_info*
+                rm -f /Applications/cultibox/xamppfiles/var/mysql/mysql/slave_worker_info*
+            fi
+        fi
     else
         echo "==== Error, can't access to the cultibox backup directory... exiting ===="
         exit 1
@@ -111,8 +122,8 @@ else
     fi
 
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/user_cultibox.sql
+    sleep 2
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 mysql < /Applications/cultibox/sql_install/five-tables.sql
-
 
 
     if [ -f /Applications/cultibox/sql_install/update_joomla.sql ]; then
