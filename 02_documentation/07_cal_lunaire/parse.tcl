@@ -13,8 +13,7 @@ puts $fid {
       
 puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
       
-puts $fid {
-      <icon>moon.png</icon>
+puts $fid {      <icon>moon.png</icon>
    </entry>
 }
 
@@ -34,8 +33,7 @@ puts $fid {
       
 puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
       
-puts $fid {
-      <icon>moon.png</icon>
+puts $fid {      <icon>moon.png</icon>
    </entry>
 }
 
@@ -55,17 +53,35 @@ puts $fid {
       
 puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
       
-puts $fid {
-      <icon>moon.png</icon>
+puts $fid {      <icon>moon.png</icon>
    </entry>
 }
+}
 
+proc NoeudLunaire {fid mois jour} {
 
-foreach file [glob -directory [file dirname [info script]] *] {
+puts $fid {
+   <entry>
+      <title>Noeud lunaire</title>
+      <summary>Date des Noeud lunaire</summary>
+      <updated>2013-04-16T13:14:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "noeud_lunaire" label = "Noeud lunaire" />
+      <content type = "text"> Noeud lunaire: ne pas jardiner</content>
+      <duration>0</duration>}
+      
+puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+      
+puts $fid {      <icon>moon.png</icon>
+   </entry>
+}
+}
+
+foreach file [glob -directory [file dirname [info script]] *.txt] {
 
     set fid [open $file r]
     
-    set outFid [open [string map {".txt" ".xml"} $file} w+]
+    set outFid [open [string map {".txt" ".xml"} $file] w+]
     
     gets $fid UneLigne
     
@@ -74,6 +90,9 @@ foreach file [glob -directory [file dirname [info script]] *] {
         
         if {$UneLigne != ""} {
             lassign $UneLigne Mois	jour NL	PL	Perigee	Nœud
+            
+            set Mois [string map {" " "0"} [format "%2.f" $Mois]]
+            set jour [string map {" " "0"} [format "%2.f" $jour]]
             
             if {$Perigee != 0} {
                 perigee $outFid $Mois $jour
@@ -87,6 +106,11 @@ foreach file [glob -directory [file dirname [info script]] *] {
                 PleineLune $outFid $Mois $jour
             }
             
+            
+            if {$Nœud != 0} {
+                NoeudLunaire $outFid $Mois $jour
+            }            
+            
         }
     
     }
@@ -94,6 +118,5 @@ foreach file [glob -directory [file dirname [info script]] *] {
     
     close $fid
     close $outFid
-
-
 }
+
