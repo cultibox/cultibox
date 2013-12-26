@@ -3438,7 +3438,7 @@ EOF;
 // IN $out      error or warning message
 // RET array containing datas or nothing if no data catched
 function get_important_event_list(&$out) {
-    $start=date('Y-m-j',strtotime('-7 days'));
+    $start=date('Y-m-j',strtotime('-1 days'));
     $end=date('Y-m-j',strtotime('+7 days'));
     $sql = <<<EOF
 SELECT title,StartTime,EndTime,color,Description from `calendar` WHERE `important`=1 AND ((`StartTime` BETWEEN '{$start}' AND '{$end}')OR (`EndTime` BETWEEN '{$start}' AND '{$end}')OR(`StartTime` <= '{$start}' AND `EndTime` >= '{$end}'))
