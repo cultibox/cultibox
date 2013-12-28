@@ -3,6 +3,7 @@ Cultibox (1.2.05) precise; urgency=low
     + Correction d'une erreur dans les scripts d'installation Mac os x (bouclage si une commande ne renvoie pas le bon code d'erreur)
     + Affichage des fichierx xml à afficher par ordre alphabétique
     + Correction de la génération des titres du calendrier après la suppréssion d'un évènement
+    + Correction du déplacement d'un évènement d'une durée d'une journée
 
 Cultibox (1.2.04) precise; urgency=low
     + Passage de la période -1 jours/ + 7 jours pour l'affichage des messages importans du calendrier

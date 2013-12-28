@@ -116,9 +116,9 @@ important_list=<?php echo json_encode($important_list) ?>;
                 $("#edit_start_date").text($.fullCalendar.formatDate(start, "yyyy-MM-dd"));
                      if(end) {
                         $("#edit_stop_date").text($.fullCalendar.formatDate(end, "yyyy-MM-dd"));
-                     }else {
+                     } else {
                         $("#edit_stop_date").text($.fullCalendar.formatDate(start, "yyyy-MM-dd"));
-                }
+                     }
 
                 $("#select_remark").val("");
 
@@ -137,7 +137,7 @@ important_list=<?php echo json_encode($important_list) ?>;
                                         <?php } ?>
                 
                                         new_start=$.fullCalendar.formatDate( start, "yyyy-MM-dd HH:mm:ss");
-                                        new_end=$.fullCalendar.formatDate( end, "yyyy-MM-dd HH:mm:ss");        
+                                        new_end=$.fullCalendar.formatDate( end, "yyyy-MM-dd 23:59:59");
 
                                         var length = $('#select_title').children('option').length;
                                         if(($("#select_title").prop('selectedIndex')+1)==length) {
@@ -251,7 +251,7 @@ important_list=<?php echo json_encode($important_list) ?>;
                     event.end=event.start
                 }
 
-                new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+                new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd 23:59:59");
 
                 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                     $.blockUI({ message: ''}); 
@@ -276,7 +276,7 @@ important_list=<?php echo json_encode($important_list) ?>;
                     event.end=event.start
                 }
 
-                new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+                new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd 23:59:59");
 
                 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                     $.blockUI({ message: ''}); 
@@ -353,9 +353,9 @@ important_list=<?php echo json_encode($important_list) ?>;
         
                                         new_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
                                         if(!event.end) {
-                                            new_end=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");        
+                                            new_end=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd 23:59:59");        
                                         } else {
-                                            new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");        
+                                            new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd 23:59:59");        
                                         }
 
                                         var length = $('#select_title').children('option').length;
