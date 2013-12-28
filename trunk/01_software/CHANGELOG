@@ -1,3 +1,7 @@
+Cultibox (1.2.05) precise; urgency=low
+    + Suppression de l'ancien calendrier lunaire 2013 et ajout du calendrier 2014
+    + Correction d'une erreur dans les scripts d'installation Mac os x (bouclage si une commande ne renvoie pas le bon code d'erreur)
+
 Cultibox (1.2.04) precise; urgency=low
     + Passage de la période -1 jours/ + 7 jours pour l'affichage des messages importans du calendrier
     + Correction du choix du capteur lors de l'affichage des min/max dans les logs
