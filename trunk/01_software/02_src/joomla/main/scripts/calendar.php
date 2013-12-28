@@ -54,6 +54,10 @@ foreach($xml_list as $liste) {
             );
 }
 
+if(count($list_xml)>0) {
+    array_multisort($list_xml, SORT_ASC);
+}
+
 //Get the important event list for the previous and next week to display:
 $important_list=array();
 $important_list=get_important_event_list($main_error);
