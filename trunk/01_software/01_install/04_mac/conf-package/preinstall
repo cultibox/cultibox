@@ -65,12 +65,11 @@ EOF
           while [ $? -ne 0 ]; do
               if [ $cpt -ge 5 ];then
                   echo "==== Error during preinstall script, please check that the Cultibox software is correctly running, exiting ===="
-		  exit 1
+                  exit 1
               fi
-              $cpt=`expr $cpt + 1`
-	      sleep 6
+              cpt=`expr $cpt + 1`
+              sleep 6
               /Applications/cultibox/run/get_version.sh > /tmp/cultibox_version
-
           done 
       fi
 

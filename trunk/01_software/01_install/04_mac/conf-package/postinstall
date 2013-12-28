@@ -43,7 +43,7 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
             echo "==== Error, the mysql service doesn't seem be started... exiting ===="
             exit 1
         fi
-        $cpt=`expr $cpt + 1`
+        cpt=`expr $cpt + 1`
         sleep 6
         /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
     done
@@ -109,7 +109,7 @@ else
             echo "==== Error, the mysql service doesn't seem be started... exiting ===="
             exit 1
         fi
-        $cpt=`expr $cpt + 1`
+        cpt=`expr $cpt + 1`
         sleep 6
         /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
     done
