@@ -37,7 +37,7 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
 
     # Check if mysql is alive
     cpt=0
-    /Applications/cultibox/xamppfiles/bin/mysqladminn -u root -h 127.0.0.1 ping >/dev/null 2>&1
+    /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
     while [ $? -ne 0 ]; do
         if [ $cpt -ge 5 ];then
             echo "==== Error, the mysql service doesn't seem be started... exiting ===="
@@ -103,7 +103,7 @@ else
 
     # Check if mysql is alive
     cpt=0
-    /Applications/cultibox/xamppfiles/bin/mysqladminn -u root -h 127.0.0.1 ping >/dev/null 2>&1
+    /Applications/cultibox/xamppfiles/bin/mysqladmin -u root -h 127.0.0.1 ping >/dev/null 2>&1
     while [ $? -ne 0 ]; do
         if [ $cpt -ge 5 ];then
             echo "==== Error, the mysql service doesn't seem be started... exiting ===="
