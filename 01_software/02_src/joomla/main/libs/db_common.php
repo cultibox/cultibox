@@ -2685,10 +2685,12 @@ EOF;
          }
 
          $data[]=array(
+            "start_year" => $start_year,
             "start_month" => $start_month,
             "start_day" => $start_day,
+            "end_year" => $end_year,
             "end_month" => $end_month,
-            "end_day" => $end_day,
+            "end_day" => $end_day,  
             "number" => $number,
             "subject" => $s,
             "description" => $desc

@@ -1543,19 +1543,16 @@ $(document).ready(function() {
                             }
                         }]
                     });
+
+                    $.ajax({
+                        cache: false,
+                        url: "../../main/modules/external/set_variable.php",
+                        data: {name:"IMPORTANT", value: "True"}
+                    });
                 }
             });
-
-        $.ajax({
-            cache: false,
-            url: "../../main/modules/external/set_variable.php",
-            data: {name:"IMPORTANT", value: "True"}
-        });
     }
     
-
-
-   
 
     $("#display_calendar").click(function(e) {
            e.preventDefault();

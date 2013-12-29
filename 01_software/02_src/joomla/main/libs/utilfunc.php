@@ -1209,10 +1209,9 @@ function concat_calendar_entries($data,$month,$day) {
 
          foreach($data as $val) {
             $current=strtotime($month."/".$day);
-            $start=strtotime($val['start_month']."/".$val['start_day']);
-            $end=strtotime($val['end_month']."/".$val['end_day']);
-
-
+            $start=strtotime($val['start_year']."/".$val['start_month']."/".$val['start_day']);
+            $end=strtotime($val['end_year']."/".$val['end_month']."/".$val['end_day']);
+    
             if(($start<=$current)&&($end>=$current)) {
                if(empty($new_data)) {
                   $new_data=$val;
@@ -1280,27 +1279,41 @@ function clean_calendar($sd_card="",$start="",$end="") {
             $edmon=substr($end,5,2);
             $edday=substr($end,8,2);
 
-           for($i=$stmon;$i<=$edmon;$i++) {
-               while(1) {
-                    if(strlen("$i")<2) {
-                        $i="0".$i;
-                    } 
-                
+            if(strlen("$stday")<2) {
+                $stday="0".$stday;
+            }
+
+            if(strlen("$stmon")<2) {
+                $stmon="0".$stmon;
+            }
+
+            if(is_file($sd_card."/logs/".$stmon."/cal_".$stday)) {
+                @unlink($sd_card."/logs/".$stmon."/cal_".$stday);
+            }
+
+            while(($stday!=$edday)||($stmon!=$edmon)) {
+                    $stday=$stday+1;
+                    if($stday>31) {
+                        $stmon=$stmon+1;
+                        $stday=1;
+                    }
+
+                    if($stmon>12) {
+                        $stmon=1;
+                    }
+
                     if(strlen("$stday")<2) {
                         $stday="0".$stday;
                     }
 
-                    if(is_file($sd_card."/logs/".$i."/cal_".$stday)) {
-                        @unlink($sd_card."/logs/".$i."/cal_".$stday);
+                    if(strlen("$stmon")<2) {
+                        $stmon="0".$stmon;
                     }
-                   
-                    if(($stday==31)||(($stday==$edday)&&($i==$edmon))) {
-                        $stday=1;
-                        break;
+
+                    if(is_file($sd_card."/logs/".$stmon."/cal_".$stday)) {
+                        @unlink($sd_card."/logs/".$stmon."/cal_".$stday);
                     }
-                    $stday=$stday+1;
-               }
-           }
+            }
         }
     }
     return true;
@@ -1339,7 +1352,7 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
 
         $month=$month_start;
         $day=$day_start;
-        while(($month<$month_end)||(($month==$month_end)&&($day<=$day_end))) {
+        do {
                $val=concat_calendar_entries($data,$month,$day);
                if(!empty($val)) {
                   while(strlen($day)<2) {
@@ -1373,11 +1386,42 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
                if($day==31) {
                  $day="01";
                  $month=$month+1;
+                 if($month>12) {
+                    $month="01";
+                 }
                } else {
                  $day=$day+1;
                }
                unset($val);
-        } 
+        } while(($month!=$month_end)||($day!=$day_end)); 
+
+        $val=concat_calendar_entries($data,$month,$day);
+        if(!empty($val)) {
+             while(strlen($day)<2) {
+             $day="0$day";
+        }
+        while(strlen($month)<2) {
+            $month="0$month";
+        }
+        $file="$sd_card/logs/$month/cal_$day";
+        if($f=@fopen("$file","w+")) {
+             $number_to_show  = "$val[number]";
+             while(strlen($number_to_show)<3) {
+                $number_to_show="0$number_to_show";
+             }
+
+             if(!@fputs($f,"$number_to_show"."\r\n")) $status=false;
+                 foreach($val['subject'] as $sub) {
+                    if(!@fputs($f,"$sub"."\r\n")) $status=false;
+                 }
+                 foreach($val['description'] as $desc) {
+                    if(!@fputs($f,"$desc"."\r\n")) $status=false;
+                 }
+                 fclose($f);
+            } else {
+                 $status=false;
+            }
+       }
        }
 
     }

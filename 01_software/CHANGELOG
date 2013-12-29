@@ -4,6 +4,7 @@ Cultibox (1.2.05) precise; urgency=low
     + Affichage des fichierx xml à afficher par ordre alphabétique
     + Correction de la génération des titres du calendrier après la suppréssion d'un évènement
     + Correction du déplacement d'un évènement d'une durée d'une journée
+    + Optimisation de l'algorithme de création des évènements sur la carte SD
 
 Cultibox (1.2.04) precise; urgency=low
     + Passage de la période -1 jours/ + 7 jours pour l'affichage des messages importans du calendrier
