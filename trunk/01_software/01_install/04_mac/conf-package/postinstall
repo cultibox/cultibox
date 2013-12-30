@@ -123,7 +123,9 @@ else
 
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/user_cultibox.sql
     sleep 2
-    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 mysql < /Applications/cultibox/sql_install/five-tables.sql
+    if [ $ver -lt 1200 ]; then
+        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 mysql < /Applications/cultibox/sql_install/five-tables.sql
+    fi
 
 
     if [ -f /Applications/cultibox/sql_install/update_joomla.sql ]; then
