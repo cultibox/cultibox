@@ -1,3 +1,9 @@
+Cultibox (1.2.06) precise; urgency=low
+    + Correction de l'upgrade d'une version 1.2.XX vers 1.2.XX sur mac os x
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Dec 18 Mon Dec 30 18:21:41 CET 2013
+
+
 Cultibox (1.2.05) precise; urgency=low
     + Suppression de l'ancien calendrier lunaire 2013 et ajout du calendrier 2014
     + Correction d'une erreur dans les scripts d'installation Mac os x (bouclage si une commande ne renvoie pas le bon code d'erreur)
