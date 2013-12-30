@@ -11,8 +11,7 @@ DEST_DIR=../../01_install/01_src/01_xampp
 
 function usage {
             echo "usage: $0"
-            echo "                      windows7 <version> ?jenkins?"
-            echo "                      windows7-admin <version> ?jenkins?"
+            echo "                      windows|windows-xp <version> ?jenkins?"
             echo "                      clean"
             exit 1
 }
