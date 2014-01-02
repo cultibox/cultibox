@@ -49,6 +49,6 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_advanced_options_regul.png
 
 Les options avancées vous permettent:
  * De choisir le ou les capteurs seront utilisés pour réguler votre environnement
- * De savoir si la régulation doit se faire sur la moyenne des valeurs de plusieurs capteurs, leur minimum ou leur maximum
+ * De savoir si la régulation doit se faire sur la moyenne des valeurs de plusieurs capteurs, leur minimum ou leur maximum. La régulation secondaire est toujours réalisée à partir de la moyenne des capteurs.
 
 Il est à noter que ces options ne sont visibles qu'à partir du moment ou le type de l'équipement n'est pas définit comme une "lampe" ou un type "autre".
