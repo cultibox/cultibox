@@ -73,19 +73,15 @@ EOF
           done 
       fi
 
+      /Applications/cultibox/xamppfiles/xampp stop
+      sleep 6
       if [ -d /tmp/cultibox_backup ]; then
-        rm -Rf /tmp/cultibox_backup
+            rm -Rf /tmp/cultibox_backup
       fi
 
       mkdir -p /tmp/cultibox_backup
-      
-      cp -R /Applications/cultibox/xamppfiles/var/mysql/ibdata* /tmp/cultibox_backup/
-      cp -R /Applications/cultibox/xamppfiles/var/mysql/ib_logfile* /tmp/cultibox_backup/
- 
+      cp -R /Applications/cultibox/xamppfiles/var/mysql/* /tmp/cultibox_backup/
       touch /tmp/cultibox_upgrade
-
-      /Applications/cultibox/xamppfiles/xampp stop
-      sleep 6
     else 
         # Remaining process:
         if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
