@@ -1,7 +1,20 @@
+Cultibox (1.2.08) precise; urgency=low
+    + Suppréssion des avertissements lors du démarrage de mysql après une upgrade sur Mac os X
+    + Correction du script load.sh pour Mac os X
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Fri Jan  3 20:28:23 CET 2014
+
+
+Cultibox (1.2.07) precise; urgency=low
+    + Correction de l'upgrade d'une version 1.2.XX vers 1.2.XX sur mac os x
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Dec 30 18:21:41 CET 2013
+
+
 Cultibox (1.2.06) precise; urgency=low
     + Correction de l'upgrade d'une version 1.2.XX vers 1.2.XX sur mac os x
 
--- Yann Genevois <yann.genevois@cultibox.fr> Wed Dec 18 Mon Dec 30 18:21:41 CET 2013
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Dec 23 15:17:42 CET 2013
 
 
 Cultibox (1.2.05) precise; urgency=low
@@ -11,6 +24,9 @@ Cultibox (1.2.05) precise; urgency=low
     + Correction de la génération des titres du calendrier après la suppréssion d'un évènement
     + Correction du déplacement d'un évènement d'une durée d'une journée
     + Optimisation de l'algorithme de création des évènements sur la carte SD
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Dec 18 Mon Dec 30 18:21:41 CET 2013
+
 
 Cultibox (1.2.04) precise; urgency=low
     + Passage de la période -1 jours/ + 7 jours pour l'affichage des messages importans du calendrier
