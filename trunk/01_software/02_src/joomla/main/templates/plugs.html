@@ -145,7 +145,7 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
          </td>
          <td>
             <div id="tolerance<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
-               <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 20%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label><label id="cm<?php echo $i; ?>" style="<?php if(strcmp($plug_type{$i},"pump")!=0) { echo "display:none"; } ?>"> cm</label>
+               <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 8%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label><label id="cm<?php echo $i; ?>" style="<?php if(strcmp($plug_type{$i},"pump")!=0) { echo "display:none"; } ?>"> cm</label>
             </div>
          </td>
          <td>
@@ -157,27 +157,21 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
       <tr>
          <td></td>
          <td><div id="label_sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)||(strcmp("$advanced_regul","False")==0)) { echo "display:none"; } ?>"><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></div></td>
-         <td>
+         <td>   
+           <br />
            <div id="sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)||(strcmp("$advanced_regul","False")==0)) { echo "display:none"; } ?>">
+                <hr />
                <table class="table_width">
                <tr>
                     <?php for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$j++) { ?>
-                        <td><?php echo __('SENSOR')." ".$j; ?></td>
-                    <?php } ?>
-               </tr>
-               <tr>
-                    <?php if(strcmp("$advanced_regul","True")==0) { ?>
-                        <?php for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$j++) { ?> 
-                            <td>
+                        <td><?php echo __('SENSOR')." ".$j; ?>:
+
+                        <?php if(strcmp("$advanced_regul","True")==0) { ?>
                             <select name="plug_sensor<?php echo $i; ?><?php echo $j; ?>" id="plug_sensor<?php echo $i; ?><?php echo $j; ?>">
-                                <option <?php if(strcmp($plug_sensor[$i][$j],"True")==0) { echo 'selected'; }?> value="True"><?php echo __('YES'); ?></option> 
-                                <option <?php if(strcmp($plug_sensor[$i][$j],"False")==0) { echo 'selected'; }?> value="False"><?php echo __('NO'); ?></option> 
+                                <option <?php if(strcmp($plug_sensor[$i][$j],"True")==0) { echo 'selected'; }?> value="True"><?php echo __('YES'); ?></option>
+                                <option <?php if(strcmp($plug_sensor[$i][$j],"False")==0) { echo 'selected'; }?> value="False"><?php echo __('NO'); ?></option>
                             </select>
-                            </td>
-                        <?php } ?>
-                    <?php } else { ?>
-                          <?php for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$j++) { ?>
-                            <td>
+                        <?php } else { ?>
                             <select name="plug_sensor<?php echo $i; ?><?php echo $j; ?>" id="plug_sensor<?php echo $i; ?><?php echo $j; ?>" disabled>
                                  <?php if($j==1) { ?>
                                 <option value="True"><?php echo __('YES'); ?></option>
@@ -185,12 +179,15 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
                                 <option value="False"><?php echo __('NO'); ?></option>
                                 <?php } ?>
                             </select>
-                            </td>
                         <?php } ?>
-                <?php } ?>
+                        </td>
+                        <?php if ($j % 2 == 0) {?></tr><tr><?php } ?>
+                    <?php } ?>
                </tr>
               </table>
+              <hr />
             </div>
+            <br />
          </td>
          <td><div id="error_select_sensor<?php echo $i; ?>" style="display:none" class="error_field"><img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_SELECT_SENSOR'); ?></div></td>
       </tr>
