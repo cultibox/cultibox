@@ -154,7 +154,7 @@ msgid "RESET_CONFIRM_SD_CARD"
 msgstr "Seguro que quieres formatear la tarjeta SD? Los ficheros logs podrían desaparecer."
 
 msgid "SECOND_REGUL_ENABLE"
-msgstr "Activar la regulación segundaría (usuario experto solo)"
+msgstr "Activar la regulación segundaría (usuario experto)"
 
 msgid "ADVANCED_REGUL_OPTIONS"
 msgstr "Autoriser la modification des options avancées de régulation"
@@ -545,7 +545,7 @@ msgid "POWER_PLUG"
 msgstr "Potencia consumida por el elemento (en Watt)"
 
 msgid "ENABLE_REGUL_PLUG"
-msgstr "Regulación segundaría  (usuario experto solo)"
+msgstr "Regulación segundaría  (usuario experto)"
 
 msgid "CONFIGURE_REGUL_SENSOR"
 msgstr "Sensor usado para la regulación"
@@ -887,7 +887,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "Ahora se configura un nuevo enchufe."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Elegir el tipo de enchufe a usar: <ul class='list_class_wizard'><li>un calentador para aumentar la temperatura </li><li>un ventilador para bajar la temperatura</li><li>un humidificador para bajar el porcentaje de humedad</li><li>un deshumidificador para bajar la humedad </li><li>una lámpara</li><li>el tipo 'otro' sirve para cualquier otro equipamiento.<br /><br />Si se elige la configuración de una nueva lámpara , esa tiene que ser<b>menos potente que 200 Vatios</b>"
+msgstr "Elegir el tipo de enchufe a usar: <ul class='list_class_wizard'><li>un calentador para aumentar la temperatura </li><li>un ventilador para bajar la temperatura</li><li>un humidificador para bajar el porcentaje de humedad</li><li>un deshumidificador para bajar la humedad </li><li>una lámpara</li><li>el tipo 'otro' sirve para cualquier otro equipamiento.<br /><br />Si se elige la configuración de una nueva lámpara , esa tiene que ser <b>menos potente que 200 Vatios</b>"
 
 msgid "START_TIME_LAMP"
 msgstr "Heure d'allumage de la lampe"

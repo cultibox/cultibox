@@ -153,7 +153,7 @@ msgid "RESET_CONFIRM_SD_CARD"
 msgstr "Êtes-vous sûr de vouloir formater votre carte SD? Vos fichiers de logs pourraient être détruits."
 
 msgid "SECOND_REGUL_ENABLE"
-msgstr "Activer la régulation secondaire (Utilisateur expert seulement)"
+msgstr "Activer la régulation secondaire (Utilisateur expert)"
 
 msgid "ADVANCED_REGUL_OPTIONS"
 msgstr "Autoriser la modification des options avancées de régulation"
@@ -543,7 +543,7 @@ msgid "POWER_PLUG"
 msgstr "Puissance consommée par l'élément (en Watt)"
 
 msgid "ENABLE_REGUL_PLUG"
-msgstr "Régulation secondaire (utilisateur expert seulement)"
+msgstr "Régulation secondaire (Utilisateur expert)"
 
 msgid "CONFIGURE_REGUL_SENSOR"
 msgstr "Capteur(s) utilisé(s) pour la régulation"
