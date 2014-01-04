@@ -128,6 +128,7 @@ error_valueJS=<?php echo json_encode($error_value) ?>;
                     <option <?php if(strcmp($plug_type,"lamp")==0) { echo "selected";} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
                     <option <?php if(strcmp($plug_type,"ventilator")==0) { echo 'selected';} ?> value="ventilator"><?php echo __('PLUG_VENTILATOR'); ?></option>
                     <option <?php if(strcmp($plug_type,"heating")==0) { echo 'selected';} ?> value="heating"><?php echo __('PLUG_HEATING'); ?></option>
+                    <option <?php if(strcmp($plug_type,"pump")==0) { echo 'selected';} ?> value="pump"><?php echo __('PLUG_PUMP'); ?></option>
                     <option <?php if(strcmp($plug_type,"humidifier")==0) { echo 'selected';} ?> value="humidifier"><?php echo __('PLUG_HUMIDIFIER'); ?></option>
                     <option <?php if(strcmp($plug_type,"dehumidifier")==0) { echo 'selected';} ?> value="dehumidifier"><?php echo __('PLUG_DEHUMIDIFIER'); ?></option>
                     <option <?php if(strcmp($plug_type,"other")==0) { echo 'selected';} ?> value="other"><?php echo __('PLUG_UNKNOWN'); ?></option>
@@ -173,13 +174,14 @@ error_valueJS=<?php echo json_encode($error_value) ?>;
    <tr>
      <td></td>
      <td><?php  if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo __('TEMP_WISHED').":"; }
+                elseif(strcmp($plug_type,"pump")==0) { echo __('WATER_WISHED').":"; }
                          elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { echo __('HUMI_WISHED').":"; } 
 
                ?><?php if((strcmp($plug_type,"lamp")!=0)&&((strcmp($plug_type,"other")!=0))) { ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_VALUE'); ?>" /><?php } ?></td>
-     <td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"other")==0)) {?><input type="hidden" name="value_program" id="value_program" value="99.9"><?php } else { ?><input type="text" maxlength="4" size="4" name="value_program" id="value_program" <?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0))  { 
+     <td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"other")==0)) {?><input type="hidden" name="value_program" id="value_program" value="99.9"><?php } else { ?><input type="text" maxlength="4" size="4" name="value_program" id="value_program" <?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"pump")==0))  { 
                                       echo 'value="22"'; 
                                } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { 
-                                      echo 'value="55"';  } ?>/><?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo " °C"; } else { echo " %"; } ?>
+                                      echo 'value="55"';  } ?>/><?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo " °C"; } elseif(strcmp($plug_type,"pump")==0) { echo " cm"; } else { echo " %"; } ?>
     </td>
     <td><div id="error_value_program" class="error_field" style="display:none"></div></td>
     </tr>

@@ -119,6 +119,7 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
                <option <?php if(strcmp($plug_type{$i},"lamp")==0) { echo 'selected';} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"ventilator")==0) { echo 'selected';} ?> value="ventilator"><?php echo __('PLUG_VENTILATOR'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"heating")==0) { echo 'selected';} ?> value="heating"><?php echo __('PLUG_HEATING'); ?></option>
+               <option <?php if(strcmp($plug_type{$i},"pump")==0) { echo 'selected';} ?> value="pump"><?php echo __('PLUG_PUMP'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"humidifier")==0) { echo 'selected';} ?> value="humidifier"><?php echo __('PLUG_HUMIDIFIER'); ?></option>
                <option <?php if(strcmp($plug_type{$i},"dehumidifier")==0) { echo 'selected';} ?> value="dehumidifier"><?php echo __('PLUG_DEHUMIDIFIER'); ?></option>
             </select>
@@ -144,7 +145,7 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
          </td>
          <td>
             <div id="tolerance<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
-               <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 20%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label>
+               <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 20%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label><label id="cm<?php echo $i; ?>" style="<?php if(strcmp($plug_type{$i},"pump")!=0) { echo "display:none"; } ?>"> cm</label>
             </div>
          </td>
          <td>
@@ -246,7 +247,7 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
                   }
            ?>
     </select></div>
-         <div id="humi_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"ventilator")!=0)&&(strcmp($plug_type{$i},"heating")!=0)) { echo "display:none"; } ?>">
+         <div id="humi_regul_senso<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"ventilator")!=0)&&(strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"pump")!=0)) { echo "display:none"; } ?>">
                <label class="readonly"><?php echo __('REGUL_HUMI'); ?></label>
          </div>
 

@@ -2,6 +2,7 @@ Cultibox (1.2.09) precise; urgency=low
     + Correction du code HTML pour respecter le standard W3C
     + Ajout de deux capteurs possibles pour la régulations (6 en tout - 4 utilisés pour les logs)
     + Correction de la mise en forme pour la langue espagnol
+    + Ajout de la possibilité de configurer une pompe à eau
     
 -- Yann Genevois <yann.genevois@cultibox.fr> Sat Jan  4 10:57:48 CET 2014
 

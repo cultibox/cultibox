@@ -538,6 +538,9 @@ msgstr "Deshumificador"
 msgid "PLUG_HEATING"
 msgstr "Calentador"
 
+msgid "PLUG_PUMP"
+msgstr "Bomba de agua"
+
 msgid "VALIDATION_PLUG_CONF"
 msgstr "Salvar la configuración"
 
@@ -641,6 +644,9 @@ msgstr "Humedad deseada"
 
 msgid "TEMP_WISHED"
 msgstr "Temperatura deseada"
+
+msgid "WATER_WISHED"
+msgstr "Nivel del agua deseada"
 
 msgid "VALUE_ON"
 msgstr "Activar"
@@ -1336,6 +1342,9 @@ msgstr "Valor de temperatura: tiene que estar entre 5°C y 60°C"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
 msgstr "Valor de humedad: tiene que estar entre 10&#37; y 95&#37;"
+
+msgid "ERROR_VALUE_PROGRAM_CM"
+msgstr "Valor de la altura del agua: tiene que estar entre 5cm y 95cm"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "El valor de disparo del alarma tiene que ser superior a 0 y inferior a 100 "

@@ -256,7 +256,7 @@ if(!empty($apply)&&(isset($apply))) {
             $check=true;
     } else {
             if((strcmp($regul_program,"on")!=0)&&(strcmp($regul_program,"off")!=0)) {
-                if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
+                if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"pump")==0)) {
                     $check=check_format_values_program($value_program,"temp");
                 } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
                     $check=check_format_values_program($value_program,"humi");
@@ -467,6 +467,7 @@ for($i=0;$i<$nb_plugs;$i++) {
         case 'other': $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
         case 'ventilator': $plugs_infos[$i]['translate']=__('PLUG_VENTILATOR'); break;
         case 'heating': $plugs_infos[$i]['translate']=__('PLUG_HEATING'); break;	
+        case 'pump': $plugs_infos[$i]['translate']=__('PLUG_PUMP'); break;
         case 'lamp': $plugs_infos[$i]['translate']=__('PLUG_LAMP'); break;
         case 'humidifier': $plugs_infos[$i]['translate']=__('PLUG_HUMIDIFIER'); break;
         case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DEHUMIDIFIER'); break;
