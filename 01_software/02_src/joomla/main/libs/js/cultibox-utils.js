@@ -256,6 +256,7 @@ function getTolerance(i,j,secondR,advancedOpt) {
       var divToleranceLabel = document.getElementById('tolerance_label'+j);
       var pDegree = document.getElementById('degree'+j);
       var pPourcent = document.getElementById('pourcent'+j);
+      var pCm = document.getElementById('cm'+j);
       var divHumiRegul = document.getElementById('humi_regul_senso'+j);
       var divTempRegul = document.getElementById('temp_regul_senso'+j);
       var divUnknownRegul = document.getElementById('unknown_regul_senso'+j);
@@ -286,6 +287,7 @@ function getTolerance(i,j,secondR,advancedOpt) {
                         divUnknownRegul.style.display = 'none';
                         labelDeg.style.display = 'none';
                         labelPct.style.display = 'none';
+                        pCm.style.display = 'none';
                         labelSecondDeg.style.display = 'none';
                         labelSecondPct.style.display = 'none';
                     } 
@@ -299,6 +301,7 @@ function getTolerance(i,j,secondR,advancedOpt) {
                     divToleranceLabel.style.display = 'none'; 
                     pDegree.style.display = 'none'; 
                     pPourcent.style.display = 'none'; 
+                    pCm.style.display = 'none';
                     if(secondR=="True") {
                         divHumiRegul.style.display = 'none'; 
                         divTempRegul.style.display = 'none'; 
@@ -321,6 +324,7 @@ function getTolerance(i,j,secondR,advancedOpt) {
                     divToleranceLabel.style.display = ''; 
                     pDegree.style.display = ''; 
                     pPourcent.style.display = 'none'; 
+                    pCm.style.display = 'none';
                     if(secondR=="True") {
                         divHumiRegul.style.display = ''; 
                         divTempRegul.style.display = 'none'; 
@@ -347,6 +351,7 @@ function getTolerance(i,j,secondR,advancedOpt) {
                     divToleranceLabel.style.display = ''; 
                     pDegree.style.display = ''; 
                     pPourcent.style.display = 'none'; 
+                    pCm.style.display = 'none';
                     if(secondR=="True") {
                         divHumiRegul.style.display = ''; 
                         divTempRegul.style.display = 'none'; 
@@ -370,8 +375,9 @@ function getTolerance(i,j,secondR,advancedOpt) {
 
           case 4 :  divTolerance.style.display = '';
                     divToleranceLabel.style.display = '';
-                    pDegree.style.display = '';
+                    pDegree.style.display = 'none';
                     pPourcent.style.display = 'none';
+                    pCm.style.display = '';
                     if(secondR=="True") {
                         divHumiRegul.style.display = '';
                         divTempRegul.style.display = 'none';
@@ -397,6 +403,7 @@ function getTolerance(i,j,secondR,advancedOpt) {
                     divToleranceLabel.style.display = ''; 
                     pDegree.style.display = 'none'; 
                     pPourcent.style.display = ''; 
+                    pCm.style.display = 'none';
                     if(secondR=="True") {
                         divHumiRegul.style.display = 'none'; 
                         divTempRegul.style.display = ''; 
@@ -422,6 +429,7 @@ function getTolerance(i,j,secondR,advancedOpt) {
                     divToleranceLabel.style.display = ''; 
                     pDegree.style.display = 'none'; 
                     pPourcent.style.display = ''; 
+                    pCm.style.display = 'none';
                     if(secondR=="True") {
                         divHumiRegul.style.display = 'none'; 
                         divTempRegul.style.display = ''; 
