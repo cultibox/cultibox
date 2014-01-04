@@ -1334,6 +1334,9 @@ msgstr "Valor de tolerancia : tiene de estar entre 0°C et 10°C"
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
 msgstr " Valor de tolerancia : tiene de estar entre 0&#37; y 25.5&#37;"
 
+msgid "ERROR_TOLERANCE_VALUE_CM"
+msgstr "Valor de tolerancia: tiene de estar entre 0 cm y 10 cm"
+
 msgid "ERROR_VALUE_PROGRAM"
 msgstr "Error: el valor indicado tiene que ser un numero"
 

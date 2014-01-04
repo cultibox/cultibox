@@ -920,8 +920,10 @@ $(document).ready(function() {
                                 var check=3;
                      } else if((plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="humidifier")||(plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="dehumidifier")) {
                                 var check=4;
-                     } else {
+                     } else if(plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="pump") {
                                 var check=5;
+                     } else {
+                                var check=6;
                      }
 
 
@@ -1126,8 +1128,10 @@ $(document).ready(function() {
                     var check=3;
                 } else if((plug_type=="humidifier")||(plug_type=="dehumidifier")) {
                     var check=4;
-                } else {
+                } else if(plug_type=="pump") {
                     var check=5;
+                } else {
+                    var check=6;
                 }
 
                 $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[check]);
@@ -1241,6 +1245,7 @@ $(document).ready(function() {
             $("#error_power_value"+i).css("display","none");
             $("#error_tolerance_value_humi"+i).css("display","none");
             $("#error_tolerance_value_temp"+i).css("display","none");
+            $("#error_tolerance_value_water"+i).css("display","none");
             $("#error_second_tolerance_value_humi"+i).css("display","none");
             $("#error_second_tolerance_value_temp"+i).css("display","none");
             $("#error_regul_value"+i).css("display","none");
@@ -1263,7 +1268,7 @@ $(document).ready(function() {
 
 
                 //Check tolerance value
-                if(($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")||($("#plug_type"+i).val()=="ventilator")) {
+                if(($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")||($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="pump")) {
                     if(($("#plug_tolerance"+i).val()=="0")||($("#plug_tolerance"+i).val()=="")) {
                        $("#plug_tolerance"+i).val('0'); 
                     } else { 
@@ -1280,6 +1285,10 @@ $(document).ready(function() {
 
                                 if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
                                     $("#error_tolerance_value_temp"+i).show(700);
+                                }
+
+                                if($("#plug_type"+i).val()=="pump") {
+                                    $("#error_tolerance_value_water"+i).show(700);
                                 }
                                 checked=false;
                             }
@@ -1303,7 +1312,7 @@ $(document).ready(function() {
                                         $("#error_second_tolerance_value_temp"+i).show(700);
                                     }
 
-                                    if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
+                                    if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="pump")) {
                                         $("#error_second_tolerance_value_humi"+i).show(700);
                                     }
                                     checked=false;
@@ -1384,7 +1393,7 @@ $(document).ready(function() {
 
 
                 //Check tolerance value
-                if(($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")||($("#plug_type"+i).val()=="ventilator")) {
+                if(($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")||($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="pump")) {
                     if(($("#plug_tolerance"+i).val()=="0")||($("#plug_tolerance"+i).val()=="")) {
                        $("#plug_tolerance"+i).val('0');
                     } else {
@@ -1401,6 +1410,10 @@ $(document).ready(function() {
 
                                 if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
                                     $("#error_tolerance_value_temp"+i).show(700);
+                                }
+
+                                if($("#plug_type"+i).val()=="pump") {
+                                    $("#error_tolerance_value_water"+i).show(700);
                                 }
                                 checked=false;
                             }
@@ -1424,7 +1437,7 @@ $(document).ready(function() {
                                         $("#error_second_tolerance_value_temp"+i).show(700);
                                     }
 
-                                    if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
+                                    if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="pump")) {
                                         $("#error_second_tolerance_value_humi"+i).show(700);
                                     }
                                     checked=false;
