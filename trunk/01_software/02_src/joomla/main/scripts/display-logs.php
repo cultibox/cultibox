@@ -413,7 +413,7 @@ if("$type" == "days") {
                 $main_error[]=__('EMPTY_DATA');
             }
         } else {
-            for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
+            for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) {
                 format_minmax_sumary($startday,$main_error,$resume_minmax,$i);
                 get_graph_array($temperature,"temperature/100",$startday,$i,"False","0",$main_error);
 

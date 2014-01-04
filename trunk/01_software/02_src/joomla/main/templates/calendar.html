@@ -615,7 +615,7 @@ important_list=<?php echo json_encode($important_list) ?>;
 </tr>
 <tr>
     <td><b><?php echo __('CALENDAR_IMPORTANT'); ?>:</b></td>
-    <td><input type="checkbox" id="event_important" name="event_important" value="important"></textarea>
+    <td><input type="checkbox" id="event_important" name="event_important" value="important">
 </td>
 </tr>
 </table>
@@ -714,8 +714,8 @@ important_list=<?php echo json_encode($important_list) ?>;
             <td><?php echo __('CALENDAR_SELECT_CROISSANCE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_SELECT_CROISSANCE'); ?>" /></td>
             <td>
                 <input type="radio" name="select_croissance" id="select_croissance" value="croi" checked="" /> <?php echo __('CALENDAR_CROISSANCE'); ?>
-                <input type="radio" name="select_croissance" id="select_croissance" value="flo" checked="" /> <?php echo __('CALENDAR_FLORAISON'); ?>
-                <input type="radio" name="select_croissance" id="select_croissance" value="all" checked="" /> <?php echo __('CALENDAR_CROISSANCE_+_FLORAISON'); ?>
+                <input type="radio" name="select_croissance" id="select_croissance_flo" value="flo" checked="" /> <?php echo __('CALENDAR_FLORAISON'); ?>
+                <input type="radio" name="select_croissance" id="select_croissance_and_flo" value="all" checked="" /> <?php echo __('CALENDAR_CROISSANCE_+_FLORAISON'); ?>
             </td>
             <td></td>
         </tr>

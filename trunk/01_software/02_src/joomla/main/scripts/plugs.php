@@ -97,7 +97,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $power_max=getvar("plug_power_max${nb}");
 
    $sensor="";
-   for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR'];$j++) { 
+   for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$j++) { 
        $tmp_sensor=getvar("plug_sensor${nb}${j}");
        if(strcmp($tmp_sensor,"True")==0) {
             if(strcmp($sensor,"")!=0) {

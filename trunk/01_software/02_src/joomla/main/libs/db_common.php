@@ -2246,6 +2246,8 @@ EOF;
                     $reg="REG:T+${tol}";
                 } else if($data['PLUG_TYPE']=="heating") {
                     $reg="REG:T-${tol}";
+                } else if($data['PLUG_TYPE']=="pump") {
+                    $reg="REG:T-${tol}";
                 } else if($data['PLUG_TYPE']=="humidifier") {
                     $reg="REG:H-${tol}";
                 } else if($data['PLUG_TYPE']=="dehumidifier") {
@@ -2261,6 +2263,8 @@ EOF;
                     if($data['PLUG_TYPE']=="ventilator") {
                         $sec="SEC:T+1000";
                     } else if($data['PLUG_TYPE']=="heating") {
+                        $sec="SEC:N-1000";
+                    } else if($data['PLUG_TYPE']=="pump") {
                         $sec="SEC:N-1000";
                     } else if($data['PLUG_TYPE']=="humidifier") {
                         $sec="SEC:N-1000";
@@ -2293,7 +2297,7 @@ EOF;
                 $vsen="";
                 $tmp_sensor=explode("-",$data['PLUG_REGUL_SENSOR']);
                 $find=false;
-                for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
+                for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$i++) {
                     foreach($tmp_sensor as $sensor) {
                         if($sensor==$i) {
                             $vsen=$vsen."1";
@@ -3355,7 +3359,7 @@ EOF;
    if(!empty($res)) {
            $tmp=explode("-",$res[0]['PLUG_REGUL_SENSOR']);
            $result=array();                                           
-           for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) {
+           for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$i++) {
              foreach($tmp as $sensor) {
                 if($sensor==$i) {
                     $result[$i]="True";

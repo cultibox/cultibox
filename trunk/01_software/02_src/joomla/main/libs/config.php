@@ -25,8 +25,11 @@ $GLOBALS['NB_SELECTABLE_PLUG'] = '10';
 // Number of min plugs used by the cultibox
 $GLOBALS['NB_MIN_PLUG'] = '3';
 
-// Number of maximal sensor used
-$GLOBALS['NB_MAX_SENSOR'] = '4';
+// Number of maximal sensor used to get logs informations
+$GLOBALS['NB_MAX_SENSOR_LOG'] = '4';
+
+// Number of maximal sensor used to manage plugs
+$GLOBALS['NB_MAX_SENSOR_PLUG'] = '6';
 
 // List of the updating plugs frequency: (-1 means every clock heartbeat)
 $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');

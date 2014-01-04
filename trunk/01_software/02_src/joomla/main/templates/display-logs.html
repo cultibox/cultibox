@@ -174,7 +174,7 @@ buttonImageOnly: 'true',
       <td></td>
       <td><?php echo __('SELECT_SENSOR_NB'); ?>:</td>
       <td> <select name="select_sensor">
-            <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) { ?>
+            <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) { ?>
                <option value="<?php echo $i; ?>" <?php if(strcmp($select_sensor,$i)==0) echo "selected"; ?>><?php echo __('SELECT_SENSOR')." ".$i; ?></option>
             <?php } ?>
              <option value="<?php echo 'all'; ?>" <?php if(strcmp($select_sensor,"all")==0) echo "selected"; ?>><?php echo __('ALL_SENSOR'); ?></option> 
@@ -233,7 +233,7 @@ buttonImageOnly: 'true',
       <td></td>
       <td><?php echo __('SELECT_SENSOR_NB'); ?>:</td>
       <td> <select name="select_sensor">
-            <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) { ?>
+            <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) { ?>
                <option value="<?php echo $i; ?>" <?php if(strcmp($select_sensor,$i)==0) echo "selected"; ?>><?php echo __('SELECT_SENSOR')." ".$i; ?></option>
             <?php } ?>
          </select>
@@ -413,7 +413,7 @@ $(function () {
                   var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x)+"</p>"; 
                <?php } ?>
                   var unit = {
-                     <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR'];$i++) { 
+                     <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) { 
                      echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$i.")': '%',";
                      echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$i.")': '°C',";
                } ?>
@@ -548,7 +548,7 @@ $(function () {
          },
          series: [
               <?php if((isset($select_sensor))&&(strcmp("$select_sensor","all")==0)&&(!$fake_log)) { $count=0; ?>
-              <?php for($i=0;$i<$GLOBALS['NB_MAX_SENSOR'];$i++) { $nb=$i+1;  ?>
+              <?php for($i=0;$i<$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) { $nb=$i+1;  ?>
                 <?php if($i>0) { echo ","; $count=$count+2; } ?>
               {
               type: 'area',

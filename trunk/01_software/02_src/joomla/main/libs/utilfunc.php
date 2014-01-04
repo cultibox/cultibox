@@ -167,7 +167,7 @@ function get_log_value($sd_card,$month,$day,&$array_line) {
          $buffer = fgets($handle);
          if(check_empty_string($buffer)) {
             $temp = explode("\t", $buffer);
-            if(count($temp)==($GLOBALS['NB_MAX_SENSOR']*2+1)) { 
+            if(count($temp)==($GLOBALS['NB_MAX_SENSOR_LOG']*2+1)) { 
                 for($i=0;$i<count($temp);$i++) {
                     $temp[$i]=rtrim($temp[$i]);
                     $temp[$i]=str_replace(" ","",$temp[$i]);
@@ -181,7 +181,7 @@ function get_log_value($sd_card,$month,$day,&$array_line) {
 
 
                 if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)&&(strlen($temp[0])==14)) {
-                        for($i=0;$i<$GLOBALS['NB_MAX_SENSOR'];$i++) {
+                        for($i=0;$i<$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) {
                             $sensor_type=get_sensor_type($i,"$sd_card","$month","$day");
                             if(empty($sensor_type)) {
                                 $sensor_type="2";
