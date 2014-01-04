@@ -368,7 +368,32 @@ function getTolerance(i,j,secondR,advancedOpt) {
                     }
                     break;
 
-         case 4 :   divTolerance.style.display = ''; 
+          case 4 :  divTolerance.style.display = '';
+                    divToleranceLabel.style.display = '';
+                    pDegree.style.display = '';
+                    pPourcent.style.display = 'none';
+                    if(secondR=="True") {
+                        divHumiRegul.style.display = '';
+                        divTempRegul.style.display = 'none';
+                        divUnknownRegul.style.display = 'none';
+                        labelDeg.style.display = 'none';
+                        labelPct.style.display = '';
+                        labelSecondDeg.style.display = 'none';
+                        labelSecondPct.style.display = '';
+                        seconLabel.style.display = '';
+                        secondVal.style.display = '';
+                        secondParam.style.display = '';
+                    }
+
+                    if(advancedOpt=="True") {
+                        Sensor.style.display = '';
+                        labelSensor.style.display = '';
+                        labelComputeRegul.style.display = '';
+                        computeRegul.style.display = '';
+                    }
+                    break;
+
+         case 5 :   divTolerance.style.display = ''; 
                     divToleranceLabel.style.display = ''; 
                     pDegree.style.display = 'none'; 
                     pPourcent.style.display = ''; 
@@ -393,7 +418,7 @@ function getTolerance(i,j,secondR,advancedOpt) {
                     }
                     break;
 
-         case 5 :   divTolerance.style.display = ''; 
+         case 6 :   divTolerance.style.display = ''; 
                     divToleranceLabel.style.display = ''; 
                     pDegree.style.display = 'none'; 
                     pPourcent.style.display = ''; 
@@ -487,12 +512,16 @@ function getRegulation(i, type) {
         var divLabelTemp = document.getElementById('regul_label_temp');
         var divValHumi = document.getElementById('regul_value_humi');
         var divLabelHumi = document.getElementById('regul_label_humi');
+        var divLabelWater = document.getElementById('regul_label_water');
+        var divValWater = document.getElementById('regul_value_water');
 
         if((type=="humidifier")||(type=="dehumidifier")) {
             divValHumi.style.display = '';
             divLabelHumi.style.display = '';
             divValTemp.style.display = 'none';
             divLabelTemp.style.display = 'none';
+            divValWater.style.display = 'none';
+            divLabelWater.style.display = 'none';
             var divValue = document.getElementById('value_program');
             divValue.value="55";
       } else if((type=="heating")||(type=="ventilator")) {
@@ -500,9 +529,21 @@ function getRegulation(i, type) {
             divLabelHumi.style.display = 'none';
             divValTemp.style.display = '';
             divLabelTemp.style.display = '';
+            divValWater.style.display = 'none';
+            divLabelWater.style.display = 'none';
 
             var divValue = document.getElementById('value_program');
-                divValue.value="22";
+            divValue.value="22";
+      } else if(type=="pump") {
+            divValHumi.style.display = 'none';
+            divLabelHumi.style.display = 'none';
+            divValTemp.style.display = 'none';
+            divLabelTemp.style.display = 'none';
+            divValWater.style.display = '';
+            divLabelWater.style.display = '';
+
+            var divValue = document.getElementById('value_program');
+            divValue.value="22";
       } else {
             var divValue = document.getElementById('value_program');
             divValue.value="";

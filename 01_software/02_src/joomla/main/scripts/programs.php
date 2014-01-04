@@ -72,7 +72,8 @@ $anchor=getvar('anchor');
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');
 $error_value[3]=__('ERROR_VALUE_PROGRAM_TEMP','html');
 $error_value[4]=__('ERROR_VALUE_PROGRAM_HUMI','html');
-$error_value[5]=__('ERROR_VALUE_PROGRAM','html');
+$error_value[5]=__('ERROR_VALUE_PROGRAM_CM','html');
+$error_value[6]=__('ERROR_VALUE_PROGRAM','html');
 
 for($i=1;$i<=$nb_plugs;$i++) {
     format_regul_sumary("$i",$main_error,$tmp,$nb_plugs);

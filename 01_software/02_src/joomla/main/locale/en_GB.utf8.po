@@ -1332,6 +1332,9 @@ msgstr "Valeur de tolérance: elle doit être comprise entre 0°C et 10°C"
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
 msgstr "Valeur de tolérance: elle doit être comprise entre 0&#37; et 25.5&#37;"
 
+msgid "ERROR_TOLERANCE_VALUE_CM"
+msgstr "Valeur de tolérance: elle doit être comprise entre 0 cm et 10 cm"
+
 msgid "ERROR_VALUE_PROGRAM"
 msgstr "Erreur: la valeur rentrée doit être un nombre"
 

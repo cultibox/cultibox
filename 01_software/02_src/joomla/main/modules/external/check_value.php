@@ -64,6 +64,8 @@ switch($type) {
                                 $check=check_format_values_program($value,"temp");
                             } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
                                 $check=check_format_values_program($value,"humi");
+                            } elseif(strcmp($plug_type,"pump")==0) {
+                                $check=check_format_values_program($value,"cm");
                             } else {
                                 $check=check_format_values_program($value,"other");
                             }
