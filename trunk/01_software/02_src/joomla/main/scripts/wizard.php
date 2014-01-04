@@ -44,7 +44,8 @@ $type_submit=getvar('type_submit');
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');
 $error_value[3]=__('ERROR_VALUE_PROGRAM_TEMP','html');
 $error_value[4]=__('ERROR_VALUE_PROGRAM_HUMI','html');
-$error_value[5]=__('ERROR_VALUE_PROGRAM','html');
+$error_value[5]=__('ERROR_VALUE_PROGRAM_CM','html');
+$error_value[6]=__('ERROR_VALUE_PROGRAM','html');
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
@@ -211,6 +212,9 @@ if((empty($value_program))||(!isset($value_program))) {
             case 'lamp':
                 $value_program=0.0;
                 break;
+            case 'pump':
+                $value_program=0.0;
+                break;
             case 'other' :
                 $value_program=0.0;
                break;
@@ -242,6 +246,8 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
 		        $chval=check_format_values_program($value_program,"temp");
             } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
                 $chval=check_format_values_program($value_program,"humi");
+            }elseif(strcmp($plug_type,"pump")==0) {
+                $chval=check_format_values_program($value_program,"cm"); 
             } else {
                 $chval=check_format_values_program($value_program,"other");
             }

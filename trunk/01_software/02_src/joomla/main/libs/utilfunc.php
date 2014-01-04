@@ -1477,7 +1477,7 @@ function check_tolerance_value($type,&$tolerance=0) {
 
     if(!is_numeric($tolerance)) return false;
 
-   if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
+   if((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)||(strcmp($type,"pump")==0)) {
       if(($tolerance >= 0)&&($tolerance <= 10)) {
          return true;
       } else {
@@ -1504,21 +1504,25 @@ function check_format_values_program(&$value="0",$type="temp") {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
 
-    if(!is_numeric($value)) {   
-                return 2;
+   if(!is_numeric($value)) {   
+       return 2;
    }
 
    if(strcmp($type,"temp")==0) {
       if(($value>60)||($value<5)) {
-        return 3;
+         return 3;
       }
    } elseif(strcmp($type,"humi")==0) {
       if(($value>95)||($value<10)) {
-                return 4;
+         return 4;
+      }
+   } elseif(strcmp($type,"cm")==0) {
+      if(($value>95)||($value<5)) {
+          return 5;
       }
    } else {
-   if(($value>99.9)||($value<0)) {
-                return 5;
+       if(($value>99.9)||($value<0)) {
+          return 6;
        }
    }
    return 1;
@@ -1854,6 +1858,7 @@ function format_data_sumary($data) {
                     case 'other': $unity=""; break;
                     case 'ventilator': $unity="°C"; break;
                     case 'heating': $unity="°C"; break;
+                    case 'pump': $unity="cm"; break;
                     case 'humidifier': $unity="%"; break; 
                     case 'dehumidifier': $unity="%"; break;
             }

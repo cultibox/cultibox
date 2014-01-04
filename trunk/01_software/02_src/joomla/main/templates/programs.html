@@ -268,7 +268,10 @@ $(document).ready(function() {
                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
                if(this.value>0) return this.value+'°C';
                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-
+<?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"pump")==0)) { ?>
+               if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+               if(this.value>0) return this.value+' cm';
+               if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
 <?php } else if((strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]["PLUG_TYPE"],"dehumidifier")==0)) { ?>
                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
                if(this.value>0) return this.value+'%';
@@ -316,7 +319,9 @@ $(document).ready(function() {
                                     unity="°C";
                                 } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="dehumidifier")) {
                                     unity="%";
-                                } 
+                                } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="pump")) {
+                                    unity=" cm"; 
+                                }
                                 return "<?php echo __('VALUE_REGUL'); ?>: "+this.y+unity;
                             }
                         }
@@ -340,7 +345,9 @@ $(document).ready(function() {
                     unity="°C";
                 } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="dehumidifier")) {
                     unity="%";
-                } 
+                } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="pump")) {
+                    unity=" cm";
+                }
                 return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"</p><p align='left'><b><?php echo __('BEHAVIOUR'); ?>: </b>"+this.y+unity+" (<?php echo __('REGULATION'); ?>)</p>";
             } 
          }
@@ -419,6 +426,10 @@ $(document).ready(function() {
                             } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="ventilator")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="heating")) { 
                                 if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
                                 if(this.value>0) return this.value+'°C';
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="pump")) { 
+                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                                if(this.value>0) return this.value+' cm';
                                 if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
                             } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="dehumidifier")) { 
                                 if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
@@ -542,6 +553,10 @@ $(document).ready(function() {
                             } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="ventilator")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="heating")) { 
                                 if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
                                 if(this.value>0) return this.value+'°C';
+                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="pump")) { 
+                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                                if(this.value>0) return this.value+' cm';
                                 if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
                             } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="dehumidifier")) { 
                                 if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
@@ -674,6 +689,10 @@ $(document).ready(function() {
             <label id="regul_label_temp"  style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)) { echo ''; } else { echo 'display:none'; } ?>"> 
                 <?php echo __('TEMP_WISHED').":"; ?>
             </label>
+
+            <label id="regul_label_water"  style="<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"pump")==0) { echo ''; } else { echo 'display:none'; } ?>">
+                <?php echo __('WATER_WISHED').":"; ?>
+            </label>
             
             <label id="regul_label_humi" style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) { echo ''; } else { echo 'display:none'; } ?>">
                 <?php echo __('HUMI_WISHED').":"; ?>
@@ -684,7 +703,7 @@ $(document).ready(function() {
                        <?php if(!empty($value_program)) { 
                                ?> value="<?php echo $value_program;?>" <?php 
                         } else { 
-                              if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0))  { 
+                              if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"pump")==0))  { 
                                       echo 'value="22"'; 
                                } elseif((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) { 
                                       echo 'value="55"'; 
@@ -692,6 +711,9 @@ $(document).ready(function() {
                         } ?> />
     
                     <label id="regul_value_temp" style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"heating")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"ventilator")==0)) { echo ''; } else { echo 'display:none'; } ?>">°C
+                    </label>
+
+                    <label id="regul_value_water" style="<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"pump")==0) { echo ''; } else { echo 'display:none'; } ?>">cm
                     </label>
 
                     <label id="regul_value_humi" style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) { echo ''; } else { echo 'display:none'; } ?>">%

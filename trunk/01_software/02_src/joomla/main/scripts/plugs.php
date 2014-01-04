@@ -171,7 +171,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
             $plug_update=true;
         }
 
-        if(((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0))) {
+        if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)||(strcmp($type,"pump")==0)) {
                 insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$main_error);
                 $update_program=true;
                 $plug_update=true;
@@ -227,7 +227,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 
         if((strcmp($type,"other")==0)||(strcmp($type,"lamp")==0)) {
             $regul_senso=getvar("plug_senso${nb}");
-        } elseif((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)) {
+        } elseif((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)||(strcmp($type,"pump")==0)) {
             $regul_senso="H";
         } elseif((strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)) {
             $regul_senso="T";

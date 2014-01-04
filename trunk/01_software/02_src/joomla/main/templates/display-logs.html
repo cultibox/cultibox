@@ -447,6 +447,8 @@ $(function () {
                                 break;
                             case 'heating': $unity="°C";
                                 break;
+                            case 'pump': $unity="cm";
+                                break;
                             case 'humidifier': $unity="%";
                                 break;
                             case 'dehumidifier': $unity="%";
@@ -659,6 +661,7 @@ $(function () {
                             case 'other': break;
                             case 'ventilator': echo "yAxis: 1,"; break;
                             case 'heating': echo "yAxis: 1,"; break;
+                            case 'pump': echo "yAxis: 1,"; break;
                             case 'dehumidifier':  echo "yAxis: 0,"; break;
                             case 'humidifier':  echo "yAxis: 0,"; break;
                             case 'lamp'; break;
