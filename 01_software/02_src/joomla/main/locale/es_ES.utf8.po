@@ -619,6 +619,12 @@ msgstr "Maximum"
 msgid "JUMPTO_WIZARD"
 msgstr "Utiliser l'assistant pour configurer cette prise"
 
+msgid "DIMMER"
+msgstr "Variateur"
+
+msgid "CANAL"
+msgstr "Canal"
+
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
@@ -1599,6 +1605,9 @@ msgstr "Se puede desactivar los enchufes que no se quiere usar. El programa no e
 
 msgid "TOOLTIP_MAX_POWER_PLUG_3500"
 msgstr "El enchufe 3500W permite controlar los elementos ingentes en energía. Los 3500W anunciados corresponden a una potencia resistiva pura, por ejemplo un calentamiento. Si se conecta una lámpara HPS o MH en este enchufe, la potencia máxima autorizada es de 600W"
+
+msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
+msgstr "La prise variateur permet de varier l'intensité délivrée par la prise. Une fois selectionnée il faudra chosisir le canal de communication de la prise (qui doit être différent pour chaque prise variateur)"
 
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "El enchufe 1000W permite controlar los elementes ingentes en energía. Los 1000W anunciados corresponden a una potencia resistiva pura, por ejemplo un calentamiento. Si se conecta una lámpara HPS o MH en este enchufe, la potencia máxima autorizada es de 150W"

@@ -31,6 +31,9 @@ $GLOBALS['NB_MAX_SENSOR_LOG'] = '4';
 // Number of maximal sensor used to manage plugs
 $GLOBALS['NB_MAX_SENSOR_PLUG'] = '6';
 
+// Number of maximal canal used by dimmer
+$GLOBALS['NB_MAX_CANAL_DIMMER'] = '8';
+
 // List of the updating plugs frequency: (-1 means every clock heartbeat)
 $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');
 

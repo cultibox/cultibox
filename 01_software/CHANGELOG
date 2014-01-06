@@ -1,5 +1,6 @@
 Cultibox (1.2.10) precise; urgency=low
     + Modification de la programmation cyclique, simplification des textes affichés et du fonctionnement
+    + Ajout de la configuration d'une prise variateur dans l'onglet prise
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon Jan  6 08:43:31 CET 2014
 

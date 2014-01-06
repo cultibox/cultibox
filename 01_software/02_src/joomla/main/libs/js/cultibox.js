@@ -437,6 +437,17 @@ $(document).ready(function() {
         });
     });
 
+
+    $("input[name*='plug_power_max']").change(function () {
+        var id=$(this).attr('name').substr($(this).attr('name').length-1);
+
+        if($(this).val()=="VARIO") {
+            $("#select_canal_dimmer"+id).show();
+        } else {
+            $("#select_canal_dimmer"+id).css("display","none");
+        }
+    });
+
     $("#reset_sd_card_submit").click(function(e) {
         e.preventDefault();
         $("#format_dialog_sd").dialog({
