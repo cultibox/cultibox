@@ -127,6 +127,38 @@ timeFormat: 'hh:mm:ss',
 <?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
 <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
 });
+
+$('#cyclic_duration').timepicker({
+<?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
+showOn: 'both',
+buttonImage: "../../main/libs/img/datepicker.png",
+buttonImageOnly: 'true',
+<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
+showSecond: true,
+timeFormat: 'hh:mm:ss',
+<?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
+<?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
+<?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
+<?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
+<?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
+<?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
+});
+
+$('#start_time_cyclic').timepicker({
+<?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
+showOn: 'both',
+buttonImage: "../../main/libs/img/datepicker.png",
+buttonImageOnly: 'true',
+<?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
+showSecond: true,
+timeFormat: 'hh:mm:ss',
+<?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
+<?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
+<?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
+<?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
+<?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
+<?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
+});
 });
 </script>
 
@@ -644,21 +676,34 @@ $(document).ready(function() {
 </tr>
 <tr>
    <td></td>
-   <td><?php echo __('START_TIME_PROGRAM'); ?>:</td>
-   <td><input type="text" size="10" name="start_time" id="start_time" <?php if(!empty($start_time)) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> /></td>
+   <td><div id="start_time_program_title" style="<?php if((!isset($cyclic))||(empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('START_TIME_PROGRAM'); ?>:</div></td>
+   <td><div id="start_time_program_field" style="<?php if((!isset($cyclic))||(empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><input type="text" size="10" name="start_time" id="start_time" <?php if(!empty($start_time)) { ?> value="<?php echo $start_time;?>" <?php } else { ?> value="00:00:00" <?php } ?> /></div></td>
    <td><div id="error_start_time" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_TIME_START'); ?></div><div id="error_same_start" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SAME_TIME'); ?></div></td>
 </tr>
 <tr>
+   <td></td>
+   <td><div id="duration_cyclic" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('CYCLIC_DURATION_TIME'); ?>:</div></td>
+   <td><div id="duration_cyclic_field" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><input type="text" size="10" name="cyclic_duration" id="cyclic_duration" <?php if(!empty($cyclic_duration)) { ?> value="<?php echo $cyclic_duration;?>" <?php } else { ?> value="02:00:00" <?php } ?> /></div></td>
+   <td><div id="error_cyclic_duration" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_TIME_DURATION'); ?></div></td>
+</tr>
+<tr>
     <td></td>
-    <td><?php echo __('END_TIME_PROGRAM'); ?>:</td>
-    <td><input type="text" size="10" name="end_time" id="end_time" <?php if(!empty($end_time)) { ?>value="<?php echo $end_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> /></td>
+    <td><div id="end_time_program_title" style="<?php if((!isset($cyclic))||(empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('END_TIME_PROGRAM'); ?>:</div></td>
+    <td><div id="end_time_program_field" style="<?php if((!isset($cyclic))||(empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><input type="text" size="10" name="end_time" id="end_time" <?php if(!empty($end_time)) { ?>value="<?php echo $end_time;?>" <?php } else { ?>value="00:00:00" <?php } ?> /></div></td>
     <td><div id="error_end_time" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_TIME_END'); ?></div><div id="error_same_end" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SAME_TIME'); ?></div></td>
 </tr>
+
 <tr>
     <td></td>
     <td><div id="time_cyclic" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('REPEAT_EVERY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_REPEAT_VALUE'); ?>" /></div></td>
     <td> <div id="time_cyclic_field" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><input type="text" size="10" name="repeat_time" id="repeat_time" <?php if(!empty($repeat_time)) { ?>value="<?php echo $repeat_time;?>" <?php } else { ?>value="01:00:00" <?php } ?> /></div> </td>
     <td><div id="error_cyclic_time" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_TIME'); ?></div><div id="error_minimal_cyclic" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_MINIMAL_TIME'); ?></div></td>
+</tr>
+<tr>
+   <td></td>
+   <td><div id="start_time_cyclic_title" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><?php echo __('START_TIME_PROGRAM'); ?>:</div></td>
+   <td><div id="start_time_cyclic_field" style="<?php if((isset($cyclic))&&(!empty($cyclic))) {  echo ''; } else { echo 'display:none'; } ?>"><input type="text" size="10" name="start_time_cyclic" id="start_time_cyclic" <?php if(!empty($start_time_cyclic)) { ?> value="<?php echo $start_time_cyclic;?>" <?php } else { ?> value="00:00:00" <?php } ?> /></div></td>
+   <td><div id="error_start_time_cyclic" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_TIME_START'); ?></div></td>
 </tr>
 <tr>
      <td></td>

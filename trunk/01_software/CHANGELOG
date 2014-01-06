@@ -1,3 +1,9 @@
+Cultibox (1.2.10) precise; urgency=low
+    + Modification de la programmation cyclique, simplification des textes affichés et du fonctionnement
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Jan  6 08:43:31 CET 2014
+
+
 Cultibox (1.2.09) precise; urgency=low
     + Correction du code HTML pour respecter le standard W3C
     + Ajout de deux capteurs possibles pour la régulations (6 en tout - 4 utilisés pour les logs)

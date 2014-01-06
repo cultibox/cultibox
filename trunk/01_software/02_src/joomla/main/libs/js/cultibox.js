@@ -833,55 +833,32 @@ $(document).ready(function() {
             $("#error_same_end").css("display","none");
             $("#error_start_time").css("display","none");
             $("#error_end_time").css("display","none");
+            $("#error_minimal_cyclic").css("display","none");
+
+            $("#error_cyclic_duration").css("display","none");
             $("#error_cyclic_time").css("display","none");
             $("#error_minimal_cyclic").css("display","none");
+            $("#error_start_time_cyclic").css("display","none");
+
             $("#error_value_program").css("display","none");
-            
+
             e.preventDefault();
             var checked=true;
-            $.ajax({
-                cache: false,
-                async: false,
-                url: "../../main/modules/external/check_value.php",
-                data: {value:$("#start_time").val(),type:'time'}
-            }).done(function (data) {
-                if(data!=1) {
-                    $("#error_start_time").show(700);
-                    $('#start_time').val("00:00:00");
-                    checked=false;
-                } 
-            });
 
-            $.ajax({
-                cache: false,
-                async: false,
-                url: "../../main/modules/external/check_value.php",
-                data: {value:$("#end_time").val(),type:'time'}
-            }).done(function (data) {
-                if(data!=1) {
-                    $("#error_end_time").show(700);
-                    $('#end_time').val("00:00:00");
-                    checked=false;
-                } 
-            });
-
-            
-            if(checked) {
+            if($('#cyclic').is(':checked')) {
                 $.ajax({
                     cache: false,
                     async: false,
                     url: "../../main/modules/external/check_value.php",
-                    data: {value:$("#start_time").val()+"_"+$("#end_time").val(),type:'same_time'}
+                    data: {value:$("#cyclic_duration").val(),type:'time'}
                 }).done(function (data) {
                     if(data!=1) {
-                        $("#error_same_start").show(700);
-                        $("#error_same_end").show(700);
+                        $("#error_cyclic_duration").show(700);
+                        $('#cyclic_duration').val("02:00:00");
                         checked=false;
                     } 
                 });
-            }
 
-            if($('#cyclic').is(':checked')) {
                 $.ajax({
                     cache: false,
                     async: false,
@@ -897,9 +874,65 @@ $(document).ready(function() {
                             $('#repeat_time').val("01:00:00");
                         }
                         checked=false;
-                    } 
+                    }
                 });
+
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#start_time_cyclic").val(),type:'time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_start_time_cyclic").show(700);
+                        $('#start_time_cyclic').val("00:00:00");
+                        checked=false;
+                    }
+                });
+            } else {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#start_time").val(),type:'time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_start_time").show(700);
+                        $('#start_time').val("00:00:00");
+                        checked=false;
+                    }
+                });
+
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#end_time").val(),type:'time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_end_time").show(700);
+                        $('#end_time').val("00:00:00");
+                        checked=false;
+                    }
+                });
+
+
+                if(checked) {
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                        data: {value:$("#start_time").val()+"_"+$("#end_time").val(),type:'same_time'}
+                    }).done(function (data) {
+                        if(data!=1) {
+                            $("#error_same_start").show(700);
+                            $("#error_same_end").show(700);
+                            checked=false;
+                        }
+                    });
+                }
             }
+
 
             if($('#regprog').is(':checked')) {
                 if(($("#value_program").val())&&($("#value_program").val()!="0")) { 
