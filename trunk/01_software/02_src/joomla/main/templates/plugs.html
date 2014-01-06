@@ -102,8 +102,18 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
                     <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_1000'); ?>" /> 
                 <?php } ?>
             <?php } else { ?>
-                <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="1000" <?php if(strcmp($plug_power_max{$i},"1000")==0) { echo "checked"; } ?>>1000W<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_1000'); ?>" />
-                <input type= "radio" name="plug_power_max<?php echo $i; ?>" value="3500" <?php if(strcmp($plug_power_max{$i},"3500")==0) { echo "checked"; } ?>>3500W<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" />
+                <table>
+                    <tr>
+                        <td><input type= "radio" name="plug_power_max<?php echo $i; ?>" value="1000" <?php if(strcmp($plug_power_max{$i},"1000")==0) { echo "checked"; } ?>>1000W<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_1000'); ?>" /></td>
+                        <td><input type= "radio" name="plug_power_max<?php echo $i; ?>" value="3500" <?php if(strcmp($plug_power_max{$i},"3500")==0) { echo "checked"; } ?>>3500W<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_3500'); ?>" /></td>
+                        <td><input type= "radio" name="plug_power_max<?php echo $i; ?>" value="VARIO" <?php if(intval($plug_power_max{$i})<10) { echo "checked"; } ?>><?php echo __('DIMMER'); ?><img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_MAX_POWER_PLUG_DIMMER'); ?>" /></td>
+                    </tr>   
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><div id="select_canal_dimmer<?php echo $i; ?>" name="select_canal_dimmer<?php echo $i; ?>" style="<?php if(intval($plug_power_max{$i})>10) { echo 'display:none'; } ?>"><?php echo __('CANAL'); ?>:<select id="dimmer_canal<?php echo $i; ?>" name="dimmer_canal<?php echo $i; ?>"><?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_DIMMER'];$j++) { ?><option value="<?php echo $j; ?>" <?php if(intval($plug_power_max{$i})==$j) { echo ' selected'; } ?>><?php echo $j; ?></option><?php } ?></select></div></td>
+                    </tr>
+                </table>
             <?php } ?>
          </td>
          <td></td>

@@ -95,6 +95,9 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    
    $enable=getvar("plug_enable${nb}");
    $power_max=getvar("plug_power_max${nb}");
+   if(strcmp($power_max,"VARIO")==0) {
+       $power_max=getvar("dimmer_canal${nb}"); 
+   }
 
    $sensor="";
    for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$j++) { 
@@ -202,7 +205,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
             $update_program=true;
             $plug_update=true;
         } 
-
 
         if((!empty($regul))&&(isset($regul))&&(!$reset)&&(strcmp("$old_regul","$regul")!=0)) {
             insert_plug_conf("PLUG_REGUL",$nb,"$regul",$main_error);

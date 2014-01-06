@@ -617,6 +617,12 @@ msgstr "Maximum"
 msgid "JUMPTO_WIZARD"
 msgstr "Utiliser l'assistant pour configurer cette prise"
 
+msgid "DIMMER"
+msgstr "Variateur"
+
+msgid "CANAL"
+msgstr "Canal"
+
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
@@ -1599,6 +1605,9 @@ msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. L
 
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
+
+msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
+msgstr "La prise variateur permet de varier l'intensité délivrée par la prise. Une fois selectionnée il faudra chosisir le canal de communication de la prise (qui doit être différent pour chaque prise variateur)"
 
 msgid "TOOLTIP_MAX_LOG_IMPORT"
 msgstr "Cette variable définit le nombre de mois qui seront scrutés pour rechercher des logs lors de l'appui sur le bouton 'Importer les logs' de l'onglet 'Logs'"
