@@ -813,6 +813,9 @@ msgstr "Configurer la prise associée à ce programme"
 msgid "ERROR_MAX_PROGRAM"
 msgstr "Programme mis à jour mais le nombre maximal de changement, limité à 250 pour toutes les prises confondues, a été atteint. Votre programme peut ne pas être complet."
 
+msgid "CYCLIC_DURATION_TIME"
+msgstr "Ciclo período"
+
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
@@ -1312,6 +1315,9 @@ msgstr "Falta valor de fecha de inicio/fin del programa"
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "Error en el formato de la hora: HH:MM:SS"
+
+msgid "ERROR_FORMAT_TIME_DURATION"
+msgstr "Ciclo: Error en el formato (HH:MM:SS)"
 
 msgid "ERROR_FORMAT_TIME_START"
 msgstr "Hora de inicio: error en el formato (HH:MM:SS)"

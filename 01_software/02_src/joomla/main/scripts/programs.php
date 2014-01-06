@@ -96,7 +96,9 @@ if((!isset($reset_selected))||(empty($reset_selected))) {
 
 if(isset($cyclic)&&(!empty($cyclic))) {
     $repeat_time=getvar("repeat_time");
-    $cyclic_ch=check_format_time($repeat_time);
+    $start_time_cyclic=getvar('start_time_cyclic');
+    $cyclic_duration=getvar('cyclic_duration');
+    $cyclic_start=$start_time_cyclic;
 }
 
 
@@ -248,7 +250,16 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 //Create a new program:
 if(!empty($apply)&&(isset($apply))) { 
-    $chtime=check_times($start_time,$end_time);
+    if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
+        $tmpstamp_start=strtotime($cyclic_start);
+        list($hours, $mins, $secs) = explode(':', $cyclic_duration);
+        $tmpstamp_end=($hours * 3600 )+($mins * 60 )+$secs;
+        $cyclic_end=date('H:i:s', $tmpstamp_start+$tmpstamp_end);
+        $chtime=check_times($cyclic_start,$cyclic_end);
+    } else {
+        $chtime=check_times($start_time,$end_time);
+    }
+
     if("$regul_program"=="on") {
             $value_program="99.9";
             $check=true;
@@ -272,6 +283,11 @@ if(!empty($apply)&&(isset($apply))) {
         
 
         if(strcmp("$check","1")==0) {
+            if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
+                 $start_time=$cyclic_start;
+                 $end_time=$cyclic_end;
+            }
+
             if($chtime==2) {
                 $prog[]= array(
                     "start_time" => "$start_time",
@@ -301,13 +317,15 @@ if(!empty($apply)&&(isset($apply))) {
         
             if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
                     date_default_timezone_set('UTC');
-                    $cyclic_start= $start_time;
-                    $cyclic_end=$end_time;
                     $rephh=substr($repeat_time,0,2);
                     $repmm=substr($repeat_time,3,2);
                     $repss=substr($repeat_time,6,2);
                     $step=$rephh*3600+$repmm*60+$repss;
-                    $chk_start=mktime(0,0,0);
+                    if($chtime==2) {
+                        $chk_start=mktime(0,0,0);
+                    } else {
+                        $chk_start=mktime(0,0,0);
+                    }
                     $chk_stop=mktime();
                     $chk_first=false;
 
@@ -387,8 +405,10 @@ if(!empty($apply)&&(isset($apply))) {
                         }
                 }
                 $rep=$repeat_time;
+                $start_time="00:00:00";
+                $end_time="00:00:00";
             }
-
+        
             //If the reset checkbox is checked
             if((isset($reset_program))&&(strcmp($reset_program,"Yes")==0)) {
                 clean_program($selected_plug,$main_error);
@@ -459,7 +479,7 @@ if(!empty($apply)&&(isset($apply))) {
 
     }
 }
-	
+
 for($i=0;$i<$nb_plugs;$i++) {
     $data_plug=get_data_plug($i+1,$main_error);
     $plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"");

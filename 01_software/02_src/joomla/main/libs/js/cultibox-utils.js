@@ -577,14 +577,83 @@ function getProgramType(i) {
       var PonctualRadio = document.getElementById('ponctual');
       var CyclicRadio = document.getElementById('cyclic');
       var divTimeCyclicField = document.getElementById('time_cyclic_field');
+
+      var startTimeField = document.getElementById('start_time_program_field');
+      var startTimeTitle = document.getElementById('start_time_program_title');
+      var errorStart = document.getElementById('error_start_time');
+      var errorSameStart = document.getElementById('error_same_start');
+      var endTimeField = document.getElementById('end_time_program_field');
+      var endTimeTitle = document.getElementById('end_time_program_title');
+      var errorEnd = document.getElementById('error_end_time');
+      var errorSameEnd = document.getElementById('error_same_end');
+
+      var durationCyclic = document.getElementById('duration_cyclic');
+      var durationCyclicField = document.getElementById('duration_cyclic_field');
+      var errorCyclicDuration = document.getElementById('error_cyclic_duration');
       var divTimeCyclic = document.getElementById('time_cyclic');
+      var divTimeCyclicField = document.getElementById('time_cyclic_field');
       var errorCyclic = document.getElementById('error_cyclic_time');
       var errorMinimal = document.getElementById('error_minimal_cyclic');
+      var startTimeCyclic = document.getElementById('start_time_cyclic_title');
+      var startTimeCyclicField =  document.getElementById('start_time_cyclic_field');
 
+    
       switch(i) {
-         case 'ponctual': PonctualRadio.checked=true; CyclicRadio.checked=false; divTimeCyclicField.style.display='none'; divTimeCyclic.style.display='none';  errorCyclic.style.display='none'; errorMinimal.style.display='none'; break;
-         case 'cyclic': PonctualRadio.checked=false; CyclicRadio.checked=true; divTimeCyclicField.style.display=''; divTimeCyclic.style.display=''; break;
-         default: PonctualRadio.checked=true; CyclicRadio.checked=false; divTimeCyclicField.style.display='none'; divTimeCyclic.style.display='none'; errorCyclic.style.display='none'; errorMinimal.style.display='none';break;
+         case 'ponctual': PonctualRadio.checked=true; 
+                          CyclicRadio.checked=false; 
+                          
+                          startTimeField.style.display='';
+                          startTimeTitle.style.display='';
+                          endTimeField.style.display='';
+                          endTimeTitle.style.display='';
+
+                          durationCyclic.style.display='none';
+                          durationCyclicField.style.display='none';
+                          divTimeCyclic.style.display='none';
+                          divTimeCyclicField.style.display='none';
+                          startTimeCyclic.style.display='none';
+                          startTimeCyclicField.style.display='none';
+                          errorCyclicDuration.style.display='none';
+                          errorCyclic.style.display='none';
+                          errorMinimal.style.display='none';
+        break;
+        case 'cyclic': PonctualRadio.checked=false; 
+                       CyclicRadio.checked=true; 
+                    
+                       startTimeField.style.display='none';
+                       startTimeTitle.style.display='none';
+                       errorStart.style.display='none';
+                       errorSameStart.style.display='none';
+                       endTimeField.style.display='none';
+                       endTimeTitle.style.display='none';
+                       errorEnd.style.display='none';
+                       errorSameEnd.style.display='none';
+                       durationCyclic.style.display='';
+                       durationCyclicField.style.display='';
+                       startTimeCyclic.style.display='';
+                       startTimeCyclicField.style.display='';
+                       divTimeCyclic.style.display='';
+                       divTimeCyclicField.style.display='';
+        break;
+        default: PonctualRadio.checked=true; 
+                          CyclicRadio.checked=false; 
+
+                          startTimeField.style.display='';
+                          startTimeTitle.style.display='';
+                          endTimeField.style.display='';
+                          endTimeTitle.style.display='';
+
+                          durationCyclic.style.display='none';
+                          durationCyclicField.style.display='none';
+                          divTimeCyclic.style.display='none';
+                          divTimeCyclicField.style.display='none';
+                          startTimeCyclic.style.display='none';
+                          startTimeCyclicField.style.display='none';
+
+                          errorCyclicDuration.style.display='none';
+                          errorCyclic.style.display='none';
+                          errorMinimal.style.display='none';
+        break;
       }
 
 }
