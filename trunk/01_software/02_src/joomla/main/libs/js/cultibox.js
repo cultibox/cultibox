@@ -440,6 +440,10 @@ $(document).ready(function() {
 
     $("input[name*='plug_power_max']").change(function () {
         var id=$(this).attr('name').substr($(this).attr('name').length-1);
+        
+        if(!(id === ~~id)) { 
+            id="";
+        }
 
         if($(this).val()=="VARIO") {
             $("#select_canal_dimmer"+id).show();
