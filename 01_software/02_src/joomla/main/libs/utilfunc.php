@@ -901,7 +901,7 @@ function compare_pluga($sd_card) {
             } elseif(strcmp("$tmp_power_max","3500")==0) {
                 $tmp_pluga=$GLOBALS['PLUGA_DEFAULT_3500W'][$i];
             } else if(intval(rtrim($tmp_power_max))<10) {
-                $tmp_pluga=101+intval(rtrim($tmp_power_max));
+                $tmp_pluga=99+intval(rtrim($tmp_power_max));
             }
             $pluga[]="$tmp_pluga";
         }
