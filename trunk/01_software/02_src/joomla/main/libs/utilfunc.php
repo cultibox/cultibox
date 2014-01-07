@@ -956,7 +956,7 @@ function write_pluga($sd_card,&$out) {
             $tmp_pluga=$GLOBALS['PLUGA_DEFAULT_3500W'][$i];   
         //Dimmer plug:
         } else if(intval(rtrim($tmp_power_max))<10) {
-            $tmp_pluga=101+intval(rtrim($tmp_power_max));
+            $tmp_pluga=99+intval(rtrim($tmp_power_max));
         }
         $pluga[]="$tmp_pluga";
       }
