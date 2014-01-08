@@ -40,6 +40,8 @@ $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $stats=get_configuration("STATISTICS",$main_error);
 $main_info[]=__('WIZARD_DISABLE_FUNCTION').": <a href='programs-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('CLASSIC')."' title='' id='Classic' /></a>";
 $type_submit=getvar('type_submit');
+$status=get_canal_status($main_error);
+
 
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');
 $error_value[3]=__('ERROR_VALUE_PROGRAM_TEMP','html');
