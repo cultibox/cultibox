@@ -40,6 +40,7 @@ ExtraDiskSpaceRequired=419430400
 ;Desactive le choix de creation dans le menu demarrer
 DisableProgramGroupPage=yes
 LicenseFile=conf-package\lgpl3.txt
+SetupLogging=yes
 
 
 
