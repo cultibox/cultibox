@@ -3465,6 +3465,45 @@ EOF;
 }
 ///
 
+// {{{ get_canal_status()
+// ROLE get status of dimmer canal to get available canal to be used by new dimmer's configuration
+// IN $out   error or warning message
+// RET array containing number of the dimmer canal and its status (USED: 0, AVAILABLE: 1)
+function get_canal_status(&$out) {
+    $sql = <<<EOF
+SELECT PLUG_POWER_MAX FROM `plugs` WHERE PLUG_POWER_MAX<10 ORDER BY PLUG_POWER_MAX ASC
+EOF;
+
+    $db=db_priv_pdo_start();
+    $res="";
+    try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+    $status=array();
+    $value=array();
+
+    foreach($res as $result) {    
+       $value[]=$result['PLUG_POWER_MAX']; 
+    }
+
+    for($i=1;$i<=$GLOBALS['NB_MAX_CANAL_DIMMER'];$i++) {
+       if(in_array($i, $value)) {
+           $status[]=0;
+       } else {
+           $status[]=1;
+       }
+    }
+
+    return $status;
+}
+///
+
+
 ?>
 
 

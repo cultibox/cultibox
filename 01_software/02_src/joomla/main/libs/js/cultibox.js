@@ -440,8 +440,8 @@ $(document).ready(function() {
 
     $("input[name*='plug_power_max']").change(function () {
         var id=$(this).attr('name').substr($(this).attr('name').length-1);
-        
-        if(!(id === ~~id)) { 
+       
+        if(!isFinite(String(id))) { 
             id="";
         }
 
