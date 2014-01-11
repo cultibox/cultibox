@@ -1571,7 +1571,7 @@ msgstr "Sin tarjeta SD conectado , los ficheros guardados por su Cultibox de tem
 "
 
 msgid "TOOLTIP_POWER_LOG"
-msgstr "Esta opción calcula y enseña la potencia consumida para un enchufe determinado. Para que eso funcione, hay que llenar el campo ‘potencia’ en la parte de configuración de los enchufes."
+msgstr "Esta opción calcula y enseña la potencia consumida para el/los  enchufe(s) determinado(s). Para que eso funcione, hay que llenar el campo ‘potencia’ en la parte de configuración de los enchufes."
 
 msgid "TOOLTIP_LOG_PROGRAM"
 msgstr "Esta opción permite enseñar el programa de un enchufe con el fin de comparar los datos grabados por la Cultibox y el funcionamiento teórico de este enchufe."

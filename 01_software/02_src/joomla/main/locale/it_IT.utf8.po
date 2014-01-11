@@ -1568,7 +1568,7 @@ msgid "TOOLTIP_WITHOUT_SD_LOG"
 msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox concernant la température et l'hygrométrie ne pourront pas être affichés et sauvegardés. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
 
 msgid "TOOLTIP_POWER_LOG"
-msgstr "Cette option calcule et affiche la puissance consommée pour une prise spécifique ou pour l'ensemble des prises. Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
+msgstr "Cette option calcule et affiche la puissance consommée pour la/les prise(s) sélectionnée(s). Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
 
 msgid "TOOLTIP_LOG_PROGRAM"
 msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la Cultibox et le comportement théorique de la prise."
