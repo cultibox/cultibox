@@ -45,7 +45,7 @@ $data_temp="";
 $data_humi="";
 $plug_type="";
 $select_plug="";
-$select_power="";
+$select_power=array();
 $select_sensor="1";
 $startday="";
 $startmonth="";
@@ -66,7 +66,6 @@ $stats=get_configuration("STATISTICS",$main_error);
 $active_plugs=get_active_plugs($nb_plugs,$main_error);
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $anchor=getvar('anchor');
-$select_power=getvar('select_power');
 $select_plug=getvar('select_plug');
 $startday=getvar('startday');
 $import_load=getvar('import_load');
@@ -75,6 +74,9 @@ if((!isset($import_load))||(empty($import_load))) {
     $import_load=2;
 }
 
+if(isset($_POST['select_power'])) {
+    $select_power=getvar('select_power');
+}
 
 if(isset($_SESSION['select_sensor'])) {
    $select_sensor=$_SESSION['select_sensor'];
@@ -293,10 +295,10 @@ if(isset($error_clean_log_file)) {
 
 
 if(strcmp("$second_regul","True")==0) {
-    if(strcmp("$select_power","9990")==0) {
-    format_regul_sumary("all",$main_error,$resume_regul,$nb_plugs);
+    if(count($select_power)==$nb_plugs) {
+        format_regul_sumary("all",$main_error,$resume_regul,$nb_plugs);
     } else {
-        if((strcmp("$select_power","")!=0)&&(strcmp("$select_plug","")!=0)) {
+        if((count($select_power)!=0)&&(strcmp("$select_plug","")!=0)) {
             if($select_power<$select_plug) {
                 $first=$select_power;
                 $second=$select_plug;
@@ -310,11 +312,13 @@ if(strcmp("$second_regul","True")==0) {
                 format_regul_sumary($second,$main_error,$resume_regul,$nb_plugs);
             }
         } else {
-            if(strcmp("$select_power","")!=0) {
-                format_regul_sumary($select_power,$main_error,$resume_regul,$nb_plugs);
+            if(count($select_power)>0) {
+                for($i=0;$i<count($select_power);$i++)  {
+                    format_regul_sumary($select_power[$i],$main_error,$resume_regul,$nb_plugs);
+                }
             }
 
-            if(strcmp("$select_plug","")!=0) {
+            if(count($select_plug)!=0) {
                 format_regul_sumary($select_plug,$main_error,$resume_regul,$nb_plugs);
             }
         }
@@ -325,7 +329,7 @@ if(strcmp("$second_regul","True")==0) {
 if(!empty($resume_regul)) {
     $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b></p><br />".$resume_regul;
 } else {
-    if((empty($select_power))&&(empty($select_plug))) {
+    if((count($select_power)==0)&&(empty($select_plug))) {
         $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b><br /><br />".__('SUMARY_EMPTY_SELECTION')."</p>";
     } else {
         $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b><br /><br />".__('SUMARY_EMPTY_REGUL')."</p>";
@@ -350,11 +354,17 @@ if("$type" == "days") {
          $plug_type=get_plug_conf("PLUG_TYPE",$select_plug,$main_error);
       }
 
-      if((isset($select_power))&&(!empty($select_power))) {
-         if($select_power!=9990) {
+      if(count($select_power)>0) {
+         if(count($select_power)!=$nb_plugs) {
             $data_power=get_data_power($startday,"",$select_power,$main_error);
-            if(!check_configuration_power($select_power,$main_error)) {
-                $main_error[]=__('ERROR_POWER_PLUG')." ".$select_power." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=".$select_power."'>".__('HERE')."</a>";
+            $check_pwr="";
+            foreach($select_power as $slt_pwr) {
+                if(!check_configuration_power($slt_pwr,$main_error)) $check_pwr=$slt_pwr;
+                break;
+            }
+
+            if(strcmp("$slt_pwr","")!=0) {
+                $main_error[]=__('ERROR_POWER_PLUG')." ".$check_pwr." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=".$check_pwr."'>".__('HERE')."</a>";
             }
          } else {
             $data_power=get_data_power($startday,"","all",$main_error);

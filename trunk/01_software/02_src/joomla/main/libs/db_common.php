@@ -442,10 +442,44 @@ function get_data_power($date="",$dateend="",$id=0,&$out,$short="") {
    $nb_plugs=get_configuration("NB_PLUGS",$out);
    $date=str_replace("-","",$date);
    $date=substr($date,2,8);
-   
 
    if((isset($date))&&(!empty($date))) {
-      if(strcmp("$id","all")==0) {
+      if(is_array($id)) {
+          $list="";
+          foreach($id as $nid) {
+            if(strcmp("$list","")==0) {
+                $list=$nid;    
+            } else {
+                $list=$list.",".$nid;
+            } 
+          }
+          if((!isset($dateend))||(empty($dateend))) {
+              if(empty($short)) {
+                  $sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN ({$list}) " ORDER by time_catch,plug_number ASC, plug_number ASC
+EOF;
+               } else {
+                   $sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN ({$list}) AND `record` != 0 ORDER by time_catch,plug_number ASC, plug_number ASC
+EOF;
+               }
+          } else {
+              $date=$date."00000000";
+              $dateend=str_replace("-","",$dateend);
+              $dateend=substr($dateend,2,8);
+              $dateend=$dateend."99999999";
+
+              if(empty($short)) {
+                  $sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN ({$list})
+EOF;
+              } else {
+                  $sql = <<<EOF
+SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN ({$list}) AND `record` != 0
+EOF;
+              }
+          }
+      } else if(strcmp("$id","all")==0) {
          if((!isset($dateend))||(empty($dateend))) {
             if(empty($short)) {
             $sql = <<<EOF
@@ -471,7 +505,7 @@ $sql = <<<EOF
 SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") AND `record` != 0
 EOF;
          }
-}
+        }
       } else {
          if((!isset($dateend))||(empty($dateend))) {
             if(empty($short)) {
@@ -483,7 +517,7 @@ EOF;
 SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` = "{$id}" AND `record` != 0 ORDER by time_catch,plug_number ASC, plug_number ASC
 EOF;
             }
-      } else {
+        } else {
             $date=$date."00000000";
             $dateend=str_replace("-","",$dateend);
             $dateend=substr($dateend,2,8);
@@ -499,7 +533,7 @@ SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `
 EOF;
             }
       }
-}
+    }
 
         $db=db_priv_pdo_start();
         try {
@@ -547,8 +581,19 @@ EOF;
          return 0;
         }
 
+    
+        if(is_array($id)) {
+            //For all plugs
+            for($i=0;$i<count($res_power);$i++) {
+                if(strcmp($res_power[$i]['PLUG_POWER'],"")==0) {
+                    $res_power[$i]['PLUG_POWER']=0;
+                }
+            }
 
-        if(strcmp("$id","all")!=0) {
+            while(count($res_power)!=$GLOBALS['NB_MAX_PLUG']) {
+                $res_power[]=0;
+            }
+        } else if(strcmp("$id","all")!=0) {
             if(strcmp($res_power[$id-1]['PLUG_POWER'],"")==0) {
                 $res_power[$id-1]['PLUG_POWER']=0;
             }
@@ -3251,7 +3296,7 @@ EOF;
 
 
 // {{{ check_configuration_power()
-// ROLE check of power of plugs is configured
+// ROLE check that power of a plug is configured
 // IN  $id     id of the plug to be checked
 // OUT false if a plug is not configured, true else
 function check_configuration_power($id=0) {
