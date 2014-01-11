@@ -158,7 +158,7 @@ canal_status= <?php echo json_encode($status) ?>;
                         <tr>
                         <td></td>
                         <td></td>
-                        <td><div id="select_canal_dimmer" name="select_canal_dimmer" style="<?php if(intval($plug_power_max)>10) { echo 'display:none'; } ?>"><?php echo __('CANAL'); ?>:<select id="dimmer_canal" name="dimmer_canal"><?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_DIMMER'];$j++) { ?><option value="<?php echo $j; ?>" <?php if(intval($plug_power_max)==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option><?php } ?></select></div></td>
+                        <td class="canal-vario"><div id="select_canal_dimmer" name="select_canal_dimmer" style="<?php if(intval($plug_power_max)>10) { echo 'display:none'; } ?>"><?php echo __('CANAL'); ?>:<select id="dimmer_canal" name="dimmer_canal"><?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_DIMMER'];$j++) { ?><option value="<?php echo $j; ?>" <?php if(intval($plug_power_max)==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option><?php } ?></select></div></td>
                     </tr>
                     </table>
                 <?php } ?>

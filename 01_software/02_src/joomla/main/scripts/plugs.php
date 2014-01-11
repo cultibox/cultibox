@@ -43,7 +43,6 @@ $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $jumpto=getvar("jumpto");
 $submit=getvar("submit_plugs");
 $jumpwizard=getvar("jumpwizard");
-$status=get_canal_status($main_error);
 
 if((isset($jumpwizard))&&(!empty($jumpwizard))) {
        $url="./wizard-".$_SESSION['SHORTLANG']."?selected_plug=".$jumpwizard;
@@ -485,6 +484,8 @@ if((isset($jumpto))&&(!empty($jumpto))) {
 
 // Retrieve plug's informations from the database
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
+$status=get_canal_status($main_error);
+
 
 //Display the plug template
 include('main/templates/plugs.html');

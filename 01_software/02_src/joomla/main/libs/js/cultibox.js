@@ -452,6 +452,30 @@ $(document).ready(function() {
         }
     });
 
+
+    $("select[name*='dimmer_canal']").focus(function () {
+        previous_canal = $(this).attr('value');
+    }).change(function() {
+        var prev=previous_canal;
+        var id=$(this).attr('name').substr($(this).attr('name').length-1);
+        var canal=$("#dimmer_canal"+id+" option:selected" ).val();
+
+        $("select[name*='dimmer_canal']").each(function( index ) {
+                var new_id=$(this).attr('name').substr($(this).attr('name').length-1);
+                if(new_id!=id) {
+                    var option = $("option[value='" + canal + "']", this);
+                    option.attr("disabled","disabled");
+
+                    var option = $("option[value='" + prev + "']", this);
+                    option.removeAttr("disabled");
+                }
+        }); 
+
+        $("input[name='plug_power_max"+id+"']").focus();
+    });
+    
+
+
     $("#reset_sd_card_submit").click(function(e) {
         e.preventDefault();
         $("#format_dialog_sd").dialog({

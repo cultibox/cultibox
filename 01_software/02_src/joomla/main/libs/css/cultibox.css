@@ -156,7 +156,7 @@ td.log-marge-day-title {
 }
 
 td.log-marge-day-field {
-   width: 20%;
+   width: 35%;
 }
 
 td.log-marge-day-title-select {
@@ -215,6 +215,10 @@ td.plug-regul {
 
 td.plug-marge-submit {
    width: 25%;
+}
+
+td.canal-vario{
+   text-align: center;
 }
 
 td.cost-marge {
@@ -737,7 +741,7 @@ td.field_delete_form {
 }
 
 .div_height { 
-    height: 175px;
+    height: 280px;
 }
 
 .ui-dialog-titlebar-close {
