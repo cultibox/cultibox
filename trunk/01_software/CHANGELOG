@@ -3,6 +3,7 @@ Cultibox (1.2.10) precise; urgency=low
     + Ajout de la configuration d'une prise variateur dans l'onglet prise
     + Disparition des fenêtres MSDOS de l'installation windows
     + Possibilité de sélectionner une, plusieurs ou toutes les prises pour l'affichage des puissances
+    + Ajout des firmwares pour le capteur d'eau
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon Jan  6 08:43:31 CET 2014
 

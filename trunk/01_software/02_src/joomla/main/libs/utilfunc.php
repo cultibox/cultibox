@@ -1574,6 +1574,8 @@ function check_and_copy_firm($sd_card) {
    $firm_to_test[]="firm.hex";
    $firm_to_test[]="bin/emetteur.hex";
    $firm_to_test[]="bin/sht.hex";
+   $firm_to_test[]="bin/wlevel_5.hex";
+   $firm_to_test[]="bin/wlevel_6.hex";
 
    foreach($firm_to_test as $firm) { 
         if(is_file("tmp/$firm")) {
