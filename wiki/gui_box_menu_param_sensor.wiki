@@ -3,7 +3,7 @@
 = Introduction =
 Ce menu permet d'accéder aux paramètres de chaque capteur.
 
-Pour voir les paramètres d'un capteur descendez la sélection sur le capteur puis cliquer sur le bouton central.
+Pour voir les paramètres d'un capteur, descendre la sélection sur le capteur puis cliquer sur le bouton central.
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur.png
 
@@ -13,6 +13,10 @@ Pour chaque capteur , la fenêtre suivante s'affiche :
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_sensor_reg.png
 
-Elle indique quel capteur est branché.
+La première ligne indique le type du capteur branché:
+ *  *NO* : Pas de capteur branché
+ *  *T&RH* : Un capteur de température et d’humidité
+ *  *T WATER* : Un capteur de température en milieu humide
+ *  *LEVEL* : Un capteur de niveau d'eau
 
-
+La deuxième ligne indique le numéro du firmware du capteur.

@@ -26,9 +26,7 @@ Format de l'heure : Heure : Minute
 Ce menu permet de consulter et modifier des paramètres de la Cultibox. 
 Il est a noter que hormis le "Contraste", la plus part de ces paramètres et informations ne sont pas prévu pour les utilisateurs.
 
-http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_reg_1.png
-
-http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_reg_2.png
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_reg.png
 
 * Attention : Si d'autres paramètres que le contraste sont modifiés, les informations relevées par la Cultibox peuvent être altérées! *
 
@@ -161,7 +159,6 @@ Indique si le capteur n°1 est utilisé pour la régulation
 
 Indique si le capteur n°2 est utilisé pour la régulation
 
-http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_4.png
 
 * Capteur 3: *
 
@@ -170,6 +167,8 @@ Indique si le capteur n°3 est utilisé pour la régulation
 * Capteur 4: *
 
 Indique si le capteur n°4 est utilisé pour la régulation
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_5.png
 
 * Val Pri: *
 
@@ -182,8 +181,6 @@ Indique la valeur calculée pour la régulation secondaire
 * Seuil: *
 
 Seuil utilisé pour la régulation
-
-http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_5.png
 
 * État Prise: *
 
