@@ -185,7 +185,3 @@ Seuil utilisé pour la régulation
 * État Prise: *
 
 État de la prise
-
-* Debug: *
-
-Porte bien son nom !

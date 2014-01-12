@@ -11,13 +11,27 @@ http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur.png
 
 = Paramètres =
 
+Ce menu contient les informations sur les paramètres de l’émetteur :
+
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur_param.png
 
+Signification des lignes :
+ * *Chip* : Doit être 001
+ * *Firmw* : Indique la version du firmware
+ * *Time* : Heure actuelle dans la Cultibox
+ * *Act.0* : Heure du prochain changement d'état des prises
+ * *Act.1* : Heure du changement n+1 d'état des prises
+ * *Act.2* : Heure du changement n+2 d'état des prises
+ * *Act.3* : Heure du changement n+3 d'état des prises
+ * *Act.4* : Heure du changement n+4 d'état des prises
+ * *Day.Saved* : Numéro du jour actuel
+ * *Bootloader* : Est-ce que l'émetteur est dans l'état bootloader
+ 
 = Registres Prises =
+
+Ce menu contient l'état de chacune des prises :
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur_reg_prises.png
 
-= Registres Autres =
-
-http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur_reg_autres.png
+Il est possible de modifier l'état d'une des prises. Pour ce faire descendre la sélection jusqu'à ce que la prise sélectionnée soit tout en haut de l'écran. Appuyer sur le bouton "droite" pour mettre en route la prise. Appuyer sur le bouton "gauche" éteindre la prise.
 
