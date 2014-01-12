@@ -357,19 +357,33 @@ if("$type" == "days") {
       if(count($select_power)>0) {
          if(count($select_power)!=$nb_plugs) {
             $data_power=get_data_power($startday,"",$select_power,$main_error);
-            $check_pwr="";
-            foreach($select_power as $slt_pwr) {
-                if(!check_configuration_power($slt_pwr,$main_error)) $check_pwr=$slt_pwr;
-                break;
-            }
 
-            if(strcmp("$slt_pwr","")!=0) {
-                $main_error[]=__('ERROR_POWER_PLUG')." ".$check_pwr." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=".$check_pwr."'>".__('HERE')."</a>";
+            $check_pwr="";
+            $several=false;
+            foreach($select_power as $slt_pwr) {
+                if(!check_configuration_power($slt_pwr,$main_error)) {
+                    if(strcmp("$check_pwr","")==0) {
+                        $check_pwr=$slt_pwr;
+                    } else {
+                        $check_pwr=$check_pwr.", ".$slt_pwr;
+                        $several=true;
+                    }
+                }
+            }
+        
+
+            if(strcmp("$check_pwr","")!=0) {
+                if($several) {
+                    $main_error[]=__('ERROR_POWER_PLUGS')." ".$check_pwr." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=all'>".__('HERE')."</a>";
+                } else {
+                    $main_error[]=__('ERROR_POWER_PLUG')." ".$check_pwr." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=".$check_pwr."'>".__('HERE')."</a>";
+                }
             }
          } else {
             $data_power=get_data_power($startday,"","all",$main_error);
 
             $nb=array();
+
             for($plugs=1;$plugs<=$nb_plugs;$plugs++) {
                 if(!check_configuration_power($plugs,$main_error)) {
                     $nb[]=$plugs;
