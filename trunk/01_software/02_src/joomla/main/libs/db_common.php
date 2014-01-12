@@ -456,7 +456,7 @@ function get_data_power($date="",$dateend="",$id=0,&$out,$short="") {
           if((!isset($dateend))||(empty($dateend))) {
               if(empty($short)) {
                   $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN ({$list}) " ORDER by time_catch,plug_number ASC, plug_number ASC
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN ({$list}) ORDER by time_catch,plug_number ASC, plug_number ASC
 EOF;
                } else {
                    $sql = <<<EOF
@@ -534,6 +534,7 @@ EOF;
             }
       }
     }
+
 
         $db=db_priv_pdo_start();
         try {
