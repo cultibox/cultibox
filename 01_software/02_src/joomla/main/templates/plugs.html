@@ -111,7 +111,7 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
                     <tr>
                         <td></td>
                         <td></td>
-                        <td class="canal-vario"><div id="select_canal_dimmer<?php echo $i; ?>" name="select_canal_dimmer<?php echo $i; ?>" style="<?php if(intval($plug_power_max{$i})>10) { echo 'display:none'; } ?>"><?php echo __('CANAL'); ?>:<select id="dimmer_canal<?php echo $i; ?>" name="dimmer_canal<?php echo $i; ?>"><?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_DIMMER'];$j++) { ?><option value="<?php echo $j; ?>" <?php if(intval($plug_power_max{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option><?php } ?></select></div></td>
+                        <td class="canal-vario"><div id="select_canal_dimmer<?php echo $i; ?>" style="<?php if(intval($plug_power_max{$i})>10) { echo 'display:none'; } ?>"><?php echo __('CANAL'); ?>:<select id="dimmer_canal<?php echo $i; ?>" name="dimmer_canal<?php echo $i; ?>"><?php for($j=1;$j<=$GLOBALS['NB_MAX_CANAL_DIMMER'];$j++) { ?><option value="<?php echo $j; ?>" <?php if(intval($plug_power_max{$i})==$j) { echo ' selected'; } else  { if(!$status[$j-1]) { echo ' disabled'; } } ?>><?php echo $j; ?></option><?php } ?></select></div></td>
                     </tr>
                 </table>
             <?php } ?>
@@ -191,7 +191,9 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
                             </select>
                         <?php } ?>
                         </td>
-                        <?php if ($j % 2 == 0) {?></tr><tr><?php } ?>
+                        <?php if (($j % 2 == 0) && ($j != $GLOBALS['NB_MAX_SENSOR_PLUG'])) { ?>
+                            </tr><tr>
+                        <?php } ?>
                     <?php } ?>
                </tr>
               </table>
