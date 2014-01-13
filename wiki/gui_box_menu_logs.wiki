@@ -25,3 +25,4 @@ En appuyant sur les flèches gauche et droite, vous pouvez faire défiler un cur
 
 En appuyant sur les touches haut/bas, vous faites défiler les capteurs.
 
+En appuyant sur la touche centrale vous quitter ce menu.

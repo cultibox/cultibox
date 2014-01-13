@@ -13,3 +13,15 @@ Lors de l'entrée dans ce menu, un calendrier s'affiche. Celui-ci permet de choi
 http://cultibox.googlecode.com/svn/wiki/img/lcd_calendar.png
 
 Avec les flèches vous pouvez vous déplacer de jour en jour. En cliquant sur une des flèches située en haut à droite ou en haut à gauche, vous pouvez changer de jour.
+
+= Evenements =
+
+Le menu suivant s'affiche (image non représentative) :
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_events.png
+
+En appuyant sur haut / bas vous faites défiler l'affichage.
+
+En appuyant sur gauche / droite vous changer de jour.
+
+En appuyant sur la touche centrale vous quitter ce menu.
