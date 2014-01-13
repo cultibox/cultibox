@@ -7,4 +7,10 @@
 Le menu logs permet de visualiser l'évolution de la température et de l'humidité de chacun des capteurs.
 Un seul point par tranche de 20 minutes est affiché.
 
-= Description de l'interface graphique =
+= Calendrier =
+
+Lors de l'entrée dans ce menu, un calendrier s'affiche. Celui-ci permet de choisir le jour duquel on souhaite afficher les logs.
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_calendar.png
+
+Avec les flèches vous pouvez vous déplacer de jour en jour. En cliquant sur une des flèches située en haut à droite ou en haut à gauche, vous pouvez changer de jour.

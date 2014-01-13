@@ -6,4 +6,10 @@
 = Introduction =
 Le menu calendrier permet de voir les différents éléments entrés dans le calendrier.
 
-= Description de l'interface graphique =
+= Calendrier =
+
+Lors de l'entrée dans ce menu, un calendrier s'affiche. Celui-ci permet de choisir le jour duquel on souhaite afficher les évènements.
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_calendar.png
+
+Avec les flèches vous pouvez vous déplacer de jour en jour. En cliquant sur une des flèches située en haut à droite ou en haut à gauche, vous pouvez changer de jour.
