@@ -59,17 +59,9 @@ EOF
            cp -R conf-script ../01_src/01_xampp/cultibox/opt/lampp/run
            cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt
-           cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/opt/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
            sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-amd64' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/update_sql.sql
-           cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp -R ../../01_install/01_src/03_sd/bin ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp ../../01_install/01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp ../../01_install/01_src/03_sd/cultibox.html ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp -R ../../01_install/01_src/03_sd/cnf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp -R ../../01_install/01_src/03_sd/logs ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-
-            
+           cp -R ../../01_install/01_src/03_sd/* ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp -R daemon ../01_src/01_xampp/cultibox/opt/lampp/
 
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-amd64'/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/cultibox_fr.sql
@@ -112,21 +104,14 @@ EOF
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt
-            cat > ../01_src/01_xampp/cultibox/opt/lampp/etc/my-extra.cnf << "EOF" 
+           cat > ../01_src/01_xampp/cultibox/opt/lampp/etc/my-extra.cnf << "EOF" 
 [client]
 user="root"
 password="cultibox"
 EOF
-           cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/opt/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
            sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-i386' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/update_sql.sql
-           cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp -R ../../01_install/01_src/03_sd/bin ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp ../../01_install/01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp ../../01_install/01_src/03_sd/cultibox.html ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp -R ../../01_install/01_src/03_sd/cnf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp -R ../../01_install/01_src/03_sd/logs ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-
+           cp -R ../../01_install/01_src/03_sd/* ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp -R daemon ../01_src/01_xampp/cultibox/opt/lampp/
 
            #replacement of the old version number by the new one in VERSION file
@@ -174,16 +159,9 @@ EOF
 user="root"
 password="cultibox"
 EOF
-           cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/opt/lampp/sd
            cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/opt/lampp/sql_install
            sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-noarch' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/update_sql.sql
-           cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp -R ../../01_install/01_src/03_sd/bin ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp ../../01_install/01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp ../../01_install/01_src/03_sd/cultibox.html ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp -R ../../01_install/01_src/03_sd/cnf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-           cp -R ../../01_install/01_src/03_sd/logs ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
-
+           cp -R ../../01_install/01_src/03_sd/* ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
            cp -R daemon ../01_src/01_xampp/cultibox/opt/lampp/
 
            #replacement of the old version number by the new one in VERSION file

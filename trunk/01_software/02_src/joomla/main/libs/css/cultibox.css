@@ -604,6 +604,10 @@ td.conf-alarm-field {
     width: 10%;
 }
 
+.power_max {
+    width: 50%;
+}
+
 .menu-dropdown li.level1 a.level1 {
 	font-family: 'OpenSansRegular';
 }
