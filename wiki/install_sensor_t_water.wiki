@@ -1,0 +1,22 @@
+#summary Ajout d'un capteur de température immergeable
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+Cette page donne les instructions pour ajouter un capteur de température immergeable.
+
+= Contenu du pack =
+
+Le pack comprend :
+ * Un capteur de température immergeable.
+ * Un câble permettant de connecter le capteur à la Cultibox
+ * Une notice
+ 
+= Mise en place =
+
+ # Débrancher votre Cultibox
+ # Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.
+ # Brancher votre Cultibox
+
+La mise en place est terminée.

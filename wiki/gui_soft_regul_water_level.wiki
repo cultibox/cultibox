@@ -1,0 +1,44 @@
+#summary Régulation de niveau d'eau
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+L'objectif de ce chapitre est d'expliquer comment mettre en place une régulation de niveau d'eau à l'aide d'une pompe et d'un capteur de niveau d'eau.
+
+= Pré-requis =
+
+Pour effectuer une régulation de niveau d'eau, il vous faut :
+ * Une pompe allimentée en 220V
+ * Une prise 1000W
+ 
+http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
+
+ * Un capteur de niveau d'eau
+ 
+http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_pack.png
+
+Il faut aussi avoir suivit la procédure de mise en place du capteur : [install_sensor_t_water procedure]
+
+= Configuration du logiciel =
+
+Pour illustrer l'exemple, nous considérons les éléments suivants:
+ * La prise a le numéro 8
+ * Le capteur a le numéro 5
+
+ * Ouvrir le logiciel Cultibox
+ * Cliquer sur l'onglet prise
+ 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs.png
+
+ * Sélectionner le numéro de la prise qui va servir pour piloter la pompe
+ * Dans la liste déroulante associée au type d'élément branché, sélectionner "Pompe"
+ * Pour les capteurs utilisés, sélectionner à Non tous les capteurs sauf le capteur 5
+ * Cliquer sur le bouton "Sauvegarder les changements et configurer le programme de la prise 8"
+ * Vous êtes maintenant dans l'onglet programme
+ * Sélectionner "Régulation"
+ * Indiquer l'heure de début et de fin. En général, pour une régulation de niveau, l'heure de début est 00:00:00 et l'heure de fin est 23:59:59.
+ * Indiquer la hauteur de régulation.
+ 
+

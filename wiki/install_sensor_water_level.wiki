@@ -1,0 +1,39 @@
+#summary Ajout d'un capteur de niveau d'eau
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+Cette page donne les instructions pour ajouter un capteur de niveau d'eau.
+
+= Contenu du pack =
+
+Le pack comprend :
+ * Un capteur de niveau d'eau. La hauteur peut être de 30cm, 60cm ou 80cm.
+ * Un câble permettant de connecter le capteur à la Cultibox
+ * Une notice
+
+http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_pack.png
+
+= Mise en place =
+
+ * Décoller le film plastique présent sous chaque scratch :
+
+http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_install_1.png
+
+http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_install_2.png
+
+http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_install_3.png
+
+ * Installer votre capteur dans la cuve. Seule la partie graduée doit pouvoir être immergée.
+ * Appuyer légèrement à chaque endroit ou est présent du scratch, de façon a bien coller votre capteur:
+ 
+http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_install_4.png
+
+http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_install_5.png
+ 
+ * Débrancher votre Cultibox
+ * Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.
+ * Brancher votre Cultibox
+
+La mise en place est terminée.
