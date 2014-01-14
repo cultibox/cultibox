@@ -10,7 +10,7 @@ L'objectif de ce chapitre est d'expliquer comment mettre en place une régulatio
 = Pré-requis =
 
 Pour effectuer une régulation de niveau d'eau, il vous faut :
- * Une pompe allimentée en 220V
+ * Une pompe alimentée en 220V
  * Une prise 1000W
  
 http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
@@ -19,7 +19,7 @@ http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
  
 http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_pack.png
 
-Il faut aussi avoir suivit la procédure de mise en place du capteur : [install_sensor_t_water procedure]
+Il faut aussi avoir suivit la procédure de mise en place du capteur : [install_sensor_water_level procédure]
 
 = Configuration du logiciel =
 
@@ -41,4 +41,3 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs.png
  * Indiquer l'heure de début et de fin. En général, pour une régulation de niveau, l'heure de début est 00:00:00 et l'heure de fin est 23:59:59.
  * Indiquer la hauteur de régulation.
  
-
