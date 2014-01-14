@@ -22,7 +22,7 @@
     * [gui_soft_prog Programmation]
       * [gui_soft_prog_regul Régulation]
       * [gui_soft_second_regul Régulation Avancée]
-      * [gui_soft_regul_water_level Régulation Avancée]
+      * [gui_soft_regul_water_level Régulation de niveau d'eau]
     * [gui_soft_plugs Configuration des prises]
     * [gui_soft_cost Cout]
     * [gui_soft_cal Calendrier]
