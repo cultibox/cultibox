@@ -48,7 +48,6 @@ user="root"
 password="cultibox"
 EOF
 
-            cp -R ../../01_install/01_src/03_sd ../01_src/01_xampp/cultibox/sd
             cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/sql_install
             mkdir ../01_src/01_xampp/cultibox/package
             cp conf-package/takecontrol.png ../01_src/01_xampp/cultibox/package
@@ -65,12 +64,7 @@ EOF
 
             mkdir ../01_src/01_xampp/cultibox/run
             cp conf-script/* ../01_src/01_xampp/cultibox/run/
-            cp ../../01_install/01_src/03_sd/firm.hex ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
-            cp -R ../../01_install/01_src/03_sd/bin ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
-            cp ../../01_install/01_src/03_sd/cultibox.ico ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
-            cp ../../01_install/01_src/03_sd/cultibox.html ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
-            cp -R ../../01_install/01_src/03_sd/cnf ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
-            cp -R ../../01_install/01_src/03_sd/logs ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
+            cp -R ../../01_install/01_src/03_sd/* ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/tmp/
 
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_fr.sql
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_en.sql
