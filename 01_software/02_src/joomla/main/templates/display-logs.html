@@ -1013,7 +1013,7 @@ $(function () {
             <?php } ?>
 
             <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
-            <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
+            <input type="hidden" name="select_power_save" value="<?php echo implode(',', $select_power); ?>">
             <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
             <input type="hidden" name="anchor" value="anchor-logs">
         </form>
@@ -1048,7 +1048,7 @@ $(function () {
             <?php } ?>
 
             <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
-            <input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
+            <input type="hidden" name="select_power_save" value="<?php echo implode(',', $select_power); ?>">
             <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
             <input type="hidden" name="anchor" value="anchor-logs">
         </form>
@@ -1182,7 +1182,7 @@ $(function () {
 </table>
 <input type="hidden" name="quick_load" value="True">
 <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
-<input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
+<input type="hidden" name="select_power_save" value="<?php echo implode(',', $select_power); ?>">
 <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
 <input type="hidden" name="anchor" value="anchor-manage">
 <?php if(strcmp("$type","month")==0) { ?>
@@ -1221,7 +1221,7 @@ $(function () {
 </table>
 <input type="hidden" name="quick_load" value="True">
 <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
-<input type="hidden" name="select_power" value="<?php echo $select_power; ?>">
+<input type="hidden" name="select_power_save" value="<?php echo implode(',', $select_power); ?>">
 <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
 <?php if(strcmp("$type","month")==0) { ?>
 <input type="hidden" name="startmonth" value="<?php echo "$startmonth"; ?>">
