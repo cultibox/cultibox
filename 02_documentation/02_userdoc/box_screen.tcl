@@ -1,6 +1,4 @@
 package require Img
-console show
-image create photo screen -width 180 -height 136
 
 # Définition des caracteres
 set chars {
@@ -98,15 +96,17 @@ set chars {
     { 0x00 0x18 0x24 0x24 0x18 }
 }
 
-set texte {
+lappend listeTexte {
   {--Parametres--}
   {1. Cultibox}
   {2. Emetteur}
   {3. Capteur}
-  {4. Retour}
+  {4. Dimmer}
+  {5. Retour}
 }
+lappend listFileName {lcd_menu_param.png}
 
-set texte {
+lappend listeTexte {
   {---Cultibox--}
   {1. Horloge}
   {2. Registre}
@@ -114,36 +114,54 @@ set texte {
   {4. Prise}
   {5. Retour}
 }
+lappend listFileName {lcd_menu_param_cultibox.png}
 
-set texte {
+lappend listeTexte {
   {---Emetteur---}
   {1. Parametres}
   {2. Reg. Prises}
-  {3. Reg. Autres}
-  {4. Retour}
+  {3. Retour}
 }
-set name {lcd_menu_param_emetteur.png}
+lappend listFileName {lcd_menu_param_emetteur.png}
 
-set texte {
+lappend listeTexte {
   {--Parametres--}
   {Chip:001}
   {Firmw:001.004}
   {Time :00h10m02}
   {Act.0:00h00m00}
+  {Act.1:00h00m00}
+  {Act.2:00h00m00}
+  {Act.3:00h00m00}
+  {Act.4:00h00m00}
+  {Day saved:012}
+  {Bootloader:000}
 }
-set name {lcd_menu_param_emetteur_param.png}
+lappend listFileName {lcd_menu_param_emetteur_param.png}
 
-set texte {
+lappend listeTexte {
   {P01 A004V001}
   {P02 A247V000}
   {P03 A222V001}
   {P04 A219V000}
   {P05 A215V000}
   {P06 A207V000}
+  {P07 A252V001}
+  {P08 A250V000}
+  {P09 A246V001}
+  {P10 A238V000}
+  {P11 A187V000}
+  {P12 A183V000}
+  {P13 A189V001}
+  {P14 A125V000}
+  {P15 A123V000}
+  {P16 A119V000}
+  {R00 000}
+  {R01 000}
 }
-set name {lcd_menu_param_emetteur_reg_prises.png}
+lappend listFileName {lcd_menu_param_emetteur_reg_prises.png}
 
-set texte {
+lappend listeTexte {
   {Reg: 00: 001}
   {Reg: 01: 000}
   {Reg: 02: 000}
@@ -151,55 +169,55 @@ set texte {
   {Reg: 04: 255}
   {Reg: 05: 255}
 }
-set name {lcd_menu_param_emetteur_reg_autres.png}
+lappend listFileName {lcd_menu_param_emetteur_reg_autres.png}
 
-set texte {
+lappend listeTexte {
   {---Registre---}
   {Contrast:018}
   {Firmw.:002.000}
   {Freq Plug :000}
   {Log Freq :300}
   {Pwr Freq :060}
-}
-set name {lcd_menu_param_cultibox_reg_1.png}
-
-set texte {
-  {---Registre---}
   {RTC Off.:000}
   {Reset Min:0000}
   {Id: 00045}
 }
-set name {lcd_menu_param_cultibox_reg_2.png}
+lappend listFileName {lcd_menu_param_cultibox_reg.png}
 
-set texte {
+lappend listeTexte {
   {---Alarme---}
   {Active: 0}
   {Value: 15.00}
   {Sensor: T}
   {Sens: +}
 }
-set name {lcd_menu_param_cultibox_alarme.png}
+lappend listFileName {lcd_menu_param_cultibox_alarme.png}
 
-set texte {
+lappend listeTexte {
   {----Prise-----}
-  {1. Prise num 1}
-  {2. Prise num 2}
-  {3. Prise num 3}
-  {4. Prise num 4}
-  {5. Prise num 5}
+  {1. Prise 1}
+  {2. Prise 2}
+  {3. Prise 3}
+  {4. Prise 4}
+  {5. Prise 5}
+  {6. Prise 6}
+  {7. Prise 7}
+  {8. Prise 8}
+  {9. Prise 9}
+  {10. Prise 10}
 }
-set name {lcd_menu_param_cultibox_prise.png}
+lappend listFileName {lcd_menu_param_cultibox_prise.png}
 
-set texte {
+lappend listeTexte {
   {--Parametres--}
   {Regul Primaire}
   {Type : N}
   {Sens : +}
   {Tol : 00,00}
 }
-set name {lcd_menu_param_cultibox_prise_1.png}
+lappend listFileName {lcd_menu_param_cultibox_prise_1.png}
 
-set texte {
+lappend listeTexte {
   {--Parametres--}
   {Regul Secondai}
   {Type : N}
@@ -207,38 +225,33 @@ set texte {
   {Etat Actif: 0}
   {Valeur:00,00}
 }
-set name {lcd_menu_param_cultibox_prise_2.png}
+lappend listFileName {lcd_menu_param_cultibox_prise_2.png}
 
-
-set texte {
+lappend listeTexte {
   {--Parametres--}
   {Tol. : 00,00}
   {Calcul Valeur}
   {Type : Moyenne}
   {Capteur 1: OUI}
   {Capteur 2: OUI}
-}
-set name {lcd_menu_param_cultibox_prise_3.png}
-
-set texte {
-  {--Parametres--}
   {Capteur 3: OUI}
   {Capteur 4: OUI}
+  {Capteur 5: OUI}
+  {Capteur 6: OUI}
+}
+lappend listFileName {lcd_menu_param_cultibox_prise_3.png}
+
+lappend listeTexte {
+  {--Parametres--}
   {Val Pri:00,00}
   {Val Sec:00,00}
   {Seuil:00,00}
-}
-set name {lcd_menu_param_cultibox_prise_4.png}
-
-set texte {
-  {--Parametres--}
   {Val Reg:00,00}
   {Etat Prise:000}
-  {Debug:000}
 }
-set name {lcd_menu_param_cultibox_prise_5.png}
+lappend listFileName {lcd_menu_param_cultibox_prise_5.png}
 
-set texte {
+lappend listeTexte {
   {--Parametres--}
   {Type : NO}
   {Firm : 000.000}
@@ -246,58 +259,103 @@ set texte {
   {Reg: 01: 000}
   {Reg: 02: 000}
 }
-set name {lcd_menu_param_sensor_reg.png}
+lappend listFileName {lcd_menu_param_sensor_reg.png}
 
-set texte {
+lappend listeTexte {
+  {---Capteur----}
+  {1. Capteur 1}
+  {2. Capteur 2}
+  {3. Capteur 3}
+  {4. Capteur 4}
+  {5. Capteur 5}
+  {6. Capteur 6}
+  {7. Retour}
+}
+lappend listFileName {lcd_menu_param_capteur.png}
+
+
+lappend listeTexte {
   {   Horloge}
-  {}
+  {line}
   {Date: 01/02/13}
   {Heure:   04:05}
-  {}
+  {line}
   {   Valider}
 }
-set name {lcd_menu_param_cultibox_hour.png}
+lappend listFileName {lcd_menu_param_cultibox_hour.png}
 
-# Mise en place du fond
-for {set i 0} {$i < 180} {incr i} {
-	for {set j 0} {$j < 136} {incr j} {
-	    screen put #808080 -to $i $j
-	}
+lappend listeTexte {
+  {21 Mars}
+  {line}
+  {Engrais}
+  {3 ml/L}
+  {Floraison}
 }
+lappend listFileName {lcd_events.png}
 
-# Mise en place du cadre
-for {set i 4} {$i < 176} {incr i} {
-	for {set j 4} {$j < 132} {incr j} {
-	    screen put #CCFFCC -to $i $j
-	}
+# Pour chaque image à traiter
+foreach name $listFileName texte $listeTexte {
+
+    # Définition de la largeur
+    set width 180
+    
+    # Définition de la hauteur
+    set heigth [expr 8 + 21 * [llength $texte]]
+    if {$heigth < 136} {set heigth 136}
+    
+    #console show
+    image create photo screen -width $width -height $heigth
+    
+    # Mise en place du fond
+    for {set i 0} {$i < $width} {incr i} {
+        for {set j 0} {$j < $heigth} {incr j} {
+            screen put #808080 -to $i $j
+        }
+    }
+
+    # Mise en place du cadre
+    for {set i 4} {$i < [expr $width - 4]} {incr i} {
+        for {set j 4} {$j < [expr $heigth - 4]} {incr j} {
+            screen put #CCFFCC -to $i $j
+        }
+    }
+
+
+    # Ecriture du texte
+    set y 0
+    set x 4
+    foreach line $texte {
+        if {$line != "line"} {
+            # Du texte à afficher
+            for {set c 0} {$c < [string length $line]} {incr c} {
+                scan [string index $line $c] %c ascii
+                set pixels [lindex $chars [expr $ascii - 32]]
+                foreach pixel [lreverse $pixels] {
+                    puts $pixel
+                    for {set l 0} {$l < 8} {incr l} {
+                        if {[expr int(pow(2,$l)) & $pixel] != 0} {
+                            screen put #808080 -to [expr 2 * $x + 0] [expr 2 * ($y * 10 + 8 - $l + 2) + 0]
+                            screen put #808080 -to [expr 2 * $x + 1] [expr 2 * ($y * 10 + 8 - $l + 2) + 0]
+                            screen put #808080 -to [expr 2 * $x + 0] [expr 2 * ($y * 10 + 8 - $l + 2) + 1]
+                            screen put #808080 -to [expr 2 * $x + 1] [expr 2 * ($y * 10 + 8 - $l + 2) + 1]
+                        }
+                    }
+                    incr x
+                }
+                incr x
+            }
+        } else {
+            #Une ligne a afficher
+            for {set l 0} {$l < $width} {incr l} {
+                screen put #808080 -to [expr $l] [expr 2 * ($y * 10 + 8 + 2) - 1]
+                screen put #808080 -to [expr $l] [expr 2 * ($y * 10 + 8 + 2) + 0]
+            }
+        }
+        incr y
+        set x 4
+    }
+
+screen write [file join [file dirname [info script]] wiki img $name] -format PNG
 }
-
-
-# Ecriture du texte
-set y 0
-set x 4
-foreach line $texte {
-	for {set c 0} {$c < [string length $line]} {incr c} {
-		scan [string index $line $c] %c ascii
-		set pixels [lindex $chars [expr $ascii - 32]]
-		foreach pixel [lreverse $pixels] {
-			puts $pixel
-			for {set l 0} {$l < 8} {incr l} {
-				if {[expr int(pow(2,$l)) & $pixel] != 0} {
-					screen put #808080 -to [expr 2 * $x + 0] [expr 2 * ($y * 10 + 8 - $l + 2) + 0]
-					screen put #808080 -to [expr 2 * $x + 1] [expr 2 * ($y * 10 + 8 - $l + 2) + 0]
-					screen put #808080 -to [expr 2 * $x + 0] [expr 2 * ($y * 10 + 8 - $l + 2) + 1]
-					screen put #808080 -to [expr 2 * $x + 1] [expr 2 * ($y * 10 + 8 - $l + 2) + 1]
-				}
-			}
-			incr x
-		}
-		incr x
-	}
-	incr y
-	set x 4
-}
-
-screen write [file join d:/ $name] -format PNG
 
 exit
