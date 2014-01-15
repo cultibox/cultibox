@@ -33,11 +33,25 @@ Pour illustrer l'exemple, nous considérons les éléments suivants:
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs.png
 
  * Sélectionner le numéro de la prise qui va servir pour piloter la pompe
- * Dans la liste déroulante associée au type d'élément branché, sélectionner "Pompe"
- * Pour les capteurs utilisés, sélectionner à Non tous les capteurs sauf le capteur 5
+ 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programm_water_level_1.png
+ 
+ * Dans la liste déroulante associée au type d'élément branché, sélectionner "Pompe à eau"
+ 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programm_water_level_2.png
+ 
+ * Pour les capteurs utilisés, sélectionner à Non tous les capteurs sauf pour le capteur utilisé pour la régulation
+ 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programm_water_level_3.png
+ 
  * Cliquer sur le bouton "Sauvegarder les changements et configurer le programme de la prise 8"
+ 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programm_water_level_4.png
+ 
  * Vous êtes maintenant dans l'onglet programme
  * Sélectionner "Régulation"
  * Indiquer l'heure de début et de fin. En général, pour une régulation de niveau, l'heure de début est 00:00:00 et l'heure de fin est 23:59:59.
  * Indiquer la hauteur de régulation.
+ 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programm_water_level_5.png
  
