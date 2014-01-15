@@ -76,6 +76,8 @@ if((!isset($import_load))||(empty($import_load))) {
 
 if(isset($_POST['select_power'])) {
     $select_power=getvar('select_power');
+} elseif(isset($_POST['select_power_save'])) {
+    $select_power=explode(",",getvar('select_power_save'));
 }
 
 if(isset($_SESSION['select_sensor'])) {
