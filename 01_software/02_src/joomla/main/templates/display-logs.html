@@ -352,7 +352,7 @@ $(function () {
                   }
                },
                min: 0,
-               max: 100,
+               max: 90,
                startOnTick: false,
                endOnTick: false, 
                allowDecimals: true,
@@ -366,10 +366,16 @@ $(function () {
                 }
                },
                labels: {
+                  style: {
+                    color: <?php echo "'".$color_humidity."'"; ?>
+                  },
                   formatter: function() {
                      if(this.value<=100) return this.value;
                   }
-               }
+               },
+               gridLineWidth: 1,
+               gridLineDashStyle: 'Dot',
+               gridLineColor : <?php echo "'".$grid_humidity."'"; ?>
             }, {
                title: {
 		          useHTML: true,
@@ -379,16 +385,22 @@ $(function () {
                   }
                },
                min: 0,
-               max: 100,
+               max: 70,
                allowDecimals: true,
                opposite: true,
                endOnTick: false,
                startOnTick: false,
                labels: {
+                  style: {
+                     color: <?php echo "'".$color_temperature."'"; ?>
+                  },
                   formatter: function() {
                      if(this.value<=100) return this.value;
                   }
-               }
+               },
+               gridLineWidth: 1,
+               gridLineDashStyle: 'Dash',
+               gridLineColor : <?php echo "'".$grid_temperature."'"; ?>
             }
             <?php if((isset($datap))&&(!empty($datap))) { ?>
             ,{
@@ -399,10 +411,19 @@ $(function () {
                      color: <?php echo "'".$color_power."'"; ?>
                   }
                },
+               labels: {
+                  style: {
+                     color: <?php echo "'".$color_power."'"; ?>
+                  }
+               },
                startOnTick: false,
                endOnTick: false,
                allowDecimals: true,
-               min: 0
+               min: 0,
+               gridLineWidth: 1,
+               gridLineDashStyle: 'DashDot',
+               gridLineColor: <?php echo "'".$grid_power."'"; ?>
+    
             }
             <?php } ?>
 
@@ -827,8 +848,10 @@ $(function () {
         chart.xAxis[0].setExtremes(null, null,true, true);
         $('#resetXzoom').hide();
         showzoomX=false;
-        $("#min_y_axis").prop("selectedIndex",0);
-        $("#max_y_axis").prop("selectedIndex",0);
+        $("#min_y_axis_humi").prop("selectedIndex",0);
+        $("#max_y_axis_humi").prop("selectedIndex",0);
+        $("#min_y_axis_temp").prop("selectedIndex",0);
+        $("#max_y_axis_temp").prop("selectedIndex",0);
         $("#min_y_axis_power").prop("selectedIndex",0);
         $("#max_y_axis_power").prop("selectedIndex",0);
 
@@ -858,7 +881,7 @@ $(function () {
 
 
 
-    $('#min_y_axis').change(function() {    
+    $('#min_y_axis_humi').change(function() {    
         var showzoom=false;
         var save_min;
         var save_max;
@@ -868,14 +891,13 @@ $(function () {
                 for(j=0;j<chart.axes.length;j++) {
                     if(chart.axes[j].series[0].type=='area') {
                         chart.yAxis[0].setExtremes($(this).val(), extremes.max);
-                        chart.yAxis[1].setExtremes($(this).val(), extremes.max);
                         save_min=$(this).val();
                         save_max=extremes.max;
                         showzoom=true;
                     }
                 }
             } else {
-                $("#min_y_axis").prop("selectedIndex",0);
+                $("#min_y_axis_humi").prop("selectedIndex",0);
             }
         }
 
@@ -887,6 +909,35 @@ $(function () {
             chart.yAxis[0].update({
                      tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
             });
+        }
+    });
+
+
+    $('#min_y_axis_temp').change(function() {
+        var showzoom=false;
+        var save_min;
+        var save_max;
+        if($(this).val()!="") {
+            var extremes = chart.yAxis[1].getExtremes();
+            if(extremes.max>parseInt($(this).val())) {
+                for(j=0;j<chart.axes.length;j++) {
+                    if(chart.axes[j].series[0].type=='area') {
+                        chart.yAxis[1].setExtremes($(this).val(), extremes.max);
+                        save_min=$(this).val();
+                        save_max=extremes.max;
+                        showzoom=true;
+                    }
+                }
+            } else {
+                $("#min_y_axis_temp").prop("selectedIndex",0);
+            }
+        }
+
+        if(showzoom) {
+            $('#resetzoom').show();
+           
+            var step=parseFloat((save_max-save_min)/4);  
+
             chart.yAxis[1].update({
                      tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
 
@@ -894,7 +945,7 @@ $(function () {
         }
     });
 
-    $('#max_y_axis').change(function() {
+    $('#max_y_axis_humi').change(function() {
         var showzoom=false;
         var save_min;
         var save_max;
@@ -902,12 +953,11 @@ $(function () {
             var extremes = chart.yAxis[0].getExtremes();
             if(extremes.min<parseInt($(this).val())) {
                     chart.yAxis[0].setExtremes(extremes.min, $(this).val());
-                    chart.yAxis[1].setExtremes(extremes.min, $(this).val());
                     save_max=$(this).val();
                     save_min=extremes.min;
                     showzoom=true;
             } else {
-                $("#max_y_axis").prop("selectedIndex",0);
+                $("#max_y_axis_humi").prop("selectedIndex",0);
             }
         }
 
@@ -918,6 +968,29 @@ $(function () {
             chart.yAxis[0].update({
                      tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
             });
+        }
+    });
+
+    $('#max_y_axis_temp').change(function() {
+        var showzoom=false;
+        var save_min;
+        var save_max;
+        if($(this).val()!="") {
+            var extremes = chart.yAxis[1].getExtremes();
+            if(extremes.min<parseInt($(this).val())) {
+                    chart.yAxis[1].setExtremes(extremes.min, $(this).val());
+                    save_max=$(this).val();
+                    save_min=extremes.min;
+                    showzoom=true;
+            } else {
+                $("#max_y_axis_temp").prop("selectedIndex",0);
+            }
+        }
+
+        if(showzoom) {
+            $('#resetzoom').show();
+
+            var step=parseFloat((save_max-save_min)/4);
             chart.yAxis[1].update({
                      tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
             });
@@ -1062,7 +1135,8 @@ $(function () {
 <tr>
     <td></td>
     <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_POWER'); ?>:</td>
-    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_LOG'); ?>:</td>
+    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_HUMI'); ?>:</td>
+    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_TEMP'); ?>:</td>
     <td></td>
 </tr>
 <tr>
@@ -1075,7 +1149,6 @@ $(function () {
                <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
             <?php } ?>
         </select>
-        &nbsp;&nbsp;
         <select id="max_y_axis_power">
             <option value=""><?php echo __('MAX_Y_AXIS_LOG'); ?></option>
             <?php foreach($GLOBALS['LIST_MAX_POWER'] as $val) {  ; ?>
@@ -1086,14 +1159,29 @@ $(function () {
     </td>
     <td>
         <p class="p_center">
-        <select id="min_y_axis">
+        <select id="min_y_axis_humi">
             <option value=""><?php echo __('MIN_Y_AXIS_LOG'); ?></option>
             <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $val) {  ; ?>
                <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
             <?php } ?>
         </select>
-        &nbsp;&nbsp;
-        <select id="max_y_axis">
+        <select id="max_y_axis_humi">
+            <option value=""><?php echo __('MAX_Y_AXIS_LOG'); ?></option>
+            <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $val) {  ; ?>
+               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
+            <?php } ?>
+        </select>
+        </p>
+    </td>
+    <td>
+        <p class="p_center">
+        <select id="min_y_axis_temp">
+            <option value=""><?php echo __('MIN_Y_AXIS_LOG'); ?></option>
+            <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $val) {  ; ?>
+               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
+            <?php } ?>
+        </select>
+        <select id="max_y_axis_temp">
             <option value=""><?php echo __('MAX_Y_AXIS_LOG'); ?></option>
             <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $val) {  ; ?>
                <option value="<?php echo $val; ?>"><?php echo $val; ?></option>

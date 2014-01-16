@@ -532,6 +532,53 @@ $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
 $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$main_error);
 $color_power=get_configuration("COLOR_POWER_GRAPH",$main_error);
 
+switch($color_humidity) {
+    case 'blue': $grid_humidity=$GLOBALS['GRAPHIC_COLOR_GRID_BLUE'];
+        break;
+    case 'black': $grid_humidity=$GLOBALS['GRAPHIC_COLOR_GRID_BLACK'];
+        break;
+    case 'green': $grid_humidity=$GLOBALS['GRAPHIC_COLOR_GRID_GREEN'];
+        break;
+    case 'red': $grid_humidity=$GLOBALS['GRAPHIC_COLOR_GRID_RED'];
+        break;
+    case 'purple': $grid_humidity=$GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'];
+        break;
+}    
+
+
+switch($color_temperature) {
+     case 'blue': $grid_temperature=$GLOBALS['GRAPHIC_COLOR_GRID_BLUE'];
+         break;
+     case 'black': $grid_temperature=$GLOBALS['GRAPHIC_COLOR_GRID_BLACK'];
+         break;
+     case 'green': $grid_temperature=$GLOBALS['GRAPHIC_COLOR_GRID_GREEN'];
+         break;
+     case 'red': $grid_temperature=$GLOBALS['GRAPHIC_COLOR_GRID_RED'];
+         break;
+     case 'purple': $grid_temperature=$GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'];
+         break;
+} 
+
+
+switch($color_power) {
+     case 'blue': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_BLUE'];
+         break;
+     case 'black': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_BLACK'];
+         break;
+     case 'green': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_GREEN'];
+         break;
+     case 'red': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_RED'];
+         break;
+     case 'purple': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'];
+         break;
+} 
+
+
+
+
+
+
+
 
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {

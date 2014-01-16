@@ -428,11 +428,14 @@ msgstr "Temperatura"
 msgid "SUMARY_REGUL_HYGRO"
 msgstr "Higrometría"
 
-msgid "CONFIGURE_Y_AXIS_LOG"
-msgstr "Ajuste del primer eje de los logs"
+msgid "CONFIGURE_Y_AXIS_HUMI"
+msgstr "Ajuste de la escala de la humedad" 
+
+msgid "CONFIGURE_Y_AXIS_TEMP"
+msgstr "Ajuste de la escala de temperatura"
 
 msgid "CONFIGURE_Y_AXIS_POWER"
-msgstr "Ajuste del primer eje de la potencia"
+msgstr "Ajuste de la escala de la potencia"
 
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Exportar los datos de los logs"

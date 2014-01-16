@@ -427,11 +427,14 @@ msgstr "Température"
 msgid "SUMARY_REGUL_HYGRO"
 msgstr "Hygrométrie"
 
-msgid "CONFIGURE_Y_AXIS_LOG"
-msgstr "Réglage de l'axe des ordonnées des logs"
+msgid "CONFIGURE_Y_AXIS_HUMI"
+msgstr "Réglage de l'échelle de l'humidité"
+
+msgid "CONFIGURE_Y_AXIS_TEMP"
+msgstr "Réglage de l'échelle des températures"
 
 msgid "CONFIGURE_Y_AXIS_POWER"
-msgstr "Réglage de l'axe des ordonnées de la puissance"
+msgstr "Réglage de l'échelle des puissances"
 
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Exporter vos informations de logs"
