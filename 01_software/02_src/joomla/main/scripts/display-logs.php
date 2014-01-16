@@ -100,6 +100,32 @@ if(isset($_SESSION['startyear'])) {
 }
 
 
+if((isset($_POST['zoom_min_power']))&&(strcmp($_POST['zoom_min_power'],"-1")!=0)) {
+    $zoom_min_power=$_POST['zoom_min_power'];
+} 
+
+if((isset($_POST['zoom_max_power']))&&(strcmp($_POST['zoom_max_power'],"-1")!=0)) {
+    $zoom_max_power=$_POST['zoom_max_power'];
+} 
+
+
+if((isset($_POST['zoom_min_temp']))&&(strcmp($_POST['zoom_min_temp'],"-1")!=0)) {
+    $zoom_min_temp=$_POST['zoom_min_temp'];
+} 
+
+if((isset($_POST['zoom_max_temp']))&&(strcmp($_POST['zoom_max_temp'],"-1")!=0)) {
+    $zoom_max_temp=$_POST['zoom_max_temp'];
+} 
+
+if((isset($_POST['zoom_min_humi']))&&(strcmp($_POST['zoom_min_humi'],"-1")!=0)) {
+    $zoom_min_humi=$_POST['zoom_min_humi'];
+} 
+
+if((isset($_POST['zoom_max_humi']))&&(strcmp($_POST['zoom_max_humi'],"-1")!=0)) {
+    $zoom_max_humi=$_POST['zoom_max_humi'];
+} 
+
+
 if((isset($export_log))&&(!empty($export_log))) {
     export_table_csv("logs",$main_error);
     $file="tmp/logs.csv";

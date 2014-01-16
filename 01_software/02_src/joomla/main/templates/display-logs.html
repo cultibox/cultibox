@@ -351,8 +351,12 @@ $(function () {
                      color: <?php echo "'".$color_humidity."'"; ?>
                   }
                },
-               min: 0,
-               max: 90,
+               <?php if(isset($zoom_min_humi)) { 
+                echo "min: ".$zoom_min_humi.",";
+               } ?>
+               <?php if(isset($zoom_max_humi)) { 
+                echo "max: ".$zoom_max_humi.",";
+               } ?>
                startOnTick: false,
                endOnTick: false, 
                allowDecimals: true,
@@ -384,8 +388,12 @@ $(function () {
                      color: <?php echo "'".$color_temperature."'"; ?>
                   }
                },
-               min: 0,
-               max: 70,
+               <?php if(isset($zoom_min_temp)) { 
+                echo "min: ".$zoom_min_temp.",";
+               } ?>
+               <?php if(isset($zoom_max_temp)) { 
+                echo "max: ".$zoom_max_temp.",";
+               } ?>
                allowDecimals: true,
                opposite: true,
                endOnTick: false,
@@ -419,7 +427,12 @@ $(function () {
                startOnTick: false,
                endOnTick: false,
                allowDecimals: true,
-               min: 0,
+               <?php if(isset($zoom_min_power)) { 
+                echo "min: ".$zoom_min_power.",";
+               } ?>
+               <?php if(isset($zoom_max_power)) { 
+                echo "max: ".$zoom_max_power.",";
+               } ?>
                gridLineWidth: 1,
                gridLineDashStyle: 'DashDot',
                gridLineColor: <?php echo "'".$grid_power."'"; ?>
@@ -836,7 +849,7 @@ $(function () {
     $('#resetzoom').click(function() {
         var showzoom=false;
         chart.yAxis[0].setExtremes(0, 100);
-        chart.yAxis[1].setExtremes(1, 100);
+        chart.yAxis[1].setExtremes(0, 100);
         showzoom=true;
 
         if(extremes_save) {
@@ -854,6 +867,9 @@ $(function () {
         $("#max_y_axis_temp").prop("selectedIndex",0);
         $("#min_y_axis_power").prop("selectedIndex",0);
         $("#max_y_axis_power").prop("selectedIndex",0);
+
+        $("input[name*='zoom_max_']").val("-1");
+        $("input[name*='zoom_min_']").val("-1");
 
         chart.yAxis[0].update({
                  tickPositions: [0, 20, 40, 60, 80, 100]
@@ -904,12 +920,14 @@ $(function () {
         if(showzoom) {
             $('#resetzoom').show();
            
-            var step=parseFloat((save_max-save_min)/4);  
+            var step=parseFloat((save_max-save_min)/4).toFixed(2);  
 
             chart.yAxis[0].update({
-                     tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
+                     tickPositions: [parseInt(save_min), parseInt(parseFloat(save_min)+parseFloat(step)), parseInt(parseFloat(save_min)+2*parseFloat(step)), parseInt(parseFloat(save_min)+3*parseFloat(step)), parseInt(save_max)]
             });
         }
+
+        $("input[name='zoom_min_humi']").val($(this).val());
     });
 
 
@@ -936,13 +954,15 @@ $(function () {
         if(showzoom) {
             $('#resetzoom').show();
            
-            var step=parseFloat((save_max-save_min)/4);  
+            var step=parseFloat((save_max-save_min)/4).toFixed(2); 
 
             chart.yAxis[1].update({
-                     tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
+                     tickPositions: [parseInt(save_min), parseInt(parseFloat(save_min)+parseFloat(step)), parseInt(parseFloat(save_min)+2*parseFloat(step)), parseInt(parseFloat(save_min)+3*parseFloat(step)), parseInt(save_max)]
 
             });
         }
+
+        $("input[name='zoom_min_temp']").val($(this).val());
     });
 
     $('#max_y_axis_humi').change(function() {
@@ -964,11 +984,13 @@ $(function () {
         if(showzoom) {
             $('#resetzoom').show();
 
-            var step=parseFloat((save_max-save_min)/4);  
+            var step=parseFloat((save_max-save_min)/4).toFixed(2);
             chart.yAxis[0].update({
-                     tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
+                     tickPositions: [parseInt(save_min), parseInt(parseFloat(save_min)+parseFloat(step)), parseInt(parseFloat(save_min)+2*parseFloat(step)), parseInt(parseFloat(save_min)+3*parseFloat(step)), parseInt(save_max)]
             });
         }
+
+        $("input[name='zoom_max_humi']").val($(this).val());
     });
 
     $('#max_y_axis_temp').change(function() {
@@ -990,12 +1012,14 @@ $(function () {
         if(showzoom) {
             $('#resetzoom').show();
 
-            var step=parseFloat((save_max-save_min)/4);
+            var step=parseFloat((save_max-save_min)/4).toFixed(2);
             chart.yAxis[1].update({
-                     tickPositions: [parseInt(save_min), parseFloat(save_min)+parseFloat(step), parseFloat(save_min)+2*parseFloat(step), parseFloat(save_min)+3*parseFloat(step), parseInt(save_max)]
+                     tickPositions: [parseInt(save_min), parseInt(parseFloat(save_min)+parseFloat(step)), parseInt(parseFloat(save_min)+2*parseFloat(step)), parseInt(parseFloat(save_min)+3*parseFloat(step)), parseInt(save_max)]
             });
 
         }
+
+        $("input[name='zoom_max_temp']").val($(this).val());
     });
 
 
@@ -1023,6 +1047,8 @@ $(function () {
             $('#resetzoom').show();
         }
 
+        $("input[name='zoom_min_power']").val($(this).val());
+
     });
 
 
@@ -1049,7 +1075,12 @@ $(function () {
             $('#resetzoom').show();
         }
 
+        $("input[name='zoom_max_power']").val($(this).val());
     });
+
+    if(($("input[name='zoom_max_power']").val()!="-1")||($("input[name='zoom_min_power']").val()!="-1")||($("input[name='zoom_min_temp']").val()!="-1")||($("input[name='zoom_min_humi']").val()!="-1")||($("input[name='zoom_max_temp']").val()!="-1")||($("input[name='zoom_max_humi']").val()!="-1")) {
+        $('#resetzoom').show();
+    }
 
 });
 
@@ -1089,6 +1120,13 @@ $(function () {
             <input type="hidden" name="select_power_save" value="<?php echo implode(',', $select_power); ?>">
             <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
             <input type="hidden" name="anchor" value="anchor-logs">
+
+            <input type="hidden" name="zoom_min_power" value="<?php if(isset($zoom_min_power)) { echo $zoom_min_power; }else { echo -1; } ?>">
+            <input type="hidden" name="zoom_max_power" value="<?php if(isset($zoom_max_power)) { echo $zoom_max_power; }else { echo -1; } ?>">
+            <input type="hidden" name="zoom_min_temp" value="<?php if(isset($zoom_min_temp)) { echo $zoom_min_temp; }else { echo -1; } ?>">
+            <input type="hidden" name="zoom_max_temp" value="<?php if(isset($zoom_max_temp)) { echo $zoom_max_temp; }else { echo -1; } ?>">
+            <input type="hidden" name="zoom_min_humi" value="<?php if(isset($zoom_min_humi)) { echo $zoom_min_humi; }else { echo -1; } ?>">
+            <input type="hidden" name="zoom_max_humi" value="<?php if(isset($zoom_max_humi)) { echo $zoom_max_humi; }else { echo -1; } ?>">
         </form>
         <?php } ?>
     </td>
@@ -1124,6 +1162,13 @@ $(function () {
             <input type="hidden" name="select_power_save" value="<?php echo implode(',', $select_power); ?>">
             <input type="hidden" name="select_sensor" value="<?php echo $select_sensor; ?>">
             <input type="hidden" name="anchor" value="anchor-logs">
+
+            <input type="hidden" name="zoom_min_power" value="-1">
+            <input type="hidden" name="zoom_max_power" value="-1">
+            <input type="hidden" name="zoom_min_temp" value="-1">
+            <input type="hidden" name="zoom_max_temp" value="-1">
+            <input type="hidden" name="zoom_min_humi" value="-1">
+            <input type="hidden" name="zoom_max_humi" value="-1">
         </form>
         <?php } ?>
     </td>
@@ -1134,9 +1179,9 @@ $(function () {
 <table class="table_width">
 <tr>
     <td></td>
-    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_POWER'); ?>:</td>
-    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_HUMI'); ?>:</td>
-    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_TEMP'); ?>:</td>
+    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_POWER'); ?></td>
+    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_HUMI'); ?></td>
+    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_TEMP'); ?></td>
     <td></td>
 </tr>
 <tr>

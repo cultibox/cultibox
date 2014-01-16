@@ -3,6 +3,7 @@ Cultibox (1.2.11) precise; urgency=low
     + Correction de l'affichage des puissances (bouton next et prev)
     + un zoom par courbe disponible dans l'onglet log (puissance,humidité,témpérature)
     + Ajout des couleurs sur les grilles des échelles des logs
+    + Sauvegarde des données des zooms lorsqu'on utilise la fonction jour suivant ou jour précédent des logs
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Jan 14 23:49:35 CET 2014
 
