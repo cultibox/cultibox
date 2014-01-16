@@ -33,7 +33,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log_month.png
 L'affichage d'un jour permet de visualiser plus d'informations:
  * Les données climatiques d'un capteur spécifique ou de tous les capteurs
  * Le programme d'une prise
- * La puissance consommée d'une prise spécifique ou de toutes les prises (il est à noter qu'il vous faudra configurer la puissance correspondante à l'équipement branché pour que cette courbe soit significative. Se référer à la partie [gui_soft_plugs Configuration des prises] pour plus d'informations)
+ * La puissance consommée des prises sélectionnées (il est à noter qu'il vous faudra configurer la puissance correspondante à l'équipement branché pour que cette courbe soit significative. Se référer à la partie [gui_soft_plugs Configuration des prises] pour plus d'informations)
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_timeselection_day.png
 

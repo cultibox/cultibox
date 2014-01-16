@@ -64,8 +64,9 @@ La programmation cyclique permet de réaliser les mêmes actions que la programm
 L'action commence à l'heure de départ, dure le temps entre heure de fin et heure de départ et fini à minuit.
 Pour appliquer une programmation cyclique
  * Choisissez le numéro de la prise à configurer dans le menu à côté du titre
+ * Rentrez une durée du cycle ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
+ * Rentrez le temps de répétition du cycle (permettant de calculer la période d'un cycle) ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
  * Rentrez une heure de départ ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
- * Rentrez une heure de fin ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
  * Sélectionnez l'état de la prise
  * Sélectionnez le temps entre deux actions (champ *Répéter toutes les*)
  * Cliquez sur le bouton *Valider*
@@ -98,6 +99,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_jump_plug.png
  * Définir le type de prise :
    * Ventilateur: lorsque la prise est allumée, la température baisse
    * Chauffage: lorsque la prise est allumée, la température augmente
+   * Pompe à eau: lorsque la prise est allumée, le niveau d'eau augmente
    * Humidificateur: lorsque la prise est allumée, l'humidité augmente
    * Déshumidificateur: lorsque la prise est allumée, l'humidité baisse
    * Les autres types (Lampe, inconnu) ne permettent pas de faire de régulation
