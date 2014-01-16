@@ -821,7 +821,7 @@ msgid "ERROR_MAX_PROGRAM"
 msgstr "Programme mis à jour mais le nombre maximal de changement, limité à 250 pour toutes les prises confondues, a été atteint. Votre programme peut ne pas être complet."
 
 msgid "CYCLIC_DURATION_TIME"
-msgstr "Durée du cycle"
+msgstr "Durée"
 
 
 # For the export module highchart part:
@@ -1324,7 +1324,7 @@ msgid "ERROR_FORMAT_TIME"
 msgstr "Erreur dans le format de l'heure: HH:MM:SS"
 
 msgid "ERROR_FORMAT_TIME_DURATION"
-msgstr "Durée du cycle: erreur dans le format (HH:MM:SS)"
+msgstr "Durée: erreur dans le format (HH:MM:SS)"
 
 msgid "ERROR_FORMAT_TIME_START"
 msgstr "Heure de départ: erreur dans le format (HH:MM:SS)"
