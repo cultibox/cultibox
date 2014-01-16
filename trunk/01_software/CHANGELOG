@@ -1,6 +1,8 @@
 Cultibox (1.2.11) precise; urgency=low
     + Correction de l'affichage des puissances dans la partie logs (nom des prises)
     + Correction de l'affichage des puissances (bouton next et prev)
+    + un zoom par courbe disponible dans l'onglet log (puissance,humidité,témpérature)
+    + Ajout des couleurs sur les grilles des échelles des logs
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Jan 14 23:49:35 CET 2014
 
