@@ -2612,7 +2612,11 @@ EOF;
          $s=mb_strtoupper($val['Title'], 'UTF-8');
 
          if((isset($val['Description']))&&(!empty($val['Description']))) {
-            $desc=$val['Description'];
+            if(strcmp($val['Description'],"null")==0) {
+                $desc="";
+            } else {
+                $desc=$val['Description'];
+            }
          } else {
             $desc="";
          }

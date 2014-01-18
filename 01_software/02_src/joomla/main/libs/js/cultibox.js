@@ -35,6 +35,7 @@ if(lang=="/it/") {
     REDUCE_button="Abbassare";
     EXTEND_button="Ingrandisci"
     var llang="it_IT";
+    var slang="it";
 } else if(lang=="/de/") {
     OK_button="Weiter";
     CANCEL_button="Stornieren";
@@ -44,6 +45,7 @@ if(lang=="/it/") {
     REDUCE_button="Senken";
     EXTEND_button="Vergrößern"
     var llang="de_DE";
+    var slang="de";
 } else if(lang=="/en/") {
     OK_button="OK";
     CANCEL_button="Cancel";
@@ -53,6 +55,7 @@ if(lang=="/it/") {
     REDUCE_button="Shorten";
     EXTEND_button="Enlarge"
     var llang="en_GB";
+    var slang="en";
 } else if(lang=="/es/") {
     OK_button="Continuar";
     CANCEL_button="Cancelar";
@@ -62,6 +65,7 @@ if(lang=="/it/") {
     REDUCE_button="Bajar";
     EXTEND_button="Agrandar"
     var llang="es_ES";
+    var slang="es"
 } else {
     OK_button="Continuer";
     CANCEL_button="Annuler";
@@ -71,6 +75,7 @@ if(lang=="/it/") {
     REDUCE_button="Réduire";
     EXTEND_button="Agrandir"
     var llang="fr_FR";
+    var slang="fr";
 }
 
 diffdate = function(d1,d2) {
@@ -1711,7 +1716,7 @@ $(document).ready(function() {
                                     text: CLOSE_button,
                                     click: function () {
                                         $( this ).dialog( "close" );
-                                        location.reload(); 
+                                        window.location = "calendar-"+slang;
                                         return false;
                                     }
                                     }],
