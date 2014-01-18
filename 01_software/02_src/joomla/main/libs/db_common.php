@@ -2601,9 +2601,6 @@ EOF;
          $val['Title']=clean_calendar_message($val['Title']);
          $val['Description']=clean_calendar_message($val['Description']);
 
-         $s=array();
-         $desc=array();
-         $line="";
          $start_month=substr($val['StartTime'],5,2);
          $start_day=substr($val['StartTime'],8,2);
          $start_year=substr($val['StartTime'],0,4);
@@ -2612,126 +2609,12 @@ EOF;
          $end_day=substr($val['EndTime'],8,2);
          $end_year=substr($val['EndTime'],0,4);
 
-         $count=0;
-         $number=0;
-
-         $value=array();
-         $len = mb_strlen($val['Title'], "UTF-8");
-         for ($i = 0; $i < $len; $i++) {
-             $value[] = mb_substr($val['Title'], $i, 1, "UTF-8");
-         }
-
-         for($i=0;$i<count($value);$i++) {
-            $count=$count+1;
-            if($count==1) {
-               if(strcmp($value[$i]," ")==0) {
-                  $count=0;
-               } else {
-                  $line=$line.$value[$i];
-               }
-            } else {
-                 $line=$line.$value[$i];
-            }
-
-            if($count==12) {
-               if((strcmp($value[$i]," ")!=0)&&(isset($value[$i+1]))&&(strcmp($value[$i+1]," ")!=0)) {
-                  if(isset($value[$i+2])) {
-                     $line=$line."-";
-                     $count=$count+1;
-                  }
-               } elseif(strcmp($value[$i]," ")==0) {
-                     $line=$line." ";
-                     $count=$count+1;
-              }
-            }
-
-            if($count==13) {
-               $s[]=mb_strtoupper($line, 'UTF-8');
-               $line="";
-               $count=0;
-               $number=$number+1;
-            }
-
-            if("$number"=="18") {
-               break;
-            }
-         }
-
-         if(("$count"!="13")&&("$number"!="18")) {
-            $s[]=mb_strtoupper($line, 'UTF-8');
-            $number=$number+1;
-         }
-
-
-         while(mb_strlen($s[$number-1])<13) {
-            $s[$number-1]=$s[$number-1]." ";
-         }
-
+         $s=mb_strtoupper($val['Title'], 'UTF-8');
 
          if((isset($val['Description']))&&(!empty($val['Description']))) {
-            $count=0;
-            $line="";
-            $value=array();
-            $len = mb_strlen($val['Description'], "UTF-8");
-            for ($i = 0; $i < $len; $i++) {
-                $value[] = mb_substr($val['Description'], $i, 1, "UTF-8");
-            }
-            for($i=0;$i<count($value);$i++) {
-               if(strcmp($value[$i],"\n")==0) {
-                   while(mb_strlen($line)<=12) {
-                        $line=$line." ";
-                   }
-                   $desc[]=$line;$line="";
-                   $count=0;
-                   $number=$number+1;
-               } else {
-                   $count=$count+1;
-                   if($count==1) {
-                        if(strcmp($value[$i]," ")==0) {
-                            $count=0;
-                        } else {
-                            $line=$line.$value[$i];
-                        }
-                    } else {
-                            $line=$line.$value[$i];
-                    }
-
-                    if($count==12) {
-                        if((strcmp($value[$i]," ")!=0)&&(isset($value[$i+1]))&&(strcmp($value[$i+1]," ")!=0)) {
-                            if(isset($value[$i+2])) {
-                                $line=$line."-";
-                                $count=$count+1;
-                            }
-                        } elseif(strcmp($value[$i]," ")==0) {
-                                $line=$line." ";
-                                $count=$count+1;
-                        }
-                    }
-
-                    if($count==13) {
-                        $desc[]=$line;
-                        $line="";
-                        $count=0;
-                        $number=$number+1;
-                    }
-               }
-
-               if("$number"=="18") {
-                  break;
-               }
-            }
-
-            if(("$count"!="13")&&("$number"!="18")) {
-               $desc[]=$line;
-               $number=$number+1;
-            }
-
-
-            if(count($desc)>0) {
-               while(mb_strlen($desc[count($desc)-1])<13) {
-                  $desc[count($desc)-1]=$desc[count($desc)-1]." ";
-               }
-            }
+            $desc=$val['Description'];
+         } else {
+            $desc="";
          }
 
          $data[]=array(
@@ -2741,11 +2624,11 @@ EOF;
             "end_year" => $end_year,
             "end_month" => $end_month,
             "end_day" => $end_day,  
-            "number" => $number,
             "subject" => $s,
             "description" => $desc
          );
          unset($s);
+         unset($desc);
       }
 
       $db=null;

@@ -1285,13 +1285,13 @@ $(document).ready(function() {
                         data: {lang: llang}
                     }).done(function (data) {
                         if(data!="") {
-                            var myTitle = data.split(',,,'); 
-                            $('#select_title').children().remove();
-                            $.each( myTitle, function( key, value ) {
-                                $('#select_title').append(new Option(value, value, true, true)); 
-                            });
-                            $("#select_title").prop('selectedIndex', 0);  
-                            $("#other_title_div").css("display","none");
+                             var objJSON = jQuery.parseJSON(data);
+                             $('#select_title').children().remove();
+                             $.each(objJSON, function( key, value ) {
+                                 $('#select_title').append(new Option(value, value, true, true)); 
+                             });
+                             $("#select_title").prop('selectedIndex', 0);  
+                             $("#other_title_div").css("display","none");
                         }
                     });
                     });

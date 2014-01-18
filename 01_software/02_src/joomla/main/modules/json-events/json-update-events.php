@@ -24,7 +24,6 @@ if((isset($_POST["title"]))&&(!empty($_POST["title"]))&&(isset($_POST["start"]))
     
 
     if($db = db_priv_pdo_start()) {
-
         if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
             $description=$db->quote($_POST["desc"]);
         } 

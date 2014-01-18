@@ -1210,38 +1210,23 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
 // IN   $day         day to be checked
 // RET return an array containing all datas for the day checked
 function concat_calendar_entries($data,$month,$day) {
-         $new_data=array();
+    $new_data=array();
 
-         foreach($data as $val) {
-            $current=strtotime($month."/".$day);
-            $start=strtotime($val['start_year']."/".$val['start_month']."/".$val['start_day']);
-            $end=strtotime($val['end_year']."/".$val['end_month']."/".$val['end_day']);
+    foreach($data as $val) {
+       $current=strtotime($month."/".$day);
+       $start=strtotime($val['start_year']."/".$val['start_month']."/".$val['start_day']);
+       $end=strtotime($val['end_year']."/".$val['end_month']."/".$val['end_day']);
     
-            if(($start<=$current)&&($end>=$current)) {
-               if(empty($new_data)) {
-                  $new_data=$val;
-               } else {
-                  if($new_data['number']==18) break;
+       if(($start<=$current)&&($end>=$current)) {
+           $new_data[]=$val;
+       }
+    }
 
-                  $new_data['description'][]="             ";
-                  $new_data['number']=$new_data['number']+1;
-                  if($new_data['number']==18) break;
-
-                  foreach($val['subject'] as $sub) {
-                     $new_data['description'][]=$sub;
-                     $new_data['number']=$new_data['number']+1;
-                     if($new_data['number']==18) break;
-                  }
-
-                  foreach($val['description'] as $desc) {
-                     $new_data['description'][]=$desc;
-                     $new_data['number']=$new_data['number']+1;
-                     if($new_data['number']==18) break;
-                  }
-               }
-            }
-         }
-   return $new_data;
+    if(count($new_data)>0) {
+        return $new_data;
+    } else {
+        return null;
+    }
 }
 // }}}
 
@@ -1359,28 +1344,23 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
         $day=$day_start;
         do {
                $val=concat_calendar_entries($data,$month,$day);
-               if(!empty($val)) {
+               if($val) {
                   while(strlen($day)<2) {
                      $day="0$day";
                   }
                   while(strlen($month)<2) {
                      $month="0$month";
                   }
+
                   $file="$sd_card/logs/$month/cal_$day";
                   if($f=@fopen("$file","w+")) {
-                     // format number of line to show. Must be 3 caractere width
-                     
-                     $number_to_show  = "$val[number]";
-                     while(strlen($number_to_show)<3) {
-                        $number_to_show="0$number_to_show";
-                     }
+                     foreach($val as $value) {
+                        $sub=$value["subject"];
+                        $desc=$value["description"];
 
-                     if(!@fputs($f,"$number_to_show"."\r\n")) $status=false;
-                     foreach($val['subject'] as $sub) {
+
                         if(!@fputs($f,"$sub"."\r\n")) $status=false;
-                     }
-                     foreach($val['description'] as $desc) {
-                        if(!@fputs($f,"$desc"."\r\n")) $status=false;
+                        if(!@fputs($f,"$desc"."\r\n\r\n")) $status=false;
                      }
                      fclose($f);
                   } else {  
@@ -1401,25 +1381,22 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
         } while(($month!=$month_end)||($day!=$day_end)); 
 
         $val=concat_calendar_entries($data,$month,$day);
+
         if(!empty($val)) {
              while(strlen($day)<2) {
              $day="0$day";
         }
+
         while(strlen($month)<2) {
             $month="0$month";
         }
         $file="$sd_card/logs/$month/cal_$day";
         if($f=@fopen("$file","w+")) {
-             $number_to_show  = "$val[number]";
-             while(strlen($number_to_show)<3) {
-                $number_to_show="0$number_to_show";
-             }
+                 foreach($val as $value) {
+                    $sub=$value["subject"];
+                    $desc=$value["description"];
 
-             if(!@fputs($f,"$number_to_show"."\r\n")) $status=false;
-                 foreach($val['subject'] as $sub) {
                     if(!@fputs($f,"$sub"."\r\n")) $status=false;
-                 }
-                 foreach($val['description'] as $desc) {
                     if(!@fputs($f,"$desc"."\r\n")) $status=false;
                  }
                  fclose($f);
@@ -1428,7 +1405,6 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
             }
        }
        }
-
     }
     return $status;
 }
@@ -1712,7 +1688,7 @@ function clean_calendar_message($message="") {
 
    $tmp="";
    for($i=0;$i<strlen($res);$i++) { 
-       if((ord($res[$i])>=32)&&(ord($res[$i])<=122)) {
+       if(((ord($res[$i])>=32)&&(ord($res[$i])<=122))||(ord($res[$i])==10)||(ord($res[$i])==13)) {
           $tmp=$tmp.$res[$i];
        } else {
          $tmp=$tmp." ";

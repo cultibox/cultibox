@@ -259,7 +259,7 @@ important_list=<?php echo json_encode($important_list) ?>;
                 $.ajax({
                       type: "POST",
                       url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                      data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'+'&important='+event.important
+                      data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'+'&important='+event.important+'&desc='+encodeURIComponent(event.description)
                          <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                             ,complete: function() { $.unblockUI(); }
                          <?php } ?> 

@@ -1,3 +1,10 @@
+Cultibox (1.2.12) precise; urgency=low
+    + Plus de limites de caractères pour les fichiers cal_XX
+    + Correction du calendrier (glissement des évènements qui supprimaient les annotations + problème de liste des titres en cas d'erreur)
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Jan 18 13:16:34 CET 2014
+
+
 Cultibox (1.2.11) precise; urgency=low
     + Correction de l'affichage des puissances dans la partie logs (nom des prises)
     + Correction de l'affichage des puissances (bouton next et prev)
