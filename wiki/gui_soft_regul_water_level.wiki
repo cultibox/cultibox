@@ -28,6 +28,10 @@ Pour illustrer l'exemple, nous considérons les éléments suivants:
  * Le capteur a le numéro 5
 
  * Ouvrir le logiciel Cultibox
+ * Cliquer sur l'onglet "Configuration" puis dans la zone "Interface", mettre à "oui" le champs "Autoriser la modification des options avancées de régulation:"
+ 
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programm_water_level_6.png
+ 
  * Cliquer sur l'onglet prise
  
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs.png
