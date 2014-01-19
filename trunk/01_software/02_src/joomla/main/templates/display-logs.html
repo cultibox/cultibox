@@ -177,7 +177,7 @@ buttonImageOnly: 'true',
             <table>
             <tr>
             <?php for($plugs=1;$plugs<=$nb_plugs;$plugs++) {  ?>
-                <td class="power_max"><?php echo $plugs_infos[$plugs-1]["PLUG_NAME"]; ?><input type="checkbox" name="select_power[]" value="<?php echo  $plugs; ?>" <?php if(in_array($plugs,$select_power)) { echo ' checked'; } ?>> </td>
+                <td class="power_max"><?php echo $plugs_infos[$plugs-1]["PLUG_NAME"]; ?></td><td><input type="checkbox" name="select_power[]" value="<?php echo  $plugs; ?>" <?php if(in_array($plugs,$select_power)) { echo ' checked'; } ?>> </td>
                 <?php if($plugs % 2 == 0) { ?></tr><tr><?php } ?>
             <?php } ?>
                 </tr>
