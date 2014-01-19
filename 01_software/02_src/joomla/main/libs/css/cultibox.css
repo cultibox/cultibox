@@ -14,7 +14,7 @@
     border-radius:15px;
     background:#E3DDD1;
     margin:auto;
-    padding:2px;
+    padding:6px;
     display:block;
     vertical-align:middle;
 }
@@ -156,7 +156,7 @@ td.log-marge-day-title {
 }
 
 td.log-marge-day-field {
-   width: 35%;
+   width: 32%;
 }
 
 td.log-marge-day-title-select {
@@ -605,7 +605,7 @@ td.conf-alarm-field {
 }
 
 .power_max {
-    width: 50%;
+    width: 40%;
 }
 
 .menu-dropdown li.level1 a.level1 {
