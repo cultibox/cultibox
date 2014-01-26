@@ -13,7 +13,6 @@ Ce paragraphe concerne toutes les futurs évolutions.
 
  * Capteur EC
  * Capteur PH
- * Capteur Niveau d'eau
  * Capteur CO²
  * Capteur T/RH sans fils
  * Beeper (Issue 586)
@@ -45,6 +44,7 @@ Ce paragraphe concerne toutes les futurs évolutions.
 
 = Évolution : En test =
 
+ * Capteur Niveau d'eau
  * Capteur Température en milieu humide
  * Faire défiler les infos du calendrier sur l'écran de la culti (Issue 673)
 
