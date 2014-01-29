@@ -16,6 +16,7 @@ Ce paragraphe concerne toutes les futurs évolutions.
  * Capteur CO²
  * Capteur T/RH sans fils
  * Beeper (Issue 586)
+ * Variateur par onduleur
 
 == Soft ==
 
