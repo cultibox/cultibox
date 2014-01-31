@@ -18,15 +18,15 @@ c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\m
 = Table =
 
 La base de donnée est constituée de 9 tables :
- * calendar
- * configuration
- * historic
- * informations
- * logs
+ * calendar : sauvegarde les données du calendrier
+ * configuration : gère les informations de la configuration
+ * historic : enregistre l'historique des modifications apportées au logiciel par l'utilisateur
+ * informations : donnée concernant la Cultibox et l'ordinateur utilisé
+ * logs : toutes les données climatique sont enregistrées dans cette table
  * notes
- * plugs
- * power
- * programs
+ * plugs : la configuration des prises est enregistrée dans cette table
+ * power : registre enregistrant la puissance consommée des prises
+ * programs : les programmes sont enregistrés dans cette table
 
 Pour lister les tables disponible, utiliser la commande :
 
@@ -42,7 +42,11 @@ SHOW COLUMNS FROM tbl_name;
 
 == calendar ==
 
-Structure : 
+=== Introduction ===
+
+Cette table contient les événements du calendrier.
+
+=== Structure ===
 
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || Id          || int(11)       || NO   || PRI || NULL    || auto_increment ||
@@ -57,7 +61,12 @@ Structure :
 
 == configuration ==
 
-Structure : 
+=== Introduction ===
+
+Cette table contient la configuration globale.
+
+=== Structure ===
+
 || *Field*                 || *Type*       || *Null* || *Key* || *Default* || *Extra*        ||
 || id                      || int(11)      || NO   || PRI || NULL          || auto_increment ||
 || CHECK_UPDATE            || varchar(5)   || NO   ||     || True          ||                ||
@@ -88,7 +97,11 @@ Structure :
 
 == historic ==
 
-Structure : 
+=== Introduction ===
+
+Cette table contient l'historique des modifications apportées par le client au logiciel.
+
+=== Structure ===
 
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || id        || int(11)      || NO   || PRI || NULL    || auto_increment ||
@@ -98,7 +111,11 @@ Structure :
 
 == informations ==
 
-Structure : 
+=== Introduction ===
+
+Cette table contient les informations sur la Cultibox et sur l'ordinateur utilisé.
+
+=== Structure ===
 
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || ID           || int(11)     || NO   || PRI || NULL    || auto_increment ||
@@ -109,7 +126,11 @@ Structure :
 
 == logs ==
 
-Structure : 
+=== Introduction ===
+
+Cette table contient les données climatique.
+
+=== Structure ===
 
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || timestamp   || varchar(14) || NO   || MUL ||         ||       ||
@@ -136,7 +157,11 @@ Structure :
 
 == plugs ==
 
-Structure : 
+=== Introduction ===
+
+Cette table contient la configuration des prises.
+
+=== Structure ===
 
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || id                    || int(11)      || NO   || PRI || NULL    || auto_increment ||
@@ -157,7 +182,11 @@ Structure :
 
 == power ==
 
-Structure : 
+=== Introduction ===
+
+Cette table contient les données de consommation des prises.
+
+=== Structure ===
 
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || timestamp   || varchar(14) || NO   || MUL ||         ||       ||
@@ -168,7 +197,12 @@ Structure :
 
 == programs ==
 
-Structure : 
+
+=== Introduction ===
+
+Cette table contient les programmes.
+
+=== Structure ===
 
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || plug_id    || int(11)      || NO   ||     || NULL       ||       ||
