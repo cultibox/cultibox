@@ -1,0 +1,180 @@
+#summary Base de donnée
+
+= Sommaire =
+<wiki:toc max_depth="4" />
+
+= Introduction =
+
+Le logiciel Cultibox utilise une base de donnée gérée par le serveur MySQL.
+
+Dans la suite de cette aide, les commandes sont exécutées à partir de l'invite de commande de MySQL. Pour la lancer :
+
+Depuis windows :
+
+{{{
+c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox
+}}}
+
+= Table =
+
+La base de donnée est constituée de 9 tables :
+ * calendar
+ * configuration
+ * historic
+ * informations
+ * logs
+ * notes
+ * plugs
+ * power
+ * programs
+
+Pour lister les tables disponible, utiliser la commande :
+
+{{{
+SHOW TABLES;
+}}}
+ 
+Pour lister les colonnes présentes dans une des tables (tbl_name) :
+
+{{{
+SHOW COLUMNS FROM tbl_name;
+}}}
+
+== calendar ==
+
+Structure : 
+
+|| *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
+|| Id          || int(11)       || NO   || PRI || NULL    || auto_increment ||
+|| Title       || varchar(1000) || YES  ||     || NULL    ||                ||
+|| Description || varchar(500)  || YES  ||     || NULL    ||                ||
+|| StartTime   || datetime      || YES  ||     || NULL    ||                ||
+|| EndTime     || datetime      || YES  ||     || NULL    ||                ||
+|| External    || smallint(6)   || NO   ||     || 0       ||                ||
+|| Color       || varchar(7)    || NO   ||     || #4A40A4 ||                ||
+|| Icon        || varchar(30)   || YES  ||     || NULL    ||                ||
+|| Important   || int(1)        || NO   ||     || 0       ||                ||
+
+== configuration ==
+
+Structure : 
+|| *Field*                 || *Type*       || *Null* || *Key* || *Default* || *Extra*        ||
+|| id                      || int(11)      || NO   || PRI || NULL          || auto_increment ||
+|| CHECK_UPDATE            || varchar(5)   || NO   ||     || True          ||                ||
+|| VERSION                 || varchar(30)  || NO   ||     || 1.1.38-noarch ||                ||
+|| COLOR_HUMIDITY_GRAPH    || varchar(30)  || NO   ||     || blue          ||                ||
+|| COLOR_TEMPERATURE_GRAPH || varchar(30)  || NO   ||     || red           ||                ||
+|| COLOR_POWER_GRAPH       || varchar(30)  || NO   ||     || black         ||                ||
+|| COLOR_COST_GRAPH        || varchar(30)  || NO   ||     || purple        ||                ||
+|| RECORD_FREQUENCY        || int(11)      || NO   ||     || 5             ||                ||
+|| POWER_FREQUENCY         || int(11)      || NO   ||     || 5             ||                ||
+|| NB_PLUGS                || int(11)      || NO   ||     || 3             ||                ||
+|| UPDATE_PLUGS_FREQUENCY  || int(20)      || NO   ||     || -1            ||                ||
+|| SHOW_POPUP              || varchar(5)   || NO   ||     || True          ||                ||
+|| ALARM_ACTIV             || varchar(4)   || NO   ||     || 0000          ||                ||
+|| ALARM_VALUE             || varchar(5)   || NO   ||     || 50.00         ||                ||
+|| COST_PRICE              || decimal(6,4) || NO   ||     || 0.1249        ||                ||
+|| COST_PRICE_HP           || decimal(6,4) || NO   ||     || 0.1353        ||                ||
+|| COST_PRICE_HC           || decimal(6,4) || NO   ||     || 0.0926        ||                ||
+|| START_TIME_HC           || varchar(5)   || NO   ||     || 22:30         ||                ||
+|| STOP_TIME_HC            || varchar(5)   || NO   ||     || 06:30         ||                ||
+|| COST_TYPE               || varchar(20)  || NO   ||     || standard      ||                ||
+|| STATISTICS              || varchar(5)   || NO   ||     || True          ||                ||
+|| SECOND_REGUL            || varchar(5)   || NO   ||     || False         ||                ||
+|| ADVANCED_REGUL_OPTIONS  || varchar(5)   || NO   ||     || False         ||                ||
+|| SHOW_COST               || varchar(5)   || NO   ||     || False         ||                ||
+|| SHOW_HISTORIC           || varchar(5)   || NO   ||     || False         ||                ||
+|| RESET_MINMAX            || varchar(5)   || NO   ||     || 00:00         ||                ||
+
+== historic ==
+
+Structure : 
+
+|| *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
+|| id        || int(11)      || NO   || PRI || NULL    || auto_increment ||
+|| timestamp || varchar(25)  || NO   ||     || NULL    ||                ||
+|| action    || varchar(300) || NO   ||     || NULL    ||                ||
+|| type      || varchar(15)  || NO   ||     || NULL    ||                ||
+
+== informations ==
+
+Structure : 
+
+|| *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
+|| ID           || int(11)     || NO   || PRI || NULL    || auto_increment ||
+|| cbx_id       || int(5)      || NO   ||     || 0       ||                ||
+|| firm_version || varchar(7)  || NO   ||     || 000.000 ||                ||
+|| id_computer  || varchar(50) || NO   ||     || NULL    ||                ||
+|| log          || mediumtext  || YES  ||     || NULL    ||                ||
+
+== logs ==
+
+Structure : 
+
+|| *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
+|| timestamp   || varchar(14) || NO   || MUL ||         ||       ||
+|| temperature || int(4)      || YES  ||     || NULL    ||       ||
+|| humidity    || int(4)      || YES  ||     || NULL    ||       ||
+|| date_catch  || varchar(10) || YES  ||     || NULL    ||       ||
+|| time_catch  || varchar(10) || YES  ||     || NULL    ||       ||
+|| fake_log    || varchar(5)  || NO   ||     || False   ||       ||
+|| sensor_nb   || int(4)      || NO   ||     || 1       ||       ||
+|| type_sensor || int(11)     || NO   ||     || 2       ||       ||
+
+== notes ==
+
+Structure : 
+
+|| *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
+|| id        || int(11)      || NO   || PRI || NULL    || auto_increment ||
+|| title     || varchar(50)  || NO   ||     || NULL    ||                ||
+|| desc      || varchar(500) || NO   ||     || NULL    ||                ||
+|| image     || varchar(50)  || YES  ||     || NULL    ||                ||
+|| link      || varchar(50)  || YES  ||     || NULL    ||                ||
+|| type_link || varchar(30)  || YES  ||     || NULL    ||                ||
+|| lang      || varchar(5)   || NO   ||     || fr_FR   ||                ||
+
+== plugs ==
+
+Structure : 
+
+|| *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
+|| id                    || int(11)      || NO   || PRI || NULL    || auto_increment ||
+|| PLUG_ID               || varchar(3)   || YES  ||     || NULL    ||                ||
+|| PLUG_NAME             || varchar(30)  || YES  ||     || NULL    ||                ||
+|| PLUG_TYPE             || varchar(20)  || NO   ||     || other   ||                ||
+|| PLUG_TOLERANCE        || decimal(3,1) || YES  ||     || NULL    ||                ||
+|| PLUG_POWER            || int(11)      || YES  ||     || NULL    ||                ||
+|| PLUG_POWER_MAX        || varchar(10)  || NO   ||     || 1000    ||                ||
+|| PLUG_REGUL            || varchar(5)   || NO   ||     || False   ||                ||
+|| PLUG_REGUL_SENSOR     || varchar(7)   || NO   ||     || 1       ||                ||
+|| PLUG_SENSO            || varchar(1)   || NO   ||     || T       ||                ||
+|| PLUG_SENSS            || varchar(1)   || NO   ||     || +       ||                ||
+|| PLUG_REGUL_VALUE      || decimal(3,1) || NO   ||     || 35.0    ||                ||
+|| PLUG_ENABLED          || varchar(5)   || NO   ||     || True    ||                ||
+|| PLUG_SECOND_TOLERANCE || decimal(3,1) || NO   ||     || 0.0     ||                ||
+|| PLUG_COMPUTE_METHOD   || varchar(1)   || NO   ||     || M       ||                ||
+
+== power ==
+
+Structure : 
+
+|| *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
+|| timestamp   || varchar(14) || NO   || MUL ||         ||       ||
+|| record      || int(3)      || YES  ||     || NULL    ||       ||
+|| plug_number || int(3)      || YES  ||     || NULL    ||       ||
+|| date_catch  || varchar(10) || YES  ||     || NULL    ||       ||
+|| time_catch  || varchar(10) || YES  ||     || NULL    ||       ||
+
+== programs ==
+
+Structure : 
+
+|| *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
+|| plug_id    || int(11)      || NO   ||     || NULL       ||       ||
+|| time_start || varchar(6)   || NO   ||     || NULL       ||       ||
+|| time_stop  || varchar(6)   || NO   ||     || NULL       ||       ||
+|| value      || decimal(3,1) || NO   ||     || NULL       ||       ||
+|| number     || int(11)      || NO   ||     || 1          ||       ||
+|| date_start || varchar(10)  || NO   ||     || 0000-00-00 ||       ||
+|| date_end   || varchar(10)  || NO   ||     || 0000-00-00 ||       ||
