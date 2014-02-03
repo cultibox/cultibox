@@ -259,7 +259,26 @@ ERT INTO `notes` (`id`, `title`, `desc`, `image`, `link`, `type_link`, `lang`) V
 (23, 'Zubehör', 'Sie können Ihr Paket durch den Kauf von zusätzlichen Sensoren, 1000W und 3500W genommen oder anderem Zubehör durch den Besuch der Website zu vervollständigen:', NULL, 'http://www.cultibox.fr', 'external', 'de_DE'),
 (24, 'Recycling', 'In Cultibox wir nachbearbeiten alle Teil unserer Produkte. Die Verpackung kann recycelt werden und Cultibox enthält eine Lithium-Batterie, die nicht geworfen sollten entfernt werden. Für eine optimale Wiederverwertung, bringen uns Cultibox und Sie werden belohnt werden.', 'recycling.png', NULL, NULL, 'de_DE'),
 (25, 'Garantie', 'Die Cultibox und Zubehör sind für zwei Jahre garantiert. Wir sorgen für die Sicherheit direkt, ohne Vermittler. Um uns zu kontaktieren:', NULL, 'support@cultibox.fr', 'mail', 'de_DE');
+
+-- --------------------------------------------------------
+
 --
+-- Table structure for table `sensors`
+--
+
+CREATE TABLE IF NOT EXISTS `sensors` (
+  `id` int(11) NOT NULL,
+  `type` int(5) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sensors`
+--
+
+INSERT INTO `sensors` (`id`, `type`) VALUES (1, 0), (2, 0), (3, 0), (4, 0);
+
+
+-- --------------------------------------------------------
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
