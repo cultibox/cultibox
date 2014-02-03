@@ -3437,6 +3437,26 @@ EOF;
 ///
 
 
+// {{{ get_sensor_db_type()
+function get_sensor_db_type() {
+    $sql = <<<EOF
+SELECT * FROM `sensors` ORDER BY id ASC;
+EOF;
+    $db=db_priv_pdo_start();
+    $res="";
+    try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+    return $res;
+}
+///
+
+
 ?>
 
 

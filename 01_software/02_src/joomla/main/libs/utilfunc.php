@@ -148,130 +148,6 @@ function check_empty_string($value="") {
 //}}}
 
 
-// {{{ get_log_value()
-// ROLE get log's values from files and clean it
-// IN $sd_card       path to the sd card
-//    $month         month to be proceed
-//    $day           day to be proceed
-//    $array_line    array to store log's values
-// RET none
-function get_log_value($sd_card,$month,$day,&$array_line) {
-   $file="$sd_card/logs/$month/$day";
-
-   if(!file_exists("$file")) return false;
-   $handle = fopen("$file", 'r');
-   if ($handle)
-   {
-      while (!feof($handle))
-      {
-         $buffer = fgets($handle);
-         if(check_empty_string($buffer)) {
-            $temp = explode("\t", $buffer);
-            if(count($temp)==($GLOBALS['NB_MAX_SENSOR_LOG']*2+1)) { 
-                for($i=0;$i<count($temp);$i++) {
-                    $temp[$i]=rtrim($temp[$i]);
-                    $temp[$i]=str_replace(" ","",$temp[$i]);
-                    $temp[$i]=str_replace("0000","",$temp[$i]);
-                }
-
-                $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
-                $date_catch=rtrim($date_catch);
-                $time_catch=substr($temp[0], 8,6);
-                $time_catch=rtrim($time_catch);
-
-
-                if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)&&(strlen($temp[0])==14)) {
-                        for($i=0;$i<$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) {
-                            $sensor_type=get_sensor_type($i,"$sd_card","$month","$day");
-                            if(empty($sensor_type)) {
-                                $sensor_type="2";
-                            }
-
-                            if((!empty($temp[2*$i+1]))||(!empty($temp[2*$i+2]))) {
-                                        $array_line[] = array(
-                                            "timestamp" => $temp[0],
-                                            "temperature" => $temp[1+2*$i],
-                                            "humidity" => $temp[2+2*$i],
-                                            "date_catch" => $date_catch,
-                                            "time_catch" => $time_catch,
-                                            "sensor_nb" => $i+1,    
-                                            "sensor_type" => $sensor_type
-                                        );
-                            } 
-                        }
-                }
-            }
-         }
-      }
-      fclose($handle);
-   }
-}
-//}}}
-
-
-// {{{ get_power_value()
-// ROLE get powers values from files and clean it
-// IN $file             file to explode
-//    $array_line       array to store log's values
-// RET none
-function get_power_value($file,&$array_line) {
-   $check=true;
-   if(!file_exists("$file")) return false;
-   $handle = fopen("$file", 'r');
-   if ($handle)
-   {
-      while (!feof($handle))
-      {
-         $buffer = fgets($handle);
-         $buffer=trim($buffer);
-         if(!check_empty_string($buffer)) {
-            if($check) {
-                $check=false;
-            } else {
-                break;
-            }
-         } else {
-            if(!$check) $check=true;
-            $temp=explode("\t", $buffer);
-
-            if(count($temp)==17) {
-                for($i=0;$i<count($temp);$i++) {
-                    $temp[$i]=rtrim($temp[$i]);
-                }
-
-                $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
-                $date_catch=rtrim($date_catch);
-                $time_catch=substr($temp[0], 8,6);
-                $time_catch=rtrim($time_catch);
-
-                if((!empty($date_catch))&&(!empty($time_catch))) {
-                  for($i=1;$i<count($temp);$i++) {
-                     if(strlen($temp[$i])!=4) {
-                        return false;
-                     }
-                  }
-
-
-                  for($i=1;$i<count($temp);$i++) {
-                        if(is_numeric($temp[$i])) {
-                            $array_line[] = array(
-                                "timestamp" => $temp[0],
-                                "power" => $temp[$i],
-                                "plug_number" => $i,
-                                "date_catch" => $date_catch,
-                                "time_catch" => $time_catch
-                            );    
-                        }
-                  }
-                }
-            }
-         }
-      }
-      fclose($handle);
-   }
-}
-//}}}
-
 // {{{ clean_log_file()
 // ROLE copy an empty file to clean a log file
 // IN $file             file to clean
@@ -2143,21 +2019,15 @@ function find_new_line($tab, $time="") {
 function get_sensor_type($nmb,$sd_card,$month,$day) {
    $file="$sd_card/logs/index";
    if(!file_exists("$file")) return false;
+   
+   $index_array=file("$file");
+   foreach($index_array as $buffer) {
+      $tmp=substr($buffer, 0, 4);
 
-   $handle = fopen("$file", 'r');
-   if($handle) {
-      while(!feof($handle)) {
-         $buffer = fgets($handle);
-         $tmp=substr($buffer, 0, 4);
-
-         if(strcmp("$tmp","$month$day")==0) {
-            $sensor=substr("$buffer",4+$nmb,1);
-            fclose($handle);
-            return "$sensor";     
-         }
+      if(strcmp("$tmp","$month$day")==0) {
+          $sensor=substr("$buffer",4+$nmb,1);
+          return "$sensor";     
       }
-      fclose($handle);
-      return false;
    }
    return false;
 }
