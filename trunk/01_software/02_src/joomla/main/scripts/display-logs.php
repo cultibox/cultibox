@@ -74,6 +74,8 @@ if((!isset($import_load))||(empty($import_load))) {
     $import_load=2;
 }
 
+$_SESSION['sensor_type']=get_sensor_db_type();
+
 if(isset($_POST['select_power'])) {
     $select_power=getvar('select_power');
 } elseif(isset($_POST['select_power_save'])) {
