@@ -159,6 +159,7 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
       <duration>13</duration>
       <start>2014-01-27T17:32:00+00:00</start>
       <period>0000-00-27T07:43:12</period>
+      <cbx_symbol>OxAC</cbx_symbol>
       <icon>moon.png</icon>
       <color>#529865</color>
    </entry>
@@ -177,6 +178,7 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
       <duration>14</duration>
       <start>2014-01-13T09:13:00+00:00</start>
       <period>0000-00-27T07:43:12</period>
+      <cbx_symbol>OxAD</cbx_symbol>
       <icon>moon.png</icon>
       <color>#B71F3D</color>
    </entry>
