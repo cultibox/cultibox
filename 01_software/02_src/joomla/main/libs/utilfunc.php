@@ -1540,6 +1540,39 @@ function check_and_copy_index($sd_card) {
 // }}}
 
 
+// {{{ clean_index_file()
+// ROLE clean the index file
+// IN  $sd_card     the sd card pathname 
+// RET false if an error occured, true else
+function clean_index_file($sd_card) {
+    if(!is_file("$sd_card/logs/index")) {   
+        return false;
+    }
+
+    $index="";
+
+    for($i=1;$i<=14;$i++) { 
+        for($j=1;$j<=31;$j++) {     
+            if(strlen($i)<2) {
+                $i="0$i";
+            }
+
+            if(strlen($j)<2) {
+                $j="0$j";
+            }
+
+            $index=$index."${i}${j}0000\n";
+        }   
+    }
+
+    $handle=(fopen("$sd_card/logs/index",'w'));
+    fwrite($handle,"$index");
+    fclose($handle);
+    return true;
+}
+// }}}
+
+
 
 // {{{ clean_popup_message()
 // ROLE clean highchart message by removing non-appropriate char for javascript
@@ -2010,26 +2043,37 @@ function find_new_line($tab, $time="") {
 
 
 // {{{ get_sensor_type()
-// ROLE get sensor type from the index file
+// ROLE get sensor type from the index file for the current day
 // IN $nmb      number of the sensor 
 //    $sd_card  path to the SD card plugged
 //    $month    month to be checked
 //    $day      day to be checked
-// RET sensor type number
-function get_sensor_type($nmb,$sd_card,$month,$day) {
+// RET sensor type array
+function get_sensor_type($sd_card,$month,$day) {
+   $sensor_type=array(0,0,0,0);
    $file="$sd_card/logs/index";
-   if(!file_exists("$file")) return false;
+
+   if(!file_exists("$file")) return $sensor_type;
    
    $index_array=file("$file");
-   foreach($index_array as $buffer) {
-      $tmp=substr($buffer, 0, 4);
-
-      if(strcmp("$tmp","$month$day")==0) {
-          $sensor=substr("$buffer",4+$nmb,1);
-          return "$sensor";     
-      }
+   if($month==1) {
+        $line=$day;
+   } else {
+        $line=($month-1)*31+$day;
    }
-   return false;
+
+
+   $tmp=trim($index_array[$line-1]); 
+   if(strlen($tmp)!=8) return $sensor_type;
+
+   $tst_date=substr($tmp,0,4);
+   if(strlen($month)<2) $month="0".$month;
+   if(strlen($day)<2) $day="0".$day;   
+   if(strcmp("$tst_date","${month}${day}")!=0) return $sensor_type;
+
+   $tmp=substr($tmp,4,4);
+   $sensor_type=str_split($tmp, 1);
+   return $sensor_type;
 }
 // }}}
 

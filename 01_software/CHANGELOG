@@ -1,3 +1,11 @@
+Cultibox (1.2.13) precise; urgency=low
+    + Ajout d'une table de type de capteur
+    + Mise à jour de la table type de capteur par le fichier index
+    + Optimisation du chargement des logs par la lecture en un coup des fichiers et l'optimisation du parcours du fichier index
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Feb  4 10:31:07 CET 2014
+
+
 Cultibox (1.2.12) precise; urgency=low
     + Plus de limites de caractères pour les fichiers cal_XX
     + Correction du calendrier (glissement des évènements qui supprimaient les annotations + problème de liste des titres en cas d'erreur)

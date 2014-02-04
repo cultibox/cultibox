@@ -179,7 +179,9 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-if((!empty($sd_card))&&(isset($sd_card))) {
+if((!empty($sd_card))&&(isset($sd_card))) { 
+    
+    
     $program="";
     $conf_uptodate=true;
     $error_copy=false;
@@ -244,6 +246,21 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             $main_error[]=__('ERROR_COPY_INDEX');
             $error_copy=true;
         }
+
+        $current_index=get_sensor_type($sd_card,date('m'),date('d'));
+        $chk_value=false;
+
+        foreach($current_index as $tst_index) {
+            if($tst_index!=0) {
+                $chk_value=true;
+                break;
+            }
+        }
+
+        if($chk_value) {            
+            update_sensor_type($current_index); 
+            clean_index_file($sd_card);
+        } 
 
 
         $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
