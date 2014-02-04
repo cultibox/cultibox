@@ -1,3 +1,9 @@
+Cultibox (1.3.02) precise; urgency=low
+    + Ajout d'un vérification d'écriture sur la carte SD avant le formatage
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Feb  4 13:31:07 CET 2014
+
+
 Cultibox (1.3.01) precise; urgency=low
     + Ajout d'une table de type de capteur
     + Mise à jour de la table type de capteur par le fichier index

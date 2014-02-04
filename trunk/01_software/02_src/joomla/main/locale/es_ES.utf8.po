@@ -1463,6 +1463,9 @@ msgstr "Au moins un capteur doit être choisis pour la régulation, par défaut 
 msgid "ERROR_ADD_CALENDAR_PROGRAM"
 msgstr "Erreur lors de l'enregistrement du calendrier à partir du programme selectionné"
 
+msgid "LOCKED_CARD"
+msgstr "No se puede escribir en la tarjeta SD, asegúrese de que la tarjeta no está protegida contra escritura"
+
 
 # For the informations part:
 msgid "CLOSE_CONFIRM"

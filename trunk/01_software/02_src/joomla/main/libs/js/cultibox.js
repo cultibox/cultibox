@@ -483,14 +483,23 @@ $(document).ready(function() {
 
     $("#reset_sd_card_submit").click(function(e) {
         e.preventDefault();
-        $("#format_dialog_sd").dialog({
-            resizable: false,
-            height:200,
-            width: 500,
-            closeOnEscape: false,
-            modal: true,
-            dialogClass: "dialog_cultibox",
-            buttons: [{
+        $.ajax({
+            cache: false,
+            async: true,
+            url: "../../main/modules/external/check_sd.php",
+            data: {path:$("#selected_hdd").val()}
+         }).done(function (data) {
+            if(data=="0") {
+                $("#locked_sd_card").dialog({ width: 550, resizable: false, closeOnEscape: false, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } }], hide: "fold", modal: true,  dialogClass: "popup_error"  });
+            } else {
+                $("#format_dialog_sd").dialog({
+                    resizable: false,
+                    height:200,
+                    width: 500,
+                    closeOnEscape: false,
+                    modal: true,
+                    dialogClass: "dialog_cultibox",
+                    buttons: [{
                         text: OK_button,
                         click: function () {
                             $( this ).dialog( "close" ); 
@@ -529,6 +538,8 @@ $(document).ready(function() {
                             $( this ).dialog( "close" ); return false;
                         }
                     }]
+                });
+            }
         });
     });
 
