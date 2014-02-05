@@ -114,7 +114,20 @@ switch($type) {
                             echo "error";
                        }
                        break;
+    case 'ssid': 
+                break;
+    case 'password':
+                $value=explode('____',$value);
+                if(count($value)!=2) {
+                    echo "error";
+                    break;
+                }
 
+                if(strcmp(trim($value[0]),trim($value[1]))!=0) {
+                    echo "error";
+                    break;
+                }
+                break;
 }
 echo "1";
 

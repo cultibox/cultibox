@@ -45,6 +45,10 @@ $pop_up_message="";
 $pop_up_error_message="";
 $alarm_enable=getvar('alarm_enable');
 $alarm_value=getvar('alarm_value');
+$wifi_enable=getvar('wifi_enable');
+$wifi_ssid=getvar('wifi_ssid');
+$wifi_key_type=getvar('wifi_key_type');
+$wifi_password=getvar('wifi_password');
 $update=getvar('update');
 $version=get_configuration("VERSION",$main_error);
 $submenu=getvar("submenu",$main_error);
@@ -278,6 +282,33 @@ if(empty($alarm_value)) {
         $alarm_value = get_configuration("ALARM_VALUE",$main_error);
 }
 
+
+if(strcmp("$wifi_enable","")!=0) {
+       insert_configuration("WIFI","$wifi_enable",$main_error);
+       if($wifi_enable) {
+           insert_configuration("WIFI_SSID","$wifi_ssid",$main_error);
+           insert_configuration("WIFI_KEY_TYPE","$wifi_key_type",$main_error);
+           insert_configuration("WIFI_PASSWORD","$wifi_password",$main_error);
+       } else {
+           insert_configuration("WIFI_SSID","",$main_error);
+           insert_configuration("WIFI_KEY_TYPE","NONE",$main_error);
+           insert_configuration("WIFI_PASSWORD","",$main_error);
+        
+           $wifi_ssid="";
+           $wifi_key_type="NONE";
+           $wifi_password="";
+       }
+       $update_conf=true;
+
+       if((!empty($sd_card))&&(isset($sd_card))) {
+               $wifi_conf=create_wificonf_from_database($main_error);
+               if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
+                   $main_error[]=__('ERROR_WIFI_CONF');
+               }
+       }
+} else {
+       $wifi_enable = get_configuration("WIFI",$main_error);
+}
 
 if((isset($stats))&&(!empty($stats))) {
         insert_configuration("STATISTICS","$stats",$main_error);

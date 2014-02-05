@@ -95,10 +95,14 @@ $GLOBALS['GRAPHIC_COLOR_GRID_BLACK'] = "#B5ACAD";
 $GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'] = "#A67AA6";
 
 
-//Color for the calendar:
+// Color for the calendar:
 $GLOBALS['LIST_GRAPHIC_COLOR_CALENDAR'] = array ('00', '44', '88', 'DD', 'CC','FF');
 
 // Remote script to send informations:
 $GLOBALS['REMOTE_DATABASE'] = "http://www.cbx.greenbox-botanic.com/index.php";
+
+// List of encryption supported by the wifi module:
+$GLOBALS['WIFI_KEY_TYPE_LIST']=array("NONE", "WEP", "WPA", "WPA2", "WPA-AUTO");
+
 
 ?>

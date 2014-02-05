@@ -698,6 +698,40 @@ $(document).ready(function() {
                 });
             }
 
+            if($("#wifi_enable option:selected").val()=="1") {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#wifi_ssid").val(),type:'ssid'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_wifi_ssid").show(700);
+                        checked=false;
+                        expand('wifi_interface');
+                    } else {
+                        $("#error_wifi_ssid").css("display","none");
+                    }
+                });
+
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#wifi_password").val()+"____"+$("#wifi_password_confirm").val()+"    ",type:'password'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_wifi_password").show(700);
+                        $("#error_wifi_password_confirm").show(700);
+                        checked=false;
+                        expand('wifi_interface');
+                    } else {
+                        $("#error_wifi_password").css("display","none");
+                        $("#error_wifi_password_confirm").css("display","none");
+                    }
+                });
+            }
+
             if(checked) {
                 $.ajax({
                     cache: false,

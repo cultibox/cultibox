@@ -851,6 +851,30 @@ function write_pluga($sd_card,&$out) {
 }
 // }}}
 
+
+// {{{ write_wificonf()
+// ROLE write wifi configuration into the sd card
+// IN   $sd_card        the sd card to be written
+//      $wificonf       string containing data to be written
+//      $out            error or warning messages
+// RET false is an error occured, true else
+function write_wificonf($sd_card,$wificonf="",&$out) {
+   $file="$sd_card/cnf/wifi";
+
+   if($f=@fopen("$file","w+")) {
+      if(!@fputs($f,"$wificonf"."\r\n")) {
+        fclose($f);
+         return false;
+      }
+   } else {
+        return false;
+   }
+   fclose($f);
+   return true;
+}
+// }}}
+
+
 // {{{ write_plugconf()
 // ROLE write plug_configuration into the sd card
 // IN   $data           array containing datas to write
@@ -1561,7 +1585,7 @@ function clean_index_file($sd_card) {
                 $j="0$j";
             }
 
-            $index=$index."${i}${j}0000\n";
+            $index=$index."${i}${j}0000\r\n";
         }   
     }
 
@@ -1591,8 +1615,8 @@ function clean_highchart_message($message="") {
 // IN  $message         message to be cleaned
 // RET new message cleaned 
 function clean_calendar_message($message="") {
-   $search = array('À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ò','Ó','Ô','Õ','Ö','Ù','Ú','Û','Ü','Ý','à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ð','ò','ó','ô','õ','ö','ù','ú','û','ü','ý','ÿ');
-   $replace = array('A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','O','O','O','O','O','U','U','U','U','Y','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','o','o','o','o','o','u','u','u','u','y','y');
+   $search = array('À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ò','Ó','Ô','Õ','Ö','Ù','Ú','Û','Ü','Ý','à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ð','ò','ó','ô','õ','ö','ù','ú','û','ü','ý','ÿ','\n');
+   $replace = array('A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','O','O','O','O','O','U','U','U','U','Y','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','o','o','o','o','o','u','u','u','u','y','y','\r\n');
    $res=str_replace($search, $replace, $message);
 
    $tmp="";
