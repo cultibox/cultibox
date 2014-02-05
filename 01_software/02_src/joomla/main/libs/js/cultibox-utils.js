@@ -9,12 +9,14 @@ function expand(div) {
       var divSystem = document.getElementById('div_system_interface');
       var divAlarm = document.getElementById('div_alarm_interface');
       var divCard = document.getElementById('div_card_interface');
+      var divWifi = document.getElementById('div_wifi_interface');
       var divSubmit = document.getElementById('div_submit_interface');
 
       var divLabelConfig = document.getElementById('div_user_label');
       var divLabelSystem = document.getElementById('div_system_label');
       var divLabelAlarm = document.getElementById('div_alarm_label');
       var divLabelCard = document.getElementById('div_card_label');
+      var divLabelWifi = document.getElementById('div_wifi_label');
 
       var divAlarmDesc = document.getElementById('div_alarm_description');
 
@@ -25,16 +27,13 @@ function expand(div) {
                                  divCard.style.display = "none";
                                  divSubmit.style.display = "";
                                  divAlarmDesc.style.display = "none";
+                                 divWifi.style.display = "none";
                         
-                                 divLabelConfig.style.color = '#777779';
-                                 divLabelSystem.style.color = '';
-                                 divLabelAlarm.style.color = '';
-                                 divLabelCard.style.color = '';
-
                                  divLabelCard.style.color = "black";
                                  divLabelConfig.style.color = "#6E8915";
                                  divLabelSystem.style.color = "black";
                                  divLabelAlarm.style.color = "black";
+                                 divLabelWifi.style.color = "black";
 
                                  document.configform.submenu.value="user_interface";
                                  
@@ -45,16 +44,13 @@ function expand(div) {
                                    divCard.style.display = "none";
                                    divSubmit.style.display = "";
                                    divAlarmDesc.style.display = "none";
+                                   divWifi.style.display = "none";
 
-                                   divLabelConfig.style.color = '';
-                                   divLabelSystem.style.color = '#777779';
-                                   divLabelAlarm.style.color = '';
-                                   divLabelCard.style.color = '';
-   
                                    divLabelCard.style.color = "black";
                                    divLabelConfig.style.color = "black";
                                    divLabelSystem.style.color = "#6E8915";
                                    divLabelAlarm.style.color = "black";
+                                   divLabelWifi.style.color = "black";
 
                                    document.configform.submenu.value="system_interface";
 
@@ -65,17 +61,13 @@ function expand(div) {
                                   divCard.style.display = "none";
                                   divSubmit.style.display = "";
                                   divAlarmDesc.style.display = "";
-
-
-                                  divLabelConfig.style.color = '';
-                                  divLabelSystem.style.color = '';
-                                  divLabelAlarm.style.color = '#777779';
-                                  divLabelCard.style.color = '';
+                                  divWifi.style.display = "none";
 
                                   divLabelCard.style.color = "black";
                                   divLabelConfig.style.color = "black";
                                   divLabelSystem.style.color = "black";
                                   divLabelAlarm.style.color = "#6E8915";
+                                  divLabelWifi.style.color = "black";
 
 
                                   document.configform.submenu.value="alarm_interface";
@@ -87,18 +79,32 @@ function expand(div) {
                                  divCard.style.display = "";
                                  divSubmit.style.display = "none";
                                  divAlarmDesc.style.display = "none";
-
-                                 divLabelConfig.style.color = '';
-                                 divLabelSystem.style.color = '';
-                                 divLabelAlarm.style.color = '';
-                                 divLabelCard.style.color = '#777779';
+                                 divWifi.style.display = "none";
 
                                  divLabelCard.style.color = "#6E8915";
                                  divLabelConfig.style.color = "black";
                                  divLabelSystem.style.color = "black";
                                  divLabelAlarm.style.color = "black";
+                                 divLabelWifi.style.color = "black";
 
                                  document.configform.submenu.value="card_interface";
+
+                                 break;
+      case 'wifi_interface' :    divConfig.style.display = "none";
+                                 divSystem.style.display = "none";
+                                 divAlarm.style.display = "none";
+                                 divCard.style.display = "none";
+                                 divSubmit.style.display = "";
+                                 divAlarmDesc.style.display = "none";
+                                 divWifi.style.display = "";
+
+                                 divLabelCard.style.color = "black";
+                                 divLabelConfig.style.color = "black";
+                                 divLabelSystem.style.color = "black";
+                                 divLabelAlarm.style.color = "black";
+                                 divLabelWifi.style.color = "#6E8915";
+
+                                 document.configform.submenu.value="wifi_interface";
 
                                  break;
       }
@@ -131,6 +137,23 @@ function getAlarm(i) {
          case 0 : divAval.style.display = ''; labelAvalue.style.display = ''; break;
          case 1 : divAval.style.display = 'none'; labelAvalue.style.display = 'none'; break;
          default: divAval.style.display = ''; labelAvalue.style.display = ''; break;
+      }
+}
+//}}}
+
+
+// {{{ getWifi()
+// ROLE display or not the wifi part from the configuration menu
+// IN  input value: display or not 
+// HOW IT WORKS: get id from div to be displayed the wifi configuration or not and display it (or not) depending the input value
+// USED BY: templates/configuration.html
+function getWifi(i) {
+      var divAval = document.getElementById('div_wifi_value');
+
+      switch(i) {
+         case 0 : divAval.style.display = '';  break;
+         case 1 : divAval.style.display = 'none'; break;
+         default: divAval.style.display = ''; break;
       }
 }
 //}}}

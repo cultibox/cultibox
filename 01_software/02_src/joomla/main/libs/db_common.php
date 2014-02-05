@@ -2384,6 +2384,44 @@ EOF;
 // }}}
 
 
+/// {{{ create_wificonf_from_database()
+// ROLE read wifi configuration from the database and format its to be writen into a sd card
+// IN $out        error or warning message
+// RET a string containing datas
+function create_wificonf_from_database(&$out) {
+   $sql = <<<EOF
+SELECT `WIFI`, `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD` FROM `configuration` WHERE `id` = 1;
+EOF;
+
+   $db=db_priv_pdo_start();
+   try {
+       $sth=$db->prepare("$sql");
+       $sth->execute();
+       $res=$sth->fetch(PDO::FETCH_ASSOC);
+   } catch(PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
+   if((isset($ret))&&(!empty($ret))) {
+          if($GLOBALS['DEBUG_TRACE']) {
+                  $out[]=__('ERROR_SELECT_SQL').$ret;
+            } else {
+                  $out[]=__('ERROR_SELECT_SQL');
+            }
+            return false;
+   }
+
+   
+   if($res['WIFI']) {
+        $return="SSID:".$res['WIFI_SSID']."\r\n"."CLE:".$res['WIFI_SSID']."\r\n"."PWD:".$res['WIFI_PASSWORD']."\r\n";
+   } else {
+        $return="SSID:\r\nCLE:\r\nPWD:\r\n";
+   }
+   return $return;
+}
+/// }}}
+
+
 /// {{{ create_program_from_database()
 // ROLE read programs from the database and format its to be writen into a sd card
 // IN $out        error or warning message

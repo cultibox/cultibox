@@ -1,5 +1,7 @@
 Cultibox (1.3.02) precise; urgency=low
     + Ajout d'un vérification d'écriture sur la carte SD avant le formatage
+    + Ajout d'un menu de configuration wifi
+    + Correction des caractères \n dans le calendrier et le fichier index
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Feb  4 13:31:07 CET 2014
 
