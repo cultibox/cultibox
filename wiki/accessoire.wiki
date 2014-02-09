@@ -1,0 +1,10 @@
+#summary Interface Boitier
+
+= Introduction =
+
+Pour compléter votre pack Cultibox de nombreux accessoires sont disponibles :
+
+    * [install_Plug Prise 1000W et 3500W]
+    * [install_sensor_t_rh Capteur de température et d'humidité]
+    * [install_sensor_t_water Capteur de température immergeable]
+    * [install_sensor_water_level Capteur de niveau d'eau]
