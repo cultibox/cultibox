@@ -2,6 +2,7 @@ Cultibox (1.3.03) precise; urgency=low
     + Optimisation de la lecture/ecriture des fichiers
     + Ajout d'une biblothèque de débug
     + Correction de la création du fichier de configuration du wifi
+    + Correction des sauts de lignes dans les fichiers calc_XX
 
 Cultibox (1.3.02) precise; urgency=low
     + Ajout d'un vérification d'écriture sur la carte SD avant le formatage
