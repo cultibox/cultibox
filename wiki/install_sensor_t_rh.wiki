@@ -10,12 +10,34 @@ Cette page donne les instructions pour ajouter un capteur.
 
  # Débrancher votre Cultibox
  # Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.
+ 
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12_2.jpg
+ 
  # Brancher votre Cultibox
 
 La mise en place est terminée.
 
 = Conditions idéales =
 
-Pour obtenir la meilleur précision possible avec le capteur, il est nécessaire, qu'un léger flux d'air passe au niveau du capteur. Sinon, une dérive de la température (donc de l'humidité) peut être observée.
+Pour obtenir la meilleur précision possible avec le capteur, il est nécessaire qu'un léger flux d'air passe au niveau du capteur. Sinon, une dérive de la température (donc de l'humidité) peut être observée.
 
-Attention à ne jamais pulvérisé de l'eau sur le capteur. Les valeurs remontées pourraient être biaisées pendant plusieurs jours.
+Attention à ne jamais pulvériser de l'eau sur le capteur. Les valeurs remontées pourraient être biaisées pendant plusieurs jours.
+
+= Relation entre l'humidité et la température =
+
+Le taux d'humidité indiqué par le capteur est une humidité relative.
+
+Cette valeur va de 0% à 100%. 
+
+En fonction de cette valeur l'air est considéré comme :
+ * Sec si la valeur est inférieur à 35%
+ * Moyennement humide si la valeur est comprise entre 35% et 60%
+ * Humide si la valeur est supérieur à 60% 
+
+Cette valeur est calculé grâce à deux paramètres : la température ambiante et la quantité d'eau présente dans l'air. En fonction de ces deux paramètres et en utilisant le diagramme () ci dessous, on obtient le taux d'humidité relative :
+
+http://cultibox.googlecode.com/svn/wiki/img/PsychrometricChart-SeaLevel-SI.jpg
+
+Quelques remarques concernant le taux d'humidité :
+ * Si la température d'un environnement augmente brutalement (par exemple à l'allumage d'une lampe HPS), le taux d'humidité va baisser rapidement. Par exemple : la température de l'espace de culture est de 20°C et le taux d'humidité est de 30%. En lisant le graphique, on se rend compte qu'il y a 0,004 grammes d'eau par grammes d'air. La température augmente rapidement à 30°C. La quantité d'eau présente dans l'air est toujours la même. En observant le graphique on peut voir que l'humidité relative sera maintenant d'environ 18%.
+ * Écart entre deux capteurs. Soit deux capteurs présent dans le même espace de culture mais situés à des endroits différents donnent des températures différentes. La quantité d'eau présente dans l'air de l'espace de culture est la même pour les deux capteurs, mais le taux d'humidité annoncé sera très différent. Par exemple, considérons un espace dont l'air contient 0,01 grammes d'eau par grammes d'air. Si un capteur donne une température de 20°C alors le taux d'humidité sera de 70%. Si un deuxième capteur donne une température de 25°C alors l'humidité relative sera de 50%.
