@@ -4,8 +4,6 @@ if (!isset($_SESSION)) {
    session_start();
 }
 
-
-
 /* Libraries requiered: 
         db_common.php : manage database requests
         utilfunc.php  : manage variables and files manipulations

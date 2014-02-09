@@ -2389,8 +2389,9 @@ EOF;
 // IN $out        error or warning message
 // RET a string containing datas
 function create_wificonf_from_database(&$out) {
+   $data=array();
    $sql = <<<EOF
-SELECT `WIFI`, `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD` FROM `configuration` WHERE `id` = 1;
+SELECT `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD` FROM `configuration` WHERE `id` = 1;
 EOF;
 
    $db=db_priv_pdo_start();
@@ -2411,13 +2412,10 @@ EOF;
             return false;
    }
 
-   
-   if($res['WIFI']) {
-        $return="SSID:".$res['WIFI_SSID']."\r\n"."CLE:".$res['WIFI_SSID']."\r\n"."PWD:".$res['WIFI_PASSWORD']."\r\n";
-   } else {
-        $return="SSID:\r\nCLE:\r\nPWD:\r\n";
-   }
-   return $return;
+   $data[]="SSID:".$res['WIFI_SSID'];
+   $data[]="CLE:".$res['WIFI_KEY_TYPE'];
+   $data[]="PWD:".$res['WIFI_PASSWORD'];
+   return $data;
 }
 /// }}}
 
