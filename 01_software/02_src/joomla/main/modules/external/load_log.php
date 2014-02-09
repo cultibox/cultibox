@@ -224,7 +224,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
             if(!empty($log)) {
                 if(db_update_logs($log,$main_error)) {
                     if(strcmp(date('md'),"${mmonth}${dday}")!=0) {
-                        clean_log_file("$sd_card/logs/$mmonth/$dday"); 
+                        copy_empty_big_file("$sd_card/logs/$mmonth/$dday"); 
                     } 
                 } 
                 unset($log) ;
@@ -239,7 +239,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 
         if(!empty($power)) {
             if(db_update_power($power,$main_error)) {
-                clean_log_file("$sd_card/logs/$mmonth/pwr_$dday");
+                copy_empty_big_file("$sd_card/logs/$mmonth/pwr_$dday");
             }
             unset($power) ;
             $power = array();

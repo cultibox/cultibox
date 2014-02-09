@@ -1,15 +1,5 @@
 <?php
 
-// {{{ __($msgkey, ...)
-// ROLE get the translated message corresponding to $msgkey, the parameters may
-// be used in $msgkey by using the sprintf syntax (%s)
-// IN $msgkey
-// IN (optional)
-// RET string translated
-static $__translations;
-static $__translations_fallback;
-static $string_lang;
-
 if(is_file("main/libs/l10n.php")) {
    require_once 'main/libs/l10n.php';
 } else if(is_file("../libs/l10n.php")) {
@@ -17,6 +7,15 @@ if(is_file("main/libs/l10n.php")) {
 } else {
    require_once '../../libs/l10n.php';
 }
+
+// {{{ __($msgkey, ...)
+// ROLE get the translated message corresponding to $msgkey, the parameters may
+// be used in $msgkey by using the sprintf syntax (%s)
+// IN $msgkey
+// RET string translated
+static $__translations;
+static $__translations_fallback;
+static $string_lang;
 
 function __() {
    global $__translations;
@@ -63,17 +62,10 @@ function __() {
 }
 //}}}
 
-function deb($txt)
-{
-    $handle = fopen("d:/debug.txt", 'a+');
-    fwrite($handle,$txt . "\n");
-    fclose($handle);
-}
-
 
 // {{{ htmlentitiesOutsideHTMLTags()
 // ROLE encode a string in HTML and preserve HTML tags
-// IN $htmltext         text to encode
+// IN  $htmltext        text to encode
 // RET text encoded in HTML
 function htmlentitiesOutsideHTMLTags($htmlText)
 {
@@ -85,13 +77,9 @@ function htmlentitiesOutsideHTMLTags($htmlText)
     $tmp = preg_replace(":</{0,1}[a-z]+[^>]*>:i", $sep, $htmlText);
     $tmp = explode($sep, $tmp);
 
-    for ($i=0; $i<count($tmp); $i++)
-        $tmp[$i] = htmlentities($tmp[$i]);
-
+    for ($i=0; $i<count($tmp); $i++) $tmp[$i] = htmlentities($tmp[$i]);
     $tmp = join($sep, $tmp);
-
-    for ($i=0; $i<count($matches[0]); $i++)
-        $tmp = preg_replace(":$sep:", $matches[0][$i], $tmp, 1);
+    for ($i=0; $i<count($matches[0]); $i++) $tmp = preg_replace(":$sep:", $matches[0][$i], $tmp, 1);
 
     return $tmp;
 }
@@ -131,15 +119,13 @@ function getvar($varname) {
 }
 // }}}
 
+
 // {{{ check_empty_string()
-// ROLE check is a string is empty or only composed with CR
+// ROLE check is a string is empty or only composed with invisible caracters
 // IN $value         string to check
 // RET false if the string is empty, true else
 function check_empty_string($value="") {
-   $value=str_replace(' ','',$value);
-   $value=str_replace(CHR(13).CHR(10),'',$value); 
-   
-   if("$value" == "") {
+   if(strcmp(trim($value),"")==0) {
       return 0;
    } else {
       return 1;
@@ -148,11 +134,11 @@ function check_empty_string($value="") {
 //}}}
 
 
-// {{{ clean_log_file()
-// ROLE copy an empty file to clean a log file
-// IN $file             file to clean
+// {{{ copy_empty_big_file()
+// ROLE copy an empty file to a new file destination
+// IN $file     destination of the file
 // RET true if the copy is errorless, false else
-function clean_log_file($file) {
+function copy_empty_big_file($file) {
    if(is_file('main/templates/data/empty_file_big.tpl')) {
         $filetpl = 'main/templates/data/empty_file_big.tpl';
    } else if(is_file('../main/templates/data/empty_file_big.tpl')) {
@@ -161,6 +147,7 @@ function clean_log_file($file) {
         $filetpl = '../../templates/data/empty_file_big.tpl';
    }
 
+   if(strcmp("$filetpl","")==0) return false;
    if(!@copy($filetpl, $file)) return false;
    return true;
 }
@@ -169,23 +156,35 @@ function clean_log_file($file) {
 
 // {{{ get_format_month($data)
 // ROLE using a graphics data string containing value to make an average for month graphics
-// IN $data   datas from a graphics containing values for a month
-// RET return datas string value containing an average of the input fiel data
+// IN $data     datas from a graphics containing values for a month
+// RET return datas string value containing an average of the input field data
 function get_format_month($data) {
-   $arr = explode(",", $data);
-   $count=0;
-   $moy=0;
+   $arr=explode(",", $data);
+   $tmp_data=array_chunk($arr, 20);
    $data_month="";
-   foreach($arr as $value) {
-      $count=$count+1;
-      if($count==20) {
-         if("$data_month"=="") {
-            $data_month="$value";
-         } else {
-            $data_month="$data_month, $value";
-         }
-         $count=0;
-      }
+   $val_tmp="";
+   foreach($tmp_data as $value) {
+        foreach($value as $val) {
+            if(strcmp(trim($val),"null")!=0) {
+                $val_tmp=$val;
+                break;
+            }
+        }
+
+        if(strcmp("$val_tmp","")==0) {
+            if("$data_month"=="") {
+                $data_month="null";
+            } else {
+                $data_month="$data_month, null";
+            }
+        } else {
+            if("$data_month"=="") {
+                $data_month="$val";
+            } else {
+                $data_month="$data_month, $val";
+            }
+        }
+        $val_tmp="";
    }
    return $data_month;
 }
@@ -232,7 +231,8 @@ function get_current_lang() {
             }
         }
     } else {
-          return "en_GB";
+          $_SESSION['TIMEZONE']="Europe/Paris";
+          return "fr_FR";
     }
 }
 //}}}
@@ -243,7 +243,7 @@ function get_current_lang() {
 // IN none
 // RET current lang in short format example: fr_FR is replaced by fr
 function get_short_lang($lang="") {
-    if(strcmp("$lang","")==0) return "en";
+    if(strcmp("$lang","")==0) return "fr";
 
     switch($lang) {
         case 'fr_FR': return "fr";
@@ -252,13 +252,9 @@ function get_short_lang($lang="") {
         case 'de_DE': return "de";
         case 'es_ES': return "es";
     }
-    return "en";
+    return "fr";
 }
 //}}}
-
-
-
-// }}}
 
 
 // {{{ get_format_graph()
@@ -328,7 +324,6 @@ function format_data_power($data) {
           return $arr;
 }
 // }}}
-
 
 
 // {{{ fill_data()
@@ -549,7 +544,6 @@ function check_cultibox_card($dir="") {
    if((is_file("$dir/cnf/prg/plugv"))&&(is_file("$dir/cnf/plg/pluga"))&&(is_dir("$dir/logs"))) {
                 return true;
    } 
-
    return false;
 }
 // }}}
@@ -691,21 +685,21 @@ function format_program_highchart_data($arr,$date_start="") {
 function save_program_on_sd($sd_card,$program) {
    if(is_file("${sd_card}/cnf/prg/plugv")) {
       $file="${sd_card}/cnf/prg/plugv";
-      if(count($program)>0) {
+      $prog="";
+      $nbPlug=count($program);
+
+      if($nbPlug>0) {
+         while(strlen($nbPlug)<3) $nbPlug="0$nbPlug";
+         $prog=$nbPlug."\r\n";
+
+         for($i=0; $i<$nbPlug; $i++) $prog=$prog."$program[$i]"."\r\n";
+         
          if($f=@fopen("$sd_card/cnf/prg/plugv","w+")) {
-            $nbPlug = count($program);
-            while(strlen($nbPlug)<3) {
-                $nbPlug="0$nbPlug";
-            }
-       
-            if(!@fputs($f,$nbPlug."\r\n")) { fclose($f); return false; }
-            for($i=0; $i<count($program); $i++) {
-                if(!@fputs($f,"$program[$i]"."\r\n")) { fclose($f); return false; }
-            }
-            fclose($f); 
-        } else {
-            return false;
-        }
+            if(!@fwrite($f,"$prog")) { fclose($f); return false; }
+            fclose($f);
+         }
+      } else {
+         return false;
       }
    } else {
       return false;
@@ -717,23 +711,19 @@ function save_program_on_sd($sd_card,$program) {
 
 // {{{ compare_program()
 // ROLE compare programs and data to check if they are up to date
-// IN   $data         array containing datas to write
+// IN   $data         array containing datas to check
 //      $sd_card      sd card path to save data
 // RET false is there is something to write, true else
 function compare_program($data,$sd_card) {
     if(is_file("${sd_card}/cnf/prg/plugv")) {
-
          $nb=0;
          $nbdata=count($data);
          $file="${sd_card}/cnf/prg/plugv";
 
          if(count($data)>0) {
-            $handle = fopen($file, 'r');
-            if ($handle) {
-               while(!feof($handle)) {
-                  $buffer = fgets($handle);
-                  $buffer=rtrim($buffer);
-
+            $buffer_array=@file("$file");
+            foreach($buffer_array as $buffer) {
+                  $buffer=trim($buffer);
                   if(!empty($buffer)) {
                      if($nb==0) {
                         if($nbdata!=$buffer) { 
@@ -748,11 +738,9 @@ function compare_program($data,$sd_card) {
                   } else if($nb==0) {
                     return false;
                   } 
-               }
-               fclose($handle);
             }
             return true;
-       } 
+         } 
    } 
    return false;
 }
@@ -785,32 +773,49 @@ function compare_pluga($sd_card) {
         $nbdata=count($pluga);
 
         if(count($pluga)>0) {
-            $handle = fopen($file, 'r');
-            if ($handle) {
-               while(!feof($handle)) {
-                  $buffer=fgets($handle);
-                  $buffer=rtrim($buffer);
+            $buffer_array=@file("$file");
+            foreach($buffer_array as $buffer) {
+                $buffer=trim($buffer);
 
-                  if(!empty($buffer)) {
-                    if(strcmp($pluga[$nb],$buffer)!=0) {
-                       return false;
-                    } 
-                    $nb=$nb+1;
+                if(!empty($buffer)) {
+                  if(strcmp($pluga[$nb],$buffer)!=0) {
+                     return false;
+                  } 
+                  $nb=$nb+1;
 
-                  } elseif($nb==$nbdata) {
-                    return true;
-                  } else {
-                    return false;
-                  }
-               }
-               fclose($handle);
+                } elseif($nb==$nbdata) {
+                  return true;
+                } else {
+                  return false;
+                }
             }
             return true;
        }
-   }
-   return false;
+    }
+    return false;
 }
 // }}}
+
+
+// {{{ compare_wificonf()
+// ROLE compare wifi configuration if the file is up to date
+// IN    $data         array containing datas to check
+//       $sd_card      sd card path to check data
+// RET false is there is something to write, true else
+function compare_wificonf($data,$sd_card) {
+    $file="$sd_card/cnf/wifi";
+    if(!is_file($file)) return false;
+
+    if(count($data)!=3) return false;
+    $wifi_array=@file("$file");
+    if(count($wifi_array)!=3) return false;
+
+    if(strcmp(trim($data[0]),trim($wifi_array[0]))!=0) return false;
+    if(strcmp(trim($data[1]),trim($wifi_array[1]))!=0) return false;
+    if(strcmp(trim($data[2]),trim($wifi_array[2]))!=0) return false;
+
+    return true;
+}
 
 
 // {{{ write_pluga()
@@ -823,7 +828,7 @@ function write_pluga($sd_card,&$out) {
 
    if($f=@fopen("$file","w+")) {
       $pluga=Array();
-      $pluga[]=$GLOBALS['NB_MAX_PLUG'];
+      $pluga=$GLOBALS['NB_MAX_PLUG']."\r\n";
       for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
         $tmp_power_max=get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
         if(strcmp("$tmp_power_max","1000")==0) {
@@ -834,14 +839,12 @@ function write_pluga($sd_card,&$out) {
         } else if(intval(rtrim($tmp_power_max))<10) {
             $tmp_pluga=99+intval(rtrim($tmp_power_max));
         }
-        $pluga[]="$tmp_pluga";
+        $pluga=$pluga."$tmp_pluga"."\r\n";
       }
 
-      foreach($pluga as $val) {
-                if(!@fputs($f,"$val"."\r\n")) {
-                    fclose($f);
-                    return false;
-                }
+      if(!@fwrite($f,"$pluga")) {
+          fclose($f);
+          return false;
       }
    } else {
         return false;
@@ -859,12 +862,17 @@ function write_pluga($sd_card,&$out) {
 //      $out            error or warning messages
 // RET false is an error occured, true else
 function write_wificonf($sd_card,$wificonf="",&$out) {
+   $data="";
    $file="$sd_card/cnf/wifi";
+   if(count($wificonf)!=3) return false;
+   foreach($wificonf as $conf) {
+        $data=$data.$conf."\r\n";
+   }
 
    if($f=@fopen("$file","w+")) {
-      if(!@fputs($f,"$wificonf"."\r\n")) {
+      if(!@fwrite($f,"$data")) {
         fclose($f);
-         return false;
+        return false;
       }
    } else {
         return false;
@@ -926,13 +934,9 @@ function compare_plugconf($data, $sd_card="") {
 
         $tmp=$new_tmp; 
 
-        if($handle=@fopen($file,"r")) {
-            while (!feof($handle)) {
-               $buffer[] = fgets($handle);
-            }
-        }
-        fclose($handle);
+        $buffer=@file("$file");
         $buffer=array_filter($buffer);
+
         foreach($buffer as $bf) {
            $new_buffer[]=trim($bf);
         }
@@ -951,8 +955,6 @@ function compare_plugconf($data, $sd_card="") {
         unset($buffer);
    }
    return true; 
-
-
 }
 // }}}
 
@@ -994,10 +996,10 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
       $power="0$power";
    }
 
-   $reset_value=str_replace(":","",$reset_value);
-   if((strlen($reset_value)!=4)||($reset_value<0)) {
+    $reset_value=str_replace(":","",$reset_value);
+    if((strlen($reset_value)!=4)||($reset_value<0)) {
         $reset_value="0000";
-   } 
+    } 
     
     $conf[]="PLUG_UPDATE:$update";
     $conf[]="LOGS_UPDATE:$record";
@@ -1010,29 +1012,16 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $conf[]="RESET_MINAX:$reset_value";
     $conf[]="PRESSION___:0000";
 
-    $nb=0;
+    $buffer=@file("$file");
 
-
-    $handle = fopen($file, 'r');
-    if ($handle) {
-        while(!feof($handle)) {
-            $buffer=fgets($handle);
-            $buffer=rtrim($buffer);
-
-            if(!empty($buffer)) {
-                if(strcmp($conf[$nb],$buffer)!=0) {
-                       return false;
-                }
-                $nb=$nb+1;
-            }
+    if(count($conf)!=count($buffer)) return false;
+    for($nb=0;$nb<count($conf);$nb++) {
+        if(strcmp(trim($conf[$nb]),trim($buffer[$nb]))!=0) {
+            return false;
         }
-        fclose($handle);
     }
     return true;
 }
-
-
-
 // }}}
 
 
@@ -1423,6 +1412,7 @@ function check_alarm_value($value="0") {
 }
 // }}}
 
+
 // {{{ check_regul_value()
 // ROLE check is a value for the regulation is correct
 // IN   $value       value to check
@@ -1516,27 +1506,6 @@ function check_and_copy_firm($sd_card) {
         unset($new_firm); 
     }
     return $copy;
-}
-// }}}
-
-
-// {{{ check_and_copy_log()
-// ROLE check if the log.txt exists and if not, create it from empty_file64.tpl
-// IN  $sd_card     the sd card pathname 
-// RET false if an error occured, true else
-function check_and_copy_log($sd_card) {
-    if(!is_file("$sd_card/log.txt")) {
-        if(is_file("main/templates/data/empty_file_64.tpl")) {
-            if(!@copy("main/templates/data/empty_file_big.tpl", "$sd_card/log.txt")) return false;   
-        } else if(is_file("../templates/data/empty_file_64.tpl")) {
-            if(!@copy("../templates/data/empty_file_big.tpl", "$sd_card/log.txt")) return false;
-        } else if(is_file("../../templates/data/empty_file_64.tpl")) {
-            if(!@copy("../../templates/data/empty_file_big.tpl", "$sd_card/log.txt")) return false;
-        } else {
-            return false;
-        }
-    }
-    return true;
 }
 // }}}
 
@@ -1642,7 +1611,6 @@ function popup_message($message="") {
 // }}}
 
 
-
 // {{{ get_nb_days()
 // ROLE get number of days beetwen two dates
 // IN   $start_date       first date
@@ -1706,7 +1674,6 @@ function check_update_available($version,&$out) {
 // RET   none
 function find_informations($log_file,&$ret) {
 if(!file_exists("$log_file")) return $ret;
-   $handle = fopen("$log_file", 'r');
    $ret["nb_reboot"]=0;
    $ret["last_reboot"]="";
    $ret["cbx_id"]="";
@@ -1715,10 +1682,9 @@ if(!file_exists("$log_file")) return $ret;
    $ret["sensor_version"]="";
    $ret["log"]="";
 
-   if ($handle) {
-      while (!feof($handle)) {
-         $buffer=fgets($handle);
-         $buffer=trim($buffer);
+   $buffer_array=file("$log_file");
+   foreach($buffer_array as $buffer) {
+        $buffer=trim($buffer);
 
         if(strcmp($buffer,"")==0) break;
 
@@ -1746,11 +1712,7 @@ if(!file_exists("$log_file")) return $ret;
                 $ret["sensor_version"]=substr($buffer,15,7);
                 break;
         }
-
-      }
-      fclose($handle);
    }
-
    return $ret;
 }
 // }}}
@@ -1855,8 +1817,6 @@ function format_axis_data($data,$max=0,&$out) {
            }
            return $new_data;
 }
-
-
 // }}}
 
 
@@ -1875,8 +1835,6 @@ function check_format_time($time="") {
 
     return 1;
 }
-
-
 // }}}
 
 
@@ -1962,85 +1920,6 @@ function check_sd_card($sd="") {
    }
 }
 // }}}
-
-
-// {{{  getmicrotime()
-// ROLE    send a time to compute page loading
-//  IN     none
-// RET     time elapsed 
-/* USAGE
-    $debut = getmicrotime();
-    $fin = getmicrotime();
-    echo "Page générée en ".round($fin-$debut, 3) ." secondes.<br />";
-*/
-function getmicrotime(){
-    list($usec, $sec) = explode(" ",microtime());
-    return ((float)$usec + (float)$sec);
-}
-// }}}
-
-
-
-// {{{  convert_SIZE()
-// ROLE    convert octet into kB,MB,GB
-//  IN     size to be converted
-// RET     size converted 
-function convert_SIZE($size)
-{
-    $unite = array('B','kB','MB','GB');
-    return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unite[$i];
-}
-// }}}
-
-
-// {{{  aff_variables()
-// ROLE    display all variables used and its memory
-//  IN     none
-// RET     none
-function aff_variables()
-{
-   echo '<br/>';
-   global $datas ;
-   foreach($GLOBALS as $Key => $Val)
-   {
-      if ($Key != 'GLOBALS')
-      {   
-         echo' <br/>'. $Key .' &asymp; '.sizeofvar( $Val );
-      }
-   }
-    echo' <br/>';
-}
-// }}}
-
-
-//{{{  Same as aff_variables but for a single variable
-function sizeofvar($var)
-{
-
-  $start_memory = memory_get_usage();   
-  $temp =unserialize(serialize($var ));   
-  $taille = memory_get_usage() - $start_memory;
-  return convert_SIZE($taille) ;
-}
-// }}}
-
-
-// {{{  memory_stat()
-// ROLE    display memory usage for a PHP script
-//  IN     none
-// RET     none
-function memory_stat()
-{
-   echo  'Mémoire -- Utilisé : '. convert_SIZE(memory_get_usage(false)) .
-   ' || Alloué : '.
-   convert_SIZE(memory_get_usage(true)) .
-   ' || MAX Utilisé  : '.
-   convert_SIZE(memory_get_peak_usage(false)).
-   ' || MAX Alloué  : '.
-   convert_SIZE(memory_get_peak_usage(true)).
-   ' || MAX autorisé : '.
-   ini_get('memory_limit') ;  ;
-}
 
 
 // {{{ find_new_ine()
@@ -2129,6 +2008,7 @@ function check_config_xml_file($file) {
     return true;
 }
 // }}}
+
 
 // {{{ get_external_calendar_file()
 // ROLE get an array containing list of xml external files available for calendar (like moon calendar)

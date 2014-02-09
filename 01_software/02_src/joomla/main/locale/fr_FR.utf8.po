@@ -1488,6 +1488,9 @@ msgstr "Le nom du réseau ne peut pas être vide"
 msgid "ERROR_PASSWORD_VALUE"
 msgstr "Les mots de passe doivent correspondre"
 
+msgid "ERROR_COPY_WIFI_CONF"
+msgstr "Erreur lors de la copie du fichier de configuration du module wifi"
+
 
 # For the informations part:
 msgid "CLOSE_CONFIRM"

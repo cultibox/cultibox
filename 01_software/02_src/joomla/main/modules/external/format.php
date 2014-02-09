@@ -72,10 +72,12 @@ if((!isset($path))||(empty($path))) {
 
 
             // Creating log.txt file:
-            if(!check_and_copy_log($path)) {
-                echo -1;
-                return 0;
-            }
+            if(!is_file("$path/log.txt")) {
+                if(!copy_empty_big_file("$sd_card/log.txt")) {
+                    echo -1;
+                    return 0;
+                }
+            } 
 
 
             // Creating programs:
@@ -135,13 +137,13 @@ if((!isset($path))||(empty($path))) {
                     //Restore log and power files:
                     if(is_file("$logs/$month/$day")) {
                         if(filesize("$logs/$month/$day")!=filesize("../../templates/data/empty_file_big.tpl")) {
-                            if(!clean_log_file("$logs/$month/$day")) {
+                            if(!copy_empty_big_file("$logs/$month/$day")) {
                                 echo -1;
                                 return 0;
                             }
                         }
                     } else {
-                        if(!clean_log_file("$logs/$month/$day")) {
+                        if(!copy_empty_big_file("$logs/$month/$day")) {
                             echo -1;
                             return 0;
                         }
@@ -150,13 +152,13 @@ if((!isset($path))||(empty($path))) {
 
                     if(is_file("$logs/$month/pwr_$day")) {
                         if(filesize("$logs/$month/pwr_$day")!=filesize("../../templates/data/empty_file_big.tpl")) {
-                            if(!clean_log_file("$logs/$month/pwr_$day")) {
+                            if(!copy_empty_big_file("$logs/$month/pwr_$day")) {
                                 echo -1;
                                 return 0;
                             }
                         }
                     } else {
-                        if(!clean_log_file("$logs/$month/pwr_$day")) {
+                        if(!copy_empty_big_file("$logs/$month/pwr_$day")) {
                             echo -1;
                             return 0;
                         }

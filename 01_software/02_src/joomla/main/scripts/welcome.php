@@ -5,10 +5,6 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-// Compute page time loading for debug option
-$start_load = getmicrotime();
-
-
 /* Libraries requiered: 
         db_common.php : manage database requests
         utilfunc.php  : manage variables and files manipulations
@@ -16,6 +12,10 @@ $start_load = getmicrotime();
 require_once('main/libs/config.php');
 require_once('main/libs/db_common.php');
 require_once('main/libs/utilfunc.php');
+require_once('main/libs/debug.php');
+
+// Compute page time loading for debug option
+$start_load = getmicrotime();
 
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
@@ -113,15 +113,26 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         }
 
 
-        if(!check_and_copy_log($sd_card)) {
-            $main_error[]=__('ERROR_COPY_TPL');
-            $error_copy=true;
+        if(!is_file("$sd_card/log.txt")) {
+            if(!copy_empty_big_file("$sd_card/log.txt")) {
+                $main_error[]=__('ERROR_COPY_TPL');
+                $error_copy=true;
+            }
         }
 
         
         if(!check_and_copy_index($sd_card)) {
             $main_error[]=__('ERROR_COPY_INDEX');
             $error_copy=true;
+        }
+
+        $wifi_conf=create_wificonf_from_database($main_error);
+        if(!compare_wificonf($wifi_conf,$sd_card)) {
+            $conf_uptodate=false;
+            if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
+                $main_error[]=__('ERROR_COPY_WIFI_CONF');
+                $error_copy=true;
+            }
         }
 
 
@@ -160,42 +171,36 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 }
 
 
-// The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True'
-$informations = Array();
+// The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True' informations are sent to debug
 $informations["cbx_id"]="";
 $informations["firm_version"]="";
 $informations["id_computer"]=php_uname("a");
 $informations["log"]="";
 
-
 if((!empty($sd_card))&&(isset($sd_card))) {
     find_informations("$sd_card/log.txt",$informations);
-    if(strcmp($informations["log"],"")!=0) {
-        clean_log_file("$sd_card/log.txt");
-    }
+    copy_empty_big_file("$sd_card/log.txt");
 }
 
-if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
-    if(strcmp($informations["cbx_id"],"")==0) {
-        $informations["cbx_id"]=get_informations("cbx_id");
-    } else {
-        insert_informations("cbx_id",$informations["cbx_id"]);
-    }
-
-    if(strcmp($informations["firm_version"],"")==0) {
-        $informations["firm_version"]=get_informations("firm_version");
-    } else {
-        insert_informations("firm_version",$informations["firm_version"]);
-    }
-
-    if(strcmp($informations["log"],"")!=0) {
-        insert_informations("log",$informations["log"]);
-    } else {
-        $informations["log"]="NA";
-    }
-
-    $user_agent = getenv("HTTP_USER_AGENT");
+if(strcmp($informations["cbx_id"],"")==0) {
+    $informations["cbx_id"]=get_informations("cbx_id");
+} else {
+    insert_informations("cbx_id",$informations["cbx_id"]);
 }
+
+if(strcmp($informations["firm_version"],"")==0) {
+    $informations["firm_version"]=get_informations("firm_version");
+} else {
+    insert_informations("firm_version",$informations["firm_version"]);
+}
+
+if(strcmp($informations["log"],"")!=0) {
+    insert_informations("log",$informations["log"]);
+} else {
+    $informations["log"]="NA";
+}
+
+$user_agent = getenv("HTTP_USER_AGENT");
 
 
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
