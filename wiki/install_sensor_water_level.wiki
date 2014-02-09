@@ -1,4 +1,4 @@
-#summary Ajout d'un capteur de niveau d'eau
+#summary Capteur de niveau d'eau
 
 = Sommaire =
 <wiki:toc max_depth="3" />

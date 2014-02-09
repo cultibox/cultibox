@@ -1,10 +1,17 @@
-#summary Ajout d'un capteur de température immergeable
+#summary Capteur de température immergeable
 
 = Sommaire =
 <wiki:toc max_depth="3" />
 
 = Introduction =
 Cette page donne les instructions pour ajouter un capteur de température immergeable.
+
+= Spécifications =
+
+|| *Spécification* || *Valeur* ||
+|| Précision de la température || +/- 0,5 °C ||
+|| Température maximale d'utilisation || 60°C ||
+|| Température minimale d'utilisation || 0°C ||
 
 = Contenu du pack =
 

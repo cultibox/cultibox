@@ -1,10 +1,22 @@
-#summary Ajout d'un capteur
+#summary Capteur d'humidité et de Température
 
 = Sommaire =
 <wiki:toc max_depth="3" />
 
 = Introduction =
-Cette page donne les instructions pour ajouter un capteur.
+La Cultibox est capable d'avoir jusqu'à 4 capteurs de température et d'humidité branchés.
+
+Le capteur permet de mesurer en temps réel la température et l'humidité.
+
+= Spécifications =
+
+|| *Spécification* || *Valeur* ||
+|| Précision de la température || +/- 0,5 °C ||
+|| Précision de l'humidité || 5%RH ||
+|| Température maximale d'utilisation || 60°C ||
+|| Température minimale d'utilisation || 0°C ||
+|| Humidité maximale d'utilisation || 95%RH ||
+|| Humidité minimale d'utilisation || 5%RH ||
 
 = Mise en place =
 

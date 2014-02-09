@@ -1,4 +1,4 @@
-#summary Ajout d'une prise
+#summary Prise
 
 = Sommaire =
 <wiki:toc max_depth="3" />
