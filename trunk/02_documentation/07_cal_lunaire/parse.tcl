@@ -3,8 +3,8 @@ proc perigee {fid mois jour} {
 
 puts $fid {
    <entry>
-      <title>Périgée</title>
-      <summary>Date des Périgées</summary>
+      <title>PÃ©rigÃ©e</title>
+      <summary>Date des PÃ©rigÃ©es</summary>
       <updated>2013-04-22T23:19:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "perigee" label = "Perigee" />
@@ -91,8 +91,7 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
     
     set outFid [open [string map {".txt" ".xml"} $file] w+]
     
-    puts $outFid {
-<?xml version="1.0" encoding="utf-8"?>
+    puts $outFid {<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
    <updated>2013-04-16T13:14:57+02:00</updated>
    <id>http://www.cultibox.fr/</id>
@@ -108,7 +107,7 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
    <icon></icon>
    <logo></logo>
    <rights type = "text">
-    © Cultibox, 2013
+    Â© Cultibox, 2013
    </rights>
     }
     
@@ -118,7 +117,7 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
         gets $fid UneLigne
         
         if {$UneLigne != ""} {
-            lassign $UneLigne Mois	jour NL	PL	Perigee	Nœud
+            lassign $UneLigne Mois	jour NL	PL	Perigee	Noeud
             
             set Mois [string map {" " "0"} [format "%2.f" $Mois]]
             set jour [string map {" " "0"} [format "%2.f" $jour]]
@@ -136,7 +135,7 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
             }
             
             
-            if {$Nœud != 0} {
+            if {$Noeud != 0} {
                 NoeudLunaire $outFid $Mois $jour
             }            
             
@@ -155,7 +154,7 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
       <category term = "lune_montante" label = "lune montante" />
       <content type = "text">C'est la lune montante: 
 * Semez vos graines
-* Récoltez les fleurs</content>
+* RÃ©coltez les fleurs</content>
       <duration>13</duration>
       <start>2014-01-27T17:32:00+00:00</start>
       <period>0000-00-27T07:43:12</period>
