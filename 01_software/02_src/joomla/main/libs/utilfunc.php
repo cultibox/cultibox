@@ -1171,27 +1171,27 @@ function clean_calendar($sd_card="",$start="",$end="") {
             }
 
             while(($stday!=$edday)||($stmon!=$edmon)) {
-                    $stday=$stday+1;
-                    if($stday>31) {
-                        $stmon=$stmon+1;
-                        $stday=1;
-                    }
+                $stday=$stday+1;
+                if($stday>31) {
+                    $stmon=$stmon+1;
+                    $stday=1;
+                }
 
-                    if($stmon>12) {
-                        $stmon=1;
-                    }
+                if($stmon>12) {
+                    $stmon=1;
+                }
 
-                    if(strlen("$stday")<2) {
-                        $stday="0".$stday;
-                    }
+                if(strlen("$stday")<2) {
+                    $stday="0".$stday;
+                }
 
-                    if(strlen("$stmon")<2) {
-                        $stmon="0".$stmon;
-                    }
+                if(strlen("$stmon")<2) {
+                    $stmon="0".$stmon;
+                }
 
-                    if(is_file($sd_card."/logs/".$stmon."/cal_".$stday)) {
-                        @unlink($sd_card."/logs/".$stmon."/cal_".$stday);
-                    }
+                if(is_file($sd_card."/logs/".$stmon."/cal_".$stday)) {
+                    @unlink($sd_card."/logs/".$stmon."/cal_".$stday);
+                }
             }
         }
     }
@@ -1203,96 +1203,121 @@ function clean_calendar($sd_card="",$start="",$end="") {
 // {{{ write_calendar()
 // ROLE save calendar informations into the SD card
 // IN $sd_card         sd card location
-//    $data            data to write into the sd card
+//    $data            data to write into the sd card (come from create_calendar_from_database )
 //    $out             error or warning messages
 //    $start           write calendar between two dates
 //    $end             if start and end are not set: write full calendar
 // RET false if an error occured, true else
 function write_calendar($sd_card,$data,&$out,$start="",$end="") {
-   $status=true;
-   if(isset($sd_card)&&(!empty($sd_card))) {
-      if(count($data)>0) {
-        if((strcmp("$start","")==0)&&(strcmp("$end","")==0)) {
-            $month_end=12;
-            $month_start=1;
-            $day_end=31;
-            $day_start=1;
-         } else if((strcmp("$start","")!=0)&&(strcmp("$end","")==0)) {
-            $month_end=substr($start,5,2);
-            $month_start=$month_end;
-            $day_end=substr($start,8,2);
-            $day_start=$day_end;
-        } else {
-            $month_start=substr($start,5,2);
-            $day_start=substr($start,8,2);
-            $month_end=substr($end,5,2);
-            $day_end=substr($end,8,2);
-        }
 
-        $month=$month_start;
-        $day=$day_start;
-        do {
-               $val=concat_calendar_entries($data,$month,$day);
-               if($val) {
-                  while(strlen($day)<2) {
-                     $day="0$day";
-                  }
-                  while(strlen($month)<2) {
-                     $month="0$month";
-                  }
+    $status=true;
 
-                  $file="$sd_card/logs/$month/cal_$day";
-                  if($f=@fopen("$file","w+")) {
-                     foreach($val as $value) {
+    if(isset($sd_card)&&(!empty($sd_card))) {
+   
+        if(count($data)>0) {
+            if((strcmp("$start","")==0)&&(strcmp("$end","")==0)) {
+                $month_end=12;
+                $month_start=1;
+                $day_end=31;
+                $day_start=1;
+             } else if((strcmp("$start","")!=0)&&(strcmp("$end","")==0)) {
+                $month_end=substr($start,5,2);
+                $month_start=$month_end;
+                $day_end=substr($start,8,2);
+                $day_start=$day_end;
+            } else {
+                $month_start=substr($start,5,2);
+                $day_start=substr($start,8,2);
+                $month_end=substr($end,5,2);
+                $day_end=substr($end,8,2);
+            }
+
+            $month=$month_start;
+            $day=$day_start;
+            do {
+                $val=concat_calendar_entries($data,$month,$day);
+                
+                // If there is something to write
+                if($val) {
+                    
+                    // Create correct day number for filename
+                    while(strlen($day)<2) {
+                        $day="0$day";
+                    }
+                    
+                    // Create correct month number for filename
+                    while(strlen($month)<2) {
+                        $month="0$month";
+                    }
+
+                    // Create filename
+                    $file="$sd_card/logs/$month/cal_$day";
+                    
+                    // If file can be opened
+                    if($f=@fopen("$file","w+")) {
+                    
+                        // Foreach event to write
+                        foreach($val as $value) {
+                            $sub=$value["subject"];
+                            $desc=$value["description"];
+
+                            if(!@fputs($f,"$sub"."\r\n")) $status=false;
+                            if(!@fputs($f,"$desc"."\r\n\r\n")) $status=false;
+                        }
+                        fclose($f);
+                    } else {  
+                        $status=false;
+                    }
+                }
+
+                // Change day number if end of the month is reached
+                if($day==31) {
+                    $day="01";
+                    $month=$month+1;
+                    if($month>12) {
+                        $month="01";
+                    }
+                } else {
+                    $day=$day+1;
+                }
+                unset($val);
+            } while(($month!=$month_end)||($day!=$day_end)); 
+
+            $val=concat_calendar_entries($data,$month,$day);
+
+            // If there is something to write in SD card
+            if(!empty($val)) {
+            
+                // Create correct day number for filename
+                while(strlen($day)<2) {
+                    $day="0$day";
+                }
+
+                // Create correct month number for filename
+                while(strlen($month)<2) {
+                    $month="0$month";
+                }
+                
+                // Create filename
+                $file="$sd_card/logs/$month/cal_$day";
+                
+                // Open It
+                if($f=@fopen("$file","w+")) {
+                
+                    // Foreach event to write
+                    foreach($val as $value) {
                         $sub=$value["subject"];
                         $desc=$value["description"];
 
-
                         if(!@fputs($f,"$sub"."\r\n")) $status=false;
-                        if(!@fputs($f,"$desc"."\r\n\r\n")) $status=false;
-                     }
-                     fclose($f);
-                  } else {  
-                    $status=false;
-                  }
-               }
-
-               if($day==31) {
-                 $day="01";
-                 $month=$month+1;
-                 if($month>12) {
-                    $month="01";
-                 }
-               } else {
-                 $day=$day+1;
-               }
-               unset($val);
-        } while(($month!=$month_end)||($day!=$day_end)); 
-
-        $val=concat_calendar_entries($data,$month,$day);
-
-        if(!empty($val)) {
-             while(strlen($day)<2) {
-             $day="0$day";
-        }
-
-        while(strlen($month)<2) {
-            $month="0$month";
-        }
-        $file="$sd_card/logs/$month/cal_$day";
-        if($f=@fopen("$file","w+")) {
-                 foreach($val as $value) {
-                    $sub=$value["subject"];
-                    $desc=$value["description"];
-
-                    if(!@fputs($f,"$sub"."\r\n")) $status=false;
-                    if(!@fputs($f,"$desc"."\r\n")) $status=false;
-                 }
-                 fclose($f);
-            } else {
-                 $status=false;
-            }
-       }
+                        if(!@fputs($f,"$desc"."\r\n")) $status=false;
+                    }
+                    
+                    fclose($f);
+                } else {
+                     $status=false;
+                }
+           }
        }
     }
     return $status;
@@ -1306,33 +1331,32 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
 //      $dateend        second date
 // RET false if $datestart => $dateend, true else
 function check_date($datestart="",$dateend="") {
-         $year_start=substr($datestart,0,4); 
-         $month_start=substr($datestart,5,2);
-         $day_start=substr($datestart,8,2);
+     $year_start=substr($datestart,0,4); 
+     $month_start=substr($datestart,5,2);
+     $day_start=substr($datestart,8,2);
 
-         $year_end=substr($dateend,0,4);
-         $month_end=substr($dateend,5,2);
-         $day_end=substr($dateend,8,2);
+     $year_end=substr($dateend,0,4);
+     $month_end=substr($dateend,5,2);
+     $day_end=substr($dateend,8,2);
 
-         if($year_start<$year_end) {
-               return true;
-         }
+     if($year_start<$year_end) {
+           return true;
+     }
 
-         if($year_start>$year_end) {
-               return false;
-         } 
+     if($year_start>$year_end) {
+           return false;
+     } 
 
-         if($month_start<=$month_end) {
-              if($month_start==$month_end) {
-                  if($day_start<=$day_end) {
-                      return true;
-                  }
-              } else {
+     if($month_start<=$month_end) {
+          if($month_start==$month_end) {
+              if($day_start<=$day_end) {
                   return true;
               }
-         }
-         return false;
-
+          } else {
+              return true;
+          }
+     }
+     return false;
 }
 // }}}
 
