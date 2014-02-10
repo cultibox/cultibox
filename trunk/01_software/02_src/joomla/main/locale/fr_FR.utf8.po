@@ -1357,7 +1357,7 @@ msgid "ERROR_SAME_TIME"
 msgstr "L'heure de départ et l'heure de fin doivent être différentes."
 
 msgid "ERROR_WRITE_SD"
-msgstr "Erreur durant l'écriture sur la carte SD"
+msgstr "Erreur durant l'écriture sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
 msgstr "Valeur de tolérance: elle doit être comprise entre 0°C et 10°C"
