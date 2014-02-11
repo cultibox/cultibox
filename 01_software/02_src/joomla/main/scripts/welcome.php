@@ -194,10 +194,10 @@ if(strcmp($informations["firm_version"],"")==0) {
     insert_informations("firm_version",$informations["firm_version"]);
 }
 
-if(strcmp($informations["log"],"")!=0) {
-    insert_informations("log",$informations["log"]);
-} else {
+if(strcmp($informations["log"],"")==0) {
     $informations["log"]="NA";
+} else {    
+    insert_informations("log",$informations["log"]);
 }
 
 $user_agent = getenv("HTTP_USER_AGENT");
