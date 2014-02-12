@@ -1,8 +1,17 @@
+Cultibox (1.3.04) precise; urgency=low
+    + Ajout du menu wifi et des pages associées
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Feb 12 20:28:12 CET 2014
+
+
 Cultibox (1.3.03) precise; urgency=low
     + Optimisation de la lecture/ecriture des fichiers
     + Ajout d'une biblothèque de débug
     + Correction de la création du fichier de configuration du wifi
     + Correction des sauts de lignes dans les fichiers calc_XX
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Feb 8  17:52:12 CET 2014
+
 
 Cultibox (1.3.02) precise; urgency=low
     + Ajout d'un vérification d'écriture sur la carte SD avant le formatage

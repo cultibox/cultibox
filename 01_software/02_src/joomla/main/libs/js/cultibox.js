@@ -737,7 +737,7 @@ $(document).ready(function() {
                     cache: false,
                     async: false,
                     url: "../../main/modules/external/configure_menu.php",
-                    data: {cost:$("#show_cost").val(),historic:$("#show_historic").val()}
+                    data: {cost:$("#show_cost").val(),historic:$("#show_historic").val(),wifi:$("#wifi_enable").val()}
                 });
                 document.forms['configform'].submit();
             }

@@ -3187,8 +3187,9 @@ EOF;
 // ROLE hide or display joomla's menu
 // IN   cost        value for displaying or not the cost menu
 //      historic    value for displaying or not the historic menu
+//      wifi        value for displaying or not the wifi menu
 // RET  none
-function configure_menu($cost="False",$historic="False") {
+function configure_menu($cost="False",$historic="False",$wifi=0) {
    if(strcmp("$cost","True")==0) {
             $cost=1;
     } else {
@@ -3201,10 +3202,10 @@ function configure_menu($cost="False",$historic="False") {
             $historic=0;
     }
 
-
   $sql = <<<EOF
 UPDATE `dkg45_menu` SET  published = "{$cost}" WHERE alias LIKE "cost-%";
 UPDATE `dkg45_menu` SET  published = "{$historic}" WHERE alias LIKE "historic-%";
+UPDATE `dkg45_menu` SET  published = "{$wifi}" WHERE alias LIKE "wifi-%";
 EOF;
    $db=db_priv_pdo_start_joomla();
    if($db) {

@@ -12,9 +12,10 @@ if (!isset($_SESSION)) {
 if((isset($_GET['cost']))&&(!empty($_GET['cost']))&&(isset($_GET['historic']))&&(!empty($_GET['historic']))) {
     $cost=$_GET['cost'];
     $historic=$_GET['historic'];
+    $wifi=$_GET['wifi'];
 
     $main_error=array();
-    configure_menu($cost,$historic,$main_error);
+    configure_menu($cost,$historic,$wifi,$main_error);
 }
 
 
