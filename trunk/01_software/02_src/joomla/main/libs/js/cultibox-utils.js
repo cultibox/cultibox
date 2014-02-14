@@ -19,6 +19,7 @@ function expand(div) {
       var divLabelWifi = document.getElementById('div_wifi_label');
 
       var divAlarmDesc = document.getElementById('div_alarm_description');
+      var divWifiDesc = document.getElementById('div_wifi_description');
 
       switch(div) {
          case 'user_interface' : divConfig.style.display = '';
@@ -28,6 +29,7 @@ function expand(div) {
                                  divSubmit.style.display = "";
                                  divAlarmDesc.style.display = "none";
                                  divWifi.style.display = "none";
+                                 divWifiDesc.style.display = "none";
                         
                                  divLabelCard.style.color = "black";
                                  divLabelConfig.style.color = "#6E8915";
@@ -45,6 +47,7 @@ function expand(div) {
                                    divSubmit.style.display = "";
                                    divAlarmDesc.style.display = "none";
                                    divWifi.style.display = "none";
+                                   divWifiDesc.style.display = "none";
 
                                    divLabelCard.style.color = "black";
                                    divLabelConfig.style.color = "black";
@@ -62,6 +65,7 @@ function expand(div) {
                                   divSubmit.style.display = "";
                                   divAlarmDesc.style.display = "";
                                   divWifi.style.display = "none";
+                                  divWifiDesc.style.display = "none";
 
                                   divLabelCard.style.color = "black";
                                   divLabelConfig.style.color = "black";
@@ -79,7 +83,8 @@ function expand(div) {
                                  divCard.style.display = "";
                                  divSubmit.style.display = "none";
                                  divAlarmDesc.style.display = "none";
-                                 divWifi.style.display = "none";
+                                 divWifi.style.display = "none";                
+                                 divWifiDesc.style.display = "none";
 
                                  divLabelCard.style.color = "#6E8915";
                                  divLabelConfig.style.color = "black";
@@ -97,6 +102,7 @@ function expand(div) {
                                  divSubmit.style.display = "";
                                  divAlarmDesc.style.display = "none";
                                  divWifi.style.display = "";
+                                 divWifiDesc.style.display = "";
 
                                  divLabelCard.style.color = "black";
                                  divLabelConfig.style.color = "black";

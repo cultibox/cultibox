@@ -714,22 +714,24 @@ $(document).ready(function() {
                     }
                 });
 
-                $.ajax({
-                    cache: false,
-                    async: false,
-                    url: "../../main/modules/external/check_value.php",
-                    data: {value:$("#wifi_password").val()+"____"+$("#wifi_password_confirm").val()+"    ",type:'password'}
-                }).done(function (data) {
-                    if(data!=1) {
-                        $("#error_wifi_password").show(700);
-                        $("#error_wifi_password_confirm").show(700);
-                        checked=false;
-                        expand('wifi_interface');
-                    } else {
-                        $("#error_wifi_password").css("display","none");
-                        $("#error_wifi_password_confirm").css("display","none");
-                    }
-                });
+                if(wifi_password!=$("#wifi_password").val()) {
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                        data: {value:$("#wifi_password").val()+"____"+$("#wifi_password_confirm").val()+"    ",type:'password'}
+                    }).done(function (data) {
+                        if(data!=1) {
+                            $("#error_wifi_password").show(700);
+                            $("#error_wifi_password_confirm").show(700);
+                            checked=false;
+                            expand('wifi_interface');
+                        } else {
+                            $("#error_wifi_password").css("display","none");
+                            $("#error_wifi_password_confirm").css("display","none");
+                        }
+                    });
+                }
             }
 
             if(checked) {

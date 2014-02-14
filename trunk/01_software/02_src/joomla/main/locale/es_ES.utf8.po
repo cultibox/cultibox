@@ -198,6 +198,9 @@ msgstr "Afficher le menu d'historique de vos actions"
 msgid "RESET_MINMAX"
 msgstr "Remise à zéro du min/max"
 
+msgid "WIFI_DESCRIPTION"
+msgstr "Le module Wi-Fi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox:e état des prises, configuration actuelle..."
+
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1737,6 +1740,13 @@ msgstr "Ce champ permet de définir un nom pour votre programme d'engrais. Ce no
 
 msgid "TOOLTIP_CALENDAR_SELECT_CROISSANCE"
 msgstr "Si vous choisissez croissance, les trois premières semaines du programme de culture seront appliquées. Si vous choisissez floraison, les huit dernières semaines du programme de culture seront appliquées."
+
+msgid "TOOLTIP_WIFI_SSID"
+msgstr "Le nom de votre réseau Wi-fi actuellement en marche. Il s'agit de l'identifiant (SSID) de votre réseau Wifi local."
+
+msgid "TOOLTIP_WIFI_KEY_TYPE"
+msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
+
 
 #For the debug part:
 msgid "GENERATE_TIME"

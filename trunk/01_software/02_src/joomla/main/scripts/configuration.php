@@ -318,6 +318,9 @@ if(strcmp("$wifi_enable","")!=0) {
        }
 } else {
        $wifi_enable = get_configuration("WIFI",$main_error);
+       $wifi_ssid=get_configuration("WIFI_SSID",$main_error);
+       $wifi_key_type=get_configuration("WIFI_KEY_TYPE",$main_error);
+       $wifi_password=get_configuration("WIFI_PASSWORD",$main_error);
 }
 
 if((isset($stats))&&(!empty($stats))) {
