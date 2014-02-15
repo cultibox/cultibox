@@ -67,6 +67,7 @@ $resume_regul=array();
 $tmp="";
 $submit=getvar("submit_progs",$main_error);
 $anchor=getvar('anchor');
+$type="0";
 
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');
 $error_value[3]=__('ERROR_VALUE_PROGRAM_TEMP','html');
@@ -261,9 +262,13 @@ if(!empty($apply)&&(isset($apply))) {
 
     if("$regul_program"=="on") {
             $value_program="99.9";
+            $type="0";
             $check=true;
     } else if("$regul_program"=="off") {
             $value_program="0";
+            $check=true;
+    } else if("$regul_program"=="dimmer") {
+            $type="2";
             $check=true;
     } else {
             if((strcmp($regul_program,"on")!=0)&&(strcmp($regul_program,"off")!=0)) {
@@ -277,6 +282,7 @@ if(!empty($apply)&&(isset($apply))) {
             } else {
                 $check="1";
             }
+            $type="1";
     }
 
         
@@ -292,21 +298,24 @@ if(!empty($apply)&&(isset($apply))) {
                     "start_time" => "$start_time",
                     "end_time" => "23:59:59",
                     "value_program" => "$value_program",
-                    "selected_plug" => "$selected_plug"
+                    "selected_plug" => "$selected_plug",
+                    "type" => "$type"
                 );
 
                 $prog[]= array(
                     "start_time" => "00:00:00",
                     "end_time" => "$end_time",
                     "value_program" => "$value_program",
-                    "selected_plug" => "$selected_plug"
+                    "selected_plug" => "$selected_plug",
+                    "type" => "$type"
                 );
             } else {
                 $prog[]= array(
                                 "start_time" => "$start_time",
                                 "end_time" => "$end_time",
                                 "value_program" => "$value_program",
-                                "selected_plug" => "$selected_plug"
+                                "selected_plug" => "$selected_plug",
+                                "type" => "$type"
                 );
             }
             $start=$start_time;
@@ -342,7 +351,8 @@ if(!empty($apply)&&(isset($apply))) {
                                     "start_time" => "$cyclic_start",
                                     "end_time" => "23:59:59",
                                     "value_program" => "$value_program",
-                                    "selected_plug" => "$selected_plug"
+                                    "selected_plug" => "$selected_plug",
+                                    "type" => "$type"
                                 );
                         }
                     } else {
@@ -353,7 +363,8 @@ if(!empty($apply)&&(isset($apply))) {
                                     "start_time" => "00:00:00",
                                     "end_time" => "23:59:59",
                                     "value_program" => "$value_program",
-                                    "selected_plug" => "$selected_plug"
+                                    "selected_plug" => "$selected_plug",
+                                     "type" => "$type"
                                 );
                         }
                     }
@@ -365,7 +376,8 @@ if(!empty($apply)&&(isset($apply))) {
                                     "start_time" => "$cyclic_start",
                                     "end_time" => "$cyclic_end",
                                     "value_program" => "$value_program",
-                                    "selected_plug" => "$selected_plug"
+                                    "selected_plug" => "$selected_plug",
+                                    "type" => "$type"
                                 );
                             }
 
@@ -399,7 +411,8 @@ if(!empty($apply)&&(isset($apply))) {
                                     "start_time" => "$cyclic_start",
                                     "end_time" => "23:59:59",
                                     "value_program" => "$value_program",
-                                    "selected_plug" => "$selected_plug"
+                                    "selected_plug" => "$selected_plug",
+                                    "type" => "$type"
                                 );
                         }
                 }

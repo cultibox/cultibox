@@ -676,6 +676,9 @@ msgstr "Température voulue"
 msgid "WATER_WISHED"
 msgstr "Hauteur d'eau voulue"
 
+msgid "DIMMER_WISHED"
+msgstr "Puissance voulue"
+
 msgid "VALUE_ON"
 msgstr "Marche"
 
@@ -843,6 +846,9 @@ msgstr "Programme mis à jour mais le nombre maximal de changement, limité à 2
 
 msgid "CYCLIC_DURATION_TIME"
 msgstr "Durée du cycle"
+
+msgid "VALUE_DIMMER"
+msgstr "Variateur"
 
 
 # For the export module highchart part:
@@ -1602,6 +1608,9 @@ msgstr "En activant cette option, vous permettez l'envoie d'informations sur un 
 
 msgid "TOOLTIP_VALUE"
 msgstr "La Cultibox va éteindre ou allumer la prise pour atteindre cette valeur."
+
+msgid "TOOLTIP_DIMMER_VALUE"
+msgstr "La Cultibox va utiliser la prse variateur pour n'utiliser que la puissance désirée de l'équipement"
 
 msgid "TOOLTIP_POWER"
 msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consommation de votre installation, son prix..."

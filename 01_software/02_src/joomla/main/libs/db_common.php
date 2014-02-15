@@ -367,7 +367,7 @@ EOF;
 // RET return an array containing plugid and its name
 function get_plugs_infos($nb=0,&$out) {
         $sql = <<<EOF
-SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`,`PLUG_REGUL`, `PLUG_ENABLED`
+SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`,`PLUG_REGUL`, `PLUG_ENABLED`, `PLUG_POWER_MAX`
 FROM `plugs`
 WHERE id <= {$nb}
 ORDER by id ASC
@@ -403,7 +403,7 @@ function get_data_plug($selected_plug="",&$out) {
    $res="";
    if((isset($selected_plug))&&(!empty($selected_plug))) {
       $sql = <<<EOF
-SELECT  `time_start`,`time_stop`,`value` FROM `programs` WHERE plug_id = {$selected_plug} ORDER by time_start ASC
+SELECT  `time_start`,`time_stop`,`value`,`type` FROM `programs` WHERE plug_id = {$selected_plug} ORDER by time_start ASC
 EOF;
       $db=db_priv_pdo_start();
       try {
@@ -948,11 +948,13 @@ function insert_program($program,&$out) {
                 "time_start" => str_replace(':','',$progr['start_time']),
                 "time_stop" => str_replace(':','',$progr['end_time']),
                 "value" => $progr['value_program'],
+                "type" => $progr['type']
             );
         }
         $tmp=purge_program($prg);
    } else {
         foreach($program as $progr) {
+            $type=$progr['type'];
             if(count($tmp)>0) {
                 $data_plug=$tmp;
                 unset($tmp);
@@ -962,22 +964,25 @@ function insert_program($program,&$out) {
             $data_plug[] = array(
                 "time_start" => "240000",
                 "time_stop" => "240000",
-                "value" => "0"
+                "value" => "0",
+                "type" =>  "$type"
             );
- 
+
             $start_time=str_replace(':','',$progr['start_time']);
             $end_time=str_replace(':','',$progr['end_time']);
             $value=$progr['value_program'];
             $current= array(
                 "time_start" => "$start_time",
                 "time_stop" => "$end_time",
-                "value" => "$value"
+                "value" => "$value",
+                "type" =>  "$type"
             );
 
             $first=array(
                     "time_start" => "000000",
-                "time_stop" => "000000",
-                "value" => "0"
+                    "time_stop" => "000000",
+                    "value" => "0", 
+                    "type" =>  "$type"
             );
             asort($data_plug);
             $continue="1";
@@ -1017,7 +1022,8 @@ function insert_program($program,&$out) {
                     $first=array(
                         "time_start" => "000000",
                         "time_stop" => "000000",
-                        "value" => "0"
+                        "value" => "0",
+                        "type" =>  "$type"
                     );
                     $continue="1";
                     unset($data_plug);
@@ -1034,6 +1040,7 @@ function insert_program($program,&$out) {
                 print_r($tmp);
                 echo "<br />";
             }
+
             $tmp=purge_program($tmp);
 
             if($GLOBALS['DEBUG_TRACE']) {
@@ -1155,7 +1162,8 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                     $new_value = array(
                                 "time_start" => $first['time_start'],
                                 "time_stop" => $current['time_stop'],
-                                "value" => $current['value']               
+                                "value" => $current['value'],
+                                "type" => $current['type']
                     );
 
                     $first['time_start']=$current['time_stop'];
@@ -1221,7 +1229,8 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                     $new_value= array(
                         "time_start" => $current['time_stop'],
                         "time_stop" => $save_time,
-                        "value" => $first['value']
+                        "value" => $first['value'],
+                        "type" => $first['type']
                     );
 
                     $tmp[]=$first;
@@ -1244,7 +1253,8 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                     $new_value=array(
                             "time_start" => $current['time_stop'],
                             "time_stop" => $save_time,
-                            "value" => $first['value']
+                            "value" => $first['value'],
+                            "type" => $first['type']
                     );
 
                     $tmp[]=$first;
@@ -1973,10 +1983,11 @@ foreach($program as $prog) {
     $start_time=$prog['time_start'];
     $end_time=$prog['time_stop'];
     $value=$prog['value'];
+    $type=$prog['type'];
 
    $sql = $sql . <<<EOF
 
-INSERT INTO `programs`(`plug_id`,`time_start`,`time_stop`, `value`) VALUES('{$plugid}',"{$start_time}","{$end_time}",'{$value}');
+INSERT INTO `programs`(`plug_id`,`time_start`,`time_stop`, `value`,`type`) VALUES('{$plugid}',"{$start_time}","{$end_time}",'{$value}','{$type}');
 EOF;
 }
 
@@ -2158,7 +2169,8 @@ function purge_program($arr) {
                $tmp_arr = array(
                   "time_start" => $val['time_start'],
                   "time_stop" => $val['time_stop'],
-                  "value" => $val['value']
+                  "value" => $val['value'],
+                  "type" => $val['type'] 
                );
                $tmp[]=$tmp_arr;
              }

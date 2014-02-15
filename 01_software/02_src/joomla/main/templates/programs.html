@@ -509,6 +509,14 @@ $(document).ready(function() {
             default: getRegulation(regul,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']); $('#regul_div').show(); break;
         }
 
+
+        if(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_POWER_MAX']<10) {
+            $("#dimmer_div").show();
+        } else {
+            $("#dimmer_div").css("display", "none");
+        }
+
+
         if(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_REGUL']=="False") {
             $("#second_regul_plug").html("<?php echo __('SECOND_REGUL_OFF'); ?>");
             $("#second_regul_info").css("display", "none");
@@ -636,6 +644,13 @@ $(document).ready(function() {
             default: getRegulation(regul,plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_TYPE']); $('#regul_div').show(); break;
         }
 
+         if(plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_POWER_MAX']<10) {
+            $("#dimmer_div").show();
+        } else {
+            $("#dimmer_div").css("display", "none");
+        }
+
+
         if(plugs_infoJS[$('#selected_plug_conf').val()-1]['PLUG_REGUL']=="False") {
             $("#second_regul_plug").html("<?php echo __('SECOND_REGUL_OFF'); ?>");
             $("#second_regul_info").css("display", "none");
@@ -722,6 +737,10 @@ $(document).ready(function() {
                     <div id="regul_div" style=""><input type="radio" name="regul_program" id="regprog" value="regul" <?php if(strcmp("$regul_program","regul")==0) { ?>checked<?php } ?> onClick="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);"><?php echo __('VALUE_REGUL'); ?></div>
                 <?php } ?>
             </td>
+            <td>
+                <!-- Dimmer plug: --> 
+                <div id="dimmer_div" style="<?php if($plugs_infos[$selected_plug-1]["PLUG_POWER_MAX"]>10) echo "display:none"; ?>"><input type="radio" name="regul_program" id="regdim" value="dimmer" <?php if(strcmp("$regul_program","dimmer")==0) { ?>checked<?php } ?> onClick="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" onLoad="getRegulation(this.value,plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']);" ><?php echo __('VALUE_DIMMER'); ?></div>  
+            </td>
             </tr>
             </table>
 
@@ -742,7 +761,14 @@ $(document).ready(function() {
             <label id="regul_label_humi" style="<?php if((strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"humidifier")==0)||(strcmp($plugs_infos[$selected_plug-1]['PLUG_TYPE'],"dehumidifier")==0)) { echo ''; } else { echo 'display:none'; } ?>">
                 <?php echo __('HUMI_WISHED').":"; ?>
             </label><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_VALUE'); ?>" />
-            </div></td>
+            </div>
+         <div id="dimmer_label" style="<?php if(strcmp("$regul_program","dimmer")!=0) echo "display:none"; ?>">
+            <label>
+                <?php echo __('DIMMER_WISHED').":"; ?>
+            </label>
+            <img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_DIMMER_VALUE'); ?>" /> 
+        </div>
+    </td>
     <td><div id="regul_value" style="<?php if(strcmp("$regul_program","regul")!=0) echo "display:none"; ?>">
                        <input type="text" id="value_program" name="value_program" size="4" maxlength="4" 
                        <?php if(!empty($value_program)) { 

@@ -217,7 +217,8 @@ CREATE TABLE IF NOT EXISTS `programs` (
   `value` decimal(3,1) NOT NULL,
   `number` int(11) NOT NULL DEFAULT '1',
   `date_start` varchar(10) NOT NULL DEFAULT '0000-00-00',
-  `date_end` varchar(10) NOT NULL DEFAULT '0000-00-00'
+  `date_end` varchar(10) NOT NULL DEFAULT '0000-00-00',
+  `type` INT NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
