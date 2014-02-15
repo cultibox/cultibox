@@ -334,6 +334,7 @@ if((isset($stats))&&(!empty($stats))) {
 if((isset($advanced_regul))&&(!empty($advanced_regul))) {
         insert_configuration("ADVANCED_REGUL_OPTIONS","$advanced_regul",$main_error);
         if(strcmp("$advanced_regul","False")==0) {
+            $check_error=false;
             for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
                 insert_plug_conf("PLUG_REGUL_SENSOR",$i,"1",$main_error);
                 insert_plug_conf("PLUG_COMPUTE_METHOD",$i,"M",$main_error);
@@ -342,7 +343,10 @@ if((isset($advanced_regul))&&(!empty($advanced_regul))) {
                     $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
                     if(count($plugconf)>0) {
                         if(!write_plugconf($plugconf,$sd_card)) {
-                            $main_error[]=__('ERROR_COPY_PLUG_CONF');
+                            if(!$check_error) {
+                                $main_error[]=__('ERROR_COPY_PLUG_CONF');
+                                $check_error=true;
+                            }
                         }
                     }
                 }
