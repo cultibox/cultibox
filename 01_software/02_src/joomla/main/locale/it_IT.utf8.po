@@ -1278,6 +1278,24 @@ msgid "HISTORIC_EXPORT"
 msgstr "Export d'un programme"
 
 
+# For the wifi part:
+msgid "VIEW_PLUGS_STATE"
+msgstr "État actuel de vos prises"
+
+msgid "PLUG_NUMBER"
+msgstr "Prise numéro"
+
+msgid "PLUG_UNKNOWN_STATE"
+msgstr "État de la prise inconnu"
+
+msgid "PLUG_ON"
+msgstr "La prise est actuellement en marche"
+
+msgid "PLUG_OFF"
+msgstr "La prise est actuellement arrêtée"
+
+
+
 # For the footer:
 msgid "VERSION"
 msgstr "Version"
@@ -1493,6 +1511,9 @@ msgstr "Les mots de passe doivent correspondre"
 
 msgid "ERROR_COPY_WIFI_CONF"
 msgstr "Erreur lors de la copie du fichier de configuration du module wifi"
+
+msgid "ERROR_WIFI_CONF"
+msgstr "Erreur durant l'écriture des fichiers de configuration du Wifi sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
 
 
 # For the informations part:

@@ -369,11 +369,27 @@ td.calendar_right {
     width: 95%;
 }
 
+td.wifi-plug-field {
+   width: 80%;
+}
+
+td.wifi-plug-marge {
+   width: 10%;
+}
+
+td.wifi-plug-status {
+   width: 10%;
+} 
+
+td.wifi-plug-title {
+   width: 15%;
+}
+
 P.p_center{
    text-align: center;
 }
 
-hr {
+hr.wifi-bar {
    width:40%;
    margin:auto;
 }
@@ -527,6 +543,7 @@ td.wizard-input-submit, td.wizard-input-previous2 {
 td.wizard-input-previous input[type="submit"] {
 	width:100px;
 }
+
 hr {
   margin:auto;
   width:90%;

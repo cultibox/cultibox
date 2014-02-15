@@ -512,6 +512,7 @@ $(document).ready(function(){
       <td class="conf-alarm-field"><select name="wifi_key_type" id="wifi_key_type"><?php foreach( $GLOBALS['WIFI_KEY_TYPE_LIST'] as $key) { ?>
                     <option value="<?php echo $key; ?>" <?php if(strcmp("$key","$wifi_key_type")==0) echo 'selected'; ?>><?php echo $key; ?></option>
                 <?php } ?>
+                </select>
       </td>
       <td></td>
    </tr>

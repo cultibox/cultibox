@@ -176,10 +176,8 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 
-// If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
+// If a cultibox SD card is plugged, manage some administrators operations: check the firmware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) { 
-    
-    
     $program="";
     $conf_uptodate=true;
     $error_copy=false;

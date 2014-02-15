@@ -1605,6 +1605,41 @@ $(document).ready(function() {
     });
 
 
+    //Wifi process:
+    var check = window.location.pathname.match(/wifi/g);
+    if(check) {
+        $.ajax( {
+            type: "GET",
+            url: "../../main/xml/test.xml",
+            dataType: "xml",
+            success: function(xml) {        
+                var myPlug = [];
+                $(xml).find('plug_state').each( function(){         
+                    var num = $(this).find('num').text();       
+                    var value = $(this).find('value').text();       
+                    myPlug.push({
+                        num: num, 
+                        value: value
+                    });
+                });
+
+                $.each(myPlug, function( index, value ) {
+                   if((value['num']!="")&&(value['value']!="")) {
+                        if(value['value']!=0) {
+                            $("#plug_state_on"+value['num']).show();
+                        } else {
+                            $("#plug_state_off"+value['num']).show();
+                        }
+                        $("#plug_state_unk"+value['num']).css("display","none");
+                   } 
+                });
+           }
+        });            
+
+    }
+            
+
+   
 
 
     var check = window.location.pathname.match(/display-logs/g);
