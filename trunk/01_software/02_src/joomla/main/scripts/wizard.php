@@ -39,6 +39,7 @@ $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $main_info[]=__('WIZARD_DISABLE_FUNCTION').": <a href='programs-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('CLASSIC')."' title='' id='Classic' /></a>";
 $type_submit=getvar('type_submit');
 $status=get_canal_status($main_error);
+$type=getvar("type");
 
 
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');
@@ -81,6 +82,7 @@ if($selected_plug>3) {
     $plug_power_max=getvar('plug_power_max');
     if(strcmp($plug_power_max,"VARIO")==0) {
        $plug_power_max=getvar("dimmer_canal");
+       $type="2";
    }
 
 } 
@@ -94,6 +96,7 @@ if((empty($plug_type))||(!isset($plug_type))) {
 if((empty($plug_power_max))||(!isset($plug_power_max))) {
     $plug_power_max=get_plug_conf("PLUG_POWER_MAX",$selected_plug,$main_error);
 }
+
 
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
@@ -258,10 +261,21 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
         if(strcmp($plug_type,"lamp")!=0) {
             if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
 		        $chval=check_format_values_program($value_program,"temp");
+                if((!isset($type))||(empty($type))) {
+                    $type="1";
+                } else {
+                    echo "$type";
+                }
             } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
                 $chval=check_format_values_program($value_program,"humi");
+                if((!isset($type))||(empty($type))) {
+                    $type="1";
+                }
             }elseif(strcmp($plug_type,"pump")==0) {
                 $chval=check_format_values_program($value_program,"cm"); 
+                if((!isset($type))||(empty($type))) {
+                    $type="1";
+                }
             } else {
                 $chval=check_format_values_program($value_program,"other");
             }
@@ -271,6 +285,11 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
         } else {
             $chval="1";
         }
+
+        if((!isset($type))||(empty($type)))  {
+            $type="0";
+        }
+
         $plug_tolerance="1.0";
 
         if(($chtime)&&(strcmp("$chval","1")==0)) {
@@ -280,7 +299,8 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
                     "end_time" => "23:59:59",
                     "value_program" => "$value_program",
                     "selected_plug" => "$selected_plug",
-                    "plug_type" => "$plug_type"
+                    "plug_type" => "$plug_type",
+                    "type" => "$type"
                 );
 
                 $prog[]= array(
@@ -288,7 +308,8 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
                     "end_time" => "$end_time",
                     "value_program" => "$value_program",
                     "selected_plug" => "$selected_plug",
-					"plug_type" => "$plug_type"
+					"plug_type" => "$plug_type",
+                    "type" => "$type"
                 ); 
             } else {
                 $prog[]= array(
@@ -296,7 +317,8 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
                     "end_time" => "$end_time",
                     "value_program" => "$value_program",
                     "selected_plug" => "$selected_plug",
-                    "plug_type" => "$plug_type"
+                    "plug_type" => "$plug_type",
+                    "type" => "$type"
                 );
             }
 

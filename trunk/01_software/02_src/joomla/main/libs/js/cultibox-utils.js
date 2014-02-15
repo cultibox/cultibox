@@ -544,13 +544,28 @@ function getSelectedPlug(i,j) {
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
 // USED BY: templates/programs.html 
 function getRegulation(i, type) {
+      var divValTemp = document.getElementById('regul_value_temp');
+      var divLabelTemp = document.getElementById('regul_label_temp');
+      var divValHumi = document.getElementById('regul_value_humi');
+      var divLabelHumi = document.getElementById('regul_label_humi');
+      var divLabelWater = document.getElementById('regul_label_water');
+      var divValWater = document.getElementById('regul_value_water');
 
-        var divValTemp = document.getElementById('regul_value_temp');
-        var divLabelTemp = document.getElementById('regul_label_temp');
-        var divValHumi = document.getElementById('regul_value_humi');
-        var divLabelHumi = document.getElementById('regul_label_humi');
-        var divLabelWater = document.getElementById('regul_label_water');
-        var divValWater = document.getElementById('regul_value_water');
+      if(i=="dimmer") {
+            divValHumi.style.display = '';
+            divLabelHumi.style.display = 'none';
+            divValTemp.style.display = 'none';
+            divLabelTemp.style.display = 'none';
+            divValWater.style.display = 'none';
+            divLabelWater.style.display = 'none';
+            var divValue = document.getElementById('value_program');
+            divValue.value="50";
+
+            var divDimmerLabel=document.getElementById('dimmer_label');
+            divDimmerLabel.style.display = '';
+      } else {
+        var divDimmerLabel=document.getElementById('dimmer_label');
+        divDimmerLabel.style.display = 'none';
 
         if((type=="humidifier")||(type=="dehumidifier")) {
             divValHumi.style.display = '';
@@ -561,7 +576,7 @@ function getRegulation(i, type) {
             divLabelWater.style.display = 'none';
             var divValue = document.getElementById('value_program');
             divValue.value="55";
-      } else if((type=="heating")||(type=="ventilator")) {
+        } else if((type=="heating")||(type=="ventilator")) {
             divValHumi.style.display = 'none';
             divLabelHumi.style.display = 'none';
             divValTemp.style.display = '';
@@ -571,7 +586,7 @@ function getRegulation(i, type) {
 
             var divValue = document.getElementById('value_program');
             divValue.value="22";
-      } else if(type=="pump") {
+        } else if(type=="pump") {
             divValHumi.style.display = 'none';
             divLabelHumi.style.display = 'none';
             divValTemp.style.display = 'none';
@@ -581,9 +596,10 @@ function getRegulation(i, type) {
 
             var divValue = document.getElementById('value_program');
             divValue.value="22";
-      } else {
+        } else {
             var divValue = document.getElementById('value_program');
             divValue.value="";
+        }
       }
 
       var divValueRegul = document.getElementById('regul_value');
@@ -591,6 +607,7 @@ function getRegulation(i, type) {
     
       switch(i) {
          case 'regul' : divLabelRegul.style.display = ''; divValueRegul.style.display = ''; break;
+         case 'dimmer': divLabelRegul.style.display = 'none'; divValueRegul.style.display = ''; break;
          default: divLabelRegul.style.display = 'none'; divValueRegul.style.display = 'none'; break;
       }
 
