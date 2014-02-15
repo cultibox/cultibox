@@ -34,3 +34,39 @@
 <?php } ?>
 </div>
 <?php } ?>
+
+<script>
+    nb_plugs=<?php echo(json_encode($nb_plugs)); ?>
+</script>
+
+<br />
+<p class="title_conf"><?php echo __('VIEW_PLUGS_STATE'); ?></p>
+<br />
+
+<table class="table_width">
+<tr>
+    <td class="wifi-plug-marge"></td>
+    <td class="wifi-plug-field">
+        <table  class="table_width">
+            <tr>
+<?php for($i=0;$i<count($plugs_infos);$i++) { ?>
+        <?php if(($i%2==0)&&($i>0)) { ?>
+            </tr><tr>
+        <?php } ?>
+            <td class="wifi-plug-title"><?php echo __('PLUG_NUMBER')." ".$plugs_infos[$i]['id']." (<b>".$plugs_infos[$i]['PLUG_NAME']."</b>):"; ?></td>
+            <td class="wifi-plug-status">
+                <div id="plug_state_on<?php echo $i+1;?>" style="display:none"><img src="main/libs/img/light_on.png" alt="<?php echo __('PLUG_ON'); ?>"  title="<?php echo __('PLUG_ON'); ?>" /></div>
+                <div id="plug_state_off<?php echo $i+1;?>" style="display:none"><img src="main/libs/img/light_off.png" alt="<?php echo __('PLUG_OFF'); ?>"  title="<?php echo __('PLUG_OFF'); ?>" /></div>
+                <div id="plug_state_unk<?php echo $i+1;?>"><img src="main/libs/img/light_unk.png" alt=""  title="<?php echo __('PLUG_UNKNOWN_STATE'); ?>" /></div>
+            </td>
+<?php } ?>
+        </tr>
+      </table>
+    </td>
+    <td class="wifi-plug-marge"></td>    
+</tr>
+</table>
+<br />
+<hr class="wifi-bar" />
+<br /><br />
+

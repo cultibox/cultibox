@@ -34,6 +34,8 @@ $version=get_configuration("VERSION",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $pop_up_message="";
 $pop_up_error_message="";
+$nb_plugs=get_configuration("NB_PLUGS",$main_error);
+$plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
