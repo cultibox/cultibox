@@ -65,6 +65,9 @@ msgstr "Carte SD"
 msgid "CONFIGURE_WIFI"
 msgstr "Wi-Fi"
 
+msgid "CONFIGURE_WIFI_IP"
+msgstr "Adresse de votre module Wifi"
+
 msgid "ALWAYS_RECORD"
 msgstr "Toujours"
 
@@ -1521,6 +1524,9 @@ msgstr "Erreur lors de la copie du fichier de configuration du module wifi"
 msgid "ERROR_WIFI_CONF"
 msgstr "Erreur durant l'écriture des fichiers de configuration du Wifi sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
 
+msgid "ERROR_WIFI_IP"
+msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
+
 
 # For the informations part:
 msgid "CLOSE_CONFIRM"
@@ -1773,6 +1779,9 @@ msgstr "Le nom de votre réseau Wi-fi actuellement en marche. Il s'agit de l'ide
 
 msgid "TOOLTIP_WIFI_KEY_TYPE"
 msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
+
+msgid "TOOLTIP_WIFI_IP"
+msgstr "L'adresse de votre module Wifi peut être personalisée en rentrant une adresse ip au format XXX.XXX.XXX.XXX"
 
 
 #For the debug part:

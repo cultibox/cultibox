@@ -2,6 +2,7 @@ Cultibox (1.3.04) precise; urgency=low
     + Ajout du menu wifi et des pages associées
     + Ajout du traitement des données XML pour la page wifi
     + Ajout de la possibilité de créer des programmes définit avec une prise variateur
+    + Ajout d'un champ IP permettant la configuration du module Wifi
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Wed Feb 12 20:28:12 CET 2014
 
