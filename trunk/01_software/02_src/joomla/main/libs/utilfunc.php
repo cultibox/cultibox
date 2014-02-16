@@ -806,13 +806,14 @@ function compare_wificonf($data,$sd_card) {
     $file="$sd_card/cnf/wifi";
     if(!is_file($file)) return false;
 
-    if(count($data)!=3) return false;
+    if(count($data)!=4) return false;
     $wifi_array=@file("$file");
-    if(count($wifi_array)!=3) return false;
+    if(count($wifi_array)!=4) return false;
 
     if(strcmp(trim($data[0]),trim($wifi_array[0]))!=0) return false;
     if(strcmp(trim($data[1]),trim($wifi_array[1]))!=0) return false;
     if(strcmp(trim($data[2]),trim($wifi_array[2]))!=0) return false;
+    if(strcmp(trim($data[3]),trim($wifi_array[3]))!=0) return false;
 
     return true;
 }
@@ -864,7 +865,7 @@ function write_pluga($sd_card,&$out) {
 function write_wificonf($sd_card,$wificonf="",&$out) {
    $data="";
    $file="$sd_card/cnf/wifi";
-   if(count($wificonf)!=3) return false;
+   if(count($wificonf)!=4) return false;
    foreach($wificonf as $conf) {
         $data=$data.$conf."\r\n";
    }
