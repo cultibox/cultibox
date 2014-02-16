@@ -49,6 +49,7 @@ $wifi_enable=getvar('wifi_enable');
 $wifi_ssid=getvar('wifi_ssid');
 $wifi_key_type=getvar('wifi_key_type');
 $wifi_password=getvar('wifi_password');
+$wifi_ip=getvar('wifi_ip');
 $update=getvar('update');
 $version=get_configuration("VERSION",$main_error);
 $submenu=getvar("submenu",$main_error);
@@ -299,14 +300,17 @@ if(strcmp("$wifi_enable","")!=0) {
            insert_configuration("WIFI_SSID","$wifi_ssid",$main_error);
            insert_configuration("WIFI_KEY_TYPE","$wifi_key_type",$main_error);
            insert_configuration("WIFI_PASSWORD","$wifi_password",$main_error);
+           insert_configuration("WIFI_IP","$wifi_ip",$main_error);
        } else {
            insert_configuration("WIFI_SSID","",$main_error);
            insert_configuration("WIFI_KEY_TYPE","NONE",$main_error);
            insert_configuration("WIFI_PASSWORD","",$main_error);
+           insert_configuration("WIFI_IP","192.168.0.200",$main_error);
         
            $wifi_ssid="";
            $wifi_key_type="NONE";
            $wifi_password="";
+           $wifi_ip="192.168.0.200";
        }
        $update_conf=true;
 
@@ -321,6 +325,7 @@ if(strcmp("$wifi_enable","")!=0) {
        $wifi_ssid=get_configuration("WIFI_SSID",$main_error);
        $wifi_key_type=get_configuration("WIFI_KEY_TYPE",$main_error);
        $wifi_password=get_configuration("WIFI_PASSWORD",$main_error);
+       $wifi_ip=get_configuration("WIFI_IP",$main_error);
 }
 
 if((isset($stats))&&(!empty($stats))) {

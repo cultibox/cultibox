@@ -128,6 +128,9 @@ switch($type) {
                     break;
                 }
                 break;
+    case 'ip':
+            if(!filter_var($value, FILTER_VALIDATE_IP)) echo "error"; 
+            break;
 }
 echo "1";
 

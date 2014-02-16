@@ -719,7 +719,7 @@ $(document).ready(function() {
                         cache: false,
                         async: false,
                         url: "../../main/modules/external/check_value.php",
-                        data: {value:$("#wifi_password").val()+"____"+$("#wifi_password_confirm").val()+"    ",type:'password'}
+                        data: {value:$("#wifi_password").val()+"____"+$("#wifi_password_confirm").val(),type:'password'}
                     }).done(function (data) {
                         if(data!=1) {
                             $("#error_wifi_password").show(700);
@@ -732,6 +732,22 @@ $(document).ready(function() {
                         }
                     });
                 }
+
+                
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#wifi_ip").val(),type:'ip'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_wifi_ip").show(700);
+                        checked=false;
+                        expand('wifi_interface');
+                    } else {
+                        $("#error_wifi_ip").css("display","none");
+                    }
+                });
             }
 
             if(checked) {
@@ -1610,7 +1626,7 @@ $(document).ready(function() {
     if(check) {
         $.ajax( {
             type: "GET",
-            url: "../../main/xml/test.xml",
+            url: "http://"+wifi_ip+"/status.xml",
             dataType: "xml",
             success: function(xml) {        
                 var myPlug = [];
