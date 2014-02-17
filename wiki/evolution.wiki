@@ -31,6 +31,7 @@ Ce paragraphe concerne toutes les futurs évolutions.
  * Configuration évoluée des prises dans le wizard (Issue 615)
  * Création d'outils de niveau 2 dans un nouveau logiciel (Comparaison de logs / jour ou par saison, création des programmes d'engrais, optimisation par rapport à la puissance consommée)
  * Création d'un système de logs et d'envoi de mail en cas d'erreur pour les installateurs
+ * Calcul de la durée de vie d'une lampe HPS (Issue 732) 
 
 == Site Web ==
  * Création d'un modèle 3D à intégrer dans le site Web (http://www.google.com/webdesigner/)
