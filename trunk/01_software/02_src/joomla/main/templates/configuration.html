@@ -495,6 +495,7 @@ $(document).ready(function(){
            ?>
       </select></td>
       <td></td>
+      <td></td>
    </tr>
 </table>
 <br />
@@ -504,6 +505,7 @@ $(document).ready(function(){
       <td class="conf-marge"></td>
       <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_SSID'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_SSID'); ?>" /></td>
       <td class="conf-alarm-field"><input type="text" size="15" name="wifi_ssid" id="wifi_ssid" value="<?php echo $wifi_ssid; ?>" /></td>
+      <td></td>
       <td><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
    </tr>
    <tr>
@@ -515,23 +517,27 @@ $(document).ready(function(){
                 </select>
       </td>
       <td></td>
+      <td></td>
    </tr>
    <tr>
       <td class="conf-marge"></td>
       <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_PASSWORD'); ?>:</td>
-      <td class="conf-alarm-field"><input type="text" size="15" name="wifi_password" id="wifi_password" value="<?php echo $wifi_password; ?>" /></td>
+      <td class="conf-alarm-field"><input type="text" size="15" name="wifi_password" id="wifi_password" value="" /><input type="text" size="15" name="current_wifi_password" id="current_wifi_password" value="<?php echo $wifi_password; ?>" style="display:none" /></td>
+      <td><img src='/cultibox/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_CURRENT_PWD'); ?>" id="eyes"></td>
       <td><div id="error_wifi_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div></td>
    </tr>
    <tr>
       <td class="conf-marge"></td>
       <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_PASSWORD_CONFIRM'); ?>:</td>
       <td class="conf-alarm-field"><input type="text" size="15" name="wifi_password_confirm" id="wifi_password_confirm" value="" /></td>
+      <td></td>
       <td><div id="error_wifi_password_confirm" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div></td>
    </tr>
    <tr>
       <td class="conf-marge"></td>
       <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_IP'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_IP'); ?>" /></td>
-      <td class="conf-alarm-field"><input type="text" size="15" name="wifi_ip" id="wifi_ip" value="<?php echo $wifi_ip; ?>" /></td>
+      <td class="conf-alarm-field"><input type="text" size="15" name="wifi_ip" id="wifi_ip" value="<?php echo $wifi_ip; ?>" <?php if(!$wifi_manual) echo "disabled"; ?> /></td>
+      <td><input type="checkbox" name="wifi_ip_manual" id="wifi_ip_manual" title="<?php echo __('WIFI_IP_MANUAL'); ?>" <?php if($wifi_manual) echo "checked"; ?> /></td>
       <td><div id="error_wifi_ip" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP'); ?></div></td>
    </tr>
 

@@ -662,6 +662,30 @@ $(document).ready(function() {
                 });
         });
 
+
+        $("#wifi_ip_manual").click(function(e) {
+            if($('#wifi_ip_manual').prop('checked')) { 
+                    $('#wifi_ip').prop('disabled', false);
+            } else {
+                    $('#wifi_ip').prop('disabled', true);
+            }
+        });
+
+        $("#eyes").mousedown(function() {
+            $("#current_wifi_password").show();
+            $("#wifi_password").css("display","none"); 
+        }); 
+
+        $("#eyes").mouseup(function(){
+                $("#wifi_password").show();
+                $("#current_wifi_password").css("display","none");
+        });
+
+        $("#eyes").mouseleave(function(){
+                $("#wifi_password").show();
+                $("#current_wifi_password").css("display","none");
+        });
+
         // Check errors for the configuration part:
         $("#submit_conf").click(function(e) {
             e.preventDefault();
@@ -733,21 +757,24 @@ $(document).ready(function() {
                     });
                 }
 
-                
-                $.ajax({
-                    cache: false,
-                    async: false,
-                    url: "../../main/modules/external/check_value.php",
-                    data: {value:$("#wifi_ip").val(),type:'ip'}
-                }).done(function (data) {
-                    if(data!=1) {
-                        $("#error_wifi_ip").show(700);
-                        checked=false;
-                        expand('wifi_interface');
-                    } else {
-                        $("#error_wifi_ip").css("display","none");
-                    }
-                });
+               
+
+                if($('#wifi_ip_manual').prop('checked')) {
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                        data: {value:$("#wifi_ip").val(),type:'ip'}
+                    }).done(function (data) {
+                        if(data!=1) {
+                            $("#error_wifi_ip").show(700);
+                            checked=false;
+                            expand('wifi_interface');
+                        } else {
+                            $("#error_wifi_ip").css("display","none");
+                        }
+                    });
+                }
             }
 
             if(checked) {
@@ -1626,8 +1653,9 @@ $(document).ready(function() {
     if(check) {
         $.ajax( {
             type: "GET",
-            url: "http://"+wifi_ip+"/status.xml",
+            url: "http://"+wifi_ip+"/info.xml",
             dataType: "xml",
+            timeout: 3000,
             success: function(xml) {        
                 var myPlug = [];
                 $(xml).find('plug_state').each( function(){         
@@ -1649,9 +1677,11 @@ $(document).ready(function() {
                         $("#plug_state_unk"+value['num']).css("display","none");
                    } 
                 });
+           },
+           error: function() {
+            alert("wrong configuration");
            }
         });            
-
     }
             
 
