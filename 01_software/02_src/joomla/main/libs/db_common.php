@@ -2403,7 +2403,7 @@ EOF;
 function create_wificonf_from_database(&$out) {
    $data=array();
    $sql = <<<EOF
-SELECT `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD`, `WIFI_IP` FROM `configuration` WHERE `id` = 1;
+SELECT `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD`, `WIFI_IP`, `WIFI_IP_MANUAL` FROM `configuration` WHERE `id` = 1;
 EOF;
 
    $db=db_priv_pdo_start();
@@ -2427,7 +2427,12 @@ EOF;
    $data[]="SSID:".$res['WIFI_SSID'];
    $data[]="CLE:".$res['WIFI_KEY_TYPE'];
    $data[]="PWD:".$res['WIFI_PASSWORD'];
-   $data[]="IP:".$res['WIFI_IP'];
+   if($res['WIFI_IP_MANUAL']) {
+    $data[]="IP:".$res['WIFI_IP'];
+   } else {
+    $data[]="IP:".$_SERVER['SERVER_ADDR'];
+    $data[]="SET:1";
+   }
    return $data;
 }
 /// }}}

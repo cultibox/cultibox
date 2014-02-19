@@ -203,6 +203,12 @@ msgstr "Remise à zéro du min/max"
 msgid "WIFI_DESCRIPTION"
 msgstr "Le module Wi-Fi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox:e état des prises, configuration actuelle..."
 
+msgid "WIFI_IP_MANUAL"
+msgstr "Configurer l'adresse IP manuellement"
+
+msgid "SHOW_CURRENT_PWD"
+msgstr "Laisser la souris clickée sur l'image pour afficher le mot de passe actuellement configuré"
+
 
 # For the logs part:
 msgid "HISTO_GRAPH"

@@ -73,7 +73,7 @@ if((!isset($path))||(empty($path))) {
 
             // Creating log.txt file:
             if(!is_file("$path/log.txt")) {
-                if(!copy_empty_big_file("$sd_card/log.txt")) {
+                if(!copy_empty_big_file("$path/log.txt")) {
                     echo -1;
                     return 0;
                 }
