@@ -38,36 +38,72 @@
 <script>
     nb_plugs=<?php echo(json_encode($nb_plugs)); ?>;
     wifi_ip=<?php echo(json_encode($wifi_ip)); ?>;
+    type_sensor=<?php echo(json_encode($type_sensor)); ?>;
 </script>
 
 <br />
-<p class="title_conf"><?php echo __('VIEW_PLUGS_STATE'); ?></p>
-<br />
-
+<p class="title_conf"><?php echo __('VIEW_SENSOR_STATE'); ?></p>
 <table class="table_width">
 <tr>
     <td class="wifi-plug-marge"></td>
     <td class="wifi-plug-field">
-        <table  class="table_width">
+        <br />
+        <table class="table_width">
             <tr>
-<?php for($i=0;$i<count($plugs_infos);$i++) { ?>
-        <?php if(($i%2==0)&&($i>0)) { ?>
-            </tr><tr>
+            <?php for($i=0;$i<$GLOBALS['NB_MAX_SENSOR_PLUG'];$i++) { ?>
+                <?php if(($i%3==0)&&($i>0)) { ?>
+                   </tr><tr>
+                <?php } ?>
+                <td>
+                <p class="title_subconf"><b><?php echo __('SENSOR')." ".($i+1).":"; ?></b></p>
+                <?php echo __('SENSOR_TYPE').": <b></b>"; ?><p class="p_center"><label id="type_sensor<?php echo $i+1; ?>"><b><?php echo $type_sensor[0]; ?></b></label></p>
+                <?php echo __('SENSOR_VALUE').": <b></b>"; ?><p class="p_center"><label id="sensor_value<?php echo $i+1; ?>"><b>N/A</b></label><p/><br />
+                <hr />
+                <br />
+                </td>
         <?php } ?>
-            <td class="wifi-plug-title"><?php echo __('PLUG_NUMBER')." ".$plugs_infos[$i]['id']." (<b>".$plugs_infos[$i]['PLUG_NAME']."</b>):"; ?></td>
-            <td class="wifi-plug-status">
-                <div id="plug_state_on<?php echo $i+1;?>" style="display:none"><img src="main/libs/img/light_on.png" alt="<?php echo __('PLUG_ON'); ?>"  title="<?php echo __('PLUG_ON'); ?>" /></div>
-                <div id="plug_state_off<?php echo $i+1;?>" style="display:none"><img src="main/libs/img/light_off.png" alt="<?php echo __('PLUG_OFF'); ?>"  title="<?php echo __('PLUG_OFF'); ?>" /></div>
-                <div id="plug_state_unk<?php echo $i+1;?>"><img src="main/libs/img/light_unk.png" alt=""  title="<?php echo __('PLUG_UNKNOWN_STATE'); ?>" /></div>
-            </td>
-<?php } ?>
         </tr>
-      </table>
+        </table>
+    </td>
+    <td class="wifi-plug-marge"></td>
+</tr>
+</table>
+<br />
+<br /><br />
+
+<p class="title_conf"><?php echo __('VIEW_PLUGS_STATE'); ?></p>
+
+<table class="table_width">
+<tr>
+    <td class="wifi-plug-marge"></td>
+    <td class="wifi-plug-field">        
+        <br />
+        <table class="table_width">     
+            <tr>
+            <?php for($i=0;$i<count($plugs_infos);$i++) { ?>
+                <?php if(($i%3==0)&&($i>0)) { ?>
+                   </tr><tr>
+                <?php } ?>
+                <td>
+                <p class="title_subconf"><b><?php echo __('PLUG_NUMBER')." ".$plugs_infos[$i]['id'].":"; ?></b></p>
+                <?php echo __('NAME_PLUG').": <b>".$plugs_infos[$i]['PLUG_NAME']."</b>"; ?><br />
+                <?php echo __('SHORT_ELEMENT_TYPE').": <b>".$plugs_infos[$i]['translate']."</b>"; ?><br />
+                <?php echo __('SHORT_PLUG_TYPE').": "; ?>
+                <?php if($plugs_infos[$i]['PLUG_POWER_MAX']<10) { echo "<b>".__('DIMMER')."</b>"; } else { echo "<b>".$plugs_infos[$i]['PLUG_POWER_MAX']."W</b>"; } ?><br />
+                <?php echo __('STATE_PLUG').": "; ?> 
+                <div id="plug_state_on<?php echo $i+1;?>" style="display:none; text-align: center"><img src="main/libs/img/light_on.png" alt="<?php echo __('PLUG_ON'); ?>"  title="<?php echo __('PLUG_ON'); ?>" /></div>
+                <div id="plug_state_off<?php echo $i+1;?>" style="display:none; text-align: center"><img src="main/libs/img/light_off.png" alt="<?php echo __('PLUG_OFF'); ?>"  title="<?php echo __('PLUG_OFF'); ?>" /></div>
+                <div id="plug_state_unk<?php echo $i+1;?>" style="text-align:center"><img src="main/libs/img/light_unk.png" alt=""  title="<?php echo __('PLUG_UNKNOWN_STATE'); ?>" /></div>
+                <hr />
+                <br />
+                </td>
+        <?php } ?>
+        </tr>
+        </table>
     </td>
     <td class="wifi-plug-marge"></td>    
 </tr>
 </table>
 <br />
-<hr class="wifi-bar" />
 <br /><br />
 

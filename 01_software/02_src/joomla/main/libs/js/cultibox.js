@@ -299,6 +299,95 @@ loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
 }
 
 
+//Wifi process:
+wifi_process = function() {
+        setTimeout(function(){
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:6891/cultibox/main/xml/info.xml",
+            dataType: "xml",
+            timeout: 3000,
+            success: function(xml) {
+                var myPlug = [];
+                $(xml).find('plug_state').each( function(){
+                    var num=$(this).find('num').text();
+                    var value=$(this).find('value').text();
+                    myPlug.push({
+                        num: num,
+                        value: value
+                    });
+                });
+
+                $.each(myPlug, function( index, value ) {
+                   if((value['num']!="")&&(value['value']!="")) {
+                        if(value['value']!=0) {
+                            $("#plug_state_on"+value['num']).show();
+                        } else {
+                            $("#plug_state_off"+value['num']).show();
+                        }
+                        $("#plug_state_unk"+value['num']).css("display","none");
+                   }
+                });
+
+                var mySensor = [];
+                $(xml).find('sensor').each( function(){
+                    var num=$(this).find('num').text();
+                    var type=$(this).find('type').text();
+                    var value1=$(this).find('value1').text();
+                    var value2=$(this).find('value2').text();
+                    mySensor.push({
+                        num: num,
+                        type: type,
+                        value1: value1,
+                        value2: value2
+                    });
+                });
+
+
+                 $.each(mySensor, function( index, value ) {
+                    if((value['num']!="")&&(value['type']!="")&&(value['type']>1)&&(value['type']!=4)) {
+
+                        var unity="";
+                        switch (value['type']) {
+                            case '3': unity="°C";
+                                        break;
+                            case '5': unity="cm";
+                                        break;
+                            case '6': unity="cm";
+                                        break;
+                            default: unity="";
+                        }
+
+                        $("#type_sensor"+value['num']).text(type_sensor[value['type']]);
+                        $("#type_sensor"+value['num']).css('font-weight', 'bold');
+
+                        if((value['value1']!="")&&(value['value1']!="0")) {
+                            if(value['type']!="2") {
+                                $("#sensor_value"+value['num']).text(value['value1']+unity);
+                            } else {
+                                // Temp and humi:
+                                if((value['value2']!="")&&(value['value2']!="0")) {
+                                    $("#sensor_value"+value['num']).text(value['value1']+"°C / "+value['value2']+"%");
+                                } else {
+                                    $("#sensor_value"+value['num']).text("N/A");
+                                }
+                            }
+                         } else {
+                             $("#sensor_value"+value['num']).text("N/A");
+                         }
+                         $("#sensor_value"+value['num']).css('font-weight', 'bold');
+                   }
+                });
+            },
+                complete: function() {
+                    wifi_process();
+                }
+            });
+            }, 1000);
+}
+
+
+
 $(document).ready(function() {
     $.ajax({
         cache: false,
@@ -738,6 +827,8 @@ $(document).ready(function() {
                     }
                 });
 
+
+                
                 if(wifi_password!=$("#wifi_password").val()) {
                     $.ajax({
                         cache: false,
@@ -745,6 +836,7 @@ $(document).ready(function() {
                         url: "../../main/modules/external/check_value.php",
                         data: {value:$("#wifi_password").val()+"____"+$("#wifi_password_confirm").val(),type:'password'}
                     }).done(function (data) {
+                        $("#error_empty_password").css("display","none");
                         if(data!=1) {
                             $("#error_wifi_password").show(700);
                             $("#error_wifi_password_confirm").show(700);
@@ -755,9 +847,18 @@ $(document).ready(function() {
                             $("#error_wifi_password_confirm").css("display","none");
                         }
                     });
+                } 
+
+                if(($("#wifi_password").val()=="")&&(wifi_password=="")) {
+                    checked=false;
+                    expand('wifi_interface');       
+                    $("#error_empty_password").show(700);
+                    $("#error_wifi_password").css("display","none");
+                    $("#error_wifi_password_confirm").css("display","none");
+                } else {
+                    $("#error_empty_password").css("display","none");
                 }
 
-               
 
                 if($('#wifi_ip_manual').prop('checked')) {
                     $.ajax({
@@ -1651,37 +1752,7 @@ $(document).ready(function() {
     //Wifi process:
     var check = window.location.pathname.match(/wifi/g);
     if(check) {
-        $.ajax( {
-            type: "GET",
-            url: "http://"+wifi_ip+"/info.xml",
-            dataType: "xml",
-            timeout: 3000,
-            success: function(xml) {        
-                var myPlug = [];
-                $(xml).find('plug_state').each( function(){         
-                    var num = $(this).find('num').text();       
-                    var value = $(this).find('value').text();       
-                    myPlug.push({
-                        num: num, 
-                        value: value
-                    });
-                });
-
-                $.each(myPlug, function( index, value ) {
-                   if((value['num']!="")&&(value['value']!="")) {
-                        if(value['value']!=0) {
-                            $("#plug_state_on"+value['num']).show();
-                        } else {
-                            $("#plug_state_off"+value['num']).show();
-                        }
-                        $("#plug_state_unk"+value['num']).css("display","none");
-                   } 
-                });
-           },
-           error: function() {
-            alert("wrong configuration");
-           }
-        });            
+        wifi_process();
     }
             
 
