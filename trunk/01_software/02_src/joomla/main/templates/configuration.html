@@ -524,7 +524,7 @@ $(document).ready(function(){
       <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_PASSWORD'); ?>:</td>
       <td class="conf-alarm-field"><input type="text" size="15" name="wifi_password" id="wifi_password" value="" /><input type="text" size="15" name="current_wifi_password" id="current_wifi_password" value="<?php echo $wifi_password; ?>" style="display:none" /></td>
       <td><img src='/cultibox/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_CURRENT_PWD'); ?>" id="eyes"></td>
-      <td><div id="error_wifi_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div></td>
+      <td><div id="error_wifi_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div><div id="error_empty_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_EMPTY_PASSWORD'); ?></div></td>
    </tr>
    <tr>
       <td class="conf-marge"></td>

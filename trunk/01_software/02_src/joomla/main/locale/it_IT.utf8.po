@@ -1297,6 +1297,9 @@ msgstr "Export d'un programme"
 msgid "VIEW_PLUGS_STATE"
 msgstr "État actuel de vos prises"
 
+msgid "VIEW_SENSOR_STATE"
+msgstr "État actuel de vos capteurs"
+
 msgid "PLUG_NUMBER"
 msgstr "Prise numéro"
 
@@ -1309,6 +1312,29 @@ msgstr "La prise est actuellement en marche"
 msgid "PLUG_OFF"
 msgstr "La prise est actuellement arrêtée"
 
+msgid "SHORT_ELEMENT_TYPE"
+msgstr "Type d'élément branché"
+
+msgid "SHORT_PLUG_TYPE"
+msgstr "Type de prise"
+
+msgid "SENSOR_TYPE"
+msgstr "Type de capteur"
+
+msgid "NA"
+msgstr "N/A"
+
+msgid "SENSOR_TEMPHUMI"
+msgstr "température et humidité"
+
+msgid "SENSOR_T_WATER"
+msgstr "température immergeable"
+
+msgid "SENSOR_LEVEL_W"
+msgstr "niveau d'eau"
+
+msgid "SENSOR_VALUE"
+msgstr "Dernière valeur enregistrée"
 
 
 # For the footer:
@@ -1532,6 +1558,9 @@ msgstr "Erreur durant l'écriture des fichiers de configuration du Wifi sur la c
 
 msgid "ERROR_WIFI_IP"
 msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
+
+msgid "ERROR_EMPTY_PASSWORD"
+msgstr "Le mot de passe ne peut pas être vide"
 
 
 # For the informations part:

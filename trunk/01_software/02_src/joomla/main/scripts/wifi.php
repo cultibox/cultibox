@@ -39,9 +39,35 @@ $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 $wifi_ip=get_configuration("WIFI_IP",$main_error);
 
 if((!isset($wifi_ip))||(empty($wifi_ip))) {
-   $wifi_ip="192.168.0.200";
+   $wifi_ip="000.000.000.000";
 }
 
+
+$type_sensor[]=__('NA','raw');
+$type_sensor[]=__('NA','raw');
+$type_sensor[]=__('SENSOR_TEMPHUMI','raw');
+$type_sensor[]=__('SENSOR_T_WATER','raw');
+$type_sensor[]=__('NA','raw');
+$type_sensor[]=__('SENSOR_LEVEL_W','raw');
+$type_sensor[]=__('SENSOR_LEVEL_W','raw');
+
+
+
+
+
+//Set plug type translation:
+for($i=0; $i<count($plugs_infos);$i++) {
+    switch($plugs_infos[$i]['PLUG_TYPE']) {
+        case 'other': $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
+        case 'ventilator': $plugs_infos[$i]['translate']=__('PLUG_VENTILATOR'); break;
+        case 'heating': $plugs_infos[$i]['translate']=__('PLUG_HEATING'); break;
+        case 'pump': $plugs_infos[$i]['translate']=__('PLUG_PUMP'); break;
+        case 'lamp': $plugs_infos[$i]['translate']=__('PLUG_LAMP'); break;
+        case 'humidifier': $plugs_infos[$i]['translate']=__('PLUG_HUMIDIFIER'); break;
+        case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DEHUMIDIFIER'); break;
+        default: $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
+    }
+}
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
