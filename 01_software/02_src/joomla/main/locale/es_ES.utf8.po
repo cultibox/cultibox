@@ -1564,6 +1564,9 @@ msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
 msgid "ERROR_EMPTY_PASSWORD"
 msgstr "Le mot de passe ne peut pas être vide"
 
+msgid "ERROR_ACCESS_INFO_WIFI"
+msgstr "Impossible d'accèder au module Wifi, verifiez-votre configuration"
+
 
 # For the informations part:
 msgid "CLOSE_CONFIRM"

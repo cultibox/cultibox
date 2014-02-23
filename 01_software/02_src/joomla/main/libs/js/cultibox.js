@@ -300,11 +300,11 @@ loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
 
 
 //Wifi process:
-wifi_process = function() {
+wifi_process = function(time,ip) {
         setTimeout(function(){
         $.ajax({
             type: "GET",
-            url: "http://localhost:6891/cultibox/main/xml/info.xml",
+            url: "http://"+ip+"/info.xml",
             dataType: "xml",
             timeout: 3000,
             success: function(xml) {
@@ -380,10 +380,10 @@ wifi_process = function() {
                 });
             },
                 complete: function() {
-                    wifi_process();
+                    wifi_process(10000,ip);
                 }
             });
-            }, 1000);
+            }, time);
 }
 
 
@@ -1752,7 +1752,7 @@ $(document).ready(function() {
     //Wifi process:
     var check = window.location.pathname.match(/wifi/g);
     if(check) {
-        wifi_process();
+        wifi_process(300,wifi_ip);
     }
             
 

@@ -25,8 +25,6 @@ $_SESSION['LANG'] = get_current_lang();
 $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 __('LANG');
 
-
-
 // ================= VARIABLES ================= //
 $informations = Array();
 $update=get_configuration("CHECK_UPDATE",$main_error);
@@ -40,6 +38,12 @@ $wifi_ip=get_configuration("WIFI_IP",$main_error);
 
 if((!isset($wifi_ip))||(empty($wifi_ip))) {
    $wifi_ip="000.000.000.000";
+   $main_erro[]=__('ERROR_ACCESS_INFO_WIFI');
+} else {
+   $wifi_file=@file_get_contents('http://'.$wifi_ip.'/info.xml'); 
+   if(!$wifi_file) {
+        $main_error[]=__('ERROR_ACCESS_INFO_WIFI');
+   }
 }
 
 
