@@ -33,6 +33,7 @@ Ce paragraphe concerne toutes les futurs évolutions.
  * Création d'un système de logs et d'envoi de mail en cas d'erreur pour les installateurs
  * Calcul de la durée de vie d'une lampe HPS (Issue 732) 
  * Calcul du temps de chargement des logs
+ * Enregistrer les développeurs de l'application Mac os X chez Apple
 
 == Site Web ==
  * Création d'un modèle 3D à intégrer dans le site Web (http://www.google.com/webdesigner/)
