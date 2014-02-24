@@ -39,6 +39,9 @@
     nb_plugs=<?php echo(json_encode($nb_plugs)); ?>;
     wifi_ip=<?php echo(json_encode($wifi_ip)); ?>;
     type_sensor=<?php echo(json_encode($type_sensor)); ?>;
+    addr_1000=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT'])); ?>;
+    addr_3500=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT_3500W'])); ?>;
+    translate=<?php echo(json_encode($translate)); ?>;
 </script>
 
 <br />
@@ -57,7 +60,7 @@
                 <td>
                 <p class="title_subconf"><b><?php echo __('SENSOR')." ".($i+1).":"; ?></b></p>
                 <?php echo __('SENSOR_TYPE').": <b></b>"; ?><p class="p_center"><label id="type_sensor<?php echo $i+1; ?>"><b><?php echo $type_sensor[0]; ?></b></label></p>
-                <?php echo __('SENSOR_VALUE').": <b></b>"; ?><p class="p_center"><label id="sensor_value<?php echo $i+1; ?>"><b>N/A</b></label><p/><br />
+                <?php echo __('SENSOR_VALUE').": <b></b>"; ?><p class="p_center"><label id="sensor_date<?php echo $i+1; ?>"></label><br /><label id="sensor_value<?php echo $i+1; ?>"><b><?php echo __('NA'); ?></b></label><p/><br />
                 <hr />
                 <br />
                 </td>
@@ -88,8 +91,7 @@
                 <p class="title_subconf"><b><?php echo __('PLUG_NUMBER')." ".$plugs_infos[$i]['id'].":"; ?></b></p>
                 <?php echo __('NAME_PLUG').": <b>".$plugs_infos[$i]['PLUG_NAME']."</b>"; ?><br />
                 <?php echo __('SHORT_ELEMENT_TYPE').": <b>".$plugs_infos[$i]['translate']."</b>"; ?><br />
-                <?php echo __('SHORT_PLUG_TYPE').": "; ?>
-                <?php if($plugs_infos[$i]['PLUG_POWER_MAX']<10) { echo "<b>".__('DIMMER')."</b>"; } else { echo "<b>".$plugs_infos[$i]['PLUG_POWER_MAX']."W</b>"; } ?><br />
+                <?php echo __('SHORT_PLUG_TYPE').": "; ?><label id="plug_type<?php echo $i+1;?>"><b><?php echo __('NA'); ?></b></label><br />
                 <?php echo __('STATE_PLUG').": "; ?> 
                 <div id="plug_state_on<?php echo $i+1;?>" style="display:none; text-align: center"><img src="main/libs/img/light_on.png" alt="<?php echo __('PLUG_ON'); ?>"  title="<?php echo __('PLUG_ON'); ?>" /></div>
                 <div id="plug_state_off<?php echo $i+1;?>" style="display:none; text-align: center"><img src="main/libs/img/light_off.png" alt="<?php echo __('PLUG_OFF'); ?>"  title="<?php echo __('PLUG_OFF'); ?>" /></div>
@@ -101,7 +103,7 @@
         </tr>
         </table>
     </td>
-    <td class="wifi-plug-marge"></td>    
+    <td class="wifi-plug-marge"></td>
 </tr>
 </table>
 <br />

@@ -300,6 +300,19 @@ loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
 
 
 //Wifi process:
+get_plug_type = function(addr) {
+    if(addr<0) return 4;
+
+    if(jQuery.inArray(addr,addr_1000)!=-1) {
+        return 1;
+    } else if(jQuery.inArray(addr,addr_3500)!=-1) {
+        return 2;
+    } else if((addr>=100)&&(addr<=115)) {
+        return 3;
+    } 
+    return 4;
+}
+
 wifi_process = function(time,ip) {
         setTimeout(function(){
         $.ajax({
@@ -312,9 +325,11 @@ wifi_process = function(time,ip) {
                 $(xml).find('plug_state').each( function(){
                     var num=$(this).find('num').text();
                     var value=$(this).find('value').text();
+                    var plug_address=$(this).find('plug_address').text();
                     myPlug.push({
                         num: num,
-                        value: value
+                        value: value,
+                        plug_address: plug_address
                     });
                 });
 
@@ -326,6 +341,24 @@ wifi_process = function(time,ip) {
                             $("#plug_state_off"+value['num']).show();
                         }
                         $("#plug_state_unk"+value['num']).css("display","none");
+
+                        if(value['plug_address']!="") {
+                            var plug_addr=get_plug_type(value['plug_address']);
+                            //1 = 1000W:
+                            if(plug_addr==1) {
+                               $("#plug_type"+value['num']).text("1000W");
+                            //2 = 3500W;
+                            } else if(plug_addr==2) {
+                                $("#plug_type"+value['num']).text("3500W");
+                            //3 = DIMMER;
+                            } else if(plug_addr==3) {
+                                $("#plug_type"+value['num']).text(translate[1]);
+                            //Unknown:
+                            } else {
+                                $("#plug_type"+value['num']).text(translate[0]);
+                            }
+                            $("#plug_type"+value['num']).css("font-weight","bold");
+                        }
                    }
                 });
 
@@ -335,11 +368,13 @@ wifi_process = function(time,ip) {
                     var type=$(this).find('type').text();
                     var value1=$(this).find('value1').text();
                     var value2=$(this).find('value2').text();
+                    var date=$(this).find('date').text();
                     mySensor.push({
                         num: num,
                         type: type,
                         value1: value1,
-                        value2: value2
+                        value2: value2,
+                        date: date
                     });
                 });
 
@@ -372,8 +407,14 @@ wifi_process = function(time,ip) {
                                     $("#sensor_value"+value['num']).text("N/A");
                                 }
                             }
+
+                            if((value['date']!="")&&(value['date']!="0")) {
+                                $("#sensor_date"+value['num']).text("20"+value['date']);
+                                $("#sensor_date"+value['num']).css('font-weight', 'bold');
+                            }
                          } else {
                              $("#sensor_value"+value['num']).text("N/A");
+                             $("#sensor_date"+value['num']).text("");
                          }
                          $("#sensor_value"+value['num']).css('font-weight', 'bold');
                    }
