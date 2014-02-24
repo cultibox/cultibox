@@ -56,7 +56,9 @@ $type_sensor[]=__('SENSOR_LEVEL_W','raw');
 $type_sensor[]=__('SENSOR_LEVEL_W','raw');
 
 
-
+//Translate for Jquery:
+$translate[]=__('NA');
+$translate[]=__('DIMMER');
 
 
 //Set plug type translation:
