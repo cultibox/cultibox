@@ -1567,6 +1567,12 @@ msgstr "Le mot de passe ne peut pas être vide"
 msgid "ERROR_ACCESS_INFO_WIFI"
 msgstr "Impossible d'accèder au module Wifi, verifiez-votre configuration"
 
+msgid "ERROR_WEP_KEY_TYPE"
+msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombreus (0-9) et faire 5, 13 ou 29 caractères de long"
+
+msgid "ERROR_WPA_KEY_TYPE"
+msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8 et 63 caractères"
+
 
 # For the informations part:
 msgid "CLOSE_CONFIRM"
