@@ -2428,16 +2428,9 @@ EOF;
    $data[]="SSID:".$res['WIFI_SSID'];
    $data[]="CLE:".$res['WIFI_KEY_TYPE'];
    $data[]="PWD:".$res['WIFI_PASSWORD'];
-   if($res['WIFI_IP_MANUAL']) {
-       $data[]="IP:".$res['WIFI_IP'];
-   } else {
-       foreach(explode("\n",$ip) as $addr) {
-           if(strcmp(trim($addr),"")!=0) {
-               $data[]="IP:".trim($addr);
-            }
-       }
-       $data[]="SET:1";
-   }
+   $data[]="IPC:".$res['WIFI_IP'];
+   $data[]="IPS:".trim($ip);
+
    return $data;
 }
 /// }}}
