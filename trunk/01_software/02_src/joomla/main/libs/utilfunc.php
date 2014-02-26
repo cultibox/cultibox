@@ -2159,12 +2159,12 @@ function get_ip_address() {
     $os=php_uname('s');
     switch($os) {
         case 'Linux':
-            $ip=`ifconfig | awk -F'[: ]' '/inet ad/ {print $13}'|grep -v "127.0.0.1"`;
+            $ip=`ifconfig | awk -F'[: ]' '/inet ad/ {print $13}'|grep -v "127.0.0.1"|head -1`;
             break;
 
         case 'Mac':
         case 'Darwin':
-            $ip=`ifconfig | awk -F'[: ]' '/inet / {print $2}'|grep -v "127.0.0.1"`;
+            $ip=`ifconfig | awk -F'[: ]' '/inet / {print $2}'|grep -v "127.0.0.1"|head -1`;
             break;
 
         case 'Windows NT':
