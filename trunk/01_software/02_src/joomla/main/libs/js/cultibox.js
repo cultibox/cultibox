@@ -881,11 +881,56 @@ $(document).ready(function() {
                         if(data!=1) {
                             $("#error_wifi_password").show(700);
                             $("#error_wifi_password_confirm").show(700);
+                            $("#error_password_wep").css("display","none");
+                            $("#error_password_wpa").css("display","none");
                             checked=false;
                             expand('wifi_interface');
                         } else {
                             $("#error_wifi_password").css("display","none");
                             $("#error_wifi_password_confirm").css("display","none");
+
+                            var type_password="";
+                            switch ($("#wifi_key_type").val()) {
+                                case 'NONE': type_password="password_none";
+                                        break;
+                                case 'WEP': type_password="password_wep"
+                                        break;
+                                case 'WPA': type_password="password_wpa";
+                                        break;
+                                case 'WPA2': type_password="password_wpa";
+                                        break;
+                                case 'WPA-AUTO': type_password="password_wpa";
+                                        break;
+                                default: type_password="";
+                            }
+                            
+                            $.ajax({
+                                cache: false,
+                                async: false,
+                                url: "../../main/modules/external/check_value.php",
+                                data: {value:$("#wifi_password").val(),type:type_password}
+                            }).done(function (data) {
+                                if(data!=1)  {
+                                    checked=false;
+                                    expand('wifi_interface');
+                                    switch (type_password) {
+                                        case 'password_wep': 
+                                                $("#error_password_wep").show(700);
+                                                $("#error_password_wpa").css("display","none");
+                                                break;
+                                        case 'password_wpa': 
+                                                $("#error_password_wep").css("display","none");
+                                                $("#error_password_wpa").show(700);
+                                                break;
+                                        default: 
+                                                $("#error_password_wep").css("display","none")
+                                                $("#error_password_wpa").css("display","none");
+                                    }
+                                } else {
+                                    $("#error_password_wep").css("display","none");
+                                    $("#error_password_wpa").css("display","none");
+                                }
+                            });
                         }
                     });
                 } 

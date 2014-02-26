@@ -417,7 +417,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             $error_copy=true;
         }
 
-        $wifi_conf=create_wificonf_from_database($main_error);
+        $wifi_conf=create_wificonf_from_database($main_error,get_ip_address());
         if(!compare_wificonf($wifi_conf,$sd_card)) {
             $conf_uptodate=false;
             if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {

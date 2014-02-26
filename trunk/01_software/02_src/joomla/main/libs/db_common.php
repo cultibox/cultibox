@@ -2399,8 +2399,9 @@ EOF;
 /// {{{ create_wificonf_from_database()
 // ROLE read wifi configuration from the database and format its to be writen into a sd card
 // IN $out        error or warning message
+//    $ip         ip adresses
 // RET a string containing datas
-function create_wificonf_from_database(&$out) {
+function create_wificonf_from_database(&$out,$ip="") {
    $data=array();
    $sql = <<<EOF
 SELECT `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD`, `WIFI_IP`, `WIFI_IP_MANUAL` FROM `configuration` WHERE `id` = 1;
@@ -2428,10 +2429,14 @@ EOF;
    $data[]="CLE:".$res['WIFI_KEY_TYPE'];
    $data[]="PWD:".$res['WIFI_PASSWORD'];
    if($res['WIFI_IP_MANUAL']) {
-    $data[]="IP:".$res['WIFI_IP'];
+       $data[]="IP:".$res['WIFI_IP'];
    } else {
-    $data[]="IP:".$_SERVER['SERVER_ADDR'];
-    $data[]="SET:1";
+       foreach(explode("\n",$ip) as $addr) {
+           if(strcmp(trim($addr),"")!=0) {
+               $data[]="IP:".trim($addr);
+            }
+       }
+       $data[]="SET:1";
    }
    return $data;
 }

@@ -131,6 +131,26 @@ switch($type) {
     case 'ip':
             if(!filter_var($value, FILTER_VALIDATE_IP)) echo "error"; 
             break;
+    case 'password_none':
+            break;
+    case 'password_wpa':
+            if((strlen($value)>=8)&&(strlen($value)<=63)) {
+                if(!ctype_alnum($value)) {
+                    echo "error";
+                }
+            } else {
+                echo "error";
+            }
+            break;
+    case 'password_wep':
+            if((strlen($value)==5)||(strlen($value)==13)||(strlen($value)==29)) {
+                if(!ctype_digit($value)) { 
+                    echo "error";
+                }
+            } else {
+                echo "error";
+            }
+            break;
 }
 echo "1";
 
