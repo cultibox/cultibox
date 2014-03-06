@@ -42,11 +42,11 @@ Attention à ne jamais pulvériser de l'eau sur le capteur. Les valeurs remonté
 
 == Introduction == 
 
-L'atmosphère contient normallement de la vapeur d'eau et un mélange de gaz. Un air complétement sec est la combinaison d'environ 78,09% d'azote (N2), 20,95% d'oxygène (O2), 0,93% d'argon (Ar), 0,034% de CO² ainsi que des traces d'autres éléments.
+L'atmosphère contient normalement de la vapeur d'eau et un mélange de gaz. Un air complétement sec est la combinaison d'environ 78,09% d'azote (N2), 20,95% d'oxygène (O2), 0,93% d'argon (Ar), 0,034% de CO² ainsi que des traces d'autres éléments.
 La quantité de vapeur d'eau présente dans l'air dépend de la disponibilité d'eau liquide (ou de glace), de la température et de la pression. Cette quantité de vapeur peut varier de presque 0 à un point appelé "Point de rosée".
 La vapeur d'eau entre dans l'air par évaporation à cause de la pression de vapeur présente dans l'eau ou dans la glace.
 
-== Comment est-ce que l'humlidité est quantifiée ==
+== Comment est-ce que l’humidité est quantifiée ==
 
 L'humidité représente la quantité de vapeur d'eau présente dans l'air. Elle peut être quantifié de différente façon.
 
