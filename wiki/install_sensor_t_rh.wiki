@@ -4,6 +4,9 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
+
+http://cultibox.googlecode.com/svn/trunk/04_website/images/capteur.png
+
 La Cultibox est capable d'avoir jusqu'à 4 capteurs de température et d'humidité branchés.
 
 Le capteur permet de mesurer en temps réel la température et l'humidité.
