@@ -35,7 +35,45 @@ Pour obtenir la meilleur précision possible avec le capteur, il est nécessaire
 
 Attention à ne jamais pulvériser de l'eau sur le capteur. Les valeurs remontées pourraient être biaisées pendant plusieurs jours.
 
-= Relation entre l'humidité et la température =
+= Notions autour de l'humidité =
+
+== Introduction == 
+
+L'atmosphère contient normallement de la vapeur d'eau et un mélange de gaz. Un air complétement sec est la combinaison d'environ 78,09% d'azote (N2), 20,95% d'oxygène (O2), 0,93% d'argon (Ar), 0,034% de CO² ainsi que des traces d'autres éléments.
+La quantité de vapeur d'eau présente dans l'air dépend de la disponibilité d'eau liquide (ou de glace), de la température et de la pression. Cette quantité de vapeur peut varier de presque 0 à un point appelé "Point de rosée".
+La vapeur d'eau entre dans l'air par évaporation à cause de la pression de vapeur présente dans l'eau ou dans la glace.
+
+== Comment est-ce que l'humlidité est quantifiée ==
+
+L'humidité représente la quantité de vapeur d'eau présente dans l'air. Elle peut être quantifié de différente façon.
+
+=== Humidité absolue ===
+
+L'humidité absolue utilisé dans le contexte des applications météorologique, parfois appelé "humidité volumétrique", est définie par la masse de vapeur d'eau dissous dans un volume d'air à une température et une pression définie.
+Les unités typique sont le g/m3 ou le kg/m3.
+
+=== Rapport de mélange ===
+
+L'humidité absolue utilisé dans le contexte de la thermodynamique, est définie comme le ratio entre la masse de vapeur d'eau et la masse de l'air sec. 
+L'unité typique est kg/kg.
+
+=== Humidité spécifique ===
+
+L'humidité spécifique est définie comme le rapport de la masse d'eau dans l'air sur la masse d'air humide.
+Ce taux d'humidité reste constant même avec un changement de température ou de pression.
+La mesure de l'humidité spécifique est difficile et doit en général être effectuée par un laboratoire.
+
+=== Humidité relative ===
+
+C'est l'humidité mesurée par notre capteur. C'est une mesure du rapport entre le contenu en vapeur d'eau de l'air et sa capacité maximale à en contenir dans ces conditions. Cette valeur change si on fait varier la température ou la pression de l'air.
+Elle est aussi souvent appelée "degré hygrométrique".
+
+== point de rosée == 
+
+ Le point de rosée : Il correspond à la quantité maximal de vapeur d'eau qui peut être présente dans l'air. Lorsque cette température est atteinte la vapeur d'eau présente dans l'air condense.
+ 
+
+== Relation entre l'humidité relative et la température ==
 
 Le taux d'humidité indiqué par le capteur est une humidité relative.
 
