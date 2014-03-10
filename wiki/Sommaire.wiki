@@ -2,7 +2,7 @@
 
   * [quick_guide Guide rapide]
   * [Introduction Introduction]
-    * [general_caution Règle de sécurité]
+    * [general_caution Règles de sécurité]
     * [contents Contenu du paquet]
     * [sav Service après vente]
     * [recyclage Recyclage]
