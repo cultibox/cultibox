@@ -4,7 +4,7 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-Le menu logs permet de visualiser l'évolution de la température et de l'humidité de chacun des capteurs.
+Le menu *logs* permet de visualiser l'évolution de la température et de l'humidité de chacun des capteurs.
 Un seul point par tranche de 20 minutes est affiché.
 
 = Calendrier =
@@ -21,8 +21,8 @@ Une fois le jour sélectionné, la courbe de température du premier capteur s'a
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_logs.png
 
-En appuyant sur les flèches gauche et droite, vous pouvez faire défiler un curseur. La valeur des données climatique à la valeur de ce curseur s'affiche sur le bas de l'écran.
+En appuyant sur les flèches gauche et droite, vous pouvez faire défiler un curseur. La valeur des données climatiques à la valeur de ce curseur s'affiche sur le bas de l'écran.
 
 En appuyant sur les touches haut/bas, vous faites défiler les capteurs.
 
-En appuyant sur la touche centrale vous quitter ce menu.
+En appuyant sur la touche centrale vous quittez ce menu.
