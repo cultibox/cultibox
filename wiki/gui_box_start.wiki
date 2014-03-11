@@ -1,16 +1,16 @@
 #summary Démarrage
 
 = Introduction =
-Lors du démarrage, la Cultibox réalise une série d'opération qui peuvent prendre jusqu'à une minute.
+Lors du démarrage, la Cultibox réalise une série d'opérations qui peuvent prendre jusqu'à une minute.
 
 = Mise à jour de l'heure =
-Si c'est le premier branchement de la Cultibox, n'oublier pas de retirer le film plastique qui protège la pile.
+Si c'est le premier branchement de la Cultibox, n'oubliez pas de retirer le film plastique qui protège la pile.
 La Cultibox détecte que l'heure n'est pas à jour et propose à l'utilisateur d'entrer la date et l'heure.
-Une fois la date et l'heure correctement configurés, cette page n'est plus accessible au démarrage. Vous pouvez toujours modifier ces informations. Voir la page d'aide [gui_box_menu_param_culti_hour Horloge].
+Une fois la date et l'heure correctement configurées, cette page n'est plus accessible au démarrage. Vous pouvez toujours modifier ces informations. Voir la page d'aide [gui_box_menu_param_culti_hour Horloge].
 
 = Phase de démarrage =
-La Cultibox réalise plusieurs opération au démarrage:
- # vérification de la présence et du fonctionnement de la carte SD
+La Cultibox réalise plusieurs opérations au démarrage:
+ # Vérification de la présence et du fonctionnement de la carte SD
  # Vérification du firmware
  # Connexion à l'émetteur et vérification du firmware de l'émetteur
  # Connexion à l'horloge temps réél
@@ -19,8 +19,8 @@ La Cultibox réalise plusieurs opération au démarrage:
 
 == Vérification de la carte SD ==
 C'est la première opération réalisée par la Cultibox. Si tout est OK, elle passe à l'étape suivante. Si ce n'est pas le cas, elle affiche un message correspondant au problème rencontré:
- * "No SD Card" : Il n'y a pas de carte SD présente dans le lecteur. Ou la carte est mâle insérée. Retirer la carte SD, débrancher la Cultibox, insérer correctement la carte SD puis rebrancher.
- * "SD Not Ready" : Une carte à bien été détecté mais il y a un problème lors de l'initialisation. Etes vous sur d'insérer la bonne carte SD? Retirer la carte SD, débrancher la Cultibox, insérer correctement la carte SD puis rebrancher.
+ * "No SD Card" : Il n'y a pas de carte SD présente dans le lecteur. Ou la carte est mal insérée. Retirez la carte SD, débranchez la Cultibox, insérez correctement la carte SD puis rebranchez.
+ * "SD Not Ready" : Une carte a bien été détecté mais il y a un problème lors de l'initialisation. Êtes-vous sur d'insérer la bonne carte SD? Retirez la carte SD, débranchez la Cultibox, insérez correctement la carte SD puis rebranchez.
  * "Disk Error" : Voir ci-dessus
  * "No Go on Idle" : Voir ci-dessus
  * "No File System" : Voir ci-dessus
