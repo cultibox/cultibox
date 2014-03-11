@@ -17,7 +17,7 @@ http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_pack.png
 
 = Mise en place =
 
- * Décoller le film plastique présent sous chaque scratch :
+ * Décollez le film plastique présent sous chaque scratch :
 
 http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_install_1.png
 
@@ -25,15 +25,15 @@ http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_install_2.png
 
 http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_install_3.png
 
- * Installer votre capteur dans la cuve. Seule la partie graduée doit pouvoir être immergée.
- * Appuyer légèrement à chaque endroit ou est présent du scratch, de façon a bien coller votre capteur:
+ * Installez votre capteur dans la cuve. Seule la partie graduée doit pouvoir être immergée.
+ * Appuyez légèrement à chaque endroit ou est présent le scratch, de façon a bien coller votre capteur:
  
 http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_install_4.png
 
 http://cultibox.googlecode.com/svn/wiki/img/capteur_niveau_eau_install_5.png
  
- * Débrancher votre Cultibox
- * Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.
- * Brancher votre Cultibox
+ * Débranchez votre Cultibox
+ * Connectez le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, branchez le câble sur le port correspondant.
+ * Branchez votre Cultibox
 
 La mise en place est terminée.
