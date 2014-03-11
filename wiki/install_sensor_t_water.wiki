@@ -22,8 +22,8 @@ Le pack comprend :
  
 = Mise en place =
 
- # Débrancher votre Cultibox
- # Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.
- # Brancher votre Cultibox
+ # Débranchez votre Cultibox
+ # Connectez le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, branchez le câble sur le port correspondant.
+ # Branchez votre Cultibox
 
 La mise en place est terminée.
