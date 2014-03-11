@@ -45,7 +45,7 @@ La vapeur d'eau entre dans l'air par évaporation à cause de la pression de vap
 
 == Comment est-ce que l’humidité est quantifiée ==
 
-L'humidité représente la quantité de vapeur d'eau présente dans l'air. Elle peut être quantifié de différente façon.
+L'humidité représente la quantité de vapeur d'eau présente dans l'air. Elle peut être quantifié de différentes façons.
 
 === Humidité absolue ===
 
@@ -54,7 +54,7 @@ Les unités typique sont le g/m3 ou le kg/m3.
 
 === Rapport de mélange ===
 
-L'humidité absolue utilisé dans le contexte de la thermodynamique, est définie comme le ratio entre la masse de vapeur d'eau et la masse de l'air sec. 
+L'humidité absolue utilisée dans le contexte de la thermodynamique, est définie comme le ratio entre la masse de vapeur d'eau et la masse de l'air sec. 
 L'unité typique est kg/kg.
 
 === Humidité spécifique ===
@@ -68,9 +68,9 @@ La mesure de l'humidité spécifique est difficile et doit en général être ef
 C'est l'humidité mesurée par notre capteur. C'est une mesure du rapport entre le contenu en vapeur d'eau de l'air et sa capacité maximale à en contenir dans ces conditions. Cette valeur change si on fait varier la température ou la pression de l'air.
 Elle est aussi souvent appelée "degré hygrométrique".
 
-== point de rosée == 
+== Point de rosée == 
 
- Le point de rosée : Il correspond à la quantité maximal de vapeur d'eau qui peut être présente dans l'air. Lorsque cette température est atteinte la vapeur d'eau présente dans l'air condense.
+Le point de rosée : Il correspond à la quantité maximal de vapeur d'eau qui peut être présente dans l'air. Lorsque cette température est atteinte la vapeur d'eau présente dans l'air condense.
  
 
 == Relation entre l'humidité relative et la température ==
@@ -82,12 +82,12 @@ Cette valeur va de 0% à 100%.
 En fonction de cette valeur l'air est considéré comme :
  * Sec si la valeur est inférieur à 35%
  * Moyennement humide si la valeur est comprise entre 35% et 60%
- * Humide si la valeur est supérieur à 60% 
+ * Humide si la valeur est supérieure à 60% 
 
-Cette valeur est calculé grâce à deux paramètres : la température ambiante et la quantité d'eau présente dans l'air. En fonction de ces deux paramètres et en utilisant le diagramme () ci dessous, on obtient le taux d'humidité relative :
+Cette valeur est calculée grâce à deux paramètres : la température ambiante et la quantité d'eau présente dans l'air. En fonction de ces deux paramètres et en utilisant le diagramme ci dessous, on obtient le taux d'humidité relative :
 
 http://cultibox.googlecode.com/svn/wiki/img/PsychrometricChart-SeaLevel-SI.jpg
 
 Quelques remarques concernant le taux d'humidité :
  * Si la température d'un environnement augmente brutalement (par exemple à l'allumage d'une lampe HPS), le taux d'humidité va baisser rapidement. Par exemple : la température de l'espace de culture est de 20°C et le taux d'humidité est de 30%. En lisant le graphique, on se rend compte qu'il y a 0,004 grammes d'eau par grammes d'air. La température augmente rapidement à 30°C. La quantité d'eau présente dans l'air est toujours la même. En observant le graphique on peut voir que l'humidité relative sera maintenant d'environ 18%.
- * Écart entre deux capteurs. Soit deux capteurs présent dans le même espace de culture mais situés à des endroits différents donnent des températures différentes. La quantité d'eau présente dans l'air de l'espace de culture est la même pour les deux capteurs, mais le taux d'humidité annoncé sera très différent. Par exemple, considérons un espace dont l'air contient 0,01 grammes d'eau par grammes d'air. Si un capteur donne une température de 20°C alors le taux d'humidité sera de 70%. Si un deuxième capteur donne une température de 25°C alors l'humidité relative sera de 50%.
+ * Concernant l'écart entre deux capteurs (exemple de deux capteurs présents dans le même espace de culture mais situés à des endroits différents donnant des valeurs différentes). La quantité d'eau présente dans l'air de l'espace de culture est la même pour les deux capteurs, mais le taux d'humidité annoncé sera très différent. Par exemple, considérons un espace dont l'air contient 0,01 grammes d'eau par gramme d'air. Si un capteur donne une température de 20°C alors le taux d'humidité sera de 70%. Si un deuxième capteur donne une température de 25°C alors l'humidité relative sera de 50%.
