@@ -72,7 +72,7 @@ Pour une aide plus détaillée, consultez la page suivante : [gui_soft_wizard As
 
  * Insérez la carte SD dans l'ordinateur puis lancez le logiciel.
  * Sur la page d'accueil, un lien apparaît vous guidant vers l'assistant qui vous permettra de configurer facilement le fonctionnement de vos prises.
- * La première étape est la configuration de la première prise. Cette prise permet de piloter des éléments jusqu'à une puissance de 3500W. C'est la seule prise fournie avec le pack de départ qui permet de piloter une lampe HPS ou MH d'une puissance comprise 400W et 600W.
+ * La première étape est la configuration de la première prise. Cette prise permet de piloter des éléments dont la puissance peut aller jusqu'à 3500W. C'est la seule prise fournie avec le pack de départ qui permet de piloter une lampe HPS ou MH d'une puissance comprise 400W et 600W.
  * Sélectionnez l'heure à laquelle la prise doit s'allumer et l'heure à laquelle elle doit s'éteindre.
  * L'assistant vous propose ensuite de configurer la seconde prise. En fonction du type vous aurez différentes possibilités de régulation.
  * Faire de même pour la troisième prise.
