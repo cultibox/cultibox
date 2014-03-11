@@ -42,10 +42,6 @@ Le logiciel s'installe:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_8.png
 
-Pour que le logiciel soit pleinement fonctionnel, il est nécessaire de vider le cache de votre navigateur web:
-
-http://cultibox.googlecode.com/svn/wiki/img/update_windows_9.png
-
 Cliquez sur terminer:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_10.png
@@ -95,10 +91,6 @@ Autorisez l'accès à Apache à votre réseau:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_12.jpg
 
-Pour que le logiciel soit pleinement fonctionnel, il est nécessaire de vider le cache de votre navigateur web:
-
-http://cultibox.googlecode.com/svn/wiki/img/update_windows_9.png
-
 Cliquez sur *Terminer*:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_10.png
@@ -129,4 +121,6 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_win3.png
 Pour désinstaller le logiciel, cliquez sur *Désinstaller Cultibox* présent dans le menu démarrer de Windows et autorisez l'exécution du programme.
 Laissez faire le programme de désintallation pour qu'il supprime tous les composants du logiciel Cultibox.
 
-Note: Si vous avez sauvegardé vos bases à l'aide des outils Cultibox ou que vous avez rajouté manuellement des fichiers, ces derniers ne seront pas supprimés et seront toujours présents dans le répertoire "C:\Cultibox". Il vous faudra les supprimer manuellement.
+*Remarque 1*: Si vous avez rajouté manuellement des fichiers, ces derniers ne seront pas supprimés et seront toujours présents dans le répertoire "C:\Cultibox". Il vous faudra les supprimer manuellement.
+
+*Remarque 2*: Si vous avez utilisé les outils de sauvegarde ou de restauration de vos données, des fichiers seront toujours présents dans votre répertoire utilisateur dans le dossier "cultibox". Il vous faudra les supprimer manuellement.
