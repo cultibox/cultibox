@@ -7,7 +7,7 @@
 
 http://cultibox.googlecode.com/svn/trunk/04_website/images/capteur.png
 
-La Cultibox est capable d'avoir jusqu'à 4 capteurs de température et d'humidité branchés.
+La Cultibox est capable d'avoir jusqu'à quatre capteurs de température et d'humidité branchés.
 
 Le capteur permet de mesurer en temps réel la température et l'humidité.
 
@@ -25,9 +25,7 @@ Le capteur permet de mesurer en temps réel la température et l'humidité.
 
  # Débrancher votre Cultibox
  # Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.
- 
 http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12_2.jpg
- 
  # Brancher votre Cultibox
 
 La mise en place est terminée.
