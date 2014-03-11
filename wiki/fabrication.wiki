@@ -4,27 +4,27 @@
 <wiki:toc max_depth="3" />
 
 = Introduction =
-Notre produit est fabriqué en France. Pour qu'un produit puisse être considéré comme fabriqué en France, il faut qu'au moins 45% de sa valeur "prix de départ d'usine". Mais notre réflexion va plus loin que ce seul critère.
+Notre produit est fabriqué en France. Pour qu'un produit puisse être considéré comme fabriqué en France, il faut que les opérations de montage et, éventuellement, de l'incorporation de pièces originaires représente au moins 45% de la valeur "prix de départ d'usine" de ce dit produit.
 
 Dans ce chapitre, vous retrouverez l'origine des composants du pack Cultibox, ce qui est vraiment fait par nous et ce qui est sous-traité, et dans quelle direction nous souhaitons progresser.
 
 = Ligne de conduite =
 Notre objectif est d'arriver dans un premier temps à une fabrication française, puis locale et enfin en interne dans notre société.
 
-Pour des questions de coûts et de temps, une partie de nos composants sont fabriqués dans le reste du monde. Bien sur, il y aura toujours des éléments qui seront fabriqués ailleurs. Par exemple la carte SD, les câbles ou encre les composants électroniques montés sur les cartes. Mais toutes les opérations d'assemblages, soudure, usinage peuvent être réalisées en interne.
+Pour des questions de coûts et de temps, une partie de nos composants sont fabriqués dans le reste du monde. Bien sur, il y aura toujours des éléments qui seront fabriqués ailleurs. Par exemple la carte SD, les câbles ou encore les composants électroniques montés sur les cartes. Mais toutes les opérations d'assemblages, soudure et usinage peuvent être réalisées en interne.
 
-La prochaine étape de cet objectif, est de réaliser le montage de certaines cartes électroniques en interne. Pour éviter d'exploser les coûts de fabrications, nous avons besoin d'investir dans des machines.
+La prochaine étape de cet objectif, est de réaliser le montage de certaines cartes électroniques en interne. Pour éviter d'exploser les coûts de fabrication, nous avons besoin d'investir dans des machines.
 
 = Origine des composants =
 == Logiciel ==
 Entièrement réalisé dans notre société.
 
 == Cultibox ==
-Les composants de la Cultibox viennent d'un peu partout dans le monde. La carte électronique est conçue en France par nous, puis les composants sont assemblés en chine. Elle revient en France "brute d'assemblage", et nous réalisons toute une batterie de test. Les réparations, remplacements de composants sont réalisés dans notre société.
+Les composants de la Cultibox viennent d'un peu partout dans le monde. La carte électronique est conçue en France par nous, puis les composants sont assemblés en chine. Elle revient en France "brute d'assemblage", et nous réalisons toute une batterie de test. Les réparations/remplacements des composants sont réalisés dans notre société.
 
 Le boitier vient des états-unis (par l'intermédiaire d'un grossiste Français). Ce boitier est ensuite usiné par notre société.
 
-La face imprimée avec les boutons est conçu par nos soins puis réalisé en France.
+La face imprimée avec les boutons est conçue par nos soins puis réalisé en France.
 
 L'assemblage des éléments, et les différents tests lors de la production sont réalisés par nos soins.
 
@@ -34,13 +34,14 @@ La carte électronique ainsi que le boitier sont conçus dans notre société. L
 L'assemblage final et les tests sont réalisés en France dans notre société
 
 == Prises ==
-Les prises sont acheté à des fabricants de France et de Belgique. Mais nous savons bien que les prises sont fabriquées en Chine.
+Les prises sont achetées à des fabricants de France et de Belgique. Mais nous savons bien que les prises sont fabriquées en Chine.
 
 == Accessoires ==
 Les cordons RJ12 sont achetés aux Etats-unis, le câble USB et la carte SD en Chine, l'adaptateur secteur en France.
 
 == Emballage et notice ==
-Conçu par nos soins (notice) et réalisé en France.
+La notice est conçue par nos soins.
+Les emballages sont réalisés en France.
 
 = Liens =
 
