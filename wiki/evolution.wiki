@@ -5,9 +5,9 @@
 
 = Introduction =
 
-Ce paragraphe concerne toutes les futurs évolutions.
+Ce paragraphe concerne toutes les futures évolutions.
 
-= Évolution : Dans les cartons =
+= Évolution : dans les cartons =
 
 == Hard ==
 
@@ -21,18 +21,18 @@ Ce paragraphe concerne toutes les futurs évolutions.
 
 == Soft ==
 
- * Capteur utilisateur : Permettre à l'utilisateur d'ajouter un capteur manuel dont il remplira tout seul les valeurs. Ces valeurs doivent pouvoir être affichées dans l'onglet des logs.
+ * Capteur utilisateur : permettre à l'utilisateur d'ajouter un capteur manuel dont il remplira tout seul les valeurs. Ces valeurs doivent pouvoir être affichées dans l'onglet des logs.
  * Application pour smartphone
  * Comparaison de courbes de capteur relevées
  * Amélioration de l'interface des programmes : suppression de bout du programme en live
  * Ajouter la possibilité de corriger la température en fonction de la pression
- * Programmation au jour (Issue 173)
- * Limite en régulation (Issue 587)
- * Traitement automatique des paiement paypal (Issue 688)
- * Configuration évoluée des prises dans le wizard (Issue 615)
+ * Programmation au jour 
+ * Limite en régulation 
+ * Traitement automatique des paiements paypal 
+ * Configuration évoluée des prises dans le wizard 
  * Création d'outils de niveau 2 dans un nouveau logiciel (Comparaison de logs / jour ou par saison, création des programmes d'engrais, optimisation par rapport à la puissance consommée)
  * Création d'un système de logs et d'envoi de mail en cas d'erreur pour les installateurs
- * Calcul de la durée de vie d'une lampe HPS (Issue 732) 
+ * Calcul de la durée de vie d'une lampe HPS 
  * Calcul du temps de chargement des logs
  * Enregistrer les développeurs de l'application Mac os X chez Apple
 
@@ -40,21 +40,21 @@ Ce paragraphe concerne toutes les futurs évolutions.
  * Création d'un modèle 3D à intégrer dans le site Web (http://www.google.com/webdesigner/)
 
 
-= Évolution : Conception =
+= Évolution : conception =
 
 == Hard ==
 
  * Capteur Humidité du sol
- * Wifi (Issue 321)
+ * Wifi 
  * Prise variateur
 
-= Évolution : En test =
+= Évolution : en test =
 
- * Capteur Niveau d'eau
- * Capteur Température en milieu humide
- * Faire défiler les infos du calendrier sur l'écran de la culti (Issue 673)
+ * Capteur niveau d'eau
+ * Capteur température en milieu humide
+ * Faire défiler les infos du calendrier sur l'écran de la culti
 
-= Évolution : Réalisé =
+= Évolution : réalisé =
 
- * Calendrier avec schéma de culture (Logiciel depuis la version 1.1.36)
+ * Logiciel: calendrier avec schéma de culture (depuis la version 1.1.36)
  
