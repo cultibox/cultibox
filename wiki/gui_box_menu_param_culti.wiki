@@ -10,13 +10,13 @@ http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox.png
 
 = Horloge =
 Ce menu permet de changer l'heure de la Cultibox. 
-Il est a noter que la Cultibox ne change pas d'heure toute seule pour le passage de l'heure d'été à l'heure d'hiver.
+Il est à noter que la Cultibox ne change pas d'heure toute seule pour le passage de l'heure d'été à l'heure d'hiver.
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_hour.png
 
-Pour changer un chiffre : Appuyer sur haut ou bas.
-Pour changer de chiffre à modifier : Appuyer sur gauche ou droite.
-Pour enregistrer l'heure : Appuyer sur le bouton central.
+Pour changer un chiffre : appuyez sur haut ou bas.
+Pour changer de chiffre à modifier : appuyez sur gauche ou droite.
+Pour enregistrer l'heure : appuyez sur le bouton central.
 
 Format de la date : Jour / Mois / Année
 Format de l'heure : Heure : Minute
@@ -24,7 +24,7 @@ Format de l'heure : Heure : Minute
 = Registre =
 
 Ce menu permet de consulter et modifier des paramètres de la Cultibox. 
-Il est a noter que hormis le "Contraste", la plus part de ces paramètres et informations ne sont pas prévu pour les utilisateurs.
+Il est à noter que hormis le "Contraste", la plus part de ces paramètres et informations ne sont pas prévus pour les utilisateurs.
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_reg.png
 
@@ -36,8 +36,8 @@ Sauf pour le contraste, l'utilisateur ne peut pas modifier les paramètres.
 
 Cette valeur permet de modifier le contraste de l'écran de votre Cultibox. Au premier démarrage de la Cultibox, une valeur par défaut est chargée. Votre écran peut donc être un peu sombre ou un peu trop clair au démarrage. 
 Pour modifier le contraste: 
- * Faite défiler l'écran jusqu’à ce que la ligne contraste soit tout en haut.
- * Appuyer sur gauche ou droite pour changer la valeur.
+ * Faites défiler l'écran jusqu’à ce que la ligne contraste soit tout en haut.
+ * Appuyez sur gauche ou droite pour changer la valeur.
 La valeur de contraste est enregistrée dans un fichier (/cnf/cnt) sur la carte SD. Durant le chargement de la configuration, la Cultibox charge votre valeur de contraste et l'applique à l'écran.
 
 * Version firm: *
@@ -54,7 +54,7 @@ Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox met à 
 
 * Log freq: *
 
-Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox enregistre les valeurs envoyé par chacune de ces sondes.
+Cette valeur indique, en secondes, la fréquence à laquelle la Cultibox enregistre les valeurs envoyées par chacune de ses sondes.
 
 * Pwr freq: *
 
@@ -77,7 +77,7 @@ http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_alarme.png
 
 * Value: *
 
-Indique la valeur seuil. C'est la valeur qui sera comparé au capteur pour déterminer si l'alarme doit s'enclencher ou non.
+Indique la valeur seuil. C'est la valeur qui sera comparée au capteur pour déterminer si l'alarme doit s'enclencher ou non.
 
 * Sensor: *
 
@@ -96,14 +96,14 @@ En cliquant sur une prise, on atteint un sous menu qui donne le descriptif compl
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_1.png
 
-La première série d'information indique les données utilisées pour la régulation principale.
+La première série d'informations indique les données utilisées pour la régulation principale.
 
 * Type: *
 
-Indique quel type de régulation est appliquée:
- * N : Aucune
- * T : Régulation en température
- * H : Régulation en humidité
+Indique quel type de régulation est appliqué:
+ * N : aucune
+ * T : régulation en température
+ * H : régulation en humidité
 
 * Sens: *
 
@@ -115,14 +115,14 @@ Indique la tolérance pour cette régulation.
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_2.png
 
-La deuxième série d'information indique les données utilisées pour la régulation secondaire.
+La deuxième série d'informations indique les données utilisées pour la régulation secondaire.
 
 * Type: *
 
 Indique quel type de régulation est appliquée:
- * N : Aucune
- * T : Régulation en température
- * H : Régulation en humidité
+ * N : aucune
+ * T : régulation en température
+ * H : régulation en humidité
 
 * Sens: *
 
@@ -143,13 +143,13 @@ http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_prise_3.png
 
 Indique la tolérance pour cette régulation.
 
-La troisième série d'information permet de savoir comment est calculée la valeur utilisée pour la régulation.
+La troisième série d'informations permet de savoir comment est calculée la valeur utilisée pour la régulation.
 
 * Type: *
 
  * Moyenne : la moyenne des capteurs est utilisée
- * Min : le minimum des capteurs est utilisée
- * Max : le maximum des capteurs est utilisée
+ * Min : le minimum des capteurs est utilisé
+ * Max : le maximum des capteurs est utilisé
 
 * Capteur 1: *
 
