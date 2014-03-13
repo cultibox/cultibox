@@ -29,7 +29,7 @@ Dans cette section vous pouvez:
  * Définir si vous désirez nous envoyer des informations pour aider au développement, les informations envoyées se basent sur l'utilisation de l'interface Web: la version et le nom de votre navigateur, les versions du logiciel et du firmware de votre Cultibox... ceci afin de définir quelles technologies nous devons privilégier lors de notre développement et de facilement déboguer les erreurs découvertes
  * Activer ou non l'utilisation de la régulation secondaire, pour plus d'information se reporter à la section [gui_soft_second_regul Régulation Avancée]
  * Activer ou non l'utilisation des options avancées de régulations. En activant cette option vous rendez accessibles de nouvelles configurations pour les prises et leur régulation comme par exemple la régulation d'une prise sur plusieurs capteurs à partir d'une moyenne, d'un minimum ou d'un maximum. Pour plus d'information se reporter à la section [gui_soft_second_regul Régulation Avancée]
- * Afficher les modules de calcul du coût de cotre installation et de l'historique de vos actions. Si vous décidez d'afficher le module de calcul du coût de votre installation, un nouvel onglet sera disponible dans le menu nommé "Coût" et vous permettant de calculer de manière théorique ou réelle le coût de revient de votre installation. L'affichage de l'historique de vos action, quant à lui, vous permet de visualiser l'historique des changements que vous avez apporté à travers l'interface. Cet onglet sera rendu disponible dans le menu sous le nom de "Hitorique"
+ * Afficher les modules de calcul du coût de cotre installation et de l'historique de vos actions. Si vous décidez d'afficher le module de calcul du coût de votre installation, un nouvel onglet sera disponible dans le menu nommé "Coût" et vous permettant de calculer de manière théorique ou réelle le coût de revient de votre installation. L'affichage de l'historique de vos action, quant à lui, vous permet de visualiser l'historique des changements que vous avez apporté à travers l'interface. Cet onglet sera rendu disponible dans le menu sous le nom de "Historique"
 
 
 == Configuration de la Cultibox ==
@@ -39,9 +39,9 @@ En cliquant sur *Cultibox*, l'onglet change:
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.png
 
 Dans cette section vous pouvez:
- * Définir à quelle fréquence la Cultibox enregistre les conditions climatique
+ * Définir à quelle fréquence la Cultibox enregistre les conditions climatiques
  * Définir à quelle fréquence la Cultibox enregistre l'état des prises
- * Indiquer le nombre de prise de votre système
+ * Indiquer le nombre de prises de votre système
  * Définir la fréquence de mise à jour des prises. Si vous avez d'autres équipements fonctionnant en 433MHz, vous pouvez choisir de ne plus piloter les prises en permanence
  * Définir l'heure de remise à zéro du min/max de tous les capteurs affichés sur l'écran de la Cultibox
 
