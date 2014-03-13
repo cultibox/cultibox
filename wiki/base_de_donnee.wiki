@@ -17,18 +17,19 @@ c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\m
 
 = Table =
 
-La base de donnée est constituée de 9 tables :
+La base de données est constituée de 9 tables :
  * calendar : sauvegarde les données du calendrier
  * configuration : gère les informations de la configuration
  * historic : enregistre l'historique des modifications apportées au logiciel par l'utilisateur
- * informations : donnée concernant la Cultibox et l'ordinateur utilisé
- * logs : toutes les données climatique sont enregistrées dans cette table
- * notes
+ * informations : données concernant la Cultibox et l'ordinateur utilisé
+ * logs : toutes les données climatiques sont enregistrées dans cette table
+ * notes: notes affichées sur l'écran de bienvenu
  * plugs : la configuration des prises est enregistrée dans cette table
- * power : registre enregistrant la puissance consommée des prises
+ * power : registre de la puissance consommée des prises
  * programs : les programmes sont enregistrés dans cette table
+ * sensors: cette table contient le type de vos différents capteurs branchés sur la Cultibox
 
-Pour lister les tables disponible, utiliser la commande :
+Pour lister les tables disponible, utilisez la commande :
 
 {{{
 SHOW TABLES;
@@ -95,6 +96,7 @@ Cette table contient la configuration globale.
 || SHOW_HISTORIC           || varchar(5)   || NO   ||     || False         ||                ||
 || RESET_MINMAX            || varchar(5)   || NO   ||     || 00:00         ||                ||
 
+
 == historic ==
 
 === Introduction ===
@@ -128,7 +130,7 @@ Cette table contient les informations sur la Cultibox et sur l'ordinateur utilis
 
 === Introduction ===
 
-Cette table contient les données climatique.
+Cette table contient les données climatiques.
 
 === Structure ===
 
@@ -143,6 +145,8 @@ Cette table contient les données climatique.
 || type_sensor || int(11)     || NO   ||     || 2       ||       ||
 
 == notes ==
+
+Cette table contient les notes affichées dans l'écran de bienvenu.
 
 Structure : 
 
@@ -212,3 +216,19 @@ Cette table contient les programmes.
 || number     || int(11)      || NO   ||     || 1          ||       ||
 || date_start || varchar(10)  || NO   ||     || 0000-00-00 ||       ||
 || date_end   || varchar(10)  || NO   ||     || 0000-00-00 ||       ||
+|| plug_type  || int(11)      || NO   ||     || 0          ||       ||
+|| type       || int(11)      || NO   ||     || 0          ||       ||
+
+
+== sensors ==
+
+=== Introduction ===
+
+Cette table contient le type des capteurs actuellement branchés sur la Cultibox.
+
+=== Structure ===
+
+|| *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
+|| id    || int(11) || NO   || PRI || NULL    ||       ||
+|| type  || int(5)  || NO   ||     || 0       ||       ||
+
