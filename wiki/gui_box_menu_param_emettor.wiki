@@ -5,7 +5,7 @@
 
 = Introduction =
 
-En arrivant dans le menu, l'écran affiche les choix suivant:
+En arrivant dans le menu, l'écran affiche les choix suivants:
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur.png
 
@@ -16,16 +16,16 @@ Ce menu contient les informations sur les paramètres de l’émetteur :
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur_param.png
 
 Signification des lignes :
- * *Chip* : Doit être 001
- * *Firmw* : Indique la version du firmware
- * *Time* : Heure actuelle dans la Cultibox
- * *Act.0* : Heure du prochain changement d'état des prises
- * *Act.1* : Heure du changement n+1 d'état des prises
- * *Act.2* : Heure du changement n+2 d'état des prises
- * *Act.3* : Heure du changement n+3 d'état des prises
- * *Act.4* : Heure du changement n+4 d'état des prises
- * *Day.Saved* : Numéro du jour actuel
- * *Bootloader* : Est-ce que l'émetteur est dans l'état bootloader
+ * *Chip* : doit être 001
+ * *Firmw* : indique la version du firmware
+ * *Time* : heure actuelle dans la Cultibox
+ * *Act.0* : heure du prochain changement d'état des prises
+ * *Act.1* : heure du changement n+1 d'état des prises
+ * *Act.2* : heure du changement n+2 d'état des prises
+ * *Act.3* : heure du changement n+3 d'état des prises
+ * *Act.4* : heure du changement n+4 d'état des prises
+ * *Day.Saved* : numéro du jour actuel
+ * *Bootloader* : est-ce que l'émetteur est dans l'état bootloader
  
 = Registres Prises =
 
@@ -33,5 +33,5 @@ Ce menu contient l'état de chacune des prises :
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_emetteur_reg_prises.png
 
-Il est possible de modifier l'état d'une des prises. Pour ce faire descendre la sélection jusqu'à ce que la prise sélectionnée soit tout en haut de l'écran. Appuyer sur le bouton "droite" pour mettre en route la prise. Appuyer sur le bouton "gauche" éteindre la prise.
+Il est possible de modifier l'état d'une des prises. Pour ce faire descendre la sélection jusqu'à ce que la prise sélectionnée soit tout en haut de l'écran. Appuyez sur le bouton "droite" pour mettre en route la prise. Appuyez sur le bouton "gauche" pour éteindre la prise.
 
