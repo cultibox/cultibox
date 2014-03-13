@@ -20,8 +20,8 @@ Le menu suivant s'affiche (image non représentative) :
 
 http://cultibox.googlecode.com/svn/wiki/img/lcd_events.png
 
-En appuyant sur haut / bas vous faites défiler l'affichage.
+En appuyant sur haut/bas vous faites défiler l'affichage.
 
-En appuyant sur gauche / droite vous changer de jour.
+En appuyant sur gauche/droite vous changez de jour.
 
-En appuyant sur la touche centrale vous quitter ce menu.
+En appuyant sur la touche centrale vous quittez ce menu.
