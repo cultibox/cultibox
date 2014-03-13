@@ -10,4 +10,4 @@
 
 = Introduction =
 
-Ce chapitre regroupe toutes les paragraphes avancés de la documentation
+Ce chapitre regroupe tous les paragraphes avancés de la documentation
