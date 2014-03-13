@@ -10,7 +10,7 @@ Cette page ne concerne que les utilisateurs experts.
 = Calendriers d'engrais =
 == Introduction ==
 
-Les fabricants d'engrais peuvent nous soumettre les calendriers de leurs engrais pour qu'ils soient disponible dans le calendrier de l'utilisateur.
+Les fabricants d'engrais peuvent nous soumettre les calendriers de leurs engrais pour qu'ils soient disponibles dans le calendrier de l'utilisateur.
 Nous nous réservons le droit d'ajouter ou de supprimer les calendriers.
 
 == Format du calendrier ==
@@ -72,7 +72,7 @@ Exemple d'auteur:
 ==== Catégorie ====
 Cette information est obligatoire. Elle nous permet d'identifier quel type d'engrais est contenu dans ce fichier. Elle permet aussi de séparer le calendrier lunaire des autres calendriers.
 
-la catégorie doit être engrais. 
+La catégorie doit être engrais. 
 
 Exemple de catégorie:
 
@@ -112,7 +112,7 @@ De plus, le fabriquant à la possibilité de définir les rubriques suivantes:
   * Logo
   * Important
   * Droits
-Ces informations ne sont pour l'instant pas utilisées.
+Ces informations ne sont pas utilisées pour l'instant.
 
 ==== Icon ====
 Le fabricant peut définir une icône.
@@ -131,14 +131,14 @@ Exemple:
 
 ==== Important ====
 Le champ nommé important définit ou non un évènement comme important.
-Une valeur à "1" définit l'évènement comme important, une valeur à 0 (ou l'absence du champ Important) définit
-l'évènement comme non important
+Une valeur à "1" définit l'évènement comme important, une valeur à 0 (ou l'absence du champ Important) définit l'évènement comme non important
 
 Exemple:
 
 {{{
 <important>1</important>
 }}}
+
 ==== Logo ====
 Le fabricant peut définir un logo.
 Exemple:
@@ -159,7 +159,7 @@ Exemple:
 }}}
 
 === Les entrées ===
-Chaque entrée est contenu dans une balise <entry>. Les entrées correspondent à des événement du calendrier.
+Chaque entrée est contenu dans une balise <entry>. Les entrées correspondent à des événements du calendrier.
 
 ==== Informations Obligatoires ====
 ===== Titre =====
@@ -213,7 +213,7 @@ Exemple:
 
 ==== Catégorie ====
 Cette information permet d'identifier quel type d'engrais est contenu dans ce fichier.
-Les catégories disponible sont:
+Les catégories disponibles sont:
 || *term* || *label* ||
 || bouture || Bouturage ||
 || vegetation || Vegetation ||
@@ -252,7 +252,7 @@ Exemple (3 jours):
 ===== Début de cet événement =====
 Cette balise permet de définir la date de début de l’événement. La durée est inscrite en jour.
 
-Exemple (Au bout de 18 jours):
+Exemple (au bout de 18 jours):
 
 {{{
 <start>2008-05-29T13:14:57+02:00</start>
@@ -392,20 +392,20 @@ ou alors:
 Sélénium est un environnement de test qui permet de valider notre logiciel. Ce chapitre ne concerne que les personnes qui souhaitent participer au développement et à l'amélioration du logiciel.
 
 == Sélénium IDE ==
-Avant toute chose, il vous faut Mozilla Firefox. Ensuite télécharger le plug-in sélénium pour Firefox:
-/http://release.seleniumhq.org/selenium-ide/2.0.0/selenium-ide-2.0.0.xpi
+Avant toutes choses, il vous faut Mozilla Firefox. Ensuite téléchargez le plug-in sélénium pour Firefox:
+http://release.seleniumhq.org/selenium-ide/2.0.0/selenium-ide-2.0.0.xpi
 
-Autoriser l'installation puis suivez les instructions.
+Autorisez l'installation puis suivez les instructions.
 
 == Enregistrer un test ==
-Lancer Firefox.
-Dans le menu Firefox puis Développement  Web, cliquer sur Selenium IDE.
+Lancez Firefox.
+Dans le menu Firefox puis Développement  Web, cliquez sur Selenium IDE.
 Une interface s'affiche.
 
-Cliquer sur le rond rouge pour démarrer ou arrêter l’enregistrement de votre test.
+Cliquez sur le rond rouge pour démarrer ou arrêter l’enregistrement de votre test.
 
-Ensuite, il faut enregistrer votre suite de test. Cliquer sur fichier, enregistrer la suite de test sous (et non pas sauver le test sous).
-Vous devez enregistrer chacun des fichier pour chaque test puis enregistrer le fichier qui contient la suite de test.
+Ensuite, il faut enregistrer votre suite de test. Cliquez sur fichier, enregistrez la suite de test sous (et non pas sauver le test sous).
+Vous devez enregistrer chacun des fichiers pour chaque test puis enregistrer le fichier qui contient la suite de test.
 
 == Archiver le test ==
 Pour pouvoir lancer le test, il est nécessaire d'archiver le test dans SVN.
@@ -413,22 +413,22 @@ Il faut ajouter un dossier dans le dossier trunk/01_software/03_test/01_selenium
 N'oubliez pas de commiter.
 
 == Créer le test dans Jenkins ==
-Dans Jenkins, dans la vue test, cliquer sur "nouveau job". Puis cliquer sur "Copier un job existant". Entrer test_selenium dans "Copier à partir de". Le nom de votre job doit être le même que le nom du dossier. 
-Dans la partie "Exécuter un script shell" de la section build, changer les chemins pour qu'ils pointent vers votre test.
+Dans Jenkins, dans la vue test, cliquez sur "nouveau job". Puis cliquez sur "Copier un job existant". Entrez test_selenium dans "Copier à partir de". Le nom de votre job doit être le même que le nom du dossier. 
+Dans la partie "Exécuter un script shell" de la section build, changez les chemins pour qu'ils pointent vers votre test.
 
 = Changer le numéro de la prise 3500W =
- * Débrancher la Cultibox
- * Brancher la prise 3500W
- * Appuyer sur le petit bouton en façade pendant au moins 10s jusqu’à ce que la LED clignote. 
- * Relâcher le bouton puis appuyer une fois sur le bouton.
+ * Débranchez la Cultibox
+ * Branchez la prise 3500W
+ * Appuyez sur le petit bouton en façade pendant au moins 10s jusqu’à ce que la LED clignote. 
+ * Relâchez le bouton puis appuyez une fois sur le bouton.
  * La prise clignote deux fois
- * Ouvrir le fichier pluga
- * changer la première ligne. Mettre 001.
+ * Ouvrez le fichier pluga
+ * changez la première ligne. Mettre 001.
  * Mettre le numéro pour la prise sur la deuxième ligne (typiquement 004)
- * Brancher la Cultibox
- * Aller dans le menu Param --> Émetteur --> reg prise
- * Clique gauche pour éteindre la prise
- * appuyer un coup sur le petit bouton de la prise. Elle doit clignoter
- * Rapidement, appuyer sur le bouton droite de la Cultibox.
+ * Branchez la Cultibox
+ * Allez dans le menu Param --> Émetteur --> reg prise
+ * Cliquez sur le bouton gauche pour éteindre la prise
+ * Appuyez un coup sur le petit bouton de la prise. Elle doit clignoter
+ * Rapidement, appuyez sur le bouton droite de la Cultibox.
  * La prise doit clignoter deux fois
- * Si ça marche pas, refaire les étapes 10 à 13
+ * Si la procédure ne fonctionne pas, refaites les étapes 10 à 13
