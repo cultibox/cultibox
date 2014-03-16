@@ -69,3 +69,7 @@ Pour désintaller le logiciel de votre ordinateur, il vous suffira de lancer le 
 }}}
 
 Le programme peut vous demander un mot de passe afin de réaliser la désintallation, il vous suffira de rentrer votre mot de passe utilisateur.
+
+*Remarque 1*: Si vous avez rajouté manuellement des fichiers, ces derniers ne seront pas supprimés et seront toujours présents dans le répertoire "/Applications/cultibox". Il vous faudra les supprimer manuellement.
+
+*Remarque 2*: Si vous avez utilisé les outils de sauvegarde ou de restauration de vos données, des fichiers seront toujours présents dans votre répertoire utilisateur dans le dossier ".cultibox". Il vous faudra les supprimer manuellement.
