@@ -45,7 +45,6 @@
         * [gui_box_menu_param_sensor Capteur]
   * [other Autre]       
     * [faq FAQ]
-    * [faq FAQ]
       * [faq_hardware FAQ Matérielle]
       * [faq_software FAQ Logicielle]
       * [faq_other FAQ: autre]
