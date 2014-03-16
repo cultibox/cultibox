@@ -100,3 +100,13 @@ Vous pouvez vérifier qu'ils sont correctement installé en vous rendant dans le
 http://cultibox.googlecode.com/svn/wiki/img/services_windows8.png
 
  * S'ils ne sont pas lancés, il est possible de faire un clic droit sur le/les services concernés et de cliquer sur le menu "Démarrer le service"
+
+
+= Comment installer le logiciel sous Mac os X quand le message "Cultibox ne peut pas être ouverte car elle a été créée par un développeur non identifié" apparaît? =
+
+Ce message signifie simplement que les développeurs qui ont créé l'application Cultibox ne sont pas enregistrés auprés d'Apple. 
+Afin d'installer le logiciel, deux solutions sont possibles:
+
+* Dans le Finder à l'endroit où vous avez téléchargé le logiciel (généralement le dossier *Téléchargement* dans votre répertoire utilisateur), maintenez la touche *Control* et faites un clic souris sur le fichier (équivalent d'un clic droit). Dans le menu qui apparaît, vous trouverez le menu *Ouvrir*. IL vous suffit de cliquer dessus pour avoir la possibilité de lancer le logiciel et de l'installer.
+
+* Si cette méthode ne fonctionne pas, il vous faudra baisser le niveau de *Gatekeeper*. Pour cela dans le Menu Apple > Préférences Système > Sécurité et confidentialité > Onglet Général, sous l’intitulé " Autoriser les applications téléchargées de" selectionnez "Nimporte oû".  Cela baissera le niveau de sécurité de Gatekeeper le temps d'installer le logiciel. Vous pourrez remettre la configuration d'origine après l'installation.
