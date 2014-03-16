@@ -61,14 +61,13 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_timehelper.png
 
 == Programmation cyclique ==
 La programmation cyclique permet de réaliser les mêmes actions que la programmation standard. L'intérêt de ce mode de programmation est de répéter une même action plusieurs fois.
-L'action commence à l'heure de départ, dure le temps entre heure de fin et heure de départ et fini à minuit.
+L'action commence à l'heure du champ *Heure de départ*, dure le temps du champ *Durée* et se répète en fonction du champ *Répéter toutes les*.
 Pour appliquer une programmation cyclique
  * Choisissez le numéro de la prise à configurer dans le menu à côté du titre
- * Rentrez une durée du cycle ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
- * Rentrez le temps de répétition du cycle (permettant de calculer la période d'un cycle) ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
+ * Rentrez la temps que doit durer votre action avec le champ *Durée* ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
+ * Définissez le temps de répétition de votre action avec le champ *Répéter toutes les* ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
  * Rentrez une heure de départ ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
  * Sélectionnez l'état de la prise
- * Sélectionnez le temps entre deux actions (champ *Répéter toutes les*)
  * Cliquez sur le bouton *Valider*
 
 Le champ *Répéter toutes les* sert à calculer la période de répétition de l'action. L'interface ajoutera ce temps à l'heure de départ pour déterminer l'action suivante et ainsi de suite jusqu'à minuit.
