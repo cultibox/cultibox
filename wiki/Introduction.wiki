@@ -33,7 +33,7 @@ Cette documentation est en constante amélioration. Si vous avez des questions p
   * [interface_logiciel Logiciel Cultibox]
     * [gui_soft_welcome Accueil]
     * [gui_soft_conf Configuration]
-    * [gui_soft_logs Relevé des conditions climatique]
+    * [gui_soft_logs Relevés climatiques]
     * [gui_soft_prog Programmation]
       * [gui_soft_prog_regul Régulation]
       * [gui_soft_second_regul Régulation Avancée]

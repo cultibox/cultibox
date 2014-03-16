@@ -9,7 +9,7 @@ Pour installer le logiciel, rendez-vous sur le [https://code.google.com/p/cultib
 = Sommaire =
   * [gui_soft_welcome Accueil]
   * [gui_soft_conf Configuration]
-  * [gui_soft_logs Relevé des conditions climatiques]
+  * [gui_soft_logs Relevés climatiques]
   * [gui_soft_prog Programmation]
     * [gui_soft_prog_regul Régulation]
     * [gui_soft_prog_regul_sec Régulation Secondaire]
