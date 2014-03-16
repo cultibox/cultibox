@@ -15,15 +15,15 @@ Pour télécharger la dernière version du logiciel:
 Double-cliquez sur le package que vous venez de télécharger.
 La fenêtre suivante s'ouvre. Cliquez sur *Continuer*:
 
-http://cultibox.googlecode.com/svn/wiki/img/install_mac_1.jpg
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_1.png
 
 Lisez attentivement la licence du logiciel puis cliquez sur *Continuer*:
 
-http://cultibox.googlecode.com/svn/wiki/img/install_mac_2.jpg
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_2.png
 
 Vous devez accepter la licence du logiciel pour continuer:
 
-http://cultibox.googlecode.com/svn/wiki/img/install_mac_3.jpg
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_3.png
 
 Cliquez ensuite sur *Continuer* pour installer le logiciel pour tous les utilisateurs:
 
@@ -39,11 +39,11 @@ http://cultibox.googlecode.com/svn/wiki/img/install_mac_6.png
 
 Le logiciel s'installe:
 
-http://cultibox.googlecode.com/svn/wiki/img/install_mac_7.jpg
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_7.png
 
 Une fois l'installation terminée, la fenêtre suivante s'ouvre:
 
-http://cultibox.googlecode.com/svn/wiki/img/install_mac_8.jpg
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_8.png
 
 = Lancement du logiciel =
 
