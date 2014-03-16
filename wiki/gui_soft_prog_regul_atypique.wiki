@@ -68,5 +68,3 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_
 Au final, le programme ressemble à ça:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_4.jpg
-
-*Note*: La dernière partie à 0 est un bug ( issue 554 ). Vous pouvez combler ce trou en ajoutant une dernière programmation classique.
