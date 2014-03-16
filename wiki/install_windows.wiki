@@ -16,7 +16,7 @@ Double-cliquez sur le programme d'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_1.png
 
-Cliquez sur "Exécuter".
+Cliquez sur "Oui".
 
 Sélectionnez votre langue:
 
