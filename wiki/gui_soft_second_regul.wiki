@@ -73,4 +73,5 @@ Il est à noter que ces options ne sont visibles qu'à partir du moment ou le ty
 
 == Impact de la régulation secondaire sur la régulation principale ==
 La régulation secondaire est prioritaire sur la régulation principale. Si les conditions définies pour la régulation secondaire sont respectées, alors la régulation secondaire entre en oeuvre et la régulation principale s’arrête.
-Il y a un autre impact: Dans la zone de transition de la régulation principale entre |Consigne - tolérance | et | consigne + tolérance | l'état de la prise dépend de son état précédent. Si la régulation secondaire entre en oeuvre, elle modifie l'état de la prise. Une fois que la régulation secondaire ne fonctionne plus, la régulation principale prend comme dernière état de la prise, l'état appliqué par la régulation secondaire. issue 479
+
+Il y a un autre impact: dans la zone de transition de la régulation principale entre |consigne - tolérance | et | consigne + tolérance | l'état de la prise dépend de son état précédent. Si la régulation secondaire entre en oeuvre, elle modifie l'état de la prise. Une fois que la régulation secondaire ne fonctionne plus, la régulation principale prend comme dernière état de la prise, l'état appliqué par la régulation secondaire.
