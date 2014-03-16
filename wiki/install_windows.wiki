@@ -57,19 +57,15 @@ Double-cliquez sur le programme d'installation:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_1.png
 
-Cliquez sur *Exécuter*.
+Cliquez sur *Oui*.
 
 Sélectionner votre langue:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_2.png
 
-Pour sauvegarder votre ancienne configuration, cliquez sur *oui*:
+Pour continuer l'installation, cliquez sur *oui*:
 
 http://cultibox.googlecode.com/svn/wiki/img/update_windows_3.png
-
-Pour sauvegarder votre ancienne configuration, cliquez sur *oui*:
-
-http://cultibox.googlecode.com/svn/wiki/img/update_windows_4.png
 
 Cliquez sur suivant:
 
