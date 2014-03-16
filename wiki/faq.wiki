@@ -1,0 +1,9 @@
+#summary Interface logiciel
+
+= Introduction =
+
+Cette section regroupe les différentes foires aux questions concernant le matériel, le logiciel ou tous le reste concernant le produit CUltibox. Si vous ne trouvez pas de réponse appropriée dans cette section, vous pouvez toujours nous contacter en nous écrivant à: support@cultibox.fr
+
+= Sommaire =
+* [FAQ Matérielle faq_hardware]
+* [FAQ Logicielle faq_software]
