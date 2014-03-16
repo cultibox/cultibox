@@ -7,7 +7,7 @@
 Le calendrier permet de définir et de se souvenir des informations correspondant à votre espace de culture.
 Ces informations sont ensuite disponibles sur l'écran LCD de la Cultibox si vous avez branché votre carte SD Cultibox lors des modifications du calendrier.
 
-Pour accéder à l'onglet, cliquer sur l'onglet *Calendrier* du menu principal :
+Pour accéder à l'onglet, cliquez sur l'onglet *Calendrier* du menu principal :
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_calendar.png
 
@@ -15,13 +15,13 @@ Une fenêtre avec le mois en cours s'affiche à l'écran:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_main.png
 
-On retrouve sur cette fenêtre l'ensemble des annotations que vous avez crées et les annotations définies par l'utilisation avancée de fichiers xml (pour plus d’information voir [advance Utilisation avancée])
+On retrouve sur cette fenêtre l'ensemble des annotations que vous avez crées et les annotations définies par l'utilisation avancée de fichiers xml (pour plus d’informations voir [advance Utilisation avancée])
 
 = Ajouter une annotation =
 
 Vous pouvez ajouter une annotation sur un jour spécifique ou sur une période en cliquant simplement sur le jour concerné ou en sélectionnant la période à laquelle se reportera votre annotation.
 Une fenêtre s'affiche alors vous permettant de configurer votre annotation et de la créer en cliquant sur le bouton *Ajouter une annotation*. Une annotation peut contenir différentes informations:
- * Un sujet (prédéfinie dans une liste)
+ * Un sujet (prédéfinie dans une liste ou personnalisé par vous)
  * Les dates de départ et de fin définie par le jour ou la période que vous avez sélectionné
  * Une couleur d'affichage dans le calendrier
  * Une remarque servant à ajouter des informations
@@ -61,7 +61,6 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_del.png
 La seconde partie de la page du calendrier permet d'appliquer au calendrier un programme prédéfini d'engrais. En fonction de votre substrat et du type d'engrais voulu, plusieurs choix s'offre à vous:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_engrais.png
-
 
 Afin d'appliquer ce programme au calendrier il faut donc:
  * Choisir le substrat (Terre, Hydro, Coco, Aero)
