@@ -5,5 +5,5 @@
 Cette section regroupe les différentes foires aux questions concernant le matériel, le logiciel ou tous le reste concernant le produit CUltibox. 
 
 = Sommaire =
-  * [FAQ Matérielle faq_hardware]
-  * [FAQ Logicielle faq_software]
+  * [faq_hardware FAQ Matérielle]
+  * [faq_software FAQ Logicielle]
