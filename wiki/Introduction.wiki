@@ -61,7 +61,6 @@ Cette documentation est en constante amélioration. Si vous avez des questions p
     * [faq FAQ]
       * [faq_hardware FAQ Matérielle]
       * [faq_software FAQ Logicielle]
-      * [faq_other FAQ: autre]
     * [advance Utilisation avancée]
     * [base_de_donnee Base de donnee]
     * [evolution Futurs évolutions]

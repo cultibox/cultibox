@@ -6,20 +6,10 @@
 = Introduction =
 
 
-Retrouvez dans cette section la réponse à toutes les questions que vous vous posez.
+Retrouvez dans cette section la réponse à toutes les questions que vous vous posez concernant le logiciel.
 
 = Pourquoi le dossier d'installation ne peut pas être changé =
 Sous Windows, le dossier d’installation est fixé dans le répertoire c:/cultibox. L'affichage du logiciel est réalisé en utilisant un serveur apache intégré (wampp). Wampp ne permet pas d'être installé dans un dossier qui contient des espaces. Pour éviter tout problème, nous avons décidé de fixer le chemin d'installation.
-
-= Peut-il y avoir un risque d'interférence avec mes autres appareils? =
-La Cultibox pilote les prises en utilisant la fréquence 433 MHz. Il existe un certain nombre d'appareils qui utilisent cette même fréquence. Par exemple: Télécommande de garage, interrupteur de lampe sans fils, chauffage à sonde déportée...
-Pour minimiser le risque d'interférence, il est possible d'indiquer la fréquence de rafraîchissement des prises.
-  * Insérer votre carte SD dans l'ordinateur
-  * Lancer l'interface Cultibox
-  * Dans l'onglet configuration, sélectionner "Configuration de la Cultibox"
-  * Dans le champs "Fréquence de mise à jour des prises", sélectionner la valeur "5"
-  * Cliquer sur "Enregistrer la configuration"
-  * Insérer la carte SD dans votre Cultibox 
 
 
 = Est-il possible d'installer une version antérieure du logiciel Cultibox? =
@@ -110,16 +100,3 @@ Vous pouvez vérifier qu'ils sont correctement installé en vous rendant dans le
 http://cultibox.googlecode.com/svn/wiki/img/services_windows8.png
 
  * S'ils ne sont pas lancés, il est possible de faire un clic droit sur le/les services concernés et de cliquer sur le menu "Démarrer le service"
-
-
-
-= Est-ce que je peux mettre un extracteur avec ma lampeHPS sur la prise 3500W =
-Si la puissance totale est inférieur à 600W, il n'y a pas de problème.
-
-= Est-ce qu'il est nécessaire d'éteindre la Cultibox pour mettre à jour le programme? =
-
-La Cultibox mémorise un tout petit bout du programme. Il n'est donc pas nécessaire d'éteindre la Cultibox pour mettre à jour le programme. Par contre penser à rebrancher la carte SD rapidement!
-
-= Avez-vous un modèle SketchUp de la Cultibox =
-
-Oui! Vous pouvez le retrouver dans l’entrepôt d'objet SketchUp (Warehouse). Le lien direct, est le suivant: http://sketchup.google.com/3dwarehouse/details?mid=81797e1f12ff0696f68ade8e51b8ff67
