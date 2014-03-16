@@ -13,7 +13,7 @@ Pour effectuer une régulation de niveau d'eau, il vous faut :
  * Une pompe alimentée en 220V
  * Une prise 1000W
  
-http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
+http://cultibox.googlecode.com/svn/wiki/img/prise2.png
 
  * Un capteur de niveau d'eau
  

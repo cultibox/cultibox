@@ -23,7 +23,7 @@ Le boitier Cultibox est le coeur du système.
 
 == Face avant ==
 
-http://cultibox.googlecode.com/svn/wiki/img/cbx_top.jpg
+http://cultibox.googlecode.com/svn/wiki/img/cbx_top.png
 
 On retrouve sur la face avant:
  * Un écran LCD
@@ -31,7 +31,7 @@ On retrouve sur la face avant:
 
 == Coté gauche ==
 
-http://cultibox.googlecode.com/svn/wiki/img/cbx_left.jpg
+http://cultibox.googlecode.com/svn/wiki/img/cbx_left.png
 
 Sur le coté gauche, on trouve quatre ouvertures. De gauche à droite:
  * Espace pour loger la carte SD
@@ -41,7 +41,7 @@ Sur le coté gauche, on trouve quatre ouvertures. De gauche à droite:
 
 == Coté droit ==
 
-http://cultibox.googlecode.com/svn/wiki/img/cbx_right.jpg
+http://cultibox.googlecode.com/svn/wiki/img/cbx_right.png
 
 Sur le coté droit de la Cultibox, quatre ports RJ12 sont accessibles. Ils permettent de connecter différents éléments dont notamment le capteur.
 
@@ -49,7 +49,7 @@ Sur le coté droit de la Cultibox, quatre ports RJ12 sont accessibles. Ils perme
 
 L'antenne doit être assemblée sur la Cultibox pour que celle-ci puisse piloter les prises.
 
-http://cultibox.googlecode.com/svn/wiki/img/Antenne.jpg
+http://cultibox.googlecode.com/svn/wiki/img/Antenne.png
 
 = Prise 3500W =
 
@@ -80,24 +80,24 @@ La puissance maximum de l’élément que vous pouvez brancher sur la Cultibox d
 || Élément inductif ou capacitif || 1000W ||
 
 
-http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
+http://cultibox.googlecode.com/svn/wiki/img/prise2.png
 
 
-http://cultibox.googlecode.com/svn/wiki/img/prise3.jpg
+http://cultibox.googlecode.com/svn/wiki/img/prise3.png
 
 
 = Capteur =
 
 Le capteur est conçu pour mesurer la température et l’humidité.
 
-http://cultibox.googlecode.com/svn/wiki/img/capteur.jpg
+http://cultibox.googlecode.com/svn/wiki/img/capteur.png
 
 = Carte SD =
 La carte SD à une capacité de 2Go et est formatée en FAT16.
 Elle contient un ensemble de fichiers et de dossiers permettant à la Cultibox de fonctionner.
 Sans la carte SD, la Cultibox ne peut pas fonctionner.
 
-http://cultibox.googlecode.com/svn/wiki/img/SD.jpg
+http://cultibox.googlecode.com/svn/wiki/img/SD.png
 
 = Adaptateur Secteur =
 L'adaptateur secteur permet d'alimenter la Cultibox. 
@@ -107,12 +107,12 @@ http://cultibox.googlecode.com/svn/wiki/img/chargeur_usb.png
 = Câble USB =
 Le câble USB permet d'alimenter la Cultibox. Il fait la liaison entre l'adaptateur secteur et la Cultibox.
 
-http://cultibox.googlecode.com/svn/wiki/img/usb_cable.jpg
+http://cultibox.googlecode.com/svn/wiki/img/usb_cable.png
 
 = Câble RJ12 =
 Le câble RJ12 permet de connecter le capteur à la Cultibox.
 
-http://cultibox.googlecode.com/svn/wiki/img/RJ12.jpg
+http://cultibox.googlecode.com/svn/wiki/img/RJ12.png
 
 = Notice =
 La notice contient l'aide nécessaire à la mise en place de la Cultibox. Vous pouvez retrouver la dernière version à jour à l'adresse suivante:

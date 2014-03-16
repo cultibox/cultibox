@@ -36,35 +36,35 @@ La deuxième solution consiste à appliquer la régulation de façon continue su
 
 Commencez par définir le programme de régulation:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_5.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_5.png
 
 Le graphique du programme doit ressembler à ça:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_6.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_6.png
 
 Définissez le programme cyclique de marche forcée:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_1.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_1.png
 
 Au final, le programme ressemble à ça:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_7.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_7.png
 
 == Double cycles ==
 La première solution consiste à appliquer un programme cyclique de marche forcée en opposition avec un programme de régulation.
 
 Commencez par définir le programme cyclique de marche forcée:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_1.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_1.png
 
 Le graphique du programme doit ressembler à ça:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_2.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_2.png
 
 Définissez le programme cyclique de régulation:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_3.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_3.png
 
 Au final, le programme ressemble à ça:
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_4.jpg
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_prog_regul_atypique_double_cycle_4.png

@@ -86,34 +86,34 @@ La Cultibox est prévue pour être installée à l'extérieur de l'environnement
 === Mise en route de la pile ===
 Ôtez le film situé à côté du port USB. Cela permet à la pile de la Cultibox d'entrer en fonction.
 
-http://cultibox.googlecode.com/svn/wiki/img/assemblage_pile.jpg
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_pile.png
 
 === Antenne ===
 Connectez l'antenne sur la Cultibox. L’antenne se visse sur le connecteur doré. Vissez l'antenne. En desserrant légèrement vous pouvez changer l'angle de l'antenne pour que celle-ci ne gène pas. Resserrez ensuite en maintenant l'antenne avec le bon angle.
 
-http://cultibox.googlecode.com/svn/wiki/img/assemblage_antenne.jpg
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_antenne.png
 
 === Insertion Carte SD ===
 Insérez la Carte SD dans le logement prévu à cet effet.
 
-http://cultibox.googlecode.com/svn/wiki/img/assemblage_SD.jpg
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_SD.png
 
 === Fixation ===
 Derrière la Cultibox, un scratch autocollant est disponible. Retirez la moitié du scratch:
 
-http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_1.jpg
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_1.png
 
 Décollez le film plastique:
 
-http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_2.jpg
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_2.png
 
 Collez cette moitié de scratch sur votre support (un mur de préférence). L'endroit où vous collez le scratch doit être lisse et propre. De plus il doit être en dehors de votre espace de culture.
 
-http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_3.jpg
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_3.png
 
 Scratchez la Cultibox dessus:
 
-http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_4.jpg
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_4.png
 
 * Il est impératif de ne jamais brancher de câble sur la Cultibox tant qu'elle n'est pas solidement fixée. Vous risquez de l'endommager définitivement *
 
@@ -122,11 +122,11 @@ http://cultibox.googlecode.com/svn/wiki/img/assemblage_Scotch_4.jpg
 Installez le capteur dans l'espace de culture. Il ne doit pas être soumis à des projections d'eau. 
 Connectez le câble blanc (RJ12) sur le capteur:
 
-http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12_2.jpg
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12_2.png
 
 Connectez l'autre partie sur la Cultibox:
 
-http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12.jpg
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12.png
 
 
 == Installation des prises ==
@@ -138,9 +138,9 @@ Pour une aide plus détaillée, consultez la page suivante : [install_Plug Ajout
 
 http://cultibox.googlecode.com/svn/wiki/img/3500W.png
 
-http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
+http://cultibox.googlecode.com/svn/wiki/img/prise2.png
 
-http://cultibox.googlecode.com/svn/wiki/img/prise3.jpg
+http://cultibox.googlecode.com/svn/wiki/img/prise3.png
 
 == Branchement de l'alimentation == 
 Branchez l'adaptateur secteur-USB sur le secteur. Branchez ensuite le câble USB entre la Cultibox et l'adaptateur secteur.

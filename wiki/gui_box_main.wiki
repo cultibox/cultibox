@@ -29,10 +29,10 @@ En cliquant à droite ou a gauche, on fait défiler différentes informations:
  # Humidité Min / Max de la journée
  # Événement du jour
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil.PNG
+http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil.png
 
 Pour afficher les informations des autres capteurs, vous pouvez appuyer sur le bouton Haut ou le bouton Bas. Vous accédez ainsi à la température et à l'humidité remontées par chacun des capteurs.
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil_large.PNG
+http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil_large.png
 
     

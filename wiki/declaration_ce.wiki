@@ -4,7 +4,7 @@
 
 Déclaration CE
 
-http://cultibox.googlecode.com/svn/wiki/img/declaration_ce_fr.PNG
+http://cultibox.googlecode.com/svn/wiki/img/declaration_ce_fr.png
 
 
-http://cultibox.googlecode.com/svn/wiki/img/declaration_ce_en.PNG
+http://cultibox.googlecode.com/svn/wiki/img/declaration_ce_en.png

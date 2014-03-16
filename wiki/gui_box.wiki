@@ -7,7 +7,7 @@ Cette section de l'aide décrit le fonctionnement de l'interface graphique affic
 L'interface graphique de la Cultibox est accessible directement sur la Cultibox.
 Les informations sont lisibles sur l'écran, et un clavier de cinq touches est incrusté dans la face avant.
 
-http://cultibox.googlecode.com/svn/wiki/img/face_top.jpg
+http://cultibox.googlecode.com/svn/wiki/img/face_top.png
 
 Vous pouvez vous déplacer en utilisant les touches du clavier.
 

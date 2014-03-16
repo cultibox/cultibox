@@ -85,7 +85,7 @@ http://cultibox.googlecode.com/svn/wiki/img/update_windows_8.png
 
 Autorisez l'accès à Apache à votre réseau:
 
-http://cultibox.googlecode.com/svn/wiki/img/update_windows_12.jpg
+http://cultibox.googlecode.com/svn/wiki/img/update_windows_12.png
 
 Cliquez sur *Terminer*:
 

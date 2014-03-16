@@ -24,7 +24,7 @@ Le capteur permet de mesurer en temps réel la température et l'humidité.
 = Mise en place =
 
  # Débrancher votre Cultibox
- # Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.  http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12_2.jpg
+ # Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.  http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12_2.png
  # Brancher votre Cultibox
 
 La mise en place est terminée.
@@ -86,7 +86,7 @@ En fonction de cette valeur l'air est considéré comme :
 
 Cette valeur est calculée grâce à deux paramètres : la température ambiante et la quantité d'eau présente dans l'air. En fonction de ces deux paramètres et en utilisant le diagramme ci dessous, on obtient le taux d'humidité relative :
 
-http://cultibox.googlecode.com/svn/wiki/img/PsychrometricChart-SeaLevel-SI.jpg
+http://cultibox.googlecode.com/svn/wiki/img/PsychrometricChart-SeaLevel-SI.png
 
 Quelques remarques concernant le taux d'humidité :
  * Si la température d'un environnement augmente brutalement (par exemple à l'allumage d'une lampe HPS), le taux d'humidité va baisser rapidement. Par exemple : la température de l'espace de culture est de 20°C et le taux d'humidité est de 30%. En lisant le graphique, on se rend compte qu'il y a 0,004 grammes d'eau par grammes d'air. La température augmente rapidement à 30°C. La quantité d'eau présente dans l'air est toujours la même. En observant le graphique on peut voir que l'humidité relative sera maintenant d'environ 18%.
