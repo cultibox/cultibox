@@ -7,7 +7,7 @@
 La régulation permet de piloter les prises afin d'obtenir des conditions de culture optimales.
 
 *Principe général:*
-Vous choisissez une température ou une humidité, la Cultibox se charge d'allumer la prise en lorsque c'est nécessaire.
+Vous choisissez une température ou une humidité, la Cultibox se charge d'allumer ou éteindre la prise lorsque c'est nécessaire.
 Exemple : Vous décidez d'une température de 22°C. Vous effectuez cette régulation sur un ventilateur. La prise se met en route lorsque la température est supérieure à la consigne et s'éteint lorsque la température est inférieure à la consigne.
 
 Il n'est pas possible d'activer la régulation principale sur une prise déclarée comme *lampe* ou comme *autre* . Une prise *autre*, est une prise qui ne modifie ni la température ni l'humidité de l'espace de culture. Il n'est donc pas possible d'effectuer de la régulation (principale ou secondaire) sur cette prise. De la même façon, il est impossible d'activer la régulation principale sur une prise déclarée comme *lampe*.
@@ -22,43 +22,43 @@ Par exemple, vous désirez avoir une température de 22°C. Le capteur indique 2
 Il est donc très important de remplir correctement le champ *Type d'élément branché sur la prise* dans l'onglet *Prises*.
 
 Si l'élément ne correspond pas exactement aux choix possibles, vous devez sélectionner l’élément le plus proche selon les règles ci-dessous:
- * Si l'élément branché augmente la température de votre environnement lorsqu'il est en marche : sélectionner *Chauffage*
- * Si l'élément branché baisse la température de votre environnement lorsqu'il est en marche : sélectionner *Ventilateur* (Exemple: intracteur, extracteur, refroidisseur ...)
- * Si l'élément branché augmente l'humidité de votre environnement lorsqu'il est en marche : sélectionner *Humidificateur*
+ * Si l'élément branché augmente la température de votre environnement lorsqu'il est en marche : sélectionnez *Chauffage*
+ * Si l'élément branché baisse la température de votre environnement lorsqu'il est en marche : sélectionnez *Ventilateur* (Exemple: intracteur, extracteur, refroidisseur ...)
+ * Si l'élément branché augmente l'humidité de votre environnement lorsqu'il est en marche : sélectionnez *Humidificateur*
  * Si l'élément branché baisse l'humidité de votre environnement lorsqu'il est en marche : sélectionner *Déshumidificateur*
  
 = Hystérésis =
-Les prises vendues avec le pack sont *Tout Ou Rien*. Cela veut dire que la prise ne peut être que dans un des deux états suivants: Allumée ou éteinte. Pour ce type de prise, la régulation la plus efficace est une régulation suivant un [http://fr.wikipedia.org/wiki/Hyst%C3%A9r%C3%A9sis cycle d'hystérésis].
+Les prises vendues avec le pack sont *tout ou rien*. Cela veut dire que la prise ne peut être que dans un des deux états suivants: allumée ou éteinte. Pour ce type de prise, la régulation la plus efficace est une régulation suivant un [http://fr.wikipedia.org/wiki/Hyst%C3%A9r%C3%A9sis cycle d'hystérésis].
 
-Un paramètre apparait pour régler l'hystérésis : la tolérance. Ce paramètre est réglé dans l'onglet [https://code.google.com/p/cultibox/wiki/gui_soft_plugs#Introduction prise]. Il définit quelle tolérance doit être appliquée par rapport à la consigne. Par exemple un extracteur avec une tolérance de 1°C et une valeur de régulation de 24°C, se met en route à 25°C et s'éteint à 23°C.
+Un paramètre apparaît pour régler l'hystérésis : la tolérance. Ce paramètre est réglé dans l'onglet [https://code.google.com/p/cultibox/wiki/gui_soft_plugs#Introduction prise]. Il définit quelle tolérance doit être appliquée par rapport à la consigne. Par exemple, un extracteur avec une tolérance de 1°C et une valeur de régulation de 24°C, se met en route à 25°C et s'éteint à 23°C.
 
 == Chauffage ou humidificateur ==
-Dans le cas ou la prise agit de façon positive sur la valeur du capteur (Chauffage, Humidificateur). Les règles de changement d'état des prises sont les suivantes:
- * Si la valeur du capteur est inférieur à la consigne moins la tolérance : Prise activée
- * Si la valeur du capteur est supérieur à la consigne plus la tolérance : Prise désactivée
+Dans le cas ou la prise agit de façon positive sur la valeur du capteur (chauffage, humidificateur). Les règles de changement d'état des prises sont les suivantes:
+ * Si la valeur du capteur est inférieure à la consigne moins la tolérance : prise activée
+ * Si la valeur du capteur est supérieure à la consigne plus la tolérance : prise désactivée
  * Pour les autres cas, la prise reste dans le même état. 
 
 Le graphique ci-dessous montre le fonctionnement pour une consigne de 24°C et une tolérance de 1°C:
 
 http://cultibox.googlecode.com/svn/wiki/img/regul_3.png
 
-On peut voir que la prise ne se met en route que lorsque la température descend en dessous de 23°C (Consigne - tolérance = 24 - 1).
-La prise ne s'éteint pas lorsque la température est supérieure à la consigne. Il faut que la température dépasse la consigne + la tolérance pour que la prise s'éteigne:
+On peut voir que la prise ne se met en route que lorsque la température descend en dessous de 23°C (consigne - tolérance = 24 - 1).
+La prise ne s'éteint pas lorsque la température est supérieure à la consigne. Il faut que la température dépasse: *la consigne + la tolérance* pour que la prise s'éteigne:
 
 http://cultibox.googlecode.com/svn/wiki/img/regul_4.png
 
 == Ventilateur ou déshumidificateur ==
-Dans le cas ou la prise agit de façon négative sur la valeur du capteur (Ventilateur, Déshumidificateur). Les règles de changement d'état des prises sont les suivantes:
- * Si la valeur du capteur est supérieure à la consigne plus la tolérance : Prise activée
- * Si la valeur du capteur est inférieure à la consigne moins la tolérance : Prise désactivée
+Dans le cas ou la prise agit de façon négative sur la valeur du capteur (ventilateur, déshumidificateur). Les règles de changement d'état des prises sont les suivantes:
+ * Si la valeur du capteur est supérieure à la consigne plus la tolérance : prise activée
+ * Si la valeur du capteur est inférieure à la consigne moins la tolérance : prise désactivée
  * Pour les autres cas, la prise reste dans le même état. 
 
 Le graphique ci-dessous montre le fonctionnement pour une consigne de 24°C et une tolérance de 1°C:
 
 http://cultibox.googlecode.com/svn/wiki/img/regul_1.png
 
-On peut voir que la prise ne se met en route que lorsque la température est supérieure à 25°C (Consigne + tolérance = 24 + 1).
-La prise ne s'éteint pas lorsque la température est inférieure à la consigne. Il faut que la température soit inférieure à la consigne - la tolérance pour que la prise s'éteigne:
+On peut voir que la prise ne se met en route que lorsque la température est supérieure à 25°C (consigne + tolérance = 24 + 1).
+La prise ne s'éteint pas lorsque la température est inférieure à la consigne. Il faut que la température soit inférieure à: *la consigne - la tolérance* pour que la prise s'éteigne:
 
 http://cultibox.googlecode.com/svn/wiki/img/regul_2.png
 
