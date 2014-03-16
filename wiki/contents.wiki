@@ -64,7 +64,7 @@ La puissance maximum de l’élément que vous pouvez brancher sur la Cultibox d
 || Élément purement résistif || 3500W ||
 || Élément inductif ou capacitif || 3500W ||
 
-http://cultibox.googlecode.com/svn/wiki/img/3500W.jpg
+http://cultibox.googlecode.com/svn/wiki/img/3500W.png
 
 = Prises 1000W =
 

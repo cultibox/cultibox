@@ -136,7 +136,7 @@ Pour une aide plus détaillée, consultez la page suivante : [install_Plug Ajout
  * Connectez la prise 1 (3500W) entre votre lampe et la prise secteur.
  * Installez les deux autres prise en fonction des choix que vous avez réalisé dans l'étape de configuration.
 
-http://cultibox.googlecode.com/svn/wiki/img/3500W.jpg
+http://cultibox.googlecode.com/svn/wiki/img/3500W.png
 
 http://cultibox.googlecode.com/svn/wiki/img/prise2.jpg
 
