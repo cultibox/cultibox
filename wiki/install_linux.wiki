@@ -148,6 +148,10 @@ Processing triggers for desktop-file-utils ...
 Processing triggers for gnome-menus ...
 }}}
 
+Remarque 1: Si vous avez rajouté manuellement des fichiers, ces derniers ne seront pas supprimés et seront toujours présents dans le répertoire "/opt/cultibox". Il vous faudra les supprimer manuellement.
+
+Remarque 2: Si vous avez utilisé les outils de sauvegarde ou de restauration de vos données, des fichiers seront toujours présents dans votre répertoire utilisateur dans le dossier ".cultibox". Il vous faudra les supprimer manuellement. 
+
 = Erreur lors de l'installation =
 
 En installant le logiciel sur Linux Ubuntu, le message suivant pourrait apparaitre: "An old version of the Cultibox seems to be remaining in your system [...]"
