@@ -19,6 +19,7 @@ Les différents éléments sont:
 
 = Le boitier Cultibox =
 
+
 Le boitier Cultibox est le coeur du système. 
 
 == Face avant ==
