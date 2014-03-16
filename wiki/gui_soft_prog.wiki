@@ -177,7 +177,7 @@ La première ligne de ce fichier contient le titre des colonnes :
 En dessous de ce titre, une ligne représente une action. Sur chaque ligne, on trouve dans l'ordre : l'heure de départ de l'action, l'heure de fin de l'action et l'état de la prise. L'état de la prise peut être:
  * 99.9 Si elle doit être allumée 
  * Tout autre valeur définit une valeur de régulation
-Il n'est pas nécessaire de définir quand la prise doit être éteint. C4est l'état par défaut.
+Il n'est pas nécessaire de définir quand la prise doit être éteinte. C'est l'état par défaut.
 
 Par exemple :
 {{{
