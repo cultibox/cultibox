@@ -31,7 +31,7 @@ http://cultibox.googlecode.com/svn/wiki/img/install_mac_4.png
 
 Cliquez sur *Installer*. Pour que l'installation démarre: 
 
-http://cultibox.googlecode.com/svn/wiki/img/install_mac_5.jpg
+http://cultibox.googlecode.com/svn/wiki/img/install_mac_5.png
 
 Une identification est demandée pour installer les services necéssaires au bon fonctionnement du logiciel, rentrez votre nom utilisateur et votre mot de passe:
 
