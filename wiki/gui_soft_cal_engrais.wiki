@@ -7,7 +7,7 @@
 
 Le logiciel Cultibox vous permet de planifier les engrais que vous souhaitez appliquer.
 
-Ci-dessous vous trouverez tout les schéma de culture utilisé:
+Ci-dessous vous trouverez tout les schémas de culture utilisé:
 
 
 = GHE =
