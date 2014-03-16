@@ -15,10 +15,30 @@ Par défaut la régulation secondaire n'est pas activée. Afin de l’activer vo
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 
-Puis dans le premier onglet nommé *Interface* vous trouverez une ligne nommée: *Activer la régulation secondaire (Utilisateur expert seulement)*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer la régulation secondaire.
+Puis dans le premier onglet nommé *Interface* vous trouverez une ligne nommée: *Activer la régulation secondaire (Utilisateur expert seulement)*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer la régulation secondaire:
+
+http://cultibox.googlecode.com/svn/wiki/img/regul_secondaire_activation.jpg
+
+== Donnée climatique ==
+La régulation classique, gère la prise en fonction du type d'élément branché dessus. La régulation secondaire va jouer sur l'autre condition climatique.
+Par exemple, vous utilisez un humidificateur. La régulation "classique" va mettre l'équipement en marche pour augmenter le taux d’humidité. La régulation secondaire va donc jouer sur la deuxième donnée climatique: la température.
+
+Pour chaque type d'élément, retrouvez dans le tableau ci-dessous, la donnée climatique gérée par la régulation secondaire.
+
+|| *Type d'élément* || *Capteur utilisé pour la régulation "classique"* || * Capteur utilisé pour la régulation "secondaire"* ||
+|| Chauffage || Température || Humidité ||
+|| Ventilateur || Température || Humidité ||
+|| Humidificateur || Humidité || Température ||
+|| Des-humidificateur || Humidité || Température ||
+|| Lampe || Aucune || Aucune ||
+|| Autre || Aucune || Aucune ||
 
 
 == Paramétrage de la régulation secondaire ==
+
+Il n'est pas possible de définir un intervalle de temps pour l'activation de la régulation secondaire. A partir du moment ou l'utilisateur l'active, elle restera activée en permanence.
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_regul_second.png
 
 Une fois activée la régulation secondaire est disponible dans l'onglet *Prises* du menu principal:
 
@@ -52,3 +72,8 @@ Les options avancées vous permettent:
  * De savoir si la régulation doit se faire sur la moyenne des valeurs de plusieurs capteurs, leur minimum ou leur maximum. La régulation secondaire est toujours réalisée à partir de la moyenne des capteurs.
 
 Il est à noter que ces options ne sont visibles qu'à partir du moment ou le type de l'équipement n'est pas définit comme une "lampe" ou un type "autre".
+
+
+== Impact de la régulation secondaire sur la régulation principale ==
+La régulation secondaire est prioritaire sur la régulation principale. Si les conditions définies pour la régulation secondaire sont respectées, alors la régulation secondaire entre en oeuvre et la régulation principale s’arrête.
+Il y a un autre impact: Dans la zone de transition de la régulation principale entre |Consigne - tolérance | et | consigne + tolérance | l'état de la prise dépend de son état précédent. Si la régulation secondaire entre en oeuvre, elle modifie l'état de la prise. Une fois que la régulation secondaire ne fonctionne plus, la régulation principale prend comme dernière état de la prise, l'état appliqué par la régulation secondaire. issue 479
