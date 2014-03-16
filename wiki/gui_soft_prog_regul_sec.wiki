@@ -7,30 +7,30 @@
 
 == Introduction ==
 
-*Attention, la régulation secondaire est compliquée. Assurez vous d'en avoir vraiment besoin avant de l'activer.*
+*Attention, la régulation secondaire est compliquée. Assurez-vous d'en avoir vraiment besoin avant de l'activer.*
 
-la régulation secondaire permet de forcer l'état d'une prise en fonction de certaines données climatique.
+La régulation secondaire permet de forcer l'état d'une prise en fonction de certaines données climatiques.
 Elle agit comme une sorte d'alarme.
 Par exemple, vous utilisez un ventilateur pour réguler la température à 22°C. Il ne se met en marche que lorsque la température dépasse la consigne. Jusque là, c'est la régulation "classique" qui fonctionne.
 Vous désirez qu'en plus de ce fonctionnement normal, il soit actif si le taux d'humidité est supérieur à 80%. C'est la régulation secondaire qui va tenir ce rôle.
 
 Il n'est pas possible d'activer la régulation secondaire sur une prise déclarée comme "lampe" ou comme "autre" . Une prise "autre", est une prise qui ne modifie ni la température ni l'humidité de l'espace de culture. Il n'est donc pas possible d'effectuer de la régulation (principale ou secondaire) sur cette prise. De la même façon, il est impossible d'activer la régulation secondaire sur une prise déclarée comme "lampe".
 
-* La régulation secondaire ne fonctionne que lorsque le programme de la prise est en régulation principale"
+* La régulation secondaire ne fonctionne que lorsque le programme de la prise est en régulation principale
 
-* La régulation secondaire est prioritaire dans la Cultibox. Dans le cas ou ses conditions d'activations sont remplies, elle prend le pas sur la régulation classique*
+* La régulation secondaire est prioritaire dans la Cultibox. Dans le cas ou ses conditions d'activations sont remplies, elle prend le pas sur la régulation classique
 
 == Activation ==
 Pour activer la possibilité de mettre en place la régulation secondaire:
-  * Ouvrer l'onglet "Configuration"
+  * Ouvrez l'onglet "Configuration"
   * Mettre à "Oui" le champs situé en face de "Activer la régulation secondaire (Utilisateur expert seulement):"
-  * Cliquer sur "Enregistrer la configuration"
+  * Cliquez sur "Enregistrer la configuration"
 
 http://cultibox.googlecode.com/svn/wiki/img/regul_secondaire_activation.jpg        
 
 == Donnée climatique ==
 La régulation classique, gère la prise en fonction du type d'élément branché dessus. La régulation secondaire va jouer sur l'autre condition climatique.
-Par exemple, vous utiliser un humidificateur. La régulation "classique" va le mettre en marche pour augmenter le taux d’humidité. La régulation secondaire va donc jouer sur la deuxième donnée climatique: la température.
+Par exemple, vous utilisez un humidificateur. La régulation "classique" va mettre l'équipement en marche pour augmenter le taux d’humidité. La régulation secondaire va donc jouer sur la deuxième donnée climatique: la température.
 
 Pour chaque type d'élément, retrouvez dans le tableau ci-dessous, la donnée climatique gérée par la régulation secondaire.
 
@@ -47,10 +47,10 @@ Il n'est pas possible de définir un intervalle de temps pour l'activation de la
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_plugconf_regul_second.png
 
-Vous pouvez choisir si la prise doit se mettre en route lorsque la donnée climatique est supérieur ou inférieur à la consigne.
+Vous pouvez choisir si la prise doit se mettre en route lorsque la donnée climatique est supérieure ou inférieure à la consigne.
 
 Vous devez définir le seuil de déclenchement.
 
 == Impact de la régulation secondaire sur la régulation principale ==
-La régulation secondaire est prioritaire sur la régulation principale. Si les conditions définies pour la régulation secondaire sont respectées, alors la régulation secondaire entre en oeuvre et al régulation principale s’arrête. 
+La régulation secondaire est prioritaire sur la régulation principale. Si les conditions définies pour la régulation secondaire sont respectées, alors la régulation secondaire entre en oeuvre et la régulation principale s’arrête. 
 Il y a un autre impact: Dans la zone de transition de la régulation principale entre |Consigne - tolérance | et | consigne + tolérance | l'état de la prise dépend de son état précédent. Si la régulation secondaire entre en oeuvre, elle modifie l'état de la prise. Une fois que la régulation secondaire ne fonctionne plus, la régulation principale prend comme dernière état de la prise, l'état appliqué par la régulation secondaire. issue 479

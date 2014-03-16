@@ -15,7 +15,7 @@ Par défaut la régulation secondaire n'est pas activée. Afin de l’activer vo
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 
-Puis dans le premier onglet nommée *Interface* vous trouverez une ligne nommée: *Activer la régulation secondaire (Utilisateur expert seulement)*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer la régulation secondaire.
+Puis dans le premier onglet nommé *Interface* vous trouverez une ligne nommée: *Activer la régulation secondaire (Utilisateur expert seulement)*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer la régulation secondaire.
 
 
 == Paramétrage de la régulation secondaire ==
@@ -26,10 +26,10 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs.png
 
 Pour configurer la régulation secondaire:
  * Dans l'onglet *Prises*, choisissez le type de votre prise. La régulation secondaire n'est pas disponible pour les types *Lampe* et *Autre*
- * Une fois le type choisis vous verrez apparaître une nouvelle option de configuration nommée *Régulation secondaire (utilisateur expert seulement)*, par défaut définit sur *Arrêt*. Pour activer la régulation secondaire de cette prise, mettre la valeur de ce champ sur *Marche*.
+ * Une fois le type choisi vous verrez apparaître une nouvelle option de configuration nommée *Régulation secondaire (utilisateur expert seulement)*, par défaut définit sur *Arrêt*. Pour activer la régulation secondaire de cette prise, mettre la valeur de ce champ sur *Marche*.
  * Il ne vous reste plus qu'à paramétrer votre régulation avec les nouveaux champs qui s'affichent:
    * *Déclenchement en fonction de*: est défini par défaut en fonction du type de la prise. Un ventilateur ou un chauffage se déclencheront en fonction de l'humidité tandis qu'un humidificateur et un déshumidificateur se déclencheront en fonction de la température
-   * *Déclenchement si la mesure est en*: Permet de définir si la prise doit se déclencher si on dépasse la valeur ou si l'on est en dessous de la valeur du seuil
+   * *Déclenchement si la mesure est en*: permet de définir si la prise doit se déclencher si on dépasse la valeur ou si l'on est en dessous de la valeur du seuil
    * *Seuil de déclenchement*: la valeur qui définit quand votre prise doit se déclencher 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_5.png
@@ -40,7 +40,7 @@ Par défaut la modification des options avancées de régulation n'est pas activ
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 
-Puis dans le premier onglet nommée *Interface* vous trouverez une ligne nommée: *Autoriser la modification des options avancées de régulation*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer les options avancées de régulation.
+Puis dans le premier onglet nommé *Interface* vous trouverez une ligne nommée: *Autoriser la modification des options avancées de régulation*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer les options avancées de régulation.
 
 == Paramétrage des options avancées de régulation  ==
 Une fois activée les options avancées de régulation sont disponibles dans l'onglet *Prises* du menu principal:
@@ -48,7 +48,7 @@ Une fois activée les options avancées de régulation sont disponibles dans l'o
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_advanced_options_regul.png
 
 Les options avancées vous permettent:
- * De choisir le ou les capteurs seront utilisés pour réguler votre environnement
+ * De choisir le ou les capteurs qui seront utilisés pour réguler votre environnement
  * De savoir si la régulation doit se faire sur la moyenne des valeurs de plusieurs capteurs, leur minimum ou leur maximum. La régulation secondaire est toujours réalisée à partir de la moyenne des capteurs.
 
 Il est à noter que ces options ne sont visibles qu'à partir du moment ou le type de l'équipement n'est pas définit comme une "lampe" ou un type "autre".
