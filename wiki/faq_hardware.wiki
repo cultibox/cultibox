@@ -1,4 +1,4 @@
-#summary Foire aux questions
+#summary Foire aux questions matériel
 
 = Sommaire =
 <wiki:toc max_depth="3" />

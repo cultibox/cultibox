@@ -1,9 +1,9 @@
-#summary Interface logiciel
+#summary FAQ
 
 = Introduction =
 
 Cette section regroupe les différentes foires aux questions concernant le matériel, le logiciel ou tous le reste concernant le produit CUltibox. 
 
 = Sommaire =
-  * [faq_hardware FAQ Matérielle]
-  * [faq_software FAQ Logicielle]
+  * [faq_hardware FAQ Matériel]
+  * [faq_software FAQ Logiciel]

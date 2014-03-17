@@ -1,4 +1,4 @@
-#summary Foire aux questions
+#summary Foire aux questions logiciel
 
 = Sommaire =
 <wiki:toc max_depth="3" />
