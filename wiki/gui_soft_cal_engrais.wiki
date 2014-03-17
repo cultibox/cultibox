@@ -18,7 +18,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioRoot Plus* || *BioSevia Bloom* || *BioSevia Grow* || *Bioprotect* || *Diamond Nectar* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioRoot Plus* || *BioSevia Bloom* || *BioSevia Grow* || *Bioprotect* || *Diamond Nectar* ||
 || 1 ||  || ||  || 0,2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  || 2 ml/l||
 || 2 ||  || ||  || 0,2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 5 ml/l|| 2 ml/l||
 || 3 ||  || ||  || 0,2 ml/l||  || 1,5 ml/l||  || 2 ml/l||
@@ -33,7 +33,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioRoot Plus* || *BioSevia Bloom* || *BioSevia Grow* || *Bioprotect* || *Diamond Nectar* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioRoot Plus* || *BioSevia Bloom* || *BioSevia Grow* || *Bioprotect* || *Diamond Nectar* ||
 || 1 ||  || ||  || 0,2 ml/l|| 0,3 ml/l|| 0,3 ml/l|| 5 ml/l|| 2 ml/l||
 || 2 ||  || ||  || 0,2 ml/l|| 0,3 ml/l|| 0,3 ml/l||  || 2 ml/l||
 || 3 ||  || ||  || 0,2 ml/l||  || 1,5 ml/l||  || 2 ml/l||
@@ -50,7 +50,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
 || 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
@@ -66,7 +66,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Coco ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
 || 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
@@ -82,7 +82,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
 || 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,75 ml/l|| 0,4 g/l||  ||
@@ -100,7 +100,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Coco ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
 || 3 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
@@ -116,7 +116,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
 || 3 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
@@ -132,7 +132,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 0,3 ml/l||  ||  ||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,3 ml/l||  ||  ||
 || 3 ||  || ||  || 2 ml/l||  || 1,5 ml/l||  || 0,6 ml/l|| 0,4 g/l||  ||
@@ -150,7 +150,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Coco ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
 || 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
@@ -166,7 +166,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
 || 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
@@ -182,7 +182,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
 || 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
@@ -200,7 +200,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Coco ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
 || 1 ||  || ||  || 2 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
 || 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
@@ -216,7 +216,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
 || 1 ||  || ||  || 2 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
 || 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
@@ -232,7 +232,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
 || 1 ||  || ||  || 2 ml/l||  || 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
 || 2 ||  || ||  || 2 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
 || 3 ||  || ||  || 2 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 1,75 ml/l||
@@ -250,7 +250,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || 0,8||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
 || 2 ||  || 1,1||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
 || 3 ||  || 1,3||  || 2 ml/l||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
@@ -266,7 +266,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Coco ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || 0,8||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
 || 2 ||  || 1,1||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
 || 3 ||  || 1,3||  || 2 ml/l||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
@@ -282,7 +282,7 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
+|| *Semaine* || *Note* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
 || 1 ||  || 0,22||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
 || 2 ||  || 0,45||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
 || 3 ||  || 0,58||  || 2 ml/l||  || 2 ml/l|| 0,65 ml/l|| 0,65 ml/l|| 0,65 ml/l|| 0,4 g/l||  ||
@@ -304,7 +304,7 @@ Source : [http://www.hesinutrients.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Complexe Floraison* || *Complexe Racinaire* || *Falc* || *Phospore Plus* || *PowerZyme* || *SuperVit* || *TNT Complexe* ||
+|| *Semaine* || *Note* || *EC* || *Complexe Floraison* || *Complexe Racinaire* || *Falc* || *Phospore Plus* || *PowerZyme* || *SuperVit* || *TNT Complexe* ||
 || 1 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
 || 2 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
 || 3 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
@@ -319,7 +319,7 @@ Source : [http://www.hesinutrients.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Complexe Racinaire* || *Falc* || *Hydro Croissance* || *Hydro Floraison* || *PK 13/14* || *PowerZyme* || *SuperVit* ||
+|| *Semaine* || *Note* || *EC* || *Complexe Racinaire* || *Falc* || *Hydro Croissance* || *Hydro Floraison* || *PK 13/14* || *PowerZyme* || *SuperVit* ||
 || 1 ||  || || 5 ml/l||  || 2,5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||
 || 2 ||  || || 5 ml/l||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||
 || 3 ||  || || 5 ml/l||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||
@@ -334,7 +334,7 @@ Source : [http://www.hesinutrients.com Schéma de culture]
 
 === Coco ===
 
-|| *Semaine* || *Remarque* || *EC* || *Coco* || *Complexe Racinaire* || *Falc* || *PK 13/14* || *PowerZyme* || *SuperVit* || *TNT Complexe* ||
+|| *Semaine* || *Note* || *EC* || *Coco* || *Complexe Racinaire* || *Falc* || *PK 13/14* || *PowerZyme* || *SuperVit* || *TNT Complexe* ||
 || 1 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
 || 2 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
 || 3 ||  || ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
@@ -355,7 +355,7 @@ Source : [http://www.biobizz.com/fr/ Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bio-Bloom* || *Bio-grow* || *RootJuice* || *Topmax* ||
+|| *Semaine* || *Note* || *EC* || *Bio-Bloom* || *Bio-grow* || *RootJuice* || *Topmax* ||
 || 1 ||  || ||  ||  || 1-4 ml/l||  ||
 || 2 ||  || ||  || 1 ml/l||  ||  ||
 || 3 ||  || ||  || 1 ml/l||  ||  ||
@@ -373,7 +373,7 @@ Source : [http://www.biobizz.com/fr/ Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Alg-A-mic* || *Bio-Bloom* || *Bio-grow* || *RootJuice* || *Topmax* ||
+|| *Semaine* || *Note* || *EC* || *Alg-A-mic* || *Bio-Bloom* || *Bio-grow* || *RootJuice* || *Topmax* ||
 || 1 ||  || ||  ||  ||  || 1-4 ml/l||  ||
 || 2 ||  || ||  ||  || 2 ml/l||  ||  ||
 || 3 ||  || ||  ||  || 2 ml/l||  ||  ||
@@ -395,7 +395,7 @@ Source : [http://www.house-garden.us/ Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Algen extract* || *Amino Treatment* || *Bud XL* || *Multi Enzym* || *Roots Excelurator* || *Terre A B* || *Top Booster* || *Top Shooter* ||
+|| *Semaine* || *Note* || *EC* || *Algen extract* || *Amino Treatment* || *Bud XL* || *Multi Enzym* || *Roots Excelurator* || *Terre A B* || *Top Booster* || *Top Shooter* ||
 || 1 ||  || 1,2|| 1 ml/l|| 0,25 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
 || 2 ||  || 1,2|| 1 ml/l|| 0,35 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
 || 3 ||  || 1,2|| 1 ml/l|| 0,5 ml/l||  ||  || 0,3 ml/l|| 1,5 ml/l||  ||  ||
@@ -410,7 +410,7 @@ Source : [http://www.house-garden.us/ Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Algen extract* || *Amino Treatment* || *Bud XL* || *Hydro A B* || *Multi Enzym* || *Roots Excelurator* || *Shooting Powder* || *Top Booster* ||
+|| *Semaine* || *Note* || *EC* || *Algen extract* || *Amino Treatment* || *Bud XL* || *Hydro A B* || *Multi Enzym* || *Roots Excelurator* || *Shooting Powder* || *Top Booster* ||
 || 1 ||  || 1,2|| 1 ml/l|| 0,2 ml/l||  || 1 ml/l||  || 0,3 ml/l||  ||  ||
 || 2 ||  || 1,2|| 1 ml/l|| 0,25 ml/l||  || 1 ml/l||  || 0,3 ml/l||  ||  ||
 || 3 ||  || 1,2|| 1 ml/l|| 0,35 ml/l||  || 1 ml/l||  || 0,3 ml/l||  ||  ||
@@ -425,7 +425,7 @@ Source : [http://www.house-garden.us/ Schéma de culture]
 
 === Coco ===
 
-|| *Semaine* || *Remarque* || *EC* || *Algen extract* || *Amino Treatment* || *Bud XL* || *Coco A B* || *Multi Enzym* || *Roots Excelurator* || *Shooting Powder* || *Top Booster* ||
+|| *Semaine* || *Note* || *EC* || *Algen extract* || *Amino Treatment* || *Bud XL* || *Coco A B* || *Multi Enzym* || *Roots Excelurator* || *Shooting Powder* || *Top Booster* ||
 || 1 ||  || 1,2|| 1 ml/l|| 0,2 ml/l||  || 1 ml/l||  || 0,3 ml/l||  ||  ||
 || 2 ||  || 1,2|| 1 ml/l|| 0,25 ml/l||  || 1 ml/l||  || 0,3 ml/l||  ||  ||
 || 3 ||  || 1,2|| 1 ml/l|| 0,35 ml/l||  || 1 ml/l||  || 0,3 ml/l||  ||  ||
@@ -446,7 +446,7 @@ Source : [http://www.plagron.co.uk/ Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Enzymes* || *Green Sensation* || *Power Roots* || *Terra Bloom* || *Terra Grow* ||
+|| *Semaine* || *Note* || *EC* || *Enzymes* || *Green Sensation* || *Power Roots* || *Terra Bloom* || *Terra Grow* ||
 || 1 ||  || || 1 ml/l||  || 10 ml/l||  ||  ||
 || 2 ||  || || 1 ml/l||  ||  ||  || 5 ml/l||
 || 3 ||  || || 1 ml/l||  ||  || 5 ml/l||  ||
@@ -461,7 +461,7 @@ Source : [http://www.plagron.co.uk/ Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Alga-Bloom* || *Alga-Grow* || *Green Sensation* || *Power Roots* || *Vita Race (Phyt-Amin)* ||
+|| *Semaine* || *Note* || *EC* || *Alga-Bloom* || *Alga-Grow* || *Green Sensation* || *Power Roots* || *Vita Race (Phyt-Amin)* ||
 || 1 ||  || ||  || 1 ml/l||  || 1 ml/l|| 3 ml/l||
 || 2 ||  || ||  || 1 ml/l||  || 1 ml/l|| 3 ml/l||
 || 3 ||  || || 4 ml/l||  ||  ||  || 5 ml/l||
@@ -476,7 +476,7 @@ Source : [http://www.plagron.co.uk/ Schéma de culture]
 
 === Aero ===
 
-|| *Semaine* || *Remarque* || *EC* || *Alga-Bloom* || *Alga-Grow* || *Green Sensation* || *Power Roots* || *Vita Race (Phyt-Amin)* ||
+|| *Semaine* || *Note* || *EC* || *Alga-Bloom* || *Alga-Grow* || *Green Sensation* || *Power Roots* || *Vita Race (Phyt-Amin)* ||
 || 1 ||  || ||  || 1 ml/l||  || 1 ml/l|| 3 ml/l||
 || 2 ||  || ||  || 1 ml/l||  || 1 ml/l|| 3 ml/l||
 || 3 ||  || || 4 ml/l||  ||  ||  || 5 ml/l||
@@ -491,7 +491,7 @@ Source : [http://www.plagron.co.uk/ Schéma de culture]
 
 === Coco ===
 
-|| *Semaine* || *Remarque* || *EC* || *Alga-Bloom* || *Alga-Grow* || *Green Sensation* || *Power Roots* || *Vita Race (Phyt-Amin)* ||
+|| *Semaine* || *Note* || *EC* || *Alga-Bloom* || *Alga-Grow* || *Green Sensation* || *Power Roots* || *Vita Race (Phyt-Amin)* ||
 || 1 ||  || ||  || 1 ml/l||  || 1 ml/l|| 3 ml/l||
 || 2 ||  || ||  || 1 ml/l||  || 1 ml/l|| 3 ml/l||
 || 3 ||  || || 4 ml/l||  ||  ||  || 5 ml/l||
@@ -512,7 +512,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Grow* ||
+|| *Semaine* || *Note* || *EC* || *Bloom* || *Grow* ||
 || 3 ||  || ||  || 4 ml/l||
 || 4 ||  || ||  || 4 ml/l||
 || 5 ||  || ||  || 4 ml/l||
@@ -527,7 +527,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Catalyst* || *Grow* ||
+|| *Semaine* || *Note* || *EC* || *Bloom* || *Catalyst* || *Grow* ||
 || 1 ||  || || 1,3 ml/l|| 0,7 ml/l|| 2 ml/l||
 || 2 ||  || ||  || 1,3 ml/l|| 4 ml/l||
 || 3 ||  || ||  || 1,3 ml/l|| 4 ml/l||
@@ -544,7 +544,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
+|| *Semaine* || *Note* || *EC* || *Bloom* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
 || 1 ||  || || 1,3 ml/l|| 0,7 ml/l|| 2 ml/l||  || 0,7 ml/l||
 || 2 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
 || 3 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
@@ -561,7 +561,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Big Bloomin Guano* || *Bloom* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
+|| *Semaine* || *Note* || *EC* || *Big Bloomin Guano* || *Bloom* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
 || 1 ||  || || 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 2 ml/l||  || 0,7 ml/l||
 || 2 ||  || || 0,7 ml/l||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
 || 3 ||  || || 0,7 ml/l||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
@@ -578,7 +578,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Sugar peak Flowering* || *Sugar peak Vegetative* ||
+|| *Semaine* || *Note* || *EC* || *Sugar peak Flowering* || *Sugar peak Vegetative* ||
 || 1 ||  || ||  || 1,3 ml/l||
 || 2 ||  || ||  || 5,3 ml/l||
 || 3 ||  || ||  || 5,3 ml/l||
@@ -595,7 +595,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Sugar peak Flowering* || *Sugar peak Grande Finale* || *Sugar peak Vegetative* ||
+|| *Semaine* || *Note* || *EC* || *Sugar peak Flowering* || *Sugar peak Grande Finale* || *Sugar peak Vegetative* ||
 || 1 ||  || ||  ||  || 1,3 ml/l||
 || 2 ||  || ||  ||  || 5,3 ml/l||
 || 3 ||  || ||  ||  || 5,3 ml/l||
@@ -612,7 +612,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Sugar peak Briximus Maximus* || *Sugar peak Flowering* || *Sugar peak Grande Finale* || *Sugar peak Transition* || *Sugar peak Vegetative* ||
+|| *Semaine* || *Note* || *EC* || *Sugar peak Briximus Maximus* || *Sugar peak Flowering* || *Sugar peak Grande Finale* || *Sugar peak Transition* || *Sugar peak Vegetative* ||
 || 1 ||  || ||  ||  ||  ||  || 1,3 ml/l||
 || 2 ||  || ||  ||  ||  ||  || 5,3 ml/l||
 || 3 ||  || ||  ||  ||  ||  || 5,3 ml/l||
@@ -629,7 +629,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Hi-Brix Bloom Part B* || *Hi-Brix Grow Part A* ||
+|| *Semaine* || *Note* || *EC* || *Hi-Brix Bloom Part B* || *Hi-Brix Grow Part A* ||
 || 1 ||  || || 1,3 ml/l|| 2,7 ml/l||
 || 2 ||  || || 2,7 ml/l|| 5,3 ml/l||
 || 3 ||  || || 2,7 ml/l|| 5,3 ml/l||
@@ -646,7 +646,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Sweet And Heavy Bloom* || *Sweet And Heavy Finish* || *Sweet And Heavy Grow* || *Sweet And Heavy Prime* ||
+|| *Semaine* || *Note* || *EC* || *Sweet And Heavy Bloom* || *Sweet And Heavy Finish* || *Sweet And Heavy Grow* || *Sweet And Heavy Prime* ||
 || 1 ||  || || 0,7 ml/l||  || 2 ml/l|| 1,3 ml/l||
 || 2 ||  || || 1,3 ml/l||  || 5,3 ml/l|| 2,6 ml/l||
 || 3 ||  || || 1,3 ml/l||  || 5,3 ml/l|| 2,6 ml/l||
@@ -663,7 +663,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *SeaBlast Bloom* || *SeaBlast Grow* || *SeaBlast Transition* ||
+|| *Semaine* || *Note* || *EC* || *SeaBlast Bloom* || *SeaBlast Grow* || *SeaBlast Transition* ||
 || 1 ||  || ||  || 0,33 ml/l||  ||
 || 2 ||  || ||  || 1,32 ml/l||  ||
 || 3 ||  || ||  || 1,32 ml/l||  ||
@@ -680,7 +680,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Big Bloomin Guano* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
+|| *Semaine* || *Note* || *EC* || *Big Bloomin Guano* || *Catalyst* || *Grow* || *Meta-K* || *MicroBlast* ||
 || 1 ||  || || 1,3 ml/l|| 0,7 ml/l|| 2 ml/l||  || 0,7 ml/l||
 || 2 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
 || 3 ||  || ||  || 1,3 ml/l|| 4 ml/l|| 1 ml/l|| 1,3 ml/l||
@@ -699,7 +699,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
@@ -715,7 +715,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
@@ -733,7 +733,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
@@ -749,7 +749,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
@@ -767,7 +767,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
@@ -783,7 +783,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bloom* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Grow* || *Humic Acid* || *Micro* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 ||  || || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
@@ -801,7 +801,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Bloom A* || *Sensi Bloom B* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Bloom A* || *Sensi Bloom B* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  || 2 ml/l||
 || 2 ||  || || 2 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  || 2 ml/l||
 || 3 ||  || ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  ||  ||
@@ -817,7 +817,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Bloom A* || *Sensi Bloom B* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Bloom A* || *Sensi Bloom B* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  || 2 ml/l||
 || 2 ||  || || 2 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  || 2 ml/l||
 || 3 ||  || ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  ||  ||
@@ -835,7 +835,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Bloom A* || *Sensi Bloom B* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Bloom A* || *Sensi Bloom B* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 2 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 3 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
@@ -851,7 +851,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Bloom A* || *Sensi Bloom B* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Bloom A* || *Sensi Bloom B* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 2 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 3 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
@@ -869,7 +869,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Bloom A* || *Sensi Bloom B* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Bloom A* || *Sensi Bloom B* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 2 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 3 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
@@ -885,7 +885,7 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
+|| *Semaine* || *Note* || *EC* || *B-52* || *Barricade* || *Big Bud* || *Bud Blood* || *Carboload* || *Falc* || *Final Phase* || *Fulvic Acid* || *Humic Acid* || *Mother Earth Tea* || *Overdrive* || *Piranha* || *Sensi Grow A* || *Sensi Grow B* || *SensiZym* || *Voodoo Juice* ||
 || 1 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l|| 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 2 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l|| 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 3 ||  || || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l|| 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
@@ -907,7 +907,7 @@ Source : [http://www.canna.com/ Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Aqua Flores* || *Aqua Vega* || *CannaBoost* || *CannaZym* || *PK 13/14* || *Rhizotonic* ||
+|| *Semaine* || *Note* || *EC* || *Aqua Flores* || *Aqua Vega* || *CannaBoost* || *CannaZym* || *PK 13/14* || *Rhizotonic* ||
 || 1 ||  || 1,1||  || 2 ml/l||  ||  ||  || 4 ml/l||
 || 2 ||  || 1,6||  || 2,5 ml/l||  || 2,5 ml/l||  || 1 ml/l||
 || 3 ||  || 1,6||  || 2,5 ml/l||  || 2,5 ml/l||  || 1 ml/l||
@@ -924,7 +924,7 @@ Source : [http://www.canna.com/ Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Aqua Flores* || *CannaBoost* || *CannaZym* || *Hydro Flores* || *Hydro Vega* || *PK 13/14* || *Rhizotonic* ||
+|| *Semaine* || *Note* || *EC* || *Aqua Flores* || *CannaBoost* || *CannaZym* || *Hydro Flores* || *Hydro Vega* || *PK 13/14* || *Rhizotonic* ||
 || 1 ||  || 1,1||  ||  ||  ||  || 2 ml/l||  || 4 ml/l||
 || 2 ||  || 1,6||  ||  || 2,5 ml/l||  || 3 ml/l||  || 1 ml/l||
 || 3 ||  || 1,6||  ||  || 2,5 ml/l||  || 3 ml/l||  || 1 ml/l||
@@ -945,7 +945,7 @@ Source : [http://www.premiergrow.com Schéma de culture]
 
 === Terre ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Grow* || *Microbase* ||
+|| *Semaine* || *Note* || *EC* || *Bloom* || *Grow* || *Microbase* ||
 || 1 ||  || 0,6|| 4 ml/l|| 4 ml/l|| 4 ml/l||
 || 2 ||  || 0,9|| 8 ml/l|| 8 ml/l|| 8 ml/l||
 || 3 ||  || 1,2|| 11 ml/l|| 11 ml/l|| 11 ml/l||
@@ -960,7 +960,7 @@ Source : [http://www.premiergrow.com Schéma de culture]
 
 === Hydro ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Grow* || *Microbase* ||
+|| *Semaine* || *Note* || *EC* || *Bloom* || *Grow* || *Microbase* ||
 || 1 ||  || 0,6|| 4 ml/l|| 4 ml/l|| 4 ml/l||
 || 2 ||  || 0,9|| 8 ml/l|| 8 ml/l|| 8 ml/l||
 || 3 ||  || 1,2|| 11 ml/l|| 11 ml/l|| 11 ml/l||
@@ -975,7 +975,7 @@ Source : [http://www.premiergrow.com Schéma de culture]
 
 === Aero ===
 
-|| *Semaine* || *Remarque* || *EC* || *Bloom* || *Grow* || *Microbase* ||
+|| *Semaine* || *Note* || *EC* || *Bloom* || *Grow* || *Microbase* ||
 || 1 ||  || 0,6|| 4 ml/l|| 4 ml/l|| 4 ml/l||
 || 2 ||  || 0,9|| 8 ml/l|| 8 ml/l|| 8 ml/l||
 || 3 ||  || 1,2|| 11 ml/l|| 11 ml/l|| 11 ml/l||
