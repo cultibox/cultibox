@@ -51,9 +51,7 @@ http://cultibox.googlecode.com/svn/wiki/img/install_mac_8.png
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_mac1.png
 
   * Vous pouvez aussi entrer l'adresse suivante dans votre navigateur Internet: 
-{{{
 http://localhost:6891/cultibox/
-}}}
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_mac1.png
 
@@ -64,9 +62,7 @@ Pour mettre à jour votre logiciel, il vous suffira de suicre les mêmes étapes
 = Désinstallation =
 
 Pour désintaller le logiciel de votre ordinateur, il vous suffira de lancer le script de désinstallation en double-cliquant sur le fichier: 
-{{{
 /Applications/cultibox/package/uninstall
-}}}
 
 Le programme peut vous demander un mot de passe afin de réaliser la désintallation, il vous suffira de rentrer votre mot de passe utilisateur.
 
