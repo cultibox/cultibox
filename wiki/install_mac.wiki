@@ -51,7 +51,10 @@ http://cultibox.googlecode.com/svn/wiki/img/install_mac_8.png
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_mac1.png
 
   * Vous pouvez aussi entrer l'adresse suivante dans votre navigateur Internet: 
+
+{{{
 http://localhost:6891/cultibox/
+}}}
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_start_mac1.png
 
