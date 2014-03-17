@@ -64,7 +64,7 @@ Traitement des actions différées (triggers) pour mime-support...
 Traitement des actions différées (triggers) pour gnome-menus...
 }}}
  
-*Note:* POur les versions d'Ubuntu plus ancienne que Ubuntu 13.10  Saucy Salamender,  il existe une version 32bits (nommée i386) et une version 64bits (nommée amd64). Il vous faudra choisir la version en fonction de votre environnement Linux Ubuntu. Si cette dernière est installée en version 64bits, il vous faudra récupérer le fichier amd64, sinon prenez la version i386.
+*Note:* Pour les versions d'Ubuntu plus anciennes que *Ubuntu 13.10 Saucy Salamender*,  il existe une version 32bits (nommée i386) et une version 64bits (nommée amd64). Il vous faudra choisir la version en fonction de votre environnement Linux Ubuntu. Si cette dernière est installée en version 64bits, il vous faudra récupérer le fichier amd64, sinon prenez la version i386.
 Pour vérifier cela sur votre système, tapez simplement la commande suivante dans un terminal:
 
 {{{
