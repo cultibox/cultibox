@@ -24,7 +24,10 @@ Le capteur permet de mesurer en temps réel la température et l'humidité.
 = Mise en place =
 
  * Débrancher votre Cultibox
- * Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.  http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12_2.png
+ * Connecter le câble RJ12 entre le capteur et la Cultibox. En fonction du numéro du capteur, brancher le câble sur le port correspondant.  
+
+http://cultibox.googlecode.com/svn/wiki/img/assemblage_RJ12_2.png
+
  * Brancher votre Cultibox
 
 La mise en place est terminée.
