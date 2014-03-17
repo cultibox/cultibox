@@ -17,11 +17,15 @@ Pour installer le logiciel Cultibox sur un environnement Linux Ubuntu, vous avez
 
 Pour installer le logiciel en ligne de commande, il vous suffira de taper la commande suivante dans un terminal (droits administrateurs requis):
 
+{{{
 sudo dpkg -i <nom_paquet_cultibox>
+}}}
 
 En remplaçant <nom_paquet_cultibox> par le nom du paquet (fichier .deb) que vous avez téléchargé. Par exemple:
 
+{{{
 sudo dpkg -i cultibox-ubuntu-noarch_1.1.12.deb
+}}}
 
 
 L'affichage suivant devrait apparaitre:
