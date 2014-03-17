@@ -1,4 +1,4 @@
-#summary Capteur d'humidité et de Température
+#summary Capteur température et humidité 
 
 = Sommaire =
 <wiki:toc max_depth="3" />
