@@ -1,11 +1,11 @@
-#summary Base de donnée
+#summary Base de données
 
 = Sommaire =
 <wiki:toc max_depth="4" />
 
 = Introduction =
 
-Le logiciel Cultibox utilise une base de donnée gérée par le serveur MySQL.
+Le logiciel Cultibox utilise une base de données gérée par le serveur MySQL.
 
 Dans la suite de cette aide, les commandes sont exécutées à partir de l'invite de commande de MySQL. Pour la lancer :
 
