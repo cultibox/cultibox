@@ -18,7 +18,7 @@ Dans l'onglet programme, mettre le même programme que le programme de l'extract
 
 Ce qui va se passer: lorsque la température va devenir trop haute, l'extracteur va se mettre en route. Au même moment, la prise CO2 va s’arrêter (comme si c'était un chauffage).
 
-= Augmenter la plage d’hystérésis sans changer la valeur de déclenchement =
+= Augmenter la plage d'hystérésis sans changer la valeur de déclenchement =
 En fonction de votre environnement de culture, une prise en régulation peut changer un peu trop souvent d'état.
 Exemple: un extracteur avec une valeur de tolérance de 1,0°C, en régulation à 24°C change d'état à 23°C (extinction) et à 25°C (mise en route). Vous souhaitez que la valeur de mise en route (25°C) ne change pas mais que le ventilateur s’arrête lorsque la température la température atteint 21°C. 
 Pour ce faire, il faut choisir une valeur de régulation située exactement à mis chemin entre les seuils de déclenchement (21°C et 25°C) et appliquer une tolérance égale à la moitié de l'écart entre les deux seuils de déclenchement. 
