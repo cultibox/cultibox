@@ -6,17 +6,17 @@
 = Introduction =
 Cette partie de la documentation vous aide pour gérer les cas atypiques.
 
-= CO² =
-En fonction de l'équipement que vous possédez, il y a plusieurs façons de gérer le CO².
+= CO2 =
+En fonction de l'équipement que vous possédez, il y a plusieurs façons de gérer le CO2.
 
 == Extinction de l'appareil lorsque l'extracteur est en route ==
-Ce cas d'utilisation se présente lorsque l'appareil pilotant le CO² se régule tout seul. La seule chose que vous souhaitez faire est de couper l'arrivée de CO² lorsque l'extracteur se met en route. En d'autres termes, lorsque la température devient trop haute, le ventilateur doit se mettre en route et le CO² doit s’arrêter.
+Ce cas d'utilisation se présente lorsque l'appareil pilotant le CO2 se régule tout seul. La seule chose que vous souhaitez faire est de couper l'arrivée de CO2 lorsque l'extracteur se met en route. En d'autres termes, lorsque la température devient trop haute, le ventilateur doit se mettre en route et le CO2 doit s’arrêter.
 
-Programmer de façon classique votre extracteur. On souhaite que le CO² se coupe lorsque la température dépasse la consigne de l'extracteur. On doit donc choisir pour cette prise le [https://code.google.com/p/cultibox/wiki/gui_soft_conf#Configuration_des_prises type "chauffage"]. Toujours dans cet onglet, mettre la même tolérance pour la régulation que la valeur mise pour l'extracteur.
+Programmer de façon classique votre extracteur. On souhaite que le CO2 se coupe lorsque la température dépasse la consigne de l'extracteur. On doit donc choisir pour cette prise le [https://code.google.com/p/cultibox/wiki/gui_soft_conf#Configuration_des_prises type "chauffage"]. Toujours dans cet onglet, mettre la même tolérance pour la régulation que la valeur mise pour l'extracteur.
 
 Dans l'onglet programme, mettre le même programme que le programme de l'extracteur.
 
-Ce qui va se passer: lorsque la température va devenir trop haute, l'extracteur va se mettre en route. Au même moment, la prise CO² va s’arrêter (comme si c'était un chauffage).
+Ce qui va se passer: lorsque la température va devenir trop haute, l'extracteur va se mettre en route. Au même moment, la prise CO2 va s’arrêter (comme si c'était un chauffage).
 
 = Augmenter la plage d’hystérésis sans changer la valeur de déclenchement =
 En fonction de votre environnement de culture, une prise en régulation peut changer un peu trop souvent d'état.

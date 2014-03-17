@@ -13,7 +13,7 @@ Ce paragraphe concerne toutes les futures évolutions.
 
  * Capteur EC
  * Capteur PH
- * Capteur CO²
+ * Capteur CO2
  * Capteur T/RH sans fils
  * Beeper (Issue 586)
  * Variateur par onduleur
