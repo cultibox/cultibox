@@ -28,4 +28,7 @@ La Cultibox mémorise un tout petit bout du programme. Il n'est donc pas nécess
 
 = Avez-vous un modèle SketchUp de la Cultibox =
 
-Oui! Vous pouvez le retrouver dans l’entrepôt d'objet SketchUp (Warehouse). Le lien direct, est le suivant: http://sketchup.google.com/3dwarehouse/details?mid=81797e1f12ff0696f68ade8e51b8ff67
+Oui! Vous pouvez le retrouver dans l’entrepôt d'objets SketchUp (Warehouse). Le lien direct, est le suivant: 
+{{{
+http://sketchup.google.com/3dwarehouse/details?mid=81797e1f12ff0696f68ade8e51b8ff67
+}}}

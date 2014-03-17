@@ -58,7 +58,6 @@ sudo ln -s /opt/cultibox /opt/lampp
 sudo /opt/lampp/lampp start
 }}}
 
-<br />
 *Exemple de commandes pour Mac Os X* (le logiciel Cultibox est installé dans /Applications/cultibox et une autre installation de XAMPP a été déplacé vers /Applications/newXAMPP):
  * Suppréssion de l'ancien lien symbolique:
 {{{
