@@ -29,7 +29,7 @@ Une fenêtre s'affiche alors vous permettant de configurer votre annotation et d
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_add.png
 
-Il est à noter que dans la Cultibox, seul les champs *Sujet* et *Remarque* ne seront visibles.
+Il est à noter que dans la Cultibox, seul les champs *Sujet* et *Remarque* seront visibles.
 
 = Modifier ou supprimer un évènement =
 
