@@ -23,11 +23,11 @@ Deux actions sont possibles à partir de cet écran:
 == Défilement des informations ==
 
 En cliquant à droite ou a gauche, on fait défiler différentes informations:
- # Température actuelle
- # Humidité actuelle
- # Température Min / Max de la journée
- # Humidité Min / Max de la journée
- # Événement du jour
+ * Température actuelle
+ * Humidité actuelle
+ * Température Min / Max de la journée
+ * Humidité Min / Max de la journée
+ * Événement du jour
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil.png
 
