@@ -61,6 +61,7 @@ EOF
             cp conf-package/uninstall  ../01_src/01_xampp/cultibox/package/
             cp -R conf-package/cultibox.app ../01_src/01_xampp/cultibox/
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
+            cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/VERSION_FIRM.txt
 
             mkdir ../01_src/01_xampp/cultibox/run
             cp conf-script/* ../01_src/01_xampp/cultibox/run/

@@ -48,6 +48,7 @@ case "$1" in
            cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/htdocs/cultibox
            cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/htdocs/cultibox/main/docs/documentation_cultibox.pdf
            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
+           cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/VERSION_FIRM.txt
            cp conf-package/lgpl3.txt ../01_src/01_xampp/LICENSE.txt
 
 

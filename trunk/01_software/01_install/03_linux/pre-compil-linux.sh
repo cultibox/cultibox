@@ -43,6 +43,7 @@ case "$1" in
            cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
            cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
+           cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/opt/lampp/VERSION_FIRM.txt
 
            cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/opt/lampp/etc/
@@ -94,17 +95,18 @@ EOF
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
             cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
+            cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/opt/lampp/VERSION_FIRM.txt
 
-           cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/
-           cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/opt/lampp/etc/
-           cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/extra/
-           cp conf-lampp/properties.ini ../01_src/01_xampp/cultibox/opt/lampp/
+            cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/
+            cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/opt/lampp/etc/
+            cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/extra/
+            cp conf-lampp/properties.ini ../01_src/01_xampp/cultibox/opt/lampp/
 
-           cp -R conf-script ../01_src/01_xampp/cultibox/opt/lampp/run
-           cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
-           cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
-           cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt
-           cat > ../01_src/01_xampp/cultibox/opt/lampp/etc/my-extra.cnf << "EOF" 
+            cp -R conf-script ../01_src/01_xampp/cultibox/opt/lampp/run
+            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
+            cp conf-package/cultibox.png ../01_src/01_xampp/cultibox/opt/lampp/
+            cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/opt/lampp/LICENSE.txt
+            cat > ../01_src/01_xampp/cultibox/opt/lampp/etc/my-extra.cnf << "EOF" 
 [client]
 user="root"
 password="cultibox"
@@ -144,6 +146,8 @@ EOF
             cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
             cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
+            cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/opt/lampp/VERSION_FIRM.txt
+
 
            cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/opt/lampp/etc/
