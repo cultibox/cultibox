@@ -20,7 +20,7 @@ msgid "WELCOME_TITLE"
 msgstr "Bienvenido en el programa de configuración de la Cultibox"
 
 msgid "DID_YOU_KNOW"
-msgstr "Le saviez-vous?"
+msgstr "Lo sabias?"
 
 msgid "WELCOME_MESSAGE"
 msgstr "Este programo permite comunicar con vuestra Cultibox. Se puede configurar, visualizar datos y acceder a otras funciones como el consumo eléctrico y la creación de calendarios de cultivos."
@@ -178,28 +178,29 @@ msgid "SECOND_REGUL_ENABLE"
 msgstr "Activar la regulación segundaría (usuario experto)"
 
 msgid "ADVANCED_REGUL_OPTIONS"
-msgstr "Autoriser la modification des options avancées de régulation"
+msgstr "Autorizar la modificación de las opciones avanzadas de regulación"
 
 msgid "FORMAT_PROGRESS"
-msgstr "Progression du formatage"
+msgstr "Progresión del formateo"
 
 msgid "SUCCESS_FORMAT"
-msgstr "Formatage de la carte réalisé avec succès"
+msgstr "Formateo de la tarjeta realizado con éxito"
 
 msgid "ERROR_FORMAT"
-msgstr "Erreur lors du formatage de la carte SD"
+msgstr "Error durante el formateo de la tarjeta SD"
 
 msgid "ALARM_DESCRIPTION"
-msgstr "L'alarme de la Cultibox permet d'éteindre toutes les prises lorsque la sécurité de l'espace de culture est en jeu. Définissez une température qui, une fois dépassée, provoque la coupure de toute les prises. <br /><br /><b>Attention</b>: une fois ce seuil atteint, les prises se coupent et la Cultibox ne reviendra à un état normale que lorsque vous aurez acquitté l'alarme directement sur le boitier."
+msgstr "El alarma de la Cultibox permite apagar todos los enchufes cuando la seguridad 
+del entorno de cultivo esta amenazada. Definir una temperatura limite, en cuanto esta alcanzada , se apagaran todos los enchufes. <br /><br /><b>Cuidado</b>:una vez esta temperatura alcanzada, los enchufes se apagan y la Cultibox no volverá a su estado normal sino que se tendrá que desactivar manualmente el alarma directamente en la caja."
 
 msgid "SHOW_COST"
-msgstr "Afficher le menu de calcul des coûts"
+msgstr "Enseñar el menú de calculo de coste"
 
 msgid "SHOW_HISTORIC"
-msgstr "Afficher le menu d'historique de vos actions"
+msgstr "Enseñar el menú de histórico de sus acciones"
 
 msgid "RESET_MINMAX"
-msgstr "Remise à zéro du min/max"
+msgstr "Reseteo del min/max"
 
 msgid "WIFI_DESCRIPTION"
 msgstr "Le module Wi-Fi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox:e état des prises, configuration actuelle..."
@@ -486,40 +487,40 @@ msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
 msgstr "Exportar los logs de potencias"
 
 msgid "EXAMPLE_LOG"
-msgstr "Exemple de logs"
+msgstr "Ejemplo de logs"
 
 msgid "LOAD_LOG_PROGRESS"
-msgstr "Progression du chargement des logs"
+msgstr "Avance del cargamento de los logs"
 
 msgid "PROGRESS_POWER"
-msgstr "Progression du chargement des fichiers de puissance"
+msgstr "Avance del cargamento de los ficheros de potencia"
 
 msgid "PROGRESS_LOG"
-msgstr "Progression du chargement des fichiers de température et d'humidité"
+msgstr "Avance del cargamento de los ficheros de temperatura i humedad"
 
 msgid "ERROR_LOAD_LOG"
-msgstr "Erreur lors du chargement des logs, ceci peut être du à un temps de réponse trop long, recommencez l'opération pour vous en assurer"
+msgstr "Error durante el cargamento de los logs, puede ocurrir por culpa de un tiempo de respuesta demasiado largo , reintentar la operación para asegurarse."
 
 msgid "DELETE_ALL_LOGS"
-msgstr "Supprimer tous les logs existant"
+msgstr "Borrar todos los logs existentes"
 
 msgid "DELETE_SPECIFIC_LOGS"
-msgstr "Supprimer les logs d'une période précise"
+msgstr "Borrar los logs de un periodo de tiempo concreto"
 
 msgid "DELETE_LOGS_FROM"
-msgstr "Supprimer les logs du (AAAA-MM-JJ)"
+msgstr "Borrar los logs del (AAAA-MM-DD)"
 
 msgid "DELETE_LOGS_TO"
-msgstr "jusqu'au (AAAA-MM-JJ)"
+msgstr "hasta el (AAAA-MM-DD)"
 
 msgid "ERROR_DELETE_LOGS"
-msgstr "Problème lors de la suppréssion des logs dans la base."
+msgstr "Error durante la supresión de los logs en la base de datos"
 
 msgid "ERROR_FORMAT_DATE"
-msgstr "Erreur dans le format de la date (AAAA-MM-JJ). Le jour de fin doit être égal ou supérieur ou jour de départ"
+msgstr "Error en el formato de la fecha (AAAA-MM-DD). El día de fin tiene que ser superior o igual al dia de inicio."
 
 msgid "DELETE_PROGRESS"
-msgstr "Progression de la suppréssion"
+msgstr "Avance de la supresión"
 
 msgid "SUMARY_MAX_TEMP"
 msgstr "Temperatura máxima"
@@ -632,25 +633,25 @@ msgid "PLUG_MAX_POWER"
 msgstr "Tipo de enchufe(potencia máxima)"
 
 msgid "SAVE_AND_CONFIGURE_PROGRAM"
-msgstr "Sauvegarder les changements et configurer le programme de la prise"
+msgstr "Guardar los cambios y configurar el programa del enchufe"
 
 msgid "CONFIGURE_REGUL_TOLERANCE"
-msgstr "Tolérance de la régulation secondaire"
+msgstr "Tolerancia de la regulación segundaria"
 
 msgid "COMPUTE_REGUL_METHOD"
-msgstr "Méthode de calcul de la valeur de régulation"
+msgstr "Método de calculo del valor de regulación"
 
 msgid "AVERAGE"
-msgstr "Moyenne"
+msgstr "Media"
 
 msgid "MINIMUM"
-msgstr "Minimum"
+msgstr "Mínimo"
 
 msgid "MAXIMUM"
-msgstr "Maximum"
+msgstr "Máximum"
 
 msgid "JUMPTO_WIZARD"
-msgstr "Utiliser l'assistant pour configurer cette prise"
+msgstr "Usar el asistente para configurar este enchufe"
 
 msgid "DIMMER"
 msgstr "Variateur"
@@ -661,7 +662,7 @@ msgstr "Canal"
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
-msgstr "Visualiser le comportement actuel de la prise"
+msgstr "Visualizar el comportamiento actual del enchufe"
 
 msgid "CONFIGURE_PROGRAM"
 msgstr "Configurar acción del enchufe"
@@ -838,22 +839,22 @@ msgid "RESET_CONFIRM_PROGRAM"
 msgstr "Seguro de reinicializar el programa para el/los enchufe(s) seleccionado(s)?"
 
 msgid "DATA_LABEL"
-msgstr "Afficher les états des prises selectionnées"
+msgstr "Ensenar los estados de los enchufes seleccionados"
 
 msgid "BEHAVIOUR"
-msgstr "Comportement"
+msgstr "Comportamiento"
 
 msgid "REGULATION"
-msgstr "régulation"
+msgstr "regulación"
 
 msgid "CONFIRM_SAME_PROGRAM"
-msgstr "Les heures du programme rentrées sont les mêmes que le précédent programme. Ceci modifiera votre ancien programme, voulez-vous appliquer ce programme tout de même?"
+msgstr "Los horarios del programa son los mismos que el programa precedente. Eso modificara su programa precedente, desea aplicar este programa?"
 
 msgid "JUMPTO_PLUG"
-msgstr "Configurer la prise associée à ce programme"
+msgstr "Configurar el enchufe asociado a este programa"
 
 msgid "ERROR_MAX_PROGRAM"
-msgstr "Programme mis à jour mais le nombre maximal de changement, limité à 250 pour toutes les prises confondues, a été atteint. Votre programme peut ne pas être complet."
+msgstr "Programa actualizado , pero el numero máximo de cambios , limitados a 250 para todos los enchufes , ha sido alcanzado. Su programa puede estar incompleto."
 
 msgid "CYCLIC_DURATION_TIME"
 msgstr "Ciclo período"
@@ -944,42 +945,42 @@ msgid "WIZARD_OTHER_PLUG_TYPE"
 msgstr "Elegir el tipo de enchufe a usar: <ul class='list_class_wizard'><li>un calentador para aumentar la temperatura </li><li>un ventilador para bajar la temperatura</li><li>un humidificador para bajar el porcentaje de humedad</li><li>un deshumidificador para bajar la humedad</li><li>una bomba de agua para aumentar el nivel de agua</li><li>una lámpara</li><li>el tipo 'otro' sirve para cualquier otro equipamiento.<br /><br />Si se elige la configuración de una nueva lámpara , esa tiene que ser <b>menos potente que 200 Vatios</b>"
 
 msgid "START_TIME_LAMP"
-msgstr "Heure d'allumage de la lampe"
+msgstr "Horario de arranque de la lámpara"
 
 msgid "END_TIME_LAMP"
-msgstr "Heure d'extinction de la lampe"
+msgstr "Horario de apago de la lámpara"
 
 msgid "START_TIME_EQUIPMENT"
-msgstr "Heure d'allumage de l'équipement"
+msgstr "Horario de arranque del equipo"
 
 msgid "END_TIME_EQUIPMENT"
-msgstr "Heure d'extinction de l'équipement"
+msgstr "Horario de apago del equipo"
 
 
 #For the calendar part:
 msgid "CALENDAR_TITLE"
-msgstr "Calendrier"
+msgstr "Calendario"
 
 msgid "CALENDAR_ENGRAIS"
-msgstr "Planification d'engrais"
+msgstr "Planificación de abono"
 
 msgid "CALENDAR_SUBSTRAT"
-msgstr "Substrat utilisé"
+msgstr "Sustrato usado"
 
 msgid "CALENDAR_PROGRAM"
-msgstr "Programme d'engrais à appliquer"
+msgstr "Programa de abono a aplicar"
 
 msgid "CALENDAR_STARTDATE"
-msgstr "Date de départ du programme"
+msgstr "Fecha de inicio del programa"
 
 msgid "CREATE_CALENDAR_PROGRAM"
-msgstr "Créer le programme dans le calendrier"
+msgstr "Crear el programa en el calendario"
 
 msgid "DISABLED_CREATE_CALENDAR_PROGRAM"
-msgstr "Aucun fichier XML présent pour créer un programme"
+msgstr "Ningún fichero XML presente para crear un programa"
 
 msgid "DISABLED_XML_FILE"
-msgstr "Aucun fichier XML détecté"
+msgstr "Ningún fichero XML detectado"
 
 msgid "WHAT_DIALOG_CALENDAR"
 msgstr "Que quiere hacer?"
@@ -1090,31 +1091,31 @@ msgid "VALID_DELETE_CALENDAR"
 msgstr "Calendario borrado con excito"
 
 msgid "VALID_ADD_CALENDAR"
-msgstr "Calendrier mis à jour avec le programme selectionné"
+msgstr "Calendario actualizado con el programa seleccionado"
 
 msgid "MANAGE_EXTERNAL_XML"
-msgstr "Gestion des fichiers XML externes"
+msgstr "Gestión de los ficheros XML externos"
 
 msgid "DISABLED_MANAGE_EXTERNAL_XML"
-msgstr "Aucun calendrier XML présent"
+msgstr "Ningún calendario XML presente"
 
 msgid "XML_DISPLAYED_FILE"
-msgstr "Fichiers XML à afficher"
+msgstr "Ficheros XML a ensenar"
 
 msgid "CALENDAR_EVENT_NAME"
-msgstr "Nom de l’évènement"
+msgstr "Nombre del evento"
 
 msgid "CALENDAR_SELECT_CROISSANCE"
-msgstr "Sélection de la partie à appliquer"
+msgstr "Selección de la parte a aplicar"
 
 msgid "CALENDAR_CROISSANCE"
-msgstr "Croissance"
+msgstr "Crecimiento"
 
 msgid "CALENDAR_FLORAISON"
-msgstr "Floraison"
+msgstr "Floración"
 
 msgid "CALENDAR_CROISSANCE_+_FLORAISON"
-msgstr "Croissance + Floraison"
+msgstr "Crecimiento + Floración"
 
 msgid "CALENDAR_IMPORTANT"
 msgstr "Hecho Relevante"
@@ -1227,28 +1228,28 @@ msgid "CONFIGURE_STOP_HC"
 msgstr "Fin de las horas con precio entero: (HH:MM)"
 
 msgid "PROGRESS_COST_REAL"
-msgstr "Calcul du coût réel en cours"
+msgstr "Calculo del coste real en curso"
 
 msgid "PROGRESS_COST_THEORICAL"
-msgstr "Calcul du coût théorique en cours"
+msgstr "Calculo del coste teórico en curso"
 
 msgid "COMPUTE_COST"
-msgstr "Calcul du coût de votre installation en cours"
+msgstr "Calculo del coste de su instalación en curso"
 
 msgid "COMPUTE_COST_PLUG_REAL"
-msgstr "Calcul du coût réel pour la prise"
+msgstr "Calculo del coste real para el enchufe"
 
 msgid "COMPUTE_COST_PLUG_THEORICAL"
-msgstr "Calcul du coût théorique pour la prise"
+msgstr "Calculo del coste teórico para el enchufe"
 
 msgid "ERROR_COMPUTE_COST"
-msgstr "Erreur lors du calcul du coût de votre installation"
+msgstr "Error durante el calculo del coste de su instalación"
 
 msgid "VALID_REAL_COST_COMPUTE"
-msgstr "Calcul du coût réel réalisé avec succés"
+msgstr "Calculo del coste real realizado con excito"
 
 msgid "VALID_THEORICAL_COST_COMPUTE"
-msgstr "Calcul du coût théorique réalisé avec succés"
+msgstr "Calculo del coste teórico realizado con excito"
 
 
 # For the historic part:
@@ -1349,10 +1350,10 @@ msgstr "Licencia"
 
 # For the errors or warnings part:
 msgid "INFORMATION"
-msgstr "Information(s)"
+msgstr "Información(nes)"
 
 msgid "WARNING"
-msgstr "Avertissement(s)"
+msgstr "Advertencia(s)"
 
 msgid "ERROR_UPDATE_SQL"
 msgstr "Error en la petición SQL UPDATE"
@@ -1364,7 +1365,7 @@ msgid "ERROR_SELECT_SQL"
 msgstr "Error en la petición SQL SELECT"
 
 msgid "EMPTY_DATA"
-msgstr "Aucun enregistrement de température et d'humidité à la date sélectionnée"
+msgstr "Ninguna grabación de la temperatura i humedad  para la fecha seleccionada"
 
 msgid "EMPTY_DATA_SENSOR"
 msgstr "Aucun enregistrement de température et d'humidité à la date sélectionnée pour le(s) capteur(s)"
@@ -1376,7 +1377,7 @@ msgid "ERROR_FORMAT_DATE_DAY_START"
 msgstr "Día de inicio: error en el formato de la fecha(AAAA-MM-DD)"
 
 msgid "ERROR_FORMAT_CALENDAR_DATE"
-msgstr "Erreur dans le format de la date (AAAA-MM-JJ)"
+msgstr "Error en el formato de la fecha (AAA-MM-DD)"
 
 msgid "ERROR_FORMAT_DATE_DAY_END"
 msgstr "Día de fin: error en el formato de la fecha(AAAA-MM-DD)"
@@ -1478,16 +1479,16 @@ msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "Imposible de acceder al fichero de puesta al día , comprobar su configuración"
 
 msgid "ERROR_POWER_PLUG"
-msgstr "La puissance de la prise"
+msgstr "La potencia del enchufe"
 
 msgid "UNCONFIGURED_POWER"
-msgstr "n'est pas configurée."
+msgstr "no esta configurado."
 
 msgid "CONFIGURABLE_PAGE_POWER"
-msgstr "Vous pouvez la configurer"
+msgstr "Puede configurarla"
 
 msgid "ERROR_POWER_PLUGS"
-msgstr "La puissance des prises"
+msgstr "La potencia de los enchufes"
 
 msgid "ERROR_HPC_TIME_NULL"
 msgstr "La hora de inicio o fin de las horas con tarifa reducida/reducida no está configurada, se puede configurar "
@@ -1496,19 +1497,19 @@ msgid "ERROR_COPY_TPL"
 msgstr "Imposible de copiar el fichero empty_64.tpl en su tarjeta SD "
 
 msgid "ERROR_COPY_FILE"
-msgstr "Erreur lors de la copie d'un fichier"
+msgstr "Error durante la copia de un fichero"
 
 msgid "ERROR_COPY_FIRM"
-msgstr "Erreur lors de la vérification ou de la copie d'un nouveau firmware"
+msgstr "Error durante la comprobación o copia de un nuevo firmware"
 
 msgid "ERROR_COPY_PLUGA"
-msgstr "Erreur lors de la copie des adresses des prises"
+msgstr "Error durante la copia de las direcciones de los enchufes"
 
 msgid "ERROR_COPY_PLUG_CONF"
-msgstr "Erreur lors de la copie de la configuration des prises"
+msgstr "Error durante la copia de la configuración de los enchufes"
 
 msgid "ERROR_COPY_INDEX"
-msgstr "Erreur lors de la copie du fichier index"
+msgstr "Error durante la copia del fichero índex"
 
 msgid "ERROR_COMPAT_BROWSER"
 msgstr "Su navegador no parece compatible con el programa Cultibox. Se podrá usar este programa pero algunas funciones no funcionarán. Aquí una lista de los navegadores compatibles:<br /><ul class='list_class'><li>Mozilla Firefox (versión 3 et más)</li><li>Internet Explorer (version 7 y más)</li><li>Google Chrome (Todas versiones)</li><li>Max Os X Safari (versión 5 y más)</li></ul>"
@@ -1535,13 +1536,13 @@ msgid "ERROR_RESET_PROGRAM"
 msgstr "Error en el reseteo del o de los programas"
 
 msgid "ERROR_MINIMAL_TIME"
-msgstr "Le temps minimal autorisé est de 5 minutes"
+msgstr "El tiempo mínimo autorizado es de 5 minutos"
 
 msgid "ERROR_SELECT_SENSOR"
-msgstr "Au moins un capteur doit être choisis pour la régulation, par défaut le capteur 1 sera selectionné"
+msgstr "Por lo menos un sensor tiene que estar usado para la regulación, por defecto el sensor 1 estará seleccionado"
 
 msgid "ERROR_ADD_CALENDAR_PROGRAM"
-msgstr "Erreur lors de l'enregistrement du calendrier à partir du programme selectionné"
+msgstr "Error durante la grabación del calendario a partir del programa seleccionado"
 
 msgid "LOCKED_CARD"
 msgstr "No se puede escribir en la tarjeta SD, asegúrese de que la tarjeta no está protegida contra escritura"
@@ -1624,7 +1625,7 @@ msgid "VALID_LOAD_LOG"
 msgstr "Ficheros de los logs de los últimos meses grabados con excitó"
 
 msgid "VALID_AUTO_LOAD_LOG"
-msgstr "Fichiers de logs des 31 derniers jours enregistrés avec succès"
+msgstr "Ficheros de logs de los últimos 31 días grabados con excito"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
 msgstr "Programa actualizado con excitó"
@@ -1651,12 +1652,12 @@ msgid "STILL_LOG_FILE"
 msgstr "Quedan ficheros más antiguos a subir, apretar el botón 'importar los logs'"
 
 msgid "MESSAGE_BOX"
-msgstr "Messages du logiciel"
+msgstr "Mensaje del software"
 
 
 # For the tooltip part:
 msgid "TOOLTIP_SEND_INFOS"
-msgstr "En activant cette option, vous permettez l'envoie d'informations sur un site distant afin d'aider au développement et à la correction d'erreurs du système Cultibox. Les informations envoyées concernent: la version du logiciel, le type de votre navigateur, les versions des firmwares de la Cultibox et votre type de système d'exploitation"
+msgstr "Activando esta opción, se permite el envió de informaciones a una pagina remota para ayudar el desarrollo y la corrección de errores del sistema Cultibox. Los datos enviados son: versiones del software, tipo de navegador, versiones de los firmwares de la Cultibox y sistema operativo empleado."
 
 msgid "TOOLTIP_VALUE"
 msgstr "La Cultibox va a apagar o encender el enchufe para alcanzar este valor."
@@ -1753,73 +1754,73 @@ msgid "TOOLTIP_EXPORT_POWER_CSV"
 msgstr "Exportar sus datos de potencia en un fichero con formato CSV"
 
 msgid "TOOLTIP_ADD_PLUG"
-msgstr "Cette fonctionnalité vous permet d'ajouter une prise dont vous pouvez directement configurer le programme sur cette page. Cette action revient à se déplacer dans la partie configuration et augmenter le nombre de prises de votre système"
+msgstr "Esa funcionalidad permite añadir un enchufe que se puede configurar directamente desde esta pagina. Es como ir a la sección configuración y aumentar el numero de enchufes de su sistema."
 
 msgid "TOOLTIP_REMOVE_PLUG"
-msgstr "Cette fonctionnalité vous permet de supprimer une prise utilisable dans votre système Cultibox. Cette action revient à se déplacer dans la partie configuration et diminuer le nombre de prises de votre système"
+msgstr "Esa funcionalidad permite eliminar un enchufe de su sistema Cultibox. Es como ir a la sección configuración y disminuir el numero de enchufes de su sistema."
 
 msgid "TOOLTIP_RESET_PROGRAM"
-msgstr "Cette fonctionnalité permet de remettre à zéro un programme. Le prise sélectionnée n'aura plus d'action attribuée, elle se retrouvera éteinte pour toute la journée"
+msgstr "Esa funcionalidad permite resetear un programa. El enchufe seleccionado no tendrá mas acción asociada , se encontrara apagada todo el día. "
 
 msgid "TOOLTIP_EXPORT_PROGRAM"
-msgstr "Cette fonctionnalité vous permet d'exporter un programme dans un format csv (lisible par un tableur). Ce fichier peut être utilisé pour appliquer, avec la fonction d'importation, un même programme sur d'autres prises ou encore afin d'échanger des programmes avec d'autres utilisateurs Cultibox"
+msgstr "Esa funcionalidad permite exportar un programa en formato csv ( que se puede leer con tabulador). Ese fichero puede ser usado para aplicar, con la función importación, un mismo programa para otros enchufes o intercambiar programas con otros usuarios Cultibox."
 
 msgid "TOOLTIP_IMPORT_PROGRAM"
-msgstr "Cette fonctionnalité permet d'importer un programme depuis un fichier csv (lisible par un tableur). Le fichier à importer peut être créé par la fonction d'exportation par un autre utilisateur Cultibox pour échanger des programmes ou depuis une autre de vos prises pour appliquer un même programme à plusieurs prises"
+msgstr "Esa funcionalidad permite importar un programa desde un fichero csv ( que se puede leer con un tabulador). Se puede crear con la función exportación un fichero echo por otro usuario Cultibox, para intercambiar programas o para aplicar un mismo programa a varios enchufes desde uno de sus enchufes."
 
 msgid "TOOLTIP_ADVANCED_REGUL_OPTIONS"
-msgstr "Si vous activez cette option, vous aurez la possibilité de choisir le ou les capteurs utilisé(s) pour la régulation ainsi que le mode de calcul"
+msgstr "Si se activa esa opción, se podrá elegir el o los sensores usado(s) para realizar la regulación y el modo de calculo."
 
 msgid "TOOLTIP_REPEAT_VALUE"
-msgstr "Cette valeur définit à quelle fréquence votre évènement sera répété. Par exemple, si votre évènement commence à 01:00:00 et que la répétition est de 04:00:00, l'évènement suivant débutera à 05:00:00. Le temps de répétition est ajouté au temps de départ de l'évènement pour déterminer le départ de l'évènement suivant. Le temps minimum autorisé est de 5mn."
+msgstr "Ese valor define con que frecuencia el evento será repetido. Por ejemplo, si el evento empieza a 01:00:00 y que la repetición es de 04:00:00, el siguiente evento empezara a 05:00:00. El tiempo de repetición se añade a la hora de inicio del evento con un mínimo de 5mm."
 
 msgid "TOOLTIP_RESET_OLD_PROGRAM"
-msgstr "En cochant cette case vous effacerez l'ancien programme de votre prise pour enregistrer votre nouvelle action sur un programme vide. Si vous ne cochez pas cette case, votre action se superposera au programme déjà enregistré."
+msgstr "Seleccionando esta casilla , se borrará el programa antiguo de su enchufe para grabar una nueva acción en un programa vacío. Si no se selecciona esta casilla , su acción se superpondrá al programa ya grabado."
 
 msgid "TOOLTIP_VALUE_PROGRAM"
-msgstr "Vous pouvez choisir jusqu'à trois fonctionnements différents pour votre équipement en fonction de son type: Marche (la prise sera en marche pour la période donnée), Arrêt (la prise sera à l'arrêt pour la période donnée) ou Régulation (la prise s'allumera et s'éteindra pour atteindre une valeur de température ou d'humidité déterminée - ne marche pas pour les prises définies comme ' autre' ou 'lampe')"
+msgstr "Se puede elegir hasta 3 funcionamientos distintos para su equito según su tipo: Marcha ( el enchufe se pondrá en marcha en el periodo definido), Paro ( el enchufe estará parado durante el periodo definido) o Regulación( el enchufe se activara o se parara para llegar a un valor determinado de temperatura o humedad- no funciona para los enchufes definido como ‘otro’ o ‘lámpara’)"
 
 msgid "TOOLTIP_REGUL_SECOND"
-msgstr "Si la régulation secondaire est activée dans la configuration du logiciel, ce champ affiche son état pour la prise sélectionnée: activée ou désactivée. Si la régulation est activée pour la prise sélectionnée, vous trouverez aussi les informations concernant la configuration de cette régulation."
+msgstr "Si la regulación segundaria esta activada en la configuración del software, este campo indica su estado para el enchufe seleccionado: activada o desactivada. Si la regulación esta activada para el enchufe seleccionado, se encontrara también las informaciones de la configuración de esta regulación. "
 
 msgid "TOOLTIP_SHOW_COST"
-msgstr "En activant cette option vous pouvez avoir accès à la page de calcul des coûts de votre installation grâce au menu 'Coût' qui apparaît dans la barre du menu principal"
+msgstr "Activando esa opción , se puede tener acceso a la pagina de calculo de coste de su instalación usando el menú ‘Coste’ que aparece en la barra del menú principal. "
 
 msgid "TOOLTIP_SHOW_HISTORIC"
-msgstr "En activant cette option vous pouvez avoir accès à la page d'affichage de l'historique de vos actions dans le logiciel grâce au menu 'Historique' qui apparaît dans la barre du menu principal"
+msgstr "Activando esa opción , se permite tener acceso a la pagina de histórico de sus acciones en el software usando el menú ‘Histórico’ que aparece en la barra del menú principal."
 
 msgid "TOOLTIP_RESET_MINMAX"
-msgstr "Ce champs permet de choisir l'heure de remise à zéro du min/max de tous les capteurs affichés sur l'écran de la Cultibox"
+msgstr "Ese campo permite definir la hora de reseteo del min/max de todos los sensores presentes en la pantalla de la Cultibox"
 
 msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
-msgstr "Cette valeur n'est modifiable que si vous avez autorisé la modification des options de régulation dans l'onglet configuration. Vous pouvez choisir comment est calculée la valeur utilisée pour effectuer la régulation"
+msgstr "Se puede modificar este valor solo si se ha autorizado esa modificación de las opciones de regulación en la pestaña configuración. Se puede elegir como se calcula el valor usado para realizar la regulación."
 
 msgid "TOOLTIP_RESET_CALENDAR"
-msgstr "Supprime toutes les annotations du calendrier que vous avez rentré manuellement. Ceci comprend les engrais de croissance possiblement ajoutés mais ne comprend pas les calendriers externes du type calendrier lunaire"  
+msgstr "Borra todas las anotaciones del calendario que se han entrado manualmente. Eso incluye los abonos de crecimiento posiblemente añadidos pero no los calendarios externos tipo calendario lunar."
 
 msgid "TOOLTIP_MANAGE_XML"
-msgstr "Permet de gérer facilement l'affichage des calendriers externes tel que les calendriers lunaires en sélectionnant les fichiers à afficher et ceux à cacher"
+msgstr "Permite gestionar fácilmente la visualización de los calendarios externos como los calendarios lunares seleccionando los ficheros a enseñar y los a esconder."
 
 msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
-msgstr "Créer simplement un programme d'engrais prédéfini. Ce type de programme est à créer à partir du premier jour où vous souhaitez appliquer vos engrais, le reste est calculé en fonction du substrat et de la marque d'engrais choisie"
+msgstr "Crear de manera sencilla un programa de abono predefinido. Este tipo de programa se debe crear a partir del primer día  en cual se quiere usar sus abonos, el resto esta calculado según el substrato y la marca de abono elegido."
 
 msgid "TOOLTIP_DEFINE_COST"
-msgstr "Cet onglet calcule le coût théorique et réel de votre installation.<br /><ul class='list_class_tooltip'><li><b>Le coût théorique</b> est réalisé à partir des informations de vos programmes de prise. La régulation (qui peut couper ou allumer une prise) n'est pas comptabilisée (la prise est considérée comme en marche). Le prix affiché sera donc le prix maximal si la régulation ne s'est pas déclenchée.<br /><br /></li><li><b>Le coût réel</b> est réalisé à partir des informations des fichiers de puissance (fichiers power: pwr_XX) de la Cultibox. Ces fichiers renseignent lorsqu'une prise s'est allumée et s'est étteinte. La régulation est donc prise en compte dans ce calcul de coût.</li></ul><b>Conclusion:</b> il est possible de noter de légères différences entre le calcul réel et le calcul théorique qui peuvent provenir d'une régulation non prise en compte ou encore de la précision des fichiers power (enregistrement toutes les X minutes alors que les programmes sont précis à la seconde)."
+msgstr "Esta pestaña calcula el coste teórico y real de su instalación.<br /><ul class='list_class_tooltip'><li><b>El coste teórico</b> se calcula según las informaciones de sus programas de enchufes. La regulación (que puede apagar o activar un enchufe) no esta contabilizada( el enchufe esta considerada como activada). El precio presentado será el precio máximo  si la regulación no se activa.<br /><br /></li><li><b>El coste real </b> se calcula según las informaciones de los ficheros de potencia( fichero power: pwr_XX) de la Cultibox. Esos ficheros indican cuando un enchufe se ha activado o apagado. La regulación se toma en cuenta en el calculo del coste.</li></ul><b>Conclusión:</b> Es posible notar ligeras diferencias entre el calculo real y el calculo teórico que puede venir de una regulación no tomada en cuenta o de la precisión de los ficheros power (grabación cada X minutos cuando los programas son precisos a la segunda)."
 
 msgid "TOOLTIP_CALENDAR_SUBSTRAT"
-msgstr "En fonction du substrat que vous sélectionnez, les programmes d'engrais sont filtrés. Vous ne pouvez sélectionner que des programmes associés à votre substrat."
+msgstr "Según el substrato seleccionado, los programas de abono están filtrados. Solo se puede seleccionar los programas asociados a su substrato."
 
 msgid "TOOLTIP_PROGRAM"
-msgstr "Ce champ vous permet de sélectionner le programme à appliquer. Pour connaitre plus précisément les quantités d'engrais appliquées veuillez vous référer à la documentation."
+msgstr "Este campo permite seleccionar el programa a aplicar. Para conocer mas precisamente las cantidades de abono usados , se tiene que referir a la documentación."
 
 msgid "TOOLTIP_CALENDAR_STARTDATE"
-msgstr "Grâce à ce champ, vous pouvez sélectionner le premier jour ou sera appliqué le programme d'engrais sélectionné."
+msgstr "Con este campo, se puede seleccionar el primer día en cual se aplicara el programa de abono seleccionado."
 
 msgid "TOOLTIP_CALENDAR_EVENT_NAME"
-msgstr "Ce champ permet de définir un nom pour votre programme d'engrais. Ce nom apparait dans le titre de chaque évènement."
+msgstr "Este campo permite definir un nombre a su programa de abono. Este nombre aparece en el titulo de cada evento."
 
 msgid "TOOLTIP_CALENDAR_SELECT_CROISSANCE"
-msgstr "Si vous choisissez croissance, les trois premières semaines du programme de culture seront appliquées. Si vous choisissez floraison, les huit dernières semaines du programme de culture seront appliquées."
+msgstr "Si se selecciona crecimiento, las tres primeras semanas del programa de cultivo se aplicaran. Si se selecciona floración , las ochos ultimas semanas del programa de cultivo se aplicaran."
 
 msgid "TOOLTIP_WIFI_SSID"
 msgstr "Le nom de votre réseau Wi-fi actuellement en marche. Il s'agit de l'identifiant (SSID) de votre réseau Wifi local."
