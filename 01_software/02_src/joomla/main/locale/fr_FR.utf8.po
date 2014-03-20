@@ -1660,7 +1660,7 @@ msgid "TOOLTIP_VALUE"
 msgstr "La Cultibox va éteindre ou allumer la prise pour atteindre cette valeur."
 
 msgid "TOOLTIP_DIMMER_VALUE"
-msgstr "La Cultibox va utiliser la prse variateur pour n'utiliser que la puissance désirée de l'équipement"
+msgstr "La Cultibox va utiliser la prise variateur pour n'utiliser que la puissance désirée de l'équipement"
 
 msgid "TOOLTIP_POWER"
 msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consommation de votre installation, son prix..."

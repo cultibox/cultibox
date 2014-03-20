@@ -67,7 +67,7 @@ msgid "CONFIGURE_WIFI"
 msgstr "Wi-Fi"
 
 msgid "CONFIGURE_WIFI_IP"
-msgstr "Adresse de votre module Wifi"
+msgstr "Dirección de su módulo Wifi"
 
 msgid "ALWAYS_RECORD"
 msgstr "Siempre"
@@ -145,16 +145,16 @@ msgid "CONFIGURE_WIFI_ACTIV"
 msgstr "Activar el sistema de Wi-Fi"
 
 msgid "CONFIGURE_WIFI_SSID"
-msgstr "Nom du réseau"
+msgstr "Nombre de la red"
 
 msgid "CONFIGURE_WIFI_KEY_TYPE"
-msgstr "Type de clef"
+msgstr "Tipo de clave"
 
 msgid "CONFIGURE_WIFI_PASSWORD"
-msgstr "Mot de passe du réseau"
+msgstr "Escriba la contraseña de la red"
 
 msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
-msgstr "Confirmation du mot de passe"
+msgstr "Confirmar contraseña"
 
 msgid "CHECK_UPDATE"
 msgstr "Comprobación automática actualización"
@@ -203,13 +203,13 @@ msgid "RESET_MINMAX"
 msgstr "Reseteo del min/max"
 
 msgid "WIFI_DESCRIPTION"
-msgstr "Le module Wi-Fi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox:e état des prises, configuration actuelle..."
+msgstr "El diálogo módulo Wi-Fi con Cultibox remota. Una vez que este módulo habilitada, un Wifi pestaña 'estará disponible en el menú del software que le permite ver el estado actual de su Cultibox: Estado socket electrónico, configuración actual ..."
 
 msgid "WIFI_IP_MANUAL"
-msgstr "Configurer l'adresse IP manuellement"
+msgstr "Configure la dirección IP manualmente"
 
 msgid "SHOW_CURRENT_PWD"
-msgstr "Laisser la souris clickée sur l'image pour afficher le mot de passe actuellement configuré"
+msgstr "Haga clic sobre la imagen para ver la contraseña configurado actualmente"
 
 
 # For the logs part:
@@ -654,7 +654,7 @@ msgid "JUMPTO_WIZARD"
 msgstr "Usar el asistente para configurar este enchufe"
 
 msgid "DIMMER"
-msgstr "Variateur"
+msgstr "Regulador de intensidad"
 
 msgid "CANAL"
 msgstr "Canal"
@@ -689,7 +689,7 @@ msgid "WATER_WISHED"
 msgstr "Nivel del agua deseada"
 
 msgid "DIMMER_WISHED"
-msgstr "Puissance voulue"
+msgstr "Potencia deseada"
 
 msgid "VALUE_ON"
 msgstr "Activar"
@@ -860,7 +860,7 @@ msgid "CYCLIC_DURATION_TIME"
 msgstr "Ciclo período"
 
 msgid "VALUE_DIMMER"
-msgstr "Variateur"
+msgstr "Regulador de intensidad"
 
 
 # For the export module highchart part:
@@ -1298,46 +1298,46 @@ msgstr "Exportar un programa"
 
 # For the wifi part:
 msgid "VIEW_PLUGS_STATE"
-msgstr "État actuel de vos prises"
+msgstr "Estado actual de los enchufes"
 
 msgid "VIEW_SENSOR_STATE"
-msgstr "État actuel de vos capteurs"
+msgstr "Estado actual de los sensores"
 
 msgid "PLUG_NUMBER"
-msgstr "Prise numéro"
+msgstr "Enchufe número"
 
 msgid "PLUG_UNKNOWN_STATE"
-msgstr "État de la prise inconnu"
+msgstr "Estado del enchufe  desconocido"
 
 msgid "PLUG_ON"
-msgstr "La prise est actuellement en marche"
+msgstr "El enchufe se está ejecutando"
 
 msgid "PLUG_OFF"
-msgstr "La prise est actuellement arrêtée"
+msgstr "El enchufe se está detenido"
 
 msgid "SHORT_ELEMENT_TYPE"
-msgstr "Type d'élément branché"
+msgstr "Tipo de componente conectado"
 
 msgid "SHORT_PLUG_TYPE"
-msgstr "Type de prise"
+msgstr "Tipo de enchufe"
 
 msgid "SENSOR_TYPE"
-msgstr "Type de capteur"
+msgstr "Tipo de sensor"
 
 msgid "NA"
 msgstr "N/A"
 
 msgid "SENSOR_TEMPHUMI"
-msgstr "température et humidité"
+msgstr "temperatura y humedad"
 
 msgid "SENSOR_T_WATER"
-msgstr "température immergeable"
+msgstr "temperatura sumergible"
 
 msgid "SENSOR_LEVEL_W"
-msgstr "niveau d'eau"
+msgstr "nivelk de agua"
 
 msgid "SENSOR_VALUE"
-msgstr "Dernière valeur enregistrée"
+msgstr "Último valor registrado"
 
 
 # For the footer:
@@ -1368,7 +1368,7 @@ msgid "EMPTY_DATA"
 msgstr "Ninguna grabación de la temperatura i humedad  para la fecha seleccionada"
 
 msgid "EMPTY_DATA_SENSOR"
-msgstr "Aucun enregistrement de température et d'humidité à la date sélectionnée pour le(s) capteur(s)"
+msgstr "No hay registro de temperatura y humedad para el(los) sensor(s) seleccionada(s)"
 
 msgid "EMPTY_POWER_DATA"
 msgstr "Ninguna grabación con respecto a potencia consumida para la fecha seleccionada."
@@ -1548,31 +1548,31 @@ msgid "LOCKED_CARD"
 msgstr "No se puede escribir en la tarjeta SD, asegúrese de que la tarjeta no está protegida contra escritura"
 
 msgid "ERROR_SSID_VALUE"
-msgstr "Le nom du réseau ne peut pas être vide"
+msgstr "El nombre de la red no puede estar vacío"
 
 msgid "ERROR_PASSWORD_VALUE"
-msgstr "Les mots de passe doivent correspondre"
+msgstr "Las contraseñas deben coincidir"
 
 msgid "ERROR_COPY_WIFI_CONF"
-msgstr "Erreur lors de la copie du fichier de configuration du module wifi"
+msgstr "Error al copiar el archivo de configuración del módulo de wifi"
 
 msgid "ERROR_WIFI_CONF"
-msgstr "Erreur durant l'écriture des fichiers de configuration du Wifi sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Error al escribir los archivos de configuración del Wifi en la tarjeta SD, compruebe que la tarjeta no está protegida contra escritura"
 
 msgid "ERROR_WIFI_IP"
-msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
+msgstr "Error en el formato de la dirección IP: XXX.XXX.XXX.XXX"
 
 msgid "ERROR_EMPTY_PASSWORD"
-msgstr "Le mot de passe ne peut pas être vide"
+msgstr "La contraseña no puede estar vacío"
 
 msgid "ERROR_ACCESS_INFO_WIFI"
-msgstr "Impossible d'accèder au module Wifi, verifiez-votre configuration"
+msgstr "No se puede acceder al módulo de Wifi, revise su configuración"
 
 msgid "ERROR_WEP_KEY_TYPE"
-msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombreus (0-9) et faire 5, 13 ou 29 caractères de long"
+msgstr "Error en el formato de la contraseña WEP: sólo debe contener números (0-9) y hacer 5, 13 o 29 caracteres de longitud"
 
 msgid "ERROR_WPA_KEY_TYPE"
-msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8 et 63 caractères"
+msgstr "Error en el formato de la frase de contraseña WPA: debe ser entre 8 y 63 caracteres"
 
 
 # For the informations part:
@@ -1663,7 +1663,7 @@ msgid "TOOLTIP_VALUE"
 msgstr "La Cultibox va a apagar o encender el enchufe para alcanzar este valor."
 
 msgid "TOOLTIP_DIMMER_VALUE"
-msgstr "La Cultibox va utiliser la prse variateur pour n'utiliser que la puissance désirée de l'équipement"
+msgstr "La Cultibox utilizará el regulador de intensidad  para emplear exclusivamente la potencia necesaria del equipamiento"
 
 msgid "TOOLTIP_POWER"
 msgstr "La potencia del equipo conectado. Llenar este campo permite calcular el consumo de su instalación , su precio… "
@@ -1823,13 +1823,13 @@ msgid "TOOLTIP_CALENDAR_SELECT_CROISSANCE"
 msgstr "Si se selecciona crecimiento, las tres primeras semanas del programa de cultivo se aplicaran. Si se selecciona floración , las ochos ultimas semanas del programa de cultivo se aplicaran."
 
 msgid "TOOLTIP_WIFI_SSID"
-msgstr "Le nom de votre réseau Wi-fi actuellement en marche. Il s'agit de l'identifiant (SSID) de votre réseau Wifi local."
+msgstr "El nombre de la red inalámbrica se está ejecutando actualmente. Es el identificador (SSID) de su red Wi-Fi local."
 
 msgid "TOOLTIP_WIFI_KEY_TYPE"
-msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
+msgstr "El tipo de clave de cifrado para el Wifi"
 
 msgid "TOOLTIP_WIFI_IP"
-msgstr "L'adresse de votre module Wifi peut être personalisée en rentrant une adresse ip au format XXX.XXX.XXX.XXX"
+msgstr "La dirección de su módulo inalámbrico se puede personalizar mediante la devolución de una dirección IP en el formato XXX.XXX.XXX.XXX"
 
 
 #For the debug part:
