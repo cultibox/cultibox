@@ -63,7 +63,7 @@ msgid "CONFIGURE_CARD"
 msgstr "Carte SD"
 
 msgid "CONFIGURE_WIFI"
-msgstr "Wi-Fi"
+msgstr "Wifi"
 
 msgid "CONFIGURE_WIFI_IP"
 msgstr "Adresse de votre module Wifi"
@@ -141,7 +141,7 @@ msgid "CONFIGURE_ALARM_VALUE"
 msgstr "Valeur du seuil de déclenchement de l'alarme"
 
 msgid "CONFIGURE_WIFI_ACTIV"
-msgstr "Activer le module Wi-Fi"
+msgstr "Activer le module Wifi"
 
 msgid "CONFIGURE_WIFI_SSID"
 msgstr "Nom du réseau"
@@ -201,7 +201,7 @@ msgid "RESET_MINMAX"
 msgstr "Remise à zéro du min/max"
 
 msgid "WIFI_DESCRIPTION"
-msgstr "Le module Wi-Fi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox:e état des prises, configuration actuelle..."
+msgstr "Le module Wifi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox:e état des prises, configuration actuelle..."
 
 msgid "WIFI_IP_MANUAL"
 msgstr "Configurer l'adresse IP manuellement"
@@ -1819,7 +1819,7 @@ msgid "TOOLTIP_CALENDAR_SELECT_CROISSANCE"
 msgstr "Si vous choisissez croissance, les trois premières semaines du programme de culture seront appliquées. Si vous choisissez floraison, les huit dernières semaines du programme de culture seront appliquées."
 
 msgid "TOOLTIP_WIFI_SSID"
-msgstr "Le nom de votre réseau Wi-fi actuellement en marche. Il s'agit de l'identifiant (SSID) de votre réseau Wifi local."
+msgstr "Le nom de votre réseau Wifi actuellement en marche. Il s'agit de l'identifiant (SSID) de votre réseau Wifi local."
 
 msgid "TOOLTIP_WIFI_KEY_TYPE"
 msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
