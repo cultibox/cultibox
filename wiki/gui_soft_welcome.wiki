@@ -18,7 +18,12 @@ Lors de votre première utilisation, la page d'accueil vous propose d’accéder
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_welcome_main.png
 
 
-Si vous avez déjà configuré des programmes, la page d'accueil propose l'accès aux trois principales sections: [gui_soft_logs Visualisation des logs], [gui_soft_prog Création des programmes] et [gui_soft_cal Calendrier]) ainsi que des informations utiles:
+Si vous avez déjà configuré des programmes, la page d'accueil propose l'accès aux trois principales sections: 
+ * [gui_soft_logs Visualisation des logs]
+ * [gui_soft_prog Création des programmes]
+ * [gui_soft_cal Calendrier]
+
+Ainsi que des informations utiles:
 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_welcome_link.png

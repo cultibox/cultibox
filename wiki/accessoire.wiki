@@ -1,4 +1,4 @@
-#summary Interface Boitier
+#summary Accessoires
 
 = Introduction =
 
