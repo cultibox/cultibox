@@ -97,7 +97,6 @@ proc parseTitle {line level} {
 }
 
 proc searchSumary {file} {
-   puts "Search summary $file"; update
    set summary ""
    set fid [open $file r]
 
@@ -220,9 +219,19 @@ proc parseCode {line} {
     return $line
 }
 
+# Fonction utilisé pour parser les mots en gras
+proc parseGras {line} {
+
+    if {[string first " *" $line] != -1 && ([string first "* " $line] != -1 || [string first "*." $line] != -1 || [string first "*," $line] != -1)} {
+        set line  [string map {" *" " \\textbf\{" "* " "\} " "*." "\}."  "*," "\}," "*" "\}"} $line]
+    }
+
+    return $line
+}
+
 #
 proc parse {inFileName outFileName level} {
-   puts "Parsing $inFileName"; update
+   puts "Parsing [file tail $inFileName]"; update
    set ::PageActualyParse [file tail $inFileName]
    
    if {[file exists $inFileName] != 1} {return 0}
@@ -268,16 +277,18 @@ proc parse {inFileName outFileName level} {
       if {$::inCode == 0} {set line [parseLink $line]}
       
       set line [parseCode $line]     
-      
+
       set line [parseListe $line]
       
       set line [parseCode $line]
-
-      set line [string map $::CaracSpeciauxEnd $line]
         
-      if {$::inCode == 0} {set line [parseTitle $line $level]}
-      
-      if {$::inCode == 0} {set line [parseTab $line]}
+      if {$::inCode == 0} {
+          set line [parseGras $line]
+          set line [string map $::CaracSpeciauxEnd $line]
+
+        set line [parseTitle $line $level]
+        set line [parseTab $line]
+      }
       
 	  if {$::inCode == 0} {set ::startInCode 0}
       if {$::startInCode == 1} {set line "$line\\newline"}
@@ -309,6 +320,9 @@ proc parse {inFileName outFileName level} {
       set ::inListe 0
       puts $out "\\end\{itemize\}"
    }   
+   
+   # Recherche de potentiel erreur
+
    close $fid
    close $out
 
