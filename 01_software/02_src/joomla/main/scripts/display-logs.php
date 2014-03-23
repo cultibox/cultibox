@@ -40,12 +40,12 @@ $check_tmp=array();
 $check_humi=array();
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
-$data_temp="";
-$data_humi="";
+$data_temp=array();
+$data_humi=array();
 $plug_type="";
 $select_plug="";
 $select_power=array();
-$select_sensor="1";
+$select_sensor=array();
 $startday="";
 $startmonth="";
 $startyear="";
@@ -68,6 +68,8 @@ $select_plug=getvar('select_plug');
 $startday=getvar('startday');
 $import_load=getvar('import_load');
 $resume_minmax="";
+$unselected_graph=array();
+
 if((!isset($import_load))||(empty($import_load))) {
     $import_load=2;
 }
@@ -76,16 +78,9 @@ $_SESSION['sensor_type']=get_sensor_db_type();
 
 if(isset($_POST['select_power'])) {
     $select_power=getvar('select_power');
-} elseif(isset($_POST['select_power_save'])) {
+} elseif(isset($_POST['select_power_save'])&&(!empty($_POST['select_power_save']))) {
     $select_power=explode(",",getvar('select_power_save'));
 }
-
-if(isset($_SESSION['select_sensor'])) {
-   $select_sensor=$_SESSION['select_sensor'];
-} else {
-    $select_sensor=getvar('select_sensor');
-}
-
 
 if(isset($_SESSION['startmonth'])) {
     $startmonth=$_SESSION['startmonth'];
@@ -98,6 +93,13 @@ if(isset($_SESSION['startyear'])) {
 } else {
     $startyear=getvar('startyear');
 }
+
+
+if((isset($_POST['unselected_graph']))&&(!empty($_POST['unselected_graph']))) {
+    $unselected_graph=explode(",",getvar('unselected_graph'));
+    print_r($unselected_graph);
+}
+
 
 
 if((isset($_POST['zoom_min_power']))&&(strcmp($_POST['zoom_min_power'],"-1")!=0)) {
@@ -305,16 +307,6 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 }
 
 
-
-
-
-//Cleaning SESSION variables useless right now:
-unset($_SESSION['startyear']);
-unset($_SESSION['startmonth']);
-unset($_SESSION['select_sensor']);
-
-
-
 //More default values:
 if((!isset($startday))||(empty($startday))) {
 	$startday=date('Y')."-".date('m')."-".date('d');
@@ -324,11 +316,6 @@ if((!isset($startday))||(empty($startday))) {
 $startday=str_replace(' ','',"$startday");
 if(!check_format_date($startday,"days")) {
     $startday=date('Y')."-".date('m')."-".date('d');
-}
-
-
-if((!isset($select_sensor))||(empty($select_sensor))) {
-    $select_sensor=1;
 }
 
 
@@ -342,6 +329,29 @@ if((!isset($startmonth))||(empty($startmonth))) {
 if((!isset($type))||(empty($type))){
 	$type="days";
 }
+
+
+if(isset($_SESSION['select_sensor'])) {
+   $select_sensor[]=$_SESSION['select_sensor'];
+} else {
+
+   if(isset($_POST['select_sensor'])) {
+       $select_sensor=getvar('select_sensor');
+    } elseif(isset($_POST['select_sensor_save'])) {
+       $select_sensor=explode(",",getvar('select_sensor_save'));
+    }
+}
+
+if((!isset($select_sensor))||(empty($select_sensor))||(count($select_sensor)==0)) {
+    $select_sensor[]="1";
+}
+
+
+//Cleaning SESSION variables useless right now:
+unset($_SESSION['startyear']);
+unset($_SESSION['startmonth']);
+unset($_SESSION['select_sensor']);
+
 
 if(isset($error_clean_log_file)) {
     $main_error[]=__('ERROR_WRITE_SD');
@@ -378,7 +388,6 @@ if(strcmp("$second_regul","True")==0) {
         }
     }
 } 
-
 
 if(!empty($resume_regul)) {
     $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b></p><br />".$resume_regul;
@@ -473,39 +482,21 @@ if("$type" == "days") {
       $stday=substr($startday, 8, 2);
 
       if(($check_log)||(!empty($datap))||(!empty($data))) {
-
-        if(strcmp("$select_sensor","all")!=0) {
-            get_graph_array($temperature,"temperature/100",$startday,$select_sensor,"False","0",$main_error);
-
-            if(!empty($temperature)) {
-                $data_temp=get_format_graph($temperature,"log");
-                get_graph_array($humidity,"humidity/100",$startday,$select_sensor,"False","0",$main_error);
-                if(!empty($humidity)) {
-                    $data_humi=get_format_graph($humidity,"log");
-                } 
-                format_minmax_sumary($startday,$main_error,$resume_minmax,$select_sensor);
-                if(!empty($resume_minmax)) {
-                    $resume_minmax="<p align='center'><b><i>".__('SUMARY_RESUME_MINMAX')." ".$startday.":</i></b></p>".$resume_minmax."<br />";
-                }
-            } else {
-                $main_error[]=__('EMPTY_DATA');
-            }
-        } else {
-            for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) {
-                format_minmax_sumary($startday,$main_error,$resume_minmax,$i);
-                get_graph_array($temperature,"temperature/100",$startday,$i,"False","0",$main_error);
+            foreach($select_sensor as $sens) { 
+                format_minmax_sumary($startday,$main_error,$resume_minmax,$sens);
+                get_graph_array($temperature,"temperature/100",$startday,$sens,"False","0",$main_error);
 
                 if(!empty($temperature)) {
                     $data_temp[]=get_format_graph($temperature,"log");
-                    get_graph_array($humidity,"humidity/100",$startday,$i,"False","0",$main_error);
+                    get_graph_array($humidity,"humidity/100",$startday,$sens,"False","0",$main_error);
                     if(!empty($humidity)) {
                         $data_humi[]=get_format_graph($humidity,"log");
                     }
                 } else {
                     if(!isset($mess)) {
-                        $mess=": $i";
+                        $mess=": $sens";
                     } else {
-                        $mess=$mess.", $i";
+                        $mess=$mess.", $sens";
                     }
                     $data_temp[]="";
                     $data_humi[]="";
@@ -517,41 +508,45 @@ if("$type" == "days") {
             if(!empty($resume_minmax)) {
                 $resume_minmax="<p align='center'><b><i>".__('SUMARY_RESUME_MINMAX')." ".$startday." (".__('ALL_SENSOR')."):</i></b></p>".$resume_minmax."<br />";
             }
-        }
       } else {
         get_graph_array($temperature,"temperature/100","%%","1","True","0",$main_error);
         $main_error[]=__('EMPTY_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
 
         if(!empty($temperature)) {
-          $data_temp=get_format_graph($temperature,"log");
+          unset($select_sensor);
+          $select_sensor[]=1;
+          $data_temp[]=get_format_graph($temperature,"log");
           $fake_log=true;
           get_graph_array($humidity,"humidity/100","%%","1","True","0",$main_error);
           if(!empty($humidity)) {
-            $data_humi=get_format_graph($humidity,"log");
+            $data_humi[]=get_format_graph($humidity,"log");
           }
         } 
      }
      $next=1;
 } else {
     $nb = date('t',mktime(0, 0, 0, $startmonth, 1, $startyear)); 
+    $data_tp="";
+    $data_hu="";
+
     for($i=1;$i<=$nb;$i++) {
         if($i<10) {
             $i="0$i";
          }
          $ddate="$startyear-$startmonth-$i";
-         get_graph_array($temperature,"temperature/100","$ddate",$select_sensor,"False","0",$main_error);
+         get_graph_array($temperature,"temperature/100","$ddate",$select_sensor[0],"False","0",$main_error);
 
-         if("$data_temp" != "" ) {
-            $data_temp="$data_temp, ".get_format_graph($temperature,"log");
+         if("$data_tp" != "" ) {
+            $data_tp="$data_tp, ".get_format_graph($temperature,"log");
          } else {
-            $data_temp=get_format_graph($temperature,"log");
+            $data_tp=get_format_graph($temperature,"log");
          }
          $temperature=array();
     }
 
-    if(str_replace("null, ","","$data_temp")=="null") {
+    if(str_replace("null, ","","$data_tp")=="null") {
          $main_error[]=__('EMPTY_DATA');
-         $data_humi=$data_temp;
+         $data_hu=$data_tp;
     } else {
         $nb = date('t',mktime(0, 0, 0, $startmonth, 1, $startyear));
         for($i=1;$i<=$nb;$i++) {
@@ -559,19 +554,19 @@ if("$type" == "days") {
             $i="0$i";
          }
          $ddate="$startyear-$startmonth-$i";
-         get_graph_array($humidity,"humidity/100","$ddate",$select_sensor,"False","0",$main_error);
+         get_graph_array($humidity,"humidity/100","$ddate",$select_sensor[0],"False","0",$main_error);
 
-         if("$data_humi" != "" ) {
-            $data_humi="$data_humi, ".get_format_graph($humidity,"log");
+         if("$data_hu" != "" ) {
+            $data_hu="$data_hu, ".get_format_graph($humidity,"log");
          } else {
-            $data_humi=get_format_graph($humidity,"log");
+            $data_hu=get_format_graph($humidity,"log");
          }
          $humidity=Array();
         }
     }
 
-    $data_temp=get_format_month($data_temp);
-    $data_humi=get_format_month($data_humi);
+    $data_temp[]=get_format_month($data_tp);
+    $data_humi[]=get_format_month($data_hu);
     $xlegend="XAXIS_LEGEND_MONTH";
     $styear=$startyear;
     $stmonth=$startmonth-1;
