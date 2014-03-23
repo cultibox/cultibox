@@ -129,14 +129,20 @@ proc parseTab {line} {
 		}
 		set nbCol [llength $lineSplitt]
 		set lineout ""
-		if {$nbCol > 11} {
+		if {$nbCol > 7} {
 			set ::Landscape 1
-			set lineout "\\begin{landscape}"
+			#set lineout "\\begin{landscape}"
+            set ::largeurTable 16
 		}
 
 		set LargeurCellule  [expr $::largeurTable / (1.0 * ${nbCol}) ]
 
-		set line "\\hline\n[join $lineSplitt " & "] \\tabularnewline"
+        if {$::Landscape == 1} {
+            set line "\\hline\n[string map {"_" " "} [join $lineSplitt " & "]] \\tabularnewline"
+        } else {
+            set line "\\hline\n[join $lineSplitt " & "] \\tabularnewline"
+        }
+		
 
 		if {$::inTab == 0} {
 			set line "${lineout}\n\\begin{tabular}\{|*\{${nbCol}\}\{p\{${LargeurCellule}cm\}|\}\}\n$line"
@@ -150,7 +156,8 @@ proc parseTab {line} {
 			set line "\\hline\n\\end{tabular}\n$line"
 			set ::inTab 0
 			if {$::Landscape == 1} {
-				set line "${line}\n\\end{landscape}"
+				set line "${line}\n" ;#\\end{landscape}"
+                set ::largeurTable 12
 			}
 			set ::Landscape 0
 		}
@@ -191,14 +198,18 @@ proc parseLink {line} {
         set textAfter [string range $line [expr $endLink + 1] end]
         set textLink  [string map {"\[" "" "\]" ""} [string range $line $startLink $endLink]]
 
-        if {[llength $textLink] >= 2} {
-            if {[string first "code.google.com" $line] == -1 && [string first "http" $line] != -1} {
-                set line "${textBefore}\\begin\{bfseries\}\\href\{[lindex $textLink 0]\}\{[lrange $textLink 1 end]\}\\end\{bfseries\}${textAfter}"
-            } else {
-                set TempLink [string map {"#" "_"} [removeDiatric [lindex [split [lindex $textLink 0] "/"] end]]]
-                set line "${textBefore}[lrange $textLink 1 end] (\\S \\ref\{${TempLink}\}\{\})${textAfter}"
-                #set line "${textBefore}${textAfter}"
+        if {$::inTab == 0} {
+            if {[llength $textLink] >= 2} {
+                if {[string first "code.google.com" $line] == -1 && [string first "http" $line] != -1} {
+                    set line "${textBefore}\\begin\{bfseries\}\\href\{[lindex $textLink 0]\}\{[lrange $textLink 1 end]\}\\end\{bfseries\}${textAfter}"
+                } else {
+                    set TempLink [string map {"#" "_"} [removeDiatric [lindex [split [lindex $textLink 0] "/"] end]]]
+                    set line "${textBefore}[lrange $textLink 1 end] (\\S \\ref\{${TempLink}\}\{\})${textAfter}"
+                    #set line "${textBefore}${textAfter}"
+                }
             }
+        } else {
+            set line "${textBefore}${textAfter}"
         }
     }
 
@@ -365,6 +376,7 @@ puts $fid {\usepackage{lscape}}
 puts $fid {\usepackage{calc}}
 puts $fid {\usepackage{xcolor}}
 puts $fid {\usepackage{pdflscape}}
+puts $fid {\usepackage{tabularx}}
 # puts $fid {\usepackage{wallpaper}}
 puts $fid {% These packages are all incorporated in the memoir class to one degree or another...}
 puts $fid {}
