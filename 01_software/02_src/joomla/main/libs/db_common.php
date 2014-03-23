@@ -3449,7 +3449,7 @@ EOF;
 
     return $res;
 }
-///
+/// }}}
 
 // {{{ get_canal_status()
 // ROLE get status of dimmer canal to get available canal to be used by new dimmer's configuration
@@ -3487,7 +3487,7 @@ EOF;
 
     return $status;
 }
-///
+/// }}}
 
 
 // {{{ get_sensor_db_type()
@@ -3510,7 +3510,7 @@ EOF;
     $db=null;
     return $res;
 }
-///
+/// }}}
 
 // {{{ get_sensor_db_type()
 // ROLE update sensor's type list 
@@ -3546,9 +3546,7 @@ EOF;
    }
    return true;
 }
-
-///
-
+/// }}}
 
 ?>
 

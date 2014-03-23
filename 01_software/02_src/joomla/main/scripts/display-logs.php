@@ -97,7 +97,6 @@ if(isset($_SESSION['startyear'])) {
 
 if((isset($_POST['unselected_graph']))&&(!empty($_POST['unselected_graph']))) {
     $unselected_graph=explode(",",getvar('unselected_graph'));
-    print_r($unselected_graph);
 }
 
 
@@ -472,6 +471,10 @@ if("$type" == "days") {
          if(!empty($data_power)) {
             $power_format=format_data_power($data_power);
             $datap=get_format_graph($power_format,"power");
+            $max_power_compute=max(explode(",",str_replace("null","0",$datap)));
+            if($max_power_compute==0) {
+                unset($max_power_compute);
+            }
          } else {
             $main_error[]=__('EMPTY_POWER_DATA');
          }
