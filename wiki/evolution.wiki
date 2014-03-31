@@ -1,4 +1,4 @@
-#summary Futurs évolutions
+#summary Futures évolutions
 
 = Sommaire =
 <wiki:toc max_depth="4" />
@@ -54,7 +54,7 @@ Ce paragraphe concerne toutes les futures évolutions.
  * Capteur température en milieu humide
  * Faire défiler les infos du calendrier sur l'écran de la culti
 
-= Évolution : réalisé =
+= Évolution : réalisée =
 
  * Logiciel: calendrier avec schéma de culture (depuis la version 1.1.36)
  
