@@ -17,7 +17,7 @@ Ce paragraphe concerne toutes les futures évolutions.
  * Capteur T/RH sans fils
  * Beeper (Issue 586)
  * Variateur par onduleur
- * Système d'alarme/de sécurité pour le niveau d'eau
+ * Système d'alarme/de sécurité pour le niveau d'eau  - détection débordement
 
 == Soft ==
 
