@@ -24,11 +24,11 @@ Ce paragraphe concerne toutes les futures évolutions.
  * Capteur utilisateur : permettre à l'utilisateur d'ajouter un capteur manuel dont il remplira tout seul les valeurs. Ces valeurs doivent pouvoir être affichées dans l'onglet des logs.
  * Application pour smartphone
  * Comparaison de courbes de capteur relevées
- * Amélioration de l'interface des programmes : suppression de bout du programme en live
+ * Amélioration de l'interface des programmes : suppression de bout du programme en live, modification des plages en live
  * Ajouter la possibilité de corriger la température en fonction de la pression
  * Programmation au jour 
  * Limite en régulation 
- * Traitement automatique des paiements paypal 
+ * Traitement automatique des paiements Paypal 
  * Configuration évoluée des prises dans le wizard 
  * Création d'outils de niveau 2 dans un nouveau logiciel (Comparaison de logs / jour ou par saison, création des programmes d'engrais, optimisation par rapport à la puissance consommée)
  * Création d'un système de logs et d'envoi de mail en cas d'erreur pour les installateurs
@@ -51,10 +51,9 @@ Ce paragraphe concerne toutes les futures évolutions.
 = Évolution : en test =
 
  * Capteur niveau d'eau
- * Capteur température en milieu humide
- * Faire défiler les infos du calendrier sur l'écran de la culti
 
 = Évolution : réalisée =
 
  * Logiciel: calendrier avec schéma de culture (depuis la version 1.1.36)
- 
+ * Faire défiler les infos du calendrier sur l'écran de la cultibox
+ * Capteur température en milieu humide
