@@ -43,7 +43,7 @@
         * [gui_box_menu_param_culti Cultibox]
         * [gui_box_menu_param_emettor Émetteur]
         * [gui_box_menu_param_sensor Capteur]
-  * [other Autre]       
+  * [other Annexe]       
     * [faq FAQ]
       * [faq_hardware FAQ Matérielle]
       * [faq_software FAQ Logicielle]
