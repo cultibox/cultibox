@@ -1,4 +1,0 @@
-﻿User-Agent: *    
-Disallow: /
-
-Sitemap: http://cultibox.highproshop.fr/sitemap.xml
