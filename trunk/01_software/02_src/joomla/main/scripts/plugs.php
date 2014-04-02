@@ -31,7 +31,6 @@ $advanced_regul=get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
 $update_program=false;
 $reset=getvar('reset');
 $reccord=getvar('reccord');
-$selected_plug=getvar('selected_plug');
 $pop_up_message="";
 $pop_up_error_message="";
 $update=get_configuration("CHECK_UPDATE",$main_error);
@@ -41,6 +40,18 @@ $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $jumpto=getvar("jumpto");
 $submit=getvar("submit_plugs");
 $jumpwizard=getvar("jumpwizard");
+$submenu=getvar("submenu",$main_error);
+
+// By default the expanded menu is the plug1 menu
+if((!isset($submenu))||(empty($submenu))) {
+        if(isset($_SESSION['submenu'])) {
+            $submenu=$_SESSION['submenu'];
+            unset($_SESSION['submenu']);
+        } else {
+            $submenu="1";
+        }
+}
+
 
 if((isset($jumpwizard))&&(!empty($jumpwizard))) {
        $url="./wizard-".$_SESSION['SHORTLANG']."?selected_plug=".$jumpwizard;
@@ -53,12 +64,6 @@ $main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTL
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
-}
-
-
-// Setting default value for selected_plug variable
-if((!isset($selected_plug))||(empty($selected_plug))) {
-   $selected_plug=1;
 }
 
 
@@ -149,9 +154,9 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
     if((!empty($enable))&&(isset($enable))&&(strcmp("$enable","$old_enable")!=0)) {
         insert_plug_conf("PLUG_ENABLED",$nb,$enable,$main_error);
         if(strcmp("$enable","True")==0) {
-            set_historic_value(__('VALID_ENABLED_PLUG')." (".__('PLUG_PAGE')." - ".__('PLUG_HISTO_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+            set_historic_value(__('VALID_ENABLED_PLUG')." (".__('PLUG_PAGE').")","histo_info",$main_error);
         } else {
-            set_historic_value(__('VALID_DISABLED_PLUG')." (".__('PLUG_PAGE')." - ".__('PLUG_HISTO_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+            set_historic_value(__('VALID_DISABLED_PLUG')." (".__('PLUG_PAGE').")","histo_info",$main_error);
         }
         $update_program=true;
         $plug_update=true;

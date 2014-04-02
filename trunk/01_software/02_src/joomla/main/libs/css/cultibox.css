@@ -130,6 +130,14 @@ td.conf-menu-marge {
     width: 5%;
 }
 
+td.menu-plug-item {
+    text-align: center;
+}
+
+td.conf-menu-marge-plug {
+    width: 10%;
+}
+
 td.right_log {
     width: 5%;
 }
