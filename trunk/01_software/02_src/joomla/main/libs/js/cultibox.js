@@ -649,6 +649,7 @@ $(document).ready(function() {
                                         $("#error_format").css("display","none");
                                         $( this ).dialog( "close" ); 
                                         $("#btnCancel").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
+                                        window.location.href="configuration-"+slang;
                                         return false;
                                     }
                                 }]

@@ -356,14 +356,11 @@ $(function () {
                },
                <?php if(isset($zoom_min_humi)) { 
                 echo "min: ".$zoom_min_humi.",";
-               } else { ?>
-                min: 0,
-               <?php } ?>
+               } ?>
+
                <?php if(isset($zoom_max_humi)) { 
                 echo "max: ".$zoom_max_humi.",";
-               } else { ?>
-                max: 100,
-               <?php } ?>
+               } ?>
                startOnTick: false,
                endOnTick: false, 
                allowDecimals: true,
@@ -397,15 +394,11 @@ $(function () {
                },
                <?php if(isset($zoom_min_temp)) { 
                 echo "min: ".$zoom_min_temp.",";
-               } else { ?>
-                min: 0,
-               <?php } ?>
+               } ?>
 
                <?php if(isset($zoom_max_temp)) { 
                 echo "max: ".$zoom_max_temp.",";
-               } else { ?>
-                max: 100,
-               <?php } ?>
+               } ?>
                allowDecimals: true,
                opposite: true,
                endOnTick: false,
