@@ -1875,7 +1875,7 @@ function get_browser_infos() {
 
   $browsers = array(
     'firefox', 'msie', 'opera', 'chrome', 'safari', 'mozilla', 'seamonkey', 'konqueror', 'netscape',
-    'gecko', 'navigator', 'mosaic', 'lynx', 'amaya', 'omniweb', 'avant', 'camino', 'flock', 'aol'
+    'gecko', 'navigator', 'mosaic', 'lynx', 'amaya', 'omniweb', 'avant', 'camino', 'flock', 'aol','mozilla'
   );
 
   if (isset($_SERVER['HTTP_USER_AGENT'])) {
@@ -1902,6 +1902,11 @@ function check_browser_compat($tab) {
     if(count($tab)>0) {
         switch($tab['name']) {
             case 'firefox':
+                //Do not support firefox 1.0 and 2.0
+                if($tab['majorver']<=2) return false;
+                return true;
+                break;
+            case 'mozilla':
                 //Do not support firefox 1.0 and 2.0
                 if($tab['majorver']<=2) return false;
                 return true;
