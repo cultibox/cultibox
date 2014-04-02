@@ -104,5 +104,8 @@ $GLOBALS['REMOTE_DATABASE'] = "http://www.cbx.greenbox-botanic.com/index.php";
 // List of encryption supported by the wifi module:
 $GLOBALS['WIFI_KEY_TYPE_LIST']=array("NONE", "WEP", "WPA", "WPA2", "WPA-AUTO");
 
+// List and equivalence between sensor number and type of the sensor from the index file:
+$GLOBALS['SENSOR_DEFINITION']=array("none","none","tem_humi","water_temp","none","wifi","water_level","water_level","ph","ec","od","orp");
+
 
 ?>

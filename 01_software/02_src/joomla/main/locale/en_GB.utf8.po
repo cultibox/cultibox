@@ -340,9 +340,6 @@ msgstr "Programme à comparer"
 msgid "SELECT_POWER_PLUG"
 msgstr "Afficher la puissance consommée"
 
-msgid "SELECT_ALL_PLUGS"
-msgstr "Toutes les prises"
-
 msgid "FORCE_ON_CHART"
 msgstr "Marche forcée"
 
@@ -537,10 +534,10 @@ msgstr "Résumé des valeurs minimales et maximales pour le"
 
 # For the plugs part:
 msgid "PLUG"
-msgstr "Configurer la prise numéro"
+msgstr "Configurer vos prises"
 
-msgid "PLUG_INFOS"
-msgstr "Informations de la prise"
+msgid "PLUG_MENU"
+msgstr "Prise"
 
 msgid "TYPE_PLUG"
 msgstr "Type d'élément branché sur la prise"

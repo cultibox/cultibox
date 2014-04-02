@@ -1,7 +1,7 @@
 // {{{ expand()
 // ROLE expand or reduce submenu of the configuration menu
-// IN div to be expanded or reduced 
-// HOW IT WORKS: get div id to be expanded (or reduced) and set value (hidden=0, show=1) of hidden fields to
+// IN div to be expanded 
+// HOW IT WORKS: get div id to be expanded and reduced other menu
 //               be passed to php.
 // USED BY: templates/configuration.html
 function expand(div) {
@@ -116,6 +116,29 @@ function expand(div) {
       }
 }
 // }}}
+
+
+// {{{ expand(_plug)
+// ROLE expand or reduce submenu of the plug configuration menu
+// IN div: number of the plug menu to be expanded
+//    nb: number of plug to be checked 
+// HOW IT WORKS: get div id to be expanded reduced other menu
+// USED BY: templates/plugs.html
+function expand_plug(div,nb) {
+      for(i=1;i<=nb;i++) {
+            div_plug=document.getElementById('div_selected_plug'+i)
+            div_label=document.getElementById('div_plug'+i);
+            if(div==i) {
+                    div_plug.style.display = "";
+                    div_label.style.color="#6E8915";
+                    
+            } else {
+                   div_plug.style.display = "none"; 
+                   div_label.style.color="black";
+            }
+            document.getElementById('submenu').value = div;
+      }
+}
 
 
 // {{{ verifDigit()

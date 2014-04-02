@@ -342,9 +342,6 @@ msgstr "Programa a comparar"
 msgid "SELECT_POWER_PLUG"
 msgstr "Visualizar la potencia consumida"
 
-msgid "SELECT_ALL_PLUGS"
-msgstr "Todos los enchufes"
-
 msgid "FORCE_ON_CHART"
 msgstr "Marcha forzada"
 
@@ -540,10 +537,10 @@ msgstr "Resumen de los valores mínimos y máximos por el"
 
 # For the plugs part:
 msgid "PLUG"
-msgstr "Configurar el enchufe numero"
+msgstr "Configurar vuestros enchufes"
 
-msgid "PLUG_INFOS"
-msgstr "datos del enchufe"
+msgid "PLUG_MENU"
+msgstr "Enchufe"
 
 msgid "TYPE_PLUG"
 msgstr "Tipo de elemento conectado al enchufe"

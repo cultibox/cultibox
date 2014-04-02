@@ -1979,6 +1979,16 @@ function find_new_line($tab, $time="") {
 //    $month    month to be checked
 //    $day      day to be checked
 // RET sensor type array
+
+// In the index file:
+// 2 : humidity and temperature sensor
+// 3 : water temperature sensor
+// 5 : wifi
+// 6,7 : level water sensor
+// 8: PH
+// 9: EC
+// A: OD
+// B: ORP
 function get_sensor_type($sd_card,$month,$day) {
    $sensor_type=array(0,0,0,0);
    $file="$sd_card/logs/index";

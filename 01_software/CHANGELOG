@@ -4,6 +4,8 @@ Cultibox (1.3.05) precise; urgency=low
     + Le zoom en X sur les logs ne modifie plus l'affichage en Y
     + Rechargement de la page de configuration arès un formatage de la carte SD
     + Correction de l'affichage des coûts: on scroll après le calcul du coût ce qui permet d'éviter un problème d'affichage sur mac
+    + Changement de l'affichage du menu de configuration des prises pour ressembler à celui du menu de configuration
+    + Ajout de la définition des autres capteurs (ph, ec...)
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun Mar 23 13:48:54 CET 2014
 

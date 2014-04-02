@@ -42,20 +42,22 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
 </script>
 
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm" id="plugForm">
-<p class="title_conf"><?php echo __('PLUG'); ?> 
-    <select name="selected_plug" id="selected_plug" onChange="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);" onLoad="getSelectedPlug(this.selectedIndex,<?php echo $nb_plugs; ?>);">
-    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
-               <option <?php if($selected_plug==$i) { echo 'selected';} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php } ?>
-               <option <?php if($selected_plug=="all") { echo 'selected';} ?> value="all"><?php echo __('SELECT_ALL_PLUGS'); ?></option>
-    </select>
-</p>
+<input type="hidden" id="submenu" name="submenu" value="<?php echo $submenu; ?>" />
+<p class="title_conf"><?php echo __('PLUG'); ?></p>
 <br />
-<div id="title_infos_plug" style="<?php if(strcmp($selected_plug,"all")==0) echo 'display:none'; ?>"><p class="title_plug"><?php echo __('PLUG_INFOS'); ?>:</p></div>
+<table class="table_width">
+<tr>
+    <td class="conf-menu-marge-plug"></td>
+    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+    <td class="menu-plug-item"><button id="div_plug<?php echo $i; ?>" class="menu_h1" onclick="expand_plug(<?php echo $i; ?>,<?php echo $nb_plugs; ?>); return false;"><?php echo __('PLUG_MENU')." ".$i; ?></button></td>
+    <?php } ?>
+    <td class="conf-menu-marge-plug"></td>
+</tr>
+</table>
+<br />
    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
     <label id="anchor<?php echo $i; ?>"></label>
-    <div id="title_infos_all_plugs<?php echo $i; ?>" style="<?php if(strcmp($selected_plug,"all")!=0) echo 'display:none'; ?>"><p class="title_plug"><?php echo __('PLUG_INFOS')." ".$i; ?>:</p></div>
-   <div id="div_selected_plug<?php echo $i; ?>" style="<?php if(($selected_plug!=$i)&&(strcmp($selected_plug,"all")!=0)) echo 'display:none'; ?>">
+   <div id="div_selected_plug<?php echo $i; ?>" style="<?php if($submenu!=$i) echo 'display:none'; ?>">
 <br />
 <table class="table_width">
     <tr>
@@ -332,3 +334,7 @@ nb_plugs = <?php echo json_encode($nb_plugs) ?>;
       </tr>
    </table>
 </form>
+
+<?php 
+      echo "<script>expand_plug(".$submenu.",".$nb_plugs.");</script>";
+?>
