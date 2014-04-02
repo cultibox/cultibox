@@ -4,30 +4,42 @@ require_once('../../libs/utilfunc.php');
 require_once('../../libs/db_common.php');
 require_once('../../libs/config.php');
 
+
+// Function to get log from the SD card
 function get_log_value($sd_card,$month,$day,&$array_line,$sensor_type) {
    $file="$sd_card/logs/$month/$day";
+
+   //Buffer to store data:
    $buffer_array=array();
 
    if(!file_exists("$file")) return false;
 
+   //Using file function to get all the data once:
    $buffer_array=file("$file");
 
+   //Data process:
    foreach($buffer_array as $buffer) {
+         //Check if a line has a valid format in the file, the function continues processing if it's the case:
          if(check_empty_string($buffer)) {
+            //Each data is separated by the \t char, exploding in an array the data of a line:
             $temp = explode("\t", $buffer);
+
+            //Check that the line has the right number of sensor reccords:
             if(count($temp)==($GLOBALS['NB_MAX_SENSOR_LOG']*2+1)) {
                 for($i=0;$i<count($temp);$i++) {
+                    //CLeaning wrong value - deleting special char 
                     $temp[$i]=rtrim($temp[$i]);
                     $temp[$i]=str_replace(" ","",$temp[$i]);
                     $temp[$i]=str_replace("0000","",$temp[$i]);
                 }
 
+                //Setting other fild from the data line: date catch, time catch
                 $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
                 $date_catch=rtrim($date_catch);
                 $time_catch=substr($temp[0], 8,6);
                 $time_catch=rtrim($time_catch);
 
-
+                //If data are valid, continue processing:
                 if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)&&(strlen($temp[0])==14)) {
                         for($i=0;$i<$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) {
                             $sens_type="";
@@ -46,6 +58,7 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensor_type) {
                                  }
                             }
 
+                            //Creating data array which will be inserted into the database:
                             if((!empty($temp[2*$i+1]))||(!empty($temp[2*$i+2]))) {
                                         $array_line[] = array(
                                             "timestamp" => $temp[0],
@@ -220,6 +233,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
             if(is_file("$sd_card/logs/$mmonth/$dday")) {
                 get_log_value("$sd_card","$mmonth","$dday",$log,$sensor_type);
             }
+
 
             if(!empty($log)) {
                 if(db_update_logs($log,$main_error)) {

@@ -2,6 +2,7 @@ Cultibox (1.3.05) precise; urgency=low
     + Selection d'un ou plusieurs capteurs possible dans la visualisation des logs
     + Enregistrement des courbes déselectionnées sur le changement de jours des logs (bouton suivant et précédent)
     + Le zoom en X sur les logs ne modifie plus l'affichage en Y
+    + Rechargement de la page de configuration arès un formatage de la carte SD
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun Mar 23 13:48:54 CET 2014
 
