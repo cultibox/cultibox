@@ -2052,7 +2052,7 @@ $(document).ready(function() {
         if(data=="True") {
             $(".message").dialog("option", "hide",{ effect: "slideUp", duration: 0 } );
             $(".message").dialog('close');
-            $("#tooltip_msg_box").fadeIn("slow");
+            $("#tooltip_msg_box").show();
         } else {
             $("#tooltip_msg_box").css("display","none");
         }
