@@ -32,6 +32,11 @@ switch ($name) {
             echo $_SESSION['IMPORTANT'];
         }
         break;
+    case 'tooltip_msg_box':
+        if((isset($_SESSION['TOOLTIP_MSG_BOX']))&&(!empty($_SESSION['TOOLTIP_MSG_BOX']))) {
+            echo $_SESSION['TOOLTIP_MSG_BOX'];
+        }
+        break;
 }
 
 ?>

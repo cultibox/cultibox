@@ -4,6 +4,7 @@ var CLOSE_button="";
 var DELETE_button="";
 var REDUCE_button="";
 var EXTEND_button="";
+var HIDE_button="";
 
 var lang="";
 var reduced="";
@@ -33,7 +34,8 @@ if(lang=="/it/") {
     DELETE_button="Rimuovere";
     SAVE_button="Registrati";
     REDUCE_button="Abbassare";
-    EXTEND_button="Ingrandisci"
+    EXTEND_button="Ingrandisci";
+    HIDE_button="Nascondere";
     var llang="it_IT";
     var slang="it";
 } else if(lang=="/de/") {
@@ -43,7 +45,8 @@ if(lang=="/it/") {
     DELETE_button="Entfernen";
     SAVE_button="Registrieren";
     REDUCE_button="Senken";
-    EXTEND_button="Vergrößern"
+    EXTEND_button="Vergrößern";
+    HIDE_button="Verbergen";
     var llang="de_DE";
     var slang="de";
 } else if(lang=="/en/") {
@@ -53,7 +56,8 @@ if(lang=="/it/") {
     DELETE_button="Delete";
     SAVE_button="Save";
     REDUCE_button="Shorten";
-    EXTEND_button="Enlarge"
+    EXTEND_button="Enlarge";
+    HIDE_button="Hide";
     var llang="en_GB";
     var slang="en";
 } else if(lang=="/es/") {
@@ -63,7 +67,8 @@ if(lang=="/it/") {
     DELETE_button="Eliminar";
     SAVE_button="Registro";
     REDUCE_button="Bajar";
-    EXTEND_button="Agrandar"
+    EXTEND_button="Agrandar";
+    HIDE_button="Ocultar";
     var llang="es_ES";
     var slang="es"
 } else {
@@ -73,7 +78,8 @@ if(lang=="/it/") {
     DELETE_button="Supprimer";
     SAVE_button="Enregistrer";
     REDUCE_button="Réduire";
-    EXTEND_button="Agrandir"
+    EXTEND_button="Agrandir";
+    HIDE_button="Cacher";
     var llang="fr_FR";
     var slang="fr";
 }
@@ -461,10 +467,20 @@ $(document).ready(function() {
 
 
     $( ".message" ).dialog({ width: wid, closeOnEscape: false, resizable: true, buttons: [ 
-        { 
-            text: CLOSE_button, 
-            click: function() { $( this ).dialog( "close" ); }
-        }, {
+        {
+            text: HIDE_button,
+            id: "button_hide" ,
+            click: function() {
+                $( this ).dialog( "close" );
+                $("#tooltip_msg_box").fadeIn("slow");
+                $.ajax({
+                        cache: false,
+                        url: "../../main/modules/external/set_variable.php",
+                        data: {name:"TOOLTIP_MSG_BOX", value: "True"}
+                });
+            }
+        },
+        {
             text: REDUCE_button, 
             id: "button_reduce" ,
             click: function() { 
@@ -486,7 +502,11 @@ $(document).ready(function() {
                 data: { POSITION_X: tmp[0], POSITION_Y: tmp[1], WIDTH: width, REDUCED: tmp_reduced }
                 });
                 reduced=tmp_reduced;
-        }} ], 
+        }},
+        {
+            text: CLOSE_button,
+            click: function() { $( this ).dialog( "close" ); }
+        }], 
         hide: "fold", dialogClass: "dialog_message", position: [x,y], dragStop: function( event, ui ) { 
 
         if(data!="") { 
@@ -673,7 +693,6 @@ $(document).ready(function() {
             }
         });
     });
-
 
     $("#import_log").click(function(e) {
         e.preventDefault();
@@ -2023,6 +2042,32 @@ $(document).ready(function() {
                     $("a.ui-dialog-titlebar-close").remove();   
                 }
          });
+    });
+
+    $.ajax({
+        cache: false,
+        url: "../../main/modules/external/get_variable.php",
+        data: {name:"tooltip_msg_box"}
+    }).done(function (data) {
+        if(data=="True") {
+            $(".message").dialog("option", "hide",{ effect: "slideUp", duration: 0 } );
+            $(".message").dialog('close');
+            $("#tooltip_msg_box").fadeIn("slow");
+        } else {
+            $("#tooltip_msg_box").css("display","none");
+        }
+    });
+
+     
+    $("#tooltip_msg_box").click(function(e) {
+        $.ajax({
+            cache: false,
+            url: "../../main/modules/external/set_variable.php",
+            data: {name:"TOOLTIP_MSG_BOX", value: "False"}
+        });
+        $("#tooltip_msg_box").fadeOut("slow");
+        $(".message").dialog('open');
+        $(".message").dialog("option", "hide",{ effect: "fold", duration: 400 } );
     });
 
 });

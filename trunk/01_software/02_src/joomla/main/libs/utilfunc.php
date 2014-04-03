@@ -1667,7 +1667,6 @@ function check_update_available($version,&$out) {
          $version=str_replace(".","",$version);
          $temp=explode("-", $version);
          $version=$temp[0];
-
          if(isset($GLOBALS['UPDATE_FILE'])&&(!empty($GLOBALS['UPDATE_FILE']))) {
                $file=$GLOBALS['UPDATE_FILE'];
                if($handle=@fopen($file,"r")) {
