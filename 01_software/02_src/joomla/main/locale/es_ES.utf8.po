@@ -1573,6 +1573,9 @@ msgstr "Error en el formato de la frase de contraseña WPA: debe ser entre 8 y 6
 
 
 # For the informations part:
+msgid "SHOW_MESSAGE"
+msgstr "Haga clic sobre la imagen para mostrar los mensajes del software"
+
 msgid "CLOSE_CONFIRM"
 msgstr "Cancelar"
 
