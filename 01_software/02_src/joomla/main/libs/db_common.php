@@ -3027,17 +3027,17 @@ function format_minmax_sumary($start="", &$out,&$resume="",$sensor=1,$color_temp
     $startday=substr($startday,2,8);
     
     $sql_maxtemp = <<<EOF
-SELECT round(MAX(temperature)/100,2) as max_temp FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor} ;
+SELECT ROUND(temperature/100,2) as max_temp, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor} AND temperature = (SELECT MAX(temperature) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor}) ;
 EOF;
     $sql_maxhumi = <<<EOF
-SELECT round(MAX(humidity)/100,2) as max_humi FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor};
+SELECT ROUND(humidity/100,2) as max_humi, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor} AND humidity = (SELECT MAX(humidity) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor}) ;
 EOF;
 
  $sql_mintemp = <<<EOF
-SELECT round(MIN(temperature)/100,2) as min_temp FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor};
+SELECT ROUND(temperature/100,2) as min_temp, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor} AND temperature = (SELECT MIN(temperature) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor});
 EOF;
     $sql_minhumi = <<<EOF
-SELECT round(MIN(humidity)/100,2) as min_humi FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor};
+SELECT ROUND(humidity/100,2) as min_humi, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor} AND humidity = (SELECT MIN(humidity) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor});
 EOF;
 
 
@@ -3122,19 +3122,19 @@ EOF;
     if((strcmp($res_maxtemp['max_temp'],"")!=0)||(strcmp($res_maxhumi['max_humi'],"")!=0)) {
         $resume=$resume."<br /><b><i>".__('SENSOR')." ".$sensor.":</i></b>";
         if(strcmp($res_mintemp['min_temp'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MIN_TEMP').": <font color='".$color_temp."'><b>".$res_mintemp['min_temp']."&deg;C </b></font>";
+           $resume=$resume."<br />".__('SUMARY_MIN_TEMP').": <font color='".$color_temp."'><b>".$res_mintemp['min_temp']."&deg;C ".__('SUMARY_HOUR')." ".wordwrap($res_mintemp['time_catch'], 2, ":",true)."</b></font>";
         }
 
         if(strcmp($res_maxtemp['max_temp'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MAX_TEMP').": <font color='".$color_temp."'><b>".$res_maxtemp['max_temp']."&deg;C </b></font>";
+           $resume=$resume."<br />".__('SUMARY_MAX_TEMP').": <font color='".$color_temp."'><b>".$res_maxtemp['max_temp']."&deg;C ".__('SUMARY_HOUR')." ".wordwrap($res_maxtemp['time_catch'], 2, ":",true)."</b></font>";
         }
 
         if(strcmp($res_minhumi['min_humi'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MIN_HUMI').": <font color='".$color_humi."'><b>".$res_minhumi['min_humi']."&#37; </b></font>";
+           $resume=$resume."<br />".__('SUMARY_MIN_HUMI').": <font color='".$color_humi."'><b>".$res_minhumi['min_humi']."&#37; ".__('SUMARY_HOUR')." ".wordwrap($res_minhumi['time_catch'], 2, ":",true)."</b></font>";
         }
 
         if(strcmp($res_maxhumi['max_humi'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MAX_HUMI').": <font color='".$color_humi."'><b>".$res_maxhumi['max_humi']."&#37; </b></font>";
+           $resume=$resume."<br />".__('SUMARY_MAX_HUMI').": <font color='".$color_humi."'><b>".$res_maxhumi['max_humi']."&#37; ".__('SUMARY_HOUR')." ".wordwrap($res_maxhumi['time_catch'], 2, ":",true)."</b></font>";
         }
         $resume=$resume."<br />"; 
 
