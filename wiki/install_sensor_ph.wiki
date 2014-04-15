@@ -1,0 +1,18 @@
+#summary Sonde de pH
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+Vous pouvez compléter votre pack avec une sonde de pH. C'est l’accessoire idéal pour suivre le pH de votre eau.
+
+Le pH est le potentiel d'hydrogène. Il mesure l'activité chimique des ions hydrogènes en solution  
+
+= Spécifications =
+
+= Contenu du pack =
+
+= Mise en place =
+
+= Calibration =
