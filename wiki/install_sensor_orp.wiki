@@ -12,8 +12,8 @@ Vous pouvez compléter votre pack avec une sonde ORP. C'est l’accessoire idéa
 || *Spécification* || *Valeur* ||
 || Plage de mesure || +/- 2000 mV ||
 || Temps de réponse || 95% en 1 seconde ||
-|| Température minimale d'utilisation || 0°C ||
-|| Température maximal d'utilisation || 60°C ||
+|| Température minimale d'utilisation || 1°C ||
+|| Température maximal d'utilisation || 35°C ||
 
 = Contenu du pack =
 
