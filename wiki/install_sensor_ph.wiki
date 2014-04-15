@@ -11,8 +11,34 @@ Le pH est le potentiel d'hydrogène. Il mesure l'activité chimique des ions hyd
 
 = Spécifications =
 
+|| *Spécification* || *Valeur* ||
+|| Plage de mesure || 0 à 12.3 ||
+|| Temps de réponse || 95% en 1 seconde ||
+|| Température minimale d'utilisation || 1°C ||
+|| Température maximal d'utilisation || 35°C ||
+
+Attention : ne jamais laisser la sonde sécher.
+
 = Contenu du pack =
 
+http://cultibox.googlecode.com/svn/wiki/img/ph_kit.png
+
+Le kit ph contient les éléments suivants :
+ * Une sonde de pH
+ * Un adaptateur pH pour la Cultibox
+ * Une solution pH 4 (125 mL)
+ * Une solution pH 7 (125 mL)
+ * Une solution pH 10 (125 mL)
+ * Une solution de stockage (125 mL)
+ * Une notice
+ * Un cordon RJ pour relier l'adaptateur à la Cultibox
+
 = Mise en place =
+
+ # Débranchez la Cultibox
+ # Connectez le cordon RJ entre la Cultibox et l'adaptateur
+ # Branchez la sonde sur l'adaptateur
+ # Plongez la sonde dans le liquide
+ # Allumez la Cultibox
 
 = Calibration =
