@@ -1724,13 +1724,13 @@ if(!file_exists("$log_file")) return $ret;
                 $ret["cbx_id"]=substr($buffer,16,5);
                 break;
             case 'V':
-                $ret["firm_version"]=substr($buffer,15,7); 
+                $ret["firm_version"]=substr($buffer,16,7); 
                 break;
             case 'S':
-                $ret["emeteur_version"]=substr($buffer,15,7);
+                $ret["emeteur_version"]=substr($buffer,16,7);
                 break;
             case 'E':
-                $ret["sensor_version"]=substr($buffer,15,7);
+                $ret["sensor_version"]=substr($buffer,16,7);
                 break;
         }
    }
