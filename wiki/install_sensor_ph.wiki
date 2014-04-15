@@ -7,7 +7,7 @@
 
 Vous pouvez compléter votre pack avec une sonde de pH. C'est l’accessoire idéal pour suivre le pH de votre eau.
 
-Le pH est le potentiel d'hydrogène. Il mesure l'activité chimique des ions hydrogènes en solution  
+Le pH est le potentiel d'hydrogène. Il mesure l'activité chimique des ions hydrogènes en solution.
 
 = Spécifications =
 
@@ -31,7 +31,7 @@ Le kit ph contient les éléments suivants :
  * Une solution pH 10 (125 mL)
  * Une solution de stockage (125 mL)
  * Une notice
- * Un cordon RJ pour relier l'adaptateur à la Cultibox
+ * Un cordon RJ pour relier l'adaptateur à la Cultibox (Non visible sur la photo)
 
 = Mise en place =
 
@@ -42,3 +42,20 @@ Le kit ph contient les éléments suivants :
  # Allumez la Cultibox
 
 = Calibration =
+
+Attention, la calibration doit absolument être réalisé dans cet ordre :
+
+ # Rincez la sonde
+ # Trempez la sonde dans la solution de pH 7 (Couleur jaune)
+ # Attendre 2 minutes
+ # Dans le menu du capteur, sélectionnez "cal. pH 7"
+ # Rincez la sonde
+ # Trempez la sonde dans la solution de pH 4 (Couleur rouge)
+ # Attendre 2 minutes
+ # Dans le menu du capteur, sélectionnez "cal. pH 4"
+ # Rincez la sonde
+ # Trempez la sonde dans la solution de pH 10 (Couleur bleu)
+ # Attendre 2 minutes
+ # Dans le menu du capteur, sélectionnez "cal. pH 10"
+ 
+La calibration est maintenant terminée. Elle reste en mémoire dans la Cultibox même si le courant est coupé.
