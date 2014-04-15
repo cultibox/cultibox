@@ -1,0 +1,20 @@
+#summary Sonde d'EC
+
+#summary Sonde de pH
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+Vous pouvez compléter votre pack avec une sonde d'EC. C'est l’accessoire idéal pour suivre l’électro-conductivité de votre eau.
+
+L'EC est l'électro-conductivité. Elle représente la capacité à laisser passer une quantité d'électricité.
+
+= Spécifications =
+
+= Contenu du pack =
+
+= Mise en place =
+
+= Calibration =
