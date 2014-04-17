@@ -1,4 +1,4 @@
-#summary Sonde de pH
+#summary Sonde de EC
 
 = Sommaire =
 <wiki:toc max_depth="3" />
@@ -9,6 +9,8 @@ Vous pouvez compléter votre pack avec une sonde d'EC. C'est l’accessoire idé
 
 L'EC est l'électro-conductivité. Elle représente la capacité à laisser passer une quantité d'électricité.
 
+Cette sonde est faite pour rester immergée dans votre liquide.
+
 = Spécifications =
 
 = Contenu du pack =
@@ -16,3 +18,18 @@ L'EC est l'électro-conductivité. Elle représente la capacité à laisser pass
 = Mise en place =
 
 = Calibration =
+
+Attention, la calibration doit absolument être réalisé dans cet ordre :
+
+ # Rincez puis séchez la sonde
+ # Dans le menu du capteur, sélectionnez "cal. sec"
+ # Rincez la sonde
+ # Trempez la sonde dans la solution d'EC 3000us/cm
+ # Attendre 5 minutes
+ # Dans le menu du capteur, sélectionnez "cal. 3000"
+ # Rincez la sonde
+ # Trempez la sonde dans la solution de d'EC 220us/cm
+ # Attendre 5 minutes
+ # Dans le menu du capteur, sélectionnez "cal. 220"
+ 
+La calibration est maintenant terminée. Elle reste en mémoire dans la Cultibox même si le courant est coupé.
