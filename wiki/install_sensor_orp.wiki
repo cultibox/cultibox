@@ -20,3 +20,10 @@ Vous pouvez compléter votre pack avec une sonde ORP. C'est l’accessoire idéa
 = Mise en place =
 
 = Calibration =
+
+Attention, la calibration doit absolument être réalisé dans cet ordre :
+
+ # Trempez la sonde dans le liquide de calibration (225mV)
+ # L'objectif est maintenant d'ajuster la valeur lue par la sonde par rapport à la valeur du liquide de calibration
+ # Si la valeur lue par la sonde est inférieure à 225mV, dans le menu du capteur, sélectionnez "cal. +". Chaque clique augmente la valeur lue de 1mV.
+ # Si la valeur lue par la sonde est supérieure à 225mV, dans le menu du capteur, sélectionnez "cal. -". Chaque clique baisse la valeur lue de 1mV.
