@@ -7,6 +7,12 @@
 
 Vous pouvez compléter votre pack avec une sonde d'Oxygène dissous (OD). C'est l’accessoire idéal pour suivre le taux d'oxygène dissous de votre eau.
 
+Cette sonde est faite pour rester plongée dans votre liquide.
+
+Attention, la sonde met a peu près deux minutes pour répondre complétement à un changement d'environnement.
+
+De légère variation de valeur sont normales.
+
 = Spécifications =
 
 = Contenu du pack =
@@ -14,3 +20,9 @@ Vous pouvez compléter votre pack avec une sonde d'Oxygène dissous (OD). C'est 
 = Mise en place =
 
 = Calibration =
+
+ # Trempez votre sonde dans de l'eau.
+ # Laisser la en l'air pendant deux minutes
+ # Dans le menu du capteur, sélectionnez "cal. air"
+ 
+La calibration est maintenant terminée. Elle reste en mémoire dans la Cultibox même si le courant est coupé.
