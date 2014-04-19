@@ -104,7 +104,10 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             }
         }
 
-        
+        if(!check_and_copy_id($sd_card,get_informations("cbx_id"))) {
+            $conf_uptodate=false;
+        }
+ 
         if(!check_and_copy_index($sd_card)) {
             $main_error[]=__('ERROR_COPY_INDEX');
             $error_copy=true;
