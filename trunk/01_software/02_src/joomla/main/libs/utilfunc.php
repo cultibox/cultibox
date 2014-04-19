@@ -1541,7 +1541,7 @@ function check_and_copy_id($sd_card,$id="") {
 
     if(is_file("$sd_card/cnf/id")) {
         $id_file=file("$sd_card/cnf/id");
-        if(count($id_file)==0) {
+        if(count($id_file)==1) {
             $id_file=trim($id_file[0]);
         } else {
             $id_file=0;
@@ -1552,7 +1552,7 @@ function check_and_copy_id($sd_card,$id="") {
 
     if($id_file!=$id) {
         while(strlen($id)<5) $id="0$id";
-        $handle=(fopen("$sd_card/cnf/id\n\r",'w'));
+        $handle=fopen("$sd_card/cnf/id",'w');
         fwrite($handle,"$id");
         fclose($handle);
         return false;

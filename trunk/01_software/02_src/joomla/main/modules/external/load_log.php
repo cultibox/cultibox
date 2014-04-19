@@ -78,7 +78,7 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensor_type) {
 }
 
 
-function get_power_value($file,&$array_line) {
+function get_power_value($file,&$array_line,$nb_plug=3) {
    $check=true;
    if(!file_exists("$file")) return false;
    $buffer_array=file("$file");
@@ -96,7 +96,7 @@ function get_power_value($file,&$array_line) {
             $temp=explode("\t", $buffer);
 
             if(count($temp)==17) {
-                for($i=0;$i<count($temp);$i++) {
+                for($i=0;$i<$nb_plug;$i++) {
                     $temp[$i]=rtrim($temp[$i]);
                 }
 
@@ -106,14 +106,14 @@ function get_power_value($file,&$array_line) {
                 $time_catch=rtrim($time_catch);
 
                 if((!empty($date_catch))&&(!empty($time_catch))) {
-                  for($i=1;$i<count($temp);$i++) {
+                  for($i=1;$i<=$nb_plug;$i++) {
                      if(strlen($temp[$i])!=4) {
                         return false;
                      }
                   }
 
 
-                  for($i=1;$i<count($temp);$i++) {
+                  for($i=1;$i<=$nb_plug;$i++) {
                         if(is_numeric($temp[$i])) {
                             $array_line[] = array(
                                 "timestamp" => $temp[0],
@@ -248,7 +248,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
     } elseif(strcmp($type,"power")==0) {
         // get power values
         if(is_file("$sd_card/logs/$mmonth/pwr_$dday")) {
-            get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);
+            get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power,get_configuration("NB_PLUGS",$main_error));
         }
 
         if(!empty($power)) {
@@ -302,7 +302,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
             }
 
             if(file_exists("$sd_card/logs/$mmonth/pwr_$dday")) {
-                get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power);  
+                get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power,get_configuration("NB_PLUGS",$main_error));  
             }
 
             if(!empty($power)) {
