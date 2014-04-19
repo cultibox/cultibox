@@ -1730,8 +1730,6 @@ if(!file_exists("$log_file")) return $ret;
    $ret["last_reboot"]="";
    $ret["cbx_id"]="";
    $ret["firm_version"]="";
-   $ret["emeteur_version"]="";
-   $ret["sensor_version"]="";
    $ret["log"]="";
 
    $buffer_array=file("$log_file");
@@ -1756,12 +1754,6 @@ if(!file_exists("$log_file")) return $ret;
                 break;
             case 'V':
                 $ret["firm_version"]=substr($buffer,16,7); 
-                break;
-            case 'S':
-                $ret["emeteur_version"]=substr($buffer,16,7);
-                break;
-            case 'E':
-                $ret["sensor_version"]=substr($buffer,16,7);
                 break;
         }
    }
