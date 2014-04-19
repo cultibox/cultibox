@@ -1,0 +1,40 @@
+#summary Carte SD.
+
+= Introduction =
+
+Ce chapitre de l'annexe décrit les fichiers présents sur la carte SD
+
+= Architecture =
+
+= racine de la carte =
+
+= Répertoire cnf =
+
+= Répertoire bin =
+
+= Répertoire logs =
+
+Le répertoire logs contient : 
+ * Le fichier index
+ * Un répertoire par mois
+
+== Fichier index ==
+
+Le fichier index indique pour chaque jour quels sont les capteurs connectés sur la Cultibox.
+
+Chaque ligne représente un jour. Les deux premiers digits sont le numéro du mois, les deux suivants sont le numéro du jour, les 6 digits suivants représentes les capteurs branchés.
+
+Chaque type de capteur à un caractère lui correspondant :
+ * "0" : pas de capteur
+ * "2" : Capteur de température et d'humidité
+ * "3" : Capteur de température immergeable
+ * "6" : Capteur de niveau d'eau 5
+ * "7" : Capteur de niveau d'eau 6
+ * "8" : Capteur de pH
+ * "9" : Capteur d'EC
+ * ":" : Capteur d’oxygène dissous
+ * ";" : Capteur d'ORP
+
+
+Exemple : 12 février , Capteur 1 : T & RH , capteur 3 pH , capteur 4 : ORP :
+0212208;00
