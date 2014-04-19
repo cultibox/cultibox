@@ -53,6 +53,7 @@
       * [faq_software FAQ Logicielle]
     * [advance Utilisation avancée]
     * [base_de_donnee Base de donnée]
+    * [sd_card Carte SD]
     * [evolution Futures évolutions]
     * [pts Cahier des charges]
     * [declaration_ce Déclaration CE]
