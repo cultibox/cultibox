@@ -53,7 +53,7 @@ $GLOBALS['PLUGA_DEFAULT'] = array('000', '247', '222', '219', '215', '207', '252
 $GLOBALS['PLUGA_DEFAULT_3500W'] = array('004', '000', '000', '006', '008', '010', '012', '014', '016', '018', '020', '022', '024', '026', '028','030');
 
 // List of value possible for temperature and hygrometry axis:
-$GLOBALS['LIST_MAX_AXIS'] = array('-10','0', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100');
+$GLOBALS['LIST_MAX_AXIS'] = array('-10','0', '5', '10', '15', '20', '25', '30', '35', '40', '45', '50','55','60', '65', '70', '75', '80', '85', '90', '95', '100');
 
 // List of value possible for power graphic axis:
 $GLOBALS['LIST_MAX_POWER'] = array('100', '200', '500', '1000','2000','5000');
