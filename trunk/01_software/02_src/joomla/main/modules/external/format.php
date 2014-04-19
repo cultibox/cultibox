@@ -54,6 +54,18 @@ if((!isset($path))||(empty($path))) {
                 echo "-1";
                 return 0;
             }
+
+            $wifi_conf=create_wificonf_from_database($out,get_ip_address());
+            if(!compare_wificonf($wifi_conf,$path)) {
+                $conf_uptodate=false;
+                if(!write_wificonf($path,$wifi_conf,$out)) {
+                    echo "-1";
+                    return 0;
+                }
+            }
+
+            //Copiyng id file: 
+            check_and_copy_id($path,get_informations("cbx_id"));
             
             //Creating pluga file:
             if(!write_pluga($path,$out)) {
