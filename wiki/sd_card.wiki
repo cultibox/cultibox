@@ -1,4 +1,7 @@
-#summary Carte SD.
+#summary Carte SD
+
+= Sommaire =
+<wiki:toc max_depth="4" />
 
 = Introduction =
 
@@ -8,11 +11,30 @@ Ce chapitre de l'annexe décrit les fichiers présents sur la carte SD
 
 = racine de la carte =
 
+A la racine de la carte, deux fichiers sont présents ainsi que trois dossiers : 
+ * Répertoire cnf
+ * Répertoire bin
+ * Répertoire logs
+ * Fichier firm.hex
+ * Fichier log.txt
+
+== Fichier log.txt ==
+
+Le fichier log.txt enregistre différentes informations transmise par la Cultibox lors du démarrage.
+
+== Fichier firm.hex ==
+
+Ce fichier contient le firmware de la Cultibox.
+
 = Répertoire cnf =
 
 Le répertoire cnf contient :
  * Le fichier conf
- * le fichier wifi
+ * Le fichier wifi
+ * Le fichier cnt
+ * Le fichier id
+ * Le dossier plg
+ * Le dossier prg
 
 == Fichier conf ==
 
@@ -28,6 +50,18 @@ IPC:XXX.XXX.XXX.XXX
 
 Avec IPS : IP serveur (ordi client)
 Avec IPC : IP cultibox
+
+== Fichier cnt ==
+
+Ce fichier contient une seule information : le contraste que doit appliquer la Cultibox.
+
+== Fichier id ==
+
+Ce fichier contient une seule information : le numéro unique de la Cultibox.
+
+== Dossier plg ==
+
+== Dossier prg ==
 
 = Répertoire bin =
 
