@@ -38,3 +38,35 @@ Chaque type de capteur à un caractère lui correspondant :
 
 Exemple : 12 février , Capteur 1 : T & RH , capteur 3 pH , capteur 4 : ORP :
 0212208;00
+
+== Un répertoire par mois ==
+
+Dans chaque répertoire on trouve les fichiers suivants :
+
+ * pwr_XX
+ * log_XX
+ * cal_XX
+
+Ou XX représente le numéro du jour dans le mois.
+
+=== Fichier pwr_XX ===
+
+=== Fichier logs_XX ===
+
+=== Fichier cal_XX ===
+
+Les fichiers cal_XX donnent pour chaque jour les informations du calendrier.
+Ce fichier est écrit en texte brute, mais il y a la possibilité d'afficher certains caractères spéciaux : 
+ * 0xAA : Pleine lune
+ * 0xAB : Nouvelle lune
+ * 0xAC : Lune montante
+ * 0xAD : Lune descendante
+ * 0xAE : Nœud lunaire
+ * 0xAF : Apogée
+ * 0xB0 : Périgée
+ * 0xB1 : Jour fruit
+ * 0xB2 : Jour racine
+ * 0xB3 : Jour fleur
+ * 0xB4 : Jour feuille
+
+
