@@ -1,151 +1,105 @@
+# Chargement des librairies pour le calendrier lunaire
+source [file join [file dirname [info script]] parse_lib_cal_lun.tcl]
+# Chargement des librairies pour le calendrier des cultures
+source [file join [file dirname [info script]] parse_lib_cal_cult.tcl]
 
-proc perigee {fid mois jour} {
 
-puts $fid {
-   <entry>
-      <title>Périgée</title>
-      <summary>Date des Périgées</summary>
-      <updated>2013-04-22T23:19:57+02:00</updated>
-      <id>http://www.cultibox.fr/id1</id>
-      <category term = "perigee" label = "Perigee" />
-      <content type = "text">Perigee: ne pas jardiner</content>
-      <cbx_symbol>0xB0</cbx_symbol>
-      <duration>0</duration>}
-      
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
-      
-puts $fid {      <icon>moon.png</icon>
-      <color>red</color>
-   </entry>
-}
-
-}
-
-proc NouvelleLune {fid mois jour} {
-
-puts $fid {
-   <entry>
-      <title>Nouvelle Lune</title>
-      <summary>Date des Nouvelles Lunes</summary>
-      <updated>2013-04-22T23:19:57+02:00</updated>
-      <id>http://www.cultibox.fr/id1</id>
-      <category term = "nouvelle_lune" label = "Nouvelle lune" />
-      <content type = "text">C'est la nouvelle lune</content>
-      <cbx_symbol>OxAB</cbx_symbol>
-      <duration>0</duration>}
-      
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
-      
-puts $fid {      <icon>nouvelle_lune.png</icon>
-      <color>#666666</color>
-   </entry>
-}
-
-}
-
-proc PleineLune {fid mois jour} {
-
-puts $fid {
-   <entry>
-      <title>Pleine Lune</title>
-      <summary>Date des Pleines Lunes</summary>
-      <updated>2013-04-22T23:19:57+02:00</updated>
-      <id>http://www.cultibox.fr/id1</id>
-      <category term = "pleine_lune" label = "pleine lune" />
-      <content type = "text">C'est la pleine lune</content>
-      <cbx_symbol>OxAA</cbx_symbol>
-      <duration>0</duration>}
-      
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
-      
-puts $fid {      <icon>pleine_lune.png</icon>
-      <color>#989898</color>
-   </entry>
-}
-}
-
-proc NoeudLunaire {fid mois jour} {
-
-puts $fid {
-   <entry>
-      <title>Noeud lunaire</title>
-      <summary>Date des Noeud lunaire</summary>
-      <updated>2013-04-16T13:14:57+02:00</updated>
-      <id>http://www.cultibox.fr/id1</id>
-      <category term = "noeud_lunaire" label = "Noeud lunaire" />
-      <content type = "text"> Noeud lunaire: ne pas jardiner</content>
-      <cbx_symbol>OxAE</cbx_symbol>
-      <duration>0</duration>}
-      
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
-      
-puts $fid {      <icon>moon.png</icon>
-      <color>red</color>
-   </entry>
-}
-}
-
+# Début du code principal
+# Pour chacun des fichiers présents dans le répertoire avec l'extension .txt
 foreach file [glob -directory [file dirname [info script]] *.txt] {
 
+    # On ouvre le fichier model
     set fid [open $file r]
     
-    set outFid [open [string map {".txt" ".xml"} $file] w+]
-    
-    puts $outFid {<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-   <updated>2013-04-16T13:14:57+02:00</updated>
-   <id>http://www.cultibox.fr/</id>
-   <title>Calendrier lunaire 2014</title>
-   <subtitle></subtitle>
-   <author>
-      <name>Cultibox</name>
-      <uri>http://www.cultibox.fr/</uri>
-      <email>info@cultibox.fr</email>
-   </author>
-   <category term = "lunaire" label = "lunaire" />
-   <link rel="self" href="www.cultibox.fr/lunaire.xml" />
-   <icon></icon>
-   <logo></logo>
-   <rights type = "text">
-    © Cultibox, 2013
-   </rights>
+    # En fonction du nom du fichier model, on attribue le type
+    set calendrier_type ""
+    if {[string first "calendrier_culture" $file] != -1} {
+        set calendrier_type "culture"
+    }
+    if {[string first "calendrier_lunaire" $file] != -1} {
+        set calendrier_type "lunaire"
     }
     
+    # On cré le fichier de sortie
+    set outFid [open [file join [file dirname [info script]] out [string map {".txt" ".xml"} [file tail $file]]] w+]
+    
+    # On ajoute le header dans le fichier de sortie
+    puts $outFid {<?xml version="1.0" encoding="utf-8"?>}
+    puts $outFid {<feed xmlns="http://www.w3.org/2005/Atom">}
+    puts $outFid "   <updated>[clock format [clock seconds] -format {%Y-%m-%dT%H:%M:%S+02:00}]</updated>"
+    puts $outFid {   <id>http://www.cultibox.fr/</id>}
+    puts $outFid "   <title>[string map {"_" " "} [file rootname [file tail $file]]]</title>"
+    puts $outFid {   <subtitle></subtitle>}
+    puts $outFid {   <author>}
+    puts $outFid {      <name>Cultibox</name>}
+    puts $outFid {      <uri>http://www.cultibox.fr/</uri>}
+    puts $outFid {      <email>info@cultibox.fr</email>}
+    puts $outFid {   </author>}
+    puts $outFid {   <category term = "lunaire" label = "lunaire" />}
+    puts $outFid {   <link rel="self" href="www.cultibox.fr/lunaire.xml" />}
+    puts $outFid {   <icon></icon>}
+    puts $outFid {   <logo></logo>}
+    puts $outFid {   <rights type = "text">}
+    puts $outFid "    © Cultibox, [clock format [clock seconds] -format {%Y}]"
+    puts $outFid {   </rights>}
+    
+    # On lit la première ligne du fichier model (entete des colonnes)
     gets $fid UneLigne
     
+    # On parse tout le fichier
     while {[eof $fid] != 1} {
+    
+        # On lit une nouvelle ligne
         gets $fid UneLigne
         
+        # Si la ligne n'est pas vide
         if {$UneLigne != ""} {
-            lassign $UneLigne Mois	jour NL	PL	Perigee	Noeud
+        
+            # Les deux premiers éléments sont le mois et le jour
+            lassign $UneLigne mois jour autre
             
-            set Mois [string map {" " "0"} [format "%2.f" $Mois]]
-            set jour [string map {" " "0"} [format "%2.f" $jour]]
-            
-            if {$Perigee != 0} {
-                perigee $outFid $Mois $jour
+            set Mois [string map {" " "0"} [format "%2.f" $mois]]
+            set Jour [string map {" " "0"} [format "%2.f" $jour]]
+                    
+            # En fonction du type de calendrier
+            switch $calendrier_type {
+                "lunaire" {
+
+                    # On assigne aux variables les différents éléments
+                    lassign $UneLigne na1 na2 NL	PL	Perigee	Noeud
+
+                    if {$Perigee != 0} {perigee $outFid $Mois $Jour}
+                    
+                    if {$NL != 0} {NouvelleLune $outFid $Mois $Jour}
+                    
+                    if {$PL != 0} {PleineLune $outFid $Mois $Jour}
+
+                    if {$Noeud != 0} {NoeudLunaire $outFid $Mois $Jour}            
+
+                }
+                "culture" {
+                    # On assigne aux variables les différents éléments
+                    lassign $UneLigne na1 na2 fruit racine fleur feuille
+
+                    if {$fruit != 0} {addFruit $outFid $Mois $Jour}
+                    
+                    if {$racine != 0} {addRacine $outFid $Mois $Jour}
+                    
+                    if {$fleur != 0} {addFleur $outFid $Mois $Jour}
+
+                    if {$feuille != 0} {addFeuille $outFid $Mois $Jour}            
+
+                }
             }
-            
-            if {$NL != 0} {
-                NouvelleLune $outFid $Mois $jour
-            }
-            
-            if {$PL != 0} {
-                PleineLune $outFid $Mois $jour
-            }
-            
-            
-            if {$Noeud != 0} {
-                NoeudLunaire $outFid $Mois $jour
-            }            
             
         }
     
     }
 
+    if {$calendrier_type == "lunaire"} {
+    
+    # On écrit les lunes montantes et descendantes
     puts $outFid {
-
-   
    <entry>
       <title> Lune montante </title>
       <summary> Lune montante </summary>
@@ -181,9 +135,11 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
       <icon>moon.png</icon>
       <color>#B71F3D</color>
    </entry>
+}
+}
 
-</feed>
-    }
+    # On ferme l'écriture du fichier de sortie
+    puts $outFid {</feed>}
     
     close $fid
     close $outFid
