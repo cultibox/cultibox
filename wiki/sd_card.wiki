@@ -65,6 +65,31 @@ Ce fichier contient une seule information : le numéro unique de la Cultibox.
 
 = Répertoire bin =
 
+Le répertoire bin contient les firmwares des accessoires. On trouve donc dans ce dossier, les firmwares suivants :
+ * emetteur.hex
+ * wlevel_5.hex
+ * wlevel_6.hex
+ * ec_2.hex
+ * ec_3.hex
+ * ec_4.hex
+ * ec_5.hex
+ * ec_6.hex
+ * ph_2.hex
+ * ph_3.hex
+ * ph_4.hex
+ * ph_5.hex
+ * ph_6.hex
+ * or_2.hex
+ * or_3.hex
+ * or_4.hex
+ * or_5.hex
+ * or_6.hex
+ * od_2.hex
+ * od_3.hex
+ * od_4.hex
+ * od_5.hex
+ * od_6.hex
+
 = Répertoire logs =
 
 Le répertoire logs contient : 
