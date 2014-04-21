@@ -10,6 +10,25 @@ Ce chapitre de l'annexe décrit les fichiers présents sur la carte SD
 
 = Répertoire cnf =
 
+Le répertoire cnf contient :
+ * Le fichier conf
+ * le fichier wifi
+
+== Fichier conf ==
+
+== Fichier wifi == 
+
+Ce fichier suit le format suivant :
+
+SSID:ssid_test
+CLE:WPA-AUTO
+PWD:lrnplmasv
+IPS:XXX.XXX.XXX.XXX
+IPC:XXX.XXX.XXX.XXX
+
+Avec IPS : IP serveur (ordi client)
+Avec IPC : IP cultibox
+
 = Répertoire bin =
 
 = Répertoire logs =
@@ -68,5 +87,3 @@ Ce fichier est écrit en texte brute, mais il y a la possibilité d'afficher cer
  * 0xB2 : Jour racine
  * 0xB3 : Jour fleur
  * 0xB4 : Jour feuille
-
-
