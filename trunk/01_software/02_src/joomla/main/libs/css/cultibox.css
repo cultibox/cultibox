@@ -132,6 +132,8 @@ td.conf-menu-marge {
 
 td.menu-plug-item {
     text-align: center;
+    width: 26%;
+    padding-top: 10px;
 }
 
 td.conf-menu-marge-plug {
@@ -791,6 +793,5 @@ P.imp_center{
     padding-left:5%;
 	position: fixed;
     padding-top: 15px;
-    z-index:1000;
 }
 
