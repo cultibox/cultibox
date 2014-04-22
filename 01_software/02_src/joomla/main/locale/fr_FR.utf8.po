@@ -1827,9 +1827,6 @@ msgstr "L'adresse de votre module Wifi peut être personalisée en rentrant une 
 msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du logiciel"
 
-msgid "TOOLTIP_MSGBOX_EYES"
-msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du logiciel"
-
 
 #For the debug part:
 msgid "GENERATE_TIME"

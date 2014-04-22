@@ -2071,6 +2071,8 @@ $(document).ready(function() {
 					var dist=((element_body_width-element_div_width)/2-((element_body_width-element_div_width)*10/100));
 					$("#tooltip_msg_box").css("padding-left",dist+"px");
 			}	
+        
+            $("#eyes_msgbox").attr('title', title_msgbox);
             $("#tooltip_msg_box").show();
         } else {
             $("#tooltip_msg_box").css("display","none");
