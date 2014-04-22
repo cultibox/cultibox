@@ -788,6 +788,9 @@ P.imp_center{
 
 #tooltip_msg_box {
     float: left;
-    padding-left:25%;
+    padding-left:5%;
+	position: fixed;
+    padding-top: 15px;
+    z-index:1000;
 }
 

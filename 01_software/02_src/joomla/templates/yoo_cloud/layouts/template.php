@@ -99,7 +99,7 @@ include($this['path']->path('layouts:template.config.php'));
 				</div>
 				
 			</div> -->
-            <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt="" title="" id="eyes_msgbox"></div>
+            <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt="" title="<?php echo __('TOOLTIP_MSGBOX_EYES'); ?>" id="eyes_msgbox"></div>
 			<div class="wrapper grid-block">
 				<header id="header">
 					<div id="headerbar" class="grid-block">
