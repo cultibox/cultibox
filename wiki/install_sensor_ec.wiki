@@ -19,6 +19,15 @@ Cette sonde est faite pour rester immergée dans votre liquide.
 
 = Calibration =
 
+La calibration nécessite de se rendre dans les menus de la Cultibox : 
+ # Appuyez sur "Menu"
+ # Puis déplacez vous dans "Paramètres"
+ # Puis entrez dans le menu "3. Capteur"
+ # Sélectionnez enfin le bon numéro de capteur
+Le menu suivant doit s'afficher
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur_ec.png
+
 Attention, la calibration doit absolument être réalisé dans cet ordre :
 
  # Rincez puis séchez la sonde

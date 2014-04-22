@@ -1,5 +1,7 @@
 #summary Cahier des charges
 
+= Sommaire =
+<wiki:toc max_depth="3" />
 
 =Introduction=
 
@@ -38,60 +40,60 @@ La Cultibox répond à un certain nombre d'exigences. Le tableau ci-dessous indi
 || PTS_electronic_precision_temperature_°C || Précision température / Capteur de température et d'humidité || -1.2 || 0 || 1.2 || °C par rapport à la vrai valeur || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0009_PTS_electronic_precision_temperature_°C_A.pdf CBX_1_13_0009] ||
 || PTS_electronic_precision_humidity_RH || Précision Humidité / Capteur de température et d'humidité || -5 || 0 || 5 || %RH par rapport à la vrai valeur || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0010_PTS_electronic_precision_humidity_RH_-.pdf CBX_1_13_0010] ||
 
-|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
-|| PTS_electronic_precision_underwater_temperature_°C || Précision température / Capteur de température immergeable || -1 || 0 || 1 || °C par rapport à la vrai valeur || 3 || issue 716 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_14_0001_PTS_electronic_range&precision_water_temperature_°C_-.pdf CBX_1_14_0001] ||
-|| PTS_electronic_battery_lifetime_days || Durée de vie non branchée || 100 ||  ||  || days || 3 || issue 343 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0017_PTS_electronic_battery_lifetime_days_-.pdf CBX_1_13_0017] ||
-|| PTS_electronic_rtc_precision_sec_days || Précision de l'horloge || -8 || 0 || 8 || s/jour || 3 || issue 342 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0001_PTS_electronic_rtc_precision_sec_days_A.pdf CBX_1_13_0001] ||
-|| PTS_electronic_nb_logs_logs || Nombre de logs par jour || 1400 || 1439 || 1439 || logs/jour || 3 || issue 344 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0016_PTS_electronic_nb_logs_logs_-.pdf CBX_1_13_0016] ||
+|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Status* || *Lien* ||
+|| PTS_electronic_precision_underwater_temperature_°C || Précision température / Capteur de température immergeable || -1 || 0 || 1 || °C par rapport à la vrai valeur || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_14_0001_PTS_electronic_range&precision_water_temperature_°C_-.pdf CBX_1_14_0001] ||
+|| PTS_electronic_battery_lifetime_days || Durée de vie non branchée || 100 ||  ||  || days || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0017_PTS_electronic_battery_lifetime_days_-.pdf CBX_1_13_0017] ||
+|| PTS_electronic_rtc_precision_sec_days || Précision de l'horloge || -8 || 0 || 8 || s/jour || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0001_PTS_electronic_rtc_precision_sec_days_A.pdf CBX_1_13_0001] ||
+|| PTS_electronic_nb_logs_logs || Nombre de logs par jour || 1400 || 1439 || 1439 || logs/jour || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0016_PTS_electronic_nb_logs_logs_-.pdf CBX_1_13_0016] ||
 
-|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
-|| PTS_electronic_nb_sensor || Nombre de capteur de T/RH "branchable" || 0 || 1 || 4 || sensor || 3 || issue 333 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0009_PTS_electronic_precision_temperature_°C_A.pdf CBX_1_13_0009] ||
-|| PTS_electronic_nb_plug_1000W_plug || Nombre de prises différentes pilotable || 1 || 2 || 9 || prises || 3 || issue 341 || PASS ||[http://code.google.com/p/cultibox/source/browse/trunk/02_documentation/05_verif/CBX_1_13_00013_PTS_Electronic_nb_state_change_nb_plug1000W_3500W_plug_one_reponse_time_A.pdf CBX_1_13_0013] ||
-|| PTS_electronic_nb_plug_3500W_plug || Nombre de prises différentes pilotable || 1 || 1 || 8 || prises || 3 || issue 341 || PASS ||[http://code.google.com/p/cultibox/source/browse/trunk/02_documentation/05_verif/CBX_1_13_00013_PTS_Electronic_nb_state_change_nb_plug1000W_3500W_plug_one_reponse_time_A.pdf CBX_1_13_0013] ||
-|| PTS_electronic_transmitter_distance_m || Distance d'émission || 3 ||  ||  || m || 3 || issue 350 || PASS || [http://code.google.com/p/cultibox/source/browse/trunk/02_documentation/05_verif/CBX_1_13_0022_PTS_electronic_transmitter_distance_m_-.pdf CBX_1_13_0022] ||
+|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Status* || *Lien* ||
+|| PTS_electronic_nb_sensor || Nombre de capteur de T/RH "branchable" || 0 || 1 || 4 || sensor || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0009_PTS_electronic_precision_temperature_°C_A.pdf CBX_1_13_0009] ||
+|| PTS_electronic_nb_plug_1000W_plug || Nombre de prises différentes pilotable || 1 || 2 || 9 || prises || PASS ||[http://code.google.com/p/cultibox/source/browse/trunk/02_documentation/05_verif/CBX_1_13_00013_PTS_Electronic_nb_state_change_nb_plug1000W_3500W_plug_one_reponse_time_A.pdf CBX_1_13_0013] ||
+|| PTS_electronic_nb_plug_3500W_plug || Nombre de prises différentes pilotable || 1 || 1 || 8 || prises || PASS ||[http://code.google.com/p/cultibox/source/browse/trunk/02_documentation/05_verif/CBX_1_13_00013_PTS_Electronic_nb_state_change_nb_plug1000W_3500W_plug_one_reponse_time_A.pdf CBX_1_13_0013] ||
+|| PTS_electronic_transmitter_distance_m || Distance d'émission || 3 ||  ||  || m || PASS || [http://code.google.com/p/cultibox/source/browse/trunk/02_documentation/05_verif/CBX_1_13_0022_PTS_electronic_transmitter_distance_m_-.pdf CBX_1_13_0022] ||
 
-|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
-|| PTS_electronic_plug_one_reponse_time_s || Temps de réponse d'une prise ||  ||  || 5 || s || 3 || issue 339 || PASS ||[http://code.google.com/p/cultibox/source/browse/trunk/02_documentation/05_verif/CBX_1_13_00013_PTS_Electronic_nb_state_change_nb_plug1000W_3500W_plug_one_reponse_time_A.pdf CBX_1_13_0013] ||
-|| PTS_electronic_regulation_temperature || Être capable de réguler une prise / T ||  ||  ||  ||  || 3 || issue 380 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0012_PTS_electronic_regulation_temperature_humidity_A.pdf CBX_1_13_0012] ||
-|| PTS_electronic_regulation_humidity || Etre capable de réguler une prise / RH ||  ||  ||  ||  || 3 || issue 381 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0012_PTS_electronic_regulation_temperature_humidity_A.pdf CBX_1_13_0012] ||
-|| PTS_electronic_regulation_Secondary || Etre capable d'effectuer une régulation secondaire ||  ||  ||  ||  || 3 || issue 381 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0012_PTS_electronic_regulation_temperature_humidity_A.pdf CBX_1_13_0012] ||
+|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Status* || *Lien* ||
+|| PTS_electronic_plug_one_reponse_time_s || Temps de réponse d'une prise ||  ||  || 5 || s || PASS ||[http://code.google.com/p/cultibox/source/browse/trunk/02_documentation/05_verif/CBX_1_13_00013_PTS_Electronic_nb_state_change_nb_plug1000W_3500W_plug_one_reponse_time_A.pdf CBX_1_13_0013] ||
+|| PTS_electronic_regulation_temperature || Être capable de réguler une prise / T ||  ||  ||  ||  || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0012_PTS_electronic_regulation_temperature_humidity_A.pdf CBX_1_13_0012] ||
+|| PTS_electronic_regulation_humidity || Etre capable de réguler une prise / RH ||  ||  ||  ||  || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0012_PTS_electronic_regulation_temperature_humidity_A.pdf CBX_1_13_0012] ||
+|| PTS_electronic_regulation_Secondary || Etre capable d'effectuer une régulation secondaire ||  ||  ||  ||  || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0012_PTS_electronic_regulation_temperature_humidity_A.pdf CBX_1_13_0012] ||
 
-|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
-|| PTS_electronic_nb_state_plug_change_day || Nombre de changement d'état pour l'ensemble des prises chaque jour || 250 ||  ||  || change ||  || issue 340 || PASS ||[http://code.google.com/p/cultibox/source/browse/trunk/02_documentation/05_verif/CBX_1_13_00013_PTS_Electronic_nb_state_change_nb_plug1000W_3500W_plug_one_reponse_time_A.pdf CBX_1_13_0013] ||
-|| PTS_electronic_temperature_range_°C || Plage de mesure de température / Capteur de température et d'humidité  || 0 ||  || 60 || °C ||  || issue 337 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0009_PTS_electronic_precision_temperature_°C_A.pdf CBX_1_13_0009] ||
-|| PTS_electronic_humidity_range_RH || Plage de mesure d'humidité / Capteur de température et d'humidité || 0 || || 100 || %RH ||  || issue 338 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0010_PTS_electronic_precision_humidity_RH_-.pdf CBX_1_13_0010] ||
+|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Status* || *Lien* ||
+|| PTS_electronic_nb_state_plug_change_day || Nombre de changement d'état pour l'ensemble des prises chaque jour || 250 ||  ||  || change || PASS ||[http://code.google.com/p/cultibox/source/browse/trunk/02_documentation/05_verif/CBX_1_13_00013_PTS_Electronic_nb_state_change_nb_plug1000W_3500W_plug_one_reponse_time_A.pdf CBX_1_13_0013] ||
+|| PTS_electronic_temperature_range_°C || Plage de mesure de température / Capteur de température et d'humidité  || 0 ||  || 60 || °C ||  PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0009_PTS_electronic_precision_temperature_°C_A.pdf CBX_1_13_0009] ||
+|| PTS_electronic_humidity_range_RH || Plage de mesure d'humidité / Capteur de température et d'humidité || 0 || || 100 || %RH || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0010_PTS_electronic_precision_humidity_RH_-.pdf CBX_1_13_0010] ||
 
-|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
-|| PTS_electronic_underwater_temperature_range_°C || Plage de mesure de température / Capteur de température immergeable  || 0 ||  || 70 || °C ||  || issue 716 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_14_0001_PTS_electronic_range&precision_water_temperature_°C_-.pdf CBX_1_14_0001] ||
-|| PTS_electronic_alarm || Arrêt des prises sous certaines conditions  ||  ||  ||  ||  || 2 || issue 413 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0008_PTS_electronic_alarm_-.pdf CBX 1_13_0008] ||
-|| PTS_electronic_SDcard || Taille de la carte SD  || 1 || 2 || 2 || Go || 3 || issue 412 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0005_PTS_electronic_SDcard_-.pdf CBX 1_13_0005] ||
+|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Status* || *Lien* ||
+|| PTS_electronic_underwater_temperature_range_°C || Plage de mesure de température / Capteur de température immergeable  || 0 ||  || 70 || °C || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_14_0001_PTS_electronic_range&precision_water_temperature_°C_-.pdf CBX_1_14_0001] ||
+|| PTS_electronic_alarm || Arrêt des prises sous certaines conditions  ||  ||  ||  || || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0008_PTS_electronic_alarm_-.pdf CBX 1_13_0008] ||
+|| PTS_electronic_SDcard || Taille de la carte SD  || 1 || 2 || 2 || Go || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0005_PTS_electronic_SDcard_-.pdf CBX 1_13_0005] ||
 
 == Mécanique ==
-|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
-|| PTS_mechanic_RJ12_length || Longueur du câble RJ12 || 3 || 3 ||  || m || 1 || issue 410 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0004_PTS_mechanic_cable_length_-.pdf CBX 1_13_0004] ||
-|| PTS_mechanic_USB_length || Longueur du câble USB || 1 || 1.5 ||  || m || 1 || issue 411 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0004_PTS_mechanic_cable_length_-.pdf CBX 1_13_0004] ||
+|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Status* || *Lien* ||
+|| PTS_mechanic_RJ12_length || Longueur du câble RJ12 || 3 || 3 ||  || m || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0004_PTS_mechanic_cable_length_-.pdf CBX 1_13_0004] ||
+|| PTS_mechanic_USB_length || Longueur du câble USB || 1 || 1.5 ||  || m || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0004_PTS_mechanic_cable_length_-.pdf CBX 1_13_0004] ||
 
 == Fiabilité ==
-|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
-|| PTS_reliability_main || Taux de défaillance de la Cultibox sur la période de garantie  ||  ||  || 5 || % || 3 || issue 483 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0014_PTS_reliability_-.pdf CBX_1_13_0014] ||
-|| PTS_reliability_sensor || Taux de défaillance de la Cultibox sur la période de garantie  ||  ||  || 1 || % || 3 || issue 484 || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0014_PTS_reliability_-.pdf CBX_1_13_0014] ||
+|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Status* || *Lien* ||
+|| PTS_reliability_main || Taux de défaillance de la Cultibox sur la période de garantie  ||  ||  || 5 || % || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0014_PTS_reliability_-.pdf CBX_1_13_0014] ||
+|| PTS_reliability_sensor || Taux de défaillance de la Cultibox sur la période de garantie  ||  ||  || 1 || % || PASS || [http://cultibox.googlecode.com/svn/trunk/02_documentation/05_verif/CBX_1_13_0014_PTS_reliability_-.pdf CBX_1_13_0014] ||
 
 == Logiciel ==
-|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
-|| PTS_soft || Vérification des fonctionnalités du logiciel ||  ||  ||  ||  ||  ||  || PASS || CBX_1_13_0021 ||
+|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Status* || *Lien* ||
+|| PTS_soft || Vérification des fonctionnalités du logiciel ||  ||  ||  ||  || PASS || CBX_1_13_0021 ||
 
 == Documentation ==
-|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
-|| PTS_documentation_project_qualification ||  ||  ||  ||  ||  ||  ||  || PASS || [http://code.google.com/p/cultibox/wiki/pts Lien] ||
-|| PTS_documentation_users_manual ||  ||  ||  ||  ||  ||  ||  || PASS || [http://code.google.com/p/cultibox/wiki/Introduction Lien] ||
-|| PTS_documentation_users_storage ||  ||  ||  ||  ||  ||  ||  || PASS  || [http://code.google.com/p/cultibox/wiki/general_caution Lien] ||
-|| PTS_documentation_users_general_caution ||  ||  ||  ||  ||  ||  ||  || PASS || [http://code.google.com/p/cultibox/wiki/general_caution Lien] ||
-|| PTS_documentation_technical_documentation ||  ||  ||  ||  ||  ||  ||  || en cours || CBX_4_13_0001 ||
+|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Status* || *Lien* ||
+|| PTS_documentation_project_qualification ||  ||  ||  ||  || || PASS || [http://code.google.com/p/cultibox/wiki/pts Lien] ||
+|| PTS_documentation_users_manual ||  ||  ||  ||  ||  || PASS || [http://code.google.com/p/cultibox/wiki/Introduction Lien] ||
+|| PTS_documentation_users_storage ||  ||  ||  ||  ||  || PASS  || [http://code.google.com/p/cultibox/wiki/general_caution Lien] ||
+|| PTS_documentation_users_general_caution ||  ||  ||  ||  ||  || PASS || [http://code.google.com/p/cultibox/wiki/general_caution Lien] ||
+|| PTS_documentation_technical_documentation ||  ||  ||  ||  ||  || en cours || CBX_4_13_0001 ||
 
 == Vérification ==
-|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Risque* || *Issue* || *Status* || *Lien* ||
-|| PTS_verif_marquage_CE ||  ||  ||  ||  ||  ||  ||  || en cours || [http://code.google.com/p/cultibox/wiki/declaration_ce Lien] ||
-|| PTS_verif_directive_CE ||  ||  ||  ||  ||  ||  ||  || en cours || CBX_4_13_0002 CBX_4_13_0003 CBX_4_13_0004 ||
+|| *Mot clé* || *Description* || *Min* || *Typique* || *Max* || *Unité* || *Status* || *Lien* ||
+|| PTS_verif_marquage_CE ||  ||  ||  ||  ||  || en cours || [http://code.google.com/p/cultibox/wiki/declaration_ce Lien] ||
+|| PTS_verif_directive_CE ||  ||  ||  ||  ||  || en cours || CBX_4_13_0002 CBX_4_13_0003 CBX_4_13_0004 ||
 
 
 <wiki:comment>

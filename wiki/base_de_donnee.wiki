@@ -62,7 +62,9 @@ SHOW COLUMNS FROM tbl_name;
 === Introduction ===
 
 Cette table contient les événements du calendrier.
-
+<wiki:comment>
+\begin{landscape}
+</wiki:comment>
 === Structure ===
 
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
@@ -98,6 +100,9 @@ Cette table contient la configuration globale.
 || UPDATE_PLUGS_FREQUENCY  || int(20)      || NO   ||     || -1            ||                ||
 || SHOW_POPUP              || varchar(5)   || NO   ||     || True          ||                ||
 || ALARM_ACTIV             || varchar(4)   || NO   ||     || 0000          ||                ||
+
+
+|| *Field*                 || *Type*       || *Null* || *Key* || *Default* || *Extra*        ||
 || ALARM_VALUE             || varchar(5)   || NO   ||     || 50.00         ||                ||
 || COST_PRICE              || decimal(6,4) || NO   ||     || 0.1249        ||                ||
 || COST_PRICE_HP           || decimal(6,4) || NO   ||     || 0.1353        ||                ||
@@ -247,3 +252,8 @@ Cette table contient le type des capteurs actuellement branchés sur la Cultibox
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || id    || int(11) || NO   || PRI || NULL    ||       ||
 || type  || int(5)  || NO   ||     || 0       ||       ||
+
+<wiki:comment>
+\end{landscape}
+</wiki:comment>
+

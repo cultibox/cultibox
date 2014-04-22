@@ -10,8 +10,8 @@ Cette page vous donne quelques explications sur les différentes phases du calen
 = Les périodes de la lune =
 On distingue cinq révolutions différentes de la lune:
  * Révolution sidérale : donne du point du vue de la terre, les phases où la lune est [https://code.google.com/p/cultibox/wiki/gui_soft_cal_lunar?#Montante_/_Descendante montante / descendante].
- * Révolution anomalistique : nous interesse pour les passages au [https://code.google.com/p/cultibox/wiki/gui_soft_cal_lunar?#Périgée_/_Apogée périgée et à l'apogée].
- * Révolution draconitique : nous permet de connaitre les [https://code.google.com/p/cultibox/wiki/gui_soft_cal_lunar?#Nœud_lunaire noeuds lunaires].
+ * Révolution anomalistique : nous intéresse pour les passages au [https://code.google.com/p/cultibox/wiki/gui_soft_cal_lunar?#Périgée_/_Apogée périgée et à l'apogée].
+ * Révolution draconitique : nous permet de connaître les [https://code.google.com/p/cultibox/wiki/gui_soft_cal_lunar?#Nœud_lunaire nœuds lunaires].
  * Révolution synodique : cette révolution donne les [http://fr.wikipedia.org/wiki/Mois_lunaire mois lunaire]. Elle permet du point de vue de la terre de déterminer les phases [https://code.google.com/p/cultibox/wiki/gui_soft_cal_lunar?#Croissant_/_Décroissante croissante, décroissante, pleine lune et nouvelle lune].
  * Révolution tropique : [http://pgj.pagesperso-orange.fr/planetes/phaslune.htm durée qui sépare deux passages de la lune au point vernal (position du soleil dans le ciel au moment de l'équinoxe de printemps)] .
 

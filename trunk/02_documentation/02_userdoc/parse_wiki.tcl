@@ -64,7 +64,7 @@ proc parseTitle {line level} {
    }
    
    set summary [string trim [string map {"=" "" {_} " "} $line]]
-   set Sous [removeDiatric [string map {" " "_"} ${summary}]]
+   set Sous [removeDiatric [string map {" " "_" "\\" ""} ${summary}]]
    if {$Sous != ""} {set Sous "_$Sous"}
    set label "\\label\{[file rootname ${::PageActualyParse}]${Sous}\}"
    
@@ -129,7 +129,7 @@ proc parseTab {line} {
 		}
 		set nbCol [llength $lineSplitt]
 		set lineout ""
-		if {$nbCol > 7} {
+		if {$nbCol > 5} {
 			set ::Landscape 1
 			#set lineout "\\begin{landscape}"
             set ::largeurTable 16
@@ -240,8 +240,33 @@ proc parseGras {line} {
     return $line
 }
 
+# cette procedure vérifie la présence d'un code particulier
+set specialCode(annexe,in) 0
+set specialCode(annexe,texte) ""
+proc parseSpecialCode {line} {
+
+    switch $line {
+        "-annexe-" {
+            set line ""
+            set ::specialCode(annexe,in) 1
+        }
+        "-annexeend-" {
+            set line ""
+            set ::specialCode(annexe,in) 0
+        }
+    }
+    
+    if {$::specialCode(annexe,in) == 1} {
+        set ::specialCode(annexe,texte) "$::specialCode(annexe,texte)\n$line"
+        set line ""
+    }
+
+    return $line
+    
+}
+
 #
-proc parse {inFileName outFileName level} {
+proc parse {inFileName outFileName level annexeFile} {
    puts "Parsing [file tail $inFileName]"; update
    set ::PageActualyParse [file tail $inFileName]
    
@@ -277,6 +302,7 @@ proc parse {inFileName outFileName level} {
    set inComment 0
    while {[eof $fid] != 1} {
       gets $fid line
+      
       
       # Remplacement des caractere spéciaux
       if {[string first {http://cultibox.googlecode.com/svn/wiki/img/} $line] != -1} {
@@ -320,23 +346,34 @@ proc parse {inFileName outFileName level} {
          }
       } 
 
+      # recherche de codes speciaux
+      set line [parseSpecialCode $line]
+      
       puts $out $line
    }
    
    if {$::inTab == 1} {
       set ::inTab 0
-      puts $out "\\hline\n\\end\{tabular\}"
+      set line "\\hline\n\\end\{tabular\}"
+      set line [parseSpecialCode $line]
+      puts $out $line
    }
-   if {$::inListe== 1} {
-      set ::inListe 0
-      puts $out "\\end\{itemize\}"
-   }   
+    if {$::inListe== 1} {
+        set ::inListe 0
+        set line "\\end\{itemize\}"
+        set line [parseSpecialCode $line]
+        puts $out $line
+    }   
+
+    # fermeture des fichiers
+    close $fid
+    close $out
    
-   # Recherche de potentiel erreur
-
-   close $fid
-   close $out
-
+    # Ecriture des annexe
+    set outAnnexe [open $annexeFile a+]
+    puts $outAnnexe $::specialCode(annexe,texte)
+    set ::specialCode(annexe,texte) ""
+    close $outAnnexe
 }
 
 # on supprime les fichiers existants
@@ -462,6 +499,9 @@ puts $fid {}
 puts $fid {\newpage}
 puts $fid {\tableofcontents }
 
+# Calcul du nom du fichier d'annexe générées
+set texAnnexeFileName [file join $texPath annex_auto_generate.tex]
+file delete -force $texAnnexeFileName
 
 set fid2 [open [file join $wikiPath Sommaire.wiki] r]
 while {[eof $fid2] != 1} {
@@ -482,7 +522,8 @@ while {[eof $fid2] != 1} {
       set File [file join $wikiPath ${FileName}.wiki]
       
       # parse file
-      parse $File [file join $texPath [string map {.wiki .tex} [file tail $File]]] $level  
+      set texFileName [file join $texPath [string map {.wiki .tex} [file tail $File]]]
+      parse $File $texFileName $level $texAnnexeFileName
 
       puts $fid "\\input\{./wiki_tex/${FileName}\}"
 
@@ -491,6 +532,10 @@ while {[eof $fid2] != 1} {
 
 }
 close $fid2
+
+# On ajoute les annexes générées
+puts $fid "\\input\{./wiki_tex/annex_auto_generate.tex\}"
+
 
 puts $fid {\end{document}}
 puts $fid {}

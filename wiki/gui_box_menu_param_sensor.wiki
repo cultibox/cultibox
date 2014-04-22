@@ -20,3 +20,36 @@ La première ligne indique le type du capteur branché:
  *  *LEVEL* : un capteur de niveau d'eau
 
 La deuxième ligne indique le numéro du firmware du capteur.
+
+En fonction du capteur, l'affichage change.
+
+
+== Capteur de T et RH ==
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur_trh.png
+
+== Capteur de température immergeable ==
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur_twater.png
+
+== Capteur de niveau d'eau ==
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur_level.png
+
+== Capteur de pH ==
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur_ph.png
+
+== Capteur d'EC ==
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur_ec.png
+
+== Capteur de potentiel d'oxydoréduction ==
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur_orp.png
+
+== Capteur d'oxygène dissous ==
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_capteur_do.png
+
+

@@ -1,10 +1,10 @@
-#summary Menu de départ
+#summary Menu principal
 
 = Sommaire =
 <wiki:toc max_depth="3" />
 
 = Introduction =
-Au démarrage, l'interface graphique de la Cultibox affiche quelques informations.
+Au démarrage, l'interface graphique de la Cultibox affiche les informations permettant de visualiser rapidement l'état de votre espace de culture.
 
 = Description de l'interface graphique =
 L'écran suivant s'affiche au démarrage:
@@ -18,7 +18,7 @@ On retrouve sur cet écran:
 
 Deux actions sont possibles à partir de cet écran:
  * Cliquer sur le bouton central: Affichage du [gui_box_menu Menu principal]
- * Cliquer sur les boutons de droite ou de gauche : défilement des informations
+ * Cliquer sur les boutons de droite / gauche / haut / bas : défilement des informations
 
 == Défilement des informations ==
 
@@ -31,8 +31,17 @@ En cliquant à droite ou a gauche, on fait défiler différentes informations:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil.png
 
-Pour afficher les informations des autres capteurs, vous pouvez appuyer sur le bouton Haut ou le bouton Bas. Vous accédez ainsi à la température et à l'humidité remontées par chacun des capteurs.
+Pour afficher les informations des autres capteurs, vous pouvez appuyer sur le bouton Haut ou le bouton Bas. Vous accédez ainsi aux valeurs remontées par chacun des capteurs.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_box_main_defil_large.png
 
-    
+= Fonctionnement sans carte SD =
+
+Lors du retrait de la carte SD, la Cultibox est capable de réaliser quelques actions (5). Une fois la carte retirée, l'écran suivant s'affiche :
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_mode_degrade.png
+
+Lorsque la Cultibox n'a plus d'action enregistrée dans son tampon mémoire, elle pilote les prises en suivant la dernière action de son tampon. De plus, elle affiche l'écran suivant :
+
+http://cultibox.googlecode.com/svn/wiki/img/lcd_menu_param_cultibox_mode_survie.png
+
