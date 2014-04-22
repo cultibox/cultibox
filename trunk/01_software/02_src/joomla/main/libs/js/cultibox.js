@@ -1412,7 +1412,7 @@ $(document).ready(function() {
                $("#error_select_sensor"+plug).css("display","none");
             }
 
-            if(nb_sensor==1) {
+            if(nb_sensor<=1) {
                 // Si un seul capteur pour la régulation, on désactive les options de min/max/moy:
                 $("#plug_compute_method"+plug).attr('disabled','disabled');
             } else {
