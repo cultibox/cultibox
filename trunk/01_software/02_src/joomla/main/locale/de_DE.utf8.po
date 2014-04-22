@@ -1824,6 +1824,9 @@ msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
 msgid "TOOLTIP_WIFI_IP"
 msgstr "L'adresse de votre module Wifi peut être personalisée en rentrant une adresse ip au format XXX.XXX.XXX.XXX"
 
+msgid "TOOLTIP_MSGBOX_EYES"
+msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du logiciel"
+
 
 #For the debug part:
 msgid "GENERATE_TIME"

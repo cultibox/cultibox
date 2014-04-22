@@ -1828,6 +1828,9 @@ msgstr "El tipo de clave de cifrado para el Wifi"
 msgid "TOOLTIP_WIFI_IP"
 msgstr "La dirección de su módulo inalámbrico se puede personalizar mediante la devolución de una dirección IP en el formato XXX.XXX.XXX.XXX"
 
+msgid "TOOLTIP_MSGBOX_EYES"
+msgstr "Haga clic la imagen para ver para ver los mensajes del software"
+
 
 #For the debug part:
 msgid "GENERATE_TIME"

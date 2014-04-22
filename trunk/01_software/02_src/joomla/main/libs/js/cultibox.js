@@ -2064,6 +2064,13 @@ $(document).ready(function() {
         if(data=="True") {
             $(".message").dialog("option", "hide",{ effect: "slideUp", duration: 0 } );
             $(".message").dialog('close');
+			var element_div_width=$("#maininner").width();
+			var element_body_width=$( window ).width();
+			
+			if((element_body_width!="")&&(element_div_width!="")) {
+					var dist=((element_body_width-element_div_width)/2-((element_body_width-element_div_width)*10/100));
+					$("#tooltip_msg_box").css("padding-left",dist+"px");
+			}	
             $("#tooltip_msg_box").show();
         } else {
             $("#tooltip_msg_box").css("display","none");
