@@ -38,6 +38,40 @@ Le répertoire cnf contient :
 
 == Fichier conf ==
 
+Ce fichier suit le format suivant :
+PLUG_UPDATE:0005
+LOGS_UPDATE:1800
+POWR_UPDATE:1800
+ALARM_ACTIV:0001
+ALARM_VALUE:6220
+ALARM_SENSO:000T
+ALARM_SENSS:000+
+RTC_OFFSET_:0000
+RESET_MINAX:0000
+PRESSION___:0000
+
+=== RTC_OFFSET ===
+
+La section RTC_OFFSET permet d'accélérer ou de ralentir la vitesse de l'horloge interne. La valeur doit être entre 0 et 255. Le premier bit indique si la valeur doit être ajoutée (0) ou soustraite.
+L'horloge soustrait/additionne chaque minute 2 * la valeur indiquée au 32768 du quartz.
+Formule du décalage en seconde par jour : 2 * RTC_OFFSET * 60 *24 / 32768
+
+Quelques exemples :
+
+|| Valeur de RTC_OFFSET || Décalage (seconde par jour) ||
+|| 0 || Aucun (+0) ||
+|| 1 || 0,09 ||
+|| 10 || 0,88 ||
+|| 20 || 1,76 ||
+|| 100 || 8,79 ||
+|| 127 || 11,16 ||
+|| 128 || Aucun (-0) ||
+|| 129 || -0,09 ||
+|| 138 || -0,88 ||
+|| 148 || -1,76 ||
+|| 228 || -8,79 ||
+|| 255 || -11,16 ||
+
 == Fichier wifi == 
 
 Ce fichier suit le format suivant :
@@ -76,13 +110,9 @@ Il y a 16 fichiers plugXX (avec XX allant de 01 à 16), un pour chaque prise.
 
 Format du fichier :
 REG:N+000
-
 SEC:N+0000
-
 SEN:M100000
-
 STOL:000
-
 
 == Dossier prg ==
 
@@ -169,3 +199,4 @@ Ce fichier est écrit en texte brute, mais il y a la possibilité d'afficher cer
  * 0xB2 : Jour racine
  * 0xB3 : Jour fleur
  * 0xB4 : Jour feuille
+ 
