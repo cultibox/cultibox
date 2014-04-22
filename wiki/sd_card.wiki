@@ -61,6 +61,29 @@ Ce fichier contient une seule information : le numéro unique de la Cultibox.
 
 == Dossier plg ==
 
+Le dossier plg contient : 
+ * Un fichier de paramétrage par prise plugXX
+ * Un fichier pluga qui contient les adresses des prises
+
+=== pluga ===
+
+Le fichier pluga contient les adresses pour les prises utilisées.
+
+
+=== plugXX ===
+
+Il y a 16 fichiers plugXX (avec XX allant de 01 à 16), un pour chaque prise.
+
+Format du fichier :
+REG:N+000
+
+SEC:N+0000
+
+SEN:M100000
+
+STOL:000
+
+
 == Dossier prg ==
 
 = Répertoire bin =
