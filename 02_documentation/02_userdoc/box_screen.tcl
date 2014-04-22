@@ -1,6 +1,6 @@
 package require Img
 
-# Définition des caracteres
+# Définition des caractères
 set chars {
     { 0x00 0x00 0x00 0x00 0x00 }  
     { 0x00 0x00 0x7a 0x00 0x00 }   
@@ -95,6 +95,8 @@ set chars {
     { 0x11 0x19 0x15 0x13 0x11 }   
     { 0x00 0x18 0x24 0x24 0x18 }
 }
+
+# Création des écrans à afficher:
 
 lappend listeTexte {
   {--Parametres--}
@@ -273,10 +275,9 @@ lappend listeTexte {
 }
 lappend listFileName {lcd_menu_param_capteur.png}
 
-
 lappend listeTexte {
   {   Horloge}
-  {line}
+  {lineTop}
   {Date: 01/02/13}
   {Heure:   04:05}
   {line}
@@ -285,16 +286,110 @@ lappend listeTexte {
 lappend listFileName {lcd_menu_param_cultibox_hour.png}
 
 lappend listeTexte {
-  {21 Mars}
+  { i    01/02/13}
+  {lineTop}
+  { Pas de carte}
+  { Mode degrade}
   {line}
+  {     Menu}
+}
+lappend listFileName {lcd_menu_param_cultibox_mode_degrade.png}
+
+lappend listeTexte {
+  { i    01/02/13}
+  {lineTop}
+  { Pas de carte}
+  { Mode survie}
+  {line}
+  {     Menu}
+}
+lappend listFileName {lcd_menu_param_cultibox_mode_survie.png}
+
+lappend listeTexte {
+  {21 Mars}
+  {lineTop}
   {Engrais}
   {3 ml/L}
   {Floraison}
 }
 lappend listFileName {lcd_events.png}
 
+lappend listeTexte {
+  {--Capteur 2 --}
+  {Type : pH}
+  {Firm : 001.001}
+  {cal. pH 7}
+  {cal. pH 4}
+  {cal. pH 10}
+  {Retour} 
+}
+lappend listFileName {lcd_menu_param_capteur_ph.png}
+
+lappend listeTexte {
+  {--Capteur 2 --}
+  {Type : EC}
+  {Firm : 001.001}
+  {cal. sec}
+  {cal. 3000}
+  {cal. 220}
+  {Retour} 
+}
+lappend listFileName {lcd_menu_param_capteur_ec.png}
+
+lappend listeTexte {
+  {--Capteur 2 --}
+  {Type : ORP}
+  {Firm : 001.001}
+  {cal. -}
+  {cal. +}
+  {Retour} 
+}
+lappend listFileName {lcd_menu_param_capteur_orp.png}
+
+lappend listeTexte {
+  {--Capteur 2 --}
+  {Type : OD}
+  {Firm : 001.001}
+  {cal. air}
+  {Retour} 
+}
+lappend listFileName {lcd_menu_param_capteur_do.png}
+
+lappend listeTexte {
+  {--Capteur 2 --}
+  {Type : T&RH}
+  {Firm : 001.001}
+  {Reg:01: 025}
+  {Reg:02: 002}
+  {Retour} 
+}
+lappend listFileName {lcd_menu_param_capteur_trh.png}
+
+lappend listeTexte {
+  {--Capteur 2 --}
+  {Type : TWATER}
+  {Firm : 001.001}
+  {Reg:01: 025}
+  {Reg:02: 002}
+  {Retour} 
+}
+lappend listFileName {lcd_menu_param_capteur_twater.png}
+
+lappend listeTexte {
+  {--Capteur 2 --}
+  {Type : LEVEL}
+  {Firm : 001.001}
+  {Reg:01: 025}
+  {Reg:02: 002}
+  {Retour} 
+}
+lappend listFileName {lcd_menu_param_capteur_level.png}
+
+
 # Pour chaque image à traiter
 foreach name $listFileName texte $listeTexte {
+
+    puts "Traitement de $name"
 
     # Définition de la largeur
     set width 180
@@ -320,42 +415,52 @@ foreach name $listFileName texte $listeTexte {
         }
     }
 
-
-    # Ecriture du texte
+    # Écriture du texte
     set y 0
     set x 4
     foreach line $texte {
-        if {$line != "line"} {
-            # Du texte à afficher
-            for {set c 0} {$c < [string length $line]} {incr c} {
-                scan [string index $line $c] %c ascii
-                set pixels [lindex $chars [expr $ascii - 32]]
-                foreach pixel [lreverse $pixels] {
-                    puts $pixel
-                    for {set l 0} {$l < 8} {incr l} {
-                        if {[expr int(pow(2,$l)) & $pixel] != 0} {
-                            screen put #808080 -to [expr 2 * $x + 0] [expr 2 * ($y * 10 + 8 - $l + 2) + 0]
-                            screen put #808080 -to [expr 2 * $x + 1] [expr 2 * ($y * 10 + 8 - $l + 2) + 0]
-                            screen put #808080 -to [expr 2 * $x + 0] [expr 2 * ($y * 10 + 8 - $l + 2) + 1]
-                            screen put #808080 -to [expr 2 * $x + 1] [expr 2 * ($y * 10 + 8 - $l + 2) + 1]
+        switch $line {
+            "line" {
+                #Une ligne a afficher
+                for {set l 0} {$l < $width} {incr l} {
+                    screen put #808080 -to [expr $l] [expr 2 * ($y * 10 + 8 + 2) - 1]
+                    screen put #808080 -to [expr $l] [expr 2 * ($y * 10 + 8 + 2) + 0]
+                }
+            }
+            "lineTop" {
+                #Une ligne a afficher
+                for {set l 0} {$l < $width} {incr l} {
+                    screen put #808080 -to [expr $l] [expr 2 * ($y * 10 + 8 + 2) - 8]
+                    screen put #808080 -to [expr $l] [expr 2 * ($y * 10 + 8 + 2) - 7]
+                }
+            }
+            default {
+                # Du texte à afficher
+                for {set c 0} {$c < [string length $line]} {incr c} {
+                    scan [string index $line $c] %c ascii
+                    set pixels [lindex $chars [expr $ascii - 32]]
+                    foreach pixel [lreverse $pixels] {
+                        for {set l 0} {$l < 8} {incr l} {
+                            if {[expr int(pow(2,$l)) & $pixel] != 0} {
+                                screen put #808080 -to [expr 2 * $x + 0] [expr 2 * ($y * 10 + 8 - $l + 2) + 0]
+                                screen put #808080 -to [expr 2 * $x + 1] [expr 2 * ($y * 10 + 8 - $l + 2) + 0]
+                                screen put #808080 -to [expr 2 * $x + 0] [expr 2 * ($y * 10 + 8 - $l + 2) + 1]
+                                screen put #808080 -to [expr 2 * $x + 1] [expr 2 * ($y * 10 + 8 - $l + 2) + 1]
+                            }
                         }
+                        incr x
                     }
                     incr x
                 }
-                incr x
             }
-        } else {
-            #Une ligne a afficher
-            for {set l 0} {$l < $width} {incr l} {
-                screen put #808080 -to [expr $l] [expr 2 * ($y * 10 + 8 + 2) - 1]
-                screen put #808080 -to [expr $l] [expr 2 * ($y * 10 + 8 + 2) + 0]
-            }
+        
         }
+
         incr y
         set x 4
     }
 
-screen write [file join [file dirname [info script]] wiki img $name] -format PNG
+    screen write [file join [file dirname [info script]] wiki img $name] -format PNG
 }
 
 exit
