@@ -93,6 +93,8 @@ function(){
         url: "../../main/modules/external/send_informations.php",
         data: {infos: <?php echo(json_encode($informations)); ?>}
     });
+
+title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 </script>
 <?php } ?>
 
