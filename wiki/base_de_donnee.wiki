@@ -15,6 +15,22 @@ Depuis windows :
 c:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox
 }}}
 
+== Exporter les données ==
+
+Pour exporter les données présentes dans votre base, vous pouvez utiliser l'utilitaire mysqldump.
+
+Pour sauvegarder toute votre base (Windows), dans un fichier nommé c:/bdd.sql : 
+
+{{{
+c:\cultibox\xampp\mysql\bin\mysqldump.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox > c:/bdd.sql
+}}}
+
+Pour sauvegarder une table (dans l'exemple la table programs ), dans un fichier nommé c:/bdd.sql : 
+
+{{{
+c:\cultibox\xampp\mysql\bin\mysqldump.exe --defaults-extra-file="c:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 cultibox programs > c:/bdd.sql
+}}}
+
 = Table =
 
 La base de données est constituée de 9 tables :
@@ -231,4 +247,3 @@ Cette table contient le type des capteurs actuellement branchés sur la Cultibox
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || id    || int(11) || NO   || PRI || NULL    ||       ||
 || type  || int(5)  || NO   ||     || 0       ||       ||
-
