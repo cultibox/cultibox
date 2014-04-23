@@ -11,8 +11,6 @@ Ce paragraphe concerne toutes les futures évolutions.
 
 == Hard ==
 
- * Capteur EC
- * Capteur PH
  * Capteur CO2
  * Capteur T/RH sans fils
  * Beeper (Issue 586)
@@ -39,7 +37,6 @@ Ce paragraphe concerne toutes les futures évolutions.
 == Site Web ==
  * Création d'un modèle 3D à intégrer dans le site Web (http://www.google.com/webdesigner/)
 
-
 = Évolution : conception =
 
 == Hard ==
@@ -50,10 +47,16 @@ Ce paragraphe concerne toutes les futures évolutions.
 
 = Évolution : en test =
 
+ * Capteur EC
+ * Capteur PH
+ * Capteur OD
+ * Capteur ORP
  * Capteur niveau d'eau
 
 = Évolution : réalisée =
 
  * Logiciel: calendrier avec schéma de culture (depuis la version 1.1.36)
- * Faire défiler les infos du calendrier sur l'écran de la cultibox
+ * Faire défiler les infos du calendrier sur l'écran de la Cultibox
  * Capteur température en milieu humide
+ * Programmation au jour (Ok dans la Cultibox mais pas dans le soft)
+ 
