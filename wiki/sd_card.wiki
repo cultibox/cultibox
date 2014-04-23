@@ -5,7 +5,9 @@
 
 = Introduction =
 
-Ce chapitre de l'annexe décrit les fichiers présents sur la carte SD
+Ce chapitre de l'annexe décrit les fichiers présents sur la carte SD.
+
+De façon générale, le caractère de fin de de ligne des fichier est <cr><lf>.
 
 = Architecture =
 
@@ -115,6 +117,46 @@ SEN:M100000
 STOL:000
 
 == Dossier prg ==
+
+Le dossier prg contient plusieurs fichiers
+ * Un fichier plugv
+ * Un fichier plgidx
+ * 0 à 100 fichier pluXX
+
+=== Fichier plgidx ===
+
+Ce fichier contient pour chaque jour l'index du fichier pluXX à utiliser.
+
+Chaque ligne représente un jour. Les deux premiers digits sont le numéro du mois, les deux suivants sont le numéro du jour, les 2 digits suivants représentes le fichier pluXX à utiliser.
+
+Si les deux derniers digits sont à zéro, c'est le fichier plugv qui est utilisé. Sinon c'est le fichier pluXX associé qui est utilisé. Par exemple si les deux derniers digits sont 25, c'est le fichier plu25 qui est utilisé.
+
+Il doit contenir 31 jours par mois et continuer jusqu'à 13/13 pour assurer une lecture rapide de la Cultibox (multiple de 512 octets plus quelques octets).
+
+Format :
+010100
+010200
+....
+131100
+131200
+131300
+
+=== plugv pluXX ===
+
+Ces fichiers ont le même format.
+
+Sur la première ligne : 3 digits. Ils indiquent le nombre de ligne du fichier.
+
+Ensuite sur chaque ligne, une nouvelle action. Les 5 premiers digits indiquent la seconde à laquelle appliquer le programme. Pour chaque prise (16 au total), on retrouve ensuite 3 digits qui indiquent l'état voulu de la prise.
+
+Exemple de fichier :
+006
+00000000400999999999999999999999999999999999999999999
+15000999200999999999999999999999999999999999999999999
+30000999500000999999999999999999999999999999999999999
+45000999999999000999999999999999999999999999999999999
+60000999999999999000999999999999999999999999999999999
+86399999999999999999999999999999999999999999999999999
 
 = Répertoire bin =
 
