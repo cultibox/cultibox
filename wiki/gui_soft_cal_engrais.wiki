@@ -293,6 +293,51 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 || 11 || 0,67 ||  ||  ||  ||  || 0,25 ml/l|| 1,75 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  ||  ||  || 0,4 g/l|| 6 ml/l||
 
+== General Organics - Hydro ==
+
+|| *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Bioprotect* || *Diamond Black* || *Urtica* ||
+|| 1 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
+|| 2 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l|| 5 ml/l|| 2,5 ml/l|| 20 ml/l||
+|| 3 ||  ||  ||  || 15 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
+|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 5 ml/l|| 2,5 ml/l|| 20 ml/l||
+|| 5 || 3 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||  ||
+|| 6 || 3 ml/l||  || 20 ml/l||  ||  || 50 ml/l|| 5 ml/l||  || 20 ml/l||
+|| 7 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 8 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 9 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 10 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 11 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+
+== General Organics - Coco ==
+
+|| *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Bioprotect* || *Diamond Black* || *Urtica* ||
+|| 1 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
+|| 2 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l|| 5 ml/l|| 2,5 ml/l|| 20 ml/l||
+|| 3 ||  ||  ||  || 15 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
+|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 5 ml/l|| 2,5 ml/l|| 20 ml/l||
+|| 5 || 3 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||  ||
+|| 6 || 3 ml/l||  || 20 ml/l||  ||  || 50 ml/l|| 5 ml/l||  || 20 ml/l||
+|| 7 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 8 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 9 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 10 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 11 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+
+== General Organics - Terre ==
+
+|| *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Bioprotect* || *Diamond Black* || *Urtica* ||
+|| 1 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
+|| 2 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l|| 5 ml/l|| 2,5 ml/l|| 20 ml/l||
+|| 3 ||  ||  ||  || 15 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
+|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 5 ml/l|| 2,5 ml/l|| 20 ml/l||
+|| 5 || 3 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||  ||
+|| 6 || 3 ml/l||  || 20 ml/l||  ||  || 50 ml/l|| 5 ml/l||  || 20 ml/l||
+|| 7 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 8 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 9 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 10 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| 11 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+
 = Hesi =
 
 Source : [http://www.hesinutrients.com Schéma de culture]
