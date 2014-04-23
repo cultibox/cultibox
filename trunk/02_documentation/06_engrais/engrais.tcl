@@ -73,6 +73,8 @@ set EngraisMarque [split $UneLigne "\t"]
 gets $fidIn UneLigne
 set EngraisName [split $UneLigne "\t"]
 
+gets $fidIn UneLigne
+set EngraisUnit [split $UneLigne "\t"]
 
 while {[eof $fidIn] != 1} {
 	gets $fidIn UneLigne
@@ -187,20 +189,7 @@ while {[eof $fidIn] != 1} {
             foreach Dosage [lrange $UneLigne 8 end] {
                 
                 if {$Dosage != 0} {
-                    set unit "ml/l"
-					switch [lindex $EngraisName $idx] {
-						"Mineral Magic" -
-						"Piranha" -
-						"Carboload" -
-						"Bud Blood" -
-						"Big Bud" {
-							set unit "g/l"
-						}
-						"SuperVit" {
-							set unit "goutte/4,5l"
-						}
-					}
-                    addNutriment $fid [lindex $EngraisName $idx] "${Dosage} ${unit}"
+                    addNutriment $fid [lindex $EngraisName $idx] "${Dosage} [lindex $EngraisUnit $idx]"
                 }
                 incr idx
             }
