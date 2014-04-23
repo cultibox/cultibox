@@ -62,8 +62,8 @@ La valeur 0 correspond à tout le temps.
 === RTC_OFFSET ===
 
 La section RTC_OFFSET permet d'accélérer ou de ralentir la vitesse de l'horloge interne. La valeur doit être entre 0 et 255. Le premier bit indique si la valeur doit être ajoutée (0) ou soustraite.
-L'horloge soustrait/additionne chaque minute 2 * la valeur indiquée au 32768 du quartz.
-Formule du décalage en seconde par jour : 2 * RTC_OFFSET * 60 *24 / 32768
+L'horloge soustrait/additionne chaque minute 2 x la valeur indiquée au 32768 du quartz.
+Formule du décalage en seconde par jour : 2 x RTC_OFFSET x 60 x 24 / 32768
 
 Quelques exemples :
 
@@ -109,12 +109,12 @@ Le dossier plg contient :
  * Un fichier de paramétrage par prise plugXX
  * Un fichier pluga qui contient les adresses des prises
 
-=== pluga ===
+=== Fichier pluga ===
 
 Le fichier pluga contient les adresses pour les prises utilisées.
 
 
-=== plugXX ===
+=== Fichier plugXX ===
 
 Il y a 16 fichiers plugXX (avec XX allant de 01 à 16), un pour chaque prise.
 
@@ -153,7 +153,7 @@ Format :
 131300
 }}}
 
-=== plugv pluXX ===
+=== Fichiers plugv pluXX ===
 
 Ces fichiers ont le même format.
 
@@ -172,7 +172,7 @@ Exemple de fichier :
 86399999999999999999999999999999999999999999999999999
 }}}
 
-= Répertoire bin =
+= Dossier bin =
 
 Le répertoire bin contient les firmwares des accessoires. On trouve donc dans ce dossier, les firmwares suivants :
  * emetteur.hex
@@ -199,7 +199,7 @@ Le répertoire bin contient les firmwares des accessoires. On trouve donc dans c
  * od_5.hex
  * od_6.hex
 
-= Répertoire logs =
+= Dossier logs =
 
 Le répertoire logs contient : 
  * Le fichier index
