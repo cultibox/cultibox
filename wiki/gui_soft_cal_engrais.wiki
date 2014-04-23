@@ -26,39 +26,39 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Biosevia - Terre ==
 
 || *Semaine* || *Bio Bloom* || *BioRoot Plus* || *BioSevia Bloom* || *BioSevia Grow* || *Bioprotect* || *Diamond Nectar* ||
-|| 1 ||  || 0,2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  || 2 ml/l||
-|| 2 ||  || 0,2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 5 ml/l|| 2 ml/l||
-|| 3 ||  || 0,2 ml/l||  || 1,5 ml/l||  || 2 ml/l||
-|| 4 ||  ||  || 1 ml/l|| 1 ml/l|| 5 ml/l|| 2 ml/l||
-|| 5 || 0,2 ml/l||  || 1 ml/l|| 1 ml/l||  ||  ||
-|| 6 || 0,2 ml/l||  || 2 ml/l||  || 5 ml/l||  ||
-|| 7 || 0,2 ml/l||  || 2 ml/l||  ||  ||  ||
-|| 8 ||  ||  || 2 ml/l||  ||  ||  ||
-|| 9 ||  ||  || 2 ml/l||  ||  ||  ||
-|| 10 ||  ||  || 2 ml/l||  ||  ||  ||
-|| 11 ||  ||  || 2 ml/l||  ||  ||  ||
+|| 1 ||  || 2 ml/l|| 2,5 ml/l|| 2,5 ml/l||  || 2 ml/l||
+|| 2 ||  || 2 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 5 ml/l|| 2 ml/l||
+|| 3 ||  || 2 ml/l||  || 15 ml/l||  || 2 ml/l||
+|| 4 ||  ||  || 10 ml/l|| 10 ml/l|| 5 ml/l|| 2 ml/l||
+|| 5 || 0,2 ml/l||  || 10 ml/l|| 10 ml/l||  ||  ||
+|| 6 || 0,2 ml/l||  || 20 ml/l||  || 5 ml/l||  ||
+|| 7 || 0,2 ml/l||  || 20 ml/l||  ||  ||  ||
+|| 8 ||  ||  || 20 ml/l||  ||  ||  ||
+|| 9 ||  ||  || 20 ml/l||  ||  ||  ||
+|| 10 ||  ||  || 20 ml/l||  ||  ||  ||
+|| 11 ||  ||  || 20 ml/l||  ||  ||  ||
 
 == Biosevia - Hydro ==
 
 || *Semaine* || *Bio Bloom* || *BioRoot Plus* || *BioSevia Bloom* || *BioSevia Grow* || *Bioprotect* || *Diamond Nectar* ||
-|| 1 ||  || 0,2 ml/l|| 0,3 ml/l|| 0,3 ml/l|| 5 ml/l|| 2 ml/l||
-|| 2 ||  || 0,2 ml/l|| 0,3 ml/l|| 0,3 ml/l||  || 2 ml/l||
-|| 3 ||  || 0,2 ml/l||  || 1,5 ml/l||  || 2 ml/l||
-|| 4 ||  ||  ||  || 2 ml/l|| 5 ml/l|| 2 ml/l||
-|| 5 || 0,2 ml/l||  || 2 ml/l||  ||  ||  ||
-|| 6 || 0,2 ml/l||  || 2 ml/l||  || 5 ml/l||  ||
-|| 7 || 0,2 ml/l||  || 2 ml/l||  ||  ||  ||
-|| 8 ||  ||  || 2 ml/l||  ||  ||  ||
-|| 9 ||  ||  || 2 ml/l||  ||  ||  ||
-|| 10 ||  ||  || 2 ml/l||  ||  ||  ||
-|| 11 ||  ||  || 2 ml/l||  ||  ||  ||
+|| 1 ||  || 2 ml/l|| 3 ml/l|| 3 ml/l|| 5 ml/l|| 2 ml/l||
+|| 2 ||  || 2 ml/l|| 3 ml/l|| 3 ml/l||  || 2 ml/l||
+|| 3 ||  || 2 ml/l||  || 15 ml/l||  || 2 ml/l||
+|| 4 ||  ||  ||  || 20 ml/l|| 5 ml/l|| 2 ml/l||
+|| 5 || 0,2 ml/l||  || 20 ml/l||  ||  ||  ||
+|| 6 || 0,2 ml/l||  || 20 ml/l||  || 5 ml/l||  ||
+|| 7 || 0,2 ml/l||  || 20 ml/l||  ||  ||  ||
+|| 8 ||  ||  || 20 ml/l||  ||  ||  ||
+|| 9 ||  ||  || 20 ml/l||  ||  ||  ||
+|| 10 ||  ||  || 20 ml/l||  ||  ||  ||
+|| 11 ||  ||  || 20 ml/l||  ||  ||  ||
 
 == Flora Duo - Hydro ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 3 ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 1 ml/l|| 3 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 1 ml/l|| 3 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 3 ml/l|| 1 ml/l|| 0,4 g/l||  ||
@@ -72,9 +72,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Duo - Coco ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 3 ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 1 ml/l|| 3 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 1 ml/l|| 3 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 3 ml/l|| 1 ml/l|| 0,4 g/l||  ||
@@ -88,9 +88,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Duo - Terre ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 3 ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,75 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,75 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
@@ -104,9 +104,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Nova - Coco ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 2 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
-|| 3 ||  || 2 ml/l||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
+|| 3 ||  || 20 ml/l||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 1,5 ml/l||  || 1,4 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 1,5 ml/l|| 0,6 ml/l|| 0,8 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 1,4 ml/l||  || 0,4 g/l||  ||
@@ -120,9 +120,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Nova - Hydro ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 2 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
-|| 3 ||  || 2 ml/l||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
+|| 3 ||  || 20 ml/l||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 1,5 ml/l||  || 1,4 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 1,5 ml/l|| 0,6 ml/l|| 0,8 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 1,4 ml/l||  || 0,4 g/l||  ||
@@ -136,9 +136,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Nova - Terre ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 2 ml/l||  || 1,5 ml/l||  || 0,3 ml/l||  ||  ||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,3 ml/l||  ||  ||
-|| 3 ||  || 2 ml/l||  || 1,5 ml/l||  || 0,6 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/l||  || 1,5 ml/l||  || 0,3 ml/l||  ||  ||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,3 ml/l||  ||  ||
+|| 3 ||  || 20 ml/l||  || 1,5 ml/l||  || 0,6 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 1,5 ml/l||  || 0,7 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 1,5 ml/l|| 0,3 ml/l|| 0,4 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 0,7 ml/l||  || 0,4 g/l||  ||
@@ -152,9 +152,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Series - Coco ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 3 ||  || 2 ml/l||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
@@ -168,9 +168,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Series - Hydro ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 3 ||  || 2 ml/l||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
@@ -184,9 +184,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Series - Terre ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 3 ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 0,3 ml/l|| 0,9 ml/l|| 0,6 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 0,3 ml/l|| 0,9 ml/l|| 0,6 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 0,9 ml/l|| 0,3 ml/l|| 0,6 ml/l|| 0,4 g/l||  ||
@@ -200,9 +200,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == One Part - Coco ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
-|| 1 ||  || 2 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
-|| 3 ||  || 2 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
+|| 1 ||  || 20 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
+|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 0,4 g/l||  ||  || 5 ml/l||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 0,4 g/l||  || 2,4 ml/l|| 4 ml/l||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 0,4 g/l||  || 6 ml/l||  ||
@@ -216,9 +216,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == One Part - Hydro ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
-|| 1 ||  || 2 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
-|| 3 ||  || 2 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
+|| 1 ||  || 20 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
+|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 0,4 g/l||  ||  || 5 ml/l||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 0,4 g/l||  || 2,4 ml/l|| 4 ml/l||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 0,4 g/l||  || 6 ml/l||  ||
@@ -232,9 +232,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == One Part - Terre ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
-|| 1 ||  || 2 ml/l||  || 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
-|| 2 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
-|| 3 ||  || 2 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 1,75 ml/l||
+|| 1 ||  || 20 ml/l||  || 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
+|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
+|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 1,75 ml/l||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 0,4 g/l||  || 1,5 ml/l|| 2,5 ml/l||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 0,4 g/l||  || 4 ml/l||  ||
@@ -248,9 +248,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == K - Hydro ==
 
 || *Semaine* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
-|| 1 || 0,8 ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 2 || 1,1 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
-|| 3 || 1,3 ||  || 2 ml/l||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
+|| 1 || 0,8 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 2 || 1,1 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
+|| 3 || 1,3 ||  || 20 ml/l||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
 || 4 || 1,4 ||  ||  || 5 ml/l|| 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
 || 5 || 1,4 || 0,2 ml/l||  ||  || 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
 || 6 || 1,6 || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,4 g/l||  ||
@@ -264,9 +264,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == K - Coco ==
 
 || *Semaine* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
-|| 1 || 0,8 ||  || 2 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 2 || 1,1 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
-|| 3 || 1,3 ||  || 2 ml/l||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
+|| 1 || 0,8 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 2 || 1,1 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
+|| 3 || 1,3 ||  || 20 ml/l||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
 || 4 || 1,4 ||  ||  || 5 ml/l|| 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
 || 5 || 1,4 || 0,2 ml/l||  ||  || 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
 || 6 || 1,6 || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,4 g/l||  ||
@@ -280,9 +280,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == K - Terre ==
 
 || *Semaine* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
-|| 1 || 0,22 ||  || 2 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 2 || 0,45 ||  || 2 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 3 || 0,58 ||  || 2 ml/l||  || 2 ml/l|| 0,65 ml/l|| 0,65 ml/l|| 0,65 ml/l|| 0,4 g/l||  ||
+|| 1 || 0,22 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 2 || 0,45 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 3 || 0,58 ||  || 20 ml/l||  || 2 ml/l|| 0,65 ml/l|| 0,65 ml/l|| 0,65 ml/l|| 0,4 g/l||  ||
 || 4 || 0,66 ||  ||  || 5 ml/l|| 2 ml/l|| 0,75 ml/l|| 0,65 ml/l|| 0,8 ml/l|| 0,4 g/l||  ||
 || 5 || 0,66 || 0,2 ml/l||  ||  || 2 ml/l|| 0,75 ml/l|| 0,65 ml/l|| 0,8 ml/l|| 0,4 g/l||  ||
 || 6 || 0,74 || 0,2 ml/l||  || 5 ml/l||  || 0,75 ml/l|| 0,65 ml/l|| 1 ml/l|| 0,4 g/l||  ||
@@ -295,48 +295,48 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 
 == General Organics - Hydro ==
 
-|| *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Bioprotect* || *Diamond Black* || *Urtica* ||
-|| 1 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
-|| 2 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l|| 5 ml/l|| 2,5 ml/l|| 20 ml/l||
-|| 3 ||  ||  ||  || 15 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
-|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 5 ml/l|| 2,5 ml/l|| 20 ml/l||
-|| 5 || 3 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||  ||
-|| 6 || 3 ml/l||  || 20 ml/l||  ||  || 50 ml/l|| 5 ml/l||  || 20 ml/l||
-|| 7 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 8 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 9 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 10 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 11 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Diamond Black* || *Urtica* ||
+|| 1 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
+|| 2 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l|| 300 ml/l||
+|| 3 ||  || 30-50 ml/l||  || 15 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
+|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 40 ml/l|| 300 ml/l||
+|| 5 || 30-50 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||
+|| 6 || 30-50 ml/l||  || 20 ml/l||  ||  || 50 ml/l||  || 300 ml/l||
+|| 7 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 8 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 9 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 10 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 11 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
 
 == General Organics - Coco ==
 
-|| *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Bioprotect* || *Diamond Black* || *Urtica* ||
-|| 1 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
-|| 2 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l|| 5 ml/l|| 2,5 ml/l|| 20 ml/l||
-|| 3 ||  ||  ||  || 15 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
-|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 5 ml/l|| 2,5 ml/l|| 20 ml/l||
-|| 5 || 3 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||  ||
-|| 6 || 3 ml/l||  || 20 ml/l||  ||  || 50 ml/l|| 5 ml/l||  || 20 ml/l||
-|| 7 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 8 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 9 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 10 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 11 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Diamond Black* || *Urtica* ||
+|| 1 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
+|| 2 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l|| 300 ml/l||
+|| 3 ||  || 30-50 ml/l||  || 15 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
+|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 40 ml/l|| 300 ml/l||
+|| 5 || 30-50 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||
+|| 6 || 30-50 ml/l||  || 20 ml/l||  ||  || 50 ml/l||  || 300 ml/l||
+|| 7 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 8 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 9 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 10 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 11 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
 
 == General Organics - Terre ==
 
-|| *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Bioprotect* || *Diamond Black* || *Urtica* ||
-|| 1 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
-|| 2 ||  || 3 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 3 ml/l|| 50 ml/l|| 5 ml/l|| 2,5 ml/l|| 20 ml/l||
-|| 3 ||  ||  ||  || 15 ml/l|| 3 ml/l|| 50 ml/l||  || 2,5 ml/l||  ||
-|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 5 ml/l|| 2,5 ml/l|| 20 ml/l||
-|| 5 || 3 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||  ||
-|| 6 || 3 ml/l||  || 20 ml/l||  ||  || 50 ml/l|| 5 ml/l||  || 20 ml/l||
-|| 7 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 8 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 9 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 10 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
-|| 11 || 3 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||  ||
+|| *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Diamond Black* || *Urtica* ||
+|| 1 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
+|| 2 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l|| 300 ml/l||
+|| 3 ||  || 30-50 ml/l||  || 15 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
+|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 40 ml/l|| 300 ml/l||
+|| 5 || 30-50 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||
+|| 6 || 30-50 ml/l||  || 20 ml/l||  ||  || 50 ml/l||  || 300 ml/l||
+|| 7 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 8 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 9 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 10 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 11 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
 
 = Hesi =
 
