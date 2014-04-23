@@ -259,7 +259,16 @@ puts $fid {#summary Calendrier des engrais
 
 Le logiciel Cultibox vous permet de planifier les engrais que vous souhaitez appliquer.
 
-Ci-dessous vous trouverez tout les schéma de culture utilisé:
+La douxième semaine est systématiquement une semaine de rinçage.
+
+Ci-dessous vous trouverez tout les schémas de culture utilisés :
+
+<wiki:comment>
+Disponible en annexe de la documentation.
+-annexe-
+\chapter{Tableau des engrais}  \label{nutrients_tab}
+\begin{landscape}
+</wiki:comment>
 
 }
 
@@ -299,7 +308,34 @@ while {[eof $fidIn] != 1} {
                 set listEngrais [lsort -unique $listEngrais]
                 set listSemaine [lsort -integer -unique $listSemaine]
                 
-                puts -nonewline $fid "|| *Semaine* || *Remarque* || *EC* "
+                #-- Header du tableau --
+                puts -nonewline $fid "|| *Semaine* "
+                
+                # On cherche si une note est présente
+                set NOTEpresent 0
+                foreach Semaine $listSemaine {
+                    if {$eng(${Semaine},remarque) != ""} {
+                        incr NOTEpresent
+                        break;
+                    }
+                }
+                if {$NOTEpresent != 0} {
+                    puts -nonewline $fid "|| *Note* "
+                }
+                
+                # On cherche si un EC est présent
+                set ECpresent 0
+                foreach Semaine $listSemaine {
+                    if {$eng(${Semaine},ec) != ""} {
+                        incr ECpresent
+                        break;
+                    }
+                }
+                if {$ECpresent != 0} {
+                    puts -nonewline $fid "|| *EC* "
+                }
+
+                # On ajoute dans le header la liste des engrais
                 foreach Engrais $listEngrais {
                     puts -nonewline $fid "|| *${Engrais}* "
                 }
@@ -307,7 +343,18 @@ while {[eof $fidIn] != 1} {
                 puts $fid ""
                     
                 foreach Semaine $listSemaine {
-                    puts -nonewline $fid "|| $Semaine || $eng(${Semaine},remarque) || $eng(${Semaine},ec)"
+                    puts -nonewline $fid "|| $Semaine "
+                    
+                    # Si au moins une note est présent
+                    if {$NOTEpresent != 0} {
+                        puts -nonewline $fid "|| $eng(${Semaine},remarque) "
+                    } 
+                    
+                    # Si au moins un EC est présent
+                    if {$ECpresent != 0} {
+                        puts -nonewline $fid "|| $eng(${Semaine},ec) "
+                    } 
+                    
                     foreach Engrais $listEngrais {
                         if {[array names eng ${Semaine},${Engrais}] != ""} {
                             puts -nonewline $fid "|| $eng(${Semaine},${Engrais})"
@@ -336,25 +383,21 @@ while {[eof $fidIn] != 1} {
 			
         }
         
-        if {$nomProgramme != $oldProgramme && $nomProgramme != ""} {
-            puts $fid "== ${nomProgramme} =="
+        if {($nomProgramme != $oldProgramme && $nomProgramme != "") || ($Substrat != $oldSubstrat && $Substrat != "")} {
+            puts $fid "== ${nomProgramme} - ${Substrat} =="
             puts $fid ""
 			set oldSubstrat ""
-        }
-        
-        if {$Substrat != $oldSubstrat && $Substrat != ""} {
-
             set semaine 1
-
-            puts $fid "=== ${Substrat} ==="
-            puts $fid ""
-            
         }
-        
+
 
         set idx 7
         set eng(${semaine},ec) $ec
-        set eng(${semaine},remarque) $remarque
+        if {$remarque != "Rincage"} {
+            set eng(${semaine},remarque) $remarque
+        } else {
+            set eng(${semaine},remarque) ""
+        }
         foreach Dosage [lrange $UneLigne 7 end] {
             
             if {$Dosage != 0} {
@@ -363,7 +406,7 @@ while {[eof $fidIn] != 1} {
                     set unit "g/l"
                 }
 				if {[lindex $EngraisName $idx] == "SuperVit"} {
-					set unit "goutte/4,5l"
+					set unit "goutte / 4,5l"
 				}
                 set eng(${semaine},[lindex $EngraisName $idx]) "${Dosage} ${unit}"
             }
@@ -376,6 +419,15 @@ while {[eof $fidIn] != 1} {
                 set oldmarque $marque
     }
 
+
+}
+
+puts $fid {
+
+<wiki:comment>
+\end{landscape}
+-annexeend-
+</wiki:comment>
 
 }
 
