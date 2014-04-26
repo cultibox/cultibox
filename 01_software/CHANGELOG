@@ -2,6 +2,7 @@ Cultibox (1.3.06) precise; urgency=low
     + Correction de la position de l'image qui apparaît quand on cache la boîte de dialogue du logiciel
     + Correction de l'affichage de la selection des prises
     + Lorsqu'on choisit un seul capteur pour la régulation, les options de min/max/moyenne sont désactivées dans l'interface
+    + Correction de l'affichage de l'oeil
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Apr 22 14:12:42 CEST 2014
 
