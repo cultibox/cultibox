@@ -483,13 +483,38 @@ $(document).ready(function() {
             text: HIDE_button,
             id: "button_hide" ,
             click: function() {
+                //Action lors de l'enclenchement du bouton "Cacher" de la boîte de messages:
+            
+                //Fermeture de la boîte de dialogue
                 $( this ).dialog( "close" );
-                $("#tooltip_msg_box").fadeIn("slow");
+
+                //Mise a True de la variable de session TOOLTIP_MSG_BOX qui définit si on doit afficher ou non la boîte de message lorsqu'on change de page
                 $.ajax({
                         cache: false,
                         url: "../../main/modules/external/set_variable.php",
-                        data: {name:"TOOLTIP_MSG_BOX", value: "True"}
+                        data: {name:"tooltip_msg_box", value: "True"}
                 });
+
+
+                //Affichage de l'oeil permettant de réafficher la boîte de message:
+                // On affiche l'oeil sur le bord exterieur gauche de l'interface. La position dépend de la résolution de l'écran.
+                // On récupère donc la taille de l'écran et la taille du div central de l'interface pour afficher l'oeil au bon endroit:
+                // position = 90*(taille de l'écran - taille du div central)/200
+                // taille de l'écran - taille du div central /2 ==> correspond à la taille de la marge à gauche (ou à droite) séparant le bord du div central
+                // on affiche donc l'oeil a 90% de la marge exterieure
+                
+                var element_div_width=$("#maininner").width();
+                var element_body_width=$( window ).width();
+
+                if((element_body_width!="")&&(element_div_width!="")) {
+                    var dist=90*(element_body_width-element_div_width)/200;
+                    $("#tooltip_msg_box").css("padding-left",dist+"px");
+                }
+
+
+                //On l'oeil et son tooltip:
+                $("#eyes_msgbox").attr('title', title_msgbox);
+                $("#tooltip_msg_box").fadeIn("slow");
             }
         },
         {
@@ -1192,6 +1217,7 @@ $(document).ready(function() {
             $("#error_cyclic_time").css("display","none");
             $("#error_minimal_cyclic").css("display","none");
             $("#error_start_time_cyclic").css("display","none");
+            $("#error_end_time_cyclic").css("display","none");
 
             $("#error_value_program").css("display","none");
 
@@ -1239,6 +1265,22 @@ $(document).ready(function() {
                     if(data!=1) {
                         $("#error_start_time_cyclic").show(700);
                         $('#start_time_cyclic').val("00:00:00");
+                        checked=false;
+                    }
+                });
+
+
+                //Vérification du format (HH:MM:SS) pour l'heure de fin d'un programme cyclique:
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#end_time_cyclic").val(),type:'time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        //Affichage du massage d'erreur et remise à 0 du champ si le format n'est pas respecté:
+                        $("#error_end_time_cyclic").show(700);
+                        $('#end_time_cyclic').val("00:00:00");
                         checked=false;
                     }
                 });
@@ -1948,7 +1990,7 @@ $(document).ready(function() {
         $.ajax({
            cache: false,
            url: "../../main/modules/external/get_variable.php",
-           data: {name:"important_calendar"}
+           data: {name:"important"}
         }).done(function (data) {
                 if(data!="True") {
                       $("#dialog_calendar_important").dialog({
@@ -1969,7 +2011,7 @@ $(document).ready(function() {
                     $.ajax({
                         cache: false,
                         url: "../../main/modules/external/set_variable.php",
-                        data: {name:"IMPORTANT", value: "True"}
+                        data: {name:"important", value: "True"}
                     });
                 }
             });
@@ -2071,39 +2113,61 @@ $(document).ready(function() {
          });
     });
 
+
+
+    // Au chargement d'une page, on vérifie la variable tooltip_msg_box qui détermine si on doit affiche la boîte de message ou l'oeil:
     $.ajax({
         cache: false,
         url: "../../main/modules/external/get_variable.php",
         data: {name:"tooltip_msg_box"}
     }).done(function (data) {
+        //Si l'oeil doit être affiché:
         if(data=="True") {
+            //On cache la boîte de message:
             $(".message").dialog("option", "hide",{ effect: "slideUp", duration: 0 } );
             $(".message").dialog('close');
+
+
+            //Affichage de l'oeil permettant de réafficher la boîte de message:
+            // On affiche l'oeil sur le bord exterieur gauche de l'interface. La position dépend de la résolution de l'écran.
+            // On récupère donc la taille de l'écran et la taille du div central de l'interface pour afficher l'oeil au bon endroit:
+            // position = 90*(taille de l'écran - taille du div central)/200
+            // taille de l'écran - taille du div central /2 ==> correspond à la taille de la marge à gauche (ou à droite) séparant le bord du div central
+            // on affiche donc l'oeil a 90% de la marge exterieure
+
 			var element_div_width=$("#maininner").width();
 			var element_body_width=$( window ).width();
 			
 			if((element_body_width!="")&&(element_div_width!="")) {
-					var dist=((element_body_width-element_div_width)/2-((element_body_width-element_div_width)*10/100));
+					var dist=90*(element_body_width-element_div_width)/200
 					$("#tooltip_msg_box").css("padding-left",dist+"px");
 			}	
-        
+       
+
+            //Affichage de l'oeil et de son tooltip: 
             $("#eyes_msgbox").attr('title', title_msgbox);
             $("#tooltip_msg_box").show();
         } else {
+            //Sinon on cache l'oeil - la boîte de messages étant par défaut affichée:
             $("#tooltip_msg_box").css("display","none");
         }
     });
 
-     
+
+    //Lors du click sur l'oeil - on doit cacher l'oeil et afficher la boîte de messages:     
     $("#tooltip_msg_box").click(function(e) {
+        //On positionne la variable SESSION tooltip_msg_box qui détermine si on doit afficher l'oeil ou pas lors du chargement d'une page
+        // en fonction des actions utilisateurs. La variable est positionnée à False, au chargement d'une page l'oeil sera donc caché et 
+        // la boîte de messages affichée.
         $.ajax({
             cache: false,
             url: "../../main/modules/external/set_variable.php",
-            data: {name:"TOOLTIP_MSG_BOX", value: "False"}
+            data: {name:"tooltip_msg_box", value: "False"}
         });
+
+        // On cache l'oeil et on affiche la boîte de messages
         $("#tooltip_msg_box").fadeOut("slow");
-        $(".message").dialog('open');
-        $(".message").dialog("option", "hide",{ effect: "fold", duration: 400 } );
+        $(".message").dialog("open");
     });
 
 });

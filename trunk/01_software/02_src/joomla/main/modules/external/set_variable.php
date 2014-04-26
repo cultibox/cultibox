@@ -16,10 +16,10 @@ if((isset($_GET['value']))&&(!empty($_GET['value']))) {
 
 
 if((!isset($name))||(empty($name))||(!isset($value))||(empty($value))) {
-    echo "0";
+    echo json_encode("0");
 } else {
-    $_SESSION["${name}"]=$value;
-    echo "1";
+    $_SESSION[strtoupper($name)]=$value;
+    echo json_encode("1");
 }
 
 ?>
