@@ -1562,6 +1562,58 @@ function check_and_copy_firm($sd_card) {
 // }}}
 
 
+// {{{ check_and_copy_plgidx()
+// ROLE check if cnf/prg/plgidx file has to be updated
+// IN  $sd_card     the sd card pathname 
+// RET false if an error occured, true else
+function check_and_copy_plgidx($sd_card="") {
+    $path="";
+
+    //On essaye de déterminer le chemin du fichier de référence:
+    if(is_file("tmp/cnf/prg/plgidx")) {
+        $path="tmp/cnf/prg/plgidx";
+    } else if(is_file("../tmp/cnf/prg/plgidx")) {
+        $path="../tmp/cnf/prg/plgidx";
+    } else if(is_file("../../tmp/cnf/prg/plgidx")) {
+        $path="../../tmp/cnf/prg/plgidx";
+    } else if(is_file("../../../tmp/cnf/prg/plgidx")) {
+        $path="../../../tmp/cnf/prg/plgidx";
+    }
+
+    //Si le fichier sur la carte SD n'existe pas:
+    if(!is_file("$sd_card/cnf/prg/plgidx")) {
+        //Si le chemin de référence a été trouvé:
+        if(strcmp("$path","")!=0) {
+            if(!@copy("$path", "$sd_card/cnf/prg/plgidx")) {
+                //Si la copie n'a pas réussie:
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    } else {
+        if(strcmp("$path","")==0) {
+           //Si on ne trouve pas le fichier de référence:
+           return false;
+        } else {
+           //On compare si le fichier de référence et le fichier sur la carte SD sont différents:
+           if(filesize("$path")!=filesize("$sd_card/cnf/prg/plgidx")) {
+               if(!@copy("$path", "$sd_card/cnf/prg/plgidx")) {
+                   return false;
+                } else {
+                   return true;
+                }
+           } else {
+               return true;
+           }
+        }
+    }
+}
+// }}}
+
+
 // {{{ check_and_copy_id()
 // ROLE check if cnf/id file has to be updated
 // IN  $sd_card     the sd card pathname 
