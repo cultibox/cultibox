@@ -107,10 +107,8 @@ $GLOBALS['WIFI_KEY_TYPE_LIST']=array("NONE", "WEP", "WPA", "WPA2", "WPA-AUTO");
 // List and equivalence between sensor number and type of the sensor from the index file:
 $GLOBALS['SENSOR_DEFINITION']=array(
                                 '0' => 'none',
-                                '1' => '',
                                 '2' => 'tem_humi',
                                 '3' => 'water_temp',
-                                '4' => '',
                                 '5' => 'wifi',
                                 '6' => 'water_level',
                                 '7' => 'water_level',

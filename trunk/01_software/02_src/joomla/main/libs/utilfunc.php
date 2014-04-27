@@ -1562,7 +1562,6 @@ function check_and_copy_id($sd_card,$id="") {
 // }}}
 
 
-
 // {{{ check_and_copy_index()
 // ROLE check if the index file exists and if not, create it 
 // IN  $sd_card     the sd card pathname 
@@ -1585,7 +1584,7 @@ function check_and_copy_index($sd_card) {
             if(!@copy("$path", "$sd_card/logs/index")) {
                 return false;
             } else {
-                return true;  
+                return true;
             }
         } else {
             return false;
@@ -1610,37 +1609,29 @@ function check_and_copy_index($sd_card) {
 
 
 // {{{ clean_index_file()
-// ROLE clean the index file
+// ROLE force the cleaning of the index file
 // IN  $sd_card     the sd card pathname 
 // RET false if an error occured, true else
 function clean_index_file($sd_card) {
-    if(!is_file("$sd_card/logs/index")) {   
-        return false;
+    $path="";
+
+    if(is_file("tmp/logs/index")) {
+        $path="tmp/logs/index";
+    } else if(is_file("../tmp/logs/index")) {
+        $path="../tmp/logs/index";
+    } else if(is_file("../../tmp/logs/index")) {
+        $path="../../tmp/logs/index";
+    } else if(is_file("../../../tmp/logs/index")) {
+        $path="../../tmp/logs/index";
     }
 
-    $index="";
+    if(strcmp("$path","")==0) return false;
+    if(!is_dir("$sd_card/logs/")) return false;
 
-    for($i=1;$i<=14;$i++) { 
-        for($j=1;$j<=31;$j++) {     
-            if(strlen($i)<2) {
-                $i="0$i";
-            }
-
-            if(strlen($j)<2) {
-                $j="0$j";
-            }
-
-            $index=$index."${i}${j}0000\r\n";
-        }   
-    }
-
-    $handle=(fopen("$sd_card/logs/index",'w'));
-    fwrite($handle,"$index");
-    fclose($handle);
+    if(!@copy("$path", "$sd_card/logs/index")) return false;
     return true;
 }
 // }}}
-
 
 
 // {{{ clean_popup_message()
@@ -2026,20 +2017,26 @@ function find_new_line($tab, $time="") {
 // RET sensor type array
 
 // In the index file:
-// 2 : humidity and temperature sensor
-// 3 : water temperature sensor
-// 5 : wifi
-// 6,7 : level water sensor
-// 8: PH
-// 9: EC
-// A: OD
-// B: ORP
+//    '0' => 'none',
+//    '1' => '',
+//    '2' => 'tem_humi',
+//    '3' => 'water_temp',
+//    '4' => '',
+//    '5' => 'wifi',
+//    '6' => 'water_level',
+//    '7' => 'water_level',
+//    '8' => 'ph',
+//    '9' => 'ec',
+//    ':' => 'od',
+//    ';' => 'orp'
 function get_sensor_type($sd_card,$month,$day) {
-   $sensor_type=array(0,0,0,0);
+   //Par défaut les 6 capteurs sont définit comme non présents:
+   $sensor_type=array(0,0,0,0,0,0);
    $file="$sd_card/logs/index";
 
-   if(!file_exists("$file")) return $sensor_type;
-   
+   if(!file_exists("$file")) return $sensor_type; //Si on n'arrive pas à trouver le fichier index définissant les capteurs, on renvoie la valeur par défaut
+  
+   //On récupère le contenu du fichier index et on calcul la ligne de la journée actuelle: 
    $index_array=file("$file");
    if($month==1) {
         $line=$day;
@@ -2048,16 +2045,19 @@ function get_sensor_type($sd_card,$month,$day) {
    }
 
 
-   $tmp=trim($index_array[$line-1]); 
-   if(strlen($tmp)!=8) return $sensor_type;
+   $tmp=trim($index_array[$line-1]);  //Suppréssion des caratères invisibles
+   if(strlen($tmp)!=10) return $sensor_type;
 
    $tst_date=substr($tmp,0,4);
    if(strlen($month)<2) $month="0".$month;
    if(strlen($day)<2) $day="0".$day;   
    if(strcmp("$tst_date","${month}${day}")!=0) return $sensor_type;
 
-   $tmp=substr($tmp,4,4);
+   $tmp=substr($tmp,4,6);
    $sensor_type=str_split($tmp, 1);
+   for($i=0;$i<count($sensor_type);$i++) {
+       if(!array_key_exists("${sensor_type[$i]}", $GLOBALS['SENSOR_DEFINITION'])) $sensor_type[$i]='0';
+   }
    return $sensor_type;
 }
 // }}}

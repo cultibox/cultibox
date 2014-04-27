@@ -262,7 +262,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         $chk_value=false;
 
         foreach($current_index as $tst_index) {
-            if($tst_index!=0) {
+            if(strcmp("$tst_index","0")!=0) {
                 $chk_value=true;
                 break;
             }

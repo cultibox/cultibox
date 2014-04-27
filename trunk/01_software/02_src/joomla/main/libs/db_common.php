@@ -3526,10 +3526,12 @@ function update_sensor_type($index) {
 
     $ind=1; 
     foreach($index as $sens) {
+        if(strcmp("$sens","0")!=0) {
 $sql = $sql. <<<EOF
 UPDATE `sensors` SET  `type` = "{$sens}" WHERE id = ${ind};
 EOF;
-    $ind=$ind+1;
+        }
+        $ind=$ind+1;
    }
 
    $db=db_priv_pdo_start();
