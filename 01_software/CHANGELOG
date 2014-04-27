@@ -3,6 +3,11 @@ Cultibox (1.3.06) precise; urgency=low
     + Correction de l'affichage de la selection des prises
     + Lorsqu'on choisit un seul capteur pour la régulation, les options de min/max/moyenne sont désactivées dans l'interface
     + Correction de l'affichage de l'oeil
+    + Corection de l'affichage des erreurs de valeur des programmes
+    + Ajout d'un champ permettant de définir le début et la fin d'un cycle
+    + Ajout de la vérification à la saisie des valeurs pour les heures et les données rentrées dans le formulaire des programmes
+    + Ajout de listes pour choisir la prise impactée par l'import ou l'export des programmes
+    + Correction du lien du bouton permettant de passer d'un programme d'une prise à la configuration de la prise
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Apr 22 14:12:42 CEST 2014
 

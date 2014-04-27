@@ -56,10 +56,16 @@ $end_time=getvar("end_time");
 $reset_program=getvar("reset_old_program");
 $regul_program=getvar("regul_program");
 $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error);
+
+//Valeur du radio bouton qui définit si le programme sera cyclic ou non:
 $cyclic=getvar("cyclic");
+
 $value_program=getvar('value_program');
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $reset_selected=getvar("reset_selected_plug");
+$import_selected=getvar("import_selected_plug");
+$export_selected=getvar("export_selected_plug");
+
 $start="";
 $end="";
 $rep="";
@@ -69,6 +75,8 @@ $submit=getvar("submit_progs",$main_error);
 $anchor=getvar('anchor');
 $type="0";
 
+$error_value[0]="";
+$error_value[1]="";
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');
 $error_value[3]=__('ERROR_VALUE_PROGRAM_TEMP','html');
 $error_value[4]=__('ERROR_VALUE_PROGRAM_HUMI','html');
@@ -93,12 +101,24 @@ if((!isset($reset_selected))||(empty($reset_selected))) {
     }
 }
 
+if((!isset($export_selected))||(empty($export_selected))) {
+    $export_selected=$selected_plug;
+} 
+
+if((!isset($import_selected))||(empty($import_selected))) {
+    $import_selected=$selected_plug;
+}
+
+
 
 if(isset($cyclic)&&(!empty($cyclic))) {
-    $repeat_time=getvar("repeat_time");
-    $start_time_cyclic=getvar('start_time_cyclic');
-    $cyclic_duration=getvar('cyclic_duration');
-    $cyclic_start=$start_time_cyclic;
+    //Dans le cas d'un programme cyclique on récupère les champs correspondant:
+    $repeat_time=getvar("repeat_time"); //La fréquence de répétition
+    $start_time_cyclic=getvar('start_time_cyclic'); //L'heure de départ du programme
+    $end_time_cyclic=getvar('end_time_cyclic'); //L'heure de fin du programme
+    $cyclic_duration=getvar('cyclic_duration'); //La durée d'un cycle
+    $cyclic_start=$start_time_cyclic;   //On sauvegarde les valeurs de départ et de fin qui vont être modifié dans le programme
+    $final_cyclic_end=$end_time_cyclic; //pour l'affichage dans kes input text
 }
 
 
@@ -108,22 +128,36 @@ if(empty($apply)||(!isset($apply))) {
     $regul_program="on";
 }
 
-// Add a plug dinamically to configure a new program, maximal plug is configured in config.php file by the variable $GLOBALS['NB_MAX_PLUG']
+// Ajout d'une prise pour configurer un nouveau programme, la variable définissant le nombre de prise maximale
+// est configurée dans le fichier config.php: $GLOBALS['NB_MAX_PLUG'] (même chose pour le nombre minimale: $GLOBALS['NB_MIN_PLUG'])
 if((isset($add_plug))&&(!empty($add_plug))) {
     if((isset($nb_plugs))&&(!empty($nb_plugs))) {
             if($nb_plugs<$GLOBALS['NB_MAX_PLUG']) {
+                    //Si le nombre de prise maximale n'est pas encore atteind:
+                    // AJout d'une nouvelle prise dans la base de données:
                     insert_configuration("NB_PLUGS",$nb_plugs+1,$main_error);
                     if((empty($main_error))||(!isset($main_error))) {
+                        //Si tout s'est bien passé:
+                        // On incrémente le nombre de prises définit:
                         $nb_plugs=$nb_plugs+1;
-                        $main_info[]=__('PLUG_ADDED');
+
+                        //On positionne les listes déroulantes à la valeur de la nouvelle prise:
                         $selected_plug=$nb_plugs;
                         $reset_selected=$nb_plugs;
-                        
+                        $export_selected=$nb_plugs;
+                        $import_selected=$nb_plugs;
+                       
+                        //Affichage des messages d'ajout: 
                         $pop_up_message=$pop_up_message.popup_message(__('PLUG_ADDED'));
                         set_historic_value(__('PLUG_ADDED')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
+                        $main_info[]=__('PLUG_ADDED');
+
+        
+                        // Ajout d'une nouvelle prise - active_plugs contient la liste des prises actives pour l'affichage dans le graphe:
                         $active_plugs=get_active_plugs($nb_plugs,$main_error);
                     }
             } else {
+                    //Sinon affichage du message de limite de prises atteinte:
                     $main_error[]=__('PLUG_MAX_ADDED');
                     set_historic_value(__('PLUG_MAX_ADDED')." (".__('PROGRAM_PAGE').")","histo_error",$main_error);
             }
@@ -131,23 +165,35 @@ if((isset($add_plug))&&(!empty($add_plug))) {
 }
 
 
-// Remove a plug dinamically to configure a new program, minimal plugs id 3
+// Suppression d'une prise pour configurer un nouveau programme, la variable définissant le nombre de prise maximale
+// est configurée dans le fichier config.php: $GLOBALS['NB_MAX_PLUG'] (même chose pour le nombre minimale: $GLOBALS['NB_MIN_PLUG'])
 if((isset($remove_plug))&&(!empty($remove_plug))) {
     if((isset($nb_plugs))&&(!empty($nb_plugs))) {
             if($nb_plugs>3) {
+                    //Si le nombre de prise minimale n'est pas encore atteind:
+                    // Suppression d'une nouvelle prise dans la base de données:
                     insert_configuration("NB_PLUGS",$nb_plugs-1,$main_error);
                     if((empty($main_error))||(!isset($main_error))) {
+                        //Si tout s'est bien passé:
+                        // On décrémente le nombre de prises définit:
                         $nb_plugs=$nb_plugs-1;
-                        $main_info[]=__('PLUG_REMOVED');
-                        if($selected_plug>$nb_plugs) {
+                        if($selected_plug>$nb_plugs) { // Si la prise actuellement selectionnée était la dernière prise, on change l'affichage:
                             $selected_plug=$nb_plugs;
                             $reset_selected=$nb_plugs;
+                            $export_selected=$nb_plugs;
+                            $import_selected=$nb_plugs;
                         }
+
+                        //Affichage des messages de suppréssion:
                         set_historic_value(__('PLUG_REMOVED')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
                         $pop_up_message=$pop_up_message.popup_message(__('PLUG_REMOVED'));
+                        $main_info[]=__('PLUG_REMOVED');
+
+                        //Suppression d'une nouvelle prise - active_plugs contient la liste des prises actives pour l'affichage dans le graphe:
                         $active_plugs=get_active_plugs($nb_plugs,$main_error);
                     }
             } else {
+                    //Sinon affichage du message de limite de prises atteinte:
                     $main_error[]=__('PLUG_MIN_ADDED');
                     set_historic_value(__('PLUG_MIN_ADDED')." (".__('PROGRAM_PAGE').")","histo_error",$main_error);
             }
@@ -159,11 +205,16 @@ if((isset($remove_plug))&&(!empty($remove_plug))) {
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
 
-// Manage the plug: reset, import, export, reset_all:
+// Gestion des programmes: reset, import, export, reset_all:
 if((isset($export))&&(!empty($export))) {
-     export_program($selected_plug,$main_error);
-     $file="tmp/program_plug${selected_plug}.prg";
+     //Pour l'export d'un programme, le fichier exporté est au format csv (séparé par des ',') et contient time_start,time_stop,value
+     //L'id n'est pas utilisée afin de pouvoir appliquer un programme sur plusieurs prises.
+
+     //Export du programme au format csv, création du fichier program_plugX.prg:
+     export_program($export_selected,$main_error);
+     $file="tmp/program_plug${export_selected}.prg";
      if (($file != "") && (file_exists("./$file"))) {
+        //Si le programme exporté à bien été créé dans un fichier, on lance le téléchargement (fichier se trouvant dans le répertoire tmp de joomla)
         $size = filesize("./$file");
         header("Content-Type: application/force-download; name=\"$file\"");
         header("Content-Transfer-Encoding: binary");
@@ -173,9 +224,9 @@ if((isset($export))&&(!empty($export))) {
         header("Cache-Control: no-cache, must-revalidate");
         header("Pragma: no-cache");
         readfile("./$file");    
-        set_historic_value(__('HISTORIC_EXPORT')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+        set_historic_value(__('HISTORIC_EXPORT')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$export_selected.")","histo_info",$main_error);
         exit();
-     }
+    }
 } elseif((isset($reset))&&(!empty($reset))) {
     if(strcmp("$reset_selected","all")==0) {
         $status=true;
@@ -192,53 +243,60 @@ if((isset($export))&&(!empty($export))) {
             set_historic_value(__('ERROR_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_error",$main_error);
         }
         $reset_selected=1;
+        $export_selected=1;
+        $import_selected=1;
+        $selected_plug=1;
     } else {
         if(clean_program($reset_selected,$main_error)) {
             $pop_up_message=$pop_up_message.popup_message(__('INFO_RESET_PROGRAM'));
             $main_info[]=__('INFO_RESET_PROGRAM');
             set_historic_value(__('INFO_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_info",$main_error);
         }
+        $export_selected=$reset_selected;
+        $import_selected=$reset_selected;
+        $selected_plug=$reset_selected;
     }
 } elseif((isset($import))&&(!empty($import))) {
-      $target_path = "tmp/".basename( $_FILES['upload_file']['name']); 
-      if(!move_uploaded_file($_FILES['upload_file']['tmp_name'], $target_path)) {
-         $main_error[]=__('ERROR_UPLOADED_FILE');
-         $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_UPLOADED_FILE'));
-         set_historic_value(__('ERROR_UPLOADED_FILE')." (".__('PROGRAM_PAGE')." - tmp/".basename( $_FILES['upload_file']['name']).")","histo_error",$main_error);
-      } else {
-         $chprog=true;
-         $data_prog=array();
-         $data_prog=generate_program_from_file("$target_path",$selected_plug,$main_error);
-         if(count($data_prog)==0) { 
+    $target_path = "tmp/".basename( $_FILES['upload_file']['name']); 
+    if(!move_uploaded_file($_FILES['upload_file']['tmp_name'], $target_path)) {
+        $main_error[]=__('ERROR_UPLOADED_FILE');
+        $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_UPLOADED_FILE'));
+        set_historic_value(__('ERROR_UPLOADED_FILE')." (".__('PROGRAM_PAGE')." - tmp/".basename( $_FILES['upload_file']['name']).")","histo_error",$main_error);
+    } else {
+        $chprog=true;
+        $data_prog=array();
+        $data_prog=generate_program_from_file("$target_path",$import_selected,$main_error);
+        if(count($data_prog)==0) { 
             $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');
-            set_historic_value(__('ERROR_GENERATE_PROGRAM_FROM_FILE')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
+            set_historic_value(__('ERROR_GENERATE_PROGRAM_FROM_FILE')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$import_selected.")","histo_error",$main_error);
             $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
-            
-         } else {
-            clean_program($selected_plug,$main_error);
-            export_program($selected_plug,$main_error); 
+        } else {
+            clean_program($import_selected,$main_error);
+            export_program($import_selected,$main_error); 
          
             if(!insert_program($data_prog,$main_error)) $chprog=false;
 
             if(!$chprog) {
-               $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');        
-               set_historic_value(__('ERROR_GENERATE_PROGRAM_FROM_FILE')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_error",$main_error);
-               $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
+                $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');        
+                set_historic_value(__('ERROR_GENERATE_PROGRAM_FROM_FILE')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$import_selected.")","histo_error",$main_error);
+                $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
 
-               $data_prog=generate_program_from_file("tmp/program_plug${selected_plug}.prg",$selected_plug,$main_error);
-               if(!insert_program($data_prog,$main_error)) $chprog=false;
+                $data_prog=generate_program_from_file("tmp/program_plug${import_selected}.prg",$import_selected,$main_error);
+                if(!insert_program($data_prog,$main_error)) $chprog=false;
             } else {
-                 $main_info[]=__('VALID_IMPORT_PROGRAM');
-                 $pop_up_message=$pop_up_message.popup_message(__('VALID_IMPORT_PROGRAM'));
-                 set_historic_value(__('VALID_IMPORT_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
+                $main_info[]=__('VALID_IMPORT_PROGRAM');
+                $pop_up_message=$pop_up_message.popup_message(__('VALID_IMPORT_PROGRAM'));
+                set_historic_value(__('VALID_IMPORT_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$import_selected.")","histo_info",$main_error);
             }
         }
     }
+    $selected_plug=$import_selected;
+    $reset_selected=$import_selected;
+    $export_selected=$import_selected;
 } 
 
 
 $main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
-
 
 
 
@@ -250,93 +308,101 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 //Create a new program:
 if(!empty($apply)&&(isset($apply))) { 
-    if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
-        $tmpstamp_start=strtotime($cyclic_start);
-        list($hours, $mins, $secs) = explode(':', $cyclic_duration);
-        $tmpstamp_end=($hours * 3600 )+($mins * 60 )+$secs;
-        $cyclic_end=date('H:i:s', $tmpstamp_start+$tmpstamp_end);
-        $chtime=check_times($cyclic_start,$cyclic_end);
-    } else {
-        $chtime=check_times($start_time,$end_time);
-    }
-
+    //Vérification et mise en place de la value du programme en fonction du type de prise entre autre:
     if("$regul_program"=="on") {
-            $value_program="99.9";
-            $type="0";
-            $check=true;
+        //Valeur de 99.9 pour un programme en marche forcé:
+        $value_program="99.9";
+        //Type de programme pour différencier les programmes variateurs des programmes de prises classiques: 0 pour classique, 2 pour les variateurs
+        $type="0";
+        $check="1";
     } else if("$regul_program"=="off") {
-            $value_program="0";
-            $check=true;
+        $value_program="0";
+        $check="1";
     } else if("$regul_program"=="dimmer") {
-            $type="2";
-            $check=true;
+        $type="2";
+        $check="1";
     } else {
-            if((strcmp($regul_program,"on")!=0)&&(strcmp($regul_program,"off")!=0)) {
-                if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"pump")==0)) {
-                    $check=check_format_values_program($value_program,"temp");
-                } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
-                    $check=check_format_values_program($value_program,"humi");
-                } else {
-                    $check=check_format_values_program($value_program,"other");
-                }
+        if((strcmp($regul_program,"on")!=0)&&(strcmp($regul_program,"off")!=0)) {
+            if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"pump")==0)) {
+                //Vérification de la valeur du programme dans le cas d'une régulation de température:
+                $check=check_format_values_program($value_program,"temp");
+            } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
+                //Vérification de la valeur du programme dans le cas d'une régulation d'humidité:
+                $check=check_format_values_program($value_program,"humi");
             } else {
-                $check="1";
+                //Vérification de la valeur du programme dans le cas d'une régulation pour le type autre:
+                $check=check_format_values_program($value_program,"other");
             }
-            $type="1";
+        } else {
+            $check="1";
+        }
+        $type="1";
     }
 
-        
+    if(strcmp("$check","1")==0) { //Si la valeur du programme est correcte:
+        if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
+             date_default_timezone_set('UTC'); //Pour le calcul des timestamps
+             //Calcul de l'heure de fin du premier cycle: départ + durée du cycle 
+            $tmpstamp_start=strtotime($cyclic_start);
+            list($hours, $mins, $secs) = explode(':', $cyclic_duration);
+            $tmpstamp_end=($hours * 3600 )+($mins * 60 )+$secs;
+            $cyclic_end=date('H:i:s', $tmpstamp_start+$tmpstamp_end);
 
-        if(strcmp("$check","1")==0) {
-            if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
-                 $start_time=$cyclic_start;
-                 $end_time=$cyclic_end;
-            }
+            $start_time=$cyclic_start;
+            $end_time=$cyclic_end;
 
-            if($chtime==2) {
-                $prog[]= array(
-                    "start_time" => "$start_time",
-                    "end_time" => "23:59:59",
-                    "value_program" => "$value_program",
-                    "selected_plug" => "$selected_plug",
-                    "type" => "$type"
-                );
 
-                $prog[]= array(
-                    "start_time" => "00:00:00",
-                    "end_time" => "$end_time",
-                    "value_program" => "$value_program",
-                    "selected_plug" => "$selected_plug",
-                    "type" => "$type"
-                );
-            } else {
-                $prog[]= array(
-                                "start_time" => "$start_time",
-                                "end_time" => "$end_time",
-                                "value_program" => "$value_program",
-                                "selected_plug" => "$selected_plug",
-                                "type" => "$type"
-                );
-            }
-            $start=$start_time;
-            $end=$end_time;
-            $ch_insert=true;
+            list($hs, $ms, $ss) = explode(':', $cyclic_start);
+            list($he, $me, $se) = explode(':', $cyclic_end);
+            $chk_start=mktime($hs,$ms,$ss);
+            $chk_stop=mktime($he, $me, $se);
+        } 
 
-        
-            if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
-                    date_default_timezone_set('UTC');
-                    $rephh=substr($repeat_time,0,2);
-                    $repmm=substr($repeat_time,3,2);
-                    $repss=substr($repeat_time,6,2);
-                    $step=$rephh*3600+$repmm*60+$repss;
-                    if($chtime==2) {
-                        $chk_start=mktime(0,0,0);
-                    } else {
-                        $chk_start=mktime(0,0,0);
-                    }
-                    $chk_stop=mktime();
+        //Vérification du type de programme, les traitements ne sont pas les même si le programme reboucle (départ>fin) ou s'il ne reboucle pas (départ<fin)
+        $chtime=check_times($start_time,$end_time);
+
+        if($chtime==2) { //Dans le cas d'un programme ou la première action depasse sur le début de la journée: 
+            $prog[]= array(
+                "start_time" => "$start_time",
+                "end_time" => "23:59:59",
+                "value_program" => "$value_program",
+                "selected_plug" => "$selected_plug",
+                "type" => "$type"
+            );
+
+            $prog[]= array(
+                "start_time" => "00:00:00",
+                "end_time" => "$end_time",
+                "value_program" => "$value_program",
+                "selected_plug" => "$selected_plug",
+                "type" => "$type"
+            );
+        } else {
+            $prog[]= array(
+                "start_time" => "$start_time",
+                "end_time" => "$end_time",
+                "value_program" => "$value_program",
+                "selected_plug" => "$selected_plug",
+                "type" => "$type"
+            );
+        }
+
+        $start=$start_time;
+        $end=$end_time;
+
+        ///Pour vérifier si une erreur à eu lieu dans l'insertion du/des programmes: true -> pas d'erreur, false -> une erreur
+        $ch_insert=true;
+
+        //Dans le cas d'une action ponctuel on s'arrête la, dans le cas d'une action cyclique il faut calculer les cycles: 
+        if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
+                    list($rephh, $repmm, $repss) = explode(':', $repeat_time); //Récupération des heures, minutes et secondes du temps de répétition
+                    $step=$rephh*3600+$repmm*60+$repss; //Calcul du temps de répétition d'un nouveau cycle en seconde
+
+                    //On insère pas le premier évènement, il a été ajouté précédement:
                     $chk_first=false;
 
+
+                    //Variables de vérification du rebouclage des cycles:
                     $start_check=str_replace(":","",$start_time);
                     $stop_check=str_replace(":","",$end_time);
                     $repeat_check=str_replace(":","",$repeat_time);
@@ -344,6 +410,8 @@ if(!empty($apply)&&(isset($apply))) {
 
 
                     if($chtime!=2) {
+                        //Dans le cas d'un programme qui reboucle, on vérifie si les cycles ne se chevauchent pas,
+                        // si c'est le cas un seul évènement couvre la journée:
                         if($stop_check-$start_check>=$repeat_check) {
                             $optimize=true;
                             unset($prog);
@@ -356,6 +424,8 @@ if(!empty($apply)&&(isset($apply))) {
                                 );
                         }
                     } else {
+                        //Dans le cas d'un programme qui ne reboucle pas, on vérifie si les cycles ne se chevauchent pas,
+                        // si c'est le cas un seul évènement couvre la journée:
                         if((235959-$start_check)+$stop_check>=$repeat_check) {
                             $optimize=true;
                             unset($prog);
@@ -369,9 +439,27 @@ if(!empty($apply)&&(isset($apply))) {
                         }
                     }
 
-                    if(!$optimize) {
-                        while(($chk_stop-$chk_start)<86400) {
+                    if(!$optimize) {    
+                        //Dans le cas ou les cycles ne rebouclent pas entre eux, on va les calculer et les insérer:
+                        $chtime=check_times($cyclic_start,$final_cyclic_end);
+                        if($chtime==2) {
+                            //Calcul de la plage de durée des actions, si la durée reboucle, la plage de durée = 86400 (1 jour en seconde) - (temps de départ - temps de fin) car cyclic_start > final_cyclic_end dans un rebouclage
+                            $elapsed_time=86400-(mktime(substr($cyclic_start,0,2),substr($cyclic_start,3,2),substr($cyclic_start,6,2))-mktime(substr($final_cyclic_end,0,2),substr($final_cyclic_end,3,2),substr($final_cyclic_end,6,2)));
+                            if(date('His', $chk_stop)>date('H:i:s', $chk_start)) {
+                                $chk_while=$chk_stop-$chk_start;
+                            } else {
+                                $chk_while=(mktime(23,59,59)-$chk_start)+($chk_stop-mktime(0,0,0));
+                            }
+                        } else {
+                            $elapsed_time=mktime(substr($final_cyclic_end,0,2),substr($final_cyclic_end,3,2),substr($final_cyclic_end,6,2))-mktime(substr($cyclic_start,0,2),substr($cyclic_start,3,2),substr($cyclic_start,6,2));
+                            $chk_while=$chk_stop-$chk_start; 
+                        }
+
+                        while($chk_while<$elapsed_time) {
+                            //On ne veut pas enregistrer le premier évènement qui a déja été enregistré plus haut - utilisation de la variable chk_first:
                             if($chk_first) {
+                                //Dans le cas ou l'on n'est pas dans le premier cycle on enregistre le programme:
+                                if(strcmp("$cyclic_end","00:00:00")==0) $cyclic_end="23:59:59"; //La fin de la journée est définit comme 23:59:59
                                 $prog[]= array(
                                     "start_time" => "$cyclic_start",
                                     "end_time" => "$cyclic_end",
@@ -381,17 +469,17 @@ if(!empty($apply)&&(isset($apply))) {
                                 );
                             }
 
-                            $hh=substr($cyclic_start,0,2);
-                            $mm=substr($cyclic_start,3,2);
-                            $ss=substr($cyclic_start,6,2);
+                            //Récupération en heure, minute seconde des temps:
+                            list($hh, $mm, $ss) = explode(':', $cyclic_start);
+                            if(strcmp("$cyclic_end","23:59:59")==0) $cyclic_end="00:00:00"; //Le début de la journée est définit comme 00:00:00
+                            list($shh, $smm, $sss) = explode(':', $cyclic_end);
 
-                            $shh=substr($cyclic_end,0,2);
-                            $smm=substr($cyclic_end,3,2);
-                            $sss=substr($cyclic_end,6,2);
 
+                            //Ajout du nouveau cycle au cycle précédent:
                             $val_start=mktime($hh,$mm,$ss)+$step;
                             $val_stop=mktime($shh,$smm,$sss)+$step;
 
+                            //Retransformation des temps en hh:mm:ss:
                             $cyclic_start=date('H:i:s', $val_start);
                             $cyclic_end=date('H:i:s', $val_stop);
 
@@ -401,7 +489,30 @@ if(!empty($apply)&&(isset($apply))) {
                                 break;
                             }
 
-                            $chk_stop=$val_stop;
+                            //Mise à jour de la valeur de vérification de fin de boucle en fonction du nouveau cycle:
+                            if($chtime==2) {
+                                //Dans le cas d'un rebouclage, le calcul du temps écoulé est le suivant:
+                                // Si la valeur de fin de cycle n'a pas rebouclé, le temps écoulé est: fin du cycle courant - début du premier cycle
+                                $chk_stop=$val_stop;
+                                if(date('His', $chk_stop)>date('His', $chk_start)) {
+                                    $chk_while=$chk_stop-$chk_start;
+                                } else {
+                                    //Si le cycle a déja rebouclé, le temps écoulé est: 
+                                    if(strcmp(date('H:i:s',($chk_stop)),"00:00:00")!=0) {
+                                        $chk_while=(mktime(0,0,0,1,2,1970)-$chk_start)+($chk_stop-mktime(0,0,0,1,1,1970));
+                                    } else {
+                                        //Si le temps de fin est à 00:00:00 on est en bordure du rebouclage, on considère qu'on a pas encore rebouclé: 
+                                        //le temps écoulé est: fin du cycle courant - début du premier cycle
+                                        $chk_while=(mktime(0,0,0)-$chk_start);
+                                    }
+                                }
+                            } else {
+                                //Dans le cas d'un non rebouclage, on se base sur la valeur de fin de cycle:
+                                $chk_stop=$val_stop;
+                                $chk_while=$chk_stop-$chk_start;
+                            }
+
+                            //Variable pour ne pas enregistrer le premier élément:
                             $chk_first=true;
                         }
 
@@ -414,13 +525,22 @@ if(!empty($apply)&&(isset($apply))) {
                                     "selected_plug" => "$selected_plug",
                                     "type" => "$type"
                                 );
+                        } else if((str_replace(":","",$cyclic_end)>str_replace(":","",$final_cyclic_end))&&(str_replace(":","",$cyclic_start)<str_replace(":","",$final_cyclic_end))) {
+                            $prog[]= array(
+                                    "start_time" => "$cyclic_start",
+                                    "end_time" => "$final_cyclic_end",
+                                    "value_program" => "$value_program",
+                                    "selected_plug" => "$selected_plug",
+                                    "type" => "$type"
+                                );
                         }
+                    
                 }
                 $rep=$repeat_time;
                 $start_time="00:00:00";
                 $end_time="00:00:00";
             }
-        
+
             //If the reset checkbox is checked
             if((isset($reset_program))&&(strcmp($reset_program,"Yes")==0)) {
                 clean_program($selected_plug,$main_error);

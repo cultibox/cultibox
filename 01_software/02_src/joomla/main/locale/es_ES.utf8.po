@@ -815,10 +815,10 @@ msgid "MANAGE_PROGRAM_INFOS"
 msgstr "Gestión de vuestros programas"
 
 msgid "TITLE_EXPORT_PROGRAM"
-msgstr "Exportar el programa del enchufe activo"
+msgstr "Exportar el programa del enchufe"
 
 msgid "TITLE_IMPORT_PROGRAM"
-msgstr "Importar un programa para el enchufe activo"
+msgstr "Importar un programa para el enchufe"
 
 msgid "TITLE_RESET_PROGRAM"
 msgstr "Borrar el programa del enchufe"

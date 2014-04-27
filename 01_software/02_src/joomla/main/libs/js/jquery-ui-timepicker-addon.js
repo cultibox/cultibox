@@ -1051,7 +1051,7 @@ $.datepicker._doKeyPress = function(event) {
 								(tp_inst._defaults.amNames.join('')) +
 								(tp_inst._defaults.pmNames.join('')) +
 								dateChars,
-				chr = String.fromCharCode(event.charCode === undefined ? event.keyCode : event.charCode);
+			chr = String.fromCharCode(event.charCode === undefined ? event.keyCode : event.charCode);
 			return event.ctrlKey || (chr < ' ' || !dateChars || datetimeChars.indexOf(chr) > -1);
 		}
 	}
