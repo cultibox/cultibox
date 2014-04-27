@@ -240,6 +240,16 @@ Ou XX représente le numéro du jour dans le mois.
 
 === Fichier logs_XX ===
 
+|| *Capteur* || *facteur multiplicatif* || *unité* ||
+|| Température || 100 || °C || 
+|| Humidité || 100 || % || 
+|| Température immergeable || 100 || °C ||
+|| Niveau d'eau || 100 || cm ||
+|| pH || 100 || ||
+|| EC || 1 || µs/cm ||
+|| OD || 100 || mg/l ||
+|| orp || 1 || mV ||
+
 === Fichier cal_XX ===
 
 Les fichiers cal_XX donnent pour chaque jour les informations du calendrier.
