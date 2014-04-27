@@ -164,6 +164,11 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             $error_copy=true;
         }
 
+        if(!check_and_copy_plgidx($sd_card)) {
+            $main_error[]=__('ERROR_COPY_TPL');
+            $error_copy=true;
+        }
+
         $wifi_conf=create_wificonf_from_database($main_error,get_ip_address());
         if(!compare_wificonf($wifi_conf,$sd_card)) {
             $conf_uptodate=false;

@@ -55,6 +55,11 @@ if((!isset($path))||(empty($path))) {
                 return 0;
             }
 
+            if(!check_and_copy_plgidx($path)) {
+                echo "-1";
+                return 0;
+            }
+
             $wifi_conf=create_wificonf_from_database($out,get_ip_address());
             if(!compare_wificonf($wifi_conf,$path)) {
                 $conf_uptodate=false;
