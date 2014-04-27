@@ -2066,14 +2066,14 @@ EOF;
        $db=null;
        $file="tmp/program_plug${id}.prg";
 
-      if($f=fopen("$file","w+")) {
-            fputs($f,"#Program : time_start time_stop value\r\n");
+       if($f=fopen("$file","w")) {
+            fputs($f,"#Program : time_start time_stop value type\r\n");
             if(count($res)>0) {
                foreach($res as $record) {
-                  fputs($f,$record['time_start'].",".$record['time_stop'].",".$record['value']."\r\n");
+                  fputs($f,$record['time_start'].",".$record['time_stop'].",".$record['value'].",".$record['type']."\r\n");
                }
             } else {
-                    fputs($f,"000000".",235959,0\r\n");
+                    fputs($f,"000000,235959,0,0\r\n");
             }
       } 
       fclose($f);
@@ -2804,13 +2804,14 @@ function generate_program_from_file($file="",$plug,&$out) {
                while (!feof($handle)) {
                   $buffer = fgets($handle);
                   $temp = explode(",", $buffer);
-                  if(count($temp)==3) {
+                  if(count($temp)==4) {
                      if(is_numeric($plug)) {
                         $res[]=array(
                            "selected_plug" => $plug,
                            "start_time" => $temp[0],
                            "end_time" => $temp[1],
-                           "value_program" => $temp[2]
+                           "value_program" => $temp[2],
+                            "type" =>  $temp[3] 
                         );
                      }
                   }
@@ -2988,13 +2989,16 @@ EOF;
         }
     }
 
+    $unity="";
     if(count($res)>0) {
         foreach($res as $result) {
             $resume=$resume."<p align='center'><i>".__('SUMARY_REGUL_SUBTITLE')." ".$result['id'].":</i></p>";
             if(strcmp($result['PLUG_SENSO'],"H")==0) {
                 $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_HYGRO');
+                $unity="%";
             } else {
                 $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_TEMP');
+                $unity="°C";
             }
 
             if(strcmp($result['PLUG_SENSS'],"+")==0) {
@@ -3002,7 +3006,7 @@ EOF;
             } else {
                 $resume=$resume."<br /><b>".__('SUMARY_REGUL_SENSS').":</b> ".__('SUMARY_UNDER');    
             }
-            $resume=$resume."<br /><b>".__('SUMARY_REGUL_VALUE').":</b> ".$result['PLUG_REGUL_VALUE']."<br /><br />";
+            $resume=$resume."<br /><b>".__('SUMARY_REGUL_VALUE').":</b> ".$result['PLUG_REGUL_VALUE'].$unity."<br /><br />";
         }
     }
 }

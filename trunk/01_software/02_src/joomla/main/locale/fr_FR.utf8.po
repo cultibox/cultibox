@@ -812,10 +812,10 @@ msgid "MANAGE_PROGRAM_INFOS"
 msgstr "Gestion de vos programmes"
 
 msgid "TITLE_EXPORT_PROGRAM"
-msgstr "Exporter le programme de la prise courante"
+msgstr "Exporter le programme de la prise"
 
 msgid "TITLE_IMPORT_PROGRAM"
-msgstr "Importer un programme pour la prise courante"
+msgstr "Importer un programme pour la prise"
 
 msgid "TITLE_RESET_PROGRAM"
 msgstr "Effacer le programme de la prise"

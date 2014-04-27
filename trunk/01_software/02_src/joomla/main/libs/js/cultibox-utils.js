@@ -171,6 +171,19 @@ function getAlarm(i) {
 //}}}
 
 
+// {{{ verifTime()
+// ROLE function of veriication for a timepicker. The input value must be a number or the ':' separator.
+// IN  input value "e"
+// HOW IT WORKS: check ascii code of the input value
+// USED BY: templates/programs.html   
+// ASCII code: 48 <[0-9] : < 58
+function verifTime(e) {
+   if((e.keyCode < 48 || e.keyCode > 58)&&(e.keyCode != 46 && e.keyCode != 44 && e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13)) e.returnValue = false;
+   if((e.which < 48 || e.which > 58)&&(e.which != 46 && e.which != 44 && e.which != 08 && e.which != 10 && e.which != 13)) return false;
+}
+// }}}
+
+
 // {{{ getWifi()
 // ROLE display or not the wifi part from the configuration menu
 // IN  input value: display or not 
@@ -269,6 +282,17 @@ function verifInt(e) {
 }
 // }}}
 
+
+// {{{ VerifNumber()
+// ROLE function of verification of an input value
+// IN input value "e" to be checked
+// HOW IT WORKS: check ascii code of the input value
+// USED BY: templates/programs.html
+function verifNumber(e) {
+   if((e.keyCode < 48 || e.keyCode > 57)&&(e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13 && e.keyCode != 44 && e.keyCode != 46)) e.returnValue = false;
+   if((e.which < 48 || e.which > 57)&&(e.which != 08 && e.which != 10 && e.which != 13 && e.which != 44 && e.which != 46)) return false;
+}
+// }}}
 
 
 // {{{ getRegul()
@@ -665,6 +689,8 @@ function getProgramType(i) {
       var errorMinimal = document.getElementById('error_minimal_cyclic');
       var startTimeCyclic = document.getElementById('start_time_cyclic_title');
       var startTimeCyclicField =  document.getElementById('start_time_cyclic_field');
+      var endTimeCyclic = document.getElementById('end_time_cyclic_title');
+      var endTimeCyclicField =  document.getElementById('end_time_cyclic_field');
 
     
       switch(i) {
@@ -682,6 +708,8 @@ function getProgramType(i) {
                           divTimeCyclicField.style.display='none';
                           startTimeCyclic.style.display='none';
                           startTimeCyclicField.style.display='none';
+                          endTimeCyclic.style.display='none';
+                          endTimeCyclicField.style.display='none';
                           errorCyclicDuration.style.display='none';
                           errorCyclic.style.display='none';
                           errorMinimal.style.display='none';
@@ -701,6 +729,8 @@ function getProgramType(i) {
                        durationCyclicField.style.display='';
                        startTimeCyclic.style.display='';
                        startTimeCyclicField.style.display='';
+                       endTimeCyclic.style.display='';
+                       endTimeCyclicField.style.display='';
                        divTimeCyclic.style.display='';
                        divTimeCyclicField.style.display='';
         break;
@@ -718,6 +748,8 @@ function getProgramType(i) {
                           divTimeCyclicField.style.display='none';
                           startTimeCyclic.style.display='none';
                           startTimeCyclicField.style.display='none';
+                          endTimeCyclic.style.display='none';
+                          endTimeCyclicField.style.display='none';
 
                           errorCyclicDuration.style.display='none';
                           errorCyclic.style.display='none';
