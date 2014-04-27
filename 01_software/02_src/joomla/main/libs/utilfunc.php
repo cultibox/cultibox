@@ -1458,13 +1458,38 @@ function check_and_copy_firm($sd_card) {
    $new_file="";
    $copy=-1;
 
+
+   //Liste des firmawares à vérifier et à copier:
    $firm_to_test[]="firm.hex";
    $firm_to_test[]="bin/emetteur.hex";
    $firm_to_test[]="bin/sht.hex";
    $firm_to_test[]="bin/wlevel_5.hex";
    $firm_to_test[]="bin/wlevel_6.hex";
+   $firm_to_test[]="bin/ec_2.hex";
+   $firm_to_test[]="bin/ec_3.hex";
+   $firm_to_test[]="bin/ec_4.hex";
+   $firm_to_test[]="bin/ec_5.hex";
+   $firm_to_test[]="bin/ec_6.hex";
+   $firm_to_test[]="bin/ph_2.hex";
+   $firm_to_test[]="bin/ph_3.hex";
+   $firm_to_test[]="bin/ph_4.hex";
+   $firm_to_test[]="bin/ph_5.hex";
+   $firm_to_test[]="bin/ph_6.hex";
+   $firm_to_test[]="bin/or_2.hex";
+   $firm_to_test[]="bin/or_3.hex";
+   $firm_to_test[]="bin/or_4.hex";
+   $firm_to_test[]="bin/or_5.hex";
+   $firm_to_test[]="bin/or_6.hex";
+   $firm_to_test[]="bin/od_2.hex";
+   $firm_to_test[]="bin/od_3.hex";
+   $firm_to_test[]="bin/od_4.hex";
+   $firm_to_test[]="bin/od_5.hex";
+   $firm_to_test[]="bin/od_6.hex";
 
+
+   //Pour chaque firmware on procède de la même façon:
    foreach($firm_to_test as $firm) { 
+        //Vérification de la présence du firmware:
         if(is_file("tmp/$firm")) {
             $new_file="tmp/$firm";
         } else if(is_file("../tmp/$firm")) {
@@ -1475,8 +1500,10 @@ function check_and_copy_firm($sd_card) {
             $new_file="../../../tmp/$firm";
         } 
 
+        //Chemin du firmware à comparer sur la carte SD:
         $current_file="$sd_card/$firm";
 
+        //Si on trouve le firmware de référence on récupère le contenue de la première ligne ou la version est présente:
         if(is_file("$new_file")) {
             $handle = @fopen("$new_file", 'r');
             if($handle) {
@@ -1487,7 +1514,7 @@ function check_and_copy_firm($sd_card) {
             fclose($handle);
         } 
 
-
+        //Même chose avec le firmware sur la carte SD:
         if(is_file("$current_file")) {
             $handle=@fopen("$current_file", 'r');
             if($handle) {
@@ -1498,6 +1525,9 @@ function check_and_copy_firm($sd_card) {
             fclose($handle);
         } 
 
+
+        //Si le firmware sur la carte SD et le firmware de référence ont été trouvé, on compare le numéro de version du firmware
+        //Si les numéro diffèrent (numéro firmware de référence > numéro firmware sur la carte SD) on copiera le firmware de référence sur la carte SD
         if((isset($new_firm))&&(!empty($new_firm))&&(isset($current_firm))&&(!empty($current_firm))) {
                 $current_firm=trim("$current_firm");
                 $new_firm=trim("$new_firm");
@@ -1514,6 +1544,7 @@ function check_and_copy_firm($sd_card) {
                     $copy=0;
                 }
         } elseif((!is_file("$current_file"))&&(is_file("$new_file"))) {
+        //S'il n'y a pas de firmware sur la carte SD, on copie le firmware de référence:
                 copy($new_file, $current_file);
                 if($copy) $copy=1;
         } else {
@@ -1576,7 +1607,7 @@ function check_and_copy_index($sd_card) {
     } else if(is_file("../../tmp/logs/index")) {
         $path="../../tmp/logs/index";
     } else if(is_file("../../../tmp/logs/index")) {
-        $path="../../tmp/logs/index";
+        $path="../../../tmp/logs/index";
     }
 
     if(!is_file("$sd_card/logs/index")) {
