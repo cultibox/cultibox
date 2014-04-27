@@ -278,15 +278,14 @@ INSERT INTO `notes` (`id`, `title`, `desc`, `image`, `link`, `type_link`, `lang`
 
 CREATE TABLE IF NOT EXISTS `sensors` (
   `id` int(11) NOT NULL,
-  `type` int(5) NOT NULL DEFAULT 0
+  `type` varchar(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sensors`
 --
 
-INSERT INTO `sensors` (`id`, `type`) VALUES (1, 0), (2, 0), (3, 0), (4, 0), (5, 0),(6, 0);
-
+INSERT INTO `sensors` (`id`, `type`) VALUES (1, '0'), (2, '0'), (3, '0'), (4, '0'), (5, '0'),(6, '0');
 
 -- --------------------------------------------------------
 
