@@ -285,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `sensors` (
 -- Dumping data for table `sensors`
 --
 
-INSERT INTO `sensors` (`id`, `type`) VALUES (1, 0), (2, 0), (3, 0), (4, 0);
+INSERT INTO `sensors` (`id`, `type`) VALUES (1, 0), (2, 0), (3, 0), (4, 0), (5, 0),(6, 0);
 
 
 -- --------------------------------------------------------
