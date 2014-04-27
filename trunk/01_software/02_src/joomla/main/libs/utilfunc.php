@@ -1568,20 +1568,43 @@ function check_and_copy_id($sd_card,$id="") {
 // IN  $sd_card     the sd card pathname 
 // RET false if an error occured, true else
 function check_and_copy_index($sd_card) {
+    $path="";
+
+    if(is_file("tmp/logs/index")) {
+        $path="tmp/logs/index";
+    } else if(is_file("../tmp/logs/index")) {
+        $path="../tmp/logs/index";
+    } else if(is_file("../../tmp/logs/index")) {
+        $path="../../tmp/logs/index";
+    } else if(is_file("../../../tmp/logs/index")) {
+        $path="../../tmp/logs/index";
+    }
+
     if(!is_file("$sd_card/logs/index")) {
-        if(is_file("tmp/logs/index")) {
-            if(!@copy("tmp/logs/index", "$sd_card/logs/index")) return false;
-        } else if(is_file("../tmp/logs/index")) {
-            if(!@copy("../tmp/logs/index", "$sd_card/logs/index")) return false;
-        } else if(is_file("../../tmp/logs/index")) {
-            if(!@copy("../../tmp/logs/index", "$sd_card/logs/index")) return false;
-        } else if(is_file("../../../tmp/logs/index")) {
-            if(!@copy("../../../tmp/logs/index", "$sd_card/logs/index")) return false;
+        if(strcmp("$path","")!=0) {
+            if(!@copy("$path", "$sd_card/logs/index")) {
+                return false;
+            } else {
+                return true;  
+            }
         } else {
             return false;
         }
+    } else {
+        if(strcmp("$path","")==0) {
+           return false;
+        } else {
+           if(filesize("$path")!=filesize("$sd_card/logs/index")) {
+               if(!@copy("$path", "$sd_card/logs/index")) {
+                   return false;
+                } else {
+                   return true;
+                }
+           } else {
+               return true;
+           }
+        }
     }
-    return true;
 }
 // }}}
 
