@@ -92,8 +92,11 @@ IPS:XXX.XXX.XXX.XXX
 IPC:XXX.XXX.XXX.XXX
 }}}
 
-Avec IPS : IP serveur (ordinateur client)
-Avec IPC : IP cultibox
+Le champ SSID peut contenir au maximum 19 caractères. 
+Le champ clé peut prendre les valeurs suivantes : NONE WEP WPA WPA2 WPA-AUTO.
+Le champ PWD peut contenir au maximum 19 caractères. 
+Le champ IPS : IP serveur (ordinateur client)
+Le champ IPC : IP cultibox (000.000.000.000 <=> DHCP)
 
 == Fichier cnt ==
 
