@@ -2792,7 +2792,7 @@ EOF;
 
 
 // {{{ generate_program_from_file()
-//ROLE generate array containing data for a prgram from a file
+//ROLE generate array containing data for a program from a file
 // IN  $file         file to be read
 //     $plug         plug id for the program
 //     $out          error or warning message

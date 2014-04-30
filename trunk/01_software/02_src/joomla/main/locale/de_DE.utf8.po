@@ -209,6 +209,12 @@ msgstr "Configurer l'adresse IP manuellement"
 msgid "SHOW_CURRENT_PWD"
 msgstr "Laisser la souris clickée sur l'image pour afficher le mot de passe actuellement configuré"
 
+msgid "CONFIGURE_RTC_OFFSET"
+msgstr "Décalage de l'horloge interne"
+
+msgid "RTC_OFFSET_UNITY"
+msgstr "seconde(s)"
+
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -848,7 +854,7 @@ msgid "JUMPTO_PLUG"
 msgstr "Configurer la prise associée à ce programme"
 
 msgid "ERROR_MAX_PROGRAM"
-msgstr "Programme mis à jour mais le nombre maximal de changement, limité à 250 pour toutes les prises confondues, a été atteint. Votre programme peut ne pas être complet."
+msgstr "Le nombre maximal de changement d'état pour les prises (limité à 999 pour toutes les prises confondues) a été atteint. La dernière action de vos programmes se déroulera à:"
 
 msgid "CYCLIC_DURATION_TIME"
 msgstr "Durée du cycle"
@@ -1826,6 +1832,9 @@ msgstr "L'adresse de votre module Wifi peut être personalisée en rentrant une 
 
 msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du logiciel"
+
+msgid "TOOLTIP_RTC_OFFSET"
+msgstr "Permet de modifier la cadence de l'horloge interne de la Cultibox."
 
 
 #For the debug part:

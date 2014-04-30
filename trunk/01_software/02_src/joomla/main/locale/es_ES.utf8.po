@@ -211,6 +211,12 @@ msgstr "Configure la dirección IP manualmente"
 msgid "SHOW_CURRENT_PWD"
 msgstr "Haga clic sobre la imagen para ver la contraseña configurado actualmente"
 
+msgid "CONFIGURE_RTC_OFFSET"
+msgstr "Retardo de tiempo del reloj interno"
+
+msgid "RTC_OFFSET_UNITY"
+msgstr "segundo(s)"
+
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -851,7 +857,7 @@ msgid "JUMPTO_PLUG"
 msgstr "Configurar el enchufe asociado a este programa"
 
 msgid "ERROR_MAX_PROGRAM"
-msgstr "Programa actualizado , pero el numero máximo de cambios , limitados a 250 para todos los enchufes , ha sido alcanzado. Su programa puede estar incompleto."
+msgstr "El nombre máximo de cambios para los enchufes (limitados a 999 para todos los enchufes) ha sido alcanzado. La última acción de sus programas se ejecutaráSu a:"
 
 msgid "CYCLIC_DURATION_TIME"
 msgstr "Ciclo período"
@@ -1830,6 +1836,9 @@ msgstr "La dirección de su módulo inalámbrico se puede personalizar mediante 
 
 msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Haga clic la imagen para ver para ver los mensajes del software"
+
+msgid "TOOLTIP_RTC_OFFSET"
+msgstr "Le permite cambiar la velocidad del reloj interno del Cultibox."
 
 
 #For the debug part:

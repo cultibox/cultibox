@@ -686,12 +686,28 @@ function save_program_on_sd($sd_card,$program) {
       $file="${sd_card}/cnf/prg/plugv";
       $prog="";
       $nbPlug=count($program);
+      $shorten=false;
 
       if($nbPlug>0) {
+         if($nbPlug>$GLOBALS['PLUGV_MAX_CHANGEMENT']) { 
+            $nbPlug=$GLOBALS['PLUGV_MAX_CHANGEMENT'];
+            $shorten=true;
+         }
+
          while(strlen($nbPlug)<3) $nbPlug="0$nbPlug";
          $prog=$nbPlug."\r\n";
 
-         for($i=0; $i<$nbPlug; $i++) $prog=$prog."$program[$i]"."\r\n";
+
+         if($shorten) {
+            for($i=0; $i<$nbPlug-1; $i++) $prog=$prog."$program[$i]"."\r\n";
+         } else {
+            for($i=0; $i<$nbPlug; $i++) $prog=$prog."$program[$i]"."\r\n";
+         }
+
+         if($shorten) { 
+            $last=count($program)-1;
+            $prog=$prog."$program[$last]"."\r\n";
+         }
          
          if($f=@fopen("$sd_card/cnf/prg/plugv","w+")) {
             if(!@fwrite($f,"$prog")) { fclose($f); return false; }
@@ -716,20 +732,32 @@ function save_program_on_sd($sd_card,$program) {
 function compare_program($data,$sd_card) {
     if(is_file("${sd_card}/cnf/prg/plugv")) {
          $nb=0;
+         //On compte le nombre d'entrée dans la base des programmes:
          $nbdata=count($data);
+
+         //Si les changements de la base dépassent ceux de maximum définit, on coupe le tableau des programmes pour le faire
+         //correspondre au nombre maximal
+         if($nbdata>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
+            $tmp_array=array_slice($data, 0, $GLOBALS['PLUGV_MAX_CHANGEMENT']-1);
+            $tmp_array[]=$data[$nbdata-1];
+            $data=$tmp_array;
+            $nbdata=count($data);
+         }
+
          $file="${sd_card}/cnf/prg/plugv";
 
          if(count($data)>0) {
+            //On récupère les informations du fichier courant plugv
             $buffer_array=@file("$file");
             foreach($buffer_array as $buffer) {
-                  $buffer=trim($buffer);
+                  $buffer=trim($buffer); //On supprime les caractères invisibles
                   if(!empty($buffer)) {
                      if($nb==0) {
-                        if($nbdata!=$buffer) { 
+                        if($nbdata!=$buffer) { //S'il s'agit de la première ligne, qui contient le nombre d'entrée, on compare le nombre d'entrée du fichier avec le nombre d'entrée du tableau
                          return false; 
                         } 
                      } else {
-                        if(strcmp($data[$nb-1],$buffer)!=0) { 
+                        if(strcmp($data[$nb-1],$buffer)!=0) { //Sinon on compare le contenu du fichier et celui de la ligne correspondante dans le tableau
                            return false;
                         }  
                      }
@@ -738,7 +766,7 @@ function compare_program($data,$sd_card) {
                     return false;
                   } 
             }
-            return true;
+            return true; //Tout est égal, on renvoie true
          } 
    } 
    return false;
@@ -965,8 +993,9 @@ function compare_plugconf($data, $sd_card="") {
 //      $alarm_enable       enable or disable the alarm system
 //      $alarm_value        value to trigger the alarm
 //      $reset_value        value for the sensor's reset min/max
+//      $rtc                RTC_OFFSET value
 // RET false if there is a difference, true else
-function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$power_frequency,$alarm_enable,$alarm_value,$reset_value) {
+function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$power_frequency,$alarm_enable,$alarm_value,$reset_value,$rtc) {
     if(!is_file($sd_card."/cnf/conf")) return false;
 
     $file="${sd_card}/cnf/conf";
@@ -993,6 +1022,10 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
       $power="0$power";
    }
 
+   while(strlen($rtc)<4) {
+      $rtc="0$rtc";
+   }
+
     $reset_value=str_replace(":","",$reset_value);
     if((strlen($reset_value)!=4)||($reset_value<0)) {
         $reset_value="0000";
@@ -1005,7 +1038,7 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     $conf[]="ALARM_VALUE:$alarm_value";
     $conf[]="ALARM_SENSO:000T";
     $conf[]="ALARM_SENSS:000+";
-    $conf[]="RTC_OFFSET_:0000";
+    $conf[]="RTC_OFFSET_:$rtc";
     $conf[]="RESET_MINAX:$reset_value";
     $conf[]="PRESSION___:0000";
 
@@ -1030,9 +1063,11 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
 //   $power_frequency    record of the power frequency value
 //   $alarm_enable       enable or disable the alarm system
 //   $alarm_value        value to trigger the alarm
-//   $out                error or warning message
+//   $reset_value        min/max reset value
+//   $rtc                value for the RTC_OFFSET
+//   $out                error or warning messages
 // RET false if an error occured, true else  
-function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$reset_value) {
+function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$power_frequency=1,$alarm_enable="0000",$alarm_value="50.00",$reset_value,$rtc="0000",$out="") {
    $alarm_senso="000T";
    $alarm_senss="000+";
    $record=$record_frequency*60;
@@ -1057,6 +1092,10 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       $power="0$power";
    }
 
+   while(strlen($rtc)<4) {
+      $rtc="0$rtc";
+   }
+
    $reset_value=str_replace(":","",$reset_value);
    if((strlen($reset_value)!=4)||($reset_value<0)) {
         $reset_value="0000";
@@ -1073,7 +1112,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       if(!@fputs($f,"ALARM_VALUE:$alarm_value\r\n")) $check=false;
       if(!@fputs($f,"ALARM_SENSO:$alarm_senso\r\n")) $check=false;
       if(!@fputs($f,"ALARM_SENSS:$alarm_senss\r\n")) $check=false;
-      if(!@fputs($f,"RTC_OFFSET_:0000\r\n")) $check=false;
+      if(!@fputs($f,"RTC_OFFSET_:$rtc\r\n")) $check=false;
       if(!@fputs($f,"RESET_MINAX:$reset_value\r\n")) $check=false;
       if(!@fputs($f,"PRESSION___:0000\r\n")) $check=false;
       fclose($f);
@@ -2068,29 +2107,6 @@ function check_sd_card($sd="") {
 // }}}
 
 
-// {{{ find_new_ine()
-// ROLE    check if a start or end time for a program will add a new line into the plugv file
-//  IN     $tab     array containing data from already recorded program
-// RET     $time    time to check
-function find_new_line($tab, $time="") {
-    if(strcmp($time,"")==0) return false;
-
-    $ret=true;
-    $time=str_replace(":","",$time);
-    foreach($tab as $line) {
-        $base_time=substr(0,5,$line);
-        $hh=substr(0,2,$time);
-        $mm=substr(2,2,$time);
-        $ss=substr(4,2,$time);
-        $new_time=(3600*$hh)+(60*$mm)+$ss;
-        
-        if(strcmp($base_time,$new_time)==0) $ret=false;
-    }
-    return $ret;
-}
-// }}}
-
-
 // {{{ get_sensor_type()
 // ROLE get sensor type from the index file for the current day
 // IN $nmb      number of the sensor 
@@ -2318,6 +2334,24 @@ function get_ip_address() {
     return $ip;
 }
 // }}}
+
+
+//{{{ get_rtc_offset()
+// ROLE get rtc offset value to be recorded in the configuration file
+// RET rtc offset value to be recorded 
+function get_rtc_offset($rtc=0) {
+    if($rtc==0) { return "0000"; }
+    
+    $offset=round(abs((32768*$rtc)/(2*60*24))); //VOir la documentation sur le RTC_OFFSET
+    while(strlen($offset)<3) $offset="0$offset";
+
+    if($rtc<0) { 
+        return "1$offset";
+    } else { 
+        return "0$offset";
+    }
+}
+//}}}
 
 
 /* TO BE DELETED */

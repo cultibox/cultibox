@@ -12,6 +12,7 @@ Cultibox (1.3.06) precise; urgency=low
     + Ajout de deux capteurs supplémentaires dans la table sensors
     + Ajout des firmwares de nouveaux capteurs
     + Ajout du fichier plugidx pour le multiprogramme
+    + Sauvegarde du RTC_OFFSET dans la base
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Apr 22 14:12:42 CEST 2014
 

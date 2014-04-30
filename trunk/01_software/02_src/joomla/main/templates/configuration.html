@@ -24,6 +24,7 @@
     <?php } ?>
 </div>
 <?php } ?>
+
 <br />
 
 <?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
@@ -39,6 +40,7 @@
 <script>
     wifi_password=<?php echo(json_encode($wifi_password)); ?>;
     title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+    rtc_offset_value=<?php echo json_encode($rtc_offset) ?>;
 </script>
 
 
@@ -438,6 +440,16 @@ $(document).ready(function(){
       }
       ?>
       </select>
+</td>
+<td></td>
+</tr>
+<tr>
+<td class="conf-marge"></td>
+<td>
+   <?php echo __('CONFIGURE_RTC_OFFSET'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RTC_OFFSET'); ?>" />
+</td>
+<td>
+   <table class="table_width"><tr><td style="width: 50%; padding-right: 10px;"><div id="rtc_offset_slider"></div></td><td><input type="text" name="rtc_offset" id="rtc_offset" value="<?php echo $rtc_offset; ?>" size="4" readonly /><?php echo __('RTC_OFFSET_UNITY'); ?></td></tr></table>
 </td>
 <td></td>
 </tr>

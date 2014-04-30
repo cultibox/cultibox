@@ -116,4 +116,29 @@ $GLOBALS['SENSOR_DEFINITION']=array(
                                 '9' => 'ec',
                                 ':' => 'od',
                                 ';' => 'orp');
+
+
+// List and equivalence between sensor number and ratio in the log file:
+$GLOBALS['SENSOR_DEFINITION']=array(
+                                '0' => '0',
+                                '2' => '100',
+                                '3' => '100',
+                                '5' => '0',
+                                '6' => '100',
+                                '7' => '100',
+                                '8' => 'ph',
+                                '9' => '1',
+                                ':' => 'od',
+                                ';' => '1');
+
+//List of RTC offset value availale:
+$GLOBALS['RTC_OFFSET_DEFINITION']=array(0, 1, 10, 20, 100, 127, 128, 129, 138, 148, 228, 255); 
+
+
+//Number of state's changement allowed by the cultibox for the plugv file:
+$GLOBALS['PLUGV_MAX_CHANGEMENT']=999;
+
+
 ?>
+
+
