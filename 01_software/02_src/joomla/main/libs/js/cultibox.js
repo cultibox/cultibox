@@ -1992,7 +1992,7 @@ $(document).ready(function() {
            url: "../../main/modules/external/get_variable.php",
            data: {name:"important"}
         }).done(function (data) {
-                if(data!="True") {
+                if(jQuery.parseJSON(data)!="True") {
                       $("#dialog_calendar_important").dialog({
                         resizable: true,
                         width: 550,
@@ -2016,6 +2016,21 @@ $(document).ready(function() {
                 }
             });
     }
+
+
+    if(window.location.pathname.match(/configuration/g)) {
+        $("#rtc_offset_slider").slider({
+            max: 11,
+            min: -11,
+            slide: function( event, ui ) {
+                // While sliding, update the value in the div element
+                $("#rtc_offset").val(ui.value);
+            },
+            step: 0.01,
+            value: rtc_offset_value
+        });
+    }
+
     
 
     $("#display_calendar").click(function(e) {
@@ -2122,7 +2137,7 @@ $(document).ready(function() {
         data: {name:"tooltip_msg_box"}
     }).done(function (data) {
         //Si l'oeil doit être affiché:
-        if(data=="True") {
+        if(jQuery.parseJSON(data)=="True") {
             //On cache la boîte de message:
             $(".message").dialog("option", "hide",{ effect: "slideUp", duration: 0 } );
             $(".message").dialog('close');

@@ -74,6 +74,7 @@ $tmp="";
 $submit=getvar("submit_progs",$main_error);
 $anchor=getvar('anchor');
 $type="0";
+$tmp_prog="";
 
 $error_value[0]="";
 $error_value[1]="";
@@ -548,69 +549,42 @@ if(!empty($apply)&&(isset($apply))) {
             } 
 
 
-            // To compute the number of action for the plugv file limited to 250 actions:
-            // To do: enregistrer toutes les actions puis regarder à combien on est: si > 250, on supprime la dernière action jusqu'à descendre en dessous de 250
-            // Autre possibilité, laisser le programme enregistré mais indiquer sur les programmes à partir de quelle heure les prises ne changent plus d'état et gerdent leur état...
-            $base=create_program_from_database($main_error);
-            $nb_prog=count($base);  
-            $count=-1;
-            $tmp_prog=array();
-
-            foreach($prog as $program) {
-               if($nb_prog>=250) {
-                    break;
-               }
-               if(find_new_line($base,$program['start_time'])) {
-                    $nb_prog=$nb_prog+1;
-               } 
-        
-               if(find_new_line($base,$program['end_time'])) {
-                    $nb_prog=$nb_prog+1;
-               }
-
-               $count=$count+1;
-            }
-
             $ch_insert=true;
-            if($nb_prog>=250) {
-                if($nb_prog>250) {
-                   $count=$count-1;
-                }
-                $main_error[]=__('ERROR_MAX_PROGRAM');
-                $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_MAX_PROGRAM'));
-                $ch_insert=false;
-            } 
-
-           
-            if($count>-1) {
-                if($count+1!=count($prog)) {
-                    $tmp=array_chunk($prog, $count+1);
-                    $tmp_prog=$tmp[0];
-                } else {
-                    $tmp_prog=$prog;
-                }  
-
-                if(!insert_program($tmp_prog,$main_error)) $ch_insert=false;
+            if(count($prog)>0) {
+                if(!insert_program($prog,$main_error)) $ch_insert=false;
             } else {
                 $ch_insert=false;
             }
-
-            if(!insert_program($tmp_prog,$main_error)) $ch_insert=false;
 
             if($ch_insert) {
                    $main_info[]=__('INFO_VALID_UPDATE_PROGRAM');
                    $pop_up_message=$pop_up_message.popup_message(__('INFO_VALID_UPDATE_PROGRAM'));                    
                    set_historic_value(__('INFO_VALID_UPDATE_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
 
-
                    if((isset($sd_card))&&(!empty($sd_card))) {
                             $main_info[]=__('INFO_PLUG_CULTIBOX_CARD');
                             $pop_up_message=$pop_up_message.popup_message(__('INFO_PLUG_CULTIBOX_CARD'));
                    }
-            }  
 
+                   $tmp_prog=create_program_from_database($main_error);
+                   if(count($tmp_prog)>$GLOBALS['PLUGV_MAX_CHANGEMENT']-1) {
+                        $last_action=substr($tmp_prog[$GLOBALS['PLUGV_MAX_CHANGEMENT']-1],0,5);
+                        $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_MAX_PROGRAM')." ".date('H:i:s',$last_action));
+                    }
+            } 
     }
 }
+
+
+//Pour vérifier que l'on ne dépase pas la limite de changement d'état des prises:
+//On génére le fichier plugv depuis la base de données et on compte le nombre de ligne,
+//Si cela dépasse la limite, on affiche une erreur/warning après calcul de l'heure de la dernière action
+$tmp_prog=create_program_from_database($main_error);
+if(count($tmp_prog)>$GLOBALS['PLUGV_MAX_CHANGEMENT']-1) {
+    $last_action=substr($tmp_prog[$GLOBALS['PLUGV_MAX_CHANGEMENT']-1],0,5);
+    $main_error[]=__('ERROR_MAX_PROGRAM')." ".date('H:i:s', $last_action);
+}
+
 
 for($i=0;$i<$nb_plugs;$i++) {
     $data_plug=get_data_plug($i+1,$main_error);
@@ -757,14 +731,15 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
         $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
         $resetvalue= get_configuration("RESET_MINMAX",$main_error);
+        $rtc=get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
         if("$updatefrequency"=="-1") {
             $updatefrequency="0";
         }
 
 
-        if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue")) {
+        if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue","$rtc")) {
             $conf_uptodate=false;
-            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error)) {
+            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue","$rtc",$main_error)) {
                 $main_error[]=__('ERROR_WRITE_SD_CONF');
                 $error_copy=true;
             }

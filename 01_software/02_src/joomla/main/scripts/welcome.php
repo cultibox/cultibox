@@ -151,14 +151,15 @@ if((!empty($sd_card))&&(isset($sd_card))) {
         $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
         $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
         $resetvalue= get_configuration("RESET_MINMAX",$main_error);
+        $rtc=get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
         if("$updatefrequency"=="-1") {
             $updatefrequency="0";
         }
 
 
-        if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue")) {
+        if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue","$rtc")) {
             $conf_uptodate=false;
-            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue",$main_error)) {
+            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue","$rtc_offet",$main_error)) {
                 $main_error[]=__('ERROR_WRITE_SD_CONF');
                 $error_copy=true;
             }
