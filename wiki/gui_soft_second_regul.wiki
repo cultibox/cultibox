@@ -36,7 +36,7 @@ Pour chaque type d'élément, retrouvez dans le tableau ci-dessous, la donnée c
 
 == Paramétrage de la régulation secondaire ==
 
-Il n'est pas possible de définir un intervalle de temps pour l'activation de la régulation secondaire. A partir du moment ou l'utilisateur l'active, elle restera activée en permanence.
+Il n'est pas possible de définir un intervalle de temps pour l'activation de la régulation secondaire. A partir du moment ou l'utilisateur l'active et que la régulation primaire est activée, elle restera activée en permanence.
 Une fois activée la régulation secondaire est disponible dans l'onglet *Prises* du menu principal:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs.png
