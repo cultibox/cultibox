@@ -6,7 +6,7 @@ require_once('../../libs/config.php');
 
 
 // Function to get log from the SD card
-function get_log_value($sd_card,$month,$day,&$array_line,$sensor_type) {
+function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
    $file="$sd_card/logs/$month/$day";
 
    //Buffer to store data:
@@ -27,7 +27,7 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensor_type) {
             //Check that the line has the right number of sensor reccords:
             if(count($temp)==($GLOBALS['NB_MAX_SENSOR_LOG']*2+1)) {
                 for($i=0;$i<count($temp);$i++) {
-                    //CLeaning wrong value - deleting special char 
+                    //Cleaning wrong value - deleting special char 
                     $temp[$i]=rtrim($temp[$i]);
                     $temp[$i]=str_replace(" ","",$temp[$i]);
                     $temp[$i]=str_replace("0000","",$temp[$i]);
@@ -41,35 +41,30 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensor_type) {
 
                 //If data are valid, continue processing:
                 if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)&&(strlen($temp[0])==14)) {
-                        for($i=0;$i<$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) {
-                            $sens_type="";
-                            if(count($sensor_type)==0) {
-                                $sens_type="2";
-                            } else {
-                                foreach($sensor_type as $sens) {
-                                    if($sens["id"]==$i+1) {
-                                        $sens_type=$sens["id"];
-                                        break;
-                                    }
-                                 }
-
-                                 if(strcmp("$sens_type","")==0) {
-                                    $sens_type="2";
-                                 }
-                            }
-
+                        for($i=0; $i<count($sensors); $i++) {
                             //Creating data array which will be inserted into the database:
-                            if((!empty($temp[2*$i+1]))||(!empty($temp[2*$i+2]))) {
+                            if(($sensors[$i]['type']!=0)) {
+                                if(($sensors[$i]['type']!=2)&&(!empty($temp[$i+1]))) {
                                         $array_line[] = array(
                                             "timestamp" => $temp[0],
-                                            "temperature" => $temp[1+2*$i],
-                                            "humidity" => $temp[2+2*$i],
+                                            "record1" => $temp[$i+1],
+                                            "record2" => "",
                                             "date_catch" => $date_catch,
                                             "time_catch" => $time_catch,
-                                            "sensor_nb" => $i+1,
-                                            "sensor_type" => $sens_type
+                                            "sensor_nb" => $sensors[$i]['sensor_nb'],
                                         );
-                            }
+                                } else if((!empty($temp[$i+1]))||(!empty($temp[$i+2]))) {
+                                        $array_line[] = array(
+                                            "timestamp" => $temp[0],
+                                            "record1" => $temp[$i+1],
+                                            "record2" => $temp[$i+2],
+                                            "date_catch" => $date_catch,
+                                            "time_catch" => $time_catch,
+                                            "sensor_nb" => $sensors[$i]['sensor_nb'],
+                                        );
+                                        $i=$i+1;
+                                }
+                            } 
                         }
                 }
             }
@@ -219,19 +214,15 @@ if((isset($sd_card))&&(!empty($sd_card))) {
     if((!isset($_SESSION['LOAD_LOG']))||(empty($_SESSION['LOAD_LOG']))) {
         $_SESSION['LOAD_LOG']="True";
     }
-    
-    if((isset($_SESSION['sensor_type']))&&(!empty($_SESSION['sensor_type']))) {
-        $sensor_type=$_SESSION['sensor_type'];
-    } else {
-        $sensor_type=array();
-    }
+   
+    $sensors=get_sensor_db_type(); 
 
     // Search if file exists
     if(strcmp($type,"logs")==0) {
         if(file_exists("$sd_card/logs/$mmonth/$dday")) {
             // get log value
             if(is_file("$sd_card/logs/$mmonth/$dday")) {
-                get_log_value("$sd_card","$mmonth","$dday",$log,$sensor_type);
+                get_log_value("$sd_card","$mmonth","$dday",$log,$sensors);
             }
 
 
@@ -293,7 +284,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
             }
 
             if(file_exists("$sd_card/logs/$mmonth/$dday")) {
-                get_log_value("$sd_card","$mmonth","$dday",$log,$sensor_type);
+                get_log_value("$sd_card","$mmonth","$dday",$log,$sensors);
             }
 
             if(!empty($log)) {

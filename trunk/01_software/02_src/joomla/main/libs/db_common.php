@@ -35,26 +35,22 @@ function db_update_logs($arr,&$out) {
    $index=0;
    $return=1;
    $sql = <<<EOF
-INSERT INTO `logs`(`timestamp`,`temperature`, `humidity`,`date_catch`,`time_catch`,`sensor_nb`,`type_sensor`) VALUES
+INSERT INTO `logs`(`timestamp`,`record1`, `record2`,`date_catch`,`time_catch`,`sensor_nb`) VALUES
 EOF;
    foreach($arr as $value) {
-      if(empty($value['temperature'])) {
-        $value['temperature']="NULL";
+      if(empty($value['record1'])) {
+        $value['record1']="NULL";
       }
     
-      if(empty($value['humidity'])) {
-        $value['humidity']="NULL";
+      if(empty($value['record2'])) {
+        $value['record2']="NULL";
       }
 
-      if(empty($value['sensor_type'])) {
-        $value['sensor_type']="NULL";
-      } 
-
-      if((array_key_exists("timestamp", $value))&&(array_key_exists("temperature", $value))&&(array_key_exists("humidity", $value))&&(array_key_exists("date_catch", $value))&&(array_key_exists("time_catch", $value))&&(array_key_exists("sensor_nb", $value))) {
+      if((array_key_exists("timestamp", $value))&&(array_key_exists("record1", $value))&&(array_key_exists("record2", $value))&&(array_key_exists("date_catch", $value))&&(array_key_exists("time_catch", $value))&&(array_key_exists("sensor_nb", $value))) {
          if("$index" == "0") {
-            $sql = $sql . "(${value['timestamp']}, ${value['temperature']},${value['humidity']},\"${value['date_catch']}\",\"${value['time_catch']}\",\"${value['sensor_nb']}\",\"${value['sensor_type']}\")";
+            $sql = $sql . "(${value['timestamp']}, ${value['record1']},${value['record2']},\"${value['date_catch']}\",\"${value['time_catch']}\",\"${value['sensor_nb']}\")";
          } else {
-            $sql = $sql . ",(${value['timestamp']}, ${value['temperature']},${value['humidity']},\"${value['date_catch']}\",\"${value['time_catch']}\",\"${value['sensor_nb']}\",\"${value['sensor_type']}\")";
+            $sql = $sql . ",(${value['timestamp']}, ${value['record1']},${value['record2']},\"${value['date_catch']}\",\"${value['time_catch']}\",\"${value['sensor_nb']}\")";
          }
          $index = $index +1;
       }
@@ -3512,7 +3508,64 @@ EOF;
         $ret=$e->getMessage();
     }
     $db=null;
-    return $res;
+
+    if(count($res)!=$GLOBALS['NB_MAX_SENSOR_PLUG']) {
+           for($i=0;$i<$GLOBALS['NB_MAX_SENSOR_PLUG'];$i++) { 
+                $sensors[]=array(
+                     "id" => $i+1,
+                     "type" => 0,
+                     "sensor_nb" => 0
+               );       
+           }
+    } else {
+        $nb_sens=1;
+        foreach($res as $sens) {
+            switch($sens['type']) {
+                case '0':
+                case '4':
+                case '5': $sensors[]=array(
+                            "id" => $sens['id'],
+                            "type" => 0,
+                            "sensor_nb" => 0
+                          ); 
+                          $nb_sens=$nb_sens+1;
+                          break;
+                case '2': $sensors[]=array(
+                            "id" => $sens['id'],
+                            "type" => $sens['type'],
+                            "sensor_nb" => $nb_sens
+                          );
+                          $sensors[]=array(
+                            "id" => $sens['id'],
+                            "type" => $sens['type'],
+                            "sensor_nb" => $nb_sens
+                          );
+                          $nb_sens=$nb_sens+1;
+                          break;
+                case '3':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                case ':':
+                case ';': $sensors[]=array(
+                            "id" => $sens['id'],
+                            "type" => $sens['type'],
+                            "sensor_nb" => $nb_sens
+                          );
+                          $nb_sens=$nb_sens+1;
+                          break;
+                default:  $sensors[]=array(
+                            "id" => $sens['id'],
+                            "type" => $sens['type'],
+                            "sensor_nb" => 0
+                          );
+                          $nb_sens=$nb_sens+1;
+                          break;
+           }
+        }
+    }
+    return $sensors;
 }
 /// }}}
 

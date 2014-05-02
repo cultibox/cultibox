@@ -135,13 +135,12 @@ CREATE TABLE IF NOT EXISTS `calendar` (
 
 CREATE TABLE IF NOT EXISTS `logs` (
   `timestamp` varchar(14) NOT NULL DEFAULT '',
-  `temperature` int(4) DEFAULT NULL,
-  `humidity` int(4) DEFAULT NULL,
+  `record1` int(4) DEFAULT NULL,
+  `record2` int(4) DEFAULT NULL,
   `date_catch` varchar(10) DEFAULT NULL,
   `time_catch` varchar(10) DEFAULT NULL,
   `fake_log` varchar(5) NOT NULL DEFAULT 'False',
   `sensor_nb` int(4) NOT NULL DEFAULT '1',
-  `type_sensor` INT NOT NULL DEFAULT '2',
   KEY `timestamp` (`timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
