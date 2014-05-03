@@ -9,13 +9,22 @@ Vous pouvez compléter votre pack avec une sonde d'Oxygène dissous (OD). C'est 
 
 Cette sonde est faite pour rester plongée dans votre liquide.
 
-Attention, la sonde met a peu près deux minutes pour répondre complétement à un changement d'environnement.
+Attention, la sonde met a peu près deux minutes pour répondre complètement à un changement d'environnement.
 
 De légère variation de valeur sont normales.
 
 = Spécifications =
 
 = Contenu du pack =
+
+http://cultibox.googlecode.com/svn/wiki/img/od_kit.png
+
+Le kit oxygène dissous contient les éléments suivants :
+ * Une sonde d'oxygène dissous
+ * Un adaptateur pour la Cultibox
+ * Une solution de calibration (125 mL)
+ * Une notice
+ * Un cordon RJ de 2,2m pour relier l'adaptateur à la Cultibox (Non visible sur la photo)
 
 = Mise en place =
 

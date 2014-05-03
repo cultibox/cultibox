@@ -15,6 +15,13 @@ Cette sonde est faite pour rester immergée dans votre liquide.
 
 = Contenu du pack =
 
+Le kitEC contient les éléments suivants :
+ * Une sonde d'EC
+ * Un adaptateur pour la Cultibox
+ * Deux solutions de calibration (220us/cm et 3000us/cm) (125 mL)
+ * Une notice
+ * Un cordon RJ de 2,2m pour relier l'adaptateur à la Cultibox (Non visible sur la photo)
+
 = Mise en place =
 
 = Calibration =

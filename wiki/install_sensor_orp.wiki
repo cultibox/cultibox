@@ -5,7 +5,7 @@
 
 = Introduction =
 
-Vous pouvez compléter votre pack avec une sonde ORP. C'est l’accessoire idéal pour suivre le potentiel d'oxydoréduction de votre eau.
+Vous pouvez compléter votre pack avec une sonde ORP. C'est l’accessoire idéal pour suivre le potentiel d'oxydoréduction (RedOx) de votre eau.
 
 = Spécifications =
 
@@ -16,6 +16,16 @@ Vous pouvez compléter votre pack avec une sonde ORP. C'est l’accessoire idéa
 || Température maximal d'utilisation || 35°C ||
 
 = Contenu du pack =
+
+http://cultibox.googlecode.com/svn/wiki/img/orp_kit.png
+
+Le kit ORP contient les éléments suivants :
+ * Une sonde de potentiel d'oxydoréduction
+ * Un adaptateur pour la Cultibox
+ * Une solution 225mV (125 mL)
+ * Une solution de stockage (125 mL)
+ * Une notice
+ * Un cordon RJ de 2,2m pour relier l'adaptateur à la Cultibox (Non visible sur la photo)
 
 = Mise en place =
 
