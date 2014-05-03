@@ -244,8 +244,8 @@ Ou XX représente le numéro du jour dans le mois.
 === Fichier logs_XX ===
 
 || *Capteur* || *facteur multiplicatif* || *unité* ||
-|| Température || 100 || °C || 
-|| Humidité || 100 || % || 
+|| Température || 100 || °C ||
+|| Humidité || 100 || % ||
 || Température immergeable || 100 || °C ||
 || Niveau d'eau || 100 || cm ||
 || pH || 100 || ||

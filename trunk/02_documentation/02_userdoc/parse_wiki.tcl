@@ -96,6 +96,7 @@ proc parseTitle {line level} {
    return $line
 }
 
+# REcher du nom du chapitre
 proc searchSumary {file} {
    set summary ""
    set fid [open $file r]
@@ -107,19 +108,18 @@ proc searchSumary {file} {
       if {[string first {#summary} $line] != -1} {
          set summary [string map {{#summary} ""} $line];
       }
-
-   
    }
-   
+ 
    close $fid
    return $summary
-
 }
 
+# Parsage des tableau
 set inTab 0
 set Landscape 0
 proc parseTab {line} {
 
+    # Cas ou on est dans le tableau
 	if {[string first "||" $line] != -1} {
 		set lineSplitt ""
 		foreach elem [split $line "||" ] {
@@ -142,7 +142,6 @@ proc parseTab {line} {
         } else {
             set line "\\hline\n[join $lineSplitt " & "] \\tabularnewline"
         }
-		
 
 		if {$::inTab == 0} {
 			set line "${lineout}\n\\begin{tabular}\{|*\{${nbCol}\}\{p\{${LargeurCellule}cm\}|\}\}\n$line"
@@ -152,11 +151,12 @@ proc parseTab {line} {
 
 	} else {
 		if {$::inTab == 1} {
+            # On n'est plus dans le tableau
 			
 			set line "\\hline\n\\end{tabular}\n$line"
 			set ::inTab 0
 			if {$::Landscape == 1} {
-				set line "${line}\n" ;#\\end{landscape}"
+				set line "${line}\n" ;
                 set ::largeurTable 12
 			}
 			set ::Landscape 0
