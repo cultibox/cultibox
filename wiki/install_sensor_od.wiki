@@ -28,6 +28,12 @@ Le kit oxygène dissous contient les éléments suivants :
 
 = Mise en place =
 
+ # Débranchez la Cultibox
+ # Connectez le cordon RJ entre la Cultibox et l'adaptateur
+ # Branchez la sonde sur l'adaptateur
+ # Plongez la sonde dans le liquide
+ # Allumez la Cultibox
+
 = Calibration =
 
 La calibration nécessite de se rendre dans les menus de la Cultibox : 
