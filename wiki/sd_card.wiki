@@ -129,14 +129,14 @@ SEN:M100000
 STOL:000
 }}}
 
-=== REG ===
+==== REG ====
 
 Configuration de la régulation principale
  * Digit 1 : Donnée utilisée pour la régulation principale
  * Digit 2 : Sens de la régulation principale
  * Digits 3 4 5 : Précision de la régulation principale
 
-=== SEC ===
+==== SEC ====
 
 Configuration de la régulation secondaire
  * Digit 1 : Donnée utilisée pour la régulation secondaire
@@ -144,13 +144,13 @@ Configuration de la régulation secondaire
  * Digit 3 : Valeur prise par la prise lorsque la condition est atteinte
  * Digits 4 5 6 : Valeur de régulation
 
-=== SEN ===
+==== SEN ====
 
 Calcul de la valeur utilisée pour la régulation principale
  * Digit 1 : Type de calcul (M : Moyenne, I : Minimum, A : Maximum)
  * Digits 2 3 4 5 6 7 : Capteurs utilisés pour le calcul (0 : non utilisé, 1 : utilisé)
 
-=== STOL ===
+==== STOL ====
 
 Valeur de tolérance pour la régulation secondaire
  * Digits 1 2 3 : Valeur de la tolérance
