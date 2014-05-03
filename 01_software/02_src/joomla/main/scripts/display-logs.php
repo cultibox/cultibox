@@ -492,32 +492,217 @@ if("$type" == "days") {
       $stday=substr($startday, 8, 2);
 
       if(($check_log)||(!empty($datap))||(!empty($data))) {
+            $db_sensors=get_sensor_db_type();
             foreach($select_sensor as $sens) { 
-                format_minmax_sumary($startday,$main_error,$resume_minmax,$sens);
-                get_graph_array($temperature,"temperature/100",$startday,$sens,"False","0",$main_error);
+                $data_log[$sens]=array('sensor_nb' => $sens,
+                                  'sensor_type' => "",
+                                  'sensor_name_type' => "",
+                                  'record1' => "",
+                                  'record2' => "",
+                                  'color_record1' => "",
+                                  'color_record2' => "",
+                                  'color_grid1' => "",
+                                  'color_grid2' => "",
+                                  'yaxis_record1' => -1,
+                                  'yaxis_record2' => -1,
+                                  'type_graph' => "area",
+                                  'yaxis1_legend' => "",
+                                  'yaxis2_legend' => "",
+                );
+                
+                for($i=0;$i<count($db_sensors);$i++) {
+                    if($db_sensors[$i]['sensor_nb']==$sens) {
+                        $data_log[$sens]['sensor_type']=$db_sensors[$i]['type'];
+                        switch($db_sensors[$i]['type']) {
+                            case '2': $name[]=str_replace("'","\'",__('TEMP_SENSOR'));
+                                      $name[]=str_replace("'","\'",__('HUMI_SENSOR')); 
+                                      $color1=get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
+                                      $color2=get_configuration("COLOR_HUMIDITY_GRAPH",$main_error);    
+                                      $legend1=__('TEMP_LEGEND');
+                                      $legend2=__('HUMI_LEGEND');
+                                      break;
+                            case '3': $name=str_replace("'","\'",__('WATER_SENSOR')); 
+                                      $color1=get_configuration("COLOR_WATER_GRAPH",$main_error);
+                                      $color2="";
+                                      $legend1=__('WATER_LEGEND');
+                                      $legend2="";
+                                      break;
+                            case '6': 
+                            case '7': $name=str_replace("'","\'",__('LEVEL_SENSOR')); 
+                                      $color1=get_configuration("COLOR_LEVEL_GRAPH",$main_error);
+                                      $color2="";
+                                      $legend1=__('LEVEL_LEGEND');
+                                      $legend2="";
+                                      break;
+                            case '8': $name=str_replace("'","\'",__('PH_SENSOR')); 
+                                      $color1=get_configuration("COLOR_PH_GRAPH",$main_error);
+                                      $color2="";
+                                      $legend1=__('PH_LEGEND');
+                                      $legend2="";
+                                      break;
+                            case '9': $name=str_replace("'","\'",__('EC_SENSOR')); 
+                                      $color1=get_configuration("COLOR_EC_GRAPH",$main_error);
+                                      $color2="";
+                                      $legend1=__('EC_LEGEND');
+                                      $legend2="";
+                                      break;
+                            case ':': $name=str_replace("'","\'",__('OD_SENSOR')); 
+                                      $color1=get_configuration("COLOR_OD_GRAPH",$main_error);
+                                      $color2="";
+                                      $legend1=__('OD_LEGEND');
+                                      $legend2="";
+                                      break;
+                            case ';': $name=str_replace("'","\'",__('ORP_SENSOR')); 
+                                      $color1=get_configuration("COLOR_ORP_GRAPH",$main_error);
+                                      $color2="";
+                                      $legend1=__('ORP_LEGEND');
+                                      $legend2="";
+                                      break; 
+                        }
 
-                if(!empty($temperature)) {
-                    $data_temp[]=get_format_graph($temperature,"log");
-                    get_graph_array($humidity,"humidity/100",$startday,$sens,"False","0",$main_error);
-                    if(!empty($humidity)) {
-                        $data_humi[]=get_format_graph($humidity,"log");
+                        $data_log[$sens]['sensor_name_type']=$name;
+                        $data_log[$sens]['color_record1']=$color1;
+                        $data_log[$sens]['color_record2']=$color2;
+                        $data_log[$sens]['yaxis1_legend']=$legend1;
+                        $data_log[$sens]['yaxis2_legend']=$legend2;
+                        unset($name);
+                        unset($color1);
+                        unset($color2);
+                        unset($legend1);
+                        unset($legend2);
+
+                        format_minmax_sumary($startday,$main_error,$resume_minmax,$sens);
+                        get_graph_array($record1,"record1/".$db_sensors[$i]['ratio'],$startday,$sens,"False","0",$main_error);
+
+                        if(!empty($record1)) {
+                            $data_log[$sens]['record1']=get_format_graph($record1,"log");
+                            if($db_sensors[$i]['type']==2) {
+                                get_graph_array($record2,"record2/".$db_sensors[$i]['ratio'],$startday,$sens,"False","0",$main_error);
+                                if(!empty($record2)) {
+                                    $data_log[$sens]['record2']=get_format_graph($record2,"log");
+                                }
+                            }
+                        } else {
+                            if(!isset($mess)) {
+                                $mess=": $sens";
+                            } else {
+                                $mess=$mess.", $sens";
+                            }
+                        }
                     }
-                } else {
-                    if(!isset($mess)) {
-                        $mess=": $sens";
-                    } else {
-                        $mess=$mess.", $sens";
+                }
+
+            }
+
+            if(isset($mess)) {
+                    $main_error[]=__('EMPTY_DATA_SENSOR').$mess;
+             }
+                if(!empty($resume_minmax)) {
+                    $resume_minmax="<p align='center'><b><i>".__('SUMARY_RESUME_MINMAX')." ".$startday." (".__('ALL_SENSOR')."):</i></b></p>".$resume_minmax."<br />";
+             }
+
+            if(count($data_log)!=0) {
+                $filled=array();
+                $yaxis=0;
+                foreach($select_sensor as $sens) {
+                    if($data_log[$sens]['sensor_type']!=0) {
+                        if($data_log[$sens]['sensor_type']!="2") { 
+                            if(in_array($data_log[$sens]['sensor_type'],$filled)) {
+                                $data_log[$sens]['yaxis_record1']=array_search($data_log[$sens]['sensor_type'], $filled);
+                            } else {
+                                $data_log[$sens]['yaxis_record1']=$yaxis;
+                                $yaxis=$yaxis+1;
+                                $filled[]=$data_log[$sens]['sensor_type'];
+                            }
+                        } else {
+                           if(in_array($data_log[$sens]['sensor_type']."-1",$filled)) {
+                                $tmp=array_search($data_log[$sens]['sensor_type']."-1", $filled);
+                                $data_log[$sens]['yaxis_record1']=$tmp;
+                                $data_log[$sens]['yaxis_record2']=$tmp+2;
+                            } else {
+                                $data_log[$sens]['yaxis_record1']=$yaxis;
+                                $data_log[$sens]['yaxis_record2']=$yaxis+1;
+                                $yaxis=$yaxis+2;
+                                $filled[]=$data_log[$sens]['sensor_type']."-1";
+                                $filled[]=$data_log[$sens]['sensor_type']."-2";
+                            }
+                        }
                     }
-                    $data_temp[]="";
-                    $data_humi[]="";
+
+                    switch($data_log[$sens]['color_record1']) {
+                        case 'blue': $color_grid1=$GLOBALS['GRAPHIC_COLOR_GRID_BLUE'];
+                                     break;
+                        case 'black': $color_grid1=$GLOBALS['GRAPHIC_COLOR_GRID_BLACK'];
+                                      break;
+                        case 'green': $color_grid1=$GLOBALS['GRAPHIC_COLOR_GRID_GREEN'];
+                                      break;
+                        case 'red': $color_grid1=$GLOBALS['GRAPHIC_COLOR_GRID_RED'];
+                                      break;
+                        case 'purple': $color_grid1=$GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'];
+                                      break;
+                        default: $color_grid1="";
+
+                    }
+
+                    switch($data_log[$sens]['color_record2']) {
+                        case 'blue': $color_grid2=$GLOBALS['GRAPHIC_COLOR_GRID_BLUE'];
+                                     break;
+                        case 'black': $color_grid2=$GLOBALS['GRAPHIC_COLOR_GRID_BLACK'];
+                                      break;
+                        case 'green': $color_grid2=$GLOBALS['GRAPHIC_COLOR_GRID_GREEN'];
+                                      break;
+                        case 'red': $color_grid2=$GLOBALS['GRAPHIC_COLOR_GRID_RED'];
+                                      break;
+                        case 'purple': $color_grid2=$GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'];
+                                      break;
+                        default: $color_grid2="";
+
+                    }
+                    $data_log[$sens]['color_grid1']=$color_grid1;
+                    $data_log[$sens]['color_grid2']=$color_grid2;
                 }
             }
-            if(isset($mess)) { 
-                $main_error[]=__('EMPTY_DATA_SENSOR').$mess;
-            }
-            if(!empty($resume_minmax)) {
-                $resume_minmax="<p align='center'><b><i>".__('SUMARY_RESUME_MINMAX')." ".$startday." (".__('ALL_SENSOR')."):</i></b></p>".$resume_minmax."<br />";
-            }
+
+
+            if(isset($datap)&&(!empty($datap))) {
+                    $color_power=get_configuration("COLOR_POWER_GRAPH",$main_error);
+                    switch($color_power) {
+                        case 'blue': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_BLUE'];
+                                     break;
+                        case 'black': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_BLACK'];
+                                     break;
+                        case 'green': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_GREEN'];
+                                     break;
+                        case 'red': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_RED'];
+                                     break;
+                        case 'purple': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'];
+                                     break;
+                        case 'yellow': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_YELLOW'];
+                                     break;
+                        case 'orange': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_ORANGE'];
+                                     break;
+                        case 'brown': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_BROWN'];
+                                     break;
+                        case 'pink': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_PINK'];
+                                     break;
+                    }
+
+                    $data_log[$sens]=array('sensor_nb' => "POWER",
+                                  'sensor_type' => "POWER",
+                                  'sensor_name_type' => "POWER",
+                                  'record1' => $datap,
+                                  'record2' => "",
+                                  'color_record1' => $color_power,
+                                  'color_record2' => "",
+                                  'color_grid1' => $grid_power,
+                                  'color_grid2' => "",
+                                  'yaxis_record1' => $yaxis+1,
+                                  'yaxis_record2' => -1,
+                                  'type_graph' => 'spline'
+                    );
+                }
+
+
       } else {
         get_graph_array($temperature,"temperature/100","%%","1","True","0",$main_error);
         $main_error[]=__('EMPTY_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
@@ -583,59 +768,6 @@ if("$type" == "days") {
     $stday=1;
     $next=20;
 }
-
-
-$color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
-$color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$main_error);
-$color_power=get_configuration("COLOR_POWER_GRAPH",$main_error);
-
-switch($color_humidity) {
-    case 'blue': $grid_humidity=$GLOBALS['GRAPHIC_COLOR_GRID_BLUE'];
-        break;
-    case 'black': $grid_humidity=$GLOBALS['GRAPHIC_COLOR_GRID_BLACK'];
-        break;
-    case 'green': $grid_humidity=$GLOBALS['GRAPHIC_COLOR_GRID_GREEN'];
-        break;
-    case 'red': $grid_humidity=$GLOBALS['GRAPHIC_COLOR_GRID_RED'];
-        break;
-    case 'purple': $grid_humidity=$GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'];
-        break;
-}    
-
-
-switch($color_temperature) {
-     case 'blue': $grid_temperature=$GLOBALS['GRAPHIC_COLOR_GRID_BLUE'];
-         break;
-     case 'black': $grid_temperature=$GLOBALS['GRAPHIC_COLOR_GRID_BLACK'];
-         break;
-     case 'green': $grid_temperature=$GLOBALS['GRAPHIC_COLOR_GRID_GREEN'];
-         break;
-     case 'red': $grid_temperature=$GLOBALS['GRAPHIC_COLOR_GRID_RED'];
-         break;
-     case 'purple': $grid_temperature=$GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'];
-         break;
-} 
-
-
-switch($color_power) {
-     case 'blue': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_BLUE'];
-         break;
-     case 'black': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_BLACK'];
-         break;
-     case 'green': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_GREEN'];
-         break;
-     case 'red': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_RED'];
-         break;
-     case 'purple': $grid_power=$GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'];
-         break;
-} 
-
-
-
-
-
-
-
 
 // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {

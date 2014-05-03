@@ -10,7 +10,7 @@ define('LANG_FALLBACK', 'en_GB');
 $GLOBALS['SOFT_PORT'] = '6891';
 
 // List of available colors for graphics:
-$GLOBALS['LIST_GRAPHIC_COLOR'] = array('blue','red', 'green', 'black','purple');
+$GLOBALS['LIST_GRAPHIC_COLOR'] = array('blue','red', 'green', 'black','purple','orange','pink','brown','yellow');
 
 // List of the recording frequency available: (in minute)
 $GLOBALS['LIST_RECORD_FREQUENCY'] = array('1','5','30');
@@ -85,7 +85,10 @@ $GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'] = array ('#FA4F4F','#E30000','#AB0000'
 $GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'] = array ('#68F071','#00F010','#006A07','#416543');
 $GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'] = array ('#000000','#494141','#B9A5A5','#FFFFFF');
 $GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'] = array ('#F089B6','#F00068','#8D003D','#9F3F69');
-
+$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_ORANGE'] = array ('#F9A856','#F79A3C','#F99027','F07C07');
+$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PINK'] = array ('#F433BA','#C32493','#951B71','#5E1147');
+$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BROWN'] = array ('#C18C36','#A37223','#805613','#593A08');
+$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_YELLOW'] = array ('F9F781','#FCF959','#FAF726','#EDE901');
 
 // Colors for the  log's grid line:
 $GLOBALS['GRAPHIC_COLOR_GRID_BLUE'] = "#609CD1";
@@ -93,7 +96,10 @@ $GLOBALS['GRAPHIC_COLOR_GRID_RED'] = "#C1626A";
 $GLOBALS['GRAPHIC_COLOR_GRID_GREEN'] = "#6A905C";
 $GLOBALS['GRAPHIC_COLOR_GRID_BLACK'] = "#B5ACAD";
 $GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'] = "#A67AA6";
-
+$GLOBALS['GRAPHIC_COLOR_GRID_ORANGE'] = "#F28609";
+$GLOBALS['GRAPHIC_COLOR_GRID_PINK'] = "#F772A1";
+$GLOBALS['GRAPHIC_COLOR_GRID_BROWN'] = "#A8600E";
+$GLOBALS['GRAPHIC_COLOR_GRID_YELLOW'] = "#FCE91D";
 
 // Color for the calendar:
 $GLOBALS['LIST_GRAPHIC_COLOR_CALENDAR'] = array ('00', '44', '88', 'DD', 'CC','FF');
@@ -104,6 +110,7 @@ $GLOBALS['REMOTE_DATABASE'] = "http://www.cbx.greenbox-botanic.com/index.php";
 // List of encryption supported by the wifi module:
 $GLOBALS['WIFI_KEY_TYPE_LIST']=array("NONE", "WEP", "WPA", "WPA2", "WPA-AUTO");
 
+// List and equivalence between sensor number and type of the sensor from the index file:
 // List and equivalence between sensor number and type of the sensor from the index file:
 $GLOBALS['SENSOR_DEFINITION']=array(
                                 '0' => 'none',
@@ -116,24 +123,6 @@ $GLOBALS['SENSOR_DEFINITION']=array(
                                 '9' => 'ec',
                                 ':' => 'od',
                                 ';' => 'orp');
-
-
-// List and equivalence between sensor number and ratio in the log file:
-$GLOBALS['SENSOR_DEFINITION']=array(
-                                '0' => '0',
-                                '2' => '100',
-                                '3' => '100',
-                                '5' => '0',
-                                '6' => '100',
-                                '7' => '100',
-                                '8' => 'ph',
-                                '9' => '1',
-                                ':' => 'od',
-                                ';' => '1');
-
-//List of RTC offset value availale:
-$GLOBALS['RTC_OFFSET_DEFINITION']=array(0, 1, 10, 20, 100, 127, 128, 129, 138, 148, 228, 255); 
-
 
 //Number of state's changement allowed by the cultibox for the plugv file:
 $GLOBALS['PLUGV_MAX_CHANGEMENT']=999;

@@ -3491,9 +3491,21 @@ EOF;
 
 
 // {{{ get_sensor_db_type()
-// ROLE get list of sensor's type from database
+// ROLE get list of sensor's type and definition from database and config file
 // IN none
 // RET array containing sensors type
+// Type => nom abrégé => Facteur multiplicatif => unité
+// '0' => 'none' => N/A => pas d'unité
+// '2' => 'temp_humi' => 100 => °C ou % 
+// '3' => 'water_temp' => 100 => °C
+// '5' => 'wifi' => N/A => N/A
+// '6' => 'water_level' => 100 => cm
+// '7' => 'water_level' => 100 => cm
+// '8' => 'ph' => 100 => Pas d'unité
+// '9' => 'ec' => 1 => µs/cm
+// ':' => 'od' => 100 => mg/l
+// ';' => 'orp' => 1 => mV 
+
 function get_sensor_db_type() {
     $sql = <<<EOF
 SELECT * FROM `sensors` ORDER BY id ASC;
@@ -3526,39 +3538,97 @@ EOF;
                 case '5': $sensors[]=array(
                             "id" => $sens['id'],
                             "type" => 0,
-                            "sensor_nb" => 0
+                            "sensor_nb" => 0,
+                            "ratio" => 0,
+                            "unity" => ""
                           ); 
                           $nb_sens=$nb_sens+1;
                           break;
+
                 case '2': $sensors[]=array(
                             "id" => $sens['id'],
                             "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens
+                            "sensor_nb" => $nb_sens,
+                            "ratio" => 100,
+                            "unity" => "°C/%"
                           );
                           $sensors[]=array(
                             "id" => $sens['id'],
                             "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens
+                            "sensor_nb" => $nb_sens,
+                            "ratio" => 100,
+                            "unity" => "°C/%"
                           );
                           $nb_sens=$nb_sens+1;
                           break;
-                case '3':
-                case '6':
-                case '7':
-                case '8':
-                case '9':
-                case ':':
+
+                case '3': $sensors[]=array(
+                            "id" => $sens['id'],
+                            "type" => $sens['type'],
+                            "sensor_nb" => $nb_sens,
+                            "ratio" => 100,
+                            "unity" => "°C"
+                          );
+                          $nb_sens=$nb_sens+1;
+                          break;
+
+                case '6': 
+                case '7': $sensors[]=array(
+                            "id" => $sens['id'],
+                            "type" => $sens['type'],
+                            "sensor_nb" => $nb_sens,
+                            "ratio" => 100,
+                            "unity" => "cm"
+                          );
+                          $nb_sens=$nb_sens+1;
+                          break;
+
+                case '8': $sensors[]=array(
+                            "id" => $sens['id'],
+                            "type" => $sens['type'],
+                            "sensor_nb" => $nb_sens,
+                            "ratio" => 100,
+                            "unity" => ""
+                          );
+                          $nb_sens=$nb_sens+1;
+                          break;
+
+                case '9': $sensors[]=array(
+                            "id" => $sens['id'],
+                            "type" => $sens['type'],
+                            "sensor_nb" => $nb_sens,
+                            "ratio" => 1,
+                            "unity" => "µs/cm"
+                          );
+                          $nb_sens=$nb_sens+1;
+                          break;
+
+                case ':': $sensors[]=array(
+                            "id" => $sens['id'],
+                            "type" => $sens['type'],
+                            "sensor_nb" => $nb_sens,
+                            "ratio" => 100,
+                            "unity" => "mg/l"
+                          );
+                          $nb_sens=$nb_sens+1;
+                          break;
+
                 case ';': $sensors[]=array(
                             "id" => $sens['id'],
                             "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens
+                            "sensor_nb" => $nb_sens,
+                            "ratio" => 1,
+                            "unity" => "mV"
                           );
                           $nb_sens=$nb_sens+1;
                           break;
+
                 default:  $sensors[]=array(
                             "id" => $sens['id'],
                             "type" => $sens['type'],
-                            "sensor_nb" => 0
+                            "sensor_nb" => 0,
+                            "ratio" => 0,
+                            "unity" => ""
                           );
                           $nb_sens=$nb_sens+1;
                           break;
@@ -3567,6 +3637,18 @@ EOF;
     }
     return $sensors;
 }
+
+
+$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '0', 'name' => "none", 'ratio' => 0, 'unity' => '');
+$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '2', 'name' => "tem_humi", 'ratio' => 100, 'unity' => '°C / %');
+$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '3', 'name' => "water_temp", 'ratio' => 100, 'unity' => '°C');
+$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '5', 'name' => "wifi", 'ratio' => 0, 'unity' => '');
+$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '6', 'name' => "water_level", 'ratio' => 100, 'unity' => 'cm');
+$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '7', 'name' => "water_level", 'ratio' => 100, 'unity' => 'cm');
+$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '8', 'name' => "ph", 'ratio' => 100, 'unity' => '');
+$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '9', 'name' => "ec", 'ratio' => 1, 'unity' => 'µs/cm');
+$GLOBALS['SENSOR_DEFINITION'][]=array('type' => ':', 'name' => "od", 'ratio' => 100, 'unity' => 'mg/l');
+$GLOBALS['SENSOR_DEFINITION'][]=array('type' => ';', 'name' => "orp", 'ratio' => 1, 'unity' => 'mV');
 /// }}}
 
 // {{{ get_sensor_db_type()

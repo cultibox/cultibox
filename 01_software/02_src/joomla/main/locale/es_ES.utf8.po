@@ -261,15 +261,6 @@ msgstr "Hora"
 msgid "XAXIS_LEGEND_MONTH"
 msgstr "Días del mes"
 
-msgid "YAXIS_LEGEND"
-msgstr "Porcentaje de higrometría"
-
-msgid "Y2AXIS_LEGEND"
-msgstr "Temperatura en grados"
-
-msgid "Y3AXIS_LEGEND"
-msgstr "Potencia en Watts"
-
 msgid "MONTH01"
 msgstr "Enero"
 
@@ -539,6 +530,54 @@ msgstr "Humedad mínima"
 
 msgid "SUMARY_RESUME_MINMAX"
 msgstr "Resumen de los valores mínimos y máximos por el"
+
+msgid "TEMP_SENSOR"
+msgstr "Temperatura"
+
+msgid "HUMI_SENSOR"
+msgstr "Humedad"
+
+msgid "WATER_SENSOR"
+msgstr "Temperatura del agua"
+
+msgid "LEVEL_SENSOR"
+msgstr "Nivel del agua"
+
+msgid "PH_SENSOR"
+msgstr "PH"
+
+msgid "EC_SENSOR"
+msgstr "EC"
+
+msgid "OD_SENSOR"
+msgstr "OD"
+
+msgid "ORP_SENSOR"
+msgstr "ORP"
+
+msgid "TEMP_LEGEND"
+msgstr "Température (en °C)"
+
+msgid "HUMI_LEGEND"
+msgstr "Hygrométrie (en &pour;)"
+
+msgid "WATER_LEGEND"
+msgstr "Température de l\'eau (en °C)"
+
+msgid "LEVEL_LEGEND"
+msgstr "Niveau de l\'eau (en cm)"
+
+msgid "PH_LEGEND"
+msgstr "PH de la solution"
+
+msgid "EC_LEGEND"
+msgstr "Electro-conductivité (en µs/cm)"
+
+msgid "OD_LEGEND"
+msgstr "Oxydo-reduction (en mg/l)"
+
+msgid "ORP_LEGEND"
+msgstr "ORP (en mV)"
 
 
 # For the plugs part:
@@ -887,12 +926,6 @@ msgstr "Exportar como PDF"
 
 msgid "EXPORT_SVG"
 msgstr "Exportar como SVG"
-
-msgid "RESET_ZOOM"
-msgstr "Cancelar los zoom"
-
-msgid "RESET_X_ZOOM"
-msgstr "Cancelar el zoom temporal"
 
 msgid "RESET_ZOOM_TITLE"
 msgstr "Cancelar el zoom"

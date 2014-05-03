@@ -254,19 +254,10 @@ msgid "LEGEND_POWER"
 msgstr "Puissance"
 
 msgid "XAXIS_LEGEND_DAY"
-msgstr "Heure"
+msgstr "Heures"
 
 msgid "XAXIS_LEGEND_MONTH"
 msgstr "Jours du mois"
-
-msgid "YAXIS_LEGEND"
-msgstr "Pourcentage d\'humidité"
-
-msgid "Y2AXIS_LEGEND"
-msgstr "Température en degrés"
-
-msgid "Y3AXIS_LEGEND"
-msgstr "Puissance en watt"
 
 msgid "MONTH01"
 msgstr "Janvier"
@@ -537,6 +528,55 @@ msgstr "Humidité minimale"
 
 msgid "SUMARY_RESUME_MINMAX"
 msgstr "Résumé des valeurs minimales et maximales pour le"
+
+msgid "TEMP_SENSOR"
+msgstr "Température" 
+
+msgid "HUMI_SENSOR"
+msgstr "Hygrométrie"
+
+msgid "WATER_SENSOR"
+msgstr "Température d'eau"
+
+msgid "LEVEL_SENSOR"
+msgstr "Niveau d'eau"
+
+msgid "PH_SENSOR"
+msgstr "PH"
+
+msgid "EC_SENSOR"
+msgstr "EC"
+
+msgid "OD_SENSOR"
+msgstr "OD"
+
+msgid "ORP_SENSOR"
+msgstr "ORP"
+
+msgid "TEMP_LEGEND"
+msgstr "Température (en °C)"
+
+msgid "HUMI_LEGEND"
+msgstr "Hygrométrie (en &pour;)"
+
+msgid "WATER_LEGEND"
+msgstr "Température de l\'eau (en °C)"
+
+msgid "LEVEL_LEGEND"
+msgstr "Niveau de l\'eau (en cm)"
+
+msgid "PH_LEGEND"
+msgstr "PH de la solution"
+
+msgid "EC_LEGEND"
+msgstr "Electro-conductivité (en µs/cm)"
+
+msgid "OD_LEGEND"
+msgstr "Oxydo-reduction (en mg/l)"
+
+msgid "ORP_LEGEND"
+msgstr "ORP (en mV)"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -884,12 +924,6 @@ msgstr "Exporter au format PDF"
 
 msgid "EXPORT_SVG"
 msgstr "Exporter au format SVG"
-
-msgid "RESET_ZOOM"
-msgstr "Annuler les différents zooms"
-
-msgid "RESET_X_ZOOM"
-msgstr "Annuler le zoom temporel"
 
 msgid "RESET_ZOOM_TITLE"
 msgstr "Annuler le zoom"
