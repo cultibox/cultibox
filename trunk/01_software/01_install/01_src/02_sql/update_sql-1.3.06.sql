@@ -7,3 +7,10 @@ ALTER TABLE `cultibox`.`configuration` ADD  `RTC_OFFSET` DECIMAL(3,2) NOT NULL D
 ALTER TABLE `cultibox`.`logs` CHANGE `temperature` `record1` int(4) DEFAULT NULL;
 ALTER TABLE `cultibox`.`logs` CHANGE `humidity` `record2` int(4) DEFAULT NULL;
 ALTER TABLE `cultibox`.`logs` DROP `type_sensor`;
+ALTER TABLE `cultibox`.`configuration` ADD `COLOR_WATER_GRAPH` varchar(30) NOT NULL DEFAULT 'orange' AFTER `COLOR_HUMIDITY_GRAPH`;
+ALTER TABLE `cultibox`.`configuration` ADD `COLOR_LEVEL_GRAPH` varchar(30) NOT NULL DEFAULT 'pink' AFTER `COLOR_HUMIDITY_GRAPH`;
+ALTER TABLE `cultibox`.`configuration` ADD `COLOR_PH_GRAPH` varchar(30) NOT NULL DEFAULT 'brown' AFTER `COLOR_HUMIDITY_GRAPH`;
+ALTER TABLE `cultibox`.`configuration` ADD `COLOR_EC_GRAPH` varchar(30) NOT NULL DEFAULT 'yellow' AFTER `COLOR_HUMIDITY_GRAPH`;
+ALTER TABLE `cultibox`.`configuration` ADD `COLOR_OD_GRAPH` varchar(30) NOT NULL DEFAULT 'red' AFTER `COLOR_HUMIDITY_GRAPH`;
+ALTER TABLE `cultibox`.`configuration` ADD `COLOR_ORP_GRAPH` varchar(30) NOT NULL DEFAULT 'blue' AFTER `COLOR_HUMIDITY_GRAPH`;
+

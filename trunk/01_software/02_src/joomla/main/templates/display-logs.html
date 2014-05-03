@@ -197,7 +197,7 @@ buttonImageOnly: 'true',
 <table class="table_width">
 <tr>
     <td></td>
-    <td class="program-valid-right"><br /><input type="submit" value=<?php echo __('VIEW'); ?> name="display-log-submit" id="display-log-submit"  onKeypress="return verifDigit(event);"></td>
+    <td class="program-valid-right"><input type="submit" value=<?php echo __('VIEW'); ?> name="display-log-submit" id="display-log-submit"  onKeypress="return verifDigit(event);"></td>
     <td></td>
 </tr>
 </table>
@@ -269,7 +269,7 @@ var extremes_save = null;
 
 Highcharts.setOptions({
 lang: {
-<?php echo "resetZoom : '".__('RESET_ZOOM','highchart')."',"; ?>
+<?php echo "resetZoom : '".__('RESET_ZOOM_TITLE','highchart')."',"; ?>
 <?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE','highchart')."'"; ?>
 }
 });
@@ -286,7 +286,7 @@ $(function () {
             borderColor: '#959891',
             borderRadius: 20,
             renderTo: 'container',
-            zoomType: 'x',
+            zoomType: 'xy',
             alignTicks: false,
             spacingRight: 20,
             resetZoomButton: {
@@ -320,7 +320,7 @@ $(function () {
             downloadJPEG : <?php echo "'".__('EXPORT_JPEG')."',"; ?>
             downloadPDF : <?php echo "'".__('EXPORT_PDF')."',"; ?>
             downloadSVG : <?php echo "'".__('EXPORT_SVG')."',"; ?>
-            resetZoom : <?php echo "'".__('RESET_ZOOM')."',"; ?>
+            resetZoom : <?php echo "'".__('RESET_ZOOM_TITLE')."',"; ?>
             resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>,
             contextButtonTitle: <?php echo "'".__('CONTEXT_MENU')."'"; ?>
          },
@@ -348,24 +348,24 @@ $(function () {
             }
          },
          yAxis: [
+            <?php $count=1; ?>
+            <?php foreach($data_log as $datalog) { ?>
+                <?php if((isset($datalog['record1']))&&(!empty($datalog['record1']))) { ?>
+            <?php if($count>1) echo ","; ?>
             {
                title: {
 		          useHTML: true,
-                  text: <?php echo "'".__('YAXIS_LEGEND')."'"; ?>,
+                  text: <?php echo "'".$datalog['yaxis1_legend']."'"; ?>,
                   style: {
-                     color: <?php echo "'".$color_humidity."'"; ?>
+                     color: <?php echo "'".$datalog['color_record1']."'"; ?>
                   }
                },
-               <?php if(isset($zoom_min_humi)) { 
-                echo "min: ".$zoom_min_humi.",";
-               } ?>
-
-               <?php if(isset($zoom_max_humi)) { 
-                echo "max: ".$zoom_max_humi.",";
-               } ?>
                startOnTick: false,
                endOnTick: false, 
                allowDecimals: true,
+               <?php if($count%2==0) { ?>
+                    opposite: true,
+               <?php } ?>
                events: {
                 afterSetExtremes: function() {
                     if (this.min <= this.dataMin && this.max >= this.dataMax) {
@@ -377,83 +377,60 @@ $(function () {
                },
                labels: {
                   style: {
-                    color: <?php echo "'".$color_humidity."'"; ?>
+                    color: <?php echo "'".$datalog['color_record1']."'"; ?>
                   },
                   formatter: function() {
-                     if(this.value<=100) return this.value;
+                     return this.value;
                   }
                },
                gridLineWidth: 1,
                gridLineDashStyle: 'Dot',
-               gridLineColor : <?php echo "'".$grid_humidity."'"; ?>
-            }, {
-               title: {
-		          useHTML: true,
-                  text: <?php echo "'".__('Y2AXIS_LEGEND')."'"; ?>,
+               gridLineColor : <?php echo "'".$datalog['color_grid1']."'"; ?>
+              }
+              <?php if($datalog['sensor_type']==2) { 
+                    $count=$count+1;
+
+              ?>
+              ,{
+                title: {
+                  useHTML: true,
+                  text: <?php echo "'".$datalog['yaxis2_legend']."'"; ?>,
                   style: {
-                     color: <?php echo "'".$color_temperature."'"; ?>
+                     color: <?php echo "'".$datalog['color_record2']."'"; ?>
                   }
                },
-               <?php if(isset($zoom_min_temp)) { 
-                echo "min: ".$zoom_min_temp.",";
-               } ?>
-
-               <?php if(isset($zoom_max_temp)) { 
-                echo "max: ".$zoom_max_temp.",";
-               } ?>
-               allowDecimals: true,
-               opposite: true,
-               endOnTick: false,
                startOnTick: false,
+               endOnTick: false, 
+               allowDecimals: true,
+               <?php if($count%2==0) { ?>
+                    opposite: true,
+               <?php } ?>
+               events: {
+                afterSetExtremes: function() {
+                    if (this.min <= this.dataMin && this.max >= this.dataMax) {
+                        if(chart.resetZoomButton) {
+                            chart.resetZoomButton.hide();
+                        }
+                    }
+                }
+               },
                labels: {
                   style: {
-                     color: <?php echo "'".$color_temperature."'"; ?>
+                    color: <?php echo "'".$datalog['color_record2']."'"; ?>
                   },
                   formatter: function() {
-                     if(this.value<=100) return this.value;
+                     return this.value;
                   }
                },
                gridLineWidth: 1,
-               gridLineDashStyle: 'Dash',
-               gridLineColor : <?php echo "'".$grid_temperature."'"; ?>
-            }
-            <?php if((isset($datap))&&(!empty($datap))) { ?>
-            ,{
-               title: {
-		          useHTML: true,
-                  text: <?php echo "'".__('Y3AXIS_LEGEND')."'"; ?>,
-                  style: {
-                     color: <?php echo "'".$color_power."'"; ?>
-                  }
-               },
-               labels: {
-                  style: {
-                     color: <?php echo "'".$color_power."'"; ?>
-                  }
-               },
-               startOnTick: false,
-               endOnTick: false,
-               allowDecimals: true,
-               <?php if(isset($zoom_min_power)) { 
-                echo "min: ".$zoom_min_power.",";
-               } else { ?>
-                min:0,
-               <?php } ?>
-
-               <?php if(isset($zoom_max_power)) { 
-                echo "max: ".$zoom_max_power.",";
-               } else { ?>
-                    <?php if(isset($max_power_compute)) { ?>
-                        max:<?php echo $max_power_compute; ?>,
-                    <?php } ?>
-               <?php } ?>
-               gridLineWidth: 1,
-               gridLineDashStyle: 'DashDot',
-               gridLineColor: <?php echo "'".$grid_power."'"; ?>
-    
-            }
-            <?php } ?>
-
+               gridLineDashStyle: 'Dot',
+               gridLineColor : <?php echo "'".$datalog['color_grid2']."'"; ?>
+               }
+            <?php  
+                } 
+                $count=$count+1; 
+                }
+            } ?>
          ],
          tooltip: {
             useHTML: true,
@@ -522,13 +499,6 @@ $(function () {
 	    useHTML: true,
             layout: 'horizontal',
             verticalAlign: 'bottom',
-            <?php if($fake_log) { ?>
-                width: 450,
-                itemWidth: 225,
-            <?php } else { ?>
-                width: 400,
-                itemWidth: 200,
-            <?php } ?>
             navigation: {
                 activeColor: '#3E576F',
                 animation: true,
@@ -602,45 +572,58 @@ $(function () {
          },
          series: [
               <?php $count=0; ?>
-              <?php for($i=0;$i<count($select_sensor);$i++) { $nb=$i+1;  ?>
-                <?php if($i>0) { echo ","; $count=$count+2; } ?>
-              {
-              type: 'area',
-               <?php if((isset($data_humi))&&(!empty($data_humi))&&(strcmp($data_humi[$i],"")!=0)) { ?>
-               showCheckbox: true,
+              <?php foreach($data_log as $datalog) { ?>
+               <?php if($count>0) echo ","; ?>
+               {
+               type: <?php echo "'".$datalog['type_graph']."'"; ?>,
+               <?php if((isset($datalog['record1']))&&(!empty($datalog['record1']))&&(strcmp($datalog['record1'],"")!=0)) { ?>
+                showCheckbox: true,
                <?php } ?>
-               name: <?php echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$select_sensor[$i].")'"; ?>,
-               <?php if(in_array($count,$unselected_graph)) { ?>
+               <?php if($datalog['sensor_type']==2) { ?>
+                name: <?php echo "'".$datalog['sensor_name_type'][0]." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
+               <?php } else { ?>
+                name: <?php echo "'".$datalog['sensor_name_type']." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
+               <?php } ?>
+               <?php if(in_array($count+1,$unselected_graph)) { ?>
                visible: false,
                <?php } ?>
-               pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
+               yAxis: <?php echo $datalog['yaxis_record1']; ?>,
+               pointInterval: <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-               <?php switch($color_humidity) {
-                         case 'blue': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$select_sensor[$i]-1]."',"; 
+                   <?php switch($datalog['color_record1']) {
+                         case 'blue': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                         case 'black': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$select_sensor[$i]-1]."',"; 
+                         case 'black': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'green': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$select_sensor[$i]-1]."',"; 
+                        case 'green': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'red': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$select_sensor[$i]-1]."',"; 
+                        case 'red': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'purple': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$select_sensor[$i]-1]."',"; 
+                        case 'purple': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                } ?>   
+                        case 'brown': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BROWN'][$datalog['sensor_nb']-1]."',"; 
+                            break;
+                        case 'yellow': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_YELLOW'][$datalog['sensor_nb']-1]."',"; 
+                            break;
+                        case 'orange': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_ORANGE'][$datalog['sensor_nb']-1]."',"; 
+                            break;
+                        case 'pink': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PINK'][$datalog['sensor_nb']-1]."',"; 
+                            break;
+               } ?>   
                selected: true,
                data: [
-                  <?php if((isset($data_humi))&&(!empty($data_humi))) echo "$data_humi[$i]"; ?>
+                  <?php if((isset($datalog['record1']))&&(!empty($datalog['record1']))) echo $datalog['record1']; ?>
                ],
                events: {
                     checkboxClick: function(event) {
-                        var series = chart.series[<?php echo $count; ?>];
+                        var series = chart.series[<?php echo $count+1; ?>];
                         if (series.visible) {
                             var tmp="";
                             tmp=$("input[name='unselected_graph']").val();
                             if(tmp=="") {
-                                $("input[name='unselected_graph']").val("<?php echo $count; ?>");
+                                $("input[name='unselected_graph']").val("<?php echo $count+1; ?>");
                             } else {
-                                $("input[name='unselected_graph']").val(tmp+",<?php echo $count; ?>");
+                                $("input[name='unselected_graph']").val(tmp+",<?php echo $count+1; ?>");
                             }
                             series.hide();
                         } else {
@@ -650,41 +633,50 @@ $(function () {
                             if(tmp!="") {
                                 var tmp_array=tmp.split(',');
                                 tmp_array=jQuery.grep(tmp_array, function(value) {
-                                    return value != <?php echo $count; ?>;
+                                    return value != <?php echo $count+1; ?>;
                                 });
                                 $("input[name='unselected_graph']").val(tmp_array.join(","));
                             }
                         }
                     }
-               }
-            }, 
-		      {
-               type: 'area',
-               <?php if((isset($data_temp))&&(!empty($data_temp))&&(strcmp($data_temp[$i],"")!=0)) { ?>
+               } 
+              } 
+              <?php if($datalog['sensor_type']==2) { ?>
+               , {
+               type: <?php echo "'".$datalog['type_graph']."'"; ?>,
+               <?php if((isset($datalog["record2"]))&&(!empty($datalog["record2"]))&&(strcmp($datalog["record2"],"")!=0)) { ?>
                 showCheckbox: true,
                <?php } ?>
-               name: <?php echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$select_sensor[$i].")'"; ?>,
+               name: <?php echo "'".$datalog['sensor_name_type'][1]." (".__('SENSOR')." ".$datalog["sensor_nb"].")'"; ?>,
                <?php if(in_array($count+1,$unselected_graph)) { ?>
                visible: false,
                <?php } ?>
                pointInterval: <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-                   <?php switch($color_temperature) {
-                         case 'blue': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$select_sensor[$i]-1]."',"; 
+                   <?php switch($datalog['color_record2']) {
+                         case 'blue': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                         case 'black': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$select_sensor[$i]-1]."',"; 
+                         case 'black': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'green': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$select_sensor[$i]-1]."',"; 
+                        case 'green': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'red': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$select_sensor[$i]-1]."',"; 
+                        case 'red': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'purple': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$select_sensor[$i]-1]."',"; 
+                        case 'purple': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                } ?>   
-               yAxis: 1,
+                         case 'brown': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BROWN'][$datalog['sensor_nb']-1]."',"; 
+                            break;
+                        case 'yellow': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_YELLOW'][$datalog['sensor_nb']-1]."',"; 
+                            break;
+                        case 'orange': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_ORANGE'][$datalog['sensor_nb']-1]."',"; 
+                            break;
+                        case 'pink': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PINK'][$datalog['sensor_nb']-1]."',"; 
+                            break;
+               } ?>
+               yAxis: <?php echo $datalog['yaxis_record2']; ?>,
                selected: true,
                data: [
-                  <?php if((isset($data_temp))&&(!empty($data_temp))) echo "$data_temp[$i]"; ?>
+                  <?php if((isset($datalog['record2']))&&(!empty($datalog['record2']))) echo $datalog['record2']; ?>
                ],
                events: {
                     checkboxClick: function(event) {
@@ -713,9 +705,16 @@ $(function () {
                     }
                }
               }
-                           <?php } ?>
+              <?php } ?>
 
-
+              <?php if($datalog['sensor_type']!=2) {
+                    $count=$count+1;    
+                } else { 
+                    $count=$count+2;
+                } 
+              } ?>
+                
+               /*     
                 <?php if((isset($datap))&&(!empty($datap))) { ?>
                  , {
                   type: 'spline',
@@ -760,6 +759,7 @@ $(function () {
                }
               }
                <?php } ?>
+                */
 
                <?php if((isset($data))&&(!empty($data))) { ?>
                , {
@@ -842,242 +842,14 @@ $(function () {
      });
 
 
-    $('#resetzoom').click(function() {
-        var showzoom=false;
-        chart.yAxis[0].setExtremes(0, 100);
-        chart.yAxis[1].setExtremes(0, 100);
-        showzoom=true;
-
-        if(extremes_save) {
-            chart.yAxis[2].setExtremes(extremes_save.min, extremes_save.max);
-            extremes_save=null;
-            showzoom=true;
-        }         
-
-        chart.xAxis[0].setExtremes(null, null,true, true);
-        $('#resetXzoom').hide();
-        showzoomX=false;
-        $("#min_y_axis_humi").prop("selectedIndex",0);
-        $("#max_y_axis_humi").prop("selectedIndex",0);
-        $("#min_y_axis_temp").prop("selectedIndex",0);
-        $("#max_y_axis_temp").prop("selectedIndex",0);
-        $("#min_y_axis_power").prop("selectedIndex",0);
-        $("#max_y_axis_power").prop("selectedIndex",0);
-
-        $("input[name*='zoom_max_']").val("-1");
-        $("input[name*='zoom_min_']").val("-1");
-
-        chart.yAxis[0].update({
-                 tickPositions: [0, 20, 40, 60, 80, 100]
-        });
-        chart.yAxis[1].update({
-                 tickPositions: [0, 20, 40, 60, 80, 100]
-        });
-
-
-        if(showzoom) {
-            $('#resetzoom').hide();
-        }
-
-    });
-
-
     $('#resetXzoom').click(function() {
         if(showzoomX) {
-            chart.xAxis[0].setExtremes(null, null,true, true); 
-            $('#resetXzoom').hide();
+            chart.zoomOut();
             showzoomX=false;
+            $('#resetXzoom').css("display","none");
         }
 
     });
-
-
-
-    $('#min_y_axis_humi').change(function() {    
-        var showzoom=false;
-        var save_min;
-        var save_max;
-        if($(this).val()!="") {
-            var extremes = chart.yAxis[0].getExtremes();
-            if(extremes.max>parseInt($(this).val())) {
-                for(j=0;j<chart.axes.length;j++) {
-                    if(chart.axes[j].series[0].type=='area') {
-                        chart.yAxis[0].setExtremes($(this).val(), extremes.max);
-                        save_min=$(this).val();
-                        save_max=extremes.max;
-                        showzoom=true;
-                    }
-                }
-            } else {
-                $("#min_y_axis_humi").prop("selectedIndex",0);
-            }
-        }
-
-        if(showzoom) {
-            $('#resetzoom').show();
-           
-            var step=parseFloat((save_max-save_min)/4).toFixed(2);  
-
-            chart.yAxis[0].update({
-                     tickPositions: [parseInt(save_min), parseInt(parseFloat(save_min)+parseFloat(step)), parseInt(parseFloat(save_min)+2*parseFloat(step)), parseInt(parseFloat(save_min)+3*parseFloat(step)), parseInt(save_max)]
-            });
-        }
-
-        $("input[name='zoom_min_humi']").val($(this).val());
-    });
-
-
-    $('#min_y_axis_temp').change(function() {
-        var showzoom=false;
-        var save_min;
-        var save_max;
-        if($(this).val()!="") {
-            var extremes = chart.yAxis[1].getExtremes();
-            if(extremes.max>parseInt($(this).val())) {
-                for(j=0;j<chart.axes.length;j++) {
-                    if(chart.axes[j].series[0].type=='area') {
-                        chart.yAxis[1].setExtremes($(this).val(), extremes.max);
-                        save_min=$(this).val();
-                        save_max=extremes.max;
-                        showzoom=true;
-                    }
-                }
-            } else {
-                $("#min_y_axis_temp").prop("selectedIndex",0);
-            }
-        }
-
-        if(showzoom) {
-            $('#resetzoom').show();
-           
-            var step=parseFloat((save_max-save_min)/4).toFixed(2); 
-
-            chart.yAxis[1].update({
-                     tickPositions: [parseInt(save_min), parseInt(parseFloat(save_min)+parseFloat(step)), parseInt(parseFloat(save_min)+2*parseFloat(step)), parseInt(parseFloat(save_min)+3*parseFloat(step)), parseInt(save_max)]
-
-            });
-        }
-
-        $("input[name='zoom_min_temp']").val($(this).val());
-    });
-
-    $('#max_y_axis_humi').change(function() {
-        var showzoom=false;
-        var save_min;
-        var save_max;
-        if($(this).val()!="") {
-            var extremes = chart.yAxis[0].getExtremes();
-            if(extremes.min<parseInt($(this).val())) {
-                    chart.yAxis[0].setExtremes(extremes.min, $(this).val());
-                    save_max=$(this).val();
-                    save_min=extremes.min;
-                    showzoom=true;
-            } else {
-                $("#max_y_axis_humi").prop("selectedIndex",0);
-            }
-        }
-
-        if(showzoom) {
-            $('#resetzoom').show();
-
-            var step=parseFloat((save_max-save_min)/4).toFixed(2);
-            chart.yAxis[0].update({
-                     tickPositions: [parseInt(save_min), parseInt(parseFloat(save_min)+parseFloat(step)), parseInt(parseFloat(save_min)+2*parseFloat(step)), parseInt(parseFloat(save_min)+3*parseFloat(step)), parseInt(save_max)]
-            });
-        }
-
-        $("input[name='zoom_max_humi']").val($(this).val());
-    });
-
-    $('#max_y_axis_temp').change(function() {
-        var showzoom=false;
-        var save_min;
-        var save_max;
-        if($(this).val()!="") {
-            var extremes = chart.yAxis[1].getExtremes();
-            if(extremes.min<parseInt($(this).val())) {
-                    chart.yAxis[1].setExtremes(extremes.min, $(this).val());
-                    save_max=$(this).val();
-                    save_min=extremes.min;
-                    showzoom=true;
-            } else {
-                $("#max_y_axis_temp").prop("selectedIndex",0);
-            }
-        }
-
-        if(showzoom) {
-            $('#resetzoom').show();
-
-            var step=parseFloat((save_max-save_min)/4).toFixed(2);
-            chart.yAxis[1].update({
-                     tickPositions: [parseInt(save_min), parseInt(parseFloat(save_min)+parseFloat(step)), parseInt(parseFloat(save_min)+2*parseFloat(step)), parseInt(parseFloat(save_min)+3*parseFloat(step)), parseInt(save_max)]
-            });
-
-        }
-
-        $("input[name='zoom_max_temp']").val($(this).val());
-    });
-
-
-      $('#min_y_axis_power').change(function() {
-        var showzoom=false;
-        if($(this).val()!="") {
-            var extremes = chart.yAxis[2].getExtremes();
-            if(extremes.max>parseInt($(this).val())) {
-                for(j=0;j<chart.axes.length;j++) {
-                    if(chart.axes[j].series[0].type=='spline') {
-                        chart.yAxis[2].setExtremes($(this).val(),extremes.max);
-                        if(!extremes_save) {
-                            extremes_save=extremes;
-                        }
-                        showzoom=true;
-                    }
-                }
-            } else {
-                $("#min_y_axis_power").prop("selectedIndex",0);
-            }
-
-        }
-
-        if(showzoom) {
-            $('#resetzoom').show();
-        }
-
-        $("input[name='zoom_min_power']").val($(this).val());
-
-    });
-
-
-      $('#max_y_axis_power').change(function() {
-        var showzoom=false;
-        if($(this).val()!="") {
-            var extremes = chart.yAxis[2].getExtremes();
-            if(extremes.min<parseInt($(this).val())) {
-                for(j=0;j<chart.axes.length;j++) {
-                    if(chart.axes[j].series[0].type=='spline') {
-                        chart.yAxis[2].setExtremes(extremes.min, $(this).val());
-                        if(!extremes_save) {
-                            extremes_save=extremes;
-                        }
-                        showzoom=true;
-                    }
-                }
-            } else {
-                $("#max_y_axis_power").prop("selectedIndex",0);
-            }
-        }
-
-        if(showzoom) {
-            $('#resetzoom').show();
-        }
-
-        $("input[name='zoom_max_power']").val($(this).val());
-    });
-
-    if(($("input[name='zoom_max_power']").val()!="-1")||($("input[name='zoom_min_power']").val()!="-1")||($("input[name='zoom_min_temp']").val()!="-1")||($("input[name='zoom_min_humi']").val()!="-1")||($("input[name='zoom_max_temp']").val()!="-1")||($("input[name='zoom_max_humi']").val()!="-1")) {
-        $('#resetzoom').show();
-    }
-
 });
 
 
@@ -1172,74 +944,12 @@ $(function () {
     </td>
 </tr>
 </table>
-<p class="p_center"><button id="resetXzoom" name="buttonX" style="display:none"><?php echo __('RESET_X_ZOOM'); ?></button> <button id="resetzoom" name="button" style="display:none"><?php echo __('RESET_ZOOM'); ?></button></p>
-<br />
-<table class="table_width">
-<tr>
-    <td></td>
-    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_POWER'); ?></td>
-    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_HUMI'); ?></td>
-    <td class="subtitle_log"><?php echo __('CONFIGURE_Y_AXIS_TEMP'); ?></td>
-    <td></td>
-</tr>
-<tr>
-    <td></td>
-    <td>
-        <p class="p_center">
-        <select id="min_y_axis_power">
-            <option value=""><?php echo __('MIN_Y_AXIS_LOG'); ?></option>
-            <?php foreach($GLOBALS['LIST_MAX_POWER'] as $val) {  ; ?>
-               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
-            <?php } ?>
-        </select>
-        <select id="max_y_axis_power">
-            <option value=""><?php echo __('MAX_Y_AXIS_LOG'); ?></option>
-            <?php foreach($GLOBALS['LIST_MAX_POWER'] as $val) {  ; ?>
-               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
-            <?php } ?>
-        </select>
-        </p>
-    </td>
-    <td>
-        <p class="p_center">
-        <select id="min_y_axis_humi">
-            <option value=""><?php echo __('MIN_Y_AXIS_LOG'); ?></option>
-            <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $val) {  ; ?>
-               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
-            <?php } ?>
-        </select>
-        <select id="max_y_axis_humi">
-            <option value=""><?php echo __('MAX_Y_AXIS_LOG'); ?></option>
-            <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $val) {  ; ?>
-               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
-            <?php } ?>
-        </select>
-        </p>
-    </td>
-    <td>
-        <p class="p_center">
-        <select id="min_y_axis_temp">
-            <option value=""><?php echo __('MIN_Y_AXIS_LOG'); ?></option>
-            <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $val) {  ; ?>
-               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
-            <?php } ?>
-        </select>
-        <select id="max_y_axis_temp">
-            <option value=""><?php echo __('MAX_Y_AXIS_LOG'); ?></option>
-            <?php foreach($GLOBALS['LIST_MAX_AXIS'] as $val) {  ; ?>
-               <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
-            <?php } ?>
-        </select>
-        </p>
-    </td>
-    <td></td>
-</tr>
-</table>
-
+<p class="p_center"><button id="resetXzoom" name="buttonX" style="display:none"><?php echo __('RESET_ZOOM_TITLE'); ?></button> <button id="resetzoom" name="button" style="display:none"><?php echo __('RESET_ZOOM_TITLE'); ?></button></p>
 <p class="precision_infos">
 <?php if(strcmp($type,"days")==0)  echo "*"." ".__('PRECISION_GRAPH_DAY'); else echo "*"." ".__('PRECISION_GRAPH_MONTH'); ?>
 </p>
 <hr />
+<br />
 <br />
 <br />
 
