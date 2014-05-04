@@ -43,8 +43,8 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
                 if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)&&(strlen($temp[0])==14)) {
                         for($i=0; $i<count($sensors); $i++) {
                             //Creating data array which will be inserted into the database:
-                            if(($sensors[$i]['type']!=0)) {
-                                if(($sensors[$i]['type']!=2)&&(!empty($temp[$i+1]))) {
+                            if(strcmp($sensors[$i]['type'],"0")!=0) {
+                                if((strcmp($sensors[$i]['type'],"2")!=0)&&(!empty($temp[$i+1]))) {
                                         $array_line[] = array(
                                             "timestamp" => $temp[0],
                                             "record1" => $temp[$i+1],

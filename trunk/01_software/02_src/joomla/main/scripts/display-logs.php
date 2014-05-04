@@ -34,14 +34,8 @@ $export_log_power=getvar('export_log_power');
 
 // ================= VARIABLES ================= //
 $type="";
-$temperature= array();
-$humidity = array();
-$check_tmp=array();
-$check_humi=array();
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
-$data_temp=array();
-$data_humi=array();
 $plug_type="";
 $select_plug="";
 $select_power=array();
@@ -96,33 +90,6 @@ if(isset($_SESSION['startyear'])) {
 if((isset($_POST['unselected_graph']))&&(!empty($_POST['unselected_graph']))) {
     $unselected_graph=explode(",",getvar('unselected_graph'));
 }
-
-
-
-if((isset($_POST['zoom_min_power']))&&(strcmp($_POST['zoom_min_power'],"-1")!=0)) {
-    $zoom_min_power=$_POST['zoom_min_power'];
-} 
-
-if((isset($_POST['zoom_max_power']))&&(strcmp($_POST['zoom_max_power'],"-1")!=0)) {
-    $zoom_max_power=$_POST['zoom_max_power'];
-} 
-
-
-if((isset($_POST['zoom_min_temp']))&&(strcmp($_POST['zoom_min_temp'],"-1")!=0)) {
-    $zoom_min_temp=$_POST['zoom_min_temp'];
-} 
-
-if((isset($_POST['zoom_max_temp']))&&(strcmp($_POST['zoom_max_temp'],"-1")!=0)) {
-    $zoom_max_temp=$_POST['zoom_max_temp'];
-} 
-
-if((isset($_POST['zoom_min_humi']))&&(strcmp($_POST['zoom_min_humi'],"-1")!=0)) {
-    $zoom_min_humi=$_POST['zoom_min_humi'];
-} 
-
-if((isset($_POST['zoom_max_humi']))&&(strcmp($_POST['zoom_max_humi'],"-1")!=0)) {
-    $zoom_max_humi=$_POST['zoom_max_humi'];
-} 
 
 
 if((isset($export_log))&&(!empty($export_log))) {
@@ -516,8 +483,8 @@ if("$type" == "days") {
                 for($i=0;$i<count($db_sensors);$i++) {
                     if($db_sensors[$i]['sensor_nb']==$sens) {
                         $data_log[$sens]['sensor_type']=$db_sensors[$i]['type'];
-                        $data_log[$sens]['ratio']=$db_sensors[$sens]['ratio'];
-                        $data_log[$sens]['unity']=$db_sensors[$sens]['unity'];
+                        $data_log[$sens]['ratio']=$db_sensors[$i]['ratio'];
+                        $data_log[$sens]['unity']=$db_sensors[$i]['unity'];
 
                         switch($db_sensors[$i]['type']) {
                             case '2': $name[]=__('TEMP_SENSOR');
@@ -581,7 +548,7 @@ if("$type" == "days") {
                         
                         if(!empty($record1)) {
                             $data_log[$sens]['record1']=get_format_graph($record1,"log");
-                            if($db_sensors[$i]['type']==2) {
+                            if(strcmp($db_sensors[$i]['type'],"2")==0) {
                                 get_graph_array($record2,"record2/".$db_sensors[$i]['ratio'],$startday,$sens,"False","0",$main_error);
                                 if(!empty($record2)) {
                                     $data_log[$sens]['record2']=get_format_graph($record2,"log");
@@ -611,7 +578,7 @@ if("$type" == "days") {
                 $filled=array();
                 $yaxis=0;
                 foreach($select_sensor as $sens) {
-                        if($data_log[$sens]['sensor_type']!="2") { 
+                        if(strcmp($data_log[$sens]['sensor_type'],"2")!=0) { 
                             if(in_array($data_log[$sens]['sensor_type'],$filled)) {
                                 $data_log[$sens]['yaxis_record1']=array_search($data_log[$sens]['sensor_type'], $filled);
                             } else {
@@ -715,7 +682,7 @@ if("$type" == "days") {
 
                 if((isset($data))&&(!empty($data))) { 
                     $data_log[]=array(
-                                  'sensor_nb' => "PROGRAM",
+                                  'sensor_nb' => "1",
                                   'sensor_type' => "PROGRAM",
                                   'sensor_name_type' => clean_highchart_message($plugs_infos[$select_plug-1]["PLUG_NAME"]),
                                   'record1' => $data,
@@ -730,7 +697,7 @@ if("$type" == "days") {
                                   'yaxis1_legend' => clean_highchart_message($plugs_infos[$select_plug-1]["PLUG_NAME"]),
                                   'yaxis2_legend' => "",
                                   'ratio' => "",
-                                  'unity' => ""
+                                  'unity' => "PROGRAM"
                     );
                 }
       } else {
@@ -883,7 +850,7 @@ if("$type" == "days") {
     $data_log[0]['record1']=get_format_month($data_record1);
 
 
-    if($data_log[0]['sensor_type']==2) {
+    if(strcmp($data_log[0]['sensor_type'],"2")==0) {
         if(str_replace("null, ","","$data_record1")=="null") {
             $main_error[]=__('EMPTY_DATA');
             $data_record2=$data_record1;

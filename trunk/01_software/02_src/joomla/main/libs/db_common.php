@@ -2951,12 +2951,12 @@ EOF;
 
 
 // {{{ format_regul_sumary()
-// ROLE format regulation of a plug to be displayed in a sumary
+// ROLE format regulation of a plug to be displayed in a summary
 // IN    $number     maximale plug's number
 //       $out        error or warning messages
 //       $resume     string containing sumary formated
 //       $max        the maximal number of plug tu be seeked
-// RET   sumary formated 
+// RET   summary formated 
 function format_regul_sumary($number=0, &$out,&$resume="",$max=0) {
     if(strcmp("$number","all")==0) {
     $sql = <<<EOF
@@ -3561,7 +3561,7 @@ EOF;
                             "type" => $sens['type'],
                             "sensor_nb" => $nb_sens,
                             "ratio" => 100,
-                            "unity" => ""
+                            "unity" => " "
                           );
                           $nb_sens=$nb_sens+1;
                           break;
