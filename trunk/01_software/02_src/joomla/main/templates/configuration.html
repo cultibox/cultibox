@@ -104,7 +104,6 @@ $(document).ready(function(){
 
 <hr />
 <br />
-    
 
 <div id="div_user_interface" style="display:none">
 <table class="conf-table">
@@ -147,6 +146,34 @@ $(document).ready(function(){
                   echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
                } else {
                   echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+            case 'orange':
+               if("${value}" == "${color_humidity}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_ORANGE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_ORANGE')."</option>";    
+               }
+               break;
+            case 'yellow':
+               if("${value}" == "${color_humidity}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_YELLOW')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_YELLOW')."</option>";    
+               }
+               break;
+            case 'brown':
+               if("${value}" == "${color_humidity}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BROWN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BROWN')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_humidity}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
                }
                break;
          }
@@ -192,6 +219,478 @@ $(document).ready(function(){
                   echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
                } else {
                   echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+             case 'orange':
+               if("${value}" == "${color_temperature}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_ORANGE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_ORANGE')."</option>";    
+               }
+               break;
+            case 'yellow':
+               if("${value}" == "${color_temperature}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_YELLOW')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_YELLOW')."</option>";    
+               }
+               break;
+            case 'brown':
+               if("${value}" == "${color_temperature}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BROWN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BROWN')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_temperature}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+         }
+      }
+      ?></select></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td class="conf-marge"></td>
+      <td><?php echo __('CONFIGURE_WATER'); ?>:</td>
+      <td><select name="color_water">
+      <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+         switch ($value) {
+            case 'blue':
+               if("${value}" == "${color_water}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLUE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLUE')."</option>";    
+               }
+               break;
+            case 'red':
+               if("${value}" == "${color_water}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_RED')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_RED')."</option>";    
+               }
+            break;
+            case 'green':
+               if("${value}" == "${color_water}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_GREEN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_GREEN')."</option>";    
+               }
+            break;
+            case 'black':
+               if("${value}" == "${color_water}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLACK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
+               }
+            break;
+            case 'purple':
+               if("${value}" == "${color_water}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+             case 'orange':
+               if("${value}" == "${color_water}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_ORANGE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_ORANGE')."</option>";    
+               }
+               break;
+            case 'yellow':
+               if("${value}" == "${color_water}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_YELLOW')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_YELLOW')."</option>";    
+               }
+               break;
+            case 'brown':
+               if("${value}" == "${color_water}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BROWN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BROWN')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_water}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+         }
+      }
+      ?></select></td>
+      <td></td>
+   </tr>
+ <tr>
+      <td class="conf-marge"></td>
+      <td><?php echo __('CONFIGURE_LEVEL'); ?>:</td>
+      <td><select name="color_level">
+      <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+         switch ($value) {
+            case 'blue':
+               if("${value}" == "${color_level}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLUE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLUE')."</option>";    
+               }
+               break;
+            case 'red':
+               if("${value}" == "${color_level}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_RED')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_RED')."</option>";    
+               }
+            break;
+            case 'green':
+               if("${value}" == "${color_level}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_GREEN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_GREEN')."</option>";    
+               }
+            break;
+            case 'black':
+               if("${value}" == "${color_level}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLACK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
+               }
+            break;
+            case 'purple':
+               if("${value}" == "${color_level}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+             case 'orange':
+               if("${value}" == "${color_level}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_ORANGE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_ORANGE')."</option>";    
+               }
+               break;
+            case 'yellow':
+               if("${value}" == "${color_level}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_YELLOW')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_YELLOW')."</option>";    
+               }
+               break;
+            case 'brown':
+               if("${value}" == "${color_level}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BROWN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BROWN')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_level}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+         }
+      }
+      ?></select></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td class="conf-marge"></td>
+      <td><?php echo __('CONFIGURE_PH'); ?>:</td>
+      <td><select name="color_ph">
+      <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+         switch ($value) {
+            case 'blue':
+               if("${value}" == "${color_ph}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLUE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLUE')."</option>";    
+               }
+               break;
+            case 'red':
+               if("${value}" == "${color_ph}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_RED')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_RED')."</option>";    
+               }
+            break;
+            case 'green':
+               if("${value}" == "${color_ph}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_GREEN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_GREEN')."</option>";    
+               }
+            break;
+            case 'black':
+               if("${value}" == "${color_ph}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLACK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
+               }
+            break;
+            case 'purple':
+               if("${value}" == "${color_ph}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+             case 'orange':
+               if("${value}" == "${color_ph}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_ORANGE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_ORANGE')."</option>";    
+               }
+               break;
+            case 'yellow':
+               if("${value}" == "${color_ph}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_YELLOW')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_YELLOW')."</option>";    
+               }
+               break;
+            case 'brown':
+               if("${value}" == "${color_ph}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BROWN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BROWN')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_ph}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+         }
+      }
+      ?></select></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td class="conf-marge"></td>
+      <td><?php echo __('CONFIGURE_EC'); ?>:</td>
+      <td><select name="color_ec">
+      <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+         switch ($value) {
+            case 'blue':
+               if("${value}" == "${color_ec}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLUE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLUE')."</option>";    
+               }
+               break;
+            case 'red':
+               if("${value}" == "${color_ec}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_RED')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_RED')."</option>";    
+               }
+            break;
+            case 'green':
+               if("${value}" == "${color_ec}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_GREEN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_GREEN')."</option>";    
+               }
+            break;
+            case 'black':
+               if("${value}" == "${color_ec}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLACK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
+               }
+            break;
+            case 'purple':
+               if("${value}" == "${color_ec}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+             case 'orange':
+               if("${value}" == "${color_ec}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_ORANGE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_ORANGE')."</option>";    
+               }
+               break;
+            case 'yellow':
+               if("${value}" == "${color_ec}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_YELLOW')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_YELLOW')."</option>";    
+               }
+               break;
+            case 'brown':
+               if("${value}" == "${color_ec}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BROWN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BROWN')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_ec}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+         }
+      }
+      ?></select></td>
+      <td></td>
+   </tr>
+    <tr>
+      <td class="conf-marge"></td>
+      <td><?php echo __('CONFIGURE_OD'); ?>:</td>
+      <td><select name="color_od">
+      <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+         switch ($value) {
+            case 'blue':
+               if("${value}" == "${color_od}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLUE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLUE')."</option>";    
+               }
+               break;
+            case 'red':
+               if("${value}" == "${color_od}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_RED')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_RED')."</option>";    
+               }
+            break;
+            case 'green':
+               if("${value}" == "${color_od}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_GREEN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_GREEN')."</option>";    
+               }
+            break;
+            case 'black':
+               if("${value}" == "${color_od}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLACK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
+               }
+            break;
+            case 'purple':
+               if("${value}" == "${color_od}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+             case 'orange':
+               if("${value}" == "${color_od}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_ORANGE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_ORANGE')."</option>";    
+               }
+               break;
+            case 'yellow':
+               if("${value}" == "${color_od}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_YELLOW')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_YELLOW')."</option>";    
+               }
+               break;
+            case 'brown':
+               if("${value}" == "${color_od}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BROWN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BROWN')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_od}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
+               }
+               break;
+         }
+      }
+      ?></select></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td class="conf-marge"></td>
+      <td><?php echo __('CONFIGURE_ORP'); ?>:</td>
+      <td><select name="color_orp">
+      <?php foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+         switch ($value) {
+            case 'blue':
+               if("${value}" == "${color_orp}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLUE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLUE')."</option>";    
+               }
+               break;
+            case 'red':
+               if("${value}" == "${color_orp}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_RED')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_RED')."</option>";    
+               }
+            break;
+            case 'green':
+               if("${value}" == "${color_orp}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_GREEN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_GREEN')."</option>";    
+               }
+            break;
+            case 'black':
+               if("${value}" == "${color_orp}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BLACK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BLACK')."</option>";    
+               }
+            break;
+            case 'purple':
+               if("${value}" == "${color_orp}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PURPLE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PURPLE')."</option>";    
+               }
+               break;
+             case 'orange':
+               if("${value}" == "${color_orp}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_ORANGE')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_ORANGE')."</option>";    
+               }
+               break;
+            case 'yellow':
+               if("${value}" == "${color_orp}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_YELLOW')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_YELLOW')."</option>";    
+               }
+               break;
+            case 'brown':
+               if("${value}" == "${color_orp}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_BROWN')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_BROWN')."</option>";    
+               }
+               break;
+            case 'pink':
+               if("${value}" == "${color_orp}") {
+                  echo "<option value=\"${value}\" selected>".__('COLOR_PINK')."</option>";
+               } else {
+                  echo "<option value=\"${value}\">".__('COLOR_PINK')."</option>";    
                }
                break;
          }

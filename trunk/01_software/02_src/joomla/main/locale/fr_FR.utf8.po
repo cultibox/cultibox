@@ -77,6 +77,24 @@ msgstr "Couleur des courbes d'hygrométrie"
 msgid "CONFIGURE_TEMPERATURE"
 msgstr "Couleur des courbes des températures"
 
+msgid "CONFIGURE_WATER"
+msgstr "Couleur des courbes des températures d'eau"
+
+msgid "CONFIGURE_LEVEL"
+msgstr "Couleur des courbes de niveau d'eau"
+
+msgid "CONFIGURE_PH"
+msgstr "Couleur des courbes de PH"
+
+msgid "CONFIGURE_EC"
+msgstr "Couleur des courbes d'EC"
+
+msgid "CONFIGURE_OD"
+msgstr "Couleur des courbes d'OD"
+
+msgid "CONFIGURE_ORP"
+msgstr "Couleur des courbes d'ORP"
+
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Couleur du graphe de coût de l'installation"
 
@@ -124,6 +142,18 @@ msgstr "Noir"
 
 msgid "COLOR_PURPLE"
 msgstr "Violet"
+
+msgid "COLOR_ORANGE"
+msgstr "Orange"
+
+msgid "COLOR_PINK"
+msgstr "Rose"
+
+msgid "COLOR_BROWN"
+msgstr "Marron"
+
+msgid "COLOR_YELLOW"
+msgstr "Jaune"
 
 msgid "YES"
 msgstr "Oui"
@@ -243,15 +273,6 @@ msgstr "Afficher"
 
 msgid "DRAG_PLOT"
 msgstr "Sélectionner une zone afin de l\'agrandir"
-
-msgid "LEGEND_TEMP"
-msgstr "Température"
-
-msgid "LEGEND_HUMI"
-msgstr "Hygrométrie"
-
-msgid "LEGEND_POWER"
-msgstr "Puissance"
 
 msgid "XAXIS_LEGEND_DAY"
 msgstr "Heure"
@@ -514,20 +535,8 @@ msgstr "Erreur dans le format de la date (AAAA-MM-JJ). Le jour de fin doit être
 msgid "DELETE_PROGRESS"
 msgstr "Progression de la suppréssion"
 
-msgid "SUMARY_MAX_TEMP"
-msgstr "Température maximale "
-
-msgid "SUMARY_MAX_HUMI"
-msgstr "Humidité maximale"
-
-msgid "SUMARY_MIN_TEMP"
-msgstr "Température minimale"
-
-msgid "SUMARY_MIN_HUMI"
-msgstr "Humidité minimale"
-
 msgid "SUMARY_RESUME_MINMAX"
-msgstr "Résumé des valeurs minimales et maximales pour le"
+msgstr "Résumé des valeurs minimales et maximales"
 
 msgid "TEMP_SENSOR"
 msgstr "Température"
@@ -557,13 +566,13 @@ msgid "TEMP_LEGEND"
 msgstr "Température (en °C)"
 
 msgid "HUMI_LEGEND"
-msgstr "Hygrométrie (en &pour;)"
+msgstr "Hygrométrie (en pourcentage)"
 
 msgid "WATER_LEGEND"
-msgstr "Température de l\'eau (en °C)"
+msgstr "Température de l'eau (en °C)"
 
 msgid "LEVEL_LEGEND"
-msgstr "Niveau de l\'eau (en cm)"
+msgstr "Niveau de l'eau (en cm)"
 
 msgid "PH_LEGEND"
 msgstr "PH de la solution"
@@ -576,6 +585,18 @@ msgstr "Oxydo-reduction (en mg/l)"
 
 msgid "ORP_LEGEND"
 msgstr "ORP (en mV)"
+
+msgid "POWER_LEGEND"
+msgstr "Puissance consommée (en W)"
+
+msgid "POWER"
+msgstr "Puissance"
+
+msgid "SUMARY_MAX"
+msgstr "Max"
+
+msgid "SUMARY_MIN"
+msgstr "Min"
 
 
 # For the plugs part:
@@ -1399,10 +1420,10 @@ msgid "ERROR_SELECT_SQL"
 msgstr "Erreur dans la requête SQL SELECT"
 
 msgid "EMPTY_DATA"
-msgstr "Aucun enregistrement de température et d'humidité à la date sélectionnée"
+msgstr "Aucun enregistrement à la date sélectionnée"
 
 msgid "EMPTY_DATA_SENSOR"
-msgstr "Aucun enregistrement de température et d'humidité à la date sélectionnée pour le(s) capteur(s)"
+msgstr "Aucun enregistrement à la date sélectionnée pour le(s) capteur(s)"
 
 msgid "EMPTY_POWER_DATA"
 msgstr "Aucun enregistrement concernant la puissance consommée pour la date sélectionnée"

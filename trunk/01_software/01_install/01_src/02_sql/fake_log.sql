@@ -215,7 +215,7 @@ INSERT INTO `logs` (`timestamp`, `record1`, `record2`, `date_catch`, `time_catch
 ('13011405031100', 2680, 4613, CURDATE(), '031100', 'True', 1),
 ('13011405031200', 2686, 4597, CURDATE(), '031200', 'True', 1);
 
-INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`,`type_sensor`) VALUES
+INSERT INTO `logs` (`timestamp`, `record1`, `record2`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`) VALUES
 ('13011405031300', 2683, 4587, CURDATE(), '031300', 'True', 1),
 ('13011405031400', 2688, 4627, CURDATE(), '031400', 'True', 1),
 ('13011405031500', 2687, 4640, CURDATE(), '031500', 'True', 1),
@@ -409,7 +409,7 @@ INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_
 ('13011405062400', 2663, 4360, CURDATE(), '062400', 'True', 1),
 ('13011405062500', 2665, 4364, CURDATE(), '062500', 'True', 1);
 
-INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`,`type_sensor`) VALUES
+INSERT INTO `logs` (`timestamp`, `record1`, `record2`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`) VALUES
 ('13011405062600', 2665, 4370, CURDATE(), '062600', 'True', 1),
 ('13011405062700', 2662, 4360, CURDATE(), '062700', 'True', 1),
 ('13011405062800', 2665, 4357, CURDATE(), '062800', 'True', 1),
@@ -603,7 +603,7 @@ INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_
 ('13011405093600', 2661, 4127, CURDATE(), '093600', 'True', 1),
 ('13011405093700', 2660, 4133, CURDATE(), '093700', 'True', 1);
 
-INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`,`type_sensor`) VALUES
+INSERT INTO `logs` (`timestamp`, `record1`, `record2`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`) VALUES
 ('13011405093800', 2662, 4100, CURDATE(), '093800', 'True', 1),
 ('13011405093900', 2663, 4113, CURDATE(), '093900', 'True', 1),
 ('13011405094000', 2656, 4093, CURDATE(), '094000', 'True', 1),
@@ -796,7 +796,7 @@ INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_
 ('13011405124700', 2686, 4054, CURDATE(), '124700', 'True', 1),
 ('13011405124800', 2686, 4027, CURDATE(), '124800', 'True', 1);
 
-INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`,`type_sensor`) VALUES
+INSERT INTO `logs` (`timestamp`, `record1`, `record2`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`) VALUES
 ('13011405124900', 2680, 4050, CURDATE(), '124900', 'True', 1),
 ('13011405125000', 2682, 4040, CURDATE(), '125000', 'True', 1),
 ('13011405125100', 2678, 4026, CURDATE(), '125100', 'True', 1),
@@ -990,7 +990,7 @@ INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_
 ('13011405155900', 2611, 3892, CURDATE(), '155900', 'True', 1),
 ('13011405160000', 2606, 3898, CURDATE(), '160000', 'True', 1);
 
-INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`,`type_sensor`) VALUES
+INSERT INTO `logs` (`timestamp`, `record1`, `record2`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`) VALUES
 ('13011405160100', 2605, 3885, CURDATE(), '160100', 'True', 1),
 ('13011405160200', 2605, 3898, CURDATE(), '160200', 'True', 1),
 ('13011405160300', 2605, 3871, CURDATE(), '160300', 'True', 1),
@@ -1184,7 +1184,7 @@ INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_
 ('13011405191100', 2193, 5026, CURDATE(), '191100', 'True', 1),
 ('13011405191200', 2196, 5003, CURDATE(), '191200', 'True', 1);
 
-INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`,`type_sensor`) VALUES
+INSERT INTO `logs` (`timestamp`, `record1`, `record2`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`) VALUES
 ('13011405191300', 2188, 5006, CURDATE(), '191300', 'True', 1),
 ('13011405191400', 2187, 5012, CURDATE(), '191400', 'True', 1),
 ('13011405191500', 2184, 5005, CURDATE(), '191500', 'True', 1),
@@ -1378,7 +1378,7 @@ INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_
 ('13011405222300', 2118, 5047, CURDATE(), '222300', 'True', 1),
 ('13011405222400', 2118, 5047, CURDATE(), '222400', 'True', 1);
 
-INSERT INTO `logs` (`timestamp`, `temperature`, `humidity`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`,`type_sensor`) VALUES
+INSERT INTO `logs` (`timestamp`, `record1`, `record2`, `date_catch`, `time_catch`, `fake_log`, `sensor_nb`) VALUES
 ('13011405222500', 2117, 5031, CURDATE(), '222500', 'True', 1),
 ('13011405222600', 2120, 5037, CURDATE(), '222600', 'True', 1),
 ('13011405222700', 2120, 5034, CURDATE(), '222700', 'True', 1),

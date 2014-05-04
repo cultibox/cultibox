@@ -29,8 +29,14 @@ __('LANG');
 
 
 // ================= VARIABLES ================= //
-$color_humidity = getvar('color_humidity');
-$color_temperature = getvar('color_temperature');
+$color_humidity=getvar('color_humidity');
+$color_temperature=getvar('color_temperature');
+$color_water=getvar('color_water');
+$color_level=getvar('color_level');
+$color_ph=getvar('color_ph');
+$color_ec=getvar('color_ec');
+$color_od=getvar('color_od');
+$color_orp=getvar('color_orp');
 $color_power=getvar('color_power');
 $color_cost=getvar('color_cost');
 $record_frequency=getvar('record_frequency');
@@ -241,6 +247,48 @@ if((isset($color_temperature))&&(!empty($color_temperature))) {
 	$update_conf=true;
 } else {
 	$color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
+}
+
+if((isset($color_water))&&(!empty($color_water))) {
+    insert_configuration("COLOR_WATER_GRAPH",$color_water,$main_error);
+    $update_conf=true;
+} else {
+    $color_water = get_configuration("COLOR_WATER_GRAPH",$main_error);
+}
+
+if((isset($color_level))&&(!empty($color_level))) {
+    insert_configuration("COLOR_LEVEL_GRAPH",$color_level,$main_error);
+    $update_conf=true;
+} else {
+    $color_level = get_configuration("COLOR_LEVEL_GRAPH",$main_error);
+}
+
+if((isset($color_ph))&&(!empty($color_ph))) {
+    insert_configuration("COLOR_PH_GRAPH",$color_ph,$main_error);
+    $update_conf=true;
+} else {
+    $color_ph = get_configuration("COLOR_PH_GRAPH",$main_error);
+}
+
+if((isset($color_ec))&&(!empty($color_ec))) {
+    insert_configuration("COLOR_EC_GRAPH",$color_ec,$main_error);
+    $update_conf=true;
+} else {
+    $color_ec = get_configuration("COLOR_EC_GRAPH",$main_error);
+}
+
+if((isset($color_od))&&(!empty($color_od))) {
+    insert_configuration("COLOR_OD_GRAPH",$color_od,$main_error);
+    $update_conf=true;
+} else {
+    $color_od = get_configuration("COLOR_OD_GRAPH",$main_error);
+}
+
+if((isset($color_orp))&&(!empty($color_orp))) {
+    insert_configuration("COLOR_ORP_GRAPH",$color_orp,$main_error);
+    $update_conf=true;
+} else {
+    $color_orp = get_configuration("COLOR_ORP_GRAPH",$main_error);
 }
 
 if((isset($color_power))&&(!empty($color_power))) {
