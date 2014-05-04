@@ -9,7 +9,7 @@
 <?php } ?>
 
 
-<?php if((((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)))||((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0))) { ?>
+<?php if((((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)))||((isset($main_error))&&(count($main_error)>0))) { ?>
 <div class="message" style="display:none" title="<?php echo __('MESSAGE_BOX'); ?>">
         <br />
         <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
@@ -23,7 +23,7 @@
 <br />
 </div>
     <?php } ?>
-    <?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
+    <?php if((isset($main_error))&&(count($main_error)>0)) { ?>
 <img src="main/libs/img/warning.png" alt="" /><label class="error_title"><?php echo __('WARNING'); ?>:</label>
 <div class="error">
 <ul>
@@ -350,12 +350,11 @@ $(function () {
          yAxis: [
             <?php $count=1; ?>
             <?php foreach($data_log as $datalog) { ?>
-                <?php if((isset($datalog['record1']))&&(!empty($datalog['record1']))) { ?>
             <?php if($count>1) echo ","; ?>
             {
                title: {
 		          useHTML: true,
-                  text: <?php echo "'".$datalog['yaxis1_legend']."'"; ?>,
+                  text: <?php echo "'".clean_highchart_message($datalog['yaxis1_legend'])."'"; ?>,
                   style: {
                      color: <?php echo "'".$datalog['color_record1']."'"; ?>
                   }
@@ -394,7 +393,7 @@ $(function () {
               ,{
                 title: {
                   useHTML: true,
-                  text: <?php echo "'".$datalog['yaxis2_legend']."'"; ?>,
+                  text: <?php echo "'".clean_highchart_message($datalog['yaxis2_legend'])."'"; ?>,
                   style: {
                      color: <?php echo "'".$datalog['color_record2']."'"; ?>
                   }
@@ -429,7 +428,6 @@ $(function () {
             <?php  
                 } 
                 $count=$count+1; 
-                }
             } ?>
          ],
          tooltip: {
@@ -443,12 +441,12 @@ $(function () {
                <?php } ?>
                   var unit = {
                      <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) { 
-                     echo "'".__('LEGEND_HUMI')." (".__('SENSOR')." ".$i.")': '%',";
-                     echo "'".__('LEGEND_TEMP')." (".__('SENSOR')." ".$i.")': '°C',";
+                     echo "'".__('HUMI_LEGEND')." (".__('SENSOR')." ".$i.")': '%',";
+                     echo "'".__('TEMP_LEGEND')." (".__('SENSOR')." ".$i.")': '°C',";
                } ?>
-               <?php echo "'".__('LEGEND_HUMI')." (".__('EXAMPLE_LOG').")': '%',"; ?>
-               <?php echo "'".__('LEGEND_TEMP')." (".__('EXAMPLE_LOG').")': '%',"; ?>
-               <?php echo "'".__('LEGEND_POWER')."'"; ?>: 'W'
+               <?php echo "'".__('HUMI_LEGEND')." (".__('EXAMPLE_LOG').")': '%',"; ?>
+               <?php echo "'".__('TEMP_LEGEND')." (".__('EXAMPLE_LOG').")': '%',"; ?>
+               <?php echo "'".__('POWER_LEGEND')."'"; ?>: 'W'
                <?php if((isset($select_plug))&&(!empty($select_plug))) {
                      echo ",'".clean_highchart_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."': ''"; 
                } ?>
@@ -495,7 +493,9 @@ $(function () {
             }
           }
          },
-         legend: {
+        legend: {
+        width: 450,
+        itemWidth: 225,
 	    useHTML: true,
             layout: 'horizontal',
             verticalAlign: 'bottom',
@@ -579,12 +579,17 @@ $(function () {
                <?php if((isset($datalog['record1']))&&(!empty($datalog['record1']))&&(strcmp($datalog['record1'],"")!=0)) { ?>
                 showCheckbox: true,
                <?php } ?>
-               <?php if($datalog['sensor_type']==2) { ?>
-                name: <?php echo "'".$datalog['sensor_name_type'][0]." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
+
+               <?php if((strcmp($datalog['sensor_type'],"POWER")!=0)&&(strcmp($datalog['sensor_type'],"PROGRAM")!=0)) { ?>
+                    <?php if($datalog['sensor_type']==2) {  ?>
+                        name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'][0])." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
+                    <?php } else { ?>
+                        name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'])." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
+                    <?php } ?>
                <?php } else { ?>
-                name: <?php echo "'".$datalog['sensor_name_type']." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
+                    name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'])."'"; ?>,
                <?php } ?>
-               <?php if(in_array($count+1,$unselected_graph)) { ?>
+               <?php if(in_array($count,$unselected_graph)) { ?>
                visible: false,
                <?php } ?>
                yAxis: <?php echo $datalog['yaxis_record1']; ?>,
@@ -616,14 +621,14 @@ $(function () {
                ],
                events: {
                     checkboxClick: function(event) {
-                        var series = chart.series[<?php echo $count+1; ?>];
+                        var series = chart.series[<?php echo $count; ?>];
                         if (series.visible) {
                             var tmp="";
                             tmp=$("input[name='unselected_graph']").val();
                             if(tmp=="") {
-                                $("input[name='unselected_graph']").val("<?php echo $count+1; ?>");
+                                $("input[name='unselected_graph']").val("<?php echo $count; ?>");
                             } else {
-                                $("input[name='unselected_graph']").val(tmp+",<?php echo $count+1; ?>");
+                                $("input[name='unselected_graph']").val(tmp+",<?php echo $count; ?>");
                             }
                             series.hide();
                         } else {
@@ -633,7 +638,7 @@ $(function () {
                             if(tmp!="") {
                                 var tmp_array=tmp.split(',');
                                 tmp_array=jQuery.grep(tmp_array, function(value) {
-                                    return value != <?php echo $count+1; ?>;
+                                    return value != <?php echo $count; ?>;
                                 });
                                 $("input[name='unselected_graph']").val(tmp_array.join(","));
                             }
@@ -647,7 +652,7 @@ $(function () {
                <?php if((isset($datalog["record2"]))&&(!empty($datalog["record2"]))&&(strcmp($datalog["record2"],"")!=0)) { ?>
                 showCheckbox: true,
                <?php } ?>
-               name: <?php echo "'".$datalog['sensor_name_type'][1]." (".__('SENSOR')." ".$datalog["sensor_nb"].")'"; ?>,
+               name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'][1])." (".__('SENSOR')." ".$datalog["sensor_nb"].")'"; ?>,
                <?php if(in_array($count+1,$unselected_graph)) { ?>
                visible: false,
                <?php } ?>
@@ -704,125 +709,14 @@ $(function () {
                         }
                     }
                }
-              }
+              } 
               <?php } ?>
-
               <?php if($datalog['sensor_type']!=2) {
                     $count=$count+1;    
                 } else { 
                     $count=$count+2;
-                } 
-              } ?>
-                
-               /*     
-                <?php if((isset($datap))&&(!empty($datap))) { ?>
-                 , {
-                  type: 'spline',
-                  showCheckbox: true,
-                  pointInterval:  <?php echo "$next"; ?> * 60 * 1000,
-                  pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-                  name: <?php echo "'".__('LEGEND_POWER')."'"; ?>,
-                  <?php if(in_array($count+2,$unselected_graph)) { ?>
-                  visible: false,
-                  <?php } ?>
-                  yAxis: 2,
-                  color: <?php echo "'".$color_power."'"; ?>,
-                  selected: true,
-                  data: [
-                    <?php if((isset($datap))&&(!empty($datap))) echo "$datap"; ?>
-                  ],
-                  events: {
-                    checkboxClick: function(event) {
-                        var series = chart.series[<?php echo $count+2; ?>];
-                        if (series.visible) {
-                            var tmp="";
-                            tmp=$("input[name='unselected_graph']").val();
-                            if(tmp=="") {
-                                $("input[name='unselected_graph']").val("<?php echo $count+2; ?>");
-                            } else {
-                                $("input[name='unselected_graph']").val(tmp+",<?php echo $count+2; ?>");
-                            }
-                            series.hide();
-                        } else {
-                            series.show();
-                            var tmp="";
-                            tmp=$("input[name='unselected_graph']").val();
-                            if(tmp!="") {
-                                var tmp_array=tmp.split(',');
-                                tmp_array=jQuery.grep(tmp_array, function(value) {
-                                    return value != <?php echo $count+2; ?>;
-                                });
-                                $("input[name='unselected_graph']").val(tmp_array.join(","));
-                            }
-                        }
-                    }
-               }
-              }
-               <?php } ?>
-                */
-
-               <?php if((isset($data))&&(!empty($data))) { ?>
-               , {
-                  name: <?php echo "'".clean_highchart_message($plugs_infos[$select_plug-1]["PLUG_NAME"])."'"; ?>,
-                  <?php if((isset($datap))&&(!empty($datap))) { ?>
-                    <?php if(in_array($count+3,$unselected_graph)) { ?>
-                        visible: false,
-                    <?php } ?>
-                  <?php } else { ?>
-                    <?php if(in_array($count+2,$unselected_graph)) { ?>
-                        visible: false,
-                    <?php } ?>
-                  <?php } ?>
-                  showCheckbox: true,
-                  color: <?php echo "'".$GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$select_plug-1]."'"; ?>,
-                  <?php switch($plugs_infos[$select_plug-1]["PLUG_TYPE"]) {
-                            case 'other': break;
-                            case 'ventilator': echo "yAxis: 1,"; break;
-                            case 'heating': echo "yAxis: 1,"; break;
-                            case 'pump': echo "yAxis: 1,"; break;
-                            case 'dehumidifier':  echo "yAxis: 0,"; break;
-                            case 'humidifier':  echo "yAxis: 0,"; break;
-                            case 'lamp'; break;
-                        }
-                  ?>
-                  selected: true,
-                  data: [
-                    <?php if((isset($data))&&(!empty($data))) echo "$data"; ?>
-                  ],
-                  events: {
-                    checkboxClick: function(event) {
-                        <?php if((isset($datap))&&(!empty($datap))) { ?>
-                        var series = chart.series[<?php echo $count+3; ?>];
-                        var cnt=<?php echo $count+3; ?>;
-                        <?php } else { ?>
-                        var series = chart.series[<?php echo $count+2; ?>];
-                        var cnt=<?php echo $count+2; ?>;
-                        <?php } ?>
-                        if (series.visible) {
-                            var tmp="";
-                            tmp=$("input[name='unselected_graph']").val();
-                            if(tmp=="") {
-                                $("input[name='unselected_graph']").val(cnt);
-                            } else {
-                                $("input[name='unselected_graph']").val(tmp+","+cnt);
-                            }
-                            series.hide();
-                        } else {
-                            series.show();
-                            var tmp="";
-                            tmp=$("input[name='unselected_graph']").val();
-                            if(tmp!="") {
-                                var tmp_array=tmp.split(',');
-                                tmp_array=jQuery.grep(tmp_array, function(value) {
-                                    return value != cnt;
-                                });
-                                $("input[name='unselected_graph']").val(tmp_array.join(","));
-                            }
-                        }
-                    }
-               }
-              }
-            <?php } ?>
+                }
+            } ?>
             ]
         });
 

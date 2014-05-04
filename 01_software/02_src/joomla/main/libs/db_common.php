@@ -123,7 +123,7 @@ EOF;
 // {{{ get_graph_array()
 // ROLE get array needed to build graphics
 // IN $res         the array containing datas needed for the graphics
-//    $key      the key selectable from the database (temperature,humidity...)
+//    $key      the key selectable from the database (record1 or record2)
 //    $startdate   date (format YYYY-MM-DD) to check what datas to select
 //    $sensor       the number of the sensor to be displayed
 //    $fake   to select fake or real logs
@@ -3014,62 +3014,62 @@ EOF;
 // IN    $start         day to be seeked
 //       $out           error or warning messages
 //       $resume        string containing sumary formated
-//       $sensor        the selected sensor to be used
-//       $color_temp color of the temperature graph
-//       $color_humi color of the humidity graph
+//       $sensor        array of selected sensors
 // RET   sumary formated 
-function format_minmax_sumary($start="", &$out,&$resume="",$sensor=1,$color_temp="red",$color_humi="blue") {
+function format_minmax_sumary($start="", &$out,&$resume="",$sensor) {
     if(empty($start)) {
         return 0;
     }
 
+    if(count($sensor)==0) return 0;
+
     $startday=str_replace("-","",$start);
     $startday=substr($startday,2,8);
-    
-    $sql_maxtemp = <<<EOF
-SELECT ROUND(temperature/100,2) as max_temp, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor} AND temperature = (SELECT MAX(temperature) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor}) ;
+
+    foreach($sensor as $sens) {
+        $sql_max_record1 = <<<EOF
+SELECT ROUND(record1/{$sens['ratio']},2) as max1, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']} AND record1 = (SELECT MAX(record1) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']}) ;
 EOF;
-    $sql_maxhumi = <<<EOF
-SELECT ROUND(humidity/100,2) as max_humi, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor} AND humidity = (SELECT MAX(humidity) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor}) ;
+    $sql_max_record2 = <<<EOF
+SELECT ROUND(record2/{$sens['ratio']},2) as max2, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']} AND record2 = (SELECT MAX(record2) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']}) ;
 EOF;
 
- $sql_mintemp = <<<EOF
-SELECT ROUND(temperature/100,2) as min_temp, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor} AND temperature = (SELECT MIN(temperature) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor});
+ $sql_min_record1 = <<<EOF
+SELECT ROUND(record1/{$sens['ratio']},2) as min1, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']} AND record1 = (SELECT MIN(record1) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']});
 EOF;
-    $sql_minhumi = <<<EOF
-SELECT ROUND(humidity/100,2) as min_humi, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor} AND humidity = (SELECT MIN(humidity) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = ${sensor});
+    $sql_min_record2 = <<<EOF
+SELECT ROUND(record2/{$sens['ratio']},2) as min2, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']} AND record2 = (SELECT MIN(record2) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']});
 EOF;
-
 
     $db=db_priv_pdo_start();
     try {
-        $sth=$db->prepare("$sql_maxtemp");
+        $sth=$db->prepare("$sql_max_record1");
         $sth->execute();
-        $res_maxtemp=$sth->fetch(PDO::FETCH_ASSOC);
+        $res_max_record1=$sth->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
         $ret=$e->getMessage();
     }
 
     try {
-        $sth=$db->prepare("$sql_maxhumi");
+        $sth=$db->prepare("$sql_max_record2");
         $sth->execute();
-        $res_maxhumi=$sth->fetch(PDO::FETCH_ASSOC);
+        $res_max_record2=$sth->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
         $ret=$e->getMessage();
     }
 
     try {
-        $sth=$db->prepare("$sql_mintemp");
+        $sth=$db->prepare("$sql_min_record1");
         $sth->execute();
-        $res_mintemp=$sth->fetch(PDO::FETCH_ASSOC);
+        $res_min_record1=$sth->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
         $ret=$e->getMessage();
     }
 
     try {
-        $sth=$db->prepare("$sql_minhumi");
+        $sth=$db->prepare("$sql_min_record2");
         $sth->execute();
-        $res_minhumi=$sth->fetch(PDO::FETCH_ASSOC);
+        $res_min_record2=$sth->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
         $ret=$e->getMessage();
     }
@@ -3082,62 +3082,35 @@ EOF;
             $out[]=__('ERROR_SELECT_SQL');
         }
     }
-
-    switch($color_temp) {
-       case 'blue': $color_temp=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$sensor-1];
-            break
-            ;;
-       case 'red': $color_temp=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$sensor-1];
-            break
-            ;;
-        case 'green': $color_temp=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$sensor-1];
-            break
-            ;;
-        case 'black': $color_temp=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$sensor-1];
-            break
-            ;;
-        case 'purple': $color_temp=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$sensor-1];
-            break
-            ;;
-    }
-
-    switch($color_humi) {
-       case 'blue': $color_humi=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$sensor-1];
-            break
-            ;;
-       case 'red': $color_humi=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$sensor-1];
-            break
-            ;;
-        case 'green': $color_humi=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$sensor-1];
-            break
-            ;;
-        case 'black': $color_humi=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$sensor-1];
-            break
-            ;;
-        case 'purple': $color_humi=$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$sensor-1];
-            break
-            ;;
-    }
-        
-    if((strcmp($res_maxtemp['max_temp'],"")!=0)||(strcmp($res_maxhumi['max_humi'],"")!=0)) {
-        $resume=$resume."<br /><b><i>".__('SENSOR')." ".$sensor.":</i></b>";
-        if(strcmp($res_mintemp['min_temp'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MIN_TEMP').": <font color='".$color_temp."'><b>".$res_mintemp['min_temp']."&deg;C ".__('SUMARY_HOUR')." ".wordwrap($res_mintemp['time_catch'], 2, ":",true)."</b></font>";
+   
+     
+    if((strcmp($res_max_record1['max1'],"")!=0)||(strcmp($res_max_record2['max2'],"")!=0)) {
+        if($sens['sensor_type']!=2) {
+            $resume=$resume."<br /><b><i>".__('SENSOR')." ".$sens['sensor_nb'].": (".$sens['sensor_name_type'].")</i></b>";
+        } else {
+            $resume=$resume."<br /><b><i>".__('SENSOR')." ".$sens['sensor_nb'].": (".$sens['sensor_name_type'][0]."/".$sens['sensor_name_type'][1].")</i></b>";
+        }
+        if(strcmp($res_min_record1['min1'],"")!=0) {
+           $resume=$resume."<br />".__('SUMARY_MIN').": <font color='".$sens['color_record1']."'><b>".$res_min_record1['min1'].$sens['unity']."</font> ".__('SUMARY_HOUR')." <font color='".$sens['color_record1']."'> ".wordwrap($res_min_record1['time_catch'], 2, ":",true)."</b></font>";
         }
 
-        if(strcmp($res_maxtemp['max_temp'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MAX_TEMP').": <font color='".$color_temp."'><b>".$res_maxtemp['max_temp']."&deg;C ".__('SUMARY_HOUR')." ".wordwrap($res_maxtemp['time_catch'], 2, ":",true)."</b></font>";
+        if(strcmp($res_max_record1['max1'],"")!=0) {
+           $resume=$resume."<br />".__('SUMARY_MAX').": <font color='".$sens['color_record1']."'><b>".$res_max_record1['max1'].$sens['unity']."</font> ".__('SUMARY_HOUR')." <font color='".$sens['color_record1']."'> ".wordwrap($res_max_record1['time_catch'], 2, ":",true)."</b></font>";
         }
 
-        if(strcmp($res_minhumi['min_humi'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MIN_HUMI').": <font color='".$color_humi."'><b>".$res_minhumi['min_humi']."&#37; ".__('SUMARY_HOUR')." ".wordwrap($res_minhumi['time_catch'], 2, ":",true)."</b></font>";
+        if(strcmp($res_min_record2['min2'],"")!=0) {
+           $resume=$resume."<br />".__('SUMARY_MIN').": <font color='".$sens['color_record2']."'><b>".$res_min_record2['min2'].$sens['unity']."</font> ".__('SUMARY_HOUR')." <font color='".$sens['color_record2']."'> ".wordwrap($res_min_record2['time_catch'], 2, ":",true)."</b></font>";
         }
 
-        if(strcmp($res_maxhumi['max_humi'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MAX_HUMI').": <font color='".$color_humi."'><b>".$res_maxhumi['max_humi']."&#37; ".__('SUMARY_HOUR')." ".wordwrap($res_maxhumi['time_catch'], 2, ":",true)."</b></font>";
+        if(strcmp($res_max_record2['max2'],"")!=0) {
+           $resume=$resume."<br />".__('SUMARY_MAX').": <font color='".$sens['color_record2']."'><b>".$res_max_record2['max2'].$sens['unity']."</font> ".__('SUMARY_HOUR')." <font color='".$sens['color_record2']."'> ".wordwrap($res_max_record2['time_catch'], 2, ":",true)."</b></font>";
         }
         $resume=$resume."<br />"; 
+    }
+    }
 
+    if(strcmp("$resume","")!=0) {
+        $resume="<p align='center'><b><i>".__('SUMARY_RESUME_MINMAX').":<br /></i></b></p>".$resume."<br />";
     }
 }
 // }}}
@@ -3637,19 +3610,8 @@ EOF;
     }
     return $sensors;
 }
-
-
-$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '0', 'name' => "none", 'ratio' => 0, 'unity' => '');
-$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '2', 'name' => "tem_humi", 'ratio' => 100, 'unity' => '°C / %');
-$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '3', 'name' => "water_temp", 'ratio' => 100, 'unity' => '°C');
-$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '5', 'name' => "wifi", 'ratio' => 0, 'unity' => '');
-$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '6', 'name' => "water_level", 'ratio' => 100, 'unity' => 'cm');
-$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '7', 'name' => "water_level", 'ratio' => 100, 'unity' => 'cm');
-$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '8', 'name' => "ph", 'ratio' => 100, 'unity' => '');
-$GLOBALS['SENSOR_DEFINITION'][]=array('type' => '9', 'name' => "ec", 'ratio' => 1, 'unity' => 'µs/cm');
-$GLOBALS['SENSOR_DEFINITION'][]=array('type' => ':', 'name' => "od", 'ratio' => 100, 'unity' => 'mg/l');
-$GLOBALS['SENSOR_DEFINITION'][]=array('type' => ';', 'name' => "orp", 'ratio' => 1, 'unity' => 'mV');
 /// }}}
+
 
 // {{{ get_sensor_db_type()
 // ROLE update sensor's type list 
