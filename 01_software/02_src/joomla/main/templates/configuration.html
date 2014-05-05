@@ -67,29 +67,29 @@ $(document).ready(function(){
 <p class="title_conf"><?php echo __('CONFIGURE_TITLE_CULTIBOX'); ?></p>
 <br />
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="configform" id="configform">
-<table class="table_width">
-<tr>    
-    <td class="conf-menu-marge"></td>
-    <td><button id="div_user_label" class="menu_h1" onclick="expand('user_interface'); return false;"><?php echo __('USER_CONF'); ?></button></td>
-    <td><button id="div_system_label" class="menu_h1" onclick="expand('system_interface'); return false;"><?php echo __('SYSTEM_CONF'); ?></button></td>
-    <td><button id="div_alarm_label" class="menu_h1" onclick="expand('alarm_interface'); return false;"><?php echo __('CONFIGURE_ALARM'); ?></button></td>
-    <td><button id="div_card_label" class="menu_h1" onclick="expand('card_interface'); return false;"><?php echo __('CONFIGURE_CARD'); ?></button></td>
-    <td><button id="div_wifi_label" class="menu_h1" onclick="expand('wifi_interface'); return false;"><?php echo __('CONFIGURE_WIFI'); ?></button></td>
-    <td class="conf-menu-marge"></td>
-</tr>
-</table>    
-<br />
-<div id="div_alarm_description" style="display:none">
-<br />
-<table class="table_width">
-<tr>
-    <td class="conf-menu-marge"></td>
-    <td><?php echo __('ALARM_DESCRIPTION'); ?></td>
-    <td class="conf-menu-marge"></td>
-</tr>
-</table>
-<br />
-</div>
+    <table class="table_width">
+        <tr>    
+            <td class="conf-menu-marge"></td>
+            <td><button id="div_user_label" class="menu_h1" onclick="expand('user_interface'); return false;"><?php echo __('USER_CONF'); ?></button></td>
+            <td><button id="div_system_label" class="menu_h1" onclick="expand('system_interface'); return false;"><?php echo __('SYSTEM_CONF'); ?></button></td>
+            <td><button id="div_alarm_label" class="menu_h1" onclick="expand('alarm_interface'); return false;"><?php echo __('CONFIGURE_ALARM'); ?></button></td>
+            <td><button id="div_card_label" class="menu_h1" onclick="expand('card_interface'); return false;"><?php echo __('CONFIGURE_CARD'); ?></button></td>
+            <td><button id="div_wifi_label" class="menu_h1" onclick="expand('wifi_interface'); return false;"><?php echo __('CONFIGURE_WIFI'); ?></button></td>
+            <td class="conf-menu-marge"></td>
+        </tr>
+    </table>    
+    <br />
+    <div id="div_alarm_description" style="display:none">
+        <br />
+        <table class="table_width">
+            <tr>
+                <td class="conf-menu-marge"></td>
+                <td><?php echo __('ALARM_DESCRIPTION'); ?></td>
+                <td class="conf-menu-marge"></td>
+            </tr>
+        </table>
+        <br />
+    </div>
 <div id="div_wifi_description" style="display:none">
 <br />
 <table class="table_width">
@@ -942,16 +942,30 @@ $(document).ready(function(){
 </td>
 <td></td>
 </tr>
+
+<!-- Display RTC row -->
 <tr>
-<td class="conf-marge"></td>
-<td>
-   <?php echo __('CONFIGURE_RTC_OFFSET'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RTC_OFFSET'); ?>" />
-</td>
-<td>
-   <table class="table_width"><tr><td style="width: 50%; padding-right: 10px;"><div id="rtc_offset_slider"></div></td><td><input type="text" name="rtc_offset" id="rtc_offset" value="<?php echo $rtc_offset; ?>" size="4" readonly /><?php echo __('RTC_OFFSET_UNITY'); ?></td></tr></table>
-</td>
-<td></td>
+    <td class="conf-marge"></td>
+    <td>
+       <?php echo __('CONFIGURE_RTC_OFFSET'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RTC_OFFSET'); ?>" />
+    </td>
+    <td>
+        <table class="table_width">
+            <tr>
+                <td style="width: 50%; padding-right: 10px;">
+                    <!-- RTC Slider -->
+                    <div id="rtc_offset_slider"></div>
+                </td>
+                <td>
+                    <!-- RTC Value -->
+                    <input type="text" name="rtc_offset" id="rtc_offset" value="<?php echo $rtc_offset; ?>" size="4" readonly /><?php echo __('RTC_OFFSET_UNITY'); ?>
+                </td>
+            </tr>
+        </table>
+    </td>
+    <td></td>
 </tr>
+
 <tr>
 <td class="conf-marge"></td>
 <td>

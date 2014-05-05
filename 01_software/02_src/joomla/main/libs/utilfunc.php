@@ -1083,7 +1083,6 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       $alarm_value="0$alarm_value";
    }
 
-
    while(strlen($record)<4) {
       $record="0$record";
    }
@@ -2289,21 +2288,21 @@ function check_xml_calendar_file($file) {
     if($handle = @opendir($dir)) {
         while (false !== ($entry = readdir($handle))) {
             if(($entry!=".")&&($entry!="..")&&(strcmp(pathinfo($entry,PATHINFO_EXTENSION),"xml")==0)&&(strcmp("$entry","$file")==0)) {
-            $rss_file = file_get_contents($dir."/".$entry);
-            $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
+                $rss_file = file_get_contents($dir."/".$entry);
+                $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
 
-            $check=true;
-            foreach ($xml as $tab) {
-                if(is_array($tab)) {
-                    if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))) {
-                        $check=false;
+                $check=true;
+                foreach ($xml as $tab) {
+                    if(is_array($tab)) {
+                        if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))) {
+                            $check=false;
+                        }
                     }
                 }
-            }
 
-            if($check) {
-                return true;
-            }
+                if($check) {
+                    return true;
+                }
             }
         }
     }
@@ -2383,6 +2382,4 @@ function compat_old_sd_card($sd_card="") {
 }
 
 /* **************** */
-
-
 ?>
