@@ -159,7 +159,7 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 
         if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue","$rtc")) {
             $conf_uptodate=false;
-            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue","$rtc_offet",$main_error)) {
+            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue","$rtc",$main_error)) {
                 $main_error[]=__('ERROR_WRITE_SD_CONF');
                 $error_copy=true;
             }

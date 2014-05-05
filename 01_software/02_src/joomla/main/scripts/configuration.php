@@ -196,9 +196,9 @@ if((!empty($sd_card))&&(isset($sd_card))) {
             $updatefrequency="0";
         }
 
-
         if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue","$rtc")) {
             $conf_uptodate=false;
+            
             if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue","$rtc",$main_error)) {
                 $main_error[]=__('ERROR_WRITE_SD_CONF');
                 $error_copy=true;
@@ -338,25 +338,25 @@ if(!empty($update_frequency)) {
 
 
 if((isset($rtc_offset))&&(!empty($rtc_offset))) {
-        insert_configuration("RTC_OFFSET",$rtc_offset,$main_error);
-        $update_conf=true;
+    insert_configuration("RTC_OFFSET",$rtc_offset,$main_error);
+    $update_conf=true;
 } else {
-        $rtc_offset = get_configuration("RTC_OFFSET",$main_error);
+    $rtc_offset = get_configuration("RTC_OFFSET",$main_error);
 }
 
 
 if(!empty($alarm_enable)) {
-       insert_configuration("ALARM_ACTIV","$alarm_enable",$main_error);
-       $update_conf=true;
+    insert_configuration("ALARM_ACTIV","$alarm_enable",$main_error);
+    $update_conf=true;
 
-       if((strcmp($alarm_enable,"0001")==0)&&(!empty($alarm_value))) {
-           insert_configuration("ALARM_VALUE","$alarm_value",$main_error);
-       } else {
-            $alarm_value=get_configuration("ALARM_VALUE",$main_error);
-       }
+    if((strcmp($alarm_enable,"0001")==0)&&(!empty($alarm_value))) {
+       insert_configuration("ALARM_VALUE","$alarm_value",$main_error);
+    } else {
+        $alarm_value=get_configuration("ALARM_VALUE",$main_error);
+    }
 } else {
-       $alarm_enable = get_configuration("ALARM_ACTIV",$main_error);
-       $alarm_value = get_configuration("ALARM_VALUE",$main_error);
+    $alarm_enable = get_configuration("ALARM_ACTIV",$main_error);
+    $alarm_value = get_configuration("ALARM_VALUE",$main_error);
 }
 
 if(empty($alarm_value)) {
@@ -454,20 +454,20 @@ if((isset($second_regul))&&(!empty($second_regul))) {
 
 
 if((isset($show_cost))&&(!empty($show_cost))) {
-        insert_configuration("SHOW_COST","$show_cost",$main_error);
-        $update_conf=true;
-        $update_menu=true;
+    insert_configuration("SHOW_COST","$show_cost",$main_error);
+    $update_conf=true;
+    $update_menu=true;
 } else {
-        $show_cost = get_configuration("SHOW_COST",$main_error);
+    $show_cost = get_configuration("SHOW_COST",$main_error);
 }
 
 
 if((isset($show_historic))&&(!empty($show_historic))) {
-        insert_configuration("SHOW_HISTORIC","$show_historic",$main_error);
-        $update_conf=true;
-        $update_menu=true;
+    insert_configuration("SHOW_HISTORIC","$show_historic",$main_error);
+    $update_conf=true;
+    $update_menu=true;
 } else {
-        $show_historic = get_configuration("SHOW_HISTORIC",$main_error);
+    $show_historic = get_configuration("SHOW_HISTORIC",$main_error);
 }
 
 
@@ -475,7 +475,7 @@ if((isset($minmax))&&(!empty($minmax))) {
     insert_configuration("RESET_MINMAX","$minmax",$main_error);
     $update_conf=true;
 } else {
-        $minmax = get_configuration("RESET_MINMAX",$main_error);
+    $minmax = get_configuration("RESET_MINMAX",$main_error);
 }
 
 
@@ -498,20 +498,19 @@ if((!isset($sd_card))||(empty($sd_card))) {
     $main_error[]=__('ERROR_SD_CARD_CONF')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_WITHOUT_SD')."\" />";
 }
 
-
-
 // Change files on the cultibox SD card after the configuration has been updated: plug's frequency, alarm value etc...
 if((isset($submit))&&(!empty($submit))) {
     if((isset($sd_card))&&(!empty($sd_card))) {
-	    if("$update_frequency"=="-1") {
-		    if(!write_sd_conf_file($sd_card,$record_frequency,"0",$power_frequency,"$alarm_enable","$alarm_value","$minmax",$main_error)) {
-                $main_error[]=__('ERROR_WRITE_SD_CONF');
-            }
-	    } else {
-		    if(!write_sd_conf_file($sd_card,$record_frequency,$update_frequency,$power_frequency,"$alarm_enable","$alarm_value","$minmax",$main_error)) {
-                $main_error[]=__('ERROR_WRITE_SD_CONF');
-            }
-	    }	
+        $updateFrequencyCorrected = $update_frequency;
+
+	    if("$updateFrequencyCorrected"=="-1") {
+            $updateFrequencyCorrected = 0;
+        }
+        
+        // Save the configuration on SD Card
+        if(!write_sd_conf_file($sd_card,$record_frequency,$updateFrequencyCorrected,$power_frequency,"$alarm_enable","$alarm_value","$minmax",$rtc_offset,$main_error)) {
+            $main_error[]=__('ERROR_WRITE_SD_CONF');
+        }
     }
 }
 
