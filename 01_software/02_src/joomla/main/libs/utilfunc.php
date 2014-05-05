@@ -1083,6 +1083,7 @@ function write_sd_conf_file($sd_card,$record_frequency=1,$update_frequency=1,$po
       $alarm_value="0$alarm_value";
    }
 
+
    while(strlen($record)<4) {
       $record="0$record";
    }
@@ -2288,21 +2289,21 @@ function check_xml_calendar_file($file) {
     if($handle = @opendir($dir)) {
         while (false !== ($entry = readdir($handle))) {
             if(($entry!=".")&&($entry!="..")&&(strcmp(pathinfo($entry,PATHINFO_EXTENSION),"xml")==0)&&(strcmp("$entry","$file")==0)) {
-                $rss_file = file_get_contents($dir."/".$entry);
-                $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
+            $rss_file = file_get_contents($dir."/".$entry);
+            $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
 
-                $check=true;
-                foreach ($xml as $tab) {
-                    if(is_array($tab)) {
-                        if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))) {
-                            $check=false;
-                        }
+            $check=true;
+            foreach ($xml as $tab) {
+                if(is_array($tab)) {
+                    if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))) {
+                        $check=false;
                     }
                 }
+            }
 
-                if($check) {
-                    return true;
-                }
+            if($check) {
+                return true;
+            }
             }
         }
     }
@@ -2338,17 +2339,26 @@ function get_ip_address() {
 //{{{ get_rtc_offset()
 // ROLE get rtc offset value to be recorded in the configuration file
 // RET rtc offset value to be recorded 
-function get_rtc_offset($rtc=0) {
-    if($rtc==0) { return "0000"; }
-    
-    $offset=round(abs((32768*$rtc)/(2*60*24))); //VOir la documentation sur le RTC_OFFSET
-    while(strlen($offset)<3) $offset="0$offset";
+function get_rtc_offset($rtc = 0) {
 
-    if($rtc<0) { 
-        return "1$offset";
-    } else { 
-        return "0$offset";
+    // If RTC is not defined, return default value 0000
+    if($rtc == 0) { return "0000"; }
+    
+    // Compute RTC value
+    // Formula : offset_sec_per_day = 2 x RTC_OFFSET x 60 x 24 / 32768 
+    // So : RTC_OFFSET = 32768 x offset_sec_per_day / ( 2 x 60 x 24 )
+    $offset = round((32768 * abs($rtc))/(2 * 60 * 24)); //Voir la documentation sur le RTC_OFFSET
+    
+    // If value is under 0, add 128
+    if($rtc < 0) { 
+        $offset = $offset + 128;
     }
+    
+    // String need to have 4 digits large
+    while(strlen($offset) < 4) $offset = "0$offset";
+
+    // Return computed value
+    return $offset;
 }
 //}}}
 
@@ -2382,4 +2392,6 @@ function compat_old_sd_card($sd_card="") {
 }
 
 /* **************** */
+
+
 ?>

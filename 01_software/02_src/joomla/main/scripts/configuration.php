@@ -340,8 +340,13 @@ if(!empty($update_frequency)) {
 if((isset($rtc_offset))&&(!empty($rtc_offset))) {
     insert_configuration("RTC_OFFSET",$rtc_offset,$main_error);
     $update_conf=true;
+    
+    // Value saved must be converted to be saved in SD Card
+    $rtc_offset_computed = get_rtc_offset($rtc_offset);
+    
 } else {
     $rtc_offset = get_configuration("RTC_OFFSET",$main_error);
+    $rtc_offset_computed = $rtc_offset;
 }
 
 
@@ -508,7 +513,7 @@ if((isset($submit))&&(!empty($submit))) {
         }
         
         // Save the configuration on SD Card
-        if(!write_sd_conf_file($sd_card,$record_frequency,$updateFrequencyCorrected,$power_frequency,"$alarm_enable","$alarm_value","$minmax",$rtc_offset,$main_error)) {
+        if(!write_sd_conf_file($sd_card,$record_frequency,$updateFrequencyCorrected,$power_frequency,"$alarm_enable","$alarm_value","$minmax",$rtc_offset_computed,$main_error)) {
             $main_error[]=__('ERROR_WRITE_SD_CONF');
         }
     }
