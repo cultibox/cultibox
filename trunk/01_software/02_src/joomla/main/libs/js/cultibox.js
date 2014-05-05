@@ -2026,7 +2026,7 @@ $(document).ready(function() {
                 // While sliding, update the value in the div element
                 $("#rtc_offset").val(ui.value);
             },
-            step: 0.01,
+            step: 0.1,
             value: rtc_offset_value
         });
     }
