@@ -925,9 +925,7 @@ $(document).ready(function() {
                     }
                 });
 
-
-                
-                if(wifi_password!=$("#wifi_password").val()) {
+                if((wifi_password!="")&&($("#wifi_password").val()!="")) {
                     $.ajax({
                         cache: false,
                         async: false,
@@ -960,7 +958,7 @@ $(document).ready(function() {
                                         break;
                                 default: type_password="";
                             }
-                            
+
                             $.ajax({
                                 cache: false,
                                 async: false,
@@ -990,7 +988,8 @@ $(document).ready(function() {
                             });
                         }
                     });
-                } 
+                }
+                
 
                 if(($("#wifi_password").val()=="")&&(wifi_password=="")) {
                     checked=false;
@@ -1000,7 +999,7 @@ $(document).ready(function() {
                     $("#error_wifi_password_confirm").css("display","none");
                 } else {
                     $("#error_empty_password").css("display","none");
-                }
+                } 
 
 
                 if($('#wifi_ip_manual').prop('checked')) {

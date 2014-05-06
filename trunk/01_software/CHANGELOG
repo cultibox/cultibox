@@ -1,3 +1,10 @@
+Cultibox (1.3.07) precise; urgency=low
+    + Corection du fonctionnement de la gestion du RTC_OFFSET
+    + Correction sur la vérification des mots de pase du wifi
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue May  6 09:31:47 CEST 2014
+
+
 Cultibox (1.3.06) precise; urgency=low
     + Correction de la position de l'image qui apparaît quand on cache la boîte de dialogue du logiciel
     + Correction de l'affichage de la selection des prises
