@@ -432,3 +432,39 @@ Dans la partie "Exécuter un script shell" de la section build, changez les chem
  * Rapidement, appuyez sur le bouton droite de la Cultibox.
  * La prise doit clignoter deux fois
  * Si la procédure ne fonctionne pas, refaites les étapes 10 à 13
+
+= Fichier de configuration du logiciel =
+== Introduction ==
+
+Un fichier de configuration (*htdocs/cultibox/main/libs/config.php) permet de définir les variables gérant le comportement du logiciel. Ces options sont a modifier avec précaution.
+
+ * $GLOBALS['SOFT_PORT'] : port utilisé pour se connecter au logiciel 
+ * $GLOBALS['LIST_GRAPHIC_COLOR'] : couleurs utilisées pour l'affichage des courbes
+ * $GLOBALS['LIST_RECORD_FREQUENCY'] : liste des temps servant à définir à quelle période enregistrer les fichiers de logs
+ * $GLOBALS['NB_MAX_PLUG'] : nombre de prise maximal qui peut être définit dans le logiciel
+ * $GLOBALS['NB_SELECTABLE_PLUG'] : nombre de prise maximale gérée par la cultibox (10 actuellement)
+ * $GLOBALS['NB_MIN_PLUG'] : nombre de prises minimale (3 actuellement)
+ * $GLOBALS['NB_MAX_SENSOR_LOG'] : le nombre maximal de capteurs disponible pour les logs (4 actuellement)
+ * $GLOBALS['NB_MAX_SENSOR_PLUG'] : le nombre maximal de capteur utilisable par la cultibox (6 actuellement)
+ * $GLOBALS['NB_MAX_CANAL_DIMMER'] : nombre de canaux disponibles pour les prises variateurs
+ * $GLOBALS['LIST_UPDATE_FREQUENCY'] : choix des fréquences de mise à jour de la cultibox
+ * $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'] : liste des couleurs pour les programmes
+ * $GLOBALS['LIST_SUBJECT_CALENDAR'] : liste des sujet de base disponible lors de l'ajout d'un evènement du calendrier
+ * $GLOBALS['DEBUG_TRACE'] : permet d'activer le mode 'debug' si mise à true. Le mode debug affiche des statistiques de génération des pages, la taille mémoire utilisée...
+ * $GLOBALS['PLUGA_DEFAULT'] : adresse des prises par défaut
+ * $GLOBALS['PLUGA_DEFAULT_3500W'] : adresse des prises 3500W par défaut
+ * $GLOBALS['FIRST_LOG_YEAR'] : première année de recherche pour les logs
+ * $GLOBALS['UPDATE_FILE'] : fichier de vérification des mises à jour disponibles
+ * $GLOBALS['WEBSITE'] : adresse du site web à afficher si une mise à jour a été trouvé
+ * $GLOBALS['REMOTE_SITE'] : adresse du site pour vérifier la connexion possible et la recherche de mises à jour
+ * $GLOBALS['MODULE_IMPORT_EXPORT'] : permet d'activer ou désactiver les modules d'import/export
+ * $GLOBALS['LOG_SEARCH'] : liste du nombre de mois disponible pour la recherche de logs
+ * $GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_XXXXX'] : liste des dégradés de couleur en fonction de la couleur choisie pour les courbes
+ * $GLOBALS['GRAPHIC_COLOR_GRID_XXXXX'] : liste de la couleur des grilles des graphiques
+ * $GLOBALS['LIST_GRAPHIC_COLOR_CALENDAR'] : liste des couleurs utilisés pour le calendrier
+ * $GLOBALS['REMOTE_DATABASE'] : adresse pour l'envoi des informations statistiques du logiciel
+ * $GLOBALS['WIFI_KEY_TYPE_LIST'] : liste des clefs wifi supportés par le logiciel
+ * $GLOBALS['SENSOR_DEFINITION'] : définition des capteurs gérés par la cultibox
+ * $GLOBALS['PLUGV_MAX_CHANGEMENT'] :  nombre de changement maximum autorisé par les prises
+
+
