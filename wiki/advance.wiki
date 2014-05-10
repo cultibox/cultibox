@@ -434,7 +434,6 @@ Dans la partie "Exécuter un script shell" de la section build, changez les chem
  * Si la procédure ne fonctionne pas, refaites les étapes 10 à 13
 
 = Fichier de configuration du logiciel =
-== Introduction ==
 
 Un fichier de configuration (*htdocs/cultibox/main/libs/config.php) permet de définir les variables gérant le comportement du logiciel. Ces options sont a modifier avec précaution.
 
