@@ -435,7 +435,7 @@ Dans la partie "Exécuter un script shell" de la section build, changez les chem
 
 = Fichier de configuration du logiciel =
 
-Un fichier de configuration (*htdocs/cultibox/main/libs/config.php) permet de définir les variables gérant le comportement du logiciel. Ces options sont a modifier avec précaution.
+Un fichier de configuration (*htdocs/cultibox/main/libs/config.php*) permet de définir les variables gérant le comportement du logiciel. Ces options sont a modifier avec précaution.
 
  * $GLOBALS['SOFT_PORT'] : port utilisé pour se connecter au logiciel 
  * $GLOBALS['LIST_GRAPHIC_COLOR'] : couleurs utilisées pour l'affichage des courbes
