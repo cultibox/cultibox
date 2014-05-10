@@ -86,36 +86,46 @@ Cette table contient la configuration globale.
 
 === Structure ===
 
-|| *Field*                 || *Type*       || *Null* || *Key* || *Default* || *Extra*        ||
-|| id                      || int(11)      || NO   || PRI || NULL          || auto_increment ||
-|| CHECK_UPDATE            || varchar(5)   || NO   ||     || True          ||                ||
-|| VERSION                 || varchar(30)  || NO   ||     || 1.1.38-noarch ||                ||
-|| COLOR_HUMIDITY_GRAPH    || varchar(30)  || NO   ||     || blue          ||                ||
-|| COLOR_TEMPERATURE_GRAPH || varchar(30)  || NO   ||     || red           ||                ||
-|| COLOR_POWER_GRAPH       || varchar(30)  || NO   ||     || black         ||                ||
-|| COLOR_COST_GRAPH        || varchar(30)  || NO   ||     || purple        ||                ||
-|| RECORD_FREQUENCY        || int(11)      || NO   ||     || 5             ||                ||
-|| POWER_FREQUENCY         || int(11)      || NO   ||     || 5             ||                ||
-|| NB_PLUGS                || int(11)      || NO   ||     || 3             ||                ||
-|| UPDATE_PLUGS_FREQUENCY  || int(20)      || NO   ||     || -1            ||                ||
-|| SHOW_POPUP              || varchar(5)   || NO   ||     || True          ||                ||
-|| ALARM_ACTIV             || varchar(4)   || NO   ||     || 0000          ||                ||
-
-
-|| *Field*                 || *Type*       || *Null* || *Key* || *Default* || *Extra*        ||
-|| ALARM_VALUE             || varchar(5)   || NO   ||     || 50.00         ||                ||
-|| COST_PRICE              || decimal(6,4) || NO   ||     || 0.1249        ||                ||
-|| COST_PRICE_HP           || decimal(6,4) || NO   ||     || 0.1353        ||                ||
-|| COST_PRICE_HC           || decimal(6,4) || NO   ||     || 0.0926        ||                ||
-|| START_TIME_HC           || varchar(5)   || NO   ||     || 22:30         ||                ||
-|| STOP_TIME_HC            || varchar(5)   || NO   ||     || 06:30         ||                ||
-|| COST_TYPE               || varchar(20)  || NO   ||     || standard      ||                ||
-|| STATISTICS              || varchar(5)   || NO   ||     || True          ||                ||
-|| SECOND_REGUL            || varchar(5)   || NO   ||     || False         ||                ||
-|| ADVANCED_REGUL_OPTIONS  || varchar(5)   || NO   ||     || False         ||                ||
-|| SHOW_COST               || varchar(5)   || NO   ||     || False         ||                ||
-|| SHOW_HISTORIC           || varchar(5)   || NO   ||     || False         ||                ||
-|| RESET_MINMAX            || varchar(5)   || NO   ||     || 00:00         ||                ||
+|| *Field*                 || *Type*       || *Null* || *Key* || *Default*   || *Extra*        ||
+|| id                      || int(11)      || NO   || PRI || NULL            || auto_increment ||
+|| CHECK_UPDATE            || varchar(5)   || NO   ||     || True            ||                ||
+|| VERSION                 || varchar(30)  || NO   ||     || 1.1.38-noarch   ||                ||
+|| COLOR_HUMIDITY_GRAPH    || varchar(30)  || NO   ||     || blue            ||                ||
+|| COLOR_WATER_GRAPH       || varchar(30)  || NO   ||     || orange          ||                ||
+|| COLOR_LEVEL_GRAPH       || varchar(30)  || NO   ||     || pink            ||                ||
+|| COLOR_PH_GRAPH          || varchar(30)  || NO   ||     || brown           ||                ||
+|| COLOR_EC_GRAPH          || varchar(30)  || NO   ||     || yellow          ||                ||
+|| COLOR_ORP_GRAPH         || varchar(30)  || NO   ||     || blue            ||                ||
+|| COLOR_OD_GRAPH          || varchar(30)  || NO   ||     || red             ||                ||
+|| COLOR_TEMPERATURE_GRAPH || varchar(30)  || NO   ||     || red             ||                ||
+|| COLOR_POWER_GRAPH       || varchar(30)  || NO   ||     || black           ||                ||
+|| COLOR_COST_GRAPH        || varchar(30)  || NO   ||     || purple          ||                ||
+|| RECORD_FREQUENCY        || int(11)      || NO   ||     || 5               ||                ||
+|| POWER_FREQUENCY         || int(11)      || NO   ||     || 5               ||                ||
+|| NB_PLUGS                || int(11)      || NO   ||     || 3               ||                ||
+|| UPDATE_PLUGS_FREQUENCY  || int(20)      || NO   ||     || -1              ||                ||
+|| SHOW_POPUP              || varchar(5)   || NO   ||     || True            ||                ||
+|| ALARM_ACTIV             || varchar(4)   || NO   ||     || 0000            ||                ||
+|| ALARM_VALUE             || varchar(5)   || NO   ||     || 50.00           ||                ||
+|| COST_PRICE              || decimal(6,4) || NO   ||     || 0.1249          ||                ||
+|| COST_PRICE_HP           || decimal(6,4) || NO   ||     || 0.1353          ||                ||
+|| COST_PRICE_HC           || decimal(6,4) || NO   ||     || 0.0926          ||                ||
+|| START_TIME_HC           || varchar(5)   || NO   ||     || 22:30           ||                ||
+|| STOP_TIME_HC            || varchar(5)   || NO   ||     || 06:30           ||                ||
+|| COST_TYPE               || varchar(20)  || NO   ||     || standard        ||                ||
+|| STATISTICS              || varchar(5)   || NO   ||     || True            ||                ||
+|| SECOND_REGUL            || varchar(5)   || NO   ||     || False           ||                ||
+|| ADVANCED_REGUL_OPTIONS  || varchar(5)   || NO   ||     || False           ||                ||
+|| SHOW_COST               || varchar(5)   || NO   ||     || False           ||                ||
+|| SHOW_HISTORIC           || varchar(5)   || NO   ||     || False           ||                ||
+|| RESET_MINMAX            || varchar(5)   || NO   ||     || 00:00           ||                ||
+|| WIFI                    || boolean      || NO   ||     || false           ||                ||
+|| WIFI_SSID               || varchar(32)  || YES  ||     ||                 ||                ||
+|| WIFI_KEY_TYPE           || varchar(10)  || NO   ||     || NONE            ||                ||
+|| WIFI_PASSWORD           || varchar(63)  || YES  ||     ||                 ||                ||
+|| WIFI_IP                 || varchar(15)  || NO   ||     || 000.000.000.000 ||                ||
+|| WIFI_IP_MANUAL          || boolean      || NO   ||     || false           ||                ||
+|| RTC_OFFSET              || DECIMAL(3,2) || NO   ||     || 0               ||                ||
 
 
 == historic ==
@@ -157,13 +167,12 @@ Cette table contient les données climatiques.
 
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || timestamp   || varchar(14) || NO   || MUL ||         ||       ||
-|| temperature || int(4)      || YES  ||     || NULL    ||       ||
-|| humidity    || int(4)      || YES  ||     || NULL    ||       ||
+|| record1     || int(4)      || YES  ||     || NULL    ||       ||
+|| record2     || int(4)      || YES  ||     || NULL    ||       ||
 || date_catch  || varchar(10) || YES  ||     || NULL    ||       ||
 || time_catch  || varchar(10) || YES  ||     || NULL    ||       ||
 || fake_log    || varchar(5)  || NO   ||     || False   ||       ||
 || sensor_nb   || int(4)      || NO   ||     || 1       ||       ||
-|| type_sensor || int(11)     || NO   ||     || 2       ||       ||
 
 == notes ==
 
@@ -251,7 +260,8 @@ Cette table contient le type des capteurs actuellement branchés sur la Cultibox
 
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || id    || int(11) || NO   || PRI || NULL    ||       ||
-|| type  || int(5)  || NO   ||     || 0       ||       ||
+|| type  || varchar(1)  || NO   ||     || 0       ||       ||
+
 
 <wiki:comment>
 \end{landscape}
