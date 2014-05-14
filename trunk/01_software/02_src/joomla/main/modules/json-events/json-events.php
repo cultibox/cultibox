@@ -80,10 +80,11 @@ if ($handle = opendir('../../xml')) {
 
         if(count($value)>0) {
              foreach($value as $val) {
-                $timestart=date("U",strtotime($val['start']));
+             
+                $timestart = date("U",strtotime($val['start']));
 
                 if(array_key_exists('duration', $val))  {
-                    $timeend=date("U", strtotime("+".$val['duration']." days", $timestart));
+                    $timeend = date("U", strtotime("+".$val['duration']." days", $timestart));
                 }
 
                
@@ -106,23 +107,37 @@ if ($handle = opendir('../../xml')) {
                         $color="#821D78";
                 } 
 
-                if(array_key_exists('icon', $val))  {
-                        $icon=$val['icon'];
-                } else {
-                        $icon=null;
+                // User can add folowing element in entry :
+                // <icon> - <icon0> - <icon1> - <icon2> - <icon3>
+                for ($i = 0 ; $i < 5 ; $i++)
+                {
+                
+                    // Define variable name
+                    $iconVariable = 'icon' . ($i - 1) ;
+                    if ($i == 0)
+                        $iconVariable = 'icon' ;
+                    
+                    // Init icon variable
+                    $$iconVariable = null;
+                    
+                    // If user define an icon, assign it
+                    if(array_key_exists($iconVariable, $val))  {
+                        $$iconVariable = $val[$iconVariable];
+                    }
                 }
 
+                    
+                $color_text="white";
                 if(array_key_exists('important', $val))  {
                     if($val['important']=="1") {
                         $color_text="red";
-                    } else {
-                        $color_text="white";
                     }
-                } else {
-                    $color_text="white";
                 }
-
-
+                
+                // Userr can select text color of event using <text_color>
+                if(array_key_exists('text_color', $val))  {
+                    $color_text=$val['text_color'];
+                }
 
                 do {
                     $start=date('Y-m-d H:i:s', $timestart);
@@ -135,6 +150,10 @@ if ($handle = opendir('../../xml')) {
                             "description" => $val['content'],
                             "color" => $color,
                             "icon" => $icon,
+                            "icon0" => $icon0,
+                            "icon1" => $icon1,
+                            "icon2" => $icon2,
+                            "icon3" => $icon3,
                             "textColor" => $color_text,
                             "external" => 1
                             //"allDay" => false

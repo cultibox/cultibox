@@ -241,7 +241,7 @@ $substrat=array_unique($substrat);
 asort($substrat);
 
 
-// Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
+// Check for update availables. If an update is available, the link to this update is displayed with the informations div
 if(strcmp("$update","True")==0) {
     if((!isset($_SESSION['UPDATE_CHECKED']))||(empty($_SESSION['UPDATE_CHECKED']))) {
         if($sock=@fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
@@ -264,17 +264,17 @@ if(strcmp("$update","True")==0) {
 
 // Part for the calendar: if a cultibox SD card is present, the 'calendar' is updated into this SD card
 if((isset($sd_card))&&(!empty($sd_card))) {
-   $data=create_calendar_from_database($main_error);
-   if(!check_sd_card($sd_card)) {
-            $main_error[]=__('ERROR_WRITE_CALENDAR');
-   } else {
-            clean_calendar($sd_card);
-            if(count($data)>0) {
-                if(!write_calendar($sd_card,$data,$main_error)) {
-                    $main_error[]=__('ERROR_WRITE_CALENDAR');
-                }
+    $data=create_calendar_from_database($main_error);
+    if(!check_sd_card($sd_card)) {
+        $main_error[]=__('ERROR_WRITE_CALENDAR');
+    } else {
+        clean_calendar($sd_card);
+        if(count($data)>0) {
+            if(!write_calendar($sd_card,$data,$main_error)) {
+                $main_error[]=__('ERROR_WRITE_CALENDAR');
             }
-   } 
+        }
+    } 
 }
 
 
