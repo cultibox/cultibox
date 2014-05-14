@@ -3,6 +3,35 @@ source [file join [file dirname [info script]] parse_lib_cal_lun.tcl]
 # Chargement des librairies pour le calendrier des cultures
 source [file join [file dirname [info script]] parse_lib_cal_cult.tcl]
 
+#==============================================================================
+# \brief Commande pour ajouter un jour dans le calendrier
+# \param fid pointeur sur le fichier de sortie
+# \param mois Numéro du mois
+# \param jour Numéro du jour
+#==============================================================================
+proc addCalEvent {fid mois jour label symbol icons} {
+puts $fid {
+   <entry>
+      <title>Lune</title>
+      <summary>Lune</summary>
+      <updated>2013-04-22T23:19:57+02:00</updated>
+      <id>http://www.cultibox.fr/id1</id>
+      <category term = "fruit" label = "fruit" />}
+puts $fid "<content type = \"text\">[join $label "\n"]</content>"
+puts $fid "<cbx_symbol>[join $symbol " "]</cbx_symbol>"
+puts $fid "<duration>0</duration>"
+puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+    set i 0
+    foreach icon $icons {
+        puts $fid "      <icon${i}>${icon}</icon${i}>"
+        incr i
+    }
+
+puts $fid {      <color>rgba(170, 170, 170, 0.1)</color>
+      <text_color>#000</text_color>
+   </entry>
+}
+}
 
 # Début du code principal
 # Pour chacun des fichiers présents dans le répertoire avec l'extension .txt
@@ -17,7 +46,7 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
         set calendrier_type "culture"
     }
     if {[string first "calendrier_lunaire" $file] != -1} {
-        set calendrier_type "lunaire"
+        set calendrier_type "general"
     }
     
     # On cré le fichier de sortie
@@ -63,6 +92,79 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
                     
             # En fonction du type de calendrier
             switch $calendrier_type {
+                "general" {
+                
+                    # On assigne aux variables les différents éléments
+                    lassign $UneLigne na1 na2 fruit racine fleur feuille NL PL Perigee Noeud Montante Descendante
+
+                    set icons ""
+                    set label ""
+                    set symbol ""
+                    
+                    if {$Montante != 0} {
+                        lappend icons montante.png
+                        lappend label "Lune montante : Semez et récoltez"
+                        lappend symbol "0xAC"
+                    }
+                    
+                    if {$Descendante != 0} {
+                        lappend icons descendante.png
+                        lappend label "Lune descendante : Repiquez, bouturez, taillez et nourrissez"
+                        lappend symbol "0xAD"
+                    }
+                    
+                    if {$Perigee != 0} {
+                        lappend icons perigee.png
+                        lappend label "Perigee : ne jardinez pas"
+                        lappend symbol "0xB0"
+                    }
+                    
+                    if {$NL != 0} {
+                        lappend icons nouvelle_lune.png
+                        lappend label "Nouvelle lune"
+                        lappend symbol "0xAB"
+                    }
+                    
+                    if {$PL != 0} {
+                        lappend icons pleine_lune.png
+                        lappend label "Pleine lune"
+                        lappend symbol "0xAA"
+                    }
+
+                    if {$Noeud != 0} {
+                        lappend icons perigee.png
+                        lappend label "Noeud lunaire : ne jardinez pas"
+                        lappend symbol "0xAE"
+                    }     
+
+                    if {$fruit != 0} {
+                        lappend icons fruit.png
+                        lappend label "Jour fruit"
+                        lappend symbol "0xB1"
+                    }
+                    
+                    if {$racine != 0} {
+                        lappend icons carotte.png
+                        lappend label "Jour racine"
+                        lappend symbol "0xB2"
+                    }
+                    
+                    if {$fleur != 0} {
+                        lappend icons fleur.png
+                        lappend label "Jour fleur"
+                        lappend symbol "0xB3"
+                    }
+
+                    if {$feuille != 0} {
+                        lappend icons feuille.png
+                        lappend label "Jour feuille"
+                        lappend symbol "0xB4"
+                    }
+                    
+                    if {$icons != ""} {
+                        addCalEvent $outFid $Mois $Jour $label $symbol $icons
+                    }
+                }
                 "lunaire" {
 
                     # On assigne aux variables les différents éléments
