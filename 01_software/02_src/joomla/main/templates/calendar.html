@@ -524,6 +524,64 @@ title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
                         eventElement.find('span.fc-event-title').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
                     }
                 }
+                
+                if(event.icon0) {
+                   if(event.icon0.search('http')>-1) {
+                        iconurl=event.icon0;
+                    } else {
+                        iconurl="http://localhost:6891/cultibox/main/modules/img/"+event.icon0;
+                    }
+
+                    if (eventElement.find('span.fc-event-time').length) {
+                        eventElement.find('span.fc-event-time').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
+                    } else {
+                        eventElement.find('span.fc-event-title').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
+                    }
+                }
+                
+                if(event.icon1) {
+                   if(event.icon1.search('http')>-1) {
+                        iconurl=event.icon1;
+                    } else {
+                        iconurl="http://localhost:6891/cultibox/main/modules/img/"+event.icon1;
+                    }
+
+                    if (eventElement.find('span.fc-event-time').length) {
+                        eventElement.find('span.fc-event-time').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
+                    } else {
+                        eventElement.find('span.fc-event-title').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
+                    }
+                }
+                
+                if(event.icon2) {
+                   if(event.icon2.search('http')>-1) {
+                        iconurl=event.icon2;
+                    } else {
+                        iconurl="http://localhost:6891/cultibox/main/modules/img/"+event.icon2;
+                    }
+
+                    if (eventElement.find('span.fc-event-time').length) {
+                        eventElement.find('span.fc-event-time').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
+                    } else {
+                        eventElement.find('span.fc-event-title').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
+                    }
+                }
+                
+                if(event.icon3) {
+                   if(event.icon3.search('http')>-1) {
+                        iconurl=event.icon3;
+                    } else {
+                        iconurl="http://localhost:6891/cultibox/main/modules/img/"+event.icon3;
+                    }
+
+                    if (eventElement.find('span.fc-event-time').length) {
+                        eventElement.find('span.fc-event-time').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
+                    } else {
+                        eventElement.find('span.fc-event-title').before("<img src='"+iconurl+"'  style='width:15px;height:15px'/>");
+                    }
+                }
+                
+                
             },
 
             loading: function(bool) {

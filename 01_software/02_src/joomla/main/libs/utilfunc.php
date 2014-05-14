@@ -1831,26 +1831,26 @@ function get_nb_days($start_date="",$end_date="") {
 //       $out     errors or warnings messages
 // RET   none  
 function check_update_available($version,&$out) {
-         $version=str_replace(".","",$version);
-         $temp=explode("-", $version);
-         $version=$temp[0];
-         if(isset($GLOBALS['UPDATE_FILE'])&&(!empty($GLOBALS['UPDATE_FILE']))) {
-               $file=$GLOBALS['UPDATE_FILE'];
-               if($handle=@fopen($file,"r")) {
-                  $val=fgets($handle);
-                  fclose($handle);
-                  if(!empty($val)) { 
-                    $tmp_version=str_replace(".","","$val");
-                    $tmp_version=trim($tmp_version);
-                    if(($version<$tmp_version)) {
-                        return true;
-                    }
-                  }
-               } else {
-                  $out[]=__('ERROR_REMOTE_UPDATE_FILE');
-               }
-         }
-         return false;
+    $version=str_replace(".","",$version);
+    $temp=explode("-", $version);
+    $version=$temp[0];
+    if(isset($GLOBALS['UPDATE_FILE'])&&(!empty($GLOBALS['UPDATE_FILE']))) {
+        $file=$GLOBALS['UPDATE_FILE'];
+        if($handle=@fopen($file,"r")) {
+            $val=fgets($handle);
+            fclose($handle);
+            if(!empty($val)) { 
+                $tmp_version=str_replace(".","","$val");
+                $tmp_version=trim($tmp_version);
+                if(($version<$tmp_version)) {
+                    return true;
+                }
+            }
+        } else {
+            $out[]=__('ERROR_REMOTE_UPDATE_FILE');
+        }
+    }
+    return false;
 }
 // }}}
 
