@@ -7,554 +7,554 @@ msgid "LANG"
 msgstr "de_DE"
 
 msgid "CONFIGURATION"
-msgstr "Configuration"
+msgstr "Konfiguration"
 
 msgid "LOGS"
 msgstr "Logs"
 
 msgid "PROGRAMS"
-msgstr "Programmes"
+msgstr "Programme"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
-msgstr "Bienvenue dans le logiciel de configuration de la Cultibox"
+msgstr "Willkommen in der Softwarekonfiguration Cultibox"
 
 msgid "DID_YOU_KNOW"
-msgstr "Le saviez-vous?"
+msgstr "Wussten Sie schon?"
 
 msgid "WELCOME_MESSAGE"
-msgstr "Ce logiciel va vous permettre de manipuler simplement votre Cultibox afin de la configurer, de visualiser les données enregistrées ou encore d'accéder à certaines fonctionnalités telles que le calcul du coût d'électricité ou la création d'un calendrier de culture."
+msgstr "Diese Software ermöglicht es Ihnen, Ihre leicht manipulieren Cultibox die Konfiguration, die aufgezeichneten Daten oder der Zugriff auf bestimmte Funktionen, wie die Berechnung der Stromkosten oder die Erstellung eines Kalender Kultur zu sehen."
 
 msgid "WELCOME_TUTO"
-msgstr "<b>Note :</b> pour ceux qui possèdent l'ancienne version de la Cultibox (<b>Green Box</b>), il vous faudra absolument"
+msgstr "<b> Hinweis: </ b> für diejenigen, die ältere Version des Cultibox (<b> Green Box </ b>) haben, werden Sie absolut"
 
 msgid "WELCOME_REQUIEREMENT"
-msgstr "<ul class='list_class'><li>enlever vos anciennes prises qui ne sont plus compatibles et connecter celles de la Cultibox</li><li>déconnecter votre Green Box qui peut causer des interférences avec la Cultibox</li></ul>"
+msgstr "<ul class='list_class'> <li> entfernen Sie Ihre alte Stecker, die nicht mehr kompatibel sind und verbinden die der Cultibox </ li> <li> trennen Sie die Green Box, die Interferenzen mit Cultibox </ li> <verursachen können / ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
-msgstr "Cliquer sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre Cultibox"
+msgstr "Klicken Sie auf die Schaltfläche Weiter, um den Setup-Assistenten beginnen und den Umgang mit Ihren Cultibox"
 
 msgid "WELCOME_WIZARD"
-msgstr "Assistant de configuration"
+msgstr "Configuration Wizard"
 
 msgid "WELCOME_LOGS"
-msgstr "Page de visualisation des logs"
+msgstr "Seite Anzeigen von Protokollen"
 
 msgid "WELCOME_CALENDAR"
-msgstr "Page de programmation du calendrier de culture"
+msgstr "Seite Programmschema Kultur"
 
 msgid "WELCOME_PROGRAM"
-msgstr "Page de création et visualisation des programmes des prises"
+msgstr "Seite Erstellung und Visualisierung von Programmen übernommen"
 
 # For the configuration part:
 msgid "CONFIGURE_TITLE_CULTIBOX"
-msgstr "Configurer votre système Cultibox"
+msgstr "Konfigurieren Sie Ihr System Cultibox"
 
 msgid "USER_CONF"
-msgstr "Interface"
+msgstr "Schnittstelle"
 
 msgid "SYSTEM_CONF"
 msgstr "Cultibox"
 
 msgid "CONFIGURE_COST"
-msgstr "Coût"
+msgstr "Kosten"
 
 msgid "CONFIGURE_CARD"
-msgstr "Carte SD"
+msgstr "SD-Karte"
 
 msgid "CONFIGURE_WIFI"
 msgstr "Wi-Fi"
 
 msgid "CONFIGURE_WIFI_IP"
-msgstr "Adresse de votre module Wifi"
+msgstr "Adresse des Wifi-Modul"
 
 msgid "ALWAYS_RECORD"
-msgstr "Toujours"
+msgstr "Immer"
 
 msgid "CONFIGURE_HUMIDITY"
-msgstr "Couleur des courbes d'hygrométrie"
+msgstr "Farbe Luftfeuchtigkeit Kurven"
 
 msgid "CONFIGURE_TEMPERATURE"
-msgstr "Couleur des courbes des températures"
+msgstr "Curve Farbtemperaturen"
 
 msgid "CONFIGURE_WATER"
-msgstr "Couleur des courbes des températures d'eau"
+msgstr "Farbkurven der Wassertemperaturen"
 
 msgid "CONFIGURE_LEVEL"
-msgstr "Couleur des courbes de niveau d'eau"
+msgstr "Farbe Konturen von Wasser"
 
 msgid "CONFIGURE_PH"
-msgstr "Couleur des courbes de PH"
+msgstr "Farbkurven PH"
 
 msgid "CONFIGURE_EC"
-msgstr "Couleur des courbes d'EC"
+msgstr "Farbe EG-Kurven"
 
 msgid "CONFIGURE_OD"
-msgstr "Couleur des courbes d'OD"
+msgstr "Farbe OD-Kurven"
 
 msgid "CONFIGURE_ORP"
-msgstr "Couleur des courbes d'ORP"
+msgstr "Farbe ORP Kurven"
 
 msgid "CONFIGURE_COST_COLOR"
-msgstr "Couleur du graphe de coût de l'installation"
+msgstr "Farbe Graphen Installationskosten"
 
 msgid "CONFIGURE_LANGUAGE"
-msgstr "Choisir votre langue"
+msgstr "Wählen Sie Ihre Sprache"
 
 msgid "CONFIGURE_FREQUENCY"
-msgstr "Fréquence d'enregistrement du climat (en minute)"
+msgstr "Aufnahmefrequenz von Klima (in Minuten)"
 
 msgid "CONFIGURE_POWER_FREQUENCY"
-msgstr "Fréquence d'enregistrement de la puissance (en minute)"
+msgstr "Recording Frequenzleistung (in Minuten)"
 
 msgid "CONFIGURE_NB_PLUGS"
-msgstr "Nombre de prises de votre système"
+msgstr "Anzahl der Steckdosen in Ihrem System"
 
 msgid "CONFIGURE_PLUGS_FREQUENCY"
-msgstr "Fréquence de mise à jour de l'état des prises (en seconde)"
+msgstr "Häufigkeit der Aktualisierung des Status entnommen (in Sekunden)"
 
 msgid "CONFIGURE_POWER"
-msgstr "Couleur des courbes de puissance"
+msgstr "Farbe Leistungskurven"
 
 msgid "CONFIGURE_POPUP"
-msgstr "Activer l'affichage des messages par popup"
+msgstr "Aktivieren Sie die Anzeige von Popup-Meldungen"
 
 msgid "VALIDATION_CONF"
-msgstr "Enregistrer la configuration"
+msgstr "Konfiguration speichern"
 
 msgid "LANG_FR"
-msgstr "Français"
+msgstr "Französisch"
 
 msgid "LANG_EN"
-msgstr "Anglais"
+msgstr "Englisch"
 
 msgid "COLOR_BLUE"
-msgstr "Bleu"
+msgstr "Blau"
 
 msgid "COLOR_RED"
-msgstr "Rouge"
+msgstr "Rot"
 
 msgid "COLOR_GREEN"
-msgstr "Vert"
+msgstr "Grün"
 
 msgid "COLOR_BLACK"
-msgstr "Noir"
+msgstr "Schwarz"
 
 msgid "COLOR_PURPLE"
-msgstr "Violet"
+msgstr "Lila"
 
 msgid "COLOR_ORANGE"
 msgstr "Orange"
 
 msgid "COLOR_PINK"
-msgstr "Rose"
+msgstr "Rosa"
 
 msgid "COLOR_BROWN"
-msgstr "Marron"
+msgstr "Braun"
 
 msgid "COLOR_YELLOW"
-msgstr "Jaune"
+msgstr "Gelb"
 
 msgid "YES"
-msgstr "Oui"
+msgstr "Ja"
 
 msgid "NO"
-msgstr "Non"
+msgstr "Nicht"
 
 msgid "CONFIGURE_ALARM"
-msgstr "Alarme"
+msgstr "Alarm"
 
 msgid "CONFIGURE_ALARM_ACTIV"
-msgstr "Activer le système d'alarme"
+msgstr "Aktivieren Sie das Alarmsystem"
 
 msgid "CONFIGURE_ALARM_VALUE"
-msgstr "Valeur du seuil de déclenchement de l'alarme"
+msgstr "Schwellwert für die Alarmauslösung"
 
 msgid "CONFIGURE_WIFI_ACTIV"
-msgstr "Activer le module Wi-Fi"
+msgstr "Aktivieren Sie Wi-Fi-Modul"
 
 msgid "CONFIGURE_WIFI_SSID"
-msgstr "Nom du réseau"
+msgstr "Netzwerkname"
 
 msgid "CONFIGURE_WIFI_KEY_TYPE"
-msgstr "Type de clef"
+msgstr "Art der Schlüssel"
 
 msgid "CONFIGURE_WIFI_PASSWORD"
-msgstr "Mot de passe du réseau"
+msgstr "Passwort-Netzwerk"
 
 msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
-msgstr "Confirmation du mot de passe"
+msgstr "Passwort bestätigen"
 
 msgid "CHECK_UPDATE"
-msgstr "Vérifier automatiquement la présence de mises à jour"
+msgstr "Überprüfen Sie, ob Updates automatisch"
 
 msgid "CHECK_STATISTICS"
-msgstr "Envoi d'informations pour aider le développement"
+msgstr "Senden von Informationen, um die Entwicklung"
 
 msgid "MANAGE_RESET_SD_CARD"
-msgstr "Formater une carte SD pour la rendre compatible Cultibox"
+msgstr "Formatieren einer SD-Karte, um sie kompatibel zu machen Cultibox"
 
 msgid "MANAGE_RESET_CARD_NOT_FOUND"
-msgstr "Aucune carte formatable détectée"
+msgstr "Keine Karte erkannt formatierbare"
 
 msgid "MANAGE_RESET_CARD"
-msgstr "Formater la carte"
+msgstr "Karte formatieren"
 
 msgid "RESET_CONFIRM_SD_CARD"
-msgstr "Êtes-vous sûr de vouloir formater votre carte SD? Vos fichiers de logs pourraient être détruits."
+msgstr "Sind Sie sicher, dass Sie Ihre SD-Karte formatieren? Ihre Log-Dateien können zerstört werden."
 
 msgid "SECOND_REGUL_ENABLE"
-msgstr "Activer la régulation secondaire (Utilisateur expert)"
+msgstr "Aktivieren Sekundärregelung (Expert User)"
 
 msgid "ADVANCED_REGUL_OPTIONS"
-msgstr "Autoriser la modification des options avancées de régulation"
+msgstr "Lassen Bearbeitung von erweiterten Steuerungsmöglichkeiten"
 
 msgid "FORMAT_PROGRESS"
-msgstr "Progression du formatage"
+msgstr "Formatieren Fortschritte"
 
 msgid "SUCCESS_FORMAT"
-msgstr "Formatage de la carte réalisé avec succès"
+msgstr "Erfolgreich Formatieren der Karte"
 
 msgid "ERROR_FORMAT"
-msgstr "Erreur lors du formatage de la carte SD"
+msgstr "Fehler beim Formatieren der SD-Karte"
 
 msgid "ALARM_DESCRIPTION"
-msgstr "L'alarme de la Cultibox permet d'éteindre toutes les prises lorsque la sécurité de l'espace de culture est en jeu. Définissez une température qui, une fois dépassée, provoque la coupure de toute les prises. <br /><br /><b>Attention</b>: une fois ce seuil atteint, les prises se coupent et la Cultibox ne reviendra à un état normale que lorsque vous aurez acquitté l'alarme directement sur le boitier."
+msgstr "Der Alarm des Cultibox schaltet alle Verkaufsstellen, wo Raumsicherheit Kultur steht auf dem Spiel Stellen eine Temperatur, die bei Überschreiten bewirkt, dass die Entfernung aller Fänge. <br /> <br /> <b> Warnung </ b>: Ist diese Schwelle erreicht ist, entnommen schneiden und Cultibox nicht zu einem normalen Zustand zurück, bis Sie den Alarm direkt auf den Fall bestätigt wurden."
 
 msgid "SHOW_COST"
-msgstr "Afficher le menu de calcul des coûts"
+msgstr "Menü Ansicht kostet"
 
 msgid "SHOW_HISTORIC"
-msgstr "Afficher le menu d'historique de vos actions"
+msgstr "Sehen Sie sich die Geschichte Ihrer Aktionen-Menü"
 
 msgid "RESET_MINMAX"
-msgstr "Remise à zéro du min/max"
+msgstr "Zurücksetzen der min / max"
 
 msgid "WIFI_DESCRIPTION"
-msgstr "Le module Wi-Fi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox:e état des prises, configuration actuelle..."
+msgstr "Die Wi-Fi-Modul, mit dem Fern Cultibox interagieren. Sobald das Modul aktiviert ist, wird ein Tab Wifi "in der Software-Menü, das Sie den aktuellen Status Ihrer Cultibox anzeigen können sein: e-Buchse Status, die aktuelle Konfiguration ..."
 
 msgid "WIFI_IP_MANUAL"
-msgstr "Configurer l'adresse IP manuellement"
+msgstr "Konfigurieren Sie manuell die IP-Adresse"
 
 msgid "SHOW_CURRENT_PWD"
-msgstr "Laisser la souris clickée sur l'image pour afficher le mot de passe actuellement configuré"
+msgstr "Lassen Sie die Maus clickée Bild, um die aktuell konfigurierten Passwort anzeigen"
 
 msgid "CONFIGURE_RTC_OFFSET"
-msgstr "Décalage de l'horloge interne"
+msgstr "Verschiebung des internen Takt"
 
 msgid "RTC_OFFSET_UNITY"
-msgstr "seconde(s)"
+msgstr "Sekunde (n)"
 
 
 # For the logs part:
 msgid "HISTO_GRAPH"
-msgstr "Graphiques climatiques"
+msgstr "Klimagraphen"
 
 msgid "SELECT_DISPLAYED_DAY"
-msgstr "Afficher les informations pour"
+msgstr "Anzeigen von Informationen für:"
 
 msgid "SELECT_LOG_TITLE"
-msgstr "Affichage des données enregistrées par la Cultibox"
+msgstr "Anzeige der aufgezeichneten Daten durch Cultibox"
 
 msgid "ONE_DAY"
-msgstr "un jour"
+msgstr "einmal"
 
 msgid "ONE_MONTH"
-msgstr "un mois"
+msgstr "1 Monat"
 
 msgid "SELECT_DAY"
-msgstr "Jour à afficher (AAAA-MM-JJ)"
+msgstr "Tag-Anzeige (YYYY-MM-DD)"
 
 msgid "SELECT_MONTH"
-msgstr "Sélectionner le mois à afficher "
+msgstr "Wählen Sie die Monatsansicht"
 
 msgid "VIEW"
-msgstr "Afficher"
+msgstr "Anzeige"
 
 msgid "DRAG_PLOT"
-msgstr "Sélectionner une zone afin de l\'agrandir"
+msgstr "Wählen Sie einen Bereich in dem \ vergrößern"
 
 msgid "XAXIS_LEGEND_DAY"
-msgstr "Heures"
+msgstr "Stunden"
 
 msgid "XAXIS_LEGEND_MONTH"
-msgstr "Jours du mois"
+msgstr "Tage im Monat"
 
 msgid "MONTH01"
-msgstr "Janvier"
+msgstr "Januar"
 
 msgid "MONTH02"
-msgstr "Février"
+msgstr "Februar"
 
 msgid "MONTH03"
-msgstr "Mars"
+msgstr "März"
 
 msgid "MONTH04"
-msgstr "Avril"
+msgstr "April"
 
 msgid "MONTH05"
 msgstr "Mai"
 
 msgid "MONTH06"
-msgstr "Juin"
+msgstr "Juni"
 
 msgid "MONTH07"
-msgstr "Juillet"
+msgstr "Juli"
 
 msgid "MONTH08"
-msgstr "Août"
+msgstr "August"
 
 msgid "MONTH09"
-msgstr "Septembre"
+msgstr "September"
 
 msgid "MONTH10"
-msgstr "Octobre"
+msgstr "Oktober"
 
 msgid "MONTH11"
-msgstr "Novembre"
+msgstr "November"
 
 msgid "MONTH12"
-msgstr "Décembre"
+msgstr "Dezember"
 
 msgid "M01"
-msgstr "Jan"
+msgstr "Januar"
 
 msgid "M02"
-msgstr "Fév"
+msgstr "Februar"
 
 msgid "M03"
-msgstr "Mar"
+msgstr "März"
 
 msgid "M04"
-msgstr "Avr"
+msgstr "April"
 
 msgid "M05"
 msgstr "Mai"
 
 msgid "M06"
-msgstr "Juin"
+msgstr "Juni"
 
 msgid "M07"
-msgstr "Juil"
+msgstr "Juli"
 
 msgid "M08"
-msgstr "Août"
+msgstr "August"
 
 msgid "M09"
-msgstr "Sept"
+msgstr "Sieben"
 
 msgid "M10"
-msgstr "Oct"
+msgstr "Oktober"
 
 msgid "M11"
-msgstr "Nov"
+msgstr "November"
 
 msgid "M12"
-msgstr "Déc"
+msgstr "Dezember"
 
 msgid "SELECT_PROGRAM_PLUG"
-msgstr "Programme à comparer"
+msgstr "Programm zum vergleichen"
 
 msgid "SELECT_POWER_PLUG"
-msgstr "Afficher la puissance consommée"
+msgstr "Display-Stromverbrauch"
 
 msgid "FORCE_ON_CHART"
-msgstr "Marche forcée"
+msgstr "Gewaltmarsch"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte Cultibox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note: </i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
+msgstr "Vielen Dank für Ihre Geduld und die Karte nicht <b> <i> Cultibox </ i> </ b> zu entfernen die Zeit die Seite geladen und die Software verarbeitet Ihre Daten. <br /> <br /> <b> <i> Hinweis: </ i> </ b> Wenn ein Fehler auftritt, können Sie die Seite neu zu laden, um zu versuchen, um den Vorgang abzuschließen"
 
 msgid "WAITING_MONTH_WITHOUT_SD"
-msgstr "Merci de patienter quelques instants le temps que la page se charge et que le logiciel traite vos données"
+msgstr "Vielen Dank für Ihre Geduld, so lange die Seite geladen und die Software behandelt Ihre Daten"
 
 msgid "PREVIOUS_BUTTON_DAY"
-msgstr "Afficher les informations pour le jour précédent"
+msgstr "Anzeigen von Informationen für den vorherigen Tag"
 
 msgid "NEXT_BUTTON_DAY"
-msgstr "Afficher les informations pour le jour suivant"
+msgstr "Anzeigen von Informationen für den nächsten Tag"
 
 msgid "PREVIOUS_BUTTON_MONTH"
-msgstr "Afficher les informations pour le mois précédent"
+msgstr "Anzeigen von Informationen für den Vormonat"
 
 msgid "NEXT_BUTTON_MONTH"
-msgstr "Afficher les informations pour le mois suivant"
+msgstr "Anzeigen von Informationen für den folgenden Monat"
 
 msgid "PRECISION_GRAPH_DAY"
-msgstr "Les logs sont affichés avec une précision maximale d'un point toutes les minutes"
+msgstr "Die Protokolle werden mit höchster Präzision von einem Punkt pro Minute angezeigt"
 
 msgid "PRECISION_GRAPH_MONTH"
-msgstr "Les logs sont affichés avec une précision maximale d'un point toutes les vingt minutes"
+msgstr "Die Protokolle werden mit höchster Präzision von einem Punkt alle zwanzig Minuten angezeigt"
 
 msgid "SELECT_SENSOR_NB"
-msgstr "Afficher les valeurs pour"
+msgstr "Zeigen Werte für"
 
 msgid "SENSOR"
-msgstr "Capteur"
+msgstr "Sensor"
 
 msgid "MONTH_DATE"
-msgstr "Mois et année à afficher"
+msgstr "Monat und Jahr, um die Anzeige"
 
 msgid "ALL_SENSOR"
-msgstr "tous les capteurs"
+msgstr "alle Sensoren"
 
 msgid "SELECT_SENSOR"
-msgstr "le capteur"
+msgstr "Sensor"
 
 msgid "MANAGE_LOG_INFOS"
-msgstr "Gestion de vos données climatiques"
+msgstr "Verwalten Sie Ihre Daten"
 
 msgid "MANAGE_RESET_TITLE"
-msgstr "Supprimer vos anciens logs de température et d'hygrométrie"
+msgstr "Löschen Sie alte Protokolle Temperatur und Feuchtigkeit"
 
 msgid "MANAGE_RESET_TITLE_POWER"
-msgstr "Supprimer vos anciens logs de mesure de puissance"
+msgstr "Löschen Sie alte Protokolle Leistungsmessung"
 
 msgid "MANAGE_RESET_LOG"
-msgstr "Supprimer les logs"
+msgstr "Löschen Sie die Protokolle"
 
 msgid "MANAGE_RESET_POWER"
-msgstr "Supprimer les logs de puissance "
+msgstr "Protokolle entfernen Macht"
 
 msgid "IMPORT_LOG_TITLE"
-msgstr "Importer les logs de: température, humidité, puissance des"
+msgstr "Import-Protokolle: Temperatur, Feuchtigkeit, Strom"
 
 msgid "IMPORT_LAST_MONTH"
-msgstr "derniers mois"
+msgstr "im letzten Monat"
 
 msgid "IMPORT_LOG"
-msgstr "Importer les logs"
+msgstr "Import-Protokolle"
 
 msgid "NO_IMPORT_LOG"
-msgstr "Pas de carte SD détectée"
+msgstr "Keine SD-Karte erkannt"
 
 msgid "MIN_Y_AXIS_LOG"
-msgstr "Valeur minimale de l'axe Y"
+msgstr "Minimalwert der Y-Achse"
 
 msgid "MAX_Y_AXIS_LOG"
-msgstr "Valeur maximale de l'axe Y"
+msgstr "Maximalwert der Y-Achse"
 
 msgid "EMPTY_REGUL"
-msgstr "Aucune régulation programmée"
+msgstr "Kein programmierten Steuer"
 
 msgid "REGUL_TITLE_PLUG"
-msgstr "Régulation pour la prise"
+msgstr "Verordnung für die Entscheidung"
 
 msgid "SUMARY_REGUL_TITLE"
-msgstr "Résumé des régulations secondaires actives pour les prises sélectionnées"
+msgstr "Zusammenfassung der aktiven Sekundär Vorschriften für den ausgewählten gemacht"
 
 msgid "SUMARY_REGUL_SUBTITLE"
-msgstr "Régulation de la prise"
+msgstr "Verordnung der Entscheidung"
 
 msgid "SUMARY_REGUL_SENSO"
-msgstr "Déclenchement"
+msgstr "Freisetzung"
 
 msgid "SUMARY_REGUL_SENSS"
-msgstr "Seuil"
+msgstr "Schwelle"
 
 msgid "SUMARY_REGUL_VALUE"
-msgstr "Valeur du seuil"
+msgstr "Schwellwert"
 
 msgid "SUMARY_EMPTY_REGUL"
-msgstr "Pas de régulation pour la/les prise(s) sélectionnée(s)"
+msgstr "Keine Regelung für / die Steckdose (n), ausgewählt (e)"
 
 msgid "SUMARY_EMPTY_SELECTION"
-msgstr "Pas de prise(s) sélectionnée(s)"
+msgstr "Keine Entscheidung (en), ausgewählt (e)"
 
 msgid "SUMARY_ABOVE"
-msgstr "Au-dessus"
+msgstr "Oben"
 
 msgid "SUMARY_UNDER"
-msgstr "En-dessous"
+msgstr "Unten"
 
 msgid "SUMARY_REGUL_TEMP"
-msgstr "Température"
+msgstr "Temperatur"
 
 msgid "SUMARY_REGUL_HYGRO"
-msgstr "Hygrométrie"
+msgstr "Luftfeuchtigkeit"
 
 msgid "CONFIGURE_Y_AXIS_HUMI"
-msgstr "Réglage de l'échelle de l'humidité"
+msgstr "Einstellen des Pegels des Feuchtigkeits"
 
 msgid "CONFIGURE_Y_AXIS_TEMP"
-msgstr "Réglage de l'échelle des températures"
+msgstr "Einstellung der Temperaturskala"
 
 msgid "CONFIGURE_Y_AXIS_POWER"
-msgstr "Réglage de l'échelle des puissances"
+msgstr "Skaleneinstellung Kräfte"
 
 msgid "MANAGE_EXPORT_LOG_CSV"
-msgstr "Exporter vos informations de logs"
+msgstr "Exportieren Sie Ihre Informationen Protokolle"
 
 msgid "MANAGE_EXPORT_EMPTY_LOG_CSV"
-msgstr "Pas de logs dans votre base"
+msgstr "Keine Protokolle in der Datenbank"
 
 msgid "MANAGE_EXPORT_POWER_CSV"
-msgstr "Exporter vos informations de puissance"
+msgstr "Exportieren Sie Ihre Leistungsinformation"
 
 msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
-msgstr "Pas de logs de puissance dans votre base"
+msgstr "Keine Protokolle in Ihre Machtbasis"
 
 msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
-msgstr "Export de vos logs"
+msgstr "Exportieren Sie Ihre Protokolle"
 
 msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
-msgstr "Export de vos logs de puissance"
+msgstr "Exportieren Sie Ihre Log-Leistung"
 
 msgid "EXAMPLE_LOG"
-msgstr "Exemple de logs"
+msgstr "Beispiel Protokoll"
 
 msgid "LOAD_LOG_PROGRESS"
-msgstr "Progression du chargement des logs"
+msgstr "Laden Fortschritte Protokolle"
 
 msgid "PROGRESS_POWER"
-msgstr "Progression du chargement des fichiers de puissance"
+msgstr "Laden Fortschritte Dateien Macht"
 
 msgid "PROGRESS_LOG"
-msgstr "Progression du chargement des fichiers de température et d'humidité"
+msgstr "Laden Fortschritte Dateien von Temperatur und Feuchte"
 
 msgid "ERROR_LOAD_LOG"
-msgstr "Erreur lors du chargement des logs, ceci peut être du à un temps de réponse trop long, recommencez l'opération pour vous en assurer"
+msgstr "Fehler beim Laden Protokolle, kann dies zu einer Reaktionszeit zu lang sein, den Vorgang wiederholen, um sicher zu sein"
 
 msgid "DELETE_ALL_LOGS"
-msgstr "Supprimer tous les logs existant"
+msgstr "Entfernen Sie alle vorhandenen Protokolle"
 
 msgid "DELETE_SPECIFIC_LOGS"
-msgstr "Supprimer les logs d'une période précise"
+msgstr "Entfernen Sie die Protokolle für einen bestimmten Zeitraum"
 
 msgid "DELETE_LOGS_FROM"
-msgstr "Supprimer les logs du (AAAA-MM-JJ)"
+msgstr "Protokolle löschen (JJJJ-MM-DD)"
 
 msgid "DELETE_LOGS_TO"
-msgstr "jusqu'au (AAAA-MM-JJ)"
+msgstr "bis (YYYY-MM-DD)"
 
 msgid "ERROR_DELETE_LOGS"
-msgstr "Problème lors de la suppréssion des logs dans la base."
+msgstr "Problem beim Löschen Protokolle in der Datenbank."
 
 msgid "ERROR_FORMAT_DATE"
-msgstr "Erreur dans le format de la date (AAAA-MM-JJ). Le jour de fin doit être égal ou supérieur ou jour de départ"
+msgstr "Fehler in der Datumsformat (JJJJ-MM-DD). Das Ende Tag muss gleich oder größer als oder Abreise Tag"
 
 msgid "DELETE_PROGRESS"
-msgstr "Progression de la suppréssion"
+msgstr "Fortschritt der Löschung"
 
 msgid "SUMARY_RESUME_MINMAX"
-msgstr "Résumé des valeurs minimales et maximales"
+msgstr "Zusammenfassung der minimalen und maximalen Werte"
 
 msgid "TEMP_SENSOR"
-msgstr "Température" 
+msgstr "Temperature ""
 
 msgid "HUMI_SENSOR"
-msgstr "Hygrométrie"
+msgstr "Luftfeuchtigkeit"
 
 msgid "WATER_SENSOR"
-msgstr "Température d'eau"
+msgstr "Wassertemperatur"
 
 msgid "LEVEL_SENSOR"
-msgstr "Niveau d'eau"
+msgstr "Wasserstand"
 
 msgid "PH_SENSOR"
 msgstr "PH"
 
 msgid "EC_SENSOR"
-msgstr "EC"
+msgstr "EG"
 
 msgid "OD_SENSOR"
 msgstr "OD"
@@ -563,34 +563,34 @@ msgid "ORP_SENSOR"
 msgstr "ORP"
 
 msgid "TEMP_LEGEND"
-msgstr "Température (en °C)"
+msgstr "Temperatur (° C)"
 
 msgid "HUMI_LEGEND"
-msgstr "Hygrométrie (en pourcentage)"
+msgstr "Luftfeuchtigkeit (in Prozent)"
 
 msgid "WATER_LEGEND"
-msgstr "Température de l'eau (en °C)"
+msgstr "Wassertemperatur (° C)"
 
 msgid "LEVEL_LEGEND"
-msgstr "Niveau de l'eau (en cm)"
+msgstr "Wasserstand (in cm)"
 
 msgid "PH_LEGEND"
-msgstr "PH de la solution"
+msgstr "PH der Lösung"
 
 msgid "EC_LEGEND"
-msgstr "Electro-conductivité (en µs/cm)"
+msgstr "Elektrische Leitfähigkeit (in Mikrosekunden / cm)"
 
 msgid "OD_LEGEND"
-msgstr "Oxydo-reduction (en mg/l)"
+msgstr "Redox (mg / l)"
 
 msgid "ORP_LEGEND"
-msgstr "ORP (en mV)"
+msgstr "ORP (mV)"
 
 msgid "POWER_LEGEND"
-msgstr "Puissance consommée (en W)"
+msgstr "Leistungsaufnahme (W)"
 
 msgid "POWER"
-msgstr "Puissance"
+msgstr "Macht"
 
 msgid "SUMARY_MAX"
 msgstr "Max"
@@ -601,109 +601,109 @@ msgstr "Min"
 
 # For the plugs part:
 msgid "PLUG"
-msgstr "Configurer vos prises"
+msgstr "Konfigurieren Sie Ihren Fang"
 
 msgid "PLUG_MENU"
-msgstr "Prise"
+msgstr "Einnahme"
 
 msgid "TYPE_PLUG"
-msgstr "Type d'élément branché sur la prise"
+msgstr "Geben Sie trendige Artikel auf Eis"
 
 msgid "TOLERANCE_PLUG"
-msgstr "Tolérance de la prise"
+msgstr "Toleranz Entscheidung"
 
 msgid "NAME_PLUG"
-msgstr "Nom de la prise"
+msgstr "Nennen genommen"
 
 msgid "PLUG_UNKNOWN"
-msgstr "Autre"
+msgstr "Andere"
 
 msgid "PLUG_LAMP"
 msgstr "Lampe"
 
 msgid "PLUG_VENTILATOR"
-msgstr "Ventilateur"
+msgstr "Fan"
 
 msgid "PLUG_HUMIDIFIER"
-msgstr "Humidificateur"
+msgstr "Luftbefeuchter"
 
 msgid "PLUG_DEHUMIDIFIER"
-msgstr "Déshumidificateur"
+msgstr "Luftentfeuchter"
 
 msgid "PLUG_HEATING"
-msgstr "Chauffage"
+msgstr "Heizung"
 
 msgid "PLUG_PUMP"
-msgstr "Pompe à eau"
+msgstr "Wasserpumpe"
 
 msgid "VALIDATION_PLUG_CONF"
-msgstr "Enregistrer la configuration"
+msgstr "Konfiguration speichern"
 
 msgid "POWER_PLUG"
-msgstr "Puissance consommée par l'élément (en Watt)"
+msgstr "Strom durch das Element (in Watt) verbraucht"
 
 msgid "ENABLE_REGUL_PLUG"
-msgstr "Régulation secondaire (Utilisateur expert)"
+msgstr "Sekundärregelung (Expert User)"
 
 msgid "CONFIGURE_REGUL_SENSOR"
-msgstr "Capteur(s) utilisé(s) pour la régulation"
+msgstr "Sensor (en) (en) zur Steuerung verwendet,"
 
 msgid "CONFIGURE_REGUL_SENSO"
-msgstr "Déclenchement en fonction de"
+msgstr "Basierend Auslösen"
 
 msgid "CONFIGURE_REGUL_VALUE"
-msgstr "Seuil de déclenchement"
+msgstr "Trigger-"
 
 msgid "CONFIGURE_REGUL_SENSS"
-msgstr "Déclenchement si la mesure est en"
+msgstr "Auslösen, wenn die Maßnahme"
 
 msgid "REGUL_TEMP"
-msgstr "Température"
+msgstr "Temperatur"
 
 msgid "REGUL_HUMI"
-msgstr "Humidité"
+msgstr "Luftfeuchtigkeit"
 
 msgid "REGUL_UNDER"
-msgstr "dessous du seuil"
+msgstr "unterhalb des Schwellen"
 
 msgid "REGUL_ABOVE"
-msgstr "dessus du seuil"
+msgstr "oberhalb des Schwellen"
 
 msgid "FOR_THE_PLUG"
-msgstr "pour la prise"
+msgstr "zur Entscheidung"
 
 msgid "STATE_PLUG"
-msgstr "Etat de la prise"
+msgstr "Staatsnahme"
 
 msgid "PLUG_ENABLED"
-msgstr "Activée"
+msgstr "Aktiviert"
 
 msgid "PLUG_DISABLED"
-msgstr "Désactivée"
+msgstr "Aus"
 
 msgid "VALID_DISABLED_PLUG"
-msgstr "Prise désactivée avec succès"
+msgstr "Erfolgreich abgenommen"
 
 msgid "VALID_ENABLED_PLUG"
-msgstr "Prise activée avec succès"
+msgstr "Aktiviert erfolgreich genommen"
 
 msgid "PLUG_HISTO_NUMBER"
-msgstr "Prise numéro"
+msgstr "Unter Ausgabe"
 
 msgid "PLUG_MAX_POWER"
-msgstr "Type de prise (puissance maximale)"
+msgstr "Steckertyp (maximale Kapazität)"
 
 msgid "SAVE_AND_CONFIGURE_PROGRAM"
-msgstr "Sauvegarder les changements et configurer le programme de la prise"
+msgstr "Änderungen speichern und konfigurieren Sie die Programmentscheidung"
 
 msgid "CONFIGURE_REGUL_TOLERANCE"
-msgstr "Tolérance de la régulation secondaire"
+msgstr "Toleranz der Sekundärregel"
 
 msgid "COMPUTE_REGUL_METHOD"
-msgstr "Méthode de calcul de la valeur de régulation"
+msgstr "Verfahren zur Berechnung des Steuerwerts"
 
 msgid "AVERAGE"
-msgstr "Moyenne"
+msgstr "Durchschnitt"
 
 msgid "MINIMUM"
 msgstr "Minimum"
@@ -712,687 +712,687 @@ msgid "MAXIMUM"
 msgstr "Maximum"
 
 msgid "JUMPTO_WIZARD"
-msgstr "Utiliser l'assistant pour configurer cette prise"
+msgstr "Verwenden Sie den Assistenten, um diese Entscheidung zu konfigurieren"
 
 msgid "DIMMER"
-msgstr "Variateur"
+msgstr "Dimmer"
 
 msgid "CANAL"
-msgstr "Canal"
+msgstr "Kanal"
 
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
-msgstr "Visualiser le comportement actuel de la prise"
+msgstr "Zeigen Sie die aktuelle Verhalten der Entscheidung"
 
 msgid "CONFIGURE_PROGRAM"
-msgstr "Configurer le comportement de la prise"
+msgstr "Konfigurieren des Verhaltens von Entscheidungs"
 
 msgid "START_TIME_PROGRAM"
-msgstr "Heure de départ"
+msgstr "Abfahrtszeit"
 
 msgid "END_TIME_PROGRAM"
-msgstr "Heure de fin"
+msgstr "Endzeit"
 
 msgid "APPLY_PROGRAM"
-msgstr "Valider"
+msgstr "Bestätigen"
 
 msgid "VALUE_ON_OFF"
-msgstr "Fonctionnement"
+msgstr "Betrieb"
 
 msgid "HUMI_WISHED"
-msgstr "Humidité voulue"
+msgstr "Wunsch Feuchtigkeit"
 
 msgid "TEMP_WISHED"
-msgstr "Température voulue"
+msgstr "Wunschtemperatur"
 
 msgid "WATER_WISHED"
-msgstr "Hauteur d'eau voulue"
+msgstr "Gewünschte Höhe Wasser"
 
 msgid "DIMMER_WISHED"
-msgstr "Puissance voulue"
+msgstr "Wunschleistung"
 
 msgid "VALUE_ON"
-msgstr "Marche"
+msgstr "Wandern"
 
 msgid "VALUE_OFF"
-msgstr "Arrêt"
+msgstr "Stopp"
 
 msgid "VALUE_REGUL"
-msgstr "Régulation"
+msgstr "Regulierung"
 
 msgid "CURRENT_PLUG_PROGRAM"
-msgstr "Comportement actuel de la prise"
+msgstr "Aktuelle Verhalten der Entscheidung"
 
 msgid "TIMEPICKER_SELECT_TIME"
-msgstr "Choisir une heure"
+msgstr "Wählen Sie eine Zeit"
 
 msgid "TIMEPICKER_TIME"
-msgstr "Temps"
+msgstr "Zeit"
 
 msgid "TIMEPICKER_HOUR"
-msgstr "Heure"
+msgstr "Zeit"
 
 msgid "TIMEPICKER_MINUTE"
 msgstr "Minute"
 
 msgid "TIMEPICKER_SECOND"
-msgstr "Seconde"
+msgstr "Zweite"
 
 msgid "TIMEPICKER_ENDDAY"
-msgstr "Fin de la journée"
+msgstr "Ende des Tages"
 
 msgid "TIMEPICKER_CLOSE"
-msgstr "Valider"
+msgstr "Bestätigen"
 
 msgid "TIMEPICKER_BUTTON_TEXT"
-msgstr "Choisir l\'heure"
+msgstr "Wählen Sie \ 's Zeit"
 
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
-msgstr "Choisir la date"
+msgstr "Wählen Sie das Datum"
 
 msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
-msgstr "Comportement de votre prise"
+msgstr "Verhalten von Ihrer Entscheidung"
 
 msgid "CHART_FORCE_ON_VALUE"
-msgstr "Marche forcée" 
+msgstr "Zwangs "auf"
 
 msgid "EXPORT_PROGRAM"
-msgstr "Exporter"
+msgstr "Export"
 
 msgid "IMPORT_PROGRAM"
-msgstr "Importer"
+msgstr "Import"
 
 msgid "RESET_PROGRAM"
-msgstr "Re-initialiser"
+msgstr "Neu initialisieren"
 
 msgid "SUMARY_TITLE"
-msgstr "Résumé des actions pour la prise"
+msgstr "Zusammenfassung von Handlungen,"
 
 msgid "SUMARY_ON"
-msgstr "Mise en marche de la prise"
+msgstr "Beginn der Einnahme"
 
 msgid "SUMARY_OFF"
-msgstr "Mise hors tension de la prise"
+msgstr "Spannung Put herausgenommen"
 
 msgid "SUMARY_HOUR"
-msgstr "à"
+msgstr "zu"
 
 msgid "EMPTY_ACTION"
-msgstr "Aucune action programmée"
+msgstr "Keine geplante Aktion"
 
 msgid "SUMARY_REGUL_ON"
-msgstr "Régulation en marche"
+msgstr "Verordnung Arbeit"
 
 msgid "SUMARY_REGUL_OFF"
-msgstr "Régulation à l'arrêt"
+msgstr "Verordnung zu stoppen"
 
 msgid "ADD_PLUG"
-msgstr "Ajouter une prise"
+msgstr "Unterstützung hinzufügen"
 
 msgid "MAX_PLUG_REACHED"
-msgstr "Maximum de prises atteint"
+msgstr "Bag-Grenze erreicht"
 
 msgid "REMOVE_PLUG"
-msgstr "Supprimer une prise"
+msgstr "Genommen Löschen"
 
 msgid "MIN_PLUG_REACHED"
-msgstr "Minimum de prises atteint"
+msgstr "Mindestfang erreicht"
 
 msgid "PLUG_ADDED"
-msgstr "Prise ajoutée avec succès"
+msgstr "Taken erfolgreich hinzugefügt"
 
 msgid "PLUG_MAX_ADDED"
-msgstr "Vous avez atteint le nombre maximal de prises configurables"
+msgstr "Sie haben die maximale Anzahl der konfigurierbaren genommen erreicht"
 
 msgid "PLUG_MIN_ADDED"
-msgstr "Vous avez atteint le nombre minimal de prises configurables"
+msgstr "Sie haben die Mindestanzahl von konfigurierbaren genommen erreicht"
 
 msgid "PLUG_REMOVED"
-msgstr "Prise supprimée avec succès"
+msgstr "Gelöschte erfolgreich genommen"
 
 msgid "VALUE_REGUL_SECOND"
-msgstr "Régulation secondaire"
+msgstr "Sekundärregelung"
 
 msgid "SECOND_REGUL_ON"
-msgstr "Activée"
+msgstr "Aktiviert"
 
 msgid "SECOND_REGUL_OFF"
-msgstr "Désactivée"
+msgstr "Aus"
 
 msgid "RESET_OLD_PROGRAM"
-msgstr "Effacer l'ancien programme"
+msgstr "Löschen Sie das alte Programm"
 
 msgid "PROGRAM_NEW_ACTION"
-msgstr "Programmer une action"
+msgstr "Programmer Aktion"
 
 msgid "PROGRAM_PONCTUAL"
-msgstr "ponctuelle"
+msgstr "Punkt"
 
 msgid "PROGRAM_CYCLIC"
-msgstr "cyclique"
+msgstr "zyklisch"
 
 msgid "REPEAT_EVERY"
-msgstr "Répéter toutes les"
+msgstr "Wiederholen Sie alle"
 
 msgid "MANAGE_PROGRAM_INFOS"
-msgstr "Gestion de vos programmes"
+msgstr "Verwalten Sie Ihre Programme"
 
 msgid "TITLE_EXPORT_PROGRAM"
-msgstr "Exporter le programme de la prise"
+msgstr "Export Programmentscheidung"
 
 msgid "TITLE_IMPORT_PROGRAM"
-msgstr "Importer un programme pour la prise"
+msgstr "Importieren Sie ein Programm für die Aufnahme"
 
 msgid "TITLE_RESET_PROGRAM"
-msgstr "Effacer le programme de la prise"
+msgstr "Klar Programmentscheidung"
 
 msgid "RESET_ALL_PROGRAM"
-msgstr "de toutes les prises"
+msgstr "alle genommen"
 
 msgid "TITLE_ADD_PLUG"
-msgstr "Ajouter une prise à configurer"
+msgstr "In Unterstützung konfigurieren"
 
 msgid "TITLE_REMOVE_PLUG"
-msgstr "Supprimer la dernière prise"
+msgstr "Die letzte Aufnahme löschen"
 
 msgid "RESET_CONFIRM_PROGRAM"
-msgstr "Êtes-vous sûr de vouloir ré-initialiser le programme pour la/les prise(s) sélectionnée(s)?"
+msgstr "Sind Sie sicher, dass Sie das Programm / die Steckdose (n), ausgewählt (en) zurückzusetzen zu wollen?"
 
 msgid "DATA_LABEL"
-msgstr "Afficher les états des prises selectionnées"
+msgstr "Aussagen anzeigen Ausgewählte genommen"
 
 msgid "BEHAVIOUR"
-msgstr "Comportement"
+msgstr "Verhalten"
 
 msgid "REGULATION"
-msgstr "régulation"
+msgstr "Regulierung"
 
 msgid "CONFIRM_SAME_PROGRAM"
-msgstr "Les heures du programme rentrées sont les mêmes que le précédent programme. Ceci modifiera votre ancien programme, voulez-vous appliquer ce programme tout de même?"
+msgstr "Programmstunden werden das gleiche wie das vorherige Programm zurück. Dies wird Ihre alte Programm zu ändern, würden Sie dieses Programm sowieso bewerben?"
 
 msgid "JUMPTO_PLUG"
-msgstr "Configurer la prise associée à ce programme"
+msgstr "Konfigurieren der Unterstützung mit diesem Programm verbunden"
 
 msgid "ERROR_MAX_PROGRAM"
-msgstr "Le nombre maximal de changement d'état pour les prises (limité à 999 pour toutes les prises confondues) a été atteint. La dernière action de vos programmes se déroulera à:"
+msgstr "Die maximale Anzahl der Zustandsänderung zur Entscheidung (999 für alle kombinierten Dosen begrenzt) erreicht worden ist. Die letzte Aktion Ihrer Programme findet statt im:"
 
 msgid "CYCLIC_DURATION_TIME"
-msgstr "Durée du cycle"
+msgstr "Zyklus"
 
 msgid "VALUE_DIMMER"
-msgstr "Variateur"
+msgstr "Dimmer"
 
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
-msgstr "Exporter votre graphe"
+msgstr "Exportieren Sie Ihre Grafik"
 
 msgid "PRINT_HIGHCHART"
-msgstr "Imprimer le graphique"
+msgstr "Drucken Sie das Diagramm"
 
 msgid "EXPORT_HIGHCHART"
-msgstr "Exporter le graphique dans un document ou une image"
+msgstr "Export Diagramm in ein Dokument oder Bild"
 
 msgid "EXPORT_PNG"
-msgstr "Exporter au format PNG"
+msgstr "PNG exportieren"
 
 msgid "EXPORT_JPEG"
-msgstr "Exporter au format JPEG"
+msgstr "Export in JPEG"
 
 msgid "EXPORT_PDF"
-msgstr "Exporter au format PDF"
+msgstr "Export in PDF"
 
 msgid "EXPORT_SVG"
-msgstr "Exporter au format SVG"
+msgstr "Export nach SVG"
 
 msgid "RESET_ZOOM_TITLE"
-msgstr "Annuler le zoom"
+msgstr "Abbrechen Zoom"
 
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
-msgstr "Bienvenue dans l'interface de configuration et d'utilisation de votre Cultibox. L'assistant va vous permettre facilement de configurer les programmes associés à vos prises, de configurer le type de prise et leur comportement. Cliquer sur le bouton <b>suivant</b> pour lancer l'assistant. Vous pouvez passer cette étape et configurer manuellement vos prises en cliquant sur le bouton <b>Fermer l'assistant</b>"
+msgstr "Willkommen auf der Interface-Konfiguration und Nutzung Ihrer Cultibox. Der Assistent ermöglicht die einfache Konfiguration der Programme mit Einstellungen verbunden ist, konfigurieren Sie den Stecker Typ und Verhalten. Klicken Sie auf die Schaltfläche neben <b> </ b>, um den Assistenten zu starten. Sie können diesen Schritt überspringen und manuell konfigurieren Ihren Fang durch Klicken auf die Schaltfläche Schließen <b> Wizard </ b>"
 
 msgid "CLOSE_WIZARD"
-msgstr "Fermer l'assistant"
+msgstr "Schließen Sie den Assistenten"
 
 msgid "WIZARD_INTRO"
-msgstr "Assistant de configuration des prises"
+msgstr "Configuration Wizard genommen"
 
 msgid "WIZARD_CONFIGURE_PLUG_NUMBER"
-msgstr "Prise numéro"
+msgstr "Unter Ausgabe"
 
 msgid "WIZARD_NEXT_STEP"
-msgstr "Suivant >"
+msgstr "Weiter>"
 
 msgid "WIZARD_PREVIOUS_STEP"
-msgstr "< Précédent"
+msgstr "<Zurück"
 
 msgid "WIZARD_FINISH_STEP"
-msgstr "Enregistrer et fermer l'assistant"
+msgstr "Speichern und schließen Sie den Assistenten"
 
 msgid "WIZARD_OTHER_STEP"
-msgstr "Enregistrer et configurer une autre prise"
+msgstr "Registrieren und konfigurieren Sie eine andere Steckdose"
 
 msgid "WIZARD_NEXT_PLUG"
-msgstr "Suivant >"
+msgstr "Weiter>"
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximum</b>."
+msgstr "Nummer 1-Buchse wird als Lampen konfiguriert werden. Diese Buchse kann eine Lampe <b> 600 Watt </ b> bis <b> </ b> zubringen."
 
 msgid "WIZARD_PLUG_LAMP"
-msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de la lampe afin de déterminer le fonctionnement de votre équipement."
+msgstr "Sie können nun wählen Sie den Zeitpunkt der Zündung und Erlöschen der Lampe, um den Betrieb Ihrer Anlage bestimmen."
 
 msgid "WIZARD_PLUG_PROGRAM"
-msgstr "Vous pouvez maintenant choisir l'heure d'allumage et d'extinction de votre équipement. Pour cela choisissez une heure de départ où l'équipement se mettra en route et une heure de fin où l'équipement s'éteindra."
+msgstr "Sie können nun die Zeit des Ein-und Ausschalten der Geräte. Um dies zu tun, wählen Sie eine Startzeit, die das Gerät startet und Ende, wo das Gerät ausgeschaltet ist."
 
 msgid "WIZARD_STEP"
-msgstr "Etape"
+msgstr "Schritt"
 
 msgid "WIZARD_CONFIGURE_OTHER_PLUG"
-msgstr "Configuration de la prise"
+msgstr "Konfiguration Entscheidung"
 
 msgid "WIZARD_OTHER_PLUG_NUMBER"
-msgstr "Vous allez maintenant configurer une nouvelle prise."
+msgstr "Sie werden nun eine neue Steckdose gesetzt."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choisir le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour augmenter l'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une pompe à eau pour augmenter le niveau d'eau</li><li>une lampe</li><li>'autre' servant pour tous les autres type d'équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
+msgstr "Wählen Sie die Art von Anschluss zu verwenden: <ul class='list_class_wizard'> <li> Heizung, die Temperatur </ li> erhöhen <li> einem Ventilator, um die Temperatur </ li> <li> einen Luftbefeuchter zu senken, um die Erhöhung Feuchtigkeit </ li> <li> einem Entfeuchter gegen Feuchtigkeit </ li> <li> einer Wasserpumpe, den Wasserstand </ li> <li> Lampe </ li> <li> erhöhen reduzieren "andere" für alle anderen Arten von Ausrüstung. <br /> <br /> Wenn Sie eine neue Lampe zu konfigurieren wählen, muss es <b> werden weniger leistungsfähigen 200 Watt </ b>"
 
 msgid "START_TIME_LAMP"
-msgstr "Heure d'allumage de la lampe"
+msgstr "Stunden Lampenzündung"
 
 msgid "END_TIME_LAMP"
-msgstr "Heure d'extinction de la lampe"
+msgstr "Ausschaltzeit des Lampen"
 
 msgid "START_TIME_EQUIPMENT"
-msgstr "Heure d'allumage de l'équipement"
+msgstr "Zeit Zündeinrichtung"
 
 msgid "END_TIME_EQUIPMENT"
-msgstr "Heure d'extinction de l'équipement"
+msgstr "Stunden-Löschanlagen"
 
 
 #For the calendar part:
 msgid "CALENDAR_TITLE"
-msgstr "Calendrier"
+msgstr "Kalender"
 
 msgid "CALENDAR_ENGRAIS"
-msgstr "Planification d'engrais"
+msgstr "Planung Dünger"
 
 msgid "CALENDAR_SUBSTRAT"
-msgstr "Substrat utilisé"
+msgstr "Substrat verwendet"
 
 msgid "CALENDAR_PROGRAM"
-msgstr "Programme d'engrais à appliquer"
+msgstr "Dünger-Programm der Anwendung"
 
 msgid "CALENDAR_STARTDATE"
-msgstr "Date de départ du programme"
+msgstr "Datum Beginn des Programms"
 
 msgid "CREATE_CALENDAR_PROGRAM"
-msgstr "Créer le programme dans le calendrier"
+msgstr "Erstellen Sie das Programm in den Kalender"
 
 msgid "DISABLED_CREATE_CALENDAR_PROGRAM"
-msgstr "Aucun fichier XML présent pour créer un programme"
+msgstr "Kein XML-Datei, um dieses Programm zu erstellen"
 
 msgid "DISABLED_XML_FILE"
-msgstr "Aucun fichier XML détecté"
+msgstr "Keine erkannt XML-Datei"
 
 msgid "WHAT_DIALOG_CALENDAR"
-msgstr "Que voulez-vous faire?"
+msgstr "Was wollen Sie?"
 
 msgid "REMOVE_DIALOG_CALENDAR"
-msgstr "Supprimer l'annotation"
+msgstr "Löschen Sie die Annotation"
 
 msgid "CANCEL_DIALOG_CALENDAR"
-msgstr "Annuler"
+msgstr "Stornieren"
 
 msgid "EDIT_DIALOG_CALENDAR"
-msgstr "Editer l'annotation"
+msgstr "Bearbeiten Annotation"
 
 msgid "CREATE_DIALOG_CALENDAR"
-msgstr "Ajouter une annotation"
+msgstr "Anmerkung hinzufügen"
 
 msgid "CALENDAR_SUBJECT"
-msgstr "Sujet"
+msgstr "Thema"
 
 msgid "CALENDAR_COLOR"
-msgstr "Choisir une couleur"
+msgstr "Wählen Sie eine Farbe"
 
 msgid "CALENDAR_REMARK"
-msgstr "Remarque"
+msgstr "Bemerkung"
 
 msgid "CALENDAR_START_DATE"
-msgstr "Date de départ (AAAA-MM-JJ)"
+msgstr "Abreisedatum (JJJJ-MM-DD)"
 
 msgid "CALENDAR_STOP_DATE"
-msgstr "Date de fin (AAAA-MM-JJ)"
+msgstr "Enddatum (JJJJ-MM-DD)"
 
 msgid "MANAGE_CALENDAR"
-msgstr "Gestion des annotations"
+msgstr "Management-Anmerkungen"
 
 msgid "SAVE_DIALOG_CALENDAR"
-msgstr "Sauvegarder"
+msgstr "Sparen"
 
 msgid "TODAY"
-msgstr "Aujourd'hui"
+msgstr "Heute"
 
 msgid "SUBJECT_START"
-msgstr "Début de culture"
+msgstr "Frühe Kultur"
 
 msgid "SUBJECT_FERTILIZERS"
-msgstr "Engrais"
+msgstr "Dünger"
 
 msgid "SUBJECT_WATER"
-msgstr "Changement d'eau"
+msgstr "Wasserwechsel"
 
 msgid "SUBJECT_BLOOM"
-msgstr "Floraison"
+msgstr "Blüte"
 
 msgid "SUBJECT_HARVEST"
-msgstr "Récolte"
+msgstr "Ernte"
 
 msgid "SUBJECT_OTHER"
-msgstr "Autre"
+msgstr "Andere"
 
 msgid "DAY01"
-msgstr "Lundi"
+msgstr "Montag"
 
 msgid "DAY02"
-msgstr "Mardi"
+msgstr "Dienstag"
 
 msgid "DAY03"
-msgstr "Mercredi"
+msgstr "Mittwoch"
 
 msgid "DAY04"
-msgstr "Jeudi"
+msgstr "Donnerstag"
 
 msgid "DAY05"
-msgstr "Vendredi"
+msgstr "Freitag"
 
 msgid "DAY06"
-msgstr "Samedi"
+msgstr "Samstag"
 
 msgid "DAY07"
-msgstr "Dimanche"
+msgstr "Sonntag"
 
 msgid "D01"
-msgstr "Lun"
+msgstr "Mo"
 
 msgid "D02"
-msgstr "Mar"
+msgstr "März"
 
 msgid "D03"
-msgstr "Mer"
+msgstr "Meer"
 
 msgid "D04"
-msgstr "Jeu"
+msgstr "Spiel"
 
 msgid "D05"
-msgstr "Ven"
+msgstr "Fr"
 
 msgid "D06"
 msgstr "Sam"
 
 msgid "D07"
-msgstr "Dim"
+msgstr "Sonne"
 
 msgid "MANAGE_RESET_CALENDAR"
-msgstr "Supprimer toutes les annotations enregistrées"
+msgstr "Löschen Sie alle aufgezeichneten Memos"
 
 msgid "RESET_CONFIRM_CALENDAR"
-msgstr "Êtes-vous sûr de vouloir supprimer tous les événements enregistrés dans le calendrier?"
+msgstr "Sind Sie sicher, dass Sie alle im Kalender aufgezeichneten Ereignisse löschen?"
 
 msgid "VALID_DELETE_CALENDAR"
-msgstr "Calendrier supprimé avec succès"
+msgstr "Kalender erfolgreich entfernt"
 
 msgid "VALID_ADD_CALENDAR"
-msgstr "Calendrier mis à jour avec le programme selectionné"
+msgstr "Kalender mit dem gewählten Programm aktualisiert"
 
 msgid "MANAGE_EXTERNAL_XML"
-msgstr "Gestion des fichiers XML externes"
+msgstr "Verwaltung von externen XML-Dateien"
 
 msgid "DISABLED_MANAGE_EXTERNAL_XML"
-msgstr "Aucun calendrier XML présent"
+msgstr "Kein Kalender dieses XML"
 
 msgid "XML_DISPLAYED_FILE"
-msgstr "Fichiers XML à afficher"
+msgstr "XML-Dateien angezeigt werden"
 
 msgid "CALENDAR_EVENT_NAME"
-msgstr "Nom de l’évènement"
+msgstr "Event Name"
 
 msgid "CALENDAR_SELECT_CROISSANCE"
-msgstr "Sélection de la partie à appliquer"
+msgstr "Wählen Sie das Teil zu bewerben"
 
 msgid "CALENDAR_CROISSANCE"
-msgstr "Croissance"
+msgstr "Wachstum"
 
 msgid "CALENDAR_FLORAISON"
-msgstr "Floraison"
+msgstr "Blüte"
 
 msgid "CALENDAR_CROISSANCE_+_FLORAISON"
-msgstr "Croissance + Floraison"
+msgstr "Wachstum + Blüte"
 
 msgid "CALENDAR_IMPORTANT"
-msgstr "Evènement important"
+msgstr "Bedeutende Ereignis"
 
 msgid "SUMARY_IMPORTANT_LIST"
-msgstr "Résumé des derniers évènements importants"
+msgstr "Zusammenfassung der jüngsten Ereignisse wichtig"
 
 msgid "EVENT_FROM"
-msgstr "Evènement du"
+msgstr "Event"
 
 msgid "EVENT_TO"
-msgstr "au"
+msgstr "die"
 
 
 # For the cost part:
 msgid "SELECT_START_DAY"
-msgstr "Jour de départ (AAAA-MM-JJ)"
+msgstr "Tag der Abreise (JJJJ-MM-DD)"
 
 msgid "SELECT_END_DAY"
-msgstr "Jour de fin (AAAA-MM-JJ)"
+msgstr "Ende Tag (JJJJ-MM-DD)"
 
 msgid "COST_PRICE_COMPUTE"
-msgstr "Calcul du coût de votre installation"
+msgstr "Die Berechnung der Kosten für die Installation"
 
 msgid "COST_PRICE_COMPUTE_GRAPH"
-msgstr "Coût de votre installation" 
+msgstr "Kosten der Installation ""
 
 msgid "COST_PRICE_FOR_DAY"
-msgstr "pour le"
+msgstr "für"
 
 msgid "COST_PRICE_TIME"
-msgstr "pour la période du"
+msgstr "für den Zeitraum"
 
 msgid "COST_PRICE_TO"
-msgstr "au"
+msgstr "die"
 
 msgid "INSTALLATION_PRICE"
-msgstr "Prix de l\'installation (en euros)"
+msgstr "Preis \ 's-Installation (Euro)"
 
 msgid "SELECT_PRICE_PLUG"
-msgstr "Afficher le prix"
+msgstr "Preis anzeigen"
 
 msgid "PRICE_ALL_PLUG"
-msgstr "pour toutes les prises"
+msgstr "Entscheidung für alle"
 
 msgid "PRICE_DISTINCT_ALL_PLUG"
-msgstr "par prise"
+msgstr "indem"
 
 msgid "PRICE_FOR_PLUG"
-msgstr "pour la prise"
+msgstr "zur Entscheidung"
 
 msgid "PRICE_SELECT_ALL_PLUG"
-msgstr "Pour toutes vos prises"
+msgstr "Für alle Ihre Aufnahmen"
 
 msgid "REAL_PRICE"
-msgstr "Prix réel"
+msgstr "Echt Preis"
 
 msgid "THEORICAL_PRICE"
-msgstr "Prix théorique maximal"
+msgstr "Maximale theoretische Preis"
 
 msgid "SUMARY_COST_TITLE"
-msgstr "Résumé de la configuration"
+msgstr "Konfigurationsübersicht"
 
 msgid "EMPTY_COST_INFOS"
-msgstr "Pas d'informations disponibles"
+msgstr "Keine Informationen verfügbar"
 
 msgid "SUMARY_COST_TYPE"
 msgstr "Abonnement"
 
 msgid "SUMARY_HP_HC"
-msgstr "Heures pleines/creuses"
+msgstr "Peak / off"
 
 msgid "SUMARY_COST_PRICE"
-msgstr "Prix du kilowattt-heure"
+msgstr "Preis kilowattt Stunde"
 
 msgid "SUMARY_COST_PRICE_HC"
-msgstr "Prix en heures creuses (kwh)"
+msgstr "Preis Spitzenstunden (kwh)"
 
 msgid "SUMARY_COST_PRICE_HP"
-msgstr "Prix en heures pleines (kwh)"
+msgstr "Preise während der Spitzenstunden (kwh)"
 
 msgid "SUMARY_START_HC"
-msgstr "Départ des heures creuses"
+msgstr "Check-Spitzenzeiten"
 
 msgid "SUMARY_STOP_HC"
-msgstr "Fin des heures creuses"
+msgstr "Später Spitzen"
 
 msgid "CONFIGURE_COST_TYPE"
-msgstr "Type d'abonnement électrique"
+msgstr "Ausführung elektrischer Abonnement"
 
 msgid "COST_STANDARD"
 msgstr "Standard"
 
 msgid "COST_HPC"
-msgstr "Heure pleine/creuse"
+msgstr "Vollzeit / Hohl"
 
 msgid "CONFIGURE_COST_PRICE"
-msgstr "Prix du kilowatt-heure"
+msgstr "Preis pro Kilowattstunde"
 
 msgid "CONFIGURE_COST_PRICE_HP"
-msgstr "Prix en heure pleine"
+msgstr "Preis in Vollzeit"
 
 msgid "CONFIGURE_COST_PRICE_HC"
-msgstr "Prix en heure creuse"
+msgstr "Preis Spitzenzeiten"
 
 msgid "CONFIGURE_START_HC"
-msgstr "Début des heures creuses: (HH:MM)"
+msgstr "Frühe Spitzenzeiten (HH: MM)"
 
 msgid "CONFIGURE_STOP_HC"
-msgstr "Fin des heures creuses: (HH:MM)"
+msgstr "Später Spitzenzeiten (HH: MM)"
 
 msgid "PROGRESS_COST_REAL"
-msgstr "Calcul du coût réel en cours"
+msgstr "Die Berechnung der tatsächlichen Kosten Befinden"
 
 msgid "PROGRESS_COST_THEORICAL"
-msgstr "Calcul du coût théorique en cours"
+msgstr "Berechnung des theoretischen Kosten als"
 
 msgid "COMPUTE_COST"
-msgstr "Calcul du coût de votre installation en cours"
+msgstr "Berechnen Sie die Kosten für Ihre aktuelle Installation"
 
 msgid "COMPUTE_COST_PLUG_REAL"
-msgstr "Calcul du coût réel pour la prise"
+msgstr "Die Berechnung der tatsächlichen Kosten für die Entscheidung"
 
 msgid "COMPUTE_COST_PLUG_THEORICAL"
-msgstr "Calcul du coût théorique pour la prise"
+msgstr "Berechnung des theoretischen Kosten für die Entscheidung"
 
 msgid "ERROR_COMPUTE_COST"
-msgstr "Erreur lors du calcul du coût de votre installation"
+msgstr "Fehler bei der Berechnung der Kosten für die Installation"
 
 msgid "VALID_REAL_COST_COMPUTE"
-msgstr "Calcul du coût réel réalisé avec succés"
+msgstr "Die Berechnung der tatsächlichen Kosten erfolgreich realisiert"
 
 msgid "VALID_THEORICAL_COST_COMPUTE"
-msgstr "Calcul du coût théorique réalisé avec succés"
+msgstr "Berechnung des theoretischen Kosten erfolgreich erreicht"
 
 
 # For the historic part:
 msgid "TITLE_HISTORIC"
-msgstr "Historique de vos 100 dernières actions"
+msgstr "Die Geschichte der letzten 100 Aktien"
 
 msgid "RESET_HISTORIC"
-msgstr "Effacer l'historique"
+msgstr "Verlauf löschen"
 
 msgid "RESET_CONFIRM_HISTORIC"
-msgstr "Êtes-vous sûr de vouloir supprimer l'historique de vos actions?"
+msgstr "Sind Sie sicher, dass Sie die Geschichte Ihrer Aktionen löschen?"
 
 msgid "VALID_DELETE_HISTORIC"
-msgstr "Historique de vos actions supprimé avec succès"
+msgstr "Geschichte Ihre Aktionen erfolgreich entfernt"
 
 msgid "NO_HISTORIC_VALUE"
-msgstr "Aucune action enregistrée"
+msgstr "Keine Aktion aufgezeichnet"
 
 msgid "WIZARD_PAGE"
-msgstr "Onglet du Wizard"
+msgstr "Tab-Assistenten"
 
 msgid "PROGRAM_PAGE"
-msgstr "Onglet des Programmes"
+msgstr "Registerkarte Programme"
 
 msgid "PLUG_PAGE"
-msgstr "Onglet des prises"
+msgstr "Tab genommen"
 
 msgid "WELCOME_PAGE"
-msgstr "Page principale"
+msgstr "Startseite"
 
 msgid "LOGS_PAGE"
-msgstr "Page des logs"
+msgstr "Seite Protokolle"
 
 msgid "CALENDAR_PAGE"
-msgstr "Onglet du calendrier"
+msgstr "Registerkarte Kalender"
 
 msgid "COST_PAGE"
-msgstr "Onglet des coûts"
+msgstr "Tab Kosten"
 
 msgid "CONFIGURATION_PAGE"
-msgstr "Onglet de configuration"
+msgstr "Registerkarte Konfiguration"
 
 msgid "HISTORIC_EXPORT"
-msgstr "Export d'un programme"
+msgstr "Export-Programm"
 
 
 # For the wifi part:
 msgid "VIEW_PLUGS_STATE"
-msgstr "État actuel de vos prises"
+msgstr "Aktueller Stand der Fang"
 
 msgid "VIEW_SENSOR_STATE"
-msgstr "État actuel de vos capteurs"
+msgstr "Aktueller Status der Sensoren"
 
 msgid "PLUG_NUMBER"
-msgstr "Prise numéro"
+msgstr "Unter Ausgabe"
 
 msgid "PLUG_UNKNOWN_STATE"
-msgstr "État de la prise inconnu"
+msgstr "Status unbekannt Entscheidung"
 
 msgid "PLUG_ON"
-msgstr "La prise est actuellement en marche"
+msgstr "Entscheidung gerade läuft"
 
 msgid "PLUG_OFF"
-msgstr "La prise est actuellement arrêtée"
+msgstr "Entscheidung ist momentan gestoppt"
 
 msgid "SHORT_ELEMENT_TYPE"
-msgstr "Type d'élément branché"
+msgstr "Art der Komponente verbunden"
 
 msgid "SHORT_PLUG_TYPE"
-msgstr "Type de prise"
+msgstr "Steckertyp"
 
 msgid "SENSOR_TYPE"
-msgstr "Type de capteur"
+msgstr "Sensortyp"
 
 msgid "NA"
-msgstr "N/A"
+msgstr "N / A"
 
 msgid "SENSOR_TEMPHUMI"
-msgstr "température et humidité"
+msgstr "Temperatur-und Feuchtigkeits"
 
 msgid "SENSOR_T_WATER"
-msgstr "température immergeable"
+msgstr "Tauchtemperatur"
 
 msgid "SENSOR_LEVEL_W"
-msgstr "niveau d'eau"
+msgstr "Wasserstand"
 
 msgid "SENSOR_VALUE"
-msgstr "Dernière valeur enregistrée"
+msgstr "Zuletzt aufgezeichnete Wert"
 
 
 # For the footer:
@@ -1400,500 +1400,498 @@ msgid "VERSION"
 msgstr "Version"
 
 msgid "LICENSE"
-msgstr "Licence"
+msgstr "Lizenz"
 
 
 # For the errors or warnings part:
 msgid "INFORMATION"
-msgstr "Information(s)"
+msgstr "Information (en)"
 
 msgid "WARNING"
-msgstr "Avertissement(s)"
+msgstr "Warnung (en)"
 
 msgid "ERROR_UPDATE_SQL"
-msgstr "Erreur dans la requête SQL UPDATE"
+msgstr "Fehler in der SQL-Anweisung UPDATE"
 
 msgid "ERROR_DELETE_SQL"
-msgstr "Erreur dans la requête SQL DELETE"
+msgstr "Fehler in SQL DELETE-Abfrage"
 
 msgid "ERROR_SELECT_SQL"
-msgstr "Erreur dans la requête SQL SELECT"
+msgstr "Fehler in der SQL-SELECT-Abfrage"
 
 msgid "EMPTY_DATA"
-msgstr "Aucun enregistrement à la date sélectionnée"
+msgstr "Kein Eintrag für das ausgewählte Datum"
 
 msgid "EMPTY_DATA_SENSOR"
-msgstr "Aucun enregistrement à la date sélectionnée pour le(s) capteur(s)"
+msgstr "Keine Aufnahme für das ausgewählte Datum (n) Sensor (en)"
 
 msgid "EMPTY_POWER_DATA"
-msgstr "Aucun enregistrement concernant la puissance consommée pour la date sélectionnée"
+msgstr "Kein Eintrag auf den Stromverbrauch für das ausgewählte Datum"
 
 msgid "ERROR_FORMAT_DATE_DAY_START"
-msgstr "Jour de départ: erreur dans le format de la date (AAAA-MM-JJ)"
+msgstr "Tag der Abreise: Fehler in der Datumsformat (JJJJ-MM-DD)"
 
 msgid "ERROR_FORMAT_CALENDAR_DATE"
-msgstr "Erreur dans le format de la date (AAAA-MM-JJ)"
+msgstr "Fehler in der Datumsformat (JJJJ-MM-DD)"
 
 msgid "ERROR_FORMAT_DATE_DAY_END"
-msgstr "Jour de fin: erreur dans le format de la date (AAAA-MM-JJ)"
+msgstr "End Day: Fehler in der Datumsformat (JJJJ-MM-DD)"
 
 msgid "ERROR_FORMAT_DATE_DAY"
-msgstr "Jour à afficher: erreur dans le format (AAAA-MM-JJ)"
+msgstr "Tag-Anzeige: Fehler im Format (JJJJ-MM-DD)"
 
 msgid "ERROR_FORMAT_DATE_MONTH"
-msgstr "Mois à afficher: erreur dans le format (MM)"
+msgstr "Monat Anzeige: Fehler im Format (MM)"
 
 msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre configuration"
+msgstr "Kein Cultibox SD kompatiblen Karte erkannt, um die Konfiguration zu speichern"
 
 msgid "ERROR_SD_CARD_LOGS"
-msgstr "Aucune carte SD compatible Cultibox détectée pour charger vos fichiers de logs"
+msgstr "Keine SD-Karte erkannt Cultibox aktivieren, damit Sie Ihre Log-Dateien zu laden"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre configuration"
+msgstr "Kein Cultibox SD kompatiblen Karte erkannt, um die Konfiguration zu speichern"
 
 msgid "ERROR_SD_CARD"
-msgstr "Aucune carte SD compatible Cultibox détectée, vérifier que votre carte soit correctement branchée"
+msgstr "Keine SD-Karte erkannt Cultibox aktiviert ist, überprüfen Sie, ob Ihre Karte korrekt angeschlossen ist"
 
 msgid "ERROR_MISSING_VALUE_TIME"
-msgstr "Valeur manquante pour la date de début/fin du programme"
+msgstr "Fehlender Wert für das Startdatum / Programmende"
 
 msgid "ERROR_FORMAT_TIME"
-msgstr "Erreur dans le format de l'heure: HH:MM:SS"
+msgstr "Fehler im Zeitformat HH: MM: SS"
 
 msgid "ERROR_FORMAT_TIME_DURATION"
-msgstr "Durée du cycle: erreur dans le format (HH:MM:SS)"
+msgstr "Zyklus: Fehler im Format (HH: MM: SS)"
 
 msgid "ERROR_FORMAT_TIME_START"
-msgstr "Heure de départ: erreur dans le format (HH:MM:SS)"
+msgstr "Abreise: Fehler im Format (HH: MM: SS)"
 
 msgid "ERROR_FORMAT_TIME_END"
-msgstr "Heure de fin: erreur dans le format (HH:MM:SS)"
+msgstr "Endzeit: Fehler im Format (HH: MM: SS)"
 
 msgid "ERROR_TIME_VALUE"
-msgstr "Erreur dans le format de l'heure: HH:MM"
+msgstr "Fehler in der Zeitformat: HH: MM"
 
 msgid "ERROR_SAME_TIME"
-msgstr "L'heure de départ et l'heure de fin doivent être différentes."
+msgstr "Der Start-und Endzeit müssen unterschiedlich sein."
 
 msgid "ERROR_WRITE_SD"
-msgstr "Erreur durant l'écriture sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Schreiben auf die SD-Karte sicher, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "Valeur de tolérance: elle doit être comprise entre 0°C et 10°C"
+msgstr "Toleranzwert: es sollte zwischen 0 ° C und 10 ° C"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "Valeur de tolérance: elle doit être comprise entre 0&#37; et 25.5&#37;"
+msgstr "Toleranzwert: Es muss zwischen 0% und 25,5%"
 
 msgid "ERROR_TOLERANCE_VALUE_CM"
-msgstr "Valeur de tolérance: elle doit être comprise entre 0 cm et 10 cm"
+msgstr "Toleranzwert: Es muss zwischen 0 cm und 10 cm"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "Erreur: la valeur rentrée doit être un nombre"
+msgstr "Fehler: Der eingegebene Wert muss eine Zahl sein"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "Valeur de température: elle doit être comprise entre 5°C et 60°C"
+msgstr "Temperaturwert: Es muss zwischen 5 ° C und 60 ° C"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "Valeur d'humidité: elle doit être comprise entre 10&#37; et 95&#37;"
+msgstr "Feuchtigkeitswert: Sie muss zwischen 10% 95%"
 
 msgid "ERROR_VALUE_PROGRAM_CM"
-msgstr "Valeur de la hauteur d'eau: elle doit être comprise entre 5cm et 95cm"
+msgstr "Wert der Höhe des Wassers: es muss zwischen 5cm und 95cm sein"
 
 msgid "ERROR_ALARM_VALUE"
-msgstr "La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100"
+msgstr "Der Auslösewert des Alarm muss größer als 0 und kleiner als 100 sein"
 
 msgid "ERROR_REGUL_VALUE"
-msgstr "La valeur de déclenchement de la régulation doit être supérieure à 0 et inférieure à 100"
+msgstr "Der Auslösewert des Steuer größer als 0 und kleiner als 100 sein"
 
 msgid "ERROR_POWER_VALUE"
-msgstr "Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt"
+msgstr "Fehler in der Wert der Macht: es muss größer oder gleich 0 Watt sein"
 
 msgid "ERROR_PRICE_VALUE"
-msgstr "Le prix du kilowatt-heure doit être supérieur à 0"
+msgstr "Der Preis pro Kilowattstunde muss größer als 0 sein"
 
 msgid "ERROR_PRICE_VALUE_HP"
-msgstr "Heure pleine: le prix du kilowatt-heure doit être supérieur à 0"
+msgstr "Vollzeit: der Preis pro Kilowattstunde muss größer als 0 sein"
 
 msgid "ERROR_PRICE_VALUE_HC"
-msgstr "Heure creuse: le prix du kilowatt-heure doit être supérieur à 0"
+msgstr "Peak-Zeit der Preis pro Kilowattstunde muss größer als 0 sein"
 
 msgid "ERROR_COST_PRICE_NULL"
-msgstr "Le prix du kilowatt-heure doit être supérieur à 0"
+msgstr "Der Preis pro Kilowattstunde muss größer als 0 sein"
 
 msgid "ERROR_DATE_INTERVAL"
-msgstr "Erreur dans les dates choisies: la date de départ doit être inférieure ou égale à la date de fin"
+msgstr "Fehler in den gewählten Zeitraum: der Abreisedatum muss kleiner als oder gleich dem Enddatum sein"
 
 msgid "ERROR_UPLOADED_FILE"
-msgstr "Erreur lors du chargement du fichier des programmes"
+msgstr "Fehler beim Laden der Datei Programme"
 
 msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
-msgstr "Erreur lors du chargement des données du fichier des programmes, vérifier que le fichier est au bon format"
+msgstr "Fehler beim Laden der Datei Programme sicher, dass die Datei im richtigen Format"
 
 msgid "ERROR_REMOTE_UPDATE_FILE"
-msgstr "Impossible d'accéder au fichier des mises à jour, vérifier votre configuration"
+msgstr "Kann Datei-Updates zugreifen, prüfen Sie Ihre Konfiguration"
 
 msgid "ERROR_POWER_PLUG"
-msgstr "La puissance de la prise"
+msgstr "Die Macht der Entscheidung"
 
 msgid "UNCONFIGURED_POWER"
-msgstr "n'est pas configurée."
+msgstr "ist nicht konfiguriert."
 
 msgid "CONFIGURABLE_PAGE_POWER"
-msgstr "Vous pouvez la configurer"
+msgstr "Sie können konfigurieren,"
 
 msgid "ERROR_POWER_PLUGS"
-msgstr "La puissance des prises"
+msgstr "Steckdosen"
 
 msgid "ERROR_HPC_TIME_NULL"
-msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas configurée, vous pouvez la configurer"
+msgstr "L \ 'Startzeit und / oder das Ende des Peak / Off-Peak nicht konfiguriert ist, können Sie konfigurieren"
 
 msgid "ERROR_COPY_TPL"
-msgstr "Impossible de copier le fichier empty_file_64.tpl sur votre carte SD"
+msgstr "Kann die Datei auf die SD-Karte zu kopieren empty_file_64.tpl"
 
 msgid "ERROR_COPY_FILE"
-msgstr "Erreur lors de la copie d'un fichier, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Kopieren einer Datei, überprüfen Sie, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_COPY_FIRM"
-msgstr "Erreur lors de la vérification ou de la copie d'un nouveau firmware"
+msgstr "Fehler Überprüfung oder Kopie einer neuen Firmware"
 
 msgid "ERROR_COPY_PLUGA"
-msgstr "Erreur lors de la copie des adresses des prises, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Kopieren der Adressen genommen, stellen Sie sicher, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_COPY_PLUG_CONF"
-msgstr "Erreur lors de la copie de la configuration des prises, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Kopieren der Konfigurations Stecker, überprüfen Sie, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_COPY_INDEX"
-msgstr "Erreur lors de la copie du fichier index, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Kopieren die Index-Datei, überprüfen Sie, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_COMPAT_BROWSER"
-msgstr "Votre navigateur ne semble pas compatible avec le logiciel Cultibox. Vous pourrez sûrement utiliser le logiciel mais certaines fonctionnalités risquent de ne pas être accessibles. Voici la liste des navigateurs officiellement supportés:<br /><ul class='list_class'><li>Mozilla Firefox (version 3 et supérieure)</li><li>Internet Explorer (version 7 et supérieure)</li><li>Google Chrome (Toutes versions)</li><li>Max Os X Safari (version 5 et supérieure)</li></ul>"
+msgstr "Ihr Browser scheint nicht mit der Cultibox Software kompatibel ist. Sie können sicher mit der Software, aber einige Funktionen sind nicht verfügbar. Hier ist die Liste der offiziell unterstützten Browser: <br /> <ul class='list_class'> <li> Mozilla Firefox (ab Version 3) </ li> <li> Internet Explorer (Version 7 und höher) </ li> <li> Google Chrome (alle Versionen) </ li> <li> Max OS X Safari (Version 5 und höher) </ li> </ ul>"
 
 msgid "ERROR_REMOTE_SITE"
-msgstr "Impossible de s'assurer de la présence de mises à jour, vérifier que votre connexion internet fonctionne correctement"
+msgstr "Unmöglich, das Vorhandensein von Updates zu ermitteln, überprüfen Sie, ob Ihre Internetverbindung ordnungsgemäß funktioniert"
 
 msgid "ERROR_WRITE_SD_PLUGCONF"
-msgstr "Erreur lors de l'écriture de la configuration des prises sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Schreiben auf dem Terminal-Konfiguration auf der SD-Karte sicher, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_WRITE_SD_PLUGA"
-msgstr "Erreur lors de l'écriture du fichier d'adresse des prises sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Schreiben der Datei Adresse der Buchsen auf der SD-Karte sicher, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_WRITE_SD_CONF"
-msgstr "Erreur lors de l'écriture des fichiers de configuration sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Schreiben von Konfigurationsdateien auf der SD-Karte sicher, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_WRITE_CALENDAR"
-msgstr "Erreur lors de l'écriture du calendrier sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Schreiben den Zeitplan auf der SD-Karte sicher, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_WRITE_PROGRAM"
-msgstr "Erreur lors de l'écriture des programmes sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Schreiben der Programme auf der SD-Karte sicher, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_RESET_PROGRAM"
-msgstr "Erreur lors de la remise à zéro du(des) programme(s)"
+msgstr "Fehler-Reset (n) Programm (e)"
 
 msgid "ERROR_MINIMAL_TIME"
-msgstr "Le temps minimal autorisé est de 5 minutes"
+msgstr "Die erlaubte Mindestdauer 5 Minuten"
 
 msgid "ERROR_SELECT_SENSOR"
-msgstr "Au moins un capteur doit être choisis pour la régulation, par défaut le capteur 1 sera selectionné"
+msgstr "Mindestens einen Sensor muss die Kontrolle ausgewählt werden, wird die Standard-Sensor 1 ausgewählt werden,"
 
 msgid "ERROR_ADD_CALENDAR_PROGRAM"
-msgstr "Erreur lors de l'enregistrement du calendrier à partir du programme selectionné"
+msgstr "Fehler Aufzeichnungszeitplan aus dem gewählten Programm"
 
 msgid "LOCKED_CARD"
-msgstr "Impossible d'écrire sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Kann nicht auf die SD-Karte zu schreiben, stellen Sie sicher, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_SSID_VALUE"
-msgstr "Le nom du réseau ne peut pas être vide"
+msgstr "Der Netzwerkname kann nicht leer sein"
 
 msgid "ERROR_PASSWORD_VALUE"
-msgstr "Les mots de passe doivent correspondre"
+msgstr "Passwörter müssen übereinstimmen"
 
 msgid "ERROR_COPY_WIFI_CONF"
-msgstr "Erreur lors de la copie du fichier de configuration du module wifi"
+msgstr "Fehler beim Kopieren der Konfigurationsdatei Wifi-Modul"
 
 msgid "ERROR_WIFI_CONF"
-msgstr "Erreur durant l'écriture des fichiers de configuration du Wifi sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
+msgstr "Fehler beim Schreiben der Konfigurationsdateien auf der SD-Karte Wifi, überprüfen Sie, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_WIFI_IP"
-msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
+msgstr "Fehler in dem Format der IP-Adresse: XXX.XXX.XXX.XXX"
 
 msgid "ERROR_EMPTY_PASSWORD"
-msgstr "Le mot de passe ne peut pas être vide"
+msgstr "Das Passwort darf nicht leer sein"
 
 msgid "ERROR_ACCESS_INFO_WIFI"
-msgstr "Impossible d'accèder au module Wifi, verifiez-votre configuration"
+msgstr "Kann das Wifi-Modul zugreifen, prüfen Sie Ihre Konfiguration-"
 
 msgid "ERROR_WEP_KEY_TYPE"
-msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombreus (0-9) et faire 5, 13 ou 29 caractères de long"
+msgstr "Fehler im Format des WEP-Kennwort: Sie muss nur nombreus (0-9) enthalten, und tun, 5, 13 oder 29 Zeichen lang"
 
 msgid "ERROR_WPA_KEY_TYPE"
-msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8 et 63 caractères"
+msgstr "Fehler im Format der WPA-Passphrase: Es muss zwischen 8 und 63 Zeichen lang sein"
 
 
 # For the informations part:
 msgid "CLOSE_CONFIRM"
-msgstr "Annuler"
+msgstr "Stornieren"
 
 msgid "CONFIRMATION"
-msgstr "Confirmation"
+msgstr "Bestätigung"
 
 msgid "HERE"
-msgstr "ici"
+msgstr "hier"
 
 msgid "WIZARD"
-msgstr "Assistant"
+msgstr "Assistent"
 
 msgid "CLASSIC"
-msgstr "Classique"
+msgstr "Klassik"
 
 msgid "INFO_SD_CARD"
-msgstr "Une carte SD compatible Cultibox est branchée"
+msgstr "Cultibox kompatible SD-Karte eingesteckt"
 
 msgid "INFO_PLUG_CULTIBOX_CARD"
-msgstr "Vous pouvez maintenant connecter la carte SD dans la Cultibox."
+msgstr "Sie können nun die SD-Karte in den Cultibox."
 
 msgid "VALID_UPDATE_CONF"
-msgstr "Configuration mise à jour avec succès"
+msgstr "Konfiguration erfolgreich aktualisiert"
 
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
-msgstr "Configuration mise à jour avec succès dans le logiciel."
+msgstr "Konfiguration in der Software erfolgreich aktualisiert."
 
 msgid "VALID_UPDATE_PROGRAM"
-msgstr "Programmes mis à jour avec succès"
+msgstr "Programme erfolgreich aktualisiert"
 
 msgid "VALID_IMPORT_PROGRAM"
-msgstr "Programme importé avec succès"
+msgstr "Erfolgreich eingeführte Programm"
 
 msgid "VALID_DELETE_LOGS"
-msgstr "Suppréssion des logs effectuée avec succès"
+msgstr "Löschen von Protokollen erfolgreich abgeschlossen"
 
 msgid "VALID_RESET_CARD"
-msgstr "Carte formatée avec succès"
+msgstr "Karte erfolgreich formatiert"
 
 msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la Cultibox pour que cela soit effectif si vous avez fini vos paramètrages"
+msgstr "Programme erfolgreich aktualisiert! Sie können Ihre SD-Karte entfernen und steckte es in die Cultibox dafür um wirksam zu sein, wenn Sie Ihre Einstellungen vorgenommen haben"
 
 msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "Fichiers de logs des 31 derniers jours enregistrés avec succès"
+msgstr "Log-Dateien der letzten 31 Tage erfolgreich registriert"
 
 msgid "VALID_LOAD_LOG"
-msgstr "Fichiers de logs des derniers mois enregistrés avec succès"
+msgstr "Logfiles den letzten Monaten erfolgreich registriert"
 
 msgid "VALID_AUTO_LOAD_LOG"
-msgstr "Fichiers de logs des 31 derniers jours enregistrés avec succès"
+msgstr "Log-Dateien der letzten 31 Tage erfolgreich registriert"
 
 msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "Programme mis à jour avec succès"
+msgstr "Aktualisiert Programm erfolgreich"
 
 msgid "WIZARD_ENABLE_FUNCTION"
-msgstr "Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici"
+msgstr "Sie können den Assistenten zu treffen und ihr Programm konfigurieren, indem Sie hier verwenden"
 
 msgid "WIZARD_DISABLE_FUNCTION"
-msgstr "Vous pouvez utiliser l'interface de configuration classique en cliquant ici"
+msgstr "Sie können die klassischen Schnittstellenkonfiguration verwenden hier"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "Programme(s) réinitialisé(s) avec succès"
+msgstr "Reset-Programm (e) (n) erfolgreich"
 
 msgid "WAITING_LOG"
-msgstr "Merci de patienter quelques instants durant le chargement des logs..."
+msgstr "Wir danken Ihnen für Ihre Geduld beim Laden der Protokolle ..."
 
 msgid "UPDATED_PROGRAM"
-msgstr "Vos programmes/configuration des prises/configuration de la Cultibox n'étaient pas à jour sur votre carte, la mise à jour a été exécuté"
+msgstr "Ihre Programme / Socket-Konfiguration / Setup Cultibox waren nicht up to date auf Ihrer Karte, wurde das Update durchgeführt"
 
 msgid "INFO_UPDATE_AVAILABLE"
-msgstr "Une mise à jour est disponible pour passer vers une version plus récente en cliquant"
+msgstr "Ein Update ist verfügbar, um auf eine neuere Version zu bewegen, indem Sie auf"
 
 msgid "STILL_LOG_FILE"
-msgstr "Il reste des fichiers des données de température, d'humidité ou de puissance plus anciens à charger, pour cela utilisez le bouton 'importer les logs'"
+msgstr "Es gibt immer noch Dateien Temperatur, Feuchtigkeit oder älter Ladeleistung zu nutzen, um die Schaltfläche logs 'importieren"
 
 msgid "MESSAGE_BOX"
-msgstr "Messages du logiciel"
+msgstr "Beiträge Software"
 
 
 # For the tooltip part:
 msgid "TOOLTIP_SEND_INFOS"
-msgstr "En activant cette option, vous permettez l'envoie d'informations sur un site distant afin d'aider au développement et à la correction d'erreurs du système Cultibox. Les informations envoyées concernent: la version du logiciel, le type de votre navigateur, les versions des firmwares de la Cultibox et votre type de système d'exploitation"
+msgstr "Diese Option aktivieren, können Sie das Senden von Informationen an einen entfernten Ort, um bei der Entwicklung und Korrektur von Fehlern Cultibox System zu unterstützen. Die übermittelten Informationen betreffen: die Software-Version der Browser-Typ, die Firmware-Versionen Ihrer Cultibox und Typ des Betriebssystems"
 
 msgid "TOOLTIP_VALUE"
-msgstr "La Cultibox va éteindre ou allumer la prise pour atteindre cette valeur."
+msgstr "Die Cultibox erlischt oder ergriffen werden, um diesen Wert zu erreichen."
 
 msgid "TOOLTIP_DIMMER_VALUE"
-msgstr "La Cultibox va utiliser la prse variateur pour n'utiliser que la puissance désirée de l'équipement"
+msgstr "Die Cultibox die WSC-Laufwerk verwenden, um nur die Leistung erforderlichen Geräte verwenden"
 
 msgid "TOOLTIP_POWER"
-msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consommation de votre installation, son prix..."
+msgstr "Die Macht der angeschlossenen Geräte. Füllen Sie bitte dieses Feld können Sie den Verbrauch Ihres Systems, ist der Preis berechnen ..."
 
 msgid "TOOLTIP_POPUP"
-msgstr "Les messages affichés par l'interface sont par défaut affichés dans une boite de dialogue. Cette option vous permet de désactiver/activer ces boites de dialogue."
+msgstr "Die von der Schnittstelle angezeigten Meldungen sind standardmäßig in einem Dialogfeld angezeigt. Diese Option können Sie aktivieren / deaktivieren diese Dialogfelder."
 
 msgid "TOOLTIP_RECORD_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les données de température et d'hygrométrie."
+msgstr "Diese Option ermöglicht es Ihnen, die Frequenz, mit der die Daten aufzeichnet Cultibox von Temperatur und Luftfeuchtigkeit zu konfigurieren."
 
 msgid "TOOLTIP_POWER_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les valeurs de consommation d'énergie."
+msgstr "Diese Option ermöglicht es Ihnen, die Frequenz, mit der die Cultibox speichert die Werte des Energieverbrauchs zu konfigurieren."
 
 msgid "TOOLTIP_PLUG_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle sera mis à jour l'état (Marche/Arrêt) de vos prises."
+msgstr "Diese Option ermöglicht Ihnen, die Häufigkeit, mit der den Status (an / aus) von Fang aktualisiert werden, konfigurieren."
 
 msgid "TOOLTIP_WITHOUT_SD"
-msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."
+msgstr "Ohne SD-Karte eingesteckt wird Ihre Konfiguration in der Software aber nicht in Cultibox gespeichert werden. Dass Ihre Konfiguration wirksam ist, wird es eine SD-Karte verbinden, speichern Sie Ihre Konfiguration oder laden Sie die Seite und stecken Sie diese Karte in den SD-Cultibox."
 
 msgid "TOOLTIP_WITHOUT_SD_LOG"
-msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox concernant la température et l'hygrométrie ne pourront pas être affichés et sauvegardés. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
+msgstr "Ohne SD-Karte eingesteckt registriert Ihre Cultibox auf Temperatur und Feuchtigkeit können nicht angezeigt und gespeicherte Dateien werden. So laden Sie Ihre neue Protokolldateien müssen eine SD-Karte angeschlossen werden und diese Seite neu laden."
 
 msgid "TOOLTIP_POWER_LOG"
-msgstr "Cette option calcule et affiche la puissance consommée pour la/les prise(s) sélectionnée(s). Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
+msgstr "Diese Option berechnet und zeigt die Stromversorgung / die Steckdose (n), ausgewählt (n) verbraucht. Um dieses möglich zu machen wird es das Feld 'Macht' in der Konfigurationsteil des Fangs füllen"
 
 msgid "TOOLTIP_LOG_PROGRAM"
-msgstr "Cette option permet d'afficher le programme d'une prise afin de comparer les données enregistrées par la Cultibox et le comportement théorique de la prise."
+msgstr "Diese Option zeigt das Programm in einer Entscheidung, die von der Cultibox und dem theoretischen Verhalten der Buchse aufgezeichneten Daten zu vergleichen."
 
 msgid "TOOLTIP_PLUG_TOLERANCE"
-msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation. Par exemple, si vous avez rentré une valeur de régulation de 22°C pour un chauffage et que la tolérance est de 2°C, le chauffage sera mis en marche/arrêt entre 20°C et 24°C (votre régulation +/- la tolérance)"
+msgstr "Toleranz einer Entscheidung zu definieren, was die präzise Steuerung Werte sein. Zum Beispiel, wenn Sie einen Steuerwert von 22 ° C für die Heizung genommen haben und Toleranz ist 2 ° C, wird die Heizung an / aus zwischen 20 ° C und 24 ° C eingeschaltet werden (Kontrolle Ihrer + / - Toleranz)"
 
 msgid "TOOLTIP_PLUG_REGUL"
-msgstr "La régulation secondaire a un fonctionnement compliqué et différent de la régulation principale. Veuillez bien lire la documentation avant de l'activer pour une prise. Si vous désirez piloter une prise pour qu'elle régule une condition climatique, il n'est pas nécéssaire d'activer la régulation secondaire."
+msgstr "Das sekundäre Steuer ist eine komplizierte und verschiedene Betriebs der Hauptsteuerung. Bitte lesen Sie die Dokumentation vor der Aktivierung für eine Steckdose. Wenn Sie eine Steckdose steuern für sie eine Klimaanlage reguliert werden soll, ist es nicht notwendig, die Sekundärsteuerung zu aktivieren."
 
 msgid "TOOLTIP_COST_PRICE"
-msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le prix de  revient de votre installation dans le menu 'Coût'"
+msgstr "Der Preis pro Kilowattstunde. Füllen Sie bitte dieses Feld wird verwendet, um die Kosten für die Installation im Menü "Kosten" berechnen"
 
 msgid "TOOLTIP_FAKE_LOG_DATA"
-msgstr "Aucune donnée n'est présente dans la base pour le moment, les logs affichés le sont à titre d'exemple et ne correspondent pas à l'enregistrement des données de votre installation"
+msgstr "Keine Daten in der Datenbank für den Moment vorhanden ist, werden die Protokolle als Beispiel angezeigt und kann nicht auf die Daten entsprechen der Aufnahme Ihrer Installation"
 
 msgid "TOOLTIP_CHECK_UPDATE"
-msgstr "Vérifier si des mises à jour sont disponibles et vous propose de les télécharger le cas échéant"
+msgstr "Überprüfen Sie, ob Updates verfügbar sind und bietet an, den entsprechenden Download"
 
 msgid "TOOLTIP_COST_TYPE"
-msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommez."
+msgstr "Ihre elektrische System kann so "Standard" eingestellt werden: Sie zahlen pro Kilowattstunde für den gleichen Preis zu jeder Stunde des Tages. Sie können auch Ihre Installation definieren als "voll / Time Hollow Time ': der Preis der Killowatt Stunden variiert je nach der Zeit, zu der Sie verbrauchen."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "La carte SD sélectionnée sera rendue compatible Cultibox. Pour cela les fichiers de configuration des prises, des programmes et de la Cultibox seront régénérés en fonction de vos paramètres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déjà présents sur votre carte SD ils peuvent être perdus lors du processus<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
+msgstr "Die ausgewählte SD-Karte wird im Einklang Cultibox werden. Für diese Konfigurationsdateien Fänge, Programme und Cultibox regeneriert werden basierend auf der aktuellen Einstellungen und Dateien, die Ihre Zukunft Protokolle in Kraft gesetzt werden. Wenn Protokolle sind bereits auf der SD-Karte kann in dem Verfahren <br /> <b> <i> Hinweis verloren: </ i> </ b>, so dass Ihre Karte durch den Cultibox erkannt, muss es sein in FAT16 formatiert und sollte daher nicht mehr als 2 GB"
 
 msgid "TOOLTIP_RESET_LOG"
-msgstr "En cliquant sur ce bouton toutes vos données des logs enregistrés seront supprimées. Cela peut être réalisé à la fin d'une culture, si vos logs ne vous sont plus utiles et que vous souhaitez libérer de l'espace sur votre ordinateur"
+msgstr "Durch einen Klick auf diesen Button werden alle Daten aufgezeichnet Protokolle werden gelöscht. Dies kann am Ende einer Kultur getan werden, wenn Sie Ihre Logs nicht mehr sinnvoll ist und Sie auf Ihrem Computer freizugeben wollen"
 
 msgid "TOOLTIP_STATE_PLUG"
-msgstr "Vous pouvez désactiver les prises que vous ne voulez pas utiliser. Le logiciel n'affichera pas les informations relatives aux prises désactivées"
+msgstr "Sie können deaktivieren genommen, dass Sie nicht verwenden möchten. Die Software enthält keine Informationen über Behinderte gemacht wurden"
 
 msgid "TOOLTIP_MAX_POWER_PLUG_3500"
-msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 600W"
+msgstr "Der 3500W-Buchse können Sie energieintensive Elemente steuern. Der 3500W angekündigt entsprechen einer reinen Widerstandskraft, wie eine Heizung. Wenn Sie eine Lampe HPS oder MH in diese Buchse anschließen, die maximal zulässige Leistung 600W"
 
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
-msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
+msgstr "1000W-Buchse können Sie energieintensive Elemente steuern. Der 1000W angekündigt entsprechen einer reinen Widerstandskraft, wie eine Heizung. Wenn Sie eine Lampe HPS oder MH in diese Buchse anschließen, die maximal zulässige Leistung 150W"
 
 msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
-msgstr "La prise variateur permet de varier l'intensité délivrée par la prise. Une fois selectionnée il faudra chosisir le canal de communication de la prise (qui doit être différent pour chaque prise variateur)"
+msgstr "Der Antrieb Buchse können Sie die Intensität durch den Stecker geliefert variieren. Nach der Auswahl wird der Kommunikationskanal der Steck chosisir (die für jeden Sockel-Laufwerk sein muss)"
 
 msgid "TOOLTIP_MAX_LOG_IMPORT"
-msgstr "Cette variable définit le nombre de mois qui seront scrutés pour rechercher des logs lors de l'appui sur le bouton 'Importer les logs' de l'onglet 'Logs'"
+msgstr "Diese Variable legt die Anzahl der Monate, die geprüft werden, um Protokolle zu finden, wenn Druck auf die Registerkarte "Import logs '" Protokolle "klicken"
 
 msgid "TOOLTIP_COST_START_TIME"
-msgstr "Date de départ du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
+msgstr "Abreisedatum für die Berechnung der Kosten für die Installation. Sie können die Kosten für die Installation von der Abreise festgelegt und das Enddatum der Periode Form berechnen"
 
 msgid "TOOLTIP_COST_STOP_TIME"
-msgstr "Date de fin du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
+msgstr "Ende der Berechnung der Kosten für die Installation. Sie können die Kosten für die Installation von der Abreise festgelegt und das Enddatum der Periode Form berechnen"
 
 msgid "TOOLTIP_REGUL_SENSOR"
-msgstr "La régulation d'une prise est réalisée en fonction des données relevées par un ou plusieurs capteurs. Ce champ vous permet de sélectionner ce(s) capteur(s) si vous avez activé les options avancées de régulation dans la partie configuration<br /><b>Note:</b> les capteurs non adaptés ne seront pas pris en compte lors du calcul, un capteur de PH/Ec par exemple ne sera pas utilisé pour calculer une moyenne de température."
+msgstr "Die Regelung wird in einem Entscheidungsfunktion der von einem oder mehreren Sensoren gesammelten Daten durchgeführt. Dieses Feld ermöglicht Ihnen, welche (n) Sensor (en) wählen, wenn Sie erweiterte Steuerungsmöglichkeiten im Konfigurationsteil <br /> <b> Hinweis aktiviert haben: </ b> Sensoren ungeeignet wird nicht berücksichtigt werden bei der Berechnung der Sensor PH / Ec zum Beispiel wird nicht verwendet, um eine mittlere Temperatur berechnen."
 
 msgid "TOOLTIP_SECOND_REGUL_ENABLE"
-msgstr "Assurez-vous de bien avoir lu l'aide avant d'activer cette option. Il n'est pas nécessaire de l'activer pour qu'une prise régule la température ou l'humidité. Une fois activée, la régulation est configurable pour une prise différente du type 'Lampe' et 'Autre'. Les options de configuration de la régulation secondaire seront disponible dans l'onglet 'Prises'"
+msgstr "Stellen Sie sicher, dass Sie die Hilfe, bevor Sie diese Option aktivieren gelesen haben. Es ist nicht notwendig, eine Entscheidung, die Temperatur oder Luftfeuchtigkeit regulieren können. Einmal aktiviert, wird die Steuerung für einen anderen Socket-Typ "Light" und "Andere" konfiguriert. Die Konfigurationsoptionen für die Sekundärregelung wird in der Registerkarte 'Taken' verfügbar sein"
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
-msgstr "Lorsque vous chargez la page des logs, le logiciel enregistre vos logs de température, humidité et puissance pour les 31 derniers jours. Cette fonctionnalité vous permet de charger des logs plus anciens en fonction du nombre de mois souhaité"
+msgstr "Wenn Sie die Seite Protokolle zu laden, speichert die Software die Log-Temperatur, Feuchtigkeit und Energie für die letzten 31 Tage. Diese Funktion erlaubt es, ältere Protokolle je nach der Anzahl der Monate erforderlich laden"
 
 msgid "TOOLTIP_EXPORT_LOG_CSV"
-msgstr "Exporter vos informations de logs dans un fichier au format CSV"
+msgstr "Exportieren Sie Ihre Daten Protokoll in einer Datei im CSV-Format"
 
 msgid "TOOLTIP_EXPORT_POWER_CSV"
-msgstr "Exporter vos informations de puissance dans un fichier au format CSV"
+msgstr "Exportieren Sie Ihre Leistungsinformationen in einer Datei im CSV-Format"
 
 msgid "TOOLTIP_ADD_PLUG"
-msgstr "Cette fonctionnalité vous permet d'ajouter une prise dont vous pouvez directement configurer le programme sur cette page. Cette action revient à se déplacer dans la partie configuration et augmenter le nombre de prises de votre système"
+msgstr "Diese Funktion ermöglicht Ihnen, eine Steckdose können Sie das Programm auf dieser Seite konfigurieren hinzuzufügen. Diese Aktion gibt, um im Spiel Konfiguration zu bewegen und die Zahl der Steckdosen in Ihrem System"
 
 msgid "TOOLTIP_REMOVE_PLUG"
-msgstr "Cette fonctionnalité vous permet de supprimer une prise utilisable dans votre système Cultibox. Cette action revient à se déplacer dans la partie configuration et diminuer le nombre de prises de votre système"
+msgstr "Diese Funktion ermöglicht es Ihnen, einen Stecker in Ihrem Cultibox System zu entfernen. Diese Aktion gibt, um im Konfigurationsteil bewegen und reduzieren die Anzahl der Steckdosen in Ihrem System"
 
 msgid "TOOLTIP_RESET_PROGRAM"
-msgstr "Cette fonctionnalité permet de remettre à zéro un programme. Le prise sélectionnée n'aura plus d'action attribuée, elle se retrouvera éteinte pour toute la journée"
+msgstr "Mit dieser Funktion können Sie das Programm zurückgesetzt. Der ausgewählte Take wird keine Aktion zugewiesen haben, wird es am Ende aus den ganzen Tag"
 
 msgid "TOOLTIP_EXPORT_PROGRAM"
-msgstr "Cette fonctionnalité vous permet d'exporter un programme dans un format csv (lisible par un tableur). Ce fichier peut être utilisé pour appliquer, avec la fonction d'importation, un même programme sur d'autres prises ou encore afin d'échanger des programmes avec d'autres utilisateurs Cultibox"
+msgstr "Diese Funktion ermöglicht es Ihnen, ein Programm in einer CSV-Format (lesbar von einer Tabellenkalkulation) zu exportieren. Diese Datei kann verwendet werden, zu implementieren, mit der Import-Funktion, die das gleiche Programm auf verschiedenen Verkaufsstellen oder Programme mit anderen Nutzern auszutauschen Cultibox"
 
 msgid "TOOLTIP_IMPORT_PROGRAM"
-msgstr "Cette fonctionnalité permet d'importer un programme depuis un fichier csv (lisible par un tableur). Le fichier à importer peut être créé par la fonction d'exportation par un autre utilisateur Cultibox pour échanger des programmes ou depuis une autre de vos prises pour appliquer un même programme à plusieurs prises"
+msgstr "Mit dieser Funktion können Sie ein Programm aus einer CSV-Datei (lesbar mit einer Tabellenkalkulation) zu importieren. Die Importdatei kann durch die Export-Funktion von einem anderen Benutzer erstellt Cultibox Programme auszutauschen oder von anderen Ihrer Entscheidung, das gleiche Programm in mehreren Umsetzung erfolgt"
 
 msgid "TOOLTIP_ADVANCED_REGUL_OPTIONS"
-msgstr "Si vous activez cette option, vous aurez la possibilité de choisir le ou les capteurs utilisé(s) pour la régulation ainsi que le mode de calcul"
+msgstr "Wenn Sie diese Option aktivieren, können Sie die für die Steuerung verwendet Sensor (en) und die Berechnungsmethode zu wählen"
 
 msgid "TOOLTIP_REPEAT_VALUE"
-msgstr "Cette valeur définit à quelle fréquence votre évènement sera répété. Par exemple, si votre évènement commence à 01:00:00 et que la répétition est de 04:00:00, l'évènement suivant débutera à 05:00:00. Le temps de répétition est ajouté au temps de départ de l'évènement pour déterminer le départ de l'évènement suivant. Le temps minimum autorisé est de 5mn."
+msgstr "Dieser Wert legt fest, wie oft Ihre Veranstaltung wiederholt werden. Zum Beispiel, wenn Sie Ihre Veranstaltung beginnt am 01.00.00, dass ET 04.00.00 Wiederholung ist, wird die nächste Veranstaltung wird am 05.00.00 beginnen. Probenzeit zu der Startzeit des Ereignisses aufgenommen, um den Beginn des nächsten Ereignisses zu bestimmen. Die erlaubte Mindestdauer beträgt 5 Minuten."
 
 msgid "TOOLTIP_RESET_OLD_PROGRAM"
-msgstr "En cochant cette case vous effacerez l'ancien programme de votre prise pour enregistrer votre nouvelle action sur un programme vide. Si vous ne cochez pas cette case, votre action se superposera au programme déjà enregistré."
+msgstr "Wenn dieses Feld markiert löschen Sie die alte Programm Ihrer Entscheidung, Ihre neue Aktion auf einem leeren Programm zu speichern. Wenn Sie die Option nicht aktivieren, wird die Aktion auf der bereits ein Programm überlagert."
 
 msgid "TOOLTIP_VALUE_PROGRAM"
-msgstr "Vous pouvez choisir jusqu'à trois fonctionnements différents pour votre équipement en fonction de son type: Marche (la prise sera en marche pour la période donnée), Arrêt (la prise sera à l'arrêt pour la période donnée) ou Régulation (la prise s'allumera et s'éteindra pour atteindre une valeur de température ou d'humidité déterminée - ne marche pas pour les prises définies comme ' autre' ou 'lampe')"
+msgstr "Sie können bis zu drei verschiedene Funktionen für Ihre Geräte je nach Typ wählen: Gehen (Entscheidung wird auf für die Zeit sein), Stopp-oder Steuer (Entscheidung (Entscheidung wird für den Zeitraum abgeschaltet werden) auf ein-und ausschalten, um einen Wert der Temperatur oder Luftfeuchte ermittelt erreichen - nicht für Steckdosen definiert als arbeiten "anderen" oder "Licht")"
 
 msgid "TOOLTIP_REGUL_SECOND"
-msgstr "Si la régulation secondaire est activée dans la configuration du logiciel, ce champ affiche son état pour la prise sélectionnée: activée ou désactivée. Si la régulation est activée pour la prise sélectionnée, vous trouverez aussi les informations concernant la configuration de cette régulation."
+msgstr "Wenn die Sekundärregelung ist in der Software-Konfiguration aktiviert, zeigt dieses Feld den Status für den ausgewählten Ausgang: an oder aus. Wenn die Steuerung für den ausgewählten Ausgang aktiviert ist, finden Sie auch Informationen über die Konfiguration dieser Verordnung."
 
 msgid "TOOLTIP_SHOW_COST"
-msgstr "En activant cette option vous pouvez avoir accès à la page de calcul des coûts de votre installation grâce au menu 'Coût' qui apparaît dans la barre du menu principal"
+msgstr "Durch die Aktivierung dieser Option, die Sie auf die Seite zugreifen können Kalkulation Ihrer Einrichtung durch das Menü "Kosten", die in der Hauptmenüleiste erscheint"
 
 msgid "TOOLTIP_SHOW_HISTORIC"
-msgstr "En activant cette option vous pouvez avoir accès à la page d'affichage de l'historique de vos actions dans le logiciel grâce au menu 'Historique' qui apparaît dans la barre du menu principal"
+msgstr "Durch Aktivierung dieser Option können Sie den Zugriff auf die Anzeige der Geschichte Ihrer Aktionsseite in der Software über das Menü "History", die in der Hauptmenüleiste angezeigt haben"
 
 msgid "TOOLTIP_RESET_MINMAX"
-msgstr "Ce champs permet de choisir l'heure de remise à zéro du min/max de tous les capteurs affichés sur l'écran de la Cultibox"
+msgstr "Hier können Sie die Zeit der Reset min / max aller auf dem Bildschirm angezeigt Cultibox Sensoren wählen"
 
 msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
-msgstr "Cette valeur n'est modifiable que si vous avez autorisé la modification des options de régulation dans l'onglet configuration. Vous pouvez choisir comment est calculée la valeur utilisée pour effectuer la régulation"
+msgstr "Dieser Wert kann nur geändert werden, wenn Sie die Änderung der Steueroptionen in der Registerkarte Konfiguration genehmigt. Sie können wählen, wie der berechnete Wert verwendet, um die Steuerung zu machen"
 
 msgid "TOOLTIP_RESET_CALENDAR"
-msgstr "Supprime toutes les annotations du calendrier que vous avez rentré manuellement. Ceci comprend les engrais de croissance possiblement ajoutés mais ne comprend pas les calendriers externes du type calendrier lunaire"  
+msgstr "Entfernt alle Anmerkungen Kalender, die Sie manuell eingegeben haben. Dazu gehören Wachstumsdünger möglicherweise hinzugefügt, aber nicht enthalten externe Kalender Mondkalender-Typ ""
 
 msgid "TOOLTIP_MANAGE_XML"
-msgstr "Permet de gérer facilement l'affichage des calendriers externes tel que les calendriers lunaires en sélectionnant les fichiers à afficher et ceux à cacher"
+msgstr "Ermöglicht Ihnen die einfache Verwaltung der Anzeige von externen Kalendern wie Mondkalender indem Sie die Dateien anzeigen und verstecken die"
 
 msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
-msgstr "Créer simplement un programme d'engrais prédéfini. Ce type de programme est à créer à partir du premier jour où vous souhaitez appliquer vos engrais, le reste est calculé en fonction du substrat et de la marque d'engrais choisie"
+msgstr "Erstellen Sie einfach ein Programm voreingestellten Dünger. Diese Art von Programm ist ab dem ersten Tag Sie Ihre Dünger, der Rest wird je nach dem gewählten Substrat-und Marken Dünger berechnet werden wollen erstellen"
 
 msgid "TOOLTIP_DEFINE_COST"
-msgstr "Cet onglet calcule le coût théorique et réel de votre installation.<br /><ul class='list_class_tooltip'><li><b>Le coût théorique</b> est réalisé à partir des informations de vos programmes de prise. La régulation (qui peut couper ou allumer une prise) n'est pas comptabilisée (la prise est considérée comme en marche). Le prix affiché sera donc le prix maximal si la régulation ne s'est pas déclenchée.<br /><br /></li><li><b>Le coût réel</b> est réalisé à partir des informations des fichiers de puissance (fichiers power: pwr_XX) de la Cultibox. Ces fichiers renseignent lorsqu'une prise s'est allumée et s'est étteinte. La régulation est donc prise en compte dans ce calcul de coût.</li></ul><b>Conclusion:</b> il est possible de noter de légères différences entre le calcul réel et le calcul théorique qui peuvent provenir d'une régulation non prise en compte ou encore de la précision des fichiers power (enregistrement toutes les X minutes alors que les programmes sont précis à la seconde)."
+msgstr "Diese Registerkarte berechnet den theoretischen und tatsächlichen Kosten für Ihre Installation. <br /> <ul Class='list_class_tooltip'> <li> <b> theoretischen Kosten </ b> von Informationen aus Ihrem Behandlungsprogramme gemacht. Verordnung (denen geschnitten oder drehen Einnahme kann) wird nicht erkannt (der Haken wird als Laufen). Der angegebene Preis wird der Höchstpreis sein, wenn die Steuerung nicht ausgelöst. <br /> <br /> </ Li> <li> <b> tatsächlichen Kosten </ b> wird von Informationen, die Dateien Leistung (Leistungs Dateien: pwr_XX) von Cultibox. Diese Dateien enthalten Informationen, wenn Sie beleuchtet und hat étteinte. Verordnung berücksichtigt bei der Berechnung der Kosten </ li> </ ul> <b> Fazit übernommen. </ B> ist es möglich, beachten Sie leichte Unterschiede zwischen der tatsächlichen und der theoretischen Berechnung Berechnung, die kommen können eine Verordnung nicht berücksichtigt oder die Genauigkeit der Strom Dateien (Aufzeichnungs alle X Minuten, während Programme, auf die Sekunde genau sind)."
 
 msgid "TOOLTIP_CALENDAR_SUBSTRAT"
-msgstr "En fonction du substrat que vous sélectionnez, les programmes d'engrais sont filtrés. Vous ne pouvez sélectionner que des programmes associés à votre substrat."
+msgstr "Je nach Untergrund Sie sich entscheiden, sind Dünger Programme gefiltert. Sie können nur Programme mit Substrat verbunden zu wählen."
 
 msgid "TOOLTIP_PROGRAM"
-msgstr "Ce champ vous permet de sélectionner le programme à appliquer. Pour connaitre plus précisément les quantités d'engrais appliquées veuillez vous référer à la documentation."
+msgstr "In diesem Feld können Sie das Programm anwenden zu wählen. Um genauer zu wissen, die Menge an Dünger angewandt entnehmen Sie bitte der Dokumentation."
 
 msgid "TOOLTIP_CALENDAR_STARTDATE"
-msgstr "Grâce à ce champ, vous pouvez sélectionner le premier jour ou sera appliqué le programme d'engrais sélectionné."
+msgstr "Mit diesem Feld können Sie wählen, der erste Tag an ausgewählte Programm Dünger aufgebracht werden."
 
 msgid "TOOLTIP_CALENDAR_EVENT_NAME"
-msgstr "Ce champ permet de définir un nom pour votre programme d'engrais. Ce nom apparait dans le titre de chaque évènement."
+msgstr "Dieses Feld können Sie einen Namen für Ihr Dünger Programm definieren. Dieser Name wird in der Überschrift des jeweiligen Veranstaltung."
 
 msgid "TOOLTIP_CALENDAR_SELECT_CROISSANCE"
-msgstr "Si vous choisissez croissance, les trois premières semaines du programme de culture seront appliquées. Si vous choisissez floraison, les huit dernières semaines du programme de culture seront appliquées."
+msgstr "Wenn Sie Wachstum wählen, werden die ersten drei Wochen des Kulturprogramms umgesetzt werden. Wenn Sie blühende wählen, werden die letzten acht Wochen des Kulturprogramms umgesetzt werden."
 
 msgid "TOOLTIP_WIFI_SSID"
-msgstr "Le nom de votre réseau Wi-fi actuellement en marche. Il s'agit de l'identifiant (SSID) de votre réseau Wifi local."
+msgstr "Der Name des Wi-Fi-Netzwerk läuft derzeit. Dies ist die Kennung (SSID) des lokalen WiFi-Netzwerk."
 
 msgid "TOOLTIP_WIFI_KEY_TYPE"
-msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
+msgstr "Die Art der Verschlüsselung für das drahtlose Netzwerk"
 
 msgid "TOOLTIP_WIFI_IP"
-msgstr "L'adresse de votre module Wifi peut être personalisée en rentrant une adresse ip au format XXX.XXX.XXX.XXX"
+msgstr "Die Adresse des WLAN-Modul kann mit einer IP-Adresse im Format personalisiert werden XXX.XXX.XXX.XXX"
 
 msgid "TOOLTIP_MSGBOX_EYES"
-msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du logiciel"
+msgstr "Klicken Sie auf das Bild, um Message-Box-Software wieder"
 
 msgid "TOOLTIP_RTC_OFFSET"
-msgstr "Permet de modifier la cadence de l'horloge interne de la Cultibox."
+msgstr "Hier können Sie die Geschwindigkeit der internen Uhr des Cultibox ändern."
 
 
 #For the debug part:
 msgid "GENERATE_TIME"
-msgstr "Généré en"
-
-
+msgstr "Generierte"
