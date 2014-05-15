@@ -11,17 +11,37 @@
 + Bug can be view at adress : http://code.google.com/p/cultibox                +
 +------------------------------------------------------------------------------+
 
++ Version 2.16
+   Comment:
+   Issues :
+   To test :
+      556 : [Logs] Mauvaise recherche du début de log power au reboot
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      797 : [SD] Cultibox sans carte SD à 00h00
+      809 : [PROGRAMM] Gestion de programme journalier
+      824 : [PROG] Fonctionnement inattendu
+      832 : [cultibox] changement de l'heure dans le menu de la Cultibox
+      835 : [Régulation] anomalie de fonctionnement
+      836 : [Régulation] Pilotage non correcte pour effecteur négatif
+   Solved :
+      --- : Gestion des firmwares des capteurs d'eau
+      741 : Passage de la limite du nombre de changement dans une journée à 999 
+      798 : [CAL] Affichage de caractères bizarre sur l'écran de la CBx
+      805 : [CALIBRATION] Ajouter une pop up pour avertir l'utilisateur
+      808 : [ID] Lire les fichiers avec 6 valeurs
+      
 + Version 2.15
    Comment:
    Issues :
    To test :
       556 : [Logs] Mauvaise recherche du début de log power au reboot
       652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
-      741 : Passage de la limite du nombre de changement dans une journée à 999 
       797 : [SD] Cultibox sans carte SD à 00h00
       809 : [PROGRAMM] Gestion de programme journalier
+      832 : [cultibox] changement de l'heure dans le menu de la Cultibox
    Solved :
       --- : Gestion des firmwares des capteurs d'eau
+      741 : Passage de la limite du nombre de changement dans une journée à 999 
       798 : [CAL] Affichage de caractères bizarre sur l'écran de la CBx
       805 : [CALIBRATION] Ajouter une pop up pour avertir l'utilisateur
       808 : [ID] Lire les fichiers avec 6 valeurs
