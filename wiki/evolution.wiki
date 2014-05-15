@@ -33,6 +33,7 @@ Ce paragraphe concerne toutes les futures évolutions.
  * Calcul de la durée de vie d'une lampe HPS 
  * Calcul du temps de chargement des logs
  * Enregistrer les développeurs de l'application Mac os X chez Apple
+ * Réguler un espace en utilisant deux capteurs (un à l'intérieur de l'espace et un à l'extérieur de l'espace) ISSUE 794
 
 == Site Web ==
  * Création d'un modèle 3D à intégrer dans le site Web (http://www.google.com/webdesigner/)
