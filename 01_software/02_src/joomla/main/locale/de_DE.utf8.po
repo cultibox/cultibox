@@ -12,9 +12,6 @@ msgstr "Konfiguration"
 msgid "LOGS"
 msgstr "Logs"
 
-msgid "PROGRAMS"
-msgstr "Programme"
-
 #For the welcome part
 msgid "WELCOME_TITLE"
 msgstr "Willkommen in der Softwarekonfiguration Cultibox"
@@ -33,9 +30,6 @@ msgstr "<ul class='list_class'> <li> entfernen Sie Ihre alte Stecker, die nicht 
 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Klicken Sie auf die Schaltfläche Weiter, um den Setup-Assistenten beginnen und den Umgang mit Ihren Cultibox"
-
-msgid "WELCOME_WIZARD"
-msgstr "Configuration Wizard"
 
 msgid "WELCOME_LOGS"
 msgstr "Seite Anzeigen von Protokollen"
@@ -98,9 +92,6 @@ msgstr "Farbe ORP Kurven"
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Farbe Graphen Installationskosten"
 
-msgid "CONFIGURE_LANGUAGE"
-msgstr "Wählen Sie Ihre Sprache"
-
 msgid "CONFIGURE_FREQUENCY"
 msgstr "Aufnahmefrequenz von Klima (in Minuten)"
 
@@ -121,12 +112,6 @@ msgstr "Aktivieren Sie die Anzeige von Popup-Meldungen"
 
 msgid "VALIDATION_CONF"
 msgstr "Konfiguration speichern"
-
-msgid "LANG_FR"
-msgstr "Französisch"
-
-msgid "LANG_EN"
-msgstr "Englisch"
 
 msgid "COLOR_BLUE"
 msgstr "Blau"
@@ -262,9 +247,6 @@ msgstr "1 Monat"
 msgid "SELECT_DAY"
 msgstr "Tag-Anzeige (YYYY-MM-DD)"
 
-msgid "SELECT_MONTH"
-msgstr "Wählen Sie die Monatsansicht"
-
 msgid "VIEW"
 msgstr "Anzeige"
 
@@ -355,9 +337,6 @@ msgstr "Programm zum vergleichen"
 msgid "SELECT_POWER_PLUG"
 msgstr "Display-Stromverbrauch"
 
-msgid "FORCE_ON_CHART"
-msgstr "Gewaltmarsch"
-
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Vielen Dank für Ihre Geduld und die Karte nicht <b> <i> Cultibox </ i> </ b> zu entfernen die Zeit die Seite geladen und die Software verarbeitet Ihre Daten. <br /> <br /> <b> <i> Hinweis: </ i> </ b> Wenn ein Fehler auftritt, können Sie die Seite neu zu laden, um zu versuchen, um den Vorgang abzuschließen"
 
@@ -391,9 +370,6 @@ msgstr "Sensor"
 msgid "MONTH_DATE"
 msgstr "Monat und Jahr, um die Anzeige"
 
-msgid "ALL_SENSOR"
-msgstr "alle Sensoren"
-
 msgid "SELECT_SENSOR"
 msgstr "Sensor"
 
@@ -409,23 +385,16 @@ msgstr "Löschen Sie alte Protokolle Leistungsmessung"
 msgid "MANAGE_RESET_LOG"
 msgstr "Löschen Sie die Protokolle"
 
-msgid "MANAGE_RESET_POWER"
-msgstr "Protokolle entfernen Macht"
-
 msgid "IMPORT_LAST_MONTH"
 msgstr "im letzten Monat"
 
 msgid "IMPORT_LOG"
 msgstr "Import-Protokolle"
 
-msgid "NO_IMPORT_LOG"
-msgstr "Keine SD-Karte erkannt"
 
 msgid "EMPTY_REGUL"
 msgstr "Kein programmierten Steuer"
 
-msgid "REGUL_TITLE_PLUG"
-msgstr "Verordnung für die Entscheidung"
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Zusammenfassung der aktiven Sekundär Vorschriften für den ausgewählten gemacht"
@@ -469,14 +438,8 @@ msgstr "Keine Protokolle in der Datenbank"
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Exportieren Sie Ihre Leistungsinformation"
 
-msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
-msgstr "Keine Protokolle in Ihre Machtbasis"
 
-msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
-msgstr "Exportieren Sie Ihre Protokolle"
 
-msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
-msgstr "Exportieren Sie Ihre Log-Leistung"
 
 msgid "EXAMPLE_LOG"
 msgstr "Beispiel Protokoll"
@@ -648,8 +611,6 @@ msgstr "unterhalb des Schwellen"
 msgid "REGUL_ABOVE"
 msgstr "oberhalb des Schwellen"
 
-msgid "FOR_THE_PLUG"
-msgstr "zur Entscheidung"
 
 msgid "STATE_PLUG"
 msgstr "Staatsnahme"
@@ -660,14 +621,8 @@ msgstr "Aktiviert"
 msgid "PLUG_DISABLED"
 msgstr "Aus"
 
-msgid "VALID_DISABLED_PLUG"
-msgstr "Erfolgreich abgenommen"
 
-msgid "VALID_ENABLED_PLUG"
-msgstr "Aktiviert erfolgreich genommen"
 
-msgid "PLUG_HISTO_NUMBER"
-msgstr "Unter Ausgabe"
 
 msgid "PLUG_MAX_POWER"
 msgstr "Steckertyp (maximale Kapazität)"
@@ -770,8 +725,6 @@ msgstr "Wählen Sie \ 's Zeit"
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
 msgstr "Wählen Sie das Datum"
 
-msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
-msgstr "Verhalten von Ihrer Entscheidung"
 
 msgid "CHART_FORCE_ON_VALUE"
 msgstr "Zwangs "auf"
@@ -845,11 +798,7 @@ msgstr "Löschen Sie das alte Programm"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Programmer Aktion"
 
-msgid "PROGRAM_PONCTUAL"
-msgstr "Punkt"
 
-msgid "PROGRAM_CYCLIC"
-msgstr "zyklisch"
 
 msgid "REPEAT_EVERY"
 msgstr "Wiederholen Sie alle"
@@ -878,8 +827,6 @@ msgstr "Die letzte Aufnahme löschen"
 msgid "RESET_CONFIRM_PROGRAM"
 msgstr "Sind Sie sicher, dass Sie das Programm / die Steckdose (n), ausgewählt (en) zurückzusetzen zu wollen?"
 
-msgid "DATA_LABEL"
-msgstr "Aussagen anzeigen Ausgewählte genommen"
 
 msgid "BEHAVIOUR"
 msgstr "Verhalten"
@@ -890,8 +837,6 @@ msgstr "Regulierung"
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Programmstunden werden das gleiche wie das vorherige Programm zurück. Dies wird Ihre alte Programm zu ändern, würden Sie dieses Programm sowieso bewerben?"
 
-msgid "JUMPTO_PLUG"
-msgstr "Konfigurieren der Unterstützung mit diesem Programm verbunden"
 
 msgid "ERROR_MAX_PROGRAM"
 msgstr "Die maximale Anzahl der Zustandsänderung zur Entscheidung (999 für alle kombinierten Dosen begrenzt) erreicht worden ist. Die letzte Aktion Ihrer Programme findet statt im:"
@@ -910,8 +855,6 @@ msgstr "Exportieren Sie Ihre Grafik"
 msgid "PRINT_HIGHCHART"
 msgstr "Drucken Sie das Diagramm"
 
-msgid "EXPORT_HIGHCHART"
-msgstr "Export Diagramm in ein Dokument oder Bild"
 
 msgid "EXPORT_PNG"
 msgstr "PNG exportieren"
@@ -954,8 +897,6 @@ msgstr "Speichern und schließen Sie den Assistenten"
 msgid "WIZARD_OTHER_STEP"
 msgstr "Registrieren und konfigurieren Sie eine andere Steckdose"
 
-msgid "WIZARD_NEXT_PLUG"
-msgstr "Weiter>"
 
 msgid "WIZARD_PLUG_TYPE"
 msgstr "Nummer 1-Buchse wird als Lampen konfiguriert werden. Diese Buchse kann eine Lampe <b> 600 Watt </ b> bis <b> </ b> zubringen."
@@ -984,11 +925,7 @@ msgstr "Stunden Lampenzündung"
 msgid "END_TIME_LAMP"
 msgstr "Ausschaltzeit des Lampen"
 
-msgid "START_TIME_EQUIPMENT"
-msgstr "Zeit Zündeinrichtung"
 
-msgid "END_TIME_EQUIPMENT"
-msgstr "Stunden-Löschanlagen"
 
 
 #For the calendar part:
@@ -1154,8 +1091,6 @@ msgstr "Wachstum + Blüte"
 msgid "CALENDAR_IMPORTANT"
 msgstr "Bedeutende Ereignis"
 
-msgid "SUMARY_IMPORTANT_LIST"
-msgstr "Zusammenfassung der jüngsten Ereignisse wichtig"
 
 msgid "EVENT_FROM"
 msgstr "Event"
@@ -1378,11 +1313,7 @@ msgstr "Tag-Anzeige: Fehler im Format (JJJJ-MM-DD)"
 msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "Monat Anzeige: Fehler im Format (MM)"
 
-msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "Kein Cultibox SD kompatiblen Karte erkannt, um die Konfiguration zu speichern"
 
-msgid "ERROR_SD_CARD_LOGS"
-msgstr "Keine SD-Karte erkannt Cultibox aktivieren, damit Sie Ihre Log-Dateien zu laden"
 
 msgid "ERROR_SD_CARD_CONF"
 msgstr "Kein Cultibox SD kompatiblen Karte erkannt, um die Konfiguration zu speichern"
@@ -1390,8 +1321,6 @@ msgstr "Kein Cultibox SD kompatiblen Karte erkannt, um die Konfiguration zu spei
 msgid "ERROR_SD_CARD"
 msgstr "Keine SD-Karte erkannt Cultibox aktiviert ist, überprüfen Sie, ob Ihre Karte korrekt angeschlossen ist"
 
-msgid "ERROR_MISSING_VALUE_TIME"
-msgstr "Fehlender Wert für das Startdatum / Programmende"
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "Fehler im Zeitformat HH: MM: SS"
@@ -1441,8 +1370,6 @@ msgstr "Der Auslösewert des Alarm muss größer als 0 und kleiner als 100 sein"
 msgid "ERROR_REGUL_VALUE"
 msgstr "Der Auslösewert des Steuer größer als 0 und kleiner als 100 sein"
 
-msgid "ERROR_POWER_VALUE"
-msgstr "Fehler in der Wert der Macht: es muss größer oder gleich 0 Watt sein"
 
 msgid "ERROR_PRICE_VALUE"
 msgstr "Der Preis pro Kilowattstunde muss größer als 0 sein"
@@ -1566,8 +1493,6 @@ msgstr "Fehler im Format der WPA-Passphrase: Es muss zwischen 8 und 63 Zeichen l
 
 
 # For the informations part:
-msgid "CLOSE_CONFIRM"
-msgstr "Stornieren"
 
 msgid "CONFIRMATION"
 msgstr "Bestätigung"
@@ -1602,14 +1527,8 @@ msgstr "Erfolgreich eingeführte Programm"
 msgid "VALID_DELETE_LOGS"
 msgstr "Löschen von Protokollen erfolgreich abgeschlossen"
 
-msgid "VALID_RESET_CARD"
-msgstr "Karte erfolgreich formatiert"
 
-msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "Programme erfolgreich aktualisiert! Sie können Ihre SD-Karte entfernen und steckte es in die Cultibox dafür um wirksam zu sein, wenn Sie Ihre Einstellungen vorgenommen haben"
 
-msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "Log-Dateien der letzten 31 Tage erfolgreich registriert"
 
 msgid "VALID_LOAD_LOG"
 msgstr "Logfiles den letzten Monaten erfolgreich registriert"
@@ -1673,8 +1592,6 @@ msgstr "Diese Option ermöglicht Ihnen, die Häufigkeit, mit der den Status (an 
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Ohne SD-Karte eingesteckt wird Ihre Konfiguration in der Software aber nicht in Cultibox gespeichert werden. Dass Ihre Konfiguration wirksam ist, wird es eine SD-Karte verbinden, speichern Sie Ihre Konfiguration oder laden Sie die Seite und stecken Sie diese Karte in den SD-Cultibox."
 
-msgid "TOOLTIP_WITHOUT_SD_LOG"
-msgstr "Ohne SD-Karte eingesteckt registriert Ihre Cultibox auf Temperatur und Feuchtigkeit können nicht angezeigt und gespeicherte Dateien werden. So laden Sie Ihre neue Protokolldateien müssen eine SD-Karte angeschlossen werden und diese Seite neu laden."
 
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Diese Option berechnet und zeigt die Stromversorgung / die Steckdose (n), ausgewählt (n) verbraucht. Um dieses möglich zu machen wird es das Feld 'Macht' in der Konfigurationsteil des Fangs füllen"
@@ -1715,11 +1632,7 @@ msgstr "Der 3500W-Buchse können Sie energieintensive Elemente steuern. Der 3500
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "1000W-Buchse können Sie energieintensive Elemente steuern. Der 1000W angekündigt entsprechen einer reinen Widerstandskraft, wie eine Heizung. Wenn Sie eine Lampe HPS oder MH in diese Buchse anschließen, die maximal zulässige Leistung 150W"
 
-msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
-msgstr "Der Antrieb Buchse können Sie die Intensität durch den Stecker geliefert variieren. Nach der Auswahl wird der Kommunikationskanal der Steck chosisir (die für jeden Sockel-Laufwerk sein muss)"
 
-msgid "TOOLTIP_MAX_LOG_IMPORT"
-msgstr "Diese Variable legt die Anzahl der Monate, die geprüft werden, um Protokolle zu finden, wenn Druck auf die Registerkarte "Import logs '" Protokolle "klicken"
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Abreisedatum für die Berechnung der Kosten für die Installation. Sie können die Kosten für die Installation von der Abreise festgelegt und das Enddatum der Periode Form berechnen"
@@ -1775,8 +1688,6 @@ msgstr "Wenn die Sekundärregelung ist in der Software-Konfiguration aktiviert, 
 msgid "TOOLTIP_SHOW_COST"
 msgstr "Durch die Aktivierung dieser Option, die Sie auf die Seite zugreifen können Kalkulation Ihrer Einrichtung durch das Menü "Kosten", die in der Hauptmenüleiste erscheint"
 
-msgid "TOOLTIP_SHOW_HISTORIC"
-msgstr "Durch Aktivierung dieser Option können Sie den Zugriff auf die Anzeige der Geschichte Ihrer Aktionsseite in der Software über das Menü "History", die in der Hauptmenüleiste angezeigt haben"
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Hier können Sie die Zeit der Reset min / max aller auf dem Bildschirm angezeigt Cultibox Sensoren wählen"

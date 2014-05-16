@@ -12,8 +12,6 @@ msgstr "Configuration"
 msgid "LOGS"
 msgstr "Logs"
 
-msgid "PROGRAMS"
-msgstr "Programmes"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
@@ -34,8 +32,6 @@ msgstr "<ul class='list_class'><li>enlever vos anciennes prises qui ne sont plus
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Cliquer sur le bouton suivant pour lancer l'assistant de configuration et commencer à manipuler votre Cultibox"
 
-msgid "WELCOME_WIZARD"
-msgstr "Assistant de configuration"
 
 msgid "WELCOME_LOGS"
 msgstr "Page de visualisation des logs"
@@ -98,8 +94,6 @@ msgstr "Couleur des courbes d'ORP"
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Couleur du graphe de coût de l'installation"
 
-msgid "CONFIGURE_LANGUAGE"
-msgstr "Choisir votre langue"
 
 msgid "CONFIGURE_FREQUENCY"
 msgstr "Fréquence d'enregistrement du climat (en minute)"
@@ -122,11 +116,7 @@ msgstr "Activer l'affichage des messages par popup"
 msgid "VALIDATION_CONF"
 msgstr "Enregistrer la configuration"
 
-msgid "LANG_FR"
-msgstr "Français"
 
-msgid "LANG_EN"
-msgstr "Anglais"
 
 msgid "COLOR_BLUE"
 msgstr "Bleu"
@@ -262,8 +252,6 @@ msgstr "un mois"
 msgid "SELECT_DAY"
 msgstr "Jour à afficher (AAAA-MM-JJ)"
 
-msgid "SELECT_MONTH"
-msgstr "Sélectionner le mois à afficher "
 
 msgid "VIEW"
 msgstr "Afficher"
@@ -355,8 +343,6 @@ msgstr "Programme à comparer"
 msgid "SELECT_POWER_PLUG"
 msgstr "Afficher la puissance consommée"
 
-msgid "FORCE_ON_CHART"
-msgstr "Marche forcée"
 
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte Cultibox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note: </i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
@@ -391,8 +377,6 @@ msgstr "Capteur"
 msgid "MONTH_DATE"
 msgstr "Mois et année à afficher"
 
-msgid "ALL_SENSOR"
-msgstr "tous les capteurs"
 
 msgid "SELECT_SENSOR"
 msgstr "le capteur"
@@ -409,8 +393,6 @@ msgstr "Supprimer vos anciens logs de mesure de puissance"
 msgid "MANAGE_RESET_LOG"
 msgstr "Supprimer les logs"
 
-msgid "MANAGE_RESET_POWER"
-msgstr "Supprimer les logs de puissance "
 
 msgid "IMPORT_LAST_MONTH"
 msgstr "derniers mois"
@@ -418,14 +400,10 @@ msgstr "derniers mois"
 msgid "IMPORT_LOG"
 msgstr "Importer les logs"
 
-msgid "NO_IMPORT_LOG"
-msgstr "Pas de carte SD détectée"
 
 msgid "EMPTY_REGUL"
 msgstr "Aucune régulation programmée"
 
-msgid "REGUL_TITLE_PLUG"
-msgstr "Régulation pour la prise"
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Résumé des régulations secondaires actives pour les prises sélectionnées"
@@ -469,14 +447,8 @@ msgstr "Pas de logs dans votre base"
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Exporter vos informations de puissance"
 
-msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
-msgstr "Pas de logs de puissance dans votre base"
 
-msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
-msgstr "Export de vos logs"
 
-msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
-msgstr "Export de vos logs de puissance"
 
 msgid "EXAMPLE_LOG"
 msgstr "Exemple de logs"
@@ -648,8 +620,6 @@ msgstr "dessous du seuil"
 msgid "REGUL_ABOVE"
 msgstr "dessus du seuil"
 
-msgid "FOR_THE_PLUG"
-msgstr "pour la prise"
 
 msgid "STATE_PLUG"
 msgstr "Etat de la prise"
@@ -660,14 +630,8 @@ msgstr "Activée"
 msgid "PLUG_DISABLED"
 msgstr "Désactivée"
 
-msgid "VALID_DISABLED_PLUG"
-msgstr "Prise désactivée avec succès"
 
-msgid "VALID_ENABLED_PLUG"
-msgstr "Prise activée avec succès"
 
-msgid "PLUG_HISTO_NUMBER"
-msgstr "Prise numéro"
 
 msgid "PLUG_MAX_POWER"
 msgstr "Type de prise (puissance maximale)"
@@ -770,8 +734,6 @@ msgstr "Choisir l\'heure"
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
 msgstr "Choisir la date"
 
-msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
-msgstr "Comportement de votre prise"
 
 msgid "CHART_FORCE_ON_VALUE"
 msgstr "Marche forcée" 
@@ -845,11 +807,7 @@ msgstr "Effacer l'ancien programme"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Programmer une action"
 
-msgid "PROGRAM_PONCTUAL"
-msgstr "ponctuelle"
 
-msgid "PROGRAM_CYCLIC"
-msgstr "cyclique"
 
 msgid "REPEAT_EVERY"
 msgstr "Répéter toutes les"
@@ -878,8 +836,6 @@ msgstr "Supprimer la dernière prise"
 msgid "RESET_CONFIRM_PROGRAM"
 msgstr "Êtes-vous sûr de vouloir ré-initialiser le programme pour la/les prise(s) sélectionnée(s)?"
 
-msgid "DATA_LABEL"
-msgstr "Afficher les états des prises selectionnées"
 
 msgid "BEHAVIOUR"
 msgstr "Comportement"
@@ -890,8 +846,6 @@ msgstr "régulation"
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Les heures du programme rentrées sont les mêmes que le précédent programme. Ceci modifiera votre ancien programme, voulez-vous appliquer ce programme tout de même?"
 
-msgid "JUMPTO_PLUG"
-msgstr "Configurer la prise associée à ce programme"
 
 msgid "ERROR_MAX_PROGRAM"
 msgstr "Le nombre maximal de changement d'état pour les prises (limité à 999 pour toutes les prises confondues) a été atteint. La dernière action de vos programmes se déroulera à:"
@@ -910,8 +864,6 @@ msgstr "Exporter votre graphe"
 msgid "PRINT_HIGHCHART"
 msgstr "Imprimer le graphique"
 
-msgid "EXPORT_HIGHCHART"
-msgstr "Exporter le graphique dans un document ou une image"
 
 msgid "EXPORT_PNG"
 msgstr "Exporter au format PNG"
@@ -954,8 +906,6 @@ msgstr "Enregistrer et fermer l'assistant"
 msgid "WIZARD_OTHER_STEP"
 msgstr "Enregistrer et configurer une autre prise"
 
-msgid "WIZARD_NEXT_PLUG"
-msgstr "Suivant >"
 
 msgid "WIZARD_PLUG_TYPE"
 msgstr "La prise numéro 1 sera configurée comme une lampe. Cette prise pourra accueillir une lampe de <b>600 Watts</b> au <b>maximum</b>."
@@ -984,11 +934,7 @@ msgstr "Heure d'allumage de la lampe"
 msgid "END_TIME_LAMP"
 msgstr "Heure d'extinction de la lampe"
 
-msgid "START_TIME_EQUIPMENT"
-msgstr "Heure d'allumage de l'équipement"
 
-msgid "END_TIME_EQUIPMENT"
-msgstr "Heure d'extinction de l'équipement"
 
 
 #For the calendar part:
@@ -1154,8 +1100,6 @@ msgstr "Croissance + Floraison"
 msgid "CALENDAR_IMPORTANT"
 msgstr "Evènement important"
 
-msgid "SUMARY_IMPORTANT_LIST"
-msgstr "Résumé des derniers évènements importants"
 
 msgid "EVENT_FROM"
 msgstr "Evènement du"
@@ -1378,11 +1322,7 @@ msgstr "Jour à afficher: erreur dans le format (AAAA-MM-JJ)"
 msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "Mois à afficher: erreur dans le format (MM)"
 
-msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre configuration"
 
-msgid "ERROR_SD_CARD_LOGS"
-msgstr "Aucune carte SD compatible Cultibox détectée pour charger vos fichiers de logs"
 
 msgid "ERROR_SD_CARD_CONF"
 msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre configuration"
@@ -1390,8 +1330,6 @@ msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre co
 msgid "ERROR_SD_CARD"
 msgstr "Aucune carte SD compatible Cultibox détectée, vérifier que votre carte soit correctement branchée"
 
-msgid "ERROR_MISSING_VALUE_TIME"
-msgstr "Valeur manquante pour la date de début/fin du programme"
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "Erreur dans le format de l'heure: HH:MM:SS"
@@ -1441,8 +1379,6 @@ msgstr "La valeur de déclenchement de l'alarme doit être supérieure à 0 et i
 msgid "ERROR_REGUL_VALUE"
 msgstr "La valeur de déclenchement de la régulation doit être supérieure à 0 et inférieure à 100"
 
-msgid "ERROR_POWER_VALUE"
-msgstr "Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt"
 
 msgid "ERROR_PRICE_VALUE"
 msgstr "Le prix du kilowatt-heure doit être supérieur à 0"
@@ -1566,8 +1502,6 @@ msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8
 
 
 # For the informations part:
-msgid "CLOSE_CONFIRM"
-msgstr "Annuler"
 
 msgid "CONFIRMATION"
 msgstr "Confirmation"
@@ -1602,14 +1536,8 @@ msgstr "Programme importé avec succès"
 msgid "VALID_DELETE_LOGS"
 msgstr "Suppréssion des logs effectuée avec succès"
 
-msgid "VALID_RESET_CARD"
-msgstr "Carte formatée avec succès"
 
-msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "Programmes mis à jour avec succès! Vous pouvez retirer votre carde SD et la mettre dans la Cultibox pour que cela soit effectif si vous avez fini vos paramètrages"
 
-msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "Fichiers de logs des 31 derniers jours enregistrés avec succès"
 
 msgid "VALID_LOAD_LOG"
 msgstr "Fichiers de logs des derniers mois enregistrés avec succès"
@@ -1673,8 +1601,6 @@ msgstr "Cette option permet de configurer la fréquence à laquelle sera mis à 
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."
 
-msgid "TOOLTIP_WITHOUT_SD_LOG"
-msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox concernant les données des capteurs ne pourront pas être affichés et sauvegardés. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
 
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Cette option calcule et affiche la puissance consommée pour la/les prise(s) sélectionnée(s). Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
@@ -1715,11 +1641,7 @@ msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. L
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
 
-msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
-msgstr "La prise variateur permet de varier l'intensité délivrée par la prise. Une fois selectionnée il faudra chosisir le canal de communication de la prise (qui doit être différent pour chaque prise variateur)"
 
-msgid "TOOLTIP_MAX_LOG_IMPORT"
-msgstr "Cette variable définit le nombre de mois qui seront scrutés pour rechercher des logs lors de l'appui sur le bouton 'Importer les logs' de l'onglet 'Logs'"
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Date de départ du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
@@ -1775,8 +1697,6 @@ msgstr "Si la régulation secondaire est activée dans la configuration du logic
 msgid "TOOLTIP_SHOW_COST"
 msgstr "En activant cette option vous pouvez avoir accès à la page de calcul des coûts de votre installation grâce au menu 'Coût' qui apparaît dans la barre du menu principal"
 
-msgid "TOOLTIP_SHOW_HISTORIC"
-msgstr "En activant cette option vous pouvez avoir accès à la page d'affichage de l'historique de vos actions dans le logiciel grâce au menu 'Historique' qui apparaît dans la barre du menu principal"
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Ce champs permet de choisir l'heure de remise à zéro du min/max de tous les capteurs affichés sur l'écran de la Cultibox"
