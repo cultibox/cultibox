@@ -12,8 +12,6 @@ msgstr "Configuration"
 msgid "LOGS"
 msgstr "Logs"
 
-msgid "PROGRAMS"
-msgstr "Programs"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
@@ -34,8 +32,6 @@ msgstr "<ul class='list_class'> <li> remove your old plugs that are no longer co
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Click the Next button to start the setup wizard and start handling your Cultibox"
 
-msgid "WELCOME_WIZARD"
-msgstr "Configuration Wizard"
 
 msgid "WELCOME_LOGS"
 msgstr "Page viewing logs"
@@ -98,8 +94,6 @@ msgstr "Color ORP curves"
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Color graph installation cost"
 
-msgid "CONFIGURE_LANGUAGE"
-msgstr "Choose your language"
 
 msgid "CONFIGURE_FREQUENCY"
 msgstr "Recording frequency of climate (in minutes)"
@@ -122,11 +116,7 @@ msgstr "Enable the display of popup messages"
 msgid "VALIDATION_CONF"
 msgstr "Save Configuration"
 
-msgid "LANG_FR"
-msgstr "French"
 
-msgid "LANG_EN"
-msgstr "English"
 
 msgid "COLOR_BLUE"
 msgstr "Blue"
@@ -262,8 +252,6 @@ msgstr "one months"
 msgid "SELECT_DAY"
 msgstr "Day display (YYYY-MM-DD)"
 
-msgid "SELECT_MONTH"
-msgstr "Select the month view"
 
 msgid "VIEW"
 msgstr "Display"
@@ -355,8 +343,6 @@ msgstr "Program to compare"
 msgid "SELECT_POWER_PLUG"
 msgstr "Display power consumption"
 
-msgid "FORCE_ON_CHART"
-msgstr "Forced march"
 
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Thank you for your patience and do not remove the card <b> <i> Cultibox </ i> </ b> the time the page loads and the software processes your data. <br /> <br /> <b> <i> Note: </ i> </ b> If an error occurs you can reload the page to try to complete the operation"
@@ -391,8 +377,6 @@ msgstr "Sensor"
 msgid "MONTH_DATE"
 msgstr "Month and year to display"
 
-msgid "ALL_SENSOR"
-msgstr "all sensors"
 
 msgid "SELECT_SENSOR"
 msgstr "sensor"
@@ -409,8 +393,6 @@ msgstr "Delete old logs power measurement"
 msgid "MANAGE_RESET_LOG"
 msgstr "Delete the logs"
 
-msgid "MANAGE_RESET_POWER"
-msgstr "Remove logs power"
 
 msgid "IMPORT_LAST_MONTH"
 msgstr "last month"
@@ -418,14 +400,10 @@ msgstr "last month"
 msgid "IMPORT_LOG"
 msgstr "Import logs"
 
-msgid "NO_IMPORT_LOG"
-msgstr "No SD card detected"
 
 msgid "EMPTY_REGUL"
 msgstr "No programmed control"
 
-msgid "REGUL_TITLE_PLUG"
-msgstr "Regulation for decision"
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Summary of active secondary regulations made for the selected"
@@ -469,14 +447,8 @@ msgstr "No logs in your database"
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Export your power information"
 
-msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
-msgstr "No logs in your power base"
 
-msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
-msgstr "Export your logs"
 
-msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
-msgstr "Export your log power"
 
 msgid "EXAMPLE_LOG"
 msgstr "Example log"
@@ -648,8 +620,6 @@ msgstr "below the threshold"
 msgid "REGUL_ABOVE"
 msgstr "above the threshold"
 
-msgid "FOR_THE_PLUG"
-msgstr "for decision"
 
 msgid "STATE_PLUG"
 msgstr "State taking"
@@ -660,14 +630,8 @@ msgstr "Enabled"
 msgid "PLUG_DISABLED"
 msgstr "Off"
 
-msgid "VALID_DISABLED_PLUG"
-msgstr "Successfully taken off"
 
-msgid "VALID_ENABLED_PLUG"
-msgstr "Activated successfully taken"
 
-msgid "PLUG_HISTO_NUMBER"
-msgstr "Taking issue"
 
 msgid "PLUG_MAX_POWER"
 msgstr "Plug type (maximum capacity)"
@@ -770,8 +734,6 @@ msgstr "Choose \ 's time"
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
 msgstr "Choose the date"
 
-msgid "BEHAVIOUR_PLUG_PROGRAM_TITLE"
-msgstr "Behavior of your decision"
 
 msgid "CHART_FORCE_ON_VALUE"
 msgstr "Forced "on"
@@ -845,11 +807,7 @@ msgstr "Delete the old program"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Programmer action"
 
-msgid "PROGRAM_PONCTUAL"
-msgstr "point"
 
-msgid "PROGRAM_CYCLIC"
-msgstr "cyclic"
 
 msgid "REPEAT_EVERY"
 msgstr "Repeat all"
@@ -878,8 +836,6 @@ msgstr "Delete the last shot"
 msgid "RESET_CONFIRM_PROGRAM"
 msgstr "Are you sure you want to reset the program to / the socket (s) selected (s)?"
 
-msgid "DATA_LABEL"
-msgstr "Show Selected statements taken"
 
 msgid "BEHAVIOUR"
 msgstr "Behavior"
@@ -890,8 +846,6 @@ msgstr "regulation"
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Program hours are returned the same as the previous program. This will change your old program, would you apply this program anyway?"
 
-msgid "JUMPTO_PLUG"
-msgstr "Configure support associated with this program"
 
 msgid "ERROR_MAX_PROGRAM"
 msgstr "The maximum number of status change for decision (limited to 999 for all combined doses) has been reached. The last action of your programs will take place at:"
@@ -910,8 +864,6 @@ msgstr "Export your graph"
 msgid "PRINT_HIGHCHART"
 msgstr "Print the graph"
 
-msgid "EXPORT_HIGHCHART"
-msgstr "Export chart into a document or image"
 
 msgid "EXPORT_PNG"
 msgstr "Export PNG"
@@ -954,8 +906,6 @@ msgstr "Save and close the wizard"
 msgid "WIZARD_OTHER_STEP"
 msgstr "Register and configure a different outlet"
 
-msgid "WIZARD_NEXT_PLUG"
-msgstr "Next>"
 
 msgid "WIZARD_PLUG_TYPE"
 msgstr "Number 1 jack will be configured as a lamp. This jack can accommodate a lamp <b> 600 Watts </ b> maximum <b> </ b>."
@@ -984,11 +934,7 @@ msgstr "Hour lamp ignition"
 msgid "END_TIME_LAMP"
 msgstr "Off time of the lamp"
 
-msgid "START_TIME_EQUIPMENT"
-msgstr "Time ignition equipment"
 
-msgid "END_TIME_EQUIPMENT"
-msgstr "Hour extinguishing equipment"
 
 
 #For the calendar part:
@@ -1154,8 +1100,6 @@ msgstr "Growth Flowering +"
 msgid "CALENDAR_IMPORTANT"
 msgstr "Significant Event"
 
-msgid "SUMARY_IMPORTANT_LIST"
-msgstr "Summary of recent events important"
 
 msgid "EVENT_FROM"
 msgstr "Event of"
@@ -1378,11 +1322,7 @@ msgstr "Day display: Error in format (YYYY-MM-DD)"
 msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "Month to display: Error in format (MM)"
 
-msgid "ERROR_SD_CARD_PROGRAMS"
-msgstr "No Cultibox SD compatible card detected to save your configuration"
 
-msgid "ERROR_SD_CARD_LOGS"
-msgstr "No SD card detected Cultibox enabled to load your log files"
 
 msgid "ERROR_SD_CARD_CONF"
 msgstr "No Cultibox SD compatible card detected to save your configuration"
@@ -1390,8 +1330,6 @@ msgstr "No Cultibox SD compatible card detected to save your configuration"
 msgid "ERROR_SD_CARD"
 msgstr "No SD card detected Cultibox enabled, verify that your card is correctly connected"
 
-msgid "ERROR_MISSING_VALUE_TIME"
-msgstr "Missing value for the start date / end of program"
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "Error in time format HH: MM: SS"
@@ -1441,8 +1379,6 @@ msgstr "The trigger value of the alarm must be greater than 0 and less than 100"
 msgid "ERROR_REGUL_VALUE"
 msgstr "The trigger value of the control should be greater than 0 and less than 100"
 
-msgid "ERROR_POWER_VALUE"
-msgstr "Error in the value of power: it must be greater or equal to 0 Watt"
 
 msgid "ERROR_PRICE_VALUE"
 msgstr "The price per kilowatt hour must be greater than 0"
@@ -1566,8 +1502,6 @@ msgstr "Error in the format of the WPA passphrase: it must be between 8 and 63 c
 
 
 # For the informations part:
-msgid "CLOSE_CONFIRM"
-msgstr "Cancel"
 
 msgid "CONFIRMATION"
 msgstr "Confirmation"
@@ -1602,14 +1536,8 @@ msgstr "Successfully imported program"
 msgid "VALID_DELETE_LOGS"
 msgstr "Deleting logs successfully completed"
 
-msgid "VALID_RESET_CARD"
-msgstr "Card formatted successfully"
 
-msgid "VALID_UPDATE_PROGRAM_SD_INFO"
-msgstr "Programs updated successfully! You can remove your SD card and put it in the Cultibox for this to be effective when you have finished your settings"
 
-msgid "VALID_CURRENT_LOAD_LOG"
-msgstr "Log files of the last 31 days successfully registered"
 
 msgid "VALID_LOAD_LOG"
 msgstr "Logfiles recent months successfully registered"
@@ -1673,8 +1601,6 @@ msgstr "This option allows you to configure the frequency with which will be upd
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Without SD card plugged your configuration will be saved in the software but not in Cultibox. That your configuration is effective, it will connect an SD card, save your configuration or reload the page and plug this card into the SD Cultibox."
 
-msgid "TOOLTIP_WITHOUT_SD_LOG"
-msgstr "Without SD card plugged registered your Cultibox on temperature and humidity can not be displayed and saved files. To load your new log files must be connected an SD card and reload this page."
 
 msgid "TOOLTIP_POWER_LOG"
 msgstr "This option calculates and displays the power consumed for / the socket (s) selected (s). To make this possible it will fill the field 'power' in the configuration portion of the catch"
@@ -1715,11 +1641,7 @@ msgstr "The 3500W jack allows you to control energy intensive elements. The 3500
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "1000W jack allows you to control energy intensive elements. The 1000W announced correspond to a pure resistive power, such as a heater. If you connect a lamp HPS or MH into this jack, the maximum allowed power is 150W"
 
-msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
-msgstr "The drive socket allows you to vary the intensity delivered by the plug. Once selected it will chosisir the communication channel of the plug (which must be different for each socket drive)"
 
-msgid "TOOLTIP_MAX_LOG_IMPORT"
-msgstr "This variable sets the number of months that will be scrutinized to find logs when pressing on the 'Import logs' tab 'Logs' button"
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Departure date for calculating the cost of your installation. You can calculate the cost of your installation defined by the departure date and the end date of the period form"
@@ -1775,8 +1697,6 @@ msgstr "If the secondary control is enabled in the software configuration, this 
 msgid "TOOLTIP_SHOW_COST"
 msgstr "By enabling this option you can access the page costing your facility through the menu 'cost' which appears in the main menu bar"
 
-msgid "TOOLTIP_SHOW_HISTORIC"
-msgstr "By enabling this option you can have access to the display of the history of your action page in the software using the menu "History" that appears in the main menu bar"
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "This field allows you to choose the time of reset of min / max of all sensors displayed on the screen Cultibox"
