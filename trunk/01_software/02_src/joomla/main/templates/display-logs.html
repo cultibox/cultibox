@@ -167,8 +167,8 @@ buttonImageOnly: 'true',
           <table>
            <tr>
              <?php for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_LOG'];$i++) { ?>
+                 <?php if($i % 3 == 0) { ?></tr><tr><?php } ?>
                 <td class="sensor_max"><?php echo __('SENSOR')." ".$i; ?></td><td><input type="checkbox" name="select_sensor[]" value="<?php echo  $i; ?>" <?php if(in_array($i,$select_sensor)) { echo ' checked'; } ?>> </td>
-                <?php if($i % 2 == 0) { ?></tr><tr><?php } ?>
             <?php } ?>
                 </tr>
             </table>

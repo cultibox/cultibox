@@ -601,8 +601,6 @@ $(document).ready(function() {
           switch (FormId) {
             case 'reset_program_form':  DialogId="delete_dialog_program";
                                         break;
-            case 'delete_historic_form': DialogId="delete_dialog_historic";
-                                        break;
             } 
 
 
@@ -1025,7 +1023,7 @@ $(document).ready(function() {
                     cache: false,
                     async: false,
                     url: "../../main/modules/external/configure_menu.php",
-                    data: {cost:$("#show_cost").val(),historic:$("#show_historic").val(),wifi:$("#wifi_enable").val()}
+                    data: {cost:$("#show_cost").val(),wifi:$("#wifi_enable").val()}
                 });
                 document.forms['configform'].submit();
             }

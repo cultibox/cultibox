@@ -39,8 +39,10 @@ include($this['path']->path('layouts:template.config.php'));
 	// Surcharge Calagan
 	// L'idée est de remplacer les liens direct de menu Jumi par des liens vers des articles qui contiennent une syntaxe style {jumi [ok.php]}
 	require_once 'main/libs/config.php'; 
-	require_once 'main/libs/db_common.php'; 
+	require_once 'main/libs/db_set_common.php'; 
+    require_once 'main/libs/db_get_common.php';
 	require_once 'main/libs/utilfunc.php'; 
+    require_once 'main/libs/utilfunc_sd_card.php';
 ?>
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css?v=<?=@filemtime('main/libs/css/jquery-ui-1.8.19.custom.css')?>" />
                 <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css?v=<?=@filemtime('main/libs/css/cultibox.css')?>" />

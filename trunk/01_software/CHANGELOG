@@ -1,3 +1,12 @@
+Cultibox (1.3.07) precise; urgency=low
+    + Fractionnement des librairies
+    + Ajout des traductions dans les langues manquantes
+    + Possibilité d'utiliser plusieurs icônes pour les évènements du calendrier
+    + Suppréssion de l'onglet historique
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Fri May 16 11:26:13 CEST 2014
+
+
 Cultibox (1.3.06) precise; urgency=low
     + Correction de la position de l'image qui apparaît quand on cache la boîte de dialogue du logiciel
     + Correction de l'affichage de la selection des prises

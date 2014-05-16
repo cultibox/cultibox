@@ -9,8 +9,11 @@ if (!isset($_SESSION)) {
         utilfunc.php  : manage variables and files manipulations
 */
 require_once('main/libs/config.php');
-require_once('main/libs/db_common.php');
+require_once('main/libs/db_get_common.php');
+require_once('main/libs/db_set_common.php');
 require_once('main/libs/utilfunc.php');
+require_once('main/libs/utilfunc_sd_card.php');
+
 
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages

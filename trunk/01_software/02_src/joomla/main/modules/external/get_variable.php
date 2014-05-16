@@ -3,6 +3,7 @@
 // stockées côté serveur:
 
 require_once('../../libs/utilfunc.php');
+require_once('../../libs/utilfunc_sd_card.php');
 
 //On démarre une SESSION si ce n'est pas déja le cas:
 if (!isset($_SESSION)) {

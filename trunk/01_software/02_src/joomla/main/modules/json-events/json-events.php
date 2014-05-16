@@ -2,8 +2,11 @@
 
 usleep(500000);
 require_once('../../../main/libs/config.php');
-require_once('../../../main/libs/db_common.php');
+require_once('../../../main/libs/db_get_common.php');
+require_once('../../../main/libs/db_set_common.php');
 require_once('../../../main/libs/utilfunc.php');
+require_once('../../../main/libs/utilfunc_sd_card.php');
+
 
 if(!$db = db_priv_pdo_start()) return false;
 
@@ -134,7 +137,7 @@ if ($handle = opendir('../../xml')) {
                     }
                 }
                 
-                // Userr can select text color of event using <text_color>
+                // User can select text color of event using <text_color>
                 if(array_key_exists('text_color', $val))  {
                     $color_text=$val['text_color'];
                 }

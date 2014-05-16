@@ -224,9 +224,6 @@ msgstr "L'allarme del Cultibox disattiva tutti i punti vendita dove la cultura d
 msgid "SHOW_COST"
 msgstr "Visualizza il menu che costano"
 
-msgid "SHOW_HISTORIC"
-msgstr "Guarda la storia del vostro menu azioni"
-
 msgid "RESET_MINMAX"
 msgstr "Ripristino del min / max"
 
@@ -415,9 +412,6 @@ msgstr "Eliminare i registri"
 msgid "MANAGE_RESET_POWER"
 msgstr "Togliere registri potere"
 
-msgid "IMPORT_LOG_TITLE"
-msgstr "Tronchi di importazione: temperatura, umidità, alimentazione"
-
 msgid "IMPORT_LAST_MONTH"
 msgstr "il mese scorso"
 
@@ -426,12 +420,6 @@ msgstr "Registri di importazione"
 
 msgid "NO_IMPORT_LOG"
 msgstr "Nessuna scheda SD rilevata"
-
-msgid "MIN_Y_AXIS_LOG"
-msgstr "Valore minimo dell'asse Y"
-
-msgid "MAX_Y_AXIS_LOG"
-msgstr "Valore massimo dell'asse Y"
 
 msgid "EMPTY_REGUL"
 msgstr "Nessun controllo programmato"
@@ -471,15 +459,6 @@ msgstr "Temperatura"
 
 msgid "SUMARY_REGUL_HYGRO"
 msgstr "Umidità"
-
-msgid "CONFIGURE_Y_AXIS_HUMI"
-msgstr "Regolazione del livello di umidità"
-
-msgid "CONFIGURE_Y_AXIS_TEMP"
-msgstr "Impostare la scala di temperatura"
-
-msgid "CONFIGURE_Y_AXIS_POWER"
-msgstr "Poteri di regolazione Scala"
 
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Esportare i registri di informazione"
@@ -1305,50 +1284,6 @@ msgstr "Calcolando il costo effettivo realizzato con successo"
 
 msgid "VALID_THEORICAL_COST_COMPUTE"
 msgstr "Calcolo del costo teorico raggiunto con successo"
-
-
-# For the historic part:
-msgid "TITLE_HISTORIC"
-msgstr "Storia dei tuoi ultimi 100 parti"
-
-msgid "RESET_HISTORIC"
-msgstr "Cancella cronologia"
-
-msgid "RESET_CONFIRM_HISTORIC"
-msgstr "Sei sicuro di voler cancellare la cronologia delle vostre azioni?"
-
-msgid "VALID_DELETE_HISTORIC"
-msgstr "Storia delle vostre azioni rimosso con successo"
-
-msgid "NO_HISTORIC_VALUE"
-msgstr "Nessuna azione registrata"
-
-msgid "WIZARD_PAGE"
-msgstr "Tab Wizard"
-
-msgid "PROGRAM_PAGE"
-msgstr "Scheda Programmi"
-
-msgid "PLUG_PAGE"
-msgstr "Tab presa"
-
-msgid "WELCOME_PAGE"
-msgstr "Pagina principale"
-
-msgid "LOGS_PAGE"
-msgstr "Pagina Logs"
-
-msgid "CALENDAR_PAGE"
-msgstr "Scheda Calendario"
-
-msgid "COST_PAGE"
-msgstr "Costi Tab"
-
-msgid "CONFIGURATION_PAGE"
-msgstr "Scheda di configurazione"
-
-msgid "HISTORIC_EXPORT"
-msgstr "Programma di esportazione"
 
 
 # For the wifi part:

@@ -1,6 +1,7 @@
 <?php
 
-require_once('../../libs/db_common.php');
+require_once('../../libs/db_get_common.php');
+require_once('../../libs/db_set_common.php');
 
 if((isset($_GET['ip']))&&(!empty($_GET['ip']))) {
     $ip=$_GET['ip'];

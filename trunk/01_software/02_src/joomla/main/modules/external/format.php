@@ -1,8 +1,11 @@
 <?php
 
 require_once('../../libs/utilfunc.php');
-require_once('../../libs/db_common.php');
+require_once('../../libs/db_get_common.php');
+require_once('../../libs/db_set_common.php');
 require_once('../../libs/config.php');
+require_once('../../libs/utilfunc_sd_card.php');
+
 
 if (!isset($_SESSION)) {
     session_start();
@@ -19,7 +22,6 @@ if((isset($_GET['progress']))&&(!empty($_GET['progress']))) {
 
 if((!isset($path))||(empty($path))) {
     echo -1;
-    //set_historic_value(__('ERROR_FORMAT_SD_CARD')." (".__('CONFIGURATION_PAGE').")","histo_error",$main_error);
 } else {
    if(check_sd_card($path)) {
         if((!isset($progress))||(empty($progress))) {

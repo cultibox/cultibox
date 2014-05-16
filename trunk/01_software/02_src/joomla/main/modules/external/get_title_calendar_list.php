@@ -9,7 +9,7 @@ if((isset($_POST['lang']))&&(!empty($_POST['lang']))) {
     $_SESSION['LANG'] = $lang;
 
     require_once('../../libs/utilfunc.php');
-    require_once('../../libs/db_common.php');
+    require_once('../../libs/db_get_common.php');
     require_once('../../libs/config.php');
 
     $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
