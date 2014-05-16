@@ -22,6 +22,7 @@ $start_load = getmicrotime();
 
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
+$error=array();
 $main_error=array();
 $main_info=array();
 $_SESSION['LANG'] = get_current_lang();
@@ -30,7 +31,6 @@ __('LANG');
 
 // ================= VARIABLES ================= //
 $informations = Array();
-$update=get_configuration("CHECK_UPDATE",$main_error);
 $version=get_configuration("VERSION",$main_error);
 $pop_up = get_configuration("SHOW_POPUP",$main_error);
 $pop_up_message="";
@@ -78,72 +78,27 @@ for($i=0; $i<count($plugs_infos);$i++) {
     }
 }
 
-
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
-
-// Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
-if(strcmp("$update","True")==0) {
-    if((!isset($_SESSION['UPDATE_CHECKED']))||(empty($_SESSION['UPDATE_CHECKED']))) {
-        if($sock=@fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
-            if(check_update_available($version,$main_error)) {
-                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a target='_blank' href=".$GLOBALS['WEBSITE'].">".__('HERE')."</a>";
-                $_SESSION['UPDATE_CHECKED']="True";
-            } else {
-                $_SESSION['UPDATE_CHECKED']="False";
-            }
-        } else {
-            $main_error[]=__('ERROR_REMOTE_SITE');
-            $_SESSION['UPDATE_CHECKED']="";
-        }
-    } else if(strcmp($_SESSION['UPDATE_CHECKED'],"True")==0) {
-        $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a target='_blank' href=".$GLOBALS['WEBSITE'].">".__('HERE')."</a>";
-    }
-}
-
-
-// The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True' informations will be send for debug
-$informations["cbx_id"]="";
-$informations["firm_version"]="";
-$informations["log"]="";
-
-if((!empty($sd_card))&&(isset($sd_card))) {
-    find_informations("$sd_card/log.txt",$informations);
-    copy_empty_big_file("$sd_card/log.txt");
-}
-
-if(strcmp($informations["cbx_id"],"")!=0) insert_informations("cbx_id",$informations["cbx_id"]);
-if(strcmp($informations["firm_version"],"")!=0) insert_informations("firm_version",$informations["firm_version"]);
-if(strcmp($informations["log"],"")!=0) insert_informations("log",$informations["log"]);
-
-
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-if((!empty($sd_card))&&(isset($sd_card))) {
-    $conf_uptodate=1; //To chck if the sd configuration has been updated or not
-    $conf_uptodate=check_and_update_sd_card("$sd_card"); //Check if the SD card is updated or not
+check_and_update_sd_card($sd_card,$main_info,$main_error);
 
-    if(!$conf_uptodate) { //If the SD card has been updated
-        //Display messages:
-        $main_info[]=__('UPDATED_PROGRAM');
-        $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
-    } else if($conf_uptodate>1) {
-        $error_message=get_error_sd_card_update_message($conf_uptodate);
-        if(strcmp("$error_message","")!=0) {
-            $main_error[]=get_error_sd_card_update_message($conf_uptodate);
-        }
-    }
-    $main_info[]=__('INFO_SD_CARD').": $sd_card";
-} else {
-    $main_error[]=__('ERROR_SD_CARD');
+// Search and update log information form SD card
+sd_card_update_log_informations($sd_card);
+
+// Include in html pop up and message
+include('main/templates/pop_up_load.php');
+
+// Add check part if needed
+if(strcmp(get_configuration("CHECK_UPDATE",$main_error),"True")==0) {
+    echo "<script>pop_up_add_information('" . __('INFO_UPDATE_CHECKING') . "<img src=\"main/libs/img/waiting_small.gif\" alt=\"version_check\" />', \"check_version_progress\", \"information\");</script>";
 }
-
 
 //Display the plug template
 include('main/templates/wifi.html');
-
 
 //Compute time loading for debug option
 $end_load = getmicrotime();

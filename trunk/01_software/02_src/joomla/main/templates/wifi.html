@@ -1,39 +1,3 @@
-<?php if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_message))&&(!empty($pop_up_message))) { ?>
-    <div class="pop_up_message" style="display:none">
-            <?php echo str_replace("\\n\\n","<br /><br />","$pop_up_message"); ?>
-    </div>
-<?php } else if((isset($pop_up))&&("$pop_up"!="False")&&(isset($pop_up_error_message))&&(!empty($pop_up_error_message))) { ?>
-       <div class="pop_up_error" style="display:none">
-            <?php echo str_replace("\\n\\n","<br /><br />","$pop_up_error_message"); ?>
-       </div>
-<?php } ?>
-
-<?php if((((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)))||((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0))) { ?>
-<div class="message" style="display:none" title="<?php echo __('MESSAGE_BOX'); ?>">
-        <br />
-        <?php if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) { ?>
-<img src="main/libs/img/informations.png" alt="" /><label class="info_title"><?php echo __('INFORMATION'); ?>:</label>
-<div class="info">
-<ul>
-        <?php foreach($main_info as $inf) { 
-            echo "<li>".$inf."</li>";            
-        } ?>
-</ul>
-<br />
-</div>
-    <?php } ?>
-    <?php if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) { ?>
-<img src="main/libs/img/warning.png" alt="" /><label class="error_title"><?php echo __('WARNING'); ?>:</label>
-<div class="error">
-<ul>
-        <?php foreach($main_error as $err) { 
-            echo "<li>".$err."</li>";            
-        } ?>
-</ul>
-</div>
-<?php } ?>
-</div>
-<?php } ?>
 
 <script>
     nb_plugs=<?php echo(json_encode($nb_plugs)); ?>;

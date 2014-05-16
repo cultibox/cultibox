@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION)) {
-	session_start();
+    session_start();
 }
 
 /* Libraries requiered: 
@@ -19,7 +19,6 @@ require_once('main/libs/utilfunc_sd_card.php');
 // Compute page time loading for debug option
 $start_load = getmicrotime();
 
-
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
 $main_error=array();
 $info=array();
@@ -28,8 +27,6 @@ $main_info=array();
 $_SESSION['LANG'] = get_current_lang();
 $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 __('LANG');
-
-
 
 // ================= VARIABLES ================= //
 $color_humidity=getvar('color_humidity');
@@ -59,7 +56,6 @@ $wifi_ssid=getvar('wifi_ssid');
 $wifi_key_type=getvar('wifi_key_type');
 $wifi_password=getvar('wifi_password',false);
 $wifi_ip=getvar('wifi_ip');
-$update=getvar('update');
 $version=get_configuration("VERSION",$main_error);
 $submenu=getvar("submenu",$main_error);
 $stats=getvar("stats",$main_error);
@@ -73,18 +69,15 @@ $wifi_manual=getvar("wifi_ip_manual");
 $rtc_offset=getvar("rtc_offset");
 
 
-
-
 // By default the expanded menu is the user interface menu
 if((!isset($submenu))||(empty($submenu))) {
-        if(isset($_SESSION['submenu'])) {
-            $submenu=$_SESSION['submenu'];
-            unset($_SESSION['submenu']);
-        } else {
-            $submenu="user_interface";
-        }
+    if(isset($_SESSION['submenu'])) {
+        $submenu=$_SESSION['submenu'];
+        unset($_SESSION['submenu']);
+    } else {
+        $submenu="user_interface";
+    }
 } 
-
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -99,32 +92,18 @@ if((!isset($sd_card))||(empty($sd_card))) {
    sort($hdd_list);
 }
 
-
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-if((!empty($sd_card))&&(isset($sd_card))) {
-    $conf_uptodate=1; //To chck if the sd configuration has been updated or not
-    $conf_uptodate=check_and_update_sd_card("$sd_card"); //Check if the SD card is updated or not
+check_and_update_sd_card($sd_card,$main_info,$main_error);
 
-    if(!$conf_uptodate) { //If the SD card has been updated
-        //Display messages:
-        $main_info[]=__('UPDATED_PROGRAM');
-        $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
-    } else if($conf_uptodate>1) {
-        $error_message=get_error_sd_card_update_message($conf_uptodate);
-        if(strcmp("$error_message","")!=0) {
-            $main_error[]=get_error_sd_card_update_message($conf_uptodate);
-        }
-    }
-    $main_info[]=__('INFO_SD_CARD').": $sd_card";
-} 
-
+// Search and update log information form SD card
+sd_card_update_log_informations($sd_card);
 
 //============================== GET OR SET CONFIGURATION PART ====================
 if((isset($pop_up))&&(!empty($pop_up))) {
-	    insert_configuration("SHOW_POPUP","$pop_up",$main_error);
-        $update_conf=true;
+    insert_configuration("SHOW_POPUP","$pop_up",$main_error);
+    $update_conf=true;
 } else {
-        $pop_up = get_configuration("SHOW_POPUP",$main_error);
+    $pop_up = get_configuration("SHOW_POPUP",$main_error);
 }
 
 if((isset($update))&&(!empty($update))) {
@@ -135,18 +114,18 @@ if((isset($update))&&(!empty($update))) {
 }
 
 if((isset($color_humidity))&&(!empty($color_humidity))) {
-	insert_configuration("COLOR_HUMIDITY_GRAPH",$color_humidity,$main_error);
+    insert_configuration("COLOR_HUMIDITY_GRAPH",$color_humidity,$main_error);
     $update_conf=true;
 } else {
-	$color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$main_error);
+    $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$main_error);
 }
 
 
 if((isset($color_temperature))&&(!empty($color_temperature))) {
-	insert_configuration("COLOR_TEMPERATURE_GRAPH",$color_temperature,$main_error);
-	$update_conf=true;
+    insert_configuration("COLOR_TEMPERATURE_GRAPH",$color_temperature,$main_error);
+    $update_conf=true;
 } else {
-	$color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
+    $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
 }
 
 if((isset($color_water))&&(!empty($color_water))) {
@@ -207,32 +186,32 @@ if((isset($color_cost))&&(!empty($color_cost))) {
 
 
 if((isset($record_frequency))&&(!empty($record_frequency))) {
-	insert_configuration("RECORD_FREQUENCY",$record_frequency,$main_error);
-	$update_conf=true;
+    insert_configuration("RECORD_FREQUENCY",$record_frequency,$main_error);
+    $update_conf=true;
 } else {
-	$record_frequency = get_configuration("RECORD_FREQUENCY",$main_error);
+    $record_frequency = get_configuration("RECORD_FREQUENCY",$main_error);
 }
 
 if((isset($power_frequency))&&(!empty($power_frequency))) {
-        insert_configuration("POWER_FREQUENCY",$power_frequency,$main_error);
-        $update_conf=true;
+    insert_configuration("POWER_FREQUENCY",$power_frequency,$main_error);
+    $update_conf=true;
 } else {
-        $power_frequency = get_configuration("POWER_FREQUENCY",$main_error);
+    $power_frequency = get_configuration("POWER_FREQUENCY",$main_error);
 }
 
 
 if((isset($nb_plugs))&&(!empty($nb_plugs))) {
-	insert_configuration("NB_PLUGS",$nb_plugs,$main_error);
-	$update_conf=true;
+    insert_configuration("NB_PLUGS",$nb_plugs,$main_error);
+    $update_conf=true;
 } else {
-	$nb_plugs = get_configuration("NB_PLUGS",$main_error);
+    $nb_plugs = get_configuration("NB_PLUGS",$main_error);
 }
 
 if(!empty($update_frequency)) {
-	insert_configuration("UPDATE_PLUGS_FREQUENCY",$update_frequency,$main_error);
-	$update_conf=true;
+    insert_configuration("UPDATE_PLUGS_FREQUENCY",$update_frequency,$main_error);
+    $update_conf=true;
 } else {
-	$update_frequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
+    $update_frequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
 }
 
 
@@ -316,45 +295,45 @@ $wifi_password=get_configuration("WIFI_PASSWORD",$main_error);
 $wifi_ip=get_configuration("WIFI_IP",$main_error);
 
 if((isset($stats))&&(!empty($stats))) {
-        insert_configuration("STATISTICS","$stats",$main_error);
-        $update_conf=true;
+    insert_configuration("STATISTICS","$stats",$main_error);
+    $update_conf=true;
 } else {
-        $stats = get_configuration("STATISTICS",$main_error);
+    $stats = get_configuration("STATISTICS",$main_error);
 }
 
 
 if((isset($advanced_regul))&&(!empty($advanced_regul))) {
-        insert_configuration("ADVANCED_REGUL_OPTIONS","$advanced_regul",$main_error);
-        if(strcmp("$advanced_regul","False")==0) {
-            $check_error=false;
-            for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
-                insert_plug_conf("PLUG_REGUL_SENSOR",$i,"1",$main_error);
-                insert_plug_conf("PLUG_COMPUTE_METHOD",$i,"M",$main_error);
-           
-                if((!empty($sd_card))&&(isset($sd_card))) {
-                    $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
-                    if(count($plugconf)>0) {
-                        if(!write_plugconf($plugconf,$sd_card)) {
-                            if(!$check_error) {
-                                $main_error[]=__('ERROR_COPY_PLUG_CONF');
-                                $check_error=true;
-                            }
+    insert_configuration("ADVANCED_REGUL_OPTIONS","$advanced_regul",$main_error);
+    if(strcmp("$advanced_regul","False")==0) {
+        $check_error=false;
+        for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
+            insert_plug_conf("PLUG_REGUL_SENSOR",$i,"1",$main_error);
+            insert_plug_conf("PLUG_COMPUTE_METHOD",$i,"M",$main_error);
+       
+            if((!empty($sd_card))&&(isset($sd_card))) {
+                $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
+                if(count($plugconf)>0) {
+                    if(!write_plugconf($plugconf,$sd_card)) {
+                        if(!$check_error) {
+                            $main_error[]=__('ERROR_COPY_PLUG_CONF');
+                            $check_error=true;
                         }
                     }
                 }
             }
         }
-        $update_conf=true;
+    }
+    $update_conf=true;
 } else {
-        $advanced_regul = get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
+    $advanced_regul = get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
 }
 
 
 if((isset($second_regul))&&(!empty($second_regul))) {
-        insert_configuration("SECOND_REGUL","$second_regul",$main_error);
-        $update_conf=true;
+    insert_configuration("SECOND_REGUL","$second_regul",$main_error);
+    $update_conf=true;
 } else {
-        $second_regul = get_configuration("SECOND_REGUL",$main_error);
+    $second_regul = get_configuration("SECOND_REGUL",$main_error);
 }
 
 
@@ -377,19 +356,15 @@ if((isset($minmax))&&(!empty($minmax))) {
 
 // Is a field has been changed and there is no error in the value: display success message
 if(empty($main_error)) {
-	if($update_conf) {
+    if($update_conf === true) {
         if((!empty($sd_card))&&(isset($sd_card))) {
-			   $main_info[]=__('VALID_UPDATE_CONF');
-			   $pop_up_message=$pop_up_message.popup_message(__('VALID_UPDATE_CONF'));
-         } else {
+            $main_info[]=__('VALID_UPDATE_CONF');
+            $pop_up_message=$pop_up_message.popup_message(__('VALID_UPDATE_CONF'));
+        } else {
             $main_info[]=__('VALID_UPDATE_CONF_WITHOUT_SD');
             $pop_up_message=$pop_up_message.popup_message(__('VALID_UPDATE_CONF_WITHOUT_SD'));
-         }
-	}
-}
-
-if((!isset($sd_card))||(empty($sd_card))) {
-    $main_error[]=__('ERROR_SD_CARD_CONF')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_WITHOUT_SD')."\" />";
+        }
+    }
 }
 
 // Change files on the cultibox SD card after the configuration has been updated: plug's frequency, alarm value etc...
@@ -397,7 +372,7 @@ if((isset($submit))&&(!empty($submit))) {
     if((isset($sd_card))&&(!empty($sd_card))) {
         $updateFrequencyCorrected = $update_frequency;
 
-	    if("$updateFrequencyCorrected"=="-1") {
+        if("$updateFrequencyCorrected"=="-1") {
             $updateFrequencyCorrected = 0;
         }
         
@@ -405,44 +380,20 @@ if((isset($submit))&&(!empty($submit))) {
         if(!write_sd_conf_file($sd_card,$record_frequency,$updateFrequencyCorrected,$power_frequency,"$alarm_enable","$alarm_value","$minmax",$rtc_offset_computed,$main_error)) {
             $main_error[]=__('ERROR_WRITE_SD_CONF');
         }
+    } 
+    else
+    {
+        $main_error[]=__('ERROR_SD_CARD_CONF')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_WITHOUT_SD')."\" />";
     }
 }
 
+// Include in html pop up and message
+include('main/templates/pop_up_load.php');
 
-// Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
-if(strcmp("$update","True")==0) {
-    if((!isset($_SESSION['UPDATE_CHECKED']))||(empty($_SESSION['UPDATE_CHECKED']))) {
-        if($sock=@fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
-            if(check_update_available($version,$main_error)) {
-                $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a target='_blank' href=".$GLOBALS['WEBSITE'].">".__('HERE')."</a>";
-                $_SESSION['UPDATE_CHECKED']="True";
-            } else {
-                $_SESSION['UPDATE_CHECKED']="False";
-            }
-        } else {
-            $main_error[]=__('ERROR_REMOTE_SITE');
-            $_SESSION['UPDATE_CHECKED']="";
-        }
-    } else if(strcmp($_SESSION['UPDATE_CHECKED'],"True")==0) {
-        $main_info[]=__('INFO_UPDATE_AVAILABLE')." <a target='_blank' href=".$GLOBALS['WEBSITE'].">".__('HERE')."</a>";
-    }
-} 
-
-
-// The informations part to send statistics to debug the cultibox: if the 'STATISTICS' variable into the configuration table from the database is set to 'True' informations will be send for debug
-$informations["cbx_id"]="";
-$informations["firm_version"]="";
-$informations["log"]="";
-
-if((!empty($sd_card))&&(isset($sd_card))) {
-    find_informations("$sd_card/log.txt",$informations);
-    copy_empty_big_file("$sd_card/log.txt");
+// Add check part if needed
+if(strcmp(get_configuration("CHECK_UPDATE",$main_error),"True")==0) {
+    echo "<script>pop_up_add_information('" . __('INFO_UPDATE_CHECKING') . "<img src=\"main/libs/img/waiting_small.gif\" alt=\"version_check\" />', \"check_version_progress\", \"information\");</script>";
 }
-
-if(strcmp($informations["cbx_id"],"")!=0) insert_informations("cbx_id",$informations["cbx_id"]);
-if(strcmp($informations["firm_version"],"")!=0) insert_informations("firm_version",$informations["firm_version"]);
-if(strcmp($informations["log"],"")!=0) insert_informations("log",$informations["log"]);
-
 
 //Display the configuration template
 include('main/templates/configuration.html');
