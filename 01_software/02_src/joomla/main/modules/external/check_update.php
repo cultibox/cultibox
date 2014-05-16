@@ -39,8 +39,6 @@
     // Define languaage
     $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
     __('LANG');
-
-    $_SESSION['UPDATE_CHECKED'] = "";
     
     // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
     if(strcmp(get_configuration("CHECK_UPDATE",$main_error),"True")==0) {
@@ -49,7 +47,8 @@
         if(!isset($_SESSION['UPDATE_CHECKED']) || empty($_SESSION['UPDATE_CHECKED'])) {
             if($sock=@fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
             
-                // Check versiuns
+                // Check version
+                $version=get_configuration("VERSION",$main_error); //Current version of the software
                 if(check_update_available($version,$main_error)) {
                     $_SESSION['UPDATE_CHECKED'] = "True";
                     echo "ok" . __('INFO_UPDATE_AVAILABLE')." <a target='_blank' href=".$GLOBALS['WEBSITE'].">".__('HERE')."</a>";
