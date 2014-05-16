@@ -1,124 +1,133 @@
 <?php
 
+// Define constant
+define("ERROR_COPY_FILE", "2");
+define("ERROR_WRITE_PROGRAM", "3");
+define("ERROR_COPY_FIRM", "4");
+define("ERROR_COPY_PLUGA", "5");
+define("ERROR_COPY_PLUG_CONF", "6");
+define("ERROR_COPY_TPL", "7");
+define("ERROR_COPY_INDEX", "8");
+define("ERROR_COPY_WIFI_CONF", "10");
+define("ERROR_WRITE_SD_CONF", "11");
+define("ERROR_WRITE_SD", "12");
+define("ERROR_SD_NOT_FOUND", "13");
+
 // {{{ check_and_update_sd_card()
 // ROLE If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 // IN   $sd_card    sd card path 
 // RET 0 if the sd card is updated, 1 if the sd card has been updated, return > 1 if an error occured
-function check_and_update_sd_card($sd_card="") {
-  if((!empty($sd_card))&&(isset($sd_card))) {
+function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) {
+
+    // Check if SD card has been found
+    if(empty($sd_card) || !isset($sd_card))
+    {
+        $main_error_tab[]=__('ERROR_SD_CARD');
+        return ERROR_SD_NOT_FOUND;
+    }
+
+    // Alert user than an SD card was found
+    $main_info[]=__('INFO_SD_CARD').": $sd_card";
+    
+    // Check if SD card can be writable
+    if(!check_sd_card($sd_card))
+        return ERROR_WRITE_SD;
+        
     $program="";
     $conf_uptodate=true;
-    if(check_sd_card($sd_card)) {
-        /* TO BE DELETED */
-        if(!compat_old_sd_card($sd_card)) {
-            return 2;
-            $main_error[]=__('ERROR_COPY_FILE');
-        }
-        /* ************* */
 
-
-        $program=create_program_from_database($main_error);
-        if(!compare_program($program,$sd_card)) {
-            $conf_uptodate=false;
-            if(!save_program_on_sd($sd_card,$program)) {
-                return 3;
-                $main_error[]=__('ERROR_WRITE_PROGRAM');
-            }
-        }
-
-
-        $ret_firm=check_and_copy_firm($sd_card);
-        if(!$ret_firm) {
-            $main_error[]=__('ERROR_COPY_FIRM'); 
-            return 4;
-        } else if($ret_firm==1) {
-            $conf_uptodate=false;
-        }
-
-
-        if(!compare_pluga($sd_card)) {
-            $conf_uptodate=false;
-            if(!write_pluga($sd_card,$main_error)) {
-                $main_error[]=__('ERROR_COPY_PLUGA');
-                return 5;
-            }
-        }
-
-
-        $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
-        if(count($plugconf)>0) {
-            if(!compare_plugconf($plugconf,$sd_card)) {
-                $conf_uptodate=false;
-                if(!write_plugconf($plugconf,$sd_card)) {
-                    $main_error[]=__('ERROR_COPY_PLUG_CONF');
-                    return 6;
-                }
-            }
-        }
-
-        if(!is_file("$sd_card/log.txt")) {
-            if(!copy_empty_big_file("$sd_card/log.txt")) {
-                $main_error[]=__('ERROR_COPY_TPL');
-                return 7;
-            }
-        }
-
-
-        if(!check_and_copy_id($sd_card,get_informations("cbx_id"))) {
-            $conf_uptodate=false;
-        }
-
-        if(!check_and_copy_index($sd_card)) {
-            $main_error[]=__('ERROR_COPY_INDEX');
-            return 8;
-        }
-
-        if(!check_and_copy_plgidx($sd_card)) {
-            $main_error[]=__('ERROR_COPY_TPL');
-            return 9;
-        }
-
-        $wifi_conf=create_wificonf_from_database($main_error,get_ip_address());
-        if(!compare_wificonf($wifi_conf,$sd_card)) {
-            $conf_uptodate=false;
-            if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
-                $main_error[]=__('ERROR_COPY_WIFI_CONF');
-                return 10;
-            }
-        }
-
-
-        $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
-        $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
-        $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
-        $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
-        $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
-        $resetvalue= get_configuration("RESET_MINMAX",$main_error);
-        $rtc=get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
-        if("$updatefrequency"=="-1") {
-            $updatefrequency="0";
-        }
-
-
-        if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue","$rtc")) {
-            $conf_uptodate=false;
-            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue","$rtc",$main_error)) {
-                $main_error[]=__('ERROR_WRITE_SD_CONF');
-                return 11;
-            }
-        }
-
-        if(!$conf_uptodate) {
-            return 0;
-        }
-        return 1;
+    /* TO BE DELETED */
+    if(!compat_old_sd_card($sd_card)) {
+        $main_error_tab[]=__('ERROR_COPY_FILE');
+        return ERROR_COPY_FILE;
     }
-    return 12;
-  }
-  return 0;
+    /* ************* */
+
+
+    $program=create_program_from_database($main_error);
+    if(!compare_program($program,$sd_card)) {
+        $conf_uptodate=false;
+        if(!save_program_on_sd($sd_card,$program)) {
+            $main_error_tab[]=__('ERROR_WRITE_PROGRAM');
+            return ERROR_WRITE_PROGRAM;
+        }
+    }
+
+    $ret_firm=check_and_copy_firm($sd_card);
+    if(!$ret_firm) {
+        $main_error_tab[]=__('ERROR_COPY_FIRM'); 
+        return ERROR_COPY_FIRM;
+    } else if($ret_firm==1) {
+        $conf_uptodate=false;
+    }
+
+    if(!compare_pluga($sd_card)) {
+        $conf_uptodate=false;
+        if(!write_pluga($sd_card,$main_error)) {
+            $main_error_tab[]=__('ERROR_COPY_PLUGA');
+            return ERROR_COPY_PLUGA;
+        }
+    }
+
+    $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
+    if(count($plugconf)>0) {
+        if(!compare_plugconf($plugconf,$sd_card)) {
+            $conf_uptodate=false;
+            if(!write_plugconf($plugconf,$sd_card)) {
+                $main_error_tab[]=__('ERROR_COPY_PLUG_CONF');
+                return ERROR_COPY_PLUG_CONF;
+            }
+        }
+    }
+
+    if(!check_and_copy_index($sd_card)) {
+        $main_error_tab[]=__('ERROR_COPY_INDEX');
+        return ERROR_COPY_INDEX;
+    }
+
+    if(!check_and_copy_plgidx($sd_card)) {
+        $main_error_tab[]=__('ERROR_COPY_TPL');
+        return ERROR_COPY_TPL;
+    }
+
+    $wifi_conf=create_wificonf_from_database($main_error,get_ip_address());
+    if(!compare_wificonf($wifi_conf,$sd_card)) {
+        $conf_uptodate=false;
+        if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
+            $main_error_tab[]=__('ERROR_COPY_WIFI_CONF');
+            return ERROR_COPY_WIFI_CONF;
+        }
+    }
+
+    $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
+    $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
+    $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
+    $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
+    $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
+    $resetvalue= get_configuration("RESET_MINMAX",$main_error);
+    $rtc=get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
+    if("$updatefrequency"=="-1") {
+        $updatefrequency="0";
+    }
+
+    if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue","$rtc")) {
+        $conf_uptodate=false;
+        if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue","$rtc",$main_error)) {
+            $main_error_tab[]=__('ERROR_WRITE_SD_CONF');
+            return ERROR_WRITE_SD_CONF;
+        }
+    }
+
+    if(!$conf_uptodate) {
+        // Infor user that programms have been updated
+        $main_info_tab[]=__('UPDATED_PROGRAM');
+        return 0;
+    }
+    
+    // Conf was up to date
+    return 1; 
 }
 // }}}
-
 
 // {{{ get_error_sd_card_update_message()
 // ROLE transoform a check sd card configuration code into a an error message
@@ -126,21 +135,50 @@ function check_and_update_sd_card($sd_card="") {
 // RET "" if there is no message to display, the message else
 function get_error_sd_card_update_message($id=0) {
     switch($id) { //Id to check to get the current error message:
-        case '2':  return __('ERROR_COPY_FILE');
-        case '3':  return __('ERROR_WRITE_PROGRAM');
-        case '4':  return __('ERROR_COPY_FIRM');
-        case '5':  return __('ERROR_COPY_PLUGA');
-        case '6':  return __('ERROR_COPY_PLUG_CONF');
-        case '7':  return __('ERROR_COPY_TPL');
-        case '8':  return __('ERROR_COPY_INDEX');
-        case '9':  return __('ERROR_COPY_TPL');
-        case '10': return __('ERROR_COPY_WIFI_CONF');
-        case '11': return __('ERROR_WRITE_SD_CONF');
-        case '12': return __('ERROR_WRITE_SD');
+        case ERROR_COPY_FILE:  return __('ERROR_COPY_FILE');
+        case ERROR_WRITE_PROGRAM:  return __('ERROR_WRITE_PROGRAM');
+        case ERROR_COPY_FIRM:  return __('ERROR_COPY_FIRM');
+        case ERROR_COPY_PLUGA:  return __('ERROR_COPY_PLUGA');
+        case ERROR_COPY_PLUG_CONF:  return __('ERROR_COPY_PLUG_CONF');
+        case ERROR_COPY_TPL:  return __('ERROR_COPY_TPL');
+        case ERROR_COPY_INDEX:  return __('ERROR_COPY_INDEX');
+        case ERROR_COPY_WIFI_CONF: return __('ERROR_COPY_WIFI_CONF');
+        case ERROR_WRITE_SD_CONF: return __('ERROR_WRITE_SD_CONF');
+        case ERROR_WRITE_SD: return __('ERROR_WRITE_SD');
         default: return "";
     }
 }
 // }}}
+
+// {{{ copy_empty_big_file()
+// ROLE copy an empty file to a new file destination
+// IN $file     destination of the file
+// RET true if the copy is errorless, false else
+function sd_card_update_log_informations ($sd_card="") {
+
+    if(empty($sd_card) || !isset($sd_card))
+        return ERROR_SD_NOT_FOUND;
+
+    // The informations part to send statistics to debug the cultibox: 
+    //      if the 'STATISTICS' variable into the configuration table from the database is set to 'True' informations will be send for debug
+    $informations["cbx_id"]="";
+    $informations["firm_version"]="";
+    $informations["log"]="";
+    
+    // Read log.txt file and clear it
+    find_informations("$sd_card/log.txt",$informations);
+    copy_empty_big_file("$sd_card/log.txt");
+    
+    // If informations are defined in log.txt copy them into database
+    if(strcmp($informations["cbx_id"],"")!=0) 
+        insert_informations("cbx_id",$informations["cbx_id"]);
+    if(strcmp($informations["firm_version"],"")!=0) 
+        insert_informations("firm_version",$informations["firm_version"]);
+    if(strcmp($informations["log"],"")!=0) 
+        insert_informations("log",$informations["log"]);
+
+    return 1;
+}
 
 
 // {{{ copy_empty_big_file()
@@ -178,72 +216,72 @@ function get_sd_card(&$hdd="") {
         //Retrieve SD path depnding of the current OS:
         switch($os) {
                 case 'Linux':
-                        //In Ubuntu Quantal mounted folders are now in /media/$USER directory
-                        $user=get_current_user();
-                        if((isset($user))&&(!empty($user))) {
-                            $dir="/media/".$user;
-                            if(is_dir($dir)) {
-                                $rep = @opendir($dir);
-                                if($rep) {
-                                    while ($f = @readdir($rep)) {
-                                        if(is_dir("$dir/$f")) {
-                                                if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
-                                                    $hdd[]="$dir/$f";
-                                                    if(check_cultibox_card("$dir/$f")) {
-                                                        $ret="$dir/$f";
-                                                    }
-                                                }
+                    //In Ubuntu Quantal mounted folders are now in /media/$USER directory
+                    $user=get_current_user();
+                    if((isset($user))&&(!empty($user))) {
+                        $dir="/media/".$user;
+                        if(is_dir($dir)) {
+                            $rep = @opendir($dir);
+                            if($rep) {
+                                while ($f = @readdir($rep)) {
+                                    if(is_dir("$dir/$f")) {
+                                        if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
+                                            $hdd[]="$dir/$f";
+                                            if(check_cultibox_card("$dir/$f")) {
+                                                $ret="$dir/$f";
+                                            }
                                         }
                                     }
-                                    closedir($rep);
                                 }
+                                closedir($rep);
                             }
                         }
-                        break;
+                    }
+                    break;
 
                 case 'Mac':
                 case 'Darwin':
-                        $dir="/Volumes";
-                        if(is_dir($dir)) {
-                                $rep=@opendir($dir);
-                                if($rep) {
-                                        while ($f=@readdir($rep)) {
-                                            if(is_dir("$dir/$f")) {
-                                                if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
-                                                    $hdd[]="$dir/$f";
-                                                    if(check_cultibox_card("$dir/$f")) {
-                                                        $ret="$dir/$f";
-                                                    }
-                                                }
-                                            }
+                    $dir="/Volumes";
+                    if(is_dir($dir)) {
+                        $rep=@opendir($dir);
+                        if($rep) {
+                            while ($f=@readdir($rep)) {
+                                if(is_dir("$dir/$f")) {
+                                    if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
+                                        $hdd[]="$dir/$f";
+                                        if(check_cultibox_card("$dir/$f")) {
+                                            $ret="$dir/$f";
                                         }
-                                        closedir($rep);
+                                    }
                                 }
+                            }
+                            closedir($rep);
                         }
-                        break;
+                    }
+                    break;
 
                 case 'Windows NT':
-                  $vol=`MountVol`;
-                  $vol=explode("\n",$vol);
-                  $dir=Array();
-                  foreach($vol as $value) {
-                     // repérer les deux derniers segments du nom de l'hôte
-                     preg_match('/[D-Z]:/', $value,$matches);
-                     foreach($matches as $val) {
-                        $dir[]=$val;
-                     }
-                  }
-
-                        foreach($dir as $disque) {
-                              $check=`dir $disque`;
-                              if(strlen($check)>0) {
-                                 $hdd[]="$disque";
-                                 if(check_cultibox_card("$disque")) {
-                                         $ret="$disque";
-                                 }
-                              }
+                    $vol=`MountVol`;
+                    $vol=explode("\n",$vol);
+                    $dir=Array();
+                    foreach($vol as $value) {
+                        // repérer les deux derniers segments du nom de l'hôte
+                        preg_match('/[D-Z]:/', $value,$matches);
+                        foreach($matches as $val) {
+                            $dir[]=$val;
                         }
-                        break;
+                    }
+
+                    foreach($dir as $disque) {
+                          $check=`dir $disque`;
+                          if(strlen($check)>0) {
+                             $hdd[]="$disque";
+                             if(check_cultibox_card("$disque")) {
+                                     $ret="$disque";
+                             }
+                          }
+                    }
+                    break;
         }
         return $ret;
 }
@@ -277,17 +315,17 @@ function check_cultibox_card($dir="") {
 //      $program        the program to be save in the sd card 
 // RET true if data correctly written, false else
 function save_program_on_sd($sd_card,$program) {
-   if(is_file("${sd_card}/cnf/prg/plugv")) {
-      $file="${sd_card}/cnf/prg/plugv";
-      $prog="";
-      $nbPlug=count($program);
-      $shorten=false;
+    if(is_file("${sd_card}/cnf/prg/plugv")) {
+        $file="${sd_card}/cnf/prg/plugv";
+        $prog="";
+        $nbPlug=count($program);
+        $shorten=false;
 
-      if($nbPlug>0) {
-         if($nbPlug>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
-            $nbPlug=$GLOBALS['PLUGV_MAX_CHANGEMENT'];
-            $shorten=true;
-         }
+        if($nbPlug>0) {
+            if($nbPlug>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
+                $nbPlug=$GLOBALS['PLUGV_MAX_CHANGEMENT'];
+                $shorten=true;
+            }
 
          while(strlen($nbPlug)<3) $nbPlug="0$nbPlug";
          $prog=$nbPlug."\r\n";
@@ -326,22 +364,22 @@ function save_program_on_sd($sd_card,$program) {
 // RET false is there is something to write, true else
 function compare_program($data,$sd_card) {
     if(is_file("${sd_card}/cnf/prg/plugv")) {
-         $nb=0;
-         //On compte le nombre d'entrée dans la base des programmes:
-         $nbdata=count($data);
+        $nb=0;
+        //On compte le nombre d'entrée dans la base des programmes:
+        $nbdata=count($data);
 
-         //Si les changements de la base dépassent ceux de maximum définit, on coupe le tableau des programmes pour le faire
-         //correspondre au nombre maximal
-         if($nbdata>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
+        //Si les changements de la base dépassent ceux de maximum définit, on coupe le tableau des programmes pour le faire
+        //correspondre au nombre maximal
+        if($nbdata>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
             $tmp_array=array_slice($data, 0, $GLOBALS['PLUGV_MAX_CHANGEMENT']-1);
             $tmp_array[]=$data[$nbdata-1];
             $data=$tmp_array;
             $nbdata=count($data);
-         }
+        }
 
-         $file="${sd_card}/cnf/prg/plugv";
+        $file="${sd_card}/cnf/prg/plugv";
 
-         if(count($data)>0) {
+        if(count($data)>0) {
             //On récupère les informations du fichier courant plugv
             $buffer_array=@file("$file");
             foreach($buffer_array as $buffer) {
@@ -362,9 +400,9 @@ function compare_program($data,$sd_card) {
                   }
             }
             return true; //Tout est égal, on renvoie true
-         }
-   }
-   return false;
+        }
+    }
+    return false;
 }
 // }}}
 
@@ -1240,13 +1278,22 @@ if(!file_exists("$log_file")) return $ret;
 //  IN      $sd        the sd_card path to be checked
 // RET true if we can, false else
 function check_sd_card($sd="") {
+
+    // Check to open in write mode
     if($f=@fopen("$sd/test.txt","w+")) {
-       fclose($f);
-       if(!@unlink("$sd/test.txt")) return false;
-       return true;
-   } else {
-       return false;
-   }
+        // Close file
+        fclose($f);
+        
+        // Delete file
+        if(!@unlink("$sd/test.txt")) 
+            return false;
+        
+        // SD card is writable
+        return true;
+    } else {
+        // Not openable in write mode
+        return false;
+    }
 }
 // }}}
 

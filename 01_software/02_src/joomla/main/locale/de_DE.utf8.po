@@ -1537,6 +1537,9 @@ msgstr "Ihre Programme / Socket-Konfiguration / Setup Cultibox waren nicht up to
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "Ein Update ist verfügbar, um auf eine neuere Version zu bewegen, indem Sie auf"
 
+msgid "INFO_UPDATE_CHECKING"
+msgstr "Überprüfung der Software-Version"
+
 msgid "STILL_LOG_FILE"
 msgstr "Es gibt immer noch Dateien Temperatur, Feuchtigkeit oder älter Ladeleistung zu nutzen, um die Schaltfläche logs 'importieren"
 

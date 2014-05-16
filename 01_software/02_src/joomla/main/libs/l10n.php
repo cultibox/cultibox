@@ -12,8 +12,8 @@ define ('__TRANSLATIONS_CACHE_FILEPATH', '%s/main/templates_c/l10n.%s.ser');
 define ('__TRANSLATIONS_PO_FILEPATH', '%s/main/locale/%s.utf8.po');
 
 if(isset($_SESSION["LANG"])) {
-   define ('__TRANSLATIONS_CACHE_FILEPATH_MODULE', '../../../main/templates_c/l10n.'.$_SESSION["LANG"].'.ser');
-   define ('__TRANSLATIONS_PO_FILEPATH_MODULE', '../../../main/locale/'.$_SESSION["LANG"].'.utf8.po');
+    define ('__TRANSLATIONS_CACHE_FILEPATH_MODULE', dirname(__FILE__) . '/../templates_c/l10n.'.$_SESSION["LANG"].'.ser');
+    define ('__TRANSLATIONS_PO_FILEPATH_MODULE', dirname(__FILE__) . '/../locale/'.$_SESSION["LANG"].'.utf8.po');
 }
 
 function __translations_check_lang($lang) {

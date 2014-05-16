@@ -1546,6 +1546,9 @@ msgstr "Configurazione i programmi / presa / setup Cultibox non erano aggiornati
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "È disponibile un aggiornamento per passare a una versione più recente cliccando"
 
+msgid "INFO_UPDATE_CHECKING"
+msgstr "Verifica della versione del software"
+
 msgid "STILL_LOG_FILE"
 msgstr "Ci sono ancora file di dati di temperatura, umidità o alimentazione anziani di ricarica da utilizzare per importare il pulsante i log '"
 

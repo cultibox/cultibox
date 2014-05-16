@@ -1548,6 +1548,9 @@ msgstr "Sus programas no estaban actualizados , se ha realizado una actualizaci�
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "Una actualización está disponible para pasar a la versión: "
 
+msgid "INFO_UPDATE_CHECKING"
+msgstr "Comprobación de la versión del software"
+
 msgid "STILL_LOG_FILE"
 msgstr "Quedan ficheros más antiguos a subir, apretar el botón 'importar los logs'"
 

@@ -539,11 +539,7 @@ $(document).ready(function() {
                 data: { POSITION_X: tmp[0], POSITION_Y: tmp[1], WIDTH: width, REDUCED: tmp_reduced }
                 });
                 reduced=tmp_reduced;
-        }},
-        {
-            text: CLOSE_button,
-            click: function() { $( this ).dialog( "close" ); }
-        }], 
+        }}], 
         hide: "fold", dialogClass: "dialog_message", position: [x,y], dragStop: function( event, ui ) { 
 
         if(data!="") { 
@@ -801,50 +797,50 @@ $(document).ready(function() {
             closeOnEscape: false,
             dialogClass: "popup_message",
             buttons: [{
-                    text: CANCEL_button,
+                text: CANCEL_button,
+                click: function () {
+                    $("#error_delete_logs").css("display","none"); 
+                    $("#success_delete_logs").css("display","none"); 
+                    $("#error_format_date_logs").css("display","none");
+                    $( this ).dialog( "close" ); 
+                    return false;
+                }}, {
+                text: DELETE_button,
                     click: function () {
-                        $("#error_delete_logs").css("display","none"); 
-                        $("#success_delete_logs").css("display","none"); 
                         $("#error_format_date_logs").css("display","none");
-                        $( this ).dialog( "close" ); 
-                        return false;
-                    }}, {
-                    text: DELETE_button,
-                        click: function () {
-                            $("#error_format_date_logs").css("display","none");
-                            if(((checkFormatDate($("#datepicker_from").val()))&&(checkFormatDate($("#datepicker_to").val()))&&(compareDate($("#datepicker_from").val(),$("#datepicker_to").val())))||($("input:radio[name=check_type_delete]:checked").val()=="all")) {
-                                $("#progress_delete_logs").show();
-                                $("#progress_bar_delete_logs").progressbar({value:0});
+                        if(((checkFormatDate($("#datepicker_from").val()))&&(checkFormatDate($("#datepicker_to").val()))&&(compareDate($("#datepicker_from").val(),$("#datepicker_to").val())))||($("input:radio[name=check_type_delete]:checked").val()=="all")) {
+                            $("#progress_delete_logs").show();
+                            $("#progress_bar_delete_logs").progressbar({value:0});
 
-                                var myArray = $("#datepicker_from").val().split('-');
-                                var myArray2 = $("#datepicker_to").val().split('-');
-                                var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
-                                var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
+                            var myArray = $("#datepicker_from").val().split('-');
+                            var myArray2 = $("#datepicker_to").val().split('-');
+                            var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
+                            var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
 
-                                if($("input:radio[name=check_type_delete]:checked").val()=="all") {
-                                    var nb_jours=1;
-                                } else {
-                                    var nb_jours=diffdate(Date1,Date2);
-                                }
-
-                                delete_logs("logs",$("input:radio[name=check_type_delete]:checked").val(), nb_jours,$("#datepicker_from").val(),nb_jours);
-
-                                $("#delete_log_form").dialog({ closeOnEscape: false, buttons: [ {
-                                            text: CLOSE_button,
-                                            click: function() {
-                                                $("#error_delete_logs").css("display","none");
-                                                $("#success_delete_logs").css("display","none");
-                                                $("#error_format_date_logs").css("display","none");
-                                                $( this ).dialog( "close" );
-                                                document.forms['display-log-day'].submit();
-                                                return false;
-                              } } ] });
+                            if($("input:radio[name=check_type_delete]:checked").val()=="all") {
+                                var nb_jours=1;
                             } else {
-                                $("#error_format_date_logs").css("display","");
+                                var nb_jours=diffdate(Date1,Date2);
                             }
+
+                            delete_logs("logs",$("input:radio[name=check_type_delete]:checked").val(), nb_jours,$("#datepicker_from").val(),nb_jours);
+
+                            $("#delete_log_form").dialog({ closeOnEscape: false, buttons: [ {
+                                        text: CLOSE_button,
+                                        click: function() {
+                                            $("#error_delete_logs").css("display","none");
+                                            $("#success_delete_logs").css("display","none");
+                                            $("#error_format_date_logs").css("display","none");
+                                            $( this ).dialog( "close" );
+                                            document.forms['display-log-day'].submit();
+                                            return false;
+                          } } ] });
+                        } else {
+                            $("#error_format_date_logs").css("display","");
                         }
-                    }]
-                });
+                    }
+                }]
+            });
         });
 
 
@@ -2183,3 +2179,36 @@ $(document).ready(function() {
     });
 
 });
+
+// brief : Used to add a message in popup
+// message : Message to show
+// id to define
+// type : information or error
+function pop_up_add_information(message, id, type) {
+    if (type == "information")
+        $("#pop_up_information_part ul").append('<li id="' + id + '">' + message + '</li>');
+        
+    if (type == "error")
+        $("#pop_up_error_part ul").append('<li id="' + id + '">' + message + '</li>');
+
+    // If there is element in error part, show this part
+    if ($("#pop_up_error_part ul li").length >= 1)
+        $("#pop_up_error_container").css("display", "");
+        
+    if ($("#pop_up_information_part ul li").length >+ 1)
+        $("#pop_up_information_container").css("display", "");
+        
+};
+
+// brief : Remove a message in popup
+// id to remove
+function  pop_up_remove(id) {
+    $("#" + id).remove();
+    
+    if ($("#pop_up_error_part ul li").length < 1)
+        $("#pop_up_error_container").css("display", "none");
+        
+    if ($("#pop_up_information_part ul li").length < 1)
+        $("#pop_up_information_container").css("display", "none");
+    
+};
