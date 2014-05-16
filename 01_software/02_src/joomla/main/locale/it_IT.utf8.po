@@ -6,11 +6,7 @@
 msgid "LANG"
 msgstr "it"
 
-msgid "CONFIGURATION"
-msgstr "Configurazione"
 
-msgid "LOGS"
-msgstr "Registri"
 
 
 #For the welcome part
@@ -52,8 +48,6 @@ msgstr "Interfaccia"
 msgid "SYSTEM_CONF"
 msgstr "Cultibox"
 
-msgid "CONFIGURE_COST"
-msgstr "Costo"
 
 msgid "CONFIGURE_CARD"
 msgstr "SD card"
@@ -401,8 +395,6 @@ msgid "IMPORT_LOG"
 msgstr "Registri di importazione"
 
 
-msgid "EMPTY_REGUL"
-msgstr "Nessun controllo programmato"
 
 
 msgid "SUMARY_REGUL_TITLE"
@@ -1274,14 +1266,6 @@ msgid "SENSOR_VALUE"
 msgstr "Ultimo valore registrato"
 
 
-# For the footer:
-msgid "VERSION"
-msgstr "Versione"
-
-msgid "LICENSE"
-msgstr "Licenza"
-
-
 # For the errors or warnings part:
 msgid "INFORMATION"
 msgstr "Informazioni (s)"
@@ -1527,8 +1511,6 @@ msgstr "Configurazione aggiornato correttamente"
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
 msgstr "Configurazione aggiornato correttamente nel software."
 
-msgid "VALID_UPDATE_PROGRAM"
-msgstr "Programmi aggiornati correttamente"
 
 msgid "VALID_IMPORT_PROGRAM"
 msgstr "Programma importato correttamente"
@@ -1557,8 +1539,6 @@ msgstr "È possibile utilizzare la configurazione classica interfaccia qui"
 msgid "INFO_RESET_PROGRAM"
 msgstr "Programma Reset (s) (s) successo"
 
-msgid "WAITING_LOG"
-msgstr "Grazie per la vostra pazienza durante il caricamento di tronchi ..."
 
 msgid "UPDATED_PROGRAM"
 msgstr "Configurazione i programmi / presa / setup Cultibox non erano aggiornati sulla carta, l'aggiornamento è stato eseguito"

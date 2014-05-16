@@ -6,11 +6,7 @@
 msgid "LANG"
 msgstr "fr_FR"
 
-msgid "CONFIGURATION"
-msgstr "Configuration"
 
-msgid "LOGS"
-msgstr "Logs"
 
 
 #For the welcome part
@@ -52,8 +48,6 @@ msgstr "Interface"
 msgid "SYSTEM_CONF"
 msgstr "Cultibox"
 
-msgid "CONFIGURE_COST"
-msgstr "Coût"
 
 msgid "CONFIGURE_CARD"
 msgstr "Carte SD"
@@ -401,8 +395,6 @@ msgid "IMPORT_LOG"
 msgstr "Importer les logs"
 
 
-msgid "EMPTY_REGUL"
-msgstr "Aucune régulation programmée"
 
 
 msgid "SUMARY_REGUL_TITLE"
@@ -1274,14 +1266,6 @@ msgid "SENSOR_VALUE"
 msgstr "Dernière valeur enregistrée"
 
 
-# For the footer:
-msgid "VERSION"
-msgstr "Version"
-
-msgid "LICENSE"
-msgstr "Licence"
-
-
 # For the errors or warnings part:
 msgid "INFORMATION"
 msgstr "Information(s)"
@@ -1527,8 +1511,6 @@ msgstr "Configuration mise à jour avec succès"
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
 msgstr "Configuration mise à jour avec succès dans le logiciel."
 
-msgid "VALID_UPDATE_PROGRAM"
-msgstr "Programmes mis à jour avec succès"
 
 msgid "VALID_IMPORT_PROGRAM"
 msgstr "Programme importé avec succès"
@@ -1557,8 +1539,6 @@ msgstr "Vous pouvez utiliser l'interface de configuration classique en cliquant 
 msgid "INFO_RESET_PROGRAM"
 msgstr "Programme(s) réinitialisé(s) avec succès"
 
-msgid "WAITING_LOG"
-msgstr "Merci de patienter quelques instants durant le chargement des logs..."
 
 msgid "UPDATED_PROGRAM"
 msgstr "Vos programmes/configuration des prises/configuration de la Cultibox n'étaient pas à jour sur votre carte, la mise à jour a été exécuté"
