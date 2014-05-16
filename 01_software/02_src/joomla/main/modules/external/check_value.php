@@ -1,7 +1,8 @@
 <?php
 
 require_once('../../libs/utilfunc.php');
-require_once('../../libs/db_common.php');
+require_once('../../libs/db_get_common.php');
+require_once('../../libs/db_set_common.php');
 require_once('../../libs/config.php');
 
 if((isset($_GET['type']))&&(!empty($_GET['type']))) {

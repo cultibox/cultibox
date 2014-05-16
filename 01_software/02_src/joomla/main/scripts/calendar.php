@@ -6,13 +6,19 @@ if (!isset($_SESSION)) {
 
 
 /* Libraries requiered: 
-        db_common.php : manage database requests
+        db_*_common.php : manage database requests
         utilfunc.php  : manage variables and files manipulations
+        debug.php     : functions for PHP and SQL debugs
+        utilfunc_sd_card.php : functions for SD card management
 */
+
 require_once('main/libs/config.php');
-require_once('main/libs/db_common.php');
+require_once('main/libs/db_get_common.php');
+require_once('main/libs/db_set_common.php');
 require_once('main/libs/utilfunc.php');
 require_once('main/libs/debug.php');
+require_once('main/libs/utilfunc_sd_card.php');
+
 
 // Compute page time loading for debug option
 $start_load = getmicrotime();
@@ -21,16 +27,16 @@ $start_load = getmicrotime();
 // ================= VARIABLES ================= //
 $main_error=array();
 $main_info=array();
-$informations = Array();
-$update=get_configuration("CHECK_UPDATE",$main_error);
-$version=get_configuration("VERSION",$main_error);
-$pop_up = get_configuration("SHOW_POPUP",$main_error);
+$informations = Array(); //Aray containing data from the informations table or the log.txt file
+$update=get_configuration("CHECK_UPDATE",$main_error); //To check if update checkin is anabled by the user
+$version=get_configuration("VERSION",$main_error); //To get the current version of the software 
+$pop_up = get_configuration("SHOW_POPUP",$main_error); // To check if pop up messages are enabled
 $pop_up_message=""; 
-$xml_list=get_external_calendar_file();
-$calendar_start=getvar('calendar_startdate');
+$xml_list=get_external_calendar_file(); //Get the list of the xml file is the mail/xml directory to add event from those files
+$calendar_start=getvar('calendar_startdate'); //Variable used when user add a grown calendar to a specific date
 
 if((!isset($calendar_start))||(empty($calendar_start))) {
-    $calendar_start=date('Y')."-".date('m')."-".date('d');
+    $calendar_start=date('Y')."-".date('m')."-".date('d'); //If user didn't had a grown calendar, today's date is used for the form
 }
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
@@ -39,7 +45,7 @@ $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 $lang=$_SESSION['LANG'];
 __('LANG');
 
-$title_list=get_title_list();
+$title_list=get_title_list(); //Get list of titles available from the database to be used in the calendar form
 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
@@ -59,132 +65,32 @@ foreach($xml_list as $liste) {
 }
 
 if(count($list_xml)>0) {
-    array_multisort($list_xml, SORT_ASC);
+    array_multisort($list_xml, SORT_ASC); //Sort of xml files to be displayd by alphabetical order
 }
 
 //Get the important event list for the previous and next week to display:
 $important_list=array();
-$important_list=get_important_event_list($main_error);
+$important_list=get_important_event_list($main_error); //Get import event list from database
 
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
-    $program="";
-    $conf_uptodate=true;
-    $error_copy=false;
-    if(check_sd_card($sd_card)) {
+    $conf_uptodate=1; //To chck if the sd configuration has been updated or not
+    $conf_uptodate=check_and_update_sd_card("$sd_card"); //Check if the SD card is updated or not
 
-
-        /* TO BE DELETED */
-        if(!compat_old_sd_card($sd_card)) { 
-            $main_error[]=__('ERROR_COPY_FILE'); 
-            $error_copy=true;
-        }   
-        /* ************* */
-
-
-        $program=create_program_from_database($main_error);
-        if(!compare_program($program,$sd_card)) {
-            $conf_uptodate=false;
-            if(!save_program_on_sd($sd_card,$program)) { 
-                $main_error[]=__('ERROR_WRITE_PROGRAM'); 
-                $error_copy=true;
-            }
+    if(!$conf_uptodate) { //If the SD card has been updated
+        //Display messages:
+        $main_info[]=__('UPDATED_PROGRAM');
+        $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
+    } else if($conf_uptodate>1) {
+        $error_message=get_error_sd_card_update_message($conf_uptodate);
+        if(strcmp("$error_message","")!=0) {
+            $main_error[]=get_error_sd_card_update_message($conf_uptodate);
         }
-
-
-        $ret_firm=check_and_copy_firm($sd_card);
-        if(!$ret_firm) {
-            $main_error[]=__('ERROR_COPY_FIRM');
-            $error_copy=true;
-        } else if($ret_firm==1) {
-            $conf_uptodate=false;
-        }
-
-
-        if(!compare_pluga($sd_card)) {
-            $conf_uptodate=false;
-            if(!write_pluga($sd_card,$main_error)) {
-                $main_error[]=__('ERROR_COPY_PLUGA');
-                $error_copy=true;
-            }
-        }
-
-
-        $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
-        if(count($plugconf)>0) {
-            if(!compare_plugconf($plugconf,$sd_card)) {
-                $conf_uptodate=false;
-                if(!write_plugconf($plugconf,$sd_card)) {
-                    $main_error[]=__('ERROR_COPY_PLUG_CONF');
-                    $error_copy=true;
-                }
-            }
-        }
-
-
-        if(!is_file("$sd_card/log.txt")) {
-            if(!copy_empty_big_file("$sd_card/log.txt")) {
-                $main_error[]=__('ERROR_COPY_TPL');
-                $error_copy=true;
-            }
-        }
-
-        if(!check_and_copy_id($sd_card,get_informations("cbx_id"))) {
-            $conf_uptodate=false;
-        }
-        
-        if(!check_and_copy_index($sd_card)) {
-            $main_error[]=__('ERROR_COPY_INDEX');
-            $error_copy=true;
-        }
-
-        if(!check_and_copy_plgidx($sd_card)) {
-            $main_error[]=__('ERROR_COPY_TPL');
-            $error_copy=true;
-        }
-
-        $wifi_conf=create_wificonf_from_database($main_error,get_ip_address());
-        if(!compare_wificonf($wifi_conf,$sd_card)) {
-            $conf_uptodate=false;
-            if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
-                $main_error[]=__('ERROR_COPY_WIFI_CONF');
-                $error_copy=true;
-            }
-        }
-
-        $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
-        $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
-        $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
-        $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
-        $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
-        $resetvalue= get_configuration("RESET_MINMAX",$main_error);
-        $rtc=get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
-        if("$updatefrequency"=="-1") {
-            $updatefrequency="0";
-        }
-
-
-        if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue","$rtc")) {
-            $conf_uptodate=false;
-            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue","$rtc",$main_error)) {
-                $main_error[]=__('ERROR_WRITE_SD_CONF');
-                $error_copy=true;
-            }
-        }
-
-        if((!$conf_uptodate)&&(!$error_copy)) {
-            $main_info[]=__('UPDATED_PROGRAM');
-            $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
-            set_historic_value(__('UPDATED_PROGRAM')." (".__('CALENDAR_PAGE').")","histo_info",$main_error);
-        }
-
-        $main_info[]=__('INFO_SD_CARD').": $sd_card";
-    } else {
-        $main_error[]=__('ERROR_WRITE_PROGRAM');
     }
+    $main_info[]=__('INFO_SD_CARD').": $sd_card";
 } else {
-        $main_error[]=__('ERROR_SD_CARD');
+    $main_error[]=__('ERROR_SD_CARD');
 }
 
 

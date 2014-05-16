@@ -172,13 +172,13 @@ title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 <table class="table_width">
    <tr>
       <td class="wizard-marge-td"></td>
-      <td class="wizard-title"><input type="hidden" name="program" value="program"><?php if(strcmp($plug_type,"lamp")==0) { echo __("START_TIME_LAMP"); } else { echo __('START_TIME_PROGRAM'); } ?>:</td>
+      <td class="wizard-title"><input type="hidden" name="program" value="program"><?php if(strcmp($plug_type,"lamp")==0) { echo __('START_TIME_LAMP'); } else { echo __('START_TIME_PROGRAM'); } ?>:</td>
       <td class="wizard-field"><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td>
       <td class="wizard-error"><div id="error_start_time" class="error_field" style="display:none"><img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_FORMAT_TIME_START'); ?></div><div id="error_same_start" class="error_field" style="display:none"><img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_SAME_TIME'); ?></div></td>
     </tr>
     <tr>
       <td></td>
-      <td><?php if(strcmp($plug_type,"lamp")==0) { echo __("END_TIME_LAMP"); } else { echo __('END_TIME_PROGRAM'); } ?>:</td>
+      <td><?php if(strcmp($plug_type,"lamp")==0) { echo __('END_TIME_LAMP'); } else { echo __('END_TIME_PROGRAM'); } ?>:</td>
       <td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td>
       <td><div id="error_end_time" class="error_field" style="display:none"><img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_FORMAT_TIME_END'); ?></div><div id="error_same_end" class="error_field" style="display:none"><img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_SAME_TIME'); ?></div></td>
     </tr>

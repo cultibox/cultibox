@@ -224,9 +224,6 @@ msgstr "Der Alarm des Cultibox schaltet alle Verkaufsstellen, wo Raumsicherheit 
 msgid "SHOW_COST"
 msgstr "Menü Ansicht kostet"
 
-msgid "SHOW_HISTORIC"
-msgstr "Sehen Sie sich die Geschichte Ihrer Aktionen-Menü"
-
 msgid "RESET_MINMAX"
 msgstr "Zurücksetzen der min / max"
 
@@ -415,9 +412,6 @@ msgstr "Löschen Sie die Protokolle"
 msgid "MANAGE_RESET_POWER"
 msgstr "Protokolle entfernen Macht"
 
-msgid "IMPORT_LOG_TITLE"
-msgstr "Import-Protokolle: Temperatur, Feuchtigkeit, Strom"
-
 msgid "IMPORT_LAST_MONTH"
 msgstr "im letzten Monat"
 
@@ -426,12 +420,6 @@ msgstr "Import-Protokolle"
 
 msgid "NO_IMPORT_LOG"
 msgstr "Keine SD-Karte erkannt"
-
-msgid "MIN_Y_AXIS_LOG"
-msgstr "Minimalwert der Y-Achse"
-
-msgid "MAX_Y_AXIS_LOG"
-msgstr "Maximalwert der Y-Achse"
 
 msgid "EMPTY_REGUL"
 msgstr "Kein programmierten Steuer"
@@ -471,15 +459,6 @@ msgstr "Temperatur"
 
 msgid "SUMARY_REGUL_HYGRO"
 msgstr "Luftfeuchtigkeit"
-
-msgid "CONFIGURE_Y_AXIS_HUMI"
-msgstr "Einstellen des Pegels des Feuchtigkeits"
-
-msgid "CONFIGURE_Y_AXIS_TEMP"
-msgstr "Einstellung der Temperaturskala"
-
-msgid "CONFIGURE_Y_AXIS_POWER"
-msgstr "Skaleneinstellung Kräfte"
 
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Exportieren Sie Ihre Informationen Protokolle"
@@ -1305,50 +1284,6 @@ msgstr "Die Berechnung der tatsächlichen Kosten erfolgreich realisiert"
 
 msgid "VALID_THEORICAL_COST_COMPUTE"
 msgstr "Berechnung des theoretischen Kosten erfolgreich erreicht"
-
-
-# For the historic part:
-msgid "TITLE_HISTORIC"
-msgstr "Die Geschichte der letzten 100 Aktien"
-
-msgid "RESET_HISTORIC"
-msgstr "Verlauf löschen"
-
-msgid "RESET_CONFIRM_HISTORIC"
-msgstr "Sind Sie sicher, dass Sie die Geschichte Ihrer Aktionen löschen?"
-
-msgid "VALID_DELETE_HISTORIC"
-msgstr "Geschichte Ihre Aktionen erfolgreich entfernt"
-
-msgid "NO_HISTORIC_VALUE"
-msgstr "Keine Aktion aufgezeichnet"
-
-msgid "WIZARD_PAGE"
-msgstr "Tab-Assistenten"
-
-msgid "PROGRAM_PAGE"
-msgstr "Registerkarte Programme"
-
-msgid "PLUG_PAGE"
-msgstr "Tab genommen"
-
-msgid "WELCOME_PAGE"
-msgstr "Startseite"
-
-msgid "LOGS_PAGE"
-msgstr "Seite Protokolle"
-
-msgid "CALENDAR_PAGE"
-msgstr "Registerkarte Kalender"
-
-msgid "COST_PAGE"
-msgstr "Tab Kosten"
-
-msgid "CONFIGURATION_PAGE"
-msgstr "Registerkarte Konfiguration"
-
-msgid "HISTORIC_EXPORT"
-msgstr "Export-Programm"
 
 
 # For the wifi part:

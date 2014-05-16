@@ -9,9 +9,12 @@ if (!isset($_SESSION)) {
         utilfunc.php  : manage variables and files manipulations
 */
 require_once('main/libs/config.php');
-require_once('main/libs/db_common.php');
+require_once('main/libs/db_get_common.php');
+require_once('main/libs/db_set_common.php');
 require_once('main/libs/utilfunc.php');
 require_once('main/libs/debug.php');
+require_once('main/libs/utilfunc_sd_card.php');
+
 
 // Compute page time loading for debug option
 $start_load = getmicrotime();
@@ -150,7 +153,6 @@ if((isset($add_plug))&&(!empty($add_plug))) {
                        
                         //Affichage des messages d'ajout: 
                         $pop_up_message=$pop_up_message.popup_message(__('PLUG_ADDED'));
-                        set_historic_value(__('PLUG_ADDED')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
                         $main_info[]=__('PLUG_ADDED');
 
         
@@ -160,7 +162,6 @@ if((isset($add_plug))&&(!empty($add_plug))) {
             } else {
                     //Sinon affichage du message de limite de prises atteinte:
                     $main_error[]=__('PLUG_MAX_ADDED');
-                    set_historic_value(__('PLUG_MAX_ADDED')." (".__('PROGRAM_PAGE').")","histo_error",$main_error);
             }
     }
 }
@@ -186,7 +187,6 @@ if((isset($remove_plug))&&(!empty($remove_plug))) {
                         }
 
                         //Affichage des messages de suppréssion:
-                        set_historic_value(__('PLUG_REMOVED')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
                         $pop_up_message=$pop_up_message.popup_message(__('PLUG_REMOVED'));
                         $main_info[]=__('PLUG_REMOVED');
 
@@ -196,7 +196,6 @@ if((isset($remove_plug))&&(!empty($remove_plug))) {
             } else {
                     //Sinon affichage du message de limite de prises atteinte:
                     $main_error[]=__('PLUG_MIN_ADDED');
-                    set_historic_value(__('PLUG_MIN_ADDED')." (".__('PROGRAM_PAGE').")","histo_error",$main_error);
             }
     }
 }
@@ -225,7 +224,6 @@ if((isset($export))&&(!empty($export))) {
         header("Cache-Control: no-cache, must-revalidate");
         header("Pragma: no-cache");
         readfile("./$file");    
-        set_historic_value(__('HISTORIC_EXPORT')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$export_selected.")","histo_info",$main_error);
         exit();
     }
 } elseif((isset($reset))&&(!empty($reset))) {
@@ -237,11 +235,9 @@ if((isset($export))&&(!empty($export))) {
         if($status) {
             $pop_up_message=$pop_up_message.popup_message(__('INFO_RESET_PROGRAM'));
             $main_info[]=__('INFO_RESET_PROGRAM');
-            set_historic_value(__('INFO_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_info",$main_error);
         } else {
             $pop_up_message=$pop_up_message.popup_message(__('ERROR_RESET_PROGRAM'));
             $main_info[]=__('ERROR_RESET_PROGRAM');
-            set_historic_value(__('ERROR_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_error",$main_error);
         }
         $reset_selected=1;
         $export_selected=1;
@@ -251,7 +247,6 @@ if((isset($export))&&(!empty($export))) {
         if(clean_program($reset_selected,$main_error)) {
             $pop_up_message=$pop_up_message.popup_message(__('INFO_RESET_PROGRAM'));
             $main_info[]=__('INFO_RESET_PROGRAM');
-            set_historic_value(__('INFO_RESET_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$reset_selected.")","histo_info",$main_error);
         }
         $export_selected=$reset_selected;
         $import_selected=$reset_selected;
@@ -262,14 +257,12 @@ if((isset($export))&&(!empty($export))) {
     if(!move_uploaded_file($_FILES['upload_file']['tmp_name'], $target_path)) {
         $main_error[]=__('ERROR_UPLOADED_FILE');
         $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_UPLOADED_FILE'));
-        set_historic_value(__('ERROR_UPLOADED_FILE')." (".__('PROGRAM_PAGE')." - tmp/".basename( $_FILES['upload_file']['name']).")","histo_error",$main_error);
     } else {
         $chprog=true;
         $data_prog=array();
         $data_prog=generate_program_from_file("$target_path",$import_selected,$main_error);
         if(count($data_prog)==0) { 
             $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');
-            set_historic_value(__('ERROR_GENERATE_PROGRAM_FROM_FILE')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$import_selected.")","histo_error",$main_error);
             $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
         } else {
             clean_program($import_selected,$main_error);
@@ -279,7 +272,6 @@ if((isset($export))&&(!empty($export))) {
 
             if(!$chprog) {
                 $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');        
-                set_historic_value(__('ERROR_GENERATE_PROGRAM_FROM_FILE')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$import_selected.")","histo_error",$main_error);
                 $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
 
                 $data_prog=generate_program_from_file("tmp/program_plug${import_selected}.prg",$import_selected,$main_error);
@@ -287,7 +279,6 @@ if((isset($export))&&(!empty($export))) {
             } else {
                 $main_info[]=__('VALID_IMPORT_PROGRAM');
                 $pop_up_message=$pop_up_message.popup_message(__('VALID_IMPORT_PROGRAM'));
-                set_historic_value(__('VALID_IMPORT_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$import_selected.")","histo_info",$main_error);
             }
         }
     }
@@ -559,7 +550,6 @@ if(!empty($apply)&&(isset($apply))) {
             if($ch_insert) {
                    $main_info[]=__('INFO_VALID_UPDATE_PROGRAM');
                    $pop_up_message=$pop_up_message.popup_message(__('INFO_VALID_UPDATE_PROGRAM'));                    
-                   set_historic_value(__('INFO_VALID_UPDATE_PROGRAM')." (".__('PROGRAM_PAGE')." - ".__('WIZARD_CONFIGURE_PLUG_NUMBER')." ".$selected_plug.")","histo_info",$main_error);
 
                    if((isset($sd_card))&&(!empty($sd_card))) {
                             $main_info[]=__('INFO_PLUG_CULTIBOX_CARD');
@@ -639,125 +629,22 @@ if((!empty($sd_card))&&(isset($sd_card))) {
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 if((!empty($sd_card))&&(isset($sd_card))) {
-    $program="";
-    $conf_uptodate=true;
-    $error_copy=false;
-    if(check_sd_card($sd_card)) {
+    $conf_uptodate=1; //To chck if the sd configuration has been updated or not
+    $conf_uptodate=check_and_update_sd_card("$sd_card"); //Check if the SD card is updated or not
 
-
-        /* TO BE DELETED */
-        if(!compat_old_sd_card($sd_card)) { 
-            $main_error[]=__('ERROR_COPY_FILE'); 
-            $error_copy=true;
-        }   
-        /* ************* */
-
-
-        $program=create_program_from_database($main_error);
-        if(!compare_program($program,$sd_card)) {
-            $conf_uptodate=false;
-            if(!save_program_on_sd($sd_card,$program)) { 
-                $main_error[]=__('ERROR_WRITE_PROGRAM'); 
-                $error_copy=true;
-            }
+    if(!$conf_uptodate) { //If the SD card has been updated
+        //Display messages:
+        $main_info[]=__('UPDATED_PROGRAM');
+        $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
+    } else if($conf_uptodate>1) {
+        $error_message=get_error_sd_card_update_message($conf_uptodate);
+        if(strcmp("$error_message","")!=0) {
+            $main_error[]=get_error_sd_card_update_message($conf_uptodate);
         }
-
-
-        $ret_firm=check_and_copy_firm($sd_card);
-        if(!$ret_firm) {
-            $main_error[]=__('ERROR_COPY_FIRM');
-            $error_copy=true;
-        } else if($ret_firm==1) {
-            $conf_uptodate=false;
-        }
-
-
-        if(!compare_pluga($sd_card)) {
-            $conf_uptodate=false;
-            if(!write_pluga($sd_card,$main_error)) {
-                $main_error[]=__('ERROR_COPY_PLUGA');
-                $error_copy=true;
-            }
-        }
-
-
-        $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
-        if(count($plugconf)>0) {
-            if(!compare_plugconf($plugconf,$sd_card)) {
-                $conf_uptodate=false;
-                if(!write_plugconf($plugconf,$sd_card)) {
-                    $main_error[]=__('ERROR_COPY_PLUG_CONF');
-                    $error_copy=true;
-                }
-            }
-        }
-
-
-        if(!is_file("$sd_card/log.txt")) {
-            if(!copy_empty_big_file("$sd_card/log.txt")) {
-                $main_error[]=__('ERROR_COPY_TPL');
-                $error_copy=true;
-            }
-        }
-
-        if(!check_and_copy_id($sd_card,get_informations("cbx_id"))) {
-            $conf_uptodate=false;
-        }
- 
-        if(!check_and_copy_index($sd_card)) {
-            $main_error[]=__('ERROR_COPY_INDEX');
-            $error_copy=true;
-        }
-
-        if(!check_and_copy_plgidx($sd_card)) {
-            $main_error[]=__('ERROR_COPY_TPL');
-            $error_copy=true;
-        }
-
-
-        $wifi_conf=create_wificonf_from_database($main_error,get_ip_address());
-        if(!compare_wificonf($wifi_conf,$sd_card)) {
-            $conf_uptodate=false;
-            if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
-                $main_error[]=__('ERROR_COPY_WIFI_CONF');
-                $error_copy=true;
-            }
-        }
-
-
-        $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
-        $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
-        $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
-        $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
-        $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
-        $resetvalue= get_configuration("RESET_MINMAX",$main_error);
-        $rtc=get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
-        if("$updatefrequency"=="-1") {
-            $updatefrequency="0";
-        }
-
-
-        if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue","$rtc")) {
-            $conf_uptodate=false;
-            if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue","$rtc",$main_error)) {
-                $main_error[]=__('ERROR_WRITE_SD_CONF');
-                $error_copy=true;
-            }
-        }
-
-        if((!$conf_uptodate)&&(!$error_copy)) {
-            $main_info[]=__('UPDATED_PROGRAM');
-            $pop_up_message=$pop_up_message.popup_message(__('UPDATED_PROGRAM'));
-            set_historic_value(__('UPDATED_PROGRAM')." (".__('PROGRAM_PAGE').")","histo_info",$main_error);
-        }
-
-        $main_info[]=__('INFO_SD_CARD').": $sd_card";
-    } else {
-        $main_error[]=__('ERROR_WRITE_SD');
-        $main_info[]=__('INFO_SD_CARD').": $sd_card";
     }
+    $main_info[]=__('INFO_SD_CARD').": $sd_card";
 } else {
-        $main_error[]=__('ERROR_SD_CARD_PROGRAMS');
+    $main_error[]=__('ERROR_SD_CARD');
 }
 
 

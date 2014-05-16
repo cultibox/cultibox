@@ -354,11 +354,6 @@ td.program-action-center{
    text-align: center;
 }
 
-td.welcome-link {
-   width: 100%;
-   text-align: center;
-}
-
 td.calendar-marge {
    width: 15%;
 }
@@ -611,6 +606,9 @@ td.conf-marge-td {
 
 td.welcome-link {
   width:33%;
+  padding-left:2%;
+  padding-right:2%;
+  text-align:center;
   vertical-align:top;
 }
 

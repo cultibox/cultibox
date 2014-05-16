@@ -224,9 +224,6 @@ msgstr "The alarm of the Cultibox turns off all outlets where space security cul
 msgid "SHOW_COST"
 msgstr "View menu costing"
 
-msgid "SHOW_HISTORIC"
-msgstr "View the history of your actions menu"
-
 msgid "RESET_MINMAX"
 msgstr "Resetting the min / max"
 
@@ -404,7 +401,7 @@ msgid "MANAGE_LOG_INFOS"
 msgstr "Managing Your Data"
 
 msgid "MANAGE_RESET_TITLE"
-msgstr "Delete old logs temperature and humidity"
+msgstr "Delete old sensors logs"
 
 msgid "MANAGE_RESET_TITLE_POWER"
 msgstr "Delete old logs power measurement"
@@ -415,9 +412,6 @@ msgstr "Delete the logs"
 msgid "MANAGE_RESET_POWER"
 msgstr "Remove logs power"
 
-msgid "IMPORT_LOG_TITLE"
-msgstr "Import logs: temperature, humidity, power"
-
 msgid "IMPORT_LAST_MONTH"
 msgstr "last month"
 
@@ -426,12 +420,6 @@ msgstr "Import logs"
 
 msgid "NO_IMPORT_LOG"
 msgstr "No SD card detected"
-
-msgid "MIN_Y_AXIS_LOG"
-msgstr "Minimum value of the Y axis"
-
-msgid "MAX_Y_AXIS_LOG"
-msgstr "Maximum value of the Y axis"
 
 msgid "EMPTY_REGUL"
 msgstr "No programmed control"
@@ -472,15 +460,6 @@ msgstr "Temperature"
 msgid "SUMARY_REGUL_HYGRO"
 msgstr "Humidity"
 
-msgid "CONFIGURE_Y_AXIS_HUMI"
-msgstr "Adjusting the level of the moisture"
-
-msgid "CONFIGURE_Y_AXIS_TEMP"
-msgstr "Setting the temperature scale"
-
-msgid "CONFIGURE_Y_AXIS_POWER"
-msgstr "Scale setting powers"
-
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Export your information logs"
 
@@ -509,7 +488,7 @@ msgid "PROGRESS_POWER"
 msgstr "Loading progress files power"
 
 msgid "PROGRESS_LOG"
-msgstr "Loading progress files of temperature and humidity"
+msgstr "Data sensors loading progress"
 
 msgid "ERROR_LOAD_LOG"
 msgstr "Error loading logs, this may be due to a response time too long, repeat the operation to be sure"
@@ -1307,50 +1286,6 @@ msgid "VALID_THEORICAL_COST_COMPUTE"
 msgstr "Calculation of the theoretical cost achieved successfully"
 
 
-# For the historic part:
-msgid "TITLE_HISTORIC"
-msgstr "History of your last 100 shares"
-
-msgid "RESET_HISTORIC"
-msgstr "Clear history"
-
-msgid "RESET_CONFIRM_HISTORIC"
-msgstr "Are you sure you want to delete the history of your actions?"
-
-msgid "VALID_DELETE_HISTORIC"
-msgstr "History of your actions successfully removed"
-
-msgid "NO_HISTORIC_VALUE"
-msgstr "No action recorded"
-
-msgid "WIZARD_PAGE"
-msgstr "Tab Wizard"
-
-msgid "PROGRAM_PAGE"
-msgstr "Programs tab"
-
-msgid "PLUG_PAGE"
-msgstr "Tab taken"
-
-msgid "WELCOME_PAGE"
-msgstr "Main Page"
-
-msgid "LOGS_PAGE"
-msgstr "Logs page"
-
-msgid "CALENDAR_PAGE"
-msgstr "Calendar tab"
-
-msgid "COST_PAGE"
-msgstr "Tab costs"
-
-msgid "CONFIGURATION_PAGE"
-msgstr "Configuration tab"
-
-msgid "HISTORIC_EXPORT"
-msgstr "Export program"
-
-
 # For the wifi part:
 msgid "VIEW_PLUGS_STATE"
 msgstr "Current state of your catch"
@@ -1727,7 +1662,7 @@ msgid "TOOLTIP_POPUP"
 msgstr "The messages displayed by the interface are by default displayed in a dialog box. This option allows you to disable / enable these dialog boxes."
 
 msgid "TOOLTIP_RECORD_FREQ"
-msgstr "This option allows you to configure the frequency at which the Cultibox records data of temperature and humidity."
+msgstr "This option allows you to configure the frequency at which the Cultibox records sensors data."
 
 msgid "TOOLTIP_POWER_FREQ"
 msgstr "This option allows you to configure the frequency at which the Cultibox saves the values ​​of energy consumption."
@@ -1799,7 +1734,7 @@ msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Make sure you have read the help before enabling this option. It is not necessary to enable a decision to regulate the temperature or humidity. Once activated, the controller is configured for a different socket type 'Light' and 'Other'. The configuration options for the secondary control will be available in the tab 'Taken'"
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
-msgstr "When you load the page logs, the software saves your log temperature, humidity and power for the last 31 days. This feature allows you to load older logs depending on the number of months required"
+msgstr "When you load the page logs, the software saves your sensors and power datas for the last 31 days. This feature allows you to load older logs depending on the number of months required"
 
 msgid "TOOLTIP_EXPORT_LOG_CSV"
 msgstr "Export your data log to a file in CSV format"

@@ -108,6 +108,7 @@ else
     fi
     echo "... OK"
 
+    echo "  * Upgrading the Cultibox's databases, this may take several minutes, please be patient..."
     /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
     /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/user_cultibox.sql
     /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 mysql < /opt/cultibox/sql_install/five-tables.sql

@@ -53,7 +53,6 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `SECOND_REGUL` VARCHAR( 5 ) NOT NULL DEFAULT 'False',
   `ADVANCED_REGUL_OPTIONS` VARCHAR( 5 ) NOT NULL DEFAULT 'False',
   `SHOW_COST` VARCHAR( 5 ) NOT NULL DEFAULT 'False',
-  `SHOW_HISTORIC` VARCHAR( 5 ) NOT NULL DEFAULT 'False',
   `RESET_MINMAX` VARCHAR( 5 ) NOT NULL DEFAULT '00:00',
   `WIFI` BOOLEAN NOT NULL DEFAULT 0,
   `WIFI_SSID` VARCHAR(32),
@@ -70,22 +69,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 --
 
 
-INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `STATISTICS`,`SECOND_REGUL`,`ADVANCED_REGUL_OPTIONS`,`SHOW_COST`,`SHOW_HISTORIC`,`RESET_MINMAX`, `WIFI`, `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD`, `WIFI_IP`, `WIFI_IP_MANUAL`, `RTC_OFFSET`) VALUES
-(1, 'True', '1.1.28', 'blue', 'red', 'black', 'purple', 5, 1, 3, -1, 'True', '0000', '15', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 'False', 'False', 'False','00:00',0,'','NONE','','000.000.000.000',0,0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `historic`
---
-
-CREATE TABLE IF NOT EXISTS `historic` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `timestamp` varchar(25) NOT NULL,
-  `action` varchar(300) NOT NULL,
-  `type` varchar(15) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+INSERT INTO `configuration` (`id`, `CHECK_UPDATE`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `SHOW_POPUP`, `ALARM_ACTIV`, `ALARM_VALUE`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `STATISTICS`,`SECOND_REGUL`,`ADVANCED_REGUL_OPTIONS`,`SHOW_COST`,`RESET_MINMAX`, `WIFI`, `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD`, `WIFI_IP`, `WIFI_IP_MANUAL`, `RTC_OFFSET`) VALUES
+(1, 'True', '1.1.28', 'blue', 'red', 'black', 'purple', 5, 1, 3, -1, 'True', '0000', '15', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 'False', 'False', '00:00',0,'','NONE','','000.000.000.000',0,0);
 
 -- --------------------------------------------------------
 
@@ -249,7 +234,7 @@ INSERT INTO `notes` (`id`, `title`, `desc`, `image`, `link`, `type_link`, `lang`
 (1, 'Documentation', 'Retrouver une documentation plus complète dans le logiciel en cliquant sur l’onglet <a href="http://localhost:6891/cultibox/main/docs/documentation_cultibox.pdf" target="_blank">Aide</a>. La version la plus à jour de l’aide est disponible à l’adresse suivante:', NULL, 'https://code.google.com/p/cultibox', 'external', 'fr_FR'),
 (2, 'Des questions ?', 'Si l’aide ne suffit pas pour répondre à une de vos questions, envoyez-nous un mail à l’adresse suivante :', NULL, 'support@cultibox.fr', 'mail', 'fr_FR'),
 (3, 'Accessoires', 'Vous pouvez compléter votre pack en achetant des capteurs supplémentaires, des prises 1000W et 3500W ou encore d’autres accessoires en vous rendant sur le site :', NULL, 'http://www.cultibox.fr', 'external', 'fr_FR'),
-(4, 'Recyclage', 'Chez Cultibox nous retraitons tous les élément de nos produits. L’emballage peut être recyclé et la Cultibox contient une pile lithium qui ne doit pas être jetée à la poubelle. Pour un recyclage optimal, renvoyez nous la Cultibox et vous serez récompensé.', 'recycling.png', NULL, NULL, 'fr_FR'),
+(4, 'Recyclage', 'Chez Cultibox nous retraitons tous les éléments de nos produits. L’emballage peut être recyclé et la Cultibox contient une pile lithium qui ne doit pas être jetée à la poubelle. Pour un recyclage optimal, renvoyez nous la Cultibox et vous serez récompensé.', 'recycling.png', NULL, NULL, 'fr_FR'),
 (5, 'Garantie', 'La Cultibox ainsi que ses accessoires sont garantis deux ans. Nous assurons la garantie en direct, sans intermédiaire. Pour nous contacter :', NULL, 'support@cultibox.fr', 'mail', 'fr_FR'),
 (6, 'Documentation', 'Find a more complete documentation in the software by clicking on the Help tab <a href="http://localhost:6891/cultibox/main/docs/documentation_cultibox.pdf" target="_blank"> </ a>. The most current version is available using the following address:', NULL, 'https://code.google.com/p/cultibox', 'external', 'en_GB'),
 (7, 'Some questions?', 'If help is not enough to answer one of your question, send us an email at the following address:', NULL, 'support@cultibox.fr', 'mail', 'en_GB'),
@@ -273,10 +258,6 @@ INSERT INTO `notes` (`id`, `title`, `desc`, `image`, `link`, `type_link`, `lang`
 (25, 'Garantie', 'Die Cultibox und Zubehör sind für zwei Jahre garantiert. Wir sorgen für die Sicherheit direkt, ohne Vermittler. Um uns zu kontaktieren:', NULL, 'support@cultibox.fr', 'mail', 'de_DE');
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `sensors`
---
 
 --
 -- Table structure for table `sensors`

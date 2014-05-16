@@ -52,15 +52,6 @@ $GLOBALS['PLUGA_DEFAULT'] = array('000', '247', '222', '219', '215', '207', '252
 // Definition of the plugs addresses default values:
 $GLOBALS['PLUGA_DEFAULT_3500W'] = array('004', '000', '000', '006', '008', '010', '012', '014', '016', '018', '020', '022', '024', '026', '028','030');
 
-// List of value possible for temperature and hygrometry axis:
-$GLOBALS['LIST_MAX_AXIS'] = array('-10','0', '5', '10', '15', '20', '25', '30', '35', '40', '45', '50','55','60', '65', '70', '75', '80', '85', '90', '95', '100');
-
-// List of value possible for power graphic axis:
-$GLOBALS['LIST_MAX_POWER'] = array('100', '200', '500', '1000','2000','5000');
-
-// Variable to enable/disable "first use" page:
-$GLOBALS['FIRST_USE'] = true;
-
 // Variable to define the first year to be used for the log part:
 $GLOBALS['FIRST_LOG_YEAR'] = '2013';
 

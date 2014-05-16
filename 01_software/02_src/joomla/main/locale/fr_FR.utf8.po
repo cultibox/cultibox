@@ -224,14 +224,11 @@ msgstr "L'alarme de la Cultibox permet d'éteindre toutes les prises lorsque la 
 msgid "SHOW_COST"
 msgstr "Afficher le menu de calcul des coûts"
 
-msgid "SHOW_HISTORIC"
-msgstr "Afficher le menu d'historique de vos actions"
-
 msgid "RESET_MINMAX"
 msgstr "Remise à zéro du min/max"
 
 msgid "WIFI_DESCRIPTION"
-msgstr "Le module Wifi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox:e état des prises, configuration actuelle..."
+msgstr "Le module Wifi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox et de vos prises ainsi que la configuration actuelle."
 
 msgid "WIFI_IP_MANUAL"
 msgstr "Configurer l'adresse IP manuellement"
@@ -404,7 +401,7 @@ msgid "MANAGE_LOG_INFOS"
 msgstr "Gestion de vos données climatiques"
 
 msgid "MANAGE_RESET_TITLE"
-msgstr "Supprimer vos anciens logs de température et d'hygrométrie"
+msgstr "Supprimer vos anciens logs"
 
 msgid "MANAGE_RESET_TITLE_POWER"
 msgstr "Supprimer vos anciens logs de mesure de puissance"
@@ -415,9 +412,6 @@ msgstr "Supprimer les logs"
 msgid "MANAGE_RESET_POWER"
 msgstr "Supprimer les logs de puissance "
 
-msgid "IMPORT_LOG_TITLE"
-msgstr "Importer les logs de: température, humidité, puissance des"
-
 msgid "IMPORT_LAST_MONTH"
 msgstr "derniers mois"
 
@@ -426,12 +420,6 @@ msgstr "Importer les logs"
 
 msgid "NO_IMPORT_LOG"
 msgstr "Pas de carte SD détectée"
-
-msgid "MIN_Y_AXIS_LOG"
-msgstr "Valeur minimale de l'axe Y"
-
-msgid "MAX_Y_AXIS_LOG"
-msgstr "Valeur maximale de l'axe Y"
 
 msgid "EMPTY_REGUL"
 msgstr "Aucune régulation programmée"
@@ -472,15 +460,6 @@ msgstr "Température"
 msgid "SUMARY_REGUL_HYGRO"
 msgstr "Hygrométrie"
 
-msgid "CONFIGURE_Y_AXIS_HUMI"
-msgstr "Réglage de l'échelle de l'humidité"
-
-msgid "CONFIGURE_Y_AXIS_TEMP"
-msgstr "Réglage de l'échelle des températures"
-
-msgid "CONFIGURE_Y_AXIS_POWER"
-msgstr "Réglage de l'échelle des puissances"
-
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Exporter vos informations de logs"
 
@@ -509,7 +488,7 @@ msgid "PROGRESS_POWER"
 msgstr "Progression du chargement des fichiers de puissance"
 
 msgid "PROGRESS_LOG"
-msgstr "Progression du chargement des fichiers de température et d'humidité"
+msgstr "Progression du chargement des logs des capteurs"
 
 msgid "ERROR_LOAD_LOG"
 msgstr "Erreur lors du chargement des logs, ceci peut être du à un temps de réponse trop long, recommencez l'opération pour vous en assurer"
@@ -1307,50 +1286,6 @@ msgid "VALID_THEORICAL_COST_COMPUTE"
 msgstr "Calcul du coût théorique réalisé avec succés"
 
 
-# For the historic part:
-msgid "TITLE_HISTORIC"
-msgstr "Historique de vos 100 dernières actions"
-
-msgid "RESET_HISTORIC"
-msgstr "Effacer l'historique"
-
-msgid "RESET_CONFIRM_HISTORIC"
-msgstr "Êtes-vous sûr de vouloir supprimer l'historique de vos actions?"
-
-msgid "VALID_DELETE_HISTORIC"
-msgstr "Historique de vos actions supprimé avec succès"
-
-msgid "NO_HISTORIC_VALUE"
-msgstr "Aucune action enregistrée"
-
-msgid "WIZARD_PAGE"
-msgstr "Onglet du Wizard"
-
-msgid "PROGRAM_PAGE"
-msgstr "Onglet des Programmes"
-
-msgid "PLUG_PAGE"
-msgstr "Onglet des prises"
-
-msgid "WELCOME_PAGE"
-msgstr "Page principale"
-
-msgid "LOGS_PAGE"
-msgstr "Page des logs"
-
-msgid "CALENDAR_PAGE"
-msgstr "Onglet du calendrier"
-
-msgid "COST_PAGE"
-msgstr "Onglet des coûts"
-
-msgid "CONFIGURATION_PAGE"
-msgstr "Onglet de configuration"
-
-msgid "HISTORIC_EXPORT"
-msgstr "Export d'un programme"
-
-
 # For the wifi part:
 msgid "VIEW_PLUGS_STATE"
 msgstr "État actuel de vos prises"
@@ -1704,7 +1639,7 @@ msgid "INFO_UPDATE_AVAILABLE"
 msgstr "Une mise à jour est disponible pour passer vers une version plus récente en cliquant"
 
 msgid "STILL_LOG_FILE"
-msgstr "Il reste des fichiers des données de température, d'humidité ou de puissance plus anciens à charger, pour cela utilisez le bouton 'importer les logs'"
+msgstr "Il reste des fichiers de logs de capteur ou de puissance contenant des données plus anciens à charger, pour cela utilisez le bouton 'importer les logs'"
 
 msgid "MESSAGE_BOX"
 msgstr "Messages du logiciel"
@@ -1727,7 +1662,7 @@ msgid "TOOLTIP_POPUP"
 msgstr "Les messages affichés par l'interface sont par défaut affichés dans une boite de dialogue. Cette option vous permet de désactiver/activer ces boites de dialogue."
 
 msgid "TOOLTIP_RECORD_FREQ"
-msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les données de température et d'hygrométrie."
+msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les données issues des capteurs."
 
 msgid "TOOLTIP_POWER_FREQ"
 msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les valeurs de consommation d'énergie."
@@ -1739,7 +1674,7 @@ msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."
 
 msgid "TOOLTIP_WITHOUT_SD_LOG"
-msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox concernant la température et l'hygrométrie ne pourront pas être affichés et sauvegardés. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
+msgstr "Sans carte SD branchée les fichiers enregistrés par votre Cultibox concernant les données des capteurs ne pourront pas être affichés et sauvegardés. Pour charger vos nouveaux fichiers de logs il faudra brancher une carte SD et recharger cette page."
 
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Cette option calcule et affiche la puissance consommée pour la/les prise(s) sélectionnée(s). Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
@@ -1799,7 +1734,7 @@ msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Assurez-vous de bien avoir lu l'aide avant d'activer cette option. Il n'est pas nécessaire de l'activer pour qu'une prise régule la température ou l'humidité. Une fois activée, la régulation est configurable pour une prise différente du type 'Lampe' et 'Autre'. Les options de configuration de la régulation secondaire seront disponible dans l'onglet 'Prises'"
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
-msgstr "Lorsque vous chargez la page des logs, le logiciel enregistre vos logs de température, humidité et puissance pour les 31 derniers jours. Cette fonctionnalité vous permet de charger des logs plus anciens en fonction du nombre de mois souhaité"
+msgstr "Lorsque vous chargez la page des logs, le logiciel enregistre vos logs des capteurs et de puissance pour les 31 derniers jours. Cette fonctionnalité vous permet de charger des logs plus anciens en fonction du nombre de mois souhaité"
 
 msgid "TOOLTIP_EXPORT_LOG_CSV"
 msgstr "Exporter vos informations de logs dans un fichier au format CSV"

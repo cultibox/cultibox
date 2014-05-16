@@ -226,9 +226,6 @@ del entorno de cultivo esta amenazada. Definir una temperatura limite, en cuanto
 msgid "SHOW_COST"
 msgstr "Enseñar el menú de calculo de coste"
 
-msgid "SHOW_HISTORIC"
-msgstr "Enseñar el menú de histórico de sus acciones"
-
 msgid "RESET_MINMAX"
 msgstr "Reseteo del min/max"
 
@@ -417,9 +414,6 @@ msgstr "Borrar los logs"
 msgid "MANAGE_RESET_POWER"
 msgstr "Borrar los logs de potencia"
 
-msgid "IMPORT_LOG_TITLE"
-msgstr "Importar los logs de: temperatura, humedad, potencia de los"
-
 msgid "IMPORT_LAST_MONTH"
 msgstr "últimos meses"
 
@@ -428,12 +422,6 @@ msgstr "Importar los logs"
 
 msgid "NO_IMPORT_LOG"
 msgstr "Ninguna tarjeta detectada"
-
-msgid "MIN_Y_AXIS_LOG"
-msgstr "Valor mínima del eje Y"
-
-msgid "MAX_Y_AXIS_LOG"
-msgstr "Valor máxima del eje Y"
 
 msgid "EMPTY_REGUL"
 msgstr "Ninguna regulación programada"
@@ -473,15 +461,6 @@ msgstr "Temperatura"
 
 msgid "SUMARY_REGUL_HYGRO"
 msgstr "Higrometría"
-
-msgid "CONFIGURE_Y_AXIS_HUMI"
-msgstr "Ajuste de la escala de la humedad" 
-
-msgid "CONFIGURE_Y_AXIS_TEMP"
-msgstr "Ajuste de la escala de temperatura"
-
-msgid "CONFIGURE_Y_AXIS_POWER"
-msgstr "Ajuste de la escala de la potencia"
 
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Exportar los datos de los logs"
@@ -1307,50 +1286,6 @@ msgstr "Calculo del coste real realizado con excito"
 
 msgid "VALID_THEORICAL_COST_COMPUTE"
 msgstr "Calculo del coste teórico realizado con excito"
-
-
-# For the historic part:
-msgid "TITLE_HISTORIC"
-msgstr "Histórico de las últimas 100 acciones"
-
-msgid "RESET_HISTORIC"
-msgstr "Borrar el histórico"
-
-msgid "RESET_CONFIRM_HISTORIC"
-msgstr "Seguro de querer borrar el histórico de acciones?"
-
-msgid "VALID_DELETE_HISTORIC"
-msgstr "Histórico de acciones borrado con excito"
-
-msgid "NO_HISTORIC_VALUE"
-msgstr "Ninguna acción guardada"
-
-msgid "WIZARD_PAGE"
-msgstr "Pestaña del asistente"
-
-msgid "PROGRAM_PAGE"
-msgstr "Pestaña de los programas"
-
-msgid "PLUG_PAGE"
-msgstr "Pestaña de los enchufes"
-
-msgid "WELCOME_PAGE"
-msgstr "Página principal "
-
-msgid "LOGS_PAGE"
-msgstr " Página de los logs "
-
-msgid "CALENDAR_PAGE"
-msgstr "Pestaña del calendario"
-
-msgid "COST_PAGE"
-msgstr "Pestaña de los costes"
-
-msgid "CONFIGURATION_PAGE"
-msgstr "Pestaña de configuración"
-
-msgid "HISTORIC_EXPORT"
-msgstr "Exportar un programa"
 
 
 # For the wifi part:
