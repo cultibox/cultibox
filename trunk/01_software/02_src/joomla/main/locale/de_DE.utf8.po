@@ -6,11 +6,7 @@
 msgid "LANG"
 msgstr "de_DE"
 
-msgid "CONFIGURATION"
-msgstr "Konfiguration"
 
-msgid "LOGS"
-msgstr "Logs"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
@@ -50,8 +46,6 @@ msgstr "Schnittstelle"
 msgid "SYSTEM_CONF"
 msgstr "Cultibox"
 
-msgid "CONFIGURE_COST"
-msgstr "Kosten"
 
 msgid "CONFIGURE_CARD"
 msgstr "SD-Karte"
@@ -392,8 +386,6 @@ msgid "IMPORT_LOG"
 msgstr "Import-Protokolle"
 
 
-msgid "EMPTY_REGUL"
-msgstr "Kein programmierten Steuer"
 
 
 msgid "SUMARY_REGUL_TITLE"
@@ -1265,14 +1257,6 @@ msgid "SENSOR_VALUE"
 msgstr "Zuletzt aufgezeichnete Wert"
 
 
-# For the footer:
-msgid "VERSION"
-msgstr "Version"
-
-msgid "LICENSE"
-msgstr "Lizenz"
-
-
 # For the errors or warnings part:
 msgid "INFORMATION"
 msgstr "Information (en)"
@@ -1518,8 +1502,6 @@ msgstr "Konfiguration erfolgreich aktualisiert"
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
 msgstr "Konfiguration in der Software erfolgreich aktualisiert."
 
-msgid "VALID_UPDATE_PROGRAM"
-msgstr "Programme erfolgreich aktualisiert"
 
 msgid "VALID_IMPORT_PROGRAM"
 msgstr "Erfolgreich eingeführte Programm"
@@ -1548,8 +1530,6 @@ msgstr "Sie können die klassischen Schnittstellenkonfiguration verwenden hier"
 msgid "INFO_RESET_PROGRAM"
 msgstr "Reset-Programm (e) (n) erfolgreich"
 
-msgid "WAITING_LOG"
-msgstr "Wir danken Ihnen für Ihre Geduld beim Laden der Protokolle ..."
 
 msgid "UPDATED_PROGRAM"
 msgstr "Ihre Programme / Socket-Konfiguration / Setup Cultibox waren nicht up to date auf Ihrer Karte, wurde das Update durchgeführt"

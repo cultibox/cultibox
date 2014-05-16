@@ -6,11 +6,7 @@
 msgid "LANG"
 msgstr "es_ES"
 
-msgid "CONFIGURATION"
-msgstr "Configuración"
 
-msgid "LOGS"
-msgstr "Logs"
 
 
 #For the welcome part
@@ -53,8 +49,6 @@ msgstr "Interfaz"
 msgid "SYSTEM_CONF"
 msgstr "Cultibox"
 
-msgid "CONFIGURE_COST"
-msgstr "Coste"
 
 msgid "CONFIGURE_CARD"
 msgstr "Tarjeta SD"
@@ -403,8 +397,6 @@ msgid "IMPORT_LOG"
 msgstr "Importar los logs"
 
 
-msgid "EMPTY_REGUL"
-msgstr "Ninguna regulación programada"
 
 
 msgid "SUMARY_REGUL_TITLE"
@@ -1276,14 +1268,6 @@ msgid "SENSOR_VALUE"
 msgstr "Último valor registrado"
 
 
-# For the footer:
-msgid "VERSION"
-msgstr "Versión"
-
-msgid "LICENSE"
-msgstr "Licencia"
-
-
 # For the errors or warnings part:
 msgid "INFORMATION"
 msgstr "Información(nes)"
@@ -1529,8 +1513,6 @@ msgstr "Configuración actualizada con excitó"
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
 msgstr "Configuración actualizada con excitó en el programa."
 
-msgid "VALID_UPDATE_PROGRAM"
-msgstr "Programas actualizados con excitó"
 
 msgid "VALID_IMPORT_PROGRAM"
 msgstr "Programa importado con excitó"
@@ -1559,8 +1541,6 @@ msgstr "Se puede usar la interfaz de configuración clásica apretando aquí"
 msgid "INFO_RESET_PROGRAM"
 msgstr "Programa(s) reseteado(s) con excitó"
 
-msgid "WAITING_LOG"
-msgstr "Esperar unos segundos la subida de los logs..."
 
 msgid "UPDATED_PROGRAM"
 msgstr "Sus programas no estaban actualizados , se ha realizado una actualización. "
