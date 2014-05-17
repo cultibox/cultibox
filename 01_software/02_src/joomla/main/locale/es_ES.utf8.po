@@ -7,8 +7,6 @@ msgid "LANG"
 msgstr "es_ES"
 
 
-
-
 #For the welcome part
 msgid "WELCOME_TITLE"
 msgstr "Bienvenido en el programa de configuración de la Cultibox"
@@ -28,6 +26,8 @@ msgstr "<ul class='list_class'><li>quitar los antiguos enchufes que no son mas c
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Darle al botón SIGUIENTE para lanzar la configuración y empezar a pilotar vuestra Cultibox"
 
+msgid "WELCOME_WIZARD"
+msgstr "Asistente de configuración"
 
 msgid "WELCOME_LOGS"
 msgstr "Pagina de visualización de los logs"
@@ -48,7 +48,6 @@ msgstr "Interfaz"
 
 msgid "SYSTEM_CONF"
 msgstr "Cultibox"
-
 
 msgid "CONFIGURE_CARD"
 msgstr "Tarjeta SD"
@@ -89,7 +88,6 @@ msgstr "Couleur des courbes d'ORP"
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Color del gráfico del coste de la instalación"
 
-
 msgid "CONFIGURE_FREQUENCY"
 msgstr "Frecuencia de grabación del clima (en minutos)"
 
@@ -110,8 +108,6 @@ msgstr "Activar la visualización de los mensajes por popup"
 
 msgid "VALIDATION_CONF"
 msgstr "Grabar la configuración"
-
-
 
 msgid "COLOR_BLUE"
 msgstr "Azul"
@@ -248,7 +244,6 @@ msgstr "un mes"
 msgid "SELECT_DAY"
 msgstr "Día a visualizar (AAAA-MM-JJ)"
 
-
 msgid "VIEW"
 msgstr "Visualizar"
 
@@ -339,7 +334,6 @@ msgstr "Programa a comparar"
 msgid "SELECT_POWER_PLUG"
 msgstr "Visualizar la potencia consumida"
 
-
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Gracias por esperar algunos instantes y de no<b><i>retirar la tarjeta Cultibox</i></b> el tiempo que se cargue la pagina y que el programa analice los datos.<br /><br /><b><i>Nota: </i></b>Si ocurre un error, se puede recargar la pagina para intentar finalizar la operación"
 
@@ -373,7 +367,6 @@ msgstr "sensor"
 msgid "MONTH_DATE"
 msgstr "Mes y año a visualizar"
 
-
 msgid "SELECT_SENSOR"
 msgstr "El sensor"
 
@@ -389,15 +382,11 @@ msgstr "Borrar antiguos logs de medida de potencia"
 msgid "MANAGE_RESET_LOG"
 msgstr "Borrar los logs"
 
-
 msgid "IMPORT_LAST_MONTH"
 msgstr "últimos meses"
 
 msgid "IMPORT_LOG"
 msgstr "Importar los logs"
-
-
-
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Resumen de las regulaciones segundarías activas para los enchufes seleccionados"
@@ -440,9 +429,6 @@ msgstr "Ningún logs en la base de datos"
 
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Exportar los datos de potencia"
-
-
-
 
 msgid "EXAMPLE_LOG"
 msgstr "Ejemplo de logs"
@@ -614,7 +600,6 @@ msgstr "por debajo del umbral"
 msgid "REGUL_ABOVE"
 msgstr "por encima del umbral"
 
-
 msgid "STATE_PLUG"
 msgstr "Estado del enchufe"
 
@@ -623,9 +608,6 @@ msgstr "Activado"
 
 msgid "PLUG_DISABLED"
 msgstr "Desactivado"
-
-
-
 
 msgid "PLUG_MAX_POWER"
 msgstr "Tipo de enchufe(potencia máxima)"
@@ -728,7 +710,6 @@ msgstr "Elegir la hora"
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
 msgstr "Elegir la fecha"
 
-
 msgid "CHART_FORCE_ON_VALUE"
 msgstr "Marcha forzada" 
 
@@ -801,8 +782,6 @@ msgstr "Borrar el programa anterior"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Programar una acción"
 
-
-
 msgid "REPEAT_EVERY"
 msgstr "Repetir cada"
 
@@ -830,7 +809,6 @@ msgstr "Eliminar el ultimo enchufe"
 msgid "RESET_CONFIRM_PROGRAM"
 msgstr "Seguro de reinicializar el programa para el/los enchufe(s) seleccionado(s)?"
 
-
 msgid "BEHAVIOUR"
 msgstr "Comportamiento"
 
@@ -839,7 +817,6 @@ msgstr "regulación"
 
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Los horarios del programa son los mismos que el programa precedente. Eso modificara su programa precedente, desea aplicar este programa?"
-
 
 msgid "ERROR_MAX_PROGRAM"
 msgstr "El nombre máximo de cambios para los enchufes (limitados a 999 para todos los enchufes) ha sido alcanzado. La última acción de sus programas se ejecutaráSu a:"
@@ -857,7 +834,6 @@ msgstr "Exportar el grafico"
 
 msgid "PRINT_HIGHCHART"
 msgstr "Imprimir el grafico"
-
 
 msgid "EXPORT_PNG"
 msgstr "Exportar como PNG"
@@ -900,7 +876,6 @@ msgstr "Salvar y cerrar el asistente "
 msgid "WIZARD_OTHER_STEP"
 msgstr "Salvar y configurar otro enchufe "
 
-
 msgid "WIZARD_PLUG_TYPE"
 msgstr "El enchufe numero 1 será configurado como lámpara. Este enchufe podrá alimentar una lámpara de <b>600 Vatios</b> como <b>máximo</b>.Sera posible configurar otros enchufes pero no podrán alimentar una lámpara cuya potencia será superior a <b>200 Vatios</b>."
 
@@ -927,8 +902,6 @@ msgstr "Horario de arranque de la lámpara"
 
 msgid "END_TIME_LAMP"
 msgstr "Horario de apago de la lámpara"
-
-
 
 
 #For the calendar part:
@@ -1093,7 +1066,6 @@ msgstr "Crecimiento + Floración"
 
 msgid "CALENDAR_IMPORTANT"
 msgstr "Hecho Relevante"
-
 
 msgid "EVENT_FROM"
 msgstr "Acontecimientos del"
@@ -1308,14 +1280,11 @@ msgstr "Día a ensenar: error en el formato (AAAA-MM-DD)"
 msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr " Mes a ensenar: error en el formato (MM)"
 
-
-
 msgid "ERROR_SD_CARD_CONF"
 msgstr " Ninguna tarjeta SD compatible Cultibox detectada para grabar su configuración."
 
 msgid "ERROR_SD_CARD"
 msgstr " Ninguna tarjeta SD compatible Cultibox detectada, comprobar que su tarjeta este correctamente conectada."
-
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "Error en el formato de la hora: HH:MM:SS"
@@ -1364,7 +1333,6 @@ msgstr "El valor de disparo del alarma tiene que ser superior a 0 y inferior a 1
 
 msgid "ERROR_REGUL_VALUE"
 msgstr "El valor de disparo de la regulación tiene que ser superior a 0 y inferior a 100"
-
 
 msgid "ERROR_PRICE_VALUE"
 msgstr "El precio del KVatio-hora tiene que ser superior a 0. "
@@ -1513,15 +1481,11 @@ msgstr "Configuración actualizada con excitó"
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
 msgstr "Configuración actualizada con excitó en el programa."
 
-
 msgid "VALID_IMPORT_PROGRAM"
 msgstr "Programa importado con excitó"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Base de Logs borrado con excitó"
-
-
-
 
 msgid "VALID_LOAD_LOG"
 msgstr "Ficheros de los logs de los últimos meses grabados con excitó"
@@ -1540,7 +1504,6 @@ msgstr "Se puede usar la interfaz de configuración clásica apretando aquí"
 
 msgid "INFO_RESET_PROGRAM"
 msgstr "Programa(s) reseteado(s) con excitó"
-
 
 msgid "UPDATED_PROGRAM"
 msgstr "Sus programas no estaban actualizados , se ha realizado una actualización. "
@@ -1586,8 +1549,6 @@ msgstr "Esta opción permite configurar la frecuencia de actualización del esta
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Sin tarjeta SD conectado a su Cultibox, su configuración estará guardado en el programa pero no en la Cultibox. Para que su configuración sea efectiva , habrá que conectar una tarjeta SD, guardar su configuración o cargar de nuevo la pagina y conectar esta tarjeta SD en la Cultibox."
 
-"
-
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Esta opción calcula y enseña la potencia consumida para el/los  enchufe(s) determinado(s). Para que eso funcione, hay que llenar el campo ‘potencia’ en la parte de configuración de los enchufes."
 
@@ -1624,10 +1585,8 @@ msgstr "Se puede desactivar los enchufes que no se quiere usar. El programa no e
 msgid "TOOLTIP_MAX_POWER_PLUG_3500"
 msgstr "El enchufe 3500W permite controlar los elementos ingentes en energía. Los 3500W anunciados corresponden a una potencia resistiva pura, por ejemplo un calentamiento. Si se conecta una lámpara HPS o MH en este enchufe, la potencia máxima autorizada es de 600W"
 
-
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "El enchufe 1000W permite controlar los elementes ingentes en energía. Los 1000W anunciados corresponden a una potencia resistiva pura, por ejemplo un calentamiento. Si se conecta una lámpara HPS o MH en este enchufe, la potencia máxima autorizada es de 150W"
-
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Fecha de inicio del cálculo del coste de su instalación. Se puede calcular el coste de su instalación sobre un periodo definido por la fecha de inicio y de fin de este formulario"
@@ -1683,7 +1642,6 @@ msgstr "Si la regulación segundaria esta activada en la configuración del soft
 msgid "TOOLTIP_SHOW_COST"
 msgstr "Activando esa opción , se puede tener acceso a la pagina de calculo de coste de su instalación usando el menú ‘Coste’ que aparece en la barra del menú principal. "
 
-
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Ese campo permite definir la hora de reseteo del min/max de todos los sensores presentes en la pantalla de la Cultibox"
 
@@ -1736,6 +1694,3 @@ msgstr "Le permite cambiar la velocidad del reloj interno del Cultibox."
 #For the debug part:
 msgid "GENERATE_TIME"
 msgstr "Generado en"
-
-
-
