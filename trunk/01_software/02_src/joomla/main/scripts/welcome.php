@@ -54,7 +54,7 @@ sd_card_update_log_informations($sd_card);
 
 //Check the browser compatibility, if it's not compatible, the welcome page wil display a warning message
 if(count($browser)>0) {
-        $compat=check_browser_compat($browser); //Check is the browser used is compatible
+    $compat=check_browser_compat($browser); //Check is the browser used is compatible
 }
 
 //If programs configured by user is empty, display the wizard interface link
@@ -70,11 +70,6 @@ get_notes($notes,$_SESSION['LANG'],$main_error);
 
 // Include in html pop up and message
 include('main/templates/pop_up_load.php');
-
-// Add check part if needed
-if(strcmp(get_configuration("CHECK_UPDATE",$main_error),"True")==0) {
-    echo "<script>pop_up_add_information('" . __('INFO_UPDATE_CHECKING') . "<img src=\"main/libs/img/waiting_small.gif\" alt=\"version_check\" />', \"check_version_progress\", \"information\");</script>";
-}
 
 //Display the welcome template
 include('main/templates/welcome.html');

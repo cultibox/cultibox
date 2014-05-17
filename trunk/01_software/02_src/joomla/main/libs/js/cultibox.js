@@ -2147,8 +2147,8 @@ $(document).ready(function() {
 			var element_body_width=$( window ).width();
 			
 			if((element_body_width!="")&&(element_div_width!="")) {
-					var dist=90*(element_body_width-element_div_width)/200
-					$("#tooltip_msg_box").css("padding-left",dist+"px");
+                var dist=90*(element_body_width-element_div_width)/200
+                $("#tooltip_msg_box").css("padding-left",dist+"px");
 			}	
        
 
@@ -2192,11 +2192,16 @@ function pop_up_add_information(message, id, type) {
         $("#pop_up_error_part ul").append('<li id="' + id + '">' + message + '</li>');
 
     // If there is element in error part, show this part
-    if ($("#pop_up_error_part ul li").length >= 1)
+    if ($("#pop_up_error_part ul li").length > 0)
         $("#pop_up_error_container").css("display", "");
         
-    if ($("#pop_up_information_part ul li").length >+ 1)
+    if ($("#pop_up_information_part ul li").length > 0)
         $("#pop_up_information_container").css("display", "");
+        
+    // Display message box if there are some informations
+    if ($("#pop_up_information_part ul li").length > 0 ||
+        $("#pop_up_error_part ul li").length > 0)
+        $(".message").dialog('open');
         
 };
 
@@ -2210,5 +2215,10 @@ function  pop_up_remove(id) {
         
     if ($("#pop_up_information_part ul li").length < 1)
         $("#pop_up_information_container").css("display", "none");
+    
+    // Close message dialog bos when there is no informations
+    if ($("#pop_up_information_part ul li").length < 1 &&
+        $("#pop_up_error_part ul li").length < 1)
+        $(".message").dialog('close');
     
 };

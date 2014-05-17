@@ -1501,7 +1501,10 @@ msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "È possibile utilizzare la configurazione classica interfaccia qui"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "Programma Reset (s) (s) successo"
+msgstr "Programma Reset successo"
+
+msgid "WAIT_UPDATED_PROGRAM"
+msgstr "Controllo della scheda SD"
 
 msgid "UPDATED_PROGRAM"
 msgstr "Configurazione i programmi / presa / setup Cultibox non erano aggiornati sulla carta, l'aggiornamento è stato eseguito"
