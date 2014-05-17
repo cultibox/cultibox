@@ -1503,6 +1503,9 @@ msgstr "Vous pouvez utiliser l'interface de configuration classique en cliquant 
 msgid "INFO_RESET_PROGRAM"
 msgstr "Programme(s) réinitialisé(s) avec succès"
 
+msgid "WAIT_UPDATED_PROGRAM"
+msgstr "Vérification de la carte SD"
+
 msgid "UPDATED_PROGRAM"
 msgstr "Vos programmes/configuration des prises/configuration de la Cultibox n'étaient pas à jour sur votre carte, la mise à jour a été exécuté"
 

@@ -1505,6 +1505,9 @@ msgstr "Se puede usar la interfaz de configuración clásica apretando aquí"
 msgid "INFO_RESET_PROGRAM"
 msgstr "Programa(s) reseteado(s) con excitó"
 
+msgid "WAIT_UPDATED_PROGRAM"
+msgstr "Comprobación de la tarjeta SD"
+
 msgid "UPDATED_PROGRAM"
 msgstr "Sus programas no estaban actualizados , se ha realizado una actualización. "
 

@@ -20,7 +20,7 @@ define("ERROR_SD_NOT_FOUND", "13");
 function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) {
 
     // Check if SD card has been found
-    if(empty($sd_card) || !isset($sd_card))
+    if(empty($sd_card) || !isset($sd_card)  || $sd_card == "")
     {
         $main_error_tab[]=__('ERROR_SD_CARD');
         return ERROR_SD_NOT_FOUND;
@@ -156,7 +156,7 @@ function get_error_sd_card_update_message($id=0) {
 // RET true if the copy is errorless, false else
 function sd_card_update_log_informations ($sd_card="") {
 
-    if(empty($sd_card) || !isset($sd_card))
+    if(empty($sd_card) || !isset($sd_card) || $sd_card == "")
         return ERROR_SD_NOT_FOUND;
 
     // The informations part to send statistics to debug the cultibox: 
@@ -209,81 +209,81 @@ function copy_empty_big_file($file) {
 // IN  $hdd     list of hdd available which could be configured as cultibox SD card
 // RET false if nothing is found, the sd card place else
 function get_sd_card(&$hdd="") {
-        //For Linux
-        $ret=false;
-        $dir="";
-        $os=php_uname('s');
-        //Retrieve SD path depnding of the current OS:
-        switch($os) {
-                case 'Linux':
-                    //In Ubuntu Quantal mounted folders are now in /media/$USER directory
-                    $user=get_current_user();
-                    if((isset($user))&&(!empty($user))) {
-                        $dir="/media/".$user;
-                        if(is_dir($dir)) {
-                            $rep = @opendir($dir);
-                            if($rep) {
-                                while ($f = @readdir($rep)) {
-                                    if(is_dir("$dir/$f")) {
-                                        if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
-                                            $hdd[]="$dir/$f";
-                                            if(check_cultibox_card("$dir/$f")) {
-                                                $ret="$dir/$f";
-                                            }
-                                        }
-                                    }
-                                }
-                                closedir($rep);
-                            }
-                        }
-                    }
-                    break;
-
-                case 'Mac':
-                case 'Darwin':
-                    $dir="/Volumes";
-                    if(is_dir($dir)) {
-                        $rep=@opendir($dir);
-                        if($rep) {
-                            while ($f=@readdir($rep)) {
-                                if(is_dir("$dir/$f")) {
-                                    if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
-                                        $hdd[]="$dir/$f";
-                                        if(check_cultibox_card("$dir/$f")) {
-                                            $ret="$dir/$f";
-                                        }
+    //For Linux
+    $ret=false;
+    $dir="";
+    $os=php_uname('s');
+    //Retrieve SD path depnding of the current OS:
+    switch($os) {
+        case 'Linux':
+            //In Ubuntu Quantal mounted folders are now in /media/$USER directory
+            $user=get_current_user();
+            if((isset($user))&&(!empty($user))) {
+                $dir="/media/".$user;
+                if(is_dir($dir)) {
+                    $rep = @opendir($dir);
+                    if($rep) {
+                        while ($f = @readdir($rep)) {
+                            if(is_dir("$dir/$f")) {
+                                if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
+                                    $hdd[]="$dir/$f";
+                                    if(check_cultibox_card("$dir/$f")) {
+                                        $ret="$dir/$f";
                                     }
                                 }
                             }
-                            closedir($rep);
+                        }
+                        closedir($rep);
+                    }
+                }
+            }
+            break;
+
+        case 'Mac':
+        case 'Darwin':
+            $dir="/Volumes";
+            if(is_dir($dir)) {
+                $rep=@opendir($dir);
+                if($rep) {
+                    while ($f=@readdir($rep)) {
+                        if(is_dir("$dir/$f")) {
+                            if((strcmp("$f",".")!=0)&&(strcmp("$f","..")!=0)) {
+                                $hdd[]="$dir/$f";
+                                if(check_cultibox_card("$dir/$f")) {
+                                    $ret="$dir/$f";
+                                }
+                            }
                         }
                     }
-                    break;
+                    closedir($rep);
+                }
+            }
+            break;
 
-                case 'Windows NT':
-                    $vol=`MountVol`;
-                    $vol=explode("\n",$vol);
-                    $dir=Array();
-                    foreach($vol as $value) {
-                        // repérer les deux derniers segments du nom de l'hôte
-                        preg_match('/[D-Z]:/', $value,$matches);
-                        foreach($matches as $val) {
-                            $dir[]=$val;
-                        }
-                    }
+        case 'Windows NT':
+            $vol=`MountVol`;
+            $vol=explode("\n",$vol);
+            $dir=Array();
+            foreach($vol as $value) {
+                // repérer les deux derniers segments du nom de l'hôte
+                preg_match('/[D-Z]:/', $value,$matches);
+                foreach($matches as $val) {
+                    $dir[]=$val;
+                }
+            }
 
-                    foreach($dir as $disque) {
-                          $check=`dir $disque`;
-                          if(strlen($check)>0) {
-                             $hdd[]="$disque";
-                             if(check_cultibox_card("$disque")) {
-                                     $ret="$disque";
-                             }
-                          }
+            foreach($dir as $disque) {
+                $check=`dir $disque`;
+                if(strlen($check)>0) {
+                    $hdd[]="$disque";
+                    if(check_cultibox_card("$disque")) {
+                        $ret="$disque";
                     }
-                    break;
-        }
-        return $ret;
+                }
+            }
+            break;
+    }
+    return $ret;
 }
 // }}}
 
@@ -301,10 +301,11 @@ function check_cultibox_card($dir="") {
    }
 /* ********* */
 
-   if((is_file("$dir/cnf/prg/plugv"))&&(is_file("$dir/cnf/plg/pluga"))&&(is_dir("$dir/logs"))) {
-                return true;
-   }
-   return false;
+    if((is_file("$dir/cnf/prg/plugv"))&&(is_file("$dir/cnf/plg/pluga"))&&(is_dir("$dir/logs"))) {
+        return true;
+    }
+    
+    return false;
 }
 // }}}
 

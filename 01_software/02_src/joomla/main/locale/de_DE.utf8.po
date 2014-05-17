@@ -1503,7 +1503,10 @@ msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "Sie können die klassischen Schnittstellenkonfiguration verwenden hier"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "Reset-Programm (e) (n) erfolgreich"
+msgstr "Reset-Programm erfolgreich"
+
+msgid "WAIT_UPDATED_PROGRAM"
+msgstr "Überprüfen der SD-Karte"
 
 msgid "UPDATED_PROGRAM"
 msgstr "Ihre Programme / Socket-Konfiguration / Setup Cultibox waren nicht up to date auf Ihrer Karte, wurde das Update durchgeführt"

@@ -40,33 +40,19 @@
     $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
     __('LANG');
     
-    // Create info and error array
-    $main_error = array();
-    $main_info = array();
+    // Check sd card presence
+    $sd_card="";
+    //$sd_card=get_sd_card();
     
-    // Check for update availables. If an update is availabe, the link to this update is displayed with the informations div
-    if(strcmp(get_configuration("CHECK_UPDATE",$main_error),"True")==0) {
+    $main_error=array();
+    $main_info=array();
 
-        // If check has not been tested
-        if(!isset($_SESSION['UPDATE_CHECKED']) || empty($_SESSION['UPDATE_CHECKED'])) {
-            if($sock=@fsockopen("${GLOBALS['REMOTE_SITE']}", 80)) {
-            
-                // Check version
-                $version=get_configuration("VERSION",$main_error); //Current version of the software
-                if(check_update_available($version,$main_error)) {
-                    $_SESSION['UPDATE_CHECKED'] = "True";
-                    $main_info[] = __('INFO_UPDATE_AVAILABLE') . " <a target='_blank' href=" . $GLOBALS['WEBSITE'] . ">" .__('HERE'). "</a>";
-                } else {
-                    $_SESSION['UPDATE_CHECKED'] = "False";
-                }
-            } else {
-                // If website is not available don't retry an other time during session
-                $_SESSION['UPDATE_CHECKED'] = "NA";
-                $main_error[] = __('ERROR_REMOTE_SITE');
-            }
-        }
-    }
-    
+    // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
+    check_and_update_sd_card($sd_card,$main_info,$main_error);
+
+    // Search and update log information form SD card
+    sd_card_update_log_informations($sd_card);
+
     // Create output array
     $ret_array = array();
     $ret_array['info'] = $main_info;
@@ -74,5 +60,5 @@
     
     //return it in JSON format
     echo json_encode($ret_array);
-    
+ 
 ?>

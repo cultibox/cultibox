@@ -273,11 +273,6 @@ if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
 // Include in html pop up and message
 include('main/templates/pop_up_load.php');
 
-// Add check part if needed
-if(strcmp(get_configuration("CHECK_UPDATE",$main_error),"True")==0) {
-    echo "<script>pop_up_add_information('" . __('INFO_UPDATE_CHECKING') . "<img src=\"main/libs/img/waiting_small.gif\" alt=\"version_check\" />', \"check_version_progress\", \"information\");</script>";
-}
-
 //Display the wizard template
 include('main/templates/wizard.html');
 
