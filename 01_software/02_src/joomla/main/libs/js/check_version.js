@@ -8,8 +8,6 @@ $.ajax({
     context: document.body,
     success: function(data, textStatus, jqXHR) {
         // Check response from server
-        // Delete information
-        pop_up_remove("check_version_progress");
         
         // Parse result
         var json = jQuery.parseJSON(data);
@@ -23,6 +21,9 @@ $.ajax({
         json.info.forEach(function(entry) {
             pop_up_add_information(entry,"check_version_status","information");
         });  
+        
+        // Delete information
+        pop_up_remove("check_version_progress");
         
     },
     error: function(jqXHR, textStatus, errorThrown) {

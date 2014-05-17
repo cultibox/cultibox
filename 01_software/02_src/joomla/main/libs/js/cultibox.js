@@ -2185,6 +2185,8 @@ $(document).ready(function() {
 // id to define
 // type : information or error
 function pop_up_add_information(message, id, type) {
+
+    // Add message
     if (type == "information")
         $("#pop_up_information_part ul").append('<li id="' + id + '">' + message + '</li>');
         
@@ -2208,6 +2210,8 @@ function pop_up_add_information(message, id, type) {
 // brief : Remove a message in popup
 // id to remove
 function  pop_up_remove(id) {
+
+    // Delete information
     $("#" + id).remove();
     
     if ($("#pop_up_error_part ul li").length < 1)
