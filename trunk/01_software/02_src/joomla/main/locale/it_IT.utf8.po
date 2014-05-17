@@ -7,8 +7,6 @@ msgid "LANG"
 msgstr "it"
 
 
-
-
 #For the welcome part
 msgid "WELCOME_TITLE"
 msgstr "Benvenuti al Cultibox configurazione software"
@@ -28,6 +26,8 @@ msgstr "<ul class='list_class'> <li> rimuovere le vecchie spine che non sono pi�
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Fare clic sul pulsante Avanti per avviare l'installazione guidata e iniziare a gestire il tuo Cultibox"
 
+msgid "WELCOME_WIZARD"
+msgstr "Configurazione guidata"
 
 msgid "WELCOME_LOGS"
 msgstr "Registri di visualizzazione pagina"
@@ -38,6 +38,7 @@ msgstr "Cultura palinsesto pagina"
 msgid "WELCOME_PROGRAM"
 msgstr "Creazione di pagine e visualizzazione dei programmi adottati"
 
+
 # For the configuration part:
 msgid "CONFIGURE_TITLE_CULTIBOX"
 msgstr "Configurare il sistema Cultibox"
@@ -47,7 +48,6 @@ msgstr "Interfaccia"
 
 msgid "SYSTEM_CONF"
 msgstr "Cultibox"
-
 
 msgid "CONFIGURE_CARD"
 msgstr "SD card"
@@ -88,7 +88,6 @@ msgstr "Curve di colore ORP"
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Colore costi di installazione grafico"
 
-
 msgid "CONFIGURE_FREQUENCY"
 msgstr "Frequenza di registrazione del clima (in minuti)"
 
@@ -109,8 +108,6 @@ msgstr "Abilitare la visualizzazione dei messaggi popup"
 
 msgid "VALIDATION_CONF"
 msgstr "Salva configurazione"
-
-
 
 msgid "COLOR_BLUE"
 msgstr "Blu"
@@ -246,7 +243,6 @@ msgstr "uno mese"
 msgid "SELECT_DAY"
 msgstr "Visualizzazione dell'orologio (YYYY-MM-DD)"
 
-
 msgid "VIEW"
 msgstr "Visualizza"
 
@@ -337,7 +333,6 @@ msgstr "Programma per confrontare"
 msgid "SELECT_POWER_PLUG"
 msgstr "Il consumo di energia del display"
 
-
 msgid "WAITING_LOGS_WITH_SD"
 msgstr "Grazie per la vostra pazienza e non rimuovere la scheda <b> <i> Cultibox </ i> </ b> il tempo di caricamento della pagina e il software elabora i dati. <br /> <br /> <b> <i> Nota: </ i> </ b> Se si verifica un errore si può ricaricare la pagina per provare a completare l'operazione"
 
@@ -371,7 +366,6 @@ msgstr "Sensor"
 msgid "MONTH_DATE"
 msgstr "Mese e anno di visualizzazione"
 
-
 msgid "SELECT_SENSOR"
 msgstr "sensor"
 
@@ -387,15 +381,11 @@ msgstr "Elimina vecchio misurazione della potenza tronchi"
 msgid "MANAGE_RESET_LOG"
 msgstr "Eliminare i registri"
 
-
 msgid "IMPORT_LAST_MONTH"
 msgstr "il mese scorso"
 
 msgid "IMPORT_LOG"
 msgstr "Registri di importazione"
-
-
-
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Sintesi della normativa secondaria attivi fatte per la scelta"
@@ -438,9 +428,6 @@ msgstr "Non ci sono registri nel database"
 
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Esportare le informazioni di potenza"
-
-
-
 
 msgid "EXAMPLE_LOG"
 msgstr "Registro Esempio"
@@ -612,7 +599,6 @@ msgstr "inferiore alla soglia"
 msgid "REGUL_ABOVE"
 msgstr "sopra della soglia"
 
-
 msgid "STATE_PLUG"
 msgstr "Assunzione di Stato"
 
@@ -621,9 +607,6 @@ msgstr "Attivato"
 
 msgid "PLUG_DISABLED"
 msgstr "Spento"
-
-
-
 
 msgid "PLUG_MAX_POWER"
 msgstr "Tipo di spina (capacità massima)"
@@ -726,9 +709,8 @@ msgstr "Tempo di scegliere \ 's"
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
 msgstr "Scegli la data"
 
-
 msgid "CHART_FORCE_ON_VALUE"
-msgstr "Forzata "a"
+msgstr "Forzata a"
 
 msgid "EXPORT_PROGRAM"
 msgstr "Export"
@@ -799,8 +781,6 @@ msgstr "Eliminare il vecchio programma"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Azione Programmer"
 
-
-
 msgid "REPEAT_EVERY"
 msgstr "Ripeti tutto"
 
@@ -828,7 +808,6 @@ msgstr "Eliminare l'ultimo colpo"
 msgid "RESET_CONFIRM_PROGRAM"
 msgstr "Sei sicuro di voler ripristinare il programma / presa (s) selezionato (s)?"
 
-
 msgid "BEHAVIOUR"
 msgstr "Comportamento"
 
@@ -837,7 +816,6 @@ msgstr "regolamento"
 
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Ore di programmazione vengono restituiti lo stesso del programma precedente. Questo cambierà il vostro vecchio programma, vuoi applicare questo programma comunque?"
-
 
 msgid "ERROR_MAX_PROGRAM"
 msgstr "È stato raggiunto il numero massimo di cambiamento di stato per la decisione (limitato a 999 per tutte le dosi combinate). L'ultima azione dei vostri programmi si svolgerà presso:"
@@ -855,7 +833,6 @@ msgstr "Esportare il grafico"
 
 msgid "PRINT_HIGHCHART"
 msgstr "Stampa il grafico"
-
 
 msgid "EXPORT_PNG"
 msgstr "Esporta PNG"
@@ -898,7 +875,6 @@ msgstr "Salvare e chiudere la procedura guidata"
 msgid "WIZARD_OTHER_STEP"
 msgstr "Registrati e configurare una presa diversa"
 
-
 msgid "WIZARD_PLUG_TYPE"
 msgstr "Numero 1 jack sarà configurato come una lampada. Questo connettore può ospitare una lampada <b> 600 Watt </ b> fino <b> </ b>."
 
@@ -925,8 +901,6 @@ msgstr "Lampada ore di accensione"
 
 msgid "END_TIME_LAMP"
 msgstr "Tempo di spegnimento della lampada"
-
-
 
 
 #For the calendar part:
@@ -1092,7 +1066,6 @@ msgstr "Crescita + Fioritura"
 msgid "CALENDAR_IMPORTANT"
 msgstr "Evento significativo"
 
-
 msgid "EVENT_FROM"
 msgstr "Evento di"
 
@@ -1111,7 +1084,7 @@ msgid "COST_PRICE_COMPUTE"
 msgstr "Calcolo del costo dell'installazione"
 
 msgid "COST_PRICE_COMPUTE_GRAPH"
-msgstr "Il costo dell'installazione ""
+msgstr "Il costo dell'installazione"
 
 msgid "COST_PRICE_FOR_DAY"
 msgstr "per"
@@ -1306,14 +1279,11 @@ msgstr "Visualizzazione dell'orologio: Errore in formato (AAAA-MM-DD)"
 msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "Mese di visualizzazione: Errore in formato (MM)"
 
-
-
 msgid "ERROR_SD_CARD_CONF"
 msgstr "Scheda n Cultibox SD compatibile rilevato per salvare la configurazione"
 
 msgid "ERROR_SD_CARD"
 msgstr "Nessuna scheda SD rilevato Cultibox attivata, verificare che la scheda sia correttamente collegato"
-
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "Errore nel formato HH: MM: SS"
@@ -1362,7 +1332,6 @@ msgstr "Il valore di attivazione dell'allarme deve essere maggiore di 0 e minore
 
 msgid "ERROR_REGUL_VALUE"
 msgstr "Il valore di soglia del controllo deve essere maggiore di 0 e minore di 100"
-
 
 msgid "ERROR_PRICE_VALUE"
 msgstr "Il prezzo per chilowattora deve essere maggiore di 0"
@@ -1486,7 +1455,6 @@ msgstr "Errore nel formato della passphrase WPA: deve essere compresa tra 8 e 63
 
 
 # For the informations part:
-
 msgid "CONFIRMATION"
 msgstr "Conferma"
 
@@ -1511,15 +1479,11 @@ msgstr "Configurazione aggiornato correttamente"
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
 msgstr "Configurazione aggiornato correttamente nel software."
 
-
 msgid "VALID_IMPORT_PROGRAM"
 msgstr "Programma importato correttamente"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Eliminazione dei registri completato con successo"
-
-
-
 
 msgid "VALID_LOAD_LOG"
 msgstr "File di log ultimi mesi con successo registrati"
@@ -1538,7 +1502,6 @@ msgstr "È possibile utilizzare la configurazione classica interfaccia qui"
 
 msgid "INFO_RESET_PROGRAM"
 msgstr "Programma Reset (s) (s) successo"
-
 
 msgid "UPDATED_PROGRAM"
 msgstr "Configurazione i programmi / presa / setup Cultibox non erano aggiornati sulla carta, l'aggiornamento è stato eseguito"
@@ -1584,7 +1547,6 @@ msgstr "Questa opzione consente di configurare la frequenza con cui verrà aggio
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Senza scheda SD inserita la configurazione verrà salvata nel software, ma non in Cultibox. Che la configurazione è efficace, sarà collegare una scheda SD, salvare la configurazione o ricaricare la pagina e collegare questa carta nel Cultibox SD."
 
-
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Questa opzione calcola e visualizza la potenza consumata per / presa (s) selezionato (s). Per rendere questo possibile, si riempirà 'potere' campo nella parte configurazione delle catture"
 
@@ -1623,8 +1585,6 @@ msgstr "La presa 3500W consente di controllare gli elementi ad alta intensità e
 
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "1000W jack consente di controllare gli elementi ad alta intensità energetica. Il 1000W annunciato corrispondono a una potenza resistivo puro, come un riscaldatore. Se si collega un HPS lampada o MH in questo jack, la potenza massima consentita è di 150W"
-
-
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Data di partenza per calcolare il costo della vostra installazione. È possibile calcolare il costo della vostra installazione definito entro la data di partenza e la data di fine del periodo di forma"
@@ -1688,7 +1648,7 @@ msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
 msgstr "Questo valore può essere modificato solo se hai consentito la modifica delle opzioni di controllo nella scheda di configurazione. È possibile scegliere come il valore calcolato utilizzato per rendere il controllo"
 
 msgid "TOOLTIP_RESET_CALENDAR"
-msgstr "Rimuove tutte le annotazioni del calendario che è stato inserito manualmente. Questo include fertilizzante crescita eventualmente aggiunto, ma non include i calendari esterni calendario lunare-tipo ""
+msgstr "Rimuove tutte le annotazioni del calendario che è stato inserito manualmente. Questo include fertilizzante crescita eventualmente aggiunto, ma non include i calendari esterni calendario lunare-tipo "
 
 msgid "TOOLTIP_MANAGE_XML"
 msgstr "Consente di gestire più facilmente la visualizzazione dei calendari esterni come calendari lunari selezionando il file da visualizzare e nascondere quelli"

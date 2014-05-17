@@ -7,7 +7,6 @@ msgid "LANG"
 msgstr "de_DE"
 
 
-
 #For the welcome part
 msgid "WELCOME_TITLE"
 msgstr "Willkommen in der Softwarekonfiguration Cultibox"
@@ -27,6 +26,9 @@ msgstr "<ul class='list_class'> <li> entfernen Sie Ihre alte Stecker, die nicht 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Klicken Sie auf die Schaltfläche Weiter, um den Setup-Assistenten beginnen und den Umgang mit Ihren Cultibox"
 
+msgid "WELCOME_WIZARD"      
+msgstr "Configuration wizard"
+
 msgid "WELCOME_LOGS"
 msgstr "Seite Anzeigen von Protokollen"
 
@@ -35,6 +37,7 @@ msgstr "Seite Programmschema Kultur"
 
 msgid "WELCOME_PROGRAM"
 msgstr "Seite Erstellung und Visualisierung von Programmen übernommen"
+
 
 # For the configuration part:
 msgid "CONFIGURE_TITLE_CULTIBOX"
@@ -207,7 +210,7 @@ msgid "RESET_MINMAX"
 msgstr "Zurücksetzen der min / max"
 
 msgid "WIFI_DESCRIPTION"
-msgstr "Die Wi-Fi-Modul, mit dem Fern Cultibox interagieren. Sobald das Modul aktiviert ist, wird ein Tab Wifi "in der Software-Menü, das Sie den aktuellen Status Ihrer Cultibox anzeigen können sein: e-Buchse Status, die aktuelle Konfiguration ..."
+msgstr "Die Wi-Fi-Modul, mit dem Fern Cultibox interagieren. Sobald das Modul aktiviert ist, wird ein Tab Wifi in der Software-Menü, das Sie den aktuellen Status Ihrer Cultibox anzeigen können sein: e-Buchse Status, die aktuelle Konfiguration ..."
 
 msgid "WIFI_IP_MANUAL"
 msgstr "Konfigurieren Sie manuell die IP-Adresse"
@@ -385,9 +388,6 @@ msgstr "im letzten Monat"
 msgid "IMPORT_LOG"
 msgstr "Import-Protokolle"
 
-
-
-
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Zusammenfassung der aktiven Sekundär Vorschriften für den ausgewählten gemacht"
 
@@ -430,9 +430,6 @@ msgstr "Keine Protokolle in der Datenbank"
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Exportieren Sie Ihre Leistungsinformation"
 
-
-
-
 msgid "EXAMPLE_LOG"
 msgstr "Beispiel Protokoll"
 
@@ -473,7 +470,7 @@ msgid "SUMARY_RESUME_MINMAX"
 msgstr "Zusammenfassung der minimalen und maximalen Werte"
 
 msgid "TEMP_SENSOR"
-msgstr "Temperature ""
+msgstr "Temperature "
 
 msgid "HUMI_SENSOR"
 msgstr "Luftfeuchtigkeit"
@@ -603,7 +600,6 @@ msgstr "unterhalb des Schwellen"
 msgid "REGUL_ABOVE"
 msgstr "oberhalb des Schwellen"
 
-
 msgid "STATE_PLUG"
 msgstr "Staatsnahme"
 
@@ -612,9 +608,6 @@ msgstr "Aktiviert"
 
 msgid "PLUG_DISABLED"
 msgstr "Aus"
-
-
-
 
 msgid "PLUG_MAX_POWER"
 msgstr "Steckertyp (maximale Kapazität)"
@@ -717,9 +710,8 @@ msgstr "Wählen Sie \ 's Zeit"
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
 msgstr "Wählen Sie das Datum"
 
-
 msgid "CHART_FORCE_ON_VALUE"
-msgstr "Zwangs "auf"
+msgstr "Zwangs auf"
 
 msgid "EXPORT_PROGRAM"
 msgstr "Export"
@@ -790,8 +782,6 @@ msgstr "Löschen Sie das alte Programm"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Programmer Aktion"
 
-
-
 msgid "REPEAT_EVERY"
 msgstr "Wiederholen Sie alle"
 
@@ -819,7 +809,6 @@ msgstr "Die letzte Aufnahme löschen"
 msgid "RESET_CONFIRM_PROGRAM"
 msgstr "Sind Sie sicher, dass Sie das Programm / die Steckdose (n), ausgewählt (en) zurückzusetzen zu wollen?"
 
-
 msgid "BEHAVIOUR"
 msgstr "Verhalten"
 
@@ -828,7 +817,6 @@ msgstr "Regulierung"
 
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Programmstunden werden das gleiche wie das vorherige Programm zurück. Dies wird Ihre alte Programm zu ändern, würden Sie dieses Programm sowieso bewerben?"
-
 
 msgid "ERROR_MAX_PROGRAM"
 msgstr "Die maximale Anzahl der Zustandsänderung zur Entscheidung (999 für alle kombinierten Dosen begrenzt) erreicht worden ist. Die letzte Aktion Ihrer Programme findet statt im:"
@@ -889,7 +877,6 @@ msgstr "Speichern und schließen Sie den Assistenten"
 msgid "WIZARD_OTHER_STEP"
 msgstr "Registrieren und konfigurieren Sie eine andere Steckdose"
 
-
 msgid "WIZARD_PLUG_TYPE"
 msgstr "Nummer 1-Buchse wird als Lampen konfiguriert werden. Diese Buchse kann eine Lampe <b> 600 Watt </ b> bis <b> </ b> zubringen."
 
@@ -916,8 +903,6 @@ msgstr "Stunden Lampenzündung"
 
 msgid "END_TIME_LAMP"
 msgstr "Ausschaltzeit des Lampen"
-
-
 
 
 #For the calendar part:
@@ -1083,7 +1068,6 @@ msgstr "Wachstum + Blüte"
 msgid "CALENDAR_IMPORTANT"
 msgstr "Bedeutende Ereignis"
 
-
 msgid "EVENT_FROM"
 msgstr "Event"
 
@@ -1102,7 +1086,7 @@ msgid "COST_PRICE_COMPUTE"
 msgstr "Die Berechnung der Kosten für die Installation"
 
 msgid "COST_PRICE_COMPUTE_GRAPH"
-msgstr "Kosten der Installation ""
+msgstr "Kosten der Installation "
 
 msgid "COST_PRICE_FOR_DAY"
 msgstr "für"
@@ -1297,14 +1281,11 @@ msgstr "Tag-Anzeige: Fehler im Format (JJJJ-MM-DD)"
 msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "Monat Anzeige: Fehler im Format (MM)"
 
-
-
 msgid "ERROR_SD_CARD_CONF"
 msgstr "Kein Cultibox SD kompatiblen Karte erkannt, um die Konfiguration zu speichern"
 
 msgid "ERROR_SD_CARD"
 msgstr "Keine SD-Karte erkannt Cultibox aktiviert ist, überprüfen Sie, ob Ihre Karte korrekt angeschlossen ist"
-
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "Fehler im Zeitformat HH: MM: SS"
@@ -1353,7 +1334,6 @@ msgstr "Der Auslösewert des Alarm muss größer als 0 und kleiner als 100 sein"
 
 msgid "ERROR_REGUL_VALUE"
 msgstr "Der Auslösewert des Steuer größer als 0 und kleiner als 100 sein"
-
 
 msgid "ERROR_PRICE_VALUE"
 msgstr "Der Preis pro Kilowattstunde muss größer als 0 sein"
@@ -1477,7 +1457,6 @@ msgstr "Fehler im Format der WPA-Passphrase: Es muss zwischen 8 und 63 Zeichen l
 
 
 # For the informations part:
-
 msgid "CONFIRMATION"
 msgstr "Bestätigung"
 
@@ -1502,15 +1481,11 @@ msgstr "Konfiguration erfolgreich aktualisiert"
 msgid "VALID_UPDATE_CONF_WITHOUT_SD"
 msgstr "Konfiguration in der Software erfolgreich aktualisiert."
 
-
 msgid "VALID_IMPORT_PROGRAM"
 msgstr "Erfolgreich eingeführte Programm"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Löschen von Protokollen erfolgreich abgeschlossen"
-
-
-
 
 msgid "VALID_LOAD_LOG"
 msgstr "Logfiles den letzten Monaten erfolgreich registriert"
@@ -1529,7 +1504,6 @@ msgstr "Sie können die klassischen Schnittstellenkonfiguration verwenden hier"
 
 msgid "INFO_RESET_PROGRAM"
 msgstr "Reset-Programm (e) (n) erfolgreich"
-
 
 msgid "UPDATED_PROGRAM"
 msgstr "Ihre Programme / Socket-Konfiguration / Setup Cultibox waren nicht up to date auf Ihrer Karte, wurde das Update durchgeführt"
@@ -1575,7 +1549,6 @@ msgstr "Diese Option ermöglicht Ihnen, die Häufigkeit, mit der den Status (an 
 msgid "TOOLTIP_WITHOUT_SD"
 msgstr "Ohne SD-Karte eingesteckt wird Ihre Konfiguration in der Software aber nicht in Cultibox gespeichert werden. Dass Ihre Konfiguration wirksam ist, wird es eine SD-Karte verbinden, speichern Sie Ihre Konfiguration oder laden Sie die Seite und stecken Sie diese Karte in den SD-Cultibox."
 
-
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Diese Option berechnet und zeigt die Stromversorgung / die Steckdose (n), ausgewählt (n) verbraucht. Um dieses möglich zu machen wird es das Feld 'Macht' in der Konfigurationsteil des Fangs füllen"
 
@@ -1589,7 +1562,7 @@ msgid "TOOLTIP_PLUG_REGUL"
 msgstr "Das sekundäre Steuer ist eine komplizierte und verschiedene Betriebs der Hauptsteuerung. Bitte lesen Sie die Dokumentation vor der Aktivierung für eine Steckdose. Wenn Sie eine Steckdose steuern für sie eine Klimaanlage reguliert werden soll, ist es nicht notwendig, die Sekundärsteuerung zu aktivieren."
 
 msgid "TOOLTIP_COST_PRICE"
-msgstr "Der Preis pro Kilowattstunde. Füllen Sie bitte dieses Feld wird verwendet, um die Kosten für die Installation im Menü "Kosten" berechnen"
+msgstr "Der Preis pro Kilowattstunde. Füllen Sie bitte dieses Feld wird verwendet, um die Kosten für die Installation im Menü Kosten berechnen"
 
 msgid "TOOLTIP_FAKE_LOG_DATA"
 msgstr "Keine Daten in der Datenbank für den Moment vorhanden ist, werden die Protokolle als Beispiel angezeigt und kann nicht auf die Daten entsprechen der Aufnahme Ihrer Installation"
@@ -1598,7 +1571,7 @@ msgid "TOOLTIP_CHECK_UPDATE"
 msgstr "Überprüfen Sie, ob Updates verfügbar sind und bietet an, den entsprechenden Download"
 
 msgid "TOOLTIP_COST_TYPE"
-msgstr "Ihre elektrische System kann so "Standard" eingestellt werden: Sie zahlen pro Kilowattstunde für den gleichen Preis zu jeder Stunde des Tages. Sie können auch Ihre Installation definieren als "voll / Time Hollow Time ': der Preis der Killowatt Stunden variiert je nach der Zeit, zu der Sie verbrauchen."
+msgstr "Ihre elektrische System kann so Standard eingestellt werden: Sie zahlen pro Kilowattstunde für den gleichen Preis zu jeder Stunde des Tages. Sie können auch Ihre Installation definieren als voll / Time Hollow Time : der Preis der Killowatt Stunden variiert je nach der Zeit, zu der Sie verbrauchen."
 
 msgid "TOOLTIP_FORMAT_SD"
 msgstr "Die ausgewählte SD-Karte wird im Einklang Cultibox werden. Für diese Konfigurationsdateien Fänge, Programme und Cultibox regeneriert werden basierend auf der aktuellen Einstellungen und Dateien, die Ihre Zukunft Protokolle in Kraft gesetzt werden. Wenn Protokolle sind bereits auf der SD-Karte kann in dem Verfahren <br /> <b> <i> Hinweis verloren: </ i> </ b>, so dass Ihre Karte durch den Cultibox erkannt, muss es sein in FAT16 formatiert und sollte daher nicht mehr als 2 GB"
@@ -1615,8 +1588,6 @@ msgstr "Der 3500W-Buchse können Sie energieintensive Elemente steuern. Der 3500
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "1000W-Buchse können Sie energieintensive Elemente steuern. Der 1000W angekündigt entsprechen einer reinen Widerstandskraft, wie eine Heizung. Wenn Sie eine Lampe HPS oder MH in diese Buchse anschließen, die maximal zulässige Leistung 150W"
 
-
-
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Abreisedatum für die Berechnung der Kosten für die Installation. Sie können die Kosten für die Installation von der Abreise festgelegt und das Enddatum der Periode Form berechnen"
 
@@ -1627,7 +1598,7 @@ msgid "TOOLTIP_REGUL_SENSOR"
 msgstr "Die Regelung wird in einem Entscheidungsfunktion der von einem oder mehreren Sensoren gesammelten Daten durchgeführt. Dieses Feld ermöglicht Ihnen, welche (n) Sensor (en) wählen, wenn Sie erweiterte Steuerungsmöglichkeiten im Konfigurationsteil <br /> <b> Hinweis aktiviert haben: </ b> Sensoren ungeeignet wird nicht berücksichtigt werden bei der Berechnung der Sensor PH / Ec zum Beispiel wird nicht verwendet, um eine mittlere Temperatur berechnen."
 
 msgid "TOOLTIP_SECOND_REGUL_ENABLE"
-msgstr "Stellen Sie sicher, dass Sie die Hilfe, bevor Sie diese Option aktivieren gelesen haben. Es ist nicht notwendig, eine Entscheidung, die Temperatur oder Luftfeuchtigkeit regulieren können. Einmal aktiviert, wird die Steuerung für einen anderen Socket-Typ "Light" und "Andere" konfiguriert. Die Konfigurationsoptionen für die Sekundärregelung wird in der Registerkarte 'Taken' verfügbar sein"
+msgstr "Stellen Sie sicher, dass Sie die Hilfe, bevor Sie diese Option aktivieren gelesen haben. Es ist nicht notwendig, eine Entscheidung, die Temperatur oder Luftfeuchtigkeit regulieren können. Einmal aktiviert, wird die Steuerung für einen anderen Socket-Typ 'Light' und 'Andere' konfiguriert. Die Konfigurationsoptionen für die Sekundärregelung wird in der Registerkarte 'Taken' verfügbar sein"
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
 msgstr "Wenn Sie die Seite Protokolle zu laden, speichert die Software die Log-Temperatur, Feuchtigkeit und Energie für die letzten 31 Tage. Diese Funktion erlaubt es, ältere Protokolle je nach der Anzahl der Monate erforderlich laden"
@@ -1663,14 +1634,13 @@ msgid "TOOLTIP_RESET_OLD_PROGRAM"
 msgstr "Wenn dieses Feld markiert löschen Sie die alte Programm Ihrer Entscheidung, Ihre neue Aktion auf einem leeren Programm zu speichern. Wenn Sie die Option nicht aktivieren, wird die Aktion auf der bereits ein Programm überlagert."
 
 msgid "TOOLTIP_VALUE_PROGRAM"
-msgstr "Sie können bis zu drei verschiedene Funktionen für Ihre Geräte je nach Typ wählen: Gehen (Entscheidung wird auf für die Zeit sein), Stopp-oder Steuer (Entscheidung (Entscheidung wird für den Zeitraum abgeschaltet werden) auf ein-und ausschalten, um einen Wert der Temperatur oder Luftfeuchte ermittelt erreichen - nicht für Steckdosen definiert als arbeiten "anderen" oder "Licht")"
+msgstr "Sie können bis zu drei verschiedene Funktionen für Ihre Geräte je nach Typ wählen: Gehen (Entscheidung wird auf für die Zeit sein), Stopp-oder Steuer (Entscheidung (Entscheidung wird für den Zeitraum abgeschaltet werden) auf ein-und ausschalten, um einen Wert der Temperatur oder Luftfeuchte ermittelt erreichen - nicht für Steckdosen definiert als arbeiten 'anderen' oder 'Licht')"
 
 msgid "TOOLTIP_REGUL_SECOND"
 msgstr "Wenn die Sekundärregelung ist in der Software-Konfiguration aktiviert, zeigt dieses Feld den Status für den ausgewählten Ausgang: an oder aus. Wenn die Steuerung für den ausgewählten Ausgang aktiviert ist, finden Sie auch Informationen über die Konfiguration dieser Verordnung."
 
 msgid "TOOLTIP_SHOW_COST"
-msgstr "Durch die Aktivierung dieser Option, die Sie auf die Seite zugreifen können Kalkulation Ihrer Einrichtung durch das Menü "Kosten", die in der Hauptmenüleiste erscheint"
-
+msgstr "Durch die Aktivierung dieser Option, die Sie auf die Seite zugreifen können Kalkulation Ihrer Einrichtung durch das Menü 'Kosten', die in der Hauptmenüleiste erscheint"
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Hier können Sie die Zeit der Reset min / max aller auf dem Bildschirm angezeigt Cultibox Sensoren wählen"
@@ -1679,7 +1649,7 @@ msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
 msgstr "Dieser Wert kann nur geändert werden, wenn Sie die Änderung der Steueroptionen in der Registerkarte Konfiguration genehmigt. Sie können wählen, wie der berechnete Wert verwendet, um die Steuerung zu machen"
 
 msgid "TOOLTIP_RESET_CALENDAR"
-msgstr "Entfernt alle Anmerkungen Kalender, die Sie manuell eingegeben haben. Dazu gehören Wachstumsdünger möglicherweise hinzugefügt, aber nicht enthalten externe Kalender Mondkalender-Typ ""
+msgstr "Entfernt alle Anmerkungen Kalender, die Sie manuell eingegeben haben. Dazu gehören Wachstumsdünger möglicherweise hinzugefügt, aber nicht enthalten externe Kalender Mondkalender-Typ"
 
 msgid "TOOLTIP_MANAGE_XML"
 msgstr "Ermöglicht Ihnen die einfache Verwaltung der Anzeige von externen Kalendern wie Mondkalender indem Sie die Dateien anzeigen und verstecken die"
