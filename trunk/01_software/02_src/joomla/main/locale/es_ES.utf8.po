@@ -374,7 +374,7 @@ msgid "MANAGE_LOG_INFOS"
 msgstr "Gestión de los datos climáticos"
 
 msgid "MANAGE_RESET_TITLE"
-msgstr "Borrar antiguos logs de temperatura y higrometría"
+msgstr "Borrar antiguos logs"
 
 msgid "MANAGE_RESET_TITLE_POWER"
 msgstr "Borrar antiguos logs de medida de potencia"
@@ -458,7 +458,7 @@ msgid "PROGRESS_POWER"
 msgstr "Avance del cargamento de los ficheros de potencia"
 
 msgid "PROGRESS_LOG"
-msgstr "Avance del cargamento de los ficheros de temperatura i humedad"
+msgstr "Avance del cargamento de los ficheros"
 
 msgid "ERROR_LOAD_LOG"
 msgstr "Error durante el cargamento de los logs, puede ocurrir por culpa de un tiempo de respuesta demasiado largo , reintentar la operación para asegurarse."
@@ -1554,7 +1554,7 @@ msgid "INFO_UPDATE_CHECKING"
 msgstr "Comprobación de la versión del software"
 
 msgid "STILL_LOG_FILE"
-msgstr "Quedan ficheros más antiguos a subir, apretar el botón 'importar los logs'"
+msgstr "Queda sensor de archivos de registro o de potencia que contiene más antiguo para cargar datos a utilizarlo para importar los registros botón"
 
 msgid "MESSAGE_BOX"
 msgstr "Mensaje del software"
@@ -1577,7 +1577,7 @@ msgid "TOOLTIP_POPUP"
 msgstr "Los mensajes enseñados en la interfaz están por defecto presentados en una ventana de dialogo. Esta opción permite activar o desactivar estas ventanas de dialogo."
 
 msgid "TOOLTIP_RECORD_FREQ"
-msgstr "Esta opción permite configurar la frecuencia con cual la Cultibox graba los datos de temperatura y de hidrometría."
+msgstr "Esta opción le permite configurar la frecuencia con la que el Cultibox registra los datos de los sensores"
 
 msgid "TOOLTIP_POWER_FREQ"
 msgstr "Esta opción permite configurar la frecuencia con cual la Cultibox graba los datos de consumo de energía."
@@ -1643,7 +1643,7 @@ msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Asegurarse de leer bien la Ayuda antes de activar esta opción. No es necesario activarla para que un enchufe regule la temperatura o humedad."
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
-msgstr "Cuando se carga la pagina de los logs, el programa graba los logs de temperatura, humedad y potencia para los últimos 31 días. Esta funcionalidad permite cargar logs mas antiguos en función del número de meses deseado."
+msgstr "Al cargar los registros de la página, el software guarda los sensores de registros y poder durante los últimos 31 días. Esta característica le permite cargar los registros anteriores en función del número de meses requeridos"
 
 msgid "TOOLTIP_EXPORT_LOG_CSV"
 msgstr "Exportar sus datos de logs en un fichero con formato CSV"

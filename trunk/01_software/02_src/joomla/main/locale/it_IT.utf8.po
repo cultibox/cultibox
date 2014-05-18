@@ -373,7 +373,7 @@ msgid "MANAGE_LOG_INFOS"
 msgstr "Gestione dei dati"
 
 msgid "MANAGE_RESET_TITLE"
-msgstr "Eliminare i vecchi registri di temperatura e umidità"
+msgstr "Eliminare i vecchi registri"
 
 msgid "MANAGE_RESET_TITLE_POWER"
 msgstr "Elimina vecchio misurazione della potenza tronchi"
@@ -457,7 +457,7 @@ msgid "PROGRESS_POWER"
 msgstr "Loading progressi file potenza"
 
 msgid "PROGRESS_LOG"
-msgstr "Caricamento di file progresso di temperatura e umidità"
+msgstr "Caricamento di file progresso"
 
 msgid "ERROR_LOAD_LOG"
 msgstr "Tronchi Errore durante il caricamento, questo può essere dovuto ad un tempo di risposta troppo lunghi, ripetere l'operazione per essere sicuri"
@@ -1552,7 +1552,7 @@ msgid "INFO_UPDATE_CHECKING"
 msgstr "Verifica della versione del software"
 
 msgid "STILL_LOG_FILE"
-msgstr "Ci sono ancora file di dati di temperatura, umidità o alimentazione anziani di ricarica da utilizzare per importare il pulsante i log '"
+msgstr "Rimane sensore file di log o il potere contenenti più antica di caricare dati da utilizzare per importare il pulsante i registri"
 
 msgid "MESSAGE_BOX"
 msgstr "Messaggi del software"
@@ -1575,7 +1575,7 @@ msgid "TOOLTIP_POPUP"
 msgstr "I messaggi visualizzati dall'interfaccia sono di default visualizzato in una finestra di dialogo. Questa opzione consente di disattivare / attivare queste finestre di dialogo."
 
 msgid "TOOLTIP_RECORD_FREQ"
-msgstr "Questa opzione consente di configurare la frequenza con cui l'Cultibox registra i dati di temperatura e umidità."
+msgstr "Questa opzione consente di configurare la frequenza con cui l'Cultibox registra dati provenienti da sensori"
 
 msgid "TOOLTIP_POWER_FREQ"
 msgstr "Questa opzione consente di configurare la frequenza con cui l'Cultibox salva i valori di consumo energetico."
@@ -1641,7 +1641,7 @@ msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Assicurarsi di aver letto l'aiuto prima di abilitare questa opzione. Non è necessario per consentire una decisione di regolare la temperatura o umidità. Una volta attivato, il controller è configurato per una diversa presa di tipo 'Light' e 'Altro'. Le opzioni di configurazione per il controllo secondario saranno disponibili nella scheda 'Taken'"
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
-msgstr "Quando si caricano le pagine di log, il software salva la temperatura di registro, l'umidità e il potere degli ultimi 31 giorni. Questa funzione permette di caricare i registri più vecchi a seconda del numero di mesi necessari"
+msgstr "Quando si caricano le pagine di log, il software salva i registri sensori e alimentazione per gli ultimi 31 giorni. Questa funzione permette di caricare i registri più vecchi a seconda del numero di mesi necessari"
 
 msgid "TOOLTIP_EXPORT_LOG_CSV"
 msgstr "Esportare il registro dati in un file in formato CSV"
