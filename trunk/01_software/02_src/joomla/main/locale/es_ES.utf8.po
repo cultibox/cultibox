@@ -1,4 +1,4 @@
- This file must be encoded in UTF-8.
+# This file must be encoded in UTF-8.
 # The msgstr are given to a sprintf function so sprintf escaping rules applies
 
 

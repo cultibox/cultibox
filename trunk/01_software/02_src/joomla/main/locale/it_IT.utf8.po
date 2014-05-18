@@ -18,10 +18,10 @@ msgid "WELCOME_MESSAGE"
 msgstr "Questo software vi permetterà di manipolare facilmente Cultibox di configurare, visualizzare i dati registrati o accesso a determinate funzioni come il calcolo del costo dell'energia elettrica o la creazione di una cultura di calendario."
 
 msgid "WELCOME_TUTO"
-msgstr "<b> Nota: </ b> per chi ha la versione precedente del Cultibox (<b> Green Box </ b>), sarà assolutamente"
+msgstr "<b> Nota: </b> per chi ha la versione precedente del Cultibox (<b> Green Box </b>), sarà assolutamente"
 
 msgid "WELCOME_REQUIEREMENT"
-msgstr "<ul class='list_class'> <li> rimuovere le vecchie spine che non sono più compatibili e collegare quelli di Cultibox </ li> <li> scollegare il Green Box, che può causare interferenze con Cultibox </ li> < / ul>"
+msgstr "<ul class='list_class'> <li> rimuovere le vecchie spine che non sono più compatibili e collegare quelli di Cultibox </li> <li> scollegare il Green Box, che può causare interferenze con Cultibox </li> </ ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Fare clic sul pulsante Avanti per avviare l'installazione guidata e iniziare a gestire il tuo Cultibox"
@@ -200,7 +200,7 @@ msgid "ERROR_FORMAT"
 msgstr "Errore formattazione della scheda SD"
 
 msgid "ALARM_DESCRIPTION"
-msgstr "L'allarme del Cultibox disattiva tutti i punti vendita dove la cultura della sicurezza lo spazio è in gioco Impostare una temperatura che, se superato, provoca l'eliminazione di tutte le catture. <br /> <br /> <b> Attenzione </ b>: una volta raggiunta questa soglia, preso intersecano e Cultibox non tornare a uno stato normale prima di aver riconosciuto l'allarme direttamente sul caso."
+msgstr "L'allarme del Cultibox disattiva tutti i punti vendita dove la cultura della sicurezza lo spazio è in gioco Impostare una temperatura che, se superato, provoca l'eliminazione di tutte le catture. <br /> <br /> <b> Attenzione </b>: una volta raggiunta questa soglia, preso intersecano e Cultibox non tornare a uno stato normale prima di aver riconosciuto l'allarme direttamente sul caso."
 
 msgid "SHOW_COST"
 msgstr "Visualizza il menu che costano"
@@ -334,7 +334,7 @@ msgid "SELECT_POWER_PLUG"
 msgstr "Il consumo di energia del display"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Grazie per la vostra pazienza e non rimuovere la scheda <b> <i> Cultibox </ i> </ b> il tempo di caricamento della pagina e il software elabora i dati. <br /> <br /> <b> <i> Nota: </ i> </ b> Se si verifica un errore si può ricaricare la pagina per provare a completare l'operazione"
+msgstr "Grazie per la vostra pazienza e non rimuovere la scheda <b> <i> Cultibox </i> </b> il tempo di caricamento della pagina e il software elabora i dati. <br /> <br /> <b> <i> Nota: </i> </b> Se si verifica un errore si può ricaricare la pagina per provare a completare l'operazione"
 
 msgid "WAITING_MONTH_WITHOUT_SD"
 msgstr "Grazie per la vostra pazienza fino a quando la pagina viene caricata e il software tratta i tuoi dati"
@@ -882,7 +882,7 @@ msgstr "Annulla zoom"
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
-msgstr "Benvenuti alla configurazione dell'interfaccia e l'uso della Cultibox. La procedura guidata vi permetterà di configurare facilmente i programmi connessi con i vostri scatti, configurare il tipo e il comportamento spina. Fare clic sul pulsante accanto <b> </ b> per avviare la procedura guidata. È possibile saltare questo passaggio e configurare manualmente il pescato facendo clic sul pulsante Chiudi <b> guidata </ ​​b>"
+msgstr "Benvenuti alla configurazione dell'interfaccia e l'uso della Cultibox. La procedura guidata vi permetterà di configurare facilmente i programmi connessi con i vostri scatti, configurare il tipo e il comportamento spina. Fare clic sul pulsante accanto <b> </b> per avviare la procedura guidata. È possibile saltare questo passaggio e configurare manualmente il pescato facendo clic sul pulsante Chiudi <b> guidata </​​b>"
 
 msgid "CLOSE_WIZARD"
 msgstr "Chiudere la procedura guidata"
@@ -906,7 +906,7 @@ msgid "WIZARD_OTHER_STEP"
 msgstr "Registrati e configurare una presa diversa"
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "Numero 1 jack sarà configurato come una lampada. Questo connettore può ospitare una lampada <b> 600 Watt </ b> fino <b> </ b>."
+msgstr "Numero 1 jack sarà configurato come una lampada. Questo connettore può ospitare una lampada <b> 600 Watt </b> fino <b> </b>."
 
 msgid "WIZARD_PLUG_LAMP"
 msgstr "È ora possibile scegliere il tempo di accensione e spegnimento della lampada per determinare il funzionamento delle apparecchiature."
@@ -924,7 +924,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "A questo punto impostare un nuovo punto vendita."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Scegliere il tipo di connettore da utilizzare: <ul class='list_class_wizard'> <li> riscaldamento per alzare la temperatura </ li> <li> un ventilatore per abbassare la temperatura </ li> <li> un umidificatore per aumentare l' umidità </ li> <li> un deumidificatore per ridurre l'umidità </ li> <li> una pompa d'acqua per aumentare il livello di acqua </ li> Lampada <li> </ li> <li> 'altro' per tutti gli altri tipi di apparecchiature. <br /> <br /> Se si sceglie di configurare una nuova lampada, deve essere <b> meno potente 200 Watt </ b>"
+msgstr "Scegliere il tipo di connettore da utilizzare: <ul class='list_class_wizard'> <li> riscaldamento per alzare la temperatura </li> <li> un ventilatore per abbassare la temperatura </li> <li> un umidificatore per aumentare l' umidità </li> <li> un deumidificatore per ridurre l'umidità </li> <li> una pompa d'acqua per aumentare il livello di acqua </li> Lampada <li> </li> <li> 'altro' per tutti gli altri tipi di apparecchiature. <br /> <br /> Se si sceglie di configurare una nuova lampada, deve essere <b> meno potente 200 Watt </b>"
 
 msgid "START_TIME_LAMP"
 msgstr "Lampada ore di accensione"
@@ -1427,7 +1427,7 @@ msgid "ERROR_COPY_INDEX"
 msgstr "Errore copiando il file di indice, verificare che la scheda non è protetta da scrittura"
 
 msgid "ERROR_COMPAT_BROWSER"
-msgstr "Il tuo browser non sembra compatibile con il software Cultibox. Si può sicuramente utilizzare il software, ma alcune funzionalità potrebbero non essere disponibili. Ecco l'elenco dei browser ufficialmente supportati: <br /> <ul class='list_class'> <li> Mozilla Firefox (versione 3 e successive) </ li> <li> Internet Explorer (versione 7 e successive) </ li> <li> Google Chrome (tutte le versioni) </ li> <li> Max Os X Safari (versione 5 e superiore) </ li> </ ul>"
+msgstr "Il tuo browser non sembra compatibile con il software Cultibox. Si può sicuramente utilizzare il software, ma alcune funzionalità potrebbero non essere disponibili. Ecco l'elenco dei browser ufficialmente supportati: <br /> <ul class='list_class'> <li> Mozilla Firefox (versione 3 e successive) </li> <li> Internet Explorer (versione 7 e successive) </li> <li> Google Chrome (tutte le versioni) </li> <li> Max Os X Safari (versione 5 e superiore) </li> </ul>"
 
 msgid "ERROR_REMOTE_SITE"
 msgstr "Impossibile accertare la presenza di aggiornamenti, verificare che la connessione a Internet funziona correttamente"
@@ -1611,7 +1611,7 @@ msgid "TOOLTIP_COST_TYPE"
 msgstr "Il sistema elettrico può essere impostato in modo 'standard': si paga per kilowatt-ora per lo stesso prezzo in qualsiasi ora del giorno. È inoltre possibile definire l'installazione come 'pieno / tempo Hollow Time': il prezzo delle ore killowatt varia a seconda del momento in cui si consumano."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "La scheda SD selezionato sarà reso Cultibox coerente. Per questo file di configurazione catture, programmi e Cultibox essere rigenerato in base alle vostre impostazioni correnti e dei file contenenti i registri futuro sarà messo in atto. Se i registri sono già sulla vostra scheda SD può essere perso nel processo di <br /> <b> <i> Nota: </ i> </ b> in modo che la scheda è riconosciuta dal Cultibox, deve essere formattato in FAT16 e quindi non dovrebbe superare i 2 GB"
+msgstr "La scheda SD selezionato sarà reso Cultibox coerente. Per questo file di configurazione catture, programmi e Cultibox essere rigenerato in base alle vostre impostazioni correnti e dei file contenenti i registri futuro sarà messo in atto. Se i registri sono già sulla vostra scheda SD può essere perso nel processo di <br /> <b> <i> Nota: </i> </b> in modo che la scheda è riconosciuta dal Cultibox, deve essere formattato in FAT16 e quindi non dovrebbe superare i 2 GB"
 
 msgid "TOOLTIP_RESET_LOG"
 msgstr "Facendo clic su questo pulsante saranno eliminati tutti i dati registrazioni effettuate. Questo può essere fatto al termine di una cultura, se i registri non è più utile e si desidera liberare spazio sul vostro computer"
@@ -1635,7 +1635,7 @@ msgid "TOOLTIP_COST_STOP_TIME"
 msgstr "Data di fine del calcolo del costo dell'installazione. È possibile calcolare il costo della vostra installazione definito entro la data di partenza e la data di fine del periodo di forma"
 
 msgid "TOOLTIP_REGUL_SENSOR"
-msgstr "La regolazione viene effettuata in funzione decisione dei dati raccolti da uno o più sensori. Questo campo permette di selezionare ciò che (s) sensore (s) se è stato attivato opzioni di controllo avanzate nella parte di configurazione <br /> <b> Nota: </ b> sensori non idoneo, non saranno prese in considerazione quando si calcola un sensore PH / Ec per esempio, non sarà utilizzato per calcolare una temperatura media."
+msgstr "La regolazione viene effettuata in funzione decisione dei dati raccolti da uno o più sensori. Questo campo permette di selezionare ciò che (s) sensore (s) se è stato attivato opzioni di controllo avanzate nella parte di configurazione <br /> <b> Nota: </b> sensori non idoneo, non saranno prese in considerazione quando si calcola un sensore PH / Ec per esempio, non sarà utilizzato per calcolare una temperatura media."
 
 msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Assicurarsi di aver letto l'aiuto prima di abilitare questa opzione. Non è necessario per consentire una decisione di regolare la temperatura o umidità. Una volta attivato, il controller è configurato per una diversa presa di tipo 'Light' e 'Altro'. Le opzioni di configurazione per il controllo secondario saranno disponibili nella scheda 'Taken'"
@@ -1699,7 +1699,7 @@ msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
 msgstr "Basta creare un programma fertilizzante prestabilito. Questo tipo di programma è quello di creare dal primo giorno che si desidera applicare il fertilizzante, il resto viene calcolata a seconda della marca substrato e fertilizzanti scelta"
 
 msgid "TOOLTIP_DEFINE_COST"
-msgstr "Questa scheda calcola il costo teorico ed effettivo del vostro impianto. <br /> <ul Class='list_class_tooltip'> <li> <b> costo teorico </ b> è costituito da informazioni dai vostri programmi di trattamento. Il regolamento (che può tagliare o trasformare passivo) non è riconosciuto (la cattura è considerata in esecuzione). Il prezzo indicato sarà il prezzo massimo se il controllo non ha innescato. <br /> <br /> </ Li> <li> <b> costo effettivo </ b> è fatto di informazioni file potenza (file di potenza: pwr_XX) di Cultibox. Questi file forniscono informazioni al momento illuminato e ha étteinte. Regolamento viene preso in considerazione nel calcolo del costo </ li> </ ul> <b> Conclusione. </ B> è possibile notare lievi differenze tra il calcolo effettivo e il calcolo teorico che può venire da un regolamento non viene presa in considerazione o l'esattezza dei file di potenza (registrando ogni X minuti mentre i programmi sono precisi al secondo)."
+msgstr "Questa scheda calcola il costo teorico ed effettivo del vostro impianto. <br /> <ul Class='list_class_tooltip'> <li> <b> costo teorico </b> è costituito da informazioni dai vostri programmi di trattamento. Il regolamento (che può tagliare o trasformare passivo) non è riconosciuto (la cattura è considerata in esecuzione). Il prezzo indicato sarà il prezzo massimo se il controllo non ha innescato. <br /> <br /> </Li> <li> <b> costo effettivo </b> è fatto di informazioni file potenza (file di potenza: pwr_XX) di Cultibox. Questi file forniscono informazioni al momento illuminato e ha étteinte. Regolamento viene preso in considerazione nel calcolo del costo </li> </ul> <b> Conclusione. </B> è possibile notare lievi differenze tra il calcolo effettivo e il calcolo teorico che può venire da un regolamento non viene presa in considerazione o l'esattezza dei file di potenza (registrando ogni X minuti mentre i programmi sono precisi al secondo)."
 
 msgid "TOOLTIP_CALENDAR_SUBSTRAT"
 msgstr "A seconda del substrato che si sceglie, vengono filtrati i programmi di fertilizzanti. È possibile selezionare solo programmi associati con il substrato."

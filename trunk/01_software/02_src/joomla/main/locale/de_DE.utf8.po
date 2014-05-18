@@ -18,10 +18,10 @@ msgid "WELCOME_MESSAGE"
 msgstr "Diese Software ermöglicht es Ihnen, Ihre leicht manipulieren Cultibox die Konfiguration, die aufgezeichneten Daten oder der Zugriff auf bestimmte Funktionen, wie die Berechnung der Stromkosten oder die Erstellung eines Kalender Kultur zu sehen."
 
 msgid "WELCOME_TUTO"
-msgstr "<b> Hinweis: </ b> für diejenigen, die ältere Version des Cultibox (<b> Green Box </ b>) haben, werden Sie absolut"
+msgstr "<b> Hinweis: </b> für diejenigen, die ältere Version des Cultibox (<b> Green Box </b>) haben, werden Sie absolut"
 
 msgid "WELCOME_REQUIEREMENT"
-msgstr "<ul class='list_class'> <li> entfernen Sie Ihre alte Stecker, die nicht mehr kompatibel sind und verbinden die der Cultibox </ li> <li> trennen Sie die Green Box, die Interferenzen mit Cultibox </ li> <verursachen können / ul>"
+msgstr "<ul class='list_class'> <li> entfernen Sie Ihre alte Stecker, die nicht mehr kompatibel sind und verbinden die der Cultibox </li> <li> trennen Sie die Green Box, die Interferenzen mit Cultibox </li> <verursachen können </ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Klicken Sie auf die Schaltfläche Weiter, um den Setup-Assistenten beginnen und den Umgang mit Ihren Cultibox"
@@ -200,7 +200,7 @@ msgid "ERROR_FORMAT"
 msgstr "Fehler beim Formatieren der SD-Karte"
 
 msgid "ALARM_DESCRIPTION"
-msgstr "Der Alarm des Cultibox schaltet alle Verkaufsstellen, wo Raumsicherheit Kultur steht auf dem Spiel Stellen eine Temperatur, die bei Überschreiten bewirkt, dass die Entfernung aller Fänge. <br /> <br /> <b> Warnung </ b>: Ist diese Schwelle erreicht ist, entnommen schneiden und Cultibox nicht zu einem normalen Zustand zurück, bis Sie den Alarm direkt auf den Fall bestätigt wurden."
+msgstr "Der Alarm des Cultibox schaltet alle Verkaufsstellen, wo Raumsicherheit Kultur steht auf dem Spiel Stellen eine Temperatur, die bei Überschreiten bewirkt, dass die Entfernung aller Fänge. <br /> <br /> <b> Warnung </b>: Ist diese Schwelle erreicht ist, entnommen schneiden und Cultibox nicht zu einem normalen Zustand zurück, bis Sie den Alarm direkt auf den Fall bestätigt wurden."
 
 msgid "SHOW_COST"
 msgstr "Menü Ansicht kostet"
@@ -334,7 +334,7 @@ msgid "SELECT_POWER_PLUG"
 msgstr "Display-Stromverbrauch"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Vielen Dank für Ihre Geduld und die Karte nicht <b> <i> Cultibox </ i> </ b> zu entfernen die Zeit die Seite geladen und die Software verarbeitet Ihre Daten. <br /> <br /> <b> <i> Hinweis: </ i> </ b> Wenn ein Fehler auftritt, können Sie die Seite neu zu laden, um zu versuchen, um den Vorgang abzuschließen"
+msgstr "Vielen Dank für Ihre Geduld und die Karte nicht <b> <i> Cultibox </i> </b> zu entfernen die Zeit die Seite geladen und die Software verarbeitet Ihre Daten. <br /> <br /> <b> <i> Hinweis: </i> </b> Wenn ein Fehler auftritt, können Sie die Seite neu zu laden, um zu versuchen, um den Vorgang abzuschließen"
 
 msgid "WAITING_MONTH_WITHOUT_SD"
 msgstr "Vielen Dank für Ihre Geduld, so lange die Seite geladen und die Software behandelt Ihre Daten"
@@ -882,7 +882,7 @@ msgstr "Abbrechen Zoom"
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
-msgstr "Willkommen auf der Interface-Konfiguration und Nutzung Ihrer Cultibox. Der Assistent ermöglicht die einfache Konfiguration der Programme mit Einstellungen verbunden ist, konfigurieren Sie den Stecker Typ und Verhalten. Klicken Sie auf die Schaltfläche neben <b> </ b>, um den Assistenten zu starten. Sie können diesen Schritt überspringen und manuell konfigurieren Ihren Fang durch Klicken auf die Schaltfläche Schließen <b> Wizard </ b>"
+msgstr "Willkommen auf der Interface-Konfiguration und Nutzung Ihrer Cultibox. Der Assistent ermöglicht die einfache Konfiguration der Programme mit Einstellungen verbunden ist, konfigurieren Sie den Stecker Typ und Verhalten. Klicken Sie auf die Schaltfläche neben <b> </b>, um den Assistenten zu starten. Sie können diesen Schritt überspringen und manuell konfigurieren Ihren Fang durch Klicken auf die Schaltfläche Schließen <b> Wizard </b>"
 
 msgid "CLOSE_WIZARD"
 msgstr "Schließen Sie den Assistenten"
@@ -906,7 +906,7 @@ msgid "WIZARD_OTHER_STEP"
 msgstr "Registrieren und konfigurieren Sie eine andere Steckdose"
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "Nummer 1-Buchse wird als Lampen konfiguriert werden. Diese Buchse kann eine Lampe <b> 600 Watt </ b> bis <b> </ b> zubringen."
+msgstr "Nummer 1-Buchse wird als Lampen konfiguriert werden. Diese Buchse kann eine Lampe <b> 600 Watt </b> bis <b> </b> zubringen."
 
 msgid "WIZARD_PLUG_LAMP"
 msgstr "Sie können nun wählen Sie den Zeitpunkt der Zündung und Erlöschen der Lampe, um den Betrieb Ihrer Anlage bestimmen."
@@ -924,7 +924,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "Sie werden nun eine neue Steckdose gesetzt."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Wählen Sie die Art von Anschluss zu verwenden: <ul class='list_class_wizard'> <li> Heizung, die Temperatur </ li> erhöhen <li> einem Ventilator, um die Temperatur </ li> <li> einen Luftbefeuchter zu senken, um die Erhöhung Feuchtigkeit </ li> <li> einem Entfeuchter gegen Feuchtigkeit </ li> <li> einer Wasserpumpe, den Wasserstand </ li> <li> Lampe </ li> <li> erhöhen reduzieren "andere" für alle anderen Arten von Ausrüstung. <br /> <br /> Wenn Sie eine neue Lampe zu konfigurieren wählen, muss es <b> werden weniger leistungsfähigen 200 Watt </ b>"
+msgstr "Wählen Sie die Art von Anschluss zu verwenden: <ul class='list_class_wizard'> <li> Heizung, die Temperatur </li> erhöhen <li> einem Ventilator, um die Temperatur </li> <li> einen Luftbefeuchter zu senken, um die Erhöhung Feuchtigkeit </li> <li> einem Entfeuchter gegen Feuchtigkeit </li> <li> einer Wasserpumpe, den Wasserstand </li> <li> Lampe </li> <li> erhöhen reduzieren "andere" für alle anderen Arten von Ausrüstung. <br /> <br /> Wenn Sie eine neue Lampe zu konfigurieren wählen, muss es <b> werden weniger leistungsfähigen 200 Watt </b>"
 
 msgid "START_TIME_LAMP"
 msgstr "Stunden Lampenzündung"
@@ -1427,7 +1427,7 @@ msgid "ERROR_COPY_INDEX"
 msgstr "Fehler beim Kopieren die Index-Datei, überprüfen Sie, dass die Karte nicht schreibgeschützt"
 
 msgid "ERROR_COMPAT_BROWSER"
-msgstr "Ihr Browser scheint nicht mit der Cultibox Software kompatibel ist. Sie können sicher mit der Software, aber einige Funktionen sind nicht verfügbar. Hier ist die Liste der offiziell unterstützten Browser: <br /> <ul class='list_class'> <li> Mozilla Firefox (ab Version 3) </ li> <li> Internet Explorer (Version 7 und höher) </ li> <li> Google Chrome (alle Versionen) </ li> <li> Max OS X Safari (Version 5 und höher) </ li> </ ul>"
+msgstr "Ihr Browser scheint nicht mit der Cultibox Software kompatibel ist. Sie können sicher mit der Software, aber einige Funktionen sind nicht verfügbar. Hier ist die Liste der offiziell unterstützten Browser: <br /> <ul class='list_class'> <li> Mozilla Firefox (ab Version 3) </li> <li> Internet Explorer (Version 7 und höher) </li> <li> Google Chrome (alle Versionen) </li> <li> Max OS X Safari (Version 5 und höher) </li> </ul>"
 
 msgid "ERROR_REMOTE_SITE"
 msgstr "Unmöglich, das Vorhandensein von Updates zu ermitteln, überprüfen Sie, ob Ihre Internetverbindung ordnungsgemäß funktioniert"
@@ -1611,7 +1611,7 @@ msgid "TOOLTIP_COST_TYPE"
 msgstr "Ihre elektrische System kann so Standard eingestellt werden: Sie zahlen pro Kilowattstunde für den gleichen Preis zu jeder Stunde des Tages. Sie können auch Ihre Installation definieren als voll / Time Hollow Time : der Preis der Killowatt Stunden variiert je nach der Zeit, zu der Sie verbrauchen."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "Die ausgewählte SD-Karte wird im Einklang Cultibox werden. Für diese Konfigurationsdateien Fänge, Programme und Cultibox regeneriert werden basierend auf der aktuellen Einstellungen und Dateien, die Ihre Zukunft Protokolle in Kraft gesetzt werden. Wenn Protokolle sind bereits auf der SD-Karte kann in dem Verfahren <br /> <b> <i> Hinweis verloren: </ i> </ b>, so dass Ihre Karte durch den Cultibox erkannt, muss es sein in FAT16 formatiert und sollte daher nicht mehr als 2 GB"
+msgstr "Die ausgewählte SD-Karte wird im Einklang Cultibox werden. Für diese Konfigurationsdateien Fänge, Programme und Cultibox regeneriert werden basierend auf der aktuellen Einstellungen und Dateien, die Ihre Zukunft Protokolle in Kraft gesetzt werden. Wenn Protokolle sind bereits auf der SD-Karte kann in dem Verfahren <br /> <b> <i> Hinweis verloren: </i> </b>, so dass Ihre Karte durch den Cultibox erkannt, muss es sein in FAT16 formatiert und sollte daher nicht mehr als 2 GB"
 
 msgid "TOOLTIP_RESET_LOG"
 msgstr "Durch einen Klick auf diesen Button werden alle Daten aufgezeichnet Protokolle werden gelöscht. Dies kann am Ende einer Kultur getan werden, wenn Sie Ihre Logs nicht mehr sinnvoll ist und Sie auf Ihrem Computer freizugeben wollen"
@@ -1635,7 +1635,7 @@ msgid "TOOLTIP_COST_STOP_TIME"
 msgstr "Ende der Berechnung der Kosten für die Installation. Sie können die Kosten für die Installation von der Abreise festgelegt und das Enddatum der Periode Form berechnen"
 
 msgid "TOOLTIP_REGUL_SENSOR"
-msgstr "Die Regelung wird in einem Entscheidungsfunktion der von einem oder mehreren Sensoren gesammelten Daten durchgeführt. Dieses Feld ermöglicht Ihnen, welche (n) Sensor (en) wählen, wenn Sie erweiterte Steuerungsmöglichkeiten im Konfigurationsteil <br /> <b> Hinweis aktiviert haben: </ b> Sensoren ungeeignet wird nicht berücksichtigt werden bei der Berechnung der Sensor PH / Ec zum Beispiel wird nicht verwendet, um eine mittlere Temperatur berechnen."
+msgstr "Die Regelung wird in einem Entscheidungsfunktion der von einem oder mehreren Sensoren gesammelten Daten durchgeführt. Dieses Feld ermöglicht Ihnen, welche (n) Sensor (en) wählen, wenn Sie erweiterte Steuerungsmöglichkeiten im Konfigurationsteil <br /> <b> Hinweis aktiviert haben: </b> Sensoren ungeeignet wird nicht berücksichtigt werden bei der Berechnung der Sensor PH / Ec zum Beispiel wird nicht verwendet, um eine mittlere Temperatur berechnen."
 
 msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Stellen Sie sicher, dass Sie die Hilfe, bevor Sie diese Option aktivieren gelesen haben. Es ist nicht notwendig, eine Entscheidung, die Temperatur oder Luftfeuchtigkeit regulieren können. Einmal aktiviert, wird die Steuerung für einen anderen Socket-Typ 'Light' und 'Andere' konfiguriert. Die Konfigurationsoptionen für die Sekundärregelung wird in der Registerkarte 'Taken' verfügbar sein"
@@ -1698,7 +1698,7 @@ msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
 msgstr "Erstellen Sie einfach ein Programm voreingestellten Dünger. Diese Art von Programm ist ab dem ersten Tag Sie Ihre Dünger, der Rest wird je nach dem gewählten Substrat-und Marken Dünger berechnet werden wollen erstellen"
 
 msgid "TOOLTIP_DEFINE_COST"
-msgstr "Diese Registerkarte berechnet den theoretischen und tatsächlichen Kosten für Ihre Installation. <br /> <ul Class='list_class_tooltip'> <li> <b> theoretischen Kosten </ b> von Informationen aus Ihrem Behandlungsprogramme gemacht. Verordnung (denen geschnitten oder drehen Einnahme kann) wird nicht erkannt (der Haken wird als Laufen). Der angegebene Preis wird der Höchstpreis sein, wenn die Steuerung nicht ausgelöst. <br /> <br /> </ Li> <li> <b> tatsächlichen Kosten </ b> wird von Informationen, die Dateien Leistung (Leistungs Dateien: pwr_XX) von Cultibox. Diese Dateien enthalten Informationen, wenn Sie beleuchtet und hat étteinte. Verordnung berücksichtigt bei der Berechnung der Kosten </ li> </ ul> <b> Fazit übernommen. </ B> ist es möglich, beachten Sie leichte Unterschiede zwischen der tatsächlichen und der theoretischen Berechnung Berechnung, die kommen können eine Verordnung nicht berücksichtigt oder die Genauigkeit der Strom Dateien (Aufzeichnungs alle X Minuten, während Programme, auf die Sekunde genau sind)."
+msgstr "Diese Registerkarte berechnet den theoretischen und tatsächlichen Kosten für Ihre Installation. <br /> <ul Class='list_class_tooltip'> <li> <b> theoretischen Kosten </b> von Informationen aus Ihrem Behandlungsprogramme gemacht. Verordnung (denen geschnitten oder drehen Einnahme kann) wird nicht erkannt (der Haken wird als Laufen). Der angegebene Preis wird der Höchstpreis sein, wenn die Steuerung nicht ausgelöst. <br /> <br /> </Li> <li> <b> tatsächlichen Kosten </b> wird von Informationen, die Dateien Leistung (Leistungs Dateien: pwr_XX) von Cultibox. Diese Dateien enthalten Informationen, wenn Sie beleuchtet und hat étteinte. Verordnung berücksichtigt bei der Berechnung der Kosten </li> </ul> <b> Fazit übernommen. </B> ist es möglich, beachten Sie leichte Unterschiede zwischen der tatsächlichen und der theoretischen Berechnung Berechnung, die kommen können eine Verordnung nicht berücksichtigt oder die Genauigkeit der Strom Dateien (Aufzeichnungs alle X Minuten, während Programme, auf die Sekunde genau sind)."
 
 msgid "TOOLTIP_CALENDAR_SUBSTRAT"
 msgstr "Je nach Untergrund Sie sich entscheiden, sind Dünger Programme gefiltert. Sie können nur Programme mit Substrat verbunden zu wählen."
