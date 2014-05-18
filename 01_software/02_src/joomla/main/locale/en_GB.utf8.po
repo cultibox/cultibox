@@ -15,13 +15,13 @@ msgid "DID_YOU_KNOW"
 msgstr "Did you know?"
 
 msgid "WELCOME_MESSAGE"
-msgstr "This software will allow you to easily manipulate your Cultibox to configure, view the recorded data or access to certain features such as the calculation of the cost of electricity or creating a calendar culture."
+msgstr "This software will easily help you to manipulate your Cultibox's configuration, view the recorded data or access features such as the calculation of the cost of electricity or the creation a calendar culture."
 
 msgid "WELCOME_TUTO"
-msgstr "<b> Note: </ b> for those who have the older version of the Cultibox (<b> Green Box </ b>), you will absolutely"
+msgstr "<b> Note: </b> for those who have the older version of the Cultibox (<b> Green Box </b>), you will absolutely"
 
 msgid "WELCOME_REQUIEREMENT"
-msgstr "<ul class='list_class'> <li> remove your old plugs that are no longer compatible and connect those of Cultibox </ li> <li> disconnect your Green Box which can cause interference with Cultibox </ li> < / ul>"
+msgstr "<ul class='list_class'> <li> remove your old plugs that are no longer compatible and connect those of Cultibox </li> <li> disconnect your Green Box which can cause interference with Cultibox </li> </ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Click the Next button to start the setup wizard and start handling your Cultibox"
@@ -200,7 +200,7 @@ msgid "ERROR_FORMAT"
 msgstr "Error formatting the SD card"
 
 msgid "ALARM_DESCRIPTION"
-msgstr "The alarm of the Cultibox turns off all outlets where space security culture is at stake Set a temperature which, when exceeded, causes the removal of all catches. <br /> <br /> <b> Warning </ b>: once this threshold is reached, taken intersect and Cultibox not return to a normal state until you have acknowledged the alarm directly on the case."
+msgstr "The alarm of the Cultibox turns off all outlets where space security culture is at stake Set a temperature which, when exceeded, causes the removal of all catches. <br /> <br /> <b> Warning </b>: once this threshold is reached, taken intersect and Cultibox not return to a normal state until you have acknowledged the alarm directly on the case."
 
 msgid "SHOW_COST"
 msgstr "View menu costing"
@@ -334,7 +334,7 @@ msgid "SELECT_POWER_PLUG"
 msgstr "Display power consumption"
 
 msgid "WAITING_LOGS_WITH_SD"
-msgstr "Thank you for your patience and do not remove the card <b> <i> Cultibox </ i> </ b> the time the page loads and the software processes your data. <br /> <br /> <b> <i> Note: </ i> </ b> If an error occurs you can reload the page to try to complete the operation"
+msgstr "Thank you for your patience and do not remove the card <b> <i> Cultibox </i> </b> the time the page loads and the software processes your data. <br /> <br /> <b> <i> Note: </i> </b> If an error occurs you can reload the page to try to complete the operation"
 
 msgid "WAITING_MONTH_WITHOUT_SD"
 msgstr "Thank you for your patience as long as the page loads and the software treats your data"
@@ -882,7 +882,7 @@ msgstr "Cancel zoom"
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
-msgstr "Welcome to the interface configuration and use of your Cultibox. The wizard will allow you to easily configure the programs associated with your shots, configure the plug type and behavior. Click the button next <b> </ b> to start the wizard. You can skip this step and manually configure your catch by clicking the Close button <b> Wizard </ b>"
+msgstr "Welcome to the interface configuration and use of your Cultibox. The wizard will allow you to easily configure the programs associated with your shots, configure the plug type and behavior. Click the button next <b> </b> to start the wizard. You can skip this step and manually configure your catch by clicking the <b>Close the wizard</b> button"
 
 msgid "CLOSE_WIZARD"
 msgstr "Close the wizard"
@@ -906,7 +906,7 @@ msgid "WIZARD_OTHER_STEP"
 msgstr "Register and configure a different outlet"
 
 msgid "WIZARD_PLUG_TYPE"
-msgstr "Number 1 jack will be configured as a lamp. This jack can accommodate a lamp <b> 600 Watts </ b> maximum <b> </ b>."
+msgstr "Number 1 jack will be configured as a lamp. This jack can accommodate a lamp <b> 600 Watts </b> maximum <b> </b>."
 
 msgid "WIZARD_PLUG_LAMP"
 msgstr "You can now choose the time of ignition and extinction of the lamp to determine the operation of your equipment."
@@ -924,7 +924,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "You will now set up a new outlet."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choose the type of connector to use: <ul class='list_class_wizard'> <li> heating to raise the temperature </ li> <li> a fan to lower the temperature </ li> <li> a humidifier to increase the moisture </ li> <li> a dehumidifier to reduce humidity </ li> <li> a water pump to increase the water level </ li> <li> lamp </ li> <li> 'other' for all other types of equipment. <br /> <br /> If you choose to configure a new lamp, it must be <b> less powerful 200 Watts </ b>"
+msgstr "Choose the type of connector to use: <ul class='list_class_wizard'> <li> heating to raise the temperature </li> <li> a fan to lower the temperature </li> <li> a humidifier to increase the moisture </li> <li> a dehumidifier to reduce humidity </li> <li> a water pump to increase the water level </li> <li> lamp </li> <li> 'other' for all other types of equipment. <br /> <br /> If you choose to configure a new lamp, it must be <b> less powerful 200 Watts </b>"
 
 msgid "START_TIME_LAMP"
 msgstr "Hour lamp ignition"
@@ -1091,7 +1091,7 @@ msgid "CALENDAR_FLORAISON"
 msgstr "Flowering"
 
 msgid "CALENDAR_CROISSANCE_+_FLORAISON"
-msgstr "Growth Flowering +"
+msgstr "Growth and Flowering"
 
 msgid "CALENDAR_IMPORTANT"
 msgstr "Significant Event"
@@ -1427,7 +1427,7 @@ msgid "ERROR_COPY_INDEX"
 msgstr "Error copying the index file, verify that the card is not write-protected"
 
 msgid "ERROR_COMPAT_BROWSER"
-msgstr "Your browser does not seem compatible with the Cultibox software. You can surely use the software, but some features may not be available. Here is the list of officially supported browsers: <br /> <ul class='list_class'> <li> Mozilla Firefox (version 3 and higher) </ li> <li> Internet Explorer (version 7 and higher) </ li> <li> Google Chrome (All versions) </ li> <li> Max Os X Safari (version 5 and above) </ li> </ ul>"
+msgstr "Your browser does not seem compatible with the Cultibox software. You can surely use the software, but some features may not be available. Here is the list of officially supported browsers: <br /> <ul class='list_class'> <li> Mozilla Firefox (version 3 and higher) </li> <li> Internet Explorer (version 7 and higher) </li> <li> Google Chrome (All versions) </li> <li> Max Os X Safari (version 5 and above) </li> </ul>"
 
 msgid "ERROR_REMOTE_SITE"
 msgstr "Impossible to ascertain the presence of updates, verify that your internet connection is working properly"
@@ -1611,7 +1611,7 @@ msgid "TOOLTIP_COST_TYPE"
 msgstr "Your electrical system can be set so 'standard': you pay per kilowatt-hour for the same price at any hour of the day. You can also define your installation as being 'full / Time Hollow Time': the price of killowatt hour varies according to the time at which you consume."
 
 msgid "TOOLTIP_FORMAT_SD"
-msgstr "The selected SD card will be made consistent Cultibox. For this configuration files catches, programs and Cultibox be regenerated based on your current settings and files containing your future logs will be put in place. If logs are already on your SD card may be lost in the process <br /> <b> <i> Note: </ i> </ b> so that your card is recognized by the Cultibox, it must be formatted in FAT16 and therefore should not exceed 2GB"
+msgstr "The selected SD card will be made consistent Cultibox. For this configuration files catches, programs and Cultibox be regenerated based on your current settings and files containing your future logs will be put in place. If logs are already on your SD card may be lost in the process <br /> <b> <i> Note: </i> </b> so that your card is recognized by the Cultibox, it must be formatted in FAT16 and therefore should not exceed 2GB"
 
 msgid "TOOLTIP_RESET_LOG"
 msgstr "By clicking on this button all data recorded logs will be deleted. This can be done at the end of a culture, if your logs you no longer useful and you want to free up space on your computer"
@@ -1635,7 +1635,7 @@ msgid "TOOLTIP_COST_STOP_TIME"
 msgstr "End date of the calculation of the cost of your installation. You can calculate the cost of your installation defined by the departure date and the end date of the period form"
 
 msgid "TOOLTIP_REGUL_SENSOR"
-msgstr "The regulation is performed in a decision function of the data collected by one or more sensors. This field allows you to select what (s) sensor (s) if you have enabled advanced control options in the configuration part <br /> <b> Note: </ b> sensors unsuitable will not be taken into account when calculating a sensor PH / Ec for example will not be used to calculate a mean temperature."
+msgstr "The regulation is performed in a decision function of the data collected by one or more sensors. This field allows you to select what (s) sensor (s) if you have enabled advanced control options in the configuration part <br /> <b> Note: </b> sensors unsuitable will not be taken into account when calculating a sensor PH / Ec for example will not be used to calculate a mean temperature."
 
 msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Make sure you have read the help before enabling this option. It is not necessary to enable a decision to regulate the temperature or humidity. Once activated, the controller is configured for a different socket type 'Light' and 'Other'. The configuration options for the secondary control will be available in the tab 'Taken'"
@@ -1698,7 +1698,7 @@ msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
 msgstr "Simply create a program preset fertilizer. This type of program is to create from the first day you want to apply your fertilizer, the rest is calculated depending on the substrate and fertilizer brand chosen"
 
 msgid "TOOLTIP_DEFINE_COST"
-msgstr "This tab calculates the theoretical and actual cost of your installation. <br /> <ul Class='list_class_tooltip'> <li> <b> theoretical cost </ b> is made from information from your treatment programs. Regulation (which can cut or turn taking) is not recognized (the catch is considered running). The price shown will be the maximum price if the control has not triggered. <br /> <br /> </ Li> <li> <b> actual cost </ b> is made of information files power (power files: pwr_XX) of Cultibox. These files provide information when making lit and has étteinte. Regulation is taken into account in the calculation of cost </ li> </ ul> <b> Conclusion. </ B> it is possible to note slight differences between the actual calculation and the theoretical calculation that can come from a regulation is not taken into account or the accuracy of power files (recording every X minutes while programs are accurate to the second)."
+msgstr "This tab calculates the theoretical and actual cost of your installation. <br /> <ul Class='list_class_tooltip'> <li> <b> theoretical cost </b> is made from information from your treatment programs. Regulation (which can cut or turn taking) is not recognized (the catch is considered running). The price shown will be the maximum price if the control has not triggered. <br /> <br /> </Li> <li> <b> actual cost </b> is made of information files power (power files: pwr_XX) of Cultibox. These files provide information when making lit and has étteinte. Regulation is taken into account in the calculation of cost </li> </ul> <b> Conclusion. </B> it is possible to note slight differences between the actual calculation and the theoretical calculation that can come from a regulation is not taken into account or the accuracy of power files (recording every X minutes while programs are accurate to the second)."
 
 msgid "TOOLTIP_CALENDAR_SUBSTRAT"
 msgstr "Depending on the substrate you choose, fertilizer programs are filtered. You can only select programs associated with your substrate."
