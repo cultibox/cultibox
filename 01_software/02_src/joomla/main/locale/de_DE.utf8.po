@@ -49,7 +49,6 @@ msgstr "Schnittstelle"
 msgid "SYSTEM_CONF"
 msgstr "Cultibox"
 
-
 msgid "CONFIGURE_CARD"
 msgstr "SD-Karte"
 
@@ -382,11 +381,20 @@ msgstr "Löschen Sie alte Protokolle Leistungsmessung"
 msgid "MANAGE_RESET_LOG"
 msgstr "Löschen Sie die Protokolle"
 
+msgid "MANAGE_RESET_POWER"
+msgstr "Protokolle entfernen Macht"
+
+msgid "IMPORT_LOG_TITLE"
+msgstr "Import-Logs von Ihrem Sensoren"
+
 msgid "IMPORT_LAST_MONTH"
 msgstr "im letzten Monat"
 
 msgid "IMPORT_LOG"
 msgstr "Import-Protokolle"
+
+msgid "NO_IMPORT_LOG"
+msgstr "Keine SD-Karte erkannt"
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Zusammenfassung der aktiven Sekundär Vorschriften für den ausgewählten gemacht"
@@ -424,11 +432,20 @@ msgstr "Luftfeuchtigkeit"
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Exportieren Sie Ihre Informationen Protokolle"
 
+msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
+msgstr "Exportieren Sie Ihre Log-Leistung"
+
 msgid "MANAGE_EXPORT_EMPTY_LOG_CSV"
 msgstr "Keine Protokolle in der Datenbank"
 
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Exportieren Sie Ihre Leistungsinformation"
+
+msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
+msgstr "Exportieren Sie Ihre Protokolle"
+
+msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"  
+msgstr "Keine Protokolle in Ihre Machtbasis"
 
 msgid "EXAMPLE_LOG"
 msgstr "Beispiel Protokoll"
@@ -782,6 +799,12 @@ msgstr "Löschen Sie das alte Programm"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Programmer Aktion"
 
+msgid "PROGRAM_PONCTUAL"        
+msgstr "pünktlich"         
+
+msgid "PROGRAM_CYCLIC"      
+msgstr "zyklisch"
+
 msgid "REPEAT_EVERY"
 msgstr "Wiederholen Sie alle"
 
@@ -818,6 +841,9 @@ msgstr "Regulierung"
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Programmstunden werden das gleiche wie das vorherige Programm zurück. Dies wird Ihre alte Programm zu ändern, würden Sie dieses Programm sowieso bewerben?"
 
+msgid "JUMPTO_PLUG"
+msgstr "Konfigurieren der Unterstützung mit diesem Programm verbunden"
+
 msgid "ERROR_MAX_PROGRAM"
 msgstr "Die maximale Anzahl der Zustandsänderung zur Entscheidung (999 für alle kombinierten Dosen begrenzt) erreicht worden ist. Die letzte Aktion Ihrer Programme findet statt im:"
 
@@ -835,6 +861,8 @@ msgstr "Exportieren Sie Ihre Grafik"
 msgid "PRINT_HIGHCHART"
 msgstr "Drucken Sie das Diagramm"
 
+msgid "EXPORT_HIGHCHART"        
+msgstr "Export Diagramm in ein Dokument oder Bild"
 
 msgid "EXPORT_PNG"
 msgstr "PNG exportieren"
@@ -1067,6 +1095,9 @@ msgstr "Wachstum + Blüte"
 
 msgid "CALENDAR_IMPORTANT"
 msgstr "Bedeutende Ereignis"
+
+msgid "SUMARY_IMPORTANT_LIST"       
+msgstr "Zusammenfassung der jüngsten Ereignisse wichtig"
 
 msgid "EVENT_FROM"
 msgstr "Event"
@@ -1335,6 +1366,9 @@ msgstr "Der Auslösewert des Alarm muss größer als 0 und kleiner als 100 sein"
 msgid "ERROR_REGUL_VALUE"
 msgstr "Der Auslösewert des Steuer größer als 0 und kleiner als 100 sein"
 
+msgid "ERROR_POWER_VALUE"       
+msgstr "Fehler in der Wert der Macht: es muss größer oder gleich 0 Watt sein"
+
 msgid "ERROR_PRICE_VALUE"
 msgstr "Der Preis pro Kilowattstunde muss größer als 0 sein"
 
@@ -1503,7 +1537,7 @@ msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "Sie können die klassischen Schnittstellenkonfiguration verwenden hier"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "Reset-Programm erfolgreich"
+msgstr "Reset-Programm (e) (n) erfolgreich"
 
 msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Überprüfen der SD-Karte"
@@ -1590,6 +1624,9 @@ msgstr "Der 3500W-Buchse können Sie energieintensive Elemente steuern. Der 3500
 
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "1000W-Buchse können Sie energieintensive Elemente steuern. Der 1000W angekündigt entsprechen einer reinen Widerstandskraft, wie eine Heizung. Wenn Sie eine Lampe HPS oder MH in diese Buchse anschließen, die maximal zulässige Leistung 150W"
+
+msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
+msgstr "Der Antrieb Buchse können Sie die Intensität durch den Stecker geliefert variieren. Nach der Auswahl wird der Kommunikationskanal der Steck chosisir (die für jeden Sockel-Laufwerk sein muss)"
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Abreisedatum für die Berechnung der Kosten für die Installation. Sie können die Kosten für die Installation von der Abreise festgelegt und das Enddatum der Periode Form berechnen"

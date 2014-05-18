@@ -381,11 +381,20 @@ msgstr "Elimina vecchio misurazione della potenza tronchi"
 msgid "MANAGE_RESET_LOG"
 msgstr "Eliminare i registri"
 
+msgid "MANAGE_RESET_POWER"
+msgstr "Togliere registri potere"
+
 msgid "IMPORT_LAST_MONTH"
 msgstr "il mese scorso"
 
+msgid "IMPORT_LOG_TITLE"
+msgstr "Tronchi di importazione da dei sensori"
+
 msgid "IMPORT_LOG"
 msgstr "Registri di importazione"
+
+msgid "NO_IMPORT_LOG"
+msgstr "Nessuna scheda SD rilevata"
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Sintesi della normativa secondaria attivi fatte per la scelta"
@@ -423,11 +432,20 @@ msgstr "Umidità"
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Esportare i registri di informazione"
 
+msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
+msgstr "Esportare il potere di registro"
+
 msgid "MANAGE_EXPORT_EMPTY_LOG_CSV"
 msgstr "Non ci sono registri nel database"
 
+msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
+msgstr "Esportare i registri"
+
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Esportare le informazioni di potenza"
+
+msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
+msgstr "Non ci sono registri nella vostra base di potere"
 
 msgid "EXAMPLE_LOG"
 msgstr "Registro Esempio"
@@ -781,6 +799,12 @@ msgstr "Eliminare il vecchio programma"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Azione Programmer"
 
+msgid "PROGRAM_PONCTUAL"
+msgstr "punto"    
+
+msgid "PROGRAM_CYCLIC"
+msgstr "ciclico"
+
 msgid "REPEAT_EVERY"
 msgstr "Ripeti tutto"
 
@@ -817,6 +841,9 @@ msgstr "regolamento"
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Ore di programmazione vengono restituiti lo stesso del programma precedente. Questo cambierà il vostro vecchio programma, vuoi applicare questo programma comunque?"
 
+msgid "JUMPTO_PLUG"         
+msgstr "Configurare il supporto associato a questo programma"
+
 msgid "ERROR_MAX_PROGRAM"
 msgstr "È stato raggiunto il numero massimo di cambiamento di stato per la decisione (limitato a 999 per tutte le dosi combinate). L'ultima azione dei vostri programmi si svolgerà presso:"
 
@@ -833,6 +860,9 @@ msgstr "Esportare il grafico"
 
 msgid "PRINT_HIGHCHART"
 msgstr "Stampa il grafico"
+
+msgid "EXPORT_HIGHCHART"
+msgstr "Tabella Export in un documento o un'immagine"
 
 msgid "EXPORT_PNG"
 msgstr "Esporta PNG"
@@ -1065,6 +1095,9 @@ msgstr "Crescita + Fioritura"
 
 msgid "CALENDAR_IMPORTANT"
 msgstr "Evento significativo"
+
+msgid "SUMARY_IMPORTANT_LIST"       
+msgstr "Sintesi dei recenti avvenimenti importanti"
 
 msgid "EVENT_FROM"
 msgstr "Evento di"
@@ -1333,6 +1366,9 @@ msgstr "Il valore di attivazione dell'allarme deve essere maggiore di 0 e minore
 msgid "ERROR_REGUL_VALUE"
 msgstr "Il valore di soglia del controllo deve essere maggiore di 0 e minore di 100"
 
+msgid "ERROR_POWER_VALUE"       
+msgstr "Errore nel valore di potenza: deve essere maggiore o uguale a 0 Watt"
+
 msgid "ERROR_PRICE_VALUE"
 msgstr "Il prezzo per chilowattora deve essere maggiore di 0"
 
@@ -1501,7 +1537,7 @@ msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "È possibile utilizzare la configurazione classica interfaccia qui"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "Programma Reset successo"
+msgstr "Programma Reset (s) (s) successo"
 
 msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Controllo della scheda SD"
@@ -1588,6 +1624,9 @@ msgstr "La presa 3500W consente di controllare gli elementi ad alta intensità e
 
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "1000W jack consente di controllare gli elementi ad alta intensità energetica. Il 1000W annunciato corrispondono a una potenza resistivo puro, come un riscaldatore. Se si collega un HPS lampada o MH in questo jack, la potenza massima consentita è di 150W"
+
+msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
+msgstr "La presa unità consente di variare l'intensità erogata dalla spina. Una volta selezionato sarà chosisir il canale di comunicazione del tappo (che deve essere diverso per ogni unità presa)"
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Data di partenza per calcolare il costo della vostra installazione. È possibile calcolare il costo della vostra installazione definito entro la data di partenza e la data di fine del periodo di forma"

@@ -381,11 +381,20 @@ msgstr "Supprimer vos anciens logs de mesure de puissance"
 msgid "MANAGE_RESET_LOG"
 msgstr "Supprimer les logs"
 
+msgid "MANAGE_RESET_POWER"
+msgstr "Supprimer les logs de puissance"
+
+msgid "IMPORT_LOG_TITLE"
+msgstr "Importer les logs de vos capteurs des"
+
 msgid "IMPORT_LAST_MONTH"
 msgstr "derniers mois"
 
 msgid "IMPORT_LOG"
 msgstr "Importer les logs"
+
+msgid "NO_IMPORT_LOG"
+msgstr "Pas de carte SD détéctée"
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Résumé des régulations secondaires actives pour les prises sélectionnées"
@@ -423,11 +432,20 @@ msgstr "Hygrométrie"
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Exporter vos informations de logs"
 
+msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
+msgstr "Export de vos logs de puissance"
+
 msgid "MANAGE_EXPORT_EMPTY_LOG_CSV"
 msgstr "Pas de logs dans votre base"
 
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Exporter vos informations de puissance"
+
+msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
+msgstr "Export de vos logs"
+
+msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
+msgstr "Pas de logs de puissance dans votre base"
 
 msgid "EXAMPLE_LOG"
 msgstr "Exemple de logs"
@@ -781,6 +799,12 @@ msgstr "Effacer l'ancien programme"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Programmer une action"
 
+msgid "PROGRAM_PONCTUAL"
+msgstr "ponctuelle"    
+
+msgid "PROGRAM_CYCLIC"
+msgstr "cyclique"
+
 msgid "REPEAT_EVERY"
 msgstr "Répéter toutes les"
 
@@ -817,6 +841,9 @@ msgstr "régulation"
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Les heures du programme rentrées sont les mêmes que le précédent programme. Ceci modifiera votre ancien programme, voulez-vous appliquer ce programme tout de même?"
 
+msgid "JUMPTO_PLUG"
+msgstr "Configurer la prise associée à ce programme"
+
 msgid "ERROR_MAX_PROGRAM"
 msgstr "Le nombre maximal de changement d'état pour les prises (limité à 999 pour toutes les prises confondues) a été atteint. La dernière action de vos programmes se déroulera à:"
 
@@ -833,6 +860,9 @@ msgstr "Exporter votre graphe"
 
 msgid "PRINT_HIGHCHART"
 msgstr "Imprimer le graphique"
+
+msgid "EXPORT_HIGHCHART"
+msgstr "Exporter le graphique dans un document ou une image"
 
 msgid "EXPORT_PNG"
 msgstr "Exporter au format PNG"
@@ -1065,6 +1095,9 @@ msgstr "Croissance + Floraison"
 
 msgid "CALENDAR_IMPORTANT"
 msgstr "Evènement important"
+
+msgid "SUMARY_IMPORTANT_LIST"
+msgstr "Résumé des derniers évènements importants"
 
 msgid "EVENT_FROM"
 msgstr "Evènement du"
@@ -1333,6 +1366,9 @@ msgstr "La valeur de déclenchement de l'alarme doit être supérieure à 0 et i
 msgid "ERROR_REGUL_VALUE"
 msgstr "La valeur de déclenchement de la régulation doit être supérieure à 0 et inférieure à 100"
 
+msgid "ERROR_POWER_VALUE"       
+msgstr "Erreur dans la valeur de puissance: elle doit être supérieure ou égale à 0 Watt"
+
 msgid "ERROR_PRICE_VALUE"
 msgstr "Le prix du kilowatt-heure doit être supérieur à 0"
 
@@ -1588,6 +1624,9 @@ msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. L
 
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
+
+msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
+msgstr "La prise variateur permet de varier l'intensité délivrée par la prise. Une fois selectionnée il faudra chosisir le canal de communication de la prise (qui doit être différent pour chaque prise variateur)"
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Date de départ du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"

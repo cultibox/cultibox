@@ -381,11 +381,20 @@ msgstr "Delete old logs power measurement"
 msgid "MANAGE_RESET_LOG"
 msgstr "Delete the logs"
 
+msgid "MANAGE_RESET_POWER"  
+msgstr "Remove logs power"
+
+msgid "IMPORT_LOG_TITLE"    
+msgstr "Import logs from your sensors for"
+
 msgid "IMPORT_LAST_MONTH"
 msgstr "last month"
 
 msgid "IMPORT_LOG"
 msgstr "Import logs"
+
+msgid "NO_IMPORT_LOG"   
+msgstr "No SD card found"
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Summary of active secondary regulations made for the selected"
@@ -423,11 +432,20 @@ msgstr "Humidity"
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Export your information logs"
 
+msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"  
+msgstr "Export your log power"
+
 msgid "MANAGE_EXPORT_EMPTY_LOG_CSV"
 msgstr "No logs in your database"
 
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Export your power information"
+
+msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"    
+msgstr "Export your logs"
+
+msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"   
+msgstr "No logs in your power base"
 
 msgid "EXAMPLE_LOG"
 msgstr "Example log"
@@ -781,6 +799,12 @@ msgstr "Delete the old program"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Programmer action"
 
+msgid "PROGRAM_PONCTUAL"
+msgstr "ponctuelle"         
+
+msgid "PROGRAM_CYCLIC"        
+msgstr "cyclique"
+
 msgid "REPEAT_EVERY"
 msgstr "Repeat all"
 
@@ -817,6 +841,9 @@ msgstr "regulation"
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Program hours are returned the same as the previous program. This will change your old program, would you apply this program anyway?"
 
+msgid "JUMPTO_PLUG"
+msgstr "Configure plug associated to this program"
+
 msgid "ERROR_MAX_PROGRAM"
 msgstr "The maximum number of status change for decision (limited to 999 for all combined doses) has been reached. The last action of your programs will take place at:"
 
@@ -833,6 +860,9 @@ msgstr "Export your graph"
 
 msgid "PRINT_HIGHCHART"
 msgstr "Print the graph"
+
+msgid "EXPORT_HIGHCHART"
+msgstr "Export chart into a document or an image"
 
 msgid "EXPORT_PNG"
 msgstr "Export PNG"
@@ -1065,6 +1095,9 @@ msgstr "Growth Flowering +"
 
 msgid "CALENDAR_IMPORTANT"
 msgstr "Significant Event"
+
+msgid "SUMARY_IMPORTANT_LIST"
+msgstr "Summary of important recent events"
 
 msgid "EVENT_FROM"
 msgstr "Event of"
@@ -1333,6 +1366,9 @@ msgstr "The trigger value of the alarm must be greater than 0 and less than 100"
 msgid "ERROR_REGUL_VALUE"
 msgstr "The trigger value of the control should be greater than 0 and less than 100"
 
+msgid "ERROR_POWER_VALUE"
+msgstr "Error in the value of power: it must be greater or equal to 0 Watt"
+
 msgid "ERROR_PRICE_VALUE"
 msgstr "The price per kilowatt hour must be greater than 0"
 
@@ -1501,7 +1537,7 @@ msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "You can use the classic interface configuration here"
 
 msgid "INFO_RESET_PROGRAM"
-msgstr "Reset program(s) successfully"
+msgstr "Reset program (s) (s) successfully"
 
 msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Checking the SD card"
@@ -1588,6 +1624,9 @@ msgstr "The 3500W jack allows you to control energy intensive elements. The 3500
 
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "1000W jack allows you to control energy intensive elements. The 1000W announced correspond to a pure resistive power, such as a heater. If you connect a lamp HPS or MH into this jack, the maximum allowed power is 150W"
+
+msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"   
+msgstr "The drive socket allows you to vary the intensity delivered by the plug. Once selected it will chosisir the communication channel of the plug (which must be different for each socket drive)"
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Departure date for calculating the cost of your installation. You can calculate the cost of your installation defined by the departure date and the end date of the period form"
