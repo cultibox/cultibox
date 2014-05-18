@@ -382,11 +382,20 @@ msgstr "Borrar antiguos logs de medida de potencia"
 msgid "MANAGE_RESET_LOG"
 msgstr "Borrar los logs"
 
+msgid "MANAGE_RESET_POWER"
+msgstr "Eliminar registros de potencia"
+
+msgid "IMPORT_LOG_TITLE"
+msgstr "Los registros de importación de los sensores"
+
 msgid "IMPORT_LAST_MONTH"
 msgstr "últimos meses"
 
 msgid "IMPORT_LOG"
 msgstr "Importar los logs"
+
+msgid "NO_IMPORT_LOG"
+msgstr "No hay tarjeta SD detectado"
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Resumen de las regulaciones segundarías activas para los enchufes seleccionados"
@@ -424,11 +433,20 @@ msgstr "Higrometría"
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Exportar los datos de los logs"
 
+msgid "MANAGE_EXPORT_POWER_CSV_BUTTON"
+msgstr "Exportar su poder de registro"
+
 msgid "MANAGE_EXPORT_EMPTY_LOG_CSV"
 msgstr "Ningún logs en la base de datos"
 
 msgid "MANAGE_EXPORT_POWER_CSV"
 msgstr "Exportar los datos de potencia"
+
+msgid "MANAGE_EXPORT_LOG_CSV_BUTTON"
+msgstr "Exportar los registros"
+
+msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
+msgstr "No hay registros en su base de poder"
 
 msgid "EXAMPLE_LOG"
 msgstr "Ejemplo de logs"
@@ -782,6 +800,12 @@ msgstr "Borrar el programa anterior"
 msgid "PROGRAM_NEW_ACTION"
 msgstr "Programar una acción"
 
+msgid "PROGRAM_PONCTUAL"
+msgstr "punto"         
+
+msgid "PROGRAM_CYCLIC"        
+msgstr "cíclico"
+
 msgid "REPEAT_EVERY"
 msgstr "Repetir cada"
 
@@ -818,6 +842,9 @@ msgstr "regulación"
 msgid "CONFIRM_SAME_PROGRAM"
 msgstr "Los horarios del programa son los mismos que el programa precedente. Eso modificara su programa precedente, desea aplicar este programa?"
 
+msgid "JUMPTO_PLUG"
+msgstr "Configurar la compatibilidad asociado con este programa"
+
 msgid "ERROR_MAX_PROGRAM"
 msgstr "El nombre máximo de cambios para los enchufes (limitados a 999 para todos los enchufes) ha sido alcanzado. La última acción de sus programas se ejecutaráSu a:"
 
@@ -834,6 +861,9 @@ msgstr "Exportar el grafico"
 
 msgid "PRINT_HIGHCHART"
 msgstr "Imprimir el grafico"
+
+msgid "EXPORT_HIGHCHART"
+msgstr "Gráfico de exportación en un documento o imagen"
 
 msgid "EXPORT_PNG"
 msgstr "Exportar como PNG"
@@ -1066,6 +1096,9 @@ msgstr "Crecimiento + Floración"
 
 msgid "CALENDAR_IMPORTANT"
 msgstr "Hecho Relevante"
+
+msgid "SUMARY_IMPORTANT_LIST"       
+msgstr "Resumen de los últimos acontecimientos importantes"
 
 msgid "EVENT_FROM"
 msgstr "Acontecimientos del"
@@ -1334,6 +1367,9 @@ msgstr "El valor de disparo del alarma tiene que ser superior a 0 y inferior a 1
 msgid "ERROR_REGUL_VALUE"
 msgstr "El valor de disparo de la regulación tiene que ser superior a 0 y inferior a 100"
 
+msgid "ERROR_POWER_VALUE"       
+msgstr "Error en el valor de la fuerza: debe ser mayor o igual a 0 vatios"
+
 msgid "ERROR_PRICE_VALUE"
 msgstr "El precio del KVatio-hora tiene que ser superior a 0. "
 
@@ -1590,6 +1626,9 @@ msgstr "El enchufe 3500W permite controlar los elementos ingentes en energía. L
 
 msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "El enchufe 1000W permite controlar los elementes ingentes en energía. Los 1000W anunciados corresponden a una potencia resistiva pura, por ejemplo un calentamiento. Si se conecta una lámpara HPS o MH en este enchufe, la potencia máxima autorizada es de 150W"
+
+msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
+msgstr "El casquillo giratorio permite variar la intensidad entregada por el enchufe. Una vez seleccionado se chosisir el canal de comunicación de la clavija (que debe ser diferente para cada unidad socket)"
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Fecha de inicio del cálculo del coste de su instalación. Se puede calcular el coste de su instalación sobre un periodo definido por la fecha de inicio y de fin de este formulario"
