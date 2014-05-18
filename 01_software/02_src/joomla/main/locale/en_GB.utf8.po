@@ -1552,7 +1552,7 @@ msgid "INFO_UPDATE_CHECKING"
 msgstr "Checking the software version"
 
 msgid "STILL_LOG_FILE"
-msgstr "There are still data files temperature, humidity or older charging power to use it to import logs' button"
+msgstr "It remains log files sensor or power containing oldest to load data to use it to import the logs button"
 
 msgid "MESSAGE_BOX"
 msgstr "Posts software"

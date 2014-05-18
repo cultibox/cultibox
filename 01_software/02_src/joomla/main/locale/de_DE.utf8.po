@@ -373,7 +373,7 @@ msgid "MANAGE_LOG_INFOS"
 msgstr "Verwalten Sie Ihre Daten"
 
 msgid "MANAGE_RESET_TITLE"
-msgstr "Löschen Sie alte Protokolle Temperatur und Feuchtigkeit"
+msgstr "Löschen Sie alte Protokolle"
 
 msgid "MANAGE_RESET_TITLE_POWER"
 msgstr "Löschen Sie alte Protokolle Leistungsmessung"
@@ -457,7 +457,7 @@ msgid "PROGRESS_POWER"
 msgstr "Laden Fortschritte Dateien Macht"
 
 msgid "PROGRESS_LOG"
-msgstr "Laden Fortschritte Dateien von Temperatur und Feuchte"
+msgstr "Laden Fortschritte Dateien"
 
 msgid "ERROR_LOAD_LOG"
 msgstr "Fehler beim Laden Protokolle, kann dies zu einer Reaktionszeit zu lang sein, den Vorgang wiederholen, um sicher zu sein"
@@ -1552,7 +1552,7 @@ msgid "INFO_UPDATE_CHECKING"
 msgstr "Überprüfung der Software-Version"
 
 msgid "STILL_LOG_FILE"
-msgstr "Es gibt immer noch Dateien Temperatur, Feuchtigkeit oder älter Ladeleistung zu nutzen, um die Schaltfläche logs 'importieren"
+msgstr "Es bleibt Log-Dateien oder Power-Sensor enthält ältesten um Daten zu laden, um es zu nutzen, um die Schaltfläche logs 'importieren"
 
 msgid "MESSAGE_BOX"
 msgstr "Beiträge Software"
@@ -1575,7 +1575,7 @@ msgid "TOOLTIP_POPUP"
 msgstr "Die von der Schnittstelle angezeigten Meldungen sind standardmäßig in einem Dialogfeld angezeigt. Diese Option können Sie aktivieren / deaktivieren diese Dialogfelder."
 
 msgid "TOOLTIP_RECORD_FREQ"
-msgstr "Diese Option ermöglicht es Ihnen, die Frequenz, mit der die Daten aufzeichnet Cultibox von Temperatur und Luftfeuchtigkeit zu konfigurieren."
+msgstr "Diese Option ermöglicht es Ihnen, die Frequenz, mit der die Cultibox zeichnet Daten von Sensoren konfigurieren"
 
 msgid "TOOLTIP_POWER_FREQ"
 msgstr "Diese Option ermöglicht es Ihnen, die Frequenz, mit der die Cultibox speichert die Werte des Energieverbrauchs zu konfigurieren."
@@ -1641,7 +1641,7 @@ msgid "TOOLTIP_SECOND_REGUL_ENABLE"
 msgstr "Stellen Sie sicher, dass Sie die Hilfe, bevor Sie diese Option aktivieren gelesen haben. Es ist nicht notwendig, eine Entscheidung, die Temperatur oder Luftfeuchtigkeit regulieren können. Einmal aktiviert, wird die Steuerung für einen anderen Socket-Typ 'Light' und 'Andere' konfiguriert. Die Konfigurationsoptionen für die Sekundärregelung wird in der Registerkarte 'Taken' verfügbar sein"
 
 msgid "TOOLTIP_CONFIG_LOG_SEARCH"
-msgstr "Wenn Sie die Seite Protokolle zu laden, speichert die Software die Log-Temperatur, Feuchtigkeit und Energie für die letzten 31 Tage. Diese Funktion erlaubt es, ältere Protokolle je nach der Anzahl der Monate erforderlich laden"
+msgstr "Wenn Sie die Seite Protokolle zu laden, speichert die Software die Protokolle Sensoren und Kraft für die letzten 31 Tage. Diese Funktion erlaubt es, ältere Protokolle je nach der Anzahl der Monate erforderlich laden"
 
 msgid "TOOLTIP_EXPORT_LOG_CSV"
 msgstr "Exportieren Sie Ihre Daten Protokoll in einer Datei im CSV-Format"
