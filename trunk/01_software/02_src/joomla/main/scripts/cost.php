@@ -239,7 +239,7 @@ if(strcmp($select_plug,"distinct_all")!=0) {
 $resume=get_cost_summary($main_error);
 
 // Include in html pop up and message
-include('main/templates/pop_up_load.php');
+include('main/templates/post_script.php');
 
 //Display the cost template
 include('main/templates/cost.html');

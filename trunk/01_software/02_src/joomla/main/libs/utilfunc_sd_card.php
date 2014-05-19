@@ -27,7 +27,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
     }
 
     // Alert user than an SD card was found
-    $main_info[]=__('INFO_SD_CARD').": $sd_card";
+    $main_info_tab[]=__('INFO_SD_CARD').": $sd_card";
     
     // Check if SD card can be writable
     if(!check_sd_card($sd_card))

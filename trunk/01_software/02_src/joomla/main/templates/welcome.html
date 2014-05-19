@@ -47,18 +47,9 @@ function(){
 <hr />
 <?php } ?>
 </div>
-<?php if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) { ?>
-<script>
-    $.ajax({
-        cache: false,
-        async: true,
-        url: "../../main/modules/external/send_informations.php",
-        data: {infos: <?php echo(json_encode($informations)); ?>}
-    });
-
-title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-</script>
-<?php } ?>
+<?php if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
+    include('main/libs/js/send_informations.js'); 
+} ?>
 
 <br /><div id="compat" style="display:none" class="text_info"><?php echo __('ERROR_COMPAT_BROWSER'); ?></div>
 

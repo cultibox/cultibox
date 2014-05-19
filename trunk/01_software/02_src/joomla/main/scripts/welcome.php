@@ -69,7 +69,9 @@ $user_agent = getenv("HTTP_USER_AGENT");
 get_notes($notes,$_SESSION['LANG'],$main_error);
 
 // Include in html pop up and message
-include('main/templates/pop_up_load.php');
+include('main/templates/post_script.php');
+
+//program\check_db();
 
 //Display the welcome template
 include('main/templates/welcome.html');

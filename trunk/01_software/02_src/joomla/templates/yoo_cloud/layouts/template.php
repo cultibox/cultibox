@@ -43,26 +43,30 @@ include($this['path']->path('layouts:template.config.php'));
     require_once 'main/libs/db_get_common.php';
 	require_once 'main/libs/utilfunc.php'; 
     require_once 'main/libs/utilfunc_sd_card.php';
+    $_SESSION['LANG'] = get_current_lang(); //Language used by the user
+    $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']); //Short language used to compute pages
+    __('LANG');
 ?>
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css?v=<?=@filemtime('main/libs/css/jquery-ui-1.8.19.custom.css')?>" />
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css?v=<?=@filemtime('main/libs/css/cultibox.css')?>" />
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/fullcalendar.css?v=<?=@filemtime('main/libs/css/fullcalendar.css')?>" />
-                <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery.colourPicker.css?v=<?=@filemtime('main/libs/css/jquery.colourPicker.css')?>" />
+    <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css?v=<?=@filemtime('main/libs/css/jquery-ui-1.8.19.custom.css')?>" />
+    <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css?v=<?=@filemtime('main/libs/css/cultibox.css')?>" />
+    <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/fullcalendar.css?v=<?=@filemtime('main/libs/css/fullcalendar.css')?>" />
+    <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery.colourPicker.css?v=<?=@filemtime('main/libs/css/jquery.colourPicker.css')?>" />
 
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                <script type="text/javascript" src="main/libs/js/jquery-1.8.3.js?v=<?=@filemtime('main/libs/js/jquery-1.8.3.js')?>"></script>
-                <script type="text/javascript" src="main/libs/js/jquery-ui-1.9.2.custom.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.js')?>"></script>
-                <script type="text/javascript" src="main/libs/js/jquery-ui-1.9.2.custom.min.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.min.js')?>"></script>
-                <!-- Javascript JQUERY libraries for cultibox components: calendar, datepicker, highcharts... -->
-                <script type="text/javascript" src="main/libs/js/highcharts.js?v=<?=@filemtime('main/libs/js/main/libs/js/highcharts.js')?>"></script>
-                <script type="text/javascript" src="main/libs/js/exporting.js?v=<?=@filemtime('main/libs/js/main/libs/js/exporting.js')?>"></script>
-                <script type="text/javascript" src="main/libs/js/jquery-ui-timepicker-addon.js?v=<?=@filemtime('main/libs/js/jquery-ui-timepicker-addon.js')?>"></script>
-                <script type="text/javascript" src="main/libs/js/jquery.colourPicker.js"></script>
-	            <script type="text/javascript" src="main/libs/js/cultibox.js?v=<?=@filemtime('main/libs/js/main/libs/js/cultibox.js')?>"></script>
-                <script type="text/javascript" src="main/libs/js/cultibox-utils.js?v=<?=@filemtime('main/libs/js/main/libs/js/cultibox-utils.js')?>"></script>
-                <script type="text/javascript" src="main/libs/js/fullcalendar.js?v=<?=@filemtime('main/libs/js/main/libs/js/fullcalendar.js')?>"></script>
-                <script type="text/javascript" src="main/libs/js/jquery.blockUI.js?v=<?=@filemtime('main/libs/js/main/libs/js/jquery.blockUI.js')?>"></script>
-                <script type="text/javascript" src="main/libs/js/scrollTo.js?v=<?=@filemtime('main/libs/js/main/libs/js/scrollTo.js')?>"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="main/libs/js/jquery-1.8.3.js?v=<?=@filemtime('main/libs/js/jquery-1.8.3.js')?>"></script>
+    <script type="text/javascript" src="main/libs/js/jquery-ui-1.9.2.custom.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.js')?>"></script>
+    <script type="text/javascript" src="main/libs/js/jquery-ui-1.9.2.custom.min.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.min.js')?>"></script>
+    <!-- Javascript JQUERY libraries for cultibox components: calendar, datepicker, highcharts... -->
+    <script type="text/javascript" src="main/libs/js/highcharts.js?v=<?=@filemtime('main/libs/js/main/libs/js/highcharts.js')?>"></script>
+    <script type="text/javascript" src="main/libs/js/exporting.js?v=<?=@filemtime('main/libs/js/main/libs/js/exporting.js')?>"></script>
+    <script type="text/javascript" src="main/libs/js/jquery-ui-timepicker-addon.js?v=<?=@filemtime('main/libs/js/jquery-ui-timepicker-addon.js')?>"></script>
+    <script type="text/javascript" src="main/libs/js/jquery.colourPicker.js"></script>
+    <script type="text/javascript" src="main/libs/js/cultibox.js?v=<?=@filemtime('main/libs/js/main/libs/js/cultibox.js')?>"></script>
+    <script type="text/javascript" src="main/libs/js/cultibox-utils.js?v=<?=@filemtime('main/libs/js/main/libs/js/cultibox-utils.js')?>"></script>
+    <script type="text/javascript" src="main/libs/js/fullcalendar.js?v=<?=@filemtime('main/libs/js/main/libs/js/fullcalendar.js')?>"></script>
+    <script type="text/javascript" src="main/libs/js/jquery.blockUI.js?v=<?=@filemtime('main/libs/js/main/libs/js/jquery.blockUI.js')?>"></script>
+    <script type="text/javascript" src="main/libs/js/scrollTo.js?v=<?=@filemtime('main/libs/js/main/libs/js/scrollTo.js')?>"></script>
+    <script type="text/javascript" src="main/libs/js/jquery.ui.datepicker-<?php echo substr($_SESSION['LANG'], 0 , 2); ?>.js"></script>
 </head>
 
 <body id="page" class="page <?php echo $this['config']->get('body_classes'); ?>" data-config='<?php echo $this['config']->get('body_config','{}'); ?>'>
@@ -74,33 +78,8 @@ include($this['path']->path('layouts:template.config.php'));
 			</div>
 			<?php endif; ?>
 			
-<!--			<div id="block-toolbar">
-			
-				<div class="wrapper">
-					
-					<div id="toolbar" class="grid-block">
-				
-						<?php if ($this['modules']->count('toolbar-l') || $this['config']->get('date')) : ?>
-						<div class="float-left">
-						
-							<?php if ($this['config']->get('date')) : ?>
-							<time datetime="<?php echo $this['config']->get('datetime'); ?>"><?php echo $this['config']->get('actual_date'); ?></time>
-							<?php endif; ?>
-						
-							<?php echo $this['modules']->render('toolbar-l'); ?>
-							
-						</div>
-						<?php endif; ?>
-							
-						<?php if ($this['modules']->count('toolbar-r')) : ?>
-						<div class="float-right"><?php echo $this['modules']->render('toolbar-r'); ?></div>
-						<?php endif; ?>
-					
-					</div>
-					
-				</div>
-				
-			</div> -->
+            <!-- Small eye for displaying message pop up-->
+            <script>title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;</script>
             <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt="" title="" id="eyes_msgbox"></div>
 			<div class="wrapper grid-block">
 				<header id="header">
@@ -122,20 +101,17 @@ include($this['path']->path('layouts:template.config.php'));
 						<div class="left"><?php echo $this['modules']->render('headerbar'); ?></div>
 						<?php endif; ?>    
                         
+                        <!-- Display Menu-->
                         <div id="menubar" class="grid-block">
-						                      
+
 							<?php  if ($this['modules']->count('menu')) : ?>
                             <nav id="menu"><?php echo $this['modules']->render('menu'); ?></nav>
                             <?php endif; ?>
-<!--            
-                            <?php if ($this['modules']->count('search')) : ?>
-                            <div id="search"><?php echo $this['modules']->render('search'); ?></div>
-                            <?php endif; ?>
- -->                            
+   
                         </div>               
 						
 					</div>
-                                          
+
 					<div id="diaporama" class="grid-block">
 						
 						<?php  if ($this['modules']->count('diaporama')) : ?>
@@ -149,6 +125,49 @@ include($this['path']->path('layouts:template.config.php'));
 					<?php endif;  ?>
 				
 				</header>
+                
+                <!-- Pop up -->
+                <?php
+                    // Create pop up message if needed
+                    if (isset($pop_up) && "$pop_up"!="False")
+                    {
+                        if(isset($pop_up_message) && !empty($pop_up_message)) 
+                        {
+                            // Create a pop up message
+                            echo '<div class="pop_up_message" style="display:none">';
+                            echo str_replace("\\n\\n","<br /><br />","$pop_up_message");
+                            echo '</div>';
+                        } else if(isset($pop_up_error_message) && !empty($pop_up_error_message) ) {
+                            // Create a pop up error
+                            echo '<div class="pop_up_error" style="display:none">';
+                            echo str_replace("\\n\\n","<br /><br />","$pop_up_error_message");
+                            echo '</div>';
+                        }
+                    }
+                ?>
+                
+                <!-- Message box -->
+                <div class="message" style="display:none" title="<?php echo __('MESSAGE_BOX'); ?>">
+                    <br />
+                    <div id="pop_up_information_container">
+                        <img src="main/libs/img/informations.png" alt="" />
+                        <label class="info_title"><?php echo __('INFORMATION'); ?>:</label>
+                        <div class="info"  id="pop_up_information_part">
+                            <ul>
+                            </ul>
+                            <br />
+                        </div>
+                    </div>
+                    <div id="pop_up_error_container">
+                        <img src="main/libs/img/warning.png" alt="" />
+                        <label class="error_title"><?php echo __('WARNING'); ?>:</label>
+                        <div class="error" id="pop_up_error_part">
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <br />
 		
 				<?php if ($this['modules']->count('top-a')) : ?>
 				<section id="top-a" class="grid-block"><?php echo $this['modules']->render('top-a', array('layout'=>$this['config']->get('top-a'))); ?></section>
@@ -209,18 +228,18 @@ include($this['path']->path('layouts:template.config.php'));
                     </div>           
                 </footer>
 				<footer id="footer" class="grid-block">
-                  <p class="p_center">
-                     <!-- Displays version and license for the software at the footer -->
-                  <?php 
-                        $error="";
-                        echo "v".get_configuration("VERSION",$error)."&nbsp;&nbsp;GPL-V3<br />";
-                  ?>    
-                  </p>
-	               <br /><br />	
-					<?php
-						echo $this['modules']->render('footer');
-						echo $this['modules']->render('debug');
-					?>
+                    <p class="p_center">
+                        <!-- Displays version and license for the software at the footer -->
+                        <?php 
+                            $error="";
+                            echo "v".get_configuration("VERSION",$error)."&nbsp;&nbsp;GPL-V3<br />";
+                        ?>    
+                    </p>
+                    <br /><br />	
+                    <?php
+                        echo $this['modules']->render('footer');
+                        echo $this['modules']->render('debug');
+                    ?>
 				</footer>
 				<?php endif; ?>
 				
