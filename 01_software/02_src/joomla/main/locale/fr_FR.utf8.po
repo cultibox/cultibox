@@ -1491,6 +1491,9 @@ msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8
 
 
 # For the informations part:
+msgid "SHOW_MESSAGE"
+msgstr "Cliquez sur l'oeil pour faire apparaître la boite de messages du logiciel"
+
 msgid "CONFIRMATION"
 msgstr "Confirmation"
 

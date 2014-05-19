@@ -564,7 +564,7 @@ if("$type" == "days") {
                 }
       } else {
         get_graph_array($record1,"record1/100","%%","1","True","0",$main_error);
-        $main_error[]=__('EMPTY_DATA')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_FAKE_LOG_DATA').".\" />";
+        $main_error[]=__('EMPTY_DATA')." <img src='main/libs/img/infos.png' alt='' title='".__('TOOLTIP_FAKE_LOG_DATA')."' />";
 
         if(!empty($record1)) {
           unset($select_sensor);

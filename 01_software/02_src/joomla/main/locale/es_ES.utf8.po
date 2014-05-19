@@ -1492,6 +1492,8 @@ msgstr "Error en el formato de la frase de contraseña WPA: debe ser entre 8 y 6
 
 
 # For the informations part:
+msgid "SHOW_MESSAGE"
+msgstr "Haga clic en el ojo para mostrar el software cuadro de mensaje"
 
 msgid "CONFIRMATION"
 msgstr "Validar"

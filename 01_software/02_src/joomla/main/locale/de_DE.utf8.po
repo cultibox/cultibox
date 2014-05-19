@@ -1491,6 +1491,9 @@ msgstr "Fehler im Format der WPA-Passphrase: Es muss zwischen 8 und 63 Zeichen l
 
 
 # For the informations part:
+msgid "SHOW_MESSAGE"
+msgstr "Klicken Sie auf das Auge, um die Meldung Software zeigen"
+
 msgid "CONFIRMATION"
 msgstr "Bestätigung"
 

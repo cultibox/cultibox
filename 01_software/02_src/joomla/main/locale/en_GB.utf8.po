@@ -1491,6 +1491,9 @@ msgstr "Error in the format of the WPA passphrase: it must be between 8 and 63 c
 
 
 # For the informations part:
+msgid "SHOW_MESSAGE"
+msgstr "Click on the eye to show the message box software"
+
 msgid "CONFIRMATION"
 msgstr "Confirmation"
 
