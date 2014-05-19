@@ -4,9 +4,10 @@
 // ROLE create a connection to the DB using PDO
 // IN none 
 // RET database connection object
-function db_priv_pdo_start() {
+function db_priv_pdo_start($user="cultibox") {
     try {
-        $db = new PDO('mysql:host=127.0.0.1;port=3891;dbname=cultibox;charset=utf8', 'cultibox', 'cultibox');
+        $db = new PDO('mysql:host=127.0.0.1;port=3891;dbname=cultibox;charset=utf8', $user, 'cultibox');
+        //$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
         $db->exec("SET CHARACTER SET utf8");
         return $db;
     } catch (PDOException $e) {
@@ -2389,6 +2390,7 @@ SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REG
 EOF;
     }
     $db=db_priv_pdo_start();
+    $res = array();
     try {
         $sth=$db->prepare("$sql");
         $sth->execute();
