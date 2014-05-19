@@ -151,7 +151,7 @@ buttonImageOnly: 'true',
 <br />
 </div>
 <div id="label_select_month" class="div_height" style="<?php if(strcmp($type,"days")==0) echo "display:none"; ?>">
-<form name="display-log-month" id="display-log-month" action="/cultibox/index.php/waiting-data" method="post">
+<form name="display-log-month" id="display-log-month" action="/cultibox/index.php/<?php echo $_SESSION['SHORTLANG']; ?>/waiting-data" method="post">
 <table class="table_width">
    <tr>
       <td class="log-marge-month"></td>
