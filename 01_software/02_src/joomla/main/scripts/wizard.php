@@ -271,7 +271,7 @@ if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
 }
 
 // Include in html pop up and message
-include('main/templates/pop_up_load.php');
+include('main/templates/post_script.php');
 
 //Display the wizard template
 include('main/templates/wizard.html');

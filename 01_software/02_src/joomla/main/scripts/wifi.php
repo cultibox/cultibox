@@ -90,7 +90,7 @@ check_and_update_sd_card($sd_card,$main_info,$main_error);
 sd_card_update_log_informations($sd_card);
 
 // Include in html pop up and message
-include('main/templates/pop_up_load.php');
+include('main/templates/post_script.php');
 
 //Display the plug template
 include('main/templates/wifi.html');

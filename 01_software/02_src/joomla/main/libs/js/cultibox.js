@@ -2200,10 +2200,11 @@ function pop_up_add_information(message, id, type) {
     if ($("#pop_up_information_part ul li").length > 0)
         $("#pop_up_information_container").css("display", "");
         
+    // Not fonctioning
     // Display message box if there are some informations
-    if ($("#pop_up_information_part ul li").length > 0 ||
-        $("#pop_up_error_part ul li").length > 0)
-        $(".message").dialog('open');
+    //if ($("#pop_up_information_part ul li").length > 0 ||
+    //    $("#pop_up_error_part ul li").length > 0)
+    //    $(".message").dialog('open');
         
 };
 

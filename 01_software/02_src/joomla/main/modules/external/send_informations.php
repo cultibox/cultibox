@@ -1,42 +1,56 @@
 <?php
-
-require_once('../../libs/utilfunc.php');
-require_once('../../libs/db_get_common.php');
-require_once('../../libs/db_set_common.php');
-require_once('../../libs/config.php');
-require_once('../../libs/utilfunc_sd_card.php');
-
-if((isset($_GET['infos']))&&(!empty($_GET['infos']))) {
-    $infos=$_GET['infos'];
-
-    if(array_key_exists('log',$infos)) {
-        $sLog=$infos['log'];
-    } else {
-        $sLog="";
+    if (!isset($_SESSION)) {
+        session_start();
     }
 
-
-    if(array_key_exists('id_computer',$infos)) {
-        $sIP=$infos['id_computer'];
-    } else {
-        $sIP="";
+    // Define language using post lang parameter
+    $_SESSION['LANG'] = "fr_FR";
+    switch($_POST['lang']) {
+        case 'fr': 
+            $_SESSION['LANG'] = "fr_FR";
+            break;
+        case 'en': 
+            $_SESSION['LANG'] = "en_GB";
+            break;
+        case 'it': 
+            $_SESSION['LANG'] = "it_IT";
+            break;
+        case 'de': 
+            $_SESSION['LANG'] = "de_DE";
+            break;
+        case 'es': 
+            $_SESSION['LANG'] = "es_ES";
+            break;
     }
 
-
-    if(array_key_exists('cbx_id',$infos)) {
-        $sID=$infos['cbx_id'];
-    } else {
-        $sID="";
+    // Include libraries
+    if (file_exists('../../libs/db_get_common.php') === TRUE)
+    {
+        // Script call by Ajax
+        require_once('../../libs/config.php');
+        require_once('../../libs/db_get_common.php');
+        require_once('../../libs/db_set_common.php');
+        require_once('../../libs/utilfunc.php');
+        require_once('../../libs/utilfunc_sd_card.php');
+        require_once('../../libs/debug.php');
     }
+    
+    // Define languaage
+    $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
+    __('LANG');
+    
+    // Get Log
+    $sLog = get_configuration("log",$out);
+    
+    // get ID Computer
+    $sIP = get_configuration("id_computer",$out);
+    
+    // Get Cultibox ID
+    $sID = get_configuration("cbx_id",$out);
 
-
-    if(array_key_exists('firm_version',$infos)) {
-        $sFirm=$infos['firm_version'];
-    } else {
-        $sFirm="";
-    }
-
-
+    // Get Firmware version
+    $sFirm = get_configuration("firm_version",$out);
+    
     $sBro=getenv("HTTP_USER_AGENT");
 
     $sVersion=get_configuration("VERSION",$main_error);
@@ -55,6 +69,6 @@ if((isset($_GET['infos']))&&(!empty($_GET['infos']))) {
 
     // Close request to clear up some resources
     curl_close($curl);
-}
+
 
 ?>

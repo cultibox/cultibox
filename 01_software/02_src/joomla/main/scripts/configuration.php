@@ -388,7 +388,7 @@ if((isset($submit))&&(!empty($submit))) {
 }
 
 // Include in html pop up and message
-include('main/templates/pop_up_load.php');
+include('main/templates/post_script.php');
 
 //Display the configuration template
 include('main/templates/configuration.html');

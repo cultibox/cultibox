@@ -744,7 +744,7 @@ if("$type" == "days") {
 }
 
 // Include in html pop up and message
-include('main/templates/pop_up_load.php');
+include('main/templates/post_script.php');
 
 //Display the logs template
 include('main/templates/display-logs.html');

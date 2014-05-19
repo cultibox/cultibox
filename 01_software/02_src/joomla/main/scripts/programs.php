@@ -637,7 +637,7 @@ if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
 } 
 
 // Include in html pop up and message
-include('main/templates/pop_up_load.php');
+include('main/templates/post_script.php');
 
 //Display the programs template
 include('main/templates/programs.html');

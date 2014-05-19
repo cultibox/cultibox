@@ -127,7 +127,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 }
 
 // Include in html pop up and message
-include('main/templates/pop_up_load.php');
+include('main/templates/post_script.php');
 
 //Display the calendar template
 include('main/templates/calendar.html');

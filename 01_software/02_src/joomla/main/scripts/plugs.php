@@ -327,7 +327,7 @@ $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 $status=get_canal_status($main_error);
 
 // Include in html pop up and message
-include('main/templates/pop_up_load.php');
+include('main/templates/post_script.php');
 
 //Display the plug template
 include('main/templates/plugs.html');

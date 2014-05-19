@@ -1,11 +1,15 @@
 <?php
 
+// Load libraries
 if(is_file("main/libs/l10n.php")) {
    require_once 'main/libs/l10n.php';
+   require_once 'main/libs/lib_programs.php';
 } else if(is_file("../libs/l10n.php")) {
    require_once '../libs/l10n.php';
+   require_once '../libs/lib_programs.php';
 } else {
    require_once '../../libs/l10n.php';
+   require_once '../../libs/lib_programs.php';
 }
 
 // {{{ __($msgkey, ...)
@@ -184,25 +188,25 @@ function get_current_lang() {
             $val=strtolower($val);
             switch($val) {  
                 case 'fr':
-                         $lang="fr_FR";
-                         $_SESSION['TIMEZONE']="Europe/Paris";
-                         break;
+                    $lang="fr_FR";
+                    $_SESSION['TIMEZONE']="Europe/Paris";
+                    break;
                 case 'en':
-                         $lang="en_GB";
-                         $_SESSION['TIMEZONE']="Europe/London";
-                         break;
+                    $lang="en_GB";
+                    $_SESSION['TIMEZONE']="Europe/London";
+                    break;
                 case 'it':
-                         $lang="it_IT";
-                         $_SESSION['TIMEZONE']="Europe/Rome";
-                         break;
+                    $lang="it_IT";
+                    $_SESSION['TIMEZONE']="Europe/Rome";
+                    break;
                 case 'de':
-                         $lang="de_DE";
-                         $_SESSION['TIMEZONE']="Europe/Berlin";
-                         break;
+                    $lang="de_DE";
+                    $_SESSION['TIMEZONE']="Europe/Berlin";
+                    break;
                 case 'es':
-                         $lang="es_ES";
-                         $_SESSION['TIMEZONE']="Europe/Madrid";
-                         break;
+                    $lang="es_ES";
+                    $_SESSION['TIMEZONE']="Europe/Madrid";
+                    break;
             }    
             
             if(strcmp($lang,"")!=0) {
