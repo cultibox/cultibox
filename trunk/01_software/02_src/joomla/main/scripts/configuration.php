@@ -383,7 +383,7 @@ if((isset($submit))&&(!empty($submit))) {
     } 
     else
     {
-        $main_error[]=__('ERROR_SD_CARD_CONF')." <img src=\"main/libs/img/infos.png\" alt=\"\" title=\"".__('TOOLTIP_WITHOUT_SD')."\" />";
+        $main_error[]=__('ERROR_SD_CARD_CONF')." <img src='main/libs/img/infos.png' alt='' title='".__('TOOLTIP_WITHOUT_SD')."' />";
     }
 }
 
