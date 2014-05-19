@@ -222,27 +222,27 @@ EOF;
 // IN $selected_plug   plug id to select
 //    $out      errors or warnings messages
 // RET plug data formated for highchart
-function get_data_plug($selected_plug="",&$out) {
+function get_data_plug($selected_plug="",&$out,$number=1) {
    $res="";
    if((isset($selected_plug))&&(!empty($selected_plug))) {
       $sql = <<<EOF
-SELECT  `time_start`,`time_stop`,`value`,`type` FROM `programs` WHERE plug_id = {$selected_plug} ORDER by time_start ASC
+SELECT  `time_start`,`time_stop`,`value`,`type` FROM `programs` WHERE plug_id = {$selected_plug} AND number = {$number} ORDER by time_start ASC
 EOF;
-      $db=db_priv_pdo_start();
-      try {
-        $sth=$db->prepare("$sql");
-        $sth->execute();
-        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-      } catch(PDOException $e) {
-        $ret=$e->getMessage();
-      }
-      $db=null;
+        $db=db_priv_pdo_start();
+        try {
+            $sth=$db->prepare("$sql");
+            $sth->execute();
+            $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+        $db=null;
 
-      if((isset($ret))&&(!empty($ret))) {
-         if($GLOBALS['DEBUG_TRACE']) {
-                      $out[]=__('ERROR_SELECT_SQL').$ret;
+        if((isset($ret))&&(!empty($ret))) {
+            if($GLOBALS['DEBUG_TRACE']) {
+                    $out[]=__('ERROR_SELECT_SQL').$ret;
                 } else {
-                      $out[]=__('ERROR_SELECT_SQL');
+                    $out[]=__('ERROR_SELECT_SQL');
                 }
                 return 0;
           }
@@ -1654,10 +1654,9 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 // IN $id          id of the program
 //    $out         error or warning message
 // RET none
-function export_program($id,&$out) {
-       $sql = <<<EOF
-SELECT * FROM `programs` WHERE plug_id = {$id}
-EOF;
+function export_program($id,$program_index,&$out) {
+       $sql = "SELECT * FROM programs WHERE plug_id = {$id} AND number = {$program_index}";
+       
        $db=db_priv_pdo_start();
        try {
            $sth=$db->prepare("$sql");
@@ -2339,7 +2338,7 @@ function generate_program_from_file($file="",$plug,&$out) {
                            "start_time" => $temp[0],
                            "end_time" => $temp[1],
                            "value_program" => $temp[2],
-                            "type" =>  $temp[3] 
+                           "type" =>  $temp[3] 
                         );
                      }
                   }

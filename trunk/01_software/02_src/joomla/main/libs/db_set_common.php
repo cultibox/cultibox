@@ -189,34 +189,37 @@ EOF;
 //    $out      error or warning message
 // RET true
 // Fonctionnement:
-//      Un programme Ã  insÃ©rer est passÃ© Ã  la fonction. Celle-ci doit dÃ©terminer Ã  quel emplacement placer ce nouveau programme et l'impact qu'il aura sur les
-//      programmes dÃ©ja enregistrÃ©s.
-//      Pour cela, on parcours les programmes existant pour dÃ©terminer quel interval de temps il va impacter en fonction des valeur de dÃ©but et de fin du programme.
-//      Puis on opÃšre les modifications en fonction. Le cas spÃ©cial correspond Ã  un cas ou le programme impacte plusieurs intervalle (durÃ©e plus grande que la durÃ©e de deux espaces de temps);
-//      Dans ce cas la, on enregistre les modifications opÃ©rÃ©e sur l'interval de temps que l'on est en train de regarder, on sauvegarde les autres actions, on dÃ©minue l'interval de temps du
-//      programme Ã  enregistrer puis on relance la fonction de comparaison avec ce nouvel interval raccourcis. Lorsque l'interval de l'action Ã  insÃ©rer est assez petit pour tenir entre deux espaces
+//      Un programme à insérer est passé à la fonction. Celle-ci doit déterminer à quel emplacement placer ce nouveau programme et l'impact qu'il aura sur les
+//      programmes déjà enregistrés.
+//      Pour cela, on parcours les programmes existant pour déterminer quel intervalle de temps il va impacter en fonction des valeur de début et de fin du programme.
+//      Puis on opère les modifications en fonction. Le cas spécial correspond à un cas ou le programme impacte plusieurs intervalle (durée plus grande que la durée de deux espaces de temps);
+//      Dans ce cas la, on enregistre les modifications opérée sur l'intervalle de temps que l'on est en train de regarder, on sauvegarde les autres actions, on diminue l'intervalle de temps du
+//      programme à enregistrer puis on relance la fonction de comparaison avec ce nouvel intervalle raccourcis. Lorsque l'intervalle de l'action à insérer est assez petit pour tenir entre deux espaces
 //      de temps on reprend l'insertion classique.
-//      Une fois le nouveau programme calculÃ©, on le passe dans deux fonctions permettant: de supprimer des valeurs rÃ©siduelles (qui ne devraient pas Ãªtre la) et d'optimiser le programme
-//      c'est Ã  dire de joindre des espaces de temps contigue ayant la mÃªme valeur
+//      Une fois le nouveau programme calculé, on le passe dans deux fonctions permettant: de supprimer des valeurs résiduelles (qui ne devraient pas être la) et d'optimiser le programme
+//      c'est à dire de joindre des espaces de temps contiguë ayant la même valeur
 function insert_program($program,&$out) {
-   $ret=true;
-   $data_plug=get_data_plug($program[0]['selected_plug'],$out);
-   $tmp=array();
-   if(count($program>0)) clean_program($program[0]['selected_plug'],$out);
+    $ret=true;
+    $data_plug=get_data_plug($program[0]['selected_plug'],$out);
+    $tmp=array();
+    if(count($program>0))
+        clean_program($program[0]['selected_plug'],$program[0]['number'],$out);
 
-   if(count($data_plug)==0) {
+    if(count($data_plug)==0) {
         foreach($program as $progr) {
             $prg[]=array(
                 "time_start" => str_replace(':','',$progr['start_time']),
                 "time_stop" => str_replace(':','',$progr['end_time']),
                 "value" => $progr['value_program'],
-                "type" => $progr['type']
+                "type" => $progr['type'],
+                "number" => $progr['number']
             );
         }
         $tmp=purge_program($prg);
    } else {
         foreach($program as $progr) {
             $type=$progr['type'];
+            $number = $progr['number'];
             if(count($tmp)>0) {
                 $data_plug=$tmp;
                 unset($tmp);
@@ -227,7 +230,8 @@ function insert_program($program,&$out) {
                 "time_start" => "240000",
                 "time_stop" => "240000",
                 "value" => "0",
-                "type" =>  "$type"
+                "type" =>  "$type",
+                "number" => $number
             );
 
             $start_time=str_replace(':','',$progr['start_time']);
@@ -237,14 +241,16 @@ function insert_program($program,&$out) {
                 "time_start" => "$start_time",
                 "time_stop" => "$end_time",
                 "value" => "$value",
-                "type" =>  "$type"
+                "type" =>  "$type",
+                "number" => $number
             );
 
             $first=array(
                     "time_start" => "000000",
                     "time_stop" => "000000",
                     "value" => "0", 
-                    "type" =>  "$type"
+                    "type" =>  "$type",
+                    "number" => $number
             );
             asort($data_plug);
             $continue="1";
@@ -285,7 +291,8 @@ function insert_program($program,&$out) {
                         "time_start" => "000000",
                         "time_stop" => "000000",
                         "value" => "0",
-                        "type" =>  "$type"
+                        "type" =>  "$type",
+                        "number" => $number
                     );
                     $continue="1";
                     unset($data_plug);
@@ -321,7 +328,8 @@ function insert_program($program,&$out) {
     }
 
     if(count($tmp)>0) {
-            if(!insert_program_value($program[0]['selected_plug'],$tmp,$out)) $ret=false;
+        if(!insert_program_value($program[0]['selected_plug'],$tmp,$out)) 
+            $ret=false;
     }
     return $ret;
 }
@@ -340,10 +348,11 @@ foreach($program as $prog) {
     $end_time=$prog['time_stop'];
     $value=$prog['value'];
     $type=$prog['type'];
+    $number = $prog['number'];
 
    $sql = $sql . <<<EOF
 
-INSERT INTO `programs`(`plug_id`,`time_start`,`time_stop`, `value`,`type`) VALUES('{$plugid}',"{$start_time}","{$end_time}",'{$value}','{$type}');
+INSERT INTO `programs`(plug_id, time_start, time_stop, value, type, number) VALUES('{$plugid}',"{$start_time}","{$end_time}",'{$value}','{$type}','{$number}');
 EOF;
 }
 
@@ -374,10 +383,10 @@ EOF;
 // IN $plug_id          id of the plug
 //    $out              error or warning message
 // RET false if an error occured, true else
-function clean_program($plug_id,&$out) {
-   $sql = <<<EOF
-DELETE FROM `programs` WHERE plug_id = {$plug_id}
-EOF;
+function clean_program($plug_id,$programm_index,&$out) {
+
+   $sql = "DELETE FROM programs WHERE plug_id = \"$plug_id\" AND number = \"$programm_index\" ";
+   
    $db=db_priv_pdo_start();
    try {
         $db->exec("$sql");
@@ -387,12 +396,12 @@ EOF;
    $db=null;
 
     if((isset($ret))&&(!empty($ret))) {
-     if($GLOBALS['DEBUG_TRACE']) {
-             $out[]=__('ERROR_UPDATE_SQL').$ret;
-     } else {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_UPDATE_SQL').$ret;
+        } else {
             $out[]=__('ERROR_UPDATE_SQL');
-     }
-     return false;
+        }
+        return false;
     }
     return true;
 }
@@ -415,7 +424,8 @@ function purge_program($arr) {
                   "time_start" => $val['time_start'],
                   "time_stop" => $val['time_stop'],
                   "value" => $val['value'],
-                  "type" => $val['type'] 
+                  "type" => $val['type'],
+                    "number" => $val['number']
                );
                $tmp[]=$tmp_arr;
              }

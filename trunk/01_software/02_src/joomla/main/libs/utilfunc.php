@@ -94,31 +94,31 @@ function htmlentitiesOutsideHTMLTags($htmlText)
 // IN $varname as a string
 // RET the string value as read in $_GET[] or $_POST[]
 function getvar($varname) {
-   $tmp = false;
-   
-   // The mess with the *x appended is a workaround for some browser
-   // versions that append it when you want to get information for some
-   // image buttons
-   
-   if (isset($_GET["$varname"])) {
-          $tmp = $_GET["$varname"];
-   } elseif (isset($_GET["$varname"."x"])) {
-          $tmp = true;
-   } elseif (isset($_GET["$varname"."_x"])) {
-          $tmp = true;
-   } elseif (isset($_POST["$varname"])) {
-          $tmp = $_POST["$varname"];
-   } elseif (isset($_POST["$varname"."x"])) {
-          $tmp = true;
-   } elseif (isset($_POST["$varname"."_x"])) {
-          $tmp = true;
-   }
-   
-   if (is_array($tmp)) {
-      return $tmp;
-   } else {
+    $tmp = false;
+
+    // The mess with the *x appended is a workaround for some browser
+    // versions that append it when you want to get information for some
+    // image buttons
+
+    if (isset($_GET["$varname"])) {
+        $tmp = $_GET["$varname"];
+    } elseif (isset($_GET["$varname"."x"])) {
+        $tmp = true;
+    } elseif (isset($_GET["$varname"."_x"])) {
+        $tmp = true;
+    } elseif (isset($_POST["$varname"])) {
+        $tmp = $_POST["$varname"];
+    } elseif (isset($_POST["$varname"."x"])) {
+        $tmp = true;
+    } elseif (isset($_POST["$varname"."_x"])) {
+        $tmp = true;
+    }
+
+    if (is_array($tmp)) {
+        return $tmp;
+    } else {
         return stripslashes(htmlentities($tmp));
-   }
+    }
 }
 // }}}
 

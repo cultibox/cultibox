@@ -810,7 +810,7 @@ msgid "REPEAT_EVERY"
 msgstr "Repetir cada"
 
 msgid "MANAGE_PROGRAM_INFOS"
-msgstr "Gestión de vuestros programas"
+msgstr "Gestión de programas :"
 
 msgid "TITLE_EXPORT_PROGRAM"
 msgstr "Exportar el programa del enchufe"
@@ -854,6 +854,26 @@ msgstr "Ciclo período"
 msgid "VALUE_DIMMER"
 msgstr "Regulador de intensidad"
 
+msgid "PROGRAM_DAILY_SAVE"
+msgstr "Guardar"
+
+msgid "PROGRAM_DAILY_SAVE_PROGRESS"
+msgstr "Guardando ..."
+
+msgid "PROGRAM_DAILY_SAVE_FINISH"
+msgstr "registro tuvo éxito"
+
+msgid "PROGRAM_DAILY_OPEN"
+msgstr "Open"
+
+msgid "PROGRAM_DAILY_OPEN_SELECT"
+msgstr "programa abierto"
+
+msgid "PROGRAM_DAILY_DELETE_SELECT"
+msgstr "Remove Program"
+
+msgid "PROGRAM_DAILY_DELETE"
+msgstr "Eliminar"
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"

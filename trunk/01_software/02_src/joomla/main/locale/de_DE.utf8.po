@@ -809,7 +809,7 @@ msgid "REPEAT_EVERY"
 msgstr "Wiederholen Sie alle"
 
 msgid "MANAGE_PROGRAM_INFOS"
-msgstr "Verwalten Sie Ihre Programme"
+msgstr "Programm-Management :"
 
 msgid "TITLE_EXPORT_PROGRAM"
 msgstr "Export Programmentscheidung"
@@ -853,6 +853,26 @@ msgstr "Zyklus"
 msgid "VALUE_DIMMER"
 msgstr "Dimmer"
 
+msgid "PROGRAM_DAILY_SAVE"
+msgstr "Enregistrer "
+
+msgid "PROGRAM_DAILY_SAVE_PROGRESS"
+msgstr "Saving ..."
+
+msgid "PROGRAM_DAILY_SAVE_FINISH"
+msgstr "Registrierung erfolgreich"
+
+msgid "PROGRAM_DAILY_OPEN"
+msgstr "öffnen"
+
+msgid "PROGRAM_DAILY_OPEN_SELECT"
+msgstr "Programm öffnen"
+
+msgid "PROGRAM_DAILY_DELETE_SELECT"
+msgstr "Programm entfernen"
+
+msgid "PROGRAM_DAILY_DELETE"
+msgstr "Entfernen"
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
