@@ -148,6 +148,10 @@ EOF;
 //    $out      errors or warnings messages
 // RET $res   value result for the plug configuration entrie
 function get_plug_conf($key,$id,&$out) {
+
+    // Init var 
+    $res = array();
+
    $sql = <<<EOF
 SELECT {$key} FROM `plugs` WHERE id = {$id}
 EOF;
@@ -169,7 +173,12 @@ EOF;
       }
 
    }
-   return $res[0];
+   
+    if (array_key_exists('0', $res)) {
+        return $res[0];
+    } else {
+        return "";
+    }
 }
 // }}}
 
