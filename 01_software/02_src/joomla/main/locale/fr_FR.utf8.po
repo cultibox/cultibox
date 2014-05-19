@@ -809,7 +809,7 @@ msgid "REPEAT_EVERY"
 msgstr "Répéter toutes les"
 
 msgid "MANAGE_PROGRAM_INFOS"
-msgstr "Gestion de vos programmes"
+msgstr "Gestion du programme : "
 
 msgid "TITLE_EXPORT_PROGRAM"
 msgstr "Exporter le programme de la prise"
@@ -853,6 +853,26 @@ msgstr "Durée"
 msgid "VALUE_DIMMER"
 msgstr "Variateur"
 
+msgid "PROGRAM_DAILY_SAVE"
+msgstr "Enregistrer "
+
+msgid "PROGRAM_DAILY_SAVE_PROGRESS"
+msgstr "Enregistrement en cours ..."
+
+msgid "PROGRAM_DAILY_SAVE_FINISH"
+msgstr "Enregistrement réussi"
+
+msgid "PROGRAM_DAILY_OPEN"
+msgstr "Ouvrir"
+
+msgid "PROGRAM_DAILY_OPEN_SELECT"
+msgstr "Ouvrir un programme"
+
+msgid "PROGRAM_DAILY_DELETE_SELECT"
+msgstr "Supprimer un programme"
+
+msgid "PROGRAM_DAILY_DELETE"
+msgstr "Supprimer"
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"

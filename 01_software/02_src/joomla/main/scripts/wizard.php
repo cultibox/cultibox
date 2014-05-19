@@ -210,7 +210,9 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
                 );
             }
 
-			clean_program($selected_plug,$main_error);
+            // Clean current program
+			clean_program($selected_plug,1,$main_error);
+            
 			if(isset($plug_tolerance)) {
                 insert_plug_conf("PLUG_TOLERANCE",$selected_plug,$plug_tolerance,$main_error);
             }

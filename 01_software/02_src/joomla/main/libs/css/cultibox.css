@@ -644,13 +644,13 @@ td.conf-alarm-field {
 }
 
 .ui-widget-header {
-    background: url("../img/ui-bg_gloss-wave.png") repeat-x scroll 50% 50% #F6A828;
+    /* background: url("../img/ui-bg_gloss-wave.png") repeat-x scroll 50% 50% #F6A828; */
     border: none;
     background-color: #849325;
 }
 
 #ui-datepicker-div button{
-    background: url("../img/ui-bg_gloss-wave.png") repeat-x scroll 50% 50% #F6A828;
+    /* background: url("../img/ui-bg_gloss-wave.png") repeat-x scroll 50% 50% #F6A828; */
     color:#000000;
     background-color: #8aad2e;
     font-weight:bold;

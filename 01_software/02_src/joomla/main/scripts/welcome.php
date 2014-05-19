@@ -71,8 +71,6 @@ get_notes($notes,$_SESSION['LANG'],$main_error);
 // Include in html pop up and message
 include('main/templates/post_script.php');
 
-//program\check_db();
-
 //Display the welcome template
 include('main/templates/welcome.html');
 
