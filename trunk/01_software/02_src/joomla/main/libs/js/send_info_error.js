@@ -5,7 +5,7 @@ $(document).ready(function(){
     if((isset($main_info))&&(!empty($main_info))&&(count($main_info)>0)) {
         // Add every element given by array main_info
         foreach($main_info as $key => $value) { 
-            echo "pop_up_add_information('" . $value . "', \"" . $key . "\", \"information\");";
+            echo "pop_up_add_information(\"" . $value . "\", \"" . $key . "\", \"information\");";
         }
     }
     
@@ -13,7 +13,7 @@ $(document).ready(function(){
     if((isset($main_error))&&(!empty($main_error))&&(count($main_error)>0)) {
         // Add every element given by array main_error
         foreach($main_error as $key => $value) { 
-            echo "pop_up_add_information('" . $value . "', \"" . $key . "\", \"information\");";      
+            echo "pop_up_add_information(\"" . $value . "\", \"" . $key . "\", \"error\");";      
         }
     }
     ?>
