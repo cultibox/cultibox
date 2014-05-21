@@ -8,12 +8,46 @@
 <style id='hidetoday'></style>
 
 <label class="title_conf"><?php echo __('CALENDAR_TITLE'); ?></label>
+
+<!-- Display buttons under calendar -->
 <table class="table_width">
     <tr>
+        
+        <td>
+            <input id="datepicker_calendar" name="datepicker_calendar" type="hidden" value="">
+        </td>
+        <td>
+            <!-- Button to select XML to view -->
+            <input type="image" id="calendar_xml_selection" name="calendar_xml_selection" 
+                src="main/libs/img/advancedsettings.png" width="32"
+                title="<?php echo __('TOOLTIP_MANAGE_XML'); ?>" 
+                <?php 
+                    if(count($list_xml)==0) {
+                        echo 'class="inputDisable" disabled value="';
+                        echo __('DISABLED_MANAGE_EXTERNAL_XML') . '"'; 
+                    } else { 
+                        echo 'value="' . __('MANAGE_EXTERNAL_XML') . '"';
+                    } 
+                ?>
+            />
+        </td>
+        <td>
+            <!-- Button to delete all event -->
+            <input type="image" id="reset_calendar" name="reset_calendar" class="delete" 
+                   title="<?php echo __('TOOLTIP_RESET_CALENDAR'); ?>"
+                   src="main/libs/img/button_cancel.png"  width="32" />
+        </td>
+        <td>
+            <!-- Button to view engrais planification-->
+            <input type="image" id="nutrient_planification" name="nutrient_planification"
+                   title="<?php echo __('TOOLTIP_CREATE_CALENDAR_PROGRAM'); ?>"
+                   src="main/libs/img/cal.png"  width="32" />
+        </td>
         <td class="calendar_right"></td>
-        <td><input id="datepicker_calendar" name="datepicker_calendar" type="hidden" value=""></td>
     </tr>
 </table>
+
+<br />
 
 <div id='calendar'></div>
 
@@ -111,43 +145,6 @@
     </form>
 </div>
 
-<br />
-<!-- Display buttons under calendar -->
-    <table class="table_width">
-        <tr>
-            <td class="calendar-marge"></td>
-            <td>
-                <!-- Button to select XML to view -->
-                <input type="submit" id="calendar_xml_selection" name="calendar_xml_selection" 
-                    title="<?php echo __('TOOLTIP_MANAGE_XML'); ?>" 
-                    <?php 
-                        if(count($list_xml)==0) {
-                            echo 'class="inputDisable" disabled value="';
-                            echo __('DISABLED_MANAGE_EXTERNAL_XML') . '"'; 
-                        } else { 
-                            echo 'value="' . __('MANAGE_EXTERNAL_XML') . '"';
-                        } 
-                    ?>
-                >
-            </td>
-            <td>
-                <!-- Button to delete all event -->
-                <input type="submit" id="reset_calendar" name="reset_calendar" class="delete" 
-                    title="<?php echo __('TOOLTIP_RESET_CALENDAR'); ?>" 
-                    value="<?php echo __('MANAGE_RESET_CALENDAR'); ?>"
-                >
-            </td>
-            <td>
-                <!-- Button to view engrais planification-->
-                <input type="submit" id="nutrient_planification" name="nutrient_planification" 
-                    title="<?php echo __('TOOLTIP_RESET_CALENDAR'); ?>" 
-                    value="<?php echo __('CALENDAR_ENGRAIS'); ?>"
-                >
-            </td>
-            <td class="calendar-marge"></td>
-        </tr>
-    </table>
-    
 <div id="reset_dialog_calendar" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
     <p><?php echo __('RESET_CONFIRM_CALENDAR'); ?></p>
 </div>
