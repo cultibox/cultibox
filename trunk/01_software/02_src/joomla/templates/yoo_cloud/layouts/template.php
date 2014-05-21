@@ -182,6 +182,8 @@ include($this['path']->path('layouts:template.config.php'));
 				
 					<div id="maininner" class="grid-box">
 					
+                        <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_MESSAGE'); ?>" id="eyes_msgbox"></div>
+                    
 						<?php if ($this['modules']->count('innertop')) : ?>
 						<section id="innertop" class="grid-block"><?php echo $this['modules']->render('innertop', array('layout'=>$this['config']->get('innertop'))); ?></section>
 						<?php endif; ?>

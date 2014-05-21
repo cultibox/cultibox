@@ -119,7 +119,7 @@ $GLOBALS['SENSOR_DEFINITION']=array(
 $GLOBALS['PLUGV_MAX_CHANGEMENT']=999;
 
 //To use daily program:
-$GLOBALS['DAILY_PROGRAM'] = false;
+$GLOBALS['DAILY_PROGRAM'] = true;
 
 ?>
 
