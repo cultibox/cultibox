@@ -970,7 +970,7 @@ msgid "CALENDAR_STARTDATE"
 msgstr "Date de départ du programme"
 
 msgid "CREATE_CALENDAR_PROGRAM"
-msgstr "Créer le programme dans le calendrier"
+msgstr "Planifier"
 
 msgid "DISABLED_CREATE_CALENDAR_PROGRAM"
 msgstr "Aucun fichier XML présent pour créer un programme"
