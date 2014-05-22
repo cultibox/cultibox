@@ -41,6 +41,9 @@ $compat=true; //Variable to check if the browser used is compatible with the sof
 $notes=array(); //Array which will contains notes displayed in the welcome pages
 $browser=get_browser_infos(); //Get browsers informations by PHP: browser name, version...
 
+// Check database consistency
+check_database();
+
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
