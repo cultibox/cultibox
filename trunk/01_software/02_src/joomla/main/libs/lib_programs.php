@@ -54,7 +54,7 @@ function add_row_program_idx($name, $version, $program_idx = "") {
     $db = \db_priv_pdo_start();
     // Add line
     $sql = "INSERT INTO program_index(name, version, program_idx ,creation ,modification, plugv_filename) ";
-    $sql = $sql . "VALUE(\"" . $name . "\", \"" . $version . "\", \"" . $program_idx . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . date("Y-m-d H:i:s") . "\", \"plugv\");";
+    $sql = $sql . "VALUE(\"" . $name . "\", \"" . $version . "\", \"" . $program_idx . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . date("Y-m-d H:i:s") . "\", \"00\");";
 
     // Run command
     try {
@@ -68,7 +68,7 @@ function add_row_program_idx($name, $version, $program_idx = "") {
     $db=null;
 }
 
-// {{{ add_row_program_idx()
+// {{{ get_programm_number_empty()
 // ROLE get a programm number not used in table programs
 // RET program_idx
 function get_programm_number_empty() {
