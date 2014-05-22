@@ -88,6 +88,9 @@ function write_plgidx ($sd_card,$data) {
     // Create plgidx array
     $plgidx = array();
         
+    // Open database connexion
+    $db = \db_priv_pdo_start();
+    
     // Foreach event
     foreach($data as $event)
     {
@@ -96,10 +99,24 @@ function write_plgidx ($sd_card,$data) {
         {
             $formatedStartStime = $event['start_year'] . "-" . $event['start_month']  . "-" . $event['start_day'];
         
-            $plgidx[$formatedStartStime] = $event['program_index'];
+            // Query plugv filename associated
+            
+            try {
+                $sql = "SELECT plugv_filename FROM program_index WHERE id = \"" . $event['program_index'] . "\";";
+                $sth = $db->prepare($sql);
+                $sth->execute();
+                $res = $sth->fetch();
+            } catch(\PDOException $e) {
+                $ret=$e->getMessage();
+            }
+        
+            $plgidx[$formatedStartStime] = $res['plugv_filename'];
         }
     }
 
+    // Close connexion
+    $db = null;
+    
     // Init filename
     $file="$sd_card/cnf/prg/plgidx";
     

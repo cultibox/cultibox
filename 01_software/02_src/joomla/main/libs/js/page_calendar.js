@@ -121,12 +121,12 @@ $(document).ready(function() {
                                     text: CLOSE_button,
                                     click: function () {
                                         $( this ).dialog( "close" );
-                                        window.location = "calendar-"+slang;
+                                        //window.location = "calendar-"+slang;
                                         return false;
                                     }
                                     }],
                                     open: function(event, ui) {
-                                            $("a.ui-dialog-titlebar-close").remove();    
+                                        $("a.ui-dialog-titlebar-close").remove();    
                                     }
                                 });
                             } 
