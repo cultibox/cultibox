@@ -6,6 +6,10 @@
 * @license   YOOtheme Proprietary Use License (http://www.yootheme.com/license)
 */
 
+if (!isset($_SESSION)) {
+   session_start();
+}
+
 if (!isset($_COOKIE['position'])) {
     setcookie("position", "15,15,325", time()+(86400 * 30));
 }
@@ -45,7 +49,12 @@ include($this['path']->path('layouts:template.config.php'));
     require_once 'main/libs/utilfunc_sd_card.php';
     $_SESSION['LANG'] = get_current_lang(); //Language used by the user
     $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']); //Short language used to compute pages
+    $lang=$_SESSION['LANG'];
     __('LANG');
+    
+    // Check database consistency
+    check_database();
+    
 ?>
     <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css?v=<?=@filemtime('main/libs/css/jquery-ui-1.8.19.custom.css')?>" />
     <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css?v=<?=@filemtime('main/libs/css/cultibox.css')?>" />

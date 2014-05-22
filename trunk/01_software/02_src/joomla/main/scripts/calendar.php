@@ -45,9 +45,6 @@ $lang=$_SESSION['LANG'];
 __('LANG');
 
 $title_list=get_title_list(); //Get list of titles available from the database to be used in the calendar form
-
-// Check database consistency
-check_database();
     
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
