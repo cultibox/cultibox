@@ -4,12 +4,15 @@
 if(is_file("main/libs/l10n.php")) {
    require_once 'main/libs/l10n.php';
    require_once 'main/libs/lib_programs.php';
+   require_once 'main/libs/lib_calendar.php';
 } else if(is_file("../libs/l10n.php")) {
    require_once '../libs/l10n.php';
    require_once '../libs/lib_programs.php';
+   require_once '../libs/lib_calendar.php';
 } else {
    require_once '../../libs/l10n.php';
    require_once '../../libs/lib_programs.php';
+   require_once '../../libs/lib_calendar.php';
 }
 
 // {{{ __($msgkey, ...)
@@ -570,7 +573,9 @@ function concat_calendar_entries($data,$month,$day) {
        $start=strtotime($val['start_year']."/".$val['start_month']."/".$val['start_day']);
        $end=strtotime($val['end_year']."/".$val['end_month']."/".$val['end_day']);
     
-       if(($start<=$current)&&($end>=$current)) {
+       if(($start<=$current)
+            &&($end>=$current)
+            && $val['program_index'] == "" ) {
            $new_data[]=$val;
        }
     }
@@ -728,19 +733,19 @@ function clean_highchart_message($message="") {
 // IN  $message         message to be cleaned
 // RET new message cleaned 
 function clean_calendar_message($message="") {
-   $search = array('À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ò','Ó','Ô','Õ','Ö','Ù','Ú','Û','Ü','Ý','à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ð','ò','ó','ô','õ','ö','ù','ú','û','ü','ý','ÿ',"\n");
-   $replace = array('A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','O','O','O','O','O','U','U','U','U','Y','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','o','o','o','o','o','u','u','u','u','y','y',"\r\n");
-   $res=str_replace($search, $replace, $message);
+    $search = array('À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ò','Ó','Ô','Õ','Ö','Ù','Ú','Û','Ü','Ý','à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ð','ò','ó','ô','õ','ö','ù','ú','û','ü','ý','ÿ',"\n");
+    $replace = array('A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','O','O','O','O','O','U','U','U','U','Y','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','o','o','o','o','o','u','u','u','u','y','y',"\r\n");
+    $res=str_replace($search, $replace, $message);
 
-   $tmp="";
-   for($i=0;$i<strlen($res);$i++) { 
-       if(((ord($res[$i])>=32)&&(ord($res[$i])<=122))||(ord($res[$i])==10)||(ord($res[$i])==13)) {
-          $tmp=$tmp.$res[$i];
-       } else {
-         $tmp=$tmp." ";
-       }
-   }
-   return $tmp;
+    $tmp="";
+    for($i=0;$i<strlen($res);$i++) { 
+        if(((ord($res[$i])>=32)&&(ord($res[$i])<=122))||(ord($res[$i])==10)||(ord($res[$i])==13)) {
+            $tmp=$tmp.$res[$i];
+        } else {
+            $tmp=$tmp." ";
+        }
+    }
+    return $tmp;
 }
 // }}}
 

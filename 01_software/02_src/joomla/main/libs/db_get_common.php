@@ -2191,54 +2191,62 @@ function create_calendar_from_database(&$out,$start="",$end="") {
         $db = db_priv_pdo_start();
         if((strcmp("$start","")!=0)&&((strcmp("$end","")!=0))) {
              $sql = <<<EOF
-SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE (`StartTime` BETWEEN '{$start}' AND '{$end}') OR (`EndTime` BETWEEN '{$start}' AND '{$end}') OR (`StartTime` <= '{$start}' AND `EndTime` >= '{$end}')
+SELECT `Title`,`StartTime`,`EndTime`, `Description`, `program_index` FROM `calendar` WHERE (`StartTime` BETWEEN '{$start}' AND '{$end}') OR (`EndTime` BETWEEN '{$start}' AND '{$end}') OR (`StartTime` <= '{$start}' AND `EndTime` >= '{$end}')
 EOF;
         } else if((strcmp("$start","")!=0)&&((strcmp("$end","")==0))) {
              $sql = <<<EOF
-SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE "{$start}" BETWEEN `StartTime`AND `EndTime` 
+SELECT `Title`,`StartTime`,`EndTime`, `Description`, `program_index` FROM `calendar` WHERE "{$start}" BETWEEN `StartTime`AND `EndTime` 
 EOF;
         } else {
             $sql = <<<EOF
-SELECT `Title`,`StartTime`,`EndTime`, `Description` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%"
+SELECT `Title`,`StartTime`,`EndTime`, `Description`, `program_index` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%"
 EOF;
         }
 
         foreach($db->query("$sql") as $val) {
-         $val['Title']=clean_calendar_message($val['Title']);
-         $val['Description']=clean_calendar_message($val['Description']);
+            $val['Title']=clean_calendar_message($val['Title']);
+            $val['Description']=clean_calendar_message($val['Description']);
 
-         $start_month=substr($val['StartTime'],5,2);
-         $start_day=substr($val['StartTime'],8,2);
-         $start_year=substr($val['StartTime'],0,4);
+            $start_month=substr($val['StartTime'],5,2);
+            $start_day=substr($val['StartTime'],8,2);
+            $start_year=substr($val['StartTime'],0,4);
 
-         $end_month=substr($val['EndTime'],5,2);
-         $end_day=substr($val['EndTime'],8,2);
-         $end_year=substr($val['EndTime'],0,4);
+            $end_month=substr($val['EndTime'],5,2);
+            $end_day=substr($val['EndTime'],8,2);
+            $end_year=substr($val['EndTime'],0,4);
 
-         $s=mb_strtoupper($val['Title'], 'UTF-8');
+            $s=mb_strtoupper($val['Title'], 'UTF-8');
 
-         if((isset($val['Description']))&&(!empty($val['Description']))) {
-            if(strcmp($val['Description'],"null")==0) {
-                $desc="";
+            if((isset($val['Description']))&&(!empty($val['Description']))) {
+                if(strcmp($val['Description'],"null")==0) {
+                    $desc="";
+                } else {
+                    $desc=$val['Description'];
+                }
             } else {
-                $desc=$val['Description'];
+                $desc="";
             }
-         } else {
-            $desc="";
-         }
 
-         $data[]=array(
-            "start_year" => $start_year,
-            "start_month" => $start_month,
-            "start_day" => $start_day,
-            "end_year" => $end_year,
-            "end_month" => $end_month,
-            "end_day" => $end_day,  
-            "subject" => $s,
-            "description" => $desc
-         );
-         unset($s);
-         unset($desc);
+            $program_index="";
+            if((isset($val['program_index']))&&(!empty($val['program_index']))) {
+                if($val['program_index'] != "null") {
+                    $program_index=$val['program_index'];
+                }
+            } 
+
+            $data[]=array(
+                "start_year" => $start_year,
+                "start_month" => $start_month,
+                "start_day" => $start_day,
+                "end_year" => $end_year,
+                "end_month" => $end_month,
+                "end_day" => $end_day,  
+                "subject" => $s,
+                "description" => $desc,
+                "program_index" => $program_index
+            );
+            unset($s);
+            unset($desc);
       }
 
       $db=null;

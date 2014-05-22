@@ -1126,6 +1126,8 @@ msgstr "Acontecimientos del"
 msgid "EVENT_TO"
 msgstr "al"
 
+msgid "CALENDAR_DAILY_PROGRAM"
+msgstr "Programa diario"
 
 # For the cost part:
 msgid "SELECT_START_DAY"
@@ -1720,6 +1722,9 @@ msgstr "Permite gestionar fácilmente la visualización de los calendarios exter
 
 msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
 msgstr "Crear de manera sencilla un programa de abono predefinido. Este tipo de programa se debe crear a partir del primer día  en cual se quiere usar sus abonos, el resto esta calculado según el substrato y la marca de abono elegido."
+
+msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
+msgstr "Configure el programa para aplicar."
 
 msgid "TOOLTIP_DEFINE_COST"
 msgstr "Esta pestaña calcula el coste teórico y real de su instalación.<br /><ul class='list_class_tooltip'><li><b>El coste teórico</b> se calcula según las informaciones de sus programas de enchufes. La regulación (que puede apagar o activar un enchufe) no esta contabilizada( el enchufe esta considerada como activada). El precio presentado será el precio máximo  si la regulación no se activa.<br /><br /></li><li><b>El coste real </b> se calcula según las informaciones de los ficheros de potencia( fichero power: pwr_XX) de la Cultibox. Esos ficheros indican cuando un enchufe se ha activado o apagado. La regulación se toma en cuenta en el calculo del coste.</li></ul><b>Conclusión:</b> Es posible notar ligeras diferencias entre el calculo real y el calculo teórico que puede venir de una regulación no tomada en cuenta o de la precisión de los ficheros power (grabación cada X minutos cuando los programas son precisos a la segunda)."
