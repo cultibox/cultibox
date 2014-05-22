@@ -1087,7 +1087,7 @@ msgid "VALID_DELETE_CALENDAR"
 msgstr "Calendrier supprimé avec succès"
 
 msgid "VALID_ADD_CALENDAR"
-msgstr "Calendrier mis à jour avec le programme selectionné"
+msgstr "Calendrier mis à jour avec le programme sélectionné"
 
 msgid "MANAGE_EXTERNAL_XML"
 msgstr "Gestion des fichiers XML externes"
@@ -1099,7 +1099,7 @@ msgid "XML_DISPLAYED_FILE"
 msgstr "Fichiers XML à afficher"
 
 msgid "CALENDAR_EVENT_NAME"
-msgstr "Nom de l’évènement"
+msgstr "Nom de l'événement"
 
 msgid "CALENDAR_SELECT_CROISSANCE"
 msgstr "Sélection de la partie à appliquer"
@@ -1114,17 +1114,19 @@ msgid "CALENDAR_CROISSANCE_+_FLORAISON"
 msgstr "Croissance + Floraison"
 
 msgid "CALENDAR_IMPORTANT"
-msgstr "Evènement important"
+msgstr "Événement important"
 
 msgid "SUMARY_IMPORTANT_LIST"
-msgstr "Résumé des derniers évènements importants"
+msgstr "Résumé des derniers événements importants"
 
 msgid "EVENT_FROM"
-msgstr "Evènement du"
+msgstr "Événement du"
 
 msgid "EVENT_TO"
 msgstr "au"
 
+msgid "CALENDAR_DAILY_PROGRAM"
+msgstr "Programme journalier"
 
 # For the cost part:
 msgid "SELECT_START_DAY"
@@ -1720,6 +1722,9 @@ msgstr "Permet de gérer facilement l'affichage des calendriers externes tel que
 
 msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
 msgstr "Créer simplement un programme d'engrais prédéfini. Ce type de programme est à créer à partir du premier jour où vous souhaitez appliquer vos engrais, le reste est calculé en fonction du substrat et de la marque d'engrais choisie"
+
+msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
+msgstr "Définissez le programme à appliquer."
 
 msgid "TOOLTIP_DEFINE_COST"
 msgstr "Cet onglet calcule le coût théorique et réel de votre installation.<br /><ul class='list_class_tooltip'><li><b>Le coût théorique</b> est réalisé à partir des informations de vos programmes de prise. La régulation (qui peut couper ou allumer une prise) n'est pas comptabilisée (la prise est considérée comme en marche). Le prix affiché sera donc le prix maximal si la régulation ne s'est pas déclenchée.<br /><br /></li><li><b>Le coût réel</b> est réalisé à partir des informations des fichiers de puissance (fichiers power: pwr_XX) de la Cultibox. Ces fichiers renseignent lorsqu'une prise s'est allumée et s'est étteinte. La régulation est donc prise en compte dans ce calcul de coût.</li></ul><b>Conclusion:</b> il est possible de noter de légères différences entre le calcul réel et le calcul théorique qui peuvent provenir d'une régulation non prise en compte ou encore de la précision des fichiers power (enregistrement toutes les X minutes alors que les programmes sont précis à la seconde)."

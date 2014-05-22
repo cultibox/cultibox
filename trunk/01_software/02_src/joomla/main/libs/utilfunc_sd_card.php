@@ -855,7 +855,7 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
 
     $status=true;
 
-    if(isset($sd_card)&&(!empty($sd_card))) {
+    if(isset($sd_card) && !empty($sd_card)) {
    
         if(count($data)>0) {
             if((strcmp("$start","")==0)&&(strcmp("$end","")==0)) {
@@ -863,7 +863,7 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
                 $month_start=1;
                 $day_end=31;
                 $day_start=1;
-             } else if((strcmp("$start","")!=0)&&(strcmp("$end","")==0)) {
+            } else if((strcmp("$start","")!=0)&&(strcmp("$end","")==0)) {
                 $month_end=substr($start,5,2);
                 $month_start=$month_end;
                 $day_end=substr($start,8,2);
@@ -894,7 +894,7 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
                     }
 
                     // Create filename
-                    $file="$sd_card/logs/$month/cal_$day";
+                    $file = "$sd_card/logs/$month/cal_$day";
                     
                     // If file can be opened
                     if($f=@fopen("$file","w+")) {

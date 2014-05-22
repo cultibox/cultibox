@@ -1876,40 +1876,6 @@ $(document).ready(function() {
             });
     }
 
-
-    var checkCal = window.location.pathname.match(/calendar/g);
-    if((checkCal)&&(important_list.length>0)) {
-        $.ajax({
-           cache: false,
-           url: "../../main/modules/external/get_variable.php",
-           data: {name:"important"}
-        }).done(function (data) {
-                if(jQuery.parseJSON(data)!="True") {
-                      $("#dialog_calendar_important").dialog({
-                        resizable: true,
-                        width: 550,
-                        modal: true,
-                        closeOnEscape: false,
-                        dialogClass: "popup_message",
-                        buttons: [{
-                            text: CLOSE_button,
-                            "id": "btnClose",
-                            click: function () {
-                                $( this ).dialog("close");
-                            }
-                        }]
-                    });
-
-                    $.ajax({
-                        cache: false,
-                        url: "../../main/modules/external/set_variable.php",
-                        data: {name:"important", value: "True"}
-                    });
-                }
-            });
-    }
-
-
     if(window.location.pathname.match(/configuration/g)) {
         $("#rtc_offset_slider").slider({
             max: 11,

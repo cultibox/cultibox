@@ -4,6 +4,11 @@
     include('main/libs/js/page_calendar.js');
 ?>
 
+<script> 
+    // Include specific css
+    loadCSS("http://localhost:6891/cultibox/main/libs/css/page_calendar.css")
+</script>
+
 <style id='hideday'></style>
 <style id='hidetoday'></style>
 
@@ -43,14 +48,26 @@
                    title="<?php echo __('TOOLTIP_CREATE_CALENDAR_PROGRAM'); ?>"
                    src="main/libs/img/cal.png"  width="32" />
         </td>
+        <?php if($GLOBALS['DAILY_PROGRAM']) { ?>
+        <td>
+            <!-- Button to add daily program -->
+            <input type="image" id="daily_program" name="daily_program"
+                   title="<?php echo __('TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM'); ?>"
+                   src="main/libs/img/db_add.png"  width="32" />        
+        </td>
+        <?php } ?>
         <td class="calendar_right"></td>
     </tr>
 </table>
 
 <br />
 
+<!-- Display the calendar -->
 <div id='calendar'></div>
 
+<!-- ----------------------- Modal form ----------------------------- -->
+
+<!-- Calendar UI for event management -->
 <div id="dialog_edit" title="<?php echo __('WHAT_DIALOG_CALENDAR'); ?>" style="display:none">
     <table class="table_width">
         <tr>
@@ -77,6 +94,7 @@
 </div>
 
 
+<!-- Calendar management -->
 <div id="dialog_create" title="<?php echo __('MANAGE_CALENDAR'); ?>" style="display:none">
     <form>
         <table class="table_width">
@@ -145,10 +163,23 @@
     </form>
 </div>
 
+
+<!-- JQuery displayed when creating program is OK -->
+<div id="valid_create_calendar" style="display:none">
+    <p><?php echo __('VALID_ADD_CALENDAR'); ?></p>
+</div>
+
+<!-- JQuery displayed when creating program is NOK -->
+<div id="error_create_calendar" style="display:none">
+    <p><?php echo __('ERROR_ADD_CALENDAR_PROGRAM'); ?></p>
+</div>
+
+<!-- Jquery UI for deleting calendar -->
 <div id="reset_dialog_calendar" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
     <p><?php echo __('RESET_CONFIRM_CALENDAR'); ?></p>
 </div>
 
+<!-- Jquery UI when deleting is OK -->
 <div id="valid_reset_calendar" style="display:none">
     <p><?php echo __('VALID_DELETE_CALENDAR'); ?></p>
 </div>
@@ -163,15 +194,6 @@
     </form>
 </div>
 
-<br /><br /><br /><br /><br />
-
-<div id="valid_create_calendar" style="display:none">
-    <p><?php echo __('VALID_ADD_CALENDAR'); ?></p>
-</div>
-
-<div id="error_create_calendar" style="display:none">
-    <p><?php echo __('ERROR_ADD_CALENDAR_PROGRAM'); ?></p>
-</div>
 
 <!-- Div modual UI for nutrient planification -->
 <div id="manage_nutrient_planification" style="display:none" title="<?php echo __('CALENDAR_ENGRAIS'); ?>">
@@ -225,7 +247,9 @@
             <td><input id="event_name" name="event_name" type="text" class="whitefield" size="10" value=""></td>
         </tr>
         <tr>
-            <td><?php echo __('CALENDAR_SELECT_CROISSANCE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_SELECT_CROISSANCE'); ?>" /></td>
+            <td>
+                <?php echo __('CALENDAR_SELECT_CROISSANCE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_SELECT_CROISSANCE'); ?>" />
+           </td>
             <td>
                 <input type="radio" name="select_croissance" id="select_croissance" value="croi" checked="" /> <?php echo __('CALENDAR_CROISSANCE'); ?>
                 <input type="radio" name="select_croissance" id="select_croissance_flo" value="flo" checked="" /> <?php echo __('CALENDAR_FLORAISON'); ?>
@@ -235,21 +259,32 @@
     </table>
 </div>
 
-
+<!-- JQuery UI for important message -->
 <div id="dialog_calendar_important" style="display:none" title="<?php echo __('SUMARY_IMPORTANT_LIST'); ?>">
-    <?php if(count($important_list)>0) { ?>
-        <ul>
-            <?php foreach($important_list as $imp) {
+    <?php 
+    if(count($important_list)>0) {
+        echo '<ul>';
+            foreach($important_list as $imp) {
                 echo '<li>';
                     echo __('EVENT_FROM')." ".substr($imp['StartTime'],0,10)." ".__('EVENT_TO')." ".substr($imp['EndTime'],0,10).":";
                     echo "<p class='imp_center' style='color:".$imp['color']."'>".$imp['title']."</p>".$imp['Description']."<br /><br /><br />";
                 echo '</li>';
-            } ?>
-        </ul>
-    <?php } ?>
+            }
+        echo '</ul>';
+    } 
+    ?>
 </div>
 
-
-
-
-
+<!-- Drag message box for daily program -->
+<div id="manage_daily_program" style="display:none" title="<?php echo __('CALENDAR_DAILY_PROGRAM'); ?>">
+    <?php
+        // Read program index
+        $program_index = array();
+        program\get_program_index_info($program_index);
+        // Foreach programm, add a line with the name
+        foreach ($program_index as $key => $value)
+        {
+            echo '<div class="external-event" id="' . $value['id'] . '">' . $value['name'] . '</div>';
+        }
+    ?>
+</div>
