@@ -79,9 +79,6 @@ if((!isset($submenu))||(empty($submenu))) {
     }
 } 
 
-// Check database consistency
-check_database();
-
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $hdd_list=array();

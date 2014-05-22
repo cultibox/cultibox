@@ -47,9 +47,6 @@ $error_value[4]=__('ERROR_VALUE_PROGRAM_HUMI','html');
 $error_value[5]=__('ERROR_VALUE_PROGRAM_CM','html');
 $error_value[6]=__('ERROR_VALUE_PROGRAM','html');
 
-// Check database consistency
-check_database();
-
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();

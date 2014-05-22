@@ -24,7 +24,7 @@ function check_db() {
         return 0;
         
     // Buil MySQL command to create table
-    $sql = "CREATE TABLE program_index (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), version VARCHAR(100), program_idx INT);";
+    $sql = "CREATE TABLE program_index (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), version VARCHAR(100), program_idx INT, creation DATETIME, modification DATETIME, plugv_filename VARCHAR(10));";
     
     // Create table
     try {
