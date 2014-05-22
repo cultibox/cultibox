@@ -53,7 +53,8 @@ function add_row_program_idx($name, $version, $program_idx = "") {
     // Open connection to dabase
     $db = \db_priv_pdo_start();
     // Add line
-    $sql = "INSERT INTO program_index(name, version, program_idx) VALUE(\"" . $name . "\", \"" . $version . "\", \"" . $program_idx . "\");";
+    $sql = "INSERT INTO program_index(name, version, program_idx ,creation ,modification, plugv_filename) ";
+    $sql = $sql . "VALUE(\"" . $name . "\", \"" . $version . "\", \"" . $program_idx . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . date("Y-m-d H:i:s") . "\", \"plugv\");";
 
     // Run command
     try {
