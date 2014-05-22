@@ -1263,4 +1263,18 @@ function get_rtc_offset($rtc = 0) {
 }
 //}}}
 
+//{{{ get_rtc_offset()
+// ROLE check and update database
+// RET rtc offset value to be recorded 
+function check_database() {
+
+    // Check program_index database consitency
+    program\check_db();
+
+    // Check calendar database consitency
+    calendar\check_db();
+
+}
+//}}}
+
 ?>

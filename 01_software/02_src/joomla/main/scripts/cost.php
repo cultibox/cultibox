@@ -55,6 +55,9 @@ $submit=getvar("submit_cost");
 $resume="";
 $lang=$_SESSION['LANG'];
 
+// Check database consistency
+check_database();
+
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
