@@ -543,6 +543,7 @@ $(document).ready(function() {
                     ajaxDate = ajaxDate + "-" + copiedEventObject.start.getDate();
                 }
                 
+                // Update datatbase in ajax
                 $.ajax({
                     cache: false,
                     url: "../../main/modules/external/update_calendar_external.php",
