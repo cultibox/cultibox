@@ -1,48 +1,48 @@
 <script>
 
-plugs_infoJS = <?php echo json_encode($plugs_infos) ?>;
-highchart_plug=<?php echo $selected_plug; ?>;
-resume_plugs=<?php echo json_encode($resume) ?>;
-resume_regul=<?php echo json_encode($resume_regul) ?>;
-start=<?php echo json_encode($start) ?>;
-end=<?php echo json_encode($end) ?>;
-plug_selected=<?php echo json_encode($selected_plug) ?>;
-rep=<?php echo json_encode($rep) ?>;
-error_valueJS=<?php echo json_encode($error_value) ?>;
-title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+plugs_infoJS   = <?php echo json_encode($plugs_infos) ?>;
+highchart_plug = <?php echo $selected_plug; ?>;
+resume_plugs   = <?php echo json_encode($resume) ?>;
+resume_regul   = <?php echo json_encode($resume_regul) ?>;
+start          = <?php echo json_encode($start) ?>;
+end            = <?php echo json_encode($end) ?>;
+plug_selected  = <?php echo json_encode($selected_plug) ?>;
+rep            = <?php echo json_encode($rep) ?>;
+error_valueJS  = <?php echo json_encode($error_value) ?>;
 
 $(document).ready(function(){
 
+    // Time pickers definition
     $('#start_time').timepicker({
         <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
         showSecond: true,
         showOn: 'both',
         buttonImage: "../../main/libs/img/datepicker.png",
         buttonImageOnly: 'true',
-        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
+        <?php echo "buttonText: '"  . __('TIMEPICKER_BUTTON_TEXT')."',"; ?>
         timeFormat: 'hh:mm:ss',
-        <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
-        <?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
-        <?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
-        <?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
-        <?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
-        <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."',"; ?>
+        <?php echo "timeText: '"    . __('TIMEPICKER_TIME')."',"; ?>
+        <?php echo "hourText: '"    . __('TIMEPICKER_HOUR')."',"; ?>
+        <?php echo "minuteText: '"  . __('TIMEPICKER_MINUTE')."',"; ?>
+        <?php echo "secondText: '"  . __('TIMEPICKER_SECOND')."',"; ?>
+        <?php echo "currentText: '" . __('TIMEPICKER_ENDDAY')."',"; ?>
+        <?php echo "closeText: '"   . __('TIMEPICKER_CLOSE')."',"; ?>
     });
     
     $('#end_time').timepicker({
-        <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
+        <?php echo "timeOnlyTitle: '". __('TIMEPICKER_SELECT_TIME')."',"; ?>
         showOn: 'both',
         buttonImage: "../../main/libs/img/datepicker.png",
         buttonImageOnly: 'true',
-        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
+        <?php echo "buttonText: '"  . __('TIMEPICKER_BUTTON_TEXT')."',"; ?>
         showSecond: true,
         timeFormat: 'hh:mm:ss',
-        <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
-        <?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
-        <?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
-        <?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
-        <?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
-        <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
+        <?php echo "timeText: '"    . __('TIMEPICKER_TIME')."',"; ?>
+        <?php echo "hourText: '"    . __('TIMEPICKER_HOUR')."',"; ?>
+        <?php echo "minuteText: '"  . __('TIMEPICKER_MINUTE')."',"; ?>
+        <?php echo "secondText: '"  . __('TIMEPICKER_SECOND')."',"; ?>
+        <?php echo "currentText: '" . __('TIMEPICKER_ENDDAY')."',"; ?>
+        <?php echo "closeText: '"   . __('TIMEPICKER_CLOSE')."'"; ?>
     });
     
     $('#repeat_time').timepicker({
@@ -108,14 +108,148 @@ $(document).ready(function(){
         <?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
         <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
     });
+    
+    // Display and control user form for settings
+    $("#program_settings").click(function(e) {
+        e.preventDefault();
+
+        $("#manage_program").dialog({
+            resizable: false,
+            width: 800,
+            closeOnEscape: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CANCEL_button,
+                "id": "btnClose",
+                click: function () {
+                    $( this ).dialog( "close" ); return false;
+                }
+            }],
+        });
+    });
+    
+    // Action when user decide to delete a program
+    $("#daily_delete_button").click(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+           cache: false,
+           type: "POST",
+           url: "../../main/modules/external/daily_program_delete.php",
+           data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&program_delete_index=" + $( "#program_delete_index" ).val()
+        }).done(function (data) {
+        
+            // Display dialog bow to alert user
+            $("#dialog-form-delete-daily").dialog({
+                resizable: false,
+                closeOnEscape: true,
+                dialogClass: "popup_message",
+                modal: true,
+                buttons: [{
+                    text: CLOSE_button,
+                    "id": "btnClose",
+                    click: function () {
+                        $( this ).dialog( "close" ); return false;
+                    }
+                }],
+            });
+        
+            // If it's the same program, redraw the page
+            if ($( "#program_delete_index" ).val() == <?php echo $program_index ?>)
+            {
+                window.location = "program-"+slang;
+            }
+            
+            // remove program from available
+            $("#program_delete_index option[value='" + $( "#program_delete_index" ).val() + "']").remove();
+            $("#program_index option[value='" + $( "#program_delete_index" ).val() + "']").remove();
+
+        });
+        
+    });    
+    
+    var program_name = $( "#program_name" );
+    function checkLength( o, n, min, max ) {
+        if ( o.val().length > max || o.val().length < min ) {
+            o.addClass( "ui-state-error" );
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    $( "#dialog-form-save-daily" ).dialog({
+        autoOpen: false,
+        height: 180,
+        width: 350,
+        modal: true,
+        buttons: {
+        "Enregistrer": function() {
+            var bValid = true;
+            program_name.removeClass( "ui-state-error" );
+            bValid = bValid && checkLength( program_name, "program_name", 3, 16 );
+            if ( bValid ) {
+                $.ajax({ 
+                    type: "POST",
+                    url: "../../main/modules/external/daily_program_save.php",
+                    // Lang is the end of the url
+                    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&name=" + $('#program_name').val() + "&input=1&version=1.0",
+                    context: document.body,
+                    success: function(data, textStatus, jqXHR) {
+                        // Check response from server
+                        var return_array = JSON.parse(data);
+                        
+                        // Add program in select
+                        $('#program_delete_index').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                        $('#program_index').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                        
+                        // Prevent user that's ok
+                        $("#dialog-form-copy-daily").dialog({
+                            resizable: false,
+                            closeOnEscape: true,
+                            dialogClass: "popup_message",
+                            modal: true,
+                            buttons: [{
+                                text: CLOSE_button,
+                                "id": "btnClose",
+                                click: function () {
+                                    $( this ).dialog( "close" ); return false;
+                                }
+                            }],
+                        });
+                        
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // Error during request
+                    }
+                });
+                
+                $( this ).dialog( "close" );
+            }
+        },
+        "Quitter": function() {
+            $( this ).dialog( "close" );
+        }},
+        close: function() {
+            program_name.val( "" ).removeClass( "ui-state-error" );
+        }
+    });
+
+    $( "#daily_save_button" )
+        .button()
+        .click(function() {
+        $( "#dialog-form-save-daily" ).dialog( "open" );
+        });
+        
+        
 });
 
 
 Highcharts.setOptions({
-lang: {
-<?php echo "resetZoom : '".__('RESET_ZOOM_TITLE','highchart')."',"; ?>
-<?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE','highchart')."'"; ?>
-}
+    lang: {
+        <?php echo "resetZoom : '".__('RESET_ZOOM_TITLE','highchart')."',"; ?>
+        <?php echo "resetZoomTitle : '".__('RESET_ZOOM_TITLE','highchart')."'"; ?>
+    }
 });
 
 var enabled = false;
@@ -371,29 +505,29 @@ $(document).ready(function() {
 
         chart.yAxis[0].update({
             labels: {
-                     useHTML: true,
-                     formatter: function() {
-                        if((this.value>=0)&&(this.value<=100)) {      
-                            if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="lamp")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="other")) {
-                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                                if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
-                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="ventilator")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="heating")) { 
-                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
-                                if(this.value>0) return this.value+'°C';
-                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="pump")) { 
-                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
-                                if(this.value>0) return this.value+' cm';
-                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                            } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="dehumidifier")) { 
-                                if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
-                                if(this.value>0) return this.value+'%';
-                                if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
-                            } else { 
-                                return this.value;
-                            }
+                useHTML: true,
+                formatter: function() {
+                    if((this.value>=0)&&(this.value<=100)) {      
+                        if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="lamp")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="other")) {
+                            if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                            if(this.value==100) return '<?php echo __("VALUE_ON"); ?>';
+                        } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="ventilator")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="heating")) { 
+                            if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                            if(this.value>0) return this.value+'°C';
+                            if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                        } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="pump")) { 
+                            if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                            if(this.value>0) return this.value+' cm';
+                            if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                        } else if((plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="humidifier")||(plugs_infoJS[tmp_highchart_plug]["PLUG_TYPE"]=="dehumidifier")) { 
+                            if(this.value==100) return '<?php echo __("CHART_FORCE_ON_VALUE"); ?>';
+                            if(this.value>0) return this.value+'%';
+                            if(this.value==0) return '<?php echo __("VALUE_OFF"); ?>';
+                        } else { 
+                            return this.value;
                         }
-                  }
+                    }
+                }
            }
         });
 
@@ -416,11 +550,11 @@ $(document).ready(function() {
             
         switch(plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']) { 
             case 'other': getRegulation("on",plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']); 
-                          if($('#regprog').is(':checked')) {
+                        if($('#regprog').is(':checked')) {
                            $('#regoff').attr('checked', true); 
-                          }  
-                          $('#regul_div').hide();
-                          break;
+                        }  
+                        $('#regul_div').hide();
+                        break;
             case 'lamp': getRegulation("on",plugs_infoJS[$('#selected_plug').val()-1]['PLUG_TYPE']); 
                          $('#regul_div').hide(); 
                          if($('#regprog').is(':checked')) {

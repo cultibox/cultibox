@@ -224,6 +224,8 @@ msgstr "Retardo de tiempo del reloj interno"
 msgid "RTC_OFFSET_UNITY"
 msgstr "segundo(s)"
 
+msgid "ACTIV_DAILY_PROGRAM"
+msgstr "Autorizar programa diario"
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -657,10 +659,12 @@ msgstr "Regulador de intensidad"
 msgid "CANAL"
 msgstr "Canal"
 
-
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
-msgstr "Visualizar el comportamiento actual del enchufe"
+msgstr " Toma :"
+
+msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
+msgstr " Enchufe : "
 
 msgid "CONFIGURE_PROGRAM"
 msgstr "Configurar acción del enchufe"
@@ -855,7 +859,7 @@ msgid "VALUE_DIMMER"
 msgstr "Regulador de intensidad"
 
 msgid "PROGRAM_DAILY_SAVE"
-msgstr "Guardar"
+msgstr "Guarde una copia"
 
 msgid "PROGRAM_DAILY_SAVE_PROGRESS"
 msgstr "Guardando ..."
@@ -874,6 +878,12 @@ msgstr "Remove Program"
 
 msgid "PROGRAM_DAILY_DELETE"
 msgstr "Eliminar"
+
+msgid "PROGRAM_DAILY_DELETE_VALID"
+msgstr "El programa ha sido eliminado."
+
+msgid "PARAMETERS"
+msgstr "Configuración"
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
@@ -1707,6 +1717,9 @@ msgstr "Si la regulación segundaria esta activada en la configuración del soft
 
 msgid "TOOLTIP_SHOW_COST"
 msgstr "Activando esa opción , se puede tener acceso a la pagina de calculo de coste de su instalación usando el menú ‘Coste’ que aparece en la barra del menú principal. "
+
+msgid "TOOLTIP_ACTIV_DAILY_PROGRAM"
+msgstr "Al activar esta opción se pueden hacer diferentes programas para cada día."
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Ese campo permite definir la hora de reseteo del min/max de todos los sensores presentes en la pantalla de la Cultibox"

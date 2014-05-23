@@ -7,25 +7,25 @@ require_once('../../../main/libs/utilfunc.php');
 require_once('../../../main/libs/utilfunc_sd_card.php');
 
 
-if((isset($_POST["title"])) && (!empty($_POST["title"]))
-    &&(isset($_POST["start"])) && (!empty($_POST["start"]))
-    &&(isset($_POST["end"])) && (!empty($_POST["end"]))
-    &&(isset($_POST["id"])) && (!empty($_POST["id"]))
-    &&(isset($_POST["color"]))&&(!empty($_POST["color"]))) {
+if (  isset($_POST["title"]) && !empty($_POST["title"])
+   && isset($_POST["start"]) && !empty($_POST["start"])
+   && isset($_POST["end"])   && !empty($_POST["end"])
+   && isset($_POST["id"])    && !empty($_POST["id"])
+   && isset($_POST["color"]) && !empty($_POST["color"])) {
 
-    $title=$_POST["title"];
-    $start=$_POST["start"];
-    $end=$_POST["end"];
-    $id=$_POST["id"];
-    $color=$_POST["color"];
+    $title   = $_POST["title"];
+    $start   = $_POST["start"];
+    $end     = $_POST["end"];
+    $id      = $_POST["id"];
+    $color   = $_POST["color"];
+    $sd_card = $_POST["card"];
 
-    if((!isset($_POST["important"]))||(empty($_POST["important"]))) {  
+    if (!isset($_POST["important"]) || empty($_POST["important"])) {  
         $important=0;
-    }else {
+    } else {
         $important=1;
     }
 
-    $sd_card=$_POST["card"];
     $main_error=array();
     
 
@@ -57,20 +57,21 @@ EOF;
         $db=null;
 
 
-        if((strcmp("$start",$res[0]['StartTime'])==0)&&(strcmp("$end",$res[0]['EndTime'])==0)) {
-            if((isset($sd_card))&&(!empty($sd_card))) {
-                if((strcmp("$start","$end")==0)||(!isset($end))||(empty($end))) {
-                    clean_calendar($sd_card,$start);
-                    $calendar=create_calendar_from_database($main_error,$start);
-                    if(count($calendar)>0) {
-                        write_calendar($sd_card,$calendar,$main_error,$start);
-                    }
+        if ((strcmp("$start",$res[0]['StartTime'])==0)&&(strcmp("$end",$res[0]['EndTime'])==0)) {
+            if ((isset($sd_card))&&(!empty($sd_card))) {
+                if ($start == $end || !isset($end) ||empty($end))
+                {
+                    $calendar = create_calendar_from_database($main_error,$start);
+
+                    write_calendar($sd_card,$calendar,$main_error,$start);
+                    calendar\write_plgidx($sd_card,$calendar);
+
                 } else {
-                    clean_calendar($sd_card,$start,$end);
-                    $calendar=create_calendar_from_database($main_error,$start,$end);
-                    if(count($calendar)>0) {
-                        write_calendar($sd_card,$calendar,$main_error,$start,$end);
-                    }
+                    $calendar = create_calendar_from_database($main_error,$start,$end);
+
+                    write_calendar($sd_card,$calendar,$main_error,$start,$end);
+                    calendar\write_plgidx($sd_card,$calendar);
+
                 }
             }
         } else {
@@ -78,7 +79,6 @@ EOF;
             $timestartbis=date("U",strtotime($res[0]['StartTime']));
             $timeend=date("U",strtotime($end));
             $timeendbis=date("U",strtotime($res[0]['EndTime']));
-
 
             if($timestart>$timestartbis) {
                 $start=$res[0]['StartTime'];
@@ -88,12 +88,11 @@ EOF;
                 $end=$res[0]['EndTime'];
             }
 
-
-            clean_calendar($sd_card,$start,$end);
             $calendar=create_calendar_from_database($main_error,$start,$end);
-            if(count($calendar)>0) {
-                    write_calendar($sd_card,$calendar,$main_error,$start,$end);
-            }
+
+            write_calendar($sd_card,$calendar,$main_error,$start,$end);
+            calendar\write_plgidx($sd_card,$calendar);
+
         }
     }
 } else {

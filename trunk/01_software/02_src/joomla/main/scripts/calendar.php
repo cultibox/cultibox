@@ -28,11 +28,13 @@ $start_load = getmicrotime();
 $main_error=array();
 $main_info=array();
 $informations = Array(); //Aray containing data from the informations table or the log.txt file
-$version=get_configuration("VERSION",$main_error); //To get the current version of the software 
-$pop_up = get_configuration("SHOW_POPUP",$main_error); // To check if pop up messages are enabled
 $pop_up_message=""; 
 $xml_list=get_external_calendar_file(); //Get the list of the xml file is the mail/xml directory to add event from those files
 $calendar_start=getvar('calendar_startdate'); //Variable used when user add a grown calendar to a specific date
+
+$version             = get_configuration("VERSION",$main_error); //To get the current version of the software 
+$pop_up              = get_configuration("SHOW_POPUP",$main_error); // To check if pop up messages are enabled
+$activ_daily_program = get_configuration("ACTIV_DAILY_PROGRAM",$main_error); // To activ daily program
 
 if((!isset($calendar_start))||(empty($calendar_start))) {
     $calendar_start=date('Y')."-".date('m')."-".date('d'); //If user didn't had a grown calendar, today's date is used for the form
@@ -117,12 +119,12 @@ if((isset($sd_card))&&(!empty($sd_card))) {
     if(!check_sd_card($sd_card)) {
         $main_error[]=__('ERROR_WRITE_CALENDAR');
     } else {
-        clean_calendar($sd_card);
-        if(count($data)>0) {
-            if(!write_calendar($sd_card,$data,$main_error)) {
-                $main_error[]=__('ERROR_WRITE_CALENDAR');
-            }
+
+        if(!write_calendar($sd_card,$data,$main_error)) {
+            $main_error[]=__('ERROR_WRITE_CALENDAR');
         }
+        calendar\write_plgidx($sd_card,$data);
+
     } 
 }
 

@@ -5,14 +5,17 @@ if(is_file("main/libs/l10n.php")) {
    require_once 'main/libs/l10n.php';
    require_once 'main/libs/lib_programs.php';
    require_once 'main/libs/lib_calendar.php';
+   require_once 'main/libs/lib_configuration.php';
 } else if(is_file("../libs/l10n.php")) {
    require_once '../libs/l10n.php';
    require_once '../libs/lib_programs.php';
    require_once '../libs/lib_calendar.php';
+   require_once '../libs/lib_configuration.php';
 } else {
    require_once '../../libs/l10n.php';
    require_once '../../libs/lib_programs.php';
    require_once '../../libs/lib_calendar.php';
+   require_once '../../libs/lib_configuration.php';
 }
 
 // {{{ __($msgkey, ...)
@@ -565,16 +568,20 @@ function format_program_highchart_data($arr,$date_start="") {
 // IN   $month       month to be checked
 // IN   $day         day to be checked
 // RET return an array containing all datas for the day checked
-function concat_calendar_entries($data,$month,$day) {
+function concat_calendar_entries($data,$year,$month,$day) {
     $new_data=array();
 
-    foreach($data as $val) {
-       $current=strtotime($month."/".$day);
-       $start=strtotime($val['start_year']."/".$val['start_month']."/".$val['start_day']);
-       $end=strtotime($val['end_year']."/".$val['end_month']."/".$val['end_day']);
+    $current =   strtotime($year . "/" . $month . "/" . $day);
     
-       if(($start<=$current)
-            &&($end>=$current)
+    foreach($data as $val) {
+    
+       
+       $start   =   strtotime($val['start_year'] . "/" . $val['start_month'] . "/" . $val['start_day']);
+       $end     =   strtotime($val['end_year']   . "/" . $val['end_month']   . "/" . $val['end_day']);
+    
+        // Don't concat programm_index event
+       if(($start <= $current)
+            &&($end >= $current)
             && $val['program_index'] == "" ) {
            $new_data[]=$val;
        }
@@ -1263,7 +1270,29 @@ function get_rtc_offset($rtc = 0) {
 }
 //}}}
 
-//{{{ get_rtc_offset()
+//{{{ get_decode_rtc_offset()
+// ROLE Decode rtc offset as write in conf file
+// RET rtc offset value to be recorded 
+function get_decode_rtc_offset($rtc = 0) {
+
+    // If RTC is not defined, return default value 0000
+    if($rtc == 0) 
+        return 0;
+    
+    if($rtc > 128) { 
+        $rtc = -1 * ($rtc - 128);
+    }
+    
+    // Compute RTC value
+    // Formula : offset_sec_per_day = 2 x RTC_OFFSET x 60 x 24 / 32768 
+    $offset = 2 * $rtc * 60 * 24 / 32768 ;
+    
+    // Return computed value
+    return $offset;
+}
+//}}}
+
+//{{{ check_database()
 // ROLE check and update database
 // RET rtc offset value to be recorded 
 function check_database() {
@@ -1274,6 +1303,9 @@ function check_database() {
     // Check calendar database consitency
     calendar\check_db();
 
+    // Check configuration DB
+    configuration\check_db();
+    
 }
 //}}}
 

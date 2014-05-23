@@ -33,8 +33,8 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
     if(!check_sd_card($sd_card))
         return ERROR_WRITE_SD;
         
-    $program="";
-    $conf_uptodate=true;
+    $program = "";
+    $conf_uptodate = true;
 
     /* TO BE DELETED */
     if(!compat_old_sd_card($sd_card)) {
@@ -47,6 +47,9 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
     $program=create_program_from_database($main_error);
     if(!compare_program($program,$sd_card)) {
         $conf_uptodate=false;
+        
+        // Caution : Only plugv is updated
+        // TODO : Update every pluXX and plgidx
         if(!save_program_on_sd($sd_card,$program)) {
             $main_error_tab[]=__('ERROR_WRITE_PROGRAM');
             return ERROR_WRITE_PROGRAM;
@@ -69,7 +72,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
         }
     }
 
-    $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
+    $plugconf = create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
     if(count($plugconf)>0) {
         if(!compare_plugconf($plugconf,$sd_card)) {
             $conf_uptodate=false;
@@ -99,20 +102,27 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
         }
     }
 
+    // Read value on sd Card
+    $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
+    $sdConfRtc = get_decode_rtc_offset($sdConfRtc);
+    // Update database
+    insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
+    
     $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
     $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
     $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
-    $alarmenable = get_configuration("ALARM_ACTIV",$main_error);
-    $alarmvalue = get_configuration("ALARM_VALUE",$main_error);
-    $resetvalue= get_configuration("RESET_MINMAX",$main_error);
-    $rtc=get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
+    $alarmenable    = get_configuration("ALARM_ACTIV",$main_error);
+    $alarmvalue     = get_configuration("ALARM_VALUE",$main_error);
+    $resetvalue     = get_configuration("RESET_MINMAX",$main_error);
+    $rtc            = get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
     if("$updatefrequency"=="-1") {
         $updatefrequency="0";
     }
-
-    if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,"$resetvalue","$rtc")) {
+    
+    
+    if(!compare_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,$resetvalue,$rtc)) {
         $conf_uptodate=false;
-        if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,"$alarmenable","$alarmvalue","$resetvalue","$rtc",$main_error)) {
+        if(!write_sd_conf_file($sd_card,$recordfrequency,$updatefrequency,$powerfrequency,$alarmenable,$alarmvalue,$resetvalue,$rtc,$main_error)) {
             $main_error_tab[]=__('ERROR_WRITE_SD_CONF');
             return ERROR_WRITE_SD_CONF;
         }
@@ -315,44 +325,59 @@ function check_cultibox_card($dir="") {
 // IN   $sd_card        path to the sd card to save datas
 //      $program        the program to be save in the sd card 
 // RET true if data correctly written, false else
-function save_program_on_sd($sd_card,$program) {
-    if(is_file("${sd_card}/cnf/prg/plugv")) {
-        $file="${sd_card}/cnf/prg/plugv";
-        $prog="";
-        $nbPlug=count($program);
-        $shorten=false;
+function save_program_on_sd($sd_card,$program,$filename = "plugv") {
 
-        if($nbPlug>0) {
-            if($nbPlug>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
-                $nbPlug=$GLOBALS['PLUGV_MAX_CHANGEMENT'];
-                $shorten=true;
-            }
+    // Init file name
+    $file = "${sd_card}/cnf/prg/${filename}";
+    
+    // Init out program file contants
+    $prog="";
+    $nbPlug=count($program);
+    $shorten=false;
 
-         while(strlen($nbPlug)<3) $nbPlug="0$nbPlug";
-         $prog=$nbPlug."\r\n";
+    // Cjeck if there are some plugs
+    if($nbPlug == 0)
+        return false;
+    
+    // Limit nb plugs to max allowed
+    if($nbPlug>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
+        $nbPlug=$GLOBALS['PLUGV_MAX_CHANGEMENT'];
+        $shorten=true;
+    }
 
+    // Complet nbPlug variable up to 3 digits
+    while(strlen($nbPlug)<3)
+        $nbPlug="0$nbPlug";
+    
+    // Add header of the file
+    $prog=$nbPlug."\r\n";
 
-         if($shorten) {
-            for($i=0; $i<$nbPlug-1; $i++) $prog=$prog."$program[$i]"."\r\n";
-         } else {
-            for($i=0; $i<$nbPlug; $i++) $prog=$prog."$program[$i]"."\r\n";
-         }
+    // If we have to reduce number of change
+    if($shorten) {
+        // For each line of the program add it to file
+        for($i=0; $i<$nbPlug-1; $i++) 
+            $prog=$prog."$program[$i]"."\r\n";
+    } else {
+        for($i=0; $i<$nbPlug; $i++) 
+            $prog=$prog."$program[$i]"."\r\n";
+    }
 
-         if($shorten) {
-            $last=count($program)-1;
-            $prog=$prog."$program[$last]"."\r\n";
-         }
+    // If the programm has been cut (too many change) add an last entry
+    if($shorten) {
+        $last=count($program)-1;
+        $prog=$prog."$program[$last]"."\r\n";
+    }
 
-         if($f=@fopen("$sd_card/cnf/prg/plugv","w+")) {
-            if(!@fwrite($f,"$prog")) { fclose($f); return false; }
+    // Write it on SD card
+    if($f = @fopen($file,"w+")) {
+        if(!@fwrite($f,"$prog")) 
+        { 
             fclose($f);
-         }
-      } else {
-         return false;
-      }
-   } else {
-      return false;
-   }
+            return false;
+        }
+            fclose($f);
+    }
+
    return true;
 }
 // }}}
@@ -659,7 +684,7 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
    while(strlen($rtc)<4) {
       $rtc="0$rtc";
    }
-
+   
     $reset_value=str_replace(":","",$reset_value);
     if((strlen($reset_value)!=4)||($reset_value<0)) {
         $reset_value="0000";
@@ -678,7 +703,9 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
 
     $buffer=@file("$file");
 
-    if(count($conf)!=count($buffer)) return false;
+    if(count($conf)!=count($buffer)) 
+        return false;
+        
     for($nb=0;$nb<count($conf);$nb++) {
         if(strcmp(trim($conf[$nb]),trim($buffer[$nb]))!=0) {
             return false;
@@ -687,6 +714,148 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     return true;
 }
 // }}}
+
+// {{{ read_sd_conf_file()
+// ROLE   Read one variable of conffile
+// IN   $sd_card      location of the sd card to save data
+//   $variable      Variable to read    
+//   $out                error or warning messages
+// RET Value read
+function read_sd_conf_file($sd_card,$variable,$out="") {
+   // Check if sd card is defined
+    if (empty($sd_card))
+        return false;
+
+    $file="$sd_card/cnf/conf";
+    
+    // Open file
+    $fid = fopen($file,"r+");
+    
+    $offset = "";
+    
+    switch ($variable) {
+        case "update_plugs_frequency":
+            $offset = 18 * 0 + 12;
+            
+            if ($value == -1)
+                $value = 0;
+            
+            break;
+        case "record_frequency":
+            $offset = 18 * 1 + 12;
+            
+            $value = $value * 60;
+            
+            break;
+        case "power_frequency":
+            $offset = 18 * 2 + 12;
+            
+            $value = $value * 60;
+            
+            break;
+        case "alarm_activ":
+            $offset = 18 * 3 + 12;
+            break; 
+        case "alarm_value":
+            $offset = 18 * 4 + 12;
+            break; 
+        case "rtc_offset":
+            $offset = 18 * 7 + 12;
+            break; 
+        case "minmax":
+            $offset = 18 * 8 + 12;
+            break;             
+    }
+    
+    $val = "";
+    
+    if ($offset != "")
+    {
+        fseek($fid, $offset);
+        
+        $val = fread($fid,4);
+    }
+    
+    // Close
+    fclose($fid);
+    
+    return $val;
+    
+}
+//}}}
+
+// {{{ update_sd_conf_file()
+// ROLE   update conf file 
+// IN   $sd_card      location of the sd card to save data
+//   $variable      Variable to set    
+//   $value         Value to set    
+//   $out                error or warning messages
+// RET false if an error occured, true else  
+function update_sd_conf_file($sd_card,$variable,$value,$out="") {
+
+    // Check if sd card is defined
+    if (empty($sd_card))
+        return false;
+
+    $file="$sd_card/cnf/conf";
+    
+    // Open file
+    $fid = fopen($file,"r+");
+    
+    $offset = "";
+    
+    switch ($variable) {
+        case "update_plugs_frequency":
+            $offset = 18 * 0 + 12;
+            
+            if ($value == -1)
+                $value = 0;
+            
+            break;
+        case "record_frequency":
+            $offset = 18 * 1 + 12;
+            
+            $value = $value * 60;
+            
+            break;
+        case "power_frequency":
+            $offset = 18 * 2 + 12;
+            
+            $value = $value * 60;
+            
+            break;
+        case "alarm_activ":
+            $offset = 18 * 3 + 12;
+            break; 
+        case "alarm_value":
+            $offset = 18 * 4 + 12;
+            break; 
+        case "rtc_offset":
+            $offset = 18 * 7 + 12;
+            break; 
+        case "minmax":
+            $offset = 18 * 8 + 12;
+            break;             
+    }
+    
+    if ($offset != "")
+    {
+        // Format value up to 4 digits
+        while(strlen($value) < 4)
+            $value = "0" . $value;
+        
+        fseek($fid, $offset);
+        
+        fwrite($fid,$value);
+        
+    }
+    
+    // Close
+    fclose($fid);
+    
+
+}
+//}}}
 
 
 // {{{ write_sd_conf_file()
@@ -853,116 +1022,75 @@ function clean_calendar($sd_card="",$start="",$end="") {
 // RET false if an error occured, true else
 function write_calendar($sd_card,$data,&$out,$start="",$end="") {
 
+    // If sd card is not defined, return
+    if(!isset($sd_card) || empty($sd_card)) {
+        return false;
+    }
+
     $status=true;
 
-    if(isset($sd_card) && !empty($sd_card)) {
-   
-        if(count($data)>0) {
-            if((strcmp("$start","")==0)&&(strcmp("$end","")==0)) {
-                $month_end=12;
-                $month_start=1;
-                $day_end=31;
-                $day_start=1;
-            } else if((strcmp("$start","")!=0)&&(strcmp("$end","")==0)) {
-                $month_end=substr($start,5,2);
-                $month_start=$month_end;
-                $day_end=substr($start,8,2);
-                $day_start=$day_end;
-            } else {
-                $month_start=substr($start,5,2);
-                $day_start=substr($start,8,2);
-                $month_end=substr($end,5,2);
-                $day_end=substr($end,8,2);
-            }
+    // If there are some events
+    if(count($data)>0) {
+    
 
-            $month=$month_start;
-            $day=$day_start;
-            do {
-                $val=concat_calendar_entries($data,$month,$day);
-                
-                // If there is something to write
-                if($val) {
-                    
-                    // Create correct day number for filename
-                    while(strlen($day)<2) {
-                        $day="0$day";
-                    }
-                    
-                    // Create correct month number for filename
-                    while(strlen($month)<2) {
-                        $month="0$month";
-                    }
+        // Use today
+        $date = date("Y-m-d");
 
-                    // Create filename
-                    $file = "$sd_card/logs/$month/cal_$day";
-                    
-                    // If file can be opened
-                    if($f=@fopen("$file","w+")) {
-                    
-                        // Foreach event to write
-                        foreach($val as $value) {
-                            $sub=$value["subject"];
-                            $desc=$value["description"];
+        // Use today + 3 month
+        $endSearch  = strtotime("+3 months", strtotime($date));
 
-                            if(!@fputs($f,"$sub"."\r\n")) $status=false;
-                            if(!@fputs($f,"$desc"."\r\n\r\n")) $status=false;
-                        }
-                        fclose($f);
-                    } else {  
-                        $status=false;
-                    }
-                }
-
-                // Change day number if end of the month is reached
-                if($day==31) {
-                    $day="01";
-                    $month=$month+1;
-                    if($month>12) {
-                        $month="01";
-                    }
-                } else {
-                    $day=$day+1;
-                }
-                unset($val);
-            } while(($month!=$month_end)||($day!=$day_end)); 
-
-            $val=concat_calendar_entries($data,$month,$day);
-
-            // If there is something to write in SD card
-            if(!empty($val)) {
+        while(strtotime($date) < $endSearch)
+        {
+        
+            $year   = date("Y",strtotime($date));
+            $month  = date("m",strtotime($date));
+            $day    = date("d",strtotime($date));
+        
+            $val = concat_calendar_entries($data,$year,$month,$day);
             
-                // Create correct day number for filename
-                while(strlen($day)<2) {
-                    $day="0$day";
-                }
+            // Create filename
+            $file = "$sd_card/logs/$month/cal_$day";
+            
+            // If there is something to write
+            if($val) {
 
-                // Create correct month number for filename
-                while(strlen($month)<2) {
-                    $month="0$month";
-                }
-                
-                // Create filename
-                $file="$sd_card/logs/$month/cal_$day";
-                
-                // Open It
-                if($f=@fopen("$file","w+")) {
+                // If file can be opened
+                if($fid = fopen($file,"w+")) {
                 
                     // Foreach event to write
                     foreach($val as $value) {
+                    
                         $sub=$value["subject"];
                         $desc=$value["description"];
 
-                        if(!@fputs($f,"$sub"."\r\n")) $status=false;
-                        if(!@fputs($f,"$desc"."\r\n")) $status=false;
+                        if(!fputs($fid,"$sub"."\r\n")) 
+                            $status=false;
+                            
+                        if(!fputs($fid,"$desc"."\r\n\r\n")) 
+                            $status=false;
+                            
                     }
-                    
-                    fclose($f);
-                } else {
-                     $status=false;
+                    fclose($fid);
+                } else {  
+                    $status=false;
                 }
-           }
-       }
+            } else {
+                // Delete file if present
+                
+                if (file_exists($file))               
+                    unlink($file);
+                    
+            }
+        
+            // Incr date
+            $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
+            
+            // Clear val
+            unset($val);
+            
+        }
     }
+ 
     return $status;
 }
 //}}}

@@ -211,17 +211,18 @@ if(    !empty($program_substrat)
         if(count($event)>0) {
             if(insert_calendar($event,$main_error)) {
                 if((isset($sd_card))&&(!empty($sd_card))) {
-                    if(strlen($calendar_end)==8) {
+                    if(strlen($calendar_end) == 8) {
                         $year=substr($calendar_end,0,4);
                         $month=substr($calendar_end,4,2);
                         $day=substr($calendar_end,6,2);
                         $calendar_end="$year-$month-$day";
                   
-                        $calendar=create_calendar_from_database($main_error,$calendar_start,$calendar_end);
-                        if(count($calendar)>0) {
-                            clean_calendar($sd_card,$calendar_start,$calendar_end);
-                            write_calendar($sd_card,$calendar,$main_error,$calendar_start,$calendar_end);
-                        }
+                        // Create calendar from database
+                        $calendar = create_calendar_from_database($main_error);
+    
+                        // Write calendar on SD card
+                        write_calendar($sd_card,$calendar,$main_error);
+                            
                     }
                 }
                 echo "1";

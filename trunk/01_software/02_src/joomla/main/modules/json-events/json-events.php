@@ -15,28 +15,26 @@ $jsonArray = array();
 
 $event=array();
 
-$sql = <<<EOF
-SELECT * FROM `calendar`;
-EOF;
+$sql = "SELECT * FROM calendar;";
 
-foreach($db->query("$sql") as $row) {
-        if($row['Important']==1) {
-            $color_event="red";
-        } else {
-            $color_event="white";
-        }
-        
-        $event[]=array(
-                        "id" => $row['Id'],
-                        "title" => $row['Title'],
-                        "start" => $row['StartTime'],
-                        "end" => $row['EndTime'],
-                        "description" => $row['Description'],
-                        "color" => $row['Color'],
-                        "icon" => $row['Icon'],
-                        "important" => $row['Important'],
-                        "textColor" => $color_event,
-                        "external" => 0
+foreach($db->query($sql) as $row) {
+    if($row['Important']==1) {
+        $color_event="red";
+    } else {
+        $color_event="white";
+    }
+    
+    $event[]=array(
+                "id" => $row['Id'],
+                "title" => $row['Title'],
+                "start" => $row['StartTime'],
+                "end" => $row['EndTime'],
+                "description" => $row['Description'],
+                "color" => $row['Color'],
+                "icon" => $row['Icon'],
+                "important" => $row['Important'],
+                "textColor" => $color_event,
+                "external" => 0
             );
 }
 $db=null;

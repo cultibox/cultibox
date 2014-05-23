@@ -14,10 +14,9 @@
 
 <label class="title_conf"><?php echo __('CALENDAR_TITLE'); ?></label>
 
-<!-- Display buttons under calendar -->
+<!-- Display buttons -->
 <table class="table_width">
     <tr>
-        
         <td>
             <input id="datepicker_calendar" name="datepicker_calendar" type="hidden" value="">
         </td>
@@ -48,7 +47,7 @@
                    title="<?php echo __('TOOLTIP_CREATE_CALENDAR_PROGRAM'); ?>"
                    src="main/libs/img/cal.png"  width="34" />
         </td>
-        <?php if($GLOBALS['DAILY_PROGRAM']) { ?>
+        <?php if($activ_daily_program == "True") { ?>
         <td>
             <!-- Button to add daily program -->
             <input type="image" id="daily_program" name="daily_program"

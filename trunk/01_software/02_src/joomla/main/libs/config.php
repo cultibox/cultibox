@@ -118,9 +118,6 @@ $GLOBALS['SENSOR_DEFINITION']=array(
 //Number of state's changement allowed by the cultibox for the plugv file:
 $GLOBALS['PLUGV_MAX_CHANGEMENT']=999;
 
-//To use daily program:
-$GLOBALS['DAILY_PROGRAM'] = true;
-
 ?>
 
 

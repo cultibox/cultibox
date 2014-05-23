@@ -97,10 +97,8 @@ function write_plgidx ($sd_card,$data) {
         // If this is a program index event
         if ($event['program_index'] != "")
         {
-            $formatedStartStime = $event['start_year'] . "-" . $event['start_month']  . "-" . $event['start_day'];
-        
+
             // Query plugv filename associated
-            
             try {
                 $sql = "SELECT plugv_filename FROM program_index WHERE id = \"" . $event['program_index'] . "\";";
                 $sth = $db->prepare($sql);
@@ -110,7 +108,24 @@ function write_plgidx ($sd_card,$data) {
                 $ret=$e->getMessage();
             }
         
-            $plgidx[$formatedStartStime] = $res['plugv_filename'];
+            //
+            $today = strtotime(date("Y-m-d"));
+            $nextYear  = strtotime("+1 year", strtotime(date("Y-m-d")));
+        
+            // Start date
+            $date = $event['start_year'] . "-" . $event['start_month']  . "-" . $event['start_day'];
+            // End date
+            $end_date = $event['end_year'] . "-" . $event['end_month']  . "-" . $event['end_day'];
+            
+            while (strtotime($date) <= strtotime($end_date)) {
+
+                // Save only for futur element
+                if (strtotime($date) >= $today && strtotime($date) < $nextYear)
+                    $plgidx[$date] = $res['plugv_filename'];
+                  
+                // Incr date                  
+                $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
+            }
         }
     }
 
@@ -126,7 +141,7 @@ function write_plgidx ($sd_card,$data) {
         // For each day
         for ($month = 1; $month <= 13; $month++) 
         {
-            for ($day = 1; $day <= 13; $day++) 
+            for ($day = 1; $day <= 31; $day++) 
             {
                 // Format day and month
                 $monthToWrite = $month;
