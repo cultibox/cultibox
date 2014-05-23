@@ -47,7 +47,13 @@
                    title="<?php echo __('TOOLTIP_CREATE_CALENDAR_PROGRAM'); ?>"
                    src="main/libs/img/cal.png"  width="34" />
         </td>
-        <?php if($activ_daily_program == "True") { ?>
+        <?php 
+            // Read program index
+            $program_index = array();
+            program\get_program_index_info($program_index);
+            
+            if($activ_daily_program == "True" && count($program_index) > 1) { 
+        ?>
         <td>
             <!-- Button to add daily program -->
             <input type="image" id="daily_program" name="daily_program"
@@ -187,8 +193,9 @@
 <div id="manage_external_xml" style="display:none" title="<?php echo __('XML_DISPLAYED_FILE'); ?>">
     <form name="xml_config" id="xml_config" action="calendar-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
 
-    <?php foreach($list_xml as $file) { ?>
-        <?php echo $file['name']; ?>: <input type="checkbox" id="<?php echo $file['name']; ?>" name="xml_checkbox" <?php if(strcmp($file['value'],"1")==0) echo 'checked'; ?>><br />
+    <?php 
+    foreach($list_xml as $file) {
+        echo $file['name']; ?>: <input type="checkbox" id="<?php echo $file['name']; ?>" name="xml_checkbox" <?php if(strcmp($file['value'],"1")==0) echo 'checked'; ?>><br />
     <?php } ?>
     </form>
 </div>
@@ -283,7 +290,14 @@
         // Foreach programm, add a line with the name
         foreach ($program_index as $key => $value)
         {
-            echo '<div class="external-event" id="' . $value['id'] . '">' . $value['name'] . '</div>';
+            // Don'y display current event
+            if ($value['id'] != 1)
+                echo '<div class="external-event" id="' . $value['id'] . '">' . $value['name'] . '</div>';
         }
     ?>
+</div>
+
+<!-- JQuery displayed when drop is NOK -->
+<div id="error_drop_event" style="display:none">
+    <p><?php echo __('ERROR_DROP_EVENT'); ?></p>
 </div>

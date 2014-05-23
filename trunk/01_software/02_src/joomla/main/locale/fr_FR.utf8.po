@@ -1138,6 +1138,10 @@ msgstr "au"
 msgid "CALENDAR_DAILY_PROGRAM"
 msgstr "Programme journalier"
 
+msgid "ERROR_DROP_EVENT"
+msgstr "Erreur : il y a déjà un programme journalier définit ce jour là."
+
+
 # For the cost part:
 msgid "SELECT_START_DAY"
 msgstr "Jour de départ (AAAA-MM-JJ)"

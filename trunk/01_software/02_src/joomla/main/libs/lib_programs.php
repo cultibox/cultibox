@@ -41,6 +41,7 @@ function check_db() {
     add_row_program_idx('Courant','1.0','1' , '00');
 
 }
+// }}}
 
 // {{{ add_row_program_idx()
 // ROLE Add a row in programm_idx table
@@ -93,6 +94,7 @@ function add_row_program_idx($name, $version, $program_idx = "", $plugv_filename
   
     $db=null;
 }
+// }}}
 
 // {{{ get_programm_number_empty()
 // ROLE get a programm number not used in table programs
@@ -122,6 +124,7 @@ function get_programm_number_empty() {
     
     return $program_idx;
 }
+// }}}
 
 // {{{ copy()
 // ROLE Copy program $idInput into $output
@@ -169,6 +172,7 @@ function copy($idInput, $idOutput) {
     }
     
 }
+// }}}
 
 // {{{ get_program_index_info()
 // ROLE Return infos about program_index
@@ -191,6 +195,7 @@ function get_program_index_info (&$tab)
         print_r($ret);
     }
 }
+// }}}
 
 // {{{ get_field_from_program_index()
 // ROLE Return pluXX file name
@@ -216,6 +221,7 @@ function get_field_from_program_index ($variable,$program_idx)
     
     return "";
 }
+// }}}
 
 // {{{ delete_program()
 // ROLE Delete a program
@@ -260,7 +266,22 @@ function delete_program ($program_idx)
         $ret = $e->getMessage();
         print_r($ret);
     }
+    
+    // Delete from calendar
+    $sql = "DELETE FROM calendar WHERE program_index = \"$program_idx\";";
+    
+    // Run command
+    try {
+        $sth = $db->prepare($sql);
+        $sth->execute();
+    } catch(\PDOException $e) {
+        $ret = $e->getMessage();
+        print_r($ret);
+    }
+    
+    $db = null;
 }
+// }}}
 
 }
 

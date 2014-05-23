@@ -512,10 +512,9 @@ $(document).ready(function() {
         events: "http://localhost:6891/cultibox/main/modules/json-events/json-events.php",
         drop: function(date, allDay) {
             // this function is called when something is dropped
-        
             // retrieve the dropped element's stored Event Object
             var originalEventObject = $(this).data('eventObject');
-            
+
             // we need to copy it, so that multiple events don't have a reference to the same object
             var copiedEventObject = $.extend({}, originalEventObject);
             
@@ -525,6 +524,40 @@ $(document).ready(function() {
             copiedEventObject.title = "<?php echo __('CALENDAR_DAILY_PROGRAM') ; ?>" + " " + originalEventObject.title;
             copiedEventObject.description = copiedEventObject.title;
             
+            // Check if there is an other programm on the same day
+            var allevents = $('#calendar').fullCalendar('clientEvents');
+            overlapping = 0;
+
+            for (index = 0; index < allevents.length; ++index) {
+                if(  allevents[index].start.getDate() == copiedEventObject.start.getDate()
+                    && allevents[index].start.getMonth() == copiedEventObject.start.getMonth()
+                    && allevents[index].start.getYear() == copiedEventObject.start.getYear()) {
+                    
+                    if ( allevents[index].title.search("Programme journalier") != -1) {
+                        overlapping = 1;
+                        break;
+                    }
+                }
+            }
+            
+            if (overlapping == 1) {
+                $("#error_drop_event").dialog({
+                    resizable: true,
+                    width: 450,
+                    modal: true,
+                    closeOnEscape: false,
+                    dialogClass: "popup_error",
+                    buttons: [{
+                    text: CLOSE_button,
+                    click: function () {
+                        $( this ).dialog( "close" );
+                        return false;
+                    }
+                    }]
+                });
+                return "";
+            }
+
             // render the event on the calendar
             // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
             $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
