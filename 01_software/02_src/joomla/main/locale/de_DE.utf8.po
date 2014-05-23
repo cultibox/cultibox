@@ -223,6 +223,8 @@ msgstr "Verschiebung des internen Takt"
 msgid "RTC_OFFSET_UNITY"
 msgstr "Sekunde (n)"
 
+msgid "ACTIV_DAILY_PROGRAM"
+msgstr "Aktivieren Tagesprogramm"
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -656,10 +658,12 @@ msgstr "Dimmer"
 msgid "CANAL"
 msgstr "Kanal"
 
-
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
-msgstr "Zeigen Sie die aktuelle Verhalten der Entscheidung"
+msgstr "Programm :"
+
+msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
+msgstr " Einnahme : "
 
 msgid "CONFIGURE_PROGRAM"
 msgstr "Konfigurieren des Verhaltens von Entscheidungs"
@@ -854,7 +858,7 @@ msgid "VALUE_DIMMER"
 msgstr "Dimmer"
 
 msgid "PROGRAM_DAILY_SAVE"
-msgstr "Enregistrer "
+msgstr "Speichern Sie eine Kopie"
 
 msgid "PROGRAM_DAILY_SAVE_PROGRESS"
 msgstr "Saving ..."
@@ -873,6 +877,12 @@ msgstr "Programm entfernen"
 
 msgid "PROGRAM_DAILY_DELETE"
 msgstr "Entfernen"
+
+msgid "PROGRAM_DAILY_DELETE_VALID"
+msgstr "Das Programm wurde gelöscht."
+
+msgid "PARAMETERS"
+msgstr "Einstellungen"
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
@@ -1705,7 +1715,10 @@ msgid "TOOLTIP_REGUL_SECOND"
 msgstr "Wenn die Sekundärregelung ist in der Software-Konfiguration aktiviert, zeigt dieses Feld den Status für den ausgewählten Ausgang: an oder aus. Wenn die Steuerung für den ausgewählten Ausgang aktiviert ist, finden Sie auch Informationen über die Konfiguration dieser Verordnung."
 
 msgid "TOOLTIP_SHOW_COST"
-msgstr "Durch die Aktivierung dieser Option, die Sie auf die Seite zugreifen können Kalkulation Ihrer Einrichtung durch das Menü 'Kosten', die in der Hauptmenüleiste erscheint"
+msgstr "Durch die Aktivierung dieser Option, die Sie auf die Seite zugreifen können Kalkulation Ihrer Einrichtung durch das Menü 'Kosten', die in der Hauptmenüleiste erscheint."
+
+msgid "TOOLTIP_ACTIV_DAILY_PROGRAM"
+msgstr "Durch Aktivierung dieser Option können Sie verschiedene Programme für jeden Tag zu machen."
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Hier können Sie die Zeit der Reset min / max aller auf dem Bildschirm angezeigt Cultibox Sensoren wählen"

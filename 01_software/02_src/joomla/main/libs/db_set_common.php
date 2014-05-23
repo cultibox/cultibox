@@ -103,9 +103,9 @@ EOF;
 //Note: if to select a value is limited to 1. Only one configuration is available,
 //there isn't a user configuration management yet.
 function insert_configuration($key,$value,&$out) {
-   $sql = <<<EOF
-UPDATE `configuration` SET  {$key} = "{$value}" WHERE id = 1
-EOF;
+
+   $sql = "UPDATE configuration SET " . $key . " = \"" . $value . "\" WHERE id = 1;";
+   
    $db=db_priv_pdo_start();
    try {
         $db->exec("$sql");

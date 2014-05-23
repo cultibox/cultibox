@@ -223,6 +223,8 @@ msgstr "Décalage de l'horloge interne"
 msgid "RTC_OFFSET_UNITY"
 msgstr "seconde(s)"
 
+msgid "ACTIV_DAILY_PROGRAM"
+msgstr "Activer programme journalier"
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -475,13 +477,13 @@ msgid "DELETE_LOGS_TO"
 msgstr "jusqu'au (AAAA-MM-JJ)"
 
 msgid "ERROR_DELETE_LOGS"
-msgstr "Problème lors de la suppréssion des logs dans la base."
+msgstr "Problème lors de la suppression des logs dans la base."
 
 msgid "ERROR_FORMAT_DATE"
 msgstr "Erreur dans le format de la date (AAAA-MM-JJ). Le jour de fin doit être égal ou supérieur ou jour de départ"
 
 msgid "DELETE_PROGRESS"
-msgstr "Progression de la suppréssion"
+msgstr "Progression de la suppression"
 
 msgid "SUMARY_RESUME_MINMAX"
 msgstr "Résumé des valeurs minimales et maximales"
@@ -656,10 +658,12 @@ msgstr "Variateur"
 msgid "CANAL"
 msgstr "Canal"
 
-
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
-msgstr "Visualiser le comportement actuel de la prise"
+msgstr "Programme : "
+
+msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
+msgstr " Prise : "
 
 msgid "CONFIGURE_PROGRAM"
 msgstr "Configurer le comportement de la prise"
@@ -854,7 +858,7 @@ msgid "VALUE_DIMMER"
 msgstr "Variateur"
 
 msgid "PROGRAM_DAILY_SAVE"
-msgstr "Enregistrer "
+msgstr "Enregistrer une copie "
 
 msgid "PROGRAM_DAILY_SAVE_PROGRESS"
 msgstr "Enregistrement en cours ..."
@@ -873,6 +877,12 @@ msgstr "Supprimer un programme"
 
 msgid "PROGRAM_DAILY_DELETE"
 msgstr "Supprimer"
+
+msgid "PROGRAM_DAILY_DELETE_VALID"
+msgstr "Le programme a bien été supprimé."
+
+msgid "PARAMETERS"
+msgstr "Paramètres"
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
@@ -1187,7 +1197,7 @@ msgid "SUMARY_HP_HC"
 msgstr "Heures pleines/creuses"
 
 msgid "SUMARY_COST_PRICE"
-msgstr "Prix du kilowattt-heure"
+msgstr "Prix du kilowatt-heure"
 
 msgid "SUMARY_COST_PRICE_HC"
 msgstr "Prix en heures creuses (kwh)"
@@ -1244,10 +1254,10 @@ msgid "ERROR_COMPUTE_COST"
 msgstr "Erreur lors du calcul du coût de votre installation"
 
 msgid "VALID_REAL_COST_COMPUTE"
-msgstr "Calcul du coût réel réalisé avec succés"
+msgstr "Calcul du coût réel réalisé avec succès"
 
 msgid "VALID_THEORICAL_COST_COMPUTE"
-msgstr "Calcul du coût théorique réalisé avec succés"
+msgstr "Calcul du coût théorique réalisé avec succès"
 
 
 # For the wifi part:
@@ -1503,10 +1513,10 @@ msgid "ERROR_EMPTY_PASSWORD"
 msgstr "Le mot de passe ne peut pas être vide"
 
 msgid "ERROR_ACCESS_INFO_WIFI"
-msgstr "Impossible d'accèder au module Wifi, verifiez-votre configuration"
+msgstr "Impossible d'accéder au module Wifi, vérifiez-votre configuration"
 
 msgid "ERROR_WEP_KEY_TYPE"
-msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombreus (0-9) et faire 5, 13 ou 29 caractères de long"
+msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombres (0-9) et faire 5, 13 ou 29 caractères de long"
 
 msgid "ERROR_WPA_KEY_TYPE"
 msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8 et 63 caractères"
@@ -1621,7 +1631,7 @@ msgid "TOOLTIP_PLUG_TOLERANCE"
 msgstr "La tolérance d'une prise permet de définir quelle doit être la précision des valeurs de régulation. Par exemple, si vous avez rentré une valeur de régulation de 22°C pour un chauffage et que la tolérance est de 2°C, le chauffage sera mis en marche/arrêt entre 20°C et 24°C (votre régulation +/- la tolérance)"
 
 msgid "TOOLTIP_PLUG_REGUL"
-msgstr "La régulation secondaire a un fonctionnement compliqué et différent de la régulation principale. Veuillez bien lire la documentation avant de l'activer pour une prise. Si vous désirez piloter une prise pour qu'elle régule une condition climatique, il n'est pas nécéssaire d'activer la régulation secondaire."
+msgstr "La régulation secondaire a un fonctionnement compliqué et différent de la régulation principale. Veuillez bien lire la documentation avant de l'activer pour une prise. Si vous désirez piloter une prise pour qu'elle régule une condition climatique, il n'est pas nécessaire d'activer la régulation secondaire."
 
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le prix de  revient de votre installation dans le menu 'Coût'"
@@ -1633,7 +1643,7 @@ msgid "TOOLTIP_CHECK_UPDATE"
 msgstr "Vérifier si des mises à jour sont disponibles et vous propose de les télécharger le cas échéant"
 
 msgid "TOOLTIP_COST_TYPE"
-msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du killowatt-heure varie en fonction de l'heure à laquelle vous le consommez."
+msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du kilowatt-heure varie en fonction de l'heure à laquelle vous le consommez."
 
 msgid "TOOLTIP_FORMAT_SD"
 msgstr "La carte SD sélectionnée sera rendue compatible Cultibox. Pour cela les fichiers de configuration des prises, des programmes et de la Cultibox seront régénérés en fonction de vos paramètres actuels et les fichiers contenant vos futurs logs seront mis en place. Si des logs sont déjà présents sur votre carte SD ils peuvent être perdus lors du processus<br /><b><i>Note: </i></b>afin que votre carte soit reconnue par la Cultibox, elle doit être formatée en FAT16 et ne doit donc pas dépasser 2Go"
@@ -1651,7 +1661,7 @@ msgid "TOOLTIP_MAX_POWER_PLUG_1000"
 msgstr "La prise 1000W permet de piloter des éléments gourmands en énergie. Les 1000W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 150W"
 
 msgid "TOOLTIP_MAX_POWER_PLUG_DIMMER"
-msgstr "La prise variateur permet de varier l'intensité délivrée par la prise. Une fois selectionnée il faudra chosisir le canal de communication de la prise (qui doit être différent pour chaque prise variateur)"
+msgstr "La prise variateur permet de varier l'intensité délivrée par la prise. Une fois sélectionnée il faudra choisir le canal de communication de la prise (qui doit être différent pour chaque prise variateur)"
 
 msgid "TOOLTIP_COST_START_TIME"
 msgstr "Date de départ du calcul de coût de votre installation. Vous pouvez calculer le coût de votre installation sur une période définie par la date de départ et la date de fin de ce formulaire"
@@ -1693,7 +1703,7 @@ msgid "TOOLTIP_ADVANCED_REGUL_OPTIONS"
 msgstr "Si vous activez cette option, vous aurez la possibilité de choisir le ou les capteurs utilisé(s) pour la régulation ainsi que le mode de calcul"
 
 msgid "TOOLTIP_REPEAT_VALUE"
-msgstr "Cette valeur définit à quelle fréquence votre évènement sera répété. Par exemple, si votre évènement commence à 01:00:00 et que la répétition est de 04:00:00, l'évènement suivant débutera à 05:00:00. Le temps de répétition est ajouté au temps de départ de l'évènement pour déterminer le départ de l'évènement suivant. Le temps minimum autorisé est de 5mn."
+msgstr "Cette valeur définit à quelle fréquence votre événement sera répété. Par exemple, si votre événement commence à 01:00:00 et que la répétition est de 04:00:00, l'événement suivant débutera à 05:00:00. Le temps de répétition est ajouté au temps de départ de l'événement pour déterminer le départ de l'événement suivant. Le temps minimum autorisé est de 5mn."
 
 msgid "TOOLTIP_RESET_OLD_PROGRAM"
 msgstr "En cochant cette case vous effacerez l'ancien programme de votre prise pour enregistrer votre nouvelle action sur un programme vide. Si vous ne cochez pas cette case, votre action se superposera au programme déjà enregistré."
@@ -1707,6 +1717,8 @@ msgstr "Si la régulation secondaire est activée dans la configuration du logic
 msgid "TOOLTIP_SHOW_COST"
 msgstr "En activant cette option vous pouvez avoir accès à la page de calcul des coûts de votre installation grâce au menu 'Coût' qui apparaît dans la barre du menu principal"
 
+msgid "TOOLTIP_ACTIV_DAILY_PROGRAM"
+msgstr "En activant cette option vous pouvez réaliser des programmes différents pour chaque jour."
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Ce champs permet de choisir l'heure de remise à zéro du min/max de tous les capteurs affichés sur l'écran de la Cultibox"
@@ -1733,13 +1745,13 @@ msgid "TOOLTIP_CALENDAR_SUBSTRAT"
 msgstr "En fonction du substrat que vous sélectionnez, les programmes d'engrais sont filtrés. Vous ne pouvez sélectionner que des programmes associés à votre substrat."
 
 msgid "TOOLTIP_PROGRAM"
-msgstr "Ce champ vous permet de sélectionner le programme à appliquer. Pour connaitre plus précisément les quantités d'engrais appliquées veuillez vous référer à la documentation."
+msgstr "Ce champ vous permet de sélectionner le programme à appliquer. Pour connaître plus précisément les quantités d'engrais appliquées veuillez vous référer à la documentation."
 
 msgid "TOOLTIP_CALENDAR_STARTDATE"
 msgstr "Grâce à ce champ, vous pouvez sélectionner le premier jour ou sera appliqué le programme d'engrais sélectionné."
 
 msgid "TOOLTIP_CALENDAR_EVENT_NAME"
-msgstr "Ce champ permet de définir un nom pour votre programme d'engrais. Ce nom apparait dans le titre de chaque évènement."
+msgstr "Ce champ permet de définir un nom pour votre programme d'engrais. Ce nom apparaît dans le titre de chaque événement."
 
 msgid "TOOLTIP_CALENDAR_SELECT_CROISSANCE"
 msgstr "Si vous choisissez croissance, les trois premières semaines du programme de culture seront appliquées. Si vous choisissez floraison, les huit dernières semaines du programme de culture seront appliquées."
@@ -1751,7 +1763,7 @@ msgid "TOOLTIP_WIFI_KEY_TYPE"
 msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
 
 msgid "TOOLTIP_WIFI_IP"
-msgstr "L'adresse de votre module Wifi peut être personalisée en rentrant une adresse ip au format XXX.XXX.XXX.XXX"
+msgstr "L'adresse de votre module Wifi peut être personnalisée en rentrant une adresse ip au format XXX.XXX.XXX.XXX"
 
 msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du logiciel"

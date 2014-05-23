@@ -40,23 +40,21 @@
     $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
     __('LANG');
     
-    // Get a programm index not used
-    $program_idx = program\get_programm_number_empty();
-
-    // create programm line
-    program\add_row_program_idx($_POST['name'], $_POST['version'], $program_idx);
     
-    // Save programm
-    program\copy($_POST['input'],$program_idx);
+    // delete program and index
+    insert_configuration(strtoupper($_POST['variable']),$_POST['value'],$main_error);
     
-    // Create return array
-    $ret_array = array();
+    // If update conf is defined, update sd configuration
+    if ($_POST['updateConf'] != "undefined")
+    {
+        // search sd card
+        $sd_card = get_sd_card();
+        
+        // Update conf file
+        update_sd_conf_file($sd_card, $_POST['variable'],$_POST['value'],$main_error);
+    }
     
-    $ret_array['name'] = $_POST['name'];
-    $ret_array['version'] = $_POST['version'];
-    $ret_array['program_idx'] = $program_idx;
-    
-    // Return the array
-    echo json_encode($ret_array);
+    print_r($main_error);
+   
  
 ?>

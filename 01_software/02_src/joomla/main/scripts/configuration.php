@@ -29,45 +29,28 @@ $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 __('LANG');
 
 // ================= VARIABLES ================= //
-$color_humidity=getvar('color_humidity');
-$color_temperature=getvar('color_temperature');
-$color_water=getvar('color_water');
-$color_level=getvar('color_level');
-$color_ph=getvar('color_ph');
-$color_ec=getvar('color_ec');
-$color_od=getvar('color_od');
-$color_orp=getvar('color_orp');
-$color_power=getvar('color_power');
-$color_cost=getvar('color_cost');
-$record_frequency=getvar('record_frequency');
-$power_frequency=getvar('power_frequency');
-$update_frequency=getvar('update_frequency');
-$nb_plugs=getvar('nb_plugs');
 $update_conf=false;
-$temp_axis=getvar('temp_axis');
-$hygro_axis=getvar('hygro_axis');
-$pop_up=getvar('pop_up');
+
 $pop_up_message="";
 $pop_up_error_message="";
-$alarm_enable=getvar('alarm_enable');
-$alarm_value=getvar('alarm_value');
-$wifi_enable=getvar('wifi_enable');
-$wifi_ssid=getvar('wifi_ssid');
-$wifi_key_type=getvar('wifi_key_type');
-$wifi_password=getvar('wifi_password',false);
-$wifi_ip=getvar('wifi_ip');
-$version=get_configuration("VERSION",$main_error);
-$submenu=getvar("submenu",$main_error);
-$stats=getvar("stats",$main_error);
-$advanced_regul=getvar("advanced_regul",$main_error);
-$second_regul=getvar("second_regul",$main_error);
-$show_cost=getvar("show_cost",$main_error);
-$submit=getvar("submit_conf_value",$main_error);
-$update_menu=false;
-$minmax=getvar("minmax",$main_error);
-$wifi_manual=getvar("wifi_ip_manual");
-$rtc_offset=getvar("rtc_offset");
 
+$alarm_enable   =getvar('alarm_enable');
+$alarm_value    =getvar('alarm_value');
+$wifi_enable    =getvar('wifi_enable');
+$wifi_ssid      = getvar('wifi_ssid');
+$wifi_key_type  = getvar('wifi_key_type');
+$wifi_password  = getvar('wifi_password',false);
+$wifi_ip    = getvar('wifi_ip');
+$submenu    = getvar("submenu",$main_error);
+$stats      = getvar("stats",$main_error);
+$advanced_regul = getvar("advanced_regul",$main_error);
+$show_cost  = getvar("show_cost",$main_error);
+$submit     = getvar("submit_conf_value",$main_error);
+$wifi_manual    = getvar("wifi_ip_manual");
+$rtc_offset = getvar("rtc_offset");
+
+$update_menu    = false;
+$version    = get_configuration("VERSION",$main_error);
 
 // By default the expanded menu is the user interface menu
 if((!isset($submenu))||(empty($submenu))) {
@@ -80,16 +63,8 @@ if((!isset($submenu))||(empty($submenu))) {
 } 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
-if((!isset($sd_card))||(empty($sd_card))) {
-   $hdd_list=array();
-   $sd_card=get_sd_card($hdd_list);
-   $new_arr=array();
-   foreach($hdd_list as $hdd) {
-        if(disk_total_space($hdd)<=2200000000) $new_arr[]=$hdd;
-
-   }
-   $hdd_list=$new_arr;
-   sort($hdd_list);
+if(!isset($sd_card) || empty($sd_card)) {
+   $sd_card=get_sd_card();
 }
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
@@ -99,122 +74,41 @@ check_and_update_sd_card($sd_card,$main_info,$main_error);
 sd_card_update_log_informations($sd_card);
 
 //============================== GET OR SET CONFIGURATION PART ====================
-if((isset($pop_up))&&(!empty($pop_up))) {
-    insert_configuration("SHOW_POPUP","$pop_up",$main_error);
+$conf_arr = array();
+$conf_arr["SHOW_POPUP"]             = array ("update_conf" => "0", "var" => "pop_up");
+$conf_arr["CHECK_UPDATE"]           = array ("update_conf" => "0", "var" => "update");
+$conf_arr["COLOR_HUMIDITY_GRAPH"]   = array ("update_conf" => "0", "var" => "color_humidity");
+$conf_arr["COLOR_TEMPERATURE_GRAPH"] = array ("update_conf" => "0", "var" => "color_temperature");
+$conf_arr["COLOR_WATER_GRAPH"]      = array ("update_conf" => "0", "var" => "color_water");
+$conf_arr["COLOR_LEVEL_GRAPH"]      = array ("update_conf" => "0", "var" => "color_level");
+$conf_arr["COLOR_PH_GRAPH"]         = array ("update_conf" => "0", "var" => "color_ph");
+$conf_arr["COLOR_EC_GRAPH"]         = array ("update_conf" => "0", "var" => "color_ec");
+$conf_arr["COLOR_OD_GRAPH"]         = array ("update_conf" => "0", "var" => "color_od");
+$conf_arr["COLOR_ORP_GRAPH"]        = array ("update_conf" => "0", "var" => "color_orp");
+$conf_arr["COLOR_POWER_GRAPH"]      = array ("update_conf" => "0", "var" => "color_power");
+$conf_arr["COLOR_COST_GRAPH"]       = array ("update_conf" => "0", "var" => "color_cost");
+$conf_arr["RECORD_FREQUENCY"]       = array ("update_conf" => "1", "var" => "color_power");
+$conf_arr["POWER_FREQUENCY"]        = array ("update_conf" => "1", "var" => "power_frequency");
+$conf_arr["UPDATE_PLUGS_FREQUENCY"] = array ("update_conf" => "1", "var" => "update_frequency");
+$conf_arr["NB_PLUGS"]               = array ("update_conf" => "0", "var" => "nb_plugs");
+$conf_arr["SECOND_REGUL"]           = array ("update_conf" => "0", "var" => "second_regul");
+$conf_arr["STATISTICS"]             = array ("update_conf" => "0", "var" => "stats");
+$conf_arr["RESET_MINMAX"]           = array ("update_conf" => "1", "var" => "minmax");
+$conf_arr["ACTIV_DAILY_PROGRAM"]    = array ("update_conf" => "0", "var" => "activ_daily_program");
+
+foreach ($conf_arr as $key => $value)
+{
+    ${$value['var']} = get_configuration($key,$main_error);
+}
+
+
+if((isset($show_cost))&&(!empty($show_cost))) {
+    insert_configuration("SHOW_COST",$show_cost,$main_error);
     $update_conf=true;
+    $update_menu=true;
 } else {
-    $pop_up = get_configuration("SHOW_POPUP",$main_error);
+    $show_cost = get_configuration("SHOW_COST",$main_error);
 }
-
-if((isset($update))&&(!empty($update))) {
-   insert_configuration("CHECK_UPDATE",$update,$main_error);
-   $update_conf=true;
-} else {
-   $update = get_configuration("CHECK_UPDATE",$main_error);
-}
-
-if((isset($color_humidity))&&(!empty($color_humidity))) {
-    insert_configuration("COLOR_HUMIDITY_GRAPH",$color_humidity,$main_error);
-    $update_conf=true;
-} else {
-    $color_humidity = get_configuration("COLOR_HUMIDITY_GRAPH",$main_error);
-}
-
-
-if((isset($color_temperature))&&(!empty($color_temperature))) {
-    insert_configuration("COLOR_TEMPERATURE_GRAPH",$color_temperature,$main_error);
-    $update_conf=true;
-} else {
-    $color_temperature = get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
-}
-
-if((isset($color_water))&&(!empty($color_water))) {
-    insert_configuration("COLOR_WATER_GRAPH",$color_water,$main_error);
-    $update_conf=true;
-} else {
-    $color_water = get_configuration("COLOR_WATER_GRAPH",$main_error);
-}
-
-if((isset($color_level))&&(!empty($color_level))) {
-    insert_configuration("COLOR_LEVEL_GRAPH",$color_level,$main_error);
-    $update_conf=true;
-} else {
-    $color_level = get_configuration("COLOR_LEVEL_GRAPH",$main_error);
-}
-
-if((isset($color_ph))&&(!empty($color_ph))) {
-    insert_configuration("COLOR_PH_GRAPH",$color_ph,$main_error);
-    $update_conf=true;
-} else {
-    $color_ph = get_configuration("COLOR_PH_GRAPH",$main_error);
-}
-
-if((isset($color_ec))&&(!empty($color_ec))) {
-    insert_configuration("COLOR_EC_GRAPH",$color_ec,$main_error);
-    $update_conf=true;
-} else {
-    $color_ec = get_configuration("COLOR_EC_GRAPH",$main_error);
-}
-
-if((isset($color_od))&&(!empty($color_od))) {
-    insert_configuration("COLOR_OD_GRAPH",$color_od,$main_error);
-    $update_conf=true;
-} else {
-    $color_od = get_configuration("COLOR_OD_GRAPH",$main_error);
-}
-
-if((isset($color_orp))&&(!empty($color_orp))) {
-    insert_configuration("COLOR_ORP_GRAPH",$color_orp,$main_error);
-    $update_conf=true;
-} else {
-    $color_orp = get_configuration("COLOR_ORP_GRAPH",$main_error);
-}
-
-if((isset($color_power))&&(!empty($color_power))) {
-   insert_configuration("COLOR_POWER_GRAPH",$color_power,$main_error);
-   $update_conf=true;
-} else {
-   $color_power = get_configuration("COLOR_POWER_GRAPH",$main_error);
-}
-
-if((isset($color_cost))&&(!empty($color_cost))) {
-   insert_configuration("COLOR_COST_GRAPH",$color_cost,$main_error);
-   $update_conf=true;
-} else {
-   $color_cost = get_configuration("COLOR_COST_GRAPH",$main_error);
-}
-
-
-if((isset($record_frequency))&&(!empty($record_frequency))) {
-    insert_configuration("RECORD_FREQUENCY",$record_frequency,$main_error);
-    $update_conf=true;
-} else {
-    $record_frequency = get_configuration("RECORD_FREQUENCY",$main_error);
-}
-
-if((isset($power_frequency))&&(!empty($power_frequency))) {
-    insert_configuration("POWER_FREQUENCY",$power_frequency,$main_error);
-    $update_conf=true;
-} else {
-    $power_frequency = get_configuration("POWER_FREQUENCY",$main_error);
-}
-
-
-if((isset($nb_plugs))&&(!empty($nb_plugs))) {
-    insert_configuration("NB_PLUGS",$nb_plugs,$main_error);
-    $update_conf=true;
-} else {
-    $nb_plugs = get_configuration("NB_PLUGS",$main_error);
-}
-
-if(!empty($update_frequency)) {
-    insert_configuration("UPDATE_PLUGS_FREQUENCY",$update_frequency,$main_error);
-    $update_conf=true;
-} else {
-    $update_frequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
-}
-
-
 
 if((isset($rtc_offset))&&(!empty($rtc_offset))) {
     insert_configuration("RTC_OFFSET",$rtc_offset,$main_error);
@@ -244,7 +138,7 @@ if(!empty($alarm_enable)) {
 }
 
 if(empty($alarm_value)) {
-        $alarm_value = get_configuration("ALARM_VALUE",$main_error);
+    $alarm_value = get_configuration("ALARM_VALUE",$main_error);
 }
 
 
@@ -280,10 +174,10 @@ if(strcmp("$wifi_enable","")!=0) {
        $update_conf=true;
 
        if((!empty($sd_card))&&(isset($sd_card))) {
-               $wifi_conf=create_wificonf_from_database($main_error,get_ip_address());
-               if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
-                   $main_error[]=__('ERROR_WIFI_CONF');
-               }
+            $wifi_conf=create_wificonf_from_database($main_error,get_ip_address());
+            if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
+                $main_error[]=__('ERROR_WIFI_CONF');
+            }
        }
 } 
 
@@ -293,14 +187,6 @@ $wifi_key_type=get_configuration("WIFI_KEY_TYPE",$main_error);
 $wifi_manual=get_configuration("WIFI_IP_MANUAL",$main_error);
 $wifi_password=get_configuration("WIFI_PASSWORD",$main_error);
 $wifi_ip=get_configuration("WIFI_IP",$main_error);
-
-if((isset($stats))&&(!empty($stats))) {
-    insert_configuration("STATISTICS","$stats",$main_error);
-    $update_conf=true;
-} else {
-    $stats = get_configuration("STATISTICS",$main_error);
-}
-
 
 if((isset($advanced_regul))&&(!empty($advanced_regul))) {
     insert_configuration("ADVANCED_REGUL_OPTIONS","$advanced_regul",$main_error);
@@ -329,30 +215,6 @@ if((isset($advanced_regul))&&(!empty($advanced_regul))) {
 }
 
 
-if((isset($second_regul))&&(!empty($second_regul))) {
-    insert_configuration("SECOND_REGUL","$second_regul",$main_error);
-    $update_conf=true;
-} else {
-    $second_regul = get_configuration("SECOND_REGUL",$main_error);
-}
-
-
-if((isset($show_cost))&&(!empty($show_cost))) {
-    insert_configuration("SHOW_COST","$show_cost",$main_error);
-    $update_conf=true;
-    $update_menu=true;
-} else {
-    $show_cost = get_configuration("SHOW_COST",$main_error);
-}
-
-
-if((isset($minmax))&&(!empty($minmax))) {
-    insert_configuration("RESET_MINMAX","$minmax",$main_error);
-    $update_conf=true;
-} else {
-    $minmax = get_configuration("RESET_MINMAX",$main_error);
-}
-
 
 // Is a field has been changed and there is no error in the value: display success message
 if(empty($main_error)) {
@@ -375,15 +237,15 @@ if((isset($submit))&&(!empty($submit))) {
         if("$updateFrequencyCorrected"=="-1") {
             $updateFrequencyCorrected = 0;
         }
-        
+
         // Save the configuration on SD Card
         if(!write_sd_conf_file($sd_card,$record_frequency,$updateFrequencyCorrected,$power_frequency,"$alarm_enable","$alarm_value","$minmax",$rtc_offset_computed,$main_error)) {
-            $main_error[]=__('ERROR_WRITE_SD_CONF');
+            $main_error[] = __('ERROR_WRITE_SD_CONF');
         }
     } 
     else
     {
-        $main_error[]=__('ERROR_SD_CARD_CONF')." <img src='main/libs/img/infos.png' alt='' title='".__('TOOLTIP_WITHOUT_SD')."' />";
+        $main_error[] = __('ERROR_SD_CARD_CONF')." <img src='main/libs/img/infos.png' alt='' title='".__('TOOLTIP_WITHOUT_SD')."' />";
     }
 }
 

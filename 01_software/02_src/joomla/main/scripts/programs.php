@@ -61,11 +61,14 @@ $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error);
 //Valeur du radio bouton qui définit si le programme sera cyclic ou non:
 $cyclic=getvar("cyclic");
 
-$value_program=getvar('value_program');
-$second_regul=get_configuration("SECOND_REGUL",$main_error);
-$reset_selected=getvar("reset_selected_plug");
-$import_selected=getvar("import_selected_plug");
-$export_selected=getvar("export_selected_plug");
+$value_program       = getvar('value_program');
+$reset_selected      = getvar("reset_selected_plug");
+$import_selected     = getvar("import_selected_plug");
+$export_selected     = getvar("export_selected_plug");
+
+// Get configuration value
+$second_regul        = get_configuration("SECOND_REGUL",$main_error);
+$activ_daily_program = get_configuration("ACTIV_DAILY_PROGRAM",$main_error); // To activ daily program
 
 $start="";
 $end="";
@@ -77,11 +80,17 @@ $anchor=getvar('anchor');
 $type="0";
 $tmp_prog="";
 
-// Var used to choose programm to display anf modify
-$program_index = getvar("program_index");
-if ($program_index == "")
-    $program_index = 1;
+// Var used to choose programm to display and modify 
+$program_index_id = getvar("program_index_id");
+if ($program_index_id == "")
+    $program_index_id = 1;
 
+// Get "number" field of program table
+$program_index = program\get_field_from_program_index ("program_idx",$program_index_id);
+    
+// Var used to define if program file must be rebuild
+$rebuildProgamFile = false;
+    
 $error_value[0]="";
 $error_value[1]="";
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');
@@ -96,25 +105,23 @@ for($i=1;$i<=$nb_plugs;$i++) {
     $tmp="";
 }
 
-if((!isset($reset_selected))||(empty($reset_selected))) {
+if((!isset($reset_selected)) || empty($reset_selected)) {
     $reset_selected=$selected_plug;
 } else {
-    if(strcmp("$reset_selected","all")==0) {
-        $selected_plug=1;
+    if($reset_selected == "all") {
+        $selected_plug = 1;
     } else {
-        $selected_plug=$reset_selected;
+        $selected_plug = $reset_selected;
     }
 }
 
-if((!isset($export_selected))||(empty($export_selected))) {
+if((!isset($export_selected)) || empty($export_selected)) {
     $export_selected=$selected_plug;
 } 
 
-if((!isset($import_selected))||(empty($import_selected))) {
+if((!isset($import_selected)) || empty($import_selected)) {
     $import_selected=$selected_plug;
 }
-
-
 
 if(isset($cyclic)&&(!empty($cyclic))) {
     //Dans le cas d'un programme cyclique on récupère les champs correspondant:
@@ -126,8 +133,6 @@ if(isset($cyclic)&&(!empty($cyclic))) {
     $final_cyclic_end=$end_time_cyclic; //pour l'affichage dans kes input text
 }
 
-
-
 if(empty($apply)||(!isset($apply))) {
     $value_program="";
     $regul_program="on";
@@ -136,19 +141,6 @@ if(empty($apply)||(!isset($apply))) {
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
-}
-
-// Delete a daily program:
-$daily_delete_button = getvar("daily_delete_button");
-$program_delete_index = getvar("program_delete_index");
-if( !empty($daily_delete_button) && isset($daily_delete_button))
-{
-    // delete program and index
-    program\delete_program($program_delete_index);
-    
-    // If this is the actual programm return to current
-    if ($program_index == $program_delete_index)
-        $program_index = 1;
 }
 
 // Ajout d'une prise pour configurer un nouveau programme, la variable définissant le nombre de prise maximale
@@ -230,6 +222,7 @@ if((isset($export))&&(!empty($export))) {
 
      //Export du programme au format csv, création du fichier program_plugX.prg:
      export_program($export_selected,$program_index,$main_error);
+     
      $file="tmp/program_plug${export_selected}.prg";
      if (($file != "") && (file_exists("./$file"))) {
         //Si le programme exporté à bien été créé dans un fichier, on lance le téléchargement (fichier se trouvant dans le répertoire tmp de joomla)
@@ -244,8 +237,11 @@ if((isset($export))&&(!empty($export))) {
         readfile("./$file");    
         exit();
     }
+    
 } elseif((isset($reset))&&(!empty($reset))) {
-    if(strcmp("$reset_selected","all")==0) {
+
+    // User want to reste the plug program
+    if($reset_selected == "all") {
         $status=true;
         foreach($active_plugs as $aplugs) {
             if(!clean_program($aplugs['id'],$program_index,$main_error))
@@ -258,15 +254,24 @@ if((isset($export))&&(!empty($export))) {
             $pop_up_message=$pop_up_message.popup_message(__('ERROR_RESET_PROGRAM'));
             $main_info[]=__('ERROR_RESET_PROGRAM');
         }
+        
+        // Need to rebuild 
+        $rebuildProgamFile = true;
+        
         $reset_selected=1;
         $export_selected=1;
         $import_selected=1;
         $selected_plug=1;
     } else {
+        // Only one plug selected
         if(clean_program($reset_selected,$program_index,$main_error)) {
             $pop_up_message=$pop_up_message.popup_message(__('INFO_RESET_PROGRAM'));
             $main_info[]=__('INFO_RESET_PROGRAM');
         }
+        
+        // Need to rebuild 
+        $rebuildProgamFile = true;
+        
         $export_selected=$reset_selected;
         $import_selected=$reset_selected;
         $selected_plug=$reset_selected;
@@ -315,7 +320,7 @@ $main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTL
 if(!empty($apply) && isset($apply))
 { 
     //Vérification et mise en place de la value du programme en fonction du type de prise entre autre:
-    if("$regul_program"=="on") {
+    if($regul_program == "on") {
         //Valeur de 99.9 pour un programme en marche forcé:
         $value_program="99.9";
         //Type de programme pour différencier les programmes variateurs des programmes de prises classiques: 0 pour classique, 2 pour les variateurs
@@ -345,7 +350,7 @@ if(!empty($apply) && isset($apply))
         $type="1";
     }
 
-    if(strcmp("$check","1")==0) { //Si la valeur du programme est correcte:
+    if($check == "1") { //Si la valeur du programme est correcte:
         if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
              date_default_timezone_set('UTC'); //Pour le calcul des timestamps
              //Calcul de l'heure de fin du premier cycle: départ + durée du cycle 
@@ -403,11 +408,16 @@ if(!empty($apply) && isset($apply))
         $ch_insert=true;
 
         //Dans le cas d'une action ponctuel on s'arrête la, dans le cas d'une action cyclique il faut calculer les cycles: 
-        if(isset($cyclic)&&(!empty($cyclic))&&(strcmp("$repeat_time","00:00:00")!=0)) {
-            list($rephh, $repmm, $repss) = explode(':', $repeat_time); //Récupération des heures, minutes et secondes du temps de répétition
-            $step=$rephh*3600+$repmm*60+$repss; //Calcul du temps de répétition d'un nouveau cycle en seconde
+        if( isset($cyclic) && !empty($cyclic)
+            && $repeat_time != "00:00:00") {
+            
+            //Récupération des heures, minutes et secondes du temps de répétition
+            list($rephh, $repmm, $repss) = explode(':', $repeat_time); 
+            
+            //Calcul du temps de répétition d'un nouveau cycle en seconde
+            $step=$rephh*3600+$repmm*60+$repss; 
 
-            //On insère pas le premier évènement, il a été ajouté précédement:
+            //On insère pas le premier événement, il a été ajouté précédemment:
             $chk_first=false;
 
 
@@ -420,7 +430,7 @@ if(!empty($apply) && isset($apply))
 
             if($chtime!=2) {
                 //Dans le cas d'un programme qui reboucle, on vérifie si les cycles ne se chevauchent pas,
-                // si c'est le cas un seul évènement couvre la journée:
+                // si c'est le cas un seul événement couvre la journée:
                 if($stop_check-$start_check>=$repeat_check) {
                     $optimize=true;
                     unset($prog);
@@ -435,7 +445,7 @@ if(!empty($apply) && isset($apply))
                 }
             } else {
                 //Dans le cas d'un programme qui ne reboucle pas, on vérifie si les cycles ne se chevauchent pas,
-                // si c'est le cas un seul évènement couvre la journée:
+                // si c'est le cas un seul événement couvre la journée:
                 if((235959-$start_check)+$stop_check>=$repeat_check) {
                     $optimize=true;
                     unset($prog);
@@ -561,7 +571,6 @@ if(!empty($apply) && isset($apply))
             unset($reset_program);
         } 
 
-
         $ch_insert=true;
         if(count($prog)>0) {
             if(!insert_program($prog,$main_error)) 
@@ -593,25 +602,42 @@ if(!empty($apply) && isset($apply))
 //On génère le fichier plugv depuis la base de données et on compte le nombre de ligne,
 //Si cela dépasse la limite, on affiche une erreur/warning après calcul de l'heure de la dernière action
 $tmp_prog=create_program_from_database($main_error);
-if(count($tmp_prog)>$GLOBALS['PLUGV_MAX_CHANGEMENT']-1) {
+if (count($tmp_prog) > $GLOBALS['PLUGV_MAX_CHANGEMENT']-1) 
+{
     $last_action=substr($tmp_prog[$GLOBALS['PLUGV_MAX_CHANGEMENT']-1],0,5);
     $main_error[]=__('ERROR_MAX_PROGRAM')." ".date('H:i:s', $last_action);
 }
 
 // For each plug gets pogramm
 for($i=0;$i<$nb_plugs;$i++) {
-    $data_plug=get_data_plug($i+1,$main_error,$program_index);
-    $plugs_infos[$i]["data"]=format_program_highchart_data($data_plug,"");
+    $data_plug = get_data_plug($i+1,$main_error,$program_index);
+    $plugs_infos[$i]["data"] = format_program_highchart_data($data_plug,"");
 
     switch($plugs_infos[$i]['PLUG_TYPE']) {
-        case 'other': $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
-        case 'ventilator': $plugs_infos[$i]['translate']=__('PLUG_VENTILATOR'); break;
-        case 'heating': $plugs_infos[$i]['translate']=__('PLUG_HEATING'); break;	
-        case 'pump': $plugs_infos[$i]['translate']=__('PLUG_PUMP'); break;
-        case 'lamp': $plugs_infos[$i]['translate']=__('PLUG_LAMP'); break;
-        case 'humidifier': $plugs_infos[$i]['translate']=__('PLUG_HUMIDIFIER'); break;
-        case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DEHUMIDIFIER'); break;
-        default: $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
+        case 'other':
+            $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); 
+            break;
+        case 'ventilator': 
+            $plugs_infos[$i]['translate']=__('PLUG_VENTILATOR');
+            break;
+        case 'heating':
+            $plugs_infos[$i]['translate']=__('PLUG_HEATING');
+            break;	
+        case 'pump':
+            $plugs_infos[$i]['translate']=__('PLUG_PUMP');
+            break;
+        case 'lamp':
+            $plugs_infos[$i]['translate']=__('PLUG_LAMP');
+            break;
+        case 'humidifier':
+            $plugs_infos[$i]['translate']=__('PLUG_HUMIDIFIER');
+            break;
+        case 'dehumidifier':
+            $plugs_infos[$i]['translate']=__('PLUG_DEHUMIDIFIER');
+            break;
+        default:
+            $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
+            break;
     }
 }
 
@@ -634,16 +660,34 @@ if(count($tmp_resume)>0) {
     $resume=$tmp_resume;
 }
 
+// If it's an submit entry, rebuild program
+if(isset($submit) && !empty($submit))
+{
+    $rebuildProgamFile = true;
+}
 
-if((!empty($sd_card))&&(isset($sd_card))) {
-    if(check_sd_card($sd_card)) {
-        if((isset($submit))&&(!empty($submit))) {
-            $program=create_program_from_database($main_error);
-            if(!compare_program($program,$sd_card)) {
-                if(!save_program_on_sd($sd_card,$program,$main_error)) {
-                    $main_error[]=__('ERROR_WRITE_PROGRAM');
-                }
-            }
+// If needed, rebuild program
+if ($rebuildProgamFile 
+    && !empty($sd_card) 
+    && check_sd_card($sd_card))
+{
+    // Get field number of program
+    $fieldNumber = program\get_field_from_program_index("program_idx",$program_index_id);
+
+    // Read from database program
+    $program = create_program_from_database($main_error,$fieldNumber);
+    
+    // Check if different from SD cards
+    if(!compare_program($program,$sd_card)) {
+    
+        // Get pluXX filename
+        $plu_fileName = "plu" . program\get_field_from_program_index("plugv_filename",$program_index_id);
+    
+        // Save the program on SD card
+        if(!save_program_on_sd($sd_card,$program,$plu_fileName)) {
+        
+            // If there is an error, display it
+            $main_error[]=__('ERROR_WRITE_PROGRAM');
         }
     }
 }

@@ -40,23 +40,8 @@
     $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
     __('LANG');
     
-    // Get a programm index not used
-    $program_idx = program\get_programm_number_empty();
-
-    // create programm line
-    program\add_row_program_idx($_POST['name'], $_POST['version'], $program_idx);
+    // delete program and index
+    program\delete_program($_POST['program_delete_index']);
     
-    // Save programm
-    program\copy($_POST['input'],$program_idx);
-    
-    // Create return array
-    $ret_array = array();
-    
-    $ret_array['name'] = $_POST['name'];
-    $ret_array['version'] = $_POST['version'];
-    $ret_array['program_idx'] = $program_idx;
-    
-    // Return the array
-    echo json_encode($ret_array);
  
 ?>

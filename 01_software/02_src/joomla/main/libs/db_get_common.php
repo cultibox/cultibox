@@ -2015,70 +2015,69 @@ EOF;
 // ROLE read programs from the database and format its to be writen into a sd card
 // IN $out        error or warning message
 // RET an array containing datas
-function create_program_from_database(&$out) {
-   $nb_plugs=get_configuration("NB_PLUGS",$out);
-   $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by `time_start`
-EOF;
+function create_program_from_database(&$out,$fieldNumber = 1) {
+
+    // Read the number of plugs
+    $nb_plugs=get_configuration("NB_PLUGS",$out);
+    
+    // Get programs for plug enabled
+   $sql = "SELECT * FROM programs WHERE plug_id IN (SELECT id FROM plugs WHERE PLUG_ENABLED LIKE 'True') AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
   
    $db=db_priv_pdo_start();
    try {
-       $sth=$db->prepare("$sql");
-       $sth->execute();
-       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
    } catch(PDOException $e) {
-       $ret=$e->getMessage();
+        $ret=$e->getMessage();
+       
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+        
+        unset($ret);
    }
-   $db=null;
-   if((isset($ret))&&(!empty($ret))) {
-          if($GLOBALS['DEBUG_TRACE']) {
-                  $out[]=__('ERROR_SELECT_SQL').$ret;
-            } else {
-                  $out[]=__('ERROR_SELECT_SQL');
-            }
-   }
-   unset($ret);
-   $sql = <<<EOF
-SELECT * FROM `programs` WHERE time_start = "000000" AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by `time_start`
-EOF;
-   $db=db_priv_pdo_start();
-   try {
-       $sth=$db->prepare("$sql");
-       $sth->execute();
-       $first=$sth->fetchAll(PDO::FETCH_ASSOC);
-   } catch(PDOException $e) {
-       $ret=$e->getMessage();
-   }
-   $db=null;
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-                  $out[]=__('ERROR_SELECT_SQL').$ret;
-      } else {
-                  $out[]=__('ERROR_SELECT_SQL');
-      }
-   }
-   unset($ret);
 
-   $sql = <<<EOF
-SELECT * FROM `programs` WHERE time_stop = "235959" AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") ORDER by `time_start`
-EOF;
-   $db=db_priv_pdo_start();
-   try {
-        $sth=$db->prepare("$sql");
+   
+   // Select first element of program
+   $sql = "SELECT * FROM programs WHERE time_start = '000000' AND plug_id IN (SELECT id FROM plugs WHERE PLUG_ENABLED LIKE 'True') AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
+
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $first=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+       
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+        
+        unset($ret);
+    }
+
+    // Select last element of program
+   $sql = "SELECT * FROM programs WHERE time_stop = '235959' AND plug_id IN (SELECT id FROM plugs WHERE PLUG_ENABLED LIKE 'True') AND number = '" . $fieldNumber . "' ORDER by time_start;";
+
+    try {
+        $sth=$db->prepare($sql);
         $sth->execute();
         $last=$sth->fetchAll(PDO::FETCH_ASSOC);
-   } catch(PDOException $e) {
-       $ret=$e->getMessage();
-   }
-   $db=null;
-
-   if((isset($ret))&&(!empty($ret))) {
-            if($GLOBALS['DEBUG_TRACE']) {
-                  $out[]=__('ERROR_SELECT_SQL').$ret;
-            } else {
-                  $out[]=__('ERROR_SELECT_SQL');
-            }
-   }
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+       
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+        
+        unset($ret);
+    }
    
    $j=1;
    $data=array();
@@ -2186,22 +2185,17 @@ EOF;
 // IN   $out         error or warning message
 // RET an array containing datas
 function create_calendar_from_database(&$out,$start="",$end="") {
-        $year=date('Y');
+
+        $date = date("Y-m-d H:i:s");
+        $start = $date;
+        $end  = date("Y-m-d H:i:s", strtotime("+3 months", strtotime($date)));
+
         $data=array();
         $db = db_priv_pdo_start();
-        if((strcmp("$start","")!=0)&&((strcmp("$end","")!=0))) {
-             $sql = <<<EOF
+
+        $sql = <<<EOF
 SELECT `Title`,`StartTime`,`EndTime`, `Description`, `program_index` FROM `calendar` WHERE (`StartTime` BETWEEN '{$start}' AND '{$end}') OR (`EndTime` BETWEEN '{$start}' AND '{$end}') OR (`StartTime` <= '{$start}' AND `EndTime` >= '{$end}')
 EOF;
-        } else if((strcmp("$start","")!=0)&&((strcmp("$end","")==0))) {
-             $sql = <<<EOF
-SELECT `Title`,`StartTime`,`EndTime`, `Description`, `program_index` FROM `calendar` WHERE "{$start}" BETWEEN `StartTime`AND `EndTime` 
-EOF;
-        } else {
-            $sql = <<<EOF
-SELECT `Title`,`StartTime`,`EndTime`, `Description`, `program_index` FROM `calendar` WHERE `StartTime` LIKE "{$year}-%"
-EOF;
-        }
 
         foreach($db->query("$sql") as $val) {
             $val['Title']=clean_calendar_message($val['Title']);

@@ -227,7 +227,9 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
             if($chinsert) {
                if((!empty($sd_card))&&(isset($sd_card))) {
                     $program=create_program_from_database($main_error);
-                    save_program_on_sd($sd_card,$program,$main_error);
+                    
+                    // Create plugv from database
+                    save_program_on_sd($sd_card,$program);
                 } 
 			    insert_plug_conf("PLUG_TYPE",$prog[0]["selected_plug"],$prog[0]["plug_type"],$main_error);
             } else {

@@ -105,14 +105,14 @@ if((!isset($path))||(empty($path))) {
                 return 0;
             }
 
-
-
+            // Create plugv from database
+            // Caution : Only plugv is created, pluXX not created
+            // TODO : Add creation of every pluXX
             $program=create_program_from_database($out);
-            if(!save_program_on_sd($path,$program,$out)) {
+            if(!save_program_on_sd($path,$program)) {
                 echo -1;
                 return 0;
             }
-
 
             //Create plugXX files:
             $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$out);

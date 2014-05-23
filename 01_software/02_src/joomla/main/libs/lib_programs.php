@@ -38,7 +38,7 @@ function check_db() {
     $db=null;
     
     // Add default line
-    add_row_program_idx('Courant','1.0','1');
+    add_row_program_idx('Courant','1.0','1' , '00');
 
 }
 
@@ -48,13 +48,39 @@ function check_db() {
 //    $version : Version of the programm
 //    $program_idx : Pointor on the the programs table
 // RET none
-function add_row_program_idx($name, $version, $program_idx = "") {
+function add_row_program_idx($name, $version, $program_idx = "", $plugv_filename = "") {
 
     // Open connection to dabase
     $db = \db_priv_pdo_start();
+
+    // If not defined, search first index available
+    $index = 0;
+    while ($plugv_filename == "")
+    {
+    
+        if (strlen($index) < 2)
+            $index = "0" . $index;
+    
+        $sql = "SELECT plugv_filename FROM program_index WHERE plugv_filename = \"" . $index . "\" ;";
+        try {
+            $sth = $db->prepare($sql);
+            $sth->execute();
+            $row = $sth->fetch();
+        } catch(\PDOException $e) {
+            $ret = $e->getMessage();
+            print_r($ret);
+        }
+        
+        if ($row == null)
+            $plugv_filename = $index;
+            
+        $index = $index + 1;
+        
+    }
+
     // Add line
     $sql = "INSERT INTO program_index(name, version, program_idx ,creation ,modification, plugv_filename) ";
-    $sql = $sql . "VALUE(\"" . $name . "\", \"" . $version . "\", \"" . $program_idx . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . date("Y-m-d H:i:s") . "\", \"00\");";
+    $sql = $sql . "VALUE(\"" . $name . "\", \"" . $version . "\", \"" . $program_idx . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . $plugv_filename . "\");";
 
     // Run command
     try {
@@ -166,27 +192,29 @@ function get_program_index_info (&$tab)
     }
 }
 
-// {{{ get_program_name()
-// ROLE Return program name
-// RET program name
-function get_program_name ($program_idx)
+// {{{ get_field_from_program_index()
+// ROLE Return pluXX file name
+// RET pluXX file name
+function get_field_from_program_index ($variable,$program_idx)
 {
     // Open connection to dabase
     $db = \db_priv_pdo_start();
     
     //
-    $sql = "SELECT name FROM program_index WHERE id = \"$program_idx\";";
+    $sql = "SELECT " . $variable . " FROM program_index WHERE id = \"$program_idx\";";
     
     // Run command
     try {
         $sth = $db->prepare($sql);
         $sth->execute();
         $tab=$sth->fetch();
-        return $tab['name'];
+        return $tab[$variable];
     } catch(\PDOException $e) {
         $ret = $e->getMessage();
         print_r($ret);
     }
+    
+    return "";
 }
 
 // {{{ delete_program()
