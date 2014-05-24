@@ -528,16 +528,11 @@ EOF;
 // IN   cost        value for displaying or not the cost menu
 //      wifi        value for displaying or not the wifi menu
 // RET  none
-function configure_menu($cost="False",$wifi=0) {
-   if(strcmp("$cost","True")==0) {
-            $cost=1;
-    } else {
-            $cost=0;
-    }
+function configure_menu($menu="",$value) {
+   if(strcmp("$menu","")==0) break;
 
   $sql = <<<EOF
-UPDATE `dkg45_menu` SET  published = "{$cost}" WHERE alias LIKE "cost-%";
-UPDATE `dkg45_menu` SET  published = "{$wifi}" WHERE alias LIKE "wifi-%";
+UPDATE `dkg45_menu` SET  published = "{$value}" WHERE alias LIKE "{$menu}-%";
 EOF;
    $db=db_priv_pdo_start_joomla();
    if($db) {

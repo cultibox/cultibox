@@ -41,12 +41,19 @@
     __('LANG');
     
     
-    // delete program and index
+    // Save configuration
     insert_configuration(strtoupper($_POST['variable']),$_POST['value'],$main_error);
-    
+
+    //Special configuration:
+    switch(strtoupper($_POST['variable'])) {
+        case 'SHOW_COST': configure_menu("cost",$_POST['value']);
+                     break;
+        case 'WIFI': configure_menu("wifi",$_POST['value']);
+                     break;
+    }
+
     // If update conf is defined, update sd configuration
-    if ($_POST['updateConf'] != "undefined")
-    {
+    if ($_POST['updateConf'] != "undefined") {
         // search sd card
         $sd_card = get_sd_card();
         
