@@ -56,10 +56,9 @@ if((!isset($sd_card))||(empty($sd_card))) {
 // After creating the XML available file list, checking that each file is an external file like moon calendar
 $list_xml=array();
 foreach($xml_list as $liste) {
-    $check_xml=check_config_xml_file($liste);
     $list_xml[]=array(
             "name" => $liste,
-            "value" => $check_xml
+            "value" => 1
             );
 }
 

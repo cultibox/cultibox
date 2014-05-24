@@ -54,9 +54,7 @@ if ($handle = opendir('../../xml')) {
         foreach ($xml as $tab) {
             if(is_array($tab)) {
                 if((array_key_exists('title', $tab))&&(array_key_exists('content', $tab))&&(array_key_exists('start', $tab))) {
-                    if(check_config_xml_file($entry)) {
                         $value[]=$tab;
-                    }
                 }
             }
 
@@ -69,9 +67,7 @@ if ($handle = opendir('../../xml')) {
                         if(is_array($val)) {
                             if((array_key_exists('title', $val))&&(array_key_exists('content', $val))&&(array_key_exists('start', $val))) {
                                 if((!empty($val['title']))&&(!empty($val['content']))&&(!empty($val['start']))) {
-                                    if(check_config_xml_file($entry)) {
                                         $value[]=$val;
-                                    }
                                 }
                             }
                         }
