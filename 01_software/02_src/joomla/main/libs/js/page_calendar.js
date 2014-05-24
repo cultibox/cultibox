@@ -387,8 +387,11 @@ function daily_program_check_overlaping (event) {
             EndA = $.fullCalendar.formatDate(allevents[index].start, "yyyy-MM-dd");
             EndB = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
             
-            if (  (StartA <= EndB) && (EndA >= StartB) )
+            if ( (allevents[index].id != event.id) && (StartA <= EndB) && (EndA >= StartB) )
+            {
+                // To debug : val = allevents[index].title;
                 return true;
+            }
         }
     }
 
