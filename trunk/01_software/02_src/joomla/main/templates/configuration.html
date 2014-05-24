@@ -328,8 +328,8 @@
             <td><?php echo __('SHOW_COST'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SHOW_COST'); ?>" /></td>
             <td>
                 <select name="show_cost" id="show_cost">
-                    <option value="True" <?php if(strcmp("$show_cost","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
-                    <option value="False" <?php if(strcmp("$show_cost","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
+                    <option value="1"><?php echo __('YES'); ?></option>
+                    <option value="0" <?php if(!$show_cost) echo "selected"; ?>><?php echo __('NO'); ?></option>
                 </select>
             </td>
             <td></td>

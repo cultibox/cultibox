@@ -20,10 +20,9 @@ $(document).ready(function(){
     });
     
     // On select change, update conf
-    $( "select" ).each(function() {
+    $("select").each(function() {
        
         $(this).on('change', function() {
-        
             newValue    = $( this ).find(":selected").val();
             varToUpdate = $( this ).attr('name');
             updateConf  = $( this ).attr('update_conf');
@@ -34,6 +33,10 @@ $(document).ready(function(){
                 url: "../../main/modules/external/update_configuration.php",
                 data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
             }).done(function (data) {
+                //Reload page to print cost menu:
+                if(varToUpdate.toUpperCase()=="SHOW_COST") {
+                    window.location = "configuration-"+slang;
+                }
             });
         });
   

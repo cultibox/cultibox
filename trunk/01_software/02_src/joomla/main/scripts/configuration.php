@@ -44,7 +44,6 @@ $wifi_ip    = getvar('wifi_ip');
 $submenu    = getvar("submenu",$main_error);
 $stats      = getvar("stats",$main_error);
 $advanced_regul = getvar("advanced_regul",$main_error);
-$show_cost  = getvar("show_cost",$main_error);
 $submit     = getvar("submit_conf_value",$main_error);
 $wifi_manual    = getvar("wifi_ip_manual");
 $rtc_offset = getvar("rtc_offset");
@@ -74,6 +73,7 @@ check_and_update_sd_card($sd_card,$main_info,$main_error);
 sd_card_update_log_informations($sd_card);
 
 //============================== GET OR SET CONFIGURATION PART ====================
+//update_conf sert à définir si la configuration impacte la carte SD
 $conf_arr = array();
 $conf_arr["SHOW_POPUP"]             = array ("update_conf" => "0", "var" => "pop_up");
 $conf_arr["CHECK_UPDATE"]           = array ("update_conf" => "0", "var" => "update");
@@ -87,7 +87,7 @@ $conf_arr["COLOR_OD_GRAPH"]         = array ("update_conf" => "0", "var" => "col
 $conf_arr["COLOR_ORP_GRAPH"]        = array ("update_conf" => "0", "var" => "color_orp");
 $conf_arr["COLOR_POWER_GRAPH"]      = array ("update_conf" => "0", "var" => "color_power");
 $conf_arr["COLOR_COST_GRAPH"]       = array ("update_conf" => "0", "var" => "color_cost");
-$conf_arr["RECORD_FREQUENCY"]       = array ("update_conf" => "1", "var" => "color_power");
+$conf_arr["RECORD_FREQUENCY"]       = array ("update_conf" => "1", "var" => "record_frequency");
 $conf_arr["POWER_FREQUENCY"]        = array ("update_conf" => "1", "var" => "power_frequency");
 $conf_arr["UPDATE_PLUGS_FREQUENCY"] = array ("update_conf" => "1", "var" => "update_frequency");
 $conf_arr["NB_PLUGS"]               = array ("update_conf" => "0", "var" => "nb_plugs");
@@ -95,20 +95,14 @@ $conf_arr["SECOND_REGUL"]           = array ("update_conf" => "0", "var" => "sec
 $conf_arr["STATISTICS"]             = array ("update_conf" => "0", "var" => "stats");
 $conf_arr["RESET_MINMAX"]           = array ("update_conf" => "1", "var" => "minmax");
 $conf_arr["ACTIV_DAILY_PROGRAM"]    = array ("update_conf" => "0", "var" => "activ_daily_program");
+$conf_arr["SHOW_COST"]              = array ("update_conf" => "0", "var" => "show_cost");
 
-foreach ($conf_arr as $key => $value)
-{
+
+
+foreach ($conf_arr as $key => $value) {
     ${$value['var']} = get_configuration($key,$main_error);
 }
 
-
-if((isset($show_cost))&&(!empty($show_cost))) {
-    insert_configuration("SHOW_COST",$show_cost,$main_error);
-    $update_conf=true;
-    $update_menu=true;
-} else {
-    $show_cost = get_configuration("SHOW_COST",$main_error);
-}
 
 if((isset($rtc_offset))&&(!empty($rtc_offset))) {
     insert_configuration("RTC_OFFSET",$rtc_offset,$main_error);

@@ -32,3 +32,7 @@ INSERT INTO `cultibox`.`notes` (`id`, `title`, `desc`, `image`, `link`, `type_li
 (24, 'Recycling', 'In Cultibox wir nachbearbeiten alle Teil unserer Produkte. Die Verpackung kann recycelt werden und Cultibox enthält eine Lithium-Batterie, die nicht geworfen sollten entfernt werden. Für eine optimale Wiederverwertung, bringen uns Cultibox und Sie werden belohnt werden.', 'recycling.png', NULL, NULL, 'de_DE'),
 (25, 'Garantie', 'Die Cultibox und Zubehör sind für zwei Jahre garantiert. Wir sorgen für die Sicherheit direkt, ohne Vermittler. Um uns zu kontaktieren:', NULL, 'support@cultibox.fr', 'mail', 'de_DE');
 
+
+ALTER TABLE `cultibox`.`configuration` CHANGE `SHOW_COST` `SHOW_COST` BOOLEAN NOT NULL DEFAULT 0;
+
+
