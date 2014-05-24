@@ -218,7 +218,7 @@ if(    !empty($program_substrat)
                         $calendar_end="$year-$month-$day";
                   
                         // Create calendar from database
-                        $calendar = create_calendar_from_database($main_error);
+                        $calendar = calendar\read_event_from_db($main_error);
     
                         // Write calendar on SD card
                         write_calendar($sd_card,$calendar,$main_error);
@@ -277,7 +277,7 @@ if(    !empty($daily_program_name)
         if(!empty($sd_card)) {
 
             // Create an arry with all elements of the calendar
-            $calendar = create_calendar_from_database($main_error);
+            $calendar = calendar\read_event_from_db($main_error);
             
             if(count($calendar) > 0) {
                 calendar\write_plgidx($sd_card,$calendar);

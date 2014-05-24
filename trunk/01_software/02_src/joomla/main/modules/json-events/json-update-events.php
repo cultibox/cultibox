@@ -61,13 +61,13 @@ EOF;
             if ((isset($sd_card))&&(!empty($sd_card))) {
                 if ($start == $end || !isset($end) ||empty($end))
                 {
-                    $calendar = create_calendar_from_database($main_error,$start);
+                    $calendar = calendar\read_event_from_db($main_error,$start);
 
                     write_calendar($sd_card,$calendar,$main_error,$start);
                     calendar\write_plgidx($sd_card,$calendar);
 
                 } else {
-                    $calendar = create_calendar_from_database($main_error,$start,$end);
+                    $calendar = calendar\read_event_from_db($main_error,$start,$end);
 
                     write_calendar($sd_card,$calendar,$main_error,$start,$end);
                     calendar\write_plgidx($sd_card,$calendar);
@@ -88,7 +88,7 @@ EOF;
                 $end=$res[0]['EndTime'];
             }
 
-            $calendar=create_calendar_from_database($main_error,$start,$end);
+            $calendar=calendar\read_event_from_db($main_error,$start,$end);
 
             write_calendar($sd_card,$calendar,$main_error,$start,$end);
             calendar\write_plgidx($sd_card,$calendar);
