@@ -115,7 +115,9 @@ asort($substrat);
 
 // Part for the calendar: if a cultibox SD card is present, the 'calendar' is updated into this SD card
 if((isset($sd_card))&&(!empty($sd_card))) {
-    $data=create_calendar_from_database($main_error);
+
+    $data = calendar\read_event_from_db($main_error);
+    
     if(!check_sd_card($sd_card)) {
         $main_error[]=__('ERROR_WRITE_CALENDAR');
     } else {

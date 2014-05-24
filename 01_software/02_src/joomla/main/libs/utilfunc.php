@@ -562,40 +562,6 @@ function format_program_highchart_data($arr,$date_start="") {
 // }}}
 
 
-// {{{ concat_calendar_entries()
-// ROLE concat calendar entries to use several comments for the same day
-// IN   $data        data to be proccessed
-// IN   $month       month to be checked
-// IN   $day         day to be checked
-// RET return an array containing all datas for the day checked
-function concat_calendar_entries($data,$year,$month,$day) {
-    $new_data=array();
-
-    $current =   strtotime($year . "/" . $month . "/" . $day);
-    
-    foreach($data as $val) {
-    
-       
-       $start   =   strtotime($val['start_year'] . "/" . $val['start_month'] . "/" . $val['start_day']);
-       $end     =   strtotime($val['end_year']   . "/" . $val['end_month']   . "/" . $val['end_day']);
-    
-        // Don't concat programm_index event
-       if(($start <= $current)
-            &&($end >= $current)
-            && $val['program_index'] == "" ) {
-           $new_data[]=$val;
-       }
-    }
-
-    if(count($new_data)>0) {
-        return $new_data;
-    } else {
-        return null;
-    }
-}
-// }}}
-
-
 // {{{ check_date()
 // ROLE check the an interval of dates is correct
 // IN   $datestart      first date
@@ -1070,35 +1036,6 @@ function get_sensor_type($sd_card,$month,$day) {
 // }}}
 
 
-// {{{ check_config_xml_file()
-// ROLE check if an external xml file should be displayed for the calendar
-// IN file     file to be checked
-// RET true if the file has to be displayed, false else
-function check_config_xml_file($file) {
-    if(!is_file('../../xml/config')) {
-        if(!is_file('main/xml/config')) {    
-             return true;
-        } else {
-            $config="main/xml/config";
-        }
-    } else {
-        $config="../../xml/config";
-    }
-
-    $handle = fopen("$config", 'r');
-    if($handle) {
-      while (!feof($handle)) {
-        $buffer = fgets($handle);
-        if(strcmp(rtrim($buffer),"$file")==0) return false;
-      }
-    } else {    
-        return true;
-    }
-    return true;
-}
-// }}}
-
-
 // {{{ get_external_calendar_file()
 // ROLE get an array containing list of xml external files available for calendar (like moon calendar)
 // RET array containing datas
@@ -1205,6 +1142,7 @@ function check_xml_calendar_file($file) {
                 if(is_array($tab)) {
                     if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))) {
                         $check=false;
+                        break;
                     }
                 }
             }

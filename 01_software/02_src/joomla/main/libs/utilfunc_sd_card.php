@@ -1015,7 +1015,7 @@ function clean_calendar($sd_card="",$start="",$end="") {
 // {{{ write_calendar()
 // ROLE save calendar informations into the SD card
 // IN $sd_card         sd card location
-//    $data            data to write into the sd card (come from create_calendar_from_database )
+//    $data            data to write into the sd card (come from calendar\read_event_from_db )
 //    $out             error or warning messages
 //    $start           write calendar between two dates
 //    $end             if start and end are not set: write full calendar
@@ -1041,12 +1041,8 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
 
         while(strtotime($date) < $endSearch)
         {
-        
-            $year   = date("Y",strtotime($date));
-            $month  = date("m",strtotime($date));
-            $day    = date("d",strtotime($date));
-        
-            $val = concat_calendar_entries($data,$year,$month,$day);
+
+            $val = calendar\concat_entries($data,$date);
             
             // Create filename
             $file = "$sd_card/logs/$month/cal_$day";

@@ -23,7 +23,7 @@
 
         if((isset($sd_card))&&(!empty($sd_card))) {
 
-            $calendar=create_calendar_from_database($main_error);
+            $calendar=calendar\read_event_from_db($main_error);
 
             write_calendar($sd_card,$calendar,$main_error);
         }

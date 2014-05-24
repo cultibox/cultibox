@@ -17,6 +17,7 @@ $event=array();
 
 $sql = "SELECT * FROM calendar;";
 
+// For entry in calendar, create an event
 foreach($db->query($sql) as $row) {
     if($row['Important']==1) {
         $color_event="red";
@@ -34,6 +35,7 @@ foreach($db->query($sql) as $row) {
                 "icon" => $row['Icon'],
                 "important" => $row['Important'],
                 "textColor" => $color_event,
+                "program_index" => $row['program_index'],
                 "external" => 0
             );
 }
@@ -156,8 +158,8 @@ if ($handle = opendir('../../xml')) {
                             "icon2" => $icon2,
                             "icon3" => $icon3,
                             "textColor" => $color_text,
+                            "program_index" => "",
                             "external" => 1
-                            //"allDay" => false
                         );
                         $id=$id+1;
 
