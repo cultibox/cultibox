@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-   <updated>2014-05-25T08:07:50+02:00</updated>
+   <updated>2014-05-26T11:34:48+02:00</updated>
    <id>http://www.cultibox.fr/</id>
    <title>calendrier lunaire 2014</title>
    <subtitle></subtitle>
@@ -791,7 +791,7 @@ Perigee : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-04-24T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -809,7 +809,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-04-25T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -827,7 +827,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-04-26T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -845,7 +845,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-04-27T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -882,7 +882,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune montante : Semez et récoltez
 Nouvelle lune
 Jour fruit</content>
-<cbx_symbol>0xAC 0xAB 0xB1</cbx_symbol>
+<cbx_symbol>0xAC 0xAB</cbx_symbol>
 <duration>0</duration>
       <start>2014-04-29T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -901,7 +901,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-04-30T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -919,7 +919,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-01T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -937,7 +937,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-02T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -955,7 +955,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-03T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -973,7 +973,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-04T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -991,7 +991,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-05T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1009,7 +1009,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-06T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1027,7 +1027,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-07T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1045,7 +1045,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-08T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1063,7 +1063,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-09T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1081,7 +1081,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-10T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1099,7 +1099,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-11T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1117,7 +1117,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-12T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1154,7 +1154,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Pleine lune
 Jour fleur</content>
-<cbx_symbol>0xAD 0xAA 0xB3</cbx_symbol>
+<cbx_symbol>0xAD 0xAA</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-14T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1173,7 +1173,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-15T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1191,7 +1191,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-16T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1209,7 +1209,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-17T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1245,7 +1245,7 @@ Perigee : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-19T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1263,7 +1263,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-20T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1281,7 +1281,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-21T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1299,7 +1299,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-22T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1317,7 +1317,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-23T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1335,7 +1335,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-24T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1354,7 +1354,7 @@ Jour feuille</content>
 <content type = "text">Lune montante : Semez et récoltez
 Noeud lunaire : ne jardinez pas
 Jour feuille</content>
-<cbx_symbol>0xAC 0xAE 0xB4</cbx_symbol>
+<cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-25T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1373,7 +1373,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-26T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1391,7 +1391,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-27T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1410,7 +1410,7 @@ Jour fruit</content>
 <content type = "text">Lune montante : Semez et récoltez
 Nouvelle lune
 Jour racine</content>
-<cbx_symbol>0xAC 0xAB 0xB2</cbx_symbol>
+<cbx_symbol>0xAC 0xAB</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-28T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1429,7 +1429,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-29T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1447,7 +1447,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-30T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1465,7 +1465,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-05-31T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1483,7 +1483,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-01T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1501,7 +1501,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-02T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1519,7 +1519,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-03T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1537,7 +1537,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-04T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1555,7 +1555,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-05T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1589,7 +1589,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-07T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1607,7 +1607,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-08T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1643,7 +1643,7 @@ Noeud lunaire : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-10T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1661,7 +1661,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-11T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1679,7 +1679,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-12T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1698,7 +1698,7 @@ Jour feuille</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Pleine lune
 Jour feuille</content>
-<cbx_symbol>0xAD 0xAA 0xB4</cbx_symbol>
+<cbx_symbol>0xAD 0xAA</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-13T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1717,7 +1717,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-14T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1753,7 +1753,7 @@ Perigee : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-16T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1771,7 +1771,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-17T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1789,7 +1789,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-18T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1807,7 +1807,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-19T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1825,7 +1825,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-20T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1843,7 +1843,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-21T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1862,7 +1862,7 @@ Jour feuille</content>
 <content type = "text">Lune montante : Semez et récoltez
 Noeud lunaire : ne jardinez pas
 Jour fruit</content>
-<cbx_symbol>0xAC 0xAE 0xB1</cbx_symbol>
+<cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-22T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1881,7 +1881,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-23T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1899,7 +1899,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-24T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1917,7 +1917,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-25T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1935,7 +1935,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-26T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -1954,7 +1954,7 @@ Jour racine</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Nouvelle lune
 Jour fleur</content>
-<cbx_symbol>0xAD 0xAB 0xB3</cbx_symbol>
+<cbx_symbol>0xAD 0xAB</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-27T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1973,7 +1973,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-28T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -1991,7 +1991,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-29T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2009,7 +2009,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-06-30T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2027,7 +2027,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-01T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2045,7 +2045,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-02T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2063,7 +2063,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-03T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2081,7 +2081,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-04T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2099,7 +2099,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-05T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2135,7 +2135,7 @@ Noeud lunaire : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-07T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2153,7 +2153,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-08T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2171,7 +2171,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-09T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2189,7 +2189,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-10T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2207,7 +2207,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-11T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2226,7 +2226,7 @@ Jour fruit</content>
 <content type = "text">Lune montante : Semez et récoltez
 Pleine lune
 Jour fruit</content>
-<cbx_symbol>0xAC 0xAA 0xB1</cbx_symbol>
+<cbx_symbol>0xAC 0xAA</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-12T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2263,7 +2263,7 @@ Perigee : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-14T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2281,7 +2281,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-15T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2299,7 +2299,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-16T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2317,7 +2317,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-17T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2336,7 +2336,7 @@ Jour feuille</content>
 <content type = "text">Lune montante : Semez et récoltez
 Noeud lunaire : ne jardinez pas
 Jour feuille</content>
-<cbx_symbol>0xAC 0xAE 0xB4</cbx_symbol>
+<cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-18T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2355,7 +2355,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-19T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2373,7 +2373,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-20T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2391,7 +2391,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-21T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2409,7 +2409,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-22T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2427,7 +2427,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-23T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2445,7 +2445,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-24T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2463,7 +2463,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-25T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2481,7 +2481,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-26T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2500,7 +2500,7 @@ Jour feuille</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Nouvelle lune
 Jour feuille</content>
-<cbx_symbol>0xAD 0xAB 0xB4</cbx_symbol>
+<cbx_symbol>0xAD 0xAB</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-27T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2519,7 +2519,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-28T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2537,7 +2537,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-29T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2555,7 +2555,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-30T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2573,7 +2573,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-07-31T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2591,7 +2591,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-01T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2627,7 +2627,7 @@ Noeud lunaire : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-03T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2645,7 +2645,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-04T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2663,7 +2663,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-05T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2681,7 +2681,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-06T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2699,7 +2699,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-07T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2717,7 +2717,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-08T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2735,7 +2735,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-09T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2755,7 +2755,7 @@ Jour fruit</content>
 Perigee : ne jardinez pas
 Pleine lune
 Jour racine</content>
-<cbx_symbol>0xAC 0xB0 0xAA 0xB2</cbx_symbol>
+<cbx_symbol>0xAC 0xB0 0xAA</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-10T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2775,7 +2775,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-11T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2793,7 +2793,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-12T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2811,7 +2811,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-13T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2830,7 +2830,7 @@ Jour feuille</content>
 <content type = "text">Lune montante : Semez et récoltez
 Noeud lunaire : ne jardinez pas
 Jour feuille</content>
-<cbx_symbol>0xAC 0xAE 0xB4</cbx_symbol>
+<cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-14T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2849,7 +2849,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-15T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2867,7 +2867,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-16T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2885,7 +2885,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-17T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2903,7 +2903,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-18T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2921,7 +2921,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-19T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2939,7 +2939,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-20T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -2957,7 +2957,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-21T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2975,7 +2975,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-22T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -2993,7 +2993,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-23T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3028,7 +3028,7 @@ Jour feuille</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Nouvelle lune
 Jour fruit</content>
-<cbx_symbol>0xAD 0xAB 0xB1</cbx_symbol>
+<cbx_symbol>0xAD 0xAB</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-25T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3047,7 +3047,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-26T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3065,7 +3065,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-27T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3083,7 +3083,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-28T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3119,7 +3119,7 @@ Noeud lunaire : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-30T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3137,7 +3137,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-08-31T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3155,7 +3155,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-01T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3173,7 +3173,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-02T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3191,7 +3191,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-03T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3209,7 +3209,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-04T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3227,7 +3227,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-05T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3245,7 +3245,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-06T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3298,7 +3298,7 @@ Perigee : ne jardinez pas</content>
 <content type = "text">Lune montante : Semez et récoltez
 Pleine lune
 Jour feuille</content>
-<cbx_symbol>0xAC 0xAA 0xB4</cbx_symbol>
+<cbx_symbol>0xAC 0xAA</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-09T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3317,7 +3317,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-10T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3353,7 +3353,7 @@ Noeud lunaire : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-12T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3371,7 +3371,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-13T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3389,7 +3389,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-14T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3407,7 +3407,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-15T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3425,7 +3425,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-16T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3443,7 +3443,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-17T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3461,7 +3461,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-18T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3479,7 +3479,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-19T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3497,7 +3497,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-20T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3515,7 +3515,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-21T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3533,7 +3533,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-22T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3551,7 +3551,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-23T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3570,7 +3570,7 @@ Jour fruit</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Nouvelle lune
 Jour racine</content>
-<cbx_symbol>0xAD 0xAB 0xB2</cbx_symbol>
+<cbx_symbol>0xAD 0xAB</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-24T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3607,7 +3607,7 @@ Noeud lunaire : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-26T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3625,7 +3625,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-27T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3643,7 +3643,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-28T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3661,7 +3661,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-29T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3679,7 +3679,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-09-30T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3697,7 +3697,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-01T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3715,7 +3715,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-02T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3733,7 +3733,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-03T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3751,7 +3751,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-04T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3769,7 +3769,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-05T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3805,7 +3805,7 @@ Perigee : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-07T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3843,7 +3843,7 @@ Noeud lunaire : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-09T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3861,7 +3861,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-10T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3879,7 +3879,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-11T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3897,7 +3897,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-12T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3915,7 +3915,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-13T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -3933,7 +3933,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-14T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3951,7 +3951,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-15T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3969,7 +3969,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-16T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -3987,7 +3987,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-17T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4005,7 +4005,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-18T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4023,7 +4023,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-19T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4041,7 +4041,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-20T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4059,7 +4059,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-21T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4077,7 +4077,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-22T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4097,7 +4097,7 @@ Jour racine</content>
 Nouvelle lune
 Noeud lunaire : ne jardinez pas
 Jour racine</content>
-<cbx_symbol>0xAD 0xAB 0xAE 0xB2</cbx_symbol>
+<cbx_symbol>0xAD 0xAB 0xAE</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-23T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4117,7 +4117,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-24T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4135,7 +4135,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-25T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4153,7 +4153,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-26T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4171,7 +4171,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-27T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4189,7 +4189,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-28T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4207,7 +4207,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-29T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4225,7 +4225,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-30T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4243,7 +4243,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-10-31T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4261,7 +4261,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-01T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4279,7 +4279,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-02T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4298,7 +4298,7 @@ Jour fleur</content>
 <content type = "text">Lune montante : Semez et récoltez
 Perigee : ne jardinez pas
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB0 0xB4</cbx_symbol>
+<cbx_symbol>0xAC 0xB0</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-03T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4317,7 +4317,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-04T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4336,7 +4336,7 @@ Jour feuille</content>
 <content type = "text">Lune montante : Semez et récoltez
 Noeud lunaire : ne jardinez pas
 Jour feuille</content>
-<cbx_symbol>0xAC 0xAE 0xB4</cbx_symbol>
+<cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-05T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4356,7 +4356,7 @@ Jour feuille</content>
 <content type = "text">Lune montante : Semez et récoltez
 Pleine lune
 Jour fruit</content>
-<cbx_symbol>0xAC 0xAA 0xB1</cbx_symbol>
+<cbx_symbol>0xAC 0xAA</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-06T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4375,7 +4375,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-07T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4393,7 +4393,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-08T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4411,7 +4411,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-09T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4429,7 +4429,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-10T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4447,7 +4447,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-11T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4465,7 +4465,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-12T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4483,7 +4483,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-13T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4501,7 +4501,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-14T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4519,7 +4519,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-15T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4537,7 +4537,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-16T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4555,7 +4555,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-17T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4573,7 +4573,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-18T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4592,7 +4592,7 @@ Jour racine</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Noeud lunaire : ne jardinez pas
 Jour racine</content>
-<cbx_symbol>0xAD 0xAE 0xB2</cbx_symbol>
+<cbx_symbol>0xAD 0xAE</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-19T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4611,7 +4611,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-20T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4629,7 +4629,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-21T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4648,7 +4648,7 @@ Jour fleur</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Nouvelle lune
 Jour feuille</content>
-<cbx_symbol>0xAD 0xAB 0xB4</cbx_symbol>
+<cbx_symbol>0xAD 0xAB</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-22T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4667,7 +4667,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-23T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4685,7 +4685,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-24T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4703,7 +4703,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-25T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4721,7 +4721,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-26T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4739,7 +4739,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-27T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4775,7 +4775,7 @@ Perigee : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-29T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4793,7 +4793,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-11-30T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4811,7 +4811,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-01T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4830,7 +4830,7 @@ Jour feuille</content>
 <content type = "text">Lune montante : Semez et récoltez
 Noeud lunaire : ne jardinez pas
 Jour feuille</content>
-<cbx_symbol>0xAC 0xAE 0xB4</cbx_symbol>
+<cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-02T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4849,7 +4849,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-03T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4867,7 +4867,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-04T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4885,7 +4885,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-05T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4904,7 +4904,7 @@ Jour racine</content>
 <content type = "text">Lune montante : Semez et récoltez
 Pleine lune
 Jour racine</content>
-<cbx_symbol>0xAC 0xAA 0xB2</cbx_symbol>
+<cbx_symbol>0xAC 0xAA</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-06T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4923,7 +4923,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-07T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -4941,7 +4941,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-08T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4959,7 +4959,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-09T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4977,7 +4977,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-10T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -4995,7 +4995,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-11T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -5013,7 +5013,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-12T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -5031,7 +5031,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-13T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -5049,7 +5049,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fruit</content>
-<cbx_symbol>0xAD 0xB1</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-14T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -5067,7 +5067,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-15T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -5103,7 +5103,7 @@ Noeud lunaire : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour racine</content>
-<cbx_symbol>0xAD 0xB2</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-17T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -5121,7 +5121,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-18T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -5139,7 +5139,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour fleur</content>
-<cbx_symbol>0xAD 0xB3</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-19T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -5157,7 +5157,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez
 Jour feuille</content>
-<cbx_symbol>0xAD 0xB4</cbx_symbol>
+<cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-20T00:00:00+01:00</start>
       <icon0>descendante.png</icon0>
@@ -5175,7 +5175,7 @@ Jour feuille</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-21T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -5194,7 +5194,7 @@ Jour feuille</content>
 <content type = "text">Lune montante : Semez et récoltez
 Nouvelle lune
 Jour fruit</content>
-<cbx_symbol>0xAC 0xAB 0xB1</cbx_symbol>
+<cbx_symbol>0xAC 0xAB</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-22T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -5213,7 +5213,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-23T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -5249,7 +5249,7 @@ Perigee : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour racine</content>
-<cbx_symbol>0xAC 0xB2</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-25T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -5267,7 +5267,7 @@ Jour racine</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-26T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -5285,7 +5285,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fleur</content>
-<cbx_symbol>0xAC 0xB3</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-27T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -5303,7 +5303,7 @@ Jour fleur</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour feuille</content>
-<cbx_symbol>0xAC 0xB4</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-28T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -5339,7 +5339,7 @@ Noeud lunaire : ne jardinez pas</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-30T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
@@ -5357,7 +5357,7 @@ Jour fruit</content>
       <category term = "fruit" label = "fruit" />
 <content type = "text">Lune montante : Semez et récoltez
 Jour fruit</content>
-<cbx_symbol>0xAC 0xB1</cbx_symbol>
+<cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
       <start>2014-12-31T00:00:00+01:00</start>
       <icon0>montante.png</icon0>
