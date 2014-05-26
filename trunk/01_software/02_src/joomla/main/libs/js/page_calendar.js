@@ -48,45 +48,66 @@ $(function() {
 
 $(document).ready(function() {
 
-    // Display and control user form for XML selection do display
-     $("#calendar_xml_selection").click(function(e) {
-        e.preventDefault();
+    // Load XML available and there status for manage_external_xml dialog box
+    $.ajax({
+       cache: false,
+       url: "../../main/modules/external/calendar_get_config_xml.php"
+    }).done(function (data) {
+    
+        // Parse results from ajax
+        if(data!="") {
+            var objJSON = jQuery.parseJSON(data);
 
+            // Delete already post elements
+            $('#manage_external_xml').children().remove();
+
+            // Foreach XML
+            $.each(objJSON, function( key, value ) {
+
+                // Search if eleme is selected
+                checked = "";
+                if (value.activ == 1)
+                    checked = "checked";
+                
+                // Add into UI
+                $('#manage_external_xml').append(key + "<input type='checkbox' id='" + value.id + "' filename='" + value.name + "' name='xml_checkbox' " + checked + "> <br />"); 
+                
+                // On click on the checkbutton
+                $("#" + value.id).ready(function() {
+                    $("#" + value.id).change(function(e) {
+                        // Change filename directory
+                        $.ajax({
+                           cache: false,
+                           data: {checked:$(this).is(':checked'), filename: $(this).attr('filename')},
+                           url: "../../main/modules/external/update_config_xml.php"
+                        }).done(function (data) {
+                            // Reload events
+                            $('#calendar').fullCalendar( 'refetchEvents' );
+                        });
+                    });
+                });
+
+                
+            });
+        }
+    });
+
+    // Display and control user form for XML selection do display
+    $("#calendar_xml_selection").click(function(e) {
+        e.preventDefault();
+        
         $("#manage_external_xml").dialog({
             resizable: false,
             width: 550,
-            modal: true,
             closeOnEscape: true,
             dialogClass: "popup_message",
             buttons: [{
-                    text: CANCEL_button,
+                    text: CLOSE_button,
                     "id": "btnClose",
                     click: function () {
                         $( this ).dialog( "close" ); return false;
                     }
-            },{
-            text: SAVE_button,
-            click: function () {
-                $( this ).dialog( "close" );
-                var list="";
-                $('input[name=xml_checkbox]').each(function() {
-                    if(list=="") {
-                        list=this.id+"*"+this.checked;
-                    } else {
-                        list=list+"/"+this.id+"*"+this.checked;
-                    }
-                })
-
-                $.ajax({
-                   cache: false,
-                   url: "../../main/modules/external/update_config_xml.php",
-                   data: {list:list}
-                }).done(function (data) {
-                    if(data==1) {
-                        $('#calendar').fullCalendar( 'refetchEvents' );
-                    }
-                });
-           } } ],
+            }],
         });
     });
 
@@ -155,7 +176,7 @@ $(document).ready(function() {
                 closeOnEscape: true,
                 dialogClass: "popup_message",
                 buttons: [{
-                    text: CANCEL_button,
+                    text: CLOSE_button,
                     "id": "btnClose",
                     click: function () {
                         $( this ).dialog( "close" ); return false;
@@ -332,7 +353,7 @@ $(document).ready(function() {
             closeOnEscape: true,
             dialogClass: "popup_message",
             buttons: [{
-                text: CANCEL_button,
+                text: CLOSE_button,
                 click: function () {
                     $( this ).dialog( "close" ); return false;
                 }
@@ -556,7 +577,7 @@ $(document).ready(function() {
                 }
             });
         },
-        events: "http://localhost:6891/cultibox/main/modules/json-events/json-events.php",
+        events: "http://localhost:6891/cultibox/main/modules/external/calendar_get_events.php",
         drop: function(date, allDay) {
             // this function is called when something is dropped
             // retrieve the dropped element's stored Event Object
@@ -724,7 +745,7 @@ $(document).ready(function() {
             $.ajax({
                 type: "POST",
                 url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'+'&important='+event.important
+                data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'+'&important='+event.important+'&desc='+encodeURIComponent(event.description)
                 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                   ,complete: function() { $.unblockUI(); }
                 <?php } ?>
@@ -1024,14 +1045,24 @@ $(document).ready(function() {
             
             
         },
-
         loading: function(bool) {
             if (bool) $('#loading').show();
             else $('#loading').hide();
         }
         
     });
-    
+        
+    });
+
+$(document).ready(function() {
+    // Rewrite on SD cards every events
+    <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+        $.ajax({
+           cache: false,
+           data: {sd_card:"<?php echo $sd_card ;?>"},
+           url: "../../main/modules/external/calendar_write_sd_events.php"
+        })
+    <?php } ?>
 });
 
 </script>

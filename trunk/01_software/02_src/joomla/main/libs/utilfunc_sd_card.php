@@ -1032,40 +1032,48 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
     // If there are some events
     if(count($data)>0) {
     
-
-        // Use today
-        $date = date("Y-m-d");
+        // If ot defined Use today
+        if ($start == "")
+            $date = date("Y-m-d");
+        else
+            $date = date("Y-m-d", $start);
 
         // Use today + 3 month
-        $endSearch  = strtotime("+3 months", strtotime($date));
+        if ($end == "")
+            $endSearch  = strtotime("+3 months", strtotime($date));
+        else
+            $endSearch =  $end;
 
         while(strtotime($date) < $endSearch)
         {
-
+        
             $val = calendar\concat_entries($data,$date);
-            
+
             // Create filename
+            $month = date("m",strtotime($date));
+            $day = date("d",strtotime($date));
             $file = "$sd_card/logs/$month/cal_$day";
             
             // If there is something to write
             if($val) {
-
                 // If file can be opened
                 if($fid = fopen($file,"w+")) {
                 
                     // Foreach event to write
                     foreach($val as $value) {
                     
-                        $sub=$value["subject"];
-                        $desc=$value["description"];
+                        $sub  =  clean_calendar_message($value["subject"]);
+                        $desc =  clean_calendar_message($value["description"]);
 
                         if(!fputs($fid,"$sub"."\r\n")) 
                             $status=false;
                             
-                        if(!fputs($fid,"$desc"."\r\n\r\n")) 
+                        if(!fputs($fid,"$desc"."\r\n")) 
                             $status=false;
                             
                     }
+                    
+                    // Close file
                     fclose($fid);
                 } else {  
                     $status=false;

@@ -218,11 +218,19 @@ if(    !empty($program_substrat)
                         $calendar_end="$year-$month-$day";
                   
                         // Create calendar from database
-                        $calendar = calendar\read_event_from_db($main_error);
-    
+                        $calendar = array();
+                        calendar\read_event_from_db($calendar);
+                
+                        // Read event from XML
+                        foreach (calendar\get_external_calendar_file() as $fileArray)
+                        {
+                            if ($fileArray['activ'] == 1)
+                                calendar\read_event_from_XML($fileArray['filename'],$calendar);
+                        }
+                        
                         // Write calendar on SD card
                         write_calendar($sd_card,$calendar,$main_error);
-                            
+
                     }
                 }
                 echo "1";
@@ -276,8 +284,10 @@ if(    !empty($daily_program_name)
     if(insert_calendar($event,$main_error)) {
         if(!empty($sd_card)) {
 
+            $calendar = array();
+        
             // Create an arry with all elements of the calendar
-            $calendar = calendar\read_event_from_db($main_error);
+            calendar\read_event_from_db($calendar);
             
             if(count($calendar) > 0) {
                 calendar\write_plgidx($sd_card,$calendar);
