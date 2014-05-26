@@ -152,27 +152,26 @@ function get_plug_conf($key,$id,&$out) {
     // Init var 
     $res = array();
 
-   $sql = <<<EOF
-SELECT {$key} FROM `plugs` WHERE id = {$id}
-EOF;
-  $db=db_priv_pdo_start();
-   try {
+   $sql = "SELECT {$key} FROM `plugs` WHERE id = {$id};";
+   
+    $db=db_priv_pdo_start();
+    try {
         $sth=$db->prepare("$sql");
         $sth-> execute();
         $res=$sth->fetch();
-   } catch(PDOException $e) {
+    } catch(PDOException $e) {
         $ret=$e->getMessage();
-   }
-   $db=null;
+    }
+    $db=null;
 
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         $out[]=__('ERROR_SELECT_SQL').$ret;
-      } else {
-         $out[]=__('ERROR_SELECT_SQL');
-      }
+    if(isset($ret) && !empty($ret)) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
 
-   }
+    }
    
     if (array_key_exists('0', $res)) {
         return $res[0];
