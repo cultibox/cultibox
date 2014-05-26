@@ -40,8 +40,7 @@
     $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
     __('LANG');
     
-    // Check sd card presence
-    $sd_card = get_sd_card();
+    $sd_card = $_POST['sd_card'];
     
     $main_error = array();
     $main_info = array();
