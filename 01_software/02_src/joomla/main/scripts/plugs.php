@@ -131,7 +131,7 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $old_power_max=get_plug_conf("PLUG_POWER_MAX",$nb,$main_error);
    $old_sensor=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
    $old_second_tol=get_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$main_error);
-   $old_compute_method=get_plug_conf("COMPUTE_METHOD",$nb,$main_error);
+   $old_compute_method=get_plug_conf("PLUG_COMPUTE_METHOD",$nb,$main_error);
 
    /* 
    if((!empty($id))&&(isset($id))&&(!$reset)) {
