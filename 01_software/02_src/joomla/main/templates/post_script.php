@@ -1,8 +1,7 @@
 <?php 
 
     // IN DEV : Add check sd card message
-    //echo "<script>pop_up_add_information('" . __('WAIT_UPDATED_PROGRAM') . "<img src=\"../../main/libs/img/waiting_small.gif\" />', \"check_sd_progress\", \"information\");</script>";
-    //    include('main/libs/js/check_sd.js'); 
+    // include('main/libs/js/check_sd.js'); 
     
     // Check software version if needed
     if(get_configuration("CHECK_UPDATE",$main_error) == "True")
