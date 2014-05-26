@@ -274,7 +274,7 @@ if(    !empty($daily_program_name)
         "title" => $daily_program_name,
         "start" => $timestart,
         "end" => $timestart,
-        "description" => $daily_program_name,
+        "description" => program\get_field_from_program_index("comments",$program_index),
         "color" => "#3366CC",
         "icon" => "",
         "external" => "0",

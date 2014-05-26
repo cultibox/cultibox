@@ -52,7 +52,7 @@ function check_db() {
         }
         
         // Add default line
-        add_row_program_idx('Courant','1.0','1' , '00');
+        add_row_program_idx('Courant','1.0','1' , '00' , "Programme courant");
         
     }
     
@@ -71,7 +71,7 @@ function check_db() {
 //    $version : Version of the programm
 //    $program_idx : Pointor on the the programs table
 // RET none
-function add_row_program_idx($name, $version, $program_idx = "", $plugv_filename = "") {
+function add_row_program_idx($name, $version, $program_idx = "", $plugv_filename = "", $comments = "") {
 
     // Open connection to dabase
     $db = \db_priv_pdo_start();
@@ -102,9 +102,9 @@ function add_row_program_idx($name, $version, $program_idx = "", $plugv_filename
     }
 
     // Add line
-    $sql = "INSERT INTO program_index(name, version, program_idx ,creation ,modification, plugv_filename) "
+    $sql = "INSERT INTO program_index(name, version, program_idx ,creation ,modification, plugv_filename, comments) "
         . "VALUE(\"" . $name . "\", \"" . $version . "\", \"" . $program_idx . "\", \"" 
-        . date("Y-m-d H:i:s") . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . $plugv_filename . "\");";
+        . date("Y-m-d H:i:s") . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . $plugv_filename . "\", \"" . $comments . "\");";
 
     // Run command
     try {

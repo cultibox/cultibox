@@ -17,7 +17,8 @@ function check_db() {
     $calendar_col["Color"] = array ( 'Field' => "Color", "Type" => "VARCHAR(7)");
     $calendar_col["Important"] = array ( 'Field' => "Important", "Type" => "VARCHAR(30)");
     $calendar_col["program_index"] = array ( 'Field' => "program_index", "Type" => "VARCHAR(30)");
-    
+    $calendar_col["Icon"] = array ( 'Field' => "Icon", "Type" => "VARCHAR(30)");
+        
     // Check column
     check_and_update_column_db ("calendar", $calendar_col);
 
