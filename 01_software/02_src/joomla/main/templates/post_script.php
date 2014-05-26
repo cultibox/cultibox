@@ -12,5 +12,9 @@
     
     include('main/libs/js/send_info_error.js');
     
+    // Send information
+    if(get_configuration("STATISTICS",$main_error) == "True") {
+        include('main/libs/js/send_informations.js'); 
+    }
 
 ?>
