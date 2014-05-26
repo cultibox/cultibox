@@ -337,6 +337,7 @@ function read_event_from_XML ($file, &$tab_event, $id = 1, $start="",$end="") {
                 "icon3" => ((string)$event->icon3),
                 "textColor" => ((string)$event->text_color),
                 "program_index" => "",
+                "cbx_symbol" => ((string)$event->cbx_symbol),
                 "external" => 1
             );
             
