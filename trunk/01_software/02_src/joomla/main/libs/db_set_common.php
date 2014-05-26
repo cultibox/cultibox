@@ -586,5 +586,104 @@ EOF;
 /// }}}
 
 
+// {{{ check_and_update_column_db()
+// ROLE update a table
+// IN     index    array containing sensor's type to be updated
+// RET false if an error occured, true else
+function check_and_update_column_db ($tableName, $officialColumn) {
+
+    $db = db_priv_pdo_start("root");
+
+   // Check if columns are present
+    $sql = "SHOW COLUMNS FROM " . $tableName . " ;";
+    
+    //
+    try {
+        $sth = $db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret = $e->getMessage();
+        print_r($ret);
+    }
+    
+    // Check if all columns are usefull
+    $colToDelete = array();
+    foreach ($res as $col)
+    {
+        $usefull = 0;
+        foreach ($officialColumn as $needColumn)
+        {
+            if ($col['Field'] == $needColumn['Field'])
+            {
+                $usefull = 1;
+                break;
+            }
+        }
+        
+        if ($usefull == 0)
+            $colToDelete[] = $col['Field'];
+        
+    }
+    
+    // Check if all columns are present
+    $colToAdd = array();
+    
+    foreach ($officialColumn as $needColumn)
+    {
+        $present = 0;
+        foreach ($res as $col)
+        {
+            if ($col['Field'] == $needColumn['Field'])
+            {
+                $present = 1;
+                break;
+            }
+        }
+        
+        if ($present == 0)
+            $colToAdd[] = $needColumn['Field'];
+        
+    }
+
+    // Delete not used column
+    foreach ($colToDelete as $col)
+    {
+    
+        $sql = "ALTER TABLE " . $tableName . " DROP " . $col . ";";
+        
+        // Delete column
+        try {
+            $sth = $db->prepare($sql);
+            $sth->execute();
+        } catch(\PDOException $e) {
+            $ret = $e->getMessage();
+            print_r($ret);
+        }
+        
+    }
+    
+    // Add column not present
+    // Delete not used column
+    foreach ($colToAdd as $col)
+    {
+    
+        $sql = "ALTER TABLE " . $tableName . " ADD " . $col . " " . $officialColumn[$col]['Type'] . ";";
+        
+        // Delete column
+        try {
+            $sth = $db->prepare($sql);
+            $sth->execute();
+        } catch(\PDOException $e) {
+            $ret = $e->getMessage();
+            print_r($ret);
+        }
+        
+    }
+    
+    $db = null;
+
+}
+/// }}}
 
 ?>

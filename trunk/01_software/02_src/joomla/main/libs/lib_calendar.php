@@ -9,74 +9,17 @@ function check_db() {
 
     // Define columns of the calendar table
     $calendar_col = array();
-    $calendar_col[] = array ( 'Field' => "Id");
-    $calendar_col[] = array ( 'Field' => "Title");
-    $calendar_col[] = array ( 'Field' => "Description");
-    $calendar_col[] = array ( 'Field' => "StartTime");
-    $calendar_col[] = array ( 'Field' => "EndTime");
-    $calendar_col[] = array ( 'Field' => "Color");
-    $calendar_col[] = array ( 'Field' => "Important");
-    $calendar_col[] = array ( 'Field' => "program_index");
+    $calendar_col["Id"] = array ( 'Field' => "Id", "Type" => "INT");
+    $calendar_col["Title"] = array ( 'Field' => "Title", "Type" => "VARCHAR(1000)");
+    $calendar_col["Description"] = array ( 'Field' => "Description", "Type" => "VARCHAR(500)");
+    $calendar_col["StartTime"] = array ( 'Field' => "StartTime", "Type" => "DATETIME");
+    $calendar_col["EndTime"] = array ( 'Field' => "EndTime", "Type" => "DATETIME");
+    $calendar_col["Color"] = array ( 'Field' => "Color", "Type" => "VARCHAR(7)");
+    $calendar_col["Important"] = array ( 'Field' => "Important", "Type" => "VARCHAR(30)");
+    $calendar_col["program_index"] = array ( 'Field' => "program_index", "Type" => "VARCHAR(30)");
     
-    // Check if table calendar have program_index field
-    $sql = "show COLUMNS FROM calendar WHERE Field LIKE 'program_index';";
-    
-    $db = \db_priv_pdo_start("root");
-    try {
-        $sth=$db->prepare("$sql");
-        $sth->execute();
-        $res = $sth->fetchAll(\PDO::FETCH_ASSOC);
-    } catch(\PDOException $e) {
-        $ret=$e->getMessage();
-    }
-
-    // If column not exists, create them
-    if ($res == null)
-    {
-        
-        // Buil MySQL command to create column
-        $sql = "ALTER TABLE calendar ADD program_index VARCHAR(30);";
-        
-        // Create table
-        try {
-            $sth = $db->prepare($sql);
-            $sth->execute();
-        } catch(\PDOException $e) {
-            $ret = $e->getMessage();
-            print_r($ret);
-        }
-    
-    }
-    
-    // Check if table calendar have External field
-    $sql = "show COLUMNS FROM calendar WHERE Field LIKE 'External';";
-    try {
-        $sth=$db->prepare("$sql");
-        $sth->execute();
-        $res = $sth->fetchAll(\PDO::FETCH_ASSOC);
-    } catch(\PDOException $e) {
-        $ret=$e->getMessage();
-    }
-    
-    // If column exists, delete them
-    if ($res != null)
-    {
-        
-        // Buil MySQL command to create column
-        $sql = "ALTER TABLE calendar DROP External;";
-        
-        // Create table
-        try {
-            $sth = $db->prepare($sql);
-            $sth->execute();
-        } catch(\PDOException $e) {
-            $ret = $e->getMessage();
-            print_r($ret);
-        }
-    
-    }
-    
-    $db=null;
+    // Check column
+    check_and_update_column_db ("calendar", $calendar_col);
 
 }
 

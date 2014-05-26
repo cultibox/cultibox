@@ -7,12 +7,23 @@ namespace program {
 // RET none
 function check_db() {
 
+    // Define columns of the calendar table
+    $program_index_col = array();
+    $program_index_col["id"]            = array ( 'Field' => "id", 'Type' => "INT");
+    $program_index_col["name"]          = array ( 'Field' => "name", 'Type' => "VARCHAR(100)");
+    $program_index_col["version"]       = array ( 'Field' => "version", 'Type' => "VARCHAR(100)");
+    $program_index_col["program_idx"]   = array ( 'Field' => "program_idx", 'Type' => "INT");
+    $program_index_col["creation"]      = array ( 'Field' => "creation", 'Type' => "DATETIME");
+    $program_index_col["modification"]  = array ( 'Field' => "modification", 'Type' => "DATETIME");
+    $program_index_col["plugv_filename"] = array ( 'Field' => "plugv_filename", 'Type' => "VARCHAR(10)");
+    $program_index_col["comments"]      = array ( 'Field' => "comments", 'Type' => "VARCHAR(500)");
+
     // Check if table program_index exists
     $sql = "SHOW TABLES FROM cultibox LIKE 'program_index';";
     
     $db = \db_priv_pdo_start("root");
     try {
-        $sth=$db->prepare("$sql");
+        $sth=$db->prepare($sql);
         $sth->execute();
         $res = $sth->fetchAll(\PDO::FETCH_ASSOC);
     } catch(\PDOException $e) {
@@ -45,7 +56,11 @@ function check_db() {
         
     }
     
-    $db=null;
+    $db = null;
+
+    // Check column
+    check_and_update_column_db ("program_index", $program_index_col);
+
 
 }
 // }}}
