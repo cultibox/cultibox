@@ -7,6 +7,17 @@ namespace calendar {
 // RET none
 function check_db() {
 
+    // Define columns of the calendar table
+    $calendar_col = array();
+    $calendar_col[] = array ( 'Field' => "Id");
+    $calendar_col[] = array ( 'Field' => "Title");
+    $calendar_col[] = array ( 'Field' => "Description");
+    $calendar_col[] = array ( 'Field' => "StartTime");
+    $calendar_col[] = array ( 'Field' => "EndTime");
+    $calendar_col[] = array ( 'Field' => "Color");
+    $calendar_col[] = array ( 'Field' => "Important");
+    $calendar_col[] = array ( 'Field' => "program_index");
+    
     // Check if table calendar have program_index field
     $sql = "show COLUMNS FROM calendar WHERE Field LIKE 'program_index';";
     
@@ -185,50 +196,49 @@ function write_plgidx ($sd_card,$data) {
 function concat_entries($data,$date) {
     $new_data=array();
 
-    $current = date("Y-m-d",strtotime($date));
-
     // Foreach event
     foreach($data as $val) {
 
-       $start   =   strtotime($val['start_year'] . "-" . $val['start_month'] . "-" . $val['start_day']);
-       $end     =   strtotime($val['end_year']   . "-" . $val['end_month']   . "-" . $val['end_day']);
-    
+       $start   = date("Y-m-d", strtotime($val['start']));
+       $end     = date("Y-m-d", strtotime($val['end']));
+                     
         // Don't concat programm_index event
-       if(($start <= $current)
-            &&($end >= $current)
-            && $val['program_index'] == "" ) {
+       if(($start <= $date) && ($end >= $date) && $val['program_index'] == "" ) {
            $new_data[]=$val;
        }
     }
 
-    if(count($new_data)>0) {
-        return $new_data;
-    } else {
-        return null;
-    }
+    return $new_data;
 }
 // }}}
 
 // {{{ read_event_from_db()
 // ROLE read calendar from the database and format its to be writen into a sd card
-// IN   $out         error or warning message
+// IN   $start         error or warning message
 // RET an array containing datas
-function read_event_from_db (&$out,$start="",$end="") {
+function read_event_from_db (&$tab_event,$start="",$end="") {
+
+        $id = 0;
 
         $date = date("Y-m-d H:i:s");
-        $start = $date;
-        $end  = date("Y-m-d H:i:s", strtotime("+3 months", strtotime($date)));
+        
+        if ($start == "")
+            $start = $date;
+        else
+            $start = date("Y-m-d H:i:s", strtotime($start));
+            
+        if ($end == "")
+            $end  = date("Y-m-d H:i:s", strtotime("+3 months", strtotime($date)));
+        else
+            $end = date("Y-m-d H:i:s", strtotime($end));
+            
 
         $data=array();
         $db = db_priv_pdo_start();
 
-        $sql = <<<EOF
-SELECT `Title`,`StartTime`,`EndTime`, `Description`, `program_index` FROM `calendar` WHERE (`StartTime` BETWEEN '{$start}' AND '{$end}') OR (`EndTime` BETWEEN '{$start}' AND '{$end}') OR (`StartTime` <= '{$start}' AND `EndTime` >= '{$end}')
-EOF;
+        $sql = "SELECT * FROM calendar WHERE (StartTime <= \"" . $end . "\") OR (`EndTime` >= \"" . $start . "\");";
 
-        foreach($db->query("$sql") as $val) {
-            $val['Title']=clean_calendar_message($val['Title']);
-            $val['Description']=clean_calendar_message($val['Description']);
+        foreach($db->query($sql) as $val) {
 
             $start_month=substr($val['StartTime'],5,2);
             $start_day=substr($val['StartTime'],8,2);
@@ -238,86 +248,182 @@ EOF;
             $end_day=substr($val['EndTime'],8,2);
             $end_year=substr($val['EndTime'],0,4);
 
-            $s=mb_strtoupper($val['Title'], 'UTF-8');
-
-            if((isset($val['Description']))&&(!empty($val['Description']))) {
-                if(strcmp($val['Description'],"null")==0) {
-                    $desc="";
-                } else {
-                    $desc=$val['Description'];
-                }
+            // Save greater ID
+            if ($val['Id'] > $id)
+                $id = $val['Id'];
+            
+            if($val['Important']==1) {
+                $color_event="red";
             } else {
-                $desc="";
+                $color_event="white";
             }
-
-            $program_index="";
-            if((isset($val['program_index']))&&(!empty($val['program_index']))) {
-                if($val['program_index'] != "null") {
-                    $program_index=$val['program_index'];
-                }
-            } 
-
-            $data[]=array(
+            
+            $tab_event[] = array(
+                "id"    => $val['Id'],
+                "start" => $val['StartTime'],
                 "start_year" => $start_year,
                 "start_month" => $start_month,
                 "start_day" => $start_day,
+                "end" => $val['EndTime'],
                 "end_year" => $end_year,
                 "end_month" => $end_month,
                 "end_day" => $end_day,  
-                "subject" => $s,
-                "description" => $desc,
-                "program_index" => $program_index
+                "subject" => $val['Title'],
+                "title" => $val['Title'],
+                "description" => $val['Description'],
+                "program_index" => $val['program_index'],
+                "textColor" => $color_event,
+                "color" => $val['Color'],
+                "icon" => $val['Icon'],
+                "important" => $val['Important'],
+                "external" => 0
             );
             unset($s);
             unset($desc);
       }
 
-      $db=null;
-      return $data;
+    // CLose DB connexion
+    $db=null;
+      
+    return $id;
 }
 // }}}
 
 // {{{ read_event_from_XML()
 // ROLE read calendar from the database and format its to be writen into a sd card
-// IN   $out         error or warning message
+// IN   $start    Start date (unix format in s)
+// IN   $end      End Date (unix format in s)
 // RET an array containing datas
-function read_event_from_XML (&$out,$start="",$end="") {
+function read_event_from_XML ($file, &$tab_event, $id = 1, $start="",$end="") {
+    
+    // Check if it's a file
+    if (!is_file($file))
+        exit ('read_event_from_XML : ' . $file . 'is not a file');
 
-    // Init event aray
-    $data=array();
-    
-    // Open dir containg xml
-    if ($handle = opendir('../xml')) {
-    
-        // While there are some files
-        while (($entry = readdir($handle)) !== false) {
+    // Convert start and end in time
+    if ($start == "")
+        $start = strtotime("-1 month" , strtotime(date(DATE_ATOM)));
         
-            // Check If it's a directory --> do nothing
-            if (is_dir($entry))
-                continue;
-            
-            // Check if it's a correct moon calendar
-            if (!check_xml_calendar_file($entry))
-                continue ;
+    if ($end == "")
+        $end = strtotime("+3 month" , strtotime(date(DATE_ATOM)));
 
-            $rss_file = file_get_contents("../../xml/".$entry);
-            $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
-            $id=10000;
-            
-            
-            $value=array();
-            $value = $xml;
-            
-            // In progress !!
-            
-            foreach($xml as $event) {
+    // Read XML File
+    $xml_string = file_get_contents($file);
+    
+    // Convert content of XML
+    $xml = new \SimpleXMLElement($xml_string);
 
-            }
-
+    // Fore each entry of the file
+    foreach($xml->entry as $event) {
+    
+        $start_event  = strtotime($event->start);
+        $end_event    = strtotime('+12 hours', strtotime($event->start));
+    
+        // Check if event is in the good plage
+        if ($start_event >= $start && $start_event <= $end)
+        {
+            $tab_event[] = array(
+                "id"    => $id,
+                "subject" => ((string)$event->title),
+                "title" => ((string)$event->title),
+                "start" => date("Y-m-d H:i:s",$start_event),
+                "end"   => date("Y-m-d H:i:s",$end_event),
+                "description" => ((string)$event->content),
+                "color" => ((string)$event->color),
+                "icon" => ((string)$event->icon),
+                "icon0" => ((string)$event->icon0),
+                "icon1" => ((string)$event->icon1),
+                "icon2" => ((string)$event->icon2),
+                "icon3" => ((string)$event->icon3),
+                "textColor" => ((string)$event->text_color),
+                "program_index" => "",
+                "external" => 1
+            );
+            
+            $id = $id + 1;
         }
     }
-
+        
+    return $id;
 }
+
+
+// {{{ get_external_calendar_file()
+// ROLE get an array containing list of xml external files available for calendar (like moon calendar)
+// RET array containing datas
+function get_external_calendar_file() {
+    $ret=array();
+
+    // Define directory
+    if (is_dir('main/xml/permanent'))
+        $dir = 'main/xml/permanent';
+    elseif (is_dir('../../xml/permanent'))
+        $dir = '../../xml/permanent';
+    else
+        return false;
+
+    $id = 0;
+        
+    // Get every activ xml
+    $filesActiv = glob($dir. '/*.{xml}', GLOB_BRACE);
+    foreach ($filesActiv as $file)
+    {
+        $ret[basename($file)] = array (
+            "filename" => $file,
+            "name" => basename($file),
+            "activ" => 1,
+            "value" => 1,
+            "id" => "xmlchange" . $id
+            );
+        $id = $id + 1;
+    }
+    
+    // Get every not activ xml
+    $filesNotActiv = glob($dir. '/_not_used/*.{xml}', GLOB_BRACE);
+    foreach ($filesNotActiv as $file)
+    {
+        $ret[basename($file)] = array (
+            "filename" => $file,
+            "name" => basename($file),
+            "activ" => 0,
+            "value" => 1,
+            "id" => "xmlchange" . $id
+            );
+        $id = $id + 1;
+    }
+
+    array_multisort($ret, SORT_ASC);
+    
+    return $ret;
+}
+// }}}
+
+// {{{ set_external_calendar_file()
+// ROLE get an array containing list of xml external files available for calendar (like moon calendar)
+// RET array containing datas
+function set_external_calendar_file($file, $beActiv) {
+
+    // Define directory
+    if (is_dir('main/xml/permanent'))
+        $dir = 'main/xml/permanent';
+    elseif (is_dir('../../xml/permanent'))
+        $dir = '../../xml/permanent';
+    else
+        return false;
+
+    // Move file
+    if ($beActiv == "true")
+    {
+        rename($dir . "/_not_used/" . $file, $dir . "/" . $file);
+    }
+    else
+    {
+        rename($dir . "/" . $file, $dir . "/_not_used/" . $file);
+    }
+
+    return true;
+}
+// }}}
 
 
 }

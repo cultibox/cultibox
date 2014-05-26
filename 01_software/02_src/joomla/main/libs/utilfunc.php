@@ -1036,47 +1036,34 @@ function get_sensor_type($sd_card,$month,$day) {
 // }}}
 
 
-// {{{ get_external_calendar_file()
-// ROLE get an array containing list of xml external files available for calendar (like moon calendar)
-// RET array containing datas
-function get_external_calendar_file() {
-    $ret=array();
-
-    if(!is_dir('main/xml')) {
-        if(!is_dir('../../xml')) {
-            return $ret;
+// {{{ check_config_xml_file()
+// ROLE check if an external xml file should be displayed for the calendar
+// IN file     file to be checked
+// RET true if the file has to be displayed, false else
+function check_config_xml_file($file) {
+    if(!is_file('../../xml/config')) {
+        if(!is_file('main/xml/config')) {    
+             return true;
         } else {
-            $dir='../../xml';
+            $config="main/xml/config";
         }
     } else {
-        $dir='main/xml';
+        $config="../../xml/config";
     }
 
-
-    if($handle = @opendir($dir)) {
-        while (false !== ($entry = readdir($handle))) {
-            if(($entry!=".")&&($entry!="..")&&(strcmp(pathinfo($entry,PATHINFO_EXTENSION),"xml")==0)) {
-                $rss_file = file_get_contents($dir."/".$entry);
-                $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
-
-                $check=true;
-                foreach ($xml as $tab) {
-                    if(is_array($tab)) {
-                        if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))) {
-                            $check=false;
-                        }   
-                    }
-                }
-
-                if($check) {
-                     $ret[]=$entry;
-                }
-            }
-        }
+    $handle = fopen("$config", 'r');
+    if($handle) {
+      while (!feof($handle)) {
+        $buffer = fgets($handle);
+        if(strcmp(rtrim($buffer),"$file")==0) return false;
+      }
+    } else {    
+        return true;
     }
-    return $ret;
+    return true;
 }
 // }}}
+
 
 
 // {{{ get_xml_file()

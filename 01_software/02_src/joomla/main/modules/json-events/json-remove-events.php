@@ -23,8 +23,16 @@
 
         if((isset($sd_card))&&(!empty($sd_card))) {
 
-            $calendar=calendar\read_event_from_db($main_error);
-
+            $calendar = array();
+            calendar\read_event_from_db($calendar);
+            
+            // Read event from XML
+            foreach (calendar\get_external_calendar_file() as $fileArray)
+            {
+                if ($fileArray['activ'] == 1)
+                    calendar\read_event_from_XML($fileArray['filename'],$calendar);
+            }
+                
             write_calendar($sd_card,$calendar,$main_error);
         }
     }

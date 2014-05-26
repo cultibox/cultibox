@@ -25,14 +25,7 @@
             <input type="image" id="calendar_xml_selection" name="calendar_xml_selection" 
                 src="main/libs/img/advancedsettings.png" width="32"
                 title="<?php echo __('TOOLTIP_MANAGE_XML'); ?>" 
-                <?php 
-                    if(count($list_xml)==0) {
-                        echo 'class="inputDisable" disabled value="';
-                        echo __('DISABLED_MANAGE_EXTERNAL_XML') . '"'; 
-                    } else { 
-                        echo 'value="' . __('MANAGE_EXTERNAL_XML') . '"';
-                    } 
-                ?>
+                value="<?php echo __('MANAGE_EXTERNAL_XML'); ?>" 
             />
         </td>
         <td>
@@ -191,13 +184,6 @@
 
 <!-- User interface to select XML to show in calendar -->
 <div id="manage_external_xml" style="display:none" title="<?php echo __('XML_DISPLAYED_FILE'); ?>">
-    <form name="xml_config" id="xml_config" action="calendar-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
-
-    <?php 
-    foreach($list_xml as $file) {
-        echo $file['name']; ?>: <input type="checkbox" id="<?php echo $file['name']; ?>" name="xml_checkbox" <?php if(strcmp($file['value'],"1")==0) echo 'checked'; ?>><br />
-    <?php } ?>
-    </form>
 </div>
 
 

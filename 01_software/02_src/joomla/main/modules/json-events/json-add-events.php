@@ -37,18 +37,26 @@ EOF;
             $db->exec("$sql");
             $db=null;
 
+            $calendar = array();
+            
             if((isset($sd_card))&&(!empty($sd_card))) {
-                if((strcmp("$start","$end")==0)||(!isset($end))||(empty($end))) {
-                    $calendar = calendar\read_event_from_db($main_error,$start);
-
-                    write_calendar($sd_card,$calendar,$main_error,$start);
-
-                } else {
-                    $calendar = calendar\read_event_from_db($main_error,$start,$end);
-
-                    write_calendar($sd_card,$calendar,$main_error,$start,$end); 
-
+            
+                if ($start == $end)
+                    $end = "";
+            
+                // Read event from DB
+                calendar\read_event_from_db($calendar,$start,$end);
+                
+                // Read event from XML
+                foreach (calendar\get_external_calendar_file() as $fileArray)
+                {
+                    if ($fileArray['activ'] == 1)
+                        calendar\read_event_from_XML($fileArray['filename'],$calendar,0,strtotime($start));
                 }
+                    
+                // Write event into SD card
+                write_calendar($sd_card,$calendar,$main_error,strtotime($start));
+
             }
 
         }
