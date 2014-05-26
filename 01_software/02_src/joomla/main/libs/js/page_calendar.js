@@ -1055,8 +1055,8 @@ $(document).ready(function() {
     });
 
 $(document).ready(function() {
-    // Rewrite on SD cards every events
-    <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+    // Rewrite on SD cards every events (and plgXX programm)
+    <?php if(isset($sd_card) && !empty($sd_card)) { ?>
         $.ajax({
            cache: false,
            data: {sd_card:"<?php echo $sd_card ;?>"},
