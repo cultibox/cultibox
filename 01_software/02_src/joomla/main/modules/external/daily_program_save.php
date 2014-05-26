@@ -44,7 +44,7 @@
     $program_idx = program\get_programm_number_empty();
 
     // create programm line
-    program\add_row_program_idx($_POST['name'], $_POST['version'], $program_idx);
+    program\add_row_program_idx($_POST['name'], $_POST['version'], $program_idx, "","Programme " . $_POST['name']);
     
     // Save programm
     program\copy($_POST['input'],$program_idx);

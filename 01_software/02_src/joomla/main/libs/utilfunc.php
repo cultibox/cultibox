@@ -1234,7 +1234,7 @@ function check_database() {
         // Check configuration DB
         configuration\check_db();
         
-         $_SESSION['CHECK_DB'] = "True"
+         $_SESSION['CHECK_DB'] = "True";
         
     }
     
