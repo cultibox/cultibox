@@ -1222,14 +1222,21 @@ function get_decode_rtc_offset($rtc = 0) {
 // RET rtc offset value to be recorded 
 function check_database() {
 
-    // Check program_index database consitency
-    program\check_db();
+    // Do it only one time per session
+    if(!isset($_SESSION['CHECK_DB']) || empty($_SESSION['CHECK_DB'])) {
+    
+        // Check program_index database consitency
+        program\check_db();
 
-    // Check calendar database consitency
-    calendar\check_db();
+        // Check calendar database consitency
+        calendar\check_db();
 
-    // Check configuration DB
-    configuration\check_db();
+        // Check configuration DB
+        configuration\check_db();
+        
+         $_SESSION['CHECK_DB'] = "True"
+        
+    }
     
 }
 //}}}
