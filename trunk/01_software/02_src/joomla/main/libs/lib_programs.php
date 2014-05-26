@@ -20,25 +20,32 @@ function check_db() {
     }
 
     // If table exists, return
-    if ($res != null)
-        return 0;
+    if ($res == null)
+    {
         
-    // Buil MySQL command to create table
-    $sql = "CREATE TABLE program_index (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), version VARCHAR(100), program_idx INT, creation DATETIME, modification DATETIME, plugv_filename VARCHAR(10));";
-    
-    // Create table
-    try {
-        $sth = $db->prepare($sql);
-        $sth->execute();
-    } catch(\PDOException $e) {
-        $ret = $e->getMessage();
-        print_r($ret);
+        // Buil MySQL command to create table
+        $sql = "CREATE TABLE program_index "
+                . "(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "name VARCHAR(100), version VARCHAR(100), "
+                . "program_idx INT, creation DATETIME, "
+                . "modification DATETIME, plugv_filename VARCHAR(10), "
+                . "comments VARCHAR(500));";
+        
+        // Create table
+        try {
+            $sth = $db->prepare($sql);
+            $sth->execute();
+        } catch(\PDOException $e) {
+            $ret = $e->getMessage();
+            print_r($ret);
+        }
+        
+        // Add default line
+        add_row_program_idx('Courant','1.0','1' , '00');
+        
     }
     
     $db=null;
-    
-    // Add default line
-    add_row_program_idx('Courant','1.0','1' , '00');
 
 }
 // }}}
@@ -80,8 +87,9 @@ function add_row_program_idx($name, $version, $program_idx = "", $plugv_filename
     }
 
     // Add line
-    $sql = "INSERT INTO program_index(name, version, program_idx ,creation ,modification, plugv_filename) ";
-    $sql = $sql . "VALUE(\"" . $name . "\", \"" . $version . "\", \"" . $program_idx . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . $plugv_filename . "\");";
+    $sql = "INSERT INTO program_index(name, version, program_idx ,creation ,modification, plugv_filename) "
+        . "VALUE(\"" . $name . "\", \"" . $version . "\", \"" . $program_idx . "\", \"" 
+        . date("Y-m-d H:i:s") . "\", \"" . date("Y-m-d H:i:s") . "\", \"" . $plugv_filename . "\");";
 
     // Run command
     try {
