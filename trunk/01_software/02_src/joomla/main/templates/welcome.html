@@ -11,46 +11,56 @@ function(){
 <br />
 
 <div class="welcome"> 
-<p class="welcome_title"><?php echo __('WELCOME_TITLE'); ?></p>
-<br />
-<p class="text_info"><?php echo __('WELCOME_MESSAGE'); ?></p>
-<br />
-<?php if($wizard) { ?>
-    <div class="text_info"><?php echo __('WELCOME_TUTO'); ?>:<br /><?php echo __('WELCOME_REQUIEREMENT'); ?></div>
+    <p class="welcome_title"><?php echo __('WELCOME_TITLE'); ?></p>
     <br />
-    <p class="text_info"><?php echo __('WELCOME_FOLLOW_LINK'); ?>:</p>
-<form action="<?php echo($_SERVER['PHP_SELF'])."wizard-".$_SESSION['SHORTLANG']; ?>" method="post"><p class="p_center"><input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>"></p></form>
-<?php } else { ?>
-<hr />
-<br />
-<table class="table_width">
-<tr>
-<td class="welcome-link"><a href="index.php/display-logs-<?php echo $_SESSION['SHORTLANG']; ?>"><img src="main/libs/img/logs.png" title="<?php echo __('WELCOME_LOGS'); ?>" alt="<?php echo __('WELCOME_LOGS'); ?>" /><br /></a></td><td class="welcome-link"><a href="index.php/programs-<?php echo $_SESSION['SHORTLANG']; ?>"><img src="main/libs/img/program.png" title="<?php echo __('WELCOME_PROGRAM'); ?>" alt="<?php echo __('WELCOME_PROGRAM'); ?>" /><br /></a></td>
-<td class="welcome-link"><a href="index.php/calendar-<?php echo $_SESSION['SHORTLANG']; ?>"><img src="main/libs/img/calendar.png" title="<?php echo __('WELCOME_CALENDAR'); ?>" alt="<?php echo __('WELCOME_CALENDAR'); ?>"/><br /></a></td></tr>
-<tr>
-<td class="welcome-link">
-<a href="index.php/display-logs-<?php echo $_SESSION['SHORTLANG']; ?>">
-<?php echo __('WELCOME_LOGS'); ?>
-</a>
-</td>
-<td class="welcome-link"><a href="index.php/programs-<?php echo $_SESSION['SHORTLANG']; ?>">
-<?php echo __('WELCOME_PROGRAM'); ?>
-</a>
-</td>
-<td class="welcome-link">
-<a href="index.php/calendar-<?php echo $_SESSION['SHORTLANG']; ?>">
-<?php echo __('WELCOME_CALENDAR'); ?>
-</a>
-</td>
-</tr>
-</table>
-<br />
-<hr />
-<?php } ?>
+    <p class="text_info"><?php echo __('WELCOME_MESSAGE'); ?></p>
+    <br />
+    <?php if($wizard) { ?>
+        <div class="text_info"><?php echo __('WELCOME_TUTO'); ?>:<br /><?php echo __('WELCOME_REQUIEREMENT'); ?></div>
+        <br />
+        <p class="text_info"><?php echo __('WELCOME_FOLLOW_LINK'); ?>:</p>
+        <form action="<?php echo($_SERVER['PHP_SELF'])."wizard-".$_SESSION['SHORTLANG']; ?>" method="post">
+            <p class="p_center"><input type="submit" name="go_wizard" value="<?php echo __('WELCOME_WIZARD'); ?>"></p>
+        </form>
+    <?php } else { ?>
+    <hr />
+    <br />
+    <table class="table_width">
+        <tr>
+            <td class="welcome-link"><a href="index.php/display-logs-<?php echo $_SESSION['SHORTLANG']; ?>">
+                <img src="main/libs/img/logs.png" title="<?php echo __('WELCOME_LOGS'); ?>" alt="<?php echo __('WELCOME_LOGS'); ?>" />
+                <br /></a>
+            </td>
+            <td class="welcome-link">
+                <a href="index.php/programs-<?php echo $_SESSION['SHORTLANG']; ?>"><img src="main/libs/img/program.png" title="<?php echo __('WELCOME_PROGRAM'); ?>" alt="<?php echo __('WELCOME_PROGRAM'); ?>" />
+                <br />
+                </a>
+            </td>
+            <td class="welcome-link"><a href="index.php/calendar-<?php echo $_SESSION['SHORTLANG']; ?>">
+                <img src="main/libs/img/calendar.png" title="<?php echo __('WELCOME_CALENDAR'); ?>" alt="<?php echo __('WELCOME_CALENDAR'); ?>"/><br /></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="welcome-link">
+                <a href="index.php/display-logs-<?php echo $_SESSION['SHORTLANG']; ?>">
+                <?php echo __('WELCOME_LOGS'); ?>
+                </a>
+            </td>
+            <td class="welcome-link"><a href="index.php/programs-<?php echo $_SESSION['SHORTLANG']; ?>">
+                <?php echo __('WELCOME_PROGRAM'); ?>
+                </a>
+            </td>
+            <td class="welcome-link">
+                <a href="index.php/calendar-<?php echo $_SESSION['SHORTLANG']; ?>">
+                <?php echo __('WELCOME_CALENDAR'); ?>
+                </a>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <hr />
+    <?php } ?>
 </div>
-<?php if((isset($stats))&&(!empty($stats))&&(strcmp("$stats","True")==0)) {
-    include('main/libs/js/send_informations.js'); 
-} ?>
 
 <br /><div id="compat" style="display:none" class="text_info"><?php echo __('ERROR_COMPAT_BROWSER'); ?></div>
 
@@ -85,9 +95,11 @@ function(){
         <td class="border_note_desc"></td>
     </tr>
 </table>
-        <?php } ?>
-    <?php } ?>
-<?php } ?>
+        <?php 
+        }
+    }
+} 
+?>
 
 
 

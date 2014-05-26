@@ -33,7 +33,6 @@ __('LANG');
 $sd_card=""; //Path of the SD card
 $wizard=true; 
 $nb_plugs = get_configuration("NB_PLUGS",$main_error); //Get current actives number of plugs
-$stats=get_configuration("STATISTICS",$main_error); //Check if the user has activated the sending statistics option
 $pop_up_message=""; //For the informations pop up messages
 $pop_up_error_message=""; //For the errors pop up messages
 $pop_up=get_configuration("SHOW_POPUP",$main_error); //Check if the user has activated the pop up messages options
