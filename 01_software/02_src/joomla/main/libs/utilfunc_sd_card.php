@@ -1059,16 +1059,35 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
                 // If file can be opened
                 if($fid = fopen($file,"w+")) {
                 
+                    // If there is an Lune event, write symbols at top
+                    foreach($val as $value) {
+                        // Search if symbols exists
+                        if (array_key_exists("cbx_symbol",$value))
+                        {
+                            $outSymbol = "";
+                            
+                            // Foreach symbol, add it
+                            foreach (explode(" ",$value['cbx_symbol']) as $symbol)
+                            {
+                                // COnvert into binary string
+                                $outSymbol = $outSymbol . hex2bin(substr($symbol,-2));
+                            }
+                            
+                            // rite t
+                            fputs($fid,$outSymbol . "\r\n");
+                        }
+                    }
+                
                     // Foreach event to write
                     foreach($val as $value) {
                     
                         $sub  =  clean_calendar_message($value["subject"]);
                         $desc =  clean_calendar_message($value["description"]);
 
-                        if(!fputs($fid,"$sub"."\r\n")) 
+                        if(!fputs($fid, $sub . "\r\n")) 
                             $status=false;
                             
-                        if(!fputs($fid,"$desc"."\r\n")) 
+                        if(!fputs($fid, $desc . "\r\n")) 
                             $status=false;
                             
                     }
