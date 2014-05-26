@@ -1394,33 +1394,47 @@ function clean_index_file($sd_card) {
 //       $log_file  path to the log file
 // RET   none
 function find_informations($log_file,&$ret) {
-if(!file_exists("$log_file")) return $ret;
-   $ret["cbx_id"]="";
-   $ret["firm_version"]="";
-   $ret["log"]="";
 
-   $buffer_array=file("$log_file");
-   foreach($buffer_array as $buffer) {
+    // If file does not exists, return false
+    if(!file_exists($log_file)) 
+        return false;
+        
+    // Init return array
+    $ret["cbx_id"]      = "";
+    $ret["firm_version"]= "";
+    $ret["log"]         = "";
+
+    // Read the file
+    $buffer_array = file($log_file);
+    
+    // Foreach line
+    foreach($buffer_array as $buffer) {
+    
+        // Remove space before and after
         $buffer=trim($buffer);
 
-        if(strcmp($buffer,"")==0) break;
+        // If th line is empty, reurn
+        if($buffer == "") 
+            break;
 
+        // Init log with buffer
         if(strcmp($ret["log"],"")==0) {
-            $ret["log"]=$buffer;
+            $ret["log"] = $buffer;
         } else {
-            $ret["log"]=$ret["log"]."#".$buffer;
+            $ret["log"] = $ret["log"] . "#" . $buffer;
         }
 
         switch (substr($buffer,14,1)) {
             case 'I':
-                $ret["cbx_id"]=substr($buffer,16,5);
+                $ret["cbx_id"] = substr($buffer,16,5);
                 break;
             case 'V':
-                $ret["firm_version"]=substr($buffer,16,7); 
+                $ret["firm_version"] = substr($buffer,16,7); 
                 break;
         }
-   }
-   return $ret;
+    }
+    
+    return true;
 }
 // }}}
 
