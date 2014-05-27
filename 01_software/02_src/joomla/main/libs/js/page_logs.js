@@ -190,10 +190,10 @@ Highcharts.setOptions({
 var showzoomX = false;
 
 $(function () {
-   var chart;
-   $(document).ready(function() {
-      chart = new Highcharts.Chart({
-         chart: {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
             backgroundColor: '#F7F7F9',
             borderWidth: 3,
             borderColor: '#959891',
@@ -214,18 +214,18 @@ $(function () {
                }
             }
          },
-         title: {
+            title: {
              margin: 35,
     	     useHTML: true,
              text: <?php echo "'<b>".__('HISTO_GRAPH')." (".$legend_date.")*</b>'"; ?>,
          },
-         subtitle: {
+            subtitle: {
 	     useHTML: true,
              text: document.ontouchstart === undefined ?
                <?php echo "'".__('DRAG_PLOT')."'"; ?>:
                <?php echo "'".__('DRAG_PLOT')."'"; ?>
          },
-         lang: {
+            lang: {
 	    useHTML: true,
             printChart: <?php echo "'".__('PRINT_HIGHCHART')."',"; ?>
             exportButtonTitle: <?php echo "'".__('EXPORT_HIGHCHART')."',"; ?>
@@ -237,14 +237,14 @@ $(function () {
             resetZoomTitle : <?php echo "'".__('RESET_ZOOM_TITLE')."'"; ?>,
             contextButtonTitle: <?php echo "'".__('CONTEXT_MENU')."'"; ?>
          },
-        scrollbar: {
+            scrollbar: {
             enabled: true
         },
         
-        rangeSelector: {
+            rangeSelector: {
             selected: 1
         },
-         xAxis: {
+            xAxis: {
             type: 'datetime',
             endOnTick: false,
             showFirstLabel: true,
@@ -254,13 +254,14 @@ $(function () {
                text: <?php echo "'".__("$xlegend")."'"; ?>
             },
             events: {
+                // Display button for resetting zoom
                 afterSetExtremes: function(event){
                     $('#resetXzoom').show();
                     showzoomX=true;
                 }
             }
          },
-         yAxis: [
+            yAxis: [
             <?php $count=1; ?>
             <?php foreach($data_log as $datalog) { ?>
             <?php if($count>1) echo ","; ?>
@@ -279,13 +280,14 @@ $(function () {
                     opposite: true,
                <?php } ?>
                events: {
-                afterSetExtremes: function() {
-                    if (this.min <= this.dataMin && this.max >= this.dataMax) {
-                        if(chart.resetZoomButton) {
-                            chart.resetZoomButton.hide();
+                    afterSetExtremes: function() {
+                        // If it's zoomed, display button to unzoom
+                        if (this.min <= this.dataMin && this.max >= this.dataMax) {
+                            if(chart.resetZoomButton) {
+                                chart.resetZoomButton.hide();
+                            }
                         }
                     }
-                }
                },
                labels: {
                   style: {
@@ -319,6 +321,7 @@ $(function () {
                <?php } ?>
                events: {
                 afterSetExtremes: function() {
+                    // If it's zoomed, display button to unzoom
                     if (this.min <= this.dataMin && this.max >= this.dataMax) {
                         if(chart.resetZoomButton) {
                             chart.resetZoomButton.hide();
@@ -343,7 +346,7 @@ $(function () {
                 $count=$count+1; 
             } ?>
          ],
-         tooltip: {
+            tooltip: {
             useHTML: true,
             formatter: function() {
                var tab=new Array;
@@ -410,7 +413,7 @@ $(function () {
             }
           }
          },
-        legend: {
+            legend: {
         width: 450,
         itemWidth: 225,
 	    useHTML: true,
@@ -428,110 +431,127 @@ $(function () {
                 }
             }
          },
-         credits: {
+            credits: {
             enabled: false
          },
-         plotOptions: {
-            series: {
-                events: {
-                    legendItemClick: function () {
-                        return false;
+            plotOptions: {
+                series: {
+                    events: {
+                        legendItemClick: function () {
+                            return false;
+                        }
                     }
-                }
-            },
-            area: {
-               fillColor: {
-                  linearGradient: { x1: 3, y1: 0, x2: 0, y2: 1}, 
-                  stops: [
-                      [0, Highcharts.getOptions().colors[0]],
-                      [1, 'rgba(2,0,0,0)']
-                  ]
-               
-               },
-               lineWidth: 1,
-               marker: {
-                  enabled: false,
-                  states: {
-                      hover: {
-                          enabled: true,
-                          radius: 5
+                },
+                area: {
+                   fillColor: {
+                      linearGradient: { x1: 3, y1: 0, x2: 0, y2: 1}, 
+                      stops: [
+                          [0, Highcharts.getOptions().colors[0]],
+                          [1, 'rgba(2,0,0,0)']
+                      ]
+                   
+                   },
+                   lineWidth: 1,
+                   marker: {
+                      enabled: false,
+                      states: {
+                          hover: {
+                              enabled: true,
+                              radius: 5
+                          }
                       }
-                  }
-               },
-               shadow: false,
-               states: {
-                  hover: {
-                      lineWidth: 1
-                  }
-               }
-            },
-            spline: {
-            lineWidth: 2,
-            states: {
-               hover: {
-                  lineWidth: 5
-               }
-            },
-            marker: {
-               enabled: false,
-               states: {
-                  hover: {
-                     enabled: true,
-                     symbol: 'circle',
-                     radius: 5,
-                     lineWidth: 1
-                  }
-               }
-            },
-            pointInterval: 3600000, // one hour
-            pointStart: Date.UTC(2009, 9, 6, 0, 0, 0)
-         }
-         },
-         series: [
-              <?php $count=0; ?>
-              <?php foreach($data_log as $datalog) { ?>
-               <?php if($count>0) echo ","; ?>
-               {
-               type: <?php echo "'".$datalog['type_graph']."'"; ?>,
-               <?php if((isset($datalog['record1']))&&(!empty($datalog['record1']))&&(strcmp($datalog['record1'],"")!=0)) { ?>
-                showCheckbox: true,
-               <?php } ?>
+                   },
+                   shadow: false,
+                   states: {
+                      hover: {
+                          lineWidth: 1
+                      }
+                   }
+                },
+                spline: {
+                lineWidth: 2,
+                states: {
+                   hover: {
+                      lineWidth: 5
+                   }
+                },
+                marker: {
+                   enabled: false,
+                   states: {
+                      hover: {
+                         enabled: true,
+                         symbol: 'circle',
+                         radius: 5,
+                         lineWidth: 1
+                      }
+                   }
+                },
+                pointInterval: 3600000, // one hour
+                pointStart: Date.UTC(2009, 9, 6, 0, 0, 0)
+             }
+             },
+            series: [
+                <?php 
+                    $count=0;
+                    foreach($data_log as $datalog) {
+                        if($count>0) 
+                            echo ","; 
+                ?>
+                        {
+                        type: <?php echo "'".$datalog['type_graph']."'"; ?>,
+                        <?php 
+                        if(isset($datalog['record1']) && !empty($datalog['record1']) && strcmp($datalog['record1'],"")!=0) {
+                            echo 'showCheckbox: true,';
+                        } 
+                        ?>
 
-               <?php if((strcmp($datalog['sensor_type'],"POWER")!=0)&&(strcmp($datalog['sensor_type'],"PROGRAM")!=0)) { ?>
-                    <?php if(strcmp($datalog['sensor_type'],"2")==0) {  ?>
-                        name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'][0])." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
-                    <?php } else { ?>
+                <?php 
+                    if((strcmp($datalog['sensor_type'],"POWER")!=0) && (strcmp($datalog['sensor_type'],"PROGRAM")!=0)) {
+                        if(strcmp($datalog['sensor_type'],"2")==0) {  ?>
+                            name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'][0])." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
+                  <?php } else { ?>
                         name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'])." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
-                    <?php } ?>
-               <?php } else { ?>
+                  <?php }
+               } else { ?>
                     name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'])."'"; ?>,
-               <?php } ?>
-               <?php if(in_array($count,$unselected_graph)) { ?>
+               <?php }
+               if(in_array($count,$unselected_graph)) { ?>
                visible: false,
                <?php } ?>
                yAxis: <?php echo $datalog['yaxis_record1']; ?>,
                pointInterval: <?php echo "$next"; ?> * 60 * 1000,
                pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-                   <?php switch($datalog['color_record1']) {
-                         case 'blue': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$datalog['sensor_nb']-1]."',"; 
+                    <?php
+                    switch($datalog['color_record1']) {
+                        case 'blue': 
+                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                         case 'black': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$datalog['sensor_nb']-1]."',"; 
+                        case 'black': 
+                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'green': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$datalog['sensor_nb']-1]."',"; 
+                        case 'green': 
+                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'red': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$datalog['sensor_nb']-1]."',"; 
+                        case 'red': 
+                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'purple': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$datalog['sensor_nb']-1]."',"; 
+                        case 'purple': 
+                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'brown': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BROWN'][$datalog['sensor_nb']-1]."',"; 
+                        case 'brown': 
+                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BROWN'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'yellow': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_YELLOW'][$datalog['sensor_nb']-1]."',"; 
+                        case 'yellow': 
+                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_YELLOW'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'orange': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_ORANGE'][$datalog['sensor_nb']-1]."',"; 
+                        case 'orange':
+                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_ORANGE'][$datalog['sensor_nb']-1]."',"; 
                             break;
-                        case 'pink': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PINK'][$datalog['sensor_nb']-1]."',"; 
+                        case 'pink': 
+                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PINK'][$datalog['sensor_nb']-1]."',"; 
                             break;
-               } ?>   
+                    } 
+                    ?>   
                selected: true,
                data: [
                   <?php if((isset($datalog['record1']))&&(!empty($datalog['record1']))) echo $datalog['record1']; ?>
