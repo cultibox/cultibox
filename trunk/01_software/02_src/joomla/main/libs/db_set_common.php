@@ -552,7 +552,6 @@ EOF;
 // IN     index    array containing sensor's type to be updated
 // RET false if an error occured, true else
 function update_sensor_type($index) {
-print_r($index);
     // If there is no sensors, return
     if(count($index)==0) 
         return false;
@@ -564,7 +563,6 @@ print_r($index);
             $sql = $sql . "UPDATE sensors SET  type = \"{$value}\" WHERE id = ${key};";
         }
     }
-echo $sql;
 
     // If there is no update, return
     if ($sql == "")
