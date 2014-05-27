@@ -1,13 +1,7 @@
-
-<script>
-    nb_plugs=<?php echo(json_encode($nb_plugs)); ?>;
-    wifi_ip=<?php echo(json_encode($wifi_ip)); ?>;
-    type_sensor=<?php echo(json_encode($type_sensor)); ?>;
-    addr_1000=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT'])); ?>;
-    addr_3500=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT_3500W'])); ?>;
-    translate=<?php echo(json_encode($translate)); ?>;
-    title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-</script>
+<?php 
+    // Include javascript functions
+    include('main/libs/js/page_wifi.js');
+?>
 
 <br />
 <p class="title_conf"><?php echo __('VIEW_SENSOR_STATE'); ?></p>
@@ -18,7 +12,8 @@
         <br />
         <table class="table_width">
             <tr>
-            <?php for($i=0;$i<$GLOBALS['NB_MAX_SENSOR_PLUG'];$i++) { ?>
+            <?php 
+                for($i=0;$i<$GLOBALS['NB_MAX_SENSOR_PLUG'];$i++) { ?>
                 <?php if(($i%3==0)&&($i>0)) { ?>
                    </tr><tr>
                 <?php } ?>
@@ -29,7 +24,7 @@
                 <hr />
                 <br />
                 </td>
-        <?php } ?>
+            <?php } ?>
         </tr>
         </table>
     </td>

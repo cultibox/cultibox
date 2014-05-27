@@ -1057,11 +1057,17 @@ $(document).ready(function() {
 $(document).ready(function() {
     // Rewrite on SD cards every events (and plgXX programm)
     <?php if(isset($sd_card) && !empty($sd_card)) { ?>
+    
+        // Add message to prevent user
+        pop_up_add_information('<?php echo __('WAIT_UPDATED_PROGRAM') ;?> <img src=\"../../main/libs/img/waiting_small.gif\" />', "update_calendar_progress", "information");
+    
         $.ajax({
            cache: false,
            data: {sd_card:"<?php echo $sd_card ;?>"},
            url: "../../main/modules/external/calendar_write_sd_events.php"
-        })
+        }).done(function (data) {
+            pop_up_remove("update_calendar_progress");
+        });
     <?php } ?>
 });
 

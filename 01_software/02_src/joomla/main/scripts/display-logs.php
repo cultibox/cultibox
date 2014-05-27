@@ -142,7 +142,9 @@ if((!isset($sd_card))||(empty($sd_card))) {
 check_and_update_sd_card($sd_card,$main_info,$main_error);
 
 // Search and update log information form SD card
-sd_card_update_log_informations($sd_card);//More default values:
+sd_card_update_log_informations($sd_card);
+
+//More default values:
 if((!isset($startday))||(empty($startday))) {
 	$startday=date('Y')."-".date('m')."-".date('d');
 } else {
@@ -193,11 +195,11 @@ if(isset($error_clean_log_file)) {
 }
 
 
-if(strcmp("$second_regul","True")==0) {
+if($second_regul == "True") {
     if(count($select_power)==$nb_plugs) {
         format_regul_sumary("all",$main_error,$resume_regul,$nb_plugs);
     } else {
-        if((count($select_power)!=0)&&(strcmp("$select_plug","")!=0)) {
+        if(count($select_power)!=0 && $select_plug != "") {
             if($select_power<$select_plug) {
                 $first=$select_power;
                 $second=$select_plug;
@@ -238,13 +240,13 @@ if(!empty($resume_regul)) {
 $check_log=check_export_table_csv("logs",$main_error);
 $check_power=check_export_table_csv("power",$main_error);
 
-if(strcmp("$type","days")!=0) {
+if($type != "days") {
    $legend_date=$startyear."-".$startmonth;
 } else {
    $legend_date=$startday;
 }
 
-if("$type" == "days") {
+if($type == "days") {
       if((isset($select_plug))&&(!empty($select_plug))) {
          $data_plug=get_data_plug($select_plug,$main_error);
          $data_plug=format_axis_data($data_plug,100,$main_error);
@@ -270,7 +272,7 @@ if("$type" == "days") {
             }
         
 
-            if(strcmp("$check_pwr","")!=0) {
+            if($check_pwr != "") {
                 if($several) {
                     $main_error[]=__('ERROR_POWER_PLUGS')." ".$check_pwr." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='plugs-".$_SESSION['SHORTLANG']."?selected_plug=all'>".__('HERE')."</a>";
                 } else {
@@ -567,14 +569,14 @@ if("$type" == "days") {
         $main_error[]=__('EMPTY_DATA')." <img src='main/libs/img/infos.png' alt='' title='".__('TOOLTIP_FAKE_LOG_DATA')."' />";
 
         if(!empty($record1)) {
-          unset($select_sensor);
-          $select_sensor[]=1;
-          $data_record1=get_format_graph($record1,"log");
-          $fake_log=true;
-          get_graph_array($record2,"record2/100","%%","1","True","0",$main_error);
-          if(!empty($record2)) {
-            $data_record2=get_format_graph($record2,"log");
-          }
+            unset($select_sensor);
+            $select_sensor[]=1;
+            $data_record1=get_format_graph($record1,"log");
+            $fake_log=true;
+            get_graph_array($record2,"record2/100","%%","1","True","0",$main_error);
+            if(!empty($record2)) {
+                $data_record2=get_format_graph($record2,"log");
+            }
 
           $name[]=__('TEMP_SENSOR');
           $name[]=__('HUMI_SENSOR');
@@ -597,24 +599,24 @@ if("$type" == "days") {
                           'unity' => ""
                     );
         } else {
-                $data_log[]=array(
-                          'sensor_type' => "",
-                          'sensor_nb' => "",
-                          'sensor_name_type' => "",
-                          'record1' => "",
-                          'record2' => "",
-                          'color_record1' => "",
-                          'color_record2' => "",
-                          'color_grid1' => "",
-                          'color_grid2' => "",
-                          'yaxis_record1' => 0,
-                          'yaxis_record2' => "",
-                          'type_graph' => "",
-                          'yaxis1_legend' => "",
-                          'yaxis2_legend' => "",
-                          'ratio' => "",
-                          'unity' => ""
-                    );
+            $data_log[]=array(
+                      'sensor_type' => "",
+                      'sensor_nb' => "",
+                      'sensor_name_type' => "",
+                      'record1' => "",
+                      'record2' => "",
+                      'color_record1' => "",
+                      'color_record2' => "",
+                      'color_grid1' => "",
+                      'color_grid2' => "",
+                      'yaxis_record1' => 0,
+                      'yaxis_record2' => "",
+                      'type_graph' => "",
+                      'yaxis1_legend' => "",
+                      'yaxis2_legend' => "",
+                      'ratio' => "",
+                      'unity' => ""
+                );
         }
      }
      $next=1;
@@ -702,7 +704,7 @@ if("$type" == "days") {
          $ddate="$startyear-$startmonth-$i";
          get_graph_array($record1,"record1/".$data_log[0]['ratio'],"$ddate",$select_sensor[0],"False","0",$main_error);
 
-         if("$data_record1" != "" ) {
+         if($data_record1 != "" ) {
             $data_record1="$data_record1, ".get_format_graph($record1,"log");
          } else {
             $data_record1=get_format_graph($record1,"log");
