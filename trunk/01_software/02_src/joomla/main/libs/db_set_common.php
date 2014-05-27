@@ -552,36 +552,42 @@ EOF;
 // IN     index    array containing sensor's type to be updated
 // RET false if an error occured, true else
 function update_sensor_type($index) {
-    if(count($index)==0) return false;
+print_r($index);
+    // If there is no sensors, return
+    if(count($index)==0) 
+        return false;
+
     $sql="";
 
-    $ind=1; 
-    foreach($index as $sens) {
-        if(strcmp("$sens","0")!=0) {
-$sql = $sql. <<<EOF
-UPDATE `sensors` SET  `type` = "{$sens}" WHERE id = ${ind};
-EOF;
+    foreach($index as $key => $value) {
+        if($value != "0") {
+            $sql = $sql . "UPDATE sensors SET  type = \"{$value}\" WHERE id = ${key};";
         }
-        $ind=$ind+1;
-   }
+    }
+echo $sql;
 
-   $db=db_priv_pdo_start();
-   try {
-        $db->exec("$sql");
-   } catch(PDOException $e) {
+    // If there is no update, return
+    if ($sql == "")
+        return false;
+
+    $db=db_priv_pdo_start();
+    try {
+        $db->exec($sql);
+    } catch(PDOException $e) {
         $ret=$e->getMessage();
-   }
-   $db=null;
+    }
+    $db=null;
 
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         $out[]=__('ERROR_UPDATE_SQL').$ret;
-      } else {
-         $out[]=__('ERROR_UPDATE_SQL');
-      }
-      return false;
-   }
-   return true;
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_UPDATE_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_UPDATE_SQL');
+        }
+        return false;
+    }
+    
+    return true;
 }
 /// }}}
 

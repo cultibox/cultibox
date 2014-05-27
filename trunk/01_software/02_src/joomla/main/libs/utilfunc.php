@@ -1002,36 +1002,48 @@ function check_browser_compat($tab) {
 //    '9' => 'ec',
 //    ':' => 'od',
 //    ';' => 'orp'
-function get_sensor_type($sd_card,$month,$day) {
-   //Par défaut les 6 capteurs sont définit comme non présents:
-   $sensor_type=array(0,0,0,0,0,0);
-   $file="$sd_card/logs/index";
+function get_sensor_type($sd_card,&$sensor_type) {
+    
+    // Define index file
+    $file="$sd_card/logs/index";
 
-   if(!file_exists("$file")) return $sensor_type; //Si on n'arrive pas à trouver le fichier index définissant les capteurs, on renvoie la valeur par défaut
+    //Si on n'arrive pas à trouver le fichier index définissant les capteurs, on renvoie lfalse
+    if(!file_exists($file)) 
+        return false; 
   
-   //On récupère le contenu du fichier index et on calcul la ligne de la journée actuelle: 
-   $index_array=file("$file");
-   if($month==1) {
-        $line=$day;
-   } else {
-        $line=($month-1)*31+$day;
-   }
+    //On récupère le contenu du fichier index et on calcul la ligne de la journée actuelle: 
+    $index_array = file($file);
+    
+    // Init return array (Why -6 : -4 For month and date AND -2 for \r\n)
+    $sensor_type = array();
+    for ($i = 0 ; $i < (strlen($index_array[0]) - 6) ; $i = $i + 1)
+        $sensor_type[$i + 1] = "0";
+    
+    // Parse file
+    // Foreach line of the file
+    foreach ($index_array as $line)
+    {
+        // Two first digits are month
+        $month = substr($line,0,2);
+        $day   = substr($line,2,2);
+        
+        // Next elements are sensors type
+        $sensor_of_the_day = str_split(substr($line,4, -2), 1);
 
+        // Update sensor_type array
+        $index = 0;
+        foreach ($sensor_of_the_day as $type)
+        {
+            // If type is not null and exists, update return array
+            if ($type != "0" && $type != "")
+                    $sensor_type[$index + 1] = $type;
+                
+            $index = $index + 1;
+        }
+    
+    }
 
-   $tmp=trim($index_array[$line-1]);  //Suppréssion des caratères invisibles
-   if(strlen($tmp)!=10) return $sensor_type;
-
-   $tst_date=substr($tmp,0,4);
-   if(strlen($month)<2) $month="0".$month;
-   if(strlen($day)<2) $day="0".$day;   
-   if(strcmp("$tst_date","${month}${day}")!=0) return $sensor_type;
-
-   $tmp=substr($tmp,4,6);
-   $sensor_type=str_split($tmp, 1);
-   for($i=0;$i<count($sensor_type);$i++) {
-       if(!array_key_exists("${sensor_type[$i]}", $GLOBALS['SENSOR_DEFINITION'])) $sensor_type[$i]='0';
-   }
-   return $sensor_type;
+   return true;
 }
 // }}}
 

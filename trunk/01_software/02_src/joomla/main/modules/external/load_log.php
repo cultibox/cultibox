@@ -9,25 +9,31 @@ require_once('../../libs/config.php');
 
 // Function to get log from the SD card
 function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
-   $file="$sd_card/logs/$month/$day";
+    $file="$sd_card/logs/$month/$day";
 
-   //Buffer to store data:
-   $buffer_array=array();
+    //Buffer to store data:
+    $buffer_array=array();
 
-   if(!file_exists("$file")) return false;
+    // If file does not exists, return
+    if(!file_exists($file)) 
+        return false;
 
-   //Using file function to get all the data once:
-   $buffer_array=file("$file");
+    //Using file function to get all the data once:
+    $buffer_array=file($file);
 
-   //Data process:
-   foreach($buffer_array as $buffer) {
+    //Data process:
+    // For each line of the file
+    foreach($buffer_array as $buffer) {
+    
          //Check if a line has a valid format in the file, the function continues processing if it's the case:
          if(check_empty_string($buffer)) {
+         
             //Each data is separated by the \t char, exploding in an array the data of a line:
             $temp = explode("\t", $buffer);
 
-            //Check that the line has the right number of sensor reccords:
+            //Check that the line has the right number of sensor records:
             if(count($temp)==($GLOBALS['NB_MAX_SENSOR_LOG']*2+1)) {
+            
                 for($i=0;$i<count($temp);$i++) {
                     //Cleaning wrong value - deleting special char 
                     $temp[$i]=rtrim($temp[$i]);
@@ -42,29 +48,32 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
                 $time_catch=rtrim($time_catch);
 
                 //If data are valid, continue processing:
-                if((!empty($date_catch))&&(!empty($time_catch))&&(!empty($temp[0]))&&(strlen($date_catch)==10)&&(strlen($time_catch)==6)&&(strlen($temp[0])==14)) {
+                if(!empty($date_catch) && !empty($time_catch)
+                    && !empty($temp[0]) && strlen($date_catch)==10 
+                    && strlen($time_catch)==6 && strlen($temp[0])==14 ) {
+                    
                         for($i=0; $i<count($sensors); $i++) {
                             //Creating data array which will be inserted into the database:
                             if(strcmp($sensors[$i]['type'],"0")!=0) {
                                 if((strcmp($sensors[$i]['type'],"2")!=0)&&(!empty($temp[$i+1]))) {
-                                        $array_line[] = array(
-                                            "timestamp" => $temp[0],
-                                            "record1" => $temp[$i+1],
-                                            "record2" => "",
-                                            "date_catch" => $date_catch,
-                                            "time_catch" => $time_catch,
-                                            "sensor_nb" => $sensors[$i]['sensor_nb'],
-                                        );
+                                    $array_line[] = array(
+                                        "timestamp" => $temp[0],
+                                        "record1" => $temp[$i+1],
+                                        "record2" => "",
+                                        "date_catch" => $date_catch,
+                                        "time_catch" => $time_catch,
+                                        "sensor_nb" => $sensors[$i]['sensor_nb'],
+                                    );
                                 } else if((!empty($temp[$i+1]))||(!empty($temp[$i+2]))) {
-                                        $array_line[] = array(
-                                            "timestamp" => $temp[0],
-                                            "record1" => $temp[$i+1],
-                                            "record2" => $temp[$i+2],
-                                            "date_catch" => $date_catch,
-                                            "time_catch" => $time_catch,
-                                            "sensor_nb" => $sensors[$i]['sensor_nb'],
-                                        );
-                                        $i=$i+1;
+                                    $array_line[] = array(
+                                        "timestamp" => $temp[0],
+                                        "record1" => $temp[$i+1],
+                                        "record2" => $temp[$i+2],
+                                        "date_catch" => $date_catch,
+                                        "time_catch" => $time_catch,
+                                        "sensor_nb" => $sensors[$i]['sensor_nb'],
+                                    );
+                                    $i=$i+1;
                                 }
                             } 
                         }
@@ -74,21 +83,29 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
     }
 }
 
-
 function get_power_value($file,&$array_line,$nb_plug=3) {
-   $check=true;
-   if(!file_exists("$file")) return false;
-   $buffer_array=file("$file");
+    $check=true;
 
-   foreach($buffer_array as $buffer) {
+    // If file does not exists, return
+    if(!file_exists($file)) 
+        return false;
+        
+    // Read the file
+    $buffer_array=file($file);
+
+    // For each line
+    foreach($buffer_array as $buffer) {
+    
+        // Remove space
         $buffer=trim($buffer);
+        
         if(!check_empty_string($buffer)) {
             if($check) {
                 $check=false;
             } else {
                 break;
             }
-         } else {
+        } else {
             if(!$check) $check=true;
             $temp=explode("\t", $buffer);
 
@@ -123,19 +140,14 @@ function get_power_value($file,&$array_line,$nb_plug=3) {
                   }
                 }
             }
-         }
+        }
     }
 }
-
-
-
-
 
 
 if (!isset($_SESSION)) {
     session_start();
 }
-
 
 if((isset($_GET['nb_day']))&&(!empty($_GET['nb_day']))) {
     $nb_day=$_GET['nb_day'];
@@ -143,11 +155,9 @@ if((isset($_GET['nb_day']))&&(!empty($_GET['nb_day']))) {
     $nb_day=0;
 }
 
-
 if((isset($_GET['type']))&&(!empty($_GET['type']))) {
     $type=$_GET['type'];
 }
-
 
 if((isset($_GET['sd_card']))&&(!empty($_GET['sd_card']))) {
     $sd_card=$_GET['sd_card'];
@@ -158,13 +168,7 @@ if((isset($_GET['search']))&&(!empty($_GET['search']))) {
 }
 
 
-if((!isset($type))||(empty($type))) {
-    echo "NOK";
-    return 0;
-} 
-
-
-if((!isset($sd_card))||(empty($sd_card))) {
+if(!isset($type) || empty($type)) {
     echo "NOK";
     return 0;
 } 
@@ -181,15 +185,92 @@ if(strcmp($type,"power")==0) {
 $log = array();
 $power=array();
 
-if((isset($sd_card))&&(!empty($sd_card))) {
-    // Workaround to avoid timeout (60s)
-    // Search only on 31 previous days
+if(!isset($sd_card) || empty($sd_card)) {
+    echo "NOK";
+    return 0;
+} 
 
+// Workaround to avoid timeout (60s)
+// Search only on 31 previous days
+
+$daySearch= date('j');
+$monthSearch = date('n');
+
+if($nb_day!=0) {
+    for($j=$nb_day;$j>0;$j--)  {
+        $daySearch= $daySearch-1;
+        if($daySearch==0) {
+            $daySearch=31;
+            $monthSearch=$monthSearch-1;
+            if($monthSearch==0) {
+                $monthSearch=12;
+            }
+        }
+    }
+}
+
+if(strlen($daySearch)<2) {
+    $dday="0".$daySearch;
+} else {
+    $dday=$daySearch;
+}
+
+if(strlen($monthSearch)<2) {
+    $mmonth="0".$monthSearch;
+} else {
+    $mmonth=$monthSearch;
+}
+
+if((!isset($_SESSION['LOAD_LOG']))||(empty($_SESSION['LOAD_LOG']))) {
+    $_SESSION['LOAD_LOG']="True";
+}
+
+$sensors=get_sensor_db_type(); 
+
+// Search if file exists
+if($type == "logs") {
+    if(file_exists("$sd_card/logs/$mmonth/$dday")) {
+    
+        // get log value
+        if(is_file("$sd_card/logs/$mmonth/$dday")) {
+            get_log_value($sd_card,$mmonth,$dday,$log,$sensors);
+        }
+
+        if(!empty($log)) {
+            if(db_update_logs($log,$main_error)) {
+                if(strcmp(date('md'),"${mmonth}${dday}")!=0) {
+                    copy_empty_big_file("$sd_card/logs/$mmonth/$dday"); 
+                } 
+            } 
+            unset($log) ;
+            $log = array();
+        }
+    }
+} elseif($type == "power") {
+    // get power values
+    if(is_file("$sd_card/logs/$mmonth/pwr_$dday")) {
+        get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power,get_configuration("NB_PLUGS",$main_error));
+    }
+
+    if(!empty($power)) {
+        if(db_update_power($power,$main_error)) {
+            copy_empty_big_file("$sd_card/logs/$mmonth/pwr_$dday");
+        }
+        unset($power) ;
+        $power = array();
+    }
+} 
+
+
+if(($nb_day==0)&&(strcmp($search,"auto")==0)) {
+    $log=array();
+    $power=array();
     $daySearch= date('j');
     $monthSearch = date('n');
 
-    if($nb_day!=0) {
-        for($j=$nb_day;$j>0;$j--)  {
+    $nb_day=38;
+    while($nb_day>31) {
+         for($j=$nb_day;$j>0;$j--)  {
             $daySearch= $daySearch-1;
             if($daySearch==0) {
                 $daySearch=31;
@@ -199,114 +280,41 @@ if((isset($sd_card))&&(!empty($sd_card))) {
                 }
             }
         }
-    }
 
-    if(strlen($daySearch)<2) {
-        $dday="0".$daySearch;
-    } else {
-        $dday=$daySearch;
-    }
-
-    if(strlen($monthSearch)<2) {
-        $mmonth="0".$monthSearch;
-    } else {
-        $mmonth=$monthSearch;
-    }
-
-    if((!isset($_SESSION['LOAD_LOG']))||(empty($_SESSION['LOAD_LOG']))) {
-        $_SESSION['LOAD_LOG']="True";
-    }
-   
-    $sensors=get_sensor_db_type(); 
-
-    // Search if file exists
-    if(strcmp($type,"logs")==0) {
-        if(file_exists("$sd_card/logs/$mmonth/$dday")) {
-            // get log value
-            if(is_file("$sd_card/logs/$mmonth/$dday")) {
-                get_log_value("$sd_card","$mmonth","$dday",$log,$sensors);
-            }
-
-
-            if(!empty($log)) {
-                if(db_update_logs($log,$main_error)) {
-                    if(strcmp(date('md'),"${mmonth}${dday}")!=0) {
-                        copy_empty_big_file("$sd_card/logs/$mmonth/$dday"); 
-                    } 
-                } 
-                unset($log) ;
-                $log = array();
-            }
+        if(strlen($daySearch)<2) {
+            $dday="0".$daySearch;
+        } else {
+            $dday=$daySearch;
         }
-    } elseif(strcmp($type,"power")==0) {
-        // get power values
-        if(is_file("$sd_card/logs/$mmonth/pwr_$dday")) {
-            get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power,get_configuration("NB_PLUGS",$main_error));
+
+        if(strlen($monthSearch)<2) {
+            $mmonth="0".$monthSearch;
+        } else {
+            $mmonth=$monthSearch;
+        }
+
+        if(file_exists("$sd_card/logs/$mmonth/$dday")) {
+            get_log_value($sd_card,$mmonth,$dday,$log,$sensors);
+        }
+
+        if(!empty($log)) {
+            echo "-2";
+            return 0;
+        }
+
+        if(file_exists("$sd_card/logs/$mmonth/pwr_$dday")) {
+            get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power,get_configuration("NB_PLUGS",$main_error));  
         }
 
         if(!empty($power)) {
-            if(db_update_power($power,$main_error)) {
-                copy_empty_big_file("$sd_card/logs/$mmonth/pwr_$dday");
-            }
-            unset($power) ;
-            $power = array();
-        }
-   } 
-
-
-   if(($nb_day==0)&&(strcmp($search,"auto")==0)) {
-        $log=array();
-        $power=array();
-        $daySearch= date('j');
-        $monthSearch = date('n');
-
-        $nb_day=38;
-        while($nb_day>31) {
-             for($j=$nb_day;$j>0;$j--)  {
-                $daySearch= $daySearch-1;
-                if($daySearch==0) {
-                    $daySearch=31;
-                    $monthSearch=$monthSearch-1;
-                    if($monthSearch==0) {
-                        $monthSearch=12;
-                    }
-                }
-            }
-
-            if(strlen($daySearch)<2) {
-                $dday="0".$daySearch;
-            } else {
-                $dday=$daySearch;
-            }
-
-            if(strlen($monthSearch)<2) {
-                $mmonth="0".$monthSearch;
-            } else {
-                $mmonth=$monthSearch;
-            }
-
-            if(file_exists("$sd_card/logs/$mmonth/$dday")) {
-                get_log_value("$sd_card","$mmonth","$dday",$log,$sensors);
-            }
-
-            if(!empty($log)) {
-                echo "-2";
-                return 0;
-            }
-
-            if(file_exists("$sd_card/logs/$mmonth/pwr_$dday")) {
-                get_power_value("$sd_card/logs/$mmonth/pwr_$dday",$power,get_configuration("NB_PLUGS",$main_error));  
-            }
-
-            if(!empty($power)) {
-                echo "-2";
-                return 0;
-            } 
-            $nb_day=$nb_day-1;
-        }
-   }
-   
+            echo "-2";
+            return 0;
+        } 
+        $nb_day=$nb_day-1;
+    }
 }
+   
+
 echo "0";
 
 ?>

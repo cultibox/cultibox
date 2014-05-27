@@ -144,6 +144,19 @@ check_and_update_sd_card($sd_card,$main_info,$main_error);
 // Search and update log information form SD card
 sd_card_update_log_informations($sd_card);
 
+// Read and update DB with index file
+$sensor_type = array(); 
+if (get_sensor_type($sd_card,$sensor_type))
+{
+    // Update database with sensors
+    update_sensor_type($sensor_type);
+}
+
+// Clean index file
+clean_index_file($sd_card);
+
+
+
 //More default values:
 if((!isset($startday))||(empty($startday))) {
 	$startday=date('Y')."-".date('m')."-".date('d');
