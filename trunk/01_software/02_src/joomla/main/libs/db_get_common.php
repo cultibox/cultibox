@@ -2805,13 +2805,12 @@ EOF;
 // ';' => 'orp' => 1 => mV 
 
 function get_sensor_db_type() {
-    $sql = <<<EOF
-SELECT * FROM `sensors` ORDER BY id ASC;
-EOF;
+    $sql = "SELECT * FROM sensors ORDER BY id ASC;";
+
     $db=db_priv_pdo_start();
     $res="";
     try {
-        $sth=$db->prepare("$sql");
+        $sth=$db->prepare($sql);
         $sth->execute();
         $res=$sth->fetchAll(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
@@ -2833,103 +2832,112 @@ EOF;
             switch($sens['type']) {
                 case '0':
                 case '4':
-                case '5': $sensors[]=array(
-                            "id" => $sens['id'],
-                            "type" => 0,
-                            "sensor_nb" => 0,
-                            "ratio" => 0,
-                            "unity" => ""
-                          ); 
-                          $nb_sens=$nb_sens+1;
-                          break;
+                case '5': 
+                    $sensors[]=array(
+                        "id" => $sens['id'],
+                        "type" => 0,
+                        "sensor_nb" => 0,
+                        "ratio" => 0,
+                        "unity" => ""
+                    ); 
+                    $nb_sens=$nb_sens+1;
+                    break;
 
-                case '2': $sensors[]=array(
-                            "id" => $sens['id'],
-                            "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens,
-                            "ratio" => 100,
-                            "unity" => "°C/%"
-                          );
-                          $sensors[]=array(
-                            "id" => $sens['id'],
-                            "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens,
-                            "ratio" => 100,
-                            "unity" => "°C/%"
-                          );
-                          $nb_sens=$nb_sens+1;
-                          break;
+                case '2': 
+                    $sensors[]=array(
+                        "id" => $sens['id'],
+                        "type" => $sens['type'],
+                        "sensor_nb" => $nb_sens,
+                        "ratio" => 100,
+                        "unity" => "°C/%"
+                    );
+                    $sensors[]=array(
+                        "id" => $sens['id'],
+                        "type" => $sens['type'],
+                        "sensor_nb" => $nb_sens,
+                        "ratio" => 100,
+                        "unity" => "°C/%"
+                    );
+                    $nb_sens=$nb_sens+1;
+                    break;
 
-                case '3': $sensors[]=array(
-                            "id" => $sens['id'],
-                            "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens,
-                            "ratio" => 100,
-                            "unity" => "°C"
-                          );
-                          $nb_sens=$nb_sens+1;
-                          break;
+                case '3': 
+                    $sensors[]=array(
+                        "id" => $sens['id'],
+                        "type" => $sens['type'],
+                        "sensor_nb" => $nb_sens,
+                        "ratio" => 100,
+                        "unity" => "°C"
+                    );
+                    $nb_sens=$nb_sens+1;
+                    break;
 
                 case '6': 
-                case '7': $sensors[]=array(
-                            "id" => $sens['id'],
-                            "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens,
-                            "ratio" => 100,
-                            "unity" => "cm"
-                          );
-                          $nb_sens=$nb_sens+1;
-                          break;
+                case '7': 
+                    $sensors[]=array(
+                        "id" => $sens['id'],
+                        "type" => $sens['type'],
+                        "sensor_nb" => $nb_sens,
+                        "ratio" => 100,
+                        "unity" => "cm"
+                    );
+                    $nb_sens=$nb_sens+1;
+                    break;
 
-                case '8': $sensors[]=array(
-                            "id" => $sens['id'],
-                            "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens,
-                            "ratio" => 100,
-                            "unity" => " "
-                          );
-                          $nb_sens=$nb_sens+1;
-                          break;
+                case '8': 
+                    $sensors[]=array(
+                        "id" => $sens['id'],
+                        "type" => $sens['type'],
+                        "sensor_nb" => $nb_sens,
+                        "ratio" => 100,
+                        "unity" => " "
+                    );
+                    $nb_sens=$nb_sens+1;
+                    break;
 
-                case '9': $sensors[]=array(
-                            "id" => $sens['id'],
-                            "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens,
-                            "ratio" => 1,
-                            "unity" => "µs/cm"
-                          );
-                          $nb_sens=$nb_sens+1;
-                          break;
+                case '9': 
+                    $sensors[]=array(
+                        "id" => $sens['id'],
+                        "type" => $sens['type'],
+                        "sensor_nb" => $nb_sens,
+                        "ratio" => 1,
+                        "unity" => "µs/cm"
+                    );
+                    $nb_sens=$nb_sens+1;
+                    break;
 
-                case ':': $sensors[]=array(
-                            "id" => $sens['id'],
-                            "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens,
-                            "ratio" => 100,
-                            "unity" => "mg/l"
-                          );
-                          $nb_sens=$nb_sens+1;
-                          break;
+                case ':': 
+                    $sensors[]=array(
+                        "id" => $sens['id'],
+                        "type" => $sens['type'],
+                        "sensor_nb" => $nb_sens,
+                        "ratio" => 100,
+                        "unity" => "mg/l"
+                    );
+                    $nb_sens=$nb_sens+1;
+                    break;
 
-                case ';': $sensors[]=array(
-                            "id" => $sens['id'],
-                            "type" => $sens['type'],
-                            "sensor_nb" => $nb_sens,
-                            "ratio" => 1,
-                            "unity" => "mV"
-                          );
-                          $nb_sens=$nb_sens+1;
-                          break;
+                case ';': 
+                    $sensors[]=array(
+                        "id" => $sens['id'],
+                        "type" => $sens['type'],
+                        "sensor_nb" => $nb_sens,
+                        "ratio" => 1,
+                        "unity" => "mV"
+                    );
+                    $nb_sens=$nb_sens+1;
+                    break;
 
-                default:  $sensors[]=array(
-                            "id" => $sens['id'],
-                            "type" => $sens['type'],
-                            "sensor_nb" => 0,
-                            "ratio" => 0,
-                            "unity" => ""
-                          );
-                          $nb_sens=$nb_sens+1;
-                          break;
+                default:  
+                    $sensors[]=array(
+                        "id" => $sens['id'],
+                        "type" => $sens['type'],
+                        "sensor_nb" => 0,
+                        "ratio" => 0,
+                        "unity" => ""
+                    );
+                    $nb_sens=$nb_sens+1;
+                    break;
            }
         }
     }
