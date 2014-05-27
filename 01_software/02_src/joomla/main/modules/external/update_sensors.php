@@ -1,7 +1,7 @@
 <?php
 
 //Pour mettre à jour la table sensors depuis le fichier index
-//de la carte SD. FOnction appelée lors de 
+//de la carte SD. Fonction appelée lors de 
 
 require_once('../../libs/utilfunc.php');
 require_once('../../libs/db_get_common.php');
@@ -18,20 +18,16 @@ if((!isset($sd_card))||(empty($sd_card))) {
     return 0;
 } 
 
-
-$current_index=get_sensor_type($sd_card,date('m'),date('d'));
-$chk_value=false;
-foreach($current_index as $tst_index) {
-    if(strcmp("$tst_index","0")!=0) {
-        $chk_value=true;
-        break;
-    }
+// Read index file and update sensors type
+$sensor_type = array(); 
+if (get_sensor_type($sd_card,$sensor_type))
+{
+    // Update database with sensors
+    update_sensor_type($sensor_type);
 }
 
-if($chk_value) {
-    update_sensor_type($current_index);
-    clean_index_file($sd_card);
-}
+// Clean index file
+clean_index_file($sd_card);
 
 echo "0";
 
