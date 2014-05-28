@@ -312,7 +312,7 @@ function delete_program ($program_idx)
 // IN dateStart Date to start (write in Unix (s) format) . Time is not used
 // IN dateEnd   Date to start (write in Unix (s) format) . Time is not used
 // RET program name
-function get_plug_programm ($plug, $dateStart, $dateEnd)
+function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
 {
 
     // Init return array
@@ -411,13 +411,17 @@ function get_plug_programm ($plug, $dateStart, $dateEnd)
     $serie = array();
     $OldSeconds = 0;
     $oldValue = 0;
+    if ($day == "day")
+        $divider = 60;
+    else
+        $divider = 1200;
     foreach ($temp_serie as $key => $value)
     {
         if ($OldSeconds == 0)
             $OldSeconds = ($key / 1000);
     
         // For each second between last and current, write last value
-        for ($i = ceil(($OldSeconds + 1) / 60) * 60 ; $i <= floor(($key / 1000) / 60) * 60 ; $i = $i + 60)
+        for ($i = ceil(($OldSeconds + 1) / $divider) * $divider ; $i <= floor(($key / 1000) / $divider) * $divider ; $i = $i + $divider)
         {
             $serie[(string)((7200 + $i) * 1000)] = $oldValue;
         }
