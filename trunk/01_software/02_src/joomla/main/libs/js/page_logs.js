@@ -970,6 +970,7 @@ $(document).ready(function() {
                     data:{
                         plug:$(this).attr("plug"),
                         day:1,
+                        month:$('input[type=radio][name=type_select]:checked').attr('value'),
                         startDate:$(this).attr("startDate")
                     },
                     url: '../../main/modules/external/logs_get_serie.php',
