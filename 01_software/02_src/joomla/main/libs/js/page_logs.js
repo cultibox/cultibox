@@ -214,7 +214,7 @@ $(function () {
                }
             }
          },
-            title: {
+         title: {
              margin: 35,
     	     useHTML: true,
              text: <?php echo "'<b>".__('HISTO_GRAPH')." (".$legend_date.")*</b>'"; ?>,
@@ -372,15 +372,15 @@ $(function () {
                <?php echo "'".__('TEMP_LEGEND')." (".__('EXAMPLE_LOG').")': '%'"; ?>
             }[this.series.name];
             if(unit=='PROGRAM') { 
+                nounity=true; 
                if(this.y==100) {
                      behaviour='<?php echo __("VALUE_ON"); ?>';
-                     nounity=true; 
                } else if(this.y==0){
                      behaviour='<?php echo __("VALUE_OFF"); ?>';
-                     nounity=true;
                } else {
                      behaviour=(this.y)*100/100;
                      behaviour=behaviour.toFixed(1);
+                     nounity=false;
                }
                   <?php
                    $unity="";
@@ -403,7 +403,7 @@ $(function () {
                         } 
                } ?>
                if(!nounity) {
-                var unit="<?php echo $unity; ?>";
+                    var unit="<?php echo $unity; ?>";
                } else {
                     var unit="";
                }
@@ -926,4 +926,112 @@ $(document).ready(function() {
         
 });
 
+// Function to add a programm on the view
+$(document).ready(function() {
+
+    $("#select_plug_program_on_day input[type=checkbox]").click(function() {
+
+        // Init a var on highchart
+        var chart = $('#container').highcharts();
+        
+        var cheBu = $(this);
+ 
+        // If checked
+        if ($(this).attr("checked") == "checked") {
+            
+            // Check if curve already exists
+            if (cheBu.attr("serieID") != "") {
+                index = cheBu.attr("serieID");
+                chart.series[index].show();
+            } else {
+                // Call logs_get_serie to get programm value
+                $.ajax({
+                    data:{
+                        plug:$(this).attr("plug"),
+                        day:1,
+                        startDate:$(this).attr("startDate")
+                    },
+                    url: '../../main/modules/external/logs_get_serie.php',
+                    success: function(json) {
+
+                        // Parse result from json
+                        var objJSON = jQuery.parseJSON(json);
+                            
+                    
+                        // Init var serie
+                        var series = {
+                            id: 'series',
+                            name: objJSON.name,
+                            showCheckbox: true,
+                            type: 'area',
+                            yAxis: 0,
+                            color: '#C18C36', 
+                            selected: true,
+                            tooltip: {
+                                enabled: false
+                            },
+                            events: {
+                                // On click on the check box, show or hide the serie
+                                checkboxClick: function(event) {
+                                
+                                    var chart = $('#container').highcharts();
+
+                                    if (chart.series[this.index].visible) {
+                                        chart.series[this.index].hide();
+                                    } else {
+                                        chart.series[this.index].show();
+                                    }
+                                }
+                            },
+                            data: []
+                        }
+
+                        // Foreach data add it to serie
+                        $.each(objJSON.data, function(date,value) {
+                            series.data.push([
+                                date,
+                                parseFloat(value)
+                            ]);
+                        });
+
+                        serieID = chart.addSeries(series);
+                        
+                        cheBu.attr("serieID", serieID.index);
+
+                    },
+                    cache: false
+                });
+            }
+            
+
+            
+        } else {
+            // Un checked
+            index = cheBu.attr("serieID");
+            chart.series[index].hide();
+        }
+    });
+})
+
+
+// Function to display curve to show
+$(document).ready(function() {
+    $("#curve_select_button").click(function(e) {
+           e.preventDefault();
+
+           $("#select_curve").dialog({
+                resizable: false,
+                width: 750,
+                closeOnEscape: true,
+                dialogClass: "popup_message",
+                buttons: [{
+                    text: CLOSE_button,
+                    "id": "btnClose",
+                    click: function () {
+                        $( this ).dialog( "close" ); return false;
+                    }
+                }]
+            });
+    });
+});
 </script>

@@ -225,7 +225,7 @@ function get_data_plug($selected_plug="",&$out,$number=1) {
    $res="";
    if((isset($selected_plug))&&(!empty($selected_plug))) {
       $sql = <<<EOF
-SELECT  `time_start`,`time_stop`,`value`,`type` FROM `programs` WHERE plug_id = {$selected_plug} AND number = {$number} ORDER by time_start ASC
+SELECT time_start, time_stop, value, type, number FROM programs WHERE plug_id = {$selected_plug} AND number = {$number} ORDER by time_start ASC
 EOF;
         $db=db_priv_pdo_start();
         try {
@@ -840,7 +840,8 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                                 "time_start" => $first['time_start'],
                                 "time_stop" => $current['time_stop'],
                                 "value" => $current['value'],
-                                "type" => $current['type']
+                                "type" => $current['type'],
+                                "number" => $current['number']
                     );
 
                     $first['time_start']=$current['time_stop'];
@@ -907,7 +908,8 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                         "time_start" => $current['time_stop'],
                         "time_stop" => $save_time,
                         "value" => $first['value'],
-                        "type" => $first['type']
+                        "type" => $first['type'],
+                        "number" => $current['number']
                     );
 
                     $tmp[]=$first;
@@ -931,7 +933,8 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
                             "time_start" => $current['time_stop'],
                             "time_stop" => $save_time,
                             "value" => $first['value'],
-                            "type" => $first['type']
+                            "type" => $first['type'],
+                            "number" => $current['number']
                     );
 
                     $tmp[]=$first;

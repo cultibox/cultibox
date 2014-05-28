@@ -292,7 +292,7 @@ if((isset($export))&&(!empty($export))) {
             clean_program($import_selected,$program_index,$main_error);
             export_program($import_selected,$program_index,$main_error); 
          
-            if(!insert_program($data_prog,$main_error))
+            if(!insert_program($data_prog,$main_error,$program_index))
                 $chprog=false;
 
             if(!$chprog) {
@@ -300,7 +300,9 @@ if((isset($export))&&(!empty($export))) {
                 $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
 
                 $data_prog=generate_program_from_file("tmp/program_plug${import_selected}.prg",$import_selected,$main_error);
-                if(!insert_program($data_prog,$main_error)) $chprog=false;
+                
+                if(!insert_program($data_prog,$main_error,$program_index))
+                    $chprog=false;
             } else {
                 $main_info[]=__('VALID_IMPORT_PROGRAM');
                 $pop_up_message=$pop_up_message.popup_message(__('VALID_IMPORT_PROGRAM'));
@@ -573,7 +575,7 @@ if(!empty($apply) && isset($apply))
 
         $ch_insert=true;
         if(count($prog)>0) {
-            if(!insert_program($prog,$main_error)) 
+            if(!insert_program($prog,$main_error,$program_index)) 
                 $ch_insert=false;
         } else {
             $ch_insert=false;
