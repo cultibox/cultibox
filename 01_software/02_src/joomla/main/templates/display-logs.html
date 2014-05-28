@@ -25,7 +25,9 @@
             <tr>
                 <td class="log-marge-day-main"></td>
                 <td class="log-marge-day-title-select"><b><?php echo __('SELECT_DISPLAYED_DAY'); ?>:</b></td>
-                <td class="log-marge-day-field-select"><input type= "radio" id="select_day" name="type_select" value="day" <?php if(strcmp($type,"days")==0) echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?><input type= "radio" id="select_month" name="type_select" value="month" <?php if(strcmp($type,"month")==0) echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
+                <td class="log-marge-day-field-select">
+                    <input type= "radio" id="select_day" name="type_select" value="day" <?php if(strcmp($type,"days")==0) echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?>
+                    <input type= "radio" id="select_month" name="type_select" value="month" <?php if(strcmp($type,"month")==0) echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
                 </td>
                 <td></td>
             </tr>
