@@ -222,7 +222,8 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
             }
 
             $chinsert=true;
-            if(!insert_program($prog,$main_error)) $chinsert=false;
+            if(!insert_program($prog,$main_error,"1"))
+                $chinsert=false;
 
             if($chinsert) {
                if((!empty($sd_card))&&(isset($sd_card))) {

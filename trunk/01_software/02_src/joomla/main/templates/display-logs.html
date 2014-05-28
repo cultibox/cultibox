@@ -4,6 +4,18 @@
     include('main/libs/js/page_logs.js');
 ?>
 
+<!-- Display buttons -->
+<table class="table_width">
+    <tr>
+        <td>
+            <!-- Button to view curve to slect-->
+            <input type="image" id="curve_select_button" name="curve_select_vutton"
+                   title="<?php echo __('TOOLTIP_LOG_PROGRAM'); ?>"
+                   src="main/libs/img/advancedsettings.png"  width="34" />
+        </td>
+        <td class="calendar_right"></td>
+    </tr>
+</table>
 
 <label class="title_conf"><?php echo __('SELECT_LOG_TITLE'); ?></label>
 <br />
@@ -23,7 +35,7 @@
 
 <br />
 
-<div id="label_select_day" class="div_height" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
+<div id="label_select_day" class="" style="<?php if(strcmp($type,"days")!=0) echo "display:none"; ?>">
     <form name="display-log-day" id="display-log-day" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
         <table class="table_width">
             <tr>
@@ -32,23 +44,11 @@
               <td class="log-marge-day-field"><input id="datepicker" name="startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
               <td><div id="error_start_days" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_FORMAT_DATE_DAY'); ?></div></td>
             </tr>
-            <tr>
-              <td></td>
-              <td><?php echo __('SELECT_PROGRAM_PLUG'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_LOG_PROGRAM'); ?>" />:</td>
-              <td> <select name="select_plug">
-                    <option value="">---</option>
-                    <?php foreach($active_plugs as $plugs) {  ; ?>
-                       <option value="<?php echo $plugs['id']; ?>" <?php if(strcmp($select_plug,$plugs['id'])==0) echo "selected"; ?>><?php echo $plugs_infos[$plugs['id']-1]["PLUG_NAME"]; ?></option>
-                    <?php } ?>
-                 </select>
-              </td>
-              <td></td>
-            </tr>
-            <tr>
+           <tr>
                 <td></td>
                 <td><?php echo __('SELECT_SENSOR_NB'); ?>:</td>
                 <td>
-                    <table>
+                    <table id="">
                         <tr>
                             <?php 
                                 for($i = 1 ; $i <= $GLOBALS['NB_MAX_SENSOR_LOG'] ; $i++) {
@@ -82,7 +82,8 @@
                     </table>
                     <br />
                 </td>
-                <td></td>
+                <td>
+                </td>
             </tr>
         </table>
 
@@ -467,4 +468,33 @@
         <label class="format_error" id="error_delete_logs_power" style="display:none"><?php echo __('ERROR_DELETE_LOGS'); ?></label>
         </p>
     </div>
+</div>
+
+<!-- Div used to dislay curve to show -->
+<div id="select_curve" title="<?php echo __('SELECT_PROGRAM_PLUG') ?>" style="display:none">
+    <table id="select_plug_program_on_day">
+    <tr>
+        <?php 
+            for($plugs=1;$plugs<=$nb_plugs;$plugs++) {
+                echo '<td class="power_max">' . $plugs_infos[$plugs-1]["PLUG_NAME"] . '</td>';
+                echo '<td>';
+                echo '<input type="checkbox"'
+                    . ' plug="' . $plugs . '"' 
+                    . ' startDate="' . $legend_date . '"'
+                    . ' name="select_plug_temp[]"'
+                    . ' serieID=""'
+                    . ' curvename="' . $plugs_infos[$plugs-1]["PLUG_NAME"] . '"'
+                    . ' value="' . $plugs . '" ';
+                if(in_array($plugs,$select_power)) 
+                {
+                    echo ' checked';
+                }
+                echo '> </td>';
+                if($plugs % 2 == 0) { 
+                    echo '</tr><tr>';
+                }
+            } 
+        ?>
+        </tr>
+    </table>
 </div>

@@ -198,9 +198,9 @@ EOF;
 //      de temps on reprend l'insertion classique.
 //      Une fois le nouveau programme calculé, on le passe dans deux fonctions permettant: de supprimer des valeurs résiduelles (qui ne devraient pas être la) et d'optimiser le programme
 //      c'est à dire de joindre des espaces de temps contiguë ayant la même valeur
-function insert_program($program,&$out) {
+function insert_program($program,&$out,$indexNumber) {
     $ret=true;
-    $data_plug=get_data_plug($program[0]['selected_plug'],$out);
+    $data_plug=get_data_plug($program[0]['selected_plug'],$out,$indexNumber);
     $tmp=array();
     if(count($program>0))
         clean_program($program[0]['selected_plug'],$program[0]['number'],$out);
@@ -215,6 +215,7 @@ function insert_program($program,&$out) {
                 "number" => $progr['number']
             );
         }
+
         $tmp=purge_program($prg);
    } else {
         foreach($program as $progr) {
@@ -310,6 +311,8 @@ function insert_program($program,&$out) {
                 echo "<br />";
             }
 
+            echo 'deuxieme';
+            print_r($tmp);
             $tmp=purge_program($tmp);
 
             if($GLOBALS['DEBUG_TRACE']) {
@@ -417,14 +420,17 @@ function purge_program($arr) {
    asort($arr);
    if(count($arr)>0) {
       foreach($arr as $val) {
-         if(($val['value']==0)||($val['time_start']==$val['time_stop'])||(strcmp($val['value'],"")==0)||(strcmp($val['time_start'],"")==0)&&(strcmp($val['time_stop'],"")==0)) {
+         if($val['value']==0 || 
+            $val['time_start']==$val['time_stop'] ||
+            strcmp($val['value'],"")==0 ||
+            strcmp($val['time_start'],"")==0 && strcmp($val['time_stop'],"")==0) {
             //nothing to do
          } else {
                $tmp_arr = array(
-                  "time_start" => $val['time_start'],
-                  "time_stop" => $val['time_stop'],
-                  "value" => $val['value'],
-                  "type" => $val['type'],
+                    "time_start" => $val['time_start'],
+                    "time_stop" => $val['time_stop'],
+                    "value" => $val['value'],
+                    "type" => $val['type'],
                     "number" => $val['number']
                );
                $tmp[]=$tmp_arr;

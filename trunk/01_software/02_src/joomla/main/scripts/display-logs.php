@@ -254,14 +254,14 @@ $check_log=check_export_table_csv("logs",$main_error);
 $check_power=check_export_table_csv("power",$main_error);
 
 if($type != "days") {
-   $legend_date=$startyear."-".$startmonth;
+    $legend_date=$startyear."-".$startmonth;
 } else {
-   $legend_date=$startday;
+    $legend_date=$startday;
 }
 
 if($type == "days") {
 
-    if(isset($select_plug) && !empty($select_plug)) {
+    if(isset($select_plug) && !empty($select_plug) && 0) {
         $data_plug=get_data_plug($select_plug,$main_error);
         $data_plug=format_axis_data($data_plug,100,$main_error);
         $data=format_program_highchart_data($data_plug,$startday);
@@ -269,7 +269,7 @@ if($type == "days") {
     }
 
     if(count($select_power)>0) {
-        if(count($select_power)!=$nb_plugs) {
+        if(count($select_power)!= $nb_plugs) {
             $data_power=get_data_power($startday,"",$select_power,$main_error);
 
             $check_pwr="";
