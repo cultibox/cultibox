@@ -40,6 +40,15 @@ msgstr "Page de création et visualisation des programmes des prises"
 
 
 # For the configuration part:
+msgid "CONFIGURE_GRAPHIC"
+msgstr "Configuration des graphiques"
+
+msgid "CONFIGURE_INTERFACE"
+msgstr "Configuration de l'interface"
+
+msgid "CONFIGURE_ADVANCED_OPTIONS"
+msgstr "Configuration des fonctionnalités avançées"
+
 msgid "CONFIGURE_TITLE_CULTIBOX"
 msgstr "Configurer votre système Cultibox"
 

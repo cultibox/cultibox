@@ -40,6 +40,15 @@ msgstr "Page creation and visualization of programs taken"
 
 
 # For the configuration part:
+msgid "CONFIGURE_GRAPHIC"
+msgstr "Graphics configration"
+
+msgid "CONFIGURE_INTERFACE"
+msgstr "Interface's configuration"
+
+msgid "CONFIGURE_ADVANCED_OPTIONS"
+msgstr "Configuration of the advances options"
+
 msgid "CONFIGURE_TITLE_CULTIBOX"
 msgstr "Configure your system Cultibox"
 

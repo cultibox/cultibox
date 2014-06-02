@@ -40,6 +40,15 @@ msgstr "Pagina de creación y visualización de los programas de enchufes"
 
 
 # For the configuration part:
+msgid "CONFIGURE_GRAPHIC"
+msgstr "Configuración de gráficos"
+
+msgid "CONFIGURE_INTERFACE"
+msgstr "Configuración de la Interfaz"
+
+msgid "CONFIGURE_ADVANCED_OPTIONS"
+msgstr "Configuración de las funciones avanzadas"
+
 msgid "CONFIGURE_TITLE_CULTIBOX"
 msgstr "Configurar vuestro sistema Cultibox"
 
@@ -68,22 +77,22 @@ msgid "CONFIGURE_TEMPERATURE"
 msgstr "Color de las curvas de temperaturas"
 
 msgid "CONFIGURE_WATER"
-msgstr "Couleur des courbes des températures d'eau"
+msgstr "Color de las curvas de temperatura de agua"
 
 msgid "CONFIGURE_LEVEL"
-msgstr "Couleur des courbes de niveau d'eau"
+msgstr "Color de las curvas del nivel del agua"
 
 msgid "CONFIGURE_PH"
-msgstr "Couleur des courbes de PH"
+msgstr "Color de las curvas de PH"
 
 msgid "CONFIGURE_EC"
-msgstr "Couleur des courbes d'EC"
+msgstr "Color de las curvas de EC"
 
 msgid "CONFIGURE_OD"
-msgstr "Couleur des courbes d'OD"
+msgstr "Color de las curvas de OD"
 
 msgid "CONFIGURE_ORP"
-msgstr "Couleur des courbes d'ORP"
+msgstr "Color de las curvas de ORP"
 
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Color del gráfico del coste de la instalación"
@@ -125,16 +134,16 @@ msgid "COLOR_PURPLE"
 msgstr "Lila"
 
 msgid "COLOR_ORANGE"
-msgstr "Orange"
+msgstr "Naranja"
 
 msgid "COLOR_PINK"
-msgstr "Rose"
+msgstr "Rosa"
 
 msgid "COLOR_BROWN"
-msgstr "Marron"
+msgstr "Brown"
 
 msgid "COLOR_YELLOW"
-msgstr "Jaune"
+msgstr "Amarillo"
 
 msgid "YES"
 msgstr "Si"
@@ -514,34 +523,34 @@ msgid "ORP_SENSOR"
 msgstr "ORP"
 
 msgid "TEMP_LEGEND"
-msgstr "Température (en °C)"
+msgstr "Temperatura (en °C)"
 
 msgid "HUMI_LEGEND"
-msgstr "Hygrométrie (en pourcentage)"
+msgstr "Humedad (en porcentage)"
 
 msgid "WATER_LEGEND"
-msgstr "Température de l'eau (en °C)"
+msgstr "Temperatura del agua (en °C)"
 
 msgid "LEVEL_LEGEND"
-msgstr "Niveau de l'eau (en cm)"
+msgstr "Nivel del agua (en cm)"
 
 msgid "PH_LEGEND"
-msgstr "PH de la solution"
+msgstr "PH de la solución"
 
 msgid "EC_LEGEND"
-msgstr "Electro-conductivité (en µs/cm)"
+msgstr "Electro-conductividad (en µs/cm)"
 
 msgid "OD_LEGEND"
-msgstr "Oxydo-reduction (en mg/l)"
+msgstr "Redox (en mg/l)"
 
 msgid "ORP_LEGEND"
 msgstr "ORP (en mV)"
 
 msgid "POWER_LEGEND"
-msgstr "Puissance consommée (en W)"
+msgstr "Consumo de energía (en W)"
 
 msgid "POWER"
-msgstr "Puissance"
+msgstr "Potencia"
 
 msgid "SUMARY_MAX"
 msgstr "Max"
@@ -659,12 +668,13 @@ msgstr "Regulador de intensidad"
 msgid "CANAL"
 msgstr "Canal"
 
+
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
-msgstr " Toma :"
+msgstr "Toma :"
 
 msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
-msgstr " Enchufe : "
+msgstr "Enchufe : "
 
 msgid "CONFIGURE_PROGRAM"
 msgstr "Configurar acción del enchufe"
@@ -884,6 +894,7 @@ msgstr "El programa ha sido eliminado."
 
 msgid "PARAMETERS"
 msgstr "Configuración"
+
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
@@ -1139,6 +1150,7 @@ msgstr "al"
 msgid "CALENDAR_DAILY_PROGRAM"
 msgstr "Programa diario"
 
+
 # For the cost part:
 msgid "SELECT_START_DAY"
 msgstr "Día de inicio (AAAA-MM-DD)"
@@ -1346,10 +1358,10 @@ msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr " Mes a ensenar: error en el formato (MM)"
 
 msgid "ERROR_SD_CARD_CONF"
-msgstr " Ninguna tarjeta SD compatible Cultibox detectada para grabar su configuración."
+msgstr "Ninguna tarjeta SD compatible Cultibox detectada para grabar su configuración."
 
 msgid "ERROR_SD_CARD"
-msgstr " Ninguna tarjeta SD compatible Cultibox detectada, comprobar que su tarjeta este correctamente conectada."
+msgstr "Ninguna tarjeta SD compatible Cultibox detectada, comprobar que su tarjeta este correctamente conectada."
 
 msgid "ERROR_FORMAT_TIME"
 msgstr "Error en el formato de la hora: HH:MM:SS"
@@ -1361,7 +1373,7 @@ msgid "ERROR_FORMAT_TIME_START"
 msgstr "Hora de inicio: error en el formato (HH:MM:SS)"
 
 msgid "ERROR_FORMAT_TIME_END"
-msgstr " Hora de fin: error en el formato (HH:MM:SS)"
+msgstr "Hora de fin: error en el formato (HH:MM:SS)"
 
 msgid "ERROR_TIME_VALUE"
 msgstr "Error en el formato de la hora: HH:MM"
@@ -1376,7 +1388,7 @@ msgid "ERROR_TOLERANCE_VALUE_DEGREE"
 msgstr "Valor de tolerancia : tiene de estar entre 0°C et 10°C"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr " Valor de tolerancia : tiene de estar entre 0&#37; y 25.5&#37;"
+msgstr "Valor de tolerancia : tiene de estar entre 0&#37; y 25.5&#37;"
 
 msgid "ERROR_TOLERANCE_VALUE_CM"
 msgstr "Valor de tolerancia: tiene de estar entre 0 cm y 10 cm"
@@ -1472,13 +1484,13 @@ msgid "ERROR_WRITE_SD_PLUGA"
 msgstr "Error en la grabación del fichero de dirección de los enchufes en su tarjeta SD "
 
 msgid "ERROR_WRITE_SD_CONF"
-msgstr " Error en la grabación de los ficheros de configuración en su tarjeta SD"
+msgstr "Error en la grabación de los ficheros de configuración en su tarjeta SD"
 
 msgid "ERROR_WRITE_CALENDAR"
-msgstr " Error en la grabación del fichero de calendario en su tarjeta SD"
+msgstr "Error en la grabación del fichero de calendario en su tarjeta SD"
 
 msgid "ERROR_WRITE_PROGRAM"
-msgstr " Error en la grabación de los programas en su tarjeta SD"
+msgstr "Error en la grabación de los programas en su tarjeta SD"
 
 msgid "ERROR_RESET_PROGRAM"
 msgstr "Error en el reseteo del o de los programas"
