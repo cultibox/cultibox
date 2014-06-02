@@ -40,6 +40,15 @@ msgstr "Seite Erstellung und Visualisierung von Programmen übernommen"
 
 
 # For the configuration part:
+msgid "CONFIGURE_GRAPHIC"
+msgstr "Grafik-Konfiguration"
+
+msgid "CONFIGURE_INTERFACE"
+msgstr "Interface-Konfiguration"
+
+msgid "CONFIGURE_ADVANCED_OPTIONS"
+msgstr "Konfigurieren von erweiterten Funktionen"
+
 msgid "CONFIGURE_TITLE_CULTIBOX"
 msgstr "Konfigurieren Sie Ihr System Cultibox"
 

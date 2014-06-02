@@ -4,10 +4,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-/* Libraries requiered: 
-        db_common.php : manage database requests
-        utilfunc.php  : manage variables and files manipulations
-*/
 require_once('main/libs/config.php');
 require_once('main/libs/db_get_common.php');
 require_once('main/libs/db_set_common.php');
@@ -34,22 +30,19 @@ $update_conf=false;
 $pop_up_message="";
 $pop_up_error_message="";
 
-$alarm_enable   =getvar('alarm_enable');
-$alarm_value    =getvar('alarm_value');
-$wifi_enable    =getvar('wifi_enable');
+$alarm_enable   = getvar('alarm_enable');
+$alarm_value    = getvar('alarm_value');
+$wifi_enable    = getvar('wifi_enable');
 $wifi_ssid      = getvar('wifi_ssid');
 $wifi_key_type  = getvar('wifi_key_type');
 $wifi_password  = getvar('wifi_password',false);
-$wifi_ip    = getvar('wifi_ip');
-$submenu    = getvar("submenu",$main_error);
-$stats      = getvar("stats",$main_error);
-$advanced_regul = getvar("advanced_regul",$main_error);
-$submit     = getvar("submit_conf_value",$main_error);
+$wifi_ip        = getvar('wifi_ip');
+$submenu        = getvar("submenu",$main_error);
+$stats          = getvar("stats",$main_error);
+$submit         = getvar("submit_conf_value",$main_error);
 $wifi_manual    = getvar("wifi_ip_manual");
-$rtc_offset = getvar("rtc_offset");
-
-$update_menu    = false;
-$version    = get_configuration("VERSION",$main_error);
+$rtc_offset     = getvar("rtc_offset");
+$version        = get_configuration("VERSION",$main_error);
 
 // By default the expanded menu is the user interface menu
 if((!isset($submenu))||(empty($submenu))) {
@@ -78,7 +71,7 @@ $conf_arr = array();
 $conf_arr["SHOW_POPUP"]             = array ("update_conf" => "0", "var" => "pop_up");
 $conf_arr["CHECK_UPDATE"]           = array ("update_conf" => "0", "var" => "update");
 $conf_arr["COLOR_HUMIDITY_GRAPH"]   = array ("update_conf" => "0", "var" => "color_humidity");
-$conf_arr["COLOR_TEMPERATURE_GRAPH"] = array ("update_conf" => "0", "var" => "color_temperature");
+$conf_arr["COLOR_TEMPERATURE_GRAPH"]= array ("update_conf" => "0", "var" => "color_temperature");
 $conf_arr["COLOR_WATER_GRAPH"]      = array ("update_conf" => "0", "var" => "color_water");
 $conf_arr["COLOR_LEVEL_GRAPH"]      = array ("update_conf" => "0", "var" => "color_level");
 $conf_arr["COLOR_PH_GRAPH"]         = array ("update_conf" => "0", "var" => "color_ph");
@@ -96,8 +89,7 @@ $conf_arr["STATISTICS"]             = array ("update_conf" => "0", "var" => "sta
 $conf_arr["RESET_MINMAX"]           = array ("update_conf" => "1", "var" => "minmax");
 $conf_arr["ACTIV_DAILY_PROGRAM"]    = array ("update_conf" => "0", "var" => "activ_daily_program");
 $conf_arr["SHOW_COST"]              = array ("update_conf" => "0", "var" => "show_cost");
-
-
+$conf_arr["ADVANCED_REGUL_OPTIONS"] = array ("update_conf" => "1", "var" => "advanced_regul");
 
 foreach ($conf_arr as $key => $value) {
     ${$value['var']} = get_configuration($key,$main_error);
