@@ -1,18 +1,33 @@
+Cultibox (1.3.08) precise; urgency=low
+    + Correction des erreurs de calculs présentes dans la configuration de RTC_OFFSET
+    + Vérification de la présence d'une nouvelle version du logiciel sans bloquer la page (ajax)
+    + Création et modification de la base de donnée directement en php
+    + Mise en place de la gestion des programmes journaliers
+    + Mise en place de bouton pour alléger l'interface
+    + Calendrier : 
+        + Correction du problème d'un évènement créé sur deux années
+        + Ajout des engrais GHE
+        + Enregistrement sans bloquer la page sur la carte SD
+        + Planification d'engrais en fenêtre modale
+        + Fusion des différents calendriers lunaires
+    + Logs :
+        + Visualisation du programme journalier sur le mois
+
 Cultibox (1.3.07) precise; urgency=low
     + Fractionnement des librairies
     + Ajout des traductions dans les langues manquantes
     + Possibilité d'utiliser plusieurs icônes pour les évènements du calendrier
-    + Suppréssion de l'onglet historique
+    + Suppression de l'onglet historique
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Fri May 16 11:26:13 CEST 2014
 
 
 Cultibox (1.3.06) precise; urgency=low
-    + Correction de la position de l'image qui apparaît quand on cache la boîte de dialogue du logiciel
-    + Correction de l'affichage de la selection des prises
+    + Correction de la position de l'image qui apparaît quand on cache la boite de dialogue du logiciel
+    + Correction de l'affichage de la sélection des prises
     + Lorsqu'on choisit un seul capteur pour la régulation, les options de min/max/moyenne sont désactivées dans l'interface
-    + Correction de l'affichage de l'oeil
-    + Corection de l'affichage des erreurs de valeur des programmes
+    + Correction de l'affichage de l’œil
+    + Correction de l'affichage des erreurs de valeur des programmes
     + Ajout d'un champ permettant de définir le début et la fin d'un cycle
     + Ajout de la vérification à la saisie des valeurs pour les heures et les données rentrées dans le formulaire des programmes
     + Ajout de listes pour choisir la prise impactée par l'import ou l'export des programmes
@@ -23,17 +38,17 @@ Cultibox (1.3.06) precise; urgency=low
     + Ajout du fichier plugidx pour le multiprogramme
     + Sauvegarde du RTC_OFFSET dans la base
     + Modification du chargement des logs en fonction des capteurs afin d'intégrer les nouveaux capteurs dans la Cultibox
-    + Corection du fonctionnement de la gestion du RTC_OFFSET
+    + Correction du fonctionnement de la gestion du RTC_OFFSET
     + Correction sur la vérification des mots de pase du wifi
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Apr 22 14:12:42 CEST 2014
 
 
 Cultibox (1.3.05) precise; urgency=low
-    + Selection d'un ou plusieurs capteurs possible dans la visualisation des logs
-    + Enregistrement des courbes déselectionnées sur le changement de jours des logs (bouton suivant et précédent)
+    + Sélection d'un ou plusieurs capteurs possible dans la visualisation des logs
+    + Enregistrement des courbes désélectionnées sur le changement de jours des logs (bouton suivant et précédent)
     + Le zoom en X sur les logs ne modifie plus l'affichage en Y
-    + Rechargement de la page de configuration arès un formatage de la carte SD
+    + Rechargement de la page de configuration après un formatage de la carte SD
     + Correction de l'affichage des coûts: on scroll après le calcul du coût ce qui permet d'éviter un problème d'affichage sur mac
     + Changement de l'affichage du menu de configuration des prises pour ressembler à celui du menu de configuration
     + Ajout de la définition des autres capteurs (ph, ec...)
