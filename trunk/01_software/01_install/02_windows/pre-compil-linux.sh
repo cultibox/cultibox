@@ -21,6 +21,10 @@ if [ "$2" == "" ] && [ "$1" != "clean" ]; then
     usage
 fi
 
+if [ "$3" == "" ] || [ "$3" == "byWindows" ] ; then
+    (cd ../../../ && svn up)
+    (cd ../../../wiki && svn up)
+fi
 
 echo "Remove previous files"
 if [ -f ./install_script_current.iss ]; then
