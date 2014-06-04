@@ -174,19 +174,25 @@ function sd_card_update_log_informations ($sd_card="") {
     $informations["cbx_id"]="";
     $informations["firm_version"]="";
     $informations["log"]="";
+    $informations["id_computer"] = php_uname("a");
     
     // Read log.txt file and clear it
     find_informations("$sd_card/log.txt",$informations);
     copy_empty_big_file("$sd_card/log.txt");
     
     // If informations are defined in log.txt copy them into database
-    if(strcmp($informations["cbx_id"],"")!=0) 
+    if($informations["cbx_id"] != "") 
         insert_informations("cbx_id",$informations["cbx_id"]);
-    if(strcmp($informations["firm_version"],"")!=0) 
+        
+    if($informations["firm_version"] != "") 
         insert_informations("firm_version",$informations["firm_version"]);
-    if(strcmp($informations["log"],"")!=0) 
+        
+    if($informations["log"] != "") 
         insert_informations("log",$informations["log"]);
 
+    if($informations["id_computer"] != "") 
+        insert_informations("id_computer",$informations["id_computer"]);
+        
     return 1;
 }
 

@@ -88,24 +88,24 @@ function get_configuration($key,&$out="") {
         $sql = <<<EOF
 SELECT {$key} FROM `configuration` WHERE id = 1
 EOF;
-   $db=db_priv_pdo_start();
-   try {
+    $db=db_priv_pdo_start();
+    try {
         $sth=$db->prepare("$sql");
         $sth-> execute();
         $res=$sth->fetch();
-   } catch(PDOException $e) {
+    } catch(PDOException $e) {
         $ret=$e->getMessage();
-   }
-   $db=null;
+    }
+    $db=null;
 
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         $out[]=__('ERROR_SELECT_SQL').$ret;
-      } else {
-         $out[]=__('ERROR_SELECT_SQL');
-      }
-   }
-   return $res[0];
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+    }
+    return $res[0];
 }
 // }}}
 
@@ -113,30 +113,31 @@ EOF;
 // {{{ get_informations()
 // ROLE get informations value for specific entries
 // IN $key   the key selectable from the database 
+//    $out   errors or warnings messages
 // RET $res   value of the key   
-function get_informations($key) {
+function get_informations($key,&$out="") {
    $sql = <<<EOF
 SELECT {$key} FROM `informations` WHERE id = 1
 EOF;
-   $db=db_priv_pdo_start();
-   try {
+    $db=db_priv_pdo_start();
+    try {
         $sth=$db->prepare("$sql");
         $sth-> execute();
         $res=$sth->fetch();
-   } catch(PDOException $e) {
+    } catch(PDOException $e) {
         $ret=$e->getMessage();
-   }
-   $db=null;
+    }
+    $db=null;
 
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         $out[]=__('ERROR_SELECT_SQL').$ret;
-      } else {
-         $out[]=__('ERROR_SELECT_SQL');
-      }
-   }
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+    }
 
-   return $res[0];
+    return $res[0];
 }
 // }}}
 

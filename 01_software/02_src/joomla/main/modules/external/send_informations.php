@@ -42,17 +42,19 @@
     // Only one time per session
     if(!isset($_SESSION['INFO_SENT']) || empty($_SESSION['INFO_SENT'])) {
     
+        $out = array();
+    
         // Get Log
-        $sLog = get_configuration("log",$out);
+        $sLog = get_informations("log",$out);
         
         // get ID Computer
-        $sIP = get_configuration("id_computer",$out);
+        $sIP = get_informations("id_computer",$out);
         
         // Get Cultibox ID
-        $sID = get_configuration("cbx_id",$out);
+        $sID = get_informations("cbx_id",$out);
 
         // Get Firmware version
-        $sFirm = get_configuration("firm_version",$out);
+        $sFirm = get_informations("firm_version",$out);
         
         $sBro=getenv("HTTP_USER_AGENT");
 
@@ -64,7 +66,14 @@
         // Set some options - we are passing in a useragent too here
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => $GLOBALS['REMOTE_DATABASE'].'?date='.urlencode($sDate).'&log='.urlencode($sLog).'&ip='.urlencode($sIP).'&cbx_soft_version='.urlencode($sVersion).'&cbx_id='.urlencode($sID).'&cbx_firmware='.urlencode($sFirm).'&browser='.urlencode($sBro)
+            CURLOPT_URL => $GLOBALS['REMOTE_DATABASE']
+                .'?date=' . urlencode($sDate)
+                .'&log='.urlencode($sLog)
+                .'&ip='.urlencode($sIP)
+                .'&cbx_soft_version='.urlencode($sVersion)
+                .'&cbx_id='.urlencode($sID)
+                .'&cbx_firmware='.urlencode($sFirm)
+                .'&browser='.urlencode($sBro)
         ));
 
         // Send the request & save response to $resp
@@ -73,7 +82,7 @@
         // Close request to clear up some resources
         curl_close($curl);
         
-        $_SESSION['INFO_SENT'] = "True"
+        $_SESSION['INFO_SENT'] = "True";
 
     }
     
