@@ -94,6 +94,9 @@ msgstr "Couleur des courbes d'OD"
 msgid "CONFIGURE_ORP"
 msgstr "Couleur des courbes d'ORP"
 
+msgid "CONFIGURE_PROGRAM_COLOR"
+msgstr "Couleur des courbes des programmes"
+
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Couleur du graphe de coût de l'installation"
 
@@ -341,6 +344,9 @@ msgstr "Déc"
 msgid "SELECT_PROGRAM_PLUG"
 msgstr "Programme à comparer"
 
+msgid "SELECT_CURVE_TO_DISPLAY"
+msgstr "Courbes à afficher"
+
 msgid "SELECT_POWER_PLUG"
 msgstr "Afficher la puissance consommée"
 
@@ -522,34 +528,37 @@ msgid "ORP_SENSOR"
 msgstr "ORP"
 
 msgid "TEMP_LEGEND"
-msgstr "Température (en °C)"
+msgstr "Température (°C)"
 
 msgid "HUMI_LEGEND"
-msgstr "Hygrométrie (en pourcentage)"
+msgstr "Hygrométrie (RH)"
 
 msgid "WATER_LEGEND"
-msgstr "Température de l'eau (en °C)"
+msgstr "Température de l'eau (°C)"
 
 msgid "LEVEL_LEGEND"
-msgstr "Niveau de l'eau (en cm)"
+msgstr "Niveau de l'eau (cm)"
 
 msgid "PH_LEGEND"
 msgstr "PH de la solution"
 
 msgid "EC_LEGEND"
-msgstr "Electro-conductivité (en µs/cm)"
+msgstr "Electro-conductivité (µs/cm)"
 
 msgid "OD_LEGEND"
-msgstr "Oxydo-reduction (en mg/l)"
+msgstr "Oxygène Dissous (mg/l)"
 
 msgid "ORP_LEGEND"
-msgstr "ORP (en mV)"
+msgstr "ORP (mV)"
 
 msgid "POWER_LEGEND"
-msgstr "Puissance consommée (en W)"
+msgstr "Puissance consommée (W)"
 
 msgid "POWER"
 msgstr "Puissance"
+
+msgid "PROGRAM_LEGEND"
+msgstr "Programme"
 
 msgid "SUMARY_MAX"
 msgstr "Max"

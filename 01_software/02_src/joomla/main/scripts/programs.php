@@ -221,7 +221,7 @@ if((isset($export))&&(!empty($export))) {
      //L'id n'est pas utilisée afin de pouvoir appliquer un programme sur plusieurs prises.
 
      //Export du programme au format csv, création du fichier program_plugX.prg:
-     export_program($export_selected,$program_index,$main_error);
+     program\export_program($export_selected,$program_index,$main_error);
      
      $file="tmp/program_plug${export_selected}.prg";
      if (($file != "") && (file_exists("./$file"))) {
@@ -290,7 +290,7 @@ if((isset($export))&&(!empty($export))) {
             $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
         } else {
             clean_program($import_selected,$program_index,$main_error);
-            export_program($import_selected,$program_index,$main_error); 
+            program\export_program($import_selected,$program_index,$main_error); 
          
             if(!insert_program($data_prog,$main_error,$program_index))
                 $chprog=false;
@@ -615,32 +615,9 @@ for($i=0;$i<$nb_plugs;$i++) {
     $data_plug = get_data_plug($i+1,$main_error,$program_index);
     $plugs_infos[$i]["data"] = format_program_highchart_data($data_plug,"");
 
-    switch($plugs_infos[$i]['PLUG_TYPE']) {
-        case 'other':
-            $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); 
-            break;
-        case 'ventilator': 
-            $plugs_infos[$i]['translate']=__('PLUG_VENTILATOR');
-            break;
-        case 'heating':
-            $plugs_infos[$i]['translate']=__('PLUG_HEATING');
-            break;	
-        case 'pump':
-            $plugs_infos[$i]['translate']=__('PLUG_PUMP');
-            break;
-        case 'lamp':
-            $plugs_infos[$i]['translate']=__('PLUG_LAMP');
-            break;
-        case 'humidifier':
-            $plugs_infos[$i]['translate']=__('PLUG_HUMIDIFIER');
-            break;
-        case 'dehumidifier':
-            $plugs_infos[$i]['translate']=__('PLUG_DEHUMIDIFIER');
-            break;
-        default:
-            $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN');
-            break;
-    }
+    // Translate
+    $plugs_infos[$i]['translate'] = translate_PlugType($plugs_infos[$i]['PLUG_TYPE'])
+    
 }
 
 // Create summary for tooltip

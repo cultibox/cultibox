@@ -26,57 +26,6 @@ function db_priv_pdo_start_joomla() {
 }
 
 
-// {{{ get_graph_array()
-// ROLE get array needed to build graphics
-// IN $res         the array containing datas needed for the graphics
-//    $key      the key selectable from the database (record1 or record2)
-//    $startdate   date (format YYYY-MM-DD) to check what datas to select
-//    $sensor       the number of the sensor to be displayed
-//    $fake   to select fake or real logs
-//    $limit    limit number of row return from sql request
-//    $out      errors or warnings messages
-// RET none
-function get_graph_array(&$res,$key,$startdate,$sensor=1,$fake="False",$limit=0,&$out) {
-   $startdate=str_replace("-","",$startdate);
-   $startdate=substr($startdate,2,8);
-
-   if($limit!=0) {
-        $sql_limit="LIMIT ".$limit;
-   } else {
-        $sql_limit="";
-   }
-    
-   if(strcmp("$sensor","all")==0) {
-        $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate}%" AND fake_log LIKE "{$fake}" GROUP BY time_catch,sensor_nb ORDER BY time_catch ASC {$sql_limit}
-EOF;
-} else {
-        $sql = <<<EOF
-SELECT ${key} as record,time_catch FROM `logs` WHERE timestamp LIKE "{$startdate}%" AND fake_log LIKE "{$fake}" AND sensor_nb LIKE "{$sensor}" GROUP BY time_catch ORDER BY time_catch ASC {$sql_limit}
-EOF;
-}
-
-   $db=db_priv_pdo_start();
-   try {
-        $sth=$db->prepare("$sql");
-        $sth->execute();
-        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-   } catch(PDOException $e) {
-        $ret=$e->getMessage();
-   }
-   $db=null;
-
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         $out[]=__('ERROR_SELECT_SQL').$ret;
-      } else {
-         $out[]=__('ERROR_SELECT_SQL');
-      }
-   }
-}
-// }}}
-
-
 // {{{ get_configuration()
 // ROLE get configuration value for specific entries
 // IN $key   the key selectable from the database 
@@ -189,30 +138,30 @@ function get_plug_conf($key,$id,&$out) {
 //    $out      errors or warnings messages
 // RET return an array containing plugid and its name
 function get_plugs_infos($nb=0,&$out) {
-        $sql = <<<EOF
-SELECT `id` , `PLUG_NAME`,`PLUG_TYPE`,`PLUG_REGUL`, `PLUG_ENABLED`, `PLUG_POWER_MAX`
-FROM `plugs`
-WHERE id <= {$nb}
-ORDER by id ASC
-EOF;
-       $db=db_priv_pdo_start();
-       try {
-            $sth=$db->prepare("$sql");
-            $sth->execute();
-            $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-       } catch(PDOException $e) {
-            $ret=$e->getMessage();
-       }
-       $db=null;
 
-       if((isset($ret))&&(!empty($ret))) {
-           if($GLOBALS['DEBUG_TRACE']) {
-              $out[]=__('ERROR_SELECT_SQL').$ret;
-           } else {
-              $out[]=__('ERROR_SELECT_SQL');
-          }
-       }
-       return $res;
+    $sql = "SELECT id, PLUG_NAME, PLUG_TYPE, PLUG_REGUL, PLUG_ENABLED, PLUG_POWER_MAX"
+            . " FROM plugs"
+            . " WHERE id <= '{$nb}'"
+            . " ORDER by id ASC";
+
+    $db=db_priv_pdo_start();
+    try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+    }
+    return $res;
 }
 // }}}
 
@@ -1652,113 +1601,6 @@ function compare_data_program(&$first,&$last,&$current,&$tmp) {
 //}}}
 
 
-// {{{ export_program()
-// ROLE export a program into a text file
-// IN $id          id of the program
-//    $out         error or warning message
-// RET none
-function export_program($id,$program_index,&$out) {
-       $sql = "SELECT * FROM programs WHERE plug_id = {$id} AND number = {$program_index}";
-       
-       $db=db_priv_pdo_start();
-       try {
-           $sth=$db->prepare("$sql");
-           $sth->execute();
-           $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-       } catch(PDOException $e) {
-           $ret=$e->getMessage();
-       }
-       $db=null;
-       $file="tmp/program_plug${id}.prg";
-
-       if($f=fopen("$file","w")) {
-            fputs($f,"#Program : time_start time_stop value type\r\n");
-            if(count($res)>0) {
-               foreach($res as $record) {
-                  fputs($f,$record['time_start'].",".$record['time_stop'].",".$record['value'].",".$record['type']."\r\n");
-               }
-            } else {
-                    fputs($f,"000000,235959,0,0\r\n");
-            }
-      } 
-      fclose($f);
-}
-// }}}
-
-
-// {{{ export_table_csv()
-// ROLE export a program into a text file
-// IN $name       name of the table to be exported
-//    $out         error or warning message
-// RET none
-function export_table_csv($name="",&$out) {
-       if(strcmp("$name","")==0) return 0;
-
-       $file="tmp/$name.csv";
-   
-       if(is_file($file)) {
-            unlink($file);
-       }
-
-       $os=php_uname('s');
-       switch($os) {
-                case 'Linux':
-                        exec("../../bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
-                        break;
-                case 'Mac':
-                case 'Darwin':
-                        exec("../../bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
-                        break;
-                case 'Windows NT':
-                        exec("..\..\mysql\bin\mysql.exe --defaults-extra-file=\"C:\cultibox\\xampp\mysql\bin\my-extra.cnf\" -B -h 127.0.0.1 --port=3891 cultibox -e \"SELECT * FROM `${name}`\" > $file");
-                        break;
-        }
-}
-// }}}
-
-
-
-// {{{ check_export_table_csv()
-// ROLE check that a table is empty or not
-// IN $name       name of the table to be exported
-//    $out         error or warning message
-// RET false is table is empty, true else
-function check_export_table_csv($name="",&$out) {
-       if(strcmp("$name","")==0) return false;
-
-        if(strcmp("$name","logs")==0) {
-            $sql = <<<EOF
-SELECT `timestamp` FROM `{$name}` WHERE `fake_log` LIKE "False" LIMIT 1;
-EOF;
-       } else if(strcmp("$name","power")==0) {
-            $sql = <<<EOF
-SELECT `timestamp` FROM `{$name}` LIMIT 1;
-EOF;
-       } else {
-            $sql = <<<EOF
-SELECT * FROM `{$name}` LIMIT 1;
-EOF;
-}
-        $db=db_priv_pdo_start();
-        try {
-            $sth=$db->prepare("$sql");
-            $sth->execute();
-            $res=$sth->fetch(PDO::FETCH_ASSOC);
-        } catch(PDOException $e) {
-            $ret=$e->getMessage();
-        }
-        $db=null;
-
-       if(count($res)>0) {
-             if(strcmp($res['timestamp'],"")!=0) {
-                return true;
-             }
-       }
-       return false;
-}
-// }}}
-
-
 // {{{ optimize_program()
 // ROLE optimize a program by deleting useless value
 // IN $arr      array containing value of the program
@@ -1841,11 +1683,13 @@ function optimize_program($arr) {
 //    $out   error or warning message
 // RET an array containing datas
 function create_plugconf_from_database($nb=0,&$out) {
+
    $second_regul=get_configuration("SECOND_REGUL",$out);
+   
    if($nb>0) {
-      $sql = <<<EOF
-SELECT * FROM `plugs` WHERE id <= {$nb}
-EOF;
+   
+        $sql = "SELECT * FROM plugs WHERE id <= '{$nb}';" ;
+      
        $db=db_priv_pdo_start();
        try {
            $sth=$db->prepare("$sql");
@@ -2260,26 +2104,26 @@ EOF;
 //     $out          error or warning message
 // RET array containing program's data
 function generate_program_from_file($file="",$plug,&$out) {
-         $res=array();
-         $handle=fopen("$file", 'r');
-            if($handle) {
-               while (!feof($handle)) {
-                  $buffer = fgets($handle);
-                  $temp = explode(",", $buffer);
-                  if(count($temp)==4) {
-                     if(is_numeric($plug)) {
-                        $res[]=array(
-                           "selected_plug" => $plug,
-                           "start_time" => $temp[0],
-                           "end_time" => $temp[1],
-                           "value_program" => $temp[2],
-                           "type" =>  $temp[3] 
-                        );
-                     }
-                  }
-               }
+    $res=array();
+    $handle=fopen("$file", 'r');
+    if($handle) {
+        while (!feof($handle)) {
+            $buffer = fgets($handle);
+            $temp = explode(",", $buffer);
+            if(count($temp)==4) {
+                if(is_numeric($plug)) {
+                    $res[]=array(
+                        "selected_plug" => $plug,
+                        "start_time" => $temp[0],
+                        "end_time" => $temp[1],
+                        "value_program" => $temp[2],
+                        "type" =>  $temp[3] 
+                    );
+                }
             }
-         return $res;
+        }
+    }
+    return $res;
 }
 // }}}
 
@@ -2323,15 +2167,21 @@ EOF;
 //       $max        the maximal number of plug tu be seeked
 // RET   summary formated 
 function format_regul_sumary($number=0, &$out,&$resume="",$max=0) {
-    if(strcmp("$number","all")==0) {
-    $sql = <<<EOF
-SELECT id, PLUG_REGUL, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" AND id<{$max} 
-EOF;
+
+    // If all plug have been selected
+    if($number == "all") {
+        $sql = "SELECT id, PLUG_REGUL, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE" 
+                . " FROM plugs WHERE PLUG_REGUL LIKE 'True'"
+                . " AND PLUG_ENABLED LIKE 'True'"
+                . " AND id < '{$max}' ;"; 
+
     } else {
-        $sql = <<<EOF
-SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE FROM `plugs` WHERE `PLUG_REGUL` LIKE "True" AND `PLUG_ENABLED` LIKE "True" AND `id` = {$number} AND id<={$max}
-EOF;
+        $sql = "SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE"
+                . " FROM plugs WHERE PLUG_REGUL LIKE 'True'"
+                . " AND PLUG_ENABLED LIKE 'True'"
+                . " AND id = '{$number}' ;";
     }
+    
     $db=db_priv_pdo_start();
     $res = array();
     try {
@@ -2352,135 +2202,27 @@ EOF;
     }
 
     $unity="";
-    if(count($res)>0) {
-        foreach($res as $result) {
-            $resume=$resume."<p align='center'><i>".__('SUMARY_REGUL_SUBTITLE')." ".$result['id'].":</i></p>";
-            if(strcmp($result['PLUG_SENSO'],"H")==0) {
-                $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_HYGRO');
-                $unity="%";
-            } else {
-                $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_TEMP');
-                $unity="°C";
-            }
-
-            if(strcmp($result['PLUG_SENSS'],"+")==0) {
-                $resume=$resume."<br /><b>".__('SUMARY_REGUL_SENSS').":</b> ".__('SUMARY_ABOVE');
-            } else {
-                $resume=$resume."<br /><b>".__('SUMARY_REGUL_SENSS').":</b> ".__('SUMARY_UNDER');    
-            }
-            $resume=$resume."<br /><b>".__('SUMARY_REGUL_VALUE').":</b> ".$result['PLUG_REGUL_VALUE'].$unity."<br /><br />";
+    foreach($res as $result) {
+        $resume = $resume . "<p align='center'><i>".__('SUMARY_REGUL_SUBTITLE')." ".$result['id'].":</i></p>";
+        
+        if($result['PLUG_SENSO'] == "H") {
+            $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_HYGRO');
+            $unity="%";
+        } else {
+            $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_TEMP');
+            $unity="°C";
         }
+
+        if($result['PLUG_SENSS'] == "+") {
+            $resume=$resume."<br /><b>".__('SUMARY_REGUL_SENSS').":</b> ".__('SUMARY_ABOVE');
+        } else {
+            $resume=$resume."<br /><b>".__('SUMARY_REGUL_SENSS').":</b> ".__('SUMARY_UNDER');    
+        }
+        
+        $resume=$resume."<br /><b>".__('SUMARY_REGUL_VALUE').":</b> ".$result['PLUG_REGUL_VALUE'].$unity."<br /><br />";
     }
 }
 // }}}
-
-
-// {{{ format_minmax_sumary()
-// ROLE format min/max sumary to be displayed in logs page
-// IN    $start         day to be seeked
-//       $out           error or warning messages
-//       $resume        string containing sumary formated
-//       $sensor        array of selected sensors
-// RET   sumary formated 
-function format_minmax_sumary($start="", &$out,&$resume="",$sensor) {
-    if(empty($start)) {
-        return 0;
-    }
-
-    if(count($sensor)==0) return 0;
-
-    $startday=str_replace("-","",$start);
-    $startday=substr($startday,2,8);
-
-    foreach($sensor as $sens) {
-        $sql_max_record1 = <<<EOF
-SELECT ROUND(record1/{$sens['ratio']},2) as max1, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']} AND record1 = (SELECT MAX(record1) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']}) ;
-EOF;
-    $sql_max_record2 = <<<EOF
-SELECT ROUND(record2/{$sens['ratio']},2) as max2, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']} AND record2 = (SELECT MAX(record2) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']}) ;
-EOF;
-
- $sql_min_record1 = <<<EOF
-SELECT ROUND(record1/{$sens['ratio']},2) as min1, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']} AND record1 = (SELECT MIN(record1) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']});
-EOF;
-    $sql_min_record2 = <<<EOF
-SELECT ROUND(record2/{$sens['ratio']},2) as min2, time_catch FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']} AND record2 = (SELECT MIN(record2) FROM `logs` WHERE timestamp LIKE "{$startday}%" AND `fake_log` != "True" AND `sensor_nb` = {$sens['sensor_nb']});
-EOF;
-
-    $db=db_priv_pdo_start();
-    try {
-        $sth=$db->prepare("$sql_max_record1");
-        $sth->execute();
-        $res_max_record1=$sth->fetch(PDO::FETCH_ASSOC);
-    } catch(PDOException $e) {
-        $ret=$e->getMessage();
-    }
-
-    try {
-        $sth=$db->prepare("$sql_max_record2");
-        $sth->execute();
-        $res_max_record2=$sth->fetch(PDO::FETCH_ASSOC);
-    } catch(PDOException $e) {
-        $ret=$e->getMessage();
-    }
-
-    try {
-        $sth=$db->prepare("$sql_min_record1");
-        $sth->execute();
-        $res_min_record1=$sth->fetch(PDO::FETCH_ASSOC);
-    } catch(PDOException $e) {
-        $ret=$e->getMessage();
-    }
-
-    try {
-        $sth=$db->prepare("$sql_min_record2");
-        $sth->execute();
-        $res_min_record2=$sth->fetch(PDO::FETCH_ASSOC);
-    } catch(PDOException $e) {
-        $ret=$e->getMessage();
-    }
-    $db=null;
-
-    if((isset($ret))&&(!empty($ret))) {
-        if($GLOBALS['DEBUG_TRACE']) {
-            $out[]=__('ERROR_SELECT_SQL').$ret;
-        } else {
-            $out[]=__('ERROR_SELECT_SQL');
-        }
-    }
-   
-     
-    if((strcmp($res_max_record1['max1'],"")!=0)||(strcmp($res_max_record2['max2'],"")!=0)) {
-        if($sens['sensor_type']!=2) {
-            $resume=$resume."<br /><b><i>".__('SENSOR')." ".$sens['sensor_nb'].": (".$sens['sensor_name_type'].")</i></b>";
-        } else {
-            $resume=$resume."<br /><b><i>".__('SENSOR')." ".$sens['sensor_nb'].": (".$sens['sensor_name_type'][0]."/".$sens['sensor_name_type'][1].")</i></b>";
-        }
-        if(strcmp($res_min_record1['min1'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MIN').": <font color='".$sens['color_record1']."'><b>".$res_min_record1['min1'].$sens['unity']."</font> ".__('SUMARY_HOUR')." <font color='".$sens['color_record1']."'> ".wordwrap($res_min_record1['time_catch'], 2, ":",true)."</b></font>";
-        }
-
-        if(strcmp($res_max_record1['max1'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MAX').": <font color='".$sens['color_record1']."'><b>".$res_max_record1['max1'].$sens['unity']."</font> ".__('SUMARY_HOUR')." <font color='".$sens['color_record1']."'> ".wordwrap($res_max_record1['time_catch'], 2, ":",true)."</b></font>";
-        }
-
-        if(strcmp($res_min_record2['min2'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MIN').": <font color='".$sens['color_record2']."'><b>".$res_min_record2['min2'].$sens['unity']."</font> ".__('SUMARY_HOUR')." <font color='".$sens['color_record2']."'> ".wordwrap($res_min_record2['time_catch'], 2, ":",true)."</b></font>";
-        }
-
-        if(strcmp($res_max_record2['max2'],"")!=0) {
-           $resume=$resume."<br />".__('SUMARY_MAX').": <font color='".$sens['color_record2']."'><b>".$res_max_record2['max2'].$sens['unity']."</font> ".__('SUMARY_HOUR')." <font color='".$sens['color_record2']."'> ".wordwrap($res_max_record2['time_catch'], 2, ":",true)."</b></font>";
-        }
-        $resume=$resume."<br />"; 
-    }
-    }
-
-    if(strcmp("$resume","")!=0) {
-        $resume="<p align='center'><b><i>".__('SUMARY_RESUME_MINMAX').":<br /></i></b></p>".$resume."<br />";
-    }
-}
-// }}}
-
 
 // {{{ get_cost_summary()
 // ROLE format cost configuration informations be displayed in a sumary
@@ -2788,154 +2530,6 @@ EOF;
     }
 
     return $status;
-}
-/// }}}
-
-
-// {{{ get_sensor_db_type()
-// ROLE get list of sensor's type and definition from database and config file
-// IN none
-// RET array containing sensors type
-// Type => nom abrégé => Facteur multiplicatif => unité
-// '0' => 'none' => N/A => pas d'unité
-// '2' => 'temp_humi' => 100 => °C ou % 
-// '3' => 'water_temp' => 100 => °C
-// '5' => 'wifi' => N/A => N/A
-// '6' => 'water_level' => 100 => cm
-// '7' => 'water_level' => 100 => cm
-// '8' => 'ph' => 100 => Pas d'unité
-// '9' => 'ec' => 1 => µs/cm
-// ':' => 'od' => 100 => mg/l
-// ';' => 'orp' => 1 => mV 
-
-function get_sensor_db_type() {
-    $sql = "SELECT * FROM sensors ORDER BY id ASC;";
-
-    $db=db_priv_pdo_start();
-    $res="";
-    try {
-        $sth=$db->prepare($sql);
-        $sth->execute();
-        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-    } catch(PDOException $e) {
-        $ret=$e->getMessage();
-    }
-    $db=null;
-
-    $nb_sens=1;
-    foreach($res as $sens) {
-        switch($sens['type']) {
-            case '0':
-            case '4':
-            case '5': 
-                $sensors[]=array(
-                    "id" => $sens['id'],
-                    "type" => 0,
-                    "sensor_nb" => 0,
-                    "ratio" => 0,
-                    "unity" => ""
-                ); 
-                $nb_sens=$nb_sens+1;
-                break;
-
-            case '2': 
-                $sensors[]=array(
-                    "id" => $sens['id'],
-                    "type" => $sens['type'],
-                    "sensor_nb" => $nb_sens,
-                    "ratio" => 100,
-                    "unity" => "°C/%"
-                );
-                $sensors[]=array(
-                    "id" => $sens['id'],
-                    "type" => $sens['type'],
-                    "sensor_nb" => $nb_sens,
-                    "ratio" => 100,
-                    "unity" => "°C/%"
-                );
-                $nb_sens=$nb_sens+1;
-                break;
-
-            case '3': 
-                $sensors[]=array(
-                    "id" => $sens['id'],
-                    "type" => $sens['type'],
-                    "sensor_nb" => $nb_sens,
-                    "ratio" => 100,
-                    "unity" => "°C"
-                );
-                $nb_sens=$nb_sens+1;
-                break;
-
-            case '6': 
-            case '7': 
-                $sensors[]=array(
-                    "id" => $sens['id'],
-                    "type" => $sens['type'],
-                    "sensor_nb" => $nb_sens,
-                    "ratio" => 100,
-                    "unity" => "cm"
-                );
-                $nb_sens=$nb_sens+1;
-                break;
-
-            case '8': 
-                $sensors[]=array(
-                    "id" => $sens['id'],
-                    "type" => $sens['type'],
-                    "sensor_nb" => $nb_sens,
-                    "ratio" => 100,
-                    "unity" => " "
-                );
-                $nb_sens=$nb_sens+1;
-                break;
-
-            case '9': 
-                $sensors[]=array(
-                    "id" => $sens['id'],
-                    "type" => $sens['type'],
-                    "sensor_nb" => $nb_sens,
-                    "ratio" => 1,
-                    "unity" => "µs/cm"
-                );
-                $nb_sens=$nb_sens+1;
-                break;
-
-            case ':': 
-                $sensors[]=array(
-                    "id" => $sens['id'],
-                    "type" => $sens['type'],
-                    "sensor_nb" => $nb_sens,
-                    "ratio" => 100,
-                    "unity" => "mg/l"
-                );
-                $nb_sens=$nb_sens+1;
-                break;
-
-            case ';': 
-                $sensors[]=array(
-                    "id" => $sens['id'],
-                    "type" => $sens['type'],
-                    "sensor_nb" => $nb_sens,
-                    "ratio" => 1,
-                    "unity" => "mV"
-                );
-                $nb_sens=$nb_sens+1;
-                break;
-
-            default:  
-                $sensors[]=array(
-                    "id" => $sens['id'],
-                    "type" => $sens['type'],
-                    "sensor_nb" => 0,
-                    "ratio" => 0,
-                    "unity" => ""
-                );
-                $nb_sens=$nb_sens+1;
-                break;
-       }
-    }
-    return $sensors;
 }
 /// }}}
 

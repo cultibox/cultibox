@@ -311,7 +311,8 @@ function delete_program ($program_idx)
 // IN plug plugNumber
 // IN dateStart Date to start (write in Unix (s) format) . Time is not used
 // IN dateEnd   Date to start (write in Unix (s) format) . Time is not used
-// RET program name
+// IN day : Define if we want a day view or a month view
+// RET array with program value
 function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
 {
 
@@ -403,7 +404,7 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
         
     ksort($serie);
     
-    
+    // Close database connexion correctly
     $db = null;
 
     // Folowing code is used to have a point per minute according to actual highcart implementation
@@ -423,20 +424,382 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
         // For each second between last and current, write last value
         for ($i = ceil(($OldSeconds + 1) / $divider) * $divider ; $i <= floor(($key / 1000) / $divider) * $divider ; $i = $i + $divider)
         {
+            // WTF ! 7200
             $serie[(string)((7200 + $i) * 1000)] = $oldValue;
         }
         
-        if ($value == 99.9)
-            $oldValue = 100;
-        else
-            $oldValue = $value;
-
-        
+        // Save previous values
+        $oldValue = $value;
         $OldSeconds = ($key / 1000);
 
     }
 
     return $serie ;
+}
+// }}}
+
+// {{{ get_last_day_with_logs()
+// ROLE Retrieve timestamp of last day with logs
+// RET array with power value
+function get_last_day_with_logs ()
+{
+
+    // Open connection to dabase
+    $db = \db_priv_pdo_start();
+    
+    // Search if there is a special program this day
+    $sql = "SELECT timestamp FROM logs ORDER BY timestamp DESC limit 1;";
+
+    try {
+        $sth = $db->prepare($sql);
+        $sth->execute();
+        $logs=$sth->fetch();
+    } catch(\PDOException $e) {
+        print_r($e->getMessage());
+    }
+    
+    // If there is no logs defined, use default
+    if ($logs == NULL)
+        $retVal = "";
+    else
+    {
+        // Format date using folowing format : date('Y')."-".date('m')."-".date('d')
+        $retVal = "20" . substr($logs['timestamp'], 0 ,2) . "-"
+         . substr($logs['timestamp'], 2 ,2) . "-"
+         . substr($logs['timestamp'], 4 ,2) ;
+    }
+    
+    // Close database connexion correctly
+    $db = null;
+    
+    return $retVal;
+
+}
+
+// {{{ get_plug_power()
+// ROLE Retrieve power of a plug
+// IN plug plugNumber
+// IN dateStart Date to start (write in Unix (s) format) . Time is not used
+// IN dateEnd   Date to start (write in Unix (s) format) . Time is not used
+// IN day : Define if we want a day view or a month view
+// RET array with power value
+function get_plug_power ($plug, $dateStart, $dateEnd, $day="day")
+{
+
+    // Init return array
+    $serie = array();
+
+    // Open connection to dabase
+    $db = \db_priv_pdo_start();
+
+    // Read plug power
+    $sql = "SELECT PLUG_POWER FROM plugs WHERE id = {$plug};";
+    
+    try {
+        $sth = $db->prepare($sql);
+        $sth->execute();
+        $prg=$sth->fetch();
+    } catch(\PDOException $e) {
+        print_r($e->getMessage());
+    }
+    
+    $plugPower = $prg['PLUG_POWER'];
+    if ($plugPower == "" || $plugPower == null)
+        $plugPower = 0;
+
+    // Select correct divider
+    if ($day == "day")
+        $divider = 60;
+    else
+        $divider = 1200;
+        
+    // Get all point bewteen two dates
+    $dateStartForPowerTable = date ("ymd00His", $dateStart);
+    $dateEndForPowerTable = date ("ymd07His", $dateEnd);
+    $sql = "SELECT timestamp , record FROM power"
+            . " WHERE plug_number = {$plug}"
+            . " AND timestamp >= {$dateStartForPowerTable}"
+            . " AND timestamp <= {$dateEndForPowerTable}"
+            . " ORDER BY timestamp ASC ;";
+        
+    try {
+        $sth = $db->prepare($sql);
+        $sth->execute();
+    } catch(\PDOException $e) {
+        print_r($e->getMessage());
+    }
+       
+    $lastTimeInS = 0;
+    // For each point
+    while ($row = $sth->fetch()) 
+    {
+        // Format date
+        $realDate = "20" . substr($row['timestamp'], 0 ,2) . "-"
+         . substr($row['timestamp'], 2 ,2) . "-"
+         . substr($row['timestamp'], 4 ,2) . " "
+         . substr($row['timestamp'], 8 ,2) . ":"
+         . substr($row['timestamp'], 10 ,2) . ":"
+         . substr($row['timestamp'], 12 ,2);
+
+        $realTimeInS = strtotime($realDate);
+         
+        // Don't display all point. Only if they have suffisiant diff
+        if ($realTimeInS >= $lastTimeInS + $divider)
+        {
+            // WTF ! 7200
+            $serie[(string)(1000 * ($realTimeInS + 7200))] = floor($row['record'] / 9990 * $plugPower);
+            
+            $lastTimeInS = $realTimeInS;
+        }
+        
+    }
+
+    return $serie ;
+}
+// }}}
+
+// {{{ get_plug_power()
+// ROLE Retrieve power of a plug
+// IN sensor Sensor number
+// IN dateStart Date to start (write in Unix (s) format) . Time is not used
+// IN dateEnd   Date to start (write in Unix (s) format) . Time is not used
+// IN day : Define if we want a day view or a month view
+// RET array with power value
+function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day")
+{
+
+    // Init return array
+    $serie = array();
+    $serie[0] = array();
+    $serie[1] = array();
+
+    // Open connection to dabase
+    $db = \db_priv_pdo_start();
+
+    // Select correct divider
+    if ($day == "day")
+        $divider = 60;
+    else
+        $divider = 1200;
+        
+    // Get all point bewteen two dates
+    $dateStartForLogsTable  = date ("ymd00His", $dateStart);
+    $dateEndForLogsTable    = date ("ymd07His", $dateEnd);
+    $sql = "SELECT timestamp , record1 , record2 FROM logs"
+            . " WHERE sensor_nb = {$sensor}"
+            . " AND timestamp >= {$dateStartForLogsTable}"
+            . " AND timestamp <= {$dateEndForLogsTable}"
+            . " ORDER BY timestamp ASC;";
+
+    try {
+        $sth = $db->prepare($sql);
+        $sth->execute();
+    } catch(\PDOException $e) {
+        print_r($e->getMessage());
+    }
+
+    $lastTimeInS = 0;
+    // For each point
+    while ($row = $sth->fetch()) 
+    {
+
+        // Format date
+        $realDate = "20" . substr($row['timestamp'], 0 ,2) . "-"
+         . substr($row['timestamp'], 2 ,2) . "-"
+         . substr($row['timestamp'], 4 ,2) . " "
+         . substr($row['timestamp'], 8 ,2) . ":"
+         . substr($row['timestamp'], 10 ,2) . ":"
+         . substr($row['timestamp'], 12 ,2);
+
+        $realTimeInS = strtotime($realDate);
+
+        // Don't display all point. Only if they have suffisiant diff
+        if ($realTimeInS >= ($lastTimeInS + $divider))
+        {
+
+            // WTF ! 7200
+            $serie[0][(string)(1000 * ($realTimeInS + 7200))] = $row['record1'] / 100;
+            
+            if ($row['record2'] != "" && $row['record2'] != null)
+                $serie[1][(string)(1000 * ($realTimeInS + 7200))] = $row['record2'] / 100;
+            
+            $lastTimeInS = $realTimeInS;
+        }
+    }
+
+    return $serie ;
+}
+// }}}
+
+
+//{{{ get_curve_information()
+// ROLE Retrieve curve information
+// RET Array with every curve informations
+function get_curve_information($curveType) {
+
+    // init return array
+    $ret_array = array();
+    
+    // In function of curve information asked
+    switch($curveType) {
+        case 'temperature' :
+        case '21':
+            $ret_array['name']      = __('TEMP_SENSOR');
+            $ret_array['color']     = get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error);
+            $ret_array['legend']    = __('TEMP_LEGEND');
+            $ret_array['yaxis']     = 0;
+            $ret_array['unit']      = "°C";
+            $ret_array['curveType'] = "temperature";
+            break;
+        case 'humidity' :
+        case '22':
+            $ret_array['name']      =__('HUMI_SENSOR'); 
+            $ret_array['color']     =get_configuration("COLOR_HUMIDITY_GRAPH",$main_error);    
+            $ret_array['legend']    =__('HUMI_LEGEND');
+            $ret_array['yaxis']     = 1;
+            $ret_array['unit']      = "%RH";
+            $ret_array['curveType'] = "humidity";
+            break;  
+        case 'water' :
+        case '31': 
+            $ret_array['name']      =__('WATER_SENSOR'); 
+            $ret_array['color']     =get_configuration("COLOR_WATER_GRAPH",$main_error);
+            $ret_array['legend']    =__('WATER_LEGEND');
+            $ret_array['yaxis']     = 2;
+            $ret_array['unit']      = "°C";
+            $ret_array['curveType'] = "water";
+            break;
+        case 'level' :
+        case '61': 
+        case '71': 
+            $ret_array['name']      =__('LEVEL_SENSOR'); 
+            $ret_array['color']     =get_configuration("COLOR_LEVEL_GRAPH",$main_error);
+            $ret_array['legend']    =__('LEVEL_LEGEND');
+            $ret_array['yaxis']     = 3;
+            $ret_array['unit']      = "cm";
+            $ret_array['curveType'] = "level";
+            break;
+        case 'ph' :
+        case '81': 
+            $ret_array['name']      =__('PH_SENSOR'); 
+            $ret_array['color']     =get_configuration("COLOR_PH_GRAPH",$main_error);
+            $ret_array['legend']    =__('PH_LEGEND');
+            $ret_array['yaxis']     = 4;
+            $ret_array['unit']      = "";
+            $ret_array['curveType'] = "ph";
+            break;
+        case 'ec' :
+        case '91': 
+            $ret_array['name']      =__('EC_SENSOR'); 
+            $ret_array['color']     =get_configuration("COLOR_EC_GRAPH",$main_error);
+            $ret_array['legend']    =__('EC_LEGEND');
+            $ret_array['yaxis']     = 5;
+            $ret_array['unit']      = "mS";
+            $ret_array['curveType'] = "ec";
+            break;
+        case 'od' :
+        case ':1': 
+            $ret_array['name']      =__('OD_SENSOR'); 
+            $ret_array['color']     =get_configuration("COLOR_OD_GRAPH",$main_error);
+            $ret_array['legend']    =__('OD_LEGEND');
+            $ret_array['yaxis']     = 6;
+            $ret_array['unit']      = "mg/L";
+            $ret_array['curveType'] = "od";
+            break;
+        case 'orp' :
+        case ';1': 
+            $ret_array['name']      =__('ORP_SENSOR'); 
+            $ret_array['color']     =get_configuration("COLOR_ORP_GRAPH",$main_error);
+            $ret_array['legend']    =__('ORP_LEGEND');
+            $ret_array['yaxis']     = 7;
+            $ret_array['unit']      = "mV";
+            $ret_array['curveType'] = "orp";
+            break;
+        case 'power': 
+            $ret_array['name']      = __('POWER'); 
+            $ret_array['color']     = get_configuration("COLOR_POWER_GRAPH",$main_error);
+            $ret_array['legend']    = __('POWER_LEGEND');
+            $ret_array['yaxis']     = 8;
+            $ret_array['unit']      = "W";
+            $ret_array['curveType'] = "power";
+            break;   
+        case 'program': 
+            $ret_array['name']      = __('PROGRAM_LEGEND'); 
+            $ret_array['color']     = get_configuration("COLOR_PROGRAM_GRAPH",$main_error);
+            $ret_array['legend']    = __('PROGRAM_LEGEND');
+            $ret_array['yaxis']     = 9;
+            $ret_array['unit']      = "";
+            $ret_array['curveType'] = "program";
+            break;   
+    }
+    
+    // Common parameters for each curv
+    switch($ret_array['color']) {
+        case 'blue': 
+            $ret_array['colorgrid'] = $GLOBALS['GRAPHIC_COLOR_GRID_BLUE'];
+            break;
+        case 'red': 
+            $ret_array['colorgrid'] = $GLOBALS['GRAPHIC_COLOR_GRID_RED'];
+            break;
+        case 'green': 
+            $ret_array['colorgrid'] = $GLOBALS['GRAPHIC_COLOR_GRID_GREEN'];
+            break;
+        case 'black': 
+            $ret_array['colorgrid'] = $GLOBALS['GRAPHIC_COLOR_GRID_BLACK'];
+            break;
+        case 'purple': 
+            $ret_array['colorgrid'] = $GLOBALS['GRAPHIC_COLOR_GRID_PURPLE'];
+            break;
+        case 'orange': 
+            $ret_array['colorgrid'] = $GLOBALS['GRAPHIC_COLOR_GRID_ORANGE'];
+            break;
+        case 'pink': 
+            $ret_array['colorgrid'] = $GLOBALS['GRAPHIC_COLOR_GRID_PINK'];
+            break;
+        case 'brown': 
+            $ret_array['colorgrid'] = $GLOBALS['GRAPHIC_COLOR_GRID_BROWN'];
+            break;
+        case 'yellow': 
+            $ret_array['colorgrid'] = $GLOBALS['GRAPHIC_COLOR_GRID_YELLOW'];
+            break;
+        default: 
+            $ret_array['colorgrid'] = "";
+    }
+    
+    return $ret_array ;
+}
+//}}}
+
+// {{{ export_program()
+// ROLE export a program into a text file
+// IN $id          id of the program
+//    $out         error or warning message
+// RET none
+function export_program($id,$program_index,&$out) {
+       $sql = "SELECT * FROM programs WHERE plug_id = {$id} AND number = {$program_index}";
+       
+       $db=\db_priv_pdo_start();
+       try {
+           $sth=$db->prepare("$sql");
+           $sth->execute();
+           $res=$sth->fetchAll(\PDO::FETCH_ASSOC);
+       } catch(\PDOException $e) {
+           $ret=$e->getMessage();
+       }
+       $db=null;
+       $file="tmp/program_plug${id}.prg";
+
+       if($f=fopen("$file","w")) {
+            fputs($f,"#Program : time_start time_stop value type\r\n");
+            if(count($res)>0) {
+               foreach($res as $record) {
+                  fputs($f,$record['time_start'].",".$record['time_stop'].",".$record['value'].",".$record['type']."\r\n");
+               }
+            } else {
+                    fputs($f,"000000,235959,0,0\r\n");
+            }
+      } 
+      fclose($f);
 }
 // }}}
 

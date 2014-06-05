@@ -254,23 +254,6 @@ function getCostType(i) {
 //}}}
 
 
-// {{{ getType()
-// IN  input value: display the type og log: 0 for daily logs, 1 for monthly
-// HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
-// USED BY: templates/logs.html  
-function getType(i) {
-      var divSelectDay = document.getElementById('label_select_day');
-      var divSelectMonth = document.getElementById('label_select_month');
-
-      switch(i) {
-         case 0 : divSelectDay.style.display = ''; divSelectMonth.style.display = 'none'; break;
-         case 1 : divSelectDay.style.display = 'none'; divSelectMonth.style.display = ''; break;
-         default: divSelectDay.style.display = ''; divSelectMonth.style.display = 'none'; break;
-      }
-}
-// }}}
-
-
 // {{{ VerifInt()
 // ROLE function of verification of an input value
 // IN input value "e" to be checked

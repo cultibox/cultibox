@@ -1,14 +1,31 @@
 <script>
 
-<?php if((isset($anchor))&&(!empty($anchor))) { ?>
-    $(document).ready(function(){
-       $.scrollTo('#<?php echo $anchor; ?>',300); 
-    });
-<?php } ?>
-
 
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 
+// {{{ getType()
+// IN  input value: display the type og log: 0 for daily logs, 1 for monthly
+// HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
+// USED BY: templates/logs.html  
+function getType(i) {
+      var divSelectDay = document.getElementById('label_select_day');
+      var divSelectMonth = document.getElementById('label_select_month');
+
+      switch(i) {
+         case 0 : 
+            divSelectDay.style.display = ''; 
+            divSelectMonth.style.display = 'none'; 
+            break;
+         case 1 : divSelectDay.style.display = 'none'; 
+            divSelectMonth.style.display = ''; 
+            break;
+         default: 
+            divSelectDay.style.display = ''; 
+            divSelectMonth.style.display = 'none'; 
+            break;
+      }
+}
+// }}}
 
 delete_logs = function(type, type_reset, nb_jours, start,count) {
         var step=100/count;
@@ -209,8 +226,126 @@ $(function () {
                 },
                 events: {
                     load: function() {
+                                        
                         <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 600, 15, 130, 50)"; ?>
                         <?php if($fake_log)  echo ".add();"; ?>
+                        // Load curve of sensor 1
+                        
+                        
+                        // Init a var on highchart
+                        var chart = $('#container').highcharts();
+                        
+                        // For each selected checkbutton, display the curve
+                        $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").each(function() {
+
+                            var cheBu = $(this);
+                            
+                            if (cheBu.attr("checked") == "checked") {
+                            
+                                // Block interface
+                                $.blockUI({ message: ''});
+                                
+                                // Call logs_get_serie to get programm value
+                                $.ajax({
+                                    data:{
+                                        plug:$(this).attr("plug"),
+                                        sensor:$(this).attr("sensor"),
+                                        day:1,
+                                        month:$('input[type=radio][name=type_select]:checked').attr('value'),
+                                        datatype:$(this).attr("datatype"),
+                                        lang:document.location.href.split('/')[document.location.href.split('/').length - 2],
+                                        startDate:$(this).attr("startDate")
+                                    },
+                                    url: '../../main/modules/external/logs_get_serie.php',
+                                    success: function(json) {
+
+                                        // Parse result from json
+                                        var objJSON = jQuery.parseJSON(json);
+                                            
+                                        // Foreach curve add it to serie
+                                        $.each(objJSON, function(i, item) {
+                                    
+                                            // Init var serie
+                                            var series = {
+                                                id: 'series',
+                                                curveType: item.curveType ,
+                                                name: item.name,
+                                                showCheckbox: true,
+                                                type: 'line',
+                                                yAxis: item.yaxis ,
+                                                color: item.color , 
+                                                selected: true,
+                                                tooltip: {
+                                                    valueSuffix:" " + item.unit
+                                                },
+                                                events: {
+                                                    // On click on the check box, show or hide the serie
+                                                    checkboxClick: function(event) {
+                                                    
+                                                        var chart = $('#container').highcharts();
+
+                                                        if (chart.series[this.index].visible) {
+                                                            // Hide the graph
+                                                            chart.series[this.index].hide();
+                                                            // Hide legend
+                                                            chart.yAxis[item.yaxis].update({
+                                                                title:{
+                                                                    text:""
+                                                                }
+                                                            });
+                                                            
+                                                        } else {
+                                                            chart.series[this.index].show();
+                                                            // Show legend
+                                                            chart.yAxis[item.yaxis].update({
+                                                                title:{
+                                                                    text:item.legend
+                                                                }
+                                                            });
+                                                        }
+                                                    }
+                                                },
+                                                data: []
+                                            }
+
+                                            // Foreach data add it to serie
+                                            $.each(item.data, function(date,value) {
+                                                series.data.push([
+                                                    parseFloat(date),
+                                                    parseFloat(value)
+                                                ]);
+                                            });
+
+                                            serieID = chart.addSeries(series);
+                                            
+                                            // Update legend of yaxis
+                                            chart.yAxis[item.yaxis].update({
+                                                title:{
+                                                    text:item.legend
+                                                }
+                                            });
+
+                                            // Save serie index displayed
+                                            cheBu.attr("serieID" , serieID.index);
+                                            cheBu.attr("yAxis" , item.yaxis);
+                                            
+                                        });
+                                        
+                                        // All curve have rendered : Unblock UI
+                                        $.unblockUI();
+                                        
+                        
+                                        // after load every curve, update tooltip with min and mùax
+                                        updateTooltipMinMax();
+
+                                    },
+                                    cache: false
+                                });
+                                
+                            }
+                            
+                        });
+
                     }
                 }
             },
@@ -262,174 +397,101 @@ $(function () {
                 }
             },
             yAxis: [
-                <?php $count=1; ?>
-                <?php foreach($data_log as $datalog) { ?>
-                <?php if($count>1) echo ","; ?>
-                {
-                    title: {
-                        useHTML: true,
-                        text: <?php echo "'".clean_highchart_message($datalog['yaxis1_legend'])."'"; ?>,
-                        style: {
-                            color: <?php echo "'".$datalog['color_record1']."'"; ?>
+                <?php 
+                    // Create every axis available
+                    $count = 0;
+                    foreach ($yaxis_array as $yaxis)
+                    {
+                        // Add "," after each axis except the last
+                        if ($count != 0)
+                        {
+                            echo ',';
                         }
-                    },
-                    startOnTick: false,
-                    endOnTick: false, 
-                    allowDecimals: true,
-                    <?php if($count%2==0) { ?>
-                        opposite: true,
-                    <?php } ?>
-                    events: {
-                        afterSetExtremes: function() {
-                            // If it's zoomed, display button to unzoom
-                            if (this.min <= this.dataMin && this.max >= this.dataMax) {
-                                if(chart.resetZoomButton) {
-                                    chart.resetZoomButton.hide();
-                                }
-                            }
+                        $count = $count + 1;
+                        
+                        echo '{' . PHP_EOL;
+                        echo '    title: {' . PHP_EOL;
+                        echo '        useHTML: true,' . PHP_EOL;
+                        // Text is displayed when curve is show
+                        echo '        text:"",' . PHP_EOL; 
+                        echo '        style: {' . PHP_EOL;
+                        echo '            color:"' . $yaxis['color'] . '"' . PHP_EOL;
+                        echo '        }' . PHP_EOL;
+                        echo '    },' . PHP_EOL;
+                        echo '    unit: "' . $yaxis['unit'] . '",' . PHP_EOL;
+                        echo '    allowDecimals: true,' . PHP_EOL;
+                        if($count % 2 == 0 ) {
+                            echo '    opposite: true,' . PHP_EOL;
                         }
-                    },
-                    labels: {
-                        style: {
-                            color: <?php echo "'".$datalog['color_record1']."'"; ?>
-                        },
-                        formatter: function() {
-                            return this.value;
-                        }
-                    },
-                    gridLineWidth: 1,
-                    gridLineDashStyle: 'Dot',
-                    gridLineColor : <?php echo "'".$datalog['color_grid1']."'"; ?>
-                }
-                  <?php if(strcmp($datalog['sensor_type'],"2")==0) { 
-                        $count=$count+1;
-                  ?>
-                ,{
-                    title: {
-                        useHTML: true,
-                        text: <?php echo "'".clean_highchart_message($datalog['yaxis2_legend'])."'"; ?>,
-                        style: {
-                            color: <?php echo "'".$datalog['color_record2']."'"; ?>
-                        }
-                    },
-                    startOnTick: false,
-                    endOnTick: false, 
-                    allowDecimals: true,
-                    <?php if($count%2==0) { ?>
-                        opposite: true,
-                    <?php } ?>
-                    events: {
-                        afterSetExtremes: function() {
+                        echo '    events: {' . PHP_EOL;
+                        echo '        afterSetExtremes: function() {' . PHP_EOL;
                         // If it's zoomed, display button to unzoom
-                            if (this.min <= this.dataMin && this.max >= this.dataMax) {
-                                if(chart.resetZoomButton) {
-                                    chart.resetZoomButton.hide();
-                                }
-                            }
-                        }
-                    },
-                    labels: {
-                        style: {
-                            color: <?php echo "'".$datalog['color_record2']."'"; ?>
-                        },
-                        formatter: function() {
-                            return this.value;
-                        }
-                    },
-                    gridLineWidth: 1,
-                    gridLineDashStyle: 'Dot',
-                    gridLineColor : <?php echo "'".$datalog['color_grid2']."'"; ?>
-                }
-                <?php  
-                } 
-                    $count=$count+1; 
-                } 
+                        echo '            if (this.min <= this.dataMin && this.max >= this.dataMax) {' . PHP_EOL;
+                        echo '                if(chart.resetZoomButton) {' . PHP_EOL;
+                        echo '                    chart.resetZoomButton.hide();' . PHP_EOL;
+                        echo '                }' . PHP_EOL;
+                        echo '            }' . PHP_EOL;
+                        echo '        }' . PHP_EOL;
+                        echo '    },' . PHP_EOL;
+                        echo '    labels: {' . PHP_EOL;
+                        echo '        style: {' . PHP_EOL;
+                        echo '            color:"' . $yaxis['color'] . '"' . PHP_EOL;
+                        echo '        },' . PHP_EOL;
+                        echo '        formatter: function() {' . PHP_EOL;
+                        echo '            return this.value;' . PHP_EOL;
+                        echo '        }' . PHP_EOL;
+                        echo '    },' . PHP_EOL;
+                        echo '    gridLineWidth: 1,' . PHP_EOL;
+                        //echo '    gridLineDashStyle: "Dot",' . PHP_EOL;
+                        //echo '    gridLineColor : "' . $yaxis['colorgrid'] . '",' . PHP_EOL;
+                        echo '    showEmpty:false,' . PHP_EOL;
+                        echo '    tickPositioner: function(min, max) {' . PHP_EOL;
+                        // specify an interval for ticks or use max and min to get the interval
+                        echo '        if(min == max) {return "";};' . PHP_EOL;
+                        
+                        // Compute min tick
+                        echo 'var nbDizaine = this.dataMin.toString().indexOf(".");' . PHP_EOL;
+                        echo 'var mult = Math.pow(10, nbDizaine - 1);' . PHP_EOL;
+                        echo 'var dataMin=Math.floor(this.dataMin/mult)*mult;' . PHP_EOL;
+                        
+                        // Compute max tick
+                        echo 'var dataMax=Math.ceil(this.dataMax/mult)*mult;' . PHP_EOL;
+                        
+                        echo '        var interval = Math.ceil((dataMax-dataMin)/4 * 10)/10;' . PHP_EOL;
+                        
+
+                        echo '        var positions = [dataMin];' . PHP_EOL;
+                        echo '        for (var i = 1; i < 5; i++) {' . PHP_EOL;
+                        echo '                positions.push(Math.ceil((dataMin + i * interval) *100) / 100);' . PHP_EOL;
+                        echo '        }' . PHP_EOL;
+                        echo '        return positions;' . PHP_EOL;
+                        echo '    }' . PHP_EOL;
+                        echo '}' . PHP_EOL;
+                    }
                 ?>
             ],
             tooltip: {
+                shared: true,
                 useHTML: true,
                 formatter: function() {
-                    var tab=new Array;
+                    var s = '<b>Date : '+ Highcharts.dateFormat('%m-%d %H:%M', this.x) +'</b>';
 
-                    var unitArray = {
-                        <?php 
-                            foreach($data_log as $datalog) { 
-                                if((strcmp($datalog['sensor_type'],"POWER")!=0)&&(strcmp($datalog['sensor_type'],"PROGRAM")!=0)) { 
-                                    if(strcmp($datalog['sensor_type'],"2")==0) {  
-                                        echo "'".clean_highchart_message($datalog['sensor_name_type'][0])." (".__('SENSOR')." ".$datalog['sensor_nb'].")': '°C',"; 
-                                        echo "'".clean_highchart_message($datalog['sensor_name_type'][1])." (".__('SENSOR')." ".$datalog['sensor_nb'].")': '%',";
-                                    } else { 
-                                        echo "'".clean_highchart_message($datalog['sensor_name_type'])." (".__('SENSOR')." ".$datalog['sensor_nb'].")': '".$datalog['unity']."',"; 
-                                    } 
-                                } else {
-                                    echo "'".clean_highchart_message($datalog['sensor_name_type'])."': '".$datalog['unity']."',"; 
-                                }
-                            } 
-                            echo "'".__('HUMI_LEGEND')." (".__('EXAMPLE_LOG').")': '%',";
-                            echo "'".__('TEMP_LEGEND')." (".__('EXAMPLE_LOG').")': '%'"; 
-                        ?>
-                        };
-                        
-                        // If there is an unit defined
-                        index = [this.series.name] in unitArray;
-                        
-                        if (index != false) {
-                            unit = unitArray[this.series.name];
-                        } else {
-                            unit = "";
+                    $.each(this.points, function(i, point) {
+                    
+                        var valueToTidsplay = point.y;
+                    
+                        if (point.series.options.curveType == "program")
+                        {
+                            if (valueToTidsplay == "99.9")
+                                valueToTidsplay = "<?php echo __('VALUE_ON') ; ?>";
+                            if (valueToTidsplay == "0")
+                                valueToTidsplay = "<?php echo __('VALUE_OFF') ; ?>";
                         }
-
-                        // Format hour : Caution / 1 resolve a bug
-                        hourYearFormated = Highcharts.dateFormat('%H:%M:%S %Y/%m/%d', this.x / 1);
-                        hourFormated = Highcharts.dateFormat('%H:%M:%S', this.x / 1);
-                    <?php 
-                        if("$type"=="month") { ?>
-                            var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>" + hourYearFormated + "</p>";
-                    <?php } else { ?>
-                            var val="<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>" + hourFormated + "</p>"; 
-                    <?php } ?>
-                        
-                        
-                    if(unit == 'PROGRAM' || unit == "") {
-                        nounity=true; 
-                        if(this.y==100) {
-                            behaviour='<?php echo __("VALUE_ON"); ?>';
-                        } else if(this.y==0){
-                            behaviour='<?php echo __("VALUE_OFF"); ?>';
-                        } else {
-                            behaviour=(this.y)*100/100;
-                            behaviour=behaviour.toFixed(1);
-                            nounity=false;
-                        }
-                        <?php
-                        $unity="";
-                        if((isset($select_plug))&&(!empty($select_plug))) {
-                            switch($plugs_infos[$select_plug-1]["PLUG_TYPE"]) {
-                                case 'lamp': $unity="";
-                                     break;
-                                case 'other': $unity="";
-                                    break;
-                                case 'ventilator': $unity="°C";
-                                    break;
-                                case 'heating': $unity="°C";
-                                    break;
-                                case 'pump': $unity="cm";
-                                    break;
-                                case 'humidifier': $unity="%";
-                                    break;
-                                case 'dehumidifier': $unity="%";
-                                    break;
-                            } 
-                        } ?>
-                        if(!nounity) {
-                            var unit="<?php echo $unity; ?>";
-                        } else {
-                            var unit="";
-                        }
-                        return val+"<p align='left'><b>"+this.series.name+":</b> "+behaviour+unit+"</p>";
-                    } else {
-                       return val+"<p align='left'><b>"+this.series.name+":</b> "+this.y+unit+"</p>";
-                    }
+                    
+                        s += '<br/><font color="' + point.series.options.color + '">' + point.series.options.name + ' : '+ valueToTidsplay + " " + point.series.options.tooltip.valueSuffix + '</font>';
+                    });
+                
+                    return s;
                 }
             },
             legend: {
@@ -458,6 +520,23 @@ $(function () {
                     events: {
                         legendItemClick: function () {
                             return false;
+                        }
+                    }
+                },
+                line: {
+                    lineWidth: 1,
+                    marker: {
+                        enabled: false,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                radius: 5
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            lineWidth: 1
                         }
                     }
                 },
@@ -509,189 +588,20 @@ $(function () {
                     pointStart: Date.UTC(2009, 9, 6, 0, 0, 0)
                 }
             },
-            series: [
-                <?php 
-                    $count=0;
-                    foreach($data_log as $datalog) {
-                        if($count>0) 
-                            echo ","; 
-                ?>
-                        {
-                        type: <?php echo "'".$datalog['type_graph']."'"; ?>,
-                        <?php 
-                        if(isset($datalog['record1']) && !empty($datalog['record1']) && strcmp($datalog['record1'],"")!=0) {
-                            echo 'showCheckbox: true,';
-                        } 
-                        ?>
-
-                <?php 
-                    if((strcmp($datalog['sensor_type'],"POWER")!=0) && (strcmp($datalog['sensor_type'],"PROGRAM")!=0)) {
-                        if(strcmp($datalog['sensor_type'],"2")==0) {  ?>
-                            name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'][0])." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
-                  <?php } else { ?>
-                        name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'])." (".__('SENSOR')." ".$datalog['sensor_nb'].")'"; ?>,
-                  <?php }
-               } else { ?>
-                    name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'])."'"; ?>,
-               <?php }
-               if(in_array($count,$unselected_graph)) { ?>
-               visible: false,
-               <?php } ?>
-               yAxis: <?php echo $datalog['yaxis_record1']; ?>,
-               pointInterval: <?php echo "$next"; ?> * 60 * 1000,
-               pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-                    <?php
-                    switch($datalog['color_record1']) {
-                        case 'blue': 
-                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'black': 
-                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'green': 
-                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'red': 
-                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'purple': 
-                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'brown': 
-                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BROWN'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'yellow': 
-                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_YELLOW'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'orange':
-                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_ORANGE'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'pink': 
-                            echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PINK'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                    } 
-                    ?>   
-               selected: true,
-               data: [
-                  <?php if((isset($datalog['record1']))&&(!empty($datalog['record1']))) echo $datalog['record1']; ?>
-               ],
-               events: {
-                    checkboxClick: function(event) {
-                        var series = chart.series[<?php echo $count; ?>];
-                        if (series.visible) {
-                            var tmp="";
-                            tmp=$("input[name='unselected_graph']").val();
-                            if(tmp=="") {
-                                $("input[name='unselected_graph']").val("<?php echo $count; ?>");
-                            } else {
-                                $("input[name='unselected_graph']").val(tmp+",<?php echo $count; ?>");
-                            }
-                            series.hide();
-                        } else {
-                            series.show();
-                            var tmp="";
-                            tmp=$("input[name='unselected_graph']").val();
-                            if(tmp!="") {
-                                var tmp_array=tmp.split(',');
-                                tmp_array=jQuery.grep(tmp_array, function(value) {
-                                    return value != <?php echo $count; ?>;
-                                });
-                                $("input[name='unselected_graph']").val(tmp_array.join(","));
-                            }
-                        }
-                    }
-               } 
-              } 
-              <?php if(strcmp($datalog['sensor_type'],"2")==0) { ?>
-               , {
-               type: <?php echo "'".$datalog['type_graph']."'"; ?>,
-               <?php if((isset($datalog["record2"]))&&(!empty($datalog["record2"]))&&(strcmp($datalog["record2"],"")!=0)) { ?>
-                showCheckbox: true,
-               <?php } ?>
-               name: <?php echo "'".clean_highchart_message($datalog['sensor_name_type'][1])." (".__('SENSOR')." ".$datalog["sensor_nb"].")'"; ?>,
-               <?php if(in_array($count+1,$unselected_graph)) { ?>
-               visible: false,
-               <?php } ?>
-               pointInterval: <?php echo "$next"; ?> * 60 * 1000,
-               pointStart: Date.UTC(<?php echo $styear.",".$stmonth.",".$stday; ?>),
-                   <?php switch($datalog['color_record2']) {
-                         case 'blue': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLUE'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                         case 'black': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BLACK'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'green': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_GREEN'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'red': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_RED'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'purple': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PURPLE'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                         case 'brown': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_BROWN'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'yellow': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_YELLOW'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'orange': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_ORANGE'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                        case 'pink': echo "color: '".$GLOBALS['LIST_GRAPHIC_COLOR_SENSOR_PINK'][$datalog['sensor_nb']-1]."',"; 
-                            break;
-                    } ?>
-                    yAxis: <?php echo $datalog['yaxis_record2']; ?>,
-                    selected: true,
-                    data: [
-                      <?php if((isset($datalog['record2']))&&(!empty($datalog['record2']))) echo $datalog['record2']; ?>
-                    ],
-                    events: {
-                        checkboxClick: function(event) {
-                            var series = chart.series[<?php echo $count+1; ?>];
-                            if (series.visible) {
-                                var tmp="";
-                                tmp=$("input[name='unselected_graph']").val();
-                                if(tmp=="") {
-                                    $("input[name='unselected_graph']").val("<?php echo $count+1; ?>");
-                                } else {
-                                    $("input[name='unselected_graph']").val(tmp+",<?php echo $count+1; ?>");
-                                }
-                                series.hide();
-                            } else {
-                                series.show();
-                                var tmp="";
-                                tmp=$("input[name='unselected_graph']").val();
-                                if(tmp!="") {
-                                    var tmp_array=tmp.split(',');
-                                    tmp_array=jQuery.grep(tmp_array, function(value) {
-                                        return value != <?php echo $count+1; ?>;
-                                    });
-                                    $("input[name='unselected_graph']").val(tmp_array.join(","));
-                                }
-                            }
-                        }
-                    }
-                } 
-              <?php } ?>
-                <?php 
-                if(strcmp($datalog['sensor_type'],"2")!=0) {
-                        $count=$count+1;    
-                    } else { 
-                        $count=$count+2;
-                    }
-                } 
-                ?>
-            ]
+            series: []
         });
 
-    chart.series.each(function (item) {
-        if(item.data=="") {
-                item.options.showInLegend = false;
-                item.legendItem = item.legendItem.destroy();;
-                chart.legend.destroyItem(item);
-        }
-        chart.legend.render();
+        chart.series.each(function (item) {
+            if(item.data=="") {
+                    item.options.showInLegend = false;
+                    item.legendItem = item.legendItem.destroy();;
+                    chart.legend.destroyItem(item);
+            }
+            chart.legend.render();
+        });
+
+
     });
-
-    <?php foreach($unselected_graph as $i) { ?>
-        chart.series[<?php echo $i; ?>].select(false);
-    <?php } ?>
-
-     });
 
 
     $('#resetXzoom').click(function() {
@@ -739,7 +649,7 @@ $(document).ready(function() {
                                 $("#success_load_auto").css("display","none");
                                 $("#success_load_still_log").css("display","none");
                                 $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
-                                document.forms['display-log-day'].submit();
+                                document.forms['display-log'].submit();
                             }
                         }]
                     });
@@ -773,7 +683,7 @@ $(document).ready(function() {
                         $("#success_load_still_log").css("display","none");
                         $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
                         $("#import_load").val($("#log_search").val());
-                        document.forms['display-log-day'].submit();
+                        document.forms['display-log'].submit();
                     }
             }]
 
@@ -843,7 +753,7 @@ $(document).ready(function() {
                                             $("#success_delete_logs").css("display","none");
                                             $("#error_format_date_logs").css("display","none");
                                             $( this ).dialog( "close" );
-                                            document.forms['display-log-day'].submit();
+                                            document.forms['display-log'].submit();
                                             return false;
                           } } ] });
                         } else {
@@ -853,11 +763,400 @@ $(document).ready(function() {
             }]
         });
     });
+  
 
-    // Check errors for the display logs part:
-    $("#display-log-submit").click(function(e) {
+    $("#reset_log_power_submit").click(function(e) {
         e.preventDefault();
-        if($("input:radio[name=type_select]:checked").val()=="day") {
+        $("#delete_log_form_power").dialog({
+            resizable: true,
+            width: 750,
+            modal: true,
+            closeOnEscape: false,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CANCEL_button,
+                click: function () {
+                    $("#error_delete_logs_power").css("display","none");
+                    $("#success_delete_logs_power").css("display","none");
+                    $("#error_format_date_logs_power").css("display","none");
+                    $( this ).dialog( "close" );
+                    return false;
+                }}, {
+                text: DELETE_button,
+                    click: function () {
+                        $("#error_format_date_logs_power").css("display","none");
+                        if(((checkFormatDate($("#datepicker_from_power").val()))&&(checkFormatDate($("#datepicker_to_power").val()))&&(compareDate($("#datepicker_from_power").val(),$("#datepicker_to_power").val())))||($("input:radio[name=check_type_delete_power]:checked").val()=="all")) {
+                        $("#progress_delete_logs_power").show();
+                        $("#progress_bar_delete_logs_power").progressbar({value:0});
+
+                        var myArray = $("#datepicker_from_power").val().split('-');
+                        var myArray2 = $("#datepicker_to_power").val().split('-');
+                        var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
+                        var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
+
+                        if($("input:radio[name=check_type_delete_power]:checked").val()=="all") {
+                            var nb_jours=1;
+                        } else {
+                                var nb_jours=diffdate(Date1,Date2);
+                        }
+
+                        delete_logs("power",$("input:radio[name=check_type_delete_power]:checked").val(),nb_jours,$("#datepicker_from_power").val(),nb_jours);
+
+                        $("#delete_log_form_power").dialog({ closeOnEscape: false, buttons: [ {
+                            text: CLOSE_button,
+                             click: function() {
+                                $("#error_delete_logs_power").css("display","none");
+                                $("#success_delete_logs_power").css("display","none");
+                                $("#error_format_date_logs_power").css("display","none");
+                                $( this ).dialog( "close" );
+                                document.forms['display-log'].submit();
+                                return false;
+                        } } ] });
+
+                        } else {
+                            $("#error_format_date_logs_power").css("display","");
+                        }
+                    }
+            }]
+         });
+    });
+        
+});
+
+
+// Function to add a programm on the view
+$(document).ready(function() {
+
+    $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").click(function() {
+
+        // Init a var on highchart
+        var chart = $('#container').highcharts();
+        
+        var cheBu = $(this);
+ 
+        // If checked
+        if (cheBu.attr("checked") == "checked") {
+
+            // Call logs_get_serie to get programm value
+            $.ajax({
+                data:{
+                    plug:$(this).attr("plug"),
+                    sensor:$(this).attr("sensor"),
+                    day:1,
+                    month:$('input[type=radio][name=type_select]:checked').attr('value'),
+                    datatype:$(this).attr("datatype"),
+                    lang:document.location.href.split('/')[document.location.href.split('/').length - 2],
+                    startDate:$(this).attr("startDate")
+                },
+                url: '../../main/modules/external/logs_get_serie.php',
+                success: function(json) {
+
+                    // Parse result from json
+                    var objJSON = jQuery.parseJSON(json);
+                        
+                    // Foreach curve add it to serie
+                    $.each(objJSON, function(i, item) {
+                
+                        // Init var serie
+                        var series = {
+                            id: 'series',
+                            curveType: item.curveType ,
+                            name: item.name,
+                            showCheckbox: true,
+                            type: 'line',
+                            yAxis: item.yaxis ,
+                            color: item.color , 
+                            selected: true,
+                            tooltip: {
+                                valueSuffix:" " + item.unit
+                            },
+                            events: {
+                                // On click on the check box, show or hide the serie
+                                checkboxClick: function(event) {
+                                
+                                    var chart = $('#container').highcharts();
+
+                                    if (chart.series[this.index].visible) {
+                                        // Hide the graph
+                                        chart.series[this.index].hide();
+                                        // Hide legend
+                                        chart.yAxis[item.yaxis].update({
+                                            title:{
+                                                text:""
+                                            }
+                                        });
+                                        
+                                    } else {
+                                        chart.series[this.index].show();
+                                        // Show legend
+                                        chart.yAxis[item.yaxis].update({
+                                            title:{
+                                                text:item.legend
+                                            }
+                                        });
+                                    }
+                                }
+                            },
+                            data: []
+                        }
+
+                        // Foreach data add it to serie
+                        $.each(item.data, function(date,value) {
+                            series.data.push([
+                                parseFloat(date),
+                                parseFloat(value)
+                            ]);
+                        });
+
+                        serieID = chart.addSeries(series);
+                        
+                        // Update legend of yaxis
+                        chart.yAxis[item.yaxis].update({
+                            title:{
+                                text:item.legend
+                            }
+                        });  
+
+                        // Save serie index displayed
+                        cheBu.attr("serieID" , serieID.index);
+                        cheBu.attr("yAxis" , item.yaxis);
+                        
+                        // Update tooltip with min and mùax
+                        updateTooltipMinMax();
+                        
+                    });
+                },
+                cache: false
+            });
+        } 
+        else 
+        {
+            // Check button is desactived
+            var temp = cheBu.attr("serieID");
+            
+            // Remove serie
+            chart.series[cheBu.attr("serieID")].remove(true);
+            
+            // Remove text legend
+            chart.yAxis[cheBu.attr("yAxis")].update({
+                title:{
+                    text:""
+                }
+            });  
+
+            
+        }
+    });
+})
+
+
+// Function to display curve to show
+$(document).ready(function() {
+    $("#curve_select_button").click(function(e) {
+        e.preventDefault();
+
+        $("#select_curve").dialog({
+            resizable: false,
+            width: 750,
+            closeOnEscape: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CLOSE_button,
+                "id": "btnClose",
+                click: function () {
+                    $( this ).dialog( "close" ); return false;
+                }
+            }]
+        });
+    });
+});
+
+/**
+ * Display parameters UI.
+ */
+ $(document).ready(function() {
+    $("#button_parameters").click(function(e) {
+        e.preventDefault();
+
+        // Display parmateres UI
+        $("#ui_parameters").dialog({
+            resizable: false,
+            width: 750,
+            closeOnEscape: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CLOSE_button,
+                "id": "btnClose",
+                click: function () {
+                    $( this ).dialog( "close" ); return false;
+                }
+            }]
+        });
+    });
+});
+
+/**
+ * Display database management.
+ */
+ $(document).ready(function() {
+    $("#database_management_button").click(function(e) {
+        e.preventDefault();
+
+        // Display parmateres UI
+        $("#ui_db_management").dialog({
+            resizable: false,
+            width: 750,
+            closeOnEscape: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CLOSE_button,
+                "id": "btnClose",
+                click: function () {
+                    $( this ).dialog( "close" ); return false;
+                }
+            }]
+        });
+    });
+});
+
+/**
+ * Save parameters when user change colors of graphs.
+ */
+ $(document).ready(function() {
+    // On select change, update conf
+    $("#ui_parameters select").each(function() {
+
+        $(this).on('change', function() {
+        
+            newValue    = $( this ).find(":selected").val();
+            varToUpdate = $( this ).attr('name');
+            updateConf  = $( this ).attr('update_conf');
+            curveTypeModified  = $( this ).attr('curveType');
+        
+            // Update database
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "../../main/modules/external/update_configuration.php",
+                data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+            }).done(function (data) {
+                // When done, update curve color on page
+                var chart = $('#container').highcharts();
+                
+                // Find all series with this curve type and update color
+                $(chart.series).each(function(i, serie){
+                    if (serie.options.curveType == curveTypeModified) {
+                        serie.graph.attr({stroke: newValue});
+                    }
+                });
+                
+                // Change Color legend
+                // Create an array with all unit
+                <?php 
+                $count = 0;
+                echo 'var axisArray = {';
+                foreach ($yaxis_array as $yaxis)
+                {
+                    // Add "," after each axis except the last
+                    if ($count != 0)
+                    {
+                        echo ',';
+                    }
+                    $count = $count + 1;
+                    echo $yaxis['curveType'] . ':"' . $yaxis['yaxis'] . '" ';
+                }
+                echo '};';
+                ?>
+                
+                chart.yAxis[axisArray[curveTypeModified]].update({
+                    title:{
+                        style:{
+                            color:newValue
+                        }
+                    }
+                });
+                chart.yAxis[axisArray[curveTypeModified]].update({
+                    labels:{
+                        style:{
+                            color:newValue
+                        }
+                    }
+                });
+                                        
+                // Change color pointor
+                
+                // Readraw graph
+                chart.redraw();
+
+            });
+        });
+    });
+});
+
+/**
+ * On load, display sensors asked
+ */
+ $(document).ready(function() {
+ 
+    var obj = { 
+
+        attribut: "valeur", 
+
+        attr: function(param) { 
+            switch(param) {
+                case "plug":
+                    return "1";
+                    break;
+                case "sensor":
+                    return "1";
+                    break;
+                case "datatype":
+                    return "logs";
+                    break;
+                case "startDate":
+                    return "2014-06-04";
+                    break;                    
+            } 
+        } 
+    } 
+    
+ });
+ 
+/**
+ * After load, when user submit form, add parameters of displayed curve
+ */
+ $(document).ready(function() {
+ 
+    $("#display-log").submit( function(eventObj) {
+    
+        // Add for each curve selected
+        $("#select_curve input[type=checkbox]").each(function() {
+
+            var cheBu = $(this);
+     
+            // If checked
+            if (cheBu.attr("checked") == "checked") {
+            
+                if (cheBu.attr("datatype") == "power") {
+                    $('<input />').attr('type', 'hidden')
+                        .attr('name', "select_power[]")
+                        .attr('value', cheBu.attr("plug"))
+                        .appendTo('#display-log');
+                }
+                
+                if (cheBu.attr("datatype") == "program") {
+                    $('<input />').attr('type', 'hidden')
+                        .attr('name', "select_program[]")
+                        .attr('value', cheBu.attr("plug"))
+                        .appendTo('#display-log');
+                }
+
+            }
+            
+        });
+                
+            
+       if($("input:radio[name=type_select]:checked").val()=="day") {
             $.ajax({
                 cache: false,
                 async: false,
@@ -869,7 +1168,7 @@ $(document).ready(function() {
                     var current=$("#datepicker").datepicker('getDate').getFullYear()+"-"+('0'+($("#datepicker").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#datepicker").datepicker('getDate').getDate())).slice(-2);
                     $("#datepicker").val(current);
                 } else {
-                    document.forms['display-log-day'].submit();
+                    document.forms['display-log'].submit();
                 }
             });
         } else {
@@ -882,178 +1181,52 @@ $(document).ready(function() {
                 if(data!=1) {
                     $("#error_start_month").show(700);
                 } else {
-                    document.forms['display-log-month'].submit();
+                    document.forms['display-log'].submit();
                 }
             });
         }
+
+        return true;
     });
-            
-
-    $("#reset_log_power_submit").click(function(e) {
-        e.preventDefault();
-        $("#delete_log_form_power").dialog({
-            resizable: true,
-            width: 750,
-            modal: true,
-            closeOnEscape: false,
-            dialogClass: "popup_message",
-            buttons: [{
-                    text: CANCEL_button,
-                    click: function () {
-                        $("#error_delete_logs_power").css("display","none");
-                        $("#success_delete_logs_power").css("display","none");
-                        $("#error_format_date_logs_power").css("display","none");
-                        $( this ).dialog( "close" );
-                        return false;
-                    }}, {
-                    text: DELETE_button,
-                        click: function () {
-                            $("#error_format_date_logs_power").css("display","none");
-                            if(((checkFormatDate($("#datepicker_from_power").val()))&&(checkFormatDate($("#datepicker_to_power").val()))&&(compareDate($("#datepicker_from_power").val(),$("#datepicker_to_power").val())))||($("input:radio[name=check_type_delete_power]:checked").val()=="all")) {
-                            $("#progress_delete_logs_power").show();
-                            $("#progress_bar_delete_logs_power").progressbar({value:0});
-
-                            var myArray = $("#datepicker_from_power").val().split('-');
-                            var myArray2 = $("#datepicker_to_power").val().split('-');
-                            var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
-                            var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
-
-                            if($("input:radio[name=check_type_delete_power]:checked").val()=="all") {
-                                var nb_jours=1;
-                            } else {
-                                    var nb_jours=diffdate(Date1,Date2);
-                            }
-
-                            delete_logs("power",$("input:radio[name=check_type_delete_power]:checked").val(),nb_jours,$("#datepicker_from_power").val(),nb_jours);
-
-                            $("#delete_log_form_power").dialog({ closeOnEscape: false, buttons: [ {
-                                text: CLOSE_button,
-                                 click: function() {
-                                    $("#error_delete_logs_power").css("display","none");
-                                    $("#success_delete_logs_power").css("display","none");
-                                    $("#error_format_date_logs_power").css("display","none");
-                                    $( this ).dialog( "close" );
-                                    document.forms['display-log-day'].submit();
-                                    return false;
-                            } } ] });
-
-                            } else {
-                                $("#error_format_date_logs_power").css("display","");
-                            }
-                        }
-            }]
-         });
-    });
-        
-});
-
-// Function to add a programm on the view
-$(document).ready(function() {
-
-    $("#select_plug_program_on_day input[type=checkbox]").click(function() {
-
-        // Init a var on highchart
-        var chart = $('#container').highcharts();
-        
-        var cheBu = $(this);
+    
+ });
  
-        // If checked
-        if ($(this).attr("checked") == "checked") {
+ // Folowinbg code is used to update tooltip with second regul and min max
+ var second_regul = "<?php echo $resume_regul ;?>";
+ 
+ function updateTooltipMinMax () {
+ 
+    var chart = $('#container').highcharts();
+    
+    var beforeText = "<p align='center'><b><i><?php echo __('SUMARY_RESUME_MINMAX') ; ?>:<br /></i></b></p>";
+    var afterText = "<br />";
+    var textToDisplay = "";
+    
+    for (var i = 0; i < 10; i++) {
+        // If this curve is used
+        if (chart.yAxis[i].userOptions.title.text != "")
+        {
+            extremes = chart.yAxis[i].getExtremes();
             
-            // Check if curve already exists
-            if (cheBu.attr("serieID") != "") {
-                index = cheBu.attr("serieID");
-                chart.series[index].show();
-            } else {
-                // Call logs_get_serie to get programm value
-                $.ajax({
-                    data:{
-                        plug:$(this).attr("plug"),
-                        day:1,
-                        month:$('input[type=radio][name=type_select]:checked').attr('value'),
-                        startDate:$(this).attr("startDate")
-                    },
-                    url: '../../main/modules/external/logs_get_serie.php',
-                    success: function(json) {
-
-                        // Parse result from json
-                        var objJSON = jQuery.parseJSON(json);
-                            
-                    
-                        // Init var serie
-                        var series = {
-                            id: 'series',
-                            name: objJSON.name,
-                            showCheckbox: true,
-                            type: 'area',
-                            yAxis: 0,
-                            color: '#C18C36', 
-                            selected: true,
-                            tooltip: {
-                                enabled: false
-                            },
-                            events: {
-                                // On click on the check box, show or hide the serie
-                                checkboxClick: function(event) {
-                                
-                                    var chart = $('#container').highcharts();
-
-                                    if (chart.series[this.index].visible) {
-                                        chart.series[this.index].hide();
-                                    } else {
-                                        chart.series[this.index].show();
-                                    }
-                                }
-                            },
-                            data: []
-                        }
-
-                        // Foreach data add it to serie
-                        $.each(objJSON.data, function(date,value) {
-                            series.data.push([
-                                date,
-                                parseFloat(value)
-                            ]);
-                        });
-
-                        serieID = chart.addSeries(series);
-                        
-                        cheBu.attr("serieID", serieID.index);
-
-                    },
-                    cache: false
-                });
-            }
+            // Snesor informations
+            textToDisplay += "<center><b><i>" ;// + "<font color='" + chart.yAxis[i].userOptions.title.style.color + "'>";
+            textToDisplay += chart.yAxis[i].userOptions.title.text + " : </i></b><br />"; // + "</font> ";
             
-
+            textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
+            textToDisplay +=    "<b>" + extremes.dataMin + " " + chart.yAxis[i].userOptions.unit + "</b>";
+            textToDisplay += " - <?php echo __('SUMARY_MAX'); ?> : ";
+            textToDisplay +=    "<b>" + extremes.dataMax + " " + chart.yAxis[i].userOptions.unit + "</b>";
             
-        } else {
-            // Un checked
-            index = cheBu.attr("serieID");
-            chart.series[index].hide();
+            textToDisplay += "</center>"; //.__('SUMARY_HOUR').""
+
         }
-    });
-})
+    
+    }
+    
 
+    $("#regul_and_minmax_summary").attr("title",second_regul + beforeText + textToDisplay + afterText);
 
-// Function to display curve to show
-$(document).ready(function() {
-    $("#curve_select_button").click(function(e) {
-           e.preventDefault();
-
-           $("#select_curve").dialog({
-                resizable: false,
-                width: 750,
-                closeOnEscape: true,
-                dialogClass: "popup_message",
-                buttons: [{
-                    text: CLOSE_button,
-                    "id": "btnClose",
-                    click: function () {
-                        $( this ).dialog( "close" ); return false;
-                    }
-                }]
-            });
-    });
-});
+ }
+ 
+ 
 </script>

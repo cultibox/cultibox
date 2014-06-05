@@ -1,27 +1,132 @@
 <?php
 
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    // Define language using post lang parameter
+    $_SESSION['LANG'] = "fr_FR";
+    switch($_GET['lang']) {
+        case 'fr': 
+            $_SESSION['LANG'] = "fr_FR";
+            break;
+        case 'en': 
+            $_SESSION['LANG'] = "en_GB";
+            break;
+        case 'it': 
+            $_SESSION['LANG'] = "it_IT";
+            break;
+        case 'de': 
+            $_SESSION['LANG'] = "de_DE";
+            break;
+        case 'es': 
+            $_SESSION['LANG'] = "es_ES";
+            break;
+    }
+
+// Load libraries
 require_once('../../libs/utilfunc.php');
 require_once('../../libs/utilfunc_sd_card.php');
 require_once('../../libs/db_get_common.php');
 require_once('../../libs/db_set_common.php');
 require_once('../../libs/config.php');
 
+// Init arrays
+$main_error = array();
+$retarray = array();
 
-    $startDay = strtotime ($_GET['startDate']);
-    
-    if ($_GET['month'] == "day") {
-        $endDay = strtotime($_GET['startDate']);
-    } else {
-        $date = $_GET['startDate'] . "-01";
-        $endDay = strtotime("+1 month", strtotime($date));
-    }
-    
+// Get and format input parameters
+$startDay = strtotime ($_GET['startDate']);
+
+if ($_GET['month'] == "day") {
+    $endDay = strtotime($_GET['startDate']);
+} else {
+    $date = $_GET['startDate'] . "-01";
+    $endDay = strtotime("+1 month", strtotime($date));
+}
+
+$plug_number = "";
+if(isset($_GET['plug']))
     $plug_number = $_GET['plug'];
+    
+$datatype = $_GET['datatype'];
+
+// If user want to see a plug program
+switch ($datatype)
+{
+    case "program" :
+        // Retrieve program curve
+        $retarray['plug_1']['data'] = program\get_plug_programm($plug_number,$startDay,$endDay,$_GET['month']);
+
+        // Read information
+        $retInfo = program\get_curve_information("program");
         
-    $data_powers = program\get_plug_programm($plug_number,$startDay,$endDay,$_GET['month']);
+        // Init return array
+        $retarray['plug_1']['name'] = $retInfo['name'] . " " . __('PLUG_MENU') . " " . $plug_number;
+        $retarray['plug_1']['color'] = $retInfo['color'] ;
+        $retarray['plug_1']['legend'] = $retInfo['legend'] ;
+        $retarray['plug_1']['yaxis'] = $retInfo['yaxis'] ;
+        $retarray['plug_1']['curveType'] = $retInfo['curveType'] ;
+        $retarray['plug_1']['unit'] = $retInfo['unit'] ;
         
-    $retarray['data'] = $data_powers;
-    $retarray['name'] = "Prise " . $plug_number;
-    echo json_encode($retarray);
+        break;
+    case "power" :
+        // Retrieve power curve
+        $retarray['plug_1']['data'] = program\get_plug_power($plug_number,$startDay,$endDay,$_GET['month']);
+        
+        // Read information
+        $retInfo = program\get_curve_information("power");
+        
+        // Init return array
+        $retarray['plug_1']['name']     = $retInfo['name'] . " " . __('PLUG_MENU') . " " . $plug_number;
+        $retarray['plug_1']['color']    = $retInfo['color'] ;
+        $retarray['plug_1']['legend']   = $retInfo['legend'] ;
+        $retarray['plug_1']['yaxis']    = $retInfo['yaxis'] ;
+        $retarray['plug_1']['curveType'] = $retInfo['curveType'] ;
+        $retarray['plug_1']['unit'] = $retInfo['unit'] ;
+        
+        break;
+    case "logs" :
+        // Retrieve power curve
+        $logsValue = program\get_sensor_log($_GET['sensor'],$startDay,$endDay,$_GET['month']);
+
+        // Gets type of each sensor logged
+        $db_sensors = logs\get_sensor_db_type($_GET['sensor']);
+        
+        // Read information about this sensor 
+        // Todo : Super moche
+        $retInfo = program\get_curve_information($db_sensors[0]['type'] . "1");
+        
+        $retarray['sensor_1']['data'] = $logsValue[0];
+        
+        // Init return array
+        $retarray['sensor_1']['name'] = $retInfo['name'] . " (" . __('SENSOR') . " " . $_GET['sensor'] . " )";
+        $retarray['sensor_1']['color'] = $retInfo['color'] ;
+        $retarray['sensor_1']['legend'] = $retInfo['legend'] ;
+        $retarray['sensor_1']['yaxis'] = $retInfo['yaxis'] ;
+        $retarray['sensor_1']['curveType'] = $retInfo['curveType'] ;
+        $retarray['sensor_1']['unit'] = $retInfo['unit'] ;
+        
+        // If there is a second sensor
+        if ($db_sensors[0]['type'] == 2)
+        {
+        
+            $retInfo = program\get_curve_information($db_sensors[1]['type'] . "2");
+        
+            $retarray['sensor_2']['data'] = $logsValue[1];
+            
+            $retarray['sensor_2']['name'] = $retInfo['name'] . " (" . __('SENSOR') . " " . $_GET['sensor'] . " )";
+            $retarray['sensor_2']['color'] = $retInfo['color'] ;
+            $retarray['sensor_2']['legend'] = $retInfo['legend'] ;
+            $retarray['sensor_2']['yaxis'] = $retInfo['yaxis'] ;
+            $retarray['sensor_2']['curveType'] = $retInfo['curveType'] ;
+            $retarray['sensor_2']['unit'] = $retInfo['unit'] ;
+        }
+
+        break;        
+}
+
+// Encode in JSON format and return array
+echo json_encode($retarray);
 
 ?>

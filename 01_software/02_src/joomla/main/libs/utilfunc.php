@@ -6,16 +6,19 @@ if(is_file("main/libs/l10n.php")) {
    require_once 'main/libs/lib_programs.php';
    require_once 'main/libs/lib_calendar.php';
    require_once 'main/libs/lib_configuration.php';
+   require_once 'main/libs/lib_logs.php';
 } else if(is_file("../libs/l10n.php")) {
    require_once '../libs/l10n.php';
    require_once '../libs/lib_programs.php';
    require_once '../libs/lib_calendar.php';
    require_once '../libs/lib_configuration.php';
+   require_once '../libs/lib_logs.php';
 } else {
    require_once '../../libs/l10n.php';
    require_once '../../libs/lib_programs.php';
    require_once '../../libs/lib_calendar.php';
    require_once '../../libs/lib_configuration.php';
+   require_once '../../libs/lib_logs.php';
 }
 
 // {{{ __($msgkey, ...)
@@ -1229,27 +1232,42 @@ function get_decode_rtc_offset($rtc = 0) {
 }
 //}}}
 
-//{{{ check_database()
-// ROLE check and update database
-// RET rtc offset value to be recorded 
-function check_database() {
+//{{{ translate_PlugType()
+// ROLE Translate plug type
+// IN plug
+// RET plug translated
+function translate_PlugType ($plug) {
 
-    // Do it only one time per session
-    if(!isset($_SESSION['CHECK_DB']) || empty($_SESSION['CHECK_DB'])) {
-    
-        // Check program_index database consitency
-        program\check_db();
+    $ret = array();
 
-        // Check calendar database consitency
-        calendar\check_db();
-
-        // Check configuration DB
-        configuration\check_db();
-        
-         $_SESSION['CHECK_DB'] = "True";
-        
+    switch($plug) {
+        case 'other':
+            $ret['translate'] = __('PLUG_UNKNOWN');
+            break;
+        case 'ventilator': 
+            $ret['translate'] =__('PLUG_VENTILATOR');
+            break;
+        case 'heating': 
+            $ret['translate'] = __('PLUG_HEATING');
+            break;
+        case 'pump': 
+            $ret['translate'] = __('PLUG_PUMP');
+            break;
+        case 'lamp': 
+            $ret['translate'] = __('PLUG_LAMP');
+            break;
+        case 'humidifier': 
+            $ret['translate'] = __('PLUG_HUMIDIFIER');
+            break;
+        case 'dehumidifier': 
+            $ret['translate'] = __('PLUG_DEHUMIDIFIER');
+            break;
+        default: 
+            $ret['translate'] = __('PLUG_UNKNOWN');
+            break;
     }
-    
+
+    return $ret;
 }
 //}}}
 
