@@ -66,16 +66,7 @@ $translate[]=__('DIMMER');
 
 //Set plug type translation:
 for($i=0; $i<count($plugs_infos);$i++) {
-    switch($plugs_infos[$i]['PLUG_TYPE']) {
-        case 'other': $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
-        case 'ventilator': $plugs_infos[$i]['translate']=__('PLUG_VENTILATOR'); break;
-        case 'heating': $plugs_infos[$i]['translate']=__('PLUG_HEATING'); break;
-        case 'pump': $plugs_infos[$i]['translate']=__('PLUG_PUMP'); break;
-        case 'lamp': $plugs_infos[$i]['translate']=__('PLUG_LAMP'); break;
-        case 'humidifier': $plugs_infos[$i]['translate']=__('PLUG_HUMIDIFIER'); break;
-        case 'dehumidifier': $plugs_infos[$i]['translate']=__('PLUG_DEHUMIDIFIER'); break;
-        default: $plugs_infos[$i]['translate']=__('PLUG_UNKNOWN'); break;
-    }
+    $plugs_infos[$i]['translate'] = translate_PlugType($plugs_infos[$i]['PLUG_TYPE'])
 }
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card

@@ -26,7 +26,7 @@ $GLOBALS['NB_SELECTABLE_PLUG'] = '10';
 $GLOBALS['NB_MIN_PLUG'] = '3';
 
 // Number of maximal sensor used to get logs informations
-$GLOBALS['NB_MAX_SENSOR_LOG'] = '4';
+$GLOBALS['NB_MAX_SENSOR_LOG'] = '6';
 
 // Number of maximal sensor used to manage plugs
 $GLOBALS['NB_MAX_SENSOR_PLUG'] = '6';

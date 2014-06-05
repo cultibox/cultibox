@@ -14,10 +14,6 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
     //Buffer to store data:
     $buffer_array=array();
 
-    // If file does not exists, return
-    if(!file_exists($file)) 
-        return false;
-
     //Using file function to get all the data once:
     $buffer_array=file($file);
 
@@ -32,7 +28,7 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
             $temp = explode("\t", $buffer);
 
             //Check that the line has the right number of sensor records:
-            if(count($temp)==($GLOBALS['NB_MAX_SENSOR_LOG']*2+1)) {
+            if(count($temp)==(4*2+1)) {
             
                 for($i=0;$i<count($temp);$i++) {
                     //Cleaning wrong value - deleting special char 
@@ -225,7 +221,7 @@ if((!isset($_SESSION['LOAD_LOG']))||(empty($_SESSION['LOAD_LOG']))) {
     $_SESSION['LOAD_LOG']="True";
 }
 
-$sensors=get_sensor_db_type(); 
+$sensors = logs\get_sensor_db_type(); 
 
 // Search if file exists
 if($type == "logs") {
@@ -241,10 +237,10 @@ if($type == "logs") {
                 if(strcmp(date('md'),"${mmonth}${dday}")!=0) {
                     copy_empty_big_file("$sd_card/logs/$mmonth/$dday"); 
                 } 
-            } 
+            }
             unset($log) ;
             $log = array();
-        }
+        } 
     }
 } elseif($type == "power") {
     // get power values

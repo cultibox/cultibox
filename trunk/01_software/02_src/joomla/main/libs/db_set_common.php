@@ -678,7 +678,14 @@ function check_and_update_column_db ($tableName, $officialColumn) {
     foreach ($colToAdd as $col)
     {
     
-        $sql = "ALTER TABLE " . $tableName . " ADD " . $col . " " . $officialColumn[$col]['Type'] . ";";
+        $sql = "ALTER TABLE " . $tableName . " ADD " . $col . " " . $officialColumn[$col]['Type'];
+        
+        if (array_key_exists('default_value', $officialColumn[$col]))
+        {
+            $sql = $sql . " DEFAULT '" . $officialColumn[$col]['default_value'] . "' ";
+        }
+        
+        $sql = $sql . ";" ;
         
         // Delete column
         try {
@@ -695,5 +702,29 @@ function check_and_update_column_db ($tableName, $officialColumn) {
 
 }
 /// }}}
+
+//{{{ check_database()
+// ROLE check and update database
+// RET rtc offset value to be recorded 
+function check_database() {
+
+    // Do it only one time per session
+    if(!isset($_SESSION['CHECK_DB']) || empty($_SESSION['CHECK_DB'])) {
+    
+        // Check program_index database consitency
+        program\check_db();
+
+        // Check calendar database consitency
+        calendar\check_db();
+
+        // Check configuration DB
+        configuration\check_db();
+        
+         $_SESSION['CHECK_DB'] = "True";
+        
+    }
+    
+}
+//}}}
 
 ?>

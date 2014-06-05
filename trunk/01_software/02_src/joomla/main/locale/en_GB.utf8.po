@@ -94,6 +94,9 @@ msgstr "Color OD curves"
 msgid "CONFIGURE_ORP"
 msgstr "Color ORP curves"
 
+msgid "CONFIGURE_PROGRAM_COLOR"
+msgstr "Color curves programs"
+
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Color graph installation cost"
 
@@ -341,6 +344,9 @@ msgstr "December"
 msgid "SELECT_PROGRAM_PLUG"
 msgstr "Program to compare"
 
+msgid "SELECT_CURVE_TO_DISPLAY"
+msgstr "Curves show"
+
 msgid "SELECT_POWER_PLUG"
 msgstr "Display power consumption"
 
@@ -522,25 +528,25 @@ msgid "ORP_SENSOR"
 msgstr "ORP"
 
 msgid "TEMP_LEGEND"
-msgstr "Temperature (° C)"
+msgstr "Temperature (°C)"
 
 msgid "HUMI_LEGEND"
-msgstr "Humidity (percent)"
+msgstr "Humidity (RH)"
 
 msgid "WATER_LEGEND"
-msgstr "Water temperature (° C)"
+msgstr "Water temperature (°C)"
 
 msgid "LEVEL_LEGEND"
-msgstr "Water level (in cm)"
+msgstr "Water level (cm)"
 
 msgid "PH_LEGEND"
 msgstr "PH of the solution"
 
 msgid "EC_LEGEND"
-msgstr "Electro-conductivity (in microseconds / cm)"
+msgstr "Electro-conductivity (µs/cm)"
 
 msgid "OD_LEGEND"
-msgstr "Redox (mg / l)"
+msgstr "Dissolved Oxygen (mg/l)"
 
 msgid "ORP_LEGEND"
 msgstr "ORP (mV)"
@@ -550,6 +556,9 @@ msgstr "Power consumption (W)"
 
 msgid "POWER"
 msgstr "Power"
+
+msgid "PROGRAM_LEGEND"
+msgstr "program"
 
 msgid "SUMARY_MAX"
 msgstr "Max"
