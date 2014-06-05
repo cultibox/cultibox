@@ -11,6 +11,25 @@
 + Bug can be view at adress : http://code.google.com/p/cultibox                +
 +------------------------------------------------------------------------------+
 
++ Version 2.18
+   Comment:
+   Issues :
+      796: [programme] "marche " sur pompe à eau
+      761: [Cultibox] régulation + action manuelle
+      839: [programme] chg de jour avec programme au jour sans carte SD 
+      840: [cout] log à la seconde
+      842: [prises][cultibox] fonctionnement avec plage de fonctionnement
+      841: [alarme] mode de fonctionnement avancé
+   To test :
+      556 : [Logs] Mauvaise recherche du début de log power au reboot
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      824 : [PROG] Fonctionnement inattendu
+      835 : [Régulation] anomalie de fonctionnement
+      836 : [Régulation] Pilotage non correcte pour effecteur négatif
+      838 : [Cultibox] retour sur l'écran d'accueil
+      844 : [Cultibox] Démarrage de la Cultibox
+   Solved :
+
 + Version 2.17
    Comment:
    Issues :
