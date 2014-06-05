@@ -20,7 +20,7 @@ puts $fid {
 puts $fid "<content type = \"text\">[join $label "\n"]</content>"
 puts $fid "<cbx_symbol>[join $symbol " "]</cbx_symbol>"
 puts $fid "<duration>0</duration>"
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+puts $fid "      <start>2014-${mois}-${jour}T00:00:00+01:00</start>"
     set i 0
     foreach icon $icons {
         puts $fid "      <icon${i}>${icon}</icon${i}>"
@@ -50,7 +50,7 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
     }
     
     # On cré le fichier de sortie
-    set outFid [open [file join [file dirname [info script]] out [string map {".txt" ".xml"} [file tail $file]]] w+]
+    set outFid [open [file join [file dirname [info script]] out permanent [string map {".txt" ".xml"} [file tail $file]]] w+]
     
     # On ajoute le header dans le fichier de sortie
     puts $outFid {<?xml version="1.0" encoding="utf-8"?>}
@@ -140,25 +140,25 @@ foreach file [glob -directory [file dirname [info script]] *.txt] {
                     if {$fruit != 0} {
                         lappend icons fruit.png
                         lappend label "Jour fruit"
-                        lappend symbol "0xB1"
+                        #lappend symbol "0xB1"
                     }
                     
                     if {$racine != 0} {
                         lappend icons carotte.png
                         lappend label "Jour racine"
-                        lappend symbol "0xB2"
+                        #lappend symbol "0xB2"
                     }
                     
                     if {$fleur != 0} {
                         lappend icons fleur.png
                         lappend label "Jour fleur"
-                        lappend symbol "0xB3"
+                        #lappend symbol "0xB3"
                     }
 
                     if {$feuille != 0} {
                         lappend icons feuille.png
                         lappend label "Jour feuille"
-                        lappend symbol "0xB4"
+                        #lappend symbol "0xB4"
                     }
                     
                     if {$icons != ""} {
