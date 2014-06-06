@@ -616,7 +616,7 @@ for($i=0;$i<$nb_plugs;$i++) {
     $plugs_infos[$i]["data"] = format_program_highchart_data($data_plug,"");
 
     // Translate
-    $plugs_infos[$i]['translate'] = translate_PlugType($plugs_infos[$i]['PLUG_TYPE'])
+    $plugs_infos[$i]['translate'] = translate_PlugType($plugs_infos[$i]['PLUG_TYPE']);
     
 }
 

@@ -1267,7 +1267,7 @@ function translate_PlugType ($plug) {
             break;
     }
 
-    return $ret;
+    return $ret['translate'];
 }
 //}}}
 

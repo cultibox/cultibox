@@ -366,7 +366,7 @@
             <?php 
                 for($plugs=1;$plugs<=$nb_plugs;$plugs++) {
                     $plugArrayTranslate =  translate_PlugType($plugs_infos[$plugs - 1]['PLUG_TYPE']);
-                    echo '<td>' . __('PLUG_MENU') . " " . $plugs . " (" . $plugArrayTranslate['translate'] . ")</td>";
+                    echo '<td>' . __('PLUG_MENU') . " " . $plugs . " (" . $plugArrayTranslate . ")</td>";
                     echo '<td>';
                     echo '<input type="checkbox" style="margin-right:30px;"'
                         . ' plug="' . $plugs . '"' 
@@ -403,7 +403,7 @@
             <?php 
                 for($plugs=1;$plugs<=$nb_plugs;$plugs++) {  
                     $plugArrayTranslate =  translate_PlugType($plugs_infos[$plugs - 1]['PLUG_TYPE']);
-                    echo '<td>' . __('PLUG_MENU') . " " . $plugs . " (" . $plugArrayTranslate['translate'] . ")</td>";
+                    echo '<td>' . __('PLUG_MENU') . " " . $plugs . " (" . $plugArrayTranslate . ")</td>";
                     echo '<td>';
                     echo '<input type="checkbox" style="margin-right:30px;"'
                         . ' plug="' . $plugs . '"' 
