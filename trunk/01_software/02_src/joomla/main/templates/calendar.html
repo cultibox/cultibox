@@ -17,29 +17,27 @@
 <!-- Display buttons -->
 <table class="table_width">
     <tr>
-        <td>
-            <input id="datepicker_calendar" name="datepicker_calendar" type="hidden" value="">
-        </td>
-        <td>
-            <!-- Button to select XML to view -->
+        <td class="calendar-conf-marge"></td> 
+        <td class="calendar-title">
+             <!-- Button to select XML to view -->
             <input type="image" id="calendar_xml_selection" name="calendar_xml_selection" 
                 src="main/libs/img/advancedsettings.png" width="32"
                 title="<?php echo __('TOOLTIP_MANAGE_XML'); ?>" 
-                value="<?php echo __('MANAGE_EXTERNAL_XML'); ?>" 
+                alt="calendar"
             />
-        </td>
-        <td>
+
             <!-- Button to delete all event -->
             <input type="image" id="reset_calendar" name="reset_calendar" class="delete" 
                    title="<?php echo __('TOOLTIP_RESET_CALENDAR'); ?>"
-                   src="main/libs/img/button_cancel.png"  width="32" />
-        </td>
-        <td>
+                   src="main/libs/img/button_cancel.png"  width="32" 
+                    alt="calendar"
+            />
             <!-- Button to view engrais planification-->
             <input type="image" id="nutrient_planification" name="nutrient_planification"
                    title="<?php echo __('TOOLTIP_CREATE_CALENDAR_PROGRAM'); ?>"
-                   src="main/libs/img/cal.png"  width="34" />
-        </td>
+                   src="main/libs/img/cal.png"  width="34" 
+                    alt="calendar"
+            />
         <?php 
             // Read program index
             $program_index = array();
@@ -47,14 +45,18 @@
             
             if($activ_daily_program == "True" && count($program_index) > 1) { 
         ?>
-        <td>
             <!-- Button to add daily program -->
             <input type="image" id="daily_program" name="daily_program"
                    title="<?php echo __('TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM'); ?>"
-                   src="main/libs/img/db_add.png"  width="34" />        
-        </td>
+                   src="main/libs/img/db_add.png"  width="34" 
+                   alt="calendar"
+            />        
         <?php } ?>
-        <td class="calendar_right"></td>
+        </td>
+        <td class="calendar_right">
+            <input id="datepicker_calendar" name="datepicker_calendar" type="hidden" value="">
+        </td>
+        <td class="calendar-conf-marge"></td>
     </tr>
 </table>
 
@@ -63,7 +65,7 @@
 <!-- Display the calendar -->
 <div id='calendar'></div>
 
-<!-- ----------------------- Modal form ----------------------------- -->
+<!-- ===================== Modal form ========================== -->
 
 <!-- Calendar UI for event management -->
 <div id="dialog_edit" title="<?php echo __('WHAT_DIALOG_CALENDAR'); ?>" style="display:none">
@@ -207,6 +209,7 @@
                     <?php } ?>
                 </select>
             </td>
+            <td></td>
         </tr>
         <tr>
             <td><?php echo __('CALENDAR_PROGRAM'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_PROGRAM'); ?>" /></td>
@@ -228,6 +231,7 @@
                     ?>
                 </select>
             </td>
+            <td></td>
         </tr>
         <tr>
             <td><?php echo __('CALENDAR_STARTDATE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_STARTDATE'); ?>" /></td>
@@ -237,6 +241,7 @@
         <tr>
             <td><?php echo __('CALENDAR_EVENT_NAME'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_EVENT_NAME'); ?>" /></td>
             <td><input id="event_name" name="event_name" type="text" class="whitefield" size="10" value=""></td>
+            <td></td>
         </tr>
         <tr>
             <td>
@@ -247,6 +252,7 @@
                 <input type="radio" name="select_croissance" id="select_croissance_flo" value="flo" checked="" /> <?php echo __('CALENDAR_FLORAISON'); ?>
                 <input type="radio" name="select_croissance" id="select_croissance_and_flo" value="all" checked="" /> <?php echo __('CALENDAR_CROISSANCE_+_FLORAISON'); ?>
             </td>
+            <td></td>
         </tr>
     </table>
 </div>

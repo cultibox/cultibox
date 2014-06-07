@@ -358,6 +358,10 @@ td.calendar-marge {
    width: 15%;
 }
 
+td.calendar-conf-marge {
+    width: 2%;
+}
+
 td.calendar-title {
    width: 30%
 }
@@ -371,7 +375,7 @@ td.calendar-error {
 }
 
 td.calendar_right {
-    width: 95%;
+    text-align: right;
 }
 
 td.wifi-plug-field {

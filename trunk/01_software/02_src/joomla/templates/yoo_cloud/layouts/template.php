@@ -51,9 +51,10 @@ include($this['path']->path('layouts:template.config.php'));
     
 ?>
     <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery-ui-1.8.19.custom.css?v=<?=@filemtime('main/libs/css/jquery-ui-1.8.19.custom.css')?>" />
-    <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css?v=<?=@filemtime('main/libs/css/cultibox.css')?>" />
     <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/fullcalendar.css?v=<?=@filemtime('main/libs/css/fullcalendar.css')?>" />
     <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/jquery.colourPicker.css?v=<?=@filemtime('main/libs/css/jquery.colourPicker.css')?>" />
+    <link rel="stylesheet" media="all" type="text/css" href="main/libs/css/cultibox.css?v=<?=@filemtime('main/libs/css/cultibox.css')?>" />
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script type="text/javascript" src="main/libs/js/jquery-1.8.3.js?v=<?=@filemtime('main/libs/js/jquery-1.8.3.js')?>"></script>
@@ -185,8 +186,6 @@ include($this['path']->path('layouts:template.config.php'));
 				
 					<div id="maininner" class="grid-box">
 					
-                        <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_MESSAGE'); ?>" id="eyes_msgbox"></div>
-                    
 						<?php if ($this['modules']->count('innertop')) : ?>
 						<section id="innertop" class="grid-block"><?php echo $this['modules']->render('innertop', array('layout'=>$this['config']->get('innertop'))); ?></section>
 						<?php endif; ?>
@@ -196,7 +195,7 @@ include($this['path']->path('layouts:template.config.php'));
 						<?php endif; ?>
 		
 						<?php if ($this['config']->get('system_output')) : ?>
-						<section id="content" class="grid-block"><?php echo $this['template']->render('content'); ?></section>
+						<div id="content" class="grid-block"><?php echo $this['template']->render('content'); ?></div>
 						<?php endif; ?>
 		
 						<?php if ($this['modules']->count('innerbottom')) : ?>

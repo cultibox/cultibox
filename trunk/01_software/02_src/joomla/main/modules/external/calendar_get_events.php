@@ -18,9 +18,6 @@ $id = 0 ;
 
 $event=array();
 
-// Gets event from db
-$id = calendar\read_event_from_db ($event,$start,$end);
-
 // List XML file find in folder
 $files = glob('../../xml/permanent/*.{xml}', GLOB_BRACE);
 
@@ -28,6 +25,10 @@ foreach($files as $file) {
     // Gets element from XML
     $id = calendar\read_event_from_XML ($file,$event ,$id + 1,$start,$end);
 }
+
+
+// Gets event from db
+$id = calendar\read_event_from_db ($event,$start,$end);
 
 echo json_encode($event);
 
