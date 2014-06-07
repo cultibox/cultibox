@@ -30,7 +30,7 @@ $user		= JFactory::getUser();
 	<h1 class="title"><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
 	<?php endif; ?>
 
-	<article class="item"<?php if ($view != 'article') printf(' data-permalink="%s"', JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catslug), true, -1)); ?>>
+	<div class="item"<?php if ($view != 'article') printf(' data-permalink="%s"', JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catslug), true, -1)); ?>>
 
 		<?php if ($params->get('show_title')) : ?>
 		<header>
@@ -174,6 +174,6 @@ $user		= JFactory::getUser();
 
 		<?php echo $this->item->event->afterDisplayContent; ?>
 	
-	</article>
+	</div>
 
 </div>
