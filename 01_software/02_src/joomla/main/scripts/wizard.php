@@ -188,7 +188,8 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
                     "value_program" => "$value_program",
                     "selected_plug" => "$selected_plug",
                     "plug_type" => "$plug_type",
-                    "type" => "$type"
+                    "type" => "$type",
+                    "number" => "1"
                 );
 
                 $prog[]= array(
@@ -197,7 +198,8 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
                     "value_program" => "$value_program",
                     "selected_plug" => "$selected_plug",
 					"plug_type" => "$plug_type",
-                    "type" => "$type"
+                    "type" => "$type",
+                    "number" => "1" 
                 ); 
             } else {
                 $prog[]= array(
@@ -206,7 +208,8 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
                     "value_program" => "$value_program",
                     "selected_plug" => "$selected_plug",
                     "plug_type" => "$plug_type",
-                    "type" => "$type"
+                    "type" => "$type",
+                    "number" => "1"
                 );
             }
 
