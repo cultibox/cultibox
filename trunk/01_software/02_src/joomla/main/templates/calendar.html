@@ -19,10 +19,10 @@
     <tr>
         <td class="calendar-conf-marge"></td> 
         <td class="calendar-title">
-             <!-- Button to select XML to view -->
+            <!-- Button to change parameters -->
             <input type="image" id="calendar_xml_selection" name="calendar_xml_selection" 
                 src="main/libs/img/advancedsettings.png" width="32"
-                title="<?php echo __('TOOLTIP_MANAGE_XML'); ?>" 
+                title="<?php echo __('PARAMETERS'); ?>" 
                 alt="calendar"
             />
 
@@ -185,9 +185,13 @@
 </div>
 
 <!-- User interface to select XML to show in calendar -->
-<div id="manage_external_xml" style="display:none" title="<?php echo __('XML_DISPLAYED_FILE'); ?>">
+<div id="manage_external_xml" style="display:none" title="<?php echo __('PARAMETERS'); ?>">
+    <p id="xml_section"><?php echo __('XML_DISPLAYED_FILE'); ?> : 
+        <img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MANAGE_XML'); ?>" />
+    </p>
+    <p><?php echo __('LUNAR_CALENDAR_SAVE_SD'); ?> : </p>
+    <input type="button" id="save_calendar_lunar_sd" value="<?php echo __('SAVE') ; ?>" />
 </div>
-
 
 <!-- Div modual UI for nutrient planification -->
 <div id="manage_nutrient_planification" style="display:none" title="<?php echo __('CALENDAR_ENGRAIS'); ?>">

@@ -1023,8 +1023,8 @@ function clean_calendar($sd_card="",$start="",$end="") {
 // IN $sd_card         sd card location
 //    $data            data to write into the sd card (come from calendar\read_event_from_db )
 //    $out             error or warning messages
-//    $start           write calendar between two dates
-//    $end             if start and end are not set: write full calendar
+//    $start           write calendar between two dates (ms format)
+//    $end             if start and end are not set: write full calendar (ms format)
 // RET false if an error occured, true else
 function write_calendar($sd_card,$data,&$out,$start="",$end="") {
 
@@ -1038,28 +1038,28 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
     // If there are some events
     if(count($data)>0) {
     
-        // If ot defined Use today
+        // If not defined Use today
         if ($start == "")
-            $date = date("Y-m-d");
+            $date =  strtotime(date("Y-m-d"));
         else
-            $date = date("Y-m-d", $start);
+            $date =  $start;
 
         // Use today + 3 month
         if ($end == "")
-            $endSearch  = strtotime("+3 months", strtotime($date));
+            $endSearch  = strtotime("+3 months", $date);
         else
             $endSearch =  $end;
 
-        while(strtotime($date) < $endSearch)
+        while($date <= $endSearch)
         {
         
-            $val = calendar\concat_entries($data,$date);
+            $val = calendar\concat_entries($data,date("Y-m-d",$date));
 
             // Create filename
-            $month = date("m",strtotime($date));
-            $day = date("d",strtotime($date));
+            $month = date("m",$date);
+            $day = date("d",$date);
             $file = "$sd_card/logs/$month/cal_$day";
-            
+
             // If there is something to write
             if($val) {
                 // If file can be opened
@@ -1112,7 +1112,7 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
             }
         
             // Incr date
-            $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
+            $date = strtotime("+1 day", $date);
             
             // Clear val
             unset($val);

@@ -12,31 +12,44 @@
     $sd_card=$_POST["card"];
     
     $main_error=array();
+    
+    // Init connexion to DB
+    $db = db_priv_pdo_start();
 
-    $sql = "DELETE FROM calendar WHERE Id = \"" . $id . "\";";
-
-    if($db = db_priv_pdo_start()) {
-        $sth=$db->prepare($sql);
-        $sth-> execute();
-        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-        $db=null;
-
-        if((isset($sd_card))&&(!empty($sd_card))) {
-
-            $calendar = array();
-            calendar\read_event_from_db($calendar);
-            
-            // Read event from XML
-            foreach (calendar\get_external_calendar_file() as $fileArray)
-            {
-                if ($fileArray['activ'] == 1)
-                    calendar\read_event_from_XML($fileArray['filename'],$calendar);
-            }
-                
-            write_calendar($sd_card,$calendar,$main_error);
-        }
+    // Read days to update
+    $sql = "SELECT * FROM calendar WHERE Id = '{$id}' ;";
+    try {
+        $sth = $db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetch();
+    } catch(\PDOException $e) {
+        print_r($e->getMessage());
     }
     
-    print_r($main_error);
+    $start = $res['StartTime'];
+    $end = $res['EndTime'];
+
+    // Delete event from calendar
+    $sql = "DELETE FROM calendar WHERE Id = '{$id}' ;";
+
+    $sth=$db->prepare($sql);
+    $sth-> execute();
+    $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+    $db=null;
+
+    if(isset($sd_card) && !empty($sd_card)) {
+
+        $calendar = array();
+        calendar\read_event_from_db($calendar,strtotime($start),strtotime($end));
+        
+        // Read event from XML
+        foreach (calendar\get_external_calendar_file() as $fileArray)
+        {
+            if ($fileArray['activ'] == 1)
+                calendar\read_event_from_XML($fileArray['filename'],$calendar,strtotime($start),strtotime($end));
+        }
+            
+        write_calendar($sd_card,$calendar,$main_error,strtotime($start),strtotime($end));
+    }
     
 ?>

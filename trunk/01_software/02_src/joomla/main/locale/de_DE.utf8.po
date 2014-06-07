@@ -1126,6 +1126,12 @@ msgstr "Kein Kalender dieses XML"
 msgid "XML_DISPLAYED_FILE"
 msgstr "XML-Dateien angezeigt werden"
 
+msgid "LUNAR_CALENDAR_SAVE_SD"
+msgstr "Speichern Sie die Mondkalender auf der SD-Karte"
+
+msgid "SAVE"
+msgstr "Registrieren"
+
 msgid "CALENDAR_EVENT_NAME"
 msgstr "Event Name"
 
@@ -1155,6 +1161,12 @@ msgstr "die"
 
 msgid "CALENDAR_DAILY_PROGRAM"
 msgstr "Tagesprogramm"
+
+msgid "ERROR_DROP_EVENT"
+msgstr "Fehler: Es ist bereits ein Tagesprogramm definiert, dass Tag."
+
+msgid "CALENDAR_UPDATE_SD_EVENT"
+msgstr "Aktualisieren von Ereignissen auf der SD-Karte"
 
 # For the cost part:
 msgid "SELECT_START_DAY"

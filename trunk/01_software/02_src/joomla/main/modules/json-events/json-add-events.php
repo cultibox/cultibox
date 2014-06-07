@@ -15,26 +15,29 @@ $important=$_POST["important"];
 $main_error=array();
 
 
-
-
-if((isset($title))&&(!empty($title))&&(isset($start))&&(!empty($start))&&(isset($end))&&(!empty($end))&&(isset($color))&&(!empty($color))) {
+if(    isset($title) && !empty($title)
+    && isset($start) && !empty($start)
+    && isset($end)   && !empty($end)
+    && isset($color) && !empty($color)) {
+    
         if($db = db_priv_pdo_start()) {
+        
             if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
                 $description=$db->quote($_POST["desc"]);    
-            }
-
-            if((isset($description))&&(!empty($description))) {
-            $sql = <<<EOF
-INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Description`,`Color`,`Important`) VALUES({$db->quote($title)}, "{$start}", "{$end}", {$description}, "{$color}","${important}");
-EOF;
-
             } else {
-            $sql = <<<EOF
-INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Color`,`Important`) VALUES("{$title}", "{$start}", "{$end}", "{$color}","${important}");
-EOF;
+                $description = "";
             }
 
-            $db->exec("$sql");
+
+            $sql = "INSERT INTO calendar (Title, StartTime, EndTime, Description, Color, Important)"
+                . " VALUES ({$db->quote($title)}, '{$start}', '{$end}', {$description}, '{$color}', '${important}');";
+
+            try {
+                $db->exec($sql);
+            } catch(PDOException $e) {
+                print_r($e->getMessage());
+            }
+
             $db=null;
 
             $calendar = array();
@@ -45,17 +48,17 @@ EOF;
                     $end = "";
             
                 // Read event from DB
-                calendar\read_event_from_db($calendar,$start,$end);
+                calendar\read_event_from_db($calendar,strtotime($start), strtotime($end));
                 
                 // Read event from XML
                 foreach (calendar\get_external_calendar_file() as $fileArray)
                 {
                     if ($fileArray['activ'] == 1)
-                        calendar\read_event_from_XML($fileArray['filename'],$calendar,0,strtotime($start));
+                        calendar\read_event_from_XML($fileArray['filename'],$calendar,0,strtotime($start), strtotime($end));
                 }
                     
                 // Write event into SD card
-                write_calendar($sd_card,$calendar,$main_error,strtotime($start));
+                write_calendar($sd_card,$calendar,$main_error,strtotime($start), strtotime($end));
 
             }
 

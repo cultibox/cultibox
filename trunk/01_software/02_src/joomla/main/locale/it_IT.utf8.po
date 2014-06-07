@@ -1126,6 +1126,12 @@ msgstr "Nessun calendario di XML"
 msgid "XML_DISPLAYED_FILE"
 msgstr "File XML da visualizzare"
 
+msgid "LUNAR_CALENDAR_SAVE_SD"
+msgstr "Salvare il calendario lunare sulla scheda SD"
+
+msgid "SAVE"
+msgstr "Registro"
+
 msgid "CALENDAR_EVENT_NAME"
 msgstr "Nome evento"
 
@@ -1155,6 +1161,12 @@ msgstr "il"
 
 msgid "CALENDAR_DAILY_PROGRAM"
 msgstr "Programma giornaliero"
+
+msgid "ERROR_DROP_EVENT"
+msgstr "Errore: c'è già un programma quotidiano definisce quel giorno."
+
+msgid "CALENDAR_UPDATE_SD_EVENT"
+msgstr "Eventi Aggiornamento sulla scheda SD"
 
 # For the cost part:
 msgid "SELECT_START_DAY"

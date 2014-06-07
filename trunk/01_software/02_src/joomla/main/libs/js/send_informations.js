@@ -2,7 +2,6 @@
 $(document).ready(function(){
 $.ajax({ 
     cache: false,
-    async: true,
     type: "POST",
     url: "../../main/modules/external/send_informations.php",
     // Lang is the end of the url
