@@ -20,7 +20,7 @@ puts $fid {
 puts $fid "<content type = \"text\">[join $label "\n"]</content>"
 puts $fid "<cbx_symbol>[join $symbol " "]</cbx_symbol>"
 puts $fid "<duration>0</duration>"
-puts $fid "      <start>2014-${mois}-${jour}T00:00:00+01:00</start>"
+puts $fid "      <start>2014-${mois}-${jour}T00:00:00+00:00</start>"
     set i 0
     foreach icon $icons {
         puts $fid "      <icon${i}>${icon}</icon${i}>"
