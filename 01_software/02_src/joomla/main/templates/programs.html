@@ -343,70 +343,68 @@
             </td>
         </tr>  
         
-        <?php if($GLOBALS['MODULE_IMPORT_EXPORT']) { ?>
-            <!-- export plug program -->
-            <tr>
-                <td> 
-                    <?php echo __('TITLE_EXPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_PROGRAM'); ?>" />
-                </td>
-                <td>
-                    <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
-                        <select name="export_selected_plug" id="export_selected_plug">
-                        <?php for($i=1;$i<=$nb_plugs;$i++) {
-                                if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],"False")==0) { $enable="Disabled"; } else { $enable=""; } 
-                                if("$i"=="$export_selected") {
-                                   echo "<option value=\"${i}\" selected>${i}</option>";
-                                } else {
-                                   if(strcmp("$enable","")==0) {
+        <!-- export plug program -->
+        <tr>
+            <td> 
+                <?php echo __('TITLE_EXPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_PROGRAM'); ?>" />
+            </td>
+            <td>
+                <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+                    <select name="export_selected_plug" id="export_selected_plug">
+                    <?php for($i=1;$i<=$nb_plugs;$i++) {
+                        if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],"False")==0) { $enable="Disabled"; } else { $enable=""; } 
+                            if("$i"=="$export_selected") {
+                                echo "<option value=\"${i}\" selected>${i}</option>";
+                            } else {
+                                if(strcmp("$enable","")==0) {
                                     echo "<option value=\"${i}\">${i}</option>";
-                                   } else {
+                                } else {
                                     echo "<option disabled value=\"${i}\">${i} (".__('PLUG_DISABLED').")</option>";
-                                   }
-                                }
-                            } 
-                        ?>
-                        </select>
-                        <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
-                        <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export">
-                        <input type="hidden" name="selected_plug" id="selected_plug_export" value="<?php echo $selected_plug; ?>">
-                    </form>
-                </td>
-            </tr> 
-            <!-- Import plug program -->
-            <tr>
-                <td> 
-                    <?php echo __('TITLE_IMPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_PROGRAM'); ?>" />
-                </td>
-                <td>
-                    <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
-                        <select name="import_selected_plug" id="import_selected_plug">
-                        <?php for($i=1;$i<=$nb_plugs;$i++) {
-                                if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],"False")==0) {
-                                    $enable="Disabled"; 
-                                } else {
-                                    $enable="";
-                                } 
-                                if("$i"=="$export_selected") {
-                                    echo "<option value=\"${i}\" selected>${i}</option>";
-                                } else {
-                                    if(strcmp("$enable","")==0) {
-                                        echo "<option value=\"${i}\">${i}</option>";
-                                    } else {
-                                        echo "<option disabled value=\"${i}\">${i} (".__('PLUG_DISABLED').")</option>";
-                                    }
                                 }
                             }
-                        ?>
-                        </select> 
-                        <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
-                        <input type="file" name="upload_file">
-                        <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-                        <input type="hidden" name="selected_plug" id="selected_plug_import" value="<?php echo $selected_plug; ?>">
-                        <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>">
-                    </form>
-                </td>
-            </tr> 
-        <?php } ?>
+                        } 
+                    ?>
+                    </select>
+                    <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
+                    <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export">
+                    <input type="hidden" name="selected_plug" id="selected_plug_export" value="<?php echo $selected_plug; ?>">
+                </form>
+            </td>
+        </tr> 
+        <!-- Import plug program -->
+        <tr>
+            <td> 
+                <?php echo __('TITLE_IMPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_PROGRAM'); ?>" />
+            </td>
+            <td>
+                <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+                    <select name="import_selected_plug" id="import_selected_plug">
+                    <?php for($i=1;$i<=$nb_plugs;$i++) {
+                            if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],"False")==0) {
+                                $enable="Disabled"; 
+                            } else {
+                                $enable="";
+                            } 
+                            if("$i"=="$export_selected") {
+                                echo "<option value=\"${i}\" selected>${i}</option>";
+                            } else {
+                                if(strcmp("$enable","")==0) {
+                                    echo "<option value=\"${i}\">${i}</option>";
+                                } else {
+                                    echo "<option disabled value=\"${i}\">${i} (".__('PLUG_DISABLED').")</option>";
+                                }
+                            }
+                        }
+                    ?>
+                    </select> 
+                    <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
+                    <input type="file" name="upload_file">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                    <input type="hidden" name="selected_plug" id="selected_plug_import" value="<?php echo $selected_plug; ?>">
+                    <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>">
+                </form>
+            </td>
+        </tr> 
             
         <?php if($activ_daily_program == "True") { ?>
         <tr>

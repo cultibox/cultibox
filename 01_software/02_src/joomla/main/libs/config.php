@@ -64,9 +64,6 @@ $GLOBALS['WEBSITE'] = 'http://cultibox.highproshop.fr/telechargement.html';
 // Remote site to test internet connection
 $GLOBALS['REMOTE_SITE'] = 'cultibox.highproshop.fr';
 
-// Enable/Disable export and import module
-$GLOBALS['MODULE_IMPORT_EXPORT'] = true;
-
 // List of value possible for log's research: 2, 3, 6 or 12 months
 $GLOBALS['LOG_SEARCH'] = array('2', '3', '6', '12');
 
