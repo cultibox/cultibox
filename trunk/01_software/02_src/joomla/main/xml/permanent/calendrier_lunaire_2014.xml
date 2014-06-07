@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-   <updated>2014-05-26T11:34:48+02:00</updated>
+   <updated>2014-06-07T13:49:18+02:00</updated>
    <id>http://www.cultibox.fr/</id>
    <title>calendrier lunaire 2014</title>
    <subtitle></subtitle>
@@ -27,7 +27,7 @@
 Nouvelle lune</content>
 <cbx_symbol>0xB0 0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-01T00:00:00+01:00</start>
+      <start>2014-01-01T00:00:00+00:00</start>
       <icon0>perigee.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -44,7 +44,7 @@ Nouvelle lune</content>
 <content type = "text">Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-09T00:00:00+01:00</start>
+      <start>2014-01-09T00:00:00+00:00</start>
       <icon0>perigee.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -60,7 +60,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-13T00:00:00+01:00</start>
+      <start>2014-01-13T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -76,7 +76,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-14T00:00:00+01:00</start>
+      <start>2014-01-14T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -92,7 +92,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-15T00:00:00+01:00</start>
+      <start>2014-01-15T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -109,7 +109,7 @@ Nouvelle lune</content>
 Pleine lune</content>
 <cbx_symbol>0xAD 0xAA</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-16T00:00:00+01:00</start>
+      <start>2014-01-16T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>pleine_lune.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -126,7 +126,7 @@ Pleine lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-17T00:00:00+01:00</start>
+      <start>2014-01-17T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -142,7 +142,7 @@ Pleine lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-18T00:00:00+01:00</start>
+      <start>2014-01-18T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -158,7 +158,7 @@ Pleine lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-19T00:00:00+01:00</start>
+      <start>2014-01-19T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -174,7 +174,7 @@ Pleine lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-20T00:00:00+01:00</start>
+      <start>2014-01-20T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -190,7 +190,7 @@ Pleine lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-21T00:00:00+01:00</start>
+      <start>2014-01-21T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -206,7 +206,7 @@ Pleine lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-22T00:00:00+01:00</start>
+      <start>2014-01-22T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -222,7 +222,7 @@ Pleine lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-23T00:00:00+01:00</start>
+      <start>2014-01-23T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -239,7 +239,7 @@ Pleine lune</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAD 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-24T00:00:00+01:00</start>
+      <start>2014-01-24T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -256,7 +256,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-25T00:00:00+01:00</start>
+      <start>2014-01-25T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -272,7 +272,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-26T00:00:00+01:00</start>
+      <start>2014-01-26T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -288,7 +288,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune montante : Semez et récoltez</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-27T00:00:00+01:00</start>
+      <start>2014-01-27T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -305,7 +305,7 @@ Noeud lunaire : ne jardinez pas</content>
 Nouvelle lune</content>
 <cbx_symbol>0xB0 0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-01-30T00:00:00+01:00</start>
+      <start>2014-01-30T00:00:00+00:00</start>
       <icon0>perigee.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -322,7 +322,7 @@ Nouvelle lune</content>
 <content type = "text">Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-02-05T00:00:00+01:00</start>
+      <start>2014-02-05T00:00:00+00:00</start>
       <icon0>perigee.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -338,7 +338,7 @@ Nouvelle lune</content>
 <content type = "text">Pleine lune</content>
 <cbx_symbol>0xAA</cbx_symbol>
 <duration>0</duration>
-      <start>2014-02-15T00:00:00+01:00</start>
+      <start>2014-02-15T00:00:00+00:00</start>
       <icon0>pleine_lune.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -354,7 +354,7 @@ Nouvelle lune</content>
 <content type = "text">Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-02-20T00:00:00+01:00</start>
+      <start>2014-02-20T00:00:00+00:00</start>
       <icon0>perigee.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -370,7 +370,7 @@ Nouvelle lune</content>
 <content type = "text">Perigee : ne jardinez pas</content>
 <cbx_symbol>0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-02-27T00:00:00+01:00</start>
+      <start>2014-02-27T00:00:00+00:00</start>
       <icon0>perigee.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -386,7 +386,7 @@ Nouvelle lune</content>
 <content type = "text">Nouvelle lune</content>
 <cbx_symbol>0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-03-01T00:00:00+01:00</start>
+      <start>2014-03-01T00:00:00+00:00</start>
       <icon0>nouvelle_lune.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -402,7 +402,7 @@ Nouvelle lune</content>
 <content type = "text">Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-03-04T00:00:00+01:00</start>
+      <start>2014-03-04T00:00:00+00:00</start>
       <icon0>perigee.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -418,7 +418,7 @@ Nouvelle lune</content>
 <content type = "text">Pleine lune</content>
 <cbx_symbol>0xAA</cbx_symbol>
 <duration>0</duration>
-      <start>2014-03-16T00:00:00+01:00</start>
+      <start>2014-03-16T00:00:00+00:00</start>
       <icon0>pleine_lune.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -434,7 +434,7 @@ Nouvelle lune</content>
 <content type = "text">Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-03-19T00:00:00+01:00</start>
+      <start>2014-03-19T00:00:00+00:00</start>
       <icon0>perigee.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -450,7 +450,7 @@ Nouvelle lune</content>
 <content type = "text">Perigee : ne jardinez pas</content>
 <cbx_symbol>0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-03-27T00:00:00+01:00</start>
+      <start>2014-03-27T00:00:00+00:00</start>
       <icon0>perigee.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -466,7 +466,7 @@ Nouvelle lune</content>
 <content type = "text">Nouvelle lune</content>
 <cbx_symbol>0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-03-30T00:00:00+01:00</start>
+      <start>2014-03-30T00:00:00+00:00</start>
       <icon0>nouvelle_lune.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -482,7 +482,7 @@ Nouvelle lune</content>
 <content type = "text">Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-01T00:00:00+01:00</start>
+      <start>2014-04-01T00:00:00+00:00</start>
       <icon0>perigee.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -498,7 +498,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-06T00:00:00+01:00</start>
+      <start>2014-04-06T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -514,7 +514,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-07T00:00:00+01:00</start>
+      <start>2014-04-07T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -530,7 +530,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-08T00:00:00+01:00</start>
+      <start>2014-04-08T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -546,7 +546,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-09T00:00:00+01:00</start>
+      <start>2014-04-09T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -562,7 +562,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-10T00:00:00+01:00</start>
+      <start>2014-04-10T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -578,7 +578,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-11T00:00:00+01:00</start>
+      <start>2014-04-11T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -594,7 +594,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-12T00:00:00+01:00</start>
+      <start>2014-04-12T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -610,7 +610,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-13T00:00:00+01:00</start>
+      <start>2014-04-13T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -626,7 +626,7 @@ Nouvelle lune</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-14T00:00:00+01:00</start>
+      <start>2014-04-14T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -644,7 +644,7 @@ Pleine lune
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAD 0xAA 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-15T00:00:00+01:00</start>
+      <start>2014-04-15T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>pleine_lune.png</icon1>
       <icon2>perigee.png</icon2>
@@ -662,7 +662,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-16T00:00:00+01:00</start>
+      <start>2014-04-16T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -678,7 +678,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-17T00:00:00+01:00</start>
+      <start>2014-04-17T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -694,7 +694,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-18T00:00:00+01:00</start>
+      <start>2014-04-18T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -710,7 +710,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-19T00:00:00+01:00</start>
+      <start>2014-04-19T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -726,7 +726,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune montante : Semez et récoltez</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-20T00:00:00+01:00</start>
+      <start>2014-04-20T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -742,7 +742,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune montante : Semez et récoltez</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-21T00:00:00+01:00</start>
+      <start>2014-04-21T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -758,7 +758,7 @@ Noeud lunaire : ne jardinez pas</content>
 <content type = "text">Lune montante : Semez et récoltez</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-22T00:00:00+01:00</start>
+      <start>2014-04-22T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -775,7 +775,7 @@ Noeud lunaire : ne jardinez pas</content>
 Perigee : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-23T00:00:00+01:00</start>
+      <start>2014-04-23T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -793,7 +793,7 @@ Perigee : ne jardinez pas</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-24T00:00:00+01:00</start>
+      <start>2014-04-24T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -811,7 +811,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-25T00:00:00+01:00</start>
+      <start>2014-04-25T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -829,7 +829,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-26T00:00:00+01:00</start>
+      <start>2014-04-26T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -847,7 +847,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-27T00:00:00+01:00</start>
+      <start>2014-04-27T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -865,7 +865,7 @@ Jour feuille</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-28T00:00:00+01:00</start>
+      <start>2014-04-28T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -884,7 +884,7 @@ Nouvelle lune
 Jour fruit</content>
 <cbx_symbol>0xAC 0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-29T00:00:00+01:00</start>
+      <start>2014-04-29T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <icon2>fruit.png</icon2>
@@ -903,7 +903,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-04-30T00:00:00+01:00</start>
+      <start>2014-04-30T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -921,7 +921,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-01T00:00:00+01:00</start>
+      <start>2014-05-01T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -939,7 +939,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-02T00:00:00+01:00</start>
+      <start>2014-05-02T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -957,7 +957,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-03T00:00:00+01:00</start>
+      <start>2014-05-03T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -975,7 +975,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-04T00:00:00+01:00</start>
+      <start>2014-05-04T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -993,7 +993,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-05T00:00:00+01:00</start>
+      <start>2014-05-05T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1011,7 +1011,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-06T00:00:00+01:00</start>
+      <start>2014-05-06T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1029,7 +1029,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-07T00:00:00+01:00</start>
+      <start>2014-05-07T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1047,7 +1047,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-08T00:00:00+01:00</start>
+      <start>2014-05-08T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1065,7 +1065,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-09T00:00:00+01:00</start>
+      <start>2014-05-09T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1083,7 +1083,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-10T00:00:00+01:00</start>
+      <start>2014-05-10T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1101,7 +1101,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-11T00:00:00+01:00</start>
+      <start>2014-05-11T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1119,7 +1119,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-12T00:00:00+01:00</start>
+      <start>2014-05-12T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1137,7 +1137,7 @@ Jour racine</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAD 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-13T00:00:00+01:00</start>
+      <start>2014-05-13T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1156,7 +1156,7 @@ Pleine lune
 Jour fleur</content>
 <cbx_symbol>0xAD 0xAA</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-14T00:00:00+01:00</start>
+      <start>2014-05-14T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>pleine_lune.png</icon1>
       <icon2>fleur.png</icon2>
@@ -1175,7 +1175,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-15T00:00:00+01:00</start>
+      <start>2014-05-15T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1193,7 +1193,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-16T00:00:00+01:00</start>
+      <start>2014-05-16T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1211,7 +1211,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-17T00:00:00+01:00</start>
+      <start>2014-05-17T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1229,7 +1229,7 @@ Jour fruit</content>
 Perigee : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-18T00:00:00+01:00</start>
+      <start>2014-05-18T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1247,7 +1247,7 @@ Perigee : ne jardinez pas</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-19T00:00:00+01:00</start>
+      <start>2014-05-19T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1265,7 +1265,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-20T00:00:00+01:00</start>
+      <start>2014-05-20T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1283,7 +1283,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-21T00:00:00+01:00</start>
+      <start>2014-05-21T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1301,7 +1301,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-22T00:00:00+01:00</start>
+      <start>2014-05-22T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1319,7 +1319,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-23T00:00:00+01:00</start>
+      <start>2014-05-23T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1337,7 +1337,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-24T00:00:00+01:00</start>
+      <start>2014-05-24T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1356,7 +1356,7 @@ Noeud lunaire : ne jardinez pas
 Jour feuille</content>
 <cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-25T00:00:00+01:00</start>
+      <start>2014-05-25T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <icon2>feuille.png</icon2>
@@ -1375,7 +1375,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-26T00:00:00+01:00</start>
+      <start>2014-05-26T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1393,7 +1393,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-27T00:00:00+01:00</start>
+      <start>2014-05-27T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1412,7 +1412,7 @@ Nouvelle lune
 Jour racine</content>
 <cbx_symbol>0xAC 0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-28T00:00:00+01:00</start>
+      <start>2014-05-28T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <icon2>carotte.png</icon2>
@@ -1431,7 +1431,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-29T00:00:00+01:00</start>
+      <start>2014-05-29T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1449,7 +1449,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-30T00:00:00+01:00</start>
+      <start>2014-05-30T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1467,7 +1467,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-05-31T00:00:00+01:00</start>
+      <start>2014-05-31T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1485,7 +1485,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-01T00:00:00+01:00</start>
+      <start>2014-06-01T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1503,7 +1503,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-02T00:00:00+01:00</start>
+      <start>2014-06-02T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1521,7 +1521,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-03T00:00:00+01:00</start>
+      <start>2014-06-03T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1539,7 +1539,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-04T00:00:00+01:00</start>
+      <start>2014-06-04T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1557,7 +1557,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-05T00:00:00+01:00</start>
+      <start>2014-06-05T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1574,7 +1574,7 @@ Jour fruit</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-06T00:00:00+01:00</start>
+      <start>2014-06-06T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -1591,7 +1591,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-07T00:00:00+01:00</start>
+      <start>2014-06-07T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1609,7 +1609,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-08T00:00:00+01:00</start>
+      <start>2014-06-08T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1627,7 +1627,7 @@ Jour racine</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAD 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-09T00:00:00+01:00</start>
+      <start>2014-06-09T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1645,7 +1645,7 @@ Noeud lunaire : ne jardinez pas</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-10T00:00:00+01:00</start>
+      <start>2014-06-10T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1663,7 +1663,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-11T00:00:00+01:00</start>
+      <start>2014-06-11T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1681,7 +1681,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-12T00:00:00+01:00</start>
+      <start>2014-06-12T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1700,7 +1700,7 @@ Pleine lune
 Jour feuille</content>
 <cbx_symbol>0xAD 0xAA</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-13T00:00:00+01:00</start>
+      <start>2014-06-13T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>pleine_lune.png</icon1>
       <icon2>feuille.png</icon2>
@@ -1719,7 +1719,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-14T00:00:00+01:00</start>
+      <start>2014-06-14T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1737,7 +1737,7 @@ Jour fruit</content>
 Perigee : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-15T00:00:00+01:00</start>
+      <start>2014-06-15T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1755,7 +1755,7 @@ Perigee : ne jardinez pas</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-16T00:00:00+01:00</start>
+      <start>2014-06-16T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1773,7 +1773,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-17T00:00:00+01:00</start>
+      <start>2014-06-17T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1791,7 +1791,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-18T00:00:00+01:00</start>
+      <start>2014-06-18T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1809,7 +1809,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-19T00:00:00+01:00</start>
+      <start>2014-06-19T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1827,7 +1827,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-20T00:00:00+01:00</start>
+      <start>2014-06-20T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1845,7 +1845,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-21T00:00:00+01:00</start>
+      <start>2014-06-21T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1864,7 +1864,7 @@ Noeud lunaire : ne jardinez pas
 Jour fruit</content>
 <cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-22T00:00:00+01:00</start>
+      <start>2014-06-22T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <icon2>fruit.png</icon2>
@@ -1883,7 +1883,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-23T00:00:00+01:00</start>
+      <start>2014-06-23T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1901,7 +1901,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-24T00:00:00+01:00</start>
+      <start>2014-06-24T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1919,7 +1919,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-25T00:00:00+01:00</start>
+      <start>2014-06-25T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1937,7 +1937,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-26T00:00:00+01:00</start>
+      <start>2014-06-26T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1956,7 +1956,7 @@ Nouvelle lune
 Jour fleur</content>
 <cbx_symbol>0xAD 0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-27T00:00:00+01:00</start>
+      <start>2014-06-27T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <icon2>fleur.png</icon2>
@@ -1975,7 +1975,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-28T00:00:00+01:00</start>
+      <start>2014-06-28T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -1993,7 +1993,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-29T00:00:00+01:00</start>
+      <start>2014-06-29T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2011,7 +2011,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-06-30T00:00:00+01:00</start>
+      <start>2014-06-30T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2029,7 +2029,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-01T00:00:00+01:00</start>
+      <start>2014-07-01T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2047,7 +2047,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-02T00:00:00+01:00</start>
+      <start>2014-07-02T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2065,7 +2065,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-03T00:00:00+01:00</start>
+      <start>2014-07-03T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2083,7 +2083,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-04T00:00:00+01:00</start>
+      <start>2014-07-04T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2101,7 +2101,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-05T00:00:00+01:00</start>
+      <start>2014-07-05T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2119,7 +2119,7 @@ Jour racine</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAD 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-06T00:00:00+01:00</start>
+      <start>2014-07-06T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2137,7 +2137,7 @@ Noeud lunaire : ne jardinez pas</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-07T00:00:00+01:00</start>
+      <start>2014-07-07T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2155,7 +2155,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-08T00:00:00+01:00</start>
+      <start>2014-07-08T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2173,7 +2173,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-09T00:00:00+01:00</start>
+      <start>2014-07-09T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2191,7 +2191,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-10T00:00:00+01:00</start>
+      <start>2014-07-10T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2209,7 +2209,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-11T00:00:00+01:00</start>
+      <start>2014-07-11T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2228,7 +2228,7 @@ Pleine lune
 Jour fruit</content>
 <cbx_symbol>0xAC 0xAA</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-12T00:00:00+01:00</start>
+      <start>2014-07-12T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>pleine_lune.png</icon1>
       <icon2>fruit.png</icon2>
@@ -2247,7 +2247,7 @@ Jour fruit</content>
 Perigee : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-13T00:00:00+01:00</start>
+      <start>2014-07-13T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2265,7 +2265,7 @@ Perigee : ne jardinez pas</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-14T00:00:00+01:00</start>
+      <start>2014-07-14T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2283,7 +2283,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-15T00:00:00+01:00</start>
+      <start>2014-07-15T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2301,7 +2301,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-16T00:00:00+01:00</start>
+      <start>2014-07-16T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2319,7 +2319,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-17T00:00:00+01:00</start>
+      <start>2014-07-17T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2338,7 +2338,7 @@ Noeud lunaire : ne jardinez pas
 Jour feuille</content>
 <cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-18T00:00:00+01:00</start>
+      <start>2014-07-18T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <icon2>feuille.png</icon2>
@@ -2357,7 +2357,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-19T00:00:00+01:00</start>
+      <start>2014-07-19T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2375,7 +2375,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-20T00:00:00+01:00</start>
+      <start>2014-07-20T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2393,7 +2393,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-21T00:00:00+01:00</start>
+      <start>2014-07-21T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2411,7 +2411,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-22T00:00:00+01:00</start>
+      <start>2014-07-22T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2429,7 +2429,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-23T00:00:00+01:00</start>
+      <start>2014-07-23T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2447,7 +2447,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-24T00:00:00+01:00</start>
+      <start>2014-07-24T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2465,7 +2465,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-25T00:00:00+01:00</start>
+      <start>2014-07-25T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2483,7 +2483,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-26T00:00:00+01:00</start>
+      <start>2014-07-26T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2502,7 +2502,7 @@ Nouvelle lune
 Jour feuille</content>
 <cbx_symbol>0xAD 0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-27T00:00:00+01:00</start>
+      <start>2014-07-27T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <icon2>feuille.png</icon2>
@@ -2521,7 +2521,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-28T00:00:00+01:00</start>
+      <start>2014-07-28T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2539,7 +2539,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-29T00:00:00+01:00</start>
+      <start>2014-07-29T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2557,7 +2557,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-30T00:00:00+01:00</start>
+      <start>2014-07-30T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2575,7 +2575,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-07-31T00:00:00+01:00</start>
+      <start>2014-07-31T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2593,7 +2593,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-01T00:00:00+01:00</start>
+      <start>2014-08-01T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2611,7 +2611,7 @@ Jour racine</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAD 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-02T00:00:00+01:00</start>
+      <start>2014-08-02T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2629,7 +2629,7 @@ Noeud lunaire : ne jardinez pas</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-03T00:00:00+01:00</start>
+      <start>2014-08-03T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2647,7 +2647,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-04T00:00:00+01:00</start>
+      <start>2014-08-04T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2665,7 +2665,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-05T00:00:00+01:00</start>
+      <start>2014-08-05T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2683,7 +2683,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-06T00:00:00+01:00</start>
+      <start>2014-08-06T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2701,7 +2701,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-07T00:00:00+01:00</start>
+      <start>2014-08-07T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2719,7 +2719,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-08T00:00:00+01:00</start>
+      <start>2014-08-08T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2737,7 +2737,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-09T00:00:00+01:00</start>
+      <start>2014-08-09T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2757,7 +2757,7 @@ Pleine lune
 Jour racine</content>
 <cbx_symbol>0xAC 0xB0 0xAA</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-10T00:00:00+01:00</start>
+      <start>2014-08-10T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <icon2>pleine_lune.png</icon2>
@@ -2777,7 +2777,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-11T00:00:00+01:00</start>
+      <start>2014-08-11T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2795,7 +2795,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-12T00:00:00+01:00</start>
+      <start>2014-08-12T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2813,7 +2813,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-13T00:00:00+01:00</start>
+      <start>2014-08-13T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2832,7 +2832,7 @@ Noeud lunaire : ne jardinez pas
 Jour feuille</content>
 <cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-14T00:00:00+01:00</start>
+      <start>2014-08-14T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <icon2>feuille.png</icon2>
@@ -2851,7 +2851,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-15T00:00:00+01:00</start>
+      <start>2014-08-15T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2869,7 +2869,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-16T00:00:00+01:00</start>
+      <start>2014-08-16T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2887,7 +2887,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-17T00:00:00+01:00</start>
+      <start>2014-08-17T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2905,7 +2905,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-18T00:00:00+01:00</start>
+      <start>2014-08-18T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2923,7 +2923,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-19T00:00:00+01:00</start>
+      <start>2014-08-19T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2941,7 +2941,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-20T00:00:00+01:00</start>
+      <start>2014-08-20T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2959,7 +2959,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-21T00:00:00+01:00</start>
+      <start>2014-08-21T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2977,7 +2977,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-22T00:00:00+01:00</start>
+      <start>2014-08-22T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -2995,7 +2995,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-23T00:00:00+01:00</start>
+      <start>2014-08-23T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3012,7 +3012,7 @@ Jour feuille</content>
 <content type = "text">Lune descendante : Repiquez, bouturez, taillez et nourrissez</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-24T00:00:00+01:00</start>
+      <start>2014-08-24T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -3030,7 +3030,7 @@ Nouvelle lune
 Jour fruit</content>
 <cbx_symbol>0xAD 0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-25T00:00:00+01:00</start>
+      <start>2014-08-25T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <icon2>fruit.png</icon2>
@@ -3049,7 +3049,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-26T00:00:00+01:00</start>
+      <start>2014-08-26T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3067,7 +3067,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-27T00:00:00+01:00</start>
+      <start>2014-08-27T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3085,7 +3085,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-28T00:00:00+01:00</start>
+      <start>2014-08-28T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3103,7 +3103,7 @@ Jour racine</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAD 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-29T00:00:00+01:00</start>
+      <start>2014-08-29T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3121,7 +3121,7 @@ Noeud lunaire : ne jardinez pas</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-30T00:00:00+01:00</start>
+      <start>2014-08-30T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3139,7 +3139,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-08-31T00:00:00+01:00</start>
+      <start>2014-08-31T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3157,7 +3157,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-01T00:00:00+01:00</start>
+      <start>2014-09-01T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3175,7 +3175,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-02T00:00:00+01:00</start>
+      <start>2014-09-02T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3193,7 +3193,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-03T00:00:00+01:00</start>
+      <start>2014-09-03T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3211,7 +3211,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-04T00:00:00+01:00</start>
+      <start>2014-09-04T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3229,7 +3229,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-05T00:00:00+01:00</start>
+      <start>2014-09-05T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3247,7 +3247,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-06T00:00:00+01:00</start>
+      <start>2014-09-06T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3264,7 +3264,7 @@ Jour racine</content>
 <content type = "text">Lune montante : Semez et récoltez</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-07T00:00:00+01:00</start>
+      <start>2014-09-07T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <color>rgba(170, 170, 170, 0.1)</color>
       <text_color>#000</text_color>
@@ -3281,7 +3281,7 @@ Jour racine</content>
 Perigee : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-08T00:00:00+01:00</start>
+      <start>2014-09-08T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3300,7 +3300,7 @@ Pleine lune
 Jour feuille</content>
 <cbx_symbol>0xAC 0xAA</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-09T00:00:00+01:00</start>
+      <start>2014-09-09T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>pleine_lune.png</icon1>
       <icon2>feuille.png</icon2>
@@ -3319,7 +3319,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-10T00:00:00+01:00</start>
+      <start>2014-09-10T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3337,7 +3337,7 @@ Jour feuille</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-11T00:00:00+01:00</start>
+      <start>2014-09-11T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3355,7 +3355,7 @@ Noeud lunaire : ne jardinez pas</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-12T00:00:00+01:00</start>
+      <start>2014-09-12T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3373,7 +3373,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-13T00:00:00+01:00</start>
+      <start>2014-09-13T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3391,7 +3391,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-14T00:00:00+01:00</start>
+      <start>2014-09-14T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3409,7 +3409,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-15T00:00:00+01:00</start>
+      <start>2014-09-15T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3427,7 +3427,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-16T00:00:00+01:00</start>
+      <start>2014-09-16T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3445,7 +3445,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-17T00:00:00+01:00</start>
+      <start>2014-09-17T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3463,7 +3463,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-18T00:00:00+01:00</start>
+      <start>2014-09-18T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3481,7 +3481,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-19T00:00:00+01:00</start>
+      <start>2014-09-19T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3499,7 +3499,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-20T00:00:00+01:00</start>
+      <start>2014-09-20T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3517,7 +3517,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-21T00:00:00+01:00</start>
+      <start>2014-09-21T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3535,7 +3535,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-22T00:00:00+01:00</start>
+      <start>2014-09-22T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3553,7 +3553,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-23T00:00:00+01:00</start>
+      <start>2014-09-23T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3572,7 +3572,7 @@ Nouvelle lune
 Jour racine</content>
 <cbx_symbol>0xAD 0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-24T00:00:00+01:00</start>
+      <start>2014-09-24T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <icon2>carotte.png</icon2>
@@ -3591,7 +3591,7 @@ Jour racine</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAD 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-25T00:00:00+01:00</start>
+      <start>2014-09-25T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3609,7 +3609,7 @@ Noeud lunaire : ne jardinez pas</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-26T00:00:00+01:00</start>
+      <start>2014-09-26T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3627,7 +3627,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-27T00:00:00+01:00</start>
+      <start>2014-09-27T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3645,7 +3645,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-28T00:00:00+01:00</start>
+      <start>2014-09-28T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3663,7 +3663,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-29T00:00:00+01:00</start>
+      <start>2014-09-29T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3681,7 +3681,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-09-30T00:00:00+01:00</start>
+      <start>2014-09-30T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3699,7 +3699,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-01T00:00:00+01:00</start>
+      <start>2014-10-01T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3717,7 +3717,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-02T00:00:00+01:00</start>
+      <start>2014-10-02T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3735,7 +3735,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-03T00:00:00+01:00</start>
+      <start>2014-10-03T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3753,7 +3753,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-04T00:00:00+01:00</start>
+      <start>2014-10-04T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3771,7 +3771,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-05T00:00:00+01:00</start>
+      <start>2014-10-05T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3789,7 +3789,7 @@ Jour fleur</content>
 Perigee : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-06T00:00:00+01:00</start>
+      <start>2014-10-06T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3807,7 +3807,7 @@ Perigee : ne jardinez pas</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-07T00:00:00+01:00</start>
+      <start>2014-10-07T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3826,7 +3826,7 @@ Pleine lune
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xAA 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-08T00:00:00+01:00</start>
+      <start>2014-10-08T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>pleine_lune.png</icon1>
       <icon2>perigee.png</icon2>
@@ -3845,7 +3845,7 @@ Noeud lunaire : ne jardinez pas</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-09T00:00:00+01:00</start>
+      <start>2014-10-09T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3863,7 +3863,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-10T00:00:00+01:00</start>
+      <start>2014-10-10T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3881,7 +3881,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-11T00:00:00+01:00</start>
+      <start>2014-10-11T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3899,7 +3899,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-12T00:00:00+01:00</start>
+      <start>2014-10-12T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3917,7 +3917,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-13T00:00:00+01:00</start>
+      <start>2014-10-13T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3935,7 +3935,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-14T00:00:00+01:00</start>
+      <start>2014-10-14T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3953,7 +3953,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-15T00:00:00+01:00</start>
+      <start>2014-10-15T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3971,7 +3971,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-16T00:00:00+01:00</start>
+      <start>2014-10-16T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -3989,7 +3989,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-17T00:00:00+01:00</start>
+      <start>2014-10-17T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4007,7 +4007,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-18T00:00:00+01:00</start>
+      <start>2014-10-18T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4025,7 +4025,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-19T00:00:00+01:00</start>
+      <start>2014-10-19T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4043,7 +4043,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-20T00:00:00+01:00</start>
+      <start>2014-10-20T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4061,7 +4061,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-21T00:00:00+01:00</start>
+      <start>2014-10-21T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4079,7 +4079,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-22T00:00:00+01:00</start>
+      <start>2014-10-22T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4099,7 +4099,7 @@ Noeud lunaire : ne jardinez pas
 Jour racine</content>
 <cbx_symbol>0xAD 0xAB 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-23T00:00:00+01:00</start>
+      <start>2014-10-23T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <icon2>perigee.png</icon2>
@@ -4119,7 +4119,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-24T00:00:00+01:00</start>
+      <start>2014-10-24T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4137,7 +4137,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-25T00:00:00+01:00</start>
+      <start>2014-10-25T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4155,7 +4155,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-26T00:00:00+01:00</start>
+      <start>2014-10-26T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4173,7 +4173,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-27T00:00:00+01:00</start>
+      <start>2014-10-27T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4191,7 +4191,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-28T00:00:00+01:00</start>
+      <start>2014-10-28T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4209,7 +4209,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-29T00:00:00+01:00</start>
+      <start>2014-10-29T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4227,7 +4227,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-30T00:00:00+01:00</start>
+      <start>2014-10-30T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4245,7 +4245,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-10-31T00:00:00+01:00</start>
+      <start>2014-10-31T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4263,7 +4263,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-01T00:00:00+01:00</start>
+      <start>2014-11-01T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4281,7 +4281,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-02T00:00:00+01:00</start>
+      <start>2014-11-02T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4300,7 +4300,7 @@ Perigee : ne jardinez pas
 Jour feuille</content>
 <cbx_symbol>0xAC 0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-03T00:00:00+01:00</start>
+      <start>2014-11-03T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <icon2>feuille.png</icon2>
@@ -4319,7 +4319,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-04T00:00:00+01:00</start>
+      <start>2014-11-04T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4338,7 +4338,7 @@ Noeud lunaire : ne jardinez pas
 Jour feuille</content>
 <cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-05T00:00:00+01:00</start>
+      <start>2014-11-05T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <icon2>feuille.png</icon2>
@@ -4358,7 +4358,7 @@ Pleine lune
 Jour fruit</content>
 <cbx_symbol>0xAC 0xAA</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-06T00:00:00+01:00</start>
+      <start>2014-11-06T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>pleine_lune.png</icon1>
       <icon2>fruit.png</icon2>
@@ -4377,7 +4377,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-07T00:00:00+01:00</start>
+      <start>2014-11-07T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4395,7 +4395,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-08T00:00:00+01:00</start>
+      <start>2014-11-08T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4413,7 +4413,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-09T00:00:00+01:00</start>
+      <start>2014-11-09T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4431,7 +4431,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-10T00:00:00+01:00</start>
+      <start>2014-11-10T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4449,7 +4449,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-11T00:00:00+01:00</start>
+      <start>2014-11-11T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4467,7 +4467,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-12T00:00:00+01:00</start>
+      <start>2014-11-12T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4485,7 +4485,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-13T00:00:00+01:00</start>
+      <start>2014-11-13T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4503,7 +4503,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-14T00:00:00+01:00</start>
+      <start>2014-11-14T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4521,7 +4521,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-15T00:00:00+01:00</start>
+      <start>2014-11-15T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4539,7 +4539,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-16T00:00:00+01:00</start>
+      <start>2014-11-16T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4557,7 +4557,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-17T00:00:00+01:00</start>
+      <start>2014-11-17T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4575,7 +4575,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-18T00:00:00+01:00</start>
+      <start>2014-11-18T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4594,7 +4594,7 @@ Noeud lunaire : ne jardinez pas
 Jour racine</content>
 <cbx_symbol>0xAD 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-19T00:00:00+01:00</start>
+      <start>2014-11-19T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>perigee.png</icon1>
       <icon2>carotte.png</icon2>
@@ -4613,7 +4613,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-20T00:00:00+01:00</start>
+      <start>2014-11-20T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4631,7 +4631,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-21T00:00:00+01:00</start>
+      <start>2014-11-21T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4650,7 +4650,7 @@ Nouvelle lune
 Jour feuille</content>
 <cbx_symbol>0xAD 0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-22T00:00:00+01:00</start>
+      <start>2014-11-22T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <icon2>feuille.png</icon2>
@@ -4669,7 +4669,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-23T00:00:00+01:00</start>
+      <start>2014-11-23T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4687,7 +4687,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-24T00:00:00+01:00</start>
+      <start>2014-11-24T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4705,7 +4705,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-25T00:00:00+01:00</start>
+      <start>2014-11-25T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4723,7 +4723,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-26T00:00:00+01:00</start>
+      <start>2014-11-26T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4741,7 +4741,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-27T00:00:00+01:00</start>
+      <start>2014-11-27T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4759,7 +4759,7 @@ Jour racine</content>
 Perigee : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-28T00:00:00+01:00</start>
+      <start>2014-11-28T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4777,7 +4777,7 @@ Perigee : ne jardinez pas</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-29T00:00:00+01:00</start>
+      <start>2014-11-29T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4795,7 +4795,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-11-30T00:00:00+01:00</start>
+      <start>2014-11-30T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4813,7 +4813,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-01T00:00:00+01:00</start>
+      <start>2014-12-01T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4832,7 +4832,7 @@ Noeud lunaire : ne jardinez pas
 Jour feuille</content>
 <cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-02T00:00:00+01:00</start>
+      <start>2014-12-02T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <icon2>feuille.png</icon2>
@@ -4851,7 +4851,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-03T00:00:00+01:00</start>
+      <start>2014-12-03T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4869,7 +4869,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-04T00:00:00+01:00</start>
+      <start>2014-12-04T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4887,7 +4887,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-05T00:00:00+01:00</start>
+      <start>2014-12-05T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4906,7 +4906,7 @@ Pleine lune
 Jour racine</content>
 <cbx_symbol>0xAC 0xAA</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-06T00:00:00+01:00</start>
+      <start>2014-12-06T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>pleine_lune.png</icon1>
       <icon2>carotte.png</icon2>
@@ -4925,7 +4925,7 @@ Jour racine</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-07T00:00:00+01:00</start>
+      <start>2014-12-07T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4943,7 +4943,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-08T00:00:00+01:00</start>
+      <start>2014-12-08T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4961,7 +4961,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-09T00:00:00+01:00</start>
+      <start>2014-12-09T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4979,7 +4979,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-10T00:00:00+01:00</start>
+      <start>2014-12-10T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -4997,7 +4997,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-11T00:00:00+01:00</start>
+      <start>2014-12-11T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5015,7 +5015,7 @@ Jour feuille</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-12T00:00:00+01:00</start>
+      <start>2014-12-12T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5033,7 +5033,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-13T00:00:00+01:00</start>
+      <start>2014-12-13T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5051,7 +5051,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-14T00:00:00+01:00</start>
+      <start>2014-12-14T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5069,7 +5069,7 @@ Jour fruit</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-15T00:00:00+01:00</start>
+      <start>2014-12-15T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5087,7 +5087,7 @@ Jour racine</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAD 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-16T00:00:00+01:00</start>
+      <start>2014-12-16T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5105,7 +5105,7 @@ Noeud lunaire : ne jardinez pas</content>
 Jour racine</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-17T00:00:00+01:00</start>
+      <start>2014-12-17T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5123,7 +5123,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-18T00:00:00+01:00</start>
+      <start>2014-12-18T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5141,7 +5141,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-19T00:00:00+01:00</start>
+      <start>2014-12-19T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5159,7 +5159,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAD</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-20T00:00:00+01:00</start>
+      <start>2014-12-20T00:00:00+00:00</start>
       <icon0>descendante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5177,7 +5177,7 @@ Jour feuille</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-21T00:00:00+01:00</start>
+      <start>2014-12-21T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5196,7 +5196,7 @@ Nouvelle lune
 Jour fruit</content>
 <cbx_symbol>0xAC 0xAB</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-22T00:00:00+01:00</start>
+      <start>2014-12-22T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>nouvelle_lune.png</icon1>
       <icon2>fruit.png</icon2>
@@ -5215,7 +5215,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-23T00:00:00+01:00</start>
+      <start>2014-12-23T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5233,7 +5233,7 @@ Jour fruit</content>
 Perigee : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xB0</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-24T00:00:00+01:00</start>
+      <start>2014-12-24T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5251,7 +5251,7 @@ Perigee : ne jardinez pas</content>
 Jour racine</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-25T00:00:00+01:00</start>
+      <start>2014-12-25T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>carotte.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5269,7 +5269,7 @@ Jour racine</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-26T00:00:00+01:00</start>
+      <start>2014-12-26T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5287,7 +5287,7 @@ Jour fleur</content>
 Jour fleur</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-27T00:00:00+01:00</start>
+      <start>2014-12-27T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fleur.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5305,7 +5305,7 @@ Jour fleur</content>
 Jour feuille</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-28T00:00:00+01:00</start>
+      <start>2014-12-28T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>feuille.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5323,7 +5323,7 @@ Jour feuille</content>
 Noeud lunaire : ne jardinez pas</content>
 <cbx_symbol>0xAC 0xAE</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-29T00:00:00+01:00</start>
+      <start>2014-12-29T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>perigee.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5341,7 +5341,7 @@ Noeud lunaire : ne jardinez pas</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-30T00:00:00+01:00</start>
+      <start>2014-12-30T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
@@ -5359,7 +5359,7 @@ Jour fruit</content>
 Jour fruit</content>
 <cbx_symbol>0xAC</cbx_symbol>
 <duration>0</duration>
-      <start>2014-12-31T00:00:00+01:00</start>
+      <start>2014-12-31T00:00:00+00:00</start>
       <icon0>montante.png</icon0>
       <icon1>fruit.png</icon1>
       <color>rgba(170, 170, 170, 0.1)</color>
