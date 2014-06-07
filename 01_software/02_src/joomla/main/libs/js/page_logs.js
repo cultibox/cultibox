@@ -619,7 +619,6 @@ $(document).ready(function() {
     var name="load_log";
     $.ajax({
         cache: false,
-        async: true,
         url: "../../main/modules/external/get_variable.php",
         data: {name:name}
     }).done(function (data) {
@@ -627,7 +626,6 @@ $(document).ready(function() {
             var name="sd_card";
             $.ajax({
                 cache: false,
-                async: true,
                 url: "../../main/modules/external/get_variable.php",
                 data: {name:name}
             }).done(function (data) {
@@ -694,7 +692,6 @@ $(document).ready(function() {
 		 var name="sd_card";
          $.ajax({
             cache: false,
-            async: true,
             url: "../../main/modules/external/get_variable.php",
             data: {name:name}
          }).done(function (data) {
@@ -1159,7 +1156,6 @@ $(document).ready(function() {
        if($("input:radio[name=type_select]:checked").val()=="day") {
             $.ajax({
                 cache: false,
-                async: false,
                 url: "../../main/modules/external/check_value.php",
                 data: {value:$("#datepicker").val(),type:'date'}
             }).done(function (data) {
@@ -1174,7 +1170,6 @@ $(document).ready(function() {
         } else {
             $.ajax({
                 cache: false,
-                async: false,
                 url: "../../main/modules/external/check_value.php",
                 data: {value:$("#startyear option:selected").val()+"-"+$("#startmonth option:selected").val(),type:'month'}
             }).done(function (data) {

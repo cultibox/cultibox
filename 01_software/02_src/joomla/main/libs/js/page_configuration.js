@@ -77,7 +77,6 @@ $(document).ready(function(){
         var checked=true;
         $.ajax({
             cache: false,
-            async: false,
             url: "../../main/modules/external/check_value.php",
             data: {value:$("#reset_min_max").val(),type:'short_time'}
         }).done(function (data) {
@@ -93,7 +92,6 @@ $(document).ready(function(){
         if($("#alarm_enable option:selected").val()=="0001") {
             $.ajax({
                 cache: false,
-                async: false,
                 url: "../../main/modules/external/check_value.php",
                 data: {value:$("#alarm_value").val(),type:'alarm_value'}
             }).done(function (data) {
@@ -110,7 +108,6 @@ $(document).ready(function(){
         if($("#wifi_enable option:selected").val()=="1") {
             $.ajax({
                 cache: false,
-                async: false,
                 url: "../../main/modules/external/check_value.php",
                 data: {value:$("#wifi_ssid").val(),type:'ssid'}
             }).done(function (data) {
@@ -126,7 +123,6 @@ $(document).ready(function(){
             if((wifi_password!="")&&($("#wifi_password").val()!="")) {
                 $.ajax({
                     cache: false,
-                    async: false,
                     url: "../../main/modules/external/check_value.php",
                     data: {value:$("#wifi_password").val()+"____"+$("#wifi_password_confirm").val(),type:'password'}
                 }).done(function (data) {
@@ -159,7 +155,6 @@ $(document).ready(function(){
 
                         $.ajax({
                             cache: false,
-                            async: false,
                             url: "../../main/modules/external/check_value.php",
                             data: {value:$("#wifi_password").val(),type:type_password}
                         }).done(function (data) {
@@ -203,7 +198,6 @@ $(document).ready(function(){
             if($('#wifi_ip_manual').prop('checked')) {
                 $.ajax({
                     cache: false,
-                    async: false,
                     url: "../../main/modules/external/check_value.php",
                     data: {value:$("#wifi_ip").val(),type:'ip'}
                 }).done(function (data) {
@@ -221,7 +215,6 @@ $(document).ready(function(){
         if(checked) {
             $.ajax({
                 cache: false,
-                async: false,
                 url: "../../main/modules/external/configure_menu.php",
                 data: {cost:$("#show_cost").val(),wifi:$("#wifi_enable").val()}
             });
@@ -245,7 +238,6 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             cache: false,
-            async: true,
             url: "../../main/modules/external/check_sd.php",
             data: {path:$("#selected_hdd").val()}
          }).done(function (data) {

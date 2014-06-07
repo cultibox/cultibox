@@ -411,7 +411,7 @@ msgid "IMPORT_LOG"
 msgstr "Importer les logs"
 
 msgid "NO_IMPORT_LOG"
-msgstr "Pas de carte SD détéctée"
+msgstr "Pas de carte SD détectée"
 
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Résumé des régulations secondaires actives pour les prises sélectionnées"
@@ -867,7 +867,7 @@ msgid "JUMPTO_PLUG"
 msgstr "Configurer la prise associée à ce programme"
 
 msgid "ERROR_MAX_PROGRAM"
-msgstr "Le nombre maximal de changement d'état pour les prises (limité à 999 pour toutes les prises confondues) a été atteint. La dernière action de vos programmes se déroulera à:"
+msgstr "Le nombre maximal de changement d'état pour les prises (limité à 999 pour toutes les prises confondues) a été atteint. La dernière action de vos programmes se déroulera à :"
 
 msgid "CYCLIC_DURATION_TIME"
 msgstr "Durée"
@@ -902,7 +902,7 @@ msgstr "Le programme a bien été supprimé."
 msgid "PARAMETERS"
 msgstr "Paramètres"
 
-# For the export module highchart part:
+# For the export module highchart part :
 msgid "CONTEXT_MENU"
 msgstr "Exporter votre graphe"
 
@@ -928,7 +928,7 @@ msgid "RESET_ZOOM_TITLE"
 msgstr "Annuler le zoom"
 
 
-# For the wizard part:
+# For the wizard part :
 msgid "WIZARD_FIRST_USE"
 msgstr "Bienvenue dans l'interface de configuration et d'utilisation de votre Cultibox. L'assistant va vous permettre facilement de configurer les programmes associés à vos prises, de configurer le type de prise et leur comportement. Cliquer sur le bouton <b>suivant</b> pour lancer l'assistant. Vous pouvez passer cette étape et configurer manuellement vos prises en cliquant sur le bouton <b>Fermer l'assistant</b>"
 
@@ -972,7 +972,7 @@ msgid "WIZARD_OTHER_PLUG_NUMBER"
 msgstr "Vous allez maintenant configurer une nouvelle prise."
 
 msgid "WIZARD_OTHER_PLUG_TYPE"
-msgstr "Choisir le type de prise à utiliser: <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour augmenter l'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une pompe à eau pour augmenter le niveau d'eau</li><li>une lampe</li><li>'autre' servant pour tous les autres type d'équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
+msgstr "Choisir le type de prise à utiliser : <ul class='list_class_wizard'><li>un chauffage pour augmenter la température</li><li>un ventilateur pour abaisser la température</li><li>un humidificateur pour augmenter l'humidité</li><li>un déshumidificateur pour diminuer l'humidité</li><li>une pompe à eau pour augmenter le niveau d'eau</li><li>une lampe</li><li>'autre' servant pour tous les autres type d'équipements. <br /><br />Si vous choisissez de configurer une nouvelle lampe, celle-ci doit être <b>moins puissante que 200 Watts</b>"
 
 msgid "START_TIME_LAMP"
 msgstr "Heure d'allumage de la lampe"
@@ -981,7 +981,7 @@ msgid "END_TIME_LAMP"
 msgstr "Heure d'extinction de la lampe"
 
 
-#For the calendar part:
+#For the calendar part :
 msgid "CALENDAR_TITLE"
 msgstr "Calendrier"
 
@@ -1126,6 +1126,12 @@ msgstr "Aucun calendrier XML présent"
 msgid "XML_DISPLAYED_FILE"
 msgstr "Fichiers XML à afficher"
 
+msgid "LUNAR_CALENDAR_SAVE_SD"
+msgstr "Enregistrer le calendrier lunaire sur la carte SD"
+
+msgid "SAVE"
+msgstr "Enregistrer"
+
 msgid "CALENDAR_EVENT_NAME"
 msgstr "Nom de l'événement"
 
@@ -1159,6 +1165,8 @@ msgstr "Programme journalier"
 msgid "ERROR_DROP_EVENT"
 msgstr "Erreur : il y a déjà un programme journalier définit ce jour là."
 
+msgid "CALENDAR_UPDATE_SD_EVENT"
+msgstr "Mise à jour des événements sur la carte SD"
 
 # For the cost part:
 msgid "SELECT_START_DAY"
@@ -1252,10 +1260,10 @@ msgid "CONFIGURE_COST_PRICE_HC"
 msgstr "Prix en heure creuse"
 
 msgid "CONFIGURE_START_HC"
-msgstr "Début des heures creuses: (HH:MM)"
+msgstr "Début des heures creuses : (HH:MM)"
 
 msgid "CONFIGURE_STOP_HC"
-msgstr "Fin des heures creuses: (HH:MM)"
+msgstr "Fin des heures creuses : (HH:MM)"
 
 msgid "PROGRESS_COST_REAL"
 msgstr "Calcul du coût réel en cours"
@@ -1326,7 +1334,7 @@ msgid "SENSOR_VALUE"
 msgstr "Dernière valeur enregistrée"
 
 
-# For the errors or warnings part:
+# For the errors or warnings part :
 msgid "INFORMATION"
 msgstr "Information(s)"
 
@@ -1352,19 +1360,19 @@ msgid "EMPTY_POWER_DATA"
 msgstr "Aucun enregistrement concernant la puissance consommée pour la date sélectionnée"
 
 msgid "ERROR_FORMAT_DATE_DAY_START"
-msgstr "Jour de départ: erreur dans le format de la date (AAAA-MM-JJ)"
+msgstr "Jour de départ : erreur dans le format de la date (AAAA-MM-JJ)"
 
 msgid "ERROR_FORMAT_CALENDAR_DATE"
 msgstr "Erreur dans le format de la date (AAAA-MM-JJ)"
 
 msgid "ERROR_FORMAT_DATE_DAY_END"
-msgstr "Jour de fin: erreur dans le format de la date (AAAA-MM-JJ)"
+msgstr "Jour de fin : erreur dans le format de la date (AAAA-MM-JJ)"
 
 msgid "ERROR_FORMAT_DATE_DAY"
-msgstr "Jour à afficher: erreur dans le format (AAAA-MM-JJ)"
+msgstr "Jour à afficher : erreur dans le format (AAAA-MM-JJ)"
 
 msgid "ERROR_FORMAT_DATE_MONTH"
-msgstr "Mois à afficher: erreur dans le format (MM)"
+msgstr "Mois à afficher : erreur dans le format (MM)"
 
 msgid "ERROR_SD_CARD_CONF"
 msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre configuration"
@@ -1373,10 +1381,10 @@ msgid "ERROR_SD_CARD"
 msgstr "Aucune carte SD compatible Cultibox détectée, vérifier que votre carte soit correctement branchée"
 
 msgid "ERROR_FORMAT_TIME"
-msgstr "Erreur dans le format de l'heure: HH:MM:SS"
+msgstr "Erreur dans le format de l'heure : HH:MM:SS"
 
 msgid "ERROR_FORMAT_TIME_DURATION"
-msgstr "Durée: erreur dans le format (HH:MM:SS)"
+msgstr "Durée : erreur dans le format (HH:MM:SS)"
 
 msgid "ERROR_FORMAT_TIME_START"
 msgstr "Heure de départ: erreur dans le format (HH:MM:SS)"
@@ -1546,7 +1554,7 @@ msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8
 
 # For the informations part:
 msgid "SHOW_MESSAGE"
-msgstr "Cliquez sur l'oeil pour faire apparaître la boite de messages du logiciel"
+msgstr "Cliquez sur l'œil pour faire apparaître la boite de messages du logiciel"
 
 msgid "CONFIRMATION"
 msgstr "Confirmation"
@@ -1576,7 +1584,7 @@ msgid "VALID_IMPORT_PROGRAM"
 msgstr "Programme importé avec succès"
 
 msgid "VALID_DELETE_LOGS"
-msgstr "Suppréssion des logs effectuée avec succès"
+msgstr "Suppression des logs effectuée avec succès"
 
 msgid "VALID_LOAD_LOG"
 msgstr "Fichiers de logs des derniers mois enregistrés avec succès"

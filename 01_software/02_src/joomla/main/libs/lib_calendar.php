@@ -158,7 +158,8 @@ function concat_entries($data,$date) {
 
 // {{{ read_event_from_db()
 // ROLE read calendar from the database and format its to be writen into a sd card
-// IN   $start         error or warning message
+// IN   $start         ms unix format
+// IN   $end           ms unix format
 // RET an array containing datas
 function read_event_from_db (&$tab_event,$start="",$end="") {
 
@@ -167,14 +168,14 @@ function read_event_from_db (&$tab_event,$start="",$end="") {
         $date = date("Y-m-d H:i:s");
         
         if ($start == "")
-            $start = $date;
+            $start = date("Y-m-d H:i:s");
         else
-            $start = date("Y-m-d H:i:s", strtotime($start));
+            $start = date("Y-m-d H:i:s", $start);
             
         if ($end == "")
             $end  = date("Y-m-d H:i:s", strtotime("+3 months", strtotime($date)));
         else
-            $end = date("Y-m-d H:i:s", strtotime($end));
+            $end = date("Y-m-d H:i:s", $end);
             
 
         $data=array();

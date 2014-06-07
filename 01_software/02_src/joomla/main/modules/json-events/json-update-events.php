@@ -59,36 +59,18 @@ EOF;
 
         if ((strcmp("$start",$res[0]['StartTime'])==0)&&(strcmp("$end",$res[0]['EndTime'])==0)) {
             if ((isset($sd_card))&&(!empty($sd_card))) {
-                if ($start == $end || !isset($end) ||empty($end))
+                $calendar = array();
+                calendar\read_event_from_db($calendar,strtotime($start), strtotime($end));
+                
+                // Read event from XML
+                foreach (calendar\get_external_calendar_file() as $fileArray)
                 {
-                    $calendar = array();
-                    calendar\read_event_from_db($calendar,$start);
-                    
-                    // Read event from XML
-                    foreach (calendar\get_external_calendar_file() as $fileArray)
-                    {
-                        if ($fileArray['activ'] == 1)
-                            calendar\read_event_from_XML($fileArray['filename'],$calendar,0,strtotime($start));
-                    }
-                
-                    write_calendar($sd_card,$calendar,$main_error,strtotime($start));
-                    calendar\write_plgidx($sd_card,$calendar);
-
-                } else {
-                    $calendar = array();
-                    calendar\read_event_from_db($calendar,$start,$end);
-                    
-                    // Read event from XML
-                    foreach (calendar\get_external_calendar_file() as $fileArray)
-                    {
-                        if ($fileArray['activ'] == 1)
-                            calendar\read_event_from_XML($fileArray['filename'],$calendar,0,strtotime($start),strtotime($end));
-                    }
-                
-                    write_calendar($sd_card,$calendar,$main_error,strtotime($start),strtotime($end));
-                    calendar\write_plgidx($sd_card,$calendar);
-
+                    if ($fileArray['activ'] == 1)
+                        calendar\read_event_from_XML($fileArray['filename'],$calendar,0,strtotime($start),strtotime($end));
                 }
+            
+                write_calendar($sd_card,$calendar,$main_error,strtotime($start),strtotime($end));
+                calendar\write_plgidx($sd_card,$calendar);
             }
         } else {
             $timestart=date("U",strtotime($start));
@@ -105,7 +87,7 @@ EOF;
             }
 
             $calendar = array();
-            calendar\read_event_from_db($calendar,$start,$end);
+            calendar\read_event_from_db($calendar,strtotime($start), strtotime($end));
 
             foreach (calendar\get_external_calendar_file() as $fileArray)
             {
