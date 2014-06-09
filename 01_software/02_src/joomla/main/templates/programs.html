@@ -31,7 +31,7 @@
             <!-- Button for param -->
             <input type="image" id="program_settings" name="program_settings" 
                 src="main/libs/img/advancedsettings.png" width="32"
-                title="<?php echo __('PARAMETERS_PROGRAM'); ?>" 
+                title="<?php echo __('TOOLTIP_PARAMETERS_PROGRAM'); ?>" 
                 alt="program"
             />
         </td>
@@ -266,8 +266,6 @@
     </tr>
 </table>
 
-
-
 <?php if($activ_daily_program == "True") { ?>
     <!-- Daily program management -->
     <div id="dialog-form-save-daily" title="Sauvegarde">
@@ -382,7 +380,7 @@
                 <?php echo __('TITLE_IMPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_PROGRAM'); ?>" />
             </td>
             <td>
-                <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+                <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" enctype= "multipart/form-data">
                     <select name="import_selected_plug" id="import_selected_plug">
                     <?php for($i=1;$i<=$nb_plugs;$i++) {
                             if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],"False")==0) {

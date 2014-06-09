@@ -2117,7 +2117,8 @@ function generate_program_from_file($file="",$plug,&$out) {
                         "start_time" => $temp[0],
                         "end_time" => $temp[1],
                         "value_program" => $temp[2],
-                        "type" =>  $temp[3] 
+                        "type" =>  $temp[3],
+                        "number" => 1
                     );
                 }
             }
