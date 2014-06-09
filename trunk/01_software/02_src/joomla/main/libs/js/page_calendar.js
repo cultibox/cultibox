@@ -544,9 +544,7 @@ $(document).ready(function() {
                                     });       
                                 } 
                                 
-                                $('#calendar').fullCalendar('unselect');
                                 $('#calendar').fullCalendar('refetchEvents');
-                                $('#calendar').fullCalendar('rerenderEvents');
                                 
                             });
 
@@ -593,6 +591,7 @@ $(document).ready(function() {
             copiedEventObject.allDay = allDay;
             copiedEventObject.title = "<?php echo __('CALENDAR_DAILY_PROGRAM') ; ?>" + " " + originalEventObject.title;
             copiedEventObject.description = copiedEventObject.title;
+            copiedEventObject.id = 1000;
             
             // Check if there is an other programm on the same day
             if (daily_program_check_overlaping(copiedEventObject)) {
@@ -603,10 +602,6 @@ $(document).ready(function() {
                 return "";
             }
 
-            // render the event on the calendar
-            // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-            
             // Compute date for ajax
             ajaxDate = "";
             ajaxDate = ajaxDate + copiedEventObject.start.getFullYear();
@@ -633,7 +628,7 @@ $(document).ready(function() {
                 }
             }).done(function (data) {
                if(data==1) {
-                    //$('#calendar').fullCalendar( 'refetchEvents' );
+                    $('#calendar').fullCalendar( 'refetchEvents' );
                     $("#valid_create_calendar").dialog({
                         resizable: true,
                         width: 450,
@@ -894,7 +889,6 @@ $(document).ready(function() {
                                 $('#calendar').fullCalendar('removeEvents', event.id);
                                 $('#calendar').fullCalendar('updateEvent', event);
                                 $('#calendar').fullCalendar( 'refetchEvents' );
-                                $('#calendar').fullCalendar( 'rerenderEvents' );
                                 $("#select_remark").text("");
                                 $("#select_remark").val("");
                                 $("#other_field_title").text("");
@@ -960,7 +954,6 @@ $(document).ready(function() {
                             <?php } ?>
 
                             $('#calendar').fullCalendar( 'refetchEvents' );
-                            $('#calendar').fullCalendar( 'rerenderEvents' );
                             
                         });
                     },
