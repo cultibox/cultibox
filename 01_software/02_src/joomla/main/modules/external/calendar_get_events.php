@@ -27,7 +27,7 @@ $files = glob('../../xml/permanent/*.{xml}', GLOB_BRACE);
 
 foreach($files as $file) {
     // Gets element from XML
-    $id = calendar\read_event_from_XML ($file,$event ,$id + 1,strtotime($start),strtotime($end));
+    $id = calendar\read_event_from_XML ($file,$event ,$id + 1,$start,$end);
 }
 
 echo json_encode($event);

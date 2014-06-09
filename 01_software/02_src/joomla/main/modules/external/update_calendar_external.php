@@ -50,13 +50,16 @@ if(    !empty($program_substrat)
 
     if($handle = @opendir('../../xml')) {
         while (false !== ($entry = readdir($handle))) {
-            if(($entry!=".")&&($entry!="..")) {
+            if(is_dir("../../xml/".$entry) === false) {
+            
                 $rss_file = file_get_contents("../../xml/".$entry);
                 $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
 
                 foreach ($xml as $tab) {
                     if(is_array($tab)) {
-                        if((array_key_exists('substrat', $tab))&&(array_key_exists('marque', $tab))&&(array_key_exists('periode', $tab))) {
+                        if( (array_key_exists('substrat', $tab))&&
+                            (array_key_exists('marque', $tab))&&
+                            (array_key_exists('periode', $tab))) {
                             if((strcmp(strtolower($tab['marque']." - ".$tab['periode']),strtolower($program_product))==0)&&((strcmp(strtolower($tab['substrat']),strtolower($program_substrat))==0))) {
                                 $file=$entry;
                                 break;
@@ -266,8 +269,7 @@ if(    !empty($daily_program_name)
     $event = array();
 
     // Convert time
-    $datestartTimestamp = strtotime($calendar_start);
-    $timestart = date('Ymd', strtotime('+0 days', $datestartTimestamp));
+    $timestart = date('Y-m-d 02:00:00', strtotime($calendar_start));
     
     // Create event 
     $event[]=array(

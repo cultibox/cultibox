@@ -454,12 +454,12 @@ function insert_calendar($event,&$out) {
             if (!array_key_exists("program_index",$evt))
                 $evt["program_index"] = "";
         
-        $sql = $sql.<<<EOF
-INSERT INTO `calendar`(`Title`,`StartTime`, `EndTime`,`Description`,`Color`,`Icon`,`program_index`) VALUES("{$evt['title']}", "{$evt['start']}", "{$evt['end']}", "{$evt['description']}", "{$evt['color']}","{$evt['icon']}","{$evt['program_index']}");
-EOF;
+        $sql = "INSERT INTO calendar" 
+            . " (Title, StartTime, EndTime, Description, Color, Icon, program_index) "
+            . "  VALUES('{$evt['title']}', '{$evt['start']}', '{$evt['end']}', '{$evt['description']}', '{$evt['color']}', '{$evt['icon']}', '{$evt['program_index']}');";
         }
     $db = db_priv_pdo_start();
-    $db->exec("$sql");
+    $db->exec($sql);
     $db=null;
     return true;
 }
@@ -499,30 +499,29 @@ EOF;
 //    $end      
 // RET  0 is an error occured, 1 else
 function reset_log($table="",$start="",$end="") {
-    if(strcmp("$table","")==0) return 0;
+    if($table == "") 
+        return 0;
+    
     $error=1;
 
-if((strcmp($start,"")==0)||(strcmp($end,"")==0)) {
-    $sql = <<<EOF
-TRUNCATE `{$table}`
-EOF;
-} else {
-    $sql = <<<EOF
-DELETE FROM `{$table}` WHERE `date_catch` BETWEEN "{$start}" AND "{$end}"
-EOF;
-}
-           $db=db_priv_pdo_start();
-           try {
-                $db->exec("$sql");
-           } catch(PDOException $e) {
-                $ret=$e->getMessage();
-           }
-           $db=null;
+    if($start == "" || $end == "") {
+        $sql = "TRUNCATE TABLE {$table};";
+    } else {
+        $sql = "DELETE FROM {$table} WHERE date_catch BETWEEN '{$start}' AND '{$end}';";
+    }
+    
+    $db=db_priv_pdo_start();
+    try {
+        $db->exec($sql);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
 
-           if((isset($ret))&&(!empty($ret))) {
-                  $error=0;
-           }
-           return $error;
+    if((isset($ret))&&(!empty($ret))) {
+          $error=0;
+    }
+    return $error;
 }
 // }}}
 
