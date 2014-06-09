@@ -238,6 +238,7 @@ msgstr "second (s)"
 msgid "ACTIV_DAILY_PROGRAM"
 msgstr "Enable daily program"
 
+
 # For the logs part:
 msgid "HISTO_GRAPH"
 msgstr "Climate graphs"
@@ -345,7 +346,7 @@ msgid "SELECT_PROGRAM_PLUG"
 msgstr "Program to compare"
 
 msgid "SELECT_CURVE_TO_DISPLAY"
-msgstr "Curves show"
+msgstr "<b>Selection curves:</b> select curves to display"
 
 msgid "SELECT_POWER_PLUG"
 msgstr "Display power consumption"
@@ -565,6 +566,12 @@ msgstr "Max"
 
 msgid "SUMARY_MIN"
 msgstr "Min"
+
+msgid "PARAMETERS_LOGS_TITLE"
+msgstr "Options curves"
+
+msgid "PARAMETERS_CURVE_DISPLAYED"
+msgstr "Selection curves"
 
 
 # For the plugs part:
@@ -902,9 +909,6 @@ msgstr "Remove"
 
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "The program has been deleted."
-
-msgid "PARAMETERS"
-msgstr "Settings"
 
 msgid "PARAMETERS_PROGRAM_TITLE"
 msgstr "Advanced program options"
@@ -1782,6 +1786,9 @@ msgstr "<b>Advanced Calendar Options:</b> Display support external XML files (su
 
 msgid "TOOLTIP_PARAMETERS_PROGRAM"
 msgstr "<b>Advanced program options:</b> export or import of a program, reset programs, adding or deleting taken"
+
+msgid "TOOLTIP_PARAMETERS_LOGS"
+msgstr "<b>Curves options:</b> set the color curves"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
 msgstr "Set the program to apply."

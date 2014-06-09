@@ -7,7 +7,7 @@
 <label id="anchor-programs"></label>
 <br />
 <!-- Head title befor program showing -->
-<p class="title_conf">
+<label class="title_conf">
     <?php echo __('VIEW_CURRENT_PROGRAM') . program\get_field_from_program_index("name",$program_index_id) . "  -  " . __('VIEW_CURRENT_PROGRAM_PLUG_PART'); ?>
         
     <select name="selected_plug" id="selected_plug_conf">
@@ -21,12 +21,12 @@
         } 
     ?>
     </select>
-</p>
+</label>
 
 <!-- Menu button -->
 <table class="table_width">
     <tr>
-        <td class="program-div-margin"></td>
+        <td class="program-div-margin-param"></td>
         <td>
             <!-- Button for param -->
             <input type="image" id="program_settings" name="program_settings" 
@@ -34,10 +34,9 @@
                 title="<?php echo __('TOOLTIP_PARAMETERS_PROGRAM'); ?>" 
                 alt="program"
             />
-        </td>
+        </td>       
     </tr>
 </table>
-<br />
 
 
 

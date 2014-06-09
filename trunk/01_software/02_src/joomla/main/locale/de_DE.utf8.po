@@ -238,6 +238,7 @@ msgstr "Sekunde (n)"
 msgid "ACTIV_DAILY_PROGRAM"
 msgstr "Aktivieren Tagesprogramm"
 
+
 # For the logs part:
 msgid "HISTO_GRAPH"
 msgstr "Klimagraphen"
@@ -345,7 +346,7 @@ msgid "SELECT_PROGRAM_PLUG"
 msgstr "Programm zum vergleichen"
 
 msgid "SELECT_CURVE_TO_DISPLAY"
-msgstr "Die Kurven zeigen"
+msgstr "<b>Auswahl Kurven:</b> select Kurven angezeigt"
 
 msgid "SELECT_POWER_PLUG"
 msgstr "Display-Stromverbrauch"
@@ -565,6 +566,12 @@ msgstr "Max"
 
 msgid "SUMARY_MIN"
 msgstr "Min"
+
+msgid "PARAMETERS_LOGS_TITLE"
+msgstr "Optionen Kurven"
+
+msgid "PARAMETERS_CURVE_DISPLAYED"
+msgstr "Auswahl Kurven"
 
 
 # For the plugs part:
@@ -902,9 +909,6 @@ msgstr "Entfernen"
 
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "Das Programm wurde gelöscht."
-
-msgid "PARAMETERS"
-msgstr "Einstellungen"
 
 msgid "PARAMETERS_PROGRAM_TITLE"
 msgstr "Erweiterte Programmoptionen"
@@ -1782,6 +1786,9 @@ msgstr "<b>Erweiterte Kalenderoptionen:</b> Display-Unterstützung externe XML-D
 
 msgid "TOOLTIP_PARAMETERS_PROGRAM"
 msgstr "Erweiterte Programmoptionen: Export oder Import eines Programms, setzen Programme, Hinzufügen oder Löschen genommen"
+
+msgid "TOOLTIP_PARAMETERS_LOGS"
+msgstr "<b>Optionen des courbes:</b> Konfigurator la couleur de vos courbes"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
 msgstr "Stellen Sie das Programm zu bewerben."

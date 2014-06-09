@@ -345,7 +345,7 @@ msgid "SELECT_PROGRAM_PLUG"
 msgstr "Programme à comparer"
 
 msgid "SELECT_CURVE_TO_DISPLAY"
-msgstr "Courbes à afficher"
+msgstr "<b>Sélection des courbes:</b> sélectionner les courbes à afficher"
 
 msgid "SELECT_POWER_PLUG"
 msgstr "Afficher la puissance consommée"
@@ -565,6 +565,12 @@ msgstr "Max"
 
 msgid "SUMARY_MIN"
 msgstr "Min"
+
+msgid "PARAMETERS_LOGS_TITLE"
+msgstr "Options des courbes"
+
+msgid "PARAMETERS_CURVE_DISPLAYED"
+msgstr "Sélection des courbes"
 
 
 # For the plugs part:
@@ -902,9 +908,6 @@ msgstr "Supprimer"
 
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "Le programme a bien été supprimé."
-
-msgid "PARAMETERS"
-msgstr "Paramètres"
 
 msgid "PARAMETERS_PROGRAM_TITLE"
 msgstr "Options avancées des programmes"
@@ -1782,6 +1785,9 @@ msgstr "<b>Options avancées du calendrier:</b> gestion de l'affichage des fichi
 
 msgid "TOOLTIP_PARAMETERS_PROGRAM"
 msgstr "<b>Options avancées des programmes:</b> export ou import d'un programme, remise à zéro des programmes, ajout ou suppréssion de prises"
+
+msgid "TOOLTIP_PARAMETERS_LOGS"
+msgstr "<b>Options des courbes:</b> configurer la couleur des courbes"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
 msgstr "Définissez le programme à appliquer."
