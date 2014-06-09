@@ -676,6 +676,10 @@ msgstr "Variateur"
 msgid "CANAL"
 msgstr "Canal"
 
+msgid "CONFIRMATION_CHANGEMENT_TYPE_PLUG"
+msgstr "Un programme semble déja définie pour cette prise. Changer le type de la prise peut impacter le programme de façon inattendu. Que voulez-vous faire?"
+
+
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
 msgstr "Programme : "

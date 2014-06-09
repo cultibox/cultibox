@@ -677,6 +677,9 @@ msgstr "Regulador de intensidad"
 msgid "CANAL"
 msgstr "Canal"
 
+msgid "CONFIRMATION_CHANGEMENT_TYPE_PLUG"
+msgstr "Un programa définie Déjà semble vierten premio cette. Tipo de cambiador le de la premio peut impacter le programa de façon inattendu. Que Voulez-vous faire?"
+
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"

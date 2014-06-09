@@ -676,6 +676,10 @@ msgstr "Dimmer"
 msgid "CANAL"
 msgstr "Kanal"
 
+msgid "CONFIRMATION_CHANGEMENT_TYPE_PLUG"
+msgstr "Ein Ensemble Déja Programm Definit gießen cette Preis. Changer le peut Art der Preis Sie Impacter inattendu Programm de façon. Das Voulez-vous faire?"
+
+
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
 msgstr "Programm :"

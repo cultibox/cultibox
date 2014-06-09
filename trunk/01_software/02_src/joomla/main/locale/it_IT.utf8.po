@@ -676,6 +676,10 @@ msgstr "Oscuratore"
 msgid "CANAL"
 msgstr "Canale"
 
+msgid "CONFIRMATION_CHANGEMENT_TYPE_PLUG"
+msgstr "Un programma définie Deja tarlo versare il premio cette. Tipo di Changer le de la premio peut impattatore le programme de façon inattendu. Que Voulez-vous faire?"
+
+
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
 msgstr "Programma :"

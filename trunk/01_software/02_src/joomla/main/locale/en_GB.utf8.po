@@ -676,6 +676,10 @@ msgstr "Dimmer"
 msgid "CANAL"
 msgstr "Channel"
 
+msgid "CONFIRMATION_CHANGEMENT_TYPE_PLUG"
+msgstr "A Programme semble vu pour cette prize définie. Changer le peut type of prize you impacter inattendu program de façon. That voulez-vous faire?"
+
+
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
 msgstr "Program :"

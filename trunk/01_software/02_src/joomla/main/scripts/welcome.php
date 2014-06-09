@@ -58,7 +58,7 @@ if(count($browser)>0) {
 
 //If programs configured by user is empty, display the wizard interface link
 if(isset($nb_plugs)&&(!empty($nb_plugs))) {
-    if(check_programs($nb_plugs)) {
+    if(check_programs($nb_plugs),-1) {
         $wizard=false; //There is two welcome pages displayed: if it's the first time the user launche the software (no programs recorded yet) we will display links altought we will display the notes
     }
 }
