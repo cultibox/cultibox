@@ -902,6 +902,13 @@ msgstr "Il programma è stato cancellato."
 msgid "PARAMETERS"
 msgstr "Impostazioni"
 
+msgid "PARAMETERS_PROGRAM"
+msgstr ""
+
+msgid "PARAMETERS_PROGRAM_TITLE"
+msgstr ""
+
+
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
 msgstr "Esportare il grafico"
@@ -1167,6 +1174,10 @@ msgstr "Errore: c'è già un programma quotidiano definisce quel giorno."
 
 msgid "CALENDAR_UPDATE_SD_EVENT"
 msgstr "Eventi Aggiornamento sulla scheda SD"
+
+msgid "PARAMETERS_CALENDAR_TITLE"
+msgstr "Opzioni calendario avanzate"
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"
@@ -1757,13 +1768,16 @@ msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
 msgstr "Questo valore può essere modificato solo se hai consentito la modifica delle opzioni di controllo nella scheda di configurazione. È possibile scegliere come il valore calcolato utilizzato per rendere il controllo"
 
 msgid "TOOLTIP_RESET_CALENDAR"
-msgstr "Rimuove tutte le annotazioni del calendario che è stato inserito manualmente. Questo include fertilizzante crescita eventualmente aggiunto, ma non include i calendari esterni calendario lunare-tipo "
+msgstr "<b>Rimozione annotazioni calendario:</b> rimuove tutte le annotazioni del calendario registrato manualmente, questo include i fertilizzanti eventualmente aggiunti crescita, ma non include i calendari esterni Calendario Lunare Tipo"
 
 msgid "TOOLTIP_MANAGE_XML"
 msgstr "Consente di gestire più facilmente la visualizzazione dei calendari esterni come calendari lunari selezionando il file da visualizzare e nascondere quelli"
 
 msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
-msgstr "Basta creare un programma fertilizzante prestabilito. Questo tipo di programma è quello di creare dal primo giorno che si desidera applicare il fertilizzante, il resto viene calcolata a seconda della marca substrato e fertilizzanti scelta"
+msgstr "<b>Pianificazione fertilizzante:</b> creazione automatica, da una data di partenza, una pianificazione fertilizzante in base al tipo di supporto e la marca di fertilizzante in conformità con le raccomandazioni del costruttore"
+
+msgid "TOOLTIP_PARAMETERS_CALENDAR"
+msgstr "<b>Calendario avanzato Opzioni:</b> supporto di visualizzazione file XML esterni (come il calendario lunare) e le loro registrazioni sulla scheda SD"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
 msgstr "Impostare il programma da applicare."
