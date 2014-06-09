@@ -116,10 +116,11 @@ $(document).ready(function(){
         $("#manage_program").dialog({
             resizable: false,
             width: 800,
+            modal: true,
             closeOnEscape: true,
             dialogClass: "popup_message",
             buttons: [{
-                text: CANCEL_button,
+                text: CLOSE_button,
                 "id": "btnClose",
                 click: function () {
                     $( this ).dialog( "close" ); return false;

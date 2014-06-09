@@ -311,8 +311,6 @@ function insert_program($program,&$out,$indexNumber) {
                 echo "<br />";
             }
 
-            echo 'deuxieme';
-            print_r($tmp);
             $tmp=purge_program($tmp);
 
             if($GLOBALS['DEBUG_TRACE']) {

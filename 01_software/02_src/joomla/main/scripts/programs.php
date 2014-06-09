@@ -277,7 +277,7 @@ if((isset($export))&&(!empty($export))) {
         $selected_plug=$reset_selected;
     }
 } elseif((isset($import))&&(!empty($import))) {
-    $target_path = "tmp/".basename( $_FILES['upload_file']['name']); 
+    $target_path = "tmp/".basename($_FILES['upload_file']['name']); 
     if(!move_uploaded_file($_FILES['upload_file']['tmp_name'], $target_path)) {
         $main_error[]=__('ERROR_UPLOADED_FILE');
         $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_UPLOADED_FILE'));

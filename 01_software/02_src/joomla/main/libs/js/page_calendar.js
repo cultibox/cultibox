@@ -99,6 +99,7 @@ $(document).ready(function() {
         $("#manage_external_xml").dialog({
             resizable: false,
             width: 550,
+            modal: true,
             closeOnEscape: true,
             dialogClass: "popup_message",
             buttons: [{
