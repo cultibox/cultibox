@@ -47,7 +47,6 @@ $(function() {
 });
 
 $(document).ready(function() {
-
     // Load XML available and there status for manage_external_xml dialog box
     $.ajax({
        cache: false,
@@ -70,7 +69,7 @@ $(document).ready(function() {
                     checked = "checked";
                 
                 // Add into UI
-                $('#xml_section').after(key + "<input type='checkbox' id='" + value.id + "' filename='" + value.name + "' name='xml_checkbox' " + checked + "> <br />"); 
+                $("#list_xml_files").append("<li>"+key + "<input type='checkbox' id='" + value.id + "' filename='" + value.name + "' name='xml_checkbox' " + checked + "></li>"); 
                 
                 // On click on the checkbutton
                 $("#" + value.id).ready(function() {
@@ -86,8 +85,6 @@ $(document).ready(function() {
                         });
                     });
                 });
-
-                
             });
         }
     });
@@ -98,7 +95,7 @@ $(document).ready(function() {
         
         $("#manage_external_xml").dialog({
             resizable: false,
-            width: 550,
+            width: 600,
             modal: true,
             closeOnEscape: true,
             dialogClass: "popup_message",

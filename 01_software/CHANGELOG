@@ -14,6 +14,9 @@ Cultibox (1.3.08) precise; urgency=low
         + Visualisation du programme journalier sur le mois
         + Chargement en ajax des courbes
 
+-- Alliaume RICO Cultibox <alliaume.rico@cultibox.fr> Sat Jun  7 10:02:41 CEST 2014
+
+
 Cultibox (1.3.07) precise; urgency=low
     + Fractionnement des librairies
     + Ajout des traductions dans les langues manquantes

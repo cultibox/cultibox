@@ -904,6 +904,12 @@ msgstr "El programa ha sido eliminado."
 msgid "PARAMETERS"
 msgstr "Configuración"
 
+msgid "PARAMETERS_PROGRAM"
+msgstr ""
+
+msgid "PARAMETERS_PROGRAM_TITLE"
+msgstr ""
+
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
@@ -1170,6 +1176,10 @@ msgstr "Error: ya hay un programa diario define ese día."
 
 msgid "CALENDAR_UPDATE_SD_EVENT"
 msgstr "Actualización de los eventos en la tarjeta SD"
+
+msgid "PARAMETERS_CALENDAR_TITLE"
+msgstr "Opciones avanzadas de Calendario"
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"
@@ -1760,13 +1770,16 @@ msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
 msgstr "Se puede modificar este valor solo si se ha autorizado esa modificación de las opciones de regulación en la pestaña configuración. Se puede elegir como se calcula el valor usado para realizar la regulación."
 
 msgid "TOOLTIP_RESET_CALENDAR"
-msgstr "Borra todas las anotaciones del calendario que se han entrado manualmente. Eso incluye los abonos de crecimiento posiblemente añadidos pero no los calendarios externos tipo calendario lunar."
+msgstr "<b>La eliminación de las anotaciones del calendario:</b> elimina todo el calendario de las anotaciones registradas de forma manual, lo que incluye fertilizantes, posiblemente añadido el crecimiento, pero no incluye calendarios externos Lunar Tipo de calendario"
 
 msgid "TOOLTIP_MANAGE_XML"
 msgstr "Permite gestionar fácilmente la visualización de los calendarios externos como los calendarios lunares seleccionando los ficheros a enseñar y los a esconder."
 
 msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
-msgstr "Crear de manera sencilla un programa de abono predefinido. Este tipo de programa se debe crear a partir del primer día  en cual se quiere usar sus abonos, el resto esta calculado según el substrato y la marca de abono elegido."
+msgstr "<b>Planificación de fertilizantes:</b> la creación automática, a partir de una fecha de salida, un calendario de fertilizantes en función del tipo de sustrato y la marca de fertilizante de acuerdo con las recomendaciones del fabricante"
+
+msgid "PARAMETERS_CALENDAR"
+msgstr "<b>Calendario Opciones avanzadas:</b> archivos XML externos soporte de pantalla (por ejemplo, el calendario lunar) y sus grabaciones en la tarjeta SD"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
 msgstr "Configure el programa para aplicar."

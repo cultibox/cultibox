@@ -6,7 +6,7 @@
 
 <script> 
     // Include specific css
-    loadCSS("http://localhost:6891/cultibox/main/libs/css/page_calendar.css")
+    loadCSS("http://localhost:6891/cultibox/main/libs/css/page_calendar.css");
 </script>
 
 <style id='hideday'></style>
@@ -22,7 +22,7 @@
             <!-- Button to change parameters -->
             <input type="image" id="calendar_xml_selection" name="calendar_xml_selection" 
                 src="main/libs/img/advancedsettings.png" width="32"
-                title="<?php echo __('PARAMETERS'); ?>" 
+                title="<?php echo __('TOOLTIP_PARAMETERS_CALENDAR'); ?>" 
                 alt="calendar"
             />
 
@@ -185,12 +185,20 @@
 </div>
 
 <!-- User interface to select XML to show in calendar -->
-<div id="manage_external_xml" style="display:none" title="<?php echo __('PARAMETERS'); ?>">
+<div id="manage_external_xml" style="display:none" title="<?php echo __('PARAMETERS_CALENDAR_TITLE'); ?>">
     <p id="xml_section"><?php echo __('XML_DISPLAYED_FILE'); ?> : 
         <img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MANAGE_XML'); ?>" />
     </p>
-    <p><?php echo __('LUNAR_CALENDAR_SAVE_SD'); ?> : </p>
-    <input type="button" id="save_calendar_lunar_sd" value="<?php echo __('SAVE') ; ?>" />
+    <ul id="list_xml_files" class="list_class">
+    </ul>
+
+    <br />
+    <table>
+        <tr>
+            <td><?php echo __('LUNAR_CALENDAR_SAVE_SD'); ?> : </td>
+            <td><input type="button" id="save_calendar_lunar_sd" <?php if(strcmp("$sd_card","")==0) { ?> class="inputDisable" value="<?php echo __('NO_IMPORT_LOG') ; ?>" disabled <?php } else { ?> value="<?php echo __('SAVE') ; ?>" <?php } ?> /></td>
+        </tr>
+    </table>
 </div>
 
 <!-- Div modual UI for nutrient planification -->

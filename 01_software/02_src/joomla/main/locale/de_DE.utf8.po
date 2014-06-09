@@ -902,6 +902,13 @@ msgstr "Das Programm wurde gelöscht."
 msgid "PARAMETERS"
 msgstr "Einstellungen"
 
+msgid "PARAMETERS_PROGRAM"
+msgstr ""
+
+msgid "PARAMETERS_PROGRAM_TITLE"
+msgstr ""
+
+
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
 msgstr "Exportieren Sie Ihre Grafik"
@@ -1167,6 +1174,10 @@ msgstr "Fehler: Es ist bereits ein Tagesprogramm definiert, dass Tag."
 
 msgid "CALENDAR_UPDATE_SD_EVENT"
 msgstr "Aktualisieren von Ereignissen auf der SD-Karte"
+
+msgid "PARAMETERS_CALENDAR_TITLE"
+msgstr "Erweiterte Kalenderoptionen"
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"
@@ -1757,13 +1768,16 @@ msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
 msgstr "Dieser Wert kann nur geändert werden, wenn Sie die Änderung der Steueroptionen in der Registerkarte Konfiguration genehmigt. Sie können wählen, wie der berechnete Wert verwendet, um die Steuerung zu machen"
 
 msgid "TOOLTIP_RESET_CALENDAR"
-msgstr "Entfernt alle Anmerkungen Kalender, die Sie manuell eingegeben haben. Dazu gehören Wachstumsdünger möglicherweise hinzugefügt, aber nicht enthalten externe Kalender Mondkalender-Typ"
+msgstr "<b>Entfernen Anmerkungen Kalender:</b> entfernt alle Anmerkungen Kalender manuell erfasst, enthält diese Düngemittel möglicherweise mehr Wachstum aber nicht die externe Kalender Lunar Kalender Art"
 
 msgid "TOOLTIP_MANAGE_XML"
 msgstr "Ermöglicht Ihnen die einfache Verwaltung der Anzeige von externen Kalendern wie Mondkalender indem Sie die Dateien anzeigen und verstecken die"
 
 msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
-msgstr "Erstellen Sie einfach ein Programm voreingestellten Dünger. Diese Art von Programm ist ab dem ersten Tag Sie Ihre Dünger, der Rest wird je nach dem gewählten Substrat-und Marken Dünger berechnet werden wollen erstellen"
+msgstr "<b>Planung Dünger:</b> automatische Erstellung von einem Abreisedatum, Dünger Plan bezogen auf das Substrat Art und Marke von Dünger im Einklang mit den Empfehlungen des Herstellers"
+
+msgid "TOOLTIP_PARAMETERS_CALENDAR"
+msgstr "Erweiterte Kalenderoptionen: Display-Unterstützung externe XML-Dateien (wie dem Mondkalender) und ihre Aufnahmen auf der SD-Karte"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
 msgstr "Stellen Sie das Programm zu bewerben."

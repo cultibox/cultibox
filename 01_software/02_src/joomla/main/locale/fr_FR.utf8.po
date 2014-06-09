@@ -902,6 +902,13 @@ msgstr "Le programme a bien été supprimé."
 msgid "PARAMETERS"
 msgstr "Paramètres"
 
+msgid "PARAMETERS_PROGRAM"
+msgstr ""
+
+msgid "PARAMETERS_PROGRAM_TITLE"
+msgstr ""
+
+
 # For the export module highchart part :
 msgid "CONTEXT_MENU"
 msgstr "Exporter votre graphe"
@@ -1167,6 +1174,10 @@ msgstr "Erreur : il y a déjà un programme journalier définit ce jour là."
 
 msgid "CALENDAR_UPDATE_SD_EVENT"
 msgstr "Mise à jour des événements sur la carte SD"
+
+msgid "PARAMETERS_CALENDAR_TITLE"
+msgstr "Options avancées du calendrier"
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"
@@ -1757,13 +1768,16 @@ msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
 msgstr "Cette valeur n'est modifiable que si vous avez autorisé la modification des options de régulation dans l'onglet configuration. Vous pouvez choisir comment est calculée la valeur utilisée pour effectuer la régulation"
 
 msgid "TOOLTIP_RESET_CALENDAR"
-msgstr "Supprime toutes les annotations du calendrier que vous avez rentré manuellement. Ceci comprend les engrais de croissance possiblement ajoutés mais ne comprend pas les calendriers externes du type calendrier lunaire"  
+msgstr "<b>Suppréssion des annotations du calendrier:</b> supprime toutes les annotations du calendrier enregistrées manuellement, ceci comprend les engrais de croissance possiblement ajoutés mais ne comprend pas les calendriers externes du type calendrier lunaire"  
 
 msgid "TOOLTIP_MANAGE_XML"
 msgstr "Permet de gérer facilement l'affichage des calendriers externes tel que les calendriers lunaires en sélectionnant les fichiers à afficher et ceux à cacher"
 
 msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
-msgstr "Créer simplement un programme d'engrais prédéfini. Ce type de programme est à créer à partir du premier jour où vous souhaitez appliquer vos engrais, le reste est calculé en fonction du substrat et de la marque d'engrais choisie"
+msgstr "<b>Planification d'engrais:</b> création automatique, à partir d'une date de départ, d'un planning d'engrais basé sur le type de substrat et la marque d'engrais en accord avec les recommandations du fabriquant"
+
+msgid "TOOLTIP_PARAMETERS_CALENDAR"
+msgstr "<b>Options avancées du calendrier:</b> gestion de l'affichage des fichiers XML externes (comme les calendriers lunaires) et de leurs enregistrements sur la carte SD"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
 msgstr "Définissez le programme à appliquer."

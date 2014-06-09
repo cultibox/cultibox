@@ -902,6 +902,13 @@ msgstr "The program has been deleted."
 msgid "PARAMETERS"
 msgstr "Settings"
 
+msgid "PARAMETERS_PROGRAM"
+msgstr ""
+
+msgid "PARAMETERS_PROGRAM_TITLE"
+msgstr ""
+
+
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
 msgstr "Export your graph"
@@ -1167,6 +1174,10 @@ msgstr "Error: there is already a daily program defines that day."
 
 msgid "CALENDAR_UPDATE_SD_EVENT"
 msgstr "Updating events on the SD card"
+
+msgid "PARAMETERS_CALENDAR_TITLE"
+msgstr "Advanced calendar Options"
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"
@@ -1757,13 +1768,16 @@ msgid "TOOLTIP_REGUL_COMPUTE_METHOD"
 msgstr "This value can be changed only if you have authorized the amendment of control options in the configuration tab. You can choose how the calculated value used to make the control"
 
 msgid "TOOLTIP_RESET_CALENDAR"
-msgstr "Removes all annotations calendar that you have entered manually. This includes growth fertilizer possibly added but does not include external calendars like Lunar Calendar."
+msgstr "<b>Removing annotations calendar:</b> removes all annotations calendar manually recorded, this includes fertilizers possibly added growth but does not include external calendars Lunar Calendar Type"
 
 msgid "TOOLTIP_MANAGE_XML"
 msgstr "Allows you to easily manage the display of external calendars such as lunar calendars by selecting the files to display and hide those"
 
 msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
-msgstr "Simply create a program preset fertilizer. This type of program is to create from the first day you want to apply your fertilizer, the rest is calculated depending on the substrate and fertilizer brand chosen"
+msgstr "<b>Planning fertilizer:</b> automatic creation, from a departure date, a fertilizer schedule based on the substrate type and brand of fertilizer in accordance with manufacturer's recommendations"
+
+msgid "TOOLTIP_PARAMETERS_CALENDAR"
+msgstr "<b>Advanced Calendar Options:</b> Display support external XML files (such as the lunar calendar) and their recordings on the SD card"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
 msgstr "Set the program to apply."
