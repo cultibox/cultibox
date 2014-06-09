@@ -13,8 +13,19 @@ title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 <tr>
     <td class="conf-menu-marge-plug"></td>
     <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
-    <td class="menu-plug-item"><button id="div_plug<?php echo $i; ?>" class="menu_h1" onclick="expand_plug(<?php echo $i; ?>,<?php echo $nb_plugs; ?>); return false;"><?php echo __('PLUG_MENU')." ".$i; ?></button></td><?php if($i%3==0) { ?><td class="conf-menu-marge-plug"></td></tr><td class="conf-menu-marge-plug"></td><?php } ?>
+        <td class="menu-plug-item">
+            <button id="div_plug<?php echo $i; ?>" class="menu_h1" onclick="expand_plug(<?php echo $i; ?>,<?php echo $nb_plugs; ?>); return false;"><?php echo __('PLUG_MENU')." ".$i; ?></button>
+        </td>
+        <?php if($i%3==0) { ?>
+            <td class="conf-menu-marge-plug"></td></tr><tr><td class="conf-menu-marge-plug"></td>
+        <?php } ?>
     <?php } ?>
+
+    <?php $tmp_cnt=$nb_plugs % 3;
+    for($i=0;$i<3-$tmp_cnt;$i++) { ?>
+        <td></td>
+    <?php } ?>
+
     <td class="conf-menu-marge-plug"></td>
 </tr>
 </table>
