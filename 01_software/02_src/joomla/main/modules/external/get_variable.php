@@ -4,6 +4,8 @@
 
 require_once('../../libs/utilfunc.php');
 require_once('../../libs/utilfunc_sd_card.php');
+require_once('../../libs/db_get_common.php');
+
 
 //On démarre une SESSION si ce n'est pas déja le cas:
 if (!isset($_SESSION)) {
@@ -38,6 +40,21 @@ if((!isset($name))||(empty($name))) {
         case 'TOOLTIP_MSG_BOX':
             if((isset($_SESSION['TOOLTIP_MSG_BOX']))&&(!empty($_SESSION['TOOLTIP_MSG_BOX']))) {
                 echo json_encode($_SESSION['TOOLTIP_MSG_BOX']);
+            }
+            break;
+        case 'CHECK_PROGRAM':
+            if((isset($_GET['value']))&&(!empty($_GET['value']))) {
+                    $value=strtoupper($_GET['value']);
+            } 
+
+            if((!isset($value))||(empty($value))) {
+                echo json_encode("0");
+            } else {
+                if(!check_programs("",$value)) {
+                     echo json_encode("0");
+                } else {
+                    echo json_encode("1");
+                }
             }
             break;
         default:

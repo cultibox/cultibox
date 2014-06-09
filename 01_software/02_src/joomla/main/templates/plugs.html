@@ -1,9 +1,7 @@
-
-<script>
-sensors = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR_PLUG']) ?>;
-nb_plugs = <?php echo json_encode($nb_plugs) ?>;
-title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-</script>
+<?php 
+    // Include javascript functions
+    include('main/libs/js/page_plugs.js');
+?>
 
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" name="plugForm" id="plugForm">
 <input type="hidden" id="submenu" name="submenu" value="<?php echo $submenu; ?>" />
@@ -310,6 +308,11 @@ title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
       </tr>
    </table>
 </form>
+
+
+<div id="warning_change_type_plug" style="display:none" title="<?php echo __('CONFIRMATION'); ?>">
+    <?php echo __('CONFIRMATION_CHANGEMENT_TYPE_PLUG'); ?>
+</div>
 
 <?php 
       echo "<script>expand_plug(".$submenu.",".$nb_plugs.");</script>";

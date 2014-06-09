@@ -70,6 +70,8 @@ if(lang=="/it/") {
     REDUCE_button="Bajar";
     EXTEND_button="Agrandar";
     HIDE_button="Ocultar";
+    APPLY_CHANGE="";
+    DISCARD_CHANGE="";
     var llang="es_ES";
     var slang="es"
 } else {
@@ -359,44 +361,6 @@ $(document).ready(function() {
     });
 
 
-    $("input[name*='plug_power_max']").change(function () {
-        var id=$(this).attr('name').substr($(this).attr('name').length-1);
-       
-        if(!isFinite(String(id))) { 
-            id="";
-        }
-
-        if($(this).val()=="VARIO") {
-            $("#select_canal_dimmer"+id).show();
-        } else {
-            $("#select_canal_dimmer"+id).css("display","none");
-        }
-    });
-
-
-    $("select[name*='dimmer_canal']").focus(function () {
-        previous_canal = $(this).attr('value');
-    }).change(function() {
-        var prev=previous_canal;
-        var id=$(this).attr('name').substr($(this).attr('name').length-1);
-        var canal=$("#dimmer_canal"+id+" option:selected" ).val();
-
-        $("select[name*='dimmer_canal']").each(function( index ) {
-                var new_id=$(this).attr('name').substr($(this).attr('name').length-1);
-                if(new_id!=id) {
-                    var option = $("option[value='" + canal + "']", this);
-                    option.attr("disabled","disabled");
-
-                    var option = $("option[value='" + prev + "']", this);
-                    option.removeAttr("disabled");
-                }
-        }); 
-
-        $("input[name='plug_power_max"+id+"']").focus();
-    });
-    
-
-
     $("input:radio[name=check_type_delete]").click(function() {
         if($(this).val()=="all") {
             $("#div_delete_specific").css("display","none");        
@@ -404,6 +368,7 @@ $(document).ready(function() {
             $("#div_delete_specific").css("display","");
         }
     });
+
 
     $("input:radio[name=check_type_delete_power]").click(function() {
         if($(this).val()=="all") {

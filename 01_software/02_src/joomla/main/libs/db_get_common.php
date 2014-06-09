@@ -2062,15 +2062,21 @@ function find_value_for_plug($data,$time,$plug) {
 // }}}
 
 
-// {{{ check_empty_programs()
-//ROLE check if no programs have been defined yet
+// {{{ check_programs()
+//ROLE check if a program have been defined yet
 // IN  $nb_plugs        number of plugs used
+//     $id_plug         id of a plug to check: -1: all
 // RET true if there is a program defined, false else
-function check_programs($nb_plugs=0) {
-   if($nb_plugs>0) {
+function check_programs($nb_plugs=3,$id=-1) {
+    if($id==-1) {
            $sql = <<<EOF
 SELECT * FROM `programs` WHERE `plug_id` <= {$nb_plugs} LIMIT 1
 EOF;
+    } else {
+           $sql = <<<EOF
+SELECT * FROM `programs` WHERE `plug_id` = {$id} LIMIT 1
+EOF;
+}
       $db=db_priv_pdo_start();
       try {
             $sth=$db->prepare("$sql");
@@ -2090,9 +2096,6 @@ EOF;
             return false;
          }
       }
-   } else {
-      return false;
-   }
 }
 // }}}
 
