@@ -253,7 +253,11 @@ if( isset($_GET['daily_program_name']))
 $calendar_start = "";
 if(isset($_GET['calendar_start']))
     $calendar_start = $_GET['calendar_start'];
-    
+
+$calendar_end = "";
+if(isset($_GET['calendar_end']))
+    $calendar_end = $_GET['calendar_end'];
+
 $sd_card = "";
 if(isset($_GET['sd_card']))
     $sd_card = $_GET['sd_card'];
@@ -271,11 +275,21 @@ if(    !empty($daily_program_name)
     // Convert time
     $timestart = date('Y-m-d 02:00:00', strtotime($calendar_start));
     
+    $timeend = $calendar_end;
+    if ($timeend == "")
+    {
+        $timeend = $timestart;
+    }
+    else
+    {
+        $timeend = date('Y-m-d 02:00:00', strtotime($calendar_end));
+    }
+    
     // Create event 
     $event[]=array(
         "title" => $daily_program_name,
         "start" => $timestart,
-        "end" => $timestart,
+        "end" => $timeend,
         "description" => program\get_field_from_program_index("comments",$program_index),
         "color" => "#3366CC",
         "icon" => "",

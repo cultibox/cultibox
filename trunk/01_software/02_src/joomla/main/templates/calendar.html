@@ -95,10 +95,37 @@
 </div>
 
 
-<!-- Calendar management -->
+<!-- UI calendar for creating event -->
 <div id="dialog_create" title="<?php echo __('MANAGE_CALENDAR'); ?>" style="display:none">
     <form>
         <table class="table_width">
+            <?php
+                // Allow user to select daily program only if option is activ and there are some daily program
+                if($activ_daily_program == "True" && count($program_index) > 1) { 
+            ?>
+            <tr id="daily_program_row_in_ui" >
+                <td>
+                    <b><?php echo __('CALENDAR_DAILY_PROGRAM'); ?>:</b>
+                </td>
+                <td>
+                    <input type='checkbox' id="create_dayly_program_in_ui" />
+                    <select id="select_daily_program_to_create" disabled >
+                        <?php 
+                        foreach ($program_index as $key => $value)
+                        {
+                            // Don'y display current event
+                            if ($value['id'] != 1)
+                                echo '<option value="' . $value['id'] . '">' . $value['name'] . '</option>';
+                        }
+                        ?> 
+                    </select>
+                </td>
+                <td>
+
+                </td>
+                
+            </tr>
+            <?php  } ?>
             <tr>
                 <td>
                     <b><?php echo __('CALENDAR_SUBJECT'); ?>:</b>
