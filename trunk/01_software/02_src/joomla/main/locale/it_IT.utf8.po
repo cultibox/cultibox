@@ -387,7 +387,7 @@ msgid "SELECT_SENSOR"
 msgstr "sensor"
 
 msgid "MANAGE_LOG_INFOS"
-msgstr "Gestione dei dati"
+msgstr "<b>Gestione dei dati</b>"
 
 msgid "MANAGE_RESET_TITLE"
 msgstr "Eliminare i vecchi registri"

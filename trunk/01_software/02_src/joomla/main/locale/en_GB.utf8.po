@@ -388,7 +388,7 @@ msgid "SELECT_SENSOR"
 msgstr "sensor"
 
 msgid "MANAGE_LOG_INFOS"
-msgstr "Managing Your Data"
+msgstr "<b>Managing Your Data</b>"
 
 msgid "MANAGE_RESET_TITLE"
 msgstr "Delete old sensors logs"

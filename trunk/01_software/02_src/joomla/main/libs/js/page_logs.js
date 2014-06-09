@@ -1004,7 +1004,7 @@ $(document).ready(function() {
         // Display parmateres UI
         $("#ui_db_management").dialog({
             resizable: false,
-            width: 750,
+            width: 800,
             closeOnEscape: true,
             dialogClass: "popup_message",
             modal: true,
