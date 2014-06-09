@@ -468,84 +468,199 @@ $(document).ready(function() {
                 width: 800,
                 buttons: {
                     "<?php echo __('CREATE_DIALOG_CALENDAR','highchart'); ?>": function() { 
+                    
                         $( this ).dialog( "close" ); 
                         <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                             $.blockUI({ message: ''});
                         <?php } ?>
 
-                        new_start=$.fullCalendar.formatDate( start, "yyyy-MM-dd HH:mm:ss");
-                        new_end=$.fullCalendar.formatDate( end, "yyyy-MM-dd 23:59:59");
+                        // If user has actived daily programm
+                        var userAddDailyProgram = false;
+                        var selected_DailyProgram = "";
+                        <?php
+                            // Read program index
+                            $program_index = array();
+                            program\get_program_index_info($program_index);
+                            if($activ_daily_program == "True" && count($program_index) > 1) { 
+                        ?>
+                            // If checkbox is selected
+                            if ($('#create_dayly_program_in_ui').is(':checked') == true) 
+                            {
+                                userAddDailyProgram = true;
+                                
+                                // Memorise program
+                                selected_DailyProgram = $("#select_daily_program_to_create option:selected").val(); 
+                                
+                            }
+                        
+                        <?php 
+                            }
+                        ?>
 
-                        var length = $('#select_title').children('option').length;
-                        if(($("#select_title").prop('selectedIndex')+1)==length) {
-                            if($("#other_field_title").val()!= "") {
-                                var title=$("#other_field_title").val();
+                        // There is two cases
+                        // - User add an classic event
+                        // - User add a daily program
+                        
+                        // Classic event case :
+                        if (userAddDailyProgram == false)
+                        {
+                        
+                            new_start=$.fullCalendar.formatDate( start, "yyyy-MM-dd 02:00:00");
+                            new_end=$.fullCalendar.formatDate( end, "yyyy-MM-dd 23:59:59");
+
+                            var length = $('#select_title').children('option').length;
+                            if(($("#select_title").prop('selectedIndex')+1)==length) {
+                                if($("#other_field_title").val()!= "") {
+                                    var title=$("#other_field_title").val();
+                                } else {
+                                    var title=$('#select_title option:selected').val(); 
+                                }
                             } else {
                                 var title=$('#select_title option:selected').val(); 
                             }
-                        } else {
-                            var title=$('#select_title option:selected').val(); 
+                            var description=$('#select_remark').val();  
+                            var color=$('#select_color').val();
+
+                            if($("#event_important").prop('checked') == true) {
+                                var important=1; 
+                                var text_color="white";
+                            } else {
+                                var important=0;
+                                var text_color="red";
+                            }
+
+                            if(!description) {
+                                description="";
+                            }
+
+                            if(!color) {
+                                color="#000000";
+                            }
+
+                            if (title) {
+                                $('#calendar').fullCalendar('renderEvent', {
+                                    title: title,
+                                    start: new_start,
+                                    end: new_end,
+                                    description: description,
+                                    color: color,
+                                    external: external
+                                });
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "http://localhost:6891/cultibox/main/modules/json-events/json-add-events.php",
+                                    data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&color='+color+'&card=<?php echo $sd_card; ?>'+'&important='+important
+                                    <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                        ,complete: function() { $.unblockUI(); }
+                                    <?php } ?> 
+                                }).done(function (data) {
+                                    if(data==1) {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
+                                            data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
+                                        }).done(function (data) {
+                                            if(data!="") {
+                                                var objJSON = jQuery.parseJSON(data);
+                                                $('#select_title').children().remove();
+                                                $.each(objJSON, function( key, value ) {
+                                                    $('#select_title').append(new Option(value, value, true, true)); 
+                                                });
+                                                $("#select_title").prop('selectedIndex', 0);  
+                                                $("#other_title_div").css("display","none");
+                                            } 
+                                        });       
+                                    } 
+                                    
+                                    $('#calendar').fullCalendar('refetchEvents');
+                                    
+                                });
+
+                            }
+                        
                         }
-                        var description=$('#select_remark').val();  
-                        var color=$('#select_color').val();
+                        else
+                        {
+                            // Block UI
+                            <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                $.blockUI({ message: ''}); 
+                            <?php } ?>
+                           
 
-                        if($("#event_important").prop('checked') == true) {
-                            var important=1; 
-                            var text_color="white";
-                        } else {
-                            var important=0;
-                            var text_color="red";
-                        }
-
-                        if(!description) {
-                            description="";
-                        }
-
-                        if(!color) {
-                            color="#000000";
-                        }
-
-                        if (title) {
-                            $('#calendar').fullCalendar('renderEvent', {
-                                title: title,
-                                start: new_start,
-                                end: new_end,
-                                description: description,
-                                color: color,
-                                external: external
-                            });
-
+                            // Check if there is an other programm on the same day
+                            if (0 && daily_program_check_overlaping(event)) {
+                                // Display overlapping alert
+                                daily_program_overlapping_alert();
+                                
+                                // Undo drop
+                                revertFunc();
+                                
+                                //Exit function
+                                return false;
+                            }
+                           
+                            // Compute date for ajax
+                            ajaxDateStart = $.fullCalendar.formatDate( start, "yyyy-MM-dd");
+                            ajaxDateEnd = $.fullCalendar.formatDate( end, "yyyy-MM-dd");
+                            ajaxTitle = "<?php echo __('CALENDAR_DAILY_PROGRAM') ; ?>" + " " + $("#select_daily_program_to_create option:selected").text();
+                           
+                            // Update datatbase in ajax
                             $.ajax({
-                                type: "POST",
-                                url: "http://localhost:6891/cultibox/main/modules/json-events/json-add-events.php",
-                                data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&color='+color+'&card=<?php echo $sd_card; ?>'+'&important='+important
-                                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                    ,complete: function() { $.unblockUI(); }
-                                <?php } ?> 
+                                cache: false,
+                                url: "../../main/modules/external/update_calendar_external.php",
+                                data: {
+                                    daily_program_name: ajaxTitle,
+                                    calendar_start: ajaxDateStart,
+                                    calendar_end: ajaxDateEnd,
+                                    sd_card: sd_card,
+                                    program_index: selected_DailyProgram
+                                }
                             }).done(function (data) {
-                                if(data==1) {
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
-                                        data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
-                                    }).done(function (data) {
-                                        if(data!="") {
-                                            var objJSON = jQuery.parseJSON(data);
-                                            $('#select_title').children().remove();
-                                            $.each(objJSON, function( key, value ) {
-                                                $('#select_title').append(new Option(value, value, true, true)); 
-                                            });
-                                            $("#select_title").prop('selectedIndex', 0);  
-                                            $("#other_title_div").css("display","none");
-                                        } 
-                                    });       
-                                } 
-                                
-                                $('#calendar').fullCalendar('refetchEvents');
-                                
+                               if(data==1) {
+                                    $('#calendar').fullCalendar( 'refetchEvents' );
+                                    $("#valid_create_calendar").dialog({
+                                        resizable: true,
+                                        width: 450,
+                                        modal: true,
+                                        closeOnEscape: false,
+                                        dialogClass: "popup_message",
+                                        buttons: [{
+                                        text: CLOSE_button,
+                                        click: function () {
+                                            $( this ).dialog( "close" );
+                                            return false;
+                                        }
+                                        }]
+                                    });
+                                } else {
+                                    $('#calendar').fullCalendar('refetchEvents');
+                                    $("#error_create_calendar").dialog({
+                                        resizable: true,
+                                        width: 450,
+                                        modal: true,
+                                        closeOnEscape: false,
+                                        dialogClass: "popup_error",
+                                        buttons: [{
+                                        text: CLOSE_button,
+                                        click: function () {
+                                            $( this ).dialog( "close" );
+                                            return false;
+                                        }
+                                        }]
+                                    });
+                                }
                             });
-
+                           
+                           
+                           
+                            //Release UI
+                            <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                $.unblockUI();
+                            <?php } ?> 
+                        
                         }
+                        
 
                         $("#select_remark").text("");
                         $("#select_remark").val("");
@@ -768,198 +883,266 @@ $(document).ready(function() {
                 $("#important").attr('checked', false);
             }
 
-            $("#dialog_edit").dialog({
-                resizable: true,
-                width: 800,
-                modal: true,
-                buttons: {
-                    "<?php echo __('EDIT_DIALOG_CALENDAR','highchart'); ?>": function() { 
-                        $( this ).dialog( "close" ); 
+            // If it's not a daily program
+            if (event.program_index == null)
+            {
+                
+                $("#dialog_edit").dialog({
+                    resizable: true,
+                    width: 800,
+                    modal: true,
+                    buttons: {
+                        "<?php echo __('EDIT_DIALOG_CALENDAR','highchart'); ?>": function() { 
+                            $( this ).dialog( "close" ); 
 
 
-                        $('#select_title option[value="'+event.title+'"]').prop('selected', true);
-                        $("#edit_start_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
-                        if(event.end) {
-                            $("#edit_stop_date").text($.fullCalendar.formatDate(event.end, "yyyy-MM-dd"));
-                        }else {
-                             $("#edit_stop_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
-                        }
-                        if(event.description) {
-                             $("#select_remark").val(event.description);
-                        } else {
-                            $("#select_remark").val('');
-                            $("#select_remark").text('');
-                        }
+                            $('#select_title option[value="'+event.title+'"]').prop('selected', true);
+                            $("#edit_start_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+                            if(event.end) {
+                                $("#edit_stop_date").text($.fullCalendar.formatDate(event.end, "yyyy-MM-dd"));
+                            }else {
+                                 $("#edit_stop_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+                            }
+                            if(event.description) {
+                                 $("#select_remark").val(event.description);
+                            } else {
+                                $("#select_remark").val('');
+                                $("#select_remark").text('');
+                            }
 
-                        if(event.important==1) {
-                            $("#event_important").attr('checked', true);
-                        } else {
-                            $("#event_important").attr('checked', false);
-                        }
+                            if(event.important==1) {
+                                $("#event_important").attr('checked', true);
+                            } else {
+                                $("#event_important").attr('checked', false);
+                            }
 
-                        if(event.color) {
-                           $("#select_color").val(event.color); 
-                           $('#colour').css({'background-color' : event.color});
-                        }
+                            if(event.color) {
+                               $("#select_color").val(event.color); 
+                               $('#colour').css({'background-color' : event.color});
+                            }
+                            
+                // Hide daily program row
+                $('#daily_program_row_in_ui').hide();
+                
+                            $("#dialog_create").dialog({
+                            resizable: true,
+                            width: 800,
+                            buttons: {
+                                "<?php echo __('SAVE_DIALOG_CALENDAR','highchart'); ?>": function() { 
+                                    $( this ).dialog( "close" ); 
+                                    
 
-                        $("#dialog_create").dialog({
-                        resizable: true,
-                        width: 800,
-                        buttons: {
-                            "<?php echo __('SAVE_DIALOG_CALENDAR','highchart'); ?>": function() { 
-                                $( this ).dialog( "close" ); 
+                                    new_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
+                                    if(!event.end) {
+                                        new_end=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd 23:59:59");        
+                                    } else {
+                                        new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd 23:59:59");        
+                                    }
 
-                                new_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
-                                if(!event.end) {
-                                    new_end=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd 23:59:59");        
-                                } else {
-                                    new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd 23:59:59");        
-                                }
-
-                                var length = $('#select_title').children('option').length;
-                                if(($("#select_title").prop('selectedIndex')+1)==length) {
-                                    if($("#other_field_title").val()!= "") {
-                                        var title=$("#other_field_title").val();
+                                    var length = $('#select_title').children('option').length;
+                                    if(($("#select_title").prop('selectedIndex')+1)==length) {
+                                        if($("#other_field_title").val()!= "") {
+                                            var title=$("#other_field_title").val();
+                                        } else {
+                                            var title=$('#select_title option:selected').val(); 
+                                        }
                                     } else {
                                         var title=$('#select_title option:selected').val(); 
                                     }
-                                } else {
-                                    var title=$('#select_title option:selected').val(); 
-                                }
 
-                                var color=$('#select_color').val();
-                                var description=$('#select_remark').val();
-                                if(!description) {
-                                    description="";
-                                }
-                                if (title) {
-                                    $('#calendar').fullCalendar('renderEvent', {
-                                        title: title,
-                                        start: new_start,
-                                        end: new_end,
-                                        description: description,
-                                        color: color
-                                    });
-
-                                    if(!color) {
-                                        color="#000000";
+                                    var color=$('#select_color').val();
+                                    var description=$('#select_remark').val();
+                                    if(!description) {
+                                        description="";
                                     }
+                                    if (title) {
+                                        $('#calendar').fullCalendar('renderEvent', {
+                                            title: title,
+                                            start: new_start,
+                                            end: new_end,
+                                            description: description,
+                                            color: color
+                                        });
 
-                                    if($("#event_important").prop('checked') == true) {
-                                        var important=1; 
-                                    } else {
-                                        var important=0;
-                                    }
+                                        if(!color) {
+                                            color="#000000";
+                                        }
 
-                                   <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                        $.blockUI({ message: ''}); 
-                                   <?php } ?>
+                                        if($("#event_important").prop('checked') == true) {
+                                            var important=1; 
+                                        } else {
+                                            var important=0;
+                                        }
 
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
-                                        data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&id='+event.id+'&color='+color+'&card=<?php echo $sd_card; ?>'+'&important='+important
-                                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                            ,complete: function() { $.unblockUI(); }
-                                        <?php } ?>
-                                    }).done(function (data) {
+                                       <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                            $.blockUI({ message: ''}); 
+                                       <?php } ?>
+
                                         $.ajax({
-                                                type: "POST",
-                                                url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
-                                                data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
-                                            }).done(function (data) {
-                                                if(data!="") {
-                                                    var myTitle=jQuery.parseJSON(data);
-                                                    $('#select_title').children().remove();
-                                                    $.each( myTitle, function( key, value ) {
-                                                        $('#select_title').append(new Option(value, value, true, true)); 
-                                                    });
-                                                    $("#select_title").prop('selectedIndex', 0);  
-                                                    $("#other_title_div").css("display","none");
-                                                }
-                                            });
-                                    });
-                                }
-                                event.title=title;
-                                event.description=description;
-                                event.color=color;
-                                $('#calendar').fullCalendar('removeEvents', event.id);
-                                $('#calendar').fullCalendar('updateEvent', event);
-                                $('#calendar').fullCalendar( 'refetchEvents' );
-                                $("#select_remark").text("");
-                                $("#select_remark").val("");
-                                $("#other_field_title").text("");
-                                $("#other_field_title").val("");
-                                $("#select_title").prop('selectedIndex', 0);  
-                                $("#event_important").attr('checked', false);
-                                
-                                //delete event;
-                                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                    $.blockUI({ message: '', timeout: 1000 }); 
-                                <?php } ?> 
+                                            type: "POST",
+                                            url: "http://localhost:6891/cultibox/main/modules/json-events/json-update-events.php",
+                                            data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&id='+event.id+'&color='+color+'&card=<?php echo $sd_card; ?>'+'&important='+important
+                                            <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                                ,complete: function() { $.unblockUI(); }
+                                            <?php } ?>
+                                        }).done(function (data) {
+                                            $.ajax({
+                                                    type: "POST",
+                                                    url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
+                                                    data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
+                                                }).done(function (data) {
+                                                    if(data!="") {
+                                                        var myTitle=jQuery.parseJSON(data);
+                                                        $('#select_title').children().remove();
+                                                        $.each( myTitle, function( key, value ) {
+                                                            $('#select_title').append(new Option(value, value, true, true)); 
+                                                        });
+                                                        $("#select_title").prop('selectedIndex', 0);  
+                                                        $("#other_title_div").css("display","none");
+                                                    }
+                                                });
+                                        });
+                                    }
+                                    event.title=title;
+                                    event.description=description;
+                                    event.color=color;
+                                    $('#calendar').fullCalendar('removeEvents', event.id);
+                                    $('#calendar').fullCalendar('updateEvent', event);
+                                    $('#calendar').fullCalendar( 'refetchEvents' );
+                                    $("#select_remark").text("");
+                                    $("#select_remark").val("");
+                                    $("#other_field_title").text("");
+                                    $("#other_field_title").val("");
+                                    $("#select_title").prop('selectedIndex', 0);  
+                                    $("#event_important").attr('checked', false);
+                                    $("#create_dayly_program_in_ui").attr('checked', false);
+                                    
+                                    //Release UI
+                                    <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                        $.blockUI({ message: '', timeout: 1000 }); 
+                                    <?php } ?> 
 
-                                return false;
-                            },
-                            "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() {     
-                                $( this ).dialog( "close" ); 
-                                delete event; 
-                                delete description; 
-                                delete important;
-                                $("#select_remark").text("");
-                                $("#select_remark").val(""); 
-                                $("#other_field_title").text("");
-                                $("#other_field_title").val("");
-                                $("#select_title").prop('selectedIndex', 0);
-                                $("#event_important").attr('checked', false);
-                                return false;
+                                    return false;
+
+                                },
+                                "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() {     
+                                    $( this ).dialog( "close" ); 
+                                    delete event; 
+                                    delete description; 
+                                    delete important;
+                                    $("#select_remark").text("");
+                                    $("#select_remark").val(""); 
+                                    $("#other_field_title").text("");
+                                    $("#other_field_title").val("");
+                                    $("#select_title").prop('selectedIndex', 0);
+                                    $("#event_important").attr('checked', false);
+                                    $("#create_dayly_program_in_ui").attr('checked', false);
+                                    return false;
+                                }
                             }
-                        }
-                        });
-                    },
-                    "<?php echo __('REMOVE_DIALOG_CALENDAR','highchart'); ?>": 
-                    function() { 
-                        $( this ).dialog( "close" ); 
-                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                            $.blockUI({ message: ''}); 
-                        <?php } ?>
-                        
-                        $('#calendar').fullCalendar('removeEvents', event.id);
-                        
-                        $.ajax({
-                            type: "POST",
-                            url: "http://localhost:6891/cultibox/main/modules/json-events/json-remove-events.php",
-                            data: 'id='+event.id+'&card=<?php echo $sd_card; ?>'
-                        }).done(function (data) {
+                            });
+                        },
+                        "<?php echo __('REMOVE_DIALOG_CALENDAR','highchart'); ?>": 
+                        function() { 
+                            $( this ).dialog( "close" ); 
+                            <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                $.blockUI({ message: ''}); 
+                            <?php } ?>
+                            
+                            $('#calendar').fullCalendar('removeEvents', event.id);
+                            
                             $.ajax({
                                 type: "POST",
-                                url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
-                                data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
+                                url: "http://localhost:6891/cultibox/main/modules/json-events/json-remove-events.php",
+                                data: 'id='+event.id+'&card=<?php echo $sd_card; ?>'
                             }).done(function (data) {
-                                if(data!="") {
-                                    var myTitle = jQuery.parseJSON(data);
-                                    $('#select_title').children().remove();
-                                    $.each( myTitle, function( key, value ) {
-                                        $('#select_title').append(new Option(value, value, true, true)); 
-                                    });
-                                    $("#select_title").prop('selectedIndex', 0);  
-                                    $("#other_title_div").css("display","none");
-                                }
+                                $.ajax({
+                                    type: "POST",
+                                    url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
+                                    data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
+                                }).done(function (data) {
+                                    if(data!="") {
+                                        var myTitle = jQuery.parseJSON(data);
+                                        $('#select_title').children().remove();
+                                        $.each( myTitle, function( key, value ) {
+                                            $('#select_title').append(new Option(value, value, true, true)); 
+                                        });
+                                        $("#select_title").prop('selectedIndex', 0);  
+                                        $("#other_title_div").css("display","none");
+                                    }
 
+                                });
+                                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                    $.unblockUI();
+                                <?php } ?>
+
+                                $('#calendar').fullCalendar( 'refetchEvents' );
+                                
                             });
-                            <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                $.unblockUI();
-                            <?php } ?>
-
-                            $('#calendar').fullCalendar( 'refetchEvents' );
-                            
-                        });
-                    },
-                    "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() {
-                        $( this ).dialog( "close" ); return false;
+                        },
+                        "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() {
+                            $( this ).dialog( "close" ); return false;
+                        }
                     }
-                }
-            });
+                });
+            
+                // Show daily program row
+                $('#daily_program_row_in_ui').show();
+            
+            } else {
+            
+                // Daily program case
+            
+                $("#dialog_edit").dialog({
+                    resizable: true,
+                    width: 800,
+                    modal: true,
+                    buttons: {
+                        "<?php echo __('REMOVE_DIALOG_CALENDAR','highchart'); ?>": 
+                        function() { 
+                            $( this ).dialog( "close" ); 
+                            <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                $.blockUI({ message: ''}); 
+                            <?php } ?>
+                            
+                            $('#calendar').fullCalendar('removeEvents', event.id);
+                            
+                            $.ajax({
+                                type: "POST",
+                                url: "http://localhost:6891/cultibox/main/modules/json-events/json-remove-events.php",
+                                data: 'id='+event.id+'&card=<?php echo $sd_card; ?>'
+                            }).done(function (data) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
+                                    data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
+                                }).done(function (data) {
+                                    if(data!="") {
+                                        var myTitle = jQuery.parseJSON(data);
+                                        $('#select_title').children().remove();
+                                        $.each( myTitle, function( key, value ) {
+                                            $('#select_title').append(new Option(value, value, true, true)); 
+                                        });
+                                        $("#select_title").prop('selectedIndex', 0);  
+                                        $("#other_title_div").css("display","none");
+                                    }
 
+                                });
+                                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                    $.unblockUI();
+                                <?php } ?>
+
+                                $('#calendar').fullCalendar( 'refetchEvents' );
+                                
+                            });
+                        },
+                        "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() {
+                            $( this ).dialog( "close" ); return false;
+                        }
+                    }
+                });
+            }
+            
             if(event.external) {
                 $(".ui-dialog-buttonpane button:contains('<?php echo __('EDIT_DIALOG_CALENDAR','highchart'); ?>')").attr("disabled", true).addClass("ui-state-disabled");
                 $(".ui-dialog-buttonpane button:contains('<?php echo __('REMOVE_DIALOG_CALENDAR','highchart'); ?>')").attr("disabled", true).addClass("ui-state-disabled");
@@ -1097,4 +1280,32 @@ $(document).ready(function() {
             
     });
 });
+
+// When user click on daily program checkbutton in create dialog UI
+$(document).ready(function() {
+
+    $("#create_dayly_program_in_ui").click(function(e) {
+        
+        // If Checked
+        if ($('#create_dayly_program_in_ui').is(':checked') == true) 
+        {
+            // Activ selection of daily programm
+            $("#select_daily_program_to_create").prop('disabled', false);
+            // Unactiv other options
+            $("#select_title, #select_remark, #event_important").prop('disabled', true);
+        }
+        else
+        {
+            // Not checked
+            // Activ selection of daily programm
+            $("#select_daily_program_to_create").prop('disabled', true);
+            // Activ other options
+            $("#select_title, #select_remark, #event_important").prop('disabled', false);
+        }
+        
+            
+    });
+});
+
+
 </script>

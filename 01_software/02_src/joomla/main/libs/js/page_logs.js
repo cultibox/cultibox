@@ -956,7 +956,6 @@ $(document).ready(function() {
             resizable: false,
             width: 750,
             closeOnEscape: true,
-            modal: true,
             dialogClass: "popup_message",
             buttons: [{
                 text: CLOSE_button,
@@ -981,7 +980,6 @@ $(document).ready(function() {
             resizable: false,
             width: 750,
             closeOnEscape: true,
-            modal: true,
             dialogClass: "popup_message",
             buttons: [{
                 text: CLOSE_button,
@@ -1007,7 +1005,6 @@ $(document).ready(function() {
             width: 800,
             closeOnEscape: true,
             dialogClass: "popup_message",
-            modal: true,
             buttons: [{
                 text: CLOSE_button,
                 "id": "btnClose",

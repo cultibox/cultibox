@@ -262,7 +262,7 @@ function read_event_from_XML ($file, &$tab_event, $id = 1, $start="",$end="") {
     foreach($xml->entry as $event) {
     
         $start_event  = strtotime($event->start);
-        $end_event    = strtotime('+12 hours', strtotime($event->start));
+        $end_event    = strtotime($event->start) + 86399;
     
         // Check if event is in the good plage
         if ($start_event >= $start && $start_event <= $end)
