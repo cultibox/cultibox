@@ -102,7 +102,7 @@
                 <td></td>
                 <td><?php echo __('SELECT_SENSOR_NB'); ?>:</td>
                 <td>
-                    <table id="select_logs_to_display">
+                    <table id="select_logs_to_display" class="table_width">
                         <tr>
                             <?php 
                                 for($i = 1 ; $i <= $GLOBALS['NB_MAX_SENSOR_LOG'] ; $i++) {
@@ -110,11 +110,6 @@
                                     $sensorInfo = logs\get_sensor_db_type($i);
 
                                     if ($sensorInfo[0]['type'] != "0") {
-                                        // Add a line every two sensors
-                                        if($i % 3 == 0) { 
-                                            echo '</tr><tr>' ;
-                                        }
-                                        
                                         echo '<td>' . __('SENSOR'). " " . $i . ' (' . __($sensorInfo[0]['translation']) . ')</td>';
                                         echo '<td  style="margin-right:30px;" >';
                                         echo '<input type="checkbox"'
@@ -132,6 +127,13 @@
                                         }
                                         echo '>';
                                         echo '</td>';
+                                        echo '<td class="log-marge-day-main"></td>';
+
+                                        // Add a line every two sensors
+                                        if($i % 2 == 0) { 
+                                            echo '</tr><tr>' ;
+                                        }
+
                                     }
                                 }
                             ?>
@@ -140,6 +142,7 @@
                 </td>
             </tr>
         </table> 
+        <br />
 
         <!-- Display button to display -->
         <table class="table_width">
@@ -156,6 +159,8 @@
         
     </form>
 </div>
+<br />
+<hr />
 
 <br />
 <table class="table_width">
