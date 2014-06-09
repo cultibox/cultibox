@@ -5,19 +5,7 @@
 ?>
 
 <label id="anchor-programs"></label>
-<!-- Menu button -->
-<table class="table_width">
-    <tr>
-        <td>
-            <!-- Button for param -->
-            <input type="image" id="program_settings" name="program_settings" 
-                src="main/libs/img/advancedsettings.png" width="32"
-                title="<?php echo __('PARAMETERS'); ?>" />
-        </td>
-    </tr>
-</table>
 <br />
-
 <!-- Head title befor program showing -->
 <p class="title_conf">
     <?php echo __('VIEW_CURRENT_PROGRAM') . program\get_field_from_program_index("name",$program_index_id) . "  -  " . __('VIEW_CURRENT_PROGRAM_PLUG_PART'); ?>
@@ -34,6 +22,23 @@
     ?>
     </select>
 </p>
+
+<!-- Menu button -->
+<table class="table_width">
+    <tr>
+        <td class="program-div-margin"></td>
+        <td>
+            <!-- Button for param -->
+            <input type="image" id="program_settings" name="program_settings" 
+                src="main/libs/img/advancedsettings.png" width="32"
+                title="<?php echo __('PARAMETERS_PROGRAM'); ?>" 
+                alt="program"
+            />
+        </td>
+    </tr>
+</table>
+<br />
+
 
 
 <table class="table_width">
@@ -276,7 +281,7 @@
 <?php } ?>
 
 <!-- Modal form for settings -->
-<div id="manage_program" style="display:none" title="<?php echo __('PARAMETERS'); ?>">
+<div id="manage_program" style="display:none" title="<?php echo __('PARAMETERS_PROGRAM_TITLE'); ?>">
     <table>
         <!-- Add plug -->
         <tr>
