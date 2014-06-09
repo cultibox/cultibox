@@ -4,39 +4,40 @@
     include('main/libs/js/page_logs.js');
 ?>
 
+<br />
+<label class="title_conf"><?php echo __('SELECT_LOG_TITLE'); ?></label>
+
 <!-- Display buttons -->
 <table class="table_width">
     <tr>
+        <td class="log-div-margin-param"></td>
         <td>
             <!-- Button to change parameters-->
             <input type="image" id="button_parameters" 
                 name="button_parameters"
-                title="<?php echo __('PARAMETERS'); ?>"
+                title="<?php echo __('TOOLTIP_PARAMETERS_LOGS'); ?>"
                 src="main/libs/img/advancedsettings.png"  width="34"
+                alt="parameters"
             />
-        </td>
-        <td>
             <!-- Button to view curve to select-->
             <input type="image" id="curve_select_button"
                 name="curve_select_button"
                 title="<?php echo __('SELECT_CURVE_TO_DISPLAY'); ?>"
                 src="main/libs/img/text-x-log.png"  width="40"
+                alt="parameters"
             />
-        </td>
-        <td>
             <!-- Button to manage database-->
             <input type="image" id="database_management_button"
                 name="database_management_button"
                 title="<?php echo __('MANAGE_LOG_INFOS'); ?>"
                 src="main/libs/img/database.png"  width="40"
+                alt="parameters"
             />
-        </td>        
-        <td class="calendar_right"></td>
     </tr>
 </table>
-
-<label class="title_conf"><?php echo __('SELECT_LOG_TITLE'); ?></label>
 <br />
+
+
 <div id="label_select_type">
     <form name="display-log" id="display-log" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
         <table class="table_width">
@@ -51,7 +52,7 @@
             </tr>
             
             <!-- One empty line -->
-            <tr><td><br /></td></tr>
+            <tr><td><br /></td><td></td><td></td><td></td></tr>
             <tr id="label_select_day" style="<?php if(strcmp($type,"day")!=0) echo "display:none"; ?>">
                 <td></td>
                 <td><?php echo __('SELECT_DAY'); ?>:</td>
@@ -96,7 +97,7 @@
             </tr>
             
             <!-- One empty line -->
-            <tr><td><br /></td></tr>
+            <tr><td><br /></td><td></td><td></td><td></td></tr>
             <tr>
                 <td></td>
                 <td><?php echo __('SELECT_SENSOR_NB'); ?>:</td>
@@ -105,12 +106,10 @@
                         <tr>
                             <?php 
                                 for($i = 1 ; $i <= $GLOBALS['NB_MAX_SENSOR_LOG'] ; $i++) {
-                                        
                                     // Read sensor informations
                                     $sensorInfo = logs\get_sensor_db_type($i);
 
-                                    if ($sensorInfo[0]['type'] != "0")
-                                    {
+                                    if ($sensorInfo[0]['type'] != "0") {
                                         // Add a line every two sensors
                                         if($i % 3 == 0) { 
                                             echo '</tr><tr>' ;
@@ -353,7 +352,7 @@
 </div>
 
 <!-- Div used to dislay curve to show -->
-<div id="select_curve" title="<?php echo __('SELECT_CURVE_TO_DISPLAY') ?>" style="display:none">
+<div id="select_curve" title="<?php echo __('PARAMETERS_CURVE_DISPLAYED') ?>" style="display:none">
 
     <!-- Programm curve selection -->
     <div id="select_program_curve">
@@ -361,13 +360,13 @@
             <?php echo __('SELECT_PROGRAM_PLUG') ?> : 
             <img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_LOG_PROGRAM'); ?>" />
         </p>
-        <table id="select_plug_program_on_day">
-            <tr>
+        <table id="select_plug_program_on_day" class="table_width">
+                <tr>
             <?php 
                 for($plugs=1;$plugs<=$nb_plugs;$plugs++) {
+                    echo '<td class="log-div-margin-param"></td>';
                     $plugArrayTranslate =  translate_PlugType($plugs_infos[$plugs - 1]['PLUG_TYPE']);
-                    echo '<td>' . __('PLUG_MENU') . " " . $plugs . " (" . $plugArrayTranslate . ")</td>";
-                    echo '<td>';
+                    echo '<td class="log-marge-day-title">' . __('PLUG_MENU') . " " . $plugs . " (" . $plugArrayTranslate . ")";
                     echo '<input type="checkbox" style="margin-right:30px;"'
                         . ' plug="' . $plugs . '"' 
                         . ' startDate="' . $legend_date . '"'
@@ -377,34 +376,36 @@
                         . ' serieID=""'
                         . ' curvename="' . $plugs_infos[$plugs-1]["PLUG_NAME"] . '"'
                         . ' value="' . $plugs . '" ';
-                    if(in_array($plugs,$select_program)) 
-                    {
+                    if(in_array($plugs,$select_program)) {
                         echo ' checked';
                     }
                     echo '> </td>';
 
-                    if($plugs % 5 == 0) { 
-                        echo '</tr><tr>';
+                    if($plugs % 3 == 0) { 
+                        echo '<td class="log-div-margin-param"></td></tr><tr>';
                     }
                 } 
-            ?>
+
+                $tmp_cnt=$nb_plugs % 3;
+                for($i=0;$i<3-$tmp_cnt;$i++) { ?>
+                    <td></td>
+                <?php } ?>
             </tr>
         </table>
     </div>
-    
+    <br /><br />
     <!-- Power curve selection -->
     <div id="select_power_curve">
         <p>
             <?php echo __('SELECT_POWER_PLUG'); ?> : 
             <img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POWER_LOG'); ?>" />
         </p>
-        <table id="select_power_on_day">
+        <table id="select_power_on_day" class="table_width">
             <tr>
             <?php 
                 for($plugs=1;$plugs<=$nb_plugs;$plugs++) {  
                     $plugArrayTranslate =  translate_PlugType($plugs_infos[$plugs - 1]['PLUG_TYPE']);
-                    echo '<td>' . __('PLUG_MENU') . " " . $plugs . " (" . $plugArrayTranslate . ")</td>";
-                    echo '<td>';
+                    echo '<td>' . __('PLUG_MENU') . " " . $plugs . " (" . $plugArrayTranslate . ")";
                     echo '<input type="checkbox" style="margin-right:30px;"'
                         . ' plug="' . $plugs . '"' 
                         . ' startDate="' . $legend_date . '"'
@@ -418,7 +419,7 @@
                     }
                     echo '> </td>';
                     
-                    if($plugs % 5 == 0)
+                    if($plugs % 3 == 0)
                     {
                         echo '</tr><tr>' ;
                     }
@@ -430,8 +431,8 @@
 </div>
 
 <!-- Div used for parameters -->
-<div id="ui_parameters" name="ui_parameters" title="<?php echo __('PARAMETERS') ?>" style="display:none">
-    <table>
+<div id="ui_parameters" name="ui_parameters" title="<?php echo __('PARAMETERS_LOGS_TITLE') ?>" style="display:none">
+    <table class="table_width">
         <tr>
             <td>
                 <?php echo __('CONFIGURE_TEMPERATURE'); ?>:

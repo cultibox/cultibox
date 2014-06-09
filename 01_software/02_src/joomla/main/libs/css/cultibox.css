@@ -153,6 +153,11 @@ td.left_log {
 
 }
 
+td.log-div-margin-param {
+    width: 2%;
+}
+
+
 td.log-marge-day-main {
    width: 12%;
 }
@@ -290,6 +295,10 @@ td.program-manage-title {
 
 td.program-div-margin {
     width: 5%;
+}
+
+td.program-div-margin-param {
+    width: 2%;
 }
 
 td.program-div {
