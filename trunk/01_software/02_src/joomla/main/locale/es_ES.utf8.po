@@ -904,11 +904,8 @@ msgstr "El programa ha sido eliminado."
 msgid "PARAMETERS"
 msgstr "Configuración"
 
-msgid "PARAMETERS_PROGRAM"
-msgstr ""
-
 msgid "PARAMETERS_PROGRAM_TITLE"
-msgstr ""
+msgstr "Las opciones avanzadas del programa"
 
 
 # For the export module highchart part:
@@ -1778,8 +1775,11 @@ msgstr "Permite gestionar fácilmente la visualización de los calendarios exter
 msgid "TOOLTIP_CREATE_CALENDAR_PROGRAM"
 msgstr "<b>Planificación de fertilizantes:</b> la creación automática, a partir de una fecha de salida, un calendario de fertilizantes en función del tipo de sustrato y la marca de fertilizante de acuerdo con las recomendaciones del fabricante"
 
-msgid "PARAMETERS_CALENDAR"
+msgid "TOOLTIP_PARAMETERS_CALENDAR"
 msgstr "<b>Calendario Opciones avanzadas:</b> archivos XML externos soporte de pantalla (por ejemplo, el calendario lunar) y sus grabaciones en la tarjeta SD"
+
+msgid "TOOLTIP_PARAMETERS_PROGRAM"
+msgstr "<b>Opciones de programas avanzados:</b> exportación o importación de un programa, restablecer los programas, añadiendo o eliminando tomado"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
 msgstr "Configure el programa para aplicar."
