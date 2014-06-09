@@ -388,7 +388,7 @@ msgid "SELECT_SENSOR"
 msgstr "Sensor"
 
 msgid "MANAGE_LOG_INFOS"
-msgstr "Verwalten Sie Ihre Daten"
+msgstr "<b>Verwalten Sie Ihre Daten</b>"
 
 msgid "MANAGE_RESET_TITLE"
 msgstr "Löschen Sie alte Protokolle"

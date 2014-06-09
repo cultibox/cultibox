@@ -388,7 +388,7 @@ msgid "SELECT_SENSOR"
 msgstr "El sensor"
 
 msgid "MANAGE_LOG_INFOS"
-msgstr "Gestión de los datos climáticos"
+msgstr "<b>Gestión de los datos climáticos</b>"
 
 msgid "MANAGE_RESET_TITLE"
 msgstr "Borrar antiguos logs"
