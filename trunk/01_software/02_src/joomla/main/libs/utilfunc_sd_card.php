@@ -102,6 +102,13 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
         }
     }
 
+    // Read value on sd Card
+    $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
+    $sdConfRtc = get_decode_rtc_offset($sdConfRtc);
+    // Update database
+    insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
+
+
     $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
     $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
     $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
@@ -121,12 +128,6 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
             return ERROR_WRITE_SD_CONF;
         }
     }
-
-    // Read value on sd Card
-    $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
-    $sdConfRtc = get_decode_rtc_offset($sdConfRtc);
-    // Update database
-    insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
 
     if(!$conf_uptodate) {
         // Infor user that programms have been updated
@@ -731,6 +732,8 @@ function read_sd_conf_file($sd_card,$variable,$out="") {
         return false;
 
     $file="$sd_card/cnf/conf";
+
+    if(!is_file("$sd_card/cnf/conf")) return false;
     
     // Open file
     $fid = @fopen($file,"r+");
@@ -772,13 +775,13 @@ function read_sd_conf_file($sd_card,$variable,$out="") {
     
     $val = "";
     
-    if(($offset != "")&&($fid)) {
+    if(($offset != "") && ($fid)) {
         fseek($fid, $offset);
         $val = fread($fid,4);
     }
     
     // Close
-    fclose($fid);
+    if($fid) fclose($fid);
     return $val;
     
 }
