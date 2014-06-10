@@ -102,12 +102,6 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
         }
     }
 
-    // Read value on sd Card
-    $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
-    $sdConfRtc = get_decode_rtc_offset($sdConfRtc);
-    // Update database
-    insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
-    
     $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
     $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
     $updatefrequency = get_configuration("UPDATE_PLUGS_FREQUENCY",$main_error);
@@ -127,6 +121,12 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
             return ERROR_WRITE_SD_CONF;
         }
     }
+
+    // Read value on sd Card
+    $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
+    $sdConfRtc = get_decode_rtc_offset($sdConfRtc);
+    // Update database
+    insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
 
     if(!$conf_uptodate) {
         // Infor user that programms have been updated
@@ -229,7 +229,7 @@ function get_sd_card(&$hdd="") {
     $ret=false;
     $dir="";
     $os=php_uname('s');
-    //Retrieve SD path depnding of the current OS:
+    //Retrieve SD path depending of the current OS:
     switch($os) {
         case 'Linux':
             //In Ubuntu Quantal mounted folders are now in /media/$USER directory
@@ -254,7 +254,6 @@ function get_sd_card(&$hdd="") {
                 }
             }
             break;
-
         case 'Mac':
         case 'Darwin':
             $dir="/Volumes";
@@ -275,7 +274,6 @@ function get_sd_card(&$hdd="") {
                 }
             }
             break;
-
         case 'Windows NT':
             $vol=`MountVol`;
             $vol=explode("\n",$vol);
@@ -724,8 +722,8 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
 // {{{ read_sd_conf_file()
 // ROLE   Read one variable of conffile
 // IN   $sd_card      location of the sd card to save data
-//   $variable      Variable to read    
-//   $out                error or warning messages
+//      $variable      Variable to read    
+//      $out                error or warning messages
 // RET Value read
 function read_sd_conf_file($sd_card,$variable,$out="") {
    // Check if sd card is defined
@@ -735,8 +733,7 @@ function read_sd_conf_file($sd_card,$variable,$out="") {
     $file="$sd_card/cnf/conf";
     
     // Open file
-    $fid = fopen($file,"r+");
-    
+    $fid = @fopen($file,"r+");
     $offset = "";
     
     switch ($variable) {
@@ -775,16 +772,13 @@ function read_sd_conf_file($sd_card,$variable,$out="") {
     
     $val = "";
     
-    if ($offset != "")
-    {
+    if(($offset != "")&&($fid)) {
         fseek($fid, $offset);
-        
         $val = fread($fid,4);
     }
     
     // Close
     fclose($fid);
-    
     return $val;
     
 }

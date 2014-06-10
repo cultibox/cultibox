@@ -55,8 +55,16 @@ if((!isset($submenu))||(empty($submenu))) {
 } 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
-if(!isset($sd_card) || empty($sd_card)) {
-   $sd_card=get_sd_card();
+if((!isset($sd_card))||(empty($sd_card))) {
+   $hdd_list=array();
+   $sd_card=get_sd_card($hdd_list);
+   $new_arr=array();
+   foreach($hdd_list as $hdd) {
+        if(disk_total_space($hdd)<=2200000000) $new_arr[]=$hdd;
+
+   }
+   $hdd_list=$new_arr;
+   sort($hdd_list);
 }
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
