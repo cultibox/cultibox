@@ -93,7 +93,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
         return ERROR_COPY_TPL;
     }
 
-    $wifi_conf=create_wificonf_from_database($main_error,get_ip_address());
+    $wifi_conf=create_wificonf_from_database($main_error);
     if(!compare_wificonf($wifi_conf,$sd_card)) {
         $conf_uptodate=false;
         if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {

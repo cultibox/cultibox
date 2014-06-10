@@ -1823,37 +1823,55 @@ function create_plugconf_from_database($nb=0,&$out) {
 // IN $out        error or warning message
 //    $ip         ip adresses
 // RET a string containing datas
-function create_wificonf_from_database(&$out,$ip="") {
-   $data=array();
-   $sql = <<<EOF
-SELECT `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD`, `WIFI_IP`, `WIFI_IP_MANUAL` FROM `configuration` WHERE `id` = 1;
-EOF;
+function create_wificonf_from_database(&$out) {
 
-   $db=db_priv_pdo_start();
-   try {
-       $sth=$db->prepare("$sql");
-       $sth->execute();
-       $res=$sth->fetch(PDO::FETCH_ASSOC);
-   } catch(PDOException $e) {
-       $ret=$e->getMessage();
-   }
-   $db=null;
-   if((isset($ret))&&(!empty($ret))) {
-          if($GLOBALS['DEBUG_TRACE']) {
-                  $out[]=__('ERROR_SELECT_SQL').$ret;
-            } else {
-                  $out[]=__('ERROR_SELECT_SQL');
-            }
-            return false;
-   }
+    // Read ip adress of server
+    $host= gethostname();
+    $ip = gethostbyname($host);
+    // Split IP and format to have 3 element in each point
+    $ipArray = explode(".", $ip);
+    $retIP = "";
+    foreach ($ipArray As $SubIP)
+    {
+        if ($retIP != "")
+            $retIP .= ".";
+    
+        while (strlen($SubIP) < 3)
+            $SubIP = "0" . $SubIP;
+            
+        $retIP .= $SubIP;
+    }
 
-   $data[]="SSID:".$res['WIFI_SSID'];
-   $data[]="CLE:".$res['WIFI_KEY_TYPE'];
-   $data[]="PWD:".$res['WIFI_PASSWORD'];
-   $data[]="IPC:".$res['WIFI_IP'];
-   $data[]="IPS:".trim($ip);
+    $data=array();
 
-   return $data;
+    $sql = "SELECT WIFI_SSID, WIFI_KEY_TYPE, WIFI_PASSWORD, WIFI_IP, WIFI_IP_MANUAL FROM configuration WHERE id = 1;";
+
+    $db=db_priv_pdo_start();
+    try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetch(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+        return false;
+    }
+
+    // Create return array with WIFI informations
+    $data[]="SSID:" . $res['WIFI_SSID'];
+    $data[]="CLE:"  . $res['WIFI_KEY_TYPE'];
+    $data[]="PWD:"  . $res['WIFI_PASSWORD'];
+    $data[]="IPC:"  . $res['WIFI_IP'];
+    $data[]="IPS:"  . $retIP;
+
+    return $data;
 }
 /// }}}
 

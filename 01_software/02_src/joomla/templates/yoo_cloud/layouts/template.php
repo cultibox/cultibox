@@ -8,6 +8,9 @@ if (!isset($_COOKIE['position'])) {
     setcookie("position", "15,15,325", time()+(86400 * 30));
 }
 
+// Define hour used
+date_default_timezone_set('UTC');
+
 // get template configuration
 include($this['path']->path('layouts:template.config.php'));
 	

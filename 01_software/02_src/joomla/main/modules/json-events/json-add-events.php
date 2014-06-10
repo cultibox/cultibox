@@ -25,7 +25,8 @@ if(    isset($title) && !empty($title)
             if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
                 $description=$db->quote($_POST["desc"]);    
             } else {
-                $description = "";
+                // Waring '' are very important !
+                $description = "''";
             }
 
 

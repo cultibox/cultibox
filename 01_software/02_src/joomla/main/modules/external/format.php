@@ -62,7 +62,7 @@ if((!isset($path))||(empty($path))) {
                 return 0;
             }
 
-            $wifi_conf=create_wificonf_from_database($out,get_ip_address());
+            $wifi_conf=create_wificonf_from_database($out);
             if(!compare_wificonf($wifi_conf,$path)) {
                 $conf_uptodate=false;
                 if(!write_wificonf($path,$wifi_conf,$out)) {

@@ -1158,31 +1158,6 @@ function check_xml_calendar_file($file) {
 }
 // }}}
 
-// {{{ get_ip_address()
-// ROLE get ip addreses from the local host
-// RET  ip addresses of the local host
-function get_ip_address() {
-    $ip="";
-    $os=php_uname('s');
-    switch($os) {
-        case 'Linux':
-            $ip=`ifconfig | awk -F'[: ]' '/inet ad/ {print $13}'|grep -v "127.0.0.1"|head -1`;
-            break;
-
-        case 'Mac':
-        case 'Darwin':
-            $ip=`ifconfig | awk -F'[: ]' '/inet / {print $2}'|grep -v "127.0.0.1"|head -1`;
-            break;
-
-        case 'Windows NT':
-            $ip=`for /f "tokens=1-2 delims=:" %%a in ('ipconfig^|find "IPv4"') do echo %%b`;
-            break;
-        }
-
-    return $ip;
-}
-// }}}
-
 
 //{{{ get_rtc_offset()
 // ROLE get rtc offset value to be recorded in the configuration file

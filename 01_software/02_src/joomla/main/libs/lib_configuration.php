@@ -49,7 +49,7 @@ function check_db() {
     $conf_index_col["WIFI_IP"]              = array ( 'Field' => "WIFI_IP", 'Type' => "varchar(15)");
     $conf_index_col["WIFI_IP_MANUAL"]       = array ( 'Field' => "WIFI_IP_MANUAL", 'Type' => "tinyint(1)");
     $conf_index_col["RTC_OFFSET"]           = array ( 'Field' => "RTC_OFFSET", 'Type' => "decimal(3,2)");
-    $conf_index_col["ACTIV_DAILY_PROGRAM"]  = array ( 'Field' => "ACTIV_DAILY_PROGRAM", 'Type' => "varchar(5)");
+    $conf_index_col["ACTIV_DAILY_PROGRAM"]  = array ( 'Field' => "ACTIV_DAILY_PROGRAM", 'Type' => "varchar(5)", 'default_value' => "False");
 
 
     // Check if table configuration exists
