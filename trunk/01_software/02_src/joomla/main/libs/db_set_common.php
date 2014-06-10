@@ -446,18 +446,24 @@ function purge_program($arr) {
 //      $event[]     the event to be recorded
 // RET false if errors occured, true else
 function insert_calendar($event,&$out) {
-    if(count($event)==0) return false;
-        $sql="";
-        foreach($event as $evt) {
-        
-            // Check if program_index exists. If not add empty
-            if (!array_key_exists("program_index",$evt))
-                $evt["program_index"] = "";
-        
-        $sql = "INSERT INTO calendar" 
-            . " (Title, StartTime, EndTime, Description, Color, Icon, program_index) "
-            . "  VALUES('{$evt['title']}', '{$evt['start']}', '{$evt['end']}', '{$evt['description']}', '{$evt['color']}', '{$evt['icon']}', '{$evt['program_index']}');";
-        }
+    
+    // If there is no event to add, return
+    if(count($event)==0)
+        return false;
+    
+    // Create sql line
+    $sql="";
+    foreach($event as $evt) {
+    
+        // Check if program_index exists. If not add empty
+        if (!array_key_exists("program_index",$evt))
+            $evt["program_index"] = "";
+    
+        $sql .= "INSERT INTO calendar" 
+             . " (Title, StartTime, EndTime, Description, Color, Icon, program_index) "
+             . "  VALUES ('{$evt['title']}', '{$evt['start']}', '{$evt['end']}', '{$evt['description']}', '{$evt['color']}', '{$evt['icon']}', '{$evt['program_index']}');";
+    }
+
     $db = db_priv_pdo_start();
     $db->exec($sql);
     $db=null;
