@@ -30,14 +30,14 @@ $(document).ready(function(){
         showOn: 'both',
         buttonImage: "../../main/libs/img/datepicker.png",
         buttonImageOnly: 'true',
-        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
+        buttonText: "<?php echo __('TIMEPICKER_BUTTON_TEXT') ;?>",
         timeFormat: 'hh:mm',
-        <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
-        <?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
-        <?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
-        <?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
-        <?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
-        <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."',"; ?>
+        timeText: "<?php echo __('TIMEPICKER_TIME') ;?>",
+        hourText: "<?php echo __('TIMEPICKER_HOUR') ;?>",
+        minuteText: "<?php echo __('TIMEPICKER_MINUTE') ;?>",
+        secondText: "<?php echo __('TIMEPICKER_SECOND') ;?>",
+        currentText: "<?php echo __('TIMEPICKER_ENDDAY') ;?>",
+        closeText: "<?php echo __('TIMEPICKER_CLOSE') ;?>"
     });
     
     // On select change, update conf
@@ -46,8 +46,8 @@ $(document).ready(function(){
         $(this).on('change', function() {
             newValue    = $( this ).find(":selected").val();
             varToUpdate = $( this ).attr('name');
-            updateConf  = $( this ).attr('update_conf');
-        
+            updateConf  = $( this ).attr('data-update_conf');
+
             $.ajax({
                 type: "POST",
                 cache: false,
@@ -60,14 +60,15 @@ $(document).ready(function(){
                 }
             });
         });
-  
     });
+
+    
     
     $("#wifi_ip_manual").click(function(e) {
         if($('#wifi_ip_manual').prop('checked')) { 
-                $('#wifi_ip').prop('disabled', false);
+            $('#wifi_ip').prop('disabled', false);
         } else {
-                $('#wifi_ip').prop('disabled', true);
+            $('#wifi_ip').prop('disabled', true);
         }
     });
     

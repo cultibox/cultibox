@@ -127,51 +127,55 @@ if(empty($alarm_value)) {
 }
 
 
-if(strcmp("$wifi_enable","")!=0) {
-       insert_configuration("WIFI","$wifi_enable",$main_error);
-       if($wifi_enable) {
-           insert_configuration("WIFI_SSID","$wifi_ssid",$main_error);
-           insert_configuration("WIFI_KEY_TYPE","$wifi_key_type",$main_error);
-           if(strcmp($wifi_password,"")!=0) {
-               insert_configuration("WIFI_PASSWORD","$wifi_password",$main_error);
-           }
-                
-           if($wifi_manual) {
-               insert_configuration("WIFI_IP","$wifi_ip",$main_error);
-               insert_configuration("WIFI_IP_MANUAL","1",$main_error);
-           } else {
-               insert_configuration("WIFI_IP_MANUAL","0",$main_error);    
-               insert_configuration("WIFI_IP","000.000.000.000",$main_error);
-               $wifi_ip=get_configuration("WIFI_IP");
-           }
-       } else {
-           insert_configuration("WIFI_SSID","",$main_error);
-           insert_configuration("WIFI_KEY_TYPE","NONE",$main_error);
-           insert_configuration("WIFI_PASSWORD","",$main_error);
-           insert_configuration("WIFI_IP","000.000.000.000",$main_error);
-           insert_configuration("WIFI_IP_MANUAL","0",$main_error);
-        
-           $wifi_ssid="";
-           $wifi_key_type="NONE";
-           $wifi_password="";
-           $wifi_ip="";
-       }
-       $update_conf=true;
+// Wifi tab is modified
+if($wifi_enable != "") {
 
-       if((!empty($sd_card))&&(isset($sd_card))) {
-            $wifi_conf=create_wificonf_from_database($main_error,get_ip_address());
-            if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
-                $main_error[]=__('ERROR_WIFI_CONF');
-            }
+    // Save activation of wifi
+    insert_configuration("WIFI",$wifi_enable,$main_error);
+    
+    if($wifi_enable) {
+       insert_configuration("WIFI_SSID",$wifi_ssid,$main_error);
+       insert_configuration("WIFI_KEY_TYPE",$wifi_key_type,$main_error);
+       if(strcmp($wifi_password,"")!=0) {
+           insert_configuration("WIFI_PASSWORD",$wifi_password,$main_error);
        }
+            
+       if($wifi_manual) {
+           insert_configuration("WIFI_IP",$wifi_ip,$main_error);
+           insert_configuration("WIFI_IP_MANUAL","1",$main_error);
+       } else {
+           insert_configuration("WIFI_IP_MANUAL","0",$main_error);    
+           insert_configuration("WIFI_IP","000.000.000.000",$main_error);
+           $wifi_ip=get_configuration("WIFI_IP");
+       }
+    } else {
+       insert_configuration("WIFI_SSID","",$main_error);
+       insert_configuration("WIFI_KEY_TYPE","NONE",$main_error);
+       insert_configuration("WIFI_PASSWORD","",$main_error);
+       insert_configuration("WIFI_IP","000.000.000.000",$main_error);
+       insert_configuration("WIFI_IP_MANUAL","0",$main_error);
+
+       $wifi_ssid="";
+       $wifi_key_type="NONE";
+       $wifi_password="";
+       $wifi_ip="";
+    }
+    $update_conf=true;
+
+    if(!empty($sd_card) && isset($sd_card)) {
+        $wifi_conf = create_wificonf_from_database($main_error);
+        if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
+            $main_error[]=__('ERROR_WIFI_CONF');
+        }
+    }
 } 
 
-$wifi_enable = get_configuration("WIFI",$main_error);
-$wifi_ssid=get_configuration("WIFI_SSID",$main_error);
-$wifi_key_type=get_configuration("WIFI_KEY_TYPE",$main_error);
-$wifi_manual=get_configuration("WIFI_IP_MANUAL",$main_error);
-$wifi_password=get_configuration("WIFI_PASSWORD",$main_error);
-$wifi_ip=get_configuration("WIFI_IP",$main_error);
+$wifi_enable    = get_configuration("WIFI",$main_error);
+$wifi_ssid      = get_configuration("WIFI_SSID",$main_error);
+$wifi_key_type  = get_configuration("WIFI_KEY_TYPE",$main_error);
+$wifi_manual    = get_configuration("WIFI_IP_MANUAL",$main_error);
+$wifi_password  = get_configuration("WIFI_PASSWORD",$main_error);
+$wifi_ip        = get_configuration("WIFI_IP",$main_error);
 
 if((isset($advanced_regul))&&(!empty($advanced_regul))) {
     insert_configuration("ADVANCED_REGUL_OPTIONS","$advanced_regul",$main_error);

@@ -1250,37 +1250,6 @@ $(document).ready(function() {
     <?php } ?>
 });
 
-// When user click on save calendar lunar on SD card
-$(document).ready(function() {
-    $("#save_calendar_lunar_sd").click(function(e) {
-        
-    
-        // Add message to prevent user
-        pop_up_add_information('<?php echo __('CALENDAR_UPDATE_SD_EVENT') ;?> <img src=\"../../main/libs/img/waiting_small.gif\" />', "update_calendar_lunar_progress", "information");
-
-        // Rewrite on SD cards every events (and plgXX programm)
-        <?php if(isset($sd_card) && !empty($sd_card)) { ?>
-
-            $.ajax({
-               cache: false,
-               data: {sd_card:"<?php echo $sd_card ;?>"},
-               url: "../../main/modules/external/calendar_write_sd_events_lunar.php"
-            }).done(function (data) {
-                pop_up_remove("update_calendar_lunar_progress");
-            });
-        <?php 
-        } else {
-        ?>
-            pop_up_remove("update_calendar_lunar_progress");
-            
-            // Add message to prevent user
-            pop_up_add_information('<?php echo __('LUNAR_CALENDAR_SAVE_SD') . " : " . __('NO_IMPORT_LOG') ;?>', "update_calendar_lunar_progress", "error");
-
-        <?php } ?>
-            
-    });
-});
-
 // When user click on daily program checkbutton in create dialog UI
 $(document).ready(function() {
 
