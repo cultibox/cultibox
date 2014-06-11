@@ -8,7 +8,8 @@ set inputFileRef [file join [file dirname [info script] ] engrais_ref.txt]
 proc initFile {fid marque substrat programme} {
 	puts $fid {<?xml version="1.0" encoding="utf-8"?>}
 	puts $fid {<feed xmlns="http://www.w3.org/2005/Atom">}
-	puts $fid "   <updated>[clock format [clock seconds] -format {%Y-%m-%dT%H:%M:%S+02:00}]</updated>"
+	#puts $fid "   <updated>[clock format [clock seconds] -format {%Y-%m-%dT00:00:00}]</updated>"
+    puts $fid "   <updated>2014-06-11T10:37:57+02:00</updated>"
 	puts $fid {   <id>http://www.cultibox.fr/</id>}
 	puts $fid "   <title>${marque} ${programme} ${substrat}</title>"
 	puts $fid {   <subtitle></subtitle>}
@@ -239,6 +240,9 @@ set EngraisMarque [split $UneLigne "\t"]
 gets $fidIn UneLigne
 set EngraisName [split $UneLigne "\t"]
 
+gets $fidIn UneLigne
+set EngraisUnit [split $UneLigne "\t"]
+
 puts $fid {#summary Calendrier des engrais
 
 = Sommaire =
@@ -390,13 +394,7 @@ while {[eof $fidIn] != 1} {
         foreach Dosage [lrange $UneLigne 7 end] {
             
             if {$Dosage != 0} {
-                set unit "ml/l"
-                if {[lindex $EngraisName $idx] == "Mineral Magic" || [lindex $EngraisName $idx] == "Piranha"} {
-                    set unit "g/l"
-                }
-				if {[lindex $EngraisName $idx] == "SuperVit"} {
-					set unit "goutte / 4,5l"
-				}
+				set unit [lindex $EngraisUnit $idx]
                 set eng(${semaine},[lindex $EngraisName $idx]) "${Dosage} ${unit}"
             }
             incr idx

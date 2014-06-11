@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
    <updated>2014-06-11T10:37:57+02:00</updated>
    <id>http://www.cultibox.fr/</id>
-   <title>GHE Flora Series Coco</title>
+   <title>Platinium Hydroponic Aero</title>
    <subtitle></subtitle>
    <author>
       <name>Cultibox</name>
@@ -10,11 +10,11 @@
       <email>info@cultibox.fr</email>
    </author>
    <category term = "engrais" label = "engrais">
-    <substrat>Coco</substrat>
-    <periode>Flora Series</periode>
-    <marque>GHE</marque>
+    <substrat>Aero</substrat>
+    <periode>Hydroponic</periode>
+    <marque>Platinium</marque>
    </category>
-   <link rel="self" href="www.cultibox.fr/GHE_Coco.xml" />
+   <link rel="self" href="www.cultibox.fr/Platinium_Aero.xml" />
    <icon></icon>
    <logo></logo>
    <rights type = "text">
@@ -32,27 +32,31 @@
       <start>0</start>
       <facultative>0</facultative>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>20 ml/10L</dosage>
+        <name>Rhizoponics</name>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>Humic FULVIC</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraBloom</name>
-        <dosage>0,25 ml/l</dosage>
+        <name>Seaweed XTRACT</name>
+        <dosage>1-3 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraGro</name>
-        <dosage>0,25 ml/l</dosage>
+        <name>Bubble ZYM</name>
+        <dosage>1-2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraMicro</name>
-        <dosage>0,25 ml/l</dosage>
+        <name>Hydroponic Grow</name>
+        <dosage>0,2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Bloom</name>
+        <dosage>0,2 ml/l</dosage>
       </nutriment>
       <color>#98FB98</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S2 Croissance</title>
@@ -66,31 +70,39 @@
       <start>7</start>
       <facultative>0</facultative>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>20 ml/10L</dosage>
+        <name>Rhizoponics</name>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>Humic FULVIC</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraBloom</name>
-        <dosage>0,25 ml/l</dosage>
+        <name>Resine PLUS</name>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraGro</name>
-        <dosage>0,25 ml/l</dosage>
+        <name>Seaweed XTRACT</name>
+        <dosage>1-3 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraMicro</name>
-        <dosage>0,25 ml/l</dosage>
+        <name>Bubble ZYM</name>
+        <dosage>1-2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
+        <name>Energy MAX</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Bloom</name>
+        <dosage>0,4 ml/l</dosage>
       </nutriment>
       <color>#9ACD32</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S3 Croissance</title>
@@ -104,31 +116,43 @@
       <start>14</start>
       <facultative>0</facultative>
       <nutriment>
-        <name>BioSevia Bloom</name>
-        <dosage>20 ml/10L</dosage>
+        <name>Rhizoponics</name>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>Humic FULVIC</name>
+        <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraBloom</name>
-        <dosage>0,7 ml/l</dosage>
+        <name>Resine PLUS</name>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraGro</name>
-        <dosage>0,7 ml/l</dosage>
+        <name>Seaweed XTRACT</name>
+        <dosage>1-3 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraMicro</name>
-        <dosage>0,7 ml/l</dosage>
+        <name>Bubble ZYM</name>
+        <dosage>1-2 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Sweet CANDY</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Energy MAX</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Grow</name>
+        <dosage>1,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Bloom</name>
+        <dosage>0,9 ml/l</dosage>
       </nutriment>
       <color>#006400</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S4 Floraison</title>
@@ -142,31 +166,43 @@
       <start>21</start>
       <facultative>0</facultative>
       <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
+        <name>Rhizoponics</name>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraBloom</name>
-        <dosage>5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraGro</name>
+        <name>Humic FULVIC</name>
         <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraMicro</name>
+        <name>Resine PLUS</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Seaweed XTRACT</name>
+        <dosage>1-3 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
+        <name>Bubble ZYM</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sweet CANDY</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Energy MAX</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Bloom</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <color>#F0E68C</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S5 Floraison</title>
@@ -180,31 +216,43 @@
       <start>28</start>
       <facultative>0</facultative>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
+        <name>Rhizoponics</name>
+        <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Diamond Nectar</name>
-        <dosage>2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraBloom</name>
-        <dosage>5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraGro</name>
+        <name>Humic FULVIC</name>
         <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraMicro</name>
+        <name>Resine PLUS</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Seaweed XTRACT</name>
+        <dosage>1-3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bubble ZYM</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sweet CANDY</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Energy MAX</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Grow</name>
+        <dosage>1 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Bloom</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <color>#F5DEB3</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S6 Floraison</title>
@@ -218,31 +266,43 @@
       <start>35</start>
       <facultative>0</facultative>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraBloom</name>
-        <dosage>1,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraGro</name>
+        <name>Rhizoponics</name>
         <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraMicro</name>
+        <name>Humic FULVIC</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Resine PLUS</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Bioprotect</name>
-        <dosage>5 ml/l</dosage>
+        <name>Seaweed XTRACT</name>
+        <dosage>1-3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bubble ZYM</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sweet CANDY</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Energy MAX</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Grow</name>
+        <dosage>0,4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Bloom</name>
+        <dosage>1,5 ml/l</dosage>
       </nutriment>
       <color>#D2B48C</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S7 Floraison</title>
@@ -256,27 +316,47 @@
       <start>42</start>
       <facultative>0</facultative>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraBloom</name>
-        <dosage>1,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraGro</name>
+        <name>Rhizoponics</name>
         <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraMicro</name>
+        <name>Humic FULVIC</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Super BOOST</name>
+        <dosage>1,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Resine PLUS</name>
+        <dosage>1,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Seaweed XTRACT</name>
+        <dosage>1-3 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bubble ZYM</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sweet CANDY</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Energy MAX</name>
+        <dosage>0,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Grow</name>
+        <dosage>0,4 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Hydroponic Bloom</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <color>#DAA520</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S8 Floraison</title>
@@ -290,27 +370,35 @@
       <start>49</start>
       <facultative>0</facultative>
       <nutriment>
-        <name>Bio Bloom</name>
-        <dosage>0,2 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraBloom</name>
+        <name>Super BOOST</name>
         <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraGro</name>
+        <name>Resine PLUS</name>
+        <dosage>1,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bubble ZYM</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sweet CANDY</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Energy MAX</name>
         <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraMicro</name>
-        <dosage>1 ml/l</dosage>
+        <name>Hydroponic Grow</name>
+        <dosage>0,4 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Hydroponic Bloom</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <color>#CD853F</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S9 Floraison</title>
@@ -324,23 +412,35 @@
       <start>56</start>
       <facultative>0</facultative>
       <nutriment>
-        <name>FloraBloom</name>
+        <name>Super BOOST</name>
         <dosage>1,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraGro</name>
+        <name>Resine PLUS</name>
+        <dosage>1,5 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Bubble ZYM</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Sweet CANDY</name>
+        <dosage>1-2 ml/l</dosage>
+      </nutriment>
+      <nutriment>
+        <name>Energy MAX</name>
         <dosage>0,5 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraMicro</name>
-        <dosage>1 ml/l</dosage>
+        <name>Hydroponic Grow</name>
+        <dosage>0,4 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
+        <name>Hydroponic Bloom</name>
+        <dosage>1 ml/l</dosage>
       </nutriment>
       <color>#D2691E</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S10 Floraison</title>
@@ -354,23 +454,15 @@
       <start>63</start>
       <facultative>0</facultative>
       <nutriment>
-        <name>FloraBloom</name>
-        <dosage>1,5 ml/l</dosage>
+        <name>Hydroponic Grow</name>
+        <dosage>0,4 ml/l</dosage>
       </nutriment>
       <nutriment>
-        <name>FloraGro</name>
-        <dosage>0,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraMicro</name>
+        <name>Hydroponic Bloom</name>
         <dosage>1 ml/l</dosage>
       </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
-      </nutriment>
       <color>#A0522D</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S11 Floraison</title>
@@ -378,29 +470,13 @@
       <updated>2008-05-29T13:14:57+02:00</updated>
       <id>http://www.cultibox.fr/id1</id>
       <category term = "vegetation" label = "Vegetation" />
-      <content type = "text"></content>
+      <content type = "text">Rincage</content>
       <ec></ec>
       <duration>7</duration>
       <start>70</start>
       <facultative>0</facultative>
-      <nutriment>
-        <name>FloraBloom</name>
-        <dosage>1,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraGro</name>
-        <dosage>0,5 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>FloraMicro</name>
-        <dosage>1 ml/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
-      </nutriment>
       <color>#8B4513</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
     <entry>
       <title>S12 Rincage</title>
@@ -413,15 +489,7 @@
       <duration>7</duration>
       <start>77</start>
       <facultative>0</facultative>
-      <nutriment>
-        <name>Mineral Magic</name>
-        <dosage>0,4 g/l</dosage>
-      </nutriment>
-      <nutriment>
-        <name>Ripen</name>
-        <dosage>6 ml/l</dosage>
-      </nutriment>
       <color>#000000</color>
-      <icon>GHE.png</icon>
+      <icon>Platinium.png</icon>
    </entry>
 </feed>
