@@ -1,3 +1,9 @@
+Cultibox (1.3.09) precise; urgency=low
+    + Remise en forme de l'interface    
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Jun 10 11:25:32 CEST 2014
+
+
 Cultibox (1.3.08) precise; urgency=low
     + Correction des erreurs de calculs présentes dans la configuration de RTC_OFFSET
     + Vérification de la présence d'une nouvelle version du logiciel sans bloquer la page (ajax)

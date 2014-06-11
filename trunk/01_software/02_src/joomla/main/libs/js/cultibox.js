@@ -96,17 +96,9 @@ diffdate = function(d1,d2) {
 addZ = function(n){return n<10? '0'+n:''+n;}
 
 
-clean_highchart_message = function(message) { {
+clean_highchart_message = function(message) { 
     message=message.replace("'", "\'");
-    message=message.replace("&eacute;", "é");
-    message=message.replace("&agrave;", "à");
-    message=message.replace("&egrave;", "è");
-    message=message.replace("&ecirc;", "ê");
-    message=message.replace("&deg;", "°");
-    message=message.replace("&ucirc;", "û");
-    message=message.replace("&ocirc;", "ô");
-    return message;
-    }
+    return $('<div>').html(message).text();
 }
 
 
