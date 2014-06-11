@@ -8,142 +8,141 @@ title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
 // USED BY: templates/logs.html  
 function getType(i) {
-      var divSelectDay = document.getElementById('label_select_day');
-      var divSelectMonth = document.getElementById('label_select_month');
+    var divSelectDay = document.getElementById('label_select_day');
+    var divSelectMonth = document.getElementById('label_select_month');
 
-      switch(i) {
-         case 0 : 
+    switch(i) {
+        case 0 : 
             divSelectDay.style.display = ''; 
             divSelectMonth.style.display = 'none'; 
             break;
-         case 1 : divSelectDay.style.display = 'none'; 
+        case 1 : divSelectDay.style.display = 'none'; 
             divSelectMonth.style.display = ''; 
             break;
-         default: 
+        default: 
             divSelectDay.style.display = ''; 
             divSelectMonth.style.display = 'none'; 
             break;
-      }
+    }
 }
 // }}}
 
 delete_logs = function(type, type_reset, nb_jours, start,count) {
-        var step=100/count;
-        var pourcent=(count-nb_jours)*step;
+    var step=100/count;
+    var pourcent=(count-nb_jours)*step;
 
-        $.ajax({
-              cache: false,
-              url: "../../main/modules/external/delete_logs.php",
-              data: {type:type,type_reset:type_reset,start:start}
-        }).done(function (data) {
-              if(!$.isNumeric(data)) {
-                if(type=="logs") {
-                    $("#error_delete_logs").show();
-                } else {
-                    $("#error_delete_log_power").show();
-                }
-              } else {
-                 if(data==1) {
-                     if(type=="logs") {
-                        $("#progress_bar_delete_logs").progressbar({value:pourcent});  
-                     } else {
-                        $("#progress_bar_delete_logs_power").progressbar({value:pourcent});
-                     }
-
-                     if(nb_jours>1) {
-                        var date = new Date(Date.parse(start)); 
-                        date.setDate(date.getDate()+1);
-                        var dateString = (date.getFullYear().toString()+"-"+addZ((date.getMonth() + 1)) + "-" + addZ(date.getDate()));
-
-                        delete_logs(type,type_reset, nb_jours-1,dateString,count);
-                     } else {
-                        if(type=="logs") {
-                            $("#success_delete_logs").show();                              
-                            $("#progress_bar_delete_logs").progressbar({value:100});
-                        } else {
-                            $("#success_delete_logs_power").show(); 
-                            $("#progress_bar_delete_logs_power").progressbar({value:100});
-                        }
-                     }
+    $.ajax({
+          cache: false,
+          url: "../../main/modules/external/delete_logs.php",
+          data: {type:type,type_reset:type_reset,start:start}
+    }).done(function (data) {
+          if(!$.isNumeric(data)) {
+            if(type=="logs") {
+                $("#error_delete_logs").show();
+            } else {
+                $("#error_delete_log_power").show();
+            }
+          } else {
+             if(data==1) {
+                 if(type=="logs") {
+                    $("#progress_bar_delete_logs").progressbar({value:pourcent});  
                  } else {
-                     if(type=="logs") {
-                        $("#error_delete_log").show();
-                     } else {
-                        $("#error_delete_log_power").show();
+                    $("#progress_bar_delete_logs_power").progressbar({value:pourcent});
+                 }
+
+                 if(nb_jours>1) {
+                    var date = new Date(Date.parse(start)); 
+                    date.setDate(date.getDate()+1);
+                    var dateString = (date.getFullYear().toString()+"-"+addZ((date.getMonth() + 1)) + "-" + addZ(date.getDate()));
+
+                    delete_logs(type,type_reset, nb_jours-1,dateString,count);
+                 } else {
+                    if(type=="logs") {
+                        $("#success_delete_logs").show();                              
+                        $("#progress_bar_delete_logs").progressbar({value:100});
+                    } else {
+                        $("#success_delete_logs_power").show(); 
+                        $("#progress_bar_delete_logs_power").progressbar({value:100});
                     }
                  }
-              }
-        });
+             } else {
+                 if(type=="logs") {
+                    $("#error_delete_log").show();
+                 } else {
+                    $("#error_delete_log_power").show();
+                }
+             }
+          }
+    });
 }
 
 loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
-            $.ajax({
-                cache: false,
-                url: "../../main/modules/external/load_log.php",
-                data: {nb_day:nb_day, type:type,search:search,sd_card:sd_card}
-            }).done(function (data) {
-                if(nb_day!=0) {
-                    if(type=="power") {
-                        $("#progress_bar_load_power").progressbar({ value: parseInt(((pourcent-nb_day)/pourcent)*100) });
-                    } else {
-                        $("#progress_bar_load").progressbar({ value: parseInt(((pourcent-nb_day)/pourcent)*100) });
-                    }
+    $.ajax({
+        cache: false,
+        url: "../../main/modules/external/load_log.php",
+        data: {nb_day:nb_day, type:type,search:search,sd_card:sd_card}
+    }).done(function (data) {
+        if(nb_day!=0) {
+            if(type=="power") {
+                $("#progress_bar_load_power").progressbar({ value: parseInt(((pourcent-nb_day)/pourcent)*100) });
+            } else {
+                $("#progress_bar_load").progressbar({ value: parseInt(((pourcent-nb_day)/pourcent)*100) });
+            }
 
-                    if(!$.isNumeric(data)) {
-                        if(type=="power") {
-                            $("#error_load_power").show();
-                        } else {
-                            $("#error_load").show();
-                        }
-                        finished=finished+1;
-                        if(finished==2) {
-                            $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
-                        }
-                        return true;
-                    }
-                    loadLog(nb_day-1,data,type,pourcent,search,sd_card);
+            if(!$.isNumeric(data)) {
+                if(type=="power") {
+                    $("#error_load_power").show();
                 } else {
-                    if(search=="submit") {
-                        if(type=="power") {
-                            $("#success_load_power").show();
-                            $("#progress_bar_load_power").progressbar({ value: 100 });
-                        } else {
-                            $("#success_load").show();
-                            $("#progress_bar_load").progressbar({ value: 100 });
-                        }
-                        finished=finished+1;
-                        if(finished==2) {
-                            $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
-                        }
-                        return true;
-                    } else {
-                        if(data==-2) {
-                            $("#success_load_still_log").show();
-                        } 
-
-                        if(type=="power") {
-                                $("#success_load_power_auto").show();
-                                $("#progress_bar_load_power").progressbar({ value: 100 });
-                        } else {
-                                $("#success_load_auto").show();
-                                $("#progress_bar_load").progressbar({ value: 100 });
-                        }
-                        $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
-                        finished=finished+1;
-                        if(finished==2) {
-                            $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
-                        }
-                        return true;
-                    }
+                    $("#error_load").show();
+                }
+                finished=finished+1;
+                if(finished==2) {
+                    $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
+                }
+                return true;
+            }
+            loadLog(nb_day-1,data,type,pourcent,search,sd_card);
+        } else {
+            if(search=="submit") {
+                if(type=="power") {
+                    $("#success_load_power").show();
+                    $("#progress_bar_load_power").progressbar({ value: 100 });
+                } else {
+                    $("#success_load").show();
+                    $("#progress_bar_load").progressbar({ value: 100 });
+                }
+                finished=finished+1;
+                if(finished==2) {
+                    $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
+                }
+                return true;
+            } else {
+                if(data==-2) {
+                    $("#success_load_still_log").show();
                 } 
-            });
+
+                if(type=="power") {
+                        $("#success_load_power_auto").show();
+                        $("#progress_bar_load_power").progressbar({ value: 100 });
+                } else {
+                        $("#success_load_auto").show();
+                        $("#progress_bar_load").progressbar({ value: 100 });
+                }
+                $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
+                finished=finished+1;
+                if(finished==2) {
+                    $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
+                }
+                return true;
+            }
+        } 
+    });
 }
 
-
-
+// Define datepicker
 $(function() {
 
-    $("#datepicker").datepicker({ 
+    $("#datepicker, #datepicker_from, #datepicker_to, #datepicker_from_power, #datepicker_to_power").datepicker({ 
         dateFormat: "yy-mm-dd",
         showButtonPanel: true,
         showOn: "both",
@@ -151,51 +150,8 @@ $(function() {
         buttonImageOnly: 'true',
         <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
     }).val()
-
-
-     $("#datepicker_from").datepicker({ 
-        dateFormat: "yy-mm-dd",
-        showButtonPanel: true,
-        showOn: "both",
-        buttonImage: "../../main/libs/img/datepicker.png",
-        buttonImageOnly: 'true',
-        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
-    }).val()
-
-
-    $("#datepicker_to").datepicker({ 
-        dateFormat: "yy-mm-dd",
-        showButtonPanel: true,
-        showOn: "both",
-        buttonImage: "../../main/libs/img/datepicker.png",
-        buttonImageOnly: 'true',
-        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
-    }).val()
-
-
-    $("#datepicker_from_power").datepicker({ 
-        dateFormat: "yy-mm-dd",
-        showButtonPanel: true,
-        showOn: "both",
-        buttonImage: "../../main/libs/img/datepicker.png",
-        buttonImageOnly: 'true',
-        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
-    }).val()
-
-
-    $("#datepicker_to_power").datepicker({ 
-    dateFormat: "yy-mm-dd",
-    showButtonPanel: true,
-    showOn: "both",
-    buttonImage: "../../main/libs/img/datepicker.png",
-    buttonImageOnly: 'true',
-    <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
-    }).val()
-
 
 });
-
-var extremes_save = null;
 
 Highcharts.setOptions({
     lang: {
@@ -1217,7 +1173,6 @@ $(document).ready(function() {
         }
     
     }
-    
 
     $("#regul_and_minmax_summary").attr("title",second_regul + beforeText + textToDisplay + afterText);
 
