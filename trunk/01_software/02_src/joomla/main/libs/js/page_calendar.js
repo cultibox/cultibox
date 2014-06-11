@@ -668,7 +668,14 @@ $(document).ready(function() {
                         $("#other_field_title").val("");
                         $("#select_title").prop('selectedIndex', 0);  
                         $("#event_important").attr('checked', false);
-                         
+                        <?php
+                            if($activ_daily_program == "True" && count($program_index) > 1) { 
+                        ?>
+                            // Unselect check box daily program
+                            $("#create_dayly_program_in_ui").attr('checked', false);
+                        <?php 
+                            }
+                        ?>
                         delete description;
                         delete important;
                         delete event;
@@ -682,6 +689,14 @@ $(document).ready(function() {
                     $("#other_field_title").val("");
                     $("#select_title").prop('selectedIndex', 0);  
                     $("#event_important").attr('checked', false);
+                    <?php
+                        if($activ_daily_program == "True" && count($program_index) > 1) { 
+                    ?>
+                        // Unselect check box daily program
+                        $("#create_dayly_program_in_ui").attr('checked', false);
+                    <?php 
+                        }
+                    ?>
                     delete description;
                     delete important;
                     delete event;
@@ -1015,8 +1030,14 @@ $(document).ready(function() {
                                     $("#other_field_title").val("");
                                     $("#select_title").prop('selectedIndex', 0);  
                                     $("#event_important").attr('checked', false);
-                                    $("#create_dayly_program_in_ui").attr('checked', false);
-                                    
+                                    <?php
+                                        if($activ_daily_program == "True" && count($program_index) > 1) { 
+                                    ?>
+                                        // Unselect check box daily program
+                                        $("#create_dayly_program_in_ui").attr('checked', false);
+                                    <?php 
+                                        }
+                                    ?>
                                     //Release UI
                                     <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                                         $.blockUI({ message: '', timeout: 1000 }); 
@@ -1036,7 +1057,14 @@ $(document).ready(function() {
                                     $("#other_field_title").val("");
                                     $("#select_title").prop('selectedIndex', 0);
                                     $("#event_important").attr('checked', false);
-                                    $("#create_dayly_program_in_ui").attr('checked', false);
+                                    <?php
+                                        if($activ_daily_program == "True" && count($program_index) > 1) { 
+                                    ?>
+                                        // Unselect check box daily program
+                                        $("#create_dayly_program_in_ui").attr('checked', false);
+                                    <?php 
+                                        }
+                                    ?>
                                     return false;
                                 }
                             }
