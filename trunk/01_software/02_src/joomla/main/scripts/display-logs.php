@@ -155,8 +155,13 @@ if(!isset($startday) || empty($startday)) {
 } 
 $startday=str_replace(' ','',"$startday");
 
-if(!check_format_date($startday,"days")) {
+if(strcmp("$startday","")==0) {
     $startday=date('Y')."-".date('m')."-".date('d');
+    $fake_log=true;
+} else {
+    if(!check_format_date($startday,"days")) {
+        $startday=date('Y')."-".date('m')."-".date('d');
+    }
 }
 
 $startmonth = "";
