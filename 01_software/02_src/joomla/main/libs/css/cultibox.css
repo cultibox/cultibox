@@ -33,11 +33,6 @@
    height:600px;
 } 
 
-#waiting_title {
-   font-size: 15px;
-   text-align: center;
-}
-
 input.button_log {
     font-size: 18px;
     font-weight: bold;
