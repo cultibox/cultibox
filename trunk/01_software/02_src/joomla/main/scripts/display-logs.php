@@ -158,7 +158,7 @@ $startday=str_replace(' ','',"$startday");
 if(strcmp("$startday","")==0) {
     $startday=date('Y')."-".date('m')."-".date('d');
     $fake_log=true;
-} else {
+}else {
     if(!check_format_date($startday,"days")) {
         $startday=date('Y')."-".date('m')."-".date('d');
     }
