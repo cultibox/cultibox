@@ -1,0 +1,24 @@
+#summary Configuration de l'alarme
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+La page de configuration permet de modifier les paramètres du logiciel et de la Cultibox.
+Il est notamment possible de configurer une alarme pour la Cultibox.
+
+Le fonctionnement de l'alarme est assez simple : Lorsque la température dépasse un certain seuil, la Cultibox éteint toute les prises.
+Une fois l'alarme activée, il est nécessaire d'appuyer sur le bouton central de la Cultibox pour que la CUltibox retrouve son état de fonctionnement normal.
+
+== Configuration de l'interface ==
+
+Lors du clique sur l'onglet "Alarme", la fenêtre suivante s'affiche:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_alarme.png
+
+En activant le système d'alarme, la fenêtre change et affiche :
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_alarme_active.png
+
+Vous pouvez maintenant régler la température souhaitée pour le déclenchement de l'alarme.

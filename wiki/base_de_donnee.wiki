@@ -73,10 +73,11 @@ Cette table contient les événements du calendrier.
 || Description || varchar(500)  || YES  ||     || NULL    ||                ||
 || StartTime   || datetime      || YES  ||     || NULL    ||                ||
 || EndTime     || datetime      || YES  ||     || NULL    ||                ||
-|| External    || smallint(6)   || NO   ||     || 0       ||                ||
 || Color       || varchar(7)    || NO   ||     || #4A40A4 ||                ||
-|| Icon        || varchar(30)   || YES  ||     || NULL    ||                ||
 || Important   || int(1)        || NO   ||     || 0       ||                ||
+|| program_index || varchar(30) || YES  ||     || NULL    ||                ||
+|| Icon        || varchar(30)   || YES  ||     || NULL    ||                ||
+
 
 == configuration ==
 
@@ -126,7 +127,8 @@ Cette table contient la configuration globale.
 || WIFI_IP                 || varchar(15)  || NO   ||     || 000.000.000.000 ||                ||
 || WIFI_IP_MANUAL          || boolean      || NO   ||     || false           ||                ||
 || RTC_OFFSET              || DECIMAL(3,2) || NO   ||     || 0               ||                ||
-
+|| ACTIV_DAILY_PROGRAM     || varchar(5)   || NO   ||     || False           ||                ||
+|| COLOR_PROGRAM_GRAPH     || varchar(30)  || YES  ||     || red             ||                ||
 
 == historic ==
 
@@ -246,9 +248,7 @@ Cette table contient les programmes.
 || number     || int(11)      || NO   ||     || 1          ||       ||
 || date_start || varchar(10)  || NO   ||     || 0000-00-00 ||       ||
 || date_end   || varchar(10)  || NO   ||     || 0000-00-00 ||       ||
-|| plug_type  || int(11)      || NO   ||     || 0          ||       ||
 || type       || int(11)      || NO   ||     || 0          ||       ||
-
 
 == sensors ==
 
@@ -261,6 +261,24 @@ Cette table contient le type des capteurs actuellement branchés sur la Cultibox
 || *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
 || id    || int(11) || NO   || PRI || NULL    ||       ||
 || type  || varchar(1)  || NO   ||     || 0       ||       ||
+
+== program_index ==
+
+=== Introduction ===
+
+Cette table contient les références des différents programmes disponible dans la base programs.
+
+=== Structure ===
+
+|| *Field*    || *Type*       || *Null* || *Key* || *Default* || *Extra*  ||
+|| plug_id    || int(11)      || NO   ||     || NULL       ||       ||
+|| time_start || varchar(6)   || NO   ||     || NULL       ||       ||
+|| time_stop  || varchar(6)   || NO   ||     || NULL       ||       ||
+|| value      || decimal(3,1) || NO   ||     || NULL       ||       ||
+|| number     || int(11)      || NO   ||     || 1          ||       ||
+|| date_start || varchar(10)  || NO   ||     || 0000-00-00 ||       ||
+|| date_end   || varchar(10)  || NO   ||     || 0000-00-00 ||       ||
+|| type       || int(11)      || NO   ||     || 0          ||       ||
 
 
 <wiki:comment>

@@ -7,12 +7,32 @@
 
 L'interface graphique des Logs permet de sélectionner et d'afficher dans un graphique les données de température, d'humidité et de puissance enregistrées par la Cultibox pour une période mensuelle ou journalière.
 Elle permet aussi de gérer (exporter ou importer) vos logs enregistrés par la Cultibox sur la carte SD pour les stocker dans le logiciel.
-Cliquez sur l'onglet *Logs* du menu principal afin d'accèder à ces fonctionnalités:
+Cliquez sur l'onglet *Logs* du menu principal afin d'accéder à ces fonctionnalités:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_logs.png
 
-
 = Affichage des graphiques de Logs =
+
+A l'ouverture de la page, deux actions se produisent :
+ * Le logiciel cherche si des logs sont présents sur la Carte SD
+ * Puis le logiciel affiche le dernier jour avec des logs
+
+== Affichage d'un jour ==
+
+L'affichage d'un jour permet de visualiser l'évolution des courbes de façon précise, avec au minimum une minute entre deux points affichées :
+ * Les données climatiques d'un capteur spécifique ou de tous les capteurs
+ * Le programme d'une prise
+ * La puissance consommée des prises sélectionnées (il est à noter qu'il vous faudra configurer la puissance correspondante à l'équipement branché pour que cette courbe soit significative. Se référer à la partie [gui_soft_plugs Configuration des prises] pour plus d'informations)
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_timeselection_day.png
+
+La date rentrée doit être au format AAAA-MM-JJ. Pour vous aider dans le choix de la date, un calendrier est à votre disposition. Cliquez sur l'icône de l'horloge à côté du champ de sélection du jour à afficher. Puis choisissez la date que vous voulez afficher dans le calendrier en cliquant simplement dessus. Le champ de sélection du jour à afficher est maintenant rempli:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_timepicker.png
+
+Voici un exemple d'affichage des différentes informations enregistrées par la Cultibox pour une journée:
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log_day.png
 
 == Affichage d'un mois ==
 
@@ -27,24 +47,6 @@ Voici un exemple de rendu d'affichage pour un mois de données enregistrées par
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log_month.png
 
-
-== Affichage d'un jour ==
-
-L'affichage d'un jour permet de visualiser plus d'informations:
- * Les données climatiques d'un capteur spécifique ou de tous les capteurs
- * Le programme d'une prise
- * La puissance consommée des prises sélectionnées (il est à noter qu'il vous faudra configurer la puissance correspondante à l'équipement branché pour que cette courbe soit significative. Se référer à la partie [gui_soft_plugs Configuration des prises] pour plus d'informations)
-
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_timeselection_day.png
-
-La date rentrée doit être au format AAAA-MM-JJ. Pour vous aider dans le choix de la date, un calendrier est à votre disposition. Cliquez sur l'icône de l'horloge à côté du champ de sélection du jour à afficher. Puis choisissez la date que vous voulez afficher dans le calendrier en cliquant simplement dessus. Le champ de sélection du jour à afficher est maintenant rempli:
-
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_timepicker.png
-
-
-Voici un exemple d'affichage des différentes informations enregistrées par la Cultibox pour une journée:
-
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_log_day.png
 
 == Fonctionnalités des graphiques du menu Logs ==
 
@@ -63,7 +65,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_cancelx.png
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_zoomy.png
 
- * *Export du graphique dans un fichier/Mode impréssion*: en haut à droite du graphique se trouve un menu vous permettant diverses actions. Une fois que vous avez cliqué sur ce menu, il vous est possible d'exporter votre graphique dans de nombreux formats (PDF, JPG...). Il est aussi possible d'afficher le mode impréssion du graphique. Votre graphique sera alors affiché sans le reste de la page.
+ * *Export du graphique dans un fichier/Mode impression*: en haut à droite du graphique se trouve un menu vous permettant diverses actions. Une fois que vous avez cliqué sur ce menu, il vous est possible d'exporter votre graphique dans de nombreux formats (PDF, JPG...). Il est aussi possible d'afficher le mode impréssion du graphique. Votre graphique sera alors affiché sans le reste de la page.
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_print.png
 
@@ -74,19 +76,42 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_next_previous.
 == Interpolation ==
 Il arrive que la Cultibox n'enregistre pas une ou plusieurs données climatiques. Le Logiciel Cultibox interpole les points manquants en fonction des derniers points enregistrés par la Cultibox. Cette interpolation est limitée à une période de 20 minutes, cela signifie que si la Cultibox n'enregistre pas de points pendant une période dépassant 20 minutes, le graphique climatique n'affichera rien et vous pourrez voir appraitre des espaces vides dans vos graphiques.
 
-= Gestion de vos données climatiques =
-Cette section permet de gérer les données enregistrées dans le logiciel de la Cultibox:
+= Menu logs =
 
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_datagestion.png
+En haut à gauche de la page, se trouve trois boutons permettant de configurer la page logs :
 
-== Importer les logs  ==
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_menu.png
+
+En cliquant dessus, vous avez accès aux paramètres suivants :
+ * Paramètres d'affichage
+ * Sélection des courbes à afficher
+ * Gestion des données climatiques 
+
+== Gestion de vos données climatiques ==
+
+En cliquant sur le bouton, une fenêtre s'ouvre vous permettant de gérer les données : 
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_ui_donnees_climatiques.png
+
+=== Importer les logs  ===
 Pour des questions de rapidité, lorsque vous chargez la page des logs et qu'une carte SD est branchée, le logiciel chargera les données enregistrées sur les deux derniers mois. Une fois ces données enregistrées, le logiciel n'enregistrera plus rien automatiquement pendant une période de 30 minutes. Si vous voulez enregistrer des données sur une période plus ancienne ou que vous voulez recharger les données avant la fin  des 30 minutes, il vous faudra utiliser la fonction d'import. En cliquant sur le bouton *Importer les logs*, le logiciel chargera les données présentes sur la carte SD en fonction du nombre de mois que vous lui avez demandé de rechercher (valeurs possibles de : 2, 3, 6 et 12 mois).
 
-== Supprimer les logs ==
+=== Supprimer les logs ===
 Si la base de données est très grosse et que vous voulez libérer de l'espace sur vos disques, deux boutons de suppression des logs permettent de supprimer vos logs: le bouton de suppression des logs de température et d'humidité *Supprimer les logs* et le bouton de suppression des logs de puissance *Supprimer les logs de puissance*.
 
 En cliquant sur l'un de ces boutons vous supprimerez de façon définitive les logs enregistrés dans vos bases, libérant ainsi de l'espace sur vos disques et gagnant possiblement en rapidité d'exécution du logiciel.
 
-== Exporter les logs ==
+=== Exporter les logs ===
 Il est possible d'exporter les logs enregistrés dans votre base (puissance, humidité et température), au format csv (format lisible par un tableau: Excell, Openoffice...), afin d'en avoir une copie de sauvegarde ou de pouvoir les réutiliser d'une autre manière. En cliquant sur le bouton *Export de vos logs*, vous pourrez télécharger le fichier contenant vos logs de température et d'humidité et l'enregistrer sur votre ordinateur. En cliquant sur le bouton *Export de vos logs de puissance*, vous réaliserez la même opération pour les logs de puissance.
 
+== Sélection des courbes à afficher ==
+
+En cliquant sur le bouton, une fenêtre s'ouvre vous permettant de sélectionner les courbes à afficher : 
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_ui_courbes_a_afficher.png
+
+== Paramètres d'affichage ==
+
+En cliquant sur le bouton, une fenêtre s'ouvre vous permettant de sélectionner les couleur des courbes : 
+
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_graphic_ui_courbes_couleur.png

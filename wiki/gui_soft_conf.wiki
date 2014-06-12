@@ -15,7 +15,7 @@ Pour accéder à la partie configuration, il vous suffit de cliquer sur l'onglet
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 
-Il est à noter que vous pouvez passer d'un onglet à un autre sans perdre vos modifications. Le logiciel sauvegarde vos modifications temporairement le temps que vous ayez fini. Cela permet donc de faire plusieurs changements sans appuyer à chaque fois sur le bouton *Enregistrer la configuration*. Cependant, ces changements ne seront rééllement enregistré qu'à partir du moment où vous cliquez sur le bouton *Enregister la configuration*. Si vous réalisez des changements et que vous changez de page sans avoir au préalable appuyé sur le bouton d'enregistrement, vos modifications seront perdues.
+Il est à noter que vous pouvez passer d'un onglet à un autre sans perdre vos modifications. Le logiciel sauvegarde vos modifications temporairement le temps que vous ayez fini. Cela permet donc de faire plusieurs changements sans appuyer à chaque fois sur le bouton *Enregistrer la configuration*. Cependant, ces changements ne seront réellement enregistré qu'à partir du moment où vous cliquez sur le bouton *Enregistrer la configuration*. Si vous réalisez des changements et que vous changez de page sans avoir au préalable appuyé sur le bouton d'enregistrement, vos modifications seront perdues.
 
 == Configuration de l'interface ==
 La section *Interface* permet de modifier les différents paramètres du site web.
@@ -23,14 +23,14 @@ La section *Interface* permet de modifier les différents paramètres du site we
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_interface.png
 
 Dans cette section vous pouvez:
- * Définir les couleurs des différentes courbes et graphiques
+ * Définir les couleurs du graphique de coût
  * Activer ou désactiver l’affichage des pop-ups
  * Activer la vérification automatique des mises à jour. Il est conseillé de laisser cette option activée. Si cette option est activée, le logiciel vérifiera sur le site officiel de la Cultibox si une nouvelle version est disponible et vous préviendra si c'est le cas.
  * Définir si vous désirez nous envoyer des informations pour aider au développement, les informations envoyées se basent sur l'utilisation de l'interface Web: la version et le nom de votre navigateur, les versions du logiciel et du firmware de votre Cultibox... ceci afin de définir quelles technologies nous devons privilégier lors de notre développement et de facilement déboguer les erreurs découvertes
  * Activer ou non l'utilisation de la régulation secondaire, pour plus d'information se reporter à la section [gui_soft_second_regul Régulation secondaire]
  * Activer ou non l'utilisation des options avancées de régulations. En activant cette option vous rendez accessibles de nouvelles configurations pour les prises et leur régulation comme par exemple la régulation d'une prise sur plusieurs capteurs à partir d'une moyenne, d'un minimum ou d'un maximum. Pour plus d'information se reporter à la section [gui_soft_second_regul Régulation secondaire]
- * Afficher les modules de calcul du coût de cotre installation et de l'historique de vos actions. Si vous décidez d'afficher le module de calcul du coût de votre installation, un nouvel onglet sera disponible dans le menu nommé "Coût" et vous permettant de calculer de manière théorique ou réelle le coût de revient de votre installation. L'affichage de l'historique de vos action, quant à lui, vous permet de visualiser l'historique des changements que vous avez apporté à travers l'interface. Cet onglet sera rendu disponible dans le menu sous le nom de "Historique"
-
+ * Afficher les modules de calcul du coût de votre installation. Si vous décidez d'afficher le module de calcul du coût de votre installation, un nouvel onglet sera disponible dans le menu nommé "Coût" et vous permettant de calculer de manière théorique ou réelle le coût de revient de votre installation.
+ * Activer ou non l'utilisation du programme journalier. En activant cette option vous rendez accessibles de nouvelles options de programmation pour les prises. Vous pouvez créer des programmes différents à appliquer en fonction du calendrier. Pour plus d'information se reporter à la section [gui_soft_programme_journalier Programme journalier]
 
 == Configuration de la Cultibox ==
 
@@ -54,7 +54,7 @@ En cliquant sur *Alarme*, l'onglet change:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_alarme.png
 
-L'alarme de la Cultibox peut être configurée dans cette section. 
+L'alarme de la Cultibox peut être configurée dans cette section. Pour plus de détail, reportez vous à la section [gui_soft_conf_alarme Configuration de l'alarme]
 
 
 == Configuration de la carte SD ==
@@ -64,7 +64,7 @@ En cliquant sur *Carte SD*, l'onglet change:
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_SD.png
 
 Afin de formater une carte SD pour la rendre compatible Cultibox, vous devez sélectionner la carte dans la liste et cliquer sur le bouton *Formater la carte*. Il est conseillé de conserver la carte SD fourni avec le pack de départ. 
-Si vous perdez votre carte, vous pouvez en acheter une. La carte SD doit être d'une capacité de 2Go au maximum (La Cultibox ne reconnait pas les cartes SD Haute Capacité SDHC) et elle doit être formatée en FAT16. Il est possible d'utiliser une carte SD de plus grande capacité, mais il vous faudra:
+Si vous perdez votre carte, vous pouvez en acheter une. La carte SD doit être d'une capacité de 2Go au maximum (La Cultibox ne reconnaît pas les cartes SD Haute Capacité SDHC) et elle doit être formatée en FAT16. Il est possible d'utiliser une carte SD de plus grande capacité, mais il vous faudra:
  * Créer une partition FAT16
  * Faire en sorte que cette partition ne dépasse pas 2GO
  * Formater la carte
@@ -76,6 +76,6 @@ Le formatage d'une carte SD afin de la rendre compatible avec la Cultibox consis
  * Copie des différents fichiers de configuration nécessaires au fonctionnement de la Cultibox
  * Copie des fichiers supplémentaires: icônes, pages html...
 
-Il est à noter que la copie des fichiers logs ne se fera que si les fichiers n'ont pas la taille requise. Cela signifie que des fichiers logs contenant déja des logs ne seront pas effacés. Il peut donc vous rester des informations de logs dans vos fichiers provenant d'une ancienne session de culture.
+Il est à noter que la copie des fichiers logs ne se fera que si les fichiers n'ont pas la taille requise. Cela signifie que des fichiers logs contenant déjà des logs ne seront pas effacés. Il peut donc vous rester des informations de logs dans vos fichiers provenant d'une ancienne session de culture.
 
 Cette opération peut prendre un certain temps, la patience est de rigueur.

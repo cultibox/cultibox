@@ -26,39 +26,39 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Biosevia - Terre ==
 
 || *Semaine* || *Bio Bloom* || *BioRoot Plus* || *BioSevia Bloom* || *BioSevia Grow* || *Bioprotect* || *Diamond Nectar* ||
-|| 1 ||  || 2 ml/l|| 2,5 ml/l|| 2,5 ml/l||  || 2 ml/l||
-|| 2 ||  || 2 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 5 ml/l|| 2 ml/l||
-|| 3 ||  || 2 ml/l||  || 15 ml/l||  || 2 ml/l||
-|| 4 ||  ||  || 10 ml/l|| 10 ml/l|| 5 ml/l|| 2 ml/l||
-|| 5 || 0,2 ml/l||  || 10 ml/l|| 10 ml/l||  ||  ||
-|| 6 || 0,2 ml/l||  || 20 ml/l||  || 5 ml/l||  ||
-|| 7 || 0,2 ml/l||  || 20 ml/l||  ||  ||  ||
-|| 8 ||  ||  || 20 ml/l||  ||  ||  ||
-|| 9 ||  ||  || 20 ml/l||  ||  ||  ||
-|| 10 ||  ||  || 20 ml/l||  ||  ||  ||
-|| 11 ||  ||  || 20 ml/l||  ||  ||  ||
+|| 1 ||  || 2 ml/10l|| 2,5 ml/10L|| 2,5 ml/10L||  || 2 ml/l||
+|| 2 ||  || 2 ml/10l|| 2,5 ml/10L|| 2,5 ml/10L|| 5 ml/l|| 2 ml/l||
+|| 3 ||  || 2 ml/10l||  || 15 ml/10L||  || 2 ml/l||
+|| 4 ||  ||  || 10 ml/10L|| 10 ml/10L|| 5 ml/l|| 2 ml/l||
+|| 5 || 0,2 ml/l||  || 10 ml/10L|| 10 ml/10L||  ||  ||
+|| 6 || 0,2 ml/l||  || 20 ml/10L||  || 5 ml/l||  ||
+|| 7 || 0,2 ml/l||  || 20 ml/10L||  ||  ||  ||
+|| 8 ||  ||  || 20 ml/10L||  ||  ||  ||
+|| 9 ||  ||  || 20 ml/10L||  ||  ||  ||
+|| 10 ||  ||  || 20 ml/10L||  ||  ||  ||
+|| 11 ||  ||  || 20 ml/10L||  ||  ||  ||
 
 == Biosevia - Hydro ==
 
 || *Semaine* || *Bio Bloom* || *BioRoot Plus* || *BioSevia Bloom* || *BioSevia Grow* || *Bioprotect* || *Diamond Nectar* ||
-|| 1 ||  || 2 ml/l|| 3 ml/l|| 3 ml/l|| 5 ml/l|| 2 ml/l||
-|| 2 ||  || 2 ml/l|| 3 ml/l|| 3 ml/l||  || 2 ml/l||
-|| 3 ||  || 2 ml/l||  || 15 ml/l||  || 2 ml/l||
-|| 4 ||  ||  ||  || 20 ml/l|| 5 ml/l|| 2 ml/l||
-|| 5 || 0,2 ml/l||  || 20 ml/l||  ||  ||  ||
-|| 6 || 0,2 ml/l||  || 20 ml/l||  || 5 ml/l||  ||
-|| 7 || 0,2 ml/l||  || 20 ml/l||  ||  ||  ||
-|| 8 ||  ||  || 20 ml/l||  ||  ||  ||
-|| 9 ||  ||  || 20 ml/l||  ||  ||  ||
-|| 10 ||  ||  || 20 ml/l||  ||  ||  ||
-|| 11 ||  ||  || 20 ml/l||  ||  ||  ||
+|| 1 ||  || 2 ml/10l|| 3 ml/10L|| 3 ml/10L|| 5 ml/l|| 2 ml/l||
+|| 2 ||  || 2 ml/10l|| 3 ml/10L|| 3 ml/10L||  || 2 ml/l||
+|| 3 ||  || 2 ml/10l||  || 15 ml/10L||  || 2 ml/l||
+|| 4 ||  ||  ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l||
+|| 5 || 0,2 ml/l||  || 20 ml/10L||  ||  ||  ||
+|| 6 || 0,2 ml/l||  || 20 ml/10L||  || 5 ml/l||  ||
+|| 7 || 0,2 ml/l||  || 20 ml/10L||  ||  ||  ||
+|| 8 ||  ||  || 20 ml/10L||  ||  ||  ||
+|| 9 ||  ||  || 20 ml/10L||  ||  ||  ||
+|| 10 ||  ||  || 20 ml/10L||  ||  ||  ||
+|| 11 ||  ||  || 20 ml/10L||  ||  ||  ||
 
 == Flora Duo - Hydro ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/10L||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 3 ||  || 20 ml/10L||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 1 ml/l|| 3 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 1 ml/l|| 3 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 3 ml/l|| 1 ml/l|| 0,4 g/l||  ||
@@ -72,9 +72,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Duo - Coco ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/10L||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 3 ||  || 20 ml/10L||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 1 ml/l|| 3 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 1 ml/l|| 3 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 3 ml/l|| 1 ml/l|| 0,4 g/l||  ||
@@ -88,9 +88,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Duo - Terre ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraDuo Bloom* || *FloraDuo Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,75 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/10L||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 3 ||  || 20 ml/10L||  || 2 ml/l|| 0,25 ml/l|| 0,75 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
@@ -104,9 +104,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Nova - Coco ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 20 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
-|| 3 ||  || 20 ml/l||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/10L||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
+|| 3 ||  || 20 ml/10L||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 1,5 ml/l||  || 1,4 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 1,5 ml/l|| 0,6 ml/l|| 0,8 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 1,4 ml/l||  || 0,4 g/l||  ||
@@ -120,9 +120,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Nova - Hydro ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 20 ml/l||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
-|| 3 ||  || 20 ml/l||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/10L||  || 1,5 ml/l||  || 0,6 ml/l||  ||  ||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 1,5 ml/l||  || 0,6 ml/l||  ||  ||
+|| 3 ||  || 20 ml/10L||  || 1,5 ml/l||  || 1,2 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 1,5 ml/l||  || 1,4 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 1,5 ml/l|| 0,6 ml/l|| 0,8 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 1,4 ml/l||  || 0,4 g/l||  ||
@@ -136,9 +136,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Nova - Terre ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraNova Bloom* || *FloraNova Grow* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 20 ml/l||  || 1,5 ml/l||  || 0,3 ml/l||  ||  ||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 1,5 ml/l||  || 0,3 ml/l||  ||  ||
-|| 3 ||  || 20 ml/l||  || 1,5 ml/l||  || 0,6 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/10L||  || 1,5 ml/l||  || 0,3 ml/l||  ||  ||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 1,5 ml/l||  || 0,3 ml/l||  ||  ||
+|| 3 ||  || 20 ml/10L||  || 1,5 ml/l||  || 0,6 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 1,5 ml/l||  || 0,7 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 1,5 ml/l|| 0,3 ml/l|| 0,4 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 0,7 ml/l||  || 0,4 g/l||  ||
@@ -152,9 +152,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Series - Coco ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/10L||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 3 ||  || 20 ml/10L||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
@@ -168,9 +168,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Series - Hydro ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/10L||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 3 ||  || 20 ml/10L||  || 2 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,7 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 5 ml/l|| 1,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 g/l||  ||
@@ -184,9 +184,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == Flora Series - Terre ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *FloraBloom* || *FloraGro* || *FloraMicro* || *Mineral Magic* || *Ripen* ||
-|| 1 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
+|| 1 ||  || 20 ml/10L||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 3 ||  || 20 ml/10L||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,4 g/l||  ||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 0,3 ml/l|| 0,9 ml/l|| 0,6 ml/l|| 0,4 g/l||  ||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 0,3 ml/l|| 0,9 ml/l|| 0,6 ml/l|| 0,4 g/l||  ||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 0,9 ml/l|| 0,3 ml/l|| 0,6 ml/l|| 0,4 g/l||  ||
@@ -200,9 +200,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == One Part - Coco ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
-|| 1 ||  || 20 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
-|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
+|| 1 ||  || 20 ml/10L||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
+|| 3 ||  || 20 ml/10L||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 0,4 g/l||  ||  || 5 ml/l||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 0,4 g/l||  || 2,4 ml/l|| 4 ml/l||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 0,4 g/l||  || 6 ml/l||  ||
@@ -216,9 +216,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == One Part - Hydro ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
-|| 1 ||  || 20 ml/l||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
-|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
+|| 1 ||  || 20 ml/10L||  || 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l||  ||  || 0,5 ml/l|| 0,5 ml/l||
+|| 3 ||  || 20 ml/10L||  || 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 0,4 g/l||  ||  || 5 ml/l||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 0,4 g/l||  || 2,4 ml/l|| 4 ml/l||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 0,4 g/l||  || 6 ml/l||  ||
@@ -232,9 +232,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == One Part - Terre ==
 
 || *Semaine* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Mineral Magic* || *Ripen* || *Total Bloom* || *Total Gro* ||
-|| 1 ||  || 20 ml/l||  || 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
-|| 2 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
-|| 3 ||  || 20 ml/l||  || 2 ml/l|| 0,4 g/l||  ||  || 1,75 ml/l||
+|| 1 ||  || 20 ml/10L||  || 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
+|| 2 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l||  ||  || 0,25 ml/l|| 0,25 ml/l||
+|| 3 ||  || 20 ml/10L||  || 2 ml/l|| 0,4 g/l||  ||  || 1,75 ml/l||
 || 4 ||  ||  || 5 ml/l|| 2 ml/l|| 0,4 g/l||  ||  || 2,5 ml/l||
 || 5 || 0,2 ml/l||  ||  || 2 ml/l|| 0,4 g/l||  || 1,5 ml/l|| 2,5 ml/l||
 || 6 || 0,2 ml/l||  || 5 ml/l||  || 0,4 g/l||  || 4 ml/l||  ||
@@ -248,9 +248,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == K - Hydro ==
 
 || *Semaine* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
-|| 1 || 0,8 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 2 || 1,1 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
-|| 3 || 1,3 ||  || 20 ml/l||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
+|| 1 || 0,8 ||  || 20 ml/10L||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 2 || 1,1 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
+|| 3 || 1,3 ||  || 20 ml/10L||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
 || 4 || 1,4 ||  ||  || 5 ml/l|| 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
 || 5 || 1,4 || 0,2 ml/l||  ||  || 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
 || 6 || 1,6 || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,4 g/l||  ||
@@ -264,9 +264,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == K - Coco ==
 
 || *Semaine* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
-|| 1 || 0,8 ||  || 20 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 2 || 1,1 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
-|| 3 || 1,3 ||  || 20 ml/l||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
+|| 1 || 0,8 ||  || 20 ml/10L||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 2 || 1,1 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l||  ||  ||
+|| 3 || 1,3 ||  || 20 ml/10L||  || 2 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 1,3 ml/l|| 0,4 g/l||  ||
 || 4 || 1,4 ||  ||  || 5 ml/l|| 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
 || 5 || 1,4 || 0,2 ml/l||  ||  || 2 ml/l|| 1,5 ml/l|| 1,3 ml/l|| 1,6 ml/l|| 0,4 g/l||  ||
 || 6 || 1,6 || 0,2 ml/l||  || 5 ml/l||  || 1,5 ml/l|| 1,3 ml/l|| 2 ml/l|| 0,4 g/l||  ||
@@ -280,9 +280,9 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == K - Terre ==
 
 || *Semaine* || *EC* || *Bio Bloom* || *BioSevia Bloom* || *Bioprotect* || *Diamond Nectar* || *Flora Micro Hard* || *FloraBloom* || *FloraGro* || *Mineral Magic* || *Ripen* ||
-|| 1 || 0,22 ||  || 20 ml/l||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
-|| 2 || 0,45 ||  || 20 ml/l|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
-|| 3 || 0,58 ||  || 20 ml/l||  || 2 ml/l|| 0,65 ml/l|| 0,65 ml/l|| 0,65 ml/l|| 0,4 g/l||  ||
+|| 1 || 0,22 ||  || 20 ml/10L||  || 2 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,25 ml/l||  ||  ||
+|| 2 || 0,45 ||  || 20 ml/10L|| 5 ml/l|| 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l||  ||  ||
+|| 3 || 0,58 ||  || 20 ml/10L||  || 2 ml/l|| 0,65 ml/l|| 0,65 ml/l|| 0,65 ml/l|| 0,4 g/l||  ||
 || 4 || 0,66 ||  ||  || 5 ml/l|| 2 ml/l|| 0,75 ml/l|| 0,65 ml/l|| 0,8 ml/l|| 0,4 g/l||  ||
 || 5 || 0,66 || 0,2 ml/l||  ||  || 2 ml/l|| 0,75 ml/l|| 0,65 ml/l|| 0,8 ml/l|| 0,4 g/l||  ||
 || 6 || 0,74 || 0,2 ml/l||  || 5 ml/l||  || 0,75 ml/l|| 0,65 ml/l|| 1 ml/l|| 0,4 g/l||  ||
@@ -296,47 +296,47 @@ Source : [http://fr.eurohydro.com/ Schéma de culture]
 == General Organics - Hydro ==
 
 || *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Diamond Black* || *Urtica* ||
-|| 1 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
-|| 2 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l|| 300 ml/l||
-|| 3 ||  || 30-50 ml/l||  || 15 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
-|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 40 ml/l|| 300 ml/l||
-|| 5 || 30-50 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||
-|| 6 || 30-50 ml/l||  || 20 ml/l||  ||  || 50 ml/l||  || 300 ml/l||
-|| 7 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 8 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 9 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 10 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 11 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 1 ||  || 30-50 ml/10l|| 2,5 ml/10l|| 2,5 ml/10l|| 50 ml/10l|| 50 ml/l|| 40 ml/10l||  ||
+|| 2 ||  || 30-50 ml/10l|| 2,5 ml/10l|| 2,5 ml/10l|| 50 ml/10l|| 50 ml/l|| 40 ml/10l|| 300 ml/10l||
+|| 3 ||  || 30-50 ml/10l||  || 15 ml/10l|| 50 ml/10l|| 50 ml/l|| 40 ml/10l||  ||
+|| 4 ||  ||  || 10 ml/10l|| 10 ml/10l||  ||  || 40 ml/10l|| 300 ml/10l||
+|| 5 || 30-50 ml/10l||  || 10 ml/10l|| 10 ml/10l||  || 50 ml/l||  ||  ||
+|| 6 || 30-50 ml/10l||  || 20 ml/10l||  ||  || 50 ml/l||  || 300 ml/10l||
+|| 7 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 8 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 9 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 10 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 11 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
 
 == General Organics - Coco ==
 
 || *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Diamond Black* || *Urtica* ||
-|| 1 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
-|| 2 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l|| 300 ml/l||
-|| 3 ||  || 30-50 ml/l||  || 15 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
-|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 40 ml/l|| 300 ml/l||
-|| 5 || 30-50 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||
-|| 6 || 30-50 ml/l||  || 20 ml/l||  ||  || 50 ml/l||  || 300 ml/l||
-|| 7 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 8 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 9 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 10 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 11 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 1 ||  || 30-50 ml/10l|| 2,5 ml/10l|| 2,5 ml/10l|| 50 ml/10l|| 50 ml/l|| 40 ml/10l||  ||
+|| 2 ||  || 30-50 ml/10l|| 2,5 ml/10l|| 2,5 ml/10l|| 50 ml/10l|| 50 ml/l|| 40 ml/10l|| 300 ml/10l||
+|| 3 ||  || 30-50 ml/10l||  || 15 ml/10l|| 50 ml/10l|| 50 ml/l|| 40 ml/10l||  ||
+|| 4 ||  ||  || 10 ml/10l|| 10 ml/10l||  ||  || 40 ml/10l|| 300 ml/10l||
+|| 5 || 30-50 ml/10l||  || 10 ml/10l|| 10 ml/10l||  || 50 ml/l||  ||  ||
+|| 6 || 30-50 ml/10l||  || 20 ml/10l||  ||  || 50 ml/l||  || 300 ml/10l||
+|| 7 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 8 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 9 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 10 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 11 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
 
 == General Organics - Terre ==
 
 || *Semaine* || *BioBud* || *BioRoot Plus* || *BioThrive Bloom* || *BioThrive Grow* || *BioWeed* || *BioWorm* || *Diamond Black* || *Urtica* ||
-|| 1 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
-|| 2 ||  || 30-50 ml/l|| 2,5 ml/l|| 2,5 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l|| 300 ml/l||
-|| 3 ||  || 30-50 ml/l||  || 15 ml/l|| 50 ml/l|| 50 ml/l|| 40 ml/l||  ||
-|| 4 ||  ||  || 10 ml/l|| 10 ml/l||  ||  || 40 ml/l|| 300 ml/l||
-|| 5 || 30-50 ml/l||  || 10 ml/l|| 10 ml/l||  || 50 ml/l||  ||  ||
-|| 6 || 30-50 ml/l||  || 20 ml/l||  ||  || 50 ml/l||  || 300 ml/l||
-|| 7 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 8 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 9 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 10 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
-|| 11 || 30-50 ml/l||  || 20 ml/l||  ||  ||  ||  ||  ||
+|| 1 ||  || 30-50 ml/10l|| 2,5 ml/10l|| 2,5 ml/10l|| 50 ml/10l|| 50 ml/l|| 40 ml/10l||  ||
+|| 2 ||  || 30-50 ml/10l|| 2,5 ml/10l|| 2,5 ml/10l|| 50 ml/10l|| 50 ml/l|| 40 ml/10l|| 300 ml/10l||
+|| 3 ||  || 30-50 ml/10l||  || 15 ml/10l|| 50 ml/10l|| 50 ml/l|| 40 ml/10l||  ||
+|| 4 ||  ||  || 10 ml/10l|| 10 ml/10l||  ||  || 40 ml/10l|| 300 ml/10l||
+|| 5 || 30-50 ml/10l||  || 10 ml/10l|| 10 ml/10l||  || 50 ml/l||  ||  ||
+|| 6 || 30-50 ml/10l||  || 20 ml/10l||  ||  || 50 ml/l||  || 300 ml/10l||
+|| 7 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 8 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 9 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 10 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
+|| 11 || 30-50 ml/10l||  || 20 ml/10l||  ||  ||  ||  ||  ||
 
 = Hesi =
 
@@ -345,47 +345,47 @@ Source : [http://www.hesinutrients.com Schéma de culture]
 == Normal - Terre ==
 
 || *Semaine* || *Complexe Floraison* || *Complexe Racinaire* || *Falc* || *Phospore Plus* || *PowerZyme* || *SuperVit* || *TNT Complexe* ||
-|| 1 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l|| 2,5 ml/l||
-|| 2 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l|| 5 ml/l||
-|| 3 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l|| 5 ml/l||
-|| 4 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l|| 5 ml/l||
-|| 5 || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 6 || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 7 || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 8 || 5 ml/l||  ||  || 2,5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 9 || 5 ml/l||  ||  || 2,5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 10 || 5 ml/l||  ||  || 2,5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 11 || 5 ml/l||  || 1 ml/l|| 2,5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||  ||
+|| 1 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
+|| 2 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
+|| 3 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
+|| 4 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
+|| 5 || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| 6 || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| 7 || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| 8 || 5 ml/l||  ||  || 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| 9 || 5 ml/l||  ||  || 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| 10 || 5 ml/l||  ||  || 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| 11 || 5 ml/l||  || 1 || 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
 
 == Normal - Hydro ==
 
 || *Semaine* || *Complexe Racinaire* || *Falc* || *Hydro Croissance* || *Hydro Floraison* || *PK 13/14* || *PowerZyme* || *SuperVit* ||
-|| 1 || 5 ml/l||  || 2,5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l||
-|| 2 || 5 ml/l||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l||
-|| 3 || 5 ml/l||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l||
-|| 4 || 5 ml/l||  ||  || 5 ml/l||  || 2 ml/l|| 1 goutte / 4,5l||
-|| 5 ||  ||  ||  || 5 ml/l||  || 2 ml/l|| 1 goutte / 4,5l||
-|| 6 ||  ||  ||  || 5 ml/l||  || 2 ml/l|| 1 goutte / 4,5l||
-|| 7 ||  ||  ||  || 5 ml/l|| 2,5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||
-|| 8 ||  ||  ||  || 5 ml/l|| 5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||
-|| 9 ||  ||  ||  || 5 ml/l|| 0,75 ml/l|| 2 ml/l|| 1 goutte / 4,5l||
-|| 10 ||  ||  ||  || 5 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||
-|| 11 ||  || 1 ml/l||  || 5 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||
+|| 1 || 5 ml/l||  || 2,5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||
+|| 2 || 5 ml/l||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||
+|| 3 || 5 ml/l||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||
+|| 4 || 5 ml/l||  ||  || 5 ml/l||  || 2 ml/l|| 1 goutte/4,5l||
+|| 5 ||  ||  ||  || 5 ml/l||  || 2 ml/l|| 1 goutte/4,5l||
+|| 6 ||  ||  ||  || 5 ml/l||  || 2 ml/l|| 1 goutte/4,5l||
+|| 7 ||  ||  ||  || 5 ml/l|| 2,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||
+|| 8 ||  ||  ||  || 5 ml/l|| 5 ml/l|| 2 ml/l|| 1 goutte/4,5l||
+|| 9 ||  ||  ||  || 5 ml/l|| 0,75 ml/l|| 2 ml/l|| 1 goutte/4,5l||
+|| 10 ||  ||  ||  || 5 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||
+|| 11 ||  || 1 ||  || 5 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||
 
 == Normal - Coco ==
 
 || *Semaine* || *Coco* || *Complexe Racinaire* || *Falc* || *PK 13/14* || *PowerZyme* || *SuperVit* || *TNT Complexe* ||
-|| 1 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l|| 2,5 ml/l||
-|| 2 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l|| 2,5 ml/l||
-|| 3 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l|| 5 ml/l||
-|| 4 || 5 ml/l|| 5 ml/l||  ||  || 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 5 || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 6 || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 7 || 5 ml/l||  ||  || 0,25 ml/l|| 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 8 || 5 ml/l||  ||  || 0,5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 9 || 5 ml/l||  ||  || 0,75 ml/l|| 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 10 || 5 ml/l||  ||  || 1,5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||  ||
-|| 11 || 5 ml/l||  || 1 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 goutte / 4,5l||  ||
+|| 1 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
+|| 2 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 2,5 ml/l||
+|| 3 ||  || 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l|| 5 ml/l||
+|| 4 || 5 ml/l|| 5 ml/l||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| 5 || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| 6 || 5 ml/l||  ||  ||  || 2 ml/l|| 1 goutte/4,5l||  ||
+|| 7 || 5 ml/l||  ||  || 0,25 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| 8 || 5 ml/l||  ||  || 0,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| 9 || 5 ml/l||  ||  || 0,75 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| 10 || 5 ml/l||  ||  || 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
+|| 11 || 5 ml/l||  || 1 || 1,5 ml/l|| 2 ml/l|| 1 goutte/4,5l||  ||
 
 = Bio Bizz =
 
@@ -711,14 +711,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
-|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,11 ml/l|| 0,32 ml/l|| 1,42 ml/l||  || 0,32 ml/l||  ||  || 1,07 ml/l|| 1,42 ml/l|| 1,07 ml/l|| 1,42 ml/l|| 1,07 ml/l||  || 0,32 g/l|| 5,34 ml/l|| 3,2 ml/l||
-|| 6 || 3,4 ml/l|| 0,11 ml/l|| 0,34 ml/l|| 1,58 ml/l||  || 0,34 ml/l||  ||  || 1,13 ml/l|| 1,58 ml/l|| 1,13 ml/l|| 1,58 ml/l|| 1,13 ml/l||  ||  || 5,67 ml/l||  ||
-|| 7 || 3,6 ml/l|| 0,12 ml/l|| 0,36 ml/l|| 1,75 ml/l||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,75 ml/l|| 1,2 ml/l|| 1,75 ml/l|| 1,2 ml/l||  ||  || 6 ml/l||  ||
-|| 8 || 3 ml/l|| 0,1 ml/l||  || 1,5 ml/l||  || 0,3 ml/l||  ||  || 1 ml/l|| 1,5 ml/l|| 1 ml/l|| 1,5 ml/l|| 1 ml/l|| 2 ml/l||  || 5 ml/l||  ||
-|| 9 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 ml/l||  ||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
-|| 10 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 ml/l|| 1 ml/l||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
-|| 11 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 ml/l|| 1 ml/l||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,11 ml/l|| 0,32 g/l|| 1,42 ml/l||  || 0,32 g/l||  ||  || 1,07 ml/l|| 1,42 ml/l|| 1,07 ml/l|| 1,42 ml/l|| 1,07 ml/l||  || 0,32 g/l|| 5,34 ml/l|| 3,2 ml/l||
+|| 6 || 3,4 ml/l|| 0,11 ml/l|| 0,34 g/l|| 1,58 ml/l||  || 0,34 g/l||  ||  || 1,13 ml/l|| 1,58 ml/l|| 1,13 ml/l|| 1,58 ml/l|| 1,13 ml/l||  ||  || 5,67 ml/l||  ||
+|| 7 || 3,6 ml/l|| 0,12 ml/l|| 0,36 g/l|| 1,75 ml/l||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,75 ml/l|| 1,2 ml/l|| 1,75 ml/l|| 1,2 ml/l||  ||  || 6 ml/l||  ||
+|| 8 || 3 ml/l|| 0,1 ml/l||  || 1,5 ml/l||  || 0,3 g/l||  ||  || 1 ml/l|| 1,5 ml/l|| 1 ml/l|| 1,5 ml/l|| 1 ml/l|| 2 ml/l||  || 5 ml/l||  ||
+|| 9 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 g/l||  ||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
+|| 10 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 g/l|| 1 ||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
+|| 11 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 g/l|| 1 ||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Grow Micro Bloom Light Feed - Hydro ==
@@ -727,14 +727,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
-|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,11 ml/l|| 0,32 ml/l|| 1,42 ml/l||  || 0,32 ml/l||  ||  || 1,07 ml/l|| 1,42 ml/l|| 1,07 ml/l|| 1,42 ml/l|| 1,07 ml/l||  || 0,32 g/l|| 5,34 ml/l|| 3,2 ml/l||
-|| 6 || 3,4 ml/l|| 0,11 ml/l|| 0,34 ml/l|| 1,58 ml/l||  || 0,34 ml/l||  ||  || 1,13 ml/l|| 1,58 ml/l|| 1,13 ml/l|| 1,58 ml/l|| 1,13 ml/l||  ||  || 5,67 ml/l||  ||
-|| 7 || 3,6 ml/l|| 0,12 ml/l|| 0,36 ml/l|| 1,75 ml/l||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,75 ml/l|| 1,2 ml/l|| 1,75 ml/l|| 1,2 ml/l||  ||  || 6 ml/l||  ||
-|| 8 || 3 ml/l|| 0,1 ml/l||  || 1,5 ml/l||  || 0,3 ml/l||  ||  || 1 ml/l|| 1,5 ml/l|| 1 ml/l|| 1,5 ml/l|| 1 ml/l|| 2 ml/l||  || 5 ml/l||  ||
-|| 9 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 ml/l||  ||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
-|| 10 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 ml/l|| 1 ml/l||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
-|| 11 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 ml/l|| 1 ml/l||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,11 ml/l|| 0,32 g/l|| 1,42 ml/l||  || 0,32 g/l||  ||  || 1,07 ml/l|| 1,42 ml/l|| 1,07 ml/l|| 1,42 ml/l|| 1,07 ml/l||  || 0,32 g/l|| 5,34 ml/l|| 3,2 ml/l||
+|| 6 || 3,4 ml/l|| 0,11 ml/l|| 0,34 g/l|| 1,58 ml/l||  || 0,34 g/l||  ||  || 1,13 ml/l|| 1,58 ml/l|| 1,13 ml/l|| 1,58 ml/l|| 1,13 ml/l||  ||  || 5,67 ml/l||  ||
+|| 7 || 3,6 ml/l|| 0,12 ml/l|| 0,36 g/l|| 1,75 ml/l||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,75 ml/l|| 1,2 ml/l|| 1,75 ml/l|| 1,2 ml/l||  ||  || 6 ml/l||  ||
+|| 8 || 3 ml/l|| 0,1 ml/l||  || 1,5 ml/l||  || 0,3 g/l||  ||  || 1 ml/l|| 1,5 ml/l|| 1 ml/l|| 1,5 ml/l|| 1 ml/l|| 2 ml/l||  || 5 ml/l||  ||
+|| 9 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 g/l||  ||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
+|| 10 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 g/l|| 1 ||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
+|| 11 || 2,4 ml/l|| 0,08 ml/l||  || 1,25 ml/l||  || 0,24 g/l|| 1 ||  || 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,25 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 4 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Grow Micro Medium Feed - Terre ==
@@ -743,14 +743,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
-|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,12 ml/l|| 0,36 ml/l|| 1,5 ml/l||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l||  || 0,36 g/l|| 6 ml/l|| 3,6 ml/l||
-|| 6 || 4,2 ml/l|| 0,14 ml/l|| 0,42 ml/l|| 1,75 ml/l||  || 0,42 ml/l||  ||  || 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l||  ||  || 7 ml/l||  ||
-|| 7 || 4,8 ml/l|| 0,16 ml/l|| 0,48 ml/l|| 2 ml/l||  || 0,48 ml/l||  ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l||  ||  || 8 ml/l||  ||
-|| 8 || 4,2 ml/l|| 0,14 ml/l||  || 1,75 ml/l||  || 0,42 ml/l||  ||  || 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 2,8 ml/l||  || 7 ml/l||  ||
-|| 9 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 6 ml/l||  ||
-|| 10 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 ml/l|| 1 ml/l||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 5 ml/l||  ||
-|| 11 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 ml/l|| 1 ml/l||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 5 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,12 ml/l|| 0,36 g/l|| 1,5 ml/l||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l||  || 0,36 g/l|| 6 ml/l|| 3,6 ml/l||
+|| 6 || 4,2 ml/l|| 0,14 ml/l|| 0,42 g/l|| 1,75 ml/l||  || 0,42 g/l||  ||  || 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l||  ||  || 7 ml/l||  ||
+|| 7 || 4,8 ml/l|| 0,16 ml/l|| 0,48 g/l|| 2 ml/l||  || 0,48 g/l||  ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l||  ||  || 8 ml/l||  ||
+|| 8 || 4,2 ml/l|| 0,14 ml/l||  || 1,75 ml/l||  || 0,42 g/l||  ||  || 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 2,8 ml/l||  || 7 ml/l||  ||
+|| 9 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 6 ml/l||  ||
+|| 10 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 g/l|| 1 ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 5 ml/l||  ||
+|| 11 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 g/l|| 1 ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 5 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Grow Micro Medium Feed - Hydro ==
@@ -759,14 +759,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
-|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,12 ml/l|| 0,36 ml/l|| 1,5 ml/l||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l||  || 0,36 g/l|| 6 ml/l|| 3,6 ml/l||
-|| 6 || 4,2 ml/l|| 0,14 ml/l|| 0,42 ml/l|| 1,75 ml/l||  || 0,42 ml/l||  ||  || 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l||  ||  || 7 ml/l||  ||
-|| 7 || 4,8 ml/l|| 0,16 ml/l|| 0,48 ml/l|| 2 ml/l||  || 0,48 ml/l||  ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l||  ||  || 8 ml/l||  ||
-|| 8 || 4,2 ml/l|| 0,14 ml/l||  || 1,75 ml/l||  || 0,42 ml/l||  ||  || 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 2,8 ml/l||  || 7 ml/l||  ||
-|| 9 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 6 ml/l||  ||
-|| 10 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 ml/l|| 1 ml/l||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 5 ml/l||  ||
-|| 11 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 ml/l|| 1 ml/l||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 5 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,12 ml/l|| 0,36 g/l|| 1,5 ml/l||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l||  || 0,36 g/l|| 6 ml/l|| 3,6 ml/l||
+|| 6 || 4,2 ml/l|| 0,14 ml/l|| 0,42 g/l|| 1,75 ml/l||  || 0,42 g/l||  ||  || 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l||  ||  || 7 ml/l||  ||
+|| 7 || 4,8 ml/l|| 0,16 ml/l|| 0,48 g/l|| 2 ml/l||  || 0,48 g/l||  ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l||  ||  || 8 ml/l||  ||
+|| 8 || 4,2 ml/l|| 0,14 ml/l||  || 1,75 ml/l||  || 0,42 g/l||  ||  || 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 1,75 ml/l|| 1,4 ml/l|| 2,8 ml/l||  || 7 ml/l||  ||
+|| 9 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 6 ml/l||  ||
+|| 10 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 g/l|| 1 ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 5 ml/l||  ||
+|| 11 || 3,6 ml/l|| 0,12 ml/l||  || 1,5 ml/l||  || 0,36 g/l|| 1 ||  || 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 1,5 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 5 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Grow Micro Heavy Feed - Terre ==
@@ -775,14 +775,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
-|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,13 ml/l|| 0,4 ml/l|| 1,67 ml/l||  || 0,4 ml/l||  ||  || 1,33 ml/l|| 1,67 ml/l|| 1,33 ml/l|| 1,67 ml/l|| 1,33 ml/l||  || 0,4 g/l|| 6,67 ml/l|| 4 ml/l||
-|| 6 || 5 ml/l|| 0,17 ml/l|| 0,5 ml/l|| 2,08 ml/l||  || 0,5 ml/l||  ||  || 1,67 ml/l|| 2,08 ml/l|| 1,67 ml/l|| 2,08 ml/l|| 1,67 ml/l||  ||  || 8,33 ml/l||  ||
-|| 7 || 6 ml/l|| 0,2 ml/l|| 0,6 ml/l|| 2,5 ml/l||  || 0,6 ml/l||  ||  || 2 ml/l|| 2,5 ml/l|| 2 ml/l|| 2,5 ml/l|| 2 ml/l||  ||  || 10 ml/l||  ||
-|| 8 || 5,4 ml/l|| 0,18 ml/l||  || 2,25 ml/l||  || 0,54 ml/l||  ||  || 1,8 ml/l|| 2,25 ml/l|| 1,8 ml/l|| 2,25 ml/l|| 1,8 ml/l|| 3,6 ml/l||  || 9 ml/l||  ||
-|| 9 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 ml/l||  ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
-|| 10 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 ml/l|| 1 ml/l||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
-|| 11 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 ml/l|| 1 ml/l||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,13 ml/l|| 0,4 g/l|| 1,67 ml/l||  || 0,4 g/l||  ||  || 1,33 ml/l|| 1,67 ml/l|| 1,33 ml/l|| 1,67 ml/l|| 1,33 ml/l||  || 0,4 g/l|| 6,67 ml/l|| 4 ml/l||
+|| 6 || 5 ml/l|| 0,17 ml/l|| 0,5 g/l|| 2,08 ml/l||  || 0,5 g/l||  ||  || 1,67 ml/l|| 2,08 ml/l|| 1,67 ml/l|| 2,08 ml/l|| 1,67 ml/l||  ||  || 8,33 ml/l||  ||
+|| 7 || 6 ml/l|| 0,2 ml/l|| 0,6 g/l|| 2,5 ml/l||  || 0,6 g/l||  ||  || 2 ml/l|| 2,5 ml/l|| 2 ml/l|| 2,5 ml/l|| 2 ml/l||  ||  || 10 ml/l||  ||
+|| 8 || 5,4 ml/l|| 0,18 ml/l||  || 2,25 ml/l||  || 0,54 g/l||  ||  || 1,8 ml/l|| 2,25 ml/l|| 1,8 ml/l|| 2,25 ml/l|| 1,8 ml/l|| 3,6 ml/l||  || 9 ml/l||  ||
+|| 9 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 g/l||  ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
+|| 10 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 g/l|| 1 ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
+|| 11 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 g/l|| 1 ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Grow Micro Heavy Feed - Hydro ==
@@ -791,14 +791,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 2 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
 || 3 || 2,5 ml/l|| 0,15 ml/l||  || 0,24 ml/l||  ||  ||  ||  || 1 ml/l|| 1,2 ml/l|| 1 ml/l|| 1,2 ml/l|| 2 ml/l||  || 0,3 g/l|| 5 ml/l|| 1,5 ml/l||
-|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,13 ml/l|| 0,4 ml/l|| 1,67 ml/l||  || 0,4 ml/l||  ||  || 1,33 ml/l|| 1,67 ml/l|| 1,33 ml/l|| 1,67 ml/l|| 1,33 ml/l||  || 0,4 g/l|| 6,67 ml/l|| 4 ml/l||
-|| 6 || 5 ml/l|| 0,17 ml/l|| 0,5 ml/l|| 2,08 ml/l||  || 0,5 ml/l||  ||  || 1,67 ml/l|| 2,08 ml/l|| 1,67 ml/l|| 2,08 ml/l|| 1,67 ml/l||  ||  || 8,33 ml/l||  ||
-|| 7 || 6 ml/l|| 0,2 ml/l|| 0,6 ml/l|| 2,5 ml/l||  || 0,6 ml/l||  ||  || 2 ml/l|| 2,5 ml/l|| 2 ml/l|| 2,5 ml/l|| 2 ml/l||  ||  || 10 ml/l||  ||
-|| 8 || 5,4 ml/l|| 0,18 ml/l||  || 2,25 ml/l||  || 0,54 ml/l||  ||  || 1,8 ml/l|| 2,25 ml/l|| 1,8 ml/l|| 2,25 ml/l|| 1,8 ml/l|| 3,6 ml/l||  || 9 ml/l||  ||
-|| 9 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 ml/l||  ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
-|| 10 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 ml/l|| 1 ml/l||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
-|| 11 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 ml/l|| 1 ml/l||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 1,25 ml/l|| 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1,25 ml/l|| 1 ml/l|| 1,25 ml/l|| 1 ml/l||  || 0,3 g/l|| 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,13 ml/l|| 0,4 g/l|| 1,67 ml/l||  || 0,4 g/l||  ||  || 1,33 ml/l|| 1,67 ml/l|| 1,33 ml/l|| 1,67 ml/l|| 1,33 ml/l||  || 0,4 g/l|| 6,67 ml/l|| 4 ml/l||
+|| 6 || 5 ml/l|| 0,17 ml/l|| 0,5 g/l|| 2,08 ml/l||  || 0,5 g/l||  ||  || 1,67 ml/l|| 2,08 ml/l|| 1,67 ml/l|| 2,08 ml/l|| 1,67 ml/l||  ||  || 8,33 ml/l||  ||
+|| 7 || 6 ml/l|| 0,2 ml/l|| 0,6 g/l|| 2,5 ml/l||  || 0,6 g/l||  ||  || 2 ml/l|| 2,5 ml/l|| 2 ml/l|| 2,5 ml/l|| 2 ml/l||  ||  || 10 ml/l||  ||
+|| 8 || 5,4 ml/l|| 0,18 ml/l||  || 2,25 ml/l||  || 0,54 g/l||  ||  || 1,8 ml/l|| 2,25 ml/l|| 1,8 ml/l|| 2,25 ml/l|| 1,8 ml/l|| 3,6 ml/l||  || 9 ml/l||  ||
+|| 9 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 g/l||  ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
+|| 10 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 g/l|| 1 ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
+|| 11 || 4,8 ml/l|| 0,16 ml/l||  || 2 ml/l||  || 0,48 g/l|| 1 ||  || 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 2 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 8 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Sensi Grow Light Feed - Terre ==
@@ -807,14 +807,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  || 2 ml/l||
 || 2 || 2 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  || 2 ml/l||
 || 3 ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  ||  ||
-|| 4 ||  || 0,1 ml/l||  || 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l|| 2 ml/l|| 2 ml/l||  ||  || 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,11 ml/l|| 0,32 ml/l||  || 0,32 ml/l||  ||  || 1,07 ml/l|| 1,07 ml/l|| 1,07 ml/l||  || 0,32 g/l|| 2,13 ml/l|| 2,13 ml/l||  ||  || 5,34 ml/l|| 3,2 ml/l||
-|| 6 || 3,4 ml/l|| 0,11 ml/l|| 0,34 ml/l||  || 0,34 ml/l||  ||  || 1,13 ml/l|| 1,13 ml/l|| 1,13 ml/l||  ||  || 2,27 ml/l|| 2,27 ml/l||  ||  || 5,67 ml/l||  ||
-|| 7 || 3,6 ml/l|| 0,12 ml/l|| 0,36 ml/l||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l||  ||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l||  ||
-|| 8 || 3 ml/l|| 0,1 ml/l||  ||  || 0,3 ml/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l|| 2 ml/l||  || 2 ml/l|| 2 ml/l||  ||  || 5 ml/l||  ||
-|| 9 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 ml/l||  ||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
-|| 10 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 ml/l|| 1 ml/l||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
-|| 11 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 ml/l|| 1 ml/l||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l|| 2 ml/l|| 2 ml/l||  ||  || 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,11 ml/l|| 0,32 g/l||  || 0,32 g/l||  ||  || 1,07 ml/l|| 1,07 ml/l|| 1,07 ml/l||  || 0,32 g/l|| 2,13 ml/l|| 2,13 ml/l||  ||  || 5,34 ml/l|| 3,2 ml/l||
+|| 6 || 3,4 ml/l|| 0,11 ml/l|| 0,34 g/l||  || 0,34 g/l||  ||  || 1,13 ml/l|| 1,13 ml/l|| 1,13 ml/l||  ||  || 2,27 ml/l|| 2,27 ml/l||  ||  || 5,67 ml/l||  ||
+|| 7 || 3,6 ml/l|| 0,12 ml/l|| 0,36 g/l||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l||  ||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l||  ||
+|| 8 || 3 ml/l|| 0,1 ml/l||  ||  || 0,3 g/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l|| 2 ml/l||  || 2 ml/l|| 2 ml/l||  ||  || 5 ml/l||  ||
+|| 9 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 g/l||  ||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
+|| 10 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 g/l|| 1 ||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
+|| 11 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 g/l|| 1 ||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Sensi Grow Light Feed - Hydro ==
@@ -823,14 +823,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  || 2 ml/l||
 || 2 || 2 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  || 2 ml/l||
 || 3 ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 4 ml/l|| 4 ml/l||  ||  ||
-|| 4 ||  || 0,1 ml/l||  || 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l|| 2 ml/l|| 2 ml/l||  ||  || 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,11 ml/l|| 0,32 ml/l||  || 0,32 ml/l||  ||  || 1,07 ml/l|| 1,07 ml/l|| 1,07 ml/l||  || 0,32 g/l|| 2,13 ml/l|| 2,13 ml/l||  ||  || 5,34 ml/l|| 3,2 ml/l||
-|| 6 || 3,4 ml/l|| 0,11 ml/l|| 0,34 ml/l||  || 0,34 ml/l||  ||  || 1,13 ml/l|| 1,13 ml/l|| 1,13 ml/l||  ||  || 2,27 ml/l|| 2,27 ml/l||  ||  || 5,67 ml/l||  ||
-|| 7 || 3,6 ml/l|| 0,12 ml/l|| 0,36 ml/l||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l||  ||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l||  ||
-|| 8 || 3 ml/l|| 0,1 ml/l||  ||  || 0,3 ml/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l|| 2 ml/l||  || 2 ml/l|| 2 ml/l||  ||  || 5 ml/l||  ||
-|| 9 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 ml/l||  ||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
-|| 10 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 ml/l|| 1 ml/l||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
-|| 11 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 ml/l|| 1 ml/l||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l|| 2 ml/l|| 2 ml/l||  ||  || 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,11 ml/l|| 0,32 g/l||  || 0,32 g/l||  ||  || 1,07 ml/l|| 1,07 ml/l|| 1,07 ml/l||  || 0,32 g/l|| 2,13 ml/l|| 2,13 ml/l||  ||  || 5,34 ml/l|| 3,2 ml/l||
+|| 6 || 3,4 ml/l|| 0,11 ml/l|| 0,34 g/l||  || 0,34 g/l||  ||  || 1,13 ml/l|| 1,13 ml/l|| 1,13 ml/l||  ||  || 2,27 ml/l|| 2,27 ml/l||  ||  || 5,67 ml/l||  ||
+|| 7 || 3,6 ml/l|| 0,12 ml/l|| 0,36 g/l||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l||  ||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l||  ||
+|| 8 || 3 ml/l|| 0,1 ml/l||  ||  || 0,3 g/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l|| 2 ml/l||  || 2 ml/l|| 2 ml/l||  ||  || 5 ml/l||  ||
+|| 9 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 g/l||  ||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
+|| 10 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 g/l|| 1 ||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
+|| 11 || 2,4 ml/l|| 0,08 ml/l||  ||  || 0,24 g/l|| 1 ||  || 0,8 ml/l|| 0,8 ml/l|| 0,8 ml/l|| 1,6 ml/l||  || 1,6 ml/l|| 1,6 ml/l||  ||  || 4 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Sensi Grow Medium Feed - Terre ==
@@ -839,14 +839,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 2 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 3 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
-|| 4 ||  || 0,1 ml/l||  || 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l|| 2 ml/l|| 2 ml/l||  ||  || 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,12 ml/l|| 0,36 ml/l||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l||  || 0,36 g/l|| 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l|| 3,6 ml/l||
-|| 6 || 4,2 ml/l|| 0,14 ml/l|| 0,42 ml/l||  || 0,42 ml/l||  ||  || 1,4 ml/l|| 1,4 ml/l|| 1,4 ml/l||  ||  || 2,8 ml/l|| 2,8 ml/l||  ||  || 7 ml/l||  ||
-|| 7 || 4,8 ml/l|| 0,16 ml/l|| 0,48 ml/l||  || 0,48 ml/l||  ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l||  ||  || 3,2 ml/l|| 3,2 ml/l||  ||  || 8 ml/l||  ||
-|| 8 || 4,2 ml/l|| 0,14 ml/l||  ||  || 0,42 ml/l||  ||  || 1,4 ml/l|| 1,4 ml/l|| 1,4 ml/l|| 2,8 ml/l||  || 2,8 ml/l|| 2,8 ml/l||  ||  || 7 ml/l||  ||
-|| 9 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l||  ||
-|| 10 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 ml/l|| 1 ml/l||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 5 ml/l||  ||
-|| 11 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 ml/l|| 1 ml/l||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 5 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l|| 2 ml/l|| 2 ml/l||  ||  || 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,12 ml/l|| 0,36 g/l||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l||  || 0,36 g/l|| 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l|| 3,6 ml/l||
+|| 6 || 4,2 ml/l|| 0,14 ml/l|| 0,42 g/l||  || 0,42 g/l||  ||  || 1,4 ml/l|| 1,4 ml/l|| 1,4 ml/l||  ||  || 2,8 ml/l|| 2,8 ml/l||  ||  || 7 ml/l||  ||
+|| 7 || 4,8 ml/l|| 0,16 ml/l|| 0,48 g/l||  || 0,48 g/l||  ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l||  ||  || 3,2 ml/l|| 3,2 ml/l||  ||  || 8 ml/l||  ||
+|| 8 || 4,2 ml/l|| 0,14 ml/l||  ||  || 0,42 g/l||  ||  || 1,4 ml/l|| 1,4 ml/l|| 1,4 ml/l|| 2,8 ml/l||  || 2,8 ml/l|| 2,8 ml/l||  ||  || 7 ml/l||  ||
+|| 9 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l||  ||
+|| 10 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 g/l|| 1 ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 5 ml/l||  ||
+|| 11 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 g/l|| 1 ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 5 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Sensi Grow Medium Feed - Hydro ==
@@ -855,14 +855,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 2 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 3 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
-|| 4 ||  || 0,1 ml/l||  || 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l|| 2 ml/l|| 2 ml/l||  ||  || 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,12 ml/l|| 0,36 ml/l||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l||  || 0,36 g/l|| 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l|| 3,6 ml/l||
-|| 6 || 4,2 ml/l|| 0,14 ml/l|| 0,42 ml/l||  || 0,42 ml/l||  ||  || 1,4 ml/l|| 1,4 ml/l|| 1,4 ml/l||  ||  || 2,8 ml/l|| 2,8 ml/l||  ||  || 7 ml/l||  ||
-|| 7 || 4,8 ml/l|| 0,16 ml/l|| 0,48 ml/l||  || 0,48 ml/l||  ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l||  ||  || 3,2 ml/l|| 3,2 ml/l||  ||  || 8 ml/l||  ||
-|| 8 || 4,2 ml/l|| 0,14 ml/l||  ||  || 0,42 ml/l||  ||  || 1,4 ml/l|| 1,4 ml/l|| 1,4 ml/l|| 2,8 ml/l||  || 2,8 ml/l|| 2,8 ml/l||  ||  || 7 ml/l||  ||
-|| 9 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 ml/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l||  ||
-|| 10 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 ml/l|| 1 ml/l||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 5 ml/l||  ||
-|| 11 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 ml/l|| 1 ml/l||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 5 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l|| 2 ml/l|| 2 ml/l||  ||  || 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,12 ml/l|| 0,36 g/l||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l||  || 0,36 g/l|| 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l|| 3,6 ml/l||
+|| 6 || 4,2 ml/l|| 0,14 ml/l|| 0,42 g/l||  || 0,42 g/l||  ||  || 1,4 ml/l|| 1,4 ml/l|| 1,4 ml/l||  ||  || 2,8 ml/l|| 2,8 ml/l||  ||  || 7 ml/l||  ||
+|| 7 || 4,8 ml/l|| 0,16 ml/l|| 0,48 g/l||  || 0,48 g/l||  ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l||  ||  || 3,2 ml/l|| 3,2 ml/l||  ||  || 8 ml/l||  ||
+|| 8 || 4,2 ml/l|| 0,14 ml/l||  ||  || 0,42 g/l||  ||  || 1,4 ml/l|| 1,4 ml/l|| 1,4 ml/l|| 2,8 ml/l||  || 2,8 ml/l|| 2,8 ml/l||  ||  || 7 ml/l||  ||
+|| 9 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 g/l||  ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 6 ml/l||  ||
+|| 10 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 g/l|| 1 ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 5 ml/l||  ||
+|| 11 || 3,6 ml/l|| 0,12 ml/l||  ||  || 0,36 g/l|| 1 ||  || 1,2 ml/l|| 1,2 ml/l|| 1,2 ml/l|| 2,4 ml/l||  || 2,4 ml/l|| 2,4 ml/l||  ||  || 5 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Sensi Grow Heavy Feed - Terre ==
@@ -871,14 +871,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 2 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 3 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l||  ||  || 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
-|| 4 ||  || 0,1 ml/l||  || 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l|| 2,67 ml/l|| 2,67 ml/l||  ||  || 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,13 ml/l|| 0,4 ml/l||  || 0,4 ml/l||  ||  || 1,33 ml/l|| 1,33 ml/l|| 1,33 ml/l||  || 0,4 g/l|| 3,33 ml/l|| 3,33 ml/l||  ||  || 6,67 ml/l|| 4 ml/l||
-|| 6 || 5 ml/l|| 0,17 ml/l|| 0,5 ml/l||  || 0,5 ml/l||  ||  || 1,67 ml/l|| 1,67 ml/l|| 1,67 ml/l||  ||  || 4 ml/l|| 4 ml/l||  ||  || 8,33 ml/l||  ||
-|| 7 || 6 ml/l|| 0,2 ml/l|| 0,6 ml/l||  || 0,6 ml/l||  ||  || 2 ml/l|| 2 ml/l|| 2 ml/l||  ||  || 3,6 ml/l|| 3,6 ml/l||  ||  || 10 ml/l||  ||
-|| 8 || 5,4 ml/l|| 0,18 ml/l||  ||  || 0,54 ml/l||  ||  || 1,8 ml/l|| 1,8 ml/l|| 1,8 ml/l|| 3,6 ml/l||  || 3,2 ml/l|| 3,2 ml/l||  ||  || 9 ml/l||  ||
-|| 9 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 ml/l||  ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 3,2 ml/l|| 3,2 ml/l||  ||  || 8 ml/l||  ||
-|| 10 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 ml/l|| 1 ml/l||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 3,2 ml/l|| 3,2 ml/l||  ||  || 8 ml/l||  ||
-|| 11 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 ml/l|| 1 ml/l||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  ||  ||  ||  ||  || 8 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l|| 2,67 ml/l|| 2,67 ml/l||  ||  || 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,13 ml/l|| 0,4 g/l||  || 0,4 g/l||  ||  || 1,33 ml/l|| 1,33 ml/l|| 1,33 ml/l||  || 0,4 g/l|| 3,33 ml/l|| 3,33 ml/l||  ||  || 6,67 ml/l|| 4 ml/l||
+|| 6 || 5 ml/l|| 0,17 ml/l|| 0,5 g/l||  || 0,5 g/l||  ||  || 1,67 ml/l|| 1,67 ml/l|| 1,67 ml/l||  ||  || 4 ml/l|| 4 ml/l||  ||  || 8,33 ml/l||  ||
+|| 7 || 6 ml/l|| 0,2 ml/l|| 0,6 g/l||  || 0,6 g/l||  ||  || 2 ml/l|| 2 ml/l|| 2 ml/l||  ||  || 3,6 ml/l|| 3,6 ml/l||  ||  || 10 ml/l||  ||
+|| 8 || 5,4 ml/l|| 0,18 ml/l||  ||  || 0,54 g/l||  ||  || 1,8 ml/l|| 1,8 ml/l|| 1,8 ml/l|| 3,6 ml/l||  || 3,2 ml/l|| 3,2 ml/l||  ||  || 9 ml/l||  ||
+|| 9 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 g/l||  ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 3,2 ml/l|| 3,2 ml/l||  ||  || 8 ml/l||  ||
+|| 10 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 g/l|| 1 ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  || 3,2 ml/l|| 3,2 ml/l||  ||  || 8 ml/l||  ||
+|| 11 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 g/l|| 1 ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  ||  ||  ||  ||  || 8 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 == Sensi Grow Heavy Feed - Hydro ==
@@ -887,14 +887,14 @@ Source : [http://www.hydro-organics.com Schéma de culture]
 || 1 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l|| 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 2 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l|| 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
 || 3 || 2,5 ml/l|| 0,15 ml/l||  ||  ||  ||  ||  || 1 ml/l|| 1 ml/l|| 2 ml/l||  || 0,3 g/l|| 4 ml/l|| 4 ml/l|| 5 ml/l|| 1,5 ml/l||
-|| 4 ||  || 0,1 ml/l||  || 0,5 ml/l|| 0,3 ml/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l||  ||  || 5 ml/l|| 3 ml/l||
-|| 5 ||  || 0,13 ml/l|| 0,4 ml/l||  || 0,4 ml/l||  ||  || 1,33 ml/l|| 1,33 ml/l|| 1,33 ml/l||  || 0,4 g/l||  ||  || 6,67 ml/l|| 4 ml/l||
-|| 6 || 5 ml/l|| 0,17 ml/l|| 0,5 ml/l||  || 0,5 ml/l||  ||  || 1,67 ml/l|| 1,67 ml/l|| 1,67 ml/l||  ||  ||  ||  || 8,33 ml/l||  ||
-|| 7 || 6 ml/l|| 0,2 ml/l|| 0,6 ml/l||  || 0,6 ml/l||  ||  || 2 ml/l|| 2 ml/l|| 2 ml/l||  ||  ||  ||  || 10 ml/l||  ||
-|| 8 || 5,4 ml/l|| 0,18 ml/l||  ||  || 0,54 ml/l||  ||  || 1,8 ml/l|| 1,8 ml/l|| 1,8 ml/l|| 3,6 ml/l||  ||  ||  || 9 ml/l||  ||
-|| 9 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 ml/l||  ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  ||  ||  || 8 ml/l||  ||
-|| 10 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 ml/l|| 1 ml/l||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  ||  ||  || 8 ml/l||  ||
-|| 11 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 ml/l|| 1 ml/l||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  ||  ||  || 8 ml/l||  ||
+|| 4 ||  || 0,1 ml/l||  || 0,5 g/l|| 0,3 g/l||  ||  || 1 ml/l|| 1 ml/l|| 1 ml/l||  || 0,3 g/l||  ||  || 5 ml/l|| 3 ml/l||
+|| 5 ||  || 0,13 ml/l|| 0,4 g/l||  || 0,4 g/l||  ||  || 1,33 ml/l|| 1,33 ml/l|| 1,33 ml/l||  || 0,4 g/l||  ||  || 6,67 ml/l|| 4 ml/l||
+|| 6 || 5 ml/l|| 0,17 ml/l|| 0,5 g/l||  || 0,5 g/l||  ||  || 1,67 ml/l|| 1,67 ml/l|| 1,67 ml/l||  ||  ||  ||  || 8,33 ml/l||  ||
+|| 7 || 6 ml/l|| 0,2 ml/l|| 0,6 g/l||  || 0,6 g/l||  ||  || 2 ml/l|| 2 ml/l|| 2 ml/l||  ||  ||  ||  || 10 ml/l||  ||
+|| 8 || 5,4 ml/l|| 0,18 ml/l||  ||  || 0,54 g/l||  ||  || 1,8 ml/l|| 1,8 ml/l|| 1,8 ml/l|| 3,6 ml/l||  ||  ||  || 9 ml/l||  ||
+|| 9 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 g/l||  ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  ||  ||  || 8 ml/l||  ||
+|| 10 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 g/l|| 1 ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  ||  ||  || 8 ml/l||  ||
+|| 11 || 4,8 ml/l|| 0,16 ml/l||  ||  || 0,48 g/l|| 1 ||  || 1,6 ml/l|| 1,6 ml/l|| 1,6 ml/l|| 3,2 ml/l||  ||  ||  || 8 ml/l||  ||
 || 12 ||  ||  ||  ||  ||  ||  || 2,5 ml/l||  ||  ||  ||  ||  ||  ||  ||  ||  ||
 
 = Canna =
@@ -979,6 +979,148 @@ Source : [http://www.premiergrow.com Schéma de culture]
 || 9 || 1,8 || 25 ml/l||  || 25 ml/l||
 || 10 || 1,6 || 25 ml/l||  || 25 ml/l||
 || 11 || 1,2 || 15 ml/l||  || 15 ml/l||
+
+= Platinium =
+
+Source : [http://www.platiniumhydroponics.com/ Schéma de culture]
+
+== Organic - Terre ==
+
+|| *Semaine* || *Bubble ZYM* || *Energy MAX* || *Humic FULVIC* || *Organic Bloom* || *Organic Grow* || *Resine PLUS* || *Rhizoponics* || *Seaweed XTRACT* || *Super BOOST* || *Sweet CANDY* ||
+|| 1 || 1-2 ml/l||  || 1 ml/l||  || 1-2 ml/l||  || 0,5 ml/l|| 1-3 ml/l||  ||  ||
+|| 2 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 1-3 ml/l||  ||  ||
+|| 3 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l||  || 3 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 4 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 1 ml/l|| 2 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 5 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 6 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 3 ml/l||  || 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 7 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 3 ml/l||  || 1,5 ml/l|| 0,5 ml/l|| 1-3 ml/l|| 1,5 ml/l|| 1-2 ml/l||
+|| 8 || 1-2 ml/l|| 0,5 ml/l||  || 3 ml/l||  || 1,5 ml/l||  ||  || 1,5 ml/l|| 1-2 ml/l||
+|| 9 || 1-2 ml/l|| 0,5 ml/l||  || 3 ml/l||  || 1,5 ml/l||  ||  || 1,5 ml/l|| 1-2 ml/l||
+
+== Organic - Coco ==
+
+|| *Semaine* || *Bubble ZYM* || *Energy MAX* || *Humic FULVIC* || *Organic Bloom* || *Organic Grow* || *Resine PLUS* || *Rhizoponics* || *Seaweed XTRACT* || *Super BOOST* || *Sweet CANDY* ||
+|| 1 || 1-2 ml/l||  || 1 ml/l||  || 1-2 ml/l||  || 0,5 ml/l|| 1-3 ml/l||  ||  ||
+|| 2 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l||  || 2 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 1-3 ml/l||  ||  ||
+|| 3 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l||  || 3 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 4 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 1 ml/l|| 2 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 5 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 2 ml/l|| 1 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 6 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 3 ml/l||  || 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 7 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 3 ml/l||  || 1,5 ml/l|| 0,5 ml/l|| 1-3 ml/l|| 1,5 ml/l|| 1-2 ml/l||
+|| 8 || 1-2 ml/l|| 0,5 ml/l||  || 3 ml/l||  || 1,5 ml/l||  ||  || 1,5 ml/l|| 1-2 ml/l||
+|| 9 || 1-2 ml/l|| 0,5 ml/l||  || 3 ml/l||  || 1,5 ml/l||  ||  || 1,5 ml/l|| 1-2 ml/l||
+
+== Hydroponic - Aero ==
+
+|| *Semaine* || *Bubble ZYM* || *Energy MAX* || *Humic FULVIC* || *Hydroponic Bloom* || *Hydroponic Grow* || *Resine PLUS* || *Rhizoponics* || *Seaweed XTRACT* || *Super BOOST* || *Sweet CANDY* ||
+|| 1 || 1-2 ml/l||  || 1 ml/l|| 0,2 ml/l|| 0,2 ml/l||  || 0,5 ml/l|| 1-3 ml/l||  ||  ||
+|| 2 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 ml/l|| 1 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 1-3 ml/l||  ||  ||
+|| 3 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,9 ml/l|| 1,5 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 4 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 5 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 6 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 1,5 ml/l|| 0,4 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 7 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 1 ml/l|| 0,4 ml/l|| 1,5 ml/l|| 0,5 ml/l|| 1-3 ml/l|| 1,5 ml/l|| 1-2 ml/l||
+|| 8 || 1-2 ml/l|| 0,5 ml/l||  || 1 ml/l|| 0,4 ml/l|| 1,5 ml/l||  ||  || 1,5 ml/l|| 1-2 ml/l||
+|| 9 || 1-2 ml/l|| 0,5 ml/l||  || 1 ml/l|| 0,4 ml/l|| 1,5 ml/l||  ||  || 1,5 ml/l|| 1-2 ml/l||
+|| 10 ||  ||  ||  || 1 ml/l|| 0,4 ml/l||  ||  ||  ||  ||  ||
+
+== Hydroponic - Hydro ==
+
+|| *Semaine* || *Bubble ZYM* || *Energy MAX* || *Humic FULVIC* || *Hydroponic Bloom* || *Hydroponic Grow* || *Resine PLUS* || *Rhizoponics* || *Seaweed XTRACT* || *Super BOOST* || *Sweet CANDY* ||
+|| 1 || 1-2 ml/l||  || 1 ml/l|| 0,2 ml/l|| 0,2 ml/l||  || 0,5 ml/l|| 1-3 ml/l||  ||  ||
+|| 2 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 ml/l|| 1 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 1-3 ml/l||  ||  ||
+|| 3 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,9 ml/l|| 1,5 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 4 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 5 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 6 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 1,5 ml/l|| 0,4 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 7 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 1 ml/l|| 0,4 ml/l|| 1,5 ml/l|| 0,5 ml/l|| 1-3 ml/l|| 1,5 ml/l|| 1-2 ml/l||
+|| 8 || 1-2 ml/l|| 0,5 ml/l||  || 1 ml/l|| 0,4 ml/l|| 1,5 ml/l||  ||  || 1,5 ml/l|| 1-2 ml/l||
+|| 9 || 1-2 ml/l|| 0,5 ml/l||  || 1 ml/l|| 0,4 ml/l|| 1,5 ml/l||  ||  || 1,5 ml/l|| 1-2 ml/l||
+|| 10 ||  ||  ||  || 1 ml/l|| 0,4 ml/l||  ||  ||  ||  ||  ||
+
+== Hydroponic - Coco ==
+
+|| *Semaine* || *Bubble ZYM* || *Energy MAX* || *Humic FULVIC* || *Hydroponic Bloom* || *Hydroponic Grow* || *Resine PLUS* || *Rhizoponics* || *Seaweed XTRACT* || *Super BOOST* || *Sweet CANDY* ||
+|| 1 || 1-2 ml/l||  || 1 ml/l|| 0,2 ml/l|| 0,2 ml/l||  || 0,5 ml/l|| 1-3 ml/l||  ||  ||
+|| 2 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 0,4 ml/l|| 1 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 1-3 ml/l||  ||  ||
+|| 3 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 0,9 ml/l|| 1,5 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 4 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 5 || 1-2 ml/l|| 0,5 ml/l|| 1,5 ml/l|| 1 ml/l|| 1 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 6 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 1,5 ml/l|| 0,4 ml/l|| 1 ml/l|| 0,5 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 7 || 1-2 ml/l|| 0,5 ml/l|| 1 ml/l|| 1 ml/l|| 0,4 ml/l|| 1,5 ml/l|| 0,5 ml/l|| 1-3 ml/l|| 1,5 ml/l|| 1-2 ml/l||
+|| 8 || 1-2 ml/l|| 0,5 ml/l||  || 1 ml/l|| 0,4 ml/l|| 1,5 ml/l||  ||  || 1,5 ml/l|| 1-2 ml/l||
+|| 9 || 1-2 ml/l|| 0,5 ml/l||  || 1 ml/l|| 0,4 ml/l|| 1,5 ml/l||  ||  || 1,5 ml/l|| 1-2 ml/l||
+|| 10 ||  ||  ||  || 1 ml/l|| 0,4 ml/l||  ||  ||  ||  ||  ||
+
+== Hydroponic - Terre ==
+
+|| *Semaine* || *Bubble ZYM* || *Energy MAX* || *Humic FULVIC* || *Hydroponic Bloom* || *Hydroponic Grow* || *Resine PLUS* || *Rhizoponics* || *Seaweed XTRACT* || *Super BOOST* || *Sweet CANDY* ||
+|| 1 || 0,5-1 ml/l||  || 0,5 ml/l|| 0,1 ml/l|| 0,1 ml/l||  || 0,25 ml/l|| 0,5-1,5 ml/l||  ||  ||
+|| 2 || 0,5-1 ml/l|| 0,25 ml/l|| 0,5 ml/l|| 0,2 ml/l|| 0,5 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,5-1,5 ml/l||  ||  ||
+|| 3 || 0,5-1 ml/l|| 0,25 ml/l|| 0,75 ml/l|| 0,45 ml/l|| 0,75 ml/l|| 0,25 ml/l|| 0,25 ml/l|| 0,5-1,5 ml/l||  || 0,5-1 ml/l||
+|| 4 || 0,5-1 ml/l|| 0,25 ml/l|| 0,75 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,25 ml/l|| 0,5-1,5 ml/l||  || 0,5-1 ml/l||
+|| 5 || 0,5-1 ml/l|| 0,25 ml/l|| 0,75 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,25 ml/l|| 0,5-1,5 ml/l||  || 0,5-1 ml/l||
+|| 6 || 0,5-1 ml/l|| 0,25 ml/l|| 0,5 ml/l|| 0,75 ml/l|| 0,2 ml/l|| 0,5 ml/l|| 0,25 ml/l|| 0,5-1,5 ml/l||  || 0,5-1 ml/l||
+|| 7 || 0,5-1 ml/l|| 0,25 ml/l|| 0,5 ml/l|| 0,5 ml/l|| 0,2 ml/l|| 0,75 ml/l|| 0,25 ml/l|| 0,5-1,5 ml/l|| 0,75 ml/l|| 0,5-1 ml/l||
+|| 8 || 0,5-1 ml/l|| 0,25 ml/l||  || 0,5 ml/l|| 0,2 ml/l|| 0,75 ml/l||  ||  || 0,75 ml/l|| 0,5-1 ml/l||
+|| 9 || 0,5-1 ml/l|| 0,25 ml/l||  || 0,5 ml/l|| 0,2 ml/l|| 0,75 ml/l||  ||  || 0,75 ml/l|| 0,5-1 ml/l||
+|| 10 ||  ||  ||  || 0,5 ml/l|| 0,2 ml/l||  ||  ||  ||  ||  ||
+
+== Grow Bloom - Aero ==
+
+|| *Semaine* || *Bubble ZYM* || *Energy MAX* || *Grow Bloom Powder* || *Humic FULVIC* || *Monster PK* || *Resine PLUS* || *Rhizoponics* || *Seaweed XTRACT* || *Super Grow* || *Sweet CANDY* ||
+|| 1 || 1-2 ml/l||  || 0,5 g/L|| 1 ml/l||  ||  ||  || 1-3 ml/l||  ||  ||
+|| 2 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L|| 1 ml/l||  || 0,5 ml/l||  || 1-3 ml/l|| 0,3 g/L||  ||
+|| 3 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1,5 ml/l||  || 0,5 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 4 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1,5 ml/l||  || 1 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 5 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1,5 ml/l||  || 1 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 6 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1 ml/l||  || 1 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 7 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L|| 1 ml/l|| 0,2 g/L|| 1,5 ml/l|| 0,2 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 8 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L||  || 0,3 g/L|| 1,5 ml/l||  ||  ||  || 1-2 ml/l||
+|| 9 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L||  || 0,3 g/L|| 1,5 ml/l||  ||  ||  || 1-2 ml/l||
+|| 10 ||  || 0,5 ml/l|| 1 g/L||  || 0,3 g/L|| 1,5 ml/l||  ||  ||  || 1-2 ml/l||
+
+== Grow Bloom - Hydro ==
+
+|| *Semaine* || *Bubble ZYM* || *Energy MAX* || *Grow Bloom Powder* || *Humic FULVIC* || *Monster PK* || *Resine PLUS* || *Rhizoponics* || *Seaweed XTRACT* || *Super Grow* || *Sweet CANDY* ||
+|| 1 || 1-2 ml/l||  || 0,5 g/L|| 1 ml/l||  ||  ||  || 1-3 ml/l||  ||  ||
+|| 2 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L|| 1 ml/l||  || 0,5 ml/l||  || 1-3 ml/l|| 0,3 g/L||  ||
+|| 3 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1,5 ml/l||  || 0,5 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 4 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1,5 ml/l||  || 1 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 5 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1,5 ml/l||  || 1 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 6 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1 ml/l||  || 1 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 7 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L|| 1 ml/l|| 0,2 g/L|| 1,5 ml/l|| 0,2 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 8 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L||  || 0,3 g/L|| 1,5 ml/l||  ||  ||  || 1-2 ml/l||
+|| 9 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L||  || 0,3 g/L|| 1,5 ml/l||  ||  ||  || 1-2 ml/l||
+|| 10 ||  || 0,5 ml/l|| 1 g/L||  || 0,3 g/L|| 1,5 ml/l||  ||  ||  || 1-2 ml/l||
+
+== Grow Bloom - Coco ==
+
+|| *Semaine* || *Bubble ZYM* || *Energy MAX* || *Grow Bloom Powder* || *Humic FULVIC* || *Monster PK* || *Resine PLUS* || *Rhizoponics* || *Seaweed XTRACT* || *Super Grow* || *Sweet CANDY* ||
+|| 1 || 1-2 ml/l||  || 0,5 g/L|| 1 ml/l||  ||  ||  || 1-3 ml/l||  ||  ||
+|| 2 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L|| 1 ml/l||  || 0,5 ml/l||  || 1-3 ml/l|| 0,3 g/L||  ||
+|| 3 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1,5 ml/l||  || 0,5 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 4 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1,5 ml/l||  || 1 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 5 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1,5 ml/l||  || 1 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 6 || 1-2 ml/l|| 0,5 ml/l|| 1,5 g/L|| 1 ml/l||  || 1 ml/l||  || 1-3 ml/l||  || 1-2 ml/l||
+|| 7 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L|| 1 ml/l|| 0,2 g/L|| 1,5 ml/l|| 0,2 ml/l|| 1-3 ml/l||  || 1-2 ml/l||
+|| 8 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L||  || 0,3 g/L|| 1,5 ml/l||  ||  ||  || 1-2 ml/l||
+|| 9 || 1-2 ml/l|| 0,5 ml/l|| 1 g/L||  || 0,3 g/L|| 1,5 ml/l||  ||  ||  || 1-2 ml/l||
+|| 10 ||  || 0,5 ml/l|| 1 g/L||  || 0,3 g/L|| 1,5 ml/l||  ||  ||  || 1-2 ml/l||
+
+== Grow Bloom - Terre ==
+
+|| *Semaine* || *Bubble ZYM* || *Energy MAX* || *Grow Bloom Powder* || *Humic FULVIC* || *Monster PK* || *Resine PLUS* || *Rhizoponics* || *Seaweed XTRACT* || *Super Grow* || *Sweet CANDY* ||
+|| 1 || 0,5-1 ml/l||  || 0,25 g/L|| 0,5 ml/l||  ||  ||  || 0,5-1,5 ml/l||  ||  ||
+|| 2 || 0,5-1 ml/l|| 0,25 ml/l|| 0,5 g/L|| 0,5 ml/l||  || 0,25 ml/l||  || 0,5-1,5 ml/l|| 0,15 g/L||  ||
+|| 3 || 0,5-1 ml/l|| 0,25 ml/l|| 0,75 g/L|| 0,75 ml/l||  || 0,25 ml/l||  || 0,5-1,5 ml/l||  || 0,5-1 ml/l||
+|| 4 || 0,5-1 ml/l|| 0,25 ml/l|| 0,75 g/L|| 0,75 ml/l||  || 0,5 ml/l||  || 0,5-1,5 ml/l||  || 0,5-1 ml/l||
+|| 5 || 0,5-1 ml/l|| 0,25 ml/l|| 0,75 g/L|| 0,75 ml/l||  || 0,5 ml/l||  || 0,5-1,5 ml/l||  || 0,5-1 ml/l||
+|| 6 || 0,5-1 ml/l|| 0,25 ml/l|| 0,75 g/L|| 0,5 ml/l||  || 0,5 ml/l||  || 0,5-1,5 ml/l||  || 0,5-1 ml/l||
+|| 7 || 0,5-1 ml/l|| 0,25 ml/l|| 0,5 g/L|| 0,5 ml/l|| 0,1 g/L|| 0,75 ml/l|| 0,1 ml/l|| 0,5-1,5 ml/l||  || 0,5-1 ml/l||
+|| 8 || 0,5-1 ml/l|| 0,25 ml/l|| 0,5 g/L||  || 0,15 g/L|| 0,75 ml/l||  ||  ||  || 0,5-1 ml/l||
+|| 9 || 0,5-1 ml/l|| 0,25 ml/l|| 0,5 g/L||  || 0,15 g/L|| 0,75 ml/l||  ||  ||  || 0,5-1 ml/l||
+|| 10 ||  || 0,25 ml/l|| 0,5 g/L||  || 0,15 g/L|| 0,75 ml/l||  ||  ||  || 0,5-1 ml/l||
 
 
 
