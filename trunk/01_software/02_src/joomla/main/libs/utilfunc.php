@@ -767,18 +767,37 @@ function get_nb_days($start_date="",$end_date="") {
 //       $out     errors or warnings messages
 // RET   none  
 function check_update_available($version,&$out) {
-    $version=str_replace(".","",$version);
-    $temp=explode("-", $version);
-    $version=$temp[0];
+
+    // Gets only version number (remove -noarch)
+    $temp    = explode("-", $version);
+    $version = $temp[0];
+    
+    // Only 3 first numbers are usefull
+    $temp    = explode(".", $version);
+    $version = $temp[0] . $temp[1] . $temp[2];
+
     if(isset($GLOBALS['UPDATE_FILE'])&&(!empty($GLOBALS['UPDATE_FILE']))) {
-        $file=$GLOBALS['UPDATE_FILE'];
+        $file = $GLOBALS['UPDATE_FILE'];
+        
+        // Open the file
         if($handle=@fopen($file,"r")) {
+        
+            // Gets text
             $val=fgets($handle);
+            
+            // Close the file
             fclose($handle);
+            
+            // If not empty
             if(!empty($val)) { 
-                $tmp_version=str_replace(".","","$val");
+            
+                // Read only 3 first numbers
+                $temp    = explode(".", $val);
+                $tmp_version = $temp[0] . $temp[1] . $temp[2];
+            
+                // Compar to actual version
                 $tmp_version=trim($tmp_version);
-                if(($version<$tmp_version)) {
+                if($version < $tmp_version) {
                     return true;
                 }
              }

@@ -130,24 +130,7 @@ $(document).ready(function() {
                         }).done(function (data) {
                             if(data==1) {
                                 $('#calendar').fullCalendar( 'refetchEvents' );
-                                $("#valid_reset_calendar").dialog({
-                                    resizable: true,
-                                    width: 450,
-                                    modal: true,    
-                                    closeOnEscape: false,
-                                    dialogClass: "popup_message",
-                                    buttons: [{
-                                    text: CLOSE_button,
-                                    click: function () {
-                                        $( this ).dialog( "close" );
-                                        //window.location = "calendar-"+slang;
-                                        return false;
-                                    }
-                                    }],
-                                    open: function(event, ui) {
-                                        $("a.ui-dialog-titlebar-close").remove();    
-                                    }
-                                });
+                                display_modal_ui("#valid_reset_calendar" , "popup_message");
                             } 
                         });
                     }
@@ -203,55 +186,15 @@ $(document).ready(function() {
                                     select_croissance:$('input[name=select_croissance]:checked', '#manage_nutrient_planification').val()
                                 }
                             }).done(function (data) {
-                               if(data==1) {
-                                        $('#calendar').fullCalendar( 'refetchEvents' );
-                                        $("#valid_create_calendar").dialog({
-                                            resizable: true,
-                                            width: 450,
-                                            modal: true,
-                                            closeOnEscape: false,
-                                            dialogClass: "popup_message",
-                                            buttons: [{
-                                            text: CLOSE_button,
-                                            click: function () {
-                                                $( this ).dialog( "close" );
-                                                return false;
-                                            }
-                                            }]
-                                        });
+                                $('#calendar').fullCalendar( 'refetchEvents' );
+                                if(data==1) {
+                                    display_modal_ui("#valid_create_calendar" , "popup_message");
                                 } else {
-                                    $('#calendar').fullCalendar('refetchEvents');
-                                        $("#error_create_calendar").dialog({
-                                            resizable: true,
-                                            width: 450,
-                                            modal: true,
-                                            closeOnEscape: false,
-                                            dialogClass: "popup_error",
-                                            buttons: [{
-                                            text: CLOSE_button,
-                                            click: function () {
-                                                $( this ).dialog( "close" );
-                                                return false;
-                                            }
-                                            }]
-                                        });
+                                    display_modal_ui("#error_create_calendar" , "popup_error");
                                 }
 
-                                $.ajax({
-                                    type: "POST",
-                                    url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
-                                    data: {lang: llang}
-                                }).done(function (data) {
-                                    if(data!="") {
-                                         var objJSON = jQuery.parseJSON(data);
-                                         $('#select_title').children().remove();
-                                         $.each(objJSON, function( key, value ) {
-                                             $('#select_title').append(new Option(value, value, true, true)); 
-                                         });
-                                         $("#select_title").prop('selectedIndex', 0);  
-                                         $("#other_title_div").css("display","none");
-                                    }
-                                });
+                                // Update list of title available
+                                update_title_list();
                             });
                         }
                     });
@@ -267,21 +210,8 @@ $(document).ready(function() {
            url: "../../main/modules/external/get_variable.php",
            data: {name:"important"}
         }).done(function (data) {
-            if(jQuery.parseJSON(data)!="True") {
-                  $("#dialog_calendar_important").dialog({
-                    resizable: true,
-                    width: 550,
-                    modal: true,
-                    closeOnEscape: false,
-                    dialogClass: "popup_message",
-                    buttons: [{
-                        text: CLOSE_button,
-                        "id": "btnClose",
-                        click: function () {
-                            $( this ).dialog("close");
-                        }
-                    }]
-                });
+            if(jQuery.parseJSON(data) != "True") {
+                display_modal_ui("#dialog_calendar_important" , "popup_message");
 
                 $.ajax({
                     cache: false,
@@ -402,8 +332,8 @@ function daily_program_check_overlaping (event) {
             // (StartA <= EndB) and (EndA >= StartB)
             StartA = $.fullCalendar.formatDate(allevents[index].start, "yyyy-MM-dd");
             StartB = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
-            EndA = $.fullCalendar.formatDate(allevents[index].start, "yyyy-MM-dd");
-            EndB = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
+            EndA = $.fullCalendar.formatDate(allevents[index].end, "yyyy-MM-dd");
+            EndB = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd");
             
             if ( (allevents[index].id != event.id) && (StartA <= EndB) && (EndA >= StartB) )
             {
@@ -416,14 +346,14 @@ function daily_program_check_overlaping (event) {
     return false;
 }
 
-// Function to display an lert when two overlapping daily program
-function daily_program_overlapping_alert () {
-    $("#error_drop_event").dialog({
+// Function used to display a simple information or error dialog box
+function display_modal_ui (ui_ID, ui_Class) {
+    $(ui_ID).dialog({
         resizable: true,
         width: 450,
         modal: true,
         closeOnEscape: false,
-        dialogClass: "popup_error",
+        dialogClass: ui_Class,
         buttons: [{
         text: CLOSE_button,
         click: function () {
@@ -434,7 +364,26 @@ function daily_program_overlapping_alert () {
     });
 }
 
+// Funct used to update calendar title list
+function update_title_list () {
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
+        data: {lang: llang}
+    }).done(function (data) {
+        if(data!="") {
+            var objJSON = jQuery.parseJSON(data);
+            $('#select_title').children().remove();
+            $.each(objJSON, function( key, value ) {
+                $('#select_title').append(new Option(value, value, true, true)); 
+            });
+            $("#select_title").prop('selectedIndex', 0);  
+            $("#other_title_div").css("display","none");
+        }
+    });
+}
 
+// Full calendar
 $(document).ready(function() {
     $('#calendar').fullCalendar({
         editable: true,
@@ -556,21 +505,8 @@ $(document).ready(function() {
                                     <?php } ?> 
                                 }).done(function (data) {
                                     if(data==1) {
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
-                                            data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
-                                        }).done(function (data) {
-                                            if(data!="") {
-                                                var objJSON = jQuery.parseJSON(data);
-                                                $('#select_title').children().remove();
-                                                $.each(objJSON, function( key, value ) {
-                                                    $('#select_title').append(new Option(value, value, true, true)); 
-                                                });
-                                                $("#select_title").prop('selectedIndex', 0);  
-                                                $("#other_title_div").css("display","none");
-                                            } 
-                                        });       
+                                        // Update list of title available
+                                        update_title_list();     
                                     } 
                                     
                                     $('#calendar').fullCalendar('refetchEvents');
@@ -582,20 +518,14 @@ $(document).ready(function() {
                         }
                         else
                         {
-                            // Block UI
-                            <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                $.blockUI({ message: ''}); 
-                            <?php } ?>
-                           
 
+                            var tempEvent = {start:start, end:end, id:"3000"};
+                            
                             // Check if there is an other programm on the same day
-                            if (0 && daily_program_check_overlaping(event)) {
+                            if (daily_program_check_overlaping(tempEvent)) {
                                 // Display overlapping alert
-                                daily_program_overlapping_alert();
-                                
-                                // Undo drop
-                                revertFunc();
-                                
+                                display_modal_ui("#error_drop_event" , "popup_error");
+
                                 //Exit function
                                 return false;
                             }
@@ -617,38 +547,11 @@ $(document).ready(function() {
                                     program_index: selected_DailyProgram
                                 }
                             }).done(function (data) {
-                               if(data==1) {
-                                    $('#calendar').fullCalendar( 'refetchEvents' );
-                                    $("#valid_create_calendar").dialog({
-                                        resizable: true,
-                                        width: 450,
-                                        modal: true,
-                                        closeOnEscape: false,
-                                        dialogClass: "popup_message",
-                                        buttons: [{
-                                        text: CLOSE_button,
-                                        click: function () {
-                                            $( this ).dialog( "close" );
-                                            return false;
-                                        }
-                                        }]
-                                    });
+                                $('#calendar').fullCalendar( 'refetchEvents' );
+                                if(data==1) {
+                                    display_modal_ui("#valid_create_calendar" , "popup_message");
                                 } else {
-                                    $('#calendar').fullCalendar('refetchEvents');
-                                    $("#error_create_calendar").dialog({
-                                        resizable: true,
-                                        width: 450,
-                                        modal: true,
-                                        closeOnEscape: false,
-                                        dialogClass: "popup_error",
-                                        buttons: [{
-                                        text: CLOSE_button,
-                                        click: function () {
-                                            $( this ).dialog( "close" );
-                                            return false;
-                                        }
-                                        }]
-                                    });
+                                    display_modal_ui("#error_create_calendar" , "popup_error");
                                 }
                             });
                            
@@ -715,6 +618,7 @@ $(document).ready(function() {
             
             // assign it the date that was reported
             copiedEventObject.start = date;
+            copiedEventObject.end = date;
             copiedEventObject.allDay = allDay;
             copiedEventObject.title = "<?php echo __('CALENDAR_DAILY_PROGRAM') ; ?>" + " " + originalEventObject.title;
             copiedEventObject.description = copiedEventObject.title;
@@ -723,7 +627,7 @@ $(document).ready(function() {
             // Check if there is an other programm on the same day
             if (daily_program_check_overlaping(copiedEventObject)) {
                 // Display overlapping alert
-                daily_program_overlapping_alert();
+                display_modal_ui("#error_drop_event" , "popup_error");
                 
                 //Exit function
                 return "";
@@ -754,38 +658,11 @@ $(document).ready(function() {
                     program_index: copiedEventObject.program_index
                 }
             }).done(function (data) {
-               if(data==1) {
-                    $('#calendar').fullCalendar( 'refetchEvents' );
-                    $("#valid_create_calendar").dialog({
-                        resizable: true,
-                        width: 450,
-                        modal: true,
-                        closeOnEscape: false,
-                        dialogClass: "popup_message",
-                        buttons: [{
-                        text: CLOSE_button,
-                        click: function () {
-                            $( this ).dialog( "close" );
-                            return false;
-                        }
-                        }]
-                    });
+                $('#calendar').fullCalendar( 'refetchEvents' );
+                if(data==1) {
+                    display_modal_ui("#valid_create_calendar" , "popup_message");
                 } else {
-                    $('#calendar').fullCalendar('refetchEvents');
-                    $("#error_create_calendar").dialog({
-                        resizable: true,
-                        width: 450,
-                        modal: true,
-                        closeOnEscape: false,
-                        dialogClass: "popup_error",
-                        buttons: [{
-                        text: CLOSE_button,
-                        click: function () {
-                            $( this ).dialog( "close" );
-                            return false;
-                        }
-                        }]
-                    });
+                    display_modal_ui("#error_create_calendar" , "popup_error");
                 }
             });
         },
@@ -804,7 +681,7 @@ $(document).ready(function() {
                 // Check if there is an other programm on the same day
                 if (daily_program_check_overlaping(event)) {
                     // Display overlapping alert
-                    daily_program_overlapping_alert();
+                    display_modal_ui("#error_drop_event" , "popup_error");
                     
                     // Undo drop
                     revertFunc();
@@ -847,7 +724,7 @@ $(document).ready(function() {
                 // Check if there is an other programm on the same day
                 if (daily_program_check_overlaping(event)) {
                     // Display overlapping alert
-                    daily_program_overlapping_alert();
+                    display_modal_ui("#error_drop_event" , "popup_error");
                     
                     // Undo drop
                     revertFunc();
@@ -1001,21 +878,8 @@ $(document).ready(function() {
                                                 ,complete: function() { $.unblockUI(); }
                                             <?php } ?>
                                         }).done(function (data) {
-                                            $.ajax({
-                                                    type: "POST",
-                                                    url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
-                                                    data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
-                                                }).done(function (data) {
-                                                    if(data!="") {
-                                                        var myTitle=jQuery.parseJSON(data);
-                                                        $('#select_title').children().remove();
-                                                        $.each( myTitle, function( key, value ) {
-                                                            $('#select_title').append(new Option(value, value, true, true)); 
-                                                        });
-                                                        $("#select_title").prop('selectedIndex', 0);  
-                                                        $("#other_title_div").css("display","none");
-                                                    }
-                                                });
+                                            // Update list of title available
+                                            update_title_list();
                                         });
                                     }
                                     event.title=title;
@@ -1084,22 +948,9 @@ $(document).ready(function() {
                                 url: "http://localhost:6891/cultibox/main/modules/json-events/json-remove-events.php",
                                 data: 'id='+event.id+'&card=<?php echo $sd_card; ?>'
                             }).done(function (data) {
-                                $.ajax({
-                                    type: "POST",
-                                    url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
-                                    data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
-                                }).done(function (data) {
-                                    if(data!="") {
-                                        var myTitle = jQuery.parseJSON(data);
-                                        $('#select_title').children().remove();
-                                        $.each( myTitle, function( key, value ) {
-                                            $('#select_title').append(new Option(value, value, true, true)); 
-                                        });
-                                        $("#select_title").prop('selectedIndex', 0);  
-                                        $("#other_title_div").css("display","none");
-                                    }
-
-                                });
+                                // Update list of title available
+                                update_title_list();
+                                
                                 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                                     $.unblockUI();
                                 <?php } ?>
@@ -1140,22 +991,9 @@ $(document).ready(function() {
                                 url: "http://localhost:6891/cultibox/main/modules/json-events/json-remove-events.php",
                                 data: 'id='+event.id+'&card=<?php echo $sd_card; ?>'
                             }).done(function (data) {
-                                $.ajax({
-                                    type: "POST",
-                                    url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
-                                    data: 'lang='+encodeURIComponent("<?php echo $lang; ?>")
-                                }).done(function (data) {
-                                    if(data!="") {
-                                        var myTitle = jQuery.parseJSON(data);
-                                        $('#select_title').children().remove();
-                                        $.each( myTitle, function( key, value ) {
-                                            $('#select_title').append(new Option(value, value, true, true)); 
-                                        });
-                                        $("#select_title").prop('selectedIndex', 0);  
-                                        $("#other_title_div").css("display","none");
-                                    }
+                                // Update list of title available
+                                update_title_list();
 
-                                });
                                 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                                     $.unblockUI();
                                 <?php } ?>
@@ -1259,7 +1097,7 @@ $(document).ready(function() {
         
     });
         
-    });
+});
 
 $(document).ready(function() {
     // Rewrite on SD cards every events (and plgXX programm)

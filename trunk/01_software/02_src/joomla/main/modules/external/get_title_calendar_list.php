@@ -15,8 +15,6 @@ if((isset($_POST['lang']))&&(!empty($_POST['lang']))) {
     $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
     __('LANG');
 
-    
-
     $title=get_title_list();
 
     if(count($title)>0) {
