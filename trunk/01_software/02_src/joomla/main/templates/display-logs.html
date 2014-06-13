@@ -105,11 +105,14 @@
                     <table id="select_logs_to_display" class="table_width">
                         <tr>
                             <?php 
+                                $check_conf_sensor=false;
+
                                 for($i = 1 ; $i <= $GLOBALS['NB_MAX_SENSOR_LOG'] ; $i++) {
                                     // Read sensor informations
                                     $sensorInfo = logs\get_sensor_db_type($i);
 
                                     if ($sensorInfo[0]['type'] != "0") {
+                                        $check_conf_sensor=true;
                                         echo '<td>' . __('SENSOR'). " " . $i . ' (' . __($sensorInfo[0]['translation']) . ')</td>';
                                         echo '<td  style="margin-right:30px;" >';
                                         echo '<input type="checkbox"'
@@ -135,6 +138,10 @@
                                         }
 
                                     }
+                                }
+
+                                if(!$check_conf_sensor) {
+                                        echo "<b>".__('NO_SENSOR_DEFINED').'</b><img src="main/libs/img/infos.png" alt="" title="'.__('TOOLTIP_NO_SENSOR_DEFINED').'" />';
                                 }
                             ?>
                         </tr>

@@ -573,6 +573,9 @@ msgstr "Opciones curvas"
 msgid "PARAMETERS_CURVE_DISPLAYED"
 msgstr "Curvas de selección"
 
+msgid "NO_SENSOR_DEFINED"
+msgstr "Ningún conjunto sensor"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -1825,6 +1828,9 @@ msgstr "Haga clic la imagen para ver para ver los mensajes del software"
 
 msgid "TOOLTIP_RTC_OFFSET"
 msgstr "Le permite cambiar la velocidad del reloj interno del Cultibox."
+
+msgid "TOOLTIP_NO_SENSOR_DEFINED"
+msgstr "Encoder aún no está definida: cuando primero los registros de carga de la tarjeta SD, los sensores se configuran automáticamente"
 
 
 #For the debug part:

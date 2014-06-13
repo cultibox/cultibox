@@ -238,6 +238,7 @@ msgstr "seconde(s)"
 msgid "ACTIV_DAILY_PROGRAM"
 msgstr "Activer programme journalier"
 
+
 # For the logs part:
 msgid "HISTO_GRAPH"
 msgstr "Graphiques climatiques"
@@ -571,6 +572,9 @@ msgstr "Options des courbes"
 
 msgid "PARAMETERS_CURVE_DISPLAYED"
 msgstr "Sélection des courbes"
+
+msgid "NO_SENSOR_DEFINED"
+msgstr "Aucun capteur définie"
 
 
 # For the plugs part:
@@ -1824,6 +1828,9 @@ msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du l
 
 msgid "TOOLTIP_RTC_OFFSET"
 msgstr "Permet de modifier la cadence de l'horloge interne de la Cultibox."
+
+msgid "TOOLTIP_NO_SENSOR_DEFINED"
+msgstr "Aucun capteur n'est encore définie: lors du premier chargement de vos logs depuis la carte SD, vos capteurs seront configurés automatiquement"
 
 
 #For the debug part:
