@@ -182,12 +182,11 @@ $(function () {
                 },
                 events: {
                     load: function() {
-                                        
-                        <?php if($fake_log) echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 600, 15, 130, 50)"; ?>
-                        <?php if($fake_log)  echo ".add();"; ?>
-                        // Load curve of sensor 1
-                        
-                        
+                         <?php if($fake_log) {
+                            echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 600, 15, 130, 50)";
+                            echo ".add();";
+                        } ?>
+                 
                         // Init a var on highchart
                         var chart = $('#container').highcharts();
                         

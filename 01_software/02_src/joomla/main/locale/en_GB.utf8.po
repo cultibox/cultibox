@@ -573,6 +573,9 @@ msgstr "Options curves"
 msgid "PARAMETERS_CURVE_DISPLAYED"
 msgstr "Selection curves"
 
+msgid "NO_SENSOR_DEFINED"
+msgstr "No sensor set"
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -1825,6 +1828,9 @@ msgstr "Click on the image to reappear message box software"
 
 msgid "TOOLTIP_RTC_OFFSET"
 msgstr "Allows you to change the rate of the internal clock of the Cultibox."
+
+msgid "TOOLTIP_NO_SENSOR_DEFINED"
+msgstr "Sensor is not yet defined: when first loading logs from your SD card, your sensors will be configured automatically"
 
 
 #For the debug part:
