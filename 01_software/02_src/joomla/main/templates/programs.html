@@ -409,13 +409,14 @@
         </tr> 
             
         <?php if($activ_daily_program == "True") { ?>
+        <!-- Open daily programm -->
         <tr>
             <td>
                 <?php echo __('PROGRAM_DAILY_OPEN_SELECT'); ?>
             </td>
             <td>
                 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
-                    <select name="program_index_id" id="program_index_id">
+                    <select name="program_index_id" id="program_index_id_id">
                         <?php
                             $array = array();
                             program\get_program_index_info($array);
@@ -431,6 +432,7 @@
             </td>
         </tr>
         <tr>
+            <!-- Save daily programm -->
             <td>
                 <?php echo __('PROGRAM_DAILY_SAVE'); ?>
             </td>
@@ -439,6 +441,7 @@
             </td>
         </tr>
         <tr>
+            <!-- Delete daily programm -->
             <td>
                 <?php echo __('PROGRAM_DAILY_DELETE_SELECT'); ?>
             </td>
