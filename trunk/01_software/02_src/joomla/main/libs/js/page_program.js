@@ -28,6 +28,11 @@ $(document).ready(function(){
         <?php echo "currentText: '" . __('TIMEPICKER_ENDDAY')."',"; ?>
         <?php echo "closeText: '"   . __('TIMEPICKER_CLOSE')."',"; ?>
     });
+
+    $("#value_program").keypress(function(e) {
+        if(!VerifNumber(e)) e.preventDefault();
+    });
+
         
     // Display and control user form for settings
     $("#program_settings").click(function(e) {

@@ -181,7 +181,7 @@ function read_event_from_db (&$tab_event,$start="",$end="") {
         $data=array();
         $db = db_priv_pdo_start();
 
-        $sql = "SELECT * FROM calendar WHERE (StartTime <= \"" . $end . "\") OR (`EndTime` >= \"" . $start . "\");";
+        $sql = "SELECT * FROM calendar WHERE (StartTime <= \"" . $end . "\") OR (`EndTime` >= \"" . $start . "\") ORDER BY EndTime ASC;";
 
         foreach($db->query($sql) as $val) {
 

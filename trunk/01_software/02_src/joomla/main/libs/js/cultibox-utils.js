@@ -266,18 +266,6 @@ function verifInt(e) {
 // }}}
 
 
-// {{{ VerifNumber()
-// ROLE function of verification of an input value
-// IN input value "e" to be checked
-// HOW IT WORKS: check ascii code of the input value
-// USED BY: templates/programs.html
-function verifNumber(e) {
-   if((e.keyCode < 48 || e.keyCode > 57)&&(e.keyCode != 08 && e.keyCode != 10 && e.keyCode != 13 && e.keyCode != 44 && e.keyCode != 46)) e.returnValue = false;
-   if((e.which < 48 || e.which > 57)&&(e.which != 08 && e.which != 10 && e.which != 13 && e.which != 44 && e.which != 46)) return false;
-}
-// }}}
-
-
 // {{{ getRegul()
 // ROLE display the regulation informations or not
 // IN  input value: display or not the informations

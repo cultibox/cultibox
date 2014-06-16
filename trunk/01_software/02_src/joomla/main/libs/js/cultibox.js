@@ -87,6 +87,22 @@ if(lang=="/it/") {
     var slang="fr";
 }
 
+
+// {{{ VerifNumber()
+// ROLE function of verification of an input value
+// IN input value "e" to be checked
+// HOW IT WORKS: check ascii code of the input value
+// USED BY: templates/programs.html and templates/wizard.html
+VerifNumber = function(e) {
+    if((e.which > 57) || ((e.which > 31 ) && (e.which < 44)) || (e.which == 45) || (e.which == 47)) {
+        return false;
+    } 
+    return true;
+}
+// }}}
+
+
+
 diffdate = function(d1,d2) {
     var WNbJours = d2.getTime() - d1.getTime();
     return Math.ceil(WNbJours/(1000*60*60*24)+1);
@@ -736,102 +752,6 @@ $(document).ready(function() {
     });
 
 
-    // Check errors for the wizard part:
-    $("#finish, #next_plug").click(function(e) {
-        e.preventDefault();
-        var checked=true;
-
-        $("#error_start_time").css("display","none");
-        $("#error_end_time").css("display","none");
-        $("#error_same_start").css("display","none");
-        $("#error_same_end").css("display","none");
-        $("#error_value_program").css("display","none");
-
-        var checked=true;
-        $.ajax({
-            cache: false,
-            async: false,
-            url: "../../main/modules/external/check_value.php",
-            data: {value:$("#start_time").val(),type:'time'}
-        }).done(function (data) {
-            if(data!=1) {
-                $("#error_start_time").show(700);
-                $("#start_time").val("06:00:00");
-                checked=false;
-            }
-        });
-
-        $.ajax({
-            cache: false,
-            async: false,
-            url: "../../main/modules/external/check_value.php",
-            data: {value:$("#end_time").val(),type:'time'}
-        }).done(function (data) {
-            if(data!=1) {
-                $("#error_end_time").show(700);
-                $("#end_time").val("18:00:00");
-                checked=false;
-            }
-        });
-
-
-        if(checked) {
-            $.ajax({
-                cache: false,
-                async: false,
-                url: "../../main/modules/external/check_value.php",
-                data: {value:$("#start_time").val()+"_"+$("#end_time").val(),type:'same_time'}
-            }).done(function (data) {
-                if(data!=1) {
-                    $("#error_same_start").show(700);
-                    $("#error_same_end").show(700);
-                    checked=false;
-                } 
-            });
-        }
-
-        if(plug_type!="lamp") {
-            if(($("#value_program").val())&&($("#value_program").val()!="0")) {
-                $.ajax({
-                    cache: false,
-                    async: false,
-                    url: "../../main/modules/external/check_value.php",
-                    data: {value:$("#value_program").val(),type:'value_program',plug_type:plug_type}
-                }).done(function (data) {
-                    if(data!=1) {
-                        $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[data.toInt()]);
-                        $("#error_value_program").show(700);
-                        checked=false;
-                    }
-                });
-            } else {
-                if((plug_type=="heating")||(plug_type=="ventilator")) {
-                    var check=3;
-                } else if((plug_type=="humidifier")||(plug_type=="dehumidifier")) {
-                    var check=4;
-                } else if(plug_type=="pump") {
-                    var check=5;
-                } else {
-                    var check=6;
-                }
-
-                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[check]);
-                $("#error_value_program").show(700);
-                checked=false;
-            }
-        }
-
-        if(checked) {
-            if($(this).attr('id')=="finish") {
-                $('#type_submit').val("submit_close");
-            } else {
-                $('#type_submit').val("submit_next");
-            }
-            document.forms['submit_wizard'].submit();
-        }
-    });
-
-    
     // Check errors for the plugs part:
     $("#reccord_plugs").click(function(e) {
         selected_plug=$("#selected_plug").val();
