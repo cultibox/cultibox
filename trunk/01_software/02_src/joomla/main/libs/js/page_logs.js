@@ -1169,16 +1169,16 @@ $(document).ready(function() {
         {
             extremes = chart.yAxis[i].getExtremes();
             
-            // Snesor informations
-            textToDisplay += "<center><b><i>" ;// + "<font color='" + chart.yAxis[i].userOptions.title.style.color + "'>";
-            textToDisplay += chart.yAxis[i].userOptions.title.text + " : </i></b><br />"; // + "</font> ";
+            // Sensor informations
+            textToDisplay += "<center><b><i>" ;
+            textToDisplay += chart.yAxis[i].userOptions.title.text + " : </i></b><br />";
             
             textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
             textToDisplay +=    "<b>" + extremes.dataMin + " " + chart.yAxis[i].userOptions.unit + "</b>";
             textToDisplay += " - <?php echo __('SUMARY_MAX'); ?> : ";
             textToDisplay +=    "<b>" + extremes.dataMax + " " + chart.yAxis[i].userOptions.unit + "</b>";
             
-            textToDisplay += "</center>"; //.__('SUMARY_HOUR').""
+            textToDisplay += "</center>";
 
         }
     
