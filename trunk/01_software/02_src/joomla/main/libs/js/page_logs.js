@@ -161,6 +161,8 @@ Highcharts.setOptions({
 });
 
 var showzoomX = false;
+// Global var used to know if fake logs image is displayed
+var fakeLogsImageDisplayed = false;
 
 $(function () {
     var chart;
@@ -182,11 +184,7 @@ $(function () {
                 },
                 events: {
                     load: function() {
-                         <?php if($fake_log) {
-                            echo "this.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 600, 15, 130, 50)";
-                            echo ".add();";
-                        } ?>
-                 
+                
                         // Init a var on highchart
                         var chart = $('#container').highcharts();
                         
@@ -284,13 +282,26 @@ $(function () {
                                             cheBu.attr("serieID" , serieID.index);
                                             cheBu.attr("yAxis" , item.yaxis);
                                             
+                                            // Check if Fake Log Image must be displayed
+                                            if (fakeLogsImageDisplayed == false)
+                                            {
+                                                if (item.fake_log != "0")
+                                                {
+                                                    <?php
+                                                    echo "chart.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 600, 15, 130, 50)";
+                                                    echo ".add();";
+                                                    ?>
+                                                    fakeLogsImageDisplayed = true;
+                                                }
+                                            }
+                                            
                                         });
                                         
-                                        // All curve have rendered : Unblock UI
+                                        // All curve have been rendered : Unblock UI
                                         $.unblockUI();
                                         
                         
-                                        // after load every curve, update tooltip with min and mùax
+                                        // after every curve loaded, update tooltip with min and mùax
                                         updateTooltipMinMax();
 
                                     },
