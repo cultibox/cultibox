@@ -62,14 +62,15 @@ switch ($datatype)
         $retInfo = program\get_curve_information("program",$plug_number - 1);
         
         // Init return array
-        $retarray['plug_1']['name'] = $retInfo['name'] . " " . __('PLUG_MENU') . " " . $plug_number;
-        $retarray['plug_1']['color'] = $retInfo['color'] ;
-        $retarray['plug_1']['legend'] = $retInfo['legend'] ;
-        $retarray['plug_1']['yaxis'] = $retInfo['yaxis'] ;
+        $retarray['plug_1']['name']     = $retInfo['name'] . " " . __('PLUG_MENU') . " " . $plug_number;
+        $retarray['plug_1']['color']    = $retInfo['color'] ;
+        $retarray['plug_1']['legend']   = $retInfo['legend'] ;
+        $retarray['plug_1']['yaxis']    = $retInfo['yaxis'] ;
         $retarray['plug_1']['curveType'] = $retInfo['curveType'] ;
-        $retarray['plug_1']['unit'] = $retInfo['unit'] ;
-        
+        $retarray['plug_1']['unit']     = $retInfo['unit'] ;
+        $retarray['plug_1']['fake_log'] = "0" ;
         break;
+        
     case "power" :
         // Retrieve power curve
         $retarray['plug_1']['data'] = program\get_plug_power($plug_number,$startDay,$endDay,$_GET['month']);
@@ -83,12 +84,16 @@ switch ($datatype)
         $retarray['plug_1']['legend']   = $retInfo['legend'] ;
         $retarray['plug_1']['yaxis']    = $retInfo['yaxis'] ;
         $retarray['plug_1']['curveType'] = $retInfo['curveType'] ;
-        $retarray['plug_1']['unit'] = $retInfo['unit'] ;
-        
+        $retarray['plug_1']['unit']     = $retInfo['unit'] ;
+        $retarray['plug_1']['fake_log'] = "0" ;
         break;
+        
     case "logs" :
-        // Retrieve power curve
-        $logsValue = program\get_sensor_log($_GET['sensor'],$startDay,$endDay,$_GET['month']);
+        // Retrieve logs curve
+        $logsValue = logs\get_sensor_log($_GET['sensor'],$startDay,$endDay,$_GET['month']);
+        
+        // Search if there are fake
+        $fake = logs\are_fake_logs($_GET['sensor'],$startDay,$endDay,$_GET['month']);
 
         // Gets type of each sensor logged
         $db_sensors = logs\get_sensor_db_type($_GET['sensor']);
@@ -100,12 +105,13 @@ switch ($datatype)
         $retarray['sensor_1']['data'] = $logsValue[0];
         
         // Init return array
-        $retarray['sensor_1']['name'] = $retInfo['name'] . " (" . __('SENSOR') . " " . $_GET['sensor'] . " )";
-        $retarray['sensor_1']['color'] = $retInfo['color'] ;
-        $retarray['sensor_1']['legend'] = $retInfo['legend'] ;
-        $retarray['sensor_1']['yaxis'] = $retInfo['yaxis'] ;
-        $retarray['sensor_1']['curveType'] = $retInfo['curveType'] ;
-        $retarray['sensor_1']['unit'] = $retInfo['unit'] ;
+        $retarray['sensor_1']['name']       = $retInfo['name'] . " (" . __('SENSOR') . " " . $_GET['sensor'] . " )";
+        $retarray['sensor_1']['color']      = $retInfo['color'] ;
+        $retarray['sensor_1']['legend']     = $retInfo['legend'] ;
+        $retarray['sensor_1']['yaxis']      = $retInfo['yaxis'] ;
+        $retarray['sensor_1']['curveType']  = $retInfo['curveType'] ;
+        $retarray['sensor_1']['unit']       = $retInfo['unit'] ;
+        $retarray['sensor_1']['fake_log']   = $fake ;
         
         // If there is a second sensor
         if ($db_sensors[0]['type'] == 2)
@@ -115,12 +121,13 @@ switch ($datatype)
         
             $retarray['sensor_2']['data'] = $logsValue[1];
             
-            $retarray['sensor_2']['name'] = $retInfo['name'] . " (" . __('SENSOR') . " " . $_GET['sensor'] . " )";
-            $retarray['sensor_2']['color'] = $retInfo['color'] ;
-            $retarray['sensor_2']['legend'] = $retInfo['legend'] ;
-            $retarray['sensor_2']['yaxis'] = $retInfo['yaxis'] ;
-            $retarray['sensor_2']['curveType'] = $retInfo['curveType'] ;
-            $retarray['sensor_2']['unit'] = $retInfo['unit'] ;
+            $retarray['sensor_2']['name']       = $retInfo['name'] . " (" . __('SENSOR') . " " . $_GET['sensor'] . " )";
+            $retarray['sensor_2']['color']      = $retInfo['color'] ;
+            $retarray['sensor_2']['legend']     = $retInfo['legend'] ;
+            $retarray['sensor_2']['yaxis']      = $retInfo['yaxis'] ;
+            $retarray['sensor_2']['curveType']  = $retInfo['curveType'] ;
+            $retarray['sensor_2']['unit']       = $retInfo['unit'] ;
+            $retarray['sensor_2']['fake_log']   = $fake ;
         }
 
         break;        
