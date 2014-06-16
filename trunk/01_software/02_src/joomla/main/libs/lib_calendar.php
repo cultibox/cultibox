@@ -203,6 +203,10 @@ function read_event_from_db (&$tab_event,$start="",$end="") {
                 $color_event="white";
             }
             
+            $program_index = $val['program_index'];
+            if (!isset($val['program_index']) || empty($val['program_index']))
+                $program_index = "";
+            
             $tab_event[] = array(
                 "id"    => $val['Id'],
                 "start" => $val['StartTime'],

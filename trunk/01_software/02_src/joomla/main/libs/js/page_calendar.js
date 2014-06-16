@@ -319,6 +319,11 @@ $(document).ready(function() {
 // Function to check overlapping of two daily program
 function daily_program_check_overlaping (event) {
 
+    // Check if event is daily program
+    if(!event.program_index) {
+        return false;
+    }
+
     // gets all event of the calendar
     var allevents = $('#calendar').fullCalendar('clientEvents');
    
@@ -326,7 +331,7 @@ function daily_program_check_overlaping (event) {
     for (index = 0; index < allevents.length; ++index) {
     
         // Check if it's a program_index
-        if( allevents[index].program_index != "") {
+        if(allevents[index].program_index != null && allevents[index].program_index != "") {
         
             // Check if our event is ovelapping
             // (StartA <= EndB) and (EndA >= StartB)
@@ -675,20 +680,16 @@ $(document).ready(function() {
                 return false;
             }
 
-            // Check if there is an other daily programm on the same day
-            if (event.program_index != "")
-            {
-                // Check if there is an other programm on the same day
-                if (daily_program_check_overlaping(event)) {
-                    // Display overlapping alert
-                    display_modal_ui("#error_drop_event" , "popup_error");
-                    
-                    // Undo drop
-                    revertFunc();
-                    
-                    //Exit function
-                    return false;
-                }
+            // Check if there is an other programm on the same day
+            if (daily_program_check_overlaping(event)) {
+                // Display overlapping alert
+                display_modal_ui("#error_drop_event" , "popup_error");
+                
+                // Undo drop
+                revertFunc();
+                
+                //Exit function
+                return false;
             }
             
             new_start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
@@ -718,20 +719,16 @@ $(document).ready(function() {
                 return false;
             }
             
-            // Check if there is an other daily programm on the same day
-            if (event.program_index != "")
-            {
-                // Check if there is an other programm on the same day
-                if (daily_program_check_overlaping(event)) {
-                    // Display overlapping alert
-                    display_modal_ui("#error_drop_event" , "popup_error");
-                    
-                    // Undo drop
-                    revertFunc();
-                    
-                    //Exit function
-                    return false;
-                }
+            // Check if there is an other programm on the same day
+            if (daily_program_check_overlaping(event)) {
+                // Display overlapping alert
+                display_modal_ui("#error_drop_event" , "popup_error");
+                
+                // Undo drop
+                revertFunc();
+                
+                //Exit function
+                return false;
             }
             
             new_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
@@ -776,7 +773,7 @@ $(document).ready(function() {
             }
 
             // If it's not a daily program
-            if (event.program_index == null)
+            if (typeof event.program_index === "undefined" || event.program_index == "")
             {
                 
                 $("#dialog_edit").dialog({
