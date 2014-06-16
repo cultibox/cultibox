@@ -151,11 +151,11 @@ clean_index_file($sd_card);
 
 //More default values:
 if(!isset($startday) || empty($startday)) {
-	$startday = program\get_last_day_with_logs(); //date('Y')."-".date('m')."-".date('d');
+	$startday = program\get_last_day_with_logs();
 } 
 $startday=str_replace(' ','',"$startday");
 
-if(strcmp("$startday","")==0) {
+if($startday == "") {
     $startday=date('Y')."-".date('m')."-".date('d');
     $fake_log=true;
 }else {

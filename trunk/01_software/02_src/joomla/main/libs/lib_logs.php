@@ -309,10 +309,10 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day")
         {
 
             // WTF ! 7200
-            $serie[0][(string)(1000 * ($realTimeInS + 7200))] = $row['record1'] / 100;
+            $serie[0][(string)(1000 * ($realTimeInS))] = $row['record1'] / 100;
             
             if ($row['record2'] != "" && $row['record2'] != null)
-                $serie[1][(string)(1000 * ($realTimeInS + 7200))] = $row['record2'] / 100;
+                $serie[1][(string)(1000 * ($realTimeInS))] = $row['record2'] / 100;
             
             $lastTimeInS = $realTimeInS;
         }
