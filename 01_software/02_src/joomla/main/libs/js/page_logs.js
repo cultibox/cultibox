@@ -164,6 +164,13 @@ var showzoomX = false;
 // Global var used to know if fake logs image is displayed
 var fakeLogsImageDisplayed = false;
 
+ // This is for all plots, change Date axis to local timezone
+Highcharts.setOptions({     
+    global : {
+        useUTC : false
+    }
+});
+
 $(function () {
     var chart;
     $(document).ready(function() {

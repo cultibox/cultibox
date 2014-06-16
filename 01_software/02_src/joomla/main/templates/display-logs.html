@@ -189,28 +189,27 @@
     </tr>
     <tr>
         <td class="left_log">
-            <?php if((strcmp("$type","month")!=0)||(($GLOBALS['FIRST_LOG_YEAR']!=$startyear)||($startmonth!=01))) { ?>
             <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
                 <input type="submit" value="<" name="previous" class="button_log" title="<?php if(strcmp($type,"day")==0) echo __('PREVIOUS_BUTTON_DAY'); else echo __('PREVIOUS_BUTTON_MONTH'); ?>">
-                <?php if(strcmp($type,"day")==0) { ?>
+                <?php if($type == "day") { ?>
                     <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("-1 day", strtotime("$startday"))); ?>">
                 <?php } else {
-                        if(strcmp("$startmonth","01")==0) {
-                                $month="12"; 
+                        if("$startmonth" == "01") {
+                            $month="12"; 
                          } else {
-                                $month=$startmonth-1;
-                                if(strlen($month)<2) {
-                                    $month="0$month";
-                                }
+                            $month=$startmonth-1;
+                            if(strlen($month)<2) {
+                                $month="0$month";
+                            }
                         }
                     ?>
                     <input type="hidden" name="startmonth" value="<?php echo "$month"; ?>">
                     <input type="hidden" name="startyear" value="<?php if(strcmp("$startmonth","01")==0) echo $startyear-1; else echo $startyear; ?>">
+                    <input type="hidden" name="type_select" value="month">
                 <?php } ?>
 
                 <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
             </form>
-            <?php } ?>
         </td>
         <td class="center_log"><div id="container" style="width: 850px; height: 425px; margin: 0 auto"></div></td>
         <td class="right_log">
@@ -218,8 +217,6 @@
                  $dd=date('d');    
                  $yy=date('Y');
                  $mm=date('m');
-
-              if(((strcmp("$type","month")==0)&&(($startyear!=date('Y'))||($startmonth!=12)))||((strcmp("$type","day")==0)&&(strcmp("$startday","$yy-$mm-$dd")!=0))) { 
             ?>
             <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
                 <input type="submit" value=">" name="next" class="button_log" title="<?php if(strcmp($type,"day")==0) echo __('NEXT_BUTTON_DAY'); else echo __('NEXT_BUTTON_MONTH'); ?>">
@@ -227,7 +224,7 @@
                     <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("+1 day", strtotime("$startday"))); ?>">
                 <?php } else { ?>
                     <?php 
-                        if(strcmp("$startmonth","12")==0) {
+                        if($startmonth == "12") {
                                 $month="01"; 
                          } else {
                                 $month=$startmonth+1;
@@ -238,11 +235,11 @@
                     ?>
                     <input type="hidden" name="startmonth" value="<?php echo "$month"; ?>">
                     <input type="hidden" name="startyear" value="<?php if(strcmp("$startmonth","12")==0) echo $startyear+1; else echo $startyear; ?>" >
+                    <input type="hidden" name="type_select" value="month">
                 <?php } ?>
 
                 <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
             </form>
-            <?php } ?>
         </td>
     </tr>
 </table>
