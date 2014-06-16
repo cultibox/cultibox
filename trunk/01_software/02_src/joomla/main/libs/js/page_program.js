@@ -13,7 +13,7 @@ error_valueJS  = <?php echo json_encode($error_value) ?>;
 $(document).ready(function(){
 
     // Time pickers definition
-    $('#start_time').timepicker({
+    $('#start_time , #end_time , #repeat_time , #cyclic_duration , #start_time_cyclic , #end_time_cyclic').timepicker({
         <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
         showSecond: true,
         showOn: 'both',
@@ -28,87 +28,7 @@ $(document).ready(function(){
         <?php echo "currentText: '" . __('TIMEPICKER_ENDDAY')."',"; ?>
         <?php echo "closeText: '"   . __('TIMEPICKER_CLOSE')."',"; ?>
     });
-    
-    $('#end_time').timepicker({
-        <?php echo "timeOnlyTitle: '". __('TIMEPICKER_SELECT_TIME')."',"; ?>
-        showOn: 'both',
-        buttonImage: "../../main/libs/img/datepicker.png",
-        buttonImageOnly: 'true',
-        <?php echo "buttonText: '"  . __('TIMEPICKER_BUTTON_TEXT')."',"; ?>
-        showSecond: true,
-        timeFormat: 'hh:mm:ss',
-        <?php echo "timeText: '"    . __('TIMEPICKER_TIME')."',"; ?>
-        <?php echo "hourText: '"    . __('TIMEPICKER_HOUR')."',"; ?>
-        <?php echo "minuteText: '"  . __('TIMEPICKER_MINUTE')."',"; ?>
-        <?php echo "secondText: '"  . __('TIMEPICKER_SECOND')."',"; ?>
-        <?php echo "currentText: '" . __('TIMEPICKER_ENDDAY')."',"; ?>
-        <?php echo "closeText: '"   . __('TIMEPICKER_CLOSE')."'"; ?>
-    });
-    
-    $('#repeat_time').timepicker({
-        <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
-        showOn: 'both',
-        buttonImage: "../../main/libs/img/datepicker.png",
-        buttonImageOnly: 'true',
-        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
-        showSecond: true,
-        timeFormat: 'hh:mm:ss',
-        <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
-        <?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
-        <?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
-        <?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
-        <?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
-        <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
-    });
-
-    $('#cyclic_duration').timepicker({
-        <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
-        showOn: 'both',
-        buttonImage: "../../main/libs/img/datepicker.png",
-        buttonImageOnly: 'true',
-        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
-        showSecond: true,
-        timeFormat: 'hh:mm:ss',
-        <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
-        <?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
-        <?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
-        <?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
-        <?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
-        <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
-    });
-
-    $('#start_time_cyclic').timepicker({
-        <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
-        showOn: 'both',
-        buttonImage: "../../main/libs/img/datepicker.png",
-        buttonImageOnly: 'true',
-        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
-        showSecond: true,
-        timeFormat: 'hh:mm:ss',
-        <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
-        <?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
-        <?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
-        <?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
-        <?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
-        <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
-    });
-
-    $('#end_time_cyclic').timepicker({
-        <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
-        showOn: 'both',
-        buttonImage: "../../main/libs/img/datepicker.png",
-        buttonImageOnly: 'true',
-        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT')."',"; ?>
-        showSecond: true,
-        timeFormat: 'hh:mm:ss',
-        <?php echo "timeText: '".__('TIMEPICKER_TIME')."',"; ?>
-        <?php echo "hourText: '".__('TIMEPICKER_HOUR')."',"; ?>
-        <?php echo "minuteText: '".__('TIMEPICKER_MINUTE')."',"; ?>
-        <?php echo "secondText: '".__('TIMEPICKER_SECOND')."',"; ?>
-        <?php echo "currentText: '".__('TIMEPICKER_ENDDAY')."',"; ?>
-        <?php echo "closeText: '".__('TIMEPICKER_CLOSE')."'"; ?>
-    });
-    
+        
     // Display and control user form for settings
     $("#program_settings").click(function(e) {
         e.preventDefault();
@@ -163,7 +83,7 @@ $(document).ready(function(){
             
             // remove program from available
             $("#program_delete_index option[value='" + $( "#program_delete_index" ).val() + "']").remove();
-            $("#program_index option[value='" + $( "#program_delete_index" ).val() + "']").remove();
+            $("#program_index_id_id option[value='" + $( "#program_delete_index" ).val() + "']").remove();
 
         });
         
@@ -202,7 +122,7 @@ $(document).ready(function(){
                         
                         // Add program in select
                         $('#program_delete_index').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
-                        $('#program_index').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                        $('#program_index_id_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
                         
                         // Prevent user that's ok
                         $("#dialog-form-copy-daily").dialog({
