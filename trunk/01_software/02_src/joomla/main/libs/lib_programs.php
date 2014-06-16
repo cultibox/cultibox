@@ -614,8 +614,7 @@ function get_curve_information($curveType, $curveIndex = 0) {
             break;
         case 'power': 
             $ret_array['name']      = __('POWER'); 
-            $colorIndexName         = "LIST_GRAPHIC_COLOR_SENSOR_" . strtoupper(get_configuration("COLOR_POWER_GRAPH",$main_error));
-            $ret_array['color']     = $GLOBALS[$colorIndexName][$curveIndex % 5] ;
+            $ret_array['color']     = $GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$curveIndex % 10] ;
             $ret_array['legend']    = __('POWER_LEGEND');
             $ret_array['yaxis']     = 8;
             $ret_array['unit']      = "W";
@@ -623,8 +622,7 @@ function get_curve_information($curveType, $curveIndex = 0) {
             break;   
         case 'program': 
             $ret_array['name']      = __('PROGRAM_LEGEND'); 
-            $colorIndexName         = "LIST_GRAPHIC_COLOR_SENSOR_" . strtoupper(get_configuration("COLOR_PROGRAM_GRAPH",$main_error));
-            $ret_array['color']     = $GLOBALS[$colorIndexName][$curveIndex % 5] ;
+            $ret_array['color']     = $GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$curveIndex % 10] ;
             $ret_array['legend']    = __('PROGRAM_LEGEND');
             $ret_array['yaxis']     = 9;
             $ret_array['unit']      = "";

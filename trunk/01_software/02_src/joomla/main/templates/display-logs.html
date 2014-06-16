@@ -630,27 +630,6 @@
                 </select>
             </td>
         </tr>
-        <tr>
-            <td>
-                <?php echo __('CONFIGURE_PROGRAM_COLOR'); ?>:
-            </td>
-            <td>
-                <select name="color_program_graph" curveType="program" >
-                <?php 
-                    foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
-                        $color_lang = "COLOR_" . strtoupper($value);
-                        if($value == $color_program) {
-                            echo "<option value=\"" . $value . "\" selected >" . __($color_lang) . "</option>";
-                        } 
-                        else
-                        {
-                            echo "<option value=\"" . $value . "\" >" . __($color_lang) . "</option>";
-                        }
-                    }
-                ?>
-                </select>
-            </td>
-        </tr>
     </table>
 </div>
 
