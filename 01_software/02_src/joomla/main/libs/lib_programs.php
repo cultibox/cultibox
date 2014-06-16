@@ -365,8 +365,8 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
         
         // If not defined, default program start at 0 and finish at 0
         // Timestamp in milliseconds Unix format
-        $serie[(string)($date * 1000)] = 0;
-        $serie[(string)(($date + 86399) * 1000)] = 0;
+        $serie[(string)(($date + 7200) * 1000)] = 0;
+        $serie[(string)(($date + 86399 + 7200) * 1000)] = 0;
         $oldRecord = 0;
 
         // For each program row
@@ -383,18 +383,20 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
                               
             // End previous action
             if ($row['time_start'] != 0)
-                $serie[(string)(($date + $timeComputeStart - 1) * 1000)] = 0 ;
+                $serie[(string)(($date + $timeComputeStart - 1 + 7200) * 1000)] = $oldRecord ;
               
             // Timestamp in milliseconds Unix format
-            $serie[(string)(($date + $timeComputeStart) * 1000)]     = $row['value'];
+            $serie[(string)(($date + $timeComputeStart + 7200) * 1000)]     = $row['value'];
             
             // Timestamp in milliseconds Unix format
-            $serie[(string)(($date + $timeComputeStop) * 1000)]      = $row['value'];
+            $serie[(string)(($date + $timeComputeStop + 7200 - 1) * 1000)]      = $row['value'];
             $oldRecord = $row['value'];
             
             // Next point is by default 0
-            if ($row['time_stop'] != 86399)
-                $serie[(string)(($date + $timeComputeStop + 1) * 1000)]      = 0;
+            if ($timeComputeStop != 86399)
+                $serie[(string)(($date + $timeComputeStop + 7200) * 1000)]      = 0;
+            else
+                $serie[(string)(($date + $timeComputeStop + 7200) * 1000)]      = $row['value'];
         
         }
     
@@ -406,33 +408,6 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
     
     // Close database connexion correctly
     $db = null;
-
-    // Folowing code is used to have a point per minute according to actual highcart implementation
-    $temp_serie = $serie;
-    $serie = array();
-    $OldSeconds = 0;
-    $oldValue = 0;
-    if ($day == "day")
-        $divider = 60;
-    else
-        $divider = 1200;
-    foreach ($temp_serie as $key => $value)
-    {
-        if ($OldSeconds == 0)
-            $OldSeconds = ($key / 1000);
-    
-        // For each second between last and current, write last value
-        for ($i = ceil(($OldSeconds + 1) / $divider) * $divider ; $i <= floor(($key / 1000) / $divider) * $divider ; $i = $i + $divider)
-        {
-            // WTF ! 7200
-            $serie[(string)((7200 + $i) * 1000)] = $oldValue;
-        }
-        
-        // Save previous values
-        $oldValue = $value;
-        $OldSeconds = ($key / 1000);
-
-    }
 
     return $serie ;
 }
