@@ -330,10 +330,12 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
     while ($date <= $dateEnd)
     {
         // Format date to search in calendar
-        $dateForCalendar = date ("Y-m-d H:i:s", $date);
+        // Daily program event start at 02:00:00
+        $dateStartForCalendar = date ("Y-m-d 03:00:00", $date);
+        $dateEndForCalendar   = date ("Y-m-d 01:00:00", $date);
         
         // Search if there is a special program this day
-        $sql = "select program_index from calendar WHERE program_index != '' AND StartTime <= '${dateForCalendar}' AND EndTime >= '${dateForCalendar}' ;";
+        $sql = "select program_index from calendar WHERE program_index != '' AND StartTime <= '${dateStartForCalendar}' AND EndTime >= '${dateEndForCalendar}' ;";
     
         try {
             $sth = $db->prepare($sql);
@@ -368,6 +370,7 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
         $serie[(string)(($date) * 1000)] = 0;
         $serie[(string)(($date + 86399) * 1000)] = 0;
         $oldRecord = 0;
+        $oldTimeComputeStop = 0;
 
         // For each program row
         while ($row = $sth->fetch()) 
@@ -381,16 +384,36 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
                               + substr($row['time_stop'], 2 ,2) *60
                               + substr($row['time_stop'], 4 ,2) ;
                               
-            // End previous action
-            if ($row['time_start'] != 0)
-                $serie[(string)(($date + $timeComputeStart - 1) * 1000)] = $oldRecord ;
-              
-            // Timestamp in milliseconds Unix format
+            // Caution : Timestamp for highcart are in milliseconds !
+
+            // End previous action if not defined and not the start
+            if (!array_key_exists((string)(($date + $timeComputeStart - 1) * 1000), $serie) && $row['time_start'] != 0)
+            {
+                $serie[(string)(($date + $timeComputeStart - 1) * 1000)] = 0;
+             
+                // This case is present when there is a "space" between last action and current action
+                // We fill this space with zero
+                for ($i = (ceil(($oldTimeComputeStop + 1) / 60) * 60) ; $i < (floor(($timeComputeStart - 1) / 60) * 60); $i = $i + 60 )
+                {
+                    $serie[(string)(($date + $i) * 1000)]     = 0;
+                }
+            }
+            
+            // Create start of actual Action 
             $serie[(string)(($date + $timeComputeStart) * 1000)]     = $row['value'];
             
-            // Timestamp in milliseconds Unix format
+            // If it's a day view, add points between the two actions if needed
+            if ($day == "day")
+            {
+                for ($i = (ceil($timeComputeStart / 60) * 60) ; $i < (floor($timeComputeStop / 60) * 60); $i = $i + 60 )
+                {
+                    $serie[(string)(($date + $i) * 1000)]     = $row['value'];
+                }
+            }
+            
+            // Create end of actual Action 
             $serie[(string)(($date + $timeComputeStop - 1) * 1000)]      = $row['value'];
-            $oldRecord = $row['value'];
+            
             
             // Next point is by default 0
             if ($timeComputeStop != 86399)
@@ -398,12 +421,25 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
             else
                 $serie[(string)(($date + $timeComputeStop) * 1000)]      = $row['value'];
         
+            // Save values for next iteration
+            $oldRecord = $row['value'];
+            $oldTimeComputeStop = $timeComputeStop;
+        }
+    
+        // Every action have been registered
+        // If last action doesnot end at 86399, fill with zero
+        if ($day == "day")
+        {
+            for ($i = (ceil(($timeComputeStop + 1) / 60) * 60) ; $i < (floor(86399 / 60) * 60); $i = $i + 60 )
+            {
+                $serie[(string)(($date + $i) * 1000)]     = 0;
+            }
         }
     
         // Add One day to date
         $date = strtotime("+1 day", $date);
     }
-        
+
     ksort($serie);
     
     // Close database connexion correctly
