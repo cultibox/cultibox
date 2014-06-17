@@ -595,6 +595,8 @@ function get_curve_information($curveType, $curveIndex = 0) {
         case '22':
             $ret_array['name']      =__('HUMI_SENSOR'); 
             $colorIndexName         = "LIST_GRAPHIC_COLOR_SENSOR_" . strtoupper(get_configuration("COLOR_HUMIDITY_GRAPH",$main_error));
+            if ($colorIndexName == "LIST_GRAPHIC_COLOR_SENSOR_")
+                $colorIndexName = "LIST_GRAPHIC_COLOR_SENSOR_BLUE" ;
             $ret_array['color']     = $GLOBALS[$colorIndexName][$curveIndex % 5];
             $ret_array['legend']    =__('HUMI_LEGEND');
             $ret_array['yaxis']     = 1;
@@ -605,6 +607,8 @@ function get_curve_information($curveType, $curveIndex = 0) {
         case '31': 
             $ret_array['name']      =__('WATER_SENSOR'); 
             $colorIndexName         = "LIST_GRAPHIC_COLOR_SENSOR_" . strtoupper(get_configuration("COLOR_WATER_GRAPH",$main_error));
+            if ($colorIndexName == "LIST_GRAPHIC_COLOR_SENSOR_")
+                $colorIndexName = "LIST_GRAPHIC_COLOR_SENSOR_ORANGE" ;
             $ret_array['color']     = $GLOBALS[$colorIndexName][$curveIndex % 5];
             $ret_array['legend']    =__('WATER_LEGEND');
             $ret_array['yaxis']     = 2;
@@ -616,6 +620,8 @@ function get_curve_information($curveType, $curveIndex = 0) {
         case '71': 
             $ret_array['name']      =__('LEVEL_SENSOR'); 
             $colorIndexName         = "LIST_GRAPHIC_COLOR_SENSOR_" . strtoupper(get_configuration("COLOR_LEVEL_GRAPH",$main_error));
+            if ($colorIndexName == "LIST_GRAPHIC_COLOR_SENSOR_")
+                $colorIndexName = "LIST_GRAPHIC_COLOR_SENSOR_PINK" ;
             $ret_array['color']     = $GLOBALS[$colorIndexName][$curveIndex % 5];
             $ret_array['legend']    =__('LEVEL_LEGEND');
             $ret_array['yaxis']     = 3;
@@ -626,6 +632,8 @@ function get_curve_information($curveType, $curveIndex = 0) {
         case '81': 
             $ret_array['name']      =__('PH_SENSOR'); 
             $colorIndexName         = "LIST_GRAPHIC_COLOR_SENSOR_" . strtoupper(get_configuration("COLOR_PH_GRAPH",$main_error));
+            if ($colorIndexName == "LIST_GRAPHIC_COLOR_SENSOR_")
+                $colorIndexName = "LIST_GRAPHIC_COLOR_SENSOR_BROWN" ;
             $ret_array['color']     = $GLOBALS[$colorIndexName][$curveIndex % 5] ;
             $ret_array['legend']    =__('PH_LEGEND');
             $ret_array['yaxis']     = 4;
@@ -636,6 +644,8 @@ function get_curve_information($curveType, $curveIndex = 0) {
         case '91': 
             $ret_array['name']      =__('EC_SENSOR'); 
             $colorIndexName         = "LIST_GRAPHIC_COLOR_SENSOR_" . strtoupper(get_configuration("COLOR_EC_GRAPH",$main_error));
+            if ($colorIndexName == "LIST_GRAPHIC_COLOR_SENSOR_")
+                $colorIndexName = "LIST_GRAPHIC_COLOR_SENSOR_YELLOW" ;
             $ret_array['color']     = $GLOBALS[$colorIndexName][$curveIndex % 5] ;
             $ret_array['legend']    =__('EC_LEGEND');
             $ret_array['yaxis']     = 5;
@@ -646,6 +656,8 @@ function get_curve_information($curveType, $curveIndex = 0) {
         case ':1': 
             $ret_array['name']      =__('OD_SENSOR'); 
             $colorIndexName         = "LIST_GRAPHIC_COLOR_SENSOR_" . strtoupper(get_configuration("COLOR_OD_GRAPH",$main_error));
+            if ($colorIndexName == "LIST_GRAPHIC_COLOR_SENSOR_")
+                $colorIndexName = "LIST_GRAPHIC_COLOR_SENSOR_RED" ;
             $ret_array['color']     = $GLOBALS[$colorIndexName][$curveIndex % 5] ;
             $ret_array['legend']    =__('OD_LEGEND');
             $ret_array['yaxis']     = 6;
@@ -657,6 +669,8 @@ function get_curve_information($curveType, $curveIndex = 0) {
             $ret_array['name']      =__('ORP_SENSOR'); 
             $colorIndexName         = "LIST_GRAPHIC_COLOR_SENSOR_" . strtoupper(get_configuration("COLOR_ORP_GRAPH",$main_error));
             $ret_array['color']     = $GLOBALS[$colorIndexName][$curveIndex % 5] ;
+            if ($colorIndexName == "LIST_GRAPHIC_COLOR_SENSOR_")
+                $colorIndexName = "LIST_GRAPHIC_COLOR_SENSOR_BLUE" ;
             $ret_array['legend']    =__('ORP_LEGEND');
             $ret_array['yaxis']     = 7;
             $ret_array['unit']      = "mV";

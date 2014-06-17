@@ -87,8 +87,9 @@ $(document).ready(function(){
             }
             
             // remove program from available
-            $("#program_delete_index option[value='" + $( "#program_delete_index" ).val() + "']").remove();
-            $("#program_index_id_id option[value='" + $( "#program_delete_index" ).val() + "']").remove();
+            idToDelete = $( "#program_delete_index" ).val()
+            $("#program_delete_index option[value='" + idToDelete + "']").remove();
+            $("#program_index_id_id option[value='" + idToDelete + "']").remove();
 
         });
         
