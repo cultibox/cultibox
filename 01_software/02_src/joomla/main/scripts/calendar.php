@@ -42,7 +42,7 @@ $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
 $lang=$_SESSION['LANG'];
 __('LANG');
 
-$title_list=get_title_list(); //Get list of titles available from the database to be used in the calendar form
+$title_list = calendar\get_title_list(); //Get list of titles available from the database to be used in the calendar form
     
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
@@ -51,8 +51,8 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 
 //Get the important event list for the previous and next week to display:
-$important_list=array();
-$important_list=get_important_event_list($main_error); //Get import event list from database
+$important_list = array();
+$important_list = calendar\get_important_event_list($main_error); //Get import event list from database
 
 // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 check_and_update_sd_card($sd_card,$main_info,$main_error);

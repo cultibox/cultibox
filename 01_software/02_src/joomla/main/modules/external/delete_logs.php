@@ -22,7 +22,7 @@ if((isset($_GET['type_reset']))&&(!empty($_GET['type_reset']))) {
 
 if((isset($type))&&(!empty($type))&&(isset($type_reset))&&(!empty($type_reset))) {
     if($type_reset == "all") {
-        if(reset_log($type)) {
+        if(logs\reset_log($type)) {
                 echo "1";
         } else {
                 echo "-1";
@@ -30,7 +30,7 @@ if((isset($type))&&(!empty($type))&&(isset($type_reset))&&(!empty($type_reset)))
     } else {
         if((isset($_GET['start']))&&(!empty($_GET['start']))) {
             $start=$_GET['start'];
-            if(reset_log($type,$start,$start)) {
+            if(logs\reset_log($type,$start,$start)) {
                 echo "1";
             } else {
                 echo "-1";

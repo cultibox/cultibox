@@ -439,46 +439,13 @@ function purge_program($arr) {
 }
 // }}}
 
-
-// {{{ insert_calendar()
-// ROLE insert a new calendar event
-// IN   $out         error or warning message
-//      $event[]     the event to be recorded
-// RET false if errors occured, true else
-function insert_calendar($event,&$out) {
-    
-    // If there is no event to add, return
-    if(count($event)==0)
-        return false;
-    
-    // Create sql line
-    $sql="";
-    foreach($event as $evt) {
-    
-        // Check if program_index exists. If not add empty
-        if (!array_key_exists("program_index",$evt))
-            $evt["program_index"] = "";
-    
-        $sql .= "INSERT INTO calendar" 
-             . " (Title, StartTime, EndTime, Description, Color, Icon, program_index) "
-             . "  VALUES ('{$evt['title']}', '{$evt['start']}', '{$evt['end']}', '{$evt['description']}', '{$evt['color']}', '{$evt['icon']}', '{$evt['program_index']}');";
-    }
-
-    $db = db_priv_pdo_start();
-    $db->exec($sql);
-    $db=null;
-    return true;
-}
-// }}}
-
-
 // {{{ reset_plug_identificator()
 //ROLE check if no programs have been defined yet
 // IN  $out       warnings or errors messages 
 // RET none
 function reset_plug_identificator(&$out) {
            $sql = <<<EOF
-UPDATE `plugs` SET  `PLUG_ID` = ""
+UPDATE plugs SET PLUG_ID = ""
 EOF;
            $db=db_priv_pdo_start();
            try {
@@ -495,39 +462,6 @@ EOF;
                   $out[]=__('ERROR_UPDATE_SQL');
                }
            }
-}
-// }}}
-
-
-// {{{ reset_log()
-// IN $table    table to be deleted: logs, power...
-//    $start    delete logs between two specific dates, between $start and $end
-//    $end      
-// RET  0 is an error occured, 1 else
-function reset_log($table="",$start="",$end="") {
-    if($table == "") 
-        return 0;
-    
-    $error=1;
-
-    if($start == "" || $end == "") {
-        $sql = "TRUNCATE TABLE {$table};";
-    } else {
-        $sql = "DELETE FROM {$table} WHERE date_catch BETWEEN '{$start}' AND '{$end}';";
-    }
-    
-    $db=db_priv_pdo_start();
-    try {
-        $db->exec($sql);
-    } catch(PDOException $e) {
-        $ret=$e->getMessage();
-    }
-    $db=null;
-
-    if((isset($ret))&&(!empty($ret))) {
-          $error=0;
-    }
-    return $error;
 }
 // }}}
 
@@ -723,8 +657,7 @@ function check_database() {
         // Check configuration DB
         configuration\check_db();
         
-         $_SESSION['CHECK_DB'] = "True";
-        
+        $_SESSION['CHECK_DB'] = "True";
     }
     
 }

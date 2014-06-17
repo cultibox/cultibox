@@ -102,7 +102,7 @@ function get_plug_conf($key,$id,&$out) {
     // Init var 
     $res = array();
 
-   $sql = "SELECT {$key} FROM `plugs` WHERE id = {$id};";
+   $sql = "SELECT {$key} FROM plugs WHERE id = {$id};";
    
     $db=db_priv_pdo_start();
     try {
@@ -1964,65 +1964,65 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
       $data[0]="00000000000000000000000000000000000000000000000000000";
    }
 
-   $event=array();
-   foreach($res as $result) {
-      if($result['time_start']!="000000") {
-         $event[]=$result['time_start'];
-      }
-      if($result['time_stop']!="235959") {
-         $event[]=$result['time_stop'];
-      }
-   }
-   if(count($event)>0) {
-      $event = array_unique ($event);
-      sort($event);
-   }
+    $event=array();
+    foreach($res as $result) {
+        if($result['time_start']!="000000") {
+            $event[]=$result['time_start'];
+        }
+        if($result['time_stop']!="235959") {
+            $event[]=$result['time_stop'];
+        }
+    }
+    if(count($event)>0) {
+        $event = array_unique ($event);
+        sort($event);
+    }
 
-   $evt=array();
-   $i=0;
-   $count=0;
+    $evt=array();
+    $i=0;
+    $count=0;
 
-   if(count($event)>0) {
-      while($count<count($event)) {
-         if((isset($event[$i]))) {
-            $evt[]=$event[$i];   
-            $count=$count+1;
-         }
-         $i=$i+1;
-      }
-      $event=$evt;
-   }
-
-   if(count($event)>0) {
-      for($i=0;$i<count($event);$i++) {
-         $data[$i+1] = "";
-         $j=1;
-         while($j<= $GLOBALS['NB_MAX_PLUG']) {
-            if($j>$nb_plugs) {
-                $result="000";
-            } else {
-                $result=find_value_for_plug($res,$event[$i],$j);
+    if(count($event)>0) {
+        while($count<count($event)) {
+            if((isset($event[$i]))) {
+                $evt[]=$event[$i];   
+                $count=$count+1;
             }
+            $i=$i+1;
+        }
+        $event=$evt;
+    }
 
-            $data[$i+1]=$data[$i+1]."$result";
-            $j=$j+1;
-         }
+    if(count($event)>0) {
+        for($i=0;$i<count($event);$i++) {
+            $data[$i+1] = "";
+            $j=1;
+            while($j<= $GLOBALS['NB_MAX_PLUG']) {
+                if($j>$nb_plugs) {
+                    $result="000";
+                } else {
+                    $result=find_value_for_plug($res,$event[$i],$j);
+                }
+
+                $data[$i+1]=$data[$i+1]."$result";
+                $j=$j+1;
+            }
          
-         $ehh=substr($event[$i],0,2);
-         $emm=substr($event[$i],2,2);
-         $ess=substr($event[$i],4,2);
-         $time_event=mktime($ehh,$emm,$ess,1,1,1970);
-         while(strlen($time_event)!=5) {
-            $time_event="0$time_event";
-         }
-         $data[$i+1]=$time_event.$data[$i+1];
-      }
-   }
+            $ehh=substr($event[$i],0,2);
+            $emm=substr($event[$i],2,2);
+            $ess=substr($event[$i],4,2);
+            $time_event=mktime($ehh,$emm,$ess,1,1,1970);
+            while(strlen($time_event)!=5) {
+                $time_event="0$time_event";
+            }
+            $data[$i+1]=$time_event.$data[$i+1];
+        }
+    }
 
-   $count=count($data);
-   $j=1;
-   if(count($last)>0) {
-       while($j<= $GLOBALS['NB_MAX_PLUG']) {
+    $count=count($data);
+    $j=1;
+    if(count($last)>0) {
+        while($j<= $GLOBALS['NB_MAX_PLUG']) {
             if($j>$nb_plugs) {
                 $result="000";
             } else {
@@ -2030,17 +2030,17 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
             }
 
             if(isset($data[$count])) {
-                  $data[$count]=$data[$count]."$result";
+                $data[$count]=$data[$count]."$result";
             } else {
-                  $data[$count]="$result";
+                $data[$count]="$result";
             }
             $j=$j+1;
-      }
-      $data[$count]="86399".$data[$count];
-   } else {
-      $data[$count]="86399000000000000000000000000000000000000000000000000";
-   }
-   return $data;
+        }
+        $data[$count]="86399".$data[$count];
+    } else {
+        $data[$count]="86399000000000000000000000000000000000000000000000000";
+    }
+    return $data;
 }
 // }}}
 
@@ -2051,31 +2051,31 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
 //    $plug        the specific plug concerned
 // RET   000 if the plug is not concerned or if its value is 0, 0001 else
 function find_value_for_plug($data,$time,$plug) {
-   for($i=0;$i<count($data);$i++) {
-      if(($data[$i]['time_start']<=$time)&&($data[$i]['time_stop']>=$time)&&($data[$i]['plug_id']==$plug)) {
-      if($data[$i]['time_stop']==$time) {
-                  if($data[$i]['time_stop']=="235959") {
-                        $ret=$data[$i]['value']*10;
-                  } else {
-            for($j=0;$j<count($data);$j++) {
-                                        if(($data[$j]["time_start"]=="$time")&&($data[$j]['plug_id']==$plug)) {
-                  $ret=$data[$j]['value']*10;
-               } 
-            }
-            if(empty($ret)) {
-               $ret="000";
-            }   
-                  }
+    for($i=0;$i<count($data);$i++) {
+        if(($data[$i]['time_start']<=$time)&&($data[$i]['time_stop']>=$time)&&($data[$i]['plug_id']==$plug)) {
+            if($data[$i]['time_stop']==$time) {
+                if($data[$i]['time_stop']=="235959") {
+                    $ret=$data[$i]['value']*10;
+                } else {
+                    for($j=0;$j<count($data);$j++) {
+                        if(($data[$j]["time_start"]=="$time")&&($data[$j]['plug_id']==$plug)) {
+                            $ret=$data[$j]['value']*10;
+                        } 
+                    }
+                    if(empty($ret)) {
+                        $ret="000";
+                    }   
+                }
             } else {
-         $ret=$data[$i]['value']*10;
-      }
-      while(strlen($ret)<3) {
-         $ret="0$ret";
-      }
-      return "$ret";
-      }
-   }
-   return "000";
+                $ret=$data[$i]['value']*10;
+            }
+            while(strlen($ret)<3) {
+                $ret="0$ret";
+            }
+            return "$ret";
+        }
+    }
+    return "000";
 }
 // }}}
 
@@ -2086,34 +2086,32 @@ function find_value_for_plug($data,$time,$plug) {
 //     $id_plug         id of a plug to check: -1: all
 // RET true if there is a program defined, false else
 function check_programs($nb_plugs=3,$id=-1) {
-    if($id==-1) {
-           $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` <= {$nb_plugs} LIMIT 1
-EOF;
-    } else {
-           $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` = {$id} LIMIT 1
-EOF;
-}
-      $db=db_priv_pdo_start();
-      try {
-            $sth=$db->prepare("$sql");
-            $sth->execute();
-            $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-      } catch(PDOException $e) {
-            $ret=$e->getMessage();
-      }
-      $db=null;
 
-      if(!isset($res)||(empty($res))) {
-         return false;
-      } else {
-         if(count($res)>0) {
+    if($id==-1) {
+        $sql = "SELECT * FROM programs WHERE plug_id <= {$nb_plugs} LIMIT 1;";
+    } else {
+        $sql = "SELECT * FROM programs WHERE plug_id = {$id} LIMIT 1;";
+    }
+
+    $db=db_priv_pdo_start();
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    if(!isset($res) || empty($res)) {
+        return false;
+    } else {
+        if(count($res)>0) {
             return true;
-         } else {
+        } else {
             return false;
-         }
-      }
+        }
+    }
 }
 // }}}
 
@@ -2156,27 +2154,27 @@ function generate_program_from_file($file="",$plug,&$out) {
 //    $out   errors or warnings messages
 // RET array containing the list of active plug
 function get_active_plugs($nb,&$out="") {
-        $sql = <<<EOF
-SELECT id FROM `plugs` WHERE id <={$nb} AND `PLUG_ENABLED` LIKE "True" 
-EOF;
-   $db=db_priv_pdo_start();
-   try {
-       $sth=$db->prepare("$sql");
-       $sth->execute();
-       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-   } catch(PDOException $e) {
-       $ret=$e->getMessage();
-   }
-   $db=null;
 
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         $out[]=__('ERROR_SELECT_SQL').$ret;
-      } else {
-         $out[]=__('ERROR_SELECT_SQL');
-      }
-   }
-   return $res;
+    $sql = "SELECT id FROM plugs WHERE id <={$nb} AND PLUG_ENABLED LIKE 'True' ;";
+        
+    $db=db_priv_pdo_start();
+    try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+    }
+    return $res;
 }
 // }}}
 
@@ -2252,48 +2250,48 @@ function format_regul_sumary($number=0, &$out,&$resume="",$max=0) {
 // RET  sumary formated 
 function get_cost_summary(&$out) {
     $resume="";
-    $sql = <<<EOF
-SELECT COST_PRICE, COST_PRICE_HP, COST_PRICE_HC, START_TIME_HC, STOP_TIME_HC, COST_TYPE FROM `configuration` 
-EOF;
-   $db=db_priv_pdo_start();
-   try {
+
+    $sql = "SELECT COST_PRICE, COST_PRICE_HP, COST_PRICE_HC, START_TIME_HC, STOP_TIME_HC, COST_TYPE FROM configuration;";
+
+    $db=db_priv_pdo_start();
+    try {
         $sth=$db->prepare("$sql");
         $sth->execute();
         $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-   } catch(PDOException $e) {
-       $ret=$e->getMessage();
-   }
-   $db=null;
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
 
-   if((isset($ret))&&(!empty($ret))) {
-      if($GLOBALS['DEBUG_TRACE']) {
-         $out[]=__('ERROR_SELECT_SQL').$ret;
-      } else {
-         $out[]=__('ERROR_SELECT_SQL');
-      }
-   }
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+    }
 
    foreach($res as $result) {
-            $resume="<p align='center'><b><i>".__('SUMARY_COST_TITLE').":<br /></i></b></p>";
-            if(isset($_SESSION['LANG'])) {
-                if((strcmp($_SESSION['LANG'],"fr_FR")==0)||(strcmp($_SESSION['LANG'],"de_DE"))||(strcmp($_SESSION['LANG'],"es_ES"))||(strcmp($_SESSION['LANG'],"it_IT"))) {
-                    $unity="&euro;";
-                } else {
-                    $unity="&#163;";
-                }
+        $resume="<p align='center'><b><i>".__('SUMARY_COST_TITLE').":<br /></i></b></p>";
+        if(isset($_SESSION['LANG'])) {
+            if((strcmp($_SESSION['LANG'],"fr_FR")==0)||(strcmp($_SESSION['LANG'],"de_DE"))||(strcmp($_SESSION['LANG'],"es_ES"))||(strcmp($_SESSION['LANG'],"it_IT"))) {
+                $unity="&euro;";
             } else {
                 $unity="&#163;";
             }
-            if(strcmp($result['COST_TYPE'],"standard")==0) {
-                $resume=$resume."<br /><b>".__('SUMARY_COST_TYPE').":</b> ".$result['COST_TYPE'];
-                $resume=$resume."<br /><b>".__('SUMARY_COST_PRICE').":</b> ".$result['COST_PRICE'].$unity;
-            } else {
-                $resume=$resume."<br /><b>".__('SUMARY_COST_TYPE').":</b> ".__('SUMARY_HP_HC');
-                $resume=$resume."<br /><b>".__('SUMARY_COST_PRICE_HC').":</b> ".$result['COST_PRICE_HC'].$unity;
-                $resume=$resume."<br /><b>".__('SUMARY_COST_PRICE_HP').":</b> ".$result['COST_PRICE_HP'].$unity;
-                $resume=$resume."<br /><b>".__('SUMARY_START_HC').":</b> ".$result['START_TIME_HC'];
-                $resume=$resume."<br /><b>".__('SUMARY_STOP_HC').":</b> ".$result['STOP_TIME_HC'];
-            }
+        } else {
+            $unity="&#163;";
+        }
+        if(strcmp($result['COST_TYPE'],"standard")==0) {
+            $resume=$resume."<br /><b>".__('SUMARY_COST_TYPE').":</b> ".$result['COST_TYPE'];
+            $resume=$resume."<br /><b>".__('SUMARY_COST_PRICE').":</b> ".$result['COST_PRICE'].$unity;
+        } else {
+            $resume=$resume."<br /><b>".__('SUMARY_COST_TYPE').":</b> ".__('SUMARY_HP_HC');
+            $resume=$resume."<br /><b>".__('SUMARY_COST_PRICE_HC').":</b> ".$result['COST_PRICE_HC'].$unity;
+            $resume=$resume."<br /><b>".__('SUMARY_COST_PRICE_HP').":</b> ".$result['COST_PRICE_HP'].$unity;
+            $resume=$resume."<br /><b>".__('SUMARY_START_HC').":</b> ".$result['START_TIME_HC'];
+            $resume=$resume."<br /><b>".__('SUMARY_STOP_HC').":</b> ".$result['STOP_TIME_HC'];
+        }
     }
 
     if(strlen($resume)>0) return $resume;
@@ -2307,35 +2305,34 @@ EOF;
 // IN  $id     id of the plug to be checked
 // OUT false if a plug is not configured, true else
 function check_configuration_power($id=0) {
-      $sql = <<<EOF
-SELECT `PLUG_POWER` FROM `plugs` WHERE `id` = {$id} AND `PLUG_ENABLED` LIKE "True";
-EOF;
+    
+    $sql = "SELECT PLUG_POWER FROM plugs WHERE id = {$id} AND PLUG_ENABLED LIKE 'True';";
+      
+    $db=db_priv_pdo_start();
+    try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res_power=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
 
-        $db=db_priv_pdo_start();
-        try {
-            $sth=$db->prepare("$sql");
-            $sth->execute();
-            $res_power=$sth->fetchAll(PDO::FETCH_ASSOC);
-        } catch(PDOException $e) {
-            $ret=$e->getMessage();
-        }
-        $db=null;
-
-        if((isset($ret))&&(!empty($ret))) {
-         if($GLOBALS['DEBUG_TRACE']) {
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
             $out[]=__('ERROR_SELECT_SQL').$ret;
-         } else {
+        } else {
             $out[]=__('ERROR_SELECT_SQL');
-         }
-         return 0;
         }
+        return 0;
+    }
 
-        if(count($res_power)>0) {
-            if(strcmp($res_power[0]['PLUG_POWER'],"")==0) {
-                return false;
-            }
+    if(count($res_power)>0) {
+        if(strcmp($res_power[0]['PLUG_POWER'],"")==0) {
+            return false;
         }
-        return true;
+    }
+    return true;
 }
 // }}}
 
@@ -2347,36 +2344,33 @@ EOF;
 //    $lang     lang of the current note to search
 // RET none 
 function get_notes(&$res,$lang="fr_FR",&$out) {
-    $sql = <<<EOF
-SELECT * from `notes` WHERE `lang` LIKE "{$lang}" ORDER by `id`
-EOF;
-   $db=db_priv_pdo_start();
-   try {
-       $sth=$db->prepare("$sql");
-       $sth->execute();
-       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-   } catch(PDOException $e) {
-       $ret=$e->getMessage();
-   }
-   $db=null;
 
-   if((isset($ret))&&(!empty($ret))) {
-       if($GLOBALS['DEBUG_TRACE']) {
-          $out[]=__('ERROR_DELETE_SQL').$ret;
-       } else {
-          $out[]=__('ERROR_DELETE_SQL');
-       }
-   }
+    $sql = "SELECT * from notes WHERE lang LIKE '{$lang}' ORDER by id;";
 
-   for($i=0;$i<count($res);$i++) {
+    $db=db_priv_pdo_start();
+    try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_DELETE_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_DELETE_SQL');
+        }
+    }
+
+    for($i=0;$i<count($res);$i++) {
         $res[$i]['title']=htmlentities($res[$i]['title'], ENT_NOQUOTES, "UTF-8");
         $res[$i]['title']=htmlspecialchars_decode($res[$i]['title']);
         $res[$i]['desc']=htmlentities($res[$i]['desc'], ENT_NOQUOTES, "UTF-8");
         $res[$i]['desc']=htmlspecialchars_decode($res[$i]['desc']);
-        
-   }
-
-   
+    }
 }
 // }}}
 
@@ -2387,123 +2381,10 @@ EOF;
 //    $id       id of the plug
 // RET return array containing data
 function get_plug_regul_sensor($id,&$out) {
-    $sql = <<<EOF
-SELECT `PLUG_REGUL_SENSOR` from `plugs` WHERE `id` = {$id}
-EOF;
-   $db=db_priv_pdo_start();
-   try {
-       $sth=$db->prepare("$sql");
-       $sth->execute();
-       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-   } catch(PDOException $e) {
-       $ret=$e->getMessage();
-   }
-   $db=null;
 
-   if((isset($ret))&&(!empty($ret))) {
-       if($GLOBALS['DEBUG_TRACE']) {
-          $out[]=__('ERROR_DELETE_SQL').$ret;
-       } else {
-          $out[]=__('ERROR_DELETE_SQL');
-       }
-   }
-
-   if(!empty($res)) {
-           $tmp=explode("-",$res[0]['PLUG_REGUL_SENSOR']);
-           $result=array();                                           
-           for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$i++) {
-             foreach($tmp as $sensor) {
-                if($sensor==$i) {
-                    $result[$i]="True";
-                }
-             }
-             if(!isset($result[$i])) {
-                    $result[$i]="False";
-             }
-           }
-           return $result; 
-   } else {
-        return false;
-   }
-}
-// }}}
-
-
-// {{{ get_title_list()
-// ROLE get list of available titles from the calendar database
-// RET return array containing data
-function get_title_list() {
-    $title=array();
-
-    foreach($GLOBALS['LIST_SUBJECT_CALENDAR'] as $value) {
-        switch ($value) {
-            case 'Beginning':
-                $title[]=__('SUBJECT_START','calendar');
-               break;
-            case 'Fertilizers':
-               $title[]=__('SUBJECT_FERTILIZERS','calendar');
-               break;
-            case 'Water':
-               $title[]=__('SUBJECT_WATER','calendar');
-               break;
-            case 'Bloom':
-               $title[]=__('SUBJECT_BLOOM','calendar');
-               break;
-            case 'Harvest':
-               $title[]=__('SUBJECT_HARVEST','calendar');
-               break;
-            case 'Other':
-               $tmp=__('SUBJECT_OTHER','calendar');
-               break;
-        }
-    }
-
-    $sql = <<<EOF
-SELECT DISTINCT `title` from `calendar`
-EOF;
-   $db=db_priv_pdo_start();
-   $res="";
-   try {
-       $sth=$db->prepare("$sql");
-       $sth->execute();
-       $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-   } catch(PDOException $e) {
-       $ret=$e->getMessage();
-   }
-   $db=null;
-
-   if(!empty($res)) {
-        foreach($res as $result) {
-            foreach($result as $data) {
-               if(strcmp(rtrim($data),$tmp)!=0) {
-                $title[]=rtrim($data);
-               }
-            }
-        }
-   }
-
-   //To put the 'other' value at the end:
-   $title_return=array_unique($title);
-   $title_return[]=$tmp;
-
-   return $title_return;
-}
-// }}}
-
-
-// {{{ get_important_event_list()
-// ROLE get list of important event for next or past week
-// IN $out      error or warning message
-// RET array containing datas or nothing if no data catched
-function get_important_event_list(&$out) {
-    $start=date('Y-m-j',strtotime('-1 days'));
-    $end=date('Y-m-j',strtotime('+7 days'));
-    $sql = <<<EOF
-SELECT title,StartTime,EndTime,color,Description from `calendar` WHERE `important`=1 AND ((`StartTime` BETWEEN '{$start}' AND '{$end}')OR (`EndTime` BETWEEN '{$start}' AND '{$end}')OR(`StartTime` <= '{$start}' AND `EndTime` >= '{$end}'))
-EOF;
-
+    $sql = "SELECT PLUG_REGUL_SENSOR FROM plugs WHERE id = {$id};";
+    
     $db=db_priv_pdo_start();
-    $res="";
     try {
         $sth=$db->prepare("$sql");
         $sth->execute();
@@ -2513,23 +2394,46 @@ EOF;
     }
     $db=null;
 
-    return $res;
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_DELETE_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_DELETE_SQL');
+        }
+    }
+
+    if(!empty($res)) {
+        $tmp=explode("-",$res[0]['PLUG_REGUL_SENSOR']);
+        $result=array();                                           
+        for($i=1;$i<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$i++) {
+            foreach($tmp as $sensor) {
+                if($sensor==$i) {
+                    $result[$i]="True";
+                }
+            }
+            if(!isset($result[$i])) {
+                $result[$i]="False";
+            }
+        }
+        return $result; 
+    } else {
+        return false;
+    }
 }
-/// }}}
+// }}}
 
 // {{{ get_canal_status()
 // ROLE get status of dimmer canal to get available canal to be used by new dimmer's configuration
 // IN $out   error or warning message
 // RET array containing number of the dimmer canal and its status (USED: 0, AVAILABLE: 1)
 function get_canal_status(&$out) {
-    $sql = <<<EOF
-SELECT PLUG_POWER_MAX FROM `plugs` WHERE PLUG_POWER_MAX<10 ORDER BY PLUG_POWER_MAX ASC
-EOF;
+
+    $sql = "SELECT PLUG_POWER_MAX FROM plugs WHERE PLUG_POWER_MAX<10 ORDER BY PLUG_POWER_MAX ASC;";
 
     $db=db_priv_pdo_start();
     $res="";
     try {
-        $sth=$db->prepare("$sql");
+        $sth=$db->prepare($sql);
         $sth->execute();
         $res=$sth->fetchAll(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
@@ -2540,15 +2444,15 @@ EOF;
     $value=array();
 
     foreach($res as $result) {    
-       $value[]=$result['PLUG_POWER_MAX']; 
+        $value[]=$result['PLUG_POWER_MAX']; 
     }
 
     for($i=1;$i<=$GLOBALS['NB_MAX_CANAL_DIMMER'];$i++) {
-       if(in_array($i, $value)) {
-           $status[]=0;
-       } else {
-           $status[]=1;
-       }
+        if(in_array($i, $value)) {
+            $status[]=0;
+        } else {
+            $status[]=1;
+        }
     }
 
     return $status;
