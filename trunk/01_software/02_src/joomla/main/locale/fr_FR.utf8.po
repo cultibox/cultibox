@@ -890,7 +890,7 @@ msgid "VALUE_DIMMER"
 msgstr "Variateur"
 
 msgid "PROGRAM_DAILY_SAVE"
-msgstr "Enregistrer une copie "
+msgstr "Enregistrer une copie du jeu de programmes"
 
 msgid "PROGRAM_DAILY_SAVE_PROGRESS"
 msgstr "Enregistrement en cours ..."
@@ -902,16 +902,16 @@ msgid "PROGRAM_DAILY_OPEN"
 msgstr "Ouvrir"
 
 msgid "PROGRAM_DAILY_OPEN_SELECT"
-msgstr "Ouvrir un programme"
+msgstr "Ouvrir un jeu de programmes"
 
 msgid "PROGRAM_DAILY_DELETE_SELECT"
-msgstr "Supprimer un programme"
+msgstr "Supprimer un jeu de programmes"
 
 msgid "PROGRAM_DAILY_DELETE"
 msgstr "Supprimer"
 
 msgid "PROGRAM_DAILY_DELETE_VALID"
-msgstr "Le programme a bien été supprimé."
+msgstr "Le jeu de programmes a bien été supprimé."
 
 msgid "PARAMETERS_PROGRAM_TITLE"
 msgstr "Options avancées des programmes"
