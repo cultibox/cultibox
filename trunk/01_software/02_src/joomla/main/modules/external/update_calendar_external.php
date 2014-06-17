@@ -217,7 +217,7 @@ if(    !empty($program_substrat)
     }
 
     // Insert in calendar new events
-    if(insert_calendar($event,$main_error)) {
+    if(calendar\insert_calendar($event,$main_error)) {
         if((isset($sd_card))&&(!empty($sd_card))) {
           
             // Create calendar from database
@@ -293,7 +293,7 @@ if(    !empty($daily_program_name)
         "program_index" => $program_index
     );
 
-    if(insert_calendar($event,$main_error)) {
+    if(calendar\insert_calendar($event,$main_error)) {
         if(!empty($sd_card)) {
 
             $calendar = array();

@@ -8,27 +8,28 @@ namespace logs {
 //    $out         error or warning message
 // RET none
 function export_table_csv($name="",&$out) {
-       if(strcmp("$name","")==0) return 0;
+    if($name == "")
+        return 0;
 
-       $file="tmp/$name.csv";
-   
-       if(is_file($file)) {
-            unlink($file);
-       }
+    $file="tmp/$name.csv";
 
-       $os=php_uname('s');
-       switch($os) {
-                case 'Linux':
-                        exec("../../bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
-                        break;
-                case 'Mac':
-                case 'Darwin':
-                        exec("../../bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
-                        break;
-                case 'Windows NT':
-                        exec("..\..\mysql\bin\mysql.exe --defaults-extra-file=\"C:\cultibox\\xampp\mysql\bin\my-extra.cnf\" -B -h 127.0.0.1 --port=3891 cultibox -e \"SELECT * FROM `${name}`\" > $file");
-                        break;
-        }
+    if(is_file($file)) {
+        unlink($file);
+    }
+
+    $os=php_uname('s');
+    switch($os) {
+        case 'Linux':
+            exec("../../bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
+            break;
+        case 'Mac':
+        case 'Darwin':
+            exec("../../bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
+            break;
+        case 'Windows NT':
+            exec("..\..\mysql\bin\mysql.exe --defaults-extra-file=\"C:\cultibox\\xampp\mysql\bin\my-extra.cnf\" -B -h 127.0.0.1 --port=3891 cultibox -e \"SELECT * FROM `${name}`\" > $file");
+            break;
+    }
 }
 // }}}
 
@@ -40,37 +41,33 @@ function export_table_csv($name="",&$out) {
 //    $out         error or warning message
 // RET false is table is empty, true else
 function check_export_table_csv($name="",&$out) {
-       if(strcmp("$name","")==0) return false;
+    if($name == "")
+        return false;
 
-        if(strcmp("$name","logs")==0) {
-            $sql = <<<EOF
-SELECT `timestamp` FROM `{$name}` WHERE `fake_log` LIKE "False" LIMIT 1;
-EOF;
-       } else if(strcmp("$name","power")==0) {
-            $sql = <<<EOF
-SELECT `timestamp` FROM `{$name}` LIMIT 1;
-EOF;
-       } else {
-            $sql = <<<EOF
-SELECT * FROM `{$name}` LIMIT 1;
-EOF;
-}
-        $db = \db_priv_pdo_start();
-        try {
-            $sth=$db->prepare("$sql");
-            $sth->execute();
-            $res=$sth->fetch(\PDO::FETCH_ASSOC);
-        } catch(\PDOException $e) {
-            $ret=$e->getMessage();
-        }
-        $db=null;
+    if($name == "logs") {
+        $sql = "SELECT timestamp FROM {$name} WHERE fake_log LIKE 'False' LIMIT 1;";
+    } else if($name == "power") {
+        $sql = "SELECT timestamp FROM {$name} LIMIT 1;";
+    } else {
+        $sql = "SELECT * FROM {$name} LIMIT 1;";
+    }
 
-       if(count($res)>0) {
-             if(strcmp($res['timestamp'],"")!=0) {
-                return true;
-             }
-       }
-       return false;
+    $db = \db_priv_pdo_start();
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res=$sth->fetch(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    if(count($res)>0) {
+        if($res['timestamp'] != "")
+            return true;
+    }
+    
+    return false;
 }
 // }}}
 
@@ -361,6 +358,39 @@ function are_fake_logs ($sensor, $dateStart, $dateEnd, $day="day")
     {
         return "0";
     }
+}
+// }}}
+
+
+// {{{ reset_log()
+// IN $table    table to be deleted: logs, power...
+//    $start    delete logs between two specific dates, between $start and $end
+//    $end      
+// RET  0 is an error occured, 1 else
+function reset_log($table="",$start="",$end="") {
+    if($table == "") 
+        return 0;
+    
+    $error=1;
+
+    if($start == "" || $end == "") {
+        $sql = "TRUNCATE TABLE {$table};";
+    } else {
+        $sql = "DELETE FROM {$table} WHERE date_catch BETWEEN '{$start}' AND '{$end}';";
+    }
+    
+    $db=\db_priv_pdo_start();
+    try {
+        $db->exec($sql);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    if((isset($ret))&&(!empty($ret))) {
+          $error=0;
+    }
+    return $error;
 }
 // }}}
 

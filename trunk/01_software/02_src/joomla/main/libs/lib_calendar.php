@@ -179,7 +179,7 @@ function read_event_from_db (&$tab_event,$start="",$end="") {
             
 
         $data=array();
-        $db = db_priv_pdo_start();
+        $db = \db_priv_pdo_start();
 
         $sql = "SELECT * FROM calendar WHERE (StartTime <= \"" . $end . "\") OR (`EndTime` >= \"" . $start . "\") ORDER BY EndTime ASC;";
 
@@ -371,6 +371,125 @@ function set_external_calendar_file($file, $beActiv) {
         rename($dir . "/" . $file, $dir . "/_not_used/" . $file);
     }
 
+    return true;
+}
+// }}}
+
+// {{{ get_title_list()
+// ROLE get list of available titles from the calendar database
+// RET return array containing data
+function get_title_list() {
+    $title=array();
+
+    foreach($GLOBALS['LIST_SUBJECT_CALENDAR'] as $value) {
+        switch ($value) {
+            case 'Beginning':
+                $title[]=__('SUBJECT_START','calendar');
+               break;
+            case 'Fertilizers':
+               $title[]=__('SUBJECT_FERTILIZERS','calendar');
+               break;
+            case 'Water':
+               $title[]=__('SUBJECT_WATER','calendar');
+               break;
+            case 'Bloom':
+               $title[]=__('SUBJECT_BLOOM','calendar');
+               break;
+            case 'Harvest':
+               $title[]=__('SUBJECT_HARVEST','calendar');
+               break;
+            case 'Other':
+               $tmp=__('SUBJECT_OTHER','calendar');
+               break;
+        }
+    }
+
+    $sql = <<<EOF
+SELECT DISTINCT `title` from `calendar`
+EOF;
+   $db=\db_priv_pdo_start();
+   $res="";
+   try {
+       $sth=$db->prepare("$sql");
+       $sth->execute();
+       $res=$sth->fetchAll(\PDO::FETCH_ASSOC);
+   } catch(\PDOException $e) {
+       $ret=$e->getMessage();
+   }
+   $db=null;
+
+   if(!empty($res)) {
+        foreach($res as $result) {
+            foreach($result as $data) {
+               if(strcmp(rtrim($data),$tmp)!=0) {
+                $title[]=rtrim($data);
+               }
+            }
+        }
+   }
+
+   //To put the 'other' value at the end:
+   $title_return=array_unique($title);
+   $title_return[]=$tmp;
+
+   return $title_return;
+}
+// }}}
+
+
+// {{{ get_important_event_list()
+// ROLE get list of important event for next or past week
+// IN $out      error or warning message
+// RET array containing datas or nothing if no data catched
+function get_important_event_list(&$out) {
+    $start=date('Y-m-j',strtotime('-1 days'));
+    $end=date('Y-m-j',strtotime('+7 days'));
+    $sql = <<<EOF
+SELECT title,StartTime,EndTime,color,Description from `calendar` WHERE `important`=1 AND ((`StartTime` BETWEEN '{$start}' AND '{$end}')OR (`EndTime` BETWEEN '{$start}' AND '{$end}')OR(`StartTime` <= '{$start}' AND `EndTime` >= '{$end}'))
+EOF;
+
+    $db=\db_priv_pdo_start();
+    $res="";
+    try {
+        $sth=$db->prepare("$sql");
+        $sth->execute();
+        $res=$sth->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    return $res;
+}
+/// }}}
+
+// {{{ insert_calendar()
+// ROLE insert a new calendar event
+// IN   $out         error or warning message
+//      $event[]     the event to be recorded
+// RET false if errors occured, true else
+function insert_calendar($event,&$out) {
+    
+    // If there is no event to add, return
+    if(count($event)==0)
+        return false;
+    
+    // Create sql line
+    $sql="";
+    foreach($event as $evt) {
+    
+        // Check if program_index exists. If not add empty
+        if (!array_key_exists("program_index",$evt))
+            $evt["program_index"] = "";
+    
+        $sql .= "INSERT INTO calendar" 
+             . " (Title, StartTime, EndTime, Description, Color, Icon, program_index) "
+             . "  VALUES ('{$evt['title']}', '{$evt['start']}', '{$evt['end']}', '{$evt['description']}', '{$evt['color']}', '{$evt['icon']}', '{$evt['program_index']}');";
+    }
+
+    $db = \db_priv_pdo_start();
+    $db->exec($sql);
+    $db=null;
     return true;
 }
 // }}}

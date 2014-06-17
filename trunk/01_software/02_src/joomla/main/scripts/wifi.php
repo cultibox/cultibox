@@ -66,7 +66,7 @@ $translate[]=__('DIMMER');
 
 //Set plug type translation:
 for($i=0; $i<count($plugs_infos);$i++) {
-    $plugs_infos[$i]['translate'] = translate_PlugType($plugs_infos[$i]['PLUG_TYPE'])
+    $plugs_infos[$i]['translate'] = translate_PlugType($plugs_infos[$i]['PLUG_TYPE']);
 }
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card

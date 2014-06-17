@@ -9,7 +9,6 @@
 ?>
 
 product_array = <?php echo json_encode($product) ?>;
-important_list = <?php echo json_encode($important_list) ?>;
 title_msgbox = <?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 
 $(function() {
@@ -147,70 +146,73 @@ $(document).ready(function() {
     });
     
     // Display and control user form for nutrient planification
-     $("#nutrient_planification").click(function(e) {
-           e.preventDefault();
+    $("#nutrient_planification").click(function(e) {
+        e.preventDefault();
 
-           $("#manage_nutrient_planification").dialog({
-                resizable: false,
-                width: 750,
-                modal: true,
-                closeOnEscape: true,
-                dialogClass: "popup_message",
-                buttons: [{
-                    text: CLOSE_button,
-                    "id": "btnClose",
-                    click: function () {
-                        $( this ).dialog( "close" ); return false;
-                    }
-                },{
-                text: "<?php echo __('CREATE_CALENDAR_PROGRAM'); ?>",
+        $("#manage_nutrient_planification").dialog({
+            resizable: false,
+            width: 750,
+            modal: true,
+            closeOnEscape: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CLOSE_button,
+                "id": "btnClose",
                 click: function () {
-                    $.ajax({
-                        cache: false,
-                        url: "../../main/modules/external/check_value.php",
-                        data: {value:$("#calendar_startdate").val(),type:'date'}
-                    }).done(function (data) {
-                        if(data!=1) {
-                            $("#error_calendar_startdate").show(700);
-                            var current=$("#calendar_startdate").datepicker('getDate').getFullYear()+"-"+('0'+($("#calendar_startdate").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#calendar_startdate").datepicker('getDate').getDate())).slice(-2)
-                            $("#calendar_startdate").val(current);
-                        } else {
-                            $.ajax({
-                                cache: false,
-                                url: "../../main/modules/external/update_calendar_external.php",
-                                data: {
-                                    substrat:$("#substrat_select").val(),
-                                    product:$("#nutrient_select").val(),
-                                    calendar_start:$("#calendar_startdate").val(),
-                                    sd_card: sd_card, event_name:$("#event_name").val(),
-                                    select_croissance:$('input[name=select_croissance]:checked', '#manage_nutrient_planification').val()
-                                }
-                            }).done(function (data) {
-                                $('#calendar').fullCalendar( 'refetchEvents' );
-                                if(data==1) {
-                                    display_modal_ui("#valid_create_calendar" , "popup_message");
-                                } else {
-                                    display_modal_ui("#error_create_calendar" , "popup_error");
-                                }
-
-                                // Update list of title available
-                                update_title_list();
-                            });
-                        }
-                    });
                     $( this ).dialog( "close" ); return false;
-                }}],
-            });
+                }
+            },{
+            text: "<?php echo __('CREATE_CALENDAR_PROGRAM'); ?>",
+            click: function () {
+                $.ajax({
+                    cache: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#calendar_startdate").val(),type:'date'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_calendar_startdate").show(700);
+                        var current=$("#calendar_startdate").datepicker('getDate').getFullYear()+"-"+('0'+($("#calendar_startdate").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#calendar_startdate").datepicker('getDate').getDate())).slice(-2)
+                        $("#calendar_startdate").val(current);
+                    } else {
+                        $.ajax({
+                            cache: false,
+                            url: "../../main/modules/external/update_calendar_external.php",
+                            data: {
+                                substrat:$("#substrat_select").val(),
+                                product:$("#nutrient_select").val(),
+                                calendar_start:$("#calendar_startdate").val(),
+                                sd_card: sd_card, event_name:$("#event_name").val(),
+                                select_croissance:$('input[name=select_croissance]:checked', '#manage_nutrient_planification').val()
+                            }
+                        }).done(function (data) {
+                            $('#calendar').fullCalendar( 'refetchEvents' );
+                            if(data==1) {
+                                display_modal_ui("#valid_create_calendar" , "popup_message");
+                            } else {
+                                display_modal_ui("#error_create_calendar" , "popup_error");
+                            }
+
+                            // Update list of title available
+                            update_title_list();
+                        });
+                    }
+                });
+                $( this ).dialog( "close" ); return false;
+            }}],
+        });
     });
         
-    var checkCal = window.location.pathname.match(/calendar/g);
-    if((checkCal)&&(important_list.length>0)) {
+    
+    // If there are some important event, display it
+    important_list = <?php echo json_encode($important_list) ?>;
+
+    if(important_list.length > 0) {
         $.ajax({
            cache: false,
            url: "../../main/modules/external/get_variable.php",
            data: {name:"important"}
         }).done(function (data) {
-            if(jQuery.parseJSON(data) != "True") {
+            //if(jQuery.parseJSON(data) != "True" || true) {
                 display_modal_ui("#dialog_calendar_important" , "popup_message");
 
                 $.ajax({
@@ -218,7 +220,7 @@ $(document).ready(function() {
                     url: "../../main/modules/external/set_variable.php",
                     data: {name:"important", value: "True"}
                 });
-            }
+            //}
         });
     }
 
@@ -388,6 +390,12 @@ function update_title_list () {
     });
 }
 
+// Init program index array
+<?php
+$program_index = array();
+program\get_program_index_info($program_index);
+?>
+
 // Full calendar
 $(document).ready(function() {
     $('#calendar').fullCalendar({
@@ -432,10 +440,7 @@ $(document).ready(function() {
                         var userAddDailyProgram = false;
                         var selected_DailyProgram = "";
                         <?php
-                            // Read program index
-                            $program_index = array();
-                            program\get_program_index_info($program_index);
-                            if($activ_daily_program == "True" && count($program_index) > 1) { 
+                            if($activ_daily_program == "True" && count($program_index) > 1) {
                         ?>
                             // If checkbox is selected
                             if ($('#create_dayly_program_in_ui').is(':checked') == true) 
@@ -446,7 +451,6 @@ $(document).ready(function() {
                                 selected_DailyProgram = $("#select_daily_program_to_create option:selected").val(); 
                                 
                             }
-                        
                         <?php 
                             }
                         ?>
@@ -524,12 +528,17 @@ $(document).ready(function() {
                         else
                         {
 
-                            var tempEvent = {start:start, end:end, id:"3000"};
-                            
+                            var tempEvent = {start:start, end:end, id:"3000", program_index: selected_DailyProgram};
+
                             // Check if there is an other programm on the same day
                             if (daily_program_check_overlaping(tempEvent)) {
                                 // Display overlapping alert
                                 display_modal_ui("#error_drop_event" , "popup_error");
+
+                                //Release UI
+                                <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
+                                    $.unblockUI();
+                                <?php } ?> 
 
                                 //Exit function
                                 return false;
@@ -588,27 +597,28 @@ $(document).ready(function() {
                         delete important;
                         delete event;
                         return false;
-                },
-                "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() { 
-                    $( this ).dialog( "close" ); 
-                    $("#select_remark").text("");
-                    $("#select_remark").val("");
-                    $("#other_field_title").text("");
-                    $("#other_field_title").val("");
-                    $("#select_title").prop('selectedIndex', 0);  
-                    $("#event_important").attr('checked', false);
-                    <?php
-                        if($activ_daily_program == "True" && count($program_index) > 1) { 
-                    ?>
-                        // Unselect check box daily program
-                        $("#create_dayly_program_in_ui").attr('checked', false);
-                    <?php 
-                        }
-                    ?>
-                    delete description;
-                    delete important;
-                    delete event;
-                    return false;}
+                    },
+                    "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() {
+                        $( this ).dialog( "close" ); 
+                        $("#select_remark").text("");
+                        $("#select_remark").val("");
+                        $("#other_field_title").text("");
+                        $("#other_field_title").val("");
+                        $("#select_title").prop('selectedIndex', 0);  
+                        $("#event_important").attr('checked', false);
+                        <?php
+                            if($activ_daily_program == "True" && count($program_index) > 1) { 
+                        ?>
+                            // Unselect check box daily program
+                            $("#create_dayly_program_in_ui").attr('checked', false);
+                        <?php 
+                            }
+                        ?>
+                        delete description;
+                        delete important;
+                        delete event;
+                        return false;
+                    }
                 }
             });
         },
