@@ -459,7 +459,7 @@ function get_last_day_with_logs ()
     $db = \db_priv_pdo_start();
     
     // Search if there is a special program this day
-    $sql = "SELECT date_catch FROM logs WHERE fake_log LIKE 'False' ORDER BY date_catch DESC limit 1;";
+    $sql = "SELECT timestamp FROM logs ORDER BY timestamp DESC limit 1;";
 
     try {
         $sth = $db->prepare($sql);
@@ -469,8 +469,22 @@ function get_last_day_with_logs ()
         print_r($e->getMessage());
     }
     
+    // If there is no logs defined, use default
+    if ($logs == NULL)
+        $retVal = "";
+    else
+    {
+        // Format date using folowing format : date('Y')."-".date('m')."-".date('d')
+        $retVal = "20" . substr($logs['timestamp'], 0 ,2) . "-"
+         . substr($logs['timestamp'], 2 ,2) . "-"
+         . substr($logs['timestamp'], 4 ,2) ;
+    }
+    
+    // Close database connexion correctly
     $db = null;
-    return $logs[0];
+    
+    return $retVal;
+
 }
 
 // {{{ get_plug_power()
