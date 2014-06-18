@@ -30,7 +30,7 @@ SERVER=macosx
 
 case "$1" in
       "osx" )
-            #(cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && pdflatex documentation.tex && pdflatex documentation.tex)
+            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && pdflatex documentation.tex && pdflatex documentation.tex)
             rm -Rf ../01_src/01_xampp/*
             tar zxvfp xampp-mac-1.8.3.tar.gz -C ../01_src/01_xampp/
             mv ../01_src/01_xampp/XAMPP ../01_src/01_xampp/cultibox
@@ -83,10 +83,11 @@ EOF
             ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc ; fi"
 
             cp -R cultibox.pmdoc ../01_src/01_xampp/
-            #sed -i "s#<version>.*</version>#<version>`echo $VERSION`</version>#" ../01_src/01_xampp/cultibox.pmdoc/01cultibox.xml
-            #sed -i "s#<build>.*</build>#<build>`echo $WORK_DIR`/cultibox-macosx_`echo $VERSION`.pkg</build#" ../01_src/01_xampp/cultibox.pmdoc/index.xml
+            sed -i "s#<version>.*</version>#<version>`echo $VERSION`</version>#" ../01_src/01_xampp/cultibox.pmdoc/01cultibox.xml
+            sed -i "s#<build>.*</build>#<build>`echo $WORK_DIR`/cultibox-macosx_`echo $VERSION`.pkg</build#" ../01_src/01_xampp/cultibox.pmdoc/index.xml
             ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc; fi"
             rsync -av ../01_src/01_xampp/cultibox.pmdoc root@$SERVER:$WORK_DIR/
+            exit 0
             ssh root@$SERVER "cd $WORK_DIR && /usr/bin/packagemaker --title cultibox -o cultibox-macosx_$VERSION.pkg --doc cultibox.pmdoc -v"
             scp root@$SERVER:$WORK_DIR/cultibox-macosx_$2.pkg ./Output/
             set -e
