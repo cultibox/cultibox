@@ -371,6 +371,7 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
         $serie[(string)(($date + 86399) * 1000)] = 0;
         $oldRecord = 0;
         $oldTimeComputeStop = 0;
+        $timeComputeStop = 0;
 
         // For each program row
         while ($row = $sth->fetch()) 
