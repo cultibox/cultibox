@@ -39,6 +39,7 @@ $GLOBALS['LIST_UPDATE_FREQUENCY'] = array('-1','1','5');
 
 // Colors for plugs program:
 $GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'] = array('#0033CC','#FF0000', '#336600', '#F6F61A','#FF9900','#006666','#999966','#663300','#FF0066','#CC66FF','#660000','#3D96AE','#DB843D','#00FF00','#CCFF33','#B5CA92');
+$GLOBALS['LIST_GRAPHIC_COLOR_POWER'] = array('#0099CC','#990000', '#33DD00', '#A8B02F','#DD6600','#008888','#A7A37E','#E56B6B','#BB0066','#AA33BB','#DD0000','#7FC6BC','#BB641D','#00BB00','#C7C701','#84815B');
 
 //Subject for the calendar:
 $GLOBALS['LIST_SUBJECT_CALENDAR'] = array('Beginning','Fertilizers', 'Water', 'Bloom','Harvest','Other');

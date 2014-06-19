@@ -678,7 +678,7 @@ function get_curve_information($curveType, $curveIndex = 0) {
             break;
         case 'power': 
             $ret_array['name']      = __('POWER'); 
-            $ret_array['color']     = $GLOBALS["LIST_GRAPHIC_COLOR_PROGRAM"][$curveIndex % 10] ;
+            $ret_array['color']     = $GLOBALS["LIST_GRAPHIC_COLOR_POWER"][$curveIndex % 10] ;
             $ret_array['legend']    = __('POWER_LEGEND');
             $ret_array['yaxis']     = 8;
             $ret_array['unit']      = "W";
