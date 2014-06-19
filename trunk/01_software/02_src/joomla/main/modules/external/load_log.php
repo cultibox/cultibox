@@ -146,21 +146,21 @@ if (!isset($_SESSION)) {
 }
 
 if((isset($_GET['nb_day']))&&(!empty($_GET['nb_day']))) {
-    $nb_day=$_GET['nb_day'];
+    $nb_day=trim($_GET['nb_day']);
 } else { 
     $nb_day=0;
 }
 
 if((isset($_GET['type']))&&(!empty($_GET['type']))) {
-    $type=$_GET['type'];
+    $type=trim($_GET['type']);
 }
 
 if((isset($_GET['sd_card']))&&(!empty($_GET['sd_card']))) {
-    $sd_card=$_GET['sd_card'];
+    $sd_card=trim($_GET['sd_card']);
 }
 
 if((isset($_GET['search']))&&(!empty($_GET['search']))) {
-    $search=$_GET['search'];
+    $search=trim($_GET['search']);
 }
 
 
@@ -226,7 +226,6 @@ $sensors = logs\get_sensor_db_type();
 // Search if file exists
 if($type == "logs") {
     if(file_exists("$sd_card/logs/$mmonth/$dday")) {
-    
         // get log value
         if(is_file("$sd_card/logs/$mmonth/$dday")) {
             get_log_value($sd_card,$mmonth,$dday,$log,$sensors);
@@ -241,7 +240,7 @@ if($type == "logs") {
             unset($log) ;
             $log = array();
         } 
-    }
+    } 
 } elseif($type == "power") {
     // get power values
     if(is_file("$sd_card/logs/$mmonth/pwr_$dday")) {
