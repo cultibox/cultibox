@@ -932,7 +932,7 @@ $(document).ready(function() {
             dialogClass: "popup_message",
             buttons: [{
                 text: CLOSE_button,
-                "id": "btnClose",
+                "id": "btnClose_curve",
                 click: function () {
                     $( this ).dialog( "close" ); return false;
                 }
@@ -956,7 +956,7 @@ $(document).ready(function() {
             dialogClass: "popup_message",
             buttons: [{
                 text: CLOSE_button,
-                "id": "btnClose",
+                "id": "btnClose_param",
                 click: function () {
                     $( this ).dialog( "close" ); return false;
                 }
@@ -980,7 +980,7 @@ $(document).ready(function() {
             dialogClass: "popup_message",
             buttons: [{
                 text: CLOSE_button,
-                "id": "btnClose",
+                "id": "btnClose_db",
                 click: function () {
                     $( this ).dialog( "close" ); return false;
                 }
