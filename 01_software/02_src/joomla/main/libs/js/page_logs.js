@@ -82,7 +82,7 @@ loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
         url: "../../main/modules/external/load_log.php",
         data: {nb_day:nb_day, type:type,search:search,sd_card:sd_card}
     }).done(function (data) {
-        if(nb_day!=0) {
+        if(nb_day != 0) {
             if(type=="power") {
                 $("#progress_bar_load_power").progressbar({ value: parseInt(((pourcent-nb_day)/pourcent)*100) });
             } else {
@@ -122,11 +122,11 @@ loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
                 } 
 
                 if(type=="power") {
-                        $("#success_load_power_auto").show();
-                        $("#progress_bar_load_power").progressbar({ value: 100 });
+                    $("#success_load_power_auto").show();
+                    $("#progress_bar_load_power").progressbar({ value: 100 });
                 } else {
-                        $("#success_load_auto").show();
-                        $("#progress_bar_load").progressbar({ value: 100 });
+                    $("#success_load_auto").show();
+                    $("#progress_bar_load").progressbar({ value: 100 });
                 }
                 $("#btnClose").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
                 finished=finished+1;
@@ -587,6 +587,7 @@ $(function () {
     });
 });
 
+// Function used at start to load logs
 $(document).ready(function() {
 
     var name="load_log";
@@ -643,19 +644,19 @@ $(document).ready(function() {
             closeOnEscape: false,
             dialogClass: "popup_message",
             buttons: [{
-                    text: CANCEL_button,
-                    "id": "btnClose",
-                    click: function () {
-                        $( this ).dialog("close");
-                        $("#error_load_power").css("display","none");
-                        $("#error_load").css("display","none");
-                        $("#success_load_power").css("display","none");
-                        $("#success_load").css("display","none");
-                        $("#success_load_still_log").css("display","none");
-                        $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
-                        $("#import_load").val($("#log_search").val());
-                        document.forms['display-log'].submit();
-                    }
+                text: CANCEL_button,
+                "id": "btnClose",
+                click: function () {
+                    $( this ).dialog("close");
+                    $("#error_load_power").css("display","none");
+                    $("#error_load").css("display","none");
+                    $("#success_load_power").css("display","none");
+                    $("#success_load").css("display","none");
+                    $("#success_load_still_log").css("display","none");
+                    $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
+                    $("#import_load").val($("#log_search").val());
+                    document.forms['display-log'].submit();
+                }
             }]
 
          });
@@ -697,39 +698,43 @@ $(document).ready(function() {
                     return false;
                 }}, {
                 text: DELETE_button,
-                    click: function () {
-                        $("#error_format_date_logs").css("display","none");
-                        if(((checkFormatDate($("#datepicker_from").val()))&&(checkFormatDate($("#datepicker_to").val()))&&(compareDate($("#datepicker_from").val(),$("#datepicker_to").val())))||($("input:radio[name=check_type_delete]:checked").val()=="all")) {
-                            $("#progress_delete_logs").show();
-                            $("#progress_bar_delete_logs").progressbar({value:0});
+                click: function () {
+                    $("#error_format_date_logs").css("display","none");
+                    if(((checkFormatDate($("#datepicker_from").val()))&&(checkFormatDate($("#datepicker_to").val()))&&(compareDate($("#datepicker_from").val(),$("#datepicker_to").val())))||($("input:radio[name=check_type_delete]:checked").val()=="all")) {
+                        $("#progress_delete_logs").show();
+                        $("#progress_bar_delete_logs").progressbar({value:0});
 
-                            var myArray = $("#datepicker_from").val().split('-');
-                            var myArray2 = $("#datepicker_to").val().split('-');
-                            var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
-                            var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
+                        var myArray = $("#datepicker_from").val().split('-');
+                        var myArray2 = $("#datepicker_to").val().split('-');
+                        var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
+                        var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
 
-                            if($("input:radio[name=check_type_delete]:checked").val()=="all") {
-                                var nb_jours=1;
-                            } else {
-                                var nb_jours=diffdate(Date1,Date2);
-                            }
-
-                            delete_logs("logs",$("input:radio[name=check_type_delete]:checked").val(), nb_jours,$("#datepicker_from").val(),nb_jours);
-
-                            $("#delete_log_form").dialog({ closeOnEscape: false, buttons: [ {
-                                        text: CLOSE_button,
-                                        click: function() {
-                                            $("#error_delete_logs").css("display","none");
-                                            $("#success_delete_logs").css("display","none");
-                                            $("#error_format_date_logs").css("display","none");
-                                            $( this ).dialog( "close" );
-                                            document.forms['display-log'].submit();
-                                            return false;
-                          } } ] });
+                        if($("input:radio[name=check_type_delete]:checked").val()=="all") {
+                            var nb_jours=1;
                         } else {
-                            $("#error_format_date_logs").css("display","");
+                            var nb_jours=diffdate(Date1,Date2);
                         }
+
+                        delete_logs("logs",$("input:radio[name=check_type_delete]:checked").val(), nb_jours,$("#datepicker_from").val(),nb_jours);
+
+                        $("#delete_log_form").dialog({
+                            closeOnEscape: false,
+                            buttons: [ {
+                                text: CLOSE_button,
+                                click: function() {
+                                    $("#error_delete_logs").css("display","none");
+                                    $("#success_delete_logs").css("display","none");
+                                    $("#error_format_date_logs").css("display","none");
+                                    $( this ).dialog( "close" );
+                                    document.forms['display-log'].submit();
+                                    return false;
+                                }
+                            }] 
+                        });
+                    } else {
+                        $("#error_format_date_logs").css("display","");
                     }
+                }
             }]
         });
     });
@@ -753,40 +758,44 @@ $(document).ready(function() {
                     return false;
                 }}, {
                 text: DELETE_button,
-                    click: function () {
-                        $("#error_format_date_logs_power").css("display","none");
-                        if(((checkFormatDate($("#datepicker_from_power").val()))&&(checkFormatDate($("#datepicker_to_power").val()))&&(compareDate($("#datepicker_from_power").val(),$("#datepicker_to_power").val())))||($("input:radio[name=check_type_delete_power]:checked").val()=="all")) {
-                        $("#progress_delete_logs_power").show();
-                        $("#progress_bar_delete_logs_power").progressbar({value:0});
+                click: function () {
+                    $("#error_format_date_logs_power").css("display","none");
+                    if(((checkFormatDate($("#datepicker_from_power").val()))&&(checkFormatDate($("#datepicker_to_power").val()))&&(compareDate($("#datepicker_from_power").val(),$("#datepicker_to_power").val())))||($("input:radio[name=check_type_delete_power]:checked").val()=="all")) {
+                    $("#progress_delete_logs_power").show();
+                    $("#progress_bar_delete_logs_power").progressbar({value:0});
 
-                        var myArray = $("#datepicker_from_power").val().split('-');
-                        var myArray2 = $("#datepicker_to_power").val().split('-');
-                        var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
-                        var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
+                    var myArray = $("#datepicker_from_power").val().split('-');
+                    var myArray2 = $("#datepicker_to_power").val().split('-');
+                    var Date1 = new Date(myArray[0],myArray[1]-1,myArray[2]);
+                    var Date2 = new Date(myArray2[0],myArray2[1]-1,myArray2[2]);
 
-                        if($("input:radio[name=check_type_delete_power]:checked").val()=="all") {
-                            var nb_jours=1;
-                        } else {
-                                var nb_jours=diffdate(Date1,Date2);
-                        }
+                    if($("input:radio[name=check_type_delete_power]:checked").val()=="all") {
+                        var nb_jours=1;
+                    } else {
+                            var nb_jours=diffdate(Date1,Date2);
+                    }
 
-                        delete_logs("power",$("input:radio[name=check_type_delete_power]:checked").val(),nb_jours,$("#datepicker_from_power").val(),nb_jours);
+                    delete_logs("power",$("input:radio[name=check_type_delete_power]:checked").val(),nb_jours,$("#datepicker_from_power").val(),nb_jours);
 
-                        $("#delete_log_form_power").dialog({ closeOnEscape: false, buttons: [ {
+                    $("#delete_log_form_power").dialog({
+                        closeOnEscape: false,
+                        buttons: [ {
                             text: CLOSE_button,
-                             click: function() {
+                            click: function() {
                                 $("#error_delete_logs_power").css("display","none");
                                 $("#success_delete_logs_power").css("display","none");
                                 $("#error_format_date_logs_power").css("display","none");
                                 $( this ).dialog( "close" );
                                 document.forms['display-log'].submit();
                                 return false;
-                        } } ] });
+                            }
+                        }] 
+                    });
 
-                        } else {
-                            $("#error_format_date_logs_power").css("display","");
-                        }
+                    } else {
+                        $("#error_format_date_logs_power").css("display","");
                     }
+                }
             }]
          });
     });
