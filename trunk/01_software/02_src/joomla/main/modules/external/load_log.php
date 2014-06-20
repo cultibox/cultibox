@@ -48,31 +48,31 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
                     && !empty($temp[0]) && strlen($date_catch)==10 
                     && strlen($time_catch)==6 && strlen($temp[0])==14 ) {
                     
-                        for($i=0; $i<count($sensors); $i++) {
-                            //Creating data array which will be inserted into the database:
-                            if(strcmp($sensors[$i]['type'],"0")!=0) {
-                                if((strcmp($sensors[$i]['type'],"2")!=0)&&(!empty($temp[$i+1]))) {
-                                    $array_line[] = array(
-                                        "timestamp" => $temp[0],
-                                        "record1" => $temp[$i+1],
-                                        "record2" => "",
-                                        "date_catch" => $date_catch,
-                                        "time_catch" => $time_catch,
-                                        "sensor_nb" => $sensors[$i]['sensor_nb'],
-                                    );
-                                } else if((!empty($temp[$i+1]))||(!empty($temp[$i+2]))) {
-                                    $array_line[] = array(
-                                        "timestamp" => $temp[0],
-                                        "record1" => $temp[$i+1],
-                                        "record2" => $temp[$i+2],
-                                        "date_catch" => $date_catch,
-                                        "time_catch" => $time_catch,
-                                        "sensor_nb" => $sensors[$i]['sensor_nb'],
-                                    );
-                                    $i=$i+1;
-                                }
-                            } 
-                        }
+                    for($i=0; $i<count($sensors); $i++) {
+                        //Creating data array which will be inserted into the database:
+                        if(strcmp($sensors[$i]['type'],"0")!=0) {
+                            if((strcmp($sensors[$i]['type'],"2")!=0)&&(!empty($temp[$i+1]))) {
+                                $array_line[] = array(
+                                    "timestamp" => $temp[0],
+                                    "record1" => $temp[$i+1],
+                                    "record2" => "",
+                                    "date_catch" => $date_catch,
+                                    "time_catch" => $time_catch,
+                                    "sensor_nb" => $sensors[$i]['sensor_nb'],
+                                );
+                            } else if((!empty($temp[$i+1]))||(!empty($temp[$i+2]))) {
+                                $array_line[] = array(
+                                    "timestamp" => $temp[0],
+                                    "record1" => $temp[$i+1],
+                                    "record2" => $temp[$i+2],
+                                    "date_catch" => $date_catch,
+                                    "time_catch" => $time_catch,
+                                    "sensor_nb" => $sensors[$i]['sensor_nb'],
+                                );
+                                $i=$i+1;
+                            }
+                        } 
+                    }
                 }
             }
         }
@@ -124,15 +124,15 @@ function get_power_value($file,&$array_line,$nb_plug=3) {
 
 
                   for($i=1;$i<=$nb_plug;$i++) {
-                        if(is_numeric($temp[$i])) {
-                            $array_line[] = array(
-                                "timestamp" => $temp[0],
-                                "power" => $temp[$i],
-                                "plug_number" => $i,
-                                "date_catch" => $date_catch,
-                                "time_catch" => $time_catch
-                            );
-                        }
+                    if(is_numeric($temp[$i])) {
+                        $array_line[] = array(
+                            "timestamp" => $temp[0],
+                            "power" => $temp[$i],
+                            "plug_number" => $i,
+                            "date_catch" => $date_catch,
+                            "time_catch" => $time_catch
+                        );
+                    }
                   }
                 }
             }
