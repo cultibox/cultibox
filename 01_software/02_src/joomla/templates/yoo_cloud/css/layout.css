@@ -37,14 +37,12 @@ body{
 }
 
 #main {
-	min-height:450px;
 	background: url(../images/fond_interface.png) 50% 0 no-repeat;
 }
 
 #system {
 	padding-left:15px;
 	padding-right:15px;	
-    min-height: 450px;
 }
 
 #sidebar-a {

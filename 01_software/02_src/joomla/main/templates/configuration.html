@@ -12,8 +12,8 @@
             <td><button id="div_user_label" class="menu_h1" onclick="expand('user_interface'); return false;"><?php echo __('USER_CONF'); ?></button></td>
             <td><button id="div_system_label" class="menu_h1" onclick="expand('system_interface'); return false;"><?php echo __('SYSTEM_CONF'); ?></button></td>
             <td><button id="div_alarm_label" class="menu_h1" onclick="expand('alarm_interface'); return false;"><?php echo __('CONFIGURE_ALARM'); ?></button></td>
-            <td><button id="div_card_label" class="menu_h1" onclick="expand('card_interface'); return false;"><?php echo __('CONFIGURE_CARD'); ?></button></td>
             <td><button id="div_wifi_label" class="menu_h1" onclick="expand('wifi_interface'); return false;"><?php echo __('CONFIGURE_WIFI'); ?></button></td>
+            <td><button id="div_card_label" class="menu_h1" onclick="expand('card_interface'); return false;"><?php echo __('CONFIGURE_CARD'); ?></button></td>
             <td class="conf-menu-marge"></td>
         </tr>
     </table>    
@@ -46,29 +46,6 @@
 
 <div id="div_user_interface" style="display:none">
     <table class="conf-table">
-        <tr>
-            <td class="conf-marge"></td>
-            <td>
-                <?php echo __('CONFIGURE_COST_COLOR'); ?>:
-            </td>
-            <td>
-                <select name="color_cost_graph">
-                <?php 
-                    foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
-                        $color_lang = "COLOR_" . strtoupper($value);
-                        if($value == $color_cost) {
-                            echo "<option value=\"" . $value . "\" selected >" . __($color_lang) . "</option>";
-                        } 
-                        else
-                        {
-                            echo "<option value=\"" . $value . "\" >" . __($color_lang) . "</option>";
-                        }
-                    }
-                ?>
-                </select>
-            </td>
-            <td></td>
-        </tr>
         <tr>
              <td class="conf-marge"></td>
              <td><?php echo __('CONFIGURE_POPUP'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POPUP'); ?>" /></td>
@@ -123,6 +100,29 @@
                 <select name="show_cost" id="show_cost">
                     <option value="1"><?php echo __('YES'); ?></option>
                     <option value="0" <?php if(!$show_cost) echo "selected"; ?>><?php echo __('NO'); ?></option>
+                </select>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="conf-marge"></td>
+            <td>
+                <?php echo __('CONFIGURE_COST_COLOR'); ?>:
+            </td>
+            <td>
+                <select name="color_cost_graph">
+                <?php 
+                    foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+                        $color_lang = "COLOR_" . strtoupper($value);
+                        if($value == $color_cost) {
+                            echo "<option value=\"" . $value . "\" selected >" . __($color_lang) . "</option>";
+                        } 
+                        else
+                        {
+                            echo "<option value=\"" . $value . "\" >" . __($color_lang) . "</option>";
+                        }
+                    }
+                ?>
                 </select>
             </td>
             <td></td>
@@ -217,7 +217,16 @@
     </td>
     <td></td>
     </tr>
-
+    <tr>
+            <td class="conf-marge"></td>
+            <td>
+               <?php echo __('RESET_MINMAX'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_MINMAX'); ?>" />
+            </td>
+            <td>
+               <input type="text" size="5" name="reset_minmax" id="reset_minmax" data-update_conf="1" <?php if(!empty($reset_minmax)) { ?> value="<?php echo $reset_minmax;?>" <?php } else { ?> value="00:00" <?php } ?> />
+            </td>
+            <td><div id="error_min_max" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
+    </tr>
     <!-- Display RTC row -->
     <tr>
         <td class="conf-marge"></td>
@@ -233,24 +242,13 @@
                     </td>
                     <td>
                         <!-- RTC Value -->
-                        <input type="text" name="rtc_offset" id="rtc_offset" value="<?php echo $rtc_offset; ?>" size="4" readonly /><?php echo __('RTC_OFFSET_UNITY'); ?>
+                        <input type="text" name="rtc_offset" id="rtc_offset" data-update_conf="1" value="<?php echo $rtc_offset; ?>" size="4" readonly /><?php echo __('RTC_OFFSET_UNITY'); ?>
                     </td>
                 </tr>
             </table>
         </td>
         <td></td>
     </tr>
-
-        <tr>
-            <td class="conf-marge"></td>
-            <td>
-               <?php echo __('RESET_MINMAX'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_MINMAX'); ?>" />
-            </td>
-            <td>
-               <input type="text" size="5" name="minmax" id="reset_min_max" <?php if(!empty($minmax)) { ?> value="<?php echo $minmax;?>" <?php } else { ?> value="00:00" <?php } ?> />
-            </td>
-            <td><div id="error_min_max" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
-        </tr>
     </table>
 </div>
 <!-- End of Cultibox tab -->
@@ -285,7 +283,7 @@
             </td>
             <td>
                 <div id="div_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>">
-                    <input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value" id="alarm_value" onKeypress="return verifDigit(event);">
+                    <input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" data-update_conf="1" name="alarm_value" id="alarm_value" onKeypress="return verifDigit(event);">
                     <label id="label_degree">°C</label>
                 </div>
             </td>

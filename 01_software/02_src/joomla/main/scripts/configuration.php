@@ -31,7 +31,6 @@ $pop_up_message="";
 $pop_up_error_message="";
 
 $alarm_enable   = getvar('alarm_enable');
-$alarm_value    = getvar('alarm_value');
 $wifi_enable    = getvar('wifi_enable');
 $wifi_ssid      = getvar('wifi_ssid');
 $wifi_key_type  = getvar('wifi_key_type');
@@ -85,13 +84,16 @@ $conf_arr["UPDATE_PLUGS_FREQUENCY"] = array ("update_conf" => "1", "var" => "upd
 $conf_arr["NB_PLUGS"]               = array ("update_conf" => "0", "var" => "nb_plugs");
 $conf_arr["SECOND_REGUL"]           = array ("update_conf" => "0", "var" => "second_regul");
 $conf_arr["STATISTICS"]             = array ("update_conf" => "0", "var" => "stats");
-$conf_arr["RESET_MINMAX"]           = array ("update_conf" => "1", "var" => "minmax");
 $conf_arr["SHOW_COST"]              = array ("update_conf" => "0", "var" => "show_cost");
 $conf_arr["ADVANCED_REGUL_OPTIONS"] = array ("update_conf" => "1", "var" => "advanced_regul");
+$conf_arr["RTC_OFFSET"]             = array ("update_conf" => "1", "var" => "rtc_offset");
+$conf_arr["RESET_MINMAX"]             = array ("update_conf" => "1", "var" => "reset_minmax");
+$conf_arr["ALARM_VALUE"]             = array ("update_conf" => "1", "var" => "alarm_value");
 
 foreach ($conf_arr as $key => $value) {
     ${$value['var']} = get_configuration($key,$main_error);
 }
+
 
 
 if((isset($rtc_offset))&&(!empty($rtc_offset))) {
@@ -105,6 +107,8 @@ if((isset($rtc_offset))&&(!empty($rtc_offset))) {
     $rtc_offset = get_configuration("RTC_OFFSET",$main_error);
     $rtc_offset_computed = $rtc_offset;
 }
+
+
 
 
 if(!empty($alarm_enable)) {
@@ -124,7 +128,6 @@ if(!empty($alarm_enable)) {
 if(empty($alarm_value)) {
     $alarm_value = get_configuration("ALARM_VALUE",$main_error);
 }
-
 
 // Wifi tab is modified
 if($wifi_enable != "") {
@@ -176,6 +179,8 @@ $wifi_manual    = get_configuration("WIFI_IP_MANUAL",$main_error);
 $wifi_password  = get_configuration("WIFI_PASSWORD",$main_error);
 $wifi_ip        = get_configuration("WIFI_IP",$main_error);
 
+
+
 if((isset($advanced_regul))&&(!empty($advanced_regul))) {
     insert_configuration("ADVANCED_REGUL_OPTIONS","$advanced_regul",$main_error);
     if(strcmp("$advanced_regul","False")==0) {
@@ -183,7 +188,7 @@ if((isset($advanced_regul))&&(!empty($advanced_regul))) {
         for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
             insert_plug_conf("PLUG_REGUL_SENSOR",$i,"1",$main_error);
             insert_plug_conf("PLUG_COMPUTE_METHOD",$i,"M",$main_error);
-       
+      
             if((!empty($sd_card))&&(isset($sd_card))) {
                 $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
                 if(count($plugconf)>0) {
@@ -217,6 +222,7 @@ if(empty($main_error)) {
     }
 }
 
+
 // Change files on the cultibox SD card after the configuration has been updated: plug's frequency, alarm value etc...
 if((isset($submit))&&(!empty($submit))) {
     if((isset($sd_card))&&(!empty($sd_card))) {
@@ -227,7 +233,7 @@ if((isset($submit))&&(!empty($submit))) {
         }
 
         // Save the configuration on SD Card
-        if(!write_sd_conf_file($sd_card,$record_frequency,$updateFrequencyCorrected,$power_frequency,"$alarm_enable","$alarm_value","$minmax",$rtc_offset_computed,$main_error)) {
+        if(!write_sd_conf_file($sd_card,$record_frequency,$updateFrequencyCorrected,$power_frequency,"$alarm_enable","$alarm_value","$reset_minmax",$rtc_offset_computed,$main_error)) {
             $main_error[] = __('ERROR_WRITE_SD_CONF');
         }
     } 
@@ -236,6 +242,7 @@ if((isset($submit))&&(!empty($submit))) {
         $main_error[] = __('ERROR_SD_CARD_CONF')." <img src='main/libs/img/infos.png' alt='' title='".__('TOOLTIP_WITHOUT_SD')."' />";
     }
 }
+
 
 // Include in html pop up and message
 include('main/templates/post_script.php');
@@ -253,6 +260,8 @@ if($GLOBALS['DEBUG_TRACE']) {
     echo "---------------------------------------<br />";
     memory_stat();
 }
+
+
 
 
 ?>

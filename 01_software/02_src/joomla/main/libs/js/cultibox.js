@@ -387,23 +387,6 @@ $(document).ready(function() {
     });
 
 
-    $("#eyes").mousedown(function() {
-        $("#current_wifi_password").show();
-        $("#wifi_password").css("display","none"); 
-    }); 
-
-    $("#eyes").mouseup(function(){
-            $("#wifi_password").show();
-            $("#current_wifi_password").css("display","none");
-    });
-
-    $("#eyes").mouseleave(function(){
-            $("#wifi_password").show();
-            $("#current_wifi_password").css("display","none");
-    });
-
-
-
 
     // Check errors for the cost part:
     $("#view-cost").click(function(e) {
@@ -1059,6 +1042,13 @@ $(document).ready(function() {
         $("#tooltip_msg_box").fadeOut("slow");
         $(".message").dialog("open");
     });
+
+
+    if ($("#pop_up_error_part ul li").length < 1)
+        $("#pop_up_error_container").css("display", "none");
+
+    if ($("#pop_up_information_part ul li").length < 1)
+        $("#pop_up_information_container").css("display", "none");
 
 });
 
