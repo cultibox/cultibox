@@ -235,9 +235,6 @@ msgstr "Shift of the internal clock"
 msgid "RTC_OFFSET_UNITY"
 msgstr "second (s)"
 
-msgid "ACTIV_DAILY_PROGRAM"
-msgstr "Enable daily program"
-
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1765,9 +1762,6 @@ msgstr "If the secondary control is enabled in the software configuration, this 
 
 msgid "TOOLTIP_SHOW_COST"
 msgstr "By enabling this option you can access the page costing your facility through the menu 'cost' which appears in the main menu bar"
-
-msgid "TOOLTIP_ACTIV_DAILY_PROGRAM"
-msgstr "By enabling this option you can make different programs for each day."
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "This field allows you to choose the time of reset of min / max of all sensors displayed on the screen Cultibox"

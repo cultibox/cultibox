@@ -1,5 +1,7 @@
 Cultibox (1.4.01) precise; urgency=low
     + Déplacement du site distant pour les mises à jour de cultibox.highproshop.fr vers cultibox.fr
+    + L'option des programmes journaliés est toujours activée
+    + Nettoyage du champ SHOW_HISTORIC qui n'est plus nécéssaire
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun July 6 12:13:49 CEST 2014
 

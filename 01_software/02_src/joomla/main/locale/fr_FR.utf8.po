@@ -235,9 +235,6 @@ msgstr "Décalage de l'horloge interne"
 msgid "RTC_OFFSET_UNITY"
 msgstr "seconde(s)"
 
-msgid "ACTIV_DAILY_PROGRAM"
-msgstr "Activer programme journalier"
-
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1765,9 +1762,6 @@ msgstr "Si la régulation secondaire est activée dans la configuration du logic
 
 msgid "TOOLTIP_SHOW_COST"
 msgstr "En activant cette option vous pouvez avoir accès à la page de calcul des coûts de votre installation grâce au menu 'Coût' qui apparaît dans la barre du menu principal"
-
-msgid "TOOLTIP_ACTIV_DAILY_PROGRAM"
-msgstr "En activant cette option vous pouvez réaliser des programmes différents pour chaque jour."
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Ce champs permet de choisir l'heure de remise à zéro du min/max de tous les capteurs affichés sur l'écran de la Cultibox"

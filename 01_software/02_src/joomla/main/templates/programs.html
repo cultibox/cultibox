@@ -265,17 +265,15 @@
     </tr>
 </table>
 
-<?php if($activ_daily_program == "True") { ?>
-    <!-- Daily program management -->
-    <div id="dialog-form-save-daily" title="Sauvegarde">
-        <form>
-            <fieldset>
-                <label for="name">Nom du programme</label>
-                <input type="text" name="program_name" id="program_name" class="text ui-widget-content ui-corner-all">
-            </fieldset>
-        </form>
-    </div>
-<?php } ?>
+<!-- Daily program management -->
+<div id="dialog-form-save-daily" title="Sauvegarde">
+    <form>
+        <fieldset>
+            <label for="name">Nom du programme</label>
+            <input type="text" name="program_name" id="program_name" class="text ui-widget-content ui-corner-all">
+        </fieldset>
+    </form>
+</div>
 
 <!-- Modal form for settings -->
 <div id="manage_program" style="display:none" title="<?php echo __('PARAMETERS_PROGRAM_TITLE'); ?>">
