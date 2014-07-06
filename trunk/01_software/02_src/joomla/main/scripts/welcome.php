@@ -47,6 +47,11 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 
+if((!isset($sd_card))||(empty($sd_card))) {
+   $main_error[]=__('ERROR_SD_CARD');
+}
+
+
 //Check the browser compatibility, if it's not compatible, the welcome page wil display a warning message
 if(count($browser)>0) {
     $compat=check_browser_compat($browser); //Check is the browser used is compatible
