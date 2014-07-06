@@ -27,6 +27,8 @@ if((!isset($name))||(empty($name))) {
         case 'LOAD_LOG':
             if((isset($_SESSION['LOAD_LOG']))&&(!empty($_SESSION['LOAD_LOG']))) {
                 echo json_encode($_SESSION['LOAD_LOG']);
+            } else {
+                 echo json_encode("0");
             }
             break;
         case 'SD_CARD':

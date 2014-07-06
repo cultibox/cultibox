@@ -596,7 +596,7 @@ $(document).ready(function() {
         url: "../../main/modules/external/get_variable.php",
         data: {name:name}
     }).done(function (data) {
-        if(!data) {
+        if(jQuery.parseJSON(data)!="True") {
             var name="sd_card";
             $.ajax({
                 cache: false,
