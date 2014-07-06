@@ -25,7 +25,7 @@ formatCard = function(hdd,pourcent) {
 }
 
 $(document).ready(function(){
-    $('#reset_min_max').timepicker({
+    $('#reset_minmax').timepicker({
         <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
         showOn: 'both',
         buttonImage: "../../main/libs/img/datepicker.png",
@@ -39,29 +39,22 @@ $(document).ready(function(){
         currentText: "<?php echo __('TIMEPICKER_ENDDAY') ;?>",
         closeText: "<?php echo __('TIMEPICKER_CLOSE') ;?>"
     });
-    
-    // On select change, update conf
-    $("select").each(function() {
-       
-        $(this).on('change', function() {
-            newValue    = $( this ).find(":selected").val();
-            varToUpdate = $( this ).attr('name');
-            updateConf  = $( this ).attr('data-update_conf');
 
-            $.ajax({
-                type: "POST",
-                cache: false,
-                url: "../../main/modules/external/update_configuration.php",
-                data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
-            }).done(function (data) {
-                //Reload page to print cost menu:
-                if(varToUpdate.toUpperCase()=="SHOW_COST") {
-                    window.location = "configuration-"+slang;
-                }
-            });
-        });
+
+    $("#eyes").mousedown(function() {
+        $("#current_wifi_password").show();
+        $("#wifi_password").css("display","none");
     });
 
+    $("#eyes").mouseup(function(){
+            $("#wifi_password").show();
+            $("#current_wifi_password").css("display","none");
+    });
+
+    $("#eyes").mouseleave(function(){
+            $("#wifi_password").show();
+            $("#current_wifi_password").css("display","none");
+    });
     
     
     $("#wifi_ip_manual").click(function(e) {
@@ -78,8 +71,9 @@ $(document).ready(function(){
         var checked=true;
         $.ajax({
             cache: false,
+            async: false,
             url: "../../main/modules/external/check_value.php",
-            data: {value:$("#reset_min_max").val(),type:'short_time'}
+            data: {value:$("#reset_minmax").val(),type:'short_time'}
         }).done(function (data) {
             if(data!=1) {
                 $("#error_min_max").show(700);
@@ -93,6 +87,7 @@ $(document).ready(function(){
         if($("#alarm_enable option:selected").val()=="0001") {
             $.ajax({
                 cache: false,
+                async: false,
                 url: "../../main/modules/external/check_value.php",
                 data: {value:$("#alarm_value").val(),type:'alarm_value'}
             }).done(function (data) {
@@ -106,9 +101,10 @@ $(document).ready(function(){
             });
         }
 
-        if($("#wifi_enable option:selected").val()=="1") {
+        if($("#WIFI option:selected").val()=="1") {
             $.ajax({
                 cache: false,
+                async: false,
                 url: "../../main/modules/external/check_value.php",
                 data: {value:$("#wifi_ssid").val(),type:'ssid'}
             }).done(function (data) {
@@ -121,9 +117,13 @@ $(document).ready(function(){
                 }
             });
 
-            if((wifi_password!="")&&($("#wifi_password").val()!="")) {
+
+            if((wifi_password=="")&&($("#wifi_password").val()=="")) {
+                $("#error_empty_password").css("display","");
+            } else if($("#wifi_password").val()!="") {
                 $.ajax({
                     cache: false,
+                    async: false,
                     url: "../../main/modules/external/check_value.php",
                     data: {value:$("#wifi_password").val()+"____"+$("#wifi_password_confirm").val(),type:'password'}
                 }).done(function (data) {
@@ -156,6 +156,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             cache: false,
+                            async: false,
                             url: "../../main/modules/external/check_value.php",
                             data: {value:$("#wifi_password").val(),type:type_password}
                         }).done(function (data) {
@@ -199,6 +200,7 @@ $(document).ready(function(){
             if($('#wifi_ip_manual').prop('checked')) {
                 $.ajax({
                     cache: false,
+                    async: false,
                     url: "../../main/modules/external/check_value.php",
                     data: {value:$("#wifi_ip").val(),type:'ip'}
                 }).done(function (data) {
@@ -217,9 +219,202 @@ $(document).ready(function(){
             $.ajax({
                 cache: false,
                 url: "../../main/modules/external/configure_menu.php",
-                data: {cost:$("#show_cost").val(),wifi:$("#wifi_enable").val()}
+                data: {cost:$("#show_cost").val(),wifi:$("#WIFI").val()}
             });
-            document.forms['configform'].submit();
+            //document.forms['configform'].submit();
+           
+            $.blockUI(); 
+            $("select").each(function() {
+                newValue    = $( this ).find(":selected").val();
+                varToUpdate = $( this ).attr('name');
+                updateConf  = $( this ).attr('data-update_conf');
+
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "../../main/modules/external/update_configuration.php",
+                    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                }).done(function (data) {
+                    //Reload page to print cost menu:
+                    if(varToUpdate.toUpperCase()=="SHOW_COST") {
+                        window.location = "configuration-"+slang;
+                    }
+                });
+            });
+
+            //RTC OFFSET process:
+            newValue    = $("#rtc_offset").val();
+            varToUpdate = $("#rtc_offset").attr('name');
+            updateConf  = $("#rtc_offset").attr('data-update_conf');
+
+             $.ajax({
+                type: "POST",
+                cache: false,
+                url: "../../main/modules/external/update_configuration.php",
+                data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+            });
+
+
+            //RESET MIN MAX process:
+            newValue    = $("#reset_minmax").val();
+            varToUpdate = $("#reset_minmax").attr('name');
+            updateConf  = $("#reset_minmax").attr('data-update_conf');
+
+             $.ajax({
+                type: "POST",
+                cache: false,
+                url: "../../main/modules/external/update_configuration.php",
+                data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+            });
+
+
+            //ALARM VALUE process:
+            if($("#alarm_enable option:selected").val()=="0001") {
+                newValue    = $("#alarm_value").val();
+            } else {
+                newValue    = 15;
+            }
+
+            varToUpdate = $("#alarm_value").attr('name');
+            updateConf  = $("#alarm_value").attr('data-update_conf');
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "../../main/modules/external/update_configuration.php",
+                data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+            });
+
+
+            if($("#WIFI option:selected").val()=="1") {
+                    newValue    = $("#wifi_ssid").val();
+                    varToUpdate = $("#wifi_ssid").attr('name');
+                    updateConf  = $("#wifi_ssid").attr('data-update_conf');        
+
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url: "../../main/modules/external/update_configuration.php",
+                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    });
+
+                    
+                    if($('#wifi_ip_manual').prop('checked')) {
+                        newValue    = 1;
+                        varToUpdate = "wifi_ip_manual";
+                        updateConf  = 0;
+
+                        $.ajax({
+                            type: "POST",
+                            cache: false,
+                            url: "../../main/modules/external/update_configuration.php",
+                            data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        });
+
+
+                        newValue    = $("#wifi_ip").val();
+                        varToUpdate = $("#wifi_ip").attr('name');
+                        updateConf  = $("#wifi_ip").attr('data-update_conf');
+
+                        $.ajax({
+                            type: "POST",
+                            cache: false,
+                            url: "../../main/modules/external/update_configuration.php",
+                            data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        });
+                    } else {
+                        newValue    = 0;
+                        varToUpdate = "wifi_ip_manual";
+                        updateConf  = 0;
+
+                        $.ajax({
+                            type: "POST",
+                            cache: false,
+                            url: "../../main/modules/external/update_configuration.php",
+                            data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        });
+
+
+                        newValue    = "000.000.000.000";
+                        varToUpdate = $("#wifi_ip").attr('name');
+                        updateConf  = $("#wifi_ip").attr('data-update_conf');
+
+                        $.ajax({
+                            type: "POST",
+                            cache: false,
+                            url: "../../main/modules/external/update_configuration.php",
+                            data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        });
+                    }
+
+
+                
+                    newValue    = $("#wifi_password").val();
+                    varToUpdate = $("#wifi_password").attr('name');
+                    updateConf  = $("#wifi_password").attr('data-update_conf');
+
+                    if(newValue!="") {
+                        $.ajax({
+                            type: "POST",
+                            cache: false,
+                            url: "../../main/modules/external/update_configuration.php",
+                            data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        });
+                    }
+            } else {
+                    newValue    = "";
+                    varToUpdate = "wifi_ssid";
+                    updateConf  = 1;
+
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url: "../../main/modules/external/update_configuration.php",
+                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    });
+
+
+                    varToUpdate = "wifi_password";
+                    newValue    = "";
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url: "../../main/modules/external/update_configuration.php",
+                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    });
+
+
+                    varToUpdate = "wifi_ip";
+                    newValue    = "000.000.000.000";
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url: "../../main/modules/external/update_configuration.php",
+                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    });
+
+
+
+                    varToUpdate = "wifi_ip_manual";
+                    newValue    = "0";
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url: "../../main/modules/external/update_configuration.php",
+                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    });
+
+    
+                    varToUpdate = "wifi_key_type";
+                    newValue    = "NONE";
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url: "../../main/modules/external/update_configuration.php",
+                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    });
+            }
+            $.unblockUI();
         }
     }); 
     

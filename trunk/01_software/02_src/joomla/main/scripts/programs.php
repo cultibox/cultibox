@@ -69,6 +69,7 @@ $export_selected     = getvar("export_selected_plug");
 // Get configuration value
 $second_regul        = get_configuration("SECOND_REGUL",$main_error);
 
+
 $start="";
 $end="";
 $rep="";
