@@ -57,13 +57,13 @@ $GLOBALS['PLUGA_DEFAULT_3500W'] = array('004', '000', '000', '006', '008', '010'
 $GLOBALS['FIRST_LOG_YEAR'] = '2013';
 
 // Remote file to check update for the interface
-$GLOBALS['UPDATE_FILE'] = 'http://cultibox.highproshop.fr/download/software/updates/VERSION';
+$GLOBALS['UPDATE_FILE'] = 'http://cultibox.fr/download/software/updates/VERSION';
 
 //Website to download software:
-$GLOBALS['WEBSITE'] = 'http://cultibox.highproshop.fr/telechargement.html';
+$GLOBALS['WEBSITE'] = 'http://cultibox.fr/telechargement.html';
 
 // Remote site to test internet connection
-$GLOBALS['REMOTE_SITE'] = 'cultibox.highproshop.fr';
+$GLOBALS['REMOTE_SITE'] = 'cultibox.fr';
 
 // List of value possible for log's research: 2, 3, 6 or 12 months
 $GLOBALS['LOG_SEARCH'] = array('2', '3', '6', '12');
