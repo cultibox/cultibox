@@ -226,7 +226,7 @@
         <tr>
             <td></td>
             <td><?php echo __('VALUE_REGUL_SECOND'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_REGUL_SECOND'); ?>" /></td>
-            <td><label class="readonly" id="second_regul_plug"><?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_REGUL'],"False")==0) { echo __('SECOND_REGUL_OFF'); } else { echo __('SECOND_REGUL_ON'); ?></label><label id="second_regul_info" style=<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_REGUL'],"False")==0) { echo "display:none"; } else { echo ""; } ?>><img id="second_regul_img" src="main/libs/img/infos.png" alt="" title="<?php echo $resume_regul[$selected_plug-1]; ?>" /><?php } ?></label></td>
+            <td><label class="readonly" id="second_regul_plug"><?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_REGUL'],"False")==0) { echo __('SECOND_REGUL_OFF'); } else { echo __('SECOND_REGUL_ON'); } ?></label><label id="second_regul_info" style=<?php if(strcmp($plugs_infos[$selected_plug-1]['PLUG_REGUL'],"False")==0) { echo "display:none"; } else { echo ""; } ?>><img id="second_regul_img" src="main/libs/img/infos.png" alt="" title="<?php echo $resume_regul[$selected_plug]; ?>" /></label></td>
             <td></td>
         </tr>
     <?php } ?>
