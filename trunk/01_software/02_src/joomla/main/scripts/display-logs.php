@@ -198,10 +198,6 @@ if(isset($_POST['select_program'])) {
 }
 
 
-if(isset($error_clean_log_file)) {
-    $main_error[]=__('ERROR_WRITE_SD');
-}
-
 // If there is a second regul add tooltip
 $resume_regul="";
 if($second_regul == "True") {

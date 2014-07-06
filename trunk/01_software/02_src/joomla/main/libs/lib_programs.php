@@ -586,6 +586,8 @@ function get_curve_information($curveType, $curveIndex = 0) {
         case '21':
             $ret_array['name']      = __('TEMP_SENSOR');
             $colorIndexName         = "LIST_GRAPHIC_COLOR_SENSOR_" . strtoupper(get_configuration("COLOR_TEMPERATURE_GRAPH",$main_error));
+            if ($colorIndexName == "LIST_GRAPHIC_COLOR_SENSOR_")
+                $colorIndexName = "LIST_GRAPHIC_COLOR_SENSOR_RED" ; 
             $ret_array['color']     = $GLOBALS[$colorIndexName][$curveIndex % 5];
             $ret_array['legend']    = __('TEMP_LEGEND');
             $ret_array['yaxis']     = 0;
