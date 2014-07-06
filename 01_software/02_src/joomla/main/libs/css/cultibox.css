@@ -1,14 +1,3 @@
-.histo_info {
-    font-size: 14px;
-    color: #2A9011;
-}
-
-
-.histo_error {
-    font-size: 14px;
-    color: #AF0F0F;
-}
-
 .error_field {
     color: red;
     border-radius:15px;

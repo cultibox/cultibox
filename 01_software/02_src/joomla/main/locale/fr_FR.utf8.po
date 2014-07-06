@@ -1567,6 +1567,9 @@ msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des n
 msgid "ERROR_WPA_KEY_TYPE"
 msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8 et 63 caractères"
 
+msgid "ERROR_UPDATE_CONF"
+msgstr "Une erreur est survenue durant la mise à jour de la configuration"
+
 
 # For the informations part:
 msgid "SHOW_MESSAGE"

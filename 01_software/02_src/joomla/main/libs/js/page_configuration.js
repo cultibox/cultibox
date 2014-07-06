@@ -223,7 +223,8 @@ $(document).ready(function(){
             });
             //document.forms['configform'].submit();
            
-            $.blockUI(); 
+            $.blockUI({ message: ''}); 
+            var check_update=true;
             $("select").each(function() {
                 newValue    = $( this ).find(":selected").val();
                 varToUpdate = $( this ).attr('name');
@@ -235,9 +236,8 @@ $(document).ready(function(){
                     url: "../../main/modules/external/update_configuration.php",
                     data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                 }).done(function (data) {
-                    //Reload page to print cost menu:
-                    if(varToUpdate.toUpperCase()=="SHOW_COST") {
-                        window.location = "configuration-"+slang;
+                    if(data!="") {  
+                        check_update=false;
                     }
                 });
             });
@@ -252,8 +252,11 @@ $(document).ready(function(){
                 cache: false,
                 url: "../../main/modules/external/update_configuration.php",
                 data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+            }).done(function (data) {
+                if(data!="") {
+                    check_update=false;
+                }
             });
-
 
             //RESET MIN MAX process:
             newValue    = $("#reset_minmax").val();
@@ -265,6 +268,10 @@ $(document).ready(function(){
                 cache: false,
                 url: "../../main/modules/external/update_configuration.php",
                 data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+            }).done(function (data) {
+                if(data!="") {
+                    check_update=false;
+                }
             });
 
 
@@ -283,6 +290,10 @@ $(document).ready(function(){
                 cache: false,
                 url: "../../main/modules/external/update_configuration.php",
                 data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+            }).done(function (data) {
+                if(data!="") {
+                    check_update=false;
+                }
             });
 
 
@@ -296,6 +307,10 @@ $(document).ready(function(){
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    }).done(function (data) {
+                        if(data!="") {
+                            check_update=false;
+                        }
                     });
 
                     
@@ -309,6 +324,10 @@ $(document).ready(function(){
                             cache: false,
                             url: "../../main/modules/external/update_configuration.php",
                             data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        }).done(function (data) {
+                            if(data!="") {
+                                check_update=false;
+                            }
                         });
 
 
@@ -321,6 +340,10 @@ $(document).ready(function(){
                             cache: false,
                             url: "../../main/modules/external/update_configuration.php",
                             data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        }).done(function (data) {
+                            if(data!="") {
+                                check_update=false;
+                            }
                         });
                     } else {
                         newValue    = 0;
@@ -332,6 +355,10 @@ $(document).ready(function(){
                             cache: false,
                             url: "../../main/modules/external/update_configuration.php",
                             data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        }).done(function (data) {
+                            if(data!="") {
+                                check_update=false;
+                            }
                         });
 
 
@@ -344,6 +371,10 @@ $(document).ready(function(){
                             cache: false,
                             url: "../../main/modules/external/update_configuration.php",
                             data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        }).done(function (data) {
+                            if(data!="") {
+                                check_update=false;
+                            }
                         });
                     }
 
@@ -359,6 +390,10 @@ $(document).ready(function(){
                             cache: false,
                             url: "../../main/modules/external/update_configuration.php",
                             data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        }).done(function (data) {
+                            if(data!="") {
+                                check_update=false;
+                            }
                         });
                     }
             } else {
@@ -371,6 +406,10 @@ $(document).ready(function(){
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    }).done(function (data) {
+                        if(data!="") {
+                            check_update=false;
+                        }
                     });
 
 
@@ -381,6 +420,10 @@ $(document).ready(function(){
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    }).done(function (data) {
+                        if(data!="") {
+                            check_update=false;
+                        }
                     });
 
 
@@ -391,8 +434,11 @@ $(document).ready(function(){
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    }).done(function (data) {
+                        if(data!="") {
+                            check_update=false;
+                        }
                     });
-
 
 
                     varToUpdate = "wifi_ip_manual";
@@ -402,6 +448,10 @@ $(document).ready(function(){
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    }).done(function (data) {
+                        if(data!="") {
+                            check_update=false;
+                        }
                     });
 
     
@@ -411,10 +461,49 @@ $(document).ready(function(){
                         type: "POST",
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf   
+                    }).done(function (data) {
+                        if(data!="") {
+                            check_update=false;
+                        }
                     });
             }
-            $.unblockUI();
+
+            setTimeout(function(){ 
+
+            $.unblockUI(); 
+            if(check_update) {
+                $("#update_conf").dialog({
+                    resizable: false,
+                    height:150,
+                    width: 500,
+                    closeOnEscape: false,
+                    modal: true,
+                    hide: "fold",
+                    dialogClass: "popup_message",
+                    buttons: [{
+                        text: CLOSE_button,
+                        click: function () { $( this ).dialog( "close" ); SendForm.submit(); }
+                    }]
+                });
+            } else  {
+                $("#error_update_conf").dialog({
+                    resizable: false,
+                    height:150,
+                    width: 500,
+                    closeOnEscape: false,
+                    modal: true,
+                    dialogClass: "popup_error",
+                    hide: "fold",
+                    buttons: [{
+                        text: CLOSE_button,
+                        click: function () { $( this ).dialog( "close" ); SendForm.submit(); }
+                    }]
+                });
+            }
+
+             }, 3000);
+
         }
     }); 
     
