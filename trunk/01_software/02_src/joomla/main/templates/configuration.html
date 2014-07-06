@@ -228,6 +228,7 @@
             <td><div id="error_min_max" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
     </tr>
     <!-- Display RTC row -->
+    <?php if($GLOBALS['SHOW_RTC']) { ?>
     <tr>
         <td class="conf-marge"></td>
         <td>
@@ -249,6 +250,7 @@
         </td>
         <td></td>
     </tr>
+    <?php } ?>
     </table>
 </div>
 <!-- End of Cultibox tab -->

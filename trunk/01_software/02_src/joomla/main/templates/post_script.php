@@ -1,7 +1,7 @@
 <?php 
 
     // IN DEV : Add check sd card message
-    // include('main/libs/js/check_sd.js'); 
+    include('main/libs/js/check_sd.js'); 
     
     // Check software version if needed
     if(get_configuration("CHECK_UPDATE",$main_error) == "True")

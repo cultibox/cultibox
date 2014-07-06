@@ -46,27 +46,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
-if(strcmp("$sd_card","")==0) {
-    unset($_SESSION['CHECKED_SD']);
-} 
-
-
-if((!isset($_SESSION['CHECKED_SD']))||(empty($_SESSION['CHECKED_SD']))) {
-    // If a cultibox SD card is plugged, manage some administrators operations: check the firmware and log.txt files, check if 'programs' are up tp date...
-    if(strlen(check_and_update_sd_card($sd_card,$main_info,$main_error))>1) {
-        unset($_SESSION['CHECKED_SD']);
-    } else {
-        $_SESSION['CHECKED_SD']=true;
-    }
-
-    // Search and update log information form SD card
-    if(strlen(sd_card_update_log_informations($sd_card)>1)) {
-        unset($_SESSION['CHECKED_SD']);
-    } else {
-        $_SESSION['CHECKED_SD']=true;
-    }
-}
-
 
 //Check the browser compatibility, if it's not compatible, the welcome page wil display a warning message
 if(count($browser)>0) {

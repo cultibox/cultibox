@@ -46,10 +46,16 @@
     $main_info = array();
 
     // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-    check_and_update_sd_card($sd_card,$main_info,$main_error);
+    $return=check_and_update_sd_card($sd_card,$main_info,$main_error);
+    if($return > 1) {
+        $main_error[]=get_error_sd_card_update_message($return);
+    }
 
     // Search and update log information form SD card
-    sd_card_update_log_informations($sd_card);
+    $return=sd_card_update_log_informations($sd_card);
+    if( $return > 1 ) {
+        $main_error[]=get_error_sd_card_update_message($return);
+    }
 
     // Create output array
     $ret_array = array();

@@ -30,9 +30,9 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
     $main_info_tab[]=__('INFO_SD_CARD').": $sd_card";
     
     // Check if SD card can be writable
-    if(!check_sd_card($sd_card))
-        return ERROR_WRITE_SD;
-        
+    if(!check_sd_card($sd_card)) return ERROR_WRITE_SD;
+
+
     $program = "";
     $conf_uptodate = true;
 
@@ -167,8 +167,8 @@ function get_error_sd_card_update_message($id=0) {
 // RET true if the copy is errorless, false else
 function sd_card_update_log_informations ($sd_card="") {
 
-    if(empty($sd_card) || !isset($sd_card) || $sd_card == "")
-        return ERROR_SD_NOT_FOUND;
+    if(empty($sd_card) || !isset($sd_card) || $sd_card == "") return ERROR_SD_NOT_FOUND;
+
 
     // The informations part to send statistics to debug the cultibox: 
     //      if the 'STATISTICS' variable into the configuration table from the database is set to 'True' informations will be send for debug
