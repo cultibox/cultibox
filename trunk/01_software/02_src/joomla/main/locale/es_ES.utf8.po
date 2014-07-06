@@ -236,9 +236,6 @@ msgstr "Retardo de tiempo del reloj interno"
 msgid "RTC_OFFSET_UNITY"
 msgstr "segundo(s)"
 
-msgid "ACTIV_DAILY_PROGRAM"
-msgstr "Autorizar programa diario"
-
 # For the logs part:
 msgid "HISTO_GRAPH"
 msgstr "Gráficos climáticos"
@@ -1765,9 +1762,6 @@ msgstr "Si la regulación segundaria esta activada en la configuración del soft
 
 msgid "TOOLTIP_SHOW_COST"
 msgstr "Activando esa opción , se puede tener acceso a la pagina de calculo de coste de su instalación usando el menú ‘Coste’ que aparece en la barra del menú principal. "
-
-msgid "TOOLTIP_ACTIV_DAILY_PROGRAM"
-msgstr "Al activar esta opción se pueden hacer diferentes programas para cada día."
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Ese campo permite definir la hora de reseteo del min/max de todos los sensores presentes en la pantalla de la Cultibox"

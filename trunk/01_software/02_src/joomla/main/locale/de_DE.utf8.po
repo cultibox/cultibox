@@ -235,9 +235,6 @@ msgstr "Verschiebung des internen Takt"
 msgid "RTC_OFFSET_UNITY"
 msgstr "Sekunde (n)"
 
-msgid "ACTIV_DAILY_PROGRAM"
-msgstr "Aktivieren Tagesprogramm"
-
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1765,9 +1762,6 @@ msgstr "Wenn die Sekundärregelung ist in der Software-Konfiguration aktiviert, 
 
 msgid "TOOLTIP_SHOW_COST"
 msgstr "Durch die Aktivierung dieser Option, die Sie auf die Seite zugreifen können Kalkulation Ihrer Einrichtung durch das Menü 'Kosten', die in der Hauptmenüleiste erscheint."
-
-msgid "TOOLTIP_ACTIV_DAILY_PROGRAM"
-msgstr "Durch Aktivierung dieser Option können Sie verschiedene Programme für jeden Tag zu machen."
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Hier können Sie die Zeit der Reset min / max aller auf dem Bildschirm angezeigt Cultibox Sensoren wählen"

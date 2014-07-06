@@ -86,7 +86,6 @@ $conf_arr["NB_PLUGS"]               = array ("update_conf" => "0", "var" => "nb_
 $conf_arr["SECOND_REGUL"]           = array ("update_conf" => "0", "var" => "second_regul");
 $conf_arr["STATISTICS"]             = array ("update_conf" => "0", "var" => "stats");
 $conf_arr["RESET_MINMAX"]           = array ("update_conf" => "1", "var" => "minmax");
-$conf_arr["ACTIV_DAILY_PROGRAM"]    = array ("update_conf" => "0", "var" => "activ_daily_program");
 $conf_arr["SHOW_COST"]              = array ("update_conf" => "0", "var" => "show_cost");
 $conf_arr["ADVANCED_REGUL_OPTIONS"] = array ("update_conf" => "1", "var" => "advanced_regul");
 

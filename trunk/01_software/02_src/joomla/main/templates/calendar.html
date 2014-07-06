@@ -43,16 +43,13 @@
             // Read program index
             $program_index = array();
             program\get_program_index_info($program_index);
-            
-            if($activ_daily_program == "True" && count($program_index) > 1) { 
         ?>
             <!-- Button to add daily program -->
             <input type="image" id="daily_program" name="daily_program"
                    title="<?php echo __('TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM'); ?>"
                    src="main/libs/img/db_add.png"  width="34" 
-                   alt="calendar"
+                   alt="calendar" 
             />        
-        <?php } ?>
         </td>
         <td class="calendar_right">
             <input id="datepicker_calendar" name="datepicker_calendar" type="hidden" value="">

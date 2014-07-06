@@ -68,7 +68,6 @@ $export_selected     = getvar("export_selected_plug");
 
 // Get configuration value
 $second_regul        = get_configuration("SECOND_REGUL",$main_error);
-$activ_daily_program = get_configuration("ACTIV_DAILY_PROGRAM",$main_error); // To activ daily program
 
 $start="";
 $end="";

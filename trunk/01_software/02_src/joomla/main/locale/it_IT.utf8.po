@@ -235,8 +235,6 @@ msgstr "Spostamento del clock interno"
 msgid "RTC_OFFSET_UNITY"
 msgstr "secondo (s)"
 
-msgid "ACTIV_DAILY_PROGRAM"
-msgstr "Abilita programma giornaliero"
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1764,9 +1762,6 @@ msgstr "Se il controllo secondario è attivata nella configurazione software, qu
 
 msgid "TOOLTIP_SHOW_COST"
 msgstr "Abilitando questa opzione è possibile accedere alla pagina che costano vostro impianto attraverso il menu 'costo' che appare nella barra del menu principale"
-
-msgid "TOOLTIP_ACTIV_DAILY_PROGRAM"
-msgstr "Attivando questa opzione è possibile effettuare diversi programmi per ogni giorno."
 
 msgid "TOOLTIP_RESET_MINMAX"
 msgstr "Questo campo consente di scegliere il tempo di ripristino di min / max di tutti i sensori visualizzate sullo schermo Cultibox"
