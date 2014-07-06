@@ -1567,6 +1567,9 @@ msgstr "Fehler im Format des WEP-Kennwort: Sie muss nur nombreus (0-9) enthalten
 msgid "ERROR_WPA_KEY_TYPE"
 msgstr "Fehler im Format der WPA-Passphrase: Es muss zwischen 8 und 63 Zeichen lang sein"
 
+msgid "ERROR_UPDATE_CONF"
+msgstr "Während der Aktualisierung der Konfiguration ist ein Fehler aufgetreten"
+
 
 # For the informations part:
 msgid "SHOW_MESSAGE"
