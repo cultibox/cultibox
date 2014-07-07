@@ -394,6 +394,30 @@ function reset_log($table="",$start="",$end="") {
 }
 // }}}
 
+
+
+// {{{ reset_fake_log()
+// IN 
+// RET  0 is an error occured, 1 else
+function reset_fake_log() {
+    $sql = "DELETE FROM logs WHERE fake_log LIKE 'True';";
+
+    $db=\db_priv_pdo_start();
+    try {
+        $db->exec($sql);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    if((isset($ret))&&(!empty($ret))) {
+          return $ret;
+    }
+    return 1;
+}
+// }}}
+
+
 }
 
 ?>
