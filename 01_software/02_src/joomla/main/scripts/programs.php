@@ -143,6 +143,10 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+   $main_error[]=__('ERROR_SD_CARD');
+}
+
 // Ajout d'une prise pour configurer un nouveau programme, la variable définissant le nombre de prise maximale
 // est configurée dans le fichier config.php: $GLOBALS['NB_MAX_PLUG'] (même chose pour le nombre minimale: $GLOBALS['NB_MIN_PLUG'])
 if((isset($add_plug))&&(!empty($add_plug))) {
@@ -672,10 +676,6 @@ if ($rebuildProgamFile
 }
 
 
-// If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-check_and_update_sd_card($sd_card,$main_info,$main_error);
-
-// Search and update log information form SD card
 sd_card_update_log_informations($sd_card);
 if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
     $value_program="";

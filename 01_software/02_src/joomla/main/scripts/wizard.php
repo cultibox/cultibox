@@ -52,6 +52,10 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+   $main_error[]=__('ERROR_SD_CARD');
+}
+
 // Setting some default values:
 if((empty($selected_plug))||(!isset($selected_plug))) {
     $selected_plug=1;
@@ -94,11 +98,6 @@ if((empty($plug_power_max))||(!isset($plug_power_max))) {
 }
 
 
-// If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-check_and_update_sd_card($sd_card,$main_info,$main_error);
-
-// Search and update log information form SD card
-sd_card_update_log_informations($sd_card);
 if((empty($value_program))||(!isset($value_program))) {
     if((!empty($plug_type))&&(isset($plug_type))) {
         switch ($plug_type) {

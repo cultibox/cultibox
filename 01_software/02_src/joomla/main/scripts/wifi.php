@@ -74,11 +74,10 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
-// If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-check_and_update_sd_card($sd_card,$main_info,$main_error);
+if((!isset($sd_card))||(empty($sd_card))) {
+   $main_error[]=__('ERROR_SD_CARD');
+}
 
-// Search and update log information form SD card
-sd_card_update_log_informations($sd_card);
 
 // Include in html pop up and message
 include('main/templates/post_script.php');

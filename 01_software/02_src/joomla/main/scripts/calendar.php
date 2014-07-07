@@ -48,16 +48,14 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+   $main_error[]=__('ERROR_SD_CARD');
+}
+
 
 //Get the important event list for the previous and next week to display:
 $important_list = array();
 $important_list = calendar\get_important_event_list($main_error); //Get import event list from database
-
-// If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-check_and_update_sd_card($sd_card,$main_info,$main_error);
-
-// Search and update log information form SD card
-sd_card_update_log_informations($sd_card);
 
 $substrat=array();
 $product=array();

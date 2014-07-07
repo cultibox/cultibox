@@ -34,7 +34,7 @@ function check_db() {
     if ($res == null)
     {
         
-        // Buil MySQL command to create table
+        // Build MySQL command to create table
         $sql = "CREATE TABLE program_index "
                 . "(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "name VARCHAR(100), version VARCHAR(100), "
