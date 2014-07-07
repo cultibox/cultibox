@@ -442,7 +442,7 @@ $(document).ready(function() {
                         var userAddDailyProgram = false;
                         var selected_DailyProgram = "";
                         <?php
-                            if($activ_daily_program == "True" && count($program_index) > 1) {
+                            if(count($program_index) > 1) {
                         ?>
                             // If checkbox is selected
                             if ($('#create_dayly_program_in_ui').is(':checked') == true) 
@@ -588,7 +588,7 @@ $(document).ready(function() {
                         $("#select_title").prop('selectedIndex', 0);  
                         $("#event_important").attr('checked', false);
                         <?php
-                            if($activ_daily_program == "True" && count($program_index) > 1) { 
+                            if(count($program_index) > 1) { 
                         ?>
                             // Unselect check box daily program
                             $("#create_dayly_program_in_ui").attr('checked', false);
@@ -609,7 +609,7 @@ $(document).ready(function() {
                         $("#select_title").prop('selectedIndex', 0);  
                         $("#event_important").attr('checked', false);
                         <?php
-                            if($activ_daily_program == "True" && count($program_index) > 1) { 
+                            if(count($program_index) > 1) { 
                         ?>
                             // Unselect check box daily program
                             $("#create_dayly_program_in_ui").attr('checked', false);
@@ -904,7 +904,7 @@ $(document).ready(function() {
                                     $("#select_title").prop('selectedIndex', 0);  
                                     $("#event_important").attr('checked', false);
                                     <?php
-                                        if($activ_daily_program == "True" && count($program_index) > 1) { 
+                                        if(count($program_index) > 1) { 
                                     ?>
                                         // Unselect check box daily program
                                         $("#create_dayly_program_in_ui").attr('checked', false);
@@ -931,7 +931,7 @@ $(document).ready(function() {
                                     $("#select_title").prop('selectedIndex', 0);
                                     $("#event_important").attr('checked', false);
                                     <?php
-                                        if($activ_daily_program == "True" && count($program_index) > 1) { 
+                                        if(count($program_index) > 1) { 
                                     ?>
                                         // Unselect check box daily program
                                         $("#create_dayly_program_in_ui").attr('checked', false);
