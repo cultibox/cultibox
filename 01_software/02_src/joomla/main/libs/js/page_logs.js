@@ -940,6 +940,7 @@ $(document).ready(function() {
             width: 750,
             closeOnEscape: true,
             dialogClass: "popup_message",
+            modal: true,
             buttons: [{
                 text: CLOSE_button,
                 "id": "btnClose_curve",
@@ -963,6 +964,7 @@ $(document).ready(function() {
             resizable: false,
             width: 750,
             closeOnEscape: true,
+            modal: true,
             dialogClass: "popup_message",
             buttons: [{
                 text: CLOSE_button,
@@ -988,6 +990,7 @@ $(document).ready(function() {
             width: 800,
             closeOnEscape: true,
             dialogClass: "popup_message",
+            modal: true,
             buttons: [{
                 text: CLOSE_button,
                 "id": "btnClose_db",
@@ -1175,7 +1178,11 @@ $(document).ready(function() {
   $(document).ready(function() {
     $("#next").click(function(e) {
         e.preventDefault(); 
+
         var sensors=Array();
+        var programs=Array();
+        var powers=Array();
+    
         $('input[type=checkbox][name^=select_sensor]').each(function() {
             if($(this).prop('checked')) {
                 sensors.push($(this).val());
@@ -1185,12 +1192,43 @@ $(document).ready(function() {
         $('input[type=hidden][name^=select_sensor]').each(function() {
             $(this).val(sensors);
         });
+
+
+
+        $('input[type=checkbox][name^=select_program]').each(function() {
+            if($(this).prop('checked')) {
+                programs.push($(this).val());
+            }
+        });
+
+        $('input[type=hidden][name^=select_program]').each(function() {
+            $(this).val(programs);
+        });
+
+
+        
+        $('input[type=checkbox][name^=select_power]').each(function() {
+            if($(this).prop('checked')) {
+                powers.push($(this).val());
+            }
+        });
+
+        $('input[type=hidden][name^=select_power]').each(function() {
+            $(this).val(powers);
+        });
+
         document.forms['next'].submit();
     });
 
+
+
     $("#previous").click(function(e) {
         e.preventDefault();
+
         var sensors=Array();
+        var programs=Array();
+        var powers=Array();
+
         $('input[type=checkbox][name^=select_sensor]').each(function() {
             if($(this).prop('checked')) {
                 sensors.push($(this).val());
@@ -1200,6 +1238,31 @@ $(document).ready(function() {
         $('input[type=hidden][name^=select_sensor]').each(function() {
             $(this).val(sensors);
         });
+
+
+
+        $('input[type=checkbox][name^=select_program]').each(function() {
+            if($(this).prop('checked')) {
+                programs.push($(this).val());
+            }
+        });
+
+        $('input[type=hidden][name^=select_program]').each(function() {
+            $(this).val(programs);
+        });
+
+
+        
+        $('input[type=checkbox][name^=select_power]').each(function() {
+            if($(this).prop('checked')) {
+                powers.push($(this).val());
+            }
+        });
+
+        $('input[type=hidden][name^=select_power]').each(function() {
+            $(this).val(powers);
+        });
+
         document.forms['previous'].submit();
     });
  });

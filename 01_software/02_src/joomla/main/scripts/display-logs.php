@@ -183,7 +183,9 @@ if(isset($_POST['startyear'])) {
 $select_sensor = array();
 if(isset($_POST['select_sensor'])) {
     $select_sensor=getvar('select_sensor');
-    $select_sensor=explode(",",$select_sensor);
+    if(!is_array($select_sensor)) {
+        $select_sensor=explode(",",$select_sensor);
+    }
 } else {
     $select_sensor[]="1";
 }
@@ -192,11 +194,17 @@ if(isset($_POST['select_sensor'])) {
 $select_power = array();
 if(isset($_POST['select_power'])) {
     $select_power = getvar('select_power');
+    if(!is_array($select_power)) {
+        $select_power=explode(",",$select_power);
+    }
 } 
 
 $select_program = array();
 if(isset($_POST['select_program'])) {
     $select_program = getvar('select_program');
+    if(!is_array($select_program)) {
+        $select_program=explode(",",$select_program);
+    }
 }
 
 
