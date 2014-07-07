@@ -447,7 +447,7 @@ $(function () {
                 shared: true,
                 useHTML: true,
                 formatter: function() {
-                    var s = '<b>Date : '+ Highcharts.dateFormat('%m-%d %H:%M', this.x) +'</b>';
+                    var s = '<p align="center"><b>'+ Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x) +'</b><br />';
 
                     $.each(this.points, function(i, point) {
                     
@@ -463,6 +463,7 @@ $(function () {
                     
                         s += '<br/><font color="' + point.series.options.color + '">' + point.series.options.name + ' : '+ valueToTidsplay + " " + point.series.options.tooltip.valueSuffix + '</font>';
                     });
+                    s=s+"</p>";
                 
                     return s;
                 }
@@ -1187,7 +1188,7 @@ $(document).ready(function() {
             
             // Sensor informations
             textToDisplay += "<center><b><i>" ;
-            textToDisplay += chart.yAxis[i].userOptions.title.text + " : </i></b><br />";
+            textToDisplay += "<font color='"+chart.yAxis[i].options.title.style.color+"'>"+chart.yAxis[i].userOptions.title.text + " : </font></i></b><br />";
             
             textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
             textToDisplay +=    "<b>" + extremes.dataMin + " " + chart.yAxis[i].userOptions.unit + "</b>";
