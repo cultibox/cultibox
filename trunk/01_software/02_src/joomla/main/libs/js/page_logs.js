@@ -2,6 +2,7 @@
 
 
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+sensor_axis=<?php echo json_encode($sensor_axis); ?>;
 
 // {{{ getType()
 // IN  input value: display the type og log: 0 for daily logs, 1 for monthly
@@ -247,6 +248,7 @@ $(function () {
                                                         if (chart.series[this.index].visible) {
                                                             // Hide the graph
                                                             chart.series[this.index].hide();
+
                                                             // Hide legend
                                                             chart.yAxis[item.yaxis].update({
                                                                 title:{
@@ -809,6 +811,7 @@ $(document).ready(function() {
 
     $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").click(function() {
 
+        
         // Init a var on highchart
         var chart = $('#container').highcharts();
         
@@ -833,10 +836,10 @@ $(document).ready(function() {
 
                     // Parse result from json
                     var objJSON = jQuery.parseJSON(json);
+                    var checked=false;
                         
                     // Foreach curve add it to serie
                     $.each(objJSON, function(i, item) {
-                
                         // Init var serie
                         var series = {
                             id: 'series',
@@ -898,9 +901,16 @@ $(document).ready(function() {
                         });  
 
                         // Save serie index displayed
-                        cheBu.attr("serieID" , serieID.index);
-                        cheBu.attr("yAxis" , item.yaxis);
+                        $(this).attr("serieID" , serieID.index);
+                        $(this).attr("yAxis" , item.yaxis);
+
+                        alert($(this).attr("serieID"));
+                        if(!checked) {
+                            sensor_axis[cheBu.attr("value")]=serieID.index; 
+                            checked=true;
+                        }
                         
+
                         // Update tooltip with min and mùax
                         updateTooltipMinMax();
                         
@@ -911,20 +921,28 @@ $(document).ready(function() {
         } 
         else 
         {
+
+            // HERRRRRREEE
             // Check button is desactived
+            //console.log(cheBu.attr("serieID"));
             var temp = cheBu.attr("serieID");
+            //alert(cheBu.attr("serieID"));
+
+
+            if(cheBu.attr("sensortype")==2) {
+                 chart.series[sensor_axis[cheBu.attr("value")]+1].remove(false);
+            }
+
+            chart.series[sensor_axis[cheBu.attr("value")]].remove(false);
             
-            // Remove serie
-            chart.series[cheBu.attr("serieID")].remove(true);
             
             // Remove text legend
-            chart.yAxis[cheBu.attr("yAxis")].update({
+            /*chart.yAxis[cheBu.attr("yAxis")].update({
                 title:{
                     text:""
                 }
-            });  
+            });  */
 
-            
         }
     });
 })
