@@ -186,8 +186,8 @@
     </tr>
     <tr>
         <td class="left_log">
-            <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
-                <input type="submit" value="<" name="previous" class="button_log" title="<?php if(strcmp($type,"day")==0) echo __('PREVIOUS_BUTTON_DAY'); else echo __('PREVIOUS_BUTTON_MONTH'); ?>">
+            <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post" name="previous">
+                <input type="submit" value="<" name="previous" id="previous" class="button_log" title="<?php if(strcmp($type,"day")==0) echo __('PREVIOUS_BUTTON_DAY'); else echo __('PREVIOUS_BUTTON_MONTH'); ?>">
                 <?php if($type == "day") { ?>
                     <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("-1 day", strtotime("$startday"))); ?>">
                 <?php } else {
@@ -204,8 +204,8 @@
                     <input type="hidden" name="startyear" value="<?php if(strcmp("$startmonth","01")==0) echo $startyear-1; else echo $startyear; ?>">
                     <input type="hidden" name="type_select" value="month">
                 <?php } ?>
-
                 <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
+                <input type="hidden" name="select_sensor" value="<?php print_r($select_sensor); ?>">
             </form>
         </td>
         <td class="center_log"><div id="container" style="width: 850px; height: 425px; margin: 0 auto"></div></td>
@@ -215,8 +215,8 @@
                  $yy=date('Y');
                  $mm=date('m');
             ?>
-            <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
-                <input type="submit" value=">" name="next" class="button_log" title="<?php if(strcmp($type,"day")==0) echo __('NEXT_BUTTON_DAY'); else echo __('NEXT_BUTTON_MONTH'); ?>">
+            <form action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post" name="next">
+                <input type="submit" value=">" name="next" id="next" class="button_log" title="<?php if(strcmp($type,"day")==0) echo __('NEXT_BUTTON_DAY'); else echo __('NEXT_BUTTON_MONTH'); ?>">
                 <?php if(strcmp($type,"day")==0) { ?>
                     <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("+1 day", strtotime("$startday"))); ?>">
                 <?php } else { ?>
@@ -236,6 +236,7 @@
                 <?php } ?>
 
                 <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
+                <input type="hidden" name="select_sensor" value="<?php print_r($select_sensor); ?>">
             </form>
         </td>
     </tr>

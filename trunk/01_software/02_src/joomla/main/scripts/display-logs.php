@@ -183,9 +183,11 @@ if(isset($_POST['startyear'])) {
 $select_sensor = array();
 if(isset($_POST['select_sensor'])) {
     $select_sensor=getvar('select_sensor');
+    $select_sensor=explode(",",$select_sensor);
 } else {
     $select_sensor[]="1";
 }
+
 
 $select_power = array();
 if(isset($_POST['select_power'])) {
