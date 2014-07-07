@@ -52,6 +52,11 @@ if(isset($_POST['type_select'])) {
     $type = getvar('type_select');
 }
 
+// Check if there are logs recorded, delete fake logs if it's the case:
+if(!logs\check_export_table_csv("logs",$main_error)) {
+     logs\reset_fake_log();
+}
+
 //============================== GET OR SET CONFIGURATION PART ====================
 //update_conf is used to define if there is an impact on SD card
 $conf_arr["COLOR_HUMIDITY_GRAPH"]   = array ("update_conf" => "0", "var" => "color_humidity");
