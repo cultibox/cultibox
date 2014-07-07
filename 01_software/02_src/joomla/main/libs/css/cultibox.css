@@ -124,6 +124,11 @@ td.conf-menu-marge-plug {
     width: 10%;
 }
 
+td.program-button {
+    width:50%;
+    text-align: center;
+}
+
 td.right_log {
     width: 5%;
 }
