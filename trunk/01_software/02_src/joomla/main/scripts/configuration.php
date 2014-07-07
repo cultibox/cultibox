@@ -79,17 +79,20 @@ $conf_arr["RESET_MINMAX"]           = array ("update_conf" => "1", "var" => "res
 $conf_arr["ALARM_VALUE"]            = array ("update_conf" => "1", "var" => "alarm_value");
 $conf_arr["VERSION"]                = array ("update_conf" => "0", "var" => "version");
 $conf_arr["WIFI_ENABLE"]            = array ("update_conf" => "1", "var" => "wifi_enable");
-$conf_arr["WIFI_SSID"]            = array ("update_conf" => "1", "var" => "wifi_ssid");
-$conf_arr["WIFI_PASSWORD"]            = array ("update_conf" => "1", "var" => "wifi_password");
-$conf_arr["WIFI_IP"]            = array ("update_conf" => "1", "var" => "wifi_ip");
-$conf_arr["WIFI_IP_MANUAL"]            = array ("update_conf" => "1", "var" => "wifi_ip_manual");
-$conf_arr["WIFI_KEY_TYPE"]            = array ("update_conf" => "1", "var" => "wifi_key_type");
+$conf_arr["WIFI_SSID"]              = array ("update_conf" => "1", "var" => "wifi_ssid");
+$conf_arr["WIFI_PASSWORD"]          = array ("update_conf" => "1", "var" => "wifi_password");
+$conf_arr["WIFI_IP"]                = array ("update_conf" => "1", "var" => "wifi_ip");
+$conf_arr["WIFI_IP_MANUAL"]         = array ("update_conf" => "1", "var" => "wifi_ip_manual");
+$conf_arr["WIFI_KEY_TYPE"]          = array ("update_conf" => "1", "var" => "wifi_key_type");
 $conf_arr["WIFI_MANUAL"]            = array ("update_conf" => "1", "var" => "wifi_manual");
+$conf_arr["ALARM_ACTIV"]            = array ("update_conf" => "1", "var" => "alarm_activ");
+
 
 
 foreach ($conf_arr as $key => $value) {
     ${$value['var']} = get_configuration($key,$main_error);
 }
+
 
 
 // Include in html pop up and message

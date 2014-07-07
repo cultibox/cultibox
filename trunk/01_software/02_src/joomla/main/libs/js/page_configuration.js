@@ -84,7 +84,7 @@ $(document).ready(function(){
             }
         });
 
-        if($("#alarm_enable option:selected").val()=="0001") {
+        if($("#alarm_activ option:selected").val()=="0001") {
             $.ajax({
                 cache: false,
                 async: false,
@@ -236,7 +236,7 @@ $(document).ready(function(){
                     url: "../../main/modules/external/update_configuration.php",
                     data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                 }).done(function (data) {
-                    if(data!="") {  
+                    if($.parseJSON(data)!="") {  
                         check_update=false;
                     }
                 });
@@ -253,7 +253,7 @@ $(document).ready(function(){
                 url: "../../main/modules/external/update_configuration.php",
                 data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
             }).done(function (data) {
-                if(data!="") {
+                if($.parseJSON(data)!="") {
                     check_update=false;
                 }
             });
@@ -269,14 +269,14 @@ $(document).ready(function(){
                 url: "../../main/modules/external/update_configuration.php",
                 data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
             }).done(function (data) {
-                if(data!="") {
+                if($.parseJSON(data)!="") {
                     check_update=false;
                 }
             });
 
 
             //ALARM VALUE process:
-            if($("#alarm_enable option:selected").val()=="0001") {
+            if($("#alarm_activ option:selected").val()=="0001") {
                 newValue    = $("#alarm_value").val();
             } else {
                 newValue    = 15;
@@ -291,7 +291,7 @@ $(document).ready(function(){
                 url: "../../main/modules/external/update_configuration.php",
                 data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
             }).done(function (data) {
-                if(data!="") {
+                if($.parseJSON(data)!="") {
                     check_update=false;
                 }
             });
@@ -308,7 +308,7 @@ $(document).ready(function(){
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                     }).done(function (data) {
-                        if(data!="") {
+                        if($.parseJSON(data)!="") {
                             check_update=false;
                         }
                     });
@@ -325,7 +325,7 @@ $(document).ready(function(){
                             url: "../../main/modules/external/update_configuration.php",
                             data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                         }).done(function (data) {
-                            if(data!="") {
+                            if($.parseJSON(data)!="") {
                                 check_update=false;
                             }
                         });
@@ -341,7 +341,7 @@ $(document).ready(function(){
                             url: "../../main/modules/external/update_configuration.php",
                             data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                         }).done(function (data) {
-                            if(data!="") {
+                            if($.parseJSON(data)!="") {
                                 check_update=false;
                             }
                         });
@@ -356,7 +356,7 @@ $(document).ready(function(){
                             url: "../../main/modules/external/update_configuration.php",
                             data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                         }).done(function (data) {
-                            if(data!="") {
+                            if($.parseJSON(data)!="") {
                                 check_update=false;
                             }
                         });
@@ -372,7 +372,7 @@ $(document).ready(function(){
                             url: "../../main/modules/external/update_configuration.php",
                             data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                         }).done(function (data) {
-                            if(data!="") {
+                            if($.parseJSON(data)!="") {
                                 check_update=false;
                             }
                         });
@@ -391,7 +391,7 @@ $(document).ready(function(){
                             url: "../../main/modules/external/update_configuration.php",
                             data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                         }).done(function (data) {
-                            if(data!="") {
+                            if($.parseJSON(data)!="") {
                                 check_update=false;
                             }
                         });
@@ -407,7 +407,7 @@ $(document).ready(function(){
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                     }).done(function (data) {
-                        if(data!="") {
+                        if($.parseJSON(data)!="") {
                             check_update=false;
                         }
                     });
@@ -421,7 +421,7 @@ $(document).ready(function(){
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                     }).done(function (data) {
-                        if(data!="") {
+                        if($.parseJSON(data)!="") {
                             check_update=false;
                         }
                     });
@@ -435,7 +435,7 @@ $(document).ready(function(){
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                     }).done(function (data) {
-                        if(data!="") {
+                        if($.parseJSON(data)!="") {
                             check_update=false;
                         }
                     });
@@ -449,7 +449,7 @@ $(document).ready(function(){
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
                     }).done(function (data) {
-                        if(data!="") {
+                        if($.parseJSON(data)!="") {
                             check_update=false;
                         }
                     });
@@ -463,7 +463,7 @@ $(document).ready(function(){
                         url: "../../main/modules/external/update_configuration.php",
                         data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf   
                     }).done(function (data) {
-                        if(data!="") {
+                        if($.parseJSON(data)!="") {
                             check_update=false;
                         }
                     });
@@ -483,7 +483,11 @@ $(document).ready(function(){
                     dialogClass: "popup_message",
                     buttons: [{
                         text: CLOSE_button,
-                        click: function () { $( this ).dialog( "close" ); SendForm.submit(); }
+                        click: function () { 
+                            $( this ).dialog( "close" ); 
+                            //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
+                            window.location = "configuration-"+slang;
+                         }
                     }]
                 });
             } else  {
@@ -497,7 +501,11 @@ $(document).ready(function(){
                     hide: "fold",
                     buttons: [{
                         text: CLOSE_button,
-                        click: function () { $( this ).dialog( "close" ); SendForm.submit(); }
+                        click: function () { 
+                            $( this ).dialog( "close" );  
+                            //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
+                            window.location = "configuration-"+slang;
+                        }
                     }]
                 });
             }

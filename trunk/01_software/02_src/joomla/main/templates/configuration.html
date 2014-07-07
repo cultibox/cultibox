@@ -262,9 +262,9 @@
             <td class="conf-marge"></td>
             <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?>:</td>
             <td class="conf-alarm-field">
-                <select name="alarm_activ" data-update_conf="1" id="alarm_enable" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
+                <select name="alarm_activ" data-update_conf="1" id="alarm_activ" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
                 <?php 
-                    if("$alarm_enable"=="0001") {
+                    if("$alarm_activ"=="0001") {
                         echo "<option value='0001' selected>".__('YES')."</option>";
                         echo "<option value='0000'>".__('NO')."</option>";
                     } else {
@@ -279,12 +279,12 @@
         <tr>
             <td class="conf-marge"></td>
             <td>
-                <div id="label_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>">
+                <div id="label_alarm_value" style="<?php if("$alarm_activ"=="0000") echo "display:none"; ?>">
                     <?php echo __('CONFIGURE_ALARM_VALUE'); ?>:
                 </div>
             </td>
             <td>
-                <div id="div_alarm_value" style="<?php if("$alarm_enable"=="0000") echo "display:none"; ?>">
+                <div id="div_alarm_value" style="<?php if("$alarm_activ"=="0000") echo "display:none"; ?>">
                     <input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" data-update_conf="1" name="alarm_value" id="alarm_value" onKeypress="return verifDigit(event);">
                     <label id="label_degree">°C</label>
                 </div>
