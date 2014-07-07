@@ -35,7 +35,7 @@
         require_once('../../libs/utilfunc_sd_card.php');
         require_once('../../libs/debug.php');
     }
-    
+
     // Define language
     $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
     __('LANG');
@@ -61,7 +61,9 @@
         update_sd_conf_file($sd_card, $_POST['variable'],$_POST['value'],$main_error);
     }
     
-    print_r($main_error);
+    foreach($main_error as $error) {
+        echo json_encode($error);
+    }
    
  
 ?>
