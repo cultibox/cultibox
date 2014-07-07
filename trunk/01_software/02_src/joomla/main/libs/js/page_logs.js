@@ -308,7 +308,7 @@ $(function () {
                                         $.unblockUI();
                                         
                         
-                                        // after every curve loaded, update tooltip with min and mùax
+                                        // after every curve loaded, update tooltip with min and max
                                         updateTooltipMinMax();
 
                                     },
@@ -1195,6 +1195,7 @@ $(document).ready(function() {
             textToDisplay +=    "<b>" + extremes.dataMax + " " + chart.yAxis[i].userOptions.unit + "</b>";
             
             textToDisplay += "</center>";
+            textToDisplay += "<br />";
 
         }
     

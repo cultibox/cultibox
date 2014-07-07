@@ -222,17 +222,18 @@ if($second_regul == "True") {
     {
         format_regul_sumary($plugShow,$main_error,$resume_regul,$nb_plugs);
     }
-} 
 
-if(!empty($resume_regul)) {
-    $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b></p><br />".$resume_regul;
-} else {
-    if((count($select_power)==0)&&(empty($select_plug))) {
-        $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b><br /><br />".__('SUMARY_EMPTY_SELECTION')."</p>";
+    if(!empty($resume_regul)) {
+        $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b></p><br />".$resume_regul;
     } else {
-        $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b><br /><br />".__('SUMARY_EMPTY_REGUL')."</p>";
+        if((count($select_power)==0)&&(empty($select_plug))) {
+            $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b><br /><br />".__('SUMARY_EMPTY_SELECTION')."</p>";
+        } else {
+            $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b><br /><br />".__('SUMARY_EMPTY_REGUL')."</p>";
+        }
     }
-}
+    $resume_regul=$resume_regul."<br />";
+} 
 
 if($type == "month") {
     $legend_date=$startyear."-".$startmonth;
