@@ -1168,6 +1168,42 @@ $(document).ready(function() {
     });
     
  });
+
+
+
+ //To save selected sensor for previous and next button:
+  $(document).ready(function() {
+    $("#next").click(function(e) {
+        e.preventDefault(); 
+        var sensors=Array();
+        $('input[type=checkbox][name^=select_sensor]').each(function() {
+            if($(this).prop('checked')) {
+                sensors.push($(this).val());
+            }
+        });
+
+        $('input[type=hidden][name^=select_sensor]').each(function() {
+            $(this).val(sensors);
+        });
+        document.forms['next'].submit();
+    });
+
+    $("#previous").click(function(e) {
+        e.preventDefault();
+        var sensors=Array();
+        $('input[type=checkbox][name^=select_sensor]').each(function() {
+            if($(this).prop('checked')) {
+                sensors.push($(this).val());
+            }
+        });
+
+        $('input[type=hidden][name^=select_sensor]').each(function() {
+            $(this).val(sensors);
+        });
+        document.forms['previous'].submit();
+    });
+ });
+
  
  // Folowinbg code is used to update tooltip with second regul and min max
  var second_regul = "<?php echo $resume_regul ;?>";
