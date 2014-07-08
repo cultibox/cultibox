@@ -68,19 +68,21 @@ german.UpgradeCultibox=Eine ältere Version der Software Cultibox erkannt. Wenn S
 spanish.UpgradeCultibox=Se ha detectado una versión anterior del software Cultibox. Si continúa con la instalación, el software se actualizará%nTenga en cuenta la siguiente información antes de iniciar la actualización.%n%nEl cambio a una versión anterior no es proporcionado por el software . Esto se puede hacer por su cuenta y riesgo, y sin garantía de éxito.%n%nSi ha cambiado algunos archivos manualmente, los cambios pueden perderse durante la actualización. Los datos y la configuración de su software siempre estarán en funcionamiento en la nueva versión.%n%nPara realizar una actualización, el software actual debe ser completamente funcional.%n%n%n¿Desea continuar con la instalación de la actualización actualización de software Cultibox?
 
 
-french.Uncompat=Cette installation n'est pas compatible pour le système Windows XP. Vous pouvez télécharger une version compatible pour votre système sur le site http://cultibox.fr
-english.Uncompat=This installation is not compatible for Windows XP. You can download a compatible version for your system on the site http://cultibox.fr
-italian.Uncompat=Questa installazione non è compatibile per Windows XP. È possibile scaricare una versione compatibile per il sistema sul sito http://cultibox.fr
-german.Uncompat=Diese Installation ist für Windows XP kompatibel. Sie können eine kompatible Version für Ihr System auf der Website herunterladen http://cultibox.fr
-spanish.Uncompat=Esta instalación no es compatible para Windows XP. Puede descargar una versión compatible para su sistema en el sitio http://cultibox.fr
+french.Uncompat=Cette installation est uniquement compatible pour le système Windows XP. Vous pouvez télécharger une version compatible pour votre système sur le site http://cultibox.fr
+english.Uncompat=This facility is only compatible for Windows XP. You can download a compatible version for your system on the site http://cultibox.fr
+italian.Uncompat=Questa funzione è compatibile solo per Windows XP. È possibile scaricare una versione compatibile per il sistema sul sito http://cultibox.fr
+german.Uncompat=Diese Einrichtung ist nur für Windows XP. Sie können eine kompatible Version für Ihr System auf der Website herunterladen http://cultibox.fr
+spanish.Uncompat=Este servicio sólo es compatible para Windows XP. Puede descargar una versión compatible para su sistema en el sitio http://cultibox.fr
 
 [code]
 var 
   ForceInstall: boolean;
-function InitializeSetup():boolean;
+
+function InitializeSetup: Boolean;
 var
   ResultCode: integer;
   Version: TWindowsVersion;
+
 
 begin
   GetWindowsVersionEx(Version);
@@ -88,11 +90,10 @@ begin
 
    // On Windows XP:
   if Version.NTPlatform and
-     (Version.Major = 5) and
-     (Version.Minor = 1) then
+     (Version.Major <> 5) or
+     (Version.Minor <> 1) then
   begin
-
-         MsgBox(ExpandConstant('{cm:Uncompat}'),mbCriticalError, MB_OK);
+         MsgBox(ExpandConstant('{cm:Uncompat}'), mbCriticalError, MB_OK);
          Result := False;
          Exit 
   end;
@@ -119,6 +120,8 @@ begin
       end;
     end;  
 end;
+
+
 
 
 procedure CurStepChanged(CurStep: TSetupStep);
