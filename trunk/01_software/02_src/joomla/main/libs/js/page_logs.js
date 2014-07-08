@@ -2,7 +2,6 @@
 
 
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-sensor_axis=<?php echo json_encode($sensor_axis); ?>;
 
 // {{{ getType()
 // IN  input value: display the type og log: 0 for daily logs, 1 for monthly
@@ -606,7 +605,7 @@ $(document).ready(function() {
                 url: "../../main/modules/external/get_variable.php",
                 data: {name:name}
             }).done(function (data) {
-                if(data) {
+                if($.trim(data)!="") {
                     $("#progress_load").dialog({
                         resizable: false,
                         width: 550,
