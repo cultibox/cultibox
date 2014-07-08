@@ -40,7 +40,12 @@ case "$1" in
         echo "Documentation generation"
         (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl  && pdflatex documentation.tex && pdflatex documentation.tex)
 
-        cp ./install_script.iss ./install_script_current.iss
+        if [ "$1" == "windows-xp" ]; then
+            cp ./install_script_xp.iss ./install_script_current.iss
+        else
+            cp ./install_script.iss ./install_script_current.iss
+        fi
+            
         sed -i "s/#define MyAppVersion .*/#define MyAppVersion \"`echo $VERSION`\"/" ./install_script_current.iss
 
         mkdir ../01_src/01_xampp/cultibox
