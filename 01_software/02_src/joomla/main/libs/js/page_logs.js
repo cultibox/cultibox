@@ -671,7 +671,7 @@ $(document).ready(function() {
             url: "../../main/modules/external/get_variable.php",
             data: {name:name}
          }).done(function (data) {
-            if(data) {
+            if(jQuery.parseJSON(data)) {
 				loadLog($("#log_search").val()*31,0,"logs",$("#log_search").val()*31,"submit",data);
 				loadLog($("#log_search").val()*31,0,"power",$("#log_search").val()*31,"submit",data);
 			} else {

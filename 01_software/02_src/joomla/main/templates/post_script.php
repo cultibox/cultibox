@@ -1,5 +1,4 @@
 <?php 
-
     // IN DEV : Add check sd card message
     include('main/libs/js/check_sd.js'); 
     
@@ -16,5 +15,4 @@
     if(get_configuration("STATISTICS",$main_error) == "True") {
         include('main/libs/js/send_informations.js'); 
     }
-
 ?>

@@ -1026,7 +1026,6 @@ $(document).ready(function() {
         }
     });
 
-
     //Lors du click sur l'oeil - on doit cacher l'oeil et afficher la boîte de messages:     
     $("#tooltip_msg_box").click(function(e) {
         //On positionne la variable SESSION tooltip_msg_box qui détermine si on doit afficher l'oeil ou pas lors du chargement d'une page
@@ -1057,7 +1056,6 @@ $(document).ready(function() {
 // id to define
 // type : information or error
 function pop_up_add_information(message, id, type) {
-
     // Add message
     if (type == "information")
         $("#pop_up_information_part ul").append('<li id="' + id + '">' + message + '</li>');

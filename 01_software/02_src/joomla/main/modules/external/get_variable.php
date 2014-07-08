@@ -32,16 +32,20 @@ if((!isset($name))||(empty($name))) {
             }
             break;
         case 'SD_CARD':
-            echo get_sd_card();
+            echo json_encode(get_sd_card());
             break;
         case 'IMPORTANT':
             if((isset($_SESSION['IMPORTANT']))&&(!empty($_SESSION['IMPORTANT']))) {
                 echo json_encode($_SESSION['IMPORTANT']);
+            } else {
+                 echo json_encode("0");
             }
             break;
         case 'TOOLTIP_MSG_BOX':
             if((isset($_SESSION['TOOLTIP_MSG_BOX']))&&(!empty($_SESSION['TOOLTIP_MSG_BOX']))) {
                 echo json_encode($_SESSION['TOOLTIP_MSG_BOX']);
+            } else {
+                 echo json_encode("0");
             }
             break;
         case 'CHECK_PROGRAM':
