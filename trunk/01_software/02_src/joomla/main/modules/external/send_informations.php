@@ -85,6 +85,6 @@
         $_SESSION['INFO_SENT'] = "True";
 
     }
-    
+
 
 ?>
