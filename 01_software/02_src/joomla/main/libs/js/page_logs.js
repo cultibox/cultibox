@@ -1128,6 +1128,9 @@ $(document).ready(function() {
  $(document).ready(function() {
  
     $("#display-log").submit( function(eventObj) {
+         //We have to stop the load page processing until ajax request are done:
+         eventObj.preventDefault();
+        
     
         // Add for each curve selected
         $("#select_curve input[type=checkbox]").each(function() {
@@ -1183,7 +1186,6 @@ $(document).ready(function() {
                 }
             });
         }
-
         return true;
     });
     
