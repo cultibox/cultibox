@@ -225,6 +225,7 @@ $sensors = logs\get_sensor_db_type();
 
 // Search if file exists
 if($type == "logs") {
+
     if(file_exists("$sd_card/logs/$mmonth/$dday")) {
         // get log value
         if(is_file("$sd_card/logs/$mmonth/$dday")) {
