@@ -32,7 +32,7 @@ if((!isset($name))||(empty($name))) {
             }
             break;
         case 'SD_CARD':
-            echo json_encode(get_sd_card());
+            echo get_sd_card();
             break;
         case 'IMPORTANT':
             if((isset($_SESSION['IMPORTANT']))&&(!empty($_SESSION['IMPORTANT']))) {
