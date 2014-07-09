@@ -18,14 +18,12 @@ if((isset($_GET['value']))&&(!empty($_GET['value']))) {
 }
 
 
-
-
-
 switch($type) {
-    case 'short_time': if(!check_format_time("$value:00")) {
-                            echo "error";
-                        }
-                        break;
+    case 'short_time':
+        if(!check_format_time("$value:00")) {
+            echo "error";
+        }
+        break;
     case 'alarm_value': if(!(check_numeric_value("$value"))||(!check_alarm_value("$value"))) {
                             echo "error";
                         }
@@ -118,40 +116,44 @@ switch($type) {
     case 'ssid': 
                 break;
     case 'password':
-                $value=explode('____',$value);
-                if(count($value)!=2) {
-                    echo "error";
-                    break;
-                }
+        $value=explode('____',$value);
+        if(count($value)!=2) {
+            echo "error";
+            break;
+        }
 
-                if(strcmp(trim($value[0]),trim($value[1]))!=0) {
-                    echo "error";
-                    break;
-                }
-                break;
+        if(strcmp(trim($value[0]),trim($value[1]))!=0) {
+            echo "error";
+            break;
+        }
+        break;
     case 'ip':
-            if(!filter_var($value, FILTER_VALIDATE_IP)) echo "error"; 
-            break;
+        // Folowing code doesnot allow folowing adress : 192.001.001.001 ....
+        // if(!filter_var($value, FILTER_VALIDATE_IP)) 
+        $ipArray = explode("." , $value);
+        if (count($ipArray) != 4)
+            echo "error"; 
+        break;
     case 'password_none':
-            break;
+        break;
     case 'password_wpa':
-            if((strlen($value)>=8)&&(strlen($value)<=63)) {
-                if(!ctype_alnum($value)) {
-                    echo "error";
-                }
-            } else {
+        if((strlen($value)>=8)&&(strlen($value)<=63)) {
+            if(!ctype_alnum($value)) {
                 echo "error";
             }
-            break;
+        } else {
+            echo "error";
+        }
+        break;
     case 'password_wep':
-            if((strlen($value)==5)||(strlen($value)==13)||(strlen($value)==29)) {
-                if(!ctype_digit($value)) { 
-                    echo "error";
-                }
-            } else {
+        if((strlen($value)==5)||(strlen($value)==13)||(strlen($value)==29)) {
+            if(!ctype_digit($value)) { 
                 echo "error";
             }
-            break;
+        } else {
+            echo "error";
+        }
+        break;
 }
 echo "1";
 
