@@ -384,7 +384,8 @@
                 <td></td>
                 <td><div id="error_wifi_password_confirm" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div></td>
            </tr>
-           <tr>
+           <!-- Folowing is hidden because we need absolutly 3 number per field between ".". Actually is not checked -->
+           <tr hidden>
               <td class="conf-marge"></td>
               <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_IP'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_IP'); ?>" /></td>
               <td class="conf-alarm-field"><input type="text" size="15" name="wifi_ip" id="wifi_ip" value="<?php echo $wifi_ip; ?>" <?php if(!$wifi_manual) echo "disabled"; ?> /></td>
