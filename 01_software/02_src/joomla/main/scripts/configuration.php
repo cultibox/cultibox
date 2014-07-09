@@ -78,7 +78,7 @@ $conf_arr["RTC_OFFSET"]             = array ("update_conf" => "1", "var" => "rtc
 $conf_arr["RESET_MINMAX"]           = array ("update_conf" => "1", "var" => "reset_minmax");
 $conf_arr["ALARM_VALUE"]            = array ("update_conf" => "1", "var" => "alarm_value");
 $conf_arr["VERSION"]                = array ("update_conf" => "0", "var" => "version");
-$conf_arr["WIFI_ENABLE"]            = array ("update_conf" => "1", "var" => "wifi_enable");
+$conf_arr["WIFI"]                   = array ("update_conf" => "1", "var" => "wifi_enable");
 $conf_arr["WIFI_SSID"]              = array ("update_conf" => "1", "var" => "wifi_ssid");
 $conf_arr["WIFI_PASSWORD"]          = array ("update_conf" => "1", "var" => "wifi_password");
 $conf_arr["WIFI_IP"]                = array ("update_conf" => "1", "var" => "wifi_ip");
