@@ -916,6 +916,9 @@ msgstr "Le jeu de programmes a bien été supprimé."
 msgid "PARAMETERS_PROGRAM_TITLE"
 msgstr "Options avancées des programmes"
 
+msgid "PROGRAM_NAME"
+msgstr "Nom du programme"
+
 
 # For the export module highchart part :
 msgid "CONTEXT_MENU"
