@@ -2459,6 +2459,27 @@ function get_canal_status(&$out) {
 }
 /// }}}
 
+
+// {{{ get_nb_daily_program()
+// ROLE get number of daily programs recorded
+// IN $out   error or warning message
+// RET number of daily programs recorded
+function get_nb_daily_program(&$out) {
+    $sql = "SELECT count(id) as nb_daily FROM program_index WHERE id > 1;";
+
+    $db=db_priv_pdo_start();
+    $res="";
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res=$sth->fetch(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+    return $res['nb_daily'];
+}
+/// }}}
 ?>
 
 

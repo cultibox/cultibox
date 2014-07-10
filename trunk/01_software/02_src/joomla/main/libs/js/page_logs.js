@@ -903,7 +903,6 @@ $(document).ready(function() {
                         $(this).attr("serieID" , serieID.index);
                         $(this).attr("yAxis" , item.yaxis);
 
-                        alert($(this).attr("serieID"));
                         if(!checked) {
                             sensor_axis[cheBu.attr("value")]=serieID.index; 
                             checked=true;

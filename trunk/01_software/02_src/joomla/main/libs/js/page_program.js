@@ -62,35 +62,56 @@ $(document).ready(function(){
            cache: false,
            type: "POST",
            url: "../../main/modules/external/daily_program_delete.php",
-           data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&program_delete_index=" + $( "#program_delete_index" ).val()
+           data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&program_delete_index=" + $("#program_delete_index option:selected").val()
         }).done(function (data) {
+              if($.trim(data)=="") { 
+                    // Display dialog bow to alert user
+                    $("#dialog-form-delete-daily").dialog({
+                        resizable: false,
+                        closeOnEscape: true,
+                        dialogClass: "popup_message",
+                        modal: true,
+                        buttons: [{
+                            text: CLOSE_button,
+                            "id": "btnClose",
+                            click: function () {
+                                $( this ).dialog( "close" ); return false;
+                            }
+                        }],
+                    });
         
-            // Display dialog bow to alert user
-            $("#dialog-form-delete-daily").dialog({
-                resizable: false,
-                closeOnEscape: true,
-                dialogClass: "popup_message",
-                modal: true,
-                buttons: [{
-                    text: CLOSE_button,
-                    "id": "btnClose",
-                    click: function () {
-                        $( this ).dialog( "close" ); return false;
+                    // If it's the same program, redraw the page
+                    if ($( "#program_delete_index" ).val() == <?php echo $program_index ?>) {
+                        window.location = "program-"+slang;
                     }
-                }],
-            });
-        
-            // If it's the same program, redraw the page
-            if ($( "#program_delete_index" ).val() == <?php echo $program_index ?>)
-            {
-                window.location = "program-"+slang;
-            }
             
-            // remove program from available
-            idToDelete = $( "#program_delete_index" ).val()
-            $("#program_delete_index option[value='" + idToDelete + "']").remove();
-            $("#program_index_id_id option[value='" + idToDelete + "']").remove();
+                    // remove program from available
+                    idToDelete = $( "#program_delete_index" ).val()
+                    $("#program_delete_index option[value='" + idToDelete + "']").remove();
+                    $("#program_index_id_id option[value='" + idToDelete + "']").remove();
 
+                    if($("#program_delete_index option").length==0) {
+                            $("#program_delete_index" ).css("display","none");
+                            $("#daily_delete_button").attr("disabled", "disabled");
+                            $("#daily_delete_button").addClass("inputDisable");
+                            $("#daily_delete_button").val("<?php echo __('NO_DAILY_PROGRAM_TO_DELETE','html'); ?>");
+                    }
+            } else {
+
+                    $("#dialog-form-delete-daily-error").dialog({
+                        resizable: false,
+                        closeOnEscape: true,
+                        dialogClass: "popup_error_message",
+                        modal: true,
+                        buttons: [{
+                            text: CLOSE_button,
+                            "id": "btnClose",
+                            click: function () {
+                                $( this ).dialog( "close" ); return false;
+                            }
+                        }],
+                   });
+            }
         });
         
     });    
@@ -129,7 +150,12 @@ $(document).ready(function(){
                         // Add program in select
                         $('#program_delete_index').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
                         $('#program_index_id_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
-                        
+
+                        $("#daily_delete_button").removeAttr('disabled');
+                        $("#daily_delete_button").removeClass("inputDisable");
+                        $("#daily_delete_button").val("<?php echo __('PROGRAM_DAILY_DELETE','html'); ?>");
+                        $("#program_delete_index").show();
+
                         // Prevent user that's ok
                         $("#dialog-form-copy-daily").dialog({
                             resizable: false,
