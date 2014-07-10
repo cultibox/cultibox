@@ -199,8 +199,7 @@ $(function () {
                         // For each selected checkbutton, display the curve
                         $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").each(function() {
 
-                            id=$(this).attr('id');
-                            var cheBu = $("#"+id);
+                            var cheBu = $(this);
 
                             
                             if (cheBu.attr("checked") == "checked") {
@@ -813,16 +812,16 @@ $(document).ready(function() {
 
     $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").click(function() {
 
-        id=$(this).attr('id');
-
-        
         // Init a var on highchart
         var chart = $('#container').highcharts();
-        
-        var cheBu = $("#"+id);
+        var cheBu = $(this);
+
+        // Block interface
+        $.blockUI({ message: ''});
 
         // If checked
         if (cheBu.attr("checked") == "checked") {
+
             // Call logs_get_serie to get programm value
             $.ajax({
                 data:{
@@ -939,6 +938,8 @@ $(document).ready(function() {
             });  */
 
         }
+        // All curve have been rendered : Unblock UI
+        $.unblockUI();
     });
 })
 
