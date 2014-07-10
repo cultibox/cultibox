@@ -129,7 +129,7 @@ $(document).ready(function(){
     $( "#dialog-form-save-daily" ).dialog({
         autoOpen: false,
         height: 180,
-        width: 350,
+        width: 400,
         modal: true,
         buttons: {
         "Enregistrer": function() {

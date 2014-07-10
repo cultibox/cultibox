@@ -916,6 +916,9 @@ msgstr "The program has been deleted."
 msgid "PARAMETERS_PROGRAM_TITLE"
 msgstr "Advanced program options"
 
+msgid "PROGRAM_NAME"
+msgstr "Program name"
+
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
