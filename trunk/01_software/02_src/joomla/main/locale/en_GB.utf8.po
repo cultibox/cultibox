@@ -1800,7 +1800,7 @@ msgid "TOOLTIP_PARAMETERS_LOGS"
 msgstr "<b>Curves options:</b> set the color curves"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
-msgstr "Set the program to apply."
+msgstr "Set the program to apply"
 
 msgid "TOOLTIP_DEFINE_COST"
 msgstr "This tab calculates the theoretical and actual cost of your installation. <br /> <ul Class='list_class_tooltip'> <li> <b> theoretical cost </b> is made from information from your treatment programs. Regulation (which can cut or turn taking) is not recognized (the catch is considered running). The price shown will be the maximum price if the control has not triggered. <br /> <br /> </Li> <li> <b> actual cost </b> is made of information files power (power files: pwr_XX) of Cultibox. These files provide information when making lit and has étteinte. Regulation is taken into account in the calculation of cost </li> </ul> <b> Conclusion. </B> it is possible to note slight differences between the actual calculation and the theoretical calculation that can come from a regulation is not taken into account or the accuracy of power files (recording every X minutes while programs are accurate to the second)."
