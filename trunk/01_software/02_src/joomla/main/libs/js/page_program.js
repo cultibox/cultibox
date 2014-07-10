@@ -10,6 +10,7 @@ plug_selected  = <?php echo json_encode($selected_plug) ?>;
 rep            = <?php echo json_encode($rep) ?>;
 error_valueJS  = <?php echo json_encode($error_value) ?>;
 
+
 $(document).ready(function(){
 
     // Time pickers definition
@@ -53,7 +54,8 @@ $(document).ready(function(){
             }],
         });
     });
-    
+
+
     // Action when user decide to delete a program
     $("#daily_delete_button").click(function(e) {
         e.preventDefault();
@@ -444,7 +446,6 @@ $(document).ready(function() {
                 $("#export_selected_plug").val($('#selected_plug').val());
                 $("#import_selected_plug").val($('#selected_plug').val());
                 $("#submenu").val($('#selected_plug').val());
-                $("#resume_img").prop('tooltipText', resume_plugs[$('#selected_plug').val()]);
             } else if(this.index==highchart_plug-1) {
                 chart.series[this.index].name = clean_highchart_message(plugs_infoJS[this.index]['PLUG_NAME'])+" ("+clean_highchart_message(plugs_infoJS[this.index]['translate'])+")";
                 chart.series[this.index].legendItem = chart.series[this.index].legendItem.destroy();
@@ -535,7 +536,7 @@ $(document).ready(function() {
             $("#second_regul_info").css("display", "");
         }
 
-        $("#resume_img").prop('title', resume_plugs[$('#selected_plug').val()]);
+        $("#resume_img").prop('title', resume_plugs[$('#selected_plug').val()]+"<br />"+resume_regul[$('#selected_plug').val()-1]);
         highchart_plug=tmp_highchart_plug+1;
         chart.isDirtyLegend = true;
         chart.redraw(); 
@@ -581,8 +582,6 @@ $(document).ready(function() {
                 $("#export_selected_plug").val($('#selected_plug_conf').val());
                 $("#import_selected_plug").val($('#selected_plug_conf').val());
                 $("#submenu").val($('#selected_plug').val());
-
-                $("#resume_img").prop('tooltipText', resume_plugs[$('#selected_plug_conf').val()]);
             } else if(this.index==highchart_plug-1) {
                 chart.series[this.index].name = clean_highchart_message(plugs_infoJS[this.index]['PLUG_NAME'])+" ("+clean_highchart_message(plugs_infoJS[this.index]['translate'])+")";
                 chart.series[this.index].legendItem = chart.series[this.index].legendItem.destroy();
@@ -672,7 +671,8 @@ $(document).ready(function() {
             $("#second_regul_info").css("display", "");
         }
 
-        $("#resume_img").prop('title', resume_plugs[$('#selected_plug_conf').val()]);
+        $("#resume_img").prop('title', resume_plugs[$('#selected_plug_conf').val()]+"<br />"+resume_regul[$('#selected_plug_conf').val()-1]);
+
         highchart_plug=tmp_highchart_plug+1;
         chart.isDirtyLegend = true;
         chart.redraw(); 
