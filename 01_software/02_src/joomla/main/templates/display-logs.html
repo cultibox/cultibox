@@ -123,7 +123,8 @@
                                             . ' sensortype = "'.$sensorInfo[0]['type'].'"'
                                             . ' yAxis = ""'
                                             . ' serieID=""'
-                                            . ' value="' . $i .'"' ;
+                                            . ' value="' . $i .'"' 
+                                            . 'id="sensor'.$i.'"';
                                             
                                         if(in_array($i,$select_sensor))
                                         { 
@@ -386,6 +387,7 @@
                         . ' yAxis = ""'
                         . ' serieID=""'
                         . ' curvename="' . $plugs_infos[$plugs-1]["PLUG_NAME"] . '"'
+                        . ' id="plug_display'.$plugs.'"'
                         . ' value="' . $plugs . '" ';
                     if(in_array($plugs,$select_program)) {
                         echo ' checked';
@@ -424,6 +426,7 @@
                         . ' datatype = "power"'
                         . ' yAxis = ""'
                         . ' serieID=""'
+                        . ' id="power_display'.$plugs."'"
                         . ' value="' . $plugs . '"';
                     if(in_array($plugs,$select_power)) {
                         echo ' checked'; 

@@ -1,5 +1,7 @@
 Cultibox (1.4.02) precise; urgency=low
     + Correction de l'affichage et la gestion des programmes journaliers dans l'onglet programme
+    + Correction de la déselection des courbes dans l'onglet logs
+    + Affichage des informations de régulation secondaire dans le résumé de l'onglet programme
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue July 10  11:25:32 CEST 2014
 

@@ -2,6 +2,7 @@
 
 
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+var count=0;
 
 // {{{ getType()
 // IN  input value: display the type og log: 0 for daily logs, 1 for monthly
@@ -198,7 +199,9 @@ $(function () {
                         // For each selected checkbutton, display the curve
                         $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").each(function() {
 
-                            var cheBu = $(this);
+                            id=$(this).attr('id');
+                            var cheBu = $("#"+id);
+
                             
                             if (cheBu.attr("checked") == "checked") {
                             
@@ -810,15 +813,16 @@ $(document).ready(function() {
 
     $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").click(function() {
 
+        id=$(this).attr('id');
+
         
         // Init a var on highchart
         var chart = $('#container').highcharts();
         
-        var cheBu = $(this);
- 
+        var cheBu = $("#"+id);
+
         // If checked
         if (cheBu.attr("checked") == "checked") {
-
             // Call logs_get_serie to get programm value
             $.ajax({
                 data:{
@@ -900,14 +904,9 @@ $(document).ready(function() {
                         });  
 
                         // Save serie index displayed
-                        $(this).attr("serieID" , serieID.index);
-                        $(this).attr("yAxis" , item.yaxis);
+                        $(cheBu).attr("serieID" , serieID.index);
+                        $(cheBu).attr("yaxis" , item.yaxis);
 
-                        if(!checked) {
-                            sensor_axis[cheBu.attr("value")]=serieID.index; 
-                            checked=true;
-                        }
-                        
 
                         // Update tooltip with min and mùax
                         updateTooltipMinMax();
@@ -920,20 +919,18 @@ $(document).ready(function() {
         else 
         {
 
-            // HERRRRRREEE
-            // Check button is desactived
-            //console.log(cheBu.attr("serieID"));
-            var temp = cheBu.attr("serieID");
-            //alert(cheBu.attr("serieID"));
+             $(chart.series).each(function(i, serie){
+                if(cheBu.attr("sensortype")==2) {
+                    if(cheBu.attr("serieid")-1==serie.index) {
+                        serie.remove(true);
+                    }
+                }
+                if(cheBu.attr("serieid")==serie.index) {
+                    serie.remove(true);
+                }
+             });
 
 
-            if(cheBu.attr("sensortype")==2) {
-                 chart.series[sensor_axis[cheBu.attr("value")]+1].remove(false);
-            }
-
-            chart.series[sensor_axis[cheBu.attr("value")]].remove(false);
-            
-            
             // Remove text legend
             /*chart.yAxis[cheBu.attr("yAxis")].update({
                 title:{
@@ -1134,8 +1131,9 @@ $(document).ready(function() {
         // Add for each curve selected
         $("#select_curve input[type=checkbox]").each(function() {
 
-            var cheBu = $(this);
-     
+            id=$(this).attr('id');
+            var cheBu = $("#"+id);
+
             // If checked
             if (cheBu.attr("checked") == "checked") {
             
