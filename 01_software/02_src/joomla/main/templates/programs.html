@@ -443,7 +443,7 @@
                 <?php echo __('PROGRAM_DAILY_DELETE_SELECT'); ?>
             </td>
             <td>
-                <select name="program_delete_index" id="program_delete_index">
+                <select name="program_delete_index" id="program_delete_index" <?php if($nb_daily_program==0) { ?>style="display:none" <?php } ?>>
                     <?php
                         $array = array();
                         program\get_program_index_info($array);
@@ -454,7 +454,7 @@
                         }
                     ?>
                 </select>
-                <input type="submit" id="daily_delete_button" name="daily_delete_button" value="<?php echo __('PROGRAM_DAILY_DELETE'); ?>">
+                <input type="submit" id="daily_delete_button" name="daily_delete_button" <?php if($nb_daily_program==0) { ?>value="<?php echo __('NO_DAILY_PROGRAM_TO_DELETE'); ?>" class="inputDisable" disabled <?php } else { ?>value="<?php echo __('PROGRAM_DAILY_DELETE'); ?>" <?php } ?>>
             </td>
         </tr>
     </table>
@@ -464,6 +464,11 @@
 <!-- Modal form to alert user that programm has been deleted -->
 <div id="dialog-form-delete-daily" style="display:none" >
     <p><?php echo __('PROGRAM_DAILY_DELETE_VALID'); ?></p>
+</div>
+
+<!-- Modal form to alert user that an error occured during program deletion -->
+<div id="dialog-form-delete-daily" style="display:none" >
+    <p><?php echo __('PROGRAM_DAILY_DELETE_ERROR'); ?></p>
 </div>
 
 <!-- Modal form to alert user that programm has been copied -->

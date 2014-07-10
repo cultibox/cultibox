@@ -1,3 +1,9 @@
+Cultibox (1.4.02) precise; urgency=low
+    + Correction de l'affichage et la gestion des programmes journaliers dans l'onglet programme
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue July 10  11:25:32 CEST 2014
+
+
 Cultibox (1.4.01) precise; urgency=low
     + Déplacement du site distant pour les mises à jour de cultibox.highproshop.fr vers cultibox.fr
     + L'option des programmes journaliers est toujours activée
@@ -6,6 +12,7 @@ Cultibox (1.4.01) precise; urgency=low
     + Passage en ajax pour l'enregistrement de la configuration
     + La carte SD n'est vérifiée qu'une seule fois par branchement et pas à chaque page
     + Sauvegarde de la configuration des capteurs, des programmes et des prises selectionnés lors d'un changement de jour par les boutons suivant et précédent
+    + Suppression des faux logs après le premier chargement de logs
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun July 6 12:13:49 CEST 2014
 

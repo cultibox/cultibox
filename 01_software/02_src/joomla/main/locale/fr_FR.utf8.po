@@ -907,6 +907,9 @@ msgstr "Supprimer un jeu de programmes"
 msgid "PROGRAM_DAILY_DELETE"
 msgstr "Supprimer"
 
+msgid "NO_DAILY_PROGRAM_TO_DELETE"
+msgstr "Aucun jeu de programmes à supprimer"
+
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "Le jeu de programmes a bien été supprimé."
 
@@ -1569,6 +1572,10 @@ msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8
 
 msgid "ERROR_UPDATE_CONF"
 msgstr "Une erreur est survenue durant la mise à jour de la configuration"
+
+msgid "PROGRAM_DAILY_DELETE_ERROR"
+msgstr "Erreur lors de la suppréssion d'un programme journalier"
+
 
 
 # For the informations part:

@@ -907,6 +907,9 @@ msgstr "Remove Program"
 msgid "PROGRAM_DAILY_DELETE"
 msgstr "Rimuovi"
 
+msgid "NO_DAILY_PROGRAM_TO_DELETE"
+msgstr "Non ci sono programmi di gioco per rimuovere"
+
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "Il programma è stato cancellato."
 
@@ -1569,6 +1572,9 @@ msgstr "Errore nel formato della passphrase WPA: deve essere compresa tra 8 e 63
 
 msgid "ERROR_UPDATE_CONF"
 msgstr "Si è verificato un errore durante l'aggiornamento della configurazione"
+
+msgid "PROGRAM_DAILY_DELETE_ERROR"
+msgstr "Errore durante l'eliminazione di un programma giornaliero"
 
 
 # For the informations part:

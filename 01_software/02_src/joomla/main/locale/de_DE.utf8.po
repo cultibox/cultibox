@@ -907,6 +907,9 @@ msgstr "Programm entfernen"
 msgid "PROGRAM_DAILY_DELETE"
 msgstr "Entfernen"
 
+msgid "NO_DAILY_PROGRAM_TO_DELETE"
+msgstr "Keine Spielprogramme zu entfernen"
+
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "Das Programm wurde gelöscht."
 
@@ -1569,6 +1572,9 @@ msgstr "Fehler im Format der WPA-Passphrase: Es muss zwischen 8 und 63 Zeichen l
 
 msgid "ERROR_UPDATE_CONF"
 msgstr "Während der Aktualisierung der Konfiguration ist ein Fehler aufgetreten"
+
+msgid "PROGRAM_DAILY_DELETE_ERROR"
+msgstr "Fehler beim Löschen eines Tagesprogramms"
 
 
 # For the informations part:

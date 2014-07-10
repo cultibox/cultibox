@@ -87,6 +87,10 @@ if ($program_index_id == "")
 
 // Get "number" field of program table
 $program_index = program\get_field_from_program_index ("program_idx",$program_index_id);
+
+
+// Get number of daily program recorded:
+$nb_daily_program = get_nb_daily_program($main_error);
     
 // Var used to define if program file must be rebuild
 $rebuildProgamFile = false;
