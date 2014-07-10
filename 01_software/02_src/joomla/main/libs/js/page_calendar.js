@@ -278,7 +278,7 @@ $(document).ready(function() {
 
         $("#manage_daily_program").dialog({
             resizable: false,
-            width: 150,
+            width: 300,
             closeOnEscape: true,
             dialogClass: "popup_message",
             buttons: [{

@@ -1800,7 +1800,7 @@ msgid "TOOLTIP_PARAMETERS_LOGS"
 msgstr "<b>Optionen des courbes:</b> Konfigurator la couleur de vos courbes"
 
 msgid "TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM"
-msgstr "Stellen Sie das Programm zu bewerben."
+msgstr "Stellen Sie das Programm zu bewerben"
 
 msgid "TOOLTIP_DEFINE_COST"
 msgstr "Diese Registerkarte berechnet den theoretischen und tatsächlichen Kosten für Ihre Installation. <br /> <ul Class='list_class_tooltip'> <li> <b> theoretischen Kosten </b> von Informationen aus Ihrem Behandlungsprogramme gemacht. Verordnung (denen geschnitten oder drehen Einnahme kann) wird nicht erkannt (der Haken wird als Laufen). Der angegebene Preis wird der Höchstpreis sein, wenn die Steuerung nicht ausgelöst. <br /> <br /> </Li> <li> <b> tatsächlichen Kosten </b> wird von Informationen, die Dateien Leistung (Leistungs Dateien: pwr_XX) von Cultibox. Diese Dateien enthalten Informationen, wenn Sie beleuchtet und hat étteinte. Verordnung berücksichtigt bei der Berechnung der Kosten </li> </ul> <b> Fazit übernommen. </B> ist es möglich, beachten Sie leichte Unterschiede zwischen der tatsächlichen und der theoretischen Berechnung Berechnung, die kommen können eine Verordnung nicht berücksichtigt oder die Genauigkeit der Strom Dateien (Aufzeichnungs alle X Minuten, während Programme, auf die Sekunde genau sind)."
