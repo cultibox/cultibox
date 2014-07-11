@@ -39,10 +39,14 @@
     // Define language
     $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
     __('LANG');
-    
-    
-    // Save configuration
-    insert_configuration(strtoupper($_POST['variable']),$_POST['value'],$main_error);
+
+
+    if(empty($_POST['value'])) {
+        insert_configuration(strtoupper($_POST['variable']),"",$main_error);
+    } else {
+        // Save configuration
+        insert_configuration(strtoupper($_POST['variable']),$_POST['value'],$main_error);
+    }
 
     //Special configuration:
     switch(strtoupper($_POST['variable'])) {
@@ -61,9 +65,11 @@
         update_sd_conf_file($sd_card, $_POST['variable'],$_POST['value'],$main_error);
     }
     
-    foreach($main_error as $error) {
-        echo json_encode($error);
+    if(count($main_error)>0) {
+        foreach($main_error as $error) {
+            echo json_encode($error);
+        }
     }
-   
- 
+
+    echo json_encode("");
 ?>

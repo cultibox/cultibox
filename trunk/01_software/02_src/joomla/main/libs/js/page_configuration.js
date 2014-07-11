@@ -118,6 +118,7 @@ $(document).ready(function(){
             });
 
 
+           if($("#wifi_key_type").val()!="NONE") {
             if((wifi_password=="")&&($("#wifi_password").val()=="")) {
                 $("#error_empty_password").css("display","");
             } else if($("#wifi_password").val()!="") {
@@ -195,6 +196,8 @@ $(document).ready(function(){
             } else {
                 $("#error_empty_password").css("display","none");
             } 
+            } 
+                
 
 
             if($('#wifi_ip_manual').prop('checked')) {
@@ -379,8 +382,13 @@ $(document).ready(function(){
                     }
 
 
-                
-                    newValue    = $("#wifi_password").val();
+               
+                    if($("#wifi_key_type").val()!="NONE") {
+                        alert($("#wifi_key_type").val());
+                        newValue    = $("#wifi_password").val();
+                    } else {
+                        newValue    = "";
+                    }
                     varToUpdate = $("#wifi_password").attr('name');
                     updateConf  = $("#wifi_password").attr('data-update_conf');
 
@@ -588,6 +596,22 @@ $(document).ready(function(){
             }
         });
     });
+
+
+
+      //Disable password for NONE key type:
+     $('#wifi_key_type').change(function() {
+        if($('#wifi_key_type').val()=="NONE") {
+             $("#wifi_password").attr("disabled", "disabled");
+             $("#wifi_password_confirm").attr("disabled", "disabled");
+             $("#current_wifi_password").attr("disabled", "disabled");
+        } else {
+             $("#wifi_password").removeAttr("disabled");
+             $("#wifi_password_confirm").removeAttr("disabled");
+             $("#current_wifi_password").removeAttr("disabled");
+        }
+    });
+
 
     
 });
