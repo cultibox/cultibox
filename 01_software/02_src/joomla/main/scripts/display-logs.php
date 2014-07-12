@@ -54,7 +54,7 @@ if(isset($_POST['type_select'])) {
 }
 
 // Check if there are logs recorded, delete fake logs if it's the case:
-if(!logs\check_export_table_csv("logs",$main_error)) {
+if(logs\check_export_table_csv("logs",$main_error) == true) {
      logs\reset_fake_log();
 }
 
