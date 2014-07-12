@@ -39,7 +39,7 @@ $retarray = array();
 $startDay = strtotime ($_GET['startDate']);
 
 if ($_GET['month'] == "day") {
-    $endDay = strtotime("+1 day", strtotime($_GET['startDate']));
+    $endDay = strtotime($_GET['startDate']);
 } else {
     $date = $_GET['startDate'] . "-01";
     $endDay = strtotime("+1 month", strtotime($date));
@@ -90,6 +90,11 @@ switch ($datatype)
         break;
         
     case "logs" :
+    
+        if ($_GET['month'] == "day") {
+            $endDay = strtotime("+1 day", strtotime($_GET['startDate']));
+        }
+    
         // Retrieve logs curve
         $logsValue = logs\get_sensor_log($_GET['sensor'],$startDay,$endDay,$_GET['month']);
         
