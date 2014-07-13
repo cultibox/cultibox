@@ -24,14 +24,14 @@ Une fenêtre s'affiche alors vous permettant de configurer votre annotation et d
  * Un sujet (prédéfinie dans une liste ou personnalisé par vous)
  * Les dates de départ et de fin définie par le jour ou la période que vous avez sélectionné
  * Une couleur d'affichage dans le calendrier
- * Une remarque servant à ajouter des informations
+ * Une remarque servant à ajouter des informations. Attention, la Cultibox ne peut afficher que 500 caractère par jour. C'est à dire que si l'ensemble des événements d'une journée contient plus de 500 caractères, le message sera tronqué
  * Un marquage de l'événement comme important pour avoir un rappel qui s'affiche lors de l'ouverture du calendrier
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_add.png
 
 Il est à noter que dans la Cultibox, seul les champs *Sujet* et *Remarque* seront visibles.
 
-= Modifier ou supprimer un évènement =
+= Modifier ou supprimer un événement =
 
 Pour modifier ou supprimer une annotation, il vous suffit de cliquer dessus. Une fenêtre va alors apparaître avec deux boutons: un bouton *Editer l'annotation* (pour modifier une annotation) et un bouton *Supprimer l'annotation* (pour supprimer définitivement l'annotation).
 
@@ -69,7 +69,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_engrais.png
 En fonction de votre substrat et du type d'engrais voulu, plusieurs choix s'offre à vous:
 
 Afin d'appliquer ce programme au calendrier il faut donc:
- * Choisir le substrat (Terre, Hydro, Coco, Aero)
+ * Choisir le substrat (Terre, Hydro, Coco, Aéro)
  * Choisir le programme d'engrais
  * Choisir la date de départ à laquelle appliquer le programme
  * Éventuellement ajouter un nom à ce programme. Si vous définissez un nom, celui-ci apparaît dans le titre de l'annotation.
@@ -107,7 +107,7 @@ La gestion des fichiers XML à partir du calendrier ne concerne que les fichiers
 
 = Programme journalier =
 
-Attention : disponible uniquement si vous avez activé l'option "programme journalier" de la page [gui_soft_conf configuration] et que vous avez créé un deuxième programme.
+Attention : disponible uniquement si vous avez créé un deuxième programme.
 
 En haut à gauche de la page du calendrier se trouve un bouton nommé *Programme journalier* :
 
@@ -126,5 +126,3 @@ Lorsque vous ouvrez le calendrier, un rappel contenant les derniers événements
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_cal_important.png
 
 Ce rappel fait état des événements notés comme importants sur la semaine précédent et suivant le jour actuel. Ce rappel de deux semaines s'affiche donc si des événements importants ont été détecté durant ce laps de temps.
-
-
