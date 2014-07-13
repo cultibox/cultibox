@@ -1,8 +1,8 @@
-#summary Interface Boitier
+#summary Boitier Cultibox
 
 = Introduction =
 
-Cette section de l'aide décrit le fonctionnement de l'interface graphique affichée sur l'écran de la Cultibox.
+Cette section de l'aide décrit le fonctionnement du boitier Cultibox.
 
 L'interface graphique de la Cultibox est accessible directement sur la Cultibox.
 Les informations sont lisibles sur l'écran, et un clavier de cinq touches est incrusté dans la face avant.
@@ -16,4 +16,9 @@ Régulièrement, la Cultibox enregistre les conditions climatiques et l'état de
 Durant ces opérations, l'utilisateur ne peut plus agir sur la Cultibox. Cet état transitif dure en général moins d'une seconde.
 La fréquence de cet état dépend de la configuration que vous avez choisi. Si vous avez décidé que la Cultibox enregistre les conditions climatiques toutes les 5 minutes, alors ce léger blocage arrivera toutes les 5 minutes.
 
-   
+== Fonctionnement sans carte SD ==
+La carte SD contient toutes les informations pour faire fonctionner la Cultibox. Le boitier Cultibox ne peut donc pas démarrer sans la carte.
+
+Une fois démarré, la carte SD Peut être retiré de la Cultibox pour un court instant (Quelques minutes). Une mémoire interne mémorise quel doit être l'état de chaque prise. Attention, si vous laissez la Cultibox trop longtemps sans carte SD, le pilotage des prises n'est plus assuré.
+
+Lorsque le jour change (passage à 23h59m59s) la Cultibox a besoin de relire la carte SD pour connaitre le pilotage a appliquer aux prises. Si la Carte SD n'est pas présente, le pilotage peut être différent de celui que vous avez prévu.
