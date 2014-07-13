@@ -1653,6 +1653,8 @@ function _exclEndDay(end, allDay) {
 
 
 function segCmp(a, b) {
+  var activeDiff = ((b.event.external) - (a.event.external));
+  if (activeDiff != 0) return activeDiff;
 	return (b.msLength - a.msLength) * 100 + (a.event.start - b.event.start);
 }
 
