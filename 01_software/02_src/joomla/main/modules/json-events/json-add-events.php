@@ -44,7 +44,6 @@ if(    isset($title) && !empty($title)
             $calendar = array();
             
             if((isset($sd_card))&&(!empty($sd_card))) {
-            
                 if ($start == $end)
                     $end = "";
             
@@ -60,7 +59,6 @@ if(    isset($title) && !empty($title)
                     
                 // Write event into SD card
                 write_calendar($sd_card,$calendar,$main_error,strtotime($start), strtotime($end));
-
             }
 
         }

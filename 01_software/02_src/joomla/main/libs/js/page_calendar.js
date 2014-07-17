@@ -504,7 +504,7 @@ $(document).ready(function() {
                                     end: new_end,
                                     description: description,
                                     color: color,
-                                    external: external
+                                    external: 0
                                 });
 
                                 $.ajax({

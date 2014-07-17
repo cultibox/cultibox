@@ -15,11 +15,10 @@ $jsonArray = array();
 
 // Initialise ID index
 $id = 0 ;
-
 $event=array();
 
 
-// Gets event from db (Must be in first and before read_event_from_XML else id are not correctly incrmented) !!!!!!!
+// Gets event from db (Must be in first and before read_event_from_XML else id are not correctly incremented) !!!!!!!
 $id = calendar\read_event_from_db ($event,$start,$end);
 
 // List XML file find in folder
