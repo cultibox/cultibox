@@ -430,6 +430,7 @@ $(document).ready(function() {
             $("#dialog_create").dialog({
                 resizable: true,
                 width: 800,
+                modal: true,
                 buttons: {
                     "<?php echo __('CREATE_DIALOG_CALENDAR','highchart'); ?>": function() { 
                     
@@ -588,6 +589,7 @@ $(document).ready(function() {
                         $("#other_field_title").val("");
                         $("#select_title").prop('selectedIndex', 0);  
                         $("#event_important").attr('checked', false);
+
                         <?php
                             if(count($program_index) > 1) { 
                         ?>
@@ -599,6 +601,9 @@ $(document).ready(function() {
                         delete description;
                         delete important;
                         delete event;
+
+                        $("#select_daily_program_to_create").prop('disabled', true);
+                        $("#select_title, #select_remark, #event_important").prop('disabled', false);
                         return false;
                     },
                     "<?php echo __('CANCEL_DIALOG_CALENDAR','highchart'); ?>": function() {
@@ -620,6 +625,9 @@ $(document).ready(function() {
                         delete description;
                         delete important;
                         delete event;
+
+                        $("#select_daily_program_to_create").prop('disabled', true);
+                        $("#select_title, #select_remark, #event_important").prop('disabled', false);
                         return false;
                     }
                 }
