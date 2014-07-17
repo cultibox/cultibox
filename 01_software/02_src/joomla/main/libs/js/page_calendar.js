@@ -545,12 +545,13 @@ $(document).ready(function() {
                                 //Exit function
                                 return false;
                             }
-                           
+
+
                             // Compute date for ajax
-                            ajaxDateStart = $.fullCalendar.formatDate( start, "yyyy-MM-dd");
-                            ajaxDateEnd = $.fullCalendar.formatDate( end, "yyyy-MM-dd");
+                            ajaxDateStart = $.fullCalendar.formatDate( start, "yyyy-MM-dd 02:00:00");
+                            ajaxDateEnd = $.fullCalendar.formatDate( end, "yyyy-MM-dd  23:59:59");
                             ajaxTitle = "<?php echo __('CALENDAR_DAILY_PROGRAM') ; ?>" + " " + $("#select_daily_program_to_create option:selected").text();
-                           
+
                             // Update datatbase in ajax
                             $.ajax({
                                 cache: false,
@@ -634,8 +635,11 @@ $(document).ready(function() {
             var copiedEventObject = $.extend({}, originalEventObject);
             
             // assign it the date that was reported
-            copiedEventObject.start = date;
-            copiedEventObject.end = date;
+            var start = $.fullCalendar.formatDate(date, "yyyy-MM-dd 02:00:00");
+            var end = $.fullCalendar.formatDate(date, "yyyy-MM-dd 23:59:59");
+
+
+
             copiedEventObject.allDay = allDay;
             copiedEventObject.title = "<?php echo __('CALENDAR_DAILY_PROGRAM') ; ?>" + " " + originalEventObject.title;
             copiedEventObject.description = copiedEventObject.title;
@@ -650,27 +654,14 @@ $(document).ready(function() {
                 return "";
             }
 
-            // Compute date for ajax
-            ajaxDate = "";
-            ajaxDate = ajaxDate + copiedEventObject.start.getFullYear();
-            if ((copiedEventObject.start.getMonth() + 1) < 10) {
-                ajaxDate = ajaxDate + "-0" + (copiedEventObject.start.getMonth() + 1);
-            } else {
-                ajaxDate = ajaxDate + "-" + (copiedEventObject.start.getMonth() + 1);
-            }
-            if (copiedEventObject.start.getDate() < 10) {
-                ajaxDate = ajaxDate + "-0" + copiedEventObject.start.getDate();
-            } else {
-                ajaxDate = ajaxDate + "-" + copiedEventObject.start.getDate();
-            }
-            
             // Update datatbase in ajax
             $.ajax({
                 cache: false,
                 url: "../../main/modules/external/update_calendar_external.php",
                 data: {
                     daily_program_name: copiedEventObject.title,
-                    calendar_start: ajaxDate,
+                    calendar_start: start,
+                    calendar_end: end,
                     sd_card: sd_card,
                     program_index: copiedEventObject.program_index
                 }
