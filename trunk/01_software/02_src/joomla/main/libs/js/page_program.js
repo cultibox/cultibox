@@ -378,9 +378,9 @@ $(document).ready(function() {
          useHTML: true,
          formatter: function() {
             if(this.y == 99.9) {
-                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"</p><p align='left'><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("CHART_FORCE_ON_VALUE"); ?></p>";
+                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("CHART_FORCE_ON_VALUE"); ?></p><br />"+resume_regul[this.series.index];
             } else if(this.y == 0) {
-                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><p align='left'><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("VALUE_OFF"); ?></p>";
+                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("VALUE_OFF"); ?></p><br />"+resume_regul[this.series.index];
             } else { 
                 var unity="";
                 if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="heating")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="ventilator")) {
@@ -390,7 +390,7 @@ $(document).ready(function() {
                 } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="pump")) {
                     unity=" cm";
                 }
-                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"</p><p align='left'><b><?php echo __('BEHAVIOUR'); ?>: </b>"+this.y+unity+" (<?php echo __('REGULATION'); ?>)</p>";
+                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b>"+this.y+unity+" (<?php echo __('REGULATION'); ?>)</p><br />"+resume_regul[this.series.index];
             } 
          }
       },
