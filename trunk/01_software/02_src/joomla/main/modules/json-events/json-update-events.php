@@ -20,6 +20,7 @@ if (  isset($_POST["title"]) && !empty($_POST["title"])
     $color   = $_POST["color"];
     $sd_card = $_POST["card"];
 
+
     if (!isset($_POST["important"]) || empty($_POST["important"])) {  
         $important=0;
     } else {

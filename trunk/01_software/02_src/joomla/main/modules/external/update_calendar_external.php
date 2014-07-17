@@ -278,7 +278,7 @@ if(    !empty($daily_program_name)
     }
     else
     {
-        $timeend = date('Y-m-d 02:00:00', strtotime($calendar_end));
+        $timeend = date('Y-m-d 23:59:59', strtotime($calendar_end));
     }
     
     // Create event 
@@ -310,7 +310,6 @@ if(    !empty($daily_program_name)
     } else {
         echo "-1";
     }
-
 }
     
     
