@@ -13,11 +13,7 @@
     <select name="selected_plug" id="selected_plug_conf">
     <?php 
         for($i=0;$i<count($plugs_infos);$i++) {
-            if(strcmp($plugs_infos[$i]['PLUG_ENABLED'],"False")==0) { ?>
-                <option disabled value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']." (".__('PLUG_DISABLED').")"; ?></option>
-        <?php } else { ?>
             <option value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']; ?></option>
-        <?php }
         } 
     ?>
     </select>
@@ -69,12 +65,8 @@
         <select name="selected_plug" id="selected_plug">
             <?php 
                 for($i=0;$i<count($plugs_infos);$i++) {
-                    if(strcmp($plugs_infos[$i]['PLUG_ENABLED'],"False")==0) { ?>
-                        <option disabled value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']." (".__('PLUG_DISABLED').")"; ?></option>
-              <?php } else { ?>
                         <option value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']; ?></option>
              <?php }
-                }
             ?>
 
         </select>
@@ -316,19 +308,10 @@
                     <select name="reset_selected_plug" id="reset_selected_plug">
                     <?php 
                         for($i=1;$i<=$nb_plugs;$i++) {
-                            if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],"False")==0) {
-                                $enable="Disabled";
-                            } else {
-                                $enable="";
-                            } 
                             if("$i"=="$reset_selected") {
                                 echo "<option value=\"${i}\" selected>${i}</option>";
                             } else {
-                                if(strcmp("$enable","")==0) {
-                                    echo "<option value=\"${i}\">${i}</option>";
-                                } else {
-                                    echo "<option disabled value=\"${i}\">${i} (".__('PLUG_DISABLED').")</option>";
-                                }
+                                echo "<option value=\"${i}\">${i}</option>";
                             }
                         } 
                     ?>
@@ -352,15 +335,10 @@
                 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
                     <select name="export_selected_plug" id="export_selected_plug">
                     <?php for($i=1;$i<=$nb_plugs;$i++) {
-                        if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],"False")==0) { $enable="Disabled"; } else { $enable=""; } 
                             if("$i"=="$export_selected") {
                                 echo "<option value=\"${i}\" selected>${i}</option>";
                             } else {
-                                if(strcmp("$enable","")==0) {
-                                    echo "<option value=\"${i}\">${i}</option>";
-                                } else {
-                                    echo "<option disabled value=\"${i}\">${i} (".__('PLUG_DISABLED').")</option>";
-                                }
+                                echo "<option value=\"${i}\">${i}</option>";
                             }
                         } 
                     ?>
@@ -380,19 +358,10 @@
                 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" enctype= "multipart/form-data">
                     <select name="import_selected_plug" id="import_selected_plug">
                     <?php for($i=1;$i<=$nb_plugs;$i++) {
-                            if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],"False")==0) {
-                                $enable="Disabled"; 
-                            } else {
-                                $enable="";
-                            } 
                             if("$i"=="$export_selected") {
                                 echo "<option value=\"${i}\" selected>${i}</option>";
                             } else {
-                                if(strcmp("$enable","")==0) {
-                                    echo "<option value=\"${i}\">${i}</option>";
-                                } else {
-                                    echo "<option disabled value=\"${i}\">${i} (".__('PLUG_DISABLED').")</option>";
-                                }
+                                echo "<option value=\"${i}\">${i}</option>";
                             }
                         }
                     ?>

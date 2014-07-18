@@ -423,7 +423,6 @@ $(document).ready(function() {
                         }
                     }
                }
-        <?php if(strcmp($plugs['PLUG_ENABLED'],"False")==0) echo ",showInLegend: false"; ?>
       }
      <?php 
      $count=$count+1;

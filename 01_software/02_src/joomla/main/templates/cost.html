@@ -217,11 +217,7 @@ $(function () {
             <option value="all"><?php echo __('PRICE_ALL_PLUG'); ?></option>
             <option value="distinct_all" <?php if(strcmp($select_plug,"distinct_all")==0) { echo "selected"; } ?>><?php echo __('PRICE_DISTINCT_ALL_PLUG'); ?></option>
             <?php for($plugs=1;$plugs<=$nb_plugs;$plugs++) {  ?>
-                <?php if(strcmp($plugs_infos[$plugs-1]['PLUG_ENABLED'],"False")==0) { ?>
-                    <option value="<?php echo $plugs; ?>" disabled><?php echo __('PRICE_FOR_PLUG').": ".$plugs_infos[$plugs-1]["PLUG_NAME"]; ?></option>
-                <?php } else { ?>
                     <option value="<?php echo $plugs; ?>" <?php if(strcmp("$select_plug","$plugs")==0) echo "selected"; ?>><?php echo __('PRICE_FOR_PLUG').": ".$plugs_infos[$plugs-1]["PLUG_NAME"]; ?></option>
-                <?php } ?>
             <?php } ?> 
          </select></td>
      <td></td>

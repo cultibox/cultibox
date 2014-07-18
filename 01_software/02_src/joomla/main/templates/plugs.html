@@ -34,21 +34,7 @@
     <label id="anchor<?php echo $i; ?>"></label>
    <div id="div_selected_plug<?php echo $i; ?>" style="<?php if($submenu!=$i) echo 'display:none'; ?>">
 <br />
-<table class="table_width">
-      <tr>
-         <td class="plug-marge-td"></td>
-         <td class="plug-marge-title"><?php echo __('STATE_PLUG'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_STATE_PLUG'); ?>" /></td>
-         <td class="plug-marge-field">
-            <select name="plug_enable<?php echo $i; ?>" id="plug_enable<?php echo $i; ?>" onChange="getEnable(this.selectedIndex,<?php echo $i; ?>);" onLoad="getEnable(this.selectedIndex,<?php echo $i; ?>);">
-               <option <?php if(strcmp($plug_enable{$i},"True")==0) { echo "selected";} ?> value="True"><?php echo __('PLUG_ENABLED'); ?></option>
-               <option <?php if(strcmp($plug_enable{$i},"False")==0) { echo "selected";} ?> value="False"><?php echo __('PLUG_DISABLED'); ?></option>
-            </select>
-         </td>
-         <td></td>
-      </tr>
-</table>
-
-<div id="state_plug<?php echo $i; ?>" style="<?php if((strcmp($plug_enable{$i},"False")==0)) { echo "display:none"; } ?>">
+<div id="state_plug<?php echo $i; ?>" name="state_plug<?php echo $i; ?>">
 <table class="table_width">
       <tr>
          <td class="plug-marge-td"></td>
@@ -286,7 +272,7 @@
         <button class="jumpto" name="jump_wizard<?php echo $i; ?>"  id="jump_wizard<?php echo $i; ?>" onclick='addHidden(document.forms["plugForm"], "<?php echo $i; ?>","jumpwizard"); document.forms["plugForm"].submit();'><?php echo __('JUMPTO_WIZARD'); ?></button>
     </td>
     <td class="program-button">
-        <input type="hidden" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>"><div id="button_program<?php echo $i;?>" style="<?php if(strcmp($plugs_infos[$i-1]['PLUG_ENABLED'],'False')==0) echo 'display:none'; ?>"><button class="jumpto" name="jumpto<?php echo $i; ?>" id="jumpto<?php echo $i; ?>"  onclick='addHidden(document.forms["plugForm"], "<?php echo $i; ?>","jumpto");'><?php echo __('SAVE_AND_CONFIGURE_PROGRAM').": $i"; ?></button></div>
+        <input type="hidden" name="reccord" value="<?php echo __('VALIDATION_PLUG_CONF'); ?>"><div id="button_program<?php echo $i;?>"><button class="jumpto" name="jumpto<?php echo $i; ?>" id="jumpto<?php echo $i; ?>"  onclick='addHidden(document.forms["plugForm"], "<?php echo $i; ?>","jumpto");'><?php echo __('SAVE_AND_CONFIGURE_PROGRAM').": $i"; ?></button></div>
     </td>
 </tr>
 </table>
