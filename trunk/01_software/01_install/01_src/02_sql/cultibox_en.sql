@@ -153,7 +153,6 @@ CREATE TABLE IF NOT EXISTS `plugs` (
   `PLUG_SENSO` varchar(1) NOT NULL DEFAULT 'T',
   `PLUG_SENSS` varchar(1) NOT NULL DEFAULT '+',
   `PLUG_REGUL_VALUE` decimal(3,1) NOT NULL DEFAULT '35.0',
-  `PLUG_ENABLED` varchar(5) NOT NULL DEFAULT 'True',
   `PLUG_SECOND_TOLERANCE` DECIMAL( 3, 1 ) NOT NULL DEFAULT '0.0',
   `PLUG_COMPUTE_METHOD` VARCHAR( 1 ) NOT NULL DEFAULT 'M',
   PRIMARY KEY (`id`)
@@ -163,23 +162,23 @@ CREATE TABLE IF NOT EXISTS `plugs` (
 -- Dumping data for table `plugs`
 --
 
-INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_POWER_MAX`, `PLUG_REGUL`, `PLUG_REGUL_SENSOR`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_ENABLED`,`PLUG_SECOND_TOLERANCE`,`PLUG_COMPUTE_METHOD`) VALUES
-(1, '', 'Plug1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(2, '', 'Plug2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(3, '', 'Plug3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(4, '', 'Plug4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(5, '', 'Plug5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(6, '', 'Plug6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(7, '', 'Plug7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(8, '', 'Plug8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(9, '', 'Plug9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(10, '', 'Plug10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(11, '', 'Plug11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(12, '', 'Plug12', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(13, '', 'Plug13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(14, '', 'Plug14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(15, '', 'Plug15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M'),
-(16, '', 'Plug16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,'True',0.0,'M');
+INSERT INTO `plugs` (`id`, `PLUG_ID`, `PLUG_NAME`, `PLUG_TYPE`, `PLUG_TOLERANCE`, `PLUG_POWER`, `PLUG_POWER_MAX`, `PLUG_REGUL`, `PLUG_REGUL_SENSOR`, `PLUG_SENSO`, `PLUG_SENSS`, `PLUG_REGUL_VALUE`, `PLUG_SECOND_TOLERANCE`,`PLUG_COMPUTE_METHOD`) VALUES
+(1, '', 'Plug1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(2, '', 'Plug2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(3, '', 'Plug3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(4, '', 'Plug4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(5, '', 'Plug5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(6, '', 'Plug6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(7, '', 'Plug7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(8, '', 'Plug8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(9, '', 'Plug9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(10, '', 'Plug10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(11, '', 'Plug11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(12, '', 'Plug12', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(13, '', 'Plug13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(14, '', 'Plug14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(15, '', 'Plug15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(16, '', 'Plug16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M');
 
 -- --------------------------------------------------------
 

@@ -1,3 +1,10 @@
+Cultibox (1.4.03) precise; urgency=low
+    + Multiples debug
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue July 17  10:29:58 CEST 2014
+
+
+
 Cultibox (1.4.02) precise; urgency=low
     + Correction de l'affichage et la gestion des programmes journaliers dans l'onglet programme
     + Correction de la déselection des courbes dans l'onglet logs
