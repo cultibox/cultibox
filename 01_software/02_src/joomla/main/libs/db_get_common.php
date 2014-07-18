@@ -2213,7 +2213,7 @@ function format_regul_sumary($number=0, &$out,&$resume="",$max=0) {
 
     $unity="";
     foreach($res as $result) {
-        $resume = $resume . "<p align='center'><b><i>".__('SUMARY_REGUL_SUBTITLE')." ".$result['id'].":</i></b></p>";
+        $resume = $resume . "<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')." ".$result['id'].":</i></b></p>";
         
         if($result['PLUG_SENSO'] == "H") {
             $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_HYGRO');
