@@ -75,7 +75,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $name=getvar("plug_name${nb}");
    $type=getvar("plug_type${nb}");
    $tolerance=getvar("plug_tolerance{$nb}");
-   $plug_update=false;
    $power=getvar("plug_power${nb}");
    $compute_method=getvar("plug_compute_method${nb}");
     
@@ -130,53 +129,45 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
        $name=mysql_escape_string($name);
        insert_plug_conf("PLUG_NAME",$nb,$name,$main_error);
        $update_program=true;
-       $plug_update=true;
    }
    
 
    if((strcmp($type,"heating")==0)||(strcmp($type,"humidifier")==0)||(strcmp($type,"dehumidifier")==0)||(strcmp($type,"ventilator")==0)||(strcmp($type,"pump")==0)) {
        insert_plug_conf("PLUG_TOLERANCE",$nb,$tolerance,$main_error);
        $update_program=true;
-       $plug_update=true;
    } 
 
 
    if((!empty($power))&&(isset($power))&&(strcmp("$old_power","$power")!=0)) {
        insert_plug_conf("PLUG_POWER",$nb,$power,$main_error);
        $update_program=true;
-       $plug_update=true;
    } else {
        if((empty($power))&&(!empty($reccord))&&(strcmp("$old_power","$power")!=0)) {
             insert_plug_conf("PLUG_POWER",$nb,"",$main_error);
             $update_program=true;
-            $plug_update=true;
        }
    }
 
    if((!empty($power_max))&&(isset($power_max))&&(strcmp("$old_power_max","$power_max")!=0)) {
        insert_plug_conf("PLUG_POWER_MAX",$nb,$power_max,$main_error);
        $update_program=true;
-       $plug_update=true;
    } 
 
 
    if((!empty($regul))&&(isset($regul))&&(strcmp("$old_regul","$regul")!=0)) {
        insert_plug_conf("PLUG_REGUL",$nb,"$regul",$main_error);
        $update_program=true;
-       $plug_update=true;
    }
 
 
    if((!empty($regul_senss))&&(isset($regul_senss))&&(strcmp("$old_senss","$regul_senss")!=0)==0) {
        insert_plug_conf("PLUG_SENSS",$nb,"$regul_senss",$main_error);
        $update_program=true;
-       $plug_update=true;
    }
 
    if((!empty($second_tol))&&(isset($second_tol))&&(strcmp("$old_second_tol","$second_tol")!=0)) {
        insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"$second_tol",$main_error);
        $update_program=true;
-       $plug_update=true;
    }
 
 
@@ -193,27 +184,23 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    if((!empty($regul_senso))&&(isset($regul_senso))&&(strcmp("$old_senso","$regul_senso")!=0)) {
         insert_plug_conf("PLUG_SENSO",$nb,"$regul_senso",$main_error);
         $update_program=true;
-        $plug_update=true;
    }
 
 
    if((!empty($regul_value))&&(isset($regul_value))&&(strcmp("$old_regul_value","$regul_value")!=0)) {
         insert_plug_conf("PLUG_REGUL_VALUE",$nb,"$regul_value",$main_error);
         $update_program=true;
-        $plug_update=true;
    }
 
    if((!empty($sensor))&&(isset($sensor))&&(strcmp("$old_sensor","$sensor")!=0)) {
        insert_plug_conf("PLUG_REGUL_SENSOR",$nb,"$sensor",$main_error);
        $update_program=true;
-       $plug_update=true;
    }
 
 
    if((!empty($compute_method))&&(isset($compute_method))&&(strcmp("$old_compute_method","$compute_method")!=0)) {
       insert_plug_conf("PLUG_COMPUTE_METHOD",$nb,"$compute_method",$main_error);
       $update_program=true;
-      $plug_update=true;
    }
 
 
@@ -221,7 +208,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    if((!empty($type))&&(isset($type))&&(strcmp("$old_type","$type")!=0)) {
          insert_plug_conf("PLUG_TYPE",$nb,$type,$main_error);
          $update_program=true;
-         $plug_update=true;
 
 
        //If second regulation is deactivated but the type of plug change, we also change default value for second regulation:
