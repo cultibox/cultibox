@@ -139,7 +139,7 @@ function get_plug_conf($key,$id,&$out) {
 // RET return an array containing plugid and its name
 function get_plugs_infos($nb=0,&$out) {
 
-    $sql = "SELECT id, PLUG_NAME, PLUG_TYPE, PLUG_REGUL, PLUG_ENABLED, PLUG_POWER_MAX"
+    $sql = "SELECT id, PLUG_NAME, PLUG_TYPE, PLUG_REGUL, PLUG_POWER_MAX"
             . " FROM plugs"
             . " WHERE id <= '{$nb}'"
             . " ORDER by id ASC";
@@ -255,11 +255,11 @@ EOF;
          if((!isset($dateend))||(empty($dateend))) {
             if(empty($short)) {
             $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") GROUP BY time_catch,plug_number ORDER by timestamp ASC, plug_number ASC
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs`) GROUP BY time_catch,plug_number ORDER by timestamp ASC, plug_number ASC
 EOF;
             } else {
             $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") AND `record` != 0 GROUP BY time_catch,plug_number ORDER by timestamp ASC, plug_number ASC
+SELECT  * FROM `power` WHERE timestamp LIKE "{$date}%" AND `plug_number` IN (SELECT `id` FROM `plugs`) AND `record` != 0 GROUP BY time_catch,plug_number ORDER by timestamp ASC, plug_number ASC
 EOF;
             }
          } else {
@@ -270,11 +270,11 @@ EOF;
         
          if(empty($short)) {  
       $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True")
+SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs`)
 EOF;
          } else {
 $sql = <<<EOF
-SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") AND `record` != 0
+SELECT  * FROM `power` WHERE timestamp BETWEEN  "{$date}" AND "{$dateend}" AND `plug_number` IN (SELECT `id` FROM `plugs`) AND `record` != 0
 EOF;
          }
         }
@@ -481,11 +481,11 @@ function get_theorical_power($id=0,$type="",&$out,&$error=0) {
    $res="";
    if(strcmp("$id","all")==0) {
           $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <= ${nb_plugs} AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True") 
+SELECT * FROM `programs` WHERE `plug_id` > 0 AND `plug_id` <= ${nb_plugs} AND `plug_id` IN (SELECT `id` FROM `plugs`) 
 EOF;
       } else {
       $sql = <<<EOF
-SELECT * FROM `programs` WHERE `plug_id` = "{$id}" AND `plug_id` IN (SELECT `id` FROM `plugs` WHERE `PLUG_ENABLED` LIKE "True")
+SELECT * FROM `programs` WHERE `plug_id` = "{$id}" AND `plug_id` IN (SELECT `id` FROM `plugs`)
 EOF;
    }
 
@@ -511,7 +511,7 @@ EOF;
 
    if(count($res)>0) {
       $sql = <<<EOF
-SELECT `PLUG_POWER`,`PLUG_ENABLED` FROM `plugs` WHERE `id` <= ${nb_plugs}
+SELECT `PLUG_POWER` FROM `plugs` WHERE `id` <= ${nb_plugs}
 EOF;
 
      $db=db_priv_pdo_start();
@@ -544,15 +544,12 @@ EOF;
          foreach($res as $val) {
                $id=$val['plug_id']-1;
 
-               if(($res_power[$id]['PLUG_POWER']==0)&&(strcmp($res_power[$id]['PLUG_ENABLED'],"True")==0)) {
+               if($res_power[$id]['PLUG_POWER']==0) {
                      $error=1;
-               }
-
-               if(strcmp($res_power[$id]['PLUG_ENABLED'],"True")==0) {
-                    $enable=1;
+                     $enable=0;
                } else {
-                    $enable=0;
-               } 
+                     $enable=1;
+               }
 
                $shh=substr($val['time_start'],0,2);
                $smm=substr($val['time_start'],2,2);
@@ -1720,54 +1717,53 @@ function create_plugconf_from_database($nb=0,&$out) {
                $tol="000";
             }
 
-            if(strcmp($data['PLUG_ENABLED'],"True")==0) {
-                //Main regulation:
+            //Main regulation:
+            if($data['PLUG_TYPE']=="ventilator") {
+                $reg="REG:T+${tol}";
+            } else if($data['PLUG_TYPE']=="heating") {
+                $reg="REG:T-${tol}";
+            } else if($data['PLUG_TYPE']=="pump") {
+                $reg="REG:T-${tol}";
+            } else if($data['PLUG_TYPE']=="humidifier") {
+                $reg="REG:H-${tol}";
+            } else if($data['PLUG_TYPE']=="dehumidifier") {
+                $reg="REG:H+${tol}";
+            } else {
+                $reg="REG:N+000";
+            }
+
+
+            // Second regulation:
+            if(strcmp("$second_regul","True")==0) {
+                //Default second regulation value:
                 if($data['PLUG_TYPE']=="ventilator") {
-                    $reg="REG:T+${tol}";
+                    $sec="SEC:T+1000";
                 } else if($data['PLUG_TYPE']=="heating") {
-                    $reg="REG:T-${tol}";
+                    $sec="SEC:N-1000";
                 } else if($data['PLUG_TYPE']=="pump") {
-                    $reg="REG:T-${tol}";
+                    $sec="SEC:N-1000";
                 } else if($data['PLUG_TYPE']=="humidifier") {
-                    $reg="REG:H-${tol}";
+                    $sec="SEC:N-1000";
                 } else if($data['PLUG_TYPE']=="dehumidifier") {
-                    $reg="REG:H+${tol}";
-                } else {
-                    $reg="REG:N+000";
-                }
-
-
-                // Second regulation:
-                if(strcmp("$second_regul","True")==0) {
-                    //Default second regulation value:
-                    if($data['PLUG_TYPE']=="ventilator") {
-                        $sec="SEC:T+1000";
-                    } else if($data['PLUG_TYPE']=="heating") {
-                        $sec="SEC:N-1000";
-                    } else if($data['PLUG_TYPE']=="pump") {
-                        $sec="SEC:N-1000";
-                    } else if($data['PLUG_TYPE']=="humidifier") {
-                        $sec="SEC:N-1000";
-                    } else if($data['PLUG_TYPE']=="dehumidifier") {
-                        $sec="SEC:N+1000";
-                    } else {
-                        $sec="SEC:N+0000";
-                    }
-
-                    //User second regulation value:
-                    if(strcmp($data['PLUG_REGUL'],"False")==0) {
-                        $sec="SEC:N+0000";
-                    } else {
-                        $sec="SEC:".$data['PLUG_SENSO'].$data['PLUG_SENSS'];
-                        $val=$data['PLUG_REGUL_VALUE']*10;
-                        while(strlen($val)<3) {
-                            $val="0$val";
-                        }
-                        $sec=$sec."1$val";
-                    }
+                    $sec="SEC:N+1000";
                 } else {
                     $sec="SEC:N+0000";
                 }
+
+                //User second regulation value:
+                if(strcmp($data['PLUG_REGUL'],"False")==0) {
+                    $sec="SEC:N+0000";
+                } else {
+                    $sec="SEC:".$data['PLUG_SENSO'].$data['PLUG_SENSS'];
+                    $val=$data['PLUG_REGUL_VALUE']*10;
+                    while(strlen($val)<3) {
+                        $val="0$val";
+                    }
+                    $sec=$sec."1$val";
+                }
+            } else {
+                $sec="SEC:N+0000";
+            }
             } else {
                 $reg="REG:N+000";
                 $sec="SEC:N+0000";
@@ -1812,7 +1808,6 @@ function create_plugconf_from_database($nb=0,&$out) {
          }
          return $arr;
       }
-   } 
 }
 
 // }}}
@@ -1886,7 +1881,7 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
     $nb_plugs=get_configuration("NB_PLUGS",$out);
     
     // Get programs for plug enabled
-   $sql = "SELECT * FROM programs WHERE plug_id IN (SELECT id FROM plugs WHERE PLUG_ENABLED LIKE 'True') AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
+   $sql = "SELECT * FROM programs WHERE plug_id IN (SELECT id FROM plugs) AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
   
    $db=db_priv_pdo_start();
    try {
@@ -1907,7 +1902,7 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
 
    
    // Select first element of program
-   $sql = "SELECT * FROM programs WHERE time_start = '000000' AND plug_id IN (SELECT id FROM plugs WHERE PLUG_ENABLED LIKE 'True') AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
+   $sql = "SELECT * FROM programs WHERE time_start = '000000' AND plug_id IN (SELECT id FROM plugs) AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
 
     try {
         $sth=$db->prepare($sql);
@@ -1926,7 +1921,7 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
     }
 
     // Select last element of program
-   $sql = "SELECT * FROM programs WHERE time_stop = '235959' AND plug_id IN (SELECT id FROM plugs WHERE PLUG_ENABLED LIKE 'True') AND number = '" . $fieldNumber . "' ORDER by time_start;";
+   $sql = "SELECT * FROM programs WHERE time_stop = '235959' AND plug_id IN (SELECT id FROM plugs) AND number = '" . $fieldNumber . "' ORDER by time_start;";
 
     try {
         $sth=$db->prepare($sql);
@@ -2155,7 +2150,7 @@ function generate_program_from_file($file="",$plug,&$out) {
 // RET array containing the list of active plug
 function get_active_plugs($nb,&$out="") {
 
-    $sql = "SELECT id FROM plugs WHERE id <={$nb} AND PLUG_ENABLED LIKE 'True' ;";
+    $sql = "SELECT id FROM plugs WHERE id <={$nb};";
         
     $db=db_priv_pdo_start();
     try {
@@ -2192,13 +2187,11 @@ function format_regul_sumary($number=0, &$out,&$resume="",$max=0) {
     if($number == "all") {
         $sql = "SELECT id, PLUG_REGUL, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE" 
                 . " FROM plugs WHERE PLUG_REGUL LIKE 'True'"
-                . " AND PLUG_ENABLED LIKE 'True'"
                 . " AND id < '{$max}' ;"; 
 
     } else {
         $sql = "SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE"
                 . " FROM plugs WHERE PLUG_REGUL LIKE 'True'"
-                . " AND PLUG_ENABLED LIKE 'True'"
                 . " AND id = '{$number}' ;";
     }
     
@@ -2306,7 +2299,7 @@ function get_cost_summary(&$out) {
 // OUT false if a plug is not configured, true else
 function check_configuration_power($id=0) {
     
-    $sql = "SELECT PLUG_POWER FROM plugs WHERE id = {$id} AND PLUG_ENABLED LIKE 'True';";
+    $sql = "SELECT PLUG_POWER FROM plugs WHERE id = {$id};";
       
     $db=db_priv_pdo_start();
     try {

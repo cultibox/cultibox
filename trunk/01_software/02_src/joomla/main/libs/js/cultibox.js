@@ -757,7 +757,6 @@ $(document).ready(function() {
             $("#error_second_tolerance_value_temp"+i).css("display","none");
             $("#error_regul_value"+i).css("display","none");
 
-            if($("#plug_enable"+i).val()=="True") {
                 if($("#power_value"+i).val()) {
                     //Check power value:
                     $.ajax({
@@ -852,7 +851,6 @@ $(document).ready(function() {
                     }
                 }
             }
-         }
 
         if(checked) {
             document.forms['plugForm'].submit();
@@ -882,7 +880,6 @@ $(document).ready(function() {
             $("#error_second_tolerance_value_temp"+i).css("display","none");
             $("#error_regul_value"+i).css("display","none");
 
-            if($("#plug_enable"+i).val()=="True") {
                 if($("#power_value"+i).val()) {
                     //Check power value:
                     $.ajax({
@@ -972,8 +969,6 @@ $(document).ready(function() {
 
                     }
 
-
-                 }
                 if((!checked)&&(anchor=="")) {
                     anchor="anchor"+i;
                 }

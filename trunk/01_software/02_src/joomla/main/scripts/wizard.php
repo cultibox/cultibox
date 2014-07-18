@@ -239,7 +239,6 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
                 unset($type_submit);
             }
 
-            insert_plug_conf("PLUG_ENABLED",$selected_plug,"True",$main_error);
             if((!empty($sd_card))&&(isset($sd_card))) {
                 $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$main_error);
                 if(count($plugconf)>0) {
