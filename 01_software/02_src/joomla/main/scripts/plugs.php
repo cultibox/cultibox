@@ -213,12 +213,12 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
        //If second regulation is deactivated but the type of plug change, we also change default value for second regulation:
        if(strcmp("$second_regul","False")==0) {
             if((strcmp($type,"other")==0)||(strcmp($type,"lamp")==0)) {
-                insert_plug_conf("PLUG_REGUL_VALUE",$nb,"35",$main_error);
-                insert_plug_conf("PLUG_SENSO",$nb,"T",$main_error);
+                insert_plug_conf("PLUG_REGUL_VALUE",$nb,"70",$main_error);
+                insert_plug_conf("PLUG_SENSO",$nb,"H",$main_error);
                 insert_plug_conf("PLUG_SENSS",$nb,"+",$main_error);
                 insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"0",$main_error);
             } elseif((strcmp($type,"heating")==0)||(strcmp($type,"ventilator")==0)||(strcmp($type,"pump")==0)) {
-                insert_plug_conf("PLUG_REGUL_VALUE",$nb,"35",$main_error);
+                insert_plug_conf("PLUG_REGUL_VALUE",$nb,"70",$main_error);
                 insert_plug_conf("PLUG_SENSO",$nb,"H",$main_error);
                 insert_plug_conf("PLUG_SENSS",$nb,"+",$main_error);
                 insert_plug_conf("PLUG_SECOND_TOLERANCE",$nb,"0",$main_error);
