@@ -245,6 +245,49 @@ $(document).ready(function(){
                 });
             });
 
+
+            //If second regulation is disabled, we uses default value:
+            if($("#second_regul option:selected").val()=="False") {
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "../../main/modules/external/update_plugs.php",
+                    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=False&id=all&name=PLUG_REGUL"
+                }).done(function (data) {
+                    if($.parseJSON(data)!="") {
+                        check_update=false;
+                    }
+                });
+            }
+
+
+            //If advanced regulation is disabled, we use default value:
+            if($("#advanced_regul_options option:selected").val()=="False") {
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "../../main/modules/external/update_plugs.php",
+                    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=M&id=all&name=PLUG_COMPUTE_METHOD"
+                }).done(function (data) {
+                    if($.parseJSON(data)!="") {
+                        check_update=false;
+                    }
+                });
+
+
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "../../main/modules/external/update_plugs.php",
+                    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=1&id=all&name=PLUG_REGUL_SENSOR"
+                }).done(function (data) {
+                    if($.parseJSON(data)!="") {
+                        check_update=false;
+                    }
+                });
+            }
+
+
             //RTC OFFSET process:
             newValue    = $("#rtc_offset").val();
             varToUpdate = $("#rtc_offset").attr('name');
