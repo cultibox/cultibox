@@ -3,7 +3,8 @@
 sensors        = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR_PLUG']) ?>;
 nb_plugs       = <?php echo json_encode($nb_plugs) ?>;
 title_msgbox   = <?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-plugs_infoJS   = <?php echo json_encode($plugs_infos) ?>;
+plugs_infoJS   = <?php echo json_encode($plugs_infos); ?>;
+update_program = <?php echo json_encode($update_program); ?>;
 
 $(document).ready(function(){
     //Display dimmer canal:
@@ -20,6 +21,26 @@ $(document).ready(function(){
             $("#select_canal_dimmer"+id).css("display","none");
         }
     });
+
+
+    if(update_program) {
+         $("#valid_update_program").dialog({
+                resizable: false,
+                height:200,
+                width: 500,
+                closeOnEscape: false,
+                modal: true,
+                dialogClass: "popup_message",
+                hide: "fold",
+                buttons: [
+                    {
+                    text: CLOSE_button,
+                        click: function () {
+                            $( this ).dialog( "close" ); return false;
+                    }
+                }]
+            });
+    }
 
 
     //Disable previous selected dimmer canal:

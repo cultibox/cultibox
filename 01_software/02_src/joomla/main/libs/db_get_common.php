@@ -1764,10 +1764,6 @@ function create_plugconf_from_database($nb=0,&$out) {
             } else {
                 $sec="SEC:N+0000";
             }
-            } else {
-                $reg="REG:N+000";
-                $sec="SEC:N+0000";
-            }
 
             if(strcmp($data['PLUG_REGUL_SENSOR'],"")!=0) {  
                 $vsen="";
@@ -1808,6 +1804,7 @@ function create_plugconf_from_database($nb=0,&$out) {
          }
          return $arr;
       }
+    }
 }
 
 // }}}
