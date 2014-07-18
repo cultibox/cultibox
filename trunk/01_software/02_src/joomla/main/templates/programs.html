@@ -12,10 +12,9 @@
         
     <select name="selected_plug" id="selected_plug_conf">
     <?php 
-        for($i=0;$i<count($plugs_infos);$i++) {
+        for($i=0;$i<count($plugs_infos);$i++) { ?>
             <option value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']; ?></option>
-        } 
-    ?>
+     <?php   } ?>
     </select>
 </label>
 
@@ -64,7 +63,7 @@
     <p class="title_conf"><?php echo __('CONFIGURE_PROGRAM'); ?>
         <select name="selected_plug" id="selected_plug">
             <?php 
-                for($i=0;$i<count($plugs_infos);$i++) {
+                for($i=0;$i<count($plugs_infos);$i++) { ?>
                         <option value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']; ?></option>
              <?php }
             ?>
