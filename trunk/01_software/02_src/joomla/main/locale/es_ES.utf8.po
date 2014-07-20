@@ -418,7 +418,13 @@ msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Regulación del enchufe"
 
 msgid "SUMARY_REGUL_SENSO"
-msgstr "Activación"
+msgstr "Activación si"
+
+msgid "TEMP_REGUL"
+msgstr "la temperatura"
+
+msgid "HUMI_REGUL"
+msgstr "la humedad"
 
 msgid "SUMARY_REGUL_SENSS"
 msgstr "Umbral"

@@ -414,11 +414,14 @@ msgstr "Keine SD-Karte erkannt"
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Zusammenfassung der aktiven Sekundär Vorschriften für den ausgewählten gemacht"
 
-msgid "SUMARY_REGUL_SUBTITLE"
-msgstr "Verordnung der Entscheidung"
-
 msgid "SUMARY_REGUL_SENSO"
-msgstr "Freisetzung"
+msgstr "Auslösen, wenn"
+
+msgid "TEMP_REGUL"
+msgstr "Temperatur"
+
+msgid "HUMI_REGUL"
+msgstr "Feuchtigkeit"
 
 msgid "SUMARY_REGUL_SENSS"
 msgstr "Schwelle"

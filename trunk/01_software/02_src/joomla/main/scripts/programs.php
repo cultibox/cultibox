@@ -38,6 +38,7 @@ $reset_program=getvar("reset_old_program");
 $regul_program=getvar("regul_program");
 $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error);
 
+
 //Valeur du radio bouton qui définit si le programme sera cyclic ou non:
 $cyclic=getvar("cyclic");
 
@@ -84,9 +85,7 @@ $error_value[5]=__('ERROR_VALUE_PROGRAM_CM','html');
 $error_value[6]=__('ERROR_VALUE_PROGRAM','html');
 
 for($i=1;$i<=$nb_plugs;$i++) {
-    format_regul_sumary("$i",$main_error,$tmp,$nb_plugs);
-    $resume_regul[]="$tmp";
-    $tmp="";
+    $resume_regul[$i]=format_regul_sumary("$i",$main_error);
 }
 
 if((!isset($reset_selected)) || empty($reset_selected)) {

@@ -418,7 +418,13 @@ msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Regolamento della decisione"
 
 msgid "SUMARY_REGUL_SENSO"
-msgstr "Rilascio"
+msgstr "Rilascio si"
+
+msgid "TEMP_REGUL"
+msgstr "la temperatura"
+
+msgid "HUMI_REGUL"
+msgstr "la umidità"
 
 msgid "SUMARY_REGUL_SENSS"
 msgstr "Soglia"

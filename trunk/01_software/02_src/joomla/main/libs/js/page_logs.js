@@ -925,7 +925,7 @@ $(document).ready(function() {
                         $(cheBu).attr("yaxis" , item.yaxis);
 
 
-                        // Update tooltip with min and mùax
+                        // Update tooltip with min and max
                         updateTooltipMinMax();
                         
                     });
@@ -946,6 +946,9 @@ $(document).ready(function() {
                     serie.remove(true);
                 }
              });
+
+             // after every curve unloaded, update tooltip with min and max
+             updateTooltipMinMax();
 
 
             // Remove text legend
@@ -1332,7 +1335,7 @@ $(document).ready(function() {
 
  
  // Folowinbg code is used to update tooltip with second regul and min max
- var second_regul = "<?php echo $resume_regul ;?>";
+ var second_regul = <?php echo json_encode($resume_regul); ?>;
  
  function updateTooltipMinMax () {
  
@@ -1364,8 +1367,24 @@ $(document).ready(function() {
     
     }
 
-    $("#regul_and_minmax_summary").attr("title",second_regul + beforeText + textToDisplay + afterText);
+    var resume=second_regul[0];
+    var plugsShow = [];
+    $("input[type=checkbox][name^=select_program], input[type=checkbox][name^=select_power]").each(function() {
+        var cheBu = $(this);
+        if (cheBu.attr("checked") == "checked") {
+            if(jQuery.inArray($(this).val(), plugsShow)==-1) {
+                resume=resume+"<b><?php echo __('PLUG_MENU'); ?> " + $(this).val() + ":</b><br />" + second_regul[$(this).val()]+"<br /><br />";
+                plugsShow.push($(this).val());
+            }
+        }
+    });
 
+    if(plugsShow.length==0) {
+        resume="<p align='center'><b><i>"+"<?php echo __('SUMARY_REGUL_TITLE'); ?>"+"</i></b><br /><br />"+"<?php echo __('SUMARY_EMPTY_SELECTION'); ?>"+"</p><br />";
+    }
+    delete plugsShow;
+
+    $("#regul_and_minmax_summary").attr("title",resume + beforeText + textToDisplay + afterText);
  }
  
  

@@ -2173,35 +2173,25 @@ function get_active_plugs($nb,&$out="") {
 
 // {{{ format_regul_sumary()
 // ROLE format regulation of a plug to be displayed in a summary
-// IN    $number     maximale plug's number
+// IN    $number     id of the plug
 //       $out        error or warning messages
-//       $resume     string containing sumary formated
-//       $max        the maximal number of plug tu be seeked
 // RET   summary formated 
-function format_regul_sumary($number=0, &$out,&$resume="",$max=0) {
+function format_regul_sumary($number=0, &$out) {
 
-    // If all plug have been selected
-    if($number == "all") {
-        $sql = "SELECT id, PLUG_REGUL, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE" 
-                . " FROM plugs WHERE PLUG_REGUL LIKE 'True'"
-                . " AND id < '{$max}' ;"; 
-
-    } else {
-        $sql = "SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE"
+    $sql = "SELECT id, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE"
                 . " FROM plugs WHERE PLUG_REGUL LIKE 'True'"
                 . " AND id = '{$number}' ;";
-    }
-    
+
     $db=db_priv_pdo_start();
-    $res = array();
     try {
         $sth=$db->prepare("$sql");
         $sth->execute();
-        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
+        $result=$sth->fetchAll(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
         $ret=$e->getMessage();
     }
     $db=null;
+    $resume="";
 
     if((isset($ret))&&(!empty($ret))) {
         if($GLOBALS['DEBUG_TRACE']) {
@@ -2212,25 +2202,26 @@ function format_regul_sumary($number=0, &$out,&$resume="",$max=0) {
     }
 
     $unity="";
-    foreach($res as $result) {
-        $resume = $resume . "<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')." ".$result['id'].":</i></b></p>";
-        
-        if($result['PLUG_SENSO'] == "H") {
-            $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_HYGRO');
+    if(count($result)==1) {
+        $resume=__('SUMARY_REGUL_SUBTITLE').": <b>".__('SECOND_REGUL_ON')."</b>.<br />".__('SUMARY_REGUL_SENSO')." ";
+        if($result[0]['PLUG_SENSO'] == "H") {
+            $resume=$resume."<b>".__('HUMI_REGUL');
             $unity="%";
         } else {
-            $resume=$resume."<b>".__('SUMARY_REGUL_SENSO').":</b> ".__('SUMARY_REGUL_TEMP');
+            $resume=$resume."<b>".__('TEMP_REGUL');
             $unity="°C";
         }
 
-        if($result['PLUG_SENSS'] == "+") {
-            $resume=$resume."<br /><b>".__('SUMARY_REGUL_SENSS').":</b> ".__('SUMARY_ABOVE');
+        if($result[0]['PLUG_SENSS'] == "+") {
+            $resume=$resume." > ".$result[0]['PLUG_REGUL_VALUE'].$unity."</b>";
         } else {
-            $resume=$resume."<br /><b>".__('SUMARY_REGUL_SENSS').":</b> ".__('SUMARY_UNDER');    
+            $resume=$resume." < ".$result[0]['PLUG_REGUL_VALUE'].$unity."</b>";
         }
-        
-        $resume=$resume."<br /><b>".__('SUMARY_REGUL_VALUE').":</b> ".$result['PLUG_REGUL_VALUE'].$unity."<br /><br />";
+    } else {
+        $resume=__('SUMARY_REGUL_SUBTITLE').": <b>".__('SECOND_REGUL_OFF');
     }
+
+    return $resume;
 }
 // }}}
 
