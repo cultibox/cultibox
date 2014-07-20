@@ -38,16 +38,11 @@
                    src="main/libs/img/cal.png"  width="34" 
                     alt="calendar"
             />
-        <?php 
-            // Read program index
-            $program_index = array();
-            program\get_program_index_info($program_index);
-        ?>
             <!-- Button to add daily program -->
             <input type="image" id="daily_program" name="daily_program"
                    title="<?php echo __('TOOLTIP_CREATE_CALENDAR_DAILY_PROGRAM'); ?>"
                    src="main/libs/img/db_add.png"  width="34" 
-                   alt="calendar" 
+                   alt="calendar"  
             />        
         </td>
         <td class="calendar_right">
@@ -320,4 +315,9 @@
 <!-- JQuery displayed when drop is NOK -->
 <div id="error_drop_event" style="display:none">
     <p><?php echo __('ERROR_DROP_EVENT'); ?></p>
+</div>
+
+
+<div id="empty_daily_program" style="display:none">
+    <p><?php echo __('EMPTY_DAILY_PROGRAM'); ?></p>
 </div>

@@ -1195,6 +1195,9 @@ msgstr "Actualización de los eventos en la tarjeta SD"
 msgid "PARAMETERS_CALENDAR_TITLE"
 msgstr "Opciones avanzadas de Calendario"
 
+msgid "EMPTY_DAILY_PROGRAM"
+msgstr "Sin horario diario aún no ha sido definida. Puede crear programas diarios en la pestaña de opciones avanzadas del programa."
+
 
 # For the cost part:
 msgid "SELECT_START_DAY"

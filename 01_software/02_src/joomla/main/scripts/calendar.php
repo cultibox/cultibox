@@ -27,6 +27,19 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 
+// Read program index
+$program_index = array();
+program\get_program_index_info($program_index);
+
+$count_program_index=false;
+foreach ($program_index as $key => $value) {
+    // Don'y display current event
+    if ($value['id'] != 1) {
+        $count_program_index=true;
+        break;
+    }
+}
+
 //Get the important event list for the previous and next week to display:
 $important_list = array();
 $important_list = calendar\get_important_event_list($main_error); //Get import event list from database
