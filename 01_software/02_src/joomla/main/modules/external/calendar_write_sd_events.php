@@ -1,5 +1,12 @@
 <?php
 
+
+$session_id = $_GET['session_id'];
+if (!isset($_SESSION)) {
+   session_id($session_id);
+   session_start();
+}
+
 require_once('../../libs/config.php');
 require_once('../../libs/db_get_common.php');
 require_once('../../libs/db_set_common.php');

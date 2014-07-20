@@ -1,22 +1,5 @@
 <?php
 
-if (!isset($_SESSION)) {
-	session_start();
-}
-
-/* Libraries requiered: 
-        db_*_common.php : manage database requests
-        utilfunc.php  : manage variables and files manipulations
-        debug.php     : functions for PHP and SQL debugs
-        utilfunc_sd_card.php : functions for SD card management
-*/
-require_once('main/libs/config.php');
-require_once('main/libs/db_get_common.php');
-require_once('main/libs/db_set_common.php');
-require_once('main/libs/utilfunc.php');
-require_once('main/libs/debug.php');
-require_once('main/libs/utilfunc_sd_card.php');
-
 // Compute page time loading for debug option
 $start_load = getmicrotime();
 
@@ -24,10 +7,7 @@ $start_load = getmicrotime();
 $error=array();
 $main_error=array();
 $main_info=array();
-$_SESSION['LANG'] = get_current_lang(); //Language used by the user
-$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']); //Short language used to compute pages
 $version=get_configuration("VERSION",$main_error); //Current version of the software
-__('LANG');
 
 // ================= VARIABLES ================= //
 $sd_card=""; //Path of the SD card
@@ -69,7 +49,7 @@ $user_agent = getenv("HTTP_USER_AGENT");
 get_notes($notes,$_SESSION['LANG'],$main_error);
 
 // Include in html pop up and message
-include('main/templates/post_script.php');
+include('main/scripts/post_script.php');
 
 //Display the welcome template
 include('main/templates/welcome.html');

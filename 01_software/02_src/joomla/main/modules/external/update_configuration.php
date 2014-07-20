@@ -1,27 +1,9 @@
 <?php 
 
+    $session_id = $_GET['session_id'];
     if (!isset($_SESSION)) {
+        session_id($session_id);
         session_start();
-    }
-
-    // Define language using post lang parameter
-    $_SESSION['LANG'] = "fr_FR";
-    switch($_POST['lang']) {
-        case 'fr': 
-            $_SESSION['LANG'] = "fr_FR";
-            break;
-        case 'en': 
-            $_SESSION['LANG'] = "en_GB";
-            break;
-        case 'it': 
-            $_SESSION['LANG'] = "it_IT";
-            break;
-        case 'de': 
-            $_SESSION['LANG'] = "de_DE";
-            break;
-        case 'es': 
-            $_SESSION['LANG'] = "es_ES";
-            break;
     }
 
     // Include libraries
@@ -36,33 +18,28 @@
         require_once('../../libs/debug.php');
     }
 
-    // Define language
-    $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
-    __('LANG');
-
-
-    if(empty($_POST['value'])) {
-        insert_configuration(strtoupper($_POST['variable']),"",$main_error);
+    if(empty($_GET['value'])) {
+        insert_configuration(strtoupper($_GET['variable']),"",$main_error);
     } else {
         // Save configuration
-        insert_configuration(strtoupper($_POST['variable']),$_POST['value'],$main_error);
+        insert_configuration(strtoupper($_GET['variable']),$_GET['value'],$main_error);
     }
 
     //Special configuration:
-    switch(strtoupper($_POST['variable'])) {
-        case 'SHOW_COST': configure_menu("cost",$_POST['value']);
+    switch(strtoupper($_GET['variable'])) {
+        case 'SHOW_COST': configure_menu("cost",$_GET['value']);
                      break;
-        case 'WIFI': configure_menu("wifi",$_POST['value']);
+        case 'WIFI': configure_menu("wifi",$_GET['value']);
                      break;
     }
 
     // If update conf is defined, update sd configuration
-    if ($_POST['updateConf'] != "undefined") {
+    if ($_GET['updateConf'] != "undefined") {
         // search sd card
         $sd_card = get_sd_card();
         
         // Update conf file
-        update_sd_conf_file($sd_card, $_POST['variable'],$_POST['value'],$main_error);
+        update_sd_conf_file($sd_card, $_GET['variable'],$_GET['value'],$main_error);
     }
     
     if(count($main_error)>0) {

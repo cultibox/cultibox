@@ -1,27 +1,8 @@
 <?php 
-
+    $session_id = $_GET['session_id'];
     if (!isset($_SESSION)) {
+        session_id($session_id);
         session_start();
-    }
-
-    // Define language using post lang parameter
-    $_SESSION['LANG'] = "fr_FR";
-    switch($_POST['lang']) {
-        case 'fr':
-            $_SESSION['LANG'] = "fr_FR";
-            break;
-        case 'en':
-            $_SESSION['LANG'] = "en_GB";
-            break;
-        case 'it':
-            $_SESSION['LANG'] = "it_IT";
-            break;
-        case 'de':
-            $_SESSION['LANG'] = "de_DE";
-            break;
-        case 'es':
-            $_SESSION['LANG'] = "es_ES";
-            break;
     }
 
     // Include libraries
@@ -36,27 +17,23 @@
         require_once('../../libs/debug.php');
     }
 
-    // Define language
-    $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
-    __('LANG');
 
-
-    if(!empty($_POST['name'])) {
-           $name=$_POST['name']; 
+    if(!empty($_GET['name'])) {
+           $name=$_GET['name']; 
     } else {
             echo json_encode("");
             return 1;
     }
 
-    if(!empty($_POST['value'])) {
-           $value=$_POST['value'];
+    if(!empty($_GET['value'])) {
+           $value=$_GET['value'];
     } else {
             echo json_encode("");
             return 1;
     }
 
-    if(!empty($_POST['id'])) {
-           $id=$_POST['id'];
+    if(!empty($_GET['id'])) {
+           $id=$_GET['id'];
     } else {
             echo json_encode("");
             return 1;

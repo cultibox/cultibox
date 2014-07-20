@@ -1,6 +1,10 @@
 Cultibox (1.4.04) precise; urgency=low
     + Affichage du dernier jour possedant des logs après le chargement de logs
     + Correction d'un erreur jquery si le champ startdate est vide de l'affichage des logs
+    + AJout des librairies jquery pour les pages welcome et cost
+    + Ménage et réorganisation
+    + Correction de la gestion des sessions 
+    + Rechargement des logs si l'utilisateur enlève et replace la carte SD
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun July 20  13:39:17 CEST 2014
 

@@ -1,28 +1,10 @@
 <?php
 
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-
-    // Define language using post lang parameter
-    $_SESSION['LANG'] = "fr_FR";
-    switch($_GET['lang']) {
-        case 'fr': 
-            $_SESSION['LANG'] = "fr_FR";
-            break;
-        case 'en': 
-            $_SESSION['LANG'] = "en_GB";
-            break;
-        case 'it': 
-            $_SESSION['LANG'] = "it_IT";
-            break;
-        case 'de': 
-            $_SESSION['LANG'] = "de_DE";
-            break;
-        case 'es': 
-            $_SESSION['LANG'] = "es_ES";
-            break;
-    }
+$session_id = $_GET['session_id'];
+if (!isset($_SESSION)) {
+   session_id($session_id);
+   session_start();
+}
 
 // Load libraries
 require_once('../../libs/utilfunc.php');

@@ -1,27 +1,9 @@
 <?php 
 
+    $session_id = $_GET['session_id'];
     if (!isset($_SESSION)) {
+        session_id($session_id);
         session_start();
-    }
-
-    // Define language using post lang parameter
-    $_SESSION['LANG'] = "fr_FR";
-    switch($_POST['lang']) {
-        case 'fr': 
-            $_SESSION['LANG'] = "fr_FR";
-            break;
-        case 'en': 
-            $_SESSION['LANG'] = "en_GB";
-            break;
-        case 'it': 
-            $_SESSION['LANG'] = "it_IT";
-            break;
-        case 'de': 
-            $_SESSION['LANG'] = "de_DE";
-            break;
-        case 'es': 
-            $_SESSION['LANG'] = "es_ES";
-            break;
     }
 
     // Include libraries
@@ -36,11 +18,7 @@
         require_once('../../libs/debug.php');
     }
     
-    // Define languaage
-    $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
-    __('LANG');
-    
-    $sd_card = $_POST['sd_card'];
+    $sd_card = $_GET['sd_card'];
     
     $main_error = array();
     $main_info = array();

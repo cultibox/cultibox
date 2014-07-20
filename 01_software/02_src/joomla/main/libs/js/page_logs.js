@@ -1,7 +1,16 @@
 <script>
 
+<?php
+    if((isset($sd_card))&&(!empty($sd_card))) {
+        echo "sd_card = " . json_encode($sd_card) ;
+    } else {
+        echo 'sd_card = ""';
+    }
+?>
+
 
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+session_id="<?php echo session_id(); ?>";
 var count=0;
 
 // {{{ getType()
@@ -81,7 +90,7 @@ loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
     $.ajax({
         cache: false,
         url: "../../main/modules/external/load_log.php",
-        data: {nb_day:nb_day, type:type,search:search,sd_card:sd_card}
+        data: {nb_day:nb_day, type:type,search:search,sd_card:sd_card, session_id:session_id}
     }).done(function (data) {
         if(nb_day != 0) {
             if(type=="power") {
@@ -175,6 +184,15 @@ Highcharts.setOptions({
 $(function () {
     var chart;
     $(document).ready(function() {
+        if(sd_card=="") {
+        $.ajax({
+            cache: false,
+            async: false,
+            url: "../../main/modules/external/set_variable.php",
+            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+        });
+        }
+
         chart = new Highcharts.Chart({
             chart: {
                 backgroundColor: '#F7F7F9',
@@ -214,7 +232,7 @@ $(function () {
                                         day:1,
                                         month:$('input[type=radio][name=type_select]:checked').attr('value'),
                                         datatype:$(this).attr("datatype"),
-                                        lang:document.location.href.split('/')[document.location.href.split('/').length - 2],
+                                        session_id:session_id,
                                         startDate:$(this).attr("startDate")
                                     },
                                     url: '../../main/modules/external/logs_get_serie.php',
@@ -597,14 +615,14 @@ $(document).ready(function() {
     $.ajax({
         cache: false,
         url: "../../main/modules/external/get_variable.php",
-        data: {name:name}
+        data: {name:name, session_id:session_id}
     }).done(function (data) {
         if(jQuery.parseJSON(data)!="True") {
             var name="sd_card";
             $.ajax({
                 cache: false,
                 url: "../../main/modules/external/get_variable.php",
-                data: {name:name}
+                data: {name:name, session_id:session_id}
             }).done(function (data) {
                 if($.trim(data)!="") {
                     $("#progress_load").dialog({
@@ -672,7 +690,7 @@ $(document).ready(function() {
          $.ajax({
             cache: false,
             url: "../../main/modules/external/get_variable.php",
-            data: {name:name}
+            data: {name:name, session_id:session_id}
          }).done(function (data) {
             if($.trim(data)) {
 				loadLog($("#log_search").val()*31,0,"logs",$("#log_search").val()*31,"submit",data);
@@ -830,7 +848,7 @@ $(document).ready(function() {
                     day:1,
                     month:$('input[type=radio][name=type_select]:checked').attr('value'),
                     datatype:$(this).attr("datatype"),
-                    lang:document.location.href.split('/')[document.location.href.split('/').length - 2],
+                    session_id:session_id,
                     startDate:$(this).attr("startDate")
                 },
                 url: '../../main/modules/external/logs_get_serie.php',
@@ -1032,10 +1050,10 @@ $(document).ready(function() {
         
             // Update database
             $.ajax({
-                type: "POST",
+                type: "GET",
                 cache: false,
                 url: "../../main/modules/external/update_configuration.php",
-                data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
             }).done(function (data) {
                 // When done, update curve color on page
                 var chart = $('#container').highcharts();
@@ -1118,6 +1136,27 @@ $(document).ready(function() {
     } 
     
  });
+
+
+ $(document).ready(function() {
+   $("input:radio[name=check_type_delete]").click(function() {
+        if($(this).val()=="all") {
+            $("#div_delete_specific").css("display","none");
+        } else {
+            $("#div_delete_specific").css("display","");
+        }
+    });
+
+
+    $("input:radio[name=check_type_delete_power]").click(function() {
+        if($(this).val()=="all") {
+            $("#div_delete_specific_power").css("display","none");
+        } else {
+            $("#div_delete_specific_power").css("display","");
+        }
+    });
+});
+
  
 /**
  * After load, when user submit form, add parameters of displayed curve

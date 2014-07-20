@@ -1,5 +1,14 @@
 <script>
 
+<?php
+    if((isset($sd_card))&&(!empty($sd_card))) {
+        echo "sd_card = " . json_encode($sd_card) ;
+    } else {
+        echo 'sd_card = ""';
+    }
+?>
+
+
 plugs_infoJS   = <?php echo json_encode($plugs_infos) ?>;
 highchart_plug = <?php echo $selected_plug; ?>;
 resume_plugs   = <?php echo json_encode($resume) ?>;
@@ -9,9 +18,188 @@ end            = <?php echo json_encode($end) ?>;
 plug_selected  = <?php echo json_encode($selected_plug) ?>;
 rep            = <?php echo json_encode($rep) ?>;
 error_valueJS  = <?php echo json_encode($error_value) ?>;
+session_id="<?php echo session_id(); ?>";
 
 
 $(document).ready(function(){
+     if(sd_card=="") {
+        $.ajax({
+            cache: false,
+            async: false,
+            url: "../../main/modules/external/set_variable.php",
+            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+        });
+    }
+
+
+    // Check errors for the programs part:
+    $("#apply").click(function(e) {
+            $("#error_same_start").css("display","none");
+            $("#error_same_end").css("display","none");
+            $("#error_start_time").css("display","none");
+            $("#error_end_time").css("display","none");
+            $("#error_minimal_cyclic").css("display","none");
+
+            $("#error_cyclic_duration").css("display","none");
+            $("#error_cyclic_time").css("display","none");
+            $("#error_minimal_cyclic").css("display","none");
+            $("#error_start_time_cyclic").css("display","none");
+            $("#error_end_time_cyclic").css("display","none");
+
+            $("#error_value_program").css("display","none");
+
+            e.preventDefault();
+            var checked=true;
+
+            if($('#cyclic').is(':checked')) {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#cyclic_duration").val(),type:'time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_cyclic_duration").show(700);
+                        $('#cyclic_duration').val("02:00:00");
+                        checked=false;
+                    } 
+                });
+
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#repeat_time").val(),type:'cyclic_time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        if(data==2) {
+                            $("#error_minimal_cyclic").show(700);
+                            $('#repeat_time').val("01:00:00");
+                        } else {
+                            $("#error_cyclic_time").show(700);
+                            $('#repeat_time').val("01:00:00");
+                        }
+                        checked=false;
+                    }
+                });
+
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#start_time_cyclic").val(),type:'time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_start_time_cyclic").show(700);
+                        $('#start_time_cyclic').val("00:00:00");
+                        checked=false;
+                    }
+                });
+
+
+                //Vérification du format (HH:MM:SS) pour l'heure de fin d'un programme cyclique:
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#end_time_cyclic").val(),type:'time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        //Affichage du massage d'erreur et remise à 0 du champ si le format n'est pas respecté:
+                        $("#error_end_time_cyclic").show(700);
+                        $('#end_time_cyclic').val("00:00:00");
+                        checked=false;
+                    }
+                });
+            } else {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#start_time").val(),type:'time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_start_time").show(700);
+                        $('#start_time').val("00:00:00");
+                        checked=false;
+                    }
+                });
+
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/check_value.php",
+                    data: {value:$("#end_time").val(),type:'time'}
+                }).done(function (data) {
+                    if(data!=1) {
+                        $("#error_end_time").show(700);
+                        $('#end_time').val("00:00:00");
+                        checked=false;
+                    }
+                });
+
+
+                if(checked) {
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                        data: {value:$("#start_time").val()+"_"+$("#end_time").val(),type:'same_time'}
+                    }).done(function (data) {
+                        if(data!=1) {
+                            $("#error_same_start").show(700);
+                            $("#error_same_end").show(700);
+                            checked=false;
+                        }
+                    });
+                }
+            }
+
+
+            if($('#regprog').is(':checked')) {
+                if(($("#value_program").val())&&($("#value_program").val()!="0")) { 
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                        data: {value:$("#value_program").val(),type:'value_program',plug_type:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']}
+                    }).done(function (data) {
+                        if(data!=1) {
+                            $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[data.toInt()]);
+                            $("#error_value_program").show(700);
+                            checked=false;
+                        } 
+                    });
+                } else {
+                    if((plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="heating")||(plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="ventilator")) {
+                                var check=3;
+                     } else if((plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="humidifier")||(plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="dehumidifier")) {
+                                var check=4;
+                     } else if(plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE']=="pump") {
+                                var check=5;
+                     } else {
+                                var check=6;
+                     }
+
+
+                     $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[check]);
+                     $("#error_value_program").show(700);
+                     checked=false;
+                }
+            }
+
+            if(checked) {
+                if((start==$('#start_time').val())&&(end==$('#end_time').val())&&(plug_selected==$('#selected_plug').val())) {
+                    currentForm = $(this).closest('form');
+                    if(confirmForm(currentForm,"same_dialog_program")) {
+                        document.forms['actionprog'].submit();
+                    }
+                } else {
+                    document.forms['actionprog'].submit();
+                } 
+            }
+        });
+
 
     // Time pickers definition
     $('#start_time , #end_time , #repeat_time , #cyclic_duration , #start_time_cyclic , #end_time_cyclic').timepicker({
@@ -62,9 +250,9 @@ $(document).ready(function(){
 
         $.ajax({
            cache: false,
-           type: "POST",
+           type: "GET",
            url: "../../main/modules/external/daily_program_delete.php",
-           data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&program_delete_index=" + $("#program_delete_index option:selected").val()
+           data: "program_delete_index=" + $("#program_delete_index option:selected").val() + "&session_id=" + session_id
         }).done(function (data) {
               if($.trim(data)=="") { 
                     // Display dialog bow to alert user
@@ -140,10 +328,9 @@ $(document).ready(function(){
             bValid = bValid && checkLength( program_name, "program_name", 3, 16 );
             if ( bValid ) {
                 $.ajax({ 
-                    type: "POST",
+                    type: "GET",
                     url: "../../main/modules/external/daily_program_save.php",
-                    // Lang is the end of the url
-                    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&name=" + $('#program_name').val() + "&input=1&version=1.0",
+                    data: "name=" + $('#program_name').val() + "&input=1&version=1.0&session_id=" + session_id,
                     context: document.body,
                     success: function(data, textStatus, jqXHR) {
                         // Check response from server

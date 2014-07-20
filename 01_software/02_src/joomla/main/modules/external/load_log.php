@@ -1,5 +1,14 @@
 <?php
 
+$session_id = $_GET['session_id'];
+if (!isset($_SESSION)) {
+   session_id($session_id);
+   session_start();
+}
+
+$_SESSION['LOAD_LOG']="True";
+
+
 require_once('../../libs/utilfunc.php');
 require_once('../../libs/utilfunc_sd_card.php');
 require_once('../../libs/db_get_common.php');
@@ -141,10 +150,6 @@ function get_power_value($file,&$array_line,$nb_plug=3) {
 }
 
 
-if (!isset($_SESSION)) {
-    session_start();
-}
-
 if((isset($_GET['nb_day']))&&(!empty($_GET['nb_day']))) {
     $nb_day=trim($_GET['nb_day']);
 } else { 
@@ -217,9 +222,6 @@ if(strlen($monthSearch)<2) {
     $mmonth=$monthSearch;
 }
 
-if((!isset($_SESSION['LOAD_LOG']))||(empty($_SESSION['LOAD_LOG']))) {
-    $_SESSION['LOAD_LOG']="True";
-}
 
 $sensors = logs\get_sensor_db_type(); 
 
@@ -256,6 +258,7 @@ if($type == "logs") {
         $power = array();
     }
 } 
+
 
 
 if(($nb_day==0)&&(strcmp($search,"auto")==0)) {

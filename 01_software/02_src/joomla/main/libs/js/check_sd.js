@@ -4,10 +4,9 @@ $(document).ready(function(){
 pop_up_add_information("<?php echo __('WAIT_UPDATED_PROGRAM') ;?> <img src=\"../../main/libs/img/waiting_small.gif\" />", "check_sd_progress", "information");
 
 $.ajax({ 
-    type: "POST",
-    url: "../../main/modules/external/check_and_update_sd.php",
-    // Lang is the end of the url
-    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&sd_card=" + "<?php echo $sd_card ;?>",
+    type: "GET",
+    url: "http://localhost:6891/cultibox/main/modules/external/check_and_update_sd.php",
+    data: "sd_card=" + "<?php echo $sd_card ;?>" + "&session_id=" + session_id,
     async: true,
     context: document.body,
     success: function(data, textStatus, jqXHR) {

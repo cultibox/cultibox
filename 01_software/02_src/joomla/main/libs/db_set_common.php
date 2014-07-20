@@ -644,10 +644,8 @@ function check_and_update_column_db ($tableName, $officialColumn) {
 // ROLE check and update database
 // RET rtc offset value to be recorded 
 function check_database() {
-
     // Do it only one time per session
     if(!isset($_SESSION['CHECK_DB']) || empty($_SESSION['CHECK_DB'])) {
-    
         // Check program_index database consitency
         program\check_db();
 
@@ -659,7 +657,6 @@ function check_database() {
         
         $_SESSION['CHECK_DB'] = "True";
     }
-    
 }
 //}}}
 

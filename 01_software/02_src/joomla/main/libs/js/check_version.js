@@ -1,10 +1,10 @@
 <script type="text/javascript">
 $(document).ready(function(){
 $.ajax({ 
-    type: "POST",
+    type: "GET",
     url: "../../main/modules/external/check_update.php",
     // Lang is the end of the url
-    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2],
+    data: "session_id=" + session_id,
     context: document.body,
     success: function(data, textStatus, jqXHR) {
         // Check response from server

@@ -1,24 +1,5 @@
 <?php
 
-if (!isset($_SESSION)) {
-   session_start();
-}
-
-/* Libraries requiered: 
-        db_*_common.php : manage database requests
-        utilfunc.php  : manage variables and files manipulations
-        debug.php     : functions for PHP and SQL debugs
-        utilfunc_sd_card.php : functions for SD card management
-*/
-
-require_once('main/libs/config.php');
-require_once('main/libs/db_get_common.php');
-require_once('main/libs/db_set_common.php');
-require_once('main/libs/utilfunc.php');
-require_once('main/libs/debug.php');
-require_once('main/libs/utilfunc_sd_card.php');
-
-
 // Compute page time loading for debug option
 $start_load = getmicrotime();
 
@@ -26,13 +7,6 @@ $start_load = getmicrotime();
 $error=array();
 $main_error=array();
 $main_info=array();
-$_SESSION['LANG'] = get_current_lang();
-$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
-__('LANG');
-
-$_SESSION['LANG'] = get_current_lang();
-$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
-__('LANG');
 
 // ================= VARIABLES ================= //
 $startday=getvar('startday');
@@ -59,11 +33,10 @@ $lang=$_SESSION['LANG'];
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
-// If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-check_and_update_sd_card($sd_card,$main_info,$main_error);
 
-// Search and update log information form SD card
-sd_card_update_log_informations($sd_card);
+if((!isset($sd_card))||(empty($sd_card))) {
+   $main_error[]=__('ERROR_SD_CARD');
+}
 
 //Setting some default value if they are not configured
 if((!isset($select_plug))||(empty($select_plug))) {
@@ -239,7 +212,7 @@ if(strcmp($select_plug,"distinct_all")!=0) {
 $resume=get_cost_summary($main_error);
 
 // Include in html pop up and message
-include('main/templates/post_script.php');
+include('main/scripts/post_script.php');
 
 //Display the cost template
 include('main/templates/cost.html');

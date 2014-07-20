@@ -7,9 +7,9 @@
     require_once('../../../main/libs/utilfunc_sd_card.php');
 
 
-    $id=$_POST["id"];
+    $id=$_GET["id"];
 
-    $sd_card=$_POST["card"];
+    $sd_card=$_GET["card"];
     
     $main_error=array();
     

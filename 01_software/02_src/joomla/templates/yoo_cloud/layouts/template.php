@@ -1,15 +1,34 @@
 <?php
 
+// On ne met pas en cache les pages chargées 
+session_cache_limiter('nocache');
+
+// Démarage de la session PHP
 if (!isset($_SESSION)) {
    session_start();
 }
 
+//Cookie permettant de stocker le positionnement de la boîte de message, valable pendant 30 jours
 if (!isset($_COOKIE['position'])) {
     setcookie("position", "15,15,325", time()+(86400 * 30));
 }
 
-// Define hour used
+//Timezone par défaut pour éviter les problèmes d'ajout d'heures lors des transformations des temps 
 date_default_timezone_set('UTC');
+
+
+require_once('main/libs/config.php');
+require_once('main/libs/db_get_common.php');
+require_once('main/libs/db_set_common.php');
+require_once('main/libs/debug.php');
+require_once 'main/libs/utilfunc.php';
+require_once('main/libs/utilfunc_sd_card.php');
+
+
+$_SESSION['LANG'] = get_current_lang(); //Language used by the user
+$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']); //Short language used to compute pages
+$lang=$_SESSION['LANG'];
+__('LANG');
 
 // get template configuration
 include($this['path']->path('layouts:template.config.php'));
@@ -26,6 +45,8 @@ include($this['path']->path('layouts:template.config.php'));
         $time=time();
         $mod_time=filemtime($filename);
         $duration=$time-$mod_time;
+
+        //Si le logiciel vient d'être ouvert 10mn après l'installation (ou la mise à jour), on supprime le cache
         if($duration<600) { //10 Minutes après l'installation:
             header( 'Expires: Sat, 26 Jul 1997 05:00:00 GMT' );
             header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
@@ -37,18 +58,6 @@ include($this['path']->path('layouts:template.config.php'));
 ?>
 <?php echo $this['template']->render('head'); ?>
 <?php 
-	// Surcharge Calagan
-	// L'idée est de remplacer les liens direct de menu Jumi par des liens vers des articles qui contiennent une syntaxe style {jumi [ok.php]}
-	require_once 'main/libs/config.php'; 
-	require_once 'main/libs/db_set_common.php'; 
-    require_once 'main/libs/db_get_common.php';
-	require_once 'main/libs/utilfunc.php'; 
-    require_once 'main/libs/utilfunc_sd_card.php';
-    $_SESSION['LANG'] = get_current_lang(); //Language used by the user
-    $_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']); //Short language used to compute pages
-    $lang=$_SESSION['LANG'];
-    __('LANG');
-    
     // Check database consistency
     check_database();
     
@@ -86,6 +95,7 @@ include($this['path']->path('layouts:template.config.php'));
 			<?php endif; ?>
 			
             <!-- Small eye for displaying message pop up-->
+            
             <script>title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;</script>
             <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt="" title="" id="eyes_msgbox"></div>
 			<div class="wrapper grid-block">
@@ -167,7 +177,7 @@ include($this['path']->path('layouts:template.config.php'));
                     </div>
                     <div id="pop_up_error_container">
                         <img src="main/libs/img/warning.png" alt="" />
-                        <label class="error_title"><?php echo __('WARNING'); ?>:</label>
+                        <label class="error_title"><?php  echo __('WARNING'); ?>:</label>
                         <div class="error" id="pop_up_error_part">
                             <ul>
                             </ul>

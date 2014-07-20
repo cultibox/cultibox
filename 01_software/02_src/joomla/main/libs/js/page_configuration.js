@@ -1,7 +1,17 @@
 <script>
 
+<?php
+    if((isset($sd_card))&&(!empty($sd_card))) {
+        echo "sd_card = " . json_encode($sd_card) ;
+    } else {
+        echo 'sd_card = ""';
+    }
+?>
+
+
 wifi_password=<?php echo(json_encode($wifi_password)); ?>;
 rtc_offset_value=<?php echo json_encode($rtc_offset) ?>;
+session_id="<?php echo session_id(); ?>";
 
 
 formatCard = function(hdd,pourcent) {
@@ -25,6 +35,15 @@ formatCard = function(hdd,pourcent) {
 }
 
 $(document).ready(function(){
+      if(sd_card=="") {
+        $.ajax({
+            cache: false,
+            async: false,
+            url: "../../main/modules/external/set_variable.php",
+            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+        });
+    }
+
     $('#reset_minmax').timepicker({
         <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
         showOn: 'both',
@@ -234,10 +253,10 @@ $(document).ready(function(){
                 updateConf  = $( this ).attr('data-update_conf');
 
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     cache: false,
                     url: "../../main/modules/external/update_configuration.php",
-                    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                    data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {  
                         check_update=false;
@@ -249,10 +268,10 @@ $(document).ready(function(){
             //If second regulation is disabled, we uses default value:
             if($("#second_regul option:selected").val()=="False") {
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     cache: false,
                     url: "../../main/modules/external/update_plugs.php",
-                    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=False&id=all&name=PLUG_REGUL"
+                    data: "value=False&id=all&name=PLUG_REGUL" + "&session_id="+session_id
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {
                         check_update=false;
@@ -264,10 +283,10 @@ $(document).ready(function(){
             //If advanced regulation is disabled, we use default value:
             if($("#advanced_regul_options option:selected").val()=="False") {
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     cache: false,
                     url: "../../main/modules/external/update_plugs.php",
-                    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=M&id=all&name=PLUG_COMPUTE_METHOD"
+                    data: "value=M&id=all&name=PLUG_COMPUTE_METHOD" + "&session_id="+session_id
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {
                         check_update=false;
@@ -276,10 +295,10 @@ $(document).ready(function(){
 
 
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     cache: false,
                     url: "../../main/modules/external/update_plugs.php",
-                    data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=1&id=all&name=PLUG_REGUL_SENSOR"
+                    data: "value=1&id=all&name=PLUG_REGUL_SENSOR" + "&session_id="+session_id
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {
                         check_update=false;
@@ -294,10 +313,10 @@ $(document).ready(function(){
             updateConf  = $("#rtc_offset").attr('data-update_conf');
 
              $.ajax({
-                type: "POST",
+                type: "GET",
                 cache: false,
                 url: "../../main/modules/external/update_configuration.php",
-                data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
             }).done(function (data) {
                 if($.parseJSON(data)!="") {
                     check_update=false;
@@ -310,10 +329,10 @@ $(document).ready(function(){
             updateConf  = $("#reset_minmax").attr('data-update_conf');
 
              $.ajax({
-                type: "POST",
+                type: "GET",
                 cache: false,
                 url: "../../main/modules/external/update_configuration.php",
-                data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
             }).done(function (data) {
                 if($.parseJSON(data)!="") {
                     check_update=false;
@@ -332,10 +351,10 @@ $(document).ready(function(){
             updateConf  = $("#alarm_value").attr('data-update_conf');
 
             $.ajax({
-                type: "POST",
+                type: "GET",
                 cache: false,
                 url: "../../main/modules/external/update_configuration.php",
-                data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
             }).done(function (data) {
                 if($.parseJSON(data)!="") {
                     check_update=false;
@@ -349,10 +368,10 @@ $(document).ready(function(){
                     updateConf  = $("#wifi_ssid").attr('data-update_conf');        
 
                     $.ajax({
-                        type: "POST",
+                        type: "GET",
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
@@ -366,10 +385,10 @@ $(document).ready(function(){
                         updateConf  = 0;
 
                         $.ajax({
-                            type: "POST",
+                            type: "GET",
                             cache: false,
                             url: "../../main/modules/external/update_configuration.php",
-                            data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                            data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
                                 check_update=false;
@@ -382,10 +401,10 @@ $(document).ready(function(){
                         updateConf  = $("#wifi_ip").attr('data-update_conf');
 
                         $.ajax({
-                            type: "POST",
+                            type: "GET",
                             cache: false,
                             url: "../../main/modules/external/update_configuration.php",
-                            data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                            data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
                                 check_update=false;
@@ -397,10 +416,10 @@ $(document).ready(function(){
                         updateConf  = 0;
 
                         $.ajax({
-                            type: "POST",
+                            type: "GET",
                             cache: false,
                             url: "../../main/modules/external/update_configuration.php",
-                            data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                            data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
                                 check_update=false;
@@ -413,10 +432,10 @@ $(document).ready(function(){
                         updateConf  = $("#wifi_ip").attr('data-update_conf');
 
                         $.ajax({
-                            type: "POST",
+                            type: "GET",
                             cache: false,
                             url: "../../main/modules/external/update_configuration.php",
-                            data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                            data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
                                 check_update=false;
@@ -437,10 +456,10 @@ $(document).ready(function(){
 
                     if(newValue!="") {
                         $.ajax({
-                            type: "POST",
+                            type: "GET",
                             cache: false,
                             url: "../../main/modules/external/update_configuration.php",
-                            data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                            data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
                                 check_update=false;
@@ -453,10 +472,10 @@ $(document).ready(function(){
                     updateConf  = 1;
 
                     $.ajax({
-                        type: "POST",
+                        type: "GET",
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
@@ -467,10 +486,10 @@ $(document).ready(function(){
                     varToUpdate = "wifi_password";
                     newValue    = "";
                     $.ajax({
-                        type: "POST",
+                        type: "GET",
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
@@ -481,10 +500,10 @@ $(document).ready(function(){
                     varToUpdate = "wifi_ip";
                     newValue    = "000.000.000.000";
                     $.ajax({
-                        type: "POST",
+                        type: "GET",
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
@@ -495,10 +514,10 @@ $(document).ready(function(){
                     varToUpdate = "wifi_ip_manual";
                     newValue    = "0";
                     $.ajax({
-                        type: "POST",
+                        type: "GET",
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf
+                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
@@ -509,10 +528,10 @@ $(document).ready(function(){
                     varToUpdate = "wifi_key_type";
                     newValue    = "NONE";
                     $.ajax({
-                        type: "POST",
+                        type: "GET",
                         cache: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "lang=" + document.location.href.split('/')[document.location.href.split('/').length - 2] + "&value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf   
+                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;

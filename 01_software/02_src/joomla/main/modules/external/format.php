@@ -7,10 +7,6 @@ require_once('../../libs/config.php');
 require_once('../../libs/utilfunc_sd_card.php');
 
 
-if (!isset($_SESSION)) {
-    session_start();
-}
-
 if((isset($_GET['hdd']))&&(!empty($_GET['hdd']))) {
     $path=$_GET['hdd'];
 }
