@@ -5,6 +5,7 @@ Cultibox (1.4.04) precise; urgency=low
     + Ménage et réorganisation
     + Correction de la gestion des sessions 
     + Rechargement des logs si l'utilisateur enlève et replace la carte SD
+    + Correction de l'affichage des résumés des régulations secondaires
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun July 20  13:39:17 CEST 2014
 

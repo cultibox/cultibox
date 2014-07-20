@@ -418,7 +418,13 @@ msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Regulating outlet"
 
 msgid "SUMARY_REGUL_SENSO"
-msgstr "Release"
+msgstr "Trigger if"
+
+msgid "TEMP_REGUL"
+msgstr "the temperature"
+
+msgid "HUMI_REGUL"
+msgstr "the humidity"
 
 msgid "SUMARY_REGUL_SENSS"
 msgstr "Threshold"

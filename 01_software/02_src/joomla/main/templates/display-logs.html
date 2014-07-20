@@ -36,7 +36,6 @@
 </table>
 <br />
 
-
 <div id="label_select_type">
     <form name="display-log" id="display-log" action="display-logs-<?php echo $_SESSION['SHORTLANG']; ?>" method="post">
         <table class="table_width">
@@ -178,8 +177,10 @@
         <td class="right_log">
             <?php 
                     echo '<img id="regul_and_minmax_summary" src="main/libs/img/resume.png" alt="" title="';
-                    if(!empty($resume_regul)) {
-                        echo $resume_regul; 
+                    if(count($resume_regul)>0) {
+                        foreach($resume_regul as $res_regul) {
+                            echo $res_regul; 
+                        }
                     }
                     echo '" />';
             ?>
@@ -691,7 +692,6 @@
                 <td></td>
             </tr>
         </table>
-        <input type="hidden" name="quick_load" value="True">
         <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
         <?php if($type == "month") { ?>
             <input type="hidden" name="startmonth" value="<?php echo $startmonth; ?>">
@@ -725,7 +725,6 @@
                 <td></td>
             </tr>
         </table>
-        <input type="hidden" name="quick_load" value="True">
         <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
         <?php if($type == "month") { ?>
             <input type="hidden" name="startmonth" value="<?php echo $startmonth; ?>">

@@ -565,9 +565,9 @@ $(document).ready(function() {
          useHTML: true,
          formatter: function() {
             if(this.y == 99.9) {
-                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("CHART_FORCE_ON_VALUE"); ?></p><br />"+resume_regul[this.series.index];
+                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("CHART_FORCE_ON_VALUE"); ?></p>";
             } else if(this.y == 0) {
-                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("VALUE_OFF"); ?></p><br />"+resume_regul[this.series.index];
+                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b><?php echo __("VALUE_OFF"); ?></p>";
             } else { 
                 var unity="";
                 if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="heating")||(plugs_infoJS[this.series.index]["PLUG_TYPE"]=="ventilator")) {
@@ -577,7 +577,7 @@ $(document).ready(function() {
                 } else if((plugs_infoJS[this.series.index]["PLUG_TYPE"]=="pump")) {
                     unity=" cm";
                 }
-                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b>"+this.y+unity+" (<?php echo __('REGULATION'); ?>)</p><br />"+resume_regul[this.series.index];
+                return "<p align='left'><b><?php echo __('XAXIS_LEGEND_DAY'); ?>:  </b>"+Highcharts.dateFormat('%H:%M:%S', this.x) +"<br /><b><?php echo __('BEHAVIOUR'); ?>: </b>"+this.y+unity+" (<?php echo __('REGULATION'); ?>)</p><br />"+resume_regul[this.series.index+1];
             } 
          }
       },
@@ -718,11 +718,11 @@ $(document).ready(function() {
             $("#second_regul_info").css("display", "none");
         } else {
             $("#second_regul_plug").html("<?php echo __('SECOND_REGUL_ON'); ?>");
-            $("#second_regul_img").attr("title", resume_regul[$('#selected_plug').val()-1]);
+            $("#second_regul_img").attr("title", resume_regul[$('#selected_plug').val()]);
             $("#second_regul_info").css("display", "");
         }
 
-        $("#resume_img").prop('title', resume_plugs[$('#selected_plug').val()]+"<br />"+resume_regul[$('#selected_plug').val()-1]);
+        $("#resume_img").prop('title', resume_plugs[$('#selected_plug').val()]+"<br />"+resume_regul[$('#selected_plug').val()]);
         highchart_plug=tmp_highchart_plug+1;
         chart.isDirtyLegend = true;
         chart.redraw(); 
@@ -853,11 +853,11 @@ $(document).ready(function() {
             $("#second_regul_info").css("display", "none");
         } else {
             $("#second_regul_plug").html("<?php echo __('SECOND_REGUL_ON'); ?>");
-            $("#second_regul_img").attr("title", resume_regul[$('#selected_plug_conf').val()-1]);
+            $("#second_regul_img").attr("title", resume_regul[$('#selected_plug_conf').val()]);
             $("#second_regul_info").css("display", "");
         }
 
-        $("#resume_img").prop('title', resume_plugs[$('#selected_plug_conf').val()]+"<br />"+resume_regul[$('#selected_plug_conf').val()-1]);
+        $("#resume_img").prop('title', resume_plugs[$('#selected_plug_conf').val()]+"<br />"+resume_regul[$('#selected_plug_conf').val()]);
 
         highchart_plug=tmp_highchart_plug+1;
         chart.isDirtyLegend = true;

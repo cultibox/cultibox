@@ -195,10 +195,14 @@ if(isset($_POST['select_program'])) {
 
 
 // If there is a second regul add tooltip
-$resume_regul="";
+$resume_regul=array();
 if($second_regul == "True") {
-
     // Create an array with all plug
+    $resume_regul[0]="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b></p><br />";
+    for($i=1;$i<=$nb_plugs;$i++) {
+        $resume_regul[$i]=format_regul_sumary($i,$main_error);
+    }
+
     $plugsShow = array();
     foreach ($select_power as $sel_power)
     {
@@ -212,23 +216,6 @@ if($second_regul == "True") {
     // Remove doublon and sort
     $plugsShow = array_unique($plugsShow);
     asort($plugsShow);
-    
-    // Add summary for power
-    foreach ($plugsShow as $plugShow)
-    {
-        format_regul_sumary($plugShow,$main_error,$resume_regul,$nb_plugs);
-    }
-
-    if(!empty($resume_regul)) {
-        $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b></p><br />".$resume_regul;
-    } else {
-        if((count($select_power)==0)&&(empty($select_plug))) {
-            $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b><br /><br />".__('SUMARY_EMPTY_SELECTION')."</p>";
-        } else {
-            $resume_regul="<p align='center'><b><i>".__('SUMARY_REGUL_TITLE')."</i></b><br /><br />".__('SUMARY_EMPTY_REGUL')."</p>";
-        }
-    }
-    $resume_regul=$resume_regul."<br />";
 } 
 
 if($type == "month") {
