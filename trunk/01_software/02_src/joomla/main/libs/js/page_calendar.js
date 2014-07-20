@@ -11,6 +11,7 @@
 product_array = <?php echo json_encode($product) ?>;
 title_msgbox = <?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 session_id="<?php echo session_id(); ?>";
+count_program_index=<?php echo json_encode($count_program_index); ?>;
 
 $(function() {
    $("#calendar_startdate").datepicker({ 
@@ -297,18 +298,35 @@ $(document).ready(function() {
     $("#daily_program").click(function(e) {
         e.preventDefault();
 
-        $("#manage_daily_program").dialog({
-            resizable: false,
-            width: 300,
-            closeOnEscape: true,
-            dialogClass: "popup_message",
-            buttons: [{
-                text: CLOSE_button,
-                click: function () {
-                    $( this ).dialog( "close" ); return false;
-                }
-            }]
-        });
+        if(count_program_index) {
+
+            $("#manage_daily_program").dialog({
+                resizable: false,
+                width: 300,
+                closeOnEscape: true,
+                dialogClass: "popup_message",
+                buttons: [{
+                    text: CLOSE_button,
+                    click: function () {
+                        $( this ).dialog( "close" ); return false;
+                    }
+                }]
+            });
+        } else {
+            $("#empty_daily_program").dialog({
+                resizable: false,
+                width: 400,
+                modal: true,
+                closeOnEscape: true,
+                dialogClass: "popup_error",
+                buttons: [{
+                    text: CLOSE_button,
+                    click: function () {
+                        $( this ).dialog( "close" ); return false;
+                    }
+                }]
+            });
+        }
     });
     
     
