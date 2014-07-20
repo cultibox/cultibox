@@ -42,6 +42,7 @@ $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $select_plug=getvar('select_plug');
 $startday=getvar('startday');
 $import_load=getvar('import_load');
+$reload_import=getvar('reload_import');
 
 if((!isset($import_load))||(empty($import_load))) {
     $import_load=2;
@@ -156,7 +157,7 @@ clean_index_file($sd_card);
 
 
 //More default values:
-if(!isset($startday) || empty($startday)) {
+if(!isset($startday) || empty($startday) || $reload_import) {
 	$startday = program\get_last_day_with_logs();
 } 
 $startday=str_replace(' ','',"$startday");
