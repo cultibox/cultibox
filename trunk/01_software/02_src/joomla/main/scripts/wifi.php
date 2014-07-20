@@ -1,22 +1,6 @@
 <?php
 
 
-if (!isset($_SESSION)) {
-    session_start();
-}
-
-/* Libraries requiered: 
-        db_common.php : manage database requests
-        utilfunc.php  : manage variables and files manipulations
-*/
-require_once('main/libs/config.php');
-require_once('main/libs/db_get_common.php');
-require_once('main/libs/db_set_common.php');
-require_once('main/libs/utilfunc.php');
-require_once('main/libs/debug.php');
-require_once('main/libs/utilfunc_sd_card.php');
-
-
 // Compute page time loading for debug option
 $start_load = getmicrotime();
 
@@ -25,9 +9,6 @@ $start_load = getmicrotime();
 $error=array();
 $main_error=array();
 $main_info=array();
-$_SESSION['LANG'] = get_current_lang();
-$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
-__('LANG');
 
 // ================= VARIABLES ================= //
 $informations = Array();
@@ -80,7 +61,7 @@ if((!isset($sd_card))||(empty($sd_card))) {
 
 
 // Include in html pop up and message
-include('main/templates/post_script.php');
+include('main/scripts/post_script.php');
 
 //Display the plug template
 include('main/templates/wifi.html');

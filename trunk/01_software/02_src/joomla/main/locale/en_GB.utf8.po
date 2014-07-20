@@ -755,7 +755,7 @@ msgid "TIMEPICKER_CLOSE"
 msgstr "Validate"
 
 msgid "TIMEPICKER_BUTTON_TEXT"
-msgstr "Choose \ 's time"
+msgstr "Choose time"
 
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
 msgstr "Choose the date"

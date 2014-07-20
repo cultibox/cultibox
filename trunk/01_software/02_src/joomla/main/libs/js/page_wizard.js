@@ -1,10 +1,31 @@
 <script>
+
+<?php
+    if((isset($sd_card))&&(!empty($sd_card))) {
+        echo "sd_card = " . json_encode($sd_card) ;
+    } else {
+        echo 'sd_card = ""';
+    }
+?>
+
 plug_type=<?php echo json_encode($plug_type) ?>;
 error_valueJS=<?php echo json_encode($error_value) ?>;
 canal_status= <?php echo json_encode($status) ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+session_id="<?php echo session_id(); ?>";
+
 
 $(document).ready(function(){
+
+  if(sd_card=="") {
+        $.ajax({
+            cache: false,
+            async: false,
+            url: "../../main/modules/external/set_variable.php",
+            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+        });
+    }
+
 $('#start_time').timepicker({
     <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
     showSecond: true,

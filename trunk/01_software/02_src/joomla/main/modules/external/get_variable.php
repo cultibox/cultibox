@@ -1,4 +1,11 @@
 <?php 
+
+$session_id = $_GET['session_id'];
+if (!isset($_SESSION)) {
+   session_id($session_id);
+   session_start();
+}
+
 //Affiche la valeur d'une variable PHP, script appelé par Ajax par le fichier cultibox.js pour récupérer des informations
 // stockées côté serveur:
 
@@ -7,17 +14,11 @@ require_once('../../libs/utilfunc_sd_card.php');
 require_once('../../libs/db_get_common.php');
 
 
-//On démarre une SESSION si ce n'est pas déja le cas:
-if (!isset($_SESSION)) {
-    session_start();
-}
-
 //Récupération du nom de la variable, par convention interne, les noms de variable de SESSION sont 
 //toujours en majuscule, on capitalise donc le nom récupéré:
 if((isset($_GET['name']))&&(!empty($_GET['name']))) {
     $name=strtoupper($_GET['name']);
 }
-
 
 if((!isset($name))||(empty($name))) {
     //On affiche 0 si la fonction est appelée sans le nom de la variable:

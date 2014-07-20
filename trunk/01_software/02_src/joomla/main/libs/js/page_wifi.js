@@ -1,12 +1,22 @@
 <script>
 
-    nb_plugs=<?php echo(json_encode($nb_plugs)); ?>;
-    wifi_ip=<?php echo(json_encode($wifi_ip)); ?>;
-    type_sensor=<?php echo(json_encode($type_sensor)); ?>;
-    addr_1000=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT'])); ?>;
-    addr_3500=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT_3500W'])); ?>;
-    translate=<?php echo(json_encode($translate)); ?>;
-    title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+<?php
+    if((isset($sd_card))&&(!empty($sd_card))) {
+        echo "sd_card = " . json_encode($sd_card) ;
+    } else {
+        echo 'sd_card = ""';
+    }
+?>
+
+
+nb_plugs=<?php echo(json_encode($nb_plugs)); ?>;
+wifi_ip=<?php echo(json_encode($wifi_ip)); ?>;
+type_sensor=<?php echo(json_encode($type_sensor)); ?>;
+addr_1000=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT'])); ?>;
+addr_3500=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT_3500W'])); ?>;
+translate=<?php echo(json_encode($translate)); ?>;
+title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+session_id="<?php echo session_id(); ?>";
 
 //Wifi process:
 get_plug_type = function(addr) {
@@ -137,6 +147,15 @@ wifi_process = function(time,ip) {
 }
 
 $(document).ready(function() {
+    if(sd_card=="") {
+        $.ajax({
+            cache: false,
+            async: false,
+            url: "../../main/modules/external/set_variable.php",
+            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+        });
+    }
+
     wifi_process(300,wifi_ip);
 });
 

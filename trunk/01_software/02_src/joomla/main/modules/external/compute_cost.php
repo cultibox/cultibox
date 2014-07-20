@@ -5,10 +5,6 @@ require_once('../../libs/db_get_common.php');
 require_once('../../libs/db_set_common.php');
 require_once('../../libs/config.php');
 
-if (!isset($_SESSION)) {
-    session_start();
-}
-
 if((isset($_GET['startday']))&&(!empty($_GET['startday']))) {
     $startday=$_GET['startday'];
 }

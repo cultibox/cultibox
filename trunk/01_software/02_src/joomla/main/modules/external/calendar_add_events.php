@@ -6,12 +6,12 @@ require_once('../../../main/libs/db_set_common.php');
 require_once('../../../main/libs/utilfunc.php');
 require_once('../../../main/libs/utilfunc_sd_card.php');
 
-$title=$_POST["title"];
-$start=$_POST["start"];
-$end=$_POST["end"];
-$color=$_POST["color"];
-$sd_card=$_POST["card"];
-$important=$_POST["important"];
+$title=$_GET["title"];
+$start=$_GET["start"];
+$end=$_GET["end"];
+$color=$_GET["color"];
+$sd_card=$_GET["card"];
+$important=$_GET["important"];
 $main_error=array();
 
 
@@ -22,8 +22,8 @@ if(    isset($title) && !empty($title)
     
         if($db = db_priv_pdo_start()) {
         
-            if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
-                $description=$db->quote($_POST["desc"]);    
+            if((isset($_GET["desc"]))&&(!empty($_GET["desc"]))) {
+                $description=$db->quote($_GET["desc"]);    
             } else {
                 // Waring '' are very important !
                 $description = "''";

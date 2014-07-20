@@ -7,21 +7,21 @@ require_once('../../../main/libs/utilfunc.php');
 require_once('../../../main/libs/utilfunc_sd_card.php');
 
 
-if (  isset($_POST["title"]) && !empty($_POST["title"])
-   && isset($_POST["start"]) && !empty($_POST["start"])
-   && isset($_POST["end"])   && !empty($_POST["end"])
-   && isset($_POST["id"])    && !empty($_POST["id"])
-   && isset($_POST["color"]) && !empty($_POST["color"])) {
+if (  isset($_GET["title"]) && !empty($_GET["title"])
+   && isset($_GET["start"]) && !empty($_GET["start"])
+   && isset($_GET["end"])   && !empty($_GET["end"])
+   && isset($_GET["id"])    && !empty($_GET["id"])
+   && isset($_GET["color"]) && !empty($_GET["color"])) {
 
-    $title   = $_POST["title"];
-    $start   = $_POST["start"];
-    $end     = $_POST["end"];
-    $id      = $_POST["id"];
-    $color   = $_POST["color"];
-    $sd_card = $_POST["card"];
+    $title   = $_GET["title"];
+    $start   = $_GET["start"];
+    $end     = $_GET["end"];
+    $id      = $_GET["id"];
+    $color   = $_GET["color"];
+    $sd_card = $_GET["card"];
 
 
-    if (!isset($_POST["important"]) || empty($_POST["important"])) {  
+    if (!isset($_GET["important"]) || empty($_GET["important"])) {  
         $important=0;
     } else {
         $important=1;
@@ -31,8 +31,8 @@ if (  isset($_POST["title"]) && !empty($_POST["title"])
     
 
     if($db = db_priv_pdo_start()) {
-        if((isset($_POST["desc"]))&&(!empty($_POST["desc"]))) {
-            $description=$db->quote($_POST["desc"]);
+        if((isset($_GET["desc"]))&&(!empty($_GET["desc"]))) {
+            $description=$db->quote($_GET["desc"]);
         } 
 
 

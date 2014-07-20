@@ -1,25 +1,5 @@
 <?php
 
-if (!isset($_SESSION)) {
-   session_start();
-}
-
-
-/* Libraries requiered: 
-        db_*_common.php : manage database requests
-        utilfunc.php  : manage variables and files manipulations
-        debug.php     : functions for PHP and SQL debugs
-        utilfunc_sd_card.php : functions for SD card management
-*/
-
-require_once('main/libs/config.php');
-require_once('main/libs/db_get_common.php');
-require_once('main/libs/db_set_common.php');
-require_once('main/libs/utilfunc.php');
-require_once('main/libs/debug.php');
-require_once('main/libs/utilfunc_sd_card.php');
-
-
 // Compute page time loading for debug option
 $start_load = getmicrotime();
 
@@ -34,12 +14,6 @@ $calendar_start=getvar('calendar_startdate'); //Variable used when user add a gr
 if((!isset($calendar_start))||(empty($calendar_start))) {
     $calendar_start=date('Y')."-".date('m')."-".date('d'); //If user didn't had a grown calendar, today's date is used for the form
 }
-
-// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
-$_SESSION['LANG'] = get_current_lang();
-$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']);
-$lang=$_SESSION['LANG'];
-__('LANG');
 
 $title_list = calendar\get_title_list(); //Get list of titles available from the database to be used in the calendar form
     
@@ -86,7 +60,7 @@ $substrat=array_unique($substrat);
 asort($substrat);
 
 // Include in html pop up and message
-include('main/templates/post_script.php');
+include('main/scripts/post_script.php');
 
 //Display the calendar template
 include('main/templates/calendar.html');
