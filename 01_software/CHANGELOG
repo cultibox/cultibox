@@ -1,8 +1,14 @@
+Cultibox (1.4.04) precise; urgency=low
+    + Affichage du dernier jour possedant des logs après le chargement de logs
+    + Correction d'un erreur jquery si le champ startdate est vide de l'affichage des logs
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun July 20  13:39:17 CEST 2014
+
+
 Cultibox (1.4.03) precise; urgency=low
     + Multiples debug
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue July 17  10:29:58 CEST 2014
-
 
 
 Cultibox (1.4.02) precise; urgency=low

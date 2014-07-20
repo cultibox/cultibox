@@ -200,7 +200,6 @@ $(function () {
                         $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").each(function() {
 
                             var cheBu = $(this);
-
                             
                             if (cheBu.attr("checked") == "checked") {
                             
@@ -625,6 +624,7 @@ $(document).ready(function() {
                                 $("#success_load_auto").css("display","none");
                                 $("#success_load_still_log").css("display","none");
                                 $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
+                                $("#reload_import").val("1");
                                 document.forms['display-log'].submit();
                             }
                         }]
@@ -659,6 +659,7 @@ $(document).ready(function() {
                     $("#success_load_still_log").css("display","none");
                     $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
                     $("#import_load").val($("#log_search").val());
+                    $("#reload_import").val("1");
                     document.forms['display-log'].submit();
                 }
             }]
@@ -811,7 +812,6 @@ $(document).ready(function() {
 $(document).ready(function() {
 
     $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").click(function() {
-
         // Init a var on highchart
         var chart = $('#container').highcharts();
         var cheBu = $(this);
@@ -1165,8 +1165,15 @@ $(document).ready(function() {
             }).done(function (data) {
                 if(data!=1) {
                     $("#error_start_days").show(700);
-                    var current=$("#datepicker").datepicker('getDate').getFullYear()+"-"+('0'+($("#datepicker").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#datepicker").datepicker('getDate').getDate())).slice(-2);
-                    $("#datepicker").val(current);
+
+                    var d = new Date();
+                    var month = d.getMonth()+1;
+                    var day = d.getDate();
+
+                    var output = d.getFullYear() + '-' +
+                    (month<10 ? '0' : '') + month + '-' +
+                    (day<10 ? '0' : '') + day;
+                    $("#datepicker").val(output);
                 } else {
                     document.forms['display-log'].submit();
                 }
