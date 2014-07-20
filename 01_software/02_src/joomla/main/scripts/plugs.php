@@ -22,6 +22,7 @@ $jumpto=getvar("jumpto");
 $submit=getvar("submit_plugs");
 $jumpwizard=getvar("jumpwizard");
 $submenu=getvar("submenu",$main_error);
+$plug_count_sensor=array();
 
 // By default the expanded menu is the plug1 menu
 if((!isset($submenu))||(empty($submenu))) {
@@ -76,9 +77,11 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    }
 
    $sensor="";
+   $plug_count_sensor[$nb]=0;
    for($j=1;$j<=$GLOBALS['NB_MAX_SENSOR_PLUG'];$j++) { 
        $tmp_sensor=getvar("plug_sensor${nb}${j}");
        if(strcmp($tmp_sensor,"True")==0) {
+            $plug_count_sensor[$nb]=$plug_count_sensor[$nb]+1;
             if(strcmp($sensor,"")!=0) {
                 $sensor=$sensor."-".$j;
             } else {
@@ -178,9 +181,14 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    }
 
 
-   if((!empty($compute_method))&&(isset($compute_method))&&(strcmp("$old_compute_method","$compute_method")!=0)) {
-      insert_plug_conf("PLUG_COMPUTE_METHOD",$nb,"$compute_method",$main_error);
-      $update_program=true;
+   if($plug_count_sensor[$nb]>1) {
+    if((!empty($compute_method))&&(isset($compute_method))&&(strcmp("$old_compute_method","$compute_method")!=0)) {
+        insert_plug_conf("PLUG_COMPUTE_METHOD",$nb,"$compute_method",$main_error);
+        $update_program=true;
+    }
+   } else {
+        insert_plug_conf("PLUG_COMPUTE_METHOD",$nb,"M",$main_error);
+        $update_program=true;
    }
 
 
