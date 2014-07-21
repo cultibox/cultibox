@@ -8,6 +8,7 @@ Cultibox (1.4.04) precise; urgency=low
     + Correction de l'affichage des résumés des régulations secondaires
     + L'affichage de la fenêtre des programmes journaliers n'apparaît pas dans le calendrier si aucun programme journalier n'a été défini
     + Il est impossible de choisir la méthode de calcul des options avançées de régulation si un seul capteur est sélectionné"
+    + Correction de la vérification des mots de passe de la partie WIFI
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun July 20  13:39:17 CEST 2014
 

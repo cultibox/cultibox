@@ -88,6 +88,10 @@ $(document).ready(function(){
     // Check errors for the configuration part:
     $("#submit_conf").click(function(e) {
         e.preventDefault();
+
+        // block user interface during checking and saving
+        $.blockUI({ message: ''});
+
         var checked=true;
         
         $.ajax({
@@ -139,9 +143,53 @@ $(document).ready(function(){
             });
 
 
+            var type_password="";
+            switch ($("#wifi_key_type").val()) {
+                case 'NONE': type_password="password_none";
+                        break;
+                case 'WEP': type_password="password_wep"
+                        break;
+                case 'WPA': type_password="password_wpa";
+                        break;
+                case 'WPA2': type_password="password_wpa";
+                        break;
+                case 'WPA-AUTO': type_password="password_wpa";
+                        break;
+                default: type_password="";
+            }
+
+
             if($("#wifi_key_type").val()!="NONE") {
                 if((wifi_password=="")&&($("#wifi_password").val()=="")) {
                     $("#error_empty_password").css("display","");
+                } else if((wifi_password!="")&&($("#wifi_password").val()=="")&&($("#wifi_key_type").val()!="NONE")) {
+                     $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                        data: {value:$("#wifi_password").val(),type:type_password}
+                     }).done(function (data) {
+                        if(data!=1)  {
+                                checked=false;
+                                expand('wifi_interface');
+                                switch (type_password) {
+                                    case 'password_wep':
+                                            $("#error_password_wep").show(700);
+                                            $("#error_password_wpa").css("display","none");
+                                            break;
+                                    case 'password_wpa':
+                                            $("#error_password_wep").css("display","none");
+                                            $("#error_password_wpa").show(700);
+                                            break;
+                                    default:
+                                            $("#error_password_wep").css("display","none")
+                                            $("#error_password_wpa").css("display","none");
+                                }
+                            } else {
+                                $("#error_password_wep").css("display","none");
+                                $("#error_password_wpa").css("display","none");
+                            }
+                    });
                 } else if($("#wifi_password").val()!="") {
                     $.ajax({
                         cache: false,
@@ -160,21 +208,6 @@ $(document).ready(function(){
                         } else {
                             $("#error_wifi_password").css("display","none");
                             $("#error_wifi_password_confirm").css("display","none");
-
-                            var type_password="";
-                            switch ($("#wifi_key_type").val()) {
-                                case 'NONE': type_password="password_none";
-                                        break;
-                                case 'WEP': type_password="password_wep"
-                                        break;
-                                case 'WPA': type_password="password_wpa";
-                                        break;
-                                case 'WPA2': type_password="password_wpa";
-                                        break;
-                                case 'WPA-AUTO': type_password="password_wpa";
-                                        break;
-                                default: type_password="";
-                            }
 
                             $.ajax({
                                 cache: false,
@@ -240,9 +273,6 @@ $(document).ready(function(){
         }
 
         if(checked) {
-            // block user interface during checking and saving
-            $.blockUI({ message: ''});
-
             if(update_menu) {
                 $.ajax({
                     cache: false,
@@ -465,15 +495,15 @@ $(document).ready(function(){
 
                
                     if($("#wifi_key_type").val()!="NONE") {
-                        alert($("#wifi_key_type").val());
                         newValue    = $("#wifi_password").val();
                     } else {
                         newValue    = "";
                     }
-                    varToUpdate = $("#wifi_password").attr('name');
-                    updateConf  = $("#wifi_password").attr('data-update_conf');
 
-                    if(newValue!="") {
+                    if((newValue!="")||($("#wifi_key_type").val()=="NONE")) {
+                        varToUpdate = $("#wifi_password").attr('name');
+                        updateConf  = $("#wifi_password").attr('data-update_conf');
+
                         $.ajax({
                             type: "GET",
                             cache: false,
@@ -486,6 +516,10 @@ $(document).ready(function(){
                             }
                         });
                     }
+
+                    $("#current_wifi_password").val($("#wifi_password").val());
+                    $("#wifi_password").val("");
+                    $("#wifi_password_confirm").val("");
             } else {
                     newValue    = "";
                     varToUpdate = "wifi_ssid";
@@ -566,8 +600,6 @@ $(document).ready(function(){
 
             setTimeout(
                 function(){ 
-
-                    $.unblockUI(); 
                     if(check_update) {
                         $("#update_conf").dialog({
                             resizable: false,
@@ -610,6 +642,7 @@ $(document).ready(function(){
             3000
             );
         }
+        $.unblockUI();
     }); 
     
     $("#rtc_offset_slider").slider({
