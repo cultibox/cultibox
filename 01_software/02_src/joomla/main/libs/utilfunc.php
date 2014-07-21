@@ -1038,34 +1038,32 @@ function get_sensor_type($sd_card,&$sensor_type) {
     
     // Init return array (Why -6 : -4 For month and date AND -2 for \r\n)
     $sensor_type = array();
-    for ($i = 0 ; $i < (strlen($index_array[0]) - 6) ; $i = $i + 1)
-        $sensor_type[$i + 1] = "0";
-    
+    for($i=0; $i<$GLOBALS['NB_MAX_SENSOR_PLUG'];$i++)
+        $sensor_type[$i+1]="0";
+
     // Parse file
     // Foreach line of the file
-    foreach ($index_array as $line)
-    {
-        // Two first digits are month
-        $month = substr($line,0,2);
-        $day   = substr($line,2,2);
-        
-        // Next elements are sensors type
-        $sensor_of_the_day = str_split(substr($line,4, -2), 1);
+    foreach ($index_array as $line) {
+        if(strlen(trim($line))==($GLOBALS['NB_MAX_SENSOR_PLUG']+4)) {
+            // Two first digits are month
+            $month = substr($line,0,2);
+            $day   = substr($line,2,2);
 
-        // Update sensor_type array
-        $index = 0;
-        foreach ($sensor_of_the_day as $type)
-        {
+            // Next elements are sensors type
+            $sensor_of_the_day=str_split(substr($line,4, -2), 1);
+
+            // Update sensor_type array
+            $index = 0;
+            foreach($sensor_of_the_day as $type) {
             // If type is not null and exists, update return array
-            if ($type != "0" && $type != "")
-                    $sensor_type[$index + 1] = $type;
+                if ($type != "0" && $type != "")
+                    $sensor_type[$index + 1]=$type;
                 
-            $index = $index + 1;
+                $index = $index + 1;
+            }
         }
-    
     }
-
-   return true;
+    return true;
 }
 // }}}
 

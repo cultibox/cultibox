@@ -502,7 +502,7 @@ function update_sensor_type($index) {
     $sql="";
 
     foreach($index as $key => $value) {
-        if($value != "0") {
+        if(($value != "0")&&($value!="")) {
             $sql = $sql . "UPDATE sensors SET  type = \"{$value}\" WHERE id = ${key};";
         }
     }
