@@ -188,7 +188,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
     }
    } else {
         insert_plug_conf("PLUG_COMPUTE_METHOD",$nb,"M",$main_error);
-        $update_program=true;
    }
 
 
@@ -196,6 +195,8 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    if((!empty($type))&&(isset($type))&&(strcmp("$old_type","$type")!=0)) {
          insert_plug_conf("PLUG_TYPE",$nb,$type,$main_error);
          $update_program=true;
+
+
 
 
        //If second regulation is deactivated but the type of plug change, we also change default value for second regulation:
