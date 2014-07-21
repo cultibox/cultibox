@@ -335,12 +335,14 @@ function are_fake_logs ($sensor, $dateStart, $dateEnd, $day="day")
         
     // Get all point bewteen two dates
     $dateStartForLogsTable  = date ("ymd00His", $dateStart);
-    $dateEndForLogsTable    = date ("ymd07His", $dateEnd);
+    $dateEndForLogsTable    = date ("ymd00His", $dateEnd);
     $sql = "SELECT timestamp , record1 , record2 FROM logs"
             . " WHERE sensor_nb = {$sensor}"
             . " AND INSERT(timestamp,7,2,'00') >= {$dateStartForLogsTable}"
-            . " AND INSERT(timestamp,7,2,'00') <= {$dateEndForLogsTable}"
+            . " AND INSERT(timestamp,7,2,'00') < {$dateEndForLogsTable}"
             . " AND fake_log != 'False' limit 1;";
+
+
 
     try {
         $sth = $db->prepare($sql);
