@@ -12,6 +12,7 @@
 wifi_password=<?php echo(json_encode($wifi_password)); ?>;
 rtc_offset_value=<?php echo json_encode($rtc_offset) ?>;
 session_id="<?php echo session_id(); ?>";
+update_menu=false;
 
 
 formatCard = function(hdd,pourcent) {
@@ -88,9 +89,6 @@ $(document).ready(function(){
     $("#submit_conf").click(function(e) {
         e.preventDefault();
         var checked=true;
-        
-        // block user interface during checking and saving
-        $.blockUI({ message: ''}); 
         
         $.ajax({
             cache: false,
@@ -242,13 +240,17 @@ $(document).ready(function(){
         }
 
         if(checked) {
-            $.ajax({
-                cache: false,
-                async: false,
-                url: "../../main/modules/external/configure_menu.php",
-                data: {cost:$("#show_cost").val(),wifi:$("#WIFI").val()}
-            });
-            //document.forms['configform'].submit();
+            // block user interface during checking and saving
+            $.blockUI({ message: ''});
+
+            if(update_menu) {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "../../main/modules/external/configure_menu.php",
+                    data: {cost:$("#show_cost").val(),wifi:$("#WIFI").val()}
+                });
+            }
            
             
             var check_update=true;
@@ -580,7 +582,7 @@ $(document).ready(function(){
                                 click: function () { 
                                     $( this ).dialog( "close" ); 
                                     //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
-                                    window.location = "configuration-"+slang;
+                                    if(update_menu) window.location = "configuration-"+slang;
                                  }
                             }]
                         });
@@ -598,7 +600,7 @@ $(document).ready(function(){
                                 click: function () { 
                                     $( this ).dialog( "close" );  
                                     //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
-                                    window.location = "configuration-"+slang;
+                                    if(update_menu) window.location = "configuration-"+slang;
                                 }
                             }]
                         });
@@ -698,6 +700,17 @@ $(document).ready(function(){
              $("#current_wifi_password").removeAttr("disabled");
         }
     });
+
+
+    $("#show_cost").change(function() {
+        update_menu=true;
+    });
+
+    $("#WIFI").change(function() {
+        update_menu=true;
+    });
+
+    
 
 
     
