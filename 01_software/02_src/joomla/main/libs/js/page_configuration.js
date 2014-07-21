@@ -88,6 +88,10 @@ $(document).ready(function(){
     $("#submit_conf").click(function(e) {
         e.preventDefault();
         var checked=true;
+        
+        // block user interface during checking and saving
+        $.blockUI({ message: ''}); 
+        
         $.ajax({
             cache: false,
             async: false,
@@ -137,84 +141,84 @@ $(document).ready(function(){
             });
 
 
-           if($("#wifi_key_type").val()!="NONE") {
-            if((wifi_password=="")&&($("#wifi_password").val()=="")) {
-                $("#error_empty_password").css("display","");
-            } else if($("#wifi_password").val()!="") {
-                $.ajax({
-                    cache: false,
-                    async: false,
-                    url: "../../main/modules/external/check_value.php",
-                    data: {value:$("#wifi_password").val()+"____"+$("#wifi_password_confirm").val(),type:'password'}
-                }).done(function (data) {
-                    $("#error_empty_password").css("display","none");
-                    if(data!=1) {
-                        $("#error_wifi_password").show(700);
-                        $("#error_wifi_password_confirm").show(700);
-                        $("#error_password_wep").css("display","none");
-                        $("#error_password_wpa").css("display","none");
-                        checked=false;
-                        expand('wifi_interface');
-                    } else {
-                        $("#error_wifi_password").css("display","none");
-                        $("#error_wifi_password_confirm").css("display","none");
+            if($("#wifi_key_type").val()!="NONE") {
+                if((wifi_password=="")&&($("#wifi_password").val()=="")) {
+                    $("#error_empty_password").css("display","");
+                } else if($("#wifi_password").val()!="") {
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/check_value.php",
+                        data: {value:$("#wifi_password").val()+"____"+$("#wifi_password_confirm").val(),type:'password'}
+                    }).done(function (data) {
+                        $("#error_empty_password").css("display","none");
+                        if(data!=1) {
+                            $("#error_wifi_password").show(700);
+                            $("#error_wifi_password_confirm").show(700);
+                            $("#error_password_wep").css("display","none");
+                            $("#error_password_wpa").css("display","none");
+                            checked=false;
+                            expand('wifi_interface');
+                        } else {
+                            $("#error_wifi_password").css("display","none");
+                            $("#error_wifi_password_confirm").css("display","none");
 
-                        var type_password="";
-                        switch ($("#wifi_key_type").val()) {
-                            case 'NONE': type_password="password_none";
-                                    break;
-                            case 'WEP': type_password="password_wep"
-                                    break;
-                            case 'WPA': type_password="password_wpa";
-                                    break;
-                            case 'WPA2': type_password="password_wpa";
-                                    break;
-                            case 'WPA-AUTO': type_password="password_wpa";
-                                    break;
-                            default: type_password="";
-                        }
-
-                        $.ajax({
-                            cache: false,
-                            async: false,
-                            url: "../../main/modules/external/check_value.php",
-                            data: {value:$("#wifi_password").val(),type:type_password}
-                        }).done(function (data) {
-                            if(data!=1)  {
-                                checked=false;
-                                expand('wifi_interface');
-                                switch (type_password) {
-                                    case 'password_wep': 
-                                            $("#error_password_wep").show(700);
-                                            $("#error_password_wpa").css("display","none");
-                                            break;
-                                    case 'password_wpa': 
-                                            $("#error_password_wep").css("display","none");
-                                            $("#error_password_wpa").show(700);
-                                            break;
-                                    default: 
-                                            $("#error_password_wep").css("display","none")
-                                            $("#error_password_wpa").css("display","none");
-                                }
-                            } else {
-                                $("#error_password_wep").css("display","none");
-                                $("#error_password_wpa").css("display","none");
+                            var type_password="";
+                            switch ($("#wifi_key_type").val()) {
+                                case 'NONE': type_password="password_none";
+                                        break;
+                                case 'WEP': type_password="password_wep"
+                                        break;
+                                case 'WPA': type_password="password_wpa";
+                                        break;
+                                case 'WPA2': type_password="password_wpa";
+                                        break;
+                                case 'WPA-AUTO': type_password="password_wpa";
+                                        break;
+                                default: type_password="";
                             }
-                        });
-                    }
-                });
-            }
-            
 
-            if(($("#wifi_password").val()=="")&&(wifi_password=="")) {
-                checked=false;
-                expand('wifi_interface');       
-                $("#error_empty_password").show(700);
-                $("#error_wifi_password").css("display","none");
-                $("#error_wifi_password_confirm").css("display","none");
-            } else {
-                $("#error_empty_password").css("display","none");
-            } 
+                            $.ajax({
+                                cache: false,
+                                async: false,
+                                url: "../../main/modules/external/check_value.php",
+                                data: {value:$("#wifi_password").val(),type:type_password}
+                            }).done(function (data) {
+                                if(data!=1)  {
+                                    checked=false;
+                                    expand('wifi_interface');
+                                    switch (type_password) {
+                                        case 'password_wep': 
+                                                $("#error_password_wep").show(700);
+                                                $("#error_password_wpa").css("display","none");
+                                                break;
+                                        case 'password_wpa': 
+                                                $("#error_password_wep").css("display","none");
+                                                $("#error_password_wpa").show(700);
+                                                break;
+                                        default: 
+                                                $("#error_password_wep").css("display","none")
+                                                $("#error_password_wpa").css("display","none");
+                                    }
+                                } else {
+                                    $("#error_password_wep").css("display","none");
+                                    $("#error_password_wpa").css("display","none");
+                                }
+                            });
+                        }
+                    });
+                }
+                
+
+                if(($("#wifi_password").val()=="")&&(wifi_password=="")) {
+                    checked=false;
+                    expand('wifi_interface');       
+                    $("#error_empty_password").show(700);
+                    $("#error_wifi_password").css("display","none");
+                    $("#error_wifi_password_confirm").css("display","none");
+                } else {
+                    $("#error_empty_password").css("display","none");
+                } 
             } 
                 
 
@@ -240,12 +244,13 @@ $(document).ready(function(){
         if(checked) {
             $.ajax({
                 cache: false,
+                async: false,
                 url: "../../main/modules/external/configure_menu.php",
                 data: {cost:$("#show_cost").val(),wifi:$("#WIFI").val()}
             });
             //document.forms['configform'].submit();
            
-            $.blockUI({ message: ''}); 
+            
             var check_update=true;
             $("select").each(function() {
                 newValue    = $( this ).find(":selected").val();
@@ -255,6 +260,7 @@ $(document).ready(function(){
                 $.ajax({
                     type: "GET",
                     cache: false,
+                    async: false,
                     url: "../../main/modules/external/update_configuration.php",
                     data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                 }).done(function (data) {
@@ -270,6 +276,7 @@ $(document).ready(function(){
                 $.ajax({
                     type: "GET",
                     cache: false,
+                    async: false,
                     url: "../../main/modules/external/update_plugs.php",
                     data: "value=False&id=all&name=PLUG_REGUL" + "&session_id="+session_id
                 }).done(function (data) {
@@ -285,6 +292,7 @@ $(document).ready(function(){
                 $.ajax({
                     type: "GET",
                     cache: false,
+                    async: false,
                     url: "../../main/modules/external/update_plugs.php",
                     data: "value=M&id=all&name=PLUG_COMPUTE_METHOD" + "&session_id="+session_id
                 }).done(function (data) {
@@ -297,6 +305,7 @@ $(document).ready(function(){
                 $.ajax({
                     type: "GET",
                     cache: false,
+                    async: false,
                     url: "../../main/modules/external/update_plugs.php",
                     data: "value=1&id=all&name=PLUG_REGUL_SENSOR" + "&session_id="+session_id
                 }).done(function (data) {
@@ -315,6 +324,7 @@ $(document).ready(function(){
              $.ajax({
                 type: "GET",
                 cache: false,
+                async: false,
                 url: "../../main/modules/external/update_configuration.php",
                 data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
             }).done(function (data) {
@@ -331,6 +341,7 @@ $(document).ready(function(){
              $.ajax({
                 type: "GET",
                 cache: false,
+                async: false,
                 url: "../../main/modules/external/update_configuration.php",
                 data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
             }).done(function (data) {
@@ -353,6 +364,7 @@ $(document).ready(function(){
             $.ajax({
                 type: "GET",
                 cache: false,
+                async: false,
                 url: "../../main/modules/external/update_configuration.php",
                 data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
             }).done(function (data) {
@@ -370,6 +382,7 @@ $(document).ready(function(){
                     $.ajax({
                         type: "GET",
                         cache: false,
+                        async: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
@@ -387,6 +400,7 @@ $(document).ready(function(){
                         $.ajax({
                             type: "GET",
                             cache: false,
+                            async: false,
                             url: "../../main/modules/external/update_configuration.php",
                             data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                         }).done(function (data) {
@@ -403,6 +417,7 @@ $(document).ready(function(){
                         $.ajax({
                             type: "GET",
                             cache: false,
+                            async: false,
                             url: "../../main/modules/external/update_configuration.php",
                             data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                         }).done(function (data) {
@@ -418,6 +433,7 @@ $(document).ready(function(){
                         $.ajax({
                             type: "GET",
                             cache: false,
+                            async: false,
                             url: "../../main/modules/external/update_configuration.php",
                             data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                         }).done(function (data) {
@@ -434,6 +450,7 @@ $(document).ready(function(){
                         $.ajax({
                             type: "GET",
                             cache: false,
+                            async: false,
                             url: "../../main/modules/external/update_configuration.php",
                             data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                         }).done(function (data) {
@@ -458,6 +475,7 @@ $(document).ready(function(){
                         $.ajax({
                             type: "GET",
                             cache: false,
+                            async: false,
                             url: "../../main/modules/external/update_configuration.php",
                             data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                         }).done(function (data) {
@@ -474,6 +492,7 @@ $(document).ready(function(){
                     $.ajax({
                         type: "GET",
                         cache: false,
+                        async: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
@@ -488,6 +507,7 @@ $(document).ready(function(){
                     $.ajax({
                         type: "GET",
                         cache: false,
+                        async: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
@@ -502,6 +522,7 @@ $(document).ready(function(){
                     $.ajax({
                         type: "GET",
                         cache: false,
+                        async: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
@@ -516,6 +537,7 @@ $(document).ready(function(){
                     $.ajax({
                         type: "GET",
                         cache: false,
+                        async: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
@@ -530,6 +552,7 @@ $(document).ready(function(){
                     $.ajax({
                         type: "GET",
                         cache: false,
+                        async: false,
                         url: "../../main/modules/external/update_configuration.php",
                         data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
                     }).done(function (data) {
@@ -539,49 +562,51 @@ $(document).ready(function(){
                     });
             }
 
-            setTimeout(function(){ 
+            setTimeout(
+                function(){ 
 
-            $.unblockUI(); 
-            if(check_update) {
-                $("#update_conf").dialog({
-                    resizable: false,
-                    height:150,
-                    width: 500,
-                    closeOnEscape: false,
-                    modal: true,
-                    hide: "fold",
-                    dialogClass: "popup_message",
-                    buttons: [{
-                        text: CLOSE_button,
-                        click: function () { 
-                            $( this ).dialog( "close" ); 
-                            //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
-                            window.location = "configuration-"+slang;
-                         }
-                    }]
-                });
-            } else  {
-                $("#error_update_conf").dialog({
-                    resizable: false,
-                    height:150,
-                    width: 500,
-                    closeOnEscape: false,
-                    modal: true,
-                    dialogClass: "popup_error",
-                    hide: "fold",
-                    buttons: [{
-                        text: CLOSE_button,
-                        click: function () { 
-                            $( this ).dialog( "close" );  
-                            //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
-                            window.location = "configuration-"+slang;
-                        }
-                    }]
-                });
-            }
+                    $.unblockUI(); 
+                    if(check_update) {
+                        $("#update_conf").dialog({
+                            resizable: false,
+                            height:150,
+                            width: 500,
+                            closeOnEscape: false,
+                            modal: true,
+                            hide: "fold",
+                            dialogClass: "popup_message",
+                            buttons: [{
+                                text: CLOSE_button,
+                                click: function () { 
+                                    $( this ).dialog( "close" ); 
+                                    //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
+                                    window.location = "configuration-"+slang;
+                                 }
+                            }]
+                        });
+                    } else  {
+                        $("#error_update_conf").dialog({
+                            resizable: false,
+                            height:150,
+                            width: 500,
+                            closeOnEscape: false,
+                            modal: true,
+                            dialogClass: "popup_error",
+                            hide: "fold",
+                            buttons: [{
+                                text: CLOSE_button,
+                                click: function () { 
+                                    $( this ).dialog( "close" );  
+                                    //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
+                                    window.location = "configuration-"+slang;
+                                }
+                            }]
+                        });
+                    }
 
-             }, 3000);
-
+                },
+            3000
+            );
         }
     }); 
     
