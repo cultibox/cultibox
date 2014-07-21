@@ -36,6 +36,7 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
             //Each data is separated by the \t char, exploding in an array the data of a line:
             $temp = explode("\t", $buffer);
 
+
             //Check that the line has the right number of sensor records:
             if(count($temp)==(4*2+1)) {
             
@@ -45,6 +46,7 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
                     $temp[$i]=str_replace(" ","",$temp[$i]);
                     $temp[$i]=str_replace("0000","",$temp[$i]);
                 }
+
 
                 //Setting other fild from the data line: date catch, time catch
                 $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
@@ -60,26 +62,31 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
                     for($i=0; $i<count($sensors); $i++) {
                         //Creating data array which will be inserted into the database:
                         if(strcmp($sensors[$i]['type'],"0")!=0) {
-                            if((strcmp($sensors[$i]['type'],"2")!=0)&&(!empty($temp[$i+1]))) {
-                                $array_line[] = array(
+                            if(strcmp($sensors[$i]['type'],"2")!=0) {
+                                if(!empty($temp[$i+1])) {
+                                    $array_line[] = array(
                                     "timestamp" => $temp[0],
                                     "record1" => $temp[$i+1],
                                     "record2" => "",
                                     "date_catch" => $date_catch,
                                     "time_catch" => $time_catch,
                                     "sensor_nb" => $sensors[$i]['sensor_nb'],
-                                );
-                            } else if((!empty($temp[$i+1]))||(!empty($temp[$i+2]))) {
-                                $array_line[] = array(
+                                    );
+                                }
+                            } else {
+                                if((!empty($temp[$i+1]))||(!empty($temp[$i+2]))) {
+                                    $array_line[] = array(
                                     "timestamp" => $temp[0],
                                     "record1" => $temp[$i+1],
                                     "record2" => $temp[$i+2],
                                     "date_catch" => $date_catch,
                                     "time_catch" => $time_catch,
                                     "sensor_nb" => $sensors[$i]['sensor_nb'],
-                                );
+                                    );
+                                } 
                                 $i=$i+1;
-                            }
+                            
+                           }
                         } 
                     }
                 }
