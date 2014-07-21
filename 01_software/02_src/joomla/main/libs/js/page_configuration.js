@@ -87,10 +87,10 @@ $(document).ready(function(){
     
     // Check errors for the configuration part:
     $("#submit_conf").click(function(e) {
-        e.preventDefault();
+      e.preventDefault();
 
-        // block user interface during checking and saving
-        $.blockUI({ message: ''});
+      // block user interface during checking and saving
+      $.blockUI({ message: '', onBlock: function() {
 
         var checked=true;
         
@@ -167,7 +167,7 @@ $(document).ready(function(){
                         cache: false,
                         async: false,
                         url: "../../main/modules/external/check_value.php",
-                        data: {value:$("#wifi_password").val(),type:type_password}
+                        data: {value:wifi_password,type:type_password}
                      }).done(function (data) {
                         if(data!=1)  {
                                 checked=false;
@@ -598,9 +598,7 @@ $(document).ready(function(){
                     });
             }
 
-            setTimeout(
-                function(){ 
-                    if(check_update) {
+            if(check_update) {
                         $("#update_conf").dialog({
                             resizable: false,
                             height:150,
@@ -637,12 +635,9 @@ $(document).ready(function(){
                             }]
                         });
                     }
-
-                },
-            3000
-            );
         }
-        $.unblockUI();
+      } });
+      $.unblockUI();
     }); 
     
     $("#rtc_offset_slider").slider({
