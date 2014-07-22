@@ -131,6 +131,7 @@ if (get_sensor_type($sd_card,$sensor_type))
     update_sensor_type($sensor_type);
 }
 
+
 // Clean index file
 clean_index_file($sd_card);
 
