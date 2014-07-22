@@ -252,8 +252,9 @@ function get_sensor_db_type($sensor = "") {
 // IN dateStart Date to start (write in Unix (s) format) . Time is not used
 // IN dateEnd   Date to start (write in Unix (s) format) . Time is not used
 // IN day : Define if we want a day view or a month view
+// IN ratio : define the diviser for each record
 // RET array with logs value
-function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day") {
+function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day",$ratio=100) {
     // Init return array
     $serie = array();
     $serie[0] = array();
@@ -310,10 +311,10 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day") {
             */
 
             // WTF ! 7200
-            $serie[0][(string)(1000 * ($realTimeInS))] = $row['record1'] / 100;
+            $serie[0][(string)(1000 * ($realTimeInS))] = $row['record1'] / $ratio;
             
             if ($row['record2'] != "" && $row['record2'] != null)
-                $serie[1][(string)(1000 * ($realTimeInS))] = $row['record2'] / 100;
+                $serie[1][(string)(1000 * ($realTimeInS))] = $row['record2'] / $ratio;
             
             $lastTimeInS = $realTimeInS;
         }

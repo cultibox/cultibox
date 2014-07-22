@@ -77,16 +77,16 @@ switch ($datatype)
         if ($_GET['month'] == "day") {
             $endDay = strtotime("+1 day", strtotime($_GET['startDate']));
         }
-    
+
+        // Gets type of each sensor logged
+        $db_sensors = logs\get_sensor_db_type($_GET['sensor']);
+
         // Retrieve logs curve
-        $logsValue = logs\get_sensor_log($_GET['sensor'],$startDay,$endDay,$_GET['month']);
+        $logsValue = logs\get_sensor_log($_GET['sensor'],$startDay,$endDay,$_GET['month'],$db_sensors[0]['ratio']);
         
         // Search if there are fake
         $fake = logs\are_fake_logs($_GET['sensor'],$startDay,$endDay,$_GET['month']);
 
-        // Gets type of each sensor logged
-        $db_sensors = logs\get_sensor_db_type($_GET['sensor']);
-        
         // Read information about this sensor 
         // Todo : Super moche
         $retInfo = program\get_curve_information($db_sensors[0]['type'] . "1",$_GET['sensor'] - 1);
