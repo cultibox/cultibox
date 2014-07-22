@@ -424,6 +424,44 @@ function reset_fake_log() {
 // }}}
 
 
+// {{{ save_log()
+// IN  $file:   file to be saved
+// IN  $month:  month of the file
+// IN  $day:    day of the file
+// IN  $type:   type of the file: logs or power
+// RET  0 is an error occured, 1 else
+function save_log($file="",$month=0,$day=0,$type="logs") {
+    if(strcmp("$file","")==0) return 0;
+    if($month==0) return 0;
+    if($day==0) return 0;
+
+    $path="";
+    if(is_dir("tmp")) {
+        $path="tmp";
+    } else if(is_dir("../tmp")) {
+        $path="../tmp";
+    } else if(is_dir("../../tmp")) {
+        $path="../../tmp";
+    } else if(is_dir("../../../tmp")) {
+        $path="../../../tmp";
+    }   
+
+    if(strcmp("$path","")==0) return 0;
+
+    if(!is_dir("$path/saved_logs")) {
+            if(!@mkdir("$path/saved_logs")) return 0;
+    }
+
+    if(!is_file("$file")) return 0;
+
+    $name="$path/saved_logs/".date("Y")."_".$month."_".$day."_".$type."_loads_".date("Y")."_".date("m")."_".date("d")."_".date('His');
+    if(!copy("$file","$name")) return 0;
+    return 1;
+}
+// }}}
+
+
+
 }
 
 ?>

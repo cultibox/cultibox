@@ -3,6 +3,7 @@
 echo "  * Configuring/checking Cultibox environment..."
 user_culti=`who|head -1|awk -F" " '{print $1}'`
 group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
+user_home=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
 
 if [ ! -f /opt/lampp ] && [ ! -L /opt/lampp ]; then
     ln -s /opt/cultibox /opt/lampp
