@@ -1451,7 +1451,7 @@ msgid "ERROR_VALUE_PROGRAM_HUMI"
 msgstr "Value of humidity: it must be between 10% 95%"
 
 msgid "ERROR_VALUE_PROGRAM_CM"
-msgstr "Value of the height of water: it must be between 5cm and 95cm"
+msgstr "Value of the height of water: it must be between 5cm and 27cm"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "The trigger value of the alarm must be greater than 0 and less than 100"

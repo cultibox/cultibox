@@ -9,6 +9,7 @@ Cultibox (1.4.04) precise; urgency=low
     + L'affichage de la fenêtre des programmes journaliers n'apparaît pas dans le calendrier si aucun programme journalier n'a été défini
     + Il est impossible de choisir la méthode de calcul des options avançées de régulation si un seul capteur est sélectionné"
     + Correction de la vérification des mots de passe de la partie WIFI
+    + La tolérance est prise en compte dans le calcul max et min de la régulation d'une prise dans le logiciel
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun July 20  13:39:17 CEST 2014
 

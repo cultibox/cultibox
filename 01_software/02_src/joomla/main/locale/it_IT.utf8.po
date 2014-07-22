@@ -1451,7 +1451,7 @@ msgid "ERROR_VALUE_PROGRAM_HUMI"
 msgstr "Valore di umidità: deve essere compresa tra il 10% 95%"
 
 msgid "ERROR_VALUE_PROGRAM_CM"
-msgstr "Valore della altezza dell'acqua: deve essere compreso tra 5 centimetri e 95 centimetri"
+msgstr "Valore della altezza dell'acqua: deve essere compreso tra 5 centimetri e 27 centimetri"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "Il valore di attivazione dell'allarme deve essere maggiore di 0 e minore di 100"

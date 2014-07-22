@@ -139,7 +139,7 @@ function get_plug_conf($key,$id,&$out) {
 // RET return an array containing plugid and its name
 function get_plugs_infos($nb=0,&$out) {
 
-    $sql = "SELECT id, PLUG_NAME, PLUG_TYPE, PLUG_REGUL, PLUG_POWER_MAX"
+    $sql = "SELECT id, PLUG_NAME, PLUG_TYPE, PLUG_REGUL, PLUG_POWER_MAX, PLUG_TOLERANCE"
             . " FROM plugs"
             . " WHERE id <= '{$nb}'"
             . " ORDER by id ASC";

@@ -189,7 +189,7 @@
             </td>
             <td>    
                 <div id="regul_value" style="<?php if(strcmp("$regul_program","regul")!=0) echo "display:none"; ?>">
-                       <input type="text" id="value_program" name="value_program" size="4" maxlength="4" onKeypress="return verifNumber(event);" 
+                       <input type="text" id="value_program" name="value_program" size="4" maxlength="4" 
                        <?php if(!empty($value_program)) { 
                                ?> value="<?php echo $value_program;?>" <?php 
                         } else { 

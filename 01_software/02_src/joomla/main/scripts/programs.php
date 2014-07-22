@@ -201,7 +201,6 @@ if((isset($remove_plug))&&(!empty($remove_plug))) {
 // Retrieve plug's informations from the database
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
-
 // Gestion des programmes: reset, import, export, reset_all:
 if((isset($export))&&(!empty($export))) {
      //Pour l'export d'un programme, le fichier exporté est au format csv (séparé par des ',') et contient time_start,time_stop,value
@@ -322,20 +321,7 @@ if(!empty($apply) && isset($apply))
         $type="2";
         $check="1";
     } else {
-        if((strcmp($regul_program,"on")!=0)&&(strcmp($regul_program,"off")!=0)) {
-            if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"pump")==0)) {
-                //Vérification de la valeur du programme dans le cas d'une régulation de température:
-                $check=check_format_values_program($value_program,"temp");
-            } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
-                //Vérification de la valeur du programme dans le cas d'une régulation d'humidité:
-                $check=check_format_values_program($value_program,"humi");
-            } else {
-                //Vérification de la valeur du programme dans le cas d'une régulation pour le type autre:
-                $check=check_format_values_program($value_program,"other");
-            }
-        } else {
-            $check="1";
-        }
+        $check="1";
         $type="1";
     }
 
