@@ -276,7 +276,15 @@ function get_sd_card(&$hdd="") {
             }
             break;
         case 'Windows NT':
+        
+            // There is a bug in php, this is why we stop and restart session
+            // For mor information, see :
+            // http://php.net/manual/fr/function.exec.php : Comment write by  "elwiz at 3e dot pl"
+            // https://bugs.php.net/bug.php?id=44942
+            session_write_close();
             $vol=`MountVol`;
+            session_start();
+
             $vol=explode("\n",$vol);
             $dir=Array();
             foreach($vol as $value) {
@@ -296,6 +304,7 @@ function get_sd_card(&$hdd="") {
                     }
                 }
             }
+
             break;
     }
     return $ret;
