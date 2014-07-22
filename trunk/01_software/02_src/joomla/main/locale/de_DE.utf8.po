@@ -1448,7 +1448,7 @@ msgid "ERROR_VALUE_PROGRAM_HUMI"
 msgstr "Feuchtigkeitswert: Sie muss zwischen 10% 95%"
 
 msgid "ERROR_VALUE_PROGRAM_CM"
-msgstr "Wert der Höhe des Wassers: es muss zwischen 5cm und 95cm sein"
+msgstr "Wert der Höhe des Wassers: es muss zwischen 5cm und 27cm sein"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "Der Auslösewert des Alarm muss größer als 0 und kleiner als 100 sein"

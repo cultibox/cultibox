@@ -118,6 +118,21 @@ $GLOBALS['PLUGV_MAX_CHANGEMENT']=999;
 //To hide/show RTC configuration:
 $GLOBALS['SHOW_RTC']=false;
 
+//Limit for a program depending plug's definition:
+$GLOBALS['LIMIT_PLUG_PROGRAM']=array(
+                                    'temp' => array(
+                                         'min' => '5',
+                                         'max' => '60'),
+                                    'humi' => array(
+                                         'min' => '5',
+                                         'max' => '95'),
+                                    'cm' => array(
+                                         'min' => '5',
+                                         'max' => '27'),
+                                    'other' => array(
+                                         'min' => '0',
+                                         'max' => '99.9')
+                            );
 ?>
 
 

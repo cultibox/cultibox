@@ -57,16 +57,22 @@ switch($type) {
                      }
                      break;
     case 'value_program': if((isset($_GET['plug_type']))&&(!empty($_GET['plug_type']))) {
+                            if((!isset($_GET['plug_tolerance']))||(empty($_GET['plug_tolerance']))) {
+                                $tolerance=0;
+                            } else {
+                                $tolerance=$_GET['plug_tolerance'];
+                            }
+
                             $plug_type=$_GET['plug_type'];
                             $check=0;
                             if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
-                                $check=check_format_values_program($value,"temp");
+                                $check=check_format_values_program($value,"temp",$tolerance);
                             } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
-                                $check=check_format_values_program($value,"humi");
+                                $check=check_format_values_program($value,"humi",$tolerance);
                             } elseif(strcmp($plug_type,"pump")==0) {
-                                $check=check_format_values_program($value,"cm");
+                                $check=check_format_values_program($value,"cm",$tolerance);
                             } else {
-                                $check=check_format_values_program($value,"other");
+                                $check=check_format_values_program($value,"other",$tolerance);
                             }
                             if($check!=1) {
                                 echo "$check";

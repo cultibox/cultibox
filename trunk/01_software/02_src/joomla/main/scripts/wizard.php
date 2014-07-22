@@ -128,39 +128,25 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
 
         if(strcmp($plug_type,"lamp")!=0) {
             if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
-		        $chval=check_format_values_program($value_program,"temp");
                 if((!isset($type))||(empty($type))) {
                     $type="1";
-                } else {
-                    echo "$type";
-                }
+                } 
             } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
-                $chval=check_format_values_program($value_program,"humi");
                 if((!isset($type))||(empty($type))) {
                     $type="1";
                 }
             }elseif(strcmp($plug_type,"pump")==0) {
-                $chval=check_format_values_program($value_program,"cm"); 
                 if((!isset($type))||(empty($type))) {
                     $type="1";
                 }
-            } else {
-                $chval=check_format_values_program($value_program,"other");
-            }
-            if(strcmp("$chval","1")!=0) {
-                $error['value']=$chval; 
-            }
-        } else {
-            $chval="1";
-        }
+            } 
+        } 
 
         if((!isset($type))||(empty($type)))  {
             $type="0";
         }
 
-        $plug_tolerance="1.0";
-
-        if(($chtime)&&(strcmp("$chval","1")==0)) {
+        if($chtime) {
             if($chtime==2) {
                 $prog[]= array(
                     "start_time" => "$start_time",
@@ -196,9 +182,7 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
             // Clean current program
 			clean_program($selected_plug,1,$main_error);
             
-			if(isset($plug_tolerance)) {
-                insert_plug_conf("PLUG_TOLERANCE",$selected_plug,$plug_tolerance,$main_error);
-            }
+            insert_plug_conf("PLUG_TOLERANCE",$selected_plug,"0.0",$main_error);
 
             if(isset($plug_power_max)) {
                 insert_plug_conf("PLUG_POWER_MAX",$selected_plug,$plug_power_max,$main_error);

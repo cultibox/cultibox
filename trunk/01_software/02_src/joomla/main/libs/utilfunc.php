@@ -629,35 +629,36 @@ function check_tolerance_value($type,&$tolerance=0) {
 // }}}
 
 
+//HERE
 // {{{ check_format_values_program()
 // ROLE check AND format value of a program 
 // IN   $value       value to check and format
 // IN   $type        temp or humi - type to check
+// IN   $tol         tolerance if the plug
 // RET error message if there is a wrong value, true else
-function check_format_values_program(&$value="0",$type="temp") {
+function check_format_values_program(&$value="0",$type="temp",$tol=0) {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
+   $check=true;
 
    if(!is_numeric($value)) {   
        return 2;
    }
 
-   if(strcmp($type,"temp")==0) {
-      if(($value>60)||($value<5)) {
-         return 3;
-      }
-   } elseif(strcmp($type,"humi")==0) {
-      if(($value>95)||($value<10)) {
-         return 4;
-      }
-   } elseif(strcmp($type,"cm")==0) {
-      if(($value>95)||($value<5)) {
-          return 5;
-      }
-   } else {
-       if(($value>99.9)||($value<0)) {
-          return 6;
-       }
+   if((($value+$tol)>$GLOBALS['LIMIT_PLUG_PROGRAM'][$type]['max'])||(($value-$tol)<$GLOBALS['LIMIT_PLUG_PROGRAM'][$type]['min'])) {
+      $check=false;
+   }
+
+   if(!$check) {
+        switch($type) {
+            case 'temp': return 3;
+
+            case 'humi': return 4;
+
+            case 'cm': return 5;
+
+            case 'other': return 6;
+        }
    }
    return 1;
 }
@@ -1044,19 +1045,19 @@ function get_sensor_type($sd_card,&$sensor_type) {
     // Parse file
     // Foreach line of the file
     foreach ($index_array as $line) {
-        if(strlen(trim($line))==($GLOBALS['NB_MAX_SENSOR_PLUG']+4)) {
-            // Two first digits are month
-            $month = substr($line,0,2);
-            $day   = substr($line,2,2);
+        // Two first digits are month
+        $month = substr($line,0,2);
+        $day   = substr($line,2,2);
 
-            // Next elements are sensors type
-            $sensor_of_the_day=str_split(substr($line,4, -2), 1);
+        // Next elements are sensors type
+        $sensor_of_the_day=str_split(substr($line,4, -2), 1);
 
-            // Update sensor_type array
-            $index = 0;
-            foreach($sensor_of_the_day as $type) {
-            // If type is not null and exists, update return array
-                if ($type != "0" && $type != "")
+        // Update sensor_type array
+        $index = 0;
+        foreach($sensor_of_the_day as $type) {
+            if($index>$GLOBALS['NB_MAX_SENSOR_PLUG']) break;
+         // If type is not null and exists, update return array
+            if ($type != "0" && $type != "" && array_key_exists("$type", $GLOBALS['SENSOR_DEFINITION'])) {
                     $sensor_type[$index + 1]=$type;
                 
                 $index = $index + 1;

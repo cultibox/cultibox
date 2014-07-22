@@ -1451,7 +1451,7 @@ msgid "ERROR_VALUE_PROGRAM_HUMI"
 msgstr "Valeur d'humidité: elle doit être comprise entre 10&#37; et 95&#37;"
 
 msgid "ERROR_VALUE_PROGRAM_CM"
-msgstr "Valeur de la hauteur: elle doit être comprise entre 5cm et 95cm"
+msgstr "Valeur de la hauteur: elle doit être comprise entre 5cm et 27cm"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100"
