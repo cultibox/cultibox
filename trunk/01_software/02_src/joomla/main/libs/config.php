@@ -133,6 +133,7 @@ $GLOBALS['LIMIT_PLUG_PROGRAM']=array(
                                          'min' => '0',
                                          'max' => '99.9')
                             );
+
 ?>
 
 
