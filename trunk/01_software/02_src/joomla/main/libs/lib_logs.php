@@ -253,9 +253,7 @@ function get_sensor_db_type($sensor = "") {
 // IN dateEnd   Date to start (write in Unix (s) format) . Time is not used
 // IN day : Define if we want a day view or a month view
 // RET array with logs value
-function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day")
-{
-
+function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day") {
     // Init return array
     $serie = array();
     $serie[0] = array();
@@ -273,11 +271,11 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day")
     // Get all point bewteen two dates
     $dateStartForLogsTable  = date ("ymd00His", $dateStart);
     $dateEndForLogsTable    = date ("ymd00His", $dateEnd);
-    $sql = "SELECT timestamp , record1 , record2 FROM logs"
+    $sql = "SELECT timestamp , time_catch, date_catch, record1 , record2 FROM logs"
             . " WHERE sensor_nb = {$sensor}"
             . " AND INSERT(timestamp,7,2,'00') >= {$dateStartForLogsTable}"
             . " AND INSERT(timestamp,7,2,'00') <= {$dateEndForLogsTable}"
-            . " ORDER BY timestamp ASC;";
+            . " ORDER BY time_catch ASC;";
 
     try {
         $sth = $db->prepare($sql);
@@ -290,20 +288,26 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day")
     // For each point
     while ($row = $sth->fetch()) 
     {
-
         // Format date
-        $realDate = "20" . substr($row['timestamp'], 0 ,2) . "-"
-         . substr($row['timestamp'], 2 ,2) . "-"
-         . substr($row['timestamp'], 4 ,2) . " "
-         . substr($row['timestamp'], 8 ,2) . ":"
-         . substr($row['timestamp'], 10 ,2) . ":"
-         . substr($row['timestamp'], 12 ,2);
-
+        $realDate = $row['date_catch'] . " " . wordwrap($row['time_catch'],"2",":");
         $realTimeInS = strtotime($realDate);
 
         // Don't display all point. Only if they have suffisiant diff
+        $first=false;
         if ($realTimeInS >= ($lastTimeInS + $divider))
         {
+
+            /*
+            if(!$first) {
+                $first=true;
+                $first_date=strtotime($row['date_catch'] . " " . "00:00:01");
+                $serie[0][(string)(1000 * ($first_date))] = "null"; 
+
+                if ($row['record2'] != "" && $row['record2'] != 0) {
+                    $serie[1][(string)(1000 * ($first_date))] = "null";
+                } 
+            }
+            */
 
             // WTF ! 7200
             $serie[0][(string)(1000 * ($realTimeInS))] = $row['record1'] / 100;
@@ -314,7 +318,6 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day")
             $lastTimeInS = $realTimeInS;
         }
     }
-
     return $serie ;
 }
 // }}}
