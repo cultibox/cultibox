@@ -30,7 +30,6 @@ $regul_program="";
 $resume=array();
 $add_plug=getvar('add_plug');
 $remove_plug=getvar('remove_plug');
-$pop_up=get_configuration("SHOW_POPUP",$main_error);
 $apply=getvar('apply');
 $start_time=getvar("start_time");
 $end_time=getvar("end_time");

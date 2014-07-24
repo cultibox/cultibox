@@ -118,9 +118,6 @@ msgstr "Frequency of updating the status of taken (in seconds)"
 msgid "CONFIGURE_POWER"
 msgstr "Color power curves"
 
-msgid "CONFIGURE_POPUP"
-msgstr "Enable the display of popup messages"
-
 msgid "VALIDATION_CONF"
 msgstr "Save Configuration"
 
@@ -1675,9 +1672,6 @@ msgstr "The Cultibox will use the drive taken to use only the power required equ
 
 msgid "TOOLTIP_POWER"
 msgstr "The power of the connected equipment. Fill in this field allows you to calculate the consumption of your system, its price ..."
-
-msgid "TOOLTIP_POPUP"
-msgstr "The messages displayed by the interface are by default displayed in a dialog box. This option allows you to disable / enable these dialog boxes."
 
 msgid "TOOLTIP_RECORD_FREQ"
 msgstr "This option allows you to configure the frequency at which the Cultibox records sensors data."

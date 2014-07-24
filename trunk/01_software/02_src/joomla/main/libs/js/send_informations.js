@@ -4,7 +4,7 @@ $.ajax({
     cache: false,
     type: "GET",
     url: "../../main/modules/external/send_informations.php",
-    data: "session_id=" + session_id,
+    data: {session_id:session_id},
     context: document.body,
     success: function(data, textStatus, jqXHR) {
         // Check response from server       

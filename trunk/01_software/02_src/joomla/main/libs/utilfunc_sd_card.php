@@ -801,9 +801,8 @@ function read_sd_conf_file($sd_card,$variable,$out="") {
 // IN   $sd_card      location of the sd card to save data
 //   $variable      Variable to set    
 //   $value         Value to set    
-//   $out                error or warning messages
 // RET false if an error occured, true else  
-function update_sd_conf_file($sd_card,$variable,$value,$out="") {
+function update_sd_conf_file($sd_card,$variable,$value) {
 
     // Check if sd card is defined
     if (empty($sd_card))
@@ -812,7 +811,8 @@ function update_sd_conf_file($sd_card,$variable,$value,$out="") {
     $file="$sd_card/cnf/conf";
     
     // Open file
-    $fid = fopen($file,"r+");
+    $fid = @fopen($file,"r+");
+    if(!$fid) return false;
     
     $offset = "";
     
@@ -856,14 +856,13 @@ function update_sd_conf_file($sd_card,$variable,$value,$out="") {
         while(strlen($value) < 4)
             $value = "0" . $value;
         
-        fseek($fid, $offset);
+        if(!@fseek($fid, $offset)) return false;
         
-        fwrite($fid,$value);
-        
+        if(!@fwrite($fid,$value)) return false; 
     }
     
     // Close
-    fclose($fid);
+    if($fid) fclose($fid);
     
 
 }

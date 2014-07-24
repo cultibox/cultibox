@@ -48,16 +48,7 @@
     <table class="conf-table">
         <tr>
              <td class="conf-marge"></td>
-             <td class="conf-marge-td"><?php echo __('CONFIGURE_POPUP'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POPUP'); ?>" /></td>
-             <td><select name="show_popup">
-                <option value="True" <?php if(strcmp("$pop_up","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
-                <option value="False" <?php if(strcmp("$pop_up","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
-             </select></td>
-            <td></td>
-        </tr>
-        <tr>
-             <td class="conf-marge"></td>
-             <td><?php echo __('CHECK_UPDATE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CHECK_UPDATE'); ?>" /></td>
+             <td class="conf-marge-td"><?php echo __('CHECK_UPDATE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CHECK_UPDATE'); ?>" /></td>
              <td><select name="check_update">
                 <option value="True" <?php if(strcmp("$update","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
                 <option value="False" <?php if(strcmp("$update","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
@@ -136,11 +127,30 @@
     <table class="conf-table">
     <tr>
     <td class="conf-marge"></td>
+    <td><?php echo __('CONFIGURE_NB_PLUGS'); ?>:</td>
+    <td>
+       <select name="nb_plugs">
+          <?php
+          for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_SELECTABLE_PLUG'];$i++) {
+             if(!strcmp ("$i","$nb_plugs")) {
+                echo "<option value=\"${i}\" selected>${i}</option>";
+             } else {
+                echo "<option value=\"${i}\">${i}</option>";
+             }
+          }
+          ?>
+    </select>
+    </td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td class="conf-marge"></td>
     <td class="conf-marge-td">
        <?php echo __('CONFIGURE_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
     </td>
     <td>
-       <select name="record_frequency" data-update_conf="1" >
+       <select name="record_frequency">
           <?php
           foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
              if(!strcmp ("$value","$record_frequency")) {
@@ -160,7 +170,7 @@
        <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
     </td>
     <td>
-       <select name="power_frequency" data-update_conf="1" >
+       <select name="power_frequency">
           <?php
           foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
              if(!strcmp ("$value","$power_frequency")) {
@@ -176,29 +186,11 @@
     </tr>
     <tr>
     <td class="conf-marge"></td>
-    <td><?php echo __('CONFIGURE_NB_PLUGS'); ?>:</td>
-    <td>
-       <select name="nb_plugs">
-          <?php
-          for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_SELECTABLE_PLUG'];$i++) {
-             if(!strcmp ("$i","$nb_plugs")) {
-                echo "<option value=\"${i}\" selected>${i}</option>";
-             } else {
-                echo "<option value=\"${i}\">${i}</option>";
-             }
-          }
-          ?>
-    </select>
-    </td>
-    <td></td>
-    </tr>
-    <tr>
-    <td class="conf-marge"></td>
     <td>
        <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
     </td>
     <td>
-       <select name="update_plugs_frequency" data-update_conf="1" >
+       <select name="update_plugs_frequency">
           <?php
           foreach($GLOBALS['LIST_UPDATE_FREQUENCY'] as $value) {
              if(strcmp ("$value","-1")==0) { 
@@ -223,7 +215,7 @@
                <?php echo __('RESET_MINMAX'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_MINMAX'); ?>" />
             </td>
             <td>
-               <input type="text" size="5" name="reset_minmax" id="reset_minmax" data-update_conf="1" <?php if(!empty($reset_minmax)) { ?> value="<?php echo $reset_minmax;?>" <?php } else { ?> value="00:00" <?php } ?> />
+               <input type="text" size="5" name="reset_minmax" id="reset_minmax" <?php if(!empty($reset_minmax)) { ?> value="<?php echo $reset_minmax;?>" <?php } else { ?> value="00:00" <?php } ?> />
             </td>
             <td><div id="error_min_max" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
     </tr>
@@ -245,7 +237,7 @@
                     </td>
                     <td>
                         <!-- RTC Value -->
-                        <input type="text" name="rtc_offset" id="rtc_offset" data-update_conf="1" value="<?php echo $rtc_offset; ?>" size="4" readonly /><?php echo __('RTC_OFFSET_UNITY'); ?>
+                        <input type="text" name="rtc_offset" id="rtc_offset" value="<?php echo $rtc_offset; ?>" size="4" readonly /><?php echo __('RTC_OFFSET_UNITY'); ?>
                     </td>
                 </tr>
             </table>
@@ -264,7 +256,7 @@
             <td class="conf-marge"></td>
             <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?>:</td>
             <td class="conf-alarm-field">
-                <select name="alarm_activ" data-update_conf="1" id="alarm_activ" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
+                <select name="alarm_activ" id="alarm_activ" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
                 <?php 
                     if("$alarm_activ"=="0001") {
                         echo "<option value='0001' selected>".__('YES')."</option>";
@@ -287,7 +279,7 @@
             </td>
             <td>
                 <div id="div_alarm_value" style="<?php if("$alarm_activ"=="0000") echo "display:none"; ?>">
-                    <input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" data-update_conf="1" name="alarm_value" id="alarm_value" onKeypress="return verifDigit(event);">
+                    <input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value" id="alarm_value" onKeypress="return verifDigit(event);">
                     <label id="label_degree">°C</label>
                 </div>
             </td>
@@ -311,7 +303,6 @@
             </td>
             <td class="conf-alarm-field">
                 <select name="WIFI" id="WIFI" 
-                        data-update_conf="1" 
                         onChange="getWifi(this.selectedIndex);" onLoad="getWifi(this.selectedIndex);">
                 <?php 
                     if($wifi_enable == 1) {
@@ -339,7 +330,6 @@
                 <td class="conf-alarm-field">
                     <input  type="text" size="15" 
                             name="wifi_ssid" id="wifi_ssid" 
-                            data-update_conf="1" 
                             value="<?php echo $wifi_ssid; ?>" />
                 </td>
                 <td></td>
@@ -349,7 +339,7 @@
               <td class="conf-marge"></td>
               <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_KEY_TYPE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_KEY_TYPE'); ?>" /></td>
               <td class="conf-alarm-field">
-                    <select name="wifi_key_type" data-update_conf="1" id="wifi_key_type">
+                    <select name="wifi_key_type" id="wifi_key_type">
                         <?php foreach( $GLOBALS['WIFI_KEY_TYPE_LIST'] as $key) { ?>
                             <option value="<?php echo $key; ?>" <?php if($key == $wifi_key_type) echo 'selected'; ?>><?php echo $key; ?></option>
                         <?php } ?>

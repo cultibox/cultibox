@@ -118,9 +118,6 @@ msgstr "Frequenza di aggiornamento dello stato di presa (in secondi)"
 msgid "CONFIGURE_POWER"
 msgstr "Curve di potenza di colore"
 
-msgid "CONFIGURE_POPUP"
-msgstr "Abilitare la visualizzazione dei messaggi popup"
-
 msgid "VALIDATION_CONF"
 msgstr "Salva configurazione"
 
@@ -1675,9 +1672,6 @@ msgstr "Il Cultibox userà l'unità adottata per usare solo la potenza necessari
 
 msgid "TOOLTIP_POWER"
 msgstr "L'alimentazione del componente collegato. Compilare questo campo permette di calcolare il consumo del vostro sistema, il suo prezzo ..."
-
-msgid "TOOLTIP_POPUP"
-msgstr "I messaggi visualizzati dall'interfaccia sono di default visualizzato in una finestra di dialogo. Questa opzione consente di disattivare / attivare queste finestre di dialogo."
 
 msgid "TOOLTIP_RECORD_FREQ"
 msgstr "Questa opzione consente di configurare la frequenza con cui l'Cultibox registra dati provenienti da sensori"

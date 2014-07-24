@@ -16,7 +16,6 @@ $reccord=getvar('reccord');
 $pop_up_message="";
 $pop_up_error_message="";
 $version=get_configuration("VERSION",$main_error);
-$pop_up=get_configuration("SHOW_POPUP",$main_error);
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $jumpto=getvar("jumpto");
 $submit=getvar("submit_plugs");

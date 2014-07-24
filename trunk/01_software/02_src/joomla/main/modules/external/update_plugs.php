@@ -52,7 +52,7 @@
         foreach($main_error as $error) {
             echo json_encode($error);
         }
+    } else {
+        echo json_encode("");
     }
-
-    echo json_encode("");
 ?>

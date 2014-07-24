@@ -118,9 +118,6 @@ msgstr "Häufigkeit der Aktualisierung des Status entnommen (in Sekunden)"
 msgid "CONFIGURE_POWER"
 msgstr "Farbe Leistungskurven"
 
-msgid "CONFIGURE_POPUP"
-msgstr "Aktivieren Sie die Anzeige von Popup-Meldungen"
-
 msgid "VALIDATION_CONF"
 msgstr "Konfiguration speichern"
 
@@ -1672,9 +1669,6 @@ msgstr "Die Cultibox die WSC-Laufwerk verwenden, um nur die Leistung erforderlic
 
 msgid "TOOLTIP_POWER"
 msgstr "Die Macht der angeschlossenen Geräte. Füllen Sie bitte dieses Feld können Sie den Verbrauch Ihres Systems, ist der Preis berechnen ..."
-
-msgid "TOOLTIP_POPUP"
-msgstr "Die von der Schnittstelle angezeigten Meldungen sind standardmäßig in einem Dialogfeld angezeigt. Diese Option können Sie aktivieren / deaktivieren diese Dialogfelder."
 
 msgid "TOOLTIP_RECORD_FREQ"
 msgstr "Diese Option ermöglicht es Ihnen, die Frequenz, mit der die Cultibox zeichnet Daten von Sensoren konfigurieren"

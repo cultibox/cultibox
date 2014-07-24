@@ -12,6 +12,7 @@ Cultibox (1.4.04) precise; urgency=low
     + La tolérance est prise en compte dans le calcul max et min de la régulation d'une prise dans le logiciel
     + Les fichiers log et power sont sauvegardés dans un repertoire tmp en cas de problèmes
     + Vérification de la présence de Javascript dans le navigateur
+    + Suppréssion de l'option SHOW_POPUP et réorganisation de l'affichage des messages
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sun July 20  13:39:17 CEST 2014
 
