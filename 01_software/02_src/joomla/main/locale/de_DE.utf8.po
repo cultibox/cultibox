@@ -38,6 +38,9 @@ msgstr "Seite Programmschema Kultur"
 msgid "WELCOME_PROGRAM"
 msgstr "Seite Erstellung und Visualisierung von Programmen übernommen"
 
+msgid "ENABLE_JAVASCRIPT"
+msgstr "Javascript ist deaktiviert! Sie können die Software nicht verwenden und alle seine Funktionen, wenn Sie Javascript nicht aktivieren."
+
 
 # For the configuration part:
 msgid "CONFIGURE_GRAPHIC"

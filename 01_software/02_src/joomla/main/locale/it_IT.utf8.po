@@ -38,6 +38,9 @@ msgstr "Cultura palinsesto pagina"
 msgid "WELCOME_PROGRAM"
 msgstr "Creazione di pagine e visualizzazione dei programmi adottati"
 
+msgid "ENABLE_JAVASCRIPT"
+msgstr "Javascript è disattivato! Non è possibile utilizzare il software e tutte le caratteristiche se non si abilita Javascript."
+
 
 # For the configuration part:
 msgid "CONFIGURE_GRAPHIC"

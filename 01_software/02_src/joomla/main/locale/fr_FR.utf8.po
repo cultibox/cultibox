@@ -38,6 +38,9 @@ msgstr "Page de programmation du calendrier de culture"
 msgid "WELCOME_PROGRAM"
 msgstr "Page de création et visualisation des programmes des prises"
 
+msgid "ENABLE_JAVASCRIPT"
+msgstr "Javascript est désactivé! Vous ne pourrez pas utiliser le logiciel et toutes ses fonctionnalités si vous n'activez pas Javascript."
+
 
 # For the configuration part:
 msgid "CONFIGURE_GRAPHIC"

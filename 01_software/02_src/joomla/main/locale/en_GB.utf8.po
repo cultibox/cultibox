@@ -38,6 +38,9 @@ msgstr "Page programming schedule culture"
 msgid "WELCOME_PROGRAM"
 msgstr "Page creation and visualization of programs taken"
 
+msgid "ENABLE_JAVASCRIPT"
+msgstr "Javascript is disabled! You can not use the software and all its features if you do not enable Javascript."
+
 
 # For the configuration part:
 msgid "CONFIGURE_GRAPHIC"
