@@ -252,7 +252,10 @@ $(document).ready(function(){
            cache: false,
            type: "GET",
            url: "../../main/modules/external/daily_program_delete.php",
-           data: "program_delete_index=" + $("#program_delete_index option:selected").val() + "&session_id=" + session_id
+           data: {
+                program_delete_index:$("#program_delete_index option:selected").val(),
+                session_id:session_id
+            }
         }).done(function (data) {
               if($.trim(data)=="") { 
                     // Display dialog bow to alert user
@@ -330,7 +333,12 @@ $(document).ready(function(){
                 $.ajax({ 
                     type: "GET",
                     url: "../../main/modules/external/daily_program_save.php",
-                    data: "name=" + $('#program_name').val() + "&input=1&version=1.0&session_id=" + session_id,
+                    data: {
+                        name:$('#program_name').val(),
+                        input:1,
+                        version:1.0,
+                        session_id:session_id
+                    },
                     context: document.body,
                     success: function(data, textStatus, jqXHR) {
                         // Check response from server

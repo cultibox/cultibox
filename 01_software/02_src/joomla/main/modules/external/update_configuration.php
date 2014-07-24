@@ -18,7 +18,7 @@
         require_once('../../libs/debug.php');
     }
 
-    if(empty($_GET['value'])) {
+    if((!isset($_GET['value']))||(empty($_GET['value']))) {
         insert_configuration(strtoupper($_GET['variable']),"",$main_error);
     } else {
         // Save configuration
@@ -26,15 +26,17 @@
     }
 
     //Special configuration:
-    switch(strtoupper($_GET['variable'])) {
-        case 'SHOW_COST': configure_menu("cost",$_GET['value']);
+    if(isset($_GET['variable'])) {
+        switch(strtoupper($_GET['variable'])) {
+            case 'SHOW_COST': configure_menu("cost",$_GET['value']);
                      break;
-        case 'WIFI': configure_menu("wifi",$_GET['value']);
+            case 'WIFI': configure_menu("wifi",$_GET['value']);
                      break;
+        }
     }
 
     // If update conf is defined, update sd configuration
-    if ($_GET['updateConf'] != "undefined") {
+    if(isset($_GET['updateConf'])) {
         // search sd card
         $sd_card = get_sd_card();
         
