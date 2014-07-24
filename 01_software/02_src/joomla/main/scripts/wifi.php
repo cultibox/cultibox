@@ -12,10 +12,6 @@ $main_info=array();
 
 // ================= VARIABLES ================= //
 $informations = Array();
-$version=get_configuration("VERSION",$main_error);
-$pop_up = get_configuration("SHOW_POPUP",$main_error);
-$pop_up_message="";
-$pop_up_error_message="";
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 $wifi_ip=get_configuration("WIFI_IP",$main_error);

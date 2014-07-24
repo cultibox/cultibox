@@ -6,7 +6,10 @@ pop_up_add_information("<?php echo __('WAIT_UPDATED_PROGRAM') ;?> <img src=\"../
 $.ajax({ 
     type: "GET",
     url: "http://localhost:6891/cultibox/main/modules/external/check_and_update_sd.php",
-    data: "sd_card=" + "<?php echo $sd_card ;?>" + "&session_id=" + session_id,
+    data: {
+        sd_card:"<?php echo $sd_card ;?>",
+        session_id:session_id
+    },
     async: true,
     context: document.body,
     success: function(data, textStatus, jqXHR) {

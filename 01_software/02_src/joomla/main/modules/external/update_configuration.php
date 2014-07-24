@@ -1,6 +1,7 @@
 <?php 
 
     $session_id = $_GET['session_id'];
+
     if (!isset($_SESSION)) {
         session_id($session_id);
         session_start();
@@ -35,20 +36,12 @@
         }
     }
 
-    // If update conf is defined, update sd configuration
-    if(isset($_GET['updateConf'])) {
-        // search sd card
-        $sd_card = get_sd_card();
-        
-        // Update conf file
-        update_sd_conf_file($sd_card, $_GET['variable'],$_GET['value'],$main_error);
-    }
-    
     if(count($main_error)>0) {
         foreach($main_error as $error) {
             echo json_encode($error);
         }
+    } else {
+        echo json_encode("");
     }
 
-    echo json_encode("");
 ?>

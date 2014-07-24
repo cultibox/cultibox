@@ -8,13 +8,7 @@ $main_error=array();
 $main_info=array();
 
 // ================= VARIABLES ================= //
-$update_conf=false;
-
-$pop_up_message="";
-$pop_up_error_message="";
-
 $submenu        = getvar("submenu",$main_error);
-$version        = get_configuration("VERSION",$main_error);
 
 // By default the expanded menu is the user interface menu
 if((!isset($submenu))||(empty($submenu))) {
@@ -47,7 +41,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
 //============================== GET OR SET CONFIGURATION PART ====================
 //update_conf sert à définir si la configuration impacte la carte SD
 $conf_arr = array();
-$conf_arr["SHOW_POPUP"]             = array ("update_conf" => "0", "var" => "pop_up");
 $conf_arr["CHECK_UPDATE"]           = array ("update_conf" => "0", "var" => "update");
 $conf_arr["COLOR_COST_GRAPH"]       = array ("update_conf" => "0", "var" => "color_cost");
 $conf_arr["RECORD_FREQUENCY"]       = array ("update_conf" => "1", "var" => "record_frequency");

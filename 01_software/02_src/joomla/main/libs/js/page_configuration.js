@@ -287,7 +287,6 @@ $(document).ready(function(){
             $("select").each(function() {
                 newValue    = $( this ).find(":selected").val();
                 varToUpdate = $( this ).attr('name');
-                updateConf  = $( this ).attr('data-update_conf');
 
                 $.ajax({
                     type: "GET",
@@ -297,8 +296,8 @@ $(document).ready(function(){
                     data: {
                         value:newValue,
                         variable:varToUpdate,
-                        updateConf:updateConf,
-                        session_id:session_id
+                        session_id:session_id,
+                        sd_card:sd_card
                     }
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {  
@@ -371,7 +370,6 @@ $(document).ready(function(){
             //RTC OFFSET process:
             newValue    = $("#rtc_offset").val();
             varToUpdate = $("#rtc_offset").attr('name');
-            updateConf  = $("#rtc_offset").attr('data-update_conf');
 
              $.ajax({
                 type: "GET",
@@ -381,8 +379,8 @@ $(document).ready(function(){
                 data: {
                         value:newValue,     
                         variable:varToUpdate,
-                        updateConf:updateConf,
-                        session_id:session_id
+                        session_id:session_id,
+                        sd_card:sd_card
                     }
             }).done(function (data) {
                 if($.parseJSON(data)!="") {
@@ -393,7 +391,6 @@ $(document).ready(function(){
             //RESET MIN MAX process:
             newValue    = $("#reset_minmax").val();
             varToUpdate = $("#reset_minmax").attr('name');
-            updateConf  = $("#reset_minmax").attr('data-update_conf');
 
              $.ajax({
                 type: "GET",
@@ -403,8 +400,8 @@ $(document).ready(function(){
                 data: {
                         value:newValue,
                         variable:varToUpdate,
-                        updateConf:updateConf,
-                        session_id:session_id
+                        session_id:session_id,
+                        sd_card:sd_card
                     }
             }).done(function (data) {
                 if($.parseJSON(data)!="") {
@@ -421,7 +418,6 @@ $(document).ready(function(){
             }
 
             varToUpdate = $("#alarm_value").attr('name');
-            updateConf  = $("#alarm_value").attr('data-update_conf');
 
             $.ajax({
                 type: "GET",
@@ -431,8 +427,8 @@ $(document).ready(function(){
                 data: {
                         value:newValue,
                         variable:varToUpdate,
-                        updateConf:updateConf,
-                        session_id:session_id
+                        session_id:session_id,
+                        sd_card:sd_card
                     }
             }).done(function (data) {
                 if($.parseJSON(data)!="") {
@@ -444,7 +440,6 @@ $(document).ready(function(){
             if($("#WIFI option:selected").val()=="1") {
                     newValue    = $("#wifi_ssid").val();
                     varToUpdate = $("#wifi_ssid").attr('name');
-                    updateConf  = $("#wifi_ssid").attr('data-update_conf');        
 
                     $.ajax({
                         type: "GET",
@@ -454,8 +449,8 @@ $(document).ready(function(){
                         data: {
                         value:newValue,
                         variable:varToUpdate,
-                        updateConf:updateConf,
-                        session_id:session_id
+                        session_id:session_id,
+                        sd_card:sd_card
                     }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
@@ -467,7 +462,6 @@ $(document).ready(function(){
                     if($('#wifi_ip_manual').prop('checked')) {
                         newValue    = 1;
                         varToUpdate = "wifi_ip_manual";
-                        updateConf  = 0;
 
                         $.ajax({
                             type: "GET",
@@ -477,8 +471,8 @@ $(document).ready(function(){
                             data: {
                                 value:newValue,
                                 variable:varToUpdate,
-                                updateConf:updateConf,
-                                session_id:session_id
+                                session_id:session_id,
+                                sd_card:sd_card
                             }
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
@@ -489,7 +483,6 @@ $(document).ready(function(){
 
                         newValue    = $("#wifi_ip").val();
                         varToUpdate = $("#wifi_ip").attr('name');
-                        updateConf  = $("#wifi_ip").attr('data-update_conf');
 
                         $.ajax({
                             type: "GET",
@@ -499,8 +492,8 @@ $(document).ready(function(){
                             data: {
                                 value:newValue,
                                 variable:varToUpdate,
-                                updateConf:updateConf,
-                                session_id:session_id
+                                session_id:session_id,
+                                sd_card:sd_card
                             }
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
@@ -510,7 +503,6 @@ $(document).ready(function(){
                     } else {
                         newValue    = 0;
                         varToUpdate = "wifi_ip_manual";
-                        updateConf  = 0;
 
                         $.ajax({
                             type: "GET",
@@ -520,8 +512,8 @@ $(document).ready(function(){
                             data: {
                                 value:newValue,
                                 variable:varToUpdate,
-                                updateConf:updateConf,
-                                session_id:session_id
+                                session_id:session_id,
+                                sd_card:sd_card
                             }
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
@@ -532,7 +524,6 @@ $(document).ready(function(){
 
                         newValue    = "000.000.000.000";
                         varToUpdate = $("#wifi_ip").attr('name');
-                        updateConf  = $("#wifi_ip").attr('data-update_conf');
 
                         $.ajax({
                             type: "GET",
@@ -542,8 +533,8 @@ $(document).ready(function(){
                             data: {
                                 value:newValue,
                                 variable:varToUpdate,
-                                updateConf:updateConf,
-                                session_id:session_id
+                                session_id:session_id,
+                                sd_card:sd_card
                             }
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
@@ -562,7 +553,6 @@ $(document).ready(function(){
 
                     if((newValue!="")||($("#wifi_key_type").val()=="NONE")) {
                         varToUpdate = $("#wifi_password").attr('name');
-                        updateConf  = $("#wifi_password").attr('data-update_conf');
 
                         $.ajax({
                             type: "GET",
@@ -572,8 +562,8 @@ $(document).ready(function(){
                             data: {
                                 value:newValue,
                                 variable:varToUpdate,
-                                updateConf:updateConf,
-                                session_id:session_id
+                                session_id:session_id,
+                                sd_card:sd_card
                             }
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
@@ -588,7 +578,6 @@ $(document).ready(function(){
             } else {
                     newValue    = "";
                     varToUpdate = "wifi_ssid";
-                    updateConf  = 1;
 
                     $.ajax({
                         type: "GET",
@@ -598,8 +587,8 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            updateConf:updateConf,
-                            session_id:session_id
+                            session_id:session_id,
+                            sd_card:sd_card
                         }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
@@ -618,8 +607,8 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            updateConf:updateConf,
-                            session_id:session_id
+                            session_id:session_id,
+                            sd_card:sd_card
                         }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
@@ -638,8 +627,8 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            updateConf:updateConf,
-                            session_id:session_id
+                            session_id:session_id,
+                            sd_card:sd_card
                         }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
@@ -658,8 +647,8 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            updateConf:updateConf,
-                            session_id:session_id
+                            session_id:session_id,
+                            sd_card:sd_card
                         }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
@@ -678,14 +667,37 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            updateConf:updateConf,
-                            session_id:session_id
+                            session_id:session_id,
+                            sd_card:sd_card
                         }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
                         }
                     });
+            }
+
+            if(sd_card!="") {
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:6891/cultibox/main/modules/external/check_and_update_sd.php",
+                    data: {
+                        sd_card:sd_card,
+                        session_id:session_id
+                    },
+                    async: false
+                }).done(function(data, textStatus, jqXHR) {
+                    // Check response from server
+
+                    // Parse result
+                    var json = jQuery.parseJSON(data);
+
+                    // For each information, show it
+                    json.error.forEach(function(entry) {
+                        pop_up_add_information(entry,"check_sd_status","information");
+                        check_update=false;
+                    });
+                });
             }
 
             if(check_update) {
@@ -706,7 +718,7 @@ $(document).ready(function(){
                                  }
                             }]
                         });
-                    } else  {
+            } else  {
                         $("#error_update_conf").dialog({
                             resizable: false,
                             height:150,
@@ -720,11 +732,11 @@ $(document).ready(function(){
                                 click: function () { 
                                     $( this ).dialog( "close" );  
                                     //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
-                                    if(update_menu) window.location = "configuration-"+slang;
+                                    window.location = "configuration-"+slang;
                                 }
                             }]
                         });
-                    }
+           }
         }
       } });
       $.unblockUI();

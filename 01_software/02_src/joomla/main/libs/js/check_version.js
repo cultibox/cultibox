@@ -4,7 +4,7 @@ $.ajax({
     type: "GET",
     url: "../../main/modules/external/check_update.php",
     // Lang is the end of the url
-    data: "session_id=" + session_id,
+    data: { session_id:session_id},
     context: document.body,
     success: function(data, textStatus, jqXHR) {
         // Check response from server

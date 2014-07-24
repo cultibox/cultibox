@@ -4,7 +4,6 @@
 $start_load = getmicrotime();
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
-$error=array();
 $main_error=array();
 $main_info=array();
 
@@ -21,10 +20,6 @@ $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $price=get_configuration("COST_PRICE",$main_error);
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 $select_plug=getvar('select_plug');
-$pop_up_error_message="";
-$pop_up_message="";
-$pop_up=get_configuration("SHOW_POPUP",$main_error);
-$version=get_configuration("VERSION",$main_error);
 $submit=getvar("submit_cost");
 $resume="";
 $lang=$_SESSION['LANG'];

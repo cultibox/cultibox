@@ -118,9 +118,6 @@ msgstr "Fréquence de mise à jour de l'état des prises (en seconde)"
 msgid "CONFIGURE_POWER"
 msgstr "Couleur des courbes de puissance"
 
-msgid "CONFIGURE_POPUP"
-msgstr "Activer l'affichage des messages par popup"
-
 msgid "VALIDATION_CONF"
 msgstr "Enregistrer la configuration"
 
@@ -1676,9 +1673,6 @@ msgstr "La Cultibox va utiliser la prise variateur pour n'utiliser que la puissa
 
 msgid "TOOLTIP_POWER"
 msgstr "La puissance de l'équipement branché. Renseigner ce champ vous permet de calculer la consommation de votre installation, son prix..."
-
-msgid "TOOLTIP_POPUP"
-msgstr "Les messages affichés par l'interface sont par défaut affichés dans une boite de dialogue. Cette option vous permet de désactiver/activer ces boites de dialogue."
 
 msgid "TOOLTIP_RECORD_FREQ"
 msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox enregistre les données issues des capteurs."

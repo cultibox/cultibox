@@ -4,7 +4,6 @@
 $start_load = getmicrotime();
 
 // Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
-$error=array();
 $main_error=array();
 $main_info=array();
 $version=get_configuration("VERSION",$main_error); //Current version of the software
@@ -13,9 +12,6 @@ $version=get_configuration("VERSION",$main_error); //Current version of the soft
 $sd_card=""; //Path of the SD card
 $wizard=true; 
 $nb_plugs = get_configuration("NB_PLUGS",$main_error); //Get current actives number of plugs
-$pop_up_message=""; //For the informations pop up messages
-$pop_up_error_message=""; //For the errors pop up messages
-$pop_up=get_configuration("SHOW_POPUP",$main_error); //Check if the user has activated the pop up messages options
 $compat=true; //Variable to check if the browser used is compatible with the software
 $notes=array(); //Array which will contains notes displayed in the welcome pages
 $browser=get_browser_infos(); //Get browsers informations by PHP: browser name, version...
