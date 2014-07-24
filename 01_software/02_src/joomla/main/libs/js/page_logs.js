@@ -1056,7 +1056,12 @@ $(document).ready(function() {
                 type: "GET",
                 cache: false,
                 url: "../../main/modules/external/update_configuration.php",
-                data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                data: {
+                        value:newValue,
+                        variable:varToUpdate,
+                        updateConf:updateConf,
+                        session_id:session_id
+                    }
             }).done(function (data) {
                 // When done, update curve color on page
                 var chart = $('#container').highcharts();

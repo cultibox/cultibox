@@ -203,7 +203,8 @@ $(document).ready(function() {
                                 substrat:$("#substrat_select").val(),
                                 product:$("#nutrient_select").val(),
                                 calendar_start:$("#calendar_startdate").val(),
-                                sd_card: sd_card, event_name:$("#event_name").val(),
+                                sd_card: sd_card, 
+                                event_name:$("#event_name").val(),
                                 select_croissance:$('input[name=select_croissance]:checked', '#manage_nutrient_planification').val()
                             }
                         }).done(function (data) {
@@ -550,7 +551,16 @@ $(document).ready(function() {
                                 $.ajax({
                                     type: "GET",
                                     url: "http://localhost:6891/cultibox/main/modules/external/calendar_add_events.php",
-                                    data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&color='+color+'&card=<?php echo $sd_card; ?>'+'&important='+important
+                                    data: {
+                                        title:title,
+                                        start:new_start,
+                                        end:new_end,
+                                        desc:description,
+                                        color:color,
+                                        card:sd_card,
+                                        important:important
+                                    }
+                                
                                     <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                                         ,complete: function() { $.unblockUI(); }
                                     <?php } ?> 
@@ -755,7 +765,16 @@ $(document).ready(function() {
             $.ajax({
                 type: "GET",
                 url: "http://localhost:6891/cultibox/main/modules/external/calendar_update_events.php",
-                data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'+'&important='+event.important+'&desc='+encodeURIComponent(event.description)
+                data: {
+                    title:event.title,
+                    start:new_start,
+                    end:new_end,
+                    id:event.id,
+                    color:event.color,
+                    card:sd_card,
+                    important:event.important,
+                    desc:event.description,
+               }
                  <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                     ,complete: function() { $.unblockUI(); }
                  <?php } ?> 
@@ -794,7 +813,16 @@ $(document).ready(function() {
             $.ajax({
                 type: "GET",
                 url: "http://localhost:6891/cultibox/main/modules/external/calendar_update_events.php",
-                data: 'title='+encodeURIComponent(event.title)+'&start='+ new_start +'&end='+ new_end +'&id='+event.id+'&color='+event.color+'&card=<?php echo $sd_card; ?>'+'&important='+event.important+'&desc='+encodeURIComponent(event.description)
+                data: {
+                    title:event.title,
+                    start:new_start,
+                    end:new_end,
+                    id:event.id,
+                    color:event.color,
+                    card:sd_card,
+                    important:event.important,
+                    desc:event.description,
+               }
                 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                   ,complete: function() { $.unblockUI(); }
                 <?php } ?>
@@ -920,7 +948,16 @@ $(document).ready(function() {
                                         $.ajax({
                                             type: "GET",
                                             url: "http://localhost:6891/cultibox/main/modules/external/calendar_update_events.php",
-                                            data: 'title='+encodeURIComponent(title)+'&start='+new_start+'&end='+new_end+'&desc='+encodeURIComponent(description)+'&id='+event.id+'&color='+color+'&card=<?php echo $sd_card; ?>'+'&important='+important
+                                            data: {
+                                                title:title,
+                                                start:new_start,
+                                                end:new_end,
+                                                id:event.id,
+                                                color:color,
+                                                card:sd_card,
+                                                important:important,
+                                                desc:description,
+                                            }
                                             <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
                                                 ,complete: function() { $.unblockUI(); }
                                             <?php } ?>
@@ -993,7 +1030,10 @@ $(document).ready(function() {
                             $.ajax({
                                 type: "GET",
                                 url: "http://localhost:6891/cultibox/main/modules/external/calendar_remove_events.php",
-                                data: 'id='+event.id+'&card=<?php echo $sd_card; ?>'
+                                data: {
+                                    id:event.id,
+                                    card:sd_card
+                                }
                             }).done(function (data) {
                                 // Update list of title available
                                 update_title_list();
@@ -1036,7 +1076,10 @@ $(document).ready(function() {
                             $.ajax({
                                 type: "GET",
                                 url: "http://localhost:6891/cultibox/main/modules/external/calendar_remove_events.php",
-                                data: 'id='+event.id+'&card=<?php echo $sd_card; ?>'
+                                data:  {
+                                    id:event.id,
+                                    card:sd_card
+                                }
                             }).done(function (data) {
                                 // Update list of title available
                                 update_title_list();
@@ -1155,7 +1198,7 @@ $(document).ready(function() {
     
         $.ajax({
            cache: false,
-           data: {sd_card:"<?php echo $sd_card ;?>", session_id:session_id},
+           data: {sd_card:sd_card, session_id:session_id},
            url: "../../main/modules/external/calendar_write_sd_events.php"
         }).done(function (data) {
             pop_up_remove("update_calendar_progress");

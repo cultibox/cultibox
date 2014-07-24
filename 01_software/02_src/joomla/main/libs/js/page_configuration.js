@@ -294,7 +294,12 @@ $(document).ready(function(){
                     cache: false,
                     async: false,
                     url: "../../main/modules/external/update_configuration.php",
-                    data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                    data: {
+                        value:newValue,
+                        variable:varToUpdate,
+                        updateConf:updateConf,
+                        session_id:session_id
+                    }
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {  
                         check_update=false;
@@ -310,7 +315,12 @@ $(document).ready(function(){
                     cache: false,
                     async: false,
                     url: "../../main/modules/external/update_plugs.php",
-                    data: "value=False&id=all&name=PLUG_REGUL" + "&session_id="+session_id
+                    data: {
+                        value:"False", 
+                        id:"all",
+                        name:"PLUG_REGUL",
+                        session_id:session_id
+                    }
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {
                         check_update=false;
@@ -326,7 +336,12 @@ $(document).ready(function(){
                     cache: false,
                     async: false,
                     url: "../../main/modules/external/update_plugs.php",
-                    data: "value=M&id=all&name=PLUG_COMPUTE_METHOD" + "&session_id="+session_id
+                    data: {
+                        value:"M", 
+                        id:"all",
+                        name:"PLUG_COMPUTE_METHOD",
+                        session_id:session_id
+                    }
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {
                         check_update=false;
@@ -339,7 +354,12 @@ $(document).ready(function(){
                     cache: false,
                     async: false,
                     url: "../../main/modules/external/update_plugs.php",
-                    data: "value=1&id=all&name=PLUG_REGUL_SENSOR" + "&session_id="+session_id
+                    data: {
+                        value:"1",     
+                        id:"all",
+                        name:"PLUG_REGUL_SENSOR",
+                        session_id:session_id
+                    }
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {
                         check_update=false;
@@ -358,7 +378,12 @@ $(document).ready(function(){
                 cache: false,
                 async: false,
                 url: "../../main/modules/external/update_configuration.php",
-                data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                data: {
+                        value:newValue,     
+                        variable:varToUpdate,
+                        updateConf:updateConf,
+                        session_id:session_id
+                    }
             }).done(function (data) {
                 if($.parseJSON(data)!="") {
                     check_update=false;
@@ -375,7 +400,12 @@ $(document).ready(function(){
                 cache: false,
                 async: false,
                 url: "../../main/modules/external/update_configuration.php",
-                data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                data: {
+                        value:newValue,
+                        variable:varToUpdate,
+                        updateConf:updateConf,
+                        session_id:session_id
+                    }
             }).done(function (data) {
                 if($.parseJSON(data)!="") {
                     check_update=false;
@@ -398,7 +428,12 @@ $(document).ready(function(){
                 cache: false,
                 async: false,
                 url: "../../main/modules/external/update_configuration.php",
-                data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                data: {
+                        value:newValue,
+                        variable:varToUpdate,
+                        updateConf:updateConf,
+                        session_id:session_id
+                    }
             }).done(function (data) {
                 if($.parseJSON(data)!="") {
                     check_update=false;
@@ -416,7 +451,12 @@ $(document).ready(function(){
                         cache: false,
                         async: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                        data: {
+                        value:newValue,
+                        variable:varToUpdate,
+                        updateConf:updateConf,
+                        session_id:session_id
+                    }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
@@ -434,7 +474,12 @@ $(document).ready(function(){
                             cache: false,
                             async: false,
                             url: "../../main/modules/external/update_configuration.php",
-                            data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                            data: {
+                                value:newValue,
+                                variable:varToUpdate,
+                                updateConf:updateConf,
+                                session_id:session_id
+                            }
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
                                 check_update=false;
@@ -451,7 +496,12 @@ $(document).ready(function(){
                             cache: false,
                             async: false,
                             url: "../../main/modules/external/update_configuration.php",
-                            data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                            data: {
+                                value:newValue,
+                                variable:varToUpdate,
+                                updateConf:updateConf,
+                                session_id:session_id
+                            }
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
                                 check_update=false;
@@ -467,7 +517,12 @@ $(document).ready(function(){
                             cache: false,
                             async: false,
                             url: "../../main/modules/external/update_configuration.php",
-                            data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                            data: {
+                                value:newValue,
+                                variable:varToUpdate,
+                                updateConf:updateConf,
+                                session_id:session_id
+                            }
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
                                 check_update=false;
@@ -484,7 +539,12 @@ $(document).ready(function(){
                             cache: false,
                             async: false,
                             url: "../../main/modules/external/update_configuration.php",
-                            data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                            data: {
+                                value:newValue,
+                                variable:varToUpdate,
+                                updateConf:updateConf,
+                                session_id:session_id
+                            }
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
                                 check_update=false;
@@ -509,7 +569,12 @@ $(document).ready(function(){
                             cache: false,
                             async: false,
                             url: "../../main/modules/external/update_configuration.php",
-                            data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                            data: {
+                                value:newValue,
+                                variable:varToUpdate,
+                                updateConf:updateConf,
+                                session_id:session_id
+                            }
                         }).done(function (data) {
                             if($.parseJSON(data)!="") {
                                 check_update=false;
@@ -530,7 +595,12 @@ $(document).ready(function(){
                         cache: false,
                         async: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                        data: {
+                            value:newValue,
+                            variable:varToUpdate,
+                            updateConf:updateConf,
+                            session_id:session_id
+                        }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
@@ -545,7 +615,12 @@ $(document).ready(function(){
                         cache: false,
                         async: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                        data: {
+                            value:newValue,
+                            variable:varToUpdate,
+                            updateConf:updateConf,
+                            session_id:session_id
+                        }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
@@ -560,7 +635,12 @@ $(document).ready(function(){
                         cache: false,
                         async: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                        data: {
+                            value:newValue,
+                            variable:varToUpdate,
+                            updateConf:updateConf,
+                            session_id:session_id
+                        }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
@@ -575,7 +655,12 @@ $(document).ready(function(){
                         cache: false,
                         async: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                        data: {
+                            value:newValue,
+                            variable:varToUpdate,
+                            updateConf:updateConf,
+                            session_id:session_id
+                        }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
@@ -590,7 +675,12 @@ $(document).ready(function(){
                         cache: false,
                         async: false,
                         url: "../../main/modules/external/update_configuration.php",
-                        data: "value=" + newValue + "&variable=" + varToUpdate + "&updateConf=" + updateConf + "&session_id="+session_id
+                        data: {
+                            value:newValue,
+                            variable:varToUpdate,
+                            updateConf:updateConf,
+                            session_id:session_id
+                        }
                     }).done(function (data) {
                         if($.parseJSON(data)!="") {
                             check_update=false;
