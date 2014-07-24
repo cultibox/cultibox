@@ -259,7 +259,7 @@
 <div id="dialog-form-save-daily" title="<?php echo __('SAVE','html'); ?>">
     <form>
         <fieldset>
-            <label for="name"><?php echo __('PROGRAM_NAME'); ?>:</label>
+            <label><?php echo __('PROGRAM_NAME'); ?>:</label>
             <input type="text" name="program_name" id="program_name" class="text ui-widget-content ui-corner-all">
         </fieldset>
     </form>
@@ -367,7 +367,6 @@
                     <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
                     <input type="file" name="upload_file">
                     <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-                    <input type="hidden" name="selected_plug" id="selected_plug_import" value="<?php echo $selected_plug; ?>">
                     <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>">
                 </form>
             </td>
@@ -390,7 +389,6 @@
                             }
                         ?>
                     </select>
-                    <input type="hidden" name="selected_plug" id="selected_plug_import" value="<?php echo $selected_plug; ?>">
                     <input type="submit" id="daily_open_button" name="daily_open_button" value="<?php echo __('PROGRAM_DAILY_OPEN'); ?>">
                 </form>
             </td>
@@ -434,7 +432,7 @@
 </div>
 
 <!-- Modal form to alert user that an error occured during program deletion -->
-<div id="dialog-form-delete-daily" style="display:none" >
+<div id="dialog-form-delete-daily-error" style="display:none" >
     <p><?php echo __('PROGRAM_DAILY_DELETE_ERROR'); ?></p>
 </div>
 
