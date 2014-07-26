@@ -635,7 +635,7 @@ function getRegulation(i, type) {
 
 // {{{ getProgramType()
 // ROLE check or uncheck radio button depending of the type
-// IN  i the input type and j the index
+// IN  i the input type 
 // USED BY: templates/programs.html 
 function getProgramType(i) {
       var PonctualRadio = document.getElementById('ponctual');
@@ -662,6 +662,8 @@ function getProgramType(i) {
       var startTimeCyclicField =  document.getElementById('start_time_cyclic_field');
       var endTimeCyclic = document.getElementById('end_time_cyclic_title');
       var endTimeCyclicField =  document.getElementById('end_time_cyclic_field');
+      var errorStartTimeCyclic = document.getElementById('error_start_time_cyclic');
+      var errorEndTimeCyclic = document.getElementById('error_end_time_cyclic');
 
     
       switch(i) {
@@ -684,6 +686,8 @@ function getProgramType(i) {
                           errorCyclicDuration.style.display='none';
                           errorCyclic.style.display='none';
                           errorMinimal.style.display='none';
+                          errorEndTimeCyclic.style.display='none';
+                          errorStartTimeCyclic.style.display='none';
         break;
         case 'cyclic': PonctualRadio.checked=false; 
                        CyclicRadio.checked=true; 

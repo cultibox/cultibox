@@ -3,6 +3,7 @@ $(document).ready(function(){
 $.ajax({ 
     type: "GET",
     url: "../../main/modules/external/check_update.php",
+    async: true,
     // Lang is the end of the url
     data: { session_id:session_id},
     context: document.body,

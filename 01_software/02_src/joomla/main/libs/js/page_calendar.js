@@ -851,9 +851,9 @@ $(document).ready(function() {
             }
 
             // If it's not a daily program
-            if (typeof event.program_index === "undefined" || event.program_index == "")
+            if (typeof event.program_index === "undefined" || event.program_index == "" || event.program_index == null)
             {
-                
+
                 $("#dialog_edit").dialog({
                     resizable: true,
                     width: 800,
@@ -1058,7 +1058,6 @@ $(document).ready(function() {
             } else {
             
                 // Daily program case
-            
                 $("#dialog_edit").dialog({
                     resizable: true,
                     width: 800,

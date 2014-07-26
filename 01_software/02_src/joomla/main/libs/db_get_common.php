@@ -2140,37 +2140,6 @@ function generate_program_from_file($file="",$plug,&$out) {
 // }}}
 
 
-// {{{ get_active_plugs()
-// ROLE get list of active plugs
-// IN $nb   number of maximal plug confiured
-//    $out   errors or warnings messages
-// RET array containing the list of active plug
-function get_active_plugs($nb,&$out="") {
-
-    $sql = "SELECT id FROM plugs WHERE id <={$nb};";
-        
-    $db=db_priv_pdo_start();
-    try {
-        $sth=$db->prepare("$sql");
-        $sth->execute();
-        $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-    } catch(PDOException $e) {
-        $ret=$e->getMessage();
-    }
-    $db=null;
-
-    if((isset($ret))&&(!empty($ret))) {
-        if($GLOBALS['DEBUG_TRACE']) {
-            $out[]=__('ERROR_SELECT_SQL').$ret;
-        } else {
-            $out[]=__('ERROR_SELECT_SQL');
-        }
-    }
-    return $res;
-}
-// }}}
-
-
 // {{{ format_regul_sumary()
 // ROLE format regulation of a plug to be displayed in a summary
 // IN    $number     id of the plug
