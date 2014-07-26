@@ -353,6 +353,14 @@ td.program-action-center{
    text-align: center;
 }
 
+td.calendar-nutri-title {
+    width: 40%;
+}
+
+td.calendar-nitri-field {
+    width: 40%;
+}
+
 td.calendar-marge {
    width: 15%;
 }
