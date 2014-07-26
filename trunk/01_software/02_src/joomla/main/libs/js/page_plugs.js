@@ -14,7 +14,9 @@ nb_plugs       = <?php echo json_encode($nb_plugs) ?>;
 title_msgbox   = <?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 plugs_infoJS   = <?php echo json_encode($plugs_infos); ?>;
 update_program = <?php echo json_encode($update_program); ?>;
-session_id="<?php echo session_id(); ?>";
+session_id     = "<?php echo session_id(); ?>";
+jumpto         = <?php echo json_encode($jumpto); ?>;
+
 
 $(document).ready(function(){
       if(sd_card=="") {
@@ -89,11 +91,15 @@ $(document).ready(function(){
                     {
                     text: CLOSE_button,
                         click: function () {
-                            $( this ).dialog( "close" ); return false;
+                            $( this ).dialog( "close" ); 
+                            if(jumpto!="") {
+                                window.location = "programs-"+slang+"?selected_plug="+jumpto;
+                            }
+                            return false;
                     }
                 }]
             });
-    }
+    } 
 
 
     //Disable previous selected dimmer canal:
@@ -279,6 +285,12 @@ $(document).ready(function(){
         } else if(anchor!="") {
            $.scrollTo("#"+anchor,300); 
         }
+    });
+
+
+    $('[id^="jump_wizard"]').click(function(e) {
+            e.preventDefault();
+            window.location = "wizard-"+slang+"?selected_plug="+$(this).attr("id").replace("jump_wizard","");
     });
 
 

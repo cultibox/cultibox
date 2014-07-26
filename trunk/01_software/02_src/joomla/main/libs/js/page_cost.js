@@ -277,8 +277,16 @@ $(document).ready(function() {
         }).done(function (data) {
             if(data!=1) {
                 $("#error_start_cost").show(700);
-                var current=$("#datepicker_start").datepicker('getDate').getFullYear()+"-"+('0'+($("#datepicker_start").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#datepicker_start").datepicker('getDate').getDate())).slice(-2)
-                $("#datepicker_start").val(current);
+
+                var d = new Date();
+                var month = d.getMonth()+1;
+                var day = d.getDate();
+
+                var output = d.getFullYear() + '-' +
+                (month<10 ? '0' : '') + month + '-' +
+                (day<10 ? '0' : '') + day;
+
+                $("#datepicker_start").val(output);
                 checked=false;
             }
         });
@@ -291,8 +299,16 @@ $(document).ready(function() {
         }).done(function (data) {
             if(data!=1) {
                 $("#error_end_cost").show(700);
-                var current=$("#datepicker_end").datepicker('getDate').getFullYear()+"-"+('0'+($("#datepicker_end").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#datepicker_end").datepicker('getDate').getDate())).slice(-2)
-                $("#datepicker_end").val(current);
+
+                var d = new Date();
+                var month = d.getMonth()+1;
+                var day = d.getDate();
+
+                var output = d.getFullYear() + '-' +
+                (month<10 ? '0' : '') + month + '-' +
+                (day<10 ? '0' : '') + day;
+
+                $("#datepicker_end").val(output);
                 checked=false;
             }
         });

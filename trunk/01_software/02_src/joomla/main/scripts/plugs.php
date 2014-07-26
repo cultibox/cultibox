@@ -13,13 +13,10 @@ $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $advanced_regul=get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
 $update_program=false;
 $reccord=getvar('reccord');
-$pop_up_message="";
-$pop_up_error_message="";
 $version=get_configuration("VERSION",$main_error);
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $jumpto=getvar("jumpto");
 $submit=getvar("submit_plugs");
-$jumpwizard=getvar("jumpwizard");
 $submenu=getvar("submenu",$main_error);
 $plug_count_sensor=array();
 
@@ -33,11 +30,6 @@ if((!isset($submenu))||(empty($submenu))) {
     }
 }
 
-
-if((isset($jumpwizard))&&(!empty($jumpwizard))) {
-    $url="./wizard-".$_SESSION['SHORTLANG']."?selected_plug=".$jumpwizard;
-    header("Location: $url");
-}
 
 $main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='wizard-".$_SESSION['SHORTLANG']."'><img src='../../main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
 
@@ -237,11 +229,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
 }
 
 
-if($update_program) {
-          $pop_up_message=$pop_up_message.popup_message(__('VALID_UPDATE_CONF'));
-          $main_info[]=__('VALID_UPDATE_CONF');
-} 
-
 // Write file plug01 plug02...
 if((isset($sd_card))&&(!empty($sd_card))) {
     if((isset($submit))&&(!empty($submit))) {
@@ -268,11 +255,10 @@ if((isset($sd_card))&&(!empty($sd_card))) {
    }
 }
 
-if((isset($jumpto))&&(!empty($jumpto))) {
-    if((!isset($pop_up_error_message))||(empty($pop_up_error_message))) {
-        $url="./programs-".$_SESSION['SHORTLANG']."?selected_plug=".$jumpto;
-        header("Refresh: 0;url=$url");
-    }
+
+if((strcmp("$jumpto","")!=0)&&(!$update_program)) {
+      $url="./programs-".$_SESSION['SHORTLANG']."?selected_plug=".$jumpto;
+      header("Refresh: 0;url=$url");
 }
 
 // Retrieve plug's informations from the database
