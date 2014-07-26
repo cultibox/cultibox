@@ -170,10 +170,11 @@ $(document).ready(function() {
     // Display and control user form for nutrient planification
     $("#nutrient_planification").click(function(e) {
         e.preventDefault();
+        var error_nutri=false;
 
         $("#manage_nutrient_planification").dialog({
             resizable: false,
-            width: 750,
+            width: 980,
             modal: true,
             closeOnEscape: true,
             dialogClass: "popup_message",
@@ -181,6 +182,17 @@ $(document).ready(function() {
                 text: CLOSE_button,
                 "id": "btnClose",
                 click: function () {
+                    var d = new Date();
+                    var month = d.getMonth()+1;
+                    var day = d.getDate();
+
+                    var output = d.getFullYear() + '-' +
+                    (month<10 ? '0' : '') + month + '-' +
+                    (day<10 ? '0' : '') + day;
+
+                    $("#calendar_startdate").val(output);
+                    error_nutri=false;
+                    $("#error_calendar_startdate").css("display","none");
                     $( this ).dialog( "close" ); return false;
                 }
             },{
@@ -188,16 +200,26 @@ $(document).ready(function() {
             click: function () {
                 $.ajax({
                     cache: false,
+                    async: false,
                     url: "../../main/modules/external/check_value.php",
                     data: {value:$("#calendar_startdate").val(),type:'date'}
                 }).done(function (data) {
                     if(data!=1) {
                         $("#error_calendar_startdate").show(700);
-                        var current=$("#calendar_startdate").datepicker('getDate').getFullYear()+"-"+('0'+($("#calendar_startdate").datepicker('getDate').getMonth() + 1)).slice(-2)+"-"+('0'+($("#calendar_startdate").datepicker('getDate').getDate())).slice(-2)
-                        $("#calendar_startdate").val(current);
+                        var d = new Date();
+                        var month = d.getMonth()+1;
+                        var day = d.getDate();
+
+                        var output = d.getFullYear() + '-' +
+                        (month<10 ? '0' : '') + month + '-' +
+                        (day<10 ? '0' : '') + day;
+
+                        $("#calendar_startdate").val(output);
+                        error_nutri=true;
                     } else {
                         $.ajax({
                             cache: false,
+                            async: false,
                             url: "../../main/modules/external/update_calendar_external.php",
                             data: {
                                 substrat:$("#substrat_select").val(),
@@ -218,9 +240,13 @@ $(document).ready(function() {
                             // Update list of title available
                             update_title_list();
                         });
-                    }
+                        error_nutri=false;
+                  }
                 });
-                $( this ).dialog( "close" ); return false;
+                if(!error_nutri) {
+                    $("#error_calendar_startdate").css("display","none"); 
+                    $( this ).dialog( "close" ); return false;
+                }
             }}],
         });
     });

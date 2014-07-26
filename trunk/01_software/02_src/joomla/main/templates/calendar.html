@@ -212,10 +212,10 @@
 <div id="manage_nutrient_planification" style="display:none" title="<?php echo __('CALENDAR_ENGRAIS'); ?>">
     <table>
         <tr>
-            <td>
+            <td class="calendar-nutri-title">
                 <?php echo __('CALENDAR_SUBSTRAT'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CALENDAR_SUBSTRAT'); ?>" />
             </td>
-            <td>
+            <td class="calendar-nutri-field">
                 <select name="substrat_select" id="substrat_select">
                     <?php 
                         if(count($substrat)>0) {
@@ -228,7 +228,7 @@
                     <?php } ?>
                 </select>
             </td>
-            <td></td>
+            <td class="calendar-error"></td>
         </tr>
         <tr>
             <td><?php echo __('CALENDAR_PROGRAM'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_PROGRAM'); ?>" /></td>
