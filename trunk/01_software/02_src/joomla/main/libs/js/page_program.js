@@ -274,8 +274,8 @@ $(document).ready(function(){
                     });
         
                     // If it's the same program, redraw the page
-                    if ($( "#program_delete_index" ).val() == <?php echo $program_index ?>) {
-                        window.location = "program-"+slang;
+                    if ($( "#program_delete_index" ).val() == "<?php echo $program_index ?>") {
+                        window.location = "programs-"+slang;
                     }
             
                     // remove program from available
@@ -444,7 +444,7 @@ $(document).ready(function() {
             layout: 'vertical',
             verticalAlign: 'bottom',
             align: 'right',
-            y: -<?php echo ($GLOBALS['NB_MAX_PLUG']-count($active_plugs))*16; ?>,
+            y: -<?php echo ($GLOBALS['NB_MAX_PLUG']-$nb_plugs)*16; ?>,
             x: +25,
             maxHeight: 200,
             navigation: {

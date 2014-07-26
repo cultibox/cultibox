@@ -1427,31 +1427,31 @@ msgid "ERROR_TIME_VALUE"
 msgstr "Erreur dans le format de l'heure: HH:MM"
 
 msgid "ERROR_SAME_TIME"
-msgstr "L'heure de départ et l'heure de fin doivent être différentes."
+msgstr "Les heures de départ et de fin doivent être différentes."
 
 msgid "ERROR_WRITE_SD"
 msgstr "Erreur durant l'écriture sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
 
 msgid "ERROR_TOLERANCE_VALUE_DEGREE"
-msgstr "Valeur de tolérance: elle doit être comprise entre 0°C et 10°C"
+msgstr "La tolérance doit être comprise entre 0°C et 10°C"
 
 msgid "ERROR_TOLERANCE_VALUE_POURCENT"
-msgstr "Valeur de tolérance: elle doit être comprise entre 0&#37; et 25.5&#37;"
+msgstr "La tolérance doit être comprise entre 0&#37; et 25.5&#37;"
 
 msgid "ERROR_TOLERANCE_VALUE_CM"
-msgstr "Valeur de tolérance: elle doit être comprise entre 0 cm et 10 cm"
+msgstr "La tolérance doit être comprise entre 0 cm et 10 cm"
 
 msgid "ERROR_VALUE_PROGRAM"
-msgstr "Erreur: la valeur rentrée doit être un nombre"
+msgstr "La valeur rentrée doit être un nombre"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "Valeur de température: elle doit être comprise entre 5°C et 60°C"
+msgstr "La température doit être comprise entre 5°C et 60°C"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "Valeur d'humidité: elle doit être comprise entre 10&#37; et 95&#37;"
+msgstr "L'humidité doit être comprise entre 10&#37; et 95&#37;"
 
 msgid "ERROR_VALUE_PROGRAM_CM"
-msgstr "Valeur de la hauteur: elle doit être comprise entre 5cm et 27cm"
+msgstr "La hauteur doit être comprise entre 5cm et 27cm"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100"

@@ -12,10 +12,9 @@ $version=get_configuration("VERSION",$main_error);
 // ================= VARIABLES ================= //
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $selected_plug=getvar('selected_plug');
-$active_plugs=get_active_plugs($nb_plugs,$main_error);
 
 if((empty($selected_plug))||(!isset($selected_plug))) {
-    $selected_plug=$active_plugs[0]['id'];
+    $selected_plug=1;
 }
 
 $import=getvar('import');
@@ -151,14 +150,12 @@ if((isset($add_plug))&&(!empty($add_plug))) {
                 //Affichage des messages d'ajout: 
                 $pop_up_message=$pop_up_message.popup_message(__('PLUG_ADDED'));
                 $main_info[]=__('PLUG_ADDED');
-
-                // Ajout d'une nouvelle prise - active_plugs contient la liste des prises actives pour l'affichage dans le graphe:
-                $active_plugs = get_active_plugs($nb_plugs,$main_error);
             }
         } else {
             //Sinon affichage du message de limite de prises atteinte:
             $main_error[]=__('PLUG_MAX_ADDED');
         }
+        $nb_plugs=get_configuration("NB_PLUGS",$main_error);
     }
 }
 
@@ -185,14 +182,12 @@ if((isset($remove_plug))&&(!empty($remove_plug))) {
                 //Affichage des messages de suppression:
                 $pop_up_message=$pop_up_message.popup_message(__('PLUG_REMOVED'));
                 $main_info[]=__('PLUG_REMOVED');
-
-                //Suppression d'une nouvelle prise - active_plugs contient la liste des prises actives pour l'affichage dans le graphe:
-                $active_plugs=get_active_plugs($nb_plugs,$main_error);
             }
         } else {
             //Sinon affichage du message de limite de prises atteinte:
             $main_error[]=__('PLUG_MIN_ADDED');
         }
+        $nb_plugs=get_configuration("NB_PLUGS",$main_error);
     }
 }
 
@@ -228,8 +223,8 @@ if((isset($export))&&(!empty($export))) {
     // User want to reste the plug program
     if($reset_selected == "all") {
         $status=true;
-        foreach($active_plugs as $aplugs) {
-            if(!clean_program($aplugs['id'],$program_index,$main_error))
+        for($i=1;$i<=$nb_plugs;$i++) {
+            if(!clean_program($i,$program_index,$main_error))
                 $status=false;
         }
         if($status) {
@@ -594,6 +589,7 @@ for($i=0;$i<$nb_plugs;$i++) {
 
 // Create summary for tooltip
 $resume=format_data_sumary($plugs_infos);
+
 $tmp_resume[]="";
 foreach($resume as $res) {
     $tmp_res=explode("<br />",$res);
@@ -610,6 +606,8 @@ if(count($tmp_resume)>0) {
     unset($resume);
     $resume=$tmp_resume;
 }
+
+
 
 // If it's an submit entry, rebuild program
 if(isset($submit) && !empty($submit))
