@@ -43,15 +43,6 @@ msgstr "Javascript est désactivé! Vous ne pourrez pas utiliser le logiciel et 
 
 
 # For the configuration part:
-msgid "CONFIGURE_GRAPHIC"
-msgstr "Configuration des graphiques"
-
-msgid "CONFIGURE_INTERFACE"
-msgstr "Configuration de l'interface"
-
-msgid "CONFIGURE_ADVANCED_OPTIONS"
-msgstr "Configuration des fonctionnalités avançées"
-
 msgid "CONFIGURE_TITLE_CULTIBOX"
 msgstr "Configurer votre système Cultibox"
 
@@ -96,9 +87,6 @@ msgstr "Couleur des courbes d'OD"
 
 msgid "CONFIGURE_ORP"
 msgstr "Couleur des courbes d'ORP"
-
-msgid "CONFIGURE_PROGRAM_COLOR"
-msgstr "Couleur des courbes des programmes"
 
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Couleur du graphe de coût de l'installation"
@@ -348,12 +336,6 @@ msgstr "<b>Sélection des courbes:</b> sélectionner les courbes à afficher"
 msgid "SELECT_POWER_PLUG"
 msgstr "Afficher la puissance consommée"
 
-msgid "WAITING_LOGS_WITH_SD"
-msgstr "Merci de patienter quelques instants et de ne <b><i>pas retirer la carte Cultibox</i></b> le temps que la page se charge et que le logiciel traite vos données.<br /><br /><b><i>Note: </i></b>Si une erreur se produit vous pouvez recharger la page pour essayer de compléter l'opération"
-
-msgid "WAITING_MONTH_WITHOUT_SD"
-msgstr "Merci de patienter quelques instants le temps que la page se charge et que le logiciel traite vos données"
-
 msgid "PREVIOUS_BUTTON_DAY"
 msgstr "Afficher les informations pour le jour précédent"
 
@@ -380,9 +362,6 @@ msgstr "Capteur"
 
 msgid "MONTH_DATE"
 msgstr "Mois et année à afficher"
-
-msgid "SELECT_SENSOR"
-msgstr "le capteur"
 
 msgid "MANAGE_LOG_INFOS"
 msgstr "<b>Gestion des données climatiques</b>"
@@ -417,38 +396,14 @@ msgstr "Résumé des régulations secondaires actives pour les prises sélection
 msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Régulation secondaire"
 
-msgid "SUMARY_REGUL_SENSO"
-msgstr "Déclenchement si"
-
 msgid "TEMP_REGUL"
 msgstr "la température"
 
 msgid "HUMI_REGUL"
 msgstr "l'humidité"
 
-msgid "SUMARY_REGUL_SENSS"
-msgstr "Seuil"
-
-msgid "SUMARY_REGUL_VALUE"
-msgstr "Valeur du seuil"
-
-msgid "SUMARY_EMPTY_REGUL"
-msgstr "Pas de régulation pour la/les prise(s) sélectionnée(s)"
-
 msgid "SUMARY_EMPTY_SELECTION"
 msgstr "Pas de prise(s) sélectionnée(s)"
-
-msgid "SUMARY_ABOVE"
-msgstr "Au-dessus"
-
-msgid "SUMARY_UNDER"
-msgstr "En-dessous"
-
-msgid "SUMARY_REGUL_TEMP"
-msgstr "Température"
-
-msgid "SUMARY_REGUL_HYGRO"
-msgstr "Hygrométrie"
 
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Exporter vos informations de logs"
@@ -467,9 +422,6 @@ msgstr "Export de vos logs"
 
 msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
 msgstr "Pas de logs de puissance dans votre base"
-
-msgid "EXAMPLE_LOG"
-msgstr "Exemple de logs"
 
 msgid "LOAD_LOG_PROGRESS"
 msgstr "Progression du chargement des logs"
@@ -652,12 +604,6 @@ msgstr "dessus du seuil"
 
 msgid "STATE_PLUG"
 msgstr "État de la prise"
-
-msgid "PLUG_ENABLED"
-msgstr "Activée"
-
-msgid "PLUG_DISABLED"
-msgstr "Désactivée"
 
 msgid "PLUG_MAX_POWER"
 msgstr "Type de prise (puissance maximale)"
@@ -847,9 +793,6 @@ msgstr "cyclique"
 msgid "REPEAT_EVERY"
 msgstr "Répéter toutes les"
 
-msgid "MANAGE_PROGRAM_INFOS"
-msgstr "Gestion du programme : "
-
 msgid "TITLE_EXPORT_PROGRAM"
 msgstr "Exporter le programme de la prise"
 
@@ -894,9 +837,6 @@ msgstr "Variateur"
 
 msgid "PROGRAM_DAILY_SAVE"
 msgstr "Enregistrer une copie du jeu de programmes"
-
-msgid "PROGRAM_DAILY_SAVE_PROGRESS"
-msgstr "Enregistrement en cours ..."
 
 msgid "PROGRAM_DAILY_SAVE_FINISH"
 msgstr "Enregistrement réussi"
@@ -1024,9 +964,6 @@ msgstr "Date de départ du programme"
 msgid "CREATE_CALENDAR_PROGRAM"
 msgstr "Planifier"
 
-msgid "DISABLED_CREATE_CALENDAR_PROGRAM"
-msgstr "Aucun fichier XML présent pour créer un programme"
-
 msgid "DISABLED_XML_FILE"
 msgstr "Aucun fichier XML détecté"
 
@@ -1129,9 +1066,6 @@ msgstr "Sam"
 msgid "D07"
 msgstr "Dim"
 
-msgid "MANAGE_RESET_CALENDAR"
-msgstr "Supprimer toutes les annotations enregistrées"
-
 msgid "RESET_CONFIRM_CALENDAR"
 msgstr "Êtes-vous sûr de vouloir supprimer tous les événements enregistrés dans le calendrier?"
 
@@ -1141,17 +1075,8 @@ msgstr "Calendrier supprimé avec succès"
 msgid "VALID_ADD_CALENDAR"
 msgstr "Calendrier mis à jour avec le programme sélectionné"
 
-msgid "MANAGE_EXTERNAL_XML"
-msgstr "Gestion des fichiers XML externes"
-
-msgid "DISABLED_MANAGE_EXTERNAL_XML"
-msgstr "Aucun calendrier XML présent"
-
 msgid "XML_DISPLAYED_FILE"
 msgstr "Fichiers XML à afficher"
-
-msgid "LUNAR_CALENDAR_SAVE_SD"
-msgstr "Enregistrer le calendrier lunaire sur la carte SD"
 
 msgid "SAVE"
 msgstr "Enregistrer"
@@ -1405,9 +1330,6 @@ msgstr "Jour à afficher : erreur dans le format (AAAA-MM-JJ)"
 msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr "Mois à afficher : erreur dans le format (MM)"
 
-msgid "ERROR_SD_CARD_CONF"
-msgstr "Aucune carte SD compatible Cultibox détectée pour sauvegarder votre configuration"
-
 msgid "ERROR_SD_CARD"
 msgstr "Aucune carte SD compatible Cultibox détectée, vérifier que votre carte soit correctement branchée"
 
@@ -1564,9 +1486,6 @@ msgstr "Les mots de passe doivent correspondre"
 msgid "ERROR_COPY_WIFI_CONF"
 msgstr "Erreur lors de la copie du fichier de configuration du module wifi"
 
-msgid "ERROR_WIFI_CONF"
-msgstr "Erreur durant l'écriture des fichiers de configuration du Wifi sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
-
 msgid "ERROR_WIFI_IP"
 msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
 
@@ -1591,9 +1510,6 @@ msgstr "Erreur lors de la suppréssion d'un programme journalier"
 
 
 # For the informations part:
-msgid "SHOW_MESSAGE"
-msgstr "Cliquez sur l'œil pour faire apparaître la boite de messages du logiciel"
-
 msgid "CONFIRMATION"
 msgstr "Confirmation"
 
@@ -1614,9 +1530,6 @@ msgstr "Vous pouvez maintenant connecter la carte SD dans la Cultibox."
 
 msgid "VALID_UPDATE_CONF"
 msgstr "Configuration mise à jour avec succès"
-
-msgid "VALID_UPDATE_CONF_WITHOUT_SD"
-msgstr "Configuration mise à jour avec succès dans le logiciel."
 
 msgid "VALID_IMPORT_PROGRAM"
 msgstr "Programme importé avec succès"
@@ -1683,9 +1596,6 @@ msgstr "Cette option permet de configurer la fréquence à laquelle la Cultibox 
 msgid "TOOLTIP_PLUG_FREQ"
 msgstr "Cette option permet de configurer la fréquence à laquelle sera mis à jour l'état (Marche/Arrêt) de vos prises."
 
-msgid "TOOLTIP_WITHOUT_SD"
-msgstr "Sans carte SD branchée votre configuration sera sauvegardée dans le logiciel mais pas dans la Cultibox. Pour que votre configuration soit effective, il faudra brancher une carte SD, sauvegarder votre configuration ou recharger la page et brancher cette carte SD dans la Cultibox."
-
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Cette option calcule et affiche la puissance consommée pour la/les prise(s) sélectionnée(s). Pour que cela soit possible il faudra renseigner le champ 'puissance' dans la partie de configuration des prises"
 
@@ -1701,9 +1611,6 @@ msgstr "La régulation secondaire a un fonctionnement compliqué et différent d
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le prix de  revient de votre installation dans le menu 'Coût'"
 
-msgid "TOOLTIP_FAKE_LOG_DATA"
-msgstr "Aucune donnée n'est présente dans la base pour le moment, les logs affichés le sont à titre d'exemple et ne correspondent pas à l'enregistrement des données de votre installation"
-
 msgid "TOOLTIP_CHECK_UPDATE"
 msgstr "Vérifier si des mises à jour sont disponibles et vous propose de les télécharger le cas échéant"
 
@@ -1715,9 +1622,6 @@ msgstr "La carte SD sélectionnée sera rendue compatible Cultibox. Pour cela le
 
 msgid "TOOLTIP_RESET_LOG"
 msgstr "En cliquant sur ce bouton toutes vos données des logs enregistrés seront supprimées. Cela peut être réalisé à la fin d'une culture, si vos logs ne vous sont plus utiles et que vous souhaitez libérer de l'espace sur votre ordinateur"
-
-msgid "TOOLTIP_STATE_PLUG"
-msgstr "Vous pouvez désactiver les prises que vous ne voulez pas utiliser. Le logiciel n'affichera pas les informations relatives aux prises désactivées"
 
 msgid "TOOLTIP_MAX_POWER_PLUG_3500"
 msgstr "La prise 3500W permet de piloter des éléments gourmands en énergie. Les 3500W annoncés correspondent à une puissance résistive pure, par exemple un chauffage. Si vous branchez une lampe HPS ou MH sur cette prise, la puissance maximale autorisée est 600W"

@@ -43,15 +43,6 @@ msgstr "Javascript no está habilitado! No puede utilizar el software y todas su
 
 
 # For the configuration part:
-msgid "CONFIGURE_GRAPHIC"
-msgstr "Configuración de gráficos"
-
-msgid "CONFIGURE_INTERFACE"
-msgstr "Configuración de la Interfaz"
-
-msgid "CONFIGURE_ADVANCED_OPTIONS"
-msgstr "Configuración de las funciones avanzadas"
-
 msgid "CONFIGURE_TITLE_CULTIBOX"
 msgstr "Configurar vuestro sistema Cultibox"
 
@@ -96,9 +87,6 @@ msgstr "Color de las curvas de OD"
 
 msgid "CONFIGURE_ORP"
 msgstr "Color de las curvas de ORP"
-
-msgid "CONFIGURE_PROGRAM_COLOR"
-msgstr "Color de las curvas de programas"
 
 msgid "CONFIGURE_COST_COLOR"
 msgstr "Color del gráfico del coste de la instalación"
@@ -348,12 +336,6 @@ msgstr "<b>Curvas de selección:</b> Seleccione las curvas a visualizar"
 msgid "SELECT_POWER_PLUG"
 msgstr "Visualizar la potencia consumida"
 
-msgid "WAITING_LOGS_WITH_SD"
-msgstr "Gracias por esperar algunos instantes y de no<b><i>retirar la tarjeta Cultibox</i></b> el tiempo que se cargue la pagina y que el programa analice los datos.<br /><br /><b><i>Nota: </i></b>Si ocurre un error, se puede recargar la pagina para intentar finalizar la operación"
-
-msgid "WAITING_MONTH_WITHOUT_SD"
-msgstr "Gracias por esperar algunos instantes que se cargue la pagina y que el programa trate los datos"
-
 msgid "PREVIOUS_BUTTON_DAY"
 msgstr "Visualizar los datos para el día anterior"
 
@@ -380,9 +362,6 @@ msgstr "sensor"
 
 msgid "MONTH_DATE"
 msgstr "Mes y año a visualizar"
-
-msgid "SELECT_SENSOR"
-msgstr "El sensor"
 
 msgid "MANAGE_LOG_INFOS"
 msgstr "<b>Gestión de los datos climáticos</b>"
@@ -417,38 +396,14 @@ msgstr "Resumen de las regulaciones segundarías activas para los enchufes selec
 msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Regulación del enchufe"
 
-msgid "SUMARY_REGUL_SENSO"
-msgstr "Activación si"
-
 msgid "TEMP_REGUL"
 msgstr "la temperatura"
 
 msgid "HUMI_REGUL"
 msgstr "la humedad"
 
-msgid "SUMARY_REGUL_SENSS"
-msgstr "Umbral"
-
-msgid "SUMARY_REGUL_VALUE"
-msgstr "Valor umbral"
-
-msgid "SUMARY_EMPTY_REGUL"
-msgstr "Ninguna regulación para el/los enchufes seleccionado(s)"
-
 msgid "SUMARY_EMPTY_SELECTION"
 msgstr "Ningún enchufe seleccionado"
-
-msgid "SUMARY_ABOVE"
-msgstr "Por encima"
-
-msgid "SUMARY_UNDER"
-msgstr "Por debajo"
-
-msgid "SUMARY_REGUL_TEMP"
-msgstr "Temperatura"
-
-msgid "SUMARY_REGUL_HYGRO"
-msgstr "Higrometría"
 
 msgid "MANAGE_EXPORT_LOG_CSV"
 msgstr "Exportar los datos de los logs"
@@ -467,9 +422,6 @@ msgstr "Exportar los registros"
 
 msgid "MANAGE_EXPORT_EMPTY_POWER_CSV"
 msgstr "No hay registros en su base de poder"
-
-msgid "EXAMPLE_LOG"
-msgstr "Ejemplo de logs"
 
 msgid "LOAD_LOG_PROGRESS"
 msgstr "Avance del cargamento de los logs"
@@ -652,12 +604,6 @@ msgstr "por encima del umbral"
 
 msgid "STATE_PLUG"
 msgstr "Estado del enchufe"
-
-msgid "PLUG_ENABLED"
-msgstr "Activado"
-
-msgid "PLUG_DISABLED"
-msgstr "Desactivado"
 
 msgid "PLUG_MAX_POWER"
 msgstr "Tipo de enchufe(potencia máxima)"
@@ -847,9 +793,6 @@ msgstr "cíclico"
 msgid "REPEAT_EVERY"
 msgstr "Repetir cada"
 
-msgid "MANAGE_PROGRAM_INFOS"
-msgstr "Gestión de programas :"
-
 msgid "TITLE_EXPORT_PROGRAM"
 msgstr "Exportar el programa del enchufe"
 
@@ -894,9 +837,6 @@ msgstr "Regulador de intensidad"
 
 msgid "PROGRAM_DAILY_SAVE"
 msgstr "Guarde una copia"
-
-msgid "PROGRAM_DAILY_SAVE_PROGRESS"
-msgstr "Guardando ..."
 
 msgid "PROGRAM_DAILY_SAVE_FINISH"
 msgstr "registro tuvo éxito"
@@ -1024,9 +964,6 @@ msgstr "Fecha de inicio del programa"
 msgid "CREATE_CALENDAR_PROGRAM"
 msgstr "Plan"
 
-msgid "DISABLED_CREATE_CALENDAR_PROGRAM"
-msgstr "Ningún fichero XML presente para crear un programa"
-
 msgid "DISABLED_XML_FILE"
 msgstr "Ningún fichero XML detectado"
 
@@ -1129,9 +1066,6 @@ msgstr "Sab"
 msgid "D07"
 msgstr "Dom"
 
-msgid "MANAGE_RESET_CALENDAR"
-msgstr "Borrar todos los eventos del calendario"
-
 msgid "RESET_CONFIRM_CALENDAR"
 msgstr "Seguro de querer borrar todos los eventos grabados en el calendario?"
 
@@ -1141,17 +1075,8 @@ msgstr "Calendario borrado con excito"
 msgid "VALID_ADD_CALENDAR"
 msgstr "Calendario actualizado con el programa seleccionado"
 
-msgid "MANAGE_EXTERNAL_XML"
-msgstr "Gestión de los ficheros XML externos"
-
-msgid "DISABLED_MANAGE_EXTERNAL_XML"
-msgstr "Ningún calendario XML presente"
-
 msgid "XML_DISPLAYED_FILE"
 msgstr "Ficheros XML a ensenar"
-
-msgid "LUNAR_CALENDAR_SAVE_SD"
-msgstr "Guarde el calendario lunar en la tarjeta SD"
 
 msgid "SAVE"
 msgstr "Registrar"
@@ -1405,9 +1330,6 @@ msgstr "Día a ensenar: error en el formato (AAAA-MM-DD)"
 msgid "ERROR_FORMAT_DATE_MONTH"
 msgstr " Mes a ensenar: error en el formato (MM)"
 
-msgid "ERROR_SD_CARD_CONF"
-msgstr "Ninguna tarjeta SD compatible Cultibox detectada para grabar su configuración."
-
 msgid "ERROR_SD_CARD"
 msgstr "Ninguna tarjeta SD compatible Cultibox detectada, comprobar que su tarjeta este correctamente conectada."
 
@@ -1564,9 +1486,6 @@ msgstr "Las contraseñas deben coincidir"
 msgid "ERROR_COPY_WIFI_CONF"
 msgstr "Error al copiar el archivo de configuración del módulo de wifi"
 
-msgid "ERROR_WIFI_CONF"
-msgstr "Error al escribir los archivos de configuración del Wifi en la tarjeta SD, compruebe que la tarjeta no está protegida contra escritura"
-
 msgid "ERROR_WIFI_IP"
 msgstr "Error en el formato de la dirección IP: XXX.XXX.XXX.XXX"
 
@@ -1590,9 +1509,6 @@ msgstr "Error al eliminar un programa diario"
 
 
 # For the informations part:
-msgid "SHOW_MESSAGE"
-msgstr "Haga clic en el ojo para mostrar el software cuadro de mensaje"
-
 msgid "CONFIRMATION"
 msgstr "Validar"
 
@@ -1613,9 +1529,6 @@ msgstr "Se puede ahora conectar su tarjeta SD a la Cultibox."
 
 msgid "VALID_UPDATE_CONF"
 msgstr "Configuración actualizada con excitó"
-
-msgid "VALID_UPDATE_CONF_WITHOUT_SD"
-msgstr "Configuración actualizada con excitó en el programa."
 
 msgid "VALID_IMPORT_PROGRAM"
 msgstr "Programa importado con excitó"
@@ -1682,9 +1595,6 @@ msgstr "Esta opción permite configurar la frecuencia con cual la Cultibox graba
 msgid "TOOLTIP_PLUG_FREQ"
 msgstr "Esta opción permite configurar la frecuencia de actualización del estado (activo o inactivo ) de sus enchufes."
 
-msgid "TOOLTIP_WITHOUT_SD"
-msgstr "Sin tarjeta SD conectado a su Cultibox, su configuración estará guardado en el programa pero no en la Cultibox. Para que su configuración sea efectiva , habrá que conectar una tarjeta SD, guardar su configuración o cargar de nuevo la pagina y conectar esta tarjeta SD en la Cultibox."
-
 msgid "TOOLTIP_POWER_LOG"
 msgstr "Esta opción calcula y enseña la potencia consumida para el/los  enchufe(s) determinado(s). Para que eso funcione, hay que llenar el campo ‘potencia’ en la parte de configuración de los enchufes."
 
@@ -1700,9 +1610,6 @@ msgstr "la regulación segundaria tiene un funcionamiento complejo y distinto de
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Precio del KVatio-hora. Llenar este campo permite calcular el precio de su instalación en el menú 'Coste'"
 
-msgid "TOOLTIP_FAKE_LOG_DATA"
-msgstr "Ningún dato presente en la base, los logs ensenados son solo ejemplos y no corresponden a la grabación de datos de su instalación."
-
 msgid "TOOLTIP_CHECK_UPDATE"
 msgstr "Comprobar si las actualizaciones están disponibles y si se pueden descargar."
 
@@ -1714,9 +1621,6 @@ msgstr "La tarjeta SD seleccionada se volverá compatible con Cultibox. Para eso
 
 msgid "TOOLTIP_RESET_LOG"
 msgstr "Apretando este botón ,todos los datos estarán borrado. Se puede realizar al final de una cultura, y si los logs no son más útiles y que se quiere liberar espacio en su ordenador."
-
-msgid "TOOLTIP_STATE_PLUG"
-msgstr "Se puede desactivar los enchufes que no se quiere usar. El programa no enseñara los datos relacionados con los enchufes inactivos."
 
 msgid "TOOLTIP_MAX_POWER_PLUG_3500"
 msgstr "El enchufe 3500W permite controlar los elementos ingentes en energía. Los 3500W anunciados corresponden a una potencia resistiva pura, por ejemplo un calentamiento. Si se conecta una lámpara HPS o MH en este enchufe, la potencia máxima autorizada es de 600W"
