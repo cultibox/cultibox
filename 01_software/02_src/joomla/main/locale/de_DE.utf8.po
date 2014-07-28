@@ -459,6 +459,9 @@ msgstr "Fortschritt der Löschung"
 msgid "SUMARY_RESUME_MINMAX"
 msgstr "Zusammenfassung der minimalen und maximalen Werte"
 
+msgid "TEMP_HUMI_SENSOR"
+msgstr "Temp & Luft"
+
 msgid "TEMP_SENSOR"
 msgstr "Temperature "
 

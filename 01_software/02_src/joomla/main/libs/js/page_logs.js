@@ -1068,7 +1068,7 @@ $(document).ready(function() {
                 
                 // Find all series with this curve type and update color
                 $(chart.series).each(function(i, serie){
-                    if (serie.options.curveType == curveTypeModified) {
+                    if ((serie.options.curveType == curveTypeModified)&&(serie.graph!=null)) {
                         serie.graph.attr({stroke: newValue});
                     }
                 });
@@ -1361,9 +1361,19 @@ $(document).ready(function() {
             textToDisplay += "<font color='"+chart.yAxis[i].options.title.style.color+"'>"+chart.yAxis[i].userOptions.title.text + " : </font></i></b><br />";
             
             textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
-            textToDisplay +=    "<b>" + extremes.dataMin + " " + chart.yAxis[i].userOptions.unit + "</b>";
+            if((extremes.dataMin!=null)&&(extremes.dataMin!=0)) {
+                textToDisplay +=    "<b>" + extremes.dataMin + " " + chart.yAxis[i].userOptions.unit + "</b>";
+            } else {
+                textToDisplay +=    "<b>N/A</b>";
+            }
+
             textToDisplay += " - <?php echo __('SUMARY_MAX'); ?> : ";
-            textToDisplay +=    "<b>" + extremes.dataMax + " " + chart.yAxis[i].userOptions.unit + "</b>";
+
+            if((extremes.dataMax!=null)) {
+                textToDisplay +=    "<b>" + extremes.dataMax + " " + chart.yAxis[i].userOptions.unit + "</b>";
+            } else {
+                textToDisplay +=    "<b>N/A</b>";
+            }
             
             textToDisplay += "</center>";
             textToDisplay += "<br />";

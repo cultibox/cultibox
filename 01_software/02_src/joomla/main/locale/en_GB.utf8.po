@@ -459,6 +459,9 @@ msgstr "Progress of the deletion"
 msgid "SUMARY_RESUME_MINMAX"
 msgstr "Summary of minimum and maximum values"
 
+msgid "TEMP_HUMI_SENSOR"
+msgstr "Temp & Humi"
+
 msgid "TEMP_SENSOR"
 msgstr "Temperature"
 
