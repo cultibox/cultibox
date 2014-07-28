@@ -132,6 +132,72 @@ function getvar($varname) {
 // }}}
 
 
+// {{{ get_current_lang()
+// ROLE get the current language selected for the interface
+// IN none
+// RET current lang using the l10n format, ex: fr in url for joomla format is replaced by fr_FR
+function get_current_lang() {
+    $url=$_SERVER["REQUEST_URI"];
+    $url=str_replace("/"," ",$url);
+    $tab_url=explode(" ",$url);
+    $lang="";
+    if(count($tab_url)>0) {
+        foreach($tab_url as $val) {
+            $val=strtolower($val);
+            switch($val) {
+                case 'fr':
+                    $lang="fr_FR";
+                    $_SESSION['TIMEZONE']="Europe/Paris";
+                    break;
+                case 'en':
+                    $lang="en_GB";
+                    $_SESSION['TIMEZONE']="Europe/London";
+                    break;
+                case 'it':
+                    $lang="it_IT";
+                    $_SESSION['TIMEZONE']="Europe/Rome";
+                    break;
+                case 'de':
+                    $lang="de_DE";
+                    $_SESSION['TIMEZONE']="Europe/Berlin";
+                    break;
+                case 'es':
+                    $lang="es_ES";
+                    $_SESSION['TIMEZONE']="Europe/Madrid";
+                    break;
+            }
+
+            if(strcmp($lang,"")!=0) {
+                return $lang;
+            }
+        }
+    } else {
+          $_SESSION['TIMEZONE']="Europe/Paris";
+          return "fr_FR";
+    }
+}
+//}}}
+
+
+// {{{ get_short_lang()
+// ROLE get the current language selected for the interface
+// IN none
+// RET current lang in short format example: fr_FR is replaced by fr
+function get_short_lang($lang="") {
+    if(strcmp("$lang","")==0) return "fr";
+
+    switch($lang) {
+        case 'fr_FR': return "fr";
+        case 'en_GB': return "en";
+        case 'it_IT': return "it";
+        case 'de_DE': return "de";
+        case 'es_ES': return "es";
+    }
+    return "fr";
+}
+//}}}
+
+
 // {{{ check_empty_string()
 // ROLE check is a string is empty or only composed with invisible caracters
 // IN $value         string to check
