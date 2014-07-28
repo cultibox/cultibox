@@ -439,32 +439,6 @@ function purge_program($arr) {
 }
 // }}}
 
-// {{{ reset_plug_identificator()
-//ROLE check if no programs have been defined yet
-// IN  $out       warnings or errors messages 
-// RET none
-function reset_plug_identificator(&$out) {
-           $sql = <<<EOF
-UPDATE plugs SET PLUG_ID = ""
-EOF;
-           $db=db_priv_pdo_start();
-           try {
-                $db->exec("$sql");
-           } catch(PDOException $e) {
-                $ret=$e->getMessage();
-           }
-           $db=null;
-
-           if((isset($ret))&&(!empty($ret))) {
-               if($GLOBALS['DEBUG_TRACE']) {
-                  $out[]=__('ERROR_UPDATE_SQL').$ret;
-               } else {
-                  $out[]=__('ERROR_UPDATE_SQL');
-               }
-           }
-}
-// }}}
-
 
 // {{{ configure_menu()
 // ROLE hide or display joomla's menu
