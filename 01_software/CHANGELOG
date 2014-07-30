@@ -2,6 +2,8 @@ Cultibox (1.4.05) precise; urgency=low
     + Nettoyage des fonctions PHP et des locales non utilisées
     + Correction de l'affichage des mois dans la page logs
     + Correction du changement de couleur du graphe, tooltip, legend quand on change la couleur dynamiquement
+    + Affichage des heures/minutes correspondant aux min/max dans le tooltip
+    + Les programmes ne sont plus affichés dans le tooltip min/max
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon July 28  15:35:15 CEST 2014
 

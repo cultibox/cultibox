@@ -1359,32 +1359,34 @@ $(document).ready(function() {
         // If this curve is used
         if (chart.yAxis[i].userOptions.title.text != "")
         {
-            extremes = chart.yAxis[i].getExtremes();
+            if(chart.yAxis[i].series[0].options.curveType != "program") {
+                extremes = chart.yAxis[i].getExtremes();
 
-            // Sensor informations
-            textToDisplay += "<center><b><i>" ;
-            textToDisplay += "<font color='"+chart.yAxis[i].userOptions.labels.style.color+"'>"+chart.yAxis[i].userOptions.title.text + " : </font></i></b><br />";
+                // Sensor informations
+                textToDisplay += "<center><b><i>" ;
+                textToDisplay += "<font color='"+chart.yAxis[i].userOptions.labels.style.color+"'>"+ chart.yAxis[i].series[0].name + " : </font></i></b><br />";
+
+                textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
+                if(extremes.dataMin!=null) {
+                    MinDate = new Date(getXValue(chart.yAxis[i],extremes.dataMin));    
+                    textToDisplay +=    "<b>" + extremes.dataMin + " " + chart.yAxis[i].userOptions.unit + " ("+MinDate.getHours()+":"+MinDate.getMinutes()+")</b>";
+                } else {
+                    textToDisplay +=    "<b>N/A</b>";
+                }
+
+                textToDisplay += " - <?php echo __('SUMARY_MAX'); ?> : ";
+
+                if(extremes.dataMax!=null) {
+                    MaxDate = new Date(getXValue(chart.yAxis[i],extremes.dataMax)); 
+                    textToDisplay +=    "<b>" + extremes.dataMax + " " + chart.yAxis[i].userOptions.unit + " ("+MaxDate.getHours()+":"+MaxDate.getMinutes()+")</b>";
+                } else {
+                    textToDisplay +=    "<b>N/A</b>";
+                }
             
-            textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
-            if((extremes.dataMin!=null)&&(extremes.dataMin!=0)) {
-                textToDisplay +=    "<b>" + extremes.dataMin + " " + chart.yAxis[i].userOptions.unit + "</b>";
-            } else {
-                textToDisplay +=    "<b>N/A</b>";
+                textToDisplay += "</center>";
+                textToDisplay += "<br />";
             }
-
-            textToDisplay += " - <?php echo __('SUMARY_MAX'); ?> : ";
-
-            if((extremes.dataMax!=null)) {
-                textToDisplay +=    "<b>" + extremes.dataMax + " " + chart.yAxis[i].userOptions.unit + "</b>";
-            } else {
-                textToDisplay +=    "<b>N/A</b>";
-            }
-            
-            textToDisplay += "</center>";
-            textToDisplay += "<br />";
-
         }
-    
     }
 
     var resume="";
@@ -1410,6 +1412,19 @@ $(document).ready(function() {
 
     $("#regul_and_minmax_summary").attr("title",resume + beforeText + textToDisplay + afterText);
  }
+
+
+
+//Function to get the corresponding x-axis value timestamp from an yaxis value
+function getXValue(chartObj,yValue){
+ var points=chartObj.series[0].points;
+ for(var i=0;i<points.length;i++){
+    if(points[i].y==yValue) {
+       return points[i].x;
+    }
+ }
+ return null;    
+}
  
  
 </script>
