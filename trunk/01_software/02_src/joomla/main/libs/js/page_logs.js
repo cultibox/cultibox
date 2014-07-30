@@ -1368,8 +1368,8 @@ $(document).ready(function() {
 
                 textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
                 if(extremes.dataMin!=null) {
-                    MinDate = new Date(getXValue(chart.yAxis[i],extremes.dataMin));    
-                    textToDisplay +=    "<b>" + extremes.dataMin + " " + chart.yAxis[i].userOptions.unit + " ("+MinDate.getHours()+":"+MinDate.getMinutes()+")</b>";
+                    MinDate = getXValue(chart.yAxis[i],extremes.dataMin);    
+                    textToDisplay +=    "<b>" + extremes.dataMin + " " + chart.yAxis[i].userOptions.unit + " ("+MinDate+")</b>";
                 } else {
                     textToDisplay +=    "<b>N/A</b>";
                 }
@@ -1377,8 +1377,8 @@ $(document).ready(function() {
                 textToDisplay += " - <?php echo __('SUMARY_MAX'); ?> : ";
 
                 if(extremes.dataMax!=null) {
-                    MaxDate = new Date(getXValue(chart.yAxis[i],extremes.dataMax)); 
-                    textToDisplay +=    "<b>" + extremes.dataMax + " " + chart.yAxis[i].userOptions.unit + " ("+MaxDate.getHours()+":"+MaxDate.getMinutes()+")</b>";
+                    MaxDate = getXValue(chart.yAxis[i],extremes.dataMax); 
+                    textToDisplay +=    "<b>" + extremes.dataMax + " " + chart.yAxis[i].userOptions.unit + " ("+MaxDate+")</b>";
                 } else {
                     textToDisplay +=    "<b>N/A</b>";
                 }
@@ -1420,7 +1420,14 @@ function getXValue(chartObj,yValue){
  var points=chartObj.series[0].points;
  for(var i=0;i<points.length;i++){
     if(points[i].y==yValue) {
-       return points[i].x;
+        MyDate = new Date(points[i].x);
+        hours=MyDate.getHours();
+        minutes=MyDate.getMinutes();
+
+        if(hours<10) hours="0"+hours;
+        if(minutes<10) minutes="0"+minutes;
+       
+       return hours+":"+minutes;
     }
  }
  return null;    
