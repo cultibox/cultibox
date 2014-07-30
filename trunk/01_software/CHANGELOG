@@ -1,5 +1,7 @@
 Cultibox (1.4.05) precise; urgency=low
-    + Néttoyage des fonctions PHP et des locales non utilisées
+    + Nettoyage des fonctions PHP et des locales non utilisées
+    + Correction de l'affichage des mois dans la page logs
+    + Correction du changement de couleur du graphe, tooltip, legend quand on change la couleur dynamiquement
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon July 28  15:35:15 CEST 2014
 

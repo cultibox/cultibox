@@ -260,7 +260,6 @@ $(function () {
                                                 events: {
                                                     // On click on the check box, show or hide the serie
                                                     checkboxClick: function(event) {
-                                                    
                                                         var chart = $('#container').highcharts();
 
                                                         if (chart.series[this.index].visible) {
@@ -323,7 +322,8 @@ $(function () {
                                             }
                                             
                                         });
-                                        
+
+
                                         // All curve have been rendered : Unblock UI
                                         $.unblockUI();
                                         
@@ -425,13 +425,13 @@ $(function () {
                         echo '                }' . PHP_EOL;
                         echo '            }' . PHP_EOL;
                         echo '        }' . PHP_EOL;
-                        echo '    },' . PHP_EOL;
+                        echo '    },' . PHP_EOL;    
                         echo '    labels: {' . PHP_EOL;
                         echo '        style: {' . PHP_EOL;
                         echo '            color:"' . $yaxis['color'] . '"' . PHP_EOL;
                         echo '        },' . PHP_EOL;
                         echo '        formatter: function() {' . PHP_EOL;
-                        echo '            return this.value;' . PHP_EOL;
+                        echo '             return this.value;' . PHP_EOL;
                         echo '        }' . PHP_EOL;
                         echo '    },' . PHP_EOL;
                         echo '    gridLineWidth: 1,' . PHP_EOL;
@@ -441,7 +441,6 @@ $(function () {
                         echo '    tickPositioner: function(min, max) {' . PHP_EOL;
                         // specify an interval for ticks or use max and min to get the interval
                         echo '        if(min == max) {return "";};' . PHP_EOL;
-                        
                         // Compute min tick
                         echo 'var nbDizaine = this.dataMin.toString().indexOf(".");' . PHP_EOL;
                         echo 'var mult = Math.pow(10, nbDizaine - 1);' . PHP_EOL;
@@ -481,7 +480,7 @@ $(function () {
                                 valueToTidsplay = "<?php echo __('VALUE_OFF') ; ?>";
                         }
                     
-                        s += '<br/><font color="' + point.series.options.color + '">' + point.series.options.name + ' : '+ valueToTidsplay + " " + point.series.options.tooltip.valueSuffix + '</font>';
+                        s += '<br/><font color="' + point.series.yAxis.userOptions.labels.style.color + '">' + point.series.options.name + ' : '+ valueToTidsplay + " " + point.series.options.tooltip.valueSuffix + '</font>';
                     });
                     s=s+"</p>";
                 
@@ -1070,6 +1069,8 @@ $(document).ready(function() {
                 $(chart.series).each(function(i, serie){
                     if ((serie.options.curveType == curveTypeModified)&&(serie.graph!=null)) {
                         serie.graph.attr({stroke: newValue});
+                        //chart.yAxis[this.index].options.title.style.color=newValue;
+                        
                     }
                 });
                 
@@ -1106,10 +1107,13 @@ $(document).ready(function() {
                     }
                 });
                                         
-                // Change color pointor
-                
+                //Update tooltip min/max:
+                updateTooltipMinMax();
+
                 // Readraw graph
-                chart.redraw();
+                //chart.redraw();
+                chart = new Highcharts.Chart(chart.options);
+                chart.render();
 
             });
         });
@@ -1200,6 +1204,7 @@ $(document).ready(function() {
                 }
 
             }
+
             
         });
                 
@@ -1355,10 +1360,10 @@ $(document).ready(function() {
         if (chart.yAxis[i].userOptions.title.text != "")
         {
             extremes = chart.yAxis[i].getExtremes();
-            
+
             // Sensor informations
             textToDisplay += "<center><b><i>" ;
-            textToDisplay += "<font color='"+chart.yAxis[i].options.title.style.color+"'>"+chart.yAxis[i].userOptions.title.text + " : </font></i></b><br />";
+            textToDisplay += "<font color='"+chart.yAxis[i].userOptions.labels.style.color+"'>"+chart.yAxis[i].userOptions.title.text + " : </font></i></b><br />";
             
             textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
             if((extremes.dataMin!=null)&&(extremes.dataMin!=0)) {
@@ -1382,22 +1387,26 @@ $(document).ready(function() {
     
     }
 
-    var resume=second_regul[0];
-    var plugsShow = [];
-    $("input[type=checkbox][name^=select_program], input[type=checkbox][name^=select_power]").each(function() {
-        var cheBu = $(this);
-        if (cheBu.attr("checked") == "checked") {
-            if(jQuery.inArray($(this).val(), plugsShow)==-1) {
-                resume=resume+"<b><?php echo __('PLUG_MENU'); ?> " + $(this).val() + ":</b><br />" + second_regul[$(this).val()]+"<br /><br />";
-                plugsShow.push($(this).val());
-            }
-        }
-    });
+    var resume="";
+    <?php if(strcmp("$second_regul","True")==0) { ?>
+        resume=second_regul[0];
+        var plugsShow = [];
 
-    if(plugsShow.length==0) {
-        resume="<p align='center'><b><i>"+"<?php echo __('SUMARY_REGUL_TITLE'); ?>"+"</i></b><br /><br />"+"<?php echo __('SUMARY_EMPTY_SELECTION'); ?>"+"</p><br />";
-    }
-    delete plugsShow;
+        $("input[type=checkbox][name^=select_program], input[type=checkbox][name^=select_power]").each(function() {
+            var cheBu = $(this);
+            if (cheBu.attr("checked") == "checked") {
+                if(jQuery.inArray($(this).val(), plugsShow)==-1) {
+                    resume=resume+"<b><?php echo __('PLUG_MENU'); ?> " + $(this).val() + ":</b><br />" + second_regul[$(this).val()]+"<br /><br />";
+                    plugsShow.push($(this).val());
+                }
+            }
+        });
+
+        if(plugsShow.length==0) {
+            resume="<p align='center'><b><i>"+"<?php echo __('SUMARY_REGUL_TITLE'); ?>"+"</i></b><br /><br />"+"<?php echo __('SUMARY_EMPTY_SELECTION'); ?>"+"</p><br />";
+        }
+        delete plugsShow;
+    <?php } ?>
 
     $("#regul_and_minmax_summary").attr("title",resume + beforeText + textToDisplay + afterText);
  }

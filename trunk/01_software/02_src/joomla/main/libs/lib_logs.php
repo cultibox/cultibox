@@ -255,6 +255,7 @@ function get_sensor_db_type($sensor = "") {
 // IN ratio : define the diviser for each record
 // RET array with logs value
 function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day",$ratio=100) {
+
     // Init return array
     $serie = array();
     $serie[0] = array();
@@ -276,7 +277,7 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day",$ratio=100) {
             . " WHERE sensor_nb = {$sensor}"
             . " AND INSERT(timestamp,7,2,'00') >= {$dateStartForLogsTable}"
             . " AND INSERT(timestamp,7,2,'00') <= {$dateEndForLogsTable}"
-            . " ORDER BY time_catch ASC;";
+            . " ORDER BY date_catch,time_catch ASC;";
 
     try {
         $sth = $db->prepare($sql);
