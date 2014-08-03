@@ -1475,23 +1475,6 @@ function check_sd_card($sd="") {
 // }}}
 
 
-// {{{ get_rtc_from_sd()
-// ROLE get the rtc offset value of the sd card
-//  IN      $sd        the sd_card path 
-// RET rtc value
-function get_rtc_from_sd($sd="") {
-   $file="$sd/cnf/conf";
-   if(!is_file("$file")) return false;
-   
-   $conf=file("$file"); 
-   if(strcmp($conf[7],"RTC_OFFSET_:\r\n")==0) return false;
-
-   return "$conf[7]";
-}
-// }}}
-
-
-
 /* TO BE DELETED */
 function compat_old_sd_card($sd_card="") {
     if((isset($sd_card))&&(!empty($sd_card))) {
