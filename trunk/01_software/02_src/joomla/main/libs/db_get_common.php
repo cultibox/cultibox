@@ -1856,11 +1856,25 @@ function create_wificonf_from_database(&$out) {
         return false;
     }
 
+
+    $ip="";
+    if(strcmp($res['WIFI_IP'],"")!=0) {
+        $wifip=explode(".",$res['WIFI_IP']);
+
+        foreach($wifip as $subip) {
+            if (strcmp($ip,"")!=0) $ip .= ".";
+
+            while(strlen($subip)<3) $subip = "0".$subip;
+
+            $ip.=$subip;
+        }
+    }
+
     // Create return array with WIFI informations
     $data[]="SSID:" . $res['WIFI_SSID'];
     $data[]="CLE:"  . $res['WIFI_KEY_TYPE'];
     $data[]="PWD:"  . $res['WIFI_PASSWORD'];
-    $data[]="IPC:"  . $res['WIFI_IP'];
+    $data[]="IPC:"  . $ip;
     $data[]="IPS:"  . $retIP;
 
     return $data;
