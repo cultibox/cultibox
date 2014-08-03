@@ -19,6 +19,7 @@ plug_selected  = <?php echo json_encode($selected_plug) ?>;
 rep            = <?php echo json_encode($rep) ?>;
 error_valueJS  = <?php echo json_encode($error_value) ?>;
 session_id="<?php echo session_id(); ?>";
+var reload_page=false;
 
 
 $(document).ready(function(){
@@ -237,7 +238,12 @@ $(document).ready(function(){
                 text: CLOSE_button,
                 "id": "btnClose",
                 click: function () {
-                    $( this ).dialog( "close" ); return false;
+                    $( this ).dialog( "close" ); 
+                    if(reload_page) {
+                         window.location = "programs-"+slang;
+                    } else {
+                        return false;
+                    }
                 }
             }],
         });
@@ -275,7 +281,7 @@ $(document).ready(function(){
         
                     // If it's the same program, redraw the page
                     if ($( "#program_delete_index" ).val() == "<?php echo $program_index ?>") {
-                        window.location = "programs-"+slang;
+                        reload_page=true;
                     }
             
                     // remove program from available
