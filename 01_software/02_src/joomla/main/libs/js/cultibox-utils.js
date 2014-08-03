@@ -420,22 +420,25 @@ function getTolerance(i,j,secondR,advancedOpt) {
                     }
                     break;
 
-          case 4 :  divTolerance.style.display = '';
+          case 4 :      
+                    //Pump: no second regulation
+                    divTolerance.style.display = '';
                     divToleranceLabel.style.display = '';
                     pDegree.style.display = 'none';
                     pPourcent.style.display = 'none';
                     pCm.style.display = '';
+
                     if(secondR=="True") {
-                        divHumiRegul.style.display = '';
+                        divHumiRegul.style.display = 'none';
                         divTempRegul.style.display = 'none';
                         divUnknownRegul.style.display = 'none';
                         labelDeg.style.display = 'none';
-                        labelPct.style.display = '';
+                        labelPct.style.display = 'none';
+                        seconLabel.style.display = 'none';
+                        secondVal.style.display = 'none';
                         labelSecondDeg.style.display = 'none';
-                        labelSecondPct.style.display = '';
-                        seconLabel.style.display = '';
-                        secondVal.style.display = '';
-                        secondParam.style.display = '';
+                        labelSecondPct.style.display = 'none';
+                        secondParam.style.display = 'none';
                     }
 
                     if(advancedOpt=="True") {
@@ -732,25 +735,6 @@ function getProgramType(i) {
         break;
       }
 
-}
-// }}}
-
-
-// {{{ getEnable()
-// ROLE display the plugs informations or not
-// IN  input value: display or not the informations
-// HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
-// USED BY: templates/plugs.html 
-function getEnable(i,j) {
-      var divEnable = document.getElementById('state_plug'+j);
-      var divButton = document.getElementById('button_program'+j);
-      var divButtonWizard = document.getElementById('jump_wizard'+j);
-
-      switch(i) {
-         case 0 : divEnable.style.display = ''; divButton.style.display = ''; divButtonWizard.style.display = ''; break;
-         case 1 : divEnable.style.display = 'none'; divButton.style.display = 'none'; divButtonWizard.style.display = 'none'; break;
-         default: divEnable.style.display = ''; divButton.style.display = ''; divButtonWizard.style.display = ''; break;
-      }
 }
 // }}}
 

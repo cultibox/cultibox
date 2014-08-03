@@ -8,6 +8,7 @@ Cultibox (1.4.05) precise; urgency=low
     + Les sauvegardes des programmes journaliers ne peuvent pas avoir le même nom
     + Correction du rechargement de la page lors de la suppréssion des programmes jouanliers en cours de visualisation
     + Correction de la gestion des jeux de programme
+    + Aucune régulation secondaire possible pour les effecteurs de type pompe à eau
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon July 28  15:35:15 CEST 2014
 
