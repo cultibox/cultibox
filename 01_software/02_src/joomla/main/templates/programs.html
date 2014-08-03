@@ -379,7 +379,7 @@
             </td>
             <td>
                 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
-                    <select name="program_index_id" id="program_index_id_id" >
+                    <select name="program_index_id" id="program_index_id_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
                         <?php
                             $array = array();
                             program\get_program_index_info($array);
@@ -389,7 +389,7 @@
                             }
                         ?>
                     </select>
-                    <input type="submit" id="daily_open_button" name="daily_open_button" value="<?php echo __('PROGRAM_DAILY_OPEN'); ?>">
+                    <input type="submit" id="daily_open_button" name="daily_open_button" <?php if($nb_daily_program==0) { ?>value="<?php echo __('NO_DAILY_PROGRAM_TO_OPEN'); ?>" class="inputDisable" disabled <?php } else { ?>value="<?php echo __('PROGRAM_DAILY_OPEN'); ?>" <?php } ?>>
                 </form>
             </td>
         </tr>

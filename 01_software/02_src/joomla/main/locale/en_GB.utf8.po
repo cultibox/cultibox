@@ -859,6 +859,9 @@ msgstr "Remove"
 msgid "NO_DAILY_PROGRAM_TO_DELETE"
 msgstr "No game programs to remove"
 
+msgid "NO_DAILY_PROGRAM_TO_OPEN"
+msgstr "No game programs open"
+
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "The program has been deleted."
 
