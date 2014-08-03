@@ -7,6 +7,7 @@ Cultibox (1.4.05) precise; urgency=low
     + Les adresses IP pour le wifi sont maintenant écrite avec 3 digits par champ afin d'être lues par la Cultibox
     + Les sauvegardes des programmes journaliers ne peuvent pas avoir le même nom
     + Correction du rechargement de la page lors de la suppréssion des programmes jouanliers en cours de visualisation
+    + Correction de la gestion des jeux de programme
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon July 28  15:35:15 CEST 2014
 

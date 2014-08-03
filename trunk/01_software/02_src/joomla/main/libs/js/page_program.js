@@ -290,10 +290,15 @@ $(document).ready(function(){
                     $("#program_index_id_id option[value='" + idToDelete + "']").remove();
 
                     if($("#program_delete_index option").length==0) {
-                            $("#program_delete_index" ).css("display","none");
+                            $("#program_delete_index").css("display","none");
                             $("#daily_delete_button").attr("disabled", "disabled");
                             $("#daily_delete_button").addClass("inputDisable");
                             $("#daily_delete_button").val("<?php echo __('NO_DAILY_PROGRAM_TO_DELETE','html'); ?>");
+
+                            $("#program_index_id_id").css("display","none");
+                            $("#daily_open_button").attr('disabled','disabled');
+                            $("#daily_open_button").addClass("inputDisable");
+                            $("#daily_open_button").val("<?php echo __('NO_DAILY_PROGRAM_TO_OPEN','html'); ?>");
                     }
             } else {
                     $("#dialog-form-delete-daily-error").dialog({
@@ -357,13 +362,21 @@ $(document).ready(function(){
                                 var return_array = JSON.parse(data);
                         
                                 // Add program in select
-                                $('#program_delete_index').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
-                                $('#program_index_id_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                                $('#program_delete_index').append('<option value="' + return_array.program_idx + '">' + return_array.name + '</option>');
+                                $('#program_index_id_id').append('<option value="' + return_array.program_idx + '">' + return_array.name + '</option>');
 
                                 $("#daily_delete_button").removeAttr('disabled');
                                 $("#daily_delete_button").removeClass("inputDisable");
                                 $("#daily_delete_button").val("<?php echo __('PROGRAM_DAILY_DELETE','html'); ?>");
+
+                                $("#daily_open_button").removeAttr('disabled');
+                                $("#daily_open_button").removeClass("inputDisable");
+                                $("#daily_open_button").val("<?php echo __('PROGRAM_DAILY_OPEN','html'); ?>");
+                                
+
                                 $("#program_delete_index").show();
+                                $('#program_index_id_id').show();
+                                
 
                                 // Prevent user that's ok
                                 $("#dialog-form-copy-daily").dialog({
