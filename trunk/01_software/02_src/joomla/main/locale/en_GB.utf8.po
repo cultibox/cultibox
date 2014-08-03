@@ -1510,6 +1510,9 @@ msgstr "An error occurred while updating the configuration"
 msgid "PROGRAM_DAILY_DELETE_ERROR"
 msgstr "Error Deleting a daily program"
 
+msgid "ERROR_PROGRAM_SAME_NAME"
+msgstr "Programe name is already used for another backup."
+
 
 # For the informations part:
 msgid "CONFIRMATION"

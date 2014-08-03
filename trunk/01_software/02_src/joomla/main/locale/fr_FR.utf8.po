@@ -1510,6 +1510,8 @@ msgstr "Une erreur est survenue durant la mise à jour de la configuration"
 msgid "PROGRAM_DAILY_DELETE_ERROR"
 msgstr "Erreur lors de la suppréssion d'un programme journalier"
 
+msgid "ERROR_PROGRAM_SAME_NAME"
+msgstr "Ce nom de programe est déja utilisé pour une autre sauvegarde."
 
 
 # For the informations part:

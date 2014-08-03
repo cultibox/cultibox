@@ -5,6 +5,7 @@ Cultibox (1.4.05) precise; urgency=low
     + Affichage des heures/minutes correspondant aux min/max dans le tooltip
     + Les programmes ne sont plus affichés dans le tooltip min/max
     + Les adresses IP pour le wifi sont maintenant écrite avec 3 digits par champ afin d'être lues par la Cultibox
+    + Les sauvegardes des programmes journaliers ne peuvent pas avoir le même nom
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon July 28  15:35:15 CEST 2014
 

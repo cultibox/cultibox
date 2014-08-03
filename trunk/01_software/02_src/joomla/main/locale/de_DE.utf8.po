@@ -1510,6 +1510,9 @@ msgstr "Während der Aktualisierung der Konfiguration ist ein Fehler aufgetreten
 msgid "PROGRAM_DAILY_DELETE_ERROR"
 msgstr "Fehler beim Löschen eines Tagesprogramms"
 
+msgid "ERROR_PROGRAM_SAME_NAME"
+msgstr "Programe Name bereits für eine andere Sicherung verwendet."
+
 
 # For the informations part:
 msgid "CONFIRMATION"

@@ -1510,6 +1510,9 @@ msgstr "Se ha producido un error al actualizar la configuración"
 msgid "PROGRAM_DAILY_DELETE_ERROR"
 msgstr "Error al eliminar un programa diario"
 
+msgid "ERROR_PROGRAM_SAME_NAME"
+msgstr "Programe el nombre ya está en uso por otra copia de seguridad."
+
 
 # For the informations part:
 msgid "CONFIRMATION"
