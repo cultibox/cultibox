@@ -270,7 +270,7 @@ $(document).ready(function(){
                             click: function () {
                                 $( this ).dialog( "close" ); return false;
                             }
-                        }],
+                        }]
                     });
         
                     // If it's the same program, redraw the page
@@ -290,11 +290,10 @@ $(document).ready(function(){
                             $("#daily_delete_button").val("<?php echo __('NO_DAILY_PROGRAM_TO_DELETE','html'); ?>");
                     }
             } else {
-
                     $("#dialog-form-delete-daily-error").dialog({
                         resizable: false,
                         closeOnEscape: true,
-                        dialogClass: "popup_error_message",
+                        dialogClass: "popup_error",
                         modal: true,
                         buttons: [{
                             text: CLOSE_button,
@@ -302,7 +301,7 @@ $(document).ready(function(){
                             click: function () {
                                 $( this ).dialog( "close" ); return false;
                             }
-                        }],
+                        }]
                    });
             }
         });
@@ -330,51 +329,76 @@ $(document).ready(function(){
             program_name.removeClass( "ui-state-error" );
             bValid = bValid && checkLength( program_name, "program_name", 3, 16 );
             if ( bValid ) {
-                $.ajax({ 
+                $.ajax({
                     type: "GET",
-                    url: "../../main/modules/external/daily_program_save.php",
-                    data: {
-                        name:$('#program_name').val(),
-                        input:1,
-                        version:1.0,
-                        session_id:session_id
-                    },
-                    context: document.body,
-                    success: function(data, textStatus, jqXHR) {
-                        // Check response from server
-                        var return_array = JSON.parse(data);
+                    url: "../../main/modules/external/check_daily_program_name.php",
+                    data: { name:$('#program_name').val()}
+                }).done(function (data) {
+                    if(JSON.parse(data)=="") {
+                        $.ajax({ 
+                            type: "GET",
+                            url: "../../main/modules/external/daily_program_save.php",
+                            data: {
+                                name:$('#program_name').val(),
+                                input:1,
+                                version:1.0,
+                                session_id:session_id
+                            },
+                            context: document.body,
+                            success: function(data, textStatus, jqXHR) {
+
+                                // Check response from server
+                                var return_array = JSON.parse(data);
                         
-                        // Add program in select
-                        $('#program_delete_index').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
-                        $('#program_index_id_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                                // Add program in select
+                                $('#program_delete_index').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                                $('#program_index_id_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
 
-                        $("#daily_delete_button").removeAttr('disabled');
-                        $("#daily_delete_button").removeClass("inputDisable");
-                        $("#daily_delete_button").val("<?php echo __('PROGRAM_DAILY_DELETE','html'); ?>");
-                        $("#program_delete_index").show();
+                                $("#daily_delete_button").removeAttr('disabled');
+                                $("#daily_delete_button").removeClass("inputDisable");
+                                $("#daily_delete_button").val("<?php echo __('PROGRAM_DAILY_DELETE','html'); ?>");
+                                $("#program_delete_index").show();
 
-                        // Prevent user that's ok
-                        $("#dialog-form-copy-daily").dialog({
-                            resizable: false,
-                            closeOnEscape: true,
-                            dialogClass: "popup_message",
-                            modal: true,
-                            buttons: [{
-                                text: CLOSE_button,
-                                "id": "btnClose",
-                                click: function () {
-                                    $( this ).dialog( "close" ); return false;
-                                }
-                            }],
+                                // Prevent user that's ok
+                                $("#dialog-form-copy-daily").dialog({
+                                    resizable: false,
+                                    closeOnEscape: true,
+                                    dialogClass: "popup_message",
+                                    modal: true,
+                                    buttons: [{
+                                        text: CLOSE_button,
+                                        "id": "btnClose",
+                                        click: function () {
+                                            $( this ).dialog( "close" ); return false;
+                                        }
+                                    }],
+                                });
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                // Error during request
+                            }
                         });
-                        
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        // Error during request
+               
+                        $('#program_name').val("");
+                        $("#dialog-form-save-daily").dialog( "close" );
+                    } else {
+                          $("#dialog-form-add-daily-error").dialog({
+                                resizable: false,
+                                closeOnEscape: true,
+                                dialogClass: "popup_error",
+                                modal: true,
+                                buttons: [{
+                                    text: CLOSE_button,
+                                    "id": "btnClose",
+                                    click: function () {
+                                        $( this ).dialog( "close" ); return false;
+                                }
+                                }]
+                        });
+
+                        $('#program_name').val("");
                     }
                 });
-                
-                $( this ).dialog( "close" );
             }
         },
         "Quitter": function() {
