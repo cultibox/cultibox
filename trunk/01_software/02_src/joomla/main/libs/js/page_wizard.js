@@ -120,47 +120,49 @@ $("#value_program").keypress(function(e) {
         }
 
         if((plug_type!="lamp") && (plug_type!="other")) {
-            if(($("#value_program").val())&&($("#value_program").val()!="0")) {
+            if(($("#value_program").val())&&($("#value_program").val()!="")) {
                 $.ajax({
                     cache: false,
                     async: false,
                     url: "../../main/modules/external/check_value.php",
                     data: {value:$("#value_program").val(),type:'value_program',plug_type:plug_type}
                 }).done(function (data) {
-                    if(data!=1) {
-                        $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[data.toInt()]);
-                        $("#error_value_program").show(700);
-                        switch(plug_type) {
-                            case 'dehumidifier':
-                            case 'humidifier': $("#value_program").val("55");
-                                                break;
-                            case 'ventilator':
-                            case 'pump':
-                            case 'heating':  $("#value_program").val("22");
-                                                break;
-                       
-                            default: break;
-                        }
-                        checked=false;
-                    }
-                });
-            } else {
-                if((plug_type=="heating")||(plug_type=="ventilator")) {
-                    var check=3;
-                    $("#value_program").val("22");
-                } else if((plug_type=="humidifier")||(plug_type=="dehumidifier")) {
-                    var check=4;
-                    $("#value_program").val("55");
-                } else if(plug_type=="pump") {
-                    var check=5;
-                    $("#value_program").val("22");
-                } else {
-                    var check=6;
-                }
+                        var return_array = JSON.parse(data);
+                        if(return_array['error'].toInt()>1) {
+                            if(return_array['error'].toInt()==2) {
+                                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[return_array['error'].toInt()]);
+                            } else {
+                                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[return_array['error'].toInt()]+": "+return_array['min']+return_array['unity']+" <?php echo __('AND'); ?> "+return_array['max']+return_array['unity']);
 
-                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[check]);
-                $("#error_value_program").show(700);
-                checked=false;
+                            }
+                            $("#error_value_program").show(700);
+
+                            switch(plug_type) {
+                                case 'dehumidifier':
+                                case 'humidifier': $("#value_program").val("55");
+                                                break;
+                                case 'ventilator':
+                                case 'pump':
+                                case 'heating':  $("#value_program").val("22");
+                                                break;
+
+                                default: break;
+                            }
+                            checked=false;
+                        }
+               });
+            } else {
+                     $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[2]);
+                     $("#error_value_program").show(700);
+                     checked=false;
+
+                     if((plug_type=="heating")||(plug_type=="ventilator")) {
+                        $("#value_program").val("22");
+                     } else if((plug_type=="humidifier")||(plug_type=="dehumidifier")) {
+                        $("#value_program").val("55");
+                     } else if(plug_type=="pump") {
+                        $("#value_program").val("22");
+                     } 
             }
         }
 

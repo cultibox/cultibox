@@ -897,6 +897,9 @@ msgstr "Esporta in SVG"
 msgid "RESET_ZOOM_TITLE"
 msgstr "Annulla zoom"
 
+msgid "AND"
+msgstr "e"
+
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
@@ -1373,13 +1376,13 @@ msgid "ERROR_VALUE_PROGRAM"
 msgstr "Errore: Il valore immesso deve essere un numero"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "Valore di temperatura: deve essere compresa tra 5 ° C e 60 ° C"
+msgstr "Valore di temperatura deve essere compresa tra"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "Valore di umidità: deve essere compresa tra il 10% 95%"
+msgstr "Valore di umidità deve essere compresa tra"
 
 msgid "ERROR_VALUE_PROGRAM_CM"
-msgstr "Valore della altezza dell'acqua: deve essere compreso tra 5 centimetri e 27 centimetri"
+msgstr "Valore della altezza dell'acqua deve essere compreso tra"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "Il valore di attivazione dell'allarme deve essere maggiore di 0 e minore di 100"

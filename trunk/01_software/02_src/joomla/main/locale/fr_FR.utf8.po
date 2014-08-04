@@ -897,6 +897,9 @@ msgstr "Exporter au format SVG"
 msgid "RESET_ZOOM_TITLE"
 msgstr "Annuler le zoom"
 
+msgid "AND"
+msgstr "et"
+
 
 # For the wizard part :
 msgid "WIZARD_FIRST_USE"
@@ -1373,13 +1376,13 @@ msgid "ERROR_VALUE_PROGRAM"
 msgstr "La valeur rentrée doit être un nombre"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "La température doit être comprise entre 5°C et 60°C"
+msgstr "La température doit être comprise entre"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "L'humidité doit être comprise entre 10&#37; et 95&#37;"
+msgstr "L'humidité doit être comprise entre"
 
 msgid "ERROR_VALUE_PROGRAM_CM"
-msgstr "La hauteur doit être comprise entre 5cm et 27cm"
+msgstr "La hauteur doit être comprise entre"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "La valeur de déclenchement de l'alarme doit être supérieure à 0 et inférieure à 100"

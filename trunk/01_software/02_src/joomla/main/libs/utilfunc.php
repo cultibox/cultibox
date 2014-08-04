@@ -472,32 +472,45 @@ function check_tolerance_value($type,&$tolerance=0) {
 // IN   $value       value to check and format
 // IN   $type        temp or humi - type to check
 // IN   $tol         tolerance if the plug
-// RET error message if there is a wrong value, true else
-function check_format_values_program(&$value="0",$type="temp",$tol=0) {
+// RET error array containing, error message, min and max depending tolerance
+function check_format_values_program($value="0",$type="temp",$tol=0) {
    $value=str_replace(',','.',$value);
    $value=str_replace(' ','',$value);
+
+   $ret=array();
+   $ret['error']=1;
+   $ret['min']="";
+   $ret['max']="";
+   $ret['unity']="";
+
    $check=true;
 
    if(!is_numeric($value)) {   
-       return 2;
+       $ret['error']=2;
+   } else {
+       if((($value+$tol)>$GLOBALS['LIMIT_PLUG_PROGRAM'][$type]['max'])||(($value-$tol)<$GLOBALS['LIMIT_PLUG_PROGRAM'][$type]['min'])) {
+            switch($type) {
+                case 'temp':  $ret['error']=3;
+                              $ret['unity']="°C";
+                              break;
+
+                case 'humi':  $ret['error']=4;
+                              $ret['unity']="%";
+                              break;
+
+                case 'cm':  $ret['error']=5;
+                            $ret['unity']="cm";
+                            break;
+
+                case 'other':  $ret['error']=6;
+                               break;
+            }
+            $ret['min']=$GLOBALS['LIMIT_PLUG_PROGRAM'][$type]['min']+$tol;
+            $ret['max']=$GLOBALS['LIMIT_PLUG_PROGRAM'][$type]['max']-$tol;
+       } 
    }
 
-   if((($value+$tol)>$GLOBALS['LIMIT_PLUG_PROGRAM'][$type]['max'])||(($value-$tol)<$GLOBALS['LIMIT_PLUG_PROGRAM'][$type]['min'])) {
-      $check=false;
-   }
-
-   if(!$check) {
-        switch($type) {
-            case 'temp': return 3;
-
-            case 'humi': return 4;
-
-            case 'cm': return 5;
-
-            case 'other': return 6;
-        }
-   }
-   return 1;
+   return $ret;
 }
 // }}}
 
