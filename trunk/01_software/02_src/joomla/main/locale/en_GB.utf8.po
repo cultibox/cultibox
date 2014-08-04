@@ -1587,7 +1587,7 @@ msgid "TOOLTIP_SEND_INFOS"
 msgstr "By enabling this option, you allow sending information to a remote site to assist in the development and correction of errors Cultibox system. The information sent include: the software version, the browser type, the firmware versions of the Cultibox and your type of operating system"
 
 msgid "TOOLTIP_VALUE"
-msgstr "The Cultibox will turn off or taken to reach this value."
+msgstr "The Cultibox will turn this off or taken to reach this value. The limits of control value available depend on the sensor and hysteresis (tolerance) chosen. For more information see Help."
 
 msgid "TOOLTIP_DIMMER_VALUE"
 msgstr "The Cultibox will use the drive taken to use only the power required equipment"

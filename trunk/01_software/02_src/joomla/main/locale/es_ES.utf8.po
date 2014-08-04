@@ -1587,7 +1587,7 @@ msgid "TOOLTIP_SEND_INFOS"
 msgstr "Activando esta opción, se permite el envió de informaciones a una pagina remota para ayudar el desarrollo y la corrección de errores del sistema Cultibox. Los datos enviados son: versiones del software, tipo de navegador, versiones de los firmwares de la Cultibox y sistema operativo empleado."
 
 msgid "TOOLTIP_VALUE"
-msgstr "La Cultibox va a apagar o encender el enchufe para alcanzar este valor."
+msgstr "El Cultibox será desactivar esta opción o se tarda en alcanzar este valor. Los límites de valor de control disponibles dependen del sensor y de histéresis (tolerancia) elegido. Para obtener más información, consulte la Ayuda."
 
 msgid "TOOLTIP_DIMMER_VALUE"
 msgstr "La Cultibox utilizará el regulador de intensidad  para emplear exclusivamente la potencia necesaria del equipamiento"
