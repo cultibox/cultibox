@@ -14,7 +14,11 @@ if((isset($_GET['type']))&&(!empty($_GET['type']))) {
 if((isset($_GET['value']))&&(!empty($_GET['value']))) {
     $value=$_GET['value'];
 } else {
-    return 0;
+    if(strcmp("$type","value_program")==0) {
+        $value=0;
+    } else  {
+        return 0;
+    }
 }
 
 
@@ -64,7 +68,7 @@ switch($type) {
                             }
 
                             $plug_type=$_GET['plug_type'];
-                            $check=0;
+                            $check=array();
                             if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) {
                                 $check=check_format_values_program($value,"temp",$tolerance);
                             } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) {
@@ -74,15 +78,15 @@ switch($type) {
                             } else {
                                 $check=check_format_values_program($value,"other",$tolerance);
                             }
-                            if($check!=1) {
-                                echo "$check";
-                                return 0;
+                            if(count($check)==0) {
+                                echo json_encode("error");
+                            } else {
+                                echo json_encode($check);
                             }
                           } else {
-                            echo "error";
-                            return 0;
+                            echo json_encode("error");
                           }
-                          break;
+                          return 0;
     case 'month': if(!check_format_date("$value",$type)) {
                         echo "error";
                     }

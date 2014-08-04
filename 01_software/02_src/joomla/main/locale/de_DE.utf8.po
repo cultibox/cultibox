@@ -897,6 +897,9 @@ msgstr "Export nach SVG"
 msgid "RESET_ZOOM_TITLE"
 msgstr "Abbrechen Zoom"
 
+msgid "AND"
+msgstr "und"
+
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
@@ -1373,13 +1376,13 @@ msgid "ERROR_VALUE_PROGRAM"
 msgstr "Fehler: Der eingegebene Wert muss eine Zahl sein"
 
 msgid "ERROR_VALUE_PROGRAM_TEMP"
-msgstr "Temperaturwert: Es muss zwischen 5 ° C und 60 ° C"
+msgstr "Temperaturwert Es muss zwischen"
 
 msgid "ERROR_VALUE_PROGRAM_HUMI"
-msgstr "Feuchtigkeitswert: Sie muss zwischen 10% 95%"
+msgstr "Feuchtigkeitswert Sie muss zwischen"
 
 msgid "ERROR_VALUE_PROGRAM_CM"
-msgstr "Wert der Höhe des Wassers: es muss zwischen 5cm und 27cm sein"
+msgstr "Wert der Höhe des Wassers es muss zwischen"
 
 msgid "ERROR_ALARM_VALUE"
 msgstr "Der Auslösewert des Alarm muss größer als 0 und kleiner als 100 sein"
