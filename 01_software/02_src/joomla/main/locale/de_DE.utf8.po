@@ -1587,7 +1587,7 @@ msgid "TOOLTIP_SEND_INFOS"
 msgstr "Diese Option aktivieren, können Sie das Senden von Informationen an einen entfernten Ort, um bei der Entwicklung und Korrektur von Fehlern Cultibox System zu unterstützen. Die übermittelten Informationen betreffen: die Software-Version der Browser-Typ, die Firmware-Versionen Ihrer Cultibox und Typ des Betriebssystems"
 
 msgid "TOOLTIP_VALUE"
-msgstr "Die Cultibox erlischt oder ergriffen werden, um diesen Wert zu erreichen."
+msgstr "Die Cultibox wird diese auszuschalten oder ergriffen werden, um diesen Wert zu erreichen. Die Grenzen der Steuerwert verfügbar sind, hängt von der gewählten Sensor und Hysterese (Toleranz). Weitere Informationen finden Sie unter Hilfe."
 
 msgid "TOOLTIP_DIMMER_VALUE"
 msgstr "Die Cultibox die WSC-Laufwerk verwenden, um nur die Leistung erforderlichen Geräte verwenden"

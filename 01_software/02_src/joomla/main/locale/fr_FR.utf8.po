@@ -1587,7 +1587,7 @@ msgid "TOOLTIP_SEND_INFOS"
 msgstr "En activant cette option, vous permettez l'envoie d'informations sur un site distant afin d'aider au développement et à la correction d'erreurs du système Cultibox. Les informations envoyées concernent: la version du logiciel, le type de votre navigateur, les versions des firmwares de la Cultibox et votre type de système d'exploitation"
 
 msgid "TOOLTIP_VALUE"
-msgstr "La Cultibox va éteindre ou allumer la prise pour atteindre cette valeur."
+msgstr "La Cultibox va éteindre ou allumer cette prise pour atteindre cette valeur. Les limites de valeur de régulation disponible dépendent du capteur et de l'hystérésis (tolérance) choisie. Pour plus d'information voir l'aide."
 
 msgid "TOOLTIP_DIMMER_VALUE"
 msgstr "La Cultibox va utiliser la prise variateur pour n'utiliser que la puissance désirée de l'équipement"
