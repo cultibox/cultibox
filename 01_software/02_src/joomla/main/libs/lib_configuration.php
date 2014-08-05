@@ -10,7 +10,6 @@ function check_db() {
     // Define columns of the calendar table
     $conf_index_col = array();
     $conf_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'default_value' => 1);
-    $conf_index_col["CHECK_UPDATE"]         = array ( 'Field' => "CHECK_UPDATE", 'Type' => "varchar(5)", 'default_value' => "True");
     $conf_index_col["VERSION"]              = array ( 'Field' => "VERSION", 'Type' => "varchar(30)", 'default_value' => "1.4.01");
     $conf_index_col["COLOR_HUMIDITY_GRAPH"] = array ( 'Field' => "COLOR_HUMIDITY_GRAPH", 'Type' => "varchar(30)", 'default_value' => "blue");
     $conf_index_col["COLOR_TEMPERATURE_GRAPH"] = array ( 'Field' => "COLOR_TEMPERATURE_GRAPH", 'Type' => "varchar(30)", 'default_value' => "red");

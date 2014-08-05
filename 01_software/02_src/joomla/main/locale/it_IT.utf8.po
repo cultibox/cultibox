@@ -166,9 +166,6 @@ msgstr "Network Password"
 msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
 msgstr "Confermare la password"
 
-msgid "CHECK_UPDATE"
-msgstr "Controlla aggiornamenti automaticamente"
-
 msgid "CHECK_STATISTICS"
 msgstr "L'invio di informazioni per aiutare a sviluppare"
 
@@ -1621,9 +1618,6 @@ msgstr "Il controllo secondario è un complicato e diverso funzionamento del con
 
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Il prezzo per chilowattora. Compilare questo campo viene utilizzato per calcolare il costo della vostra installazione nel menu 'costo'"
-
-msgid "TOOLTIP_CHECK_UPDATE"
-msgstr "Verificare se sono disponibili aggiornamenti e offerte per scaricare l'appropriato"
 
 msgid "TOOLTIP_COST_TYPE"
 msgstr "Il sistema elettrico può essere impostato in modo 'standard': si paga per kilowatt-ora per lo stesso prezzo in qualsiasi ora del giorno. È inoltre possibile definire l'installazione come 'pieno / tempo Hollow Time': il prezzo delle ore killowatt varia a seconda del momento in cui si consumano."

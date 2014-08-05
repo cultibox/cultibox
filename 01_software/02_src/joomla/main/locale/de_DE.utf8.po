@@ -166,9 +166,6 @@ msgstr "Passwort-Netzwerk"
 msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
 msgstr "Passwort bestätigen"
 
-msgid "CHECK_UPDATE"
-msgstr "Überprüfen Sie, ob Updates automatisch"
-
 msgid "CHECK_STATISTICS"
 msgstr "Senden von Informationen, um die Entwicklung"
 
@@ -1621,9 +1618,6 @@ msgstr "Das sekundäre Steuer ist eine komplizierte und verschiedene Betriebs de
 
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Der Preis pro Kilowattstunde. Füllen Sie bitte dieses Feld wird verwendet, um die Kosten für die Installation im Menü Kosten berechnen"
-
-msgid "TOOLTIP_CHECK_UPDATE"
-msgstr "Überprüfen Sie, ob Updates verfügbar sind und bietet an, den entsprechenden Download"
 
 msgid "TOOLTIP_COST_TYPE"
 msgstr "Ihre elektrische System kann so Standard eingestellt werden: Sie zahlen pro Kilowattstunde für den gleichen Preis zu jeder Stunde des Tages. Sie können auch Ihre Installation definieren als voll / Time Hollow Time : der Preis der Killowatt Stunden variiert je nach der Zeit, zu der Sie verbrauchen."

@@ -166,9 +166,6 @@ msgstr "Mot de passe du réseau"
 msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
 msgstr "Confirmation du mot de passe"
 
-msgid "CHECK_UPDATE"
-msgstr "Vérifier automatiquement la présence de mises à jour"
-
 msgid "CHECK_STATISTICS"
 msgstr "Envoi d'informations pour aider le développement"
 
@@ -1621,9 +1618,6 @@ msgstr "La régulation secondaire a un fonctionnement compliqué et différent d
 
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Le prix du  kilowatt-heure. Renseigner ce champ permet de calculer le prix de  revient de votre installation dans le menu 'Coût'"
-
-msgid "TOOLTIP_CHECK_UPDATE"
-msgstr "Vérifier si des mises à jour sont disponibles et vous propose de les télécharger le cas échéant"
 
 msgid "TOOLTIP_COST_TYPE"
 msgstr "Votre installation électrique peut être définie de façon 'standard': vous payez le kilowatt-heure au même prix à n'importe quelle heure de la journée. Vous pouvez aussi définir votre installation comme étant en 'Heure pleine/Heure creuse': le prix du kilowatt-heure varie en fonction de l'heure à laquelle vous le consommez."
