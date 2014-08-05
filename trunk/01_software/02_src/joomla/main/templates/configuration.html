@@ -46,18 +46,9 @@
 
 <div id="div_user_interface" style="display:none">
     <table class="conf-table">
-        <tr>
-             <td class="conf-marge"></td>
-             <td class="conf-marge-td"><?php echo __('CHECK_UPDATE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CHECK_UPDATE'); ?>" /></td>
-             <td><select name="check_update">
-                <option value="True" <?php if(strcmp("$update","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
-                <option value="False" <?php if(strcmp("$update","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
-             </select></td>
-            <td></td>
-       </tr>
        <tr>
              <td class="conf-marge"></td>
-             <td><?php echo __('CHECK_STATISTICS'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SEND_INFOS'); ?>" /></td>
+             <td class="conf-marge-td"><?php echo __('CHECK_STATISTICS'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SEND_INFOS'); ?>" /></td>
              <td><select name="statistics">
                 <option value="True" <?php if(strcmp("$stats","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
                 <option value="False" <?php if(strcmp("$stats","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>

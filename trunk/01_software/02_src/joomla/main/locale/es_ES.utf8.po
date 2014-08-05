@@ -166,9 +166,6 @@ msgstr "Escriba la contraseña de la red"
 msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
 msgstr "Confirmar contraseña"
 
-msgid "CHECK_UPDATE"
-msgstr "Comprobación automática actualización"
-
 msgid "CHECK_STATISTICS"
 msgstr "Enviar informaciones para ayudar el desarrollo"
 
@@ -1621,9 +1618,6 @@ msgstr "la regulación segundaria tiene un funcionamiento complejo y distinto de
 
 msgid "TOOLTIP_COST_PRICE"
 msgstr "Precio del KVatio-hora. Llenar este campo permite calcular el precio de su instalación en el menú 'Coste'"
-
-msgid "TOOLTIP_CHECK_UPDATE"
-msgstr "Comprobar si las actualizaciones están disponibles y si se pueden descargar."
 
 msgid "TOOLTIP_COST_TYPE"
 msgstr "Su instalación eléctrica se puede configurar de modo estándar: usted paga el KVatio-hora al mismo precio cual sea la hora del día. Se puede definir su instalación como ‘tarifa alta/tarifa baja’: el precio del KVatio-hora cambia según la hora del cunsumo."

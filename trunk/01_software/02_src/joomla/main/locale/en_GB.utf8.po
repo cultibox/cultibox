@@ -166,9 +166,6 @@ msgstr "Password network"
 msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
 msgstr "Confirm password"
 
-msgid "CHECK_UPDATE"
-msgstr "Check for updates automatically"
-
 msgid "CHECK_STATISTICS"
 msgstr "Sending information to help develop"
 

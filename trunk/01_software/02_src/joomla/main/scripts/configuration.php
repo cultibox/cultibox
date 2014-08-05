@@ -41,7 +41,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
 //============================== GET OR SET CONFIGURATION PART ====================
 //update_conf sert à définir si la configuration impacte la carte SD
 $conf_arr = array();
-$conf_arr["CHECK_UPDATE"]           = array ("update_conf" => "0", "var" => "update");
 $conf_arr["COLOR_COST_GRAPH"]       = array ("update_conf" => "0", "var" => "color_cost");
 $conf_arr["RECORD_FREQUENCY"]       = array ("update_conf" => "1", "var" => "record_frequency");
 $conf_arr["POWER_FREQUENCY"]        = array ("update_conf" => "1", "var" => "power_frequency");
