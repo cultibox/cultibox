@@ -282,28 +282,30 @@ $(document).ready(function(){
                 });
             }
            
-            
             var check_update=true;
             $("select").each(function() {
                 newValue    = $( this ).find(":selected").val();
                 varToUpdate = $( this ).attr('name');
 
-                $.ajax({
-                    type: "GET",
-                    cache: false,
-                    async: false,
-                    url: "../../main/modules/external/update_configuration.php",
-                    data: {
-                        value:newValue,
-                        variable:varToUpdate,
-                        session_id:session_id,
-                        sd_card:sd_card
-                    }
-                }).done(function (data) {
-                    if($.parseJSON(data)!="") {  
-                        check_update=false;
-                    }
-                });
+
+                if($.trim(varToUpdate)!="") {
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        async: false,
+                        url: "../../main/modules/external/update_configuration.php",
+                        data: {
+                            value:newValue,
+                            variable:varToUpdate,
+                            session_id:session_id,
+                            sd_card:sd_card
+                        }
+                    }).done(function (data) {
+                        if($.parseJSON(data)!="") {  
+                            check_update=false;
+                        }
+                    });
+                }
             });
 
 
@@ -367,6 +369,7 @@ $(document).ready(function(){
             }
 
 
+
             //RTC OFFSET process:
             newValue    = $("#rtc_offset").val();
             varToUpdate = $("#rtc_offset").attr('name');
@@ -392,7 +395,7 @@ $(document).ready(function(){
             newValue    = $("#reset_minmax").val();
             varToUpdate = $("#reset_minmax").attr('name');
 
-             $.ajax({
+            $.ajax({
                 type: "GET",
                 cache: false,
                 async: false,

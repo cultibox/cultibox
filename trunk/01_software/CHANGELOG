@@ -1,5 +1,6 @@
 Cultibox (1.4.07) precise; urgency=low
     + Suppression de l'option de vérification des mises à jours (vérification automatiquement faite)
+    + Correction de l'enregistrement de la configuration
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Thu Aug 05  10:17:41 CEST 2014
 
