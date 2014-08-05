@@ -134,9 +134,11 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    }
 
 
-   if((!empty($regul_senss))&&(isset($regul_senss))&&(strcmp("$old_senss","$regul_senss")!=0)==0) {
+   if(strcmp("$regul","True")==0) {
+    if((!empty($regul_senss))&&(isset($regul_senss))&&(strcmp("$old_senss","$regul_senss")!=0)) {
        insert_plug_conf("PLUG_SENSS",$nb,"$regul_senss",$main_error);
        $update_program=true;
+    }
    }
 
    if((!empty($second_tol))&&(isset($second_tol))&&(strcmp("$old_second_tol","$second_tol")!=0)) {
@@ -237,7 +239,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
        if(count($plugconf)>0) {
             if(!check_sd_card($sd_card)) {
                 $main_error[]=__('ERROR_WRITE_SD_PLUGCONF');
-            } else {
+            } else {    
                 if(!write_plugconf($plugconf,$sd_card)) {
                     $main_error[]=__('ERROR_WRITE_SD_PLUGCONF');    
                 }
