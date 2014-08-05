@@ -393,6 +393,9 @@ msgstr "Résumé des régulations secondaires actives pour les prises sélection
 msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Régulation secondaire"
 
+msgid "SUMARY_REGUL_SENSO"
+msgstr "Déclenchement si"
+
 msgid "TEMP_REGUL"
 msgstr "la température"
 
