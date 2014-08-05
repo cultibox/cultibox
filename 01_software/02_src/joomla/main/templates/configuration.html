@@ -92,7 +92,7 @@
                 <?php echo __('CONFIGURE_COST_COLOR'); ?>:
             </td>
             <td>
-                <select name="color_cost_graph">
+                <select name="color_cost_graph" id="color_cost_graph">
                 <?php 
                     foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
                         $color_lang = "COLOR_" . strtoupper($value);
@@ -120,7 +120,7 @@
     <td class="conf-marge"></td>
     <td><?php echo __('CONFIGURE_NB_PLUGS'); ?>:</td>
     <td>
-       <select name="nb_plugs">
+       <select name="nb_plugs" id="nb_plugs">
           <?php
           for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_SELECTABLE_PLUG'];$i++) {
              if(!strcmp ("$i","$nb_plugs")) {
@@ -141,7 +141,7 @@
        <?php echo __('CONFIGURE_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
     </td>
     <td>
-       <select name="record_frequency">
+       <select name="record_frequency" id="record_frequency">
           <?php
           foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
              if(!strcmp ("$value","$record_frequency")) {
@@ -161,7 +161,7 @@
        <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
     </td>
     <td>
-       <select name="power_frequency">
+       <select name="power_frequency" id="power_frequency">
           <?php
           foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
              if(!strcmp ("$value","$power_frequency")) {
@@ -181,7 +181,7 @@
        <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
     </td>
     <td>
-       <select name="update_plugs_frequency">
+       <select name="update_plugs_frequency" id="update_plugs_frequency">
           <?php
           foreach($GLOBALS['LIST_UPDATE_FREQUENCY'] as $value) {
              if(strcmp ("$value","-1")==0) { 
