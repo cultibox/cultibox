@@ -46,9 +46,9 @@
         foreach (calendar\get_external_calendar_file() as $fileArray)
         {
             if ($fileArray['activ'] == 1)
-                calendar\read_event_from_XML($fileArray['filename'],$calendar,strtotime($start),strtotime($end));
+                calendar\read_event_from_XML($fileArray['filename'],$calendar,strtotime($start)-7200,strtotime($end));
         }
-            
+           
         write_calendar($sd_card,$calendar,$main_error,strtotime($start),strtotime($end));
     }
     
