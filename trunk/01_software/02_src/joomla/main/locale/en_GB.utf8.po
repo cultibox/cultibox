@@ -393,6 +393,9 @@ msgstr "Summary of active secondary regulations made for the selected"
 msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Regulating outlet"
 
+msgid "SUMARY_REGUL_SENSO"
+msgstr "Trigger if"
+
 msgid "TEMP_REGUL"
 msgstr "the temperature"
 

@@ -390,6 +390,9 @@ msgstr "Nessuna scheda SD rilevata"
 msgid "SUMARY_REGUL_TITLE"
 msgstr "Sintesi della normativa secondaria attivi fatte per la scelta"
 
+msgid "SUMARY_REGUL_SENSO"
+msgstr "Innescherà se"
+
 msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Regolamento della decisione"
 

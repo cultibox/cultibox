@@ -393,6 +393,9 @@ msgstr "Zusammenfassung der aktiven Sekundär Vorschriften für den ausgewählte
 msgid "SUMARY_REGUL_SUBTITLE"
 msgstr "Sekundärregelung"
 
+msgid "SUMARY_REGUL_SENSO"
+msgstr "Auslösen, wenn"
+
 msgid "TEMP_REGUL"
 msgstr "Temperatur"
 
