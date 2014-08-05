@@ -44,9 +44,10 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
                     //Cleaning wrong value - deleting special char 
                     $temp[$i]=rtrim($temp[$i]);
                     $temp[$i]=str_replace(" ","",$temp[$i]);
-                    $temp[$i]=str_replace("0000","",$temp[$i]);
+                    if(strcmp($temp[$i],"0000")==0) {
+                        $temp[$i]="";
+                    }
                 }
-
 
                 //Setting other fild from the data line: date catch, time catch
                 $date_catch="20".substr($temp[0], 0, 2)."-".substr($temp[0],2,2)."-".substr($temp[0],4,2);
