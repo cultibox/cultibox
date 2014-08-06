@@ -1359,7 +1359,7 @@ $(document).ready(function() {
         // If this curve is used
         if (chart.yAxis[i].userOptions.title.text != "")
         {
-            if(chart.yAxis[i].series[0].options.curveType != "program") {
+            if(chart.yAxis[i].series[0] && chart.yAxis[i].series[0].options.curveType != "program") {
                 extremes = chart.yAxis[i].getExtremes();
 
                 // Sensor informations

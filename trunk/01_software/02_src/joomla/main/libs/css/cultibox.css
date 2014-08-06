@@ -170,7 +170,11 @@ td.log-marge-day-title {
 }
 
 td.log-marge-day-field {
-   width: 32%;
+   width: 20%;
+}
+
+td.log-marge-day-field-sensor {
+   width: 55%;
 }
 
 td.log-marge-day-title-select {
