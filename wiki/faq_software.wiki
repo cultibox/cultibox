@@ -178,14 +178,14 @@ En remplaçant le chemin de votre ancien navigateur firefox par le nouveau, par 
 
  * Votre nouveau raccourci sera présent sur votre bureau. Faites un clic droit dessus puis cliquez sur *Propriétés*.
 
- * Dans la fenêtre qu is'ouvre, vous verrez un champ nommé *Cible*. AJoutez à la fin, après le " rajoutez un espace puis tapez ce quit suit:
+ * Dans la fenêtre qui s'ouvre, vous verrez un champ nommé *Cible*. Après le caractère ", rajoutez un espace puis tapez ce quit suit:
 {{{
 http://localhost:6891/cultibox/
 }}}
 
 Validez en cliquant sur le bouton *OK*
 
- * Votre nouveau raccourcis pointe vers le logiciel Cultibox à partir du nouveau navigateur choisi.
+ * Votre nouveau raccourci pointe vers le logiciel Cultibox à partir du nouveau navigateur choisi.
 
 
 
