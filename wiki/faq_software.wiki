@@ -111,7 +111,7 @@ Afin d'installer le logiciel, deux solutions sont possibles:
  * Si cette méthode ne fonctionne pas, il vous faudra baisser le niveau de *Gatekeeper*. Pour cela dans le Menu Apple > Préférences Système > Sécurité et confidentialité > Onglet Général, sous l’intitulé " Autoriser les applications téléchargées de" selectionnez "Nimporte oû".  Cela baissera le niveau de sécurité de Gatekeeper le temps d'installer le logiciel. Vous pourrez remettre la configuration d'origine après l'installation.
 
 
-= Comment changer le navigateur web (Firefox, Chrome, Internet Explorer...) utilisé lors du lancement du logiciel =
+= Comment changer le navigateur web (Firefox, Chrome, Internet Explorer...) utilisé lors du lancement du logiciel? =
 
 Au lancement du logiciel Cultibox, votre navigateur par défaut est utilisé. Si vous voulez changer le navigateur utilisé, sans changer la configuration de votre ordinateur, voici la marche à suivre:
 
@@ -123,7 +123,7 @@ chown -R <votre_nom_utilisateur> /Applications/cultibox.app
 
 Votre mot de passe vous sera demandé, rentrez le et tapez sur la touche "Entrer". Vous aurez maintenant les droits sur les fichiers Cultibox. Pour information le problème des droits est corrigé à partir de la version stable 1.4.08.
 
-* Si l'on veut utiliser Firefox comme navigateur au lieu du navigateur par défaut (Firefox est présent dans */Application/Firefox.app/Contents/MacOS/firefox*), il faut maintenant modifier le fichier qui lance le logiciel qui se trouve dans: Applications -> Cultibox (celui avec l'icône). Faites un clic droit sur le fichier et choisissez "Afficher le contenu du paquet", puis aller dans Contents -> MacOS et vous verrez le fichier nommé "cultibox". Faites un clic droit dessus et choisissez "Ouvrir avec" puis "Autre". Dans la liste des programmes choisissez d'ouvrir le fichier avec "TextEdit". Il vous faudra modifier la ligne:
+ * Si l'on veut utiliser Firefox comme navigateur au lieu du navigateur par défaut (Firefox est présent dans */Application/Firefox.app/Contents/MacOS/firefox*), il faut maintenant modifier le fichier qui lance le logiciel qui se trouve dans: Applications -> Cultibox (celui avec l'icône). Faites un clic droit sur le fichier et choisissez "Afficher le contenu du paquet", puis aller dans Contents -> MacOS et vous verrez le fichier nommé "cultibox". Faites un clic droit dessus et choisissez "Ouvrir avec" puis "Autre". Dans la liste des programmes choisissez d'ouvrir le fichier avec "TextEdit". Il vous faudra modifier la ligne:
 
 {{{
 open http://localhost:6891/cultibox
@@ -137,10 +137,10 @@ par celle la:
 }}}
 
 
-* Sauvegarder le fichier et cela devrait fonctionner.
+ * Sauvegarder le fichier et cela devrait fonctionner.
 
 
-Note1: La commande "open" ouvre le logiciel avec le navigateur par défaut . Si vous modifiez votre navigateur par défaut cela modifiera le navigateur ouvert avec le logiciel. 
+*Note1:* La commande "open" ouvre le logiciel avec le navigateur par défaut . Si vous modifiez votre navigateur par défaut cela modifiera le navigateur ouvert avec le logiciel. 
 
-Note2: Cette manipulation devra être répétée si vous installez une mise à jour Cultibox, qui resynchronise les fichiers avec la version officielle.
+*Note2:* Cette manipulation devra être répétée si vous installez une mise à jour Cultibox, qui resynchronise les fichiers avec la version officielle.
 
