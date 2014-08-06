@@ -1,3 +1,9 @@
+Cultibox (1.4.08) precise; urgency=low
+    + Correction des packages Linux
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Aug 06  13:21:19 CEST 2014
+
+
 Cultibox (1.4.07) precise; urgency=low
     + Suppression de l'option de vérification des mises à jours (vérification automatiquement faite)
     + Correction de l'enregistrement de la configuration
