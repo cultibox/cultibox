@@ -41,7 +41,9 @@ Si vous:
  * Éditez une annotation: une autre fenêtre s'ouvrira ressemblant exactement à la fenêtre de création mais contenant les informations déjà enregistrées, vous permettant ainsi de les modifier
  * Supprimez une annotation: une confirmation vous sera demandé avec de supprimer définitivement une annotation
 
-Il est à noter que seul les événements que vous avez créé manuellement sont éditable/supprimable. Les événements liés aux fichiers xml (comme le calendrier lunaire) ne peuvent pas être modifié ainsi.
+*Note1:* Seul les événements que vous avez créé manuellement sont éditable/supprimable. Les événements liés aux fichiers xml (comme le calendrier lunaire) ne peuvent pas être modifié ainsi.
+
+*Note2:* Si vous avez défini des programmes journaliers, une liste vous donnera la possibilité de définir un évènement créé comme programme journalier. Sinon, les évènements créés seront des évènements ordinaires.
 
 = Autres fonctionnalités des annotations =
 
