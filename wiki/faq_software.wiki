@@ -121,7 +121,7 @@ Au lancement du logiciel Cultibox, votre navigateur par défaut est utilisé. Si
 chown -R <votre_nom_utilisateur> /Applications/cultibox.app
 }}}
 
-Votre mot de passe vous sera demandé, rentrez le et tapez sur la touche "Entrer". Vous aurez maintenant les droits sur les fichiers Cultibox. Pour information le problème des droits est corrigé à partir de la version stable 1.4.08.
+Votre mot de passe vous sera demandé, rentrez le et tapez sur la touche *Entrer*. Vous aurez maintenant les droits sur les fichiers Cultibox. Pour information le problème des droits est corrigé à partir de la version stable 1.4.08.
 
  * Si l'on veut utiliser Firefox comme navigateur au lieu du navigateur par défaut (Firefox est présent dans */Application/Firefox.app/Contents/MacOS/firefox*), il faut maintenant modifier le fichier qui lance le logiciel qui se trouve dans: *Applications -> Cultibox* (celui avec l'icône). Faites un clic droit sur le fichier et choisissez *Afficher le contenu du paquet*, puis aller dans *Contents -> MacOS* et vous verrez le fichier nommé *cultibox*. Faites un clic droit dessus et choisissez *Ouvrir avec* puis *Autre*. Dans la liste des programmes choisissez d'ouvrir le fichier avec *TextEdit*. Il vous faudra modifier la ligne:
 {{{
@@ -138,7 +138,55 @@ par celle la:
  * Sauvegarder le fichier et cela devrait fonctionner.
 
 
-*Note1:* La commande "open" ouvre le logiciel avec le navigateur par défaut . Si vous modifiez votre navigateur par défaut cela modifiera le navigateur ouvert avec le logiciel. 
+*Note1:* La commande *open* ouvre le logiciel avec le navigateur par défaut . Si vous modifiez votre navigateur par défaut cela modifiera le navigateur ouvert avec le logiciel. 
 
 *Note2:* Cette manipulation devra être répétée si vous installez une mise à jour Cultibox, qui resynchronise les fichiers avec la version officielle.
 
+
+
+*Pour Linux Ubuntu:*
+
+ * Ouvrez un terminal et éditez le fichier */usr/share/applications/cultibox.desktop*. Ce fichier correspond à l'icône Cultibox dans la recherche des logiciels:
+{{{
+sudo gedit /usr/share/applications/cultibox.desktop
+}}}
+
+Votre mot de passe vous sera demandé, rentrez le et tapez sur la touche *Entrer*.
+
+ * Modifiez la ligne:
+{{{
+/usr/bin/firefox http://localhost:6891/cultibox/
+}}}
+
+En remplaçant le chemin de votre ancien navigateur firefox par le nouveau, par exemple pour Google Chrome:
+{{{
+/opt/google/chrome/chrome http://localhost:6891/cultibox/
+}}}
+
+ * Sauvegardez et fermez le fichier, votre nouvel explorateur sera utlisé au prochain lancement du logiciel.
+
+*Note1:* Cette manipulation devra être répétée si vous installez une mise à jour Cultibox, qui resynchronise les fichiers avec la version officielle.
+
+
+*Pour Windows:*
+
+ * Il vous faudra créer un nouveau raccourci qui pointe vers le logiciel Cultibox, pour cela, faites un clic droit sur le Bureau et choisissez *Nouveau -> Raccourci*. Une fenêtre s'ouvre afin de configurer votre raccourci.
+
+ * Dans la nouvelle fenêtre cliquez sur *Parcourir* pour aller selectionner le navigateur web à utiliser (par exemple sous WIndows 7, Internet Explorer se trouve dans: C:\Programmes\Internet Explorer\iexplore.exe). Puis cliquez sur *Suivant*.
+
+ * Entrez le nom de votre raccourci puis cliquez sur *Terminer*.
+
+ * Votre nouveau raccourci sera présent sur votre bureau. Faites un clic droit dessus puis cliquez sur *Propriétés*.
+
+ * Dans la fenêtre qu is'ouvre, vous verrez un champ nommé *Cible*. AJoutez à la fin, après le " rajoutez un espace puis tapez ce quit suit:
+{{{
+http://localhost:6891/cultibox/
+}}}
+
+Validez en cliquant sur le bouton *OK*
+
+ * Votre nouveau raccourcis pointe vers le logiciel Cultibox à partir du nouveau navigateur choisi.
+
+
+
+ 
