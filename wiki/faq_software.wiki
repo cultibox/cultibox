@@ -123,7 +123,7 @@ chown -R <votre_nom_utilisateur> /Applications/cultibox.app
 
 Votre mot de passe vous sera demandé, rentrez le et tapez sur la touche "Entrer". Vous aurez maintenant les droits sur les fichiers Cultibox. Pour information le problème des droits est corrigé à partir de la version stable 1.4.08.
 
- * Si l'on veut utiliser Firefox comme navigateur au lieu du navigateur par défaut (Firefox est présent dans */Application/Firefox.app/Contents/MacOS/firefox*), il faut maintenant modifier le fichier qui lance le logiciel qui se trouve dans: Applications -> Cultibox (celui avec l'icône). Faites un clic droit sur le fichier et choisissez "Afficher le contenu du paquet", puis aller dans Contents -> MacOS et vous verrez le fichier nommé "cultibox". Faites un clic droit dessus et choisissez "Ouvrir avec" puis "Autre". Dans la liste des programmes choisissez d'ouvrir le fichier avec "TextEdit". Il vous faudra modifier la ligne:
+ * Si l'on veut utiliser Firefox comme navigateur au lieu du navigateur par défaut (Firefox est présent dans */Application/Firefox.app/Contents/MacOS/firefox*), il faut maintenant modifier le fichier qui lance le logiciel qui se trouve dans: *Applications -> Cultibox* (celui avec l'icône). Faites un clic droit sur le fichier et choisissez *Afficher le contenu du paquet*, puis aller dans *Contents -> MacOS* et vous verrez le fichier nommé *cultibox*. Faites un clic droit dessus et choisissez *Ouvrir avec* puis *Autre*. Dans la liste des programmes choisissez d'ouvrir le fichier avec *TextEdit*. Il vous faudra modifier la ligne:
 
 {{{
 open http://localhost:6891/cultibox
