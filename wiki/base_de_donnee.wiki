@@ -36,12 +36,12 @@ c:\cultibox\xampp\mysql\bin\mysqldump.exe --defaults-extra-file="c:\cultibox\xam
 La base de données est constituée de 9 tables :
  * calendar : sauvegarde les données du calendrier
  * configuration : gère les informations de la configuration
- * historic : enregistre l'historique des modifications apportées au logiciel par l'utilisateur
  * informations : données concernant la Cultibox et l'ordinateur utilisé
  * logs : toutes les données climatiques sont enregistrées dans cette table
  * notes: notes affichées sur l'écran de bienvenu
  * plugs : la configuration des prises est enregistrée dans cette table
  * power : registre de la puissance consommée des prises
+ * program_index : sauvegarde et gère les programmes journaliers
  * programs : les programmes sont enregistrés dans cette table
  * sensors: cette table contient le type de vos différents capteurs branchés sur la Cultibox
 
@@ -89,7 +89,6 @@ Cette table contient la configuration globale.
 
 || *Field*                 || *Type*       || *Null* || *Key* || *Default*   || *Extra*        ||
 || id                      || int(11)      || NO   || PRI || NULL            || auto_increment ||
-|| CHECK_UPDATE            || varchar(5)   || NO   ||     || True            ||                ||
 || VERSION                 || varchar(30)  || NO   ||     || 1.1.38-noarch   ||                ||
 || COLOR_HUMIDITY_GRAPH    || varchar(30)  || NO   ||     || blue            ||                ||
 || COLOR_WATER_GRAPH       || varchar(30)  || NO   ||     || orange          ||                ||
@@ -105,7 +104,6 @@ Cette table contient la configuration globale.
 || POWER_FREQUENCY         || int(11)      || NO   ||     || 5               ||                ||
 || NB_PLUGS                || int(11)      || NO   ||     || 3               ||                ||
 || UPDATE_PLUGS_FREQUENCY  || int(20)      || NO   ||     || -1              ||                ||
-|| SHOW_POPUP              || varchar(5)   || NO   ||     || True            ||                ||
 || ALARM_ACTIV             || varchar(4)   || NO   ||     || 0000            ||                ||
 || ALARM_VALUE             || varchar(5)   || NO   ||     || 50.00           ||                ||
 || COST_PRICE              || decimal(6,4) || NO   ||     || 0.1249          ||                ||
@@ -118,7 +116,6 @@ Cette table contient la configuration globale.
 || SECOND_REGUL            || varchar(5)   || NO   ||     || False           ||                ||
 || ADVANCED_REGUL_OPTIONS  || varchar(5)   || NO   ||     || False           ||                ||
 || SHOW_COST               || varchar(5)   || NO   ||     || False           ||                ||
-|| SHOW_HISTORIC           || varchar(5)   || NO   ||     || False           ||                ||
 || RESET_MINMAX            || varchar(5)   || NO   ||     || 00:00           ||                ||
 || WIFI                    || boolean      || NO   ||     || false           ||                ||
 || WIFI_SSID               || varchar(32)  || YES  ||     ||                 ||                ||
@@ -127,22 +124,6 @@ Cette table contient la configuration globale.
 || WIFI_IP                 || varchar(15)  || NO   ||     || 000.000.000.000 ||                ||
 || WIFI_IP_MANUAL          || boolean      || NO   ||     || false           ||                ||
 || RTC_OFFSET              || DECIMAL(3,2) || NO   ||     || 0               ||                ||
-|| ACTIV_DAILY_PROGRAM     || varchar(5)   || NO   ||     || False           ||                ||
-|| COLOR_PROGRAM_GRAPH     || varchar(30)  || YES  ||     || red             ||                ||
-
-== historic ==
-
-=== Introduction ===
-
-Cette table contient l'historique des modifications apportées par le client au logiciel.
-
-=== Structure ===
-
-|| *Field*     || *Type*        || *Null* || *Key* || *Default* || *Extra*  ||
-|| id        || int(11)      || NO   || PRI || NULL    || auto_increment ||
-|| timestamp || varchar(25)  || NO   ||     || NULL    ||                ||
-|| action    || varchar(300) || NO   ||     || NULL    ||                ||
-|| type      || varchar(15)  || NO   ||     || NULL    ||                ||
 
 == informations ==
 
@@ -212,7 +193,6 @@ Cette table contient la configuration des prises.
 || PLUG_SENSO            || varchar(1)   || NO   ||     || T       ||                ||
 || PLUG_SENSS            || varchar(1)   || NO   ||     || +       ||                ||
 || PLUG_REGUL_VALUE      || decimal(3,1) || NO   ||     || 35.0    ||                ||
-|| PLUG_ENABLED          || varchar(5)   || NO   ||     || True    ||                ||
 || PLUG_SECOND_TOLERANCE || decimal(3,1) || NO   ||     || 0.0     ||                ||
 || PLUG_COMPUTE_METHOD   || varchar(1)   || NO   ||     || M       ||                ||
 

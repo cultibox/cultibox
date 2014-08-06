@@ -20,5 +20,4 @@ Pour installer le logiciel, rendez-vous sur le [https://code.google.com/p/cultib
   * [gui_soft_cal Calendrier]
     * [gui_soft_cal_lunar Calendrier lunaire]
   * [gui_soft_wizard Assistant de programmation]
-  * [gui_soft_historic Historique des modifications]
 
