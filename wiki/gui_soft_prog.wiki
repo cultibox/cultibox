@@ -153,6 +153,7 @@ Il est possible de:
  * [gui_soft_prog#Effacer_un_ou_tous_les_programmes Effacer un ou tous les programmes des prises]
  * [gui_soft_prog#Exporter_un_programme Exporter le programme]
  * [gui_soft_prog#Importer_un_programme Importer un programme]
+ * [gui_soft_prog#Gérer_les_programmes_journaliers Gérer les programmes journaliers]
 
 == Ajouter ou supprimer une prise ==
 
@@ -191,3 +192,13 @@ Par exemple :
 }}}
 
 Indique que la prise doit être allumée (99.9) de 08h00m00s à 20h00m00s puis que de 21h00m00s à 22h30m00s une régulation de 18.5 doit être appliquée.
+
+= Gérer les programmes journaliers = 
+
+Les dernières options vous permettent de gérer vos programmes journaliers grâce à plusieurs actions:
+ 
+ * en ouvrant un jeu de programmes déja enregistré, vous appliquez ce jeu de programmes aux prises actuellement configurées
+
+ * en enregistrant un jeu de programmes correspondant aux programmes actuellement configurés, il sera possible de définir des programmes journaliers à partir de l'onglet *Calendrier* ou encore d'appliquer un jeu de programmes aux prises actuellement configurées
+
+ * en supprimant un jeu de programmes enregistré
