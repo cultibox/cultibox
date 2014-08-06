@@ -38,8 +38,6 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_plugs.png
 
  * Sélectionner le numéro de la prise qui va servir pour piloter la pompe
  
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programm_water_level_1.png
- 
  * Dans la liste déroulante associée au type d'élément branché, sélectionner "Pompe à eau"
  
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programm_water_level_2.png
