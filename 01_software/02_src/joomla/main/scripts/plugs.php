@@ -42,7 +42,8 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $main_error[]=__('ERROR_SD_CARD');
 }
 
-for($nb=1;$nb<=$nb_plugs;$nb++) {
+if(((isset($submit))&&(!empty($submit)))||((isset($jumpto))&&(!empty($jumpto)))) {
+  for($nb=1;$nb<=$nb_plugs;$nb++) {
    //$id=getvar("plug_id${nb}");
    $name=getvar("plug_name${nb}");
    $type=getvar("plug_type${nb}");
@@ -212,8 +213,12 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
             } 
         }
    }
+  }
+}
 
 
+
+for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$main_error);
    $plug_type{$nb}=get_plug_conf("PLUG_TYPE",$nb,$main_error);
    $plug_power{$nb}=get_plug_conf("PLUG_POWER",$nb,$main_error);
@@ -227,7 +232,6 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_compute_method{$nb}=get_plug_conf("PLUG_COMPUTE_METHOD",$nb,$main_error);
 
    $plug_sensor[$nb]=get_plug_regul_sensor($nb,$main_error);
-
 }
 
 
