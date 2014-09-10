@@ -346,33 +346,33 @@ function save_program_on_sd($sd_card,$program,$filename = "plugv") {
     
     // Init out program file contants
     $prog="";
-    $nbPlug=count($program);
+    $nbProgramChangement = count($program);
     $shorten=false;
 
-    // Cjeck if there are some plugs
-    if($nbPlug == 0)
+    // Check if there are some plugs
+    if($nbProgramChangement == 0)
         return false;
     
     // Limit nb plugs to max allowed
-    if($nbPlug>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
-        $nbPlug=$GLOBALS['PLUGV_MAX_CHANGEMENT'];
+    if($nbProgramChangement > $GLOBALS['PLUGV_MAX_CHANGEMENT']) {
+        $nbProgramChangement = $GLOBALS['PLUGV_MAX_CHANGEMENT'];
         $shorten=true;
     }
 
-    // Complet nbPlug variable up to 3 digits
-    while(strlen($nbPlug)<3)
-        $nbPlug="0$nbPlug";
+    // Complet nbProgramChangement variable up to 5 digits
+    while(strlen($nbProgramChangement) < 5)
+        $nbProgramChangement = "0$nbProgramChangement";
     
     // Add header of the file
-    $prog=$nbPlug."\r\n";
+    $prog = $nbProgramChangement . "\r\n";
 
     // If we have to reduce number of change
     if($shorten) {
         // For each line of the program add it to file
-        for($i=0; $i<$nbPlug-1; $i++) 
+        for($i=0; $i < $nbProgramChangement - 1; $i++) 
             $prog=$prog."$program[$i]"."\r\n";
     } else {
-        for($i=0; $i<$nbPlug; $i++) 
+        for($i=0; $i < $nbProgramChangement; $i++) 
             $prog=$prog."$program[$i]"."\r\n";
     }
 
