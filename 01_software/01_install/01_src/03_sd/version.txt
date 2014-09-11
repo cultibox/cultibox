@@ -11,6 +11,41 @@
 + Bug can be view at adress : http://code.google.com/p/cultibox                +
 +------------------------------------------------------------------------------+
 
++ Version 2.20
+   Comment:
+   Issues :
+      796: [programme] "marche " sur pompe à eau
+      761: [Cultibox] régulation + action manuelle
+      839: [programme] chg de jour avec programme au jour sans carte SD
+      842: [prises][cultibox] fonctionnement avec plage de fonctionnement
+      841: [alarme] mode de fonctionnement avancé
+   To test :
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      824 : [PROG] Fonctionnement inattendu
+      835 : [Régulation] anomalie de fonctionnement
+      836 : [Régulation] Pilotage non correcte pour effecteur négatif
+      840 : [cout] log à la seconde
+      931 : [Cultibox] nombre de changement par jour
+      932 : [CULTI] Gestion du contraste
+      933 : [RTC] Permettre un décalage journalier de l'horloge
+   Solved :
+
++ Version 2.19
+   Comment:
+   Issues :
+      796: [programme] "marche " sur pompe à eau
+      761: [Cultibox] régulation + action manuelle
+      839: [programme] chg de jour avec programme au jour sans carte SD
+      842: [prises][cultibox] fonctionnement avec plage de fonctionnement
+      841: [alarme] mode de fonctionnement avancé
+   To test :
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      824 : [PROG] Fonctionnement inattendu
+      835 : [Régulation] anomalie de fonctionnement
+      836 : [Régulation] Pilotage non correcte pour effecteur négatif
+      840 : [cout] log à la seconde
+   Solved :
+
 + Version 2.18
    Comment:
    Issues :
