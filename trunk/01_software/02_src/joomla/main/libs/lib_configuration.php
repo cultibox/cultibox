@@ -36,7 +36,7 @@ function check_db() {
     $conf_index_col["STATISTICS"]           = array ( 'Field' => "STATISTICS", 'Type' => "varchar(5)", 'default_value' => "True");
     $conf_index_col["SECOND_REGUL"]         = array ( 'Field' => "SECOND_REGUL", 'Type' => "varchar(5)", 'default_value' => "False");
     $conf_index_col["ADVANCED_REGUL_OPTIONS"] = array ( 'Field' => "ADVANCED_REGUL_OPTIONS", 'Type' => "varchar(5)", 'default_value' => "False");
-    $conf_index_col["SHOW_COST"]            = array ( 'Field' => "SHOW_COST", 'Type' => "varchar(5)", 'default_value' => 0);
+    $conf_index_col["SHOW_COST"]            = array ( 'Field' => "SHOW_COST", 'Type' => "tinyint(1)", 'default_value' => 0);
     $conf_index_col["RESET_MINMAX"]         = array ( 'Field' => "RESET_MINMAX", 'Type' => "varchar(5)", 'default_value' => "00:00");
     $conf_index_col["WIFI"]                 = array ( 'Field' => "WIFI", 'Type' => "tinyint(1)", 'default_value' => 0);
     $conf_index_col["WIFI_SSID"]            = array ( 'Field' => "WIFI_SSID", 'Type' => "varchar(32)");
@@ -44,8 +44,9 @@ function check_db() {
     $conf_index_col["WIFI_PASSWORD"]        = array ( 'Field' => "WIFI_PASSWORD", 'Type' => "varchar(63)");
     $conf_index_col["WIFI_IP"]              = array ( 'Field' => "WIFI_IP", 'Type' => "varchar(15)", 'default_value' => "000.000.000.000");
     $conf_index_col["WIFI_IP_MANUAL"]       = array ( 'Field' => "WIFI_IP_MANUAL", 'Type' => "tinyint(1)", 'default_value' => false);
-    $conf_index_col["RTC_OFFSET"]           = array ( 'Field' => "RTC_OFFSET", 'Type' => "decimal(3,2)", 'default_value' => 0);
-
+    $conf_index_col["RTC_OFFSET"]           = array ( 'Field' => "RTC_OFFSET", 'Type' => "int(11)", 'default_value' => 0);
+    $conf_index_col["REMOVE_1000_CHANGE_LIMIT"] = array ( 'Field' => "REMOVE_1000_CHANGE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False");
+    $conf_index_col["REMOVE_5_MINUTE_LIMIT"] = array ( 'Field' => "REMOVE_5_MINUTE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False");
 
     // Check if table configuration exists
     $sql = "SHOW TABLES FROM cultibox LIKE 'configuration';";

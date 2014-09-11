@@ -422,6 +422,32 @@
                 <input type="submit" id="daily_delete_button" name="daily_delete_button" <?php if($nb_daily_program==0) { ?>value="<?php echo __('NO_DAILY_PROGRAM_TO_DELETE'); ?>" class="inputDisable" disabled <?php } else { ?>value="<?php echo __('PROGRAM_DAILY_DELETE'); ?>" <?php } ?>>
             </td>
         </tr>
+        <tr>
+            <!-- Remove limit of 1000 changes in programm -->
+            <td>
+                <?php echo __('REMOVE_1000_CHANGE_LIMIT_SELECT'); ?>
+            </td>
+            <td>
+                <select name="remove_1000_change_limit" id="remove_1000_change_limit">
+                    <option value="True" <?php if(strcmp("$remove_1000_change_limit","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
+                    <option value="False" <?php if(strcmp("$remove_1000_change_limit","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
+                </select>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <!-- Remove limit of 5 minute in programm -->
+            <td>
+                <?php echo __('REMOVE_5_MINUTE_LIMIT_SELECT'); ?>
+            </td>
+            <td>
+                <select name="remove_5_minute_limit" id="remove_5_minute_limit">
+                    <option value="True" <?php if(strcmp("$remove_5_minute_limit","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
+                    <option value="False" <?php if(strcmp("$remove_5_minute_limit","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
+                </select>
+            </td>
+            <td></td>
+        </tr>
     </table>
 </div>
     

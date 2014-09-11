@@ -301,9 +301,9 @@ $(document).ready(function(){
                             sd_card:sd_card
                         }
                     }).done(function (data) {
-                        if($.parseJSON(data)!="") {  
-                            check_update=false;
-                        }
+                        //if($.parseJSON(data)!="") {  
+                        //    check_update=false;
+                        //}
                     });
                 }
             });
@@ -374,7 +374,7 @@ $(document).ready(function(){
             newValue    = $("#rtc_offset").val();
             varToUpdate = $("#rtc_offset").attr('name');
 
-             $.ajax({
+            $.ajax({
                 type: "GET",
                 cache: false,
                 async: false,
@@ -685,6 +685,7 @@ $(document).ready(function(){
                     type: "GET",
                     url: "http://localhost:6891/cultibox/main/modules/external/check_and_update_sd.php",
                     data: {
+                        force_rtc_offset_value:1,
                         sd_card:sd_card,
                         session_id:session_id
                     },
@@ -704,41 +705,41 @@ $(document).ready(function(){
             }
 
             if(check_update) {
-                        $("#update_conf").dialog({
-                            resizable: false,
-                            height:150,
-                            width: 500,
-                            closeOnEscape: false,
-                            modal: true,
-                            hide: "fold",
-                            dialogClass: "popup_message",
-                            buttons: [{
-                                text: CLOSE_button,
-                                click: function () { 
-                                    $( this ).dialog( "close" ); 
-                                    //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
-                                    if(update_menu) window.location = "configuration-"+slang;
-                                 }
-                            }]
-                        });
+                $("#update_conf").dialog({
+                    resizable: false,
+                    height:150,
+                    width: 500,
+                    closeOnEscape: false,
+                    modal: true,
+                    hide: "fold",
+                    dialogClass: "popup_message",
+                    buttons: [{
+                        text: CLOSE_button,
+                        click: function () { 
+                            $( this ).dialog( "close" ); 
+                            //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
+                            if(update_menu) window.location = "configuration-"+slang;
+                         }
+                    }]
+                });
             } else  {
-                        $("#error_update_conf").dialog({
-                            resizable: false,
-                            height:150,
-                            width: 500,
-                            closeOnEscape: false,
-                            modal: true,
-                            dialogClass: "popup_error",
-                            hide: "fold",
-                            buttons: [{
-                                text: CLOSE_button,
-                                click: function () { 
-                                    $( this ).dialog( "close" );  
-                                    //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
-                                    window.location = "configuration-"+slang;
-                                }
-                            }]
-                        });
+                $("#error_update_conf").dialog({
+                    resizable: false,
+                    height:150,
+                    width: 500,
+                    closeOnEscape: false,
+                    modal: true,
+                    dialogClass: "popup_error",
+                    hide: "fold",
+                    buttons: [{
+                        text: CLOSE_button,
+                        click: function () { 
+                            $( this ).dialog( "close" );  
+                            //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
+                            window.location = "configuration-"+slang;
+                        }
+                    }]
+                });
            }
         }
       } });
@@ -746,13 +747,13 @@ $(document).ready(function(){
     }); 
     
     $("#rtc_offset_slider").slider({
-        max: 11,
-        min: -11,
+        max: 100,
+        min: -100,
         slide: function( event, ui ) {
             // While sliding, update the value in the div element
             $("#rtc_offset").val(ui.value);
         },
-        step: 0.1,
+        step: 1,
         value: rtc_offset_value
     });
     

@@ -871,6 +871,11 @@ msgstr "Opzioni del programma avanzate"
 msgid "PROGRAM_NAME"
 msgstr "Il nome del programma"
 
+msgid "REMOVE_1000_CHANGE_LIMIT_SELECT"
+msgstr "Rimuovere il limite di 1000 modifiche"
+
+msgid "REMOVE_5_MINUTE_LIMIT_SELECT"
+msgstr "Rimuovere il limite di 5 minuti"
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
