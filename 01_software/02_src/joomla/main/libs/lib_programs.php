@@ -7,12 +7,12 @@ namespace program {
 // RET none
 function check_db() {
 
-    // Define columns of the calendar table
+    // Define columns of the program_index table
     $program_index_col = array();
-    $program_index_col["id"]            = array ( 'Field' => "id", 'Type' => "INT");
+    $program_index_col["id"]            = array ( 'Field' => "id", 'Type' => "int(11)");
     $program_index_col["name"]          = array ( 'Field' => "name", 'Type' => "VARCHAR(100)");
     $program_index_col["version"]       = array ( 'Field' => "version", 'Type' => "VARCHAR(100)");
-    $program_index_col["program_idx"]   = array ( 'Field' => "program_idx", 'Type' => "INT");
+    $program_index_col["program_idx"]   = array ( 'Field' => "program_idx", 'Type' => "int(11)");
     $program_index_col["creation"]      = array ( 'Field' => "creation", 'Type' => "DATETIME");
     $program_index_col["modification"]  = array ( 'Field' => "modification", 'Type' => "DATETIME");
     $program_index_col["plugv_filename"] = array ( 'Field' => "plugv_filename", 'Type' => "VARCHAR(10)");

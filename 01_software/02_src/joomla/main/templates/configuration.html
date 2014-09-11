@@ -30,15 +30,15 @@
         <br />
     </div>
 <div id="div_wifi_description" style="display:none">
-<br />
-<table class="table_width">
-<tr>
-    <td class="conf-menu-marge"></td>
-    <td><?php echo __('WIFI_DESCRIPTION'); ?></td>
-    <td class="conf-menu-marge"></td>
-</tr>
-</table>
-<br />
+    <br />
+    <table class="table_width">
+        <tr>
+            <td class="conf-menu-marge"></td>
+            <td><?php echo __('WIFI_DESCRIPTION'); ?></td>
+            <td class="conf-menu-marge"></td>
+        </tr>
+    </table>
+    <br />
 </div>
 
 <hr />
@@ -214,12 +214,13 @@
     <!-- Display RTC row -->
     <tr>
         <td class="conf-marge"></td>
-        <td><div id="rtc_offset_div" <?php if(!$GLOBALS['SHOW_RTC']) { ?>style="display:none"<?php } ?>>
-           <?php echo __('CONFIGURE_RTC_OFFSET'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RTC_OFFSET'); ?>" />
-        </div> 
+        <td>
+            <div id="rtc_offset_div" >
+               <?php echo __('CONFIGURE_RTC_OFFSET'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RTC_OFFSET'); ?>" />
+            </div> 
         </td>
         <td>
-            <div id="rtc_offset_value" <?php if(!$GLOBALS['SHOW_RTC']) { ?>style="display:none"<?php } ?>>
+            <div id="rtc_offset_value" >
             <table class="table_width">
                 <tr>
                     <td style="width: 50%; padding-right: 10px;">

@@ -880,9 +880,10 @@ function get_sensor_type($sd_card,&$sensor_type) {
         $index = 0;
         foreach($sensor_of_the_day as $type) {
             if($index>$GLOBALS['NB_MAX_SENSOR_PLUG']) break;
-         // If type is not null and exists, update return array
+            
+            // If type is not null and exists, update return array
             if ($type != "0" && $type != "" && array_key_exists("$type", $GLOBALS['SENSOR_DEFINITION'])) {
-                    $sensor_type[$index + 1]=$type;
+                $sensor_type[$index + 1]=$type;
                 
                 $index = $index + 1;
             }
@@ -891,55 +892,6 @@ function get_sensor_type($sd_card,&$sensor_type) {
     return true;
 }
 // }}}
-
-
-//{{{ get_rtc_offset()
-// ROLE get rtc offset value to be recorded in the configuration file
-// RET rtc offset value to be recorded 
-function get_rtc_offset($rtc = 0) {
-
-    // If RTC is not defined, return default value 0000
-    if($rtc == 0) { return "0000"; }
-    
-    // Compute RTC value
-    // Formula : offset_sec_per_day = 2 x RTC_OFFSET x 60 x 24 / 32768 
-    // So : RTC_OFFSET = 32768 x offset_sec_per_day / ( 2 x 60 x 24 )
-    $offset = round((32768 * abs($rtc))/(2 * 60 * 24)); //Voir la documentation sur le RTC_OFFSET
-    
-    // If value is under 0, add 128
-    if($rtc < 0) { 
-        $offset = $offset + 128;
-    }
-    
-    // String need to have 4 digits large
-    while(strlen($offset) < 4) $offset = "0$offset";
-
-    // Return computed value
-    return $offset;
-}
-//}}}
-
-//{{{ get_decode_rtc_offset()
-// ROLE Decode rtc offset as write in conf file
-// RET rtc offset value to be recorded 
-function get_decode_rtc_offset($rtc = 0) {
-
-    // If RTC is not defined, return default value 0000
-    if($rtc == 0) 
-        return 0;
-    
-    if($rtc > 128) { 
-        $rtc = -1 * ($rtc - 128);
-    }
-    
-    // Compute RTC value
-    // Formula : offset_sec_per_day = 2 x RTC_OFFSET x 60 x 24 / 32768 
-    $offset = 2 * $rtc * 60 * 24 / 32768 ;
-    
-    // Return computed value
-    return $offset;
-}
-//}}}
 
 //{{{ translate_PlugType()
 // ROLE Translate plug type

@@ -105,7 +105,7 @@ EOF;
 function insert_configuration($key,$value,&$out) {
 
    $sql = "UPDATE configuration SET " . $key . " = \"" . $value . "\" WHERE id = 1;";
-   
+
    $db=db_priv_pdo_start();
    try {
         $db->exec("$sql");
@@ -535,7 +535,8 @@ function check_and_update_column_db ($tableName, $officialColumn) {
         $usefull = 0;
         foreach ($officialColumn as $needColumn)
         {
-            if ($col['Field'] == $needColumn['Field'])
+            if ($col['Field'] == $needColumn['Field'] &&
+                strtolower($col['Type']) == strtolower($needColumn['Type']) )
             {
                 $usefull = 1;
                 break;
@@ -555,7 +556,8 @@ function check_and_update_column_db ($tableName, $officialColumn) {
         $present = 0;
         foreach ($res as $col)
         {
-            if ($col['Field'] == $needColumn['Field'])
+            if ($col['Field'] == $needColumn['Field'] &&
+                strtolower($col['Type']) == strtolower($needColumn['Type']) )
             {
                 $present = 1;
                 break;
@@ -585,7 +587,6 @@ function check_and_update_column_db ($tableName, $officialColumn) {
     }
     
     // Add column not present
-    // Delete not used column
     foreach ($colToAdd as $col)
     {
     
@@ -616,7 +617,6 @@ function check_and_update_column_db ($tableName, $officialColumn) {
 
 //{{{ check_database()
 // ROLE check and update database
-// RET rtc offset value to be recorded 
 function check_database() {
     // Do it only one time per session
     if(!isset($_SESSION['CHECK_DB']) || empty($_SESSION['CHECK_DB'])) {

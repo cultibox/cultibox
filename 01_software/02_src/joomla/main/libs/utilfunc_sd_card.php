@@ -17,7 +17,7 @@ define("ERROR_SD_NOT_FOUND", "13");
 // ROLE If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 // IN   $sd_card    sd card path 
 // RET 0 if the sd card is updated, 1 if the sd card has been updated, return > 1 if an error occured
-function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) {
+function check_and_update_sd_card($sd_card="",$force_rtc_offset_value=0,&$main_info_tab,&$main_error_tab) {
 
     // Check if SD card has been found
     if(empty($sd_card) || !isset($sd_card)  || $sd_card == "")
@@ -102,12 +102,18 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
         }
     }
 
-    // Read value on sd Card
-    $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
-    $sdConfRtc = get_decode_rtc_offset($sdConfRtc);
-    // Update database
-    insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
-
+    // Warning, there is a special case for RTC_OFFSET: 
+    // If in CONF file an other value is specified (than in DB) and user click directly on "Configuration" tab
+    // value displayed in configuration tab is not ok. Value displayed is from DB and not from CONF file
+    // But if user click on any other tab before, it's right
+    // Solution (hard !), after call of chack_and_update_sd.php, update slider value of RTC_OFFSET with value of the file
+    if ($force_rtc_offset_value == 0)
+    {
+        // Read value on sd Card
+        $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
+        // Update database
+        insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
+    }
 
     $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
     $powerfrequency = get_configuration("POWER_FREQUENCY",$main_error);
@@ -115,7 +121,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
     $alarmenable    = get_configuration("ALARM_ACTIV",$main_error);
     $alarmvalue     = get_configuration("ALARM_VALUE",$main_error);
     $resetvalue     = get_configuration("RESET_MINMAX",$main_error);
-    $rtc            = get_rtc_offset(get_configuration("RTC_OFFSET",$main_error));
+    $rtc            = get_configuration("RTC_OFFSET",$main_error);
     if("$updatefrequency"=="-1") {
         $updatefrequency="0";
     }
@@ -347,17 +353,10 @@ function save_program_on_sd($sd_card,$program,$filename = "plugv") {
     // Init out program file contants
     $prog="";
     $nbProgramChangement = count($program);
-    $shorten=false;
 
     // Check if there are some plugs
     if($nbProgramChangement == 0)
         return false;
-    
-    // Limit nb plugs to max allowed
-    if($nbProgramChangement > $GLOBALS['PLUGV_MAX_CHANGEMENT']) {
-        $nbProgramChangement = $GLOBALS['PLUGV_MAX_CHANGEMENT'];
-        $shorten=true;
-    }
 
     // Complet nbProgramChangement variable up to 5 digits
     while(strlen($nbProgramChangement) < 5)
@@ -366,21 +365,9 @@ function save_program_on_sd($sd_card,$program,$filename = "plugv") {
     // Add header of the file
     $prog = $nbProgramChangement . "\r\n";
 
-    // If we have to reduce number of change
-    if($shorten) {
-        // For each line of the program add it to file
-        for($i=0; $i < $nbProgramChangement - 1; $i++) 
-            $prog=$prog."$program[$i]"."\r\n";
-    } else {
-        for($i=0; $i < $nbProgramChangement; $i++) 
-            $prog=$prog."$program[$i]"."\r\n";
-    }
-
-    // If the programm has been cut (too many change) add an last entry
-    if($shorten) {
-        $last=count($program)-1;
-        $prog=$prog."$program[$last]"."\r\n";
-    }
+    // For each line of the program add it to file
+    for($i=0; $i < $nbProgramChangement; $i++) 
+        $prog=$prog."$program[$i]"."\r\n";
 
     // Write it on SD card
     if($f = @fopen($file,"w+")) {
@@ -776,10 +763,10 @@ function read_sd_conf_file($sd_card,$variable,$out="") {
             break; 
         case "rtc_offset":
             $offset = 18 * 7 + 12;
-            break; 
+            break;
         case "minmax":
             $offset = 18 * 8 + 12;
-            break;             
+            break;
     }
     
     $val = "";

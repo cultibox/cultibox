@@ -19,12 +19,17 @@
     }
     
     $sd_card = $_GET['sd_card'];
+    $force_rtc_offset_value = 0;
+    if (isset($_GET['force_rtc_offset_value']))
+    {
+        $force_rtc_offset_value = 1;
+    }
     
     $main_error = array();
     $main_info = array();
 
-    // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
-    $return=check_and_update_sd_card($sd_card,$main_info,$main_error);
+    // If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up to date...
+    $return = check_and_update_sd_card($sd_card,$force_rtc_offset_value,$main_info,$main_error);
     if($return > 1) {
         $main_error[]=get_error_sd_card_update_message($return);
     }
