@@ -1,0 +1,1255 @@
+Cultibox (1.4.10) precise; urgency=low
+    + Correction de la mise à jour des prises au chargement de l'onglet
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Aug 24  14:28:47 CEST 2014
+
+
+Cultibox (1.4.09) precise; urgency=low
+    + Correction de la vérification des updates
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Aug 08  19:41:56 CEST 2014
+
+
+Cultibox (1.4.08) precise; urgency=low
+    + Correction des packages Linux
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Aug 06  13:21:19 CEST 2014
+
+
+Cultibox (1.4.07) precise; urgency=low
+    + Suppression de l'option de vérification des mises à jours (vérification automatiquement faite)
+    + Correction de l'enregistrement de la configuration
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Aug 05  10:17:41 CEST 2014
+
+
+Cultibox (1.4.06) precise; urgency=low
+    + Pre-release
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Aug 04  12:10:02 CEST 2014
+
+
+Cultibox (1.4.05) precise; urgency=low
+    + Nettoyage des fonctions PHP et des locales non utilisées
+    + Correction de l'affichage des mois dans la page logs
+    + Correction du changement de couleur du graphe, tooltip, legend quand on change la couleur dynamiquement
+    + Affichage des heures/minutes correspondant aux min/max dans le tooltip
+    + Les programmes ne sont plus affichés dans le tooltip min/max
+    + Les adresses IP pour le wifi sont maintenant écrite avec 3 digits par champ afin d'être lues par la Cultibox
+    + Les sauvegardes des programmes journaliers ne peuvent pas avoir le même nom
+    + Correction du rechargement de la page lors de la suppréssion des programmes jouanliers en cours de visualisation
+    + Correction de la gestion des jeux de programme
+    + Aucune régulation secondaire possible pour les effecteurs de type pompe à eau
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon July 28  15:35:15 CEST 2014
+
+
+Cultibox (1.4.04) precise; urgency=low
+    + Affichage du dernier jour possedant des logs après le chargement de logs
+    + Correction d'un erreur jquery si le champ startdate est vide de l'affichage des logs
+    + AJout des librairies jquery pour les pages welcome et cost
+    + Ménage et réorganisation
+    + Correction de la gestion des sessions 
+    + Rechargement des logs si l'utilisateur enlève et replace la carte SD
+    + Correction de l'affichage des résumés des régulations secondaires
+    + L'affichage de la fenêtre des programmes journaliers n'apparaît pas dans le calendrier si aucun programme journalier n'a été défini
+    + Il est impossible de choisir la méthode de calcul des options avançées de régulation si un seul capteur est sélectionné"
+    + Correction de la vérification des mots de passe de la partie WIFI
+    + La tolérance est prise en compte dans le calcul max et min de la régulation d'une prise dans le logiciel
+    + Les fichiers log et power sont sauvegardés dans un repertoire tmp en cas de problèmes
+    + Vérification de la présence de Javascript dans le navigateur
+    + Suppréssion de l'option SHOW_POPUP et réorganisation de l'affichage des messages
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun July 20  13:39:17 CEST 2014
+
+
+Cultibox (1.4.03) precise; urgency=low
+    + Multiples debug
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue July 17  10:29:58 CEST 2014
+
+
+Cultibox (1.4.02) precise; urgency=low
+    + Correction de l'affichage et la gestion des programmes journaliers dans l'onglet programme
+    + Correction de la déselection des courbes dans l'onglet logs
+    + Affichage des informations de régulation secondaire dans le résumé de l'onglet programme
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue July 10  11:25:32 CEST 2014
+
+
+Cultibox (1.4.01) precise; urgency=low
+    + Déplacement du site distant pour les mises à jour de cultibox.highproshop.fr vers cultibox.fr
+    + L'option des programmes journaliers est toujours activée
+    + Nettoyage du champ SHOW_HISTORIC qui n'est plus nécéssaire
+    + Correction de la taille minimale de la fenêtre du logiciel
+    + Passage en ajax pour l'enregistrement de la configuration
+    + La carte SD n'est vérifiée qu'une seule fois par branchement et pas à chaque page
+    + Sauvegarde de la configuration des capteurs, des programmes et des prises selectionnés lors d'un changement de jour par les boutons suivant et précédent
+    + Suppression des faux logs après le premier chargement de logs
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun July 6 12:13:49 CEST 2014
+
+
+Cultibox (1.3.09) precise; urgency=low
+    + Remise en forme de l'interface    
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Jun 10 11:25:32 CEST 2014
+
+
+Cultibox (1.3.08) precise; urgency=low
+    + Correction des erreurs de calculs présentes dans la configuration de RTC_OFFSET
+    + Vérification de la présence d'une nouvelle version du logiciel sans bloquer la page (ajax)
+    + Création et modification de la base de donnée directement en php
+    + Mise en place de la gestion des programmes journaliers
+    + Mise en place de bouton pour alléger l'interface
+    + Calendrier : 
+        + Correction du problème d'un évènement créé sur deux années
+        + Ajout des engrais GHE
+        + Enregistrement sans bloquer la page sur la carte SD
+        + Planification d'engrais en fenêtre modale
+        + Fusion des différents calendriers lunaires
+    + Logs :
+        + Visualisation du programme journalier sur le mois
+        + Chargement en ajax des courbes
+
+-- Alliaume RICO Cultibox <alliaume.rico@cultibox.fr> Sat Jun  7 10:02:41 CEST 2014
+
+
+Cultibox (1.3.07) precise; urgency=low
+    + Fractionnement des librairies
+    + Ajout des traductions dans les langues manquantes
+    + Possibilité d'utiliser plusieurs icônes pour les évènements du calendrier
+    + Suppression de l'onglet historique
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Fri May 16 11:26:13 CEST 2014
+
+
+Cultibox (1.3.06) precise; urgency=low
+    + Correction de la position de l'image qui apparaît quand on cache la boite de dialogue du logiciel
+    + Correction de l'affichage de la sélection des prises
+    + Lorsqu'on choisit un seul capteur pour la régulation, les options de min/max/moyenne sont désactivées dans l'interface
+    + Correction de l'affichage de l’œil
+    + Correction de l'affichage des erreurs de valeur des programmes
+    + Ajout d'un champ permettant de définir le début et la fin d'un cycle
+    + Ajout de la vérification à la saisie des valeurs pour les heures et les données rentrées dans le formulaire des programmes
+    + Ajout de listes pour choisir la prise impactée par l'import ou l'export des programmes
+    + Correction du lien du bouton permettant de passer d'un programme d'une prise à la configuration de la prise
+    + Mise à jour du fichier index pour accepter 6 capteurs
+    + Ajout de deux capteurs supplémentaires dans la table sensors
+    + Ajout des firmwares de nouveaux capteurs
+    + Ajout du fichier plugidx pour le multiprogramme
+    + Sauvegarde du RTC_OFFSET dans la base
+    + Modification du chargement des logs en fonction des capteurs afin d'intégrer les nouveaux capteurs dans la Cultibox
+    + Correction du fonctionnement de la gestion du RTC_OFFSET
+    + Correction sur la vérification des mots de pase du wifi
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Apr 22 14:12:42 CEST 2014
+
+
+Cultibox (1.3.05) precise; urgency=low
+    + Sélection d'un ou plusieurs capteurs possible dans la visualisation des logs
+    + Enregistrement des courbes désélectionnées sur le changement de jours des logs (bouton suivant et précédent)
+    + Le zoom en X sur les logs ne modifie plus l'affichage en Y
+    + Rechargement de la page de configuration après un formatage de la carte SD
+    + Correction de l'affichage des coûts: on scroll après le calcul du coût ce qui permet d'éviter un problème d'affichage sur mac
+    + Changement de l'affichage du menu de configuration des prises pour ressembler à celui du menu de configuration
+    + Ajout de la définition des autres capteurs (ph, ec...)
+    + Ajout de l'heure du min/max des valeurs affichées pour les logs
+    + Possiilité de cacher la boîte de message pour le temps d'une session
+    + Le bouton 'fermer' de l'importation des logs ne s'affiche maintenant qu'à la fin du chargement des fichiers logs ET powers et non lorsque l'un des deux est terminé
+    + Correction de l'enregistrement de la version du firmware
+    + Ajout de la mise à jour de l'id dans le fichier de configuration de la Cultibox
+    + Optimisation du chargement des logs power
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Mar 23 13:48:54 CET 2014
+
+
+Cultibox (1.3.04) precise; urgency=low
+    + Ajout du menu wifi et des pages associées
+    + Ajout du traitement des données XML pour la page wifi
+    + Ajout de la possibilité de créer des programmes définit avec une prise variateur
+    + Ajout d'un champ IP permettant la configuration du module Wifi
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Feb 12 20:28:12 CET 2014
+
+
+Cultibox (1.3.03) precise; urgency=low
+    + Optimisation de la lecture/ecriture des fichiers
+    + Ajout d'une biblothèque de débug
+    + Correction de la création du fichier de configuration du wifi
+    + Correction des sauts de lignes dans les fichiers calc_XX
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Feb 8  17:52:12 CET 2014
+
+
+Cultibox (1.3.02) precise; urgency=low
+    + Ajout d'un vérification d'écriture sur la carte SD avant le formatage
+    + Ajout d'un menu de configuration wifi
+    + Correction des caractères \n dans le calendrier et le fichier index
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Feb  4 13:31:07 CET 2014
+
+
+Cultibox (1.3.01) precise; urgency=low
+    + Ajout d'une table de type de capteur
+    + Mise à jour de la table type de capteur par le fichier index
+    + Optimisation du chargement des logs par la lecture en un coup des fichiers et l'optimisation du parcours du fichier index
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Feb  4 10:31:07 CET 2014
+
+
+Cultibox (1.2.12) precise; urgency=low
+    + Plus de limites de caractères pour les fichiers cal_XX
+    + Correction du calendrier (glissement des évènements qui supprimaient les annotations + problème de liste des titres en cas d'erreur)
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Jan 18 13:16:34 CET 2014
+
+
+Cultibox (1.2.11) precise; urgency=low
+    + Correction de l'affichage des puissances dans la partie logs (nom des prises)
+    + Correction de l'affichage des puissances (bouton next et prev)
+    + un zoom par courbe disponible dans l'onglet log (puissance,humidité,témpérature)
+    + Ajout des couleurs sur les grilles des échelles des logs
+    + Sauvegarde des données des zooms lorsqu'on utilise la fonction jour suivant ou jour précédent des logs
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Jan 14 23:49:35 CET 2014
+
+
+Cultibox (1.2.10) precise; urgency=low
+    + Modification de la programmation cyclique, simplification des textes affichés et du fonctionnement
+    + Ajout de la configuration d'une prise variateur dans l'onglet prise
+    + Disparition des fenêtres MSDOS de l'installation windows
+    + Possibilité de sélectionner une, plusieurs ou toutes les prises pour l'affichage des puissances
+    + Ajout des firmwares pour le capteur d'eau
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Jan  6 08:43:31 CET 2014
+
+
+Cultibox (1.2.09) precise; urgency=low
+    + Correction du code HTML pour respecter le standard W3C
+    + Ajout de deux capteurs possibles pour la régulations (6 en tout - 4 utilisés pour les logs)
+    + Correction de la mise en forme pour la langue espagnol
+    + Ajout de la possibilité de configurer une pompe à eau
+    
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Jan  4 10:57:48 CET 2014
+
+
+Cultibox (1.2.08) precise; urgency=low
+    + Suppréssion des avertissements lors du démarrage de mysql après une upgrade sur Mac os X
+    + Correction du script load.sh pour Mac os X
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Fri Jan  3 20:28:23 CET 2014
+
+
+Cultibox (1.2.07) precise; urgency=low
+    + Correction de l'upgrade d'une version 1.2.XX vers 1.2.XX sur mac os x
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Dec 30 18:21:41 CET 2013
+
+
+Cultibox (1.2.06) precise; urgency=low
+    + Correction de l'upgrade d'une version 1.2.XX vers 1.2.XX sur mac os x
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Dec 23 15:17:42 CET 2013
+
+
+Cultibox (1.2.05) precise; urgency=low
+    + Suppression de l'ancien calendrier lunaire 2013 et ajout du calendrier 2014
+    + Correction d'une erreur dans les scripts d'installation Mac os x (bouclage si une commande ne renvoie pas le bon code d'erreur)
+    + Affichage des fichierx xml à afficher par ordre alphabétique
+    + Correction de la génération des titres du calendrier après la suppréssion d'un évènement
+    + Correction du déplacement d'un évènement d'une durée d'une journée
+    + Optimisation de l'algorithme de création des évènements sur la carte SD
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Dec 18 Mon Dec 30 18:21:41 CET 2013
+
+
+Cultibox (1.2.04) precise; urgency=low
+    + Passage de la période -1 jours/ + 7 jours pour l'affichage des messages importans du calendrier
+    + Correction du choix du capteur lors de l'affichage des min/max dans les logs
+    + Correction des requetes SQL lors de tris sur de multiples critères
+    + Correction de l'affichage des min/max des logs pour ne pas afficher les capteurs qui n'ont pas de données significatives
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Dec 18 11:07:03 CET 2013
+
+
+Cultibox (1.2.03) precise; urgency=low
+    + Correction du chargement des logs sur Windows XP
+    + Ajout des calendriers de changement 2013 et 2014 comme fichier XML
+    + Ajout d'une partie de la traduction en espagnol
+    + Ajout d'un paramètre dépendant du dernier changement lors de l'appel des css et scripts js pour éviter de vider le cache à chaque mise à jour
+    + Ajout d'une variable SESSION pour ne vérifier qu'une fois par session la présence de mise à jour et gagner en rapidité d'affichage des pages
+    + Correction de la gestion de réduction/agrandissement de la boite de message quand on change la taille manuellement
+    + Ajout du min/max des courbes sur la page des logs
+    + On ne prend plus les doublons dans les courbes s'ils existent
+    + Un fichier XML avec une seule entrée ne génère plus d'erreur 
+    + L'affichage des listes des marques, substrats et fichiers XML sont triées par ordre alphabétique
+    + Lors de l'ajout d'un nouveau champ titre dans le calendrier, les données sont encodées en JSON pour éviter les caractères parasites
+    + Ajout d'un champ 'important' dans les évènements du calendrier permettant de générer des alertes
+    + Mise en forme de certaines boîtes de messages
+    + Correction de l'export des logs avec la nouvelle version de XAMPP
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Dec  1 22:41:08 CET 2013
+
+
+Cultibox (1.2.02) precise; urgency=low
+    + Passage à XAMPP 1.8.3 pour windows Vista, 7 et 8
+    + Epuration de Joomla
+    + Passage a XAMPP 1.8.2 pour Widows XP
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Nov 24 23:46:00 CET 2013
+
+
+Cultibox (1.2.01) precise; urgency=low
+    + Passage a XAMPP 1.8.3 pour Mac Os X et Linux
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Nov 17 14:58:13 CET 2013
+
+
+Cultibox (1.1.38) precise; urgency=low
+    + Correction du passage en paramètre d'une variable Int dans un appel Ajax (formatage de la carte SD)
+    + Modification du texte et de l'image du tooltip de calcul des coûts
+    + Mise en place d'un script sql d'update de la base joomla plutôt qu'une recréation de la base à chaque installation
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Nov  6 12:53:01 CET 2013
+
+
+
+Cultibox (1.1.37) precise; urgency=low
+    + Correction de l'affichage des titres dans le calendrier
+    + La première colonne du mois en cours correspond à un lundi et non plus un dimanche
+    + Ajout et correction des fichiers XML des calendriers d'engrais
+    + Diverses corrections du calendrier
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Nov  3 11:30:44 CET 2013
+
+
+Cultibox (1.1.36) precise; urgency=low
+    + Modification de la taille de l'image de la cultibox pour rendre accéssible les menus en dessous
+    + Ajout d'informations sur le calcul du coût réel et théorique dans l'onglet des coûts
+    + Correction du filtre sur le champ substrat sans la carte SD  breanchée
+    + Correction de l'ajout ou la modification d'un évènement du calendrier avec une remarque vide qui posait ne marchait pas
+    + Ajout d'un bouton dee réduction et d'agrandissement automatique pour la boite de message
+    + Possibilité d'ajouter des titres qui ne sont pas dans la liste prédéfinie dans le calendrier
+    + Multiples corrections sur le calendrier
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Oct 26 12:58:55 CEST 2013
+
+
+Cultibox (1.1.35) precise; urgency=low
+    + Ajout de textes d'aide pour les boutons 'Gestion des fichierx XML',  'Suppréssion des annotations' du calendrier et 'Création de programmes d'engrais'
+    + Correction d'n filtre en fonction du substrat choisis pour le calendrier
+    + Désactivation des boutons et modification du texte si aucun fichiers XML est présent
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Oct 24 11:33:49 CEST 2013
+
+
+Cultibox (1.1.34) precise; urgency=low
+    + Ajout de tests de vérification d'écriture sur la carte SD
+    + Valeur par défaut appliquée sur un champ si un mauvais format est rentré
+    + La suppréssion de tous les évènements du calendrier ainsi que l'ajout d'un calendrier d'engrais met à jour la carte SD
+    + Correction du calcul du coût: correction de la modification du prix des heures creuses
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Oct 20 14:58:21 CEST 2013
+
+
+Cultibox (1.1.33) precise; urgency=low
+    + Remise en forme de l'image de la cultibox sur le logiciel
+    + Remise en forme de de l'affichage des différentes partie des logs pour que la page ne bouge plus quand on choisis un affichage par mois ou par jour
+    + Ajout d'un texte annoncant la suppréssion en cours d'une base de logs dans la fênetre de suppréssion des logs
+    + Modification de la gestion des mises à jour qui renvoie vers le site cultibox pour le téléchargement des fichiers
+    + Utilisation du fichier index pour gérer les différents capteurs possible de la Cultibox
+    + Correction de l'affichage de la hauteur des legendes des programmes
+    + La gestion des erreurs pour la partie 'prise' est gérée en AJAX sans rechargement
+    + Ajout d'une barre de progréssion pour la suppréssion des logs 
+    + Passage en AJAX des actions du calendrier
+    + Ajout de la possibilité de désactiver l'affichage des fichiers externe XML du calendrier
+    + Ajout d'un datepicker pour choisir rapidement le mois du calendrier
+    + Si le fichier des contrastes existe sur la carte SD on ne le remplace pas lors du formatage
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Sep  3 11:43:25 CEST 2013
+
+
+Cultibox (1.1.32) precise; urgency=low
+    + Passage du CSS au W3C pour respecter les standards
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Mon Sep  2 16:47:46 CEST 2013
+
+
+Cultibox (1.1.31) precise; urgency=low
+    + Correction de la configuration du type de prise dans le wizard
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Tue Aug 27 11:51:14 CEST 2013
+
+
+Cultibox (1.1.30) precise; urgency=low 
+    + Correction des accents sur les notes en français uniquement pour les updates
+    + Ajout des dosages d'engrais dans le calendrier
+    + Ajout de deux fichiers XML de programme pour le calendrier créés par "fastenspy"
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Thu Aug  8 23:00:52 CEST 2013
+
+
+Cultibox (1.1.29) precise; urgency=low
+    + Correction des accents sur Mac et concernant la partie Notes
+    + Ajout de la librairie scrollTo JQUERY pour gérer le déplacement des fenêtres après une action
+    + Ajout d'un message d'erreur si aucun capteur n'est selectionné pour la régulation
+    + Ajout de la possibilité de configurer le type de puissance max d'une prise dans l'assistant
+    + Ajout d'un bouton dans la partie prise qui permet de configurer la prise actuelle à l'aide de l'assistant
+    + Ajout d'un tooltip d'explication sur l'option d'envoie d'informations
+    + Ajout des evènements dans le calendrier depuis les fichiers d'engrais XML
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Fri Aug  2 10:30:41 CEST 2013
+
+
+Cultibox (1.1.28) precise; urgency=low
+    + Ajout de la section "Le saviez-vous?" dans la page de welcome
+    + Différenciation des messages de chargement des logs en mode auto ou lors de la soumission du formulaire
+    + Remise en fonction de la notification de logs plus anciens présent à être chargé
+    + Une fenêtre permet de selectionner une date de début et de fin pour la suppréssion des logs de la base ou encore de supprimer tous les logs existant
+    + Réorganisation des fichiers de la carte SD
+    + Ajout du fichier index dans le repertoire logs
+    + Mise en place de la fonctionnalité de remise à zéro du min/max des capteurs
+    + Compatibilité descendante des cartes SD
+    + Ajout de la tolérance sur la régulation secondaire dans le fichier plugXX
+    + Ajout du chargement des logs pour le capteur de température d'eau
+    + Les catégories du menu s'affichent maintenant directement après modification de la configuration
+    + Les erreurs dans le menu de configuraion et d'affichage des logs sont gérées en AJAX sans rechargement de page
+    + Debug de la gestion et création des programmes
+    + Désactivation de la limite de nombre d'état de 250 dans le fichier plugv, sera remise en fonction dans la 1.1.29
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Jul 16 10:42:56 CEST 2013
+
+
+Cultibox (1.1.27) precise; urgency=low
+    + Correction de l'affichage du message de configuration des puissances: le message indique quelle prise il faut configurer et renvoie sur l'onglet 'Prises' adequat
+    + Correction de l'affichage du message de détection de la carte SD dans les programmes qui s'affichait deux fois
+    + Correction de la création des programmes, le nombre de prises configurée dans l'onglet 'Configuration' agit maintenant sur le fichier plugv (ce n'était pas le cas avant)
+    + On ne tente pas de charger les logs des 31 derniers jours sans carte SD branchée
+    + Gestion des différentes langues pour les boutons JQUERY
+    + Passage de la requette d'envoie d'information en AJAX pour gagner du temps au chargement du welcome
+    + Correction du formatage de la carte SD qui copie maintenant les firmwares
+    + Correction de l'affichage du nom des boutons pour les popups
+    + Correction de l'import du jour en cours avec la nouvelle barre de progression
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Jul  9 11:33:58 CEST 2013
+
+
+Cultibox (1.1.26) precise; urgency=low
+    + Ajout d'une barre de progression pour le chargement des logs + correction des timeouts sur le chargement des logs
+    + Correction de l'écriture de la configuration sur la carte SD
+    + Suppréssion du cache enregistré pour les pages
+    + Correction d'un bug sur la vérification de l'interval entre deux dates
+    + Le menu 'assistant' ne peux plus être désactivé
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Jul  7 19:49:46 CEST 2013
+
+
+Cultibox (1.1.25) precise; urgency=low
+    + Sipmlification de l'alarme (on ne règle plus que la température)
+    + Réduction de la taille de l'installation (suppréssion de PERL)
+    + Les menus 'coût', 'Historique' et 'assistants' sont en options dans la configuration
+    + Chaque onglet vérifie maintenant la cohérence entre la base de donnée (configuration des programmes, des prises, des firmware, des options...) et la carte SD
+    + Correction du script de postinstallation sur Mac os X, qui attend la fin du redémarrage de XAMPP avant de continuer
+    + Divers corrections: problème lors de la création des programmes, mauvaises écriture du calendrier sur la carte...
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Fri Jun 28 14:51:12 CEST 2013
+
+
+Cultibox (1.1.24) precise; urgency=low
+    + Ajout d'un script de désintallation pour Mac Os X
+    + Correction d'un problèe de nom de variable dans la gestion des programmes cycliques
+    + Les résumés des actions des prises sont tronquées au bout de 40 actions
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Jun 17 14:32:30 CEST 2013
+
+
+Cultibox (1.1.23) precise; urgency=low
+    + Ajout des images de faux logs pour les langues: Italien, Allemand et Espagnol
+    + Utilisation du terme annotation plutot qu'evènement pour le calendrier
+    + Téléchargement de la mise à jour dans la mise page que la page courante
+    + Correction de l'affichage des graphes des programmes: l'affichage se s'enmèle plus les pinceaux quand certaines prises sont désactivées
+    + Le bouton permettant de sauvegarder et configurer un programme dans l'onglet des prises est caché si la prise est désactivée
+    + Correction de l'affichage du calendrier lunaire: doublons de certaines entrée due à une mauvaise gestion de la clef 'period'
+    + Dans l'onglet programme, l'echèlle affichée correspond à celle de la prise selectionnée et non plus à celle de la première prise affichée
+    + Ajout des unités dans les graphes des fake logs
+    + Correction des echèlles des logs après zoom: l'echelle est calculée automatiquement avec des décimals pour empêcher que le graphe dbore sur le titre
+    + Ajout d'une barre de progréssion pour le formatage de la carte SD afin d'éviter les timeout
+    + L'affichage de l'humidité sur un mois fonctionne à nouveau
+    + Modification de l'affichage de la légende pour les logs: 2 colonnes + on n'affiche plus les légendes des capteurs sans données
+    + Découpage jour par jour par le calcul du cout pour éviter les timeout
+    + Regroupement des deux boites de messages avertissement et information en une seule
+    + Sauvegarde de la position de la boite de message dans un cookie valide 30 jours
+    + Limitation du nombre de changement d'état des prises à 250 dans les programmes
+    + Correction de l'affichage des messages avec Chrome qui ne centrait pas très bien les fênetres
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Wed Jun  5 13:33:21 CEST 2013
+
+
+Cultibox (1.1.22) precise; urgency=low
+    + Correction des accents dans le graphe de coût pour Mac OS X
+    + Correction du numéro de version dans les paquets windows
+    + Gestion des caractères spéciaux dans le calendrier pour les requettes SQL
+    + Correction d'une erreur sur la création d'évènements multiples
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Wed May 22 10:11:33 CEST 2013
+
+
+Cultibox (1.1.21) precise; urgency=low
+    + Changement de la couleur de selection des jours dans le calendrier
+    + Suppréssion des bandes de couleurs dans les programmes
+    + Un seul méssage pour l'affichage des logs concernant les températures et humidités vides
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Sun May 19 18:50:39 CEST 2013
+
+
+Cultibox (1.1.20) precise; urgency=low
+    + Ajout de tooltip pour la partie cyclique
+    + Ajout d'une pop up si deux programmes succéssifs ont les même heures
+    + Passage a highchart 3.0.1 pour corriger des problèmes d'affichage
+    + Passage des input disabled en label avec la classe readonly
+    + Correction de l'affichage des logs par mois dans la fonction check_format_date
+    + Ajout de la possibilité de créer un icône cultibox sur le bureau pour windows
+    + Correction des zooms sur l'affichage des logs
+    + Mise en place d'un temps d'attente après chaque action du calendrier si une carte SD est détectée grâce à la librairie blockUI
+    + Changement des couleurs pour le calendrier lunaire
+    + Agrandissement de la taille du datepicker et du timepicker
+    + Affichage du résumé de la régulation secondaire dans le tooltip des programmes
+    + Suppréssion des accents pour la créationdes fichiers du calendrier
+    + Affichage des numéros de capteurs qui ne contiennent pas de données dans les logs
+    + Remise en marche de l'apparition de faux logs
+    + Remplacement de la liste de sélection par des radios boutons pour le choix de l'action des programmes
+    + Ajout de deux boutons: dans la partie plug qui enregistre les modifications et passe sur la page des programmes associés et dans la partie programme dans la partie programme qui passe sur la prise du programme en cours
+    + Correction d'une fenêtre modale sur le calendrier qui empêchait de selectionner le color picker
+    + Correction de l'affichage des faux logs
+    + Ajout d'un bouton 'Fin de la journée' dans le timepicker
+    + Déplacement des messages d'erreur et d'informations dans des fenêtres séparées
+    + Réorganisation de la page des programmes
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Sun May 12 15:58:22 CEST 2013
+
+
+Cultibox (1.1.19) precise; urgency=low
+    + La checkbox qui permet d'effacer un programme avant d'en ajouter un autre ne reste plus selectionnée
+    + Ajout de tooltips pour la partie gestion des programmes
+    + Inversion des deux boutons 'fin' et 'configurer une autre prise' du wizard
+    + Ajout d'une option de configuration permettant d'activer ou non le selection du capteur pour la régulation
+    + Correction d'un bug sur le zoom des puissances dans les logs
+    + Suppression des input en readonly et remplacement par un label customisable par la classe readonly en css
+    + Vérification des valeurs des dates entrées dans le datepicker
+    + Correction d'un bug sur la régulation primaire qui ne marchait pas si la régulation secondaire n'était pas activée
+    + Correction d'affichage des accents, de l'espacement titre-graphe [...] dans le graphe des programmes
+    + Correction du calcul des puissances et des prises configurées
+    + On autorise maintenant la valeur nulle pour les puissance qui déclenche un message lorsqu'on calcul un cout ou qu'on affiche les valeurs d'une prise
+    + Le bouton de reset du zoom des programmes utilise le même format que le bouton des logs (bouton exterieur au graphe)
+    + L'affichage des puissances dans les logs ou le calcul du cout prend en compte les prises qui sont déclarées inactives: on peut visualer les informations des prises que l'on a configuré comme inactive, ce n'était pas le cas avant
+    + Correction de le detection de la configuration des puissances. La valeur nulle ("") déclenche un message d'erreur dans le calcul du cout et l'affichage des logs
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Mon May  6 12:26:10 CEST 2013
+
+
+Cultibox (1.1.18) precise; urgency=low
+    + Correction pour l'affichage du calendrier lunaire...
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Tue Apr 30 19:27:18 CEST 2013
+
+
+Cultibox (1.1.17) precise; urgency=low
+    + Correction du calendrier: les evènements sur deux mois fonctionnent à nouveau
+    + Les accents dans les fichiers calc sont maintenant bien pris en compte
+    + Ajout d'un champ color possible dans les fichiers xml pour choisir la couleur de ses evènements
+    + Ajout d'un champ icon dans les entry du fichier xml pour ajouter une icone dans le titre (exemple calendrier lunaire)
+    + Correctif pour l'affichage des accents dans highchart pour mac: passage par HTML
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Apr 29 21:45:39 CEST 2013
+
+
+Cultibox (1.1.16) precise; urgency=low
+    + Correction du calendrier pour windows: on ne regarde pas les repertoire . et .. pour la recherche de fichiers xml 
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Apr 29 16:42:25 CEST 2013
+
+
+Cultibox (1.1.15) precise; urgency=low
+    + Ajout des fichiers de langues pour la datepicker
+    + Modificaition de localhost en 127.0.0.1 dans le fichier configuration.php de joomla
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Apr 29 14:32:31 CEST 2013
+
+
+Cultibox (1.1.14) precise; urgency=low
+    + Correction de la connxion PDO: passage de localhost à 127.0.0.1 (problème de timeout due au reverse DNS IPV6)
+    + Correction des cases avec plusieurs valeurs qui ne marchaient pas
+    + Déplacement du boutton "resetzoom" des logs au centre en bas du graphe
+    + Création des index sur le timestamp pour les tables des logs et power
+    + Correction d'un bug d'affichage des radios boutons dans les logs
+    + Modifications des scripts php du calendrier: les evènements sont directements écrits sur la carte sd et l'ont ne modifie plus que la plage de dates de lévènement pour optimiser
+    + Suppression du fichier json-refresh.php puisque chaque script gère indépendamenet sa partie d'écriture sur la carte SD
+    + Optimisation de la recherche de la carte SD: on oublie les repertoire . et ..
+    + Debug des commandes mysql: sous windows Vista, les commandes mysql utilisant localhost pour créer une connexion plantent, on passe à l'adresse 127.0.0.1
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Fri Apr 26 11:02:38 CEST 2013
+
+
+Cultibox (1.1.13) precise; urgency=low
+    + Non rechargement de la page des programmes, passage a jquery 1.9, relooking css...
+    + Debug en masse...
+    + Mise en place de la personnalisation des boites de dialogues d'erreur, de confirmation et de validation grâce à JQUERY
+    + Mise en place du timezone en fonction de la langue selectionnée
+    + Changement de place de emetteur.hex qui se trouve maintenant dans le dossier cnf
+    + Modification des scripts d'install pour prend en compte les différentes langues
+    + Passage du WdCalendar à FullCalendar, un calendrier pour la gestion des évènements full Jquery-CSS
+    + Ajout de la possibilité d'utiliser des fichiers XML au format atom pour programmer des évènements dans le calendrier
+    + Passage par un boutton exterieur pour réinitialiser le zoom de highchart...bug dans le code de highchart
+    + Optimisation mémoire de la page des logs, division par 4 du temps de chargement et par 10 de la mémoire utilisée
+    + Ajout d'un module de debug mémoire si l'option DEBUG est activée
+    + Utilisation de PDO pour créer les connexions aux bases de données pour la partie calendrier
+    + Optimisation des requettes de la partie logs
+    + Utilisation de la commande mysqldump pour export au format csv les données des bases
+    + Passage au connecteur php PDO au lieu de JDatabase pour les requettes SQL
+    + Ajout et debug de fichiers XML pour le calendrier lunaire
+    + Le menu selectionné dans la configuration apparait d'une couleur différente
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Apr  9 09:24:50 CEST 2013
+
+
+Cultibox (1.1.12) precise; urgency=low
+    + Le choix du capteur n'apparait plus pour les types 'autre' et 'lampe'
+    + Correction d'un bug javascript: on ne recherche plus les éléments de la seconde régulation si celle-ci est désactivée
+    + Correction du fichier update_sql.sql (il manquait deux ;)
+    + Modification de la commande d'update de la base sous max: on utilise l'option -f pour forcer le script à continuer
+    + Correction pour le changement de numéro de version en upgrade sur les plateformes mac et linux
+    + Ouverture de l'aide dans un nouvel onglet
+    + Correction des trous de l'affichage des logs paramètré à 10 fois la fréquence d'enregistrement
+    + Correction sur la gestion des programmes: boucle infini si le repeat time est à 0 corrigé + correction sur le dernier élément d'un ajout cyclique qui se retrouvait vide
+    + Correction d'un appel de fonction erroné pour l'importation des logs de puissance
+    + Lorsqu'on charge les fichiers de log on authorise une ligne vide, à la ligneuxième ligne vide on ferme le fichier et on passe au suivant
+    + Les données éronnées dans les fichiers de logs n'empèchent pas de poursuivre la lecture des autres lignes à la recherche d'autres données valides
+    + Ajout du selecteur de langue pour joomla et des langues: espagnol, italien et allemand
+    + Modification de l'affichage des puissances pour prendre en compte les extrapolations
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Apr  3 11:32:52 CEST 2013
+
+
+Cultibox (1.1.11) precise; urgency=low
+    + Correction d'erreur d'affichage dans les légendes des graphes des programmes et des logs
+    + L'affichage des programmes dans les logs est maintenant synchronisé en fonction du type: les ventilateurs et radiateurs sont synchronisés avec l'affichage des températures par exemple 
+    + Correction de typos
+    + Mise en forme des panneaux d'informations et de warning/erreurs
+    + Fusion des deux css cultibox.css et calagan.css en un seul: cultibox.css
+    + L'algorithme de calcul du coût ne prend plus en compte les prises désactivées
+    + Gestion de l'upgrade pour Mac Os X
+    + Vérification de la possibilité d'écrire sur la carte SD avant de modifier les fichiers de conf
+    + Le programme selectionné pour modification ne peut plus être déselectionné
+    + Correction des requettes d'import des valeurs 'power': on vérufie que c'est bien un type numérique avant l'import
+    + Possibilité de mettre la tolérance à 0
+    + Passage de la gestion de la configuration du coût dans l'onglet coût
+    + Relooking des erreurs pour les champs des formulaires
+    + Choix du nombre de mois pour l'import des logs transposé dans l'onglet display-logs
+    + Le choix min et max pour l'axe Y des puissances dans les logs se fait maintenant comme pour les autres axes directement dans l'onglet log
+    + Ajout du parser php de wiki de Al
+    + Prise en compte des sauts de ligne dans le calendar
+    + Ajout des fonctions d'export au format csv pour les logs et les puissances
+    + Les logs sont par défaut chargés sur les 31 derniers jours
+    + Correction sur l'affichage des unités dans les graphes des programmes
+    + Divers bug fixes...inombrables et innomables... ... ... ...!!
+    + Agrandissement du fond de l'interface pour éviter les débordements si le contenu est trop long
+    + Passage des messages pop up en jquery customisable
+    + Changement de l'algorithme d'affichage des mesures de puissances: affichage comme les programmes sans trous (valeur à 0 à la place)
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Mar 24 12:28:40 CET 2013
+
+
+Cultibox (1.1.10) precise; urgency=low
+    + La valeur par défaut des programmes est mise à "Marche" => correction de bug
+    + Formattage des fichiers calc_XX pour le calendrier, suppréssion d'une ligne entre le titre et la description
+    + Ajout d'un résumé et de tooltips pour la partie cost
+    + Réactivation de la régulation secondaire
+    + Ajout d'un résumé des régulations dans les logs
+    + Correction des titres des sections pour l'uniformité
+    + Possibilité de choisir le capteur utilisé pour la régulation
+    + Changement du type 'Inconnu' en type 'Autre'
+    + Ajout de safari comme navigateur officiellement supporté
+    + Installation d'un service de démarrage pour Mac Os X
+    + Ajout d'une application mac pour lancer le soft cultibox
+    + AJout des scripts load/backup pour Mac Os X
+    + Correction des redirections vers le waiting pour le formatage de la carte SD
+    + Renomage des scripts gérant les logs en display-logs pour être cohérent 
+    + Correction d'un bug sur l'affichage du menu du display-logs qui devait être en blanc quand actif
+    + Changement des couleurs du timepicker pour respecter la charte graphique
+    + Ajout d'un onglet Help pour la future documentation
+    + Nouvelle base joomla qui intègre la corection du menu display-logs + le menu help
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Mar 17 18:08:59 CET 2013
+
+
+
+Cultibox (1.1.9) precise; urgency=low
+    + Lancement de l'interface à la fin de l'installation sous windows
+    + On n'affiche plus les erreurs du update.sql (il y en aura forcément et c'est pas important)
+    + Suppression de l'image de la cultibox dans le welcome, calagan l'a ajouté au bout du menu
+    + Ajout de l'ancien icone pour le logiciel sur linux, ca le fait top moumouteuh
+    + Ajout de bouttons dans le menu de configuration au lieu de liens
+    + Correction des listes avec ajout d'une class dans calagan.css
+    + Correction du calcul du cout: le calcul théorique ne prend pas en compte les prises inactives, le calcul réel ne se base pas sur la configuration des prises mais uniquement les données enregistrées par la cultibox
+    + Le package Linux vérifie maintenant que le logiciel a été désintallé avec l'option --purge, sinon il annule la nouvelle installation et propose à l'utilisateur de lancer la commande
+    + Suppression du code en double qui detectait la version
+    + La fonction de vérification des mises à jours gère maintenant l'architecture (insertion dans la variable VERSION de l'arch) et propose l'update adequat
+    + Correction par Calagan du css: menu actif en blanc, correction de la taille de l'image cultibox...
+    + Ajout de tooltips pour la gestion des puissances 1000 ou 3500W
+    + Correction taille des informations affichées par le css de calagan
+    + Passage de l'affichage des menus par des articles contenant le code Jumi plutôt que des applications Jumi: cela permet d'afficher l'onglet actif
+    + AJout par calagan: d'une nouvelle image de waiting, de nouvelles images de fake_log, de l'image de resumé
+    + Passage du css pour le timepicker dans le css de calagan
+    + Affichage du bouton resetzoom dans highchart avec le zoom en Y
+    + AJout d'encres pour afficher la page après soumission au bon endroit
+    + Passage de joomla 2.5.3 a 2.5.9
+    + Ajout de faux logs basés sur les données de philou le filou
+    + Correction des accents dans les graphes highcharts des logs et du cost
+    + Suppression des alternatecolor dans highchart pour ne pas effacer le message de fake log
+    + Possibilité d'exporter/importer un programme vide
+    + Ajout d'encres dans la page des programmes
+    + Correctifs pour passer les standards HTML5 du W3C
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Fri Mar  8 11:27:13 CET 2013
+
+
+Cultibox (1.1.8) precise; urgency=low
+    + Ajout de la possibilité de zoomer sur l'axe Y dans les logs 
+    + Correction de tooltip et de valeur par défaut dans la base configuration
+    + Suppression du composant joomfish dans joomla
+    + Changement de la charte graphique du site, ajout du travail de Calagan
+    + Désactivation des régulations secondaires
+    + Ajout du nouvel icone de calagan
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Mar  7 10:42:45 CET 2013
+
+
+Cultibox (1.1.7) precise; urgency=low
+    + Correctif pour la gestion des puissances des prises
+    + Corection de la couleur du programme 4 identique à celle de la puissance
+    + Vérification de l'accès à internet avant de vérifier la présence des mises à jours
+    + Les programmes des prises inactives ne sont plus ajoutées dans le fichier plugv
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Mar  2 22:07:00 CET 2013
+
+
+Cultibox (1.1.6) precise; urgency=low
+    + Correctif pour la dernière version
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Fri Mar  1 21:27:02 CET 2013
+
+
+Cultibox (1.1.5) precise; urgency=low
+    + Verification que la version proposée pour les updates à un numéro de version plus grand que la version installée
+    + Ajout de la possibilité de configurer une prise en 3500W ou 100W et changement des adresses et du fichier pluga en conséquence
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Wed Feb 27 10:40:15 CET 2013
+
+
+Cultibox (1.1.4) precise; urgency=low
+    + Correction pour la gestion des updates qui restait affiché même après une update
+    + Correction de l'import des programmes qui n'importait qu la prise 1
+    + Le formatage de la carte SD se fait dans la configuration
+    + Le temps d'une session est de 120s maintenant au lieu de 14400s
+    + Correction de l'affichage du waiting
+    + Nouveaux scripts pour la génération des paquets Linux (gestion des upgrades et des scripts de sauvegarde des bases)
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Tue Feb  5 14:14:08 CET 2013
+
+
+Cultibox (1.1.3) precise; urgency=low
+
+    + Une page waiting (la même que les logs) apparait maintenant quand on format une carte SD pour la rendre compatible Cultibox
+    + Le Browser Web du client est testé afin de savoir s'il est compatible avec le logiciel Cultibox, si non un message d'information apparait sur la page du Welcome
+    + Correction d'un bug critique concernant l'ajout des valeurs des programmes, une variable manquante empechait d'ajouter des programmes autres que On/Off
+    + Ajouts de tooltips pour aider l'utilisateur à comprendre les fonctions de gestion des logs
+    + Bug fixe pour l'offset dans la fonction de formatage du fichier de conf de la carte SD
+    + Bug fix sur la régulation secondaire et la valeur enregistrée dans les fichiers plugXX
+    + Possibilité de désactiver une prise dans le logiciel et de ne pas avoir les informations relative à cette prise affichée
+    + Détection d'une carte SD de plus de 2Go et blocage de la fonction formatage pour ces cartes (pour rester sur du FAT16)
+    + Possibilité de ne pas afficher le programme courant 
+    + Bug fixe sur le import qui ne marchait pas (il manquait une variable dans le waiting)
+    + Dans la basei cultibox.plugs : ajout d'un champ PLUG_ENABLED pour définir une prise comme active ou non 
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Sun Jan  27 11:15:03 CET 2013
+
+
+
+Cultibox (1.1.2) precise; urgency=low
+    + Ajout d'une variable de configuration permettant d'activer ou non l'envoi des statistiques (par défaut activé, à désactiver lors de la mise en prod)
+    + Changement de la gestion des messages et notament des messages d'erreut qui s'affichent à coté du champ concerné
+    + Suppression de la variable de configuration permettant de choisir la couleur des courbes des programmes dans les logs, la couleur utilisée est celle du programme en question
+    + Suppression d'une partie des variables de SESSION, on passe diectement les variables à la page concernée (pour le waiting-logs). Simplification du code
+    + Ajout des commentaires dans les pages scripts et templates
+    + Remise en forme des pages et des marges des tableaux
+    + Ajout d'un changement de couleur pour les axes des graphes highcharts (alternate color), à changer surement
+    + Ajout d'une fonction permettant de formatter une carte SD pour la rendre compatible cultibox
+    + Changement de l'affichage de la configuration des prises: une prise à la fois dynamiquement calculée ou toutes les prises d'un coup si selectionnée
+    + Suppression de la possibilité de changer le code d'identification d'une prise
+    + Changement de l'affichage des programmes comme pour les prises. Un programme affiché et configurable à la fois et possibilité d'afficher les autres programmes pour comparer
+    + Possibilité d'importer ou exporter les prises mise à ON par défaut
+    + Possibilité d'effacer l'ancien programme en même temps que l'on ajoute une action
+    + Réorganisation de la page des programmes
+    + Possibilité d'ajouter une action cyclique
+    + Début de codage pour la prochaine evolution permettant d'ajouter plusieurs programmes pour une prise: ajout des champs necessaires dans la base programs
+    + Ajout d'une page historique permettant de tracer les 100 dernières actions
+    + Pleins de correctifs de bugs...liste trop longue.
+    + Changement de la gestion des mises à jour: un seul binaire pour les MAJ et les nouvelles installations
+    + Nouveau fonctionnement du menu de configuration
+    + Corection bug sur le chargement des logs
+    + Correction du champ "firm_version" qui doit être un VARCHAR et non un INT
+    + Modifications SQL:
+
+ALTER TABLE `cultibox`.`configuration` ADD `STATISTICS` VARCHAR( 5 ) NOT NULL DEFAULT 'True';
+
+CREATE TABLE IF NOT EXISTS `historic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `timestamp` varchar(25) NOT NULL,
+  `action` varchar(300) NOT NULL,
+  `type` VARCHAR( 15 ) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+ALTER TABLE `programs` ADD `number` INT NOT NULL DEFAULT '1';
+
+ALTER TABLE `programs` ADD `date_start` VARCHAR( 10 ) NOT NULL DEFAULT '0000-00-00',
+ADD `date_end` VARCHAR( 10 ) NOT NULL DEFAULT '0000-00-00';
+
+ALTER TABLE `configuration` DROP COLUMN `COLOR_PROGRAM_GRAPH`;
+
+ALTER TABLE `informations` CHANGE `firm_version` `firm_version` VARCHAR( 7 ) NOT NULL DEFAULT '000.000';
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Sat Dec  8 13:00:03 CET 2012
+
+
+
+Cultibox (1.1.1) precise; urgency=low
+   + Correction de l'afichage du formulaire des logs + correction de l'affichage des graphes de puissance + correction de la variable des graphes des couts 
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/libs/css/cultibox.css
+
+
+Cultibox (1.1.0) precise; urgency=low
+   + Passage par une bibliothèque externe des fonctions javascript
+        02_src/joomla/templates/yoo_cloud/layouts/template.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/libs/js/cultibox-utils.js
+        02_src/joomla/main/libs/js/cultibox.js
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/templates/plugs.html
+        02_src/joomla/main/templates/wizard.html
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/templates/cost.html
+        02_src/joomla/main/templates/calendar.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+
+   + Affichage des courbes des 4 capteurs en fonction des couleurs choisies
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/libs/config.php
+
+   + Les sous menu restent ouvert si on soumet le formulaire
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/scripts/configuration.php
+
+   + Correction des requesttes sql pour plus grande robustesse concernant l'ajout des logs
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/db_common.php
+
+   + Accélération de l'affichage de la page des logs: on ne recharge pas tous les fichiers de logs quand la carte sd est branchée + possibilité de faire un reset des bases ou d'importer les logs à la demande:
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/scripts/waiting.php
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/config.php
+        02_src/joomla/main/libs/db_common.php
+
+   + Correction et fonctionnalité sur l'affichage des logs: affichage de différent capteur (un à la fois pour le moment), correction de l'affichage des programmes si l'echelle change, correction des fakes_log avec la nouvelle base de log (champ sensor_nb en plus), ajout d'une fonctionnalité permettant de vider la base de logs, affichage de tous les capteurs en même temps... 
+01_install/01_src/02_sql/fake_log.sql
+        02_src/joomla/main/scripts/waiting.php
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+
+   + Correction des adresses des prises et du fichier pluga
+        02_src/joomla/main/libs/config.php
+
+   + Enregistrement des différents capteurs
+        ALTER TABLE `logs` ADD `sensor_nb` INT NOT NULL DEFAULT '1'
+
+        01_install/01_src/02_sql/cultibox_fr.sql
+        01_install/01_src/02_sql/cultibox_en.sql
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/libs/config.php
+
+   + Modification des couleurs des graphes (passage en hexa)
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/libs/config.php
+   + Mise en place d'un bouton précédent/suivant dans les logs pour rapidement changer la date
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/templates/cost.html
+        02_src/joomla/main/templates/wizard.html
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+
+   + Utilisation du HP/HC dans le calcul reel de la consommation + correction du cout du prix theorique
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/libs/db_common.php
+
+   + Correction de l'afficahge des puissances consommée suite au changement sur 4 digit des fichiers pwr_XX
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/templates/logs.html
+
+   + Pas de waiting s'il n'y a pas de carte SD
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/waiting.php
+        02_src/joomla/main/templates/waiting.html
+
+   + Utilisation de variables globales pour le min/max de prises utilisables
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/libs/config.php
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+
+   + Utilisation des HP/HC pour le calcul des coûts de l'installation
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/libs/utilfunc.php
+
+   + Possiilité d'afficher la calcul du coût pour toutes les prises séparément
+        02_src/joomla/main/templates/cost.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/libs/css/cultibox.css
+
+   + Gestion du firmware de l'emetteur comme pour celui de la cultibox
+        02_src/joomla/main/libs/utilfunc.php
+
+   + Possibilité de zoomer sur les deux axes dans les logs
+        02_srcjoomla/main/templates/logs.html
+
+   + Personnalisation des boutons "ajouter/suppprimer prise"
+        02_srcjoomla/main/libs/css/cultibox.css
+        02_srcjoomla/main/templates/programs.html
+        02_srcjoomla/main/locale/en_GB.utf8.po
+        02_srcjoomla/main/locale/fr_FR.utf8.po
+
+
+   + Correction de bugs sur la gestion des fichiers pwr_XX: on ne charge que les valeurs différentes de 0 pour gagner en temps de requette et on supprime les caractères spéciaux qui peuvent trainer
+        02_srcjoomla/main/libs/utilfunc.php
+
+   + Ajout de l'information de régulation secondaire dans les programmes
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+
+-- Yann Genevois <yann.genevois@cultibox.fr>  Sat Dec  8 13:00:03 CET 2012
+
+
+Cultibox (1.0.334) precise; urgency=low
+    + Ajout de la possibilité de supprimer/ajouter une prise dans les programmes et blocage des prises à 3 minimum
+        02_src/joomla/main/libs/config.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/templates/programs.htmlA
+
+    + Correction d'un bug sur les fichiers pwr_XX (passage sur 4 digits)
+
+    + Affichage des titres dans les pages plus en accord avec la charte graphique:
+        02_src/joomla/templates/yoo_cloud/css/base.css
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/libs/css/cultibox.css
+
+    + Vérification des données récupérées concernant les logs avant effacement du fichier log.txt
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/scripts/calendar.php
+        02_src/joomla/main/scripts/plugs.php
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/scripts/wizard.php
+
+    + Ajout du resume des actions dans les programmes
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/img/resume.png
+        02_src/joomla/main/libs/img/resume.png
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+
+    + Correction d'une erreur d'affichage du wizard pour les pages anglaises
+        02_src/joomla/main/locale/en_GB.utf8.po
+
+
+    + Mise à jour des recettes de packages
+        01_install/02_windows/pre_compil_linux.sh
+        01_install/02_windows/update_file/update_windows_from_1.0.315_to_1.0.325
+        01_install/02_windows/update_script_linux.iss
+        01_install/02_windows/conf-script/load.bat
+        01_install/02_windows/conf-script/backup.bat
+        01_install/02_windows/conf-lampp/php.ini
+        01_install/03_linux/conf-lampp/php.ini
+        01_install/01_src/02_sql/sql_update/update_sql_windows_from_1.0.315_to_322.sql
+        01_install/01_src/02_sql/sql_update/update_sql_windows_from_1.0.315_to_1.0.325.sql
+        01_install/01_src/02_sql/cultibox_en.sql
+        01_install/01_src/02_sql/cultibox_fr.sql
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Dec  6 01:41:26 CET 2012
+
+
+Cultibox (1.0.325) precise; urgency=low
+    + Correction d'un bug d'affichage dans l'onglet plugs
+        02_src/joomla/main/templates/plugs.html
+
+    + Correction d'un bug sur les mois à charger dans les logs
+        02_src/joomla/main/scripts/logs.php
+
+    + Remise à zero du fichier log.txt sur la carte sd
+
+    + Ajout d'un champ browser dans l'envoie des requettes XHR
+        02_src/joomla/main/libs/js/oXHR.js
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/templates/welcome.html
+        02_src/joomla/main/scripts/plugs.php
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/scripts/wizard.php
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/scripts/calendar.php
+
+    + Debug de la mise à jour des firmware avec la nouvelle version des firmware
+
+    + Changement des recettes linux pour une plus grande rapidité de création des packages et passage à XAMPP 1.8.1
+  
+    + Ajout de champs nécéssaires à oXHR permettant de remonter des informations
+        02_src/joomla/main/libs/js/oXHR.js
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/templates/plugs.html
+        02_src/joomla/main/templates/welcome.html
+        02_src/joomla/main/scripts/plugs.php
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/scripts/wizard.php
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/scripts/calendar.php
+
+  + Modification du timestamp pour les données envoyées par XHR
+        02_src/joomla/main/libs/js/oXHR.js
+
+  + Ajout de la version du soft dans oXHR
+        02_src/joomla/main/templates/welcome.html
+        02_src/joomla/main/libs/js/oXHR.js
+
+  + Changement de l'affichage du menu configuration pour être qu'il tienne sur une page (menu déroulant)
+        02_src/joomla/main/templates/configuration.html
+
+  + Changement de l'affichage des formulaires des logs pour être plus concis
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/waiting.php
+        02_src/joomla/main/scripts/logs.php
+
+ -- Yann Genevois <yann.genevois@cultibox.fr> Wed Nov 28 10:34:04 CET 2012
+
+
+Cultibox (1.0.316) precise; urgency=low
+  + Modification de la gestion sous windows (Ajout des services)
+
+  + Lors de l'installation sous windows le nom des prises sera en francais ou anglais en fonction de la langue choisie
+
+  + Nouvelle version pour highchart 2.3.3
+        02_src/joomla/main/libs/js/exporting.js
+        02_src/joomla/main/libs/js/highcharts.js
+
+  + Correction affichage pour le waiting
+        02_src/joomla/main/scripts/waiting.php
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/templates/waiting.html
+
+  + Correction de l'orthographe des locales FR et des locales manquantes pour EN
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+
+ -- Yann Genevois <yann.genevois@cultibox.fr> Fri Nov 16 11:42:10 CET 2012
+
+
+Cultibox (1.0.309) precise; urgency=low
+
+  + Ajout du module xHR + passage au valaditeur du w3c pour le html + correction affichage
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/js/oXHR.js
+        02_src/joomla/main/templates/programs.html
+        02_src/joomla/main/templates/plugs.html
+        02_src/joomla/main/templates/welcome.html
+        02_src/joomla/main/templates/waiting.html
+        02_src/joomla/main/templates/logs.html
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/templates/cost.html
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/templates/yoo_cloud/layouts/template.php
+
+  + Suppression du fichier VERSION, utilisation de la revision par SVN
+        VERSION
+        01_install/02_windows/pre_compil_linux.sh
+        01_install/03_linux/pre-compil.sh
+
+  + Correction de l'URL pour la vérification des mises à jour (le site web a bougé)
+        02_src/joomla/main/libs/config.php
+        02_src/joomla/main/libs/utilfunc.php
+
+ -- Yann Genevois <yann.genevois@cultibox.fr> Thu Nov 15 12:23:46 CET 2012
+
+
+Cultibox (1.0.303) precise; urgency=low
+
+  + Ajout des champs permettant de configurer le début et la fin de heures pleines/creuses + correction d'un bug d'affichage
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/scripts/cost.php 
+        02_src/joomla/main/templates/configuration.html
+
+  + Reduction de l'image du wizard 
+        02_src/joomla/main/libs/img/wizard.png
+
+ -- Yann Genevois <yann.genevois@cultibox.fr> Tue Nov 13 12:01:24 CET 2012
+
+
+Cultibox (1.0.296) precise; urgency=low
+
+  + Ajout d'une fonction permettant de copier ou créer le fichier log.txt sur la carte SD
+        02_src/joomla/main/scripts/plugs.php
+        02_src/joomla/main/scripts/programs.php
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/scripts/wizard.php
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/scripts/cost.php
+        02_src/joomla/main/scripts/calendar.php
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+
+ -- Yann Genevois <yann.genevois@cultibox.fr> Tue Nov 13 12:01:24 CET 2012
+
+
+Cultibox (1.0.295) precise; urgency=low
+
+  + Ajout des nouvelles images pour le welcome et changement des textes
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/img/calendar.png
+        02_src/joomla/main/libs/img/logs.png
+        02_src/joomla/main/libs/img/program.png
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/templates/welcome.html
+
+ -- Yann Genevois <yann.genevois@cultibox.fr> Tue Nov 13 11:27:39 CET 2012
+
+
+Cultibox (1.0.293) precise; urgency=low
+
+  + Changement de la taille des commentaires du calendrier
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/libs/db_common.php
+
+ -- Alliaume Rico <alliaume.rico@gmail.com> Mon Nov 12 15:12:18 CET 2012
+
+
+Cultibox (1.0.264) precise; urgency=low
+
+  + Correction erreur syntaxe dans la page de logs et correction de la gestion HP/HC quand on passe en anglais
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/templates/configuration.html
+
+  + La page d'accueil n'affiche le lien du wizard que si aucun programme n'est présent dans la base, sinon la page affiche trois images vers 3 liens du site: program, logs, calendar
+        02_src/joomla/main/libs/css/cultibox.css
+        02_src/joomla/main/libs/db_common.php
+        02_src/joomla/main/libs/img/calendar.png
+        02_src/joomla/main/libs/img/logs.png
+        02_src/joomla/main/libs/img/program.png
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/welcome.php
+        02_src/joomla/main/templates/welcome.html
+
+
+  + Plus de robustesse dans la lecture/écriture des logs, on test la présence du fichier avant chaque lecture et non plus une fois par mois:
+        02_src/joomla/main/libs/utilfunc.php
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/scripts/logs.php
+
+
+  + Pour Windows, changement de fonctionnement du script de lancement cultibox.bat qui détermine si l'interface est déja lancée et qui la redémarre si c'est le cas.
+        01_install/02_windows/cultibox.bat
+        
+
+  + Sous Ubuntu Quantal les dossiers montés le sont dans /media/USER et non plus dans /media!
+        02_src/joomla/main/libs/utilfunc.php
+
+  + Ajout d'un champ permettant de configurer le nombre de mois à rechercher dans les fichiers de logs: par défaut 2.
+        
+        ALTER TABLE `configuration` ADD `LOG_SEARCH` INT NOT NULL DEFAULT '2'
+
+        02_src/joomla/main/templates/configuration.html
+        02_src/joomla/main/scripts/logs.php
+        02_src/joomla/main/scripts/configuration.php
+        02_src/joomla/main/locale/fr_FR.utf8.po
+        02_src/joomla/main/locale/en_GB.utf8.po
+        02_src/joomla/main/libs/config.php
+
+  + Les FAKE LOG sont maintenant affichés pour n'importe quel jour et non pas le jour d'installation et cela jusqu'à ce que l'utilisateur enregistre des logs:
+        02_src/joomla/main/scripts/logs.php 
+
+  + Correction de l'inclusion d'un fichier css inexistant:
+        02_src/joomla/templates/yoo_cloud/layouts/template.php
+
+ -- Yann Genevois <yann.genevois@cultibox.fr>  Sat Oct 27 12:59:17 CEST 2012
+
+Cultibox (1.0.0) precise; urgency=low
+
+  + Initial Release
+
+ -- Yann Genevois <yann.genevois@cultibox.fr>  Wed Aug 29 15:48:19 CEST 2012

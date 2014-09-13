@@ -1,0 +1,744 @@
+                                                                         
+   _|_|_|            _|    _|      _|      _|_|_|                        
+ _|        _|    _|  _|  _|_|_|_|          _|    _|    _|_|    _|    _|  
+ _|        _|    _|  _|    _|      _|      _|_|_|    _|    _|    _|_|    
+ _|        _|    _|  _|    _|      _|      _|    _|  _|    _|  _|    _|  
+   _|_|_|    _|_|_|  _|      _|_|  _|      _|_|_|      _|_|    _|    _|  
+                                                                         
+                                                                                
++------------------------------------------------------------------------------+
++                                Version note                                  +
++ Bug can be view at adress : http://code.google.com/p/cultibox                +
++------------------------------------------------------------------------------+
+
++ Version 2.20
+   Comment:
+   Issues :
+      796: [programme] "marche " sur pompe à eau
+      761: [Cultibox] régulation + action manuelle
+      839: [programme] chg de jour avec programme au jour sans carte SD
+      842: [prises][cultibox] fonctionnement avec plage de fonctionnement
+      841: [alarme] mode de fonctionnement avancé
+   To test :
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      824 : [PROG] Fonctionnement inattendu
+      835 : [Régulation] anomalie de fonctionnement
+      836 : [Régulation] Pilotage non correcte pour effecteur négatif
+      840 : [cout] log à la seconde
+      931 : [Cultibox] nombre de changement par jour
+      932 : [CULTI] Gestion du contraste
+      933 : [RTC] Permettre un décalage journalier de l'horloge
+   Solved :
+
++ Version 2.19
+   Comment:
+   Issues :
+      796: [programme] "marche " sur pompe à eau
+      761: [Cultibox] régulation + action manuelle
+      839: [programme] chg de jour avec programme au jour sans carte SD
+      842: [prises][cultibox] fonctionnement avec plage de fonctionnement
+      841: [alarme] mode de fonctionnement avancé
+   To test :
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      824 : [PROG] Fonctionnement inattendu
+      835 : [Régulation] anomalie de fonctionnement
+      836 : [Régulation] Pilotage non correcte pour effecteur négatif
+      840 : [cout] log à la seconde
+   Solved :
+
++ Version 2.18
+   Comment:
+   Issues :
+      796: [programme] "marche " sur pompe à eau
+      761: [Cultibox] régulation + action manuelle
+      839: [programme] chg de jour avec programme au jour sans carte SD 
+      840: [cout] log à la seconde
+      842: [prises][cultibox] fonctionnement avec plage de fonctionnement
+      841: [alarme] mode de fonctionnement avancé
+   To test :
+      556 : [Logs] Mauvaise recherche du début de log power au reboot
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      824 : [PROG] Fonctionnement inattendu
+      835 : [Régulation] anomalie de fonctionnement
+      836 : [Régulation] Pilotage non correcte pour effecteur négatif
+      838 : [Cultibox] retour sur l'écran d'accueil
+      844 : [Cultibox] Démarrage de la Cultibox
+   Solved :
+
++ Version 2.17
+   Comment:
+   Issues :
+   To test :
+      556 : [Logs] Mauvaise recherche du début de log power au reboot
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      824 : [PROG] Fonctionnement inattendu
+      835 : [Régulation] anomalie de fonctionnement
+      836 : [Régulation] Pilotage non correcte pour effecteur négatif
+   Solved :
+      797 : [SD] Cultibox sans carte SD à 00h00
+      809 : [PROGRAMM] Gestion de programme journalier
+      832 : [cultibox] changement de l'heure dans le menu de la Cultibox
+
++ Version 2.16
+   Comment:
+   Issues :
+   To test :
+      556 : [Logs] Mauvaise recherche du début de log power au reboot
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      797 : [SD] Cultibox sans carte SD à 00h00
+      809 : [PROGRAMM] Gestion de programme journalier
+      824 : [PROG] Fonctionnement inattendu
+      832 : [cultibox] changement de l'heure dans le menu de la Cultibox
+      835 : [Régulation] anomalie de fonctionnement
+      836 : [Régulation] Pilotage non correcte pour effecteur négatif
+   Solved :
+      --- : Gestion des firmwares des capteurs d'eau
+      741 : Passage de la limite du nombre de changement dans une journée à 999 
+      798 : [CAL] Affichage de caractères bizarre sur l'écran de la CBx
+      805 : [CALIBRATION] Ajouter une pop up pour avertir l'utilisateur
+      808 : [ID] Lire les fichiers avec 6 valeurs
+      
++ Version 2.15
+   Comment:
+   Issues :
+   To test :
+      556 : [Logs] Mauvaise recherche du début de log power au reboot
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      797 : [SD] Cultibox sans carte SD à 00h00
+      809 : [PROGRAMM] Gestion de programme journalier
+      832 : [cultibox] changement de l'heure dans le menu de la Cultibox
+   Solved :
+      --- : Gestion des firmwares des capteurs d'eau
+      741 : Passage de la limite du nombre de changement dans une journée à 999 
+      798 : [CAL] Affichage de caractères bizarre sur l'écran de la CBx
+      805 : [CALIBRATION] Ajouter une pop up pour avertir l'utilisateur
+      808 : [ID] Lire les fichiers avec 6 valeurs
+
++ Version 2.14
+   Comment:
+   Issues :
+   To test :
+      --- : Gestion des firmwares des capteurs d'eau
+      556 : [Logs] Mauvaise recherche du début de log power au reboot
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      741 : Passage de la limite du nombre de changement dans une journée à 999 
+      797 : [SD] Cultibox sans carte SD à 00h00
+      809 : [PROGRAMM] Gestion de programme journalier
+   Solved :
+      798 : [CAL] Affichage de caractères bizarre sur l'écran de la CBx
+      805 : [CALIBRATION] Ajouter une pop up pour avertir l'utilisateur
+      808 : [ID] Lire les fichiers avec 6 valeurs
+      
++ Version 2.13
+   Comment:
+   Issues :
+   To test :
+      556 : [Logs] Mauvaise recherche du début de log power au reboot
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      741 : Passage de la limite du nombre de changement dans une journée à 999 
+      797 : [SD] Cultibox sans carte SD à 00h00
+      798 : [CAL] Affichage de caracteres bizarre sur l'écran de la CBx
+      805 : [CALIBRATION] Ajouter une pop up pour avertir l'utilisateur
+      808 : [ID] Lire les fichiers avec 6 valeurs
+      809 : [PROGRAMM] Gestion de programme journalier
+   Solved :
+      530 : [Culti] [Cal] gestion des cycles lunaire sur la culti 
+      749 : LOGS Gestion des trous dans l'affichage
+      750 : [culti] retirer la carte SD si on est dans le menu 
+      753 : [CAL] Affichage en bas de l'écran 
+
++ Version 2.11
+   Comment:
+   Issues :
+   To test :
+      530 : [Culti] [Cal] gestion des cycles lunaire sur la culti 
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs 
+      741 : Passage de la limite du nombre de changement dans une journée à 999 
+      749 : LOGS Gestion des trous dans l'affichage
+      750 : [culti] retirer la carte SD si on est dans le menu 
+      753 : [CAL] Affichage en bas de l'écran 
+   Solved :
+      357 : [ID] La partie haute de l'ID de la Cultibox n'est pas sauvegardée
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      235 : [LOGS] amélioration graph interpolation
+      
++ Version 2.10
+   Comment:
+   Issues :
+   To test :
+      357 : [ID] La partie haute de l'ID de la Cultibox n'est pas sauvegardée
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      235 : [LOGS] amélioration graph interpolation
+   Solved :
+
++ Version 2.0
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      234 : [LOGS] amélioration graph min/max
+      235 : [LOGS] amélioration graph interpolation
+      357 : [ID] La partie haute de l'ID de la Cultibox n'est pas sauvegardée
+   To test :
+      427 : [Regul] Gestion de mauvaises données des capteurs
+      545 : Ajouter une tolérance pour la régulation secondaire
+      676 : [Culti] meu capteur sans retour
+      677 : [Culti] regulation moyenne/max/min
+   Solved :
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      585 : Moyenne de température
+
++ Version 1.31
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      234 : [LOGS] amélioration graph min/max
+      235 : [LOGS] amélioration graph interpolation
+      357 : [ID] La partie haute de l'ID de la Cultibox n'est pas sauvegardée
+   To test :
+      427 : [Regul] Gestion de mauvaises données des capteurs
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      545 : Ajouter une tolérance pour la régulation secondaire
+      585 : Moyenne de température
+   Solved :
+
++ Version 1.30
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      234 : [LOGS] amélioration graph min/max
+      235 : [LOGS] amélioration graph interpolation
+      357 : [ID] La partie haute de l'ID de la Cultibox n'est pas sauvegardée
+   To test :
+      427 : [Regul] Gestion de mauvaises données des capteurs
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      424 : [Beta CT] [CULTI] Accessiblité d'infos sur l'écran cultibox
+      545 : Ajouter une tolérance pour la régulation secondaire
+      585 : Moyenne de température
+   Solved :
+      - Problème de lecture des capteurs
+      654 : Appuie sur le bouton central pour allumer le retro éclairage
+     
++ Version 1.29
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      234 : [LOGS] amélioration graph min/max
+      235 : [LOGS] amélioration graph interpolation
+      357 : [ID] La partie haute de l'ID de la Cultibox n'est pas sauvegardée
+   To test :
+      427 : [Regul] Gestion de mauvaises données des capteurs
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      424 : [Beta CT] [CULTI] Accessiblité d'infos sur l'écran cultibox
+      545 : Ajouter une tolérance pour la régulation secondaire
+      585 : Moyenne de température
+   Solved :
+      - Suppression de la possibilité de changer Vop
+      - Ajout de flèche autour du mot contraste
+      - Ajout du fichier logs/index
+      - Changement de place des fichiers
+      - Prise en compte du capteur TWATER
+      - Sauvegarde des versions des firmware capteur
+      - Déplacement des fichiers sur la carte SD
+
++ Version 1.28
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+   To test :
+      427 : [Regul] Gestion de mauvaises données des capteurs
+   Solved :
+      - Réduction du nombre de prise affichable dans menu programme
+      - Décalage de de ID à la fin du menu
+    
++ Version 1.27
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+   To test :
+      427 : [Regul] Gestion de mauvaises données des capteurs
+   Solved :
+      172 : Tester Régulation secondaire
+      366 : [CULTI] prise qui ne change pas d'etat
+      216 : Ajouter la régulation avec le second capteur
+      270 : [PLUG] La lampe s'allume tous les matins à 8h
+    
++ Version 1.26
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+      366 : [CULTI] prise qui ne change pas d'etat
+   To test :
+      216 : Ajouter la régulation avec le second capteur
+      270 : [PLUG] La lampe s'allume tous les matins à 8h
+      427 : [Regul] Gestion de mauvaises données des capteurs
+   Solved :
+      213 : Possibilité d'un second capteur
+      283 : [LOG] Affichage des autres capteur
+      372 : [CULTI] information Temperature humidité des 4 capteurs
+      431 : [CULTI] Température inférieur à 0°C
+
++ Version 1.25
+   Comment:
+   Issues :
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+      366 : [CULTI] prise qui ne change pas d'etat
+   To test :
+      213 : Possibilité d'un second capteur
+      216 : Ajouter la régulation avec le second capteur
+      270 : [PLUG] La lampe s'allume tous les matins à 8h
+      283 : [LOG] Affichage des autres capteur
+      372 : [CULTI] information Temperature humidité des 4 capteurs
+      427 : [Regul] Gestion de mauvaises données des capteurs
+      431 : [CULTI] Température inférieur à 0°C
+   Solved :
+      104 : Gerer la MAJ firmware du sensor
+      415 : Vbias 18
+      418 : [CULTI] indication visuelle d'une Cultibox sans carte SD
+      436 : [CULTI] Affichage des courbes
+      443 : [PROGRAMME] Logs de puissance non fonctionnels  
+
++ Version 1.24
+   Comment:
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+      366 : [CULTI] prise qui ne change pas d'etat
+   To test :
+      213 : Possibilité d'un second capteur
+      216 : Ajouter la régulation avec le second capteur
+      270 : [PLUG] La lampe s'allume tous les matins à 8h
+      283 : [LOG] Affichage des autres capteur
+      372 : [CULTI] information Temperature humidité des 4 capteurs
+      415 : Vbias 18
+      418 : [CULTI] indication visuelle d'une Cultibox sans carte SD
+      427 : [Regul] Gestion de mauvaises données des capteurs
+      436 : [CULTI] Affichage des courbes
+      443 : [PROGRAMME] Logs de puissance non fonctionnels  
+   Solved :
+      248 : [CAL] vitesse d'affichage
+      277 : [REGUL] "tolerance" de la prise
+      374 : [CULTI] aucune info de temperature/Hr d'affichée sur l'écran principal
+      392 : [CULTI] [PROGRAMME] Bug régulation
+      403 : [CULTI] changement manuel d'état de la prise 7
+      434 : [CULTI] Prise sous régulation lors du débranchement de la carte SD
+
++ Version 1.23
+   Comment:
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+      366 : [CULTI] prise qui ne change pas d'etat
+   To test :
+      213 : Possibilité d'un second capteur
+      216 : Ajouter la régulation avec le second capteur
+      248 : [CAL] vitesse d'affichage
+      270 : [PLUG] La lampe s'allume tous les matins à 8h
+      277 : [REGUL] "tolerance" de la prise
+      283 : [LOG] Affichage des autres capteur
+      372 : [CULTI] information Temperature humidité des 4 capteurs
+      374 : [CULTI] aucune info de temperature/Hr d'affichée sur l'écran principal
+      392 : [CULTI] [PROGRAMME] Bug régulation
+   Solved :
+      274 : [BOOT] Mise à jour du firmware
+      405 : [CULTI] chargement d'un courbe de temperature humidité
+
++ Version 1.22
+   Comment:
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      248 : [CAL] vitesse d'affichage
+      274 : [BOOT] Mise à jour du firmware
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+      366 : [CULTI] prise qui ne change pas d'etat
+   To test :
+      213 : Possibilité d'un second capteur
+      270 : [PLUG] La lampe s'allume tous les matins à 8h
+      283 : [LOG] Affichage des autres capteur
+      372 : [CULTI] information Temperature humidité des 4 capteurs
+      374 : [CULTI] aucune info de temperature/Hr d'affichée sur l'écran principal
+   Solved :
+      314 : [LOG] Bug si T < 10°C
+
++ Version 1.21
+   Comment:
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      201 : Reboot de la cultibox lors de l'entrée dans le menu Log ou Programme
+      217 : Permettre la RAZ du min/max à une autre heure que minuit
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      248 : [CAL] vitesse d'affichage
+      274 : [BOOT] Mise à jour du firmware
+      305 : [PLUG] Problème de pilotage des prises 10 11 12
+      357 : [ID] La partie haute de l'ID de la cultibox n'est pas sauvegardée
+   To test :
+      195 : [RTC] L'horloge se décale
+      213 : Possibilité d'un second capteur
+      270 : [PLUG] La lampe s'allume tous les matins à 8h
+      283 : [LOG] Affichage des autres capteur
+      311 : [CULTI] defilement gauche droite sur page principale
+      302 : [LOGS] Affichage non correct des logs
+      314 : Trous dans les logs de la cultibox et problème des valeurs power
+      359 : [pwr] La prise 14 et la prise 15 ont de mauvaise valeur
+   Solved :
+      288 : [BOOT] Si la carte n'est pas prete, il tente quand même de demarrer
+      304 : [CONF] La lecture de l'offset RTC ne passe pas
+      328 : Typo style: emmeteur
+
++ Version 1.20
+   Comment:
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      201 : Reboot de la cultibox lors de l'entrée dans le menu Log ou Programme
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      248 : [CAL] vitesse d'affichage
+      270 : [PLUG] La lampe s'allume tous les matins à 8h
+      274 : [BOOT] Mise à jour du firmware
+      283 : [LOG] Affichage des autres capteur
+      304 : [CONF] La lecture de l'offset RTC ne passe pas
+      305 : [PLUG] Problème de piloatge des prises 10 11 12
+      314 : Trous dans les logs de la cultibox et problème des valeurs power
+   To test :
+      195 : [RTC] L'horloge se décale
+      288 : [BOOT] Si la carte n'est pas prete, il tente quand même de demarrer
+      311 : [CULTI] defilement gauche droite sur page principale
+      302 : [LOGS] Affichage non correct des logs
+   Solved :
+      232 :	Prise qui ne change pas d'état
+      271 : [CULTI] prise qui change d'etat a minuit lors du reboot
+      296 : [PLUG] Les numéros des prises ne sont pas tous bon
+      326 : [PROGRAMME] Mauvais affichage
+
++ Version 1.19
+   Comment:
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      195 : [RTC] L'horloge se décale
+      201 : Reboot de la cultibox lors de l'entrée dans le menu Log ou Programme
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      248 : [CAL] vitesse d'affichage
+      269 : [PILE] Plus de batterie
+      270 : [PLUG] La lampe s'allume tous les matins à  8h
+      274 : [BOOT] Mise à jour du firmware
+      283 : [LOG] Affichage des autres capteur
+      296 : [PLUG] Les numéros des prises ne sont pas tous bon
+   To test : 
+      232 :	Prise qui ne change pas d'état
+      271 : [CULTI] prise qui change d'etat a minuit lors du reboot
+      288 : [BOOT] Si la carte n'est pas prete, il tente quand même de demarrer
+   Solved :
+      233 : [SENSOR] Sauvegarde de tout les capteurs
+      276 : [BOOT] Mise à jour du firmware emetor
+      278 : [BOOT] version firmware MAJ
+      284 : [PWR] Au redémarrage, les logs power ne partent pas du bon endroit
+      287 : [MENU] Lorsqu'on quitte log c'est programme qui s'affiche
+      294 : [MENU] Impossible de forcer les prises 11 --> 15
+
++ Version 1.18
+   Comment: 
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      195 : [RTC] L'horloge se décale
+      201 : Reboot de la cultibox lors de l'entrée dans le menu Log ou Programme
+      233 : [SENSOR] Sauvegarde de tout les capteurs
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      248 : [CAL] vitesse d'affichage
+   To test : 
+      232 :	Prise qui ne change pas d'état
+   Solved :
+      196 : [MENU] Laisser l'icone du dernier menu sélectionné selectionnée
+      231 : [MENU] Changer les informations visible sur le premier écran
+      253 : [CAL] mois de 31 jours toute l'année
+      260 : [CAL] menu calendrier: "bouton" glissant pour changer de mois
+      261 : La backlight s'éteint quand on change l'heure
+      263 : [PROGRAMM] Mauvais affichage
+
++ Version 1.17
+   Comment: 
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      158 : [PROGRAMM] Si le nombre d'entrée est supérieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      195 : [RTC] L'horloge se décale
+      196 : [MENU] Laisser l'icone du dernier menu sélectionné selectionnée
+      201 : Reboot de la cultibox lors de l'entrée dans le menu Log ou Programme
+      231 : [MENU] Changer les informations visible sur le premier écran
+      232 :	Prise qui ne change pas d'état
+      233 : [SENSOR] Sauvegarde de tout les capteurs
+      234 : [LOGS] amelioration  graph min/max
+      235 : [LOGS] amelioration  graph interpolation
+      248 : [CAL] vitesse d'affichage
+
+   Solved :
+      105 : Utiliser la pin Slave EN
+      120 : [BOOTLOADER] Accélerer le chargement des firmware
+      123 : [LOGS] Possibilité de choisir min / max pour les logs
+      218 : [LOGS] Accélerer la vitesse de déplacement du curseur lorsque l'utilisateur maintien le boutton appuyé
+      220 : [MENU] Si pas de capteur afficher message
+      221 : Fichier de trace : ajout de la version du firmware
+      222 : [LOGS] Séparer les courbes de temp et humi
+      223 : Ajout numéro ID
+      224 : Le fichier trace n'est pas justifié
+      227 : [TRACE] ajout de la version du firmware SHT et émetteur 
+      237 : [CAL] bug calandrier pour le retour au menu de la culti
+
++ Version 1.16
+   Comment: 
+   Issues :
+      104 : Gerer la MAJ firmware du sensor
+      105 : Utiliser la pin Slave EN
+      120 : [BOOTLOADER] Accélerer le chargement des firmware
+      123 : [LOGS] Possibilité de choisir min / max pour les logs
+      158 : [PROGRAMM] Si le nombre d'entrée est supÃ©rieur à  40 tout ne s'affiche pas
+      172 : Tester Régulation secondaire
+      195 : [RTC] L'horloge se décale
+      196 : [MENU] Laisser l'icone du dernier menu sélectionné selectionnée
+      201 : Reboot de la cultibox lors de l'entrée dans le menu Log ou Programme
+      221 : Fichier de trace : ajout de la version du firmware
+   Solved :
+      108 : Bug in log file
+      114 : Allow user to select weather and power log frequency
+      117 : Change text (SD no log --> No SD card)
+      119 : Add point for log view
+      124 : Add vertical bar at actual hour
+      131 : When button stay pressed, increase bar position (logs)
+      135 : At log menu opening, go to first point available
+      139 : [LOGS] Remplacer croix par point
+      140 : [LOGS] pas de log après reboot
+      146 : Cancel après appuie bouton capteur
+      148 : Bouton: meme systeme que pour les logs mais pour les prgms
+      153 : [LOGS] bug d'affichage
+      156 : [PROGRAMM]
+      161 : [LOGS] sur les jours revolus, pas de log entre 0h00 et 21h
+      162 : [PROGRAMM] deux jours consecutif de "mauvais" pilotage des prises
+      163 : [boitier] [parametre] menu mal numeroté
+      171 : [PROGRAMM] Bug affichage changement > 24
+      190 : [LOGS] Pas d'affichage
+      191 : [PROGRAMM] Pas d'affichage
+      194 : [PROGRAMM] Un point en trop à  0h00
+      199 : [BOOT] Lors du démarrage de la CBx : ne pas démarrer sans carte SD
+      202 : [LOG] La taille du graph n'est pas adaptée
+      203 : Ajouter fichier de trace
+      212 : Fichier de trace : Ajout de l'ID GreenBox
+
++ Version 1.15
+   Comment: 
+      Version with LCD screen reversed
+   Issues :
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+
++ Version 1.14
+   Comment: 
+      Version with LCD screen reversed
+   Issues :
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+
++ Version 1.9
+   Comment: Try to remove philous bug
+   Issues :
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+
++ Version 1.8
+   Comment:
+   Issues :
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+      103 : test regulation
+      171 : Programm view bug
+
++ Version 1.7
+   Comment:
+   Issues :
+      103 : test regulation
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+      148 : Prgm Buton: same as log
+      163 : Menu param
+      156 : Bug on programm strating at 1h
+
++ Version 1.6
+   Comment:
+   Issues :
+      103 : test regulation
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed
+      123 : Allow choose min/max for logs
+      140 : No log after reboot
+   Solved :
+      135 : Go to first logs available
+      139 : Replace + by -
+      131 : Long click on button
+      146 : Cancel button
+
++ Version 1.5
+   Comment:
+   Issues :
+      103 : test regulation
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed    
+   Bug solved :
+      040 : Speed up reading events
+      079 : Ask to write time
+      124 : Add bar to indicate actual hour in programm
+
++ Version 1.4
+   Comment:
+   Issues :
+      040 : Speed up reading events
+      079 : Ask to write time
+      103 : test regulation
+      104 : Firmware update Sensor
+      105 : Search Slave using chip EN
+      108 : Bug in log file
+      120 : Increase bootload speed                                             
+   Bug solved :
+      022 : No graph programm
+      033 : Functionnality cumsumtion not implemented
+      038 : Add a calendar to select log
+      039 : Add a calendar to select events
+      041 : Add Alarm
+      089 : Rewrite No Log
+      090 : Error No Valid Card Detected
+      091 : Logs, prevents user for futur
+      092 : Allow to see futur events
+      093 : See T & RH automatically
+      094 : Update Tmin and Tmax
+      095 : Icone to remove Sensor
+      097 : Calendar not functionnal
+      098 : NA is display for Tmax  
+      106 : Create memory file
+      114 : Allow to select freq for logs
+      117 : No SD card -> No log
+      119 : Increase log accuracy
+
++ Version 1.3
+   Comment:
+   Issues :
+      022 : No graph programm
+      033 : Functionnality cumsumtion not implemented
+      038 : Add a calendar to select log
+      039 : Add a calendar to select events
+      040 : Speed up reading events
+      041 : Add Alarm
+   Bug solved :
+      023 : No multi 3500W
+      035 : No frequency gestion in emetor firmware
+      043 : Min Max for today
+      069 : Programm pb screen
+
++ Version 1.2
+   Comment:
+   Issues :
+      022 : No graph programm
+      023 : No multi 3500W
+      033 : Functionnality cumsumtion not implemented
+   Bug solved :
+      002 : No calendar
+      003 : No regulation 
+      004 : False temp and humi are show at start
+      005 : No splash screen display
+      021 : Cultibox must not log if there is no sensor
+      024 : No calendar events
+      025 : Cultibox must save 5 next actions in RAM
+      027 : No gestion of plug file
+      029 : No gestion of freq plug update
+      030 : No gestion of log freq update
+      031 : Emetor is reinitialized at start
+      036 : Delete SD eject icon
+
++ Version 1.1
+   Comment: Log display
+   Issues :
+      002 : No calendar
+      003 : No regulation
+      004 : False temp and humi are show at start
+      005 : No splash screen display
+   Bug solved :
+      001 : No graph
+
++ Version 1.0
+   Comment: First version
+   Issues :
+      001 : No graph
+      002 : No calendar
+      003 : No regulation
+      004 : False temp and humi are show at start
+      005 : No splash screen display
+   Bug solved :
+      NA
