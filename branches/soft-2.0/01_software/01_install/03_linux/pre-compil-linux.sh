@@ -4,7 +4,7 @@ set -e
 dir=`dirname $0`
 cd $dir
 
-SRC_DIR=../../02_src/joomla
+SRC_DIR=../../02_src/cultibox
 DEST_DIR=../../01_install/01_src/01_xampp
 
 function usage {
@@ -40,7 +40,7 @@ case "$1" in
             
            tar zxvfp xampp-linux-1.8.3.4-amd64.tar.gz -C ../01_src/01_xampp/cultibox/opt/
 
-           cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
+           cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
            cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
            cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
            cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/opt/lampp/VERSION_FIRM.txt
@@ -67,7 +67,6 @@ EOF
 
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-amd64'/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/cultibox_fr.sql
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-amd64'/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/cultibox_en.sql
-           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-amd64'/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/cultibox_fr.sql
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-amd64'/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/cultibox_de.sql
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-amd64'/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/cultibox_it.sql
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-amd64'/" ../01_src/01_xampp/cultibox/opt/lampp/sql_install/cultibox_es.sql
@@ -94,7 +93,7 @@ EOF
 
             tar zxvfp xampp-linux-1.8.3.4-i386.tar.gz -C ../01_src/01_xampp/cultibox/opt/
 
-            cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
+            cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox
             cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/docs/documentation_cultibox.pdf
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/opt/lampp/VERSION.txt
             cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/opt/lampp/VERSION_FIRM.txt
