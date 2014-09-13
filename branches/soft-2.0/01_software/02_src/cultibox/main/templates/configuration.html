@@ -1,0 +1,454 @@
+<script>
+   $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
+</script>
+
+<br />
+<p class="title_conf"><?php echo __('CONFIGURE_TITLE_CULTIBOX'); ?></p>
+<br />
+<form action="/cultibox/index.php?menu=configuration" method="post" name="configform" id="configform">
+    <table class="table_width">
+        <tr>    
+            <td class="conf-menu-marge"></td>
+            <td><button id="div_user_label" class="menu_h1" onclick="expand('user_interface'); return false;"><?php echo __('USER_CONF'); ?></button></td>
+            <td><button id="div_system_label" class="menu_h1" onclick="expand('system_interface'); return false;"><?php echo __('SYSTEM_CONF'); ?></button></td>
+            <td><button id="div_alarm_label" class="menu_h1" onclick="expand('alarm_interface'); return false;"><?php echo __('CONFIGURE_ALARM'); ?></button></td>
+            <td><button id="div_wifi_label" class="menu_h1" onclick="expand('wifi_interface'); return false;"><?php echo __('CONFIGURE_WIFI'); ?></button></td>
+            <td><button id="div_card_label" class="menu_h1" onclick="expand('card_interface'); return false;"><?php echo __('CONFIGURE_CARD'); ?></button></td>
+            <td class="conf-menu-marge"></td>
+        </tr>
+    </table>    
+    <br />
+    <div id="div_alarm_description" style="display:none">
+        <br />
+        <table class="table_width">
+            <tr>
+                <td class="conf-menu-marge"></td>
+                <td><?php echo __('ALARM_DESCRIPTION'); ?></td>
+                <td class="conf-menu-marge"></td>
+            </tr>
+        </table>
+        <br />
+    </div>
+<div id="div_wifi_description" style="display:none">
+<br />
+<table class="table_width">
+<tr>
+    <td class="conf-menu-marge"></td>
+    <td><?php echo __('WIFI_DESCRIPTION'); ?></td>
+    <td class="conf-menu-marge"></td>
+</tr>
+</table>
+<br />
+</div>
+
+<hr />
+<br />
+
+<div id="div_user_interface" style="display:none">
+    <table class="conf-table">
+       <tr>
+             <td class="conf-marge"></td>
+             <td class="conf-marge-td"><?php echo __('CHECK_STATISTICS'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SEND_INFOS'); ?>" /></td>
+             <td><select name="statistics">
+                <option value="True" <?php if(strcmp("$stats","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
+                <option value="False" <?php if(strcmp("$stats","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
+             </select></td>
+            <td></td>
+       </tr>
+       <tr>
+             <td class="conf-marge"></td>
+             <td><?php echo __('SECOND_REGUL_ENABLE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SECOND_REGUL_ENABLE'); ?>" /></td>
+             <td><select name="second_regul" id="second_regul">
+                <option value="True" <?php if(strcmp("$second_regul","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
+                <option value="False" <?php if(strcmp("$second_regul","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
+             </select></td>
+            <td></td>
+       </tr>
+        <tr>
+            <td class="conf-marge"></td>
+            <td><?php echo __('ADVANCED_REGUL_OPTIONS'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_ADVANCED_REGUL_OPTIONS'); ?>" /></td>
+            <td>
+                <select name="advanced_regul_options" id="advanced_regul_options">
+                    <option value="True" <?php if(strcmp("$advanced_regul","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
+                    <option value="False" <?php if(strcmp("$advanced_regul","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
+                </select>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="conf-marge"></td>
+            <td><?php echo __('SHOW_COST'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SHOW_COST'); ?>" /></td>
+            <td>
+                <select name="show_cost" id="show_cost">
+                    <option value="1"><?php echo __('YES'); ?></option>
+                    <option value="0" <?php if(!$show_cost) echo "selected"; ?>><?php echo __('NO'); ?></option>
+                </select>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="conf-marge"></td>
+            <td>
+                <?php echo __('CONFIGURE_COST_COLOR'); ?>:
+            </td>
+            <td>
+                <select name="color_cost_graph" id="color_cost_graph">
+                <?php 
+                    foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
+                        $color_lang = "COLOR_" . strtoupper($value);
+                        if($value == $color_cost) {
+                            echo "<option value=\"" . $value . "\" selected >" . __($color_lang) . "</option>";
+                        } 
+                        else
+                        {
+                            echo "<option value=\"" . $value . "\" >" . __($color_lang) . "</option>";
+                        }
+                    }
+                ?>
+                </select>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<!-- End of Interface tab -->
+
+<!-- Start of cultibox tab -->
+<div id="div_system_interface" style="display:none">
+    <table class="conf-table">
+    <tr>
+    <td class="conf-marge"></td>
+    <td><?php echo __('CONFIGURE_NB_PLUGS'); ?>:</td>
+    <td>
+       <select name="nb_plugs" id="nb_plugs">
+          <?php
+          for($i=$GLOBALS['NB_MIN_PLUG'];$i<=$GLOBALS['NB_SELECTABLE_PLUG'];$i++) {
+             if(!strcmp ("$i","$nb_plugs")) {
+                echo "<option value=\"${i}\" selected>${i}</option>";
+             } else {
+                echo "<option value=\"${i}\">${i}</option>";
+             }
+          }
+          ?>
+    </select>
+    </td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td class="conf-marge"></td>
+    <td class="conf-marge-td">
+       <?php echo __('CONFIGURE_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RECORD_FREQ'); ?>" />
+    </td>
+    <td>
+       <select name="record_frequency" id="record_frequency">
+          <?php
+          foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
+             if(!strcmp ("$value","$record_frequency")) {
+                echo "<option value=\"${value}\" selected>${value}</option>";
+             } else {
+                echo "<option value=\"${value}\">${value}</option>";
+             }
+          }
+          ?>
+       </select>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td class="conf-marge"></td>
+    <td>
+       <?php echo __('CONFIGURE_POWER_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_POWER_FREQ'); ?>" />
+    </td>
+    <td>
+       <select name="power_frequency" id="power_frequency">
+          <?php
+          foreach($GLOBALS['LIST_RECORD_FREQUENCY'] as $value) {
+             if(!strcmp ("$value","$power_frequency")) {
+                echo "<option value=\"${value}\" selected>${value}</option>";
+             } else {
+                echo "<option value=\"${value}\">${value}</option>";
+             }
+          }
+          ?>
+       </select>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td class="conf-marge"></td>
+    <td>
+       <?php echo __('CONFIGURE_PLUGS_FREQUENCY'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_PLUG_FREQ'); ?>" />
+    </td>
+    <td>
+       <select name="update_plugs_frequency" id="update_plugs_frequency">
+          <?php
+          foreach($GLOBALS['LIST_UPDATE_FREQUENCY'] as $value) {
+             if(strcmp ("$value","-1")==0) { 
+                $val=__('ALWAYS_RECORD');
+             } else {
+                $val=$value;
+             }
+             if(!strcmp ("$value","$update_frequency")) {
+                echo "<option value=\"${value}\" selected>${val}</option>";
+             } else {
+                echo "<option value=\"${value}\">${val}</option>";
+             }
+          }
+          ?>
+          </select>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+            <td class="conf-marge"></td>
+            <td>
+               <?php echo __('RESET_MINMAX'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_MINMAX'); ?>" />
+            </td>
+            <td>
+               <input type="text" size="5" name="reset_minmax" id="reset_minmax" <?php if(!empty($reset_minmax)) { ?> value="<?php echo $reset_minmax;?>" <?php } else { ?> value="00:00" <?php } ?> />
+            </td>
+            <td><div id="error_min_max" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
+    </tr>
+
+    <!-- Display RTC row -->
+    <tr>
+        <td class="conf-marge"></td>
+        <td><div id="rtc_offset_div" <?php if(!$GLOBALS['SHOW_RTC']) { ?>style="display:none"<?php } ?>>
+           <?php echo __('CONFIGURE_RTC_OFFSET'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RTC_OFFSET'); ?>" />
+        </div> 
+        </td>
+        <td>
+            <div id="rtc_offset_value" <?php if(!$GLOBALS['SHOW_RTC']) { ?>style="display:none"<?php } ?>>
+            <table class="table_width">
+                <tr>
+                    <td style="width: 50%; padding-right: 10px;">
+                        <!-- RTC Slider -->
+                        <div id="rtc_offset_slider"></div>
+                    </td>
+                    <td>
+                        <!-- RTC Value -->
+                        <input type="text" name="rtc_offset" id="rtc_offset" value="<?php echo $rtc_offset; ?>" size="4" readonly /><?php echo __('RTC_OFFSET_UNITY'); ?>
+                    </td>
+                </tr>
+            </table>
+            </div>
+        </td>
+        <td></td>
+    </tr>
+    </table>
+</div>
+<!-- End of Cultibox tab -->
+
+<!-- Start of Alarme tab -->
+<div id="div_alarm_interface" style="display:none">
+        <table class="conf-table">
+        <tr>  
+            <td class="conf-marge"></td>
+            <td class="conf-marge-td"><?php echo __('CONFIGURE_ALARM_ACTIV'); ?>:</td>
+            <td class="conf-alarm-field">
+                <select name="alarm_activ" id="alarm_activ" onChange="getAlarm(this.selectedIndex);" onLoad="getAlarm(this.selectedIndex);">
+                <?php 
+                    if("$alarm_activ"=="0001") {
+                        echo "<option value='0001' selected>".__('YES')."</option>";
+                        echo "<option value='0000'>".__('NO')."</option>";
+                    } else {
+                        echo "<option value='0001'>".__('YES')."</option>";
+                        echo "<option value='0000' selected>".__('NO')."</option>";
+                    }
+                ?>
+                </select>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="conf-marge"></td>
+            <td>
+                <div id="label_alarm_value" style="<?php if("$alarm_activ"=="0000") echo "display:none"; ?>">
+                    <?php echo __('CONFIGURE_ALARM_VALUE'); ?>:
+                </div>
+            </td>
+            <td>
+                <div id="div_alarm_value" style="<?php if("$alarm_activ"=="0000") echo "display:none"; ?>">
+                    <input type="text" size="5" maxlength="4" value="<?php echo "$alarm_value"; ?>" name="alarm_value" id="alarm_value" onKeypress="return verifDigit(event);">
+                    <label id="label_degree">°C</label>
+                </div>
+            </td>
+            <td>
+                <div id="error_alarm_value" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''>
+                    <?php echo __('ERROR_ALARM_VALUE'); ?>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- End of Alarme tab -->
+
+<!-- Start of Wifi tab -->
+<div id="div_wifi_interface" style="display:none">
+    <table class="conf-table">
+        <tr>
+            <td class="conf-marge"></td>
+            <td class="conf-marge-td">
+                <?php echo __('CONFIGURE_WIFI_ACTIV'); ?>:
+            </td>
+            <td class="conf-alarm-field">
+                <select name="WIFI" id="WIFI" 
+                        onChange="getWifi(this.selectedIndex);" onLoad="getWifi(this.selectedIndex);">
+                <?php 
+                    if($wifi_enable == 1) {
+                        echo "<option value='1' selected>".__('YES')."</option>";
+                        echo "<option value='0'>".__('NO')."</option>";
+                    } else {
+                        echo "<option value='1'>".__('YES')."</option>";
+                        echo "<option value='0' selected>".__('NO')."</option>";
+                    }
+                ?>
+                </select>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <br />
+
+    <div id="div_wifi_value" style="<?php if(!$wifi_enable) { echo 'display:none'; } ?>">
+        <table class="conf-table">
+            <tr>
+                <td class="conf-marge"></td>
+                <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_SSID'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_SSID'); ?>" /></td>
+                <td class="conf-alarm-field">
+                    <input  type="text" size="15" 
+                            name="wifi_ssid" id="wifi_ssid" 
+                            value="<?php echo $wifi_ssid; ?>" />
+                </td>
+                <td></td>
+                <td><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
+            </tr>
+           <tr>
+              <td class="conf-marge"></td>
+              <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_KEY_TYPE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_KEY_TYPE'); ?>" /></td>
+              <td class="conf-alarm-field">
+                    <select name="wifi_key_type" id="wifi_key_type">
+                        <?php foreach( $GLOBALS['WIFI_KEY_TYPE_LIST'] as $key) { ?>
+                            <option value="<?php echo $key; ?>" <?php if($key == $wifi_key_type) echo 'selected'; ?>><?php echo $key; ?></option>
+                        <?php } ?>
+                    </select>
+              </td>
+              <td></td>
+              <td></td>
+           </tr>
+           <tr>
+                <td class="conf-marge"></td>
+                <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_PASSWORD'); ?>:</td>
+                <td class="conf-alarm-field">
+                    <input  type="text" size="15" 
+                            name="wifi_password" id="wifi_password" value="" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?> />
+                    <input  type="text" size="15" 
+                            name="current_wifi_password" id="current_wifi_password" 
+                            value="<?php echo $wifi_password; ?>" style="display:none" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?> />
+                </td>
+                <td><img src='/cultibox/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_CURRENT_PWD'); ?>" id="eyes"></td>
+                <td>
+                    <div id="error_wifi_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div>
+                    <div id="error_empty_password" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_EMPTY_PASSWORD'); ?></div>
+                    <div id="error_password_wep" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WEP_KEY_TYPE'); ?></div>
+                    <div id="error_password_wpa" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WPA_KEY_TYPE'); ?></div>
+                </td>
+           </tr>
+           <tr>
+                <td class="conf-marge"></td>
+                <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_PASSWORD_CONFIRM'); ?>:</td>
+                <td class="conf-alarm-field">
+                    <input type="text" size="15" 
+                           name="wifi_password_confirm" id="wifi_password_confirm" value="" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?>/>
+                </td>
+                <td></td>
+                <td><div id="error_wifi_password_confirm" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_PASSWORD_VALUE'); ?></div></td>
+           </tr>
+           <tr>
+              <td class="conf-marge"></td>
+              <td class="conf-marge-td"><?php echo __('CONFIGURE_WIFI_IP'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_IP'); ?>" /></td>
+              <td class="conf-alarm-field"><input type="text" size="15" name="wifi_ip" id="wifi_ip" value="<?php echo $wifi_ip; ?>" <?php if(!$wifi_manual) echo "disabled"; ?> /></td>
+              <td><input type="checkbox" name="wifi_ip_manual" id="wifi_ip_manual" title="<?php echo __('WIFI_IP_MANUAL'); ?>" <?php if($wifi_manual) echo "checked"; ?> /></td>
+              <td><div id="error_wifi_ip" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP'); ?></div></td>
+           </tr>
+
+        </table>
+    </div>
+</div>
+
+<div id="div_submit_interface" style="display:none">
+    <br />
+    <hr />
+    <input type="hidden" id="submenu" name="submenu" value="<?php echo $submenu; ?>" />
+    <br /><p class="p_center">
+       <input type="hidden" value="<?php echo __('VALIDATION_CONF'); ?>" id="submit_conf_value" name="submit_conf_value">
+       <input type="submit" value="<?php echo __('VALIDATION_CONF'); ?>" id="submit_conf" name="submit_conf">
+    </p>
+</div>
+</form>
+
+<div id="div_card_interface" style="display:none">
+    <form action="/cultibox/index.php?menu=configuration" method="post" id="format_sd_form">
+    <table class="conf-table">
+    <tr>
+        <td class="conf-marge"></td>
+        <td class="conf-marge-td"><?php echo __('MANAGE_RESET_SD_CARD'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_FORMAT_SD'); ?>" /></td>
+        <td >
+            <?php 
+                if((isset($hdd_list))&&(count($hdd_list)>0)) { ?>
+                    <select name="selected_hdd" id="selected_hdd">
+                        <?php  foreach($hdd_list as $hdd) { ?>
+                            <option value="<?php echo "$hdd"; ?>"><?php echo "$hdd"; ?></option>
+                        <?php } ?>
+                    </select>
+            <?php  } ?>
+            <button id="reset_sd_card_submit" name="reset_sd_card_submit" 
+            <?php if((isset($hdd_list))&&(count($hdd_list)>0)) { ?> 
+                class="delete"><?php echo __('MANAGE_RESET_CARD'); ?>
+            <?php } else { ?>
+                disabled class="inputDisable"><?php echo __('MANAGE_RESET_CARD_NOT_FOUND'); ?>
+            <?php } ?>
+            </button>
+
+        </td>
+        <td></td>
+    </tr>
+    </table>
+    <div id="format_dialog_sd" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
+    <p><?php echo __('RESET_CONFIRM_SD_CARD'); ?></p>
+    </div>
+    <br />
+    <hr />
+    </form>
+
+    <div id="progress" title="<?php echo __('FORMAT_PROGRESS'); ?>" style="display:none">
+        <div id="progress_bar"></div>
+        <br />
+        <p class="p_center">
+            <label class="format_success" id="success_format" style="display:none"><?php echo __('SUCCESS_FORMAT'); ?></label>
+            <label class="format_error" id="error_format" style="display:none"><?php echo __('ERROR_FORMAT'); ?></label>
+        </p>
+    </div>
+</div>
+
+<div class="format_error" id="locked_sd_card" title="" style="display:none">
+    <p><?php echo __('LOCKED_CARD'); ?></p>
+</div>
+
+
+<div class="popup_message" id="update_conf" title="" style="display:none">
+    <p><?php echo __('VALID_UPDATE_CONF'); ?></p>
+</div>
+
+
+<div class="popup_error" id="error_update_conf" title="" style="display:none">
+    <p><?php echo __('ERROR_UPDATE_CONF'); ?></p>
+</div>
+
+
+<?php 
+      echo "<script>expand('".$submenu."');</script>";
+?>
