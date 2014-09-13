@@ -12,6 +12,7 @@ if (!isset($_COOKIE['position'])) {
 //Timezone par défaut pour éviter les problèmes d'ajout d'heures lors des transformations des temps 
 date_default_timezone_set('UTC');
 
+require_once('main/libs/db_get_common.php');
 
 
 //Set menu configuration :
@@ -27,14 +28,12 @@ if((isset($_GET['lang']))&&(!empty($_GET['lang']))) {
 } else if((isset($_SESSION['LANG']))&&(!empty($_SESSION['LANG']))) {
     $lang=$_SESSION['LANG'];
 } else {
-    TODO: define the default language depending the installation
-    $lang="fr_FR";
+    $lang=get_configuration("DEFAULT_LANG",$main_error);
 }
 
 
 
 require_once('main/libs/config.php');
-require_once('main/libs/db_get_common.php');
 require_once('main/libs/db_set_common.php');
 require_once('main/libs/debug.php');
 require_once 'main/libs/utilfunc.php';
