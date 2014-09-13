@@ -197,7 +197,6 @@ $(document).ready(function() {
                 }
             },{
             text: "<?php echo __('CREATE_CALENDAR_PROGRAM'); ?>",
-            "id" : "btnPlan",
             click: function () {
                 $.ajax({
                     cache: false,
@@ -720,15 +719,15 @@ $(document).ready(function() {
                 var copiedEventObject = $.extend({}, originalEventObject);
 
                 // assign it the date that was reported
-                var start = $.fullCalendar.formatDate(date, "yyyy-MM-dd");
-                var end = $.fullCalendar.formatDate(date, "yyyy-MM-dd");
+                var start = $.fullCalendar.formatDate(date, "yyyy-MM-dd 02:00:00");
+                var end = $.fullCalendar.formatDate(date, "yyyy-MM-dd 23:59:59");
             
                 copiedEventObject.allDay = allDay;
                 copiedEventObject.title = "<?php echo __('CALENDAR_DAILY_PROGRAM') ; ?>" + " " + originalEventObject.title;
                 copiedEventObject.description = copiedEventObject.title;
                 copiedEventObject.id = 1000;
-                copiedEventObject.start = start;
-                copiedEventObject.end = end;
+                //copiedEventObject.start = start;
+                //copiedEventObject.end = end;
 
                 // Check if there is an other programm on the same day
                 if (daily_program_check_overlaping(copiedEventObject)) {

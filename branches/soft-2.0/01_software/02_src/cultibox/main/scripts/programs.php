@@ -47,6 +47,8 @@ $export_selected     = getvar("export_selected_plug");
 
 // Get configuration value
 $second_regul        = get_configuration("SECOND_REGUL",$main_error);
+$remove_1000_change_limit = get_configuration("REMOVE_1000_CHANGE_LIMIT",$main_error);
+$remove_5_minute_limit    = get_configuration("REMOVE_5_MINUTE_LIMIT",$main_error);
 
 
 $start="";
@@ -557,25 +559,34 @@ if(!empty($apply) && isset($apply))
                 $pop_up_message=$pop_up_message.popup_message(__('INFO_PLUG_CULTIBOX_CARD'));
             }
 
-            $tmp_prog=create_program_from_database($main_error);
-            if(count($tmp_prog)>$GLOBALS['PLUGV_MAX_CHANGEMENT']-1) {
-                $last_action=substr($tmp_prog[$GLOBALS['PLUGV_MAX_CHANGEMENT']-1],0,5);
-                $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_MAX_PROGRAM')." ".date('H:i:s',$last_action));
+            // Check if user has not removed the limit of 1000 change
+            if ($remove_1000_change_limit == "False")
+            {
+                $tmp_prog=create_program_from_database($main_error);
+                if(count($tmp_prog)>$GLOBALS['PLUGV_MAX_CHANGEMENT']-1) {
+                    $last_action=substr($tmp_prog[$GLOBALS['PLUGV_MAX_CHANGEMENT']-1],0,5);
+                    $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_MAX_PROGRAM')." ".date('H:i:s',$last_action));
+                }
             }
+
         } 
     }
 }
 
-
-//Pour vérifier que l'on ne dépasse pas la limite de changement d'état des prises:
-//On génère le fichier plugv depuis la base de données et on compte le nombre de ligne,
-//Si cela dépasse la limite, on affiche une erreur/warning après calcul de l'heure de la dernière action
-$tmp_prog=create_program_from_database($main_error);
-if (count($tmp_prog) > $GLOBALS['PLUGV_MAX_CHANGEMENT']-1) 
+// Check if user has not removed the limit of 1000 change
+if ($remove_1000_change_limit == "False")
 {
-    $last_action=substr($tmp_prog[$GLOBALS['PLUGV_MAX_CHANGEMENT']-1],0,5);
-    $main_error[]=__('ERROR_MAX_PROGRAM')." ".date('H:i:s', $last_action);
+    //Pour vérifier que l'on ne dépasse pas la limite de changement d'état des prises:
+    //On génère le fichier plugv depuis la base de données et on compte le nombre de ligne,
+    //Si cela dépasse la limite, on affiche une erreur/warning après calcul de l'heure de la dernière action
+    $tmp_prog=create_program_from_database($main_error);
+    if (count($tmp_prog) > $GLOBALS['PLUGV_MAX_CHANGEMENT']-1)
+    {
+        $last_action=substr($tmp_prog[$GLOBALS['PLUGV_MAX_CHANGEMENT']-1],0,5);
+        $main_error[]=__('ERROR_MAX_PROGRAM')." ".date('H:i:s', $last_action);
+    }
 }
+
 
 // For each plug gets pogramm
 for($i=0;$i<$nb_plugs;$i++) {

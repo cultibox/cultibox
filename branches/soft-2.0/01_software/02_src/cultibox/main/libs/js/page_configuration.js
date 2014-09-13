@@ -682,6 +682,7 @@ $(document).ready(function(){
                     type: "GET",
                     url: "http://localhost:6891/cultibox/main/modules/external/check_and_update_sd.php",
                     data: {
+                        force_rtc_offset_value:1,
                         sd_card:sd_card,
                         session_id:session_id
                     },
@@ -700,7 +701,6 @@ $(document).ready(function(){
                 });
             }
 
-            //HERE
             $.ajax({
                 cache: false,
                 url: "main/modules/external/get_variable.php",
@@ -768,13 +768,13 @@ $(document).ready(function(){
     }); 
     
     $("#rtc_offset_slider").slider({
-        max: 11,
-        min: -11,
+        max: 100,
+        min: -100,
         slide: function( event, ui ) {
             // While sliding, update the value in the div element
             $("#rtc_offset").val(ui.value);
         },
-        step: 0.1,
+        step: 1,
         value: rtc_offset_value
     });
     

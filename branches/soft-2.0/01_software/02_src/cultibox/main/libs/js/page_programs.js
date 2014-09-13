@@ -925,4 +925,35 @@ $(document).ready(function() {
 });
 
 
+/**
+ * Save parameters when user change options.
+ */
+ $(document).ready(function() {
+    // On select change, update conf
+    $("#remove_1000_change_limit , #remove_5_minute_limit").each(function() {
+
+        $(this).on('change', function() {
+
+            newValue    = $( this ).find(":selected").val();
+            varToUpdate = $( this ).attr('name');
+            updateConf  = $( this ).attr('update_conf');
+            curveTypeModified  = $( this ).attr('curveType');
+
+            // Update database
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "../../main/modules/external/update_configuration.php",
+                data: {
+                        value:newValue,
+                        variable:varToUpdate,
+                        updateConf:updateConf,
+                        session_id:session_id
+                    }
+            }).done(function (data) {
+            });
+        });
+    });
+});
+
 </script>

@@ -336,10 +336,8 @@ $(document).ready(function() {
             }
     },
     resizeStop: function( event, ui ) {
-        console.log(tmp);
         if(data!="") {
                 var tmp = $(".message").dialog( "option", "position" );
-                console.log(tmp);
                 var width = $(".message").dialog( "option", "width" );
 
                 $.ajax({

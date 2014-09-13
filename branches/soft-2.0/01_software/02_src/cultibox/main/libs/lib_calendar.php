@@ -9,15 +9,15 @@ function check_db() {
 
     // Define columns of the calendar table
     $calendar_col = array();
-    $calendar_col["Id"] = array ( 'Field' => "Id", "Type" => "INT");
+    $calendar_col["Id"] = array ( 'Field' => "Id", "Type" => "int(11)");
     $calendar_col["Title"] = array ( 'Field' => "Title", "Type" => "VARCHAR(1000)");
     $calendar_col["Description"] = array ( 'Field' => "Description", "Type" => "VARCHAR(500)");
     $calendar_col["StartTime"] = array ( 'Field' => "StartTime", "Type" => "DATETIME");
     $calendar_col["EndTime"] = array ( 'Field' => "EndTime", "Type" => "DATETIME");
     $calendar_col["External"] = array ( 'Field' => "EndTime", "Type" => "SMALLINT(6)", "default_value" => 0);
     $calendar_col["Color"] = array ( 'Field' => "Color", "Type" => "VARCHAR(7)","default_value" => "#4A40A4");
-    $calendar_col["Important"] = array ( 'Field' => "Important", "Type" => "VARCHAR(30)");
     $calendar_col["Icon"] = array ( 'Field' => "Icon", "Type" => "VARCHAR(30)");
+    $calendar_col["Important"] = array ( 'Field' => "Important", "Type" => "int(1)");
     $calendar_col["program_index"] = array ( 'Field' => "program_index", "Type" => "VARCHAR(30)");
 
 

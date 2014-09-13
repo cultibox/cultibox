@@ -25,7 +25,7 @@ msgid "MENU_COST"
 msgstr "Cost"
 
 msgid "MENU_CAL"
-msgstr "Calendar"
+msgstr "Calendrier"
 
 msgid "MENU_WIFI"
 msgstr "Wifi"
@@ -901,6 +901,11 @@ msgstr "Advanced program options"
 msgid "PROGRAM_NAME"
 msgstr "Program name"
 
+msgid "REMOVE_1000_CHANGE_LIMIT_SELECT"
+msgstr "Remove the limit of 1000 changes"
+
+msgid "REMOVE_5_MINUTE_LIMIT_SELECT"
+msgstr "Remove the limit of 5 minutes"
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"

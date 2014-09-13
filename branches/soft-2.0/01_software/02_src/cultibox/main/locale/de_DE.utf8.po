@@ -7,34 +7,34 @@ msgid "LANG"
 msgstr "de_DE"
 
 msgid "MENU_WELCOME"
-msgstr "Bienvenue"
+msgstr "Willkommen"
 
 msgid "MENU_CONF"
-msgstr "Configuration"
+msgstr "Konfiguration"
 
 msgid "MENU_LOGS"
 msgstr "Logs"
 
 msgid "MENU_PLUGS"
-msgstr "Prises"
+msgstr "Einnahme"
 
 msgid "MENU_PROGS"
-msgstr "Programmes"
+msgstr "Programme"
 
 msgid "MENU_COST"
-msgstr "Coût"
+msgstr "Kosten"
 
 msgid "MENU_CAL"
-msgstr "Calendrier"
+msgstr "Kalender"
 
 msgid "MENU_WIFI"
 msgstr "Wifi"
 
 msgid "MENU_WIZARD"
-msgstr "Assistant"
+msgstr "Assistent"
 
 msgid "MENU_HELP"
-msgstr "Aide"
+msgstr "Hilfe"
 
 
 #For the welcome part
@@ -901,6 +901,11 @@ msgstr "Erweiterte Programmoptionen"
 msgid "PROGRAM_NAME"
 msgstr "Programmname"
 
+msgid "REMOVE_1000_CHANGE_LIMIT_SELECT"
+msgstr "Entfernen Sie die Grenze von 1000 Änderungen"
+
+msgid "REMOVE_5_MINUTE_LIMIT_SELECT"
+msgstr "Entfernen Sie die Grenze von 5 min"
 
 # For the export module highchart part:
 msgid "CONTEXT_MENU"

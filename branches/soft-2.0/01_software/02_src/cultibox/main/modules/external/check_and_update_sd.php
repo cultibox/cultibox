@@ -26,6 +26,12 @@
     }
     
     $sd_card = $_GET['sd_card'];
+    $force_rtc_offset_value = 0;
+    if (isset($_GET['force_rtc_offset_value']))
+    {
+        $force_rtc_offset_value = 1;
+    }
+
     
     $main_error = array();
     $main_info = array();

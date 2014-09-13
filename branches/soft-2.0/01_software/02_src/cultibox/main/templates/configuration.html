@@ -210,16 +210,16 @@
             </td>
             <td><div id="error_min_max" style="display:none" class="error_field"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_TIME_VALUE'); ?></div></td>
     </tr>
-
-    <!-- Display RTC row -->
+ <!-- Display RTC row -->
     <tr>
         <td class="conf-marge"></td>
-        <td><div id="rtc_offset_div" <?php if(!$GLOBALS['SHOW_RTC']) { ?>style="display:none"<?php } ?>>
-           <?php echo __('CONFIGURE_RTC_OFFSET'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RTC_OFFSET'); ?>" />
-        </div> 
+        <td>
+            <div id="rtc_offset_div" >
+               <?php echo __('CONFIGURE_RTC_OFFSET'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RTC_OFFSET'); ?>" />
+            </div>
         </td>
         <td>
-            <div id="rtc_offset_value" <?php if(!$GLOBALS['SHOW_RTC']) { ?>style="display:none"<?php } ?>>
+            <div id="rtc_offset_value" >
             <table class="table_width">
                 <tr>
                     <td style="width: 50%; padding-right: 10px;">
@@ -238,6 +238,8 @@
     </tr>
     </table>
 </div>
+
+
 <!-- End of Cultibox tab -->
 
 <!-- Start of Alarme tab -->
