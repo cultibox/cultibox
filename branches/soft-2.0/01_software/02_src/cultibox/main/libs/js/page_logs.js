@@ -10,7 +10,6 @@
 
 
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-session_id="<?php echo session_id(); ?>";
 var count=0;
 
 // {{{ getType()
@@ -90,7 +89,7 @@ loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
     $.ajax({
         cache: false,
         url: "main/modules/external/load_log.php",
-        data: {nb_day:nb_day, type:type,search:search,sd_card:sd_card, session_id:session_id}
+        data: {nb_day:nb_day, type:type,search:search,sd_card:sd_card}
     }).done(function (data) {
         if(nb_day != 0) {
             if(type=="power") {
@@ -189,7 +188,7 @@ $(function () {
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+            data: {name:"LOAD_LOG", value: "False", duration: 1}
         });
         }
 
@@ -232,7 +231,6 @@ $(function () {
                                         day:1,
                                         month:$('input[type=radio][name=type_select]:checked').attr('value'),
                                         datatype:$(this).attr("datatype"),
-                                        session_id:session_id,
                                         startDate:$(this).attr("startDate")
                                     },
                                     url: 'main/modules/external/logs_get_serie.php',
@@ -616,14 +614,14 @@ $(document).ready(function() {
     $.ajax({
         cache: false,
         url: "main/modules/external/get_variable.php",
-        data: {name:name, session_id:session_id}
+        data: {name:name}
     }).done(function (data) {
         if(jQuery.parseJSON(data)!="True") {
             var name="sd_card";
             $.ajax({
                 cache: false,
                 url: "main/modules/external/get_variable.php",
-                data: {name:name, session_id:session_id}
+                data: {name:name}
             }).done(function (data) {
                 if($.trim(data)!="") {
                     $("#progress_load").dialog({
@@ -691,7 +689,7 @@ $(document).ready(function() {
          $.ajax({
             cache: false,
             url: "main/modules/external/get_variable.php",
-            data: {name:name, session_id:session_id}
+            data: {name:name}
          }).done(function (data) {
             if($.trim(data)) {
 				loadLog($("#log_search").val()*31,0,"logs",$("#log_search").val()*31,"submit",data);
@@ -849,7 +847,6 @@ $(document).ready(function() {
                     day:1,
                     month:$('input[type=radio][name=type_select]:checked').attr('value'),
                     datatype:$(this).attr("datatype"),
-                    session_id:session_id,
                     startDate:$(this).attr("startDate")
                 },
                 url: 'main/modules/external/logs_get_serie.php',
@@ -1060,8 +1057,7 @@ $(document).ready(function() {
                 data: {
                         value:newValue,
                         variable:varToUpdate,
-                        updateConf:updateConf,
-                        session_id:session_id
+                        updateConf:updateConf
                     }
             }).done(function (data) {
                 // When done, update curve color on page

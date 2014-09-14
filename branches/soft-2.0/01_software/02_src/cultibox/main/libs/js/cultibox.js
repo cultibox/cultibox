@@ -10,20 +10,6 @@ var lang="";
 var reduced="";
 var finished=0;
 
-lang = window.location.pathname.match(/\/fr\//g);
-if(!lang) {
-    lang = window.location.pathname.match(/\/en\//g);
-    if(!lang) {
-        lang = window.location.pathname.match(/\/es\//g);
-        if(!lang) {
-            lang = window.location.pathname.match(/\/it\//g);
-            if(!lang) {
-                lang = window.location.pathname.match(/\/de\//g);
-            }
-        }
-    }
-}
-
 if(!lang) {
     lang="/fr/";
 }
@@ -147,52 +133,52 @@ $(document).ready(function() {
 
     $("#href-welcome").click(function(e) {
         e.preventDefault();
-        get_content("welcome",session_id);
+        get_content("welcome");
     });
 
     $("#href-configuration").click(function(e) {
        e.preventDefault();
-       get_content("configuration",session_id);
+       get_content("configuration");
     });
 
     $("#href-logs").click(function(e) {
        e.preventDefault();
-       get_content("logs",session_id);
+       get_content("logs");
     });
 
     $("#href-plugs").click(function(e) {
        e.preventDefault();
-       get_content("plugs",session_id);
+       get_content("plugs");
     });
 
     $("#href-programs").click(function(e) {
        e.preventDefault();
-       get_content("programs",session_id);
+       get_content("programs");
     });
 
     $("#href-calendar").click(function(e) {
        e.preventDefault();
-       get_content("calendar",session_id);
+       get_content("calendar");
     });
 
     $("#href-wifi").click(function(e) {
        e.preventDefault();
-       get_content("wifi",session_id);
+       get_content("wifi");
     });
 
     $("#href-cost").click(function(e) {
        e.preventDefault();
-       get_content("cost",session_id);
+       get_content("cost");
     });
 
     $("#href-wizard").click(function(e) {
        e.preventDefault();
-       get_content("wizard",session_id);
+       get_content("wizard");
     });
 
     $("#welcome-logo").click(function(e) {
        e.preventDefault();
-       get_content("welcome",session_id);
+       get_content("welcome");
     });
 
 
@@ -203,7 +189,7 @@ $(document).ready(function() {
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"lang", value: $(this).attr('href') , session_id:session_id}
+            data: {name:"lang", value: $(this).attr('id'),duration: 365}
         });
         window.location = "/cultibox/";
     });
@@ -213,17 +199,8 @@ $(document).ready(function() {
         cache: false,
         async: false,
         url: "main/modules/external/set_variable.php",
-        data: {name:"SHORTLANG", value: slang, session_id:session_id}
+        data: {name:"SHORTLANG", value: slang, duration: 2}
     });
-
-
-    $.ajax({
-        cache: false,
-        async: false,
-        url: "main/modules/external/set_variable.php",
-        data: {name:"LANG", value: llang, session_id:session_id}
-    });
-
 
 
     $.ajax({
@@ -269,7 +246,7 @@ $(document).ready(function() {
                 $.ajax({
                         cache: false,
                         url: "main/modules/external/set_variable.php",
-                        data: {name:"tooltip_msg_box", value: "True", session_id:session_id}
+                        data: {name:"tooltip_msg_box", value: "True", duration: 30}
                 });
 
 
@@ -403,7 +380,7 @@ $(document).ready(function() {
     $.ajax({
         cache: false,
         url: "main/modules/external/get_variable.php",
-        data: {name:"tooltip_msg_box", session_id:session_id}
+        data: {name:"tooltip_msg_box"}
     }).done(function (data) {
         //Si l'oeil doit être affiché:
         if(jQuery.parseJSON(data)=="True") {
@@ -439,13 +416,13 @@ $(document).ready(function() {
 
     //Lors du click sur l'oeil - on doit cacher l'oeil et afficher la boîte de messages:     
     $("#tooltip_msg_box").click(function(e) {
-        //On positionne la variable SESSION tooltip_msg_box qui détermine si on doit afficher l'oeil ou pas lors du chargement d'une page
+        //On positionne le COOKIE tooltip_msg_box qui détermine si on doit afficher l'oeil ou pas lors du chargement d'une page
         // en fonction des actions utilisateurs. La variable est positionnée à False, au chargement d'une page l'oeil sera donc caché et 
         // la boîte de messages affichée.
         $.ajax({
             cache: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"tooltip_msg_box", value: "False", session_id:session_id}
+            data: {name:"tooltip_msg_box", value: "False", duration: 30}
         });
 
         // On cache l'oeil et on affiche la boîte de messages
@@ -518,13 +495,12 @@ function active_menu(menu) {
 
 // brief : get content and display in it the main content div
 // page: page to be displayed in the content div
-// session_id: id of the current session
-function get_content(page,session_id) {
+function get_content(page) {
    $.ajax({
         cache: false,
         async: false,
         url: "main/modules/external/get_content.php",
-        data: {page:page,session_id:session_id}
+        data: {page:page}
     }).done(function (data) {
         //Some odd chars appear when including php files, removing them:
         var tmp=data.replace(/\n1/g, ' ');

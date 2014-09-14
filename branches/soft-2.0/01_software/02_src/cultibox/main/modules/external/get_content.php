@@ -1,24 +1,5 @@
 <?php
 
-if(strcmp($_COOKIE["PHPSESSID"],"")==0) {
-    unset($_COOKIE["PHPSESSID"]);
-}
-
-if(isset($_GET['session_id'])) {
-    $session_id = $_GET['session_id'];
-} else {
-    $session_id="";
-}
-
-if (!isset($_SESSION)) {
-   if(strcmp($session_id,"")!=0) {
-       session_id($session_id);
-        echo "$session_id";
-   }
-   session_start();
-}
-
-
 if((isset($_GET['page']))&&(!empty($_GET['page']))) {
    $page=$_GET['page'];
 

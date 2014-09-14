@@ -459,7 +459,7 @@ function get_theorical_power($id=0,$type="",&$out,&$error=0) {
         }
 
         if((strcmp($start_hc,"")==0)||(strcmp($stop_hc,"")==0)) {
-            $out[]=__('ERROR_HPC_TIME_NULL')." <a href='plugs-".$_SESSION['SHORTLANG']."'>".__('HERE')."</a>";  
+            $out[]=__('ERROR_HPC_TIME_NULL')."<a href='/cultibox/index.php?menu=plugs'>".__('HERE')."</a>";  
         } else {
             $stahch=substr($start_hc,0,2);
             $stahcm=substr($start_hc,3,2);
@@ -2237,8 +2237,8 @@ function get_cost_summary(&$out) {
 
    foreach($res as $result) {
         $resume="<p align='center'><b><i>".__('SUMARY_COST_TITLE').":<br /></i></b></p>";
-        if(isset($_SESSION['LANG'])) {
-            if((strcmp($_SESSION['LANG'],"fr_FR")==0)||(strcmp($_SESSION['LANG'],"de_DE"))||(strcmp($_SESSION['LANG'],"es_ES"))||(strcmp($_SESSION['LANG'],"it_IT"))) {
+        if(isset($_COOKIE['LANG'])) {
+            if((strcmp($_COOKIE['LANG'],"fr_FR")==0)||(strcmp($_COOKIE['LANG'],"de_DE"))||(strcmp($_COOKIE['LANG'],"es_ES"))||(strcmp($_COOKIE['LANG'],"it_IT"))) {
                 $unity="&euro;";
             } else {
                 $unity="&#163;";

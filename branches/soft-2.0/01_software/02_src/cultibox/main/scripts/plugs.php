@@ -4,7 +4,7 @@
 $start_load = getmicrotime();
 
 
-// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
+// Language for the interface, using a COOKIE variable and the function __('$msg') from utilfunc.php library to print messages
 $main_error=array();
 $main_info=array();
 
@@ -22,12 +22,7 @@ $plug_count_sensor=array();
 
 // By default the expanded menu is the plug1 menu
 if((!isset($submenu))||(empty($submenu))) {
-    if(isset($_SESSION['submenu'])) {
-        $submenu=$_SESSION['submenu'];
-        unset($_SESSION['submenu']);
-    } else {
-        $submenu="1";
-    }
+    $submenu="1";
 }
 
 
@@ -263,7 +258,7 @@ if((isset($sd_card))&&(!empty($sd_card))) {
 
 
 if((strcmp("$jumpto","")!=0)&&(!$update_program)) {
-      $url="./programs-".$_SESSION['SHORTLANG']."?selected_plug=".$jumpto;
+      $url="/cultibox/index.php?menu=programs&selected_plug=".$jumpto;
       header("Refresh: 0;url=$url");
 }
 

@@ -16,7 +16,6 @@ addr_1000=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT'])); ?>;
 addr_3500=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT_3500W'])); ?>;
 translate=<?php echo(json_encode($translate)); ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-session_id="<?php echo session_id(); ?>";
 
 //Wifi process:
 get_plug_type = function(addr) {
@@ -152,7 +151,7 @@ $(document).ready(function() {
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+            data: {name:"LOAD_LOG", value: "False", duration: 1}
         });
     }
 

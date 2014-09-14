@@ -3,7 +3,7 @@
 // Compute page time loading for debug option
 $start_load = getmicrotime();
 
-// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
+// Language for the interface, using a COOKIE variable and the function __('$msg') from utilfunc.php library to print messages
 $main_error=array();
 $main_info=array();
 
@@ -22,7 +22,7 @@ $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 $select_plug=getvar('select_plug');
 $submit=getvar("submit_cost");
 $resume="";
-$lang=$_SESSION['LANG'];
+$lang=$_COOKIE['LANG'];
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {

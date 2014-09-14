@@ -17,7 +17,6 @@ default_cost_hc=<?php echo json_encode($cost_price_hc) ?>;
 default_start_hc=<?php echo json_encode($start_hc) ?>;
 default_stop_hc=<?php echo json_encode($stop_hc) ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-session_id="<?php echo session_id(); ?>";
 
 compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,index,plug) {
         var step=100/count;
@@ -76,7 +75,7 @@ $(document).ready(function() {
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+            data: {name:"LOAD_LOG", value: "False", duration: 1}
         });
     }
 

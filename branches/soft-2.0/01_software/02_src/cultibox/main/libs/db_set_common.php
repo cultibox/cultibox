@@ -619,7 +619,7 @@ function check_and_update_column_db ($tableName, $officialColumn) {
 // ROLE check and update database
 function check_database() {
     // Do it only one time per session
-    if(!isset($_SESSION['CHECK_DB']) || empty($_SESSION['CHECK_DB'])) {
+    if(!isset($_COOKIE['CHECK_DB']) || empty($_COOKIE['CHECK_DB'])) {
         // Check program_index database consitency
         program\check_db();
 
@@ -629,7 +629,7 @@ function check_database() {
         // Check configuration DB
         configuration\check_db();
         
-        $_SESSION['CHECK_DB'] = "True";
+        setcookie("CHECK_DB", "True", time()+(86400 * 1),"/",false,false);
     }
 }
 //}}}

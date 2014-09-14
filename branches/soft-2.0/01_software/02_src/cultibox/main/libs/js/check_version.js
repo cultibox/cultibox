@@ -5,7 +5,6 @@ $.ajax({
     url: "main/modules/external/check_update.php",
     async: true,
     // Lang is the end of the url
-    data: { session_id:session_id},
     context: document.body,
     success: function(data, textStatus, jqXHR) {
         // Check response from server

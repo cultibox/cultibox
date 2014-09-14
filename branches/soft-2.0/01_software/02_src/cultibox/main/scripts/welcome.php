@@ -3,7 +3,7 @@
 // Compute page time loading for debug option
 $start_load = getmicrotime();
 
-// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
+// Language for the interface, using a COOKIE variable and the function __('$msg') from utilfunc.php library to print messages
 $main_error=array();
 $main_info=array();
 $version=get_configuration("VERSION",$main_error); //Current version of the software
@@ -41,7 +41,7 @@ if(isset($nb_plugs)&&(!empty($nb_plugs))) {
 
 $user_agent = getenv("HTTP_USER_AGENT");
 
-get_notes($notes,$_SESSION['LANG'],$main_error);
+get_notes($notes,$_COOKIE['LANG'],$main_error);
 
 //Compute time loading for debug option
 $end_load = getmicrotime();

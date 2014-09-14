@@ -9,8 +9,6 @@
 ?>
 
 
-session_id="<?php echo session_id(); ?>";
-
 <?php if(!$compat) { ?>
 $(document).ready(
 function(){
@@ -24,48 +22,48 @@ $(document).ready(function(){
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+            data: {name:"LOAD_LOG", value: "False", duration:"1"}
         });
     }
 
     $("#go_wizard").click(function(e) {
        e.preventDefault();
-       get_content("wizard",session_id);
+       get_content("wizard");
     });
 
     $("#welcome-log-img").click(function(e) {
        e.preventDefault(); 
-       get_content("logs",session_id);
+       get_content("logs");
     });
 
 
     $("#welcome-log-txt").click(function(e) {
        e.preventDefault();
-       get_content("logs",session_id);
+       get_content("logs");
     });
 
 
     $("#welcome-prog-img").click(function(e) {
        e.preventDefault();
-       get_content("programs",session_id);
+       get_content("programs");
     });
 
 
     $("#welcome-prog-txt").click(function(e) {
        e.preventDefault();
-       get_content("programs",session_id);
+       get_content("programs");
     });
 
 
     $("#welcome-cal-img").click(function(e) {
        e.preventDefault();
-       get_content("calendar",session_id);
+       get_content("calendar");
     });
 
 
     $("#welcome-cal-txt").click(function(e) {
        e.preventDefault();
-       get_content("calendar",session_id);
+       get_content("calendar");
     });
     
 });

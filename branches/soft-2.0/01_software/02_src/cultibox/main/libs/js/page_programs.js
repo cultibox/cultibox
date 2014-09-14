@@ -18,7 +18,6 @@ end            = <?php echo json_encode($end) ?>;
 plug_selected  = <?php echo json_encode($selected_plug) ?>;
 rep            = <?php echo json_encode($rep) ?>;
 error_valueJS  = <?php echo json_encode($error_value) ?>;
-session_id="<?php echo session_id(); ?>";
 var reload_page=false;
 
 
@@ -28,7 +27,7 @@ $(document).ready(function(){
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+            data: {name:"LOAD_LOG", value: "False", duration: 1}
         });
     }
 
@@ -255,7 +254,6 @@ $(document).ready(function(){
            url: "main/modules/external/daily_program_delete.php",
            data: {
                 program_delete_index:$("#program_delete_index option:selected").val(),
-                session_id:session_id
             }
         }).done(function (data) {
               if($.trim(data)=="") { 
@@ -347,8 +345,7 @@ $(document).ready(function(){
                             data: {
                                 name:$('#program_name').val(),
                                 input:1,
-                                version:1.0,
-                                session_id:session_id
+                                version:1.0
                             },
                             context: document.body,
                             success: function(data, textStatus, jqXHR) {
@@ -947,8 +944,7 @@ $(document).ready(function() {
                 data: {
                         value:newValue,
                         variable:varToUpdate,
-                        updateConf:updateConf,
-                        session_id:session_id
+                        updateConf:updateConf
                     }
             }).done(function (data) {
             });

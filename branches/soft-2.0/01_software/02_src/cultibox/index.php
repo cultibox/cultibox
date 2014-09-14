@@ -2,17 +2,18 @@
 
 // On ne met pas en cache les pages chargées 
 session_cache_limiter('nocache');
-session_start();
 
 //Cookie permettant de stocker le positionnement de la boîte de message, valable pendant 30 jours
-if (!isset($_COOKIE['position'])) {
-    setcookie("position", "15,15,325", time()+(86400 * 30));
+if (!isset($_COOKIE['POSITION'])) {
+    setcookie("POSITION", "15,15,325", time()+(86400 * 30),"/",false,false);
 }
 
 //Timezone par défaut pour éviter les problèmes d'ajout d'heures lors des transformations des temps 
 date_default_timezone_set('UTC');
 
+require_once('main/libs/config.php');
 require_once('main/libs/db_get_common.php');
+require_once 'main/libs/utilfunc.php';
 
 
 //Set menu configuration :
@@ -22,43 +23,25 @@ if((isset($_GET['menu']))&&(!empty($_GET['menu']))) {
         $menu="";
 }
 
+$error=array();
 //Set lang:
-if((isset($_GET['lang']))&&(!empty($_GET['lang']))) {
-    $lang=$_GET['lang'];
-} else if((isset($_SESSION['LANG']))&&(!empty($_SESSION['LANG']))) {
-    $lang=$_SESSION['LANG'];
+if((isset($_COOKIE['LANG']))&&(!empty(($_COOKIE['LANG'])))) {
+    $lang=$_COOKIE['LANG'];
 } else {
-    $lang=get_configuration("DEFAULT_LANG",$main_error);
+    $lang=get_configuration("DEFAULT_LANG",$error);
+    setcookie("LANG", "$lang", time()+(86400 * 365),"/",false,false);
+    header('Location: /');
 }
 
+__('LANG');
 
-
-require_once('main/libs/config.php');
 require_once('main/libs/db_set_common.php');
 require_once('main/libs/debug.php');
-require_once 'main/libs/utilfunc.php';
 require_once('main/libs/utilfunc_sd_card.php');
-
-$_SESSION['LANG'] = $lang; //Language used by the user
-$_SESSION['SHORTLANG'] = get_short_lang($_SESSION['LANG']); //Short language used to compute pages
-__('LANG');
 
 $wifi=get_configuration("WIFI");
 $cost=get_configuration("SHOW_COST");
 
-set_timezone("$lang");
-$_SESSION['LANG'] = $lang;
-$_SESSION['SHORTLANG'] = get_short_lang($lang);
-__('LANG');
-
-session_write_close();
-session_start();
-
-
- echo "$lang";
-    print_r($_SESSION);
-    print_r($_COOKIE);
-    echo session_id();
 ?>
 <!DOCTYPE HTML>
 <head>
@@ -119,7 +102,7 @@ session_start();
     <script type="text/javascript" src="/cultibox/main/libs/js/fullcalendar.js?v=<?=@filemtime('main/libs/js/main/libs/js/fullcalendar.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery.blockUI.js?v=<?=@filemtime('main/libs/js/main/libs/js/jquery.blockUI.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/scrollTo.js?v=<?=@filemtime('main/libs/js/main/libs/js/scrollTo.js')?>"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/jquery.ui.datepicker-<?php echo substr($_SESSION['LANG'], 0 , 2); ?>.js"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/jquery.ui.datepicker-<?php echo substr($_COOKIE['LANG'], 0 , 2); ?>.js"></script>
 </head>
 
 
@@ -136,15 +119,15 @@ session_start();
                     <div id="headerbar" class="grid-block">
                         <div class="mod-languages">
                             <ul class="lang-inline">
-                                <li><a href="/cultibox/index.php?lang=en_GB"><img src="/cultibox/main/libs/img/en.gif" alt="Translate all texts on the site in English (UK)" title="Translate all texts on the site in English (UK)" /></a></li>
+                                <li class="translate"><a href="/cultibox/index.php?lang=en_GB" id="en_GB"><img src="/cultibox/main/libs/img/en.gif" alt="Translate all texts on the site in English (UK)" title="Translate all texts on the site in English (UK)" /></a></li>
 
-                                <li><a href="/cultibox/index.php?lang=fr_FR"><img src="/cultibox/main/libs/img/fr.gif" alt="Traduire tous les textes du site en Français (FR)" title="Traduire tous les textes du site en Français (FR)" /></a></li>
+                                <li class="translate"><a href="/cultibox/index.php?lang=fr_FR" id="fr_FR"><img src="/cultibox/main/libs/img/fr.gif" alt="Traduire tous les textes du site en Français (FR)" title="Traduire tous les textes du site en Français (FR)" /></a></li>
 
-                                <li><a href="/cultibox/index.php?lang=it_IT"><img src="/cultibox/main/libs/img/it.gif" alt="Tradurre tutti i testi del sito in Italiano (IT)" title="Tradurre tutti i testi del sito in Italiano (IT)" /></a> </li>
+                                <li class="translate"><a href="/cultibox/index.php?lang=it_IT" id="it_IT"><img src="/cultibox/main/libs/img/it.gif" alt="Tradurre tutti i testi del sito in Italiano (IT)" title="Tradurre tutti i testi del sito in Italiano (IT)" /></a> </li>
 
-                               <li><a href="/cultibox/index.php?lang=es_ES"><img src="/cultibox/main/libs/img/es.gif" alt="Traducir los textos del sitio en Español (ES)" title="Traducir los textos del sitio en Español (ES)" /></a></li>
+                               <li class="translate"><a href="/cultibox/index.php?lang=es_ES" id="es_ES"><img src="/cultibox/main/libs/img/es.gif" alt="Traducir los textos del sitio en Español (ES)" title="Traducir los textos del sitio en Español (ES)" /></a></li>
 
-                                <li><a href="/cultibox/index.php?lang=de_DE"><img src="/cultibox/main/libs/img/de.gif" alt="Übersetzen alle Texte auf der Website Deutsch (DE)" title="Übersetzen alle Texte auf der Website Deutsch (DE)" /></a></li>
+                                <li class="translate"><a href="/cultibox/index.php?lang=de_DE" id="de_DE"><img src="/cultibox/main/libs/img/de.gif" alt="Übersetzen alle Texte auf der Website Deutsch (DE)" title="Übersetzen alle Texte auf der Website Deutsch (DE)" /></a></li>
                             </ul>
                         </div>
 

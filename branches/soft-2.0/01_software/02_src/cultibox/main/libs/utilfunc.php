@@ -43,14 +43,14 @@ function __() {
 
   
    if (!isset($__translations)) {
-      $__translations = __translations_get($_SESSION['LANG']);
+      $__translations = __translations_get($_COOKIE['LANG']);
       $__translations_fallback = __translations_get(LANG_FALLBACK);
 
       if (empty($__translations_fallback)) {
          die("No translation file");
       }
       
-      $string_lang = array($_SESSION['LANG'] => $__translations);
+      $string_lang = array($_COOKIE['LANG'] => $__translations);
    }
    
    $msg = $args[0];
@@ -130,32 +130,6 @@ function getvar($varname) {
     }
 }
 // }}}
-
-
-// {{{ set_timezone()
-// ROLE set timezone from lang
-// IN $lang     lang selected 
-// RET none
-function set_timezone($lang="") {
-    switch($lang) {
-        case 'fr_FR':
-            $_SESSION['TIMEZONE']="Europe/Paris";
-            break;
-        case 'en_GB':
-            $_SESSION['TIMEZONE']="Europe/London";
-            break;
-        case 'it_IT':
-            $_SESSION['TIMEZONE']="Europe/Rome";
-            break;
-        case 'de_DE':
-            $_SESSION['TIMEZONE']="Europe/Berlin";
-            break;
-        case 'es_ES':
-            $_SESSION['TIMEZONE']="Europe/Madrid";
-            break;
-    }
-}
-//}}}
 
 
 // {{{ get_short_lang()

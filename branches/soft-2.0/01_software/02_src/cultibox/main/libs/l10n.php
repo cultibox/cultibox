@@ -12,9 +12,9 @@ define ('__TRANSLATIONS_CACHE_FILEPATH', '%s/main/templates_c/l10n.%s.ser');
 define ('__TRANSLATIONS_PO_FILEPATH', '%s/main/locale/%s.utf8.po');
 
 
-if(isset($_SESSION["LANG"])) {
-    define ('__TRANSLATIONS_CACHE_FILEPATH_MODULE', dirname(__FILE__) . '/../templates_c/l10n.'.$_SESSION["LANG"].'.ser');
-    define ('__TRANSLATIONS_PO_FILEPATH_MODULE', dirname(__FILE__) . '/../locale/'.$_SESSION["LANG"].'.utf8.po');
+if(isset($_COOKIE['LANG'])) {
+    define ('__TRANSLATIONS_CACHE_FILEPATH_MODULE', dirname(__FILE__) . '/../templates_c/l10n.'.$_COOKIE['LANG'].'.ser');
+    define ('__TRANSLATIONS_PO_FILEPATH_MODULE', dirname(__FILE__) . '/../locale/'.$_COOKIE['LANG'].'.utf8.po');
 }
 
 function __translations_check_lang($lang) {
@@ -33,7 +33,7 @@ function __translations_parse_po_file($lang) {
 	__translations_check_lang($lang);
 	$locale_po_file = sprintf(__TRANSLATIONS_PO_FILEPATH, APP, $lang);
 	if (!file_exists($locale_po_file)) {
-               if(isset($_SESSION["LANG"])) {
+               if(isset($_COOKIE['LANG'])) {
                   $locale_po_file = sprintf(__TRANSLATIONS_PO_FILEPATH_MODULE, APP, $lang);
                }
                if (!file_exists($locale_po_file)) {
@@ -117,7 +117,7 @@ function __translations_read_from_cache($lang) {
 	$cache_file = sprintf(__TRANSLATIONS_CACHE_FILEPATH, CACHE, $lang);
 
 	if (!file_exists($cache_file)) {
-      if(isset($_SESSION["LANG"])) {
+      if(isset($_COOKIE['LANG'])) {
          $cache_file = sprintf(__TRANSLATIONS_CACHE_FILEPATH_MODULE, CACHE, $lang);
       }
       if (!file_exists($cache_file)) {
@@ -144,7 +144,7 @@ function __translations_get($lang) {
 	$cache_file = sprintf(__TRANSLATIONS_CACHE_FILEPATH, CACHE, $lang);
 
 	if (!file_exists($po_file)) {
-               if(isset($_SESSION["LANG"])) {
+               if(isset($_COOKIE['LANG'])) {
                   $po_file = sprintf(__TRANSLATIONS_PO_FILEPATH_MODULE, APP, $lang);
                   $cache_file = sprintf(__TRANSLATIONS_CACHE_FILEPATH_MODULE, CACHE, $lang);
                }

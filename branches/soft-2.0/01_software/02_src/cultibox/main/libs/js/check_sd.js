@@ -7,8 +7,7 @@ $.ajax({
     type: "GET",
     url: "http://localhost:6891/cultibox/main/modules/external/check_and_update_sd.php",
     data: {
-        sd_card:"<?php echo $sd_card ;?>",
-        session_id:session_id
+        sd_card:"<?php echo $sd_card ;?>"
     },
     async: true,
     context: document.body,

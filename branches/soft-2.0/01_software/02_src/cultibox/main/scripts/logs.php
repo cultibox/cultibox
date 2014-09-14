@@ -3,7 +3,7 @@
 // Compute page time loading for debug option
 $start_load = getmicrotime();
 
-// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
+// Language for the interface, using a COOKIE variable and the function __('$msg') from utilfunc.php library to print messages
 $main_error=array();
 $main_info=array();
 

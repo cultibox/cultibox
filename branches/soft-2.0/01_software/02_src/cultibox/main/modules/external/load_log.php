@@ -1,18 +1,6 @@
 <?php
 
-if(strcmp($_COOKIE["PHPSESSID"],"")==0) {
-    unset($_COOKIE["PHPSESSID"]);
-}
-
-$session_id = $_GET['session_id'];
-if (!isset($_SESSION)) {
-   if(strcmp($session_id,"")!=0) {
-       session_id($session_id);
-   }
-   session_start();
-}
-
-$_SESSION['LOAD_LOG']="True";
+setcookie("LOAD_LOG", "True", time()+(86400 * 1),"/",false,false);
 
 
 require_once('../../libs/utilfunc.php');

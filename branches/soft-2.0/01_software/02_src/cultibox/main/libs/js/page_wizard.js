@@ -12,7 +12,6 @@ plug_type=<?php echo json_encode($plug_type) ?>;
 error_valueJS=<?php echo json_encode($error_value) ?>;
 canal_status= <?php echo json_encode($status) ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-session_id="<?php echo session_id(); ?>";
 
 
 $(document).ready(function(){
@@ -28,7 +27,7 @@ $(document).ready(function(){
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+            data: {name:"LOAD_LOG", value: "False", duration: 1}
         });
     }
 

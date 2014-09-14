@@ -10,7 +10,6 @@
 
 product_array = <?php echo json_encode($product) ?>;
 title_msgbox = <?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-session_id="<?php echo session_id(); ?>";
 count_program_index=<?php echo json_encode($count_program_index); ?>;
 
 $(function() {
@@ -53,7 +52,7 @@ $(document).ready(function() {
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+            data: {name:"LOAD_LOG", value: "False", duration: 1}
         });
     }
 
@@ -259,7 +258,7 @@ $(document).ready(function() {
         $.ajax({
            cache: false,
            url: "main/modules/external/get_variable.php",
-           data: {name:"important", session_id:session_id}
+           data: {name:"important"}
         }).done(function (data) {
             //if(jQuery.parseJSON(data) != "True" || true) {
                 display_modal_ui("#dialog_calendar_important" , "popup_message");
@@ -267,7 +266,7 @@ $(document).ready(function() {
                 $.ajax({
                     cache: false,
                     url: "main/modules/external/set_variable.php",
-                    data: {name:"important", value: "True", session_id:session_id}
+                    data: {name:"important", value: "True", duration: 7}
                 });
             //}
         });
@@ -444,8 +443,7 @@ function display_modal_ui (ui_ID, ui_Class) {
 function update_title_list () {
     $.ajax({
         type: "GET",
-        url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php",
-        data: {session_id: session_id}
+        url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php"
     }).done(function (data) {
         if(data!="") {
             var objJSON = jQuery.parseJSON(data);
@@ -1225,7 +1223,7 @@ $(document).ready(function() {
     
         $.ajax({
            cache: false,
-           data: {sd_card:sd_card, session_id:session_id},
+           data: {sd_card:sd_card},
            url: "main/modules/external/calendar_write_sd_events.php"
         }).done(function (data) {
             pop_up_remove("update_calendar_progress");

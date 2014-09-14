@@ -1,17 +1,5 @@
 <?php 
 
-if(strcmp($_COOKIE["PHPSESSID"],"")==0) {
-    unset($_COOKIE["PHPSESSID"]);
-}
-
-$session_id = $_GET['session_id'];
-if (!isset($_SESSION)) {
-   if(strcmp($session_id,"")!=0) {
-       session_id($session_id);
-   }
-   session_start();
-}
-
 //Affiche la valeur d'une variable PHP, script appelé par Ajax par le fichier cultibox.js pour récupérer des informations
 // stockées côté serveur:
 
@@ -22,7 +10,7 @@ require_once('../../libs/db_get_common.php');
 $error=array();
 
 
-//Récupération du nom de la variable, par convention interne, les noms de variable de SESSION sont 
+//Récupération du nom de la variable, par convention interne, les noms de COOKIE  sont 
 //toujours en majuscule, on capitalise donc le nom récupéré:
 if((isset($_GET['name']))&&(!empty($_GET['name']))) {
     $name=strtoupper($_GET['name']);
@@ -34,8 +22,8 @@ if((!isset($name))||(empty($name))) {
 } else {
     switch($name) {
         case 'LOAD_LOG':
-            if((isset($_SESSION['LOAD_LOG']))&&(!empty($_SESSION['LOAD_LOG']))) {
-                echo json_encode($_SESSION['LOAD_LOG']);
+            if((isset($_COOKIE['LOAD_LOG']))&&(!empty($_COOKIE['LOAD_LOG']))) {
+                echo json_encode($_COOKIE['LOAD_LOG']);
             } else {
                  echo json_encode("0");
             }
@@ -44,15 +32,15 @@ if((!isset($name))||(empty($name))) {
             echo get_sd_card();
             break;
         case 'IMPORTANT':
-            if((isset($_SESSION['IMPORTANT']))&&(!empty($_SESSION['IMPORTANT']))) {
-                echo json_encode($_SESSION['IMPORTANT']);
+            if((isset($_COOKIE['IMPORTANT']))&&(!empty($_COOKIE['IMPORTANT']))) {
+                echo json_encode($_COOKIE['IMPORTANT']);
             } else {
                  echo json_encode("0");
             }
             break;
         case 'TOOLTIP_MSG_BOX':
-            if((isset($_SESSION['TOOLTIP_MSG_BOX']))&&(!empty($_SESSION['TOOLTIP_MSG_BOX']))) {
-                echo json_encode($_SESSION['TOOLTIP_MSG_BOX']);
+            if((isset($_COOKIE['TOOLTIP_MSG_BOX']))&&(!empty($_COOKIE['TOOLTIP_MSG_BOX']))) {
+                echo json_encode($_COOKIE['TOOLTIP_MSG_BOX']);
             } else {
                  echo json_encode("0");
             }

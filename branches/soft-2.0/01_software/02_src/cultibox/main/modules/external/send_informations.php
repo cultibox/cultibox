@@ -1,17 +1,5 @@
 <?php
 
-    if(strcmp($_COOKIE["PHPSESSID"],"")==0) {
-        unset($_COOKIE["PHPSESSID"]);
-    }
-
-    $session_id = $_GET['session_id'];
-    if (!isset($_SESSION)) {
-        if(strcmp($session_id,"")!=0) {
-            session_id($session_id);
-        }
-        session_start();
-    }
-
     // Include libraries
     if (file_exists('../../libs/db_get_common.php') === TRUE)
     {
@@ -25,7 +13,7 @@
     }
     
     // Only one time per session
-    if(!isset($_SESSION['INFO_SENT']) || empty($_SESSION['INFO_SENT'])) {
+    if(!isset($_COOKIE['INFO_SENT']) || empty($_COOKIE['INFO_SENT'])) {
     
         $out = array();
     
@@ -67,8 +55,7 @@
         // Close request to clear up some resources
         curl_close($curl);
         
-        $_SESSION['INFO_SENT'] = "True";
-
+        setcookie("INFO_SENT", "True", time()+(86400 * 1),"/",false,false);
     }
 
 

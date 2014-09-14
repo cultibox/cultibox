@@ -11,7 +11,6 @@
 
 wifi_password=<?php echo(json_encode($wifi_password)); ?>;
 rtc_offset_value=<?php echo json_encode($rtc_offset) ?>;
-session_id="<?php echo session_id(); ?>";
 
 
 formatCard = function(hdd,pourcent) {
@@ -40,7 +39,7 @@ $(document).ready(function(){
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+            data: {name:"LOAD_LOG", value: "False", duration: 1}
         });
     }
 
@@ -294,7 +293,6 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            session_id:session_id,
                             sd_card:sd_card
                         }
                     }).done(function (data) {
@@ -316,8 +314,7 @@ $(document).ready(function(){
                     data: {
                         value:"False", 
                         id:"all",
-                        name:"PLUG_REGUL",
-                        session_id:session_id
+                        name:"PLUG_REGUL"
                     }
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {
@@ -337,8 +334,7 @@ $(document).ready(function(){
                     data: {
                         value:"M", 
                         id:"all",
-                        name:"PLUG_COMPUTE_METHOD",
-                        session_id:session_id
+                        name:"PLUG_COMPUTE_METHOD"
                     }
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {
@@ -355,8 +351,7 @@ $(document).ready(function(){
                     data: {
                         value:"1",     
                         id:"all",
-                        name:"PLUG_REGUL_SENSOR",
-                        session_id:session_id
+                        name:"PLUG_REGUL_SENSOR"
                     }
                 }).done(function (data) {
                     if($.parseJSON(data)!="") {
@@ -378,8 +373,7 @@ $(document).ready(function(){
                 url: "main/modules/external/update_configuration.php",
                 data: {
                         value:newValue,     
-                        variable:varToUpdate,
-                        session_id:session_id,
+                        variable:varToUpdate
                         sd_card:sd_card
                     }
             }).done(function (data) {
@@ -400,7 +394,6 @@ $(document).ready(function(){
                 data: {
                         value:newValue,
                         variable:varToUpdate,
-                        session_id:session_id,
                         sd_card:sd_card
                     }
             }).done(function (data) {
@@ -427,7 +420,6 @@ $(document).ready(function(){
                 data: {
                         value:newValue,
                         variable:varToUpdate,
-                        session_id:session_id,
                         sd_card:sd_card
                     }
             }).done(function (data) {
@@ -449,7 +441,6 @@ $(document).ready(function(){
                         data: {
                         value:newValue,
                         variable:varToUpdate,
-                        session_id:session_id,
                         sd_card:sd_card
                     }
                     }).done(function (data) {
@@ -471,7 +462,6 @@ $(document).ready(function(){
                             data: {
                                 value:newValue,
                                 variable:varToUpdate,
-                                session_id:session_id,
                                 sd_card:sd_card
                             }
                         }).done(function (data) {
@@ -492,7 +482,6 @@ $(document).ready(function(){
                             data: {
                                 value:newValue,
                                 variable:varToUpdate,
-                                session_id:session_id,
                                 sd_card:sd_card
                             }
                         }).done(function (data) {
@@ -512,7 +501,6 @@ $(document).ready(function(){
                             data: {
                                 value:newValue,
                                 variable:varToUpdate,
-                                session_id:session_id,
                                 sd_card:sd_card
                             }
                         }).done(function (data) {
@@ -533,7 +521,6 @@ $(document).ready(function(){
                             data: {
                                 value:newValue,
                                 variable:varToUpdate,
-                                session_id:session_id,
                                 sd_card:sd_card
                             }
                         }).done(function (data) {
@@ -562,7 +549,6 @@ $(document).ready(function(){
                             data: {
                                 value:newValue,
                                 variable:varToUpdate,
-                                session_id:session_id,
                                 sd_card:sd_card
                             }
                         }).done(function (data) {
@@ -587,7 +573,6 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            session_id:session_id,
                             sd_card:sd_card
                         }
                     }).done(function (data) {
@@ -607,7 +592,6 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            session_id:session_id,
                             sd_card:sd_card
                         }
                     }).done(function (data) {
@@ -627,7 +611,6 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            session_id:session_id,
                             sd_card:sd_card
                         }
                     }).done(function (data) {
@@ -647,7 +630,6 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            session_id:session_id,
                             sd_card:sd_card
                         }
                     }).done(function (data) {
@@ -667,7 +649,6 @@ $(document).ready(function(){
                         data: {
                             value:newValue,
                             variable:varToUpdate,
-                            session_id:session_id,
                             sd_card:sd_card
                         }
                     }).done(function (data) {
@@ -683,8 +664,7 @@ $(document).ready(function(){
                     url: "http://localhost:6891/cultibox/main/modules/external/check_and_update_sd.php",
                     data: {
                         force_rtc_offset_value:1,
-                        sd_card:sd_card,
-                        session_id:session_id
+                        sd_card:sd_card
                     },
                     async: false
                 }).done(function(data, textStatus, jqXHR) {
@@ -704,7 +684,7 @@ $(document).ready(function(){
             $.ajax({
                 cache: false,
                 url: "main/modules/external/get_variable.php",
-                data: {name:"wifi", session_id:session_id}
+                data: {name:"wifi"}
             }).done(function (data) {
                 if(jQuery.parseJSON(data)=="1") {
                         $("#menu-wifi").show();
@@ -717,7 +697,7 @@ $(document).ready(function(){
              $.ajax({
                 cache: false,
                 url: "main/modules/external/get_variable.php",
-                data: {name:"cost", session_id:session_id}
+                data: {name:"cost"}
             }).done(function (data) {
                 if(jQuery.parseJSON(data)=="1") {
                     $("#menu-cost").show();

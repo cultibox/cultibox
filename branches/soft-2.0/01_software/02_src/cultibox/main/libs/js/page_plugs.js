@@ -14,7 +14,6 @@ nb_plugs       = <?php echo json_encode($nb_plugs) ?>;
 title_msgbox   = <?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 plugs_infoJS   = <?php echo json_encode($plugs_infos); ?>;
 update_program = <?php echo json_encode($update_program); ?>;
-session_id     = "<?php echo session_id(); ?>";
 jumpto         = <?php echo json_encode($jumpto); ?>;
 
 
@@ -24,7 +23,7 @@ $(document).ready(function(){
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", session_id:session_id}
+            data: {name:"LOAD_LOG", value: "False", duration: 1}
         });
     }
 
@@ -133,7 +132,7 @@ $(document).ready(function(){
                     cache: false,
                     async: true,
                     url: "main/modules/external/get_variable.php",
-                    data: {name:'CHECK_PROGRAM',value:plug, session_id:session_id}
+                    data: {name:'CHECK_PROGRAM',value:plug}
                 }).done(function (data) {
                     if(jQuery.parseJSON(data)=="1") {
                         $("#warning_change_type_plug").dialog({

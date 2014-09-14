@@ -3,7 +3,7 @@
 // Compute page time loading for debug option
 $start_load = getmicrotime();
 
-// Language for the interface, using a SESSION variable and the function __('$msg') from utilfunc.php library to print messages
+// Language for the interface, using a COOKIE variable and the function __('$msg') from utilfunc.php library to print messages
 $error=array();
 $main_error=array();
 $main_info=array();
@@ -219,7 +219,7 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
         $selected_plug=$selected_plug+1;
         $step=1;
     } elseif(($type_submit)&&(!empty($type_submit))&&(strcmp($type_submit,"submit_close")==0)) {
-        header('Location: programs-'.$_SESSION['SHORTLANG']."?selected_plug=".$selected_plug);
+        header('Location: /cultibox/index.php?menu=programs&selected_plug='.$selected_plug);
     }
 }
 
