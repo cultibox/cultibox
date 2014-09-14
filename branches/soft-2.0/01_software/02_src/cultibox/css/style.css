@@ -38,12 +38,6 @@ body#page { background: #bdd2e5 url(../images/page.png) 0 0 repeat-x; }
 #footer a { color: #2a5377; }
 
 #toolbar a.active,
-#headerbar a.active{
-    color: white;
-}
-
-/* Menus
-----------------------------------------------------------------------------------------------------*/
 
 
 /* Modules

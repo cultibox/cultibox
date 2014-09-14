@@ -10,11 +10,16 @@ var lang="";
 var reduced="";
 var finished=0;
 
-if(!lang) {
-    lang="/fr/";
-}
+$.ajax({
+    cache: false,
+    async: false,
+    url: "main/modules/external/get_variable.php",
+    data: {name:"lang"}
+}).done(function (data) {
+    if(jQuery.parseJSON(data)!="0") lang=jQuery.parseJSON(data);
+});
 
-if(lang=="/it/") {
+if(lang=="fr_FR") {
     OK_button="Continuare";
     CANCEL_button="Annullare";
     CLOSE_button="Chiudere";
@@ -23,9 +28,7 @@ if(lang=="/it/") {
     REDUCE_button="Abbassare";
     EXTEND_button="Ingrandisci";
     HIDE_button="Nascondere";
-    var llang="it_IT";
-    var slang="it";
-} else if(lang=="/de/") {
+} else if(lang=="de_DE") {
     OK_button="Weiter";
     CANCEL_button="Stornieren";
     CLOSE_button="Schliessen";
@@ -34,9 +37,7 @@ if(lang=="/it/") {
     REDUCE_button="Senken";
     EXTEND_button="Vergrößern";
     HIDE_button="Verbergen";
-    var llang="de_DE";
-    var slang="de";
-} else if(lang=="/en/") {
+} else if(lang=="en_GB") {
     OK_button="OK";
     CANCEL_button="Cancel";
     CLOSE_button="Close";
@@ -45,9 +46,7 @@ if(lang=="/it/") {
     REDUCE_button="Shorten";
     EXTEND_button="Enlarge";
     HIDE_button="Hide";
-    var llang="en_GB";
-    var slang="en";
-} else if(lang=="/es/") {
+} else if(lang=="es_ES") {
     OK_button="Continuar";
     CANCEL_button="Cancelar";
     CLOSE_button="Cerrar";
@@ -58,8 +57,6 @@ if(lang=="/it/") {
     HIDE_button="Ocultar";
     APPLY_CHANGE="";
     DISCARD_CHANGE="";
-    var llang="es_ES";
-    var slang="es"
 } else {
     OK_button="Continuer";
     CANCEL_button="Annuler";
@@ -69,8 +66,6 @@ if(lang=="/it/") {
     REDUCE_button="Réduire";
     EXTEND_button="Agrandir";
     HIDE_button="Cacher";
-    var llang="fr_FR";
-    var slang="fr";
 }
 
 
@@ -126,10 +121,11 @@ confirmForm = function(SendForm,idDialog) {
     });
 }
 
+
 $(document).ready(function() {
-   if(!window.location.pathname.match(/\/cultibox\/index.php?menu=/g)) {
-        get_content("welcome","");
-    }
+   if(!window.location.href.match(/cultibox\/index.php/g)) {
+        get_content("welcome");
+    } 
 
     $("#href-welcome").click(function(e) {
         e.preventDefault();
@@ -192,14 +188,6 @@ $(document).ready(function() {
             data: {name:"lang", value: $(this).attr('id'),duration: 365}
         });
         window.location = "/cultibox/";
-    });
-
-
-    $.ajax({
-        cache: false,
-        async: false,
-        url: "main/modules/external/set_variable.php",
-        data: {name:"SHORTLANG", value: slang, duration: 2}
     });
 
 
@@ -476,20 +464,24 @@ function  pop_up_remove(id) {
 };
 
 
-
 // brief : select the matching menu
 // menu to be activated
 function active_menu(menu) {
-        $("#menubar-ul").find('li').each(function(){
-            if($(this).attr('id')=="menu-"+menu) {
+    $("#menubar-ul").find('li').each(function(){
+        if($(this).attr('id')=="menu-"+menu) {
+            $(this).addClass("active");
+            $(this).addClass("current");
+            $(this).find('span').each(function(){
                 $(this).addClass("active");
-                $(this).addClass("current");
-            } else {
+            });
+        } else {
+            $(this).removeClass("active");
+            $(this).removeClass("current");
+            $(this).find('span').each(function(){
                 $(this).removeClass("active");
-                $(this).removeClass("current");
-                
-            }
-        });
+            });
+        }
+    });
 }
 
 
@@ -506,7 +498,7 @@ function get_content(page) {
         var tmp=data.replace(/\n1/g, ' ');
         $("#content").html(tmp);
         $("#content").load();
-        active_menu("menu-"+page);
+        active_menu(page);
     });
 }
 

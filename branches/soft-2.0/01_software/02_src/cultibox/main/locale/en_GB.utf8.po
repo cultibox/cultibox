@@ -746,7 +746,7 @@ msgid "TIMEPICKER_BUTTON_TEXT_LOG"
 msgstr "Choose the date"
 
 msgid "CHART_FORCE_ON_VALUE"
-msgstr "Forced 'on'"
+msgstr "Forced on"
 
 msgid "EXPORT_PROGRAM"
 msgstr "Export"

@@ -51,7 +51,7 @@ msgid "WELCOME_TUTO"
 msgstr "<b> Nota: </b> per chi ha la versione precedente del Cultibox (<b> Green Box </b>), sarà assolutamente"
 
 msgid "WELCOME_REQUIEREMENT"
-msgstr "<ul class='list_class'> <li> rimuovere le vecchie spine che non sono più compatibili e collegare quelli di Cultibox </li> <li> scollegare il Green Box, che può causare interferenze con Cultibox </li> </ ul>"
+msgstr "<ul class='list_class'> <li> rimuovere le vecchie spine che non sono più compatibili e collegare quelli di Cultibox </li> <li> scollegare il Green Box, che può causare interferenze con Cultibox </li> </ul>"
 
 msgid "WELCOME_FOLLOW_LINK"
 msgstr "Fare clic sul pulsante Avanti per avviare l'installazione guidata e iniziare a gestire il tuo Cultibox"
@@ -740,7 +740,7 @@ msgid "TIMEPICKER_CLOSE"
 msgstr "Convalidare"
 
 msgid "TIMEPICKER_BUTTON_TEXT"
-msgstr "Tempo di scegliere \ 's"
+msgstr "Tempo di scegliere \'s"
 
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
 msgstr "Scegli la data"

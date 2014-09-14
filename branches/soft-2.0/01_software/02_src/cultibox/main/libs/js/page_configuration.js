@@ -373,7 +373,7 @@ $(document).ready(function(){
                 url: "main/modules/external/update_configuration.php",
                 data: {
                         value:newValue,     
-                        variable:varToUpdate
+                        variable:varToUpdate,
                         sd_card:sd_card
                     }
             }).done(function (data) {

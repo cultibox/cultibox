@@ -582,6 +582,10 @@ $(function () {
             series: []
         });
 
+
+        /*
+
+        try catch
         if(chart.series) {
         chart.series.each(function (item) {
             if(item.data=="") {
@@ -591,7 +595,7 @@ $(function () {
             }
             chart.legend.render();
         });
-        }
+        }*/
 
 
     });

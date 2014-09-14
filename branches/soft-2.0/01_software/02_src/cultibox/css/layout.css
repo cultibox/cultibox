@@ -168,7 +168,6 @@ td.chapeau2 {
 }
 
 td.chapeau1, td.chapeau2 {
-	/* border:2px white solid; */
 	padding:4px;
 	font-size: 18px;
 	color:white;
