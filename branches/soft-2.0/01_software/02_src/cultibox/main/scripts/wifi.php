@@ -55,7 +55,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $main_error[]=__('ERROR_SD_CARD');
 }
 
-
 //Compute time loading for debug option
 $end_load = getmicrotime();
 

@@ -720,6 +720,9 @@ $(document).ready(function(){
                                 text: CLOSE_button,
                                 click: function () { 
                                     $( this ).dialog( "close" ); 
+                                    if(sd_card!="") {
+                                        window.location = "?menu=configuration";
+                                    }
                                  }
                             }]
                         });
@@ -737,7 +740,7 @@ $(document).ready(function(){
                                 click: function () { 
                                     $( this ).dialog( "close" );  
                                     //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
-                                    window.location = "?menu=conf";
+                                    window.location = "index.php?menu=configuration";
                                 }
                             }]
                         });
@@ -796,7 +799,7 @@ $(document).ready(function(){
                                         $("#error_format").css("display","none");
                                         $( this ).dialog( "close" ); 
                                         $("#btnCancel").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
-                                        window.location.href="index.php?menu=conf";
+                                        window.location.href="index.php?menu=configuration";
                                         return false;
                                     }
                                 }]

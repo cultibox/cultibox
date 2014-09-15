@@ -6,6 +6,9 @@
 // Default language:
 define('LANG_FALLBACK', 'en_GB');
 
+//Default path:
+$GLOBALS['BASE_PATH']=$_SERVER["DOCUMENT_ROOT"].'/cultibox/';
+
 // Default port use by the application:
 $GLOBALS['SOFT_PORT'] = '6891';
 

@@ -92,7 +92,7 @@ $(document).ready(function(){
                         click: function () {
                             $( this ).dialog( "close" ); 
                             if(jumpto!="") {
-                                window.location = "?menu=prog&selected_plug="+jumpto;
+                                window.location = "?menu=programs&selected_plug="+jumpto;
                             }
                             return false;
                     }
@@ -289,7 +289,7 @@ $(document).ready(function(){
 
     $('[id^="jump_wizard"]').click(function(e) {
             e.preventDefault();
-            window.location = "?menu=wiz&selected_plug="+$(this).attr("id").replace("jump_wizard","");
+            window.location = "?menu=wizard&selected_plug="+$(this).attr("id").replace("jump_wizard","");
     });
 
 

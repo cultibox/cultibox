@@ -4,15 +4,18 @@ if((isset($_GET['page']))&&(!empty($_GET['page']))) {
    $page=$_GET['page'];
 
     require_once('../../libs/config.php');
-    require_once('../../libs/db_get_common.php');
-    require_once('../../libs/db_set_common.php');
-    require_once('../../libs/debug.php');
-    require_once '../../libs/utilfunc.php';
-    require_once('../../libs/utilfunc_sd_card.php');
+    require_once($GLOBALS['BASE_PATH'].'main/libs/db_get_common.php');
+    require_once($GLOBALS['BASE_PATH'].'main/libs/db_set_common.php');
+    require_once($GLOBALS['BASE_PATH'].'main/libs/debug.php');
+    require_once $GLOBALS['BASE_PATH'].'main/libs/utilfunc.php';
+    require_once($GLOBALS['BASE_PATH'].'main/libs/utilfunc_sd_card.php');
 
-    echo include("../../scripts/{$page}.php");
-    echo include("../../libs/js/page_${page}.js");
-    echo include("../../templates/{$page}.html");
-
+    ob_start();
+    include $GLOBALS['BASE_PATH'].'main/scripts/'.$page.'.php';
+    include $GLOBALS['BASE_PATH'].'main/scripts/post_script.php';
+    include $GLOBALS['BASE_PATH'].'main/libs/js/page_'.$page.'.js';
+    include $GLOBALS['BASE_PATH'].'main/templates/'.$page.'.html';
+    $include = ob_get_clean();
+    echo $include;
 }
 ?>

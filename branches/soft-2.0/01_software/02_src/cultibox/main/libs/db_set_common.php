@@ -629,7 +629,7 @@ function check_database() {
         // Check configuration DB
         configuration\check_db();
         
-        setcookie("CHECK_DB", "True", time()+(86400 * 1),"/",false,false);
+        setcookie("CHECK_DB", "True", time()+7200,"/",false,false);
     }
 }
 //}}}

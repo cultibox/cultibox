@@ -18,12 +18,16 @@
 }
 
 #compat-js {
+    position:absolute;
     background-color: #F30921;
     padding:4px 7px;
     border-bottom-left-radius:11px;
     border-bottom-right-radius:11px;
     border-top-left-radius:11px;
     border-top-right-radius:11px;
+    top:100%;
+    left:30%;
+    width: 40%;
 }
 
 

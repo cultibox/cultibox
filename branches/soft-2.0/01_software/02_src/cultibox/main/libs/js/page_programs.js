@@ -234,7 +234,7 @@ $(document).ready(function(){
                 click: function () {
                     $( this ).dialog( "close" ); 
                     if(reload_page) {
-                         window.location = "?menu=prog";
+                         window.location = "?menu=programs";
                     } else {
                         return false;
                     }

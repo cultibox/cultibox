@@ -19,7 +19,7 @@ $.ajax({
     if(jQuery.parseJSON(data)!="0") lang=jQuery.parseJSON(data);
 });
 
-if(lang=="fr_FR") {
+if(lang=="it_IT") {
     OK_button="Continuare";
     CANCEL_button="Annullare";
     CLOSE_button="Chiudere";
@@ -127,52 +127,52 @@ $(document).ready(function() {
         get_content("welcome");
     } 
 
-    $("#href-welcome").click(function(e) {
+    $(".href-welcome").click(function(e) {
         e.preventDefault();
         get_content("welcome");
     });
 
-    $("#href-configuration").click(function(e) {
+    $(".href-configuration").click(function(e) {
        e.preventDefault();
        get_content("configuration");
     });
 
-    $("#href-logs").click(function(e) {
+    $(".href-logs").click(function(e) {
        e.preventDefault();
        get_content("logs");
     });
 
-    $("#href-plugs").click(function(e) {
+    $(".href-plugs").click(function(e) {
        e.preventDefault();
        get_content("plugs");
     });
 
-    $("#href-programs").click(function(e) {
+    $(".href-programs").click(function(e) {
        e.preventDefault();
        get_content("programs");
     });
 
-    $("#href-calendar").click(function(e) {
+    $(".href-calendar").click(function(e) {
        e.preventDefault();
        get_content("calendar");
     });
 
-    $("#href-wifi").click(function(e) {
+    $(".href-wifi").click(function(e) {
        e.preventDefault();
        get_content("wifi");
     });
 
-    $("#href-cost").click(function(e) {
+    $(".href-cost").click(function(e) {
        e.preventDefault();
        get_content("cost");
     });
 
-    $("#href-wizard").click(function(e) {
+    $(".href-wizard").click(function(e) {
        e.preventDefault();
        get_content("wizard");
     });
 
-    $("#welcome-logo").click(function(e) {
+    $(".welcome-logo").click(function(e) {
        e.preventDefault();
        get_content("welcome");
     });
@@ -427,6 +427,14 @@ $(document).ready(function() {
 
 });
 
+
+// brief : Used to clean messages
+function clean_pop_up_messages() {
+    $("#pop_up_information_part li").remove();
+    $("#pop_up_error_part li").remove();
+};
+
+
 // brief : Used to add a message in popup
 // message : Message to show
 // id to define
@@ -488,15 +496,16 @@ function active_menu(menu) {
 // brief : get content and display in it the main content div
 // page: page to be displayed in the content div
 function get_content(page) {
+   clean_pop_up_messages();
    $.ajax({
         cache: false,
         async: false,
         url: "main/modules/external/get_content.php",
         data: {page:page}
     }).done(function (data) {
-        //Some odd chars appear when including php files, removing them:
-        var tmp=data.replace(/\n1/g, ' ');
-        $("#content").html(tmp);
+        //Some odd chars appear when including php files due to echo include that returns true value, removing them:
+        $("#content").html(data);
+        $("#content").html(data);
         $("#content").load();
         active_menu(page);
     });
