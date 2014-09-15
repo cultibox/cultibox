@@ -139,9 +139,7 @@ var
  
         
     if not (ForceInstall) then
-    begin
-        Exec (ExpandConstant ('{cmd}'), ExpandConstant('/C mysql.exe --defaults-extra-file={sd}\{#MyAppName}\xampp\mysql\bin\my-extra.cnf -h 127.0.0.1 --port=3891 -e "source {sd}\{#MyAppName}\xampp\sql_install\joomla.sql"'), ExpandConstant ('{sd}\{#MyAppName}\xampp\mysql\bin'), SW_HIDE, ewWaitUntilTerminated, ResultCode);
-        
+    begin        
         case ActiveLanguage() of  { ActiveLanguage() retourne la langue chosie }
         'french' :  
             begin

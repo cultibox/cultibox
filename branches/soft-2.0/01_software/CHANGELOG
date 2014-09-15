@@ -1,3 +1,11 @@
+Cultibox (2.0.01) precise; urgency=low
+    + Suppression de joomla
+    + Passage en AJAX de la gestion des menus et du chargement des pages
+    + Nettoyage des CSS
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Aug 24  14:28:47 CEST 2014
+
+
 Cultibox (1.4.10) precise; urgency=low
     + Correction de la mise à jour des prises au chargement de l'onglet
 
