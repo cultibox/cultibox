@@ -505,7 +505,6 @@ function get_content(page) {
     }).done(function (data) {
         //Some odd chars appear when including php files due to echo include that returns true value, removing them:
         $("#content").html(data);
-        $("#content").html(data);
         $("#content").load();
         active_menu(page);
     });
