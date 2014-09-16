@@ -30,7 +30,7 @@ USE `cultibox`;
 
 CREATE TABLE IF NOT EXISTS `configuration` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `VERSION` varchar(30) NOT NULL DEFAULT '1.4.10-noarch',
+  `VERSION` varchar(30) NOT NULL DEFAULT '1.1.28',
   `COLOR_HUMIDITY_GRAPH` varchar(30) NOT NULL DEFAULT 'blue',
   `COLOR_TEMPERATURE_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
   `COLOR_WATER_GRAPH` varchar(30) NOT NULL DEFAULT 'orange',

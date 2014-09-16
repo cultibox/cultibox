@@ -15,7 +15,7 @@ $close=getvar('close');
 $pop_up_message="";
 $pop_up_error_message="";
 $version=get_configuration("VERSION",$main_error);
-$main_info[]=__('WIZARD_DISABLE_FUNCTION').": <a href='/cultibox/index.php?menu=programs'><img src='main/libs/img/wizard.png' alt='".__('CLASSIC')."' title='' id='Classic' /></a>";
+$main_info[]=__('WIZARD_DISABLE_FUNCTION').": <a href='/cultibox/index.php?menu=programs' class='href-programs-msgbox'><img src='main/libs/img/wizard.png' alt='".__('CLASSIC')."' title='' id='Classic' /></a>";
 $type_submit=getvar('type_submit');
 $status=get_canal_status($main_error);
 $type=getvar("type");

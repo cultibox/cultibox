@@ -1,5 +1,9 @@
 <script>
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
+   $(".href-wizard-msgbox").click(function(e) {
+       e.preventDefault();
+       get_content("wizard");
+   });
 </script>
 
 

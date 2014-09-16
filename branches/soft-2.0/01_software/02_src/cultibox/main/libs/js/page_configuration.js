@@ -720,9 +720,6 @@ $(document).ready(function(){
                                 text: CLOSE_button,
                                 click: function () { 
                                     $( this ).dialog( "close" ); 
-                                    if(sd_card!="") {
-                                        window.location = "?menu=configuration";
-                                    }
                                  }
                             }]
                         });

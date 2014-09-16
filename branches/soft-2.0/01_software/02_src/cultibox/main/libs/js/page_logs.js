@@ -829,6 +829,37 @@ $(document).ready(function() {
 });
 
 
+// Function used export logs
+$(document).ready(function() {
+    $("#export_log_power").click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            cache: false,
+            url: "main/modules/external/export_logs.php",
+            data: {type:"power"}
+        }).done(function(data) {
+           if(jQuery.parseJSON(data)!="0") {
+                $.fileDownload('tmp/'+jQuery.parseJSON(data));
+            }
+        });
+    });
+
+     $("#export_log").click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            cache: false,
+            url: "main/modules/external/export_logs.php",
+            data: {type:"logs"}
+        }).done(function(data) {
+           if(jQuery.parseJSON(data)!="0") {
+                $.fileDownload('tmp/'+jQuery.parseJSON(data));
+            }
+        });
+    });
+});
+
+
+
 // Function to add a programm on the view
 $(document).ready(function() {
 

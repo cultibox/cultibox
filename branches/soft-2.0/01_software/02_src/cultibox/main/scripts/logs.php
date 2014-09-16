@@ -72,46 +72,6 @@ $yaxis_array[9] = program\get_curve_information('program');
 $check_log  = logs\check_export_table_csv("logs",$main_error);
 $check_power= logs\check_export_table_csv("power",$main_error);
 
-if((isset($export_log))&&(!empty($export_log))) {
-    logs\export_table_csv("logs",$main_error);
-    $file="tmp/logs.csv";
-     if (($file != "") && (file_exists("./$file"))) {
-        $size = filesize("./$file");
-        header("Content-Type: application/force-download; name=\"$file\"");
-        header("Content-Transfer-Encoding: binary");
-        header("Content-Length: $size");
-        header("Content-Disposition: attachment; filename=\"".basename($file)."\"");
-        header("Expires: 0");
-        header("Cache-Control: no-cache, must-revalidate");
-        header("Pragma: no-cache");
-        ob_clean();
-        flush();
-        ob_end_flush();
-        readfile("./$file");
-        exit();
-     }
-}
-
-if((isset($export_log_power))&&(!empty($export_log_power))) {
-     logs\export_table_csv("power",$main_error);
-     $file="tmp/power.csv";
-     if (($file != "") && (file_exists("./$file"))) {
-        $size = filesize("./$file");
-        header("Content-Type: application/force-download; name=\"$file\"");
-        header("Content-Transfer-Encoding: binary");
-        header("Content-Length: $size");
-        header("Content-Disposition: attachment; filename=\"".basename($file)."\"");
-        header("Expires: 0");
-        header("Cache-Control: no-cache, must-revalidate");
-        header("Pragma: no-cache");
-        ob_clean();
-        flush();
-        ob_end_flush();
-        readfile("./$file");
-        exit();
-     }
-}
-
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();

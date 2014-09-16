@@ -77,24 +77,19 @@ $cost=get_configuration("SHOW_COST");
 
     <title>Cultibox</title>
 
-    <link href="/cultibox/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href="/cultibox/favicon.ico" rel="shortcut icon"/>
     <link rel="stylesheet" href="/cultibox/css/base.css?v=<?=@filemtime('css/base.css')?>" />
     <link rel="stylesheet" href="/cultibox/css/layout.css?v=<?=@filemtime('css/layout.css')?>" />
     <link rel="stylesheet" href="/cultibox/css/menus.css?v=<?=@filemtime('css/menu.css')?>" />
-
-    <link rel="stylesheet" href="/cultibox/css/style.css?v=<?=@filemtime('css/style.css')?>" />
-    <link rel="stylesheet" href="/cultibox/css/noise.css?v=<?=@filemtime('css/noise.css')?>" />
-    <link rel="stylesheet" href="/cultibox/css/print.css?v=<?=@filemtime('css/print.css')?>" />
     <link rel="stylesheet" href="/cultibox/fonts/opensans.css?v=<?=@filemtime('fonts/opensans.css')?>" />
-    <link rel="stylesheet" href="/cultibox/css/mod.css?v=<?=@filemtime('css/mod.css')?>" />
 
     <link rel="stylesheet" media="all" type="text/css" href="/cultibox/main/libs/css/jquery-ui-1.8.19.custom.css?v=<?=@filemtime('main/libs/css/jquery-ui-1.8.19.custom.css')?>" />
     <link rel="stylesheet" media="all" type="text/css" href="/cultibox/main/libs/css/fullcalendar.css?v=<?=@filemtime('main/libs/css/fullcalendar.css')?>" />
     <link rel="stylesheet" media="all" type="text/css" href="/cultibox/main/libs/css/jquery.colourPicker.css?v=<?=@filemtime('main/libs/css/jquery.colourPicker.css')?>" />
     <link rel="stylesheet" media="all" type="text/css" href="/cultibox/main/libs/css/cultibox.css?v=<?=@filemtime('main/libs/css/cultibox.css')?>" />
-    
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-1.8.3.js?v=<?=@filemtime('main/libs/js/jquery-1.8.3.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-ui-1.9.2.custom.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-ui-1.9.2.custom.min.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.min.js')?>"></script>
@@ -107,14 +102,14 @@ $cost=get_configuration("SHOW_COST");
     <script type="text/javascript" src="/cultibox/main/libs/js/fullcalendar.js?v=<?=@filemtime('main/libs/js/main/libs/js/fullcalendar.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery.blockUI.js?v=<?=@filemtime('main/libs/js/main/libs/js/jquery.blockUI.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/scrollTo.js?v=<?=@filemtime('main/libs/js/main/libs/js/scrollTo.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/fileDownload.js?v=<?=@filemtime('main/libs/js/main/libs/js/fileDownload.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery.ui.datepicker-<?php echo substr($_COOKIE['LANG'], 0 , 2); ?>.js"></script>
 </head>
 
 
-<body id="page" class="page sidebar-a-right sidebar-b-right isblog">
+<body id="page" class="page">
     <div id="page-bg">
-        <div id="page-bg2">
-                        
+        <div>
             <!-- Small eye for displaying message pop up-->
             <script>title_msgbox="<?php echo __('TOOLTIP_MSGBOX_EYES'); ?>";</script>
             <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt="" title="" id="eyes_msgbox"></div>
@@ -231,41 +226,25 @@ $cost=get_configuration("SHOW_COST");
                         <div id="content" class="grid-block">
                             <?php
                                 switch($menu) {
-                                    case 'configuration' : include('main/scripts/configuration.php');
-                                                  include('main/libs/js/page_configuration.js');
-                                                  include('main/templates/configuration.html');
+                                    case 'configuration' : echo '<script>get_content("configuration");</script>';
                                     break;
-                                case 'plugs' : include('main/scripts/plugs.php');
-                                              include('main/libs/js/page_plugs.js');
-                                              include('main/templates/plugs.html');
+                                case 'plugs' :  echo '<script>get_content("plugs");</script>';
                                     break;
-                                case 'programs' : include('main/scripts/programs.php');
-                                              include('main/libs/js/page_programs.js');
-                                              include('main/templates/programs.html');
+                                case 'programs' :  echo '<script>get_content("programs");</script>';
                                     break;
-                                case 'logs' : include('main/scripts/logs.php');
-                                             include('main/libs/js/page_logs.js');
-                                             include('main/templates/logs.html');
+                                case 'logs' :  echo '<script>get_content("logs");</script>';
                                     break;
-                                case 'calendar' : include('main/scripts/calendar.php');
-                                             include('main/libs/js/page_calendar.js');
-                                             include('main/templates/calendar.html');
+                                case 'calendar' :  echo '<script>get_content("calendar");</script>';
                                     break;
-                                case 'wizard' : include('main/scripts/wizard.php');
-                                             include('main/libs/js/page_wizard.js');
-                                             include('main/templates/wizard.html');
+                                case 'wizard' :  echo '<script>get_content("wizard");</script>';
                                     break;
-                                 case 'wifi' : include('main/scripts/wifi.php');
-                                             include('main/libs/js/page_wifi.js');
-                                             include('main/templates/wifi.html');
+                                 case 'wifi' :  echo '<script>get_content("wifi");</script>';
                                     break;
-                                case 'cost' : include('main/scripts/cost.php');
-                                             include('main/libs/js/page_cost.js');
-                                             include('main/templates/cost.html');
+                                case 'cost' :  echo '<script>get_content("cost");</script>';
                                     break;
                                 case 'help' : 
                                     break;
-                                default: 
+                                default:  
                                     break;
                                 }
                            ?>
@@ -273,7 +252,6 @@ $cost=get_configuration("SHOW_COST");
                         <div class="shortlogo"><img src="main/libs/img/shortlogo2.png" alt=""></div>
                     </div> 
                 </div>
-                <?php include 'main/scripts/post_script.php'; ?>
             </div>
             
             <footer id="footer" class="grid-block">

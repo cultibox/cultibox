@@ -297,7 +297,7 @@ if((isset($export))&&(!empty($export))) {
 } 
 
 // Add user information : He can use wizard
-$main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='/cultibox/index.php?menu=wizard' class='href-wizard'><img src='main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
+$main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='/cultibox/index.php?menu=wizard' class='href-wizard-msgbox'><img src='main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
 
 
 //Create a new program:

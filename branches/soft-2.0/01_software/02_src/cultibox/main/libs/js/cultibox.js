@@ -123,9 +123,38 @@ confirmForm = function(SendForm,idDialog) {
 
 
 $(document).ready(function() {
-   if(!window.location.href.match(/cultibox\/index.php/g)) {
+    var urlGET = window.location.href.split('?');
+    var loadWelcome=true;
+
+    if(( typeof urlGET[1]!="undefined")&&(urlGET[1]!="")) { 
+        var urlVar = urlGET[1].split('&');
+   
+        for(var i = 0; i < urlVar.length; i++) {
+            var sParameterName = urlVar[i].split('=');
+            if (sParameterName[0] == "menu") {
+                if(loadWelcome) {
+                    switch(sParameterName[1]) {
+                        case 'configuration':
+                        case 'logs':
+                        case 'programs':
+                        case 'wifi':
+                        case 'help':
+                        case 'cost':
+                        case 'plugs':
+                        case 'wizard':
+                        case 'calendar':
+                            loadWelcome=false;
+                            break;
+                    }
+                }     
+            }
+        }
+    }
+
+    if(loadWelcome) {
         get_content("welcome");
     } 
+
 
     $(".href-welcome").click(function(e) {
         e.preventDefault();
