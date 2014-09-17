@@ -400,7 +400,7 @@ $(document).ready(function() {
 
 
         if(checked) {
-            document.forms['display-cost'].submit();
+            get_content("cost",getFormInputs('display-cost'));
         }
     });
 });

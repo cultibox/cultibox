@@ -8,14 +8,42 @@ $main_error=array();
 $main_info=array();
 
 // ================= VARIABLES ================= //
-$startday=getvar('startday');
-$endday=getvar('endday');
-$cost_price=getvar('cost_price');
-$cost_price_hp=getvar('cost_price_hp');
-$cost_price_hc=getvar('cost_price_hc');
-$cost_type=getvar('cost_type');
-$start_hc=getvar("start_hc",$main_error);
-$stop_hc=getvar("stop_hc",$main_error);
+if(!isset($startday)) {
+    $startday=getvar('startday');
+}
+if(!isset($endday)) {
+    $endday=getvar('endday');
+}
+
+if(!isset($cost_price)) {
+    $cost_price=getvar('cost_price');
+}
+
+if(!isset($cost_price_hp)) {
+    $cost_price_hp=getvar('cost_price_hp');
+}
+
+if(!isset($cost_price_hc)) {
+    $cost_price_hc=getvar('cost_price_hc');
+}
+
+if(!isset($cost_type)) {
+    $cost_type=getvar('cost_type');
+}
+
+if(!isset($start_hc)) {
+    $start_hc=getvar("start_hc",$main_error);
+}
+
+if(!isset($stop_hc)) {
+    $stop_hc=getvar("stop_hc",$main_error);
+}
+
+if(!isset($select_plug)) {
+    $select_plug=getvar('select_plug');
+}
+
+
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $price=get_configuration("COST_PRICE",$main_error);
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);

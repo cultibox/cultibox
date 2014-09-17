@@ -646,7 +646,7 @@ $(document).ready(function() {
                                 $("#success_load_still_log").css("display","none");
                                 $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
                                 $("#reload_import").val("1");
-                                document.forms['display-log'].submit();
+                                get_content("logs",getFormInputs('display-log'));
                             }
                         }]
                     });
@@ -681,7 +681,7 @@ $(document).ready(function() {
                     $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
                     $("#import_load").val($("#log_search").val());
                     $("#reload_import").val("1");
-                    document.forms['display-log'].submit();
+                    get_content("logs",getFormInputs('display-log'));
                 }
             }]
 
@@ -752,7 +752,7 @@ $(document).ready(function() {
                                     $("#success_delete_logs").css("display","none");
                                     $("#error_format_date_logs").css("display","none");
                                     $( this ).dialog( "close" );
-                                    document.forms['display-log'].submit();
+                                    get_content("logs",getFormInputs('display-log'));
                                     return false;
                                 }
                             }] 
@@ -812,7 +812,7 @@ $(document).ready(function() {
                                 $("#success_delete_logs_power").css("display","none");
                                 $("#error_format_date_logs_power").css("display","none");
                                 $( this ).dialog( "close" );
-                                document.forms['display-log'].submit();
+                                get_content("logs",getFormInputs('display-log'));
                                 return false;
                             }
                         }] 
@@ -1260,7 +1260,7 @@ $(document).ready(function() {
                     (day<10 ? '0' : '') + day;
                     $("#datepicker").val(output);
                 } else {
-                    document.forms['display-log'].submit();
+                    get_content("logs",getFormInputs('display-log'));
                 }
             });
         } else {
@@ -1272,7 +1272,12 @@ $(document).ready(function() {
                 if(data!=1) {
                     $("#error_start_month").show(700);
                 } else {
-                    document.forms['display-log'].submit();
+                    var $inputs = $('#display-log :input');
+                    var values = {};
+                    $inputs.each(function() {
+                        values[this.name] = $(this).val();
+                    });
+                    get_content("logs",getFormInputs('display-log'));
                 }
             });
         }
@@ -1326,7 +1331,7 @@ $(document).ready(function() {
             $(this).val(powers);
         });
 
-        document.forms['next'].submit();
+        get_content("logs",getFormInputs('next'));
     });
 
 
@@ -1372,7 +1377,8 @@ $(document).ready(function() {
             $(this).val(powers);
         });
 
-        document.forms['previous'].submit();
+        get_content("logs",getFormInputs('previous'));
+
     });
  });
 

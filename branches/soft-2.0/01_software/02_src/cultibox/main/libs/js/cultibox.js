@@ -134,6 +134,16 @@ getUrlVars = function(url) {
 }   
 
 
+//Return object containing form's input and value:
+getFormInputs = function(form) {
+    var values = {};
+    $.each($('#'+form).serializeArray(), function(i, field) {
+        values[field.name] = field.value;
+    });
+    return values;
+}
+
+
 
 $(document).ready(function() {
     var search = location.search.substring(1);

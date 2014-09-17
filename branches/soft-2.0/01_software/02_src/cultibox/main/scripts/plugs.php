@@ -12,14 +12,26 @@ $main_info=array();
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $advanced_regul=get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
 $update_program=false;
-$reccord=getvar('reccord');
 $version=get_configuration("VERSION",$main_error);
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
 $jumpto=getvar("jumpto");
 $submit=getvar("submit_plugs");
-$submenu=getvar("submenu",$main_error);
 $plug_count_sensor=array();
-$selected_plug=getvar('selected_plug');
+
+
+if(!isset($selected_plug)) {
+    $selected_plug=getvar('selected_plug');
+}
+
+if(!isset($submenu)) {
+    $submenu=getvar("submenu",$main_error);
+}
+
+if(!isset($reccord)) {
+    $reccord=getvar('reccord');
+}
+
+
 
 // By default the expanded menu is the plug1 menu
 if((!isset($submenu))||(empty($submenu))) {

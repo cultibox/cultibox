@@ -280,7 +280,7 @@ $(document).ready(function(){
             }
 
         if(checked) {
-            document.forms['plugForm'].submit();
+            get_content("plugs",getFormInputs('plugForm'));
         } else if(anchor!="") {
            $.scrollTo("#"+anchor,300); 
         }
@@ -409,7 +409,7 @@ $(document).ready(function(){
         }
 
         if(checked) {
-            document.forms['plugForm'].submit();
+            get_content("plugs",getFormInputs('plugForm'));
         } else if(anchor!="") {
            $.scrollTo("#"+anchor,300);
         }

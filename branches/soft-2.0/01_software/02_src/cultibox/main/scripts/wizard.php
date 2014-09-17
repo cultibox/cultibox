@@ -10,15 +10,27 @@ $main_info=array();
 
 // ================= VARIABLES ================= //
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
-$selected_plug=getvar('selected_plug');
 $close=getvar('close');
 $pop_up_message="";
 $pop_up_error_message="";
 $version=get_configuration("VERSION",$main_error);
 $main_info[]=__('WIZARD_DISABLE_FUNCTION').": <a href='/cultibox/index.php?menu=programs' class='href-programs-msgbox'><img src='main/libs/img/wizard.png' alt='".__('CLASSIC')."' title='' id='Classic' /></a>";
-$type_submit=getvar('type_submit');
 $status=get_canal_status($main_error);
-$type=getvar("type");
+
+
+if(!isset($type)) {
+    $type=getvar("type");
+}
+
+if(!isset($selected_plug)) {
+    $selected_plug=getvar('selected_plug');
+}
+
+if(!isset($type_submit)) {
+    $type_submit=getvar('type_submit');
+}
+
+
 
 
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');

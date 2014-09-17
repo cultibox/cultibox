@@ -18,10 +18,22 @@ $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 $fake_log=false;
 
 $second_regul=get_configuration("SECOND_REGUL",$main_error);
-$select_plug=getvar('select_plug');
-$startday=getvar('startday');
-$import_load=getvar('import_load');
-$reload_import=getvar('reload_import');
+
+if(!isset($select_plug)) {
+    $select_plug=getvar('select_plug');
+}
+
+if(!isset($startday)) {
+    $startday=getvar('startday');
+}
+
+if(!isset($import_load)) {
+    $import_load=getvar('import_load');
+}
+
+if(!isset($reload_import)) {
+    $reload_import=getvar('reload_import');
+}
 
 if((!isset($import_load))||(empty($import_load))) {
     $import_load=2;

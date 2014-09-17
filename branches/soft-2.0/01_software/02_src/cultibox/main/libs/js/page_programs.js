@@ -187,10 +187,10 @@ $(document).ready(function(){
                 if((start==$('#start_time').val())&&(end==$('#end_time').val())&&(plug_selected==$('#selected_plug').val())) {
                     currentForm = $(this).closest('form');
                     if(confirmForm(currentForm,"same_dialog_program")) {
-                        document.forms['actionprog'].submit();
+                        get_content("programs",getFormInputs('actionprog'));
                     }
                 } else {
-                    document.forms['actionprog'].submit();
+                    get_content("programs",getFormInputs('actionprog'));
                 } 
             }
         });

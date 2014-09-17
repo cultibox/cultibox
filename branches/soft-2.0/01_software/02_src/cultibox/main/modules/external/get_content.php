@@ -10,15 +10,16 @@ if((isset($_GET['page']))&&(!empty($_GET['page']))) {
     require_once $GLOBALS['BASE_PATH'].'main/libs/utilfunc.php';
     require_once($GLOBALS['BASE_PATH'].'main/libs/utilfunc_sd_card.php');
 
-    ob_start();
-    include $GLOBALS['BASE_PATH'].'main/scripts/'.$page.'.php';
-
     if((isset($_GET['get_array']))&&(!empty($_GET['get_array']))) {
         $get_array=json_decode($_GET['get_array'],true);
         foreach(array_keys($get_array) as $get) {
             ${$get}=$get_array[$get];
         }
     }
+
+
+    ob_start();
+    include $GLOBALS['BASE_PATH'].'main/scripts/'.$page.'.php';
 
     include $GLOBALS['BASE_PATH'].'main/scripts/post_script.php';
     include $GLOBALS['BASE_PATH'].'main/libs/js/page_'.$page.'.js';

@@ -18,8 +18,8 @@ $(document).ready(function(){
    //Event fire when clicking the wizard button:
    $("#close").click(function(e) {
        e.preventDefault();
-       get_content("programs");
-       // header('Location: programs-'.$_SESSION['SHORTLANG']."?selected_plug=".$selected_plug);
+       var get_urls = getUrlVars('selected_plugs='+$("#selected_plug option:selected").val());
+       get_content("programs",get_urls);
    });
 
   if(sd_card=="") {
@@ -177,7 +177,7 @@ $("#value_program").keypress(function(e) {
             } else {
                 $('#type_submit').val("submit_next");
             }
-            document.forms['submit_wizard'].submit();
+            get_content("wizard",getFormInputs('submit_wizard'));
         }
     });
 });

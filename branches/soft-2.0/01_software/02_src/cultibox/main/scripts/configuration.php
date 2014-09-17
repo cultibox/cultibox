@@ -8,7 +8,9 @@ $main_error=array();
 $main_info=array();
 
 // ================= VARIABLES ================= //
-$submenu        = getvar("submenu",$main_error);
+if(!isset($submenu)) {
+    $submenu        = getvar("submenu",$main_error);
+}
 
 // By default the expanded menu is the user interface menu
 if((!isset($submenu))||(empty($submenu))) {
