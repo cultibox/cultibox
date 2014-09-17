@@ -1,6 +1,8 @@
 Cultibox (2.0.02) precise; urgency=low
     + Passage en AJAX des liens vers les pages depuis le msgbox
     + Passage en AJAX de l'export des logs
+    + Passage de l'ajout/suppréssion d'une prise en AJAX (onglet programme)
+    + Rechargement de la page configuration après sauvegarde ou formatage en AJAX
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon Sep 16  08:49:17 CEST 2014
 

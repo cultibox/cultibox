@@ -27,8 +27,6 @@ $pop_up_message="";
 $pop_up_error_message="";
 $regul_program="";
 $resume=array();
-$add_plug=getvar('add_plug');
-$remove_plug=getvar('remove_plug');
 $apply=getvar('apply');
 $start_time=getvar("start_time");
 $end_time=getvar("end_time");
@@ -129,70 +127,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
 if((!isset($sd_card))||(empty($sd_card))) {
    $main_error[]=__('ERROR_SD_CARD');
 }
-
-// Ajout d'une prise pour configurer un nouveau programme, la variable définissant le nombre de prise maximale
-// est configurée dans le fichier config.php: $GLOBALS['NB_MAX_PLUG'] (même chose pour le nombre minimale: $GLOBALS['NB_MIN_PLUG'])
-if((isset($add_plug))&&(!empty($add_plug))) {
-    if((isset($nb_plugs))&&(!empty($nb_plugs))) {
-        if($nb_plugs<$GLOBALS['NB_MAX_PLUG']) {
-            //Si le nombre de prise maximale n'est pas encore atteind:
-            // AJout d'une nouvelle prise dans la base de données:
-            insert_configuration("NB_PLUGS",$nb_plugs+1,$main_error);
-            if((empty($main_error))||(!isset($main_error))) {
-                //Si tout s'est bien passé:
-                // On incrémente le nombre de prises définit:
-                $nb_plugs=$nb_plugs+1;
-
-                //On positionne les listes déroulantes à la valeur de la nouvelle prise:
-                $selected_plug=$nb_plugs;
-                $reset_selected=$nb_plugs;
-                $export_selected=$nb_plugs;
-                $import_selected=$nb_plugs;
-               
-                //Affichage des messages d'ajout: 
-                $pop_up_message=$pop_up_message.popup_message(__('PLUG_ADDED'));
-                $main_info[]=__('PLUG_ADDED');
-            }
-        } else {
-            //Sinon affichage du message de limite de prises atteinte:
-            $main_error[]=__('PLUG_MAX_ADDED');
-        }
-        $nb_plugs=get_configuration("NB_PLUGS",$main_error);
-    }
-}
-
-
-// Suppression d'une prise pour configurer un nouveau programme, la variable définissant le nombre de prise maximale
-// est configurée dans le fichier config.php: $GLOBALS['NB_MAX_PLUG'] (même chose pour le nombre minimale: $GLOBALS['NB_MIN_PLUG'])
-if((isset($remove_plug))&&(!empty($remove_plug))) {
-    if((isset($nb_plugs))&&(!empty($nb_plugs))) {
-        if($nb_plugs>3) {
-            //Si le nombre de prise minimale n'est pas encore atteind:
-            // Suppression d'une nouvelle prise dans la base de données:
-            insert_configuration("NB_PLUGS",$nb_plugs-1,$main_error);
-            if((empty($main_error))||(!isset($main_error))) {
-                //Si tout s'est bien passé:
-                // On décrémente le nombre de prises définit:
-                $nb_plugs=$nb_plugs-1;
-                if($selected_plug>$nb_plugs) { // Si la prise actuellement sélectionnée était la dernière prise, on change l'affichage:
-                    $selected_plug=$nb_plugs;
-                    $reset_selected=$nb_plugs;
-                    $export_selected=$nb_plugs;
-                    $import_selected=$nb_plugs;
-                }
-
-                //Affichage des messages de suppression:
-                $pop_up_message=$pop_up_message.popup_message(__('PLUG_REMOVED'));
-                $main_info[]=__('PLUG_REMOVED');
-            }
-        } else {
-            //Sinon affichage du message de limite de prises atteinte:
-            $main_error[]=__('PLUG_MIN_ADDED');
-        }
-        $nb_plugs=get_configuration("NB_PLUGS",$main_error);
-    }
-}
-
 
 // Retrieve plug's informations from the database
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);

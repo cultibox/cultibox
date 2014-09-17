@@ -104,7 +104,7 @@ if(strcmp($cost_type,"standard")==0) {
 
 if((strcmp($select_plug,"all")!=0)&&(strcmp($select_plug,"distinct_all")!=0)) {
         if(!check_configuration_power($select_plug,$main_error)) {
-            $main_error[]=__('ERROR_POWER_PLUG')." ".$select_plug." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='/cultibox/index.php?menu=plugs&selected_plug=".$select_plug."'>".__('HERE')."</a>";
+            $main_error[]=__('ERROR_POWER_PLUG')." ".$select_plug." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='/cultibox/index.php?menu=plugs&selected_plug=".$select_plug."' class='href-plugs-msgbox'>".__('HERE')."</a>";
         }
 } else {
         $nb=array();
@@ -116,7 +116,7 @@ if((strcmp($select_plug,"all")!=0)&&(strcmp($select_plug,"distinct_all")!=0)) {
 
         if(count($nb)>0) {
             if(count($nb)==1) {
-                $main_error[]=__('ERROR_POWER_PLUG')." ".$nb[0]." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='/cultibox/index.php?menu=plugs&selected_plug=".$nb[0]."'>".__('HERE')."</a>";
+                $main_error[]=__('ERROR_POWER_PLUG')." ".$nb[0]." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='/cultibox/index.php?menu=plugs&selected_plug=".$nb[0]."' class='href-plugs-msgbox'>".__('HERE')."</a>";
             } else {
                 $tmp_number="";     
                 foreach($nb as $number) {
@@ -125,7 +125,7 @@ if((strcmp($select_plug,"all")!=0)&&(strcmp($select_plug,"distinct_all")!=0)) {
                     }
                     $tmp_number=$tmp_number.$number;
                 }
-                $main_error[]=__('ERROR_POWER_PLUGS')." ".$tmp_number." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='/cultibox/index.php?menu=plugs&selected_plug=all'>".__('HERE')."</a>";
+                $main_error[]=__('ERROR_POWER_PLUGS')." ".$tmp_number." ".__('UNCONFIGURED_POWER')." ".__('CONFIGURABLE_PAGE_POWER')." <a href='/cultibox/index.php?menu=plugs' class='href-plugs-msgbox'>".__('HERE')."</a>";
             }
         }
 }

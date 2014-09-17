@@ -19,14 +19,6 @@ require_once('main/libs/db_get_common.php');
 require_once 'main/libs/utilfunc.php';
 
 
-//Set menu configuration :
-if((isset($_GET['menu']))&&(!empty($_GET['menu']))) {
-        $menu=$_GET['menu'];
-} else {
-        $menu="";
-}
-
-
 //Set lang:
 if((isset($_COOKIE['LANG']))&&(!empty(($_COOKIE['LANG'])))) {
     $lang=$_COOKIE['LANG'];
@@ -224,30 +216,6 @@ $cost=get_configuration("SHOW_COST");
                 <div id="main" class="grid-block">
                     <div id="maininner" class="grid-box">
                         <div id="content" class="grid-block">
-                            <?php
-                                switch($menu) {
-                                    case 'configuration' : echo '<script>get_content("configuration");</script>';
-                                    break;
-                                case 'plugs' :  echo '<script>get_content("plugs");</script>';
-                                    break;
-                                case 'programs' :  echo '<script>get_content("programs");</script>';
-                                    break;
-                                case 'logs' :  echo '<script>get_content("logs");</script>';
-                                    break;
-                                case 'calendar' :  echo '<script>get_content("calendar");</script>';
-                                    break;
-                                case 'wizard' :  echo '<script>get_content("wizard");</script>';
-                                    break;
-                                 case 'wifi' :  echo '<script>get_content("wifi");</script>';
-                                    break;
-                                case 'cost' :  echo '<script>get_content("cost");</script>';
-                                    break;
-                                case 'help' : 
-                                    break;
-                                default:  
-                                    break;
-                                }
-                           ?>
                         </div>
                         <div class="shortlogo"><img src="main/libs/img/shortlogo2.png" alt=""></div>
                     </div> 

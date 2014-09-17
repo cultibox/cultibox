@@ -720,6 +720,8 @@ $(document).ready(function(){
                                 text: CLOSE_button,
                                 click: function () { 
                                     $( this ).dialog( "close" ); 
+                                    var get_array = getUrlVars('submenu='+$("#submenu").val());
+                                    get_content("configuration",get_array);
                                  }
                             }]
                         });
@@ -736,8 +738,8 @@ $(document).ready(function(){
                                 text: CLOSE_button,
                                 click: function () { 
                                     $( this ).dialog( "close" );  
-                                    //Reload page to load the new menu, the next cultibox version without joomla should avoir to reload the page:
-                                    window.location = "index.php?menu=configuration";
+                                    var get_array = getUrlVars('submenu='+$("#submenu").val());
+                                    get_content("configuration",get_array);
                                 }
                             }]
                         });
@@ -791,13 +793,9 @@ $(document).ready(function(){
                                     text: CANCEL_button,
                                     "id": "btnCancel",
                                     click: function () {
-                                        $("#progress_bar").progressbar({value:0});
-                                        $("#success_format").css("display","none");
-                                        $("#error_format").css("display","none");
-                                        $( this ).dialog( "close" ); 
-                                        $("#btnCancel").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
-                                        window.location.href="index.php?menu=configuration";
-                                        return false;
+                                        var get_array = getUrlVars('submenu=card_interface');
+                                        get_content("configuration",get_array);
+                                        $( this ).dialog( "close" );
                                     }
                                 }]
                             });

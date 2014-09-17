@@ -19,10 +19,16 @@ $jumpto=getvar("jumpto");
 $submit=getvar("submit_plugs");
 $submenu=getvar("submenu",$main_error);
 $plug_count_sensor=array();
+$selected_plug=getvar('selected_plug');
 
 // By default the expanded menu is the plug1 menu
 if((!isset($submenu))||(empty($submenu))) {
     $submenu="1";
+}
+
+
+if((!isset($selected_plug))||(empty($selected_plug))) {
+    $selected_plug="1";
 }
 
 

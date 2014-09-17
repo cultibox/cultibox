@@ -8,7 +8,6 @@
     }
 ?>
 
-
 nb_plugs=<?php echo(json_encode($nb_plugs)); ?>;
 wifi_ip=<?php echo(json_encode($wifi_ip)); ?>;
 type_sensor=<?php echo(json_encode($type_sensor)); ?>;
@@ -16,6 +15,7 @@ addr_1000=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT'])); ?>;
 addr_3500=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT_3500W'])); ?>;
 translate=<?php echo(json_encode($translate)); ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+nb_error_load=0;
 
 //Wifi process:
 get_plug_type = function(addr) {
@@ -39,6 +39,7 @@ wifi_process = function(time,ip) {
         dataType: "xml",
         timeout: 3000,
         success: function(xml) {
+            nb_error_load=0;
             var myPlug = [];
             $(xml).find('plug_state').each( function(){
                 var num=$(this).find('num').text();
@@ -137,9 +138,15 @@ wifi_process = function(time,ip) {
                      $("#sensor_value"+value['num']).css('font-weight', 'bold');
                }
             });
-        },
+        }, 
+            error:  function() {
+                    nb_error_load=nb_error_load+1; 
+                }
+        ,
             complete: function() {
-                wifi_process(10000,ip);
+                if(nb_error_load<=20) { 
+                    wifi_process(10000,ip);
+                }
             }
         });
     }, time);

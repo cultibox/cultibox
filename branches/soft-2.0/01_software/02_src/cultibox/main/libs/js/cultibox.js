@@ -121,89 +121,79 @@ confirmForm = function(SendForm,idDialog) {
     });
 }
 
+//To get url param into object:
+getUrlVars = function(url) {
+    var hash;
+    var myJson = {};
+    var hashes = url.slice(url.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        myJson[hash[0]] = hash[1];
+    }
+    return myJson;
+}   
+
+
 
 $(document).ready(function() {
-    var urlGET = window.location.href.split('?');
-    var loadWelcome=true;
+    var search = location.search.substring(1);
+    var get_array = getUrlVars(search);
 
-    if(( typeof urlGET[1]!="undefined")&&(urlGET[1]!="")) { 
-        var urlVar = urlGET[1].split('&');
-   
-        for(var i = 0; i < urlVar.length; i++) {
-            var sParameterName = urlVar[i].split('=');
-            if (sParameterName[0] == "menu") {
-                if(loadWelcome) {
-                    switch(sParameterName[1]) {
-                        case 'configuration':
-                        case 'logs':
-                        case 'programs':
-                        case 'wifi':
-                        case 'help':
-                        case 'cost':
-                        case 'plugs':
-                        case 'wizard':
-                        case 'calendar':
-                            loadWelcome=false;
-                            break;
-                    }
-                }     
-            }
-        }
-    }
-
-    if(loadWelcome) {
-        get_content("welcome");
+    if(( typeof get_array['menu']!="undefined")&&(['menu']!="")) { 
+        get_content(get_array['menu'],get_array);
+    } else {
+        get_content("welcome",get_array);
     } 
 
 
     $(".href-welcome").click(function(e) {
         e.preventDefault();
-        get_content("welcome");
+        get_content("welcome",get_array);
     });
 
     $(".href-configuration").click(function(e) {
        e.preventDefault();
-       get_content("configuration");
+       get_content("configuration",get_array);
     });
 
     $(".href-logs").click(function(e) {
        e.preventDefault();
-       get_content("logs");
+       get_content("logs",get_array);
     });
 
     $(".href-plugs").click(function(e) {
        e.preventDefault();
-       get_content("plugs");
+       get_content("plugs",get_array);
     });
 
     $(".href-programs").click(function(e) {
        e.preventDefault();
-       get_content("programs");
+       get_content("programs",get_array);
     });
 
     $(".href-calendar").click(function(e) {
        e.preventDefault();
-       get_content("calendar");
+       get_content("calendar",get_array);
     });
 
     $(".href-wifi").click(function(e) {
        e.preventDefault();
-       get_content("wifi");
+       get_content("wifi",get_array);
     });
 
     $(".href-cost").click(function(e) {
        e.preventDefault();
-       get_content("cost");
+       get_content("cost",get_array);
     });
 
     $(".href-wizard").click(function(e) {
        e.preventDefault();
-       get_content("wizard");
+       get_content("wizard",get_array);
     });
 
     $(".welcome-logo").click(function(e) {
        e.preventDefault();
-       get_content("welcome");
+       get_content("welcome",get_array);
     });
 
 
@@ -524,13 +514,13 @@ function active_menu(menu) {
 
 // brief : get content and display in it the main content div
 // page: page to be displayed in the content div
-function get_content(page) {
+function get_content(page,get_array) {
    clean_pop_up_messages();
    $.ajax({
         cache: false,
         async: false,
         url: "main/modules/external/get_content.php",
-        data: {page:page}
+        data: {page:page, get_array:JSON.stringify(get_array)}
     }).done(function (data) {
         //Some odd chars appear when including php files due to echo include that returns true value, removing them:
         $("#content").html(data);

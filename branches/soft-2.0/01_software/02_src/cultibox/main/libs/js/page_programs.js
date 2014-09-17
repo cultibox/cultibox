@@ -234,7 +234,7 @@ $(document).ready(function(){
                 click: function () {
                     $( this ).dialog( "close" ); 
                     if(reload_page) {
-                         window.location = "?menu=programs";
+                         window.location = "index.php?menu=programs";
                     } else {
                         return false;
                     }
@@ -424,9 +424,33 @@ $(document).ready(function(){
         .button()
         .click(function() {
         $( "#dialog-form-save-daily" ).dialog( "open" );
+    });
+
+    //Ajax to add a plus:
+    $('#add_plug').click(function(e) {
+        e.preventDefault();
+         $.ajax({
+            cache: false,
+            async: false,
+            url: "main/modules/external/manage_nb_plugs.php",
+            data: {type:"add",nb_plugs:<?php echo $nb_plugs; ?>}
+        }).done(function () {
+            window.location = "index.php?menu=programs&selected_plug=<?php echo $nb_plugs+1; ?>";
         });
-        
-        
+    });
+
+    //Ajax to remove a plus:
+    $('#remove_plug').click(function(e) {
+        e.preventDefault();
+         $.ajax({
+            cache: false,
+            async: false,
+            url: "main/modules/external/manage_nb_plugs.php",
+            data: {type:"remove",nb_plugs:<?php echo $nb_plugs; ?>}
+        }).done(function() {
+            window.location = "index.php?menu=programs&selected_plug=<?php echo $nb_plugs-1; ?>";
+        });
+    });
 });
 
 

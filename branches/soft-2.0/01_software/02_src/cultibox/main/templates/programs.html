@@ -1,9 +1,5 @@
 <script>
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
-    $(".href-wizard-msgbox").click(function(e) {
-       e.preventDefault();
-       get_content("wizard");
-    });
 </script>
 
 
@@ -279,10 +275,7 @@
             </td>
             <td>
                 <form action="/cultibox/index.php?menu=programs" method="post">
-                    <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
-                    <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
-                    <input type="hidden" name="add_plug" value="add_plug">
-                    <input type="submit" name="add" <?php if($nb_plugs>=$GLOBALS['NB_SELECTABLE_PLUG']) { ?> disabled value="<?php echo __('MAX_PLUG_REACHED'); ?>" class="inputDisable" <?php } else { ?>value="<?php echo __('ADD_PLUG'); ?>" <?php } ?>>
+                    <input id="add_plug" type="submit" name="add_plug" <?php if($nb_plugs>=$GLOBALS['NB_SELECTABLE_PLUG']) { ?> disabled value="<?php echo __('MAX_PLUG_REACHED'); ?>" class="inputDisable" <?php } else { ?>value="<?php echo __('ADD_PLUG'); ?>" <?php } ?>>
                 </form>
             </td>
         </tr>
@@ -293,10 +286,7 @@
             </td>
             <td>
                 <form action="/cultibox/index.php?menu=programs" method="post">
-                    <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
-                    <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
-                    <input type="hidden" name="remove_plug" value="remove_plug">
-                    <input type="submit" name="remove" <?php if($nb_plugs<=$GLOBALS['NB_MIN_PLUG']) { ?> disabled value="<?php echo __('MIN_PLUG_REACHED'); ?>" class="inputDisable" <?php } else { ?>value="<?php echo __('REMOVE_PLUG'); ?>"<?php } ?>>
+                    <input id="remove_plug" type="submit" name="remove" <?php if($nb_plugs<=$GLOBALS['NB_MIN_PLUG']) { ?> disabled value="<?php echo __('MIN_PLUG_REACHED'); ?>" class="inputDisable" <?php } else { ?>value="<?php echo __('REMOVE_PLUG'); ?>"<?php } ?>>
                 </form>
             </td>
         </tr>   
