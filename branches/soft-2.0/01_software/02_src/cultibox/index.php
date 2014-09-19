@@ -40,6 +40,10 @@ require_once('main/libs/utilfunc_sd_card.php');
 $wifi=get_configuration("WIFI");
 $cost=get_configuration("SHOW_COST");
 
+if(!isset($menu)) {
+    $menu="";
+}
+
 ?>
 <!DOCTYPE HTML>
 <head>
@@ -161,57 +165,6 @@ $cost=get_configuration("SHOW_COST");
                     </div>
                 </header>
                 
-                <!-- Pop up -->
-                <?php
-                    // Create pop up message if needed
-                    if (isset($pop_up) && "$pop_up"!="False")
-                    {
-                        if(isset($pop_up_message) && !empty($pop_up_message))
-                        {
-                            // Create a pop up message
-                            echo '<div class="pop_up_message" style="display:none">';
-                            echo str_replace("\\n\\n","<br /><br />","$pop_up_message");
-                            echo '</div>';
-                        } else if(isset($pop_up_error_message) && !empty($pop_up_error_message) ) {
-                            // Create a pop up error
-                            echo '<div class="pop_up_error" style="display:none">';
-                            echo str_replace("\\n\\n","<br /><br />","$pop_up_error_message");
-                            echo '</div>';
-                        }
-                    }
-                ?>
-
-                <!-- Message box -->
-                <div class="message" style="display:none" title="<?php echo __('MESSAGE_BOX'); ?>">
-                    <br />
-                    <div id="pop_up_information_container">
-                        <img src="main/libs/img/informations.png" alt="" />
-                        <label class="info_title"><?php echo __('INFORMATION'); ?>:</label>
-                        <div class="info"  id="pop_up_information_part">
-                            <ul>
-                            </ul>
-                            <br />
-                        </div>
-                    </div>
-                    <div id="pop_up_error_container">
-                        <img src="main/libs/img/warning.png" alt="" />
-                        <label class="error_title"><?php  echo __('WARNING'); ?>:</label>
-                        <div class="error" id="pop_up_error_part">
-                            <ul>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <br />
-
-                <!-- To check that javascript is enable: -->
-                <noscript>
-                <div id="compat-js" class="text_info">
-                <p><?php echo __('ENABLE_JAVASCRIPT'); ?></p>
-                </div>
-                </noscript>
- 
-                                
                 <!--  Main content part: -->
                 <div id="main" class="grid-block">
                     <div id="maininner" class="grid-box">

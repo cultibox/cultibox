@@ -47,7 +47,7 @@ $substrat=array();
 $product=array();
 
 // List XML file find in folder
-foreach(glob('main/xml/*.{xml}', GLOB_BRACE) as $entry) {
+foreach(glob('../../xml/*.{xml}', GLOB_BRACE) as $entry) {
     $rss_file = file_get_contents($entry);
     $xml =json_decode(json_encode((array) @simplexml_load_string($rss_file)), 1);
 

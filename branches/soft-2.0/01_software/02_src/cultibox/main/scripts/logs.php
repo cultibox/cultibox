@@ -11,7 +11,6 @@ $export_log=getvar('export_log');
 $export_log_power=getvar('export_log_power');
 
 // ================= VARIABLES ================= //
-$type="";
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
@@ -40,9 +39,15 @@ if((!isset($import_load))||(empty($import_load))) {
 }
 
 // Get is user want to display a day or a month
-$type = "day";
-if(isset($_POST['type_select'])) {
-    $type = getvar('type_select');
+if(!isset($type)) {
+    if(isset($_GET['type'])) {
+        $type = getvar('type');
+    }
+
+
+    if((!isset($type))||(empty($type))) {
+            $type = "day";
+    }
 }
 
 // Check if there are logs recorded, delete fake logs if it's the case:
@@ -123,47 +128,66 @@ if($startday == "") {
     }
 }
 
-$startmonth = "";
-if(isset($_POST['startmonth'])) {
-    $startmonth=$_POST['startmonth'];
-} else {
-    $startmonth=date('m');
+
+if((!isset($startmonth))||(empty($startmonth))) {
+    $startmonth = "";
+    if(isset($_GET['startmonth'])) {
+        $startmonth=$_GET['startmonth'];
+    } else {
+        $startmonth=date('m');
+    }
 }
 
-$startyear = "";
-if(isset($_POST['startyear'])) {
-    $startyear=$_POST['startyear'];
-} else {
-    $startyear=date('Y');
+
+if((!isset($startyear))||(empty($startyear))) {
+    $startyear = "";
+    if(isset($_GET['startyear'])) {
+        $startyear=$_GET['startyear'];
+    } else {
+        $startyear=date('Y');
+    }
 }
 
 
 // Search previous selected curve
-$select_sensor = array();
-if(isset($_POST['select_sensor'])) {
-    $select_sensor=getvar('select_sensor');
-    if(!is_array($select_sensor)) {
-        $select_sensor=explode(",",$select_sensor);
+if(!isset($select_sensor)) {
+    if(isset($_GET['select_sensor'])) {
+        $select_sensor=getvar('select_sensor');
+        if(!is_array($select_sensor)) $select_sensor=explode(",",$select_sensor);
+    } else {
+        $select_sensor[]="1";
     }
 } else {
-    $select_sensor[]="1";
+     $select_sensor=explode(",",$select_sensor);
 }
 
 
-$select_power = array();
-if(isset($_POST['select_power'])) {
-    $select_power = getvar('select_power');
-    if(!is_array($select_power)) {
-        $select_power=explode(",",$select_power);
+if(!isset($select_power)) {
+    if(isset($_GET['select_power'])) {
+        $select_power = getvar('select_power');
+        if(!is_array($select_power)) {
+            $select_power=explode(",",$select_power);
+        }
+    } else {
+        $select_power=array();
     }
-} 
+} else {
+    $select_power=explode(",",$select_power);
+}
 
-$select_program = array();
-if(isset($_POST['select_program'])) {
-    $select_program = getvar('select_program');
-    if(!is_array($select_program)) {
-        $select_program=explode(",",$select_program);
+
+
+if(!isset($select_program)) {
+    if(isset($_GET['select_program'])) {
+        $select_program = getvar('select_program');
+        if(!is_array($select_program)) {
+            $select_program=explode(",",$select_program);
+        }
+    } else {
+        $select_program=array();
     }
+} else  {
+    $select_program=explode(",",$select_program);
 }
 
 

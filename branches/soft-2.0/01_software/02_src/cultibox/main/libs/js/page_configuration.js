@@ -11,10 +11,10 @@
 
 wifi_password=<?php echo(json_encode($wifi_password)); ?>;
 rtc_offset_value=<?php echo json_encode($rtc_offset) ?>;
-
+var ajax_format;
 
 formatCard = function(hdd,pourcent) {
-    $.ajax({ 
+    ajax_format = $.ajax({ 
         cache: false,
         url: "main/modules/external/format.php",
         data: {hdd:hdd, progress: parseInt(pourcent)}
@@ -25,7 +25,7 @@ formatCard = function(hdd,pourcent) {
             $("#btnCancel").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
             return true;
         } else if(data>=0) { 
-            formatCard(hdd,parseInt(data)); 
+                formatCard(hdd,parseInt(data)); 
         } else {
             $("#error_format").show();
             $("#btnCancel").html('<span class="ui-button-text">'+CLOSE_button+'</span>');
@@ -794,11 +794,12 @@ $(document).ready(function(){
                                     "id": "btnCancel",
                                     click: function () {
                                         var get_array = getUrlVars('submenu=card_interface');
+                                        $(this).dialog('destroy').remove();
                                         get_content("configuration",get_array);
-                                        $( this ).dialog( "close" );
                                     }
                                 }]
                             });
+                            stop_format=false;
                             $("#progress_bar").progressbar({value:0});
                             $("#success_format").css("display","none");
                             $("#error_format").css("display","none");
@@ -807,11 +808,10 @@ $(document).ready(function(){
                     }, {
                         text: CANCEL_button,
                         click: function () {
-                            $("#progress_bar").progressbar({value:0}); 
-                            $("#success_format").css("display","none");
-                            $("#error_format").css("display","none");
-                            $("#btnCancel").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
-                            $( this ).dialog( "close" ); return false;
+                            ajax_format.abort();
+                            var get_array = getUrlVars('submenu=card_interface');
+                            $(this).dialog('destroy').remove();
+                            get_content("configuration",get_array);
                         }
                     }]
                 });

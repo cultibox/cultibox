@@ -23,7 +23,7 @@
       <category term = "hiver" label = "hiver" />
       <content type = "text">Changement d'heure d'hiver: reculer d'une heure les horloges</content>
       <duration>0</duration>
-      <start>2014-10-26T03:00:00+00:00</start>
+      <start>2014-10-26T00:00:00+00:00</start>
       <icon>clock.png</icon>
       <color>#AD4F09</color>
    </entry>
@@ -35,7 +35,7 @@
       <category term = "ete" label = "ete" />
       <content type = "text">Changement d'heure d'été: avancer d'une heure les horloges</content>
       <duration>0</duration>
-      <start>2014-03-30T02:00:00+00:00</start>
+      <start>2014-03-30T00:00:00+00:00</start>
       <icon>clock.png</icon>
       <color>#AD4F09</color>
    </entry>

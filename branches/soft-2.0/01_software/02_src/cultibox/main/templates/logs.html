@@ -37,14 +37,14 @@
 <br />
 
 <div id="label_select_type">
-    <form name="display-log" id="display-log" action="/cultibox/index.php?menu=logs" method="post" name="display-log">
+    <form name="display-log" id="display-log" action="/cultibox/index.php?menu=logs" method="get" name="display-log">
         <table class="table_width">
             <tr>
                 <td class="log-marge-day-main"></td>
                 <td class="log-marge-day-title"><b><?php echo __('SELECT_DISPLAYED_DAY'); ?>:</b></td>
                 <td class="log-marge-day-field">
-                    <input type= "radio" id="select_day" name="type_select" value="day" <?php if($type == "day") echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?>
-                    <input type= "radio" id="select_month" name="type_select" value="month" <?php if($type == "month") echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
+                    <input type= "radio" id="select_day" name="type" value="day" <?php if($type == "day") echo "checked"; ?> onChange="getType(0);" onLoad="getType(0);" ><?php echo __('ONE_DAY'); ?>
+                    <input type= "radio" id="select_month" name="type" value="month" <?php if($type == "month") echo "checked"; ?> onChange="getType(1);" onLoad="getType(1);" ><?php echo __('ONE_MONTH'); ?>
                 </td>
                 <td></td>
             </tr>
@@ -172,6 +172,9 @@
         
         <input type="hidden" name="import_load" id="import_load" value="<?php echo $import_load; ?>">
         <input type="hidden" name="reload_import" id="reload_import" value="0">
+        <input type="hidden" name="select_program" value="">
+        <input type="hidden" name="select_sensor" value="1">
+        <input type="hidden" name="select_power" value="">
     </form>
 </div>
 <br />
@@ -196,7 +199,7 @@
     </tr>
     <tr>
         <td class="left_log">
-            <form action="/cultibox/index.php?menu=logs" method="post" name="previous" id="previous">
+            <form action="/cultibox/index.php?menu=logs" method="get" name="previous" id="previous">
                 <input type="submit" value="<" name="previous" id="previous" class="button_log" title="<?php if(strcmp($type,"day")==0) echo __('PREVIOUS_BUTTON_DAY'); else echo __('PREVIOUS_BUTTON_MONTH'); ?>">
                 <?php if($type == "day") { ?>
                     <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("-1 day", strtotime("$startday"))); ?>">
@@ -212,11 +215,11 @@
                     ?>
                     <input type="hidden" name="startmonth" value="<?php echo "$month"; ?>">
                     <input type="hidden" name="startyear" value="<?php if(strcmp("$startmonth","01")==0) echo $startyear-1; else echo $startyear; ?>">
-                    <input type="hidden" name="type_select" value="month">
+                    <input type="hidden" name="type" value="month">
                 <?php } ?>
                 <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
-                <input type="hidden" name="select_sensor" value="<?php print_r($select_sensor); ?>">
                 <input type="hidden" name="select_program" value="">
+                <input type="hidden" name="select_sensor" value="1">
                 <input type="hidden" name="select_power" value="">
             </form>
         </td>
@@ -227,7 +230,7 @@
                  $yy=date('Y');
                  $mm=date('m');
             ?>
-            <form action="/cultibox/index.php?menu=logs" method="post" name="next" id="next">
+            <form action="/cultibox/index.php?menu=logs" method="get" name="next" id="next">
                 <input type="submit" value=">" name="next" id="next" class="button_log" title="<?php if(strcmp($type,"day")==0) echo __('NEXT_BUTTON_DAY'); else echo __('NEXT_BUTTON_MONTH'); ?>">
                 <?php if(strcmp($type,"day")==0) { ?>
                     <input type="hidden" name="startday" value="<?php echo date('Y-m-d',strtotime("+1 day", strtotime("$startday"))); ?>">
@@ -244,12 +247,12 @@
                     ?>
                     <input type="hidden" name="startmonth" value="<?php echo "$month"; ?>">
                     <input type="hidden" name="startyear" value="<?php if(strcmp("$startmonth","12")==0) echo $startyear+1; else echo $startyear; ?>" >
-                    <input type="hidden" name="type_select" value="month">
+                    <input type="hidden" name="type" value="month">
                 <?php } ?>
 
                 <input type="hidden" name="select_plug" value="<?php echo $select_plug; ?>">
-                <input type="hidden" name="select_sensor" value="<?php print_r($select_sensor); ?>">
                 <input type="hidden" name="select_program" value="">
+                <input type="hidden" name="select_sensor" value="1">
                 <input type="hidden" name="select_power" value="">
             </form>
         </td>
@@ -651,7 +654,7 @@
 <div id="ui_db_management" name="ui_db_management" title="<?php echo __('MANAGE_LOG_INFOS') ?>" style="display:none">
 
     <!-- Reload logs -->
-    <form action="/cultibox/index.php?menu=logs" method="post" id="load_log_form" name="load_log_form">
+    <form action="/cultibox/index.php?menu=logs" method="get" id="load_log_form" name="load_log_form">
         <table class="table_width">
             <tr>
                 <td class="log-manage-marge"></td>
@@ -677,7 +680,7 @@
     </form>
     
     <!-- Reset logs -->
-    <form action="/cultibox/index.php?menu=logs" method="post" id="reset_log_form" name="reset_log_form">
+    <form action="/cultibox/index.php?menu=logs" method="get" id="reset_log_form" name="reset_log_form">
         <table class="table_width">
             <tr>
                 <td class="log-manage-marge"></td>
@@ -689,7 +692,7 @@
     </form>
 
     <!-- Export CSV logs -->
-    <form action="/cultibox/index.php?menu=logs" method="post" name="export_log_form" id="export_log_form">
+    <form action="/cultibox/index.php?menu=logs" method="get" name="export_log_form" id="export_log_form">
         <table class="table_width">
             <tr>
                 <td class="log-manage-marge"></td>
@@ -710,7 +713,7 @@
     </form>
 
     <!-- Delete power logs -->
-    <form action="/cultibox/index.php?menu=logs" method="post" id="reset_log_power_form" name="reset_log_power_form">
+    <form action="/cultibox/index.php?menu=logs" method="get" id="reset_log_power_form" name="reset_log_power_form">
         <table class="table_width">
             <tr>
                 <td class="log-manage-marge"></td>
@@ -722,7 +725,7 @@
     </form>
 
     <!-- Export power csv -->
-    <form action="/cultibox/index.php?menu=logs" method="post" id="export_log_power_form" name="export_log_power_form">
+    <form action="/cultibox/index.php?menu=logs" method="get" id="export_log_power_form" name="export_log_power_form">
         <table class="table_width">
             <tr>
                 <td class="log-manage-marge"></td>

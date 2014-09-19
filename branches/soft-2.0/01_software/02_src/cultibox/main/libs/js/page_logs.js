@@ -8,12 +8,13 @@
     }
 ?>
 
-
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 var count=0;
+var finished=0;
+var dialog1=false;
 
 // {{{ getType()
-// IN  input value: display the type og log: 0 for daily logs, 1 for monthly
+// IN  input value: display the type of log: 0 for daily logs, 1 for monthly
 // HOW IT WORKS: get id from div to be displayed or not and display it (or not) depending the input value
 // USED BY: templates/logs.html  
 function getType(i) {
@@ -87,6 +88,15 @@ delete_logs = function(type, type_reset, nb_jours, start,count) {
 
 loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
     $.ajax({
+        beforeSend: function(jqXHR) {
+                $.xhrPool.push(jqXHR);
+        },
+        complete: function(jqXHR) {
+            var index = $.xhrPool.indexOf(jqXHR);
+            if (index > -1) {
+                $.xhrPool.splice(index, 1);
+            }
+        },
         cache: false,
         url: "main/modules/external/load_log.php",
         data: {nb_day:nb_day, type:type,search:search,sd_card:sd_card}
@@ -215,9 +225,13 @@ $(function () {
                         
                         // For each selected checkbutton, display the curve
                         $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").each(function() {
-
                             var cheBu = $(this);
-                            
+
+                            if($('input[type=radio][name=type]:checked').attr('value')=="day") {
+                                var startDate=$("#datepicker").val();
+                            } else {
+                                var startDate=$("#startyear").val()+"-"+$("#startmonth").val();
+                            }
                             if (cheBu.attr("checked") == "checked") {
                             
                                 // Block interface
@@ -229,9 +243,9 @@ $(function () {
                                         plug:$(this).attr("plug"),
                                         sensor:$(this).attr("sensor"),
                                         day:1,
-                                        month:$('input[type=radio][name=type_select]:checked').attr('value'),
+                                        month:$('input[type=radio][name=type]:checked').attr('value'),
                                         datatype:$(this).attr("datatype"),
-                                        startDate:$(this).attr("startDate")
+                                        startDate:startDate
                                     },
                                     url: 'main/modules/external/logs_get_serie.php',
                                     success: function(json) {
@@ -322,12 +336,11 @@ $(function () {
                                         });
 
 
-                                        // All curve have been rendered : Unblock UI
-                                        $.unblockUI();
-                                        
-                        
                                         // after every curve loaded, update tooltip with min and max
                                         updateTooltipMinMax();
+
+                                         // All curve have been rendered : Unblock UI
+                                        $.unblockUI();
 
                                     },
                                     cache: false
@@ -638,13 +651,7 @@ $(document).ready(function() {
                             text: CANCEL_button,
                             "id": "btnClose",
                             click: function () {
-                                $( this ).dialog("close");
-                                $("#error_load_power").css("display","none");
-                                $("#error_load").css("display","none");
-                                $("#success_load_power_auto").css("display","none");
-                                $("#success_load_auto").css("display","none");
-                                $("#success_load_still_log").css("display","none");
-                                $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
+                                $(this).dialog('destroy').remove();
                                 $("#reload_import").val("1");
                                 get_content("logs",getFormInputs('display-log'));
                             }
@@ -672,23 +679,17 @@ $(document).ready(function() {
                 text: CANCEL_button,
                 "id": "btnClose",
                 click: function () {
-                    $( this ).dialog("close");
-                    $("#error_load_power").css("display","none");
-                    $("#error_load").css("display","none");
-                    $("#success_load_power").css("display","none");
-                    $("#success_load").css("display","none");
-                    $("#success_load_still_log").css("display","none");
-                    $("#btnClose").html('<span class="ui-button-text">'+CANCEL_button+'</span>');
-                    $("#import_load").val($("#log_search").val());
+                    $(this).dialog('destroy').remove();
                     $("#reload_import").val("1");
                     get_content("logs",getFormInputs('display-log'));
                 }
             }]
 
          });
+         $("#ui_db_management").dialog('close');
          $("#progress_bar_load").progressbar({value:0});
          $("#progress_bar_load_power").progressbar({value:0});
-		 
+
 		 var name="sd_card";
          $.ajax({
             cache: false,
@@ -868,6 +869,12 @@ $(document).ready(function() {
         var chart = $('#container').highcharts();
         var cheBu = $(this);
 
+        if($('input[type=radio][name=type]:checked').attr('value')=="day") {
+            var startDate=$("#datepicker").val();
+        } else {
+            var startDate=$("#startyear").val()+"-"+$("#startmonth").val();
+        }
+
         // Block interface
         $.blockUI({ message: ''});
 
@@ -880,9 +887,9 @@ $(document).ready(function() {
                     plug:$(this).attr("plug"),
                     sensor:$(this).attr("sensor"),
                     day:1,
-                    month:$('input[type=radio][name=type_select]:checked').attr('value'),
+                    month:$('input[type=radio][name=type]:checked').attr('value'),
                     datatype:$(this).attr("datatype"),
-                    startDate:$(this).attr("startDate")
+                    startDate:startDate
                 },
                 url: 'main/modules/external/logs_get_serie.php',
                 success: function(json) {
@@ -1207,42 +1214,68 @@ $(document).ready(function() {
  * After load, when user submit form, add parameters of displayed curve
  */
  $(document).ready(function() {
- 
+
     $("#display-log").submit( function(eventObj) {
          //We have to stop the load page processing until ajax request are done:
          eventObj.preventDefault();
         
     
         // Add for each curve selected
+        var val="";
+        var val_power="";
+        var val_sensor="";
         $("#select_curve input[type=checkbox]").each(function() {
-
             id=$(this).attr('id');
             var cheBu = $("#"+id);
 
             // If checked
             if (cheBu.attr("checked") == "checked") {
-            
-                if (cheBu.attr("datatype") == "power") {
-                    $('<input />').attr('type', 'hidden')
-                        .attr('name', "select_power[]")
-                        .attr('value', cheBu.attr("plug"))
-                        .appendTo('#display-log');
-                }
-                
                 if (cheBu.attr("datatype") == "program") {
-                    $('<input />').attr('type', 'hidden')
-                        .attr('name', "select_program[]")
-                        .attr('value', cheBu.attr("plug"))
-                        .appendTo('#display-log');
+                    if(val=="") {
+                        val=cheBu.attr("plug");
+                    } else {
+                        val=val+","+cheBu.attr("plug");
+                    }
                 }
 
-            }
 
-            
+
+                if (cheBu.attr("datatype") == "power") {
+                    if(val_power=="") {
+                        val_power=cheBu.attr("plug");
+                    } else {
+                        val_power=val_power+","+cheBu.attr("plug");
+                    }
+                } 
+            }
         });
+
+
+        $("#label_select_type input[type=checkbox]").each(function() {
+            id=$(this).attr('id');
+            var cheBu = $("#"+id);
+
+            // If checked
+            if (cheBu.attr("checked") == "checked") {
+                if (cheBu.attr("datatype") == "logs") {
+                    if(val_sensor=="") {
+                        val_sensor=cheBu.attr("sensor");
+                    } else {
+                        val_sensor=val_sensor+","+cheBu.attr("sensor");
+                    }
+                }
+            }
+        });
+
+        if(val_sensor=="") val_sensor="1";
+
+        $("input[name='select_program']").val(val);
+        $("input[name='select_power']").val(val_power);
+        $("input[name='select_sensor'][type='hidden']").val(val_sensor);
+        
                 
             
-       if($("input:radio[name=type_select]:checked").val()=="day") {
+       if($("input:radio[name=type]:checked").val()=="day") {
             $.ajax({
                 cache: false,
                 url: "main/modules/external/check_value.php",

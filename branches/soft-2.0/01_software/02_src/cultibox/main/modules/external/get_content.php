@@ -14,11 +14,13 @@ if((isset($_GET['page']))&&(!empty($_GET['page']))) {
         $get_array=json_decode($_GET['get_array'],true);
         foreach(array_keys($get_array) as $get) {
             ${$get}=$get_array[$get];
+        
+            echo $get."-----".$get_array[$get]."<br />";
         }
     }
 
-
     ob_start();
+    include $GLOBALS['BASE_PATH'].'main/templates/popup.html';
     include $GLOBALS['BASE_PATH'].'main/scripts/'.$page.'.php';
 
     include $GLOBALS['BASE_PATH'].'main/scripts/post_script.php';
