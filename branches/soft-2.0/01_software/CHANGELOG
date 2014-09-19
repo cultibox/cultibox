@@ -6,6 +6,8 @@ Cultibox (2.0.02) precise; urgency=low
     + Correction de la detection des fichiers XML du calendrier
     + Correction de l'affichage des évènements XML externes
     + Procédure de suppréssion des requêttes AJAX en cours
+    + Suppréssion de la couleur du graphe coût
+    + Passage de la fréquence de changement des prises à 1 seconde par défaut
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon Sep 16  08:49:17 CEST 2014
 
