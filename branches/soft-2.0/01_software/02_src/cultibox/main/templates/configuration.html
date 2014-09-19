@@ -86,29 +86,6 @@
             </td>
             <td></td>
         </tr>
-        <tr>
-            <td class="conf-marge"></td>
-            <td>
-                <?php echo __('CONFIGURE_COST_COLOR'); ?>:
-            </td>
-            <td>
-                <select name="color_cost_graph" id="color_cost_graph">
-                <?php 
-                    foreach($GLOBALS['LIST_GRAPHIC_COLOR'] as $value) {
-                        $color_lang = "COLOR_" . strtoupper($value);
-                        if($value == $color_cost) {
-                            echo "<option value=\"" . $value . "\" selected >" . __($color_lang) . "</option>";
-                        } 
-                        else
-                        {
-                            echo "<option value=\"" . $value . "\" >" . __($color_lang) . "</option>";
-                        }
-                    }
-                ?>
-                </select>
-            </td>
-            <td></td>
-        </tr>
     </table>
 </div>
 <!-- End of Interface tab -->
@@ -184,11 +161,7 @@
        <select name="update_plugs_frequency" id="update_plugs_frequency">
           <?php
           foreach($GLOBALS['LIST_UPDATE_FREQUENCY'] as $value) {
-             if(strcmp ("$value","-1")==0) { 
-                $val=__('ALWAYS_RECORD');
-             } else {
-                $val=$value;
-             }
+             $val=$value;
              if(!strcmp ("$value","$update_frequency")) {
                 echo "<option value=\"${value}\" selected>${val}</option>";
              } else {

@@ -91,9 +91,6 @@ msgstr "Wifi"
 msgid "CONFIGURE_WIFI_IP"
 msgstr "Indirizzo del modulo WiFi"
 
-msgid "ALWAYS_RECORD"
-msgstr "Sempre"
-
 msgid "CONFIGURE_HUMIDITY"
 msgstr "Curve di umidità Colore"
 
@@ -117,9 +114,6 @@ msgstr "Curve OD Colore"
 
 msgid "CONFIGURE_ORP"
 msgstr "Curve di colore ORP"
-
-msgid "CONFIGURE_COST_COLOR"
-msgstr "Colore costi di installazione grafico"
 
 msgid "CONFIGURE_FREQUENCY"
 msgstr "Frequenza di registrazione del clima (in minuti)"

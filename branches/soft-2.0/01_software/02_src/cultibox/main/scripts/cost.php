@@ -43,12 +43,14 @@ if(!isset($select_plug)) {
     $select_plug=getvar('select_plug');
 }
 
+if(!isset($submit_cost)) {
+    $submit_cost=getvar("submit_cost");
+}
+
 
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $price=get_configuration("COST_PRICE",$main_error);
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
-$select_plug=getvar('select_plug');
-$submit=getvar("submit_cost");
 $resume="";
 $lang=$_COOKIE['LANG'];
 
@@ -161,7 +163,7 @@ if((strcmp($select_plug,"all")!=0)&&(strcmp($select_plug,"distinct_all")!=0)) {
 
 //Computing cost value:
 if(strcmp($select_plug,"distinct_all")!=0) {
-    if((isset($submit))&&(!empty($submit))) {
+    if((isset($submit_cost))&&(!empty($submit_cost))) {
         $theorical_power="0";
         $real_power="0";
     } else {
@@ -183,7 +185,7 @@ if(strcmp($select_plug,"distinct_all")!=0) {
 
     if(strcmp($select_plug,"all")==0) {
         $title=__('PRICE_SELECT_ALL_PLUG');
-        $color_cost = get_configuration("COLOR_COST_GRAPH",$main_error);
+        $color_cost = "purple";
     } else {
         $title=$plugs_infos[$select_plug-1]['PLUG_NAME'];
         $color_cost=$GLOBALS['LIST_GRAPHIC_COLOR_PROGRAM'][$select_plug-1];
@@ -200,7 +202,7 @@ if(strcmp($select_plug,"distinct_all")!=0) {
 } else {
     $nb=get_nb_days($startday,$endday)+1;
     for($plugs=1;$plugs<=$nb_plugs;$plugs++) { 
-        if((isset($submit))&&(!empty($submit))) {
+        if((isset($submit_cost))&&(!empty($submit_cost))) {
             $theorical_power="0";
             $real_power="0";
         } else {

@@ -9,7 +9,7 @@
 ?>
 
 
-submit_cost = <?php echo json_encode($submit) ?>;
+submit_cost = <?php echo json_encode($submit_cost) ?>;
 nb_plugs = <?php echo json_encode($nb_plugs) ?>;
 default_cost=<?php echo json_encode($cost_price) ?>;
 default_cost_hp=<?php echo json_encode($cost_price_hp) ?>;
