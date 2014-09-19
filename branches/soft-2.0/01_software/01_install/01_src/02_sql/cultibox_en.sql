@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 
 
 INSERT INTO `configuration` (`id`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_WATER_GRAPH`, `COLOR_LEVEL_GRAPH`, `COLOR_PH_GRAPH`, `COLOR_EC_GRAPH`, `COLOR_OD_GRAPH`, `COLOR_ORP_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `ALARM_ACTIV`, `ALARM_VALUE`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `STATISTICS`,`SECOND_REGUL`,`ADVANCED_REGUL_OPTIONS`,`SHOW_COST`,`RESET_MINMAX`, `WIFI`, `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD`, `WIFI_IP`, `WIFI_IP_MANUAL`, `RTC_OFFSET`) VALUES
-(1, '1.4.10-noarch', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 'black', 'purple', 5, 1, 3, -1, '0000', '15', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 'False', 0, '00:00',0,'','NONE','','000.000.000.000',0,0);
+(1, '1.1.28', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 'black', 'purple', 5, 1, 3, -1, '0000', '15', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 'False', 0, '00:00',0,'','NONE','','000.000.000.000',0,0);
 
 -- --------------------------------------------------------
 
