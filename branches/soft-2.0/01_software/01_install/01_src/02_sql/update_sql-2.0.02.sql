@@ -1,0 +1,5 @@
+SET CHARACTER SET utf8;
+
+-- Version 2.0.02:
+ALTER TABLE `cultibox`.`configuration` DROP COLUMN `COLOR_COST_GRAPH`;
+UPDATE `cultibox`.`configuration` SET `UPDATE_PLUGS_FREQUENCY`=1 WHERE `UPDATE_PLUGS_FREQUENCY`=-1;
