@@ -20,7 +20,6 @@ function check_db() {
     $conf_index_col["COLOR_OD_GRAPH"]       = array ( 'Field' => "COLOR_OD_GRAPH", 'Type' => "varchar(30)", 'default_value' => "red");
     $conf_index_col["COLOR_ORP_GRAPH"]      = array ( 'Field' => "COLOR_ORP_GRAPH", 'Type' => "varchar(30)", 'default_value' => "blue");
     $conf_index_col["COLOR_POWER_GRAPH"]    = array ( 'Field' => "COLOR_POWER_GRAPH", 'Type' => "varchar(30)", 'default_value' => "black");
-    $conf_index_col["COLOR_COST_GRAPH"]     = array ( 'Field' => "COLOR_COST_GRAPH", 'Type' => "varchar(30)", 'default_value' => "purple");
     $conf_index_col["RECORD_FREQUENCY"]     = array ( 'Field' => "RECORD_FREQUENCY", 'Type' => "int(11)", 'default_value' => 5);
     $conf_index_col["POWER_FREQUENCY"]      = array ( 'Field' => "POWER_FREQUENCY", 'Type' => "int(11)", 'default_value' => 5);
     $conf_index_col["NB_PLUGS"]             = array ( 'Field' => "NB_PLUGS", 'Type' => "int(11)", 'default_value' => 3);

@@ -11,34 +11,58 @@ $version=get_configuration("VERSION",$main_error);
 
 // ================= VARIABLES ================= //
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
-$selected_plug=getvar('selected_plug');
+
+if(!isset($selected_plug)) {
+    $selected_plug=getvar('selected_plug');
+}
 
 if((empty($selected_plug))||(!isset($selected_plug))) {
     $selected_plug=1;
 }
 
-$import=getvar('import');
-$export=getvar('export');
-$reset=getvar('reset');
-$action_prog=getvar('action_prog');
 $chinfo=true;
 $chtime="";
 $pop_up_message="";
 $pop_up_error_message="";
-$regul_program="";
 $resume=array();
-$apply=getvar('apply');
-$start_time=getvar("start_time");
-$end_time=getvar("end_time");
-$reset_program=getvar("reset_old_program");
-$regul_program=getvar("regul_program");
 $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error);
 
 
 //Valeur du radio bouton qui définit si le programme sera cyclic ou non:
-$cyclic=getvar("cyclic");
+if(!isset($cyclic)) {
+    $cyclic=getvar("cyclic");
+}
 
-$value_program       = getvar('value_program');
+if(!isset($apply)) {
+    $apply=getvar('apply');
+}
+
+if(!isset($action_prog)) {
+    $action_prog=getvar('action_prog');
+}
+
+if(!isset($reset_old_program)) {
+    $reset_old_program=getvar("reset_old_program");
+}
+
+if(!isset($value_program)) {
+    $value_program  = getvar('value_program');
+}
+
+if(!isset($regul_program)) {
+    $regul_program=getvar("regul_program");
+}
+
+if(!isset($start_time)) {
+    $start_time=getvar("start_time");
+}
+
+
+if(!isset($end_time)) {
+    $end_time=getvar("end_time");
+}
+    
+
 $reset_selected      = getvar("reset_selected_plug");
 $import_selected     = getvar("import_selected_plug");
 $export_selected     = getvar("export_selected_plug");
@@ -54,13 +78,19 @@ $end="";
 $rep="";
 $resume_regul=array();
 $tmp="";
-$submit=getvar("submit_progs",$main_error);
-$anchor=getvar('anchor');
+
+if(!isset($submit_progs)) {
+    $submit_progs=getvar("submit_progs",$main_error);
+}
+
 $type="0";
 $tmp_prog="";
 
 // Var used to choose programm to display and modify 
-$program_index_id = getvar("program_index_id");
+if(!isset($program_index_id)) {
+     $program_index_id = getvar("program_index_id");
+}
+
 if ($program_index_id == "")
     $program_index_id = 1;
 
@@ -106,10 +136,22 @@ if((!isset($import_selected)) || empty($import_selected)) {
 
 if(isset($cyclic)&&(!empty($cyclic))) {
     //Dans le cas d'un programme cyclique on récupère les champs correspondant:
-    $repeat_time=getvar("repeat_time"); //La fréquence de répétition
-    $start_time_cyclic=getvar('start_time_cyclic'); //L'heure de départ du programme
-    $end_time_cyclic=getvar('end_time_cyclic'); //L'heure de fin du programme
-    $cyclic_duration=getvar('cyclic_duration'); //La durée d'un cycle
+    if(!isset($repeat_time)) {
+        $repeat_time=getvar("repeat_time"); //La fréquence de répétition
+    }
+
+    if(!isset($start_time_cyclic)) {
+        $start_time_cyclic=getvar('start_time_cyclic'); //L'heure de départ du programme
+    }
+
+    if(!isset($end_time_cyclic)) {
+        $end_time_cyclic=getvar('end_time_cyclic'); //L'heure de fin du programme
+    }
+
+    if(!isset($cyclic_duration)) {
+        $cyclic_duration=getvar('cyclic_duration'); //La durée d'un cycle
+    }
+
     $cyclic_start=$start_time_cyclic;   //On sauvegarde les valeurs de départ et de fin qui vont être modifié dans le programme
     $final_cyclic_end=$end_time_cyclic; //pour l'affichage dans kes input text
 }
@@ -131,105 +173,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
 // Retrieve plug's informations from the database
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
-// Gestion des programmes: reset, import, export, reset_all:
-if((isset($export))&&(!empty($export))) {
-     //Pour l'export d'un programme, le fichier exporté est au format csv (séparé par des ',') et contient time_start,time_stop,value
-     //L'id n'est pas utilisée afin de pouvoir appliquer un programme sur plusieurs prises.
-
-     //Export du programme au format csv, création du fichier program_plugX.prg:
-     program\export_program($export_selected,$program_index,$main_error);
-     
-     $file="tmp/program_plug${export_selected}.prg";
-     if (($file != "") && (file_exists("./$file"))) {
-        //Si le programme exporté à bien été créé dans un fichier, on lance le téléchargement (fichier se trouvant dans le répertoire tmp de joomla)
-        $size = filesize("./$file");
-        header("Content-Type: application/force-download; name=\"$file\"");
-        header("Content-Transfer-Encoding: binary");
-        header("Content-Length: $size");
-        header("Content-Disposition: attachment; filename=\"".basename($file)."\"");
-        header("Expires: 0");
-        header("Cache-Control: no-cache, must-revalidate");
-        header("Pragma: no-cache");
-        readfile("./$file");    
-        exit();
-    }
-    
-} elseif((isset($reset))&&(!empty($reset))) {
-
-    // User want to reste the plug program
-    if($reset_selected == "all") {
-        $status=true;
-        for($i=1;$i<=$nb_plugs;$i++) {
-            if(!clean_program($i,$program_index,$main_error))
-                $status=false;
-        }
-        if($status) {
-            $pop_up_message=$pop_up_message.popup_message(__('INFO_RESET_PROGRAM'));
-            $main_info[]=__('INFO_RESET_PROGRAM');
-        } else {
-            $pop_up_message=$pop_up_message.popup_message(__('ERROR_RESET_PROGRAM'));
-            $main_info[]=__('ERROR_RESET_PROGRAM');
-        }
-        
-        // Need to rebuild 
-        $rebuildProgamFile = true;
-        
-        $reset_selected=1;
-        $export_selected=1;
-        $import_selected=1;
-        $selected_plug=1;
-    } else {
-        // Only one plug selected
-        if(clean_program($reset_selected,$program_index,$main_error)) {
-            $pop_up_message=$pop_up_message.popup_message(__('INFO_RESET_PROGRAM'));
-            $main_info[]=__('INFO_RESET_PROGRAM');
-        }
-        
-        // Need to rebuild 
-        $rebuildProgamFile = true;
-        
-        $export_selected=$reset_selected;
-        $import_selected=$reset_selected;
-        $selected_plug=$reset_selected;
-    }
-} elseif((isset($import))&&(!empty($import))) {
-    $target_path = "tmp/".basename($_FILES['upload_file']['name']); 
-    if(!move_uploaded_file($_FILES['upload_file']['tmp_name'], $target_path)) {
-        $main_error[]=__('ERROR_UPLOADED_FILE');
-        $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_UPLOADED_FILE'));
-    } else {
-        $chprog=true;
-        $data_prog=array();
-        $data_prog=generate_program_from_file("$target_path",$import_selected,$main_error);
-        if(count($data_prog)==0) { 
-            $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');
-            $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
-        } else {
-            clean_program($import_selected,$program_index,$main_error);
-            program\export_program($import_selected,$program_index,$main_error); 
-         
-            if(!insert_program($data_prog,$main_error,$program_index))
-                $chprog=false;
-
-            if(!$chprog) {
-                $main_error[]=__('ERROR_GENERATE_PROGRAM_FROM_FILE');        
-                $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_GENERATE_PROGRAM_FROM_FILE'));
-
-                $data_prog=generate_program_from_file("tmp/program_plug${import_selected}.prg",$import_selected,$main_error);
-                
-                if(!insert_program($data_prog,$main_error,$program_index))
-                    $chprog=false;
-            } else {
-                $main_info[]=__('VALID_IMPORT_PROGRAM');
-                $pop_up_message=$pop_up_message.popup_message(__('VALID_IMPORT_PROGRAM'));
-            }
-        }
-    }
-    $selected_plug=$import_selected;
-    $reset_selected=$import_selected;
-    $export_selected=$import_selected;
-} 
-
 // Add user information : He can use wizard
 $main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='/cultibox/index.php?menu=wizard' class='href-wizard-msgbox'><img src='main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
 
@@ -237,6 +180,7 @@ $main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='/cultibox/index.php?menu=w
 //Create a new program:
 if(!empty($apply) && isset($apply))
 { 
+
     //Vérification et mise en place de la value du programme en fonction du type de prise entre autre:
     if($regul_program == "on") {
         //Valeur de 99.9 pour un programme en marche forcé:
@@ -311,6 +255,7 @@ if(!empty($apply) && isset($apply))
 
         ///Pour vérifier si une erreur à eu lieu dans l'insertion du/des programmes: true -> pas d'erreur, false -> une erreur
         $ch_insert=true;
+
 
         //Dans le cas d'une action ponctuel on s'arrête la, dans le cas d'une action cyclique il faut calculer les cycles: 
         if( isset($cyclic) && !empty($cyclic)
@@ -471,9 +416,9 @@ if(!empty($apply) && isset($apply))
         }
 
         //If the reset checkbox is checked
-        if(isset($reset_program) && $reset_program == "Yes") {
+        if(isset($reset_old_program) && $reset_old_program == "Yes") {
             clean_program($selected_plug,$program_index,$main_error);
-            unset($reset_program);
+            unset($reset_old_program);
         } 
 
         $ch_insert=true;
@@ -555,7 +500,7 @@ if(count($tmp_resume)>0) {
 
 
 // If it's an submit entry, rebuild program
-if(isset($submit) && !empty($submit))
+if(isset($submit_progs) && !empty($submit_progs))
 {
     $rebuildProgamFile = true;
 }

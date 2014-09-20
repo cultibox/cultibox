@@ -901,6 +901,10 @@ msgstr "Retire el límite de 1.000 cambios"
 msgid "REMOVE_5_MINUTE_LIMIT_SELECT"
 msgstr "Retire el límite de 5 minutos"
 
+msgid "NO_PLUG_SELECTED"
+msgstr "No hay enchufes seleccionado"
+
+
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
 msgstr "Exportar el grafico"
@@ -1547,6 +1551,9 @@ msgstr "Error al eliminar un programa diario"
 
 msgid "ERROR_PROGRAM_SAME_NAME"
 msgstr "Programe el nombre ya está en uso por otra copia de seguridad."
+
+msgid "ERROR_PROGRAM_WRONG_NAME"
+msgstr "El nombre del programa debe tener entre 3 y 16 caracteres"
 
 
 # For the informations part:

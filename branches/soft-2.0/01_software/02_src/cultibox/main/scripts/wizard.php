@@ -10,7 +10,6 @@ $main_info=array();
 
 // ================= VARIABLES ================= //
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
-$close=getvar('close');
 $pop_up_message="";
 $pop_up_error_message="";
 $version=get_configuration("VERSION",$main_error);
@@ -30,7 +29,22 @@ if(!isset($type_submit)) {
     $type_submit=getvar('type_submit');
 }
 
+if(!isset($close)) {
+    $close=getvar('close');
+}
 
+if(!isset($step)) {
+    $step=getvar('step');
+}
+
+
+if(!isset($next)) {
+    $next=getvar('next');
+}
+
+if(!isset($previous)) {
+    $previous=getvar('previous');
+}
 
 
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');
@@ -54,9 +68,6 @@ if((empty($selected_plug))||(!isset($selected_plug))) {
 }
 
 $chtime="";
-$step=getvar('step');
-$next=getvar('next');
-$previous=getvar('previous');
 $start_time="06:00:00";
 $end_time="18:00:00";
 

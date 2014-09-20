@@ -3,7 +3,6 @@
 </script>
 
 
-<label id="anchor-programs"></label>
 <br />
 <!-- Head title befor program showing -->
 <label class="title_conf">
@@ -69,23 +68,6 @@
 
         </select>
     </p>
-
-
-<?php 
-    if((isset($pop_up))&&("$pop_up"!="False")) {
-        if((isset($anchor))&&(!empty($anchor))) {
-            echo '<script>anchor = ' . json_encode($anchor) . ';</script>';
-        }
-    } else {
-        if((isset($anchor))&&(!empty($anchor))) { ?>
-        <script>
-            $(document).ready(function(){
-                $.scrollTo('#<?php echo $anchor; ?>',300); 
-            });
-        </script>
-    <?php }
-    } 
-?>
 
     <table class="table_width">
         <tr>
@@ -237,7 +219,6 @@
     </table>
     <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
     <input type="hidden" name="submit_progs" value="submit_progs">
-    <input type="hidden" name="anchor" value="anchor-programs">
 </form>
 
 <div id="same_dialog_program" title="<?php echo __('CONFIRMATION'); ?>" style="display:none">
@@ -249,7 +230,7 @@
         <td>
             <form method="post" id="jumpplug" action="/cultibox/index.php?menu=plugs" name="jumpplug">
                 <input name="submenu" id="submenu" type="hidden" value="<?php echo $selected_plug; ?>">
-                <button class="jumpto" name="jump" onclick='document.forms["jumpplug"].submit();'><?php echo __('JUMPTO_PLUG'); ?></button>
+                <button class="jumpto" id="jumpto" name="jump" onclick='document.forms["jumpplug"].submit();'><?php echo __('JUMPTO_PLUG'); ?></button>
             </form>
         </td>
     </tr>
@@ -296,24 +277,11 @@
                 <?php echo __('TITLE_RESET_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_RESET_PROGRAM'); ?>" />
             </td>
             <td>
-                <form action="/cultibox/index.php?menu=programs" method="post">
-                    <select name="reset_selected_plug" id="reset_selected_plug">
-                    <?php 
-                        for($i=1;$i<=$nb_plugs;$i++) {
-                            if("$i"=="$reset_selected") {
-                                echo "<option value=\"${i}\" selected>${i}</option>";
-                            } else {
-                                echo "<option value=\"${i}\">${i}</option>";
-                            }
-                        } 
-                    ?>
-                        <option value="all"><?php echo __('RESET_ALL_PROGRAM'); ?></option>
-                    </select>
-                    <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
-                    <input type="hidden" name="selected_plug" value="<?php echo $selected_plug; ?>">
-                    <input type="hidden" name="action_prog" value="action_prog">
-                    <input type="hidden" name="reset" value="reset">
-                    <input type="submit" value="<?php echo __('RESET_PROGRAM'); ?>" name="reset_submit">
+                <form action="/cultibox/index.php?menu=programs" method="post" name="reset_program_form" id="reset_program_form">
+                    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
+                        <input type="checkbox" name="reset_selected_plug" value="<?php echo $i; ?>" id="reset_selected_plug<?php echo $i; ?>"><?php echo $i; ?>
+                    <?php } ?>
+                    <input type="submit" value="<?php echo __('NO_PLUG_SELECTED'); ?>" name="reset_submit" id="reset_submit" class="inputDisable" disabled>
                 </form>
             </td>
         </tr>  
@@ -372,7 +340,7 @@
                 <?php echo __('PROGRAM_DAILY_OPEN_SELECT'); ?>
             </td>
             <td>
-                <form action="/cultibox/index.php?menu=programs" method="post" enctype="multipart/form-data">
+                <form action="/cultibox/index.php?menu=programs" method="post" enctype="multipart/form-data" id="daily_open_form" name="daily_open_form">
                     <select name="program_index_id" id="program_index_id_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
                         <?php
                             $array = array();
@@ -468,4 +436,9 @@
 <!-- Modal form to alert user for adding a program with an already existing name -->
 <div id="dialog-form-add-daily-error" style="display:none">
 <p><?php echo __('ERROR_PROGRAM_SAME_NAME'); ?></p>
+</div>
+
+<!-- Modal form to alert user for adding a program with a wrong format name -->
+<div id="dialog-form-add-daily-format-error" style="display:none">
+<p><?php echo __('ERROR_PROGRAM_WRONG_NAME'); ?></p>
 </div>

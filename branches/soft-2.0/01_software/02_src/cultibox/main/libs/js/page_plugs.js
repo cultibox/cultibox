@@ -27,6 +27,11 @@ $(document).ready(function(){
         });
     }
 
+    $("#wizard").click(function(e) {
+        e.preventDefault();
+        get_content("wizard",getUrlVars("selected_plug=1"));
+    });
+
      $('select[id^="plug_sensor"]').change(function () {
         //Récupération du numéro de la prise en cours d'édition. L'information est contenue dans l'id de l'élément, on découpe donc l'id pour récupérer l'information
         var plug = $(this).attr('id').substring(11,12);

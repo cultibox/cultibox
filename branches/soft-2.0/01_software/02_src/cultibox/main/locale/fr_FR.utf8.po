@@ -827,7 +827,7 @@ msgid "TITLE_IMPORT_PROGRAM"
 msgstr "Importer un programme pour la prise"
 
 msgid "TITLE_RESET_PROGRAM"
-msgstr "Effacer le programme de la prise"
+msgstr "Effacer le programme pour la prise"
 
 msgid "RESET_ALL_PROGRAM"
 msgstr "de toutes les prises"
@@ -900,6 +900,10 @@ msgstr "Supprimer la limite de 1000 changements"
 
 msgid "REMOVE_5_MINUTE_LIMIT_SELECT"
 msgstr "Supprimer la limite de 5 minutes"
+
+msgid "NO_PLUG_SELECTED"
+msgstr "Aucune prise sélectionnée"
+
 
 # For the export module highchart part :
 msgid "CONTEXT_MENU"
@@ -1547,6 +1551,9 @@ msgstr "Erreur lors de la suppréssion d'un programme journalier"
 
 msgid "ERROR_PROGRAM_SAME_NAME"
 msgstr "Ce nom de programme est déja utilisé pour une autre sauvegarde."
+
+msgid "ERROR_PROGRAM_WRONG_NAME"
+msgstr "Le nom du programme doit contenir entre 3 et 16 caractères"
 
 
 # For the informations part:

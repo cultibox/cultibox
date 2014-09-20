@@ -31,6 +31,11 @@ $(document).ready(function(){
         });
     }
 
+    $("#classic").click(function(e) {
+        e.preventDefault();
+        get_content("programs",getUrlVars("selected_plug=1"));
+    });
+
 $('#start_time').timepicker({
     <?php echo "timeOnlyTitle: '".__('TIMEPICKER_SELECT_TIME')."',"; ?>
     showSecond: true,

@@ -901,6 +901,10 @@ msgstr "Rimuovere il limite di 1000 modifiche"
 msgid "REMOVE_5_MINUTE_LIMIT_SELECT"
 msgstr "Rimuovere il limite di 5 minuti"
 
+msgid "NO_PLUG_SELECTED"
+msgstr "Nessun supporto selezionato"
+
+
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
 msgstr "Esportare il grafico"
@@ -1547,6 +1551,9 @@ msgstr "Errore durante l'eliminazione di un programma giornaliero"
 
 msgid "ERROR_PROGRAM_SAME_NAME"
 msgstr "Nome programmi è già utilizzato per un altro backup."
+
+msgid "ERROR_PROGRAM_WRONG_NAME"
+msgstr "Il nome del programma deve essere compresa tra 3 e 16 caratteri"
 
 
 # For the informations part:

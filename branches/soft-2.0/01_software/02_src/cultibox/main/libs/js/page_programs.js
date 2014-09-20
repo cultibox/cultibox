@@ -31,6 +31,65 @@ $(document).ready(function(){
         });
     }
 
+    $("#wizard").click(function(e) {
+        e.preventDefault();
+        get_content("wizard",getUrlVars("selected_plug=1"));
+    });
+
+    $("#daily_open_button").click(function(e) {
+        e.preventDefault();
+        get_content("programs",getFormInputs('daily_open_form'));
+    });
+
+    $("#jumpto").click(function(e) {
+        e.preventDefault();
+        get_content("plugs",getUrlVars("selected_plug="+$("#selected_plug option:selected").val()));
+    });
+
+     $("#reset_submit").click(function(e) {
+        e.preventDefault();
+
+        var prog_reset="";
+        var prog="";
+        $("#reset_program_form input:checkbox:checked").each(function() {
+            if(prog_reset=="") {
+                prog_reset=$(this).val();
+                prog=$(this).val();
+            } else {
+                prog_reset=prog_reset+","+$(this).val();
+            }
+        });
+
+        if(prog_reset!="") {
+            $.ajax({
+                cache: false,
+                async: false,
+                url: "main/modules/external/manage_reset_prog.php",
+                data: {value:prog_reset}
+            }).done(function (data) {
+                get_content("programs",getUrlVars("selected_plug="+prog));
+           });
+        }
+     });
+
+
+     $('input[id^="reset_selected_plug"]').change(function() {
+            var check=false;
+            $("#reset_program_form input:checkbox:checked").each(function() {
+                check=true;
+            });
+
+            if(!check) {
+                $("#reset_submit").addClass("inputDisable");
+                $("#reset_submit").val("<?php echo __('NO_PLUG_SELECTED','jquery'); ?>");
+                $("#reset_submit").prop('disabled', true);
+            } else {
+                $("#reset_submit").removeClass("inputDisable");
+                $("#reset_submit").val("<?php echo __('RESET_PROGRAM','jquery'); ?>");
+                $("#reset_submit").prop('disabled', false);
+            }
+        });
+
 
     // Check errors for the programs part:
     $("#apply").click(function(e) {
@@ -322,13 +381,15 @@ $(document).ready(function(){
         }
     }
 
-    $( "#dialog-form-save-daily" ).dialog({
+    $("#dialog-form-save-daily" ).dialog({
         autoOpen: false,
+        closeOnescape: false,
         height: 180,
-        width: 400,
+        width: 600,
         modal: true,
-        buttons: {
-        "Enregistrer": function() {
+        buttons: [{
+          text: SAVE_button,
+          click: function () {
             var bValid = true;
             program_name.removeClass( "ui-state-error" );
             bValid = bValid && checkLength( program_name, "program_name", 3, 16 );
@@ -410,20 +471,35 @@ $(document).ready(function(){
                         $('#program_name').val("");
                     }
                 });
+            } else {
+                 $("#dialog-form-add-daily-format-error").dialog({
+                      resizable: false,
+                      closeOnEscape: true,
+                      dialogClass: "popup_error",
+                      modal: true,
+                      buttons: [{
+                          text: CLOSE_button,
+                          "id": "btnClose",
+                          click: function () {
+                               $( this ).dialog( "close" ); return false;
+                          }
+                      }]
+                 });
+                 program_name.val( "" ).removeClass( "ui-state-error" );
             }
-        },
-        "Quitter": function() {
-            $( this ).dialog( "close" );
-        }},
+        }},{
+        text: CLOSE_button,
+        click: function () {
+		    $( this ).dialog( "close" );
+	    }
+        }],
         close: function() {
             program_name.val( "" ).removeClass( "ui-state-error" );
         }
     });
 
-    $( "#daily_save_button" )
-        .button()
-        .click(function() {
-        $( "#dialog-form-save-daily" ).dialog( "open" );
+    $("#daily_save_button").button().click(function() {
+        $("#dialog-form-save-daily").dialog('open');
     });
 
     //Ajax to add a plus:
@@ -434,8 +510,9 @@ $(document).ready(function(){
             async: false,
             url: "main/modules/external/manage_nb_plugs.php",
             data: {type:"add",nb_plugs:<?php echo $nb_plugs; ?>}
-        }).done(function () {
-            window.location = "index.php?menu=programs&selected_plug=<?php echo $nb_plugs+1; ?>";
+        }).done(function () {   
+            get_content("programs",getUrlVars("selected_plug="+<?php echo $nb_plugs+1; ?>));
+
         });
     });
 
@@ -448,7 +525,7 @@ $(document).ready(function(){
             url: "main/modules/external/manage_nb_plugs.php",
             data: {type:"remove",nb_plugs:<?php echo $nb_plugs; ?>}
         }).done(function() {
-            window.location = "index.php?menu=programs&selected_plug=<?php echo $nb_plugs-1; ?>";
+            get_content("programs",getUrlVars("selected_plug="+<?php echo $nb_plugs-1; ?>));
         });
     });
 });
@@ -964,7 +1041,7 @@ $(document).ready(function() {
             $.ajax({
                 type: "GET",
                 cache: false,
-                url: "../../main/modules/external/update_configuration.php",
+                url: "main/modules/external/update_configuration.php",
                 data: {
                         value:newValue,
                         variable:varToUpdate,

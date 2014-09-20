@@ -901,6 +901,10 @@ msgstr "Remove the limit of 1000 changes"
 msgid "REMOVE_5_MINUTE_LIMIT_SELECT"
 msgstr "Remove the limit of 5 minutes"
 
+msgid "NO_PLUG_SELECTED"
+msgstr "No plugs selected"
+
+
 # For the export module highchart part:
 msgid "CONTEXT_MENU"
 msgstr "Export your graph"
@@ -1547,6 +1551,9 @@ msgstr "Error Deleting a daily program"
 
 msgid "ERROR_PROGRAM_SAME_NAME"
 msgstr "Programe name is already used for another backup."
+
+msgid "ERROR_PROGRAM_WRONG_NAME"
+msgstr "The program name must be between 3 and 16 characters"
 
 
 # For the informations part:

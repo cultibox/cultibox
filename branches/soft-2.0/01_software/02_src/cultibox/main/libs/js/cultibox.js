@@ -153,13 +153,6 @@ getFormInputs = function(form) {
         values[field.name] = field.value;
     });
 
-    /*$("#"+form+" input[type=checkbox]").each(function() {  
-        var name = this.name;
-        name_map[name] = (name_map[name]) ? name : name;
-    }).each(function() {  
-        alert(name_map[this.name]);
-    });*/
-
     return values;
 }
 
