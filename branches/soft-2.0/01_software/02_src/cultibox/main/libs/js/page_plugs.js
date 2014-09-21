@@ -1,5 +1,4 @@
 <script>
-
 <?php
     if((isset($sd_card))&&(!empty($sd_card))) {
         echo "sd_card = " . json_encode($sd_card) ;
@@ -11,14 +10,10 @@
 
 sensors        = <?php echo json_encode($GLOBALS['NB_MAX_SENSOR_PLUG']) ?>;
 nb_plugs       = <?php echo json_encode($nb_plugs) ?>;
-title_msgbox   = <?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 plugs_infoJS   = <?php echo json_encode($plugs_infos); ?>;
-update_program = <?php echo json_encode($update_program); ?>;
-jumpto         = <?php echo json_encode($jumpto); ?>;
-
 
 $(document).ready(function(){
-      if(sd_card=="") {
+    if(sd_card=="") {
         $.ajax({
             cache: false,
             async: false,
@@ -82,30 +77,6 @@ $(document).ready(function(){
     });
 
 
-    if(update_program) {
-         $("#valid_update_program").dialog({
-                resizable: false,
-                height:200,
-                width: 500,
-                closeOnEscape: false,
-                modal: true,
-                dialogClass: "popup_message",
-                hide: "fold",
-                buttons: [
-                    {
-                    text: CLOSE_button,
-                        click: function () {
-                            $( this ).dialog( "close" ); 
-                            if(jumpto!="") {
-                                window.location = "?menu=programs&selected_plug="+jumpto;
-                            }
-                            return false;
-                    }
-                }]
-            });
-    } 
-
-
     //Disable previous selected dimmer canal:
     $("select[name*='dimmer_canal']").focus(function () {
         previous_canal = $(this).attr('value');
@@ -167,20 +138,14 @@ $(document).ready(function(){
 
 
 
-    // Check errors for the plugs part:
-    $("#reccord_plugs").click(function(e) {
-        selected_plug=$("#selected_plug").val();
-        if(selected_plug!="all") { 
-            nb_plugs=selected_plug;
-        } else {
-            selected_plug=1;
-        }
-
+    // Check errors for the plugs part on submit:
+    $("#reccord_plugs, [id^='jumpto']").click(function(e) { 
+        var button_click=$(this).attr('id');
         e.preventDefault();
         var checked=true;
-        var anchor="";
 
-        for(i=selected_plug;i<=nb_plugs;i++) {
+        for(i=1;i<=nb_plugs;i++) {
+            var checked=true;
             $("#error_power_value"+i).css("display","none");
             $("#error_tolerance_value_humi"+i).css("display","none");
             $("#error_tolerance_value_temp"+i).css("display","none");
@@ -277,151 +242,83 @@ $(document).ready(function(){
                         }
                     }
 
-                	
-                    if((!checked)&&(anchor=="")) {
-                        anchor="anchor"+i;
-                    }
                 }
             }
 
         if(checked) {
-            get_content("plugs",getFormInputs('plugForm'));
-        } else if(anchor!="") {
-           $.scrollTo("#"+anchor,300); 
+                var check_update=true;
+                // block user interface during saving;
+                $.blockUI({ message: '', onBlock: function() {
+                    for(i=1;i<=nb_plugs;i++) {    
+                        var data_array = {};
+                        $("#state_plug"+i+" :input").each(function() {
+                            data_array[$(this).attr('name')]=$(this).val();
+                        }); 
+
+                        data_array['number']=i;
+
+                        $.ajax({
+                            cache: false,
+                            async: false,
+                            url: "main/modules/external/save_plugs_configuration.php",
+                            data: data_array
+                        }).done(function(data) {
+                            try {
+                                if(jQuery.parseJSON(data)!="1") check_update=false;
+                            } catch(err) {
+                                check_update=false;
+                            }
+                        });
+                     }         
+
+                     $.unblockUI();
+
+
+                      if(check_update) {
+                        $("#update_conf").dialog({
+                            resizable: false,
+                            height:150,
+                            width: 500,
+                            closeOnEscape: false,
+                            modal: true,
+                            hide: "fold",
+                            dialogClass: "popup_message",
+                            buttons: [{
+                                text: CLOSE_button,
+                                click: function () {
+                                    $( this ).dialog( "close" );
+                                    if(button_click.toLowerCase().indexOf("jumpto") >= 0) {
+                                        get_content("programs",getUrlVars("selected_plug=1"));
+                                    }
+                                }  
+                                }]
+                            });
+                     } else  {
+                        $("#error_update_conf").dialog({
+                            resizable: false,
+                            height:150,
+                            width: 500,
+                            closeOnEscape: false,
+                            modal: true,
+                            dialogClass: "popup_error",
+                            hide: "fold",
+                            buttons: [{
+                                text: CLOSE_button,
+                                click: function () {
+                                    $( this ).dialog( "close" );
+                                    get_content("plugs",getUrlVars("selected_plug=1"));
+                                }
+                            }]
+                        });
+                    }
+                 }
+            });
         }
     });
-
 
     $('[id^="jump_wizard"]').click(function(e) {
             e.preventDefault();
-            window.location = "?menu=wizard&selected_plug="+$(this).attr("id").replace("jump_wizard","");
-    });
-
-
-    $('[id^="jumpto"]').click(function(e) {
-             selected_plug=$("#selected_plug").val();
-        if(selected_plug!="all") {
-            nb_plugs=selected_plug;
-        } else {
-            selected_plug=1;
-        }
-
-        e.preventDefault();
-        var checked=true;
-        var anchor="";
-
-        for(i=selected_plug;i<=nb_plugs;i++) {
-            $("#error_power_value"+i).css("display","none");
-            $("#error_tolerance_value_humi"+i).css("display","none");
-            $("#error_tolerance_value_temp"+i).css("display","none");
-            $("#error_second_tolerance_value_humi"+i).css("display","none");
-            $("#error_second_tolerance_value_temp"+i).css("display","none");
-            $("#error_regul_value"+i).css("display","none");
-
-                if($("#power_value"+i).val()) {
-                    //Check power value:
-                    $.ajax({
-                        cache: false,
-                        async: false,
-                        url: "main/modules/external/check_value.php",
-                            data: {value:$("#power_value"+i).val(),type:'numeric'}
-                        }).done(function(data) {
-                            if(data!=1) {
-                                $("#error_power_value"+i).show(700);
-                                checked=false;
-                            }
-                    });
-                }
-
-
-                //Check tolerance value
-                if(($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")||($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="pump")) {
-                    if(($("#plug_tolerance"+i).val()=="0")||($("#plug_tolerance"+i).val()=="")) {
-                       $("#plug_tolerance"+i).val('0');
-                    } else {
-                        $.ajax({
-                        cache: false,
-                        async: false,
-                        url: "main/modules/external/check_value.php",
-                            data: {value:$("#plug_tolerance"+i).val(),type:'tolerance',plug: $("#plug_type"+i).val()}
-                        }).done(function(data) {
-                            if(data!=1) {
-                                if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
-                                    $("#error_tolerance_value_humi"+i).show(700);
-                                }
-
-                                if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")) {
-                                    $("#error_tolerance_value_temp"+i).show(700);
-                                }
-
-                                if($("#plug_type"+i).val()=="pump") {
-                                    $("#error_tolerance_value_water"+i).show(700);
-                                }
-                                checked=false;
-                            }
-                        });
-                    }
-
-
-                      //Check the second regul values:
-                    if($("#plug_regul"+i).val()=="True") {
-                        if(($("#plug_second_tolerance"+i).val()=="0")||($("#plug_second_tolerance"+i).val()=="")) {
-                            $("#plug_second_tolerance"+i).val('0');
-                        } else {
-                            $.ajax({
-                            cache: false,
-                            async: false,
-                            url: "main/modules/external/check_value.php",
-                            data: {value:$("#plug_second_tolerance"+i).val(),type:'tolerance',plug: $("#plug_type"+i).val()}
-                            }).done(function(data) {
-                                if(data!=1) {
-                                    if(($("#plug_type"+i).val()=="humidifier")||($("#plug_type"+i).val()=="dehumidifier")) {
-                                        $("#error_second_tolerance_value_temp"+i).show(700);
-                                    }
-
-                                    if(($("#plug_type"+i).val()=="ventilator")||($("#plug_type"+i).val()=="heating")||($("#plug_type"+i).val()=="pump")) {
-                                        $("#error_second_tolerance_value_humi"+i).show(700);
-                                    }
-                                    checked=false;
-                                }
-                            });
-                        }
-
-
-                         if(($("#plug_regul_value"+i).val()=="0")||($("#plug_regul_value"+i).val()=="")) {
-                            $("#error_regul_value"+i).show(700);
-                            checked=false;
-                        } else {
-                            $.ajax({
-                            cache: false,
-                            async: false,
-                            url: "main/modules/external/check_value.php",
-                            data: {value:$("#plug_regul_value"+i).val(),type:'regulation'}
-                            }).done(function(data) {
-                                if(data!=1) {
-                                    $("#error_regul_value"+i).show(700);
-                                    checked=false;
-                                }
-                            });
-                        }
-
-                    }
-
-                if((!checked)&&(anchor=="")) {
-                    anchor="anchor"+i;
-                }
-            }
-        }
-
-        if(checked) {
-            get_content("plugs",getFormInputs('plugForm'));
-        } else if(anchor!="") {
-           $.scrollTo("#"+anchor,300);
-        }
+            get_content("wizard",getUrlVars("selected_plug="+$(this).attr("id").replace("jump_wizard","")));
     });
 });
-
-
-
-
 </script>

@@ -7,7 +7,6 @@
 </script>
 
 
-<br />
 <form action="/cultibox/index.php?menu=plugs" method="post" name="plugForm" id="plugForm">
 <input type="hidden" id="submenu" name="submenu" value="<?php echo $submenu; ?>" />
 <p class="title_conf"><?php echo __('PLUG'); ?></p>
@@ -36,7 +35,6 @@
 <hr />
 <br />
    <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
-    <label id="anchor<?php echo $i; ?>"></label>
    <div id="div_selected_plug<?php echo $i; ?>" style="<?php if($submenu!=$i) echo 'display:none'; ?>">
 <br />
 <div id="state_plug<?php echo $i; ?>">
@@ -303,8 +301,13 @@
     <?php echo __('CONFIRMATION_CHANGEMENT_TYPE_PLUG'); ?>
 </div>
 
-<div id="valid_update_program" style="display:none" title="">
-    <?php echo __('VALID_UPDATE_CONF'); ?>
+<div class="popup_message" id="update_conf" title="" style="display:none">
+    <p><?php echo __('VALID_UPDATE_CONF'); ?></p>
+</div>
+
+
+<div class="popup_error" id="error_update_conf" title="" style="display:none">
+    <p><?php echo __('ERROR_UPDATE_CONF'); ?></p>
 </div>
 
 <script>expand_plug("<?php echo $submenu.','.$nb_plugs; ?>");</script>

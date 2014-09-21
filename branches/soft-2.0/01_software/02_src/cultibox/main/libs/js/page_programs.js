@@ -293,7 +293,7 @@ $(document).ready(function(){
                 click: function () {
                     $( this ).dialog( "close" ); 
                     if(reload_page) {
-                         window.location = "index.php?menu=programs";
+                         get_content("programs");
                     } else {
                         return false;
                     }
