@@ -64,8 +64,7 @@ if(!isset($menu)) {
             header( 'Pragma: no-cache' ); 
         }
     }
-?>
-<?php 
+
     // Check database consistency
     check_database();
     

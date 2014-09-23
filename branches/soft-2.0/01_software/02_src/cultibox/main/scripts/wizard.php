@@ -15,6 +15,7 @@ $pop_up_error_message="";
 $version=get_configuration("VERSION",$main_error);
 $main_info[]=__('WIZARD_DISABLE_FUNCTION').": <a href='/cultibox/index.php?menu=programs' class='href-programs-msgbox'><img src='main/libs/img/wizard.png' alt='".__('CLASSIC')."' title='' id='Classic' /></a>";
 $status=get_canal_status($main_error);
+$jumpto_program=false;
 
 
 if(!isset($type)) {
@@ -266,7 +267,7 @@ if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")
         $selected_plug=$selected_plug+1;
         $step=1;
     } elseif(($type_submit)&&(!empty($type_submit))&&(strcmp($type_submit,"submit_close")==0)) {
-        header('Location: /cultibox/index.php?menu=programs&selected_plug='.$selected_plug);
+        $jumpto_program=true;
     }
 }
 

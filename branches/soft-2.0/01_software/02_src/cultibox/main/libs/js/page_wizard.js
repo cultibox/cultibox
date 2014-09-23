@@ -12,9 +12,14 @@ plug_type=<?php echo json_encode($plug_type) ?>;
 error_valueJS=<?php echo json_encode($error_value) ?>;
 canal_status= <?php echo json_encode($status) ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+jumpto_program=<?php echo json_encode($jumpto_program); ?>;
+
 
 
 $(document).ready(function(){
+    if(jumpto_program) {
+         get_content("programs",getUrlVars('selected_plug=<?php echo $selected_plug; ?>'));
+    }
 
    //Event fire when clicking the wizard button:
    $("#next").click(function(e) {
@@ -203,6 +208,7 @@ $("#value_program").keypress(function(e) {
             } else {
                 $('#type_submit').val("submit_next");
             }
+        
             get_content("wizard",getFormInputs('submit_wizard'));
         }
     });
