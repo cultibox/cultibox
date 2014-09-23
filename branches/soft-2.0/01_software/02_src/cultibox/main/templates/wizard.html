@@ -52,7 +52,7 @@
                 <td class="wizard-marge-td"></td>
                 <td class="wizard-title"><?php echo __('TYPE_PLUG')." $selected_plug:"; ?></td>
                 <td>
-                    <select name="plug_type" <?php if($selected_plug==1) echo 'disabled'; ?>>
+                    <select name="plug_type" id="plug_type" <?php if($selected_plug==1) echo 'disabled'; ?>>
                         <option <?php if(strcmp($plug_type,"lamp")==0) { echo "selected";} ?> value="lamp"><?php echo __('PLUG_LAMP'); ?></option>
                         <option <?php if(strcmp($plug_type,"ventilator")==0) { echo 'selected';} ?> value="ventilator"><?php echo __('PLUG_VENTILATOR'); ?></option>
                         <option <?php if(strcmp($plug_type,"heating")==0) { echo 'selected';} ?> value="heating"><?php echo __('PLUG_HEATING'); ?></option>
@@ -151,8 +151,8 @@
     <tr>
     <td class="wizard-marge-submit"></td>
     <td class="wizard-input-submit"><input type=submit name="close" id="close" value="<?php echo __('CLOSE_WIZARD'); ?>"></td>
-    <td class="wizard-input-previous"><?php if($step>1) { ?><input type=submit name="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>"><?php } ?></td>
-    <td class="wizard-input-previous"><?php if($step<3) { ?><input type=submit name="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>"><?php } ?></td>
+    <td class="wizard-input-previous"><?php if($step>1) { ?><input type=submit name="previous" id="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>"><?php } ?></td>
+    <td class="wizard-input-previous"><?php if($step<3) { ?><input type=submit name="next" id="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>"><?php } ?></td>
     <td class="wizard-input-submit">
     <?php if(($step==3)&&($selected_plug<$nb_plugs)) { ?><input type=submit name="next_plug" id="next_plug" value="<?php echo __('WIZARD_OTHER_STEP'); ?>"><?php } ?>
     <?php if($step==3) { ?>

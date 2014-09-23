@@ -74,11 +74,15 @@ $end_time="18:00:00";
 if($selected_plug==1) {
     $plug_type="lamp";
 } else {
-    $plug_type=getvar('plug_type');
+    if(!isset($plug_type)) {
+        $plug_type=getvar('plug_type');
+    }
 }
 
 if($selected_plug>3) {
-    $plug_power_max=getvar('plug_power_max');
+    if(!isset($plug_power_max)) {
+        $plug_power_max=getvar('plug_power_max');
+    }
     if(strcmp($plug_power_max,"VARIO")==0) {
        $plug_power_max=getvar("dimmer_canal");
        $type="2";
@@ -86,7 +90,9 @@ if($selected_plug>3) {
 
 } 
 
-$value_program=getvar('value_program');
+if(!isset($value_program)) {
+    $value_program=getvar('value_program');
+}
 
 if((empty($plug_type))||(!isset($plug_type))) {
     $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error); 
@@ -127,19 +133,37 @@ if((empty($value_program))||(!isset($value_program))) {
 
 
 if((strcmp($type_submit,"submit_close")==0)||(strcmp($type_submit,"submit_next")==0)) {
-    $program=getvar('program');
+    if(!isset($program)) {
+        $program=getvar('program');
+    }
 
     if((isset($program))&&(!empty($program))) {
         if("$selected_plug"=="1") {
             $value_program="99.9";
             $plug_type="lamp";
-            $start_time=getvar('start_time');
-            $end_time=getvar('end_time');
+            if(!isset($start_time)) {
+                $start_time=getvar('start_time');
+            }
+
+            if(!isset($end_time)) {
+                $end_time=getvar('end_time');
+            }
         } else {
-            $value_program=getvar('value_program');
-            $plug_type=getvar('plug_type');
-            $start_time=getvar('start_time');
-            $end_time=getvar('end_time');
+            if(!isset($value_program)) {
+                $value_program=getvar('value_program');
+            }
+
+            if(!isset($plug_type)) {
+                $plug_type=getvar('plug_type');
+            }
+
+            if(!isset($start_time)) {
+                $start_time=getvar('start_time');
+            }
+
+            if(!isset($end_time)) {
+                $end_time=getvar('end_time');
+            }
         }
 
         $chtime=check_times($start_time,$end_time); 
@@ -257,7 +281,7 @@ if((!isset($step))||(empty($step))||(!is_numeric($step))||($step<0)) {
     $step=$step+1;	
 } else if((isset($previous))&&(!empty($previous))) {
     $step=$step-1;
-}
+} 
 
 //Compute time loading for debug option
 $end_load = getmicrotime();

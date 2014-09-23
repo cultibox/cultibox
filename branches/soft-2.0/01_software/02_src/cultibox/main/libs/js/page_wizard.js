@@ -15,10 +15,31 @@ title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 
 
 $(document).ready(function(){
+
    //Event fire when clicking the wizard button:
+   $("#next").click(function(e) {
+        e.preventDefault(); 
+        var inputForm = getFormInputs('submit_wizard');
+        inputForm['next']="next";
+        inputForm['type']=0;
+        get_content("wizard",inputForm);
+   });
+
+   $("#previous").click(function(e) {
+        e.preventDefault();
+        var inputForm = getFormInputs('submit_wizard');
+        inputForm['previous']="previous";
+        inputForm['type']=0;
+        get_content("wizard",inputForm);
+   });
+
+    
+
+
    $("#close").click(function(e) {
        e.preventDefault();
-       var get_urls = getUrlVars('selected_plugs='+$("#selected_plug option:selected").val());
+        alert($("#plug_type option:selected").val());
+       var get_urls = getUrlVars('selected_plugs=<?php echo $selected_plug; ?>');
        get_content("programs",get_urls);
    });
 

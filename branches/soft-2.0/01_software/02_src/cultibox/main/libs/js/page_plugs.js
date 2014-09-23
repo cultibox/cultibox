@@ -271,6 +271,23 @@ $(document).ready(function(){
                         });
                      }         
 
+                     if(sd_card!="") {
+                     $.ajax({
+                        type: "GET",
+                        url: "main/modules/external/check_and_update_sd.php",
+                        data: {
+                            sd_card:"<?php echo $sd_card ;?>"
+                        },
+                        async: false,
+                        context: document.body,
+                        success: function(data, textStatus, jqXHR) {
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                        // Error during request
+                        }
+                     });
+                     }
+
                      $.unblockUI();
 
 

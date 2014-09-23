@@ -10,6 +10,7 @@ Cultibox (2.0.02) precise; urgency=low
     + Passage de la fréquence de changement des prises à 1 seconde par défaut
     + Passage de l'onglet programme en AJAX
     + Passage de l'onglet prise en AJAX
+    + Passage de l'onglet Wizard en AJAX
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon Sep 16  08:49:17 CEST 2014
 
