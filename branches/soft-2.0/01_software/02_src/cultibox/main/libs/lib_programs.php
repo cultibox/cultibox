@@ -52,7 +52,7 @@ function check_db() {
         }
         
         // Add default line
-        add_row_program_idx('Courant','1.0','1' , '00' , "Programme courant");
+        add_row_program_idx(__('CURRENT_PROG_NAME'),'1.0','1' , '00' , __('CURRENT_PROG_COMMENT'));
         
     }
     

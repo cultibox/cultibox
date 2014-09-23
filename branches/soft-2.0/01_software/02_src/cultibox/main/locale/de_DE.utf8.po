@@ -1797,3 +1797,12 @@ msgstr "Encoder ist noch nicht definiert: Wenn erste Belastungsprotokolle von de
 #For the debug part:
 msgid "GENERATE_TIME"
 msgstr "Generierte"
+
+
+# For the database part:
+msgid "CURRENT_PROG_NAME"
+msgstr "Aktuelle"
+
+msgid "CURRENT_PROG_COMMENT"
+msgstr "Aktuelles Programm"
+

@@ -1800,3 +1800,12 @@ msgstr "Sensor is not yet defined: when first loading logs from your SD card, yo
 #For the debug part:
 msgid "GENERATE_TIME"
 msgstr "Generated"
+
+
+# For the database part:
+msgid "CURRENT_PROG_NAME"
+msgstr "Current"
+
+msgid "CURRENT_PROG_COMMENT"
+msgstr "Current program"
+

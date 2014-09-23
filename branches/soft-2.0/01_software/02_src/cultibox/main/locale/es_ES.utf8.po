@@ -1797,3 +1797,12 @@ msgstr "Encoder aún no está definida: cuando primero los registros de carga de
 #For the debug part:
 msgid "GENERATE_TIME"
 msgstr "Generado en"
+
+
+# For the database part:
+msgid "CURRENT_PROG_NAME"
+msgstr "Actual"
+
+msgid "CURRENT_PROG_COMMENT"
+msgstr "Programa actual"
+

@@ -281,6 +281,26 @@ INSERT INTO `sensors` (`id`, `type`) VALUES (1, '2'), (2, '2'), (3, '2'), (4, '2
 
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `program_index`
+--
+CREATE TABLE IF NOT EXISTS `program_index` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(100),
+    `version` VARCHAR(100),
+    `program_idx` INT,
+    `creation` DATETIME,
+    `modification` DATETIME,
+    `plugv_filename` VARCHAR(10),
+    `comments` VARCHAR(500)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `program_index`
+--
+
+INSERT INTO `program_index` (`name`,`version`,`program_idx`,`creation`, `modification`, `plugv_filename`,`comments`) VALUES('Corrente','1.0','1' , NOW(), NOW(), '00' , "Programma corrente");
+
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
