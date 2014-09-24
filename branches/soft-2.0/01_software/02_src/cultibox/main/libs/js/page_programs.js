@@ -224,11 +224,11 @@ $(document).ready(function(){
                         data: {value:$("#value_program").val(),type:'value_program',plug_type:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE'],plug_tolerance:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TOLERANCE']}
                     }).done(function (data) {
                         var return_array = JSON.parse(data);
-                        if(return_array['error'].toInt()>1) {
-                            if(return_array['error'].toInt()==2) {
-                                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[return_array['error'].toInt()]);
+                        if(parseInt(return_array['error'])>1) {
+                            if(parseInt(return_array['error'])==2) {
+                                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[parseInt(return_array['error'])]);
                             } else {
-                                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[return_array['error'].toInt()]+": "+return_array['min']+return_array['unity']+" <?php echo __('AND'); ?> "+return_array['max']+return_array['unity']);
+                                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[parseInt(return_array['error'])]+": "+return_array['min']+return_array['unity']+" <?php echo __('AND'); ?> "+return_array['max']+return_array['unity']);
 
                             }
                             $("#error_value_program").show(700);
@@ -292,7 +292,7 @@ $(document).ready(function(){
                 "id": "btnClose",
                 click: function () {
                     $( this ).dialog( "close" ); 
-                    if(reload_page) {
+                    if(reload_page) {   
                          get_content("programs");
                     } else {
                         return false;
@@ -332,7 +332,7 @@ $(document).ready(function(){
                     });
         
                     // If it's the same program, redraw the page
-                    if ($( "#program_delete_index" ).val() == "<?php echo $program_index ?>") {
+                    if ($("#program_delete_index :selected" ).val() == "<?php echo $program_index_id ?>") {
                         reload_page=true;
                     }
             
@@ -415,8 +415,8 @@ $(document).ready(function(){
                                 var return_array = JSON.parse(data);
                         
                                 // Add program in select
-                                $('#program_delete_index').append('<option value="' + return_array.program_idx + '">' + return_array.name + '</option>');
-                                $('#program_index_id_id').append('<option value="' + return_array.program_idx + '">' + return_array.name + '</option>');
+                                $('#program_delete_index').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                                $('#program_index_id_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
 
                                 $("#daily_delete_button").removeAttr('disabled');
                                 $("#daily_delete_button").removeClass("inputDisable");

@@ -13,7 +13,7 @@ title_msgbox = <?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 count_program_index=<?php echo json_encode($count_program_index); ?>;
 
 $(function() {
-   $("#calendar_startdate").datepicker({ 
+   $("#calendar_startdate").datepicker({
         dateFormat: "yy-mm-dd",
         showButtonPanel: true,
         showOn: "both",
@@ -55,7 +55,6 @@ $(document).ready(function() {
             data: {name:"LOAD_LOG", value: "False", duration: 1}
         });
     }
-
 
 
     $('#select_title').change(function () {

@@ -163,11 +163,11 @@ $("#value_program").keypress(function(e) {
                     data: {value:$("#value_program").val(),type:'value_program',plug_type:plug_type}
                 }).done(function (data) {
                         var return_array = JSON.parse(data);
-                        if(return_array['error'].toInt()>1) {
-                            if(return_array['error'].toInt()==2) {
-                                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[return_array['error'].toInt()]);
+                        if(parseInt(return_array['error'])>1) {
+                            if(parseInt(return_array['error'])==2) {
+                                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[parseInt(return_array['error'])]);
                             } else {
-                                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[return_array['error'].toInt()]+": "+return_array['min']+return_array['unity']+" <?php echo __('AND'); ?> "+return_array['max']+return_array['unity']);
+                                $("#error_value_program").html("<img src='/cultibox/main/libs/img/arrow_error.png' alt=''>"+error_valueJS[parseInt(return_array['error'])]+": "+return_array['min']+return_array['unity']+" <?php echo __('AND'); ?> "+return_array['max']+return_array['unity']);
 
                             }
                             $("#error_value_program").show(700);

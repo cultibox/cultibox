@@ -70,7 +70,7 @@ function check_db() {
 // IN $name : Name of the programm
 //    $version : Version of the programm
 //    $program_idx : Pointor on the the programs table
-// RET none
+// RET id of the line added
 function add_row_program_idx($name, $version, $program_idx = "", $plugv_filename = "", $comments = "") {
 
     // Open connection to dabase
@@ -114,8 +114,19 @@ function add_row_program_idx($name, $version, $program_idx = "", $plugv_filename
         $ret = $e->getMessage();
         print_r($ret);
     }
-  
-    $db=null;
+
+    $sql = "SELECT id from program_index WHERE program_idx = $program_idx";
+    try {
+            $sth = $db->prepare($sql);
+            $sth->execute();
+            $row = $sth->fetch();
+            $db=null;
+            return $row['id'];
+        } catch(\PDOException $e) {
+            $ret = $e->getMessage();
+            print_r($ret);
+            $db=null;
+   }
 }
 // }}}
 

@@ -227,6 +227,11 @@ td.plug-marge-field {
    width: 33%;
 }
 
+td.plug-marge-field-base {
+   width: 25%;
+}
+
+
 td.plug-marge-jumpto {
     width: 70%;
 }
@@ -269,7 +274,7 @@ td.wizard-marge-td {
 }
 
 td.wizard-title {
-   width: 27%;
+   width: 29%;
 }
 
 td.wizard-input-submit {

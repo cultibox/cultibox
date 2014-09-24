@@ -17,9 +17,9 @@ if((isset($_GET['page']))&&(!empty($_GET['page']))) {
         foreach(array_keys($get_array) as $get) {
             ${$get}=$get_array[$get];
 
-            if($GLOBALS['DEBUG_TRACE']) {        
+            //if($GLOBALS['DEBUG_TRACE']) {        
                 echo $get."-----".$get_array[$get]."<br />";
-            }
+            //}
         }
     }
 

@@ -157,6 +157,96 @@ getFormInputs = function(form) {
 }
 
 
+// brief : Used to clean messages
+function clean_pop_up_messages() {
+    $("#pop_up_information_part li").remove();
+    $("#pop_up_error_part li").remove();
+};
+
+
+// brief : Used to add a message in popup
+// message : Message to show
+// id to define
+// type : information or error
+function pop_up_add_information(message, id, type) {
+    // Add message
+    if (type == "information")
+        $("#pop_up_information_part ul").append('<li id="' + id + '">' + message + '</li>');
+        
+    if (type == "error")
+        $("#pop_up_error_part ul").append('<li id="' + id + '">' + message + '</li>');
+
+    // If there is element in error part, show this part
+    if ($("#pop_up_error_part ul li").length > 0)
+        $("#pop_up_error_container").css("display", "");
+        
+    if ($("#pop_up_information_part ul li").length > 0)
+        $("#pop_up_information_container").css("display", "");
+                
+};
+
+// brief : Remove a message in popup
+// id to remove
+function  pop_up_remove(id) {
+
+    // Delete information
+    $("#" + id).remove();
+    
+    if ($("#pop_up_error_part ul li").length < 1)
+        $("#pop_up_error_container").css("display", "none");
+        
+    if ($("#pop_up_information_part ul li").length < 1)
+        $("#pop_up_information_container").css("display", "none");
+    
+};
+
+
+// brief : select the matching menu
+// menu to be activated
+function active_menu(menu) {
+    $("#menubar-ul").find('li').each(function(){
+        if($(this).attr('id')=="menu-"+menu) {
+            $(this).addClass("active");
+            $(this).addClass("current");
+            $(this).find('span').each(function(){
+                $(this).addClass("active");
+            });
+        } else {
+            $(this).removeClass("active");
+            $(this).removeClass("current");
+            $(this).find('span').each(function(){
+                $(this).removeClass("active");
+            });
+        }
+    });
+}
+
+
+// brief : get content and display in it the main content div
+// page: page to be displayed in the content div
+function get_content(page,get_array) {
+   //Clean AJAX calls:
+   $.xhrPool.abortAll();
+
+   //Clean popup message:
+   clean_pop_up_messages();
+
+   //Clean dialog box except the software dialog box:
+   $(".ui-dialog-content").not('.message').dialog('destroy').remove();
+
+   $.ajax({
+        cache: false,
+        async: false,
+        url: "main/modules/external/get_content.php",
+        data: {page:page, get_array:JSON.stringify(get_array)}
+    }).done(function (data) {
+        //Some odd chars appear when including php files due to echo include that returns true value, removing them:
+        $("#content").html(data);
+        $("#content").load();
+        active_menu(page);
+    });
+}
+
 
 $(document).ready(function() {
     var search = location.search.substring(1);
@@ -450,95 +540,4 @@ $(document).ready(function() {
         $("#pop_up_information_container").css("display", "none");
 
 });
-
-
-// brief : Used to clean messages
-function clean_pop_up_messages() {
-    $("#pop_up_information_part li").remove();
-    $("#pop_up_error_part li").remove();
-};
-
-
-// brief : Used to add a message in popup
-// message : Message to show
-// id to define
-// type : information or error
-function pop_up_add_information(message, id, type) {
-    // Add message
-    if (type == "information")
-        $("#pop_up_information_part ul").append('<li id="' + id + '">' + message + '</li>');
-        
-    if (type == "error")
-        $("#pop_up_error_part ul").append('<li id="' + id + '">' + message + '</li>');
-
-    // If there is element in error part, show this part
-    if ($("#pop_up_error_part ul li").length > 0)
-        $("#pop_up_error_container").css("display", "");
-        
-    if ($("#pop_up_information_part ul li").length > 0)
-        $("#pop_up_information_container").css("display", "");
-                
-};
-
-// brief : Remove a message in popup
-// id to remove
-function  pop_up_remove(id) {
-
-    // Delete information
-    $("#" + id).remove();
-    
-    if ($("#pop_up_error_part ul li").length < 1)
-        $("#pop_up_error_container").css("display", "none");
-        
-    if ($("#pop_up_information_part ul li").length < 1)
-        $("#pop_up_information_container").css("display", "none");
-    
-};
-
-
-// brief : select the matching menu
-// menu to be activated
-function active_menu(menu) {
-    $("#menubar-ul").find('li').each(function(){
-        if($(this).attr('id')=="menu-"+menu) {
-            $(this).addClass("active");
-            $(this).addClass("current");
-            $(this).find('span').each(function(){
-                $(this).addClass("active");
-            });
-        } else {
-            $(this).removeClass("active");
-            $(this).removeClass("current");
-            $(this).find('span').each(function(){
-                $(this).removeClass("active");
-            });
-        }
-    });
-}
-
-
-// brief : get content and display in it the main content div
-// page: page to be displayed in the content div
-function get_content(page,get_array) {
-   //Clean AJAX calls:
-   $.xhrPool.abortAll();
-
-   //Clean popup message:
-   clean_pop_up_messages();
-
-   //Clean dialog box except the software dialog box:
-   $(".ui-dialog-content").not('.message').dialog('destroy').remove();
-
-   $.ajax({
-        cache: false,
-        async: false,
-        url: "main/modules/external/get_content.php",
-        data: {page:page, get_array:JSON.stringify(get_array)}
-    }).done(function (data) {
-        //Some odd chars appear when including php files due to echo include that returns true value, removing them:
-        $("#content").html(data);
-        $("#content").load();
-        active_menu(page);
-    });
-}
 

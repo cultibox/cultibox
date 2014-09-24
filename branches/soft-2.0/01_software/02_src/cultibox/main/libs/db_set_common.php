@@ -201,6 +201,7 @@ EOF;
 function insert_program($program,&$out,$indexNumber) {
     $ret=true;
     $data_plug=get_data_plug($program[0]['selected_plug'],$out,$indexNumber);
+    $tmp=array();
     if(count($program>0)) clean_program($program[0]['selected_plug'],$program[0]['number'],$out);
 
     if(count($data_plug)==0) {

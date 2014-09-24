@@ -296,8 +296,12 @@ $(document).ready(function(){
                             sd_card:sd_card
                         }
                     }).done(function (data) {
-                        if($.parseJSON(data)!="") {  
-                            check_update=false;
+                        try{
+                            if($.parseJSON(data)!="") {  
+                                check_update=false;
+                            }
+                        } catch(err) {
+                                check_update=false;
                         }
                     });
                 }
@@ -317,7 +321,11 @@ $(document).ready(function(){
                         name:"PLUG_REGUL"
                     }
                 }).done(function (data) {
-                    if($.parseJSON(data)!="") {
+                    try {
+                        if($.parseJSON(data)!="") {
+                            check_update=false;
+                        }
+                    } catch(err) {
                         check_update=false;
                     }
                 });
@@ -337,7 +345,11 @@ $(document).ready(function(){
                         name:"PLUG_COMPUTE_METHOD"
                     }
                 }).done(function (data) {
-                    if($.parseJSON(data)!="") {
+                    try {
+                        if($.parseJSON(data)!="") {
+                            check_update=false;
+                        }
+                    } catch(err) {
                         check_update=false;
                     }
                 });
@@ -354,7 +366,11 @@ $(document).ready(function(){
                         name:"PLUG_REGUL_SENSOR"
                     }
                 }).done(function (data) {
-                    if($.parseJSON(data)!="") {
+                    try {
+                        if($.parseJSON(data)!="") {
+                            check_update=false;
+                        }
+                    } catch(err) {
                         check_update=false;
                     }
                 });
@@ -377,9 +393,13 @@ $(document).ready(function(){
                         sd_card:sd_card
                     }
             }).done(function (data) {
-                if($.parseJSON(data)!="") {
-                    check_update=false;
-                }
+                try {
+                        if($.parseJSON(data)!="") {
+                            check_update=false;
+                        }
+                    } catch(err) {
+                        check_update=false;
+                    }
             });
 
             //RESET MIN MAX process:
@@ -397,7 +417,11 @@ $(document).ready(function(){
                         sd_card:sd_card
                     }
             }).done(function (data) {
-                if($.parseJSON(data)!="") {
+                try {
+                    if($.parseJSON(data)!="") {
+                        check_update=false;
+                    }
+                } catch(err) {
                     check_update=false;
                 }
             });
@@ -423,7 +447,11 @@ $(document).ready(function(){
                         sd_card:sd_card
                     }
             }).done(function (data) {
-                if($.parseJSON(data)!="") {
+                try {
+                    if($.parseJSON(data)!="") {
+                        check_update=false;
+                    }
+                } catch(err) {
                     check_update=false;
                 }
             });
@@ -444,7 +472,11 @@ $(document).ready(function(){
                         sd_card:sd_card
                     }
                     }).done(function (data) {
-                        if($.parseJSON(data)!="") {
+                        try {
+                            if($.parseJSON(data)!="") {
+                                check_update=false;
+                            }
+                        } catch(err) {
                             check_update=false;
                         }
                     });
@@ -465,7 +497,11 @@ $(document).ready(function(){
                                 sd_card:sd_card
                             }
                         }).done(function (data) {
-                            if($.parseJSON(data)!="") {
+                            try {
+                                if($.parseJSON(data)!="") {
+                                    check_update=false;
+                                }
+                            } catch(err) {
                                 check_update=false;
                             }
                         });
@@ -485,7 +521,11 @@ $(document).ready(function(){
                                 sd_card:sd_card
                             }
                         }).done(function (data) {
-                            if($.parseJSON(data)!="") {
+                            try {
+                                if($.parseJSON(data)!="") {
+                                    check_update=false;
+                                }
+                            } catch(err) {
                                 check_update=false;
                             }
                         });
@@ -504,7 +544,11 @@ $(document).ready(function(){
                                 sd_card:sd_card
                             }
                         }).done(function (data) {
-                            if($.parseJSON(data)!="") {
+                            try {
+                                if($.parseJSON(data)!="") {
+                                    check_update=false;
+                                }
+                            } catch(err) {
                                 check_update=false;
                             }
                         });
@@ -524,7 +568,11 @@ $(document).ready(function(){
                                 sd_card:sd_card
                             }
                         }).done(function (data) {
-                            if($.parseJSON(data)!="") {
+                            try {
+                                if($.parseJSON(data)!="") {
+                                    check_update=false;
+                                }
+                            } catch(err) {
                                 check_update=false;
                             }
                         });
@@ -552,7 +600,11 @@ $(document).ready(function(){
                                 sd_card:sd_card
                             }
                         }).done(function (data) {
-                            if($.parseJSON(data)!="") {
+                            try {
+                                if($.parseJSON(data)!="") {
+                                    check_update=false;
+                                }
+                            } catch(err) {
                                 check_update=false;
                             }
                         });
@@ -576,7 +628,11 @@ $(document).ready(function(){
                             sd_card:sd_card
                         }
                     }).done(function (data) {
-                        if($.parseJSON(data)!="") {
+                        try {
+                            if($.parseJSON(data)!="") {
+                                check_update=false;
+                            }
+                        } catch(err) {
                             check_update=false;
                         }
                     });
@@ -595,11 +651,14 @@ $(document).ready(function(){
                             sd_card:sd_card
                         }
                     }).done(function (data) {
-                        if($.parseJSON(data)!="") {
+                        try {
+                            if($.parseJSON(data)!="") {
+                                check_update=false;
+                            }
+                        } catch(err) {
                             check_update=false;
                         }
                     });
-
 
                     varToUpdate = "wifi_ip";
                     newValue    = "000.000.000.000";
@@ -614,7 +673,11 @@ $(document).ready(function(){
                             sd_card:sd_card
                         }
                     }).done(function (data) {
-                        if($.parseJSON(data)!="") {
+                        try {
+                            if($.parseJSON(data)!="") {
+                                check_update=false;
+                            }
+                        } catch(err) {
                             check_update=false;
                         }
                     });
@@ -633,7 +696,11 @@ $(document).ready(function(){
                             sd_card:sd_card
                         }
                     }).done(function (data) {
-                        if($.parseJSON(data)!="") {
+                        try {
+                            if($.parseJSON(data)!="") {
+                                check_update=false;
+                            }
+                        } catch(err) {
                             check_update=false;
                         }
                     });
@@ -652,7 +719,11 @@ $(document).ready(function(){
                             sd_card:sd_card
                         }
                     }).done(function (data) {
-                        if($.parseJSON(data)!="") {
+                        try {
+                            if($.parseJSON(data)!="") {
+                                check_update=false;
+                            }
+                        } catch(err) {
                             check_update=false;
                         }
                     });
@@ -668,16 +739,18 @@ $(document).ready(function(){
                     },
                     async: false
                 }).done(function(data, textStatus, jqXHR) {
-                    // Check response from server
+                    try {
+                        // Parse result
+                        var json = jQuery.parseJSON(data);
 
-                    // Parse result
-                    var json = jQuery.parseJSON(data);
-
-                    // For each information, show it
-                    json.error.forEach(function(entry) {
-                        pop_up_add_information(entry,"check_sd_status","information");
+                        // For each information, show it
+                        json.error.forEach(function(entry) {
+                            pop_up_add_information(entry,"check_sd_status","information");
+                            check_update=false;
+                        });
+                    } catch(err) {
                         check_update=false;
-                    });
+                    }
                 });
             }
 
@@ -686,10 +759,14 @@ $(document).ready(function(){
                 url: "main/modules/external/get_variable.php",
                 data: {name:"wifi"}
             }).done(function (data) {
-                if(jQuery.parseJSON(data)=="1") {
+                try {
+                    if(jQuery.parseJSON(data)=="1") {
                         $("#menu-wifi").show();
-                } else {
+                    } else {
                         $("#menu-wifi").css('display','none');
+                    }
+                } catch(err) {
+
                 }
             });
 
@@ -699,10 +776,14 @@ $(document).ready(function(){
                 url: "main/modules/external/get_variable.php",
                 data: {name:"cost"}
             }).done(function (data) {
-                if(jQuery.parseJSON(data)=="1") {
-                    $("#menu-cost").show();
-                } else {
-                    $("#menu-cost").css('display','none');
+                try {
+                    if(jQuery.parseJSON(data)=="1") {
+                        $("#menu-cost").show();
+                    } else {
+                        $("#menu-cost").css('display','none');
+                    }
+                } catch(err) {
+
                 }
             });
 

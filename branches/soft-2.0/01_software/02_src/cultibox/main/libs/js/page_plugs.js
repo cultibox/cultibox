@@ -41,16 +41,7 @@ $(document).ready(function(){
                 }
             }
 
-            if(nb_sensor==0) {
-               // Si aucun capteur n'est selectionné: affichage du message précisant que le capteur 1 sera selectionné + selection automatique du capteur 1
-               $("#error_select_sensor"+plug).show();
-               $("#plug_sensor"+plug+"1 option[value='True']").prop('selected', 'selected');
-            } else {
-               // On efface le message d'erreur sinon
-               $("#error_select_sensor"+plug).css("display","none");
-            }
-
-            if(nb_sensor<=1) {
+           if(nb_sensor<=1) {
                 // Si un seul capteur pour la régulation, on désactive les options de min/max/moy:
                 $("#plug_compute_method"+plug).attr('disabled','disabled');
             } else {
@@ -239,6 +230,45 @@ $(document).ready(function(){
                                     checked=false;
                                 }
                             });
+                        }
+
+                        
+                        var nb_sensor=0;
+    
+                        //sensors: variable globale du nombre de capteurs définit par le fichier config.php
+                        if(sensors) {
+                            for (var j = 1  ; j<=sensors; j++) {
+                                if($("#plug_sensor"+i+j+" option:selected").val()=="True") {
+                                    //Compte du nombre de capteur selectionné:
+                                    nb_sensor=nb_sensor+1;
+                                }
+                            }
+
+                            if(nb_sensor<=1) {
+                                // Si un seul capteur pour la régulation, on désactive les options de min/max/moy:
+                                $("#plug_compute_method"+i).attr('disabled','disabled');
+                            } else {
+                                // Sinon les options sont activées:
+                                $("#plug_compute_method"+i).removeAttr('disabled');
+                            }
+
+                            if(nb_sensor==0) {
+                                // Si aucun capteur n'est selectionné: affichage du message précisant que le capteur 1 sera selectionné + selection automatique du capteur 1
+                                $("#error_select_sensor"+i).show();
+                                $("#plug_sensor"+i+"1 option[value='True']").prop('selected', 'selected');
+                                checked=false;
+                            } else {
+                                // On efface le message d'erreur sinon
+                                $("#error_select_sensor"+i).css("display","none");
+                            }
+
+                            if(nb_sensor<=1) {
+                                // Si un seul capteur pour la régulation, on désactive les options de min/max/moy:
+                                $("#plug_compute_method"+i).attr('disabled','disabled');
+                            } else {
+                                // Sinon les options sont activées:
+                                $("#plug_compute_method"+i).removeAttr('disabled');
+                            }
                         }
                     }
 

@@ -44,7 +44,7 @@
          <td class="plug-marge-title">
               <?php echo __('NAME_PLUG'); ?>:
          </td>
-         <td class="plug-marge-field">
+         <td "plug-marge-field-base">
             <input type="text" size="15" maxlength="15" name="plug_name<?php echo $i; ?>" value="<?php echo $plug_name{$i}; ?>">
          </td>
          <td></td>
@@ -114,7 +114,7 @@
          </td>
          <td>
             <div id="tolerance<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)) { echo "display:none"; } ?>">
-               <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" style="width: 11%;" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label><label id="cm<?php echo $i; ?>" style="<?php if(strcmp($plug_type{$i},"pump")!=0) { echo "display:none"; } ?>"> cm</label>
+               <input type="text" id="plug_tolerance<?php echo $i; ?>" size="4" maxlength="4" name="plug_tolerance<?php echo $i; ?>" value="<?php echo $plug_tolerance{$i}; ?>" onKeypress="return verifDigit(event);" /><label id="pourcent<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"humidifier")!=0)&&(strcmp($plug_type{$i},"dehumidifier")!=0)) { echo "display:none"; } ?>"> %</label><label id="degree<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"heating")!=0)&&(strcmp($plug_type{$i},"ventilator")!=0)) { echo "display:none"; } ?>"> °C</label><label id="cm<?php echo $i; ?>" style="<?php if(strcmp($plug_type{$i},"pump")!=0) { echo "display:none"; } ?>"> cm</label>
             </div>
          </td>
          <td>
@@ -123,10 +123,13 @@
             <div class='error_field' id="error_tolerance_value_water<?php echo $i; ?>" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt='->'><?php echo __('ERROR_TOLERANCE_VALUE_CM','html'); ?></div>
          </td>
       </tr>
+</table>
+
+<table class="table_width">
       <tr>
-         <td></td>
-         <td><div id="label_sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)||(strcmp("$second_regul","False")==0)) { echo "display:none"; } ?>"><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></div></td>
-         <td>   
+         <td class="plug-marge-td"></td>
+         <td class="plug-marge-title"><div id="label_sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)||(strcmp("$second_regul","False")==0)) { echo "display:none"; } ?>"><?php echo __('CONFIGURE_REGUL_SENSOR'); ?>:<img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_REGUL_SENSOR'); ?>" /></div></td>
+         <td class="plug-marge-field">   
            <br />
            <div id="sensor<?php echo $i; ?>" style="<?php if((strcmp($plug_type{$i},"other")==0)||(strcmp($plug_type{$i},"lamp")==0)||(strcmp("$second_regul","False")==0)) { echo "display:none"; } ?>">
                 <hr />

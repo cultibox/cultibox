@@ -16,7 +16,7 @@
     $program_idx = program\get_programm_number_empty();
 
     // create programm line
-    program\add_row_program_idx($_GET['name'], $_GET['version'], $program_idx, "","Programme " . $_GET['name']);
+    $id = program\add_row_program_idx($_GET['name'], $_GET['version'], $program_idx, "","Programme " . $_GET['name']);
     
     // Save programm
     program\copy($_GET['input'],$program_idx);
@@ -27,6 +27,8 @@
     $ret_array['name'] = $_GET['name'];
     $ret_array['version'] = $_GET['version'];
     $ret_array['program_idx'] = $program_idx;
+    $ret_array['id'] = $id;
+
     
     // Return the array
     echo json_encode($ret_array);
