@@ -40,10 +40,6 @@ require_once('main/libs/utilfunc_sd_card.php');
 $wifi=get_configuration("WIFI");
 $cost=get_configuration("SHOW_COST");
 
-if(!isset($menu)) {
-    $menu="";
-}
-
 ?>
 <!DOCTYPE HTML>
 <head>
@@ -67,7 +63,6 @@ if(!isset($menu)) {
 
     // Check database consistency
     check_database();
-    
 ?>
 
     <title>Cultibox</title>
@@ -108,6 +103,7 @@ if(!isset($menu)) {
             <!-- Small eye for displaying message pop up-->
             <script>title_msgbox="<?php echo __('TOOLTIP_MSGBOX_EYES'); ?>";</script>
             <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt="" title="" id="eyes_msgbox"></div>
+
             <div class="wrapper grid-block">
                 <header id="header">
                     <div id="headerbar" class="grid-block">
@@ -137,32 +133,59 @@ if(!isset($menu)) {
                         <div id="menubar" class="grid-block">
                             <nav id="menu">
                                 <ul class="menu menu-dropdown" id="menubar-ul">
-                                    <li id="menu-welcome" class="level1 item155 <?php if(strcmp("$menu","")==0) { echo 'active current'; } ?>"><a href="/cultibox/index.php" class="level1 href-welcome <?php if(strcmp("$menu","")==0) { echo 'active current'; } ?>" ><span class="<?php if(strcmp("$menu","")==0) { echo 'active'; } ?>"><?php echo __('MENU_WELCOME'); ?></span></a></li>
+                                    <li id="menu-welcome" class="level1 item155 active current"><a href="/cultibox/index.php" class="level1 href-welcome active current" ><span class="active"><?php echo __('MENU_WELCOME'); ?></span></a></li>
 
-                                    <li id="menu-configuration" class="level1 item157 <?php if(strcmp("$menu","configuration")==0) { echo 'active current'; } ?>"><a href="/cultibox/index.php?menu=configuration" class="level1 href-configuration <?php if(strcmp("$menu","configuration")==0) { echo 'active current'; } ?>"><span class="<?php if(strcmp("$menu","configuration")==0) { echo 'active'; } ?>"><?php echo __('MENU_CONF'); ?></span></a></li>
+                                    <li id="menu-configuration" class="level1 item157"><a href="/cultibox/index.php?menu=configuration" class="level1 href-configuration"><span><?php echo __('MENU_CONF'); ?></span></a></li>
 
-                                    <li id="menu-logs" class="level1 item158 <?php if(strcmp("$menu","logs")==0) { echo 'active current'; } ?>"><a href="/cultibox/index.php?menu=logs" class="level1 href-logs <?php if(strcmp("$menu","logs")==0) { echo 'active current'; } ?>"><span class="<?php if(strcmp("$menu","logs")==0) { echo 'active'; } ?>"><?php echo __('MENU_LOGS'); ?></span></a></li>
+                                    <li id="menu-logs" class="level1 item158"><a href="/cultibox/index.php?menu=logs" class="level1 href-logs"><span><?php echo __('MENU_LOGS'); ?></span></a></li>
 
-                                    <li id="menu-plugs" class="level1 item159 <?php if(strcmp("$menu","plugs")==0) { echo 'active current'; } ?>"><a href="/cultibox/index.php?menu=plugs" class="level1 href-plugs  <?php if(strcmp("$menu","plugs")==0) { echo 'active current'; } ?>"><span class="<?php if(strcmp("$menu","plugs")==0) { echo 'active'; } ?>"><?php echo __('MENU_PLUGS'); ?></span></a></li>
+                                    <li id="menu-plugs" class="level1 item159"><a href="/cultibox/index.php?menu=plugs" class="level1 href-plugs"><span><?php echo __('MENU_PLUGS'); ?></span></a></li>
 
-                                    <li id="menu-programs" class="level1 item160 <?php if(strcmp("$menu","programs")==0) { echo 'active current'; } ?>"><a href="/cultibox/index.php?menu=programs" class="level1 href-programs <?php if(strcmp("$menu","programs")==0) { echo 'active current'; } ?>"><span class="<?php if(strcmp("$menu","programs")==0) { echo 'active'; } ?>"><?php echo __('MENU_PROGS'); ?></span></a></li>
+                                    <li id="menu-programs" class="level1 item160"><a href="/cultibox/index.php?menu=programs" class="level1 href-programs"><span><?php echo __('MENU_PROGS'); ?></span></a></li>
 
-                                    <li id="menu-calendar" class="level1 item162 <?php if(strcmp("$menu","calendar")==0) { echo 'active current'; } ?>"><a href="/cultibox/index.php?menu=calendar" class="level1 href-calendar <?php if(strcmp("$menu","calendar")==0) { echo 'active current'; } ?>"><span class="<?php if(strcmp("$menu","calendar")==0) { echo 'active'; } ?>"><?php echo __('MENU_CAL'); ?></span></a></li>
+                                    <li id="menu-calendar" class="level1 item162"><a href="/cultibox/index.php?menu=calendar" class="level1 href-calendar"><span><?php echo __('MENU_CAL'); ?></span></a></li>
 
-                                    <li id="menu-cost" class="level1 item173 <?php if(strcmp("$menu","cost")==0) { echo 'active current'; } ?>" <?php if(!$cost) { echo 'style="display:none"'; } ?>><a href="/cultibox/index.php?menu=wizard" class="level1 href-cost <?php if(strcmp("$menu","cost")==0) { echo 'active current'; } ?>"><span class="<?php if(strcmp("$menu","cost")==0) { echo 'active'; } ?>"><?php echo __('MENU_COST'); ?></span></a></li>
+                                    <li id="menu-cost" class="level1 item173" <?php if(!$cost) { echo 'style="display:none"'; } ?>><a href="/cultibox/index.php?menu=wizard" class="level1 href-cost"><span><?php echo __('MENU_COST'); ?></span></a></li>
 
-                                    <li id="menu-wizard" class="level1 item173 <?php if(strcmp("$menu","wizard")==0) { echo 'active current'; } ?>"><a href="/cultibox/index.php?menu=wizard" class="level1 href-wizard <?php if(strcmp("$menu","wizard")==0) { echo 'active current'; } ?>" ><span class="<?php if(strcmp("$menu","wizard")==0) { echo 'active'; } ?>"><?php echo __('MENU_WIZARD'); ?></span></a></li>
+                                    <li id="menu-wizard" class="level1 item173"><a href="/cultibox/index.php?menu=wizard" class="level1 href-wizard" ><span><?php echo __('MENU_WIZARD'); ?></span></a></li>
 
-                                    <li id="menu-wifi" class="level1 item173 <?php if(strcmp("$menu","wifi")==0) { echo 'active current'; } ?>" <?php if(!$wifi) { echo 'style="display:none"'; } ?>><a href="/cultibox/index.php?menu=wifi" class="level1 href-wifi <?php if(strcmp("$menu","wifi")==0) { echo 'active current'; } ?>"><span class="<?php if(strcmp("$menu","wifi")==0) { echo 'active'; } ?>"><?php echo __('MENU_WIFI'); ?></span></a></li>
+                                    <li id="menu-wifi" class="level1 item173" <?php if(!$wifi) { echo 'style="display:none"'; } ?>><a href="/cultibox/index.php?menu=wifi" class="level1 href-wifi"><span><?php echo __('MENU_WIFI'); ?></span></a></li>
 
-                                    <li id="menu-help" class="level1 item164 <?php if(strcmp("$menu","help")==0) { echo 'active current'; } ?>"><a href="/cultibox/main/docs/documentation_cultibox.pdf" target="_blank" class="level1 href-help <?php if(strcmp("$menu","help")==0) { echo 'active current'; } ?>"><span class="<?php if(strcmp("$menu","help")==0) { echo 'active'; } ?>"><?php echo __('MENU_HELP'); ?></span></a></li>
+                                    <li id="menu-help" class="level1 item164"><a href="/cultibox/main/docs/documentation_cultibox.pdf" target="_blank" class="level1 href-help"><span><?php echo __('MENU_HELP'); ?></span></a></li>
                                 </ul>
                             </nav>
-
                         </div>               
-                        
                     </div>
                 </header>
+
+                <div class="message" style="display:none" title="<?php echo __('MESSAGE_BOX'); ?>">
+                    <br />
+                    <div id="pop_up_information_container">
+                        <img src="main/libs/img/informations.png" alt="" />
+                        <label class="info_title"><?php echo __('INFORMATION'); ?>:</label>
+                        <div class="info"  id="pop_up_information_part">
+                            <ul>
+                            </ul>
+                            <br />
+                        </div>
+                    </div>
+                    <div id="pop_up_error_container">
+                        <img src="main/libs/img/warning.png" alt="" />
+                        <label class="error_title"><?php  echo __('WARNING'); ?>:</label>
+                        <div class="error" id="pop_up_error_part">
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <!-- To check that javascript is enable: -->
+                <noscript>
+                <div id="compat-js" class="text_info">
+                <p><?php echo __('ENABLE_JAVASCRIPT'); ?></p>
+                </div>
+                </noscript>
                 
                 <!--  Main content part: -->
                 <div id="main" class="grid-block">

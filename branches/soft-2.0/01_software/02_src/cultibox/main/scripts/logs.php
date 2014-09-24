@@ -16,7 +16,7 @@ $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
 $fake_log=false;
 
-$second_regul=get_configuration("SECOND_REGUL",$main_error);
+$second_regul=get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
 
 if(!isset($select_plug)) {
     $select_plug=getvar('select_plug');

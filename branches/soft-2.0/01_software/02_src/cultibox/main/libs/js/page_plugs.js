@@ -145,7 +145,7 @@ $(document).ready(function(){
         var checked=true;
 
         for(i=1;i<=nb_plugs;i++) {
-            var checked=true;
+
             $("#error_power_value"+i).css("display","none");
             $("#error_tolerance_value_humi"+i).css("display","none");
             $("#error_tolerance_value_temp"+i).css("display","none");

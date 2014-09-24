@@ -43,7 +43,6 @@ $conf_arr["RECORD_FREQUENCY"]       = array ("update_conf" => "1", "var" => "rec
 $conf_arr["POWER_FREQUENCY"]        = array ("update_conf" => "1", "var" => "power_frequency");
 $conf_arr["UPDATE_PLUGS_FREQUENCY"] = array ("update_conf" => "1", "var" => "update_frequency");
 $conf_arr["NB_PLUGS"]               = array ("update_conf" => "0", "var" => "nb_plugs");
-$conf_arr["SECOND_REGUL"]           = array ("update_conf" => "0", "var" => "second_regul");
 $conf_arr["STATISTICS"]             = array ("update_conf" => "0", "var" => "stats");
 $conf_arr["SHOW_COST"]              = array ("update_conf" => "0", "var" => "show_cost");
 $conf_arr["ADVANCED_REGUL_OPTIONS"] = array ("update_conf" => "1", "var" => "advanced_regul");

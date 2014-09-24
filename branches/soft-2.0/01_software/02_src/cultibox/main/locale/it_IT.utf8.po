@@ -838,9 +838,6 @@ msgstr "Aggiungere il supporto per configurare"
 msgid "TITLE_REMOVE_PLUG"
 msgstr "Eliminare l'ultimo colpo"
 
-msgid "RESET_CONFIRM_PROGRAM"
-msgstr "Sei sicuro di voler ripristinare il programma / presa (s) selezionato (s)?"
-
 msgid "BEHAVIOUR"
 msgstr "Comportamento"
 

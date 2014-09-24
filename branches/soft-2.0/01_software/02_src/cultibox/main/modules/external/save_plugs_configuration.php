@@ -13,6 +13,7 @@ $type=getvar("plug_type${nb}");
 $tolerance=getvar("plug_tolerance{$nb}");
 $power=getvar("plug_power${nb}");
 $compute_method=getvar("plug_compute_method${nb}");
+$second_regul=get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
     
 if((strcmp("$type","lamp")==0)||(strcmp("$type","other")==0)) {
      $regul="False";

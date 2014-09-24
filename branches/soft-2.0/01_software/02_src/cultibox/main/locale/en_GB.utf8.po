@@ -838,9 +838,6 @@ msgstr "Add support to configure"
 msgid "TITLE_REMOVE_PLUG"
 msgstr "Delete the last shot"
 
-msgid "RESET_CONFIRM_PROGRAM"
-msgstr "Are you sure you want to reset the program to / the socket (s) selected (s)?"
-
 msgid "BEHAVIOUR"
 msgstr "Behavior"
 

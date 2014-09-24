@@ -11,6 +11,8 @@ Cultibox (2.0.02) precise; urgency=low
     + Passage de l'onglet programme en AJAX
     + Passage de l'onglet prise en AJAX
     + Passage de l'onglet Wizard en AJAX
+    + Fusion des options de régulation secondaire et de régulation avançée
+    + Passage de la fenêtre de dialogue dans la page principale pour ne pas la détruire/recréer à chaque fois
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon Sep 16  08:49:17 CEST 2014
 

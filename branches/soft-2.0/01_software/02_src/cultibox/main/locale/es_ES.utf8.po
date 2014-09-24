@@ -838,9 +838,6 @@ msgstr "Anadir un enchufe a programar"
 msgid "TITLE_REMOVE_PLUG"
 msgstr "Eliminar el ultimo enchufe"
 
-msgid "RESET_CONFIRM_PROGRAM"
-msgstr "Seguro de reinicializar el programa para el/los enchufe(s) seleccionado(s)?"
-
 msgid "BEHAVIOUR"
 msgstr "Comportamiento"
 

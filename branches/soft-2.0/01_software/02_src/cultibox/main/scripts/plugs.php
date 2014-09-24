@@ -10,9 +10,10 @@ $main_info=array();
 
 // ================= VARIABLES ================= //
 $nb_plugs=get_configuration("NB_PLUGS",$main_error);
-$advanced_regul=get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
 $version=get_configuration("VERSION",$main_error);
-$second_regul=get_configuration("SECOND_REGUL",$main_error);
+$second_regul=get_configuration("ADVANCED_REGUL_OPTIONS",$main_error);
+$plug_count_sensor=array();
+
 
 if(!isset($submit_plugs)) {
     $submit_plugs=getvar("submit_plugs");
@@ -70,8 +71,10 @@ for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_tolerance{$nb}=get_plug_conf("PLUG_TOLERANCE",$nb,$main_error);
    $plug_second_tolerance{$nb}=get_plug_conf("PLUG_SECOND_TOLERANCE",$nb,$main_error); 
    $plug_compute_method{$nb}=get_plug_conf("PLUG_COMPUTE_METHOD",$nb,$main_error);
+   $plug_regul_sensor{$nb}=get_plug_conf("PLUG_REGUL_SENSOR",$nb,$main_error);
 
    $plug_sensor[$nb]=get_plug_regul_sensor($nb,$main_error);
+   $plug_count_sensor[$nb]=count(explode("-",$plug_regul_sensor{$nb}));
 }
 
 

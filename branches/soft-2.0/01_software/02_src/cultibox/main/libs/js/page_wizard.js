@@ -43,7 +43,6 @@ $(document).ready(function(){
 
    $("#close").click(function(e) {
        e.preventDefault();
-        alert($("#plug_type option:selected").val());
        var get_urls = getUrlVars('selected_plugs=<?php echo $selected_plug; ?>');
        get_content("programs",get_urls);
    });

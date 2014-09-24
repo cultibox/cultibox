@@ -838,9 +838,6 @@ msgstr "Ajouter une prise à configurer"
 msgid "TITLE_REMOVE_PLUG"
 msgstr "Supprimer la dernière prise"
 
-msgid "RESET_CONFIRM_PROGRAM"
-msgstr "Êtes-vous sûr de vouloir ré-initialiser le programme pour la/les prise(s) sélectionnée(s)?"
-
 msgid "BEHAVIOUR"
 msgstr "Comportement"
 

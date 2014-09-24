@@ -838,9 +838,6 @@ msgstr "In Unterstützung konfigurieren"
 msgid "TITLE_REMOVE_PLUG"
 msgstr "Die letzte Aufnahme löschen"
 
-msgid "RESET_CONFIRM_PROGRAM"
-msgstr "Sind Sie sicher, dass Sie das Programm / die Steckdose (n), ausgewählt (en) zurückzusetzen zu wollen?"
-
 msgid "BEHAVIOUR"
 msgstr "Verhalten"
 

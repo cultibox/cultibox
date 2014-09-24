@@ -54,18 +54,9 @@
              </select></td>
             <td></td>
        </tr>
-       <tr>
-             <td class="conf-marge"></td>
-             <td><?php echo __('SECOND_REGUL_ENABLE'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SECOND_REGUL_ENABLE'); ?>" /></td>
-             <td><select name="second_regul" id="second_regul">
-                <option value="True" <?php if(strcmp("$second_regul","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>
-                <option value="False" <?php if(strcmp("$second_regul","False")==0) echo "selected"; ?>><?php echo __('NO'); ?></option>
-             </select></td>
-            <td></td>
-       </tr>
         <tr>
             <td class="conf-marge"></td>
-            <td><?php echo __('ADVANCED_REGUL_OPTIONS'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_ADVANCED_REGUL_OPTIONS'); ?>" /></td>
+            <td><?php echo __('ADVANCED_REGUL_OPTIONS'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SECOND_REGUL_ENABLE'); ?><?php echo __('TOOLTIP_ADVANCED_REGUL_OPTIONS'); ?>" /></td>
             <td>
                 <select name="advanced_regul_options" id="advanced_regul_options">
                     <option value="True" <?php if(strcmp("$advanced_regul","True")==0) echo "selected"; ?>><?php echo __('YES'); ?></option>

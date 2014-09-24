@@ -1681,7 +1681,7 @@ function optimize_program($arr) {
 // RET an array containing datas
 function create_plugconf_from_database($nb=0,&$out) {
 
-   $second_regul=get_configuration("SECOND_REGUL",$out);
+   $second_regul=get_configuration("ADVANCED_REGUL_OPTIONS",$out);
    
    if($nb>0) {
    

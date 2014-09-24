@@ -1,5 +1,7 @@
 <?php
 
+require_once('../../libs/config.php');
+
 if((isset($_GET['page']))&&(!empty($_GET['page']))) {
    $page=$_GET['page'];
 
@@ -14,15 +16,15 @@ if((isset($_GET['page']))&&(!empty($_GET['page']))) {
         $get_array=json_decode($_GET['get_array'],true);
         foreach(array_keys($get_array) as $get) {
             ${$get}=$get_array[$get];
-        
-            echo $get."-----".$get_array[$get]."<br />";
+
+            if($GLOBALS['DEBUG_TRACE']) {        
+                echo $get."-----".$get_array[$get]."<br />";
+            }
         }
     }
 
     ob_start();
-    include $GLOBALS['BASE_PATH'].'main/templates/popup.html';
     include $GLOBALS['BASE_PATH'].'main/scripts/'.$page.'.php';
-
     include $GLOBALS['BASE_PATH'].'main/scripts/post_script.php';
     include $GLOBALS['BASE_PATH'].'main/libs/js/page_'.$page.'.js';
     include $GLOBALS['BASE_PATH'].'main/templates/'.$page.'.html';
