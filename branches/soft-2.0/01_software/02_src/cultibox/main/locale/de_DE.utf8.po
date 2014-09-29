@@ -558,6 +558,9 @@ msgstr "Auswahl Kurven"
 msgid "NO_SENSOR_DEFINED"
 msgstr "Kein Sensor Set"
 
+msgid "PREPARING_EXPORT"
+msgstr "Datei in Vorbereitung..."
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -859,6 +862,9 @@ msgstr "Zyklus"
 msgid "VALUE_DIMMER"
 msgstr "Dimmer"
 
+msgid "SELECTED_DAILY_PROGRAM"
+msgstr "das Programm für die Spiel"
+
 msgid "PROGRAM_DAILY_SAVE"
 msgstr "Speichern Sie eine Kopie"
 
@@ -900,6 +906,15 @@ msgstr "Entfernen Sie die Grenze von 5 min"
 
 msgid "NO_PLUG_SELECTED"
 msgstr "Keine Unterstützung ausgewählt"
+
+msgid "SELECT_FILE_NAME"
+msgstr "Keine Datei ausgewählt"
+
+msgid "TITLE_EXPORT_SET_PROGRAM"
+msgstr "Exportieren Sie eine Menge von Programmen"
+
+msgid "TITLE_IMPORT_SET_PROGRAM"
+msgstr "Importieren Sie eine Reihe von Programmen"
 
 
 # For the export module highchart part:

@@ -20,7 +20,6 @@ rep            = <?php echo json_encode($rep) ?>;
 error_valueJS  = <?php echo json_encode($error_value) ?>;
 var reload_page=false;
 
-
 $(document).ready(function(){
      if(sd_card=="") {
         $.ajax({
@@ -88,7 +87,140 @@ $(document).ready(function(){
                 $("#reset_submit").val("<?php echo __('RESET_PROGRAM','jquery'); ?>");
                 $("#reset_submit").prop('disabled', false);
             }
+    });
+
+    $("#export_program").click(function(e) {
+        e.preventDefault();
+        $("#preparing-file-modal").dialog({ modal: true, resizable: false });
+        $.ajax({
+             cache: false,
+             async: false,
+             url: "main/modules/external/manage_export_prog.php",
+             data: {selected_plug:$("#export_selected_plug option:selected").val(),program_index:$("#export_program_index_id option:selected").val()}
+        }).done(function (data) {
+            $("#preparing-file-modal").dialog('close');
+            if(jQuery.parseJSON(data)!="0") {
+                 $.fileDownload('tmp/export/'+jQuery.parseJSON(data));
+            }
         });
+    });
+
+    $("#export_set_program").click(function(e) {
+        e.preventDefault();
+        $("#preparing-file-modal").dialog({ modal: true, resizable: false });
+        $.ajax({
+             cache: false,
+             async: false,
+             url: "main/modules/external/manage_export_prog.php",
+             data: {selected_plug:<?php echo $nb_plugs; ?>,program_index:$("#export_set_program_index_id option:selected").val(),type:"set"}
+        }).done(function (data) {
+            $("#preparing-file-modal").dialog('close');
+            if(jQuery.parseJSON(data)!="0") {
+                 $.fileDownload('tmp/export/'+jQuery.parseJSON(data));
+            }
+        });
+    });
+
+
+    $('#import_program').click(function (e) {
+        e.preventDefault();
+    });
+
+    $('#import_set_program').click(function (e) {
+        e.preventDefault();
+    });
+
+    
+    
+    // Call the fileupload widget and set some parameters
+     $('#fileupload').fileupload({
+        dataType: 'json',
+        url: 'main/modules/external/files.php',
+        add: function (e, data) {
+            var name="";
+            $.each(data.files, function (index, file) {
+                name=file.name;
+            });
+
+            $('#import_name_file').text(name);
+            $('#import_program').val("<?php echo __('IMPORT_PROGRAM'); ?>");
+            $('#import_program').removeClass("inputDisable");
+            $('#import_program').attr('disabled', false);
+            
+            
+            data.context = $('#import_program').click(function () {
+                    data.submit();
+            });
+        },
+        done: function (e, data) {
+            e.preventDefault();
+            $("#manage_program").dialog('close');
+
+            var name="";
+            $.each(data.result.files, function (index, file) {
+                name=file.name;
+            });
+            
+            $.ajax({
+             cache: false,
+             async: false,
+             url: "main/modules/external/manage_import_prog.php",
+             data: {selected_plug:$("#import_selected_plug option:selected").val(),program_index_id:$("#import_program_index_id option:selected").val(),file:name}
+         }).done(function (data) {
+             try  {
+                get_content("programs",getUrlVars("selected_plug="+$("#import_selected_plug option:selected").val()+"&program_index_id="+$("#import_program_index_id option:selected").val()));
+             } catch(err) {
+                get_content("programs");
+             }
+         });
+
+        }
+    });
+
+
+     $('#fileuploadset').fileupload({
+        dataType: 'json',
+        url: 'main/modules/external/files.php',
+        add: function (e, data) {
+            var name="";
+            $.each(data.files, function (index, file) {
+                name=file.name;
+            });
+
+            $('#import_set_name_file').text(name);
+            $('#import_set_program').val("<?php echo __('IMPORT_PROGRAM'); ?>");
+            $('#import_set_program').removeClass("inputDisable");
+            $('#import_set_program').attr('disabled', false);
+
+
+            data.context = $('#import_set_program').click(function () {
+                    data.submit();
+            });
+        },
+        done: function (e, data) {
+            e.preventDefault();
+            $("#manage_program").dialog('close');
+
+            var name="";
+            $.each(data.result.files, function (index, file) {
+                name=file.name;
+            });
+
+            $.ajax({
+             cache: false,
+             async: false,
+             url: "main/modules/external/manage_import_prog.php",
+             data: {selected_plug:<?php echo $nb_plugs; ?>,program_index_id:$("#import_set_program_index_id option:selected").val(),file:name,type:"set"}
+         }).done(function (data) {
+             try  {
+                get_content("programs",getUrlVars("selected_plug=1&program_index_id="+$("#import_set_program_index_id option:selected").val()));
+             } catch(err) {
+                get_content("programs");
+             }
+         });
+
+        }
+    });
 
 
     // Check errors for the programs part:
@@ -295,6 +427,11 @@ $(document).ready(function(){
                     if(reload_page) {   
                          get_content("programs");
                     } else {
+                        //Reset import file:
+                        $('#import_name_file').text("");
+                        $('#import_program').val("<?php echo __('SELECT_FILE_NAME'); ?>");
+                        $('#import_program').attr('disabled', true);
+                        $('#import_program').addClass("inputDisable");
                         return false;
                     }
                 }
@@ -340,6 +477,9 @@ $(document).ready(function(){
                     idToDelete = $( "#program_delete_index" ).val()
                     $("#program_delete_index option[value='" + idToDelete + "']").remove();
                     $("#program_index_id_id option[value='" + idToDelete + "']").remove();
+
+                    $("#export_program_index_id option[value='" + idToDelete + "']").remove();
+                    $("#import_program_index_id option[value='" + idToDelete + "']").remove();
 
                     if($("#program_delete_index option").length==0) {
                             $("#program_delete_index").css("display","none");
@@ -417,6 +557,10 @@ $(document).ready(function(){
                                 // Add program in select
                                 $('#program_delete_index').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
                                 $('#program_index_id_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+
+                                $('#export_program_index_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                                $('#import_program_index_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+
 
                                 $("#daily_delete_button").removeAttr('disabled');
                                 $("#daily_delete_button").removeClass("inputDisable");
@@ -498,7 +642,8 @@ $(document).ready(function(){
         }
     });
 
-    $("#daily_save_button").button().click(function() {
+    $("#daily_save_button").button().click(function(e) {
+        e.preventDefault();
         $("#dialog-form-save-daily").dialog('open');
     });
 

@@ -933,4 +933,70 @@ function translate_PlugType ($plug) {
 }
 //}}}
 
+
+// {{{ generate_program_from_file()
+//ROLE generate array containing data for a program from a file
+// IN  $file         file to be read
+//     $plug         plug id for the program
+//     $idx          program_index
+//     $out          error or warning message
+// RET array containing program's data
+function generate_program_from_file($file="",$plug,$idx=1,&$out) {
+    $res=array();
+    $handle=fopen("$file", 'r');
+    if($handle) {
+        while (!feof($handle)) {
+            $buffer = fgets($handle);
+            $temp = explode("\t", $buffer);
+            if(count($temp)==4) {
+                if(is_numeric($plug)) {
+                    $res[]=array(
+                        "selected_plug" => $plug,
+                        "start_time" => $temp[0],
+                        "end_time" => $temp[1],
+                        "value_program" => $temp[2],
+                        "type" =>  $temp[3],
+                        "number" => $idx
+                    );
+                }
+            }
+        }
+    }
+    return $res;
+}
+//}}}
+
+
+// {{{ advRmDir()
+//ROLE remove directory and its contents
+// IN  $dir     to bo be removed
+// RET false if an error occured, true else
+function advRmDir($dir) {
+    // ajout du slash a la fin du chemin s'il n'y est pas
+    if( !preg_match( "/^.*\/$/", $dir ) ) $dir .= '/';
+ 
+    // Ouverture du repertoire demande
+    $handle = @opendir( $dir );
+ 
+    // si pas d'erreur d'ouverture du dossier on lance le scan
+    if( $handle != false ) {
+        // Parcours du repertoire
+        while( $item = readdir($handle) ) {
+            if($item != "." && $item != "..") {
+                if( is_dir( $dir.$item ) ) advRmDir( $dir.$item );
+                else @unlink( $dir.$item );
+            }
+        }
+ 
+        // Fermeture du repertoire
+        closedir($handle);
+ 
+        // suppression du repertoire
+        $res = @rmdir($dir);
+    } else {
+         $res = false;
+    }
+    return $res;
+}
+
 ?>

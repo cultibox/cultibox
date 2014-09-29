@@ -834,26 +834,32 @@ $(document).ready(function() {
 $(document).ready(function() {
     $("#export_log_power").click(function(e) {
         e.preventDefault();
+        $("#preparing-file-modal").dialog({ modal: true, resizable: false });
+
         $.ajax({
             cache: false,
             url: "main/modules/external/export_logs.php",
             data: {type:"power"}
         }).done(function(data) {
+           $("#preparing-file-modal").dialog('close');
            if(jQuery.parseJSON(data)!="0") {
-                $.fileDownload('tmp/'+jQuery.parseJSON(data));
+                 $.fileDownload('tmp/export/'+jQuery.parseJSON(data));
             }
         });
     });
 
      $("#export_log").click(function(e) {
         e.preventDefault();
+        $("#preparing-file-modal").dialog({ modal: true, resizable: false });
+
         $.ajax({
             cache: false,
             url: "main/modules/external/export_logs.php",
             data: {type:"logs"}
         }).done(function(data) {
+           $("#preparing-file-modal").dialog('close');
            if(jQuery.parseJSON(data)!="0") {
-                $.fileDownload('tmp/'+jQuery.parseJSON(data));
+                $.fileDownload('tmp/export/'+jQuery.parseJSON(data));
             }
         });
     });

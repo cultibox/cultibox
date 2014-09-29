@@ -732,7 +732,7 @@ $(document).ready(function(){
             if(sd_card!="") {
                 $.ajax({
                     type: "GET",
-                    url: "http://localhost:6891/cultibox/main/modules/external/check_and_update_sd.php",
+                    url: "main/modules/external/check_and_update_sd.php",
                     data: {
                         force_rtc_offset_value:1,
                         sd_card:sd_card

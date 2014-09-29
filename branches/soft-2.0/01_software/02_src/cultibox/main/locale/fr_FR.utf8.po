@@ -558,6 +558,9 @@ msgstr "Sélection des courbes"
 msgid "NO_SENSOR_DEFINED"
 msgstr "Aucun capteur définie"
 
+msgid "PREPARING_EXPORT"
+msgstr "Fichier en cours de préparation..."
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -859,6 +862,9 @@ msgstr "Durée"
 msgid "VALUE_DIMMER"
 msgstr "Variateur"
 
+msgid "SELECTED_DAILY_PROGRAM"
+msgstr "pour le jeu de programme"
+
 msgid "PROGRAM_DAILY_SAVE"
 msgstr "Enregistrer une copie du jeu de programmes"
 
@@ -900,6 +906,16 @@ msgstr "Supprimer la limite de 5 minutes"
 
 msgid "NO_PLUG_SELECTED"
 msgstr "Aucune prise sélectionnée"
+
+msgid "SELECT_FILE_NAME"
+msgstr "Aucun fichier selectionné"
+
+msgid "TITLE_EXPORT_SET_PROGRAM"
+msgstr "Exporter un jeu de programmes"
+
+msgid "TITLE_IMPORT_SET_PROGRAM"
+msgstr "Importer un jeu de programmes"
+
 
 
 # For the export module highchart part :
@@ -1789,6 +1805,12 @@ msgstr "Permet de modifier la cadence de l'horloge interne de la Cultibox."
 
 msgid "TOOLTIP_NO_SENSOR_DEFINED"
 msgstr "Aucun capteur n'est encore définie: lors du premier chargement de vos logs depuis la carte SD, vos capteurs seront configurés automatiquement"
+
+msgid "TOOLTIP_EXPORT_SET_PROGRAM"
+msgstr "Cette fonctionnalité permet d'exporter un jeu de programme et les programmes des prises qui le composent dans un fichier. Ce fichier peut être utilisé pour appliquer, avec la fonction d'importation, une serie de programmes sur les prises qui composent un jeu de programme."
+
+msgid "TOOLTIP_IMPORT_SET_PROGRAM"
+msgstr "Cette fonctionnalité permet d'importer un jeu de programme depuis un fichier. Le fichier à importer peut être créé par la fonction d'exportation par un autre utilisateur Cultibox pour échanger des programmes."
 
 
 #For the debug part:

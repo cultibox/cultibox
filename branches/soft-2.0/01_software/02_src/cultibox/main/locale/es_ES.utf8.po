@@ -558,6 +558,9 @@ msgstr "Curvas de selección"
 msgid "NO_SENSOR_DEFINED"
 msgstr "Ningún conjunto sensor"
 
+msgid "PREPARING_EXPORT"
+msgstr "Presente en preparación..."
+
 
 # For the plugs part:
 msgid "PLUG"
@@ -859,6 +862,9 @@ msgstr "Ciclo período"
 msgid "VALUE_DIMMER"
 msgstr "Regulador de intensidad"
 
+msgid "SELECTED_DAILY_PROGRAM"
+msgstr "el programa de juego"
+
 msgid "PROGRAM_DAILY_SAVE"
 msgstr "Guarde una copia"
 
@@ -900,6 +906,15 @@ msgstr "Retire el límite de 5 minutos"
 
 msgid "NO_PLUG_SELECTED"
 msgstr "No hay enchufes seleccionado"
+
+msgid "SELECT_FILE_NAME"
+msgstr "No archivo seleccionado"
+
+msgid "TITLE_EXPORT_SET_PROGRAM"
+msgstr "Exportar un conjunto de programas"
+
+msgid "TITLE_IMPORT_SET_PROGRAM"
+msgstr "Importar un conjunto de programas"
 
 
 # For the export module highchart part:

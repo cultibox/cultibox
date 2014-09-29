@@ -330,6 +330,7 @@ function insert_program($program,&$out,$indexNumber) {
         if(!insert_program_value($program[0]['selected_plug'],$tmp,$out)) 
             $ret=false;
     }
+
     return $ret;
 }
 // }}}

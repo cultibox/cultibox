@@ -33,10 +33,8 @@ if [ $? -eq 0 ]; then
                 exit 0
             fi
         done
-else
-        exit 1
 fi
-exit 0
+exit 1
 EOF
       chmod +x /Applications/cultibox/run/get_version.sh
       /Applications/cultibox/xamppfiles/xampp stop

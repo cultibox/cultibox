@@ -11,7 +11,7 @@ function export_table_csv($name="",&$out) {
     if($name == "")
         return 0;
 
-    $file="../../../tmp/$name.csv";
+    $file="../../../tmp/export/$name.csv";
 
     if(is_file($file)) {
         unlink($file);

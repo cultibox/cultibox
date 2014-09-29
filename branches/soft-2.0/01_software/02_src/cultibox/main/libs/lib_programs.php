@@ -750,7 +750,7 @@ function get_curve_information($curveType, $curveIndex = 0) {
 // IN $id          id of the program
 //    $out         error or warning message
 // RET none
-function export_program($id,$program_index,&$out) {
+function export_program($id,$program_index,$file="") {
        $sql = "SELECT * FROM programs WHERE plug_id = {$id} AND number = {$program_index}";
        
        $db=\db_priv_pdo_start();
@@ -762,16 +762,18 @@ function export_program($id,$program_index,&$out) {
            $ret=$e->getMessage();
        }
        $db=null;
-       $file="tmp/program_plug${id}.prg";
+       if(strcmp("$file","")==0) {
+           $file="../../../tmp/export/program_plug${id}.csv";
+        }
 
        if($f=fopen("$file","w")) {
-            fputs($f,"#Program : time_start time_stop value type\r\n");
+            fputs($f,"time_start	time_stop	value	type\r\n");
             if(count($res)>0) {
                foreach($res as $record) {
-                  fputs($f,$record['time_start'].",".$record['time_stop'].",".$record['value'].",".$record['type']."\r\n");
+                  fputs($f,$record['time_start']."	".$record['time_stop']."	".$record['value']."	".$record['type']."\r\n");
                }
             } else {
-                    fputs($f,"000000,235959,0,0\r\n");
+                    fputs($f,"000000	235959	0	0\r\n");
             }
       } 
       fclose($f);

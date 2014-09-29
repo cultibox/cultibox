@@ -247,10 +247,10 @@
 
 <!-- Modal form for settings -->
 <div id="manage_program" style="display:none" title="<?php echo __('PARAMETERS_PROGRAM_TITLE'); ?>">
-    <table>
+    <table class="table_width">
         <!-- Add plug -->
         <tr>
-            <td> 
+            <td class="program-td-management"> 
                 <?php echo __('TITLE_ADD_PLUG'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_ADD_PLUG'); ?>" />
             </td>
             <td>
@@ -284,10 +284,14 @@
                 </form>
             </td>
         </tr>  
-        
-        <!-- export plug program -->
+    </table>
+    <br />
+    <hr />
+    <br />
+    <table class="table_width">
+        <!-- Export plug program -->
         <tr>
-            <td> 
+            <td class="program-td-management">
                 <?php echo __('TITLE_EXPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_PROGRAM'); ?>" />
             </td>
             <td>
@@ -302,10 +306,20 @@
                         } 
                     ?>
                     </select>
-                    <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
-                    <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export">
-                    <input type="hidden" name="selected_plug" id="selected_plug_export" value="<?php echo $selected_plug; ?>">
+                    <?php echo __('SELECTED_DAILY_PROGRAM'); ?>
+                    <select name="export_program_index_id" id="export_program_index_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
+                        <?php
+                            $array = array();
+                            program\get_program_index_info($array);
+                            foreach ($array as $row)
+                            {
+                                echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
+                            }
+                        ?>
+                    </select>
+                    <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export" id="export_program">
                 </form>
+                <br />
             </td>
         </tr> 
         <!-- Import plug program -->
@@ -314,7 +328,7 @@
                 <?php echo __('TITLE_IMPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_PROGRAM'); ?>" />
             </td>
             <td>
-                <form action="/cultibox/index.php?menu=programs" method="post" enctype= "multipart/form-data">
+                <form action="/cultibox/index.php?menu=programs" method="post" enctype= "multipart/form-data" name="import_form" id="import_form">
                     <select name="import_selected_plug" id="import_selected_plug">
                     <?php for($i=1;$i<=$nb_plugs;$i++) {
                             if("$i"=="$export_selected") {
@@ -325,17 +339,73 @@
                         }
                     ?>
                     </select> 
-                    <input type="hidden" name="program_index_id" value="<?php echo $program_index_id; ?>">
-                    <input type="file" name="upload_file">
-                    <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-                    <input type="submit" name="import" value="<?php echo __('IMPORT_PROGRAM'); ?>">
+                    <?php echo __('SELECTED_DAILY_PROGRAM'); ?>
+                    <select name="import_program_index_id" id="import_program_index_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
+                        <?php
+                            $array = array();
+                            program\get_program_index_info($array);
+                            foreach ($array as $row)
+                            {
+                                echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
+                            }
+                        ?>
+                    </select>
+                    <input id="fileupload" type="file" name="files[]"><label id="import_name_file" class="imported_file"></label>
+                    <input type="submit" name="import" value="<?php echo __('SELECT_FILE_NAME'); ?>" id="import_program" class="inputDisable" disabled>
                 </form>
             </td>
         </tr> 
-            
-        <!-- Open daily programm -->
+         <!-- Export set of programs -->
         <tr>
             <td>
+                <?php echo __('TITLE_EXPORT_SET_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_SET_PROGRAM'); ?>" />
+            </td>
+            <td>
+                <form action="/cultibox/index.php?menu=programs" method="post" enctype= "multipart/form-data" name="export_set_form" id="export_set_form">
+                    <select name="export_set_program_index_id" id="export_set_program_index_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
+                        <?php
+                            $array = array();
+                            program\get_program_index_info($array);
+                            foreach ($array as $row)
+                            {
+                                echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
+                            }
+                        ?>
+                    </select>
+                    <input type="submit" name="export_set" value="<?php echo __('EXPORT_PROGRAM'); ?>" id="export_set_program" <?php if($nb_daily_program==0) { ?> disabled<?php } ?>>
+                </form>
+            </td>
+        </tr>
+         <!-- Import set of programs -->
+        <tr>
+            <td>
+                <?php echo __('TITLE_IMPORT_SET_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_SET_PROGRAM'); ?>" />
+            </td>
+            <td>
+                <form action="/cultibox/index.php?menu=programs" method="post" enctype= "multipart/form-data" name="import_set_form" id="import_set_form">
+                    <select name="import_set_program_index_id" id="import_set_program_index_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
+                        <?php
+                            $array = array();
+                            program\get_program_index_info($array);
+                            foreach ($array as $row)
+                            {
+                                echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
+                            }
+                        ?>
+                    </select>
+                    <input id="fileuploadset" type="file" name="files[]"><label id="import_set_name_file" class="imported_file"></label>
+                    <input type="submit" name="import_set" value="<?php echo __('SELECT_FILE_NAME'); ?>" id="import_set_program" class="inputDisable" disabled>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <hr />
+    <br />
+    <table class="table_width">
+        <!-- Open daily program -->
+        <tr>
+            <td class="program-td-management">
                 <?php echo __('PROGRAM_DAILY_OPEN_SELECT'); ?>
             </td>
             <td>
@@ -360,7 +430,7 @@
                 <?php echo __('PROGRAM_DAILY_SAVE'); ?>
             </td>
             <td>
-                <input type="button" id="daily_save_button" name="daily_save_button" value="<?php echo __('SAVE_DIALOG_CALENDAR'); ?>">
+                <input type="submit" id="daily_save_button" name="daily_save_button" value="<?php echo __('SAVE_DIALOG_CALENDAR'); ?>">
             </td>
         </tr>
         <tr>
@@ -382,9 +452,15 @@
                 </select>
                 <input type="submit" id="daily_delete_button" name="daily_delete_button" <?php if($nb_daily_program==0) { ?>value="<?php echo __('NO_DAILY_PROGRAM_TO_DELETE'); ?>" class="inputDisable" disabled <?php } else { ?>value="<?php echo __('PROGRAM_DAILY_DELETE'); ?>" <?php } ?>>
             </td>
-                <tr>
-             <!-- Remove limit of 1000 changes in programm -->
-             <td>
+        </tr>
+    </table>    
+    <br />
+    <hr />
+    <br />
+    <table class="table_width">
+        <!-- Remove limit of 1000 changes in programm -->
+        <tr>
+            <td class="program-td-management">
                  <?php echo __('REMOVE_1000_CHANGE_LIMIT_SELECT'); ?>
              </td>
              <td>
@@ -436,3 +512,6 @@
 <div id="dialog-form-add-daily-format-error" style="display:none">
 <p><?php echo __('ERROR_PROGRAM_WRONG_NAME'); ?></p>
 </div>
+
+<div id="preparing-file-modal" title="" style="display: none;"><?php echo __('PREPARING_EXPORT'); ?></div>
+

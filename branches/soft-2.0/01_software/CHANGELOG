@@ -13,6 +13,10 @@ Cultibox (2.0.02) precise; urgency=low
     + Passage de l'onglet Wizard en AJAX
     + Fusion des options de régulation secondaire et de régulation avançée
     + Passage de la fenêtre de dialogue dans la page principale pour ne pas la détruire/recréer à chaque fois
+    + AJout de l'export/import d'un jeu de programme
+    + Possibilité d'importer un programme pour un jeu de programme particulier
+    + Correction de l'export/import dans les répertoires correspondants
+    + Passage en JQUERY de l'import/export des fichiers logs et programmes
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon Sep 16  08:49:17 CEST 2014
 

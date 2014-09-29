@@ -13,8 +13,13 @@ if((isset($_GET['type']))&&(!empty($_GET['type']))) {
 if((!isset($type))||(empty($type))) {
     echo json_encode("0");
 } else {
+    if(is_dir("../../../tmp/export")) {
+        advRmDir("../../../tmp/export");
+    }
+    @mkdir("../../../tmp/export");
+
      logs\export_table_csv("$type",$main_error);
-     $file="../../../tmp/power.csv";
+     $file="../../../tmp/export/$type.csv";
      if (($file != "") && (file_exists("./$file"))) {
         echo json_encode($type.".csv");
      } else {

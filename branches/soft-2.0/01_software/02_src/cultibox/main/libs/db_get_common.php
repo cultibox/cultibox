@@ -2122,38 +2122,6 @@ function check_programs($nb_plugs=3,$id=-1) {
 // }}}
 
 
-// {{{ generate_program_from_file()
-//ROLE generate array containing data for a program from a file
-// IN  $file         file to be read
-//     $plug         plug id for the program
-//     $out          error or warning message
-// RET array containing program's data
-function generate_program_from_file($file="",$plug,&$out) {
-    $res=array();
-    $handle=fopen("$file", 'r');
-    if($handle) {
-        while (!feof($handle)) {
-            $buffer = fgets($handle);
-            $temp = explode(",", $buffer);
-            if(count($temp)==4) {
-                if(is_numeric($plug)) {
-                    $res[]=array(
-                        "selected_plug" => $plug,
-                        "start_time" => $temp[0],
-                        "end_time" => $temp[1],
-                        "value_program" => $temp[2],
-                        "type" =>  $temp[3],
-                        "number" => 1
-                    );
-                }
-            }
-        }
-    }
-    return $res;
-}
-// }}}
-
-
 // {{{ format_regul_sumary()
 // ROLE format regulation of a plug to be displayed in a summary
 // IN    $number     id of the plug
