@@ -50,6 +50,8 @@ case "$1" in
            cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/opt/lampp/etc/extra/
            cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/opt/lampp/etc/
            cp conf-lampp/properties.ini ../01_src/01_xampp/cultibox/opt/lampp/
+           cp conf-lampp/adminer-4.1.0.php  ../01_src/01_xampp/cultibox/opt/lampp/htdocs/
+
 
            
             cat > ../01_src/01_xampp/cultibox/opt/lampp/etc/my-extra.cnf << "EOF" 

@@ -41,6 +41,7 @@ case "$1" in
             cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/xamppfiles/etc/
             cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/xamppfiles/etc/extra/
             cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/xamppfiles/etc/
+            cp conf-lampp/adminer-4.1.0.php ../01_src/01_xampp/cultibox/xamppfiles/htdocs/
 
   cat > ../01_src/01_xampp/cultibox/xamppfiles/etc/my-extra.cnf << "EOF" 
 [client]

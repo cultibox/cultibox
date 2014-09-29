@@ -76,6 +76,7 @@ case "$1" in
         cp conf-lampp/my.ini ../01_src/01_xampp/cultibox/mysql/bin/
         cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/php/
         cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/apache/conf/extra/
+        cp conf-lampp/adminer-4.1.0.php  ../01_src/01_xampp/cultibox/htdocs/
 
         cp -R ../01_src/02_sql ../01_src/01_xampp/cultibox/sql_install
         cp conf-package/update_sql.bat ../01_src/01_xampp/cultibox/sql_install/
