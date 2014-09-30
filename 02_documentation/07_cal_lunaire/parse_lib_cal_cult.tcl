@@ -17,7 +17,7 @@ puts $fid {
       <content type = "text">Jour fruit</content>
       <cbx_symbol>0xB1</cbx_symbol>
       <duration>0</duration>}
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+puts $fid "      <start>2015-${mois}-${jour}T12:00:00+00:00</start>"
 puts $fid {      <icon>fruit.png</icon>
       <color>#DF0174</color>
    </entry>
@@ -41,7 +41,7 @@ puts $fid {
       <content type = "text">Jour racine</content>
       <cbx_symbol>0xB2</cbx_symbol>
       <duration>0</duration>}
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+puts $fid "      <start>2015-${mois}-${jour}T12:00:00+00:00</start>"
 puts $fid {      <icon>carotte.png</icon>
       <color>#610B0B</color>
    </entry>
@@ -65,7 +65,7 @@ puts $fid {
       <content type = "text">Jour fleur</content>
       <cbx_symbol>0xB3</cbx_symbol>
       <duration>0</duration>}
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+puts $fid "      <start>2015-${mois}-${jour}T12:00:00+00:00</start>"
 puts $fid {      <icon>fleur.png</icon>
       <color>#00BFFF</color>
    </entry>
@@ -89,7 +89,7 @@ puts $fid {
       <content type = "text">Jour feuille</content>
       <cbx_symbol>0xB4</cbx_symbol>
       <duration>0</duration>}
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+puts $fid "      <start>2015-${mois}-${jour}T12:00:00+00:00</start>"
 puts $fid {      <icon>feuille.png</icon>
       <color>#5FB404</color>
    </entry>

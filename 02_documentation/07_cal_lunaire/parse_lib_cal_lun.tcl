@@ -15,7 +15,7 @@ puts $fid {
       <cbx_symbol>0xB0</cbx_symbol>
       <duration>0</duration>}
       
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+puts $fid "      <start>2015-${mois}-${jour}T12:00:00+00:00</start>"
       
 puts $fid {      <icon>moon.png</icon>
       <color>red</color>
@@ -37,7 +37,7 @@ puts $fid {
       <cbx_symbol>OxAB</cbx_symbol>
       <duration>0</duration>}
       
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+puts $fid "      <start>2015-${mois}-${jour}T12:00:00+00:00</start>"
       
 puts $fid {      <icon>nouvelle_lune.png</icon>
       <color>#666666</color>
@@ -59,7 +59,7 @@ puts $fid {
       <cbx_symbol>OxAA</cbx_symbol>
       <duration>0</duration>}
       
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+puts $fid "      <start>2015-${mois}-${jour}T12:00:00+00:00</start>"
       
 puts $fid {      <icon>pleine_lune.png</icon>
       <color>#989898</color>
@@ -80,7 +80,7 @@ puts $fid {
       <cbx_symbol>OxAE</cbx_symbol>
       <duration>0</duration>}
       
-puts $fid "      <start>2014-${mois}-${jour}T12:00:00+00:00</start>"
+puts $fid "      <start>2015-${mois}-${jour}T12:00:00+00:00</start>"
       
 puts $fid {      <icon>moon.png</icon>
       <color>red</color>
