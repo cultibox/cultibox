@@ -1,3 +1,42 @@
+Cultibox (2.0.03) precise; urgency=low
+    + Correction de la page Configuration et du formatage de la carte SD
+    + Correction de la page programme concernant les jeux de programmes dans les options avancées
+    + Diverses correction pour stabiliser la 2.0.02
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Oct 1 10:10:26 CEST 2014
+
+
+Cultibox (2.0.02) precise; urgency=low
+    + Passage en AJAX des liens vers les pages depuis le msgbox
+    + Passage en AJAX de l'export des logs
+    + Passage de l'ajout/suppréssion d'une prise en AJAX (onglet programme)
+    + Rechargement de la page configuration après sauvegarde ou formatage en AJAX
+    + Correction de la detection des fichiers XML du calendrier
+    + Correction de l'affichage des évènements XML externes
+    + Procédure de suppréssion des requêttes AJAX en cours
+    + Suppréssion de la couleur du graphe coût
+    + Passage de la fréquence de changement des prises à 1 seconde par défaut
+    + Passage de l'onglet programme en AJAX
+    + Passage de l'onglet prise en AJAX
+    + Passage de l'onglet Wizard en AJAX
+    + Fusion des options de régulation secondaire et de régulation avançée
+    + Passage de la fenêtre de dialogue dans la page principale pour ne pas la détruire/recréer à chaque fois
+    + AJout de l'export/import d'un jeu de programme
+    + Possibilité d'importer un programme pour un jeu de programme particulier
+    + Correction de l'export/import dans les répertoires correspondants
+    + Passage en JQUERY de l'import/export des fichiers logs et programmes
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Sep 16  08:49:17 CEST 2014
+
+
+Cultibox (2.0.01) precise; urgency=low
+    + Suppression de joomla
+    + Passage en AJAX de la gestion des menus et du chargement des pages
+    + Nettoyage des CSS
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sun Sep 15  21:16:49 CEST 2014
+
+
 Cultibox (1.4.10) precise; urgency=low
     + Correction de la mise à jour des prises au chargement de l'onglet
 

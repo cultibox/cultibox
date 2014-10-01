@@ -1,0 +1,70 @@
+<script>
+   $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
+</script>
+
+
+<p class="title_conf"><?php echo __('VIEW_SENSOR_STATE'); ?></p>
+<table class="table_width">
+<tr>
+    <td class="wifi-plug-marge"></td>
+    <td class="wifi-plug-field">
+        <br />
+        <table class="table_width">
+            <tr>
+            <?php 
+                for($i=0;$i<$GLOBALS['NB_MAX_SENSOR_PLUG'];$i++) { ?>
+                <?php if(($i%3==0)&&($i>0)) { ?>
+                   </tr><tr>
+                <?php } ?>
+                <td>
+                <p class="title_subconf"><b><?php echo __('SENSOR')." ".($i+1).":"; ?></b></p>
+                <?php echo __('SENSOR_TYPE').": <b></b>"; ?><p class="p_center"><label id="type_sensor<?php echo $i+1; ?>"><b><?php echo $type_sensor[0]; ?></b></label></p>
+                <?php echo __('SENSOR_VALUE').": <b></b>"; ?><p class="p_center"><label id="sensor_date<?php echo $i+1; ?>"></label><br /><label id="sensor_value<?php echo $i+1; ?>"><b><?php echo __('NA'); ?></b></label></p><br />
+                <hr />
+                <br />
+                </td>
+            <?php } ?>
+        </tr>
+        </table>
+    </td>
+    <td class="wifi-plug-marge"></td>
+</tr>
+</table>
+<br />
+<br /><br />
+
+<p class="title_conf"><?php echo __('VIEW_PLUGS_STATE'); ?></p>
+
+<table class="table_width">
+<tr>
+    <td class="wifi-plug-marge"></td>
+    <td class="wifi-plug-field">        
+        <br />
+        <table class="table_width">     
+            <tr>
+            <?php for($i=0;$i<count($plugs_infos);$i++) { ?>
+                <?php if(($i%3==0)&&($i>0)) { ?>
+                   </tr><tr>
+                <?php } ?>
+                <td>
+                <p class="title_subconf"><b><?php echo __('PLUG_NUMBER')." ".$plugs_infos[$i]['id'].":"; ?></b></p>
+                <?php echo __('NAME_PLUG').": <b>".$plugs_infos[$i]['PLUG_NAME']."</b>"; ?><br />
+                <?php echo __('SHORT_ELEMENT_TYPE').": <b>".$plugs_infos[$i]['translate']."</b>"; ?><br />
+                <?php echo __('SHORT_PLUG_TYPE').": "; ?><label id="plug_type<?php echo $i+1;?>"><b><?php echo __('NA'); ?></b></label><br />
+                <?php echo __('STATE_PLUG').": "; ?> 
+                <div id="plug_state_on<?php echo $i+1;?>" style="display:none; text-align: center"><img src="main/libs/img/light_on.png" alt="<?php echo __('PLUG_ON'); ?>"  title="<?php echo __('PLUG_ON'); ?>" /></div>
+                <div id="plug_state_off<?php echo $i+1;?>" style="display:none; text-align: center"><img src="main/libs/img/light_off.png" alt="<?php echo __('PLUG_OFF'); ?>"  title="<?php echo __('PLUG_OFF'); ?>" /></div>
+                <div id="plug_state_unk<?php echo $i+1;?>" style="text-align:center"><img src="main/libs/img/light_unk.png" alt=""  title="<?php echo __('PLUG_UNKNOWN_STATE'); ?>" /></div>
+                <hr />
+                <br />
+                </td>
+        <?php } ?>
+        </tr>
+        </table>
+    </td>
+    <td class="wifi-plug-marge"></td>
+</tr>
+</table>
+<br />
+<br /><br />
+

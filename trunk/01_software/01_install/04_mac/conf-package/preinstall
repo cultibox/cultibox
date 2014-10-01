@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#Deletion of the extented attribute on Mac Os X:
+if [ -d /Applications/cultibox/xamppfiles ]; then
+    xattr -rc /Applications/cultibox/xamppfiles/
+fi
+
 if [ -f /Applications/cultibox/xamppfiles/etc/php.ini ] && [ ! -f  /Applications/cultibox/xamppfiles/xampp ]; then
     echo " === An old version of the Cultibox seems to be remaining in your system, please remove manually the remaining Cultibox system in /Applications directory ===="
     exit 1
@@ -33,10 +38,8 @@ if [ $? -eq 0 ]; then
                 exit 0
             fi
         done
-else
-        exit 1
 fi
-exit 0
+exit 1
 EOF
       chmod +x /Applications/cultibox/run/get_version.sh
       /Applications/cultibox/xamppfiles/xampp stop

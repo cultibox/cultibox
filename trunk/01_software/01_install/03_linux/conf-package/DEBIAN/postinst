@@ -45,9 +45,7 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
 
     echo "  * Installing the Cultibox software..."
     /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
-
     /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/user_cultibox.sql
-    /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/joomla.sql
 
     lang=`echo $LANG`
     case "$lang" in
@@ -67,7 +65,7 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
             /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/cultibox_es.sql
             ;;
         *)
-            /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/cultibox_en.sql
+            /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/cultibox_fr.sql
             ;;
     esac
     /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/fake_log.sql
@@ -112,10 +110,6 @@ else
     /opt/cultibox/bin/mysqladmin -u root -h 127.0.0.1 password cultibox
     /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/user_cultibox.sql
 
-    if [ -f /opt/cultibox/sql_install/update_joomla.sql ]; then
-        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/update_joomla.sql 
-    fi
-
     if [ -f /tmp/cultibox_version ]; then
         #Get previous cultibox version
         version=`cat /tmp/cultibox_version`
@@ -124,23 +118,6 @@ else
         version=`echo ${version//./}`
 
         if [ "$version" != "" ]; then
-            for file in `ls /opt/cultibox/sql_install/update_joomla-* 2>/dev/null`; do
-               #Remove path file information
-               file_name=`basename $file`
-               #Remove extension information
-               file_name=` echo ${file_name%.*}`
-               #Get version information
-               file_name=`echo $file_name|awk -F"-" '{print $2}'`
-               file_name=`echo ${file_name//./}`
-
-               if [ "$file_name" != "" ]; then
-                    #if file version >= version
-                    if [ $file_name -ge $version ]; then
-                        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < $file 
-                    fi        
-               fi
-            done    
-
             for file in `ls /opt/cultibox/sql_install/update_sql-* 2>/dev/null`; do
                #Remove path file information
                file_name=`basename $file`
