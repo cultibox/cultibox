@@ -244,7 +244,6 @@ $(document).ready(function(){
             if($('#cyclic').is(':checked')) {
                 $.ajax({
                     cache: false,
-                    async: false,
                     url: "main/modules/external/check_value.php",
                     data: {value:$("#cyclic_duration").val(),type:'time'}
                 }).done(function (data) {
@@ -257,7 +256,6 @@ $(document).ready(function(){
 
                 $.ajax({
                     cache: false,
-                    async: false,
                     url: "main/modules/external/check_value.php",
                     data: {value:$("#repeat_time").val(),type:'cyclic_time'}
                 }).done(function (data) {
@@ -275,7 +273,6 @@ $(document).ready(function(){
 
                 $.ajax({
                     cache: false,
-                    async: false,
                     url: "main/modules/external/check_value.php",
                     data: {value:$("#start_time_cyclic").val(),type:'time'}
                 }).done(function (data) {
@@ -290,7 +287,6 @@ $(document).ready(function(){
                 //Vérification du format (HH:MM:SS) pour l'heure de fin d'un programme cyclique:
                 $.ajax({
                     cache: false,
-                    async: false,
                     url: "main/modules/external/check_value.php",
                     data: {value:$("#end_time_cyclic").val(),type:'time'}
                 }).done(function (data) {
@@ -304,7 +300,6 @@ $(document).ready(function(){
             } else {
                 $.ajax({
                     cache: false,
-                    async: false,
                     url: "main/modules/external/check_value.php",
                     data: {value:$("#start_time").val(),type:'time'}
                 }).done(function (data) {
@@ -317,7 +312,6 @@ $(document).ready(function(){
 
                 $.ajax({
                     cache: false,
-                    async: false,
                     url: "main/modules/external/check_value.php",
                     data: {value:$("#end_time").val(),type:'time'}
                 }).done(function (data) {
@@ -332,7 +326,6 @@ $(document).ready(function(){
                 if(checked) {
                     $.ajax({
                         cache: false,
-                        async: false,
                         url: "main/modules/external/check_value.php",
                         data: {value:$("#start_time").val()+"_"+$("#end_time").val(),type:'same_time'}
                     }).done(function (data) {
@@ -350,7 +343,6 @@ $(document).ready(function(){
                 if(($("#value_program").val())&&($("#value_program").val()!="")) { 
                     $.ajax({
                         cache: false,
-                        async: false,
                         url: "main/modules/external/check_value.php",
                         data: {value:$("#value_program").val(),type:'value_program',plug_type:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE'],plug_tolerance:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TOLERANCE']}
                     }).done(function (data) {
@@ -373,16 +365,95 @@ $(document).ready(function(){
                 }
             }
 
+            $.blockUI({ message: ''});
             if(checked) {
                 if((start==$('#start_time').val())&&(end==$('#end_time').val())&&(plug_selected==$('#selected_plug').val())) {
                     currentForm = $(this).closest('form');
                     if(confirmForm(currentForm,"same_dialog_program")) {
-                        get_content("programs",getFormInputs('actionprog'));
+                        var data_array = {};
+                        $("#actionprog :input").each(function() {
+                            data_array[$(this).attr('name')]=$(this).val();
+                        });
+
+                        //Customization for radio button:
+                        data_array['regul_program']=$("input[type='radio'][name='regul_program']:checked").val();
+                        if($("input[type='radio'][id='ponctual']:checked").length>0) {
+                            data_array['cyclic']="";
+                            data_array['ponctual']=$("input[type='radio'][id='ponctual']:checked").val();
+                        } else {
+                            data_array['cyclic']=$("input[type='radio'][id='cyclic']:checked").val();
+                            data_array['ponctual']="";
+                        }
+
+                        $.ajax({
+                            cache: false,
+                            async: true,
+                            url: "main/modules/external/create_program.php",
+                            data: data_array
+                        }).done(function(data) {
+                            if(sd_card!="") {
+                                $.ajax({
+                                    type: "GET",
+                                    url: "main/modules/external/check_and_update_sd.php",
+                                    data: {
+                                        sd_card:"<?php echo $sd_card ;?>"
+                                    },
+                                    async: false,
+                                    context: document.body,
+                                    success: function(data, textStatus, jqXHR) {
+                                    },
+                                    error: function(jqXHR, textStatus, errorThrown) {
+                                        // Error during request
+                                    }
+                                });
+                            }
+                            get_content("programs",getFormInputs('actionprog'));
+                        });
+
                     }
                 } else {
-                    get_content("programs",getFormInputs('actionprog'));
+                     var data_array = {};
+                        $("#actionprog :input").each(function() {
+                        data_array[$(this).attr('name')]=$(this).val();
+                    });
+
+                    //Customization for radio button:
+                    data_array['regul_program']=$("input[type='radio'][name='regul_program']:checked").val();
+                    if($("input[type='radio'][id='ponctual']:checked").length>0) {
+                        data_array['cyclic']="";
+                        data_array['ponctual']=$("input[type='radio'][id='ponctual']:checked").val();
+                    } else {
+                        data_array['cyclic']=$("input[type='radio'][id='cyclic']:checked").val();
+                        data_array['ponctual']="";
+                    }
+
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/create_program.php",
+                        data: data_array
+                    }).done(function(data) {
+                          if(sd_card!="") {
+                                $.ajax({
+                                    type: "GET",
+                                    url: "main/modules/external/check_and_update_sd.php",
+                                    data: {
+                                        sd_card:"<?php echo $sd_card ;?>"
+                                    },
+                                    async: false,
+                                    context: document.body,
+                                    success: function(data, textStatus, jqXHR) {
+                                    },
+                                    error: function(jqXHR, textStatus, errorThrown) {
+                                        // Error during request
+                                    }
+                                });
+                            }
+                            get_content("programs",getFormInputs('actionprog'));        
+                    });
                 } 
             }
+            $.unblockUI();
         });
 
 
