@@ -1,4 +1,0 @@
-1) Créer un répertoire cultibox dans htdocs, un rep sql_install dans xampp
-2) Changer le numéro du port en 6891 dans \01_xampp\apache\conf\httpd.conf (directive listen)
-3) Copier config.inc.php dans \01_xampp\phpmyadmin
-4) Supprimer du .bat setup_xamp la ligne pause
