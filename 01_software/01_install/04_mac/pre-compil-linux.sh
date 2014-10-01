@@ -4,7 +4,7 @@ set -e
 dir=`dirname $0`
 cd $dir
 
-SRC_DIR=../../02_src/joomla
+SRC_DIR=../../02_src/cultibox
 DEST_DIR=../01_src/01_xampp
 
 function usage {
@@ -34,13 +34,14 @@ case "$1" in
             rm -Rf ../01_src/01_xampp/*
             tar zxvfp xampp-mac-1.8.3.tar.gz -C ../01_src/01_xampp/
             mv ../01_src/01_xampp/XAMPP ../01_src/01_xampp/cultibox
-            cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox
+            cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox
             cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/main/docs/documentation_cultibox.pdf
 
             cp conf-lampp/httpd.conf ../01_src/01_xampp/cultibox/xamppfiles/etc/
             cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/xamppfiles/etc/
             cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/xamppfiles/etc/extra/
             cp conf-lampp/my.cnf ../01_src/01_xampp/cultibox/xamppfiles/etc/
+            cp conf-lampp/adminer-4.1.0.php ../01_src/01_xampp/cultibox/xamppfiles/htdocs/
 
   cat > ../01_src/01_xampp/cultibox/xamppfiles/etc/my-extra.cnf << "EOF" 
 [client]
@@ -73,7 +74,6 @@ EOF
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_it.sql
             sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_es.sql
             sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-noarch' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/sql_install/update_sql.sql
-            sed -i "s/public \$host = '127.0.0.1';/public \$host = 'localhost';/g" ../01_src/01_xampp/cultibox/xamppfiles/htdocs/cultibox/configuration.php
 
             find ../01_src/01_xampp/cultibox/ -name ".svn"|xargs rm -Rf
             set +e

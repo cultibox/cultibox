@@ -30,7 +30,7 @@ USE `cultibox`;
 
 CREATE TABLE IF NOT EXISTS `configuration` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `VERSION` varchar(30) NOT NULL DEFAULT '1.4.10-noarch',
+  `VERSION` varchar(30) NOT NULL DEFAULT '1.1.28',
   `COLOR_HUMIDITY_GRAPH` varchar(30) NOT NULL DEFAULT 'blue',
   `COLOR_TEMPERATURE_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
   `COLOR_WATER_GRAPH` varchar(30) NOT NULL DEFAULT 'orange',
@@ -40,11 +40,10 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `COLOR_OD_GRAPH` varchar(30) NOT NULL DEFAULT 'red',
   `COLOR_ORP_GRAPH` varchar(30) NOT NULL DEFAULT 'blue',
   `COLOR_POWER_GRAPH` varchar(30) NOT NULL DEFAULT 'black',
-  `COLOR_COST_GRAPH` varchar(30) NOT NULL DEFAULT 'purple',
   `RECORD_FREQUENCY` int(11) NOT NULL DEFAULT '5',
   `POWER_FREQUENCY` int(11) NOT NULL DEFAULT '5',
   `NB_PLUGS` int(11) NOT NULL DEFAULT '3',
-  `UPDATE_PLUGS_FREQUENCY` int(20) NOT NULL DEFAULT '-1',
+  `UPDATE_PLUGS_FREQUENCY` int(20) NOT NULL DEFAULT '1',
   `ALARM_ACTIV` varchar(4) NOT NULL DEFAULT '0000',
   `ALARM_VALUE` varchar(5) NOT NULL DEFAULT '50.00',
   `COST_PRICE` decimal(6,4) NOT NULL DEFAULT '0.1249',
@@ -54,7 +53,6 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `STOP_TIME_HC` varchar(5) NOT NULL DEFAULT '06:30',
   `COST_TYPE` varchar(20) NOT NULL DEFAULT 'standard',
   `STATISTICS` varchar(5) NOT NULL DEFAULT 'True',
-  `SECOND_REGUL` VARCHAR(5) NOT NULL DEFAULT 'False',
   `ADVANCED_REGUL_OPTIONS` VARCHAR(5) NOT NULL DEFAULT 'False',
   `SHOW_COST` BOOLEAN NOT NULL DEFAULT 0,
   `RESET_MINMAX` VARCHAR(5) NOT NULL DEFAULT '00:00',
@@ -67,6 +65,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `RTC_OFFSET` int(11) NOT NULL DEFAULT '0',
   `REMOVE_1000_CHANGE_LIMIT` VARCHAR(5) NOT NULL DEFAULT 'False',
   `REMOVE_5_MINUTE_LIMIT` VARCHAR(5) NOT NULL DEFAULT 'False',
+  `DEFAULT_LANG` VARCHAR(5) NOT NULL DEFAULT 'de_DE',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 --
@@ -74,8 +73,8 @@ CREATE TABLE IF NOT EXISTS `configuration` (
 --
 
 
-INSERT INTO `configuration` (`id`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_WATER_GRAPH`, `COLOR_LEVEL_GRAPH`, `COLOR_PH_GRAPH`, `COLOR_EC_GRAPH`, `COLOR_OD_GRAPH`, `COLOR_ORP_GRAPH`, `COLOR_POWER_GRAPH`, `COLOR_COST_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `ALARM_ACTIV`, `ALARM_VALUE`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `STATISTICS`,`SECOND_REGUL`,`ADVANCED_REGUL_OPTIONS`,`SHOW_COST`,`RESET_MINMAX`, `WIFI`, `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD`, `WIFI_IP`, `WIFI_IP_MANUAL`, `RTC_OFFSET`) VALUES
-(1, '1.1.28', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 'black', 'purple', 5, 1, 3, -1, '0000', '15', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 'False', 0, '00:00',0,'','NONE','','000.000.000.000',0,0);
+INSERT INTO `configuration` (`id`, `VERSION`, `COLOR_HUMIDITY_GRAPH`, `COLOR_TEMPERATURE_GRAPH`, `COLOR_WATER_GRAPH`, `COLOR_LEVEL_GRAPH`, `COLOR_PH_GRAPH`, `COLOR_EC_GRAPH`, `COLOR_OD_GRAPH`, `COLOR_ORP_GRAPH`, `COLOR_POWER_GRAPH`, `RECORD_FREQUENCY`, `POWER_FREQUENCY`, `NB_PLUGS`, `UPDATE_PLUGS_FREQUENCY`, `ALARM_ACTIV`, `ALARM_VALUE`, `COST_PRICE`, `COST_PRICE_HP`, `COST_PRICE_HC`, `START_TIME_HC`, `STOP_TIME_HC`, `COST_TYPE`, `STATISTICS`,`ADVANCED_REGUL_OPTIONS`,`SHOW_COST`,`RESET_MINMAX`, `WIFI`, `WIFI_SSID`, `WIFI_KEY_TYPE`, `WIFI_PASSWORD`, `WIFI_IP`, `WIFI_IP_MANUAL`, `RTC_OFFSET`) VALUES
+(1, '1.1.28', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 'black', 5, 1, 3, 1, '0000', '15', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 0, '00:00',0,'','NONE','','000.000.000.000',0,0);
 
 -- --------------------------------------------------------
 
@@ -277,6 +276,27 @@ CREATE TABLE IF NOT EXISTS `sensors` (
 
 INSERT INTO `sensors` (`id`, `type`) VALUES (1, '2'), (2, '2'), (3, '2'), (4, '2'), (5, '0'),(6, '0');
 
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `program_index`
+--
+CREATE TABLE IF NOT EXISTS `program_index` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(100), 
+    `version` VARCHAR(100), 
+    `program_idx` INT, 
+    `creation` DATETIME,
+    `modification` DATETIME, 
+    `plugv_filename` VARCHAR(10),
+    `comments` VARCHAR(500)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `program_index`
+--
+
+INSERT INTO `program_index` (`name`,`version`,`program_idx`,`creation`, `modification`, `plugv_filename`,`comments`) VALUES('Aktuelle','1.0','1' , NOW(), NOW(), '00' , "Aktuelles Programm");
 
 -- --------------------------------------------------------
 

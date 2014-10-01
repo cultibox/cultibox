@@ -21,8 +21,9 @@ if [ "$2" == "" ] && [ "$1" != "clean" ]; then
     usage
 fi
 
-if [ "$3" == "" ] || [ "$3" == "byWindows" ] ; then
-    (cd ../../../ && svn up)
+
+(cd ../../../ && svn up)
+if [ "$3" == "byWindows" ] ; then
     (cd ../../../wiki && svn up)
 fi
 
@@ -60,7 +61,7 @@ case "$1" in
         fi
 
         echo "Copie des fichiers"
-        cp -R ../../02_src/joomla ../01_src/01_xampp/cultibox/htdocs/cultibox
+        cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/htdocs/cultibox
         # On windows plateform, wee need to change right....
         if [ "$3" == "byWindows" ]; then
             chmod -R 777 ../01_src/01_xampp/cultibox
@@ -75,6 +76,7 @@ case "$1" in
         cp conf-lampp/my.ini ../01_src/01_xampp/cultibox/mysql/bin/
         cp conf-lampp/php.ini ../01_src/01_xampp/cultibox/php/
         cp conf-lampp/httpd-xampp.conf ../01_src/01_xampp/cultibox/apache/conf/extra/
+        cp conf-lampp/adminer-4.1.0.php  ../01_src/01_xampp/cultibox/htdocs/
 
         cp -R ../01_src/02_sql ../01_src/01_xampp/cultibox/sql_install
         cp conf-package/update_sql.bat ../01_src/01_xampp/cultibox/sql_install/
@@ -84,8 +86,12 @@ case "$1" in
             chmod -R 777 ../01_src/01_xampp/cultibox
         fi
 
-        sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_fr.sql
-        sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_en.sql
+        sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_fr.sql
+        sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_en.sql
+        sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_de.sql
+        sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_it.sql
+        sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_es.sql
+
         sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-noarch' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/sql_install/update_sql.sql
 
         cp -R ../../01_install/01_src/03_sd/* ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/

@@ -62,7 +62,6 @@ if [ ! -f /tmp/cultibox_upgrade ]; then
     fi
 
     /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/user_cultibox.sql
-    /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/joomla.sql
     lang=`defaults read /Library/Preferences/.GlobalPreferences AppleLanguages| tr -d [:space:] | cut -c2-3`
     if [ "$lang" == "En" ]; then
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/cultibox_en.sql
@@ -131,10 +130,6 @@ else
 
 
     echo "   * Configuring your Cultibox software..."
-    if [ -f /Applications/cultibox/sql_install/update_joomla.sql ]; then
-        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_joomla.sql
-    fi
-
 
     if [ -f /tmp/cultibox_version ]; then
         #Get previous cultibox version
@@ -144,23 +139,6 @@ else
         version=`echo ${version//./}`
 
         if [ "$version" != "" ]; then
-            for file in `ls /Applications/cultibox/sql_install/update_joomla-* 2>/dev/null`; do
-               #Remove path file information
-               file_name=`basename $file`
-               #Remove extension information
-               file_name=` echo ${file_name%.*}`
-               #Get version information
-               file_name=`echo $file_name|awk -F"-" '{print $2}'`
-               file_name=`echo ${file_name//./}`
-
-               if [ "$file_name" != "" ]; then
-                    #if file version >= version
-                    if [ $file_name -ge $version ]; then
-                        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < $file
-                    fi
-               fi
-            done
-
             for file in `ls /Applications/cultibox/sql_install/update_sql-* 2>/dev/null`; do
                #Remove path file information
                file_name=`basename $file`
