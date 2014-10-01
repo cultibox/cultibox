@@ -15,7 +15,6 @@
     if((!isset($_GET['value']))||(empty($_GET['value']))) {
         insert_configuration(strtoupper($_GET['variable']),"",$main_error);
     } else {
-        // Save configuration
         insert_configuration(strtoupper($_GET['variable']),$_GET['value'],$main_error);
     }
 

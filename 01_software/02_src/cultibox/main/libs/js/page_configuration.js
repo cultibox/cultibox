@@ -388,7 +388,7 @@ $(document).ready(function(){
                 async: false,
                 url: "main/modules/external/update_configuration.php",
                 data: {
-                        value:newValue,     
+                        value:newValue, 
                         variable:varToUpdate,
                         sd_card:sd_card
                     }
@@ -751,7 +751,7 @@ $(document).ready(function(){
                     } catch(err) {
                         check_update=false;
                     }
-                });
+                }); 
             }
 
             $.ajax({

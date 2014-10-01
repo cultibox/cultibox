@@ -17,7 +17,7 @@ define("ERROR_SD_NOT_FOUND", "13");
 // ROLE If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
 // IN   $sd_card    sd card path 
 // RET 0 if the sd card is updated, 1 if the sd card has been updated, return > 1 if an error occured
-function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) {
+function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$force_rtc_offset=false) {
 
     // Check if SD card has been found
     if(empty($sd_card) || !isset($sd_card)  || $sd_card == "")
@@ -44,17 +44,26 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
     /* ************* */
 
 
-    $program=create_program_from_database($main_error);
-    if(!compare_program($program,$sd_card)) {
-        $conf_uptodate=false;
+    $index_info=array();
+    program\get_program_index_info($index_info);
+   
+    /* 
+    $chk_prg=true;
+    foreach($index_info as $prg) {
+        $program=create_program_from_database($main_error,$prg['program_idx']);
+    */
+        $program=create_program_from_database($main_error);
+        if(!compare_program($program,$sd_card)) {
+            $conf_uptodate=false;
         
-        // Caution : Only plugv is updated
-        // TODO : Update every pluXX and plgidx
-        if(!save_program_on_sd($sd_card,$program)) {
-            $main_error_tab[]=__('ERROR_WRITE_PROGRAM');
-            return ERROR_WRITE_PROGRAM;
+            // Caution : Only plugv is updated
+            // TODO : Update every pluXX and plgidx
+            if(!save_program_on_sd($sd_card,$program)) {
+                $main_error_tab[]=__('ERROR_WRITE_PROGRAM');
+                return ERROR_WRITE_PROGRAM;
+            }
         }
-    }
+    //}
 
     $ret_firm=check_and_copy_firm($sd_card);
     if(!$ret_firm) {
@@ -103,10 +112,13 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab) 
     }
 
     // Read value on sd Card
-    $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
-    $sdConfRtc = get_decode_rtc_offset($sdConfRtc);
-    // Update database
-    insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
+    if(!$force_rtc_offset) {
+        $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
+        $sdConfRtc = get_decode_rtc_offset($sdConfRtc);
+
+        // Update database
+        insert_configuration("RTC_OFFSET",$sdConfRtc,$main_error);
+    }
 
 
     $recordfrequency = get_configuration("RECORD_FREQUENCY",$main_error);
