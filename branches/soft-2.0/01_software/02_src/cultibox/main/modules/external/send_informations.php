@@ -54,8 +54,9 @@
 
         // Close request to clear up some resources
         curl_close($curl);
-        
-        setcookie("INFO_SENT", "True", time()+(86400 * 1),"/",false,false);
+
+        // 2 hours before resendind information:
+        setcookie("INFO_SENT", "True", time()+7200,"/",false,false);
     }
 
 

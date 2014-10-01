@@ -8,7 +8,7 @@ require_once('../../libs/db_set_common.php');
 $main_error=array();
 
 $nb=getvar("number");
-$name=getvar("plug_name${nb}");
+$name=html_entity_decode(getvar("plug_name${nb}"));
 $type=getvar("plug_type${nb}");
 $tolerance=getvar("plug_tolerance{$nb}");
 $power=getvar("plug_power${nb}");

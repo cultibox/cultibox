@@ -35,9 +35,8 @@ $(document).ready(function(){
         get_content("wizard",getUrlVars("selected_plug=1"));
     });
 
-    $("#daily_open_button").click(function(e) {
-        e.preventDefault();
-        get_content("programs",getFormInputs('daily_open_form'));
+    $("#select_program_index_conf").change(function() {
+        get_content("programs",getUrlVars("selected_plug="+$("#selected_plug option:selected").val()+"&program_index_id="+$("#select_program_index_conf option:selected").val()));
     });
 
     $("#jumpto").click(function(e) {
@@ -64,9 +63,9 @@ $(document).ready(function(){
                 cache: false,
                 async: false,
                 url: "main/modules/external/manage_reset_prog.php",
-                data: {value:prog_reset}
+                data: {value:prog_reset,program_index:$("#reset_set_program_index_id option:selected").val()}
             }).done(function (data) {
-                get_content("programs",getUrlVars("selected_plug="+prog));
+                get_content("programs",getUrlVars("selected_plug="+prog+"&program_index_id="+$("#reset_set_program_index_id option:selected").val()));
            });
         }
      });
@@ -480,6 +479,11 @@ $(document).ready(function(){
 
                     $("#export_program_index_id option[value='" + idToDelete + "']").remove();
                     $("#import_program_index_id option[value='" + idToDelete + "']").remove();
+                    $("#select_program_index_conf option[value='" + idToDelete + "']").remove();
+                    $("#export_set_program_index_id option[value='" + idToDelete + "']").remove();
+                    $("#import_set_program_index_id option[value='" + idToDelete + "']").remove();
+                    $("#reset_set_program_index_id option[value='" + idToDelete + "']").remove();
+                    $("#daily_save_program_index_id option[value='" + idToDelete + "']").remove();
 
                     if($("#program_delete_index option").length==0) {
                             $("#program_delete_index").css("display","none");
@@ -488,9 +492,6 @@ $(document).ready(function(){
                             $("#daily_delete_button").val("<?php echo __('NO_DAILY_PROGRAM_TO_DELETE','html'); ?>");
 
                             $("#program_index_id_id").css("display","none");
-                            $("#daily_open_button").attr('disabled','disabled');
-                            $("#daily_open_button").addClass("inputDisable");
-                            $("#daily_open_button").val("<?php echo __('NO_DAILY_PROGRAM_TO_OPEN','html'); ?>");
                     }
             } else {
                     $("#dialog-form-delete-daily-error").dialog({
@@ -545,7 +546,7 @@ $(document).ready(function(){
                             url: "main/modules/external/daily_program_save.php",
                             data: {
                                 name:$('#program_name').val(),
-                                input:1,
+                                input: $('#daily_save_program_index_id option:selected').val(),
                                 version:1.0
                             },
                             context: document.body,
@@ -560,16 +561,17 @@ $(document).ready(function(){
 
                                 $('#export_program_index_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
                                 $('#import_program_index_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                                $("#select_program_index_conf").append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                                $('#export_set_program_index_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                                $('#import_set_program_index_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                                $('#reset_set_program_index_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
+                                $('#daily_save_program_index_id').append('<option value="' + return_array.id + '">' + return_array.name + '</option>');
 
 
                                 $("#daily_delete_button").removeAttr('disabled');
                                 $("#daily_delete_button").removeClass("inputDisable");
                                 $("#daily_delete_button").val("<?php echo __('PROGRAM_DAILY_DELETE','html'); ?>");
 
-                                $("#daily_open_button").removeAttr('disabled');
-                                $("#daily_open_button").removeClass("inputDisable");
-                                $("#daily_open_button").val("<?php echo __('PROGRAM_DAILY_OPEN','html'); ?>");
-                                
 
                                 $("#program_delete_index").show();
                                 $('#program_index_id_id').show();
@@ -642,7 +644,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#daily_save_button").button().click(function(e) {
+    $("#daily_save_button").click(function(e) {
         e.preventDefault();
         $("#dialog-form-save-daily").dialog('open');
     });
@@ -670,7 +672,11 @@ $(document).ready(function(){
             url: "main/modules/external/manage_nb_plugs.php",
             data: {type:"remove",nb_plugs:<?php echo $nb_plugs; ?>}
         }).done(function() {
-            get_content("programs",getUrlVars("selected_plug="+<?php echo $nb_plugs-1; ?>));
+            if($('#selected_plug').val()==<?php echo $nb_plugs; ?>) {
+                get_content("programs",getUrlVars("selected_plug="+<?php echo $nb_plugs-1; ?>));
+            } else {
+                get_content("programs",getUrlVars("selected_plug="+$('#selected_plug').val()));
+            }
         });
     });
 });
@@ -1018,6 +1024,9 @@ $(document).ready(function() {
 
         $("#jumpplug input[name=selected_plug]").val($('#selected_plug').val());
         $('#selected_plug_conf').val($('#selected_plug').val());
+        $('#export_selected_plug').val($('#selected_plug').val());
+        $('#import_selected_plug').val($('#selected_plug').val());
+
     });
 
        $('#resetXzoom').click(function() {
@@ -1154,6 +1163,8 @@ $(document).ready(function() {
 
         $("#jumpplug input[name=selected_plug]").val($('#selected_plug_conf').val());
         $('#selected_plug').val($('#selected_plug_conf').val());
+        $('#export_selected_plug').val($('#selected_plug_conf').val());
+        $('#import_selected_plug').val($('#selected_plug_conf').val());
     });
 
        $('#resetXzoom').click(function() {

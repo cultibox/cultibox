@@ -1618,7 +1618,7 @@ msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Überprüfen der SD-Karte"
 
 msgid "UPDATED_PROGRAM"
-msgstr "Ihre Programme / Socket-Konfiguration / Setup Cultibox waren nicht up to date auf Ihrer Karte, wurde das Update durchgeführt"
+msgstr "Einrichten Ihrer SD-Karte wurde nach den Angaben in der Software-Aktualisierung"
 
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "Ein Update ist verfügbar, um auf eine neuere Version zu bewegen, indem Sie auf"
@@ -1800,7 +1800,7 @@ msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Klicken Sie auf das Bild, um Message-Box-Software wieder"
 
 msgid "TOOLTIP_RTC_OFFSET"
-msgstr "Hier können Sie die Geschwindigkeit der internen Uhr des Cultibox ändern."
+msgstr "Verschiebt täglich um 02.00 Uhr die Cultibox. Wenn Sie 5 Sekunden 2 Stunden geben, wird die Uhr um 2h00m05s springen"
 
 msgid "TOOLTIP_NO_SENSOR_DEFINED"
 msgstr "Encoder ist noch nicht definiert: Wenn erste Belastungsprotokolle von der SD-Karte, wird Ihre Sensoren automatisch konfiguriert werden"

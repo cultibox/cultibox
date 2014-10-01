@@ -17,9 +17,10 @@
 
     // create programm line
     $id = program\add_row_program_idx($_GET['name'], $_GET['version'], $program_idx, "","Programme " . $_GET['name']);
+    $program_index = program\get_field_from_program_index ("program_idx",$_GET['input']);
     
     // Save programm
-    program\copy($_GET['input'],$program_idx);
+    program\copy($program_index,$program_idx);
     
     // Create return array
     $ret_array = array();

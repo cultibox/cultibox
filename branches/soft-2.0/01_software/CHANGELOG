@@ -1,3 +1,11 @@
+Cultibox (2.0.03) precise; urgency=low
+    + Correction de la page Configuration et du formatage de la carte SD
+    + Correction de la page programme concernant les jeux de programmes dans les options avancées
+    + Diverses correction pour stabiliser la 2.0.02
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Oct 1 10:10:26 CEST 2014
+
+
 Cultibox (2.0.02) precise; urgency=low
     + Passage en AJAX des liens vers les pages depuis le msgbox
     + Passage en AJAX de l'export des logs

@@ -1618,7 +1618,7 @@ msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Checking the SD card"
 
 msgid "UPDATED_PROGRAM"
-msgstr "Your programs / socket configuration / setup Cultibox were not up to date on your card, the update was performed"
+msgstr "Your SD card has been updated according to the information in the software"
 
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "An update is available to move to a newer version by clicking"
@@ -1803,7 +1803,7 @@ msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Click on the image to reappear message box software"
 
 msgid "TOOLTIP_RTC_OFFSET"
-msgstr "Allows you to change the rate of the internal clock of the Cultibox."
+msgstr "Shifts daily at 2am the clock Cultibox. If you enter 5 seconds, 2 hours, the clock will jump to 2h00m05s"
 
 msgid "TOOLTIP_NO_SENSOR_DEFINED"
 msgstr "Sensor is not yet defined: when first loading logs from your SD card, your sensors will be configured automatically"

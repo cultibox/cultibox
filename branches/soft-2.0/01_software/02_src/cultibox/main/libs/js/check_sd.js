@@ -35,5 +35,9 @@ $.ajax({
     }
 });
 });
+<?php } else { ?>
+    $(document).ready(function(){
+    pop_up_add_information("<?php echo __('ERROR_SD_CARD'); ?>","check_sd_status","error");
+    });
 <?php } ?>
 </script>

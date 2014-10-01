@@ -1,6 +1,7 @@
 <?php
 
-setcookie("LOAD_LOG", "True", time()+(86400 * 1),"/",false,false);
+// Setting cokkie lifetime to 2hour before retrying the load log process:
+setcookie("LOAD_LOG", "True", time()+7200,"/",false,false);
 
 
 require_once('../../libs/utilfunc.php');

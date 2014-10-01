@@ -170,6 +170,7 @@ function get_plugs_infos($nb=0,&$out) {
 // ROLE get a specific plug program
 // IN $selected_plug   plug id to select
 //    $out      errors or warnings messages
+//    $number   number of the program in program_index table
 // RET plug data formated for highchart
 function get_data_plug($selected_plug="",&$out,$number=1) {
    $res="";

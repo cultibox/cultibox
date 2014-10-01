@@ -830,7 +830,7 @@ msgid "TITLE_IMPORT_PROGRAM"
 msgstr "Importer un programme pour la prise"
 
 msgid "TITLE_RESET_PROGRAM"
-msgstr "Effacer le programme pour la prise"
+msgstr "Effacer le programme pour la/les prise(s)"
 
 msgid "RESET_ALL_PROGRAM"
 msgstr "de toutes les prises"
@@ -863,7 +863,7 @@ msgid "VALUE_DIMMER"
 msgstr "Variateur"
 
 msgid "SELECTED_DAILY_PROGRAM"
-msgstr "pour le jeu de programme"
+msgstr "du jeu de programme"
 
 msgid "PROGRAM_DAILY_SAVE"
 msgstr "Enregistrer une copie du jeu de programmes"
@@ -1619,7 +1619,7 @@ msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Vérification de la carte SD"
 
 msgid "UPDATED_PROGRAM"
-msgstr "Vos programmes/configuration des prises/configuration de la Cultibox n'étaient pas à jour sur votre carte, la mise à jour a été exécuté"
+msgstr "La configuration de votre carte SD a été mise à jour conformément aux informations présentes dans le logiciel"
 
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "Une mise à jour est disponible pour passer vers une version plus récente en cliquant"
@@ -1801,7 +1801,7 @@ msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du logiciel"
 
 msgid "TOOLTIP_RTC_OFFSET"
-msgstr "Permet de modifier la cadence de l'horloge interne de la Cultibox."
+msgstr "Permet de décaler tous les jours à 2h du matin l'horloge de la Cultibox. Si vous indiquez 5 secondes, à 2h, l'horloge passera directement à 2h00m05s"
 
 msgid "TOOLTIP_NO_SENSOR_DEFINED"
 msgstr "Aucun capteur n'est encore définie: lors du premier chargement de vos logs depuis la carte SD, vos capteurs seront configurés automatiquement"

@@ -31,11 +31,13 @@
                 $_COOKIE['UPDATE_CHECKED'] = "True";
                 $main_info[] = __('INFO_UPDATE_AVAILABLE') . " <a target='_blank' href=" . $GLOBALS['WEBSITE'] . ">" .__('HERE'). "</a>";
             } else {
-                setcookie("UPDATE_CHECKED", "False", time()+(86400 * 1),"/",false,false);
+                //5mn before retrying to get the VERSION file:
+                setcookie("UPDATE_CHECKED", "False", time()+300,"/",false,false);
             }
         } else {
             // If website is not available don't retry an other time during session
-            setcookie("UPDATE_CHECKED", "NA", time()+(86400 * 1),"/",false,false);
+            // Wait 4hours before retrying:
+            setcookie("UPDATE_CHECKED", "NA", time()+14400,"/",false,false);
             $main_error[] = __('ERROR_REMOTE_SITE');
         }
     }

@@ -1618,7 +1618,7 @@ msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Comprobación de la tarjeta SD"
 
 msgid "UPDATED_PROGRAM"
-msgstr "Sus programas no estaban actualizados , se ha realizado una actualización. "
+msgstr "Configuración de la tarjeta SD se ha actualizado de acuerdo a la información en el software"
 
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "Una actualización está disponible para pasar a la versión: "
@@ -1800,7 +1800,7 @@ msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Haga clic la imagen para ver para ver los mensajes del software"
 
 msgid "TOOLTIP_RTC_OFFSET"
-msgstr "Le permite cambiar la velocidad del reloj interno del Cultibox."
+msgstr "Cambia todos los días a las 2 am el reloj Cultibox. Si introduce 5 segundos, 2 horas, el reloj saltará a 2h00m05s"
 
 msgid "TOOLTIP_NO_SENSOR_DEFINED"
 msgstr "Encoder aún no está definida: cuando primero los registros de carga de la tarjeta SD, los sensores se configuran automáticamente"

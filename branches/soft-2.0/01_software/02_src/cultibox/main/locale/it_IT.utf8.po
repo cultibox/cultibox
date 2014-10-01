@@ -949,7 +949,7 @@ msgstr "e"
 
 # For the wizard part:
 msgid "WIZARD_FIRST_USE"
-msgstr "Benvenuti alla configurazione dell'interfaccia e l'uso della Cultibox. La procedura guidata vi permetterà di configurare facilmente i programmi connessi con i vostri scatti, configurare il tipo e il comportamento spina. Fare clic sul pulsante accanto <b> </b> per avviare la procedura guidata. È possibile saltare questo passaggio e configurare manualmente il pescato facendo clic sul pulsante Chiudi <b> guidata </​​b>"
+msgstr "Benvenuti alla configurazione dell'interfaccia e l'uso della Cultibox. La procedura guidata vi permetterà di configurare facilmente i programmi connessi con i vostri scatti, configurare il tipo e il comportamento spina. Fare clic sul pulsante accanto per avviare la procedura guidata. È possibile saltare questo passaggio e configurare manualmente il pescato facendo clic sul pulsante Chiudi <b> guidata </b>"
 
 msgid "CLOSE_WIZARD"
 msgstr "Chiudere la procedura guidata"
@@ -1619,7 +1619,7 @@ msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Controllo della scheda SD"
 
 msgid "UPDATED_PROGRAM"
-msgstr "Configurazione i programmi / presa / setup Cultibox non erano aggiornati sulla carta, l'aggiornamento è stato eseguito"
+msgstr "Configurare la scheda SD è stato aggiornato in base alle informazioni nel software"
 
 msgid "INFO_UPDATE_AVAILABLE"
 msgstr "È disponibile un aggiornamento per passare a una versione più recente cliccando"
@@ -1801,7 +1801,7 @@ msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Clicca sull'immagine per riapparire software messaggio"
 
 msgid "TOOLTIP_RTC_OFFSET"
-msgstr "Consente di modificare la velocità del clock interno del Cultibox."
+msgstr "Turni giornalieri alle 2 del mattino l'orologio Cultibox. Se si immettono 5 secondi, 2 ore, l'orologio salterà a 2h00m05s"
 
 msgid "TOOLTIP_NO_SENSOR_DEFINED"
 msgstr "Encoder non è ancora definita: quando i primi registri di carico dalla scheda SD, i sensori verranno configurati automaticamente"

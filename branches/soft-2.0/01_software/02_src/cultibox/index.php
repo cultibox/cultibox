@@ -4,6 +4,7 @@
 session_cache_limiter('nocache');
 $error=array();
 
+
 //Cookie permettant de stocker le positionnement de la boîte de message, valable pendant 30 jours
 if (!isset($_COOKIE['POSITION'])) {
     setcookie("POSITION", "15,15,325", time()+(86400 * 30),"/",false,false);
@@ -20,7 +21,7 @@ require_once 'main/libs/utilfunc.php';
 
 
 //Set lang:
-if((isset($_COOKIE['LANG']))&&(!empty(($_COOKIE['LANG'])))) {
+if((isset($_COOKIE['LANG']))&&(!empty($_COOKIE['LANG']))) {
     $lang=$_COOKIE['LANG'];
 } else {
     $lang=get_configuration("DEFAULT_LANG",$error);
@@ -39,6 +40,7 @@ require_once('main/libs/utilfunc_sd_card.php');
 // Variables for pages cost and wifi:
 $wifi=get_configuration("WIFI");
 $cost=get_configuration("SHOW_COST");
+
 
 ?>
 <!DOCTYPE HTML>
@@ -103,6 +105,15 @@ $cost=get_configuration("SHOW_COST");
         <div>
             <!-- Small eye for displaying message pop up-->
             <script>title_msgbox="<?php echo __('TOOLTIP_MSGBOX_EYES'); ?>";</script>
+            <?php 
+                include $GLOBALS['BASE_PATH'].'main/libs/js/send_info_error.js';
+
+                // Send information
+                if(get_configuration("STATISTICS",$main_error) == "True") {
+                    include $GLOBALS['BASE_PATH'].'main/libs/js/send_informations.js';
+                }
+            ?>
+
             <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt="" title="" id="eyes_msgbox"></div>
 
             <div class="wrapper grid-block">

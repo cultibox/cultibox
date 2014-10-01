@@ -4,16 +4,21 @@
 
 
 <!-- Head title befor program showing -->
-<label class="title_conf">
-    <?php echo __('VIEW_CURRENT_PROGRAM') . program\get_field_from_program_index("name",$program_index_id) . "  -  " . __('VIEW_CURRENT_PROGRAM_PLUG_PART'); ?>
-        
+<div class="title_conf">
+    <?php echo __('VIEW_CURRENT_PROGRAM'); ?>
+    <select name="select_program_index_conf" id="select_program_index_conf">
+    <?php foreach ($index_info as $row) { ?>
+        <option value="<?php echo $row['id']; ?>" <?php if($program_index_id==$row['id']) echo " selected"; ?>><?php echo $row['name']; ?></option>
+    <?php } ?>
+    </select>   
+    &nbsp;-&nbsp;<?php echo __('PLUG_MENU'); ?>
     <select name="selected_plug" id="selected_plug_conf">
     <?php 
         for($i=0;$i<count($plugs_infos);$i++) { ?>
             <option value="<?php echo $plugs_infos[$i]['id']; ?>"  <?php if(strcmp($selected_plug,$plugs_infos[$i]['id'])==0) { echo 'selected';} ?> ><?php echo $plugs_infos[$i]['id']." - ".$plugs_infos[$i]['PLUG_NAME']; ?></option>
      <?php   } ?>
     </select>
-</label>
+</div>
 
 <!-- Menu button -->
 <table class="table_width">
@@ -280,6 +285,11 @@
                     <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
                         <input type="checkbox" name="reset_selected_plug" value="<?php echo $i; ?>" id="reset_selected_plug<?php echo $i; ?>"><?php echo $i; ?>
                     <?php } ?>
+                     <select name="reset_set_program_index_id" id="reset_set_program_index_id">
+                        <?php foreach ($index_info as $row) { ?>
+                                <option value="<?php echo $row['id']; ?>" <?php if($program_index_id==$row['id']) echo " selected"; ?>><?php echo $row['name']; ?></option>
+                        <?php    } ?>
+                    </select>
                     <input type="submit" value="<?php echo __('NO_PLUG_SELECTED'); ?>" name="reset_submit" id="reset_submit" class="inputDisable" disabled>
                 </form>
             </td>
@@ -289,147 +299,17 @@
     <hr />
     <br />
     <table class="table_width">
-        <!-- Export plug program -->
-        <tr>
-            <td class="program-td-management">
-                <?php echo __('TITLE_EXPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_PROGRAM'); ?>" />
-            </td>
-            <td>
-                <form action="/cultibox/index.php?menu=programs" method="post">
-                    <select name="export_selected_plug" id="export_selected_plug">
-                    <?php for($i=1;$i<=$nb_plugs;$i++) {
-                            if("$i"=="$export_selected") {
-                                echo "<option value=\"${i}\" selected>${i}</option>";
-                            } else {
-                                echo "<option value=\"${i}\">${i}</option>";
-                            }
-                        } 
-                    ?>
-                    </select>
-                    <?php echo __('SELECTED_DAILY_PROGRAM'); ?>
-                    <select name="export_program_index_id" id="export_program_index_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
-                        <?php
-                            $array = array();
-                            program\get_program_index_info($array);
-                            foreach ($array as $row)
-                            {
-                                echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
-                            }
-                        ?>
-                    </select>
-                    <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export" id="export_program">
-                </form>
-                <br />
-            </td>
-        </tr> 
-        <!-- Import plug program -->
-        <tr>
-            <td> 
-                <?php echo __('TITLE_IMPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_PROGRAM'); ?>" />
-            </td>
-            <td>
-                <form action="/cultibox/index.php?menu=programs" method="post" enctype= "multipart/form-data" name="import_form" id="import_form">
-                    <select name="import_selected_plug" id="import_selected_plug">
-                    <?php for($i=1;$i<=$nb_plugs;$i++) {
-                            if("$i"=="$export_selected") {
-                                echo "<option value=\"${i}\" selected>${i}</option>";
-                            } else {
-                                echo "<option value=\"${i}\">${i}</option>";
-                            }
-                        }
-                    ?>
-                    </select> 
-                    <?php echo __('SELECTED_DAILY_PROGRAM'); ?>
-                    <select name="import_program_index_id" id="import_program_index_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
-                        <?php
-                            $array = array();
-                            program\get_program_index_info($array);
-                            foreach ($array as $row)
-                            {
-                                echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
-                            }
-                        ?>
-                    </select>
-                    <input id="fileupload" type="file" name="files[]"><label id="import_name_file" class="imported_file"></label>
-                    <input type="submit" name="import" value="<?php echo __('SELECT_FILE_NAME'); ?>" id="import_program" class="inputDisable" disabled>
-                </form>
-            </td>
-        </tr> 
-         <!-- Export set of programs -->
-        <tr>
-            <td>
-                <?php echo __('TITLE_EXPORT_SET_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_SET_PROGRAM'); ?>" />
-            </td>
-            <td>
-                <form action="/cultibox/index.php?menu=programs" method="post" enctype= "multipart/form-data" name="export_set_form" id="export_set_form">
-                    <select name="export_set_program_index_id" id="export_set_program_index_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
-                        <?php
-                            $array = array();
-                            program\get_program_index_info($array);
-                            foreach ($array as $row)
-                            {
-                                echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
-                            }
-                        ?>
-                    </select>
-                    <input type="submit" name="export_set" value="<?php echo __('EXPORT_PROGRAM'); ?>" id="export_set_program" <?php if($nb_daily_program==0) { ?> disabled<?php } ?>>
-                </form>
-            </td>
-        </tr>
-         <!-- Import set of programs -->
-        <tr>
-            <td>
-                <?php echo __('TITLE_IMPORT_SET_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_SET_PROGRAM'); ?>" />
-            </td>
-            <td>
-                <form action="/cultibox/index.php?menu=programs" method="post" enctype= "multipart/form-data" name="import_set_form" id="import_set_form">
-                    <select name="import_set_program_index_id" id="import_set_program_index_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
-                        <?php
-                            $array = array();
-                            program\get_program_index_info($array);
-                            foreach ($array as $row)
-                            {
-                                echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
-                            }
-                        ?>
-                    </select>
-                    <input id="fileuploadset" type="file" name="files[]"><label id="import_set_name_file" class="imported_file"></label>
-                    <input type="submit" name="import_set" value="<?php echo __('SELECT_FILE_NAME'); ?>" id="import_set_program" class="inputDisable" disabled>
-                </form>
-            </td>
-        </tr>
-    </table>
-    <br />
-    <hr />
-    <br />
-    <table class="table_width">
-        <!-- Open daily program -->
-        <tr>
-            <td class="program-td-management">
-                <?php echo __('PROGRAM_DAILY_OPEN_SELECT'); ?>
-            </td>
-            <td>
-                <form action="/cultibox/index.php?menu=programs" method="post" enctype="multipart/form-data" id="daily_open_form" name="daily_open_form">
-                    <select name="program_index_id" id="program_index_id_id" <?php if($nb_daily_program==0) { ?> style="display:none"<?php } ?>>
-                        <?php
-                            $array = array();
-                            program\get_program_index_info($array);
-                            foreach ($array as $row)
-                            {
-                                echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
-                            }
-                        ?>
-                    </select>
-                    <input type="submit" id="daily_open_button" name="daily_open_button" <?php if($nb_daily_program==0) { ?>value="<?php echo __('NO_DAILY_PROGRAM_TO_OPEN'); ?>" class="inputDisable" disabled <?php } else { ?>value="<?php echo __('PROGRAM_DAILY_OPEN'); ?>" <?php } ?>>
-                </form>
-            </td>
-        </tr>
         <tr>
             <!-- Save daily programm -->
-            <td>
+            <td class="program-td-management">
                 <?php echo __('PROGRAM_DAILY_SAVE'); ?>
             </td>
             <td>
+                 <select name="daily_save_program_index_id" id="daily_save_program_index_id">
+                    <?php foreach ($index_info as $row) { ?>
+                            <option value="<?php echo $row['id']; ?>" <?php if($program_index_id==$row['id']) echo " selected"; ?>><?php echo $row['name']; ?></option>
+                    <?php    } ?>
+                </select>
                 <input type="submit" id="daily_save_button" name="daily_save_button" value="<?php echo __('SAVE_DIALOG_CALENDAR'); ?>">
             </td>
         </tr>
@@ -440,20 +320,16 @@
             </td>
             <td>
                 <select name="program_delete_index" id="program_delete_index" <?php if($nb_daily_program==0) { ?>style="display:none" <?php } ?>>
-                    <?php
-                        $array = array();
-                        program\get_program_index_info($array);
-                        foreach ($array as $row)
-                        {
-                            if ($row['id'] != 1)
-                                echo "<option value=\"" . $row['id'] . "\">" . $row['name'] . "</option>";
-                        }
-                    ?>
+                      <?php foreach ($index_info as $row) { 
+                            if($row['id']!="1") { ?>
+                            <option value="<?php echo $row['id']; ?>" <?php if($program_index_id==$row['id']) echo " selected"; ?>><?php echo $row['name']; ?></option>
+                            <?php }
+                          } ?>
                 </select>
                 <input type="submit" id="daily_delete_button" name="daily_delete_button" <?php if($nb_daily_program==0) { ?>value="<?php echo __('NO_DAILY_PROGRAM_TO_DELETE'); ?>" class="inputDisable" disabled <?php } else { ?>value="<?php echo __('PROGRAM_DAILY_DELETE'); ?>" <?php } ?>>
             </td>
         </tr>
-    </table>    
+    </table>
     <br />
     <hr />
     <br />
@@ -484,7 +360,105 @@
              </td>
             <td></td>
         </tr>
+    </table>     
+    <br />
+    <hr />
+    <br />
+    <table class="table_width">
+        <!-- Export plug program -->
+        <tr>
+            <td class="program-td-management">
+                <?php echo __('TITLE_EXPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_PROGRAM'); ?>" />
+            </td>
+            <td>
+                <form action="/cultibox/index.php?menu=programs" method="post">
+                    <select name="export_selected_plug" id="export_selected_plug">
+                    <?php for($i=1;$i<=$nb_plugs;$i++) {
+                            if("$i"=="$export_selected") {
+                                echo "<option value=\"${i}\" selected>${i}</option>";
+                            } else {
+                                echo "<option value=\"${i}\">${i}</option>";
+                            }
+                        } 
+                    ?>
+                    </select>
+                    <?php echo __('SELECTED_DAILY_PROGRAM'); ?>
+                    <select name="export_program_index_id" id="export_program_index_id">
+                        <?php foreach ($index_info as $row) { ?>
+                             <option value="<?php echo $row['id']; ?>" <?php if($program_index_id==$row['id']) echo " selected"; ?>><?php echo $row['name']; ?></option>
+                        <?php    } ?>
+                    </select>
+                    <input type="submit" value="<?php echo __('EXPORT_PROGRAM'); ?>" name="export" id="export_program">
+                </form>
+            </td>
+        </tr> 
+          <!-- Export set of programs -->
+        <tr>
+            <td>
+                <?php echo __('TITLE_EXPORT_SET_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_EXPORT_SET_PROGRAM'); ?>" />
+            </td>
+            <td>
+                <form action="/cultibox/index.php?menu=programs" method="post" enctype= "multipart/form-data" name="export_set_form" id="export_set_form">
+                    <select name="export_set_program_index_id" id="export_set_program_index_id">
+                        <?php foreach ($index_info as $row) { ?>
+                             <option value="<?php echo $row['id']; ?>" <?php if($program_index_id==$row['id']) echo " selected"; ?>><?php echo $row['name']; ?></option>
+                        <?php    } ?>
+                    </select>
+                    <input type="submit" name="export_set" value="<?php echo __('EXPORT_PROGRAM'); ?>" id="export_set_program">
+                </form>
+            </td>
+        </tr>
+        <!-- Import plug program -->
+        <tr>
+            <td> 
+                <br />
+                <?php echo __('TITLE_IMPORT_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_PROGRAM'); ?>" />
+            </td>
+            <td>
+                <br />
+                <form action="/cultibox/index.php?menu=programs" method="post" enctype= "multipart/form-data" name="import_form" id="import_form">
+                    <select name="import_selected_plug" id="import_selected_plug">
+                    <?php for($i=1;$i<=$nb_plugs;$i++) {
+                            if("$i"=="$export_selected") {
+                                echo "<option value=\"${i}\" selected>${i}</option>";
+                            } else {
+                                echo "<option value=\"${i}\">${i}</option>";
+                            }
+                        }
+                    ?>
+                    </select> 
+                    <?php echo __('SELECTED_DAILY_PROGRAM'); ?>
+                    <select name="import_program_index_id" id="import_program_index_id">
+                        <?php foreach ($index_info as $row) { ?>
+                            <option value="<?php echo $row['id']; ?>" <?php if($program_index_id==$row['id']) echo " selected"; ?>><?php echo $row['name']; ?></option>
+                        <?php    } ?>
+                    </select>
+                    <input id="fileupload" type="file" name="files[]"><label id="import_name_file" class="imported_file"></label>
+                    <input type="submit" name="import" value="<?php echo __('SELECT_FILE_NAME'); ?>" id="import_program" class="inputDisable" disabled>
+                </form>
+            </td>
+        </tr> 
+         <!-- Import set of programs -->
+        <tr>
+            <td>        
+                <br />
+                <?php echo __('TITLE_IMPORT_SET_PROGRAM'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_SET_PROGRAM'); ?>" />
+            </td>
+            <td>
+                <br />
+                <form action="/cultibox/index.php?menu=programs" method="post" enctype= "multipart/form-data" name="import_set_form" id="import_set_form">
+                    <select name="import_set_program_index_id" id="import_set_program_index_id">
+                        <?php foreach ($index_info as $row) { ?>
+                            <option value="<?php echo $row['id']; ?>" <?php if($program_index_id==$row['id']) echo " selected"; ?>><?php echo $row['name']; ?></option>
+                        <?php    } ?>
+                    </select>
+                    <input id="fileuploadset" type="file" name="files[]"><label id="import_set_name_file" class="imported_file"></label>
+                    <input type="submit" name="import_set" value="<?php echo __('SELECT_FILE_NAME'); ?>" id="import_set_program" class="inputDisable" disabled>
+                </form>
+            </td>
+        </tr>
     </table>
+
 </div>
     
 

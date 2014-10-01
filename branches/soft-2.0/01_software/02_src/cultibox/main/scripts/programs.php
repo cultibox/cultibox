@@ -27,6 +27,10 @@ $pop_up_error_message="";
 $resume=array();
 $plug_type=get_plug_conf("PLUG_TYPE",$selected_plug,$main_error);
 
+$index_info=array();
+program\get_program_index_info($index_info);
+
+
 
 //Valeur du radio bouton qui définit si le programme sera cyclic ou non:
 if(!isset($cyclic)) {
@@ -63,10 +67,6 @@ if(!isset($end_time)) {
 }
     
 
-$reset_selected      = getvar("reset_selected_plug");
-$import_selected     = getvar("import_selected_plug");
-$export_selected     = getvar("export_selected_plug");
-
 // Get configuration value
 $second_regul        = get_configuration("SECOND_REGUL",$main_error);
 $remove_1000_change_limit = get_configuration("REMOVE_1000_CHANGE_LIMIT",$main_error);
@@ -91,11 +91,12 @@ if(!isset($program_index_id)) {
      $program_index_id = getvar("program_index_id");
 }
 
-if ($program_index_id == "")
-    $program_index_id = 1;
+if($program_index_id == "") $program_index_id = 1;
+
 
 // Get "number" field of program table
 $program_index = program\get_field_from_program_index ("program_idx",$program_index_id);
+
 
 // Get number of daily program recorded:
 $nb_daily_program = get_nb_daily_program($main_error);
@@ -113,16 +114,6 @@ $error_value[6]=__('ERROR_VALUE_PROGRAM','html');
 
 for($i=1;$i<=$nb_plugs;$i++) {
     $resume_regul[$i]=format_regul_sumary("$i",$main_error);
-}
-
-if((!isset($reset_selected)) || empty($reset_selected)) {
-    $reset_selected=$selected_plug;
-} else {
-    if($reset_selected == "all") {
-        $selected_plug = 1;
-    } else {
-        $selected_plug = $reset_selected;
-    }
 }
 
 if((!isset($export_selected)) || empty($export_selected)) {
