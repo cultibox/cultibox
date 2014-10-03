@@ -71,7 +71,10 @@ EOF;
                 }
             
                 write_calendar($sd_card,$calendar,$main_error,strtotime($start),strtotime($end));
-                calendar\write_plgidx($sd_card,$calendar);
+                $plgidx=create_plgidx($calendar);
+                if(count($plgidx)>0) {
+                    write_plgidx($plgidx,$sd_card);
+                }
             }
         } else {
             $timestart=date("U",strtotime($start));
@@ -99,8 +102,10 @@ EOF;
             }
 
             write_calendar($sd_card,$calendar,$main_error,strtotime($start),strtotime($end));
-            calendar\write_plgidx($sd_card,$calendar);
-
+            $plgidx=create_plgidx($calendar);
+            if(count($plgidx)>0) {
+                write_plgidx($plgidx,$sd_card);
+            }
         }
     }
 } else {
