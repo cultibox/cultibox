@@ -298,9 +298,11 @@ if(    !empty($daily_program_name)
             calendar\read_event_from_db($calendar);
             
             if(count($calendar) > 0) {
-                calendar\write_plgidx($sd_card,$calendar);
+                $plgidx=create_plgidx($calendar);
+                if(count($plgidx)>0) {
+                    write_plgidx($plgidx,$sd_card);
+                }
             }
-
         }
         echo "1";
     } else {
