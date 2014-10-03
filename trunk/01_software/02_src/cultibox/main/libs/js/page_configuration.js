@@ -308,15 +308,15 @@ $(document).ready(function(){
             });
 
 
-            //If second regulation is disabled, we uses default value:
-            if($("#second_regul option:selected").val()=="False") {
+            //If advanced regulation is disabled, we use default value:
+            if($("#advanced_regul_options option:selected").val()=="False") {
                 $.ajax({
                     type: "GET",
                     cache: false,
                     async: false,
                     url: "main/modules/external/update_plugs.php",
                     data: {
-                        value:"False", 
+                        value:"False",
                         id:"all",
                         name:"PLUG_REGUL"
                     }
@@ -329,11 +329,8 @@ $(document).ready(function(){
                         check_update=false;
                     }
                 });
-            }
 
 
-            //If advanced regulation is disabled, we use default value:
-            if($("#advanced_regul_options option:selected").val()=="False") {
                 $.ajax({
                     type: "GET",
                     cache: false,
@@ -729,6 +726,7 @@ $(document).ready(function(){
                     });
             }
 
+
             if(sd_card!="") {
                 $.ajax({
                     type: "GET",
@@ -745,7 +743,6 @@ $(document).ready(function(){
 
                         // For each information, show it
                         json.error.forEach(function(entry) {
-                            pop_up_add_information(entry,"check_sd_status","information");
                             check_update=false;
                         });
                     } catch(err) {
@@ -850,7 +847,7 @@ $(document).ready(function(){
             data: {path:$("#selected_hdd").val()}
          }).done(function (data) {
             if(data=="0") {
-                $("#locked_sd_card").dialog({ width: 550, resizable: false, closeOnEscape: false, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } }], hide: "fold", modal: true,  dialogClass: "popup_error"  });
+                $("#locked_sd_card").dialog({ width: 550, resizable: false, closeOnEscape: false, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); get_content("configuration",getUrlVars("submenu=card_interface")); } }], hide: "fold", modal: true,  dialogClass: "popup_error"  });
             } else {
                 $("#format_dialog_sd").dialog({
                     resizable: false,

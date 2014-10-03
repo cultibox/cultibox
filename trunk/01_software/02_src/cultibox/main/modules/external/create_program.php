@@ -33,10 +33,6 @@ $regul_program=getvar("regul_program");
 $start_time=getvar("start_time"); 
 $end_time=getvar("end_time");
 
-// Get configuration value
-$remove_1000_change_limit = get_configuration("REMOVE_1000_CHANGE_LIMIT",$main_error);
-
-
 $start="";
 $end="";
 $rep="";
@@ -317,25 +313,10 @@ if($check == "1") { //Si la valeur du programme est correcte:
     }
 
     if($ch_insert) {
-        $main_info[]=__('INFO_VALID_UPDATE_PROGRAM');
-        $pop_up_message=$pop_up_message.popup_message(__('INFO_VALID_UPDATE_PROGRAM'));                    
-
-        if((isset($sd_card))&&(!empty($sd_card))) {
-            $main_info[]=__('INFO_PLUG_CULTIBOX_CARD');
-            $pop_up_message=$pop_up_message.popup_message(__('INFO_PLUG_CULTIBOX_CARD'));
-        }
-
-        // Check if user has not removed the limit of 1000 change
-        if ($remove_1000_change_limit == "False")
-        {
-            $tmp_prog=create_program_from_database($main_error);
-            if(count($tmp_prog)>$GLOBALS['PLUGV_MAX_CHANGEMENT']-1) {
-                $last_action=substr($tmp_prog[$GLOBALS['PLUGV_MAX_CHANGEMENT']-1],0,5);
-                $pop_up_error_message=$pop_up_error_message.popup_message(__('ERROR_MAX_PROGRAM')." ".date('H:i:s',$last_action));
-            }
-        }
-
-    } 
+        echo json_encode("1");
+    }  else {
+        echo json_encode("0");
+    }
 }
 
 ?>

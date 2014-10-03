@@ -5,7 +5,7 @@ pop_up_add_information("<?php echo __('WAIT_UPDATED_PROGRAM') ;?> <img src=\"mai
 
 $.ajax({ 
     type: "GET",
-    url: "http://localhost:6891/cultibox/main/modules/external/check_and_update_sd.php",
+    url: "main/modules/external/check_and_update_sd.php",
     data: {
         sd_card:"<?php echo $sd_card ;?>"
     },

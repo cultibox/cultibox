@@ -57,6 +57,7 @@ if(!isset($start_time)) {
 }
 
 
+
 if(!isset($end_time)) {
     $end_time=getvar("end_time");
 }
@@ -71,7 +72,6 @@ $resume_regul=array();
 $tmp_prog="";
 $start="";
 $end="";
-$rep="";
 
 // Var used to choose programm to display and modify 
 if(!isset($program_index_id)) {
@@ -85,9 +85,6 @@ $program_index = program\get_field_from_program_index ("program_idx",$program_in
 
 // Get number of daily program recorded:
 $nb_daily_program = get_nb_daily_program($main_error);
-    
-// Var used to define if program file must be rebuild
-$rebuildProgamFile = false;
     
 $error_value[0]="";
 $error_value[1]="";
@@ -121,6 +118,11 @@ if(isset($cyclic)&&(!empty($cyclic))) {
 
     $cyclic_start=$start_time_cyclic;   //On sauvegarde les valeurs de départ et de fin qui vont être modifié dans le programme
     $final_cyclic_end=$end_time_cyclic; //pour l'affichage dans les input text
+} 
+
+if((isset($ponctual))&&(!empty($ponctual))) {
+    $start=$start_time;
+    $end=$end_time;
 }
 
 if(empty($apply)||(!isset($apply))) {
@@ -149,7 +151,7 @@ if ($remove_1000_change_limit == "False")
     //Pour vérifier que l'on ne dépasse pas la limite de changement d'état des prises:
     //On génère le fichier plugv depuis la base de données et on compte le nombre de ligne,
     //Si cela dépasse la limite, on affiche une erreur/warning après calcul de l'heure de la dernière action
-    $tmp_prog=create_program_from_database($main_error);
+    $tmp_prog=create_program_from_database($main_error,$program_index);
     if (count($tmp_prog) > $GLOBALS['PLUGV_MAX_CHANGEMENT']-1)
     {
         $last_action=substr($tmp_prog[$GLOBALS['PLUGV_MAX_CHANGEMENT']-1],0,5);
@@ -187,39 +189,6 @@ if(count($tmp_resume)>0) {
     unset($resume);
     $resume=$tmp_resume;
 }
-
-
-
-if(isset($apply) && !empty($apply)) {
-    $rebuildProgamFile = true;
-}
-
-// If needed, rebuild program
-if ($rebuildProgamFile 
-    && !empty($sd_card) 
-    && check_sd_card($sd_card))
-{
-    // Get field number of program
-    $fieldNumber = program\get_field_from_program_index("program_idx",$program_index_id);
-
-    // Read from database program
-    $program = create_program_from_database($main_error,$fieldNumber);
-    
-    // Check if different from SD cards
-    if(!compare_program($program,$sd_card)) {
-    
-        // Get pluXX filename
-        $plu_fileName = "plu" . program\get_field_from_program_index("plugv_filename",$program_index_id);
-    
-        // Save the program on SD card
-        if(!save_program_on_sd($sd_card,$program,$plu_fileName)) {
-        
-            // If there is an error, display it
-            $main_error[]=__('ERROR_WRITE_PROGRAM');
-        }
-    }
-}
-
 
 
 sd_card_update_log_informations($sd_card);

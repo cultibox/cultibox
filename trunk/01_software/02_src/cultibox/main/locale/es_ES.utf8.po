@@ -1480,6 +1480,9 @@ msgstr "La hora de inicio o fin de las horas con tarifa reducida/reducida no est
 msgid "ERROR_COPY_TPL"
 msgstr "Imposible de copiar el fichero empty_64.tpl en su tarjeta SD "
 
+msgid "ERROR_COPY_PLGIDX"
+msgstr "Error al crear el archivo plgidx"
+
 msgid "ERROR_COPY_FILE"
 msgstr "Error durante la copia de un fichero"
 

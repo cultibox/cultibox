@@ -47,6 +47,11 @@ $(function() {
 });
 
 $(document).ready(function() {
+    jQuery('#jquery-colour-picker-example select').colourPicker({
+        ico:    'main/libs/img/jquery.colourPicker.gif',
+        title:    false
+   });
+
     if(sd_card=="") {
         $.ajax({
             cache: false,
@@ -259,15 +264,15 @@ $(document).ready(function() {
            url: "main/modules/external/get_variable.php",
            data: {name:"important"}
         }).done(function (data) {
-            //if(jQuery.parseJSON(data) != "True" || true) {
+            if(jQuery.parseJSON(data) != "True") {
                 display_modal_ui("#dialog_calendar_important" , "popup_message");
 
                 $.ajax({
                     cache: false,
                     url: "main/modules/external/set_variable.php",
-                    data: {name:"important", value: "True", duration: 7}
+                    data: {name:"important", value: "True", duration: 1}
                 });
-            //}
+            }
         });
     }
 
@@ -442,7 +447,7 @@ function display_modal_ui (ui_ID, ui_Class) {
 function update_title_list () {
     $.ajax({
         type: "GET",
-        url: "http://localhost:6891/cultibox/main/modules/external/get_title_calendar_list.php"
+        url: "main/modules/external/get_title_calendar_list.php"
     }).done(function (data) {
         if(data!="") {
             var objJSON = jQuery.parseJSON(data);
@@ -574,7 +579,7 @@ $(document).ready(function() {
 
                                 $.ajax({
                                     type: "GET",
-                                    url: "http://localhost:6891/cultibox/main/modules/external/calendar_add_events.php",
+                                    url: "main/modules/external/calendar_add_events.php",
                                     data: {
                                         title:title,
                                         start:new_start,
@@ -706,7 +711,7 @@ $(document).ready(function() {
                 }
             });
         },
-        events: "http://localhost:6891/cultibox/main/modules/external/calendar_get_events.php",
+        events: "main/modules/external/calendar_get_events.php",
         drop: function(date, allDay) {
             // this function is called when something is dropped
             // retrieve the dropped element's stored Event Object
@@ -789,7 +794,7 @@ $(document).ready(function() {
             <?php } ?> 
             $.ajax({
                 type: "GET",
-                url: "http://localhost:6891/cultibox/main/modules/external/calendar_update_events.php",
+                url: "main/modules/external/calendar_update_events.php",
                 data: {
                     title:event.title,
                     start:new_start,
@@ -837,7 +842,7 @@ $(document).ready(function() {
             <?php } ?>
             $.ajax({
                 type: "GET",
-                url: "http://localhost:6891/cultibox/main/modules/external/calendar_update_events.php",
+                url: "main/modules/external/calendar_update_events.php",
                 data: {
                     title:event.title,
                     start:new_start,
@@ -972,7 +977,7 @@ $(document).ready(function() {
 
                                         $.ajax({
                                             type: "GET",
-                                            url: "http://localhost:6891/cultibox/main/modules/external/calendar_update_events.php",
+                                            url: "main/modules/external/calendar_update_events.php",
                                             data: {
                                                 title:title,
                                                 start:new_start,
@@ -1054,7 +1059,7 @@ $(document).ready(function() {
                             
                             $.ajax({
                                 type: "GET",
-                                url: "http://localhost:6891/cultibox/main/modules/external/calendar_remove_events.php",
+                                url: "main/modules/external/calendar_remove_events.php",
                                 data: {
                                     id:event.id,
                                     card:sd_card
@@ -1099,7 +1104,7 @@ $(document).ready(function() {
                             
                             $.ajax({
                                 type: "GET",
-                                url: "http://localhost:6891/cultibox/main/modules/external/calendar_remove_events.php",
+                                url: "main/modules/external/calendar_remove_events.php",
                                 data:  {
                                     id:event.id,
                                     card:sd_card
@@ -1136,7 +1141,7 @@ $(document).ready(function() {
                if(event.icon.search('http')>-1) {
                     iconurl=event.icon;
                 } else {
-                    iconurl="http://localhost:6891/cultibox/main/modules/img/"+event.icon;
+                    iconurl="main/modules/img/"+event.icon;
                 }
 
                 if (eventElement.find('span.fc-event-time').length) {
@@ -1150,7 +1155,7 @@ $(document).ready(function() {
                if(event.icon0.search('http')>-1) {
                     iconurl=event.icon0;
                 } else {
-                    iconurl="http://localhost:6891/cultibox/main/modules/img/"+event.icon0;
+                    iconurl="main/modules/img/"+event.icon0;
                 }
 
                 if (eventElement.find('span.fc-event-time').length) {
@@ -1164,7 +1169,7 @@ $(document).ready(function() {
                if(event.icon1.search('http')>-1) {
                     iconurl=event.icon1;
                 } else {
-                    iconurl="http://localhost:6891/cultibox/main/modules/img/"+event.icon1;
+                    iconurl="main/modules/img/"+event.icon1;
                 }
 
                 if (eventElement.find('span.fc-event-time').length) {
@@ -1178,7 +1183,7 @@ $(document).ready(function() {
                if(event.icon2.search('http')>-1) {
                     iconurl=event.icon2;
                 } else {
-                    iconurl="http://localhost:6891/cultibox/main/modules/img/"+event.icon2;
+                    iconurl="main/modules/img/"+event.icon2;
                 }
 
                 if (eventElement.find('span.fc-event-time').length) {
@@ -1192,7 +1197,7 @@ $(document).ready(function() {
                if(event.icon3.search('http')>-1) {
                     iconurl=event.icon3;
                 } else {
-                    iconurl="http://localhost:6891/cultibox/main/modules/img/"+event.icon3;
+                    iconurl="main/modules/img/"+event.icon3;
                 }
 
                 if (eventElement.find('span.fc-event-time').length) {

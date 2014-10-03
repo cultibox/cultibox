@@ -1480,6 +1480,9 @@ msgstr "L \ 'Startzeit und / oder das Ende des Peak / Off-Peak nicht konfigurier
 msgid "ERROR_COPY_TPL"
 msgstr "Kann die Datei auf die SD-Karte zu kopieren empty_file_64.tpl"
 
+msgid "ERROR_COPY_PLGIDX"
+msgstr "Fehler beim Erstellen der Datei plgidx"
+
 msgid "ERROR_COPY_FILE"
 msgstr "Fehler beim Kopieren einer Datei, überprüfen Sie, dass die Karte nicht schreibgeschützt"
 

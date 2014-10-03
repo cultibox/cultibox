@@ -9,7 +9,7 @@ if((isset($_GET['cost']))&&(!empty($_GET['cost']))&&(isset($_GET['wifi']))&&(!em
     $cost=$_GET['cost'];
     $wifi=$_GET['wifi'];
     $main_error=array();
-    configure_menu("cost",$cost,);
+    configure_menu("cost",$cost);
     configure_menu("wifi",$wifi);
 }
 

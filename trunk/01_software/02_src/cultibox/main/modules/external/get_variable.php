@@ -29,7 +29,12 @@ if((!isset($name))||(empty($name))) {
             }
             break;
         case 'SD_CARD':
-            echo get_sd_card();
+            $sd_card=get_sd_card();
+            if(!$sd_card) {
+                echo "";
+            } else {
+                echo $sd_card;
+            }
             break;
         case 'IMPORTANT':
             if((isset($_COOKIE['IMPORTANT']))&&(!empty($_COOKIE['IMPORTANT']))) {

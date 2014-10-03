@@ -1481,6 +1481,9 @@ msgstr "L \ 'di tempo e / o alla fine del picco di inizio / off-peak non è conf
 msgid "ERROR_COPY_TPL"
 msgstr "Impossibile copiare il file empty_file_64.tpl sulla scheda SD, assicurarsi che la carta non sia protetta da scrittura"
 
+msgid "ERROR_COPY_PLGIDX"
+msgstr "Errore durante la creazione del file plgidx"
+
 msgid "ERROR_COPY_FILE"
 msgstr "Errore copia di un file, controllare che la scheda non sia protetta da scrittura"
 
