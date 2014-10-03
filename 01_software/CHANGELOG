@@ -1,6 +1,8 @@
 Cultibox (2.0.03) precise; urgency=low
     + Correction de la page Configuration et du formatage de la carte SD
     + Correction de la page programme concernant les jeux de programmes dans les options avancées
+    + Suppression des itérations de l'url localhost pour rendre le soft compatible avec le module wifi
+    + Correction et vérification de l'écriture de la carte SD lors du changement de configuration (ajout des jeux de programme et du fichier plugidx)
     + Diverses correction pour stabiliser la 2.0.02
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Wed Oct 1 10:10:26 CEST 2014

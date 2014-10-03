@@ -12,6 +12,7 @@ define("ERROR_COPY_WIFI_CONF", "10");
 define("ERROR_WRITE_SD_CONF", "11");
 define("ERROR_WRITE_SD", "12");
 define("ERROR_SD_NOT_FOUND", "13");
+define("ERROR_COPY_PLGIDX", "14");
 
 // {{{ check_and_update_sd_card()
 // ROLE If a cultibox SD card is plugged, manage some administrators operations: check the firmaware and log.txt files, check if 'programs' are up tp date...
@@ -44,26 +45,38 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
     /* ************* */
 
 
-    $index_info=array();
-    program\get_program_index_info($index_info);
+    $program_index=array();
+    program\get_program_index_info($program_index);
    
-    /* 
-    $chk_prg=true;
-    foreach($index_info as $prg) {
-        $program=create_program_from_database($main_error,$prg['program_idx']);
-    */
-        $program=create_program_from_database($main_error);
-        if(!compare_program($program,$sd_card)) {
+
+    $confsave_prog=true;
+    foreach ($program_index as $key => $value) {
+        // Read from database program
+        $program = create_program_from_database($main_error,$value['program_idx']);
+
+        if(!compare_program($program,$sd_card,"plu" . $value['plugv_filename'])) {
             $conf_uptodate=false;
-        
-            // Caution : Only plugv is updated
-            // TODO : Update every pluXX and plgidx
-            if(!save_program_on_sd($sd_card,$program)) {
-                $main_error_tab[]=__('ERROR_WRITE_PROGRAM');
-                return ERROR_WRITE_PROGRAM;
+
+            if(!save_program_on_sd($sd_card,$program,"plu" . $value['plugv_filename'])) {  
+                $confsave_prog=false;
             }
         }
-    //}
+    }
+
+    //For plugv
+    $program = create_program_from_database($main_error);
+    if(!compare_program($program,$sd_card)) {
+        $conf_uptodate=false;
+
+        if(!save_program_on_sd($sd_card,$program)) {
+            $confsave_prog=false;
+        }
+    }
+
+    if(!$confsave_prog) {
+        $main_error_tab[]=__('ERROR_WRITE_PROGRAM');
+        return ERROR_WRITE_PROGRAM;
+    }
 
     $ret_firm=check_and_copy_firm($sd_card);
     if(!$ret_firm) {
@@ -97,9 +110,23 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         return ERROR_COPY_INDEX;
     }
 
-    if(!check_and_copy_plgidx($sd_card)) {
-        $main_error_tab[]=__('ERROR_COPY_TPL');
-        return ERROR_COPY_TPL;
+    $data=array();
+    calendar\read_event_from_db($data);
+    $plgidx=create_plgidx($data);
+    if(count($plgidx)>0) {
+        if(!compare_plgidx($plgidx,$sd_card)) {
+            $conf_uptodate=false;
+            if(!write_plgidx($plgidx,$sd_card)) {
+                $main_error_tab[]=__('ERROR_COPY_PLGIDX');
+                return ERROR_COPY_PLGIDX;
+            }
+        }
+    } else {
+        $conf_uptodate=false;
+        if(!check_and_copy_plgidx($sd_card)) {
+             $main_error_tab[]=__('ERROR_COPY_TPL');
+             return ERROR_COPY_TPL;
+        }
     }
 
     $wifi_conf=create_wificonf_from_database($main_error);
@@ -168,6 +195,7 @@ function get_error_sd_card_update_message($id=0) {
         case ERROR_COPY_WIFI_CONF: return __('ERROR_COPY_WIFI_CONF');
         case ERROR_WRITE_SD_CONF: return __('ERROR_WRITE_SD_CONF');
         case ERROR_WRITE_SD: return __('ERROR_WRITE_SD');
+        case ERROR_COPY_PLGIDX: return __('ERROR_COPY_PLGIDX');
         default: return "";
     }
 }
@@ -413,9 +441,11 @@ function save_program_on_sd($sd_card,$program,$filename = "plugv") {
 // ROLE compare programs and data to check if they are up to date
 // IN   $data         array containing datas to check
 //      $sd_card      sd card path to save data
+//      $file         file to be compared to
 // RET false is there is something to write, true else
-function compare_program($data,$sd_card) {
-    if(is_file("${sd_card}/cnf/prg/plugv")) {
+function compare_program($data,$sd_card,$file="plugv") {
+    $file="${sd_card}/cnf/prg/".$file;
+    if(is_file("${file}")) {
         $nb=0;
         //On compte le nombre d'entrée dans la base des programmes:
         $nbdata=count($data);
@@ -428,8 +458,6 @@ function compare_program($data,$sd_card) {
             $data=$tmp_array;
             $nbdata=count($data);
         }
-
-        $file="${sd_card}/cnf/prg/plugv";
 
         if(count($data)>0) {
             //On récupère les informations du fichier courant plugv
@@ -509,6 +537,118 @@ function compare_pluga($sd_card) {
 // }}}
 
 
+// {{{ create_plgidx()
+// ROLE create plgidx file
+// IN  $data            data to write into the sd card (come from calendar\read_event_from_db )
+// RET array containing plgidx
+function create_plgidx($data) {
+    $plgidx = array();
+    $return=array();
+
+    // If there is not event , return false
+    if(count($data) == 0) 
+        return $return;
+
+    // Open database connexion
+    $db = \db_priv_pdo_start();
+    
+    // Foreach event
+    foreach($data as $event)
+    {
+        // If this is a program index event
+        if ($event['program_index'] != "")
+        {
+
+            // Query plugv filename associated
+            try {
+                $sql = "SELECT plugv_filename FROM program_index WHERE id = \"" . $event['program_index'] . "\";";
+                $sth = $db->prepare($sql);
+                $sth->execute();
+                $res = $sth->fetch();
+            } catch(\PDOException $e) {
+                $ret=$e->getMessage();
+            }
+        
+            //
+            $today = strtotime(date("Y-m-d"));
+            $nextYear  = strtotime("+1 year", strtotime(date("Y-m-d")));
+        
+            // Start date
+            $date = $event['start_year'] . "-" . $event['start_month']  . "-" . $event['start_day'];
+            // End date
+            $end_date = $event['end_year'] . "-" . $event['end_month']  . "-" . $event['end_day'];
+            
+            while (strtotime($date) <= strtotime($end_date)) {
+
+                // Save only for futur element
+                if (strtotime($date) >= $today && strtotime($date) < $nextYear)
+                    $plgidx[$date] = $res['plugv_filename'];
+                  
+                // Incr date                  
+                $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
+            }
+        }
+    }
+
+    // Close connexion
+    $db = null;
+    
+    // For each day
+    for ($month = 1; $month <= 13; $month++) 
+    {
+        for ($day = 1; $day <= 31; $day++) 
+        {
+            // Format day and month
+            $monthToWrite = $month;
+            if (strlen($monthToWrite) < 2) {
+                $monthToWrite="0$monthToWrite";
+            }
+            
+            $dayToWrite = $day;
+            if (strlen($dayToWrite) < 2) {
+                $dayToWrite="0$dayToWrite";
+            }
+            
+            // Date to search in event
+            $dateToSearch = date("Y") . "-" . $monthToWrite . "-" . $dayToWrite;
+            
+            $plugvToUse = "00";
+            if (array_key_exists($dateToSearch, $plgidx)) {
+                $plugvToUse = $plgidx[$dateToSearch];
+                    
+                if (strlen($plugvToUse) < 2)
+                    $plugvToUse = "0$plugvToUse";
+            }
+
+            // Write the day
+            $return[]=$monthToWrite . $dayToWrite . $plugvToUse;
+        }
+    }
+    return $return;
+}
+//}}}
+
+
+// {{{ compare_plgidx()
+// ROLE compare plgidx and data from databases to check if the file is up to date
+// IN   $sd_card      sd card path to save data
+//      $ data        data to be compared to
+// RET false is there is something to write, true else
+function compare_plgidx($data,$sd_card) {
+    if(!is_file("${sd_card}/cnf/prg/plgidx")) return false;
+    $file="${sd_card}/cnf/prg/plgidx";
+
+    $plgidx=@file("$file");
+    if((count($data))!=(count($plgidx))) return false;
+
+    for($i=0;$i<count($data);$i++) {
+        if(strcmp(trim(html_entity_decode($data[$i])),trim(html_entity_decode($plgidx[$i])))!=0) return false;
+    }
+    return true;
+}
+// }}}
+
+
 // {{{ compare_wificonf()
 // ROLE compare wifi configuration if the file is up to date
 // IN    $data         array containing datas to check
@@ -565,6 +705,8 @@ function write_pluga($sd_card,&$out) {
 // }}}
 
 
+
+
 // {{{ write_wificonf()
 // ROLE write wifi configuration into the sd card
 // IN   $sd_card        the sd card to be written
@@ -618,6 +760,25 @@ function write_plugconf($data,$sd_card) {
       fclose($f);
    }
    return true;
+}
+// }}}
+
+
+// {{{ write_plgidx()
+// ROLE write plgidx into the sd card
+// IN   $data           array containing datas to write
+//      $sd_card        the sd card to be written
+// RET false is an error occured, true else
+function write_plgidx($data,$sd_card) {
+   $file="$sd_card/cnf/prg/plgidx";
+   if($f=@fopen("$file","w+")) {
+      if(!@fputs($f,implode("\r\n", $data))) {
+            return false;
+      }
+      fclose($f);
+      return true;
+    }
+    return false;
 }
 // }}}
 
@@ -1257,7 +1418,7 @@ function check_and_copy_firm($sd_card) {
 
 
 // {{{ check_and_copy_plgidx()
-// ROLE check if cnf/prg/plgidx file has to be updated
+// ROLE check if cnf/prg/plgidx exists
 // IN  $sd_card     the sd card pathname 
 // RET false if an error occured, true else
 function check_and_copy_plgidx($sd_card="") {

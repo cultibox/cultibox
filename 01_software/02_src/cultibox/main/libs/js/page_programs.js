@@ -16,7 +16,6 @@ resume_regul   = <?php echo json_encode($resume_regul) ?>;
 start          = <?php echo json_encode($start) ?>;
 end            = <?php echo json_encode($end) ?>;
 plug_selected  = <?php echo json_encode($selected_plug) ?>;
-rep            = <?php echo json_encode($rep) ?>;
 error_valueJS  = <?php echo json_encode($error_value) ?>;
 var reload_page=false;
 
@@ -367,50 +366,66 @@ $(document).ready(function(){
 
             $.blockUI({ message: ''});
             if(checked) {
-                if((start==$('#start_time').val())&&(end==$('#end_time').val())&&(plug_selected==$('#selected_plug').val())) {
-                    currentForm = $(this).closest('form');
-                    if(confirmForm(currentForm,"same_dialog_program")) {
-                        var data_array = {};
-                        $("#actionprog :input").each(function() {
-                            data_array[$(this).attr('name')]=$(this).val();
-                        });
+                if((start==$('#start_time').val())&&(end==$('#end_time').val())&&(plug_selected==$('#selected_plug').val())&&($("input[id=ponctual]:checked").val()=="ponctuelle")) {
+                    $("#same_dialog_program").dialog({
+                        resizable: false,
+                        height:200,
+                        width: 500,
+                        closeOnEscape: false,
+                        modal: true,
+                        dialogClass: "dialog_cultibox",
+                        buttons: [{
+                            text: OK_button,
+                            click: function () {
+                                $( this ).dialog( "close" );
+        
+                                var data_array = {};
+                                $("#actionprog :input").each(function() {
+                                    data_array[$(this).attr('name')]=$(this).val();
+                                });
 
-                        //Customization for radio button:
-                        data_array['regul_program']=$("input[type='radio'][name='regul_program']:checked").val();
-                        if($("input[type='radio'][id='ponctual']:checked").length>0) {
-                            data_array['cyclic']="";
-                            data_array['ponctual']=$("input[type='radio'][id='ponctual']:checked").val();
-                        } else {
-                            data_array['cyclic']=$("input[type='radio'][id='cyclic']:checked").val();
-                            data_array['ponctual']="";
-                        }
+                                //Customization for radio button:
+                                data_array['regul_program']=$("input[type='radio'][name='regul_program']:checked").val();
+                                if($("input[type='radio'][id='ponctual']:checked").length>0) {
+                                    data_array['cyclic']="";
+                                    data_array['ponctual']=$("input[type='radio'][id='ponctual']:checked").val();
+                                } else {
+                                    data_array['cyclic']=$("input[type='radio'][id='cyclic']:checked").val();
+                                    data_array['ponctual']="";
+                                }
 
-                        $.ajax({
-                            cache: false,
-                            async: true,
-                            url: "main/modules/external/create_program.php",
-                            data: data_array
-                        }).done(function(data) {
-                            if(sd_card!="") {
                                 $.ajax({
-                                    type: "GET",
-                                    url: "main/modules/external/check_and_update_sd.php",
-                                    data: {
-                                        sd_card:"<?php echo $sd_card ;?>"
-                                    },
-                                    async: false,
-                                    context: document.body,
-                                    success: function(data, textStatus, jqXHR) {
-                                    },
-                                    error: function(jqXHR, textStatus, errorThrown) {
-                                        // Error during request
+                                    cache: false,
+                                    async: true,
+                                    url: "main/modules/external/create_program.php",
+                                    data: data_array
+                                }).done(function(data) {
+                                    if(sd_card!="") {
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "main/modules/external/check_and_update_sd.php",
+                                            data: {
+                                                sd_card:"<?php echo $sd_card ;?>"
+                                            },
+                                            async: false,
+                                            context: document.body,
+                                            success: function(data, textStatus, jqXHR) {
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                                // Error during request
+                                            }
+                                        });
                                     }
+                                    get_content("programs",getFormInputs('actionprog'));
                                 });
                             }
-                            get_content("programs",getFormInputs('actionprog'));
-                        });
-
-                    }
+                        }, {
+                            text: CANCEL_button,
+                            click: function () {
+                                $( this ).dialog( "close" ); return false;
+                        }
+                        }]
+                    });
                 } else {
                      var data_array = {};
                         $("#actionprog :input").each(function() {

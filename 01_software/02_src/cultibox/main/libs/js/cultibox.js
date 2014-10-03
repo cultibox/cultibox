@@ -109,28 +109,6 @@ clean_highchart_message = function(message) {
 }
 
 
-confirmForm = function(SendForm,idDialog) {
-    $("#"+idDialog).dialog({
-        resizable: false,
-        height:200,
-        width: 500,
-        closeOnEscape: false,
-        modal: true,
-        dialogClass: "dialog_cultibox",
-        buttons: [{
-            text: OK_button,
-            click: function () {
-                $( this ).dialog( "close" ); SendForm.submit();
-            }
-        }, {
-            text: CANCEL_button,
-            click: function () {
-                $( this ).dialog( "close" ); return false;
-            }
-        }]
-    });
-}
-
 //To get url param into object:
 getUrlVars = function(url) {
     var hash;
@@ -493,28 +471,6 @@ $(document).ready(function() {
   $(".pop_up_message").dialog({ width: 550, resizable: false, closeOnEscape: false, buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_message"  });
    $( ".pop_up_error" ).dialog({ width: 550, resizable: false, closeOnEscape: false, buttons: [ { text: CLOSE_button, click: function() { $( this ).dialog( "close" ); if(typeof anchor != 'undefined') {  $.scrollTo("#"+anchor,300);  } } } ], hide: "fold", modal: true,  dialogClass: "popup_error" });
 
-
-   jQuery('#jquery-colour-picker-example select').colourPicker({ 
-        ico:    'http://localhost:6891/cultibox/main/libs/img/jquery.colourPicker.gif', 
-        title:    false
-   });
-
-
-    $(".download").click(function(e) {
-        e.preventDefault();
-
-        $url = 'http://localhost:6891/cultibox/main/modules/external/force_download.php?file='+$(".download").attr("href");
-        $.ajax({
-            type: 'GET',
-            url: $url,
-            success: function(data){
-                   if(data != true){
-                    window.location =""+$url+"";
-                   }
-            }
-        });
-    });
-   
 
     //Lors du click sur l'oeil - on doit cacher l'oeil et afficher la boîte de messages:     
     $("#tooltip_msg_box").click(function(e) {

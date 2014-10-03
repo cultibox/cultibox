@@ -326,7 +326,7 @@ $(function () {
                                                 if (item.fake_log != "0")
                                                 {
                                                     <?php
-                                                    echo "chart.renderer.image('http://localhost:".$GLOBALS['SOFT_PORT']."/cultibox/main/libs/img/fake_log_".__('LANG').".png', 600, 15, 130, 50)";
+                                                    echo "chart.renderer.image('/cultibox/main/libs/img/fake_log_".__('LANG').".png', 600, 15, 130, 50)";
                                                     echo ".add();";
                                                     ?>
                                                     fakeLogsImageDisplayed = true;
@@ -638,7 +638,7 @@ $(document).ready(function() {
                 url: "main/modules/external/get_variable.php",
                 data: {name:name}
             }).done(function (data) {
-                if($.trim(data)!="") {
+                if($.trim(data).replace(/(\r\n|\n|\r)/gm,"")!="") {
                     $("#progress_load").dialog({
                         resizable: false,
                         width: 550,
@@ -877,6 +877,32 @@ $(document).ready(function() {
             var startDate=$("#datepicker").val();
         } else {
             var startDate=$("#startyear").val()+"-"+$("#startmonth").val();
+        }
+
+
+        //Check power configuration:
+        if($(this).attr("datatype")=="power") {
+            var list_power="";
+            $("[id^='power_display']").each(function(){
+                if($(this).attr("checked") == "checked") {
+                    if(list_power=="") {
+                        list_power=$(this).val();
+                    } else {
+                        list_power=list_power+"-"+$(this).val();
+                    }
+                }
+            });
+            
+           $.ajax({
+                data:{ list_power:list_power },
+                url: 'main/modules/external/check_configuration_power.php'}).done(function(data) {
+                    if(jQuery.parseJSON(data)!="") {
+                         pop_up_remove("power_status");
+                         pop_up_add_information(jQuery.parseJSON(data),"power_status","error");
+                    } else {
+                        pop_up_remove("power_status");
+                    }
+           });
         }
 
         // Block interface

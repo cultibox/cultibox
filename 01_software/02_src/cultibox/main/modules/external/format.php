@@ -95,20 +95,43 @@ if((!isset($path))||(empty($path))) {
             } 
 
 
-            // Creating programs:
-            if(!copy("../../templates/data/empty_file.tpl","$path/cnf/prg/plugv")) {
-                echo -1;
+            // For pluXX :
+            $program_index=array();
+            program\get_program_index_info($program_index);
+
+            foreach ($program_index as $key => $value) {
+                // Read from database program
+                $program = create_program_from_database($out,$value['program_idx']);
+
+                if(!save_program_on_sd($path,$program,"plu" . $value['plugv_filename'])) {      
+                    echo "-1";
+                    return 0;
+                }
+            }
+
+            //For plugv
+            $program = create_program_from_database($out);
+            if(!save_program_on_sd($path,$program)) {
+                echo "-1";
                 return 0;
             }
 
-            // Create plugv from database
-            // Caution : Only plugv is created, pluXX not created
-            // TODO : Add creation of every pluXX
-            $program=create_program_from_database($out);
-            if(!save_program_on_sd($path,$program)) {
-                echo -1;
-                return 0;
+
+            $data=array();
+            calendar\read_event_from_db($data);
+            $plgidx=create_plgidx($data);
+            if(count($plgidx)>0) {
+               if(!write_plgidx($plgidx,$path)) {
+                    echo "-1";
+                    return 0;
+               }
+            } else {
+                if(!check_and_copy_plgidx($path)) {
+                    echo "-1";
+                    return 0;
+                }
             }
+
 
             //Create plugXX files:
             $plugconf=create_plugconf_from_database($GLOBALS['NB_MAX_PLUG'],$out);
@@ -180,6 +203,20 @@ if((!isset($path))||(empty($path))) {
                     }
             }
             if($progress==12) {
+                $data = array();
+                calendar\read_event_from_db($data);
+
+                // Read event from XML
+                foreach (calendar\get_external_calendar_file() as $fileArray) {
+                    if ($fileArray['activ'] == 1) {
+                        calendar\read_event_from_XML($fileArray['filename'],$data);
+                    }
+                }
+
+                if(!write_calendar($path,$data,$out)) {
+                    echo -1;
+                    return 0;
+                }
                 echo 100;
             } else {
                 echo $progress+1;

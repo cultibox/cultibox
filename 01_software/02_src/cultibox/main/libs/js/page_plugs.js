@@ -134,6 +134,7 @@ $(document).ready(function(){
         var button_click=$(this).attr('id');
         e.preventDefault();
         var checked=true;
+        var jump_plug=1;
 
         for(i=1;i<=nb_plugs;i++) {
 
@@ -156,6 +157,7 @@ $(document).ready(function(){
                             if(data!=1) {
                                 $("#error_power_value"+i).show(700);
                                 checked=false;
+                                jump_plug=i;
                             }
                     });
                 }
@@ -185,6 +187,7 @@ $(document).ready(function(){
                                     $("#error_tolerance_value_water"+i).show(700);
                                 }
                                 checked=false;
+                                jump_plug=i;
                             }
                         });
                     }
@@ -210,6 +213,7 @@ $(document).ready(function(){
                                         $("#error_second_tolerance_value_humi"+i).show(700);
                                     }
                                     checked=false;
+                                    jump_plug=i;
                                 }
                             });
                         } 
@@ -218,6 +222,7 @@ $(document).ready(function(){
                         if(($("#plug_regul_value"+i).val()=="0")||($("#plug_regul_value"+i).val()=="")) {
                             $("#error_regul_value"+i).show(700);
                             checked=false;
+                            jump_plug=i;
                         } else {
                             $.ajax({
                             cache: false,
@@ -228,6 +233,7 @@ $(document).ready(function(){
                                 if(data!=1) {
                                     $("#error_regul_value"+i).show(700);
                                     checked=false;
+                                    jump_plug=i;
                                 }
                             });
                         }
@@ -257,6 +263,7 @@ $(document).ready(function(){
                                 $("#error_select_sensor"+i).show();
                                 $("#plug_sensor"+i+"1 option[value='True']").prop('selected', 'selected');
                                 checked=false;
+                                jump_plug=i;
                             } else {
                                 // On efface le message d'erreur sinon
                                 $("#error_select_sensor"+i).css("display","none");
@@ -362,6 +369,8 @@ $(document).ready(function(){
                     }
                  }
             });
+        } else {
+            expand_plug(jump_plug,<?php echo $nb_plugs; ?>);
         }
     });
 

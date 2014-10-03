@@ -1480,6 +1480,9 @@ msgstr "L \ 'start time and / or end of the peak / off-peak is not configured, y
 msgid "ERROR_COPY_TPL"
 msgstr "Unable to copy empty_file_64.tpl file on your SD card, make sure the card is not write-protected"
 
+msgid "ERROR_COPY_PLGIDX"
+msgstr "Error copying the plgidx"
+
 msgid "ERROR_COPY_FILE"
 msgstr "Error copying a file, check that the card is not write-protected"
 

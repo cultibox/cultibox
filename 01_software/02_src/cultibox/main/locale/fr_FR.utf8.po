@@ -1481,6 +1481,9 @@ msgstr "L\'heure de départ ou/et de fin des heures pleines/creuses n'est pas co
 msgid "ERROR_COPY_TPL"
 msgstr "Impossible de copier le fichier empty_file_64.tpl sur votre carte SD, vérifiez que la carte n'est pas protégée en écriture"
 
+msgid "ERROR_COPY_PLGIDX"
+msgstr "Erreur lors de création du fichier plgidx"
+
 msgid "ERROR_COPY_FILE"
 msgstr "Erreur lors de la copie d'un fichier, vérifiez que la carte n'est pas protégée en écriture"
 
