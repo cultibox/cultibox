@@ -400,7 +400,7 @@ function save_program_on_sd($sd_card,$program,$filename = "plugv") {
     }
 
     // Complet nbPlug variable up to 3 digits
-    while(strlen($nbPlug)<3)
+    while(strlen($nbPlug)<5)
         $nbPlug="0$nbPlug";
     
     // Add header of the file
