@@ -13,12 +13,14 @@ nb_plugs       = <?php echo json_encode($nb_plugs) ?>;
 plugs_infoJS   = <?php echo json_encode($plugs_infos); ?>;
 
 $(document).ready(function(){
+    pop_up_add_information("<?php echo __('WIZARD_ENABLE_FUNCTION'); ?>: <a href='/cultibox/index.php?menu=wizard' class='href-wizard-msgbox'><img src='main/libs/img/wizard.png' alt='<?php echo __('WIZARD'); ?>' title='' id='wizard' /></a>", "jumpto_wizard", "information");
+
     if(sd_card=="") {
         $.ajax({
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", duration: 1}
+            data: {name:"LOAD_LOG", value: "False", duration: 36000}
         });
     }
 

@@ -39,7 +39,7 @@ $(document).ready(function(){
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", duration: 1}
+            data: {name:"LOAD_LOG", value: "False", duration: 36000}
         });
     }
 

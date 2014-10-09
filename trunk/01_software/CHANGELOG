@@ -1,3 +1,10 @@
+Cultibox (2.0.04) precise; urgency=low
+    + Remise en fonction des ancres
+    + Affichage des messages d'utilisation du wizard dans la boite de message
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Oct 9 16:56:56 CEST 2014
+
+
 Cultibox (2.0.03) precise; urgency=low
     + Correction de la page Configuration et du formatage de la carte SD
     + Correction de la page programme concernant les jeux de programmes dans les options avancées

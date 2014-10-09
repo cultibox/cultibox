@@ -15,6 +15,7 @@ addr_1000=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT'])); ?>;
 addr_3500=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT_3500W'])); ?>;
 translate=<?php echo(json_encode($translate)); ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+var count_process=0;
 
 //Wifi process:
 get_plug_type = function(addr) {
@@ -40,11 +41,13 @@ wifi_process = function(time,ip) {
         type: "GET",
         dataType: "xml",
         timeout: 3000,
-        beforeSend: function(jqXHR) {
-                $.xhrPool.push(jqXHR);
-        },
         success: function(xml) {
             var myPlug = [];
+            count_process=0;
+            pop_up_remove("check_wifi_module");
+            pop_up_add_information("module wifi accessibl", "wifi_module", "information");
+
+ 
             $(xml).find('plug_state').each( function(){
                 var num=$(this).find('num').text();
                 var value=$(this).find('value').text();
@@ -142,13 +145,23 @@ wifi_process = function(time,ip) {
                      $("#sensor_value"+value['num']).css('font-weight', 'bold');
                }
             });
-        }, 
+        },
+         error: function(XMLHttpRequest, textStatus, errorThrown) {
+            if(count_process==0) {
+                   pop_up_remove("check_wifi_module");
+                   pop_up_remove("wifi_module");
+                   pop_up_add_information("<?php echo __('WAIT_WIFI_MODULE') ;?> <img src=\"main/libs/img/waiting_small.gif\" />", "check_wifi_module", "information");
+            }
+            count_process=count_process+1;
+        },
             complete: function(jqXHR) {
-                var index = $.xhrPool.indexOf(jqXHR);
-                if (index > -1) {
-                    $.xhrPool.splice(index, 1);
+                if(count_process<10) {
+                    wifi_process(10000,ip);
+                } else {
+                   pop_up_remove("check_wifi_module");
+                   pop_up_remove("wifi_module");
+                   pop_up_add_information("<?php echo __('ERROR_CONNECT_WIFI'); ?>", "check_wifi_module", "error");
                 }
-                wifi_process(10000,ip);
             }
         });
     }, time);
@@ -160,7 +173,7 @@ $(document).ready(function() {
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", duration: 1}
+            data: {name:"LOAD_LOG", value: "False", duration: 36000}
         });
     }
 

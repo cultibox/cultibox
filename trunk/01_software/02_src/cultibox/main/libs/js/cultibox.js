@@ -178,6 +178,10 @@ function  pop_up_remove(id) {
     
 };
 
+function scrolltodiv(div) {
+   $.scrollTo("#"+div,300); 
+}
+
 
 // brief : select the matching menu
 // menu to be activated
@@ -295,7 +299,7 @@ $(document).ready(function() {
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"lang", value: $(this).attr('id'),duration: 365}
+            data: {name:"lang", value: $(this).attr('id'),duration: 31536000}
         });
         window.location = "/cultibox/";
     });
@@ -382,7 +386,7 @@ $(document).ready(function() {
                 $.ajax({
                         cache: false,
                         url: "main/modules/external/set_variable.php",
-                        data: {name:"tooltip_msg_box", value: "True", duration: 30}
+                        data: {name:"tooltip_msg_box", value: "True", duration: 2592000}
                 });
 
 
@@ -480,7 +484,7 @@ $(document).ready(function() {
         $.ajax({
             cache: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"tooltip_msg_box", value: "False", duration: 30}
+            data: {name:"tooltip_msg_box", value: "False", duration: 2592000}
         });
 
         // On cache l'oeil et on affiche la boîte de messages

@@ -1571,6 +1571,9 @@ msgstr "Ce nom de programme est déja utilisé pour une autre sauvegarde."
 msgid "ERROR_PROGRAM_WRONG_NAME"
 msgstr "Le nom du programme doit contenir entre 3 et 16 caractères"
 
+msgid "ERROR_CONNECT_WIFI"
+msgstr "Impossible de joindre le module Wifi"
+
 
 # For the informations part:
 msgid "CONFIRMATION"
@@ -1635,6 +1638,9 @@ msgstr "Il reste des fichiers de logs de capteur ou de puissance contenant des d
 
 msgid "MESSAGE_BOX"
 msgstr "Messages du logiciel"
+
+msgid "WAIT_WIFI_MODULE"
+msgstr "Connexion au module Wifi en cours "
 
 
 # For the tooltip part:
