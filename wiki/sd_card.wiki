@@ -186,13 +186,13 @@ Format :
 
 Ces fichiers ont le même format.
 
-Sur la première ligne : 3 digits. Ils indiquent le nombre de ligne du fichier.
+Sur la première ligne : 5 digits. Ils indiquent le nombre de ligne du fichier.
 
 Ensuite sur chaque ligne, une nouvelle action. Les 5 premiers digits indiquent la seconde à laquelle appliquer le programme. Pour chaque prise (16 au total), on retrouve ensuite 3 digits qui indiquent l'état voulu de la prise.
 
 Exemple de fichier :
 {{{
-006
+00006
 00000000400999999999999999999999999999999999999999999
 15000999200999999999999999999999999999999999999999999
 30000999500000999999999999999999999999999999999999999
