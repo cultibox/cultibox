@@ -75,7 +75,7 @@ $(document).ready(function() {
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", duration: 1}
+            data: {name:"LOAD_LOG", value: "False", duration: 36000}
         });
     }
 
@@ -226,7 +226,7 @@ $(document).ready(function() {
                     "id": "btnClose",
                     click: function () {
                         $( this ).dialog( "close" );  
-                        $.scrollTo("#anchor-cost",300); 
+                        scrolltodiv("anchor-cost"); 
                     }
             }],
             open: function( event, ui ) {
@@ -266,6 +266,30 @@ $(document).ready(function() {
         $("#error_cost_price_hp").css("display","none");
         $("#error_start_hc").css("display","none");
         $("#error_stop_hc").css("display","none");
+
+         var list_power="";
+         if(($("#select_plug option:selected").val()=="all")||($("#select_plug option:selected").val()=="distinct_all")) {
+            for(i=1;i<=nb_plugs;i++) {
+               if(list_power=="") {
+                    list_power=i;
+               } else {
+                    list_power=list_power+"-"+i;
+               }
+            }
+        } else {
+            list_power=$("#select_plug option:selected").val();
+        }
+
+         $.ajax({
+               data:{ list_power:list_power },
+               url: 'main/modules/external/check_configuration_power.php'}).done(function(data) {
+                   if(jQuery.parseJSON(data)!="") {
+                        pop_up_remove("power_status");
+                        pop_up_add_information(jQuery.parseJSON(data),"power_status","error");
+                   } else {
+                       pop_up_remove("power_status");
+                   }
+         });
 
 
         $.ajax({

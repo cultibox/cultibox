@@ -17,6 +17,8 @@ jumpto_program=<?php echo json_encode($jumpto_program); ?>;
 
 
 $(document).ready(function(){
+     pop_up_add_information("<?php echo __('WIZARD_DISABLE_FUNCTION'); ?>: <a href='/cultibox/index.php?menu=programs' class='href-wizard-msgbox'><img src='main/libs/img/wizard.png' alt='<?php echo __('CLASSIC'); ?>' title='' id='classic' /></a>", "jumpto_classic", "information");
+
     if(jumpto_program) {
          get_content("programs",getUrlVars('selected_plug=<?php echo $selected_plug; ?>'));
     }
@@ -52,7 +54,7 @@ $(document).ready(function(){
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", duration: 1}
+            data: {name:"LOAD_LOG", value: "False", duration: 36000}
         });
     }
 

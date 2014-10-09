@@ -57,7 +57,7 @@ $(document).ready(function() {
             cache: false,
             async: false,
             url: "main/modules/external/set_variable.php",
-            data: {name:"LOAD_LOG", value: "False", duration: 1}
+            data: {name:"LOAD_LOG", value: "False", duration: 36000}
         });
     }
 
@@ -270,7 +270,7 @@ $(document).ready(function() {
                 $.ajax({
                     cache: false,
                     url: "main/modules/external/set_variable.php",
-                    data: {name:"important", value: "True", duration: 1}
+                    data: {name:"important", value: "True", duration: 36000}
                 });
             }
         });

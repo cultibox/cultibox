@@ -101,6 +101,7 @@ $cost=get_configuration("SHOW_COST");
 
 
 <body id="page" class="page">
+    <div id="scrollto"></div>
     <div id="page-bg">
         <div>
             <!-- Small eye for displaying message pop up-->

@@ -142,9 +142,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
 // Retrieve plug's informations from the database
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
-// Add user information : He can use wizard
-$main_info[]=__('WIZARD_ENABLE_FUNCTION').": <a href='/cultibox/index.php?menu=wizard' class='href-wizard-msgbox'><img src='main/libs/img/wizard.png' alt='".__('WIZARD')."' title='' id='wizard' /></a>";
-
 // Check if user has not removed the limit of 1000 change
 if ($remove_1000_change_limit == "False")
 {
