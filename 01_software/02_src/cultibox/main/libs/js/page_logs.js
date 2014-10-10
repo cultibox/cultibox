@@ -12,6 +12,8 @@ title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 var count=0;
 var finished=0;
 var dialog1=false;
+var main_error = <?php echo json_encode($main_error); ?>;
+var main_info = <?php echo json_encode($main_info); ?>;
 
 // {{{ getType()
 // IN  input value: display the type of log: 0 for daily logs, 1 for monthly
@@ -193,6 +195,19 @@ Highcharts.setOptions({
 $(function () {
     var chart;
     $(document).ready(function() {
+         pop_up_remove("main_error");
+         pop_up_remove("main_info");
+
+        // For each information, show it
+        $.each(main_error, function(key, entry) {
+            pop_up_add_information(entry,"main_error","error");
+        });
+
+        // For each information, show it
+        $.each(main_info, function(key, entry) {
+            pop_up_add_information(entry,"main_info","information");
+        });
+
         if(sd_card=="") {
         $.ajax({
             cache: false,

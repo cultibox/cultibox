@@ -11,6 +11,9 @@
 product_array = <?php echo json_encode($product) ?>;
 title_msgbox = <?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 count_program_index=<?php echo json_encode($count_program_index); ?>;
+var main_error = <?php echo json_encode($main_error); ?>;
+var main_info = <?php echo json_encode($main_info); ?>;
+
 
 $(function() {
    $("#calendar_startdate").datepicker({
@@ -47,6 +50,20 @@ $(function() {
 });
 
 $(document).ready(function() {
+     pop_up_remove("main_error");
+     pop_up_remove("main_info");
+
+    // For each information, show it
+    $.each(main_error, function(key, entry) {
+            pop_up_add_information(entry,"main_error","error");
+    });
+
+    // For each information, show it
+    $.each(main_info, function(key, entry) {
+            pop_up_add_information(entry,"main_info","information");
+    });
+
+
     jQuery('#jquery-colour-picker-example select').colourPicker({
         ico:    'main/libs/img/jquery.colourPicker.gif',
         title:    false

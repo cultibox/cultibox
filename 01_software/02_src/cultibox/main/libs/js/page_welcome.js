@@ -9,6 +9,9 @@
     }
 ?>
 
+var main_error = <?php echo json_encode($main_error); ?>;
+var main_info = <?php echo json_encode($main_info); ?>;
+
 
 <?php if(!$compat) { ?>
 $(document).ready(
@@ -18,6 +21,55 @@ function(){
 <?php } ?>
 
 $(document).ready(function(){
+pop_up_add_information("<?php echo __('INFO_UPDATE_CHECKING')."<img src='main/libs/img/waiting_small.gif' />"; ?>","check_version_progress","information");
+$.ajax({
+    type: "GET",
+    url: "main/modules/external/check_update.php",
+    async: true,
+    context: document.body,
+    success: function(data, textStatus, jqXHR) {
+        // Check response from server
+
+        // Parse result
+        var json = jQuery.parseJSON(data);
+
+        // For each error, show it
+        json.error.forEach(function(entry) {
+            pop_up_add_information(entry,"check_version_status","error");
+        });
+
+        // For each information, show it
+        json.info.forEach(function(entry) {
+            pop_up_add_information(entry,"check_version_status","information");
+        });
+
+        // Delete information
+        pop_up_remove("check_version_progress");
+
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+        // Error during request
+    }
+});
+});
+
+
+$(document).ready(function(){
+
+
+     pop_up_remove("main_error");
+     pop_up_remove("main_info");
+
+    // For each information, show it
+    $.each(main_error, function(key, entry) {
+            pop_up_add_information(entry,"main_error","error");
+    });
+
+    // For each information, show it
+    $.each(main_info, function(key, entry) {
+            pop_up_add_information(entry,"main_info","information");
+    });
+
      if(sd_card=="") {
         $.ajax({
             cache: false,

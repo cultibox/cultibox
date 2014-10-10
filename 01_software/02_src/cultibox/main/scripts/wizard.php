@@ -58,10 +58,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
-if((!isset($sd_card))||(empty($sd_card))) {
-   $main_error[]=__('ERROR_SD_CARD');
-}
-
 // Setting some default values:
 if((empty($selected_plug))||(!isset($selected_plug))) {
     $selected_plug=1;

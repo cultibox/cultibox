@@ -17,6 +17,8 @@ default_cost_hc=<?php echo json_encode($cost_price_hc) ?>;
 default_start_hc=<?php echo json_encode($start_hc) ?>;
 default_stop_hc=<?php echo json_encode($stop_hc) ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
+var main_error = <?php echo json_encode($main_error); ?>;
+var main_info = <?php echo json_encode($main_info); ?>;
 
 compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,index,plug) {
         var step=100/count;
@@ -70,6 +72,20 @@ compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,
 
 
 $(document).ready(function() {
+     pop_up_remove("main_error");
+     pop_up_remove("main_info");
+
+    // For each information, show it
+    $.each(main_error, function(key, entry) {
+            pop_up_add_information(entry,"main_error","error");
+    });
+
+    // For each information, show it
+    $.each(main_info, function(key, entry) {
+            pop_up_add_information(entry,"main_info","information");
+    });
+
+
      if(sd_card=="") {
         $.ajax({
             cache: false,

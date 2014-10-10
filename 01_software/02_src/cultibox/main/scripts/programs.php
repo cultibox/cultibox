@@ -135,10 +135,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
-if((!isset($sd_card))||(empty($sd_card))) {
-   $main_error[]=__('ERROR_SD_CARD');
-}
-
 // Retrieve plug's informations from the database
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 

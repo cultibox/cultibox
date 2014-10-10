@@ -11,6 +11,8 @@
 
 wifi_password=<?php echo(json_encode($wifi_password)); ?>;
 rtc_offset_value=<?php echo json_encode($rtc_offset) ?>;
+var main_error = <?php echo json_encode($main_error); ?>;
+var main_info = <?php echo json_encode($main_info); ?>;
 var ajax_format;
 
 formatCard = function(hdd,pourcent) {
@@ -34,6 +36,19 @@ formatCard = function(hdd,pourcent) {
 }
 
 $(document).ready(function(){
+     pop_up_remove("main_error");
+     pop_up_remove("main_info");
+
+    // For each information, show it
+    $.each(main_error, function(key, entry) {
+            pop_up_add_information(entry,"main_error","error");
+    });
+
+    // For each information, show it
+    $.each(main_info, function(key, entry) {
+            pop_up_add_information(entry,"main_info","information");
+    });
+
       if(sd_card=="") {
         $.ajax({
             cache: false,

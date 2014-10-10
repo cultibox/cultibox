@@ -16,6 +16,8 @@ addr_3500=<?php echo(json_encode($GLOBALS['PLUGA_DEFAULT_3500W'])); ?>;
 translate=<?php echo(json_encode($translate)); ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 var count_process=0;
+var main_error = <?php echo json_encode($main_error); ?>;
+var main_info = <?php echo json_encode($main_info); ?>;
 
 //Wifi process:
 get_plug_type = function(addr) {
@@ -155,12 +157,14 @@ wifi_process = function(time,ip) {
             count_process=count_process+1;
         },
             complete: function(jqXHR) {
-                if(count_process<10) {
-                    wifi_process(10000,ip);
+                if(count_process<5) {
+                    wifi_process(3000,ip);
                 } else {
                    pop_up_remove("check_wifi_module");
                    pop_up_remove("wifi_module");
-                   pop_up_add_information("<?php echo __('ERROR_CONNECT_WIFI'); ?>", "check_wifi_module", "error");
+                   if($("#wifi_page").length>0) {
+                       pop_up_add_information("<?php echo __('ERROR_CONNECT_WIFI'); ?>", "check_wifi_module", "error");
+                   }
                 }
             }
         });
@@ -168,6 +172,20 @@ wifi_process = function(time,ip) {
 }
 
 $(document).ready(function() {
+     pop_up_remove("main_error");
+     pop_up_remove("main_info");
+
+    // For each information, show it
+    $.each(main_error, function(key, entry) {
+            pop_up_add_information(entry,"main_error","error");
+    });
+
+    // For each information, show it
+    $.each(main_info, function(key, entry) {
+            pop_up_add_information(entry,"main_info","information");
+    });
+
+
     if(sd_card=="") {
         $.ajax({
             cache: false,

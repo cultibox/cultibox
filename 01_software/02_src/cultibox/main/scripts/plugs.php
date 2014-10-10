@@ -52,10 +52,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
-if((!isset($sd_card))||(empty($sd_card))) {
-   $main_error[]=__('ERROR_SD_CARD');
-}
-
 
 for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$main_error);

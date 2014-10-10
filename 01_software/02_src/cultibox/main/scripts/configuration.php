@@ -30,10 +30,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
    sort($hdd_list);
 }
 
-if((!isset($sd_card))||(empty($sd_card))) {
-   $main_error[]=__('ERROR_SD_CARD');
-}
-
 
 //============================== GET OR SET CONFIGURATION PART ====================
 //update_conf sert à définir si la configuration impacte la carte SD

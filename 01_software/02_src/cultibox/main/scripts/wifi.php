@@ -16,17 +16,6 @@ $nb_plugs=get_configuration("NB_PLUGS",$main_error);
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 $wifi_ip=get_configuration("WIFI_IP",$main_error);
 
-if((!isset($wifi_ip))||(empty($wifi_ip))) {
-   $wifi_ip="000.000.000.000";
-   $main_erro[]=__('ERROR_ACCESS_INFO_WIFI');
-} else {
-   $wifi_file=@file_get_contents('http://'.$wifi_ip.'/info.xml'); 
-   if(!$wifi_file) {
-        $main_error[]=__('ERROR_ACCESS_INFO_WIFI');
-   }
-}
-
-
 $type_sensor[]=__('NA','raw');
 $type_sensor[]=__('NA','raw');
 $type_sensor[]=__('SENSOR_TEMPHUMI','raw');
@@ -49,10 +38,6 @@ for($i=0; $i<count($plugs_infos);$i++) {
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
 if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
-}
-
-if((!isset($sd_card))||(empty($sd_card))) {
-   $main_error[]=__('ERROR_SD_CARD');
 }
 
 //Compute time loading for debug option
