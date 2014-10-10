@@ -158,7 +158,9 @@ wifi_process = function(time,ip) {
         },
             complete: function(jqXHR) {
                 if(count_process<5) {
-                    wifi_process(3000,ip);
+                    if($("#wifi_page").length>0) {
+                        wifi_process(3000,ip);
+                    }
                 } else {
                    pop_up_remove("check_wifi_module");
                    pop_up_remove("wifi_module");

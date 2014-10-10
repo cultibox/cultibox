@@ -383,7 +383,21 @@ $(document).ready(function(){
                 }
             }
 
-            $.blockUI({ message: ''});
+             $.blockUI({
+                message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                }
+            });
+
             if(checked) {
                 if((start==$('#start_time').val())&&(end==$('#end_time').val())&&(plug_selected==$('#selected_plug').val())&&($("input[id=ponctual]:checked").val()=="ponctuelle")) {
                     $("#same_dialog_program").dialog({

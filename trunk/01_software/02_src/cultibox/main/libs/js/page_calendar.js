@@ -522,7 +522,20 @@ $(document).ready(function() {
                     
                         $( this ).dialog( "close" ); 
                         <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                            $.blockUI({ message: ''});
+                            $.blockUI({
+                                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                                centerY: 0,
+                                css: {
+                                    top: '20%',
+                                    border: 'none',
+                                    padding: '5px',
+                                    backgroundColor: 'grey',
+                                    '-webkit-border-radius': '10px',
+                                    '-moz-border-radius': '10px',
+                                    opacity: .9,
+                                    color: '#fffff'
+                                }
+                            });
                         <?php } ?>
 
                         // If user has actived daily programm
@@ -807,7 +820,20 @@ $(document).ready(function() {
             new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd 23:59:59");
 
             <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                $.blockUI({ message: ''}); 
+                $.blockUI({
+                  message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                  centerY: 0,
+                  css: {
+                        top: '20%',
+                        border: 'none',
+                        padding: '5px',
+                        backgroundColor: 'grey',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .9,
+                        color: '#fffff'
+                    }
+                });
             <?php } ?> 
             $.ajax({
                 type: "GET",
@@ -855,7 +881,20 @@ $(document).ready(function() {
             new_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd 23:59:59");
 
             <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                $.blockUI({ message: ''}); 
+                $.blockUI({
+                     message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                     centerY: 0,
+                     css: {
+                          top: '20%',
+                          border: 'none',
+                          padding: '5px',
+                          backgroundColor: 'grey',
+                         '-webkit-border-radius': '10px',
+                         '-moz-border-radius': '10px',
+                         opacity: .9,
+                         color: '#fffff'
+                     }
+                });
             <?php } ?>
             $.ajax({
                 type: "GET",
@@ -989,7 +1028,20 @@ $(document).ready(function() {
                                         }
 
                                        <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                            $.blockUI({ message: ''}); 
+                                            $.blockUI({
+                                                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                                                centerY: 0,
+                                                css: {
+                                                    top: '20%',
+                                                    border: 'none',
+                                                    padding: '5px',
+                                                    backgroundColor: 'grey',
+                                                    '-webkit-border-radius': '10px',
+                                                    '-moz-border-radius': '10px',
+                                                    opacity: .9,
+                                                    color: '#fffff'
+                                                }
+                                            });
                                        <?php } ?>
 
                                         $.ajax({
@@ -1035,7 +1087,21 @@ $(document).ready(function() {
                                     ?>
                                     //Release UI
                                     <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                        $.blockUI({ message: '', timeout: 1000 }); 
+                                        $.blockUI({
+                                            message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                                            centerY: 0,
+                                            timeout: 1000,
+                                            css: {
+                                                top: '20%',
+                                                border: 'none',
+                                                padding: '5px',
+                                                backgroundColor: 'grey',
+                                                '-webkit-border-radius': '10px',
+                                                '-moz-border-radius': '10px',
+                                                opacity: .9,
+                                                color: '#fffff'
+                                            }
+                                        });
                                     <?php } ?> 
 
                                     return false;
@@ -1069,7 +1135,20 @@ $(document).ready(function() {
                         function() { 
                             $( this ).dialog( "close" ); 
                             <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                $.blockUI({ message: ''}); 
+                                $.blockUI({
+                                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                                centerY: 0,
+                                css: {
+                                    top: '20%',
+                                    border: 'none',
+                                    padding: '5px',
+                                    backgroundColor: 'grey',
+                                    '-webkit-border-radius': '10px',
+                                    '-moz-border-radius': '10px',
+                                    opacity: .9,
+                                    color: '#fffff'
+                                }
+                            });
                             <?php } ?>
                             
                             $('#calendar').fullCalendar('removeEvents', event.id);
@@ -1114,7 +1193,20 @@ $(document).ready(function() {
                         function() { 
                             $( this ).dialog( "close" ); 
                             <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
-                                $.blockUI({ message: ''}); 
+                                $.blockUI({
+                                message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                                centerY: 0,
+                                css: {
+                                    top: '20%',
+                                    border: 'none',
+                                    padding: '5px',
+                                    backgroundColor: 'grey',
+                                    '-webkit-border-radius': '10px',
+                                    '-moz-border-radius': '10px',
+                                    opacity: .9,
+                                    color: '#fffff'
+                                }
+                            });
                             <?php } ?>
                             
                             $('#calendar').fullCalendar('removeEvents', event.id);

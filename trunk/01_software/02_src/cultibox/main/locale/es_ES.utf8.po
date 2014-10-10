@@ -1632,6 +1632,12 @@ msgstr "Queda sensor de archivos de registro o de potencia que contiene más ant
 msgid "MESSAGE_BOX"
 msgstr "Mensaje del software"
 
+msgid "LOADING_DATA"
+msgstr "Cargando, espere por favor..."
+
+msgid "SAVING_DATA"
+msgstr "Copia de datos en curso, espere por favor..."
+
 
 # For the tooltip part:
 msgid "TOOLTIP_SEND_INFOS"

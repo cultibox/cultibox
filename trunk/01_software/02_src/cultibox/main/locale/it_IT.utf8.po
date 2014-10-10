@@ -1633,6 +1633,12 @@ msgstr "Rimane sensore file di log o il potere contenenti più antica di caricar
 msgid "MESSAGE_BOX"
 msgstr "Messaggi del software"
 
+msgid "LOADING_DATA"
+msgstr "Caricamento in corso, attendere prego..."
+
+msgid "SAVING_DATA"
+msgstr "Backup dei dati in corso, attendere prego..."
+
 
 # For the tooltip part:
 msgid "TOOLTIP_SEND_INFOS"
