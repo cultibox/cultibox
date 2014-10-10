@@ -396,6 +396,9 @@ $(document).ready(function(){
                                     data_array['ponctual']="";
                                 }
 
+                                //Customization of checkbox:
+                                data_array['reset_old_program']=$("input[type='checkbox'][name='reset_old_program']:checked").val();
+
                                 $.ajax({
                                     cache: false,
                                     async: true,
@@ -443,6 +446,9 @@ $(document).ready(function(){
                         data_array['cyclic']=$("input[type='radio'][id='cyclic']:checked").val();
                         data_array['ponctual']="";
                     }
+
+                    //Customization of checkbox:
+                    data_array['reset_old_program']=$("input[type='checkbox'][name='reset_old_program']:checked").val();
 
                     $.ajax({
                         cache: false,

@@ -459,6 +459,10 @@ function compare_program($data,$sd_card,$file="plugv") {
             $nbdata=count($data);
         }
 
+         while(strlen($nbdata)<5) {
+            $nbdata="0$nbdata";
+         }
+
         if(count($data)>0) {
             //On récupère les informations du fichier courant plugv
             $buffer_array=@file("$file");
@@ -466,7 +470,7 @@ function compare_program($data,$sd_card,$file="plugv") {
                   $buffer=trim($buffer); //On supprime les caractères invisibles
                   if(!empty($buffer)) {
                      if($nb==0) {
-                        if($nbdata!=$buffer) { //S'il s'agit de la première ligne, qui contient le nombre d'entrée, on compare le nombre d'entrée du fichier avec le nombre d'entrée du tableau
+                        if(strcmp("$nbdata","$buffer")!=0) { //S'il s'agit de la première ligne, qui contient le nombre d'entrée, on compare le nombre d'entrée du fichier avec le nombre d'entrée du tableau
                          return false;
                         }
                      } else {
