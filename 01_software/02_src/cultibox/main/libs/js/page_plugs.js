@@ -310,7 +310,9 @@ $(document).ready(function(){
                             data_array[$(this).attr('name')]=$(this).val();
                         }); 
 
+                        //Customization:
                         data_array['number']=i;
+                        data_array['plug_power_max'+i]=$('input[name=plug_power_max'+i+']:checked').val();
 
                         $.ajax({
                             cache: false,
