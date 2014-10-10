@@ -95,11 +95,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 
-if((!isset($sd_card))||(empty($sd_card))) {
-   $main_error[]=__('ERROR_SD_CARD');
-}
-
-
 // Read and update DB with index file
 $sensor_type = array(); 
 if (get_sensor_type($sd_card,$sensor_type))

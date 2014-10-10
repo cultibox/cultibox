@@ -21,10 +21,6 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
-if((!isset($sd_card))||(empty($sd_card))) {
-   $main_error[]=__('ERROR_SD_CARD');
-}
-
 
 // Read program index
 $program_index = array();

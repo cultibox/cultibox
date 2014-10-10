@@ -1549,9 +1549,6 @@ msgstr "Error in the format of the IP address: XXX.XXX.XXX.XXX"
 msgid "ERROR_EMPTY_PASSWORD"
 msgstr "The password can not be empty"
 
-msgid "ERROR_ACCESS_INFO_WIFI"
-msgstr "Unable to access the Wifi Module, check your configuration-"
-
 msgid "ERROR_WEP_KEY_TYPE"
 msgstr "Error in the format of WEP password: it must contain only nombreus (0-9) and do 5, 13 or 29 characters long"
 

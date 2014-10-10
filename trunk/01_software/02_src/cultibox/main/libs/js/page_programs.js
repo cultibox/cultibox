@@ -18,8 +18,25 @@ end            = <?php echo json_encode($end) ?>;
 plug_selected  = <?php echo json_encode($selected_plug) ?>;
 error_valueJS  = <?php echo json_encode($error_value) ?>;
 var reload_page=false;
+var main_error = <?php echo json_encode($main_error); ?>;
+var main_info = <?php echo json_encode($main_info); ?>;
+
 
 $(document).ready(function(){
+     pop_up_remove("main_error");
+     pop_up_remove("main_info");
+
+    // For each information, show it
+    $.each(main_error, function(key, entry) {
+            pop_up_add_information(entry,"main_error","error");
+    });
+
+    // For each information, show it
+    $.each(main_info, function(key, entry) {
+            pop_up_add_information(entry,"main_info","information");
+    });
+
+
      pop_up_add_information("<?php echo __('WIZARD_ENABLE_FUNCTION'); ?>: <a href='/cultibox/index.php?menu=wizard' class='href-wizard-msgbox'><img src='main/libs/img/wizard.png' alt='<?php echo __('WIZARD'); ?>' title='' id='wizard' /></a>", "jumpto_wizard", "information");
 
      if(sd_card=="") {

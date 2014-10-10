@@ -1550,9 +1550,6 @@ msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
 msgid "ERROR_EMPTY_PASSWORD"
 msgstr "Le mot de passe ne peut pas être vide"
 
-msgid "ERROR_ACCESS_INFO_WIFI"
-msgstr "Impossible d'accéder au module Wifi, vérifiez-votre configuration"
-
 msgid "ERROR_WEP_KEY_TYPE"
 msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombres (0-9) et faire 5, 13 ou 29 caractères de long"
 
