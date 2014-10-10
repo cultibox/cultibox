@@ -241,7 +241,7 @@ if($type == "logs") {
             if(db_update_logs($log,$main_error)) {
                 if(strcmp(date('md'),"${mmonth}${dday}")!=0) {
                     logs\save_log("$sd_card/logs/$mmonth/$dday","$mmonth","$dday","logs");
-                    copy_empty_big_file("$sd_card/logs/$mmonth/$dday"); 
+                    copy_template_file("empty_file_big.tpl","$sd_card/logs/$mmonth/$dday"); 
                 } 
             }
             unset($log) ;
@@ -257,7 +257,7 @@ if($type == "logs") {
     if(!empty($power)) {
         if(db_update_power($power,$main_error)) {
             logs\save_log("$sd_card/logs/$mmonth/$dday","$mmonth","$dday","power"); 
-            copy_empty_big_file("$sd_card/logs/$mmonth/pwr_$dday");
+            copy_template_file("empty_file_big.tpl","$sd_card/logs/$mmonth/pwr_$dday");
         }
         unset($power) ;
         $power = array();

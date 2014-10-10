@@ -201,9 +201,9 @@ function get_error_sd_card_update_message($id=0) {
 }
 // }}}
 
-// {{{ copy_empty_big_file()
+// {{{ sd_card_update_log_informations()
 // ROLE copy an empty file to a new file destination
-// IN $file     destination of the file
+// IN $sd_card     destination path
 // RET true if the copy is errorless, false else
 function sd_card_update_log_informations ($sd_card="") {
 
@@ -219,7 +219,7 @@ function sd_card_update_log_informations ($sd_card="") {
     
     // Read log.txt file and clear it
     find_informations("$sd_card/log.txt",$informations);
-    copy_empty_big_file("$sd_card/log.txt");
+    copy_template_file("empty_file_big.tpl", "$sd_card/log.txt");
     
     // If informations are defined in log.txt copy them into database
     if($informations["cbx_id"] != "") 
@@ -238,21 +238,23 @@ function sd_card_update_log_informations ($sd_card="") {
 }
 
 
-// {{{ copy_empty_big_file()
+// {{{ copy_template_file()
 // ROLE copy an empty file to a new file destination
-// IN $file     destination of the file
+// IN  $name     name of the file to be copied
+//     $file     destination of the file
 // RET true if the copy is errorless, false else
-function copy_empty_big_file($file) {
+function copy_template_file($name="", $file) {
+   if(strcmp("$name","")==0) return false;
    //Trying to find the template file from the current path:
-   if(is_file('main/templates/data/empty_file_big.tpl')) {
-        $filetpl = 'main/templates/data/empty_file_big.tpl';
-   } else if(is_file('../main/templates/data/empty_file_big.tpl')) {
-        $filetpl = '../templates/data/empty_file_big.tpl';
+   if(is_file("main/templates/data/$name")) {
+        $filetpl = "main/templates/data/$name";
+   } else if(is_file("../main/templates/data/$name")) {
+        $filetpl = "../main/templates/data/$name";
+   } else if(is_file("../../main/templates/data/$name")) {
+        $filetpl = "../../main/templates/data/$name";
    } else {
-        $filetpl = '../../templates/data/empty_file_big.tpl';
+        $filetpl = "../../../main/templates/data/$name";
    }
-
-   if(strcmp("$filetpl","")==0) return false;
 
    //Copying the template file if one has been found:
    if(!@copy($filetpl, $file)) return false;
@@ -1670,7 +1672,7 @@ function compat_old_sd_card($sd_card="") {
         if(!is_dir($bin)) if(!@mkdir("$bin")) { $error_copy=true; };
 
         if(!is_file("$sd_card/cnf/prg/plugv")) {
-            if(!@copy("main/templates/data/empty_file.tpl","$sd_card/cnf/prg/plugv")) { $error_copy=true; };
+            if(!copy_template_file("empty_file.tpl","$sd_card/cnf/prg/plugv")) { $error_copy=true; };
         }
 
         if($error_copy) {
