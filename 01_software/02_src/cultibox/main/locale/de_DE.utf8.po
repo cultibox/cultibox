@@ -1632,6 +1632,12 @@ msgstr "Es bleibt Log-Dateien oder Power-Sensor enthält ältesten um Daten zu l
 msgid "MESSAGE_BOX"
 msgstr "Beiträge Software"
 
+msgid "LOADING_DATA"
+msgstr "Laden Laden, bitte warten..."
+
+msgid "SAVING_DATA"
+msgstr "Datensicherung läuft, bitte warten..."
+
 
 # For the tooltip part:
 msgid "TOOLTIP_SEND_INFOS"

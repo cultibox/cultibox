@@ -1632,6 +1632,12 @@ msgstr "It remains log files sensor or power containing oldest to load data to u
 msgid "MESSAGE_BOX"
 msgstr "Posts software"
 
+msgid "LOADING_DATA"
+msgstr "Loading, please wait..."
+
+msgid "SAVING_DATA"
+msgstr "Data saving in progress, please wait..."
+
 
 # For the tooltip part:
 msgid "TOOLTIP_SEND_INFOS"

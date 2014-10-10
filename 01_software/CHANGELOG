@@ -2,6 +2,7 @@ Cultibox (2.0.05) precise; urgency=low
     + Correction de la copie des fichiers templates sur la carte SD
     + Correction de la gestion des radios boutons des prises
     + Correction du chargement automatique des logs et de la fermeture de la fenêtre
+    + Message personnalisé pour les blockUI
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Wed Oct 10 14:00:00 CEST 2014
 

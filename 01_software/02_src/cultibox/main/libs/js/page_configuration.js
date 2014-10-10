@@ -103,7 +103,20 @@ $(document).ready(function(){
       e.preventDefault();
 
       // block user interface during checking and saving
-      $.blockUI({ message: '', onBlock: function() {
+      $.blockUI({
+        message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+        centerY: 0,
+        css: {
+            top: '20%',
+            border: 'none',
+            padding: '5px',
+            backgroundColor: 'grey',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .9,
+            color: '#fffff'
+      },
+      onBlock: function() {
 
         var checked=true;
         

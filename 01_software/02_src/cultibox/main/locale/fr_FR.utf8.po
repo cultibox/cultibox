@@ -1639,6 +1639,12 @@ msgstr "Messages du logiciel"
 msgid "WAIT_WIFI_MODULE"
 msgstr "Connexion au module Wifi en cours "
 
+msgid "LOADING_DATA"
+msgstr "Chargement des données en cours, patientez s'il vous plait..."
+
+msgid "SAVING_DATA"
+msgstr "Sauvegarde des données en cours, patientez s'il vous plait..."
+
 
 # For the tooltip part:
 msgid "TOOLTIP_SEND_INFOS"
