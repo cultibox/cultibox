@@ -1,3 +1,9 @@
+Cultibox (2.0.05) precise; urgency=low
+    + Correction de la copie des fichiers templates sur la carte SD
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Oct 10 14:00:00 CEST 2014
+
+
 Cultibox (2.0.04) precise; urgency=low
     + Remise en fonction des ancres
     + Affichage des messages d'utilisation du wizard dans la boite de message

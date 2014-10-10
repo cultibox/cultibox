@@ -183,8 +183,6 @@ if(count($tmp_resume)>0) {
     $resume=$tmp_resume;
 }
 
-
-sd_card_update_log_informations($sd_card);
 if((strcmp($regul_program,"on")==0)||(strcmp($regul_program,"off")==0)) {
     $value_program="";
 } 
