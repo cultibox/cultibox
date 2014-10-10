@@ -299,7 +299,7 @@ if($check == "1") { //Si la valeur du programme est correcte:
     }
 
     //If the reset checkbox is checked
-    if(isset($reset_old_program) && $reset_old_program == "Yes") {
+    if((isset($reset_old_program)) && (!empty($reset_old_program)) && (strcmp("$reset_old_program","Yes")==0)) {
         clean_program($selected_plug,$program_index,$main_error);
         unset($reset_old_program);
     } 
