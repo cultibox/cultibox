@@ -554,7 +554,7 @@ $(document).ready(function(){
                     } else {
                         //Reset import file:
                         $('#import_name_file').text("");
-                        $('#import_program').val("<?php echo __('SELECT_FILE_NAME'); ?>");
+                        $('#import_program').val("<?php echo __('SELECT_FILE_NAME','html'); ?>");
                         $('#import_program').attr('disabled', true);
                         $('#import_program').addClass("inputDisable");
                         return false;
