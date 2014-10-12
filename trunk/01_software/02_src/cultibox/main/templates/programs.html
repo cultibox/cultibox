@@ -1,7 +1,7 @@
 <script>
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
 </script>
-
+<br />
 <!-- Head title befor program showing -->
 <div class="title_conf">
     <?php echo __('VIEW_CURRENT_PROGRAM'); ?>
@@ -281,7 +281,7 @@
             <td>
                 <form action="/cultibox/index.php?menu=programs" method="post" name="reset_program_form" id="reset_program_form">
                     <?php for($i=1;$i<=$nb_plugs;$i++) { ?>
-                        <input type="checkbox" name="reset_selected_plug" value="<?php echo $i; ?>" id="reset_selected_plug<?php echo $i; ?>"><?php echo $i; ?>
+                        <input type="checkbox" name="reset_selected_plug" value="<?php echo $i; ?>" id="reset_selected_plug<?php echo $i; ?>"><?php echo $i; ?><?php if((($i%4)==0)&&($i<$nb_plugs)) { echo "<br />"; } ?>
                     <?php } ?>
                      <select name="reset_set_program_index_id" id="reset_set_program_index_id">
                         <?php foreach ($index_info as $row) { ?>
