@@ -118,7 +118,9 @@ function expand(div) {
 // }}}
 
 
-// {{{ expand(_plug)
+
+
+// {{{ expand_plug()
 // ROLE expand or reduce submenu of the plug configuration menu
 // IN div: number of the plug menu to be expanded
 //    nb: number of plug to be checked 
@@ -139,6 +141,61 @@ function expand_plug(div,nb) {
             document.getElementById('submenu').value = div;
       }
 }
+
+
+// {{{ expand_wizard()
+// ROLE expand or reduce submenu of the wizard menu
+// IN step: number of the step to be expanded
+//    last: last plus configured (true or false)
+// HOW IT WORKS: get div id to be expanded reduced other menu
+// USED BY: templates/wizard.html
+function expand_wizard(step,last) {
+    previous=document.getElementById('previous');
+    next=document.getElementById('next');
+    next_plug=document.getElementById("next_plug");
+    finish=document.getElementById("finish");
+    for(i=1;i<=3;i++) {
+        div_step=document.getElementById('step'+i);
+        div_subtitle=document.getElementById('subtitle_step'+i);
+
+        if(step>1) {
+            previous.style.display = "";
+        } else {
+            previous.style.display = "none";
+        }
+
+        if(step<3) {
+            next.style.display = "";
+        } else {
+            next.style.display = "none";
+        }
+
+        if((step==3)&&(!last)) {    
+            next_plug.style.display = "";
+        } else {
+            next_plug.style.display = "none";
+        }
+
+        if(step==3) {
+            finish.style.display = "";
+        } else {
+            finish.style.display = "none";
+        }
+
+        if(step==i) {
+            div_step.style.display = "";
+            div_subtitle.style.display= "";
+        } else {
+            div_step.style.display = "none";
+            div_subtitle.style.display= "none";
+        }
+    }
+    
+    nb_step=document.getElementById("nb_step");
+    nb_step.innerHTML = step+"/3";
+}
+
+
 
 
 // {{{ verifDigit()

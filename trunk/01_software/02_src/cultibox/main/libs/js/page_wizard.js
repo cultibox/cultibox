@@ -8,14 +8,15 @@
     }
 ?>
 
-plug_type=<?php echo json_encode($plug_type) ?>;
-error_valueJS=<?php echo json_encode($error_value) ?>;
-canal_status= <?php echo json_encode($status) ?>;
+step=<?php echo json_encode($step); ?>;
+nb_plugs=<?php echo json_encode($nb_plugs); ?>;
+selected_plug=<?php echo json_encode($selected_plug); ?>;
+plug_type=<?php echo json_encode($plug_type); ?>;
+error_valueJS=<?php echo json_encode($error_value); ?>;
+canal_status= <?php echo json_encode($status); ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
-jumpto_program=<?php echo json_encode($jumpto_program); ?>;
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
-
 
 
 $(document).ready(function(){
@@ -35,25 +36,23 @@ $(document).ready(function(){
 
      pop_up_add_information("<?php echo __('WIZARD_DISABLE_FUNCTION'); ?>: <a href='/cultibox/index.php?menu=programs' class='href-wizard-msgbox'><img src='main/libs/img/wizard.png' alt='<?php echo __('CLASSIC'); ?>' title='' id='classic' /></a>", "jumpto_classic", "information");
 
-    if(jumpto_program) {
-         get_content("programs",getUrlVars('selected_plug=<?php echo $selected_plug; ?>'));
-    }
-
    //Event fire when clicking the wizard button:
    $("#next").click(function(e) {
         e.preventDefault(); 
-        var inputForm = getFormInputs('submit_wizard');
-        inputForm['next']="next";
-        inputForm['type']=0;
-        get_content("wizard",inputForm);
+        step=step+1;
+
+        var chk_plg=false; 
+        if(selected_plug==nb_plugs) chk_plg=true;
+        expand_wizard(step,chk_plg);
    });
 
    $("#previous").click(function(e) {
         e.preventDefault();
-        var inputForm = getFormInputs('submit_wizard');
-        inputForm['previous']="previous";
-        inputForm['type']=0;
-        get_content("wizard",inputForm);
+        step=step-1;
+        
+        var chk_plg=false;
+        if(selected_plug==nb_plugs) chk_plg=true;
+        expand_wizard(step,chk_plg);
    });
 
     
@@ -61,7 +60,7 @@ $(document).ready(function(){
 
    $("#close").click(function(e) {
        e.preventDefault();
-       var get_urls = getUrlVars('selected_plugs=<?php echo $selected_plug; ?>');
+       var get_urls = getUrlVars('selected_plug=<?php echo $selected_plug; ?>');
        get_content("programs",get_urls);
    });
 
@@ -220,13 +219,87 @@ $("#value_program").keypress(function(e) {
         }
 
         if(checked) {
-            if($(this).attr('id')=="finish") {
-                $('#type_submit').val("submit_close");
-            } else {
-                $('#type_submit').val("submit_next");
-            }
-        
-            get_content("wizard",getFormInputs('submit_wizard'));
+            var actionID=$(this).attr('id');
+            // block user interface during saving;
+            $.blockUI({
+               message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+               centerY: 0,
+               css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+               },
+               onBlock: function() {
+                    var data_array = {};
+                    $("#submit_wizard :input").each(function() {
+                        data_array[$(this).attr('name')]=$(this).val();
+                    });
+
+                    if(actionID=="finish") {
+                        data_array['type_submit']="submit_close";
+                    } else {
+                        data_array['type_submit']="submit_next";
+                    }
+
+                    
+                    //Customization:
+                    data_array['plug_power_max']=$('input[name=plug_power_max]:checked').val();
+                    data_array['selected_plug']=<?php echo $selected_plug; ?>;
+
+                    console.log(data_array);
+
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/save_wizard_config.php",
+                        data: data_array
+                    }).done(function(data) {
+                         if(sd_card!="") {
+                            $.ajax({
+                                type: "GET",
+                                url: "main/modules/external/check_and_update_sd.php",
+                                data: {
+                                    sd_card:"<?php echo $sd_card ;?>"
+                                },
+                                async: false,
+                                success: function(data, textStatus, jqXHR) { },
+                                error: function(jqXHR, textStatus, errorThrown) { }
+                            });
+                        }
+
+                        $.unblockUI();
+
+                        try { 
+                            if(jQuery.parseJSON(data)=="submit_close") {
+                                get_content("programs",getUrlVars('selected_plug=<?php echo $selected_plug; ?>'));
+                            } else {
+                                get_content("wizard",getUrlVars('selected_plug=<?php echo $selected_plug+1; ?>'));
+                            }
+                        } catch(err) {
+                             $("#error_update_conf").dialog({
+                                resizable: false,
+                                height:150,
+                                width: 500,
+                                closeOnEscape: false,
+                                modal: true,
+                                dialogClass: "popup_error",
+                                hide: "fold",
+                                buttons: [{
+                                    text: CLOSE_button,
+                                    click: function () {
+                                        $( this ).dialog( "close" );
+                                        get_content("wizard",getUrlVars("selected_plug=<?php echo $selected_plug; ?>"));
+                                    }
+                                }]
+                            });
+                        }
+                    });
+             }});
         }
     });
 });

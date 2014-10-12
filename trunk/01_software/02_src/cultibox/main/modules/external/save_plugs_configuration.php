@@ -177,8 +177,6 @@ if((!empty($type))&&(isset($type))&&(strcmp("$old_type","$type")!=0)) {
 }
 
 
-
-
 if(count($main_error)>0) {
     echo json_encode("0");
 } else {
