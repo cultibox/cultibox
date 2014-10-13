@@ -122,7 +122,6 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
             }
         }
     } else {
-        $conf_uptodate=false;
         if(!check_and_copy_plgidx($sd_card)) {
              $main_error_tab[]=__('ERROR_COPY_TPL');
              return ERROR_COPY_TPL;
