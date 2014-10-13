@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #Deletion of the extented attribute on Mac Os X:
-if [ -d /Applications/cultibox/xamppfiles ]; then
-    xattr -rc /Applications/cultibox/xamppfiles/
+if [ -f /Applications/cultibox/xamppfiles/xampp ]; then
+    xattr -rc /Applications/cultibox/xamppfiles/xampp
 fi
 
 if [ -f /Applications/cultibox/xamppfiles/etc/php.ini ] && [ ! -f  /Applications/cultibox/xamppfiles/xampp ]; then
