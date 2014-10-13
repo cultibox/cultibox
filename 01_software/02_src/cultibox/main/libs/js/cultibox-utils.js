@@ -147,14 +147,15 @@ function expand_plug(div,nb) {
 // ROLE expand or reduce submenu of the wizard menu
 // IN step: number of the step to be expanded
 //    last: last plus configured (true or false)
+//    plug: plug configured
 // HOW IT WORKS: get div id to be expanded reduced other menu
 // USED BY: templates/wizard.html
-function expand_wizard(step,last) {
+function expand_wizard(step,last,plug) {
     previous=document.getElementById('previous');
     next=document.getElementById('next');
     next_plug=document.getElementById("next_plug");
     finish=document.getElementById("finish");
-    for(i=1;i<=3;i++) {
+    for(i=1;i<=2;i++) {
         div_step=document.getElementById('step'+i);
         div_subtitle=document.getElementById('subtitle_step'+i);
 
@@ -164,35 +165,40 @@ function expand_wizard(step,last) {
             previous.style.display = "none";
         }
 
-        if(step<3) {
+        if(step<2) {
             next.style.display = "";
         } else {
             next.style.display = "none";
         }
 
-        if((step==3)&&(!last)) {    
+        if((step==2)&&(!last)) {    
             next_plug.style.display = "";
         } else {
             next_plug.style.display = "none";
         }
 
-        if(step==3) {
+        if(step==2) {
             finish.style.display = "";
         } else {
             finish.style.display = "none";
         }
 
-        if(step==i) {
+        if(plug==1) {
             div_step.style.display = "";
             div_subtitle.style.display= "";
         } else {
-            div_step.style.display = "none";
-            div_subtitle.style.display= "none";
+            if(step==i) {
+                div_step.style.display = "";
+                div_subtitle.style.display= "";
+            } else {
+                div_step.style.display = "none";
+                div_subtitle.style.display= "none";
+            }
         }
     }
     
     nb_step=document.getElementById("nb_step");
-    nb_step.innerHTML = step+"/3";
+    nb_step.innerHTML = step+"/2";
 }
 
 

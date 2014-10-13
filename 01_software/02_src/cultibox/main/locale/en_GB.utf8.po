@@ -992,11 +992,11 @@ msgstr "You will now set up a new outlet."
 msgid "WIZARD_OTHER_PLUG_TYPE"
 msgstr "Choose the type of connector to use: <ul class='list_class_wizard'> <li> heating to raise the temperature </li> <li> a fan to lower the temperature </li> <li> a humidifier to increase the moisture </li> <li> a dehumidifier to reduce humidity </li> <li> a water pump to increase the water level </li> <li> lamp </li> <li> 'other' for all other types of equipment. <br /> <br /> If you choose to configure a new lamp, it must be <b> less powerful 200 Watts </b>"
 
-msgid "START_TIME_LAMP"
-msgstr "Hour lamp ignition"
+msgid "START_TIME_EQUIPMENT"
+msgstr "Equipment start time"
 
-msgid "END_TIME_LAMP"
-msgstr "Off time of the lamp"
+msgid "END_TIME_EQUIPMENT"
+msgstr "Equiment end time"
 
 
 #For the calendar part:

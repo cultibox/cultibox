@@ -992,11 +992,11 @@ msgstr "Ahora se configura un nuevo enchufe."
 msgid "WIZARD_OTHER_PLUG_TYPE"
 msgstr "Elegir el tipo de enchufe a usar: <ul class='list_class_wizard'><li>un calentador para aumentar la temperatura </li><li>un ventilador para bajar la temperatura</li><li>un humidificador para bajar el porcentaje de humedad</li><li>un deshumidificador para bajar la humedad</li><li>una bomba de agua para aumentar el nivel de agua</li><li>una lámpara</li><li>el tipo 'otro' sirve para cualquier otro equipamiento.<br /><br />Si se elige la configuración de una nueva lámpara , esa tiene que ser <b>menos potente que 200 Vatios</b>"
 
-msgid "START_TIME_LAMP"
-msgstr "Horario de arranque de la lámpara"
+msgid "START_TIME_EQUIPMENT"
+msgstr "Horario de arranque del equipo"
 
-msgid "END_TIME_LAMP"
-msgstr "Horario de apago de la lámpara"
+msgid "END_TIME_EQUIPMENT"
+msgstr "Horario de apago del equipo"
 
 
 #For the calendar part:
