@@ -992,11 +992,11 @@ msgstr "Sie werden nun eine neue Steckdose gesetzt."
 msgid "WIZARD_OTHER_PLUG_TYPE"
 msgstr "Wählen Sie die Art von Anschluss zu verwenden: <ul class='list_class_wizard'> <li> Heizung, die Temperatur </li> erhöhen <li> einem Ventilator, um die Temperatur </li> <li> einen Luftbefeuchter zu senken, um die Erhöhung Feuchtigkeit </li> <li> einem Entfeuchter gegen Feuchtigkeit </li> <li> einer Wasserpumpe, den Wasserstand </li> <li> Lampe </li> <li> erhöhen reduzieren "andere" für alle anderen Arten von Ausrüstung. <br /> <br /> Wenn Sie eine neue Lampe zu konfigurieren wählen, muss es <b> werden weniger leistungsfähigen 200 Watt </b>"
 
-msgid "START_TIME_LAMP"
-msgstr "Stunden Lampenzündung"
+msgid "START_TIME_EQUIPMENT"
+msgstr "Zeit Zündeinrichtung"
 
-msgid "END_TIME_LAMP"
-msgstr "Ausschaltzeit des Lampen"
+msgid "END_TIME_EQUIPMENT"
+msgstr "Stoppzeit Ausrüstung"
 
 
 #For the calendar part:

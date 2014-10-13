@@ -7,7 +7,7 @@
 <p class="wizard_subtitle"><?php echo __('WIZARD_CONFIGURE_PLUG_NUMBER'); ?><?php echo " $selected_plug: $plug_name"; ?></p>
 <form action="/cultibox/index.php?menu=wizard" method="post" name="submit_wizard" id="submit_wizard">
 
-    <p id="title_step" class="step"><?php echo __('WIZARD_STEP')."&nbsp;"; ?><label id="nb_step"><?php echo $step."/3:";?></label></p>
+    <p id="title_step" class="step"><?php echo __('WIZARD_STEP')."&nbsp;"; ?><label id="nb_step"><?php echo $step."/2:";?></label></p>
     <br />
     <hr />
     <br />
@@ -16,29 +16,33 @@
         <tr>
             <td></td>
             <td>
-                <p class="step_info">
-                    <label id="subtitle_step1"> <?php
+                <p class="step_info" id="subtitle_step1">
+                    <?php
                         if($selected_plug==1) {
                             echo __('WIZARD_FIRST_USE');
                         } else {
                             echo "<b>".__('WIZARD_CONFIGURE_OTHER_PLUG')." $selected_plug:</b> ".__('WIZARD_OTHER_PLUG_NUMBER');
-                        } ?>
-                    </label>
-
-                    <label id="subtitle_step2" style="display:none"><?php
+                        } 
+                    ?>
+                </p>
+                <br />
+                <p class="step_info" id="subtitle_step1_bis">
+                    <?php
                         if($selected_plug==1) {
                             echo __('WIZARD_PLUG_TYPE'); 
                         } else {
                             echo __('WIZARD_OTHER_PLUG_TYPE');
-                        } ?>
-                    </label>
-                    <label id="subtitle_step3" style="display:none"><?php
+                        } 
+                    ?>
+                </p>
+                <p class="step_info" id="subtitle_step2" style="display:none">
+                    <?php
                         if($selected_plug==1) {
                             echo __('WIZARD_PLUG_LAMP');
                         } else {
                             echo __('WIZARD_PLUG_PROGRAM'); 
-                        } ?>
-                    </label>
+                        } 
+                    ?>
                 </p>
             </td>
             <td class="wizard-marge"></td>
@@ -47,9 +51,6 @@
     <br />
     <hr />
     <br />
-    </div>
-
-    <div id="step2" style="display:none">
             <table class="table_width">
             <tr>
                 <td class="wizard-marge-td"></td>
@@ -95,56 +96,43 @@
                 </td>
             </tr>
             </table>
-    <br />
-    <hr />
-    <br />
     </div>
 
-    <div id="step3" style="display:none">
+    <div id="step2" style="<?php if(($step==1)&&($selected_plug!=1)) echo 'display:none'; ?>">
     <table class="table_width">
        <tr>
           <td class="wizard-marge-td"></td>
-      <td class="wizard-title"><input type="hidden" name="program" value="program"><?php if(strcmp($plug_type,"lamp")==0) { echo __('START_TIME_LAMP'); } else { echo __('START_TIME_PROGRAM'); } ?>:</td>
+      <td class="wizard-title"><input type="hidden" name="program" value="program"><?php echo __('START_TIME_EQUIPMENT'); ?>:</td>
           <td><input type="text" size="10" name="start_time" id="start_time" value="<?php echo $start_time ?>"/></td>
           <td><div id="error_start_time" class="error_field" style="display:none"><img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_FORMAT_TIME_START'); ?></div><div id="error_same_start" class="error_field" style="display:none"><img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_SAME_TIME'); ?></div></td>
         </tr>
         <tr>
           <td></td>
-      <td><?php if(strcmp($plug_type,"lamp")==0) { echo __('END_TIME_LAMP'); } else { echo __('END_TIME_PROGRAM'); } ?>:</td>
+      <td><?php  echo __('END_TIME_EQUIPMENT'); ?>:</td>
           <td><input type="text" size="10" name="end_time" id="end_time" value="<?php echo $end_time ?>"/></td>
           <td><div id="error_end_time" class="error_field" style="display:none"><img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_FORMAT_TIME_END'); ?></div><div id="error_same_end" class="error_field" style="display:none"><img src="/cultibox/main/libs/img/arrow_error.png" alt=""><?php echo __('ERROR_SAME_TIME'); ?></div></td>
         </tr>
-          <?php if(strcmp($plug_type,"lamp")!=0) { ?>
        <tr>
          <td></td>
-         <td><?php  if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo __('TEMP_WISHED').":"; }
-                    elseif(strcmp($plug_type,"pump")==0) { echo __('WATER_WISHED').":"; }
-                             elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { echo __('HUMI_WISHED').":"; } 
-
-                   ?><?php if((strcmp($plug_type,"lamp")!=0)&&((strcmp($plug_type,"other")!=0))) { ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_VALUE'); ?>" /><?php } ?></td>
-         <td><?php if((strcmp($plug_type,"lamp")==0)||(strcmp($plug_type,"other")==0)) {?><input type="hidden" name="value_program" id="value_program" value="99.9"><?php } else { ?><input type="text" maxlength="4" size="4" name="value_program" id="value_program" <?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)||(strcmp($plug_type,"pump")==0))  { 
-                                          echo 'value="22"'; 
-                                   } elseif((strcmp($plug_type,"humidifier")==0)||(strcmp($plug_type,"dehumidifier")==0)) { 
-                                          echo 'value="55"';  } ?>/><?php if((strcmp($plug_type,"heating")==0)||(strcmp($plug_type,"ventilator")==0)) { echo " °C"; } elseif(strcmp($plug_type,"pump")==0) { echo " cm"; } else { echo " %"; } ?>
-        </td>
+         <td><label id="value_wished"></label><img src="main/libs/img/infos.png" id="tooltip_value" alt="" title="<?php echo __('TOOLTIP_VALUE'); ?>" style="<?php if($selected_plug==1) echo 'display:none'; ?>"/></td>
+         <td><div id="value_prog_div"></div></td>
         <td><div id="error_value_program" class="error_field" style="display:none"></div></td>
         </tr>
-    <?php } } ?>
     </table>
+    </div>
+
     <br />
     <hr />
     <br />
-    </div>
-
     <table>
     <tr>
     <td class="wizard-marge-submit"></td>
     <td class="wizard-input-submit"><input type=submit name="close" id="close" value="<?php echo __('CLOSE_WIZARD'); ?>"></td>
-    <td class="wizard-input-previous"><input type=submit name="previous" id="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>" style="display:none"></td>
-    <td class="wizard-input-previous"><input type=submit name="next" id="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>"></td>
+    <td class="wizard-input-previous"><input type=submit name="previous" id="previous" value="<?php echo __('WIZARD_PREVIOUS_STEP'); ?>" <?php if(($selected_plug==1)||($step==1)) { echo 'style="display:none"'; } ?>></td>
+    <td class="wizard-input-previous"><input type=submit name="next" id="next" value="<?php echo __('WIZARD_NEXT_STEP'); ?>" <?php if($selected_plug==1) { echo 'style="display:none"'; } ?>></td>
     <td class="wizard-input-submit">
-    <input type=submit name="next_plug" id="next_plug" value="<?php echo __('WIZARD_OTHER_STEP'); ?>" style="display:none">
-    <input type=submit name="finish" id="finish" value="<?php echo __('WIZARD_FINISH_STEP'); ?>" style="display:none">
+    <input type=submit name="next_plug" id="next_plug" value="<?php echo __('WIZARD_OTHER_STEP'); ?>" <?php if($selected_plug>1) { echo 'style="display:none"'; } ?>>
+    <input type=submit name="finish" id="finish" value="<?php echo __('WIZARD_FINISH_STEP'); ?>" <?php if($selected_plug>1) { echo 'style="display:none"'; } ?>>
     </td>
         </tr>
     </table>

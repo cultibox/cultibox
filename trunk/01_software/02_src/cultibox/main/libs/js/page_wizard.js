@@ -11,7 +11,6 @@
 step=<?php echo json_encode($step); ?>;
 nb_plugs=<?php echo json_encode($nb_plugs); ?>;
 selected_plug=<?php echo json_encode($selected_plug); ?>;
-plug_type=<?php echo json_encode($plug_type); ?>;
 error_valueJS=<?php echo json_encode($error_value); ?>;
 canal_status= <?php echo json_encode($status); ?>;
 title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
@@ -43,7 +42,29 @@ $(document).ready(function(){
 
         var chk_plg=false; 
         if(selected_plug==nb_plugs) chk_plg=true;
-        expand_wizard(step,chk_plg);
+        expand_wizard(step,chk_plg,selected_plug);
+
+        plug_type=$("#plug_type option:selected").val();
+        if(selected_plug>1) {
+            if((plug_type=="heating")||(plug_type=="ventilator")) {
+                $("#value_wished").text("<?php echo __('TEMP_WISHED','html').':'; ?>"); 
+                $("#tooltip_value").show();
+                $('#value_prog_div').append('<input type="text" maxlength="4" size="4" name="value_program" id="value_program" value="22" /><label id="label_unity">°C</label>');
+            } else if(plug_type=="pump") { 
+                $("#value_wished").text("<?php echo __('WATER_WISHED','html').':'; ?>");
+                $("#tooltip_value").show();
+                $('#value_prog_div').append('<input type="text" maxlength="4" size="4" name="value_program" id="value_program" value="22" /><label id="label_unity">cm</label>');
+            } else if((plug_type=="humidifier")||(plug_type=="dehumidifier")) { 
+                $("#value_wished").text("<?php echo __('HUMI_WISHED','html').':'; ?>");
+                $("#tooltip_value").show();
+                $('#value_prog_div').append('<input type="text" maxlength="4" size="4" name="value_program" id="value_program" value="70" /><label id="label_unity">%</label>');
+            } else {
+                $("#value_wished").text("");
+                $("#tooltip_value").css("display","none");
+                $('#value_prog_div').append('<input type="hidden" name="value_program" id="value_program" value="99.9" />');
+                $("#label_unity").text("");
+            }
+        }
    });
 
    $("#previous").click(function(e) {
@@ -52,7 +73,15 @@ $(document).ready(function(){
         
         var chk_plg=false;
         if(selected_plug==nb_plugs) chk_plg=true;
-        expand_wizard(step,chk_plg);
+        expand_wizard(step,chk_plg,selected_plug);
+
+         if(selected_plug>1) {
+            $("#value_wished").text("");
+            $("#tooltip_value").css("display","none");
+            $('#value_program').remove();
+            $('#label_unity').remove();
+            $("#label_unity").text("");
+        }
    });
 
     
@@ -171,6 +200,7 @@ $("#value_program").keypress(function(e) {
             });
         }
 
+        plug_type=$("#plug_type option:selected").val();
         if((plug_type!="lamp") && (plug_type!="other")) {
             if(($("#value_program").val())&&($("#value_program").val()!="")) {
                 $.ajax({

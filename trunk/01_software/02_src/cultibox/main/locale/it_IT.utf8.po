@@ -993,11 +993,11 @@ msgstr "A questo punto impostare un nuovo punto vendita."
 msgid "WIZARD_OTHER_PLUG_TYPE"
 msgstr "Scegliere il tipo di connettore da utilizzare: <ul class='list_class_wizard'> <li> riscaldamento per alzare la temperatura </li> <li> un ventilatore per abbassare la temperatura </li> <li> un umidificatore per aumentare l' umidità </li> <li> un deumidificatore per ridurre l'umidità </li> <li> una pompa d'acqua per aumentare il livello di acqua </li> Lampada <li> </li> <li> 'altro' per tutti gli altri tipi di apparecchiature. <br /> <br /> Se si sceglie di configurare una nuova lampada, deve essere <b> meno potente 200 Watt </b>"
 
-msgid "START_TIME_LAMP"
-msgstr "Lampada ore di accensione"
+msgid "START_TIME_EQUIPMENT"
+msgstr "Attrezzature accensione Tempo"
 
-msgid "END_TIME_LAMP"
-msgstr "Tempo di spegnimento della lampada"
+msgid "END_TIME_EQUIPMENT"
+msgstr "Smettere delle attrezzature"
 
 
 #For the calendar part:
