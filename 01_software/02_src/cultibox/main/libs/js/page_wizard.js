@@ -84,6 +84,15 @@ $(document).ready(function(){
         }
    });
 
+    $('input[name=plug_power_max]').change(function() {
+        if($("input[name=plug_power_max]:checked").val()=="VARIO") {
+            $("#select_canal_dimmer").show();
+        } else {
+            $("#select_canal_dimmer").css("display","none");
+        }
+
+    });
+
     
 
 
