@@ -36,14 +36,36 @@ En cliquant sur *Cultibox*, l'onglet change:
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.png
 
 Dans cette section vous pouvez:
- * Définir à quelle fréquence la Cultibox enregistre les conditions climatiques
- * Définir à quelle fréquence la Cultibox enregistre l'état des prises
- * Indiquer le nombre de prises de votre système
- * Définir la fréquence de mise à jour des prises. Si vous avez d'autres équipements fonctionnant en 433MHz, vous pouvez choisir de ne plus piloter les prises en permanence
+ * Indiquer le nombre de prises de votre système. Vous pouvez aussi modifier le nombre de prise de votre système dans les paramètres de la page programme.
+ * Définir à quelle fréquence la Cultibox enregistre les conditions climatiques. Par exemple, si vous indiquez 30 minutes, la Cultibox enregistrera un nouvel échantillon de tous vos capteurs toutes les 30 minutes.
+ * Définir à quelle fréquence la Cultibox enregistre l'état des prises. Ce paramètre n'est plus utile à partir de la version 2.0.0 car la Cultibox enregistre chaque changement d'état des prises.
+ * Définir la fréquence de mise à jour des prises. Si vous avez d'autres équipements fonctionnant en 433MHz, vous pouvez choisir de ne plus piloter les prises en permanence. Par défaut le réglage est à 1.
  * Définir l'heure de remise à zéro du min/max de tous les capteurs affichés sur l'écran de la Cultibox
+ * Changer le décalage interne de la Cultibox. Ce paramètre permet d'ajouter ou de soustraire un certain nombre de seconde tous les jours à 2 heure du matin. Par exemple, si vous indiquez -5, à 2 heure du matin la Cultibox changera son horloge pour qu'il soit 1h59m45s. Pour une aide détaillée, consulter le chapitre suivant.
 
-Pour configurer plus finement les prises (le type, la régulation, etc...), reportez vous à la section [gui_soft_plugs Configuration des prises]
+Pour configurer les prises (le type, la régulation, etc...), reportez vous à la section [gui_soft_plugs Configuration des prises]
 
+=== Comment ajuster le décalage de l'horloge interne ? ===
+
+L'objectif de la première étape est de déterminer le décalage exacte de la Cultibox. Pour avoir une donnée précise, il est conseillé de regarder le décalage sur une semaine au moins.
+Dans notre exemple, nous considérons que vous examinez le décalage sur une semaine.
+Le premier jour, regardez au même moment l'heure de votre ordinateur (heure de référence) et l'heure de votre Cultibox. Puis calculez la différence entre les deux (cette valeur est négative si l'heure de l'ordinateur est plus grande que l'heure de la Cultibox).
+Valeurs pour l'exemple :
+ * Heure Ordinateur Jour 1 : 18h49m53s
+ * Heure Cultibox Jour 1 : 18h50m08s
+ * Différence jour 1 = Heure Cultibox - Heure Ordinateur = 15 secondes
+ 
+Une semaine plus tard (de préférence à la même heure), réalisez la même opération.
+Valeurs pour l'exemple :
+ * Heure Ordinateur Jour 7 : 18h49m36s
+ * Heure Cultibox Jour 7 : 18h51m06s
+ * Différence jour 7 = Heure Cultibox - Heure Ordinateur = 1 min et 30 secondes
+ 
+Appliquer la formule suivante (le chiffre 7 dans la division représente le nombre de jour de décalage):
+Décalage = (Différence jour 1 - Différence jour 7) / 7
+Valeur pour l'exemple : 
+ * Décalage = (15s - 1min30s) / 7 = (15s - 90s) / 7 = -10,7
+ * Il faut ensuite arrondir, dans notre cas nous entrons la valeur -11secondes dans le logiciel
 
 == Configuration de l'alarme ==
 
