@@ -497,13 +497,15 @@ function compare_program($data,$sd_card,$file="plugv") {
 // IN   $sd_card      sd card path to save data
 // RET false is there is something to write, true else
 function compare_pluga($sd_card) {
+    $out=array();
     if(is_file("${sd_card}/cnf/plg/pluga")) {
          $nb=0;
          $file="${sd_card}/cnf/plg/pluga";
 
          $pluga=Array();
-         $pluga[]=$GLOBALS['NB_MAX_PLUG'];
-         for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
+         $nb_plug=get_configuration("NB_PLUGS",$out);
+         $pluga[]=$nb_plug;
+         for($i=0;$i<$nb_plug;$i++) {
             $tmp_power_max=get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
             if(strcmp("$tmp_power_max","1000")==0) {
                 $tmp_pluga=$GLOBALS['PLUGA_DEFAULT'][$i];
@@ -682,9 +684,10 @@ function write_pluga($sd_card,&$out) {
    $file="$sd_card/cnf/plg/pluga";
 
    if($f=@fopen("$file","w+")) {
-      $pluga=Array();
-      $pluga=$GLOBALS['NB_MAX_PLUG']."\r\n";
-      for($i=0;$i<$GLOBALS['NB_MAX_PLUG'];$i++) {
+      $pluga="";
+      $nb_plug=get_configuration("NB_PLUGS",$out);
+      $pluga=$nb_plug."\r\n";
+      for($i=0;$i<$nb_plug;$i++) {
         $tmp_power_max=get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
         if(strcmp("$tmp_power_max","1000")==0) {
             $tmp_pluga=$GLOBALS['PLUGA_DEFAULT'][$i];
