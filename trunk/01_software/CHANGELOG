@@ -1,3 +1,9 @@
+Cultibox (2.0.07) precise; urgency=low
+    + Désactivation de la configuration de la fréquence d'enregistrement de l'état des prises
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Oct 13 13:21:43 CEST 2014
+
+
 Cultibox (2.0.06) precise; urgency=low
     + Correction du script de preinstallation et de la commande xattr pour mac os x
 
