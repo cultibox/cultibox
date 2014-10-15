@@ -504,6 +504,10 @@ function compare_pluga($sd_card) {
 
          $pluga=Array();
          $nb_plug=get_configuration("NB_PLUGS",$out);
+         while(strlen("$nb_plug")<2) {
+            $nb_plug="0$nb_plug";
+         }
+
          $pluga[]=$nb_plug;
          for($i=0;$i<$nb_plug;$i++) {
             $tmp_power_max=get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
@@ -686,7 +690,10 @@ function write_pluga($sd_card,&$out) {
    if($f=@fopen("$file","w+")) {
       $pluga="";
       $nb_plug=get_configuration("NB_PLUGS",$out);
-      $pluga=$nb_plug."\r\n";
+      while(strlen("$nb_plug")<2) {
+            $nb_plug="0$nb_plug";
+      }
+      $pluga="$nb_plug\r\n";
       for($i=0;$i<$nb_plug;$i++) {
         $tmp_power_max=get_plug_conf("PLUG_POWER_MAX",$i+1,$out);
         if(strcmp("$tmp_power_max","1000")==0) {
