@@ -553,6 +553,7 @@ function get_plug_power ($plug, $dateStart, $dateEnd, $day="day")
     }
        
     $lastTimeInS = 0;
+    $oldRecord=0;
     // For each point
     while ($row = $sth->fetch()) 
     {
@@ -566,13 +567,19 @@ function get_plug_power ($plug, $dateStart, $dateEnd, $day="day")
 
         $realTimeInS = strtotime($realDate);
          
-        // Don't display all point. Only if they have suffisiant diff
-        if ($realTimeInS >= $lastTimeInS + $divider)
+        // Don't display all point. Only if they have suffisiant diff or if the state changes:
+        if (($realTimeInS >= $lastTimeInS + $divider)||($oldRecord!=$row['record']))
         {
+            //If there is a change state, add a point to the same time:
+            if($oldRecord!=$row['record']) {
+                $serie[(string)(1000 * ($realTimeInS))-1] = floor($oldRecord / 9990 * $plugPower); 
+            }
+
             // WTF ! 7200
             $serie[(string)(1000 * ($realTimeInS))] = floor($row['record'] / 9990 * $plugPower);
             
             $lastTimeInS = $realTimeInS;
+            $oldRecord=$row['record'];
         }
         
     }
