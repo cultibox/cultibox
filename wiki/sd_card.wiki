@@ -90,13 +90,15 @@ CLE:WPA-AUTO
 PWD:lrnplmasv
 IPS:XXX.XXX.XXX.XXX
 IPC:XXX.XXX.XXX.XXX
+IPR:XXX.XXX.XXX.XXX
 }}}
 
 Le champ SSID peut contenir au maximum 19 caractères. 
 Le champ clé peut prendre les valeurs suivantes : NONE WEP WPA WPA2 WPA-AUTO.
-Le champ PWD peut contenir au maximum 19 caractères. 
-Le champ IPS : IP serveur (ordinateur client)
-Le champ IPC : IP cultibox (000.000.000.000 <=> DHCP)
+ * Le champ PWD peut contenir au maximum 19 caractères. 
+ * Le champ IPS : IP serveur (ordinateur client)
+ * Le champ IPC : L'adresse IP désirée par le client. IP Cultibox (000.000.000.000 <=> DHCP)
+ * Le champ IPR : La vrai adresse IP de la Cultibox. Dans le cas d'une configuration en DHCP, ce champ permet de connaitre la véritable adresse de la Cultibox. Attention, pour que cette information soit vraiment intéressante, il est nécessaire que le routeur WiFi attribue toujours la même adresse IP pour une adresse MAC.
 
 == Fichier cnt ==
 
