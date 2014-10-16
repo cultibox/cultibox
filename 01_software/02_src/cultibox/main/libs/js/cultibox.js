@@ -292,6 +292,14 @@ $(document).ready(function() {
     });
 
 
+    //To deal with dynamic content with href in message box
+    $('div.error').on('click', 'a', function(e) {
+        e.preventDefault();
+         var url_vars=getUrlVars($(this).attr('href'));
+         get_content(url_vars['menu'],url_vars);
+    });
+
+
     //To change the language dynamically:
     $('li.translate a').click(function(e) {
         e.preventDefault();

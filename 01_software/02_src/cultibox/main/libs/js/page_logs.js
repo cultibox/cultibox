@@ -196,6 +196,7 @@ $(function () {
          pop_up_remove("main_error");
          pop_up_remove("main_info");
 
+
         // For each information, show it
         $.each(main_error, function(key, entry) {
             pop_up_add_information(entry,"main_error","error");

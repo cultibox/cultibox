@@ -74,6 +74,7 @@ compute_cost = function(type,startday, select_plug, nb_jours, count, cost,chart,
 $(document).ready(function() {
      pop_up_remove("main_error");
      pop_up_remove("main_info");
+     pop_up_remove("power_status");
 
     // For each information, show it
     $.each(main_error, function(key, entry) {
@@ -83,6 +84,59 @@ $(document).ready(function() {
     // For each information, show it
     $.each(main_info, function(key, entry) {
             pop_up_add_information(entry,"main_info","information");
+    });
+
+
+    var list_power="";
+         if(($("#select_plug option:selected").val()=="all")||($("#select_plug option:selected").val()=="distinct_all")) {
+            for(i=1;i<=nb_plugs;i++) {
+               if(list_power=="") {
+                    list_power=i;
+               } else {
+                    list_power=list_power+"-"+i;
+               }
+            }
+        } else {
+            list_power=$("#select_plug option:selected").val();
+        }
+
+         $.ajax({
+               data:{ list_power:list_power },
+               url: 'main/modules/external/check_configuration_power.php'}).done(function(data) {
+                   if(jQuery.parseJSON(data)!="") {
+                        pop_up_remove("power_status");
+                        pop_up_add_information(jQuery.parseJSON(data),"power_status","error");
+                   } else {
+                       pop_up_remove("power_status");
+                   }
+      });
+
+
+     $("#select_plug").change(function() {
+       pop_up_remove("power_status");
+       var list_power="";
+         if(($("#select_plug option:selected").val()=="all")||($("#select_plug option:selected").val()=="distinct_all")) {
+            for(i=1;i<=nb_plugs;i++) {
+               if(list_power=="") {
+                    list_power=i;
+               } else {
+                    list_power=list_power+"-"+i;
+               } 
+            }
+        } else {
+            list_power=$("#select_plug option:selected").val();
+        }
+
+         $.ajax({
+               data:{ list_power:list_power },
+               url: 'main/modules/external/check_configuration_power.php'}).done(function(data) {
+                   if(jQuery.parseJSON(data)!="") {
+                        pop_up_remove("power_status");
+                        pop_up_add_information(jQuery.parseJSON(data),"power_status","error");
+                   } else {
+                       pop_up_remove("power_status");
+                   }
+      });
     });
 
 
