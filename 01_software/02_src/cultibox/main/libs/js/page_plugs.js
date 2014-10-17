@@ -13,6 +13,7 @@ nb_plugs       = <?php echo json_encode($nb_plugs) ?>;
 plugs_infoJS   = <?php echo json_encode($plugs_infos); ?>;
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
+var plug_alert_change= {};
 
 $(document).ready(function(){
      pop_up_remove("main_error");
@@ -113,35 +114,39 @@ $(document).ready(function(){
            var plug = $(this).attr('id').substring(9,10);
 
            if(plug!="") {
-               $.ajax({
-                    cache: false,
-                    async: true,
-                    url: "main/modules/external/get_variable.php",
-                    data: {name:'CHECK_PROGRAM',value:plug}
-                }).done(function (data) {
-                    if(jQuery.parseJSON(data)=="1") {
-                        $("#warning_change_type_plug").dialog({
-                            resizable: false,
-                            height:200,
-                            width: 500,
-                            closeOnEscape: false,
-                            modal: true,
-                            dialogClass: "dialog_cultibox",
-                            buttons: [{
-                            text: OK_button,
-                            click: function () {
-                                $( this ).dialog( "close" ); 
-                            }
-                            }, {
-                            text: CANCEL_button,
+               if(!(plug in plug_alert_change)) { 
+                   $.ajax({
+                        cache: false,
+                        async: true,
+                        url: "main/modules/external/get_variable.php",
+                        data: {name:'CHECK_PROGRAM',value:plug}
+                    }).done(function (data) {
+                        if(jQuery.parseJSON(data)=="1") {
+                            $("#warning_change_type_plug").dialog({
+                                resizable: false,
+                                height:200,
+                                width: 500,
+                                closeOnEscape: false,
+                                modal: true,
+                                dialogClass: "dialog_cultibox",
+                                buttons: [{
+                                text: OK_button,
                                 click: function () {
-                                    $("#plug_type"+plug).val(plugs_infoJS[plug-1]['PLUG_TYPE]']);
-                                    $( this ).dialog( "close" ); return false;
-                            }
-                            }]
-                        });
-                    }
-                });
+                                    plug_alert_change[plug]=true; 
+                                    $( this ).dialog( "close" ); 
+                                }
+                            }, {
+                                text: CANCEL_button,
+                                    click: function () {
+                                        $("#plug_type"+plug).val(plugs_infoJS[plug-1]['PLUG_TYPE]']);
+                                        $( this ).dialog( "close" ); return false;
+                                    }
+                                }]
+                            });
+                        }
+                    }); 
+                }
+                
             }
    });
 
