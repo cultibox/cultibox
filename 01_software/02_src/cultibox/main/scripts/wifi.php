@@ -40,6 +40,8 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+$sensor=logs\get_sensor_db_type();
+
 //Compute time loading for debug option
 $end_load = getmicrotime();
 
