@@ -242,8 +242,12 @@ $(document).ready(function(){
 
     // Check errors for the programs part:
     $("#apply").click(function(e) {
+            var checked=true;
+
             $("#error_same_start").css("display","none");
             $("#error_same_end").css("display","none");
+            $("#error_cyclic_same_start").css("display","none");
+            $("#error_cyclic_same_end").css("display","none");
             $("#error_start_time").css("display","none");
             $("#error_end_time").css("display","none");
             $("#error_minimal_cyclic").css("display","none");
@@ -257,15 +261,15 @@ $(document).ready(function(){
             $("#error_value_program").css("display","none");
 
             e.preventDefault();
-            var checked=true;
 
             if($('#cyclic').is(':checked')) {
                 $.ajax({
                     cache: false,
                     url: "main/modules/external/check_value.php",
+                    async: false,
                     data: {value:$("#cyclic_duration").val(),type:'time'}
                 }).done(function (data) {
-                    if(data!=1) {
+                    if($.trim(data)!=1) {
                         $("#error_cyclic_duration").show(700);
                         $('#cyclic_duration').val("02:00:00");
                         checked=false;
@@ -275,10 +279,11 @@ $(document).ready(function(){
                 $.ajax({
                     cache: false,
                     url: "main/modules/external/check_value.php",
+                    async: false,
                     data: {value:$("#repeat_time").val(),type:'cyclic_time'}
                 }).done(function (data) {
-                    if(data!=1) {
-                        if(data==2) {
+                    if($.trim(data)!=1) {
+                        if($.trim(data)==2) {
                             $("#error_minimal_cyclic").show(700);
                             $('#repeat_time').val("01:00:00");
                         } else {
@@ -289,12 +294,14 @@ $(document).ready(function(){
                     }
                 });
 
+
                 $.ajax({
                     cache: false,
                     url: "main/modules/external/check_value.php",
+                    async: false,
                     data: {value:$("#start_time_cyclic").val(),type:'time'}
                 }).done(function (data) {
-                    if(data!=1) {
+                    if($.trim(data)!=1) {
                         $("#error_start_time_cyclic").show(700);
                         $('#start_time_cyclic').val("00:00:00");
                         checked=false;
@@ -306,22 +313,40 @@ $(document).ready(function(){
                 $.ajax({
                     cache: false,
                     url: "main/modules/external/check_value.php",
+                    async: false,
                     data: {value:$("#end_time_cyclic").val(),type:'time'}
                 }).done(function (data) {
-                    if(data!=1) {
+                    if($.trim(data)!=1) {
                         //Affichage du massage d'erreur et remise à 0 du champ si le format n'est pas respecté:
                         $("#error_end_time_cyclic").show(700);
                         $('#end_time_cyclic').val("00:00:00");
                         checked=false;
                     }
                 });
+
+
+                  if(checked) {
+                    $.ajax({
+                        cache: false,
+                        url: "main/modules/external/check_value.php",
+                        async: false,
+                        data: {value:$("#start_time_cyclic").val()+"_"+$("#end_time_cyclic").val(),type:'same_time'}
+                    }).done(function (data) {
+                        if($.trim(data)!=1) {
+                            $("#error_cyclic_same_start").show(700);
+                            $("#error_cyclic_same_end").show(700);
+                            checked=false;
+                        }
+                    });
+                }
             } else {
                 $.ajax({
                     cache: false,
                     url: "main/modules/external/check_value.php",
-                    data: {value:$("#start_time").val(),type:'time'}
+                    data: {value:$("#start_time").val(),type:'time'},
+                    async: false
                 }).done(function (data) {
-                    if(data!=1) {
+                    if($.trim(data)!=1) {
                         $("#error_start_time").show(700);
                         $('#start_time').val("00:00:00");
                         checked=false;
@@ -331,9 +356,10 @@ $(document).ready(function(){
                 $.ajax({
                     cache: false,
                     url: "main/modules/external/check_value.php",
-                    data: {value:$("#end_time").val(),type:'time'}
+                    data: {value:$("#end_time").val(),type:'time'},
+                    async: false
                 }).done(function (data) {
-                    if(data!=1) {
+                    if($.trim(data)!=1) {
                         $("#error_end_time").show(700);
                         $('#end_time').val("00:00:00");
                         checked=false;
@@ -345,9 +371,10 @@ $(document).ready(function(){
                     $.ajax({
                         cache: false,
                         url: "main/modules/external/check_value.php",
+                        async: false,
                         data: {value:$("#start_time").val()+"_"+$("#end_time").val(),type:'same_time'}
                     }).done(function (data) {
-                        if(data!=1) {
+                        if($.trim(data)!=1) {
                             $("#error_same_start").show(700);
                             $("#error_same_end").show(700);
                             checked=false;
@@ -362,6 +389,7 @@ $(document).ready(function(){
                     $.ajax({
                         cache: false,
                         url: "main/modules/external/check_value.php",
+                        async: false,
                         data: {value:$("#value_program").val(),type:'value_program',plug_type:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TYPE'],plug_tolerance:plugs_infoJS[$('#selected_plug option:selected').val()-1]['PLUG_TOLERANCE']}
                     }).done(function (data) {
                         var return_array = JSON.parse(data);
@@ -381,9 +409,11 @@ $(document).ready(function(){
                      $("#error_value_program").show(700);
                      checked=false;
                 }
+                alert(checked);
             }
 
-             $.blockUI({
+            if(checked) {
+                  $.blockUI({
                 message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
                 centerY: 0,
                 css: {
@@ -398,7 +428,7 @@ $(document).ready(function(){
                 }
             });
 
-            if(checked) {
+
                 if((start==$('#start_time').val())&&(end==$('#end_time').val())&&(plug_selected==$('#selected_plug').val())&&($("input[id=ponctual]:checked").val()=="ponctuelle")) {
                     $("#same_dialog_program").dialog({
                         resizable: false,

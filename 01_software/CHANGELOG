@@ -3,6 +3,8 @@ Cultibox (2.0.07) precise; urgency=low
     + Modification du format du fichier pluga
     + Correction de la vérification de la configuration des puissances des prises
     + Correction de l'affichage des logs power lors des changements d'état
+    + Mise en forme de l'affichage des erreurs des programmes
+    + Correction de la détection des erreurs des programmes
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Wed Oct 15 11:01:14 CEST 2014
 

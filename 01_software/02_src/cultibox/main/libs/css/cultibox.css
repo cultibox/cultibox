@@ -343,6 +343,10 @@ td.program-field{
    width: 25%;
 }
 
+td.program-time-field{
+   width: 20%;
+}
+
 td.program-marge{
    width: 10%;
 }
