@@ -413,22 +413,6 @@ $(document).ready(function(){
             }
 
             if(checked) {
-                  $.blockUI({
-                message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
-                centerY: 0,
-                css: {
-                    top: '20%',
-                    border: 'none',
-                    padding: '5px',
-                    backgroundColor: 'grey',
-                    '-webkit-border-radius': '10px',
-                    '-moz-border-radius': '10px',
-                    opacity: .9,
-                    color: '#fffff'
-                }
-            });
-
-
                 if((start==$('#start_time').val())&&(end==$('#end_time').val())&&(plug_selected==$('#selected_plug').val())&&($("input[id=ponctual]:checked").val()=="ponctuelle")) {
                     $("#same_dialog_program").dialog({
                         resizable: false,
@@ -511,6 +495,20 @@ $(document).ready(function(){
                     //Customization of checkbox:
                     data_array['reset_old_program']=$("input[type='checkbox'][name='reset_old_program']:checked").val();
 
+                      $.blockUI({
+                             message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                             centerY: 0,
+                             css: {
+                                top: '20%',
+                                border: 'none',
+                                padding: '5px',
+                                backgroundColor: 'grey',
+                                '-webkit-border-radius': '10px',
+                                '-moz-border-radius': '10px',
+                                opacity: .9,
+                                color: '#fffff'
+                            },
+                            onBlock: function() {
                     $.ajax({
                         cache: false,
                         async: false,
@@ -535,6 +533,8 @@ $(document).ready(function(){
                             }
                             get_content("programs",getFormInputs('actionprog'));        
                             scrolltodiv("scrollto");
+                    });
+                    }
                     });
                 } 
             }
@@ -849,6 +849,20 @@ var enabled = false;
 var showzoomX=false;
 var chart;
 $(document).ready(function() {
+  $.blockUI({
+   message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+   centerY: 0,
+   css: {
+      top: '20%',
+      border: 'none',
+      padding: '5px',
+      backgroundColor: 'grey',
+      '-webkit-border-radius': '10px',
+      '-moz-border-radius': '10px',
+      opacity: .9,
+      color: '#fffff'
+   },
+   onBlock: function() {
    chart = new Highcharts.Chart({
       chart: {
          backgroundColor: '#F7F7F9',
@@ -1068,6 +1082,9 @@ $(document).ready(function() {
     } ?>
 ] 
    });
+   }
+    });
+    $.unblockUI();
 
     $('#selected_plug').change(function() {
         $("#error_value_program").css("display","none");
