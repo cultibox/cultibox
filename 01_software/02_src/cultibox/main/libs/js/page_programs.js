@@ -285,10 +285,10 @@ $(document).ready(function(){
                     if($.trim(data)!=1) {
                         if($.trim(data)==2) {
                             $("#error_minimal_cyclic").show(700);
-                            $('#repeat_time').val("01:00:00");
+                            $('#repeat_time').val("03:00:00");
                         } else {
                             $("#error_cyclic_time").show(700);
-                            $('#repeat_time').val("01:00:00");
+                            $('#repeat_time').val("03:00:00");
                         }
                         checked=false;
                     }
@@ -319,7 +319,7 @@ $(document).ready(function(){
                     if($.trim(data)!=1) {
                         //Affichage du massage d'erreur et remise à 0 du champ si le format n'est pas respecté:
                         $("#error_end_time_cyclic").show(700);
-                        $('#end_time_cyclic').val("00:00:00");
+                        $('#end_time_cyclic').val("23:59:59");
                         checked=false;
                     }
                 });
@@ -580,7 +580,7 @@ $(document).ready(function(){
                 click: function () {
                     $( this ).dialog( "close" ); 
                     if(reload_page) {   
-                         get_content("programs");
+                         get_content("programs",getUrlVars("selected_plug="+$('#selected_plug option:selected').val()+"&program_index_id="+$("#select_program_index_conf option:selected").val()));
                     } else {
                         //Reset import file:
                         $('#import_name_file').text("");
@@ -1343,6 +1343,7 @@ $(document).ready(function() {
     $("#remove_1000_change_limit , #remove_5_minute_limit").each(function() {
 
         $(this).on('change', function() {
+            if($(this).attr('id')=="remove_1000_change_limit") reload_page=true;
 
             newValue    = $( this ).find(":selected").val();
             varToUpdate = $( this ).attr('name');
