@@ -162,9 +162,12 @@ switch($type) {
     case 'password_none':
         break;
     case 'password_wpa':
-        if((strlen($value)>=8)&&(strlen($value)<=63)) {
-            if(!ctype_alnum($value)) {
-                echo "error";
+        if((strlen("$value")>=8)&&(strlen("$value")<=63)) {
+            for($i=0;$i<strlen($value);$i++) {
+                if((ord($value[$i])<32)||(ord($value[$i])>126)) {
+                    echo "error";
+                    break;
+                }
             }
         } else {
             echo "error";
@@ -172,8 +175,10 @@ switch($type) {
         break;
     case 'password_wep':
         if((strlen($value)==5)||(strlen($value)==13)||(strlen($value)==29)) {
-            if(!ctype_digit($value)) { 
+            for($i=0;$i<strlen($value);$i++) {
+                if((ord($value[$i])<32)||(ord($value[$i])>126)) {
                 echo "error";
+                break;
             }
         } else {
             echo "error";
