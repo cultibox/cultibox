@@ -310,11 +310,8 @@
                 <td></td>
                 <td><?php echo __('CONFIGURE_WIFI_PASSWORD'); ?>:</td>
                 <td>
-                    <input  type="text" size="15" 
+                    <input  type="password" size="15" 
                             name="wifi_password" id="wifi_password" value="" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?> />
-                    <input  type="text" size="15" 
-                            name="current_wifi_password" id="current_wifi_password" 
-                            value="<?php echo $wifi_password; ?>" style="display:none" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?> />
                 </td>
                 <td><img src='/cultibox/main/libs/img/eye.png' alt='' title="<?php echo __('SHOW_CURRENT_PWD'); ?>" id="eyes"></td>
                 <td>
@@ -328,7 +325,7 @@
                 <td></td>
                 <td><?php echo __('CONFIGURE_WIFI_PASSWORD_CONFIRM'); ?>:</td>
                 <td>
-                    <input type="text" size="15" 
+                    <input type="password" size="15" 
                            name="wifi_password_confirm" id="wifi_password_confirm" value="" <?php if(strcmp("$wifi_key_type","NONE")==0) { echo 'disabled'; } ?>/>
                 </td>
                 <td></td>

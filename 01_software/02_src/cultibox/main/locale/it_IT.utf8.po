@@ -236,7 +236,7 @@ msgid "WIFI_IP_MANUAL"
 msgstr "Configurare manualmente l'indirizzo IP"
 
 msgid "SHOW_CURRENT_PWD"
-msgstr "Lasciare l'immagine del mouse clickée per visualizzare la password attualmente configurato"
+msgstr "Lasciare il mouse cliccato sull'immagine per visualizzare la password"
 
 msgid "CONFIGURE_RTC_OFFSET"
 msgstr "Spostamento del clock interno"

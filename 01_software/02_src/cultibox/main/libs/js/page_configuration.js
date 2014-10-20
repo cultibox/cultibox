@@ -75,18 +75,16 @@ $(document).ready(function(){
 
 
     $("#eyes").mousedown(function() {
-        $("#current_wifi_password").show();
-        $("#wifi_password").css("display","none");
+        $('#wifi_password').replaceWith('<input id="wifi_password" name="wifi_password" type="text" size="15" value="' + $('#wifi_password').attr('value') + '" />');
     });
+    
 
     $("#eyes").mouseup(function(){
-            $("#wifi_password").show();
-            $("#current_wifi_password").css("display","none");
+        $('#wifi_password').replaceWith('<input id="wifi_password" name="wifi_password" type="password" size="15" value="' + $('#wifi_password').attr('value') + '" />');
     });
 
     $("#eyes").mouseleave(function(){
-            $("#wifi_password").show();
-            $("#current_wifi_password").css("display","none");
+        $('#wifi_password').replaceWith('<input id="wifi_password" name="wifi_password" type="password" size="15" value="' + $('#wifi_password').attr('value') + '" />');
     });
     
     
@@ -635,7 +633,6 @@ $(document).ready(function(){
                         });
                     }
 
-                    $("#current_wifi_password").val($("#wifi_password").val());
                     $("#wifi_password").val("");
                     $("#wifi_password_confirm").val("");
             } else {
@@ -932,11 +929,9 @@ $(document).ready(function(){
         if($('#wifi_key_type').val()=="NONE") {
              $("#wifi_password").attr("disabled", "disabled");
              $("#wifi_password_confirm").attr("disabled", "disabled");
-             $("#current_wifi_password").attr("disabled", "disabled");
         } else {
              $("#wifi_password").removeAttr("disabled");
              $("#wifi_password_confirm").removeAttr("disabled");
-             $("#current_wifi_password").removeAttr("disabled");
         }
     });
 });
