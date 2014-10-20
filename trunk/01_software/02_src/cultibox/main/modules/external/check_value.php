@@ -177,8 +177,9 @@ switch($type) {
         if((strlen($value)==5)||(strlen($value)==13)||(strlen($value)==29)) {
             for($i=0;$i<strlen($value);$i++) {
                 if((ord($value[$i])<32)||(ord($value[$i])>126)) {
-                echo "error";
-                break;
+                    echo "error";
+                    break;
+                }
             }
         } else {
             echo "error";
