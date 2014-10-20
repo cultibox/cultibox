@@ -125,6 +125,10 @@ td.conf-marge {
    width: 5%;
 }
 
+td.conf-marge-wifi {
+   width: 15%;
+}
+
 td.conf-menu-marge {
     width: 5%;
 }
@@ -628,6 +632,14 @@ a.logo img{
 
 td.conf-marge-td {
   width:52%;
+}
+
+td.conf-marge-td-alarm {
+  width: 40%;
+}
+
+td.conf-marge-td-wifi {
+  width: 30%;
 }
 
 
