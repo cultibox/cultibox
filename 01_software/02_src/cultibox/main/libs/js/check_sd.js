@@ -10,7 +10,15 @@ $.ajax({
         sd_card:"<?php echo $sd_card ;?>"
     },
     async: true,
-    context: document.body,
+    beforeSend: function(jqXHR) {
+                $.xhrPool.push(jqXHR);
+        },
+        complete: function(jqXHR) {
+            var index = $.xhrPool.indexOf(jqXHR);
+            if (index > -1) {
+                $.xhrPool.splice(index, 1);
+            }
+    },
     success: function(data, textStatus, jqXHR) {
         // Check response from server
 
