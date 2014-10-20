@@ -1824,6 +1824,12 @@ msgstr "Cette fonctionnalité permet d'exporter un jeu de programme et les progr
 msgid "TOOLTIP_IMPORT_SET_PROGRAM"
 msgstr "Cette fonctionnalité permet d'importer un jeu de programme depuis un fichier. Le fichier à importer peut être créé par la fonction d'exportation par un autre utilisateur Cultibox pour échanger des programmes."
 
+msgid "TOOLTIP_5MN_LIMIT"
+msgstr "Par défaut, le temps minimum de répétition d'une action cyclique pour un programme est de 5mn. Vous pouvez désactiver cette limite grâce à cette option."
+
+msgid "TOOLTIP_1000_CHANGE_LIMIT"
+msgstr "Une limite de 1000 changements pour toutes les prises confondues est fixée initialement. Vous pouvez désactiver cette limite grâce à cette option."
+
 
 #For the debug part:
 msgid "GENERATE_TIME"

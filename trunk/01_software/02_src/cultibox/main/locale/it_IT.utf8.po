@@ -1812,6 +1812,12 @@ msgstr "Turni giornalieri alle 2 del mattino l'orologio Cultibox. Se si immetton
 msgid "TOOLTIP_NO_SENSOR_DEFINED"
 msgstr "Encoder non è ancora definita: quando i primi registri di carico dalla scheda SD, i sensori verranno configurati automaticamente"
 
+msgid "TOOLTIP_5MN_LIMIT"
+msgstr "Per impostazione predefinita, il tempo minimo di ripetizione di una azione ciclica di un programma è di 5 minuti. È possibile disattivare questo limite con questa opzione. "
+
+msgid "TOOLTIP_1000_CHANGE_LIMIT"
+msgstr "Un limite di 1000 cambiamenti per tutto il pescato combinato è inizialmente impostato. È possibile disattivare questo limite con questa opzione."
+
 
 #For the debug part:
 msgid "GENERATE_TIME"
