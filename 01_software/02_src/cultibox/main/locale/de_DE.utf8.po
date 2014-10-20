@@ -1811,6 +1811,12 @@ msgstr "Verschiebt täglich um 02.00 Uhr die Cultibox. Wenn Sie 5 Sekunden 2 Stu
 msgid "TOOLTIP_NO_SENSOR_DEFINED"
 msgstr "Encoder ist noch nicht definiert: Wenn erste Belastungsprotokolle von der SD-Karte, wird Ihre Sensoren automatisch konfiguriert werden"
 
+msgid "TOOLTIP_5MN_LIMIT"
+msgstr "Standardmäßig ist die Mindestwiederholungszeit von einer zyklischen Aktion für ein Programm ist 5 Minuten. Sie können diese Grenze mit dieser Option zu deaktivieren. "
+
+msgid "TOOLTIP_1000_CHANGE_LIMIT"
+msgstr "Eine Grenze von 1000 Änderungen für alle kombinierten Fang zunächst festlegen. Sie können diese Grenze mit dieser Option zu deaktivieren."
+
 
 #For the debug part:
 msgid "GENERATE_TIME"

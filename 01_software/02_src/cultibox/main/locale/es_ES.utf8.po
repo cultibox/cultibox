@@ -1811,6 +1811,12 @@ msgstr "Cambia todos los días a las 2 am el reloj Cultibox. Si introduce 5 segu
 msgid "TOOLTIP_NO_SENSOR_DEFINED"
 msgstr "Encoder aún no está definida: cuando primero los registros de carga de la tarjeta SD, los sensores se configuran automáticamente"
 
+msgid "TOOLTIP_5MN_LIMIT"
+msgstr "Por defecto, el tiempo de repetición mínimo de una acción cíclica de un programa es de 5 minutos. Puede desactivar este límite con esta opción. "
+
+msgid "TOOLTIP_1000_CHANGE_LIMIT"
+msgstr "Un límite de 1000 cambios para toda la captura combinada se establece inicialmente. Puede desactivar este límite con esta opción."
+
 
 #For the debug part:
 msgid "GENERATE_TIME"

@@ -1814,6 +1814,12 @@ msgstr "Shifts daily at 2am the clock Cultibox. If you enter 5 seconds, 2 hours,
 msgid "TOOLTIP_NO_SENSOR_DEFINED"
 msgstr "Sensor is not yet defined: when first loading logs from your SD card, your sensors will be configured automatically"
 
+msgid "TOOLTIP_5MN_LIMIT"
+msgstr "By default, the minimum repetition time of a cyclic action for a program is 5 minutes. You can disable this limit with this option. "
+
+msgid "TOOLTIP_1000_CHANGE_LIMIT"
+msgstr "A limit of 1000 changes for all the combined catch is initially set. You can disable this limit with this option."
+
 
 #For the debug part:
 msgid "GENERATE_TIME"
