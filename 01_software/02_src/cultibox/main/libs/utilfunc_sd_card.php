@@ -1230,8 +1230,6 @@ function write_calendar($sd_card,$data,&$out,$start="",$end="") {
 
     // If there are some events
     if(count($data)>0) {
-        print_r($data);
-    
         // If not defined Use today
         if ($start == "")
             $date =  strtotime(date("Y-m-d"));
