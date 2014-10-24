@@ -224,7 +224,7 @@ if(    !empty($program_substrat)
             foreach (calendar\get_external_calendar_file() as $fileArray)
             {
                 if ($fileArray['activ'] == 1)
-                    calendar\read_event_from_XML($fileArray['filename'],$calendar,strtotime($calendar_start),strtotime($calendar_end));
+                    calendar\read_event_from_XML($fileArray['filename'],$calendar,strtotime($calendar_start)-7200,strtotime($calendar_end));
             }
             
             // Write calendar on SD card

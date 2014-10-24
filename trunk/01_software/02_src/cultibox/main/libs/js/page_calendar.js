@@ -164,15 +164,35 @@ $(document).ready(function() {
                     text: OK_button,
                     click: function () {
                         $( this ).dialog("close"); 
+                         $.blockUI({
+                            message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                            centerY: 0,
+                            css: {
+                                top: '20%',
+                                border: 'none',
+                                padding: '5px',
+                                backgroundColor: 'grey',
+                                '-webkit-border-radius': '10px',
+                                '-moz-border-radius': '10px',
+                                opacity: .9,
+                                color: '#fffff'
+                            }
+                        });
                         $.ajax({
                             cache: false,
                             url: "main/modules/external/delete_logs.php",
+                            async: false,
                             data: {type:"calendar",type_reset:"all"}
                         }).done(function (data) {
-                            if(data==1) {
+                            $.ajax({
+                                cache: false,
+                                url: "main/modules/external/calendar_write_sd_events.php",
+                                data: {sd_card:sd_card}
+                            }).done(function (data) {
+                                $.unblockUI();
                                 $('#calendar').fullCalendar( 'refetchEvents' );
                                 display_modal_ui("#valid_reset_calendar" , "popup_message");
-                            } 
+                            });
                         });
                     }
                 }, {

@@ -59,6 +59,7 @@ EOF;
 
 
         if ((strcmp("$start",$res[0]['StartTime'])==0)&&(strcmp("$end",$res[0]['EndTime'])==0)) {
+            echo "$start - $end";
             if ((isset($sd_card))&&(!empty($sd_card))) {
                 $calendar = array();
                 calendar\read_event_from_db($calendar,strtotime($start), strtotime($end));
@@ -67,7 +68,7 @@ EOF;
                 foreach (calendar\get_external_calendar_file() as $fileArray)
                 {
                     if ($fileArray['activ'] == 1)
-                        calendar\read_event_from_XML($fileArray['filename'],$calendar,0,strtotime($start),strtotime($end));
+                        calendar\read_event_from_XML($fileArray['filename'],$calendar,0,strtotime($start)-7200,strtotime($end));
                 }
             
                 write_calendar($sd_card,$calendar,$main_error,strtotime($start),strtotime($end));
@@ -97,7 +98,7 @@ EOF;
             {
                 if ($fileArray['activ'] == 1)
                 {
-                    calendar\read_event_from_XML($fileArray['filename'],$calendar,0,strtotime($start),strtotime($end));
+                    calendar\read_event_from_XML($fileArray['filename'],$calendar,0,strtotime($start)-7200,strtotime($end));
                 }
             }
 
