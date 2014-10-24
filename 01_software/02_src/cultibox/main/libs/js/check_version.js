@@ -4,7 +4,15 @@ $.ajax({
     type: "GET",
     url: "main/modules/external/check_update.php",
     async: true,
-    context: document.body,
+    beforeSend: function(jqXHR) {
+        $.xhrPool.push(jqXHR);
+    },
+    complete: function(jqXHR) {
+        var index = $.xhrPool.indexOf(jqXHR);
+        if (index > -1) {
+            $.xhrPool.splice(index, 1);
+        }
+    },
     success: function(data, textStatus, jqXHR) {
         // Check response from server
         
