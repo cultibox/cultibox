@@ -1837,7 +1837,7 @@ function create_wificonf_from_database(&$out) {
 
     $data=array();
 
-    $sql = "SELECT WIFI_SSID, WIFI_KEY_TYPE, WIFI_PASSWORD, WIFI_IP, WIFI_IP_MANUAL FROM configuration WHERE id = 1;";
+    $sql = "SELECT WIFI_SSID, WIFI_KEY_TYPE, WIFI_PASSWORD, WIFI_IP, WIFI_IP_MANUAL, WIFI_IP_REAL FROM configuration WHERE id = 1;";
 
     $db=db_priv_pdo_start();
     try {
@@ -1871,12 +1871,26 @@ function create_wificonf_from_database(&$out) {
         }
     }
 
+    $rip="";
+    if(strcmp($res['WIFI_IP_REAL'],"")!=0) {
+        $wifip=explode(".",$res['WIFI_IP_REAL']);
+
+        foreach($wifip as $subip) {
+            if (strcmp($rip,"")!=0) $rip .= ".";
+
+            while(strlen($subip)<3) $subip = "0".$subip;
+
+            $rip.=$subip;
+        }
+    }
+
     // Create return array with WIFI informations
     $data[]="SSID:" . $res['WIFI_SSID'];
     $data[]="CLE:"  . $res['WIFI_KEY_TYPE'];
     $data[]="PWD:"  . $res['WIFI_PASSWORD'];
     $data[]="IPC:"  . $ip;
     $data[]="IPS:"  . $retIP;
+    $data[]="IPR:"  . $rip;
 
     return $data;
 }
