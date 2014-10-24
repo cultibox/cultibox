@@ -41,6 +41,7 @@ function check_db() {
     $conf_index_col["WIFI_KEY_TYPE"]        = array ( 'Field' => "WIFI_KEY_TYPE", 'Type' => "varchar(10)", 'default_value' => "NONE");
     $conf_index_col["WIFI_PASSWORD"]        = array ( 'Field' => "WIFI_PASSWORD", 'Type' => "varchar(63)");
     $conf_index_col["WIFI_IP"]              = array ( 'Field' => "WIFI_IP", 'Type' => "varchar(15)", 'default_value' => "000.000.000.000");
+    $conf_index_col["WIFI_IP_REAL"]              = array ( 'Field' => "WIFI_IP_REAL", 'Type' => "varchar(15)", 'default_value' => "000.000.000.000");
     $conf_index_col["WIFI_IP_MANUAL"]       = array ( 'Field' => "WIFI_IP_MANUAL", 'Type' => "tinyint(1)", 'default_value' => false);
     $conf_index_col["RTC_OFFSET"]           = array ( 'Field' => "RTC_OFFSET", 'Type' => "int(11)", 'default_value' => 0);
     $conf_index_col["REMOVE_1000_CHANGE_LIMIT"] = array ( 'Field' => "REMOVE_1000_CHANGE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False");

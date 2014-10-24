@@ -8,6 +8,7 @@ Cultibox (2.0.07) precise; urgency=low
     + L'onglet wifi n'affiche que les prises configurées dans le logiciel
     + Ajout de messages lors du traitement des informations du calendrier
     + Correction de l'écriture du calendrier lors de la modification d'évènements
+    + Ajout du champ IPR pour la configuration wifi
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Wed Oct 15 11:01:14 CEST 2014
 
