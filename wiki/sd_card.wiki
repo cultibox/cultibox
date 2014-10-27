@@ -61,25 +61,9 @@ La valeur 0 correspond à tout le temps.
 
 === RTC_OFFSET ===
 
-La section RTC_OFFSET permet d'accélérer ou de ralentir la vitesse de l'horloge interne. La valeur doit être entre 0 et 255. Le premier bit indique si la valeur doit être ajoutée (0) ou soustraite.
-L'horloge soustrait/additionne chaque minute 2 x la valeur indiquée au 32768 du quartz.
-Formule du décalage en seconde par jour : 2 x RTC_OFFSET x 60 x 24 / 32768
+La section RTC_OFFSET permet d'accélérer ou de ralentir la vitesse de l'horloge interne. La valeur doit être entre -999 et 999. 
 
-Quelques exemples :
-
-|| Valeur de RTC_OFFSET || Décalage (seconde par jour) ||
-|| 0 || Aucun (+0) ||
-|| 1 || 0,09 ||
-|| 10 || 0,88 ||
-|| 20 || 1,76 ||
-|| 100 || 8,79 ||
-|| 127 || 11,16 ||
-|| 128 || Aucun (-0) ||
-|| 129 || -0,09 ||
-|| 138 || -0,88 ||
-|| 148 || -1,76 ||
-|| 228 || -8,79 ||
-|| 255 || -11,16 ||
+La Cultibox se décale une fois par jour de ce nombre de seconde à 2h00.
 
 == Fichier wifi == 
 
