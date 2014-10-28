@@ -853,46 +853,30 @@ function get_rtc_offset($rtc = 0) {
 
     // If RTC is not defined, return default value 0000
     if($rtc == 0) { return "0000"; }
-    
-    // Compute RTC value
-    // Formula : offset_sec_per_day = 2 x RTC_OFFSET x 60 x 24 / 32768 
-    // So : RTC_OFFSET = 32768 x offset_sec_per_day / ( 2 x 60 x 24 )
-    $offset = round((32768 * abs($rtc))/(2 * 60 * 24)); //Voir la documentation sur le RTC_OFFSET
-    
-    // If value is under 0, add 128
-    if($rtc < 0) { 
-        $offset = $offset + 128;
+
+    while(strlen("$rtc")<4) {
+            $rtc="0$rtc";
     }
     
-    // String need to have 4 digits large
-    while(strlen($offset) < 4) $offset = "0$offset";
-
-    // Return computed value
-    return $offset;
+    return "$rtc";
 }
 //}}}
+
 
 //{{{ get_decode_rtc_offset()
-// ROLE Decode rtc offset as write in conf file
-// RET rtc offset value to be recorded 
-function get_decode_rtc_offset($rtc = 0) {
+// ROLE get rtc offset value recorded in the configuration file
+// RET rtc offset decoded
+function get_decode_rtc_offset($offset=0) {
+    $temp = explode("-", $offset);
 
-    // If RTC is not defined, return default value 0000
-    if($rtc == 0) 
-        return 0;
-    
-    if($rtc > 128) { 
-        $rtc = -1 * ($rtc - 128);
+    if(count($temp)==1) {
+        return $offset;
+    } else {
+        return "-".$temp[1];
     }
-    
-    // Compute RTC value
-    // Formula : offset_sec_per_day = 2 x RTC_OFFSET x 60 x 24 / 32768 
-    $offset = 2 * $rtc * 60 * 24 / 32768 ;
-    
-    // Return computed value
-    return $offset;
 }
-//}}}
+
+
 
 //{{{ translate_PlugType()
 // ROLE Translate plug type
