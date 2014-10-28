@@ -454,7 +454,7 @@ $(document).ready(function(){
             if($("#alarm_activ option:selected").val()=="0001") {
                 newValue    = $("#alarm_value").val();
             } else {
-                newValue    = 15;
+                newValue    = 60;
             }
 
             varToUpdate = $("#alarm_value").attr('name');
