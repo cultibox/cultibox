@@ -9,6 +9,7 @@ Cultibox (2.0.07) precise; urgency=low
     + Ajout de messages lors du traitement des informations du calendrier
     + Correction de l'écriture du calendrier lors de la modification d'évènements
     + Ajout du champ IPR pour la configuration wifi
+    + Valeur par défaut de l'alarme de 60°
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Wed Oct 15 11:01:14 CEST 2014
 
