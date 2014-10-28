@@ -671,7 +671,7 @@ msgstr "Ein Ensemble Déja Programm Definit gießen cette Preis. Changer le peut
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
-msgstr "Programm :"
+msgstr "Spielprogramm : "
 
 msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
 msgstr " Einnahme : "
