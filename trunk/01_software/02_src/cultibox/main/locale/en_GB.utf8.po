@@ -671,7 +671,7 @@ msgstr "A Programme semble vu pour cette prize définie. Changer le peut type of
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
-msgstr "Program :"
+msgstr "Daily program : "
 
 msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
 msgstr " Plug : "

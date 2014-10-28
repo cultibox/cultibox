@@ -671,7 +671,7 @@ msgstr "Un programma définie Deja tarlo versare il premio cette. Tipo di Change
 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
-msgstr "Programma :"
+msgstr "Programma di gioco : "
 
 msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
 msgstr " Presa : "
