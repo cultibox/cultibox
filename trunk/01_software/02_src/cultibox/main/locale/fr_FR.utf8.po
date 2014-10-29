@@ -561,6 +561,15 @@ msgstr "Aucun capteur définie"
 msgid "PREPARING_EXPORT"
 msgstr "Fichier en cours de préparation..."
 
+msgid "EXPORT_ALL_LOGS"
+msgstr "Exporter tous les logs existant"
+
+msgid "EXPORT_SPECIFIC_LOGS"
+msgstr "Exporter les logs d'une période précise"
+
+msgid "EXPORT_LOGS_FROM"
+msgstr "Exporter les logs du (AAAA-MM-JJ)"
+
 
 # For the plugs part:
 msgid "PLUG"

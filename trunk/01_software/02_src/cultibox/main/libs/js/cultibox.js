@@ -5,6 +5,7 @@ var DELETE_button="";
 var REDUCE_button="";
 var EXTEND_button="";
 var HIDE_button="";
+var EXPORT_button="";
 
 var lang="";
 var reduced="";
@@ -38,6 +39,7 @@ if(lang=="it_IT") {
     REDUCE_button="Abbassare";
     EXTEND_button="Ingrandisci";
     HIDE_button="Nascondere";
+    EXPORT_button="Esportazione";
 } else if(lang=="de_DE") {
     OK_button="Weiter";
     CANCEL_button="Stornieren";
@@ -47,6 +49,7 @@ if(lang=="it_IT") {
     REDUCE_button="Senken";
     EXTEND_button="Vergrößern";
     HIDE_button="Verbergen";
+    EXPORT_button="Export";
 } else if(lang=="en_GB") {
     OK_button="OK";
     CANCEL_button="Cancel";
@@ -56,6 +59,7 @@ if(lang=="it_IT") {
     REDUCE_button="Shorten";
     EXTEND_button="Enlarge";
     HIDE_button="Hide";
+    EXPORT_button="Export";
 } else if(lang=="es_ES") {
     OK_button="Continuar";
     CANCEL_button="Cancelar";
@@ -65,8 +69,7 @@ if(lang=="it_IT") {
     REDUCE_button="Bajar";
     EXTEND_button="Agrandar";
     HIDE_button="Ocultar";
-    APPLY_CHANGE="";
-    DISCARD_CHANGE="";
+    EXPORT_button="Exportación";
 } else {
     OK_button="Continuer";
     CANCEL_button="Annuler";
@@ -76,6 +79,7 @@ if(lang=="it_IT") {
     REDUCE_button="Réduire";
     EXTEND_button="Agrandir";
     HIDE_button="Cacher";
+    EXPORT_button="Exporter";
 }
 
 

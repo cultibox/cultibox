@@ -561,6 +561,15 @@ msgstr "Nessun set sensori"
 msgid "PREPARING_EXPORT"
 msgstr "File in preparazione..."
 
+msgid "EXPORT_ALL_LOGS"
+msgstr "Esporta tutti i registri esistenti"
+
+msgid "EXPORT_SPECIFIC_LOGS"
+msgstr "Esportare i registri per un determinato periodo"
+
+msgid "EXPORT_LOGS_FROM"
+msgstr "I registri di esportazione (AAAA-MM-DD)"
+
 
 # For the plugs part:
 msgid "PLUG"
