@@ -5,9 +5,11 @@ namespace logs {
 // {{{ export_table_csv()
 // ROLE export a program into a text file
 // IN $name       name of the table to be exported
+//    $datefrom   start date to export logs
+//    $dateto     end date to export logs
 //    $out         error or warning message
 // RET none
-function export_table_csv($name="",&$out) {
+function export_table_csv($name="",$datefrom="",$dateto="",&$out) {
     if($name == "")
         return 0;
 
@@ -17,17 +19,23 @@ function export_table_csv($name="",&$out) {
         unlink($file);
     }
 
+
+    $where="";
+    if((strcmp("$datefrom","")!=0)&&(strcmp("$dateto","")!=0)) {
+        $where='WHERE date_catch BETWEEN "'.$datefrom.'" AND "'.$dateto.'"';
+    }
+
     $os=php_uname('s');
     switch($os) {
         case 'Linux':
-            exec("../../../../../bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
+            exec("../../../../../bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}` ${where}' > $file");
             break;
         case 'Mac':
         case 'Darwin':
-            exec("../../../../../bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}`' > $file");
+            exec("../../../../../bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}` ${where}' > $file");
             break;
         case 'Windows NT':
-            exec("..\..\..\..\..\mysql\bin\mysql.exe --defaults-extra-file=\"C:\cultibox\\xampp\mysql\bin\my-extra.cnf\" -B -h 127.0.0.1 --port=3891 cultibox -e \"SELECT * FROM `${name}`\" > $file");
+            exec("..\..\..\..\..\mysql\bin\mysql.exe --defaults-extra-file=\"C:\cultibox\\xampp\mysql\bin\my-extra.cnf\" -B -h 127.0.0.1 --port=3891 cultibox -e \"SELECT * FROM `${name}` ${where}\" > $file");
             break;
     }
 }

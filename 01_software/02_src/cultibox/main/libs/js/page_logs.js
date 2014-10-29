@@ -14,6 +14,7 @@ var finished=0;
 var dialog1=false;
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
+var start_day = <?php echo json_encode($startday); ?>;
 
 // {{{ getType()
 // IN  input value: display the type of log: 0 for daily logs, 1 for monthly
@@ -161,7 +162,7 @@ loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
 // Define datepicker
 $(function() {
 
-    $("#datepicker, #datepicker_from, #datepicker_to, #datepicker_from_power, #datepicker_to_power").datepicker({ 
+    $("#datepicker, #datepicker_from, #datepicker_to, #datepicker_from_power, #datepicker_to_power, #datepicker_export_from, #datepicker_export_to, #datepicker_export_power_to, #datepicker_export_power_from").datepicker({ 
         dateFormat: "yy-mm-dd",
         showButtonPanel: true,
         showOn: "both",
@@ -859,33 +860,102 @@ $(document).ready(function() {
 $(document).ready(function() {
     $("#export_log_power").click(function(e) {
         e.preventDefault();
-        $("#preparing-file-modal").dialog({ modal: true, resizable: false });
+        $("#export_log_power_div").dialog({
+            resizable: false,
+            width: 750,
+            modal: true,
+            closeOnEscape: false,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CLOSE_button,
+                click: function () {
+                    $("#error_format_date_logs_power_export").css("display","none");
+                    $("input:radio[id=check_export_all_power]").attr('checked', 'checked');
+                    $("#div_export_specific_power").css("display","none");
+                    $("#datepicker_export_power_to").val(start_day);
+                    $("#datepicker_export_power_from").val(start_day);
+                    $( this ).dialog("close");
+                    return false;
+                }}, {
+                text: EXPORT_button,
+                click: function () {
+                    $("#error_format_date_logs_power_export").css("display","none");
+                    if(((checkFormatDate($("#datepicker_export_power_from").val()))&&(checkFormatDate($("#datepicker_export_power_to").val()))&&(compareDate($("#datepicker_export_power_from").val(),$("#datepicker_export_power_to").val())))||($("input:radio[name=check_type_export_power]:checked").val()=="all")) {
+                        $("#preparing-file-modal").dialog({ modal: true, resizable: false });
 
-        $.ajax({
-            cache: false,
-            url: "main/modules/external/export_logs.php",
-            data: {type:"power"}
-        }).done(function(data) {
-           $("#preparing-file-modal").dialog('close');
-           if(jQuery.parseJSON(data)!="0") {
-                 $.fileDownload('tmp/export/'+jQuery.parseJSON(data));
-            }
+                        var date_to="";
+                        var date_from="";
+                        if($("input:radio[name=check_type_export_power]:checked").val()!="all") {
+                            date_to=$("#datepicker_export_power_to").val();
+                            date_from=$("#datepicker_export_power_from").val();
+                        }
+
+                         $.ajax({
+                            cache: false,
+                            url: "main/modules/external/export_logs.php",
+                            data: {type:"logs",date_to:date_to,date_from:date_from}
+                        }).done(function(data) {
+                            $("#preparing-file-modal").dialog('close');
+                            if(jQuery.parseJSON(data)!="0") {
+                                $.fileDownload('tmp/export/'+jQuery.parseJSON(data));
+                            }
+                        });
+                    } else {
+                        $("#error_format_date_logs_power_export").css("display","");
+                    }
+                }
+            }]
         });
-    });
+     });
+
 
      $("#export_log").click(function(e) {
         e.preventDefault();
-        $("#preparing-file-modal").dialog({ modal: true, resizable: false });
+        $("#export_log_div").dialog({
+            resizable: false,
+            width: 750,
+            modal: true,
+            closeOnEscape: false,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CLOSE_button,
+                click: function () {
+                    $("#error_format_date_logs_export").css("display","none");
+                    $("input:radio[id=check_export_all_logs]").attr('checked', 'checked');
+                    $("#div_export_specific").css("display","none");
+                    $("#datepicker_export_to").val(start_day);
+                    $("#datepicker_export_from").val(start_day);
+                    $( this ).dialog("close");
+                    return false;
+                }}, {
+                text: EXPORT_button,
+                click: function () {
+                    $("#error_format_date_logs_export").css("display","none");
+                    if(((checkFormatDate($("#datepicker_export_from").val()))&&(checkFormatDate($("#datepicker_export_to").val()))&&(compareDate($("#datepicker_export_from").val(),$("#datepicker_export_to").val())))||($("input:radio[name=check_type_export_logs]:checked").val()=="all")) {
+                        $("#preparing-file-modal").dialog({ modal: true, resizable: false });
+                
+                        var date_to="";
+                        var date_from="";
+                        if($("input:radio[name=check_type_export_logs]:checked").val()!="all") {
+                            date_to=$("#datepicker_export_to").val();
+                            date_from=$("#datepicker_export_from").val();
+                        }
 
-        $.ajax({
-            cache: false,
-            url: "main/modules/external/export_logs.php",
-            data: {type:"logs"}
-        }).done(function(data) {
-           $("#preparing-file-modal").dialog('close');
-           if(jQuery.parseJSON(data)!="0") {
-                $.fileDownload('tmp/export/'+jQuery.parseJSON(data));
-            }
+                         $.ajax({
+                            cache: false,
+                            url: "main/modules/external/export_logs.php",
+                            data: {type:"logs",date_to:date_to,date_from:date_from}
+                        }).done(function(data) {
+                            $("#preparing-file-modal").dialog('close');
+                            if(jQuery.parseJSON(data)!="0") {
+                                $.fileDownload('tmp/export/'+jQuery.parseJSON(data));
+                            }
+                        });
+                    } else {
+                        $("#error_format_date_logs_export").css("display","");
+                    }
+                }
+            }]
         });
     });
 });
@@ -1277,6 +1347,25 @@ $(document).ready(function() {
             $("#div_delete_specific_power").css("display","");
         }
     });
+
+    
+    $("input:radio[name=check_type_export_logs]").click(function() {
+        if($(this).val()=="all") {
+            $("#div_export_specific").css("display","none");
+        } else {
+            $("#div_export_specific").css("display","");
+        }
+    });
+
+
+    $("input:radio[name=check_type_export_power]").click(function() {
+        if($(this).val()=="all") {
+            $("#div_export_specific_power").css("display","none");
+        } else {
+            $("#div_export_specific_power").css("display","");
+        }
+    });
+
 });
 
  

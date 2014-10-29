@@ -561,6 +561,15 @@ msgstr "No sensor set"
 msgid "PREPARING_EXPORT"
 msgstr "File in preparation..."
 
+msgid "EXPORT_ALL_LOGS"
+msgstr "Export all existing logs"
+
+msgid "EXPORT_SPECIFIC_LOGS"
+msgstr "Export the logs for a specific period"
+
+msgid "EXPORT_LOGS_FROM"
+msgstr "Export logs from (YYYY-MM-DD)"
+
 
 # For the plugs part:
 msgid "PLUG"

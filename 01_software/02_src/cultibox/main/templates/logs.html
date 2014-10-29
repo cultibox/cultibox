@@ -747,3 +747,76 @@
 </div>
 
 <div id="preparing-file-modal" title="" style="display: none;"><?php echo __('PREPARING_EXPORT'); ?></div>
+
+
+<div id="export_log_div" title="<?php echo __('MANAGE_EXPORT_LOG_CSV_BUTTON'); ?>" style="display:none">
+    <table class="table_width">
+        <tr>
+            <td class="delete_message_border"><b><?php echo __('EXPORT_ALL_LOGS'); ?>:</b><br /></td>
+            <td><input id="check_export_all_logs" name="check_type_export_logs" type="radio" value="all" checked/></td>
+        </tr>
+    </table>
+    <br />
+    <table class="table_width">
+        <tr>
+            <td class="delete_message_border"><b><?php echo __('EXPORT_SPECIFIC_LOGS'); ?>:</b></td>
+            <td><input id="check_export_specific_logs" name="check_type_export_logs" type="radio" value="specific"/></td>
+        </tr>
+    </table>
+    <div id="div_export_specific" style="display:none">
+        <br />
+        <hr />
+        <br />
+        <table class="table_width">
+            <tr>
+                <td class="field_delete_form"><?php echo __('EXPORT_LOGS_FROM'); ?>: <input id="datepicker_export_from" name="export_startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"><?php echo __('DELETE_LOGS_TO'); ?>: <input id="datepicker_export_to" name="delete_endday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <br />
+    <br />
+
+    <p class="p_center">
+    <label class="format_error" id="error_format_date_logs_export" style="display:none"><?php echo __('ERROR_FORMAT_DATE'); ?></label>
+    </p>
+</div>
+
+
+<div id="export_log_power_div" title="<?php echo __('MANAGE_EXPORT_POWER_CSV_BUTTON'); ?>" style="display:none">
+    <table class="table_width">
+        <tr>
+            <td class="delete_message_border"><b><?php echo __('EXPORT_ALL_LOGS'); ?>:</b></td>
+            <td><input id="check_export_all_power" name="check_type_export_power" type="radio" value="all" checked/></td>
+        </tr>
+    </table>
+    <br />
+    <table class="table_width">
+        <tr>
+            <td class="delete_message_border"><b><?php echo __('EXPORT_SPECIFIC_LOGS'); ?>:</b></td>
+            <td><input id="check_export_specific_power" name="check_type_export_power" type="radio" value="specific"/></td>
+        </tr>
+    </table>
+    <div id="div_export_specific_power" style="display:none">
+        <br />
+        <hr />
+        <br />
+        <table class="table_width">
+            <tr>
+                <td class="field_delete_form"><?php echo __('EXPORT_LOGS_FROM'); ?>: <input id="datepicker_export_power_from" name="export_power_startday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"><?php echo __('DELETE_LOGS_TO'); ?>: <input id="datepicker_export_power_to" name="export_power_endday" type="text" class="whitefield" size="10" value="<?php echo $startday; ?>"></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <br />
+    <br />
+
+    <p class="p_center">
+    <label class="format_error" id="error_format_date_logs_power_export" style="display:none"><?php echo __('ERROR_FORMAT_DATE'); ?></label>
+    </p>
+</div>
+
+
+
