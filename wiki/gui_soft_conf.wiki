@@ -53,18 +53,18 @@ Le premier jour, regardez au même moment l'heure de votre ordinateur (heure de 
 Valeurs pour l'exemple :
  * Heure Ordinateur Jour 1 : 18h49m53s
  * Heure Cultibox Jour 1 : 18h50m08s
- * Différence jour 1 = Heure Cultibox - Heure Ordinateur = 15 secondes
+ * Différence jour 1 : Heure Cultibox - Heure Ordinateur : 15 secondes
  
 Une semaine plus tard (de préférence à la même heure), réalisez la même opération.
 Valeurs pour l'exemple :
  * Heure Ordinateur Jour 7 : 18h49m36s
  * Heure Cultibox Jour 7 : 18h51m06s
- * Différence jour 7 = Heure Cultibox - Heure Ordinateur = 1 min et 30 secondes
+ * Différence jour 7 : Heure Cultibox - Heure Ordinateur : 1 min et 30 secondes
  
 Appliquer la formule suivante (le chiffre 7 dans la division représente le nombre de jour de décalage):
 Décalage = (Différence jour 1 - Différence jour 7) / 7
 Valeur pour l'exemple : 
- * Décalage = (15s - 1min30s) / 7 = (15s - 90s) / 7 = -10,7
+ * Décalage : (15s - 1min30s) / 7 : (15s - 90s) / 7 : -10,7
  * Il faut ensuite arrondir, dans notre cas nous entrons la valeur -11secondes dans le logiciel
 
 == Configuration de l'alarme ==
