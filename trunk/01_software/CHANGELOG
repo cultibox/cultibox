@@ -1,3 +1,9 @@
+Cultibox (2.0.08) precise; urgency=low
+    + Ajout de la signature du paquet pour Mac OS X afin d'éviter la désactivation de gatekeeper
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Oct 29 18:20:47 CEST 2014
+
+
 Cultibox (2.0.07) precise; urgency=low
     + Désactivation de la configuration de la fréquence d'enregistrement de l'état des prises
     + Modification du format du fichier pluga
