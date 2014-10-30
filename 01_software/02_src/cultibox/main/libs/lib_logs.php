@@ -19,23 +19,34 @@ function export_table_csv($name="",$datefrom="",$dateto="",&$out) {
         unlink($file);
     }
 
+    if(strcmp("$name","logs")==0) {
+        $field="timestamp, record1, record2, date_catch, time_catch, sensor_nb";
+        $where='WHERE fake_log LIKE "False"';
+    } else {
+        $field="timestamp, record,  plug_number, date_catch, time_catch";
+        $where="";
+    }
 
-    $where="";
+
     if((strcmp("$datefrom","")!=0)&&(strcmp("$dateto","")!=0)) {
-        $where='WHERE date_catch BETWEEN "'.$datefrom.'" AND "'.$dateto.'"';
+        if(strcmp("$where","")==0) {
+            $where='WHERE date_catch BETWEEN "'.$datefrom.'" AND "'.$dateto.'"';
+        } else {
+            $where=$where.' AND date_catch BETWEEN "'.$datefrom.'" AND "'.$dateto.'"';
+        }
     }
 
     $os=php_uname('s');
     switch($os) {
         case 'Linux':
-            exec("../../../../../bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}` ${where}' > $file");
+            exec("../../../../../bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT ${field} FROM `${name}` ${where}' > $file");
             break;
         case 'Mac':
         case 'Darwin':
-            exec("../../../../../bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT * FROM `${name}` ${where}' > $file");
+            exec("../../../../../bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -B -h 127.0.0.1 --port=3891 cultibox -e 'SELECT ${field} FROM `${name}` ${where}' > $file");
             break;
         case 'Windows NT':
-            exec("..\..\..\..\..\mysql\bin\mysql.exe --defaults-extra-file=\"C:\cultibox\\xampp\mysql\bin\my-extra.cnf\" -B -h 127.0.0.1 --port=3891 cultibox -e \"SELECT * FROM `${name}` ${where}\" > $file");
+            exec("..\..\..\..\..\mysql\bin\mysql.exe --defaults-extra-file=\"C:\cultibox\\xampp\mysql\bin\my-extra.cnf\" -B -h 127.0.0.1 --port=3891 cultibox -e \"SELECT ${field} FROM `${name}` ${where}\" > $file");
             break;
     }
 }

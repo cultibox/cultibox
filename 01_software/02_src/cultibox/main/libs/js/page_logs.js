@@ -893,7 +893,7 @@ $(document).ready(function() {
                          $.ajax({
                             cache: false,
                             url: "main/modules/external/export_logs.php",
-                            data: {type:"logs",date_to:date_to,date_from:date_from}
+                            data: {type:"power",date_to:date_to,date_from:date_from}
                         }).done(function(data) {
                             $("#preparing-file-modal").dialog('close');
                             if(jQuery.parseJSON(data)!="0") {
