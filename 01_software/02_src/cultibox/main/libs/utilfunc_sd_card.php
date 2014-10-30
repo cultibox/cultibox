@@ -381,6 +381,7 @@ function check_cultibox_card($dir="") {
 //      $program        the program to be save in the sd card 
 // RET true if data correctly written, false else
 function save_program_on_sd($sd_card,$program,$filename = "plugv") {
+    $out=array();
 
     // Init file name
     $file = "${sd_card}/cnf/prg/${filename}";
@@ -390,15 +391,17 @@ function save_program_on_sd($sd_card,$program,$filename = "plugv") {
     $nbPlug=count($program);
     $shorten=false;
 
-    // Cjeck if there are some plugs
+    // Check if there are some plugs
     if($nbPlug == 0)
         return false;
-    
+   
     // Limit nb plugs to max allowed
-    if($nbPlug>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
-        $nbPlug=$GLOBALS['PLUGV_MAX_CHANGEMENT'];
-        $shorten=true;
-    }
+    if(get_configuration("REMOVE_1000_CHANGE_LIMIT",$out)=="False") {
+        if($nbPlug>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
+            $nbPlug=$GLOBALS['PLUGV_MAX_CHANGEMENT'];
+            $shorten=true;
+        }
+    } 
 
     // Complet nbPlug variable up to 3 digits
     while(strlen($nbPlug)<5)
@@ -446,6 +449,8 @@ function save_program_on_sd($sd_card,$program,$filename = "plugv") {
 // RET false is there is something to write, true else
 function compare_program($data,$sd_card,$file="plugv") {
     $file="${sd_card}/cnf/prg/".$file;
+    $out=array();
+
     if(is_file("${file}")) {
         $nb=0;
         //On compte le nombre d'entrée dans la base des programmes:
@@ -453,13 +458,16 @@ function compare_program($data,$sd_card,$file="plugv") {
 
         //Si les changements de la base dépassent ceux de maximum définit, on coupe le tableau des programmes pour le faire
         //correspondre au nombre maximal
-        if($nbdata>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
-            $tmp_array=array_slice($data, 0, $GLOBALS['PLUGV_MAX_CHANGEMENT']-1);
-            $tmp_array[]=$data[$nbdata-1];
-            $data=$tmp_array;
-            $nbdata=count($data);
+        if(get_configuration("REMOVE_1000_CHANGE_LIMIT",$out)=="False") {
+            if($nbdata>$GLOBALS['PLUGV_MAX_CHANGEMENT']) {
+                $tmp_array=array_slice($data, 0, $GLOBALS['PLUGV_MAX_CHANGEMENT']-1);
+                $tmp_array[]=$data[$nbdata-1];
+                $data=$tmp_array;
+                $nbdata=count($data);
+            }
         }
 
+        
          while(strlen($nbdata)<5) {
             $nbdata="0$nbdata";
          }
