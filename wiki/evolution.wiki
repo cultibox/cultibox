@@ -24,7 +24,6 @@ Ce paragraphe concerne toutes les futures évolutions.
  * Comparaison de courbes de capteur relevées
  * Amélioration de l'interface des programmes : suppression de bout du programme en live, modification des plages en live
  * Ajouter la possibilité de corriger la température en fonction de la pression
- * Programmation au jour 
  * Limite en régulation 
  * Traitement automatique des paiements Paypal 
  * Configuration évoluée des prises dans le wizard 
@@ -32,7 +31,6 @@ Ce paragraphe concerne toutes les futures évolutions.
  * Création d'un système de logs et d'envoi de mail en cas d'erreur pour les installateurs
  * Calcul de la durée de vie d'une lampe HPS 
  * Calcul du temps de chargement des logs
- * Enregistrer les développeurs de l'application Mac os X chez Apple
  * Réguler un espace en utilisant deux capteurs (un à l'intérieur de l'espace et un à l'extérieur de l'espace) ISSUE 794
  * Alarme : fonctionnement évolué ISSUE 841
  * Régulation : plage de fonctionnement ISSUE 842
@@ -61,6 +59,6 @@ Ce paragraphe concerne toutes les futures évolutions.
  * Logiciel: calendrier avec schéma de culture (depuis la version 1.1.36)
  * Faire défiler les infos du calendrier sur l'écran de la Cultibox
  * Capteur température en milieu humide
- * Programmation au jour (Ok dans la Cultibox mais pas dans le soft)
+ * Programmation au jour
  * A partir de la version 2 du logiciel, les paquets pour Mac Os X sont signés officiellement. Il n'est plus nécessaire de désactiver gatekeeper pour installer le logiciel Cultibox.
  
