@@ -62,4 +62,5 @@ Ce paragraphe concerne toutes les futures évolutions.
  * Faire défiler les infos du calendrier sur l'écran de la Cultibox
  * Capteur température en milieu humide
  * Programmation au jour (Ok dans la Cultibox mais pas dans le soft)
+ * A partir de la version 2 du logiciel, les paquets pour Mac Os X sont signés officiellement. Il n'est plus nécessaire de désactiver gatekeeper pour installer le logiciel Cultibox.
  
