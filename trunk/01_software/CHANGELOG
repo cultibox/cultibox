@@ -1,5 +1,6 @@
 Cultibox (2.0.09) precise; urgency=low
     + Correction de l'écriture du fichier plugv lors de la désactivation de la limite des 1000 changements
+    + Correction des upgrades: si on ne peut pas obtenir la version du logiciel sur Mac, on tente tout de même l'upgrade
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Thu Oct 30 12:08:49 CEST 2014
 
