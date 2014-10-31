@@ -62,12 +62,6 @@ EOF
             if [ -f /tmp/cultibox_version ]; then
                 rm /tmp/cultibox_version
             fi
-
-            /opt/cultibox/run/get_version.sh > /tmp/cultibox_version
-            if [ $? -ne 0 ]; then
-                echo "==== Error during preinstall script, please check that the Cultibox software is correctly running, exiting ===="
-                exit 1
-            fi
         fi
 
         if [ -d /tmp/cultibox_backup ]; then
