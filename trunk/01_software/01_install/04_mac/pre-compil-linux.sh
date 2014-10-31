@@ -86,7 +86,7 @@ EOF
             ssh root@$SERVER "if [ -d $WORK_DIR/cultibox.pmdoc ]; then rm -Rf $WORK_DIR/cultibox.pmdoc; fi"
             rsync -av ../01_src/01_xampp/cultibox.pmdoc root@$SERVER:$WORK_DIR/
             ssh root@$SERVER "cd $WORK_DIR && /usr/bin/packagemaker --title cultibox -o cultibox-macosx_$VERSION.pkg --doc cultibox.pmdoc -v"
-            #/usr/bin/ --title cultibox --sign $WORK_DIR/ --certificate $WORK_DIR/CertificateSigningRequest.certSigningRequest
+            #productsign --sign <dev_id> <package_in> <package_out>
             scp root@$SERVER:$WORK_DIR/cultibox-macosx_$2.pkg ./Output/
             set -e
       ;; 
