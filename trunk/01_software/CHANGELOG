@@ -1,6 +1,7 @@
 Cultibox (2.0.10) precise; urgency=low
     + L'envoie d'informations se fait maintenant après la vérification de la carte SD
     + Une message par popup prévient l'utilisateur s'il dépasse le nombre maximal de changements pour le fichiers plugv
+    + Correction des min/max des capteurs
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon Nov 03 11:35:14 CEST 2014
 

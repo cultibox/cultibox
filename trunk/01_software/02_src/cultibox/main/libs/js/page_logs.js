@@ -1033,7 +1033,6 @@ $(document).ready(function() {
                 },
                 url: 'main/modules/external/logs_get_serie.php',
                 success: function(json) {
-
                     // Parse result from json
                     var objJSON = jQuery.parseJSON(json);
                     var checked=false;
@@ -1105,13 +1104,11 @@ $(document).ready(function() {
                         $(cheBu).attr("yaxis" , item.yaxis);
 
 
-                        // Update tooltip with min and max
-                        updateTooltipMinMax();
-                        
                     });
                 },
                 cache: false
             });
+            updateTooltipMinMax();
         } 
         else 
         {
@@ -1579,37 +1576,34 @@ $(document).ready(function() {
  var second_regul = <?php echo json_encode($resume_regul); ?>;
  
  function updateTooltipMinMax () {
- 
     var chart = $('#container').highcharts();
     
     var beforeText = "<p align='center'><b><i><?php echo __('SUMARY_RESUME_MINMAX') ; ?>:<br /></i></b></p>";
     var afterText = "<br />";
     var textToDisplay = "";
-    
+
     for (var i = 0; i < 10; i++) {
         // If this curve is used
-        if (chart.yAxis[i].userOptions.title.text != "")
+        if (typeof chart.series[i] != "undefined")
         {
-            if(chart.yAxis[i].series[0] && chart.yAxis[i].series[0].options.curveType != "program") {
-                extremes = chart.yAxis[i].getExtremes();
-
+            if(chart.series[i].yAxis.series[0] && chart.series[i].yAxis.series[0].options.curveType != "program") {
                 // Sensor informations
                 textToDisplay += "<center><b><i>" ;
-                textToDisplay += "<font color='"+chart.yAxis[i].userOptions.labels.style.color+"'>"+ chart.yAxis[i].series[0].name + " : </font></i></b><br />";
+                textToDisplay += "<font color='"+chart.series[i].yAxis.userOptions.labels.style.color+"'>"+ chart.series[i].name + " : </font></i></b><br />";
 
                 textToDisplay += " <?php echo __('SUMARY_MIN'); ?> : ";
-                if(extremes.dataMin!=null) {
-                    MinDate = getXValue(chart.yAxis[i],extremes.dataMin);    
-                    textToDisplay +=    "<b>" + extremes.dataMin + " " + chart.yAxis[i].userOptions.unit + " ("+MinDate+")</b>";
+                if(chart.series[i].dataMin!=null) {
+                    MinDate = getXValue(chart.series[i].yAxis,chart.series[i].dataMin,chart.series[i].name);    
+                    textToDisplay +=    "<b>" + chart.series[i].dataMin + " " + chart.series[i].yAxis.userOptions.unit + " ("+MinDate+")</b>";
                 } else {
                     textToDisplay +=    "<b>N/A</b>";
                 }
 
                 textToDisplay += " - <?php echo __('SUMARY_MAX'); ?> : ";
 
-                if(extremes.dataMax!=null) {
-                    MaxDate = getXValue(chart.yAxis[i],extremes.dataMax); 
-                    textToDisplay +=    "<b>" + extremes.dataMax + " " + chart.yAxis[i].userOptions.unit + " ("+MaxDate+")</b>";
+                if(chart.series[i].dataMax!=null) {
+                    MaxDate = getXValue(chart.series[i].yAxis,chart.series[i].dataMax,chart.series[i].name); 
+                    textToDisplay +=    "<b>" + chart.series[i].dataMax + " " + chart.series[i].yAxis.userOptions.unit + " ("+MaxDate+")</b>";
                 } else {
                     textToDisplay +=    "<b>N/A</b>";
                 }
@@ -1647,21 +1641,27 @@ $(document).ready(function() {
 
 
 //Function to get the corresponding x-axis value timestamp from an yaxis value
-function getXValue(chartObj,yValue){
- var points=chartObj.series[0].points;
- for(var i=0;i<points.length;i++){
-    if(points[i].y==yValue) {
-        MyDate = new Date(points[i].x);
-        hours=MyDate.getHours();
-        minutes=MyDate.getMinutes();
+function getXValue(chartObj,yValue,name){
+ var return_value=null;
+ $.each(chartObj.series,function(key,value) { 
+    if((name==value.name)&&(return_value==null)) {
+        var points=value.points;
+        for(var i=0;i<points.length;i++) {
+            if(points[i].y==yValue) {
+                MyDate = new Date(points[i].x);
+                hours=MyDate.getHours();
+                minutes=MyDate.getMinutes();
 
-        if(hours<10) hours="0"+hours;
-        if(minutes<10) minutes="0"+minutes;
+                if(hours<10) hours="0"+hours;
+                if(minutes<10) minutes="0"+minutes;
        
-       return hours+":"+minutes;
+                return_value=hours+":"+minutes;
+                break;
+            }
+        }
     }
- }
- return null;    
+ });
+ return return_value;    
 }
  
  
