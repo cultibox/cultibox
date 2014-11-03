@@ -49,6 +49,16 @@
                 .'&browser='.urlencode($sBro)
         ));
 
+        echo "Infos:\n=======\n";
+        echo "\ndate=" .$sDate;
+        echo "\nlog=".$sLog;
+        echo "\nip=".$sIP;
+        echo "\ncbx_soft_version=".$sVersion;
+        echo "\ncbx_id=".$sID;
+        echo "\ncbx_firmware=".$sFirm;
+        echo "\nbrowser=".$sBro;
+         
+
         // Send the request & save response to $resp
         $resp = curl_exec($curl);
 
@@ -57,7 +67,8 @@
 
         // 2 hours before resendind information:
         setcookie("INFO_SENT", "True", time()+7200,"/",false,false);
+    } else {
+        echo "Already sent...";
     }
-
 
 ?>

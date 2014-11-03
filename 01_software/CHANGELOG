@@ -1,3 +1,10 @@
+Cultibox (2.0.10) precise; urgency=low
+    + L'envoie d'informations se fait maintenant après la vérification de la carte SD
+    + Une message par popup prévient l'utilisateur s'il dépasse le nombre maximal de changements pour le fichiers plugv
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Nov 03 11:35:14 CEST 2014
+
+
 Cultibox (2.0.09) precise; urgency=low
     + Correction de l'écriture du fichier plugv lors de la désactivation de la limite des 1000 changements
     + Correction des upgrades: si on ne peut pas obtenir la version du logiciel sur Mac, on tente tout de même l'upgrade

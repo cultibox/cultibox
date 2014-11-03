@@ -37,6 +37,25 @@ $.ajax({
         
         // Delete information
         pop_up_remove("check_sd_progress");
+
+        <?php
+        // Send information
+        if($send_stat) { ?>
+            $.ajax({
+                cache: false,
+                type: "GET",
+                async: true,
+                url: "main/modules/external/send_informations.php",
+                context: document.body,
+                success: function(data, textStatus, jqXHR) {
+                // Check response from server       
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // Error during request
+                }
+            });
+        <?php } ?>
+
     },
     error: function(jqXHR, textStatus, errorThrown) {
         // Error during request

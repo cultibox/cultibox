@@ -489,5 +489,11 @@
 <p><?php echo __('ERROR_PROGRAM_WRONG_NAME'); ?></p>
 </div>
 
+
+<!-- Limit of 1000 changes: -->
+<div class="popup_error" id="error_limit_changes" title="" style="display:none">
+    <p><?php echo __('ERROR_MAX_PROGRAM')." ".date('H:i:s', $last_action); ?></p>
+</div>
+
 <div id="preparing-file-modal" title="" style="display: none;"><?php echo __('PREPARING_EXPORT'); ?></div>
 

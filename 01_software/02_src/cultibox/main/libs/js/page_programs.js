@@ -17,12 +17,33 @@ start          = <?php echo json_encode($start) ?>;
 end            = <?php echo json_encode($end) ?>;
 plug_selected  = <?php echo json_encode($selected_plug) ?>;
 error_valueJS  = <?php echo json_encode($error_value) ?>;
+apply          = <?php echo json_encode($apply); ?>;
+limit          = <?php echo json_encode($limit); ?>;
 var reload_page=false;
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
 
 
 $(document).ready(function(){
+     if(limit && apply) {
+        $("#error_limit_changes").dialog({
+            resizable: false,
+            height:200,
+            width: 500,
+            closeOnEscape: false,
+            modal: true,
+            dialogClass: "popup_error",
+            buttons: [{
+                 text: CLOSE_button,
+                 click: function () {
+                       scrolltodiv("scrollto");
+                       $( this ).dialog( "close" );
+                 }}]
+            });
+     } else if(apply) {
+        scrolltodiv("scrollto");
+     }
+
      pop_up_remove("main_error");
      pop_up_remove("main_info");
 
@@ -532,7 +553,6 @@ $(document).ready(function(){
                                 });
                             }
                             get_content("programs",getFormInputs('actionprog'));        
-                            scrolltodiv("scrollto");
                     });
                     }
                     });
