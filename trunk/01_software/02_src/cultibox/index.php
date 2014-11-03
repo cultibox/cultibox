@@ -108,11 +108,6 @@ $cost=get_configuration("SHOW_COST");
             <script>title_msgbox="<?php echo __('TOOLTIP_MSGBOX_EYES'); ?>";</script>
             <?php 
                 include $GLOBALS['BASE_PATH'].'main/libs/js/send_info_error.js';
-
-                // Send information
-                if(get_configuration("STATISTICS",$main_error) == "True") {
-                    include $GLOBALS['BASE_PATH'].'main/libs/js/send_informations.js';
-                }
             ?>
 
             <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt="" title="" id="eyes_msgbox"></div>

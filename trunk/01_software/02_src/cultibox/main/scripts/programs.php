@@ -56,12 +56,10 @@ if(!isset($start_time)) {
     $start_time=getvar("start_time");
 }
 
-
-
 if(!isset($end_time)) {
     $end_time=getvar("end_time");
 }
-    
+
 
 // Get configuration value
 $second_regul        = get_configuration("SECOND_REGUL",$main_error);
@@ -139,6 +137,8 @@ if((!isset($sd_card))||(empty($sd_card))) {
 $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
 // Check if user has not removed the limit of 1000 change
+$limit=false;
+$last_action="";
 if ($remove_1000_change_limit == "False")
 {
     //Pour vérifier que l'on ne dépasse pas la limite de changement d'état des prises:
@@ -149,6 +149,7 @@ if ($remove_1000_change_limit == "False")
     {
         $last_action=substr($tmp_prog[$GLOBALS['PLUGV_MAX_CHANGEMENT']-1],0,5);
         $main_error[]=__('ERROR_MAX_PROGRAM')." ".date('H:i:s', $last_action);
+        $limit=true;
     }
 }
 
