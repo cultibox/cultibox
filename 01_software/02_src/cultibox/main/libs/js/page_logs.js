@@ -293,6 +293,7 @@ $(function () {
                                                 type: 'line',
                                                 yAxis: item.yaxis ,
                                                 color: item.color , 
+                                                sensor: $(cheBu).attr("id"),
                                                 selected: true,
                                                 tooltip: {
                                                     valueSuffix:" " + item.unit
@@ -966,6 +967,22 @@ $(document).ready(function() {
 $(document).ready(function() {
 
     $("#select_curve input[type=checkbox], #select_logs_to_display input[type=checkbox], #select_logs_to_display_month input[type=checkbox]").click(function() {
+        // Block interface
+        $.blockUI({
+            message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+            centerY: 0,
+            css: {
+                top: '20%',
+                border: 'none',
+                padding: '5px',
+                backgroundColor: 'grey',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .9,
+                color: '#fffff'
+            }
+        });
+
         // Init a var on highchart
         var chart = $('#container').highcharts();
         var cheBu = $(this);
@@ -1002,22 +1019,6 @@ $(document).ready(function() {
            });
         }
 
-        // Block interface
-        $.blockUI({ 
-            message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
-            centerY: 0,
-            css: { 
-                top: '20%',
-                border: 'none',
-                padding: '5px',
-                backgroundColor: 'grey', 
-                '-webkit-border-radius': '10px',
-                '-moz-border-radius': '10px',
-                opacity: .9,
-                color: '#fffff'
-            }
-        });
-
         // If checked
         if (cheBu.attr("checked") == "checked") {
 
@@ -1048,6 +1049,7 @@ $(document).ready(function() {
                             type: 'line',
                             yAxis: item.yaxis ,
                             color: item.color , 
+                            sensor: $(cheBu).attr("id"),
                             selected: true,
                             tooltip: {
                                 valueSuffix:" " + item.unit
@@ -1112,14 +1114,8 @@ $(document).ready(function() {
         } 
         else 
         {
-
-             $(chart.series).each(function(i, serie){
-                if(cheBu.attr("sensortype")==2) {
-                    if(cheBu.attr("serieid")-1==serie.index) {
-                        serie.remove(true);
-                    }
-                }
-                if(cheBu.attr("serieid")==serie.index) {
+             $(chart.series).each(function(i, serie){   
+                if(cheBu.attr("id")==serie.userOptions.sensor) {
                     serie.remove(true);
                 }
              });
@@ -1129,11 +1125,11 @@ $(document).ready(function() {
 
 
             // Remove text legend
-            /*chart.yAxis[cheBu.attr("yAxis")].update({
+            chart.yAxis[cheBu.attr("yAxis")].update({
                 title:{
                     text:""
                 }
-            });  */
+            }); 
 
         }
         // All curve have been rendered : Unblock UI
