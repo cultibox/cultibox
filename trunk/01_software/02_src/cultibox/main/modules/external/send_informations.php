@@ -12,26 +12,24 @@
         require_once('../../libs/debug.php');
     }
     
-    // Only one time per session
-    if(!isset($_COOKIE['INFO_SENT']) || empty($_COOKIE['INFO_SENT'])) {
+    $out = array();
     
-        $out = array();
-    
-        // Get Log
-        $sLog = get_informations("log",$out);
+    // Get Log
+    $sLog = get_informations("log",$out);
         
-        // get ID Computer
-        $sIP = get_informations("id_computer",$out);
-        
-        // Get Cultibox ID
-        $sID = get_informations("cbx_id",$out);
+    // Get Cultibox ID
+    $sID = get_informations("cbx_id",$out);
 
-        // Get Firmware version
-        $sFirm = get_informations("firm_version",$out);
-        
+    // Get Firmware version
+    $sFirm = get_informations("firm_version",$out);
+   
+
+
+    if((strcmp("$sLog","")!=0)||((strcmp("$sID","")!=0)&&($sID!=0))||(strcmp("$sFirm","")!=0)) {
+        $sIP= php_uname("a");
         $sBro=getenv("HTTP_USER_AGENT");
 
-        $sVersion=get_configuration("VERSION",$main_error);
+        $sVersion=get_configuration("VERSION",$out);
         $sDate=date("Y-m-d H:i:s"); 
 
         // Get cURL resource
@@ -49,26 +47,26 @@
                 .'&browser='.urlencode($sBro)
         ));
 
-        echo "Infos:\n=======\n";
-        echo "\ndate=" .$sDate;
-        echo "\nlog=".$sLog;
-        echo "\nip=".$sIP;
-        echo "\ncbx_soft_version=".$sVersion;
-        echo "\ncbx_id=".$sID;
-        echo "\ncbx_firmware=".$sFirm;
-        echo "\nbrowser=".$sBro;
-         
 
+        if($GLOBALS['DEBUG_TRACE']) {
+            echo "Infos:\n=======\n";
+            echo "\ndate=" .$sDate;
+            echo "\nlog=".$sLog;
+            echo "\nip=".$sIP;
+            echo "\ncbx_soft_version=".$sVersion;
+            echo "\ncbx_id=".$sID;
+            echo "\ncbx_firmware=".$sFirm;
+            echo "\nbrowser=".$sBro;
+        }
+         
         // Send the request & save response to $resp
         $resp = curl_exec($curl);
 
         // Close request to clear up some resources
         curl_close($curl);
-
-        // 2 hours before resendind information:
-        setcookie("INFO_SENT", "True", time()+7200,"/",false,false);
+        echo json_encode("1");
     } else {
-        echo "Already sent...";
+        echo json_encode("0");
     }
 
 ?>

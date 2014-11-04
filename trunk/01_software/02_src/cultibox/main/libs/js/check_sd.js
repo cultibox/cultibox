@@ -45,17 +45,18 @@ $.ajax({
                 cache: false,
                 type: "GET",
                 async: true,
-                url: "main/modules/external/send_informations.php",
-                context: document.body,
-                success: function(data, textStatus, jqXHR) {
-                // Check response from server       
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    // Error during request
+                url: "main/modules/external/send_informations.php"
+            }).done(function (data) {
+                if(jQuery.parseJSON(data)!=0) {
+                    $.ajax({
+                        cache: false,
+                        type: "GET",
+                        async: true,
+                        url: "main/modules/external/reset_informations.php"
+                    });
                 }
             });
-        <?php } ?>
-
+       <?php } ?>
     },
     error: function(jqXHR, textStatus, errorThrown) {
         // Error during request
@@ -64,7 +65,27 @@ $.ajax({
 });
 <?php } else { ?>
     $(document).ready(function(){
-    pop_up_add_information("<?php echo __('ERROR_SD_CARD'); ?>","check_sd_status","error");
+        pop_up_add_information("<?php echo __('ERROR_SD_CARD'); ?>","check_sd_status","error");
+        
+        <?php
+        // Send information
+        if($send_stat) { ?>
+            $.ajax({
+                cache: false,
+                type: "GET",
+                async: true,
+                url: "main/modules/external/send_informations.php"
+            }).done(function (data) {
+                if(jQuery.parseJSON(data)!=0) {
+                    $.ajax({
+                        cache: false,
+                        type: "GET",
+                        async: true,
+                        url: "main/modules/external/reset_informations.php"
+                    });
+                }
+            });
+       <?php } ?>
     });
 <?php } ?>
 </script>
