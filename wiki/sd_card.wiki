@@ -253,7 +253,18 @@ Ou XX représente le numéro du jour dans le mois.
 
 === Fichier pwr_XX ===
 
+Il y a un fichier par jour de l'année. Dans chaque fichier, il y a une ligne par série de puissance enregistrée.
+
+Sur la ligne, le premier élément est l'horodatage de la donnée. Ensuite 10 colonnes comportant les données de puissance sont inscrites.
+
 === Fichier logs_XX ===
+
+Il y a un fichier par jour de l'année. Dans chaque fichier, il y a une ligne par série de donnée enregistrée.
+
+Sur la ligne, le premier élément est l'horodatage de la donnée. Ensuite 8 colonnes comportant les données sont inscrites. Les règles pour l'inscription des données sont les suivantes :
+ * Si le capteur n'est pas présent, la valeur inscrite est 0000
+ * Si le capteur est du type T/RH, deux colonnes sont utilisées. La première comporte la valeur de température et la deuxième la valeur d'humidité
+ * La valeur est forcement un entier. Pour que la définition soit suffisante, on utilise un facteur multiplicatif. VOir le tableau ci-dessous :
 
 || *Capteur* || *facteur multiplicatif* || *unité* ||
 || Température || 100 || °C ||
