@@ -1,16 +1,21 @@
 #!/bin/bash
 
+set -e
+echo "Using root privileges..."
+sudo echo "...OK"
+set +e
+
 echo "Stopping services..."
 if [ -f /Applications/cultibox/xamppfiles/xampp ]; then
-    /Applications/cultibox/xamppfiles/xampp stop
+    sudo /Applications/cultibox/xamppfiles/xampp stop
     sleep 6
     if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
         for process in `ps aux|grep httpd| grep cultibox| awk -F" " '{print $2}'`; do
-            kill -9 $process
+            sudo kill -9 $process
         done
 
         for process in `ps aux|grep mysql| grep cultibox| awk -F" " '{print $2}'`; do
-            kill -9 $process
+            sudo kill -9 $process
         done
     fi
 fi
@@ -18,15 +23,15 @@ echo "... OK"
 
 echo "Removing services files..."
 if [ -f /System/Library/LaunchDaemons/cultibox_apache.plist ]; then
-    rm -Rf /System/Library/LaunchDaemons/cultibox_apache.plist
+    sudo rm -Rf /System/Library/LaunchDaemons/cultibox_apache.plist
 fi
 
 if [ -f /System/Library/LaunchDaemons/cultibox_mysql.plist ]; then
-    rm -Rf /System/Library/LaunchDaemons/cultibox_mysql.plist
+    sudo rm -Rf /System/Library/LaunchDaemons/cultibox_mysql.plist
 fi
 
 
 echo "Removing remaining files..."
-rm -Rf /Applications/cultibox /Applications/cultibox.app
+sudo rm -Rf /Applications/cultibox /Applications/cultibox.app
 echo "...OK"
 
