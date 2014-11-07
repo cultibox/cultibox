@@ -85,18 +85,18 @@ $cost=get_configuration("SHOW_COST");
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-1.8.3.js?v=<?=@filemtime('main/libs/js/jquery-1.8.3.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-ui-1.9.2.custom.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-ui-1.9.2.custom.min.js?v=<?=@filemtime('main/libs/js/jquery-ui-1.9.2.custom.min.js')?>"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/highcharts.js?v=<?=@filemtime('main/libs/js/main/libs/js/highcharts.js')?>"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/exporting.js?v=<?=@filemtime('main/libs/js/main/libs/js/exporting.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/highcharts.js?v=<?=@filemtime('main/libs/js/highcharts.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/exporting.js?v=<?=@filemtime('main/libs/js/exporting.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery-ui-timepicker-addon.js?v=<?=@filemtime('main/libs/js/jquery-ui-timepicker-addon.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery.colourPicker.js"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/cultibox.js?v=<?=@filemtime('main/libs/js/main/libs/js/cultibox.js')?>"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/cultibox-utils.js?v=<?=@filemtime('main/libs/js/main/libs/js/cultibox-utils.js')?>"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/fullcalendar.js?v=<?=@filemtime('main/libs/js/main/libs/js/fullcalendar.js')?>"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/jquery.blockUI.js?v=<?=@filemtime('main/libs/js/main/libs/js/jquery.blockUI.js')?>"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/scrollTo.js?v=<?=@filemtime('main/libs/js/main/libs/js/scrollTo.js')?>"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/fileDownload.js?v=<?=@filemtime('main/libs/js/main/libs/js/fileDownload.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/cultibox.js?v=<?=@filemtime('main/libs/js/cultibox.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/cultibox-utils.js?v=<?=@filemtime('main/libs/js/cultibox-utils.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/fullcalendar.js?v=<?=@filemtime('main/libs/js/fullcalendar.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/jquery.blockUI.js?v=<?=@filemtime('main/libs/js/jquery.blockUI.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/scrollTo.js?v=<?=@filemtime('main/libs/js/scrollTo.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/fileDownload.js?v=<?=@filemtime('main/libs/js/fileDownload.js')?>"></script>
     <script type="text/javascript" src="/cultibox/main/libs/js/jquery.ui.datepicker-<?php echo substr($_COOKIE['LANG'], 0 , 2); ?>.js"></script>
-    <script type="text/javascript" src="/cultibox/main/libs/js/fileUpload.js?v=<?=@filemtime('main/libs/js/main/libs/js/fileUpload.js')?>"></script>
+    <script type="text/javascript" src="/cultibox/main/libs/js/fileUpload.js?v=<?=@filemtime('main/libs/js/fileUpload.js')?>"></script>
 </head>
 
 
@@ -106,9 +106,6 @@ $cost=get_configuration("SHOW_COST");
         <div>
             <!-- Small eye for displaying message pop up-->
             <script>title_msgbox="<?php echo __('TOOLTIP_MSGBOX_EYES'); ?>";</script>
-            <?php 
-                include $GLOBALS['BASE_PATH'].'main/libs/js/send_info_error.js';
-            ?>
 
             <div id="tooltip_msg_box" style="display:none"><img src='/cultibox/main/libs/img/eye.png' alt="" title="" id="eyes_msgbox"></div>
 
