@@ -28,6 +28,7 @@ if((isset($_GET['page']))&&(!empty($_GET['page']))) {
     include $GLOBALS['BASE_PATH'].'main/scripts/post_script.php';
     include $GLOBALS['BASE_PATH'].'main/libs/js/page_'.$page.'.js';
     include $GLOBALS['BASE_PATH'].'main/templates/'.$page.'.html';
+    include $GLOBALS['BASE_PATH'].'main/libs/js/send_info_error.js';
     $include = ob_get_clean();
     echo $include;
 }
