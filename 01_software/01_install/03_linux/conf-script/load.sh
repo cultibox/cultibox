@@ -14,41 +14,26 @@ echo ""
 
 if [ -f $home/cultibox/backup_cultibox.sql ]; then
     # Test of the connection:
-    version=`/opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --batch --port=3891 cultibox -e "SELECT VERSION from configuration;" 2>/dev/null`
-    if [ "$version" != "" ]; then
-        for res in `echo $version`; do
-            if [ "`echo $res|egrep [1-9].*\.[0-9].*\.[0-9].*-.*`" != "" ]; then
-                result=$res
-                break;
+    /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --batch --port=3891 cultibox -e "SHOW TABLES;">/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        yn=""
+        while [ "$yn" != "Yes" ] && [ "$yn" != "Y" ] && [ "$yn" != "y" ]; do
+            echo "Do you want to continue? (Y/N)"
+            read yn
+            if [ "$yn" == "No" ] || [ "$yn" == "N" ] || [ "$yn" == "n" ]; then
+                exit 0
             fi
         done
-    else
-        echo "===== Error accessing cultibox database, exiting... ===="
-        echo "... NOK"
-        exit 1
-    fi
-    
-    yn=""
-    while [ "$yn" != "Yes" ] && [ "$yn" != "Y" ] && [ "$yn" != "y" ]; do
-        echo "Do you want to continue? (Y/N)"
-        read yn
-        if [ "$yn" == "No" ] || [ "$yn" == "N" ] || [ "$yn" == "n" ]; then
-            exit 0
-        fi
-    done
-    echo "  * Loading $home/cultibox/backup_cultibox.sql file..."
-    /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < $home/cultibox/backup_cultibox.sql
+        echo "  * Loading $home/cultibox/backup_cultibox.sql file..."
+        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox < $home/cultibox/backup_cultibox.sql
 
-    version=`head -1 $home/cultibox/backup_cultibox.sql`
-    version=`echo $version|awk -F ": " '{print $2}'`
-    if [ "$version" != "" ] && [ "$version" != "$result" ]; then
-        version=`echo ${version%%-*}`
-        version=`echo ${version//./}`
+        version=`head -1 $home/cultibox/backup_cultibox.sql`
+        version=`echo $version|awk -F ": " '{print $2}'`
+        if [ "$version" != "" ]; then
+            version=`echo ${version%%-*}`
+            version=`echo ${version//./}`
 
-        res=`echo ${res%%-*}`
-        res=`echo ${res//./}`
-
-        for file in `ls /opt/cultibox/sql_install/update_sql-* 2>/dev/null`; do
+            for file in `ls /opt/cultibox/sql_install/update_sql-* 2>/dev/null`; do
                #Remove path file information
                file_name=`basename $file`
                #Remove extension information
@@ -64,8 +49,13 @@ if [ -f $home/cultibox/backup_cultibox.sql ]; then
                     fi
                fi
             done
-    fi  
-    echo "... OK"
+        fi  
+        echo "... OK"
+    else
+        echo "===== Error accessing cultibox database, exiting... ===="
+        echo "... NOK"
+        exit 1
+    fi
 else
     echo "  * Missing $home/cultibox/backup_cultibox.sql file..."
     echo "...NOK"
