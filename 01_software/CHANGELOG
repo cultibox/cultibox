@@ -1,3 +1,10 @@
+Cultibox (2.0.11) precise; urgency=low
+    + Correction du chargement des données des logs si le capteur 1 est manquant
+    + Affichage d'une gridline sur le graphe des logs pour remettre le zoom en autoscale
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Fri Nov 07 10:46:49 CEST 2014
+
+
 Cultibox (2.0.10) precise; urgency=low
     + L'envoie d'informations se fait maintenant après la vérification de la carte SD
     + Une message par popup prévient l'utilisateur s'il dépasse le nombre maximal de changements pour le fichiers plugv

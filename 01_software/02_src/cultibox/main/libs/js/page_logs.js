@@ -474,10 +474,11 @@ $(function () {
                         echo '             return this.value;' . PHP_EOL;
                         echo '        }' . PHP_EOL;
                         echo '    },' . PHP_EOL;
-                        echo '    gridLineWidth: 1,' . PHP_EOL;
+                        echo '    gridLineWidth: 0.3,' . PHP_EOL;
                         //echo '    gridLineDashStyle: "Dot",' . PHP_EOL;
-                        //echo '    gridLineColor : "' . $yaxis['colorgrid'] . '",' . PHP_EOL;
+                        echo '    gridLineColor : "' . $yaxis['colorgrid'] . '",' . PHP_EOL;
                         echo '    showEmpty:false,' . PHP_EOL;
+                        /*
                         echo '    tickPositioner: function(min, max) {' . PHP_EOL;
                         // specify an interval for ticks or use max and min to get the interval
                         echo '        if(min == max) {return "";};' . PHP_EOL;
@@ -498,6 +499,7 @@ $(function () {
                         echo '        }' . PHP_EOL;
                         echo '        return positions;' . PHP_EOL;
                         echo '    }' . PHP_EOL;
+                        */
                         echo '}' . PHP_EOL;
                     }
                 ?>

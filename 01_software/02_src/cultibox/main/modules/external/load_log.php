@@ -34,7 +34,6 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
 
             //Check that the line has the right number of sensor records:
             if(count($temp)==(4*2+1)) {
-            
                 for($i=0;$i<count($temp);$i++) {
                     //Cleaning wrong value - deleting special char 
                     $temp[$i]=rtrim($temp[$i]);
@@ -54,34 +53,38 @@ function get_log_value($sd_card,$month,$day,&$array_line,$sensors) {
                 if(!empty($date_catch) && !empty($time_catch)
                     && !empty($temp[0]) && strlen($date_catch)==10 
                     && strlen($time_catch)==6 && strlen($temp[0])==14 ) {
-                    
+                  
+                    $column=1;
                     for($i=0; $i<count($sensors); $i++) {
                         //Creating data array which will be inserted into the database:
                         if(strcmp($sensors[$i]['type'],"0")!=0) {
                             if(strcmp($sensors[$i]['type'],"2")!=0) {
-                                if(!empty($temp[$i+1])) {
+                                if(!empty($temp[$column])) {
                                     $array_line[] = array(
                                     "timestamp" => $temp[0],
-                                    "record1" => $temp[$i+1],
+                                    "record1" => $temp[$column],
                                     "record2" => "",
                                     "date_catch" => $date_catch,
                                     "time_catch" => $time_catch,
                                     "sensor_nb" => $sensors[$i]['sensor_nb'],
                                     );
                                 }
+                                $column=$column+1;
                             } else {
-                                if((!empty($temp[$i+1]))||(!empty($temp[$i+2]))) {
+                                if((!empty($temp[$column]))&&(!empty($temp[$column+1]))) {
                                     $array_line[] = array(
                                     "timestamp" => $temp[0],
-                                    "record1" => $temp[$i+1],
-                                    "record2" => $temp[$i+2],
+                                    "record1" => $temp[$column],
+                                    "record2" => $temp[$column+1],
                                     "date_catch" => $date_catch,
                                     "time_catch" => $time_catch,
                                     "sensor_nb" => $sensors[$i]['sensor_nb'],
                                     );
+                                    $column=$column+2;
+                                } else {
+                                    $column=$column+1;
                                 } 
                                 $i=$i+1;
-                            
                            }
                         } 
                     }
