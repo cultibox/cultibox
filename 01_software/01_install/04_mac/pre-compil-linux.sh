@@ -11,11 +11,12 @@ function usage {
             echo "usage: $0"
             echo "                      osx <version> ?jenkins?"
             echo "                      clean"
+            echo "                      uninstall"
             exit 1
 }
 
 
-if [ "$2" == "" ] && [ "$1" != "clean" ]; then
+if [ "$2" == "" ] && [ "$1" != "clean" ] && [ "$1" != "uninstall" ]; then
     usage
 fi
 
@@ -60,6 +61,7 @@ EOF
             cp conf-package/cultibox_mysql.plist  ../01_src/01_xampp/cultibox/package/
             cp conf-package/cultibox_apache.plist  ../01_src/01_xampp/cultibox/package/
             cp conf-package/uninstall  ../01_src/01_xampp/cultibox/package/
+            cp conf-package/cultibox-uninstall.pkg ../01_src/01_xampp/cultibox/package/
             cp -R conf-package/cultibox.app ../01_src/01_xampp/cultibox/
             cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/VERSION.txt
             cat ../../01_install/01_src/03_sd/version.txt > ../01_src/01_xampp/cultibox/VERSION_FIRM.txt
@@ -92,6 +94,32 @@ EOF
       ;; 
       "clean")
             rm -Rf ../01_src/01_xampp/*
+      ;;
+      "uninstall")
+            rm -Rf ../01_src/01_xampp/*
+            mkdir -p ../01_src/01_xampp/cultibox/package
+            cp conf-package/takecontrol.png ../01_src/01_xampp/cultibox/package
+            cp conf-package/post* ../01_src/01_xampp/cultibox/package/
+            cp conf-package/pre* ../01_src/01_xampp/cultibox/package/
+            cp conf-package/VolumeCheck ../01_src/01_xampp/cultibox/package/
+            cp conf-package/InstallationCheck ../01_src/01_xampp/cultibox/package/
+            cp conf-package/cultibox_mysql.plist  ../01_src/01_xampp/cultibox/package/
+            cp conf-package/cultibox_apache.plist  ../01_src/01_xampp/cultibox/package/
+            cp conf-package/uninstall  ../01_src/01_xampp/cultibox/package/
+
+            find ../01_src/01_xampp/cultibox/ -name ".svn"|xargs rm -Rf
+            set +e
+            ssh root@$SERVER "if [ -d /Applications/cultibox ]; then rm -Rf /Applications/cultibox; fi"
+            rsync -av ../01_src/01_xampp/cultibox root@$SERVER:/Applications/
+            ssh root@$SERVER "chown -R root:wheel /Applications/cultibox"
+            ssh root@$SERVER "if [ -d $WORK_DIR/cultibox_uninstall.pmdoc ]; then rm -Rf $WORK_DIR/cultibox_uninstall.pmdoc ; fi"
+
+            cp -R cultibox_uninstall.pmdoc ../01_src/01_xampp/
+            ssh root@$SERVER "if [ -d $WORK_DIR/cultibox_uninstall.pmdoc ]; then rm -Rf $WORK_DIR/cultibox_uninstall.pmdoc; fi"
+            rsync -av ../01_src/01_xampp/cultibox_uninstall.pmdoc root@$SERVER:$WORK_DIR/
+            ssh root@$SERVER "cd $WORK_DIR && /usr/bin/packagemaker --title cultibox_uninstall -o cultibox_uninstall.pkg --doc cultibox_uninstall.pmdoc -v"
+            scp root@$SERVER:$WORK_DIR/cultibox_uninstall.pkg ./conf-package/
+            set -e
       ;;
       *)
             usage
