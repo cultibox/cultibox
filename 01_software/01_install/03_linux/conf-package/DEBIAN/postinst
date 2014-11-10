@@ -140,7 +140,7 @@ else
     fi
 
     if [ -f /opt/cultibox/sql_install/update_sql.sql ]; then
-        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf --force -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/update_sql.sql
+        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf --force -h 127.0.0.1 --port=3891 < /opt/cultibox/sql_install/update_sql.sql 2>/dev/null
     fi
 
     /opt/cultibox/lampp restart

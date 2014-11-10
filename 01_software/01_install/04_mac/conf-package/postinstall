@@ -160,7 +160,7 @@ else
     fi
 
     if [ -f /Applications/cultibox/sql_install/update_sql.sql ]; then
-        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf --force -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_sql.sql 
+        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf --force -h 127.0.0.1 --port=3891 < /Applications/cultibox/sql_install/update_sql.sql 2>/dev/null
     fi
 
     rm /tmp/cultibox_upgrade
