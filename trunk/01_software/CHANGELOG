@@ -1,3 +1,11 @@
+Cultibox (2.0.12) precise; urgency=low
+    + Ajout d'un désinstallateur sous forme de paquet pour Mac Os X
+    + Correction de l'installation pour Mac Os X
+    + Ajout du champ DEFAULT_LANG en cas d'upgrade sur une version non fonctionelle
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Nov 10 19:35:49 CEST 2014
+
+
 Cultibox (2.0.11) precise; urgency=low
     + Correction du chargement des données des logs si le capteur 1 est manquant
     + Affichage d'une gridline sur le graphe des logs pour remettre le zoom en autoscale

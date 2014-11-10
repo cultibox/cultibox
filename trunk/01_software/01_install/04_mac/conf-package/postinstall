@@ -88,7 +88,7 @@ else
         ver=`echo ${ver//./}`
 
         #upgrade from 1.1.XX to 1.2.XX: TO BE DELETED
-        if [ $ver -lt 1200 ]; then
+        if [ "$ver" != "" ] && [ $ver -lt 1200 ]; then
             if [ -d /tmp/cultibox_backup ]; then
                 tar zxvfp /Applications/cultibox/xamppfiles/var/mysql/mysql.tar.gz -C /Applications/cultibox/xamppfiles/var/mysql/
                 cp -R /tmp/cultibox_backup/ib_logfile* /Applications/cultibox/xamppfiles/var/mysql/
@@ -108,7 +108,7 @@ else
     /Applications/cultibox/xamppfiles/xampp start
     sleep 6
 
-    if [ $ver -lt 1200 ]; then
+    if [ "$ver" != "" ] && [ $ver -lt 1200 ]; then
         sleep 3
         rm -Rf /Applications/cultibox/xamppfiles/var/mysql/mysql/*.ibd
         /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -h 127.0.0.1 --port=3891 --force mysql < /Applications/cultibox/sql_install/five-tables.sql
