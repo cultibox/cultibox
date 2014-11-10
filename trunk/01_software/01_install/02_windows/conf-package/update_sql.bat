@@ -29,7 +29,7 @@ If exist C:\cultibox\run\get_version.bat (
 
     If exist C:\cultibox\xampp\sql_install\update_sql.sql (
 		echo   * Updating Cultibox database with file: C:\cultibox\xampp\sql_install\update_sql.sql
-		C:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 < C:\cultibox\xampp\sql_install\update_sql.sql
+		C:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" --force -h 127.0.0.1 --port=3891 < C:\cultibox\xampp\sql_install\update_sql.sql
 	)
 ) else (
     echo ==== Error, missing get_version.bat script, exiting ====
