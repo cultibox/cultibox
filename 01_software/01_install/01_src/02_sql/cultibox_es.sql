@@ -88,13 +88,12 @@ CREATE TABLE IF NOT EXISTS `informations` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `cbx_id` int(5) NOT NULL DEFAULT '0',
   `firm_version` varchar(7) NOT NULL DEFAULT '000.000',
-  `id_computer` varchar(50) NOT NULL DEFAULT 'NULL',
   `log` mediumtext,
   PRIMARY KEY (`ID`),
   KEY `ID` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version`,`id_computer`,`log`) VALUES (NULL , '0', '0', 'NULL','');
+INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version`,`log`) VALUES (NULL , '0', '0', '');
 
 
 -- --------------------------------------------------------

@@ -36,6 +36,9 @@ require_once('main/libs/db_set_common.php');
 require_once('main/libs/debug.php');
 require_once('main/libs/utilfunc_sd_card.php');
 
+// Check database consistency
+check_database();
+
 
 // Variables for pages cost and wifi:
 $wifi=get_configuration("WIFI");
@@ -62,9 +65,6 @@ $cost=get_configuration("SHOW_COST");
             header( 'Pragma: no-cache' ); 
         }
     }
-
-    // Check database consistency
-    check_database();
 ?>
 
     <title>Cultibox</title>
