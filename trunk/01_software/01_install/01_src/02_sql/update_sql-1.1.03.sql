@@ -1,4 +1,0 @@
-SET CHARACTER SET utf8;
-
--- Version 1.1.03:
-ALTER TABLE `cultibox`.`plugs` ADD `PLUG_ENABLED` VARCHAR( 5 ) NOT NULL DEFAULT 'True';
