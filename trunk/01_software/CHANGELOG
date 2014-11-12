@@ -2,6 +2,7 @@ Cultibox (2.0.12) precise; urgency=low
     + Ajout d'un désinstallateur sous forme de paquet pour Mac Os X
     + Correction de l'installation pour Mac Os X
     + Ajout du champ DEFAULT_LANG en cas d'upgrade sur une version non fonctionelle
+    + Ajout des tables sensors, informations et program_index dans la gestion automatique du logiciel
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Mon Nov 10 19:35:49 CEST 2014
 

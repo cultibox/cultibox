@@ -625,6 +625,16 @@ function check_database() {
 
     // Check configuration DB
     configuration\check_db();
+
+    //Check information table
+    informations\check_db();
+
+    //Check program_index table
+    program_index\check_db();
+
+    //Check sensors table:
+    sensors\check_db();
+
 }
 //}}}
 

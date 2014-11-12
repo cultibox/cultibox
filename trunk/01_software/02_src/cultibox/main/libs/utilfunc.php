@@ -7,19 +7,29 @@ if(is_file("main/libs/l10n.php")) {
    require_once 'main/libs/lib_calendar.php';
    require_once 'main/libs/lib_configuration.php';
    require_once 'main/libs/lib_logs.php';
+   require_once 'main/libs/lib_informations.php';
+   require_once 'main/libs/lib_sensors.php';
+   require_once 'main/libs/lib_program_index.php';
 } else if(is_file("../libs/l10n.php")) {
    require_once '../libs/l10n.php';
    require_once '../libs/lib_programs.php';
    require_once '../libs/lib_calendar.php';
    require_once '../libs/lib_configuration.php';
    require_once '../libs/lib_logs.php';
+   require_once '../libs/lib_informations.php';
+   require_once '../libs/lib_sensors.php';
+   require_once '../libs/lib_program_index.php';
 } else {
    require_once '../../libs/l10n.php';
    require_once '../../libs/lib_programs.php';
    require_once '../../libs/lib_calendar.php';
    require_once '../../libs/lib_configuration.php';
    require_once '../../libs/lib_logs.php';
+   require_once '../../libs/lib_informations.php';
+   require_once '../../libs/lib_sensors.php';
+   require_once '../../libs/lib_program_index.php';
 }
+
 
 // {{{ __($msgkey, ...)
 // ROLE get the translated message corresponding to $msgkey, the parameters may
