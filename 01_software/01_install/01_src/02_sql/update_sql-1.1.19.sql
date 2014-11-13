@@ -1,6 +1,0 @@
-SET CHARACTER SET utf8;
-
--- Version 1.1.19:
-ALTER TABLE `cultibox`.`configuration` ADD `REGUL_SENSOR` VARCHAR( 5 ) NOT NULL DEFAULT 'True';
-ALTER TABLE `cultibox`.`plugs` CHANGE `PLUG_POWER` `PLUG_POWER` INT( 11 ) NULL DEFAULT NULL;
-

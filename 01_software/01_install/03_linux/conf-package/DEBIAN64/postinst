@@ -131,7 +131,7 @@ else
                if [ "$file_name" != "" ]; then
                     #if file version >= version
                     if [ $file_name -ge $version ]; then
-                        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < $file 
+                        /opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf --force -f -h 127.0.0.1 --port=3891 < $file 
                     fi
                fi
             done

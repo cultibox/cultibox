@@ -16,7 +16,7 @@ If exist C:\cultibox\run\get_version.bat (
 					set filev=!file_name:.=!
 					If !filev! geq !softv! (
 						echo   * Updating Cultibox database with file:  %%B
-						C:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" -h 127.0.0.1 --port=3891 < %%B
+						C:\cultibox\xampp\mysql\bin\mysql.exe --defaults-extra-file="C:\cultibox\xampp\mysql\bin\my-extra.cnf" --force -h 127.0.0.1 --port=3891 < %%B
 					)
 				)
 			) else (
