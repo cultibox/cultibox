@@ -62,6 +62,61 @@ function check_db() {
     check_and_update_column_db ("program_index", $program_index_col);
 
 
+
+
+    // Define columns of the programs table
+    $program_col = array();
+    $program_col["plug_id"]            = array ( 'Field' => "plug_id", 'Type' => "int(11)");
+    $program_col["time_start"]          = array ( 'Field' => "time_start", 'Type' => "VARCHAR(6)");
+    $program_col["time_stop"]       = array ( 'Field' => "time_stop", 'Type' => "VARCHAR(6)");
+    $program_col["value"]   = array ( 'Field' => "value", 'Type' => "decimal(3,1)");
+    $program_col["number"]      = array ( 'Field' => "number", 'Type' => "int(11)", 'default_value' => 1);
+    $program_col["date_start"]  = array ( 'Field' => "date_start", 'Type' => "varchar(10)",  'default_value' => '0000-00-00');
+    $program_col["date_end"] = array ( 'Field' => "date_end", 'Type' => "VARCHAR(10)",  'default_value' => '0000-00-00');
+    $program_col["type"]      = array ( 'Field' => "type", 'Type' => "INT",  'default_value' => '0');
+
+    // Check if table programs exists
+    $sql = "SHOW TABLES FROM cultibox LIKE 'programs';";
+
+    $db = \db_priv_pdo_start("root");
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    // If table exists, return
+    if ($res == null)
+    {
+
+        // Build MySQL command to create table
+        $sql = "CREATE TABLE programs ("
+            ."plug_id int(11) NOT NULL,"
+            ."time_start varchar(6) NOT NULL,"
+            ."time_stop varchar(6) NOT NULL,"
+            ."value decimal(3,1) NOT NULL,"
+            ."number int(11) NOT NULL DEFAULT '1',"
+            ."date_start varchar(10) NOT NULL DEFAULT '0000-00-00',"
+            ."date_end varchar(10) NOT NULL DEFAULT '0000-00-00',"
+            ."type INT NOT NULL DEFAULT '0');";
+
+        // Create table
+        try {
+            $sth = $db->prepare($sql);
+            $sth->execute();
+        } catch(\PDOException $e) {
+            $ret = $e->getMessage();
+            print_r($ret);
+        }
+    }
+
+    $db = null;
+
+    // Check column
+    check_and_update_column_db ("programs", $program_col);
+
 }
 // }}}
 
