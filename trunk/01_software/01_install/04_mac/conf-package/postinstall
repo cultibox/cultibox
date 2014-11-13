@@ -151,7 +151,7 @@ else
                if [ "$file_name" != "" ]; then
                     #if file version >= version
                     if [ $file_name -ge $version ]; then
-                        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf -f -h 127.0.0.1 --port=3891 < $file
+                        /Applications/cultibox/xamppfiles/bin/mysql --defaults-extra-file=/Applications/cultibox/xamppfiles/etc/my-extra.cnf --force -f -h 127.0.0.1 --port=3891 < $file
                     fi
                fi
             done
