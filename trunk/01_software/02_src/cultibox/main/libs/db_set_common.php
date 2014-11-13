@@ -629,11 +629,11 @@ function check_database() {
     //Check information table
     informations\check_db();
 
-    //Check program_index table
-    program_index\check_db();
-
     //Check sensors table:
     sensors\check_db();
+
+    //Check plugs table:
+    plugs\check_db();
 
 }
 //}}}

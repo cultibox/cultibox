@@ -21,7 +21,7 @@ $GLOBALS['LIST_RECORD_FREQUENCY'] = array('1','5','30');
 // Number of max plugs managed by the cultibox
 $GLOBALS['NB_MAX_PLUG'] = '16';
 
-// TO BE DELETED ------ VERRUE ----
+// TO BE DELETED :
 // Number of plug selectable
 $GLOBALS['NB_SELECTABLE_PLUG'] = '10';
 
