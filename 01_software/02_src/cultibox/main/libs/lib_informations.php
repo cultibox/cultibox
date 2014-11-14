@@ -9,10 +9,10 @@ function check_db() {
 
     // Define columns of the calendar table
     $info_index_col = array();
-    $info_index_col["ID"]                   = array ( 'Field' => "ID", 'Type' => "int(11)", 'default_value' => 1);
-    $info_index_col["cbx_id"] = array ( 'Field' => "cbx_id", 'Type' => "int(5)", 'default_value' => 0);
-    $info_index_col["firm_version"] = array ( 'Field' => "firm_version", 'Type' => "varchar(7)", 'default_value' => "000.000");
-    $info_index_col["log"] = array ( 'Field' => "log", 'Type' => "mediumtext", 'default_value' => "");
+    $info_index_col["ID"]                   = array ( 'Field' => "ID", 'Type' => "int(11)", 'default_value' => 1, 'carac' => "NOT NULL AUTO_INCREMENT PRIMARY KEY");
+    $info_index_col["cbx_id"] = array ( 'Field' => "cbx_id", 'Type' => "int(5)", 'default_value' => 0, 'carac' => "NOT NULL");
+    $info_index_col["firm_version"] = array ( 'Field' => "firm_version", 'Type' => "varchar(7)", 'default_value' => "000.000", 'carac' => "NOT NULL");
+    $info_index_col["log"] = array ( 'Field' => "log", 'Type' => "mediumtext");
 
 
     // Check if table configuration exists
@@ -30,7 +30,7 @@ function check_db() {
     // If table exists, return
     if ($res == null)
     {
-        
+
         // Buil MySQL command to create table
         $sql = "CREATE TABLE informations "
                 . "(ID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, "
@@ -56,12 +56,11 @@ function check_db() {
             $ret = $e->getMessage();
             print_r($ret);
         }
+    } else {
+        // Check column
+        check_and_update_column_db ("informations", $info_index_col);
     }
-    
     $db = null;
-
-    // Check column
-    check_and_update_column_db ("informations", $info_index_col);
 }
 
 

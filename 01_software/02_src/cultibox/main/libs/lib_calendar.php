@@ -9,20 +9,61 @@ function check_db() {
 
     // Define columns of the calendar table
     $calendar_col = array();
-    $calendar_col["Id"] = array ( 'Field' => "Id", "Type" => "int(11)");
-    $calendar_col["Title"] = array ( 'Field' => "Title", "Type" => "VARCHAR(1000)");
-    $calendar_col["Description"] = array ( 'Field' => "Description", "Type" => "VARCHAR(500)");
-    $calendar_col["StartTime"] = array ( 'Field' => "StartTime", "Type" => "DATETIME");
-    $calendar_col["EndTime"] = array ( 'Field' => "EndTime", "Type" => "DATETIME");
-    $calendar_col["External"] = array ( 'Field' => "EndTime", "Type" => "SMALLINT(6)", "default_value" => 0);
-    $calendar_col["Color"] = array ( 'Field' => "Color", "Type" => "VARCHAR(7)","default_value" => "#4A40A4");
+    $calendar_col["Id"] = array ( 'Field' => "Id", "Type" => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT PRIMARY KEY");
+    $calendar_col["Title"] = array ( 'Field' => "Title", "Type" => "VARCHAR(1000)", "default_value" => "NULL", 'carac' => "CHARACTER SET utf8");
+    $calendar_col["Description"] = array ( 'Field' => "Description", "Type" => "VARCHAR(500)", "default_value" => "NULL", 'carac' => "CHARACTER SET utf8");
+    $calendar_col["StartTime"] = array ( 'Field' => "StartTime", "Type" => "DATETIME", "default_value" => "NULL");
+    $calendar_col["EndTime"] = array ( 'Field' => "EndTime", "Type" => "DATETIME", "default_value" => "NULL");
+    $calendar_col["External"] = array ( 'Field' => "External", "Type" => "SMALLINT(6)", "default_value" => 0, 'carac' => "NOT NULL");
+    $calendar_col["Color"] = array ( 'Field' => "Color", "Type" => "VARCHAR(7)","default_value" => "#4A40A4", 'carac' => "NOT NULL");
     $calendar_col["Icon"] = array ( 'Field' => "Icon", "Type" => "VARCHAR(30)");
-    $calendar_col["Important"] = array ( 'Field' => "Important", "Type" => "int(1)");
-    $calendar_col["program_index"] = array ( 'Field' => "program_index", "Type" => "VARCHAR(30)");
+    $calendar_col["Important"] = array ( 'Field' => "Important", "Type" => "int(1)", 'carac' => "NOT NULL", "default_value" => 0);
+    $calendar_col["program_index"] = array ( 'Field' => "program_index", "Type" => "VARCHAR(30)","default_value" => "NULL");
+
+    
+    // Check if table program_index exists
+    $sql = "SHOW TABLES FROM cultibox LIKE 'calendar';";
+
+    $db = \db_priv_pdo_start("root");
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    // If table exists, return
+    if ($res == null)
+    {
+
+        // Build MySQL command to create table
+        $sql = "CREATE TABLE calendar ("
+                ."Id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+                ."Title varchar(1000) CHARACTER SET utf8 DEFAULT NULL,"
+                ."Description varchar(500) CHARACTER SET utf8 DEFAULT NULL,"
+                ."StartTime datetime DEFAULT NULL,"
+                ."EndTime datetime DEFAULT NULL,"
+                ."External SMALLINT(6) NOT NULL DEFAULT '0',"
+                ."Color varchar(7) NOT NULL DEFAULT '#4A40A4'," 
+                ."Icon VARCHAR(30) NULL,"
+                ."Important INT(1) NOT NULL DEFAULT '0',"
+                ."program_index VARCHAR(30) DEFAULT NULL);";
 
 
-    // Check column
-    check_and_update_column_db ("calendar", $calendar_col);
+        // Create table
+        try {
+            $sth = $db->prepare($sql);
+            $sth->execute();
+        } catch(\PDOException $e) {
+            $ret = $e->getMessage();
+            print_r($ret);
+        }
+    } else {
+        // Check column
+        check_and_update_column_db ("calendar", $calendar_col);
+    }
+    $db = null;
 
 }
 

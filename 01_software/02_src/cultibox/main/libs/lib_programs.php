@@ -9,7 +9,7 @@ function check_db() {
 
     // Define columns of the program_index table
     $program_index_col = array();
-    $program_index_col["id"]            = array ( 'Field' => "id", 'Type' => "int(11)");
+    $program_index_col["id"]            = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT PRIMARY KEY");
     $program_index_col["name"]          = array ( 'Field' => "name", 'Type' => "VARCHAR(100)");
     $program_index_col["version"]       = array ( 'Field' => "version", 'Type' => "VARCHAR(100)");
     $program_index_col["program_idx"]   = array ( 'Field' => "program_idx", 'Type' => "int(11)");
@@ -54,26 +54,27 @@ function check_db() {
         // Add default line
         add_row_program_idx(__('CURRENT_PROG_NAME'),'1.0','1' , '00' , __('CURRENT_PROG_COMMENT'));
         
+    } else {
+        // Check column
+        check_and_update_column_db ("program_index", $program_index_col);
     }
-    
+
     $db = null;
 
-    // Check column
-    check_and_update_column_db ("program_index", $program_index_col);
 
 
 
 
     // Define columns of the programs table
     $program_col = array();
-    $program_col["plug_id"]            = array ( 'Field' => "plug_id", 'Type' => "int(11)");
-    $program_col["time_start"]          = array ( 'Field' => "time_start", 'Type' => "VARCHAR(6)");
-    $program_col["time_stop"]       = array ( 'Field' => "time_stop", 'Type' => "VARCHAR(6)");
-    $program_col["value"]   = array ( 'Field' => "value", 'Type' => "decimal(3,1)");
-    $program_col["number"]      = array ( 'Field' => "number", 'Type' => "int(11)", 'default_value' => 1);
-    $program_col["date_start"]  = array ( 'Field' => "date_start", 'Type' => "varchar(10)",  'default_value' => '0000-00-00');
-    $program_col["date_end"] = array ( 'Field' => "date_end", 'Type' => "VARCHAR(10)",  'default_value' => '0000-00-00');
-    $program_col["type"]      = array ( 'Field' => "type", 'Type' => "INT",  'default_value' => '0');
+    $program_col["plug_id"]            = array ( 'Field' => "plug_id", 'Type' => "int(11)", 'carac' => "NOT NULL");
+    $program_col["time_start"]          = array ( 'Field' => "time_start", 'Type' => "VARCHAR(6)", 'carac' => "NOT NULL");
+    $program_col["time_stop"]       = array ( 'Field' => "time_stop", 'Type' => "VARCHAR(6)", 'carac' => "NOT NULL");
+    $program_col["value"]   = array ( 'Field' => "value", 'Type' => "decimal(3,1)", 'carac' => "NOT NULL");
+    $program_col["number"]      = array ( 'Field' => "number", 'Type' => "int(11)", 'default_value' => 1, 'carac' => "NOT NULL");
+    $program_col["date_start"]  = array ( 'Field' => "date_start", 'Type' => "varchar(10)",  'default_value' => '0000-00-00', 'carac' => "NOT NULL");
+    $program_col["date_end"] = array ( 'Field' => "date_end", 'Type' => "VARCHAR(10)",  'default_value' => '0000-00-00', 'carac' => "NOT NULL");
+    $program_col["type"]      = array ( 'Field' => "type", 'Type' => "INT",  'default_value' => '0', 'carac' => "NOT NULL");
 
     // Check if table programs exists
     $sql = "SHOW TABLES FROM cultibox LIKE 'programs';";
@@ -90,7 +91,6 @@ function check_db() {
     // If table exists, return
     if ($res == null)
     {
-
         // Build MySQL command to create table
         $sql = "CREATE TABLE programs ("
             ."plug_id int(11) NOT NULL,"
@@ -110,13 +110,11 @@ function check_db() {
             $ret = $e->getMessage();
             print_r($ret);
         }
+    } else {
+        // Check column
+        check_and_update_column_db ("programs", $program_col);
     }
-
     $db = null;
-
-    // Check column
-    check_and_update_column_db ("programs", $program_col);
-
 }
 // }}}
 

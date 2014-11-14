@@ -9,20 +9,20 @@ function check_db() {
 
     // Define columns of the calendar table
     $plugs_index_col = array();
-    $plugs_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'default_value' => 1);
-    $plugs_index_col["PLUG_ID"] = array ( 'Field' => "PLUG_ID", 'Type' => "varchar(3)", 'default_value' => null);
-    $plugs_index_col["PLUG_NAME"] = array ( 'Field' => "PLUG_NAME", 'Type' => "varchar(30)", 'default_value' => null);
-    $plugs_index_col["PLUG_TYPE"] = array ( 'Field' => "PLUG_TYPE", 'Type' => "varchar(20)", 'default_value' => 'other');
-    $plugs_index_col["PLUG_TOLERANCE"] = array ( 'Field' => "PLUG_TOLERANCE", 'Type' => "decimal(3,1)", 'default_value' => null);
-    $plugs_index_col["PLUG_POWER"] = array ( 'Field' => "PLUG_POWER", 'Type' => "int(11)", 'default_value' => null);
-    $plugs_index_col["PLUG_POWER_MAX"] = array ( 'Field' => "PLUG_POWER_MAX", 'Type' => "varchar(10)", 'default_value' => '1000');
-    $plugs_index_col["PLUG_REGUL"] = array ( 'Field' => "PLUG_REGUL", 'Type' => "varchar(5)", 'default_value' => 'False');
-    $plugs_index_col["PLUG_REGUL_SENSOR"] = array ( 'Field' => "PLUG_REGUL_SENSOR", 'Type' => "varchar(7)", 'default_value' => '1');
-    $plugs_index_col["PLUG_SENSO"] = array ( 'Field' => "PLUG_SENSO", 'Type' => "varchar(1)", 'default_value' => 'T');
-    $plugs_index_col["PLUG_SENSS"] = array ( 'Field' => "PLUG_SENSS", 'Type' => "varchar(1)", 'default_value' => '+');
-    $plugs_index_col["PLUG_REGUL_VALUE"] = array ( 'Field' => "PLUG_REGUL_VALUE", 'Type' => "decimal(3,1)", 'default_value' => 35.0);
-    $plugs_index_col["PLUG_SECOND_TOLERANCE"] = array ( 'Field' => "PLUG_SECOND_TOLERANCE", 'Type' => "decimal(3,1)", 'default_value' => 0.0);
-    $plugs_index_col["PLUG_COMPUTE_METHOD"] = array ( 'Field' => "PLUG_COMPUTE_METHOD", 'Type' => "varchar(1)", 'default_value' => 'M');
+    $plugs_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'default_value' => 1, 'carac' => "NOT NULL AUTO_INCREMENT PRIMARY KEY");
+    $plugs_index_col["PLUG_ID"] = array ( 'Field' => "PLUG_ID", 'Type' => "varchar(3)", 'default_value' => "NULL");
+    $plugs_index_col["PLUG_NAME"] = array ( 'Field' => "PLUG_NAME", 'Type' => "varchar(30)", 'default_value' => "NULL");
+    $plugs_index_col["PLUG_TYPE"] = array ( 'Field' => "PLUG_TYPE", 'Type' => "varchar(20)", 'default_value' => 'other', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_TOLERANCE"] = array ( 'Field' => "PLUG_TOLERANCE", 'Type' => "decimal(3,1)", 'default_value' => "NULL");
+    $plugs_index_col["PLUG_POWER"] = array ( 'Field' => "PLUG_POWER", 'Type' => "int(11)", 'default_value' => "NULL");
+    $plugs_index_col["PLUG_POWER_MAX"] = array ( 'Field' => "PLUG_POWER_MAX", 'Type' => "varchar(10)", 'default_value' => '1000', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_REGUL"] = array ( 'Field' => "PLUG_REGUL", 'Type' => "varchar(5)", 'default_value' => 'False', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_REGUL_SENSOR"] = array ( 'Field' => "PLUG_REGUL_SENSOR", 'Type' => "varchar(7)", 'default_value' => '1', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_SENSO"] = array ( 'Field' => "PLUG_SENSO", 'Type' => "varchar(1)", 'default_value' => 'T', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_SENSS"] = array ( 'Field' => "PLUG_SENSS", 'Type' => "varchar(1)", 'default_value' => '+', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_REGUL_VALUE"] = array ( 'Field' => "PLUG_REGUL_VALUE", 'Type' => "decimal(3,1)", 'default_value' => 35.0, 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_SECOND_TOLERANCE"] = array ( 'Field' => "PLUG_SECOND_TOLERANCE", 'Type' => "decimal(3,1)", 'default_value' => 0.0, 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_COMPUTE_METHOD"] = array ( 'Field' => "PLUG_COMPUTE_METHOD", 'Type' => "varchar(1)", 'default_value' => 'M', 'carac' => "NOT NULL");
 
 
     // Check if table configuration exists
@@ -68,22 +68,22 @@ function check_db() {
         }
 
         $sql = "INSERT INTO plugs (PLUG_ID, PLUG_NAME, PLUG_TYPE, PLUG_TOLERANCE, PLUG_POWER, PLUG_POWER_MAX, PLUG_REGUL, PLUG_REGUL_SENSOR, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE, PLUG_SECOND_TOLERANCE,PLUG_COMPUTE_METHOD) VALUES
-('', 'Prise1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('', 'Prise16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M');";
+('1', 'Prise1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('2', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('3', 'Prise3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('4', 'Prise4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('5', 'Prise5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('6', 'Prise6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('7', 'Prise7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('8', 'Prise8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('9', 'Prise9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('10', 'Prise10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('11', 'Prise11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('12', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('13', 'Prise13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('14', 'Prise14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('15', 'Prise15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+('16', 'Prise16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M');";
 
         // Insert row:
         try {
@@ -93,12 +93,11 @@ function check_db() {
             $ret = $e->getMessage();
             print_r($ret);
         }
+    } else {
+        // Check column
+        check_and_update_column_db ("plugs", $plugs_index_col);
     }
-    
     $db = null;
-
-    // Check column
-    check_and_update_column_db ("plugs", $plugs_index_col);
 }
 
 
