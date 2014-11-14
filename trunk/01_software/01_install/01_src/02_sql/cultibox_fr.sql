@@ -89,8 +89,7 @@ CREATE TABLE IF NOT EXISTS `informations` (
   `cbx_id` int(5) NOT NULL DEFAULT '0',
   `firm_version` varchar(7) NOT NULL DEFAULT '000.000',
   `log` mediumtext,
-  PRIMARY KEY (`ID`),
-  KEY `ID` (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version`, `log`) VALUES (NULL , '0', '0', '');
@@ -105,8 +104,8 @@ INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version`, `log`) VA
 
 CREATE TABLE IF NOT EXISTS `calendar` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Title` varchar(1000) CHARACTER SET utf8 DEFAULT NULL,
-  `Description` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
+  `Title` varchar(1000) DEFAULT NULL,
+  `Description` varchar(500) DEFAULT NULL,
   `StartTime` datetime DEFAULT NULL,
   `EndTime` datetime DEFAULT NULL,
   `External` SMALLINT(6) NOT NULL DEFAULT '0',
@@ -115,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `calendar` (
   `Important` INT(1) NOT NULL DEFAULT '0',
   `program_index` VARCHAR(30) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 -- --------------------------------------------------------
@@ -210,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `programs` (
   `number` int(11) NOT NULL DEFAULT '1',
   `date_start` varchar(10) NOT NULL DEFAULT '0000-00-00',
   `date_end` varchar(10) NOT NULL DEFAULT '0000-00-00',
-  `type` INT NOT NULL DEFAULT '0'
+  `type` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -270,7 +269,8 @@ INSERT INTO `notes` (`id`, `title`, `desc`, `image`, `link`, `type_link`, `lang`
 
 CREATE TABLE IF NOT EXISTS `sensors` (
   `id` int(11) NOT NULL,
-  `type` varchar(1) NOT NULL DEFAULT '0'
+  `type` varchar(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

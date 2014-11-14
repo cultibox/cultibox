@@ -128,7 +128,35 @@ function check_db() {
     } else {
         // Check column
         check_and_update_column_db ("configuration", $conf_index_col);
-    }
+
+        // Check value:
+        $sql = "UPDATE configuration SET UPDATE_PLUGS_FREQUENCY=1 WHERE UPDATE_PLUGS_FREQUENCY=-1;";
+
+        try {
+            $db->exec("$sql");
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+
+        $sql = "SELECT SECOND_REGUL FROM configuration;";
+        try {
+            $sth=$db->prepare("$sql");
+            $sth-> execute();
+            $res=$sth->fetch();
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+
+        if ($res != null) {
+            $sql = "UPDATE configuration SET ADVANCED_REGUL_OPTIONS = CASE WHEN SECOND_REGUL  LIKE 'True' THEN 'True' ELSE ADVANCED_REGUL_OPTIONS END ;";
+
+            try {
+                $db->exec("$sql");
+            } catch(PDOException $e) {
+                $ret=$e->getMessage();
+            }
+        }
+    } 
     $db=null;
     
 }
