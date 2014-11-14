@@ -48,8 +48,8 @@ function check_db() {
                 ."Color varchar(7) NOT NULL DEFAULT '#4A40A4'," 
                 ."Icon VARCHAR(30) NULL,"
                 ."Important INT(1) NOT NULL DEFAULT '0',"
-                ."program_index VARCHAR(30) DEFAULT NULL);";
-
+                ."program_index VARCHAR(30) DEFAULT NULL,"
+                ."  KEY Id (Id));";
 
         // Create table
         try {

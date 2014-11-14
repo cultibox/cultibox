@@ -676,6 +676,12 @@ function check_database() {
     //Check plugs table:
     plugs\check_db();
 
+    //Check logs table:
+    logs\check_db();
+
+    //Check power table:
+    power\check_db();
+
 }
 //}}}
 
