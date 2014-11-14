@@ -75,6 +75,8 @@ EOF
            sed -i "s/Version: .*/Version: `echo $VERSION`-ubuntu/g" ../01_src/01_xampp/cultibox/DEBIAN/control
            sed -i "s/Version=.*/Version=`echo $VERSION`/g" ../01_src/01_xampp/cultibox/usr/share/applications/cultibox.desktop
 
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`'/" ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/libs/lib_configuration.php
+
            find ./../01_src/01_xampp/cultibox/opt/lampp -name ".svn"|xargs rm -Rf
            mv ../01_src/01_xampp/cultibox/opt/lampp ../01_src/01_xampp/cultibox/opt/cultibox
 
@@ -128,6 +130,8 @@ EOF
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-ubuntu/g" ../01_src/01_xampp/cultibox/DEBIAN/control
            sed -i "s/Version=.*/Version=`echo $VERSION`/g" ../01_src/01_xampp/cultibox/usr/share/applications/cultibox.desktop
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`'/" ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/libs/lib_configuration.php
+
 
            find ./../01_src/01_xampp/cultibox/opt/lampp -name ".svn"|xargs rm -Rf
            mv ../01_src/01_xampp/cultibox/opt/lampp ../01_src/01_xampp/cultibox/opt/cultibox

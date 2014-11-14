@@ -93,6 +93,8 @@ case "$1" in
         sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-noarch'/" ../01_src/01_xampp/cultibox/sql_install/cultibox_es.sql
 
         sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-noarch' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/sql_install/update_sql.sql
+        sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`'/" ../01_src/01_xampp/cultibox/htdocs/cultibox/main/libs/lib_configuration.php
+
 
         cp -R ../../01_install/01_src/03_sd/* ../01_src/01_xampp/cultibox/htdocs/cultibox/tmp/
 
