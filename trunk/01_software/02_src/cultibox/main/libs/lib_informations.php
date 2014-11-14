@@ -47,7 +47,7 @@ function check_db() {
             print_r($ret);
         }
 
-        $sql = "INSERT INTO informations (ID ,cbx_id ,firm_version,log) VALUES (NULL , '0', '0', '');";
+        $sql = "INSERT INTO informations (ID ,cbx_id ,firm_version,log) VALUES (NULL , '0', '', '');";
         // Insert row:
         try {
             $sth = $db->prepare($sql);
