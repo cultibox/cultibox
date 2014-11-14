@@ -9,8 +9,8 @@ function check_db() {
 
     // Define columns of the calendar table
     $conf_index_col = array();
-    $conf_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'default_value' => 1, 'carac' => "NOT NULL AUTO_INCREMENT PRIMARY KEY");
-    $conf_index_col["VERSION"]              = array ( 'Field' => "VERSION", 'Type' => "varchar(30)", 'default_value' => "2.0.12",'carac' => "NOT NULL");
+    $conf_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'default_value' => 1, 'carac' => "NOT NULL AUTO_INCREMENT");
+    $conf_index_col["VERSION"]              = array ( 'Field' => "VERSION", 'Type' => "varchar(30)", 'default_value' => '2.0.12-noarch','carac' => "NOT NULL");
     $conf_index_col["COLOR_HUMIDITY_GRAPH"] = array ( 'Field' => "COLOR_HUMIDITY_GRAPH", 'Type' => "varchar(30)", 'default_value' => "blue",'carac' => "NOT NULL");
     $conf_index_col["COLOR_TEMPERATURE_GRAPH"] = array ( 'Field' => "COLOR_TEMPERATURE_GRAPH", 'Type' => "varchar(30)", 'default_value' => "red",'carac' => "NOT NULL");
     $conf_index_col["COLOR_WATER_GRAPH"]    = array ( 'Field' => "COLOR_WATER_GRAPH", 'Type' => "varchar(30)", 'default_value' => "orange",'carac' => "NOT NULL");
@@ -42,7 +42,7 @@ function check_db() {
     $conf_index_col["WIFI_PASSWORD"]        = array ( 'Field' => "WIFI_PASSWORD", 'Type' => "varchar(63)");
     $conf_index_col["WIFI_IP"]              = array ( 'Field' => "WIFI_IP", 'Type' => "varchar(15)", 'default_value' => "000.000.000.000",'carac' => "NOT NULL");
     $conf_index_col["WIFI_IP_REAL"]              = array ( 'Field' => "WIFI_IP_REAL", 'Type' => "varchar(15)", 'default_value' => "000.000.000.000",'carac' => "NOT NULL");
-    $conf_index_col["WIFI_IP_MANUAL"]       = array ( 'Field' => "WIFI_IP_MANUAL", 'Type' => "BOOLEAN", 'default_value' => false,'carac' => "NOT NULL");
+    $conf_index_col["WIFI_IP_MANUAL"]       = array ( 'Field' => "WIFI_IP_MANUAL", 'Type' => "tinyint(1)", 'default_value' => false,'carac' => "NOT NULL");
     $conf_index_col["RTC_OFFSET"]           = array ( 'Field' => "RTC_OFFSET", 'Type' => "int(11)", 'default_value' => 0,'carac' => "NOT NULL");
     $conf_index_col["REMOVE_1000_CHANGE_LIMIT"] = array ( 'Field' => "REMOVE_1000_CHANGE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False",'carac' => "NOT NULL");
     $conf_index_col["REMOVE_5_MINUTE_LIMIT"] = array ( 'Field' => "REMOVE_5_MINUTE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False",'carac' => "NOT NULL");
@@ -68,7 +68,7 @@ function check_db() {
         // Buil MySQL command to create table
         $sql = "CREATE TABLE `configuration` ("
             ."id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,"
-            ."VERSION varchar(30) NOT NULL DEFAULT '2.0.12',"
+            ."VERSION varchar(30) NOT NULL DEFAULT '2.0.12-noarch',"
             ."COLOR_HUMIDITY_GRAPH varchar(30) NOT NULL DEFAULT 'blue',"
             ."COLOR_TEMPERATURE_GRAPH varchar(30) NOT NULL DEFAULT 'red',"
             ."COLOR_WATER_GRAPH varchar(30) NOT NULL DEFAULT 'orange',"
@@ -92,15 +92,15 @@ function check_db() {
             ."COST_TYPE varchar(20) NOT NULL DEFAULT 'standard',"
             ."STATISTICS varchar(5) NOT NULL DEFAULT 'True',"
             ."ADVANCED_REGUL_OPTIONS VARCHAR(5) NOT NULL DEFAULT 'False',"
-            ."SHOW_COST BOOLEAN NOT NULL DEFAULT 0,"
+            ."SHOW_COST tinyint(1) NOT NULL DEFAULT 0,"
             ."RESET_MINMAX VARCHAR(5) NOT NULL DEFAULT '00:00',"
-            ."WIFI BOOLEAN NOT NULL DEFAULT 0,"
+            ."WIFI tinyint(1) NOT NULL DEFAULT 0,"
             ."WIFI_SSID VARCHAR(32),"
             ."WIFI_KEY_TYPE VARCHAR(10) NOT NULL DEFAULT 'NONE',"
             ."WIFI_PASSWORD VARCHAR(63),"
             ."WIFI_IP VARCHAR(15) NOT NULL DEFAULT '000.000.000.000',"
             ."WIFI_IP_REAL VARCHAR(15) NOT NULL DEFAULT '000.000.000.000',"
-            ."WIFI_IP_MANUAL BOOLEAN NOT NULL DEFAULT false,"
+            ."WIFI_IP_MANUAL tinyint(1) NOT NULL DEFAULT false,"
             ."RTC_OFFSET int(11) NOT NULL DEFAULT '0',"
             ."REMOVE_1000_CHANGE_LIMIT VARCHAR(5) NOT NULL DEFAULT 'False',"
             ."REMOVE_5_MINUTE_LIMIT VARCHAR(5) NOT NULL DEFAULT 'False',"
@@ -115,7 +115,7 @@ function check_db() {
             print_r($ret);
         }
 
-         $sql = "INSERT INTO configuration (id, VERSION, COLOR_HUMIDITY_GRAPH, COLOR_TEMPERATURE_GRAPH, COLOR_WATER_GRAPH, COLOR_LEVEL_GRAPH, COLOR_PH_GRAPH, COLOR_EC_GRAPH, COLOR_OD_GRAPH, COLOR_ORP_GRAPH, COLOR_POWER_GRAPH, RECORD_FREQUENCY, POWER_FREQUENCY, NB_PLUGS, UPDATE_PLUGS_FREQUENCY, ALARM_ACTIV, ALARM_VALUE, COST_PRICE, COST_PRICE_HP, COST_PRICE_HC, START_TIME_HC, STOP_TIME_HC, COST_TYPE, STATISTICS,ADVANCED_REGUL_OPTIONS,SHOW_COST,RESET_MINMAX, WIFI, WIFI_SSID, WIFI_KEY_TYPE, WIFI_PASSWORD, WIFI_IP, WIFI_IP_REAL, WIFI_IP_MANUAL, RTC_OFFSET) VALUES (1, '2.0.12', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 'black', 5, 1, 3, 1, '0000', '60', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 0, '00:00',0,'','NONE','','000.000.000.000','000.000.000.000',0,0);";
+         $sql = "INSERT INTO configuration (id, VERSION, COLOR_HUMIDITY_GRAPH, COLOR_TEMPERATURE_GRAPH, COLOR_WATER_GRAPH, COLOR_LEVEL_GRAPH, COLOR_PH_GRAPH, COLOR_EC_GRAPH, COLOR_OD_GRAPH, COLOR_ORP_GRAPH, COLOR_POWER_GRAPH, RECORD_FREQUENCY, POWER_FREQUENCY, NB_PLUGS, UPDATE_PLUGS_FREQUENCY, ALARM_ACTIV, ALARM_VALUE, COST_PRICE, COST_PRICE_HP, COST_PRICE_HC, START_TIME_HC, STOP_TIME_HC, COST_TYPE, STATISTICS,ADVANCED_REGUL_OPTIONS,SHOW_COST,RESET_MINMAX, WIFI, WIFI_SSID, WIFI_KEY_TYPE, WIFI_PASSWORD, WIFI_IP, WIFI_IP_REAL, WIFI_IP_MANUAL, RTC_OFFSET) VALUES (1, '2.0.12-noarch', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 'black', 5, 1, 3, 1, '0000', '60', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 0, '00:00',0,'','NONE','','000.000.000.000','000.000.000.000',0,0);";
         // Insert row:
         try {
             $sth = $db->prepare($sql);

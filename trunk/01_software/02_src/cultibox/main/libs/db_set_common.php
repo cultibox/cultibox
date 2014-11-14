@@ -537,7 +537,7 @@ function check_and_update_column_db ($tableName, $officialColumn) {
         {
             if ($col['Field'] == $needColumn['Field']) {
                 if(strtolower($col['Type']) == strtolower($needColumn['Type'])) {
-                    $usefull = 1;
+                    $usefull = 1;   
                     break;
                 } else {
                     $usefull = 2;
@@ -619,18 +619,18 @@ function check_and_update_column_db ($tableName, $officialColumn) {
         
     }
 
-    
+   
     // Change column :
     foreach ($colToChange as $col)
     {
 
-        $sql = "ALTER TABLE " . $tableName . " CHANGE " . $col . " " .$officialColumn[$col]['Type'];
+        $sql = "ALTER TABLE " . $tableName . " CHANGE " . $col . " " . $col . " " .$officialColumn[$col]['Type'];
 
         if (array_key_exists('carac', $officialColumn[$col]))
         {
             $sql = $sql . " ".$officialColumn[$col]['carac'] . " ";
 
-        } 
+        }
 
         if (array_key_exists('default_value', $officialColumn[$col]))
         {
@@ -638,7 +638,7 @@ function check_and_update_column_db ($tableName, $officialColumn) {
         }
         
         $sql = $sql . ";" ;
-        
+
         // Change column
         try {
             $sth = $db->prepare($sql);
