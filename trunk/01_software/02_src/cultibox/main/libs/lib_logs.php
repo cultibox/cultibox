@@ -2,6 +2,51 @@
 
 namespace logs {
 
+// {{{ check_db()
+// ROLE check and update database
+// RET none
+function check_db() {
+
+    // Check if table configuration exists
+    $sql = "SHOW TABLES FROM cultibox LIKE 'logs';";
+
+    $db = \db_priv_pdo_start("root");
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    // If table exists, return
+    if ($res == null)
+    {
+
+        // Buil MySQL command to create table
+        $sql = "CREATE TABLE logs ("
+            ."timestamp varchar(14) NOT NULL DEFAULT '',"
+            ."record1 int(4) DEFAULT NULL,"
+            ."record2 int(4) DEFAULT NULL,"
+            ."date_catch varchar(10) DEFAULT NULL,"
+            ."time_catch varchar(10) DEFAULT NULL,"
+            ."fake_log varchar(5) NOT NULL DEFAULT 'False',"
+            ."sensor_nb int(4) NOT NULL DEFAULT '1',"
+            ."KEY timestamp (timestamp));";
+
+        // Create table
+        try {
+            $sth = $db->prepare($sql);
+            $sth->execute();
+        } catch(\PDOException $e) {
+            $ret = $e->getMessage();
+            print_r($ret);
+        }
+    }
+    $db = null;
+}
+
+
 // {{{ export_table_csv()
 // ROLE export a program into a text file
 // IN $name       name of the table to be exported

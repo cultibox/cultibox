@@ -129,7 +129,10 @@ function check_db() {
         // Check column
         check_and_update_column_db ("configuration", $conf_index_col);
 
+
         // Check value:
+
+        //For version > 2.0.02:
         $sql = "UPDATE configuration SET UPDATE_PLUGS_FREQUENCY=1 WHERE UPDATE_PLUGS_FREQUENCY=-1;";
 
         try {
@@ -138,6 +141,7 @@ function check_db() {
             $ret=$e->getMessage();
         }
 
+        //For version > 2.0.02:
         $sql = "SELECT SECOND_REGUL FROM configuration;";
         try {
             $sth=$db->prepare("$sql");

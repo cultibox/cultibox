@@ -10,6 +10,7 @@ if(is_file("main/libs/l10n.php")) {
    require_once 'main/libs/lib_informations.php';
    require_once 'main/libs/lib_sensors.php';
    require_once 'main/libs/lib_plugs.php';
+   require_once 'main/libs/lib_power.php';
 } else if(is_file("../libs/l10n.php")) {
    require_once '../libs/l10n.php';
    require_once '../libs/lib_programs.php';
@@ -19,6 +20,7 @@ if(is_file("main/libs/l10n.php")) {
    require_once '../libs/lib_informations.php';
    require_once '../libs/lib_sensors.php';
    require_once '../libs/lib_plugs.php';
+   require_once '../libs/lib_power.php';
 } else {
    require_once '../../libs/l10n.php';
    require_once '../../libs/lib_programs.php';
@@ -28,7 +30,9 @@ if(is_file("main/libs/l10n.php")) {
    require_once '../../libs/lib_informations.php';
    require_once '../../libs/lib_sensors.php';
    require_once '../../libs/lib_plugs.php';
+   require_once '../../libs/lib_power.php';
 }
+
 
 
 // {{{ __($msgkey, ...)

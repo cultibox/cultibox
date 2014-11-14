@@ -12,7 +12,6 @@ function check_db() {
     $sensors_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => 'NOT NULL');
     $sensors_index_col["type"] = array ( 'Field' => "type", 'Type' => "varchar(1)", 'default_value' => 0, 'carac' => "NOT NULL");
 
-//SENSOR ID UNIQ!!!
     // Check if table configuration exists
     $sql = "SHOW TABLES FROM cultibox LIKE 'sensors';";
     
@@ -56,6 +55,12 @@ function check_db() {
     } else {
         // Check column
         check_and_update_column_db ("sensors", $sensors_index_col);
+
+
+        //Check value:
+        
+        //For version > 2.0.02:
+        
     }
     $db = null;
 }
