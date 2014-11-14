@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `informations` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version`,`log`) VALUES (NULL , '0', '0', '');
+INSERT INTO `cultibox`.`informations` (`ID` ,`cbx_id` ,`firm_version`,`log`) VALUES (NULL , '0', '', '');
 
 
 -- --------------------------------------------------------
