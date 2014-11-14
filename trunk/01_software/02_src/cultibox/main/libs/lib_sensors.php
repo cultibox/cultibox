@@ -9,10 +9,10 @@ function check_db() {
 
     // Define columns of the calendar table
     $sensors_index_col = array();
-    $sensors_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'default_value' => 1);
-    $sensors_index_col["type"] = array ( 'Field' => "type", 'Type' => "varchar(1)", 'default_value' => 0);
+    $sensors_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => 'NOT NULL UNIQ');
+    $sensors_index_col["type"] = array ( 'Field' => "type", 'Type' => "varchar(1)", 'default_value' => 0, 'carac' => "NOT NULL");
 
-
+//SENSOR ID UNIQ!!!
     // Check if table configuration exists
     $sql = "SHOW TABLES FROM cultibox LIKE 'sensors';";
     
@@ -31,7 +31,7 @@ function check_db() {
         
         // Buil MySQL command to create table
         $sql = "CREATE TABLE sensors "
-                . "(id int(11) NOT NULL, "
+                . "(id int(11) NOT NULL UNIQ, "
                 . "type varchar(1) NOT NULL DEFAULT '0');";
 
 
@@ -53,12 +53,11 @@ function check_db() {
             $ret = $e->getMessage();
             print_r($ret);
         }
+    } else {
+        // Check column
+        check_and_update_column_db ("sensors", $sensors_index_col);
     }
-    
     $db = null;
-
-    // Check column
-    check_and_update_column_db ("sensors", $sensors_index_col);
 }
 
 

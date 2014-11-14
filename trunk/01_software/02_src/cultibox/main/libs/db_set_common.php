@@ -529,21 +529,25 @@ function check_and_update_column_db ($tableName, $officialColumn) {
     
     // Check if all columns are usefull
     $colToDelete = array();
+    $colToChange = array();
     foreach ($res as $col)
     {
         $usefull = 0;
         foreach ($officialColumn as $needColumn)
         {
-            if ($col['Field'] == $needColumn['Field'] &&
-                strtolower($col['Type']) == strtolower($needColumn['Type']) )
-            {
-                $usefull = 1;
-                break;
+            if ($col['Field'] == $needColumn['Field']) {
+                if(strtolower($col['Type']) == strtolower($needColumn['Type'])) {
+                    $usefull = 1;
+                    break;
+                } else {
+                    $usefull = 2;
+                    break;
+                }
             }
         }
         
-        if ($usefull == 0)
-            $colToDelete[] = $col['Field'];
+        if ($usefull == 0) $colToDelete[] = $col['Field'];
+        if ($usefull == 2) $colToChange[] = $col['Field'];
         
     }
     
@@ -591,6 +595,12 @@ function check_and_update_column_db ($tableName, $officialColumn) {
     
         $sql = "ALTER TABLE " . $tableName . " ADD " . $col . " " . $officialColumn[$col]['Type'];
         
+        if (array_key_exists('carac', $officialColumn[$col]))
+        {
+            $sql = $sql . " ".$officialColumn[$col]['carac'] . " ";
+            
+        } 
+
         if (array_key_exists('default_value', $officialColumn[$col]))
         {
             $sql = $sql . " DEFAULT '" . $officialColumn[$col]['default_value'] . "' ";
@@ -598,7 +608,7 @@ function check_and_update_column_db ($tableName, $officialColumn) {
         
         $sql = $sql . ";" ;
         
-        // Delete column
+        // Add column
         try {
             $sth = $db->prepare($sql);
             $sth->execute();
@@ -608,7 +618,38 @@ function check_and_update_column_db ($tableName, $officialColumn) {
         }
         
     }
+
     
+    // Change column :
+    foreach ($colToChange as $col)
+    {
+
+        $sql = "ALTER TABLE " . $tableName . " CHANGE " . $col . " " .$officialColumn[$col]['Type'];
+
+        if (array_key_exists('carac', $officialColumn[$col]))
+        {
+            $sql = $sql . " ".$officialColumn[$col]['carac'] . " ";
+
+        } 
+
+        if (array_key_exists('default_value', $officialColumn[$col]))
+        {
+            $sql = $sql . " DEFAULT '" . $officialColumn[$col]['default_value'] . "' ";
+        }
+        
+        $sql = $sql . ";" ;
+        
+        // Change column
+        try {
+            $sth = $db->prepare($sql);
+            $sth->execute();
+        } catch(\PDOException $e) {
+            $ret = $e->getMessage();
+            print_r($ret);
+        }
+        
+    }
+
     $db = null;
 
 }
