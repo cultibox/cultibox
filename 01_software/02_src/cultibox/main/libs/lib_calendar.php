@@ -9,9 +9,9 @@ function check_db() {
 
     // Define columns of the calendar table
     $calendar_col = array();
-    $calendar_col["Id"] = array ( 'Field' => "Id", "Type" => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT PRIMARY KEY");
-    $calendar_col["Title"] = array ( 'Field' => "Title", "Type" => "VARCHAR(1000)", "default_value" => "NULL", 'carac' => "CHARACTER SET utf8");
-    $calendar_col["Description"] = array ( 'Field' => "Description", "Type" => "VARCHAR(500)", "default_value" => "NULL", 'carac' => "CHARACTER SET utf8");
+    $calendar_col["Id"] = array ( 'Field' => "Id", "Type" => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT");
+    $calendar_col["Title"] = array ( 'Field' => "Title", "Type" => "VARCHAR(1000)", "default_value" => "NULL");
+    $calendar_col["Description"] = array ( 'Field' => "Description", "Type" => "VARCHAR(500)", "default_value" => "NULL");
     $calendar_col["StartTime"] = array ( 'Field' => "StartTime", "Type" => "DATETIME", "default_value" => "NULL");
     $calendar_col["EndTime"] = array ( 'Field' => "EndTime", "Type" => "DATETIME", "default_value" => "NULL");
     $calendar_col["External"] = array ( 'Field' => "External", "Type" => "SMALLINT(6)", "default_value" => 0, 'carac' => "NOT NULL");
@@ -40,8 +40,8 @@ function check_db() {
         // Build MySQL command to create table
         $sql = "CREATE TABLE calendar ("
                 ."Id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,"
-                ."Title varchar(1000) CHARACTER SET utf8 DEFAULT NULL,"
-                ."Description varchar(500) CHARACTER SET utf8 DEFAULT NULL,"
+                ."Title varchar(1000) DEFAULT NULL,"
+                ."Description varchar(500) DEFAULT NULL,"
                 ."StartTime datetime DEFAULT NULL,"
                 ."EndTime datetime DEFAULT NULL,"
                 ."External SMALLINT(6) NOT NULL DEFAULT '0',"

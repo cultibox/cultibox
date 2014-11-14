@@ -9,7 +9,7 @@ function check_db() {
 
     // Define columns of the calendar table
     $sensors_index_col = array();
-    $sensors_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => 'NOT NULL UNIQ');
+    $sensors_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => 'NOT NULL');
     $sensors_index_col["type"] = array ( 'Field' => "type", 'Type' => "varchar(1)", 'default_value' => 0, 'carac' => "NOT NULL");
 
 //SENSOR ID UNIQ!!!
@@ -31,7 +31,7 @@ function check_db() {
         
         // Buil MySQL command to create table
         $sql = "CREATE TABLE sensors "
-                . "(id int(11) NOT NULL UNIQ, "
+                . "(id int(11) NOT NULL PRIMARY KEY, "
                 . "type varchar(1) NOT NULL DEFAULT '0');";
 
 

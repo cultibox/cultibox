@@ -9,7 +9,7 @@ function check_db() {
 
     // Define columns of the program_index table
     $program_index_col = array();
-    $program_index_col["id"]            = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT PRIMARY KEY");
+    $program_index_col["id"]            = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT");
     $program_index_col["name"]          = array ( 'Field' => "name", 'Type' => "VARCHAR(100)");
     $program_index_col["version"]       = array ( 'Field' => "version", 'Type' => "VARCHAR(100)");
     $program_index_col["program_idx"]   = array ( 'Field' => "program_idx", 'Type' => "int(11)");
@@ -74,7 +74,7 @@ function check_db() {
     $program_col["number"]      = array ( 'Field' => "number", 'Type' => "int(11)", 'default_value' => 1, 'carac' => "NOT NULL");
     $program_col["date_start"]  = array ( 'Field' => "date_start", 'Type' => "varchar(10)",  'default_value' => '0000-00-00', 'carac' => "NOT NULL");
     $program_col["date_end"] = array ( 'Field' => "date_end", 'Type' => "VARCHAR(10)",  'default_value' => '0000-00-00', 'carac' => "NOT NULL");
-    $program_col["type"]      = array ( 'Field' => "type", 'Type' => "INT",  'default_value' => '0', 'carac' => "NOT NULL");
+    $program_col["type"]      = array ( 'Field' => "type", 'Type' => "int(11)",  'default_value' => '0', 'carac' => "NOT NULL");
 
     // Check if table programs exists
     $sql = "SHOW TABLES FROM cultibox LIKE 'programs';";
@@ -100,7 +100,7 @@ function check_db() {
             ."number int(11) NOT NULL DEFAULT '1',"
             ."date_start varchar(10) NOT NULL DEFAULT '0000-00-00',"
             ."date_end varchar(10) NOT NULL DEFAULT '0000-00-00',"
-            ."type INT NOT NULL DEFAULT '0');";
+            ."type int(11) NOT NULL DEFAULT '0');";
 
         // Create table
         try {

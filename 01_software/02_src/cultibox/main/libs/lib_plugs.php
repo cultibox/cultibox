@@ -9,7 +9,7 @@ function check_db() {
 
     // Define columns of the calendar table
     $plugs_index_col = array();
-    $plugs_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'default_value' => 1, 'carac' => "NOT NULL AUTO_INCREMENT PRIMARY KEY");
+    $plugs_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'default_value' => 1, 'carac' => "NOT NULL AUTO_INCREMENT");
     $plugs_index_col["PLUG_ID"] = array ( 'Field' => "PLUG_ID", 'Type' => "varchar(3)", 'default_value' => "NULL");
     $plugs_index_col["PLUG_NAME"] = array ( 'Field' => "PLUG_NAME", 'Type' => "varchar(30)", 'default_value' => "NULL");
     $plugs_index_col["PLUG_TYPE"] = array ( 'Field' => "PLUG_TYPE", 'Type' => "varchar(20)", 'default_value' => 'other', 'carac' => "NOT NULL");
@@ -67,23 +67,23 @@ function check_db() {
             print_r($ret);
         }
 
-        $sql = "INSERT INTO plugs (PLUG_ID, PLUG_NAME, PLUG_TYPE, PLUG_TOLERANCE, PLUG_POWER, PLUG_POWER_MAX, PLUG_REGUL, PLUG_REGUL_SENSOR, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE, PLUG_SECOND_TOLERANCE,PLUG_COMPUTE_METHOD) VALUES
-('1', 'Prise1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('2', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('3', 'Prise3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('4', 'Prise4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('5', 'Prise5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('6', 'Prise6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('7', 'Prise7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('8', 'Prise8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('9', 'Prise9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('10', 'Prise10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('11', 'Prise11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('12', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('13', 'Prise13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('14', 'Prise14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('15', 'Prise15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
-('16', 'Prise16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M');";
+        $sql = "INSERT INTO plugs (id, PLUG_ID, PLUG_NAME, PLUG_TYPE, PLUG_TOLERANCE, PLUG_POWER, PLUG_POWER_MAX, PLUG_REGUL, PLUG_REGUL_SENSOR, PLUG_SENSO, PLUG_SENSS, PLUG_REGUL_VALUE, PLUG_SECOND_TOLERANCE,PLUG_COMPUTE_METHOD) VALUES
+(1,'', 'Prise1', 'other', 1.0, NULL, '3500', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(2,'', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(3,'', 'Prise3', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(4,'', 'Prise4', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(5,'', 'Prise5', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(6,'', 'Prise6', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(7,'', 'Prise7', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(8,'', 'Prise8', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(9,'', 'Prise9', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(10,'', 'Prise10', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(11,'', 'Prise11', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(12,'', 'Prise2', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(13,'', 'Prise13', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(14,'', 'Prise14', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(15,'', 'Prise15', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M'),
+(16,'', 'Prise16', 'other', 1.0, NULL, '1000', 'False', '1', 'T', '+', 35.0,0.0,'M');";
 
         // Insert row:
         try {
