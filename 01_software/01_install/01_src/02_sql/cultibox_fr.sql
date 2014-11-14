@@ -113,7 +113,8 @@ CREATE TABLE IF NOT EXISTS `calendar` (
   `Icon` VARCHAR(30) NULL,
   `Important` INT(1) NOT NULL DEFAULT '0',
   `program_index` VARCHAR(30) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  KEY `Id` (`Id`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
