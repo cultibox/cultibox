@@ -60,7 +60,13 @@ function check_db() {
         //Check value:
         
         //For version > 2.0.02:
-        
+        $sql = "ALTER TABLE sensors ADD PRIMARY KEY (id);";
+
+        try {
+            $db->exec("$sql");
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
     }
     $db = null;
 }
