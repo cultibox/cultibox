@@ -9,7 +9,7 @@ function check_db() {
 
     // Define columns of the calendar table
     $info_index_col = array();
-    $info_index_col["ID"]                   = array ( 'Field' => "ID", 'Type' => "int(11)", 'default_value' => 1, 'carac' => "NOT NULL AUTO_INCREMENT");
+    $info_index_col["ID"]                   = array ( 'Field' => "ID", 'Type' => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT");
     $info_index_col["cbx_id"] = array ( 'Field' => "cbx_id", 'Type' => "int(5)", 'default_value' => 0, 'carac' => "NOT NULL");
     $info_index_col["firm_version"] = array ( 'Field' => "firm_version", 'Type' => "varchar(7)", 'default_value' => "000.000", 'carac' => "NOT NULL");
     $info_index_col["log"] = array ( 'Field' => "log", 'Type' => "mediumtext");
