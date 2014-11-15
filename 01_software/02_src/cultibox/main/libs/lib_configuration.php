@@ -126,6 +126,28 @@ function check_db() {
         }
 
     } else {
+        //For version > 2.0.02:
+        $sql = "SELECT SECOND_REGUL FROM configuration;";
+        try {
+            $sth=$db->prepare("$sql");
+            $sth-> execute();
+            $res=$sth->fetch();
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+
+        if ($res != null) {
+            $sql = "UPDATE configuration SET ADVANCED_REGUL_OPTIONS = CASE WHEN SECOND_REGUL  LIKE 'True' THEN 'True' ELSE ADVANCED_REGUL_OPTIONS END ;";
+            echo "$sql";
+
+            try {
+                $db->exec("$sql");
+            } catch(PDOException $e) {
+                $ret=$e->getMessage();
+            }
+        }
+
+
         // Check column
         check_and_update_column_db ("configuration", $conf_index_col);
 
@@ -139,35 +161,6 @@ function check_db() {
             $db->exec("$sql");
         } catch(PDOException $e) {
             $ret=$e->getMessage();
-        }
-
-        //For version > 2.0.02:
-        $sql = "ALTER TABLE configuration SET UPDATE_PLUGS_FREQUENCY UPDATE_PLUGS_FREQUENCY int(20) NOT NULL DEFAULT '1';";
-
-        try {
-            $db->exec("$sql");
-        } catch(PDOException $e) {
-            $ret=$e->getMessage();
-        }
-
-        //For version > 2.0.02:
-        $sql = "SELECT SECOND_REGUL FROM configuration;";
-        try {
-            $sth=$db->prepare("$sql");
-            $sth-> execute();
-            $res=$sth->fetch();
-        } catch(PDOException $e) {
-            $ret=$e->getMessage();
-        }
-
-        if ($res != null) {
-            $sql = "UPDATE configuration SET ADVANCED_REGUL_OPTIONS = CASE WHEN SECOND_REGUL  LIKE 'True' THEN 'True' ELSE ADVANCED_REGUL_OPTIONS END ;";
-
-            try {
-                $db->exec("$sql");
-            } catch(PDOException $e) {
-                $ret=$e->getMessage();
-            }
         }
     } 
     $db=null;
