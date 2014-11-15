@@ -536,7 +536,15 @@ function check_and_update_column_db ($tableName, $officialColumn) {
         foreach ($officialColumn as $needColumn)
         {
             if ($col['Field'] == $needColumn['Field']) {
-                if(strtolower($col['Type']) == strtolower($needColumn['Type'])) {
+                $default="NULL";
+                if(isset($needColumn['default_value'])) {
+                    $default=$needColumn['default_value'];
+                }
+
+                if(strcmp(strtoupper($default),"")==0) $default="NULL";
+                if(strcmp(strtoupper($col['Default']),"")==0) $col['Default']="NULL";
+
+                if((strtolower($col['Type']) == strtolower($needColumn['Type']))&&(strtolower($col['Default']) == strtolower($default))) {
                     $usefull = 1;   
                     break;
                 } else {
@@ -571,6 +579,7 @@ function check_and_update_column_db ($tableName, $officialColumn) {
             $colToAdd[] = $needColumn['Field'];
         
     }
+
 
     // Delete not used column
     foreach ($colToDelete as $col)

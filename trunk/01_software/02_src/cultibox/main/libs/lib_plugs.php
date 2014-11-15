@@ -9,7 +9,7 @@ function check_db() {
 
     // Define columns of the calendar table
     $plugs_index_col = array();
-    $plugs_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'default_value' => 1, 'carac' => "NOT NULL AUTO_INCREMENT");
+    $plugs_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT");
     $plugs_index_col["PLUG_ID"] = array ( 'Field' => "PLUG_ID", 'Type' => "varchar(3)", 'default_value' => "NULL");
     $plugs_index_col["PLUG_NAME"] = array ( 'Field' => "PLUG_NAME", 'Type' => "varchar(30)", 'default_value' => "NULL");
     $plugs_index_col["PLUG_TYPE"] = array ( 'Field' => "PLUG_TYPE", 'Type' => "varchar(20)", 'default_value' => 'other', 'carac' => "NOT NULL");
