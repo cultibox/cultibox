@@ -11,6 +11,26 @@
 + Bug can be view at adress : http://code.google.com/p/cultibox                +
 +------------------------------------------------------------------------------+
 
++ Version 2.23
+   Comment:
+        Correction pour le bug 933
+   Issues :
+      796: [programme] "marche " sur pompe à eau
+      761: [Cultibox] régulation + action manuelle
+   To test :
+      824 : [PROG] Fonctionnement inattendu
+      840 : [cout] log à la seconde
+      932 : [CULTI] Gestion du contraste
+      933 : [RTC] Permettre un décalage journalier de l'horloge
+      958 : [CONF] Wifi 
+      963 : [ALARME] Tracer dans les logs la mise en route de l'alarme
+   Solved :
+      652 : [REGULATON] vérif fonctionnement régulation moyenne/min/max sur plusieurs capteurs
+      835 : [Régulation] anomalie de fonctionnement
+      836 : [Régulation] Pilotage non correcte pour effecteur négatif
+      839: [programme] chg de jour avec programme au jour sans carte SD
+      931 : [Cultibox] nombre de changement par jour
+      
 + Version 2.21
    Comment:
    Issues :
