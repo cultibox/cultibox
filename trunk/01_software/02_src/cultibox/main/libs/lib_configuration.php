@@ -138,7 +138,6 @@ function check_db() {
 
         if ($res != null) {
             $sql = "UPDATE configuration SET ADVANCED_REGUL_OPTIONS = CASE WHEN SECOND_REGUL  LIKE 'True' THEN 'True' ELSE ADVANCED_REGUL_OPTIONS END ;";
-            echo "$sql";
 
             try {
                 $db->exec("$sql");

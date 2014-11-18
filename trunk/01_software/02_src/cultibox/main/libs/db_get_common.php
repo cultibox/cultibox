@@ -1906,8 +1906,8 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
     // Read the number of plugs
     $nb_plugs=get_configuration("NB_PLUGS",$out);
     
-    // Get programs for plug enabled
-   $sql = "SELECT * FROM programs WHERE plug_id IN (SELECT id FROM plugs) AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
+    // Get programs for plugs 
+   $sql = "SELECT * FROM programs WHERE plug_id IN (SELECT id FROM plugs WHERE id <= " . $nb_plugs . ") AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
   
    $db=db_priv_pdo_start();
    try {
@@ -1928,7 +1928,7 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
 
    
    // Select first element of program
-   $sql = "SELECT * FROM programs WHERE time_start = '000000' AND plug_id IN (SELECT id FROM plugs) AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
+   $sql = "SELECT * FROM programs WHERE time_start = '000000' AND plug_id IN (SELECT id FROM plugs WHERE id <= " . $nb_plugs . ") AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
 
     try {
         $sth=$db->prepare($sql);
@@ -1947,7 +1947,7 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
     }
 
     // Select last element of program
-   $sql = "SELECT * FROM programs WHERE time_stop = '235959' AND plug_id IN (SELECT id FROM plugs) AND number = '" . $fieldNumber . "' ORDER by time_start;";
+   $sql = "SELECT * FROM programs WHERE time_stop = '235959' AND plug_id IN (SELECT id FROM plugs WHERE id <= " . $nb_plugs . ") AND number = '" . $fieldNumber . "' ORDER by time_start;";
 
     try {
         $sth=$db->prepare($sql);
@@ -2013,8 +2013,29 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
         }
         $event=$evt;
     }
+	
+	$plg=array();
+	for($i=1;$i<= $nb_plugs;$i++) {
+		$sql = "SELECT * FROM programs WHERE plug_id = " . $i . " ORDER BY time_start ;";
 
-    if(count($event)>0) {
+		try {
+			$sth=$db->prepare($sql);
+			$sth->execute();
+			$plg[$i]=$sth->fetchAll(PDO::FETCH_ASSOC);
+		} catch(PDOException $e) {
+			$plg[$i]=$e->getMessage();
+       
+			if($GLOBALS['DEBUG_TRACE']) {
+				$out[]=__('ERROR_SELECT_SQL').$ret;
+			} else {
+				$out[]=__('ERROR_SELECT_SQL');
+			}
+        
+			unset($ret);
+		}
+   }
+      
+   if(count($event)>0) {
         for($i=0;$i<count($event);$i++) {
             $data[$i+1] = "";
             $j=1;
@@ -2022,8 +2043,8 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
                 if($j>$nb_plugs) {
                     $result="000";
                 } else {
-                    $result=find_value_for_plug($res,$event[$i],$j);
-                }
+                    $result=find_value_for_plug($plg[$j],$event[$i],$j);
+				}
 
                 $data[$i+1]=$data[$i+1]."$result";
                 $j=$j+1;
@@ -2039,9 +2060,10 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
             $data[$i+1]=$time_event.$data[$i+1];
         }
     }
-
+	
     $count=count($data);
     $j=1;
+	
     if(count($last)>0) {
         while($j<= $GLOBALS['NB_MAX_PLUG']) {
             if($j>$nb_plugs) {
@@ -2061,7 +2083,9 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
     } else {
         $data[$count]="86399000000000000000000000000000000000000000000000000";
     }
+	
     return $data;
+	
 }
 // }}}
 
