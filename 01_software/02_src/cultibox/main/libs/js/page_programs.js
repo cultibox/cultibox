@@ -430,7 +430,6 @@ $(document).ready(function(){
                      $("#error_value_program").show(700);
                      checked=false;
                 }
-                alert(checked);
             }
 
             if(checked) {
