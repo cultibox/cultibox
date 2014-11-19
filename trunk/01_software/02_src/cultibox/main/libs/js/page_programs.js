@@ -464,30 +464,47 @@ $(document).ready(function(){
                                 //Customization of checkbox:
                                 data_array['reset_old_program']=$("input[type='checkbox'][name='reset_old_program']:checked").val();
 
-                                $.ajax({
-                                    cache: false,
-                                    async: true,
-                                    url: "main/modules/external/create_program.php",
-                                    data: data_array
-                                }).done(function(data) {
-                                    if(sd_card!="") {
+                                $.blockUI({
+                                    message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                                    centerY: 0,
+                                    css: {
+                                        top: '20%',
+                                        border: 'none',
+                                        padding: '5px',
+                                        backgroundColor: 'grey',
+                                        '-webkit-border-radius': '10px',
+                                        '-moz-border-radius': '10px',
+                                        opacity: .9,
+                                        color: '#fffff'
+                                    },
+                                    onBlock: function() {
                                         $.ajax({
-                                            type: "GET",
-                                            url: "main/modules/external/check_and_update_sd.php",
-                                            data: {
-                                                sd_card:"<?php echo $sd_card ;?>"
-                                            },
+                                            cache: false,
                                             async: false,
-                                            context: document.body,
-                                            success: function(data, textStatus, jqXHR) {
-                                            },
-                                            error: function(jqXHR, textStatus, errorThrown) {
-                                                // Error during request
+                                            url: "main/modules/external/create_program.php",
+                                            data: data_array
+                                        }).done(function(data) {
+                                            if(sd_card!="") {
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "main/modules/external/check_and_update_sd.php",
+                                                    data: {
+                                                        sd_card:"<?php echo $sd_card ;?>"
+                                                    },
+                                                    async: false,
+                                                    context: document.body,
+                                                    success: function(data, textStatus, jqXHR) {
+                                                    },
+                                                    error: function(jqXHR, textStatus, errorThrown) {
+                                                        // Error during request
+                                                    }
+                                                });
                                             }
+                                            get_content("programs",getFormInputs('actionprog'));
                                         });
                                     }
-                                    get_content("programs",getFormInputs('actionprog'));
                                 });
+                                $.unblockUI();
                             }
                         }, {
                             text: CANCEL_button,
