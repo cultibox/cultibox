@@ -63,7 +63,7 @@ La valeur 0 correspond à tout le temps.
 
 La section RTC_OFFSET permet d'accélérer ou de ralentir la vitesse de l'horloge interne. La valeur doit être entre -999 et 999. 
 
-La Cultibox se décale une fois par jour de ce nombre de seconde à 2h00.
+La Cultibox se décale une fois par jour de ce nombre de seconde à 2h30.
 
 == Fichier wifi == 
 
