@@ -1,4 +1,4 @@
-#summary Capteur température et humidité 
+#summary Capteur température et humidité
 
 = Sommaire =
 <wiki:toc max_depth="3" />
@@ -14,7 +14,7 @@ Le capteur permet de mesurer en temps réel la température et l'humidité.
 = Spécifications =
 
 || *Spécification* || *Valeur* ||
-|| Précision de la température || +/- 0,5 °C ||
+|| Précision de la température || +/- 1.2 °C ||
 || Précision de l'humidité || 5%RH ||
 || Température maximale d'utilisation || 60°C ||
 || Température minimale d'utilisation || 0°C ||
