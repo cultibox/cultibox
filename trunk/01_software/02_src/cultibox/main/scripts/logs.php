@@ -94,6 +94,10 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+    setcookie("CHECK_SD", "False", time()+1800,"/",false,false);
+}
+
 
 // Read and update DB with index file
 $sensor_type = array(); 

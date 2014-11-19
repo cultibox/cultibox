@@ -21,6 +21,10 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+    setcookie("CHECK_SD", "False", time()+1800,"/",false,false);
+}
+
 
 //Check the browser compatibility, if it's not compatible, the welcome page wil display a warning message
 if(count($browser)>0) {

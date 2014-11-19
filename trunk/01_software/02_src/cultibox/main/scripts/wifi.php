@@ -40,6 +40,10 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+    setcookie("CHECK_SD", "False", time()+1800,"/",false,false);
+}
+
 $sensor=logs\get_sensor_db_type();
 
 //Compute time loading for debug option
