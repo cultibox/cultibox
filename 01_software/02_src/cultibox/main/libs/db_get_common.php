@@ -1907,7 +1907,7 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
     $nb_plugs=get_configuration("NB_PLUGS",$out);
     
     // Get programs for plugs 
-   $sql = "SELECT * FROM programs WHERE plug_id IN (SELECT id FROM plugs WHERE id <= " . $nb_plugs . ") AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
+   $sql = "SELECT * FROM programs WHERE plug_id IN (SELECT id FROM plugs WHERE id <= " . $nb_plugs . ") AND number = '" . $fieldNumber . "' ORDER BY time_start ASC;";
   
    $db=db_priv_pdo_start();
    try {
@@ -1928,7 +1928,7 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
 
    
    // Select first element of program
-   $sql = "SELECT * FROM programs WHERE time_start = '000000' AND plug_id IN (SELECT id FROM plugs WHERE id <= " . $nb_plugs . ") AND number = '" . $fieldNumber . "' ORDER BY time_start ;";
+   $sql = "SELECT * FROM programs WHERE time_start = '000000' AND plug_id IN (SELECT id FROM plugs WHERE id <= " . $nb_plugs . ") AND number = '" . $fieldNumber . "' ORDER BY time_start ASC;";
 
     try {
         $sth=$db->prepare($sql);
@@ -1947,7 +1947,7 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
     }
 
     // Select last element of program
-   $sql = "SELECT * FROM programs WHERE time_stop = '235959' AND plug_id IN (SELECT id FROM plugs WHERE id <= " . $nb_plugs . ") AND number = '" . $fieldNumber . "' ORDER by time_start;";
+   $sql = "SELECT * FROM programs WHERE time_stop = '235959' AND plug_id IN (SELECT id FROM plugs WHERE id <= " . $nb_plugs . ") AND number = '" . $fieldNumber . "' ORDER by time_start ASC;";
 
     try {
         $sth=$db->prepare($sql);
@@ -2016,7 +2016,7 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
 	
 	$plg=array();
 	for($i=1;$i<= $nb_plugs;$i++) {
-		$sql = "SELECT * FROM programs WHERE plug_id = " . $i . " ORDER BY time_start ;";
+		$sql = "SELECT * FROM programs WHERE plug_id = " . $i . " ORDER BY time_start ASC;";
 
 		try {
 			$sth=$db->prepare($sql);
@@ -2097,6 +2097,12 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
 // RET   000 if the plug is not concerned or if its value is 0, 0001 else
 function find_value_for_plug($data,$time,$plug) {
     for($i=0;$i<count($data);$i++) {
+        //data must be ordered by time_start ASC
+        if($data[$i]['time_start']>$time) {
+            $ret="000";
+            return $ret;
+        } 
+
         if(($data[$i]['time_start']<=$time)&&($data[$i]['time_stop']>=$time)&&($data[$i]['plug_id']==$plug)) {
             if($data[$i]['time_stop']==$time) {
                 if($data[$i]['time_stop']=="235959") {
