@@ -31,6 +31,9 @@ if((isset($_COOKIE['LANG']))&&(!empty($_COOKIE['LANG']))) {
 __('LANG');
 
 
+setcookie("CHECK_SD", "False", time()+1800,"/",false,false);
+
+
 // Library required:
 require_once('main/libs/db_set_common.php');
 require_once('main/libs/debug.php');

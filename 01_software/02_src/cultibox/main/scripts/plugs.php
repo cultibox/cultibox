@@ -52,6 +52,10 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+    setcookie("CHECK_SD", "False", time()+1800,"/",false,false);
+}
+
 
 for($nb=1;$nb<=$nb_plugs;$nb++) {
    $plug_name{$nb}=get_plug_conf("PLUG_NAME",$nb,$main_error);

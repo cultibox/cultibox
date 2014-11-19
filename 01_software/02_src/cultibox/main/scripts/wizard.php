@@ -17,6 +17,9 @@ if((!isset($sd_card))||(empty($sd_card))) {
    $sd_card=get_sd_card();
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+    setcookie("CHECK_SD", "False", time()+1800,"/",false,false);
+}
 
 $error_value[2]=__('ERROR_VALUE_PROGRAM','html');
 $error_value[3]=__('ERROR_VALUE_PROGRAM_TEMP','html');

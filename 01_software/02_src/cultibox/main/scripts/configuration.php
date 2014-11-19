@@ -30,6 +30,10 @@ if((!isset($sd_card))||(empty($sd_card))) {
    sort($hdd_list);
 }
 
+if((!isset($sd_card))||(empty($sd_card))) {
+    setcookie("CHECK_SD", "False", time()+1800,"/",false,false);
+}
+
 
 //============================== GET OR SET CONFIGURATION PART ====================
 //update_conf sert à définir si la configuration impacte la carte SD
