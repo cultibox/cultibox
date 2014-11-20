@@ -162,16 +162,30 @@ loadLog = function(nb_day,pourcent,type,pourcent,search,sd_card) {
 // Define datepicker
 $(function() {
 
-    $("#datepicker, #datepicker_from, #datepicker_to, #datepicker_from_power, #datepicker_to_power, #datepicker_export_from, #datepicker_export_to, #datepicker_export_power_to, #datepicker_export_power_from").datepicker({ 
+    $("#datepicker_from, #datepicker_to, #datepicker_from_power, #datepicker_to_power, #datepicker_export_from, #datepicker_export_to, #datepicker_export_power_to, #datepicker_export_power_from").datepicker({
+        dateFormat: "yy-mm-dd",
+        showButtonPanel: true,
+        showOn: "both",
+        buttonImage: "main/libs/img/datepicker.png",
+        buttonImageOnly: 'true',
+        <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."'"; ?>
+    }).val();
+
+     $("#datepicker").datepicker({
         dateFormat: "yy-mm-dd",
         showButtonPanel: true,
         showOn: "both",
         buttonImage: "main/libs/img/datepicker.png",
         buttonImageOnly: 'true',
         <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
-    }).val()
-
+        onSelect: function(dateText, inst) {
+            var dateAsString = dateText; //the first parameter of this function
+            var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+            //alert(dateAsString );
+        }
+    }).val();
 });
+
 
 Highcharts.setOptions({
     lang: {
