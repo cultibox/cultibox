@@ -2,7 +2,7 @@
 /* Written by Keith Wood (kbwood{at}iinet.com.au) and Stéphane Nahmani (sholby@sholby.net). */
 jQuery(function($){
 	$.datepicker.regional['es'] = {
-		closeText: 'Presentar',
+		closeText: 'Cercar',
 		prevText: '&#x3c;Ante',
 		nextText: 'Sigu&#x3e;',
 		currentText: 'Hoy',
