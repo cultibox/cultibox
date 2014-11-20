@@ -1,8 +1,8 @@
 ﻿/* French initialisation for the jQuery UI date picker plugin. */
 /* Written by Keith Wood (kbwood{at}iinet.com.au) and Stéphane Nahmani (sholby@sholby.net). */
 jQuery(function($){
-	$.datepicker.regional['it'] = {
-		closeText: 'Validate',
+	$.datepicker.regional['de'] = {
+		closeText: 'Close',
 		prevText: '&#x3c;Prev',
 		nextText: 'Next&#x3e;',
 		currentText: 'Today',

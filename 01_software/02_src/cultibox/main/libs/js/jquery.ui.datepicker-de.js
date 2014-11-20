@@ -2,7 +2,7 @@
 /* Written by Keith Wood (kbwood{at}iinet.com.au) and Stéphane Nahmani (sholby@sholby.net). */
 jQuery(function($){
 	$.datepicker.regional['de'] = {
-		closeText: 'Einreichen',
+		closeText: 'Nahaufnahme',
 		prevText: '&#x3c;Früh',
 		nextText: 'Ansc&#x3e;',
 		currentText: 'Heute',

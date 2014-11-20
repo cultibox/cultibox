@@ -2,7 +2,7 @@
 /* Written by Keith Wood (kbwood{at}iinet.com.au) and Stéphane Nahmani (sholby@sholby.net). */
 jQuery(function($){
 	$.datepicker.regional['it'] = {
-		closeText: 'Presentare',
+		closeText: 'Vicino',
 		prevText: '&#x3c;Prec',
 		nextText: 'Segu&#x3e;',
 		currentText: 'Oggi',
