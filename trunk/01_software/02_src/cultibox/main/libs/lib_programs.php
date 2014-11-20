@@ -625,7 +625,7 @@ function get_plug_power ($plug, $dateStart, $dateEnd, $day="day")
         {
             //If there is a change state, add a point to the same time:
             if(($oldRecord!=$row['record'])&&(!isset($serie[(string)(1000 * ($realTimeInS))-1]))) {
-                $serie[(string)(1000 * ($realTimeInS))-1] = floor($oldRecord / 9990 * $plugPower); 
+                $serie[(string)((1000 * ($realTimeInS))-1)] = floor($oldRecord / 9990 * $plugPower);
             }
 
             // WTF ! 7200

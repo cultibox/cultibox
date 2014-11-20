@@ -1,5 +1,6 @@
 Cultibox (2.0.14) precise; urgency=low
     + La carte SD n'est pas vérifiée à chaque chargement de page
+    + Correction de l'affichage des powers sous Windows
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Wed Nov 19 16:34:13 CEST 2014
 
