@@ -23,18 +23,22 @@ var start_day = <?php echo json_encode($startday); ?>;
 function getType(i) {
     var divSelectDay = document.getElementById('label_select_day');
     var divSelectMonth = document.getElementById('label_select_month');
+    var displaySubmit = document.getElementById('display-log-submit');
 
     switch(i) {
         case 0 : 
             divSelectDay.style.display = ''; 
             divSelectMonth.style.display = 'none'; 
+            displaySubmit.style.display = 'none';
             break;
         case 1 : divSelectDay.style.display = 'none'; 
             divSelectMonth.style.display = ''; 
+            displaySubmit.style.display = '';
             break;
         default: 
             divSelectDay.style.display = ''; 
             divSelectMonth.style.display = 'none'; 
+            displaySubmit.style.display = 'none';
             break;
     }
 }
@@ -179,9 +183,83 @@ $(function() {
         buttonImageOnly: 'true',
         <?php echo "buttonText: '".__('TIMEPICKER_BUTTON_TEXT_LOG')."',"; ?>
         onSelect: function(dateText, inst) {
-            var dateAsString = dateText; //the first parameter of this function
-            var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
-            //alert(dateAsString );
+            // var dateAsString = dateText; //the first parameter of this function
+            // var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+            
+            // Add for each curve selected
+            var val="";
+            var val_power="";
+            var val_sensor="";
+            $("#select_curve input[type=checkbox]").each(function() {
+                id=$(this).attr('id');
+                var cheBu = $("#"+id);
+
+                // If checked
+                if (cheBu.attr("checked") == "checked") {
+                    if (cheBu.attr("datatype") == "program") {
+                        if(val=="") {
+                            val=cheBu.attr("plug");
+                        } else {
+                            val=val+","+cheBu.attr("plug");
+                        }
+                    }
+
+
+
+                    if (cheBu.attr("datatype") == "power") {
+                        if(val_power=="") {
+                            val_power=cheBu.attr("plug");
+                        } else {
+                            val_power=val_power+","+cheBu.attr("plug");
+                        }
+                    } 
+                }
+            });
+
+
+            $("#label_select_type input[type=checkbox]").each(function() {
+                id=$(this).attr('id');
+                var cheBu = $("#"+id);
+
+                // If checked
+                if (cheBu.attr("checked") == "checked") {
+                    if (cheBu.attr("datatype") == "logs") {
+                        if(val_sensor=="") {
+                            val_sensor=cheBu.attr("sensor");
+                        } else {
+                            val_sensor=val_sensor+","+cheBu.attr("sensor");
+                        }
+                    }
+                }
+            });
+
+
+            if(val_sensor=="") val_sensor="1";
+
+            $("input[name='select_program']").val(val);
+            $("input[name='select_power']").val(val_power);
+            $("input[name='select_sensor'][type='hidden']").val(val_sensor);
+                                    
+            $.ajax({
+                cache: false,
+                url: "main/modules/external/check_value.php",
+                data: {value:$("#datepicker").val(),type:'date'}
+            }).done(function (data) {
+                if(data!=1) {
+                    $("#error_start_days").show(700);
+
+                    var d = new Date();
+                    var month = d.getMonth()+1;
+                    var day = d.getDate();
+
+                    var output = d.getFullYear() + '-' +
+                    (month<10 ? '0' : '') + month + '-' +
+                    (day<10 ? '0' : '') + day;
+                    $("#datepicker").val(output);
+                } else {
+                    get_content("logs",getFormInputs('display-log'));
+                }
+            });
         }
     }).val();
 });
@@ -1441,47 +1519,22 @@ $(document).ready(function() {
         $("input[name='select_power']").val(val_power);
         $("input[name='select_sensor'][type='hidden']").val(val_sensor);
         
-                
-            
-       if($("input:radio[name=type]:checked").val()=="day") {
-            $.ajax({
-                cache: false,
-                url: "main/modules/external/check_value.php",
-                data: {value:$("#datepicker").val(),type:'date'}
-            }).done(function (data) {
-                if(data!=1) {
-                    $("#error_start_days").show(700);
-
-                    var d = new Date();
-                    var month = d.getMonth()+1;
-                    var day = d.getDate();
-
-                    var output = d.getFullYear() + '-' +
-                    (month<10 ? '0' : '') + month + '-' +
-                    (day<10 ? '0' : '') + day;
-                    $("#datepicker").val(output);
-                } else {
-                    get_content("logs",getFormInputs('display-log'));
-                }
-            });
-        } else {
-            $.ajax({
-                cache: false,
-                url: "main/modules/external/check_value.php",
-                data: {value:$("#startyear option:selected").val()+"-"+$("#startmonth option:selected").val(),type:'month'}
-            }).done(function (data) {
-                if(data!=1) {
-                    $("#error_start_month").show(700);
-                } else {
-                    var $inputs = $('#display-log :input');
-                    var values = {};
-                    $inputs.each(function() {
-                        values[this.name] = $(this).val();
-                    });
-                    get_content("logs",getFormInputs('display-log'));
-                }
-            });
-        }
+        $.ajax({
+            cache: false,
+            url: "main/modules/external/check_value.php",
+            data: {value:$("#startyear option:selected").val()+"-"+$("#startmonth option:selected").val(),type:'month'}
+        }).done(function (data) {
+            if(data!=1) {
+                $("#error_start_month").show(700);
+            } else {
+                var $inputs = $('#display-log :input');
+                var values = {};
+                $inputs.each(function() {
+                    values[this.name] = $(this).val();
+                });
+                get_content("logs",getFormInputs('display-log'));
+            }
+        });
         return true;
     });
     
