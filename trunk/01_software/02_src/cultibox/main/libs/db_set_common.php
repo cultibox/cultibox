@@ -439,30 +439,6 @@ function purge_program($arr) {
 // }}}
 
 
-// {{{ configure_menu()
-// ROLE hide or display joomla's menu
-// IN   cost        value for displaying or not the cost menu
-//      wifi        value for displaying or not the wifi menu
-// RET  none
-function configure_menu($menu="",$value) {
-   if(strcmp("$menu","")==0) break;
-
-  $sql = <<<EOF
-UPDATE `dkg45_menu` SET  published = "{$value}" WHERE alias LIKE "{$menu}-%";
-EOF;
-   $db=db_priv_pdo_start_joomla();
-   if($db) {
-        try {
-            $db->exec("$sql");
-        } catch(PDOException $e) {
-            $ret=$e->getMessage();
-        }
-        $db=null;
-    }
-}
-// }}}
-
-
 // {{{ update_sensor_db_type()
 // ROLE update sensor's type list 
 // IN     index    array containing sensor's type to be updated
