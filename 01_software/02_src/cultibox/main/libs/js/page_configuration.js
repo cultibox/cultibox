@@ -297,13 +297,6 @@ $(document).ready(function(){
         }
 
         if(checked) {
-            $.ajax({
-                cache: false,
-                async: false,
-                url: "main/modules/external/configure_menu.php",
-               data: {cost:$("#show_cost").val(),wifi:$("#WIFI").val()}
-            });
-           
             var check_update=true;
             $("select").each(function() {
                 newValue    = $( this ).find(":selected").val();
