@@ -20,12 +20,101 @@ Trois espaces sur la carte sont présents pour le bon fonctionnement du logiciel
  * L'espace ou est installé Culti Pi : /var/....
  * L'espace de configuration de Culti Pi : /home/...
  * L'espace ou est présent le logiciel Cultibox : / ...
+
+Culti Pi fonctionne avec un système de repère. Chaque repère représente une donnée (Température, etat d'une prise ...). Les repères ont les paramètres suivants :
+ * ID unique : Il permet de réaliser touts les transactions entre les modules et le serveur
+ * nom : C'est le nom du repère (unique)
+ * Libellé (libelle) : Un texte pour décrire le repère
+ * Valeur : C'est la valeur du repère
+ * Qualité : Donne l'état du repère (Valide, Invalide, Douteux, Inconnu)
+ * Source : Donne la source du repère (Mesure, Calcul, Pilotage, Forcé, Inconnu, Défaut Communication, Initialisation)
+ * Heure source : L'heure à laquelle la valeur a été modifiée
+ * Bande morte : Pour une donnée mesurée, donne la bande morte
+ * Historisé : Indique si le repère doit être historisé dans la base de donnée
+ * Période historisation : donne la période d'historisation du repère
+ * Période d'acquisition : Indique la période d'acquisition ou de pilotage du repère
+ * Protocole : indique le protocole utilisé pour ce repère : I2C - RS232 - MODBUS_TCP - MODBUS_RTU - JSON ...
+ * Adresse : donne l'adresse pour acquisition physique
+ * Connexion : Indique le connecteur utilisé pour réaliser l'acquisition
+ * Nb décimale : Donne le nombre de décimale du repère
+ * Type fonctionnel (type) : indique si la donnée est une mesure (mesure), un état à piloter (pilote), une alarme (alarme) 
+ * Unité : donne l'unité du repère
+ * Coef A : Donne un coefficient multiplicateur pour la donnée
+ * Coef B : Donne l'offset à appliquer pour le repère
  
 Fonctionnement général :
-Le serveur Culti Pi démarre. Il charge la liste des repères de sa configuration. Chaque repère représente une entrée ou une sortie. Il démarre le serveur de log.
-Ensuite le serveur démarre tous les composants définit dans le fichier start.cbx.
+Sur une action de l'utilisateur, le logiciel Cultibox génère une configuration pour Culti Pi. Cette configuration regroupe l'ensemble des fichiers permettant au serveur Culti Pi de bien fonctionner.
+Le logiciel Cultibox arrête ensuite le serveur Culti Pi pui le redémarre.
+Le serveur Culti Pi est responsable du lancement de chaque module. Il gère les repères et permet à chaque module de lire ou écrire les repères.
+Les modules peuvent lire les repères pour effectuer des actions ou écrire les repères.
 
-Logs :
+=== Serveur Culti Pi ===
+
+Au démarrage du serveur Culti Pi,il charge la liste des repères de sa configuration. Chaque repère représente une entrée ou une sortie.
+Ensuite le serveur démarre tous les composants définit dans le fichier de configuration.
+
+Pour chaque module qu'il démarre, il crée automatiquement les repères suivants : 
+ * etat : État de la connexion (écrit par le serveur)
+ * run : Mise en route du module (écrit par le serveur)
+ * etat_run : État de la mise en route du module (écrit par le module)
+
+Le fichier de configuration (généré par le logiciel Cultibox, au format XML) prend la forme suivante :
+
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<reperes>
+    <repere id="1">
+        <nom>pilotagePriseSansFils1</nom>
+        <libelle>Pilotage de la prise 1 du module sans fils</libelle>
+        <protocole>I2C</protocole>
+        <connexion>0x21</connexion>
+        <adresse>0x25<adresse>
+        <type>pilote</type>
+    </repères>
+    <repere id="2">
+        <nom>temepratureCapteur1</nom>
+        <libelle>Valeur de température du capteur 1</libelle>
+        <protocole>I2C</protocole>
+        <connexion>0x22</connexion>
+        <adresse>0x16<adresse>
+        <type>mesure</type>
+    </repères>
+</reperes>
+<modules>
+    <module name="serveurLogs" priorite="1">
+        <start>1</start>
+        <executable>/module/serveurLogs.tcl</executable>
+    </module>
+    <module name="moduleHisto" priorite="2">
+        <start>1</start>
+        <executable>/module/moduleHisto.exe</executable>
+    </module>
+    <module name="moduleFormule" priorite="3">
+        <start>0</start>
+        <executable>/module/moduleFormule.py</executable>
+    </module>
+</modules>
+}}}
+
+== Les modules physiques ==
+
+=== Introduction ===
+
+Ces modules permettent de faire le lien entre les modules  et la couche physique. Ils ne discutent pas directement avec le serveur mais sont quand même lancé par le serveur.
+
+=== Module I2C (moduleI2C) ===
+
+Ce module ne discute pas directement avec le serveur. Il permet aux autres modules de réaliser des requêtes sur le bus I2C.
+
+=== Module RS232 (moduleRS232) ===
+
+== Les modules ==
+
+=== Introduction ===
+
+
+=== Module de Logs (moduleLogs) ===
+
 A chaque démarrage du serveur Culti Pi, un nouveau fichier de trace est créé. Les traces datant de plus de 30 jours sont supprimées automatiquement.
 
 Chaque module peut logguer des traces en passant par le serveur. Chaque trace est composée de 4 éléments :
@@ -33,7 +122,36 @@ Chaque module peut logguer des traces en passant par le serveur. Chaque trace es
  * Le nom du module qui trace
  * Le type de trace : Erreur Warning Debug Info ...
  * La trace en elle même
- 
+
+L'utilisateur peut définir le niveau de trace inscrite dans le fichier log.
+
+=== Module d'historisation (moduleHisto) ===
+
+Il a pour but d'enregistrer en base de donnée certains repères (Ceux qui ont le qualificatif Historisé).
+
+=== Module de formule (moduleFormule) ===
+
+Ce module permet de réaliser des formules.
+
+=== Module acqSensor ===
+
+Ce module réalise l'acquisition de donnée. Au chargement, il demande au serveur tous les repères de type mesure et ayant le protocole I2C.
+Pour chaque repère, il lance l'acquisition du repère en utilisant comme adresse de module I2C le paramètre "Connexion" et comme adresse de lecture le paramètre "adresse pour acquisition".
+Pour réaliser l'acquisition, il utilise le module "Module I2C".
+
+Il pilote ensuite le repère en inscrivant les données suivantes :
+ * Qualité : Valide s'il récupère une donnée , défaut communication sinon
+ * Valeur : avec la valeur lue * "Coef A" + "Coef B"
+ * Source : Mesure
+ * Heure source : l'heure de réponse du module I2C
+
+=== Module wirelessPlugs ===
+
+Ce module pilote les prises sans fils. Au chargement, il demande au serveur tous les repères de type pilote et ayant le protocole I2C et la connexion "433MHz".
+Pour réaliser le pilotage, il utilise le module "Module I2C".
+
+
+
 == Installation ==
 
 Matériel nécessaire :
