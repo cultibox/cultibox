@@ -1,0 +1,43 @@
+#summary Culti Pi
+
+= Introduction =
+
+Cette section de l'aide décrit le fonctionnement du Culti Pi.
+
+Ce module permet de connecter la Cultibox est ses accessoires.
+
+Deux composants sont présents dans la Culti Pi :
+ * Le logiciel Cultibox
+ * Le logiciel Culti Pi
+
+== Architecture Culti Pi ==
+
+Le logiciel Culti Pi est composé de :
+ * Un serveur Culti Pi. Il s'assure du bon démarrage de tous les composants, il gère les échange entre les composants et enregistre les logs.
+ * Différents composants. On retrouve parmi les composants : Un serveur de calcul de 'état des prises, un module de pilotage des prises, un module d'acquisition des données des capteurs...
+
+Trois espaces sur la carte sont présents pour le bon fonctionnement du logiciel :
+ * L'espace ou est installé Culti Pi : /var/....
+ * L'espace de configuration de Culti Pi : /home/...
+ * L'espace ou est présent le logiciel Cultibox : / ...
+ 
+Fonctionnement général :
+Le serveur Culti Pi démarre. Il charge la liste des repères de sa configuration. Chaque repère représente une entrée ou une sortie. Il démarre le serveur de log.
+Ensuite le serveur démarre tous les composants définit dans le fichier start.cbx.
+
+Logs :
+A chaque démarrage du serveur Culti Pi, un nouveau fichier de trace est créé. Les traces datant de plus de 30 jours sont supprimées automatiquement.
+
+Chaque module peut logguer des traces en passant par le serveur. Chaque trace est composée de 4 éléments :
+ * L'heure de la trace
+ * Le nom du module qui trace
+ * Le type de trace : Erreur Warning Debug Info ...
+ * La trace en elle même
+ 
+== Installation ==
+
+Matériel nécessaire :
+ - Un Raspberry Pi
+ - Une carte d'extension CUlti Pi
+
+Installer Raspbian sur votre Raspberry Pi.
