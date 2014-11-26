@@ -1903,6 +1903,8 @@ function create_wificonf_from_database(&$out) {
 // RET an array containing datas
 function create_program_from_database(&$out,$fieldNumber = 1) {
 
+    date_default_timezone_set('UTC');
+
     // Read the number of plugs
     $nb_plugs=get_configuration("NB_PLUGS",$out);
     
