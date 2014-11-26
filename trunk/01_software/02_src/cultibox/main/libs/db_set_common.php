@@ -342,38 +342,44 @@ function insert_program($program,&$out,$indexNumber) {
 //    $out              error or warning message
 // RET false is there is an error, true else
 function insert_program_value($plugid,$program,&$out) {
-$sql="";
-foreach($program as $prog) {
-    $start_time=$prog['time_start'];
-    $end_time=$prog['time_stop'];
-    $value=$prog['value'];
-    $type=$prog['type'];
-    $number = $prog['number'];
+    $sql="INSERT INTO `programs`(plug_id, time_start, time_stop, value, type, number) VALUES";
+    $count=0;
 
-   $sql = $sql . <<<EOF
+    foreach($program as $prog) {
+        $start_time=$prog['time_start'];
+        $end_time=$prog['time_stop'];
+        $value=$prog['value'];
+        $type=$prog['type'];
+        $number = $prog['number'];
 
-INSERT INTO `programs`(plug_id, time_start, time_stop, value, type, number) VALUES('{$plugid}',"{$start_time}","{$end_time}",'{$value}','{$type}','{$number}');
-EOF;
-}
+        if($count==0) {
+            $sql = $sql." ('{$plugid}',\"{$start_time}\",\"{$end_time}\",'{$value}','{$type}','{$number}')";
+            $count=1;
+        } else {
+            $sql = $sql.", ('{$plugid}',\"{$start_time}\",\"{$end_time}\",'{$value}','{$type}','{$number}')";
+        }
+    }
 
-   $db=db_priv_pdo_start();
-   try {
+    $sql=$sql.";";
+    $db=db_priv_pdo_start();
+    try {
         $db->exec("$sql");
-   } catch(PDOException $e) {
+    } catch(PDOException $e) {
         $ret=$e->getMessage();
-   }
-   $db=null;
+    }
+    $db=null;
 
-   if((isset($ret))&&(!empty($ret))) {
-       if($GLOBALS['DEBUG_TRACE']) {
-             $out[]=__('ERROR_UPDATE_SQL').$ret;
-             return false;
-       } else {
-             $out[]=__('ERROR_UPDATE_SQL');
-             return false;
-       }
-   }
-   return true;
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+          $out[]=__('ERROR_UPDATE_SQL').$ret;
+          return false;
+        } else {
+          $out[]=__('ERROR_UPDATE_SQL');
+          return false;
+        }
+    }
+    return true;
+
 }
 // }}}
 
