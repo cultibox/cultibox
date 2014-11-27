@@ -1,3 +1,5 @@
+#!/usr/bin/tclsh
+
 # Init directory
 set rootDir [file dirname [file dirname [info script]]]
 set logFile [file join $rootDir log.txt]
