@@ -1,9 +1,16 @@
+#!/usr/bin/tclsh
+ 
 # Init directory
 set rootDir [file dirname [file dirname [info script]]]
 set logDir $rootDir
+set serveurLogFileName [file join $rootDir serverLog serveurLog.tcl]
 
 puts "Starting cultiPi"
 set TimeStartcultiPi [clock milliseconds]
+if {[lindex $argv 0] != ""} {
+    set serveurLogFileName [lindex $argv 0]
+}
+puts "Log file $serveurLogFileName"
 
 # Port number
 set port(server) 6000
@@ -15,10 +22,13 @@ lappend auto_path [file join $rootDir lib tcl]
 package require piLog
 package require piServer
 
+# Source files
+source [file join $rootDir cultiPi src stop.tcl]
+source [file join $rootDir cultiPi src serveurMessage.tcl]
+
 # Load serverLog
 puts "Starting serveurLog"
 set TimeStartserveurLog [clock milliseconds]
-set serveurLogFileName [file join $rootDir serverLog serveurLog.tcl]
 open "| tclsh \"$serveurLogFileName\" $port(serverLogs) \"$logDir\""
 
 # init log
@@ -30,35 +40,15 @@ after 100
 
 # Load server Culti Pi
 ::piLog::log [clock millisecond] "info" "starting serveur"
-proc messageGestion {message} {
-    if {$message == "stop"} {
-        ::piLog::log [clock milliseconds] "info" "Demande Arret de Culti Pi"
-        stopCultiPi
-    } else {
-        ::piLog::log [clock milliseconds] "erreur" "Received -${message}- but not interpreted"
-    }
-}
 ::piServer::start messageGestion $port(server)
 ::piLog::log [clock millisecond] "info" "serveur is started"
 
-proc stopCultiPi {} {
-    ::piLog::log [clock milliseconds] "info" "Début arrêt Culti Pi"
 
-    # Arret du serveur I2C
-    ::piServer::sendToServer $::port(serverI2C) "stop"
-    
-    ::piLog::log [clock milliseconds] "info" "Fin arrêt Culti Pi"
-    
-    # Arrêt du serveur de log (forcement en dernier)
-    ::piServer::sendToServer $::port(serverLogs) "stop"
-    ::piLog::closeLog
-    
-    after 500 {set ::forever 0}
-}
-
+# Lancement du serveur I2C
+puts "Starting serverI2C"
 ::piLog::log [clock milliseconds] "info" "Load serverI2C"
 set serveurLogFileName [file join $rootDir serverI2C serverI2C.tcl]
-#open "| tclsh \"$serveurLogFileName\" $port(serverI2C)"
+open "| tclsh \"$serveurLogFileName\" $port(serverI2C)"
 
 
 vwait forever
