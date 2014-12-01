@@ -1,9 +1,10 @@
 # Init directory
 set rootDir [file dirname [file dirname [info script]]]
 
-# Port number
-set port(serverLogs) 6001
-set port(serverI2C) 6002
+# Read argv
+set port(server) [lindex $argv 0]
+set confXML         [lindex $argv 1]
+set port(serverLogs) [lindex $argv 2]
 
 # Load lib
 lappend auto_path [file join $rootDir lib tcl]
@@ -13,10 +14,8 @@ package require piServer
 ::piLog::openLog $port(serverLogs) "serverI2C"
 ::piLog::log [clock milliseconds] "info" "starting serverI2C"
 
-if {0} {
 proc bgerror {message} {
-    ::piLog::log "<[clock milliseconds]><serveurlog><erreur_critique><bgerror in $::argv -$message->"
-}
+    ::piLog::log [clock milliseconds] erreur_critique "bgerror in $::argv -$message-"
 }
 
 # Load server I2C
@@ -24,7 +23,7 @@ proc bgerror {message} {
 proc messageGestion {message} {
     switch [lindex $message 1] {
         "stop" {
-            ::piLog::log [clock milliseconds] "info" "Demande Arrêt de serverI2C"
+            ::piLog::log [clock milliseconds] "info" "Ask stop serverI2C"
             stopIt
         }
         "getI2C" {
@@ -38,13 +37,13 @@ proc messageGestion {message} {
         }
     }
 }
-::piServer::start messageGestion $port(serverI2C)
+::piServer::start messageGestion $port(server)
 ::piLog::log [clock millisecond] "info" "serveur is started"
 
 proc stopIt {} {
-    ::piLog::log [clock milliseconds] "info" "Début arrêt serverI2C"
+    ::piLog::log [clock milliseconds] "info" "Start stopping serverI2C"
     set ::forever 0
-    ::piLog::log [clock milliseconds] "info" "Fin arrêt serverI2C"
+    ::piLog::log [clock milliseconds] "info" "End stopping serverI2C"
     
     # Arrêt du server de log
     ::piLog::closeLog
