@@ -68,8 +68,13 @@ proc input {channel} \
 
 # log
 
-proc log {msg} {
-    set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].txt"] a+]
+proc log {msg {init 0}} {
+    if {$init != 0} {
+        set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].txt"] w+]
+    } else {
+        set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].txt"] a+]
+    }
+
     # Format the string
     set Splitted [split $msg "<>"]
     # Convert time
@@ -115,6 +120,8 @@ if {$rc == 1} \
 }
 set (server:host) server
 set (server:port) $port
+
+log "<[clock milliseconds]><serveurlog><info><server log started>" init
 
 # enter event loop
 
