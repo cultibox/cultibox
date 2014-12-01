@@ -48,11 +48,36 @@ Le logiciel Cultibox arrête ensuite le serveur Culti Pi pui le redémarre.
 Le serveur Culti Pi est responsable du lancement de chaque module. Il gère les repères et permet à chaque module de lire ou écrire les repères.
 Les modules peuvent lire les repères pour effectuer des actions ou écrire les repères.
 
+=== Espace de configuration ===
+
+Cet espace permet de stocker les configurations qui peuvent être démarrées par le serveur. Chaque configuration est représentée par un dossier.
+
+A la racine de cet espace on trouve le fichier "conf.xml" qui définit qu'elle doit être la configuration à lancer. Ce fichier est de la forme :
+
+{{{
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<confs>
+    <!-- Example : http://wfr.tcl.tk/1151 -->
+    <conf dir="00_defaultConf" />
+</confs>
+}}}
+
+Pour changer le dossier de configuration qui sera chargé, il faut modifier le paramètre dir de l'argument conf. 
+
+Chaque configuration est un dossier dans lequel on retrouve la configuration des différents modules. Pour chaque module, un dossier avec ces fichiers de configurations à l'intérieur.
+
 === Serveur Culti Pi ===
 
 Au démarrage du serveur Culti Pi,il charge la liste des repères de sa configuration. Chaque repère représente une entrée ou une sortie.
 Ensuite le serveur démarre tous les composants définit dans le fichier de configuration.
 
+Pour démarrer le serveur CultiPi :
+tclsh cultiPi.tcl <conf_dir>
+Avec :
+ * <conf_dir> : Chemin vers le dossier racine des configurations
+
+Au démarrage, il charge le fichier "conf.xml" pour connaître l'emplacement de la configuration qu'il doit charger.
+ 
 Pour chaque module qu'il démarre, il crée automatiquement les repères suivants : 
  * etat : État de la connexion (écrit par le serveur)
  * run : Mise en route du module (écrit par le serveur)
@@ -68,7 +93,7 @@ Le fichier de configuration (généré par le logiciel Cultibox, au format XML) 
         <libelle>Pilotage de la prise 1 du module sans fils</libelle>
         <protocole>I2C</protocole>
         <connexion>0x21</connexion>
-        <adresse>0x25<adresse>
+        <adresse>0x25</adresse>
         <type>pilote</type>
     </repères>
     <repere id="2">
@@ -76,7 +101,7 @@ Le fichier de configuration (généré par le logiciel Cultibox, au format XML) 
         <libelle>Valeur de température du capteur 1</libelle>
         <protocole>I2C</protocole>
         <connexion>0x22</connexion>
-        <adresse>0x16<adresse>
+        <adresse>0x16</adresse>
         <type>mesure</type>
     </repères>
 </reperes>
@@ -112,6 +137,9 @@ Ce module ne discute pas directement avec le serveur. Il permet aux autres modul
 
 === Introduction ===
 
+Tous les modules doivent pourvoir être appelé de la façon suivante :
+
+<module> <numéro port> <fichier de conf XML> <numéro de port du server log>
 
 === Module de Logs (moduleLogs) ===
 
@@ -156,6 +184,5 @@ Pour réaliser le pilotage, il utilise le module "Module I2C".
 
 Matériel nécessaire :
  - Un Raspberry Pi
- - Une carte d'extension CUlti Pi
+ - Une carte d'extension Culti Pi
 
-Installer Raspbian sur votre Raspberry Pi.
