@@ -13,7 +13,7 @@ Pour télécharger la dernière version du logiciel:
 = Installation =
 
 Double-cliquez sur le package que vous venez de télécharger.
-La fenêtre suivante s'ouvre. Cliquez sur *Continuer*:
+La fenêtre suivante s'ouvre. Cliquez sur *Continuer* :
 
 http://cultibox.googlecode.com/svn/wiki/img/install_mac_1.png
 
@@ -64,11 +64,10 @@ Pour mettre à jour votre logiciel, il vous suffira de suicre les mêmes étapes
 
 = Désinstallation =
 
-Pour désintaller le logiciel de votre ordinateur, il vous suffira de lancer le programme de désinstallation en double-cliquant sur le fichier: 
-/Applications/cultibox/package/cultibox-uninstall.pkg
+Pour désintaller le logiciel de votre ordinateur, il vous suffira de lancer le programme de désinstallation en double-cliquant sur le fichier */Applications/cultibox/package/cultibox-uninstall.pkg*
 
-Le programme vous demandera un mot de passe afin de réaliser la désintallation, il vous suffira de rentrer votre mot de passe utilisateur.
-Suivez ensuite les étapes de désinstallation qui consistent à installer un petit sciprt permettant de gérer proprement la désinstallation du logiciel, puis de l'éxécuter.
+Le programme vous demandera un mot de passe afin de réaliser la désintallation, il vous suffira de rentrer votre mot de passe utilisateur. 
+Suivez ensuite les étapes de désinstallation permettant de copier le script de désinstallation adapté à votre ordinateur puis à l'éxécuter.
 
 
 *Remarque 1*: Si vous avez rajouté manuellement des fichiers, ces derniers ne seront pas supprimés et seront toujours présents dans le répertoire "/Applications/cultibox". Il vous faudra les supprimer manuellement.

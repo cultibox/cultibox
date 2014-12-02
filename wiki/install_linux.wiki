@@ -24,7 +24,7 @@ sudo dpkg -i <nom_paquet_cultibox>
 En remplaçant <nom_paquet_cultibox> par le nom du paquet (fichier .deb) que vous avez téléchargé. Par exemple:
 
 {{{
-sudo dpkg -i cultibox-ubuntu-noarch_1.1.12.deb
+sudo dpkg -i cultibox-ubuntu-amd64_1.1.12.deb
 }}}
 
 
@@ -33,7 +33,7 @@ L'affichage suivant devrait apparaitre:
 {{{
 Sélection du paquet cultibox précédemment désélectionné.
 (Lecture de la base de données... 337030 fichiers et répertoires déjà installés.)
-Dépaquetage de cultibox (à partir de cultibox-ubuntu-noarch_1.2.12.deb) ...
+Dépaquetage de cultibox (à partir de cultibox-ubuntu-amd64_1.2.12.deb) ...
 Paramétrage de cultibox (1.2.12-ubuntu) ...
    * Configuring/checking Cultibox environment...
 Restarting XAMPP for Linux 1.8.3-1...
@@ -64,7 +64,7 @@ Traitement des actions différées (triggers) pour mime-support...
 Traitement des actions différées (triggers) pour gnome-menus...
 }}}
  
-*Note:* Pour les versions d'Ubuntu plus anciennes que *Ubuntu 13.10 Saucy Salamender*,  il existe une version 32bits (nommée i386) et une version 64bits (nommée amd64). Il vous faudra choisir la version en fonction de votre environnement Linux Ubuntu. Si cette dernière est installée en version 64bits, il vous faudra récupérer le fichier amd64, sinon prenez la version i386.
+*Note:* Il existe une version 32bits (nommée i386) et une version 64bits (nommée amd64). Ces versions s'installent de la même manière.  Il vous faudra choisir la version en fonction de votre environnement Linux Ubuntu. Si cette dernière est installée en version 64bits, il vous faudra récupérer le fichier amd64, sinon prenez la version i386.
 Pour vérifier cela sur votre système, tapez simplement la commande suivante dans un terminal:
 
 {{{
@@ -155,7 +155,7 @@ Remarque 2: Si vous avez utilisé les outils de sauvegarde ou de restauration de
 = Erreur lors de l'installation =
 
 En installant le logiciel sur Linux Ubuntu, le message suivant pourrait apparaitre: "An old version of the Cultibox seems to be remaining in your system [...]"
-Ce message signifie qu'une ancienne version Cultibox était installé sur votre système d'exploitation et qu'il n'a pas été supprimé avec la commande citée précédemment et donc qu'il peut rester des anciens fichiers du système Cultibox sur votre environnement. Pour éviter des problèmes à l'installation avec les restes d'une ancienne version, le logiciel lance une vérification de son environnement avant de procéder à l'installation.
+Ce message signifie qu'une ancienne version Cultibox était installé sur votre système d'exploitation et qu'il n'a pas été supprimé avec la commande citée précédemment. Pour éviter des problèmes à l'installation avec les restes d'une ancienne version, le logiciel lance une vérification de son environnement avant de procéder à l'installation.
 
 Pour remédier à ce problème il vous suffira de lancer la commande suivante (droits administrateurs requis):
 
