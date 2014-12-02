@@ -26,7 +26,7 @@ L'affichage d'un jour permet de visualiser l'évolution des courbes de façon pr
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_timeselection_day.png
 
-La date rentrée doit être au format AAAA-MM-JJ. Pour vous aider dans le choix de la date, un calendrier est à votre disposition. Cliquez sur l'icône de l'horloge à côté du champ de sélection du jour à afficher. Puis choisissez la date que vous voulez afficher dans le calendrier en cliquant simplement dessus. Le champ de sélection du jour à afficher est maintenant rempli:
+La date rentrée doit être au format AAAA-MM-JJ. Pour vous aider dans le choix de la date, un calendrier est à votre disposition. Cliquez sur l'icône de l'horloge à côté du champ de sélection du jour à afficher ou sur le champ pour le faire apparaître. Puis choisissez la date que vous voulez afficher dans le calendrier en cliquant simplement dessus. Le champ de sélection du jour à afficher est maintenant rempli et le graphique correspondant s'affiche automatiquement:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_timepicker.png
 
