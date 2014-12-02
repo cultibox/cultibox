@@ -9,7 +9,7 @@ La page de configuration permet de modifier les paramètres du logiciel et de la
 Il est notamment possible de configurer une alarme pour la Cultibox.
 
 Le fonctionnement de l'alarme est assez simple : Lorsque la température dépasse un certain seuil, la Cultibox éteint toute les prises.
-Une fois l'alarme activée, il est nécessaire d'appuyer sur le bouton central de la Cultibox pour que la CUltibox retrouve son état de fonctionnement normal.
+Une fois l'alarme activée, il est nécessaire d'appuyer sur le bouton central de la Cultibox pour que la Cultibox retrouve son état de fonctionnement normal.
 
 == Configuration de l'interface ==
 

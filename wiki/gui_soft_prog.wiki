@@ -66,7 +66,7 @@ Pour appliquer une programmation cyclique
  * Choisissez le numéro de la prise à configurer dans le menu à côté du titre
  * Rentrez la temps que doit durer votre action avec le champ *Durée* ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
  * Définissez le temps de répétition de votre action avec le champ *Répéter toutes les* ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
- * Rentrez une heure de départ ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
+ * Rentrez une heure de départ  et une heure de fin ou utilisez l'aide de sélection de l'heure expliquée dans la section précédente
  * Sélectionnez l'état de la prise
  * Cliquez sur le bouton *Valider*
 
@@ -80,12 +80,10 @@ Donne le programme suivant:
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_4.png
 
-Astuce:
- *  Si vous avez besoin que l'action répétée se finisse avant minuit: Validez l'action répétée puis appliquez une programmation standard sur la période où vous ne désirez pas d'action répétée.
 
 Remarques:
- * Le nombre de changement d'état des prises est limité à 255 pour une journée. Il est donc possible que toutes les actions créées par la programmation cyclique ne soit pas prise en compte. Dans ce cas, une petite fenêtre s'ouvre et vous informe.
- * La durée entre deux répétitions d'un programme cyclique est limitée à 5 minutes.
+ * Le nombre de changement d'état des prises est limité à 1000 pour une journée. Il est donc possible que toutes les actions créées par la programmation cyclique ne soit pas prise en compte. Dans ce cas, une petite fenêtre s'ouvre et vous en informe. Il est possible de supprimer cette limite, pour plus d'informations se reporter à la partie:  [gui_soft_prog#Supprimer_la_limite_de_1000_changements Supprimer la limite de 1000 changements]
+ * La durée entre deux répétitions d'un programme cyclique est limitée à 5 minutes mais peut être désactivée pour plus d'informations se reporter à la partie: [gui_soft_prog#Supprimer_la_limite_de_5_minutes Supprimer la limite de 5 minutes]
 
 == Régulation ==
 La régulation permet de changer l'état d'une prise en fonction d'une condition climatique.
@@ -103,7 +101,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_program_jump_plug.png
    * Déshumidificateur: lorsque la prise est allumée, l'humidité baisse
    * Les autres types (Lampe, inconnu) ne permettent pas de faire de régulation
 
-Le type de la prise détermine le fonctionnement de la régulation. Par exemple, si vous choisissez *Chauffage*, la prise sera allumée lorsque la température sera inférieure à la consigne. SI vous choisissez *humidificateur*, la prise sera allumée lorsque l'humidité sera inférieure à la consigne. 
+Le type de la prise détermine le fonctionnement de la régulation. Par exemple, si vous choisissez *Chauffage*, la prise sera allumée lorsque la température sera inférieure à la consigne. Si vous choisissez *humidificateur*, la prise sera allumée lorsque l'humidité sera inférieure à la consigne. 
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programmation_1.png
 
@@ -151,9 +149,11 @@ Il est possible de:
  * [gui_soft_prog#Ajouter_ou_supprimer_une_prise Ajouter une prise]
  * [gui_soft_prog#Ajouter_ou_supprimer_une_prise Supprimer une prise]
  * [gui_soft_prog#Effacer_un_ou_tous_les_programmes Effacer un ou tous les programmes des prises]
- * [gui_soft_prog#Exporter_un_programme Exporter le programme]
- * [gui_soft_prog#Importer_un_programme Importer un programme]
+ * [gui_soft_prog#Exporter_un_programme Exporter un programme ou un jeu de programme]
+ * [gui_soft_prog#Importer_un_programme Importer un programme ou un jeu de programme]
  * [gui_soft_prog#Gérer_les_programmes_journaliers Gérer les programmes journaliers]
+ * [gui_soft_prog#Supprimer_la_limite_de_1000_changements Supprimer la limite de 1000 changements]
+ * [gui_soft_prog#Supprimer_la_limite_de_5_minutes Supprimer la limite de 5 minutes]
 
 == Ajouter ou supprimer une prise ==
 
@@ -161,44 +161,56 @@ Le nombre de prises de base est définie à trois, cependant la Cultibox peut g�
 
 == Effacer un ou tous les programmes ==
 
-Pour remettre à zéro un programme, vous pouvez utiliser le *Ré-initialiser* qui remet à zéro le programme de la prise choisie. Il est aussi possible de ré-initialiser toutes les prises si vous choisissez *de toutes les prises* dans la liste déroulante.
+Pour remettre à zéro un programme, vous pouvez utiliser le bouton *Ré-initialiser* qui remet à zéro le programme de la prise choisie. 
 
-== Exporter un programme ==
+== Exporter un programme ou un jeu de programme ==
 
 Vous pouvez exporter un programme dans un [gui_soft_prog#Fichier_Programme Fichier Programme] en cliquant sur le bouton *Exporter*. Ce fichier décrit les changements d'état de la prise courante. Pour plus d'information sur le format du fichier exporter voir le paragraphe [gui_soft_prog#Fichier_Programme Fichier Programme].
 
-== Importer un programme ==
+== Importer un programme ou un jeu de programme==
 
 Vous pouvez importer un [gui_soft_prog#Fichier_Programme Fichier Programme] pour configurer une prise en sélectionnant le bouton *Importer*. Vous pouvez aussi configurer de cette façon plusieurs prises avec le même programme ou échanger des programmes avec d'autres utilisateur Cultibox.
 
 == Fichier Programme ==
 
-Le fichier utilisé pour réaliser  les importation/exportation de programme est un fichier au format CSV. Il porte l'extension .prg.
+Le fichier utilisé pour réaliser  les importations/exportations de programme est un fichier au format CSV. Il porte l'extension .csv.
 La première ligne de ce fichier contient le titre des colonnes :
 
 {{{
-#Program : time_start time_stop value
+time_start  time_stop   value   type
 }}}
 
-En dessous de ce titre, une ligne représente une action. Sur chaque ligne, on trouve dans l'ordre : l'heure de départ de l'action, l'heure de fin de l'action et l'état de la prise. L'état de la prise peut être:
+En dessous de ce titre, une ligne représente une action. Sur chaque ligne, on trouve dans l'ordre : l'heure de départ de l'action, l'heure de fin de l'action et l'état de la prise et le type de la prise (valeur obligatoire de "0" pour toutes les prises). L'état de la prise peut être:
  * 99.9 Si elle doit être allumée 
  * Tout autre valeur définit une valeur de régulation
 Il n'est pas nécessaire de définir quand la prise doit être éteinte. C'est l'état par défaut.
 
 Par exemple :
 {{{
-080000,200000,99.9
-210000,223000,18.5
+080000  200000  99.9  0
+210000  223000  18.5  0
 }}}
 
 Indique que la prise doit être allumée (99.9) de 08h00m00s à 20h00m00s puis que de 21h00m00s à 22h30m00s une régulation de 18.5 doit être appliquée.
 
 = Gérer les programmes journaliers = 
 
-Les dernières options vous permettent de gérer vos programmes journaliers grâce à plusieurs actions:
+Les dernières options vous permettent de gérer vos programmes journaliers. Les programmes journaliers sont gérés par des jeux de programme. Le jeu de programme Courant est le jeu de programme utilisé tous les jours par la Cultibox. VOus pouvez ensuite copier,créer, supprimer des jeux de programmes depuis le jeu de programme Courant. Ces nouveaux jeu de programme serviront à définir des programmes journaliers.
+
+Cela est posible grâce à plusieurs actions:
  
  * en ouvrant un jeu de programmes déja enregistré, vous appliquez ce jeu de programmes aux prises actuellement configurées
 
  * en enregistrant un jeu de programmes correspondant aux programmes actuellement configurés, il sera possible de définir des programmes journaliers à partir de l'onglet *Calendrier* ou encore d'appliquer un jeu de programmes aux prises actuellement configurées
 
  * en supprimant un jeu de programmes enregistré
+
+== Supprimer la limite de 1000 changements ==
+
+Une limite de 1000 changements journaliers de l'état de toutes les prises confondues est en place par défaut. Pour supprimer cette limitation, il vous suffit d'activer l'option *Supprimer la limite de 1000 changements*
+
+== Supprimer la limite de 5 minutes ==
+
+Lors d'une programmation cyclique, une limite du temps de répétition de 5mn est en place par défaut. Pour supprimer cette limitation, il vous suffit d'activer l'option *Supprimer la limite de 5 minutes*
+
+

@@ -41,7 +41,7 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_logs_timeselection_month.pn
 Les champs de sélection vous permettent de choisir:
  * le mois à afficher
  * l'année à afficher
- * le capteur à afficher (par défaut le capteur 1)
+ * le ou les capteurs à afficher (par défaut le capteur 1)
 
 Voici un exemple de rendu d'affichage pour un mois de données enregistrées par une Cultibox:
 
@@ -55,15 +55,12 @@ Les graphiques de logs offrent de nombreuses fonctionnalités vous permettant d'
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_hide.png
 
- * *Zoom temporel*: il est possible de zoomer sur une partie du graphique afin de n'afficher qu'une partie du temps écoulé et mieux se rendre compte des variations pendant cette période. Pour cela selectionnez simplement la zone qui vous intérèsse et le graphique fera le reste. Une fois qu'un zoom est réalisé, un bouton apparaîtra en bas du graphique nommé *Annuler le zoom temporel*. Cliquez dessus afin de revenir au format d'origine du graphique
+ * *Zoom *: il est possible de zoomer sur une partie du graphique pour n'afficher que cette partie si l'on veut par exemple mieux se rendre compte des variations pendant cette période. Pour cela selectionnez simplement la zone qui vous intérèsse et le graphique fera le reste. Une fois qu'un zoom est réalisé, un bouton apparaîtra en bas du graphique nommé *Annuler le zoom*. Cliquez dessus afin de revenir au format d'origine du graphique
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_zoomx.png
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_cancelx.png
 
- * *Zoom des puissances et des logs*: Il est aussi possible de zoomer sur l'axe des ordonnées en utilisant les menus se trouvant en dessous du graphique. De la même façon, un bouton apparaîtra en bas du graphique vous permettant de revenir au format d'origine 
-
-http://cultibox.googlecode.com/svn/wiki/img/gui_soft_log_fonction_zoomy.png
 
  * *Export du graphique dans un fichier/Mode impression*: en haut à droite du graphique se trouve un menu vous permettant diverses actions. Une fois que vous avez cliqué sur ce menu, il vous est possible d'exporter votre graphique dans de nombreux formats (PDF, JPG...). Il est aussi possible d'afficher le mode impréssion du graphique. Votre graphique sera alors affiché sans le reste de la page.
 
