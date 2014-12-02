@@ -1,8 +1,14 @@
+Cultibox (2.0.17) precise; urgency=low
+    + Correction appel en AJAX
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Dec 02 20:56:45 CEST 2014
+
+
 Cultibox (2.0.16) precise; urgency=low
     + Mise à jour de la documentation
     + Correction de la gestion des menu en AJAX
 
--- Yann Genevois <yann.genevois@cultibox.fr> Thu Dec 01 17:49:14 CEST 2014
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Dec 02 17:49:14 CEST 2014
 
 
 Cultibox (2.0.15) precise; urgency=low
