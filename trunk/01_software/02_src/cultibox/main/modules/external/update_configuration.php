@@ -18,16 +18,6 @@
         insert_configuration(strtoupper($_GET['variable']),$_GET['value'],$main_error);
     }
 
-    //Special configuration:
-    if(isset($_GET['variable'])) {
-        switch(strtoupper($_GET['variable'])) {
-            case 'SHOW_COST': configure_menu("cost",$_GET['value']);
-                     break;
-            case 'WIFI': configure_menu("wifi",$_GET['value']);
-                     break;
-        }
-    }
-
     if(count($main_error)>0) {
         foreach($main_error as $error) {
             echo json_encode($error);
