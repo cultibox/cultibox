@@ -15,9 +15,9 @@ Par défaut la régulation secondaire n'est pas activée. Afin de l’activer vo
 
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_menu_conf.png
 
-Puis dans le premier onglet nommé *Interface* vous trouverez une ligne nommée: *Activer la régulation secondaire (Utilisateur expert seulement)*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer la régulation secondaire:
+Puis dans le premier onglet nommé *Interface* vous trouverez une ligne nommée: *Autoriser la modification des options avancées de régulation*. Il vous suffit de mettre cette ligne à *Oui* et de cliquer sur le bouton *Enregistrer la configuration* pour activer la régulation secondaire:
 
-http://cultibox.googlecode.com/svn/wiki/img/regul_secondaire_activation.png
+http://cultibox.googlecode.com/svn/wiki/img/gui_soft_programm_water_level_6.png
 
 == Donnée climatique ==
 La régulation classique, gère la prise en fonction du type d'élément branché dessus. La régulation secondaire va jouer sur l'autre condition climatique.
