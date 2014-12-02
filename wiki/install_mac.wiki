@@ -64,11 +64,13 @@ Pour mettre à jour votre logiciel, il vous suffira de suicre les mêmes étapes
 
 = Désinstallation =
 
-Pour désintaller le logiciel de votre ordinateur, il vous suffira de lancer le script de désinstallation en double-cliquant sur le fichier: 
-/Applications/cultibox/package/uninstall
+Pour désintaller le logiciel de votre ordinateur, il vous suffira de lancer le programme de désinstallation en double-cliquant sur le fichier: 
+/Applications/cultibox/package/cultibox-uninstall.pkg
 
-Le programme peut vous demander un mot de passe afin de réaliser la désintallation, il vous suffira de rentrer votre mot de passe utilisateur.
+Le programme vous demandera un mot de passe afin de réaliser la désintallation, il vous suffira de rentrer votre mot de passe utilisateur.
+Suivez ensuite les étapes de désinstallation qui consistent à installer un petit sciprt permettant de gérer proprement la désinstallation du logiciel, puis de l'éxécuter.
+
 
 *Remarque 1*: Si vous avez rajouté manuellement des fichiers, ces derniers ne seront pas supprimés et seront toujours présents dans le répertoire "/Applications/cultibox". Il vous faudra les supprimer manuellement.
 
-*Remarque 2*: Si vous avez utilisé les outils de sauvegarde ou de restauration de vos données, des fichiers seront toujours présents dans votre répertoire utilisateur dans le dossier ".cultibox". Il vous faudra les supprimer manuellement.
+*Remarque 2*: Si vous avez utilisé les outils de sauvegarde ou de restauration de vos données, des fichiers seront toujours présents dans votre répertoire utilisateur dans le dossier "cultibox". Il vous faudra les supprimer manuellement.
