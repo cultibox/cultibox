@@ -25,7 +25,7 @@ Il est à noter qu'à tout moment vous pouvez revenir sur une étape précédent
 
 == Configuration des autres prises ==
 
-Si vous décidez de configurer une autre prise après cela, les étapes 2 et 3 vont changer:
+Si vous décidez de configurer une autre prise après cela, les étapes vont changer:
 A l'étape 1, il vous sera demandé de choisir le type d'équipement de la prise:
 
 http://cultibox.googlecode.com/svn/wiki/img/wizard4.png
