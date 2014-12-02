@@ -23,9 +23,7 @@ La section *Interface* permet de modifier les différents paramètres du site we
 http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_interface.png
 
 Dans cette section vous pouvez:
- * Définir les couleurs du graphique de coût
  * Définir si vous désirez nous envoyer des informations pour aider au développement, les informations envoyées se basent sur l'utilisation de l'interface Web: la version et le nom de votre navigateur, les versions du logiciel et du firmware de votre Cultibox... ceci afin de définir quelles technologies nous devons privilégier lors de notre développement et de facilement déboguer les erreurs découvertes
- * Activer ou non l'utilisation de la régulation secondaire, pour plus d'information se reporter à la section [gui_soft_second_regul Régulation secondaire]
  * Activer ou non l'utilisation des options avancées de régulations. En activant cette option vous rendez accessibles de nouvelles configurations pour les prises et leur régulation comme par exemple la régulation d'une prise sur plusieurs capteurs à partir d'une moyenne, d'un minimum ou d'un maximum. Pour plus d'information se reporter à la section [gui_soft_second_regul Régulation secondaire]
  * Afficher les modules de calcul du coût de votre installation. Si vous décidez d'afficher le module de calcul du coût de votre installation, un nouvel onglet sera disponible dans le menu nommé "Coût" et vous permettant de calculer de manière théorique ou réelle le coût de revient de votre installation.
 
@@ -38,7 +36,6 @@ http://cultibox.googlecode.com/svn/wiki/img/gui_soft_conf_cultibox.png
 Dans cette section vous pouvez:
  * Indiquer le nombre de prises de votre système. Vous pouvez aussi modifier le nombre de prise de votre système dans les paramètres de la page programme.
  * Définir à quelle fréquence la Cultibox enregistre les conditions climatiques. Par exemple, si vous indiquez 30 minutes, la Cultibox enregistrera un nouvel échantillon de tous vos capteurs toutes les 30 minutes.
- * Définir à quelle fréquence la Cultibox enregistre l'état des prises. Ce paramètre n'est plus utile à partir de la version 2.0.0 car la Cultibox enregistre chaque changement d'état des prises.
  * Définir la fréquence de mise à jour des prises. Si vous avez d'autres équipements fonctionnant en 433MHz, vous pouvez choisir de ne plus piloter les prises en permanence. Par défaut le réglage est à 1.
  * Définir l'heure de remise à zéro du min/max de tous les capteurs affichés sur l'écran de la Cultibox
  * Changer le décalage interne de la Cultibox. Ce paramètre permet d'ajouter ou de soustraire un certain nombre de seconde tous les jours à 2 heure du matin. Par exemple, si vous indiquez -5, à 2 heure du matin la Cultibox changera son horloge pour qu'il soit 1h59m45s. Pour une aide détaillée, consulter le chapitre suivant.
