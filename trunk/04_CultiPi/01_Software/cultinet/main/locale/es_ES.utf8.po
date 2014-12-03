@@ -1,0 +1,86 @@
+# This file must be encoded in UTF-8.
+# The msgstr are given to a sprintf function so sprintf escaping rules applies
+
+
+# For the menu:
+msgid "LANG"
+msgstr "es_ES"
+
+# For the configuration part:
+msgid "CONFIGURE_TITLE_CULTIBOX"
+msgstr "Configurer les accès réseau de votre Cultipi"
+
+msgid "ENABLE_JAVASCRIPT"
+msgstr "Javascript est désactivé! Vous ne pourrez pas utiliser ce logiciel si vous n'activez pas Javascript"
+
+msgid "CONFIGURE_WIFI"
+msgstr "Wifi"
+
+msgid "CONFIGURE_WIFI_IP"
+msgstr "Adresse de votre module Wifi"
+
+msgid "CONFIGURE_WIFI_KEY_TYPE"
+msgstr "Type de la clef"
+
+msgid "CONFIGURE_WIFI_PASSWORD"
+msgstr "Mot de passe du réseau"
+
+msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
+msgstr "Confirmation du mot de passe"
+
+msgid "CONFIGURE_WIFI_SSID"
+msgstr "Nom du réseau"
+
+msgid "CONFIGURE_WIFI_IP_MASK"
+msgstr "Masque du réseau"
+
+msgid "WIFI_DESCRIPTION"
+msgstr "Le module Wifi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox et de vos prises ainsi que la configuration actuelle."
+
+msgid "WIFI_IP_MANUAL"
+msgstr "Configurer l'adresse IP manuellement"
+
+msgid "SHOW_CURRENT_PWD"
+msgstr "Laisser la souris cliquée sur l'image pour afficher le mot de passe"
+
+msgid "ERROR_SSID_VALUE"
+msgstr "Le nom du réseau ne peut pas être vide"
+
+msgid "ERROR_PASSWORD_VALUE"
+msgstr "Les mots de passe doivent correspondre"
+
+msgid "ERROR_WIFI_IP_MASK"
+msgstr "Erreur dans le format du masque réseau: XXX.XXX.XXX.XXX"
+
+msgid "ERROR_WIFI_IP"
+msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
+
+msgid "ERROR_EMPTY_PASSWORD"
+msgstr "Le mot de passe ne peut pas être vide"
+
+msgid "ERROR_WEP_KEY_TYPE"
+msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombres (0-9) et faire 5, 13 ou 29 caractères de long"
+
+msgid "ERROR_WPA_KEY_TYPE"
+msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8 et 63 caractères"
+
+msgid "TOOLTIP_WIFI_IP_MASK"
+msgstr "Le masque de votre réseau de la forme XXX.XXX.XXX.XXX"
+
+msgid "TOOLTIP_WIFI_SSID"
+msgstr "Le nom de votre réseau Wifi actuellement en marche. Il s'agit de l'identifiant (SSID) de votre réseau Wifi local."
+
+msgid "TOOLTIP_WIFI_KEY_TYPE"
+msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
+
+msgid "TOOLTIP_WIFI_IP"
+msgstr "L'adresse de votre module Wifi peut être personnalisée en rentrant une adresse ip au format XXX.XXX.XXX.XXX"
+
+msgid "TOOLTIP_MSGBOX_EYES"
+msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du logiciel"
+
+msgid "SAVE_CONF"
+msgstr "Enregistrer la configuration"
+
+msgid "SAVING_DATA"
+msgstr "Enregistrement de votre configuration, patientez s'il vous plaît..."
