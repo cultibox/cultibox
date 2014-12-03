@@ -1,0 +1,254 @@
+.error_field {
+    color: red;
+    border-radius:15px;
+    background:#E3DDD1;
+    margin:auto;
+    padding:6px;
+    display:block;
+    vertical-align:middle;
+}
+
+#compat-js {
+    background-color: #F30921;
+    padding:4px 7px;
+    border-bottom-left-radius:11px;
+    border-bottom-right-radius:11px;
+    border-top-left-radius:11px;
+    border-top-right-radius:11px;
+    padding-bottom: 8px;
+    height:30px;
+    text-align: center;
+    width: 99%;
+}
+
+.p_right {
+    text-align:right;
+}
+
+.p_center_subtitle {
+    text-align: center;
+    font-style: italic;
+}
+
+
+td { font-size: 14px; }
+
+
+table.table_width{
+   width: 100%;
+}
+
+td.conf-marge {
+   width: 5%;
+}
+
+td.conf-title {
+    width:17%;
+}
+
+td.conf-marge-field {
+   width: 25%;
+}
+
+td.conf-field-title {
+    width: 17%;
+}
+
+td.conf-field-field {
+    width: 20%;
+}
+
+td.conf-marge-field-wifi {
+   width: 15%;
+}
+
+td.conf-field-title-wifi {
+    width: 25%;
+}
+
+td.conf-field-field-wifi {
+    width: 23%;
+}
+
+
+
+.p_center{
+   text-align: center;
+}
+
+
+body{
+	font-family: "OpenSansRegular";
+	font-size:14px;	
+}
+
+a{
+	color:#696455;	
+}
+
+a:hover{
+	color:#C3B59B;
+}
+
+select, input, textarea, button {
+	font-family: 'OpenSansRegular';	
+    font-size: 13px;
+}
+
+option:focus{background: #ee986e;} 
+
+.shortlogo {
+	float: right;
+    padding-right: 30px;
+}
+
+#shortlogo img {
+	padding-right:20px; 
+}
+
+.error {
+	color:red;
+	font-size:12px;
+	font-style:normal;
+	font-weight:normal;
+    padding-left : 15px;
+}
+
+.error_title {
+    color:red;
+    font-size:14px;
+    font-style:normal;
+    font-weight:bold;
+}
+
+
+.inputDisable {
+    color: white;
+}
+
+
+ul, ol, dl {
+	padding-left:0px;
+}
+
+p.p_right{
+	font-size:11px;		
+    text-align: right;
+}
+
+
+button, input[type="button"], input[type="submit"] {
+	padding:4px 7px;
+	background: #C3B59B;
+	border-bottom-left-radius:11px;
+	border-bottom-right-radius:11px;
+	border-top-left-radius:11px;
+	border-top-right-radius:11px;
+}
+
+button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+	background: #f4ee31;
+	background: #D7DF21;
+}
+
+hr {
+  margin:auto;
+  width:30%;
+}
+
+
+.title_conf {
+	display:block;
+	margin:auto;
+	width:90%;
+	text-align:center;
+	font-size:19px;
+	font-style:normal;
+	font-weight:normal;
+	padding-top:7px;
+	padding-bottom:20px;
+	background:url("../../../images/fond_cartouche.png") center top no-repeat;
+}
+
+.mod-languages {
+    text-align: center;
+}
+
+
+.ui-tooltip {
+       font-size:13px;
+       font-family:Calibri;
+       background: #696455;
+       border-radius:20px;
+       padding: 5px;
+       color: #ffffff;
+       cursor:pointer;
+       position: absolute;
+       padding: 6px;
+       padding-left: 12px;
+       padding-right: 12px;
+       width: 20%;
+       z-index: 10000;
+}
+
+.p_tooltip {
+       font-size:13px;
+       font-family:Calibri;
+       background: #696455;
+       border-radius:20px;
+       padding: 5px;
+       color: #ffffff;
+       cursor:pointer;
+}
+
+
+
+a.logo img{
+	padding:10px 0 10px 50px;
+}
+
+.readonly {
+    font-style: italic;
+}
+
+a:link.note_link {color:#93982a;}
+a:visited.note_link {color:#93982a;}
+a:hover.note_link {
+    color:#C3B59B;
+}
+
+
+.container {
+  max-width:400px;
+  margin-top:15px;
+  margin-left:10px;
+}
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transform: translate(-300px, 0) scale(4);
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  .fileupload-buttonbar .toggle,
+  .files .toggle,
+  .files .btn span {
+    display: none;
+  }
+  .files .name {
+    width: 80px;
+    word-wrap: break-word;
+  }
+}
+
