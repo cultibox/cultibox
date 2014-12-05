@@ -25,26 +25,29 @@ $wire_address=find_config($net_config,"eth0","address","val");
 $wire_mask=find_config($net_config,"eth0","netmask","val");
 
 $wifi_enable=find_config($net_config,"wlan0","iface wlan0","bool");
-$wifi_dhcp=find_config($net_config,"wlan0","iface inet dhcp","bool");
+$wifi_dhcp=find_config($net_config,"wlan0","iface wlan0 inet dhcp","bool");
 $wifi_static=find_config($net_config,"wlan0","iface wlan0 inet static","bool");
-$wifi_ad_hoc=find_config($net_config,"wlan0","wireless-mode ad-hoc","bool");
 
-$wifi_ssid=find_config($net_config,"wlan0","wireless-essid","val"); 
-$wifi_channel=find_config($net_config,"wlan0","wireless-channel","val");
 $wifi_address=find_config($net_config,"wlan0","address","val");
 $wifi_mask=find_config($net_config,"wlan0","netmask","val");
 
 $eth_phy=get_phy_addr("eth0");
 $wlan_phy=get_phy_addr("wlan0");
 
+exec("sudo /sbin/iwlist wlan0 scan |/bin/grep ESSID|/usr/bin/awk -F \"\\\"\" '{print $2}'",$wifi_net_list,$error);
+
+
 if(find_config($net_config,"wlan0","wpa-psk","bool")) {
-    $wifi_key_type="WPA2";
-    $wifi_password=find_config($net_config,"wlan0","wpa-psk ","val")
+    $wifi_key_type="WPA (TKIP + AES)";
+    $wifi_password=find_config($net_config,"wlan0","wpa-psk ","val");
+    $wifi_ssid=find_config($net_config,"wlan0","wpa-ssid","val");
 } else if(find_config($net_config,"wlan0","wireless-key","val")) {
     $wifi_key_type="WEP";
-    $wifi_password=find_config($net_config,"wlan0","wireless-key","val")
+    $wifi_password=find_config($net_config,"wlan0","wireless-key","val");
+    $wifi_ssid=find_config($net_config,"wlan0","wireless-essid","val");
 } else {
     $wifi_key_type="NONE";
+    $wifi_ssid=find_config($net_config,"wlan0","wireless-essid","val");
 }
 
 ?>
@@ -142,13 +145,13 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
             <td class="conf-marge-field"></td>
             <td class="conf-field-title"><?php echo __('IP_ADDR'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IP_ADDR'); ?>" /></td>
             <td class="conf-field-field"><input type="text" size="15" id="wire_address" name="wire_address" maxlength=15 value="<?php echo $wire_address; ?>"></td>
-            <td></td>
+            <td><div id="error_wire_ip" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP'); ?></div></td>
          </tr>
          <tr>
             <td></td>
             <td><?php echo __('IP_MASK'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MASK_ADDR'); ?>" /></td>
             <td><input type="text" size=15 maxlength=15 id="wire_mask" name="wire_mask" value="<?php echo $wire_mask; ?>"></td>
-            <td></td>
+            <td><div id="error_wire_mask" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
          </tr>
          </table>
         </div>
@@ -175,7 +178,7 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
             <td class="conf-marge-field-wifi"></td>
             <td class="conf-field-title-wifi"><?php echo __('CONFIGURE_WIFI_SSID'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_SSID'); ?>" /></td>
              <td class="conf-field-field-wifi">
-                <input  type="text" size="15" name="wifi_ssid" id="wifi_ssid" value="<?php echo $wifi_ssid; ?>" />
+                <input  type="text" size="15" name="wifi_ssid" id="wifi_ssid" value="<?php echo $wifi_ssid; ?>" /><img src="/cultinet/main/libs/img/wifi.ico" id="wifi_scan" alt="" title="<?php echo __('WIFI_SCAN_ESSID'); ?>" />
             </td>
                 <td><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
             </tr>
@@ -228,13 +231,13 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
         <tr>
             <td class="conf-marge-field-wifi"></td>
             <td class="conf-field-title-wifi"><?php echo __('CONFIGURE_WIFI_IP'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_IP'); ?>" /></td>
-            <td class="conf-field-field-wifi"><input type="text" size="15" name="wifi_ip" id="wifi_ip" value="<?php echo $wifi_address; ?>" <?php if(!$wifi_static) echo "disabled"; ?> />
+            <td class="conf-field-field-wifi"><input type="text" size="15" name="wifi_ip" id="wifi_ip" value="<?php echo $wifi_address; ?>" />
             <td><div id="error_wifi_ip" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP'); ?></div></td>
         </tr>
          <tr>
               <td></td>
               <td><?php echo __('CONFIGURE_WIFI_IP_MASK'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MASK_ADDR'); ?>" /></td>
-              <td><input type="text" size="15" name="wifi_mask" id="wifi_mask" value="<?php echo $wifi_mask; ?>" <?php if(!$wifi_static) echo "disabled"; ?> /></td>
+              <td><input type="text" size="15" name="wifi_mask" id="wifi_mask" value="<?php echo $wifi_mask; ?>" /></td>
               <td><div id="error_wifi_mask" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_WIFI_IP_MASK'); ?></div></td>
         </tr>
 </table>
@@ -244,12 +247,34 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
 <br />
 <hr />
 <br />
-  
 <p class="p_center">
     <input type="submit" id="submit_conf" name="submit_conf" value="<?php echo __('SAVE_CONF'); ?>">
 </p>
 </form>
 <br />
+<div id="empty_network_conf" style="display:none">
+    <p><?php echo __('EMPTY_NETWORK_CONFIG'); ?></p>
+</div>
+
+<div id="error_network_file" style="display:none">
+    <p><?php echo __('ERROR_NET_FILE_CREATION'); ?></p>
+</div>
+
+
+
+<div id="wifi_essid_list" style="display:none" title="<?php echo __('WIFI_ESSID_SCAN_TITLE'); ?>">
+    <?php if(count($wifi_net_list)>0) { 
+            echo '<p>'.__('WIFI_SCAN_SUBTITLE').'</p>';
+            $checked="checked";
+            foreach($wifi_net_list as $essid) {
+                echo '<b>'.$essid.' : </b><input type="radio" name="wifi_essid" value="'.$essid.'" '.$checked.' /><br />';
+                $checked="";
+            }
+        }
+    ?>
+</div>
+
+
 
                         <div class="shortlogo"><img src="main/libs/img/shortlogo2.png" alt=""></div>
                     </div> 

@@ -84,3 +84,18 @@ msgstr "Enregistrer la configuration"
 
 msgid "SAVING_DATA"
 msgstr "Enregistrement de votre configuration, patientez s'il vous plaît..."
+
+msgid "EMPTY_NETWORK_CONFIG"
+msgstr "Aucune configuration réseau (filaire ou sans fil) n'a été activé. Vous devez activer une connexion réseau pour rendre votre module disponible."
+
+msgid "WIFI_SCAN_ESSID"
+msgstr "Cliquez sur l'image pour afficher les réseaux disponibles et en choisir un"
+
+msgid "WIFI_ESSID_SCAN_TITLE"
+msgstr "Sélection d'un réseau Wifi"
+
+msgid "WIFI_SCAN_SUBTITLE"
+msgstr "Les réseaux Wifi suivant ont été détécté et sont disponibles pour connecter votre module:"
+
+msgid "ERROR_NET_FILE_CREATION"
+msgstr "Une erreur est survenue lors de la création des fichiers de configuration du réseau"
