@@ -160,7 +160,7 @@ function get_phy_addr($iface) {
 // IN  $myConf  array containing informations
 // RET error number or -1 else
 function create_network_file($myConf) {
-    if(count($myConf)==0) return false;
+    if(count($myConf)==0) return 2;
     
     $myArray=array();
     $myArray[]="# interfaces(5) file used by ifup(8) and ifdown(8)";
@@ -201,80 +201,39 @@ function create_network_file($myConf) {
             $myArray[]="iface wlan0 inet dhcp";
         }
 
-        $myArray[]="wireless-essid ".$myConf['wifi_ssid'];
-
-        $tmp_cmd=exec('sudo /sbin/iwlist wlan0 scan 2>&1 | grep -v "^wlan0" | grep -v "^$" | \
-    sed -e "s/^\ *//" \
-        -e "s/^Cell [0-9]\+ - //" \
-        -e "s/^Address: /AP=/" \
-        -e "s/^Quality:\([0-9]\+\)\/.*$/QUALITY=\1/" \
-        -e "s/^.*Channel \([0-9]\+\).*$/CHANNEL=\1/" \
-        -e "s/^ESSID:/ESSID=/" \
-        -e "s/^Mode:/MODE=/" \
-        -e "s/^Encryption key:/ENC=/" \
-        -e "s/^[^#].*:.*//" | \
-    tr "\n" "|" ',$output,$err);
-            
-        if(count($output)!=1) return false;
-        $wifi_info=explode("||||||",$output[0]);
-
-        if(count($tmp_cmd)==0) return false;
-
-        $chan="";
-        $mode="Master";
-        foreach($wifi_info as $inf) {
-                $pos = strpos($inf, $myConf['wifi_ssid']);
-                if($pos !== false) {
-                    $winf=explode("|",$inf);
-
-                    if(count($winf)==0) return false;
-
-                    foreach($winf as $data) {
-                        $pos=strpos($data, "CHANNEL=");
-                        if($pos !== false) {
-                            $chan=substr($data, 8,strlen($data));
-                        } else {
-                            $pos=strpos($data, "MODE=");
-                            if($pos !== false) {
-                                $mode=substr($data, 5,strlen($data));
-                             }
-                        }
-                    }
-                }
-        }
-
-        if(strcmp("$chan","")!=0) {
-            $myArray[]="wireless-channel ".$chan;
-        }
-
-        if(strcmp("$mode","Master")==0) {
-            $mode="managed";
-        } else {
-            $mode="ad-hoc";
-        }
-        $myArray[]="wireless-mode ".$mode;
-
+        
         switch($myConf['wifi_key_type']) {
             case "NONE":
+                    $myArray[]="wireless-essid ".$myConf['wifi_ssid'];
                     break;
             case "WEP":
+                    $myArray[]="wireless-essid ".$myConf['wifi_ssid'];
                     $myArray[]="wireless-key ".$myConf['wifi_password'];
                     break;
 
-            case "WPA2":
-                    $myArray[]="wpa-psk ".$myConf['wifi_password'];
+            case "WPA (TKIP + AES)":
+                    $myArray[]="wpa-ssid ".$myConf['wifi_ssid'];
+                    $myArray[]="wpa-ap-scan 1";
+                    $myArray[]="wpa-key-mgmt WPA-PSK";
+                    $pwd=exec("/usr/bin/wpa_passphrase ".$myConf['wifi_ssid']." ".$myConf['wifi_password']."|/bin/grep psk=|/bin/grep -v \"#psk\"|/usr/bin/awk -F \"=\" '{print $2}'",$output,$err);
+                    if(count($output)!=1) return 3;
+                    $myArray[]="wpa-psk ".$output[0];
                     break;  
         }
     }
+
+    //"WPA (TKIP + AES)","WPA (TKIP)","WPA (AES/CCMP)"
 
 
     if($f=fopen("/tmp/interfaces","w")) {
         foreach($myArray as $myInf) {
            fputs($f,"$myInf\n");
         }
+    } else {
+        return 4;
     }
     fclose($f);
-    return -1;
+    return 1;
 }
 // }}}
 

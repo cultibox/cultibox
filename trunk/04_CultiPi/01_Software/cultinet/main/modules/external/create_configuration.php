@@ -2,10 +2,7 @@
 
     require_once('../../libs/utilfunc.php');
 
-    create_network_file($_GET);
-    echo json_encode(1);
-
-
-
+    $return=create_network_file($_GET);
+    echo json_encode($return);
 
 ?>

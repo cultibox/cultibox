@@ -16,13 +16,14 @@ switch($type) {
     case 'ssid': 
                 break;
     case 'password':
-        $value=explode('____',$value);
-        if(count($value)!=2) {
+        if((isset($_GET['value2']))&&(!empty($_GET['value2']))) {
+            $value2=$_GET['value'];
+        } else {
             echo "error";
             break;
         }
 
-        if(strcmp(trim($value[0]),trim($value[1]))!=0) {
+        if(strcmp(trim($value),trim($value2))!=0) {
             echo "error";
             break;
         }
