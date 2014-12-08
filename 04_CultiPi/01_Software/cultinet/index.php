@@ -260,6 +260,28 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
     <p><?php echo __('ERROR_NET_FILE_CREATION'); ?></p>
 </div>
 
+<div id="network_new_addr" style="display:none">
+    <p><?php echo __('AVAILABLE_MODULE'); ?>:</p>
+    <table class="table_width">
+        <tr>
+            <td class="conf-title"></td>
+            <td>
+                <ul id="list_new_addr">
+
+                </ul>
+            </td>
+            <td class="conf-title"></td>
+        </tr>
+    </table>
+</div>
+
+<div id="network_new_addr_set" style="display:none">
+    <p><?php echo __('AVAILABLE_MODULE_SET'); ?></p>
+</div>
+
+<div id="error_new_network_addr" style="display:none">
+    <p><?php echo __('NOT_AVAILABLE_MODULE'); ?></p>
+</div>
 
 
 <div id="wifi_essid_list" style="display:none" title="<?php echo __('WIFI_ESSID_SCAN_TITLE'); ?>">
