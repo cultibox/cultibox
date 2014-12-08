@@ -28,7 +28,9 @@ d_start () {
 
 d_stop () {
         log_daemon_msg "Stopping system $DEAMON_NAME Daemon"
-        start-stop-daemon --name $DEAMON_NAME --stop --retry 5 --quiet --name $DEAMON_NAME
+        for pid in "`ps aux|grep $DEAMON_NAME |awk -F \" \" '{print $2}'`"; do
+            kill -9 $pid
+        done
         log_end_msg $?
 }
 
@@ -44,10 +46,7 @@ case "$1" in
                 ;;
 
         force-stop)
-               d_stop
-                killall -q $DEAMON_NAME || true
-                sleep 2
-                killall -q -9 $DEAMON_NAME || true
+                d_stop
                 ;;
 
         status)
