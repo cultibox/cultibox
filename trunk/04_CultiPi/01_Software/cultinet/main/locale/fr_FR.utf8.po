@@ -142,3 +142,12 @@ msgstr "Les réseaux Wifi suivant ont été détécté et sont disponibles pour 
 msgid "ERROR_NET_FILE_CREATION"
 msgstr "Une erreur est survenue lors de la création des fichiers de configuration du réseau"
 
+msgid "AVAILABLE_MODULE"
+msgstr "Vous pouvez maintenant vous reconnecter à votre réseau domestique, votre module sera maintenant disponible à l'adresse suivante (n'oubliez pas de sauvegarder l'adresse de votre module)"
+
+msgid "NOT_AVAILABLE_MODULE"
+msgstr "Le module n'a pas réussi a se connecter à l'un des réseau que vous avez configuré. L'ancienne configuration a été remise en place"
+
+msgid "AVAILABLE_MODULE_SET"
+msgstr "Votre module est maintenant connecté sur le(s) réseau(x) configuré(s)."
+

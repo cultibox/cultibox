@@ -143,7 +143,7 @@ $(document).ready(function() {
       e.preventDefault();
 
 
-      if(($("#activ_wire option:selected").val()=="False")&($("#activ_wire option:selected").val()=="False")) {
+      if(($("#activ_wire option:selected").val()=="False")&&($("#activ_wifi option:selected").val()=="False")) {
          $("#empty_network_conf").dialog({
             resizable: false,
             width: 400,
@@ -402,11 +402,96 @@ $(document).ready(function() {
                    }).done(function (data) {
                         try{
                             var json_x = $.parseJSON(data);
-                            console.log(json_x);
-                        } catch(e) {
+                            var checked_new_addr=false;
+                            $.each(json_x, function( index, value ) {
+                                if(index=="ETH") {
+                                    if(value!="") {
+                                        $("<li>https://"+value+"/cultibox/</li>").appendTo( $("#list_new_addr") );
+                                        checked_new_addr=true;
+                                    }
+                                }
 
+                                if(index=="WLAN") {
+                                    if(value!="") {
+                                        $("<li>https://"+value+"/cultibox/</li>").appendTo( $("#list_new_addr") );
+                                        checked_new_addr=true;
+                                    }
+                                }
+                            });
+
+                            if(checked_new_addr) {
+                                $("#network_new_addr").dialog({
+                                    resizable: false,
+                                    width: 500,
+                                    modal: true,
+                                    closeOnEscape: true,
+                                    dialogClass: "popup_message",
+                                    buttons: [{
+                                        text: CLOSE_button,
+                                        click: function () {
+                                        $( this ).dialog( "close" ); return false;
+                                    }
+                                    }]
+                                });
+                            } else {
+                                $.ajax({
+                                    cache: false,
+                                    async: false,
+                                    url: "main/modules/external/restore_service.php"
+                                });
+
+                                $("#error_new_network_addr").dialog({
+                                    resizable: false,
+                                    width: 500,
+                                    modal: true,
+                                    closeOnEscape: true,
+                                    dialogClass: "popup_error",
+                                    buttons: [{
+                                        text: CLOSE_button,
+                                        click: function () {
+                                        $( this ).dialog( "close" ); return false;
+                                    }
+                                    }]
+                                });
+                            }
+                        } catch(e) {
+                            $.ajax({
+                                cache: false,
+                                async: false,
+                                url: "main/modules/external/restore_service.php"
+                            });
+
+                            $("#error_new_network_addr").dialog({
+                                resizable: false,
+                                width: 500,
+                                modal: true,
+                                closeOnEscape: true,
+                                dialogClass: "popup_error",
+                                buttons: [{
+                                    text: CLOSE_button,
+                                    click: function () {
+                                    $( this ).dialog( "close" ); return false;
+                                }
+                                }]
+                            });
+                            alert(e);
                         }
-                   });
+                   })
+                  .fail(function() {
+                        $("#network_new_addr_set").dialog({
+                            resizable: false,
+                            width: 500,
+                            modal: true,
+                            closeOnEscape: true,
+                            dialogClass: "popup_message",
+                            buttons: [{
+                                text: CLOSE_button,
+                                click: function () {
+                                $( this ).dialog( "close" ); return false;
+                            }
+                         }]
+                       });
+                  });
                 } 
               }
         });
