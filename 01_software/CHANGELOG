@@ -1,3 +1,9 @@
+Cultibox (2.0.18) precise; urgency=low
+    + Correction appel l'affichage des logs pour un mois
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Dec 08 10:44:19 CEST 2014
+
+
 Cultibox (2.0.17) precise; urgency=low
     + Correction appel en AJAX
 
