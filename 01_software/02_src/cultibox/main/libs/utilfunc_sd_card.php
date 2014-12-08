@@ -8,7 +8,6 @@ define("ERROR_COPY_PLUGA", "5");
 define("ERROR_COPY_PLUG_CONF", "6");
 define("ERROR_COPY_TPL", "7");
 define("ERROR_COPY_INDEX", "8");
-define("ERROR_COPY_WIFI_CONF", "10");
 define("ERROR_WRITE_SD_CONF", "11");
 define("ERROR_WRITE_SD", "12");
 define("ERROR_SD_NOT_FOUND", "13");
@@ -128,15 +127,6 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         }
     }
 
-    $wifi_conf=create_wificonf_from_database($main_error);
-    if(!compare_wificonf($wifi_conf,$sd_card)) {
-        $conf_uptodate=false;
-        if(!write_wificonf($sd_card,$wifi_conf,$main_error)) {
-            $main_error_tab[]=__('ERROR_COPY_WIFI_CONF');
-            return ERROR_COPY_WIFI_CONF;
-        }
-    }
-
     // Read value on sd Card
     if(!$force_rtc_offset) {
         $sdConfRtc = read_sd_conf_file($sd_card,"rtc_offset");
@@ -191,7 +181,6 @@ function get_error_sd_card_update_message($id=0) {
         case ERROR_COPY_PLUG_CONF:  return __('ERROR_COPY_PLUG_CONF');
         case ERROR_COPY_TPL:  return __('ERROR_COPY_TPL');
         case ERROR_COPY_INDEX:  return __('ERROR_COPY_INDEX');
-        case ERROR_COPY_WIFI_CONF: return __('ERROR_COPY_WIFI_CONF');
         case ERROR_WRITE_SD_CONF: return __('ERROR_WRITE_SD_CONF');
         case ERROR_WRITE_SD: return __('ERROR_WRITE_SD');
         case ERROR_COPY_PLGIDX: return __('ERROR_COPY_PLGIDX');
@@ -665,25 +654,6 @@ function compare_plgidx($data,$sd_card) {
 // }}}
 
 
-// {{{ compare_wificonf()
-// ROLE compare wifi configuration if the file is up to date
-// IN    $data         array containing datas to check
-//       $sd_card      sd card path to check data
-// RET false is there is something to write, true else
-function compare_wificonf($data,$sd_card) {
-    $file="$sd_card/cnf/wifi";
-    if(!is_file($file)) return false;
-
-    $wifi_array=@file("$file");
-    if((count($data))!=(count($wifi_array))) return false;
-
-    for($i=0;$i<count($data);$i++) {
-        if(strcmp(trim(html_entity_decode($data[$i])),trim(html_entity_decode($wifi_array[$i])))!=0) return false;
-    }
-    return true;
-}
-
-
 // {{{ write_pluga()
 // ROLE write plug_a into the sd card
 // IN   $sd_card        the sd card to be written
@@ -715,36 +685,6 @@ function write_pluga($sd_card,&$out) {
       if(!@fwrite($f,"$pluga")) {
           fclose($f);
           return false;
-      }
-   } else {
-        return false;
-   }
-   fclose($f);
-   return true;
-}
-// }}}
-
-
-
-
-// {{{ write_wificonf()
-// ROLE write wifi configuration into the sd card
-// IN   $sd_card        the sd card to be written
-//      $wificonf       string containing data to be written
-//      $out            error or warning messages
-// RET false is an error occured, true else
-function write_wificonf($sd_card,$wificonf="",&$out) {
-   $data="";
-   $file="$sd_card/cnf/wifi";
-
-   foreach($wificonf as $conf) {
-        $data=$data.html_entity_decode($conf)."\r\n";
-   }
-
-   if($f=@fopen("$file","w+")) {
-      if(!@fwrite($f,"$data")) {
-        fclose($f);
-        return false;
       }
    } else {
         return false;

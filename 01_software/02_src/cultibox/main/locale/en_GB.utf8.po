@@ -27,9 +27,6 @@ msgstr "Cost"
 msgid "MENU_CAL"
 msgstr "Calendrier"
 
-msgid "MENU_WIFI"
-msgstr "Wifi"
-
 msgid "MENU_WIZARD"
 msgstr "Wizard"
 
@@ -84,12 +81,6 @@ msgstr "Cultibox"
 
 msgid "CONFIGURE_CARD"
 msgstr "SD card"
-
-msgid "CONFIGURE_WIFI"
-msgstr "Wifi"
-
-msgid "CONFIGURE_WIFI_IP"
-msgstr "Address of your Wifi Module"
 
 msgid "CONFIGURE_HUMIDITY"
 msgstr "Color humidity curves"
@@ -175,21 +166,6 @@ msgstr "Activate the alarm system"
 msgid "CONFIGURE_ALARM_VALUE"
 msgstr "Threshold value for triggering the alarm"
 
-msgid "CONFIGURE_WIFI_ACTIV"
-msgstr "Enable Wifi Module"
-
-msgid "CONFIGURE_WIFI_SSID"
-msgstr "Network Name"
-
-msgid "CONFIGURE_WIFI_KEY_TYPE"
-msgstr "Type of key"
-
-msgid "CONFIGURE_WIFI_PASSWORD"
-msgstr "Password network"
-
-msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
-msgstr "Confirm password"
-
 msgid "CHECK_STATISTICS"
 msgstr "Sending information to help develop"
 
@@ -228,12 +204,6 @@ msgstr "View menu costing"
 
 msgid "RESET_MINMAX"
 msgstr "Resetting the min / max"
-
-msgid "WIFI_DESCRIPTION"
-msgstr "Wifi module can communicate with the remote Cultibox. Once this module enabled, a tab Wifi 'will be available in the software menu that lets you view the current status of your Cultibox: e socket status, current configuration ..."
-
-msgid "WIFI_IP_MANUAL"
-msgstr "Configure the IP address manually"
 
 msgid "SHOW_CURRENT_PWD"
 msgstr "Leave the mouse clicked on the image to view the password"
@@ -1309,50 +1279,6 @@ msgid "VALID_THEORICAL_COST_COMPUTE"
 msgstr "Calculation of the theoretical cost achieved successfully"
 
 
-# For the wifi part:
-msgid "VIEW_PLUGS_STATE"
-msgstr "Current state of your catch"
-
-msgid "VIEW_SENSOR_STATE"
-msgstr "Current status of your sensors"
-
-msgid "PLUG_NUMBER"
-msgstr "Taking issue"
-
-msgid "PLUG_UNKNOWN_STATE"
-msgstr "Status unknown decision"
-
-msgid "PLUG_ON"
-msgstr "Decision is currently running"
-
-msgid "PLUG_OFF"
-msgstr "Decision is currently stopped"
-
-msgid "SHORT_ELEMENT_TYPE"
-msgstr "Type of component connected"
-
-msgid "SHORT_PLUG_TYPE"
-msgstr "Plug Type"
-
-msgid "SENSOR_TYPE"
-msgstr "Type of sensor"
-
-msgid "NA"
-msgstr "N / A"
-
-msgid "SENSOR_TEMPHUMI"
-msgstr "temperature and humidity"
-
-msgid "SENSOR_T_WATER"
-msgstr "submersible temperature"
-
-msgid "SENSOR_LEVEL_W"
-msgstr "water level"
-
-msgid "SENSOR_VALUE"
-msgstr "Last recorded value"
-
-
 # For the errors or warnings part:
 msgid "INFORMATION"
 msgstr "Information (s)"
@@ -1548,12 +1474,6 @@ msgstr "The network name can not be empty"
 
 msgid "ERROR_PASSWORD_VALUE"
 msgstr "Passwords must match"
-
-msgid "ERROR_COPY_WIFI_CONF"
-msgstr "Error copying the configuration file wifi Module"
-
-msgid "ERROR_WIFI_IP"
-msgstr "Error in the format of the IP address: XXX.XXX.XXX.XXX"
 
 msgid "ERROR_EMPTY_PASSWORD"
 msgstr "The password can not be empty"
@@ -1804,15 +1724,6 @@ msgstr "This field allows you to define a name for your fertilizer program. This
 
 msgid "TOOLTIP_CALENDAR_SELECT_CROISSANCE"
 msgstr "If you choose growth, the first three weeks of culture program will be implemented. If you choose flowering, the last eight weeks of culture program will be implemented."
-
-msgid "TOOLTIP_WIFI_SSID"
-msgstr "The name of your wireless network is currently running. This is the identifier (SSID) of your local WiFi network."
-
-msgid "TOOLTIP_WIFI_KEY_TYPE"
-msgstr "The type of encryption key for your wireless network"
-
-msgid "TOOLTIP_WIFI_IP"
-msgstr "The address of your wireless module can be personalized by returning an ip address in the format XXX.XXX.XXX.XXX"
 
 msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Click on the image to reappear message box software"

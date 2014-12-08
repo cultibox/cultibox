@@ -13,9 +13,14 @@ $status=get_canal_status($main_error);
 $step=1;
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
-if((!isset($sd_card))||(empty($sd_card))) {
-   $sd_card=get_sd_card();
+if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { 
+    if((!isset($sd_card))||(empty($sd_card))) {
+        $sd_card=get_sd_card();
+    }
+} else {
+        $sd_card="/etc/cultipi";
 }
+
 
 if((!isset($sd_card))||(empty($sd_card))) {
     setcookie("CHECK_SD", "False", time()+1800,"/",false,false);

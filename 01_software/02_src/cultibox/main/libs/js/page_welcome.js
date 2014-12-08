@@ -20,6 +20,8 @@ function(){
 });
 <?php } ?>
 
+
+<?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { ?>
 $(document).ready(function(){
 pop_up_add_information("<?php echo __('INFO_UPDATE_CHECKING')."<img src='main/libs/img/waiting_small.gif' />"; ?>","check_version_progress","information");
 $.ajax({
@@ -52,10 +54,10 @@ $.ajax({
     }
 });
 });
+<?php } ?>
 
 
 $(document).ready(function(){
-
 
      pop_up_remove("main_error");
      pop_up_remove("main_info");

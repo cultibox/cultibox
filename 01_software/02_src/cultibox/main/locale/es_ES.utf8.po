@@ -27,9 +27,6 @@ msgstr "Costo"
 msgid "MENU_CAL"
 msgstr "Calendario"
 
-msgid "MENU_WIFI"
-msgstr "Wifi"
-
 msgid "MENU_WIZARD"
 msgstr "Asistente"
 
@@ -84,12 +81,6 @@ msgstr "Cultibox"
 
 msgid "CONFIGURE_CARD"
 msgstr "Tarjeta SD"
-
-msgid "CONFIGURE_WIFI"
-msgstr "Wi-Fi"
-
-msgid "CONFIGURE_WIFI_IP"
-msgstr "Dirección de su módulo Wifi"
 
 msgid "CONFIGURE_HUMIDITY"
 msgstr "Color de las curvas de higrometría"
@@ -175,21 +166,6 @@ msgstr "Activar el sistema de alarma"
 msgid "CONFIGURE_ALARM_VALUE"
 msgstr "Valor umbral de activación de alarma"
 
-msgid "CONFIGURE_WIFI_ACTIV"
-msgstr "Activar el sistema de Wi-Fi"
-
-msgid "CONFIGURE_WIFI_SSID"
-msgstr "Nombre de la red"
-
-msgid "CONFIGURE_WIFI_KEY_TYPE"
-msgstr "Tipo de clave"
-
-msgid "CONFIGURE_WIFI_PASSWORD"
-msgstr "Escriba la contraseña de la red"
-
-msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
-msgstr "Confirmar contraseña"
-
 msgid "CHECK_STATISTICS"
 msgstr "Enviar informaciones para ayudar el desarrollo"
 
@@ -229,12 +205,6 @@ msgstr "Enseñar el menú de calculo de coste"
 
 msgid "RESET_MINMAX"
 msgstr "Reseteo del min/max"
-
-msgid "WIFI_DESCRIPTION"
-msgstr "El diálogo módulo Wi-Fi con Cultibox remota. Una vez que este módulo habilitada, un Wifi pestaña 'estará disponible en el menú del software que le permite ver el estado actual de su Cultibox: Estado socket electrónico, configuración actual ..."
-
-msgid "WIFI_IP_MANUAL"
-msgstr "Configure la dirección IP manualmente"
 
 msgid "SHOW_CURRENT_PWD"
 msgstr "Deja el ratón se hace clic sobre la imagen para ver la contraseña"
@@ -1309,50 +1279,6 @@ msgid "VALID_THEORICAL_COST_COMPUTE"
 msgstr "Calculo del coste teórico realizado con excito"
 
 
-# For the wifi part:
-msgid "VIEW_PLUGS_STATE"
-msgstr "Estado actual de los enchufes"
-
-msgid "VIEW_SENSOR_STATE"
-msgstr "Estado actual de los sensores"
-
-msgid "PLUG_NUMBER"
-msgstr "Enchufe número"
-
-msgid "PLUG_UNKNOWN_STATE"
-msgstr "Estado del enchufe  desconocido"
-
-msgid "PLUG_ON"
-msgstr "El enchufe se está ejecutando"
-
-msgid "PLUG_OFF"
-msgstr "El enchufe se está detenido"
-
-msgid "SHORT_ELEMENT_TYPE"
-msgstr "Tipo de componente conectado"
-
-msgid "SHORT_PLUG_TYPE"
-msgstr "Tipo de enchufe"
-
-msgid "SENSOR_TYPE"
-msgstr "Tipo de sensor"
-
-msgid "NA"
-msgstr "N/A"
-
-msgid "SENSOR_TEMPHUMI"
-msgstr "temperatura y humedad"
-
-msgid "SENSOR_T_WATER"
-msgstr "temperatura sumergible"
-
-msgid "SENSOR_LEVEL_W"
-msgstr "nivelk de agua"
-
-msgid "SENSOR_VALUE"
-msgstr "Último valor registrado"
-
-
 # For the errors or warnings part:
 msgid "INFORMATION"
 msgstr "Información(nes)"
@@ -1548,12 +1474,6 @@ msgstr "El nombre de la red no puede estar vacío"
 
 msgid "ERROR_PASSWORD_VALUE"
 msgstr "Las contraseñas deben coincidir"
-
-msgid "ERROR_COPY_WIFI_CONF"
-msgstr "Error al copiar el archivo de configuración del módulo de wifi"
-
-msgid "ERROR_WIFI_IP"
-msgstr "Error en el formato de la dirección IP: XXX.XXX.XXX.XXX"
 
 msgid "ERROR_EMPTY_PASSWORD"
 msgstr "La contraseña no puede estar vacío"
@@ -1801,15 +1721,6 @@ msgstr "Este campo permite definir un nombre a su programa de abono. Este nombre
 
 msgid "TOOLTIP_CALENDAR_SELECT_CROISSANCE"
 msgstr "Si se selecciona crecimiento, las tres primeras semanas del programa de cultivo se aplicaran. Si se selecciona floración , las ochos ultimas semanas del programa de cultivo se aplicaran."
-
-msgid "TOOLTIP_WIFI_SSID"
-msgstr "El nombre de la red inalámbrica se está ejecutando actualmente. Es el identificador (SSID) de su red Wi-Fi local."
-
-msgid "TOOLTIP_WIFI_KEY_TYPE"
-msgstr "El tipo de clave de cifrado para el Wifi"
-
-msgid "TOOLTIP_WIFI_IP"
-msgstr "La dirección de su módulo inalámbrico se puede personalizar mediante la devolución de una dirección IP en el formato XXX.XXX.XXX.XXX"
 
 msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Haga clic la imagen para ver para ver los mensajes del software"

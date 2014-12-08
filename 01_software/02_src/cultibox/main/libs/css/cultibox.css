@@ -125,10 +125,6 @@ td.conf-marge {
    width: 5%;
 }
 
-td.conf-marge-wifi {
-   width: 15%;
-}
-
 td.conf-menu-marge {
     width: 5%;
 }
@@ -371,6 +367,10 @@ td.program-valid-right{
    text-align: center;
 }
 
+td.center_menu {
+    text-align: center;
+}
+
 td.program-action-center{
    text-align: center;
 }
@@ -407,23 +407,9 @@ td.calendar_right {
     text-align: right;
 }
 
-td.wifi-plug-field {
-   width: 80%;
-}
-
-td.wifi-plug-marge {
-   width: 5%;
-}
-
 P.p_center{
    text-align: center;
 }
-
-hr.wifi-bar {
-   width:40%;
-   margin:auto;
-}
-
 
 label.input-file
 {
@@ -637,11 +623,6 @@ td.conf-marge-td {
 td.conf-marge-td-alarm {
   width: 40%;
 }
-
-td.conf-marge-td-wifi {
-  width: 30%;
-}
-
 
 td.welcome-link {
   width:33%;

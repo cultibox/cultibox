@@ -36,13 +36,6 @@ function check_db() {
     $conf_index_col["ADVANCED_REGUL_OPTIONS"] = array ( 'Field' => "ADVANCED_REGUL_OPTIONS", 'Type' => "varchar(5)", 'default_value' => "False",'carac' => "NOT NULL");
     $conf_index_col["SHOW_COST"]            = array ( 'Field' => "SHOW_COST", 'Type' => "tinyint(1)", 'default_value' => 0,'carac' => "NOT NULL");
     $conf_index_col["RESET_MINMAX"]         = array ( 'Field' => "RESET_MINMAX", 'Type' => "varchar(5)", 'default_value' => "00:00",'carac' => "NOT NULL");
-    $conf_index_col["WIFI"]                 = array ( 'Field' => "WIFI", 'Type' => "tinyint(1)", 'default_value' => 0,'carac' => "NOT NULL");
-    $conf_index_col["WIFI_SSID"]            = array ( 'Field' => "WIFI_SSID", 'Type' => "varchar(32)");
-    $conf_index_col["WIFI_KEY_TYPE"]        = array ( 'Field' => "WIFI_KEY_TYPE", 'Type' => "varchar(10)", 'default_value' => "NONE",'carac' => "NOT NULL");
-    $conf_index_col["WIFI_PASSWORD"]        = array ( 'Field' => "WIFI_PASSWORD", 'Type' => "varchar(63)");
-    $conf_index_col["WIFI_IP"]              = array ( 'Field' => "WIFI_IP", 'Type' => "varchar(15)", 'default_value' => "000.000.000.000",'carac' => "NOT NULL");
-    $conf_index_col["WIFI_IP_REAL"]              = array ( 'Field' => "WIFI_IP_REAL", 'Type' => "varchar(15)", 'default_value' => "000.000.000.000",'carac' => "NOT NULL");
-    $conf_index_col["WIFI_IP_MANUAL"]       = array ( 'Field' => "WIFI_IP_MANUAL", 'Type' => "tinyint(1)", 'default_value' => 0,'carac' => "NOT NULL");
     $conf_index_col["RTC_OFFSET"]           = array ( 'Field' => "RTC_OFFSET", 'Type' => "int(11)", 'default_value' => 0,'carac' => "NOT NULL");
     $conf_index_col["REMOVE_1000_CHANGE_LIMIT"] = array ( 'Field' => "REMOVE_1000_CHANGE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False",'carac' => "NOT NULL");
     $conf_index_col["REMOVE_5_MINUTE_LIMIT"] = array ( 'Field' => "REMOVE_5_MINUTE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False",'carac' => "NOT NULL");
@@ -94,13 +87,6 @@ function check_db() {
             ."ADVANCED_REGUL_OPTIONS VARCHAR(5) NOT NULL DEFAULT 'False',"
             ."SHOW_COST tinyint(1) NOT NULL DEFAULT 0,"
             ."RESET_MINMAX VARCHAR(5) NOT NULL DEFAULT '00:00',"
-            ."WIFI tinyint(1) NOT NULL DEFAULT 0,"
-            ."WIFI_SSID VARCHAR(32),"
-            ."WIFI_KEY_TYPE VARCHAR(10) NOT NULL DEFAULT 'NONE',"
-            ."WIFI_PASSWORD VARCHAR(63),"
-            ."WIFI_IP VARCHAR(15) NOT NULL DEFAULT '000.000.000.000',"
-            ."WIFI_IP_REAL VARCHAR(15) NOT NULL DEFAULT '000.000.000.000',"
-            ."WIFI_IP_MANUAL tinyint(1) NOT NULL DEFAULT false,"
             ."RTC_OFFSET int(11) NOT NULL DEFAULT '0',"
             ."REMOVE_1000_CHANGE_LIMIT VARCHAR(5) NOT NULL DEFAULT 'False',"
             ."REMOVE_5_MINUTE_LIMIT VARCHAR(5) NOT NULL DEFAULT 'False',"
@@ -115,7 +101,7 @@ function check_db() {
             print_r($ret);
         }
 
-         $sql = "INSERT INTO configuration (id, VERSION, COLOR_HUMIDITY_GRAPH, COLOR_TEMPERATURE_GRAPH, COLOR_WATER_GRAPH, COLOR_LEVEL_GRAPH, COLOR_PH_GRAPH, COLOR_EC_GRAPH, COLOR_OD_GRAPH, COLOR_ORP_GRAPH, COLOR_POWER_GRAPH, RECORD_FREQUENCY, POWER_FREQUENCY, NB_PLUGS, UPDATE_PLUGS_FREQUENCY, ALARM_ACTIV, ALARM_VALUE, COST_PRICE, COST_PRICE_HP, COST_PRICE_HC, START_TIME_HC, STOP_TIME_HC, COST_TYPE, STATISTICS,ADVANCED_REGUL_OPTIONS,SHOW_COST,RESET_MINMAX, WIFI, WIFI_SSID, WIFI_KEY_TYPE, WIFI_PASSWORD, WIFI_IP, WIFI_IP_REAL, WIFI_IP_MANUAL, RTC_OFFSET) VALUES (1, '2.0.12-amd64', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 'black', 5, 1, 3, 1, '0000', '60', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 0, '00:00',0,'','NONE','','000.000.000.000','000.000.000.000',0,0);";
+         $sql = "INSERT INTO configuration (id, VERSION, COLOR_HUMIDITY_GRAPH, COLOR_TEMPERATURE_GRAPH, COLOR_WATER_GRAPH, COLOR_LEVEL_GRAPH, COLOR_PH_GRAPH, COLOR_EC_GRAPH, COLOR_OD_GRAPH, COLOR_ORP_GRAPH, COLOR_POWER_GRAPH, RECORD_FREQUENCY, POWER_FREQUENCY, NB_PLUGS, UPDATE_PLUGS_FREQUENCY, ALARM_ACTIV, ALARM_VALUE, COST_PRICE, COST_PRICE_HP, COST_PRICE_HC, START_TIME_HC, STOP_TIME_HC, COST_TYPE, STATISTICS,ADVANCED_REGUL_OPTIONS,SHOW_COST,RESET_MINMAX, RTC_OFFSET) VALUES (1, '2.0.12-amd64', 'blue', 'red', 'orange', 'pink', 'brown', 'yellow', 'red', 'blue', 'black', 5, 1, 3, 1, '0000', '60', 0.1225, 0.1353, 0.0926, '22:30', '06:30', 'standard', 'True', 'False', 0, '00:00',0);";
         // Insert row:
         try {
             $sth = $db->prepare($sql);

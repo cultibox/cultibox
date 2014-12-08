@@ -275,11 +275,6 @@ $(document).ready(function() {
        get_content("calendar",get_array);
     });
 
-    $(".href-wifi").click(function(e) {
-       e.preventDefault();
-       get_content("wifi",get_array);
-    });
-
     $(".href-cost").click(function(e) {
        e.preventDefault();
        get_content("cost",get_array);
