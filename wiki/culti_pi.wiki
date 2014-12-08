@@ -21,7 +21,7 @@ Trois espaces sur la carte sont présents pour le bon fonctionnement du logiciel
  * L'espace de configuration de Culti Pi : /etc/cultipi/...
  * L'espace ou est présent le logiciel Cultibox : /var/www/...
 
-Culti Pi fonctionne avec un système de repère. Chaque repère représente une donnée (Température, etat d'une prise ...). Les repères ont les paramètres suivants :
+Culti Pi fonctionne avec un système de repère. Chaque repère représente une donnée (Température, état d'une prise ...). Les repères ont les paramètres suivants :
  * ID unique : Il permet de réaliser touts les transactions entre les modules et le serveur
  * nom : C'est le nom du repère (unique)
  * Libellé (libelle) : Un texte pour décrire le repère
@@ -72,16 +72,23 @@ Au démarrage du serveur Culti Pi,il charge la liste des repères de sa configur
 Ensuite le serveur démarre tous les composants définit dans le fichier de configuration.
 
 Pour démarrer le serveur CultiPi :
-tclsh cultiPi.tcl <conf_dir>
+tclsh cultiPi.tcl conf_dir
 Avec :
- * <conf_dir> : Chemin vers le dossier racine des configurations
+ * conf_dir : Chemin vers le dossier racine des configurations
 
-Au démarrage, il charge le fichier "conf.xml" pour connaître l'emplacement de la configuration qu'il doit charger.
- 
-Pour chaque module qu'il démarre, il crée automatiquement les repères suivants : 
- * etat : État de la connexion (écrit par le serveur)
- * run : Mise en route du module (écrit par le serveur)
- * etat_run : État de la mise en route du module (écrit par le module)
+Au démarrage, il charge le fichier "conf.xml" présent dans le dossier conf_dir. Ce fichier de XML définit quelle configuration démarrer. 
+
+Exemple de fichier conf.xml :
+
+{{{
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<confs>
+    <!-- Example : http://wfr.tcl.tk/1151 -->
+    <conf dir="00_defaultConf" />
+</confs>
+}}}
+
+Ensuite, le logiciel CultiPi  charge le fichier XML présent dans le dossier cultiPi de sa configuration. Ce fichier définit l'ensemble des modules qu'il doit démarrer.
 
 Le fichier de configuration (généré par le logiciel Cultibox, au format XML) prend la forme suivante :
 
@@ -120,6 +127,14 @@ Le fichier de configuration (généré par le logiciel Cultibox, au format XML) 
     </module>
 </modules>
 }}}
+
+Pour chaque module qu'il démarre, il crée automatiquement les repères suivants (Non implémenté) : 
+ * etat : État de la connexion (écrit par le serveur)
+ * run : Mise en route du module (écrit par le serveur)
+ * etat_run : État de la mise en route du module (écrit par le module)
+
+Pour arrêter le logiciel, il suffit d’exécuter avec tclsh le script cultiPistop.tcl.
+
 
 == Les modules physiques ==
 
@@ -185,4 +200,3 @@ Pour réaliser le pilotage, il utilise le module "Module I2C".
 Matériel nécessaire :
  - Un Raspberry Pi
  - Une carte d'extension Culti Pi
-
