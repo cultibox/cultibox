@@ -1347,6 +1347,7 @@ $(document).ready(function() {
         
 });
 
+<?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { ?>
 $(document).ready(function() {
     // Rewrite on SD cards every events (and plgXX programm)
     <?php if(isset($sd_card) && !empty($sd_card)) { ?>
@@ -1363,6 +1364,7 @@ $(document).ready(function() {
         });
     <?php } ?>
 });
+<?php } ?>
 
 // When user click on daily program checkbutton in create dialog UI
 $(document).ready(function() {

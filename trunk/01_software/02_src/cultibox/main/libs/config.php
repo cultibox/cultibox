@@ -99,9 +99,6 @@ $GLOBALS['LIST_GRAPHIC_COLOR_CALENDAR'] = array ('00', '44', '88', 'DD', 'CC','F
 // Remote script to send informations:
 $GLOBALS['REMOTE_DATABASE'] = "http://www.cbx.greenbox-botanic.com/index.php";
 
-// List of encryption supported by the wifi module:
-$GLOBALS['WIFI_KEY_TYPE_LIST']=array("NONE", "WEP", "WPA", "WPA2", "WPA-AUTO");
-
 // List and equivalence between sensor number and type of the sensor from the index file:
 $GLOBALS['SENSOR_DEFINITION']=array(
                                 '0' => 'none',
@@ -136,6 +133,8 @@ $GLOBALS['LIMIT_PLUG_PROGRAM']=array(
                                          'min' => '0',
                                          'max' => '99.9')
                             );
+
+$GLOBALS['MODE'] = "cultibox";
 
 ?>
 

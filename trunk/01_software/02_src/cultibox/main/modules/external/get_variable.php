@@ -65,8 +65,6 @@ if((!isset($name))||(empty($name))) {
                 }
             }
             break;
-        case 'WIFI' : echo json_encode(get_configuration("WIFI",$error));
-                     break;
         case 'COST' : echo json_encode(get_configuration("SHOW_COST",$error));
                      break;
         case 'LANG' : if((isset($_COOKIE['LANG']))&&(!empty($_COOKIE['LANG']))) {

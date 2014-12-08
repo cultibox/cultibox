@@ -18,17 +18,22 @@ if((!isset($submenu))||(empty($submenu))) {
 } 
 
 // Trying to find if a cultibox SD card is currently plugged and if it's the case, get the path to this SD card
-if((!isset($sd_card))||(empty($sd_card))) {
-   $hdd_list=array();
-   $sd_card=get_sd_card($hdd_list);
-   $new_arr=array();
-   foreach($hdd_list as $hdd) {
-        if(disk_total_space($hdd)<=2200000000) 
-            $new_arr[]=$hdd;
-   }
-   $hdd_list=$new_arr;
-   sort($hdd_list);
+if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { 
+    if((!isset($sd_card))||(empty($sd_card))) {
+        $hdd_list=array();
+        $sd_card=get_sd_card($hdd_list);
+        $new_arr=array();
+        foreach($hdd_list as $hdd) {
+            if(disk_total_space($hdd)<=2200000000) 
+                $new_arr[]=$hdd;
+        }
+        $hdd_list=$new_arr;
+        sort($hdd_list);
+    }
+} else {
+        $sd_card="/etc/cultipi";
 }
+
 
 if((!isset($sd_card))||(empty($sd_card))) {
     setcookie("CHECK_SD", "False", time()+1800,"/",false,false);
@@ -49,13 +54,6 @@ $conf_arr["RTC_OFFSET"]             = array ("update_conf" => "1", "var" => "rtc
 $conf_arr["RESET_MINMAX"]           = array ("update_conf" => "1", "var" => "reset_minmax");
 $conf_arr["ALARM_VALUE"]            = array ("update_conf" => "1", "var" => "alarm_value");
 $conf_arr["VERSION"]                = array ("update_conf" => "0", "var" => "version");
-$conf_arr["WIFI"]                   = array ("update_conf" => "1", "var" => "wifi_enable");
-$conf_arr["WIFI_SSID"]              = array ("update_conf" => "1", "var" => "wifi_ssid");
-$conf_arr["WIFI_PASSWORD"]          = array ("update_conf" => "1", "var" => "wifi_password");
-$conf_arr["WIFI_IP"]                = array ("update_conf" => "1", "var" => "wifi_ip");
-$conf_arr["WIFI_IP_MANUAL"]         = array ("update_conf" => "1", "var" => "wifi_ip_manual");
-$conf_arr["WIFI_KEY_TYPE"]          = array ("update_conf" => "1", "var" => "wifi_key_type");
-$conf_arr["WIFI_MANUAL"]            = array ("update_conf" => "1", "var" => "wifi_manual");
 $conf_arr["ALARM_ACTIV"]            = array ("update_conf" => "1", "var" => "alarm_activ");
 
 

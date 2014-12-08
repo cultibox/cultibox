@@ -1,3 +1,4 @@
+<?php if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { ?>
 <script type="text/javascript">
 <?php if((isset($sd_card))&&(!empty($sd_card))) { ?>
     <?php if((isset($_COOKIE['CHECK_SD']))&&($_COOKIE['CHECK_SD']!='True')) { ?>
@@ -108,3 +109,4 @@ $.ajax({
     });
 <?php } ?>
 </script>
+<?php } ?>

@@ -27,9 +27,6 @@ msgstr "Kosten"
 msgid "MENU_CAL"
 msgstr "Kalender"
 
-msgid "MENU_WIFI"
-msgstr "Wifi"
-
 msgid "MENU_WIZARD"
 msgstr "Assistent"
 
@@ -84,12 +81,6 @@ msgstr "Cultibox"
 
 msgid "CONFIGURE_CARD"
 msgstr "SD-Karte"
-
-msgid "CONFIGURE_WIFI"
-msgstr "Wi-Fi"
-
-msgid "CONFIGURE_WIFI_IP"
-msgstr "Adresse des Wifi-Modul"
 
 msgid "CONFIGURE_HUMIDITY"
 msgstr "Farbe Luftfeuchtigkeit Kurven"
@@ -175,21 +166,6 @@ msgstr "Aktivieren Sie das Alarmsystem"
 msgid "CONFIGURE_ALARM_VALUE"
 msgstr "Schwellwert für die Alarmauslösung"
 
-msgid "CONFIGURE_WIFI_ACTIV"
-msgstr "Aktivieren Sie Wi-Fi-Modul"
-
-msgid "CONFIGURE_WIFI_SSID"
-msgstr "Netzwerkname"
-
-msgid "CONFIGURE_WIFI_KEY_TYPE"
-msgstr "Art der Schlüssel"
-
-msgid "CONFIGURE_WIFI_PASSWORD"
-msgstr "Passwort-Netzwerk"
-
-msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
-msgstr "Passwort bestätigen"
-
 msgid "CHECK_STATISTICS"
 msgstr "Senden von Informationen, um die Entwicklung"
 
@@ -228,12 +204,6 @@ msgstr "Menü Ansicht kostet"
 
 msgid "RESET_MINMAX"
 msgstr "Zurücksetzen der min / max"
-
-msgid "WIFI_DESCRIPTION"
-msgstr "Die Wi-Fi-Modul, mit dem Fern Cultibox interagieren. Sobald das Modul aktiviert ist, wird ein Tab Wifi in der Software-Menü, das Sie den aktuellen Status Ihrer Cultibox anzeigen können sein: e-Buchse Status, die aktuelle Konfiguration ..."
-
-msgid "WIFI_IP_MANUAL"
-msgstr "Konfigurieren Sie manuell die IP-Adresse"
 
 msgid "SHOW_CURRENT_PWD"
 msgstr "Verlassen Sie die Maus auf das Bild geklickt, um das Passwort zu sehen"
@@ -1309,50 +1279,6 @@ msgid "VALID_THEORICAL_COST_COMPUTE"
 msgstr "Berechnung des theoretischen Kosten erfolgreich erreicht"
 
 
-# For the wifi part:
-msgid "VIEW_PLUGS_STATE"
-msgstr "Aktueller Stand der Fang"
-
-msgid "VIEW_SENSOR_STATE"
-msgstr "Aktueller Status der Sensoren"
-
-msgid "PLUG_NUMBER"
-msgstr "Unter Ausgabe"
-
-msgid "PLUG_UNKNOWN_STATE"
-msgstr "Status unbekannt Entscheidung"
-
-msgid "PLUG_ON"
-msgstr "Entscheidung gerade läuft"
-
-msgid "PLUG_OFF"
-msgstr "Entscheidung ist momentan gestoppt"
-
-msgid "SHORT_ELEMENT_TYPE"
-msgstr "Art der Komponente verbunden"
-
-msgid "SHORT_PLUG_TYPE"
-msgstr "Steckertyp"
-
-msgid "SENSOR_TYPE"
-msgstr "Sensortyp"
-
-msgid "NA"
-msgstr "N / A"
-
-msgid "SENSOR_TEMPHUMI"
-msgstr "Temperatur-und Feuchtigkeits"
-
-msgid "SENSOR_T_WATER"
-msgstr "Tauchtemperatur"
-
-msgid "SENSOR_LEVEL_W"
-msgstr "Wasserstand"
-
-msgid "SENSOR_VALUE"
-msgstr "Zuletzt aufgezeichnete Wert"
-
-
 # For the errors or warnings part:
 msgid "INFORMATION"
 msgstr "Information (en)"
@@ -1548,12 +1474,6 @@ msgstr "Der Netzwerkname kann nicht leer sein"
 
 msgid "ERROR_PASSWORD_VALUE"
 msgstr "Passwörter müssen übereinstimmen"
-
-msgid "ERROR_COPY_WIFI_CONF"
-msgstr "Fehler beim Kopieren der Konfigurationsdatei Wifi-Modul"
-
-msgid "ERROR_WIFI_IP"
-msgstr "Fehler in dem Format der IP-Adresse: XXX.XXX.XXX.XXX"
 
 msgid "ERROR_EMPTY_PASSWORD"
 msgstr "Das Passwort darf nicht leer sein"
@@ -1801,15 +1721,6 @@ msgstr "Dieses Feld können Sie einen Namen für Ihr Dünger Programm definieren
 
 msgid "TOOLTIP_CALENDAR_SELECT_CROISSANCE"
 msgstr "Wenn Sie Wachstum wählen, werden die ersten drei Wochen des Kulturprogramms umgesetzt werden. Wenn Sie blühende wählen, werden die letzten acht Wochen des Kulturprogramms umgesetzt werden."
-
-msgid "TOOLTIP_WIFI_SSID"
-msgstr "Der Name des Wi-Fi-Netzwerk läuft derzeit. Dies ist die Kennung (SSID) des lokalen WiFi-Netzwerk."
-
-msgid "TOOLTIP_WIFI_KEY_TYPE"
-msgstr "Die Art der Verschlüsselung für das drahtlose Netzwerk"
-
-msgid "TOOLTIP_WIFI_IP"
-msgstr "Die Adresse des WLAN-Modul kann mit einer IP-Adresse im Format personalisiert werden XXX.XXX.XXX.XXX"
 
 msgid "TOOLTIP_MSGBOX_EYES"
 msgstr "Klicken Sie auf das Bild, um Message-Box-Software wieder"

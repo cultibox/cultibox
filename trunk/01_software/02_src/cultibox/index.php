@@ -43,8 +43,7 @@ require_once('main/libs/utilfunc_sd_card.php');
 check_database();
 
 
-// Variables for pages cost and wifi:
-$wifi=get_configuration("WIFI");
+// Variables for page cost :
 $cost=get_configuration("SHOW_COST");
 
 
@@ -156,8 +155,6 @@ $cost=get_configuration("SHOW_COST");
                                     <li id="menu-cost" class="level1 item173" <?php if(!$cost) { echo 'style="display:none"'; } ?>><a href="/cultibox/index.php?menu=wizard" class="level1 href-cost"><span><?php echo __('MENU_COST'); ?></span></a></li>
 
                                     <li id="menu-wizard" class="level1 item173"><a href="/cultibox/index.php?menu=wizard" class="level1 href-wizard" ><span><?php echo __('MENU_WIZARD'); ?></span></a></li>
-
-                                    <li id="menu-wifi" class="level1 item173" <?php if(!$wifi) { echo 'style="display:none"'; } ?>><a href="/cultibox/index.php?menu=wifi" class="level1 href-wifi"><span><?php echo __('MENU_WIFI'); ?></span></a></li>
 
                                     <li id="menu-help" class="level1 item164"><a href="/cultibox/main/docs/documentation_cultibox.pdf" target="_blank" class="level1 href-help"><span><?php echo __('MENU_HELP'); ?></span></a></li>
                                 </ul>
