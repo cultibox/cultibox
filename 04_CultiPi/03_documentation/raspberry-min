@@ -226,8 +226,7 @@ ifconfig wlan0 up
 
 
 
-
-
+sudo apt-get install libnss-mdns
 
 
 
