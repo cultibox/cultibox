@@ -13,11 +13,13 @@ if(is_file("/tmp/interfaces")) {
         sleep(3);
         exec("ip addr show eth0 | awk '/inet/ {print $2}' | cut -d/ -f1",$iface['ETH'],$err);
         exec("ip addr show wlan0 | awk '/inet/ {print $2}' | cut -d/ -f1",$iface['WLAN'],$err);
+        echo json_encode("1");
     } else {
         exec("sudo /bin/mv /etc/network/interfaces.SAVE /etc/network/interfaces");
+        echo json_encode("0");
     }
+} else {
+    echo json_encode("0");
 }
-
-echo json_encode($iface);
 
 ?>
