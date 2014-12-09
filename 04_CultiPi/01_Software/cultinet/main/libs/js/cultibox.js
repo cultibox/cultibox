@@ -401,26 +401,8 @@ $(document).ready(function() {
                        url: "main/modules/external/restart_service.php"
                    }).done(function (data) {
                         try{
-                            var json_x = $.parseJSON(data);
-                            var checked_new_addr=false;
-                            $.each(json_x, function( index, value ) {
-                                if(index=="ETH") {
-                                    if(value!="") {
-                                        $("<li>https://"+value+"/cultibox/</li>").appendTo( $("#list_new_addr") );
-                                        checked_new_addr=true;
-                                    }
-                                }
-
-                                if(index=="WLAN") {
-                                    if(value!="") {
-                                        $("<li>https://"+value+"/cultibox/</li>").appendTo( $("#list_new_addr") );
-                                        checked_new_addr=true;
-                                    }
-                                }
-                            });
-
-                            if(checked_new_addr) {
-                                $("#network_new_addr").dialog({
+                            if($.parseJSON(data)=="1") {
+                                $("#network_new_addr_set").dialog({
                                     resizable: false,
                                     width: 500,
                                     modal: true,
@@ -431,53 +413,41 @@ $(document).ready(function() {
                                         click: function () {
                                         $( this ).dialog( "close" ); return false;
                                     }
-                                    }]
+                                }]
                                 });
                             } else {
-                                $.ajax({
-                                    cache: false,
-                                    async: false,
-                                    url: "main/modules/external/restore_service.php"
-                                });
-
-                                $("#error_new_network_addr").dialog({
+                                $("#error_restore_conf").dialog({
                                     resizable: false,
-                                    width: 500,
+                                    width: 400,
                                     modal: true,
                                     closeOnEscape: true,
                                     dialogClass: "popup_error",
                                     buttons: [{
                                         text: CLOSE_button,
                                         click: function () {
-                                        $( this ).dialog( "close" ); return false;
-                                    }
+                                            $( this ).dialog( "close" ); return false;
+                                        }
                                     }]
                                 });
                             }
-                        } catch(e) {
-                            $.ajax({
-                                cache: false,
-                                async: false,
-                                url: "main/modules/external/restore_service.php"
+                        } catch(err) {
+                            $("#error_restore_conf").dialog({
+                                    resizable: false,
+                                    width: 400,
+                                    modal: true,
+                                    closeOnEscape: true,
+                                    dialogClass: "popup_error",
+                                    buttons: [{
+                                        text: CLOSE_button,
+                                        click: function () {
+                                            $( this ).dialog( "close" ); return false;
+                                        }
+                                    }]
                             });
-
-                            $("#error_new_network_addr").dialog({
-                                resizable: false,
-                                width: 500,
-                                modal: true,
-                                closeOnEscape: true,
-                                dialogClass: "popup_error",
-                                buttons: [{
-                                    text: CLOSE_button,
-                                    click: function () {
-                                    $( this ).dialog( "close" ); return false;
-                                }
-                                }]
-                            });
-                            alert(e);
                         }
                    })
                   .fail(function() {
+                        //When restarting the network service, the Ajax call fails:
                         $("#network_new_addr_set").dialog({
                             resizable: false,
                             width: 500,
