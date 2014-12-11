@@ -18,7 +18,8 @@ proc send:data {channel data} \
 }
 
 # Demande arrêt du server
-send:data $channel "stop"
+# Trame standard : [FROM] [INDEX] [commande] [argument]
+send:data $channel "NA 0 stop"
 
 # fermeture connexion
 close $channel

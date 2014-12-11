@@ -73,31 +73,42 @@ proc ::piServer::start {callBackMessageIn portIn} {
         if {$portIn == 0} \
         {
             set portIn [lindex [fconfigure $channel -sockname] end]
-            puts "--> server port: $portIn"
+            ::piLog::log [clock milliseconds] "info" "--> server port: $portIn"
         }
     } msg]
     if {$rc == 1} \
     {
-        puts "erreur exiting $msg"
+        ::piLog::log [clock milliseconds] "erreur" "erreur exiting $msg"
         exit
     }
 }
 
 proc ::piServer::sendToServer {portNumber message} {
 
+    set channel ""
+
     set rc [catch { set channel [socket localhost $portNumber] } msg]
     if {$rc == 1} {
-        ::piLog::log [clock milliseconds] "erreur" "try to open socket to $portNumber - erreur :  $msg"
+        ::piLog::log [clock milliseconds] "erreur" "try to open socket to -$portNumber- - erreur :  -$msg-"
     }
 
     set rc [catch \
     {
-        puts $channel "[clock seconds] $message"
+        puts $channel "$message"
         flush $channel
     } msg]
     if {$rc == 1} {
-        ::piLog::log [clock milliseconds] "erreur" "try to send message to $portNumber - erreur :  $msg"
+        ::piLog::log [clock milliseconds] "erreur" "try to send message to -$portNumber- - erreur :  -$msg-"
     }
 
-    close $channel
+    set rc [catch \
+    {
+        close $channel
+    } msg]
+    if {$rc == 1} \
+    {
+        ::piLog::log [clock milliseconds] "erreur" "erreur closing channel -$channel-"
+    }
+    
+    
 }
