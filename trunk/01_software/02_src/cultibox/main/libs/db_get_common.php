@@ -1933,7 +1933,7 @@ function create_program_from_database(&$out,$fieldNumber = 1) {
 	
 	$plg=array();
 	for($i=1;$i<= $nb_plugs;$i++) {
-		$sql = "SELECT * FROM programs WHERE plug_id = " . $i . " ORDER BY time_start ASC;";
+        $sql = "SELECT * FROM programs WHERE plug_id = " . $i . " AND number = '" . $fieldNumber . "' ORDER BY time_start ASC;";
 
 		try {
 			$sth=$db->prepare($sql);
