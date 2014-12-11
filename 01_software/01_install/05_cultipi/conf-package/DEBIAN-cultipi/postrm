@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 if [ "$1" == "purge" ]; then
     if [ "`ps aux|grep cultipi|grep tclsh`" != "" ]; then
         for process in `ps aux|grep cultipi|grep tclsh|awk -F" " '{print $2}'`; do
