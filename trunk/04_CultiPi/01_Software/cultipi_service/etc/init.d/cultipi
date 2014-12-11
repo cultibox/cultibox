@@ -16,20 +16,20 @@ DAEMON="/usr/bin/cultipi"
 DAEMONUSER="root"
 DEAMON_NAME="cultipi"
 
-test -x $DAEMON || exit 0
-
 . /lib/lsb/init-functions
 
 d_start () {
         log_daemon_msg "Starting system $DEAMON_NAME Daemon"
-        start-stop-daemon --background --name $DEAMON_NAME --start --quiet --chuid $DAEMONUSER --exec $DAEMON -- $DEAMON_OPT
+        /usr/bin/tclsh "/opt/cultipi/cultiPi/cultiPi.tcl" "/etc/cultipi"&
         log_end_msg $?
 }
 
 d_stop () {
         log_daemon_msg "Stopping system $DEAMON_NAME Daemon"
-        for pid in "`ps aux|grep $DEAMON_NAME |awk -F \" \" '{print $2}'`"; do
-            kill -9 $pid
+        for pid in "`ps aux|grep $DEAMON_NAME|grep tcl |awk -F \" \" '{print $2}'`"; do
+            if [ "$pid" != "" ]; then
+                kill -9 $pid
+            fi
         done
         log_end_msg $?
 }
@@ -50,7 +50,11 @@ case "$1" in
                 ;;
 
         status)
-                status_of_proc "$DEAMON_NAME" "$DAEMON" "system-wide $DEAMON_NAME" && exit 0 || exit $?
+                if [ "`ps aux|grep cultipi|grep tclsh`" != "" ]; then
+                    echo "[ ok ] $DEAMON_NAME service is running..."
+                else 
+                    echo "[ fail ] $DEAMON_NAME service is not running..."
+                fi
                 ;;
         *)
                 echo "Usage: /etc/init.d/$DEAMON_NAME {start|stop|force-stop|restart|reload|force-reload|status}"

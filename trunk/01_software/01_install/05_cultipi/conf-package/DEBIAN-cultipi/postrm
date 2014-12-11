@@ -1,34 +1,26 @@
 #!/bin/bash
 
-if [ "$1" != "upgrade" ]; then
-    if [ -f /etc/init.d/cultibox ]; then
-        update-rc.d -f cultibox remove
-        rm /etc/init.d/cultibox
-    fi
-
-    if [ -f /usr/share/applications/cultibox.desktop ]; then
-        rm /usr/share/applications/cultibox.desktop
-    fi
-
-    if [ -L /opt/lampp ]; then
-        rm /opt/lampp
-    fi
-fi
+set -x
 
 if [ "$1" == "purge" ]; then
-    if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
-        for process in `ps aux|grep httpd| grep cultibox| awk -F" " '{print $2}'`; do
-            kill -9 $process
-        done
-
-        for process in `ps aux|grep mysql| grep cultibox| awk -F" " '{print $2}'`; do
-            kill -9 $process
+    if [ "`ps aux|grep cultipi|grep tclsh`" != "" ]; then
+        for process in `ps aux|grep cultipi|grep tclsh|awk -F" " '{print $2}'`; do
+            if [ "$process" != "" ]; then
+                kill -9 $process
+            fi
         done
     fi
 
-    if [ -d /opt/cultibox ]; then
-        echo " * Removing remaining file in /opt/cultibox..."
-        rm -Rf /opt/cultibox
-        echo "... OK"
+    if [ -d /opt/cultipi ]; then
+        rm -Rf /opt/cultipi
+    fi
+
+    if [ -d /etc/cultipi ]; then
+        rm -Rf /etc/cultipi
+    fi
+
+    if [ -f /etc/init.d/cultipi ]; then
+        update-rc.d -f cultipi remove
+        rm -Rf /etc/init.d/cultipi
     fi
 fi

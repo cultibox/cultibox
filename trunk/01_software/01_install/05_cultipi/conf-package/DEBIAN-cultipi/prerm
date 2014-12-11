@@ -1,19 +1,17 @@
 #!/bin/bash
 
-if [ -d /opt/cultibox ]; then   
-    if [ -f /etc/init.d/cultibox ]; then
-        /etc/init.d/cultibox stop
-        sleep 2
-    fi
+set -x
+
+if [ -f /etc/init.d/cultipi ]; then   
+    /etc/init.d/cultipi stop
+    sleep 2
 
     # Killing remaining process:
-    if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
-        for process in `ps aux|grep httpd| grep cultibox| awk -F" " '{print $2}'`; do
-            kill -9 $process
-        done
-
-        for process in `ps aux|grep mysql| grep cultibox| awk -F" " '{print $2}'`; do
-            kill -9 $process
+    if [ "`ps aux|grep cultipi|grep tclsh`" != "" ]; then
+        for process in `ps aux|grep cultipi| grep tclsh| awk -F" " '{print $2}'`; do
+            if [ "$process" != "" ]; then
+                kill -9 $process
+            fi
         done
     fi
 fi

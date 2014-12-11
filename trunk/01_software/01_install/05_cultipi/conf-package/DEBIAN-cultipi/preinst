@@ -1,82 +1,18 @@
 #!/bin/bash
 
-if [ -f /opt/cultibox/etc/php.ini ] && [ ! -f  /opt/cultibox/lampp ]; then
-    echo "An old version of the Cultibox seems to be remaining in your system, please execute the following command before installing a new Cultibox version:"
-    echo "      dpkg --purge cultibox"
-    exit 1
-else
-    #Upgrade case:
-    if [ -d /opt/cultibox ]; then
-        if [ ! -d /opt/cultibox/run ]; then
-            mkdir -p /opt/cultibox/run
-        fi
-        #Update of the needed scripts:
-        cat > /opt/cultibox/etc/my-extra.cnf << "EOF" 
-[client]
-user="root"
-password="cultibox"
-EOF
+set -x
 
-        cat > /opt/cultibox/run/get_version.sh << "EOF" 
-#!/bin/bash
+if [ -f /etc/init.d/cultipi ]; then
+    /etc/init.d/cultipi stop
+    sleep 2
 
-set -e
-
-user_culti=`who|head -1|awk -F" " '{print $1}'`
-group_culti=`who|head -1|awk -F" " '{print $1}'|xargs id -gn`
-
-# Test of the connection:
-/opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox -e "SELECT * FROM  configuration;" > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-        result=`/opt/cultibox/bin/mysql --defaults-extra-file=/opt/cultibox/etc/my-extra.cnf -h 127.0.0.1 --port=3891 --batch cultibox -e "SELECT VERSION FROM configuration;"`
-        for res in `echo $result`; do
-            if [ "`echo $res|egrep [1-9].*\.[0-9].*\.[0-9].*-.*`" != "" ]; then
-                echo $res
-                exit 0
+    # Killing remaining process:
+    if [ "`ps aux|grep cultipi|grep tclsh`" != "" ]; then
+        for process in `ps aux|grep cultipi| grep tclsh| awk -F" " '{print $2}'`; do
+            if [ "$process" != "" ]; then            
+                kill -9 $process
             fi
         done
-fi
-exit 1
-EOF
-        chmod +x /opt/cultibox/run/get_version.sh
-
-        #Killing remaining process
-        /opt/cultibox/lampp stop
-        sleep 2
-
-        # Killing remaining process:
-        if [ "`ps aux|grep httpd|grep cultibox`" != "" ] || [ "`ps aux|grep mysql|grep cultibox`" != "" ]; then
-            for process in `ps aux|grep httpd| grep cultibox| awk -F" " '{print $2}'`; do
-                kill -9 $process
-            done
-
-            for process in `ps aux|grep mysql| grep cultibox| awk -F" " '{print $2}'`; do
-                kill -9 $process
-            done
-        fi
-
-        /opt/cultibox/lampp start
-        sleep 2
-
-        if [ -f /opt/cultibox/run/get_version.sh ]; then
-            if [ -f /tmp/cultibox_version ]; then
-                rm /tmp/cultibox_version
-            fi
-        fi
-
-        if [ -d /tmp/cultibox_backup ]; then
-            rm -Rf /tmp/cultibox_backup
-        fi
-
-        mkdir -p /tmp/cultibox_backup
-
-        cp -R /opt/cultibox/var/mysql/ibdata* /tmp/cultibox_backup/
-        cp -R /opt/cultibox/var/mysql/ib_logfile* /tmp/cultibox_backup/
-
-        touch /tmp/cultibox_upgrade
-
-        /opt/cultibox/lampp stop
-        sleep 2
     fi
 fi
 exit 0
