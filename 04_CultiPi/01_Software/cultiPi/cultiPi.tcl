@@ -5,7 +5,7 @@ set rootDir [file dirname [file dirname [info script]]]
 set logDir $rootDir
 set serveurLogFileName [file join $rootDir serverLog serveurLog.tcl]
 
-puts "Starting cultiPi"
+puts "Starting cultiPi - PID : [pid]"
 set TimeStartcultiPi [clock milliseconds]
 
 set fileName(cultiPi,confRootDir) [lindex $argv 0]
@@ -27,14 +27,18 @@ lappend auto_path [file join $rootDir lib tcl]
 package require piLog
 package require piServer
 package require piXML
+package require piTools
 
 # Source files
 source [file join $rootDir cultiPi src stop.tcl]
 source [file join $rootDir cultiPi src serveurMessage.tcl]
 
-# Load configuration selection
+# Initialisation d'un compteur pour les commandes externes envoyées
+set TrameIndex 0
+
+# Chargement du fichier qui donne la configuration
 set fileName(cultiPi,confDir) [file join $fileName(cultiPi,confRootDir) [lindex [::piXML::open_xml $fileName(cultiPi,conf)] 2 0 1 1]]
-puts "CultiPi : conf : conf to start is $fileName(cultiPi,confDir)"
+puts "CultiPi : conf : conf to start is $fileName(cultiPi,confDir) - File exists ? [file exists $fileName(cultiPi,confDir)]"
 
 # Load cultiPi configuration
 set confStart(start) [lindex [::piXML::open_xml [file join $fileName(cultiPi,confDir) cultiPi start.xml]] 2]
@@ -42,6 +46,7 @@ set confStart(start) [lindex [::piXML::open_xml [file join $fileName(cultiPi,con
 
 # Load serverLog
 puts "CultiPi : start : Starting serveurLog"
+set confStart(serverLog,pid) ""
 set confStart(serverLog) [::piXML::searchItemByName serverLog $confStart(start)]
 set confStart(serverLog,pathexe) [::piXML::searchOptionInElement pathexe $confStart(serverLog)]
 puts "CultiPi : start : serveurLog pathexe : $confStart(serverLog,pathexe)"
@@ -60,7 +65,7 @@ set TimeStartserveurLog [clock milliseconds]
 #open "| tclsh \"$serveurLogFileName\" $port(serverLogs) \"$logDir\""
 puts "CultiPi : start : serveurLog : $confStart(serverLog,pathexe) \"$confStart(serverLog,path)\" $confStart(serverLog,port) \"$confStart(serverLog,logsRootDir)\""
 
-open "| $confStart(serverLog,pathexe) \"$confStart(serverLog,path)\" $confStart(serverLog,port) \"$confStart(serverLog,logsRootDir)\""
+set confStart(serverLog,pipeID) [open "| $confStart(serverLog,pathexe) \"$confStart(serverLog,path)\" $confStart(serverLog,port) \"$confStart(serverLog,logsRootDir)\""]
 after $confStart(serverLog,waitAfterUS)
 
 # init log
@@ -77,6 +82,7 @@ after $confStart(serverLog,waitAfterUS)
 foreach moduleXML $confStart(start) {
     set moduleName [::piXML::searchOptionInElement name $moduleXML]
     if {$moduleName != "serverLog"} {
+        set confStart(${moduleName},pid) ""
         set confStart(${moduleName},pathexe) [::piXML::searchOptionInElement pathexe $moduleXML]
         puts "CultiPi : start : $moduleName pathexe : $confStart(${moduleName},pathexe)"
         set confStart($moduleName,path) [file join $rootDir [::piXML::searchOptionInElement path $moduleXML]]
@@ -90,11 +96,27 @@ foreach moduleXML $confStart(start) {
 
         ::piLog::log [clock milliseconds] "info" "Load $moduleName"
         
-        open "| $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port)"
+        set confStart($moduleName,pipeID) [open "| $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(serverI2C)"]
         after $confStart($moduleName,waitAfterUS)
+        
+        # on lui demande son PID
+        # Trame standard : [FROM] [INDEX] [commande] [argument]
+        ::piServer::sendToServer $confStart($moduleName,port) "$port(server) [incr ::TrameIndex] pid"
+        
+        
     }
 }
 
+proc updateRepere {} {
+
+    # pour chaque repère, on met à jour la valeur dans le serveur
+
+    
+    after 1000 updateRepere
+
+}
+
+updateRepere
 
 vwait forever
 

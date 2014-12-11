@@ -1,3 +1,11 @@
+# Init directory
+set rootDir [file dirname [file dirname [info script]]]
+
+# Load lib
+lappend auto_path [file join $rootDir lib tcl]
+package require piTools
+package require piServer
+
 # ###############
 #
 # server side
@@ -46,23 +54,31 @@ proc input {channel} \
         # i/o error -> log & close
         log "<[clock milliseconds]><serveurlog><erreur><${msg}>"
         catch { close $channel }
-      } \
-      elseif {$count == -1} \
-      {
-        # client closed -> log & close
-        log "<[clock milliseconds]><serveurlog><info><closed $channel>"
-        catch { close $channel }
-      } \
-      else \
-      {
-        # got data -> do some thing
-        if {[lindex $data 1] == "stop"} {
-            log "<[clock milliseconds]><serveurlog><info><stopping log server>"
-            set ::forever 1
-        } else {
-            log $data
+        } \
+        elseif {$count == -1} \
+        {
+            # client closed -> log & close
+            log "<[clock milliseconds]><serveurlog><info><closed $channel>"
+            catch { close $channel }
+        } \
+        else \
+        {
+            # got data -> do some thing
+            switch [::piTools::lindexRobust $data 0] {
+                "stop" {
+                    log "<[clock milliseconds]><serveurlog><info><stopping log server>"
+                    set ::forever 1
+                }
+                "pid" {
+                    log "<[clock milliseconds]><serveurlog><info><Asked pid>"
+                    set serverForResponse [::piTools::lindexRobust $data 1]
+                    ::piServer::sendToServer $serverForResponse "pid serverPlugUpdate [pid]"
+                }
+                default {
+                    log $data
+                }
+            }
         }
-      }
     }
 }
 
@@ -76,12 +92,24 @@ proc log {msg {init 0}} {
     }
 
     # Format the string
-    set Splitted [split $msg "<>"]
+    set Splitted ""
+    set rc [catch {
+        set Splitted [split $msg "<>"]
+    } msgErr]
+    if {$rc} {
+        log "<[clock milliseconds]><serveurlog><info><could not split $msg erreur : $msgErr>"
+    }
+    
     # Convert time
     set Time ""
     set rc [catch {
         set Time "[clock format [expr [lindex $Splitted 1] / 1000] -format "%d/%m/%Y %H:%M:%S."][expr [lindex $Splitted 1] % 1000]"
-    }]
+    } msgErr]
+    if {$rc} {
+        log "<[clock milliseconds]><serveurlog><info><could not computre time erreur : $msgErr>"
+    }
+    
+    
     #puts $fid "$::($channel:host):$::($channel:port): $msg"
     if {$rc != 1} {
         puts $fid "${Time}\t[lindex $Splitted 3]\t[lindex $Splitted 5]\t[lindex $Splitted 7]"
@@ -92,7 +120,7 @@ proc log {msg {init 0}} {
 }
 
 proc bgerror {message} {
-    log "<[clock milliseconds]><serveurlog><erreur_critique><bgerror in $::argv '$message'>"
+    log "<[clock milliseconds]><serveurlog><erreur_critique><bgerror in $::argv - pid [pid] - $message>"
 }
 
 # ===================
@@ -121,7 +149,7 @@ if {$rc == 1} \
 set (server:host) server
 set (server:port) $port
 
-log "<[clock milliseconds]><serveurlog><info><server log started>" init
+log "<[clock milliseconds]><serveurlog><info><server log started - PID : [pid]>" init
 
 # enter event loop
 
