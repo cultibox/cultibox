@@ -49,7 +49,7 @@ case "$1" in
            cp ../../../04_CultiPi/01_Software/cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultipi/DEBIAN/control
-          
+           find ./../01_src/01_xampp/cultipi/ -name ".svn"|xargs rm -Rf 
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultipi
            
            mv cultipi.deb ../../05_cultipi/Output/cultipi_`echo $VERSION`.deb
@@ -65,6 +65,7 @@ case "$1" in
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultinet/DEBIAN/control
 
+           find ./../01_src/01_xampp/cultinet/ -name ".svn"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultinet
 
            mv cultinet.deb ../../05_cultipi/Output/cultinet_`echo $VERSION`.deb
@@ -87,7 +88,8 @@ user="root"
 password="cultibox"
 EOF
            sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-armhf' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/update_sql.sql
-           cp -R ../../01_install/01_src/03_sd/* ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
+           cp -R ../../01_install/01_src/03_sd/* ../01_src/01_xampp/cultibox/var/www/cultibox/tmp/
+           cp -R ../03_linux/conf-script ../01_src/01_xampp/cultibox/var/www/cultibox/run
 
            #replacement of the old version number by the new one in VERSION file
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/cultibox_fr.sql
@@ -97,13 +99,14 @@ EOF
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/cultibox_es.sql
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultibox/DEBIAN/control
-           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/libs/lib_configuration.php
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/main/libs/lib_configuration.php
+           sed -i "s/^$GLOBALS.*\"cultibox\"/\$GLOBALS['MODE']=\"cultipi\"/g" ../01_src/01_xampp/cultibox/var/www/cultibox/main/libs/config.php 
 
 
-           find ./../01_src/01_xampp/cultibox/opt/lampp -name ".svn"|xargs rm -Rf
+           find ./../01_src/01_xampp/cultibox/ -name ".svn"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultibox
 
-           mv cultibox.deb ../../03_linux/Output/cultibox-armhf_`echo $VERSION`.deb
+           mv cultibox.deb ../../05_cultipi/Output/cultibox-armhf_`echo $VERSION`.deb
       ;;  
       "clean")
             rm -Rf ../01_src/01_xampp/*

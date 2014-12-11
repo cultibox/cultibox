@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$1" == "purge" ]; then
+    if [ -d /var/www/cultibox ]; then
+        echo " * Removing remaining file in /var/www/cultibox..."
+        rm -Rf /var/www/cultibox
+        echo "... OK"
+    fi
+    /usr/bin/mysql -u root -pcultibox -e "DROP DATABASE cultibox;" 2>/dev/null
+fi
+
+if [ "$1" == "remove" ]; then
+    /usr/bin/mysql -u root -pcultibox -e "DROP DATABASE cultibox;" 2>/dev/null
+fi
