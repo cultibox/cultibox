@@ -4,6 +4,6 @@ Section: net
 Maintainer: Yann Genevois <yann.genevois@cultibox.fr>
 Homepage: http://www.cultibox.fr
 Priority: extra
-Architecture: noarch
+Architecture: armhf
 Description: Cultipi network server
 

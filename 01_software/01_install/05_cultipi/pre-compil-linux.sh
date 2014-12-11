@@ -36,7 +36,6 @@ case "$1" in
            mkdir -p ../01_src/01_xampp/cultipi/opt/cultipi
            mkdir -p ../01_src/01_xampp/cultipi/etc/init.d
            mkdir -p ../01_src/01_xampp/cultipi/etc/cultipi
-           mkdir -p ../01_src/01_xampp/cultipi/usr/bin
 
            cp -R ../../../04_CultiPi/01_Software/cultiPi ../01_src/01_xampp/cultipi/opt/cultipi/
            cp -R ../../../04_CultiPi/01_Software/lib ../01_src/01_xampp/cultipi/opt/cultipi/
@@ -48,9 +47,9 @@ case "$1" in
            cp -R ../../../04_CultiPi/02_conf/conf.xml  ../01_src/01_xampp/cultipi/etc/cultipi/
 
            cp ../../../04_CultiPi/01_Software/cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
-           cp ../../../04_CultiPi/01_Software/cultipi_service/usr/bin/cultipi ../01_src/01_xampp/cultipi/usr/bin/
+
+           sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultipi/DEBIAN/control
           
-        
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultipi
            
            mv cultipi.deb ../../05_cultipi/Output/cultipi_`echo $VERSION`.deb

@@ -1,2 +1,14 @@
 #!/bin/bash
 
+set -x
+
+if [ -f /etc/init.d/cultipi ]; then
+    update-rc.d cultipi defaults
+    /etc/init.d/cultipi restart
+fi
+
+if [ ! -d /home/cultipi/logs ]; then
+    mkdir /home/cultipi/logs
+    chown cultipi:cultipi /home/cultipi/logs
+fi
+
