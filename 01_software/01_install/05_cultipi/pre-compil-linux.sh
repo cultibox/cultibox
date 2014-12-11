@@ -22,9 +22,9 @@ fi
 VERSION=$2
 
 # Remove svn up when using jenkins
-#if [ "$3" == "" ]; then
-    #(cd ../../../ && svn up)
-#fi
+if [ "$3" == "" ]; then
+    (cd ../../../ && svn up)
+fi
 
 
 case "$1" in
@@ -69,6 +69,42 @@ case "$1" in
 
            mv cultinet.deb ../../05_cultipi/Output/cultinet_`echo $VERSION`.deb
       ;;
+      "cultibox")
+           (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
+           rm -Rf ../01_src/01_xampp/*
+           mkdir -p ../01_src/01_xampp/cultibox/var/www
+           cp -R ./conf-package/DEBIAN-cultibox ../01_src/01_xampp/cultibox/DEBIAN
+
+           cp -R ../../02_src/cultibox ../01_src/01_xampp/cultibox/var/www/cultibox
+           cp ../../../02_documentation/02_userdoc/documentation.pdf ../01_src/01_xampp/cultibox/var/www/cultibox/main/docs/documentation_cultibox.pdf
+           cat ../../CHANGELOG > ../01_src/01_xampp/cultibox/var/www/cultibox/VERSION.txt
+
+           cp conf-package/lgpl3.txt ../01_src/01_xampp/cultibox/var/www/cultibox/LICENSE.txt
+           cp -R ../../01_install/01_src/02_sql ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install
+           cat > ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/my-extra.cnf << "EOF" 
+[client]
+user="root"
+password="cultibox"
+EOF
+           sed -i "s/\`VERSION\` = '.*/\`VERSION\` = '`echo $VERSION`-armhf' WHERE \`configuration\`.\`id\` =1;/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/update_sql.sql
+           cp -R ../../01_install/01_src/03_sd/* ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/tmp/
+
+           #replacement of the old version number by the new one in VERSION file
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/cultibox_fr.sql
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/cultibox_en.sql
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/cultibox_de.sql
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/cultibox_it.sql
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/cultibox_es.sql
+
+           sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultibox/DEBIAN/control
+           sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/opt/lampp/htdocs/cultibox/main/libs/lib_configuration.php
+
+
+           find ./../01_src/01_xampp/cultibox/opt/lampp -name ".svn"|xargs rm -Rf
+           cd ./../01_src/01_xampp/ && dpkg-deb --build cultibox
+
+           mv cultibox.deb ../../03_linux/Output/cultibox-armhf_`echo $VERSION`.deb
+      ;;  
       "clean")
             rm -Rf ../01_src/01_xampp/*
       ;;
