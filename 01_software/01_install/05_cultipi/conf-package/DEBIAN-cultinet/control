@@ -1,9 +1,9 @@
-Package: cultipi
+Package: cultinet
 Version: 1.0.0-debian
 Section: net
 Maintainer: Yann Genevois <yann.genevois@cultibox.fr>
 Homepage: http://www.cultibox.fr
 Priority: extra
 Architecture: armhf
-Description: Cultipi network server
+Description: Cultipi network interface configuration
 

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "$1" == "purge" ]; then
+    if [ -d /var/www/cultinet ]; then
+        rm -Rf /var/www/cultinet
+    fi
+fi
+
+exit 0

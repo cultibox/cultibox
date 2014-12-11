@@ -54,6 +54,21 @@ case "$1" in
            
            mv cultipi.deb ../../05_cultipi/Output/cultipi_`echo $VERSION`.deb
       ;;
+      "cultinet")
+           rm -Rf ../01_src/01_xampp/*
+           mkdir ../01_src/01_xampp/cultinet
+           cp -R ./conf-package/DEBIAN-cultinet ../01_src/01_xampp/cultinet/DEBIAN
+
+           mkdir -p ../01_src/01_xampp/cultinet/var/www
+
+           cp -R ../../../04_CultiPi/01_Software/cultinet ../01_src/01_xampp/cultinet/var/www
+
+           sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultinet/DEBIAN/control
+
+           cd ./../01_src/01_xampp/ && dpkg-deb --build cultinet
+
+           mv cultinet.deb ../../05_cultipi/Output/cultinet_`echo $VERSION`.deb
+      ;;
       "clean")
             rm -Rf ../01_src/01_xampp/*
       ;;
