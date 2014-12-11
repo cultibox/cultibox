@@ -3,6 +3,9 @@
 //	This configuration file is dedicated to some GLOBALS variables 
 //	to define some possible customizations	
 
+//Default timezone:
+date_default_timezone_set('UTC');
+
 // Default language:
 define('LANG_FALLBACK', 'en_GB');
 
