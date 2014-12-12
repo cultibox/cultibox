@@ -146,25 +146,6 @@ function getvar($varname) {
 // }}}
 
 
-// {{{ get_short_lang()
-// ROLE get the current language selected for the interface
-// IN none
-// RET current lang in short format example: fr_FR is replaced by fr
-function get_short_lang($lang="") {
-    if(strcmp("$lang","")==0) return "fr";
-
-    switch($lang) {
-        case 'fr_FR': return "fr";
-        case 'en_GB': return "en";
-        case 'it_IT': return "it";
-        case 'de_DE': return "de";
-        case 'es_ES': return "es";
-    }
-    return "fr";
-}
-//}}}
-
-
 // {{{ check_empty_string()
 // ROLE check is a string is empty or only composed with invisible caracters
 // IN $value         string to check

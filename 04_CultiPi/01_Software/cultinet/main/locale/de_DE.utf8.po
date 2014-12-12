@@ -6,103 +6,144 @@
 msgid "LANG"
 msgstr "de_DE"
 
-# For the configuration part:
 msgid "CONFIGURE_TITLE_CULTIBOX"
-msgstr "Configurer les accès réseau de votre Cultipi"
+msgstr "Netzwerkkonfiguration Ihres Cultipi"
+
+msgid "CONFIGURE_SUBTITLE"
+msgstr "Die Konfiguration gezeigt, entspricht der derzeit angewandten Konfiguration"
+
+msgid "ADDR_TYPE"
+msgstr "Adresstyp"
+
+msgid "NO_IFACE_FOUND"
+msgstr "Nicht erkannt Schnittstelle"
+
+msgid "TOOLTIP_MANUAL_IP"
+msgstr "Wenn diese Option aktiviert ist, müssen Sie die gewünschte Adresse für Ihre Cultipi Modul manuell eingeben"
+
+msgid "TOOLTIP_DYNAMIC_IP"
+msgstr "Wenn diese Option aktiviert ist, eine Adresse zu Ihrem Cultipi Modul gegeben werden"
+
+msgid "WIRE_CONF"
+msgstr "Kabelverbindung"
+
+msgid "WIRELESS_CONF"
+msgstr "WLAN-Verbindung"
+
+msgid "PHY_ADDR"
+msgstr "Physikalische Adresse der Schnittstelle"
+
+msgid "ACTIVATED"
+msgstr "Aktiviert"
+
+msgid "DEACTIVATED"
+msgstr "Deaktivieren"
+
+msgid "MANUAL_IP_ADDR"
+msgstr "Manuelle Adresse"
+
+msgid "DYNAMIC_IP_ADDR"
+msgstr "Automatisch Adresse"
+
+msgid "IP_ADDR"
+msgstr "Netzwerkadresse"
+
+msgid "ip_mask"
+msgstr "Netzwerkmaske"
 
 msgid "ENABLE_JAVASCRIPT"
-msgstr "Javascript est désactivé! Vous ne pourrez pas utiliser ce logiciel si vous n'activez pas Javascript"
+msgstr "Javascript ist deaktiviert! Sie können mit dieser Software, wenn Sie Javascript nicht aktivieren"
 
 msgid "CONFIGURE_WIFI"
 msgstr "Wifi"
 
 msgid "CONFIGURE_WIFI_IP"
-msgstr "Adresse de votre module Wifi"
+msgstr "Adresse des WLAN-Moduls"
 
 msgid "CONFIGURE_WIFI_KEY_TYPE"
-msgstr "Type de la clef"
+msgstr "Geben Sie die Taste"
 
 msgid "CONFIGURE_WIFI_PASSWORD"
-msgstr "Mot de passe du réseau"
+msgstr "Network Password"
 
 msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
-msgstr "Confirmation du mot de passe"
+msgstr "Passwortbestätigung"
 
 msgid "CONFIGURE_WIFI_SSID"
-msgstr "Nom du réseau"
+msgstr "Netzwerkname"
 
 msgid "CONFIGURE_WIFI_IP_MASK"
-msgstr "Masque du réseau"
-
-msgid "WIFI_DESCRIPTION"
-msgstr "Le module Wifi permet de dialoguer avec la Cultibox à distance. Une fois ce module activé, un onglet 'Wifi' sera disponible dans le menu du logiciel qui vous permettra de visualiser l'état actuel de votre Cultibox et de vos prises ainsi que la configuration actuelle."
+msgstr "Netzwerkmaske"
 
 msgid "WIFI_IP_MANUAL"
-msgstr "Configurer l'adresse IP manuellement"
+msgstr "Stellen Sie die IP-Adresse manuell"
 
 msgid "SHOW_CURRENT_PWD"
-msgstr "Laisser la souris cliquée sur l'image pour afficher le mot de passe"
+msgstr "Lassen Sie die Maus angeklickt Sie auf das Bild, um das Passwort angezeigt werden"
 
 msgid "ERROR_SSID_VALUE"
-msgstr "Le nom du réseau ne peut pas être vide"
+msgstr "Der Netzwerkname kann nicht leer sein"
 
 msgid "ERROR_PASSWORD_VALUE"
-msgstr "Les mots de passe doivent correspondre"
+msgstr "Die Passwörter müssen übereinstimmen"
 
 msgid "ERROR_WIFI_IP_MASK"
-msgstr "Erreur dans le format du masque réseau: XXX.XXX.XXX.XXX"
+msgstr "Fehler in der Netzmaske Format: XXX.XXX.XXX.XXX"
+
+msgid "TOOLTIP_IP_ADDR"
+msgstr "Das Modul-Adresse muss in Form XXX.XXX.XXX.XXX <br /><br />sein <i>Beispiel: 192.168.0.15</i>"
+
+msgid "TOOLTIP_MASK_ADDR"
+msgstr "Die Netzmaske müssen der Form XXX.XXX.XXX.XXX <br /><br />sein <i>Beispiel: 255.255.255.0</i>"
 
 msgid "ERROR_WIFI_IP"
-msgstr "Erreur dans le format de l'adresse IP: XXX.XXX.XXX.XXX"
+msgstr "Fehler im Format IP: XXX.XXX.XXX.XXX"
 
 msgid "ERROR_EMPTY_PASSWORD"
-msgstr "Le mot de passe ne peut pas être vide"
+msgstr "Das Passwort darf nicht leer sein"
 
 msgid "ERROR_WEP_KEY_TYPE"
-msgstr "Erreur dans le format du mot de passe WEP: il ne doit contenir que des nombres (0-9) et faire 5, 13 ou 29 caractères de long"
+msgstr "Fehler in der WEP-Kennwort-Format: Es muss nur Zahlen (0-9) und haben 5, 13 oder 29 Zeichen lang"
 
 msgid "ERROR_WPA_KEY_TYPE"
-msgstr "Erreur dans le format du mot de passe WPA: il doit être compris entre 8 et 63 caractères"
-
-msgid "TOOLTIP_WIFI_IP_MASK"
-msgstr "Le masque de votre réseau de la forme XXX.XXX.XXX.XXX"
+msgstr "Fehler in der WPA-Passwort-Format: Es muss zwischen 8 und 63 Zeichen lang sein"
 
 msgid "TOOLTIP_WIFI_SSID"
-msgstr "Le nom de votre réseau Wifi actuellement en marche. Il s'agit de l'identifiant (SSID) de votre réseau Wifi local."
+msgstr "Der Name des Wireless-Netzwerks in Arbeit. Das ist die Kennung (SSID) Ihres lokalen WLAN-Netzwerk."
 
 msgid "TOOLTIP_WIFI_KEY_TYPE"
-msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
+msgstr "Die Art der Verschlüsselung der Schlüssel zu Ihrem WLAN-Netzwerk"
 
 msgid "TOOLTIP_WIFI_IP"
-msgstr "L'adresse de votre module Wifi peut être personnalisée en rentrant une adresse ip au format XXX.XXX.XXX.XXX"
+msgstr "Die Adresse des WLAN-Modul kann mit einer IP-Adresse in das Format XXX.XXX.XXX.XXX angepasst werden"
 
 msgid "TOOLTIP_MSGBOX_EYES"
-msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du logiciel"
+msgstr "Klicken Sie auf das Bild, um Software-Meldung wieder"
 
 msgid "SAVE_CONF"
-msgstr "Enregistrer la configuration"
+msgstr "Einstellungen speichern"
 
 msgid "SAVING_DATA"
-msgstr "Enregistrement de votre configuration, patientez s'il vous plaît..."
+msgstr "Speichern der Konfiguration, bitte warten ..."
 
 msgid "EMPTY_NETWORK_CONFIG"
-msgstr "Aucune configuration réseau (filaire ou sans fil) n'a été activé. Vous devez activer une connexion réseau pour rendre votre module disponible."
+msgstr "Keine Netzwerkkonfiguration (verdrahtet oder drahtlos) wurde aktiviert. Sie müssen eine Netzwerkverbindung ändern Ihr Modul zur Verfügung zu stellen."
 
 msgid "WIFI_SCAN_ESSID"
-msgstr "Cliquez sur l'image pour afficher les réseaux disponibles et en choisir un"
+msgstr "Klicken Sie auf das Bild, um die verfügbaren Netzwerke anzuzeigen, und wählen Sie"
 
 msgid "WIFI_ESSID_SCAN_TITLE"
-msgstr "Sélection d'un réseau Wifi"
+msgstr "Wählen Sie ein drahtloses Netzwerk"
 
 msgid "WIFI_SCAN_SUBTITLE"
-msgstr "Les réseaux Wifi suivant ont été détécté et sont disponibles pour connecter votre module:"
+msgstr "Die folgenden WiFi-Netzwerken haben festgestellt und sind für das Modul zu verbinden"
 
 msgid "ERROR_NET_FILE_CREATION"
-msgstr "Une erreur est survenue lors de la création des fichiers de configuration du réseau"
+msgstr "beim Erstellen der Netzwerkkonfigurationsdateien ist ein Fehler aufgetreten"
 
 msgid "AVAILABLE_MODULE_SET"
-msgstr "Votre module est maintenant connecté sur le(s) réseau(x) configuré(s). Vous pouvez vous reconnecter à votre réseau et accèder au module Cultipi à l'adresse suivante dans votre navigateur favori: <p class='p_center'>https://cultipi.local/cultibox/</p>"
+msgstr "Ihr Modul ist nun mit dem Netzwerk (e) (x) (e) Sie können mit Ihrem Netzwerk zu verbinden und auf die Cultipi Modul an die folgende Adresse in Ihrem Lieblings-Browser verbunden. <p class='p_center '>https://cultipi.local/cultibox/</p> "
 
 msgid "RESTORED_CONF"
-msgstr "Une erreur est survenue lors de la mise en place de votre configuration réseau. La configuration précédente a été restauré"
+msgstr "bei der Einrichtung Ihrer Netzwerkkonfiguration ist ein Fehler aufgetreten. Der vorherige Konfiguration wiederhergestellt wurde"
 

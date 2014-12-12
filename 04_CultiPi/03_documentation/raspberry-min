@@ -247,5 +247,32 @@ $SERVER["socket"] == ":443" {
 
 
 
+rpi-update
+
+
+root@cultipi:~# cat /etc/cron.daily/cultibpi 
+#!/bin/bash
+
+if [ -d /var/cache/lighttpd/compress/cultibox ]; then
+    rm -Rf /var/cache/lighttpd/compress/cultibox
+fi
+
+if [ -d /var/cache/lighttpd/compress/cultinet ]; then
+    rm -Rf /var/cache/lighttpd/compress/cultinet
+fi
+
+
+
+
+root@cultipi:~# cat /etc/sudoers
+
+cultipi ALL=(ALL:ALL) ALL
+www-data ALL = (root) NOPASSWD: /sbin/ifconfig
+www-data ALL = (root) NOPASSWD: /sbin/iwlist
+www-data ALL = (root) NOPASSWD: /sbin/ifup
+www-data ALL = (root) NOPASSWD: /bin/mv 
+www-data ALL = (root) NOPASSWD: /bin/chmod
+www-data ALL = (root) NOPASSWD: /bin/cp
+www-data ALL = (root) NOPASSWD: /etc/init.d/networking
 
 
