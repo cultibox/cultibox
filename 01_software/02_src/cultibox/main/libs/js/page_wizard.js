@@ -290,8 +290,6 @@ $("#value_program").keypress(function(e) {
                     data_array['plug_power_max']=$('input[name=plug_power_max]:checked').val();
                     data_array['selected_plug']=<?php echo $selected_plug; ?>;
 
-                    console.log(data_array);
-
                     $.ajax({
                         cache: false,
                         async: false,
