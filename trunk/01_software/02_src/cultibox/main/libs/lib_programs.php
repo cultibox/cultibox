@@ -388,7 +388,9 @@ function get_plug_programm ($plug, $dateStart, $dateEnd, $day="day")
     
 
     // Format date to remove hour
+    date_default_timezone_set('Europe/Paris');
     $date = strtotime(date ("Y-m-d", $dateStart));
+    date_default_timezone_set('UTC');
        
     // Foreach day 
     while ($date <= $dateEnd)
@@ -618,7 +620,9 @@ function get_plug_power ($plug, $dateStart, $dateEnd, $day="day")
          . substr($row['timestamp'], 10 ,2) . ":"
          . substr($row['timestamp'], 12 ,2);
 
+        date_default_timezone_set('Europe/Paris');
         $realTimeInS = strtotime($realDate);
+        date_default_timezone_set('UTC'); 
          
         // Don't display all point. Only if they have suffisiant diff or if the state changes:
         if (($realTimeInS >= $lastTimeInS + $divider)||($oldRecord!=$row['record']))
