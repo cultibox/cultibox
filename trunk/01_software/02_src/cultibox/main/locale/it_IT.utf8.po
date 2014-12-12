@@ -905,7 +905,7 @@ msgid "PRINT_HIGHCHART"
 msgstr "Stampa il grafico"
 
 msgid "EXPORT_HIGHCHART"
-msgstr "Tabella Export in un documento o un'immagine"
+msgstr "Tabella Export in un documento o un\'immagine"
 
 msgid "EXPORT_PNG"
 msgstr "Esporta PNG"
@@ -1166,10 +1166,10 @@ msgid "SELECT_END_DAY"
 msgstr "Giorno di fine (YYYY-MM-DD)"
 
 msgid "COST_PRICE_COMPUTE"
-msgstr "Calcolo del costo dell'installazione"
+msgstr "Calcolo del costo dell\'installazione"
 
 msgid "COST_PRICE_COMPUTE_GRAPH"
-msgstr "Il costo dell'installazione"
+msgstr "Il costo dell'\installazione"
 
 msgid "COST_PRICE_FOR_DAY"
 msgstr "per"
@@ -1181,7 +1181,7 @@ msgid "COST_PRICE_TO"
 msgstr "il"
 
 msgid "INSTALLATION_PRICE"
-msgstr "Installazione Price \ 's (euro)"
+msgstr "Installazione Price \'s (euro)"
 
 msgid "SELECT_PRICE_PLUG"
 msgstr "Mostra il prezzo"

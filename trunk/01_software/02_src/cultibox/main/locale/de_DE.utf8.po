@@ -716,7 +716,7 @@ msgid "TIMEPICKER_CLOSE"
 msgstr "Bestätigen"
 
 msgid "TIMEPICKER_BUTTON_TEXT"
-msgstr "Wählen Sie \ 's Zeit"
+msgstr "Wählen Sie \'s Zeit"
 
 msgid "TIMEPICKER_BUTTON_TEXT_LOG"
 msgstr "Wählen Sie das Datum"
@@ -1180,7 +1180,7 @@ msgid "COST_PRICE_TO"
 msgstr "die"
 
 msgid "INSTALLATION_PRICE"
-msgstr "Preis \ 's-Installation (Euro)"
+msgstr "Preis \'s-Installation (Euro)"
 
 msgid "SELECT_PRICE_PLUG"
 msgstr "Preis anzeigen"

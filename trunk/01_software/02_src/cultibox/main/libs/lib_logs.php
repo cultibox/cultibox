@@ -386,7 +386,9 @@ function get_sensor_log ($sensor, $dateStart, $dateEnd, $day="day",$ratio=100) {
     {
         // Format date
         $realDate = $row['date_catch'] . " " . wordwrap($row['time_catch'],"2",":");
+        date_default_timezone_set('Europe/Paris');
         $realTimeInS = strtotime($realDate);
+        date_default_timezone_set('UTC'); 
 
         // Don't display all point. Only if they have suffisiant diff
         $first=false;
