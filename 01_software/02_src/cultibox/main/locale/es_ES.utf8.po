@@ -197,8 +197,7 @@ msgid "ERROR_FORMAT"
 msgstr "Error durante el formateo de la tarjeta SD"
 
 msgid "ALARM_DESCRIPTION"
-msgstr "El alarma de la Cultibox permite apagar todos los enchufes cuando la seguridad 
-del entorno de cultivo esta amenazada. Definir una temperatura limite, en cuanto esta alcanzada , se apagaran todos los enchufes. <br /><br /><b>Cuidado</b>:una vez esta temperatura alcanzada, los enchufes se apagan y la Cultibox no volverá a su estado normal sino que se tendrá que desactivar manualmente el alarma directamente en la caja."
+msgstr "El alarma de la Cultibox permite apagar todos los enchufes cuando la seguridad del entorno de cultivo esta amenazada. Definir una temperatura limite, en cuanto esta alcanzada , se apagaran todos los enchufes. <br /><br /><b>Cuidado</b>:una vez esta temperatura alcanzada, los enchufes se apagan y la Cultibox no volverá a su estado normal sino que se tendrá que desactivar manualmente el alarma directamente en la caja."
 
 msgid "SHOW_COST"
 msgstr "Enseñar el menú de calculo de coste"

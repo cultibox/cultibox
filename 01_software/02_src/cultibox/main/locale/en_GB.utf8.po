@@ -1180,7 +1180,7 @@ msgid "COST_PRICE_TO"
 msgstr "the"
 
 msgid "INSTALLATION_PRICE"
-msgstr "Price \ 's installation (euros)"
+msgstr "Price \'s installation (euros)"
 
 msgid "SELECT_PRICE_PLUG"
 msgstr "Show price"
