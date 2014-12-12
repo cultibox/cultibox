@@ -1469,21 +1469,6 @@ msgstr "Error durante la grabación del calendario a partir del programa selecci
 msgid "LOCKED_CARD"
 msgstr "No se puede escribir en la tarjeta SD, asegúrese de que la tarjeta no está protegida contra escritura"
 
-msgid "ERROR_SSID_VALUE"
-msgstr "El nombre de la red no puede estar vacío"
-
-msgid "ERROR_PASSWORD_VALUE"
-msgstr "Las contraseñas deben coincidir"
-
-msgid "ERROR_EMPTY_PASSWORD"
-msgstr "La contraseña no puede estar vacío"
-
-msgid "ERROR_WEP_KEY_TYPE"
-msgstr "Error en el formato de la contraseña WEP: sólo debe contener números (0-9) y hacer 5, 13 o 29 caracteres de longitud"
-
-msgid "ERROR_WPA_KEY_TYPE"
-msgstr "Error en el formato de la frase de contraseña WPA: debe ser entre 8 y 63 caracteres"
-
 msgid "ERROR_UPDATE_CONF"
 msgstr "Se ha producido un error al actualizar la configuración"
 
@@ -1736,6 +1721,12 @@ msgstr "Por defecto, el tiempo de repetición mínimo de una acción cíclica de
 
 msgid "TOOLTIP_1000_CHANGE_LIMIT"
 msgstr "Un límite de 1000 cambios para toda la captura combinada se establece inicialmente. Puede desactivar este límite con esta opción."
+
+msgid "TOOLTIP_EXPORT_SET_PROGRAM"
+msgstr "Esta característica le permite exportar un programa de programas de juego y decisiones que conforman un archivo. Este archivo puede ser utilizado para aplicar con la función de importación, una serie de programas sobre las capturas que conforman un programa de juego."
+
+msgid "TOOLTIP_IMPORT_SET_PROGRAM"
+msgstr "Esta característica le permite importar un programa de juego de un archivo. El archivo de importación puede ser creado por la función de exportación por otro usuario Cultibox a programas de intercambio."
 
 
 #For the debug part:

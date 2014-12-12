@@ -15,17 +15,6 @@ function db_priv_pdo_start($user="cultibox") {
     }
 }
 
-function db_priv_pdo_start_joomla() {
-    try {
-        $db = new PDO('mysql:host=127.0.0.1;port=3891;dbname=cultibox_joomla;charset=utf8', 'root', 'cultibox');
-        $db->exec("SET CHARACTER SET utf8");
-        return $db;
-    } catch (PDOException $e) {
-        return 0;
-    }
-}
-
-
 // {{{ get_configuration()
 // ROLE get configuration value for specific entries
 // IN $key   the key selectable from the database 

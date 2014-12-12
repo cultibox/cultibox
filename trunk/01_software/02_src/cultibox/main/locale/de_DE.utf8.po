@@ -1469,21 +1469,6 @@ msgstr "Fehler Aufzeichnungszeitplan aus dem gewählten Programm"
 msgid "LOCKED_CARD"
 msgstr "Kann nicht auf die SD-Karte zu schreiben, stellen Sie sicher, dass die Karte nicht schreibgeschützt"
 
-msgid "ERROR_SSID_VALUE"
-msgstr "Der Netzwerkname kann nicht leer sein"
-
-msgid "ERROR_PASSWORD_VALUE"
-msgstr "Passwörter müssen übereinstimmen"
-
-msgid "ERROR_EMPTY_PASSWORD"
-msgstr "Das Passwort darf nicht leer sein"
-
-msgid "ERROR_WEP_KEY_TYPE"
-msgstr "Fehler im Format des WEP-Kennwort: Sie muss nur nombreus (0-9) enthalten, und tun, 5, 13 oder 29 Zeichen lang"
-
-msgid "ERROR_WPA_KEY_TYPE"
-msgstr "Fehler im Format der WPA-Passphrase: Es muss zwischen 8 und 63 Zeichen lang sein"
-
 msgid "ERROR_UPDATE_CONF"
 msgstr "Während der Aktualisierung der Konfiguration ist ein Fehler aufgetreten"
 
@@ -1736,6 +1721,12 @@ msgstr "Standardmäßig ist die Mindestwiederholungszeit von einer zyklischen Ak
 
 msgid "TOOLTIP_1000_CHANGE_LIMIT"
 msgstr "Eine Grenze von 1000 Änderungen für alle kombinierten Fang zunächst festlegen. Sie können diese Grenze mit dieser Option zu deaktivieren."
+
+msgid "TOOLTIP_EXPORT_SET_PROGRAM"
+msgstr "Mit dieser Funktion können Sie ein Programm von Spiel- und Entscheidungs Programme, die eine Datei bilden exportieren. Diese Datei kann verwendet werden, um mit der Import-Funktion, einer Reihe von Programmen über die Fänge, die ein Programm von Spiel zu machen anzuwenden."
+
+msgid "TOOLTIP_IMPORT_SET_PROGRAM"
+msgstr "Diese Funktion ermöglicht es Ihnen, ein Spielprogramm aus einer Datei importieren. Die Importdatei kann durch die Export-Funktion von einem anderen Benutzer Cultibox Austauschprogramme erstellt werden."
 
 
 #For the debug part:

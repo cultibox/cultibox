@@ -1469,21 +1469,6 @@ msgstr "Error recording schedule from the selected program"
 msgid "LOCKED_CARD"
 msgstr "Unable to write to the SD card, make sure the card is not write-protected"
 
-msgid "ERROR_SSID_VALUE"
-msgstr "The network name can not be empty"
-
-msgid "ERROR_PASSWORD_VALUE"
-msgstr "Passwords must match"
-
-msgid "ERROR_EMPTY_PASSWORD"
-msgstr "The password can not be empty"
-
-msgid "ERROR_WEP_KEY_TYPE"
-msgstr "Error in the format of WEP password: it must contain only nombreus (0-9) and do 5, 13 or 29 characters long"
-
-msgid "ERROR_WPA_KEY_TYPE"
-msgstr "Error in the format of the WPA passphrase: it must be between 8 and 63 characters"
-
 msgid "ERROR_UPDATE_CONF"
 msgstr "An error occurred while updating the configuration"
 
@@ -1604,9 +1589,6 @@ msgstr "The secondary control is a complicated and different operation of the ma
 
 msgid "TOOLTIP_COST_PRICE"
 msgstr "The price per kilowatt-hour. Fill in this field is used to calculate the cost of your installation in the 'Cost' menu"
-
-msgid "TOOLTIP_CHECK_UPDATE"
-msgstr "Check if updates are available and offers to download the appropriate"
 
 msgid "TOOLTIP_COST_TYPE"
 msgstr "Your electrical system can be set so 'standard': you pay per kilowatt-hour for the same price at any hour of the day. You can also define your installation as being 'full / Time Hollow Time': the price of killowatt hour varies according to the time at which you consume."
@@ -1739,6 +1721,12 @@ msgstr "By default, the minimum repetition time of a cyclic action for a program
 
 msgid "TOOLTIP_1000_CHANGE_LIMIT"
 msgstr "A limit of 1000 changes for all the combined catch is initially set. You can disable this limit with this option."
+
+msgid "TOOLTIP_EXPORT_SET_PROGRAM"
+msgstr "This feature allows you to export a program of play and decision programs that make up a file. This file can be used to apply with the import feature, a series of programs on catches that make up a program of play."
+
+msgid "TOOLTIP_IMPORT_SET_PROGRAM"
+msgstr "This feature allows you to import a game program from a file. The import file can be created by the export function by another user Cultibox to exchange programs."
 
 
 #For the debug part:

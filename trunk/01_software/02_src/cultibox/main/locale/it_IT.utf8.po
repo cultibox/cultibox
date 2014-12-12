@@ -1470,12 +1470,6 @@ msgstr "Programma di registrazione errore dal programma selezionato"
 msgid "LOCKED_CARD"
 msgstr "Impossibile scrivere sulla scheda SD, assicurarsi che la carta non sia protetta da scrittura"
 
-msgid "ERROR_SSID_VALUE"
-msgstr "Il nome di rete non può essere vuoto"
-
-msgid "ERROR_PASSWORD_VALUE"
-msgstr "Le password devono corrispondere"
-
 msgid "ERROR_UPDATE_CONF"
 msgstr "Si è verificato un errore durante l'aggiornamento della configurazione"
 
@@ -1728,6 +1722,12 @@ msgstr "Per impostazione predefinita, il tempo minimo di ripetizione di una azio
 
 msgid "TOOLTIP_1000_CHANGE_LIMIT"
 msgstr "Un limite di 1000 cambiamenti per tutto il pescato combinato è inizialmente impostato. È possibile disattivare questo limite con questa opzione."
+
+msgid "TOOLTIP_EXPORT_SET_PROGRAM"
+msgstr "Questa funzione consente di esportare un programma di gioco e di decisione dei programmi che compongono un file. Questo file può essere utilizzato per applicare con la funzione di importazione, una serie di programmi sulle catture che compongono un programma di gioco."
+
+msgid "TOOLTIP_IMPORT_SET_PROGRAM"
+msgstr "Questa funzione consente di importare un programma di gioco da un file. Il file di importazione può essere creato con la funzione di esportazione da un altro utente Cultibox a programmi di scambio."
 
 
 #For the debug part:
