@@ -19,6 +19,7 @@ package require piTools
 # Source extern files
 source [file join $rootDir serverPlugUpdate src emeteur.tcl]
 source [file join $rootDir serverPlugUpdate src pluga.tcl]
+source [file join $rootDir serverPlugUpdate src module_wireless.tcl]
 
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
@@ -112,7 +113,15 @@ proc stopIt {} {
 # Load plug adress
 set confPath [file dirname $confXML]
 set plugaFileName [file join $confPath plg pluga]
-# Parse pluga filename
+
+# On démarre le chip de l'emmeteur
+set status "retry_needed"
+while {$status == "retry_needed"} {
+    set status [::wireless::outFromBootloader]
+    after 100
+}
+
+# Parse pluga filename and send adress to module if needed
 set nbPlug [readPluga $plugaFileName]
 
 
@@ -168,6 +177,9 @@ emeteur_init
 # Boucle de régulation
 ::piLog::log [clock milliseconds] "info" "emeteur_update_loop"
 emeteur_update_loop
+
+# Une fois la boucle de régulation démarrée , on peut activer le pilotage des prises
+::wireless::start
 
 vwait forever
 
