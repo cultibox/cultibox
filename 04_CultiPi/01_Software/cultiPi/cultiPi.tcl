@@ -78,6 +78,10 @@ after $confStart(serverLog,waitAfterUS)
 ::piServer::start messageGestion $port(server)
 ::piLog::log [clock millisecond] "info" "serveur is started"
 
+# On change la vitesse du bus I2C
+exec sudo modprobe -r i2c_bcm2708
+exec sudo modprobe i2c_bcm2708 baudrate=32000
+
 # Lancement de tous les modules
 foreach moduleXML $confStart(start) {
     set moduleName [::piXML::searchOptionInElement name $moduleXML]
@@ -121,3 +125,6 @@ updateRepere
 vwait forever
 
 # tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\cultiPi\cultiPi.tcl" "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf"
+
+# Linux start
+# tclsh /home/pi/cultipi/01_Software/cultiPi/cultiPi.tcl /home/pi/cultipi/02_conf

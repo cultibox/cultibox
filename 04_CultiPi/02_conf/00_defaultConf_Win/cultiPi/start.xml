@@ -2,6 +2,5 @@
 <starts>
     <!-- Example : http://wfr.tcl.tk/1151 -->
     <item name="serverLog" waitAfterUS="100" port="6001" pathexe="tclsh" path="./serverLog/serveurLog.tcl" xmlconf="./serverLog/conf.xml" />
-    <item name="serverI2C" waitAfterUS="100" port="6002" pathexe="tclsh" path="./serverI2C/serverI2C.tcl" xmlconf="./serverI2C/conf.xml" />
     <item name="serverPlugUpdate" waitAfterUS="100" port="6004" pathexe="tclsh" path="./serverPlugUpdate/serverPlugUpdate.tcl" xmlconf="./serverPlugUpdate/conf.xml" />
 </starts>

@@ -18,7 +18,7 @@ proc readPluga {plugaFileName} {
             # Par défaut l'adresse est celle de l'émetteur
             set ::plug($nbPlug,adress) $OneLine
             set ::plug($nbPlug,moduleAdress) $::SLAVE_EMETOR_ADRESS
-            
+
             # Les adresses de 4 à 30 (seulement les nombres pair) sont pour des prises 3500W
             # Les adresses 247	222	219	215	207	252	250	246	238	187	183	189	125	123	119 sont pour les prises 1000W
             # Les adresses >= 256 sont pour les autres modules de pilotages . Les 4 derniers bits (LSB) donnent la prises . 
@@ -28,6 +28,11 @@ proc readPluga {plugaFileName} {
             if {$OneLine > 255} {
                 set ::plug($nbPlug,adress) [expr ($OneLine - 256) % 8]
                 set ::plug($nbPlug,moduleAdress) [expr 0x30 + ($OneLine - 256) / 8]
+            }
+            
+            # On transmet au module de pilotage sans fils les adresses
+            if {$::plug($nbPlug,moduleAdress) == $::SLAVE_EMETOR_ADRESS} {
+                ::wireless::setAdress $nbPlug $::plug($nbPlug,adress)
             }
             
         }

@@ -126,6 +126,9 @@ proc emeteur_update_loop {} {
 
         # Load plugV
         load_plugXX
+        
+        # Lecture de la valeur des capteurs
+        readSensors
 
         set programmeToSend [getsProgramm $uc24_seconds "updatenextTimeToChange"]
 
@@ -139,7 +142,7 @@ proc emeteur_update_loop {} {
         set ::emeteur_actualDay [rtc_readDay];
 
     } elseif {$uc24_seconds >= $::nextTimeToChange} {
-    
+
         set programmeToSend [getsProgramm $uc24_seconds "updatenextTimeToChange"]
 
         for {set i 1} {$i <= $::EMETEUR_NB_PLUG_MAX} {incr i} {
@@ -149,9 +152,15 @@ proc emeteur_update_loop {} {
         ::piLog::log [clock milliseconds] "info" "next change $::nextTimeToChange"
         
     } elseif {[expr $uc24_seconds % 5] == 0} { 
-        # If Regulation is not done
+    
+
+        # La régulation doit être faite
         if {$::uc8_regulationIsDone == 0} \
         {
+        
+            # Lecture de la valeur des capteurs
+            readSensors
+        
             # update plug
             for {set i 1} {$i <= $::EMETEUR_NB_PLUG_MAX} {incr i} \
             {
@@ -178,11 +187,9 @@ proc emeteur_regulation {plugNumber} {
         ::piLog::log [clock milliseconds] "error" "Plug $plugNumber programme is empty"
     } elseif {$plgPrgm != "off" && $plgPrgm != "on"} {
         ::piLog::log [clock milliseconds] "info" "regulation plug $plugNumber programme $plgPrgm"
-        # Trame standard : [FROM] [INDEX] [commande] [argument]
-        ::piServer::sendToServer $::port(serverI2C) "$::port(serverPlugUpdate) [incr ::TrameIndex] setI2C $::plug($plugNumber,moduleAdress) $::plug($plugNumber,adress) $plgPrgm"
-        
-        # On sauvegarde la trame
-        set ::TrameSended($::TrameIndex) "update_plug_value $plugNumber"
+
+        # On envoi la commande au module
+        ::wireless::setValue $plugNumber $plgPrgm
  
    }
 
@@ -210,13 +217,12 @@ proc updatePlug {plugNumber} {
             set plgPrgm [expr 0]
         }
         
-        # On envoi la commande au serveur I2C
-        # Trame standard : [FROM] [INDEX] [commande] [argument]
-        ::piServer::sendToServer $::port(serverI2C) "$::port(serverPlugUpdate) [incr ::TrameIndex] setI2C $::plug($plugNumber,moduleAdress) $::plug($plugNumber,adress) $plgPrgm"
-        
-        # On sauvegarde la trame
-        set ::TrameSended($::TrameIndex) "update_plug_value $plugNumber"
-        
+        # On envoi la commande au module
+        ::wireless::setValue $plugNumber $plgPrgm
     }
-    
+}
+
+# cette procédure est utilisée pour lire la valeur des capteurs
+proc readSensors {} {
+    ::piLog::log [clock milliseconds] "error" "proc readSensors to write"
 }
