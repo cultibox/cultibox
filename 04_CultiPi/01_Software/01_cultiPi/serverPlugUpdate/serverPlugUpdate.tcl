@@ -5,6 +5,8 @@ set rootDir [file dirname [file dirname [info script]]]
 set port(serverPlugUpdate)  [lindex $argv 0]
 set confXML                 [lindex $argv 1]
 set port(serverLogs)        [lindex $argv 2]
+set port(serverCultiPi)     [lindex $argv 3]
+set port(serverAcqSensor)   ""
 
 # Global var for regulation
 set regul(alarme) 0
@@ -25,6 +27,10 @@ set TrameIndex 0
 
 ::piLog::openLog $port(serverLogs) "serverPlugUpdate"
 ::piLog::log [clock milliseconds] "info" "starting serverPlugUpdate - PID : [pid]"
+::piLog::log [clock milliseconds] "info" "port serverPlugUpdate : $port(serverPlugUpdate)"
+::piLog::log [clock milliseconds] "info" "confXML : $confXML"
+::piLog::log [clock milliseconds] "info" "port serverLogs : $port(serverLogs)"
+::piLog::log [clock milliseconds] "info" "port serverCultiPi : $port(serverCultiPi)"
 
 
 proc bgerror {message} {
@@ -70,6 +76,10 @@ proc messageGestion {message} {
                 if {[array names ::TrameSended -exact $indexForResponse] != ""} {
                     
                     switch [lindex $::TrameSended($indexForResponse) 0] {
+                        "getPort" {
+                            set ::port([::piTools::lindexRobust $message 3]) [::piTools::lindexRobust $message 4]
+                            ::piLog::log [clock milliseconds] "info" "getPort response : module [::piTools::lindexRobust $message 3] port [::piTools::lindexRobust $message 4]"
+                        }
                         "update_plug_value" {
                             set plugumber [lindex $::TrameSended($indexForResponse) 1]
                         
@@ -123,7 +133,6 @@ while {$status == "retry_needed"} {
 # Parse pluga filename and send adress to module if needed
 set nbPlug [readPluga $plugaFileName]
 
-
 # Load plug parameters
 for {set i 1} {$i < $nbPlug} {incr i} {
 
@@ -172,6 +181,11 @@ for {set i 1} {$i < $nbPlug} {incr i} {
 # initialisation de la partie émetteur
 ::piLog::log [clock milliseconds] "info" "emeteur_init"
 emeteur_init
+
+# On demande le numéro de port du lecteur de capteur
+::piLog::log [clock milliseconds] "info" "ask getPort serverAcqSensor"
+::piServer::sendToServer $::port(serverCultiPi) "$::port(serverPlugUpdate) [incr TrameIndex] getPort serverAcqSensor"
+set ::TrameSended($TrameIndex) "getPort serverAcqSensor"
 
 # Boucle de régulation
 ::piLog::log [clock milliseconds] "info" "emeteur_update_loop"

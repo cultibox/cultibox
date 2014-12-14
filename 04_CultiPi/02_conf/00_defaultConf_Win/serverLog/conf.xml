@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <conf>
     <!-- Example : http://wfr.tcl.tk/1151 -->
-    <item name="logPath" logfile="/home/cultipi/logs" />
+    <item name="logPath" logfile="D:/DONNEES/GR08565N/Mes documents/cbx/04_CultiPi/01_Software" />
 </conf>

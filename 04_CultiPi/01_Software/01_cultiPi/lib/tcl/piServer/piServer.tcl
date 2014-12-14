@@ -99,6 +99,8 @@ proc ::piServer::sendToServer {portNumber message} {
     } msg]
     if {$rc == 1} {
         ::piLog::log [clock milliseconds] "erreur" "try to send message to -$portNumber- - erreur :  -$msg-"
+    } else {
+        ::piLog::log [clock milliseconds] "debug" "message send to -$portNumber- message : -$message-"
     }
 
     set rc [catch \

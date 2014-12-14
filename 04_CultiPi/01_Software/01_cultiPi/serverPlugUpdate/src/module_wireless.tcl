@@ -112,7 +112,7 @@ proc ::wireless::start {} {
     } else {
         ::piLog::log [clock milliseconds] "debug" "Emettor output enable"
     }
-    
+    return 0
 }
 
 # Cette proc est utlisée pour définir l'adresse d'une prise dans le module sans fils

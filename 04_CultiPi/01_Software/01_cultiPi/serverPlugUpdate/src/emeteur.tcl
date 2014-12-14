@@ -53,11 +53,13 @@ proc load_plugXX {} {
 
 proc rtc_readSecondsOfTheDay {} {
 
-    set sec [string trimleft [clock format [clock seconds] -format %S] "0"]
+    set time [clock seconds] 
+
+    set sec [string trimleft [clock format $time -format %S] "0"]
     if {$sec == ""} {set sec 0}
-    set min [string trimleft [clock format [clock seconds] -format %M] "0"]
+    set min [string trimleft [clock format $time -format %M] "0"]
     if {$min == ""} {set min 0}
-    set hour [string trimleft [clock format [clock seconds] -format %H] "0"]
+    set hour [string trimleft [clock format $time -format %H] "0"]
     if {$hour == ""} {set hour 0}
 
     return [expr $sec + $min * 60 + $hour * 3600]
@@ -87,12 +89,12 @@ proc getsProgramm {rtc_readSecondsOfTheDay {updateNextTimeToChange 0}} {
     set prg ""
     set updateNextTimeToChangeIsUpdated 0
     foreach timeS [lsort -integer [array names ::programm]] {
-        if {$rtc_readSecondsOfTheDay >= $timeS} {
+        if {$rtc_readSecondsOfTheDay >= $timeS && $prg == ""} {
             set prg $::programm($timeS)
         } elseif {$updateNextTimeToChangeIsUpdated == 0 && $updateNextTimeToChange != 0} {
             set updateNextTimeToChangeIsUpdated 1
             set ::nextTimeToChange $timeS
-            break;
+            break
         }
     }
     
@@ -100,7 +102,7 @@ proc getsProgramm {rtc_readSecondsOfTheDay {updateNextTimeToChange 0}} {
 }
 
 proc emeteur_update_loop {} {
-
+        
     # Read actual hour
     set uc24_seconds [rtc_readSecondsOfTheDay]
                
@@ -108,7 +110,7 @@ proc emeteur_update_loop {} {
     if {$::uc8_alarm == 1}  {
         for {set i 0} {$i < $::EMETEUR_NB_PLUG_MAX} {incr i} {
             # Save value
-            set emeteur_regulation_value($i) $::EMETEUR_OFF_VALUE;
+            set emeteur_regulation_value($i) $::EMETEUR_OFF_VALUE
             # update plug value
             emeteur_update_plug_value $i $::EMETEUR_OFF_VALUE
         }
@@ -116,9 +118,11 @@ proc emeteur_update_loop {} {
         # Save it on log.txt
         ::piLog::log [clock milliseconds] "info" "IN ALARME"
 
-        set ::uc8_alarm 2;
+        set ::uc8_alarm 2
       
-        return 0;
+        after 1000 emeteur_update_loop
+      
+        return 0
     }
 
     # If first evaluation of values {plug adress are send and plug value not send} are not done
@@ -126,9 +130,6 @@ proc emeteur_update_loop {} {
 
         # Load plugV
         load_plugXX
-        
-        # Lecture de la valeur des capteurs
-        readSensors
 
         set programmeToSend [getsProgramm $uc24_seconds "updatenextTimeToChange"]
 
@@ -139,7 +140,7 @@ proc emeteur_update_loop {} {
         ::piLog::log [clock milliseconds] "info" "init emetor next change $::nextTimeToChange"
         
         # register day
-        set ::emeteur_actualDay [rtc_readDay];
+        set ::emeteur_actualDay [rtc_readDay]
 
     } elseif {$uc24_seconds >= $::nextTimeToChange} {
 
@@ -157,10 +158,7 @@ proc emeteur_update_loop {} {
         # La régulation doit être faite
         if {$::uc8_regulationIsDone == 0} \
         {
-        
-            # Lecture de la valeur des capteurs
-            readSensors
-        
+
             # update plug
             for {set i 1} {$i <= $::EMETEUR_NB_PLUG_MAX} {incr i} \
             {
@@ -168,11 +166,14 @@ proc emeteur_update_loop {} {
             }
             set ::uc8_regulationIsDone 1
         }
+
     } else {
         set ::uc8_regulationIsDone 0
     }
 
-    after 100 emeteur_update_loop
+    after 500 emeteur_update_loop
+    
+    return 0
     
 }
 
@@ -225,4 +226,6 @@ proc updatePlug {plugNumber} {
 # cette procédure est utilisée pour lire la valeur des capteurs
 proc readSensors {} {
     ::piLog::log [clock milliseconds] "error" "proc readSensors to write"
+    
+    after 1000 readSensors
 }

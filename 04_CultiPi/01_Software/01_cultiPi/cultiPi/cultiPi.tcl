@@ -70,6 +70,7 @@ after $confStart(serverLog,waitAfterUS)
 ::piLog::openLog $confStart(serverLog,port) "culipi"
 ::piLog::log $TimeStartcultiPi "info" "starting serveur"
 ::piLog::log $TimeStartserveurLog "info" "starting serveurLog"
+::piLog::log $TimeStartserveurLog "info" "Port : $port(server)"
 
 # Load server Culti Pi
 ::piLog::log [clock millisecond] "info" "starting serveur"
@@ -77,8 +78,14 @@ after $confStart(serverLog,waitAfterUS)
 ::piLog::log [clock millisecond] "info" "serveur is started"
 
 # On change la vitesse du bus I2C
-exec sudo modprobe -r i2c_bcm2708
-exec sudo modprobe i2c_bcm2708 baudrate=32000
+set RC [catch {
+    exec sudo modprobe -r i2c_bcm2708
+    exec sudo modprobe i2c_bcm2708 baudrate=32000
+} msg]
+if {$RC != 0} {
+    puts "CultiPi : I2C speed : error $msg"
+}
+
 
 # Lancement de tous les modules
 foreach moduleXML $confStart(start) {
@@ -97,14 +104,14 @@ foreach moduleXML $confStart(start) {
         puts "CultiPi : start : $moduleName port : $confStart($moduleName,port)"
 
         ::piLog::log [clock milliseconds] "info" "Load $moduleName"
-        puts "CultiPi : start : $moduleName exec : $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port)"
-        set confStart($moduleName,pipeID) [open "| $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port)"]
+        puts "CultiPi : start : $moduleName exec : $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(server)"
+        set confStart($moduleName,pipeID) [open "| $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(server)"]
         after $confStart($moduleName,waitAfterUS)
                
     }
 }
 
-# On attend que tous les modules ai démarré
+# On attend que tous les modules ait démarré
 after 5000
 foreach moduleXML $confStart(start) {
     set moduleName [::piXML::searchOptionInElement name $moduleXML]
@@ -128,7 +135,7 @@ updateRepere
 
 vwait forever
 
-# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\cultiPi\cultiPi.tcl" "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf"
+# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\01_cultiPi\cultiPi\cultiPi.tcl" "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf"
 
 # Linux start
 # tclsh /home/pi/cultipi/01_Software/01_cultiPi/cultiPi/cultiPi.tcl /home/pi/cultipi/02_conf
