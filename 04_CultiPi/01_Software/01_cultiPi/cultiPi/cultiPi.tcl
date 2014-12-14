@@ -97,7 +97,7 @@ foreach moduleXML $confStart(start) {
         puts "CultiPi : start : $moduleName port : $confStart($moduleName,port)"
 
         ::piLog::log [clock milliseconds] "info" "Load $moduleName"
-        
+        puts "CultiPi : start : $moduleName exec : $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port)"
         set confStart($moduleName,pipeID) [open "| $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port)"]
         after $confStart($moduleName,waitAfterUS)
                
@@ -131,4 +131,4 @@ vwait forever
 # tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\cultiPi\cultiPi.tcl" "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf"
 
 # Linux start
-# tclsh /home/pi/cultipi/01_Software/cultiPi/cultiPi.tcl /home/pi/cultipi/02_conf
+# tclsh /home/pi/cultipi/01_Software/01_cultiPi/cultiPi/cultiPi.tcl /home/pi/cultipi/02_conf
