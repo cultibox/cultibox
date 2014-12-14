@@ -150,6 +150,7 @@ set (server:host) server
 set (server:port) $port
 
 log "<[clock milliseconds]><serveurlog><info><server log started - PID : [pid]>" init
+log "<[clock milliseconds]><serveurlog><info><server log socket - $port>"
 
 # enter event loop
 

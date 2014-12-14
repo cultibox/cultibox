@@ -5,7 +5,6 @@ set rootDir [file dirname [file dirname [info script]]]
 set port(serverPlugUpdate)  [lindex $argv 0]
 set confXML                 [lindex $argv 1]
 set port(serverLogs)        [lindex $argv 2]
-set port(serverI2C)         [lindex $argv 3]
 
 # Global var for regulation
 set regul(alarme) 0
