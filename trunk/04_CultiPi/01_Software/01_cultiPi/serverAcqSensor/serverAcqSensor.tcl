@@ -134,9 +134,9 @@ proc searchSensorsConnected {} {
             
                 set RC [catch {
                     exec i2cset -y 1 $moduleAdress $::SLAVE_REG_MINOR_VERSION
-                    set minorVersion [exec getI2C -y 1 $moduleAdress]
+                    set minorVersion [exec i2cget -y 1 $moduleAdress]
                     exec i2cset -y 1 $moduleAdress $::SLAVE_REG_MAJOR_VERSION
-                    set majorVersion [exec getI2C -y 1 $moduleAdress]
+                    set majorVersion [exec i2cget -y 1 $moduleAdress]
                 } msg]
                 
                 if {$RC != 0} {
@@ -149,7 +149,7 @@ proc searchSensorsConnected {} {
                     set ::sensor($sensorType,$index,connected) 1
                     set ::sensor($sensorType,$index,majorVersion) $majorVersion
                     set ::sensor($sensorType,$index,minorVersion) $minorVersion
-                    ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index is connected (Version : ${majorVersion}.${$minorVersion}) "
+                    ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index is connected (Version : ${majorVersion}.${minorVersion}) "
                 }
             }
         }
@@ -182,10 +182,10 @@ proc readSensors {} {
                     set valueLP ""
                     set RC [catch {
                         exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_HP_ADR
-                        set valueHP [exec getI2C -y 1 $moduleAdress]
+                        set valueHP [exec i2cget -y 1 $moduleAdress]
                         
                         exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_LP_ADR
-                        set valueLP [exec getI2C -y 1 $moduleAdress]
+                        set valueLP [exec i2cget -y 1 $moduleAdress]
                     } msg]
 
                     if {$RC != 0} {
@@ -193,10 +193,11 @@ proc readSensors {} {
                         set ::sensor($sensorType,$index,updateStatusComment) ${msg}
                         ::piLog::log [clock milliseconds] "error" "default when reading valueHP of sensor $sensorType index $index (adress module : $moduleAdress - register $register) message:-$msg-"
                     } else {
-                        set ::sensor($sensorType,$index,value,1) [expr $valueHP * 256 + $valueLP]
+                        set computedValue [expr ($valueHP * 256 + $valueLP) / 100.0]
+                        set ::sensor($sensorType,$index,value,1) $computedValue
                         set ::sensor($sensorType,$index,updateStatus) "OK"
                         set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
-                        ::piLog::log [clock milliseconds] "debug" "sensor $sensorType index $index (adress module : $moduleAdress - register $register) is updated with value $value"
+                        ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 1 : $computedValue"
                     }
                     
                     if {$sensorType == "SHT"} {
@@ -208,21 +209,22 @@ proc readSensors {} {
                         set valueLP ""
                         set RC [catch {
                             exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_HP2_ADR
-                            set valueHP [exec getI2C -y 1 $moduleAdress]
+                            set valueHP [exec i2cget -y 1 $moduleAdress]
                             
                             exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_LP2_ADR
-                            set valueLP [exec getI2C -y 1 $moduleAdress]
+                            set valueLP [exec i2cget -y 1 $moduleAdress]
                         } msg]
 
                         if {$RC != 0} {
                             set ::sensor($sensorType,$index,updateStatus) "DEFCOM"
                             set ::sensor($sensorType,$index,updateStatusComment) ${msg}
-                            ::piLog::log [clock milliseconds] "error" "default when reading valueHP of sensor $sensorType index $index (adress module : $moduleAdress - register $register) message:-$msg-"
+                            ::piLog::log [clock milliseconds] "error" "default when reading valueHP of sensor $sensorType index $index (@ $moduleAdress - reg $register) message:-$msg-"
                         } else {
-                            set ::sensor($sensorType,$index,value,2) [expr $valueHP * 256 + $valueLP]
+                            set computedValue [expr ($valueHP * 256 + $valueLP) / 100.0]
+                            set ::sensor($sensorType,$index,value,2) $computedValue
                             set ::sensor($sensorType,$index,updateStatus) "OK"
                             set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
-                            ::piLog::log [clock milliseconds] "debug" "sensor $sensorType index $index (adress module : $moduleAdress - register $register) is updated with value $value"
+                            ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 2 : $computedValue"
                         }
                     
                     }
