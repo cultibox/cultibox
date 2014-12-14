@@ -52,8 +52,8 @@ proc messageGestion {message} {
             set repere [::piTools::lindexRobust $message 3]
             set parametre [::piTools::lindexRobust $message 4]
             ::piLog::log [clock milliseconds] "info" "Asked getRepere $repere - parametre $parametre"
-            # Les parametres d'un repere : nom Valeur 
             
+            # Les parametres d'un repere : nom Valeur 
             if {[array names ::sensor -exact "$repere,$parametre"] != ""} {
                 ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere $::sensor($repere,$parametre)"
                 ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $::sensor($repere,$parametre)"
@@ -112,8 +112,12 @@ foreach sensorType $sensorTypeList {
             set ::sensor($sensorType,$index,majorVersion) ""
             set ::sensor($sensorType,$index,minorVersion) ""
             set ::sensor($sensorType,$index,connected) 0
-        
         }
+        
+        # On ajoute un repère pour factoriser par numéro de capteur
+        set ::sensor($index,value,1) ""
+        set ::sensor($index,value,2) ""
+        
     }
 }
 
@@ -198,6 +202,9 @@ proc readSensors {} {
                         set ::sensor($sensorType,$index,updateStatus) "OK"
                         set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
                         ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 1 : $computedValue"
+                        
+                        # On sauvegarde dans le repère global
+                        set ::sensor($index,value,1) $computedValue
                     }
                     
                     if {$sensorType == "SHT"} {
@@ -225,6 +232,10 @@ proc readSensors {} {
                             set ::sensor($sensorType,$index,updateStatus) "OK"
                             set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
                             ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 2 : $computedValue"
+                            
+                            # On sauvegarde dans le repère global
+                            set ::sensor($index,value,2) $computedValue
+                            
                         }
                     
                     }
