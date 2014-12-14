@@ -108,12 +108,56 @@ foreach sensorType $sensorTypeList {
             set ::sensor($sensorType,$index,value,1) ""
             set ::sensor($sensorType,$index,value,2) ""
             set ::sensor($sensorType,$index,updateStatus) "INIT"
+            set ::sensor($sensorType,$index,commStatus) "DEFCOM"
+            set ::sensor($sensorType,$index,majorVersion) ""
+            set ::sensor($sensorType,$index,minorVersion) ""
+            set ::sensor($sensorType,$index,connected) 0
         
         }
     }
 }
 
+# Boucle pour connaitre les capteurs de connectés
+proc searchSensorsConnected {} {
+    set sensorTypeList [list SHT DS18B20 WATER_LEVEL PH EC OD ORP]
+    
+    foreach sensorType $sensorTypeList {
+    
+        for {set index 1} {$index < 10} {incr index} {
+        
+            # Si ce capteur peut exister
+            if {[array names ::sensor -exact "${sensorType},$index,adress"] != ""} {
+            
+                set minorVersion ""
+                set majorVersion ""
+                set moduleAdress $::sensor(${sensorType},$index,adress)
+            
+                set RC [catch {
+                    exec i2cset -y 1 $moduleAdress $::SLAVE_REG_MINOR_VERSION
+                    set minorVersion [exec getI2C -y 1 $moduleAdress]
+                    exec i2cset -y 1 $moduleAdress $::SLAVE_REG_MAJOR_VERSION
+                    set majorVersion [exec getI2C -y 1 $moduleAdress]
+                } msg]
+                
+                if {$RC != 0} {
+                    set ::sensor($sensorType,$index,connected) 0
+                    set ::sensor($sensorType,$index,majorVersion) ""
+                    set ::sensor($sensorType,$index,minorVersion) ""
+                    set ::sensor($sensorType,$index,updateStatus) "DEFCOM"
+                    ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (adress $moduleAdress) is not connected ($msg)"
+                } else {
+                    set ::sensor($sensorType,$index,connected) 1
+                    set ::sensor($sensorType,$index,majorVersion) $majorVersion
+                    set ::sensor($sensorType,$index,minorVersion) $minorVersion
+                    ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index is connected (Version : ${majorVersion}.${$minorVersion}) "
+                }
+            }
+        }
+    }    
+}
+
 # Boucle de lecture des capteurs
+set indexForSearchingSensor 0
 proc readSensors {} {
 
     set sensorTypeList [list SHT DS18B20 WATER_LEVEL PH EC OD ORP]
@@ -125,45 +169,22 @@ proc readSensors {} {
             # Si ce capteur peut exister
             if {[array names ::sensor -exact "${sensorType},$index,adress"] != ""} {
             
-                # Pour lire la valeur d'un capteur, on s'y prend à deux fois :
-                # - On écrit la valeur du registre qu'on veut lire
-                # - On lit le registre
-                set moduleAdress $::sensor($sensorType,$index,adress)
-                set register     $::SENSOR_GENERIC_HP_ADR
-
-                set valueHP ""
-                set valueLP ""
-                set RC [catch {
-                    exec setI2C -y 1 $moduleAdress $::SENSOR_GENERIC_HP_ADR
-                    set valueHP [exec getI2C -y 1 $moduleAdress]
-                    
-                    exec setI2C -y 1 $moduleAdress $::SENSOR_GENERIC_LP_ADR
-                    set valueLP [exec getI2C -y 1 $moduleAdress]
-                } msg]
-
-                if {$RC != 0} {
-                    set ::sensor($sensorType,$index,updateStatus) "DEFCOM"
-                    set ::sensor($sensorType,$index,updateStatusComment) ${msg}
-                    ::piLog::log [clock milliseconds] "error" "default when reading valueHP of sensor $sensorType index $index (adress module : $moduleAdress - register $register) message:-$msg-"
-                } else {
-                    set ::sensor($sensorType,$index,value,1) [expr $valueHP * 256 + $valueLP]
-                    set ::sensor($sensorType,$index,updateStatus) "OK"
-                    set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
-                    ::piLog::log [clock milliseconds] "debug" "sensor $sensorType index $index (adress module : $moduleAdress - register $register) is updated with value $value"
-                }
+                # On vérifie s'il est connecté
+                if {$::sensor($sensorType,$index,connected) == 1} {
                 
-                if {$sensorType == "SHT"} {
-                
+                    # Pour lire la valeur d'un capteur, on s'y prend à deux fois :
+                    # - On écrit la valeur du registre qu'on veut lire
+                    # - On lit le registre
                     set moduleAdress $::sensor($sensorType,$index,adress)
                     set register     $::SENSOR_GENERIC_HP_ADR
 
                     set valueHP ""
                     set valueLP ""
                     set RC [catch {
-                        exec setI2C -y 1 $moduleAdress $::SENSOR_GENERIC_HP2_ADR
+                        exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_HP_ADR
                         set valueHP [exec getI2C -y 1 $moduleAdress]
                         
-                        exec setI2C -y 1 $moduleAdress $::SENSOR_GENERIC_LP2_ADR
+                        exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_LP_ADR
                         set valueLP [exec getI2C -y 1 $moduleAdress]
                     } msg]
 
@@ -172,26 +193,60 @@ proc readSensors {} {
                         set ::sensor($sensorType,$index,updateStatusComment) ${msg}
                         ::piLog::log [clock milliseconds] "error" "default when reading valueHP of sensor $sensorType index $index (adress module : $moduleAdress - register $register) message:-$msg-"
                     } else {
-                        set ::sensor($sensorType,$index,value,2) [expr $valueHP * 256 + $valueLP]
+                        set ::sensor($sensorType,$index,value,1) [expr $valueHP * 256 + $valueLP]
                         set ::sensor($sensorType,$index,updateStatus) "OK"
                         set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
                         ::piLog::log [clock milliseconds] "debug" "sensor $sensorType index $index (adress module : $moduleAdress - register $register) is updated with value $value"
                     }
-                
-                }
-                
-                after 30
-            
+                    
+                    if {$sensorType == "SHT"} {
+                    
+                        set moduleAdress $::sensor($sensorType,$index,adress)
+                        set register     $::SENSOR_GENERIC_HP_ADR
+
+                        set valueHP ""
+                        set valueLP ""
+                        set RC [catch {
+                            exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_HP2_ADR
+                            set valueHP [exec getI2C -y 1 $moduleAdress]
+                            
+                            exec i2cset -y 1 $moduleAdress $::SENSOR_GENERIC_LP2_ADR
+                            set valueLP [exec getI2C -y 1 $moduleAdress]
+                        } msg]
+
+                        if {$RC != 0} {
+                            set ::sensor($sensorType,$index,updateStatus) "DEFCOM"
+                            set ::sensor($sensorType,$index,updateStatusComment) ${msg}
+                            ::piLog::log [clock milliseconds] "error" "default when reading valueHP of sensor $sensorType index $index (adress module : $moduleAdress - register $register) message:-$msg-"
+                        } else {
+                            set ::sensor($sensorType,$index,value,2) [expr $valueHP * 256 + $valueLP]
+                            set ::sensor($sensorType,$index,updateStatus) "OK"
+                            set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
+                            ::piLog::log [clock milliseconds] "debug" "sensor $sensorType index $index (adress module : $moduleAdress - register $register) is updated with value $value"
+                        }
+                    
+                    }
+                }            
             }
         
         }
     
     }
     
-    # Arrêt du server de log
+    if {[incr ::indexForSearchingSensor] > 60} {
+        # Une fois sur 60 , on recherche les capteurs
+        set indexForSearchingSensor 0
+        searchSensorsConnected
+    }
+    
+    # On rechercher après 1 seconde
     after 1000 readSensors
 }
 
+# On cherche les capteurs connectés
+searchSensorsConnected
+
+# On lit la valeur des capteurs
 readSensors
 
 vwait forever

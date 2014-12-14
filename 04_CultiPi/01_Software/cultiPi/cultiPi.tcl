@@ -16,12 +16,6 @@ if {$fileName(cultiPi,confRootDir) == ""} {
 }
 set fileName(cultiPi,conf) [file join $fileName(cultiPi,confRootDir) conf.xml]
 
-
-# Port number
-set port(server) 6000
-set port(serverLogs) 6001
-set port(serverI2C) 6002
-
 # Load lib
 lappend auto_path [file join $rootDir lib tcl]
 package require piLog
@@ -32,6 +26,10 @@ package require piTools
 # Source files
 source [file join $rootDir cultiPi src stop.tcl]
 source [file join $rootDir cultiPi src serveurMessage.tcl]
+source [file join $rootDir cultiPi src searchSocket.tcl]
+
+# Port number
+set port(server) [findAvailableSocket 6000]
 
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
@@ -69,7 +67,7 @@ set confStart(serverLog,pipeID) [open "| $confStart(serverLog,pathexe) \"$confSt
 after $confStart(serverLog,waitAfterUS)
 
 # init log
-::piLog::openLog $port(serverLogs) "culipi"
+::piLog::openLog $confStart(serverLog,port) "culipi"
 ::piLog::log $TimeStartcultiPi "info" "starting serveur"
 ::piLog::log $TimeStartserveurLog "info" "starting serveurLog"
 
@@ -100,14 +98,20 @@ foreach moduleXML $confStart(start) {
 
         ::piLog::log [clock milliseconds] "info" "Load $moduleName"
         
-        set confStart($moduleName,pipeID) [open "| $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(serverI2C)"]
+        set confStart($moduleName,pipeID) [open "| $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port)"]
         after $confStart($moduleName,waitAfterUS)
-        
+               
+    }
+}
+
+# On attend que tous les modules ai démarré
+after 5000
+foreach moduleXML $confStart(start) {
+    set moduleName [::piXML::searchOptionInElement name $moduleXML]
+    if {$moduleName != "serverLog"} {
         # on lui demande son PID
         # Trame standard : [FROM] [INDEX] [commande] [argument]
         ::piServer::sendToServer $confStart($moduleName,port) "$port(server) [incr ::TrameIndex] pid"
-        
-        
     }
 }
 

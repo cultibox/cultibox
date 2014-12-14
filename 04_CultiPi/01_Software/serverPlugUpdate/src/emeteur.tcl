@@ -186,10 +186,10 @@ proc emeteur_regulation {plugNumber} {
     if {$plgPrgm == ""} {
         ::piLog::log [clock milliseconds] "error" "Plug $plugNumber programme is empty"
     } elseif {$plgPrgm != "off" && $plgPrgm != "on"} {
-        ::piLog::log [clock milliseconds] "info" "regulation plug $plugNumber programme $plgPrgm"
+        ::piLog::log [clock milliseconds] "debug" "regulation plug $plugNumber programme $plgPrgm"
 
         # On envoi la commande au module
-        ::wireless::setValue $plugNumber $plgPrgm
+        #::wireless::setValue $plugNumber $plgPrgm
  
    }
 
