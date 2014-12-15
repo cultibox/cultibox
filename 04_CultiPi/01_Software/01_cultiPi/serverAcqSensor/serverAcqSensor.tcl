@@ -248,7 +248,7 @@ proc readSensors {} {
     
     if {[incr ::indexForSearchingSensor] > 60} {
         # Une fois sur 60 , on recherche les capteurs
-        set indexForSearchingSensor 0
+        set ::indexForSearchingSensor 0
         searchSensorsConnected
     }
     
