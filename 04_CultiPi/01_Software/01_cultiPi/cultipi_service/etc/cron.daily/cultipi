@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -d /var/cache/lighttpd/compress/cultibox ]; then
+    rm -Rf /var/cache/lighttpd/compress/cultibox
+fi
+
+if [ -d /var/cache/lighttpd/compress/cultinet ]; then
+    rm -Rf /var/cache/lighttpd/compress/cultinet
+fi
+
+
+apt-get update
+apt-get install -y --only-upgrade cultipi
+apt-get install -y --only-upgrade cultinet
+apt-get install -y --only-upgrade cultibox
