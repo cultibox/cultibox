@@ -10,6 +10,7 @@ DEST_DIR=../../01_install/01_src/01_xampp
 function usage {
             echo "usage: $0"
             echo "                      ubuntu32|ubuntu64 <version> ?jenkins?"
+            echo "                      apt-gen <arch>"
             echo "                      clean"
             exit 1
 }
@@ -140,6 +141,18 @@ EOF
 
            mv cultibox.deb ../../03_linux/Output/cultibox-ubuntu-i386_`echo $VERSION`.deb
         ;;
+      "apt-gen")
+           cultibox_ubuntu="`ls -t Output/cultibox-ubuntu-$2*|head -1`"
+           cp $cultibox_ubuntu repository_$2/binary/
+
+           cultibox_ubuntu="`ls -t Output/cultibox-ubuntu-$2*|head -1`"
+           cp $cultibox_ubuntu repository_$2/binary/
+
+           cd repository_$2
+           dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz
+
+           rm binary/cultibox*.deb
+      ;;
       "clean")
             rm -Rf ../01_src/01_xampp/*
       ;;

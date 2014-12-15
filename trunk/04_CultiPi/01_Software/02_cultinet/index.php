@@ -178,7 +178,7 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
             <td class="conf-marge-field-wifi"></td>
             <td class="conf-field-title-wifi"><?php echo __('CONFIGURE_WIFI_SSID'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_SSID'); ?>" /></td>
              <td class="conf-field-field-wifi">
-                <input  type="text" size="15" name="wifi_ssid" id="wifi_ssid" value="<?php echo $wifi_ssid; ?>" /><img src="/cultinet/main/libs/img/wifi.ico" id="wifi_scan" alt="" title="<?php echo __('WIFI_SCAN_ESSID'); ?>" />
+                <input  type="text" size="15" name="wifi_ssid" id="wifi_ssid" value="<?php echo $wifi_ssid; ?>" /><img src="/cultinet/main/libs/img/wifi.png" id="wifi_scan" alt="" title="<?php echo __('WIFI_SCAN_ESSID'); ?>" />
             </td>
                 <td><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
             </tr>
