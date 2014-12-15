@@ -113,6 +113,25 @@ Pour mettre à jour le logiciel Cultibox, il vous suffit de suivre la même proc
 
 *Note:* il est théoriquement possible de repasser à une version antérieure, seulement le logiciel Cultibox ne le gère pas. Cela peut donc être fait à vos risques et péril et vous pourriez endommager votre installation actuelle: perte de vos programmes, logs..., erreur dans les bases SQL...
 
+
+= Ajout du dépôt APT Cultibox =
+
+Il vous est aussi possible d'ajouter un le dépôt APT Cultibox afin de profiter des mises à jour grâce au gestionnaire de commande APT. POur cela, rajoutez simplement la ligne suivant dans le fichier */etc/apt/source.list*:
+
+Pour un système 64 bits:
+
+{{{
+deb http://www.cultibox.fr/repository/amd64 binary/
+}}}
+
+
+Pour un système 32 bits:
+
+{{{
+deb http://www.cultibox.fr/repository/i386 binary/
+}}}
+
+
 = Désinstallation =
 
 Pour désinstaller le logiciel Cultibox, vous devez exécuter la commande suivante dans un terminal afin de s'assurer qu'aucun fichier de configuration ne restera après la désinstallation:
