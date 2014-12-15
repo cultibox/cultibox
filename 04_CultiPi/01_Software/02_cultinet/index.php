@@ -50,6 +50,9 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
     $wifi_ssid=find_config($net_config,"wlan0","wireless-essid","val");
 }
 
+
+if(strcmp("$wifi_ssid","cultipi_network")==0) $wifi_ssid="";
+
 ?>
 <!DOCTYPE HTML>
 <head>
@@ -221,12 +224,12 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
                 <td></td>
                 <td><?php echo __('ADDR_TYPE'); ?>:</td>
                 <td>
-                    <input type="radio" name="wifi_type" value="static" <?php if($wifi_static) echo 'checked'; ?>><?php echo __('MANUAL_IP_ADDR'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MANUAL_IP'); ?>" /><br /><input type="radio" name="wifi_type" value="dhcp" <?php if($wifi_dhcp) echo 'checked'; ?>><?php echo __('DYNAMIC_IP_ADDR'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_DYNAMIC_IP'); ?>" /></td>
+                    <input type="radio" name="wifi_type" value="static" <?php if(($wifi_static)&&(strcmp("$wifi_ssid","")!=0)) echo 'checked'; ?>><?php echo __('MANUAL_IP_ADDR'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_MANUAL_IP'); ?>" /><br /><input type="radio" name="wifi_type" value="dhcp" <?php if(($wifi_dhcp)||(strcmp("$wifi_ssid","")==0)) echo 'checked'; ?>><?php echo __('DYNAMIC_IP_ADDR'); ?><img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_DYNAMIC_IP'); ?>" /></td>
                 <td></td>   
            </tr>
 </table>
 
-<div id="manual_ip_wifi" <?php if(!$wifi_static) echo "style='display:none'"; ?>>
+<div id="manual_ip_wifi" <?php if((!$wifi_static)||(strcmp("$wifi_ssid","")==0)) echo "style='display:none'"; ?>>
  <table class="table_width">
         <tr>
             <td class="conf-marge-field-wifi"></td>
@@ -271,10 +274,14 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
 <div id="wifi_essid_list" style="display:none" title="<?php echo __('WIFI_ESSID_SCAN_TITLE'); ?>">
     <?php if(count($wifi_net_list)>0) { 
             echo '<p>'.__('WIFI_SCAN_SUBTITLE').'</p>';
-            $checked="checked";
+            $checked="";
             foreach($wifi_net_list as $essid) {
-                echo '<b>'.$essid.' : </b><input type="radio" name="wifi_essid" value="'.$essid.'" '.$checked.' /><br />';
-                $checked="";
+                $essid=trim($essid);
+                if((strcmp("$essid","cultipi_network")!=0)&&(strcmp("$essid","")!=0)) {
+                    if(strcmp("$essid","$wifi_ssid")==0) $checked="checked";
+                    echo '<b>'.$essid.' : </b><input type="radio" name="wifi_essid" value="'.$essid.'" '.$checked.' /><br />';
+                    $checked="";
+                }
             }
         }
     ?>
