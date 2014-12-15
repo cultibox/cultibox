@@ -128,7 +128,7 @@ if(strcmp("$wifi_ssid","cultipi_network")==0) $wifi_ssid="";
 <table class="table_width">
     <tr>
         <td class="conf-marge"></td>
-        <td class="conf-title"><?php echo __('WIRE_CONF'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php if(strcmp("$eth_phy","")==0) { echo __('NO_IFACE_FOUND'); } else { echo __('PHY_ADDR').": ".strtoupper($eth_phy); } ?>" /></td>
+        <td class="conf-title"><label class="subsub_title"><?php echo __('WIRE_CONF'); ?>:</label><img src="main/libs/img/infos.png" alt="" title="<?php if(strcmp("$eth_phy","")==0) { echo __('NO_IFACE_FOUND'); } else { echo __('PHY_ADDR').": ".strtoupper($eth_phy); } ?>" /></td>
         <td class="conf-field">
             <select name="activ_wire" id="activ_wire" <?php if(strcmp("$eth_phy","")==0) { echo " disabled"; } ?>>
             <option value="True" <?php if($wire_enable) echo "selected"; ?>><?php echo __('ACTIVATED'); ?></option>
@@ -165,7 +165,7 @@ if(strcmp("$wifi_ssid","cultipi_network")==0) $wifi_ssid="";
 <table class="table_width">
     <tr>
         <td class="conf-marge"></td>
-        <td class="conf-title"><?php echo __('WIRELESS_CONF'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php if(strcmp("$wlan_phy","")==0) { echo __('NO_IFACE_FOUND'); } else { echo __('PHY_ADDR').": ".strtoupper($wlan_phy); } ?>" /></td>
+        <td class="conf-title"><label class="subsub_title"><?php echo __('WIRELESS_CONF'); ?>:</label><img src="main/libs/img/infos.png" alt="" title="<?php if(strcmp("$wlan_phy","")==0) { echo __('NO_IFACE_FOUND'); } else { echo __('PHY_ADDR').": ".strtoupper($wlan_phy); } ?>" /></td>
         <td>
             <select name="activ_wifi" id="activ_wifi">
                 <option value="True" <?php if(strcmp("$wifi_enable","True")==0) echo "selected"; ?>><?php echo __('ACTIVATED'); ?></option>

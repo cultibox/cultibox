@@ -39,6 +39,11 @@
     font-style: italic;
 }
 
+.subsub_title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
 
 td { font-size: 14px; }
 
@@ -52,7 +57,7 @@ td.conf-marge {
 }
 
 td.conf-title {
-    width:17%;
+    width:22%;
 }
 
 td.conf-marge-field {
