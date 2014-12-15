@@ -9,13 +9,14 @@ function usage {
             echo "                      cultipi <version> ?jenkins?"
             echo "                      cultinet <version> ?jenkins?"
             echo "                      cultipi <version> ?jenkins?"
+            echo "                      apt-gen"
             echo "                      clean"
             exit 1
 }
 
 
 #Print usage informations if a parameter is missing
-if [ "$2" == "" ] && [ "$1" != "clean" ]; then
+if [ "$2" == "" ] && [ "$1" != "clean" ] && [ "$1" != "apt-gen" ]; then
     usage
 fi
 
@@ -45,6 +46,7 @@ case "$1" in
            cp -R ../../../04_CultiPi/01_Software/01_cultiPi/serverPlugUpdate ../01_src/01_xampp/cultipi/opt/cultipi/
            cp -R ../../../04_CultiPi/02_conf/01_defaultConf_RPi  ../01_src/01_xampp/cultipi/etc/cultipi/00_defaultConf
            cp -R ../../../04_CultiPi/02_conf/conf.xml  ../01_src/01_xampp/cultipi/etc/cultipi/
+           sed -i "s/00_defaultConf_Win/00_defaultConf/g" ../01_src/01_xampp/cultipi/etc/cultipi/conf.xml
 
            cp ../../../04_CultiPi/01_Software/01_cultiPi/cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
            cp ../../../04_CultiPi/01_Software/01_cultiPi/cultipi_service/etc/cron.daily/cultipi ../01_src/01_xampp/cultipi/etc/cron.daily/
@@ -63,7 +65,7 @@ case "$1" in
 
            mkdir -p ../01_src/01_xampp/cultinet/var/www
 
-           cp -R ../../../04_CultiPi/01_Software/02_cultinet ../01_src/01_xampp/cultinet/var/www
+           cp -R ../../../04_CultiPi/01_Software/02_cultinet ../01_src/01_xampp/cultinet/var/www/cultinet
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultinet/DEBIAN/control
 
@@ -110,6 +112,21 @@ EOF
 
            mv cultibox.deb ../../05_cultipi/Output/cultibox-armhf_`echo $VERSION`.deb
       ;;  
+      "apt-gen")
+           cultipi="`ls -t Output/cultipi*|head -1`"
+           cp $cultipi repository/binary/
+          
+           cultibox="`ls -t Output/cultibox*|head -1`"
+           cp $cultibox repository/binary/
+
+           cultinet="`ls -t Output/cultinet*|head -1`"
+           cp $cultinet repository/binary/
+
+           cd repository
+           dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz
+
+           rm binary/culti*.deb
+      ;;
       "clean")
             rm -Rf ../01_src/01_xampp/*
       ;;
