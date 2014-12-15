@@ -37,16 +37,15 @@ case "$1" in
            mkdir -p ../01_src/01_xampp/cultipi/etc/init.d
            mkdir -p ../01_src/01_xampp/cultipi/etc/cultipi
 
-           cp -R ../../../04_CultiPi/01_Software/cultiPi ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/01_Software/lib ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/01_Software/serverAcqSensor ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/01_Software/serverI2C ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/01_Software/serverLog ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/01_Software/serverPlugUpdate ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/02_conf/00_defaultConf  ../01_src/01_xampp/cultipi/etc/cultipi/
+           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/cultiPi ../01_src/01_xampp/cultipi/opt/cultipi/
+           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/lib ../01_src/01_xampp/cultipi/opt/cultipi/
+           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/serverAcqSensor ../01_src/01_xampp/cultipi/opt/cultipi/
+           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/serverLog ../01_src/01_xampp/cultipi/opt/cultipi/
+           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/serverPlugUpdate ../01_src/01_xampp/cultipi/opt/cultipi/
+           cp -R ../../../04_CultiPi/02_conf/01_defaultConf_RPi  ../01_src/01_xampp/cultipi/etc/cultipi/00_defaultConf
            cp -R ../../../04_CultiPi/02_conf/conf.xml  ../01_src/01_xampp/cultipi/etc/cultipi/
 
-           cp ../../../04_CultiPi/01_Software/cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
+           cp ../../../04_CultiPi/01_Software/01_cultiPi/cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultipi/DEBIAN/control
            find ./../01_src/01_xampp/cultipi/ -name ".svn"|xargs rm -Rf 
@@ -61,7 +60,7 @@ case "$1" in
 
            mkdir -p ../01_src/01_xampp/cultinet/var/www
 
-           cp -R ../../../04_CultiPi/01_Software/cultinet ../01_src/01_xampp/cultinet/var/www
+           cp -R ../../../04_CultiPi/01_Software/02_cultinet ../01_src/01_xampp/cultinet/var/www
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultinet/DEBIAN/control
 
