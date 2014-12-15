@@ -116,7 +116,7 @@ Pour mettre à jour le logiciel Cultibox, il vous suffit de suivre la même proc
 
 = Ajout du dépôt APT Cultibox =
 
-Il vous est aussi possible d'ajouter un le dépôt APT Cultibox afin de profiter des mises à jour grâce au gestionnaire de commande APT. POur cela, rajoutez simplement la ligne suivant dans le fichier */etc/apt/source.list*:
+Il vous est aussi possible d'ajouter le dépôt APT Cultibox afin de profiter des mises à jour grâce au gestionnaire de paquets APT. Pour cela, rajoutez simplement la ligne suivante dans le fichier */etc/apt/source.list*:
 
 Pour un système 64 bits:
 
@@ -130,6 +130,15 @@ Pour un système 32 bits:
 {{{
 deb http://www.cultibox.fr/repository/i386 binary/
 }}}
+
+En lançant la commande suivante, vous mettrez à jur la liste des paquets disponibles:
+
+{{{
+apt-get update
+}}}
+
+
+Vous pourrez ensuite profiter des fonctionnalités des commandes APT.
 
 
 = Désinstallation =
