@@ -1,0 +1,291 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+La procédure suivante permet d'installer manuellement un système cultipi sur un Raspbery Pi fraîchement acquis.
+
+
+= Installation et personnalisation du système de base =
+
+* Télécharger l'image RAspbian de base qui servira de système à la Cultipi: 
+
+http://files2.linuxsystems.it/raspbian_wheezy_20140726.img.7z
+
+* Pour installer l'image à partir d'un système LInux:
+
+* Installation - sur device pas partition + umount SD:
+	7za x raspbian_wheezy_20130923.img.7z
+	dd bs=1M if=raspbian_wheezy_20130923.img of=/dev/sdX
+* Redimenssionner les partitions - swap à la fin
+* Configuration adresse mac free puis SSH :  b8:27:eb:4d:37:db 
+* Personnalisation:
+	apt-get update
+	apt-get upgrade
+	dpkg-reconfigure locales (fr et en UTF8)
+	apt-get install localepurge
+	apt-get install sudo
+	adduser cultipi
+	vi /etc/hostname ==> hostname: cultipi
+	vi /etc/hosts	==> 127.0.0.1 localhost cultipi
+	visudo /etc/sudoers ==> cultipi ALL=(ALL:ALL) ALL
+	dpkg-reconfigure tzdata => Europe/Paris
+	apt-get install vim
+	vi ~/.vimrc ===> aouter :syntax on aouter alias vi='vim' dans ~/.bashrc
+	apt-get -y remove --purge rsyslog
+	apt-get -y install inetutils-syslogd
+	apt-get install i2c-tools
+--------------------------
+	
+* Optimisation du raspberry:
+		vi /boot/config.txt ==> ajouter gpu_mem=16 pour donner le max de mémoire au CPU
+
+		Overcloaking possible, options ici: http://elinux.org/RPiconfig
+
+		sed -i '/[2-6]:23:respawn:\/sbin\/getty 38400 tty[2-6]/s%^%#%g' /etc/inittab
+		vi /etc/sysctl.d/disable_ipv6.conf  ==> disble ipv6: net.ipv6.conf.all.disable_ipv6=1
+		sudo vi /etc/modprobe.d/fbdev-blacklist.conf ==> aouter ipv6 pour le désactiver
+		sudo sed -i '/::/s%^%#%g' /etc/hosts
+		reboot
+		sudo vi /boot/config.txt ===> aouter ==> arm_freq=800   pour overclocking
+		sudo sed -i 's/deadline/noop/g' /boot/cmdline.txt
+		
+		
+		sudo service inetutils-syslogd stop
+		
+		for file in /var/log/*.log /var/log/mail.* /var/log/debug /var/log/syslog; do [ -f "$file" ] && rm -f "$file"; done
+		for dir in fsck news; do [ -d "/var/log/$dir" ] && rm -rf "/var/log/$dir"; done
+		echo -e "*.*;mail.none;cron.none\t -/var/log/messages\ncron.*\t -/var/log/cron\nmail.*\t -/var/log/mail" > /etc/syslog.conf
+		mkdir -p /etc/logrotate.d
+		echo -e "/var/log/cron\n/var/log/mail\n/var/log/messages {\n\trotate 4\n\tweekly\n\tmissingok\n\tnotifempty\n\tcompress\n\tsharedscripts\n\tpostrotate\n\t/etc/init.d/inetutils-syslogd reload >/dev/null\n\tendscript\n}" > /etc/logrotate.d/inetutils-syslogd
+		service inetutils-syslogd start
+
+
+
+issue de https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
+
+
+
+* Sauvegarde de l'image:
+	sudo dd bs=4M if=/dev/mmcblk0 | gzip > ~/cultipi-`date +%d%m%y`.dd.gz   ==> après umount
+	
+
+* Installation lighttpd et php:
+	sudo apt-get -y install lighttpd
+	sudo apt-get -y install php5-common php5-cgi php5 php-apc => php_info pour regarder
+	sudo lighttpd-enable-mod fastcgi-php
+	sudo /etc/init.d/lighttpd force-reload 
+	rm /var/www/index.lighttpd.html
+	
+	-----------------------------
+	mkdir -p /etc/lighttpd/ssl
+	openssl req -new -x509 -keyout cultipi.pem -out server.pem -days 365 -nodes
+	root@cultipi:/etc/lighttpd/ssl# chmod -R 600 /etc/lighttpd/ssl
+
+
+	vi /etc/lighttpd/lighttpd.conf ==>
+
+$SERVER["socket"] == ":443" {
+        ssl.engine = "enable"
+        ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem"
+}
+
+
+
+server.modules = (
+    "mod_access",
+    "mod_alias",
+    "mod_compress",
+    "mod_redirect",
+#       "mod_rewrite",
+)
+
+server.document-root        = "/var/www"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.username             = "www-data"
+server.groupname            = "www-data"
+server.port                 = 80
+
+
+index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.assign.pl"
+include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
+
+$HTTP["scheme"] == "http" {
+    # capture vhost name with regex conditiona -> %0 in redirect pattern
+    # must be the most inner block to the redirect rule
+    $HTTP["host"] =~ ".*" {
+        url.redirect = (".*" => "https://%0$0")
+    }
+}
+
+$SERVER["socket"] == ":443" {
+        ssl.engine = "enable"
+        ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem"
+}
+
+
+
+
+
+	force-reload et restart
+
+* Installation Mysql: 
+	sudo apt-get install mysql-server php5-mysql    => password cultibox
+	vi /etc/mysql/my.cnf ==> changer port 3891
+
+
+
+
+
+
+* Configuration du wifi:
+		editer /etc/network/interface
+		
+auto lo
+iface lo inet loopback
+
+allow-hotplug eth0
+iface eth0 inet dhcp
+
+
+allow-hotplug wlan0
+auto wlan0
+iface wlan0 inet static
+    address 172.16.0.100
+    netmask 255.255.255.0
+    wireless-channel 4
+    wireless-essid cultipi_net
+    wireless-mode ad-hoc
+
+
+
+apt-get install udhcpd
+
+vi /etc/default/udhcpd
+
+
+	
+# Comment the following line to enable
+DHCPD_ENABLED="yes"
+
+# Options to pass to busybox' udhcpd.
+#
+# -S    Log to syslog
+# -f    run in foreground
+
+DHCPD_OPTS="-S"
+~                    
+
+
+
+
+
+
+vi /etc/udhcpd.conf
+
+# The start and end of the IP lease block
+
+start       172.16.0.102  #default: 192.168.0.20
+end         172.16.0.254  #default: 192.168.0.254
+
+
+# The interface that udhcpd will use
+
+interface   wlan0       #default: eth0
+
+
+# The maximim number of leases (includes addressesd reserved
+# by OFFER's, DECLINE's, and ARP conficts
+
+#max_leases 254     #default: 254
+
+
+# If remaining is true (default), udhcpd will store the time
+# remaining for each lease in the udhcpd leases file. This is
+# for embedded systems that cannot keep time between reboots.
+# If you set remaining to no, the absolute time that the lease
+# expires at will be stored in the dhcpd.leases file.
+
+remaining   yes     #default: yes
+
+#Examles
+#opt    dns 192.168.10.2 192.168.10.10
+option  subnet  255.255.255.0
+opt router  172.16.0.100
+#opt    wins    192.168.10.10
+#option dns 129.219.13.81   # appened to above DNS servers for a total of 3
+option  domain  local
+option  lease   864000      # 10 days of s
+
+
+
+ifconfig wlan0 up
+
+* Clean:
+	sudo apt-get autoremove
+	sudo apt-get clean
+
+
+
+
+
+
+sudo apt-get install libnss-mdns
+
+
+
+
+vérifier cache-control lighttpd + options avancé de overcloaking
+
+
+---------------------------------------------
+	mkdir -p /etc/lighttpd/certs
+	openssl req -new -x509 -keyout lighttpd.pem -out lighttpd.pem -days 3650 -nodes
+	chmod 400 lighttpd.pem
+	vi /etc/lightttpd/lighttpd.conf ==> ajouter: 
+			
+$SERVER["socket"] == ":443" {
+  ssl.engine = "enable" 
+  ssl.pemfile = "/etc/lighttpd/certs/lighttpd.pem" 
+}
+
+
+
+rpi-update
+
+
+root@cultipi:~# cat /etc/cron.daily/cultibpi 
+#!/bin/bash
+
+if [ -d /var/cache/lighttpd/compress/cultibox ]; then
+    rm -Rf /var/cache/lighttpd/compress/cultibox
+fi
+
+if [ -d /var/cache/lighttpd/compress/cultinet ]; then
+    rm -Rf /var/cache/lighttpd/compress/cultinet
+fi
+
+
+
+
+root@cultipi:~# cat /etc/sudoers
+
+cultipi ALL=(ALL:ALL) ALL
+www-data ALL = (root) NOPASSWD: /sbin/ifconfig
+www-data ALL = (root) NOPASSWD: /sbin/iwlist
+www-data ALL = (root) NOPASSWD: /sbin/ifup
+www-data ALL = (root) NOPASSWD: /bin/mv 
+www-data ALL = (root) NOPASSWD: /bin/chmod
+www-data ALL = (root) NOPASSWD: /bin/cp
+www-data ALL = (root) NOPASSWD: /etc/init.d/networking
+
