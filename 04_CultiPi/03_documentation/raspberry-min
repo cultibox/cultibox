@@ -147,8 +147,8 @@ iface eth0 inet dhcp
 allow-hotplug wlan0
 auto wlan0
 iface wlan0 inet static
-    address 10.0.0.100
-    netmask 255.0.0.0
+    address 172.16.0.100
+    netmask 255.255.255.0
     wireless-channel 4
     wireless-essid cultipi_net
     wireless-mode ad-hoc
@@ -181,8 +181,8 @@ vi /etc/udhcpd.conf
 
 # The start and end of the IP lease block
 
-start       10.0.0.102  #default: 192.168.0.20
-end         10.0.0.254  #default: 192.168.0.254
+start       172.16.0.102  #default: 192.168.0.20
+end         172.16.0.254  #default: 192.168.0.254
 
 
 # The interface that udhcpd will use
@@ -206,8 +206,8 @@ remaining   yes     #default: yes
 
 #Examles
 #opt    dns 192.168.10.2 192.168.10.10
-option  subnet  255.0.0.0
-opt router  10.0.0.100
+option  subnet  255.255.255.0
+opt router  172.16.0.100
 #opt    wins    192.168.10.10
 #option dns 129.219.13.81   # appened to above DNS servers for a total of 3
 option  domain  local
