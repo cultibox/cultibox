@@ -6,7 +6,7 @@ proc load_plugXX {} {
 
     set plugVFileName "plugv"
     set fid [open [file join $::confPath prg plgidx] r]
-    while {[eof $fid] != -1 } {
+    while {[eof $fid] != 1 } {
         gets $fid UneLigne
         if {[string range $UneLigne 0 3] == "[rtc_readDay][rtc_readMonth]"} {
             set plugVFileName "plu[string range $UneLigne 4 5]"
@@ -22,7 +22,7 @@ proc load_plugXX {} {
     # On ne mit pas la première ligne qui ne sert à rien
     gets $fid UneLigne
     
-    while {[eof $fid] != -1 } {
+    while {[eof $fid] != 1 } {
         gets $fid UneLigne
         if {$UneLigne != ""} {
             set time [expr [string range $UneLigne 0 4] * 1]
@@ -88,10 +88,11 @@ proc emeteur_init {} {
 proc getsProgramm {rtc_readSecondsOfTheDay {updateNextTimeToChange 0}} {
     set prg ""
     set updateNextTimeToChangeIsUpdated 0
+    ::piLog::log [clock milliseconds] "info" "changes [lsort -integer [array names ::programm]]"
     foreach timeS [lsort -integer [array names ::programm]] {
         if {$rtc_readSecondsOfTheDay >= $timeS && $prg == ""} {
             set prg $::programm($timeS)
-        } elseif {$updateNextTimeToChangeIsUpdated == 0 && $updateNextTimeToChange != 0} {
+        } elseif {$prg != "" && $updateNextTimeToChangeIsUpdated == 0 && $updateNextTimeToChange != 0} {
             set updateNextTimeToChangeIsUpdated 1
             set ::nextTimeToChange $timeS
             break
