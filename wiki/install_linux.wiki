@@ -131,7 +131,7 @@ Pour un système 32 bits:
 deb http://www.cultibox.fr/repository/i386 binary/
 }}}
 
-En lançant la commande suivante, vous mettrez à jur la liste des paquets disponibles:
+En lançant la commande suivante, vous mettrez à jour la liste des paquets disponibles:
 
 {{{
 apt-get update
