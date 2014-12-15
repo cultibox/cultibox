@@ -82,21 +82,32 @@ proc emeteur_init {} {
     set ::nextTimeToChange 0
     set ::uc8_regulationIsDone 0
     set ::uc8_alarm 0
+    set ::actualProgramm ""
     
 }
 
 proc getsProgramm {rtc_readSecondsOfTheDay {updateNextTimeToChange 0}} {
     set prg ""
-    set updateNextTimeToChangeIsUpdated 0
-    ::piLog::log [clock milliseconds] "info" "changes [lsort -integer [array names ::programm]]"
+    set lastProgramm ""
+
     foreach timeS [lsort -integer [array names ::programm]] {
-        if {$rtc_readSecondsOfTheDay >= $timeS && $prg == ""} {
-            set prg $::programm($timeS)
-        } elseif {$prg != "" && $updateNextTimeToChangeIsUpdated == 0 && $updateNextTimeToChange != 0} {
-            set updateNextTimeToChangeIsUpdated 1
-            set ::nextTimeToChange $timeS
+    
+        # On cherche l'élément le dernier élément inférieur à rtc_readSecondsOfTheDay
+        if {$timeS > $rtc_readSecondsOfTheDay} {
+            
+            set prg $lastProgramm
+
+            # Si besoin, on sauvegarde le prochain élément à envoyer
+            if {$updateNextTimeToChange != 0} {
+                set ::nextTimeToChange $timeS
+            }
+            
             break
+
         }
+        
+        set lastProgramm $::programm($timeS)
+        
     }
     
     return $prg
@@ -133,6 +144,7 @@ proc emeteur_update_loop {} {
         load_plugXX
 
         set programmeToSend [getsProgramm $uc24_seconds "updatenextTimeToChange"]
+        set ::actualProgramm $programmeToSend
 
         for {set i 1} {$i <= $::EMETEUR_NB_PLUG_MAX} {incr i} {
             updatePlug $i
@@ -146,6 +158,7 @@ proc emeteur_update_loop {} {
     } elseif {$uc24_seconds >= $::nextTimeToChange} {
 
         set programmeToSend [getsProgramm $uc24_seconds "updatenextTimeToChange"]
+        set ::actualProgramm $programmeToSend
 
         for {set i 1} {$i <= $::EMETEUR_NB_PLUG_MAX} {incr i} {
             updatePlug $i
@@ -180,7 +193,7 @@ proc emeteur_update_loop {} {
 
 proc emeteur_regulation {plugNumber} {
 
-    set programmeToSend [getsProgramm [rtc_readSecondsOfTheDay]]
+    set programmeToSend $::actualProgramm
 
     # On cherche le programme de la prise (attention les prises démarre à 1 !)
     set plgPrgm [lindex $programmeToSend [expr $plugNumber - 1]]
@@ -200,7 +213,7 @@ proc emeteur_regulation {plugNumber} {
 proc updatePlug {plugNumber} {
 
     # retourne l'ensemble du programme pour toutes les prises
-    set programmeToSend [getsProgramm [rtc_readSecondsOfTheDay]]
+    set programmeToSend $::actualProgramm
     
     # On cherche le programme de la prise (attention les prises démarre à 1 !)
     set plgPrgm [lindex $programmeToSend [expr $plugNumber - 1]]

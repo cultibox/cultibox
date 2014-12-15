@@ -112,15 +112,17 @@ foreach moduleXML $confStart(start) {
 }
 
 # On attend que tous les modules ait démarré
-after 5000
-foreach moduleXML $confStart(start) {
-    set moduleName [::piXML::searchOptionInElement name $moduleXML]
-    if {$moduleName != "serverLog"} {
-        # on lui demande son PID
-        # Trame standard : [FROM] [INDEX] [commande] [argument]
-        ::piServer::sendToServer $confStart($moduleName,port) "$port(server) [incr ::TrameIndex] pid"
+proc askPid {} {
+    foreach moduleXML $::confStart(start) {
+        set moduleName [::piXML::searchOptionInElement name $moduleXML]
+        if {$moduleName != "serverLog"} {
+            # on lui demande son PID
+            # Trame standard : [FROM] [INDEX] [commande] [argument]
+            ::piServer::sendToServer $::confStart($moduleName,port) "$::port(server) [incr ::TrameIndex] pid"
+        }
     }
 }
+after 5000 askPid
 
 proc updateRepere {} {
 
