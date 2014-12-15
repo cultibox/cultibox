@@ -10,3 +10,7 @@ if [ ! -d /home/cultipi/logs ]; then
     chown cultipi:cultipi /home/cultipi/logs
 fi
 
+if [ -f /etc/cron.daily/cultipi ]; then
+    chmod +x /etc/cron.daily/cultipi
+fi
+
