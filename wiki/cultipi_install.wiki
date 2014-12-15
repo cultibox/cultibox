@@ -289,3 +289,11 @@ www-data ALL = (root) NOPASSWD: /bin/chmod
 www-data ALL = (root) NOPASSWD: /bin/cp
 www-data ALL = (root) NOPASSWD: /etc/init.d/networking
 
+
+i2c-dev
+
+
+compilation i2c:
+
+make
+make install du dépôt
