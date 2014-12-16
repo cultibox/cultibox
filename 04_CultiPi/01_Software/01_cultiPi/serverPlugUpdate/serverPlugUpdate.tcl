@@ -6,7 +6,6 @@ set port(serverPlugUpdate)  [lindex $argv 0]
 set confXML                 [lindex $argv 1]
 set port(serverLogs)        [lindex $argv 2]
 set port(serverCultiPi)     [lindex $argv 3]
-set port(serverAcqSensor)   ""
 
 # Global var for regulation
 set regul(alarme) 0
@@ -17,10 +16,13 @@ package require piLog
 package require piServer
 package require piTools
 
-# Source extern files
+# Chargement des fichiers externes
 source [file join $rootDir serverPlugUpdate src emeteur.tcl]
 source [file join $rootDir serverPlugUpdate src pluga.tcl]
 source [file join $rootDir serverPlugUpdate src module_wireless.tcl]
+source [file join $rootDir serverPlugUpdate src sensor.tcl]
+source [file join $rootDir serverPlugUpdate src serveurMessage.tcl]
+source [file join $rootDir serverPlugUpdate src regulation.tcl]
 
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
@@ -39,74 +41,6 @@ proc bgerror {message} {
 
 # Load server
 ::piLog::log [clock millisecond] "info" "starting serveur"
-proc messageGestion {message} {
-
-    # Trame standard : [FROM] [INDEX] [commande] [argument]
-    set serverForResponse   [::piTools::lindexRobust $message 0]
-    set indexForResponse    [::piTools::lindexRobust $message 1]
-    set commande            [::piTools::lindexRobust $message 2]
-
-    switch ${commande} {
-        "stop" {
-            ::piLog::log [clock milliseconds] "info" "Asked stop"
-            stopIt
-        }
-        "pid" {
-            ::piLog::log [clock milliseconds] "info" "Asked pid"
-            ::piServer::sendToServer $serverForResponse "$::port(serverPlugUpdate) $indexForResponse pid serverPlugUpdate [pid]"
-        }
-        "getRepere" {
-            # Le repere est le numéro de prise
-            set repere [::piTools::lindexRobust $message 3]
-            set parametre [::piTools::lindexRobust $message 4]
-            ::piLog::log [clock milliseconds] "info" "Asked getRepere $repere - parametre $parametre"
-            # Les parametres d'un repere : nom Valeur 
-            
-            if {[array names ::plug -exact "$repere,$parametre"] != ""} {
-                ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere $::plug($repere,$parametre)"
-                ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $::plug($repere,$parametre)"
-            } else {
-                ::piLog::log [clock milliseconds] "error" "Asked getRepere $repere - parametre $parametre not recognize"
-            }
-        }
-        default {
-            # Si on reçoit le retour d'une commande, le nom du serveur est le notre
-            if {$serverForResponse == $::port(serverPlugUpdate)} {
-            
-                if {[array names ::TrameSended -exact $indexForResponse] != ""} {
-                    
-                    switch [lindex $::TrameSended($indexForResponse) 0] {
-                        "getPort" {
-                            set ::port([::piTools::lindexRobust $message 3]) [::piTools::lindexRobust $message 4]
-                            ::piLog::log [clock milliseconds] "info" "getPort response : module [::piTools::lindexRobust $message 3] port [::piTools::lindexRobust $message 4]"
-                        }
-                        "update_plug_value" {
-                            set plugumber [lindex $::TrameSended($indexForResponse) 1]
-                        
-                            set ::plug($plugumber,updateStatus) $commande
-                            set ::plug($plugumber,updateStatusComment) ${message}
-                        
-                            ::piLog::log [clock milliseconds] "info" "I2C Update plug $plugumber updateStatus : -$commande- updateStatusComment : -${message}-"
-                        
-                            # On supprime cette donnée de la mémoire
-                            unset ::TrameSended($indexForResponse)
-                        }
-                        default {
-                            ::piLog::log [clock milliseconds] "erreur" "Not recognize keyword response -${message}-"
-                        }                    
-                    }
-                    
-                } else {
-                    ::piLog::log [clock milliseconds] "erreur" "Not requested response -${message}-"
-                }
-            
-                
-            } else {
-                ::piLog::log [clock milliseconds] "erreur" "Received -${message}- but not interpreted"
-            }
-        }
-    }
-}
 ::piServer::start messageGestion $port(serverPlugUpdate)
 ::piLog::log [clock millisecond] "info" "serveur is started"
 
@@ -133,7 +67,7 @@ while {$status == "retry_needed"} {
 # Parse pluga filename and send adress to module if needed
 set nbPlug [readPluga $plugaFileName]
 
-# Load plug parameters
+# Chargement des paramètres de chaque prise
 for {set i 1} {$i < $nbPlug} {incr i} {
 
     set plugXXFilename [file join $confPath plg "plug[string map {" " "0"} [format %2.f $i]]"]
@@ -141,35 +75,42 @@ for {set i 1} {$i < $nbPlug} {incr i} {
     # On vérifie la présence du fichier
     if {[file exists $plugXXFilename] != 1} {
         ::piLog::log [clock milliseconds] "error" "File $plugXXFilename does not exists"
-        break;
     } else {
-        ::piLog::log [clock milliseconds] "info" "reading plugXX $plugXXFilename"
+        ::piLog::log [clock milliseconds] "info" "reading $i plugXX $plugXXFilename"
+        set plug($i,lastValue) "" 
         set fid [open $plugXXFilename r]
         while {[eof $fid] != 1} {
             gets $fid OneLine
             switch [string range $OneLine 0 3] {
                 "REG:" {
-                    set plug($nbPlug,REG,type) [string index $OneLine 4] 
-                    set plug($nbPlug,REG,sens) [string index $OneLine 5]
-                    set plug($nbPlug,REG,precision) [expr [string range $OneLine 6 8] / 10.0]
+                    set plug($i,REG,type) [string index $OneLine 4] 
+                    set plug($i,REG,sens) [string index $OneLine 5]
+                    set plug($i,REG,precision) [expr [string range $OneLine 6 8] / 10.0]
                 }
                 "SEC:" {
-                    set plug($nbPlug,SEC,type) [string index $OneLine 4] 
-                    set plug($nbPlug,SEC,sens) [string index $OneLine 5]
-                    set plug($nbPlug,SEC,etat_prise) [string index $OneLine 6]
-                    set plug($nbPlug,SEC,value) [expr [string range $OneLine 7 9] / 10.0]
+                    set plug($i,SEC,type) [string index $OneLine 4] 
+                    set plug($i,SEC,sens) [string index $OneLine 5]
+                    set plug($i,SEC,etat_prise) [string index $OneLine 6]
+                    set plug($i,SEC,value) [expr [string range $OneLine 7 9] / 10.0]
                 }
                 "SEN:" {
-                    set plug($nbPlug,calcul,type) [string index $OneLine 4] 
-                    set plug($nbPlug,calcul,capteur_1) [string index $OneLine 5]
-                    set plug($nbPlug,calcul,capteur_2) [string index $OneLine 6] 
-                    set plug($nbPlug,calcul,capteur_3) [string index $OneLine 7] 
-                    set plug($nbPlug,calcul,capteur_4) [string index $OneLine 8] 
-                    set plug($nbPlug,calcul,capteur_5) [string index $OneLine 9] 
-                    set plug($nbPlug,calcul,capteur_6) [string index $OneLine 10] 
+                    set type  [string index $OneLine 4] 
+                    if {$type != "M" && $type != "I" && $type != "A"} {
+                        ::piLog::log [clock milliseconds] "error" "Plug $i : type of compute -$type- doesnot exist (replaced by M)"
+                        set type "M"
+                    }
+                    set plug($i,calcul,type) $type
+                    set plug($i,calcul,capteur_1) [string index $OneLine 5]
+                    set plug($i,calcul,capteur_2) [string index $OneLine 6]
+                    set plug($i,calcul,capteur_3) [string index $OneLine 7] 
+                    set plug($i,calcul,capteur_4) [string index $OneLine 8]
+                    set plug($i,calcul,capteur_5) [string index $OneLine 9]
+                    set plug($i,calcul,capteur_6) [string index $OneLine 10]
                 }
-                "STOL:" {
-                    set plug($nbPlug,SEC,precision) [expr [string range $OneLine 5 7] / 10.0]
+                "STOL" {
+                    set plug($i,SEC,precision) [expr [string range $OneLine 5 7] / 10.0]
+                }
+                default {
                 }
             }
         }
@@ -182,14 +123,17 @@ for {set i 1} {$i < $nbPlug} {incr i} {
 ::piLog::log [clock milliseconds] "info" "emeteur_init"
 emeteur_init
 
-# On demande le numéro de port du lecteur de capteur
-::piLog::log [clock milliseconds] "info" "ask getPort serverAcqSensor"
-::piServer::sendToServer $::port(serverCultiPi) "$::port(serverPlugUpdate) [incr TrameIndex] getPort serverAcqSensor"
-set ::TrameSended($TrameIndex) "getPort serverAcqSensor"
+# Initialisation de la partie lecture capteur
+::piLog::log [clock milliseconds] "info" "::sensor::init"
+::sensor::init
 
 # Boucle de régulation
 ::piLog::log [clock milliseconds] "info" "emeteur_update_loop"
 emeteur_update_loop
+
+# Boucle de lecture des capteurs
+::piLog::log [clock milliseconds] "info" "::sensor::loop"
+::sensor::loop
 
 # Une fois la boucle de régulation démarrée , on peut activer le pilotage des prises
 ::wireless::start

@@ -2,7 +2,23 @@ set ::EMETEUR_NB_PLUG_MAX 16
 set ::EMETEUR_OFF_VALUE 0
 set ::EMETEUR_ON_VALUE 999
 
+proc emeteur_init {} {
+
+    set ::emeteur_actualDay ""
+    set ::c8_emeteurPlugFileName "plugv"
+    set ::nextTimeToChange 0
+    set ::uc8_regulationIsDone 0
+    set ::uc8_alarm 0
+    set ::actualProgramm ""
+
+}
+
 proc load_plugXX {} {
+
+    # On efface l'ancien vecteur s'il existe
+    if {[array exists ::programm]} {
+        array unset ::programm
+    }
 
     set plugVFileName "plugv"
     set fid [open [file join $::confPath prg plgidx] r]
@@ -75,17 +91,6 @@ proc rtc_readMonth {} {
     return [clock format [clock seconds] -format %m]
 }
 
-proc emeteur_init {} {
-
-    set ::emeteur_actualDay ""
-    set ::c8_emeteurPlugFileName "plugv"
-    set ::nextTimeToChange 0
-    set ::uc8_regulationIsDone 0
-    set ::uc8_alarm 0
-    set ::actualProgramm ""
-    
-}
-
 proc getsProgramm {rtc_readSecondsOfTheDay {updateNextTimeToChange 0}} {
     set prg ""
     set lastProgramm ""
@@ -155,7 +160,7 @@ proc emeteur_update_loop {} {
         # register day
         set ::emeteur_actualDay [rtc_readDay]
 
-    } elseif {$uc24_seconds >= $::nextTimeToChange} {
+    } elseif {$uc24_seconds >= $::nextTimeToChange && $uc24_seconds != 86399} {
 
         set programmeToSend [getsProgramm $uc24_seconds "updatenextTimeToChange"]
         set ::actualProgramm $programmeToSend
@@ -176,7 +181,10 @@ proc emeteur_update_loop {} {
             # update plug
             for {set i 1} {$i <= $::EMETEUR_NB_PLUG_MAX} {incr i} \
             {
-                emeteur_regulation $i
+                set plgPrgm [lindex $::actualProgramm [expr $i - 1]]
+                if {$plgPrgm != "on" && $plgPrgm != "off"} {
+                    emeteur_regulation $i $plgPrgm
+                }
             }
             set ::uc8_regulationIsDone 1
         }
@@ -191,24 +199,6 @@ proc emeteur_update_loop {} {
     
 }
 
-proc emeteur_regulation {plugNumber} {
-
-    set programmeToSend $::actualProgramm
-
-    # On cherche le programme de la prise (attention les prises démarre à 1 !)
-    set plgPrgm [lindex $programmeToSend [expr $plugNumber - 1]]
-    
-    if {$plgPrgm == ""} {
-        ::piLog::log [clock milliseconds] "error" "Plug $plugNumber programme is empty"
-    } elseif {$plgPrgm != "off" && $plgPrgm != "on"} {
-        ::piLog::log [clock milliseconds] "debug" "regulation plug $plugNumber programme $plgPrgm"
-
-        # On envoi la commande au module
-        #::wireless::setValue $plugNumber $plgPrgm
- 
-   }
-
-}
 
 proc updatePlug {plugNumber} {
 
@@ -222,7 +212,7 @@ proc updatePlug {plugNumber} {
         ::piLog::log [clock milliseconds] "error" "Plug $plugNumber programme is empty"
     } elseif {$plgPrgm != "off" && $plgPrgm != "on"} {
         # Si c'est de la régulation
-        emeteur_regulation $plugNumber 
+        emeteur_regulation $plugNumber $plgPrgm 
     } else {
         ::piLog::log [clock milliseconds] "info" "update plug $plugNumber with programm $plgPrgm"
         # On traduit on et off

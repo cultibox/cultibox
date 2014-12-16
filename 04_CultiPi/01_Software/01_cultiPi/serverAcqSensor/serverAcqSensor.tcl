@@ -6,6 +6,8 @@ set port(serverAcqSensor)   [lindex $argv 0]
 set confXML                 [lindex $argv 1]
 set port(serverLogs)        [lindex $argv 2]
 
+set debug 0
+
 # Global var for regulation
 set regul(alarme) 0
 
@@ -17,9 +19,13 @@ package require piTools
 
 # Source extern files
 source [file join $rootDir serverAcqSensor src adress_sensor.tcl]
+if {$debug == 1} {
+    source [file join $rootDir serverAcqSensor src simulator.tcl]
+}
 
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
+set SubscriptionIndex 0
 
 ::piLog::openLog $port(serverLogs) "serverAcqSensor"
 ::piLog::log [clock milliseconds] "info" "starting serverAcqSensor - PID : [pid]"
@@ -48,18 +54,49 @@ proc messageGestion {message} {
             ::piServer::sendToServer $serverForResponse "$::port(serverAcqSensor) $indexForResponse pid serverAcqSensor [pid]"
         }
         "getRepere" {
-            # Le repere est le numéro de prise
+            # Le repère est l'index des capteurs
             set repere [::piTools::lindexRobust $message 3]
-            set parametre [::piTools::lindexRobust $message 4]
-            ::piLog::log [clock milliseconds] "info" "Asked getRepere $repere - parametre $parametre"
+            ::piLog::log [clock milliseconds] "info" "Asked getRepere $repere"
             
             # Les parametres d'un repere : nom Valeur 
-            if {[array names ::sensor -exact "$repere,$parametre"] != ""} {
-                ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere $::sensor($repere,$parametre)"
-                ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $::sensor($repere,$parametre)"
+            if {[array names ::sensor -exact "$repere"] != ""} {
+                ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse _getRepere $::sensor($repere)"
+                ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse _getRepere $repere $::sensor($repere)"
             } else {
-                ::piLog::log [clock milliseconds] "error" "Asked getRepere $repere - parametre $parametre not recognize"
+                ::piLog::log [clock milliseconds] "error" "Asked getRepere $repere  not recognize"
             }
+        }
+        "subscription" {
+            # Le repère est l'index des capteurs
+            set repere [::piTools::lindexRobust $message 3]
+            set frequency [::piTools::lindexRobust $message 4]
+            
+            ::piLog::log [clock milliseconds] "info" "Subscription of $repere by $serverForResponse frequency $frequency"
+            
+            
+            set ::subscriptionVariable($::SubscriptionIndex) ""
+            
+            # On cré la proc associée
+            proc subscription${::SubscriptionIndex} {repere frequency SubscriptionIndex serverForResponse} {
+
+                set reponse $::sensor($repere)
+                if {$::sensor($repere) == ""} {
+                    set reponse "DEFCOM"
+                }
+            
+                # On envoi la nouvelle valeur uniquement si la valeur a changée
+                if {$::subscriptionVariable($SubscriptionIndex) != $reponse} {
+                    ::piServer::sendToServer $serverForResponse "$serverForResponse [incr ::TrameIndex] _subscription $repere $reponse"
+                    set ::subscriptionVariable($SubscriptionIndex) $reponse
+                }
+                
+                after $frequency "subscription${SubscriptionIndex} $repere $frequency $SubscriptionIndex $serverForResponse"
+            }
+            
+            # on la lance
+            subscription${::SubscriptionIndex} $repere $frequency $::SubscriptionIndex $serverForResponse
+            
+            incr ::SubscriptionIndex
         }
         default {
             # Si on reçoit le retour d'une commande, le nom du serveur est le notre
@@ -195,6 +232,7 @@ proc readSensors {} {
                     if {$RC != 0} {
                         set ::sensor($sensorType,$index,updateStatus) "DEFCOM"
                         set ::sensor($sensorType,$index,updateStatusComment) ${msg}
+                        set ::sensor($index,value,1) ""
                         ::piLog::log [clock milliseconds] "error" "default when reading valueHP of sensor $sensorType index $index (adress module : $moduleAdress - register $register) message:-$msg-"
                     } else {
                         set computedValue [expr ($valueHP * 256 + $valueLP) / 100.0]
@@ -225,6 +263,7 @@ proc readSensors {} {
                         if {$RC != 0} {
                             set ::sensor($sensorType,$index,updateStatus) "DEFCOM"
                             set ::sensor($sensorType,$index,updateStatusComment) ${msg}
+                            set ::sensor($index,value,2) ""
                             ::piLog::log [clock milliseconds] "error" "default when reading valueHP of sensor $sensorType index $index (@ $moduleAdress - reg $register) message:-$msg-"
                         } else {
                             set computedValue [expr ($valueHP * 256 + $valueLP) / 100.0]
