@@ -51,7 +51,7 @@ puts "CultiPi : start : serveurLog pathexe : $confStart(serverLog,pathexe)"
 set confStart(serverLog,path) [file join $rootDir [::piXML::searchOptionInElement path $confStart(serverLog)]]
 puts "CultiPi : start : serveurLog path : $confStart(serverLog,path)"
 set confStart(serverLog,xmlconf) [file join $fileName(cultiPi,confDir) [::piXML::searchOptionInElement xmlconf $confStart(serverLog)]]
-puts "CultiPi : start : serveurLog xmlconf : $confStart(serverLog,xmlconf)"
+puts "CultiPi : start : serveurLog xmlconf : $confStart(serverLog,xmlconf) , file exists ? [file exists $confStart(serverLog,xmlconf)]"
 set confStart(serverLog,waitAfterUS) [::piXML::searchOptionInElement waitAfterUS $confStart(serverLog)]
 puts "CultiPi : start : serveurLog waitAfterUS : $confStart(serverLog,waitAfterUS)"
 set confStart(serverLog,port) [::piXML::searchOptionInElement port $confStart(serverLog)]
@@ -97,7 +97,7 @@ foreach moduleXML $confStart(start) {
         set confStart($moduleName,path) [file join $rootDir [::piXML::searchOptionInElement path $moduleXML]]
         puts "CultiPi : start : $moduleName path : $confStart($moduleName,path)"
         set confStart($moduleName,xmlconf) [file join $fileName(cultiPi,confDir) [::piXML::searchOptionInElement xmlconf $moduleXML]]
-        puts "CultiPi : start : $moduleName xmlconf : $confStart($moduleName,xmlconf)"
+        puts "CultiPi : start : $moduleName xmlconf : $confStart($moduleName,xmlconf) , file exists ? [file exists $confStart($moduleName,xmlconf)]"
         set confStart($moduleName,waitAfterUS) [::piXML::searchOptionInElement waitAfterUS $moduleXML]
         puts "CultiPi : start : $moduleName waitAfterUS : $confStart($moduleName,waitAfterUS)"
         set confStart($moduleName,port) [::piXML::searchOptionInElement port $moduleXML]

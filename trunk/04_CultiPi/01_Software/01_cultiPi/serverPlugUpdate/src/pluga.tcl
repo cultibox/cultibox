@@ -16,6 +16,7 @@ proc readPluga {plugaFileName} {
         if {$OneLine != "" && $nbPlug != 0} {
         
             # Par défaut l'adresse est celle de l'émetteur
+            set ::plug($nbPlug,moduleType) "wirelessplug"
             set ::plug($nbPlug,adress) $OneLine
             set ::plug($nbPlug,moduleAdress) $::SLAVE_EMETOR_ADRESS
 
@@ -28,10 +29,11 @@ proc readPluga {plugaFileName} {
             if {$OneLine > 255} {
                 set ::plug($nbPlug,adress) [expr ($OneLine - 256) % 8]
                 set ::plug($nbPlug,moduleAdress) [expr 0x30 + ($OneLine - 256) / 8]
+                set ::plug($nbPlug,moduleType) "other"
             }
             
             # On transmet au module de pilotage sans fils les adresses
-            if {$::plug($nbPlug,moduleAdress) == $::SLAVE_EMETOR_ADRESS} {
+            if {$::plug($nbPlug,moduleType) == "wirelessplug"} {
                 ::wireless::setAdress $nbPlug $::plug($nbPlug,adress)
             }
             

@@ -1,0 +1,89 @@
+
+proc messageGestion {message} {
+
+    # Trame standard : [FROM] [INDEX] [commande] [argument]
+    set serverForResponse   [::piTools::lindexRobust $message 0]
+    set indexForResponse    [::piTools::lindexRobust $message 1]
+    set commande            [::piTools::lindexRobust $message 2]
+
+    switch ${commande} {
+        "stop" {
+            ::piLog::log [clock milliseconds] "info" "Asked stop"
+            stopIt
+        }
+        "pid" {
+            ::piLog::log [clock milliseconds] "info" "Asked pid"
+            ::piServer::sendToServer $serverForResponse "$::port(serverPlugUpdate) $indexForResponse pid serverPlugUpdate [pid]"
+        }
+        "getRepere" {
+            # Le repere est le numéro de prise
+            set repere [::piTools::lindexRobust $message 3]
+            set parametre [::piTools::lindexRobust $message 4]
+            ::piLog::log [clock milliseconds] "info" "Asked getRepere $repere - parametre $parametre"
+            # Les parametres d'un repere : nom Valeur 
+            
+            if {[array names ::plug -exact "$repere,$parametre"] != ""} {
+                ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere $::plug($repere,$parametre)"
+                ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $::plug($repere,$parametre)"
+            } else {
+                ::piLog::log [clock milliseconds] "error" "Asked getRepere $repere - parametre $parametre not recognize"
+            }
+        }
+        "_getPort" {
+            set ::port([::piTools::lindexRobust $message 3]) [::piTools::lindexRobust $message 4]
+            ::piLog::log [clock milliseconds] "debug" "getPort response : module [::piTools::lindexRobust $message 3] port [::piTools::lindexRobust $message 4]"
+        }
+        "_getRepere" {
+            # On parse le retour de la commande
+            set indexCapteur  [::piTools::lindexRobust $message 3]
+            set valeurCapteur [::piTools::lindexRobust $message 4]
+            
+            # On sauvegarde la valeur du capteur
+            set ::sensor(${indexCapteur}) $valeurCapteur
+            
+            ::piLog::log [clock milliseconds] "debug" "getRepere response : capteur $indexCapteur valeur -$valeurCapteur-"
+        }
+        _subscription {
+            # On parse le retour de la commande
+            set indexCapteur  [::piTools::lindexRobust $message 3]
+            set valeurCapteur [::piTools::lindexRobust $message 4]
+            
+            # On sauvegarde la valeur du capteur
+            set ::sensor(${indexCapteur}) $valeurCapteur
+            
+            # ::piLog::log [clock milliseconds] "debug" "subscription response : capteur $indexCapteur valeur -$valeurCapteur-"
+        }
+        default {
+            # Si on reçoit le retour d'une commande, le nom du serveur est le notre
+            if {$serverForResponse == $::port(serverPlugUpdate)} {
+            
+                if {[array names ::TrameSended -exact $indexForResponse] != ""} {
+                    
+                    switch [lindex $::TrameSended($indexForResponse) 0] {
+                        "update_plug_value" {
+                            set plugumber [lindex $::TrameSended($indexForResponse) 1]
+                        
+                            set ::plug($plugumber,updateStatus) $commande
+                            set ::plug($plugumber,updateStatusComment) ${message}
+                        
+                            ::piLog::log [clock milliseconds] "info" "I2C Update plug $plugumber updateStatus : -$commande- updateStatusComment : -${message}-"
+                        
+                            # On supprime cette donnée de la mémoire
+                            unset ::TrameSended($indexForResponse)
+                        }
+                        default {
+                            ::piLog::log [clock milliseconds] "erreur" "Not recognize keyword response -${message}-"
+                        }                    
+                    }
+                    
+                } else {
+                    ::piLog::log [clock milliseconds] "erreur" "Not requested response -${message}-"
+                }
+            
+                
+            } else {
+                ::piLog::log [clock milliseconds] "erreur" "Received -${message}- but not interpreted"
+            }
+        }
+    }
+}
