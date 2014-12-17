@@ -76,7 +76,7 @@ EOF
 
 {{{
 vi /etc/hosts
-}}]
+}}}
  
 Modifier la ligne commençant par 127.0.0.1 pour qu'elle ressemble à ceci:
 
