@@ -5,19 +5,39 @@
 La procédure suivante permet d'installer manuellement un système cultipi sur un Raspbery Pi fraîchement acquis.
 
 
-= Installation et personnalisation du système de base =
+= Installation du système de base =
 
-* Télécharger l'image RAspbian de base qui servira de système à la Cultipi: 
+ * Télécharger l'image RAspbian de base qui servira de système à la Cultipi: 
 
+{{{
 http://files2.linuxsystems.it/raspbian_wheezy_20140726.img.7z
+}}}
 
-* Pour installer l'image à partir d'un système LInux:
+ * Décompresser l'image: 
 
-* Installation - sur device pas partition + umount SD:
-	7za x raspbian_wheezy_20130923.img.7z
-	dd bs=1M if=raspbian_wheezy_20130923.img of=/dev/sdX
-* Redimenssionner les partitions - swap à la fin
-* Configuration adresse mac free puis SSH :  b8:27:eb:4d:37:db 
+{{{
+7za x raspbian_wheezy_20130923.img.7z
+}}}
+
+ * Brancher la carte SD qui va recevoir le système, démonter les partitions déja présentes puis lancer la commande:
+
+{{{
+dd bs=4M if=raspbian_wheezy_20130923.img of=/dev/sdX
+}}}
+
+Remarque: /dev/sdX correspond au device de la carte SD qui va recevoir le système. Il faut préciser le device dans son intégralité et non pas une partition, par exemple: /deb/sdb et non pas /dev/sdb2
+
+ * Une fois la copie terminée, il est possible de redimenssionner les partitions pour utiliser tous l'espace de la carte SD. Dans ce cas la il faudra déplacer l partition swap après toutes les autres partitions. Il est possible d'utiliser gparted pour réaliser cela.
+
+ * Réintroduire la carte SD dans le Raspberry et brancher l'alimentation.
+
+ * La connexion sur le raspberry se fait grâce à un écran branché ou alors par SSH, par défaut si vous branchez un câble ethernet le Raspberry obtiendra une adresse IP depuis votre Box. Il vous est alors possible de vous connecter par SSH ou directement depuis la console:
+
+{{{
+Login: pi
+Mot de passe: raspberry
+}}}
+
 * Personnalisation:
 	apt-get update
 	apt-get upgrade
