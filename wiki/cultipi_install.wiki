@@ -18,7 +18,7 @@ http://files2.linuxsystems.it/raspbian_wheezy_20140726.img.7z
 {{{
 7za x raspbian_wheezy_20130923.img.7z
 }}}
-
+/
  * Brancher la carte SD qui va recevoir le système, démonter les partitions déja présentes puis lancer la commande:
 
 {{{
@@ -97,7 +97,7 @@ apt-get -y install inetutils-syslogd
 
 {{{
 vi /boot/config.txt
-}}
+}}}
 
 Ajouter *gpu_mem=16* pour donner le maximum de mémoire au CPU au détriment du GPU.
 Décomenter *arm_freq=800* pour overclocker le Raspberry (http://elinux.org/RPiconfig)
