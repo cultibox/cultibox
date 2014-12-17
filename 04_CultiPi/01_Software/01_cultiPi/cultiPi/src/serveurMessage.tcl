@@ -23,6 +23,17 @@ proc messageGestion {message} {
             # Comme c'est une réponse, le nom du serveur est celui de celui qui a demandé
             ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse _getPort $module $::confStart($module,port)"
         }
+        "_subscription" -
+        "_subscriptionEvenement" {
+            # On parse le retour de la commande
+            set variable  [::piTools::lindexRobust $message 3]
+            set valeur [::piTools::lindexRobust $message 4]
+            
+            # On enregistre le retour de l'abonnement
+            set ::${variable} $valeur
+            
+            # ::piLog::log [clock milliseconds] "debug" "subscription response : variable $variable valeur -$valeur-"
+        }
         default {
             ::piLog::log [clock milliseconds] "erreur" "Received -${message}- but not interpreted"
         }

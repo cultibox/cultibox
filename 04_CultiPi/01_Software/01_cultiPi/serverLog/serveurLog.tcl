@@ -22,7 +22,7 @@ proc server {channel host port} \
     set ::($channel:host) $host
     set ::($channel:port) $port
     # log
-    log "<[clock milliseconds]><serveurlog><info><opened - $channel>"
+    log "<[clock milliseconds]><serveurlog><info><opened - $channel - port $port>"
     set rc [catch \
     {
         # set call back on reading

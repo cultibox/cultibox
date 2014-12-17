@@ -9,6 +9,8 @@ set port(serverCultiPi)     [lindex $argv 3]
 
 # Global var for regulation
 set regul(alarme) 0
+# Variable qui mémorise les prise qui ont été mises à jour
+set plug(updated) ""
 
 # Load lib
 lappend auto_path [file join $rootDir lib tcl]
@@ -137,6 +139,9 @@ emeteur_update_loop
 
 # Une fois la boucle de régulation démarrée , on peut activer le pilotage des prises
 ::wireless::start
+
+# Pour les client qui ont un abonnement événementiel aux données
+emeteur_subscriptionEvenement
 
 vwait forever
 

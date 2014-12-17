@@ -13,7 +13,7 @@ proc messageGestion {message} {
         }
         "pid" {
             ::piLog::log [clock milliseconds] "info" "Asked pid"
-            ::piServer::sendToServer $serverForResponse "$::port(serverPlugUpdate) $indexForResponse pid serverPlugUpdate [pid]"
+            ::piServer::sendToServer $serverForResponse "$::port(serverHisto) $indexForResponse pid serverHisto [pid]"
         }
         "getRepere" {
             # Le repere est le numéro de prise
@@ -27,29 +27,6 @@ proc messageGestion {message} {
                 ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $::plug($repere,$parametre)"
             } else {
                 ::piLog::log [clock milliseconds] "error" "Asked getRepere $repere - parametre $parametre not recognize"
-            }
-        }
-        "subscriptionEvenement" {
-            # Le numéro de prise est indiqué 
-            set variable [::piTools::lindexRobust $message 3]
-            set repere   [::piTools::lindexRobust $message 4]
-            ::piLog::log [clock milliseconds] "info" "Asked subscriptionEvenement $variable - parametre $repere"
-            
-            # Les seuls abonnements autorisé sont plug(n,value)
-            if {$variable == "plug"} {
-                
-                set plugNumber [lindex [split $repere ","] 0]
-            
-                if {[array names ::plug -exact "$plugNumber,value"] != ""} {
-                
-                    # On ajoute le numéro de prot à la liste des abonnés
-                    lappend ::plug(subscription,$plugNumber) $serverForResponse
-                
-                } else {
-                    ::piLog::log [clock milliseconds] "error" "$plugNumber,value doesnot exists in ::plug"
-                }
-            } else {
-                ::piLog::log [clock milliseconds] "error" "Couldnot rekognize Asked subscriptionEvenement $variable - parametre $repere"
             }
         }
         "_getPort" {
@@ -69,11 +46,53 @@ proc messageGestion {message} {
         "_subscription" -
         "_subscriptionEvenement" {
             # On parse le retour de la commande
-            set variable  [::piTools::lindexRobust $message 3]
-            set valeur [::piTools::lindexRobust $message 4]
+            set variable    [::piTools::lindexRobust $message 3]
+            set valeur      [::piTools::lindexRobust $message 4]
+            set time        [::piTools::lindexRobust $message 5]
             
             # On enregistre le retour de l'abonnement
-            set ::${variable} $valeur
+            set ${variable} $valeur
+            
+            # On traite immédiatement cette info
+            set splitted [split ${variable} "(,)"]
+            set variableName [lindex $splitted 0]
+            switch $variableName {
+                "::sensor" {
+                    switch [lindex $splitted 2] {
+                        "type" {
+                            # Si c'est le type de capteur
+                            ::piLog::log [clock milliseconds] "debug" "_subscription response : save sensor type : $message"
+                            ::sensorAcq::saveType [lindex $splitted 1] $valeur
+                        }
+                        "value" {
+                            set valeur1      [::piTools::lindexRobust $message 4]
+                            set valeur2      [::piTools::lindexRobust $message 5]
+                            set time         [::piTools::lindexRobust $message 6]
+                            # Si c'est la valeur
+                            # ::piLog::log [clock milliseconds] "debug" "_subscription response : save sensor value : $message - [lindex $splitted 1] $valeur1 $valeur2 $time"
+                            if {$valeur1 == "DEFCOM"} {
+                                ::piLog::log [clock milliseconds] "error" "_subscription response : save sensor value : DEFCOM so not saved - msg : $message"
+                            } else {
+                                ::sql::AddSensorValue [lindex $splitted 1] $valeur1 $valeur2 $time
+                            }
+                            
+                        } 
+                        default {
+                            ::piLog::log [clock milliseconds] "error" "_subscription response : not rekognize type [lindex $splitted 2]  - msg : $message"
+                        }
+                    }
+                }
+                "::plug" {
+                    # Si c'est l'état d'une prise, on enregistre immédiatement
+                    ::piLog::log [clock milliseconds] "debug" "_subscription response : save plug [lindex $splitted 1] $valeur time $time - msg : $message"
+                    ::sql::addPlugState [lindex $splitted 1] $valeur $time
+                }
+                default {
+                    ::piLog::log [clock milliseconds] "error" "_subscription response : unknow variable name $variableName - msg : $message"
+                }
+            }
+            
+            
             
             # ::piLog::log [clock milliseconds] "debug" "subscription response : variable $variable valeur -$valeur-"
         }

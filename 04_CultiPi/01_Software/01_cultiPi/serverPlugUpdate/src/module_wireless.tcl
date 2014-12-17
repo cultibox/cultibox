@@ -151,6 +151,9 @@ proc ::wireless::setValue {plugNumber value} {
     # - Prise 1 --> 33
     # - Prise 2 --> 35
     set register [expr ($plugNumber - 1) * 2 + 33]
+
+    # On sauvegarde l'état de la prise
+    savePlugSendValue $plugNumber $value
     
     set RC [catch {
         exec i2cset -y 1 $moduleAdress $register $value

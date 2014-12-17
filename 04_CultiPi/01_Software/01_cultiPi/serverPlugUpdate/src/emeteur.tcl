@@ -227,9 +227,40 @@ proc updatePlug {plugNumber} {
     }
 }
 
-# cette procédure est utilisée pour lire la valeur des capteurs
-proc readSensors {} {
-    ::piLog::log [clock milliseconds] "error" "proc readSensors to write"
+proc savePlugSendValue {plug value} {
     
-    after 1000 readSensors
+    # On enregistre l'état de la prise
+    set ::plug($plug,value)  $value
+    
+    # On ajoute à la liste des valeurs mise à jour
+    lappend ::plug(updated)  $plug
+    
+}
+
+proc emeteur_subscriptionEvenement {} {
+
+    if {$::plug(updated) != ""} {
+    
+        # Pour chaque prise mise à jour
+        foreach plugNb $::plug(updated) {
+        
+            if {[array names ::plug -exact subscription,$plugNb] == ""} {
+                set ::plug(subscription,$plugNb) ""
+            }
+        
+            # On envoi à tous les client qui on un abonnement événementiel
+            foreach client $::plug(subscription,$plugNb) {
+                
+                ::piServer::sendToServer $client "$client [incr ::TrameIndex] _subscriptionEvenement ::plug($plugNb,value) $::plug($plugNb,value) [clock milliseconds]"
+                
+            }
+        
+        }
+    
+        # On efface la liste
+        set ::plug(updated) ""
+    }
+    
+    after 200 emeteur_subscriptionEvenement
+
 }
