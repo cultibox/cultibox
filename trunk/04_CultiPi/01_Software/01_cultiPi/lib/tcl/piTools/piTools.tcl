@@ -8,7 +8,7 @@ namespace eval ::piTools {
     variable debug 0
 }
 
-# Load Cultipi server
+# As lindex but robust case !
 proc ::piTools::lindexRobust {str index} {
 
     set start 0
@@ -20,6 +20,10 @@ proc ::piTools::lindexRobust {str index} {
     for {set i 0} {$i <= $index} {incr i} {
         set previousIndex $indexF
         set indexF [string first " " $str [expr $previousIndex + 1]]
+        if {$previousIndex == "-1"} {
+            set previousIndex [string length $str]
+            break;
+        }
     }
     
     if {$indexF == "-1"} {
