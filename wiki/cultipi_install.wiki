@@ -109,8 +109,9 @@ sed -i '/[2-6]:23:respawn:\/sbin\/getty 38400 tty[2-6]/s%^%#%g' /etc/inittab
 }}}
 
  * Désactivation de l'ipv6:
+
 {{{
- cat << EOF > /etc/sysctl.d/disable_ipv6.conf 
+cat << EOF > /etc/sysctl.d/disable_ipv6.conf 
 net.ipv6.conf.all.disable_ipv6=1
 EOF
 }}}
@@ -139,11 +140,29 @@ reboot
 
 {{{
 service inetutils-syslogd stop
+}}}
+
+{{{
 for file in /var/log/*.log /var/log/mail.* /var/log/debug /var/log/syslog; do [ -f "$file" ] && rm -f "$file"; done
+}}}
+
+{{{
 for dir in fsck news; do [ -d "/var/log/$dir" ] && rm -rf "/var/log/$dir"; done
+}}}
+
+{{{
 echo -e "*.*;mail.none;cron.none\t -/var/log/messages\ncron.*\t -/var/log/cron\nmail.*\t -/var/log/mail" > /etc/syslog.conf
+}}}
+
+{{{
 mkdir -p /etc/logrotate.d
+}}}
+
+{{{
 echo -e "/var/log/cron\n/var/log/mail\n/var/log/messages {\n\trotate 4\n\tweekly\n\tmissingok\n\tnotifempty\n\tcompress\n\tsharedscripts\n\tpostrotate\n\t/etc/init.d/inetutils-syslogd reload >/dev/null\n\tendscript\n}" > /etc/logrotate.d/inetutils-syslogd
+}}}
+
+{{{
 service inetutils-syslogd start
 }}}
 
