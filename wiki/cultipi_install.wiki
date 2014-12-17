@@ -38,50 +38,117 @@ Login: pi
 Mot de passe: raspberry
 }}}
 
-* Personnalisation:
-	apt-get update
-	apt-get upgrade
-	dpkg-reconfigure locales (fr et en UTF8)
-	apt-get install localepurge
-	apt-get install sudo
-	adduser cultipi
-	vi /etc/hostname ==> hostname: cultipi
-	vi /etc/hosts	==> 127.0.0.1 localhost cultipi
-	visudo /etc/sudoers ==> cultipi ALL=(ALL:ALL) ALL
-	dpkg-reconfigure tzdata => Europe/Paris
-	apt-get install vim
-	vi ~/.vimrc ===> aouter :syntax on aouter alias vi='vim' dans ~/.bashrc
-	apt-get -y remove --purge rsyslog
-	apt-get -y install inetutils-syslogd
-	apt-get install i2c-tools
---------------------------
+
+= Personnalisation de l'image =
+
+ * Mise à jour du système:
+
+{{{
+apt-get update
+apt-get upgrade
+}}}
+
+ * Reconfiguration des locales et le timezone:
+
+{{{	
+dpkg-reconfigure locales 
+dpkg-reconfigure tzdata
+}}}
+
+ * Installation de packages utiles:
+
+{{{
+apt-get install sudo localpurge vim
+}}}
+
+ * Ajout de l'utilisateur Cultipi:
+
+{{{
+adduser cultipi
+}}}
+
+ * Configuration du nom de l'hôte:
+{{{
+cat << EOF > /etc/hostname
+cultipi
+EOF
+}}}
+
+{{{
+vi /etc/hosts
+}}]
+ 
+Modifier la ligne commençant par 127.0.0.1 pour qu'elle ressemble à ceci:
+
+{{{
+127.0.0.1 localhost cultipi
+}}}
+
+ * Remplacement du système de logs par syslogd qui consomme moins de ressources:
+
+{{{
+apt-get -y remove --purge rsyslog
+apt-get -y install inetutils-syslogd
+}}}
+
 	
-* Optimisation du raspberry:
-		vi /boot/config.txt ==> ajouter gpu_mem=16 pour donner le max de mémoire au CPU
+= Optimisation du Raspberry =
+ * Gestion de la mémoire!
 
-		Overcloaking possible, options ici: http://elinux.org/RPiconfig
+{{{
+vi /boot/config.txt
+}}
 
-		sed -i '/[2-6]:23:respawn:\/sbin\/getty 38400 tty[2-6]/s%^%#%g' /etc/inittab
-		vi /etc/sysctl.d/disable_ipv6.conf  ==> disble ipv6: net.ipv6.conf.all.disable_ipv6=1
-		sudo vi /etc/modprobe.d/fbdev-blacklist.conf ==> aouter ipv6 pour le désactiver
-		sudo sed -i '/::/s%^%#%g' /etc/hosts
-		reboot
-		sudo vi /boot/config.txt ===> aouter ==> arm_freq=800   pour overclocking
-		sudo sed -i 's/deadline/noop/g' /boot/cmdline.txt
+Ajouter *gpu_mem=16* pour donner le maximum de mémoire au CPU au détriment du GPU.
+Décomenter *arm_freq=800* pour overclocker le Raspberry (http://elinux.org/RPiconfig)
+
+ * Suppréssion des consoles inutilisées:
+
+{{{
+sed -i '/[2-6]:23:respawn:\/sbin\/getty 38400 tty[2-6]/s%^%#%g' /etc/inittab
+}}}
+
+ * Désactivation de l'ipv6:
+{{{
+ cat << EOF > /etc/sysctl.d/disable_ipv6.conf 
+net.ipv6.conf.all.disable_ipv6=1
+EOF
+}}}
+
+{{{
+echo "blacklist ipv6" >> /etc/modprobe.d/fbdev-blacklist.conf
+}}}
+
+{{{
+sed -i '/::/s%^%#%g' /etc/hosts
+}}}
+
+ * Optimisation de l'ordonanceur:
+
+{{{				
+sed -i 's/deadline/noop/g' /boot/cmdline.txt
+}}}
+
+ * Redémarrage du système:
+
+{{{
+reboot
+}}}		
 		
-		
-		sudo service inetutils-syslogd stop
-		
-		for file in /var/log/*.log /var/log/mail.* /var/log/debug /var/log/syslog; do [ -f "$file" ] && rm -f "$file"; done
-		for dir in fsck news; do [ -d "/var/log/$dir" ] && rm -rf "/var/log/$dir"; done
-		echo -e "*.*;mail.none;cron.none\t -/var/log/messages\ncron.*\t -/var/log/cron\nmail.*\t -/var/log/mail" > /etc/syslog.conf
-		mkdir -p /etc/logrotate.d
-		echo -e "/var/log/cron\n/var/log/mail\n/var/log/messages {\n\trotate 4\n\tweekly\n\tmissingok\n\tnotifempty\n\tcompress\n\tsharedscripts\n\tpostrotate\n\t/etc/init.d/inetutils-syslogd reload >/dev/null\n\tendscript\n}" > /etc/logrotate.d/inetutils-syslogd
-		service inetutils-syslogd start
+ * Personnalisation du système des logs:
 
+{{{
+service inetutils-syslogd stop
+for file in /var/log/*.log /var/log/mail.* /var/log/debug /var/log/syslog; do [ -f "$file" ] && rm -f "$file"; done
+for dir in fsck news; do [ -d "/var/log/$dir" ] && rm -rf "/var/log/$dir"; done
+echo -e "*.*;mail.none;cron.none\t -/var/log/messages\ncron.*\t -/var/log/cron\nmail.*\t -/var/log/mail" > /etc/syslog.conf
+mkdir -p /etc/logrotate.d
+echo -e "/var/log/cron\n/var/log/mail\n/var/log/messages {\n\trotate 4\n\tweekly\n\tmissingok\n\tnotifempty\n\tcompress\n\tsharedscripts\n\tpostrotate\n\t/etc/init.d/inetutils-syslogd reload >/dev/null\n\tendscript\n}" > /etc/logrotate.d/inetutils-syslogd
+service inetutils-syslogd start
+}}}
 
-
-issue de https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
+Remarque: optimisations issues de : 
+https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
 
 
 
@@ -317,3 +384,9 @@ compilation i2c:
 
 make
 make install du dépôt
+
+visudo /etc/sudoers ==> cultipi ALL=(ALL:ALL) ALL
+
+vi ~/.vimrc ===> aouter :syntax on aouter alias vi='vim' dans ~/.bashrc
+	apt-get install i2c-tools
+	
