@@ -68,6 +68,7 @@ adduser cultipi
 }}}
 
  * Configuration du nom de l'hôte:
+
 {{{
 cat << EOF > /etc/hostname
 cultipi
