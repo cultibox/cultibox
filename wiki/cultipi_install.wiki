@@ -104,7 +104,7 @@ dpkg-reconfigure tzdata
  * Installation des packages utiles et utilitaires:
 
 {{{
-apt-get install sudo localpurge vim libnss-mdns avahi-daemon
+apt-get install sudo localpurge vim libnss-mdns avahi-daemon tcl
 }}}
 
  * Ajout de l'utilisateur Cultipi, suppréssion de l'utilisateur pi:
