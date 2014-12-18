@@ -301,7 +301,7 @@ port        = 3891
 
  * Redémarrage du serveur:
 
-{{
+{{{
 /etc/init.d/mysql force-reload
 }}}
 
