@@ -3,4 +3,33 @@
 if [ -d /var/www/cultinet ]; then
     chown -R www-data:www-data /var/www/cultinet
 fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep ifconfig`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /sbin/ifconfig" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep iwlist`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /sbin/iwlist" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep ifup`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /sbin/ifup" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep mv`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /bin/mv" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep chmod`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /bin/chmod" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep cp`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /bin/cp" >> /etc/sudoers
+fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep networking`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /etc/init.d/networking" >> /etc/sudoers
+fi
+
 exit 0

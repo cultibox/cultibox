@@ -6,9 +6,9 @@ cd $dir
 
 function usage {
             echo "usage: $0"
-            echo "                      cultipi <version> ?jenkins?"
-            echo "                      cultinet <version> ?jenkins?"
-            echo "                      cultipi <version> ?jenkins?"
+            echo "                      cultipi <version>|version ?jenkins?"
+            echo "                      cultinet <version>|version ?jenkins?"
+            echo "                      cultipi <version>|version ?jenkins?"
             echo "                      apt-gen"
             echo "                      clean"
             exit 1
@@ -20,13 +20,24 @@ if [ "$2" == "" ] && [ "$1" != "clean" ] && [ "$1" != "apt-gen" ]; then
     usage
 fi
 
-VERSION=$2
+if [ "$2" == "version" ]; then
+    if [ "$1" == "cultipi" ]; then
+        VERSION=`cat ../../../04_CultiPi/01_Software/01_cultiPi/VERSION`
+    else if [ "$1" == "cultinet" ]; then
+        VERSION=`cat ../../../04_CultiPi/01_Software/02_cultinet/VERSION`
+    else if [ "$1" == "cultibox" ]; then
+        VERSION=`cat ../../02_src/VERSION`
+    fi
+else
+    VERSION=$2
+fi
 
 # Remove svn up when using jenkins
 if [ "$3" == "" ]; then
     (cd ../../../ && svn up)
 fi
 
+revision=`svn info ../../../04_CultiPi|grep "Révision "|awk -F ": " '{print $2}'`
 
 case "$1" in
       "cultipi")
@@ -39,24 +50,20 @@ case "$1" in
            mkdir -p ../01_src/01_xampp/cultipi/etc/cron.daily
            mkdir -p ../01_src/01_xampp/cultipi/etc/cultipi
 
-           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/cultiPi ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/lib ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/serverAcqSensor ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/serverLog ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/serverPlugUpdate ../01_src/01_xampp/cultipi/opt/cultipi/
-           cp -R ../../../04_CultiPi/02_conf/01_defaultConf_RPi  ../01_src/01_xampp/cultipi/etc/cultipi/00_defaultConf
+           cp -R ../../../04_CultiPi/01_Software/01_cultiPi/* ../01_src/01_xampp/cultipi/opt/cultipi/
+           rm -Rf ../01_src/01_xampp/cultipi/opt/cultipi/cultipi_service
+           rm -f ../01_src/01_xampp/cultipi/opt/cultipi/VERSION
+           cp -R ../../../04_CultiPi/02_conf/01_defaultConf_RPi  ../01_src/01_xampp/cultipi/etc/cultipi/
            cp -R ../../../04_CultiPi/02_conf/conf.xml  ../01_src/01_xampp/cultipi/etc/cultipi/
-           sed -i "s/00_defaultConf_Win/00_defaultConf/g" ../01_src/01_xampp/cultipi/etc/cultipi/conf.xml
 
            cp ../../../04_CultiPi/01_Software/01_cultiPi/cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
            cp ../../../04_CultiPi/01_Software/01_cultiPi/cultipi_service/etc/cron.daily/cultipi ../01_src/01_xampp/cultipi/etc/cron.daily/
-        
 
-           sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultipi/DEBIAN/control
+           sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultipi/DEBIAN/control
            find ./../01_src/01_xampp/cultipi/ -name ".svn"|xargs rm -Rf 
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultipi
            
-           mv cultipi.deb ../../05_cultipi/Output/cultipi_`echo $VERSION`.deb
+           mv cultipi.deb ../../05_cultipi/Output/cultipi_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultinet")
            rm -Rf ../01_src/01_xampp/*
@@ -67,12 +74,12 @@ case "$1" in
 
            cp -R ../../../04_CultiPi/01_Software/02_cultinet ../01_src/01_xampp/cultinet/var/www/cultinet
 
-           sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultinet/DEBIAN/control
+           sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultinet/DEBIAN/control
 
            find ./../01_src/01_xampp/cultinet/ -name ".svn"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultinet
 
-           mv cultinet.deb ../../05_cultipi/Output/cultinet_`echo $VERSION`.deb
+           mv cultinet.deb ../../05_cultipi/Output/cultinet_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultibox")
            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
@@ -102,7 +109,7 @@ EOF
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/cultibox_it.sql
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/sql_install/cultibox_es.sql
 
-           sed -i "s/Version: .*/Version: `echo $VERSION`-debian/g" ../01_src/01_xampp/cultibox/DEBIAN/control
+           sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultibox/DEBIAN/control
            sed -i "s/'[0-9]\+\.[0-9]\+\.[0-9][0-9]\+'/'`echo $VERSION`-armhf'/" ../01_src/01_xampp/cultibox/var/www/cultibox/main/libs/lib_configuration.php
            sed -i "s/^$GLOBALS.*\"cultibox\"/\$GLOBALS['MODE']=\"cultipi\"/g" ../01_src/01_xampp/cultibox/var/www/cultibox/main/libs/config.php 
 
@@ -110,7 +117,7 @@ EOF
            find ./../01_src/01_xampp/cultibox/ -name ".svn"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultibox
 
-           mv cultibox.deb ../../05_cultipi/Output/cultibox-armhf_`echo $VERSION`.deb
+           mv cultibox.deb ../../05_cultipi/Output/cultibox-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;  
       "apt-gen")
            cultipi="`ls -t Output/cultipi*|head -1`"

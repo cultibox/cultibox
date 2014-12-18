@@ -5,12 +5,17 @@ if [ -f /etc/init.d/cultipi ]; then
     /etc/init.d/cultipi restart
 fi
 
-if [ ! -d /home/cultipi/logs ]; then
-    mkdir /home/cultipi/logs
-    chown cultipi:cultipi /home/cultipi/logs
+if [ ! -f /var/log/cultipi ]; then
+    touch /var/log/cultipi
+    chown cultipi:cultipi /var/log/cultipi
 fi
 
 if [ -f /etc/cron.daily/cultipi ]; then
     chmod +x /etc/cron.daily/cultipi
 fi
+
+if [  "`cat /etc/sudoers|grep www-data|grep ifup`" == "" ]; then
+    echo "cultipi ALL = (root) NOPASSWD: /sbin/modprobe" >> /etc/sudoers
+fi
+
 

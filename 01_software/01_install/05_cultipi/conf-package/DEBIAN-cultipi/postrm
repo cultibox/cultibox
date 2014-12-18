@@ -21,4 +21,11 @@ if [ "$1" == "purge" ]; then
         update-rc.d -f cultipi remove
         rm -Rf /etc/init.d/cultipi
     fi
+
+    if [ -f /var/log/cultipi ]; then
+        rm -Rf /var/log/cultipi
+    fi
+
+    userdel cultipi
+    sed -i "#cultipi ALL = (root) NOPASSWD: /sbin/modprobe#d" /etc/sudoers
 fi
