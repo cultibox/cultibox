@@ -478,18 +478,3 @@ Vous obtiendrez une image au format RAW gzipée.
 
 
 *Remarque:* La commande *rpi-update* peut être utilisée pour mettre à jour le Raspberry, cependant le dernier noyau semble poser des problèmes avec les modules I2C, à suivre!
-
-
-
-
-root@cultipi:~# cat /etc/sudoers
-
-cultipi ALL=(ALL:ALL) ALL
-www-data ALL = (root) NOPASSWD: /sbin/ifconfig
-www-data ALL = (root) NOPASSWD: /sbin/iwlist
-www-data ALL = (root) NOPASSWD: /sbin/ifup
-www-data ALL = (root) NOPASSWD: /bin/mv 
-www-data ALL = (root) NOPASSWD: /bin/chmod
-www-data ALL = (root) NOPASSWD: /bin/cp
-www-data ALL = (root) NOPASSWD: /etc/init.d/networking
-visudo /etc/sudoers ==> cultipi ALL=(ALL:ALL) ALL	
