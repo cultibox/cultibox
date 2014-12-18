@@ -51,6 +51,7 @@ Password: raspberry
 
 {{{
 echo "deb http://www.cultibox.fr/repository/armhf binary/" >> /etc/apt/sources.list
+}}}
  
  * Mise à jour du système:
 
