@@ -18,7 +18,7 @@ http://files2.linuxsystems.it/raspbian_wheezy_20140726.img.7z
 {{{
 7za x raspbian_wheezy_20130923.img.7z
 }}}
-/
+
  * Brancher la carte SD qui va recevoir le système, démonter les partitions déjà présentes puis lancer la commande:
 
 {{{
@@ -43,6 +43,7 @@ ou
 {{{
 Login: root
 Password: raspberry
+}}}
 
 = Personnalisation de l'image =
 
