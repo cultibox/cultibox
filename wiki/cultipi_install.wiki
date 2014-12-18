@@ -60,7 +60,7 @@ http://files2.linuxsystems.it/raspbian_wheezy_20140726.img.7z
 
  * Pour installer l'image, il faut télécharger Win32DiskImager ( http://sourceforge.net/projects/win32diskimager/) et l’exécuter en administrateur après avoir branché sa carte SD. Une fois exécuté, le logiciel permet de choisir l'image à copier puis la lettre correspondant à la carte SD. Il suffit ensuite de cliquer sur le bouton "write" pour lancer la copie.
 
-* Une fois la copie terminée, il est possible de redimensionner les partitions pour utiliser tous l'espace de la carte SD. Dans ce cas la il faudra déplacer la partition swap après toutes les autres partitions. Il est possible d'utiliser gparted pour réaliser cela.
+ * Une fois la copie terminée, il est possible de redimensionner les partitions pour utiliser tous l'espace de la carte SD. Dans ce cas la il faudra déplacer la partition swap après toutes les autres partitions. Il est possible d'utiliser gparted pour réaliser cela.
 
  * Réintroduire la carte SD dans le Raspberry et brancher l'alimentation.
 
