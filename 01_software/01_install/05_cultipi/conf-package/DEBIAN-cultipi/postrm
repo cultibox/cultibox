@@ -22,7 +22,7 @@ if [ "$1" == "purge" ]; then
         rm -Rf /etc/init.d/cultipi
     fi
 
-    if [ -f /var/log/cultipi ]; then
+    if [ -d /var/log/cultipi ]; then
         rm -Rf /var/log/cultipi
     fi
 

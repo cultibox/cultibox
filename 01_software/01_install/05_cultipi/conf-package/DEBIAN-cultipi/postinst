@@ -5,11 +5,6 @@ if [ -f /etc/init.d/cultipi ]; then
     /etc/init.d/cultipi restart
 fi
 
-if [ ! -f /var/log/cultipi ]; then
-    touch /var/log/cultipi
-    chown cultipi:cultipi /var/log/cultipi
-fi
-
 if [ -f /etc/cron.daily/cultipi ]; then
     chmod +x /etc/cron.daily/cultipi
 fi
