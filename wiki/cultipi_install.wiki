@@ -191,7 +191,7 @@ lighttpd-enable-mod fastcgi-php
 /etc/init.d/lighttpd force-reload 
 }}}
 
-*Remarque:* Vous pouvez utiliser la fonction phpinfo() afin de vérifier les composants activés dans PHP
+*Remarque:* Vous pouvez utiliser la fonction *phpinfo()* afin de vérifier les composants activés dans PHP
 
  * Création des certificats pour https:
 
@@ -199,8 +199,73 @@ lighttpd-enable-mod fastcgi-php
 mkdir -p /etc/lighttpd/ssl
 openssl req -new -x509 -keyout cultipi.pem -out server.pem -days 365 -nodes
 chmod -R 600 /etc/lighttpd/ssl
-
 }}}
+
+ * Configuration du fichier lighttpd.conf
+
+{{{
+vi /etc/lighttpd/lighttpd.conf
+}}}
+
+Le fichier doit ressembler à cela:
+
+{{{
+server.modules = (
+	"mod_access",
+	"mod_alias",
+	"mod_compress",
+ 	"mod_redirect",
+#   "mod_rewrite",
+)
+
+server.document-root        = "/var/www"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.username             = "www-data"
+server.groupname            = "www-data"
+server.port                 = 80
+
+
+index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.assign.pl"
+include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
+
+$HTTP["scheme"] == "http" {
+    # capture vhost name with regex conditiona -> %0 in redirect pattern
+    # must be the most inner block to the redirect rule
+    $HTTP["remoteip"] != "172.16.0.0/24" {    
+        $HTTP["host"] =~ ".*" {
+            url.redirect = (".*" => "https://%0$0")
+        }
+    } 
+
+    $HTTP["remoteip"] == "172.16.0.0/24" {
+            url.redirect = ("^/$" => "cultinet" )
+    }
+}
+
+$SERVER["socket"] == ":443" {
+        ssl.engine = "enable"
+        ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem"
+}
+}}}
+
+
+Puis relancez le serveur:
+
+{{{
+/etc/init.d/lighttpd force-reload
+}}}
+
 
 * Sauvegarde de l'image:
 	sudo dd bs=4M if=/dev/mmcblk0 | gzip > ~/cultipi-`date +%d%m%y`.dd.gz   ==> après umount
