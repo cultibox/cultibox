@@ -23,9 +23,9 @@ fi
 if [ "$2" == "version" ]; then
     if [ "$1" == "cultipi" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/01_cultiPi/VERSION`
-    else if [ "$1" == "cultinet" ]; then
+    elif [ "$1" == "cultinet" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/02_cultinet/VERSION`
-    else if [ "$1" == "cultibox" ]; then
+    elif [ "$1" == "cultibox" ]; then
         VERSION=`cat ../../02_src/VERSION`
     fi
 else
@@ -63,7 +63,7 @@ case "$1" in
            find ./../01_src/01_xampp/cultipi/ -name ".svn"|xargs rm -Rf 
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultipi
            
-           mv cultipi.deb ../../05_cultipi/Output/cultipi_`echo $VERSION`-r`echo $revision`.deb
+           mv cultipi.deb ../../05_cultipi/Output/cultipi-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultinet")
            rm -Rf ../01_src/01_xampp/*
@@ -79,7 +79,7 @@ case "$1" in
            find ./../01_src/01_xampp/cultinet/ -name ".svn"|xargs rm -Rf
            cd ./../01_src/01_xampp/ && dpkg-deb --build cultinet
 
-           mv cultinet.deb ../../05_cultipi/Output/cultinet_`echo $VERSION`-r`echo $revision`.deb
+           mv cultinet.deb ../../05_cultipi/Output/cultinet-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;
       "cultibox")
            (cd ../../../02_documentation/02_userdoc/ && tclsh ./parse_wiki.tcl && tclsh ./parse_wiki.tcl && pdflatex documentation.tex)
