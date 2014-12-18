@@ -14,7 +14,7 @@ if [ -f /etc/init.d/cultipi ]; then
     fi
 fi
 
-if [  "`cat /etc/sudoers|grep www-data|grep ifup`" == "" ]; then
+if [  "`cat /etc/sudoers|grep cultipi|grep modprobe`" == "" ]; then
     echo "cultipi ALL = (root) NOPASSWD: /sbin/modprobe" >> /etc/sudoers
 fi
 
