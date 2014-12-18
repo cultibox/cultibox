@@ -47,6 +47,11 @@ Password: raspberry
 
 = Personnalisation de l'image =
 
+ * Configuration apt avec le dépôt Cultibox:
+
+{{{
+echo "deb http://www.cultibox.fr/repository/armhf binary/" >> /etc/apt/sources.list
+ 
  * Mise à jour du système:
 
 {{{
@@ -74,6 +79,12 @@ adduser cultipi
 deluser pi
 }}}
 
+ * Personnalisation des règles udev pour le réseau:
+
+{{{
+rm /etc/udev/rules.d/70-persistent-net.rules
+mv /lib/udev/rules.d/75-persistent-net-generator.rules /lib/udev/75-persistent-net-generator.rules.disabled
+}}}
  * Configuration du nom de l'hôte:
 
 {{{
@@ -99,6 +110,53 @@ apt-get -y remove --purge rsyslog
 apt-get -y install inetutils-syslogd
 }}}
 
+ * Ajout des modules et utilitaires pour I2C:
+
+Il vous faudra compiler manuellement les i2c-tools. Pour cela récupérer les sources:
+
+{{{
+apt-get install unzip build-essential
+wget https://github.com/groeck/i2c-tools/archive/master.zip
+unzip  master.zip
+}}}
+
+Il vous faudra ensuite modifier le fichier *i2cbusses.c* pour que les outils i2c puisse utiliser les adresses 0x01 et 0x02 utilisées par les capteurs du Cultipi:
+
+{{{
+vi i2c-tools-master/tools/i2cbusses.c
+}}}
+
+Puis modifier la ligne 367:
+
+{{{
+if (address < 0x03 || address > 0x77) { 
+}}}
+
+Par: 
+
+{{{
+if (address < 0x01 || address > 0x77) {
+}}}
+
+
+Il ne reste plus qu'à compiler les outils:
+
+{{{
+cd i2c-tools-master
+make
+make install
+ln -s /usr/local/lib/libi2c.so.0 /lib/
+echo "i2c-dev" >> /etc/modules
+echo "options i2c_bcm2708 baudrate=32000" > /etc/modprobe.d/i2c
+}}}
+
+Puis à faire le ménage:
+
+{{{
+apt-get remove --purge build-essential unzip
+apt-get autoremove
+rm -Rf i2c-tools-master
+}}}
 	
 = Optimisation du Raspberry =
  * Gestion de la mémoire:
@@ -311,7 +369,11 @@ port        = 3891
 
  * Configuration des interfaces:
 
-Editer le fichier */etc/network/interfaces* afin que le fichier soit identique à cela:
+{{{
+ifconfig wlan0 up
+}}}
+
+Éditer le fichier */etc/network/interfaces* afin que le fichier soit identique à cela:
 
 {{{
 # interfaces(5) file used by ifup(8) and ifdown(8)
@@ -349,90 +411,74 @@ apt-get install udhcpd
 vi /etc/udhcpd.conf
 }}}
 
+Le fichier de configuration du dhcp doit contenir les directives suivantes:
 
+{{{
+start		172.16.0.102	#default: 192.168.0.20
+end		    172.16.0.254	#default: 192.168.0.254
+interface	wlan0		#default: eth0
+remaining	yes		#default: yes
+opt	dns	172.16.0.100
+option	subnet	255.255.255.0
+opt	router	172.16.0.100
+opt	wins	172.16.0.100
+option	domain	local
+option	lease	864000		# 10 days of seconds
+}}}
 
-* Sauvegarde de l'image:
-	sudo dd bs=4M if=/dev/mmcblk0 | gzip > ~/cultipi-`date +%d%m%y`.dd.gz   ==> après umount
+ * Activation du serveur DHCP:
 
-
-
-
-apt-get install udhcpd
-
+{{{
 vi /etc/default/udhcpd
+}}}
 
+Remplacer:
 
-	
-# Comment the following line to enable
+{{{
+DHCPD_ENABLED="no"
+}}}
+
+Par: 
+
+{{
 DHCPD_ENABLED="yes"
+}}}
 
-# Options to pass to busybox' udhcpd.
-#
-# -S    Log to syslog
-# -f    run in foreground
+ * Redémarrage du serveur DHCP:
 
-DHCPD_OPTS="-S"
-~                    
-
+{{{
+/etc/init.d/udhcpd force-reload
+}}}
 
 
 
 
+= Finalisation de l'image = 
+ 
+ * Nettoyage de l'image :
 
-vi /etc/udhcpd.conf
+{{{
+apt-get autoremove
+apt-get clean
+reboot
+}}}
 
-# The start and end of the IP lease block
+ * Sauvegarde de l'image:
 
-start       172.16.0.102  #default: 192.168.0.20
-end         172.16.0.254  #default: 192.168.0.254
+Insérer la carte SD du Cultipi sur votre ordinateur puis démonter les partitions. Pour sauvegarder l'image du Cultipi, lancer la commande suivante:
 
+{{{
+dd bs=4M if=/dev/mmcblk0 | gzip > ~/cultipi-`date +%d%m%y`.dd.gz
+}}}
 
-# The interface that udhcpd will use
+Vous obtiendrez une image au format RAW gzipée.
 
-interface   wlan0       #default: eth0
-
-
-# The maximim number of leases (includes addressesd reserved
-# by OFFER's, DECLINE's, and ARP conficts
-
-#max_leases 254     #default: 254
-
-
-# If remaining is true (default), udhcpd will store the time
-# remaining for each lease in the udhcpd leases file. This is
-# for embedded systems that cannot keep time between reboots.
-# If you set remaining to no, the absolute time that the lease
-# expires at will be stored in the dhcpd.leases file.
-
-remaining   yes     #default: yes
-
-#Examles
-#opt    dns 192.168.10.2 192.168.10.10
-option  subnet  255.255.255.0
-opt router  172.16.0.100
-#opt    wins    192.168.10.10
-#option dns 129.219.13.81   # appened to above DNS servers for a total of 3
-option  domain  local
-option  lease   864000      # 10 days of s
+*Remarque:* /deb/mmcblk0 correspond au device contenant la carte SD dans son intégralité et non pas à une partition.
 
 
-
-ifconfig wlan0 up
-
-* Clean:
-	sudo apt-get autoremove
-	sudo apt-get clean
+*Remarque:* La commande *rpi-update* peut être utilisée pour mettre à jour le Raspberry, cependant le dernier noyau semble poser des problèmes avec les modules I2C, à suivre!
 
 
-
-
-
-vérifier cache-control lighttpd 
-
-
-
-
-rpi-update
 
 
 root@cultipi:~# cat /etc/sudoers
@@ -445,14 +491,4 @@ www-data ALL = (root) NOPASSWD: /bin/mv
 www-data ALL = (root) NOPASSWD: /bin/chmod
 www-data ALL = (root) NOPASSWD: /bin/cp
 www-data ALL = (root) NOPASSWD: /etc/init.d/networking
-
-
-i2c-dev
-
-
-compilation i2c:
-
-make
-make install du dépôt
-
 visudo /etc/sudoers ==> cultipi ALL=(ALL:ALL) ALL	
