@@ -29,3 +29,15 @@ if [ "$1" == "purge" ]; then
     userdel cultipi
     sed -i "/cultipi ALL = (root) NOPASSWD: \/sbin\/modprobe/d" /etc/sudoers
 fi
+
+if [ "$1" == "remove" ]; then
+    if [ -f /etc/init.d/cultipi ]; then
+        update-rc.d -f cultipi remove
+        rm -Rf /etc/init.d/cultipi
+    fi
+    sed -i "/cultipi ALL = (root) NOPASSWD: \/sbin\/modprobe/d" /etc/sudoers
+    
+    if [ -d /etc/cultipi ]; then
+        rm -Rf /etc/cultipi
+    fi
+fi
