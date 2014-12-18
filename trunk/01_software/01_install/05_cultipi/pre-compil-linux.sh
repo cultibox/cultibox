@@ -37,7 +37,7 @@ if [ "$3" == "" ]; then
     (cd ../../../ && svn up)
 fi
 
-revision=`svn info ../../../04_CultiPi|grep "Révision "|awk -F ": " '{print $2}'`
+revision=`svn info ../../..|grep "Révision "|awk -F ": " '{print $2}'`
 
 case "$1" in
       "cultipi")
