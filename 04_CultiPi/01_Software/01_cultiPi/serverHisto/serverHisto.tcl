@@ -12,6 +12,7 @@ lappend auto_path [file join $rootDir lib tcl]
 package require piLog
 package require piServer
 package require piTools
+package require piXML
 
 # Chargement des fichiers externes
 source [file join $rootDir serverHisto src plugAcq.tcl]
@@ -19,9 +20,12 @@ source [file join $rootDir serverHisto src sensorAcq.tcl]
 source [file join $rootDir serverHisto src serveurMessage.tcl]
 source [file join $rootDir serverHisto src sql.tcl]
 
-
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
+
+# Initialisation des variables globales
+set logPeriode 300
+set pathMySQL  "c:/cultibox/xampp/mysql/bin/mysql.exe"
 
 ::piLog::openLog $port(serverLogs) "serverHisto"
 ::piLog::log [clock milliseconds] "info" "starting serverHisto - PID : [pid]"
@@ -48,8 +52,21 @@ proc stopIt {} {
     ::piLog::closeLog
 }
 
-# Load plug adress
+# Chargement du path
 set confPath [file dirname $confXML]
+
+# Chargement de la conf XML
+set XML [lindex [::piXML::open_xml $confXML] 2]
+
+# La fréquence de mise à jour des logs
+set logPeriodeItem  [::piXML::searchItemByName logPeriode $XML]
+set logPeriode      [::piXML::searchOptionInElement valInSec $logPeriodeItem]
+::piLog::log [clock milliseconds] "info" "logperiode : $logPeriode"
+
+# Le chemin vers l'exe de mySql
+set pathMySQLItem  [::piXML::searchItemByName pathMySQL $XML]
+set pathMySQL      [::piXML::searchOptionInElement path $pathMySQLItem]
+::piLog::log [clock milliseconds] "info" "pathMySQL : $pathMySQL"
 
 # On demande le port du serveur d'acquisition
 ::sensorAcq::init

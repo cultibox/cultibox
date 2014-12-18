@@ -1,12 +1,13 @@
 
 namespace eval ::sensorAcq {
-    variable periodeAcq  [expr 1000 * 60 * 5]
+    variable periodeAcq  [expr 1000 * 300]
     #variable periodeAcq  [expr 1000 * 5]
     variable bandeMorteAcq 0.01
 }
 
 # Utiliser pour initialiser la partie sensor
 proc ::sensorAcq::init {} {
+    variable periodeAcq 
 
     set ::port(serverAcqSensor)   ""
 
@@ -21,6 +22,9 @@ proc ::sensorAcq::init {} {
     }
     
     set ::subscriptionRunned(sensorAcq) 0
+
+    set periodeAcq  [expr 1000 * $::logPeriode]
+
 }
 
 
