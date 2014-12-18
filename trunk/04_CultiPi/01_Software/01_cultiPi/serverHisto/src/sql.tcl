@@ -5,7 +5,7 @@ namespace eval ::sql {
 proc ::sql::query {query} {
 
     set RC [catch {
-        exec c:/cultibox/xampp/mysql/bin/mysql.exe --defaults-extra-file=c:/cultibox/xampp/mysql/bin/my-extra.cnf -h 127.0.0.1 --port=3891 cultibox << "$query"
+        exec $::pathMySQL --user=root --password=cultibox --host=127.0.0.1 --port=3891 cultibox << "$query"
     } msg] 
 
     set ret [split $msg "\n"]

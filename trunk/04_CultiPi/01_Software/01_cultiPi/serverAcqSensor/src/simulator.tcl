@@ -30,10 +30,10 @@ proc exec {args} {
                     set ::simulator($module,val1,sens) "plus"
                 }
                 if {$::simulator($module,val1,sens) == "plus"} {
-                    set ::simulator($module,val1) [format %.2f [expr $::simulator($module,val1) + 0.2]]
+                    set ::simulator($module,val1) [format %.2f [expr $::simulator($module,val1) + 0.01]]
                 }
                 if {$::simulator($module,val1,sens) == "moins"} {
-                    set ::simulator($module,val1) [format %.2f [expr $::simulator($module,val1) - 0.2]]
+                    set ::simulator($module,val1) [format %.2f [expr $::simulator($module,val1) - 0.01]]
                 }
                 
                 if {$::simulator($module,val2) >= 100} {
@@ -43,10 +43,10 @@ proc exec {args} {
                     set ::simulator($module,val2,sens) "plus"
                 }
                 if {$::simulator($module,val2,sens) == "plus"} {
-                    set ::simulator($module,val2) [expr $::simulator($module,val2) + 2]
+                    set ::simulator($module,val2) [format %.2f [expr $::simulator($module,val2) + 0.01]]
                 }
                 if {$::simulator($module,val2,sens) == "moins"} {
-                    set ::simulator($module,val2) [expr $::simulator($module,val2) - 2]
+                    set ::simulator($module,val2) [format %.2f [expr $::simulator($module,val2) - 0.01]]
                 }
             
                 switch $reg {

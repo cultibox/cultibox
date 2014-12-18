@@ -117,6 +117,10 @@ for {set i 1} {$i < $nbPlug} {incr i} {
             }
         }
         close $fid
+        
+        # On affiche les caractéristiques des prises
+        ::piLog::log [clock milliseconds] "info" "Plug $i - REG,type: $plug($i,REG,type) - REG,sens: $plug($i,REG,sens) - REG,precision: $plug($i,REG,precision)"
+        
     }
 
 }
