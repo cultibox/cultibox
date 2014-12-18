@@ -61,10 +61,10 @@ dpkg-reconfigure locales
 dpkg-reconfigure tzdata
 }}}
 
- * Installation des packages utiles:
+ * Installation des packages utiles et utilitaires:
 
 {{{
-apt-get install sudo localpurge vim
+apt-get install sudo localpurge vim libnss-mdns avahi-daemon
 }}}
 
  * Ajout de l'utilisateur Cultipi, suppréssion de l'utilisateur pi:
@@ -188,6 +188,20 @@ apt-get -y install lighttpd
 apt-get -y install php5-common php5-cgi php5 php-apc
 rm /var/www/index.lighttpd.html
 lighttpd-enable-mod fastcgi-php
+}}}
+
+ * Configuration de PHP:
+
+Editer le fichier */etc/php5/cgi/php.ini* et modifier les directives suivantes:
+
+{{{
+max_execution_time = 240
+memory_limit = 256M
+}}}
+
+ * Relancement du serveur :
+
+{{{
 /etc/init.d/lighttpd force-reload 
 }}}
 
@@ -267,93 +281,79 @@ Puis relancez le serveur:
 }}}
 
 
-* Sauvegarde de l'image:
-	sudo dd bs=4M if=/dev/mmcblk0 | gzip > ~/cultipi-`date +%d%m%y`.dd.gz   ==> après umount
-	
-	 ==>
+== Installation et configuration de mysql ==
 
-$SERVER["socket"] == ":443" {
-        ssl.engine = "enable"
-        ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem"
-}
+ * Installation de mysql:
+
+{{{
+apt-get install mysql-server php5-mysql
+}}}
 
 
+*Remarque:* configurer le serveur avec l'utilisateur *root* et appliqué le mot de passe *cultibox*
+ * Configuration de mysql:
 
-server.modules = (
-    "mod_access",
-    "mod_alias",
-    "mod_compress",
-    "mod_redirect",
-#       "mod_rewrite",
-)
+Éditer le fichier */etc/mysql/my.cnf* est modifié le port utilisé:
 
-server.document-root        = "/var/www"
-server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
-server.errorlog             = "/var/log/lighttpd/error.log"
-server.pid-file             = "/var/run/lighttpd.pid"
-server.username             = "www-data"
-server.groupname            = "www-data"
-server.port                 = 80
+{{{
+port        = 3891
+}}}
 
+ * Redémarrage du serveur:
 
-index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
-url.access-deny             = ( "~", ".inc" )
-static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
-
-compress.cache-dir          = "/var/cache/lighttpd/compress/"
-compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
-
-# default listening port for IPv6 falls back to the IPv4 port
-include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
-include_shell "/usr/share/lighttpd/create-mime.assign.pl"
-include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
-
-$HTTP["scheme"] == "http" {
-    # capture vhost name with regex conditiona -> %0 in redirect pattern
-    # must be the most inner block to the redirect rule
-    $HTTP["host"] =~ ".*" {
-        url.redirect = (".*" => "https://%0$0")
-    }
-}
-
-$SERVER["socket"] == ":443" {
-        ssl.engine = "enable"
-        ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem"
-}
+{{
+/etc/init.d/mysql force-reload
+}}}
 
 
 
+= Configuration du réseau du Cultipi =
 
+ * Configuration des interfaces:
 
-	force-reload et restart
+Editer le fichier */etc/network/interfaces* afin que le fichier soit identique à cela:
 
-* Installation Mysql: 
-	sudo apt-get install mysql-server php5-mysql    => password cultibox
-	vi /etc/mysql/my.cnf ==> changer port 3891
-
-
-
-
-
-
-* Configuration du wifi:
-		editer /etc/network/interface
-		
+{{{
+# interfaces(5) file used by ifup(8) and ifdown(8)
+#IFACE LO
 auto lo
 iface lo inet loopback
 
+#IFACE ETH0
 allow-hotplug eth0
+auto eth0
 iface eth0 inet dhcp
 
-
+#IFACE WLAN0
 allow-hotplug wlan0
 auto wlan0
 iface wlan0 inet static
-    address 172.16.0.100
-    netmask 255.255.255.0
-    wireless-channel 4
-    wireless-essid cultipi_net
-    wireless-mode ad-hoc
+address 172.16.0.100
+netmask 255.255.255.0
+wireless-channel 4
+wireless-essid cultipi_network
+wireless-mode ad-hoc
+}}}
+
+
+*Remarque:* les commentaires sont importants, le logiciel de configuration du réseau Cultinet les utilise pour déterminer les blocs liés aux différentes interfaces. Ce fichier de configuration déclare un réseau adHoc sur lequel il sera possible de se connecter afin de configurer son réseau wifi.
+
+
+ * Installation et configuration d'un serveur DHCP pour le mode adHoc
+
+{{{
+apt-get install udhcpd
+}}}
+
+{{{
+vi /etc/udhcpd.conf
+}}}
+
+
+
+* Sauvegarde de l'image:
+	sudo dd bs=4M if=/dev/mmcblk0 | gzip > ~/cultipi-`date +%d%m%y`.dd.gz   ==> après umount
+
 
 
 
@@ -427,43 +427,12 @@ ifconfig wlan0 up
 
 
 
+vérifier cache-control lighttpd 
 
-sudo apt-get install libnss-mdns
-
-
-
-
-vérifier cache-control lighttpd + options avancé de overcloaking
-
-
----------------------------------------------
-	mkdir -p /etc/lighttpd/certs
-	openssl req -new -x509 -keyout lighttpd.pem -out lighttpd.pem -days 3650 -nodes
-	chmod 400 lighttpd.pem
-	vi /etc/lightttpd/lighttpd.conf ==> ajouter: 
-			
-$SERVER["socket"] == ":443" {
-  ssl.engine = "enable" 
-  ssl.pemfile = "/etc/lighttpd/certs/lighttpd.pem" 
-}
 
 
 
 rpi-update
-
-
-root@cultipi:~# cat /etc/cron.daily/cultibpi 
-#!/bin/bash
-
-if [ -d /var/cache/lighttpd/compress/cultibox ]; then
-    rm -Rf /var/cache/lighttpd/compress/cultibox
-fi
-
-if [ -d /var/cache/lighttpd/compress/cultinet ]; then
-    rm -Rf /var/cache/lighttpd/compress/cultinet
-fi
-
-
 
 
 root@cultipi:~# cat /etc/sudoers
@@ -486,8 +455,4 @@ compilation i2c:
 make
 make install du dépôt
 
-visudo /etc/sudoers ==> cultipi ALL=(ALL:ALL) ALL
-
-vi ~/.vimrc ===> aouter :syntax on aouter alias vi='vim' dans ~/.bashrc
-	apt-get install i2c-tools
-	
+visudo /etc/sudoers ==> cultipi ALL=(ALL:ALL) ALL	
