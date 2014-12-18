@@ -7,7 +7,7 @@ La procédure suivante permet d'installer manuellement un système cultipi sur u
 
 = Installation du système de base =
 
- * Télécharger l'image RAspbian de base qui servira de système à la Cultipi: 
+ * Télécharger l'image Raspbian de base qui servira de système à la Cultipi: 
 
 {{{
 http://files2.linuxsystems.it/raspbian_wheezy_20140726.img.7z
@@ -19,25 +19,30 @@ http://files2.linuxsystems.it/raspbian_wheezy_20140726.img.7z
 7za x raspbian_wheezy_20130923.img.7z
 }}}
 /
- * Brancher la carte SD qui va recevoir le système, démonter les partitions déja présentes puis lancer la commande:
+ * Brancher la carte SD qui va recevoir le système, démonter les partitions déjà présentes puis lancer la commande:
 
 {{{
 dd bs=4M if=raspbian_wheezy_20130923.img of=/dev/sdX
 }}}
 
-Remarque: /dev/sdX correspond au device de la carte SD qui va recevoir le système. Il faut préciser le device dans son intégralité et non pas une partition, par exemple: /deb/sdb et non pas /dev/sdb2
+*Remarque:* /dev/sdX correspond au device de la carte SD qui va recevoir le système. Il faut préciser le device dans son intégralité et non pas une partition, par exemple: /dev/sdb et non pas /dev/sdb2
 
- * Une fois la copie terminée, il est possible de redimenssionner les partitions pour utiliser tous l'espace de la carte SD. Dans ce cas la il faudra déplacer l partition swap après toutes les autres partitions. Il est possible d'utiliser gparted pour réaliser cela.
+ * Une fois la copie terminée, il est possible de redimensionner les partitions pour utiliser tous l'espace de la carte SD. Dans ce cas la il faudra déplacer la partition swap après toutes les autres partitions. Il est possible d'utiliser gparted pour réaliser cela.
 
  * Réintroduire la carte SD dans le Raspberry et brancher l'alimentation.
 
- * La connexion sur le raspberry se fait grâce à un écran branché ou alors par SSH, par défaut si vous branchez un câble ethernet le Raspberry obtiendra une adresse IP depuis votre Box. Il vous est alors possible de vous connecter par SSH ou directement depuis la console:
+ * La connexion sur le Raspberry se fait grâce à un écran/clavier branché ou alors par SSH. Par défaut si vous branchez un câble Ethernet le Raspberry obtiendra une adresse IP depuis votre Box. Il vous est alors possible de vous connecter par SSH ou directement depuis la console:
 
 {{{
 Login: pi
-Mot de passe: raspberry
+Password: raspberry
 }}}
 
+ou
+
+{{{
+Login: root
+Password: raspberry
 
 = Personnalisation de l'image =
 
@@ -48,23 +53,24 @@ apt-get update
 apt-get upgrade
 }}}
 
- * Reconfiguration des locales et le timezone:
+ * Reconfiguration des locales et du timezone:
 
 {{{	
 dpkg-reconfigure locales 
 dpkg-reconfigure tzdata
 }}}
 
- * Installation de packages utiles:
+ * Installation des packages utiles:
 
 {{{
 apt-get install sudo localpurge vim
 }}}
 
- * Ajout de l'utilisateur Cultipi:
+ * Ajout de l'utilisateur Cultipi, suppréssion de l'utilisateur pi:
 
 {{{
 adduser cultipi
+deluser pi
 }}}
 
  * Configuration du nom de l'hôte:
@@ -94,7 +100,7 @@ apt-get -y install inetutils-syslogd
 
 	
 = Optimisation du Raspberry =
- * Gestion de la mémoire!
+ * Gestion de la mémoire:
 
 {{{
 vi /boot/config.txt
@@ -103,7 +109,7 @@ vi /boot/config.txt
 Ajouter *gpu_mem=16* pour donner le maximum de mémoire au CPU au détriment du GPU.
 Décomenter *arm_freq=800* pour overclocker le Raspberry (http://elinux.org/RPiconfig)
 
- * Suppréssion des consoles inutilisées:
+ * Suppression des consoles inutilisées:
 
 {{{
 sed -i '/[2-6]:23:respawn:\/sbin\/getty 38400 tty[2-6]/s%^%#%g' /etc/inittab
@@ -125,7 +131,7 @@ echo "blacklist ipv6" >> /etc/modprobe.d/fbdev-blacklist.conf
 sed -i '/::/s%^%#%g' /etc/hosts
 }}}
 
- * Optimisation de l'ordonanceur:
+ * Optimisation de l’ordonnanceur:
 
 {{{				
 sed -i 's/deadline/noop/g' /boot/cmdline.txt
@@ -167,29 +173,38 @@ echo -e "/var/log/cron\n/var/log/mail\n/var/log/messages {\n\trotate 4\n\tweekly
 service inetutils-syslogd start
 }}}
 
-Remarque: optimisations issues de : 
+*Remarque:* optimisations issues de : 
 https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
 
 
+= Installation des services utiles aux logiciels =
+
+== Installation et configuration de lighttpd et PHP ==
+ * Installation de lighttpd et php:
+
+{{{
+apt-get -y install lighttpd
+apt-get -y install php5-common php5-cgi php5 php-apc
+rm /var/www/index.lighttpd.html
+lighttpd-enable-mod fastcgi-php
+/etc/init.d/lighttpd force-reload 
+}}}
+
+*Remarque:* Vous pouvez utiliser la fonction phpinfo() afin de vérifier les composants activés dans PHP
+
+ * Création des certificats pour https:
+
+{{{
+mkdir -p /etc/lighttpd/ssl
+openssl req -new -x509 -keyout cultipi.pem -out server.pem -days 365 -nodes
+chmod -R 600 /etc/lighttpd/ssl
+
+}}}
 
 * Sauvegarde de l'image:
 	sudo dd bs=4M if=/dev/mmcblk0 | gzip > ~/cultipi-`date +%d%m%y`.dd.gz   ==> après umount
 	
-
-* Installation lighttpd et php:
-	sudo apt-get -y install lighttpd
-	sudo apt-get -y install php5-common php5-cgi php5 php-apc => php_info pour regarder
-	sudo lighttpd-enable-mod fastcgi-php
-	sudo /etc/init.d/lighttpd force-reload 
-	rm /var/www/index.lighttpd.html
-	
-	-----------------------------
-	mkdir -p /etc/lighttpd/ssl
-	openssl req -new -x509 -keyout cultipi.pem -out server.pem -days 365 -nodes
-	root@cultipi:/etc/lighttpd/ssl# chmod -R 600 /etc/lighttpd/ssl
-
-
-	vi /etc/lighttpd/lighttpd.conf ==>
+	 ==>
 
 $SERVER["socket"] == ":443" {
         ssl.engine = "enable"
