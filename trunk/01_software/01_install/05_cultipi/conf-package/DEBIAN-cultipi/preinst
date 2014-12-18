@@ -12,5 +12,9 @@ if [ -f /etc/init.d/cultipi ]; then
             fi
         done
     fi
+
+    if [ "`id cultipi 2>/dev/null`" == "" ]; then
+        useradd --password raspberry cultipi
+    fi
 fi
 exit 0

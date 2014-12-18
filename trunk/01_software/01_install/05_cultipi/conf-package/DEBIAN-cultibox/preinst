@@ -40,4 +40,9 @@ EOF
 
         touch /tmp/cultibox_upgrade
 fi
+
+if [ -d /var/cache/lighttpd/compress/cultibox ]; then
+    rm -Rf /var/cache/lighttpd/compress/cultbox
+fi
+
 exit 0
