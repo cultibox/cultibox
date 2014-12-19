@@ -318,11 +318,11 @@ Le fichier doit ressembler à cela:
 
 {{{
 server.modules = (
-	"mod_access",
-	"mod_alias",
-	"mod_compress",
- 	"mod_redirect",
-#   "mod_rewrite",
+   "mod_access",
+   "mod_alias",
+   "mod_compress",
+   "mod_redirect",
+   #"mod_rewrite",
 )
 
 server.document-root        = "/var/www"
@@ -347,16 +347,22 @@ include_shell "/usr/share/lighttpd/create-mime.assign.pl"
 include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
 
 $HTTP["scheme"] == "http" {
-    # capture vhost name with regex conditiona -> %0 in redirect pattern
-    # must be the most inner block to the redirect rule
-    $HTTP["remoteip"] != "172.16.0.0/24" {    
+    $HTTP["remoteip"] == "172.16.0.0/24" {
+        $HTTP["host"] =~ ".*" {
+            url.redirect = ("^/$" => "/cultinet")
+        }
+    } else  $HTTP["remoteip"] != "172.16.0.0/24" {
         $HTTP["host"] =~ ".*" {
             url.redirect = (".*" => "https://%0$0")
         }
-    } 
+    }
+}
 
+$HTTP["scheme"] == "https" {
     $HTTP["remoteip"] == "172.16.0.0/24" {
-            url.redirect = ("^/$" => "cultinet" )
+        $HTTP["host"] =~ ".*" {
+            url.redirect = (".*" => "http://%0$0")
+        }
     }
 }
 
@@ -364,6 +370,7 @@ $SERVER["socket"] == ":443" {
         ssl.engine = "enable"
         ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem"
 }
+
 }}}
 
 
