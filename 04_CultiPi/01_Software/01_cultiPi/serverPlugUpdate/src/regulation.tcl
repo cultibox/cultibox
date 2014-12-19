@@ -7,6 +7,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
     # On vérifie si l'état de la dernière commande envoyée existe
     if {[array name ::plug -exact $nbPlug,lastValue] == ""} {
         set ::plug($nbPlug,lastValue) ""
+        set ::plug($nbPlug,inRegulation) "NONE"
     }
     
     if {$plgPrgm == ""} {
@@ -26,8 +27,8 @@ proc emeteur_regulation {nbPlug plgPrgm} {
         
             # Le calcul de la régulation du secondaire est toujours réalisée sur la moyenne
             set valueSecondaire [computeValueForRegulation $nbPlug $::plug($nbPlug,SEC,type) "M"]
-            set consigneSupSec [expr $plgPrgm + $::plug($nbPlug,SEC,precision)]
-            set consigneInfSec [expr $plgPrgm - $::plug($nbPlug,SEC,precision)]
+            set consigneSupSec [expr $::plug($nbPlug,SEC,value) + $::plug($nbPlug,SEC,precision)]
+            set consigneInfSec [expr $::plug($nbPlug,SEC,value) - $::plug($nbPlug,SEC,precision)]
         
             # Si le sens de la régulation est +
             if {$::plug($nbPlug,SEC,sens) == "+"} {
@@ -37,14 +38,20 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                     # On force la prise dans l'état défini dans la conf
                     set valeurToPilot $etatSecondaire
                     
-                    ::piLog::log [clock milliseconds] "debug" "regSec+ Sup plug:-$nbPlug- progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
+                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec+ Sup progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
                     
-                } elseif {$valueSecondaire > $consigneInfSec  && $::plug($nbPlug,lastValue) == "on"} {
+                    # On sauvegarde le fait qu'on est en régulation secondaire
+                    set ::plug($nbPlug,inRegulation) "SEC"
+                    
+                } elseif {$valueSecondaire > $consigneInfSec  && $::plug($nbPlug,inRegulation) == "SEC"} {
                 
                     # Sensor is not upper than consigne but between two marges, keep the last consigne
-                    set valeurToPilot $::plug($nbPlug,lastValue)
+                    set valeurToPilot $etatSecondaire
                     
-                    ::piLog::log [clock milliseconds] "debug" "regSec+ Between plug:-$nbPlug- progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
+                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec+ Between progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
+                    
+                    # On sauvegarde le fait qu'on est en régulation secondaire
+                    set ::plug($nbPlug,inRegulation) "SEC"
                     
                 }
             } else {
@@ -54,16 +61,22 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                     # On force la prise dans l'état défini dans la conf
                     set valeurToPilot $etatSecondaire
 
-                    ::piLog::log [clock milliseconds] "debug" "regSec- Inf plug:-$nbPlug- progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
+                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec- Inf progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
 
-                } elseif {$valueSecondaire < $consigneSupSec && $::plug($nbPlug,lastValue) == "on"} {
+                    # On sauvegarde le fait qu'on est en régulation secondaire
+                    set ::plug($nbPlug,inRegulation) "SEC"
+                    
+                } elseif {$valueSecondaire < $consigneSupSec && $::plug($nbPlug,inRegulation) == "SEC"} {
                 
                     # Sensor is not upper than consigne but between two marges, keep the last consigne
                     # Keep the last consigne only if it was ON
-                    set valeurToPilot $::plug($nbPlug,lastValue)
+                    set valeurToPilot $etatSecondaire
 
-                    ::piLog::log [clock milliseconds] "debug" "regSec- Between plug:-$nbPlug- progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
+                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec- Between progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
 
+                    # On sauvegarde le fait qu'on est en régulation secondaire
+                    set ::plug($nbPlug,inRegulation) "SEC"
+                    
                 }
             }
         
@@ -92,8 +105,11 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                         set valeurToPilot "on"
                     }
 
-                    ::piLog::log [clock milliseconds] "debug" "regPri+ NoSensor plug:-$nbPlug- progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri+ NoSensor progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
+                    # On sauvegarde le fait qu'on a pas de régulation
+                    set ::plug($nbPlug,inRegulation) "NONE"
+                    
                 } elseif {$::plug($nbPlug,moduleType) == "dimmer"} {
                     # Dimmer case
                     # $valeurToPilot < 0
@@ -109,8 +125,11 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                     #     set valeurToPilot 10000;
                     # }
 
-                    ::piLog::log [clock milliseconds] "debug" "regPri+ Dimmer plug:-$nbPlug- progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri+ Dimmer progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
+                    # On sauvegarde le fait qu'on a une régulation primaire
+                    set ::plug($nbPlug,inRegulation) "PRI"
+                    
                 } elseif {$::plug($nbPlug,moduleType) == "wirelessplug"} {
                     # Cas de la prise sans fils
                     if {$valuePrimaire > $consigneSupPri} {
@@ -118,14 +137,20 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                         # Standard plug case
                         set valeurToPilot "on"
 
-                        ::piLog::log [clock milliseconds] "debug" "regPri+ Wireless Sup plug:-$nbPlug- progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri+ Wireless Sup progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
+                        # On sauvegarde le fait qu'on a une régulation primaire
+                        set ::plug($nbPlug,inRegulation) "PRI"
+                        
                     } elseif {$valuePrimaire < $consigneInfPri} {
                     
                         set valeurToPilot "off"
 
-                        ::piLog::log [clock milliseconds] "debug" "regPri+ Wireless Inf plug:-$nbPlug- progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri+ Wireless Inf progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
+                        # On sauvegarde le fait qu'on a une régulation primaire
+                        set ::plug($nbPlug,inRegulation) "PRI"
+                        
                     }
 
                 }
@@ -135,8 +160,11 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                     # Si pas de donnée capteur, on éteint l'effecteur
                     set valeurToPilot "off"
 
-                    ::piLog::log [clock milliseconds] "debug" "regPri- NoSensor plug:-$nbPlug- progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri- NoSensor progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
+                        # On sauvegarde le fait qu'on a une régulation primaire
+                        set ::plug($nbPlug,inRegulation) "NONE"
+                    
                 } elseif {$::plug($nbPlug,moduleType) == "dimmer"} {
                     # Dimmer case
                     # If  $valeurToPilot < 0
@@ -150,7 +178,7 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                     #     set valeurToPilot 10000
                     # }
 
-                    ::piLog::log [clock milliseconds] "debug" "regPri- Dimmer plug:-$nbPlug- progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri- Dimmer progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
                 } elseif {$::plug($nbPlug,moduleType) == "wirelessplug"} {
                 
@@ -160,14 +188,20 @@ proc emeteur_regulation {nbPlug plgPrgm} {
                         # Standard plug case
                         set valeurToPilot "on"
 
-                        ::piLog::log [clock milliseconds] "debug" "regPri- Wireless Inf plug:-$nbPlug- progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri- Wireless Inf progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
+                        # On sauvegarde le fait qu'on a une régulation primaire
+                        set ::plug($nbPlug,inRegulation) "PRI"
+                        
                     } elseif {$valuePrimaire > $consigneSupPri} {
                     
                         set valeurToPilot "off"
 
-                        ::piLog::log [clock milliseconds] "debug" "regPri- Wireless Sup plug:-$nbPlug- progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regPri- Wireless Sup progr:-$plgPrgm- value:-$valuePrimaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupPri- trigLow:-$consigneInfPri-"
 
+                        # On sauvegarde le fait qu'on a une régulation primaire
+                        set ::plug($nbPlug,inRegulation) "PRI"
+                        
                     }
                 }
             }

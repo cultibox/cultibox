@@ -233,11 +233,16 @@ proc savePlugSendValue {plug value} {
     set ::plug($plug,value)  $value
     
     # On ajoute à la liste des valeurs mise à jour
-    lappend ::plug(updated)  $plug
+    # Si seulement il n'y a pas déjà une valeur
+    if {[lsearch $::plug(updated) $plug] == -1} {
+        lappend ::plug(updated)  $plug
+    }
     
 }
 
 proc emeteur_subscriptionEvenement {} {
+
+    set ThereAreSomeClient 0
 
     if {$::plug(updated) != ""} {
     
@@ -253,12 +258,15 @@ proc emeteur_subscriptionEvenement {} {
                 
                 ::piServer::sendToServer $client "$client [incr ::TrameIndex] _subscriptionEvenement ::plug($plugNb,value) $::plug($plugNb,value) [clock milliseconds]"
                 
+                set ThereAreSomeClient 1
             }
         
         }
     
-        # On efface la liste
-        set ::plug(updated) ""
+        # On efface la liste si on a envoyé quelque chose
+        if {$ThereAreSomeClient != 0} {
+            set ::plug(updated) ""
+        }
     }
     
     after 200 emeteur_subscriptionEvenement

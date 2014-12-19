@@ -32,7 +32,7 @@ proc ::sql::addPlugState {plgNumber state time} {
         set time [clock milliseconds]
         ::piLog::log [clock milliseconds] "error" "::sql::addPlugState : time is not defined -$time-"
     }
-    ::piLog::log [clock milliseconds] "info" "::sql::addPlugState : time defined -$plgNumber $state $time-"
+    ::piLog::log [clock milliseconds] "debug" "::sql::addPlugState : -$plgNumber $state $time-"
     set time [expr $time / 1000]
 
     set formattedTime [clock format $time -format "%y%m%d0%u%H%M%S"]
