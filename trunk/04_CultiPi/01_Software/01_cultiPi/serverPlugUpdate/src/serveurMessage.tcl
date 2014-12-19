@@ -52,6 +52,11 @@ proc messageGestion {message} {
                 ::piLog::log [clock milliseconds] "error" "Couldnot rekognize Asked subscriptionEvenement $variable - parametre $repere"
             }
         }
+        "updateSubscriptionEvenement" {
+            ::piLog::log [clock milliseconds] "info" "Asked update subscriptionEvenement"
+            
+            emeteur_subscriptionEvenement
+        }
         "_getPort" {
             set ::port([::piTools::lindexRobust $message 3]) [::piTools::lindexRobust $message 4]
             ::piLog::log [clock milliseconds] "debug" "getPort response : module [::piTools::lindexRobust $message 3] port [::piTools::lindexRobust $message 4]"

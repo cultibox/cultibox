@@ -34,6 +34,10 @@ proc ::plugAcq::loop {} {
         }
 
         set ::subscriptionRunned(plugAcq) 1
+        
+        # On lui demande une mise à jour des valeurs
+        ::piServer::sendToServer $::port(serverPlugUpdate) "$::port(serverHisto) [incr ::TrameIndex] updateSubscriptionEvenement"
+        
     
     } else {
         ::piLog::log [clock milliseconds] "debug" "port of serverAcqSensor is not defined"

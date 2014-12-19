@@ -120,6 +120,7 @@ for {set i 1} {$i < $nbPlug} {incr i} {
         
         # On affiche les caractéristiques des prises
         ::piLog::log [clock milliseconds] "info" "Plug $i - REG,type: $plug($i,REG,type) - REG,sens: $plug($i,REG,sens) - REG,precision: $plug($i,REG,precision)"
+        ::piLog::log [clock milliseconds] "info" "Plug $i - SEC,type: $plug($i,SEC,type) - SEC,sens: $plug($i,SEC,sens) - SEC,etat_prise: $plug($i,SEC,etat_prise) - SEC,value: $plug($i,SEC,value) - SEC,precision: $plug($i,SEC,precision)"
         
     }
 
@@ -149,4 +150,4 @@ emeteur_subscriptionEvenement
 
 vwait forever
 
-# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\serverPlugUpdate\serverPlugUpdate.tcl" 6003 "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf\00_defaultConf\serverPlugUpdate\conf.xml" 6001 
+# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\01_cultiPi\serverPlugUpdate\serverPlugUpdate.tcl" 6003 "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf\00_defaultConf_Win\serverPlugUpdate\conf.xml" 6001 
