@@ -21,10 +21,11 @@ proc load_plugXX {} {
     }
 
     set plugVFileName "plugv"
+    ::piLog::log [clock milliseconds] "info" "plugv -[::piTime::readMonth][::piTime::readDay]-"
     set fid [open [file join $::confPath prg plgidx] r]
     while {[eof $fid] != 1 } {
         gets $fid UneLigne
-        if {[string range $UneLigne 0 3] == "[rtc_readDay][rtc_readMonth]"} {
+        if {[string range $UneLigne 0 3] == "[::piTime::readMonth][::piTime::readDay]"} {
             set plugVFileName "plu[string range $UneLigne 4 5]"
             break
         }
@@ -67,30 +68,6 @@ proc load_plugXX {} {
     close $fid
 }
 
-proc rtc_readSecondsOfTheDay {} {
-
-    set time [clock seconds] 
-
-    set sec [string trimleft [clock format $time -format %S] "0"]
-    if {$sec == ""} {set sec 0}
-    set min [string trimleft [clock format $time -format %M] "0"]
-    if {$min == ""} {set min 0}
-    set hour [string trimleft [clock format $time -format %H] "0"]
-    if {$hour == ""} {set hour 0}
-
-    return [expr $sec + $min * 60 + $hour * 3600]
-}
-
-proc rtc_readDay {} {
-
-    return [clock format [clock seconds] -format %d]
-}
-
-proc rtc_readMonth {} {
-
-    return [clock format [clock seconds] -format %m]
-}
-
 proc getsProgramm {rtc_readSecondsOfTheDay {updateNextTimeToChange 0}} {
     set prg ""
     set lastProgramm ""
@@ -121,7 +98,7 @@ proc getsProgramm {rtc_readSecondsOfTheDay {updateNextTimeToChange 0}} {
 proc emeteur_update_loop {} {
         
     # Read actual hour
-    set uc24_seconds [rtc_readSecondsOfTheDay]
+    set uc24_seconds [::piTime::readSecondsOfTheDay]
                
     # If system is in alarm state
     if {$::uc8_alarm == 1}  {
@@ -143,7 +120,7 @@ proc emeteur_update_loop {} {
     }
 
     # If first evaluation of values {plug adress are send and plug value not send} are not done
-    if {[rtc_readDay] != $::emeteur_actualDay } {
+    if {[::piTime::readDay] != $::emeteur_actualDay } {
 
         # Load plugV
         load_plugXX
@@ -158,7 +135,7 @@ proc emeteur_update_loop {} {
         ::piLog::log [clock milliseconds] "info" "init emetor next change $::nextTimeToChange"
         
         # register day
-        set ::emeteur_actualDay [rtc_readDay]
+        set ::emeteur_actualDay [::piTime::readDay]
 
     } elseif {$uc24_seconds >= $::nextTimeToChange && $uc24_seconds != 86399} {
 
@@ -215,12 +192,6 @@ proc updatePlug {plugNumber} {
         emeteur_regulation $plugNumber $plgPrgm 
     } else {
         ::piLog::log [clock milliseconds] "info" "update plug $plugNumber with programm $plgPrgm"
-        # On traduit on et off
-        if {$plgPrgm == "on"} {
-            set plgPrgm [expr 1]
-        } else {
-            set plgPrgm [expr 0]
-        }
         
         # On envoi la commande au module
         ::wireless::setValue $plugNumber $plgPrgm

@@ -16,6 +16,9 @@ proc ::plugAcq::init {} {
     }
     
     set ::subscriptionRunned(plugAcq) 0
+    set ::updateOfEndOfTheDay 0
+    set ::updateAtStartOfTheDay 0
+    
 }
 
 
@@ -24,8 +27,8 @@ proc ::plugAcq::loop {} {
     variable periodeAcq
     variable bandeMorteAcq
     
-    # On vérifie si le numéro de port est disponible
-    if {$::port(serverPlugUpdate) != ""} {
+    # On vérifie si le numéro de port est disponible (et qu'on l'a pas demandé)
+    if {$::port(serverPlugUpdate) != "" && $::subscriptionRunned(plugAcq) == 0} {
     
         # Le numéro du port est disponible
         # On lui demande les repères nécessaires (les 16 premiers) par abonnement
@@ -36,15 +39,39 @@ proc ::plugAcq::loop {} {
         set ::subscriptionRunned(plugAcq) 1
         
         # On lui demande une mise à jour des valeurs
-        ::piServer::sendToServer $::port(serverPlugUpdate) "$::port(serverHisto) [incr ::TrameIndex] updateSubscriptionEvenement"
+        # ::piServer::sendToServer $::port(serverPlugUpdate) "$::port(serverHisto) [incr ::TrameIndex] updateSubscriptionEvenement"
         
     
-    } else {
+    } elseif {$::subscriptionRunned(plugAcq) == 0} {
         ::piLog::log [clock milliseconds] "debug" "port of serverAcqSensor is not defined"
     }
-
-    # On tue la boucle si les souscriptions sont lancés
-    if {$::subscriptionRunned(plugAcq) == 0} {
-        after 1500 ::plugAcq::loop
+    
+    # En fin de journée, on demande une mise à jour des valeurs
+    if {[::piTime::readSecondsOfTheDay] > 86397} {
+        if {$::updateOfEndOfTheDay == 0 && $::port(serverPlugUpdate) != ""} {
+            set ::updateOfEndOfTheDay 1
+            
+            # On lui demande une mise à jour des valeurs
+            ::piServer::sendToServer $::port(serverPlugUpdate) "$::port(serverHisto) [incr ::TrameIndex] updateSubscriptionEvenement"
+            
+        }
+    } else {
+        set ::updateOfEndOfTheDay 0
     }
+    
+    # En début de journée aussi !
+    if {[::piTime::readSecondsOfTheDay] < 5 && [::piTime::readSecondsOfTheDay] > 2} {
+        if {$::updateAtStartOfTheDay == 0 && $::port(serverPlugUpdate) != ""} {
+            set ::updateAtStartOfTheDay 1
+            
+            # On lui demande une mise à jour des valeurs
+            ::piServer::sendToServer $::port(serverPlugUpdate) "$::port(serverHisto) [incr ::TrameIndex] updateSubscriptionEvenement"
+            
+        }
+    } else {
+        set ::updateAtStartOfTheDay 0
+    }
+
+    # On relance la boucle toutes les 500 millisecondes
+    after 500 ::plugAcq::loop
 }

@@ -13,6 +13,7 @@ package require piLog
 package require piServer
 package require piTools
 package require piXML
+package require piTime
 
 # Chargement des fichiers externes
 source [file join $rootDir serverHisto src plugAcq.tcl]

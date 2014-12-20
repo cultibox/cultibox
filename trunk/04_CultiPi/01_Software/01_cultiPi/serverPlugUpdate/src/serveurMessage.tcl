@@ -42,7 +42,7 @@ proc messageGestion {message} {
             
                 if {[array names ::plug -exact "$plugNumber,value"] != ""} {
                 
-                    # On ajoute le numéro de prot à la liste des abonnés
+                    # On ajoute le numéro de port à la liste des abonnés
                     lappend ::plug(subscription,$plugNumber) $serverForResponse
                 
                 } else {
@@ -55,7 +55,17 @@ proc messageGestion {message} {
         "updateSubscriptionEvenement" {
             ::piLog::log [clock milliseconds] "info" "Asked update subscriptionEvenement"
             
-            emeteur_subscriptionEvenement
+            # On met à jour la liste qui indique quelles sont les prises mise à jour
+            set plugNumber 1
+            while {1} {
+                if {[array names ::plug -exact "$plugNumber,value"] != ""} {
+                    lappend ::plug(updated)  $plugNumber
+                } else {
+                    break;
+                }
+                incr plugNumber
+            }
+            
         }
         "_getPort" {
             set ::port([::piTools::lindexRobust $message 3]) [::piTools::lindexRobust $message 4]
