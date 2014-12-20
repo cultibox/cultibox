@@ -340,7 +340,7 @@ $(function () {
                                 var startDate=$("#startyear").val()+"-"+$("#startmonth").val();
                             }
                             if (cheBu.attr("checked") == "checked") {
-                            
+                           
                                 // Block interface
                                 $.blockUI({ 
                                     message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
@@ -356,7 +356,7 @@ $(function () {
                                         color: '#fffff' 
                                     } 
                                 });
-                                
+                               
                                 // Call logs_get_serie to get programm value
                                 $.ajax({
                                     data:{
@@ -463,6 +463,9 @@ $(function () {
                                          // All curve have been rendered : Unblock UI
                                         $.unblockUI();
 
+                                    },
+                                    error: function() {
+                                        $.unblockUI();
                                     },
                                     cache: false
                                 });
@@ -1201,6 +1204,9 @@ $(document).ready(function() {
 
 
                     });
+                },
+                error: function() {
+                    $.unblockUI();
                 },
                 cache: false
             });

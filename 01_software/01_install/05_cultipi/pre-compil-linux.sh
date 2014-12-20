@@ -26,7 +26,7 @@ if [ "$2" == "version" ]; then
     elif [ "$1" == "cultinet" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/02_cultinet/VERSION`
     elif [ "$1" == "cultibox" ]; then
-        VERSION=`cat ../../02_src/VERSION`
+        VERSION=`head -1 ../../CHANGELOG |sed -r 's#^.*\((.*)\).*$#\1#'`
     fi
 else
     VERSION=$2
