@@ -1,5 +1,6 @@
 Cultibox (2.0.21) precise; urgency=low
-    + Correction de l'export d'une image des logs et du blockUI
+    + Correction de l'export d'une image des logs et du blockUI 
+    + Ajout des couleurs pour les courbes des capteurs 5 et 6
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sat Dec 20 12:26:18 CEST 2014
 
