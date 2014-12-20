@@ -11,7 +11,7 @@ fi
 
 
 if [ "`cat /etc/crontab|grep cultipi`" == "" ]; then
-    echo "*/1 *   * * *   root    /etc/init.d/cultipi status >/dev/null; if [ $? -ne 0 ]; then /etc/init.d/cultipi force-reload; fi" >> /etc/crontab
+    echo "*/1 *   * * *   root    /etc/init.d/cultipi status >/dev/null; if [ \$? -ne 0 ]; then /etc/init.d/cultipi force-reload; fi" >> /etc/crontab
 fi
 
 
