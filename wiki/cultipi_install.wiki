@@ -104,7 +104,7 @@ dpkg-reconfigure tzdata
  * Installation des packages utiles et utilitaires:
 
 {{{
-apt-get install sudo localpurge vim libnss-mdns avahi-daemon tcl
+apt-get install sudo localpurge vim libnss-mdns avahi-daemon tcl ifplugd
 }}}
 
  * Ajout de l'utilisateur Cultipi, suppréssion de l'utilisateur pi:
@@ -408,7 +408,7 @@ port        = 3891
 
 
 = Configuration du réseau du Cultipi =
-
+ 
  * Configuration des interfaces:
 
 {{{
@@ -441,6 +441,36 @@ wireless-mode ad-hoc
 
 
 *Remarque:* les commentaires sont importants, le logiciel de configuration du réseau Cultinet les utilise pour déterminer les blocs liés aux différentes interfaces. Ce fichier de configuration déclare un réseau adHoc sur lequel il sera possible de se connecter afin de configurer son réseau wifi.
+
+
+Éditer le fichier */etc/default/ifplugd* pour qu'il ressemble à cela:
+
+{{{
+INTERFACES="eth0"
+HOTPLUG_INTERFACES=""
+ARGS="-q -f -u0 -d10 -w -I"
+SUSPEND_ACTION="stop"
+}}}
+
+
+Puis éditer le fichier */etc/ifplugd/action.d/ifupdown* pour rajouter l'option --force. Le fichier doit ressembler à cela:
+
+{{{
+#!/bin/sh
+set -e
+
+case "$2" in
+up)
+    /sbin/ifup --force $1
+    ;;
+down)
+    /sbin/ifdown --force $1
+    ;;
+esac
+}}}
+
+
+Le système ifplugd permet de relancer la configuration de l'interface eth0 dès le moment ou un câble est branché.
 
 
  * Installation et configuration d'un serveur DHCP pour le mode adHoc
