@@ -28,6 +28,7 @@ if [ "$1" == "purge" ]; then
 
     userdel cultipi
     sed -i "/cultipi ALL = (root) NOPASSWD: \/sbin\/modprobe/d" /etc/sudoers
+    sed -i "/.*\/etc\/init.d\/cultipi.*/d" /etc/crontab
 fi
 
 if [ "$1" == "remove" ]; then
@@ -36,8 +37,9 @@ if [ "$1" == "remove" ]; then
         rm -Rf /etc/init.d/cultipi
     fi
     sed -i "/cultipi ALL = (root) NOPASSWD: \/sbin\/modprobe/d" /etc/sudoers
-    
-    if [ -d /etc/cultipi ]; then
-        rm -Rf /etc/cultipi
+    sed -i "/.*\/etc\/init.d\/cultipi.*/d" /etc/crontab
+
+    if [ -d /opt/cultipi ]; then
+        rm -Rf /opt/cultipi
     fi
 fi
