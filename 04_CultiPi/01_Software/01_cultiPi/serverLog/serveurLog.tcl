@@ -32,7 +32,7 @@ proc server {channel host port} \
     if {$rc == 1} \
     {
         # i/o error -> log
-        log "<[clock milliseconds]><serveurlog><erreur><i/o error - $msg>"
+        log "<[clock milliseconds]><serveurlog><error><i/o error - $msg>"
     }
 }
 
@@ -53,7 +53,7 @@ proc input {channel} \
       if {$rc == 1} \
       {
         # i/o error -> log & close
-        log "<[clock milliseconds]><serveurlog><erreur><${msg}>"
+        log "<[clock milliseconds]><serveurlog><error><${msg}>"
         catch { close $channel }
         } \
         elseif {$count == -1} \
@@ -87,13 +87,13 @@ proc input {channel} \
 
 proc log {msg} {
 
-    set DayToWrite [file join $::logDir "log[clock format [clock seconds] -format %d].txt"]
+    set DayToWrite [file join $::logDir "log[clock format [clock seconds] -format %d].log"]
     
     if {$::actualDay != $DayToWrite} {
-        set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].txt"] w+]
+        set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].log"] w+]
         set ::actualDay $DayToWrite
     } else {
-        set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].txt"] a+]
+        set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].log"] a+]
     }
 
     # Format the string
@@ -102,7 +102,7 @@ proc log {msg} {
         set Splitted [split $msg "<>"]
     } msgErr]
     if {$rc} {
-        log "<[clock milliseconds]><serveurlog><info><could not split $msg erreur : $msgErr>"
+        log "<[clock milliseconds]><serveurlog><info><could not split $msg error : $msgErr>"
     }
     
     # Convert time
@@ -111,7 +111,7 @@ proc log {msg} {
         set Time "[clock format [expr [lindex $Splitted 1] / 1000] -format "%d/%m/%Y %H:%M:%S."][expr [lindex $Splitted 1] % 1000]"
     } msgErr]
     if {$rc} {
-        log "<[clock milliseconds]><serveurlog><info><could not computre time erreur : $msgErr>"
+        log "<[clock milliseconds]><serveurlog><info><could not computre time error : $msgErr>"
     }
     
     
@@ -125,7 +125,7 @@ proc log {msg} {
 }
 
 proc bgerror {message} {
-    log "<[clock milliseconds]><serveurlog><erreur_critique><bgerror in $::argv - pid [pid] - $message>"
+    log "<[clock milliseconds]><serveurlog><error_critic><bgerror in $::argv - pid [pid] - $message>"
 }
 
 # ===================

@@ -39,7 +39,7 @@ set TrameIndex 0
 
 
 proc bgerror {message} {
-    ::piLog::log [clock milliseconds] erreur_critique "bgerror in $::argv - pid [pid] -$message-"
+    ::piLog::log [clock milliseconds] error_critic "bgerror in $::argv - pid [pid] -$message-"
 }
 
 # Load server

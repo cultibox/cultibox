@@ -23,10 +23,15 @@ source [file join $rootDir serverHisto src sql.tcl]
 
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
+# On initialise la conf XML
+array set configXML {
+    verbose     debug
+    pathMySQL   "c:/cultibox/xampp/mysql/bin/mysql.exe"
+    logPeriode  60
+}
 
-# Initialisation des variables globales
-set logPeriode 300
-set pathMySQL  "c:/cultibox/xampp/mysql/bin/mysql.exe"
+# Chargement de la conf XML
+array set configXML [::piXML::convertXMLToArray $confXML]
 
 ::piLog::openLog $port(serverLogs) "serverHisto"
 ::piLog::log [clock milliseconds] "info" "starting serverHisto - PID : [pid]"
@@ -36,7 +41,7 @@ set pathMySQL  "c:/cultibox/xampp/mysql/bin/mysql.exe"
 ::piLog::log [clock milliseconds] "info" "port serverCultiPi : $port(serverCultiPi)"
 
 proc bgerror {message} {
-    ::piLog::log [clock milliseconds] erreur_critique "bgerror in $::argv - pid [pid] -$message-"
+    ::piLog::log [clock milliseconds] error_critic "bgerror in $::argv - pid [pid] -$message-"
 }
 
 # Load server
@@ -53,24 +58,16 @@ proc stopIt {} {
     ::piLog::closeLog
 }
 
-# Chargement du path
-set confPath [file dirname $confXML]
 
-# Chargement de la conf XML
-set XML [lindex [::piXML::open_xml $confXML] 2]
-
-# La fréquence de mise à jour des logs
-set logPeriodeItem  [::piXML::searchItemByName logPeriode $XML]
-set logPeriode      [::piXML::searchOptionInElement valInSec $logPeriodeItem]
-::piLog::log [clock milliseconds] "info" "logperiode : $logPeriode"
+# On sort les infos sur le fichier XML
+::piLog::log [clock milliseconds] "info" "logperiode : $configXML(logPeriode)"
+::piLog::log [clock milliseconds] "info" "pathMySQL  : $configXML(pathMySQL)"
 
 # Le chemin vers l'exe de mySql
-set pathMySQLItem  [::piXML::searchItemByName pathMySQL $XML]
-set pathMySQL      [::piXML::searchOptionInElement path $pathMySQLItem]
-::piLog::log [clock milliseconds] "info" "pathMySQL : $pathMySQL"
+::sql::init $configXML(pathMySQL)
 
 # On demande le port du serveur d'acquisition
-::sensorAcq::init
+::sensorAcq::init $configXML(logPeriode)
 
 # On lance la boucle de mise à jour des capteurs
 ::sensorAcq::loop
@@ -83,4 +80,4 @@ set pathMySQL      [::piXML::searchOptionInElement path $pathMySQLItem]
 
 vwait forever
 
-# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\01_cultiPi\serverHisto\serverHisto.tcl" 6003 "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf\00_defaultConf\serverHisto\conf.xml" 6001
+# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\01_cultiPi\serverHisto\serverHisto.tcl" 6003 "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf\00_defaultConf_Win\serverHisto\conf.xml" 6001

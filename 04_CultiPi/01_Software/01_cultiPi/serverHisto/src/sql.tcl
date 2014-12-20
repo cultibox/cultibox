@@ -1,11 +1,17 @@
 namespace eval ::sql {
+    variable pathMySQL ""
+}
 
+proc ::sql::init {mySqlPath} {
+    variable pathMySQL
+    set pathMySQL $mySqlPath
 }
 
 proc ::sql::query {query} {
-
+    variable pathMySQL
+    
     set RC [catch {
-        exec $::pathMySQL --user=root --password=cultibox --host=127.0.0.1 --port=3891 cultibox << "$query"
+        exec $pathMySQL --user=root --password=cultibox --host=127.0.0.1 --port=3891 cultibox << "$query"
     } msg] 
 
     set ret [split $msg "\n"]
@@ -15,7 +21,7 @@ proc ::sql::query {query} {
         if {[string first "\t" $line] != -1} {
             lappend out $line
         } else {
-            puts "erreur : $line"
+            puts "error : $line"
         }
     }
     

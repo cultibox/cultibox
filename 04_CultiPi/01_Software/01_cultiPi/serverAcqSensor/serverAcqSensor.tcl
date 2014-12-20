@@ -32,7 +32,7 @@ set SubscriptionIndex 0
 
 
 proc bgerror {message} {
-    ::piLog::log [clock milliseconds] erreur_critique "bgerror in $::argv - pid [pid] -$message-"
+    ::piLog::log [clock milliseconds] error_critic "bgerror in $::argv - pid [pid] -$message-"
 }
 
 # Load server
@@ -135,17 +135,17 @@ proc messageGestion {message} {
                     
                     switch [lindex $::TrameSended($indexForResponse) 0] {
                         default {
-                            ::piLog::log [clock milliseconds] "erreur" "Not recognize keyword response -${message}-"
+                            ::piLog::log [clock milliseconds] "error" "Not recognize keyword response -${message}-"
                         }                    
                     }
                     
                 } else {
-                    ::piLog::log [clock milliseconds] "erreur" "Not requested response -${message}-"
+                    ::piLog::log [clock milliseconds] "error" "Not requested response -${message}-"
                 }
             
                 
             } else {
-                ::piLog::log [clock milliseconds] "erreur" "Received -${message}- but not interpreted"
+                ::piLog::log [clock milliseconds] "error" "Received -${message}- but not interpreted"
             }
         }
     }
