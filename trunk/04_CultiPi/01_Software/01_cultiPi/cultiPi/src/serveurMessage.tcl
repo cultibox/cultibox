@@ -35,7 +35,7 @@ proc messageGestion {message} {
             # ::piLog::log [clock milliseconds] "debug" "subscription response : variable $variable valeur -$valeur-"
         }
         default {
-            ::piLog::log [clock milliseconds] "erreur" "Received -${message}- but not interpreted"
+            ::piLog::log [clock milliseconds] "error" "Received -${message}- but not interpreted"
         }
     }
 

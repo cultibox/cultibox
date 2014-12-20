@@ -8,19 +8,25 @@ namespace eval ::piLog {
     variable port ""
     variable channel ""
     variable module ""
+    variable traceLevel "debug"
 }
 
-proc ::piLog::openLog {portNumber moduleName} {
+proc ::piLog::openLog {portNumber moduleName {level debug}} {
     variable port
     variable channel
     variable module
+    variable traceLevel
+    
+    # On initialise avec les parametres d'entrée de la fonction
     set port $portNumber
     set host localhost
     set module $moduleName
+    set traceLevel $level
     
-    # open socket
+    # Ouverture du socket
     set rc [catch { set channel [socket $host $port] } msg]
     
+    # S'il y a une erreur lors de l'ouverture du socket
     if {$rc == 1} {
         puts $msg
         return $msg
@@ -39,8 +45,42 @@ proc ::piLog::closeLog {} {
 proc ::piLog::log {time traceType trace} {
     variable module
     variable channel
+    variable traceLevel
     
     set StringToWrite "<${time}><${module}><${traceType}><${trace}>"
+    
+    # En fonction du niveau de trace demandé, on envoi ou pas
+    set toSend 0
+    switch $traceLevel {
+        "debug" {
+            set toSend 1
+        }
+        "info" {
+            if {$traceType == "debug" || $traceType == "info"} {
+                set toSend 1
+            }
+        }
+        "warning" {
+            if {$traceType == "debug" || $traceType == "info" || $traceType == "warning" } {
+                set toSend 1
+            }
+        }
+        "error" {
+            if {$traceType == "debug" || $traceType == "info" || $traceType == "warning"  || $traceType == "error"} {
+                set toSend 1
+            }
+        }
+        "error_critic" {
+            if {$traceType == "debug" || $traceType == "info" || $traceType == "warning"  || $traceType == "error" || $traceType == "error_critic"} {
+                set toSend 1
+            }
+        }
+        default {
+            set StringToWrite "<${time}><${module}><error><trace level not good : ${trace}>"
+            set toSend 1
+        }
+    }
+   
     
     # If channel is not open, log in local
     if {$channel == ""} {

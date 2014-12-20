@@ -8,7 +8,7 @@ namespace eval ::piXML {
     variable debug 0
 }
 
-# Load Cultipi server
+# Ouverture d'un fichier XML
 proc ::piXML::open_xml {fichier {doctype ""}} {
     variable debug
     
@@ -107,11 +107,34 @@ proc ::piXML::searchItemByName {name xmlList} {
     }
 }
 
-
 proc ::piXML::searchOptionInElement {optionName element} {
     set options [lindex $element 1]
     if {[lsearch $options $optionName] != -1} {
         return [lindex $options [expr [lsearch $options $optionName] + 1]]
     }
     return ""
+}
+
+# Cette procédure converti un fichier XML en array
+proc ::piXML::convertXMLToArray {XMLFile} {
+
+    if {[file exists $XMLFile] != 1} {
+        error "::piXML::convertXMLToArray $XMLFile doesnot exists"
+        return 0
+    }
+    
+    set XMLarray(filename) $XMLFile
+    
+    set XMLList [::piXML::open_xml $XMLFile]
+    
+    foreach item [lindex $XMLList 2] {
+    
+        set parameters [lindex $item 1]
+        
+        set XMLarray([lindex $parameters 1]) [lindex $parameters 3]
+    
+    }
+    
+    return [array get XMLarray]
+    
 }

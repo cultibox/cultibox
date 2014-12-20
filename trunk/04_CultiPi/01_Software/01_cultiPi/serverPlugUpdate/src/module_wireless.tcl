@@ -29,7 +29,7 @@ proc ::wireless::outFromBootloader {} {
     } msg]
     if {$RC != 0} {
         set ::plug(etat,bootload) "DEFCOM"
-        ::piLog::log [clock milliseconds] "error_critique" "We need to restart module:$msg "
+        ::piLog::log [clock milliseconds] "error_critic" "We need to restart module:$msg "
         return "restart_needed"
     } else {
         ::piLog::log [clock milliseconds] "debug" "write bootloadStateAdress OK"

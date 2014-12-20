@@ -29,7 +29,7 @@ proc ::piServer::server {channel host port} \
     if {$rc == 1} \
     {
         # i/o error -> log
-        ::piLog::log [clock milliseconds] "erreur" "i/o error - $msg"
+        ::piLog::log [clock milliseconds] "error" "i/o error - $msg"
     }
 }
 
@@ -53,7 +53,7 @@ proc ::piServer::input {channel} {
         if {$rc == 1} \
         {
             # i/o error -> log & close
-            ::piLog::log [clock milliseconds] "erreur" "${msg}"
+            ::piLog::log [clock milliseconds] "error" "${msg}"
             catch { close $channel }
         } \
         elseif {$count == -1} \
@@ -92,7 +92,7 @@ proc ::piServer::start {callBackMessageIn portIn} {
     } msg]
     if {$rc == 1} \
     {
-        ::piLog::log [clock milliseconds] "erreur" "erreur exiting $msg"
+        ::piLog::log [clock milliseconds] "error" "erreur exiting $msg"
         exit
     }
 }
@@ -104,7 +104,7 @@ proc ::piServer::sendToServer {portNumber message} {
 
     set rc [catch { set channel [socket localhost $portNumber] } msg]
     if {$rc == 1} {
-        ::piLog::log [clock milliseconds] "erreur" "try to open socket to -$portNumber- - erreur :  -$msg-"
+        ::piLog::log [clock milliseconds] "error" "try to open socket to -$portNumber- - erreur :  -$msg-"
     }
 
     set rc [catch \
@@ -113,7 +113,7 @@ proc ::piServer::sendToServer {portNumber message} {
         flush $channel
     } msg]
     if {$rc == 1} {
-        ::piLog::log [clock milliseconds] "erreur" "try to send message to -$portNumber- - erreur :  -$msg-"
+        ::piLog::log [clock milliseconds] "error" "try to send message to -$portNumber- - erreur :  -$msg-"
     } else {
         if {$debug == 1} { 
             ::piLog::log [clock milliseconds] "debug" "message send to -$portNumber- message : -$message-"
@@ -126,7 +126,7 @@ proc ::piServer::sendToServer {portNumber message} {
     } msg]
     if {$rc == 1} \
     {
-        ::piLog::log [clock milliseconds] "erreur" "erreur closing channel -$channel-"
+        ::piLog::log [clock milliseconds] "error" "erreur closing channel -$channel-"
     }
     
     
