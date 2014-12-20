@@ -135,19 +135,6 @@ Pour chaque module qu'il démarre, il crée automatiquement les repères suivant
 
 Pour arrêter le logiciel, il suffit d’exécuter avec tclsh le script cultiPistop.tcl.
 
-
-== Les modules physiques ==
-
-=== Introduction ===
-
-Ces modules permettent de faire le lien entre les modules  et la couche physique. Ils ne discutent pas directement avec le serveur mais sont quand même lancé par le serveur.
-
-=== Module I2C (moduleI2C) ===
-
-Ce module ne discute pas directement avec le serveur. Il permet aux autres modules de réaliser des requêtes sur le bus I2C.
-
-=== Module RS232 (moduleRS232) ===
-
 == Les modules ==
 
 === Introduction ===
@@ -158,12 +145,14 @@ Tous les modules doivent pourvoir être appelé de la façon suivante :
 
 === Module de Logs (moduleLogs) ===
 
-A chaque démarrage du serveur Culti Pi, un nouveau fichier de trace est créé. Les traces datant de plus de 30 jours sont supprimées automatiquement.
+A chaque démarrage du serveur CultiPi, le module de log est lancé. Il ouvre un socket et accepte les connections des autres modules.
+Lorsqu'un module lui envoi un log à écrire, il l'écrit dans un fichier nommé logXX.txt ou XX correspond au jour du mois.
+A chaque changement de jour les traces déjà présentes dans le fichier sont supprimées.
 
 Chaque module peut logguer des traces en passant par le serveur. Chaque trace est composée de 4 éléments :
  * L'heure de la trace
  * Le nom du module qui trace
- * Le type de trace : Erreur Warning Debug Info ...
+ * Le type de trace : error_critic error warning info debug
  * La trace en elle même
 
 L'utilisateur peut définir le niveau de trace inscrite dans le fichier log.
