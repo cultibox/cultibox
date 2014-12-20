@@ -17,6 +17,7 @@ lappend auto_path [file join $rootDir lib tcl]
 package require piLog
 package require piServer
 package require piTools
+package require piTime
 
 # Chargement des fichiers externes
 source [file join $rootDir serverPlugUpdate src emeteur.tcl]
@@ -70,13 +71,15 @@ while {$status == "retry_needed"} {
 set nbPlug [readPluga $plugaFileName]
 
 # Chargement des paramètres de chaque prise
-for {set i 1} {$i < $nbPlug} {incr i} {
+set i 1
+while {1} {
 
     set plugXXFilename [file join $confPath plg "plug[string map {" " "0"} [format %2.f $i]]"]
     
     # On vérifie la présence du fichier
     if {[file exists $plugXXFilename] != 1} {
-        ::piLog::log [clock milliseconds] "error" "File $plugXXFilename does not exists"
+        ::piLog::log [clock milliseconds] "error" "File $plugXXFilename does not exists, so stop reading plugXX files"
+        break;
     } else {
         ::piLog::log [clock milliseconds] "info" "reading $i plugXX $plugXXFilename"
         set plug($i,lastValue) "" 
@@ -123,6 +126,8 @@ for {set i 1} {$i < $nbPlug} {incr i} {
         ::piLog::log [clock milliseconds] "info" "Plug $i - SEC,type: $plug($i,SEC,type) - SEC,sens: $plug($i,SEC,sens) - SEC,etat_prise: $plug($i,SEC,etat_prise) - SEC,value: $plug($i,SEC,value) - SEC,precision: $plug($i,SEC,precision)"
         
     }
+    
+    incr i
 
 }
 

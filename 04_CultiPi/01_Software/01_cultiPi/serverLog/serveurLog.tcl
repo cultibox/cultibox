@@ -14,8 +14,9 @@ package require piServer
 set port [lindex $argv 0]
 set logDir [lindex $argv 1]
 
-# client connection
+set actualDay ""
 
+# client connection
 proc server {channel host port} \
 {
     # save client info
@@ -84,9 +85,13 @@ proc input {channel} \
 
 # log
 
-proc log {msg {init 0}} {
-    if {$init != 0} {
+proc log {msg} {
+
+    set DayToWrite [file join $::logDir "log[clock format [clock seconds] -format %d].txt"]
+    
+    if {$::actualDay != $DayToWrite} {
         set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].txt"] w+]
+        set ::actualDay $DayToWrite
     } else {
         set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].txt"] a+]
     }
@@ -149,7 +154,7 @@ if {$rc == 1} \
 set (server:host) server
 set (server:port) $port
 
-log "<[clock milliseconds]><serveurlog><info><server log started - PID : [pid]>" init
+log "<[clock milliseconds]><serveurlog><info><server log started - PID : [pid]>"
 log "<[clock milliseconds]><serveurlog><info><server log socket - $port>"
 
 # enter event loop
