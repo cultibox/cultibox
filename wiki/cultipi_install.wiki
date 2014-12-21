@@ -107,6 +107,21 @@ dpkg-reconfigure tzdata
 apt-get install sudo localpurge vim libnss-mdns avahi-daemon tcl ifplugd
 }}}
 
+ * Configuration de SSH:
+
+Editer le fichier */etc/ssh/sshd_config* et décommenter la ligne:
+
+{{{
+PasswordAuthentication yes
+}}}
+
+Relancer le service:
+
+{{{
+service ssh restart
+}}}
+
+
  * Ajout de l'utilisateur Cultipi, suppréssion de l'utilisateur pi:
 
 {{{
