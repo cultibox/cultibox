@@ -15,6 +15,7 @@ lappend auto_path [file join $rootDir lib tcl]
 package require piLog
 package require piServer
 package require piTools
+package require piXML
 
 # Source extern files
 source [file join $rootDir serverAcqSensor src adress_sensor.tcl]
@@ -30,7 +31,9 @@ array set configXML {
 }
 
 # Chargement de la conf XML
+set RC [catch {
 array set configXML [::piXML::convertXMLToArray $confXML]
+} msg]
 
 # On initialise la connexion avec le server de log
 ::piLog::openLog $port(serverLogs) "serverAcqSensor" $configXML(verbose)
@@ -39,7 +42,9 @@ array set configXML [::piXML::convertXMLToArray $confXML]
 ::piLog::log [clock milliseconds] "info" "confXML : $confXML"
 ::piLog::log [clock milliseconds] "info" "port serverLogs : $port(serverLogs)"
 ::piLog::log [clock milliseconds] "info" "port serverCultiPi : $port(serverCultiPi)"
-
+if {$RC != 0} {
+    ::piLog::log [clock milliseconds] "error" "$msg"
+}
 
 proc bgerror {message} {
     ::piLog::log [clock milliseconds] error_critic "bgerror in $::argv - pid [pid] -$message-"
@@ -241,4 +246,4 @@ readSensors
 
 vwait forever
 
-# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\serverAcqSensor\serverAcqSensor.tcl" 6005 "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf\00_defaultConf\serverAcqSensor\conf.xml" 6001 
+# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\01_cultiPi\serverAcqSensor\serverAcqSensor.tcl" 6005 "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf\01_defaultConf_RPi\serverAcqSensor\conf.xml" 6001 

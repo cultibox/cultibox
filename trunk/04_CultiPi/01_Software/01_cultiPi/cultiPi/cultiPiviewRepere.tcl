@@ -9,13 +9,19 @@ package require piLog
 package require piServer
 package require piTools
 
-set port(server) 6022
+set port(serverViewRepere) 6022
+set port(serverLog) 6003
+set port(serverCultipi) 6000
+set port(serverAcqSensor) 6006
+set port(serverPlugUpdate) 6004
+set port(serverHisto) 6009
 
-::piLog::openLog 6001 "cultiPiviewRepere"
+::piLog::openLog $port(serverLog) "cultiPiviewRepere"
 
-set repere [lindex $argv 0]
+set module   [lindex $argv 0]
+set variable [lindex $argv 1]
 
-puts "Reading repere $repere"
+puts "Reading variable $variable of module $module"
 
 proc messageGestion {message} {
 
@@ -26,17 +32,18 @@ proc messageGestion {message} {
 
     puts $message
 
+    set ::forever 1
 }
-::piServer::start messageGestion $port(server)
+::piServer::start messageGestion $port(serverViewRepere)
 
+# On regarde sur quel serveur il souhaite lancer la commande
 
 # Demande lecture du repere
 # Trame standard : [FROM] [INDEX] [commande] [argument]
-while {1} {
-    ::piServer::sendToServer 6004 "$port(server) 0 getRepere $repere updateStatus"
-    
-    after 1000
-}
+::piServer::sendToServer $port($module) "$port(serverViewRepere) 0 getRepere $variable"
 
 
+vwait forever
+
+# tclsh /opt/cultipi/cultiPi/cultiPiviewRepere.tcl serverAcqSensor "::sensor(1,value)"
 # tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\culti_pi\module\serverLog\serveurLog.tcl" 6000 "D:\DONNEES\GR08565N\Mes documents\cbx\culti_pi\log.txt"

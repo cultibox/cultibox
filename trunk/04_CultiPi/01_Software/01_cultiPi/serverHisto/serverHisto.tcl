@@ -31,7 +31,9 @@ array set configXML {
 }
 
 # Chargement de la conf XML
+set RC [catch {
 array set configXML [::piXML::convertXMLToArray $confXML]
+} msg]
 
 # On initialise la connexion avec le server de log
 ::piLog::openLog $port(serverLogs) "serverHisto" $configXML(verbose)
@@ -40,6 +42,9 @@ array set configXML [::piXML::convertXMLToArray $confXML]
 ::piLog::log [clock milliseconds] "info" "confXML : $confXML"
 ::piLog::log [clock milliseconds] "info" "port serverLogs : $port(serverLogs)"
 ::piLog::log [clock milliseconds] "info" "port serverCultiPi : $port(serverCultiPi)"
+if {$RC != 0} {
+    ::piLog::log [clock milliseconds] "error" "$msg"
+}
 
 proc bgerror {message} {
     ::piLog::log [clock milliseconds] error_critic "bgerror in $::argv - pid [pid] -$message-"
