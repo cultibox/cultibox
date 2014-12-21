@@ -186,7 +186,7 @@ par:
 CULTICRON_ACTIV="no"
 }}}
 
- * La commande pour vérifier que le logiciel Cultipi est la suivante:
+ * La commande pour vérifier que le logiciel Cultipi tourne est la suivante:
 
 {{{
 /etc/init.d/cultipi status
@@ -205,7 +205,7 @@ cp /etc/network/interfaces.BASE /etc/network/interfaces
 }}}
 
 
- * Un cron s'occupe aussi de la mise à jour des packages. Celui-ci est lançé une fois par jour. Pour mettre à jour manuellement les paquets Cultipi, Cultibox et Cultinet, il faut utiliser la commande suivante:
+ * Un cron s'occupe aussi de la mise à jour des packages. Celui-ci est lancé une fois par jour. Pour mettre à jour manuellement les paquets Cultipi, Cultibox et Cultinet, il faut utiliser la commande suivante:
 
 {{{
 /etc/cron.daily/cultipi
