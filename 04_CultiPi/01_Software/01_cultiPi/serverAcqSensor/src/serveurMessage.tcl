@@ -16,16 +16,20 @@ proc messageGestion {message} {
             ::piServer::sendToServer $serverForResponse "$::port(serverAcqSensor) $indexForResponse pid serverAcqSensor [pid]"
         }
         "getRepere" {
-            # Le repère est l'index des capteurs
-            set repere [::piTools::lindexRobust $message 3]
-            ::piLog::log [clock milliseconds] "info" "Asked getRepere $repere"
-            
+            # La variable est le nom de la variable à lire
+            set variable  [::piTools::lindexRobust $message 3]
+
+            ::piLog::log [clock milliseconds] "info" "Asked getRepere $variable"
             # Les parametres d'un repere : nom Valeur 
-            if {[array names ::sensor -exact "$repere"] != ""} {
-                ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse _getRepere $::sensor($repere)"
-                ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse _getRepere $repere $::sensor($repere)"
+            
+            if {[info exists ::$variable] == 1} {
+            
+                eval set returnValue $$variable
+            
+                ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere $returnValue"
+                ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $returnValue"
             } else {
-                ::piLog::log [clock milliseconds] "error" "Asked getRepere $repere  not recognize"
+                ::piLog::log [clock milliseconds] "error" "Asked variable $variable - variable doesnot exists"
             }
         }
         "subscription" {

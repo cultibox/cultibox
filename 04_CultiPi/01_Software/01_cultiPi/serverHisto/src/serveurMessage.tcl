@@ -16,17 +16,20 @@ proc messageGestion {message} {
             ::piServer::sendToServer $serverForResponse "$::port(serverHisto) $indexForResponse pid serverHisto [pid]"
         }
         "getRepere" {
-            # Le repere est le numéro de prise
-            set repere [::piTools::lindexRobust $message 3]
-            set parametre [::piTools::lindexRobust $message 4]
-            ::piLog::log [clock milliseconds] "info" "Asked getRepere $repere - parametre $parametre"
+            # La variable est le nom de la variable à lire
+            set variable  [::piTools::lindexRobust $message 3]
+
+            ::piLog::log [clock milliseconds] "info" "Asked getRepere $variable"
             # Les parametres d'un repere : nom Valeur 
             
-            if {[array names ::plug -exact "$repere,$parametre"] != ""} {
-                ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere $::plug($repere,$parametre)"
-                ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $::plug($repere,$parametre)"
+            if {[info exists ::$variable] == 1} {
+            
+                eval set returnValue $$variable
+            
+                ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere $returnValue"
+                ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $returnValue"
             } else {
-                ::piLog::log [clock milliseconds] "error" "Asked getRepere $repere - parametre $parametre not recognize"
+                ::piLog::log [clock milliseconds] "error" "Asked variable $variable - variable doesnot exists"
             }
         }
         "_getPort" {

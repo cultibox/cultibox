@@ -78,13 +78,13 @@ after $confStart(serverLog,waitAfterUS)
 ::piLog::log [clock millisecond] "info" "serveur is started"
 
 # On change la vitesse du bus I2C
-set RC [catch {
-    exec sudo modprobe -r i2c_bcm2708
-    exec sudo modprobe i2c_bcm2708 baudrate=32000
-} msg]
-if {$RC != 0} {
-    puts "CultiPi : I2C speed : error $msg"
-}
+# set RC [catch {
+    # exec sudo modprobe -r i2c_bcm2708
+    # exec sudo modprobe i2c_bcm2708 baudrate=32000
+# } msg]
+# if {$RC != 0} {
+    # puts "CultiPi : I2C speed : error $msg"
+# }
 
 
 # Lancement de tous les modules
@@ -141,3 +141,4 @@ vwait forever
 
 # Linux start
 # tclsh /home/pi/cultipi/01_Software/01_cultiPi/cultiPi/cultiPi.tcl /home/pi/cultipi/02_conf
+# tclsh /opt/cultipi/cultiPi/cultiPi.tcl /etc/cultipi
