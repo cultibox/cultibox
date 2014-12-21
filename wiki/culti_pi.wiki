@@ -17,31 +17,12 @@ Le logiciel Culti Pi est composé de :
  * Différents composants. On retrouve parmi les composants : Un serveur de calcul de 'état des prises, un module de pilotage des prises, un module d'acquisition des données des capteurs...
 
 Trois espaces sur la carte sont présents pour le bon fonctionnement du logiciel :
- * L'espace ou est installé Culti Pi : /usr/local/bin/.... ou /usr/bin/
+ * L'espace ou est installé Culti Pi : /opt/cultipi/
  * L'espace de configuration de Culti Pi : /etc/cultipi/...
+ * L'espace ou sont les logs : /var/log/cultipi
  * L'espace ou est présent le logiciel Cultibox : /var/www/...
 
-Culti Pi fonctionne avec un système de repère. Chaque repère représente une donnée (Température, état d'une prise ...). Les repères ont les paramètres suivants :
- * ID unique : Il permet de réaliser touts les transactions entre les modules et le serveur
- * nom : C'est le nom du repère (unique)
- * Libellé (libelle) : Un texte pour décrire le repère
- * Valeur : C'est la valeur du repère
- * Qualité : Donne l'état du repère (Valide, Invalide, Douteux, Inconnu)
- * Source : Donne la source du repère (Mesure, Calcul, Pilotage, Forcé, Inconnu, Défaut Communication, Initialisation)
- * Heure source : L'heure à laquelle la valeur a été modifiée
- * Bande morte : Pour une donnée mesurée, donne la bande morte
- * Historisé : Indique si le repère doit être historisé dans la base de donnée
- * Période historisation : donne la période d'historisation du repère
- * Période d'acquisition : Indique la période d'acquisition ou de pilotage du repère
- * Protocole : indique le protocole utilisé pour ce repère : I2C - RS232 - MODBUS_TCP - MODBUS_RTU - JSON ...
- * Adresse : donne l'adresse pour acquisition physique
- * Connexion : Indique le connecteur utilisé pour réaliser l'acquisition
- * Nb décimale : Donne le nombre de décimale du repère
- * Type fonctionnel (type) : indique si la donnée est une mesure (mesure), un état à piloter (pilote), une alarme (alarme) 
- * Unité : donne l'unité du repère
- * Coef A : Donne un coefficient multiplicateur pour la donnée
- * Coef B : Donne l'offset à appliquer pour le repère
- 
+
 Fonctionnement général :
 Sur une action de l'utilisateur, le logiciel Cultibox génère une configuration pour Culti Pi. Cette configuration regroupe l'ensemble des fichiers permettant au serveur Culti Pi de bien fonctionner.
 Le logiciel Cultibox arrête ensuite le serveur Culti Pi pui le redémarre.
@@ -88,44 +69,18 @@ Exemple de fichier conf.xml :
 </confs>
 }}}
 
-Ensuite, le logiciel CultiPi  charge le fichier XML présent dans le dossier cultiPi de sa configuration. Ce fichier définit l'ensemble des modules qu'il doit démarrer.
+Ensuite, le logiciel CultiPi  charge le fichier XML présent dans le dossier cultiPi de sa configuration. Ce fichier définit l'ensemble des modules qu'il doit démarrer. Il s’appelle start.xml .
 
 Le fichier de configuration (généré par le logiciel Cultibox, au format XML) prend la forme suivante :
 
 {{{
-<?xml version="1.0" encoding="utf-8"?>
-<reperes>
-    <repere id="1">
-        <nom>pilotagePriseSansFils1</nom>
-        <libelle>Pilotage de la prise 1 du module sans fils</libelle>
-        <protocole>I2C</protocole>
-        <connexion>0x21</connexion>
-        <adresse>0x25</adresse>
-        <type>pilote</type>
-    </repères>
-    <repere id="2">
-        <nom>temepratureCapteur1</nom>
-        <libelle>Valeur de température du capteur 1</libelle>
-        <protocole>I2C</protocole>
-        <connexion>0x22</connexion>
-        <adresse>0x16</adresse>
-        <type>mesure</type>
-    </repères>
-</reperes>
-<modules>
-    <module name="serveurLogs" priorite="1">
-        <start>1</start>
-        <executable>/module/serveurLogs.tcl</executable>
-    </module>
-    <module name="moduleHisto" priorite="2">
-        <start>1</start>
-        <executable>/module/moduleHisto.exe</executable>
-    </module>
-    <module name="moduleFormule" priorite="3">
-        <start>0</start>
-        <executable>/module/moduleFormule.py</executable>
-    </module>
-</modules>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<starts>
+    <item name="serverLog" waitAfterUS="1000" port="6003" pathexe="tclsh" path="./serverLog/serveurLog.tcl" xmlconf="./serverLog/conf.xml" />
+    <item name="serverAcqSensor" waitAfterUS="100" port="6006" pathexe="tclsh" path="./serverAcqSensor/serverAcqSensor.tcl" xmlconf="./serverAcqSensor/conf.xml" />
+    <item name="serverPlugUpdate" waitAfterUS="100" port="6004" pathexe="tclsh" path="./serverPlugUpdate/serverPlugUpdate.tcl" xmlconf="./serverPlugUpdate/conf.xml" />
+    <item name="serverHisto" waitAfterUS="100" port="6009" pathexe="tclsh" path="./serverHisto/serverHisto.tcl" xmlconf="./serverHisto/conf.xml" />
+</starts>
 }}}
 
 Pour chaque module qu'il démarre, il crée automatiquement les repères suivants (Non implémenté) : 
@@ -143,7 +98,35 @@ Tous les modules doivent pourvoir être appelé de la façon suivante :
 
 <module> <numéro port> <fichier de conf XML> <numéro de port du server log>
 
-=== Module de Logs (moduleLogs) ===
+=== Communication ===
+
+Tous les modules implémentent un serveur basé sur des sockets. Les numéros de port de chaque module :
+
+ * cultiPI : 6000
+ * serverLog : 6003
+ * serverAcqSensor : 6006
+ * serverPlugUpdate : 6004
+ * serverHisto : 6009
+
+Pour communiquer avec un module, on ouvre une connexion vers son socket et on lui envoi des trames. Chaque trame respecte le format suivant : 
+
+[FROM] [INDEX] [COMMANDE] [Reste de la trame]
+
+Avec : 
+
+ * FROM : Adresse de l'émetteur de la requête
+ * INDEX : Un index unique de la part de l'émetteur pour identifier les messages
+ * COMMANDE : Le nom de la commande à appliquer
+ * Reste de la trame : toutes les informations nécessaire pour l’exécution de la commande
+
+Chaque module implémente à minima les commandes suivantes :
+
+ * stop : pour arrêter le module.
+ * pid : le module retourne le pid du module
+ * getRepere [VARIABLE] [PARAMETRE] : Retourne l'élément PARAMETRE du vecteur VARIABLE
+
+
+=== Module de Logs (serverLog) ===
 
 A chaque démarrage du serveur CultiPi, le module de log est lancé. Il ouvre un socket et accepte les connections des autres modules.
 Lorsqu'un module lui envoi un log à écrire, il l'écrit dans un fichier nommé logXX.txt ou XX correspond au jour du mois.
@@ -157,15 +140,11 @@ Chaque module peut logguer des traces en passant par le serveur. Chaque trace es
 
 L'utilisateur peut définir le niveau de trace inscrite dans le fichier log.
 
-=== Module d'historisation (moduleHisto) ===
+=== Module serverHisto ===
 
-Il a pour but d'enregistrer en base de donnée certains repères (Ceux qui ont le qualificatif Historisé).
+Il a pour but d'enregistrer en base de donnée certains repères.
 
-=== Module de formule (moduleFormule) ===
-
-Ce module permet de réaliser des formules.
-
-=== Module acqSensor ===
+=== Module serverAcqSensor ===
 
 Ce module réalise l'acquisition de donnée. Au chargement, il demande au serveur tous les repères de type mesure et ayant le protocole I2C.
 Pour chaque repère, il lance l'acquisition du repère en utilisant comme adresse de module I2C le paramètre "Connexion" et comme adresse de lecture le paramètre "adresse pour acquisition".
@@ -177,7 +156,7 @@ Il pilote ensuite le repère en inscrivant les données suivantes :
  * Source : Mesure
  * Heure source : l'heure de réponse du module I2C
 
-=== Module wirelessPlugs ===
+=== Module serverPlugUpdate ===
 
 Ce module pilote les prises sans fils. Au chargement, il demande au serveur tous les repères de type pilote et ayant le protocole I2C et la connexion "433MHz".
 Pour réaliser le pilotage, il utilise le module "Module I2C".
