@@ -593,7 +593,7 @@ function get_plug_power ($plug, $dateStart, $dateEnd, $day="day")
         
     // Get all point bewteen two dates
     $dateStartForPowerTable = date ("ymd00His", $dateStart);
-    $dateEndForPowerTable = date ("ymd07His", $dateEnd);
+    $dateEndForPowerTable = date ("ymd08His", $dateEnd);
     $sql = "SELECT timestamp , record FROM power"
             . " WHERE plug_number = {$plug}"
             . " AND timestamp >= {$dateStartForPowerTable}"

@@ -2,6 +2,7 @@ Cultibox (2.0.21) precise; urgency=low
     + Correction de l'export d'une image des logs et du blockUI 
     + Ajout des couleurs pour les courbes des capteurs 5 et 6
     + Ajout d'une message par popup lorsqu'une courbe de puissance est sélectionnée sans puissance configurée
+    + Correction de l'affichage des puissances pour le jour 07 de la semaine
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sat Dec 20 12:26:18 CEST 2014
 
