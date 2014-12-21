@@ -197,7 +197,7 @@ make
 make install
 ln -s /usr/local/lib/libi2c.so.0 /lib/
 echo "i2c-dev" >> /etc/modules
-echo "options i2c_bcm2708 baudrate=32000" > /etc/modprobe.d/i2c
+echo "options i2c_bcm2708 baudrate=32000" > /etc/modprobe.d/i2c.conf
 }}}
 
 Puis à faire le ménage:
