@@ -26,11 +26,7 @@ d_start () {
 
 d_stop () {
         log_daemon_msg "Stopping system $DEAMON_NAME Daemon"
-        for pid in "`ps ax|grep cultipi |grep tclsh |awk -F " " '{print $1}'`"; do
-            if [ "$pid" != "" ]; then
-                kill -9 $pid
-            fi
-        done
+        tclsh /opt/cultipi/cultiPi/cultiPistop.tcl 
         log_end_msg $?
 }
 
@@ -42,13 +38,22 @@ case "$1" in
 
         restart|reload|force-reload)
                         d_stop
+                        for pid in "`ps ax|grep cultipi |grep tclsh |awk -F " " '{print $1}'`"; do
+                            if [ "$pid" != "" ]; then
+                                kill -9 $pid
+                            fi
+                        done
+
                         d_start
                 ;;
-
         force-stop)
                 d_stop
+                for pid in "`ps ax|grep cultipi |grep tclsh |awk -F " " '{print $1}'`"; do
+                    if [ "$pid" != "" ]; then
+                        kill -9 $pid
+                    fi
+                done
                 ;;
-
         status)
                 if [ "`ps ax|grep cultipi|grep tclsh`" != "" ]; then
                     echo "[ ok ] $DEAMON_NAME service is running..."

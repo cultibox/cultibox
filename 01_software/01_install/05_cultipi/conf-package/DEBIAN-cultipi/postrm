@@ -26,8 +26,10 @@ if [ "$1" == "purge" ]; then
         rm -Rf /var/log/cultipi
     fi
 
-    userdel cultipi
-    sed -i "/cultipi ALL = (root) NOPASSWD: \/sbin\/modprobe/d" /etc/sudoers
+    if [ -f /etc/default/culticron ]; then
+        rm /etc/default/culticron
+    fi
+
     sed -i "/.*\/etc\/init.d\/cultipi.*/d" /etc/crontab
 fi
 
@@ -36,7 +38,6 @@ if [ "$1" == "remove" ]; then
         update-rc.d -f cultipi remove
         rm -Rf /etc/init.d/cultipi
     fi
-    sed -i "/cultipi ALL = (root) NOPASSWD: \/sbin\/modprobe/d" /etc/sudoers
     sed -i "/.*\/etc\/init.d\/cultipi.*/d" /etc/crontab
 
     if [ -d /opt/cultipi ]; then
