@@ -15,6 +15,7 @@ var dialog1=false;
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
 var start_day = <?php echo json_encode($startday); ?>;
+var power_msg="";
 
 // {{{ getType()
 // IN  input value: display the type of log: 0 for daily logs, 1 for monthly
@@ -1110,8 +1111,11 @@ $(document).ready(function() {
                     if(jQuery.parseJSON(data)!="") {
                          pop_up_remove("power_status");
                          pop_up_add_information(jQuery.parseJSON(data),"power_status","error");
+
+                         msg_power=jQuery.parseJSON(data);
                     } else {
                         pop_up_remove("power_status");
+                        msg_power="";
                     }
            });
         }
@@ -1253,6 +1257,23 @@ $(document).ready(function() {
                 text: CLOSE_button,
                 "id": "btnClose_curve",
                 click: function () {
+                    if(msg_power!="") {
+                        $("#msg_power").empty();
+                        $("#msg_power").append(msg_power);
+                        $("#msg_power").dialog({
+                            resizable: false,
+                            width: 500,
+                            closeOnEscape: true,
+                            dialogClass: "popup_error",
+                            modal: true,
+                            buttons: [{
+                                text: CLOSE_button,
+                                click: function () {
+                                    $( this ).dialog("close"); return false;
+                                }
+                            }]
+                        });
+                    }
                     $( this ).dialog( "close" ); return false;
                 }
             }]
