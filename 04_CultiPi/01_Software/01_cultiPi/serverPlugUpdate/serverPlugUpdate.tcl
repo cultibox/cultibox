@@ -30,7 +30,16 @@ source [file join $rootDir serverPlugUpdate src regulation.tcl]
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
 
-::piLog::openLog $port(serverLogs) "serverPlugUpdate"
+# On initialise la conf XML
+array set configXML {
+    verbose     debug
+}
+
+# Chargement de la conf XML
+array set configXML [::piXML::convertXMLToArray $confXML]
+
+# On initialise la connexion avec le server de log
+::piLog::openLog $port(serverLogs) "serverPlugUpdate" $configXML(verbose)
 ::piLog::log [clock milliseconds] "info" "starting serverPlugUpdate - PID : [pid]"
 ::piLog::log [clock milliseconds] "info" "port serverPlugUpdate : $port(serverPlugUpdate)"
 ::piLog::log [clock milliseconds] "info" "confXML : $confXML"
@@ -78,7 +87,7 @@ while {1} {
     
     # On vérifie la présence du fichier
     if {[file exists $plugXXFilename] != 1} {
-        ::piLog::log [clock milliseconds] "error" "File $plugXXFilename does not exists, so stop reading plugXX files"
+        ::piLog::log [clock milliseconds] "info" "File $plugXXFilename does not exists, so stop reading plugXX files"
         break;
     } else {
         ::piLog::log [clock milliseconds] "info" "reading $i plugXX $plugXXFilename"

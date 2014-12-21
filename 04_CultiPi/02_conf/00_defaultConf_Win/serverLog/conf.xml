@@ -2,4 +2,5 @@
 <conf>
     <!-- Example : http://wfr.tcl.tk/1151 -->
     <item name="logPath" logfile="D:/DONNEES/GR08565N/Mes documents/cbx/04_CultiPi/01_Software" />
+    <item name="verbose" level="debug" />
 </conf>

@@ -5,6 +5,8 @@ set rootDir [file dirname [file dirname [info script]]]
 lappend auto_path [file join $rootDir lib tcl]
 package require piTools
 package require piServer
+package require piXML
+
 
 # ###############
 #
