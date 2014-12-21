@@ -17,10 +17,10 @@ Le logiciel Culti Pi est composé de :
  * Différents composants. On retrouve parmi les composants : Un serveur de calcul de 'état des prises, un module de pilotage des prises, un module d'acquisition des données des capteurs...
 
 Trois espaces sur la carte sont présents pour le bon fonctionnement du logiciel :
- * L'espace ou est installé Culti Pi : /opt/cultipi/
- * L'espace de configuration de Culti Pi : /etc/cultipi/...
+ * L'espace ou est installé Culti Pi : /opt/cultipi
+ * L'espace de configuration de Culti Pi : /etc/cultipi
  * L'espace ou sont les logs : /var/log/cultipi
- * L'espace ou est présent le logiciel Cultibox : /var/www/...
+ * L'espace ou sont présents les logiciel Cultibox et Cultinet : /var/www
 
 
 Fonctionnement général :
@@ -168,3 +168,45 @@ Pour réaliser le pilotage, il utilise le module "Module I2C".
 Matériel nécessaire :
  - Un Raspberry Pi
  - Une carte d'extension Culti Pi
+
+
+== Commandes/Informations utiles ==
+
+Voici quelques commandes utiles:
+ 
+ * Le logiciel Cultipi est accompagné d'un cron exécuté toute les minutes vérifiant le lancement du logiciel. Si ce n'est pas le cas, ce cron se charge de relancer le logiciel, il est présent dans */etc/crontab*. Il est possible de désactiver le lancement automatique par cron en éditant le fichier */etc/default/culticron* et en remplaçant la ligne:
+
+{{{
+CULTICRON_ACTIV="yes"
+}}}
+
+par:
+
+{{{
+CULTICRON_ACTIV="no"
+}}}
+
+ * La commande pour vérifier que le logiciel Cultipi est la suivante:
+
+{{{
+/etc/init.d/cultipi status
+}}}
+
+Il est aussi possible de voir en détail les processus lancés par la commande:
+
+{{{
+ps ax|grep tclsh
+}}}
+
+ * Afin de remettre la configuration réseau par défaut, il utiliser la commande suivante:
+
+{{{
+cp /etc/network/interfaces.BASE /etc/network/interfaces
+}}}
+
+
+ * Un cron s'occupe aussi de la mise à jour des packages. Celui-ci est lançé une fois par jour. Pour mettre à jour manuellement les paquets Cultipi, Cultibox et Cultinet, il faut utiliser la commande suivante:
+
+{{{
+/etc/cron.daily/cultipi
+}}}
