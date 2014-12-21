@@ -211,9 +211,18 @@ proc savePlugSendValue {plug value} {
     
 }
 
+set ::SubscriptionUpdateHour [clock seconds]
 proc emeteur_subscriptionEvenement {} {
 
     set ThereAreSomeClient 0
+    
+    # S'il c'est passé 19 minutes sans logs, on renvoit l'état des prises
+    if {[expr [clock seconds] - $::SubscriptionUpdateHour] > [expr 60 * 19]} {
+        foreach plugP [array names ::plug "subscription*"] {
+            set plg [lindex [split $plugP ","] 1]
+            lappend ::plug(updated) $plg
+        }
+    }
 
     if {$::plug(updated) != ""} {
     
@@ -230,6 +239,9 @@ proc emeteur_subscriptionEvenement {} {
                 ::piServer::sendToServer $client "$client [incr ::TrameIndex] _subscriptionEvenement ::plug($plugNb,value) $::plug($plugNb,value) [clock milliseconds]"
                 
                 set ThereAreSomeClient 1
+                
+                # On enregistre l'heure à laquelle on a mis à jour l'état des prises
+                set ::SubscriptionUpdateHour [clock seconds]
             }
         
         }

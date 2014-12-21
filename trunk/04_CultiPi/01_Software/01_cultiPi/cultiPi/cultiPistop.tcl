@@ -23,5 +23,5 @@ send:data $channel "NA 0 stop"
 
 # fermeture connexion
 close $channel
-
+puts "CultiPi is stopped"
 # tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\culti_pi\module\serverLog\serveurLog.tcl" 6000 "D:\DONNEES\GR08565N\Mes documents\cbx\culti_pi\log.txt"

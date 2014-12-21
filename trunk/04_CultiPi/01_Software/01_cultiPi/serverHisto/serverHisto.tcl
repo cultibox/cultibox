@@ -33,7 +33,8 @@ array set configXML {
 # Chargement de la conf XML
 array set configXML [::piXML::convertXMLToArray $confXML]
 
-::piLog::openLog $port(serverLogs) "serverHisto"
+# On initialise la connexion avec le server de log
+::piLog::openLog $port(serverLogs) "serverHisto" $configXML(verbose)
 ::piLog::log [clock milliseconds] "info" "starting serverHisto - PID : [pid]"
 ::piLog::log [clock milliseconds] "info" "port serverHisto : $port(serverHisto)"
 ::piLog::log [clock milliseconds] "info" "confXML : $confXML"

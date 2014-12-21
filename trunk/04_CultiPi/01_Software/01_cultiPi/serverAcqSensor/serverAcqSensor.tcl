@@ -5,8 +5,7 @@ set rootDir [file dirname [file dirname [info script]]]
 set port(serverAcqSensor)   [lindex $argv 0]
 set confXML                 [lindex $argv 1]
 set port(serverLogs)        [lindex $argv 2]
-
-set debug 0
+set port(serverCultiPi)     [lindex $argv 3]
 
 # Global var for regulation
 set regul(alarme) 0
@@ -19,16 +18,27 @@ package require piTools
 
 # Source extern files
 source [file join $rootDir serverAcqSensor src adress_sensor.tcl]
-if {$debug == 1} {
-    source [file join $rootDir serverAcqSensor src simulator.tcl]
-}
+source [file join $rootDir serverAcqSensor src serveurMessage.tcl]
 
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
 set SubscriptionIndex 0
+# On initialise la conf XML
+array set configXML {
+    verbose     debug
+    simulator   off
+}
 
-::piLog::openLog $port(serverLogs) "serverAcqSensor"
+# Chargement de la conf XML
+array set configXML [::piXML::convertXMLToArray $confXML]
+
+# On initialise la connexion avec le server de log
+::piLog::openLog $port(serverLogs) "serverAcqSensor" $configXML(verbose)
 ::piLog::log [clock milliseconds] "info" "starting serverAcqSensor - PID : [pid]"
+::piLog::log [clock milliseconds] "info" "port serverAcqSensor : $port(serverAcqSensor)"
+::piLog::log [clock milliseconds] "info" "confXML : $confXML"
+::piLog::log [clock milliseconds] "info" "port serverLogs : $port(serverLogs)"
+::piLog::log [clock milliseconds] "info" "port serverCultiPi : $port(serverCultiPi)"
 
 
 proc bgerror {message} {
@@ -37,119 +47,6 @@ proc bgerror {message} {
 
 # Load server
 ::piLog::log [clock millisecond] "info" "starting serveur"
-proc messageGestion {message} {
-
-    # Trame standard : [FROM] [INDEX] [commande] [argument]
-    set serverForResponse   [::piTools::lindexRobust $message 0]
-    set indexForResponse    [::piTools::lindexRobust $message 1]
-    set commande            [::piTools::lindexRobust $message 2]
-
-    switch ${commande} {
-        "stop" {
-            ::piLog::log [clock milliseconds] "info" "Asked stop"
-            stopIt
-        }
-        "pid" {
-            ::piLog::log [clock milliseconds] "info" "Asked pid"
-            ::piServer::sendToServer $serverForResponse "$::port(serverAcqSensor) $indexForResponse pid serverAcqSensor [pid]"
-        }
-        "getRepere" {
-            # Le repère est l'index des capteurs
-            set repere [::piTools::lindexRobust $message 3]
-            ::piLog::log [clock milliseconds] "info" "Asked getRepere $repere"
-            
-            # Les parametres d'un repere : nom Valeur 
-            if {[array names ::sensor -exact "$repere"] != ""} {
-                ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse _getRepere $::sensor($repere)"
-                ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse _getRepere $repere $::sensor($repere)"
-            } else {
-                ::piLog::log [clock milliseconds] "error" "Asked getRepere $repere  not recognize"
-            }
-        }
-        "subscription" {
-            # Le repère est l'index des capteurs
-            set repere [::piTools::lindexRobust $message 3]
-            set frequency [::piTools::lindexRobust $message 4]
-            if {$frequency == 0} {set frequency 1000}
-            set BandeMorteAcquisition [::piTools::lindexRobust $message 5]
-            if {$BandeMorteAcquisition == ""} {set BandeMorteAcquisition 0}
-            
-            ::piLog::log [clock milliseconds] "info" "Subscription of $repere by $serverForResponse frequency $frequency"
-
-            set ::subscriptionVariable($::SubscriptionIndex) ""
-            
-            # On cré la proc associée
-            proc subscription${::SubscriptionIndex} {repere frequency SubscriptionIndex serverForResponse BandeMorteAcquisition} {
-
-                set reponse $::sensor($repere)
-                if {$reponse == ""} {
-                    set reponse "DEFCOM"
-                }
-                
-                set time [clock milliseconds]
-                if {[array name ::sensor -exact $repere,time] != ""} {
-                    set time    $::sensor($repere,time)
-                }
-            
-                # On envoi la nouvelle valeur uniquement si la valeur a changée
-                if {$::subscriptionVariable($SubscriptionIndex) != $reponse} {
-                
-                    # Dans le cas d'un double, on vérifie la bande morte
-                    if {[string is double $reponse] == 1} {
-                        # Reponse doit être > à l'ancienne valeur + BMA ou < à l'ancienne valeur - BMA
-                        if {$reponse > [expr $::subscriptionVariable($SubscriptionIndex) + $BandeMorteAcquisition] || $reponse < [expr $::subscriptionVariable($SubscriptionIndex) - $BandeMorteAcquisition]} {
-                            
-                            ::piServer::sendToServer $serverForResponse "$serverForResponse [incr ::TrameIndex] _subscription ::sensor($repere) $reponse $time"
-                            set ::subscriptionVariable($SubscriptionIndex) $reponse
-                        }
-                    } else {
-                        ::piServer::sendToServer $serverForResponse "$serverForResponse [incr ::TrameIndex] _subscription ::sensor($repere) $reponse $time"
-                        set ::subscriptionVariable($SubscriptionIndex) $reponse
-                    }
-                }
-                
-                after $frequency "subscription${SubscriptionIndex} $repere $frequency $SubscriptionIndex $serverForResponse $BandeMorteAcquisition"
-            }
-            
-            # on la lance
-            subscription${::SubscriptionIndex} $repere $frequency $::SubscriptionIndex $serverForResponse $BandeMorteAcquisition
-            
-            incr ::SubscriptionIndex
-        }
-        "_subscription" -
-        "_subscriptionEvenement" {
-            # On parse le retour de la commande
-            set variable  [::piTools::lindexRobust $message 3]
-            set valeur [::piTools::lindexRobust $message 4]
-            
-            # On enregistre le retour de l'abonnement
-            set ::${variable} $valeur
-            
-            # ::piLog::log [clock milliseconds] "debug" "subscription response : variable $variable valeur -$valeur-"
-        }
-        default {
-            # Si on reçoit le retour d'une commande, le nom du serveur est le notre
-            if {$serverForResponse == $::port(serverAcqSensor)} {
-            
-                if {[array names ::TrameSended -exact $indexForResponse] != ""} {
-                    
-                    switch [lindex $::TrameSended($indexForResponse) 0] {
-                        default {
-                            ::piLog::log [clock milliseconds] "error" "Not recognize keyword response -${message}-"
-                        }                    
-                    }
-                    
-                } else {
-                    ::piLog::log [clock milliseconds] "error" "Not requested response -${message}-"
-                }
-            
-                
-            } else {
-                ::piLog::log [clock milliseconds] "error" "Received -${message}- but not interpreted"
-            }
-        }
-    }
-}
 ::piServer::start messageGestion $port(serverAcqSensor)
 ::piLog::log [clock millisecond] "info" "serveur is started"
 
@@ -160,6 +57,11 @@ proc stopIt {} {
     
     # Arrêt du server de log
     ::piLog::closeLog
+}
+
+# On charge le simulateur uniquement si c'est définit le fichier XML
+if {$configXML(simulator) != "off"} {
+    source [file join $rootDir serverAcqSensor src simulator.tcl]
 }
 
 # Initialisation pour tous les capteurs des valeurs
@@ -217,12 +119,12 @@ proc searchSensorsConnected {} {
                     set ::sensor($sensorType,$index,majorVersion) ""
                     set ::sensor($sensorType,$index,minorVersion) ""
                     set ::sensor($sensorType,$index,updateStatus) "DEFCOM"
-                    ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (adress $moduleAdress) is not connected ($msg)"
+                    ::piLog::log [clock milliseconds] "info" "sensor $sensorType,$index (adress $moduleAdress) is not connected ($msg)"
                 } else {
                     set ::sensor($sensorType,$index,connected) 1
                     set ::sensor($sensorType,$index,majorVersion) $majorVersion
                     set ::sensor($sensorType,$index,minorVersion) $minorVersion
-                    ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index is connected (Version : ${majorVersion}.${minorVersion}) "
+                    ::piLog::log [clock milliseconds] "info" "sensor $sensorType,$index is connected (Version : ${majorVersion}.${minorVersion}) "
                 }
             }
         }
@@ -271,7 +173,7 @@ proc readSensors {} {
                         set ::sensor($sensorType,$index,value,1) $computedValue
                         set ::sensor($sensorType,$index,updateStatus) "OK"
                         set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
-                        # ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 1 : $computedValue"
+                        ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 1 : $computedValue"
                         
                         # On sauvegarde dans le repère global
                         set ::sensor($index,value,1) $computedValue
@@ -305,7 +207,7 @@ proc readSensors {} {
                             set ::sensor($sensorType,$index,value,2) $computedValue
                             set ::sensor($sensorType,$index,updateStatus) "OK"
                             set ::sensor($sensorType,$index,updateStatusComment) [clock milliseconds]
-                            # ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 2 : $computedValue"
+                            ::piLog::log [clock milliseconds] "debug" "sensor $sensorType,$index (@ $moduleAdress - reg $register) value 2 : $computedValue"
                             
                             # On sauvegarde dans le repère global
                             set ::sensor($index,value,2) $computedValue
