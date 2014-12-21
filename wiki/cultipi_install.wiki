@@ -207,6 +207,12 @@ apt-get remove --purge build-essential unzip
 apt-get autoremove
 rm -Rf i2c-tools-master
 }}}
+
+Et à donner les droits à l'utilisateur cultipi:
+
+{{{
+adduser cultipi i2c
+}}}
 	
 = Optimisation du Raspberry =
  * Gestion de la mémoire:
