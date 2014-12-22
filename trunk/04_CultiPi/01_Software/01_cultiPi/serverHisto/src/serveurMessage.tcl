@@ -74,7 +74,7 @@ proc messageGestion {message} {
                             # Si c'est la valeur
                             # ::piLog::log [clock milliseconds] "debug" "_subscription response : save sensor value : $message - [lindex $splitted 1] $valeur1 $valeur2 $time"
                             if {$valeur1 == "DEFCOM"} {
-                                ::piLog::log [clock milliseconds] "error" "_subscription response : save sensor value : DEFCOM so not saved - msg : $message"
+                                ::piLog::log [clock milliseconds] "warning" "_subscription response : save sensor value : DEFCOM so not saved - msg : $message"
                             } else {
                                 ::sql::AddSensorValue [lindex $splitted 1] $valeur1 $valeur2 $time
                             }
