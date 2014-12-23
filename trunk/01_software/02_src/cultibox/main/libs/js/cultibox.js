@@ -290,7 +290,11 @@ $(document).ready(function() {
        get_content("welcome",get_array);
     });
 
-
+    $(".href-wifi").click(function(e) {
+       e.preventDefault();
+       get_content("wifi",get_array);
+    });
+    
     //To deal with dynamic content with href in message box
     $('div.error').on('click', 'a', function(e) {
         e.preventDefault();

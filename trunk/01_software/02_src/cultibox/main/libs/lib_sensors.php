@@ -8,8 +8,8 @@ namespace sensors {
 function check_db() {
 
     // Define columns of the calendar table
-    $sensors_index_col = array();
-    $sensors_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => 'NOT NULL');
+    $sensors_index_col         = array();
+    $sensors_index_col["id"]   = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => 'NOT NULL');
     $sensors_index_col["type"] = array ( 'Field' => "type", 'Type' => "varchar(1)", 'default_value' => 0, 'carac' => "NOT NULL");
 
     // Check if table configuration exists
@@ -71,6 +71,26 @@ function check_db() {
     $db = null;
 }
 
+// Function used to get sensor list
+function getDB() {
+
+        // Check if table configuration exists
+    $sql = "SELECT * FROM sensors;";
+    
+    $db = \db_priv_pdo_start("root");
+    
+    $res = array();
+    
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    return $res;
+}
 
 }
 

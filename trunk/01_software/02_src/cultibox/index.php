@@ -157,6 +157,15 @@ $cost=get_configuration("SHOW_COST");
                                     <li id="menu-wizard" class="level1 item173"><a href="/cultibox/index.php?menu=wizard" class="level1 href-wizard" ><span><?php echo __('MENU_WIZARD'); ?></span></a></li>
 
                                     <li id="menu-help" class="level1 item164"><a href="/cultibox/main/docs/documentation_cultibox.pdf" target="_blank" class="level1 href-help"><span><?php echo __('MENU_HELP'); ?></span></a></li>
+                                
+                                    <?php
+                                    if((!isset($GLOBALS['MODE'])) || $GLOBALS['MODE'] == "cultipi") {
+                                    ?>
+                                    <li id="menu-wifi" class="level1 item164"><a href="/cultibox/index.php?menu=wifi" class="level1 href-wifi" ><span><?php echo __('MENU_WIFI'); ?></span></a></li>
+                                    <?php
+                                    }
+                                    ?>
+                                
                                 </ul>
                             </nav>
                         </div>               
