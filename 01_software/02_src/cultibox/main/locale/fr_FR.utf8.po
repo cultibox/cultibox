@@ -33,6 +33,8 @@ msgstr "Assistant"
 msgid "MENU_HELP"
 msgstr "Aide"
 
+msgid "MENU_WIFI"
+msgstr "Wifi"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
@@ -1741,3 +1743,16 @@ msgstr "Courant"
 
 msgid "CURRENT_PROG_COMMENT"
 msgstr "Programme courant"
+
+# FOr wifi tab
+msgid "WIFI_SYNOPTIC"
+msgstr "Synoptique"
+
+msgid "WIFI_NETWORK_CONF"
+msgstr "Conf réseau"
+
+msgid "WIFI_ADMIN"
+msgstr "Administration"
+
+msgid "WIFI_SYNO_ADD_ELEMENT"
+msgstr "Ajouter un élément"

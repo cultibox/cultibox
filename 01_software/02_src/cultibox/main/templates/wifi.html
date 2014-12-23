@@ -1,0 +1,92 @@
+<script>
+   $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
+</script>
+
+<br />
+<table class="table_width">
+    <tr>    
+        <td class="conf-menu-marge"></td>
+        <td class="center_menu" >
+            <button id="div_user_label" class="menu_h1" onclick="expand('synotpic_ui'); return false;"><?php echo __('WIFI_SYNOPTIC'); ?></button>
+        </td>
+        <td class="center_menu" >
+            <button id="div_system_label" class="menu_h1" onclick="expand('network_conf_ui'); return false;"><?php echo __('WIFI_NETWORK_CONF'); ?></button>
+        </td>
+        <td class="center_menu" >
+            <button id="div_alarm_label" class="menu_h1" onclick="expand('admin_ui'); return false;"><?php echo __('WIFI_ADMIN'); ?></button>
+        </td>
+       <td class="conf-menu-marge"></td>
+    </tr>
+</table> 
+
+<!-- Section synoptic -->
+<div id="div_synotpic_ui" style="">
+    <p class="title_conf"><?php echo __('WIFI_SYNOPTIC'); ?></p>
+    <!-- Display buttons -->
+    <table class="table_width">
+        <tr>
+            <td class="calendar-conf-marge"></td> 
+            <td class="calendar-title">
+                <!-- Button to add a element -->
+                <input type="image" id="syno_add_element" name="syno_add_element"
+                       title="<?php echo __('WIFI_SYNO_ADD_ELEMENT'); ?>"
+                       src="main/libs/img/db_add.png"  width="34" 
+                       alt="calendar"  
+                />        
+            </td>
+            <td class="calendar_right">
+                <input id="datepicker_calendar" name="datepicker_calendar" type="hidden" value="">
+            </td>
+            <td class="calendar-conf-marge"></td>
+        </tr>
+    </table>
+    
+    <p>
+    <?php echo wifi\getSensorValue("1"); ?>
+    </p>
+
+    <div id="set" style="min-height: 700px;" >
+        
+        <?php
+            // Add every sensor
+            $sensorList = wifi\getSensorOfSynoptic();
+
+            foreach ($sensorList as $index => $sensor) 
+            {
+                
+                echo '<div id="syno_elem_' . $sensor["id"] . '" class="ui-widget-content" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;width: 100px; height: 70px; background-color: rgba(0, 0, 0, 0.01)" >';
+                echo '  <p style="width:100px; text-align:center;" >Capteur ' . $sensor["sensorIndex"] . '</p>';
+                echo '  <img src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:100px;height:59px">';
+                echo '</div>';
+            }
+            
+            // Add plugs
+
+            // Add other items
+            
+        ?>
+    </div>
+    
+    <!-- Drag message box for add element-->
+    <div id="syno_add_element_ui" style="display:none" title="<?php echo __('WIFI_SYNO_ADD_ELEMENT'); ?>">
+        <?php
+            
+        ?>
+    </div>
+
+</div>
+
+<!-- Conf reseau -->
+<div id="div_network_conf_ui" style="display:none">
+    <p class="title_conf"><?php echo __('WIFI_NETWORK_CONF'); ?></p>
+</div>
+
+<!-- Admin -->
+<div id="div_admin_ui" style="display:none">
+    <p class="title_conf"><?php echo __('WIFI_ADMIN'); ?></p>
+</div>
+
+
+<div class="popup_error" id="error_update_conf" title="" style="display:none">
+    <p><?php echo __('ERROR_UPDATE_CONF'); ?></p>
+</div>

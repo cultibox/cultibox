@@ -17,69 +17,93 @@ function expand(div) {
       var divLabelCard = document.getElementById('div_card_label');
 
       var divAlarmDesc = document.getElementById('div_alarm_description');
+      
+      var divsynotpic_ui = document.getElementById('div_synotpic_ui');
+      var divnetwork_conf_ui = document.getElementById('div_network_conf_ui');
+      var divadmin_ui = document.getElementById('div_admin_ui');
+      
 
       switch(div) {
-         case 'user_interface' : divConfig.style.display = '';
-                                 divSystem.style.display = "none";
-                                 divAlarm.style.display = "none";
-                                 divCard.style.display = "none";
-                                 divSubmit.style.display = "";
-                                 divAlarmDesc.style.display = "none";
-                        
-                                 divLabelCard.style.color = "black";
-                                 divLabelConfig.style.color = "#6E8915";
-                                 divLabelSystem.style.color = "black";
-                                 divLabelAlarm.style.color = "black";
+         case 'user_interface' : 
+            divConfig.style.display = '';
+            divSystem.style.display = "none";
+            divAlarm.style.display = "none";
+            divCard.style.display = "none";
+            divSubmit.style.display = "";
+            divAlarmDesc.style.display = "none";
 
-                                 document.configform.submenu.value="user_interface";
-                                 
-                                 break;
-         case 'system_interface' : divConfig.style.display = "none";
-                                   divSystem.style.display = '';
-                                   divAlarm.style.display = "none";
-                                   divCard.style.display = "none";
-                                   divSubmit.style.display = "";
-                                   divAlarmDesc.style.display = "none";
+            divLabelCard.style.color = "black";
+            divLabelConfig.style.color = "#6E8915";
+            divLabelSystem.style.color = "black";
+            divLabelAlarm.style.color = "black";
 
-                                   divLabelCard.style.color = "black";
-                                   divLabelConfig.style.color = "black";
-                                   divLabelSystem.style.color = "#6E8915";
-                                   divLabelAlarm.style.color = "black";
+            document.configform.submenu.value="user_interface";
 
-                                   document.configform.submenu.value="system_interface";
+            break;
+         case 'system_interface' : 
+            divConfig.style.display = "none";
+            divSystem.style.display = '';
+            divAlarm.style.display = "none";
+            divCard.style.display = "none";
+            divSubmit.style.display = "";
+            divAlarmDesc.style.display = "none";
 
-                                   break;
-         case 'alarm_interface' : divConfig.style.display = "none";
-                                  divSystem.style.display = "none";
-                                  divAlarm.style.display = '';
-                                  divCard.style.display = "none";
-                                  divSubmit.style.display = "";
-                                  divAlarmDesc.style.display = "";
+            divLabelCard.style.color = "black";
+            divLabelConfig.style.color = "black";
+            divLabelSystem.style.color = "#6E8915";
+            divLabelAlarm.style.color = "black";
 
-                                  divLabelCard.style.color = "black";
-                                  divLabelConfig.style.color = "black";
-                                  divLabelSystem.style.color = "black";
-                                  divLabelAlarm.style.color = "#6E8915";
+            document.configform.submenu.value="system_interface";
+
+            break;
+         case 'alarm_interface' : 
+            divConfig.style.display = "none";
+            divSystem.style.display = "none";
+            divAlarm.style.display = '';
+            divCard.style.display = "none";
+            divSubmit.style.display = "";
+            divAlarmDesc.style.display = "";
+
+            divLabelCard.style.color = "black";
+            divLabelConfig.style.color = "black";
+            divLabelSystem.style.color = "black";
+            divLabelAlarm.style.color = "#6E8915";
 
 
-                                  document.configform.submenu.value="alarm_interface";
+            document.configform.submenu.value="alarm_interface";
 
-                                  break;
-         case 'card_interface' : divConfig.style.display = "none";
-                                 divSystem.style.display = "none";
-                                 divAlarm.style.display = "none";
-                                 divCard.style.display = "";
-                                 divSubmit.style.display = "none";
-                                 divAlarmDesc.style.display = "none";
+            break;
+         case 'card_interface' : 
+            divConfig.style.display = "none";
+            divSystem.style.display = "none";
+            divAlarm.style.display = "none";
+            divCard.style.display = "";
+            divSubmit.style.display = "none";
+            divAlarmDesc.style.display = "none";
 
-                                 divLabelCard.style.color = "#6E8915";
-                                 divLabelConfig.style.color = "black";
-                                 divLabelSystem.style.color = "black";
-                                 divLabelAlarm.style.color = "black";
+            divLabelCard.style.color = "#6E8915";
+            divLabelConfig.style.color = "black";
+            divLabelSystem.style.color = "black";
+            divLabelAlarm.style.color = "black";
 
-                                 document.configform.submenu.value="card_interface";
+            document.configform.submenu.value="card_interface";
 
-                                 break;
+            break;
+         case 'synotpic_ui' : 
+            divsynotpic_ui.style.display = "";
+            divnetwork_conf_ui.style.display = "none";
+            divadmin_ui.style.display = "none";
+            break;
+         case 'network_conf_ui' : 
+            divsynotpic_ui.style.display = "none";
+            divnetwork_conf_ui.style.display = "";
+            divadmin_ui.style.display = "none";
+            break;
+         case 'admin_ui' : 
+            divsynotpic_ui.style.display = "none";
+            divnetwork_conf_ui.style.display = "none";
+            divadmin_ui.style.display = "";
+            break;
       }
 }
 // }}}
