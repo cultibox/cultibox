@@ -20,14 +20,18 @@
         $action=$_POST['action'];
     }
     
-    wifi\check_db();
+    
     
     $ret_array = array();
     
     switch ($action) {
         case "getSensors" :
        
-            $ret_array = wifi\getSensorOfSynoptic();
+            wifi\check_db();
+            
+            //wifi\addElementInSynoptic("sensor", 1, "capteur.png");
+            
+            $ret_array = configuration\getConfElem("NB_PLUGS");
             
             break;
         case "getPlugs" :

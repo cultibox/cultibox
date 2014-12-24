@@ -55,13 +55,22 @@
             {
                 
                 echo '<div id="syno_elem_' . $sensor["id"] . '" class="ui-widget-content" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;width: 100px; height: 70px; background-color: rgba(0, 0, 0, 0.01)" >';
-                echo '  <p style="width:100px; text-align:center;" >Capteur ' . $sensor["sensorIndex"] . '</p>';
+                echo '  <p style="width:100px; text-align:center;" >Capteur ' . $sensor["indexElem"] . '</p>';
                 echo '  <img src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:100px;height:59px">';
                 echo '</div>';
             }
             
             // Add plugs
-
+            $plugList = wifi\getPlugOfSynoptic();
+            foreach ($plugList as $index => $plug) 
+            {
+                
+                echo '<div id="syno_elem_' . $plug["id"] . '" class="ui-widget-content" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;width: 100px; height: 70px; background-color: rgba(0, 0, 0, 0.01)" >';
+                echo '  <p style="width:100px; text-align:center;" >Prise ' . $plug["indexElem"] . '</p>';
+                echo '  <img src="main/libs/img/' . $plug["image"] . '" alt="prise" style="width:65px;height:100px">';
+                echo '</div>';
+            }
+            
             // Add other items
             
         ?>

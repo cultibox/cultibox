@@ -9,18 +9,18 @@ function check_db() {
 
     // Define columns of the calendar table
     $plugs_index_col = array();
-    $plugs_index_col["id"]                   = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT");
-    $plugs_index_col["PLUG_ID"] = array ( 'Field' => "PLUG_ID", 'Type' => "varchar(3)", 'default_value' => "NULL");
-    $plugs_index_col["PLUG_NAME"] = array ( 'Field' => "PLUG_NAME", 'Type' => "varchar(30)", 'default_value' => "NULL");
-    $plugs_index_col["PLUG_TYPE"] = array ( 'Field' => "PLUG_TYPE", 'Type' => "varchar(20)", 'default_value' => 'other', 'carac' => "NOT NULL");
-    $plugs_index_col["PLUG_TOLERANCE"] = array ( 'Field' => "PLUG_TOLERANCE", 'Type' => "decimal(3,1)", 'default_value' => "NULL");
-    $plugs_index_col["PLUG_POWER"] = array ( 'Field' => "PLUG_POWER", 'Type' => "int(11)", 'default_value' => "NULL");
-    $plugs_index_col["PLUG_POWER_MAX"] = array ( 'Field' => "PLUG_POWER_MAX", 'Type' => "varchar(10)", 'default_value' => '1000', 'carac' => "NOT NULL");
-    $plugs_index_col["PLUG_REGUL"] = array ( 'Field' => "PLUG_REGUL", 'Type' => "varchar(5)", 'default_value' => 'False', 'carac' => "NOT NULL");
-    $plugs_index_col["PLUG_REGUL_SENSOR"] = array ( 'Field' => "PLUG_REGUL_SENSOR", 'Type' => "varchar(7)", 'default_value' => '1', 'carac' => "NOT NULL");
-    $plugs_index_col["PLUG_SENSO"] = array ( 'Field' => "PLUG_SENSO", 'Type' => "varchar(1)", 'default_value' => 'T', 'carac' => "NOT NULL");
-    $plugs_index_col["PLUG_SENSS"] = array ( 'Field' => "PLUG_SENSS", 'Type' => "varchar(1)", 'default_value' => '+', 'carac' => "NOT NULL");
-    $plugs_index_col["PLUG_REGUL_VALUE"] = array ( 'Field' => "PLUG_REGUL_VALUE", 'Type' => "decimal(3,1)", 'default_value' => 35.0, 'carac' => "NOT NULL");
+    $plugs_index_col["id"]                  = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT");
+    $plugs_index_col["PLUG_ID"]             = array ( 'Field' => "PLUG_ID", 'Type' => "varchar(3)", 'default_value' => "NULL");
+    $plugs_index_col["PLUG_NAME"]           = array ( 'Field' => "PLUG_NAME", 'Type' => "varchar(30)", 'default_value' => "NULL");
+    $plugs_index_col["PLUG_TYPE"]           = array ( 'Field' => "PLUG_TYPE", 'Type' => "varchar(20)", 'default_value' => 'other', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_TOLERANCE"]      = array ( 'Field' => "PLUG_TOLERANCE", 'Type' => "decimal(3,1)", 'default_value' => "NULL");
+    $plugs_index_col["PLUG_POWER"]          = array ( 'Field' => "PLUG_POWER", 'Type' => "int(11)", 'default_value' => "NULL");
+    $plugs_index_col["PLUG_POWER_MAX"]      = array ( 'Field' => "PLUG_POWER_MAX", 'Type' => "varchar(10)", 'default_value' => '1000', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_REGUL"]          = array ( 'Field' => "PLUG_REGUL", 'Type' => "varchar(5)", 'default_value' => 'False', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_REGUL_SENSOR"]   = array ( 'Field' => "PLUG_REGUL_SENSOR", 'Type' => "varchar(7)", 'default_value' => '1', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_SENSO"]          = array ( 'Field' => "PLUG_SENSO", 'Type' => "varchar(1)", 'default_value' => 'T', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_SENSS"]          = array ( 'Field' => "PLUG_SENSS", 'Type' => "varchar(1)", 'default_value' => '+', 'carac' => "NOT NULL");
+    $plugs_index_col["PLUG_REGUL_VALUE"]    = array ( 'Field' => "PLUG_REGUL_VALUE", 'Type' => "decimal(3,1)", 'default_value' => 35.0, 'carac' => "NOT NULL");
     $plugs_index_col["PLUG_SECOND_TOLERANCE"] = array ( 'Field' => "PLUG_SECOND_TOLERANCE", 'Type' => "decimal(3,1)", 'default_value' => 0.0, 'carac' => "NOT NULL");
     $plugs_index_col["PLUG_COMPUTE_METHOD"] = array ( 'Field' => "PLUG_COMPUTE_METHOD", 'Type' => "varchar(1)", 'default_value' => 'M', 'carac' => "NOT NULL");
 
@@ -100,6 +100,26 @@ function check_db() {
     $db = null;
 }
 
+// Function used to get sensor list
+function getDB() {
+
+        // Check if table configuration exists
+    $sql = "SELECT * FROM plugs;";
+    
+    $db = \db_priv_pdo_start("root");
+    
+    $res = array();
+    
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    return $res;
+}
 
 }
 
