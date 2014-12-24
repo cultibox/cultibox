@@ -139,7 +139,7 @@ msgid "ERROR_NET_FILE_CREATION"
 msgstr "Si è verificato un errore durante la creazione dei file di configurazione di rete"
 
 msgid "AVAILABLE_MODULE_SET"
-msgstr "Il modulo è ora collegato alla rete (s) (x) set (s) È possibile riconnettersi alla rete e accedere al modulo Cultipi al seguente indirizzo nel vostro browser preferito. <p class='p_center'>https://cultipi.local/cultibox/</p>"
+msgstr "Il modulo è ora collegato alla rete (s) (x) set (s) È possibile riconnettersi alla rete e accedere al modulo Cultipi al seguente indirizzo nel vostro browser preferito. <p class='p_center'><a class='note_link' href='https://cultipi.local/cultibox/' target='_blank'>https://cultipi.local/cultibox/</a></p>"
 
 msgid "RESTORED_CONF"
 msgstr "Si è verificato un errore durante l'impostazione della configurazione di rete. La configurazione precedente è stato restaurato"
