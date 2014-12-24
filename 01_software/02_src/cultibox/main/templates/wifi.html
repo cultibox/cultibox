@@ -54,8 +54,23 @@
             foreach ($sensorList as $index => $sensor) 
             {
                 
-                echo '<div id="syno_elem_' . $sensor["id"] . '" class="ui-widget-content" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;width: 100px; height: 70px; background-color: rgba(0, 0, 0, 0.01)" >';
-                echo '  <p style="width:100px; text-align:center;" >Capteur ' . $sensor["indexElem"] . '</p>';
+                echo '<div id="syno_elem_' . $sensor["id"] . '" class="ui-widget-content" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01)" >';
+                echo '  <table>';
+                echo '    <tr>';
+                echo '      <td>Capteur ' . $sensor["indexElem"] . '</td>';
+                echo '      <td>';
+                echo '          <input type="image" id="syno_elem_configur_' . $sensor["id"] . '" name="syno_elem_configur_' . $sensor["id"] . '"';
+                echo '                 title=""';
+                echo '                 src="main/libs/img/advancedsettings.png"  width="18"';
+                echo '                 alt="configure"';
+                echo '                 class="syno_conf_elem_button"';
+                echo '          />';
+                echo '      </td>';
+                echo '    </tr>';
+                echo '    <tr>';
+                echo '      <td colspan="2">NA°C NA%RH</td>';
+                echo '    </tr>';
+                echo '  </table>';
                 echo '  <img src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:100px;height:59px">';
                 echo '</div>';
             }
@@ -64,10 +79,24 @@
             $plugList = wifi\getPlugOfSynoptic();
             foreach ($plugList as $index => $plug) 
             {
-                
-                echo '<div id="syno_elem_' . $plug["id"] . '" class="ui-widget-content" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;width: 100px; height: 70px; background-color: rgba(0, 0, 0, 0.01)" >';
-                echo '  <p style="width:100px; text-align:center;" >Prise ' . $plug["indexElem"] . '</p>';
-                echo '  <img src="main/libs/img/' . $plug["image"] . '" alt="prise" style="width:65px;height:100px">';
+                echo '<div id="syno_elem_' . $plug["id"] . '" class="ui-widget-content" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01)" >';
+                echo '  <table>';
+                echo '    <tr>';
+                echo '      <td>Capteur ' . $plug["indexElem"] . '</td>';
+                echo '      <td>';
+                echo '          <input type="image" id="syno_elem_configur_' . $plug["id"] . '" name="syno_elem_configur_' . $plug["id"] . '"';
+                echo '                 title=""';
+                echo '                 src="main/libs/img/advancedsettings.png"  width="18"';
+                echo '                 alt="configure"';
+                echo '                 class="syno_conf_elem_button"';
+                echo '          />';
+                echo '      </td>';
+                echo '    </tr>';
+                echo '    <tr>';
+                echo '      <td colspan="2">NA</td>';
+                echo '    </tr>';
+                echo '  </table>';
+                echo '  <img src="main/libs/img/' . $plug["image"] . '" alt="capteur" style="width:65;height:100px">';
                 echo '</div>';
             }
             
@@ -83,6 +112,13 @@
         ?>
     </div>
 
+    <!-- Message box for configuring element-->
+    <div id="syno_configure_element" style="display:none" title="<?php echo __('WIFI_SYNO_CONF'); ?>">
+        <?php
+            
+        ?>
+    </div>
+    
 </div>
 
 <!-- Conf reseau -->
