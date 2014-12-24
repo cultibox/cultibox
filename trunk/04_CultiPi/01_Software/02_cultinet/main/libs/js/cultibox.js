@@ -2,6 +2,7 @@
 
 var CLOSE_button="";
 var SELECT_button="";
+var RELOAD_button="";
 
 var lang="";
 
@@ -17,18 +18,23 @@ $.ajax({
 if(lang=="it_IT") {
     CLOSE_button="Chiudere";
     SELECT_button="Convalidare";
+    RELOAD_button="Reti Rescan";
 } else if(lang=="de_DE") {
     CLOSE_button="Schliessen";
     SELECT_button="Prüfen";
+    RELOAD_button="Rescan Netzwerke";
 } else if(lang=="en_GB") {
     CLOSE_button="Close";
     SELECT_button="Validate";
+    RELOAD_button="Rescan networks";
 } else if(lang=="es_ES") {
     CLOSE_button="Cerrar";
     SELECT_button="Validar";
+    RELOAD_button="Volver a examinar las redes";
 } else {
     CLOSE_button="Fermer";
     SELECT_button="Valider";
+    RELOAD_button="Re-scanner les réseaux";
 }
 
 
@@ -92,7 +98,8 @@ $(document).ready(function() {
         }
     });
 
-    $("#wifi_scan").click(function() {
+    $("#wifi_scan").click(function(e) {
+         e.preventDefault();
          $("#wifi_essid_list").dialog({
             resizable: false,
             width: 500,
@@ -100,6 +107,42 @@ $(document).ready(function() {
             closeOnEscape: true,
             dialogClass: "popup_message",
             buttons: [{
+                text: RELOAD_button,
+                click: function () {
+                     $.blockUI({
+                        message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                        centerY: 0,
+                        css: {
+                            top: '20%',
+                            border: 'none',
+                            padding: '5px',
+                            backgroundColor: 'grey',
+                            '-webkit-border-radius': '10px',
+                            '-moz-border-radius': '10px',
+                            opacity: .9,
+                            color: '#fffff'
+                        },
+                        onBlock: function() {
+                            $.ajax({
+                                cache: false,
+                                async: false,
+                                url: "main/modules/external/scan_network.php"
+                            }).done(function (data) {
+                                $("#wifi_essid_list").empty();
+                                $("#wifi_essid_list").append("<p><?php echo __('WIFI_SCAN_SUBTITLE'); ?></p>");
+                                $.each($.parseJSON(data),function(index,value) {
+                                    checked="";
+                                    if($("#wifi_ssid").val()==value) {
+                                        checked="checked";
+                                    }
+                                    $("#wifi_essid_list").append('<b>'+value+' : </b><input type="radio" name="wifi_essid" value="'+value+'" '+checked+' /><br />');
+                                });
+                            });
+                       }
+                    }); 
+                    $.unblockUI();
+                }
+             }, {
                 text: CLOSE_button,
                 click: function () {
                     $( this ).dialog( "close" ); return false;

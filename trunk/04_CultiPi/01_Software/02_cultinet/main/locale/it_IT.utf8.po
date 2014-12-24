@@ -117,9 +117,6 @@ msgstr "Il tipo di crittografia della chiave per la vostra rete WiFi"
 msgid "TOOLTIP_WIFI_IP"
 msgstr "L'indirizzo del modulo wireless può essere personalizzato con il ritorno di un indirizzo IP nel formato XXX.XXX.XXX.XXX"
 
-msgid "TOOLTIP_MSGBOX_EYES"
-msgstr "Clicca sull'immagine per riapparire finestra di messaggio software"
-
 msgid "SAVE_CONF"
 msgstr "Salva impostazioni"
 
@@ -130,7 +127,7 @@ msgid "EMPTY_NETWORK_CONFIG"
 msgstr "Nessuna configurazione di rete (cablata o wireless) è stata abilitata. È necessario attivare una connessione di rete per rendere il modulo disponibile."
 
 msgid "WIFI_SCAN_ESSID"
-msgstr "Clicca sull'immagine per visualizzare le reti disponibili e scegliere"
+msgstr "Reti disponibili"
 
 msgid "WIFI_ESSID_SCAN_TITLE"
 msgstr "Scegliere una rete senza fili"
@@ -146,4 +143,7 @@ msgstr "Il modulo è ora collegato alla rete (s) (x) set (s) È possibile riconn
 
 msgid "RESTORED_CONF"
 msgstr "Si è verificato un errore durante l'impostazione della configurazione di rete. La configurazione precedente è stato restaurato"
+
+msgid "LOADING_DATA"
+msgstr "Caricamento in corso, attendere prego..."
 

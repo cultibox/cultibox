@@ -115,9 +115,6 @@ msgstr "Le type d'encryptage de la clef de votre réseau Wifi"
 msgid "TOOLTIP_WIFI_IP"
 msgstr "L'adresse de votre module Wifi peut être personnalisée en rentrant une adresse ip au format XXX.XXX.XXX.XXX"
 
-msgid "TOOLTIP_MSGBOX_EYES"
-msgstr "Cliquez sur l'image pour faire réapparaître la boîte de messages du logiciel"
-
 msgid "SAVE_CONF"
 msgstr "Enregistrer la configuration"
 
@@ -128,7 +125,7 @@ msgid "EMPTY_NETWORK_CONFIG"
 msgstr "Aucune configuration réseau (filaire ou sans fil) n'a été activé. Vous devez activer une connexion réseau pour rendre votre module disponible."
 
 msgid "WIFI_SCAN_ESSID"
-msgstr "Cliquez sur l'image pour afficher les réseaux disponibles et en choisir un"
+msgstr "Réseaux disponibles"
 
 msgid "WIFI_ESSID_SCAN_TITLE"
 msgstr "Sélection d'un réseau Wifi"
@@ -144,3 +141,7 @@ msgstr "Votre module est maintenant connecté sur le(s) réseau(x) configuré(s)
 
 msgid "RESTORED_CONF"
 msgstr "Une erreur est survenue lors de la mise en place de votre configuration réseau. La configuration précédente a été restauré"
+
+msgid "LOADING_DATA"
+msgstr "Chargement des données en cours, patientez s'il vous plait..."
+
