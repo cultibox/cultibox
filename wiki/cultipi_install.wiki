@@ -468,14 +468,25 @@ if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
     mac="`echo ${mac} | sed  -e 's/://g'`"
 
     if [ "$mac" != "" ]; then
-        if [ "`grep cultipi_${mac} /etc/network/interface`" == "" ]; then
+        if [ "`grep cultipi_${mac} /etc/network/interfaces`" == "" ]; then
             sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces
+        fi
+    fi
+fi
+
+if [ "`grep cultipi_ /etc/network/interfaces.BASE`" != "" ]; then
+    mac="`ifconfig wlan0|grep HWa|awk -F 'HWaddr ' '{print $2}'|cut -d: -f5,6`"
+    mac="`echo ${mac} | sed  -e 's/://g'`"
+
+    if [ "$mac" != "" ]; then
+        if [ "`grep cultipi_${mac} /etc/network/interfaces.BASE`" == "" ]; then
+            sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces.BASE
         fi
     fi
 fi
 }}}
 
-Ce morceau de code permettra de générer le nom du réseau adHoc de connexion avec l'adresse Mac de votre module Wifi
+Ce morceau de code permettra de générer le nom du réseau adHoc de connexion avec l'adresse Mac de votre module Wifi si votre Raspberry démarre avec un module wifi connecté.
 
 
 *Remarque:* les commentaires sont importants, le logiciel de configuration du réseau Cultinet les utilise pour déterminer les blocs liés aux différentes interfaces. Ce fichier de configuration déclare un réseau adHoc sur lequel il sera possible de se connecter afin de configurer son réseau wifi.
