@@ -10,8 +10,8 @@ if [ -f /etc/cron.daily/cultipi ]; then
 fi
 
 
-if [ "`cat /etc/crontab|grep cultipi`" == "" ]; then
-    echo "*/1 *   * * *   root    source /etc/default/culticron . ; if [ \"\$CULTICRON_ACTIV\" == \"yes\" ]; then /etc/init.d/cultipi status >/dev/null; if [ \$? -ne 0 ]; then /etc/init.d/cultipi force-reload; fi fi" >> /etc/crontab
+if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
+    echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab
 fi
 
 
