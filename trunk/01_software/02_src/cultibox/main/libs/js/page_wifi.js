@@ -67,7 +67,23 @@ $(document).ready(function(){
         });
     });
     
-     
+    // Display and control user form for daily program
+    $( ".syno_conf_elem_button" ).click(function(e) {
+        e.preventDefault();
+        $("#syno_add_element_ui").dialog({
+            resizable: false,
+            width: 300,
+            closeOnEscape: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CLOSE_button,
+                click: function () {
+                    $( this ).dialog( "close" ); return false;
+                }
+            }]
+        });
+    });
+    
 });
 </script>
 

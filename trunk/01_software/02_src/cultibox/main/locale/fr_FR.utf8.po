@@ -1756,3 +1756,6 @@ msgstr "Administration"
 
 msgid "WIFI_SYNO_ADD_ELEMENT"
 msgstr "Ajouter un élément"
+
+msgid "WIFI_SYNO_CONF"
+msgstr "Configurer"
