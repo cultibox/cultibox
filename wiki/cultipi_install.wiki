@@ -385,6 +385,10 @@ $HTTP["scheme"] == "https" {
             url.redirect = (".*" => "http://%0$0")
         }
     }
+
+    $HTTP["url"] =~ "^/setup($|/)" {
+        dir-listing.activate = "enable"
+    }
 }
 
 $SERVER["socket"] == ":443" {
@@ -395,9 +399,10 @@ $SERVER["socket"] == ":443" {
 }}}
 
 
-Puis relancez le serveur:
+Créez le répertoire setup puis relancez le serveur:
 
 {{{
+mkdir /var/www/setup
 /etc/init.d/lighttpd force-reload
 }}}
 
