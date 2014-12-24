@@ -368,11 +368,11 @@ include_shell "/usr/share/lighttpd/create-mime.assign.pl"
 include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
 
 $HTTP["scheme"] == "http" {
-    $HTTP["remoteip"] == "172.16.0.0/24" {
+    $HTTP["remoteip"] == "10.0.0.0/8" {
         $HTTP["host"] =~ ".*" {
             url.redirect = ("^/$" => "/cultinet")
         }
-    } else  $HTTP["remoteip"] != "172.16.0.0/24" {
+    } else  $HTTP["remoteip"] != "10.0.0.0/8" {
         $HTTP["host"] =~ ".*" {
             url.redirect = (".*" => "https://%0$0")
         }
@@ -380,7 +380,7 @@ $HTTP["scheme"] == "http" {
 }
 
 $HTTP["scheme"] == "https" {
-    $HTTP["remoteip"] == "172.16.0.0/24" {
+    $HTTP["remoteip"] == "10.0.0.0/8" {
         $HTTP["host"] =~ ".*" {
             url.redirect = (".*" => "http://%0$0")
         }
@@ -453,8 +453,8 @@ iface eth0 inet dhcp
 allow-hotplug wlan0
 auto wlan0
 iface wlan0 inet static
-address 172.16.0.100
-netmask 255.255.255.0
+address 10.0.0.100
+netmask 255.0.0.0
 wireless-channel 4
 wireless-essid cultipi_network
 wireless-mode ad-hoc
@@ -507,14 +507,14 @@ vi /etc/udhcpd.conf
 Le fichier de configuration du dhcp doit contenir les directives suivantes:
 
 {{{
-start		172.16.0.102	#default: 192.168.0.20
-end		    172.16.0.254	#default: 192.168.0.254
-interface	wlan0		#default: eth0
-remaining	yes		#default: yes
-opt	dns	172.16.0.100
-option	subnet	255.255.255.0
-opt	router	172.16.0.100
-opt	wins	172.16.0.100
+start		10.0.0.102	
+end		10.0.0.254	
+interface	wlan0		
+remaining	yes		
+opt	dns	10.0.0.100
+option	subnet	255.0.0.0
+opt	router	10.0.0.100
+opt	wins	10.0.0.100
 option	domain	local
 option	lease	864000		# 10 days of seconds
 }}}
