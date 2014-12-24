@@ -51,7 +51,7 @@ if(find_config($net_config,"wlan0","wpa-psk","bool")) {
 }
 
 
-if(strcmp("$wifi_ssid","cultipi_network")==0) $wifi_ssid="";
+if(strpos("$wifi_ssid","cultipi_")===0) $wifi_ssid="";
 
 ?>
 <!DOCTYPE HTML>
@@ -181,9 +181,9 @@ if(strcmp("$wifi_ssid","cultipi_network")==0) $wifi_ssid="";
             <td class="conf-marge-field-wifi"></td>
             <td class="conf-field-title-wifi"><?php echo __('CONFIGURE_WIFI_SSID'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_WIFI_SSID'); ?>" /></td>
              <td class="conf-field-field-wifi">
-                <input  type="text" size="15" name="wifi_ssid" id="wifi_ssid" value="<?php echo $wifi_ssid; ?>" /><img src="/cultinet/main/libs/img/wifi.png" id="wifi_scan" alt="" title="<?php echo __('WIFI_SCAN_ESSID'); ?>" />
+                <input  type="text" size="15" name="wifi_ssid" id="wifi_ssid" value="<?php echo $wifi_ssid; ?>" />
             </td>
-                <td><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
+                <td><button id="wifi_scan" alt="" /><?php echo __('WIFI_SCAN_ESSID'); ?></button><div id="error_wifi_ssid" style="display:none" class="error_field"><img src='/cultinet/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SSID_VALUE'); ?></div></td>
             </tr>
            <tr>
               <td></td>
@@ -277,7 +277,7 @@ if(strcmp("$wifi_ssid","cultipi_network")==0) $wifi_ssid="";
             $checked="";
             foreach($wifi_net_list as $essid) {
                 $essid=trim($essid);
-                if((strcmp("$essid","cultipi_network")!=0)&&(strcmp("$essid","")!=0)) {
+                if((strpos("$essid","cultipi_")!==0)&&(strcmp("$essid","")!=0)) {
                     if(strcmp("$essid","$wifi_ssid")==0) $checked="checked";
                     echo '<b>'.$essid.' : </b><input type="radio" name="wifi_essid" value="'.$essid.'" '.$checked.' /><br />';
                     $checked="";

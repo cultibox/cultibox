@@ -117,9 +117,6 @@ msgstr "Die Art der Verschlüsselung der Schlüssel zu Ihrem WLAN-Netzwerk"
 msgid "TOOLTIP_WIFI_IP"
 msgstr "Die Adresse des WLAN-Modul kann mit einer IP-Adresse in das Format XXX.XXX.XXX.XXX angepasst werden"
 
-msgid "TOOLTIP_MSGBOX_EYES"
-msgstr "Klicken Sie auf das Bild, um Software-Meldung wieder"
-
 msgid "SAVE_CONF"
 msgstr "Einstellungen speichern"
 
@@ -130,7 +127,7 @@ msgid "EMPTY_NETWORK_CONFIG"
 msgstr "Keine Netzwerkkonfiguration (verdrahtet oder drahtlos) wurde aktiviert. Sie müssen eine Netzwerkverbindung ändern Ihr Modul zur Verfügung zu stellen."
 
 msgid "WIFI_SCAN_ESSID"
-msgstr "Klicken Sie auf das Bild, um die verfügbaren Netzwerke anzuzeigen, und wählen Sie"
+msgstr "Verfügbare Netzwerke"
 
 msgid "WIFI_ESSID_SCAN_TITLE"
 msgstr "Wählen Sie ein drahtloses Netzwerk"
@@ -146,4 +143,7 @@ msgstr "Ihr Modul ist nun mit dem Netzwerk (e) (x) (e) Sie können mit Ihrem Net
 
 msgid "RESTORED_CONF"
 msgstr "bei der Einrichtung Ihrer Netzwerkkonfiguration ist ein Fehler aufgetreten. Der vorherige Konfiguration wiederhergestellt wurde"
+
+msgid "LOADING_DATA"
+msgstr "Laden Laden, bitte warten..."
 

@@ -117,9 +117,6 @@ msgstr "The type of encryption the key to your WiFi network"
 msgid "TOOLTIP_WIFI_IP"
 msgstr "The address of your wireless module can be customized by returning an IP address to the format XXX.XXX.XXX.XXX"
 
-msgid "TOOLTIP_MSGBOX_EYES"
-msgstr "Click on the image to reappear software message box"
-
 msgid "SAVE_CONF"
 msgstr "Save Settings"
 
@@ -130,7 +127,7 @@ msgid "EMPTY_NETWORK_CONFIG"
 msgstr "No network configuration (wired or wireless) has been enabled. You must enable a network connection to make your module available."
 
 msgid "WIFI_SCAN_ESSID"
-msgstr "Click on the image to view the available networks and choose"
+msgstr "Available networks"
 
 msgid "WIFI_ESSID_SCAN_TITLE"
 msgstr "Choose a wireless network"
@@ -146,4 +143,7 @@ msgstr "Your module is now connected to the network (s) (x) set (s) You can reco
 
 msgid "RESTORED_CONF"
 msgstr "An error occurred while setting up your network configuration. The previous configuration has been restored"
+
+msgid "LOADING_DATA"
+msgstr "Loading, please wait...
 

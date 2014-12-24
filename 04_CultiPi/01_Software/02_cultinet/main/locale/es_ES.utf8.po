@@ -118,9 +118,6 @@ msgstr "El tipo de cifrado de la clave de tu red WiFi"
 msgid "TOOLTIP_WIFI_IP" 
 msgstr "La dirección de su módulo inalámbrico se puede personalizar mediante la devolución de una dirección IP al formato XXX.XXX.XXX.XXX"
 
-msgid "TOOLTIP_MSGBOX_EYES"
-msgstr "Haga clic en la imagen para volver a aparecer cuadro de mensaje de software"
-
 msgid "SAVE_CONF" 
 msgstr "Guardar configuración"
 
@@ -131,7 +128,7 @@ msgid "EMPTY_NETWORK_CONFIG"
 msgstr "No hay configuración de la red (cableada o inalámbrica) se ha habilitado. Debes activar una conexión de red para que su módulo disponible."
 
 msgid "WIFI_SCAN_ESSID" 
-msgstr "Haga clic en la imagen para ver las redes disponibles y elegir la opción"
+msgstr "Redes disponibles"
 
 msgid "WIFI_ESSID_SCAN_TITLE" 
 msgstr "Elija una red inalámbrica"
@@ -147,4 +144,8 @@ msgstr "El módulo está conectado a la red (s) (x) (s) Usted puede volver a con
 
 msgid "RESTORED_CONF" 
 msgstr "Se ha producido un error al establecer la configuración de red. La configuración anterior se ha restaurado"
+
+msgid "LOADING_DATA"
+msgstr "Cargando, espere por favor..."
+
 
