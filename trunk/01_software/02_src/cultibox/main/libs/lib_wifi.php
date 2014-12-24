@@ -14,8 +14,8 @@ function check_db() {
     $synoptic_col["scale"]         = array ( 'Field' => "scale", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["x"]             = array ( 'Field' => "x", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["y"]             = array ( 'Field' => "y", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
-    $synoptic_col["plugIndex"]     = array ( 'Field' => "plugIndex", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
-    $synoptic_col["sensorIndex"]   = array ( 'Field' => "sensorIndex", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
+    $synoptic_col["z"]             = array ( 'Field' => "z", 'Type' => "int(11)", "default_value" => 1, 'carac' => "NOT NULL");
+    $synoptic_col["indexElem"]     = array ( 'Field' => "indexElem", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["rotation"]      = array ( 'Field' => "rotation", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["image"]         = array ( 'Field' => "image", 'Type' => "VARCHAR(50)", "default_value" => "", 'carac' => "NOT NULL");
     
@@ -31,11 +31,10 @@ function check_db() {
     } catch(\PDOException $e) {
         $ret=$e->getMessage();
     }
-
     // If table exists, return
     if ($res == null)
     {
-
+        
         // Buil MySQL command to create table
         $sql = "CREATE TABLE synoptic ("
             ."id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,"
@@ -43,8 +42,8 @@ function check_db() {
             ."scale int(11) NOT NULL DEFAULT '100',"
             ."x int(11) NOT NULL DEFAULT '0',"
             ."y int(11) NOT NULL DEFAULT '0',"
-            ."plugIndex int(11) NOT NULL DEFAULT '0',"
-            ."sensorIndex int(11) NOT NULL DEFAULT '0',"
+            ."z int(11) NOT NULL DEFAULT '0',"
+            ."indexElem int(11) NOT NULL DEFAULT '0',"
             ."rotation int(11) NOT NULL DEFAULT '0',"
             ."image varchar(50) NOT NULL DEFAULT '' );";
 
@@ -67,12 +66,13 @@ function check_db() {
 
 // {{{ getSensorSynoptic()
 // ROLE Retrieve sensor information in db
-// IN $number : Number of sensor
+// IN $indexElem : Number of sensor
 // RET id of the line added
-function getSensorSynoptic($number) {
+function getSynopticDBElemByname ($element, $indexElem) {
 
-        // Check if table configuration exists
-    $sql = "SELECT * FROM synoptic WHERE sensorIndex = '${number}' ;";
+
+    // Check if table configuration exists
+    $sql = "SELECT * FROM synoptic WHERE element = '${element}' AND indexElem = '${indexElem}' ;";
     
     $db = \db_priv_pdo_start("root");
     
@@ -97,9 +97,9 @@ function getSensorSynoptic($number) {
 // IN $sensorIndex : Sensor index
 // IN $image : Image name
 // RET 0
-function addElementInSynoptic($element, $plugIndex, $sensorIndex, $image, $x=0, $y="") {
+function addElementInSynoptic($element, $indexElem, $image, $x=0, $y="") {
     
-    if ($plugIndex != 0 && $x == 0) 
+    if ($element == "plug" && $x == 0) 
     {
         $x = 700;
     } elseif ($x == 0)
@@ -109,11 +109,11 @@ function addElementInSynoptic($element, $plugIndex, $sensorIndex, $image, $x=0, 
     
     if ($y == "") 
     {
-        $y = ($plugIndex + $sensorIndex + 3) * 100;
+        $y = ($indexElem + 3) * 100;
     }
 
     // Check if table configuration exists
-    $sql = "INSERT INTO synoptic (element, plugIndex, sensorIndex, image, x, y) VALUES('${element}' , '${plugIndex}' , '${sensorIndex}' , '${image}' , '${x}' , '${y}') ;";
+    $sql = "INSERT INTO synoptic (element, indexElem, image, x, y) VALUES('${element}' , '${indexElem}' , '${image}' , '${x}' , '${y}') ;";
     
     $db = \db_priv_pdo_start("root");
     
@@ -142,22 +142,54 @@ function getSensorOfSynoptic () {
     foreach ($sensorList as $index => $sensor){
 
         // Read parameters in db and add it to return array
-        $sensorParameters = getSensorSynoptic($sensor["id"]);
+        $sensorParameters = getSynopticDBElemByname("sensor",$sensor["id"]);
 
         // If empty create them 
         if (empty($sensorParameters) && $sensor["type"] != "0") {
 
-            addElementInSynoptic("sensor", 0, $sensor["id"], "capteur.png");
+            addElementInSynoptic("sensor", $sensor["id"], "capteur.png");
             
-            $ret_array[] = getSensorSynoptic($sensor["id"]);
+            $ret_array[] = getSynopticDBElemByname("sensor",$sensor["id"]);
             
-        } elseif ($sensor["type"] != "0") {
+        }
+        elseif ($sensor["type"] != "0") 
+        {
             $ret_array[] = $sensorParameters;
         }
 
     }
+
+    return $ret_array;
+}
+
+function getPlugOfSynoptic () {
+
+    $ret_array = array();
+
+    // Read nb plug in database
+    $plugNB = \configuration\getConfElem("NB_PLUGS");
     
-    
+    // foreach sensor, get type and position
+    for ($i = 1; $i <= $plugNB["NB_PLUGS"] && $i <= 100; $i++) {
+
+        // Read parameters in db and add it to return array
+        $sensorParameters = getSynopticDBElemByname("plug",$i);
+
+        // If empty create them 
+        if (empty($sensorParameters)) {
+
+            addElementInSynoptic("plug", $i, "prise_100W.png");
+            
+            $ret_array[] = getSynopticDBElemByname("plug",$i);
+            
+        } 
+        else
+        { 
+            $ret_array[] = $sensorParameters;
+        }
+
+    }
+
     return $ret_array;
 }
 

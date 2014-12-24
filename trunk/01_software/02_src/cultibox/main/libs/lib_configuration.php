@@ -152,6 +152,26 @@ function check_db() {
     
 }
 
+// Function used to get sensor list
+function getConfElem($elem) {
+
+        // Check if table configuration exists
+    $sql = "SELECT ${elem} FROM configuration;";
+    
+    $db = \db_priv_pdo_start("root");
+    
+    $res = array();
+    
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetch(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    return $res;
+}
 
 }
 
