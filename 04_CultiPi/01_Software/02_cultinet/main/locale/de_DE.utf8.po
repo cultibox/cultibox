@@ -139,7 +139,7 @@ msgid "ERROR_NET_FILE_CREATION"
 msgstr "beim Erstellen der Netzwerkkonfigurationsdateien ist ein Fehler aufgetreten"
 
 msgid "AVAILABLE_MODULE_SET"
-msgstr "Ihr Modul ist nun mit dem Netzwerk (e) (x) (e) Sie können mit Ihrem Netzwerk zu verbinden und auf die Cultipi Modul an die folgende Adresse in Ihrem Lieblings-Browser verbunden. <p class='p_center '>https://cultipi.local/cultibox/</p> "
+msgstr "Ihr Modul ist nun mit dem Netzwerk (e) (x) (e) Sie können mit Ihrem Netzwerk zu verbinden und auf die Cultipi Modul an die folgende Adresse in Ihrem Lieblings-Browser verbunden. <p class='p_center '><a class='note_link' href='https://cultipi.local/cultibox/' target='_blank'>https://cultipi.local/cultibox/</a></p> "
 
 msgid "RESTORED_CONF"
 msgstr "bei der Einrichtung Ihrer Netzwerkkonfiguration ist ein Fehler aufgetreten. Der vorherige Konfiguration wiederhergestellt wurde"
