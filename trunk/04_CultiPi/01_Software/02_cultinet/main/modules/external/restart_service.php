@@ -9,6 +9,7 @@ if(is_file("/tmp/interfaces")) {
     exec("sudo /bin/chmod 644 /etc/network/interfaces*");
     exec("sudo /sbin/ifup -a --no-act >/dev/null 2>&1 ; echo \"$?\"",$output,$err);
     if((count($output)==1)&&(strcmp($output[0],"0")==0)) {
+        sleep(2);
         exec("sudo /etc/init.d/networking restart");
         sleep(3);
         exec("ip addr show eth0 | awk '/inet/ {print $2}' | cut -d/ -f1",$iface['ETH'],$err);
