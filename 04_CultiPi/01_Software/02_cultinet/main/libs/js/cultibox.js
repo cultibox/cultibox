@@ -435,16 +435,16 @@ $(document).ready(function() {
                         }
                     });
                 }
-                $.unblockUI();
 
                 if(check_update) {
                    $.ajax({
                        cache: false,
-                       async: false,
+                       async: true,
                        url: "main/modules/external/restart_service.php"
                    }).done(function (data) {
                         try{
                             if($.parseJSON(data)=="1") {
+                                $.unblockUI();
                                 $("#network_new_addr_set").dialog({
                                     resizable: false,
                                     width: 500,
@@ -459,6 +459,7 @@ $(document).ready(function() {
                                 }]
                                 });
                             } else {
+                                $.unblockUI();
                                 $("#error_restore_conf").dialog({
                                     resizable: false,
                                     width: 400,
@@ -474,6 +475,7 @@ $(document).ready(function() {
                                 });
                             }
                         } catch(err) {
+                            $.unblockUI();
                             $("#error_restore_conf").dialog({
                                     resizable: false,
                                     width: 400,
@@ -490,6 +492,7 @@ $(document).ready(function() {
                         }
                    })
                   .fail(function() {
+                        $.unblockUI();
                         //When restarting the network service, the Ajax call fails:
                         $("#network_new_addr_set").dialog({
                             resizable: false,
@@ -505,7 +508,9 @@ $(document).ready(function() {
                          }]
                        });
                   });
-                } 
+                } else {
+                    $.unblockUI();
+                }
               }
         });
       }
