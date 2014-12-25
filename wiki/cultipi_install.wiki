@@ -465,9 +465,11 @@ wireless-essid cultipi_network
 wireless-mode ad-hoc
 }}}
 
-Editer le fichier */etc/rc.local pour rajouter les lignes suivantes avant la commande *exit 0*:
+Editer le fichier */etc/rc.local et remplacer le fichier par les lignes suivantes:
 
 {{{
+#!/bin/bash -e
+
 if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
     mac="`ifconfig wlan0|grep HWa|awk -F 'HWaddr ' '{print $2}'|cut -d: -f5,6`"
     mac="`echo ${mac} | sed  -e 's/://g'`"
@@ -475,20 +477,12 @@ if [ "`grep cultipi_ /etc/network/interfaces`" != "" ]; then
     if [ "$mac" != "" ]; then
         if [ "`grep cultipi_${mac} /etc/network/interfaces`" == "" ]; then
             sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces
+            /sbin/ifup --force wlan0
         fi
     fi
 fi
 
-if [ "`grep cultipi_ /etc/network/interfaces.BASE`" != "" ]; then
-    mac="`ifconfig wlan0|grep HWa|awk -F 'HWaddr ' '{print $2}'|cut -d: -f5,6`"
-    mac="`echo ${mac} | sed  -e 's/://g'`"
-
-    if [ "$mac" != "" ]; then
-        if [ "`grep cultipi_${mac} /etc/network/interfaces.BASE`" == "" ]; then
-            sed -i "s/cultipi_.*/cultipi_$mac/g" /etc/network/interfaces.BASE
-        fi
-    fi
-fi
+exit 0
 }}}
 
 Ce morceau de code permettra de générer le nom du réseau adHoc de connexion avec l'adresse Mac de votre module Wifi si votre Raspberry démarre avec un module wifi connecté.
