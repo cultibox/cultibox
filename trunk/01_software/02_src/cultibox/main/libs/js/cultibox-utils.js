@@ -18,9 +18,13 @@ function expand(div) {
 
       var divAlarmDesc = document.getElementById('div_alarm_description');
       
-      var divsynotpic_ui = document.getElementById('div_synotpic_ui');
+      var divsynoptic_ui = document.getElementById('div_synoptic_ui');
       var divnetwork_conf_ui = document.getElementById('div_network_conf_ui');
       var divadmin_ui = document.getElementById('div_admin_ui');
+
+      var divLabelSynoptic = document.getElementById('div_synoptic_label');
+      var divLabelNetwork = document.getElementById('div_network_label');
+      var divLabelAdmin = document.getElementById('div_admin_label');
       
 
       switch(div) {
@@ -89,20 +93,33 @@ function expand(div) {
             document.configform.submenu.value="card_interface";
 
             break;
-         case 'synotpic_ui' : 
-            divsynotpic_ui.style.display = "";
+         case 'synoptic_ui' : 
+            divsynoptic_ui.style.display = "";
             divnetwork_conf_ui.style.display = "none";
             divadmin_ui.style.display = "none";
+
+            divLabelSynoptic.style.color = "#6E8915";
+            divLabelNetwork.style.color = "black";
+            divLabelAdmin.style.color = "black";
+
             break;
          case 'network_conf_ui' : 
-            divsynotpic_ui.style.display = "none";
+            divsynoptic_ui.style.display = "none";
             divnetwork_conf_ui.style.display = "";
             divadmin_ui.style.display = "none";
+
+            divLabelSynoptic.style.color = "black";
+            divLabelNetwork.style.color = "#6E8915";
+            divLabelAdmin.style.color = "black";
             break;
          case 'admin_ui' : 
-            divsynotpic_ui.style.display = "none";
+            divsynoptic_ui.style.display = "none";
             divnetwork_conf_ui.style.display = "none";
             divadmin_ui.style.display = "";
+
+            divLabelSynoptic.style.color = "black";
+            divLabelNetwork.style.color = "black";
+            divLabelAdmin.style.color = "#6E8915";
             break;
       }
 }

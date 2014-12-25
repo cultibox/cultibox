@@ -33,8 +33,8 @@ msgstr "Assistant"
 msgid "MENU_HELP"
 msgstr "Aide"
 
-msgid "MENU_WIFI"
-msgstr "Wifi"
+msgid "MENU_CULTIPI"
+msgstr "Cultipi"
 
 #For the welcome part
 msgid "WELCOME_TITLE"
@@ -1744,7 +1744,10 @@ msgstr "Courant"
 msgid "CURRENT_PROG_COMMENT"
 msgstr "Programme courant"
 
-# FOr wifi tab
+# For the Cultibox part 
+msgid "CULTIPI_SUBTITLE"
+msgstr "Configuration et administration du Cultipi"
+
 msgid "WIFI_SYNOPTIC"
 msgstr "Synoptique"
 

@@ -155,17 +155,16 @@ $cost=get_configuration("SHOW_COST");
                                     <li id="menu-cost" class="level1 item173" <?php if(!$cost) { echo 'style="display:none"'; } ?>><a href="/cultibox/index.php?menu=wizard" class="level1 href-cost"><span><?php echo __('MENU_COST'); ?></span></a></li>
 
                                     <li id="menu-wizard" class="level1 item173"><a href="/cultibox/index.php?menu=wizard" class="level1 href-wizard" ><span><?php echo __('MENU_WIZARD'); ?></span></a></li>
-
-                                    <li id="menu-help" class="level1 item164"><a href="/cultibox/main/docs/documentation_cultibox.pdf" target="_blank" class="level1 href-help"><span><?php echo __('MENU_HELP'); ?></span></a></li>
-                                
+                    
                                     <?php
-                                    if((!isset($GLOBALS['MODE'])) || $GLOBALS['MODE'] == "cultipi") {
+                                    if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) {
                                     ?>
-                                    <li id="menu-wifi" class="level1 item164"><a href="/cultibox/index.php?menu=wifi" class="level1 href-wifi" ><span><?php echo __('MENU_WIFI'); ?></span></a></li>
+                                    <li id="menu-wifi" class="level1 item164"><a href="/cultibox/index.php?menu=wifi" class="level1 href-wifi" ><span><?php echo __('MENU_CULTIPI'); ?></span></a></li>
                                     <?php
                                     }
                                     ?>
-                                
+
+                                    <li id="menu-help" class="level1 item164"><a href="/cultibox/main/docs/documentation_cultibox.pdf" target="_blank" class="level1 href-help"><span><?php echo __('MENU_HELP'); ?></span></a></li>
                                 </ul>
                             </nav>
                         </div>               
