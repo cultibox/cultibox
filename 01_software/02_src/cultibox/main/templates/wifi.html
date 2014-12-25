@@ -3,25 +3,27 @@
 </script>
 
 <br />
+<p class="title_conf"><?php echo __('CULTIPI_SUBTITLE'); ?></p>
+<br />
+
 <table class="table_width">
     <tr>    
         <td class="conf-menu-marge"></td>
         <td class="center_menu" >
-            <button id="div_user_label" class="menu_h1" onclick="expand('synotpic_ui'); return false;"><?php echo __('WIFI_SYNOPTIC'); ?></button>
+            <button id="div_synoptic_label" class="menu_h1" onclick="expand('synoptic_ui'); return false;"><?php echo __('WIFI_SYNOPTIC'); ?></button>
         </td>
         <td class="center_menu" >
-            <button id="div_system_label" class="menu_h1" onclick="expand('network_conf_ui'); return false;"><?php echo __('WIFI_NETWORK_CONF'); ?></button>
+            <button id="div_network_label" class="menu_h1" onclick="expand('network_conf_ui'); return false;"><?php echo __('WIFI_NETWORK_CONF'); ?></button>
         </td>
         <td class="center_menu" >
-            <button id="div_alarm_label" class="menu_h1" onclick="expand('admin_ui'); return false;"><?php echo __('WIFI_ADMIN'); ?></button>
+            <button id="div_admin_label" class="menu_h1" onclick="expand('admin_ui'); return false;"><?php echo __('WIFI_ADMIN'); ?></button>
         </td>
        <td class="conf-menu-marge"></td>
     </tr>
 </table> 
 
 <!-- Section synoptic -->
-<div id="div_synotpic_ui" style="">
-    <p class="title_conf"><?php echo __('WIFI_SYNOPTIC'); ?></p>
+<div id="div_synoptic_ui" style="">
     <!-- Display buttons -->
     <table class="table_width">
         <tr>
@@ -123,15 +125,42 @@
 
 <!-- Conf reseau -->
 <div id="div_network_conf_ui" style="display:none">
-    <p class="title_conf"><?php echo __('WIFI_NETWORK_CONF'); ?></p>
 </div>
 
 <!-- Admin -->
 <div id="div_admin_ui" style="display:none">
-    <p class="title_conf"><?php echo __('WIFI_ADMIN'); ?></p>
+<br />
+<hr />
+<br />
+<table class="table_width">
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+</table>
+
 </div>
 
 
 <div class="popup_error" id="error_update_conf" title="" style="display:none">
     <p><?php echo __('ERROR_UPDATE_CONF'); ?></p>
 </div>
+
+<script>expand("<?php echo $submenu; ?>");</script>
