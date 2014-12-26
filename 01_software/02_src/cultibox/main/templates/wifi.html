@@ -2,10 +2,6 @@
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
 </script>
 
-<br />
-<p class="title_conf"><?php echo __('CULTIPI_SUBTITLE'); ?></p>
-<br />
-
 <table class="table_width">
     <tr>    
         <td class="conf-menu-marge"></td>
@@ -133,24 +129,28 @@
 <hr />
 <br />
 <table class="table_width">
+<br />
+<p class="title_conf"><?php echo __('CULTIPI_LOGS'); ?></p>
+<br />
+
 <tr>
     <td></td>
-    <td></td>
-    <td></td>
+    <td><?php echo __('CULTIPI_LOGS_HTTPD'); ?></td>
+    <td><button id="logs_httpd" name="cultipi_logs"><?php echo __('CULTIPI_VIEW_LOGS'); ?></button></td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td></td>
-    <td></td>
-    <td></td>
+    <td><?php echo __('CULTIPI_LOGS_MYSQL'); ?></td>
+    <td><button id="logs_mysql" name="cultipi_logs"><?php echo __('CULTIPI_VIEW_LOGS'); ?></td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td></td>
-    <td></td>
-    <td></td>
+    <td><?php echo __('CULTIPI_LOGS_CULTIPI'); ?></td>
+    <td><button id="logs_cultipi" name="cultipi_logs"><?php echo __('CULTIPI_VIEW_LOGS'); ?></td>
     <td></td>
     <td></td>
 </tr>

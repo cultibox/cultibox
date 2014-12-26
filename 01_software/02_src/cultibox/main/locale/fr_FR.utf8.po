@@ -1762,3 +1762,21 @@ msgstr "Ajouter un élément"
 
 msgid "WIFI_SYNO_CONF"
 msgstr "Configurer"
+
+msgid "CULTIPI_LOGS"
+msgstr "Visualisation des logs des services"
+
+
+msgid "CULTIPI_LOGS_HTTPD"
+msgstr "Logs du service Httpd"
+
+msgid "CULTIPI_LOGS_MYSQL"
+msgstr "Logs du service Mysql"
+
+msgid "CULTIPI_LOGS_CULTIPI"
+msgstr "Logs du service Cultipi"
+
+msgid "CULTIPI_VIEW_LOGS"
+msgstr "Afficher les logs"
+
+
