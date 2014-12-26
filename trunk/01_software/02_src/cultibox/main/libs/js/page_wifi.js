@@ -83,6 +83,12 @@ $(document).ready(function(){
             }]
         });
     });
+
+
+    // Display and control user form for daily program
+    $(":button[name='cultipi_logs']").click(function() {
+        alert("poue");
+    });
     
 });
 </script>
