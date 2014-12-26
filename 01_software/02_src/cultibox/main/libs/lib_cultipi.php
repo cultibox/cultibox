@@ -1,6 +1,6 @@
 <?php
 
-namespace wifi {
+namespace cultipi {
 
 // {{{ check_db()
 // ROLE check and update database

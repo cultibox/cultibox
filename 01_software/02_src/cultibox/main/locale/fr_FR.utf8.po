@@ -1744,23 +1744,23 @@ msgstr "Courant"
 msgid "CURRENT_PROG_COMMENT"
 msgstr "Programme courant"
 
-# For the Cultibox part 
+# For the Cultipi part 
 msgid "CULTIPI_SUBTITLE"
 msgstr "Configuration et administration du Cultipi"
 
-msgid "WIFI_SYNOPTIC"
+msgid "CULTIPI_SYNOPTIC"
 msgstr "Synoptique"
 
-msgid "WIFI_NETWORK_CONF"
+msgid "CULTIPI_NETWORK_CONF"
 msgstr "Conf réseau"
 
-msgid "WIFI_ADMIN"
+msgid "CULTIPI_ADMIN"
 msgstr "Administration"
 
-msgid "WIFI_SYNO_ADD_ELEMENT"
+msgid "CULTIPI_SYNO_ADD_ELEMENT"
 msgstr "Ajouter un élément"
 
-msgid "WIFI_SYNO_CONF"
+msgid "CULTIPI_SYNO_CONF"
 msgstr "Configurer"
 
 msgid "CULTIPI_LOGS"
@@ -1779,4 +1779,42 @@ msgstr "Logs du service Cultipi"
 msgid "CULTIPI_VIEW_LOGS"
 msgstr "Afficher les logs"
 
+msgid "OUTPUT_LOGS"
+msgstr "Logs de sortie"
+
+msgid "ERROR_LOGS"
+msgstr "Logs d'erreur"
+
+msgid "CULTIPI_SOFT_VERSION"
+msgstr "Version des logiciels"
+
+msgid "CULTIPI_SOFT"
+msgstr "Logiciel CultiPi"
+
+msgid "CULTINET_SOFT"
+msgstr "Logiciel Cultinet"
+
+msgid "CULTIBOX_SOFT"
+msgstr "Logiciel Cultibox"
+
+msgid "SERVICE_MGT"
+msgstr "Gestion des services"
+
+msgid "CULTIPI_SERVICE"
+msgstr "Service Cultipi"
+
+msgid "RESTART_SERVICE"
+msgstr "Redémarrer le service"
+
+msgid "SERVICE_ON"
+msgstr "Service en marche"
+
+msgid "SERVICE_OFF"
+msgstr "Service arrêté ou dans un état inconnu"
+
+msgid "ERROR_RESTART_SERVICE"
+msgstr "Erreur lors du red&marrage du service"
+
+msgid "SUCCESS_RESTART_SERVICE"
+msgstr "Redémarrage du service réalisé avec succés"
 

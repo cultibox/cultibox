@@ -27,9 +27,9 @@
     switch ($action) {
         case "getSensors" :
        
-            wifi\check_db();
+            cultipi\check_db();
             
-            //wifi\addElementInSynoptic("sensor", 1, "capteur.png");
+            //cultipi\addElementInSynoptic("sensor", 1, "capteur.png");
             
             $ret_array = configuration\getConfElem("NB_PLUGS");
             
@@ -53,7 +53,7 @@
             if((isset($_POST['y'])) && (!empty($_POST['y']))) {
                 $y=$_POST['y'];
             }
-            wifi\updatePosition($elem,$x,$y);
+            cultipi\updatePosition($elem,$x,$y);
             break;
         default:
             break;

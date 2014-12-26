@@ -620,6 +620,18 @@ td.conf-marge-td {
   width:52%;
 }
 
+td.conf-field-cultipi {
+    width: 20%;
+}
+
+td.conf-marge-cultipi {
+    width: 10%
+}
+
+td.conf-status-cultipi {    
+    width: 10%;
+}
+
 td.conf-marge-td-alarm {
   width: 40%;
 }
@@ -882,4 +894,15 @@ input[type='file'] {
 
 .imported_file {
     color: green;
+}
+
+
+.error_logs {
+    color: red;
+    font-size: 16px;
+}
+
+.info_logs {
+    color: green;
+    font-size: 16px;
 }
