@@ -159,7 +159,7 @@ $cost=get_configuration("SHOW_COST");
                                     <?php
                                     if((isset($GLOBALS['MODE']))&&(strcmp($GLOBALS['MODE'],"cultipi")==0)) {
                                     ?>
-                                    <li id="menu-wifi" class="level1 item164"><a href="/cultibox/index.php?menu=wifi" class="level1 href-wifi" ><span><?php echo __('MENU_CULTIPI'); ?></span></a></li>
+                                    <li id="menu-cultipi" class="level1 item164"><a href="/cultibox/index.php?menu=cultipi" class="level1 href-cultipi" ><span><?php echo __('MENU_CULTIPI'); ?></span></a></li>
                                     <?php
                                     }
                                     ?>

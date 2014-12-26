@@ -290,9 +290,9 @@ $(document).ready(function() {
        get_content("welcome",get_array);
     });
 
-    $(".href-wifi").click(function(e) {
+    $(".href-cultipi").click(function(e) {
        e.preventDefault();
-       get_content("wifi",get_array);
+       get_content("cultipi",get_array);
     });
     
     //To deal with dynamic content with href in message box

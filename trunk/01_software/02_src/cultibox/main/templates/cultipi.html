@@ -2,17 +2,19 @@
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
 </script>
 
+<br />
+
 <table class="table_width">
     <tr>    
         <td class="conf-menu-marge"></td>
         <td class="center_menu" >
-            <button id="div_synoptic_label" class="menu_h1" onclick="expand('synoptic_ui'); return false;"><?php echo __('WIFI_SYNOPTIC'); ?></button>
+            <button id="div_synoptic_label" class="menu_h1" onclick="expand('synoptic_ui'); return false;"><?php echo __('CULTIPI_SYNOPTIC'); ?></button>
         </td>
         <td class="center_menu" >
-            <button id="div_network_label" class="menu_h1" onclick="expand('network_conf_ui'); return false;"><?php echo __('WIFI_NETWORK_CONF'); ?></button>
+            <button id="div_network_label" class="menu_h1" onclick="expand('network_conf_ui'); return false;"><?php echo __('CULTIPI_NETWORK_CONF'); ?></button>
         </td>
         <td class="center_menu" >
-            <button id="div_admin_label" class="menu_h1" onclick="expand('admin_ui'); return false;"><?php echo __('WIFI_ADMIN'); ?></button>
+            <button id="div_admin_label" class="menu_h1" onclick="expand('admin_ui'); return false;"><?php echo __('CULTIPI_ADMIN'); ?></button>
         </td>
        <td class="conf-menu-marge"></td>
     </tr>
@@ -27,7 +29,7 @@
             <td class="calendar-title">
                 <!-- Button to add a element -->
                 <input type="image" id="syno_add_element" name="syno_add_element"
-                       title="<?php echo __('WIFI_SYNO_ADD_ELEMENT'); ?>"
+                       title="<?php echo __('CULTIPI_SYNO_ADD_ELEMENT'); ?>"
                        src="main/libs/img/db_add.png"  width="34" 
                        alt="calendar"  
                 />        
@@ -40,14 +42,14 @@
     </table>
     
     <p>
-    <?php echo wifi\getSensorValue("1"); ?>
+    <?php echo cultipi\getSensorValue("1"); ?>
     </p>
 
     <div id="set" style="min-height: 700px;" >
         
         <?php
             // Add every sensor
-            $sensorList = wifi\getSensorOfSynoptic();
+            $sensorList = cultipi\getSensorOfSynoptic();
 
             foreach ($sensorList as $index => $sensor) 
             {
@@ -74,7 +76,7 @@
             }
             
             // Add plugs
-            $plugList = wifi\getPlugOfSynoptic();
+            $plugList = cultipi\getPlugOfSynoptic();
             foreach ($plugList as $index => $plug) 
             {
                 echo '<div id="syno_elem_' . $plug["id"] . '" class="ui-widget-content" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01)" >';
@@ -104,14 +106,14 @@
     </div>
     
     <!-- Drag message box for add element-->
-    <div id="syno_add_element_ui" style="display:none" title="<?php echo __('WIFI_SYNO_ADD_ELEMENT'); ?>">
+    <div id="syno_add_element_ui" style="display:none" title="<?php echo __('CULTIPI_SYNO_ADD_ELEMENT'); ?>">
         <?php
             
         ?>
     </div>
 
     <!-- Message box for configuring element-->
-    <div id="syno_configure_element" style="display:none" title="<?php echo __('WIFI_SYNO_CONF'); ?>">
+    <div id="syno_configure_element" style="display:none" title="<?php echo __('CULTIPI_SYNO_CONF'); ?>">
         <?php
             
         ?>
@@ -128,39 +130,98 @@
 <br />
 <hr />
 <br />
-<table class="table_width">
 <br />
 <p class="title_conf"><?php echo __('CULTIPI_LOGS'); ?></p>
 <br />
-
+<table class="table_width">
 <tr>
-    <td></td>
-    <td><?php echo __('CULTIPI_LOGS_HTTPD'); ?></td>
+    <td class="conf-marge-cultipi"></td>
+    <td  class="conf-field-cultipi"><?php echo __('CULTIPI_LOGS_HTTPD'); ?>:</td>
     <td><button id="logs_httpd" name="cultipi_logs"><?php echo __('CULTIPI_VIEW_LOGS'); ?></button></td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td></td>
-    <td><?php echo __('CULTIPI_LOGS_MYSQL'); ?></td>
+    <td><?php echo __('CULTIPI_LOGS_MYSQL'); ?>:</td>
     <td><button id="logs_mysql" name="cultipi_logs"><?php echo __('CULTIPI_VIEW_LOGS'); ?></td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td></td>
-    <td><?php echo __('CULTIPI_LOGS_CULTIPI'); ?></td>
+    <td><?php echo __('CULTIPI_LOGS_CULTIPI'); ?>:</td>
     <td><button id="logs_cultipi" name="cultipi_logs"><?php echo __('CULTIPI_VIEW_LOGS'); ?></td>
     <td></td>
     <td></td>
 </tr>
 </table>
+<br />
+<hr style="width:40%" />
+<br />
+<br />
+<p class="title_conf"><?php echo __('CULTIPI_SOFT_VERSION'); ?></p>
+<br />
+<table class="table_width">
+<tr>
+    <td class="conf-marge-cultipi"></td>
+    <td class="conf-field-cultipi"><?php echo __('CULTIPI_SOFT'); ?>:</td>
+    <td><div id="div_cultipi_soft"></div></td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td><?php echo __('CULTINET_SOFT'); ?>:</td>
+    <td><div id="div_cultinet_soft"></div></td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td><?php echo __('CULTIBOX_SOFT'); ?>:</td>
+    <td><div id="div_cultibox_soft"></div></td>
+    <td></td>
+    <td></td>
+</tr>
+</table>
 
+<br />
+<hr style="width:40%"  />
+<br />
+<br />
+<p class="title_conf"><?php echo __('SERVICE_MGT'); ?></p>
+<br />
+<table class="table_width">
+<tr>
+    <td class="conf-marge-cultipi"></td>
+    <td class="conf-field-cultipi"><?php echo __('CULTIPI_SERVICE'); ?>:</td>
+    <td class="conf-status-cultipi"><div id="cultipi_on" style="display:none"><img src='/cultibox/main/libs/img/service_on.png' alt='' title="<?php echo __('SERVICE_ON'); ?>"></div><div id="cultipi_off"><img src='/cultibox/main/libs/img/service_off.png' alt='' title="<?php echo __('SERVICE_OFF'); ?>"></div></td>
+    <td><a href="" name="restart_service" id="restart_cultipi"><img src='/cultibox/main/libs/img/service_restart.png' alt='' title="<?php echo __('RESTART_SERVICE'); ?>" /></a></td>
+    <td></td>
+</tr>
+</table>
 </div>
 
 
-<div class="popup_error" id="error_update_conf" title="" style="display:none">
-    <p><?php echo __('ERROR_UPDATE_CONF'); ?></p>
+
+
+
+<div id="dialog_logs_cultipi" style="display:none">
+    <p class="p_center info_logs"><?php echo __('OUTPUT_LOGS'); ?>:</p>
+    <div id="output_logs"></div>
+
+    <p class="p_center error_logs"><?php echo __('ERROR_LOGS'); ?>:</p>
+    <div id="error_logs"></div>
+</div>
+
+
+<div id="error_restart_service" title="" style="display:none">
+    <p><?php echo __('ERROR_RESTART_SERVICE'); ?></p>
+</div>
+
+<div id="success_restart_service" title="" style="display:none">
+    <p><?php echo __('SUCCESS_RESTART_SERVICE'); ?></p>
 </div>
 
 <script>expand("<?php echo $submenu; ?>");</script>
