@@ -15,3 +15,21 @@ if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
 fi
 
 
+if [ ! -d /etc/cultipi/conf_tmp ]; then
+    mkdir /etc/cultipi/conf_tmp
+fi
+
+if [ ! -d /etc/cultipi/conf_tmp/logs ]; then
+
+fi
+
+if [ ! -d /etc/cultipi/conf_tmp/cnf/plg ]; then
+    mkdir -p /etc/cultipi/conf_tmp/cnf/plg
+fi
+
+if [ ! -d /etc/cultipi/conf_tmp/cnf/prg ]; then
+    mkdir -p /etc/cultipi/conf_tmp/cnf/prg
+fi
+
+chown -R www-data:www-data /etc/cultipi/conf_tmp
+

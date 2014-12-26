@@ -28,6 +28,8 @@ if [ "$1" == "purge" ]; then
     fi
 
     sed -i "/.*\/etc\/init.d\/culticron.*/d" /etc/crontab
+
+    rm -Rf /etc/cultipi/conf_tmp
 fi
 
 if [ "$1" == "remove" ]; then
@@ -40,4 +42,6 @@ if [ "$1" == "remove" ]; then
     if [ -d /opt/cultipi ]; then
         rm -Rf /opt/cultipi
     fi
+
+    rm -Rf /etc/cultipi/conf_tmp
 fi
