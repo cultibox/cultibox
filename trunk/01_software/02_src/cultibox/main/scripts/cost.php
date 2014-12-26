@@ -60,7 +60,7 @@ if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) {
         $sd_card=get_sd_card();
     }
 } else {
-        $sd_card="/etc/cultipi";
+    $sd_card="/etc/cultipi/conf_tmp";
 }
 
 if((!isset($sd_card))||(empty($sd_card))) {
