@@ -72,3 +72,8 @@ else
     rm -f /var/www/cultibox/main/templates_c/*.ser 2>/dev/null
     echo "... OK"
 fi
+
+if [ "`cat /etc/sudoers|grep cultipi|grep www-data`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /etc/init.d/cultipi" >> /etc/sudoers
+fi
+

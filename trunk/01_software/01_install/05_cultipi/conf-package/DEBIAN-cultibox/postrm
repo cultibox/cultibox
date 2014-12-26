@@ -12,3 +12,5 @@ fi
 if [ "$1" == "remove" ]; then
     /usr/bin/mysql -u root -pcultibox -e "DROP DATABASE cultibox;" 2>/dev/null
 fi
+
+sed -i "/www-data ALL = (root) NOPASSWD: \/etc\/init.d\/cultipi/d" /etc/sudoers
