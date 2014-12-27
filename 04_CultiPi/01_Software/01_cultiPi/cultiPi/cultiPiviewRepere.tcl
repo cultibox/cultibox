@@ -46,4 +46,4 @@ proc messageGestion {message} {
 vwait forever
 
 # tclsh /opt/cultipi/cultiPi/cultiPiviewRepere.tcl serverAcqSensor "::sensor(1,value)"
-# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\culti_pi\module\serverLog\serveurLog.tcl" 6000 "D:\DONNEES\GR08565N\Mes documents\cbx\culti_pi\log.txt"
+# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\cultiPiviewRepere.tcl" serverAcqSensor "::sensor(1,value)"

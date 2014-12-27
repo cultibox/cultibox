@@ -16,6 +16,12 @@ package require piXML
 set port [lindex $argv 0]
 set logDir [lindex $argv 1]
 
+set logFile "/var/logs/cultipi/cultipi.log"
+
+if {$logDir != "" && [file isdirectory $logDir]} {
+    set logFile [file join $logDir cultipi.log]
+}
+
 set actualDay ""
 
 # client connection
@@ -89,14 +95,7 @@ proc input {channel} \
 
 proc log {msg} {
 
-    set DayToWrite [file join $::logDir "log[clock format [clock seconds] -format %d].log"]
-    
-    if {$::actualDay != $DayToWrite} {
-        set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].log"] w+]
-        set ::actualDay $DayToWrite
-    } else {
-        set fid [open [file join $::logDir "log[clock format [clock seconds] -format %d].log"] a+]
-    }
+    set fid [open $::logFile a+]
 
     # Format the string
     set Splitted ""
@@ -163,4 +162,4 @@ log "<[clock milliseconds]><serveurlog><info><server log socket - $port>"
 
 vwait forever
 
-# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\culti_pi\module\serverLog\serveurLog.tcl" 6000 "D:\DONNEES\GR08565N\Mes documents\cbx\culti_pi\log.txt"
+# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\serverLog\serveurLog.tcl" 6000 "C:\cultibox\04_CultiPi"

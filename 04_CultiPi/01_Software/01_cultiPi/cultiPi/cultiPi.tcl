@@ -137,7 +137,7 @@ updateRepere
 
 vwait forever
 
-# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\01_cultiPi\cultiPi\cultiPi.tcl" "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf"
+# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\cultiPi.tcl" "C:\cultibox\04_CultiPi\02_conf"
 
 # Linux start
 # tclsh /home/pi/cultipi/01_Software/01_cultiPi/cultiPi/cultiPi.tcl /home/pi/cultipi/02_conf
