@@ -33,6 +33,9 @@ msgstr "Wizard"
 msgid "MENU_HELP"
 msgstr "Help"
 
+msgid "MENU_CULTIPI"
+msgstr "Cultipi"
+
 
 #For the welcome part
 msgid "WELCOME_TITLE"
