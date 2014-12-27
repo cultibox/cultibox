@@ -55,6 +55,12 @@
             }
             cultipi\updatePosition($elem,$x,$y);
             break;
+        case "getParam" :
+            $elem = "";
+            if((isset($_POST['id'])) && (!empty($_POST['id']))) {
+                $ret_array = cultipi\getSynopticDBElemByID($_POST['id']);
+            }
+            break;
         default:
             break;
     }

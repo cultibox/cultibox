@@ -673,6 +673,9 @@ function check_database() {
     //Check power table:
     power\check_db();
 
+    //Check wifi table:
+    cultipi\check_db();
+
 }
 //}}}
 

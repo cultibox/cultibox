@@ -62,7 +62,7 @@ $(document).ready(function(){
     $( "#set div" ).draggable({
         distance: 10,
         grid: [ 10, 10 ],
-        stack: "#set div" ,
+        cursor: "move",
         stop:function(event, ui) {
             $.ajax({
                cache: false,
@@ -91,20 +91,76 @@ $(document).ready(function(){
         });
     });
     
-    // Display and control user form for daily program
+    // Slider for zoom
+    syno_configure_element_scale_value = 1;
+    $("#syno_configure_element_scale").slider({
+        max: 1000,
+        min: 50,
+        slide: function( event, ui ) {
+            // While sliding, update the value in the div element
+            $("#syno_configure_element_scale_val").val(ui.value);
+        },
+        step: 1,
+        value: syno_configure_element_scale_value
+    });
+    
+    // Slider for zindex
+    syno_configure_element_zindex_value = 1;
+    $("#syno_configure_element_zindex").slider({
+        max: 200,
+        min: 1,
+        slide: function( event, ui ) {
+            // While sliding, update the value in the div element
+            $("#syno_configure_element_zindex_val").val(ui.value);
+        },
+        step: 1,
+        value: syno_configure_element_zindex_value
+    });
+    
+    // Display and control user form for configuring item
     $( ".syno_conf_elem_button" ).click(function(e) {
         e.preventDefault();
-        $("#syno_add_element_ui").dialog({
-            resizable: false,
-            width: 300,
-            closeOnEscape: true,
-            dialogClass: "popup_message",
-            buttons: [{
-                text: CLOSE_button,
-                click: function () {
-                    $( this ).dialog( "close" ); return false;
-                }
-            }]
+        $.ajax({
+           cache: false,
+           type: "POST",
+           data: {id:$(this).attr('id').split("_")[2], action:"getParam"},
+           url: "main/modules/external/synoptic.php"
+        }).done(function (data) {
+            
+            if(data != "") {
+
+
+                var objJSON = jQuery.parseJSON(data);
+                
+                // Update style of each configure element
+                $("#syno_configure_element_rotate_0" ).prop("checked", false);
+                $("#syno_configure_element_rotate_90" ).prop("checked", false);
+                $("#syno_configure_element_rotate_180" ).prop("checked", false);
+                $("#syno_configure_element_rotate_270" ).prop("checked", false);
+                //$("#syno_configure_element_rotate_" . objJSON.rotation ).prop("checked", true);
+                
+                syno_configure_element_scale_value = parseInt(objJSON.scale);
+                $("#syno_configure_element_scale_val").val(objJSON.scale);
+                $("#syno_configure_element_scale").slider("value",objJSON.scale);
+                
+                syno_configure_element_zindex_value = parseInt(objJSON.z);
+                $("#syno_configure_element_zindex_val").val(objJSON.z);
+                $("#syno_configure_element_zindex").slider("value",objJSON.z);
+
+                $("#syno_configure_element").dialog({
+                    resizable: false,
+                    width: 300,
+                    closeOnEscape: true,
+                    dialogClass: "popup_message",
+                    buttons: [{
+                        text: CLOSE_button,
+                        click: function () {
+                            $( this ).dialog( "close" ); return false;
+                        }
+                    }]
+                });
+                
+            }
         });
     });
 

@@ -2,8 +2,11 @@
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
 </script>
 
-<br />
+<?php 
+    cultipi\check_db();
+?>
 
+<br />
 <table class="table_width">
     <tr>    
         <td class="conf-menu-marge"></td>
@@ -58,12 +61,12 @@
             foreach ($sensorList as $index => $sensor) 
             {
                 
-                echo '<div id="syno_elem_' . $sensor["id"] . '" class="ui-widget-content" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01)" >';
+                echo '<div id="syno_elem_' . $sensor["id"] . '" class="" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01);z-index:' . $sensor["z"] . '" >';
                 echo '  <table>';
                 echo '    <tr>';
                 echo '      <td>Capteur ' . $sensor["indexElem"] . '</td>';
                 echo '      <td>';
-                echo '          <input type="image" id="syno_elem_configur_' . $sensor["id"] . '" name="syno_elem_configur_' . $sensor["id"] . '"';
+                echo '          <input type="image" id="syno_elemConfigur_' . $sensor["id"] . '" name="syno_elemConfigur_' . $sensor["id"] . '"';
                 echo '                 title=""';
                 echo '                 src="main/libs/img/advancedsettings.png"  width="18"';
                 echo '                 alt="configure"';
@@ -75,7 +78,7 @@
                 echo '      <td colspan="2">NA°C NA%RH</td>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:100px;height:59px">';
+                echo '  <img src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:' . $sensor["scale"] . 'px;cursor: move">';
                 echo '</div>';
             }
             
@@ -83,12 +86,12 @@
             $plugList = cultipi\getPlugOfSynoptic();
             foreach ($plugList as $index => $plug) 
             {
-                echo '<div id="syno_elem_' . $plug["id"] . '" class="ui-widget-content" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01)" >';
+                echo '<div id="syno_elem_' . $plug["id"] . '" class="" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01);z-index:' . $plug["z"] . '" >';
                 echo '  <table>';
                 echo '    <tr>';
-                echo '      <td>Capteur ' . $plug["indexElem"] . '</td>';
+                echo '      <td>Prise ' . $plug["indexElem"] . '</td>';
                 echo '      <td>';
-                echo '          <input type="image" id="syno_elem_configur_' . $plug["id"] . '" name="syno_elem_configur_' . $plug["id"] . '"';
+                echo '          <input type="image" id="syno_elemConfigur_' . $plug["id"] . '" name="syno_elemConfigur_' . $plug["id"] . '"';
                 echo '                 title=""';
                 echo '                 src="main/libs/img/advancedsettings.png"  width="18"';
                 echo '                 alt="configure"';
@@ -100,11 +103,33 @@
                 echo '      <td colspan="2">NA</td>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img src="main/libs/img/' . $plug["image"] . '" alt="capteur" style="width:65;height:100px">';
+                echo '  <img src="main/libs/img/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move">';
                 echo '</div>';
             }
             
             // Add other items
+            $otherList = cultipi\getOtherOfSynoptic();
+            foreach ($otherList as $index => $other) 
+            {
+                echo '<div id="syno_elem_' . $other["id"] . '" class="" style="position:absolute; top:' . $other["y"] . 'px ; left:' . $other["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01);z-index:' . $other["z"] . '" >';
+                echo '  <table>';
+                echo '    <tr>';
+                echo '      <td>';
+                echo '          <input type="image" id="syno_elemConfigur_' . $other["id"] . '" name="syno_elemConfigur_' . $other["id"] . '"';
+                echo '                 title=""';
+                echo '                 src="main/libs/img/advancedsettings.png"  width="18"';
+                echo '                 alt="configure"';
+                echo '                 class="syno_conf_elem_button"';
+                echo '          />';
+                echo '      </td>';
+                echo '    </tr>';
+                echo '    <tr>';
+                echo '    </tr>';
+                echo '  </table>';
+                echo '  <img src="main/libs/img/' . $other["image"] . '" alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move">';
+                echo '</div>';
+            }
+            
             
         ?>
     </div>
@@ -118,9 +143,31 @@
 
     <!-- Message box for configuring element-->
     <div id="syno_configure_element" style="display:none" title="<?php echo __('CULTIPI_SYNO_CONF'); ?>">
+        <table>
+            <tr>
+                <td>Image</td>
+            </tr>
+            <tr>
+                <td>Rotation</td>
+                <td><input id="syno_configure_element_rotate_0" type="radio" name="group1" value="0" /> 0° </td>
+                <td><input id="syno_configure_element_rotate_90" type="radio" name="group1" value="90" /> 90° </td>
+                <td><input id="syno_configure_element_rotate_180" type="radio" name="group1" value="180" /> 180° </td>
+                <td><input id="syno_configure_element_rotate_270" type="radio" name="group1" value="270" /> 270° </td>
+            </tr>
+            <tr>
+                <td>Profondeur</td>
+                <td><input type="text" name="syno_configure_element_zindex_val" id="syno_configure_element_zindex_val" value="" size="4" readonly /></td>
+                <td colspan="3" ><div id="syno_configure_element_zindex"></div></td>
+            </tr>
+            <tr>
+                <td>Zoom</td>
+                <td><input type="text" name="syno_configure_element_scale_val" id="syno_configure_element_scale_val" value="" size="4" readonly /></td>
+                <td colspan="3" ><div id="syno_configure_element_scale"></div></td>
+            </tr>
         <?php
             
         ?>
+        </table>
     </div>
     
 </div>

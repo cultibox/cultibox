@@ -137,7 +137,7 @@ $GLOBALS['LIMIT_PLUG_PROGRAM']=array(
                                          'max' => '99.9')
                             );
 
-$GLOBALS['MODE'] = "cultibox";
+$GLOBALS['MODE'] = "cultipi";
 
 ?>
 
