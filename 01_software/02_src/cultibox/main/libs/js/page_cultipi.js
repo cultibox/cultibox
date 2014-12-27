@@ -126,6 +126,18 @@ $(document).ready(function(){
         value: syno_configure_element_zindex_value
     });
     
+    // Rotation
+    $( 'input[name="syno_configure_element_rotate"]:radio' ).change(
+        function(){
+            // retrieve the class
+            var className = $('#' + syno_configure_element_scale_imageID).attr('class');
+            $('#' + syno_configure_element_scale_imageID).removeClass(className);
+            var newClass = $('input[name=syno_configure_element_rotate]:checked').val();
+            $('#' + syno_configure_element_scale_imageID).addClass("rotate" + newClass);
+        }
+    );
+    
+    
     // Display and control user form for configuring item
     $( ".syno_conf_elem_button" ).click(function(e) {
         e.preventDefault();
@@ -149,7 +161,7 @@ $(document).ready(function(){
                 $("#syno_configure_element_rotate_90" ).prop("checked", false);
                 $("#syno_configure_element_rotate_180" ).prop("checked", false);
                 $("#syno_configure_element_rotate_270" ).prop("checked", false);
-                //$("#syno_configure_element_rotate_" . objJSON.rotation ).prop("checked", true);
+                $("#syno_configure_element_rotate_" + objJSON.rotation ).prop("checked", true);
                 
                 syno_configure_element_scale_value = parseInt(objJSON.scale);
                 $("#syno_configure_element_scale_val").val(objJSON.scale);
@@ -160,7 +172,7 @@ $(document).ready(function(){
                 $("#syno_configure_element_zindex").slider("value",objJSON.z);
                 
                 syno_configure_element_scale_imageID = "syno_elemImage_" + idOfElem ;
-                syno_configure_element_zindex_imageID = "syno_elemImage_" + idOfElem ;
+                syno_configure_element_zindex_imageID = "syno_elem_" + idOfElem ;
                 
                 syno_configure_element_rotation = objJSON.rotation;
                 syno_configure_element_imageName = objJSON.image;
@@ -187,7 +199,7 @@ $(document).ready(function(){
                                     z:$("#syno_configure_element_zindex_val").val(),
                                     scale:$("#syno_configure_element_scale_val").val(),
                                     image:syno_configure_element_imageName,
-                                    rotation:syno_configure_element_rotation,
+                                    rotation:$('input[name=syno_configure_element_rotate]:checked').val(),
                                     action:"updateZScaleImageRotation"
                                 },
                                 url: "main/modules/external/synoptic.php"
