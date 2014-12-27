@@ -246,4 +246,4 @@ readSensors
 
 vwait forever
 
-# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\01_cultiPi\serverAcqSensor\serverAcqSensor.tcl" 6005 "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf\01_defaultConf_RPi\serverAcqSensor\conf.xml" 6001 
+# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\serverAcqSensor\serverAcqSensor.tcl" 6005 "C:\cultibox\04_CultiPi\02_conf\01_defaultConf_RPi\serverAcqSensor\conf.xml" 6001 

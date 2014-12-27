@@ -86,4 +86,4 @@ proc stopIt {} {
 
 vwait forever
 
-# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\01_cultiPi\serverHisto\serverHisto.tcl" 6003 "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf\00_defaultConf_Win\serverHisto\conf.xml" 6001
+# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\serverHisto\serverHisto.tcl" 6003 "C:\cultibox\04_CultiPi\02_conf\00_defaultConf_Win\serverHisto\conf.xml" 6001
