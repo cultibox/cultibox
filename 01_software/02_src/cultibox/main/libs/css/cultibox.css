@@ -611,6 +611,21 @@ a.logo img{
 	border-radius:20px;
 }
 
+.cultipi_menu_h1{
+    font-size:13px;
+    background:#CCC;
+    width:175px;
+    font-weight:bold;
+    padding:10px 5px 9px 5px;
+    background:url("../../../main/libs/img/fond_cartouche.png") center center no-repeat;
+    border-radius:20px;
+}
+
+.cultipi_menu_h1:hover{
+    background:url("../../../main/libs/img/fond_cartouche_vert.png") center center no-repeat;
+    color:#93982a;
+}
+
 .menu_h1:hover{
 	background:url("../../../main/libs/img/fond_cartouche_vert.png") center center no-repeat;
 	color:#93982a;

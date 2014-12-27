@@ -8,13 +8,13 @@
     <tr>    
         <td class="conf-menu-marge"></td>
         <td class="center_menu" >
-            <button id="div_synoptic_label" class="menu_h1" onclick="expand('synoptic_ui'); return false;"><?php echo __('CULTIPI_SYNOPTIC'); ?></button>
+            <button id="div_synoptic_label" class="cultipi_menu_h1" onclick="expand('synoptic_ui'); return false;"><?php echo __('CULTIPI_SYNOPTIC'); ?></button>
         </td>
         <td class="center_menu" >
-            <button id="div_network_label" class="menu_h1" onclick="expand('network_conf_ui'); return false;"><?php echo __('CULTIPI_NETWORK_CONF'); ?></button>
+            <button id="div_network_label" class="cultipi_menu_h1" onclick="expand('network_conf_ui'); return false;"><?php echo __('CULTIPI_NETWORK_CONF'); ?></button>
         </td>
         <td class="center_menu" >
-            <button id="div_admin_label" class="menu_h1" onclick="expand('admin_ui'); return false;"><?php echo __('CULTIPI_ADMIN'); ?></button>
+            <button id="div_admin_label" class="cultipi_menu_h1" onclick="expand('admin_ui'); return false;"><?php echo __('CULTIPI_ADMIN'); ?></button>
         </td>
        <td class="conf-menu-marge"></td>
     </tr>
@@ -127,6 +127,12 @@
 
 <!-- Conf reseau -->
 <div id="div_network_conf_ui" style="display:none">
+<table class="table_width">
+<tr>
+    <td class="conf-marge-cultipi"></td>
+    <td><?php echo __('CULTINET_LINK'); ?></td>
+</tr>
+</table>
 </div>
 
 <!-- Admin -->
