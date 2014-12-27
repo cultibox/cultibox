@@ -78,7 +78,7 @@
                 echo '      <td colspan="2">NA°C NA%RH</td>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:' . $sensor["scale"] . 'px;cursor: move">';
+                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:' . $sensor["scale"] . 'px;cursor: move">';
                 echo '</div>';
             }
             
@@ -103,7 +103,7 @@
                 echo '      <td colspan="2">NA</td>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img src="main/libs/img/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move">';
+                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move">';
                 echo '</div>';
             }
             
@@ -126,7 +126,7 @@
                 echo '    <tr>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img src="main/libs/img/' . $other["image"] . '" alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move">';
+                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/' . $other["image"] . '" alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move">';
                 echo '</div>';
             }
             

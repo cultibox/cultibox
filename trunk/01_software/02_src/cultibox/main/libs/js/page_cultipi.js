@@ -12,6 +12,15 @@ title_msgbox=<?php echo json_encode(__('TOOLTIP_MSGBOX_EYES')); ?>;
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
 
+// GLobal var for slidder
+var syno_configure_element_zindex_value = 1;
+var syno_configure_element_zindex_imageID = "";
+var syno_configure_element_scale_value = 1;
+var syno_configure_element_scale_imageID = "";
+var syno_configure_element_imageName = "";
+var syno_configure_element_rotation = "";
+
+
 $(document).ready(function(){
      pop_up_remove("main_error");
      pop_up_remove("main_info");
@@ -92,26 +101,26 @@ $(document).ready(function(){
     });
     
     // Slider for zoom
-    syno_configure_element_scale_value = 1;
     $("#syno_configure_element_scale").slider({
         max: 1000,
         min: 50,
         slide: function( event, ui ) {
             // While sliding, update the value in the div element
             $("#syno_configure_element_scale_val").val(ui.value);
+            $('#' + syno_configure_element_scale_imageID).width(ui.value);
         },
         step: 1,
         value: syno_configure_element_scale_value
     });
     
     // Slider for zindex
-    syno_configure_element_zindex_value = 1;
     $("#syno_configure_element_zindex").slider({
         max: 200,
         min: 1,
         slide: function( event, ui ) {
             // While sliding, update the value in the div element
             $("#syno_configure_element_zindex_val").val(ui.value);
+            $('#' + syno_configure_element_zindex_imageID).zIndex(ui.value);
         },
         step: 1,
         value: syno_configure_element_zindex_value
@@ -120,10 +129,13 @@ $(document).ready(function(){
     // Display and control user form for configuring item
     $( ".syno_conf_elem_button" ).click(function(e) {
         e.preventDefault();
+        
+        idOfElem = $(this).attr('id').split("_")[2];
+        
         $.ajax({
            cache: false,
            type: "POST",
-           data: {id:$(this).attr('id').split("_")[2], action:"getParam"},
+           data: {id:idOfElem, action:"getParam"},
            url: "main/modules/external/synoptic.php"
         }).done(function (data) {
             
@@ -146,6 +158,12 @@ $(document).ready(function(){
                 syno_configure_element_zindex_value = parseInt(objJSON.z);
                 $("#syno_configure_element_zindex_val").val(objJSON.z);
                 $("#syno_configure_element_zindex").slider("value",objJSON.z);
+                
+                syno_configure_element_scale_imageID = "syno_elemImage_" + idOfElem ;
+                syno_configure_element_zindex_imageID = "syno_elemImage_" + idOfElem ;
+                
+                syno_configure_element_rotation = objJSON.rotation;
+                syno_configure_element_imageName = objJSON.image;
 
                 $("#syno_configure_element").dialog({
                     resizable: false,
@@ -156,6 +174,26 @@ $(document).ready(function(){
                         text: CLOSE_button,
                         click: function () {
                             $( this ).dialog( "close" ); return false;
+                        }
+                    }, {
+                        text: SAVE_button,
+                        click: function () {
+                        
+                            $.ajax({
+                                cache: false,
+                                type: "POST",
+                                data: {
+                                    id:idOfElem,
+                                    z:$("#syno_configure_element_zindex_val").val(),
+                                    scale:$("#syno_configure_element_scale_val").val(),
+                                    image:syno_configure_element_imageName,
+                                    rotation:syno_configure_element_rotation,
+                                    action:"updateZScaleImageRotation"
+                                },
+                                url: "main/modules/external/synoptic.php"
+                            }).done(function (data) {
+                            })
+                            
                         }
                     }]
                 });
