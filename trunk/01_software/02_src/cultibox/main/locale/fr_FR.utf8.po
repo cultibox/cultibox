@@ -1752,7 +1752,7 @@ msgid "CULTIPI_SYNOPTIC"
 msgstr "Synoptique"
 
 msgid "CULTIPI_NETWORK_CONF"
-msgstr "Conf réseau"
+msgstr "Configuration réseau"
 
 msgid "CULTIPI_ADMIN"
 msgstr "Administration"
@@ -1818,3 +1818,14 @@ msgstr "Erreur lors du red&marrage du service"
 msgid "SUCCESS_RESTART_SERVICE"
 msgstr "Redémarrage du service réalisé avec succés"
 
+msgid "CULTINET_LINK"
+msgstr "La configuration du réseau est disponible: <a class='note_link' href='/cultinet'>ici</a>"
+
+msgid "DIR_CONF_UPDATE"
+msgstr "Votre configuration est à jour"
+
+msgid "DIR_CONF_NOT_UPTODATE"
+msgstr "La configuration utilisée n'est pas à jour, cliquez ici pour mettre la configuration à jour: <button id='update_conf'>Mise à jour de la configuration</button>"
+
+msgid "WAIT_UPDATED_CONF"
+msgstr "Vérification de la configuration"

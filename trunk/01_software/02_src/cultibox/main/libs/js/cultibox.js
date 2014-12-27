@@ -6,6 +6,10 @@ var REDUCE_button="";
 var EXTEND_button="";
 var HIDE_button="";
 var EXPORT_button="";
+var SAVING="";
+var DIR_CONF_UPDATE="";
+var DIR_CONF_NOT_UPTODATE="";
+
 
 var lang="";
 var reduced="";
@@ -40,6 +44,9 @@ if(lang=="it_IT") {
     EXTEND_button="Ingrandisci";
     HIDE_button="Nascondere";
     EXPORT_button="Esportazione";
+    SAVING="Backup dei dati in corso, attendere prego...";
+    DIR_CONF_UPDATE="";
+    DIR_CONF_NOT_UPTODATE="";
 } else if(lang=="de_DE") {
     OK_button="Weiter";
     CANCEL_button="Stornieren";
@@ -50,6 +57,9 @@ if(lang=="it_IT") {
     EXTEND_button="Vergrößern";
     HIDE_button="Verbergen";
     EXPORT_button="Export";
+    SAVING="Datensicherung läuft, bitte warten...";
+    DIR_CONF_UPDATE="";
+    DIR_CONF_NOT_UPTODATE="";
 } else if(lang=="en_GB") {
     OK_button="OK";
     CANCEL_button="Cancel";
@@ -60,6 +70,9 @@ if(lang=="it_IT") {
     EXTEND_button="Enlarge";
     HIDE_button="Hide";
     EXPORT_button="Export";
+    SAVING="Data saving in progress, please wait...";
+    DIR_CONF_UPDATE="";
+    DIR_CONF_NOT_UPTODATE="";
 } else if(lang=="es_ES") {
     OK_button="Continuar";
     CANCEL_button="Cancelar";
@@ -70,6 +83,9 @@ if(lang=="it_IT") {
     EXTEND_button="Agrandar";
     HIDE_button="Ocultar";
     EXPORT_button="Exportación";
+    SAVING="Copia de datos en curso, espere por favor...";
+    DIR_CONF_UPDATE="";
+    DIR_CONF_NOT_UPTODATE="";
 } else {
     OK_button="Continuer";
     CANCEL_button="Annuler";
@@ -80,6 +96,9 @@ if(lang=="it_IT") {
     EXTEND_button="Agrandir";
     HIDE_button="Cacher";
     EXPORT_button="Exporter";
+    SAVING="Sauvegarde des données en cours, patientez s'il vous plait..."
+    DIR_CONF_UPDATE="Votre configuration est à jour";
+    DIR_CONF_NOT_UPTODATE="La configuration utilisée n'est pas à jour, cliquez ici pour mettre la configuration à jour: <button id='update_conf'>Mise à jour de la configuration</button>";
 }
 
 
@@ -300,6 +319,50 @@ $(document).ready(function() {
         e.preventDefault();
          var url_vars=getUrlVars($(this).attr('href'));
          get_content(url_vars['menu'],url_vars);
+    });
+
+
+    //To update the configuration:
+    $('div.error').on('click', 'button', function(e) {
+        e.preventDefault();
+        // block user interface during checking and saving
+        $.blockUI({
+            message: SAVING+" <img src=\"main/libs/img/waiting_small.gif\" />",
+            centerY: 0,
+            css: {
+                top: '20%',
+                border: 'none',
+                padding: '5px',
+                backgroundColor: 'grey',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .9,
+                color: '#fffff'
+            },
+            onBlock: function() {
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: "main/modules/external/sync_conf.php",
+                    success: function(data) {
+                        // Parse result
+                        var json = jQuery.parseJSON(data);
+                        // Delete information
+                        pop_up_remove("check_conf_status");
+
+                        if(json==0) {
+                            pop_up_add_information(DIR_CONF_UPDATE,"check_conf_status","information");
+                        } else {
+                            pop_up_add_information(DIR_CONF_NOT_UPTODATE,"check_conf_status","error");
+                        }
+                        $.unblockUI();
+                    },
+                    error: function(data) {
+                        $.unblockUI();
+                    }
+                });
+            }
+        });
     });
 
 

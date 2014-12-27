@@ -77,3 +77,11 @@ if [ "`cat /etc/sudoers|grep cultipi|grep www-data`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /etc/init.d/cultipi" >> /etc/sudoers
 fi
 
+if [ "`cat /etc/sudoers|grep cp|grep www-data`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /bin/cp" >> /etc/sudoers
+fi
+
+if [ "`cat /etc/sudoers|grep chown|grep www-data`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /bin/chown" >> /etc/sudoers
+fi
+

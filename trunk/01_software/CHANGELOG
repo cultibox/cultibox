@@ -1,3 +1,9 @@
+Cultibox (2.0.22) precise; urgency=low
+    + Ajout de la gestion desconfigurations Cultipi
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Sat Dec 27 14:29:57 CEST 2014
+
+    
 Cultibox (2.0.21) precise; urgency=low
     + Correction de l'export d'une image des logs et du blockUI 
     + Ajout des couleurs pour les courbes des capteurs 5 et 6

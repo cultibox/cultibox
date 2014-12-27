@@ -108,6 +108,12 @@ $(document).ready(function(){
         });
     });
 
+    $("#div_network_label").click(function(e) {
+        e.preventDefault();
+        window.open("/cultinet");
+
+    });
+
 
     // Display services logs:
     $(":button[name='cultipi_logs']").click(function() {
