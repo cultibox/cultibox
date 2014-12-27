@@ -1741,3 +1741,89 @@ msgstr "Aktuelle"
 msgid "CURRENT_PROG_COMMENT"
 msgstr "Aktuelles Programm"
 
+
+#For the Cultipi part:
+msgid "CULTIPI_SUBTITLE"
+msgstr "Konfiguration und Administration Cultipi"
+
+msgid "CULTIPI_SYNOPTIC"
+msgstr "synoptischen"
+
+msgid "CULTIPI_NETWORK_CONF"
+msgstr "Netzwerkeinstellungen"
+
+msgid "CULTIPI_ADMIN"
+msgstr "Verwaltung"
+
+msgid "CULTIPI_SYNO_ADD_ELEMENT"
+msgstr "ein Element hinzufügen"
+
+msgid "CULTIPI_SYNO_CONF"
+msgstr "Konfigurieren"
+
+msgid "CULTIPI_LOGS"
+msgstr "Anzeigen von Protokollen von Dienstleistungen"
+
+msgid "CULTIPI_LOGS_HTTPD"
+msgstr "Meldet den httpd-Dienst"
+
+msgid "CULTIPI_LOGS_MYSQL"
+msgstr "Logs Mysql-Service"
+
+msgid "CULTIPI_LOGS_CULTIPI"
+msgstr "Protokolle der Cultipi Service"
+
+msgid "CULTIPI_VIEW_LOGS"
+msgstr "Show-Protokolle"
+
+msgid "OUTPUT_LOGS"
+msgstr "Logs Ausgang"
+
+msgid "ERROR_LOGS"
+msgstr "Fehlerprotokolle"
+
+msgid "restart_service"
+msgstr "Starten Sie den Dienst"
+
+msgid "SERVICE_ON"
+msgstr "Service Marsch"
+
+msgid "SERVICE_OFF"
+msgstr "Dienst angehalten oder in einem unbekannten Zustand"
+
+msgid "ERROR_RESTART_SERVICE"
+msgstr "Fehler von roten und Inbetriebnahme-Service"
+
+msgid "SUCCESS_RESTART_SERVICE"
+msgstr "Restart-Service erfolgreich durchgeführt"
+
+msgid "CULTINET_LINK"
+msgstr "Die Netzwerkkonfiguration ist: <a class='note_link' href='/cultinet'>hier</a>"
+
+msgid "DIR_CONF_UPDATE"
+msgstr "Ihre Konfiguration ist auf dem neuesten Stand"
+
+msgid "DIR_CONF_NOT_UPTODATE"
+msgstr "verwendet wird, nicht aktualisierte Konfiguration, klicken Sie hier, um die Konfiguration zu aktualisieren: <button id='update_conf'>Aktualisieren Sie Konfiguration</button>"
+
+msgid "WAIT_UPDATED_CONF"
+msgstr "Überprüfen der Konfiguration"
+
+msgid "CULTIPI_SOFT_VERSION"
+msgstr "Software Version"
+
+msgid "CULTIPI_SOFT"
+msgstr "Software CultiPi"
+
+msgid "CULTINET_SOFT"
+msgstr "Cultinet Software"
+
+msgid "CULTIBOX_SOFT"
+msgstr "Software Cultibox"
+
+msgid "SERVICE_MGT"
+msgstr "Service Management"
+
+msgid "CULTIPI_SERVICE"
+msgstr "Cultipi Service"
+

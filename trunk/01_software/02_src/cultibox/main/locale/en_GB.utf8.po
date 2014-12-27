@@ -1741,3 +1741,88 @@ msgstr "Current"
 msgid "CURRENT_PROG_COMMENT"
 msgstr "Current program"
 
+#For the Cultipi part:
+msgid "CULTIPI_SUBTITLE"
+msgstr "Configuration and Administration Cultipi"
+
+msgid "CULTIPI_SYNOPTIC"
+msgstr "Synoptic"
+
+msgid "CULTIPI_NETWORK_CONF"
+msgstr "Network Setup"
+
+msgid "CULTIPI_ADMIN"
+msgstr "Administration"
+
+msgid "CULTIPI_SYNO_ADD_ELEMENT"
+msgstr "Add an item"
+
+msgid "CULTIPI_SYNO_CONF"
+msgstr "Configure"
+
+msgid "CULTIPI_LOGS"
+msgstr "Viewing logs of services"
+
+msgid "CULTIPI_LOGS_HTTPD"
+msgstr "Logs the httpd service"
+
+msgid "CULTIPI_LOGS_MYSQL"
+msgstr "Logs Mysql service"
+
+msgid "CULTIPI_LOGS_CULTIPI"
+msgstr "Logs of Cultipi service"
+
+msgid "CULTIPI_VIEW_LOGS"
+msgstr "Show logs"
+
+msgid "OUTPUT_LOGS"
+msgstr "Logs output"
+
+msgid "ERROR_LOGS"
+msgstr "Error Logs"
+
+msgid "RESTART_SERVICE"
+msgstr "Restart the service"
+
+msgid "SERVICE_ON"
+msgstr "Service march"
+
+msgid "SERVICE_OFF"
+msgstr "Service stopped or in an unknown state"
+
+msgid "ERROR_RESTART_SERVICE"
+msgstr "Error of red & startup service"
+
+msgid "SUCCESS_RESTART_SERVICE"
+msgstr "restart service performed successfully"
+
+msgid "CULTINET_LINK"
+msgstr "The network configuration is available: <a class='note_link' href='/cultinet'>here</a>"
+
+msgid "DIR_CONF_UPDATE"
+msgstr "Your configuration is up to date"
+
+msgid "DIR_CONF_NOT_UPTODATE"
+msgstr "The configuration used is not updated, click here to update the configuration: <button id='update_conf'> Update configuration </button>"
+
+msgid "WAIT_UPDATED_CONF"
+msgstr "Checking the Configuration"
+
+msgid "CULTIPI_SOFT_VERSION"
+msgstr "Software Version"
+
+msgid "CULTIPI_SOFT"
+msgstr "Software CultiPi"
+
+msgid "CULTINET_SOFT"
+msgstr "Cultinet Software"
+
+msgid "CULTIBOX_SOFT"
+msgstr "Software Cultibox"
+
+msgid "SERVICE_MGT"
+msgstr "Service Management"
+
+msgid "CULTIPI_SERVICE"
+msgstr "Cultipi Service"
+
