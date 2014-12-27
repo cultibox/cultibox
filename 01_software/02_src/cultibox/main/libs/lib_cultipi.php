@@ -42,7 +42,7 @@ function check_db() {
             ."scale int(11) NOT NULL DEFAULT '100',"
             ."x int(11) NOT NULL DEFAULT '0',"
             ."y int(11) NOT NULL DEFAULT '0',"
-            ."z int(11) NOT NULL DEFAULT '0',"
+            ."z int(11) NOT NULL DEFAULT '100',"
             ."indexElem int(11) NOT NULL DEFAULT '0',"
             ."rotation int(11) NOT NULL DEFAULT '0',"
             ."image varchar(50) NOT NULL DEFAULT '' );";
@@ -64,15 +64,42 @@ function check_db() {
 }
 
 
-// {{{ getSensorSynoptic()
-// ROLE Retrieve sensor information in db
-// IN $indexElem : Number of sensor
-// RET id of the line added
+// {{{ getSynopticDBElemByname()
+// ROLE Retrieve sensor information in db with this name
+// IN $element : Type of element (sensor, plug, other)
+// IN $indexElem : Index of this element
+// RET Every information about this element in DB
 function getSynopticDBElemByname ($element, $indexElem) {
 
 
     // Check if table configuration exists
     $sql = "SELECT * FROM synoptic WHERE element = '${element}' AND indexElem = '${indexElem}' ;";
+    
+    $db = \db_priv_pdo_start("root");
+    
+    $res = array();
+    
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetch(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    return $res;
+}
+// }}}
+
+// {{{ getSynopticDBElemByID()
+// ROLE Retrieve sensor information in db with this ID
+// IN $id : id of element 
+// RET Every information about this element in DB
+function getSynopticDBElemByID ($id) {
+
+
+    // Check if table configuration exists
+    $sql = "SELECT * FROM synoptic WHERE id = '${id}' ;";
     
     $db = \db_priv_pdo_start("root");
     
@@ -99,17 +126,24 @@ function getSynopticDBElemByname ($element, $indexElem) {
 // RET 0
 function addElementInSynoptic($element, $indexElem, $image, $x=0, $y="") {
     
-    if ($element == "plug" && $x == 0) 
+    if ($x == 0 || $x == "") 
     {
-        $x = 700;
-    } elseif ($x == 0)
-    {
-        $x = 600;
+        switch ($element) {
+            case "plug":
+                $x = 300;
+                break;
+            case "sensor":
+                $x = 1100;
+                break;
+            default:
+                $x = 500;
+                break;
     }
-    
-    if ($y == "") 
+    }
+     
+    if ($y == 0 || $y == "") 
     {
-        $y = ($indexElem + 3) * 100;
+        $y = ($indexElem + 2) * 100;
     }
 
     // Check if table configuration exists
@@ -178,7 +212,7 @@ function getPlugOfSynoptic () {
         // If empty create them 
         if (empty($sensorParameters)) {
 
-            addElementInSynoptic("plug", $i, "prise_100W.png");
+            addElementInSynoptic("plug", $i, "prise_100W.png", "", "", 65);
             
             $ret_array[] = getSynopticDBElemByname("plug",$i);
             
@@ -193,6 +227,31 @@ function getPlugOfSynoptic () {
     return $ret_array;
 }
 
+// {{{ getSensorSynoptic()
+// ROLE Retrieve sensor information in db
+// IN $indexElem : Number of sensor
+// RET id of the line added
+function getOtherOfSynoptic () {
+
+
+    // Check if table configuration exists
+    $sql = "SELECT * FROM synoptic WHERE element != 'sensor' AND element != 'plug' ;";
+    
+    $db = \db_priv_pdo_start("root");
+    
+    $res = array();
+    
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetchAll(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+
+    return $res;
+}
+// }}}
 
 // {{{ add_row_program_idx()
 // ROLE Add a row in programm_idx table
