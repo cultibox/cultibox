@@ -48,6 +48,7 @@ case "$1" in
            mkdir -p ../01_src/01_xampp/cultipi/opt/cultipi
            mkdir -p ../01_src/01_xampp/cultipi/etc/init.d
            mkdir -p ../01_src/01_xampp/cultipi/etc/cron.daily
+           mkdir -p ../01_src/01_xampp/cultipi/etc/logrotate.d
            mkdir -p ../01_src/01_xampp/cultipi/etc/default
            mkdir -p ../01_src/01_xampp/cultipi/etc/cultipi
 
@@ -59,6 +60,7 @@ case "$1" in
            cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/init.d/cultipi ../01_src/01_xampp/cultipi/etc/init.d/cultipi
            cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/cron.daily/cultipi ../01_src/01_xampp/cultipi/etc/cron.daily/
            cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/default/culticron ../01_src/01_xampp/cultipi/etc/default/
+           cp ../../../04_CultiPi/01_Software/04_cultipi_service/etc/logrotate.d/cultipi ../01_src/01_xampp/cultipi/etc/logrotate.d/
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultipi/DEBIAN/control
            find ./../01_src/01_xampp/cultipi/ -name ".svn"|xargs rm -Rf 

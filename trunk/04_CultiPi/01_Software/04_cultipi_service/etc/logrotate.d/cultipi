@@ -1,0 +1,14 @@
+/var/log/cultipi/cultipi.log {
+    daily
+    rotate 7
+    missingok
+    create 640 cultipi cultipi
+    compress
+    sharedscripts
+    postrotate
+        if [ -x /etc/init.d/cultipi ]; then \
+            invoke-rc.d cultipi force-reload > /dev/null 2>&1; \
+        fi; \
+    endscript
+}
+
