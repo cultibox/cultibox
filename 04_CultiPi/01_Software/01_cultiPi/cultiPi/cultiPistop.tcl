@@ -7,6 +7,11 @@ set logFile [file join $rootDir log.txt]
 puts "Stoping cultiPi"
 set rc [catch { set channel [socket localhost 6000] } msg]
 
+if {$rc != 0} {
+    puts "Can not connect to CultiPi socket (port 6000)"
+    puts "Maybe already closed...."
+}
+
 proc send:data {channel data} \
 {
     set rc [catch \
