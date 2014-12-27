@@ -1740,3 +1740,89 @@ msgstr "Actual"
 msgid "CURRENT_PROG_COMMENT"
 msgstr "Programa actual"
 
+
+#For the CUltipi part:
+msgid "CULTIPI_SUBTITLE" 
+msgstr "Configuración y Administración Cultipi" 
+
+msgid "CULTIPI_SYNOPTIC"
+msgstr "sinópticos" 
+
+msgid "CULTIPI_NETWORK_CONF" 
+msgstr "Configuración de red"
+
+msgid "CULTIPI_ADMIN" 
+msgstr "Administración"
+
+msgid "CULTIPI_SYNO_ADD_ELEMENT" 
+msgstr "Añadir un elemento"
+
+msgid "CULTIPI_SYNO_CONF" 
+msgstr "Configurar"
+
+msgid "CULTIPI_LOGS" 
+msgstr "Ver registros de los servicios"
+
+msgid "CULTIPI_LOGS_HTTPD" 
+msgstr "Registra el servicio httpd"
+
+msgid "CULTIPI_LOGS_MYSQL" 
+msgstr "servicio Registros Mysql"
+
+msgid "CULTIPI_LOGS_CULTIPI" 
+msgstr "Registros de servicio Cultipi" 
+
+msgid "CULTIPI_VIEW_LOGS" 
+msgstr "Mostrar registros"
+
+msgid "OUTPUT_LOGS" 
+msgstr "Salida de Registros"
+
+msgid  "ERROR_LOGS"
+msgstr "Registros de error" 
+
+msgid "RESTART_SERVICE" 
+msgstr "Reiniciar el servicio"
+
+msgid "SERVICE_ON" 
+msgstr "marcha el servicio"
+
+msgid "SERVICE_OFF" 
+msgstr "Servicio detenido o en un estado desconocido"
+
+msgid "ERROR_RESTART_SERVICE" 
+msgstr "Error de rojo servicio y puesta en marcha"
+
+msgid "SUCCESS_RESTART_SERVICE" 
+msgstr "reiniciar servicio realizado con éxito"
+
+msgid "CULTINET_LINK" 
+msgstr "La configuración de la red está disponible: <a class='note_link' href='/cultinet'>aquí</a>"
+
+msgid "DIR_CONF_UPDATE" 
+msgstr "Su configuración está al día"
+
+msgid "DIR_CONF_NOT_UPTODATE" 
+msgstr "La configuración utilizada no está actualizado, haga clic aquí para actualizar la configuración: <button id='update_conf'>Actualizar configuración botón</button>"
+
+msgid "WAIT_UPDATED_CONF" 
+msgstr "Comprobación de la configuración"
+
+msgid "CULTIPI_SOFT_VERSION" 
+msgstr "Software Version"
+
+msgid "CULTIPI_SOFT" 
+msgstr "Software CultiPi"
+
+msgid "CULTINET_SOFT"
+msgstr "Cultinet Software"
+
+msgid "CULTIBOX_SOFT" 
+msgstr "Software Cultibox"
+
+msgid "SERVICE_MGT" 
+msgstr "Gestión de Servicios"
+
+msgid "CULTIPI_SERVICE" 
+msgstr "Servicio Cultipi"
+

@@ -1744,6 +1744,7 @@ msgstr "Courant"
 msgid "CURRENT_PROG_COMMENT"
 msgstr "Programme courant"
 
+
 # For the Cultipi part 
 msgid "CULTIPI_SUBTITLE"
 msgstr "Configuration et administration du Cultipi"
@@ -1765,7 +1766,6 @@ msgstr "Configurer"
 
 msgid "CULTIPI_LOGS"
 msgstr "Visualisation des logs des services"
-
 
 msgid "CULTIPI_LOGS_HTTPD"
 msgstr "Logs du service Httpd"
