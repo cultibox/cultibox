@@ -78,7 +78,7 @@
                 echo '      <td colspan="2">NA°C NA%RH</td>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:' . $sensor["scale"] . 'px;cursor: move">';
+                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:' . $sensor["scale"] . 'px;cursor: move" class="rotate' . $sensor["rotation"] . '">';
                 echo '</div>';
             }
             
@@ -103,7 +103,7 @@
                 echo '      <td colspan="2">NA</td>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move">';
+                echo '  <img id="syno_elemImage_' . $plug["id"] . '" src="main/libs/img/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move" class="rotate' . $plug["rotation"] . '">';
                 echo '</div>';
             }
             
@@ -126,7 +126,7 @@
                 echo '    <tr>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/' . $other["image"] . '" alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move">';
+                echo '  <img id="syno_elemImage_' . $other["id"] . '" src="main/libs/img/' . $other["image"] . '" alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move" class="rotate' . $other["rotation"] . '">';
                 echo '</div>';
             }
             
@@ -149,10 +149,10 @@
             </tr>
             <tr>
                 <td>Rotation</td>
-                <td><input id="syno_configure_element_rotate_0" type="radio" name="group1" value="0" /> 0° </td>
-                <td><input id="syno_configure_element_rotate_90" type="radio" name="group1" value="90" /> 90° </td>
-                <td><input id="syno_configure_element_rotate_180" type="radio" name="group1" value="180" /> 180° </td>
-                <td><input id="syno_configure_element_rotate_270" type="radio" name="group1" value="270" /> 270° </td>
+                <td><input id="syno_configure_element_rotate_0" type="radio" name="syno_configure_element_rotate" value="0" /> 0° </td>
+                <td><input id="syno_configure_element_rotate_90" type="radio" name="syno_configure_element_rotate" value="90" /> 90° </td>
+                <td><input id="syno_configure_element_rotate_180" type="radio" name="syno_configure_element_rotate" value="180" /> 180° </td>
+                <td><input id="syno_configure_element_rotate_270" type="radio" name="syno_configure_element_rotate" value="270" /> 270° </td>
             </tr>
             <tr>
                 <td>Profondeur</td>
