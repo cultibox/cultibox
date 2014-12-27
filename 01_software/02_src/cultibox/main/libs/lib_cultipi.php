@@ -301,6 +301,29 @@ function updatePosition($elem,$x,$y) {
 }
 // }}}
 
+// {{{ updatePosition()
+// ROLE Update position of an element
+// IN $name :
+// RET id of the line added
+function updateZScaleImageRotation($elem,$z,$scale,$image,$rotation) {
+
+    // Update position conf
+    $sql = "UPDATE synoptic SET z='${z}' ,scale='${scale}' ,image='${image}' ,rotation='${rotation}' WHERE id='${elem}' ;";
+    
+    $db = \db_priv_pdo_start("root");
+    
+    $ret = array();
+    
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    
+    return $ret;
+}
+// }}}
 
 }
 

@@ -55,6 +55,30 @@
             }
             cultipi\updatePosition($elem,$x,$y);
             break;
+        case "updateZScaleImageRotation" :
+            $id = "";
+            if((isset($_POST['id'])) && (!empty($_POST['id']))) {
+                $id=$_POST['id'];
+            }
+            $scale = "";
+            if((isset($_POST['scale'])) && (!empty($_POST['scale']))) {
+                $scale=$_POST['scale'];
+            }
+            $z = "";
+            if((isset($_POST['z'])) && (!empty($_POST['z']))) {
+                $z=$_POST['z'];
+            }
+            $image = "";
+            if((isset($_POST['image'])) && (!empty($_POST['image']))) {
+                $image=$_POST['image'];
+            }
+            $rotation = "";
+            if((isset($_POST['rotation'])) && (!empty($_POST['rotation']))) {
+                $rotation=$_POST['rotation'];
+            }
+            echo "$id , $z , $scale , $image , $rotation";
+            cultipi\updateZScaleImageRotation($id,$z,$scale,$image,$rotation);
+            break;
         case "getParam" :
             $elem = "";
             if((isset($_POST['id'])) && (!empty($_POST['id']))) {
