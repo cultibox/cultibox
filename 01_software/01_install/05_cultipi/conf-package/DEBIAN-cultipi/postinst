@@ -20,7 +20,7 @@ if [ ! -d /etc/cultipi/conf_tmp ]; then
 fi
 
 if [ ! -d /etc/cultipi/conf_tmp/logs ]; then
-
+    mkdir -p /etc/cultipi/conf_tmp/logs
 fi
 
 if [ ! -d /etc/cultipi/conf_tmp/cnf/plg ]; then
