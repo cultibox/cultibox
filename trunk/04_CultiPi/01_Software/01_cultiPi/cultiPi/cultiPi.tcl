@@ -86,6 +86,18 @@ after $confStart(serverLog,waitAfterUS)
     # puts "CultiPi : I2C speed : error $msg"
 # }
 
+# On attend que la date soit correcte
+proc checkDate {} {
+
+    if {[clock seconds] > 1419700000} {
+        set ::dateIsCorrect 1
+    } else {
+        ::piLog::log [clock millisecond] "info" "Date is not correct, waiting ..."
+        after 1000 checkDate
+    }
+}
+checkDate
+vwait dateIsCorrect
 
 # Lancement de tous les modules
 foreach moduleXML $confStart(start) {
