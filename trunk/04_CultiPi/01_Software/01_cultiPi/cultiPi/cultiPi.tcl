@@ -67,12 +67,14 @@ set confStart(serverLog,pipeID) [open "| $confStart(serverLog,pathexe) \"$confSt
 after $confStart(serverLog,waitAfterUS)
 
 # init log
+puts "CultiPi : start : Open log" ; update
 ::piLog::openLog $confStart(serverLog,port) "culipi"
 ::piLog::log $TimeStartcultiPi "info" "starting serveur"
 ::piLog::log $TimeStartserveurLog "info" "starting serveurLog"
 ::piLog::log $TimeStartserveurLog "info" "Port : $port(server)"
 
 # Load server Culti Pi
+puts "CultiPi : start : Load server" ; update
 ::piLog::log [clock millisecond] "info" "starting serveur"
 ::piServer::start messageGestion $port(server)
 ::piLog::log [clock millisecond] "info" "serveur is started"
@@ -88,16 +90,19 @@ after $confStart(serverLog,waitAfterUS)
 
 # On attend que la date soit correcte
 proc checkDate {} {
-
     if {[clock seconds] > 1419700000} {
         set ::dateIsCorrect 1
     } else {
+        puts "CultiPi : start : Date is not correct ([clock seconds] under 1419700000) , waiting ..."; update
         ::piLog::log [clock millisecond] "info" "Date is not correct, waiting ..."
         after 1000 checkDate
     }
 }
-checkDate
+
+puts "CultiPi : start : Check date" ; update
+after 200 checkDate
 vwait dateIsCorrect
+puts "CultiPi : start : Date is OK, continue" ; update
 
 # Lancement de tous les modules
 foreach moduleXML $confStart(start) {

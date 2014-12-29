@@ -42,7 +42,11 @@ proc load_plugXX {} {
     while {[eof $fid] != 1 } {
         gets $fid UneLigne
         if {$UneLigne != ""} {
-            set time [expr [string range $UneLigne 0 4] * 1]
+            # On calcul l'heure
+            set formattedHour [string trimleft [string range $UneLigne 0 4] "0"]
+            if {$formattedHour == ""} {set formattedHour 0}
+        
+            set time [expr $formattedHour * 1]
 
             set list ""
             for {set i 5} {$i < [string length $UneLigne]} {incr i 3} {
@@ -66,6 +70,8 @@ proc load_plugXX {} {
         }
     }
     close $fid
+    
+    ::piLog::log [clock milliseconds] "debug" "end of reading : $plugVFileName"
 }
 
 proc getsProgramm {rtc_readSecondsOfTheDay {updateNextTimeToChange 0}} {

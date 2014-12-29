@@ -10,6 +10,7 @@ set rc [catch { set channel [socket localhost 6000] } msg]
 if {$rc != 0} {
     puts "Can not connect to CultiPi socket (port 6000)"
     puts "Maybe already closed...."
+    exit
 }
 
 proc send:data {channel data} \
@@ -30,3 +31,4 @@ send:data $channel "NA 0 stop"
 close $channel
 puts "CultiPi is stopped"
 # tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\culti_pi\module\serverLog\serveurLog.tcl" 6000 "D:\DONNEES\GR08565N\Mes documents\cbx\culti_pi\log.txt"
+# tclsh /opt/cultipi/cultiPi/cultiPistop.tcl

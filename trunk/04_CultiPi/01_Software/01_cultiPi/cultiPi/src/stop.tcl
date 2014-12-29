@@ -8,13 +8,14 @@ proc stopCultiPi {} {
         if {$moduleName != "serverLog"} {
             ::piLog::log [clock milliseconds] "info" "Demande arret $moduleName"
             # Arret du module
-            ::piServer::sendToServer $::confStart($moduleName,port) "stop"
+            ::piServer::sendToServer $::confStart($moduleName,port) "000 000 stop"
             
             #on attend 200 ms
             after 200
             
             # try to kill
             catch {
+                ::piLog::log [clock milliseconds] "info" "Try to kill $moduleName pid $::confStart($moduleName,pid)"
                 # Kill for windows
                 if {$::tcl_platform(platform) == "windows"} {
                     exec exec [auto_execok taskkill] /PID $::confStart($moduleName,pid)
@@ -30,7 +31,7 @@ proc stopCultiPi {} {
     ::piLog::log [clock milliseconds] "info" "Fin arret Culti Pi"
     
     # Arrêt du serveur de log (forcement en dernier)
-    ::piServer::sendToServer $::confStart(serverLog,port) "stop"
+    ::piServer::sendToServer $::confStart(serverLog,port) "000 000 stop"
     ::piLog::closeLog
     
     after 500 {set ::forever 0}

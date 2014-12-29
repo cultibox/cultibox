@@ -84,7 +84,24 @@ proc ::piLog::log {time traceType trace} {
     
     # If channel is not open, log in local
     if {$channel == ""} {
-        set fid [open [file join [file dirname [info script]] log_local.txt ] a+]
+        if { [expr [string compare "$::tcl_platform(platform)" "windows" ] == 0] } {
+            package require registry 1.0
+            set env_cpi  [file join [file dirname [info script]] cultipi]
+        } else {
+            set env_cpi  [file join $::env(HOME) cultipi]
+        }
+        
+        set env_home [file join $env_cpi ${module}]
+        
+        # On crée le dossier s'il n'existe pas
+        if {[file isdirectory $env_cpi] == 0} {
+            file mkdir $env_cpi
+        }
+        if {[file isdirectory $env_home] == 0} {
+            file mkdir $env_home
+        }
+        
+        set fid [open [file join $env_home log_local.txt ] a+]
         puts $fid $StringToWrite
         close $fid
     } else {
