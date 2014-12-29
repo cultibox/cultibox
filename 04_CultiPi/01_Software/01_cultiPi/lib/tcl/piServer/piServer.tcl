@@ -92,7 +92,7 @@ proc ::piServer::start {callBackMessageIn portIn} {
     } msg]
     if {$rc == 1} \
     {
-        ::piLog::log [clock milliseconds] "error" "erreur exiting $msg"
+        ::piLog::log [clock milliseconds] "error_critic" "erreur exiting $msg"
         exit
     }
 }
