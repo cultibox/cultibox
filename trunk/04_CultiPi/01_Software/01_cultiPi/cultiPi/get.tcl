@@ -9,19 +9,19 @@ package require piLog
 package require piServer
 package require piTools
 
-set port(serverViewRepere) 6022
+set port(serverGet) 6022
 set port(serverLog) 6003
 set port(serverCultipi) 6000
 set port(serverAcqSensor) 6006
 set port(serverPlugUpdate) 6004
 set port(serverHisto) 6009
 
-::piLog::openLog $port(serverLog) "cultiPiviewRepere"
+::piLog::openLog $port(serverLog) "get"
 
 set module   [lindex $argv 0]
 set variable [lindex $argv 1]
 
-puts "Reading variable $variable of module $module"
+#puts "Reading variable [lrange $argv 1 [expr $argc - 1]] of module $module"
 
 proc messageGestion {message} {
 
@@ -30,20 +30,21 @@ proc messageGestion {message} {
     set indexForResponse    [::piTools::lindexRobust $message 1]
     set commande            [::piTools::lindexRobust $message 2]
 
-    puts $message
+    puts [join [lrange $message 3 end] "\t"]
 
     set ::forever 1
 }
-::piServer::start messageGestion $port(serverViewRepere)
+::piServer::start messageGestion $port(serverGet)
 
 # On regarde sur quel serveur il souhaite lancer la commande
 
 # Demande lecture du repere
 # Trame standard : [FROM] [INDEX] [commande] [argument]
-::piServer::sendToServer $port($module) "$port(serverViewRepere) 0 getRepere $variable"
+::piServer::sendToServer $port($module) "$port(serverGet) 0 getRepere [lrange $argv 1 [expr $argc - 1]]"
 
 
 vwait forever
 
-# tclsh /opt/cultipi/cultiPi/cultiPiviewRepere.tcl serverAcqSensor "::sensor(1,value)"
-# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\cultiPiviewRepere.tcl" serverAcqSensor "::sensor(1,value)"
+# tclsh /opt/cultipi/cultiPi/get.tcl serverAcqSensor "::sensor(1,value)" "::sensor(2,value)"
+# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\get.tcl" serverAcqSensor "::sensor(1,value)"
+# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\get.tcl" serverAcqSensor "::sensor(1,value)" "::sensor(2,value)"
