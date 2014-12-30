@@ -16,21 +16,29 @@ proc messageGestion {message} {
             ::piServer::sendToServer $serverForResponse "$::port(serverPlugUpdate) $indexForResponse pid serverPlugUpdate [pid]"
         }
         "getRepere" {
-            # La variable est le nom de la variable à lire
-            set variable  [::piTools::lindexRobust $message 3]
+            # Pour toutes les variables demandées
+            set indexVar 3
+            set returnList ""
+            while {[set variable [::piTools::lindexRobust $message $indexVar]] != ""} {
+                # La variable est le nom de la variable à lire
+                
+                ::piLog::log [clock milliseconds] "info" "Asked getRepere $variable"
+                
+                if {[info exists ::$variable] == 1} {
+                
+                    eval set returnValue $$variable
 
-            ::piLog::log [clock milliseconds] "info" "Asked getRepere $variable"
-            # Les parametres d'un repere : nom Valeur 
-            
-            if {[info exists ::$variable] == 1} {
-            
-                eval set returnValue $$variable
-            
-                ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere $returnValue"
-                ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $returnValue"
-            } else {
-                ::piLog::log [clock milliseconds] "error" "Asked variable $variable - variable doesnot exists"
+                    lappend returnList $returnValue
+                } else {
+                    ::piLog::log [clock milliseconds] "error" "Asked variable $variable - variable doesnot exists"
+                }
+                
+                incr indexVar
             }
+
+            ::piLog::log [clock milliseconds] "info" "response : $serverForResponse $indexForResponse getRepere $returnList"
+            ::piServer::sendToServer $serverForResponse "$serverForResponse $indexForResponse getRepere $returnList"
+            
         }
         "subscriptionEvenement" {
             # Le numéro de prise est indiqué 
