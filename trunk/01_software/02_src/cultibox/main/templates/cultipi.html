@@ -1,5 +1,7 @@
 <script>
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
+   // Include specific css
+   loadCSS("main/libs/css/page_cultipi.css");
 </script>
 
 <?php 
@@ -47,20 +49,20 @@
             <td class="calendar-conf-marge"></td>
         </tr>
     </table>
-    
-    <p>
-    <?php echo cultipi\getSensorValue("1"); ?>
-    </p>
 
     <div id="set" style="min-height: 700px;" >
         
         <?php
             // Add every sensor
+            
+            // Read sensor list
             $sensorList = cultipi\getSensorOfSynoptic();
 
+            // retrieve values
+            $sensorValues = cultipi\getAllSensorLiveValue();
+            
             foreach ($sensorList as $index => $sensor) 
             {
-                
                 echo '<div id="syno_elem_' . $sensor["id"] . '" class="" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01);z-index:' . $sensor["z"] . '" >';
                 echo '  <table>';
                 echo '    <tr>';
@@ -75,7 +77,7 @@
                 echo '      </td>';
                 echo '    </tr>';
                 echo '    <tr>';
-                echo '      <td colspan="2">NA°C NA%RH</td>';
+                echo '      <td colspan="2" id="syno_elemValueSensor_' . $sensor["indexElem"] . '">' . $sensorValues[$sensor["indexElem"]] . '</td>';
                 echo '    </tr>';
                 echo '  </table>';
                 echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:' . $sensor["scale"] . 'px;cursor: move" class="rotate' . $sensor["rotation"] . '">';
@@ -83,7 +85,13 @@
             }
             
             // Add plugs
+            
+            // Read plug list
             $plugList = cultipi\getPlugOfSynoptic();
+            
+            // retrieve values
+            $plugValues = cultipi\getAllPlugLiveValue();
+            
             foreach ($plugList as $index => $plug) 
             {
                 echo '<div id="syno_elem_' . $plug["id"] . '" class="" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01);z-index:' . $plug["z"] . '" >';
@@ -100,7 +108,7 @@
                 echo '      </td>';
                 echo '    </tr>';
                 echo '    <tr>';
-                echo '      <td colspan="2">NA</td>';
+                echo '      <td colspan="2" id="syno_elemValuePlug_' . $plug["indexElem"] . '" >' . $plugValues[$plug["indexElem"]] . '</td>';
                 echo '    </tr>';
                 echo '  </table>';
                 echo '  <img id="syno_elemImage_' . $plug["id"] . '" src="main/libs/img/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move" class="rotate' . $plug["rotation"] . '">';
@@ -146,6 +154,14 @@
         <table>
             <tr>
                 <td>Image</td>
+                <td colspan="3" >
+                    <select id="syno_configure_element_image" onchange="showValue(this.value)">
+                        <option value="tente_1_espace.png" >tente</option>
+                        <option value="tente_2_espace.png" >tente 2 espaces</option>
+                        <option value="prise_100W.png" >Prise 1000W</option>
+                        <option value="capteur.png" >Capteur T & RH</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Rotation</td>
@@ -164,9 +180,6 @@
                 <td><input type="text" name="syno_configure_element_scale_val" id="syno_configure_element_scale_val" value="" size="4" readonly /></td>
                 <td colspan="3" ><div id="syno_configure_element_scale"></div></td>
             </tr>
-        <?php
-            
-        ?>
         </table>
     </div>
     
