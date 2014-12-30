@@ -253,25 +253,135 @@ function getOtherOfSynoptic () {
 }
 // }}}
 
-// {{{ add_row_program_idx()
-// ROLE Add a row in programm_idx table
-// IN $name : Name of the programm
-//    $version : Version of the programm
-//    $program_idx : Pointor on the the programs table
-// RET id of the line added
-function getSensorValue($number) {
+// {{{ getAllSensorLiveValue()
+// ROLE Retrieve value of each sensor
+// RET plug value
+function getAllSensorLiveValue() {
+
+    $return_array = array();
+    $return_array["error"] = "";
+    
+    $commandLine = 'tclsh "/opt/cultipi/cultiPi/get.tcl" serverAcqSensor ';
+    for ($i = 1; $i <= 6; $i++) {
+        $commandLine = $commandLine . ' "::sensor(' . $i . ',value)"';
+    }
+    
+    $ret = "";
+    try {
+        $ret = exec($commandLine);
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        $return_array["error"] = $e->getMessage();
+    }
+
+    $arr = explode ("\t", $ret);
+    
+    for ($i = 0; $i <= 5; $i++) {
+        if (array_key_exists($i, $arr)) {
+            $return_array[$i + 1] = $arr[$i];
+        } else {
+            $return_array[$i + 1] = "DEFCOM";
+        }
+    }
+
+    return $return_array;
+}
+// }}}
+
+// {{{ getSensorLiveValue()
+// ROLE Retrieve value of a sensor
+// IN $number : Index of a sensor
+// RET Sensor value
+function getSensorLiveValue($number) {
 
     $ret = "";
 
+    $return_array = array();
+    $return_array["val1"] = "DEFCOM"; 
+    $return_array["val2"] = "DEFCOM";
+    $return_array["error"] = "";
+    
     try {
-        $ret = exec('tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\cultiPi\cultiPiviewRepere.tcl" serverAcqSensor "::sensor(1,value)"');
+        $ret = exec('tclsh "/opt/cultipi/cultiPi/get.tcl" serverAcqSensor "::sensor(' . $number . ',value)"');
     } catch (Exception $e) {
         echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        $return_array["error"] = $e->getMessage();
     }
 
     $arr = explode (" ", $ret);
     
-    return $arr[3];
+    if (array_key_exists(0, $arr)) {
+        $return_array["val1"] = $arr[0];
+    }
+    if (array_key_exists(1, $arr)) {
+        $return_array["val2"] = $arr[1];
+    }
+    
+    return $return_array;
+}
+// }}}
+
+// {{{ getPlugLiveValue()
+// ROLE Retrieve value of each plug
+// RET plug value
+function getAllPlugLiveValue() {
+
+    $return_array = array();
+    $return_array["error"] = "";
+    
+    $commandLine = 'tclsh "/opt/cultipi/cultiPi/get.tcl" serverPlugUpdate ';
+    for ($i = 1; $i <= 16; $i++) {
+        $commandLine = $commandLine . ' "::plug(' . $i . ',value)"';
+    }
+    
+    $ret = "";
+    try {
+        $ret = exec($commandLine);
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        $return_array["error"] = $e->getMessage();
+    }
+
+    $arr = explode ("\t", $ret);
+    
+    for ($i = 0; $i <= 15; $i++) {
+        if (array_key_exists($i, $arr)) {
+            $return_array[$i + 1] = $arr[$i];
+        } else {
+            $return_array[$i + 1] = "DEFCOM";
+        }
+    }
+
+    return $return_array;
+}
+// }}}
+
+// {{{ getPlugLiveValue()
+// ROLE Retrieve value of a plug
+// IN $number : Index of a plug
+// RET plug value
+function getPlugLiveValue($number) {
+
+    $ret = "";
+
+    $return_array = array();
+    $return_array["val1"] = "DEFCOM"; 
+    $return_array["error"] = "";
+    
+    try {
+        $ret = exec('tclsh "/opt/cultipi/cultiPi/get.tcl" serverPlugUpdate "::plug(' . $number . ',value)"');
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        $return_array["error"] = $e->getMessage();
+    }
+
+    $arr = explode ("\t", $ret);
+    
+    if (array_key_exists(0, $arr)) {
+        $return_array["val1"] = $arr[0];
+    }
+    
+    return $return_array;
 }
 // }}}
 

@@ -17,9 +17,8 @@ var syno_configure_element_zindex_value = 1;
 var syno_configure_element_zindex_imageID = "";
 var syno_configure_element_scale_value = 1;
 var syno_configure_element_scale_imageID = "";
-var syno_configure_element_imageName = "";
 var syno_configure_element_rotation = "";
-
+var idOfElem = "";
 
 $(document).ready(function(){
      pop_up_remove("main_error");
@@ -137,6 +136,14 @@ $(document).ready(function(){
         }
     );
     
+    // Image
+    $('#syno_configure_element_image').on('change', function() {
+        try {
+            $('#syno_elemImage_' + idOfElem).attr('src', 'main/libs/img/' + this.value);
+        } catch (e) {
+            alert(e.message);
+        }
+    });
     
     // Display and control user form for configuring item
     $( ".syno_conf_elem_button" ).click(function(e) {
@@ -164,8 +171,8 @@ $(document).ready(function(){
                 $("#syno_configure_element_rotate_" + objJSON.rotation ).prop("checked", true);
                 
                 syno_configure_element_scale_value = parseInt(objJSON.scale);
-                $("#syno_configure_element_scale_val").val(objJSON.scale);
-                $("#syno_configure_element_scale").slider("value",objJSON.scale);
+                $("#syno_configure_element_scale_val").val(syno_configure_element_scale_value);
+                $("#syno_configure_element_scale").slider("value",syno_configure_element_scale_value);
                 
                 syno_configure_element_zindex_value = parseInt(objJSON.z);
                 $("#syno_configure_element_zindex_val").val(objJSON.z);
@@ -175,7 +182,7 @@ $(document).ready(function(){
                 syno_configure_element_zindex_imageID = "syno_elem_" + idOfElem ;
                 
                 syno_configure_element_rotation = objJSON.rotation;
-                syno_configure_element_imageName = objJSON.image;
+                $('#syno_configure_element_image option[value="' + objJSON.image + '"]').prop('selected', true);
 
                 $("#syno_configure_element").dialog({
                     resizable: false,
@@ -198,7 +205,7 @@ $(document).ready(function(){
                                     id:idOfElem,
                                     z:$("#syno_configure_element_zindex_val").val(),
                                     scale:$("#syno_configure_element_scale_val").val(),
-                                    image:syno_configure_element_imageName,
+                                    image:$( "#syno_configure_element_image option:selected" ).val(),
                                     rotation:$('input[name=syno_configure_element_rotate]:checked').val(),
                                     action:"updateZScaleImageRotation"
                                 },
@@ -214,6 +221,70 @@ $(document).ready(function(){
         });
     });
 
+var updateIsAked = 0;
+    // Loop for updating sensors and plugs
+    function updateSensors() {
+    
+        if (updateIsAked == 1) {
+            return 0;
+        }
+        updateIsAked = 1;
+        $.ajax({
+            cache: false,
+            type: "POST",
+            data: {
+                action:"getAllSensorLiveValue"
+            },
+            url: "main/modules/external/synoptic.php"
+        }).done(function (data) {
+            var objJSON = jQuery.parseJSON(data);
+
+            if (objJSON.error == "") {
+            
+                $.each( objJSON, function( key, value ) {
+                    if (key != "error") {
+                        $('#syno_elemValueSensor_' + key).html(value);
+                    }
+                });
+            }
+            
+            updateIsAked = 0;
+
+        })
+    }
+    setInterval(updateSensors, 13000);
+
+    // Loop for updating sensors and plugs
+    function updatePlugs() {
+        if (updateIsAked == 1) {
+            return 0;
+        }
+        updateIsAked = 1;
+        
+        $.ajax({
+            cache: false,
+            type: "POST",
+            data: {
+                action:"getAllPlugLiveValue"
+            },
+            url: "main/modules/external/synoptic.php"
+        }).done(function (data) {
+            var objJSON = jQuery.parseJSON(data);
+
+            if (objJSON.error == "") {
+            
+                $.each( objJSON, function( key, value ) {
+                    if (key != "error") {
+                        $('#syno_elemValuePlug_' + key).html(value);
+                    }
+                });
+            }
+            
+            updateIsAked = 0;
+        })
+    }
+    setInterval(updatePlugs, 7000);
+    
     $("#div_network_label").click(function(e) {
         e.preventDefault();
         window.open("/cultinet");

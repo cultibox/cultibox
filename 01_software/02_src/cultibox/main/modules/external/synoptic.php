@@ -85,6 +85,30 @@
                 $ret_array = cultipi\getSynopticDBElemByID($_POST['id']);
             }
             break;
+        case "getAllSensorLiveValue" :
+            $ret_array = cultipi\getAllSensorLiveValue();
+            break;
+        case "getAllPlugLiveValue" :
+            $ret_array = cultipi\getAllPlugLiveValue();
+            break;
+        case "getSensorLiveValue" :
+            $index = "";
+            if((isset($_POST['index'])) && (!empty($_POST['index']))) {
+                $index = $_POST['index'];
+            }
+            
+            $ret_array = cultipi\getSensorLiveValue($index);
+
+            break;
+        case "getPlugLiveValue" :
+            $index = "";
+            if((isset($_POST['index'])) && (!empty($_POST['index']))) {
+                $index = $_POST['index'];
+            }
+            
+            $ret_array = cultipi\getPlugLiveValue($index);
+
+            break;
         default:
             break;
     }
