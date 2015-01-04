@@ -19,6 +19,10 @@ var syno_configure_element_scale_value = 1;
 var syno_configure_element_scale_imageID = "";
 var syno_configure_element_rotation = "";
 var idOfElem = "";
+var typeOfElem = "";
+
+var absolut_X_position = "";
+var absolut_Y_position = "";
 
 $(document).ready(function(){
      pop_up_remove("main_error");
@@ -70,19 +74,121 @@ $(document).ready(function(){
     $( "#set div" ).draggable({
         distance: 10,
         grid: [ 10, 10 ],
+        containment : '#set',
         cursor: "move",
         stop:function(event, ui) {
             $.ajax({
-               cache: false,
-               type: "POST",
-               data: {elem:$(this).attr('id').split("_")[2], x:(parseInt($(this).position().left) / 10) * 10, y:(parseInt($(this).position().top) / 10) * 10, action:"updatePosition"},
-               url: "main/modules/external/synoptic.php"
+                cache: false,
+                type: "POST",
+                data: {
+                    elem:$(this).attr('id').split("_")[2],
+                    x:(parseInt($(this).position().left) / 10) * 10,
+                    y:(parseInt($(this).position().top) / 10) * 10,
+                    action:"updatePosition"
+                },
+                url: "main/modules/external/synoptic.php"
             }).done(function (data) {
             });
+            absolut_X_position = "";
+            absolut_Y_position = "";
         }
     });
+    
+    // Drag and drop from extern modal UI
+    $( "#syno_add_element_ui div" ).draggable({
+        revert: false,
+        helper: 'clone',
+        appendTo: '#set',
+        cursor: 'move',
+        zIndex: 9999,
+        stop:function(event, ui) {
+        
+            if (absolut_X_position != "" && absolut_Y_position != "")
+            {
 
-    // Display and control user form for daily program
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    data: {
+                        image:$(this).attr('id'),
+                        x:(parseInt(absolut_X_position) / 10) * 10,
+                        y:(parseInt(absolut_Y_position) / 10) * 10,
+                        action:"addElementOther"
+                    },
+                    url: "main/modules/external/synoptic.php"
+                }).done(function (data) {
+                    // Add element from database
+                    
+                    if(data != "") {
+
+                        var objJSON = jQuery.parseJSON(data);
+                        
+                        // Create the div
+                        $("#set").append('<div id="syno_elem_' + objJSON.id + '" class="" style="position:absolute; top:' + objJSON.y + 'px ; left:' + objJSON.x + 'px ;z-index:' + objJSON.z + '" ></div>');
+                        
+                        var inTable = '<table>';
+                        inTable = inTable +  '    <tr>';
+                        inTable = inTable +  '      <td>';
+                        inTable = inTable +  '          <input type="image" id="syno_elemConfigur_' + objJSON.id + '" name="syno_elemConfigur_' + objJSON.id + '"';
+                        inTable = inTable +  '                 title=""';
+                        inTable = inTable +  '                 src="main/libs/img/advancedsettings.png"  width="18"';
+                        inTable = inTable +  '                 alt="configure"';
+                        inTable = inTable +  '                 class="syno_conf_elem_button"';
+                        inTable = inTable +  '          />';
+                        inTable = inTable +  '      </td>';
+                        inTable = inTable +  '    </tr>';
+                        inTable = inTable +  '    <tr>';
+                        inTable = inTable +  '    </tr>';
+                        inTable = inTable +  '  </table>';
+                
+                        $("#syno_elem_" + objJSON.id).append(inTable);
+                        $("#syno_elem_" + objJSON.id).append('<img id="syno_elemImage_' + objJSON.id + '" src="main/libs/img/images-synoptic-other/' + objJSON.image + '" alt="capteur" style="width:' + objJSON.scale + 'px;cursor: move" class="rotate' + objJSON.rotation + '" >');
+                    
+                    
+                        $( "#syno_elem_" + objJSON.id ).draggable({
+                            distance: 10,
+                            grid: [ 10, 10 ],
+                            containment : '#set',
+                            cursor: "move",
+                            stop:function(event, ui) {
+                                $.ajax({
+                                    cache: false,
+                                    type: "POST",
+                                    data: {
+                                        elem:$(this).attr('id').split("_")[2],
+                                        x:(parseInt($(this).position().left) / 10) * 10,
+                                        y:(parseInt($(this).position().top) / 10) * 10,
+                                        action:"updatePosition"
+                                    },
+                                    url: "main/modules/external/synoptic.php"
+                                }).done(function (data) {
+                                });
+                                absolut_X_position = "";
+                                absolut_Y_position = "";
+                            }
+                        });
+                    
+                    
+                    }
+                    
+                });
+                absolut_X_position = "";
+                absolut_Y_position = "";
+            }
+        
+        }
+    });
+    
+    
+    $('#set').droppable({
+        drop : function(event, ui){
+            // Save X and T position of drop
+            absolut_X_position = ui.position.left;
+            absolut_Y_position = ui.position.top;
+        }
+    });
+    
+    // Display and control user form to add an element
     $("#syno_add_element").click(function(e) {
         e.preventDefault();
         $("#syno_add_element_ui").dialog({
@@ -137,16 +243,16 @@ $(document).ready(function(){
     );
     
     // Image
-    $('#syno_configure_element_image').on('change', function() {
+    $('#syno_configure_element_image_other, #syno_configure_element_image_plug, #syno_configure_element_image_sensor').on('change', function() {
         try {
-            $('#syno_elemImage_' + idOfElem).attr('src', 'main/libs/img/' + this.value);
+            $('#syno_elemImage_' + idOfElem).attr('src', 'main/libs/img/images-synoptic-' + typeOfElem + '/' + this.value);
         } catch (e) {
             alert(e.message);
         }
     });
     
     // Display and control user form for configuring item
-    $( ".syno_conf_elem_button" ).click(function(e) {
+    $('body').on('click', '.syno_conf_elem_button', function(e) {
         e.preventDefault();
         
         idOfElem = $(this).attr('id').split("_")[2];
@@ -160,8 +266,10 @@ $(document).ready(function(){
             
             if(data != "") {
 
-
                 var objJSON = jQuery.parseJSON(data);
+                
+                // Save type of the element
+                typeOfElem = objJSON.element;
                 
                 // Update style of each configure element
                 $("#syno_configure_element_rotate_0" ).prop("checked", false);
@@ -182,17 +290,25 @@ $(document).ready(function(){
                 syno_configure_element_zindex_imageID = "syno_elem_" + idOfElem ;
                 
                 syno_configure_element_rotation = objJSON.rotation;
-                $('#syno_configure_element_image option[value="' + objJSON.image + '"]').prop('selected', true);
+                $('#syno_configure_element_image_' + typeOfElem + ' option[value="' + objJSON.image + '"]').prop('selected', true);
 
+                // Select correct image option
+                $("#syno_configure_element_image_other").hide();
+                $("#syno_configure_element_image_plug").hide();
+                $("#syno_configure_element_image_sensor").hide();
+                $("#syno_configure_element_image_" + typeOfElem).show();
+                console.debug('Type : ' + typeOfElem);
+                console.debug('Image : ' + objJSON.image);
                 $("#syno_configure_element").dialog({
                     resizable: false,
-                    width: 300,
+                    width: 400,
                     closeOnEscape: true,
                     dialogClass: "popup_message",
                     buttons: [{
                         text: CLOSE_button,
                         click: function () {
-                            $( this ).dialog( "close" ); return false;
+                            $( this ).dialog( "close" );
+                            return false;
                         }
                     }, {
                         text: SAVE_button,
@@ -205,14 +321,37 @@ $(document).ready(function(){
                                     id:idOfElem,
                                     z:$("#syno_configure_element_zindex_val").val(),
                                     scale:$("#syno_configure_element_scale_val").val(),
-                                    image:$( "#syno_configure_element_image option:selected" ).val(),
+                                    image:$( "#syno_configure_element_image_" + typeOfElem + " option:selected" ).val(),
                                     rotation:$('input[name=syno_configure_element_rotate]:checked').val(),
                                     action:"updateZScaleImageRotation"
                                 },
                                 url: "main/modules/external/synoptic.php"
                             }).done(function (data) {
-                            })
                             
+                            });
+                            $( this ).dialog( "close" );
+                            return false;
+                        }
+                    }, {
+                        text: DELETE_button,
+                        click: function () {
+                        
+                            $.ajax({
+                                cache: false,
+                                type: "POST",
+                                data: {
+                                    id:idOfElem,
+                                    action:"deleteElement"
+                                },
+                                url: "main/modules/external/synoptic.php"
+                            }).done(function (data) {
+                            });
+                            
+                            // Delete it
+                            $( "#syno_elem_" + idOfElem ).remove();
+                            
+                            $( this ).dialog( "close" );
+                            return false;
                         }
                     }]
                 });

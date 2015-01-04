@@ -37,8 +37,28 @@
         case "getPlugs" :
             echo "i égal 1";
             break;
-        case "getOtherItems" :
-            echo "i égal 2";
+        case "deleteElement" :
+            $id = "";
+            if((isset($_POST['id'])) && (!empty($_POST['id']))) {
+                $id=$_POST['id'];
+            }     
+            cultipi\deleteElementInSynoptic($id);        
+            break;
+        case "addElementOther" :
+            $image = "";
+            if((isset($_POST['image'])) && (!empty($_POST['image']))) {
+                $image=$_POST['image'];
+            }
+            $x = "";
+            if((isset($_POST['x'])) && (!empty($_POST['x']))) {
+                $x=$_POST['x'];
+            }
+            $y = "";
+            if((isset($_POST['y'])) && (!empty($_POST['y']))) {
+                $y=$_POST['y'];
+            }
+            $ret_array = cultipi\addElementInSynoptic("other", 0, $image, $x, $y);
+            
             break;
         case "updatePosition" :
             $elem = "";

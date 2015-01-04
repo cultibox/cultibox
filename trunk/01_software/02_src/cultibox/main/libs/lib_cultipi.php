@@ -10,11 +10,11 @@ function check_db() {
     // Define columns of the synoptic table
     $synoptic_col = array();
     $synoptic_col["id"]            = array ( 'Field' => "id", 'Type' => "int(11)", 'carac' => "NOT NULL AUTO_INCREMENT");
-    $synoptic_col["element"]       = array ( 'Field' => "element", 'Type' => "VARCHAR(10)", "default_value" => 0, 'carac' => "NOT NULL");
-    $synoptic_col["scale"]         = array ( 'Field' => "scale", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
+    $synoptic_col["element"]       = array ( 'Field' => "element", 'Type' => "VARCHAR(10)", "default_value" => "other", 'carac' => "NOT NULL");
+    $synoptic_col["scale"]         = array ( 'Field' => "scale", 'Type' => "int(11)", "default_value" => 50, 'carac' => "NOT NULL");
     $synoptic_col["x"]             = array ( 'Field' => "x", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["y"]             = array ( 'Field' => "y", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
-    $synoptic_col["z"]             = array ( 'Field' => "z", 'Type' => "int(11)", "default_value" => 1, 'carac' => "NOT NULL");
+    $synoptic_col["z"]             = array ( 'Field' => "z", 'Type' => "int(11)", "default_value" => 100, 'carac' => "NOT NULL");
     $synoptic_col["indexElem"]     = array ( 'Field' => "indexElem", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["rotation"]      = array ( 'Field' => "rotation", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["image"]         = array ( 'Field' => "image", 'Type' => "VARCHAR(50)", "default_value" => "", 'carac' => "NOT NULL");
@@ -38,8 +38,8 @@ function check_db() {
         // Buil MySQL command to create table
         $sql = "CREATE TABLE synoptic ("
             ."id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,"
-            ."element varchar(10) NOT NULL DEFAULT '',"
-            ."scale int(11) NOT NULL DEFAULT '100',"
+            ."element varchar(10) NOT NULL DEFAULT 'other',"
+            ."scale int(11) NOT NULL DEFAULT '50',"
             ."x int(11) NOT NULL DEFAULT '0',"
             ."y int(11) NOT NULL DEFAULT '0',"
             ."z int(11) NOT NULL DEFAULT '100',"
@@ -159,11 +159,46 @@ function addElementInSynoptic($element, $indexElem, $image, $x=0, $y="") {
     } catch(\PDOException $e) {
         $ret=$e->getMessage();
     }
-
-    return 0;
+    
+    // Retrieve ID of this element
+    $sql = "SELECT * FROM synoptic WHERE element = '${element}' AND indexElem = '${indexElem}' AND image =  '${image}' AND x = '${x}' AND y = '${y}';";
+    
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+        $res = $sth->fetch(\PDO::FETCH_ASSOC);
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    
+    return $res;
 }
 // }}}
 
+// {{{ deleteElementInSynoptic()
+// ROLE Remove an element
+// IN $id : Name of the element
+// RET 0
+function deleteElementInSynoptic($id) {
+    
+
+    // Check if table configuration exists
+    $sql = "DELETE FROM synoptic WHERE id='${id}';"; 
+    
+    $db = \db_priv_pdo_start("root");
+    
+    $res = array();
+    
+    try {
+        $sth=$db->prepare($sql);
+        $sth->execute();
+    } catch(\PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    
+    return 0;
+}
+// }}}
 
 function getSensorOfSynoptic () {
 
@@ -181,7 +216,7 @@ function getSensorOfSynoptic () {
         // If empty create them 
         if (empty($sensorParameters) && $sensor["type"] != "0") {
 
-            addElementInSynoptic("sensor", $sensor["id"], "capteur.png");
+            addElementInSynoptic("sensor", $sensor["id"], "T_RH_sensor.png");
             
             $ret_array[] = getSynopticDBElemByname("sensor",$sensor["id"]);
             
@@ -212,7 +247,7 @@ function getPlugOfSynoptic () {
         // If empty create them 
         if (empty($sensorParameters)) {
 
-            addElementInSynoptic("plug", $i, "prise_100W.png", "", "", 65);
+            addElementInSynoptic("plug", $i, "1000W.png", "", "", 65);
             
             $ret_array[] = getSynopticDBElemByname("plug",$i);
             
