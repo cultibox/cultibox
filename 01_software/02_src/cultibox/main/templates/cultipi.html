@@ -63,7 +63,7 @@
             
             foreach ($sensorList as $index => $sensor) 
             {
-                echo '<div id="syno_elem_' . $sensor["id"] . '" class="" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01);z-index:' . $sensor["z"] . '" >';
+                echo '<div id="syno_elem_' . $sensor["id"] . '" class="" style="position:absolute; top:' . $sensor["y"] . 'px ; left:' . $sensor["x"] . 'px ;z-index:' . $sensor["z"] . '" >';
                 echo '  <table>';
                 echo '    <tr>';
                 echo '      <td>Capteur ' . $sensor["indexElem"] . '</td>';
@@ -80,7 +80,7 @@
                 echo '      <td colspan="2" id="syno_elemValueSensor_' . $sensor["indexElem"] . '">' . $sensorValues[$sensor["indexElem"]] . '</td>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/' . $sensor["image"] . '" alt="capteur" style="width:' . $sensor["scale"] . 'px;cursor: move" class="rotate' . $sensor["rotation"] . '">';
+                echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/images-synoptic-sensor/' . $sensor["image"] . '" alt="capteur" style="width:' . $sensor["scale"] . 'px;cursor: move" class="rotate' . $sensor["rotation"] . '">';
                 echo '</div>';
             }
             
@@ -94,7 +94,7 @@
             
             foreach ($plugList as $index => $plug) 
             {
-                echo '<div id="syno_elem_' . $plug["id"] . '" class="" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01);z-index:' . $plug["z"] . '" >';
+                echo '<div id="syno_elem_' . $plug["id"] . '" class="" style="position:absolute; top:' . $plug["y"] . 'px ; left:' . $plug["x"] . 'px ;z-index:' . $plug["z"] . '" >';
                 echo '  <table>';
                 echo '    <tr>';
                 echo '      <td>Prise ' . $plug["indexElem"] . '</td>';
@@ -111,7 +111,7 @@
                 echo '      <td colspan="2" id="syno_elemValuePlug_' . $plug["indexElem"] . '" >' . $plugValues[$plug["indexElem"]] . '</td>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $plug["id"] . '" src="main/libs/img/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move" class="rotate' . $plug["rotation"] . '">';
+                echo '  <img id="syno_elemImage_' . $plug["id"] . '" src="main/libs/img/images-synoptic-plug/' . $plug["image"] . '" alt="Prise" style="width:' . $plug["scale"] . 'px;cursor: move" class="rotate' . $plug["rotation"] . '">';
                 echo '</div>';
             }
             
@@ -119,7 +119,7 @@
             $otherList = cultipi\getOtherOfSynoptic();
             foreach ($otherList as $index => $other) 
             {
-                echo '<div id="syno_elem_' . $other["id"] . '" class="" style="position:absolute; top:' . $other["y"] . 'px ; left:' . $other["x"] . 'px ;width: 120px; height: 70px; background-color: rgba(0, 0, 0, 0.01);z-index:' . $other["z"] . '" >';
+                echo '<div id="syno_elem_' . $other["id"] . '" class="" style="position:absolute; top:' . $other["y"] . 'px ; left:' . $other["x"] . 'px ;z-index:' . $other["z"] . '" >';
                 echo '  <table>';
                 echo '    <tr>';
                 echo '      <td>';
@@ -134,7 +134,7 @@
                 echo '    <tr>';
                 echo '    </tr>';
                 echo '  </table>';
-                echo '  <img id="syno_elemImage_' . $other["id"] . '" src="main/libs/img/' . $other["image"] . '" alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move" class="rotate' . $other["rotation"] . '">';
+                echo '  <img id="syno_elemImage_' . $other["id"] . '" src="main/libs/img/images-synoptic-other/' . $other["image"] . '" alt="Prise" style="width:' . $other["scale"] . 'px;cursor: move" class="rotate' . $other["rotation"] . '">';
                 echo '</div>';
             }
             
@@ -144,8 +144,18 @@
     
     <!-- Drag message box for add element-->
     <div id="syno_add_element_ui" style="display:none" title="<?php echo __('CULTIPI_SYNO_ADD_ELEMENT'); ?>">
-        <?php
-            
+        <?php 
+            $dir    = '../../libs/img/images-synoptic-other';
+            $files  = array_diff(scandir($dir), array('..', '.'));
+            foreach ($files as $file)
+            {
+                if (pathinfo($file, PATHINFO_EXTENSION) == "png")
+                {
+                    echo '<div class="syno_add_element_elem" id="' . $file . '" " >';
+                    echo '    <img src="main/libs/img/images-synoptic-other/' . $file . '" alt="' . basename($file) . '" style="width:40px; cursor: move" >';
+                    echo '</div>';
+                }
+            }
         ?>
     </div>
 
@@ -155,12 +165,44 @@
             <tr>
                 <td>Image</td>
                 <td colspan="3" >
-                    <select id="syno_configure_element_image" onchange="showValue(this.value)">
-                        <option value="tente_1_espace.png" >tente</option>
-                        <option value="tente_2_espace.png" >tente 2 espaces</option>
-                        <option value="prise_100W.png" >Prise 1000W</option>
-                        <option value="capteur.png" >Capteur T & RH</option>
-                    </select>
+                    <?php 
+                        echo '<select id="syno_configure_element_image_other" onchange="showValue(this.value)" style="display:none" >';
+                        $dir    = '../../libs/img/images-synoptic-other';
+                        $files  = array_diff(scandir($dir), array('..', '.'));
+                        foreach ($files as $file)
+                        {
+                            if (pathinfo($file, PATHINFO_EXTENSION) == "png")
+                            {
+                                echo '<option value="' . $file . '" >' . basename($file) . '</option>';
+                            }
+                        }
+                        echo '</select>';
+
+                        echo '<select id="syno_configure_element_image_plug" onchange="showValue(this.value)" style="display:none" >';
+                        $dir    = '../../libs/img/images-synoptic-plug';
+                        $files  = array_diff(scandir($dir), array('..', '.'));
+                        foreach ($files as $file)
+                        {
+                            if (pathinfo($file, PATHINFO_EXTENSION) == "png")
+                            {
+                                echo '<option value="' . $file . '" >' . basename($file) . '</option>';
+                            }
+                        }
+                        echo '</select>';
+
+                        echo '<select id="syno_configure_element_image_sensor" onchange="showValue(this.value)" style="display:none" >';
+                        $dir    = '../../libs/img/images-synoptic-sensor';
+                        $files  = array_diff(scandir($dir), array('..', '.'));
+                        foreach ($files as $file)
+                        {
+                            if (pathinfo($file, PATHINFO_EXTENSION) == "png")
+                            {
+                                echo '<option value="' . $file . '" >' . basename($file) . '</option>';
+                            }
+                        }
+                        echo '</select>';
+                    ?>
+                    
                 </td>
             </tr>
             <tr>
