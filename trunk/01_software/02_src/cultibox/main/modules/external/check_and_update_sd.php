@@ -39,6 +39,12 @@
     $ret_array = array();
     $ret_array['info'] = $main_info;
     $ret_array['error'] = $main_error;
+
+    if((strcmp($GLOBALS['MODE'],"cultipi")==0)&&(count($main_error)==0)) { 
+        //Restart service:
+        exec("sudo /etc/init.d/cultipi restart ",$output,$err);
+    }
+
     
     //return it in JSON format
     echo json_encode($ret_array);
