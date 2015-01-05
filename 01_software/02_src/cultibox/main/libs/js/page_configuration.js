@@ -111,6 +111,7 @@ $(document).ready(function(){
         });
 
         if($("#alarm_activ option:selected").val()=="0001") {
+            $("#alarm_value").val($("#alarm_value").val().replace(",","."));
             $.ajax({
                 cache: false,
                 async: false,

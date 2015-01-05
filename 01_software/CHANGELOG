@@ -1,5 +1,13 @@
+Cultibox (2.0.23) precise; urgency=low
+    + Correction des nombres à virgule dans la vérification des valeurs
+    + Correction de la gestion des messages des puissances manquantes
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Jan 05 17:56:45 CEST 2014
+
+
 Cultibox (2.0.22) precise; urgency=low
-    + Ajout de la gestion desconfigurations Cultipi
+    + Ajout de la gestion des configurations Cultipi
+    + Ajout du synoptique de l'onglet Cultipi
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Sat Dec 27 14:29:57 CEST 2014
 

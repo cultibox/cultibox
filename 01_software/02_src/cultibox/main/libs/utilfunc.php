@@ -217,6 +217,8 @@ function check_numeric_value($value="") {
       return false;
    }
 
+    $value=str_replace(",",".",$value);
+
    if(!is_numeric($value)) {
       return false;
    }

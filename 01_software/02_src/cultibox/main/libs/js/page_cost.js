@@ -425,6 +425,7 @@ $(document).ready(function() {
 
         //For standard configuration:
         if($("#cost_type option:selected").val()=="standard") {
+            $("#cost_price").val($("#cost_price").val().replace(",",".")); 
             $.ajax({
                 cache: false,
                 async: false,
@@ -439,6 +440,7 @@ $(document).ready(function() {
             });
         } else {
         // For HPC:
+            $("#cost_price_hp").val($("#cost_price_hp").val().replace(",","."));
             $.ajax({
                 cache: false,
                 async: false,
@@ -451,7 +453,9 @@ $(document).ready(function() {
                     checked=false;
                 }
             });
-                    $.ajax({
+
+            $("#cost_price_hc").val($("#cost_price_hc").val().replace(",","."));
+            $.ajax({
                 cache: false,
                 async: false,
                 url: "main/modules/external/check_value.php",
