@@ -160,6 +160,11 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
     if(!$conf_uptodate) {
         // Infor user that programms have been updated
         $main_info_tab[]=__('UPDATED_PROGRAM');
+
+        if((strcmp($GLOBALS['MODE'],"cultipi")==0)&&(count($main_error)==0)) {
+            //Restart service:
+            exec("sudo /etc/init.d/cultipi restart ",$output,$err);
+        }
         return 0;
     }
     
