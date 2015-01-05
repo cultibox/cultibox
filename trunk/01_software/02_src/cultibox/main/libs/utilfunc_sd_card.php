@@ -836,7 +836,7 @@ function compare_sd_conf_file($sd_card="",$record_frequency,$update_frequency,$p
     if((strlen($reset_value)!=4)||($reset_value<0)) {
         $reset_value="0000";
     } 
-    
+   
     $conf[]="PLUG_UPDATE:$update";
     $conf[]="LOGS_UPDATE:$record";
     $conf[]="POWR_UPDATE:$power";

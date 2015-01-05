@@ -407,6 +407,7 @@ $(document).ready(function(){
 
             if($('#regprog').is(':checked')) {
                 if(($("#value_program").val())&&($("#value_program").val()!="")) { 
+                    $("#value_program").val($("#value_program").val().replace(",","."));
                     $.ajax({
                         cache: false,
                         url: "main/modules/external/check_value.php",

@@ -191,6 +191,7 @@ $(document).ready(function(){
                     if(($("#plug_tolerance"+i).val()=="0")||($("#plug_tolerance"+i).val()=="")) {
                        $("#plug_tolerance"+i).val('0'); 
                     } else { 
+                        $("#plug_tolerance"+i).val($("#plug_tolerance"+i).val().replace(",","."));
                         $.ajax({
                         cache: false,
                         async: false,
@@ -221,6 +222,7 @@ $(document).ready(function(){
                         if(($("#plug_second_tolerance"+i).val()=="0")||($("#plug_second_tolerance"+i).val()=="")) {
                             $("#plug_second_tolerance"+i).val('0');
                         } else {
+                            $("#plug_second_tolerance"+i).val($("#plug_second_tolerance"+i).val().replace(",","."));
                             $.ajax({
                             cache: false,
                             async: false,
@@ -247,6 +249,7 @@ $(document).ready(function(){
                             checked=false;
                             jump_plug=i;
                         } else {
+                            $("#plug_regul_value"+i).val($("#plug_regul_value"+i).val().replace(",","."));
                             $.ajax({
                             cache: false,
                             async: false,

@@ -212,6 +212,7 @@ $("#value_program").keypress(function(e) {
         plug_type=$("#plug_type option:selected").val();
         if((plug_type!="lamp") && (plug_type!="other")) {
             if(($("#value_program").val())&&($("#value_program").val()!="")) {
+                $("#value_program").val($("#value_program").val().replace(",","."));
                 $.ajax({
                     cache: false,
                     async: false,

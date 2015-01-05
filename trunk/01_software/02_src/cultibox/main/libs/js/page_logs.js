@@ -15,7 +15,7 @@ var dialog1=false;
 var main_error = <?php echo json_encode($main_error); ?>;
 var main_info = <?php echo json_encode($main_info); ?>;
 var start_day = <?php echo json_encode($startday); ?>;
-var power_msg="";
+var msg_power="";
 
 // {{{ getType()
 // IN  input value: display the type of log: 0 for daily logs, 1 for monthly
