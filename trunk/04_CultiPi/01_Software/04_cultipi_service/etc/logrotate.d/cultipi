@@ -2,7 +2,7 @@
     daily
     rotate 7
     missingok
-    create 640 cultipi cultipi
+    create 644 cultipi cultipi
     compress
     sharedscripts
     postrotate

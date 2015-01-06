@@ -31,5 +31,9 @@ if [ ! -d /etc/cultipi/conf_tmp/cnf/prg ]; then
     mkdir -p /etc/cultipi/conf_tmp/cnf/prg
 fi
 
+if [ ! -O /etc/logrotate.d/cultipi ] || [ ! -G /etc/logrotate.d/cultipi ]; then
+    chown root:root /etc/logrotate.d/cultipi
+fi
+
 chown -R www-data:www-data /etc/cultipi/conf_tmp
 
