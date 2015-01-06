@@ -36,4 +36,6 @@ if [ ! -O /etc/logrotate.d/cultipi ] || [ ! -G /etc/logrotate.d/cultipi ]; then
 fi
 
 chown -R www-data:www-data /etc/cultipi/conf_tmp
+chown -R cultipi:cultipi /var/log/cultipi
+chmod 755 /var/log/cultipi
 

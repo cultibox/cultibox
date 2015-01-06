@@ -6,9 +6,10 @@
     compress
     sharedscripts
     postrotate
+        chown -R cultipi:cultipi /var/log/cultipi
+        chmod 755 /var/log/cultipi
         if [ -x /etc/init.d/cultipi ]; then \
             invoke-rc.d cultipi force-reload > /dev/null 2>&1; \
         fi; \
     endscript
 }
-
