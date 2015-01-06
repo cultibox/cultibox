@@ -11,35 +11,17 @@
     
     switch ($action) {
         case "logs_mysql" :
-            if(is_file("/var/logs/mysql.log")) {
-                exec("cat /var/logs/mysql.log",$ret[0],$err);
-            } else {
-                $ret[0]="";
-            }
+            exec("sudo cat /var/log/mysql/mysql.log 2>/dev/null",$ret[0],$err);
 
-            if(is_file("/var/logs/mysql.err")) {
-                exec("cat /var/logs/mysql.err",$ret[1],$err);
-            } else {
-                $ret[1]="";
-            }
+            exec("cat /var/log/mysql/mysql.err 2>/dev/null",$ret[1],$err);
             break;
         case "logs_httpd" :
             $ret[0]="";
-
-            if(is_file("/var/log/lighttpd/error.log")) {
-                exec("cat /var/log/lighttpd/error.log",$ret[1],$err);
-            } else {
-                $ret[1]="";
-            }
+            exec("sudo cat /var/log/lighttpd/error.log 2>/dev/null",$ret[1],$err);
             
             break;
         case "logs_cultipi":
-            if(is_file("/var/logs/cultipi.log")) {
-                exec("cat /var/logs/cultipi.log",$ret[0],$err);
-            } else {
-                $ret[0]="";
-            }
-
+            exec("sudo cat /var/log/cultipi/cultipi.log 2>/dev/null",$ret[0],$err);
             $ret[1]="";
             break;
         default:

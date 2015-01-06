@@ -85,3 +85,7 @@ if [ "`cat /etc/sudoers|grep chown|grep www-data`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /bin/chown" >> /etc/sudoers
 fi
 
+if [  "`cat /etc/sudoers|grep www-data|grep cat`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /bin/cat" >> /etc/sudoers
+fi
+
