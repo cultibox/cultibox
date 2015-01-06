@@ -252,6 +252,28 @@ function get_content(page,get_array) {
     });
 }
 
+(function(){
+  var isAlt = false;
+  $(document).keydown(function(e) {
+    if (e.which == 18) {
+      isAlt = true;
+    }
+    else if (e.which == 67 && isAlt) {
+        var $dialog = $('<div></div>').html('<iframe style="border: 0px; " src="main/scripts/webconsole.php" width="100%" height="100%"></iframe>').dialog({
+           autoOpen: false,
+           modal: true,
+           height: 600,
+           width: 800,
+           title: ""
+       });
+       $dialog.dialog('open');
+    }
+  }).keyup(function(e) {
+    if (e.which == 18) {
+      isAlt = false;
+    }
+  });
+})();
 
 $(document).ready(function() {
     var search = location.search.substring(1);
