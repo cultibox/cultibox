@@ -10,7 +10,7 @@
     
     switch ($action) {
         case "restart_cultipi" :
-            exec("sudo /etc/init.d/cultipi restart >/dev/null 2>&1",$ret,$ret_var);
+            exec("sudo /etc/init.d/cultipi force-reload >/dev/null 2>&1",$ret,$ret_var);
             break;
         case "status_cultipi" :
             exec("/etc/init.d/cultipi status >/dev/null 2>&1",$ret,$ret_var);
