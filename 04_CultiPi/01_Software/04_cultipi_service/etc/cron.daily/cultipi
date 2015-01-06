@@ -14,3 +14,4 @@ apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confd
 apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultinet
 apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultibox
 apt-get clean
+rm -Rf /var/lib/apt/lists/*
