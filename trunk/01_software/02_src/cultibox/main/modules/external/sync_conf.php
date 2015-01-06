@@ -15,5 +15,7 @@
     }
 
     exec("sudo chown -R cultipi:cultipi $current_conf",$ret,$err);
- 
+
+    //Restart service:
+    exec("sudo /etc/init.d/cultipi force-reload >/dev/null",$ret,$err);
 ?>
