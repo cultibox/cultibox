@@ -419,10 +419,12 @@ apt-get install mysql-server php5-mysql
 *Remarque:* configurer le serveur avec l'utilisateur *root* et appliqué le mot de passe *cultibox*
  * Configuration de mysql:
 
-Éditer le fichier */etc/mysql/my.cnf* est modifié le port utilisé:
+Éditer le fichier */etc/mysql/my.cnf* et modifier le port utilisé et la définitions des logs:
 
 {{{
 port        = 3891
+general_log_file        = /var/log/mysql/mysql.log
+general_log             = 1
 }}}
 
  * Redémarrage du serveur:
