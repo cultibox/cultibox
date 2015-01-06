@@ -433,38 +433,69 @@ var updateIsAked = 0;
 
     // Display services logs:
     $(":button[name='cultipi_logs']").click(function() {
-        $("#output_logs").empty();
-        $("#error_logs").empty();
-        $.ajax({
-          cache: false,
-          async: true,
-          url: "main/modules/external/get_logs_cultipi.php",
-          data: {action:$(this).attr('id')}
-        }).done(function (data) {
-          var objJSON = jQuery.parseJSON(data);
+        var id=$(this).attr('id');
+        $.blockUI({
+        message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+        centerY: 0,
+        css: {
+            top: '20%',
+            border: 'none',
+            padding: '5px',
+            backgroundColor: 'grey',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .9,
+            color: '#fffff'
+        },
+        onBlock: function() {
+            $("#output_logs").empty();
+            $("#error_logs").empty();
+            $.ajax({
+                cache: false,
+                async: true,
+                url: "main/modules/external/get_logs_cultipi.php",
+                data: {action:id},
+                success: function (data) {
+                    var objJSON = jQuery.parseJSON(data);
 
-          $.each(objJSON[0], function(i, item) {
-            $("#output_logs").append(item+"<br />");
-          });
+                    if(objJSON[0].length>0) {
+                        $("#div_title_output").show();
+                        $.each(objJSON[0], function(i, item) {
+                            $("#output_logs").append(item+"<br />");
+                        });
+                    } else {
+                        $("#div_title_output").css("display","none");
+                    }
 
-          $.each(objJSON[1], function(i, item) {
-            $("#error_logs").append(item+"<br />");
-          });
+                    if(objJSON[1].length>0) {
+                        $("#div_title_error").show();
+                        $.each(objJSON[1], function(i, item) {
+                            $("#error_logs").append(item+"<br />");
+                        });
+                    } else {
+                        $("#div_title_error").css("display","none");
+                    }
 
-          $("#dialog_logs_cultipi").dialog({
-              modal: true,
-              width: 800,
-              height: 640,
-              closeOnEscape: true,
-              dialogClass: "popup_message",
-              buttons: [{
-                  text: CLOSE_button,
-                  click: function () {
-                      $( this ).dialog( "close" ); return false;
-                  }
-              }]
-          });
-        });
+                    $.unblockUI(); 
+
+                    $("#dialog_logs_cultipi").dialog({
+                        modal: true,
+                        width: 800,
+                        height: $( window ).height(),
+                        closeOnEscape: true,
+                        dialogClass: "popup_message",
+                        buttons: [{
+                            text: CLOSE_button,
+                            click: function () {
+                                $( this ).dialog( "close" ); return false;
+                            }
+                        }]
+                    });
+                },error: function (data) {
+                    $.unblockUI();
+                }
+            });
+        }});
     });
 
     $("#restart_cultipi").click(function(e) {
