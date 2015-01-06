@@ -163,7 +163,7 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
 
         if((strcmp($GLOBALS['MODE'],"cultipi")==0)&&(count($main_error)==0)) {
             //Restart service:
-            exec("sudo /etc/init.d/cultipi restart ",$output,$err);
+            exec("sudo /etc/init.d/cultipi force-reload >/dev/null",$output,$err);
         }
         return 0;
     }
