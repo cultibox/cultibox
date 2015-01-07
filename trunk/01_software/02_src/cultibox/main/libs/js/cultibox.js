@@ -326,6 +326,11 @@ $(document).ready(function() {
        get_content("wizard",get_array);
     });
 
+    $(".href-webcam").click(function(e) {
+        e.preventDefault();
+        get_content("webcam",get_array);
+    });
+
     $(".welcome-logo").click(function(e) {
        e.preventDefault();
        get_content("welcome",get_array);

@@ -36,6 +36,9 @@ msgstr "Aide"
 msgid "MENU_CULTIPI"
 msgstr "Cultipi"
 
+msgid "MENU_WEBCAM"
+msgstr "Webcam"
+
 #For the welcome part
 msgid "WELCOME_TITLE"
 msgstr "Bienvenue dans le logiciel de configuration de la Cultibox"

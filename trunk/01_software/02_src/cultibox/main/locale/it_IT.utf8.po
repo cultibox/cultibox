@@ -36,6 +36,9 @@ msgstr "Aiuto"
 msgid "MENU_CULTIPI"
 msgstr "Cultipi"
 
+msgid "MENU_WEBCAM"
+msgstr "Webcam"
+
 
 #For the welcome part
 msgid "WELCOME_TITLE"

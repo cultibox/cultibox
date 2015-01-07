@@ -164,6 +164,8 @@ $cost=get_configuration("SHOW_COST");
                                     }
                                     ?>
 
+                                    <li id="menu-webcam" class="level1 item164"><a href="/cultibox/index.php?menu=webcam" class="level1 href-webcam" ><span><?php echo __('MENU_WEBCAM'); ?></span></a></li>
+
                                     <li id="menu-help" class="level1 item164"><a href="/cultibox/main/docs/documentation_cultibox.pdf" target="_blank" class="level1 href-help"><span><?php echo __('MENU_HELP'); ?></span></a></li>
                                 </ul>
                             </nav>
