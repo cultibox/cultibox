@@ -1837,7 +1837,10 @@ msgid "SERVICE_MGT"
 msgstr "Service Management"
 
 msgid "CULTIPI_SERVICE"
-msgstr "Cultipi Service"
+msgstr "Service Status Cultipi"
+
+msgid "ACTION_SERVICE"
+msgstr "Dienst"
 
 msgid "RESTART_SERVICE"
 msgstr "Starten Sie den Dienst"

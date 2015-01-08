@@ -303,9 +303,9 @@
 <table class="table_width">
 <tr>
     <td class="conf-marge-cultipi"></td>
-    <td class="conf-field-cultipi"><?php echo __('CULTIPI_SERVICE'); ?>:</td>
-    <td class="conf-status-cultipi"><div id="cultipi_on" style="display:none"><img src='/cultibox/main/libs/img/service_on.png' alt='' title="<?php echo __('SERVICE_ON'); ?>"></div><div id="cultipi_off"><img src='/cultibox/main/libs/img/service_off.png' alt='' title="<?php echo __('SERVICE_OFF'); ?>"></div></td>
-    <td><a href="" name="restart_service" id="restart_cultipi"><img src='/cultibox/main/libs/img/service_restart.png' alt='' title="<?php echo __('RESTART_SERVICE'); ?>" /></a></td>
+    <td class="conf-field-service"><?php echo __('CULTIPI_SERVICE'); ?>: <img src='/cultibox/main/libs/img/service_on.png' alt='' title="<?php echo __('SERVICE_ON'); ?>" id="cultipi_on" style="display:none" class="status_service"><img src='/cultibox/main/libs/img/service_off.png' alt='' title="<?php echo __('SERVICE_OFF'); ?>" id="cultipi_off" class="status_service"></td>
+    <td class="conf-field-service"></td>
+    <td><?php echo __('ACTION_SERVICE'); ?>:<a href="" name="restart_service" id="restart_cultipi"><img src='/cultibox/main/libs/img/service_restart.png' alt='' title="<?php echo __('RESTART_SERVICE'); ?>"class="status_service" /></a></td>
     <td></td>
 </tr>
 </table>

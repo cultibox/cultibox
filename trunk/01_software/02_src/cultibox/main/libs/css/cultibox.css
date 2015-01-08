@@ -651,12 +651,16 @@ td.conf-field-cultipi {
     width: 20%;
 }
 
+td.conf-field-service {
+    width: 30%;
+}
+
 td.conf-marge-cultipi {
     width: 10%
 }
 
 td.conf-status-cultipi {    
-    width: 10%;
+    width: 30%;
 }
 
 td.conf-marge-td-alarm {
@@ -935,4 +939,8 @@ input[type='file'] {
 .info_logs {
     color: green;
     font-size: 16px;
+}
+
+.status_service {
+    vertical-align: middle; 
 }
