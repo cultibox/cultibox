@@ -382,7 +382,11 @@ var updateIsAked = 0;
             
                 $.each( objJSON, function( key, value ) {
                     if (key != "error") {
-                        $('#syno_elemValueSensor_' + key).html(value);
+                        var valueSplitted = value.split(" "); 
+                        $('#syno_elemValueSensor_val1_' + key).html(valueSplitted[0]);
+                        if(typeof valueSplitted[1] != 'undefined') {
+                            $('#syno_elemValueSensor_val2_' + key).html(valueSplitted[1]);
+                        }
                     }
                 });
             }

@@ -18,7 +18,6 @@ function check_db() {
     $synoptic_col["indexElem"]     = array ( 'Field' => "indexElem", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["rotation"]      = array ( 'Field' => "rotation", 'Type' => "int(11)", "default_value" => 0, 'carac' => "NOT NULL");
     $synoptic_col["image"]         = array ( 'Field' => "image", 'Type' => "VARCHAR(50)", "default_value" => "", 'carac' => "NOT NULL");
-    
 
     // Check if table configuration exists
     $sql = "SHOW TABLES FROM cultibox LIKE 'synoptic';";
