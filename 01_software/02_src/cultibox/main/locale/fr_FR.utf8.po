@@ -1814,7 +1814,10 @@ msgid "SERVICE_MGT"
 msgstr "Gestion des services"
 
 msgid "CULTIPI_SERVICE"
-msgstr "Service Cultipi"
+msgstr "Status du service Cultipi"
+
+msgid "ACTION_SERVICE"
+msgstr "Action du service"
 
 msgid "RESTART_SERVICE"
 msgstr "Redémarrer le service"

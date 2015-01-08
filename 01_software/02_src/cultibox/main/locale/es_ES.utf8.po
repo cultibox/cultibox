@@ -1839,8 +1839,11 @@ msgstr "Software Cultibox"
 msgid "SERVICE_MGT" 
 msgstr "Gestión de Servicios"
 
-msgid "CULTIPI_SERVICE" 
-msgstr "Servicio Cultipi"
+msgid "CULTIPI_SERVICE"
+msgstr "Estado del servicio Cultipi"
+
+msgid "ACTION_SERVICE"
+msgstr "Accion del servicio"
 
 
 #For the webcam part:

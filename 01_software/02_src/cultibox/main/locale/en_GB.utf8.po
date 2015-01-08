@@ -1839,7 +1839,10 @@ msgid "SERVICE_MGT"
 msgstr "Service Management"
 
 msgid "CULTIPI_SERVICE"
-msgstr "Cultipi Service"
+msgstr "Cultipi service status"
+
+msgid "ACTION_SERVICE"
+msgstr "Action of the service"
 
 
 #For the webcam part:
