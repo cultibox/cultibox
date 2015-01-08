@@ -36,14 +36,6 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
     $program = "";
     $conf_uptodate = true;
 
-    /* TO BE DELETED */
-    if(!compat_old_sd_card($sd_card)) {
-        $main_error_tab[]=__('ERROR_COPY_FILE');
-        return ERROR_COPY_FILE;
-    }
-    /* ************* */
-
-
     $program_index=array();
     program\get_program_index_info($program_index);
    
@@ -1540,37 +1532,5 @@ function check_sd_card($sd="") {
     }
 }
 // }}}
-
-
-/* TO BE DELETED */
-function compat_old_sd_card($sd_card="") {
-    if((isset($sd_card))&&(!empty($sd_card))) {
-        $logs="$sd_card/logs";
-        $cnf="$sd_card/cnf";
-        $plg="$cnf/plg";
-        $prg="$cnf/prg";
-        $bin="$sd_card/bin";
-
-        $error_copy=false;
-
-        if(!is_dir($logs)) if(!@mkdir("$logs")) { $error_copy=true; };
-        if(!is_dir($cnf)) if(!@mkdir("$cnf")) { $error_copy=true; };
-        if(!is_dir($plg)) if(!@mkdir("$plg")) { $error_copy=true; }; 
-        if(!is_dir($prg)) if(!@mkdir("$prg")) { $error_copy=true; };
-        if(!is_dir($bin)) if(!@mkdir("$bin")) { $error_copy=true; };
-
-        if(!is_file("$sd_card/cnf/prg/plugv")) {
-            if(!copy_template_file("empty_file.tpl","$sd_card/cnf/prg/plugv")) { $error_copy=true; };
-        }
-
-        if($error_copy) {
-            return false;
-        }
-    }
-    return true;
-}
-
-/* **************** */
-
 
 ?>
