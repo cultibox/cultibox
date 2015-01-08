@@ -130,20 +130,33 @@ function addElementInSynoptic($element, $indexElem, $image, $x=0, $y="") {
     {
         switch ($element) {
             case "plug":
-                $x = 300;
+                if((isset($_COOKIE['CONTENT_LEFT']))&&(!empty($_COOKIE['CONTENT_LEFT']))) {
+                    $x=(int)($_COOKIE['CONTENT_LEFT']+$_COOKIE['CONTENT_LEFT']*25/100);
+                } else {
+                    $x = 300;
+                }
                 break;
             case "sensor":
-                $x = 1100;
+                if((isset($_COOKIE['CONTENT_RIGHT']))&&(!empty($_COOKIE['CONTENT_RIGHT']))) {
+                    $x=(int)($_COOKIE['CONTENT_RIGHT']-$_COOKIE['CONTENT_RIGHT']*10/100);
+                } else {
+                    $x = 1100;
+                }
                 break;
             default:
                 $x = 500;
                 break;
-    }
+        }
     }
      
     if ($y == 0 || $y == "") 
     {
-        $y = ($indexElem + 2) * 100;
+        $step = ($indexElem + 1 ) * 150;
+        if((isset($_COOKIE['CONTENT_TOP']))&&(!empty($_COOKIE['CONTENT_TOP']))) {
+            $y=(int)($_COOKIE['CONTENT_TOP']+$step);
+        } else {
+            $y=$step;
+        }
     }
 
     // Check if table configuration exists

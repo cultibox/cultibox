@@ -276,6 +276,31 @@ function get_content(page,get_array) {
 })();
 
 $(document).ready(function() {
+    var position_set=$("#content").position();
+
+     $.ajax({
+        cache: false,
+        async: false,
+        url: "main/modules/external/set_variable.php",
+        data: {name:"CONTENT_TOP", value: position_set.top, duration: 36000}
+     });
+
+    $.ajax({
+        cache: false,
+        async: false,
+        url: "main/modules/external/set_variable.php",
+        data: {name:"CONTENT_LEFT", value: position_set.left, duration: 36000}
+     });
+
+     $.ajax({
+        cache: false,
+        async: false,
+        url: "main/modules/external/set_variable.php",
+        data: {name:"CONTENT_RIGHT", value: position_set.left+$("#content").width(), duration: 36000}
+     });
+
+
+
     var search = location.search.substring(1);
     var get_array = getUrlVars(search);
 

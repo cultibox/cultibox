@@ -944,3 +944,10 @@ input[type='file'] {
 .status_service {
     vertical-align: middle; 
 }
+
+
+#set {
+    background: url(../img/grid.png) repeat;
+    border-radius: 22px;
+    border:#C3B59B 6px solid;
+}
