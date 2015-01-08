@@ -1844,6 +1844,11 @@ msgstr "Cultipi service status"
 msgid "ACTION_SERVICE"
 msgstr "Action of the service"
 
+msgid "SYNO_UPDATE_PLUG_HOUR"
+msgstr "Last update of the sensors :"
+
+msgid "SYNO_UPDATE_SENSOR_HOUR"
+msgstr "Last update of the plugs :"
 
 #For the webcam part:
 msgid "TITLE_WEBCAM"
