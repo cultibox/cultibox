@@ -310,10 +310,14 @@ function getAllSensorLiveValue() {
     }
 
     $arr = explode ("\t", $ret);
-    
+
     for ($i = 0; $i <= 5; $i++) {
         if (array_key_exists($i, $arr)) {
-            $return_array[$i + 1] = $arr[$i];
+            if ($arr[$i] != "") {
+                $return_array[$i + 1] = $arr[$i];
+            } else {
+                $return_array[$i + 1] = "DEFCOM";
+            }
         } else {
             $return_array[$i + 1] = "DEFCOM";
         }
@@ -381,7 +385,11 @@ function getAllPlugLiveValue() {
     
     for ($i = 0; $i <= 15; $i++) {
         if (array_key_exists($i, $arr)) {
-            $return_array[$i + 1] = $arr[$i];
+            if ($arr[$i] != "") {
+                $return_array[$i + 1] = $arr[$i];
+            } else {
+                $return_array[$i + 1] = "DEFCOM";
+            }
         } else {
             $return_array[$i + 1] = "DEFCOM";
         }
