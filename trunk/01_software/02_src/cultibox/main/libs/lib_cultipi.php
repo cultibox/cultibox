@@ -55,6 +55,11 @@ function check_db() {
             $ret = $e->getMessage();
             print_r($ret);
         }
+        
+        // Add one tente and one CBX
+        addElementInSynoptic("other", 1, "cultipi.png", 850, 450, 2, 74);
+        addElementInSynoptic("other", 2, "tente_1_espace.png", 600, 350, 1, 250);
+        
     } else {
         // Check column
         check_and_update_column_db ("synoptic", $synoptic_col);
@@ -124,7 +129,7 @@ function getSynopticDBElemByID ($id) {
 // IN $sensorIndex : Sensor index
 // IN $image : Image name
 // RET 0
-function addElementInSynoptic($element, $indexElem, $image, $x=0, $y="") {
+function addElementInSynoptic($element, $indexElem, $image, $x=0, $y="", $z=100, $scale = 50) {
     
     if ($x == 0 || $x == "") 
     {
@@ -141,6 +146,13 @@ function addElementInSynoptic($element, $indexElem, $image, $x=0, $y="") {
                     $x=(int)($_COOKIE['CONTENT_RIGHT']-$_COOKIE['CONTENT_RIGHT']*10/100);
                 } else {
                     $x = 1100;
+                }
+                break;
+            case "other":
+                if((isset($_COOKIE['CONTENT_RIGHT']))&&(!empty($_COOKIE['CONTENT_RIGHT'])) && isset($_COOKIE['CONTENT_LEFT']) && !empty($_COOKIE['CONTENT_LEFT'])) {
+                    $x=(int)(( $_COOKIE['CONTENT_RIGHT'] - $_COOKIE['CONTENT_LEFT']) / 2 + $_COOKIE['CONTENT_LEFT']);
+                } else {
+                    $x = 700;
                 }
                 break;
             default:
@@ -160,7 +172,7 @@ function addElementInSynoptic($element, $indexElem, $image, $x=0, $y="") {
     }
 
     // Check if table configuration exists
-    $sql = "INSERT INTO synoptic (element, indexElem, image, x, y) VALUES('${element}' , '${indexElem}' , '${image}' , '${x}' , '${y}') ;";
+    $sql = "INSERT INTO synoptic (element, indexElem, image, x, y, z, scale) VALUES('${element}' , '${indexElem}' , '${image}' , '${x}' , '${y}' , '${z}' , '${scale}') ;";
     
     $db = \db_priv_pdo_start("root");
     
@@ -229,7 +241,36 @@ function getSensorOfSynoptic () {
         // If empty create them 
         if (empty($sensorParameters) && $sensor["type"] != "0") {
 
-            addElementInSynoptic("sensor", $sensor["id"], "T_RH_sensor.png");
+            switch ($sensor["type"])
+            {
+                case '2' :
+                    $image = "T_RH_sensor.png";
+                    break;
+                case '3': 
+                    $image = "water_T_sensor.png";
+                    break;
+                case '6': 
+                case '7': 
+                    $image = "level_sensor.png";
+                    break;
+                case '8': 
+                    $image = "pH-sensor.png";
+                    break;
+                case '9': 
+                    $image = "conductivity-sensor.png";
+                    break;
+                case '10': 
+                    $image = "dissolved-oxygen-sensor.png";
+                    break;
+                case '11': 
+                    $image = "ORP-sensor.png";
+                    break;
+                default :
+                    $image = "T_RH_sensor.png";
+                    break;
+            }
+        
+            addElementInSynoptic("sensor", $sensor["id"], $image);
             
             $ret_array[] = getSynopticDBElemByname("sensor",$sensor["id"]);
             
@@ -250,17 +291,27 @@ function getPlugOfSynoptic () {
 
     // Read nb plug in database
     $plugNB = \configuration\getConfElem("NB_PLUGS");
-    
+
+    // Read plug parameters
+    $plugParam = \plugs\getDB();
+        
     // foreach sensor, get type and position
     for ($i = 1; $i <= $plugNB["NB_PLUGS"] && $i <= 100; $i++) {
 
+    
         // Read parameters in db and add it to return array
         $sensorParameters = getSynopticDBElemByname("plug",$i);
 
         // If empty create them 
         if (empty($sensorParameters)) {
 
-            addElementInSynoptic("plug", $i, "1000W.png", "", "", 65);
+            if ($plugParam[$i - 1]["PLUG_POWER_MAX"] ==  "1000") {
+                $image = "1000W.png";
+            } else {
+                $image = "3500W.png";
+            }
+        
+            addElementInSynoptic("plug", $i, $image);
             
             $ret_array[] = getSynopticDBElemByname("plug",$i);
             
