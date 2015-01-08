@@ -67,6 +67,8 @@ if((!isset($name))||(empty($name))) {
             break;
         case 'COST' : echo json_encode(get_configuration("SHOW_COST",$error));
                      break;
+        case 'WEBCAM': echo json_encode(get_configuration("SHOW_WEBCAM",$error));
+                        break;
         case 'LANG' : if((isset($_COOKIE['LANG']))&&(!empty($_COOKIE['LANG']))) {
                         echo json_encode($_COOKIE['LANG']);
                       } else {

@@ -55,6 +55,7 @@ $conf_arr["RESET_MINMAX"]           = array ("update_conf" => "1", "var" => "res
 $conf_arr["ALARM_VALUE"]            = array ("update_conf" => "1", "var" => "alarm_value");
 $conf_arr["VERSION"]                = array ("update_conf" => "0", "var" => "version");
 $conf_arr["ALARM_ACTIV"]            = array ("update_conf" => "1", "var" => "alarm_activ");
+$conf_arr["SHOW_WEBCAM"]            = array ("update_conf" => "0", "var" => "show_webcam");
 
 
 

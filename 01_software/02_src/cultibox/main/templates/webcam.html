@@ -1,11 +1,17 @@
 <script>
    $("[title]").tooltip({ position: { my: "left+15 center", at: "right center" } });
 </script>
-
 <br />
-<div id="webcam"> 
+<p class="title_conf"><?php echo __('TITLE_WEBCAM'); ?></p>
+<br />
+<div id="webcam" style="display:none"> 
     <p class="p_center">
-        <img id="screen_webcam" src="<?php echo $screen; ?>" title="" />
+        <img id="screen_webcam" src="<?php echo $screen; ?>" title="" class="screenshot" />
     </p>
+</div>
+
+
+<div id="error_webcam" style="display:none" class="text_info">
+    <?php echo __('ERROR_WEBCAM'); ?>
 </div>
 

@@ -346,6 +346,22 @@ $(document).ready(function(){
                 }
             });
 
+            $.ajax({
+                cache: false,
+                url: "main/modules/external/get_variable.php",
+                data: {name:"webcam"}
+            }).done(function (data) {
+                try {
+                    if(jQuery.parseJSON(data)=="1") {
+                        $("#menu-webcam").show();
+                    } else {
+                        $("#menu-webcam").css('display','none');
+                    }
+                } catch(err) {
+
+                }
+            });
+
 
             if(check_update) {
                         $("#update_conf").dialog({

@@ -64,6 +64,17 @@
             </td>
             <td></td>
         </tr>
+        <tr>
+            <td class="conf-marge"></td>
+            <td><?php echo __('SHOW_WEBCAM'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_SHOW_WEBCAM'); ?>" /></td>
+            <td>
+                <select name="show_webcam" id="show_webcam">
+                    <option value="1"><?php echo __('YES'); ?></option>
+                    <option value="0" <?php if(!$show_webcam) echo "selected"; ?>><?php echo __('NO'); ?></option>
+                </select>
+            </td>
+            <td></td>
+        </tr>
     </table>
 </div>
 <!-- End of Interface tab -->

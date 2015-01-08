@@ -14,20 +14,42 @@ var main_info = <?php echo json_encode($main_info); ?>;
 
 // {{{ getSnapshot()
 // ROLE function to get a snapShot of the Webcam
-getSnapshot = function() {
+getSnapshot = function(first) {
+    if(first!=1) $.unblockUI();
+
     var width=parseInt($("#content").width()-($("#content").width()*20/100));
     var height=parseInt($("#content").height()-($("#content").height()*20/100));
     $.ajax({
-            cache: false,
-            async: false,
-            url: "main/modules/external/get_snapshot.php",
-            data: {width: width, height: height},
-            succes: function (data) {
-                var objJSON = jQuery.parseJSON(data);
+        beforeSend: function(jqXHR) {
+                $.xhrPool.push(jqXHR);
+        },
+        complete: function(jqXHR) {
+            var index = $.xhrPool.indexOf(jqXHR);
+            if (index > -1) {
+                $.xhrPool.splice(index, 1);
+            }
+        },
+        cache: false,
+        async: true,
+        url: "main/modules/external/get_snapshot.php",
+        data: {width: width, height: height}
+      }).done(function (data) {
+            var objJSON = jQuery.parseJSON(data);
 
-            }, error: function (data) {
-            } 
-    });
+            if(objJSON=="0") {
+                d = new Date();
+                $("#screen_webcam").attr("src", "/cultibox/tmp/webcam.jpg?"+d.getTime());
+                $("#webcam").show();
+                $("#error_webcam").css("display","none");
+            } else {
+                $("#error_webcam").show();
+                $("#webcam").css("display","none");
+            }
+
+            setTimeout(function() {
+                getSnapshot(0);
+            },5000);
+     });
 }
 // }}}
 
@@ -35,8 +57,11 @@ getSnapshot = function() {
 
 $(document).ready(function(){
 
-     pop_up_remove("main_error");
-     pop_up_remove("main_info");
+    pop_up_remove("main_error");
+    pop_up_remove("main_info");
+
+    var width=parseInt($("#content").width()-($("#content").width()*20/100));
+    var height=parseInt($("#content").height()-($("#content").height()*20/100));
 
     // For each information, show it
     $.each(main_error, function(key, entry) {
@@ -57,7 +82,22 @@ $(document).ready(function(){
         });
     }
 
-    getSnapshot();
+    $.blockUI({
+        message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+        centerY: 0,
+        css: {
+            top: '20%',
+            border: 'none',
+            padding: '5px',
+            backgroundColor: 'grey',
+           '-webkit-border-radius': '10px',
+           '-moz-border-radius': '10px',
+            opacity: .9,
+            color: '#fffff'
+        }
+    });
+    
+    getSnapshot(1);
 });
 </script>
 

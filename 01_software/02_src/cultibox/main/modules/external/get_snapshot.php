@@ -15,7 +15,11 @@
         $height=480;
     }
 
-
-    exec("sudo fswebcam -r ".$width."x".$height." --no-banner ".$GLOBALS['BASE_PATH']."/tmp/webcam.jpg",$output,$err);
-
+    exec("ls /dev/video* 2>/dev/null",$output,$err);
+    if(count($output)==0) {
+       echo json_encode("1");
+    } else {
+        exec("sudo fswebcam -r ".$width."x".$height." --no-banner ".$GLOBALS['BASE_PATH']."/tmp/webcam.jpg",$output,$err);
+        echo json_encode("0");
+    }
 ?>

@@ -40,6 +40,7 @@ function check_db() {
     $conf_index_col["REMOVE_1000_CHANGE_LIMIT"] = array ( 'Field' => "REMOVE_1000_CHANGE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False",'carac' => "NOT NULL");
     $conf_index_col["REMOVE_5_MINUTE_LIMIT"] = array ( 'Field' => "REMOVE_5_MINUTE_LIMIT", 'Type' => "varchar(5)", 'default_value' => "False",'carac' => "NOT NULL");
     $conf_index_col["DEFAULT_LANG"] = array ( 'Field' => "DEFAULT_LANG", 'Type' => "varchar(5)", 'default_value' => "fr_FR",'carac' => "NOT NULL");
+    $conf_index_col["SHOW_WEBCAM"] = array ( 'Field' => "SHOW_WEBCAM", 'Type' => "tinyint(1)", 'default_value' => 0,'carac' => "NOT NULL");
 
 
     // Check if table configuration exists

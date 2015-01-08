@@ -30,6 +30,18 @@
     width: 40%;
 }
 
+#error_webcam {
+    background-color: #F30921;
+    padding:4px 7px;
+    border-bottom-left-radius:11px;
+    border-bottom-right-radius:11px;
+    border-top-left-radius:11px;
+    border-top-right-radius:11px;
+    width: 40%;
+    text-align: center;
+}
+
+
 
 #welcome {
    width:100%;
@@ -660,6 +672,11 @@ td.welcome-link {
 }
 
 td.welcome-link img{
+  border-radius:22px;
+  border:#C3B59B 6px solid;
+}
+
+.screenshot {
   border-radius:22px;
   border:#C3B59B 6px solid;
 }
