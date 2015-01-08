@@ -389,6 +389,10 @@ var updateIsAked = 0;
                         }
                     }
                 });
+                
+                var ladate=new Date();
+                $('#synoptic_updateSensorHour').html(ladate.getHours()+":"+ladate.getMinutes()+":"+ladate.getSeconds());
+                
             }
             
             updateIsAked = 0;
@@ -421,6 +425,10 @@ var updateIsAked = 0;
                         $('#syno_elemValuePlug_' + key).html(value);
                     }
                 });
+                
+                var ladate=new Date();
+                $('#synoptic_updatePlugHour').html(ladate.getHours()+":"+ladate.getMinutes()+":"+ladate.getSeconds());
+                
             }
             
             updateIsAked = 0;

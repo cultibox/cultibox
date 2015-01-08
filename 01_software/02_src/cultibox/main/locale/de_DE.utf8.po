@@ -1845,6 +1845,11 @@ msgstr "Dienst"
 msgid "RESTART_SERVICE"
 msgstr "Starten Sie den Dienst"
 
+msgid "SYNO_UPDATE_PLUG_HOUR"
+msgstr "Zuletzt aktualisiert wurde:"
+
+msgid "SYNO_UPDATE_SENSOR_HOUR"
+msgstr "Letzte Aktualisierung der Sensoren :"
 
 #For the webcam part:
 msgid "TITLE_WEBCAM"

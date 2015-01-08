@@ -1846,6 +1846,11 @@ msgstr "Stato servizio Cultipi"
 msgid "ACTION_SERVICE"
 msgstr "Servizio di azione"
 
+msgid "SYNO_UPDATE_PLUG_HOUR"
+msgstr "Ultimo aggiornamento presi : "
+
+msgid "SYNO_UPDATE_SENSOR_HOUR"
+msgstr "Ultimo aggiornamento dei sensori : "
 
 #For the webcam part:
 msgid "TITLE_WEBCAM"
