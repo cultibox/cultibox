@@ -77,7 +77,38 @@
                 echo '      </td>';
                 echo '    </tr>';
                 echo '    <tr>';
-                echo '      <td colspan="2" id="syno_elemValueSensor_' . $sensor["indexElem"] . '">' . $sensorValues[$sensor["indexElem"]] . '</td>';
+                $sensorValuesList = explode(" ", $sensorValues[$sensor["indexElem"]]);
+                if (!array_key_exists(1, $sensorValuesList)) {$sensorValuesList[1] = "";}
+                echo '      <td colspan="2" ><p id="syno_elemValueSensor_val1_' . $sensor["indexElem"] . '" class="pInline" >' . $sensorValuesList[0] . '</p>';
+                switch ($sensor["image"])
+                {
+                    case 'T_RH_sensor.png' :
+                        echo '      <p class="pInline">°C</p>';
+                        echo '      <p id="syno_elemValueSensor_val2_' . $sensor["indexElem"] . '" class="pInline" >' . $sensorValuesList[1] . '</p><p class="pInline">RH</p>';
+                        break;
+                    case 'water_T_sensor.png': 
+                        echo '      <p class="pInline" >°C</p>';
+                        break;
+                    case 'level_sensor.png': 
+                        echo '      <p class="pInline" >cm</p>';
+                        break;
+                    case 'pH-sensor.png': 
+                        echo '      <p class="pInline" >ph</p>';
+                        break;
+                    case 'conductivity-sensor.png': 
+                        echo '      <p class="pInline" >EC</p>';
+                        break;
+                    case 'dissolved-oxygen-sensor.png': 
+                        echo '      <p class="pInline" >OD</p>';
+                        break;
+                    case 'ORP-sensor.png': 
+                        echo '      <p class="pInline" >ORP</p>';
+                        break;
+                    default :
+                        echo '      <p class="pInline" >???</p>';
+                        break;
+                }
+                echo '      </td>';
                 echo '    </tr>';
                 echo '  </table>';
                 echo '  <img id="syno_elemImage_' . $sensor["id"] . '" src="main/libs/img/images-synoptic-sensor/' . $sensor["image"] . '" alt="capteur" style="width:' . $sensor["scale"] . 'px;cursor: move" class="rotate' . $sensor["rotation"] . '">';

@@ -22,3 +22,6 @@
     transform: rotate(270deg);
 }
 
+.pInline {
+    display:inline;
+}
