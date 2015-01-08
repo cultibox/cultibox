@@ -10,6 +10,14 @@ Deux composants sont présents dans la Culti Pi :
  * Le logiciel Cultibox
  * Le logiciel Culti Pi
 
+= Hardware =
+
+Les différentes sortie disponible sur le Raspberry pi sont utilisées de la façon suivante :
+ * GPIO18 : Gestion de l'alimentation des modules externes
+ * GPIO27 : Bouton de remise à zéro de la configuration réseau et des mots de passes
+
+= Software =
+
 == Architecture Culti Pi ==
 
 Le logiciel Culti Pi est composé de :
