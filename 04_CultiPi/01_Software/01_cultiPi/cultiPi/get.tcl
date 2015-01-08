@@ -10,13 +10,12 @@ package require piServer
 package require piTools
 
 set port(serverGet) 6022
-set port(serverLog) 6003
 set port(serverCultipi) 6000
 set port(serverAcqSensor) 6006
 set port(serverPlugUpdate) 6004
 set port(serverHisto) 6009
 
-::piLog::openLog $port(serverLog) "get"
+::piLog::openLogAs "none"
 
 set module   [lindex $argv 0]
 set variable [lindex $argv 1]
