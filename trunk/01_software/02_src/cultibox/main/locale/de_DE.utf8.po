@@ -220,6 +220,9 @@ msgstr "Verschiebung des internen Takt"
 msgid "RTC_OFFSET_UNITY"
 msgstr "Sekunde (n)"
 
+msgid "SHOW_WEBCAM"
+msgstr "Lassen Sie sich die Webcam-Menü"
+
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1487,6 +1490,9 @@ msgstr "Programe Name bereits für eine andere Sicherung verwendet."
 msgid "ERROR_PROGRAM_WRONG_NAME"
 msgstr "Der Programmname muss zwischen 3 und 16 Zeichen lang sein"
 
+msgid "ERROR_WEBCAM"
+msgstr "Kein erkannt Webcam"
+
 
 # For the informations part:
 msgid "CONFIRMATION"
@@ -1734,6 +1740,9 @@ msgstr "Mit dieser Funktion können Sie ein Programm von Spiel- und Entscheidung
 msgid "TOOLTIP_IMPORT_SET_PROGRAM"
 msgstr "Diese Funktion ermöglicht es Ihnen, ein Spielprogramm aus einer Datei importieren. Die Importdatei kann durch die Export-Funktion von einem anderen Benutzer Cultibox Austauschprogramme erstellt werden."
 
+msgid "TOOLTIP_SHOW_WEBCAM"
+msgstr "Durch die Aktivierung dieser Option können Sie den Zugriff auf die Seite der 'Webcam', die in der Hauptmenüleiste angezeigt haben"
+
 
 #For the debug part:
 msgid "GENERATE_TIME"
@@ -1832,3 +1841,8 @@ msgstr "Cultipi Service"
 
 msgid "RESTART_SERVICE"
 msgstr "Starten Sie den Dienst"
+
+
+#For the webcam part:
+msgid "TITLE_WEBCAM"
+msgstr "derzeit von der Webcam Bild eingefangen"

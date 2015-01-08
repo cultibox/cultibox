@@ -2,7 +2,6 @@
 
 if [ -f /etc/init.d/cultipi ]; then
     update-rc.d cultipi defaults
-    /etc/init.d/cultipi restart
 fi
 
 if [ -f /etc/cron.daily/cultipi ]; then
@@ -39,3 +38,4 @@ chown -R www-data:www-data /etc/cultipi/conf_tmp
 chown -R cultipi:cultipi /var/log/cultipi
 chmod 755 /var/log/cultipi
 
+/etc/init.d/cultipi force-reload

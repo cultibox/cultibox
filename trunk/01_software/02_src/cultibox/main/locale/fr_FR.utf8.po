@@ -219,6 +219,9 @@ msgstr "Décalage de l'horloge interne"
 msgid "RTC_OFFSET_UNITY"
 msgstr "seconde(s)"
 
+msgid "SHOW_WEBCAM"
+msgstr "Afficher le menu de la Webcam"
+
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1487,6 +1490,9 @@ msgstr "Ce nom de programme est déja utilisé pour une autre sauvegarde."
 msgid "ERROR_PROGRAM_WRONG_NAME"
 msgstr "Le nom du programme doit contenir entre 3 et 16 caractères"
 
+msgid "ERROR_WEBCAM"
+msgstr "Aucune Webcam détectée"
+
 
 # For the informations part:
 msgid "CONFIRMATION"
@@ -1734,6 +1740,10 @@ msgstr "Par défaut, le temps minimum de répétition d'une action cyclique pour
 msgid "TOOLTIP_1000_CHANGE_LIMIT"
 msgstr "Une limite de 1000 changements pour toutes les prises confondues est fixée initialement. Vous pouvez désactiver cette limite grâce à cette option."
 
+msgid "TOOLTIP_SHOW_WEBCAM"
+msgstr "En activant cette option vous pouvez avoir accès à la page de la 'Webcam' qui apparaît dans la barre du menu principal"
+
+
 
 #For the debug part:
 msgid "GENERATE_TIME"
@@ -1832,3 +1842,8 @@ msgstr "La configuration utilisée n'est pas à jour, cliquez ici pour mettre la
 
 msgid "WAIT_UPDATED_CONF"
 msgstr "Vérification de la configuration"
+
+
+#For the webcam part:
+msgid "TITLE_WEBCAM"
+msgstr "Image actuellement capturée par la Webcam"

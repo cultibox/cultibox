@@ -220,6 +220,9 @@ msgstr "Shift of the internal clock"
 msgid "RTC_OFFSET_UNITY"
 msgstr "second (s)"
 
+msgid "SHOW_WEBCAM"
+msgstr "Show the Webcam menu"
+
 
 # For the logs part:
 msgid "HISTO_GRAPH"
@@ -1286,6 +1289,9 @@ msgstr "Calculation of the theoretical cost achieved successfully"
 
 
 # For the errors or warnings part:
+msgid "ERROR_WEBCAM"
+msgstr "No detected Webcam"
+
 msgid "INFORMATION"
 msgstr "Information (s)"
 
@@ -1560,6 +1566,9 @@ msgstr "Data saving in progress, please wait..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_SHOW_WEBCAM"
+msgstr "By enabling this option you can have access to the page of the 'Webcam' which appears in the main menu bar"
+
 msgid "TOOLTIP_SEND_INFOS"
 msgstr "By enabling this option, you allow sending information to a remote site to assist in the development and correction of errors Cultibox system. The information sent include: the software version, the browser type, the firmware versions of the Cultibox and your type of operating system"
 
@@ -1831,4 +1840,9 @@ msgstr "Service Management"
 
 msgid "CULTIPI_SERVICE"
 msgstr "Cultipi Service"
+
+
+#For the webcam part:
+msgid "TITLE_WEBCAM"
+msgstr "Currently captured by the Webcam Image"
 

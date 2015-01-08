@@ -1,5 +1,6 @@
 Cultibox (2.0.24) precise; urgency=low
     + Correction de l'affichage des logs Cultipi
+    + Mise en place de l'onglet Webcam
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Tue Jan 06 14:41:12 CEST 2014
 

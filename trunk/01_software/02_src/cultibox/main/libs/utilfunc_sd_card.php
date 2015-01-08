@@ -77,12 +77,14 @@ function check_and_update_sd_card($sd_card="",&$main_info_tab,&$main_error_tab,$
         return ERROR_WRITE_PROGRAM;
     }
 
-    $ret_firm=check_and_copy_firm($sd_card);
-    if(!$ret_firm) {
-        $main_error_tab[]=__('ERROR_COPY_FIRM'); 
-        return ERROR_COPY_FIRM;
-    } else if($ret_firm==1) {
-        $conf_uptodate=false;
+    if((!isset($GLOBALS['MODE']))||(strcmp($GLOBALS['MODE'],"cultipi")!=0)) { 
+        $ret_firm=check_and_copy_firm($sd_card);
+        if(!$ret_firm) {
+            $main_error_tab[]=__('ERROR_COPY_FIRM'); 
+            return ERROR_COPY_FIRM;
+        } else if($ret_firm==1) {
+            $conf_uptodate=false;
+        }
     }
 
     if(!compare_pluga($sd_card)) {
