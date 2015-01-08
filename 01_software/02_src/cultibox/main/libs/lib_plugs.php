@@ -100,12 +100,21 @@ function check_db() {
     $db = null;
 }
 
-// Function used to get sensor list
-function getDB() {
+// {{{ getDB()
+// ROLE Function used to get plugs list
+// RET none
+function getDB($plug = "") {
 
-        // Check if table configuration exists
-    $sql = "SELECT * FROM plugs;";
-    
+    // get table
+    if ($plug == "")
+    {
+        $sql = "SELECT * FROM plugs ORDER BY id ASC;";
+    }
+    else
+    {
+        $sql = "SELECT * FROM plugs WHERE id = '{$plug}';";
+    }
+
     $db = \db_priv_pdo_start("root");
     
     $res = array();
