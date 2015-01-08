@@ -128,6 +128,4 @@ proc ::piServer::sendToServer {portNumber message} {
     {
         ::piLog::log [clock milliseconds] "error" "erreur closing channel -$channel-"
     }
-    
-    
 }

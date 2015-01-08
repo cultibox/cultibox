@@ -9,6 +9,7 @@ namespace eval ::piLog {
     variable channel ""
     variable module ""
     variable traceLevel "debug"
+    variable outputType "file"
 }
 
 proc ::piLog::openLog {portNumber moduleName {level debug}} {
@@ -35,10 +36,21 @@ proc ::piLog::openLog {portNumber moduleName {level debug}} {
     return 0
 }
 
+# Cette proc permet de gérer les logs sous la forme d'un puts à la con
+# Si type est puts : affiche à l'écran
+# si type est none : pas de sortie
+proc ::piLog::openLogAs {type} {
+    variable outputType
+
+    set outputType $type
+
+    return 0
+}
+
 proc ::piLog::closeLog {} {
     variable channel
     close $channel
-    
+
     return 0
 }
 
@@ -46,6 +58,16 @@ proc ::piLog::log {time traceType trace} {
     variable module
     variable channel
     variable traceLevel
+    variable outputType
+
+    if {$outputType == "none"} {
+        return 0
+    }
+    
+    if {$outputType == "puts"} {
+        puts "$time $traceType $trace"
+        return 0
+    }
     
     set StringToWrite "<${time}><${module}><${traceType}><${trace}>"
     
