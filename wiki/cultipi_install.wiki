@@ -104,7 +104,7 @@ dpkg-reconfigure tzdata
  * Installation des packages utiles et utilitaires:
 
 {{{
-apt-get install sudo localpurge vim libnss-mdns avahi-daemon tcl ifplugd
+apt-get install sudo localpurge vim libnss-mdns avahi-daemon tcl ifplugd fswebcam
 }}}
 
  * Configuration de SSH:
