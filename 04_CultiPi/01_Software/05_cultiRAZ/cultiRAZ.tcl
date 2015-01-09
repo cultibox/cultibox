@@ -7,32 +7,40 @@
 # La pin est en entrée (la commande suivante marche aussi : gpio mode 2 in)
 exec gpio -g mode 27 in
 
-# Procédure pour vérifier l'état de la pin et faire les MAJ si nécéssaire:
-proc checkAndUpdate {} {
+set compteur 0
 
+# Procédure utilisée pour vérifier l'état de la pin et faire les MAJ si nécéssaire:
+proc checkAndUpdate {} {
     # On lit la valeur de la pin
     set pinValue [exec gpio -g read 27]
-    
-    # Si la valeur est 1 , alors on procède à la RAZ:
+   
+    # Si la valeur est 1 , alors on modifie les fichier de conf
     if {$pinValue == 1} {
-        
-        # Changement de la conf réseau
-        exec cp /etc/network/interfaces.BASE /etc/network/interfaces
-        exec /etc/init.d/networking restart
-        
-        # Changement des droits utilisateurs 
-        # exec sudo ....
-        
+       
+        incr ::compteur
+       
+        if {$::compteur > 40} {
+           
+            set ::compteur 0
+       
+            # RAZ de la configuration réseau:
+            exec cp /etc/network/interfaces.BASE /etc/network/interfaces
+            exec /etc/init.d/networking restart
+           
+            # Changement des droits utilisateurs
+            # exec sudo ....
 
-        # On rappel la procédure au bout de 10 secondes pour éviter un double effacage
-        after 10000 checkAndUpdate
-        
+            # On la rappel la procédure au bout de 10 secondes pour éviter un double effacage:
+            after 10000 checkAndUpdate
+        } else {
+            # On la rappel toute les 50ms si le bouton n'a pas été appuyé:
+            after 50 checkAndUpdate
+        }
     } else {
-
+        set ::compteur 0
         # On la rappel toute les 50ms si le bouton n'a pas été appuyé
         after 50 checkAndUpdate
     }
-
 }
 
 checkAndUpdate
