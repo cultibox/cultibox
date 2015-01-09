@@ -1,5 +1,4 @@
 # Ce script permet de vérifier le statut du bouton 
-
 # Il faut que Wiring Pi soit installé : http://wiringpi.com/download-and-install/
 
 # Initialisation : 
@@ -8,24 +7,25 @@
 # La pin est en entrée (la commande suivante marche aussi : gpio mode 2 in)
 exec gpio -g mode 27 in
 
-# La procédure utilisée pour vérifier l'état de la pin et faire les MAJ si nécéssaire
+# Procédure pour vérifier l'état de la pin et faire les MAJ si nécéssaire:
 proc checkAndUpdate {} {
 
     # On lit la valeur de la pin
     set pinValue [exec gpio -g read 27]
     
-    # Si la valeur est 1 , alors on modifie les fichier de conf
+    # Si la valeur est 1 , alors on procède à la RAZ:
     if {$pinValue == 1} {
         
         # Changement de la conf réseau
-        # file copy -force /neNomDeLaConfParDefaut /LeCHeminDestination
+        exec cp /etc/network/interfaces.BASE /etc/network/interfaces
+        exec /etc/init.d/networking restart
         
-        # Changement des droits utilisateurs
+        # Changement des droits utilisateurs 
         # exec sudo ....
         
 
-        # On la rappel la procédure au bout de 30 secondes pour éviter un double effacage
-        after 30000 checkAndUpdate
+        # On rappel la procédure au bout de 10 secondes pour éviter un double effacage
+        after 10000 checkAndUpdate
         
     } else {
 
