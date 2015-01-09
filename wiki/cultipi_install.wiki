@@ -218,7 +218,7 @@ adduser cultipi i2c
 
 Récupérer l'archive des sources GPIO ici: https://git.drogon.net/?p=wiringPi;a=summary en cliquant sur le lien snapshot et copier le sur le Raspberry (ou copier le lien et utiliser la commande *wget* pour directement le récupérer sur le Raspberry).
 
-Il faut ensuite installer le logiciel, dans le répertoire qui contient l'archive téléchargée: 
+Il faut ensuite installer le logiciel. Dans le répertoire qui contient l'archive téléchargée, taper les commandes suivantes: 
 
 {{{
 tar zxvfp wiringPi-d42e831.tar.gz
