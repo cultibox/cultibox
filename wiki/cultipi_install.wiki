@@ -326,15 +326,6 @@ rm /var/www/index.lighttpd.html
 lighttpd-enable-mod fastcgi-php
 }}}
 
- * Configuration de PHP:
-
-Editer le fichier */etc/php5/cgi/php.ini* et modifier les directives suivantes:
-
-{{{
-max_execution_time = 240
-memory_limit = 256M
-}}}
-
  * Relancement du serveur :
 
 {{{
