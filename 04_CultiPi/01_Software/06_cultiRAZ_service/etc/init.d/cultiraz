@@ -1,12 +1,12 @@
 #! /bin/sh
 ### BEGIN INIT INFO
-# Provides:          cultipi
+# Provides:          cultiraz
 # Required-Start:    $all 
 # Required-Stop:     $all 
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Start cultipi daemon at boot time
-# Description:       Enable cultipi service provided by daemon.
+# Short-Description: Start cultiraz daemon at boot time
+# Description:       Enable cultiraz service provided by daemon.
 ### END INIT INFO
 
 
