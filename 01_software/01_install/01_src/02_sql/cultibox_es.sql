@@ -295,6 +295,21 @@ CREATE TABLE IF NOT EXISTS `program_index` (
 INSERT INTO `program_index` (`name`,`version`,`program_idx`,`creation`, `modification`, `plugv_filename`,`comments`) VALUES('Actual','1.0','1' , NOW(), NOW(), '00' , "Programa actual");
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `synoptic`
+--
+CREATE TABLE IF NOT EXISTS `synoptic` (
+    `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `element` varchar(10) NOT NULL DEFAULT 'other',
+    `scale` int(11) NOT NULL DEFAULT '50',
+    `x` int(11) NOT NULL DEFAULT '0',
+    `y` int(11) NOT NULL DEFAULT '0',
+    `z` int(11) NOT NULL DEFAULT '100',
+    `indexElem` int(11) NOT NULL DEFAULT '0',
+    `rotation` int(11) NOT NULL DEFAULT '0',
+    `image` varchar(50) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 

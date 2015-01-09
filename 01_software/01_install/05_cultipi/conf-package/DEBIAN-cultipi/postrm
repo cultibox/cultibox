@@ -19,6 +19,10 @@ if [ "$1" == "purge" ]; then
 
     update-rc.d -f cultipi remove >/dev/null 2>&1
 
+    if [ -f /etc/init.d/cultipi ]; then
+        rm -Rf /etc/init.d/cultipi
+    fi
+
     if [ -d /var/log/cultipi ]; then
         rm -Rf /var/log/cultipi
     fi
@@ -33,10 +37,12 @@ if [ "$1" == "purge" ]; then
 fi
 
 if [ "$1" == "remove" ]; then
+    update-rc.d -f cultipi remove > /dev/null 2>&1 
+
     if [ -f /etc/init.d/cultipi ]; then
         rm -Rf /etc/init.d/cultipi
     fi
-    update-rc.d -f cultipi remove > /dev/null 2>&1 
+
     sed -i "/.*\/etc\/init.d\/culticron.*/d" /etc/crontab
 
     if [ -d /opt/cultipi ]; then

@@ -9,6 +9,7 @@ function usage {
             echo "                      cultipi <version>|version ?jenkins?"
             echo "                      cultinet <version>|version ?jenkins?"
             echo "                      cultipi <version>|version ?jenkins?"
+            echo "                      cultiraz <version>|version ?jenkins?"
             echo "                      apt-gen"
             echo "                      clean"
             exit 1
@@ -27,10 +28,13 @@ if [ "$2" == "version" ]; then
         VERSION=`cat ../../../04_CultiPi/01_Software/02_cultinet/VERSION`
     elif [ "$1" == "cultibox" ]; then
         VERSION=`head -1 ../../CHANGELOG |sed -r 's#^.*\((.*)\).*$#\1#'`
+    elif [ "$1" == "cultiraz" ]; then
+        VERSION=`head -1 ../../CHANGELOG |sed -r 's#^.*\((.*)\).*$#\1#'`
     fi
 else
     VERSION=$2
 fi
+
 
 # Remove svn up when using jenkins
 if [ "$3" == "" ]; then
@@ -122,6 +126,25 @@ EOF
 
            mv cultibox.deb ../../05_cultipi/Output/cultibox-armhf_`echo $VERSION`-r`echo $revision`.deb
       ;;  
+      "cultiraz")
+           rm -Rf ../01_src/01_xampp/*
+           mkdir ../01_src/01_xampp/cultiraz
+           cp -R ./conf-package/DEBIAN-cultiraz ../01_src/01_xampp/cultiraz/DEBIAN
+
+           mkdir -p ../01_src/01_xampp/cultiraz/opt/cultiraz
+           mkdir -p ../01_src/01_xampp/cultiraz/etc/init.d
+
+           cp -R ../../../04_CultiPi/01_Software/05_cultiRAZ/* ../01_src/01_xampp/cultiraz/opt/cultiraz/
+           rm -f ../01_src/01_xampp/cultiraz/opt/cultiraz/VERSION
+
+           cp ../../../04_CultiPi/01_Software/06_cultiRAZ_service/etc/init.d/cultiraz ../01_src/01_xampp/cultiraz/etc/init.d/cultiraz
+
+           sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultiraz/DEBIAN/control
+           find ./../01_src/01_xampp/cultiraz/ -name ".svn"|xargs rm -Rf
+           cd ./../01_src/01_xampp/ && dpkg-deb --build cultiraz
+
+           mv cultiraz.deb ../../05_cultipi/Output/cultiraz-armhf_`echo $VERSION`-r`echo $revision`.deb
+      ;;
       "apt-gen")
            cultipi="`ls -t Output/cultipi*|head -1`"
            cp $cultipi repository/binary/
@@ -131,6 +154,9 @@ EOF
 
            cultinet="`ls -t Output/cultinet*|head -1`"
            cp $cultinet repository/binary/
+
+           cultiraz="`ls -t Output/cultiraz*|head -1`"
+           cp $cultiraz repository/binary/
 
            cd repository
            dpkg-scanpackages binary /dev/null | gzip -9c > binary/Packages.gz
