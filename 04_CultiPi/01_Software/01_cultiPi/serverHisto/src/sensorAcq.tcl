@@ -50,7 +50,7 @@ proc ::sensorAcq::loop {} {
         set ::subscriptionRunned(sensorAcq) 1
     
     } else {
-        ::piLog::log [clock milliseconds] "debug" "port of serverAcqSensor is not defined"
+        ::piLog::log [clock milliseconds] "debug" "::sensorAcq::loop : port of serverAcqSensor is not defined"
     }
 
     # On tue la boucle si les souscriptions sont lancés

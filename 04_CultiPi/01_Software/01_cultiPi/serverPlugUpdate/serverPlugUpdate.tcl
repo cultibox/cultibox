@@ -27,6 +27,7 @@ source [file join $rootDir serverPlugUpdate src module_wireless.tcl]
 source [file join $rootDir serverPlugUpdate src sensor.tcl]
 source [file join $rootDir serverPlugUpdate src serveurMessage.tcl]
 source [file join $rootDir serverPlugUpdate src regulation.tcl]
+source [file join $rootDir serverPlugUpdate src forcePlug.tcl]
 
 # Initialisation d'un compteur pour les commandes externes envoyées
 set TrameIndex 0
@@ -96,7 +97,15 @@ while {1} {
         break;
     } else {
         ::piLog::log [clock milliseconds] "info" "reading $i plugXX $plugXXFilename"
-        set plug($i,lastValue) "" 
+        
+        # On initialise les constantes de chaque prise
+        set plug($i,lastValue) ""
+        set plug($i,updateStatus) ""
+        set plug($i,updateStatusComment) ""
+        set plug($i,source) "plugv"
+        set plug($i,force,value) ""
+        set plug($i,force,idAfterProc) ""
+        
         set fid [open $plugXXFilename r]
         while {[eof $fid] != 1} {
             gets $fid OneLine
@@ -169,5 +178,5 @@ emeteur_subscriptionEvenement
 
 vwait forever
 
-# tclsh "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\01_Software\01_cultiPi\serverPlugUpdate\serverPlugUpdate.tcl" 6003 "D:\DONNEES\GR08565N\Mes documents\cbx\04_CultiPi\02_conf\00_defaultConf_Win\serverPlugUpdate\conf.xml" 6001 
+# tclsh "C:\cultibox\04_CultiPi\01_Software\01_cultiPi\serverPlugUpdate\serverPlugUpdate.tcl" 6004 "C:\cultibox\04_CultiPi\02_conf\00_defaultConf_Win\serverPlugUpdate\conf.xml" 6003 6000
 # tclsh /opt/cultipi/serverPlugUpdate/serverPlugUpdate.tcl 6004 /etc/cultipi/01_defaultConf_RPi/./serverPlugUpdate/conf.xml 6003 6000

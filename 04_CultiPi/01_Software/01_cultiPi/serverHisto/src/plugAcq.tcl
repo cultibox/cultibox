@@ -43,7 +43,7 @@ proc ::plugAcq::loop {} {
         
     
     } elseif {$::subscriptionRunned(plugAcq) == 0} {
-        ::piLog::log [clock milliseconds] "debug" "port of serverAcqSensor is not defined"
+        ::piLog::log [clock milliseconds] "debug" "::plugAcq::loop : port of serverPlugUpdate is not defined"
     }
     
     # En fin de journée, on demande une mise à jour des valeurs

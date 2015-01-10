@@ -165,8 +165,9 @@ proc emeteur_update_loop {} {
             for {set i 1} {$i <= $::EMETEUR_NB_PLUG_MAX} {incr i} \
             {
                 set plgPrgm [lindex $::actualProgramm [expr $i - 1]]
+                # On ne met à jour que les plugs qui font de régulation
                 if {$plgPrgm != "on" && $plgPrgm != "off"} {
-                    emeteur_regulation $i $plgPrgm
+                    updatePlug $i
                 }
             }
             set ::uc8_regulationIsDone 1
@@ -191,7 +192,11 @@ proc updatePlug {plugNumber} {
     # On cherche le programme de la prise (attention les prises démarre à 1 !)
     set plgPrgm [lindex $programmeToSend [expr $plugNumber - 1]]
 
-    if {$plgPrgm == ""} {
+    # On regarde si la prise est forcée dans un état par l'utilisateur
+    if {$::plug($plugNumber,source) == "force"} {
+        # On envoi la commande au module
+        ::wireless::setValue $plugNumber $::plug($plugNumber,force,value)
+    } elseif {$plgPrgm == ""} {
         ::piLog::log [clock milliseconds] "error" "Plug $plugNumber programme is empty"
     } elseif {$plgPrgm != "off" && $plgPrgm != "on"} {
         # Si c'est de la régulation
