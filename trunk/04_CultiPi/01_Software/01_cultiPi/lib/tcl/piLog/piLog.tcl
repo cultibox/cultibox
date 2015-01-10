@@ -107,8 +107,7 @@ proc ::piLog::log {time traceType trace} {
     # If channel is not open, log in local
     if {$channel == ""} {
         if { [expr [string compare "$::tcl_platform(platform)" "windows" ] == 0] } {
-            package require registry 1.0
-            set env_cpi  [file join [file dirname [info script]] cultipi]
+            set env_cpi  [file join [file dirname [file dirname [info script]]]]
         } else {
             set env_cpi  [file join $::env(HOME) cultipi]
         }

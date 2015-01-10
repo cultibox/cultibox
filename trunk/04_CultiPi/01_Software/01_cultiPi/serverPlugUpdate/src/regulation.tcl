@@ -30,56 +30,59 @@ proc emeteur_regulation {nbPlug plgPrgm} {
             set consigneSupSec [expr $::plug($nbPlug,SEC,value) + $::plug($nbPlug,SEC,precision)]
             set consigneInfSec [expr $::plug($nbPlug,SEC,value) - $::plug($nbPlug,SEC,precision)]
         
-            # Si le sens de la régulation est +
-            if {$::plug($nbPlug,SEC,sens) == "+"} {
-                # Si la valeur du capteur est supérieur à la consigne
-                if {$valueSecondaire > $consigneSupSec} {
-                
-                    # On force la prise dans l'état défini dans la conf
-                    set valeurToPilot $etatSecondaire
+            # On vérifie qu'il y a bien une valeur
+            if {$valueSecondaire != ""} {
+            
+                # Si le sens de la régulation est +
+                if {$::plug($nbPlug,SEC,sens) == "+"} {
+                    # Si la valeur du capteur est supérieur à la consigne
+                    if {$valueSecondaire > $consigneSupSec} {
                     
-                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec+ Sup progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
+                        # On force la prise dans l'état défini dans la conf
+                        set valeurToPilot $etatSecondaire
+                        
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec+ Sup progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
+                        
+                        # On sauvegarde le fait qu'on est en régulation secondaire
+                        set ::plug($nbPlug,inRegulation) "SEC"
+                        
+                    } elseif {$valueSecondaire > $consigneInfSec  && $::plug($nbPlug,inRegulation) == "SEC"} {
                     
-                    # On sauvegarde le fait qu'on est en régulation secondaire
-                    set ::plug($nbPlug,inRegulation) "SEC"
+                        # Sensor is not upper than consigne but between two marges, keep the last consigne
+                        set valeurToPilot $etatSecondaire
+                        
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec+ Between progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
+                        
+                        # On sauvegarde le fait qu'on est en régulation secondaire
+                        set ::plug($nbPlug,inRegulation) "SEC"
+                        
+                    }
+                } else {
+                    # Sinon le sens de la régulation est "-"
+                    if {$valueSecondaire < $consigneInfSec}  {
                     
-                } elseif {$valueSecondaire > $consigneInfSec  && $::plug($nbPlug,inRegulation) == "SEC"} {
-                
-                    # Sensor is not upper than consigne but between two marges, keep the last consigne
-                    set valeurToPilot $etatSecondaire
+                        # On force la prise dans l'état défini dans la conf
+                        set valeurToPilot $etatSecondaire
+
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec- Inf progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
+
+                        # On sauvegarde le fait qu'on est en régulation secondaire
+                        set ::plug($nbPlug,inRegulation) "SEC"
+                        
+                    } elseif {$valueSecondaire < $consigneSupSec && $::plug($nbPlug,inRegulation) == "SEC"} {
                     
-                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec+ Between progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
-                    
-                    # On sauvegarde le fait qu'on est en régulation secondaire
-                    set ::plug($nbPlug,inRegulation) "SEC"
-                    
+                        # Sensor is not upper than consigne but between two marges, keep the last consigne
+                        # Keep the last consigne only if it was ON
+                        set valeurToPilot $etatSecondaire
+
+                        ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec- Between progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
+
+                        # On sauvegarde le fait qu'on est en régulation secondaire
+                        set ::plug($nbPlug,inRegulation) "SEC"
+                        
+                    }
                 }
-            } else {
-                # Sinon le sens de la régulation est "-"
-                if {$valueSecondaire < $consigneInfSec}  {
-                
-                    # On force la prise dans l'état défini dans la conf
-                    set valeurToPilot $etatSecondaire
-
-                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec- Inf progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
-
-                    # On sauvegarde le fait qu'on est en régulation secondaire
-                    set ::plug($nbPlug,inRegulation) "SEC"
-                    
-                } elseif {$valueSecondaire < $consigneSupSec && $::plug($nbPlug,inRegulation) == "SEC"} {
-                
-                    # Sensor is not upper than consigne but between two marges, keep the last consigne
-                    # Keep the last consigne only if it was ON
-                    set valeurToPilot $etatSecondaire
-
-                    ::piLog::log [clock milliseconds] "debug" "plug:-$nbPlug- regSec- Between progr:-$plgPrgm- value:-$valueSecondaire- pilot:-$valeurToPilot- trigHigh:-$consigneSupSec- trigLow:-$consigneInfSec-"
-
-                    # On sauvegarde le fait qu'on est en régulation secondaire
-                    set ::plug($nbPlug,inRegulation) "SEC"
-                    
-                }
-            }
-        
+            }        
         }
         
         # Si la régulation secondaire n'a pas définie de valeur, on applique la régulation primaire
