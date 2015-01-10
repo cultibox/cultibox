@@ -258,7 +258,7 @@ function get_content(page,get_array) {
     if (e.which == 18) {
       isAlt = true;
     }
-    else if (e.which == 67 && isAlt) {
+    else if (e.which == 68 && isAlt) {
         var $dialog = $('<div></div>').html('<iframe style="border: 0px; " src="main/scripts/webconsole.php" width="100%" height="100%"></iframe>').dialog({
            autoOpen: false,
            modal: true,
