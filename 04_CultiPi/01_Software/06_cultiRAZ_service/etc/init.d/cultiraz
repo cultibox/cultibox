@@ -19,7 +19,7 @@ DEAMON_NAME="cultiraz"
 
 d_start () {
         log_daemon_msg "Starting system $DEAMON_NAME Daemon"
-        sudo -u $DAEMONUSER /usr/bin/tclsh "/opt/cultiraz/cultiRAZ.tcl"&
+        sudo -u $DAEMONUSER nohup /usr/bin/tclsh "/opt/cultiraz/cultiRAZ.tcl" >/dev/null 2>&1 &
         sleep 4
         log_end_msg $?
 }
