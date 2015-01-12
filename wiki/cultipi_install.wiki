@@ -430,17 +430,14 @@ auth.require = ( "/cultibox/" =>
       "method" => "digest",
       "realm" => "Identification",
       "require" => "valid-user"
-   )
-)
-
-
-auth.require = ( "/cultinet/" =>
+   ), "/cultinet/" =>
    (
       "method" => "digest",
       "realm" => "Identification",
       "require" => "valid-user"
    )
 )
+
 
 }}}
 
