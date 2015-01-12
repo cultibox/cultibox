@@ -342,7 +342,18 @@ openssl req -new -x509 -keyout cultipi.pem -out server.pem -days 365 -nodes
 chmod -R 600 /etc/lighttpd/ssl
 }}}
 
- * Configuration du fichier lighttpd.conf
+ * Installation et configuration de la mécanique *.htaccess:
+
+{{{
+apt-get install apache2-utils
+htdigest -c /etc/lighttpd/.passwd 'Identification' cultipi
+    Adding password for cultipi in realm Identification.
+    New password: 
+    Re-type new password: 
+}}}
+
+
+ * Configuration du fichier lighttpd.conf:
 
 {{{
 vi /etc/lighttpd/lighttpd.conf
@@ -356,6 +367,7 @@ server.modules = (
    "mod_alias",
    "mod_compress",
    "mod_redirect",
+   "mod_auth"
    #"mod_rewrite",
 )
 
@@ -367,6 +379,9 @@ server.username             = "www-data"
 server.groupname            = "www-data"
 server.port                 = 80
 
+auth.backend = "htdigest"
+auth.backend.htdigest.userfile = "/etc/lighttpd/.passwd"
+auth.debug = 2
 
 index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
 url.access-deny             = ( "~", ".inc" )
@@ -408,6 +423,24 @@ $SERVER["socket"] == ":443" {
         ssl.engine = "enable"
         ssl.pemfile = "/etc/lighttpd/ssl/cultipi.pem"
 }
+
+
+auth.require = ( "/cultibox/" =>
+   (
+      "method" => "digest",
+      "realm" => "Identification",
+      "require" => "valid-user"
+   )
+)
+
+
+auth.require = ( "/cultinet/" =>
+   (
+      "method" => "digest",
+      "realm" => "Identification",
+      "require" => "valid-user"
+   )
+)
 
 }}}
 
