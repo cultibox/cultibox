@@ -207,6 +207,7 @@ function get_sensor_db_type($sensor = "") {
     foreach($res as $sens) {
         switch($sens['type']) {
             case '0':
+            case '1':
             case '4':
             case '5': 
                 $sensors[]=array(
@@ -215,7 +216,7 @@ function get_sensor_db_type($sensor = "") {
                     "sensor_nb" => 0,
                     "ratio" => 0,
                     "sensorName" => "",
-                    "translation" => "",
+                    "translation" => "NO_SENSOR_DEFINED",
                     "unity" => ""
                 ); 
                 $nb_sens=$nb_sens+1;
