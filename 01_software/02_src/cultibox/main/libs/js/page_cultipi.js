@@ -70,6 +70,53 @@ $(document).ready(function(){
     });
 
 
+     // Call the fileupload widget and set some parameters
+     $('#confupload').fileupload({
+        dataType: 'json',
+        url: 'main/modules/external/files.php',
+        add: function (e, data) {
+            var name="";
+            $.each(data.files, function (index, file) {
+                name=file.name;
+            });
+
+            $('#import_conf_name').text(name);
+            $('#import_conf').val("<?php echo __('IMPORT_PROGRAM'); ?>");
+            $('#import_conf').text("<?php echo __('IMPORT_PROGRAM'); ?>");
+            $('#import_conf').removeClass("inputDisable");
+            $('#import_conf').attr('disabled', false);
+
+
+            data.context = $('#import_conf').click(function () {
+                    data.submit();
+            });
+        },
+        done: function (e, data) {
+            e.preventDefault();
+
+            var name="";
+            $.each(data.result.files, function (index, file) {
+                name=file.name;
+            });
+
+            $.ajax({
+                cache: false,
+                async: false,
+                url: "main/modules/external/import_soft_config.php",
+                data: {filename:name}
+            }).done(function (data) {
+                 var objJSON = jQuery.parseJSON(data);
+                 if(json==0) {
+
+                 } else {
+
+
+                 }
+            });
+        }
+    });
+
+
      // Gestion of drag and drop
     $( "#set div" ).draggable({
         distance: 10,
