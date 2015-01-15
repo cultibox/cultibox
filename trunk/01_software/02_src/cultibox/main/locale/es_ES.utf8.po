@@ -1857,3 +1857,14 @@ msgstr "Ultima actualización de los sensores : "
 #For the webcam part:
 msgid "TITLE_WEBCAM"
 msgstr "Capturado actualmente por la cámara de imagen"
+
+
+#For the js part:
+msgid "CLOSE_BUTTON" 
+msgstr "Cerrar"
+
+msgid "DIR_CONF_NOT_UPTODATE_POPUP" 
+msgstr "La configuración utilizada no está actualizado, puede actualizar la configuración con la boutton en el diálogo de software."
+
+msgid "DISABLE_POPUP" 
+msgstr "No avisarme y me dejó administrar la configuración en el diálogo"
