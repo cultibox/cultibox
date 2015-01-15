@@ -94,3 +94,9 @@ if [  "`cat /etc/sudoers|grep www-data|grep fswebcam`" == "" ]; then
 fi
 
 
+if [ ! -d /home/cultipi/cultibox ]; then
+    mkdir /home/cultipi/cultibox
+    chown -R www-data:www-data /home/cultipi/cultibox
+fi
+
+
