@@ -382,6 +382,15 @@ $(document).ready(function(){
                                 text: CLOSE_button,
                                 click: function () {
                                     $( this ).dialog( "close" );
+            
+                                     $.ajax({
+                                        cache: false,
+                                        async: false,
+                                        url: "main/modules/external/set_variable.php",
+                                        data: {name:"UPDATED_CONF", value: "True", duration: 86400 * 365}
+                                    });
+
+
                                     if(button_click.toLowerCase().indexOf("jumpto") >= 0) {
                                         get_content("programs",getUrlVars("selected_plug=1"));
                                     } else {
