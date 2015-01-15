@@ -376,6 +376,14 @@ $(document).ready(function(){
                                 text: CLOSE_button,
                                 click: function () { 
                                     $( this ).dialog( "close" ); 
+
+                                     $.ajax({
+                                        cache: false,
+                                        async: false,
+                                        url: "main/modules/external/set_variable.php",
+                                        data: {name:"UPDATED_CONF", value: "True", duration: 86400 * 365}
+                                    });
+
                                     var get_array = getUrlVars('submenu='+$("#submenu").val());
                                     get_content("configuration",get_array);
                                  }

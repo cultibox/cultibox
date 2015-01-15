@@ -675,6 +675,19 @@ td.welcome-link {
   vertical-align:top;
 }
 
+td.welcome-linkpi {
+  width:25%;
+  text-align:center;
+  vertical-align:top;
+}
+
+td.welcome-linkpi img{
+  border-radius:22px;
+  border:#C3B59B 6px solid;
+}
+
+
+
 td.welcome-link img{
   border-radius:22px;
   border:#C3B59B 6px solid;
@@ -950,4 +963,11 @@ input[type='file'] {
     background: url(../img/grid.png) repeat;
     border-radius: 22px;
     border:#C3B59B 6px solid;
+}
+
+
+.disable_popup {
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
 }

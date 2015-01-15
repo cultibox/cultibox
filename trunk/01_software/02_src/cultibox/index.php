@@ -104,6 +104,13 @@ $webcam=get_configuration("SHOW_WEBCAM");
 
 
 <body id="page" class="page">
+    <div id="diff_conf" style="display:none">
+    <?php echo __('DIR_CONF_NOT_UPTODATE_POPUP'); ?>
+    <p class="disable_popup">
+        <?php echo __('DISABLE_POPUP'); ?>
+        <input type="checkbox" id="disable_popup" name="disable_popup" />
+    </p>
+    </div>
     <div id="scrollto"></div>
     <div id="page-bg">
         <div>

@@ -73,6 +73,10 @@ msgstr "Page de création et visualisation des programmes des prises"
 msgid "ENABLE_JAVASCRIPT"
 msgstr "Javascript est désactivé! Vous ne pourrez pas utiliser le logiciel et toutes ses fonctionnalités si vous n'activez pas Javascript."
 
+msgid "WELCOME_SYNOP"
+msgstr "Page du résumé de l'état de votre espace de culture"
+
+
 
 # For the configuration part:
 msgid "CONFIGURE_TITLE_CULTIBOX"
@@ -1852,6 +1856,18 @@ msgstr "Dernière mise à jour des prises : "
 msgid "SYNO_UPDATE_SENSOR_HOUR"
 msgstr "Dernière mise à jour des capteurs : "
 
+
 #For the webcam part:
 msgid "TITLE_WEBCAM"
 msgstr "Image actuellement capturée par la Webcam"
+
+
+#For the js part:
+msgid "CLOSE_BUTTON"
+msgstr "Fermer"
+
+msgid "DIR_CONF_NOT_UPTODATE_POPUP"
+msgstr "La configuration utilisée n'est pas à jour, vous pouvez mettre à jour la configuration grâce au boutton dans la boîte de dialogue du logiciel."
+
+msgid "DISABLE_POPUP"
+msgstr "Ne plus me prévenir et me laisser gérer la configuration dans la boîte de dialogue"
