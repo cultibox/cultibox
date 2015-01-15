@@ -1,3 +1,10 @@
+Cultibox (2.0.25) precise; urgency=low
+    + Mise en place du message de vérification de la configuration
+    + Ajout du synoptique dans la page d'accueil
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Jan 15 13:09:15 CEST 2014
+
+
 Cultibox (2.0.24) precise; urgency=low
     + Correction de l'affichage des logs Cultipi
     + Mise en place de l'onglet Webcam

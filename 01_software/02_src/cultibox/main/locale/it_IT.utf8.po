@@ -74,6 +74,9 @@ msgstr "Creazione di pagine e visualizzazione dei programmi adottati"
 msgid "ENABLE_JAVASCRIPT"
 msgstr "Javascript è disattivato! Non è possibile utilizzare il software e tutte le caratteristiche se non si abilita Javascript."
 
+msgid "WELCOME_SYNOP"
+msgstr "Pagina di sintesi dello stato della grow room"
+
 
 # For the configuration part:
 msgid "CONFIGURE_TITLE_CULTIBOX"

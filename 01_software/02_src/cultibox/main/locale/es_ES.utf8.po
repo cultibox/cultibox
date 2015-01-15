@@ -74,6 +74,9 @@ msgstr "Pagina de creación y visualización de los programas de enchufes"
 msgid "ENABLE_JAVASCRIPT"
 msgstr "Javascript no está habilitado! No puede utilizar el software y todas sus características, si no habilita Javascript."
 
+msgid "WELCOME_SYNOP"
+msgstr "Resumen de una página sobre el estado de tu cuarto de cultivo"
+
 
 # For the configuration part:
 msgid "CONFIGURE_TITLE_CULTIBOX"

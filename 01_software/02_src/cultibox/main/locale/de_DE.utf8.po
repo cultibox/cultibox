@@ -74,6 +74,9 @@ msgstr "Seite Erstellung und Visualisierung von Programmen übernommen"
 msgid "ENABLE_JAVASCRIPT"
 msgstr "Javascript ist deaktiviert! Sie können die Software nicht verwenden und alle seine Funktionen, wenn Sie Javascript nicht aktivieren."
 
+msgid "WELCOME_SYNOP"
+msgstr "Seite Zusammenfassung des Status des Rauminhaltes"
+
 
 # For the configuration part:
 msgid "CONFIGURE_TITLE_CULTIBOX"

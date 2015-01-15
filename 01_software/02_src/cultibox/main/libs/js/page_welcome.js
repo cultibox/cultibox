@@ -120,6 +120,18 @@ $(document).ready(function(){
        e.preventDefault();
        get_content("calendar");
     });
+
+    $("#welcome-synop-img").click(function(e) {
+       e.preventDefault();
+       get_content("cultipi");
+    });
+
+
+    $("#welcome-synop-txt").click(function(e) {
+       e.preventDefault();
+       get_content("cultipi");
+    });
+
     
 });
 </script>
