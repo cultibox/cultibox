@@ -501,6 +501,14 @@ $(document).ready(function(){
                                                     }
                                                 });
                                             }
+
+                                            $.ajax({
+                                                cache: false,
+                                                async: false,
+                                                url: "main/modules/external/set_variable.php",
+                                                data: {name:"UPDATED_CONF", value: "True", duration: 86400 * 365}
+                                            });
+
                                             get_content("programs",getFormInputs('actionprog'));
                                         });
                                     }
@@ -569,6 +577,14 @@ $(document).ready(function(){
                                     }
                                 });
                             }
+
+                            $.ajax({
+                                cache: false,
+                                async: false,
+                                url: "main/modules/external/set_variable.php",
+                                data: {name:"UPDATED_CONF", value: "True", duration: 86400 * 365}
+                            });
+
                             get_content("programs",getFormInputs('actionprog'));        
                     });
                     }

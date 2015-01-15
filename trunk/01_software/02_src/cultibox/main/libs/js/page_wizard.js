@@ -310,10 +310,18 @@ $("#value_program").keypress(function(e) {
                             });
                         }
 
+
                         $.unblockUI();
 
                         try { 
                             if(jQuery.parseJSON(data)=="submit_close") {
+                                $.ajax({
+                                    cache: false,
+                                    async: false,
+                                    url: "main/modules/external/set_variable.php",
+                                    data: {name:"UPDATED_CONF", value: "True", duration: 86400 * 365}
+                                });
+
                                 get_content("programs",getUrlVars('selected_plug=<?php echo $selected_plug; ?>'));
                             } else {
                                 get_content("wizard",getUrlVars('selected_plug=<?php echo $selected_plug+1; ?>'));
