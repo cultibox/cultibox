@@ -1857,3 +1857,13 @@ msgstr "Last update of the plugs :"
 msgid "TITLE_WEBCAM"
 msgstr "Currently captured by the Webcam Image"
 
+
+#For the js part:
+msgid "CLOSE_BUTTON"
+msgstr "Close"
+
+msgid "DIR_CONF_NOT_UPTODATE_POPUP"
+msgstr "The configuration used is not updated, you can update the configuration with the boutton in the software dialog."
+
+msgid "DISABLE_POPUP"
+msgstr "Do not warn me and let me manage the configuration in the dialog"
