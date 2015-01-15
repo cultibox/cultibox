@@ -105,7 +105,7 @@ $(document).ready(function(){
                 url: "main/modules/external/import_soft_config.php",
                 data: {filename:name}
             }).done(function (data) {
-                 var objJSON = jQuery.parseJSON(data);
+                 var json = jQuery.parseJSON(data);
                  if(json==0) {
 
                  } else {
