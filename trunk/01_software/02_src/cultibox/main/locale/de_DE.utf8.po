@@ -1861,10 +1861,10 @@ msgstr "derzeit von der Webcam Bild eingefangen"
 
 #For the js part:
 msgid "CLOSE_BUTTON"
-msgstr "Fermer"
+msgstr "Close"
 
 msgid "DIR_CONF_NOT_UPTODATE_POPUP"
-msgstr "La Konfiguration utilisée n'est pas à jour, vous pouvez mettre à jour la grâce au Konfiguration boutton dans la boîte de Dialogs du logiciel."
+msgstr "verwendet wird nicht aktualisiert Konfiguration können Sie die Konfiguration mit dem boutton im Dialog Software zu aktualisieren."
 
 msgid "DISABLE_POPUP"
-msgstr "Ne Plus mich Prévenir et mir laisser gérer la Konfiguration dans la boîte de Dialog"
+msgstr "Mich nicht und lassen Sie mich zu verwalten Sie die Konfiguration im Dialog"
