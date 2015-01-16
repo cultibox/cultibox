@@ -11,6 +11,13 @@ set compteur 0
 
 # Procédure utilisée pour vérifier l'état de la pin et faire les MAJ si nécéssaire:
 proc checkAndUpdate {} {
+
+    # Si cultipi nous dit de rebooter, on reboot:
+    if { [file exists /tmp/cultipi_restart] == 1} {               
+        exec reboot
+    }
+
+
     # On lit la valeur de la pin
     set pinValue [exec gpio -g read 27]
    
