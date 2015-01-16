@@ -67,10 +67,10 @@ function check_db() {
         } catch(PDOException $e) {
             $ret=$e->getMessage();
         }
-        
-        // TODO : Check if every sensor has not an incorrect value :
+       
+        // Check if every sensor has not an incorrect value :
         // Incorrect value : 1 4 5
-        
+        check_sensors_def();
     }
     $db = null;
 }
