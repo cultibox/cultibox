@@ -1862,6 +1862,15 @@ msgstr "Gestion de la configuration"
 msgid "IMPORT_CONF_CULTIPI"
 msgstr "Importer une configuration"
 
+msgid "IMPORT_CONF"
+msgstr "Import de la configuration"
+
+msgid "SUCCESS_IMPORT_CONF"
+msgstr "Configuration importée avec succèes"
+
+msgid "ERROR_IMPORT_CONF"
+msgstr "Erreur lors de l'import de votre configuration, votre précédente configuration a été restauré"
+
 
 #For the webcam part:
 msgid "TITLE_WEBCAM"
