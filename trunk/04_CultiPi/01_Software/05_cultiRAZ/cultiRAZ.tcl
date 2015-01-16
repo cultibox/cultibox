@@ -34,8 +34,12 @@ proc checkAndUpdate {} {
             exec cp /etc/network/interfaces.BASE /etc/network/interfaces
             exec /etc/init.d/networking restart
            
-            # Changement des droits utilisateurs
-            # exec sudo ....
+            # Remise en place du mot de passe d'origine:
+            if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
+                exec cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
+                exec /etc/init.d/lighttpd force-reload
+            }
+        
 
             # On la rappel la procédure au bout de 10 secondes pour éviter un double effacage:
             after 10000 checkAndUpdate
