@@ -1,6 +1,7 @@
 Cultibox (2.0.25) precise; urgency=low
     + Mise en place du message de vérification de la configuration
     + Ajout du synoptique dans la page d'accueil
+    + Ajout de l'import d'ue configuration dans cultipi
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Thu Jan 15 13:09:15 CEST 2014
 
