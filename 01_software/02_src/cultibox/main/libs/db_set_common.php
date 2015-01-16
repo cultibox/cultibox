@@ -707,7 +707,7 @@ EOF;
     $tab=array();
     if(count($res)>0) {
         foreach($res as $sensor) {
-            if((!array_key_exists($sensor['type'],$GLOBALS['SENSOR_DEFINITION']))||($sensor['type']!=0)) {
+            if((!array_key_exists($sensor['type'],$GLOBALS['SENSOR_DEFINITION']))&&($sensor['type']!=0)) {
                $tab[]=$sensor['id'];
             }
         }
@@ -716,8 +716,10 @@ EOF;
     if(count($tab)>0) {
          $sql=" ";
          foreach($tab as $index) {
-            $sql = $sql." UPDATE `sensors` SET type=0 WHERE id=".$index." ";
+            $sql = $sql." UPDATE `sensors` SET type=0 WHERE id=".$index."; ";
          }
+
+        echo "$sql";
 
         $db=db_priv_pdo_start();
         try {
