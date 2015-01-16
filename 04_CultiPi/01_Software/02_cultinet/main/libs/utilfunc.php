@@ -201,7 +201,6 @@ function create_network_file($myConf) {
             $myArray[]="iface wlan0 inet dhcp";
         }
 
-        
         switch($myConf['wifi_key_type']) {
             case "NONE":
                     $myArray[]="wireless-essid ".$myConf['wifi_ssid'];
@@ -212,6 +211,7 @@ function create_network_file($myConf) {
                     break;
 
             case "WPA (TKIP + AES)":
+                    $myArray[]="wpa-scan-ssid 1";
                     $myArray[]="wpa-ssid ".$myConf['wifi_ssid'];
                     $myArray[]="wpa-ap-scan 1";
                     $myArray[]="wpa-key-mgmt WPA-PSK";

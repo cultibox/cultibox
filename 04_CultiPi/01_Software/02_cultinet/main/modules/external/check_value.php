@@ -17,7 +17,7 @@ switch($type) {
                 break;
     case 'password':
         if((isset($_GET['value2']))&&(!empty($_GET['value2']))) {
-            $value2=$_GET['value'];
+            $value2=$_GET['value2'];
         } else {
             echo "error";
             break;
