@@ -1854,6 +1854,33 @@ msgstr "Zuletzt aktualisiert wurde:"
 msgid "SYNO_UPDATE_SENSOR_HOUR"
 msgstr "Letzte Aktualisierung der Sensoren :"
 
+msgid "CONF_MGT"
+msgstr "Configuration Management"
+
+msgid "IMPORT_CONF_CULTIPI"
+msgstr "Konfiguration importieren"
+
+msgid "IMPORT_CONF"
+msgstr "Konfiguration importieren"
+
+msgid "SUCCESS_IMPORT_CONF"
+msgstr "importierte Konfiguration mit succees"
+
+msgid "ERROR_IMPORT_CONF"
+msgstr "Fehler beim Importieren der Konfiguration, Ihre vorherige Konfiguration wiederhergestellt"
+
+
 #For the webcam part:
 msgid "TITLE_WEBCAM"
 msgstr "derzeit von der Webcam Bild eingefangen"
+
+
+#For the js part:
+msgid "CLOSE_BUTTON"
+msgstr "Close"
+
+msgid "DIR_CONF_NOT_UPTODATE_POPUP"
+msgstr "verwendet wird nicht aktualisiert Konfiguration können Sie die Konfiguration mit dem boutton im Dialog Software zu aktualisieren."
+
+msgid "DISABLE_POPUP"
+msgstr "Mich nicht und lassen Sie mich zu verwalten Sie die Konfiguration im Dialog"

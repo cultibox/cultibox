@@ -1854,6 +1854,33 @@ msgstr "Última actualización de tomar : "
 msgid "SYNO_UPDATE_SENSOR_HOUR"
 msgstr "Ultima actualización de los sensores : "
 
+msgid "CONF_MGT" 
+msgstr "Gestión de la Configuración" 
+
+msgid "IMPORT_CONF_CULTIPI" 
+msgstr "Importar configuración"
+
+msgid "IMPORT_CONF" 
+msgstr "Importar configuración"
+
+msgid "SUCCESS_IMPORT_CONF" 
+msgstr "Configuración importada con succees"
+
+msgid "ERROR_IMPORT_CONF" 
+msgstr "Error al importar la configuración, la configuración anterior se restauró"
+
+
 #For the webcam part:
 msgid "TITLE_WEBCAM"
 msgstr "Capturado actualmente por la cámara de imagen"
+
+
+#For the js part:
+msgid "CLOSE_BUTTON" 
+msgstr "Cerrar"
+
+msgid "DIR_CONF_NOT_UPTODATE_POPUP" 
+msgstr "La configuración utilizada no está actualizado, puede actualizar la configuración con la boutton en el diálogo de software."
+
+msgid "DISABLE_POPUP" 
+msgstr "No avisarme y me dejó administrar la configuración en el diálogo"
