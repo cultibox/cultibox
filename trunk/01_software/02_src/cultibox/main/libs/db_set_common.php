@@ -679,4 +679,63 @@ function check_database() {
 }
 //}}}
 
+
+//{{{ check_sensors_def()
+// ROLE check sensors definition
+function check_sensors_def() {
+    $sql = <<<EOF
+SELECT * FROM `sensors`
+EOF;
+    $db=db_priv_pdo_start();
+    try {
+        $sth=$db->prepare("$sql");
+        $sth-> execute();
+        $res = $sth->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        $ret=$e->getMessage();
+    }
+    $db=null;
+
+    if((isset($ret))&&(!empty($ret))) {
+        if($GLOBALS['DEBUG_TRACE']) {
+            $out[]=__('ERROR_SELECT_SQL').$ret;
+        } else {
+            $out[]=__('ERROR_SELECT_SQL');
+        }
+    }
+
+    $tab=array();
+    if(count($res)>0) {
+        foreach($res as $sensor) {
+            if((!array_key_exists($sensor['type'],$GLOBALS['SENSOR_DEFINITION']))||($sensor['type']!=0)) {
+               $tab[]=$sensor['id'];
+            }
+        }
+    }
+
+    if(count($tab)>0) {
+         $sql=" ";
+         foreach($tab as $index) {
+            $sql = $sql." UPDATE `sensors` SET type=0 WHERE id=".$index." ";
+         }
+
+        $db=db_priv_pdo_start();
+        try {
+            $db->exec("$sql");
+        } catch(PDOException $e) {
+            $ret=$e->getMessage();
+        }
+        $db=null;
+
+        if((isset($ret))&&(!empty($ret))) {
+            if($GLOBALS['DEBUG_TRACE']) {
+                $out[]=__('ERROR_UPDATE_SQL').$ret;
+            } else {
+                $out[]=__('ERROR_UPDATE_SQL');
+            }
+        }
+    }
+}
+//}}}
+
 ?>
