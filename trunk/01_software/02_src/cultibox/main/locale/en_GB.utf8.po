@@ -1853,7 +1853,34 @@ msgstr "Last update of the sensors :"
 msgid "SYNO_UPDATE_SENSOR_HOUR"
 msgstr "Last update of the plugs :"
 
+msgid "CONF_MGT"
+msgstr "Configuration Management"
+
+msgid "IMPORT_CONF_CULTIPI"
+msgstr "Import Configuration"
+
+msgid "IMPORT_CONF"
+msgstr "Import configuration"
+
+msgid "SUCCESS_IMPORT_CONF"
+msgstr "imported configuration with succees"
+
+msgid "ERROR_IMPORT_CONF"
+msgstr "Error while importing your configuration, your previous configuration was restored"
+
+
 #For the webcam part:
 msgid "TITLE_WEBCAM"
 msgstr "Currently captured by the Webcam Image"
+
+
+#For tje js part:
+msgid "CLOSE_BUTTON"
+msgstr "Close"
+
+msgid "DIR_CONF_NOT_UPTODATE_POPUP"
+msgstr "The configuration used is not updated, you can update the configuration with the boutton in the software dialog."
+
+msgid "DISABLE_POPUP"
+msgstr "Do not warn me and let me manage the configuration in the dialog"
 
