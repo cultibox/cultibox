@@ -461,7 +461,7 @@ var updateIsAked = 0;
                 });
                 
                 var ladate=new Date();
-                $('#synoptic_updateSensorHour').html(ladate.getHours()+":"+ladate.getMinutes()+":"+ladate.getSeconds());
+                $('#synoptic_updateSensorHour').html(addZ(ladate.getHours())+":"+addZ(ladate.getMinutes())+":"+addZ(ladate.getSeconds()));
                 
             }
             
@@ -497,7 +497,7 @@ var updateIsAked = 0;
                 });
                 
                 var ladate=new Date();
-                $('#synoptic_updatePlugHour').html(ladate.getHours()+":"+ladate.getMinutes()+":"+ladate.getSeconds());
+                $('#synoptic_updatePlugHour').html(addZ(ladate.getHours())+":"+addZ(ladate.getMinutes())+":"+addZ(ladate.getSeconds()));
                 
             }
             
