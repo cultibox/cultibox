@@ -107,10 +107,33 @@ $(document).ready(function(){
             }).done(function (data) {
                  var json = jQuery.parseJSON(data);
                  if(json==0) {
-
+                    $("#success_import_conf").dialog({
+                        resizable: false,
+                        width: 500,
+                        modal: true,
+                        closeOnEscape: true,
+                        dialogClass: "popup_message",
+                        buttons: [{
+                            text: CLOSE_button,
+                            click: function () {
+                                $( this ).dialog( "close" ); return false;
+                            }
+                        }]
+                    });
                  } else {
-
-
+                    $("#error_import_conf").dialog({
+                        resizable: false,
+                        width: 500,
+                        closeOnEscape: true,
+                        modal: true,
+                        dialogClass: "popup_error",
+                        buttons: [{
+                            text: CLOSE_button,
+                            click: function () {
+                                $( this ).dialog( "close" ); return false;
+                            }
+                        }]
+                    });
                  }
             });
         }
