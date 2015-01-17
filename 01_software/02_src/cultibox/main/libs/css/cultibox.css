@@ -124,15 +124,6 @@ table.table_width{
    width: 100%;
 }
 
-td.historic_marge {
-   width: 20%; 
-   vertical-align: top;
-}
-
-td.code_marge {
-    width: 5%;
-}
-
 td.conf-marge {
    width: 5%;
 }
@@ -971,3 +962,14 @@ input[type='file'] {
     font-size: 12px;
     font-style: italic;
 }
+
+
+td.password-title {
+    width: 31%;
+}
+
+td.password-field {
+    width: 25%; 
+}
+
+

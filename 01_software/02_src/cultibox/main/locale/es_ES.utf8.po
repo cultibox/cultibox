@@ -1292,6 +1292,12 @@ msgstr "Calculo del coste teórico realizado con excito"
 
 
 # For the errors or warnings part:
+msgid "ERROR_SAME_PASSWORD"
+msgstr "Las contraseñas deben coincidir"
+
+msgid "ERROR_EMPTY_PASSWORD"
+msgstr "La contraseña no puede estar vacío"
+
 msgid "ERROR_WEBCAM" 
 msgstr "No se Webcam detectado"
 
@@ -1540,9 +1546,6 @@ msgstr "Se puede usar el asistente para configurar los enchufes y sus programas 
 msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "Se puede usar la interfaz de configuración clásica apretando aquí"
 
-msgid "INFO_RESET_PROGRAM"
-msgstr "Programa(s) reseteado(s) con excitó"
-
 msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Comprobación de la tarjeta SD"
 
@@ -1761,9 +1764,6 @@ msgstr "Programa actual"
 
 
 #For the CUltipi part:
-msgid "CULTIPI_SUBTITLE" 
-msgstr "Configuración y Administración Cultipi" 
-
 msgid "CULTIPI_SYNOPTIC"
 msgstr "sinópticos" 
 
@@ -1868,6 +1868,21 @@ msgstr "Configuración importada con succees"
 
 msgid "ERROR_IMPORT_CONF" 
 msgstr "Error al importar la configuración, la configuración anterior se restauró"
+
+msgid "MGT_ACCESS" 
+msgstr "Gestión de Acceso"
+
+msgid "CHANGE_PASSWORD"
+msgstr "Cambiar la contraseña de la interfaz"
+
+msgid "new_password"
+msgstr "Nueva contraseña"
+
+msgid "CONFIRM_NEW_PASSWORD"
+msgstr "Confirmación de la contraseña"
+
+msgid "SAVE_PASSWORD"
+msgstr "Guardar contraseña"
 
 
 #For the webcam part:

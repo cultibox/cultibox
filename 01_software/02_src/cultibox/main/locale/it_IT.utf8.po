@@ -1293,6 +1293,12 @@ msgstr "Calcolo del costo teorico raggiunto con successo"
 
 
 # For the errors or warnings part:
+msgid "ERROR_SAME_PASSWORD"
+msgstr "Le password devono coincidere"
+
+msgid "ERROR_EMPTY_PASSWORD"
+msgstr "La password non può essere vuoto"
+
 msgid "ERROR_WEBCAM"
 msgstr "No Webcam rilevato"
 
@@ -1541,9 +1547,6 @@ msgstr "È possibile utilizzare la procedura guidata per configurare preso e il 
 msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "È possibile utilizzare la configurazione classica interfaccia qui"
 
-msgid "INFO_RESET_PROGRAM"
-msgstr "Programma Reset (s) (s) successo"
-
 msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Controllo della scheda SD"
 
@@ -1762,9 +1765,6 @@ msgstr "Programma corrente"
 
 
 # For the Cultipi part:
-msgid "CULTIPI_SUBTITLE"
-msgstr "Configurazione e amministrazione Cultipi" 
-
 msgid "CULTIPI_SYNOPTIC"
 msgstr "sinottica"
 
@@ -1869,6 +1869,21 @@ msgstr "Configurazione importato con succees"
 
 msgid "ERROR_IMPORT_CONF"
 msgstr "Errore durante l'importazione della configurazione, la configurazione precedente è stato restaurato"
+
+msgid "MGT_ACCESS"
+msgstr "Access Management"
+
+msgid "CHANGE_PASSWORD"
+msgstr "Modificare la password di interfaccia"
+
+msgid "NEW_PASSWORD"
+msgstr "Nuova password"
+
+msgid "CONFIRM_NEW_PASSWORD"
+msgstr "Password Conferma"
+
+msgid "SAVE_PASSWORD"
+msgstr "Salva password"
 
 
 #For the webcam part:

@@ -1292,6 +1292,12 @@ msgstr "Calculation of the theoretical cost achieved successfully"
 
 
 # For the errors or warnings part:
+msgid "ERROR_SAME_PASSWORD"
+msgstr "The passwords must match"
+
+msgid "ERROR_EMPTY_PASSWORD"
+msgstr "The password can not be empty"
+
 msgid "ERROR_WEBCAM"
 msgstr "No detected Webcam"
 
@@ -1540,9 +1546,6 @@ msgstr "You can use the wizard to configure taken and their program by clicking 
 msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "You can use the classic interface configuration here"
 
-msgid "INFO_RESET_PROGRAM"
-msgstr "Reset program (s) (s) successfully"
-
 msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Checking the SD card"
 
@@ -1760,9 +1763,6 @@ msgid "CURRENT_PROG_COMMENT"
 msgstr "Current program"
 
 #For the Cultipi part:
-msgid "CULTIPI_SUBTITLE"
-msgstr "Configuration and Administration Cultipi"
-
 msgid "CULTIPI_SYNOPTIC"
 msgstr "Synoptic"
 
@@ -1867,6 +1867,21 @@ msgstr "imported configuration with succees"
 
 msgid "ERROR_IMPORT_CONF"
 msgstr "Error while importing your configuration, your previous configuration was restored"
+
+msgid "MGT_ACCESS"
+msgstr "Access Management"
+
+msgid "CHANGE_PASSWORD"
+msgstr "Change the interface password"
+
+msgid "NEW_PASSWORD"
+msgstr "New password"
+
+msgid "CONFIRM_NEW_PASSWORD"
+msgstr "Password Confirmation"
+
+msgid "SAVE_PASSWORD"
+msgstr "Save password"
 
 
 #For the webcam part:
