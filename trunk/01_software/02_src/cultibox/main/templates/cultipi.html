@@ -354,7 +354,23 @@
     <td></td>
 </tr>
 </table>
-</form>
+
+<br />
+<hr style="width:40%"  />
+<br />
+<br />
+<p class="title_conf"><?php echo __('MGT_ACCESS'); ?></p>
+<br />
+<table class="table_width">
+<tr>
+    <td class="conf-marge-cultipi"></td>
+    <td class="conf-field-service"><?php echo __('CHANGE_PASSWORD'); ?>:</td>
+    <td><button id="change_password" name="change_password"><?php echo __('NEW_PASSWORD'); ?></button>
+    </td>
+    <td></td>
+</tr>
+</table>
+
 </div>
 
 
@@ -387,5 +403,27 @@
 <div id="error_import_conf" title="<?php echo __('IMPORT_CONF'); ?>" style="display:none">
     <p><?php echo __('ERROR_IMPORT_CONF'); ?></p>
 </div>
+
+
+<div id="dialog_change_password" title="<?php echo __('NEW_PASSWORD'); ?>" style="display:none">
+    <form>
+        <table class="table_width"> 
+            <tr>
+                <td class="conf-marge"></td>
+                <td class="password-title"><?php echo __('NEW_PASSWORD'); ?>:</td>
+                <td class="password-field"><input type="password" id="new_password" /></td>
+                <td><div id="error_same_password" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_SAME_PASSWORD'); ?></div><div id="error_empty_password" class="error_field" style="display:none"><img src='/cultibox/main/libs/img/arrow_error.png' alt=''><?php echo __('ERROR_EMPTY_PASSWORD'); ?></div></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><?php echo __('CONFIRM_NEW_PASSWORD'); ?>:</td>
+                <td><input type="password" id="confirm_new_password" /></td>
+                <td></td>
+            </tr>
+        </table>
+        <p class="p_center"><input type="submit" id="save_password" value="<?php echo __('SAVE_PASSWORD'); ?>"></p>
+    </form>
+</div>
+
 
 <script>expand("<?php echo $submenu; ?>");</script>

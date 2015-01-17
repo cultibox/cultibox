@@ -274,6 +274,48 @@ $(document).ready(function(){
             }]
         });
     });
+
+    //Change password:
+    $("#change_password").click(function(e) {
+        e.preventDefault();
+        $("#dialog_change_password").dialog({
+            resizable: false,
+            width: 800,
+            modal: true,
+            closeOnEscape: true,
+            dialogClass: "popup_message",
+            buttons: [{
+                text: CLOSE_button,
+                click: function () {
+                    $( this ).dialog( "close" ); return false;
+                }
+            }]
+        });
+    });
+
+    $("#save_password").click(function(e) {
+          e.preventDefault();
+          $("#error_same_password").css("display","none");
+          $("#error_empty_password").css("display","none");
+
+          if($("#new_password").val()=="") {
+            $("#error_empty_password").show();
+
+          } else {
+            $.ajax({
+              cache: false,
+              async: false,
+              url: "main/modules/external/check_value.php",
+              data: {value:$("#new_password").val(),value2:$("#confirm_new_password").val(),type:"password"}
+            }).done(function (data) {
+              if(data!=1)  {
+                  $("#error_same_password").show();
+              } else {
+
+              }
+            });
+          }
+    });
     
     // Slider for zoom
     $("#syno_configure_element_scale").slider({

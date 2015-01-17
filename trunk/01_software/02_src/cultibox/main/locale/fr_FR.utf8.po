@@ -1497,6 +1497,12 @@ msgstr "Le nom du programme doit contenir entre 3 et 16 caractères"
 msgid "ERROR_WEBCAM"
 msgstr "Aucune Webcam détectée"
 
+msgid "ERROR_SAME_PASSWORD"
+msgstr "Les mots de passe doivent correspondre"
+
+msgid "ERROR_EMPTY_PASSWORD"
+msgstr "Le mot de passe ne peut pas être vide"
+
 
 # For the informations part:
 msgid "CONFIRMATION"
@@ -1540,9 +1546,6 @@ msgstr "Vous pouvez utiliser l'assistant pour configurer les prises et leur prog
 
 msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "Vous pouvez utiliser l'interface de configuration classique en cliquant ici"
-
-msgid "INFO_RESET_PROGRAM"
-msgstr "Programme(s) réinitialisé(s) avec succès"
 
 msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Vérification de la carte SD"
@@ -1763,9 +1766,6 @@ msgstr "Programme courant"
 
 
 # For the Cultipi part 
-msgid "CULTIPI_SUBTITLE"
-msgstr "Configuration et administration du Cultipi"
-
 msgid "CULTIPI_SYNOPTIC"
 msgstr "Synoptique"
 
@@ -1870,6 +1870,21 @@ msgstr "Configuration importée avec succèes"
 
 msgid "ERROR_IMPORT_CONF"
 msgstr "Erreur lors de l'import de votre configuration, votre précédente configuration a été restauré"
+
+msgid "MGT_ACCESS"
+msgstr "Gestion des accès"
+
+msgid "CHANGE_PASSWORD"
+msgstr "Changer le mot de passe de l'interface"
+
+msgid "NEW_PASSWORD"
+msgstr "Nouveau mot de passe"
+
+msgid "CONFIRM_NEW_PASSWORD"
+msgstr "Confirmation du mot de passe"
+
+msgid "SAVE_PASSWORD"
+msgstr "Enregistrer le mot de passe"
 
 
 #For the webcam part:

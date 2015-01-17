@@ -1496,6 +1496,12 @@ msgstr "Der Programmname muss zwischen 3 und 16 Zeichen lang sein"
 msgid "ERROR_WEBCAM"
 msgstr "Kein erkannt Webcam"
 
+msgid "ERROR_SAME_PASSWORD"
+msgstr "Die Passwörter müssen übereinstimmen"
+
+msgid "ERROR_EMPTY_PASSWORD"
+msgstr "Das Passwort darf nicht leer sein"
+
 
 # For the informations part:
 msgid "CONFIRMATION"
@@ -1539,9 +1545,6 @@ msgstr "Sie können den Assistenten zu treffen und ihr Programm konfigurieren, i
 
 msgid "WIZARD_DISABLE_FUNCTION"
 msgstr "Sie können die klassischen Schnittstellenkonfiguration verwenden hier"
-
-msgid "INFO_RESET_PROGRAM"
-msgstr "Reset-Programm (e) (n) erfolgreich"
 
 msgid "WAIT_UPDATED_PROGRAM"
 msgstr "Überprüfen der SD-Karte"
@@ -1761,9 +1764,6 @@ msgstr "Aktuelles Programm"
 
 
 #For the Cultipi part:
-msgid "CULTIPI_SUBTITLE"
-msgstr "Konfiguration und Administration Cultipi"
-
 msgid "CULTIPI_SYNOPTIC"
 msgstr "synoptischen"
 
@@ -1868,6 +1868,21 @@ msgstr "importierte Konfiguration mit succees"
 
 msgid "ERROR_IMPORT_CONF"
 msgstr "Fehler beim Importieren der Konfiguration, Ihre vorherige Konfiguration wiederhergestellt"
+
+msgid "MGT_ACCESS"
+msgstr "Zugriffsverwaltung"
+
+msgid "CHANGE_PASSWORD"
+msgstr "Ändern Sie die Schnittstelle Kennwort"
+
+msgid "NEW_PASSWORD"
+msgstr "Neues Passwort"
+
+msgid "CONFIRM_NEW_PASSWORD"
+msgstr "Passwortbestätigung"
+
+msgid "SAVE_PASSWORD"
+msgstr "Passwort speichern"
 
 
 #For the webcam part:
