@@ -1446,11 +1446,12 @@ function clean_index_file($sd_card) {
     } else if(is_file("../../tmp/logs/index")) {
         $path="../../tmp/logs/index";
     } else if(is_file("../../../tmp/logs/index")) {
-        $path="../../tmp/logs/index";
+        $path="../../../tmp/logs/index";
     }
 
     if(strcmp("$path","")==0) return false;
     if(!is_dir("$sd_card/logs/")) return false;
+
 
     if(!@copy("$path", "$sd_card/logs/index")) return false;
     return true;

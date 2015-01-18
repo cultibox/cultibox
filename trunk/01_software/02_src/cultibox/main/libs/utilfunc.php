@@ -807,7 +807,7 @@ function get_sensor_type($sd_card,&$sensor_type) {
     // Define index file
     $file="$sd_card/logs/index";
 
-    //Si on n'arrive pas à trouver le fichier index définissant les capteurs, on renvoie lfalse
+    //Si on n'arrive pas à trouver le fichier index définissant les capteurs, on renvoie false
     if(!file_exists($file)) 
         return false; 
   
@@ -822,22 +822,21 @@ function get_sensor_type($sd_card,&$sensor_type) {
     // Parse file
     // Foreach line of the file
     foreach ($index_array as $line) {
-        // Two first digits are month
-        $month = substr($line,0,2);
-        $day   = substr($line,2,2);
+        $line=trim($line);
+        if(strlen($line)==10) {
+            // Next elements are sensors type
+            $sensor_of_the_day=str_split(substr($line,4, -2), 1);
 
-        // Next elements are sensors type
-        $sensor_of_the_day=str_split(substr($line,4, -2), 1);
-
-        // Update sensor_type array
-        $index = 0;
-        foreach($sensor_of_the_day as $type) {
-            if($index>$GLOBALS['NB_MAX_SENSOR_PLUG']) break;
-         // If type is not null and exists, update return array
-            if ($type != "0" && $type != "" && array_key_exists("$type", $GLOBALS['SENSOR_DEFINITION'])) {
+            // Update sensor_type array
+            $index = 0;
+            foreach($sensor_of_the_day as $type) {
+                if($index>$GLOBALS['NB_MAX_SENSOR_PLUG']) break;
+                // If type is not null and exists, update return array
+                if ($type != "0" && $type != "" && array_key_exists("$type", $GLOBALS['SENSOR_DEFINITION'])) {
                     $sensor_type[$index + 1]=$type;
                 
-                $index = $index + 1;
+                    $index = $index + 1;
+                }
             }
         }
     }
