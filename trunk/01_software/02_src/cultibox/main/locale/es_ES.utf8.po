@@ -190,9 +190,6 @@ msgstr "Formatear la tarjeta"
 msgid "RESET_CONFIRM_SD_CARD"
 msgstr "Seguro que quieres formatear la tarjeta SD? Los ficheros logs podrían desaparecer."
 
-msgid "SECOND_REGUL_ENABLE"
-msgstr "Activar la regulación segundaría (usuario experto)"
-
 msgid "ADVANCED_REGUL_OPTIONS"
 msgstr "Autorizar la modificación de las opciones avanzadas de regulación"
 
@@ -213,9 +210,6 @@ msgstr "Enseñar el menú de calculo de coste"
 
 msgid "RESET_MINMAX"
 msgstr "Reseteo del min/max"
-
-msgid "SHOW_CURRENT_PWD"
-msgstr "Deja el ratón se hace clic sobre la imagen para ver la contraseña"
 
 msgid "CONFIGURE_RTC_OFFSET"
 msgstr "Retardo de tiempo del reloj interno"
@@ -623,9 +617,6 @@ msgstr "por debajo del umbral"
 msgid "REGUL_ABOVE"
 msgstr "por encima del umbral"
 
-msgid "STATE_PLUG"
-msgstr "Estado del enchufe"
-
 msgid "PLUG_MAX_POWER"
 msgstr "Tipo de enchufe(potencia máxima)"
 
@@ -663,9 +654,6 @@ msgstr "Un programa définie Déjà semble vierten premio cette. Tipo de cambiad
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
 msgstr "Programa de juegos :"
-
-msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
-msgstr "Enchufe : "
 
 msgid "CONFIGURE_PROGRAM"
 msgstr "Configurar acción del enchufe"
@@ -823,9 +811,6 @@ msgstr "Importar un programa para el enchufe"
 msgid "TITLE_RESET_PROGRAM"
 msgstr "Borrar el programa del enchufe"
 
-msgid "RESET_ALL_PROGRAM"
-msgstr "de todos los enchufes"
-
 msgid "TITLE_ADD_PLUG"
 msgstr "Anadir un enchufe a programar"
 
@@ -862,12 +847,6 @@ msgstr "Guarde una copia"
 msgid "PROGRAM_DAILY_SAVE_FINISH"
 msgstr "registro tuvo éxito"
 
-msgid "PROGRAM_DAILY_OPEN"
-msgstr "Open"
-
-msgid "PROGRAM_DAILY_OPEN_SELECT"
-msgstr "programa abierto"
-
 msgid "PROGRAM_DAILY_DELETE_SELECT"
 msgstr "Remove Program"
 
@@ -876,9 +855,6 @@ msgstr "Eliminar"
 
 msgid "NO_DAILY_PROGRAM_TO_DELETE"
 msgstr "No hay programas de juegos para eliminar"
-
-msgid "NO_DAILY_PROGRAM_TO_OPEN"
-msgstr "No hay programas de juegos abiertos"
 
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "El programa ha sido eliminado."
@@ -1316,15 +1292,6 @@ msgstr "Error en la petición SQL DELETE"
 msgid "ERROR_SELECT_SQL"
 msgstr "Error en la petición SQL SELECT"
 
-msgid "EMPTY_DATA"
-msgstr "Ninguna grabación para la fecha seleccionada"
-
-msgid "EMPTY_DATA_SENSOR"
-msgstr "No hay registro para el(los) sensor(s) seleccionada(s)"
-
-msgid "EMPTY_POWER_DATA"
-msgstr "Ninguna grabación con respecto a potencia consumida para la fecha seleccionada."
-
 msgid "ERROR_FORMAT_DATE_DAY_START"
 msgstr "Día de inicio: error en el formato de la fecha(AAAA-MM-DD)"
 
@@ -1409,12 +1376,6 @@ msgstr "El precio del KVatio-hora tiene que ser superior a 0 "
 msgid "ERROR_DATE_INTERVAL"
 msgstr "Error en las fechas elegidas: la fecha de inicio tiene que ser inferior o igual a la hora de fin "
 
-msgid "ERROR_UPLOADED_FILE"
-msgstr "Error en la subida de fichero de los programas "
-
-msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
-msgstr "Error en la subida de los datos del fichero de los programas , comprobar el formato del fichero "
-
 msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "Imposible de acceder al fichero de puesta al día , comprobar su configuración"
 
@@ -1475,9 +1436,6 @@ msgstr "Error en la grabación del fichero de calendario en su tarjeta SD"
 msgid "ERROR_WRITE_PROGRAM"
 msgstr "Error en la grabación de los programas en su tarjeta SD"
 
-msgid "ERROR_RESET_PROGRAM"
-msgstr "Error en el reseteo del o de los programas"
-
 msgid "ERROR_MINIMAL_TIME"
 msgstr "El tiempo mínimo autorizado es de 5 minutos"
 
@@ -1519,14 +1477,8 @@ msgstr "Clásico"
 msgid "INFO_SD_CARD"
 msgstr "Una tarjeta compatible con la Cultibox está conectada"
 
-msgid "INFO_PLUG_CULTIBOX_CARD"
-msgstr "Se puede ahora conectar su tarjeta SD a la Cultibox."
-
 msgid "VALID_UPDATE_CONF"
 msgstr "Configuración actualizada con excitó"
-
-msgid "VALID_IMPORT_PROGRAM"
-msgstr "Programa importado con excitó"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Base de Logs borrado con excitó"
@@ -1536,9 +1488,6 @@ msgstr "Ficheros de los logs de los últimos meses grabados con excitó"
 
 msgid "VALID_AUTO_LOAD_LOG"
 msgstr "Ficheros de logs de los últimos 31 días grabados con excito"
-
-msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "Programa actualizado con excitó"
 
 msgid "WIZARD_ENABLE_FUNCTION"
 msgstr "Se puede usar el asistente para configurar los enchufes y sus programas apretando aquí"

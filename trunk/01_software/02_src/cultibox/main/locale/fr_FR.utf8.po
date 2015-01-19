@@ -190,9 +190,6 @@ msgstr "Formater la carte"
 msgid "RESET_CONFIRM_SD_CARD"
 msgstr "Êtes-vous sûr de vouloir formater votre carte SD? Vos fichiers de logs pourraient être détruits."
 
-msgid "SECOND_REGUL_ENABLE"
-msgstr "Activer la régulation secondaire (Utilisateur expert)"
-
 msgid "ADVANCED_REGUL_OPTIONS"
 msgstr "Autoriser la modification des options avancées de régulation"
 
@@ -213,9 +210,6 @@ msgstr "Afficher le menu de calcul des coûts"
 
 msgid "RESET_MINMAX"
 msgstr "Remise à zéro du min/max"
-
-msgid "SHOW_CURRENT_PWD"
-msgstr "Laisser la souris cliquée sur l'image pour afficher le mot de passe"
 
 msgid "CONFIGURE_RTC_OFFSET"
 msgstr "Décalage de l'horloge interne"
@@ -623,9 +617,6 @@ msgstr "dessous du seuil"
 msgid "REGUL_ABOVE"
 msgstr "dessus du seuil"
 
-msgid "STATE_PLUG"
-msgstr "État de la prise"
-
 msgid "PLUG_MAX_POWER"
 msgstr "Type de prise (puissance maximale)"
 
@@ -663,9 +654,6 @@ msgstr "Un programme semble déja définie pour cette prise. Changer le type de 
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
 msgstr "Jeu de programme : "
-
-msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
-msgstr " Prise : "
 
 msgid "CONFIGURE_PROGRAM"
 msgstr "Configurer le comportement de la prise"
@@ -823,9 +811,6 @@ msgstr "Importer un programme pour la prise"
 msgid "TITLE_RESET_PROGRAM"
 msgstr "Effacer le programme pour la/les prise(s)"
 
-msgid "RESET_ALL_PROGRAM"
-msgstr "de toutes les prises"
-
 msgid "TITLE_ADD_PLUG"
 msgstr "Ajouter une prise à configurer"
 
@@ -862,12 +847,6 @@ msgstr "Enregistrer une copie du jeu de programmes"
 msgid "PROGRAM_DAILY_SAVE_FINISH"
 msgstr "Enregistrement réussi"
 
-msgid "PROGRAM_DAILY_OPEN"
-msgstr "Ouvrir"
-
-msgid "PROGRAM_DAILY_OPEN_SELECT"
-msgstr "Ouvrir un jeu de programmes"
-
 msgid "PROGRAM_DAILY_DELETE_SELECT"
 msgstr "Supprimer un jeu de programmes"
 
@@ -876,9 +855,6 @@ msgstr "Supprimer"
 
 msgid "NO_DAILY_PROGRAM_TO_DELETE"
 msgstr "Aucun jeu de programmes à supprimer"
-
-msgid "NO_DAILY_PROGRAM_TO_OPEN"
-msgstr "Aucun jeu de programmes à ouvrir"
 
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "Le jeu de programmes a bien été supprimé."
@@ -1308,15 +1284,6 @@ msgstr "Erreur dans la requête SQL DELETE"
 msgid "ERROR_SELECT_SQL"
 msgstr "Erreur dans la requête SQL SELECT"
 
-msgid "EMPTY_DATA"
-msgstr "Aucun enregistrement à la date sélectionnée"
-
-msgid "EMPTY_DATA_SENSOR"
-msgstr "Aucun enregistrement à la date sélectionnée pour le(s) capteur(s)"
-
-msgid "EMPTY_POWER_DATA"
-msgstr "Aucun enregistrement concernant la puissance consommée pour la date sélectionnée"
-
 msgid "ERROR_FORMAT_DATE_DAY_START"
 msgstr "Jour de départ : erreur dans le format de la date (AAAA-MM-JJ)"
 
@@ -1401,12 +1368,6 @@ msgstr "Le prix du kilowatt-heure doit être supérieur à 0"
 msgid "ERROR_DATE_INTERVAL"
 msgstr "Erreur dans les dates choisies: la date de départ doit être inférieure ou égale à la date de fin"
 
-msgid "ERROR_UPLOADED_FILE"
-msgstr "Erreur lors du chargement du fichier des programmes"
-
-msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
-msgstr "Erreur lors du chargement des données du fichier des programmes, vérifier que le fichier est au bon format"
-
 msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "Impossible d'accéder au fichier des mises à jour, vérifier votre configuration"
 
@@ -1467,9 +1428,6 @@ msgstr "Erreur lors de l'écriture du calendrier sur la carte SD, vérifiez que 
 msgid "ERROR_WRITE_PROGRAM"
 msgstr "Erreur lors de l'écriture des programmes sur la carte SD, vérifiez que la carte n'est pas protégée en écriture"
 
-msgid "ERROR_RESET_PROGRAM"
-msgstr "Erreur lors de la remise à zéro du(des) programme(s)"
-
 msgid "ERROR_MINIMAL_TIME"
 msgstr "Le temps minimal autorisé est de 5 minutes"
 
@@ -1520,14 +1478,8 @@ msgstr "Classique"
 msgid "INFO_SD_CARD"
 msgstr "Une carte SD compatible Cultibox est branchée"
 
-msgid "INFO_PLUG_CULTIBOX_CARD"
-msgstr "Vous pouvez maintenant connecter la carte SD dans la Cultibox."
-
 msgid "VALID_UPDATE_CONF"
 msgstr "Configuration mise à jour avec succès"
-
-msgid "VALID_IMPORT_PROGRAM"
-msgstr "Programme importé avec succès"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Suppression des logs effectuée avec succès"
@@ -1537,9 +1489,6 @@ msgstr "Fichiers de logs des derniers mois enregistrés avec succès"
 
 msgid "VALID_AUTO_LOAD_LOG"
 msgstr "Fichiers de logs des 31 derniers jours enregistrés avec succès"
-
-msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "Programme mis à jour avec succès"
 
 msgid "WIZARD_ENABLE_FUNCTION"
 msgstr "Vous pouvez utiliser l'assistant pour configurer les prises et leur programme en cliquant ici"

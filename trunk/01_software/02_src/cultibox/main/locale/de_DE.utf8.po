@@ -190,9 +190,6 @@ msgstr "Karte formatieren"
 msgid "RESET_CONFIRM_SD_CARD"
 msgstr "Sind Sie sicher, dass Sie Ihre SD-Karte formatieren? Ihre Log-Dateien können zerstört werden."
 
-msgid "SECOND_REGUL_ENABLE"
-msgstr "Aktivieren Sekundärregelung (Expert User)"
-
 msgid "ADVANCED_REGUL_OPTIONS"
 msgstr "Lassen Bearbeitung von erweiterten Steuerungsmöglichkeiten"
 
@@ -213,9 +210,6 @@ msgstr "Menü Ansicht kostet"
 
 msgid "RESET_MINMAX"
 msgstr "Zurücksetzen der min / max"
-
-msgid "SHOW_CURRENT_PWD"
-msgstr "Verlassen Sie die Maus auf das Bild geklickt, um das Passwort zu sehen"
 
 msgid "CONFIGURE_RTC_OFFSET"
 msgstr "Verschiebung des internen Takt"
@@ -623,9 +617,6 @@ msgstr "unterhalb des Schwellen"
 msgid "REGUL_ABOVE"
 msgstr "oberhalb des Schwellen"
 
-msgid "STATE_PLUG"
-msgstr "Staatsnahme"
-
 msgid "PLUG_MAX_POWER"
 msgstr "Steckertyp (maximale Kapazität)"
 
@@ -663,9 +654,6 @@ msgstr "Ein Ensemble Déja Programm Definit gießen cette Preis. Changer le peut
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
 msgstr "Spielprogramm : "
-
-msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
-msgstr " Einnahme : "
 
 msgid "CONFIGURE_PROGRAM"
 msgstr "Konfigurieren des Verhaltens von Entscheidungs"
@@ -823,9 +811,6 @@ msgstr "Importieren Sie ein Programm für die Aufnahme"
 msgid "TITLE_RESET_PROGRAM"
 msgstr "Klar Programmentscheidung"
 
-msgid "RESET_ALL_PROGRAM"
-msgstr "alle genommen"
-
 msgid "TITLE_ADD_PLUG"
 msgstr "In Unterstützung konfigurieren"
 
@@ -862,12 +847,6 @@ msgstr "Speichern Sie eine Kopie"
 msgid "PROGRAM_DAILY_SAVE_FINISH"
 msgstr "Registrierung erfolgreich"
 
-msgid "PROGRAM_DAILY_OPEN"
-msgstr "öffnen"
-
-msgid "PROGRAM_DAILY_OPEN_SELECT"
-msgstr "Programm öffnen"
-
 msgid "PROGRAM_DAILY_DELETE_SELECT"
 msgstr "Programm entfernen"
 
@@ -876,9 +855,6 @@ msgstr "Entfernen"
 
 msgid "NO_DAILY_PROGRAM_TO_DELETE"
 msgstr "Keine Spielprogramme zu entfernen"
-
-msgid "NO_DAILY_PROGRAM_TO_OPEN"
-msgstr "Keine Spiel Programme geöffnet"
 
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "Das Programm wurde gelöscht."
@@ -1307,15 +1283,6 @@ msgstr "Fehler in SQL DELETE-Abfrage"
 msgid "ERROR_SELECT_SQL"
 msgstr "Fehler in der SQL-SELECT-Abfrage"
 
-msgid "EMPTY_DATA"
-msgstr "Kein Eintrag für das ausgewählte Datum"
-
-msgid "EMPTY_DATA_SENSOR"
-msgstr "Keine Aufnahme für das ausgewählte Datum (n) Sensor (en)"
-
-msgid "EMPTY_POWER_DATA"
-msgstr "Kein Eintrag auf den Stromverbrauch für das ausgewählte Datum"
-
 msgid "ERROR_FORMAT_DATE_DAY_START"
 msgstr "Tag der Abreise: Fehler in der Datumsformat (JJJJ-MM-DD)"
 
@@ -1400,12 +1367,6 @@ msgstr "Der Preis pro Kilowattstunde muss größer als 0 sein"
 msgid "ERROR_DATE_INTERVAL"
 msgstr "Fehler in den gewählten Zeitraum: der Abreisedatum muss kleiner als oder gleich dem Enddatum sein"
 
-msgid "ERROR_UPLOADED_FILE"
-msgstr "Fehler beim Laden der Datei Programme"
-
-msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
-msgstr "Fehler beim Laden der Datei Programme sicher, dass die Datei im richtigen Format"
-
 msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "Kann Datei-Updates zugreifen, prüfen Sie Ihre Konfiguration"
 
@@ -1466,9 +1427,6 @@ msgstr "Fehler beim Schreiben den Zeitplan auf der SD-Karte sicher, dass die Kar
 msgid "ERROR_WRITE_PROGRAM"
 msgstr "Fehler beim Schreiben der Programme auf der SD-Karte sicher, dass die Karte nicht schreibgeschützt"
 
-msgid "ERROR_RESET_PROGRAM"
-msgstr "Fehler-Reset (n) Programm (e)"
-
 msgid "ERROR_MINIMAL_TIME"
 msgstr "Die erlaubte Mindestdauer 5 Minuten"
 
@@ -1519,14 +1477,8 @@ msgstr "Klassik"
 msgid "INFO_SD_CARD"
 msgstr "Cultibox kompatible SD-Karte eingesteckt"
 
-msgid "INFO_PLUG_CULTIBOX_CARD"
-msgstr "Sie können nun die SD-Karte in den Cultibox."
-
 msgid "VALID_UPDATE_CONF"
 msgstr "Konfiguration erfolgreich aktualisiert"
-
-msgid "VALID_IMPORT_PROGRAM"
-msgstr "Erfolgreich eingeführte Programm"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Löschen von Protokollen erfolgreich abgeschlossen"
@@ -1536,9 +1488,6 @@ msgstr "Logfiles den letzten Monaten erfolgreich registriert"
 
 msgid "VALID_AUTO_LOAD_LOG"
 msgstr "Log-Dateien der letzten 31 Tage erfolgreich registriert"
-
-msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "Aktualisiert Programm erfolgreich"
 
 msgid "WIZARD_ENABLE_FUNCTION"
 msgstr "Sie können den Assistenten zu treffen und ihr Programm konfigurieren, indem Sie hier verwenden"
