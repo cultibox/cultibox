@@ -8,11 +8,33 @@ if [ -d /var/cache/lighttpd/compress/cultinet ]; then
     rm -Rf /var/cache/lighttpd/compress/cultinet
 fi
 
-
+upgraded="False"
 apt-get update
-apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultipi
-apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultinet
-apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultibox
-apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultiraz
+
+if [ "`apt-get -u upgrade --assume-no|grep cultipi`" != "" ]; then
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultipi
+    upgraded="True"
+fi
+
+if [ "`apt-get -u upgrade --assume-no|grep cultinet`" != "" ]; then
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultinet
+    upgraded="True"
+fi
+
+if [ "`apt-get -u upgrade --assume-no|grep cultibox`" != "" ]; then
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultibox
+    upgraded="True"
+fi
+
+if [ "`apt-get -u upgrade --assume-no|grep cultiraz`" != "" ]; then
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultiraz
+    upgraded="True"
+fi
+
+if [ "$upgraded" == "True" ]; then
+    rm -Rf /var/cache/lighttpd/compress/*
+    /etc/init.d/lighttpd force-reload
+fi
+
 apt-get clean
 rm -Rf /var/lib/apt/lists/*
