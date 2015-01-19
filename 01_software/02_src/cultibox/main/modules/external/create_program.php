@@ -97,8 +97,8 @@ if($check == "1") { //Si la valeur du programme est correcte:
 
         list($hs, $ms, $ss) = explode(':', $cyclic_start);
         list($he, $me, $se) = explode(':', $cyclic_end);
-        $chk_start=mktime($hs,$ms,$ss);
-        $chk_stop=mktime($he, $me, $se);
+        $chk_start=mktime($hs,$ms,$ss,1,1,1970);
+        $chk_stop=mktime($he, $me, $se,1,1,1970);
     } 
 
     //Vérification du type de programme, les traitements ne sont pas les même si le programme reboucle (départ>fin) ou s'il ne reboucle pas (départ<fin)
@@ -160,7 +160,7 @@ if($check == "1") { //Si la valeur du programme est correcte:
         $repeat_check=str_replace(":","",$repeat_time);
         $optimize=false;
 
-
+        $chtime=check_times($start_time_cyclic,$end_time_cyclic);
         if($chtime!=2) {
             //Dans le cas d'un programme qui reboucle, on vérifie si les cycles ne se chevauchent pas,
             // si c'est le cas un seul événement couvre la journée:
@@ -169,7 +169,7 @@ if($check == "1") { //Si la valeur du programme est correcte:
                 unset($prog);
                 $prog[]= array(
                         "start_time" => "$cyclic_start",
-                        "end_time" => "23:59:59",
+                        "end_time" => "$end_time_cyclic",
                         "value_program" => "$value_program",
                         "selected_plug" => "$selected_plug",
                         "type" => "$type",
@@ -181,10 +181,20 @@ if($check == "1") { //Si la valeur du programme est correcte:
             // si c'est le cas un seul événement couvre la journée:
             if((235959-$start_check)+$stop_check>=$repeat_check) {
                 $optimize=true;
+                echo "$pouet";
                 unset($prog);
                 $prog[]= array(
-                        "start_time" => "00:00:00",
+                        "start_time" => "$cyclic_start",
                         "end_time" => "23:59:59",
+                        "value_program" => "$value_program",
+                        "selected_plug" => "$selected_plug",
+                        "type" => "$type",
+                        "number" => $program_index
+                    );
+
+                $prog[]= array(
+                        "start_time" => "00:00:00",
+                        "end_time" => "$end_time_cyclic",
                         "value_program" => "$value_program",
                         "selected_plug" => "$selected_plug",
                         "type" => "$type",
@@ -192,6 +202,7 @@ if($check == "1") { //Si la valeur du programme est correcte:
                     );
             }
         }
+
 
         if(!$optimize) {    
             //Dans le cas ou les cycles ne rebouclent pas entre eux, on va les calculer et les insérer:
@@ -202,13 +213,14 @@ if($check == "1") { //Si la valeur du programme est correcte:
                 if(date('His', $chk_stop)>date('H:i:s', $chk_start)) {
                     $chk_while=$chk_stop-$chk_start;
                 } else {
-                    $chk_while=(mktime(23,59,59)-$chk_start)+($chk_stop-mktime(0,0,0));
+                    $chk_while=(mktime(23,59,59,1,1,1970)-$chk_start)+($chk_stop-86400);
                 }
             } else {
                 $elapsed_time=mktime(substr($final_cyclic_end,0,2),substr($final_cyclic_end,3,2),substr($final_cyclic_end,6,2))-mktime(substr($cyclic_start,0,2),substr($cyclic_start,3,2),substr($cyclic_start,6,2));
                 $chk_while=$chk_stop-$chk_start; 
             }
 
+            $reboucle=false;
             while($chk_while<$elapsed_time) {
                 //On ne veut pas enregistrer le premier événement qui a déja été enregistré plus haut - utilisation de la variable chk_first:
                 if($chk_first) {
@@ -231,18 +243,40 @@ if($check == "1") { //Si la valeur du programme est correcte:
 
 
                 //Ajout du nouveau cycle au cycle précédent:
-                $val_start=mktime($hh,$mm,$ss)+$step;
-                $val_stop=mktime($shh,$smm,$sss)+$step;
+                $val_start=mktime($hh,$mm,$ss,1,1,1970)+$step;
+                $val_stop=mktime($shh,$smm,$sss,1,1,1970)+$step;
+
+                if($chtime==2) {
+                    if($val_stop>86400) $val_stop=$val_stop-86400;
+                    if($val_start>86400) $val_start=$val_start-86400;
+                } else {
+                    if($val_stop>86400) {
+                        $cyclic_start=date('H:i:s', $val_start);
+                        $cyclic_end=date('H:i:s', $val_stop);
+                        break;
+                    }
+                }
 
                 //Retransformation des temps en hh:mm:ss:
                 $cyclic_start=date('H:i:s', $val_start);
                 $cyclic_end=date('H:i:s', $val_stop);
 
+                if($chk_first) {
+                    if($val_stop==86400) {  
+                        $val_stop=85399;
+                        $cyclic_end=date('H:i:s', $val_stop);
+                    }
+                }
+
+
 
                 //Pour eviter que la partie cyclique reboucle:
-                if(($chtime==2)&&(str_replace(":","",$cyclic_end)>str_replace(":","",$start_time))) {
+                if(($chtime==2)&&($reboucle)&&(str_replace(":","",$cyclic_start)>str_replace(":","",$start_time))) {
+                    break;
+                } elseif(str_replace(":","",$cyclic_end)>str_replace(":","",$end_time_cyclic)) {
                     break;
                 }
+                    
 
                 //Mise à jour de la valeur de vérification de fin de boucle en fonction du nouveau cycle:
                 if($chtime==2) {
@@ -252,13 +286,14 @@ if($check == "1") { //Si la valeur du programme est correcte:
                     if(date('His', $chk_stop)>date('His', $chk_start)) {
                         $chk_while=$chk_stop-$chk_start;
                     } else {
-                        //Si le cycle a déja rebouclé, le temps écoulé est: 
+                        $reboucle=true;
+                        //Si le cycle reboucle, le temps écoulé est: 
                         if(strcmp(date('H:i:s',($chk_stop)),"00:00:00")!=0) {
-                            $chk_while=(mktime(0,0,0,1,2,1970)-$chk_start)+($chk_stop-mktime(0,0,0,1,1,1970));
+                            $chk_while=mktime(0,0,0,1,2,1970)-$chk_start+$chk_stop;
                         } else {
                             //Si le temps de fin est à 00:00:00 on est en bordure du rebouclage, on considère qu'on a pas encore rebouclé: 
                             //le temps écoulé est: fin du cycle courant - début du premier cycle
-                            $chk_while=(mktime(0,0,0)-$chk_start);
+                            $chk_while=86400-$chk_start;
                         }
                     }
                 } else {
