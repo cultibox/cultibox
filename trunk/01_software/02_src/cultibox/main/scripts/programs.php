@@ -22,6 +22,7 @@ if((empty($selected_plug))||(!isset($selected_plug))) {
 $chinfo=true;
 $chtime="";
 $resume=array();
+$export_selected=1;
 
 $index_info=array();
 program\get_program_index_info($index_info);
@@ -148,7 +149,8 @@ $plugs_infos=get_plugs_infos($nb_plugs,$main_error);
 
 // Check if user has not removed the limit of 1000 change
 $limit=false;
-$last_action="";
+$last_action=0;
+
 if ($remove_1000_change_limit == "False")
 {
     //Pour vérifier que l'on ne dépasse pas la limite de changement d'état des prises:

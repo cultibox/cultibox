@@ -1,3 +1,10 @@
+Cultibox (2.0.26) precise; urgency=low
+    + Correction de la programmation cyclique
+    + Correction de l'iniialisation de variables pour la partie programme
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Jan 19 18:29:45 CEST 2014
+
+
 Cultibox (2.0.25) precise; urgency=low
     + Mise en place du message de vérification de la configuration
     + Ajout du synoptique dans la page d'accueil
