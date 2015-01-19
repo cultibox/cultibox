@@ -190,9 +190,6 @@ msgstr "Formatta scheda"
 msgid "RESET_CONFIRM_SD_CARD"
 msgstr "Sei sicuro di voler formattare la scheda SD? I file di log possono essere distrutti."
 
-msgid "SECOND_REGUL_ENABLE"
-msgstr "Abilita controllo secondario (utenti esperti)"
-
 msgid "ADVANCED_REGUL_OPTIONS"
 msgstr "Consenti modifica delle opzioni di controllo avanzate"
 
@@ -213,9 +210,6 @@ msgstr "Visualizza il menu che costano"
 
 msgid "RESET_MINMAX"
 msgstr "Ripristino del min / max"
-
-msgid "SHOW_CURRENT_PWD"
-msgstr "Lasciare il mouse cliccato sull'immagine per visualizzare la password"
 
 msgid "CONFIGURE_RTC_OFFSET"
 msgstr "Spostamento del clock interno"
@@ -623,9 +617,6 @@ msgstr "inferiore alla soglia"
 msgid "REGUL_ABOVE"
 msgstr "sopra della soglia"
 
-msgid "STATE_PLUG"
-msgstr "Assunzione di Stato"
-
 msgid "PLUG_MAX_POWER"
 msgstr "Tipo di spina (capacità massima)"
 
@@ -663,9 +654,6 @@ msgstr "Un programma définie Deja tarlo versare il premio cette. Tipo di Change
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
 msgstr "Programma di gioco : "
-
-msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
-msgstr " Presa : "
 
 msgid "CONFIGURE_PROGRAM"
 msgstr "Configurare il comportamento di decisione"
@@ -823,9 +811,6 @@ msgstr "Importazione di un programma per l'adozione"
 msgid "TITLE_RESET_PROGRAM"
 msgstr "Cancella decisione programma"
 
-msgid "RESET_ALL_PROGRAM"
-msgstr "tutti presi"
-
 msgid "TITLE_ADD_PLUG"
 msgstr "Aggiungere il supporto per configurare"
 
@@ -862,12 +847,6 @@ msgstr "Salvare una copia"
 msgid "PROGRAM_DAILY_SAVE_FINISH"
 msgstr "Registrazione riuscita"
 
-msgid "PROGRAM_DAILY_OPEN"
-msgstr "Aperto"
-
-msgid "PROGRAM_DAILY_OPEN_SELECT"
-msgstr "Programma Aperto"
-
 msgid "PROGRAM_DAILY_DELETE_SELECT"
 msgstr "Remove Program"
 
@@ -876,9 +855,6 @@ msgstr "Rimuovi"
 
 msgid "NO_DAILY_PROGRAM_TO_DELETE"
 msgstr "Non ci sono programmi di gioco per rimuovere"
-
-msgid "NO_DAILY_PROGRAM_TO_OPEN"
-msgstr "Senza programmi di gioco aperti"
 
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "Il programma è stato cancellato."
@@ -1317,15 +1293,6 @@ msgstr "Errore in SQL Query di eliminazione"
 msgid "ERROR_SELECT_SQL"
 msgstr "Errore nella query SQL SELECT"
 
-msgid "EMPTY_DATA"
-msgstr "Nessun record per la data selezionata"
-
-msgid "EMPTY_DATA_SENSOR"
-msgstr "Nessuna registrazione per il sensore data selezionata (s) (s)"
-
-msgid "EMPTY_POWER_DATA"
-msgstr "Nessun record sul consumo di energia per la data selezionata"
-
 msgid "ERROR_FORMAT_DATE_DAY_START"
 msgstr "Giorno di partenza: errore nel formato della data (YYYY-MM-DD)"
 
@@ -1410,12 +1377,6 @@ msgstr "Il prezzo per chilowattora deve essere maggiore di 0"
 msgid "ERROR_DATE_INTERVAL"
 msgstr "Errore nelle date prescelte: La data di partenza deve essere minore o uguale alla data di fine"
 
-msgid "ERROR_UPLOADED_FILE"
-msgstr "Programmi Error loading file"
-
-msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
-msgstr "Programmi di file di dati Errore durante il caricamento, verificare che il file è nel formato corretto"
-
 msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "Impossibile accedere agli aggiornamenti dei file, controllare la configurazione"
 
@@ -1476,9 +1437,6 @@ msgstr "Errore iscritto il calendario sulla scheda SD, assicurarsi che la carta 
 msgid "ERROR_WRITE_PROGRAM"
 msgstr "Programmi di scrittura di errore sulla scheda SD, assicurarsi che la scheda non sia protetta da scrittura"
 
-msgid "ERROR_RESET_PROGRAM"
-msgstr "Reset Error (s) programma (s)"
-
 msgid "ERROR_MINIMAL_TIME"
 msgstr "Il tempo minimo consentito è di 5 minuti"
 
@@ -1520,14 +1478,8 @@ msgstr "Classico"
 msgid "INFO_SD_CARD"
 msgstr "SD card compatibile Cultibox è collegato"
 
-msgid "INFO_PLUG_CULTIBOX_CARD"
-msgstr "È ora possibile collegare la scheda SD nel Cultibox."
-
 msgid "VALID_UPDATE_CONF"
 msgstr "Configurazione aggiornato correttamente"
-
-msgid "VALID_IMPORT_PROGRAM"
-msgstr "Programma importato correttamente"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Eliminazione dei registri completato con successo"
@@ -1537,9 +1489,6 @@ msgstr "File di log ultimi mesi con successo registrati"
 
 msgid "VALID_AUTO_LOAD_LOG"
 msgstr "I file di log degli ultimi 31 giorni registrate con successo"
-
-msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "Programma aggiornato con successo"
 
 msgid "WIZARD_ENABLE_FUNCTION"
 msgstr "È possibile utilizzare la procedura guidata per configurare preso e il loro programma cliccando qui"

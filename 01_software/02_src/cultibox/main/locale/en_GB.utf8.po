@@ -190,9 +190,6 @@ msgstr "Format Card"
 msgid "RESET_CONFIRM_SD_CARD"
 msgstr "Are you sure you want to format your SD card? Your log files may be destroyed."
 
-msgid "SECOND_REGUL_ENABLE"
-msgstr "Enable secondary control (expert user)"
-
 msgid "ADVANCED_REGUL_OPTIONS"
 msgstr "Allow editing of advanced control options"
 
@@ -213,9 +210,6 @@ msgstr "View menu costing"
 
 msgid "RESET_MINMAX"
 msgstr "Resetting the min / max"
-
-msgid "SHOW_CURRENT_PWD"
-msgstr "Leave the mouse clicked on the image to view the password"
 
 msgid "CONFIGURE_RTC_OFFSET"
 msgstr "Shift of the internal clock"
@@ -623,9 +617,6 @@ msgstr "below the threshold"
 msgid "REGUL_ABOVE"
 msgstr "above the threshold"
 
-msgid "STATE_PLUG"
-msgstr "State taking"
-
 msgid "PLUG_MAX_POWER"
 msgstr "Plug type (maximum capacity)"
 
@@ -663,9 +654,6 @@ msgstr "A Programme semble vu pour cette prize définie. Changer le peut type of
 # For the programs part:
 msgid "VIEW_CURRENT_PROGRAM"
 msgstr "Daily program : "
-
-msgid "VIEW_CURRENT_PROGRAM_PLUG_PART"
-msgstr " Plug : "
 
 msgid "CONFIGURE_PROGRAM"
 msgstr "Configure the behavior of decision"
@@ -823,9 +811,6 @@ msgstr "Importing a program for taking"
 msgid "TITLE_RESET_PROGRAM"
 msgstr "Clear program decision"
 
-msgid "RESET_ALL_PROGRAM"
-msgstr "all taken"
-
 msgid "TITLE_ADD_PLUG"
 msgstr "Add support to configure"
 
@@ -862,12 +847,6 @@ msgstr "Save a copy"
 msgid "PROGRAM_DAILY_SAVE_FINISH"
 msgstr "Registration succeeded"
 
-msgid "PROGRAM_DAILY_OPEN"
-msgstr "Open"
-
-msgid "PROGRAM_DAILY_OPEN_SELECT"
-msgstr "Open program"
-
 msgid "PROGRAM_DAILY_DELETE_SELECT"
 msgstr "Remove Program"
 
@@ -876,9 +855,6 @@ msgstr "Remove"
 
 msgid "NO_DAILY_PROGRAM_TO_DELETE"
 msgstr "No game programs to remove"
-
-msgid "NO_DAILY_PROGRAM_TO_OPEN"
-msgstr "No game programs open"
 
 msgid "PROGRAM_DAILY_DELETE_VALID"
 msgstr "The program has been deleted."
@@ -1316,15 +1292,6 @@ msgstr "Error in SQL DELETE query"
 msgid "ERROR_SELECT_SQL"
 msgstr "Error in the SQL SELECT query"
 
-msgid "EMPTY_DATA"
-msgstr "No record for the selected date"
-
-msgid "EMPTY_DATA_SENSOR"
-msgstr "No recording for the selected date (s) sensor (s)"
-
-msgid "EMPTY_POWER_DATA"
-msgstr "No record on the power consumption for the selected date"
-
 msgid "ERROR_FORMAT_DATE_DAY_START"
 msgstr "Day of departure: error in the date format (YYYY-MM-DD)"
 
@@ -1409,12 +1376,6 @@ msgstr "The price per kilowatt hour must be greater than 0"
 msgid "ERROR_DATE_INTERVAL"
 msgstr "Error in the dates chosen: the out date must be less than or equal to the end date"
 
-msgid "ERROR_UPLOADED_FILE"
-msgstr "Error loading file programs"
-
-msgid "ERROR_GENERATE_PROGRAM_FROM_FILE"
-msgstr "Error loading data file programs, verify that the file is in the correct format"
-
 msgid "ERROR_REMOTE_UPDATE_FILE"
 msgstr "Unable to access file updates, check your configuration"
 
@@ -1475,9 +1436,6 @@ msgstr "Error writing the schedule on the SD card, make sure the card is not wri
 msgid "ERROR_WRITE_PROGRAM"
 msgstr "Error writing programs on the SD card, make sure the card is not write-protected"
 
-msgid "ERROR_RESET_PROGRAM"
-msgstr "Error reset (s) program (s)"
-
 msgid "ERROR_MINIMAL_TIME"
 msgstr "The minimum time allowed is 5 minutes"
 
@@ -1519,14 +1477,8 @@ msgstr "Classical"
 msgid "INFO_SD_CARD"
 msgstr "Cultibox compatible SD card is plugged"
 
-msgid "INFO_PLUG_CULTIBOX_CARD"
-msgstr "You can now connect the SD card into the Cultibox."
-
 msgid "VALID_UPDATE_CONF"
 msgstr "Configuration updated successfully"
-
-msgid "VALID_IMPORT_PROGRAM"
-msgstr "Successfully imported program"
 
 msgid "VALID_DELETE_LOGS"
 msgstr "Deleting logs successfully completed"
@@ -1536,9 +1488,6 @@ msgstr "Logfiles recent months successfully registered"
 
 msgid "VALID_AUTO_LOAD_LOG"
 msgstr "Log files of the last 31 days successfully registered"
-
-msgid "INFO_VALID_UPDATE_PROGRAM"
-msgstr "Updated program successfully"
 
 msgid "WIZARD_ENABLE_FUNCTION"
 msgstr "You can use the wizard to configure taken and their program by clicking here"
