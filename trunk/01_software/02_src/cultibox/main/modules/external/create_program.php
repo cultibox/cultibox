@@ -158,13 +158,14 @@ if($check == "1") { //Si la valeur du programme est correcte:
         $start_check=str_replace(":","",$start_time);
         $stop_check=str_replace(":","",$end_time);
         $repeat_check=str_replace(":","",$repeat_time);
+        $duration_check=str_replace(":","",$cyclic_duration);
         $optimize=false;
 
         $chtime=check_times($start_time_cyclic,$end_time_cyclic);
-        if($chtime!=2) {
-            //Dans le cas d'un programme qui reboucle, on vérifie si les cycles ne se chevauchent pas,
-            // si c'est le cas un seul événement couvre la journée:
-            if($stop_check-$start_check>=$repeat_check) {
+        if($duration_check>=$repeat_check) {
+            if($chtime!=2) {
+                //Dans le cas d'un programme qui ne reboucle pas, on vérifie si les cycles ne se chevauchent pas,
+                // si c'est le cas un seul événement couvre la journée:
                 $optimize=true;
                 unset($prog);
                 $prog[]= array(
@@ -175,13 +176,10 @@ if($check == "1") { //Si la valeur du programme est correcte:
                         "type" => "$type",
                         "number" => $program_index
                     );
-            }
-        } else {
-            //Dans le cas d'un programme qui ne reboucle pas, on vérifie si les cycles ne se chevauchent pas,
-            // si c'est le cas un seul événement couvre la journée:
-            if((235959-$start_check)+$stop_check>=$repeat_check) {
+            } else {
+            //Dans le cas d'un programme qui reboucle, on vérifie si les cycles ne se chevauchent pas,
+            // si c'est le cas deux événements couvrent la journée:
                 $optimize=true;
-                echo "$pouet";
                 unset($prog);
                 $prog[]= array(
                         "start_time" => "$cyclic_start",
@@ -190,7 +188,7 @@ if($check == "1") { //Si la valeur du programme est correcte:
                         "selected_plug" => "$selected_plug",
                         "type" => "$type",
                         "number" => $program_index
-                    );
+                );
 
                 $prog[]= array(
                         "start_time" => "00:00:00",
@@ -202,7 +200,6 @@ if($check == "1") { //Si la valeur du programme est correcte:
                     );
             }
         }
-
 
         if(!$optimize) {    
             //Dans le cas ou les cycles ne rebouclent pas entre eux, on va les calculer et les insérer:
@@ -226,14 +223,35 @@ if($check == "1") { //Si la valeur du programme est correcte:
                 if($chk_first) {
                     //Dans le cas ou l'on n'est pas dans le premier cycle on enregistre le programme:
                     if(strcmp("$cyclic_end","00:00:00")==0) $cyclic_end="23:59:59"; //La fin de la journée est définit comme 23:59:59
-                    $prog[]= array(
-                        "start_time" => "$cyclic_start",
-                        "end_time" => "$cyclic_end",
-                        "value_program" => "$value_program",
-                        "selected_plug" => "$selected_plug",
-                        "type" => "$type",
-                        "number" => $program_index
-                    );
+
+                    if(str_replace(":","",$cyclic_start)>str_replace(":","",$cyclic_end)) {
+                        $prog[]= array(
+                            "start_time" => "$cyclic_start",
+                            "end_time" => "23:59:59",
+                            "value_program" => "$value_program",
+                            "selected_plug" => "$selected_plug",
+                            "type" => "$type",
+                            "number" => $program_index
+                        );
+                        $prog[]= array(
+                            "start_time" => "00:00:00",
+                            "end_time" => "$cyclic_end",
+                            "value_program" => "$value_program",
+                            "selected_plug" => "$selected_plug",
+                            "type" => "$type",
+                            "number" => $program_index
+                        );
+
+                    } else {
+                        $prog[]= array(
+                            "start_time" => "$cyclic_start",
+                            "end_time" => "$cyclic_end",
+                            "value_program" => "$value_program",
+                            "selected_plug" => "$selected_plug",
+                            "type" => "$type",
+                            "number" => $program_index
+                        );
+                    }
                 }
 
                 //Récupération en heure, minute seconde des temps:
@@ -268,15 +286,13 @@ if($check == "1") { //Si la valeur du programme est correcte:
                     }
                 }
 
-
-
                 //Pour eviter que la partie cyclique reboucle:
-                if(($chtime==2)&&($reboucle)&&(str_replace(":","",$cyclic_start)>str_replace(":","",$start_time))) {
+                if(($chtime==2)&&($reboucle)&&(str_replace(":","",$cyclic_end)>str_replace(":","",$start_time))) {
                     break;
-                } elseif(str_replace(":","",$cyclic_end)>str_replace(":","",$end_time_cyclic)) {
+                } elseif(($chtime!=2)&&(str_replace(":","",$cyclic_end)>str_replace(":","",$end_time_cyclic))) {    
                     break;
                 }
-                    
+                   
 
                 //Mise à jour de la valeur de vérification de fin de boucle en fonction du nouveau cycle:
                 if($chtime==2) {
