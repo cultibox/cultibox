@@ -9,7 +9,7 @@
 // Single-user credentials
 // Example: $USER = 'user'; $PASSWORD = 'password';
 $USER = 'cultipi';
-$PASSWORD = 'raspberry';
+$PASSWORD = 'cultipi';
 
 // Multi-user credentials
 // Example: $ACCOUNTS = array('user1' => 'password1', 'user2' => 'password2');
