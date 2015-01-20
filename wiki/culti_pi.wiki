@@ -22,7 +22,7 @@ Les différentes sortie disponible sur le Raspberry pi sont utilisées de la fa�
 ||     ||     ||      0v ||      ||  9 || 10 ||   || RxD     || 16  || 15  ||
 ||  17 ||   0 || GPIO. 0 || Slave select     || 11 || 12 || Alimentation des modules externes  || GPIO. 1 || 1   || 18  ||
 ||  27 ||   2 || GPIO. 2 || Bouton de RAZ     || 13 || 14 ||   || 0v      ||     ||     ||
-||  22 ||   3 || GPIO. 3 ||      || 15 || 16 ||   || GPIO. 4 || 4   || 23  ||
+||  22 ||   3 || GPIO. 3 || LED     || 15 || 16 ||   || GPIO. 4 || 4   || 23  ||
 ||     ||     ||    3.3v ||      || 17 || 18 ||   || GPIO. 5 || 5   || 24  ||
 ||  10 ||  12 ||    MOSI ||      || 19 || 20 ||   || 0v      ||     ||     ||
 ||   9 ||  13 ||    MISO ||      || 21 || 22 ||   || GPIO. 6 || 6   || 25  ||
