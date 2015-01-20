@@ -117,11 +117,8 @@ proc log {msg} {
     
     
     #puts $fid "$::($channel:host):$::($channel:port): $msg"
-    if {$rc != 1} {
-        puts $fid "${Time}\t[lindex $Splitted 3]\t[lindex $Splitted 5]\t[lindex $Splitted 7]"
-    } else {
-        puts $fid "Server log : Folowing message could not be resolved -${msg}-"
-    }
+    puts $fid "${Time}\t[lindex $Splitted 3]\t[lindex $Splitted 5]\t[lindex $Splitted 7]"
+
     close $fid
 }
 
