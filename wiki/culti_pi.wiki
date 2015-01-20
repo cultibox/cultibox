@@ -57,6 +57,8 @@ Le logiciel Cultibox arrête ensuite le serveur Culti Pi pui le redémarre.
 Le serveur Culti Pi est responsable du lancement de chaque module. Il gère les repères et permet à chaque module de lire ou écrire les repères.
 Les modules peuvent lire les repères pour effectuer des actions ou écrire les repères.
 
+Au démarrage le serveur Cultipi affiche des informations. S'il est lancé par le daemon, les logs sont enregistrés dans /var/log/cultipi/cultipi-service.log
+
 === Espace de configuration ===
 
 Cet espace permet de stocker les configurations qui peuvent être démarrées par le serveur. Chaque configuration est représentée par un dossier.
