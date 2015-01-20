@@ -5,11 +5,11 @@ set rootDir [file dirname [file dirname [info script]]]
 set logDir $rootDir
 set serveurLogFileName [file join $rootDir serverLog serveurLog.tcl]
 
-puts "Starting cultiPi - PID : [pid]"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : Starting cultiPi - PID : [pid]"
 set TimeStartcultiPi [clock milliseconds]
 
 set fileName(cultiPi,confRootDir) [lindex $argv 0]
-puts "server : XML Conf directory : $fileName(cultiPi,confRootDir)"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : server : XML Conf directory : $fileName(cultiPi,confRootDir)"
 if {$fileName(cultiPi,confRootDir) == ""} {
     puts "CultiPi : Error : conf directory must be defined"
     return
@@ -36,48 +36,59 @@ set TrameIndex 0
 
 # Chargement du fichier qui donne la configuration
 set fileName(cultiPi,confDir) [file join $fileName(cultiPi,confRootDir) [lindex [::piXML::open_xml $fileName(cultiPi,conf)] 2 0 1 1]]
-puts "CultiPi : conf : conf to start is $fileName(cultiPi,confDir) - File exists ? [file exists $fileName(cultiPi,confDir)]"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : conf : conf to start is $fileName(cultiPi,confDir) - File exists ? [file exists $fileName(cultiPi,confDir)]"
 
 # Load cultiPi configuration
 set confStart(start) [lindex [::piXML::open_xml [file join $fileName(cultiPi,confDir) cultiPi start.xml]] 2]
 
 
 # Load serverLog
-puts "CultiPi : start : Starting serveurLog"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Starting serveurLog"
 set confStart(serverLog,pid) ""
 set confStart(serverLog) [::piXML::searchItemByName serverLog $confStart(start)]
 set confStart(serverLog,pathexe) [::piXML::searchOptionInElement pathexe $confStart(serverLog)]
-puts "CultiPi : start : serveurLog pathexe : $confStart(serverLog,pathexe)"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog pathexe : $confStart(serverLog,pathexe)"
 set confStart(serverLog,path) [file join $rootDir [::piXML::searchOptionInElement path $confStart(serverLog)]]
-puts "CultiPi : start : serveurLog path : $confStart(serverLog,path)"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog path : $confStart(serverLog,path)"
 set confStart(serverLog,xmlconf) [file join $fileName(cultiPi,confDir) [::piXML::searchOptionInElement xmlconf $confStart(serverLog)]]
-puts "CultiPi : start : serveurLog xmlconf : $confStart(serverLog,xmlconf) , file exists ? [file exists $confStart(serverLog,xmlconf)]"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog xmlconf : $confStart(serverLog,xmlconf) , file exists ? [file exists $confStart(serverLog,xmlconf)]"
 set confStart(serverLog,waitAfterUS) [::piXML::searchOptionInElement waitAfterUS $confStart(serverLog)]
-puts "CultiPi : start : serveurLog waitAfterUS : $confStart(serverLog,waitAfterUS)"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog waitAfterUS : $confStart(serverLog,waitAfterUS)"
 set confStart(serverLog,port) [::piXML::searchOptionInElement port $confStart(serverLog)]
-puts "CultiPi : start : serveurLog port : $confStart(serverLog,port)"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog port : $confStart(serverLog,port)"
 set tempLogPath [::piXML::searchItemByName logPath [lindex [::piXML::open_xml $confStart(serverLog,xmlconf)] 2]]
 set confStart(serverLog,logsRootDir) [::piXML::searchOptionInElement logfile $tempLogPath]
-puts "CultiPi : start : serveurLog logsRootDir : $confStart(serverLog,logsRootDir)"
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog logsRootDir : $confStart(serverLog,logsRootDir)"
 set TimeStartserveurLog [clock milliseconds]
 #open "| tclsh \"$serveurLogFileName\" $port(serverLogs) \"$logDir\""
-puts "CultiPi : start : serveurLog : $confStart(serverLog,pathexe) \"$confStart(serverLog,path)\" $confStart(serverLog,port) \"$confStart(serverLog,logsRootDir)\""
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : serveurLog : $confStart(serverLog,pathexe) \"$confStart(serverLog,path)\" $confStart(serverLog,port) \"$confStart(serverLog,logsRootDir)\""
 
 set confStart(serverLog,pipeID) [open "| $confStart(serverLog,pathexe) \"$confStart(serverLog,path)\" $confStart(serverLog,port) \"$confStart(serverLog,logsRootDir)\""]
 after $confStart(serverLog,waitAfterUS)
 
 # init log
-puts "CultiPi : start : Open log" ; update
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Open log" ; update
 ::piLog::openLog $confStart(serverLog,port) "culipi"
 ::piLog::log $TimeStartcultiPi "info" "starting serveur"
 ::piLog::log $TimeStartserveurLog "info" "starting serveurLog"
 ::piLog::log $TimeStartserveurLog "info" "Port : $port(server)"
 
 # Load server Culti Pi
-puts "CultiPi : start : Load server" ; update
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Load server" ; update
 ::piLog::log [clock millisecond] "info" "starting serveur"
 ::piServer::start messageGestion $port(server)
 ::piLog::log [clock millisecond] "info" "serveur is started"
+
+# On alimente les esclaves
+exec gpio -g mode 18 out
+exec gpio -g write 18 1
+
+# On pilote le fil vers les esclaves
+exec gpio -g mode 17 out
+exec gpio -g write 17 1
+
+# On attend 20 seconds
+after 20000
 
 # On change la vitesse du bus I2C
 # set RC [catch {
@@ -85,7 +96,7 @@ puts "CultiPi : start : Load server" ; update
     # exec sudo modprobe i2c_bcm2708 baudrate=32000
 # } msg]
 # if {$RC != 0} {
-    # puts "CultiPi : I2C speed : error $msg"
+    # puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : I2C speed : error $msg"
 # }
 
 # On attend que la date soit correcte
@@ -93,16 +104,16 @@ proc checkDate {} {
     if {[clock seconds] > 1419700000} {
         set ::dateIsCorrect 1
     } else {
-        puts "CultiPi : start : Date is not correct ([clock seconds] under 1419700000) , waiting ..."; update
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Date is not correct ([clock seconds] under 1419700000) , waiting ..."; update
         ::piLog::log [clock millisecond] "info" "Date is not correct, waiting ..."
         after 1000 checkDate
     }
 }
 
-puts "CultiPi : start : Check date" ; update
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Check date" ; update
 after 200 checkDate
 vwait dateIsCorrect
-puts "CultiPi : start : Date is OK, continue" ; update
+puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : Date is OK, continue" ; update
 
 # Lancement de tous les modules
 foreach moduleXML $confStart(start) {
@@ -110,18 +121,18 @@ foreach moduleXML $confStart(start) {
     if {$moduleName != "serverLog"} {
         set confStart(${moduleName},pid) ""
         set confStart(${moduleName},pathexe) [::piXML::searchOptionInElement pathexe $moduleXML]
-        puts "CultiPi : start : $moduleName pathexe : $confStart(${moduleName},pathexe)"
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName pathexe : $confStart(${moduleName},pathexe)"
         set confStart($moduleName,path) [file join $rootDir [::piXML::searchOptionInElement path $moduleXML]]
-        puts "CultiPi : start : $moduleName path : $confStart($moduleName,path)"
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName path : $confStart($moduleName,path)"
         set confStart($moduleName,xmlconf) [file join $fileName(cultiPi,confDir) [::piXML::searchOptionInElement xmlconf $moduleXML]]
-        puts "CultiPi : start : $moduleName xmlconf : $confStart($moduleName,xmlconf) , file exists ? [file exists $confStart($moduleName,xmlconf)]"
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName xmlconf : $confStart($moduleName,xmlconf) , file exists ? [file exists $confStart($moduleName,xmlconf)]"
         set confStart($moduleName,waitAfterUS) [::piXML::searchOptionInElement waitAfterUS $moduleXML]
-        puts "CultiPi : start : $moduleName waitAfterUS : $confStart($moduleName,waitAfterUS)"
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName waitAfterUS : $confStart($moduleName,waitAfterUS)"
         set confStart($moduleName,port) [::piXML::searchOptionInElement port $moduleXML]
-        puts "CultiPi : start : $moduleName port : $confStart($moduleName,port)"
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName port : $confStart($moduleName,port)"
 
         ::piLog::log [clock milliseconds] "info" "Load $moduleName"
-        puts "CultiPi : start : $moduleName exec : $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(server)"
+        puts "[clock format [clock seconds] -format "%b %d %H:%M:%S"] : CultiPi : start : $moduleName exec : $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(server)"
         set confStart($moduleName,pipeID) [open "| $confStart($moduleName,pathexe) \"$confStart($moduleName,path)\" $confStart($moduleName,port) \"$confStart($moduleName,xmlconf)\" $confStart(serverLog,port) $port(server)"]
         after $confStart($moduleName,waitAfterUS)
                
