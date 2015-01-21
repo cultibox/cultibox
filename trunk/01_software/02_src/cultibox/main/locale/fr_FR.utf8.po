@@ -1522,6 +1522,9 @@ msgstr "Sauvegarde des données en cours, patientez s'il vous plait..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_AVANCED_PLUG_WIZARD"
+msgstr "L'assistant permet uniquement le branchement d'une lampe sur la prise 1. Si vous désirez brancher un autre élément, rendez vous dans l'onglet 'Prise'"
+
 msgid "TOOLTIP_SEND_INFOS"
 msgstr "En activant cette option, vous permettez l'envoie d'informations sur un site distant afin d'aider au développement et à la correction d'erreurs du système Cultibox. Les informations envoyées concernent: la version du logiciel, le type de votre navigateur, les versions des firmwares de la Cultibox et votre type de système d'exploitation"
 

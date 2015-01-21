@@ -65,6 +65,9 @@
                         <option <?php if(strcmp($plug_type,"dehumidifier")==0) { echo 'selected';} ?> value="dehumidifier"><?php echo __('PLUG_DEHUMIDIFIER'); ?></option>
                         <option <?php if(strcmp($plug_type,"other")==0) { echo 'selected';} ?> value="other"><?php echo __('PLUG_UNKNOWN'); ?></option>
                     </select>
+                    <?php if($selected_plug==1) { ?>
+                        <img src="main/libs/img/infos.png" alt=""  title="<?php echo __('TOOLTIP_AVANCED_PLUG_WIZARD'); ?>" />
+                    <?php } ?>
                 </td>
                 <td></td>
             </tr>

@@ -1521,6 +1521,9 @@ msgstr "Data saving in progress, please wait..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_AVANCED_PLUG_WIZARD"
+msgstr "The wizard only allows the connection of a lamp socket 1. If you want to connect another item, go to the onget 'Plug'"
+
 msgid "TOOLTIP_SHOW_WEBCAM"
 msgstr "By enabling this option you can have access to the page of the 'Webcam' which appears in the main menu bar"
 

@@ -1522,6 +1522,9 @@ msgstr "Backup dei dati in corso, attendere prego..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_AVANCED_PLUG_WIZARD"
+msgstr "La procedura guidata consente solo il collegamento di un portalampada 1. Se si desidera collegare un altro elemento, andare al onget 'Jack'"
+
 msgid "TOOLTIP_SHOW_WEBCAM"
 msgstr "Abilitando questa opzione è possibile accedere alla pagina del 'Webcam' che appare nella barra del menu principale"
 
