@@ -1,6 +1,9 @@
 
 proc stopCultiPi {} {
     ::piLog::log [clock milliseconds] "info" "Debut arret Culti Pi"
+    
+    ::piLog::log [clock milliseconds] "info" "Extinction des alimentations"
+    exec gpio -g write 18 0
 
     # Arret de tous les modules
     foreach moduleXML $::confStart(start) {
