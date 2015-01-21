@@ -2,6 +2,7 @@ Cultibox (2.0.27) precise; urgency=low
     + Correction de l'affichage du lien synoptique dans la page welcome
     + Ajout d'un bouton fermer pour la console
     + Ajout d'un tooltip pour la lampe dans l'assistant
+    + Ajout de l'heure de création de la capture de la webcam
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Wed Jan 21 18:31:14 CEST 2014
 

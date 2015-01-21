@@ -1840,6 +1840,9 @@ msgstr "Save password"
 msgid "TITLE_WEBCAM"
 msgstr "Currently captured by the Webcam Image"
 
+msgid "TIME_CREATION_IMG"
+msgstr "Image captured"
+
 
 #For tje js part:
 msgid "CLOSE_BUTTON"

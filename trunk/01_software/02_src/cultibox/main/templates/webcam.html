@@ -8,8 +8,12 @@
     <p class="p_center">
         <img id="screen_webcam" src="<?php echo $screen; ?>" title="" class="screenshot" />
     </p>
+    <p class="p_date_creation" id="date_creation_webcam">
+        <?php if(strcmp("$date_creation","")!=0) { 
+           echo __('TIME_CREATION_IMG')." ".$date_creation;
+        } ?>
+    </p>
 </div>
-
 
 <div id="error_webcam" style="display:none" class="text_info">
     <?php echo __('ERROR_WEBCAM'); ?>

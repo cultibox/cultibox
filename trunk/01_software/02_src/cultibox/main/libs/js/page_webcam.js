@@ -41,6 +41,29 @@ getSnapshot = function(first) {
                 $("#screen_webcam").attr("src", "/cultibox/tmp/webcam.jpg?"+d.getTime());
                 $("#webcam").show();
                 $("#error_webcam").css("display","none");
+
+                $.ajax({
+                    beforeSend: function(jqXHR) {
+                        $.xhrPool.push(jqXHR);
+                    },
+                    complete: function(jqXHR) {
+                        var index = $.xhrPool.indexOf(jqXHR);
+                        if (index > -1) {
+                            $.xhrPool.splice(index, 1);
+                        }
+                    },
+                    cache: false,
+                    async: true,
+                    url: "main/modules/external/get_snapshot_infos.php"
+                }).done(function (data) {
+                    var objJSON = jQuery.parseJSON(data);
+                    if(objJSON!="") {
+                        $("#date_creation_webcam").text(objJSON);
+                        $("#date_creation_webcam").show();
+                    } else {
+                        $("#date_creation_webcam").css("display","none");
+                    }
+                });
             } else {
                 $("#error_webcam").show();
                 $("#webcam").css("display","none");
