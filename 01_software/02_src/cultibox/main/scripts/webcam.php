@@ -28,9 +28,11 @@ if((!isset($sd_card))||(empty($sd_card))) {
 }
 
 $screen="";
+$date_creation="";
 
 if(is_file($GLOBALS['BASE_PATH']."tmp/webcam.jpg")) {
     $screen="/cultibox/tmp/webcam.jpg";
+    $date_creation=date("H:i:s", filectime($GLOBALS['BASE_PATH']."tmp/webcam.jpg"));
 }
 
 

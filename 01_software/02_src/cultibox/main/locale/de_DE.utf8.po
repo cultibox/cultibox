@@ -1841,6 +1841,9 @@ msgstr "Passwort speichern"
 msgid "TITLE_WEBCAM"
 msgstr "derzeit von der Webcam Bild eingefangen"
 
+msgid "TIME_CREATION_IMG"
+msgstr "Bild eingefangen"
+
 
 #For the js part:
 msgid "CLOSE_BUTTON"

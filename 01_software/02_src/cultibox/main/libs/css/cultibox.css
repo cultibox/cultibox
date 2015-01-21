@@ -973,3 +973,10 @@ td.password-field {
 }
 
 
+
+p.p_date_creation {
+    text-align: left;
+    font-size: 12px;
+    font-style: italic;
+    padding-left: 40px;
+}
