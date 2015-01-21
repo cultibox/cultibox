@@ -480,6 +480,7 @@ general_log             = 1
 
 = Configuration du réseau du Cultipi =
  * Ajout des firmwares wifi disponibles:
+
 {{{
 apt-get install atmel-firmware firmware-atheros firmware-brcm80211 firmware-libertas firmware-ralink firmware-realtek libertas-firmware zd1211-firmware
 }}}
