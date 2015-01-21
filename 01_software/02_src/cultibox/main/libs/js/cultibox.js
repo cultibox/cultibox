@@ -264,7 +264,8 @@ function get_content(page,get_array) {
            modal: true,
            height: 600,
            width: 800,
-           title: ""
+           title: "",
+           buttons: [{ text: CLOSE_button, click: function() { $( this ).dialog( "close" ); } }]
        });
        $dialog.dialog('open');
     }
