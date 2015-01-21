@@ -1521,6 +1521,9 @@ msgstr "Datensicherung läuft, bitte warten..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_AVANCED_PLUG_WIZARD"
+msgstr "Mit dem Assistenten können nur die Verbindung eines Lampenfassung 1. Wenn Sie ein anderes Element verbinden wollen, auf die onget 'Jack' gehen"
+
 msgid "TOOLTIP_SEND_INFOS"
 msgstr "Diese Option aktivieren, können Sie das Senden von Informationen an einen entfernten Ort, um bei der Entwicklung und Korrektur von Fehlern Cultibox System zu unterstützen. Die übermittelten Informationen betreffen: die Software-Version der Browser-Typ, die Firmware-Versionen Ihrer Cultibox und Typ des Betriebssystems"
 
