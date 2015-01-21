@@ -13,7 +13,6 @@ apt-get update
 
 if [ "`apt-get -u upgrade --assume-no|grep cultipi`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultipi
-    upgraded="True"
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultinet`" != "" ]; then
@@ -28,7 +27,6 @@ fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultiraz`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultiraz
-    upgraded="True"
 fi
 
 if [ "$upgraded" == "True" ]; then
