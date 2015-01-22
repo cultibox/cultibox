@@ -112,7 +112,7 @@ proc log {msg} {
         set Time "[clock format [expr [lindex $Splitted 1] / 1000] -format "%d/%m/%Y %H:%M:%S."][expr [lindex $Splitted 1] % 1000]"
     } msgErr]
     if {$rc} {
-        log "<[clock milliseconds]><serveurlog><info><could not computre time error : $msgErr>"
+        log "<[clock milliseconds]><serveurlog><info><log:: could not compute time error : $msgErr>"
     }
     
     

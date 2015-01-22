@@ -6,6 +6,7 @@
 # Ensuite l'appui sur le bouton permet de vider la conf réseau
 
 # Initialisation : 
+puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] Initialisation des pins du GPIO"
 # Le bouton est branché sur la pin 13 sur GPIO. Wirring Pi l'appel 2, le BCM 27
 # La pin est en entrée (la commande suivante marche aussi : gpio mode 2 in)
 exec gpio -g mode 27 in
@@ -26,13 +27,14 @@ proc firstLoop {} {
 
     if {[clock seconds] < $::endTime} {
 
-        # L'état de la LED correspond au nb de seconde modulo 2
-        gpio -g write 22 [expr [clock seconds] % 2]
-        
+
         # On regarde l'état de du switch
         set pinValue [exec gpio -g read 27]
         
         if {$pinValue == 1} {
+           
+            # On force la LED à être allumée
+            exec gpio -g write 22 0
            
             incr ::compteur
             
@@ -40,6 +42,18 @@ proc firstLoop {} {
             # La boucle est rappelé toutes les 50ms
             # 3000 / 50 --> 60
             if {$::compteur > 60} {
+            
+                puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] RAZ du RPi demandé"
+               
+                # On fait clignoter la LED 10 fois
+                for {set i 0} {$i < 10} {incr i} {
+                    exec gpio -g write 22 0
+                    after 100
+                    exec gpio -g write 22 1
+                    after 100
+                    update
+                }
+                
                
                 set ::compteur 0
            
@@ -55,6 +69,10 @@ proc firstLoop {} {
             
         } else {
             set ::compteur 0
+            
+            # L'état de la LED correspond au nb de seconde modulo 2
+            exec gpio -g write 22 [expr [clock seconds] % 2]
+            
             # On la rappel toute les 50ms si le bouton n'a pas été appuyé:
             after 50 firstLoop
         }
@@ -67,10 +85,14 @@ proc firstLoop {} {
 
 }
 
+puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] Vérification de l'effacement du du Cultipi"
+firstLoop
+
 vwait firstLoopFinish
 
 set compteur 0
 
+puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] Boucle de vérification de l'effacement de la conf réseau"
 # Procédure utilisée pour vérifier l'état de la pin et faire les MAJ si nécéssaire:
 proc checkAndUpdate {} {
 
@@ -79,8 +101,6 @@ proc checkAndUpdate {} {
         exec reboot
     }
 
-    # L'état de la LED correspond au nb de seconde / 2 modulo 2
-    gpio -g write 22 [expr ([clock seconds] / 2) % 2]
 
     # On lit la valeur de la pin
     set pinValue [exec gpio -g read 27]
@@ -90,7 +110,21 @@ proc checkAndUpdate {} {
        
         incr ::compteur
        
+        # On force la LED à être allumée
+        exec gpio -g write 22 0
+       
         if {$::compteur > 40} {
+           
+            puts  "[clock format [clock seconds] -format "%b %d %H:%M:%S"] RAZ de la conf réseau demandé"
+           
+            # On fait clignoter la LED 10 fois
+            for {set i 0} {$i < 10} {incr i} {
+                exec gpio -g write 22 0
+                after 100
+                exec gpio -g write 22 1
+                after 100
+                update
+            }
            
             set ::compteur 0
        
@@ -113,6 +147,10 @@ proc checkAndUpdate {} {
         }
     } else {
         set ::compteur 0
+        
+        # L'état de la LED correspond au nb de seconde / 2 modulo 2
+        exec gpio -g write 22 [expr ([clock seconds] / 2) % 2]
+        
         # On la rappel toute les 50ms si le bouton n'a pas été appuyé
         after 50 checkAndUpdate
     }
