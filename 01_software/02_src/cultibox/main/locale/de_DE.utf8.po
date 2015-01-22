@@ -1735,13 +1735,22 @@ msgid "CULTIPI_LOGS"
 msgstr "Anzeigen von Protokollen von Dienstleistungen"
 
 msgid "CULTIPI_LOGS_HTTPD"
-msgstr "Meldet den httpd-Dienst"
+msgstr "Klicken Sie auf das Bild, um die Protokolle der HTTP-Dienst zu sehen"
 
 msgid "CULTIPI_LOGS_MYSQL"
-msgstr "Logs Mysql-Service"
+msgstr "Klicken Sie auf das Bild, um die Protokolle der MySQL-Dienst zu sehen"
 
 msgid "CULTIPI_LOGS_CULTIPI"
-msgstr "Protokolle der Cultipi Service"
+msgstr "Klicken Sie auf das Bild, um die Protokolle Cultipi Service anzuzeigen"
+
+msgid "CULTIPI_DL_LOGS_HTTPD"
+msgstr "Klicken Sie auf das Bild, um die Protokolle HTTP-Dienst herunterladen"
+
+msgid "CULTIPI_DL_LOGS_MYSQL"
+msgstr "Klicken Sie auf das Bild, um die Protokolle der MySQL-Dienst herunterladen"
+
+msgid "CULTIPI_DL_LOGS_CULTIPI"
+msgstr "Klicken Sie auf das Bild, um die Protokolle Cultipi Service herunterladen"
 
 msgid "CULTIPI_VIEW_LOGS"
 msgstr "Show-Protokolle"
@@ -1780,7 +1789,7 @@ msgid "CULTIPI_SOFT_VERSION"
 msgstr "Software Version"
 
 msgid "CULTIPI_SOFT"
-msgstr "Software CultiPi"
+msgstr "Software Cultipi"
 
 msgid "CULTINET_SOFT"
 msgstr "Cultinet Software"

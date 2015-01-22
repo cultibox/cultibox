@@ -1735,13 +1735,22 @@ msgid "CULTIPI_LOGS"
 msgstr "Ver registros de los servicios"
 
 msgid "CULTIPI_LOGS_HTTPD" 
-msgstr "Registra el servicio httpd"
+msgstr "Haga clic en la imagen para ver los registros del servicio Http"
 
 msgid "CULTIPI_LOGS_MYSQL" 
-msgstr "servicio Registros Mysql"
+msgstr "Haga clic en la imagen para ver los registros del servicio de MySQL"
 
 msgid "CULTIPI_LOGS_CULTIPI" 
-msgstr "Registros de servicio Cultipi" 
+msgstr "Haga clic en la imagen para ver los registros de servicio Cultipi"
+
+msgid "CULTIPI_DL_LOGS_HTTPD" 
+msgstr "Haga clic en la imagen para descargar los registros de servicio Http"
+
+msgid "CULTIPI_DL_LOGS_MYSQL" 
+msgstr "Haga clic en la imagen para descargar los registros del servicio de MySQL"
+
+msgid "CULTIPI_DL_LOGS_CULTIPI" 
+msgstr "Haga clic en la imagen para descargar los registros de servicio Cultipi"
 
 msgid "CULTIPI_VIEW_LOGS" 
 msgstr "Mostrar registros"
@@ -1749,7 +1758,7 @@ msgstr "Mostrar registros"
 msgid "OUTPUT_LOGS" 
 msgstr "Salida de Registros"
 
-msgid  "ERROR_LOGS"
+msgid "ERROR_LOGS"
 msgstr "Registros de error" 
 
 msgid "RESTART_SERVICE" 
@@ -1783,7 +1792,7 @@ msgid "CULTIPI_SOFT_VERSION"
 msgstr "Software Version"
 
 msgid "CULTIPI_SOFT" 
-msgstr "Software CultiPi"
+msgstr "Software Cultipi"
 
 msgid "CULTINET_SOFT"
 msgstr "Cultinet Software"
