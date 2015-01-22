@@ -11,17 +11,17 @@
     
     switch ($action) {
         case "logs_mysql" :
-            exec("sudo cat /var/log/mysql/mysql.log 2>/dev/null",$ret[0],$err);
+            exec("sudo cat /var/log/mysql/mysql.log 2>/dev/null | tail -100",$ret[0],$err);
 
-            exec("cat /var/log/mysql/mysql.err 2>/dev/null",$ret[1],$err);
+            exec("sudo cat /var/log/mysql/mysql.err 2>/dev/null | tail -100",$ret[1],$err);
             break;
         case "logs_httpd" :
             $ret[0]="";
-            exec("sudo cat /var/log/lighttpd/error.log 2>/dev/null",$ret[1],$err);
+            exec("sudo cat /var/log/lighttpd/error.log 2>/dev/null | tail -100",$ret[1],$err);
             
             break;
         case "logs_cultipi":
-            exec("sudo cat /var/log/cultipi/cultipi.log 2>/dev/null",$ret[0],$err);
+            exec("sudo cat /var/log/cultipi/cultipi.log 2>/dev/null | tail -100",$ret[0],$err);
             $ret[1]="";
             break;
         default:
