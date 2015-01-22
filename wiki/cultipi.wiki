@@ -1,15 +1,33 @@
-#summary Culti Pi
+#summary  module WiFi
 
 = Introduction =
 
-Cette section de l'aide décrit le fonctionnement du Culti Pi.
+Cette section de l'aide décrit le fonctionnement du  module WiFi.
 
-Ce module permet de connecter la Cultibox est ses accessoires.
+Ce module permet de connecter à la Cultibox et ses accessoires en WiFi ou RJ45.
 
-Deux composants sont présents dans la Culti Pi :
- * Le logiciel Cultibox
- * Le logiciel Culti Pi
+= Installation =
 
+
+= Utilisation =
+
+== Ré-initialisation complète ==
+
+Pour réinitialiser complètement le module WiFi (retrouver le mode usine) :
+  * Éteindre le module WiFi en ôtant l'alimentation
+  * Rebrancher l'alimentation électrique
+  * Attendre que la LED rouge située sur le dessus soit clignotante
+  * Appuyer pendant 5 secondes sur le bouton du dessus
+  * La LED clignote alors rapidement 10 fois
+
+== Réinitialiser la configuration réseau ==
+
+Pour réinitialiser complètement la configuration réseau :
+  * Le module WIFi doit être alimenté depuis plus de 5 minutes
+  * La LED sur le dessus doit changer d'état toutes les deux secondes
+  * Appuyer pendant 5 secondes sur le bouton du dessus
+  * La LED clignote alors rapidement 10 fois
+  
 = Hardware =
 
 Les différentes sortie disponible sur le Raspberry pi sont utilisées de la façon suivante :
@@ -38,23 +56,28 @@ Les différentes sortie disponible sur le Raspberry pi sont utilisées de la fa�
 
 = Software =
 
-== Architecture Culti Pi ==
+Deux composants sont présents dans la  module WiFi :
+ * Le logiciel Cultibox
+ * Le logiciel  module WiFi
 
-Le logiciel Culti Pi est composé de :
- * Un serveur Culti Pi. Il s'assure du bon démarrage de tous les composants, il gère les échange entre les composants et enregistre les logs.
- * Différents composants. On retrouve parmi les composants : Un serveur de calcul de 'état des prises, un module de pilotage des prises, un module d'acquisition des données des capteurs...
+
+== Architecture  module WiFi ==
+
+Le logiciel  module WiFi est composé de :
+ * Un serveur  module WiFi. Il s'assure du bon démarrage de tous les composants, il gère les échange entre les composants et enregistre les logs.
+ * Différents composants. On retrouve parmi les composants : Un serveur de calcul de l'état des prises, un module de pilotage des prises, un module d'acquisition des données des capteurs...
 
 Trois espaces sur la carte sont présents pour le bon fonctionnement du logiciel :
- * L'espace ou est installé Culti Pi : /opt/cultipi
- * L'espace de configuration de Culti Pi : /etc/cultipi
+ * L'espace ou est installé  module WiFi : /opt/cultipi
+ * L'espace de configuration de  module WiFi : /etc/cultipi
  * L'espace ou sont les logs : /var/log/cultipi
  * L'espace ou sont présents les logiciel Cultibox et Cultinet : /var/www
 
 
 Fonctionnement général :
-Sur une action de l'utilisateur, le logiciel Cultibox génère une configuration pour Culti Pi. Cette configuration regroupe l'ensemble des fichiers permettant au serveur Culti Pi de bien fonctionner.
-Le logiciel Cultibox arrête ensuite le serveur Culti Pi pui le redémarre.
-Le serveur Culti Pi est responsable du lancement de chaque module. Il gère les repères et permet à chaque module de lire ou écrire les repères.
+Sur une action de l'utilisateur, le logiciel Cultibox génère une configuration pour  module WiFi. Cette configuration regroupe l'ensemble des fichiers permettant au serveur  module WiFi de bien fonctionner.
+Le logiciel Cultibox arrête ensuite le serveur  module WiFi puis le redémarre.
+Le serveur  module WiFi est responsable du lancement de chaque module. Il gère les repères et permet à chaque module de lire ou écrire les repères.
 Les modules peuvent lire les repères pour effectuer des actions ou écrire les repères.
 
 Au démarrage le serveur Cultipi affiche des informations. S'il est lancé par le daemon, les logs sont enregistrés dans /var/log/cultipi/cultipi-service.log
@@ -77,9 +100,9 @@ Pour changer le dossier de configuration qui sera chargé, il faut modifier le p
 
 Chaque configuration est un dossier dans lequel on retrouve la configuration des différents modules. Pour chaque module, un dossier avec ces fichiers de configurations à l'intérieur.
 
-=== Serveur Culti Pi ===
+=== Serveur  module WiFi ===
 
-Au démarrage du serveur Culti Pi,il charge la liste des repères de sa configuration. Chaque repère représente une entrée ou une sortie.
+Au démarrage du serveur  module WiFi,il charge la liste des repères de sa configuration. Chaque repère représente une entrée ou une sortie.
 Ensuite le serveur démarre tous les composants définit dans le fichier de configuration.
 
 Pour démarrer le serveur CultiPi :
@@ -197,7 +220,7 @@ Pour réaliser le pilotage, il utilise le module "Module I2C".
 
 Matériel nécessaire :
  - Un Raspberry Pi
- - Une carte d'extension Culti Pi
+ - Une carte d'extension  module WiFi
 
 
 == Commandes/Informations utiles ==
