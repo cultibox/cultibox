@@ -556,7 +556,8 @@ var updateIsAked = 0;
 
 
     // Display services logs:
-    $(":button[name='cultipi_logs']").click(function() {
+    $("a[name='cultipi_logs']").click(function(e) {
+        e.preventDefault();
         var id=$(this).attr('id');
         $.blockUI({
         message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
@@ -611,7 +612,9 @@ var updateIsAked = 0;
                         buttons: [{
                             text: CLOSE_button,
                             click: function () {
-                                $( this ).dialog( "close" ); return false;
+                                $(this).scrollTop(0);
+                                $(this).dialog('close'); 
+                                return false;
                             }
                         }]
                     });
@@ -621,6 +624,49 @@ var updateIsAked = 0;
             });
         }});
     });
+
+
+     // Download logs services file:
+    $("a[name='dl_cultipi_logs']").click(function(e) {
+        e.preventDefault();
+        var id=$(this).attr('id');
+        $.blockUI({
+        message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+        centerY: 0,
+        css: {
+            top: '20%',
+            border: 'none',
+            padding: '5px',
+            backgroundColor: 'grey',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .9,
+            color: '#fffff'
+        },
+        onBlock: function() {
+            $("#output_logs").empty();
+            $("#error_logs").empty();
+            $.ajax({
+                cache: false,
+                async: true,
+                url: "main/modules/external/prepare_dl_logs.php",
+                data: {action:id},
+                success: function (data) {
+                    var objJSON = jQuery.parseJSON(data);
+
+                    if(objJSON!="") {
+                        $.fileDownload('tmp/'+objJSON);
+                    }
+
+                    $.unblockUI();
+
+                },error: function (data) {
+                    $.unblockUI();
+                }
+            });
+        }});
+    });
+
 
     $("#restart_cultipi").click(function(e) {
      e.preventDefault();

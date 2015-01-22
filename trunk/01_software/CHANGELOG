@@ -1,3 +1,9 @@
+Cultibox (2.0.28) precise; urgency=low
+    + Remise en forme de l'administration du Cultipi
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Jan 21 18:31:14 CEST 2014
+
+
 Cultibox (2.0.27) precise; urgency=low
     + Correction de l'affichage du lien synoptique dans la page welcome
     + Ajout d'un bouton fermer pour la console
