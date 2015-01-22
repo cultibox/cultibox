@@ -1734,13 +1734,22 @@ msgid "CULTIPI_LOGS"
 msgstr "Viewing logs of services"
 
 msgid "CULTIPI_LOGS_HTTPD"
-msgstr "Logs the httpd service"
+msgstr "Click on the image to view the logs of the Http service"
 
 msgid "CULTIPI_LOGS_MYSQL"
-msgstr "Logs Mysql service"
+msgstr "Click on the image to view the logs of the MySQL service"
 
 msgid "CULTIPI_LOGS_CULTIPI"
-msgstr "Logs of Cultipi service"
+msgstr "Click on the image to view the logs of Cultipi service"
+
+msgid "CULTIPI_DL_LOGS_HTTPD"
+msgstr "Click on the image to download the logs of Http service"
+
+msgid "CULTIPI_DL_LOGS_MYSQL"
+msgstr "Click on the image to download the logs of the MySQL service"
+
+msgid "CULTIPI_DL_LOGS_CULTIPI"
+msgstr "Click on the image to download the logs of Cultipi service"
 
 msgid "CULTIPI_VIEW_LOGS"
 msgstr "Show logs"
@@ -1782,7 +1791,7 @@ msgid "CULTIPI_SOFT_VERSION"
 msgstr "Software Version"
 
 msgid "CULTIPI_SOFT"
-msgstr "Software CultiPi"
+msgstr "Software Cultipi"
 
 msgid "CULTINET_SOFT"
 msgstr "Cultinet Software"

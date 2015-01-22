@@ -35,9 +35,9 @@ $(document).ready(function(){
      }).done(function (data) {
          var objJSON = jQuery.parseJSON(data);
         
-         $("#div_cultipi_soft").append("<b>"+objJSON[0]+"</b>");
-         $("#div_cultinet_soft").append("<b>"+objJSON[1]+"</b>");
-         $("#div_cultibox_soft").append("<b>"+objJSON[2]+"</b>");
+        var version="<p class='p_center'><b><i><?php echo __('CULTIPI_SOFT_VERSION'); ?>:</i></b></p><br /><?php echo __('CULTIPI_SOFT'); ?>:  <b>"+objJSON[0]+"</b><br /><?php echo __('CULTINET_SOFT'); ?>:  <b>"+objJSON[1]+"</b><br /><?php echo __('CULTIBOX_SOFT'); ?>:  <b>"+objJSON[2]+"</b>";
+
+        $('#version_soft').attr('title', version);
      });
 
     $.ajax({
