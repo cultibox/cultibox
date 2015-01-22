@@ -1,5 +1,6 @@
 Cultibox (2.0.28) precise; urgency=low
     + Remise en forme de l'administration du Cultipi
+    + Ajout des infos de régulation secondaire au chargement de la page programme
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Wed Jan 21 18:31:14 CEST 2014
 
