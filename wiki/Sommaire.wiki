@@ -20,6 +20,8 @@
     * [install_sensor_ec Sonde d’Électro Conductivité (EC)]
     * [install_sensor_od Sonde d'Oxygène Dissous (OD)]
     * [install_sensor_orp Sonde de Potentiel d’oxydoréduction (ORP)]
+    * [cultipi Module WiFi]
+      * [cultipi_install Création d'une image pour le module WiFi]
   * [interface_logiciel Logiciel Cultibox]
     * [gui_soft_welcome Accueil]
     * [gui_soft_conf Configuration]
