@@ -1521,6 +1521,12 @@ msgstr "Data saving in progress, please wait..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_IMPORT_CONF"
+msgstr "This feature allows you to import a backup of a Cultibox software as a sql file"
+
+msgid "TOOLTIP_CHANGE_PWD"
+msgstr "This feature allows you to change the password required when connecting to the software"
+
 msgid "TOOLTIP_AVANCED_PLUG_WIZARD"
 msgstr "The wizard only allows the connection of a lamp socket 1. If you want to connect another item, go to the onget 'Plug'"
 
@@ -1761,7 +1767,7 @@ msgid "ERROR_LOGS"
 msgstr "Error Logs"
 
 msgid "RESTART_SERVICE"
-msgstr "Restart the service"
+msgstr "Click image to restart the service"
 
 msgid "SERVICE_ON"
 msgstr "Service march"

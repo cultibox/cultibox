@@ -1521,6 +1521,12 @@ msgstr "Copia de datos en curso, espere por favor..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_IMPORT_CONF" 
+msgstr "Esta característica le permite importar una copia de seguridad de un software Cultibox como un archivo sql"
+
+msgid "TOOLTIP_CHANGE_PWD"
+msgstr "Esta característica le permite cambiar la contraseña necesaria al conectar con el software"
+
 msgid "TOOLTIP_AVANCED_PLUG_WIZARD"
 msgstr "El asistente sólo permite la conexión de un casquillo de la lámpara 1. Si desea conectar otro tema, vaya a la onget 'Enchufe'"
 
@@ -1762,7 +1768,7 @@ msgid "ERROR_LOGS"
 msgstr "Registros de error" 
 
 msgid "RESTART_SERVICE" 
-msgstr "Reiniciar el servicio"
+msgstr "Haga clic en la imagen para reiniciar el servicio"
 
 msgid "SERVICE_ON" 
 msgstr "marcha el servicio"

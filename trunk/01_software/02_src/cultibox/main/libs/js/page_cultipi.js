@@ -88,7 +88,22 @@ $(document).ready(function(){
 
 
             data.context = $('#import_conf').click(function () {
+                $.blockUI({
+                message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
                     data.submit();
+                } });
             });
         },
         done: function (e, data) {
@@ -99,45 +114,76 @@ $(document).ready(function(){
                 name=file.name;
             });
 
-            $.ajax({
-                cache: false,
-                async: false,
-                url: "main/modules/external/import_soft_config.php",
-                data: {filename:name}
-            }).done(function (data) {
-                 var json = jQuery.parseJSON(data);
-                 if(json==0) {
-                    $("#success_import_conf").dialog({
-                        resizable: false,
-                        width: 500,
-                        modal: true,
-                        closeOnEscape: true,
-                        dialogClass: "popup_message",
-                        buttons: [{
-                            text: CLOSE_button,
-                            click: function () {
-                                $( this ).dialog( "close" ); return false;
-                            }
-                        }]
+
+            $.blockUI({
+                message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                centerY: 0,
+                css: {
+                    top: '20%',
+                    border: 'none',
+                    padding: '5px',
+                    backgroundColor: 'grey',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .9,
+                    color: '#fffff'
+                },
+                onBlock: function() {
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        url: "main/modules/external/import_soft_config.php",
+                        data: {filename:name}
+                    }).done(function (data) {
+                        var json = jQuery.parseJSON(data);
+                        if(json==0) {
+                            $.ajax({
+                                type: "GET",
+                                url: "main/modules/external/check_and_update_sd.php",
+                                data: {
+                                    sd_card:sd_card
+                                },
+                                async: false
+                            });
+                            $.unblockUI();
+
+                            $("#success_import_conf").dialog({
+                                resizable: false,
+                                width: 500,
+                                modal: true,
+                                closeOnEscape: true,
+                                dialogClass: "popup_message",
+                                buttons: [{
+                                    text: CLOSE_button,
+                                    click: function () {
+                                        $( this ).dialog( "close" ); 
+                                        var get_array = {};
+                                        get_array['submenu'] = "admin_ui";
+                                        get_content("cultipi",get_array);
+                                        return false;
+                                    }
+                                }]
+                            });
+                        } else {
+                            $.unblockUI();
+                            $("#error_import_conf").dialog({
+                                resizable: false,
+                                width: 500,
+                                closeOnEscape: true,
+                                modal: true,
+                                dialogClass: "popup_error",
+                                buttons: [{
+                                    text: CLOSE_button,
+                                    click: function () {
+                                        $( this ).dialog( "close" ); return false;
+                                    }
+                                }]
+                            });
+                        }
                     });
-                 } else {
-                    $("#error_import_conf").dialog({
-                        resizable: false,
-                        width: 500,
-                        closeOnEscape: true,
-                        modal: true,
-                        dialogClass: "popup_error",
-                        buttons: [{
-                            text: CLOSE_button,
-                            click: function () {
-                                $( this ).dialog( "close" ); return false;
-                            }
-                        }]
-                    });
-                 }
+                }
             });
-        }
-    });
+        }});
 
 
      // Gestion of drag and drop

@@ -1522,6 +1522,12 @@ msgstr "Sauvegarde des données en cours, patientez s'il vous plait..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_IMPORT_CONF"
+msgstr "Cette fonctionnalité permet d'importer une sauvegarde d'un logiciel Cultibox sous forme d'un fichier sql"
+
+msgid "TOOLTIP_CHANGE_PWD"
+msgstr "Cette fonctionnalité permet de changer le mot de passe demandé lors de la connexion au logiciel"
+
 msgid "TOOLTIP_AVANCED_PLUG_WIZARD"
 msgstr "L'assistant permet uniquement le branchement d'une lampe sur la prise 1. Si vous désirez brancher un autre élément, rendez vous dans l'onglet 'Prise'"
 
@@ -1785,7 +1791,7 @@ msgid "ACTION_SERVICE"
 msgstr "Action du service"
 
 msgid "RESTART_SERVICE"
-msgstr "Redémarrer le service"
+msgstr "Cliquez sur l'image pour redémarrer le service"
 
 msgid "SERVICE_ON"
 msgstr "Service en marche"

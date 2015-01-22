@@ -1521,6 +1521,12 @@ msgstr "Datensicherung läuft, bitte warten..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_IMPORT_CONF"
+msgstr "Mit dieser Funktion können Sie ein Backup eines Cultibox Software als SQL-Datei importieren"
+
+msgid "TOOLTIP_CHANGE_PWD"
+msgstr "Mit dieser Funktion können Sie das erforderliche Passwort zu ändern, wenn die Verbindung mit der Software"
+
 msgid "TOOLTIP_AVANCED_PLUG_WIZARD"
 msgstr "Mit dem Assistenten können nur die Verbindung eines Lampenfassung 1. Wenn Sie ein anderes Element verbinden wollen, auf die onget 'Jack' gehen"
 
@@ -1807,7 +1813,7 @@ msgid "ACTION_SERVICE"
 msgstr "Dienst"
 
 msgid "RESTART_SERVICE"
-msgstr "Starten Sie den Dienst"
+msgstr "Auf das Bild klicken, um den Dienst neu zu starten"
 
 msgid "SYNO_UPDATE_PLUG_HOUR"
 msgstr "Zuletzt aktualisiert wurde:"

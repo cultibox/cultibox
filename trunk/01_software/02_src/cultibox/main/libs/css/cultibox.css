@@ -566,6 +566,10 @@ hr {
   width:90%;
 }
 
+.hr_cultipi {
+     width:40%;
+}
+
 .subtitle_log {
     text-align: center;
     font-weight:bold;
@@ -643,7 +647,7 @@ td.conf-field-cultipi {
 }
 
 td.conf-field-service {
-    width: 30%;
+    width: 32%;
 }
 
 td.conf-marge-cultipi {

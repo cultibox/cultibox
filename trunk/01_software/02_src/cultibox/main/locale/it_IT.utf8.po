@@ -1522,6 +1522,12 @@ msgstr "Backup dei dati in corso, attendere prego..."
 
 
 # For the tooltip part:
+msgid "TOOLTIP_IMPORT_CONF"
+msgstr "Questa funzione consente di importare una copia di backup di un software Cultibox come file sql"
+
+msgid "TOOLTIP_CHANGE_PWD"
+msgstr "Questa funzione consente di cambiare la password necessaria per il collegamento al software"
+
 msgid "TOOLTIP_AVANCED_PLUG_WIZARD"
 msgstr "La procedura guidata consente solo il collegamento di un portalampada 1. Se si desidera collegare un altro elemento, andare al onget 'Jack'"
 
@@ -1763,7 +1769,7 @@ msgid "ERROR_LOGS"
 msgstr "Log di errore"
 
 msgid "RESTART_SERVICE"
-msgstr "Riavviare il servizio"
+msgstr "Clicca l'immagine per riavviare il servizio"
 
 msgid "SERVICE_ON"
 msgstr "marcia Service"
