@@ -45,6 +45,9 @@
             <td ><p class="pInline" ><?php echo __('SYNO_UPDATE_PLUG_HOUR'); ?></p><p class="pInline" id="synoptic_updatePlugHour" ></p></td>
         </tr>
     </table>
+    <br />
+    <hr class="hr_cultipi" />
+    <br />
 
     <div id="set" style="min-height: 700px;" >
         
@@ -291,7 +294,7 @@
     </tr>
 </table>
 <br />
-<hr style="width:40%"  />
+<hr class="hr_cultipi" />
 <br />
 <br />
 <p class="title_conf"><?php echo __('CONF_MGT'); ?></p>
@@ -300,7 +303,8 @@
 <table class="table_width">
 <tr>
     <td class="conf-marge-cultipi"></td>
-    <td class="conf-field-service"><?php echo __('IMPORT_CONF_CULTIPI'); ?>:</td>
+    <td class="conf-field-service"><?php echo __('IMPORT_CONF_CULTIPI'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_IMPORT_CONF'); ?>" />
+</td>
     <td><input id="confupload" type="file" name="files[]"><label id="import_conf_name" class="imported_file"></label>
         <button name="import" value="<?php echo __('SELECT_FILE_NAME'); ?>" id="import_conf" class="inputDisable" disabled><?php  echo __('SELECT_FILE_NAME'); ?></button>
     </td>
@@ -309,7 +313,7 @@
 </table>
 
 <br />
-<hr style="width:40%"  />
+<hr class="hr_cultipi" />
 <br />
 <br />
 <p class="title_conf"><?php echo __('MGT_ACCESS'); ?></p>
@@ -317,7 +321,7 @@
 <table class="table_width">
 <tr>
     <td class="conf-marge-cultipi"></td>
-    <td class="conf-field-service"><?php echo __('CHANGE_PASSWORD'); ?>:</td>
+    <td class="conf-field-service"><?php echo __('CHANGE_PASSWORD'); ?>:<img src="main/libs/img/infos.png" alt="" title="<?php echo __('TOOLTIP_CHANGE_PWD'); ?>" /></td>
     <td><button id="change_password" name="change_password"><?php echo __('NEW_PASSWORD'); ?></button>
     </td>
     <td></td>
