@@ -94,12 +94,14 @@ apt-get update
 apt-get upgrade
 }}}
 
- * Reconfiguration des locales et du timezone:
+ * Reconfiguration du clavier, des locales et du timezone:
 
-{{{	
+{{{
+apt-get install keyboard-configuration	
 dpkg-reconfigure locales 
 dpkg-reconfigure tzdata
 }}}
+
 
  * Installation des packages utiles et utilitaires:
 
