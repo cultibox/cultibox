@@ -1730,6 +1730,12 @@ msgid "CURRENT_PROG_COMMENT"
 msgstr "Current program"
 
 #For the Cultipi part:
+msgid "ERROR_SAVE_PASSWORD"
+msgstr "Error password change, the old password will be kept"
+
+msgid "SAVED_PASSWORD"
+msgstr "Password changed successfully"
+
 msgid "CULTIPI_SYNOPTIC"
 msgstr "Synoptic"
 

@@ -328,11 +328,15 @@ $(document).ready(function(){
             resizable: false,
             width: 800,
             modal: true,
-            closeOnEscape: true,
+            closeOnEscape: false,
             dialogClass: "popup_message",
             buttons: [{
                 text: CLOSE_button,
                 click: function () {
+                    $("#error_same_password").css("display","none");
+                    $("#error_empty_password").css("display","none");
+                    $("#new_password").val("");
+                    $("#confirm_new_password").val("");
                     $( this ).dialog( "close" ); return false;
                 }
             }]
@@ -346,7 +350,6 @@ $(document).ready(function(){
 
           if($("#new_password").val()=="") {
             $("#error_empty_password").show();
-
           } else {
             $.ajax({
               cache: false,
@@ -357,7 +360,88 @@ $(document).ready(function(){
               if(data!=1)  {
                   $("#error_same_password").show();
               } else {
+                  $.blockUI({
+                    message: "<?php echo __('SAVING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                    centerY: 0,
+                    css: {
+                        top: '20%',
+                        border: 'none',
+                        padding: '5px',
+                        backgroundColor: 'grey',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .9,
+                        color: '#fffff'
+                    },
+                    onBlock: function() {
+                        $.ajax({
+                            cache: false,
+                            async: false,
+                            url: "main/modules/external/reset_password.php",
+                            data: {pwd:$("#new_password").val()},
+                            success: function (data) {
+                                $.unblockUI();
+                                var objJSON = jQuery.parseJSON(data);
 
+                                if(objJSON=="1") {
+                                    $("#success_save_password").dialog({
+                                        resizable: false,
+                                        width: 800,
+                                        modal: true,
+                                        closeOnEscape: false,
+                                        dialogClass: "popup_message",
+                                        buttons: [{
+                                            text: CLOSE_button,
+                                            click: function () {
+                                                $("#error_same_password").css("display","none");
+                                                $("#error_empty_password").css("display","none");
+                                                $("#new_password").val("");
+                                                $("#confirm_new_password").val("");
+                                                $( this ).dialog( "close" ); return false;
+                                            }
+                                        }]
+                                    });
+                                } else {
+                                    $("#error_save_password").dialog({
+                                        resizable: false,
+                                        width: 800,
+                                        modal: true,
+                                        closeOnEscape: false,
+                                        dialogClass: "popup_error",
+                                        buttons: [{
+                                            text: CLOSE_button,
+                                            click: function () {
+                                                $("#error_same_password").css("display","none");
+                                                $("#error_empty_password").css("display","none");
+                                                $("#new_password").val("");
+                                                $("#confirm_new_password").val("");
+                                                $( this ).dialog( "close" ); return false;
+                                            }
+                                        }]
+                                    });
+                                }
+                            }, error: function(data) {
+                                $("#error_save_password").dialog({
+                                    resizable: false,
+                                    width: 800,
+                                    modal: true,
+                                    closeOnEscape: false,
+                                    dialogClass: "popup_error",
+                                    buttons: [{
+                                        text: CLOSE_button,
+                                        click: function () {
+                                            $("#error_same_password").css("display","none");
+                                            $("#error_empty_password").css("display","none");
+                                            $("#new_password").val("");
+                                            $("#confirm_new_password").val("");
+                                            $( this ).dialog( "close" ); return false;
+                                        }
+                                    }]
+                                });
+                                $.unblockUI();
+                            }
+                        });
+                    } });
               }
             });
           }

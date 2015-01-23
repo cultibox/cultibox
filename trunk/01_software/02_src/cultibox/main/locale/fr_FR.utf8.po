@@ -1733,6 +1733,12 @@ msgstr "Programme courant"
 
 
 # For the Cultipi part 
+msgid "ERROR_SAVE_PASSWORD"
+msgstr "Erreur lors du changement de mot de passe, l'ancien mot de passe sera conservé"
+
+msgid "SAVED_PASSWORD"
+msgstr "Mot de passe changé avec succés"
+
 msgid "CULTIPI_SYNOPTIC"
 msgstr "Synoptique"
 
