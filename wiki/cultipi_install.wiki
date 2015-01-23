@@ -328,6 +328,19 @@ rm /var/www/index.lighttpd.html
 lighttpd-enable-mod fastcgi-php
 }}}
 
+On modifie ensuite le php.ini pour autoriser les uploads des fichiers:
+
+{{{
+vi /etc/php5/cgi/php.ini
+}}}
+
+Puis on modifie les directives suivantes:
+
+{{{
+post_max_size = 128M
+upload_max_filesize = 64M
+}}}
+
  * Relancement du serveur :
 
 {{{
