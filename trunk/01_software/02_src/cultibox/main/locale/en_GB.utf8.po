@@ -1814,6 +1814,12 @@ msgstr "Cultinet Software"
 msgid "CULTIBOX_SOFT"
 msgstr "Software Cultibox"
 
+msgid "CULTIRAZ_SOFT"
+msgstr "Software CultiRAZ"
+
+msgid "CULTITIME_SOFT"
+msgstr "Software CultiTime"
+
 msgid "SERVICE_MGT"
 msgstr "Service Management"
 
