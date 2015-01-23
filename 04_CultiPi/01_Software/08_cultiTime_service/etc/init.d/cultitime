@@ -12,7 +12,7 @@
 
 PATH="/sbin:/bin:/usr/sbin:/usr/bin" 
 
-DAEMONUSER="root"
+DAEMONUSER="cultipi"
 DEAMON_NAME="cultitime"
 
 . /lib/lsb/init-functions

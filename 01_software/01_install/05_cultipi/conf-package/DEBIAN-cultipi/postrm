@@ -52,5 +52,3 @@ if [ "$1" == "remove" ]; then
     rm -Rf /etc/cultipi/conf_tmp
 fi
 
-
-sed -i "/cultipi ALL = (root) NOPASSWD: \/bin\/date/d" /etc/sudoers

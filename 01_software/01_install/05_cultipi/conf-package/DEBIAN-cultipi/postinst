@@ -13,12 +13,6 @@ if [ "`cat /etc/crontab|grep culticron`" == "" ]; then
     echo "*/1 *   * * *   root    /bin/bash /etc/default/culticron" >> /etc/crontab
 fi
 
-if [  "`cat /etc/sudoers|grep www-data|grep date`" == "" ]; then
-    echo "cultipi ALL = (root) NOPASSWD: /bin/date" >> /etc/sudoers
-fi
-
-
-
 if [ ! -d /etc/cultipi/conf_tmp ]; then
     mkdir /etc/cultipi/conf_tmp
 fi

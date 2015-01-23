@@ -4,4 +4,8 @@ if [ -f /etc/init.d/cultitime ]; then
     update-rc.d cultitime defaults
 fi
 
+if [  "`cat /etc/sudoers|grep cultipi|grep date`" == "" ]; then
+    echo "cultipi ALL = (root) NOPASSWD: /bin/date" >> /etc/sudoers
+fi
+
 /etc/init.d/cultitime force-reload
