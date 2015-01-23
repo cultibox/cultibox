@@ -1730,7 +1730,13 @@ msgid "CURRENT_PROG_COMMENT"
 msgstr "Programa actual"
 
 
-#For the CUltipi part:
+#For the Cultipi part:
+msgid "ERROR_SAVE_PASSWORD"
+msgstr "Error de cambio de contraseña, la contraseña antigua se mantendrá"
+
+msgid "SAVED_PASSWORD"
+msgstr "Contraseña modificada correctamente"
+
 msgid "CULTIPI_SYNOPTIC"
 msgstr "sinópticos" 
 
