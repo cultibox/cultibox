@@ -1733,6 +1733,24 @@ msgstr "Programme courant"
 
 
 # For the Cultipi part 
+msgid "CONFIRM_RESTART_CULTIPI_TITLE"
+msgstr "Redémarrage du service Cultipi"
+
+msgid "CONFIRM_RESTART_CULTIPI"
+msgstr "Voulez-vous redémarrer le service Cultipi?"
+
+msgid "SUCCESS_RESTART_RPI"
+msgstr "Le module a été redémarré avec succés, il sera de nouveau disponible dans quelques secondes."
+
+msgid "CONFIRM_RESTART_RPI_TITLE"
+msgstr "Redémarrage du Cultipi"
+
+msgid "CONFIRM_RESTART_RPI"
+msgstr "Voulez-vous redémarrer le module Cultipi?"
+
+msgid "RPI_RESTART"
+msgstr "Cliquez sur l'image pour redémarrer le Cultipi"
+
 msgid "ERROR_SAVE_PASSWORD"
 msgstr "Erreur lors du changement de mot de passe, l'ancien mot de passe sera conservé"
 

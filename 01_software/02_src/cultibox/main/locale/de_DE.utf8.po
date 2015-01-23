@@ -1731,6 +1731,24 @@ msgstr "Aktuelles Programm"
 
 
 #For the Cultipi part:
+msgid "CONFIRM_RESTART_CULTIPI_TITLE"
+msgstr "Dienst neu starten Cultipi"
+
+msgid "CONFIRM_RESTART_CULTIPI"
+msgstr "Möchten Sie die Cultipi Service neu starten?"
+
+msgid "SUCCESS_RESTART_RPI"
+msgstr "Das Modul wurde erfolgreich neu gestartet wird, wird es wieder verfügbar in wenigen Sekunden sein."
+
+msgid "CONFIRM_RESTART_RPI_TITLE"
+msgstr "Neustart Cultipi"
+
+msgid "CONFIRM_RESTART_RPI"
+msgstr "Möchten Sie die Cultipi Modul neu starten?"
+
+msgid "RPI_RESTART"
+msgstr "Klicken Sie auf das Cultipi neu starten"
+
 msgid "ERROR_SAVE_PASSWORD"
 msgstr "Fehler beim Passwortwechsel, wird das alte Passwort zu halten"
 

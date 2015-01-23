@@ -93,6 +93,10 @@ if [  "`cat /etc/sudoers|grep www-data|grep fswebcam`" == "" ]; then
     echo "www-data ALL = (root) NOPASSWD: /usr/bin/fswebcam" >> /etc/sudoers
 fi
 
+if [  "`cat /etc/sudoers|grep www-data|grep shutdown`" == "" ]; then
+    echo "www-data ALL = (root) NOPASSWD: /sbin/shutdown" >> /etc/sudoers
+fi
+
 
 if [ ! -d /home/cultipi/cultibox ]; then
     mkdir /home/cultipi/cultibox
