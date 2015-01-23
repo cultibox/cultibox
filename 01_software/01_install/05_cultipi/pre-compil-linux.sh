@@ -156,10 +156,10 @@ EOF
            mkdir -p ../01_src/01_xampp/cultitime/opt/cultitime
            mkdir -p ../01_src/01_xampp/cultitime/etc/init.d
 
-           cp -R ../../../04_CultiPi/01_Software/05_cultitime/* ../01_src/01_xampp/cultitime/opt/cultitime/
+           cp -R ../../../04_CultiPi/01_Software/07_cultiTime/* ../01_src/01_xampp/cultitime/opt/cultitime/
            rm -f ../01_src/01_xampp/cultitime/opt/cultitime/VERSION
 
-           cp ../../../04_CultiPi/01_Software/06_cultiRAZ_service/etc/init.d/cultitime ../01_src/01_xampp/cultitime/etc/init.d/cultitime
+           cp ../../../04_CultiPi/01_Software/08_cultiTime_service/etc/init.d/cultitime ../01_src/01_xampp/cultitime/etc/init.d/cultitime
 
            sed -i "s/Version: .*/Version: `echo $VERSION`-r`echo $revision`/g" ../01_src/01_xampp/cultitime/DEBIAN/control
            find ./../01_src/01_xampp/cultitime/ -name ".svn"|xargs rm -Rf

@@ -1790,6 +1790,12 @@ msgstr "Logiciel Cultinet"
 msgid "CULTIBOX_SOFT"
 msgstr "Logiciel Cultibox"
 
+msgid "CULTIRAZ_SOFT"
+msgstr "Logiciel CultiRAZ"
+
+msgid "CULTITIME_SOFT"
+msgstr "Logiciel CultiTime"
+
 msgid "SERVICE_MGT"
 msgstr "Gestion des services"
 
