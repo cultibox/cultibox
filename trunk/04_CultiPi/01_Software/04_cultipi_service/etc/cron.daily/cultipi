@@ -11,26 +11,39 @@ fi
 upgraded="False"
 apt-get update
 
+
+
 if [ "`apt-get -u upgrade --assume-no|grep cultipi`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultipi
+elif [ "`dpkg -s cultipi 2>/dev/null|grep Version`" == "" ]; then
+    apt-get install -y  --force-yes cultipi
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultinet`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultinet
     upgraded="True"
+elif [ "`dpkg -s cultinet 2>/dev/null|grep Version`" == "" ]; then
+    apt-get install -y  --force-yes cultinet
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultibox`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultibox
     upgraded="True"
+elif [ "`dpkg -s cultibox 2>/dev/null|grep Version`" == "" ]; then
+    apt-get install -y  --force-yes cultibox
 fi
 
 if [ "`apt-get -u upgrade --assume-no|grep cultiraz`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultiraz
+elif [ "`dpkg -s cultiraz 2>/dev/null|grep Version`" == "" ]; then
+    apt-get install -y  --force-yes cultiraz
 fi
+
 
 if [ "`apt-get -u upgrade --assume-no|grep cultitime`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultitime
+elif [ "`dpkg -s cultitime 2>/dev/null|grep Version`" == "" ]; then
+    apt-get install -y  --force-yes cultitime
 fi
 
 if [ "$upgraded" == "True" ]; then
