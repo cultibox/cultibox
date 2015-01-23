@@ -968,6 +968,15 @@ msgstr "Smettere delle attrezzature"
 
 
 #For the calendar part:
+msgid "DAY_DURATION"
+msgstr "giorno"
+
+msgid "DAYS_DURATION"
+msgstr "giorni"
+
+msgid "CALENDAR_DURATION"
+msgstr "Time Event"
+
 msgid "CALENDAR_TITLE"
 msgstr "Calendario"
 

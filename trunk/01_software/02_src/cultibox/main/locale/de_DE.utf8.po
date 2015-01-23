@@ -967,6 +967,15 @@ msgstr "Stoppzeit Ausrüstung"
 
 
 #For the calendar part:
+msgid "DAY_DURATION"
+msgstr "Tag"
+
+msgid "DAYS_DURATION"
+msgstr "Tag"
+
+msgid "CALENDAR_DURATION"
+msgstr "Event Time"
+
 msgid "CALENDAR_TITLE"
 msgstr "Kalender"
 

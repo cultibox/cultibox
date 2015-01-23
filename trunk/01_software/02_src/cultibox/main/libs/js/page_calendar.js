@@ -523,8 +523,24 @@ $(document).ready(function() {
             
             if(end) {
                 $("#edit_stop_date").text($.fullCalendar.formatDate(end, "yyyy-MM-dd"));
+
+                var date_end=$.fullCalendar.formatDate(end, "yyyy-MM-dd");
+                dateParts = date_end.split('-');
+                date_end = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
+
+                var date_start=$.fullCalendar.formatDate(start, "yyyy-MM-dd");
+                dateParts = date_start.split('-');
+                date_start = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
+
+                var duration=((date_end - date_start)/86400000)+1;
+                if(duration>1) {
+                    $("#edit_duration_date").text(duration+" <?php echo __('DAYS_DURATION'); ?>");
+                } else {
+                    $("#edit_duration_date").text(duration+" <?php echo __('DAY_DURATION'); ?>");
+                }
             } else {
                 $("#edit_stop_date").text($.fullCalendar.formatDate(start, "yyyy-MM-dd"));
+                $("#edit_duration_date").text("1 <?php echo __('DAY_DURATION'); ?>");
             }
 
             $("#select_remark").val("");
@@ -941,8 +957,23 @@ $(document).ready(function() {
             $("#start_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
             if(event.end) {
                 $("#stop_date").text($.fullCalendar.formatDate(event.end, "yyyy-MM-dd"));
+                var date_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd");
+                dateParts = date_end.split('-');
+                date_end = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
+
+                var date_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
+                dateParts = date_start.split('-');
+                date_start = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
+
+                var duration=((date_end - date_start)/86400000)+1;
+                if(duration>1) {
+                    $("#duration_date").text(duration+" <?php echo __('DAYS_DURATION'); ?>");
+                } else {
+                    $("#duration_date").text(duration+" <?php echo __('DAY_DURATION'); ?>");
+                }
             }else {
                 $("#stop_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+                $("#duration_date").text("1 <?php echo __('DAY_DURATION'); ?>");
             }
             if(event.description) {
                 $("#remark").val(event.description);
@@ -973,8 +1004,24 @@ $(document).ready(function() {
                             $("#edit_start_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
                             if(event.end) {
                                 $("#edit_stop_date").text($.fullCalendar.formatDate(event.end, "yyyy-MM-dd"));
+
+                                var date_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd");
+                                dateParts = date_end.split('-');
+                                date_end = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
+
+                                var date_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
+                                dateParts = date_start.split('-');
+                                date_start = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
+
+                                var duration=((date_end - date_start)/86400000)+1;
+                                if(duration>1) {
+                                    $("#edit_duration_date").text(duration+" <?php echo __('DAYS_DURATION'); ?>");
+                                } else {
+                                    $("#edit_duration_date").text(duration+" <?php echo __('DAY_DURATION'); ?>");
+                                }
                             }else {
                                  $("#edit_stop_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+                                 $("#edit_duration_date").text("1 <?php echo __('DAY_DURATION'); ?>");
                             }
                             if(event.description) {
                                  $("#select_remark").val(event.description);
