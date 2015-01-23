@@ -1,0 +1,297 @@
+#summary  CultiPi développeur
+
+= Sommaire =
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+Cette section donne des clés pour les développeurs.
+  
+= Hardware =
+
+Les différentes sortie disponible sur le Raspberry pi sont utilisées de la façon suivante :
+
+|| BCM || wPi ||   Nom   || Utilisation || Physique Gauche || Physique Droite || Utilisation || Nom || wPi || BCM ||
+||     ||     ||    3.3v ||      ||  1 || 2  ||   || 5v      ||     ||     ||
+||   2 ||   8 ||   SDA.1 || I2C     ||  3 || 4  ||   || 5V      ||     ||     ||
+||   3 ||   9 ||   SCL.1 || I2C     ||  5 || 6  ||   || 0v      ||     ||     ||
+||   4 ||   7 || GPIO. 7 ||      ||  7 || 8  ||   || TxD     || 15  || 14  ||
+||     ||     ||      0v ||      ||  9 || 10 ||   || RxD     || 16  || 15  ||
+||  17 ||   0 || GPIO. 0 || Slave select     || 11 || 12 || Alimentation des modules externes  || GPIO. 1 || 1   || 18  ||
+||  27 ||   2 || GPIO. 2 || Bouton de RAZ     || 13 || 14 ||   || 0v      ||     ||     ||
+||  22 ||   3 || GPIO. 3 || LED     || 15 || 16 ||   || GPIO. 4 || 4   || 23  ||
+||     ||     ||    3.3v ||      || 17 || 18 ||   || GPIO. 5 || 5   || 24  ||
+||  10 ||  12 ||    MOSI ||      || 19 || 20 ||   || 0v      ||     ||     ||
+||   9 ||  13 ||    MISO ||      || 21 || 22 ||   || GPIO. 6 || 6   || 25  ||
+||  11 ||  14 ||    SCLK ||      || 23 || 24 ||   || CE0     || 10  || 8   ||
+||     ||     ||      0v ||      || 25 || 26 ||   || CE1     || 11  || 7   ||
+||   0 ||  30 ||   SDA.0 ||      || 27 || 28 ||   || SCL.0   || 31  || 1   ||
+||   5 ||  21 || GPIO.21 ||      || 29 || 30 ||   || 0v      ||     ||     ||
+||   6 ||  22 || GPIO.22 ||      || 31 || 32 ||   || GPIO.26 || 26  || 12  ||
+||  13 ||  23 || GPIO.23 ||      || 33 || 34 ||   || 0v      ||     ||     ||
+||  19 ||  24 || GPIO.24 ||      || 35 || 36 ||   || GPIO.27 || 27  || 16  ||
+||  26 ||  25 || GPIO.25 ||      || 37 || 38 ||   || GPIO.28 || 28  || 20  ||
+||     ||     ||      0v ||      || 39 || 40 ||   || GPIO.29 || 29  || 21  ||
+
+= Software =
+
+Dans le module WiFi sont installé plusieurs logiciel :
+ * Le logiciel Cultibox
+ * Le logiciel CultiPi
+ * Le logiciel CultiRAZ
+ * Le logiciel CultiTime
+ 
+== CultiTime ==
+
+=== Introduction ===
+
+Ce logiciel permet de mettre à jour l'heure du module WiFi en utilisant l'heure du RTC ou de mettre à jour l'heure du RTC avec l'heure du module WiFi.
+Le logiciel est écrit en Tcl.
+
+Pour lancer l'interpréteur tcl :
+
+{{{
+tclsh
+}}}
+
+=== Librairie MCP7940N.tcl ===
+
+Pour charger la librairie :
+
+{{{
+source /opt/cultipi/cultiTime/src/MCP7940N.tcl
+}}}
+
+Démarrer le RTC :
+
+{{{
+::MCP7940N::start
+}}}
+
+Lire l'heure du RTC (en nombre de secondes) :
+
+{{{
+::MCP7940N::readSeconds
+}}}
+
+Lire l'heure du module WiFi :
+
+{{{
+clock seconds
+}}}
+
+Mettre à jour l'heure du RTC en utilisant l'heure du module WiFi :
+
+{{{
+::MCP7940N::setSeconds [clock seconds]
+}}}
+
+Mettre à jour l'heure du module WiFi en utilisant l'heure du RTC :
+
+{{{
+set rtcHour [::MCP7940N::readSeconds]
+exec date [clock format $rtcHour -format "%m%d%H%M%y.%S"]
+}}}
+
+== Architecture  module WiFi ==
+
+Le logiciel  module WiFi est composé de :
+ * Un serveur  module WiFi. Il s'assure du bon démarrage de tous les composants, il gère les échange entre les composants et enregistre les logs.
+ * Différents composants. On retrouve parmi les composants : Un serveur de calcul de l'état des prises, un module de pilotage des prises, un module d'acquisition des données des capteurs...
+
+Trois espaces sur la carte sont présents pour le bon fonctionnement du logiciel :
+ * L'espace ou est installé  module WiFi : /opt/cultipi
+ * L'espace de configuration de  module WiFi : /etc/cultipi
+ * L'espace ou sont les logs : /var/log/cultipi
+ * L'espace ou sont présents les logiciel Cultibox et Cultinet : /var/www
+
+
+Fonctionnement général :
+Sur une action de l'utilisateur, le logiciel Cultibox génère une configuration pour  module WiFi. Cette configuration regroupe l'ensemble des fichiers permettant au serveur  module WiFi de bien fonctionner.
+Le logiciel Cultibox arrête ensuite le serveur  module WiFi puis le redémarre.
+Le serveur  module WiFi est responsable du lancement de chaque module. Il gère les repères et permet à chaque module de lire ou écrire les repères.
+Les modules peuvent lire les repères pour effectuer des actions ou écrire les repères.
+
+Au démarrage le serveur Cultipi affiche des informations. S'il est lancé par le daemon, les logs sont enregistrés dans /var/log/cultipi/cultipi-service.log
+
+=== Espace de configuration ===
+
+Cet espace permet de stocker les configurations qui peuvent être démarrées par le serveur. Chaque configuration est représentée par un dossier.
+
+A la racine de cet espace on trouve le fichier "conf.xml" qui définit qu'elle doit être la configuration à lancer. Ce fichier est de la forme :
+
+{{{
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<confs>
+    <!-- Example : http://wfr.tcl.tk/1151 -->
+    <conf dir="00_defaultConf" />
+</confs>
+}}}
+
+Pour changer le dossier de configuration qui sera chargé, il faut modifier le paramètre dir de l'argument conf. 
+
+Chaque configuration est un dossier dans lequel on retrouve la configuration des différents modules. Pour chaque module, un dossier avec ces fichiers de configurations à l'intérieur.
+
+=== Serveur  module WiFi ===
+
+Au démarrage du serveur  module WiFi,il charge la liste des repères de sa configuration. Chaque repère représente une entrée ou une sortie.
+Ensuite le serveur démarre tous les composants définit dans le fichier de configuration.
+
+Pour démarrer le serveur CultiPi :
+tclsh cultiPi.tcl conf_dir
+Avec :
+ * conf_dir : Chemin vers le dossier racine des configurations
+
+Au démarrage, il charge le fichier "conf.xml" présent dans le dossier conf_dir. Ce fichier de XML définit quelle configuration démarrer. 
+
+Exemple de fichier conf.xml :
+
+{{{
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<confs>
+    <!-- Example : http://wfr.tcl.tk/1151 -->
+    <conf dir="00_defaultConf" />
+</confs>
+}}}
+
+Ensuite, le logiciel CultiPi  charge le fichier XML présent dans le dossier cultiPi de sa configuration. Ce fichier définit l'ensemble des modules qu'il doit démarrer. Il s’appelle start.xml .
+
+Le fichier de configuration (généré par le logiciel Cultibox, au format XML) prend la forme suivante :
+
+{{{
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<starts>
+    <item name="serverLog" waitAfterUS="1000" port="6003" pathexe="tclsh" path="./serverLog/serveurLog.tcl" xmlconf="./serverLog/conf.xml" />
+    <item name="serverAcqSensor" waitAfterUS="100" port="6006" pathexe="tclsh" path="./serverAcqSensor/serverAcqSensor.tcl" xmlconf="./serverAcqSensor/conf.xml" />
+    <item name="serverPlugUpdate" waitAfterUS="100" port="6004" pathexe="tclsh" path="./serverPlugUpdate/serverPlugUpdate.tcl" xmlconf="./serverPlugUpdate/conf.xml" />
+    <item name="serverHisto" waitAfterUS="100" port="6009" pathexe="tclsh" path="./serverHisto/serverHisto.tcl" xmlconf="./serverHisto/conf.xml" />
+</starts>
+}}}
+
+Pour chaque module qu'il démarre, il crée automatiquement les repères suivants (Non implémenté) : 
+ * etat : État de la connexion (écrit par le serveur)
+ * run : Mise en route du module (écrit par le serveur)
+ * etat_run : État de la mise en route du module (écrit par le module)
+
+Pour arrêter le logiciel, il suffit d’exécuter avec tclsh le script cultiPistop.tcl.
+
+== Les modules ==
+
+=== Introduction ===
+
+Tous les modules doivent pourvoir être appelé de la façon suivante :
+
+<module> <numéro port> <fichier de conf XML> <numéro de port du server log>
+
+=== Communication ===
+
+Tous les modules implémentent un serveur basé sur des sockets. Les numéros de port de chaque module :
+
+ * cultiPI : 6000
+ * serverLog : 6003
+ * serverAcqSensor : 6006
+ * serverPlugUpdate : 6004
+ * serverHisto : 6009
+
+Pour communiquer avec un module, on ouvre une connexion vers son socket et on lui envoi des trames. Chaque trame respecte le format suivant : 
+
+[FROM] [INDEX] [COMMANDE] [Reste de la trame]
+
+Avec : 
+
+ * FROM : Adresse de l'émetteur de la requête
+ * INDEX : Un index unique de la part de l'émetteur pour identifier les messages
+ * COMMANDE : Le nom de la commande à appliquer
+ * Reste de la trame : toutes les informations nécessaire pour l’exécution de la commande
+
+Chaque module implémente à minima les commandes suivantes :
+
+ * stop : pour arrêter le module.
+ * pid : le module retourne le pid du module
+ * getRepere [VARIABLE] [PARAMETRE] : Retourne l'élément PARAMETRE du vecteur VARIABLE
+
+
+=== Module de Logs (serverLog) ===
+
+A chaque démarrage du serveur CultiPi, le module de log est lancé. Il ouvre un socket et accepte les connections des autres modules.
+Lorsqu'un module lui envoi un log à écrire, il l'écrit dans un fichier nommé logXX.txt ou XX correspond au jour du mois.
+A chaque changement de jour les traces déjà présentes dans le fichier sont supprimées.
+
+Chaque module peut logguer des traces en passant par le serveur. Chaque trace est composée de 4 éléments :
+ * L'heure de la trace
+ * Le nom du module qui trace
+ * Le type de trace : error_critic error warning info debug
+ * La trace en elle même
+
+L'utilisateur peut définir le niveau de trace inscrite dans le fichier log.
+
+=== Module serverHisto ===
+
+Il a pour but d'enregistrer en base de donnée certains repères.
+
+=== Module serverAcqSensor ===
+
+Ce module réalise l'acquisition de donnée. Au chargement, il demande au serveur tous les repères de type mesure et ayant le protocole I2C.
+Pour chaque repère, il lance l'acquisition du repère en utilisant comme adresse de module I2C le paramètre "Connexion" et comme adresse de lecture le paramètre "adresse pour acquisition".
+Pour réaliser l'acquisition, il utilise le module "Module I2C".
+
+Il pilote ensuite le repère en inscrivant les données suivantes :
+ * Qualité : Valide s'il récupère une donnée , défaut communication sinon
+ * Valeur : avec la valeur lue * "Coef A" + "Coef B"
+ * Source : Mesure
+ * Heure source : l'heure de réponse du module I2C
+
+=== Module serverPlugUpdate ===
+
+Ce module pilote les prises sans fils. Au chargement, il demande au serveur tous les repères de type pilote et ayant le protocole I2C et la connexion "433MHz".
+Pour réaliser le pilotage, il utilise le module "Module I2C".
+
+
+
+== Installation ==
+
+Matériel nécessaire :
+ - Un Raspberry Pi
+ - Une carte d'extension  module WiFi
+
+
+== Commandes/Informations utiles ==
+
+Voici quelques commandes utiles:
+ 
+ * Le logiciel Cultipi est accompagné d'un cron exécuté toute les minutes vérifiant le lancement du logiciel. Si ce n'est pas le cas, ce cron se charge de relancer le logiciel, il est présent dans */etc/crontab*. Il est possible de désactiver le lancement automatique par cron en éditant le fichier */etc/default/culticron* et en remplaçant la ligne:
+
+{{{
+CULTICRON_ACTIV="yes"
+}}}
+
+par:
+
+{{{
+CULTICRON_ACTIV="no"
+}}}
+
+ * La commande pour vérifier que le logiciel Cultipi tourne est la suivante:
+
+{{{
+/etc/init.d/cultipi status
+}}}
+
+Il est aussi possible de voir en détail les processus lancés par la commande:
+
+{{{
+ps ax|grep tclsh
+}}}
+
+ * Afin de remettre la configuration réseau par défaut, il utiliser la commande suivante:
+
+{{{
+cp /etc/network/interfaces.BASE /etc/network/interfaces
+}}}
+
+
+ * Un cron s'occupe aussi de la mise à jour des packages. Celui-ci est lancé une fois par jour. Pour mettre à jour manuellement les paquets Cultipi, Cultibox et Cultinet, il faut utiliser la commande suivante:
+
+{{{
+/etc/cron.daily/cultipi
+}}}
