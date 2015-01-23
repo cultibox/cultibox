@@ -968,6 +968,15 @@ msgstr "Heure d'extinction de l'équipement"
 
 
 #For the calendar part :
+msgid "DAY_DURATION"
+msgstr "jour"
+
+msgid "DAYS_DURATION"
+msgstr "jours"
+
+msgid "CALENDAR_DURATION"
+msgstr "Durée de l'évènement"
+
 msgid "CALENDAR_TITLE"
 msgstr "Calendrier"
 

@@ -967,6 +967,15 @@ msgstr "Horario de apago del equipo"
 
 
 #For the calendar part:
+msgid "DAY_DURATION" 
+msgstr "día" 
+
+msgid "DAYS_DURATION" 
+msgstr "días"
+
+msgid "CALENDAR_DURATION" 
+msgstr "Tiempo de eventos"
+
 msgid "CALENDAR_TITLE"
 msgstr "Calendario"
 
