@@ -29,6 +29,10 @@ if [ "`apt-get -u upgrade --assume-no|grep cultiraz`" != "" ]; then
     apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultiraz
 fi
 
+if [ "`apt-get -u upgrade --assume-no|grep cultitime`" != "" ]; then
+    apt-get install -y  --force-yes --only-upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" cultitime
+fi
+
 if [ "$upgraded" == "True" ]; then
     rm -Rf /var/cache/lighttpd/compress/*
     /etc/init.d/lighttpd force-reload
