@@ -15,6 +15,9 @@
         case "status_cultipi" :
             exec("/etc/init.d/cultipi status >/dev/null 2>&1",$ret,$ret_var);
             break;
+        case "restart_rpi" :
+            exec("sudo /sbin/shutdown -r now >/dev/null 2>&1",$ret,$ret_var);
+            break;
         default:
             break;
     }

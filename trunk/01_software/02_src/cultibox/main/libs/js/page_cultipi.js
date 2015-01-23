@@ -798,93 +798,163 @@ var updateIsAked = 0;
     });
 
 
-    $("#restart_cultipi").click(function(e) {
-     e.preventDefault();
-     $.blockUI({
-        message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
-        centerY: 0,
-        css: {
-            top: '20%',
-            border: 'none',
-            padding: '5px',
-            backgroundColor: 'grey',
-            '-webkit-border-radius': '10px',
-            '-moz-border-radius': '10px',
-            opacity: .9,
-            color: '#fffff'
-     },
-     onBlock: function() {
-       $.ajax({
-            cache: false,
-            async: true,
-            url: "main/modules/external/services_status.php",
-            data: {action:"restart_cultipi"},
-            success: function (data) {
-                var objJSON = jQuery.parseJSON(data);
-                if(objJSON=="0") {
-                    $.ajax({
-                        cache: false,
-                        async: true,
-                        url: "main/modules/external/services_status.php",
-                        data: {action:"status_cultipi"}
-                    }).done(function (data) {
-                        var objJSON = jQuery.parseJSON(data);
-                        if(objJSON=="0") {
-                            $("#cultipi_on").show();
-                            $("#cultipi_off").css('display','none');
-                        } else {
-                            $("#cultipi_off").show();
-                            $("#cultipi_on").css('display','none');
-                        }
-                        $.unblockUI();
+    // Restart RPI:
+    $("#restart_rpi").click(function(e) {
+           e.preventDefault();
+           $("#confirm_restart_rpi").dialog({
+                resizable: false,
+                height:150,
+                width: 500,
+                modal: true,
+                closeOnEscape: false,
+                dialogClass: "dialog_cultibox",
+                buttons: [{
+                    text: OK_button,
+                    click: function () {
+                        $( this ).dialog("close");
+                        $.ajax({
+                            cache: false,
+                            url: "main/modules/external/services_status.php",
+                            async: false,
+                            data: {action:"restart_rpi"}
+                        }).done(function (data) {
+                            $.unblockUI();
+                            $("#success_restart_rpi").dialog({
+                                resizable: false,
+                                height:200,
+                                width: 500,
+                                modal: true,
+                                closeOnEscape: false,
+                                dialogClass: "popup_message",
+                                buttons: [{
+                                    text: OK_button,
+                                    click: function () {
+                                        $( this ).dialog("close");
+                                        return false;
+                                    }
+                                }]
+                            });
+                        });
+                    }
+                }, {
+                    text: CANCEL_button,
+                    click: function () {
+                        $( this ).dialog( "close" ); return false;
+                    }
+                }]
+         });
+    });
 
-                       $("#success_restart_service").dialog({
-                            resizable: false,
-                            width: 400,
-                            closeOnEscape: true,
-                            modal: true,
-                            dialogClass: "popup_message",
-                            buttons: [{
-                                text: CLOSE_button,
-                                click: function () {
-                                $( this ).dialog( "close" ); return false;
+
+
+    $("#restart_cultipi").click(function(e) {
+           e.preventDefault();
+           $("#confirm_restart_cultipi").dialog({
+                resizable: false,
+                height:150,
+                width: 500,
+                modal: true,
+                closeOnEscape: false,
+                dialogClass: "dialog_cultibox",
+                buttons: [{
+                    text: OK_button,
+                    click: function () {
+                        $( this ).dialog("close");
+
+                        $.blockUI({
+                            message: "<?php echo __('LOADING_DATA'); ?>  <img src=\"main/libs/img/waiting_small.gif\" />",
+                            centerY: 0,
+                            css: {
+                                top: '20%',
+                                border: 'none',
+                                padding: '5px',
+                                backgroundColor: 'grey',
+                                '-webkit-border-radius': '10px',
+                                '-moz-border-radius': '10px',
+                                opacity: .9,
+                                color: '#fffff'
+                            },
+                            onBlock: function() {
+                                $.ajax({
+                                    cache: false,
+                                    async: true,
+                                    url: "main/modules/external/services_status.php",
+                                    data: {action:"restart_cultipi"},
+                                    success: function (data) {
+                                        var objJSON = jQuery.parseJSON(data);
+                                        if(objJSON=="0") {
+                                            $.ajax({
+                                                cache: false,
+                                                async: true,
+                                                url: "main/modules/external/services_status.php",
+                                                data: {action:"status_cultipi"}
+                                            }).done(function (data) {
+                                                var objJSON = jQuery.parseJSON(data);
+                                                if(objJSON=="0") {
+                                                    $("#cultipi_on").show();
+                                                    $("#cultipi_off").css('display','none');
+                                                } else {
+                                                    $("#cultipi_off").show();
+                                                    $("#cultipi_on").css('display','none');
+                                                }
+                                                $.unblockUI();
+
+                                                $("#success_restart_service").dialog({
+                                                    resizable: false,
+                                                    width: 400,
+                                                    closeOnEscape: true,
+                                                    modal: true,
+                                                    dialogClass: "popup_message",
+                                                    buttons: [{
+                                                        text: CLOSE_button,
+                                                        click: function () {
+                                                            $( this ).dialog( "close" ); return false;
+                                                        }
+                                                    }]
+                                                    });
+                                            });
+                                        } else {
+                                            $("#error_restart_service").dialog({
+                                                resizable: false,
+                                                width: 400,
+                                                closeOnEscape: true,
+                                                modal: true,
+                                                dialogClass: "popup_error",
+                                                buttons: [{
+                                                    text: CLOSE_button,
+                                                    click: function () {
+                                                        $( this ).dialog( "close" ); return false;
+                                                    }
+                                                }]
+                                            });
+                                            $.unblockUI();
+                                        }
+                                    }, error: function (data) {
+                                        $("#error_restart_service").dialog({
+                                            resizable: false,
+                                            width: 400,
+                                            closeOnEscape: true,
+                                            modal: true,
+                                            dialogClass: "popup_error",
+                                            buttons: [{
+                                                text: CLOSE_button,
+                                                click: function () {
+                                                    $( this ).dialog( "close" ); return false;
+                                            } }]
+                                        });
+                                        $.unblockUI();
+                                    }
+                                });
                             }
-                            }]
-                        }); 
-                    });
-                } else {
-                    $("#error_restart_service").dialog({
-                        resizable: false,
-                        width: 400,
-                        closeOnEscape: true,
-                        modal: true,
-                        dialogClass: "popup_error",
-                        buttons: [{
-                            text: CLOSE_button,
-                            click: function () {
+                        });
+                    }
+                }, {
+                    text: CANCEL_button,
+                        click: function () {
                             $( this ).dialog( "close" ); return false;
                         }
-                        }]
-                    });
-                    $.unblockUI();
-                }
-            }, error: function (data) {
-                $("#error_restart_service").dialog({
-                    resizable: false,
-                    width: 400,
-                    closeOnEscape: true,
-                    modal: true,
-                    dialogClass: "popup_error",
-                    buttons: [{
-                        text: CLOSE_button,
-                        click: function () {
-                        $( this ).dialog( "close" ); return false;
-                    } }]
-                });
-                $.unblockUI();
-            }
+                }]
         });
-     }});
     });
 });
 </script>

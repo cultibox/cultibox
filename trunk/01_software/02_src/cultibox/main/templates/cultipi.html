@@ -289,7 +289,7 @@
         </td>
         <td>
             <img src='/cultibox/main/libs/img/versions.png' id="version_soft" alt='' title="">
-        </td>
+            <a href="" name="restart_rpi" id="restart_rpi"><img src='/cultibox/main/libs/img/rpi_restart.png' alt='' title="<?php echo __('RPI_RESTART'); ?>" />
         <td></td>
     </tr>
 </table>
@@ -369,6 +369,17 @@
     <p><?php echo __('SAVED_PASSWORD'); ?></p>
 </div>
 
+<div id="confirm_restart_rpi" title="<?php echo __('CONFIRM_RESTART_RPI_TITLE'); ?>" style="display:none">
+    <?php echo __('CONFIRM_RESTART_RPI'); ?>
+</div>
+
+<div id="success_restart_rpi" title="" style="display:none">
+    <?php echo __('SUCCESS_RESTART_RPI'); ?>
+</div>
+
+<div id="confirm_restart_cultipi" title="<?php echo __('CONFIRM_RESTART_CULTIPI_TITLE'); ?>" style="display:none">
+    <?php echo __('CONFIRM_RESTART_CULTIPI'); ?>
+</div>
 
 <div id="dialog_change_password" title="<?php echo __('NEW_PASSWORD'); ?>" style="display:none">
     <form>

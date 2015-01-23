@@ -1730,6 +1730,24 @@ msgid "CURRENT_PROG_COMMENT"
 msgstr "Current program"
 
 #For the Cultipi part:
+msgid "CONFIRM_RESTART_CULTIPI_TITLE"
+msgstr "Service Restart Cultipi"
+
+msgid "CONFIRM_RESTART_CULTIPI"
+msgstr "Do you want to restart the Cultipi service?"
+
+msgid "SUCCESS_RESTART_RPI"
+msgstr "The module was restarted successfully, it will be available again in a few seconds."
+
+msgid "CONFIRM_RESTART_RPI_TITLE"
+msgstr "Restart Cultipi"
+
+msgid "CONFIRM_RESTART_RPI"
+msgstr "Do you want to restart the Cultipi module?"
+
+msgid "RPI_RESTART"
+msgstr "Click to restart the Cultipi"
+
 msgid "ERROR_SAVE_PASSWORD"
 msgstr "Error password change, the old password will be kept"
 
