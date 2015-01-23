@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -f /etc/init.d/cultitime ]; then
+    update-rc.d cultitime defaults
+fi
+
+/etc/init.d/cultitime force-reload

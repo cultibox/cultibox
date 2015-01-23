@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ "$1" == "purge" ] || [ "$1" == "remove" ]; then
+    if [ "`ps ax|grep cultiTime|grep tclsh`" != "" ]; then
+        for process in `ps ax|grep cultiTime|grep tclsh|awk -F" " '{print $1}'`; do
+            if [ "$process" != "" ]; then
+                kill -9 $process
+            fi
+        done
+    fi
+
+    update-rc.d -f cultitime remove >/dev/null 2>&1
+
+    if [ -f /etc/init.d/cultitime ]; then
+        rm -Rf /etc/init.d/culitime
+    fi
+fi
+
