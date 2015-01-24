@@ -73,8 +73,12 @@
             <td><span id="stop_date"></span></td>
         </tr>
         <tr>
-            <td><b><?php echo __('CALENDAR_DURATION'); ?>:</b></td>
-            <td><span id="duration_date"></span></td>
+            <td><span id="edit_duration_started_title" style="display:none"><b><?php echo __('CALENDAR_STARTED'); ?>:</b></span><span id="edit_duration_start_title" style="display:none"><b><?php echo __('CALENDAR_START'); ?>:</b></span></td>
+            <td><span id="edit_duration_start"></span></td>
+        </tr>
+        <tr>
+            <td><span id="edit_duration_ended_title" style="display:none"><b><?php echo __('CALENDAR_ENDED'); ?>:</b></span><span id="edit_duration_end_title" style="display:none"><b><?php echo __('CALENDAR_END'); ?>:</b></span></td>
+            <td><span id="edit_duration_end"></span></td>
         </tr>
         <tr>
             <td><b><?php echo __('CALENDAR_REMARK'); ?>:</b></td>
@@ -147,10 +151,6 @@
             <tr>
                 <td><b><?php echo __('CALENDAR_STOP_DATE'); ?>:</b></td>
                 <td><span id="edit_stop_date"></span></td>
-            </tr>
-            <tr>
-                <td><b><?php echo __('CALENDAR_DURATION'); ?>:</b></td>
-                <td><span id="edit_duration_date"></span></td>
             </tr>
             <tr>
                 <td><b><?php echo __('CALENDAR_REMARK'); ?>:</b></td>
