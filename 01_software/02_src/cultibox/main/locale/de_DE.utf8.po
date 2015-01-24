@@ -973,6 +973,18 @@ msgstr "Tag"
 msgid "DAYS_DURATION"
 msgstr "Tag"
 
+msgid "CALENDAR_STARTED"
+msgstr "Ereignis begann vor"
+
+msgid "CALENDAR_ENDED"
+msgstr "Ereignis fertig für"
+
+msgid "CALENDAR_START"
+msgstr "Ereignis beginnen in"
+
+msgid "CALENDAR_END"
+msgstr "Ereignis am Ende in"
+
 msgid "CALENDAR_DURATION"
 msgstr "Event Time"
 

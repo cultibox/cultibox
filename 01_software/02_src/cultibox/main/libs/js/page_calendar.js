@@ -523,28 +523,11 @@ $(document).ready(function() {
             
             if(end) {
                 $("#edit_stop_date").text($.fullCalendar.formatDate(end, "yyyy-MM-dd"));
-
-                var date_end=$.fullCalendar.formatDate(end, "yyyy-MM-dd");
-                dateParts = date_end.split('-');
-                date_end = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
-
-                var date_start=$.fullCalendar.formatDate(start, "yyyy-MM-dd");
-                dateParts = date_start.split('-');
-                date_start = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
-
-                var duration=((date_end - date_start)/86400000)+1;
-                if(duration>1) {
-                    $("#edit_duration_date").text(duration+" <?php echo __('DAYS_DURATION'); ?>");
-                } else {
-                    $("#edit_duration_date").text(duration+" <?php echo __('DAY_DURATION'); ?>");
-                }
             } else {
                 $("#edit_stop_date").text($.fullCalendar.formatDate(start, "yyyy-MM-dd"));
-                $("#edit_duration_date").text("1 <?php echo __('DAY_DURATION'); ?>");
             }
 
             $("#select_remark").val("");
-
             $("#select_color").val("#000000"); 
             $('#colour').css({'background-color' : '#000000'});
 
@@ -951,30 +934,78 @@ $(document).ready(function() {
             });
         },
         eventClick: function(event, element) {
+            var date_ref = new Date();
+            var date_ref_formated = date_ref.getFullYear() +'-'+ addZ(date_ref.getMonth()+1) +'-'+ addZ(date_ref.getDate());
+            var date_ref_parts=date_ref_formated.split('-');
+            date_ref=new Date(date_ref_parts[0], parseInt(date_ref_parts[1], 10) - 1, date_ref_parts[2]).getTime();
+
+            $("#edit_duration_started_title").css("display","none");
+            $("#edit_duration_start_title").css("display","none");
+            $("#edit_duration_ended_title").css("display","none");
+            $("#edit_duration_end_title").css("display","none");
+
+            $("#edit_duration_start").text("");
+            $("#edit_duration_end").text("");
+            
         
             // Set UI informations from event properties
             $("#title").text(event.title);
             $("#start_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
+
+
+            var date_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
+            dateParts = date_start.split('-');
+            date_start = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
+
+            var duration_start=((date_start-date_ref)/86400000);
+
             if(event.end) {
                 $("#stop_date").text($.fullCalendar.formatDate(event.end, "yyyy-MM-dd"));
                 var date_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd");
                 dateParts = date_end.split('-');
                 date_end = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
 
-                var date_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
-                dateParts = date_start.split('-');
-                date_start = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
+                var duration_end=((date_end-date_ref)/86400000);
 
-                var duration=((date_end - date_start)/86400000)+1;
-                if(duration>1) {
-                    $("#duration_date").text(duration+" <?php echo __('DAYS_DURATION'); ?>");
-                } else {
-                    $("#duration_date").text(duration+" <?php echo __('DAY_DURATION'); ?>");
-                }
             }else {
                 $("#stop_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
-                $("#duration_date").text("1 <?php echo __('DAY_DURATION'); ?>");
+                var duration_end=duration_start;
             }
+
+
+            if(duration_start<0) {
+                $("#edit_duration_started_title").show();
+                if(duration_start==-1) {
+                    $("#edit_duration_start").text("1 <?php echo __('DAY_DURATION'); ?>");
+                } else {
+                    $("#edit_duration_start").text(Math.abs(duration_start)+" <?php echo __('DAYS_DURATION'); ?>");
+                }
+            } else {
+                $("#edit_duration_start_title").show();
+                if(duration_start==1) {
+                    $("#edit_duration_start").text("1 <?php echo __('DAY_DURATION'); ?>");
+                } else {
+                    $("#edit_duration_start").text(duration_start+" <?php echo __('DAYS_DURATION'); ?>");
+                }
+            }
+
+
+            if(duration_end<0) {
+                $("#edit_duration_ended_title").show();
+                if(duration_end==-1) {
+                    $("#edit_duration_end").text("1 <?php echo __('DAY_DURATION'); ?>");
+                } else {
+                    $("#edit_duration_end").text(Math.abs(duration_end)+" <?php echo __('DAYS_DURATION'); ?>");
+                }
+            } else {
+                $("#edit_duration_end_title").show();
+                if(duration_end==1) {
+                    $("#edit_duration_end").text("1 <?php echo __('DAY_DURATION'); ?>");
+                } else {
+                    $("#edit_duration_end").text(duration_end+" <?php echo __('DAYS_DURATION'); ?>");
+                }
+            }
+
             if(event.description) {
                 $("#remark").val(event.description);
             } else {
@@ -1004,24 +1035,8 @@ $(document).ready(function() {
                             $("#edit_start_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
                             if(event.end) {
                                 $("#edit_stop_date").text($.fullCalendar.formatDate(event.end, "yyyy-MM-dd"));
-
-                                var date_end=$.fullCalendar.formatDate(event.end, "yyyy-MM-dd");
-                                dateParts = date_end.split('-');
-                                date_end = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
-
-                                var date_start=$.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
-                                dateParts = date_start.split('-');
-                                date_start = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2]).getTime();
-
-                                var duration=((date_end - date_start)/86400000)+1;
-                                if(duration>1) {
-                                    $("#edit_duration_date").text(duration+" <?php echo __('DAYS_DURATION'); ?>");
-                                } else {
-                                    $("#edit_duration_date").text(duration+" <?php echo __('DAY_DURATION'); ?>");
-                                }
                             }else {
                                  $("#edit_stop_date").text($.fullCalendar.formatDate(event.start, "yyyy-MM-dd"));
-                                 $("#edit_duration_date").text("1 <?php echo __('DAY_DURATION'); ?>");
                             }
                             if(event.description) {
                                  $("#select_remark").val(event.description);

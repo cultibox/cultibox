@@ -974,8 +974,17 @@ msgstr "jour"
 msgid "DAYS_DURATION"
 msgstr "jours"
 
-msgid "CALENDAR_DURATION"
-msgstr "Durée de l'évènement"
+msgid "CALENDAR_STARTED"
+msgstr "Evènement démarré dépuis"
+
+msgid "CALENDAR_ENDED"
+msgstr "Evènement terminé depuis"
+
+msgid "CALENDAR_START"
+msgstr "Evènement démarrera dans"
+
+msgid "CALENDAR_END"
+msgstr "Evènement terminera dans"
 
 msgid "CALENDAR_TITLE"
 msgstr "Calendrier"
