@@ -986,9 +986,6 @@ msgstr "start Evento in"
 msgid "CALENDAR_END"
 msgstr "end Evento in" 
 
-msgid "CALENDAR_DURATION"
-msgstr "Time Event"
-
 msgid "CALENDAR_TITLE"
 msgstr "Calendario"
 
@@ -1783,9 +1780,6 @@ msgstr "Aggiungi un elemento"
 msgid "CULTIPI_SYNO_CONF"
 msgstr "Configura"
 
-msgid "CULTIPI_LOGS" 
-msgstr "Visualizzazione dei registri di servizi"
-
 msgid "CULTIPI_LOGS_HTTPD"
 msgstr "Clicca sull'immagine per visualizzare i log del servizio Http"
 
@@ -1803,9 +1797,6 @@ msgstr "Clicca sull'immagine per scaricare i log del servizio MySQL"
 
 msgid "CULTIPI_DL_LOGS_CULTIPI"
 msgstr "Clicca sull'immagine per scaricare i registri di servizio Cultipi"
-
-msgid "CULTIPI_VIEW_LOGS" 
-msgstr "Mostra logs"
 
 msgid "OUTPUT_LOGS" 
 msgstr "Logs uscita"
@@ -1858,14 +1849,8 @@ msgstr "Software CultiRAZ"
 msgid "CULTITIME_SOFT"
 msgstr "Software CultiTime"
 
-msgid "SERVICE_MGT"
-msgstr "Service Management"
-
 msgid "CULTIPI_SERVICE"
 msgstr "Stato servizio Cultipi"
-
-msgid "ACTION_SERVICE"
-msgstr "Servizio di azione"
 
 msgid "SYNO_UPDATE_PLUG_HOUR"
 msgstr "Ultimo aggiornamento presi : "

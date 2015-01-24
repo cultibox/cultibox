@@ -985,9 +985,6 @@ msgstr "Evento de inicio en"
 msgid "CALENDAR_END" 
 msgstr "termina Evento en"
 
-msgid "CALENDAR_DURATION" 
-msgstr "Tiempo de eventos"
-
 msgid "CALENDAR_TITLE"
 msgstr "Calendario"
 
@@ -1782,9 +1779,6 @@ msgstr "Añadir un elemento"
 msgid "CULTIPI_SYNO_CONF" 
 msgstr "Configurar"
 
-msgid "CULTIPI_LOGS" 
-msgstr "Ver registros de los servicios"
-
 msgid "CULTIPI_LOGS_HTTPD" 
 msgstr "Haga clic en la imagen para ver los registros del servicio Http"
 
@@ -1802,9 +1796,6 @@ msgstr "Haga clic en la imagen para descargar los registros del servicio de MySQ
 
 msgid "CULTIPI_DL_LOGS_CULTIPI" 
 msgstr "Haga clic en la imagen para descargar los registros de servicio Cultipi"
-
-msgid "CULTIPI_VIEW_LOGS" 
-msgstr "Mostrar registros"
 
 msgid "OUTPUT_LOGS" 
 msgstr "Salida de Registros"
@@ -1857,14 +1848,8 @@ msgstr "Software CultiRAZ"
 msgid "CULTITIME_SOFT"
 msgstr "Software CultiTime"
 
-msgid "SERVICE_MGT" 
-msgstr "Gestión de Servicios"
-
 msgid "CULTIPI_SERVICE"
 msgstr "Estado del servicio Cultipi"
-
-msgid "ACTION_SERVICE"
-msgstr "Accion del servicio"
 
 msgid "SYNO_UPDATE_PLUG_HOUR"
 msgstr "Última actualización de tomar : "
@@ -1893,7 +1878,7 @@ msgstr "Gestión de Acceso"
 msgid "CHANGE_PASSWORD"
 msgstr "Cambiar la contraseña de la interfaz"
 
-msgid "new_password"
+msgid "NEW_PASSWORD"
 msgstr "Nueva contraseña"
 
 msgid "CONFIRM_NEW_PASSWORD"
