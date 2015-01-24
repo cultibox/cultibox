@@ -985,9 +985,6 @@ msgstr "Event start in"
 msgid "CALENDAR_END"
 msgstr "Event end in"
 
-msgid "CALENDAR_DURATION"
-msgstr "Event Time"
-
 msgid "CALENDAR_TITLE"
 msgstr "Calendar"
 
@@ -1781,9 +1778,6 @@ msgstr "Add an item"
 msgid "CULTIPI_SYNO_CONF"
 msgstr "Configure"
 
-msgid "CULTIPI_LOGS"
-msgstr "Viewing logs of services"
-
 msgid "CULTIPI_LOGS_HTTPD"
 msgstr "Click on the image to view the logs of the Http service"
 
@@ -1801,9 +1795,6 @@ msgstr "Click on the image to download the logs of the MySQL service"
 
 msgid "CULTIPI_DL_LOGS_CULTIPI"
 msgstr "Click on the image to download the logs of Cultipi service"
-
-msgid "CULTIPI_VIEW_LOGS"
-msgstr "Show logs"
 
 msgid "OUTPUT_LOGS"
 msgstr "Logs output"
@@ -1856,14 +1847,8 @@ msgstr "Software CultiRAZ"
 msgid "CULTITIME_SOFT"
 msgstr "Software CultiTime"
 
-msgid "SERVICE_MGT"
-msgstr "Service Management"
-
 msgid "CULTIPI_SERVICE"
 msgstr "Cultipi service status"
-
-msgid "ACTION_SERVICE"
-msgstr "Action of the service"
 
 msgid "SYNO_UPDATE_PLUG_HOUR"
 msgstr "Last update of the sensors :"

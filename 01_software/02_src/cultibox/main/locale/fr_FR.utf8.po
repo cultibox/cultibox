@@ -1781,9 +1781,6 @@ msgstr "Ajouter un élément"
 msgid "CULTIPI_SYNO_CONF"
 msgstr "Configurer"
 
-msgid "CULTIPI_LOGS"
-msgstr "Visualisation des logs des services"
-
 msgid "CULTIPI_LOGS_HTTPD"
 msgstr "Cliquez sur l'image pour afficher les logs du service Http"
 
@@ -1801,9 +1798,6 @@ msgstr "Cliquez sur l'image pour télécharger les logs du service Mysql"
 
 msgid "CULTIPI_DL_LOGS_CULTIPI"
 msgstr "Cliquez sur l'image pour télécharger les logs du service Cultipi"
-
-msgid "CULTIPI_VIEW_LOGS"
-msgstr "Afficher les logs"
 
 msgid "OUTPUT_LOGS"
 msgstr "Logs de sortie"
@@ -1829,14 +1823,8 @@ msgstr "Logiciel CultiRAZ"
 msgid "CULTITIME_SOFT"
 msgstr "Logiciel CultiTime"
 
-msgid "SERVICE_MGT"
-msgstr "Gestion des services"
-
 msgid "CULTIPI_SERVICE"
 msgstr "Status du service Cultipi"
-
-msgid "ACTION_SERVICE"
-msgstr "Action du service"
 
 msgid "RESTART_SERVICE"
 msgstr "Cliquez sur l'image pour redémarrer le service"

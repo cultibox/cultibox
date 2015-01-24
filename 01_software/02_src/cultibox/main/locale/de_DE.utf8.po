@@ -985,9 +985,6 @@ msgstr "Ereignis beginnen in"
 msgid "CALENDAR_END"
 msgstr "Ereignis am Ende in"
 
-msgid "CALENDAR_DURATION"
-msgstr "Event Time"
-
 msgid "CALENDAR_TITLE"
 msgstr "Kalender"
 
@@ -1782,9 +1779,6 @@ msgstr "ein Element hinzufügen"
 msgid "CULTIPI_SYNO_CONF"
 msgstr "Konfigurieren"
 
-msgid "CULTIPI_LOGS"
-msgstr "Anzeigen von Protokollen von Dienstleistungen"
-
 msgid "CULTIPI_LOGS_HTTPD"
 msgstr "Klicken Sie auf das Bild, um die Protokolle der HTTP-Dienst zu sehen"
 
@@ -1802,9 +1796,6 @@ msgstr "Klicken Sie auf das Bild, um die Protokolle der MySQL-Dienst herunterlad
 
 msgid "CULTIPI_DL_LOGS_CULTIPI"
 msgstr "Klicken Sie auf das Bild, um die Protokolle Cultipi Service herunterladen"
-
-msgid "CULTIPI_VIEW_LOGS"
-msgstr "Show-Protokolle"
 
 msgid "OUTPUT_LOGS"
 msgstr "Logs Ausgang"
@@ -1854,14 +1845,8 @@ msgstr "Software CultiRAZ"
 msgid "CULTITIME_SOFT"
 msgstr "Software CultiTime"
 
-msgid "SERVICE_MGT"
-msgstr "Service Management"
-
 msgid "CULTIPI_SERVICE"
 msgstr "Service Status Cultipi"
-
-msgid "ACTION_SERVICE"
-msgstr "Dienst"
 
 msgid "RESTART_SERVICE"
 msgstr "Auf das Bild klicken, um den Dienst neu zu starten"
