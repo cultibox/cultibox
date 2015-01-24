@@ -785,7 +785,7 @@ var updateIsAked = 0;
                     var objJSON = jQuery.parseJSON(data);
 
                     if(objJSON!="") {
-                        $.fileDownload('tmp/'+objJSON);
+                        $.fileDownload('tmp/export/'+objJSON);
                     }
 
                     $.unblockUI();

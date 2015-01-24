@@ -57,13 +57,34 @@ proc firstLoop {} {
                
                 set ::compteur 0
            
-                # RAZ du RPi:
-            
+                # RAZ de la configuration réseau:
+                exec cp /etc/network/interfaces.BASE /etc/network/interfaces
+                exec /etc/init.d/networking restart
 
-                # On la rappel la procédure au bout de 10 secondes pour éviter un double effacage:
+                # Remise en place du mot de passe d'origine:
+                if { [file exists /etc/lighttpd/.passwd.BASE] == 1} {
+                    exec cp /etc/lighttpd/.passwd.BASE /etc/lighttpd/.passwd
+                    exec /etc/init.d/lighttpd force-reload
+                }
+
+
+                exec dpkg --purge cultibox 
+                exec dpkg --purge cultinet 
+                exec dpkg --purge cultiraz 
+                exec dpkg --purge cultipi 
+                exec dpkg --purge cultitime
+
+                exec dpkg -i /home/cultipi/cultipi*.deb
+                exec dpkg -i /home/cultipi/cultinet*.deb
+                exec dpkg -i /home/cultipi/cultibox*.deb
+                exec dpkg -i /home/cultipi/cultitime*.deb
+                exec dpkg -i /home/cultipi/cultiraz*.deb
+
+
+                # On rappel la procédure au bout de 10 secondes pour éviter un double effacage:
                 after 10000 firstLoop
             } else {
-                # On la rappel toute les 50ms si le bouton a été appuyé:
+                # On rappel toute les 50ms si le bouton a été appuyé:
                 after 50 firstLoop
             }
             
