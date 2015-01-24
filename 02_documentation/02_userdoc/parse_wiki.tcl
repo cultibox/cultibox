@@ -13,6 +13,8 @@ set imgTexPath [file join $path wiki_tex img]
 
 # Define rules for special cars
 set CaracSpeciaux [list]
+lappend CaracSpeciaux "{{{" "SC_START_CODE"
+lappend CaracSpeciaux "}}}" "SC_END_CODE"
 lappend CaracSpeciaux "°C" "\\textdegree{}C"
 lappend CaracSpeciaux "#" "\\#"
 lappend CaracSpeciaux "_" "\\_"
@@ -21,6 +23,12 @@ lappend CaracSpeciaux "&" "\\&"
 lappend CaracSpeciaux "%" "\\%"
 lappend CaracSpeciaux "<" "\\textless{}"
 lappend CaracSpeciaux ">" "\\textgreater{}"
+lappend CaracSpeciaux "$" "\\$"
+lappend CaracSpeciaux "~" "\\textasciitilde"
+lappend CaracSpeciaux "^" "\\textasciicircum"
+lappend CaracSpeciaux "^" "\\textasciicircum"
+lappend CaracSpeciaux "\{" "\\{"
+lappend CaracSpeciaux "\}" "\\}"
 
 set CaracSpeciauxEnd [list]
 lappend CaracSpeciauxEnd "*" ""
@@ -218,11 +226,11 @@ proc parseLink {line} {
 
 proc parseCode {line} {
 
-    if {[string first "\{\{\{" $line] != -1} {
+    if {[string first "SC_START_CODE" $line] != -1} {
         set line "\\begin\{center\} \\colorbox\{gray\}\{  \\begin\{minipage\}\[c\]\{0.7\\textwidth\} \\begin\{itshape\}"
         set ::inCode 1
     }
-    if {[string first "\}\}\}" $line] != -1} {
+    if {[string first "SC_END_CODE" $line] != -1} {
         set line "\\end\{itshape\} \\end\{minipage\}  \} \\end\{center\}"
         set ::inCode 0
     }
@@ -303,14 +311,23 @@ proc parse {inFileName outFileName level annexeFile} {
    while {[eof $fid] != 1} {
       gets $fid line
       
+      # Tout les ! en début de mot sont supprimé
+      regsub -all {\!\m} $line "" line
       
-      # Remplacement des caractere spéciaux
+      # Remplacement des caractère spéciaux
       if {[string first {http://cultibox.googlecode.com/svn/wiki/img/} $line] != -1} {
          set line [string map {{http://cultibox.googlecode.com/svn/wiki/img/} "\\scalegraphics\{./wiki/img/" {.jpg} ".jpg\}" {.png} ".png\}" {.PNG} ".PNG\}"} $line]     
       } elseif {$inComment == 0} {
          set line [string map $::CaracSpeciaux $line]
       }
+            
+      # Tous les \{ tout seul sont remplacé
+      regsub -all { \{} $line " \\\{" line
+      regsub -all { \{ } $line " \\\{ " line
+      regsub -all { \}} $line " \\\}" line
+      regsub -all { \} } $line " \\\} " line
       
+            
       if {$::inCode == 0} {set line [parseLink $line]}
       
       set line [parseCode $line]     
@@ -318,7 +335,7 @@ proc parse {inFileName outFileName level annexeFile} {
       set line [parseListe $line]
       
       set line [parseCode $line]
-        
+
       if {$::inCode == 0} {
           set line [parseGras $line]
           set line [string map $::CaracSpeciauxEnd $line]
@@ -328,8 +345,8 @@ proc parse {inFileName outFileName level annexeFile} {
       }
       
 	  if {$::inCode == 0} {set ::startInCode 0}
-      if {$::startInCode == 1} {set line "$line\\newline"}
-	  if {$::inCode == 1} {set ::startInCode 1}
+      if {$::startInCode > 1} {set line "\newline$line"}
+	  if {$::inCode == 1} {incr ::startInCode}
 
       if {[string first {#summary} $line] != -1} {
          set line "";
