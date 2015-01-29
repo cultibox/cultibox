@@ -19,7 +19,7 @@
     if(count($output)==0) {
        echo json_encode("1");
     } else {
-        exec("sudo fswebcam -r ".$width."x".$height." --no-banner ".$GLOBALS['BASE_PATH']."/tmp/webcam.jpg",$output,$err);
+        exec("sudo fswebcam -p YUYV -r ".$width."x".$height." --no-banner ".$GLOBALS['BASE_PATH']."/tmp/webcam.jpg",$output,$err);
         echo json_encode("0");
     }
 ?>
