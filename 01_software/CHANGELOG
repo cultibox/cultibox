@@ -1,10 +1,16 @@
+Cultibox (2.0.29) precise; urgency=low
+    + Correction de la prise d'image pour les webcams
+
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Jan 29 12:12:34 CEST 2015
+
+
 Cultibox (2.0.28) precise; urgency=low
     + Remise en forme de l'administration du Cultipi
     + Ajout des infos de régulation secondaire au chargement de la page programme
     + Ajout du temps écoulé et restant d'un évènement par rapport à la date courante dans le calendrier
     + Ajout d'un bouton de redémarrage du module
 
--- Yann Genevois <yann.genevois@cultibox.fr> Wed Jan 21 18:31:14 CEST 2014
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Jan 21 18:31:14 CEST 2015
 
 
 Cultibox (2.0.27) precise; urgency=low
@@ -13,14 +19,14 @@ Cultibox (2.0.27) precise; urgency=low
     + Ajout d'un tooltip pour la lampe dans l'assistant
     + Ajout de l'heure de création de la capture de la webcam
 
--- Yann Genevois <yann.genevois@cultibox.fr> Wed Jan 21 18:31:14 CEST 2014
+-- Yann Genevois <yann.genevois@cultibox.fr> Wed Jan 21 18:31:14 CEST 2015
 
 
 Cultibox (2.0.26) precise; urgency=low
     + Correction de la programmation cyclique
     + Correction de l'iniialisation de variables pour la partie programme
 
--- Yann Genevois <yann.genevois@cultibox.fr> Mon Jan 19 18:29:45 CEST 2014
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Jan 19 18:29:45 CEST 2015
 
 
 Cultibox (2.0.25) precise; urgency=low
@@ -31,21 +37,21 @@ Cultibox (2.0.25) precise; urgency=low
     + Correction d'un bug de nettoyage du fichier index 
     + Renforcemnt de la détection des capteurs
 
--- Yann Genevois <yann.genevois@cultibox.fr> Thu Jan 15 13:09:15 CEST 2014
+-- Yann Genevois <yann.genevois@cultibox.fr> Thu Jan 15 13:09:15 CEST 2015
 
 
 Cultibox (2.0.24) precise; urgency=low
     + Correction de l'affichage des logs Cultipi
     + Mise en place de l'onglet Webcam
 
--- Yann Genevois <yann.genevois@cultibox.fr> Tue Jan 06 14:41:12 CEST 2014
+-- Yann Genevois <yann.genevois@cultibox.fr> Tue Jan 06 14:41:12 CEST 2015
 
 
 Cultibox (2.0.23) precise; urgency=low
     + Correction des nombres à virgule dans la vérification des valeurs
     + Correction de la gestion des messages des puissances manquantes
 
--- Yann Genevois <yann.genevois@cultibox.fr> Mon Jan 05 17:56:45 CEST 2014
+-- Yann Genevois <yann.genevois@cultibox.fr> Mon Jan 05 17:56:45 CEST 2015
 
 
 Cultibox (2.0.22) precise; urgency=low
