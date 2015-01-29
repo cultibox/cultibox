@@ -1905,3 +1905,147 @@ msgstr "verwendet wird nicht aktualisiert Konfiguration können Sie die Konfigur
 
 msgid "DISABLE_POPUP"
 msgstr "Mich nicht und lassen Sie mich zu verwalten Sie die Konfiguration im Dialog"
+
+
+# For the Cultinet part:
+msgid "CONFIGURE_TITLE_CULTIBOX"
+msgstr "Netzwerkkonfiguration Ihres Cultipi"
+
+msgid "CONFIGURE_SUBTITLE"
+msgstr "Die Konfiguration gezeigt, entspricht der derzeit angewandten Konfiguration"
+
+msgid "ADDR_TYPE"
+msgstr "Adresstyp"
+
+msgid "NO_IFACE_FOUND"
+msgstr "Nicht erkannt Schnittstelle"
+
+msgid "TOOLTIP_MANUAL_IP"
+msgstr "Wenn diese Option aktiviert ist, müssen Sie die gewünschte Adresse für Ihre Cultipi Modul manuell eingeben"
+
+msgid "TOOLTIP_DYNAMIC_IP"
+msgstr "Wenn diese Option aktiviert ist, eine Adresse zu Ihrem Cultipi Modul gegeben werden"
+
+msgid "WIRE_CONF"
+msgstr "Kabelverbindung"
+
+msgid "WIRELESS_CONF"
+msgstr "WLAN-Verbindung"
+
+msgid "PHY_ADDR"
+msgstr "Physikalische Adresse der Schnittstelle"
+
+msgid "ACTIVATED"
+msgstr "Aktiviert"
+
+msgid "DEACTIVATED"
+msgstr "Deaktivieren"
+
+msgid "MANUAL_IP_ADDR"
+msgstr "Manuelle Adresse"
+
+msgid "DYNAMIC_IP_ADDR"
+msgstr "Automatisch Adresse"
+
+msgid "IP_ADDR"
+msgstr "Netzwerkadresse"
+
+msgid "ip_mask"
+msgstr "Netzwerkmaske"
+
+msgid "ENABLE_JAVASCRIPT"
+msgstr "Javascript ist deaktiviert! Sie können mit dieser Software, wenn Sie Javascript nicht aktivieren"
+
+msgid "CONFIGURE_WIFI"
+msgstr "Wifi"
+
+msgid "CONFIGURE_WIFI_IP"
+msgstr "Adresse des WLAN-Moduls"
+
+msgid "CONFIGURE_WIFI_KEY_TYPE"
+msgstr "Geben Sie die Taste"
+
+msgid "CONFIGURE_WIFI_PASSWORD"
+msgstr "Network Password"
+
+msgid "CONFIGURE_WIFI_PASSWORD_CONFIRM"
+msgstr "Passwortbestätigung"
+
+msgid "CONFIGURE_WIFI_SSID"
+msgstr "Netzwerkname"
+
+msgid "CONFIGURE_WIFI_IP_MASK"
+msgstr "Netzwerkmaske"
+
+msgid "WIFI_IP_MANUAL"
+msgstr "Stellen Sie die IP-Adresse manuell"
+
+msgid "SHOW_CURRENT_PWD"
+msgstr "Lassen Sie die Maus angeklickt Sie auf das Bild, um das Passwort angezeigt werden"
+
+msgid "ERROR_SSID_VALUE"
+msgstr "Der Netzwerkname kann nicht leer sein"
+
+msgid "ERROR_PASSWORD_VALUE"
+msgstr "Die Passwörter müssen übereinstimmen"
+
+msgid "ERROR_WIFI_IP_MASK"
+msgstr "Fehler in der Netzmaske Format: XXX.XXX.XXX.XXX"
+
+msgid "TOOLTIP_IP_ADDR"
+msgstr "Das Modul-Adresse muss in Form XXX.XXX.XXX.XXX <br /><br />sein <i>Beispiel: 192.168.0.15</i>"
+
+msgid "TOOLTIP_MASK_ADDR"
+msgstr "Die Netzmaske müssen der Form XXX.XXX.XXX.XXX <br /><br />sein <i>Beispiel: 255.255.255.0</i>"
+
+msgid "ERROR_WIFI_IP"
+msgstr "Fehler im Format IP: XXX.XXX.XXX.XXX"
+
+msgid "ERROR_EMPTY_PASSWORD"
+msgstr "Das Passwort darf nicht leer sein"
+
+msgid "ERROR_WEP_KEY_TYPE"
+msgstr "Fehler in der WEP-Kennwort-Format: Es muss nur Zahlen (0-9) und haben 5, 13 oder 29 Zeichen lang"
+
+msgid "ERROR_WPA_KEY_TYPE"
+msgstr "Fehler in der WPA-Passwort-Format: Es muss zwischen 8 und 63 Zeichen lang sein"
+
+msgid "TOOLTIP_WIFI_SSID"
+msgstr "Der Name des Wireless-Netzwerks in Arbeit. Das ist die Kennung (SSID) Ihres lokalen WLAN-Netzwerk."
+
+msgid "TOOLTIP_WIFI_KEY_TYPE"
+msgstr "Die Art der Verschlüsselung der Schlüssel zu Ihrem WLAN-Netzwerk"
+
+msgid "TOOLTIP_WIFI_IP"
+msgstr "Die Adresse des WLAN-Modul kann mit einer IP-Adresse in das Format XXX.XXX.XXX.XXX angepasst werden"
+
+msgid "SAVE_CONF"
+msgstr "Einstellungen speichern"
+
+msgid "SAVING_DATA"
+msgstr "Speichern der Konfiguration, bitte warten ..."
+
+msgid "EMPTY_NETWORK_CONFIG"
+msgstr "Keine Netzwerkkonfiguration (verdrahtet oder drahtlos) wurde aktiviert. Sie müssen eine Netzwerkverbindung ändern Ihr Modul zur Verfügung zu stellen."
+
+msgid "WIFI_SCAN_ESSID"
+msgstr "Verfügbare Netzwerke"
+
+msgid "WIFI_ESSID_SCAN_TITLE"
+msgstr "Wählen Sie ein drahtloses Netzwerk"
+
+msgid "WIFI_SCAN_SUBTITLE"
+msgstr "Die folgenden WiFi-Netzwerken haben festgestellt und sind für das Modul zu verbinden"
+
+msgid "ERROR_NET_FILE_CREATION"
+msgstr "beim Erstellen der Netzwerkkonfigurationsdateien ist ein Fehler aufgetreten"
+
+msgid "AVAILABLE_MODULE_SET"
+msgstr "Ihr Modul ist nun mit dem Netzwerk (e) (x) (e) Sie können mit Ihrem Netzwerk zu verbinden und auf die Cultipi Modul an die folgende Adresse in Ihrem Lieblings-Browser verbunden. <p class='p_center '><a class='note_link' href='https://cultipi.local/cultibox/' target='_blank'>https://cultipi.local/cultibox/</a></p> "
+
+msgid "RESTORED_CONF"
+msgstr "bei der Einrichtung Ihrer Netzwerkkonfiguration ist ein Fehler aufgetreten. Der vorherige Konfiguration wiederhergestellt wurde"
+
+msgid "LOADING_DATA"
+msgstr "Laden Laden, bitte warten..."
+

@@ -9,6 +9,7 @@ var EXPORT_button="";
 var SAVING="";
 var DIR_CONF_UPDATE="";
 var DIR_CONF_NOT_UPTODATE="";
+var RELOAD_buton="";
 
 
 var lang="";
@@ -35,6 +36,7 @@ $.ajax({
 });
 
 if(lang=="it_IT") {
+    RELOAD_button="Reti Rescan";
     OK_button="Continuare";
     CANCEL_button="Annullare";
     CLOSE_button="Chiudere";
@@ -48,6 +50,7 @@ if(lang=="it_IT") {
     DIR_CONF_UPDATE="La configurazione è aggiornato";
     DIR_CONF_NOT_UPTODATE="La configurazione utilizzata non è aggiornata, clicca qui per aggiornare la configurazione: <button id='update_conf'>Aggiorna configurazione</button>";
 } else if(lang=="de_DE") {
+    RELOAD_button="Rescan Netzwerke";
     OK_button="Weiter";
     CANCEL_button="Stornieren";
     CLOSE_button="Schliessen";
@@ -61,6 +64,7 @@ if(lang=="it_IT") {
     DIR_CONF_UPDATE="Ihre Konfiguration ist auf dem neuesten Stand";
     DIR_CONF_NOT_UPTODATE="verwendet wird, nicht aktualisierte Konfiguration, klicken Sie hier, um die Konfiguration zu aktualisieren: <button id='update_conf'>Aktualisieren Sie Konfiguration</button>";
 } else if(lang=="en_GB") {
+    RELOAD_button="Rescan networks";
     OK_button="OK";
     CANCEL_button="Cancel";
     CLOSE_button="Close";
@@ -74,6 +78,7 @@ if(lang=="it_IT") {
     DIR_CONF_UPDATE="Your configuration is up to date";
     DIR_CONF_NOT_UPTODATE="The configuration used is not updated, click here to update the configuration: <button id='update_conf'> Update configuration </button>";
 } else if(lang=="es_ES") {
+    RELOAD_button="Volver a examinar las redes";
     OK_button="Continuar";
     CANCEL_button="Cancelar";
     CLOSE_button="Cerrar";
@@ -87,6 +92,7 @@ if(lang=="it_IT") {
     DIR_CONF_UPDATE="Su configuración está al día";
     DIR_CONF_NOT_UPTODATE="La configuración utilizada no está actualizado, haga clic aquí para actualizar la configuración: <button id='update_conf'>Actualizar configuración botón</button>";
 } else {
+    RELOAD_button="Re-scanner les réseaux";
     OK_button="Continuer";
     CANCEL_button="Annuler";
     CLOSE_button="Fermer";
