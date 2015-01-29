@@ -1481,6 +1481,9 @@ msgstr "Le mot de passe ne peut pas être vide"
 
 
 # For the informations part:
+msgid "SYNC_CONF"
+msgstr "Configration mise à jour avec succés, les changements seront appliqués d'ici quelques secondes."
+
 msgid "CONFIRMATION"
 msgstr "Confirmation"
 

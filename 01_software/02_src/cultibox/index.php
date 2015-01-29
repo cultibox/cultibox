@@ -111,6 +111,9 @@ $webcam=get_configuration("SHOW_WEBCAM");
         <input type="checkbox" id="disable_popup" name="disable_popup" />
     </p>
     </div>
+    <div id="sync_conf" style="display:none">
+        <?php echo __('SYNC_CONF'); ?>
+    </div>
     <div id="scrollto"></div>
     <div id="page-bg">
         <div>
