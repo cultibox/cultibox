@@ -66,7 +66,6 @@ $conf_arr["COLOR_EC_GRAPH"]         = array ("update_conf" => "0", "var" => "col
 $conf_arr["COLOR_OD_GRAPH"]         = array ("update_conf" => "0", "var" => "color_od");
 $conf_arr["COLOR_ORP_GRAPH"]        = array ("update_conf" => "0", "var" => "color_orp");
 $conf_arr["COLOR_PROGRAM_GRAPH"]    = array ("update_conf" => "0", "var" => "color_program");
-$conf_arr["COLOR_POWER_GRAPH"]      = array ("update_conf" => "0", "var" => "color_power");
 
 foreach ($conf_arr as $key => $value) {
     ${$value['var']} = get_configuration($key,$main_error);

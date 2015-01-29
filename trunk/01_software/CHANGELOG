@@ -1,5 +1,6 @@
 Cultibox (2.0.29) precise; urgency=low
     + Correction de la prise d'image pour les webcams
+    + Suppréssion de la configuration de la couleur des puissances
 
 -- Yann Genevois <yann.genevois@cultibox.fr> Thu Jan 29 12:12:34 CEST 2015
 
